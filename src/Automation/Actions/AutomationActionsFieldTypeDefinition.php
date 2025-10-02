@@ -1,0 +1,225 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Automation\Actions;
+
+use HubspotSDK\Automation\Actions\AutomationActionsFieldTypeDefinition\FieldType;
+use HubspotSDK\Automation\Actions\AutomationActionsFieldTypeDefinition\ReferencedObjectType;
+use HubspotSDK\Automation\Actions\AutomationActionsFieldTypeDefinition\Type;
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\CRM\CRMOption;
+
+/**
+ * @phpstan-type automation_actions_field_type_definition = array{
+ *   externalOptions: bool,
+ *   name: string,
+ *   options: list<CRMOption>,
+ *   type: value-of<Type>,
+ *   externalOptionsReferenceType?: string,
+ *   fieldType?: value-of<FieldType>,
+ *   helpText?: string,
+ *   label?: string,
+ *   optionsURL?: string,
+ *   referencedObjectType?: value-of<ReferencedObjectType>,
+ * }
+ */
+final class AutomationActionsFieldTypeDefinition implements BaseModel
+{
+    /** @use SdkModel<automation_actions_field_type_definition> */
+    use SdkModel;
+
+    #[Api]
+    public bool $externalOptions;
+
+    #[Api]
+    public string $name;
+
+    /** @var list<CRMOption> $options */
+    #[Api(list: CRMOption::class)]
+    public array $options;
+
+    /** @var value-of<Type> $type */
+    #[Api(enum: Type::class)]
+    public string $type;
+
+    #[Api(optional: true)]
+    public ?string $externalOptionsReferenceType;
+
+    /** @var value-of<FieldType>|null $fieldType */
+    #[Api(enum: FieldType::class, optional: true)]
+    public ?string $fieldType;
+
+    #[Api(optional: true)]
+    public ?string $helpText;
+
+    #[Api(optional: true)]
+    public ?string $label;
+
+    #[Api('optionsUrl', optional: true)]
+    public ?string $optionsURL;
+
+    /** @var value-of<ReferencedObjectType>|null $referencedObjectType */
+    #[Api(enum: ReferencedObjectType::class, optional: true)]
+    public ?string $referencedObjectType;
+
+    /**
+     * `new AutomationActionsFieldTypeDefinition()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * AutomationActionsFieldTypeDefinition::with(
+     *   externalOptions: ..., name: ..., options: ..., type: ...
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new AutomationActionsFieldTypeDefinition)
+     *   ->withExternalOptions(...)
+     *   ->withName(...)
+     *   ->withOptions(...)
+     *   ->withType(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<CRMOption> $options
+     * @param Type|value-of<Type> $type
+     * @param FieldType|value-of<FieldType> $fieldType
+     * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
+     */
+    public static function with(
+        bool $externalOptions,
+        string $name,
+        array $options,
+        Type|string $type,
+        ?string $externalOptionsReferenceType = null,
+        FieldType|string|null $fieldType = null,
+        ?string $helpText = null,
+        ?string $label = null,
+        ?string $optionsURL = null,
+        ReferencedObjectType|string|null $referencedObjectType = null,
+    ): self {
+        $obj = new self;
+
+        $obj->externalOptions = $externalOptions;
+        $obj->name = $name;
+        $obj->options = $options;
+        $obj->type = $type instanceof Type ? $type->value : $type;
+
+        null !== $externalOptionsReferenceType && $obj->externalOptionsReferenceType = $externalOptionsReferenceType;
+        null !== $fieldType && $obj->fieldType = $fieldType instanceof FieldType ? $fieldType->value : $fieldType;
+        null !== $helpText && $obj->helpText = $helpText;
+        null !== $label && $obj->label = $label;
+        null !== $optionsURL && $obj->optionsURL = $optionsURL;
+        null !== $referencedObjectType && $obj->referencedObjectType = $referencedObjectType instanceof ReferencedObjectType ? $referencedObjectType->value : $referencedObjectType;
+
+        return $obj;
+    }
+
+    public function withExternalOptions(bool $externalOptions): self
+    {
+        $obj = clone $this;
+        $obj->externalOptions = $externalOptions;
+
+        return $obj;
+    }
+
+    public function withName(string $name): self
+    {
+        $obj = clone $this;
+        $obj->name = $name;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<CRMOption> $options
+     */
+    public function withOptions(array $options): self
+    {
+        $obj = clone $this;
+        $obj->options = $options;
+
+        return $obj;
+    }
+
+    /**
+     * @param Type|value-of<Type> $type
+     */
+    public function withType(Type|string $type): self
+    {
+        $obj = clone $this;
+        $obj->type = $type instanceof Type ? $type->value : $type;
+
+        return $obj;
+    }
+
+    public function withExternalOptionsReferenceType(
+        string $externalOptionsReferenceType
+    ): self {
+        $obj = clone $this;
+        $obj->externalOptionsReferenceType = $externalOptionsReferenceType;
+
+        return $obj;
+    }
+
+    /**
+     * @param FieldType|value-of<FieldType> $fieldType
+     */
+    public function withFieldType(FieldType|string $fieldType): self
+    {
+        $obj = clone $this;
+        $obj->fieldType = $fieldType instanceof FieldType ? $fieldType->value : $fieldType;
+
+        return $obj;
+    }
+
+    public function withHelpText(string $helpText): self
+    {
+        $obj = clone $this;
+        $obj->helpText = $helpText;
+
+        return $obj;
+    }
+
+    public function withLabel(string $label): self
+    {
+        $obj = clone $this;
+        $obj->label = $label;
+
+        return $obj;
+    }
+
+    public function withOptionsURL(string $optionsURL): self
+    {
+        $obj = clone $this;
+        $obj->optionsURL = $optionsURL;
+
+        return $obj;
+    }
+
+    /**
+     * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
+     */
+    public function withReferencedObjectType(
+        ReferencedObjectType|string $referencedObjectType
+    ): self {
+        $obj = clone $this;
+        $obj->referencedObjectType = $referencedObjectType instanceof ReferencedObjectType ? $referencedObjectType->value : $referencedObjectType;
+
+        return $obj;
+    }
+}

@@ -1,0 +1,109 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\CRM\Properties;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * An object containing the method's parameters.
+ * Example usage:
+ * ```
+ * $params = (new PropertyGetByNameParams); // set properties as needed
+ * $client->crm.properties->getByName(...$params->toArray());
+ * ```
+ * Read a property.
+ *
+ * @method toArray()
+ *   Returns the parameters as an associative array suitable for passing to the client method.
+ *
+ *   `$client->crm.properties->getByName(...$params->toArray());`
+ *
+ * @see HubspotSDK\CRM\Properties->getByName
+ *
+ * @phpstan-type property_get_by_name_params = array{
+ *   objectType: string, archived?: bool, properties?: string
+ * }
+ */
+final class PropertyGetByNameParams implements BaseModel
+{
+    /** @use SdkModel<property_get_by_name_params> */
+    use SdkModel;
+    use SdkParams;
+
+    #[Api]
+    public string $objectType;
+
+    #[Api(optional: true)]
+    public ?bool $archived;
+
+    #[Api(optional: true)]
+    public ?string $properties;
+
+    /**
+     * `new PropertyGetByNameParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * PropertyGetByNameParams::with(objectType: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new PropertyGetByNameParams)->withObjectType(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(
+        string $objectType,
+        ?bool $archived = null,
+        ?string $properties = null
+    ): self {
+        $obj = new self;
+
+        $obj->objectType = $objectType;
+
+        null !== $archived && $obj->archived = $archived;
+        null !== $properties && $obj->properties = $properties;
+
+        return $obj;
+    }
+
+    public function withObjectType(string $objectType): self
+    {
+        $obj = clone $this;
+        $obj->objectType = $objectType;
+
+        return $obj;
+    }
+
+    public function withArchived(bool $archived): self
+    {
+        $obj = clone $this;
+        $obj->archived = $archived;
+
+        return $obj;
+    }
+
+    public function withProperties(string $properties): self
+    {
+        $obj = clone $this;
+        $obj->properties = $properties;
+
+        return $obj;
+    }
+}
