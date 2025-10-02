@@ -1,0 +1,83 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Marketing\Forms;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Marketing\Forms\MarketingFormsFormPostSubmitAction\Type;
+
+/**
+ * @phpstan-type marketing_forms_form_post_submit_action = array{
+ *   type: value-of<Type>, value: string
+ * }
+ */
+final class MarketingFormsFormPostSubmitAction implements BaseModel
+{
+    /** @use SdkModel<marketing_forms_form_post_submit_action> */
+    use SdkModel;
+
+    /** @var value-of<Type> $type */
+    #[Api(enum: Type::class)]
+    public string $type;
+
+    #[Api]
+    public string $value;
+
+    /**
+     * `new MarketingFormsFormPostSubmitAction()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * MarketingFormsFormPostSubmitAction::with(type: ..., value: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new MarketingFormsFormPostSubmitAction)->withType(...)->withValue(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Type|value-of<Type> $type
+     */
+    public static function with(Type|string $type, string $value): self
+    {
+        $obj = new self;
+
+        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj->value = $value;
+
+        return $obj;
+    }
+
+    /**
+     * @param Type|value-of<Type> $type
+     */
+    public function withType(Type|string $type): self
+    {
+        $obj = clone $this;
+        $obj->type = $type instanceof Type ? $type->value : $type;
+
+        return $obj;
+    }
+
+    public function withValue(string $value): self
+    {
+        $obj = clone $this;
+        $obj->value = $value;
+
+        return $obj;
+    }
+}
