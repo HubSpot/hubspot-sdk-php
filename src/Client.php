@@ -18,8 +18,6 @@ use HubspotSDK\Services\WebhooksService;
 
 class Client extends BaseClient
 {
-    public string $developerHapikey;
-
     /**
      * @api
      */
@@ -62,13 +60,9 @@ class Client extends BaseClient
 
     public function __construct(
         public ?string $accessToken = null,
-        ?string $developerHapikey = null,
+        public ?string $developerHapikey = null,
         ?string $baseUrl = null,
     ) {
-        $this->developerHapikey = (string) (
-            $developerHapikey ?? getenv('HUBSPOT_DEVELOPER_HAPI_KEY')
-        );
-
         $base = $baseUrl ?? getenv('HUB_SPOT_BASE_URL') ?: 'https://api.hubapi.com';
 
         $options = RequestOptions::with(
@@ -109,6 +103,6 @@ class Client extends BaseClient
     /** @return array<string, string> */
     protected function authQuery(): array
     {
-        return ['hapikey' => $this->developerHapikey];
+        return ['hapikey' => $this->STAINLESS_FIXME_developerHapikey];
     }
 }
