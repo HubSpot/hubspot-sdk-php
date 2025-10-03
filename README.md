@@ -43,9 +43,7 @@ Parameters with a default value must be set by name.
 
 use HubspotSDK\Client;
 
-$client = new Client(
-  accessToken: getenv("HUBSPOT_ACCESS_TOKEN") ?: "pat-123123"
-);
+$client = new Client();
 
 $crmObjectsCreatedResponseSimplePublicObject = $client
   ->crm
