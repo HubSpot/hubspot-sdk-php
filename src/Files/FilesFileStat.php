@@ -10,10 +10,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type files_file_stat = array{file?: FilesFile, folder?: FilesFolder}
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
 final class FilesFileStat implements BaseModel
 {

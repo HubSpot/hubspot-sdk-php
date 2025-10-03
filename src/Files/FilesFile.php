@@ -33,10 +33,6 @@ use HubspotSDK\Files\FilesFile\Access;
  *   url?: string,
  *   width?: int,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
 final class FilesFile implements BaseModel
 {

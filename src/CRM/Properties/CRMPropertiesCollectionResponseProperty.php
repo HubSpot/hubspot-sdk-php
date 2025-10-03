@@ -8,11 +8,11 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\CRMProperty;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
 
 /**
  * @phpstan-type crm_properties_collection_response_property = array{
- *   results: list<CRMProperty>, paging?: Paging
+ *   results: list<CRMProperty>, paging?: MarketingEmailsPaging
  * }
  */
 final class CRMPropertiesCollectionResponseProperty implements BaseModel
@@ -25,7 +25,7 @@ final class CRMPropertiesCollectionResponseProperty implements BaseModel
     public array $results;
 
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?MarketingEmailsPaging $paging;
 
     /**
      * `new CRMPropertiesCollectionResponseProperty()` is missing required properties by the API.
@@ -53,8 +53,10 @@ final class CRMPropertiesCollectionResponseProperty implements BaseModel
      *
      * @param list<CRMProperty> $results
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        ?MarketingEmailsPaging $paging = null
+    ): self {
         $obj = new self;
 
         $obj->results = $results;
@@ -75,7 +77,7 @@ final class CRMPropertiesCollectionResponseProperty implements BaseModel
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    public function withPaging(MarketingEmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

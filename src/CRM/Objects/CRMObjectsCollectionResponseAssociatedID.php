@@ -8,11 +8,11 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\CRMAssociatedID;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
 
 /**
  * @phpstan-type crm_objects_collection_response_associated_id = array{
- *   results: list<CRMAssociatedID>, paging?: Paging
+ *   results: list<CRMAssociatedID>, paging?: MarketingEmailsPaging
  * }
  */
 final class CRMObjectsCollectionResponseAssociatedID implements BaseModel
@@ -25,7 +25,7 @@ final class CRMObjectsCollectionResponseAssociatedID implements BaseModel
     public array $results;
 
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?MarketingEmailsPaging $paging;
 
     /**
      * `new CRMObjectsCollectionResponseAssociatedID()` is missing required properties by the API.
@@ -53,8 +53,10 @@ final class CRMObjectsCollectionResponseAssociatedID implements BaseModel
      *
      * @param list<CRMAssociatedID> $results
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        ?MarketingEmailsPaging $paging = null
+    ): self {
         $obj = new self;
 
         $obj->results = $results;
@@ -75,7 +77,7 @@ final class CRMObjectsCollectionResponseAssociatedID implements BaseModel
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    public function withPaging(MarketingEmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

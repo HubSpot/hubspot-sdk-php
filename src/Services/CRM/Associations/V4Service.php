@@ -7,7 +7,6 @@ namespace HubspotSDK\Services\CRM\Associations;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Implementation\HasRawResponse;
-use HubspotSDK\CRM\Associations\V4\AssociationsV4AssociationSpec1;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4BatchResponseVoid;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4PublicAssociationMultiPost;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4ReportCreationResponse;
@@ -16,6 +15,7 @@ use HubspotSDK\CRM\Associations\V4\V4CreateDefaultParams;
 use HubspotSDK\CRM\Associations\V4\V4CreateParams;
 use HubspotSDK\CRM\Associations\V4\V4DeleteParams;
 use HubspotSDK\CRM\Associations\V4\V4ListParams;
+use HubspotSDK\CRM\CRMAssociationSpec;
 use HubspotSDK\CRM\CRMBatchResponsePublicDefaultAssociation;
 use HubspotSDK\CRM\CRMCollectionResponseMultiAssociatedObjectWithLabel;
 use HubspotSDK\CRM\CRMCreatedResponseLabelsBetweenObjectPair;
@@ -39,7 +39,7 @@ final class V4Service implements V4Contract
      * @param string $objectType
      * @param string $objectID
      * @param string $toObjectType
-     * @param list<AssociationsV4AssociationSpec1> $body
+     * @param list<CRMAssociationSpec> $body
      *
      * @throws APIException
      */

@@ -20,9 +20,7 @@ class Client extends BaseClient
 {
     public string $accessToken;
 
-    public string $developerHapiKey;
-
-    public string $privateAppsLegacy;
+    public string $developerHapikey;
 
     /**
      * @api
@@ -66,18 +64,14 @@ class Client extends BaseClient
 
     public function __construct(
         ?string $accessToken = null,
-        ?string $developerHapiKey = null,
-        ?string $privateAppsLegacy = null,
+        ?string $developerHapikey = null,
         ?string $baseUrl = null,
     ) {
         $this->accessToken = (string) (
             $accessToken ?? getenv('HUBSPOT_ACCESS_TOKEN')
         );
-        $this->developerHapiKey = (string) (
-            $developerHapiKey ?? getenv('DEVELOPER_HAPI_KEY')
-        );
-        $this->privateAppsLegacy = (string) (
-            $privateAppsLegacy ?? getenv('PRIVATE_APPS_LEGACY')
+        $this->developerHapikey = (string) (
+            $developerHapikey ?? getenv('HUBSPOT_DEVELOPER_HAPI_KEY')
         );
 
         $base = $baseUrl ?? getenv('HUB_SPOT_BASE_URL') ?: 'https://api.hubapi.com';
@@ -110,24 +104,12 @@ class Client extends BaseClient
     /** @return array<string, string> */
     protected function authHeaders(): array
     {
-        return [...$this->privateApps(), ...$this->privateAppsLegacy1()];
+        return ['private-app' => $this->accessToken];
     }
 
     /** @return array<string, string> */
     protected function authQuery(): array
     {
-        return ['hapikey' => $this->developerHapiKey];
-    }
-
-    /** @return array<string, string> */
-    protected function privateApps(): array
-    {
-        return ['private-app' => $this->accessToken];
-    }
-
-    /** @return array<string, string> */
-    protected function privateAppsLegacy1(): array
-    {
-        return ['private-app-legacy' => $this->privateAppsLegacy];
+        return ['hapikey' => $this->developerHapikey];
     }
 }

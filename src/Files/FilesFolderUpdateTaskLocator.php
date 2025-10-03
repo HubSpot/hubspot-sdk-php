@@ -12,10 +12,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type files_folder_update_task_locator = array{
  *   id: string, links: array<string, string>
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
 final class FilesFolderUpdateTaskLocator implements BaseModel
 {

@@ -7,11 +7,12 @@ namespace HubspotSDK\CRM;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
 
 /**
  * @phpstan-type crm_collection_response_multi_associated_object_with_label = array{
- *   results: list<CRMMultiAssociatedObjectWithLabel>, paging?: Paging
+ *   results: list<CRMMultiAssociatedObjectWithLabel>,
+ *   paging?: MarketingEmailsPaging,
  * }
  */
 final class CRMCollectionResponseMultiAssociatedObjectWithLabel implements BaseModel
@@ -24,7 +25,7 @@ final class CRMCollectionResponseMultiAssociatedObjectWithLabel implements BaseM
     public array $results;
 
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?MarketingEmailsPaging $paging;
 
     /**
      * `new CRMCollectionResponseMultiAssociatedObjectWithLabel()` is missing required properties by the API.
@@ -52,8 +53,10 @@ final class CRMCollectionResponseMultiAssociatedObjectWithLabel implements BaseM
      *
      * @param list<CRMMultiAssociatedObjectWithLabel> $results
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        ?MarketingEmailsPaging $paging = null
+    ): self {
         $obj = new self;
 
         $obj->results = $results;
@@ -74,7 +77,7 @@ final class CRMCollectionResponseMultiAssociatedObjectWithLabel implements BaseM
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    public function withPaging(MarketingEmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;
