@@ -9,6 +9,7 @@ use HubspotSDK\ServiceContracts\CRM\ObjectsContract;
 use HubspotSDK\Services\CRM\Objects\CompaniesService;
 use HubspotSDK\Services\CRM\Objects\ContactsService;
 use HubspotSDK\Services\CRM\Objects\DealsService;
+use HubspotSDK\Services\CRM\Objects\SchemasService;
 
 final class ObjectsService implements ObjectsContract
 {
@@ -28,6 +29,11 @@ final class ObjectsService implements ObjectsContract
     public DealsService $deals;
 
     /**
+     * @@api
+     */
+    public SchemasService $schemas;
+
+    /**
      * @internal
      */
     public function __construct(private Client $client)
@@ -35,5 +41,6 @@ final class ObjectsService implements ObjectsContract
         $this->companies = new CompaniesService($client);
         $this->contacts = new ContactsService($client);
         $this->deals = new DealsService($client);
+        $this->schemas = new SchemasService($client);
     }
 }

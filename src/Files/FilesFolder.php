@@ -19,10 +19,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   parentFolderID?: string,
  *   path?: string,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
 final class FilesFolder implements BaseModel
 {

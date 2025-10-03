@@ -7,11 +7,11 @@ namespace HubspotSDK\Files;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
 
 /**
  * @phpstan-type files_collection_response_folder = array{
- *   results: list<FilesFolder>, paging?: Paging
+ *   results: list<FilesFolder>, paging?: MarketingEmailsPaging
  * }
  */
 final class FilesCollectionResponseFolder implements BaseModel
@@ -24,7 +24,7 @@ final class FilesCollectionResponseFolder implements BaseModel
     public array $results;
 
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?MarketingEmailsPaging $paging;
 
     /**
      * `new FilesCollectionResponseFolder()` is missing required properties by the API.
@@ -52,8 +52,10 @@ final class FilesCollectionResponseFolder implements BaseModel
      *
      * @param list<FilesFolder> $results
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        ?MarketingEmailsPaging $paging = null
+    ): self {
         $obj = new self;
 
         $obj->results = $results;
@@ -74,7 +76,7 @@ final class FilesCollectionResponseFolder implements BaseModel
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    public function withPaging(MarketingEmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

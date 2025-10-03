@@ -25,7 +25,7 @@ final class V4Test extends TestCase
         parent::setUp();
 
         $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
-        $client = new Client(accessToken: 'My Access Token', baseUrl: $testUrl);
+        $client = new Client(accessToken: 'pat-123123', baseUrl: $testUrl);
 
         $this->client = $client;
     }
@@ -43,7 +43,7 @@ final class V4Test extends TestCase
             objectID: 'objectId',
             toObjectType: 'toObjectType',
             body: [
-                AssociationsV4AssociationSpec1::with(
+                CRMAssociationSpec::with(
                     associationCategory: 'HUBSPOT_DEFINED',
                     associationTypeID: 0
                 ),
@@ -66,7 +66,7 @@ final class V4Test extends TestCase
             objectID: 'objectId',
             toObjectType: 'toObjectType',
             body: [
-                AssociationsV4AssociationSpec1::with(
+                CRMAssociationSpec::with(
                     associationCategory: 'HUBSPOT_DEFINED',
                     associationTypeID: 0
                 ),
@@ -157,7 +157,7 @@ final class V4Test extends TestCase
                     from: CRMPublicObjectID::with(id: 'id'),
                     to: CRMPublicObjectID::with(id: 'id'),
                     types: [
-                        CRMAssociationSpec::with(
+                        AssociationsV4AssociationSpec1::with(
                             associationCategory: 'HUBSPOT_DEFINED',
                             associationTypeID: 0
                         ),
@@ -184,7 +184,7 @@ final class V4Test extends TestCase
                     from: CRMPublicObjectID::with(id: 'id'),
                     to: CRMPublicObjectID::with(id: 'id'),
                     types: [
-                        CRMAssociationSpec::with(
+                        AssociationsV4AssociationSpec1::with(
                             associationCategory: 'HUBSPOT_DEFINED',
                             associationTypeID: 0
                         ),

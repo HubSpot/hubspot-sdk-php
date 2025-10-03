@@ -19,10 +19,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   height?: int,
  *   width?: int,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
 final class FilesSignedURL implements BaseModel
 {

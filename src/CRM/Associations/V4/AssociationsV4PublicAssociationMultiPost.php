@@ -7,14 +7,13 @@ namespace HubspotSDK\CRM\Associations\V4;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\CRMAssociationSpec;
 use HubspotSDK\CRM\CRMPublicObjectID;
 
 /**
  * @phpstan-type associations_v4_public_association_multi_post = array{
  *   from: CRMPublicObjectID,
  *   to: CRMPublicObjectID,
- *   types: list<CRMAssociationSpec>,
+ *   types: list<AssociationsV4AssociationSpec1>,
  * }
  */
 final class AssociationsV4PublicAssociationMultiPost implements BaseModel
@@ -28,8 +27,8 @@ final class AssociationsV4PublicAssociationMultiPost implements BaseModel
     #[Api]
     public CRMPublicObjectID $to;
 
-    /** @var list<CRMAssociationSpec> $types */
-    #[Api(list: CRMAssociationSpec::class)]
+    /** @var list<AssociationsV4AssociationSpec1> $types */
+    #[Api(list: AssociationsV4AssociationSpec1::class)]
     public array $types;
 
     /**
@@ -59,7 +58,7 @@ final class AssociationsV4PublicAssociationMultiPost implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMAssociationSpec> $types
+     * @param list<AssociationsV4AssociationSpec1> $types
      */
     public static function with(
         CRMPublicObjectID $from,
@@ -92,7 +91,7 @@ final class AssociationsV4PublicAssociationMultiPost implements BaseModel
     }
 
     /**
-     * @param list<CRMAssociationSpec> $types
+     * @param list<AssociationsV4AssociationSpec1> $types
      */
     public function withTypes(array $types): self
     {

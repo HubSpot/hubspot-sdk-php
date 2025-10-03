@@ -7,11 +7,13 @@ namespace HubspotSDK\CRM\Objects;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
 
 /**
  * @phpstan-type crm_objects_collection_response_with_total_simple_public_object = array{
- *   results: list<CRMObjectsSimplePublicObject>, total: int, paging?: Paging
+ *   results: list<CRMObjectsSimplePublicObject>,
+ *   total: int,
+ *   paging?: MarketingEmailsPaging,
  * }
  */
 final class CRMObjectsCollectionResponseWithTotalSimplePublicObject implements BaseModel
@@ -29,7 +31,7 @@ final class CRMObjectsCollectionResponseWithTotalSimplePublicObject implements B
     public int $total;
 
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?MarketingEmailsPaging $paging;
 
     /**
      * `new CRMObjectsCollectionResponseWithTotalSimplePublicObject()` is missing required properties by the API.
@@ -64,7 +66,7 @@ final class CRMObjectsCollectionResponseWithTotalSimplePublicObject implements B
     public static function with(
         array $results,
         int $total,
-        ?Paging $paging = null
+        ?MarketingEmailsPaging $paging = null
     ): self {
         $obj = new self;
 
@@ -95,7 +97,7 @@ final class CRMObjectsCollectionResponseWithTotalSimplePublicObject implements B
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    public function withPaging(MarketingEmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

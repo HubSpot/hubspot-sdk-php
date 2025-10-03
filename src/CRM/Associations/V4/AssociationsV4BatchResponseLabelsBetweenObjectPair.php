@@ -9,7 +9,6 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4BatchResponseLabelsBetweenObjectPair\Status;
 use HubspotSDK\CRM\CRMLabelsBetweenObjectPair;
-use HubspotSDK\StandardError;
 
 /**
  * @phpstan-type associations_v4_batch_response_labels_between_object_pair = array{
@@ -17,7 +16,7 @@ use HubspotSDK\StandardError;
  *   results: list<CRMLabelsBetweenObjectPair>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError>,
+ *   errors?: list<AssociationsV4StandardError1>,
  *   links?: array<string, string>,
  *   numErrors?: int,
  *   requestedAt?: \DateTimeInterface,
@@ -42,8 +41,8 @@ final class AssociationsV4BatchResponseLabelsBetweenObjectPair implements BaseMo
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
-    #[Api(list: StandardError::class, optional: true)]
+    /** @var list<AssociationsV4StandardError1>|null $errors */
+    #[Api(list: AssociationsV4StandardError1::class, optional: true)]
     public ?array $errors;
 
     /** @var array<string, string>|null $links */
@@ -88,7 +87,7 @@ final class AssociationsV4BatchResponseLabelsBetweenObjectPair implements BaseMo
      *
      * @param list<CRMLabelsBetweenObjectPair> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError> $errors
+     * @param list<AssociationsV4StandardError1> $errors
      * @param array<string, string> $links
      */
     public static function with(
@@ -155,7 +154,7 @@ final class AssociationsV4BatchResponseLabelsBetweenObjectPair implements BaseMo
     }
 
     /**
-     * @param list<StandardError> $errors
+     * @param list<AssociationsV4StandardError1> $errors
      */
     public function withErrors(array $errors): self
     {

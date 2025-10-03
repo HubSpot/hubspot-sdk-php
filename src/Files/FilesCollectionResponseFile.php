@@ -7,16 +7,12 @@ namespace HubspotSDK\Files;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
 
 /**
  * @phpstan-type files_collection_response_file = array{
- *   results: list<FilesFile>, paging?: Paging
+ *   results: list<FilesFile>, paging?: MarketingEmailsPaging
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
 final class FilesCollectionResponseFile implements BaseModel
 {
@@ -28,7 +24,7 @@ final class FilesCollectionResponseFile implements BaseModel
     public array $results;
 
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?MarketingEmailsPaging $paging;
 
     /**
      * `new FilesCollectionResponseFile()` is missing required properties by the API.
@@ -56,8 +52,10 @@ final class FilesCollectionResponseFile implements BaseModel
      *
      * @param list<FilesFile> $results
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        ?MarketingEmailsPaging $paging = null
+    ): self {
         $obj = new self;
 
         $obj->results = $results;
@@ -78,7 +76,7 @@ final class FilesCollectionResponseFile implements BaseModel
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    public function withPaging(MarketingEmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

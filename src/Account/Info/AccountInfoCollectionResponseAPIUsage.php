@@ -7,11 +7,11 @@ namespace HubspotSDK\Account\Info;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
 
 /**
  * @phpstan-type account_info_collection_response_api_usage = array{
- *   results: list<AccountInfoAPIUsage>, paging?: Paging
+ *   results: list<AccountInfoAPIUsage>, paging?: MarketingEmailsPaging
  * }
  */
 final class AccountInfoCollectionResponseAPIUsage implements BaseModel
@@ -24,7 +24,7 @@ final class AccountInfoCollectionResponseAPIUsage implements BaseModel
     public array $results;
 
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?MarketingEmailsPaging $paging;
 
     /**
      * `new AccountInfoCollectionResponseAPIUsage()` is missing required properties by the API.
@@ -52,8 +52,10 @@ final class AccountInfoCollectionResponseAPIUsage implements BaseModel
      *
      * @param list<AccountInfoAPIUsage> $results
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        ?MarketingEmailsPaging $paging = null
+    ): self {
         $obj = new self;
 
         $obj->results = $results;
@@ -74,7 +76,7 @@ final class AccountInfoCollectionResponseAPIUsage implements BaseModel
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    public function withPaging(MarketingEmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

@@ -1,0 +1,116 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Marketing\Emails;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * An object containing the method's parameters.
+ * Example usage:
+ * ```
+ * $params = (new EmailGetEmailsListParams); // set properties as needed
+ * $client->marketing.emails->getEmailsList(...$params->toArray());
+ * ```
+ * Get aggregated statistics.
+ *
+ * @method toArray()
+ *   Returns the parameters as an associative array suitable for passing to the client method.
+ *
+ *   `$client->marketing.emails->getEmailsList(...$params->toArray());`
+ *
+ * @see HubspotSDK\Marketing\Emails->getEmailsList
+ *
+ * @phpstan-type email_get_emails_list_params = array{
+ *   emailIDs?: list<int>,
+ *   endTimestamp?: string,
+ *   property?: string,
+ *   startTimestamp?: string,
+ * }
+ */
+final class EmailGetEmailsListParams implements BaseModel
+{
+    /** @use SdkModel<email_get_emails_list_params> */
+    use SdkModel;
+    use SdkParams;
+
+    /** @var list<int>|null $emailIDs */
+    #[Api(list: 'int', optional: true)]
+    public ?array $emailIDs;
+
+    #[Api(optional: true)]
+    public ?string $endTimestamp;
+
+    #[Api(optional: true)]
+    public ?string $property;
+
+    #[Api(optional: true)]
+    public ?string $startTimestamp;
+
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<int> $emailIDs
+     */
+    public static function with(
+        ?array $emailIDs = null,
+        ?string $endTimestamp = null,
+        ?string $property = null,
+        ?string $startTimestamp = null,
+    ): self {
+        $obj = new self;
+
+        null !== $emailIDs && $obj->emailIDs = $emailIDs;
+        null !== $endTimestamp && $obj->endTimestamp = $endTimestamp;
+        null !== $property && $obj->property = $property;
+        null !== $startTimestamp && $obj->startTimestamp = $startTimestamp;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<int> $emailIDs
+     */
+    public function withEmailIDs(array $emailIDs): self
+    {
+        $obj = clone $this;
+        $obj->emailIDs = $emailIDs;
+
+        return $obj;
+    }
+
+    public function withEndTimestamp(string $endTimestamp): self
+    {
+        $obj = clone $this;
+        $obj->endTimestamp = $endTimestamp;
+
+        return $obj;
+    }
+
+    public function withProperty(string $property): self
+    {
+        $obj = clone $this;
+        $obj->property = $property;
+
+        return $obj;
+    }
+
+    public function withStartTimestamp(string $startTimestamp): self
+    {
+        $obj = clone $this;
+        $obj->startTimestamp = $startTimestamp;
+
+        return $obj;
+    }
+}
