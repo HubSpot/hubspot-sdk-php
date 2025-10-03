@@ -18,8 +18,6 @@ use HubspotSDK\Services\WebhooksService;
 
 class Client extends BaseClient
 {
-    public string $accessToken;
-
     public string $developerHapikey;
 
     /**
@@ -63,13 +61,10 @@ class Client extends BaseClient
     public WebhooksService $webhooks;
 
     public function __construct(
-        ?string $accessToken = null,
+        public ?string $accessToken = null,
         ?string $developerHapikey = null,
         ?string $baseUrl = null,
     ) {
-        $this->accessToken = (string) (
-            $accessToken ?? getenv('HUBSPOT_ACCESS_TOKEN')
-        );
         $this->developerHapikey = (string) (
             $developerHapikey ?? getenv('HUBSPOT_DEVELOPER_HAPI_KEY')
         );
@@ -104,11 +99,11 @@ class Client extends BaseClient
     /** @return array<string, string> */
     protected function authHeaders(): array
     {
-        if (!$this->accessToken) {
+        if (!$this->STAINLESS_FIXME_accessToken) {
             return [];
         }
 
-        return ['Authorization' => "Bearer {$this->accessToken}"];
+        return ['Authorization' => "Bearer {$this->STAINLESS_FIXME_accessToken}"];
     }
 
     /** @return array<string, string> */
