@@ -104,7 +104,11 @@ class Client extends BaseClient
     /** @return array<string, string> */
     protected function authHeaders(): array
     {
-        return ['private-app' => $this->accessToken];
+        if (!$this->accessToken) {
+            return [];
+        }
+
+        return ['Authorization' => "Bearer {$this->accessToken}"];
     }
 
     /** @return array<string, string> */
