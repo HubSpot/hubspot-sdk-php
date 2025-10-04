@@ -71,7 +71,7 @@ final class CRMPropertiesBatchReadInputPropertyName implements BaseModel
         $obj->archived = $archived;
         $obj->inputs = $inputs;
 
-        null !== $dataSensitivity && $obj->dataSensitivity = $dataSensitivity instanceof DataSensitivity ? $dataSensitivity->value : $dataSensitivity;
+        null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class CRMPropertiesBatchReadInputPropertyName implements BaseModel
         DataSensitivity|string $dataSensitivity
     ): self {
         $obj = clone $this;
-        $obj->dataSensitivity = $dataSensitivity instanceof DataSensitivity ? $dataSensitivity->value : $dataSensitivity;
+        $obj['dataSensitivity'] = $dataSensitivity;
 
         return $obj;
     }

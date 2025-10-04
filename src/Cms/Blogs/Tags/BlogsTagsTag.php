@@ -7,7 +7,9 @@ namespace HubspotSDK\Cms\Blogs\Tags;
 use HubspotSDK\Cms\Blogs\Tags\BlogsTagsTag\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type blogs_tags_tag = array{
@@ -19,15 +21,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   translatedFromID: int,
  *   updated: \DateTimeInterface,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class BlogsTagsTag implements BaseModel
+final class BlogsTagsTag implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<blogs_tags_tag> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;
@@ -106,7 +106,7 @@ final class BlogsTagsTag implements BaseModel
         $obj->id = $id;
         $obj->created = $created;
         $obj->deletedAt = $deletedAt;
-        $obj->language = $language instanceof Language ? $language->value : $language;
+        $obj['language'] = $language;
         $obj->name = $name;
         $obj->translatedFromID = $translatedFromID;
         $obj->updated = $updated;
@@ -144,7 +144,7 @@ final class BlogsTagsTag implements BaseModel
     public function withLanguage(Language|string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language instanceof Language ? $language->value : $language;
+        $obj['language'] = $language;
 
         return $obj;
     }

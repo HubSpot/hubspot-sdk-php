@@ -174,7 +174,7 @@ final class AutomationAPIContactFlowPutRequest implements BaseModel
         $obj->revisionID = $revisionID;
         $obj->suppressionListIDs = $suppressionListIDs;
         $obj->timeWindows = $timeWindows;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
         null !== $enrollmentSchedule && $obj->enrollmentSchedule = $enrollmentSchedule;
@@ -274,7 +274,7 @@ final class AutomationAPIContactFlowPutRequest implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

@@ -69,7 +69,7 @@ final class AutomationPublicAbsoluteComparativeTimestampRefineBy implements Base
 
         $obj->comparison = $comparison;
         $obj->timestamp = $timestamp;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class AutomationPublicAbsoluteComparativeTimestampRefineBy implements Base
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

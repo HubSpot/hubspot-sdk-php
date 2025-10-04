@@ -6,24 +6,24 @@ namespace HubspotSDK\Automation\Actions;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type automation_actions_collection_response_public_action_revision_forward_paging = array{
  *   results: list<AutomationActionsPublicActionRevision>, paging?: ForwardPaging
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class AutomationActionsCollectionResponsePublicActionRevisionForwardPaging implements BaseModel
+final class AutomationActionsCollectionResponsePublicActionRevisionForwardPaging implements BaseModel, ResponseConverter
 {
     /**
      * @use SdkModel<automation_actions_collection_response_public_action_revision_forward_paging>
      */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<AutomationActionsPublicActionRevision> $results */
     #[Api(list: AutomationActionsPublicActionRevision::class)]

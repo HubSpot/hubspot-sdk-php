@@ -86,7 +86,7 @@ final class ActionDeleteParams implements BaseModel
 
         $obj->appID = $appID;
         $obj->definitionID = $definitionID;
-        $obj->functionType = $functionType instanceof FunctionType ? $functionType->value : $functionType;
+        $obj['functionType'] = $functionType;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class ActionDeleteParams implements BaseModel
     public function withFunctionType(FunctionType|string $functionType): self
     {
         $obj = clone $this;
-        $obj->functionType = $functionType instanceof FunctionType ? $functionType->value : $functionType;
+        $obj['functionType'] = $functionType;
 
         return $obj;
     }

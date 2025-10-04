@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\CRM;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\CRM\Pipelines\CRMPipelinesCollectionResponsePipelineNoPaging;
 use HubspotSDK\CRM\Pipelines\CRMPipelinesCollectionResponsePublicAuditInfoNoPaging;
 use HubspotSDK\CRM\Pipelines\CRMPipelinesPipeline;
@@ -39,8 +38,6 @@ final class PipelinesService implements PipelinesContract
      * @param string $label
      * @param list<CRMPipelinesPipelineStageInput> $stages
      *
-     * @return CRMPipelinesPipeline<HasRawResponse>
-     *
      * @throws APIException
      */
     public function create(
@@ -61,8 +58,6 @@ final class PipelinesService implements PipelinesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPipelinesPipeline<HasRawResponse>
      *
      * @throws APIException
      */
@@ -98,8 +93,6 @@ final class PipelinesService implements PipelinesContract
      * @param string $label
      * @param array<string, string> $metadata
      *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
-     *
      * @throws APIException
      */
     public function update(
@@ -128,8 +121,6 @@ final class PipelinesService implements PipelinesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
      *
      * @throws APIException
      */
@@ -170,29 +161,10 @@ final class PipelinesService implements PipelinesContract
      *
      * Retrieve all pipelines
      *
-     * @return CRMPipelinesCollectionResponsePipelineNoPaging<HasRawResponse>
-     *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        ?RequestOptions $requestOptions = null
-    ): CRMPipelinesCollectionResponsePipelineNoPaging {
-        $params = [];
-
-        return $this->listRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @return CRMPipelinesCollectionResponsePipelineNoPaging<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $objectType,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): CRMPipelinesCollectionResponsePipelineNoPaging {
         // @phpstan-ignore-next-line;
@@ -267,8 +239,6 @@ final class PipelinesService implements PipelinesContract
      *
      * @param string $objectType
      *
-     * @return CRMPipelinesCollectionResponsePublicAuditInfoNoPaging<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getAudit(
@@ -285,8 +255,6 @@ final class PipelinesService implements PipelinesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPipelinesCollectionResponsePublicAuditInfoNoPaging<HasRawResponse>
      *
      * @throws APIException
      */
@@ -319,8 +287,6 @@ final class PipelinesService implements PipelinesContract
      * @param string $objectType
      * @param string $pipelineID
      *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
-     *
      * @throws APIException
      */
     public function read(
@@ -338,8 +304,6 @@ final class PipelinesService implements PipelinesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
      *
      * @throws APIException
      */
@@ -382,8 +346,6 @@ final class PipelinesService implements PipelinesContract
      * @param string $label
      * @param array<string, string> $metadata
      *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
-     *
      * @throws APIException
      */
     public function replace(
@@ -410,8 +372,6 @@ final class PipelinesService implements PipelinesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
      *
      * @throws APIException
      */

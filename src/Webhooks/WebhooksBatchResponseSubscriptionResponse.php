@@ -6,7 +6,9 @@ namespace HubspotSDK\Webhooks;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Webhooks\WebhooksBatchResponseSubscriptionResponse\Status;
 
 /**
@@ -18,15 +20,13 @@ use HubspotSDK\Webhooks\WebhooksBatchResponseSubscriptionResponse\Status;
  *   links?: array<string, string>,
  *   requestedAt?: \DateTimeInterface,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class WebhooksBatchResponseSubscriptionResponse implements BaseModel
+final class WebhooksBatchResponseSubscriptionResponse implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<webhooks_batch_response_subscription_response> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public \DateTimeInterface $completedAt;
@@ -96,7 +96,7 @@ final class WebhooksBatchResponseSubscriptionResponse implements BaseModel
         $obj->completedAt = $completedAt;
         $obj->results = $results;
         $obj->startedAt = $startedAt;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         null !== $links && $obj->links = $links;
         null !== $requestedAt && $obj->requestedAt = $requestedAt;
@@ -137,7 +137,7 @@ final class WebhooksBatchResponseSubscriptionResponse implements BaseModel
     public function withStatus(Status|string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         return $obj;
     }

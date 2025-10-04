@@ -72,7 +72,7 @@ final class AutomationActionsPublicSingleFieldDependency implements BaseModel
         $obj = new self;
 
         $obj->controllingFieldName = $controllingFieldName;
-        $obj->dependencyType = $dependencyType instanceof DependencyType ? $dependencyType->value : $dependencyType;
+        $obj['dependencyType'] = $dependencyType;
         $obj->dependentFieldNames = $dependentFieldNames;
 
         return $obj;
@@ -93,7 +93,7 @@ final class AutomationActionsPublicSingleFieldDependency implements BaseModel
         DependencyType|string $dependencyType
     ): self {
         $obj = clone $this;
-        $obj->dependencyType = $dependencyType instanceof DependencyType ? $dependencyType->value : $dependencyType;
+        $obj['dependencyType'] = $dependencyType;
 
         return $obj;
     }

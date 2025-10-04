@@ -33,21 +33,6 @@ final class RecordingSettingsService implements RecordingSettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): ExtensionsCallingRecordingSettingsResponse {
-        $params = [];
-
-        return $this->getURLFormatRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function getURLFormatRaw(
-        int $appID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): ExtensionsCallingRecordingSettingsResponse {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',

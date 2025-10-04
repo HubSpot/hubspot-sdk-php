@@ -6,7 +6,9 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type marketing_emails_collection_response_with_total_version_public_email = array{
@@ -14,17 +16,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   total: int,
  *   paging?: MarketingEmailsPaging,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class MarketingEmailsCollectionResponseWithTotalVersionPublicEmail implements BaseModel
+final class MarketingEmailsCollectionResponseWithTotalVersionPublicEmail implements BaseModel, ResponseConverter
 {
     /**
      * @use SdkModel<marketing_emails_collection_response_with_total_version_public_email>
      */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<MarketingEmailsVersionPublicEmail> $results */
     #[Api(list: MarketingEmailsVersionPublicEmail::class)]

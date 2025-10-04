@@ -7,7 +7,9 @@ namespace HubspotSDK\Cms\Hubdb;
 use HubspotSDK\Cms\Hubdb\CmsHubdbBatchResponseHubDBTableRowV3\Status;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type cms_hubdb_batch_response_hub_db_table_row_v3 = array{
@@ -18,15 +20,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   startedAt?: \DateTimeInterface,
  *   status?: value-of<Status>,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class CmsHubdbBatchResponseHubDBTableRowV3 implements BaseModel
+final class CmsHubdbBatchResponseHubDBTableRowV3 implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<cms_hubdb_batch_response_hub_db_table_row_v3> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $completedAt;
@@ -78,7 +78,7 @@ final class CmsHubdbBatchResponseHubDBTableRowV3 implements BaseModel
         null !== $requestedAt && $obj->requestedAt = $requestedAt;
         null !== $results && $obj->results = $results;
         null !== $startedAt && $obj->startedAt = $startedAt;
-        null !== $status && $obj->status = $status instanceof Status ? $status->value : $status;
+        null !== $status && $obj['status'] = $status;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class CmsHubdbBatchResponseHubDBTableRowV3 implements BaseModel
     public function withStatus(Status|string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         return $obj;
     }

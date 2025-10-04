@@ -43,20 +43,6 @@ final class SubscriptionsService implements SubscriptionsContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): SubscriptionsV3SubscriptionDefinitionsResponse {
-        $params = [];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3SubscriptionDefinitionsResponse {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
@@ -75,21 +61,6 @@ final class SubscriptionsService implements SubscriptionsContract
      */
     public function getEmailStatus(
         string $emailAddress,
-        ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3PublicSubscriptionStatusesResponse {
-        $params = [];
-
-        return $this->getEmailStatusRaw($emailAddress, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function getEmailStatusRaw(
-        string $emailAddress,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): SubscriptionsV3PublicSubscriptionStatusesResponse {
         // @phpstan-ignore-next-line;

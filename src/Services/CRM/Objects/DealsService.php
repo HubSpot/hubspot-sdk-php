@@ -133,7 +133,7 @@ final class DealsService implements DealsContract
             $params,
             $requestOptions
         );
-        $query_params = array_flip(['idProperty']);
+        $query_params = ['idProperty'];
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -216,21 +216,6 @@ final class DealsService implements DealsContract
      */
     public function delete(
         string $dealID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = [];
-
-        return $this->deleteRaw($dealID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $dealID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line;

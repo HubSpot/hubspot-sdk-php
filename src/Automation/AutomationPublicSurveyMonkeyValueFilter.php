@@ -95,7 +95,7 @@ final class AutomationPublicSurveyMonkeyValueFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
         $obj->operator = $operator;
         $obj->surveyID = $surveyID;
         $obj->surveyQuestion = $surveyQuestion;
@@ -113,7 +113,7 @@ final class AutomationPublicSurveyMonkeyValueFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }

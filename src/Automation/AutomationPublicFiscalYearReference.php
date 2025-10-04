@@ -91,7 +91,7 @@ final class AutomationPublicFiscalYearReference implements BaseModel
 
         $obj->day = $day;
         $obj->month = $month;
-        $obj->referenceType = $referenceType instanceof ReferenceType ? $referenceType->value : $referenceType;
+        $obj['referenceType'] = $referenceType;
 
         null !== $hour && $obj->hour = $hour;
         null !== $millisecond && $obj->millisecond = $millisecond;
@@ -123,7 +123,7 @@ final class AutomationPublicFiscalYearReference implements BaseModel
     public function withReferenceType(ReferenceType|string $referenceType): self
     {
         $obj = clone $this;
-        $obj->referenceType = $referenceType instanceof ReferenceType ? $referenceType->value : $referenceType;
+        $obj['referenceType'] = $referenceType;
 
         return $obj;
     }

@@ -7,21 +7,21 @@ namespace HubspotSDK\Automation\Actions;
 use HubspotSDK\Automation\Actions\AutomationActionsPublicActionFunctionIdentifier\FunctionType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type automation_actions_public_action_function_identifier = array{
  *   functionType: value-of<FunctionType>, id?: string
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class AutomationActionsPublicActionFunctionIdentifier implements BaseModel
+final class AutomationActionsPublicActionFunctionIdentifier implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<automation_actions_public_action_function_identifier> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var value-of<FunctionType> $functionType */
     #[Api(enum: FunctionType::class)]
@@ -62,7 +62,7 @@ final class AutomationActionsPublicActionFunctionIdentifier implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->functionType = $functionType instanceof FunctionType ? $functionType->value : $functionType;
+        $obj['functionType'] = $functionType;
 
         null !== $id && $obj->id = $id;
 
@@ -75,7 +75,7 @@ final class AutomationActionsPublicActionFunctionIdentifier implements BaseModel
     public function withFunctionType(FunctionType|string $functionType): self
     {
         $obj = clone $this;
-        $obj->functionType = $functionType instanceof FunctionType ? $functionType->value : $functionType;
+        $obj['functionType'] = $functionType;
 
         return $obj;
     }

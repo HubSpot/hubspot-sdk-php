@@ -6,7 +6,9 @@ namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Error;
 
 /**
@@ -16,15 +18,13 @@ use HubspotSDK\Error;
  *   rowLimitExceeded: bool,
  *   rowsImported: int,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class CmsHubdbImportResult implements BaseModel
+final class CmsHubdbImportResult implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<cms_hubdb_import_result> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public int $duplicateRows;

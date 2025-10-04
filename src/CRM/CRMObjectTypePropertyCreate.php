@@ -150,20 +150,20 @@ final class CRMObjectTypePropertyCreate implements BaseModel
         $obj->fieldType = $fieldType;
         $obj->label = $label;
         $obj->name = $name;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $displayOrder && $obj->displayOrder = $displayOrder;
         null !== $formField && $obj->formField = $formField;
         null !== $groupName && $obj->groupName = $groupName;
         null !== $hasUniqueValue && $obj->hasUniqueValue = $hasUniqueValue;
         null !== $hidden && $obj->hidden = $hidden;
-        null !== $numberDisplayHint && $obj->numberDisplayHint = $numberDisplayHint instanceof NumberDisplayHint ? $numberDisplayHint->value : $numberDisplayHint;
+        null !== $numberDisplayHint && $obj['numberDisplayHint'] = $numberDisplayHint;
         null !== $options && $obj->options = $options;
-        null !== $optionSortStrategy && $obj->optionSortStrategy = $optionSortStrategy instanceof OptionSortStrategy ? $optionSortStrategy->value : $optionSortStrategy;
+        null !== $optionSortStrategy && $obj['optionSortStrategy'] = $optionSortStrategy;
         null !== $referencedObjectType && $obj->referencedObjectType = $referencedObjectType;
         null !== $searchableInGlobalSearch && $obj->searchableInGlobalSearch = $searchableInGlobalSearch;
         null !== $showCurrencySymbol && $obj->showCurrencySymbol = $showCurrencySymbol;
-        null !== $textDisplayHint && $obj->textDisplayHint = $textDisplayHint instanceof TextDisplayHint ? $textDisplayHint->value : $textDisplayHint;
+        null !== $textDisplayHint && $obj['textDisplayHint'] = $textDisplayHint;
 
         return $obj;
     }
@@ -198,7 +198,7 @@ final class CRMObjectTypePropertyCreate implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -250,7 +250,7 @@ final class CRMObjectTypePropertyCreate implements BaseModel
         NumberDisplayHint|string $numberDisplayHint
     ): self {
         $obj = clone $this;
-        $obj->numberDisplayHint = $numberDisplayHint instanceof NumberDisplayHint ? $numberDisplayHint->value : $numberDisplayHint;
+        $obj['numberDisplayHint'] = $numberDisplayHint;
 
         return $obj;
     }
@@ -273,7 +273,7 @@ final class CRMObjectTypePropertyCreate implements BaseModel
         OptionSortStrategy|string $optionSortStrategy
     ): self {
         $obj = clone $this;
-        $obj->optionSortStrategy = $optionSortStrategy instanceof OptionSortStrategy ? $optionSortStrategy->value : $optionSortStrategy;
+        $obj['optionSortStrategy'] = $optionSortStrategy;
 
         return $obj;
     }
@@ -310,7 +310,7 @@ final class CRMObjectTypePropertyCreate implements BaseModel
         TextDisplayHint|string $textDisplayHint
     ): self {
         $obj = clone $this;
-        $obj->textDisplayHint = $textDisplayHint instanceof TextDisplayHint ? $textDisplayHint->value : $textDisplayHint;
+        $obj['textDisplayHint'] = $textDisplayHint;
 
         return $obj;
     }

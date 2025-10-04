@@ -74,7 +74,7 @@ final class FormListParams implements BaseModel
 
         null !== $after && $obj->after = $after;
         null !== $archived && $obj->archived = $archived;
-        null !== $formTypes && $obj->formTypes = array_map(fn ($v) => $v instanceof FormType ? $v->value : $v, $formTypes);
+        null !== $formTypes && $obj['formTypes'] = $formTypes;
         null !== $limit && $obj->limit = $limit;
 
         return $obj;
@@ -102,7 +102,7 @@ final class FormListParams implements BaseModel
     public function withFormTypes(array $formTypes): self
     {
         $obj = clone $this;
-        $obj->formTypes = array_map(fn ($v) => $v instanceof FormType ? $v->value : $v, $formTypes);
+        $obj['formTypes'] = $formTypes;
 
         return $obj;
     }

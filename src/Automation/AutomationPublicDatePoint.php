@@ -108,7 +108,7 @@ final class AutomationPublicDatePoint implements BaseModel
 
         $obj->day = $day;
         $obj->month = $month;
-        $obj->timeType = $timeType instanceof TimeType ? $timeType->value : $timeType;
+        $obj['timeType'] = $timeType;
         $obj->year = $year;
         $obj->zoneID = $zoneID;
 
@@ -143,7 +143,7 @@ final class AutomationPublicDatePoint implements BaseModel
     public function withTimeType(TimeType|string $timeType): self
     {
         $obj = clone $this;
-        $obj->timeType = $timeType instanceof TimeType ? $timeType->value : $timeType;
+        $obj['timeType'] = $timeType;
 
         return $obj;
     }

@@ -90,7 +90,7 @@ final class AutomationAPIStaticBranchAction implements BaseModel
         $obj->actionID = $actionID;
         $obj->inputValue = $inputValue;
         $obj->staticBranches = $staticBranches;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $defaultBranch && $obj->defaultBranch = $defaultBranch;
         null !== $defaultBranchName && $obj->defaultBranchName = $defaultBranchName;
@@ -132,7 +132,7 @@ final class AutomationAPIStaticBranchAction implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

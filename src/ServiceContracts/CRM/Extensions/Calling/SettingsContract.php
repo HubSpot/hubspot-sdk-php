@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Extensions\Calling;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Webhooks\WebhooksSettingsResponse;
 
@@ -25,8 +24,6 @@ interface SettingsContract
      * @param bool $usesCallingWindow
      * @param bool $usesRemote
      * @param int $width
-     *
-     * @return WebhooksSettingsResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -49,8 +46,6 @@ interface SettingsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return WebhooksSettingsResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createRaw(
@@ -72,8 +67,6 @@ interface SettingsContract
      * @param bool $usesRemote
      * @param int $width
      *
-     * @return WebhooksSettingsResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function update(
@@ -94,8 +87,6 @@ interface SettingsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return WebhooksSettingsResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -120,34 +111,8 @@ interface SettingsContract
      *
      * @throws APIException
      */
-    public function deleteRaw(
-        int $appID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @return WebhooksSettingsResponse<HasRawResponse>
-     *
-     * @throws APIException
-     */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
-    ): WebhooksSettingsResponse;
-
-    /**
-     * @api
-     *
-     * @return WebhooksSettingsResponse<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        int $appID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): WebhooksSettingsResponse;
 }

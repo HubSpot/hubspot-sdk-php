@@ -24,7 +24,6 @@ use HubspotSDK\Cms\Blogs\Tags\TagUpdateBatchParams;
 use HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams;
 use HubspotSDK\Cms\Blogs\Tags\TagUpdateParams;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\TagsContract;
 
@@ -49,8 +48,6 @@ final class TagsService implements TagsContract
      * @param string $name
      * @param int $translatedFromID
      * @param \DateTimeInterface $updated
-     *
-     * @return BlogsTagsTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -81,8 +78,6 @@ final class TagsService implements TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -119,8 +114,6 @@ final class TagsService implements TagsContract
      * @param \DateTimeInterface $updated
      * @param bool $archived
      *
-     * @return BlogsTagsTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function update(
@@ -154,8 +147,6 @@ final class TagsService implements TagsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return BlogsTagsTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateRaw(
@@ -167,7 +158,7 @@ final class TagsService implements TagsContract
             $params,
             $requestOptions
         );
-        $query_params = array_flip(['archived']);
+        $query_params = ['archived'];
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -196,8 +187,6 @@ final class TagsService implements TagsContract
      * @param \DateTimeInterface $updatedAfter
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
-     *
-     * @return BlogsTagsCollectionResponseWithTotalTagForwardPaging<HasRawResponse>
      *
      * @throws APIException
      */
@@ -236,8 +225,6 @@ final class TagsService implements TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsCollectionResponseWithTotalTagForwardPaging<HasRawResponse>
      *
      * @throws APIException
      */
@@ -409,8 +396,6 @@ final class TagsService implements TagsContract
      *
      * @param list<BlogsTagsTag> $inputs
      *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createBatch(
@@ -426,8 +411,6 @@ final class TagsService implements TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -460,8 +443,6 @@ final class TagsService implements TagsContract
      * @param string $language
      * @param string $primaryLanguage
      *
-     * @return BlogsTagsTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createLangVariation(
@@ -485,8 +466,6 @@ final class TagsService implements TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -561,8 +540,6 @@ final class TagsService implements TagsContract
      * @param bool $archived
      * @param string $property
      *
-     * @return BlogsTagsTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function read(
@@ -580,8 +557,6 @@ final class TagsService implements TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -610,8 +585,6 @@ final class TagsService implements TagsContract
      * @param list<string> $inputs
      * @param bool $archived
      *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function readBatch(
@@ -629,8 +602,6 @@ final class TagsService implements TagsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function readBatchRaw(
@@ -641,7 +612,7 @@ final class TagsService implements TagsContract
             $params,
             $requestOptions
         );
-        $query_params = array_flip(['archived']);
+        $query_params = ['archived'];
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -706,8 +677,6 @@ final class TagsService implements TagsContract
      * @param list<mixed> $inputs
      * @param bool $archived
      *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateBatch(
@@ -725,8 +694,6 @@ final class TagsService implements TagsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateBatchRaw(
@@ -737,7 +704,7 @@ final class TagsService implements TagsContract
             $params,
             $requestOptions
         );
-        $query_params = array_flip(['archived']);
+        $query_params = ['archived'];
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

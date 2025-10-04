@@ -6,21 +6,21 @@ namespace HubspotSDK\CRM\Associations\V4;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type associations_v4_report_creation_response = array{
  *   enqueueTime: AssociationsV4DateTime, userEmail: string, userID: int
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class AssociationsV4ReportCreationResponse implements BaseModel
+final class AssociationsV4ReportCreationResponse implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<associations_v4_report_creation_response> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public AssociationsV4DateTime $enqueueTime;

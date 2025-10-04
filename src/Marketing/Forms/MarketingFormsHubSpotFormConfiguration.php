@@ -141,7 +141,7 @@ final class MarketingFormsHubSpotFormConfiguration implements BaseModel
         $obj->cloneable = $cloneable;
         $obj->createNewContactForNewEmail = $createNewContactForNewEmail;
         $obj->editable = $editable;
-        $obj->language = $language instanceof Language ? $language->value : $language;
+        $obj['language'] = $language;
         $obj->notifyContactOwner = $notifyContactOwner;
         $obj->notifyRecipients = $notifyRecipients;
         $obj->postSubmitAction = $postSubmitAction;
@@ -201,7 +201,7 @@ final class MarketingFormsHubSpotFormConfiguration implements BaseModel
     public function withLanguage(Language|string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language instanceof Language ? $language->value : $language;
+        $obj['language'] = $language;
 
         return $obj;
     }

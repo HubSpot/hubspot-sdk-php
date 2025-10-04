@@ -8,7 +8,6 @@ use HubspotSDK\Auth\OAuth\AuthOAuthRefreshTokenInfoResponse;
 use HubspotSDK\Auth\OAuth\AuthOAuthTokenResponseIf;
 use HubspotSDK\Auth\OAuth\OAuthCreateParams\GrantType;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -24,8 +23,6 @@ interface OAuthContract
      * @param GrantType|value-of<GrantType> $grantType
      * @param string $redirectUri
      * @param string $refreshToken
-     *
-     * @return AuthOAuthTokenResponseIf<HasRawResponse>
      *
      * @throws APIException
      */
@@ -43,8 +40,6 @@ interface OAuthContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return AuthOAuthTokenResponseIf<HasRawResponse>
      *
      * @throws APIException
      */
@@ -68,34 +63,8 @@ interface OAuthContract
      *
      * @throws APIException
      */
-    public function deleteRaw(
-        string $token,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @return AuthOAuthRefreshTokenInfoResponse<HasRawResponse>
-     *
-     * @throws APIException
-     */
     public function get(
         string $token,
-        ?RequestOptions $requestOptions = null
-    ): AuthOAuthRefreshTokenInfoResponse;
-
-    /**
-     * @api
-     *
-     * @return AuthOAuthRefreshTokenInfoResponse<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $token,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): AuthOAuthRefreshTokenInfoResponse;
 }

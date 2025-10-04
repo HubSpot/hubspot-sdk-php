@@ -83,7 +83,7 @@ final class AutomationAPIDatasetFieldPropertyFilterDataSource implements BaseMod
         $obj->datasetFieldName = $datasetFieldName;
         $obj->name = $name;
         $obj->propertyName = $propertyName;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $sortBy && $obj->sortBy = $sortBy;
 
@@ -120,7 +120,7 @@ final class AutomationAPIDatasetFieldPropertyFilterDataSource implements BaseMod
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

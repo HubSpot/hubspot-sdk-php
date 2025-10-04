@@ -80,9 +80,9 @@ final class AutomationAPITimeDelay implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->daysOfWeek = array_map(fn ($v) => $v instanceof DaysOfWeek ? $v->value : $v, $daysOfWeek);
+        $obj['daysOfWeek'] = $daysOfWeek;
         $obj->delta = $delta;
-        $obj->timeUnit = $timeUnit instanceof TimeUnit ? $timeUnit->value : $timeUnit;
+        $obj['timeUnit'] = $timeUnit;
 
         null !== $timeOfDay && $obj->timeOfDay = $timeOfDay;
         null !== $timeZoneStrategy && $obj->timeZoneStrategy = $timeZoneStrategy;
@@ -96,7 +96,7 @@ final class AutomationAPITimeDelay implements BaseModel
     public function withDaysOfWeek(array $daysOfWeek): self
     {
         $obj = clone $this;
-        $obj->daysOfWeek = array_map(fn ($v) => $v instanceof DaysOfWeek ? $v->value : $v, $daysOfWeek);
+        $obj['daysOfWeek'] = $daysOfWeek;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class AutomationAPITimeDelay implements BaseModel
     public function withTimeUnit(TimeUnit|string $timeUnit): self
     {
         $obj = clone $this;
-        $obj->timeUnit = $timeUnit instanceof TimeUnit ? $timeUnit->value : $timeUnit;
+        $obj['timeUnit'] = $timeUnit;
 
         return $obj;
     }

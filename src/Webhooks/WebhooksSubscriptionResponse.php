@@ -6,7 +6,9 @@ namespace HubspotSDK\Webhooks;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Webhooks\WebhooksSubscriptionResponse\EventType;
 
 /**
@@ -19,15 +21,13 @@ use HubspotSDK\Webhooks\WebhooksSubscriptionResponse\EventType;
  *   propertyName?: string,
  *   updatedAt?: \DateTimeInterface,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class WebhooksSubscriptionResponse implements BaseModel
+final class WebhooksSubscriptionResponse implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<webhooks_subscription_response> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;
@@ -97,7 +97,7 @@ final class WebhooksSubscriptionResponse implements BaseModel
         $obj->id = $id;
         $obj->active = $active;
         $obj->createdAt = $createdAt;
-        $obj->eventType = $eventType instanceof EventType ? $eventType->value : $eventType;
+        $obj['eventType'] = $eventType;
 
         null !== $objectTypeID && $obj->objectTypeID = $objectTypeID;
         null !== $propertyName && $obj->propertyName = $propertyName;
@@ -136,7 +136,7 @@ final class WebhooksSubscriptionResponse implements BaseModel
     public function withEventType(EventType|string $eventType): self
     {
         $obj = clone $this;
-        $obj->eventType = $eventType instanceof EventType ? $eventType->value : $eventType;
+        $obj['eventType'] = $eventType;
 
         return $obj;
     }

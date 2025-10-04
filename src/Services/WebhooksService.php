@@ -6,7 +6,6 @@ namespace HubspotSDK\Services;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\WebhooksContract;
 use HubspotSDK\Webhooks\WebhookConfigureParams;
@@ -42,8 +41,6 @@ final class WebhooksService implements WebhooksContract
      * @param string $objectTypeID
      * @param string $propertyName
      *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function create(
@@ -68,8 +65,6 @@ final class WebhooksService implements WebhooksContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -101,8 +96,6 @@ final class WebhooksService implements WebhooksContract
      * @param int $appID
      * @param bool $active
      *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function update(
@@ -120,8 +113,6 @@ final class WebhooksService implements WebhooksContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -141,7 +132,7 @@ final class WebhooksService implements WebhooksContract
         return $this->client->request(
             method: 'patch',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
-            body: (object) array_diff_key($parsed, array_flip(['appID'])),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: WebhooksSubscriptionResponse::class,
         );
@@ -152,29 +143,10 @@ final class WebhooksService implements WebhooksContract
      *
      * Read event subscriptions
      *
-     * @return WebhooksSubscriptionListResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
-    ): WebhooksSubscriptionListResponse {
-        $params = [];
-
-        return $this->listRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @return WebhooksSubscriptionListResponse<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        int $appID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): WebhooksSubscriptionListResponse {
         // @phpstan-ignore-next-line;
@@ -244,21 +216,6 @@ final class WebhooksService implements WebhooksContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = [];
-
-        return $this->clearRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function clearRaw(
-        int $appID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'delete',
@@ -275,8 +232,6 @@ final class WebhooksService implements WebhooksContract
      *
      * @param string $targetURL
      * @param WebhooksThrottlingSettings $throttling
-     *
-     * @return WebhooksSettingsResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -295,8 +250,6 @@ final class WebhooksService implements WebhooksContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return WebhooksSettingsResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -327,8 +280,6 @@ final class WebhooksService implements WebhooksContract
      *
      * @param int $appID
      *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function read(
@@ -345,8 +296,6 @@ final class WebhooksService implements WebhooksContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -378,8 +327,6 @@ final class WebhooksService implements WebhooksContract
      *
      * @param list<WebhooksSubscriptionBatchUpdateRequest> $inputs
      *
-     * @return WebhooksBatchResponseSubscriptionResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateBatch(
@@ -396,8 +343,6 @@ final class WebhooksService implements WebhooksContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return WebhooksBatchResponseSubscriptionResponse<HasRawResponse>
      *
      * @throws APIException
      */

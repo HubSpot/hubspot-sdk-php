@@ -105,7 +105,7 @@ final class AutomationBatchResponseAPIFlowWithErrors implements BaseModel
         $obj->completedAt = $completedAt;
         $obj->results = $results;
         $obj->startedAt = $startedAt;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         null !== $errors && $obj->errors = $errors;
         null !== $links && $obj->links = $links;
@@ -148,7 +148,7 @@ final class AutomationBatchResponseAPIFlowWithErrors implements BaseModel
     public function withStatus(Status|string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         return $obj;
     }

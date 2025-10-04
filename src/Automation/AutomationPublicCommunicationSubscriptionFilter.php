@@ -96,7 +96,7 @@ final class AutomationPublicCommunicationSubscriptionFilter implements BaseModel
 
         $obj->acceptedOptStates = $acceptedOptStates;
         $obj->channel = $channel;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
         $obj->subscriptionIDs = $subscriptionIDs;
         $obj->subscriptionType = $subscriptionType;
 
@@ -130,7 +130,7 @@ final class AutomationPublicCommunicationSubscriptionFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }

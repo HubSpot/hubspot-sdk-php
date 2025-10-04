@@ -78,10 +78,10 @@ final class AutomationAPIAuthKeyWebhookAuthSettings implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->location = $location instanceof Location ? $location->value : $location;
+        $obj['location'] = $location;
         $obj->name = $name;
         $obj->secretName = $secretName;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class AutomationAPIAuthKeyWebhookAuthSettings implements BaseModel
     public function withLocation(Location|string $location): self
     {
         $obj = clone $this;
-        $obj->location = $location instanceof Location ? $location->value : $location;
+        $obj['location'] = $location;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class AutomationAPIAuthKeyWebhookAuthSettings implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

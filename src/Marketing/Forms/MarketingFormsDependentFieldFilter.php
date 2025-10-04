@@ -83,7 +83,7 @@ final class MarketingFormsDependentFieldFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->operator = $operator instanceof Operator ? $operator->value : $operator;
+        $obj['operator'] = $operator;
         $obj->rangeEnd = $rangeEnd;
         $obj->rangeStart = $rangeStart;
         $obj->value = $value;
@@ -98,7 +98,7 @@ final class MarketingFormsDependentFieldFilter implements BaseModel
     public function withOperator(Operator|string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator instanceof Operator ? $operator->value : $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }

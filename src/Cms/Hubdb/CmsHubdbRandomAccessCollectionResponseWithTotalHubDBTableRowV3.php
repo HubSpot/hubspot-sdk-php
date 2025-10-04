@@ -80,7 +80,7 @@ final class CmsHubdbRandomAccessCollectionResponseWithTotalHubDBTableRowV3 imple
 
         $obj->results = $results;
         $obj->total = $total;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $paging && $obj->paging = $paging;
 
@@ -112,7 +112,7 @@ final class CmsHubdbRandomAccessCollectionResponseWithTotalHubDBTableRowV3 imple
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

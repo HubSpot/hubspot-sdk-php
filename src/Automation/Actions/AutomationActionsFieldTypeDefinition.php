@@ -117,14 +117,14 @@ final class AutomationActionsFieldTypeDefinition implements BaseModel
         $obj->externalOptions = $externalOptions;
         $obj->name = $name;
         $obj->options = $options;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $externalOptionsReferenceType && $obj->externalOptionsReferenceType = $externalOptionsReferenceType;
-        null !== $fieldType && $obj->fieldType = $fieldType instanceof FieldType ? $fieldType->value : $fieldType;
+        null !== $fieldType && $obj['fieldType'] = $fieldType;
         null !== $helpText && $obj->helpText = $helpText;
         null !== $label && $obj->label = $label;
         null !== $optionsURL && $obj->optionsURL = $optionsURL;
-        null !== $referencedObjectType && $obj->referencedObjectType = $referencedObjectType instanceof ReferencedObjectType ? $referencedObjectType->value : $referencedObjectType;
+        null !== $referencedObjectType && $obj['referencedObjectType'] = $referencedObjectType;
 
         return $obj;
     }
@@ -162,7 +162,7 @@ final class AutomationActionsFieldTypeDefinition implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -182,7 +182,7 @@ final class AutomationActionsFieldTypeDefinition implements BaseModel
     public function withFieldType(FieldType|string $fieldType): self
     {
         $obj = clone $this;
-        $obj->fieldType = $fieldType instanceof FieldType ? $fieldType->value : $fieldType;
+        $obj['fieldType'] = $fieldType;
 
         return $obj;
     }
@@ -218,7 +218,7 @@ final class AutomationActionsFieldTypeDefinition implements BaseModel
         ReferencedObjectType|string $referencedObjectType
     ): self {
         $obj = clone $this;
-        $obj->referencedObjectType = $referencedObjectType instanceof ReferencedObjectType ? $referencedObjectType->value : $referencedObjectType;
+        $obj['referencedObjectType'] = $referencedObjectType;
 
         return $obj;
     }

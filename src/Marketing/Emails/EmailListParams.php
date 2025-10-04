@@ -153,7 +153,7 @@ final class EmailListParams implements BaseModel
         null !== $limit && $obj->limit = $limit;
         null !== $marketingCampaignNames && $obj->marketingCampaignNames = $marketingCampaignNames;
         null !== $sort && $obj->sort = $sort;
-        null !== $type && $obj->type = $type instanceof Type ? $type->value : $type;
+        null !== $type && $obj['type'] = $type;
         null !== $updatedAfter && $obj->updatedAfter = $updatedAfter;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
         null !== $updatedBefore && $obj->updatedBefore = $updatedBefore;
@@ -271,7 +271,7 @@ final class EmailListParams implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

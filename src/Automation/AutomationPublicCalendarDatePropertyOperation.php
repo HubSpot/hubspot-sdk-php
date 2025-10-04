@@ -97,11 +97,11 @@ final class AutomationPublicCalendarDatePropertyOperation implements BaseModel
         $obj = new self;
 
         $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
         $obj->operator = $operator;
         $obj->timeUnit = $timeUnit;
 
-        null !== $fiscalYearStart && $obj->fiscalYearStart = $fiscalYearStart instanceof FiscalYearStart ? $fiscalYearStart->value : $fiscalYearStart;
+        null !== $fiscalYearStart && $obj['fiscalYearStart'] = $fiscalYearStart;
         null !== $timeUnitCount && $obj->timeUnitCount = $timeUnitCount;
         null !== $useFiscalYear && $obj->useFiscalYear = $useFiscalYear;
 
@@ -123,7 +123,7 @@ final class AutomationPublicCalendarDatePropertyOperation implements BaseModel
     public function withOperationType(OperationType|string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }
@@ -151,7 +151,7 @@ final class AutomationPublicCalendarDatePropertyOperation implements BaseModel
         FiscalYearStart|string $fiscalYearStart
     ): self {
         $obj = clone $this;
-        $obj->fiscalYearStart = $fiscalYearStart instanceof FiscalYearStart ? $fiscalYearStart->value : $fiscalYearStart;
+        $obj['fiscalYearStart'] = $fiscalYearStart;
 
         return $obj;
     }

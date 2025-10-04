@@ -6,24 +6,24 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type marketing_emails_collection_response_with_total_public_email_forward_paging = array{
  *   results: list<MarketingEmailsPublicEmail>, total: int, paging?: ForwardPaging
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging implements BaseModel
+final class MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging implements BaseModel, ResponseConverter
 {
     /**
      * @use SdkModel<marketing_emails_collection_response_with_total_public_email_forward_paging>
      */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<MarketingEmailsPublicEmail> $results */
     #[Api(list: MarketingEmailsPublicEmail::class)]

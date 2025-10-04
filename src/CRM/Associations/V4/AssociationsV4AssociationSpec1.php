@@ -62,7 +62,7 @@ final class AssociationsV4AssociationSpec1 implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->associationCategory = $associationCategory instanceof AssociationCategory ? $associationCategory->value : $associationCategory;
+        $obj['associationCategory'] = $associationCategory;
         $obj->associationTypeID = $associationTypeID;
 
         return $obj;
@@ -75,7 +75,7 @@ final class AssociationsV4AssociationSpec1 implements BaseModel
         AssociationCategory|string $associationCategory
     ): self {
         $obj = clone $this;
-        $obj->associationCategory = $associationCategory instanceof AssociationCategory ? $associationCategory->value : $associationCategory;
+        $obj['associationCategory'] = $associationCategory;
 
         return $obj;
     }

@@ -9,7 +9,6 @@ use HubspotSDK\Cms\Blogs\Tags\BlogsTagsCollectionResponseWithTotalTagForwardPagi
 use HubspotSDK\Cms\Blogs\Tags\BlogsTagsTag;
 use HubspotSDK\Cms\Blogs\Tags\TagCreateParams\Language;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -26,8 +25,6 @@ interface TagsContract
      * @param string $name
      * @param int $translatedFromID
      * @param \DateTimeInterface $updated
-     *
-     * @return BlogsTagsTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -46,8 +43,6 @@ interface TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -68,8 +63,6 @@ interface TagsContract
      * @param \DateTimeInterface $updated
      * @param bool $archived
      *
-     * @return BlogsTagsTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function update(
@@ -89,8 +82,6 @@ interface TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -115,8 +106,6 @@ interface TagsContract
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
      *
-     * @return BlogsTagsCollectionResponseWithTotalTagForwardPaging<HasRawResponse>
-     *
      * @throws APIException
      */
     public function list(
@@ -138,8 +127,6 @@ interface TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsCollectionResponseWithTotalTagForwardPaging<HasRawResponse>
      *
      * @throws APIException
      */
@@ -233,8 +220,6 @@ interface TagsContract
      *
      * @param list<BlogsTagsTag> $inputs
      *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createBatch(
@@ -246,8 +231,6 @@ interface TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -264,8 +247,6 @@ interface TagsContract
      * @param string $language
      * @param string $primaryLanguage
      *
-     * @return BlogsTagsTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createLangVariation(
@@ -280,8 +261,6 @@ interface TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -320,8 +299,6 @@ interface TagsContract
      * @param bool $archived
      * @param string $property
      *
-     * @return BlogsTagsTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function read(
@@ -335,8 +312,6 @@ interface TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -352,8 +327,6 @@ interface TagsContract
      * @param list<string> $inputs
      * @param bool $archived
      *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function readBatch(
@@ -366,8 +339,6 @@ interface TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
      *
      * @throws APIException
      */
@@ -406,8 +377,6 @@ interface TagsContract
      * @param list<mixed> $inputs
      * @param bool $archived
      *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateBatch(
@@ -420,8 +389,6 @@ interface TagsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return BlogsTagsBatchResponseTag<HasRawResponse>
      *
      * @throws APIException
      */

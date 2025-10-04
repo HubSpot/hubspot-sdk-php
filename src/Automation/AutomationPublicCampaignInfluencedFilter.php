@@ -61,7 +61,7 @@ final class AutomationPublicCampaignInfluencedFilter implements BaseModel
         $obj = new self;
 
         $obj->campaignID = $campaignID;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class AutomationPublicCampaignInfluencedFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }

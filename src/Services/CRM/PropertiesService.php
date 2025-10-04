@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\CRM;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\CRM\CRMProperty;
 use HubspotSDK\CRM\Properties\CRMPropertiesBatchResponseProperty;
 use HubspotSDK\CRM\Properties\CRMPropertiesCollectionResponsePropertyGroup;
@@ -42,8 +41,6 @@ final class PropertiesService implements PropertiesContract
      * @param string $name
      * @param int $displayOrder
      *
-     * @return CRMPropertiesCreatedResponsePropertyGroup<HasRawResponse>
-     *
      * @throws APIException
      */
     public function create(
@@ -64,8 +61,6 @@ final class PropertiesService implements PropertiesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPropertiesCreatedResponsePropertyGroup<HasRawResponse>
      *
      * @throws APIException
      */
@@ -160,7 +155,7 @@ final class PropertiesService implements PropertiesContract
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/properties/%1$s/%2$s', $objectType, $propertyName],
-            body: (object) array_diff_key($parsed, array_flip(['objectType'])),
+            body: (object) array_diff_key($parsed, ['objectType']),
             options: $options,
             convert: CRMProperty::class,
         );
@@ -171,29 +166,10 @@ final class PropertiesService implements PropertiesContract
      *
      * Read all property groups
      *
-     * @return CRMPropertiesCollectionResponsePropertyGroup<HasRawResponse>
-     *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        ?RequestOptions $requestOptions = null
-    ): CRMPropertiesCollectionResponsePropertyGroup {
-        $params = [];
-
-        return $this->listRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @return CRMPropertiesCollectionResponsePropertyGroup<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $objectType,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): CRMPropertiesCollectionResponsePropertyGroup {
         // @phpstan-ignore-next-line;
@@ -317,8 +293,6 @@ final class PropertiesService implements PropertiesContract
      * @param list<CRMPropertiesPropertyName> $inputs
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      *
-     * @return CRMPropertiesBatchResponseProperty<HasRawResponse>
-     *
      * @throws APIException
      */
     public function read(
@@ -341,8 +315,6 @@ final class PropertiesService implements PropertiesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPropertiesBatchResponseProperty<HasRawResponse>
      *
      * @throws APIException
      */

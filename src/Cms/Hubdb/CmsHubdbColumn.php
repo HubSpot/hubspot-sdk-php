@@ -155,7 +155,7 @@ final class CmsHubdbColumn implements BaseModel
 
         $obj->label = $label;
         $obj->name = $name;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $id && $obj->id = $id;
         null !== $createdAt && $obj->createdAt = $createdAt;
@@ -199,7 +199,7 @@ final class CmsHubdbColumn implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

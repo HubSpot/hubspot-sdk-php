@@ -125,13 +125,13 @@ final class PropertyUpdateParams implements BaseModel
 
         null !== $calculationFormula && $obj->calculationFormula = $calculationFormula;
         null !== $displayOrder && $obj->displayOrder = $displayOrder;
-        null !== $fieldType && $obj->fieldType = $fieldType instanceof FieldType ? $fieldType->value : $fieldType;
+        null !== $fieldType && $obj['fieldType'] = $fieldType;
         null !== $formField && $obj->formField = $formField;
         null !== $groupName && $obj->groupName = $groupName;
         null !== $hidden && $obj->hidden = $hidden;
         null !== $label && $obj->label = $label;
         null !== $options && $obj->options = $options;
-        null !== $type && $obj->type = $type instanceof Type ? $type->value : $type;
+        null !== $type && $obj['type'] = $type;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withFieldType(FieldType|string $fieldType): self
     {
         $obj = clone $this;
-        $obj->fieldType = $fieldType instanceof FieldType ? $fieldType->value : $fieldType;
+        $obj['fieldType'] = $fieldType;
 
         return $obj;
     }
@@ -220,7 +220,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

@@ -7,7 +7,9 @@ namespace HubspotSDK\Automation\Actions;
 use HubspotSDK\Automation\Actions\AutomationActionsPublicActionDefinition\InputFieldDependency;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type automation_actions_public_action_definition = array{
@@ -25,15 +27,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   objectRequestOptions?: AutomationActionsPublicObjectRequestOptions,
  *   outputFields?: list<AutomationActionsOutputFieldDefinition>,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class AutomationActionsPublicActionDefinition implements BaseModel
+final class AutomationActionsPublicActionDefinition implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<automation_actions_public_action_definition> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;

@@ -91,7 +91,7 @@ final class AutomationPublicPropertyAssociationInListFilter implements BaseModel
         $obj = new self;
 
         $obj->coalescingRefineBy = $coalescingRefineBy;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
         $obj->listID = $listID;
         $obj->operator = $operator;
         $obj->propertyWithObjectID = $propertyWithObjectID;
@@ -116,7 +116,7 @@ final class AutomationPublicPropertyAssociationInListFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }

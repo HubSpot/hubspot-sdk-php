@@ -6,7 +6,9 @@ namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type cms_hubdb_hub_db_table_v3 = array{
@@ -31,15 +33,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   updatedBy?: CmsHubdbSimpleUser,
  *   useForPages?: bool,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class CmsHubdbHubDBTableV3 implements BaseModel
+final class CmsHubdbHubDBTableV3 implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<cms_hubdb_hub_db_table_v3> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public \DateTimeInterface $deletedAt;

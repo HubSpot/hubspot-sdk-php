@@ -72,9 +72,9 @@ final class AutomationAPIWeeklyEnrollmentSchedule implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->daysOfWeek = array_map(fn ($v) => $v instanceof DaysOfWeek ? $v->value : $v, $daysOfWeek);
+        $obj['daysOfWeek'] = $daysOfWeek;
         $obj->timeOfDay = $timeOfDay;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class AutomationAPIWeeklyEnrollmentSchedule implements BaseModel
     public function withDaysOfWeek(array $daysOfWeek): self
     {
         $obj = clone $this;
-        $obj->daysOfWeek = array_map(fn ($v) => $v instanceof DaysOfWeek ? $v->value : $v, $daysOfWeek);
+        $obj['daysOfWeek'] = $daysOfWeek;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class AutomationAPIWeeklyEnrollmentSchedule implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

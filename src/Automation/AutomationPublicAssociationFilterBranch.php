@@ -120,7 +120,7 @@ final class AutomationPublicAssociationFilterBranch implements BaseModel
         $obj->associationTypeID = $associationTypeID;
         $obj->filterBranches = $filterBranches;
         $obj->filterBranchOperator = $filterBranchOperator;
-        $obj->filterBranchType = $filterBranchType instanceof FilterBranchType ? $filterBranchType->value : $filterBranchType;
+        $obj['filterBranchType'] = $filterBranchType;
         $obj->filters = $filters;
         $obj->objectTypeID = $objectTypeID;
         $obj->operator = $operator;
@@ -170,7 +170,7 @@ final class AutomationPublicAssociationFilterBranch implements BaseModel
         FilterBranchType|string $filterBranchType
     ): self {
         $obj = clone $this;
-        $obj->filterBranchType = $filterBranchType instanceof FilterBranchType ? $filterBranchType->value : $filterBranchType;
+        $obj['filterBranchType'] = $filterBranchType;
 
         return $obj;
     }

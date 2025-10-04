@@ -66,7 +66,7 @@ final class FileGetSignedURLParams implements BaseModel
         $obj = new self;
 
         null !== $expirationSeconds && $obj->expirationSeconds = $expirationSeconds;
-        null !== $size && $obj->size = $size instanceof Size ? $size->value : $size;
+        null !== $size && $obj['size'] = $size;
         null !== $upscale && $obj->upscale = $upscale;
 
         return $obj;
@@ -86,7 +86,7 @@ final class FileGetSignedURLParams implements BaseModel
     public function withSize(Size|string $size): self
     {
         $obj = clone $this;
-        $obj->size = $size instanceof Size ? $size->value : $size;
+        $obj['size'] = $size;
 
         return $obj;
     }

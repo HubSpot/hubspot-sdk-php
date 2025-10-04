@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\Marketing\Forms\FormReplaceParams\FormType;
 use HubspotSDK\Marketing\Forms\MarketingFormsCollectionResponseFormDefinitionBaseForwardPaging;
 use HubspotSDK\Marketing\Forms\MarketingFormsFieldGroup;
@@ -27,16 +26,6 @@ interface FormsContract
      * @throws APIException
      */
     public function create(
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): mixed;
 
@@ -84,10 +73,6 @@ interface FormsContract
      * @param list<HubspotSDK\Marketing\Forms\FormListParams\FormType|value-of<HubspotSDK\Marketing\Forms\FormListParams\FormType>> $formTypes
      * @param int $limit
      *
-     * @return MarketingFormsCollectionResponseFormDefinitionBaseForwardPaging<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function list(
@@ -103,10 +88,6 @@ interface FormsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return MarketingFormsCollectionResponseFormDefinitionBaseForwardPaging<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function listRaw(
@@ -121,17 +102,6 @@ interface FormsContract
      */
     public function delete(
         string $formID,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $formID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): mixed;
 
@@ -170,10 +140,10 @@ interface FormsContract
      * @param \DateTimeInterface $createdAt
      * @param MarketingFormsFormDisplayOptions $displayOptions
      * @param list<MarketingFormsFieldGroup> $fieldGroups
-     * @param FormType|value-of<FormType> $formType
      * @param MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
      * @param string $name
      * @param \DateTimeInterface $updatedAt
+     * @param FormType|value-of<FormType> $formType
      * @param \DateTimeInterface $archivedAt
      *
      * @throws APIException
@@ -186,10 +156,10 @@ interface FormsContract
         $createdAt,
         $displayOptions,
         $fieldGroups,
-        $formType = 'hubspot',
         $legalConsentOptions,
         $name,
         $updatedAt,
+        $formType = 'hubspot',
         $archivedAt = omit,
         ?RequestOptions $requestOptions = null,
     ): mixed;

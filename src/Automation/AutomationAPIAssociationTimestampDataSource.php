@@ -88,11 +88,11 @@ final class AutomationAPIAssociationTimestampDataSource implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->associationCategory = $associationCategory instanceof AssociationCategory ? $associationCategory->value : $associationCategory;
+        $obj['associationCategory'] = $associationCategory;
         $obj->associationTypeID = $associationTypeID;
         $obj->name = $name;
         $obj->objectTypeID = $objectTypeID;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class AutomationAPIAssociationTimestampDataSource implements BaseModel
         AssociationCategory|string $associationCategory
     ): self {
         $obj = clone $this;
-        $obj->associationCategory = $associationCategory instanceof AssociationCategory ? $associationCategory->value : $associationCategory;
+        $obj['associationCategory'] = $associationCategory;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class AutomationAPIAssociationTimestampDataSource implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

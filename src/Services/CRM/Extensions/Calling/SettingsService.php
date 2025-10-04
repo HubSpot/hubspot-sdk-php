@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\CRM\Extensions\Calling;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\CRM\Extensions\Calling\Settings\SettingCreateParams;
 use HubspotSDK\CRM\Extensions\Calling\Settings\SettingUpdateParams;
 use HubspotSDK\RequestOptions;
@@ -36,8 +35,6 @@ final class SettingsService implements SettingsContract
      * @param bool $usesCallingWindow
      * @param bool $usesRemote
      * @param int $width
-     *
-     * @return WebhooksSettingsResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -73,8 +70,6 @@ final class SettingsService implements SettingsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return WebhooksSettingsResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -113,8 +108,6 @@ final class SettingsService implements SettingsContract
      * @param bool $usesRemote
      * @param int $width
      *
-     * @return WebhooksSettingsResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function update(
@@ -150,8 +143,6 @@ final class SettingsService implements SettingsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return WebhooksSettingsResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateRaw(
@@ -185,21 +176,6 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = [];
-
-        return $this->deleteRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        int $appID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'delete',
@@ -214,29 +190,10 @@ final class SettingsService implements SettingsContract
      *
      * Retrieve settings
      *
-     * @return WebhooksSettingsResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
-    ): WebhooksSettingsResponse {
-        $params = [];
-
-        return $this->getRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @return WebhooksSettingsResponse<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        int $appID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): WebhooksSettingsResponse {
         // @phpstan-ignore-next-line;

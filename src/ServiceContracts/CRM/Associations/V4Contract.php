@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Associations;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4BatchResponseVoid;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4PublicAssociationMultiPost;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4ReportCreationResponse;
@@ -119,8 +118,6 @@ interface V4Contract
      * @param string $fromObjectType
      * @param list<AssociationsV4PublicAssociationMultiPost> $inputs
      *
-     * @return AssociationsV4BatchResponseVoid<HasRawResponse>
-     *
      * @throws APIException
      */
     public function archiveLabels(
@@ -134,8 +131,6 @@ interface V4Contract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return AssociationsV4BatchResponseVoid<HasRawResponse>
      *
      * @throws APIException
      */
@@ -178,25 +173,10 @@ interface V4Contract
     /**
      * @api
      *
-     * @return AssociationsV4ReportCreationResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function request(
         int $userID,
-        ?RequestOptions $requestOptions = null
-    ): AssociationsV4ReportCreationResponse;
-
-    /**
-     * @api
-     *
-     * @return AssociationsV4ReportCreationResponse<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function requestRaw(
-        int $userID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): AssociationsV4ReportCreationResponse;
 }

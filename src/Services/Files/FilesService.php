@@ -113,21 +113,6 @@ final class FilesService implements FilesContract
         string $fileID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = [];
-
-        return $this->deleteRaw($fileID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $fileID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'delete',
@@ -146,21 +131,6 @@ final class FilesService implements FilesContract
      */
     public function gdprDelete(
         string $fileID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = [];
-
-        return $this->gdprDeleteRaw($fileID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function gdprDeleteRaw(
-        string $fileID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line;
@@ -270,25 +240,6 @@ final class FilesService implements FilesContract
      */
     public function getImportFromURLAsyncStatus(
         string $taskID,
-        ?RequestOptions $requestOptions = null
-    ): FilesFileActionResponse {
-        $params = [];
-
-        return $this->getImportFromURLAsyncStatusRaw(
-            $taskID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function getImportFromURLAsyncStatusRaw(
-        string $taskID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): FilesFileActionResponse {
         // @phpstan-ignore-next-line;

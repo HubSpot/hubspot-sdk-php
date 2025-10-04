@@ -87,7 +87,7 @@ final class AutomationPublicRollingDateRangePropertyOperation implements BaseMod
 
         $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
         $obj->numberOfDays = $numberOfDays;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
         $obj->operator = $operator;
         $obj->requiresTimeZoneConversion = $requiresTimeZoneConversion;
 
@@ -117,7 +117,7 @@ final class AutomationPublicRollingDateRangePropertyOperation implements BaseMod
     public function withOperationType(OperationType|string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }

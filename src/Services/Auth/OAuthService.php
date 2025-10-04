@@ -10,7 +10,6 @@ use HubspotSDK\Auth\OAuth\OAuthCreateParams;
 use HubspotSDK\Auth\OAuth\OAuthCreateParams\GrantType;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Auth\OAuthContract;
 
@@ -34,8 +33,6 @@ final class OAuthService implements OAuthContract
      * @param GrantType|value-of<GrantType> $grantType
      * @param string $redirectUri
      * @param string $refreshToken
-     *
-     * @return AuthOAuthTokenResponseIf<HasRawResponse>
      *
      * @throws APIException
      */
@@ -64,8 +61,6 @@ final class OAuthService implements OAuthContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return AuthOAuthTokenResponseIf<HasRawResponse>
      *
      * @throws APIException
      */
@@ -100,21 +95,6 @@ final class OAuthService implements OAuthContract
         string $token,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = [];
-
-        return $this->deleteRaw($token, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $token,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'delete',
@@ -129,29 +109,10 @@ final class OAuthService implements OAuthContract
      *
      * Retrieve refresh token metadata
      *
-     * @return AuthOAuthRefreshTokenInfoResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function get(
         string $token,
-        ?RequestOptions $requestOptions = null
-    ): AuthOAuthRefreshTokenInfoResponse {
-        $params = [];
-
-        return $this->getRaw($token, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @return AuthOAuthRefreshTokenInfoResponse<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $token,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): AuthOAuthRefreshTokenInfoResponse {
         // @phpstan-ignore-next-line;

@@ -93,7 +93,7 @@ final class AutomationAPIListBasedEnrollmentCriteria implements BaseModel
         $obj->listFilterBranch = $listFilterBranch;
         $obj->reEnrollmentTriggersFilterBranches = $reEnrollmentTriggersFilterBranches;
         $obj->shouldReEnroll = $shouldReEnroll;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
         $obj->unEnrollObjectsNotMeetingCriteria = $unEnrollObjectsNotMeetingCriteria;
 
         return $obj;
@@ -134,7 +134,7 @@ final class AutomationAPIListBasedEnrollmentCriteria implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

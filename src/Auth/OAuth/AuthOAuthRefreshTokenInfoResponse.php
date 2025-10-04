@@ -6,7 +6,9 @@ namespace HubspotSDK\Auth\OAuth;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type auth_oauth_refresh_token_info_response = array{
@@ -19,15 +21,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   hubDomain?: string,
  *   user?: string,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class AuthOAuthRefreshTokenInfoResponse implements BaseModel
+final class AuthOAuthRefreshTokenInfoResponse implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<auth_oauth_refresh_token_info_response> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $token;

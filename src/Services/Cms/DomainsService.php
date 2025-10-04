@@ -9,7 +9,6 @@ use HubspotSDK\Cms\Domains\CmsDomainsCollectionResponseWithTotalDomainForwardPag
 use HubspotSDK\Cms\Domains\CmsDomainsDomain;
 use HubspotSDK\Cms\Domains\DomainListParams;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\DomainsContract;
 
@@ -37,8 +36,6 @@ final class DomainsService implements DomainsContract
      * @param \DateTimeInterface $updatedAfter
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
-     *
-     * @return CmsDomainsCollectionResponseWithTotalDomainForwardPaging<HasRawResponse>
      *
      * @throws APIException
      */
@@ -76,8 +73,6 @@ final class DomainsService implements DomainsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsDomainsCollectionResponseWithTotalDomainForwardPaging<HasRawResponse>
-     *
      * @throws APIException
      */
     public function listRaw(
@@ -104,29 +99,10 @@ final class DomainsService implements DomainsContract
      *
      * Get a single domain
      *
-     * @return CmsDomainsDomain<HasRawResponse>
-     *
      * @throws APIException
      */
     public function read(
         string $domainID,
-        ?RequestOptions $requestOptions = null
-    ): CmsDomainsDomain {
-        $params = [];
-
-        return $this->readRaw($domainID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @return CmsDomainsDomain<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $domainID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): CmsDomainsDomain {
         // @phpstan-ignore-next-line;

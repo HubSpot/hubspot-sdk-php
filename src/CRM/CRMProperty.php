@@ -199,7 +199,7 @@ final class CRMProperty implements BaseModel
         null !== $calculationFormula && $obj->calculationFormula = $calculationFormula;
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $createdUserID && $obj->createdUserID = $createdUserID;
-        null !== $dataSensitivity && $obj->dataSensitivity = $dataSensitivity instanceof DataSensitivity ? $dataSensitivity->value : $dataSensitivity;
+        null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
         null !== $displayOrder && $obj->displayOrder = $displayOrder;
         null !== $externalOptions && $obj->externalOptions = $externalOptions;
         null !== $formField && $obj->formField = $formField;
@@ -322,7 +322,7 @@ final class CRMProperty implements BaseModel
         DataSensitivity|string $dataSensitivity
     ): self {
         $obj = clone $this;
-        $obj->dataSensitivity = $dataSensitivity instanceof DataSensitivity ? $dataSensitivity->value : $dataSensitivity;
+        $obj['dataSensitivity'] = $dataSensitivity;
 
         return $obj;
     }

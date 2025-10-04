@@ -208,15 +208,4 @@ interface SchemasContract
         string $objectType,
         ?RequestOptions $requestOptions = null
     ): CRMObjectSchema;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $objectType,
-        mixed $params,
-        ?RequestOptions $requestOptions = null,
-    ): CRMObjectSchema;
 }

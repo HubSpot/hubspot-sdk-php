@@ -264,21 +264,6 @@ final class URLRedirectsService implements URLRedirectsContract
         string $urlRedirectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = [];
-
-        return $this->deleteRaw($urlRedirectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $urlRedirectID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'delete',
@@ -297,21 +282,6 @@ final class URLRedirectsService implements URLRedirectsContract
      */
     public function read(
         string $urlRedirectID,
-        ?RequestOptions $requestOptions = null
-    ): CmsURLMapping {
-        $params = [];
-
-        return $this->readRaw($urlRedirectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $urlRedirectID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): CmsURLMapping {
         // @phpstan-ignore-next-line;

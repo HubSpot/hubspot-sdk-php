@@ -124,7 +124,7 @@ final class TagUpdateParams implements BaseModel
         $obj->id = $id;
         $obj->created = $created;
         $obj->deletedAt = $deletedAt;
-        $obj->language = $language instanceof Language ? $language->value : $language;
+        $obj['language'] = $language;
         $obj->name = $name;
         $obj->translatedFromID = $translatedFromID;
         $obj->updated = $updated;
@@ -164,7 +164,7 @@ final class TagUpdateParams implements BaseModel
     public function withLanguage(Language|string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language instanceof Language ? $language->value : $language;
+        $obj['language'] = $language;
 
         return $obj;
     }

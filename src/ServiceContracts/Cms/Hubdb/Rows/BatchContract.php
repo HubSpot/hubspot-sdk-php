@@ -7,7 +7,6 @@ namespace HubspotSDK\ServiceContracts\Cms\Hubdb\Rows;
 use HubspotSDK\Cms\Hubdb\CmsHubdbBatchResponseHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3BatchUpdateRequest;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 
 interface BatchContract
@@ -16,8 +15,6 @@ interface BatchContract
      * @api
      *
      * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
-     *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -31,8 +28,6 @@ interface BatchContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */

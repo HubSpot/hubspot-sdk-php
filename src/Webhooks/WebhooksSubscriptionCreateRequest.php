@@ -69,7 +69,7 @@ final class WebhooksSubscriptionCreateRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->eventType = $eventType instanceof EventType ? $eventType->value : $eventType;
+        $obj['eventType'] = $eventType;
 
         null !== $active && $obj->active = $active;
         null !== $objectTypeID && $obj->objectTypeID = $objectTypeID;
@@ -84,7 +84,7 @@ final class WebhooksSubscriptionCreateRequest implements BaseModel
     public function withEventType(EventType|string $eventType): self
     {
         $obj = clone $this;
-        $obj->eventType = $eventType instanceof EventType ? $eventType->value : $eventType;
+        $obj['eventType'] = $eventType;
 
         return $obj;
     }

@@ -77,7 +77,7 @@ final class AutomationActionsInputFieldDefinition implements BaseModel
         $obj->typeDefinition = $typeDefinition;
 
         null !== $automationFieldType && $obj->automationFieldType = $automationFieldType;
-        null !== $supportedValueTypes && $obj->supportedValueTypes = array_map(fn ($v) => $v instanceof SupportedValueType ? $v->value : $v, $supportedValueTypes);
+        null !== $supportedValueTypes && $obj['supportedValueTypes'] = $supportedValueTypes;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class AutomationActionsInputFieldDefinition implements BaseModel
     public function withSupportedValueTypes(array $supportedValueTypes): self
     {
         $obj = clone $this;
-        $obj->supportedValueTypes = array_map(fn ($v) => $v instanceof SupportedValueType ? $v->value : $v, $supportedValueTypes);
+        $obj['supportedValueTypes'] = $supportedValueTypes;
 
         return $obj;
     }

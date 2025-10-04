@@ -81,7 +81,7 @@ final class AutomationPublicNumAssociationsFilter implements BaseModel
         $obj->associationCategory = $associationCategory;
         $obj->associationTypeID = $associationTypeID;
         $obj->coalescingRefineBy = $coalescingRefineBy;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class AutomationPublicNumAssociationsFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }

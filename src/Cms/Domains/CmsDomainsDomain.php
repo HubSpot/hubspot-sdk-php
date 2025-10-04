@@ -6,7 +6,9 @@ namespace HubspotSDK\Cms\Domains;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type cms_domains_domain = array{
@@ -31,15 +33,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   secondaryToDomain?: string,
  *   updated?: \DateTimeInterface,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class CmsDomainsDomain implements BaseModel
+final class CmsDomainsDomain implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<cms_domains_domain> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;

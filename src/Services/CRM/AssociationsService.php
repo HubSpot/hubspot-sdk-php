@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\CRM;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\CRM\Associations\AssociationCreateParams;
 use HubspotSDK\CRM\Associations\AssociationDeleteParams;
 use HubspotSDK\CRM\Associations\AssociationReadParams;
@@ -41,8 +40,6 @@ final class AssociationsService implements AssociationsContract
      * @param string $fromObjectType
      * @param list<CRMAssociationsPublicAssociation> $inputs
      *
-     * @return CRMAssociationsBatchResponsePublicAssociation<HasRawResponse>
-     *
      * @throws APIException
      */
     public function create(
@@ -60,8 +57,6 @@ final class AssociationsService implements AssociationsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMAssociationsBatchResponsePublicAssociation<HasRawResponse>
      *
      * @throws APIException
      */
@@ -85,7 +80,7 @@ final class AssociationsService implements AssociationsContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
+            body: (object) array_diff_key($parsed, ['fromObjectType']),
             options: $options,
             convert: CRMAssociationsBatchResponsePublicAssociation::class,
         );
@@ -139,7 +134,7 @@ final class AssociationsService implements AssociationsContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
+            body: (object) array_diff_key($parsed, ['fromObjectType']),
             options: $options,
             convert: null,
         );
@@ -152,8 +147,6 @@ final class AssociationsService implements AssociationsContract
      *
      * @param string $fromObjectType
      * @param list<CRMPublicObjectID> $inputs
-     *
-     * @return CRMAssociationsBatchResponsePublicAssociationMulti<HasRawResponse>
      *
      * @throws APIException
      */
@@ -172,8 +165,6 @@ final class AssociationsService implements AssociationsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMAssociationsBatchResponsePublicAssociationMulti<HasRawResponse>
      *
      * @throws APIException
      */
@@ -197,7 +188,7 @@ final class AssociationsService implements AssociationsContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
+            body: (object) array_diff_key($parsed, ['fromObjectType']),
             options: $options,
             convert: CRMAssociationsBatchResponsePublicAssociationMulti::class,
         );

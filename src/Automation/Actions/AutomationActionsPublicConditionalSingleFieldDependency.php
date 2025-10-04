@@ -84,7 +84,7 @@ final class AutomationActionsPublicConditionalSingleFieldDependency implements B
 
         $obj->controllingFieldName = $controllingFieldName;
         $obj->controllingFieldValue = $controllingFieldValue;
-        $obj->dependencyType = $dependencyType instanceof DependencyType ? $dependencyType->value : $dependencyType;
+        $obj['dependencyType'] = $dependencyType;
         $obj->dependentFieldNames = $dependentFieldNames;
 
         return $obj;
@@ -114,7 +114,7 @@ final class AutomationActionsPublicConditionalSingleFieldDependency implements B
         DependencyType|string $dependencyType
     ): self {
         $obj = clone $this;
-        $obj->dependencyType = $dependencyType instanceof DependencyType ? $dependencyType->value : $dependencyType;
+        $obj['dependencyType'] = $dependencyType;
 
         return $obj;
     }

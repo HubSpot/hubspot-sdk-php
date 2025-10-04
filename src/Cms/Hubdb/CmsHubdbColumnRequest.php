@@ -108,7 +108,7 @@ final class CmsHubdbColumnRequest implements BaseModel
         $obj->label = $label;
         $obj->name = $name;
         $obj->options = $options;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $foreignColumnID && $obj->foreignColumnID = $foreignColumnID;
         null !== $foreignTableID && $obj->foreignTableID = $foreignTableID;
@@ -159,7 +159,7 @@ final class CmsHubdbColumnRequest implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

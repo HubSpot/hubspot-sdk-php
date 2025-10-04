@@ -76,7 +76,7 @@ final class CRMObjectsFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->operator = $operator instanceof Operator ? $operator->value : $operator;
+        $obj['operator'] = $operator;
         $obj->propertyName = $propertyName;
 
         null !== $highValue && $obj->highValue = $highValue;
@@ -92,7 +92,7 @@ final class CRMObjectsFilter implements BaseModel
     public function withOperator(Operator|string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator instanceof Operator ? $operator->value : $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }

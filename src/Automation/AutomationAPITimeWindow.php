@@ -67,7 +67,7 @@ final class AutomationAPITimeWindow implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->day = $day instanceof Day ? $day->value : $day;
+        $obj['day'] = $day;
         $obj->endTime = $endTime;
         $obj->startTime = $startTime;
 
@@ -80,7 +80,7 @@ final class AutomationAPITimeWindow implements BaseModel
     public function withDay(Day|string $day): self
     {
         $obj = clone $this;
-        $obj->day = $day instanceof Day ? $day->value : $day;
+        $obj['day'] = $day;
 
         return $obj;
     }

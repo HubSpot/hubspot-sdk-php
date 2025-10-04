@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\CRM\Associations;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4BatchResponseVoid;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4PublicAssociationMultiPost;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4ReportCreationResponse;
@@ -239,8 +238,6 @@ final class V4Service implements V4Contract
      * @param string $fromObjectType
      * @param list<AssociationsV4PublicAssociationMultiPost> $inputs
      *
-     * @return AssociationsV4BatchResponseVoid<HasRawResponse>
-     *
      * @throws APIException
      */
     public function archiveLabels(
@@ -258,8 +255,6 @@ final class V4Service implements V4Contract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return AssociationsV4BatchResponseVoid<HasRawResponse>
      *
      * @throws APIException
      */
@@ -283,7 +278,7 @@ final class V4Service implements V4Contract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
+            body: (object) array_diff_key($parsed, ['fromObjectType']),
             options: $options,
             convert: AssociationsV4BatchResponseVoid::class,
         );
@@ -359,29 +354,10 @@ final class V4Service implements V4Contract
      *
      * Report
      *
-     * @return AssociationsV4ReportCreationResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function request(
         int $userID,
-        ?RequestOptions $requestOptions = null
-    ): AssociationsV4ReportCreationResponse {
-        $params = [];
-
-        return $this->requestRaw($userID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @return AssociationsV4ReportCreationResponse<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function requestRaw(
-        int $userID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): AssociationsV4ReportCreationResponse {
         // @phpstan-ignore-next-line;

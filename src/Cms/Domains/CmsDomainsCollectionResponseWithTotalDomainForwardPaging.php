@@ -6,24 +6,24 @@ namespace HubspotSDK\Cms\Domains;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type cms_domains_collection_response_with_total_domain_forward_paging = array{
  *   results: list<CmsDomainsDomain>, total: int, paging?: ForwardPaging
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class CmsDomainsCollectionResponseWithTotalDomainForwardPaging implements BaseModel
+final class CmsDomainsCollectionResponseWithTotalDomainForwardPaging implements BaseModel, ResponseConverter
 {
     /**
      * @use SdkModel<cms_domains_collection_response_with_total_domain_forward_paging>
      */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<CmsDomainsDomain> $results */
     #[Api(list: CmsDomainsDomain::class)]

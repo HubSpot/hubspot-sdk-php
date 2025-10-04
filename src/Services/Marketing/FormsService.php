@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\Marketing\Forms\FormListParams;
 use HubspotSDK\Marketing\Forms\FormReadParams;
 use HubspotSDK\Marketing\Forms\FormReplaceParams;
@@ -41,20 +40,6 @@ final class FormsService implements FormsContract
      */
     public function create(?RequestOptions $requestOptions = null): mixed
     {
-        $params = [];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
@@ -137,10 +122,6 @@ final class FormsService implements FormsContract
      * @param list<HubspotSDK\Marketing\Forms\FormListParams\FormType|value-of<HubspotSDK\Marketing\Forms\FormListParams\FormType>> $formTypes
      * @param int $limit
      *
-     * @return MarketingFormsCollectionResponseFormDefinitionBaseForwardPaging<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function list(
@@ -164,10 +145,6 @@ final class FormsService implements FormsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingFormsCollectionResponseFormDefinitionBaseForwardPaging<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -199,21 +176,6 @@ final class FormsService implements FormsContract
      */
     public function delete(
         string $formID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = [];
-
-        return $this->deleteRaw($formID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $formID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line;
@@ -282,10 +244,10 @@ final class FormsService implements FormsContract
      * @param \DateTimeInterface $createdAt
      * @param MarketingFormsFormDisplayOptions $displayOptions
      * @param list<MarketingFormsFieldGroup> $fieldGroups
-     * @param FormType|value-of<FormType> $formType
      * @param MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
      * @param string $name
      * @param \DateTimeInterface $updatedAt
+     * @param FormType|value-of<FormType> $formType
      * @param \DateTimeInterface $archivedAt
      *
      * @throws APIException
@@ -298,10 +260,10 @@ final class FormsService implements FormsContract
         $createdAt,
         $displayOptions,
         $fieldGroups,
-        $formType = 'hubspot',
         $legalConsentOptions,
         $name,
         $updatedAt,
+        $formType = 'hubspot',
         $archivedAt = omit,
         ?RequestOptions $requestOptions = null,
     ): mixed {

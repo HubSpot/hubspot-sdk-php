@@ -87,8 +87,8 @@ final class AutomationPublicFormSubmissionOnPageFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
-        $obj->operator = $operator instanceof Operator ? $operator->value : $operator;
+        $obj['filterType'] = $filterType;
+        $obj['operator'] = $operator;
         $obj->pageID = $pageID;
 
         null !== $coalescingRefineBy && $obj->coalescingRefineBy = $coalescingRefineBy;
@@ -104,7 +104,7 @@ final class AutomationPublicFormSubmissionOnPageFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class AutomationPublicFormSubmissionOnPageFilter implements BaseModel
     public function withOperator(Operator|string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator instanceof Operator ? $operator->value : $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }

@@ -96,9 +96,9 @@ final class AutomationPublicEmailEventFilter implements BaseModel
 
         $obj->appID = $appID;
         $obj->emailID = $emailID;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
         $obj->level = $level;
-        $obj->operator = $operator instanceof Operator ? $operator->value : $operator;
+        $obj['operator'] = $operator;
 
         null !== $clickURL && $obj->clickURL = $clickURL;
         null !== $pruningRefineBy && $obj->pruningRefineBy = $pruningRefineBy;
@@ -128,7 +128,7 @@ final class AutomationPublicEmailEventFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }
@@ -147,7 +147,7 @@ final class AutomationPublicEmailEventFilter implements BaseModel
     public function withOperator(Operator|string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator instanceof Operator ? $operator->value : $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }

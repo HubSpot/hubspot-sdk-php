@@ -80,7 +80,7 @@ final class AutomationPublicCtaAnalyticsFilter implements BaseModel
         $obj = new self;
 
         $obj->ctaName = $ctaName;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
         $obj->operator = $operator;
 
         null !== $coalescingRefineBy && $obj->coalescingRefineBy = $coalescingRefineBy;
@@ -103,7 +103,7 @@ final class AutomationPublicCtaAnalyticsFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }

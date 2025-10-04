@@ -85,7 +85,7 @@ final class AutomationAPIEnrolledArgumentPropertyFilterDataSource implements Bas
         $obj->argumentName = $argumentName;
         $obj->name = $name;
         $obj->propertyName = $propertyName;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $sortBy && $obj->sortBy = $sortBy;
 
@@ -122,7 +122,7 @@ final class AutomationAPIEnrolledArgumentPropertyFilterDataSource implements Bas
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

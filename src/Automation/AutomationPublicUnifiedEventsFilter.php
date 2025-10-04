@@ -79,7 +79,7 @@ final class AutomationPublicUnifiedEventsFilter implements BaseModel
         $obj = new self;
 
         $obj->filterLines = $filterLines;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         null !== $coalescingRefineBy && $obj->coalescingRefineBy = $coalescingRefineBy;
         null !== $eventTypeID && $obj->eventTypeID = $eventTypeID;
@@ -105,7 +105,7 @@ final class AutomationPublicUnifiedEventsFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }
