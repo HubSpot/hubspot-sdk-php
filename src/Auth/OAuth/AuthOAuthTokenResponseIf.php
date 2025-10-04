@@ -6,7 +6,9 @@ namespace HubspotSDK\Auth\OAuth;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type auth_oauth_token_response_if = array{
@@ -16,15 +18,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   tokenType: string,
  *   idToken?: string,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class AuthOAuthTokenResponseIf implements BaseModel
+final class AuthOAuthTokenResponseIf implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<auth_oauth_token_response_if> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api('access_token')]
     public string $accessToken;

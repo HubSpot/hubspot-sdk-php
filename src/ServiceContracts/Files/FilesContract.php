@@ -74,30 +74,8 @@ interface FilesContract
      *
      * @throws APIException
      */
-    public function deleteRaw(
-        string $fileID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
     public function gdprDelete(
         string $fileID,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function gdprDeleteRaw(
-        string $fileID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): mixed;
 
@@ -160,17 +138,6 @@ interface FilesContract
      */
     public function getImportFromURLAsyncStatus(
         string $taskID,
-        ?RequestOptions $requestOptions = null
-    ): FilesFileActionResponse;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function getImportFromURLAsyncStatusRaw(
-        string $taskID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): FilesFileActionResponse;
 

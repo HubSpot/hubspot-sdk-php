@@ -103,11 +103,11 @@ final class SubscriptionsV3PublicSubscriptionStatus implements BaseModel
 
         $obj->id = $id;
         $obj->name = $name;
-        $obj->sourceOfStatus = $sourceOfStatus instanceof SourceOfStatus ? $sourceOfStatus->value : $sourceOfStatus;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['sourceOfStatus'] = $sourceOfStatus;
+        $obj['status'] = $status;
 
         null !== $brandID && $obj->brandID = $brandID;
-        null !== $legalBasis && $obj->legalBasis = $legalBasis instanceof LegalBasis ? $legalBasis->value : $legalBasis;
+        null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
         null !== $preferenceGroupName && $obj->preferenceGroupName = $preferenceGroupName;
 
@@ -137,7 +137,7 @@ final class SubscriptionsV3PublicSubscriptionStatus implements BaseModel
         SourceOfStatus|string $sourceOfStatus
     ): self {
         $obj = clone $this;
-        $obj->sourceOfStatus = $sourceOfStatus instanceof SourceOfStatus ? $sourceOfStatus->value : $sourceOfStatus;
+        $obj['sourceOfStatus'] = $sourceOfStatus;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class SubscriptionsV3PublicSubscriptionStatus implements BaseModel
     public function withStatus(Status|string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class SubscriptionsV3PublicSubscriptionStatus implements BaseModel
     public function withLegalBasis(LegalBasis|string $legalBasis): self
     {
         $obj = clone $this;
-        $obj->legalBasis = $legalBasis instanceof LegalBasis ? $legalBasis->value : $legalBasis;
+        $obj['legalBasis'] = $legalBasis;
 
         return $obj;
     }

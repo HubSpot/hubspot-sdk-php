@@ -107,7 +107,7 @@ final class FilesFileActionResponse implements BaseModel
 
         $obj->completedAt = $completedAt;
         $obj->startedAt = $startedAt;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
         $obj->taskID = $taskID;
 
         null !== $errors && $obj->errors = $errors;
@@ -141,7 +141,7 @@ final class FilesFileActionResponse implements BaseModel
     public function withStatus(Status|string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         return $obj;
     }

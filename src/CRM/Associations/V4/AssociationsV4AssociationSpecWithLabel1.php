@@ -64,7 +64,7 @@ final class AssociationsV4AssociationSpecWithLabel1 implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->category = $category instanceof Category ? $category->value : $category;
+        $obj['category'] = $category;
         $obj->typeID = $typeID;
 
         null !== $label && $obj->label = $label;
@@ -78,7 +78,7 @@ final class AssociationsV4AssociationSpecWithLabel1 implements BaseModel
     public function withCategory(Category|string $category): self
     {
         $obj = clone $this;
-        $obj->category = $category instanceof Category ? $category->value : $category;
+        $obj['category'] = $category;
 
         return $obj;
     }

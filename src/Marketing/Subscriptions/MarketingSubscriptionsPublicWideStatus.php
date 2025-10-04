@@ -96,11 +96,11 @@ final class MarketingSubscriptionsPublicWideStatus implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->channel = $channel instanceof Channel ? $channel->value : $channel;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['channel'] = $channel;
+        $obj['status'] = $status;
         $obj->subscriberIDString = $subscriberIDString;
         $obj->timestamp = $timestamp;
-        $obj->wideStatusType = $wideStatusType instanceof WideStatusType ? $wideStatusType->value : $wideStatusType;
+        $obj['wideStatusType'] = $wideStatusType;
 
         null !== $businessUnitID && $obj->businessUnitID = $businessUnitID;
 
@@ -113,7 +113,7 @@ final class MarketingSubscriptionsPublicWideStatus implements BaseModel
     public function withChannel(Channel|string $channel): self
     {
         $obj = clone $this;
-        $obj->channel = $channel instanceof Channel ? $channel->value : $channel;
+        $obj['channel'] = $channel;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class MarketingSubscriptionsPublicWideStatus implements BaseModel
     public function withStatus(Status|string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class MarketingSubscriptionsPublicWideStatus implements BaseModel
         WideStatusType|string $wideStatusType
     ): self {
         $obj = clone $this;
-        $obj->wideStatusType = $wideStatusType instanceof WideStatusType ? $wideStatusType->value : $wideStatusType;
+        $obj['wideStatusType'] = $wideStatusType;
 
         return $obj;
     }

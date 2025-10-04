@@ -82,8 +82,8 @@ final class AutomationPublicWeekReference implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->dayOfWeek = $dayOfWeek instanceof DayOfWeek ? $dayOfWeek->value : $dayOfWeek;
-        $obj->referenceType = $referenceType instanceof ReferenceType ? $referenceType->value : $referenceType;
+        $obj['dayOfWeek'] = $dayOfWeek;
+        $obj['referenceType'] = $referenceType;
 
         null !== $hour && $obj->hour = $hour;
         null !== $millisecond && $obj->millisecond = $millisecond;
@@ -99,7 +99,7 @@ final class AutomationPublicWeekReference implements BaseModel
     public function withDayOfWeek(DayOfWeek|string $dayOfWeek): self
     {
         $obj = clone $this;
-        $obj->dayOfWeek = $dayOfWeek instanceof DayOfWeek ? $dayOfWeek->value : $dayOfWeek;
+        $obj['dayOfWeek'] = $dayOfWeek;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class AutomationPublicWeekReference implements BaseModel
     public function withReferenceType(ReferenceType|string $referenceType): self
     {
         $obj = clone $this;
-        $obj->referenceType = $referenceType instanceof ReferenceType ? $referenceType->value : $referenceType;
+        $obj['referenceType'] = $referenceType;
 
         return $obj;
     }

@@ -76,7 +76,7 @@ final class SubscriptionsV3PublicUpdateSubscriptionStatusRequest implements Base
         $obj->emailAddress = $emailAddress;
         $obj->subscriptionID = $subscriptionID;
 
-        null !== $legalBasis && $obj->legalBasis = $legalBasis instanceof LegalBasis ? $legalBasis->value : $legalBasis;
+        null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
 
         return $obj;
@@ -104,7 +104,7 @@ final class SubscriptionsV3PublicUpdateSubscriptionStatusRequest implements Base
     public function withLegalBasis(LegalBasis|string $legalBasis): self
     {
         $obj = clone $this;
-        $obj->legalBasis = $legalBasis instanceof LegalBasis ? $legalBasis->value : $legalBasis;
+        $obj['legalBasis'] = $legalBasis;
 
         return $obj;
     }

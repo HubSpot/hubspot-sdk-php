@@ -6,7 +6,9 @@ namespace HubspotSDK\CRM\Properties;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type crm_properties_created_response_property_group = array{
@@ -14,15 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   entity: CRMPropertiesPropertyGroup,
  *   location?: string,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class CRMPropertiesCreatedResponsePropertyGroup implements BaseModel
+final class CRMPropertiesCreatedResponsePropertyGroup implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<crm_properties_created_response_property_group> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api('createdResourceId')]
     public string $createdResourceID;

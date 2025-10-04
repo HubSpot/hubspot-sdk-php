@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\CRM\CRMProperty;
 use HubspotSDK\CRM\Properties\CRMPropertiesBatchResponseProperty;
 use HubspotSDK\CRM\Properties\CRMPropertiesCollectionResponsePropertyGroup;
@@ -28,8 +27,6 @@ interface PropertiesContract
      * @param string $name
      * @param int $displayOrder
      *
-     * @return CRMPropertiesCreatedResponsePropertyGroup<HasRawResponse>
-     *
      * @throws APIException
      */
     public function create(
@@ -44,8 +41,6 @@ interface PropertiesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPropertiesCreatedResponsePropertyGroup<HasRawResponse>
      *
      * @throws APIException
      */
@@ -102,26 +97,11 @@ interface PropertiesContract
     /**
      * @api
      *
-     * @return CRMPropertiesCollectionResponsePropertyGroup<HasRawResponse>
-     *
      * @throws APIException
      */
     public function list(
         string $objectType,
         ?RequestOptions $requestOptions = null
-    ): CRMPropertiesCollectionResponsePropertyGroup;
-
-    /**
-     * @api
-     *
-     * @return CRMPropertiesCollectionResponsePropertyGroup<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $objectType,
-        mixed $params,
-        ?RequestOptions $requestOptions = null,
     ): CRMPropertiesCollectionResponsePropertyGroup;
 
     /**
@@ -187,8 +167,6 @@ interface PropertiesContract
      * @param list<CRMPropertiesPropertyName> $inputs
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      *
-     * @return CRMPropertiesBatchResponseProperty<HasRawResponse>
-     *
      * @throws APIException
      */
     public function read(
@@ -203,8 +181,6 @@ interface PropertiesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPropertiesBatchResponseProperty<HasRawResponse>
      *
      * @throws APIException
      */

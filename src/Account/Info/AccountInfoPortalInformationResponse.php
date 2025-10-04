@@ -115,7 +115,7 @@ final class AccountInfoPortalInformationResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->accountType = $accountType instanceof AccountType ? $accountType->value : $accountType;
+        $obj['accountType'] = $accountType;
         $obj->additionalCurrencies = $additionalCurrencies;
         $obj->companyCurrency = $companyCurrency;
         $obj->dataHostingLocation = $dataHostingLocation;
@@ -134,7 +134,7 @@ final class AccountInfoPortalInformationResponse implements BaseModel
     public function withAccountType(AccountType|string $accountType): self
     {
         $obj = clone $this;
-        $obj->accountType = $accountType instanceof AccountType ? $accountType->value : $accountType;
+        $obj['accountType'] = $accountType;
 
         return $obj;
     }

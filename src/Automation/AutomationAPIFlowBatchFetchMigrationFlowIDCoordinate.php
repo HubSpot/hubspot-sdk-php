@@ -65,7 +65,7 @@ final class AutomationAPIFlowBatchFetchMigrationFlowIDCoordinate implements Base
         $obj = new self;
 
         $obj->flowMigrationStatuses = $flowMigrationStatuses;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class AutomationAPIFlowBatchFetchMigrationFlowIDCoordinate implements Base
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

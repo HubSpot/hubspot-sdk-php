@@ -6,7 +6,9 @@ namespace HubspotSDK\CRM\Associations\V4;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\CRM\Associations\V4\AssociationsV4BatchResponseVoid\Status;
 
 /**
@@ -20,15 +22,13 @@ use HubspotSDK\CRM\Associations\V4\AssociationsV4BatchResponseVoid\Status;
  *   numErrors?: int,
  *   requestedAt?: \DateTimeInterface,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class AssociationsV4BatchResponseVoid implements BaseModel
+final class AssociationsV4BatchResponseVoid implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<associations_v4_batch_response_void> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public \DateTimeInterface $completedAt;
@@ -108,7 +108,7 @@ final class AssociationsV4BatchResponseVoid implements BaseModel
         $obj->completedAt = $completedAt;
         $obj->results = $results;
         $obj->startedAt = $startedAt;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         null !== $errors && $obj->errors = $errors;
         null !== $links && $obj->links = $links;
@@ -151,7 +151,7 @@ final class AssociationsV4BatchResponseVoid implements BaseModel
     public function withStatus(Status|string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         return $obj;
     }

@@ -238,17 +238,17 @@ final class AutomationAPIContactFlow implements BaseModel
         $obj->blockedDates = $blockedDates;
         $obj->canEnrollFromSalesforce = $canEnrollFromSalesforce;
         $obj->createdAt = $createdAt;
-        $obj->crmObjectCreationStatus = $crmObjectCreationStatus instanceof CRMObjectCreationStatus ? $crmObjectCreationStatus->value : $crmObjectCreationStatus;
+        $obj['crmObjectCreationStatus'] = $crmObjectCreationStatus;
         $obj->customProperties = $customProperties;
         $obj->dataSources = $dataSources;
-        $obj->flowType = $flowType instanceof FlowType ? $flowType->value : $flowType;
+        $obj['flowType'] = $flowType;
         $obj->isEnabled = $isEnabled;
         $obj->nextAvailableActionID = $nextAvailableActionID;
         $obj->objectTypeID = $objectTypeID;
         $obj->revisionID = $revisionID;
         $obj->suppressionListIDs = $suppressionListIDs;
         $obj->timeWindows = $timeWindows;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
         $obj->updatedAt = $updatedAt;
 
         null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
@@ -317,7 +317,7 @@ final class AutomationAPIContactFlow implements BaseModel
         CRMObjectCreationStatus|string $crmObjectCreationStatus
     ): self {
         $obj = clone $this;
-        $obj->crmObjectCreationStatus = $crmObjectCreationStatus instanceof CRMObjectCreationStatus ? $crmObjectCreationStatus->value : $crmObjectCreationStatus;
+        $obj['crmObjectCreationStatus'] = $crmObjectCreationStatus;
 
         return $obj;
     }
@@ -350,7 +350,7 @@ final class AutomationAPIContactFlow implements BaseModel
     public function withFlowType(FlowType|string $flowType): self
     {
         $obj = clone $this;
-        $obj->flowType = $flowType instanceof FlowType ? $flowType->value : $flowType;
+        $obj['flowType'] = $flowType;
 
         return $obj;
     }
@@ -416,7 +416,7 @@ final class AutomationAPIContactFlow implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

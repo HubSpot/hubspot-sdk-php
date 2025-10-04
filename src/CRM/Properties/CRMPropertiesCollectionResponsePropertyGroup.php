@@ -6,22 +6,22 @@ namespace HubspotSDK\CRM\Properties;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
 
 /**
  * @phpstan-type crm_properties_collection_response_property_group = array{
  *   results: list<CRMPropertiesPropertyGroup>, paging?: MarketingEmailsPaging
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class CRMPropertiesCollectionResponsePropertyGroup implements BaseModel
+final class CRMPropertiesCollectionResponsePropertyGroup implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<crm_properties_collection_response_property_group> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<CRMPropertiesPropertyGroup> $results */
     #[Api(list: CRMPropertiesPropertyGroup::class)]

@@ -81,8 +81,8 @@ final class MarketingFormsFieldGroup implements BaseModel
         $obj = new self;
 
         $obj->fields = $fields;
-        $obj->groupType = $groupType instanceof GroupType ? $groupType->value : $groupType;
-        $obj->richTextType = $richTextType instanceof RichTextType ? $richTextType->value : $richTextType;
+        $obj['groupType'] = $groupType;
+        $obj['richTextType'] = $richTextType;
 
         null !== $richText && $obj->richText = $richText;
 
@@ -106,7 +106,7 @@ final class MarketingFormsFieldGroup implements BaseModel
     public function withGroupType(GroupType|string $groupType): self
     {
         $obj = clone $this;
-        $obj->groupType = $groupType instanceof GroupType ? $groupType->value : $groupType;
+        $obj['groupType'] = $groupType;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class MarketingFormsFieldGroup implements BaseModel
     public function withRichTextType(RichTextType|string $richTextType): self
     {
         $obj = clone $this;
-        $obj->richTextType = $richTextType instanceof RichTextType ? $richTextType->value : $richTextType;
+        $obj['richTextType'] = $richTextType;
 
         return $obj;
     }

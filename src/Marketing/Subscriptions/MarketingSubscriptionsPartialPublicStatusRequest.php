@@ -85,11 +85,11 @@ final class MarketingSubscriptionsPartialPublicStatusRequest implements BaseMode
     ): self {
         $obj = new self;
 
-        $obj->channel = $channel instanceof Channel ? $channel->value : $channel;
-        $obj->statusState = $statusState instanceof StatusState ? $statusState->value : $statusState;
+        $obj['channel'] = $channel;
+        $obj['statusState'] = $statusState;
         $obj->subscriptionID = $subscriptionID;
 
-        null !== $legalBasis && $obj->legalBasis = $legalBasis instanceof LegalBasis ? $legalBasis->value : $legalBasis;
+        null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
 
         return $obj;
@@ -101,7 +101,7 @@ final class MarketingSubscriptionsPartialPublicStatusRequest implements BaseMode
     public function withChannel(Channel|string $channel): self
     {
         $obj = clone $this;
-        $obj->channel = $channel instanceof Channel ? $channel->value : $channel;
+        $obj['channel'] = $channel;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class MarketingSubscriptionsPartialPublicStatusRequest implements BaseMode
     public function withStatusState(StatusState|string $statusState): self
     {
         $obj = clone $this;
-        $obj->statusState = $statusState instanceof StatusState ? $statusState->value : $statusState;
+        $obj['statusState'] = $statusState;
 
         return $obj;
     }
@@ -131,7 +131,7 @@ final class MarketingSubscriptionsPartialPublicStatusRequest implements BaseMode
     public function withLegalBasis(LegalBasis|string $legalBasis): self
     {
         $obj = clone $this;
-        $obj->legalBasis = $legalBasis instanceof LegalBasis ? $legalBasis->value : $legalBasis;
+        $obj['legalBasis'] = $legalBasis;
 
         return $obj;
     }

@@ -6,7 +6,9 @@ namespace HubspotSDK\Webhooks;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type webhooks_settings_response = array{
@@ -15,15 +17,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   throttling: WebhooksThrottlingSettings,
  *   updatedAt?: \DateTimeInterface,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class WebhooksSettingsResponse implements BaseModel
+final class WebhooksSettingsResponse implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<webhooks_settings_response> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public \DateTimeInterface $createdAt;

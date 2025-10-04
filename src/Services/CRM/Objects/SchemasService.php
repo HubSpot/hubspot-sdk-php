@@ -373,21 +373,6 @@ final class SchemasService implements SchemasContract
         string $objectType,
         ?RequestOptions $requestOptions = null
     ): CRMObjectSchema {
-        $params = [];
-
-        return $this->readRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $objectType,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): CRMObjectSchema {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',

@@ -61,8 +61,8 @@ final class AutomationAPITimestampValue implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->timestampType = $timestampType instanceof TimestampType ? $timestampType->value : $timestampType;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['timestampType'] = $timestampType;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class AutomationAPITimestampValue implements BaseModel
     public function withTimestampType(TimestampType|string $timestampType): self
     {
         $obj = clone $this;
-        $obj->timestampType = $timestampType instanceof TimestampType ? $timestampType->value : $timestampType;
+        $obj['timestampType'] = $timestampType;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class AutomationAPITimestampValue implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

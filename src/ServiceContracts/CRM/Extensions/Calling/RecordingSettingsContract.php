@@ -25,17 +25,6 @@ interface RecordingSettingsContract
     /**
      * @api
      *
-     * @throws APIException
-     */
-    public function getURLFormatRaw(
-        int $appID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): ExtensionsCallingRecordingSettingsResponse;
-
-    /**
-     * @api
-     *
      * @param int $engagementID
      *
      * @throws APIException

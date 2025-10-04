@@ -83,30 +83,8 @@ interface ChannelConnectionSettingsContract
      *
      * @throws APIException
      */
-    public function deleteRaw(
-        int $appID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
-    ): ExtensionsCallingChannelConnectionSettingsResponse;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        int $appID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): ExtensionsCallingChannelConnectionSettingsResponse;
 }

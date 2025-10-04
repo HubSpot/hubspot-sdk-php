@@ -142,7 +142,7 @@ final class MarketingFormsFormStyle implements BaseModel
         $obj->labelTextSize = $labelTextSize;
         $obj->legalConsentTextColor = $legalConsentTextColor;
         $obj->legalConsentTextSize = $legalConsentTextSize;
-        $obj->submitAlignment = $submitAlignment instanceof SubmitAlignment ? $submitAlignment->value : $submitAlignment;
+        $obj['submitAlignment'] = $submitAlignment;
         $obj->submitColor = $submitColor;
         $obj->submitFontColor = $submitFontColor;
         $obj->submitSize = $submitSize;
@@ -222,7 +222,7 @@ final class MarketingFormsFormStyle implements BaseModel
         SubmitAlignment|string $submitAlignment
     ): self {
         $obj = clone $this;
-        $obj->submitAlignment = $submitAlignment instanceof SubmitAlignment ? $submitAlignment->value : $submitAlignment;
+        $obj['submitAlignment'] = $submitAlignment;
 
         return $obj;
     }

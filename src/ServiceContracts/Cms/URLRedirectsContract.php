@@ -162,30 +162,8 @@ interface URLRedirectsContract
      *
      * @throws APIException
      */
-    public function deleteRaw(
-        string $urlRedirectID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
     public function read(
         string $urlRedirectID,
         ?RequestOptions $requestOptions = null
-    ): CmsURLMapping;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $urlRedirectID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null,
     ): CmsURLMapping;
 }

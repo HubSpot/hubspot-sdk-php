@@ -162,7 +162,7 @@ final class FilesFile implements BaseModel
         $obj = new self;
 
         $obj->id = $id;
-        $obj->access = $access instanceof Access ? $access->value : $access;
+        $obj['access'] = $access;
         $obj->archived = $archived;
         $obj->createdAt = $createdAt;
         $obj->updatedAt = $updatedAt;
@@ -201,7 +201,7 @@ final class FilesFile implements BaseModel
     public function withAccess(Access|string $access): self
     {
         $obj = clone $this;
-        $obj->access = $access instanceof Access ? $access->value : $access;
+        $obj['access'] = $access;
 
         return $obj;
     }

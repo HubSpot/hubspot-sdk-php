@@ -126,17 +126,17 @@ final class MarketingSubscriptionsPublicStatus implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->channel = $channel instanceof Channel ? $channel->value : $channel;
+        $obj['channel'] = $channel;
         $obj->source = $source;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
         $obj->subscriberIDString = $subscriberIDString;
         $obj->subscriptionID = $subscriptionID;
         $obj->timestamp = $timestamp;
 
         null !== $businessUnitID && $obj->businessUnitID = $businessUnitID;
-        null !== $legalBasis && $obj->legalBasis = $legalBasis instanceof LegalBasis ? $legalBasis->value : $legalBasis;
+        null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
-        null !== $setStatusSuccessReason && $obj->setStatusSuccessReason = $setStatusSuccessReason instanceof SetStatusSuccessReason ? $setStatusSuccessReason->value : $setStatusSuccessReason;
+        null !== $setStatusSuccessReason && $obj['setStatusSuccessReason'] = $setStatusSuccessReason;
         null !== $subscriptionName && $obj->subscriptionName = $subscriptionName;
 
         return $obj;
@@ -148,7 +148,7 @@ final class MarketingSubscriptionsPublicStatus implements BaseModel
     public function withChannel(Channel|string $channel): self
     {
         $obj = clone $this;
-        $obj->channel = $channel instanceof Channel ? $channel->value : $channel;
+        $obj['channel'] = $channel;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class MarketingSubscriptionsPublicStatus implements BaseModel
     public function withStatus(Status|string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         return $obj;
     }
@@ -210,7 +210,7 @@ final class MarketingSubscriptionsPublicStatus implements BaseModel
     public function withLegalBasis(LegalBasis|string $legalBasis): self
     {
         $obj = clone $this;
-        $obj->legalBasis = $legalBasis instanceof LegalBasis ? $legalBasis->value : $legalBasis;
+        $obj['legalBasis'] = $legalBasis;
 
         return $obj;
     }
@@ -231,7 +231,7 @@ final class MarketingSubscriptionsPublicStatus implements BaseModel
         SetStatusSuccessReason|string $setStatusSuccessReason
     ): self {
         $obj = clone $this;
-        $obj->setStatusSuccessReason = $setStatusSuccessReason instanceof SetStatusSuccessReason ? $setStatusSuccessReason->value : $setStatusSuccessReason;
+        $obj['setStatusSuccessReason'] = $setStatusSuccessReason;
 
         return $obj;
     }

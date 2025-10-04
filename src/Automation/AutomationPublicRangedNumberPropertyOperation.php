@@ -87,7 +87,7 @@ final class AutomationPublicRangedNumberPropertyOperation implements BaseModel
 
         $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
         $obj->lowerBound = $lowerBound;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
         $obj->operator = $operator;
         $obj->upperBound = $upperBound;
 
@@ -117,7 +117,7 @@ final class AutomationPublicRangedNumberPropertyOperation implements BaseModel
     public function withOperationType(OperationType|string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }

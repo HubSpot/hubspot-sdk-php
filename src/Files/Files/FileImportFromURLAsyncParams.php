@@ -124,11 +124,11 @@ final class FileImportFromURLAsyncParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->access = $access instanceof Access ? $access->value : $access;
+        $obj['access'] = $access;
         $obj->url = $url;
 
-        null !== $duplicateValidationScope && $obj->duplicateValidationScope = $duplicateValidationScope instanceof DuplicateValidationScope ? $duplicateValidationScope->value : $duplicateValidationScope;
-        null !== $duplicateValidationStrategy && $obj->duplicateValidationStrategy = $duplicateValidationStrategy instanceof DuplicateValidationStrategy ? $duplicateValidationStrategy->value : $duplicateValidationStrategy;
+        null !== $duplicateValidationScope && $obj['duplicateValidationScope'] = $duplicateValidationScope;
+        null !== $duplicateValidationStrategy && $obj['duplicateValidationStrategy'] = $duplicateValidationStrategy;
         null !== $expiresAt && $obj->expiresAt = $expiresAt;
         null !== $folderID && $obj->folderID = $folderID;
         null !== $folderPath && $obj->folderPath = $folderPath;
@@ -145,7 +145,7 @@ final class FileImportFromURLAsyncParams implements BaseModel
     public function withAccess(Access|string $access): self
     {
         $obj = clone $this;
-        $obj->access = $access instanceof Access ? $access->value : $access;
+        $obj['access'] = $access;
 
         return $obj;
     }
@@ -165,7 +165,7 @@ final class FileImportFromURLAsyncParams implements BaseModel
         DuplicateValidationScope|string $duplicateValidationScope
     ): self {
         $obj = clone $this;
-        $obj->duplicateValidationScope = $duplicateValidationScope instanceof DuplicateValidationScope ? $duplicateValidationScope->value : $duplicateValidationScope;
+        $obj['duplicateValidationScope'] = $duplicateValidationScope;
 
         return $obj;
     }
@@ -177,7 +177,7 @@ final class FileImportFromURLAsyncParams implements BaseModel
         DuplicateValidationStrategy|string $duplicateValidationStrategy
     ): self {
         $obj = clone $this;
-        $obj->duplicateValidationStrategy = $duplicateValidationStrategy instanceof DuplicateValidationStrategy ? $duplicateValidationStrategy->value : $duplicateValidationStrategy;
+        $obj['duplicateValidationStrategy'] = $duplicateValidationStrategy;
 
         return $obj;
     }

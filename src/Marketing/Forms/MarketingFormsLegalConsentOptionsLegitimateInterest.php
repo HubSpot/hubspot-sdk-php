@@ -80,10 +80,10 @@ final class MarketingFormsLegalConsentOptionsLegitimateInterest implements BaseM
     ): self {
         $obj = new self;
 
-        $obj->lawfulBasis = $lawfulBasis instanceof LawfulBasis ? $lawfulBasis->value : $lawfulBasis;
+        $obj['lawfulBasis'] = $lawfulBasis;
         $obj->privacyText = $privacyText;
         $obj->subscriptionTypeIDs = $subscriptionTypeIDs;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class MarketingFormsLegalConsentOptionsLegitimateInterest implements BaseM
     public function withLawfulBasis(LawfulBasis|string $lawfulBasis): self
     {
         $obj = clone $this;
-        $obj->lawfulBasis = $lawfulBasis instanceof LawfulBasis ? $lawfulBasis->value : $lawfulBasis;
+        $obj['lawfulBasis'] = $lawfulBasis;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class MarketingFormsLegalConsentOptionsLegitimateInterest implements BaseM
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

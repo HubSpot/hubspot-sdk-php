@@ -82,7 +82,7 @@ final class AutomationPublicPropertyReferencedTime implements BaseModel
 
         $obj->property = $property;
         $obj->referenceType = $referenceType;
-        $obj->timeType = $timeType instanceof TimeType ? $timeType->value : $timeType;
+        $obj['timeType'] = $timeType;
         $obj->zoneID = $zoneID;
 
         null !== $timezoneSource && $obj->timezoneSource = $timezoneSource;
@@ -112,7 +112,7 @@ final class AutomationPublicPropertyReferencedTime implements BaseModel
     public function withTimeType(TimeType|string $timeType): self
     {
         $obj = clone $this;
-        $obj->timeType = $timeType instanceof TimeType ? $timeType->value : $timeType;
+        $obj['timeType'] = $timeType;
 
         return $obj;
     }

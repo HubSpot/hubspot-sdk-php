@@ -83,7 +83,7 @@ final class MarketingFormsFormDisplayOptions implements BaseModel
         $obj->renderRawHTML = $renderRawHTML;
         $obj->style = $style;
         $obj->submitButtonText = $submitButtonText;
-        $obj->theme = $theme instanceof Theme ? $theme->value : $theme;
+        $obj['theme'] = $theme;
 
         null !== $cssClass && $obj->cssClass = $cssClass;
 
@@ -120,7 +120,7 @@ final class MarketingFormsFormDisplayOptions implements BaseModel
     public function withTheme(Theme|string $theme): self
     {
         $obj = clone $this;
-        $obj->theme = $theme instanceof Theme ? $theme->value : $theme;
+        $obj['theme'] = $theme;
 
         return $obj;
     }

@@ -84,7 +84,7 @@ final class AutomationAPIPropertyBasedEnrollmentSchedule implements BaseModel
         $obj->dateProperty = $dateProperty;
         $obj->daysDelta = $daysDelta;
         $obj->timeOfDay = $timeOfDay;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
         $obj->yearly = $yearly;
 
         return $obj;
@@ -120,7 +120,7 @@ final class AutomationAPIPropertyBasedEnrollmentSchedule implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

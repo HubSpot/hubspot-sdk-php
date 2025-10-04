@@ -9,7 +9,6 @@ use HubspotSDK\Cms\Hubdb\CmsHubdbBatchResponseHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3BatchUpdateRequest;
 use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchReplaceParams;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\Rows\BatchContract;
 
@@ -27,8 +26,6 @@ final class BatchService implements BatchContract
      *
      * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
      *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function replace(
@@ -45,8 +42,6 @@ final class BatchService implements BatchContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */

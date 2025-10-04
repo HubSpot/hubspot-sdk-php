@@ -133,7 +133,7 @@ final class MarketingFormsHubSpotFormDefinition implements BaseModel
         $obj->createdAt = $createdAt;
         $obj->displayOptions = $displayOptions;
         $obj->fieldGroups = $fieldGroups;
-        $obj->formType = $formType instanceof FormType ? $formType->value : $formType;
+        $obj['formType'] = $formType;
         $obj->legalConsentOptions = $legalConsentOptions;
         $obj->name = $name;
         $obj->updatedAt = $updatedAt;
@@ -202,7 +202,7 @@ final class MarketingFormsHubSpotFormDefinition implements BaseModel
     public function withFormType(FormType|string $formType): self
     {
         $obj = clone $this;
-        $obj->formType = $formType instanceof FormType ? $formType->value : $formType;
+        $obj['formType'] = $formType;
 
         return $obj;
     }

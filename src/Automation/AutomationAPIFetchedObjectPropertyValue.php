@@ -61,7 +61,7 @@ final class AutomationAPIFetchedObjectPropertyValue implements BaseModel
         $obj = new self;
 
         $obj->propertyToken = $propertyToken;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class AutomationAPIFetchedObjectPropertyValue implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

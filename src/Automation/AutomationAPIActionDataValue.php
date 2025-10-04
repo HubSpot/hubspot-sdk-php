@@ -67,7 +67,7 @@ final class AutomationAPIActionDataValue implements BaseModel
 
         $obj->actionID = $actionID;
         $obj->dataKey = $dataKey;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class AutomationAPIActionDataValue implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

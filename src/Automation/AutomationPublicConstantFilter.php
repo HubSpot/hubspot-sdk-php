@@ -62,7 +62,7 @@ final class AutomationPublicConstantFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
         $obj->shouldAccept = $shouldAccept;
 
         null !== $source && $obj->source = $source;
@@ -76,7 +76,7 @@ final class AutomationPublicConstantFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }

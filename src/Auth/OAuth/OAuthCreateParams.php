@@ -85,7 +85,7 @@ final class OAuthCreateParams implements BaseModel
         null !== $clientID && $obj->clientID = $clientID;
         null !== $clientSecret && $obj->clientSecret = $clientSecret;
         null !== $code && $obj->code = $code;
-        null !== $grantType && $obj->grantType = $grantType instanceof GrantType ? $grantType->value : $grantType;
+        null !== $grantType && $obj['grantType'] = $grantType;
         null !== $redirectUri && $obj->redirectUri = $redirectUri;
         null !== $refreshToken && $obj->refreshToken = $refreshToken;
 
@@ -122,7 +122,7 @@ final class OAuthCreateParams implements BaseModel
     public function withGrantType(GrantType|string $grantType): self
     {
         $obj = clone $this;
-        $obj->grantType = $grantType instanceof GrantType ? $grantType->value : $grantType;
+        $obj['grantType'] = $grantType;
 
         return $obj;
     }

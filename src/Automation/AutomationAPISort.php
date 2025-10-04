@@ -62,7 +62,7 @@ final class AutomationAPISort implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->order = $order instanceof Order ? $order->value : $order;
+        $obj['order'] = $order;
         $obj->property = $property;
 
         null !== $missing && $obj->missing = $missing;
@@ -76,7 +76,7 @@ final class AutomationAPISort implements BaseModel
     public function withOrder(Order|string $order): self
     {
         $obj = clone $this;
-        $obj->order = $order instanceof Order ? $order->value : $order;
+        $obj['order'] = $order;
 
         return $obj;
     }

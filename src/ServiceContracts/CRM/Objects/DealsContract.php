@@ -121,17 +121,6 @@ interface DealsContract
     /**
      * @api
      *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $dealID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
      * @param string $objectIDToMerge
      * @param string $primaryObjectID
      *

@@ -91,21 +91,6 @@ final class FoldersService implements FoldersContract
         string $folderID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = [];
-
-        return $this->deleteByIDRaw($folderID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteByIDRaw(
-        string $folderID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'delete',
@@ -124,21 +109,6 @@ final class FoldersService implements FoldersContract
      */
     public function deleteByPath(
         string $folderPath,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = [];
-
-        return $this->deleteByPathRaw($folderPath, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteByPathRaw(
-        string $folderPath,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line;
@@ -251,21 +221,6 @@ final class FoldersService implements FoldersContract
      */
     public function getUpdateAsyncStatus(
         string $taskID,
-        ?RequestOptions $requestOptions = null
-    ): FilesFolderActionResponse {
-        $params = [];
-
-        return $this->getUpdateAsyncStatusRaw($taskID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function getUpdateAsyncStatusRaw(
-        string $taskID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): FilesFolderActionResponse {
         // @phpstan-ignore-next-line;

@@ -6,24 +6,24 @@ namespace HubspotSDK\Cms\Blogs\Tags;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type blogs_tags_collection_response_with_total_tag_forward_paging = array{
  *   results: list<BlogsTagsTag>, total: int, paging?: ForwardPaging
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class BlogsTagsCollectionResponseWithTotalTagForwardPaging implements BaseModel
+final class BlogsTagsCollectionResponseWithTotalTagForwardPaging implements BaseModel, ResponseConverter
 {
     /**
      * @use SdkModel<blogs_tags_collection_response_with_total_tag_forward_paging>
      */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<BlogsTagsTag> $results */
     #[Api(list: BlogsTagsTag::class)]

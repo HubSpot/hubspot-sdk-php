@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\CRM\Pipelines\CRMPipelinesCollectionResponsePipelineNoPaging;
 use HubspotSDK\CRM\Pipelines\CRMPipelinesCollectionResponsePublicAuditInfoNoPaging;
 use HubspotSDK\CRM\Pipelines\CRMPipelinesPipeline;
@@ -24,8 +23,6 @@ interface PipelinesContract
      * @param string $label
      * @param list<CRMPipelinesPipelineStageInput> $stages
      *
-     * @return CRMPipelinesPipeline<HasRawResponse>
-     *
      * @throws APIException
      */
     public function create(
@@ -40,8 +37,6 @@ interface PipelinesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPipelinesPipeline<HasRawResponse>
      *
      * @throws APIException
      */
@@ -61,8 +56,6 @@ interface PipelinesContract
      * @param string $label
      * @param array<string, string> $metadata
      *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
-     *
      * @throws APIException
      */
     public function update(
@@ -81,8 +74,6 @@ interface PipelinesContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateRaw(
@@ -94,26 +85,11 @@ interface PipelinesContract
     /**
      * @api
      *
-     * @return CRMPipelinesCollectionResponsePipelineNoPaging<HasRawResponse>
-     *
      * @throws APIException
      */
     public function list(
         string $objectType,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesCollectionResponsePipelineNoPaging;
-
-    /**
-     * @api
-     *
-     * @return CRMPipelinesCollectionResponsePipelineNoPaging<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $objectType,
-        mixed $params,
-        ?RequestOptions $requestOptions = null,
     ): CRMPipelinesCollectionResponsePipelineNoPaging;
 
     /**
@@ -149,8 +125,6 @@ interface PipelinesContract
      *
      * @param string $objectType
      *
-     * @return CRMPipelinesCollectionResponsePublicAuditInfoNoPaging<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getAudit(
@@ -163,8 +137,6 @@ interface PipelinesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPipelinesCollectionResponsePublicAuditInfoNoPaging<HasRawResponse>
      *
      * @throws APIException
      */
@@ -180,8 +152,6 @@ interface PipelinesContract
      * @param string $objectType
      * @param string $pipelineID
      *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
-     *
      * @throws APIException
      */
     public function read(
@@ -195,8 +165,6 @@ interface PipelinesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
      *
      * @throws APIException
      */
@@ -215,8 +183,6 @@ interface PipelinesContract
      * @param string $label
      * @param array<string, string> $metadata
      *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
-     *
      * @throws APIException
      */
     public function replace(
@@ -233,8 +199,6 @@ interface PipelinesContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMPipelinesPipelineStage<HasRawResponse>
      *
      * @throws APIException
      */

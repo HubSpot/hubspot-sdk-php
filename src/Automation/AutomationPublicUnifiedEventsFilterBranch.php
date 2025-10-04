@@ -113,9 +113,9 @@ final class AutomationPublicUnifiedEventsFilterBranch implements BaseModel
         $obj->eventTypeID = $eventTypeID;
         $obj->filterBranches = $filterBranches;
         $obj->filterBranchOperator = $filterBranchOperator;
-        $obj->filterBranchType = $filterBranchType instanceof FilterBranchType ? $filterBranchType->value : $filterBranchType;
+        $obj['filterBranchType'] = $filterBranchType;
         $obj->filters = $filters;
-        $obj->operator = $operator instanceof Operator ? $operator->value : $operator;
+        $obj['operator'] = $operator;
 
         null !== $coalescingRefineBy && $obj->coalescingRefineBy = $coalescingRefineBy;
 
@@ -156,7 +156,7 @@ final class AutomationPublicUnifiedEventsFilterBranch implements BaseModel
         FilterBranchType|string $filterBranchType
     ): self {
         $obj = clone $this;
-        $obj->filterBranchType = $filterBranchType instanceof FilterBranchType ? $filterBranchType->value : $filterBranchType;
+        $obj['filterBranchType'] = $filterBranchType;
 
         return $obj;
     }
@@ -178,7 +178,7 @@ final class AutomationPublicUnifiedEventsFilterBranch implements BaseModel
     public function withOperator(Operator|string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator instanceof Operator ? $operator->value : $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }

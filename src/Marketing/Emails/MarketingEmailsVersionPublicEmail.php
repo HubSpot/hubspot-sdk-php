@@ -6,7 +6,9 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type marketing_emails_version_public_email = array{
@@ -15,15 +17,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   updatedAt: \DateTimeInterface,
  *   user: MarketingEmailsVersionUser,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class MarketingEmailsVersionPublicEmail implements BaseModel
+final class MarketingEmailsVersionPublicEmail implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<marketing_emails_version_public_email> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;

@@ -166,11 +166,11 @@ final class AutomationAPIPlatformFlowCreateRequest implements BaseModel
         $obj->blockedDates = $blockedDates;
         $obj->customProperties = $customProperties;
         $obj->dataSources = $dataSources;
-        $obj->flowType = $flowType instanceof FlowType ? $flowType->value : $flowType;
+        $obj['flowType'] = $flowType;
         $obj->isEnabled = $isEnabled;
         $obj->objectTypeID = $objectTypeID;
         $obj->timeWindows = $timeWindows;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
         null !== $enrollmentSchedule && $obj->enrollmentSchedule = $enrollmentSchedule;
@@ -232,7 +232,7 @@ final class AutomationAPIPlatformFlowCreateRequest implements BaseModel
     public function withFlowType(FlowType|string $flowType): self
     {
         $obj = clone $this;
-        $obj->flowType = $flowType instanceof FlowType ? $flowType->value : $flowType;
+        $obj['flowType'] = $flowType;
 
         return $obj;
     }
@@ -270,7 +270,7 @@ final class AutomationAPIPlatformFlowCreateRequest implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

@@ -77,7 +77,7 @@ final class AutomationPublicAbsoluteRangedTimestampRefineBy implements BaseModel
 
         $obj->lowerTimestamp = $lowerTimestamp;
         $obj->rangeType = $rangeType;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
         $obj->upperTimestamp = $upperTimestamp;
 
         return $obj;
@@ -105,7 +105,7 @@ final class AutomationPublicAbsoluteRangedTimestampRefineBy implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

@@ -73,8 +73,8 @@ final class AutomationAPIStaticDateAnchor implements BaseModel
         $obj = new self;
 
         $obj->dayOfMonth = $dayOfMonth;
-        $obj->month = $month instanceof Month ? $month->value : $month;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['month'] = $month;
+        $obj['type'] = $type;
 
         null !== $year && $obj->year = $year;
 
@@ -95,7 +95,7 @@ final class AutomationAPIStaticDateAnchor implements BaseModel
     public function withMonth(Month|string $month): self
     {
         $obj = clone $this;
-        $obj->month = $month instanceof Month ? $month->value : $month;
+        $obj['month'] = $month;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class AutomationAPIStaticDateAnchor implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

@@ -72,9 +72,9 @@ final class AutomationAPIMonthlyRelativeDaysEnrollmentSchedule implements BaseMo
     ): self {
         $obj = new self;
 
-        $obj->monthlyRelativeDays = $monthlyRelativeDays instanceof MonthlyRelativeDays ? $monthlyRelativeDays->value : $monthlyRelativeDays;
+        $obj['monthlyRelativeDays'] = $monthlyRelativeDays;
         $obj->timeOfDay = $timeOfDay;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class AutomationAPIMonthlyRelativeDaysEnrollmentSchedule implements BaseMo
         MonthlyRelativeDays|string $monthlyRelativeDays
     ): self {
         $obj = clone $this;
-        $obj->monthlyRelativeDays = $monthlyRelativeDays instanceof MonthlyRelativeDays ? $monthlyRelativeDays->value : $monthlyRelativeDays;
+        $obj['monthlyRelativeDays'] = $monthlyRelativeDays;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class AutomationAPIMonthlyRelativeDaysEnrollmentSchedule implements BaseMo
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

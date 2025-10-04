@@ -90,7 +90,7 @@ final class AutomationPublicRestrictedFilterBranch implements BaseModel
 
         $obj->filterBranches = $filterBranches;
         $obj->filterBranchOperator = $filterBranchOperator;
-        $obj->filterBranchType = $filterBranchType instanceof FilterBranchType ? $filterBranchType->value : $filterBranchType;
+        $obj['filterBranchType'] = $filterBranchType;
         $obj->filters = $filters;
 
         return $obj;
@@ -122,7 +122,7 @@ final class AutomationPublicRestrictedFilterBranch implements BaseModel
         FilterBranchType|string $filterBranchType
     ): self {
         $obj = clone $this;
-        $obj->filterBranchType = $filterBranchType instanceof FilterBranchType ? $filterBranchType->value : $filterBranchType;
+        $obj['filterBranchType'] = $filterBranchType;
 
         return $obj;
     }

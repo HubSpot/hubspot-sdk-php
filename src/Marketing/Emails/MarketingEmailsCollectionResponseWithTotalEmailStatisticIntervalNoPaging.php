@@ -6,23 +6,23 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type marketing_emails_collection_response_with_total_email_statistic_interval_no_paging = array{
  *   results: list<MarketingEmailsEmailStatisticInterval>, total: int
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging implements BaseModel
+final class MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging implements BaseModel, ResponseConverter
 {
     /**
      * @use SdkModel<marketing_emails_collection_response_with_total_email_statistic_interval_no_paging>
      */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<MarketingEmailsEmailStatisticInterval> $results */
     #[Api(list: MarketingEmailsEmailStatisticInterval::class)]

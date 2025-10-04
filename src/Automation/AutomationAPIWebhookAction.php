@@ -97,9 +97,9 @@ final class AutomationAPIWebhookAction implements BaseModel
         $obj = new self;
 
         $obj->actionID = $actionID;
-        $obj->method = $method instanceof Method ? $method->value : $method;
+        $obj['method'] = $method;
         $obj->queryParams = $queryParams;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
         $obj->webhookURL = $webhookURL;
 
         null !== $authSettings && $obj->authSettings = $authSettings;
@@ -122,7 +122,7 @@ final class AutomationAPIWebhookAction implements BaseModel
     public function withMethod(Method|string $method): self
     {
         $obj = clone $this;
-        $obj->method = $method instanceof Method ? $method->value : $method;
+        $obj['method'] = $method;
 
         return $obj;
     }
@@ -144,7 +144,7 @@ final class AutomationAPIWebhookAction implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

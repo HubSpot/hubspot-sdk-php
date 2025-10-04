@@ -143,13 +143,13 @@ final class MarketingEmailsEmailUpdateRequest implements BaseModel
         null !== $content && $obj->content = $content;
         null !== $from && $obj->from = $from;
         null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
-        null !== $language && $obj->language = $language instanceof Language ? $language->value : $language;
+        null !== $language && $obj['language'] = $language;
         null !== $name && $obj->name = $name;
         null !== $publishDate && $obj->publishDate = $publishDate;
         null !== $rssData && $obj->rssData = $rssData;
         null !== $sendOnPublish && $obj->sendOnPublish = $sendOnPublish;
-        null !== $state && $obj->state = $state instanceof State ? $state->value : $state;
-        null !== $subcategory && $obj->subcategory = $subcategory instanceof Subcategory ? $subcategory->value : $subcategory;
+        null !== $state && $obj['state'] = $state;
+        null !== $subcategory && $obj['subcategory'] = $subcategory;
         null !== $subject && $obj->subject = $subject;
         null !== $subscriptionDetails && $obj->subscriptionDetails = $subscriptionDetails;
         null !== $testing && $obj->testing = $testing;
@@ -222,7 +222,7 @@ final class MarketingEmailsEmailUpdateRequest implements BaseModel
     public function withLanguage(Language|string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language instanceof Language ? $language->value : $language;
+        $obj['language'] = $language;
 
         return $obj;
     }
@@ -266,7 +266,7 @@ final class MarketingEmailsEmailUpdateRequest implements BaseModel
     public function withState(State|string $state): self
     {
         $obj = clone $this;
-        $obj->state = $state instanceof State ? $state->value : $state;
+        $obj['state'] = $state;
 
         return $obj;
     }
@@ -277,7 +277,7 @@ final class MarketingEmailsEmailUpdateRequest implements BaseModel
     public function withSubcategory(Subcategory|string $subcategory): self
     {
         $obj = clone $this;
-        $obj->subcategory = $subcategory instanceof Subcategory ? $subcategory->value : $subcategory;
+        $obj['subcategory'] = $subcategory;
 
         return $obj;
     }

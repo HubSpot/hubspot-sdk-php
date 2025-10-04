@@ -61,7 +61,7 @@ final class AutomationPublicAdsTimeFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
         $obj->pruningRefineBy = $pruningRefineBy;
 
         return $obj;
@@ -73,7 +73,7 @@ final class AutomationPublicAdsTimeFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }

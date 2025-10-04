@@ -73,7 +73,7 @@ final class AutomationPublicIntegrationEventFilter implements BaseModel
 
         $obj->eventTypeID = $eventTypeID;
         $obj->filterLines = $filterLines;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class AutomationPublicIntegrationEventFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }

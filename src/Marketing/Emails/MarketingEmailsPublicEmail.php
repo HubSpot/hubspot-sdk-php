@@ -6,7 +6,9 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmail\Language;
 use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmail\State;
 use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmail\Type;
@@ -55,15 +57,13 @@ use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmail\Type;
  *   webversion?: MarketingEmailsPublicWebversionDetails,
  *   workflowNames?: list<string>,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class MarketingEmailsPublicEmail implements BaseModel
+final class MarketingEmailsPublicEmail implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<marketing_emails_public_email> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;
@@ -292,7 +292,7 @@ final class MarketingEmailsPublicEmail implements BaseModel
         $obj->from = $from;
         $obj->name = $name;
         $obj->sendOnPublish = $sendOnPublish;
-        $obj->state = $state instanceof State ? $state->value : $state;
+        $obj['state'] = $state;
         $obj->subcategory = $subcategory;
         $obj->subject = $subject;
         $obj->to = $to;
@@ -314,7 +314,7 @@ final class MarketingEmailsPublicEmail implements BaseModel
         null !== $isPublished && $obj->isPublished = $isPublished;
         null !== $isTransactional && $obj->isTransactional = $isTransactional;
         null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
-        null !== $language && $obj->language = $language instanceof Language ? $language->value : $language;
+        null !== $language && $obj['language'] = $language;
         null !== $publishDate && $obj->publishDate = $publishDate;
         null !== $publishedAt && $obj->publishedAt = $publishedAt;
         null !== $publishedByEmail && $obj->publishedByEmail = $publishedByEmail;
@@ -324,7 +324,7 @@ final class MarketingEmailsPublicEmail implements BaseModel
         null !== $stats && $obj->stats = $stats;
         null !== $subscriptionDetails && $obj->subscriptionDetails = $subscriptionDetails;
         null !== $testing && $obj->testing = $testing;
-        null !== $type && $obj->type = $type instanceof Type ? $type->value : $type;
+        null !== $type && $obj['type'] = $type;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
         null !== $updatedByID && $obj->updatedByID = $updatedByID;
         null !== $webversion && $obj->webversion = $webversion;
@@ -380,7 +380,7 @@ final class MarketingEmailsPublicEmail implements BaseModel
     public function withState(State|string $state): self
     {
         $obj = clone $this;
-        $obj->state = $state instanceof State ? $state->value : $state;
+        $obj['state'] = $state;
 
         return $obj;
     }
@@ -554,7 +554,7 @@ final class MarketingEmailsPublicEmail implements BaseModel
     public function withLanguage(Language|string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language instanceof Language ? $language->value : $language;
+        $obj['language'] = $language;
 
         return $obj;
     }
@@ -640,7 +640,7 @@ final class MarketingEmailsPublicEmail implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

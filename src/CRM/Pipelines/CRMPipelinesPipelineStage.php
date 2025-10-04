@@ -6,7 +6,9 @@ namespace HubspotSDK\CRM\Pipelines;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\CRM\Pipelines\CRMPipelinesPipelineStage\WritePermissions;
 
 /**
@@ -21,15 +23,13 @@ use HubspotSDK\CRM\Pipelines\CRMPipelinesPipelineStage\WritePermissions;
  *   metadata?: array<string, string>,
  *   writePermissions?: value-of<WritePermissions>,
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class CRMPipelinesPipelineStage implements BaseModel
+final class CRMPipelinesPipelineStage implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<crm_pipelines_pipeline_stage> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;
@@ -122,7 +122,7 @@ final class CRMPipelinesPipelineStage implements BaseModel
 
         null !== $archivedAt && $obj->archivedAt = $archivedAt;
         null !== $metadata && $obj->metadata = $metadata;
-        null !== $writePermissions && $obj->writePermissions = $writePermissions instanceof WritePermissions ? $writePermissions->value : $writePermissions;
+        null !== $writePermissions && $obj['writePermissions'] = $writePermissions;
 
         return $obj;
     }
@@ -201,7 +201,7 @@ final class CRMPipelinesPipelineStage implements BaseModel
         WritePermissions|string $writePermissions
     ): self {
         $obj = clone $this;
-        $obj->writePermissions = $writePermissions instanceof WritePermissions ? $writePermissions->value : $writePermissions;
+        $obj['writePermissions'] = $writePermissions;
 
         return $obj;
     }

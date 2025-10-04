@@ -30,7 +30,6 @@ use HubspotSDK\Automation\Actions\AutomationActionsPublicObjectRequestOptions;
 use HubspotSDK\Automation\Actions\AutomationActionsPublicSingleFieldDependency;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\ActionsContract;
 
@@ -59,8 +58,6 @@ final class ActionsService implements ActionsContract
      * @param list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency> $inputFieldDependencies
      * @param AutomationActionsPublicObjectRequestOptions $objectRequestOptions
      * @param list<AutomationActionsOutputFieldDefinition> $outputFields
-     *
-     * @return AutomationActionsPublicActionDefinition<HasRawResponse>
      *
      * @throws APIException
      */
@@ -101,8 +98,6 @@ final class ActionsService implements ActionsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return AutomationActionsPublicActionDefinition<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createRaw(
@@ -141,8 +136,6 @@ final class ActionsService implements ActionsContract
      * @param list<AutomationActionsOutputFieldDefinition> $outputFields
      * @param bool $published
      *
-     * @return AutomationActionsPublicActionDefinition<HasRawResponse>
-     *
      * @throws APIException
      */
     public function update(
@@ -180,8 +173,6 @@ final class ActionsService implements ActionsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return AutomationActionsPublicActionDefinition<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateRaw(
@@ -200,7 +191,7 @@ final class ActionsService implements ActionsContract
         return $this->client->request(
             method: 'patch',
             path: ['automation/v4/actions/%1$s/%2$s', $appID, $definitionID],
-            body: (object) array_diff_key($parsed, array_flip(['appID'])),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: AutomationActionsPublicActionDefinition::class,
         );
@@ -214,10 +205,6 @@ final class ActionsService implements ActionsContract
      * @param int $appID
      * @param string $after
      * @param int $limit
-     *
-     * @return AutomationActionsCollectionResponsePublicActionRevisionForwardPaging<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -237,10 +224,6 @@ final class ActionsService implements ActionsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return AutomationActionsCollectionResponsePublicActionRevisionForwardPaging<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -495,8 +478,6 @@ final class ActionsService implements ActionsContract
      * @param HubspotSDK\Automation\Actions\ActionCreateOrReplaceParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionCreateOrReplaceParams\FunctionType> $functionType
      * @param string $body
      *
-     * @return AutomationActionsPublicActionFunctionIdentifier<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createOrReplace(
@@ -521,8 +502,6 @@ final class ActionsService implements ActionsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return AutomationActionsPublicActionFunctionIdentifier<HasRawResponse>
      *
      * @throws APIException
      */
@@ -572,8 +551,6 @@ final class ActionsService implements ActionsContract
      * @param string $definitionID
      * @param string $body
      *
-     * @return AutomationActionsPublicActionFunctionIdentifier<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createOrReplaceByFunctionType(
@@ -599,8 +576,6 @@ final class ActionsService implements ActionsContract
      *
      * @param HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
      * @param array<string, mixed> $params
-     *
-     * @return AutomationActionsPublicActionFunctionIdentifier<HasRawResponse>
      *
      * @throws APIException
      */
@@ -648,8 +623,6 @@ final class ActionsService implements ActionsContract
      * @param int $appID
      * @param string $definitionID
      *
-     * @return AutomationActionsPublicActionFunction<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getByFunctionType(
@@ -668,8 +641,6 @@ final class ActionsService implements ActionsContract
      *
      * @param HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType> $functionType
      * @param array<string, mixed> $params
-     *
-     * @return AutomationActionsPublicActionFunction<HasRawResponse>
      *
      * @throws APIException
      */
@@ -710,8 +681,6 @@ final class ActionsService implements ActionsContract
      * @param string $definitionID
      * @param HubspotSDK\Automation\Actions\ActionReadParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionReadParams\FunctionType> $functionType
      *
-     * @return AutomationActionsPublicActionFunction<HasRawResponse>
-     *
      * @throws APIException
      */
     public function read(
@@ -734,8 +703,6 @@ final class ActionsService implements ActionsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return AutomationActionsPublicActionFunction<HasRawResponse>
      *
      * @throws APIException
      */

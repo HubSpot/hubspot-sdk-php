@@ -146,7 +146,7 @@ final class AutomationAPIPlatformFlowPutRequest implements BaseModel
         $obj->isEnabled = $isEnabled;
         $obj->revisionID = $revisionID;
         $obj->timeWindows = $timeWindows;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
         null !== $enrollmentSchedule && $obj->enrollmentSchedule = $enrollmentSchedule;
@@ -224,7 +224,7 @@ final class AutomationAPIPlatformFlowPutRequest implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

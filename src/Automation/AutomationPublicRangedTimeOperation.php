@@ -111,7 +111,7 @@ final class AutomationPublicRangedTimeOperation implements BaseModel
         $obj->lowerBoundTimePoint = $lowerBoundTimePoint;
         $obj->operationType = $operationType;
         $obj->operator = $operator;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
         $obj->upperBoundTimePoint = $upperBoundTimePoint;
 
         null !== $lowerBoundEndpointBehavior && $obj->lowerBoundEndpointBehavior = $lowerBoundEndpointBehavior;
@@ -161,7 +161,7 @@ final class AutomationPublicRangedTimeOperation implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

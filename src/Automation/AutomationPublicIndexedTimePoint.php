@@ -80,7 +80,7 @@ final class AutomationPublicIndexedTimePoint implements BaseModel
         $obj = new self;
 
         $obj->indexReference = $indexReference;
-        $obj->timeType = $timeType instanceof TimeType ? $timeType->value : $timeType;
+        $obj['timeType'] = $timeType;
         $obj->zoneID = $zoneID;
 
         null !== $offset && $obj->offset = $offset;
@@ -104,7 +104,7 @@ final class AutomationPublicIndexedTimePoint implements BaseModel
     public function withTimeType(TimeType|string $timeType): self
     {
         $obj = clone $this;
-        $obj->timeType = $timeType instanceof TimeType ? $timeType->value : $timeType;
+        $obj['timeType'] = $timeType;
 
         return $obj;
     }

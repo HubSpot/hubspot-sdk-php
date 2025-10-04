@@ -63,7 +63,7 @@ class Client extends BaseClient
         public ?string $developerHapikey = null,
         ?string $baseUrl = null,
     ) {
-        $base = $baseUrl ?? getenv('HUB_SPOT_BASE_URL') ?: 'https://api.hubapi.com';
+        $baseUrl ??= getenv('HUB_SPOT_BASE_URL') ?: 'https://api.hubapi.com';
 
         $options = RequestOptions::with(
             uriFactory: Psr17FactoryDiscovery::findUriFactory(),
@@ -76,7 +76,7 @@ class Client extends BaseClient
             headers: [
                 'Content-Type' => 'application/json', 'Accept' => 'application/json',
             ],
-            baseUrl: $base,
+            baseUrl: $baseUrl,
             options: $options,
         );
 

@@ -79,10 +79,10 @@ final class MarketingEmailsPublicEmailTestingDetails implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $abSampleSizeDefault && $obj->abSampleSizeDefault = $abSampleSizeDefault instanceof AbSampleSizeDefault ? $abSampleSizeDefault->value : $abSampleSizeDefault;
-        null !== $abSamplingDefault && $obj->abSamplingDefault = $abSamplingDefault instanceof AbSamplingDefault ? $abSamplingDefault->value : $abSamplingDefault;
-        null !== $abStatus && $obj->abStatus = $abStatus instanceof AbStatus ? $abStatus->value : $abStatus;
-        null !== $abSuccessMetric && $obj->abSuccessMetric = $abSuccessMetric instanceof AbSuccessMetric ? $abSuccessMetric->value : $abSuccessMetric;
+        null !== $abSampleSizeDefault && $obj['abSampleSizeDefault'] = $abSampleSizeDefault;
+        null !== $abSamplingDefault && $obj['abSamplingDefault'] = $abSamplingDefault;
+        null !== $abStatus && $obj['abStatus'] = $abStatus;
+        null !== $abSuccessMetric && $obj['abSuccessMetric'] = $abSuccessMetric;
         null !== $abTestPercentage && $obj->abTestPercentage = $abTestPercentage;
         null !== $hoursToWait && $obj->hoursToWait = $hoursToWait;
         null !== $testID && $obj->testID = $testID;
@@ -97,7 +97,7 @@ final class MarketingEmailsPublicEmailTestingDetails implements BaseModel
         AbSampleSizeDefault|string $abSampleSizeDefault
     ): self {
         $obj = clone $this;
-        $obj->abSampleSizeDefault = $abSampleSizeDefault instanceof AbSampleSizeDefault ? $abSampleSizeDefault->value : $abSampleSizeDefault;
+        $obj['abSampleSizeDefault'] = $abSampleSizeDefault;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class MarketingEmailsPublicEmailTestingDetails implements BaseModel
         AbSamplingDefault|string $abSamplingDefault
     ): self {
         $obj = clone $this;
-        $obj->abSamplingDefault = $abSamplingDefault instanceof AbSamplingDefault ? $abSamplingDefault->value : $abSamplingDefault;
+        $obj['abSamplingDefault'] = $abSamplingDefault;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class MarketingEmailsPublicEmailTestingDetails implements BaseModel
     public function withAbStatus(AbStatus|string $abStatus): self
     {
         $obj = clone $this;
-        $obj->abStatus = $abStatus instanceof AbStatus ? $abStatus->value : $abStatus;
+        $obj['abStatus'] = $abStatus;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class MarketingEmailsPublicEmailTestingDetails implements BaseModel
         AbSuccessMetric|string $abSuccessMetric
     ): self {
         $obj = clone $this;
-        $obj->abSuccessMetric = $abSuccessMetric instanceof AbSuccessMetric ? $abSuccessMetric->value : $abSuccessMetric;
+        $obj['abSuccessMetric'] = $abSuccessMetric;
 
         return $obj;
     }

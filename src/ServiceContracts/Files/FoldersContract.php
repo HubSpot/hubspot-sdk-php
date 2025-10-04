@@ -58,31 +58,9 @@ interface FoldersContract
      *
      * @throws APIException
      */
-    public function deleteByIDRaw(
-        string $folderID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
     public function deleteByPath(
         string $folderPath,
         ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteByPathRaw(
-        string $folderPath,
-        mixed $params,
-        ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
@@ -144,17 +122,6 @@ interface FoldersContract
      */
     public function getUpdateAsyncStatus(
         string $taskID,
-        ?RequestOptions $requestOptions = null
-    ): FilesFolderActionResponse;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function getUpdateAsyncStatusRaw(
-        string $taskID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): FilesFolderActionResponse;
 

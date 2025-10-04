@@ -70,7 +70,7 @@ final class AutomationPublicAllPropertyTypesOperation implements BaseModel
         $obj = new self;
 
         $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
         $obj->operator = $operator;
 
         return $obj;
@@ -91,7 +91,7 @@ final class AutomationPublicAllPropertyTypesOperation implements BaseModel
     public function withOperationType(OperationType|string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }

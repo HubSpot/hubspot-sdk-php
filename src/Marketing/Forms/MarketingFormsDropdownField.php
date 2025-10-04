@@ -126,7 +126,7 @@ final class MarketingFormsDropdownField implements BaseModel
 
         $obj->defaultValues = $defaultValues;
         $obj->dependentFields = $dependentFields;
-        $obj->fieldType = $fieldType instanceof FieldType ? $fieldType->value : $fieldType;
+        $obj['fieldType'] = $fieldType;
         $obj->hidden = $hidden;
         $obj->label = $label;
         $obj->name = $name;
@@ -167,7 +167,7 @@ final class MarketingFormsDropdownField implements BaseModel
     public function withFieldType(FieldType|string $fieldType): self
     {
         $obj = clone $this;
-        $obj->fieldType = $fieldType instanceof FieldType ? $fieldType->value : $fieldType;
+        $obj['fieldType'] = $fieldType;
 
         return $obj;
     }

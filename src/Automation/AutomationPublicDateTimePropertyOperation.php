@@ -86,7 +86,7 @@ final class AutomationPublicDateTimePropertyOperation implements BaseModel
         $obj = new self;
 
         $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
         $obj->operator = $operator;
         $obj->requiresTimeZoneConversion = $requiresTimeZoneConversion;
         $obj->timestamp = $timestamp;
@@ -109,7 +109,7 @@ final class AutomationPublicDateTimePropertyOperation implements BaseModel
     public function withOperationType(OperationType|string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }

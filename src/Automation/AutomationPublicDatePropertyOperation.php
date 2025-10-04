@@ -95,7 +95,7 @@ final class AutomationPublicDatePropertyOperation implements BaseModel
         $obj->day = $day;
         $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
         $obj->month = $month;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
         $obj->operator = $operator;
         $obj->year = $year;
 
@@ -133,7 +133,7 @@ final class AutomationPublicDatePropertyOperation implements BaseModel
     public function withOperationType(OperationType|string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }

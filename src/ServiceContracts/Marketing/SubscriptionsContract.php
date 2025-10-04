@@ -29,30 +29,9 @@ interface SubscriptionsContract
      *
      * @throws APIException
      */
-    public function listRaw(
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3SubscriptionDefinitionsResponse;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
     public function getEmailStatus(
         string $emailAddress,
         ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3PublicSubscriptionStatusesResponse;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function getEmailStatusRaw(
-        string $emailAddress,
-        mixed $params,
-        ?RequestOptions $requestOptions = null,
     ): SubscriptionsV3PublicSubscriptionStatusesResponse;
 
     /**

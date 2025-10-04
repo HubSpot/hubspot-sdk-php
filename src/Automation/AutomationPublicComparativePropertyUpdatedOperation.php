@@ -85,7 +85,7 @@ final class AutomationPublicComparativePropertyUpdatedOperation implements BaseM
 
         $obj->comparisonPropertyName = $comparisonPropertyName;
         $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
         $obj->operator = $operator;
 
         null !== $defaultComparisonValue && $obj->defaultComparisonValue = $defaultComparisonValue;
@@ -117,7 +117,7 @@ final class AutomationPublicComparativePropertyUpdatedOperation implements BaseM
     public function withOperationType(OperationType|string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType instanceof OperationType ? $operationType->value : $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }

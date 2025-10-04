@@ -116,7 +116,7 @@ final class AutomationAPICustomCodeAction implements BaseModel
         $obj->runtime = $runtime;
         $obj->secretNames = $secretNames;
         $obj->sourceCode = $sourceCode;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $connection && $obj->connection = $connection;
 
@@ -186,7 +186,7 @@ final class AutomationAPICustomCodeAction implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

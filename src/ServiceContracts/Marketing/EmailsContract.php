@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
@@ -54,8 +53,6 @@ interface EmailsContract
      * @param MarketingEmailsPublicEmailToDetails $to
      * @param MarketingEmailsPublicWebversionDetails $webversion
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function create(
@@ -87,8 +84,6 @@ interface EmailsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createRaw(
@@ -118,8 +113,6 @@ interface EmailsContract
      * @param MarketingEmailsPublicEmailTestingDetails $testing
      * @param MarketingEmailsPublicEmailToDetails $to
      * @param MarketingEmailsPublicWebversionDetails $webversion
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -152,8 +145,6 @@ interface EmailsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateRaw(
@@ -183,10 +174,6 @@ interface EmailsContract
      * @param \DateTimeInterface $updatedBefore
      * @param bool $workflowNames
      *
-     * @return MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function list(
@@ -214,10 +201,6 @@ interface EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -259,8 +242,6 @@ interface EmailsContract
      * @param string $cloneName
      * @param string $language
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function clone(
@@ -275,8 +256,6 @@ interface EmailsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function cloneRaw(
@@ -289,8 +268,6 @@ interface EmailsContract
      *
      * @param string $contentID
      * @param string $variationName
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -305,8 +282,6 @@ interface EmailsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createAbTestVariationRaw(
@@ -316,8 +291,6 @@ interface EmailsContract
 
     /**
      * @api
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -329,21 +302,6 @@ interface EmailsContract
     /**
      * @api
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function getAbTestVariationRaw(
-        string $emailID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
-
-    /**
-     * @api
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getDraft(
@@ -354,25 +312,10 @@ interface EmailsContract
     /**
      * @api
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function getDraftRaw(
-        string $emailID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
-
-    /**
-     * @api
-     *
      * @param list<int> $emailIDs
      * @param string $endTimestamp
      * @param string $property
      * @param string $startTimestamp
-     *
-     * @return MarketingEmailsAggregateEmailStatistics<HasRawResponse>
      *
      * @throws APIException
      */
@@ -389,8 +332,6 @@ interface EmailsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return MarketingEmailsAggregateEmailStatistics<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getEmailsListRaw(
@@ -405,10 +346,6 @@ interface EmailsContract
      * @param string $endTimestamp
      * @param Interval|value-of<Interval> $interval
      * @param string $startTimestamp
-     *
-     * @return MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -425,10 +362,6 @@ interface EmailsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function getHistogramRaw(
@@ -440,8 +373,6 @@ interface EmailsContract
      * @api
      *
      * @param string $emailID
-     *
-     * @return MarketingEmailsVersionPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -455,8 +386,6 @@ interface EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsVersionPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -473,10 +402,6 @@ interface EmailsContract
      * @param string $before
      * @param int $limit
      *
-     * @return MarketingEmailsCollectionResponseWithTotalVersionPublicEmail<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function getRevisions(
@@ -491,10 +416,6 @@ interface EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsCollectionResponseWithTotalVersionPublicEmail<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -517,24 +438,11 @@ interface EmailsContract
     /**
      * @api
      *
-     * @throws APIException
-     */
-    public function publishOrSendRaw(
-        string $emailID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
      * @param bool $archived
      * @param list<string> $includedProperties
      * @param bool $includeStats
      * @param bool $marketingCampaignNames
      * @param bool $workflowNames
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -552,8 +460,6 @@ interface EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -576,20 +482,7 @@ interface EmailsContract
     /**
      * @api
      *
-     * @throws APIException
-     */
-    public function resetDraftRaw(
-        string $emailID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
      * @param string $emailID
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -603,8 +496,6 @@ interface EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -653,17 +544,6 @@ interface EmailsContract
     /**
      * @api
      *
-     * @throws APIException
-     */
-    public function unpublishOrCancelRaw(
-        string $emailID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
      * @param string $activeDomain
      * @param bool $archived
      * @param int $businessUnitID
@@ -683,8 +563,6 @@ interface EmailsContract
      * @param MarketingEmailsPublicEmailTestingDetails $testing
      * @param MarketingEmailsPublicEmailToDetails $to
      * @param MarketingEmailsPublicWebversionDetails $webversion
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -716,8 +594,6 @@ interface EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */

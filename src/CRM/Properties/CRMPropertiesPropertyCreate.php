@@ -134,14 +134,14 @@ final class CRMPropertiesPropertyCreate implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->fieldType = $fieldType instanceof FieldType ? $fieldType->value : $fieldType;
+        $obj['fieldType'] = $fieldType;
         $obj->groupName = $groupName;
         $obj->label = $label;
         $obj->name = $name;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         null !== $calculationFormula && $obj->calculationFormula = $calculationFormula;
-        null !== $dataSensitivity && $obj->dataSensitivity = $dataSensitivity instanceof DataSensitivity ? $dataSensitivity->value : $dataSensitivity;
+        null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
         null !== $displayOrder && $obj->displayOrder = $displayOrder;
         null !== $externalOptions && $obj->externalOptions = $externalOptions;
         null !== $formField && $obj->formField = $formField;
@@ -159,7 +159,7 @@ final class CRMPropertiesPropertyCreate implements BaseModel
     public function withFieldType(FieldType|string $fieldType): self
     {
         $obj = clone $this;
-        $obj->fieldType = $fieldType instanceof FieldType ? $fieldType->value : $fieldType;
+        $obj['fieldType'] = $fieldType;
 
         return $obj;
     }
@@ -194,7 +194,7 @@ final class CRMPropertiesPropertyCreate implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -214,7 +214,7 @@ final class CRMPropertiesPropertyCreate implements BaseModel
         DataSensitivity|string $dataSensitivity
     ): self {
         $obj = clone $this;
-        $obj->dataSensitivity = $dataSensitivity instanceof DataSensitivity ? $dataSensitivity->value : $dataSensitivity;
+        $obj['dataSensitivity'] = $dataSensitivity;
 
         return $obj;
     }

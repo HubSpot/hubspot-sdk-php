@@ -76,7 +76,7 @@ final class EmailGetHistogramParams implements BaseModel
 
         null !== $emailIDs && $obj->emailIDs = $emailIDs;
         null !== $endTimestamp && $obj->endTimestamp = $endTimestamp;
-        null !== $interval && $obj->interval = $interval instanceof Interval ? $interval->value : $interval;
+        null !== $interval && $obj['interval'] = $interval;
         null !== $startTimestamp && $obj->startTimestamp = $startTimestamp;
 
         return $obj;
@@ -107,7 +107,7 @@ final class EmailGetHistogramParams implements BaseModel
     public function withInterval(Interval|string $interval): self
     {
         $obj = clone $this;
-        $obj->interval = $interval instanceof Interval ? $interval->value : $interval;
+        $obj['interval'] = $interval;
 
         return $obj;
     }

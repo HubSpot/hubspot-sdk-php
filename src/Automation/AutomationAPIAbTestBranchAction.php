@@ -73,7 +73,7 @@ final class AutomationAPIAbTestBranchAction implements BaseModel
 
         $obj->actionID = $actionID;
         $obj->testBranches = $testBranches;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class AutomationAPIAbTestBranchAction implements BaseModel
     public function withType(Type|string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type instanceof Type ? $type->value : $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

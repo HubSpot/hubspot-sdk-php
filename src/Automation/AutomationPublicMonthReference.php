@@ -80,7 +80,7 @@ final class AutomationPublicMonthReference implements BaseModel
         $obj = new self;
 
         $obj->day = $day;
-        $obj->referenceType = $referenceType instanceof ReferenceType ? $referenceType->value : $referenceType;
+        $obj['referenceType'] = $referenceType;
 
         null !== $hour && $obj->hour = $hour;
         null !== $millisecond && $obj->millisecond = $millisecond;
@@ -104,7 +104,7 @@ final class AutomationPublicMonthReference implements BaseModel
     public function withReferenceType(ReferenceType|string $referenceType): self
     {
         $obj = clone $this;
-        $obj->referenceType = $referenceType instanceof ReferenceType ? $referenceType->value : $referenceType;
+        $obj['referenceType'] = $referenceType;
 
         return $obj;
     }

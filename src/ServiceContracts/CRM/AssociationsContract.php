@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\CRM\Associations\CRMAssociationsBatchResponsePublicAssociation;
 use HubspotSDK\CRM\Associations\CRMAssociationsBatchResponsePublicAssociationMulti;
 use HubspotSDK\CRM\Associations\CRMAssociationsPublicAssociation;
@@ -20,8 +19,6 @@ interface AssociationsContract
      * @param string $fromObjectType
      * @param list<CRMAssociationsPublicAssociation> $inputs
      *
-     * @return CRMAssociationsBatchResponsePublicAssociation<HasRawResponse>
-     *
      * @throws APIException
      */
     public function create(
@@ -35,8 +32,6 @@ interface AssociationsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMAssociationsBatchResponsePublicAssociation<HasRawResponse>
      *
      * @throws APIException
      */
@@ -80,8 +75,6 @@ interface AssociationsContract
      * @param string $fromObjectType
      * @param list<CRMPublicObjectID> $inputs
      *
-     * @return CRMAssociationsBatchResponsePublicAssociationMulti<HasRawResponse>
-     *
      * @throws APIException
      */
     public function read(
@@ -95,8 +88,6 @@ interface AssociationsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CRMAssociationsBatchResponsePublicAssociationMulti<HasRawResponse>
      *
      * @throws APIException
      */

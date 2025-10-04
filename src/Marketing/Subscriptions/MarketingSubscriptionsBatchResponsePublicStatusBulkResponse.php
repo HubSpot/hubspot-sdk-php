@@ -94,7 +94,7 @@ final class MarketingSubscriptionsBatchResponsePublicStatusBulkResponse implemen
         $obj->completedAt = $completedAt;
         $obj->results = $results;
         $obj->startedAt = $startedAt;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         null !== $links && $obj->links = $links;
         null !== $requestedAt && $obj->requestedAt = $requestedAt;
@@ -135,7 +135,7 @@ final class MarketingSubscriptionsBatchResponsePublicStatusBulkResponse implemen
     public function withStatus(Status|string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status instanceof Status ? $status->value : $status;
+        $obj['status'] = $status;
 
         return $obj;
     }

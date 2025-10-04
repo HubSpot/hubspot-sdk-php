@@ -92,7 +92,7 @@ final class AccountInfoAPIUsage implements BaseModel
 
         $obj->collectedAt = $collectedAt;
         $obj->currentUsage = $currentUsage;
-        $obj->fetchStatus = $fetchStatus instanceof FetchStatus ? $fetchStatus->value : $fetchStatus;
+        $obj['fetchStatus'] = $fetchStatus;
         $obj->name = $name;
         $obj->usageLimit = $usageLimit;
 
@@ -123,7 +123,7 @@ final class AccountInfoAPIUsage implements BaseModel
     public function withFetchStatus(FetchStatus|string $fetchStatus): self
     {
         $obj = clone $this;
-        $obj->fetchStatus = $fetchStatus instanceof FetchStatus ? $fetchStatus->value : $fetchStatus;
+        $obj['fetchStatus'] = $fetchStatus;
 
         return $obj;
     }

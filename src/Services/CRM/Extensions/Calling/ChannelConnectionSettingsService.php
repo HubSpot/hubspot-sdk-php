@@ -132,21 +132,6 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = [];
-
-        return $this->deleteRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        int $appID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'delete',
@@ -167,21 +152,6 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
-    ): ExtensionsCallingChannelConnectionSettingsResponse {
-        $params = [];
-
-        return $this->getRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        int $appID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): ExtensionsCallingChannelConnectionSettingsResponse {
         // @phpstan-ignore-next-line;

@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\Marketing\Emails\EmailCloneParams;
 use HubspotSDK\Marketing\Emails\EmailCreateAbTestVariationParams;
 use HubspotSDK\Marketing\Emails\EmailCreateParams;
@@ -77,8 +76,6 @@ final class EmailsService implements EmailsContract
      * @param MarketingEmailsPublicEmailToDetails $to
      * @param MarketingEmailsPublicWebversionDetails $webversion
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function create(
@@ -135,8 +132,6 @@ final class EmailsService implements EmailsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createRaw(
@@ -182,8 +177,6 @@ final class EmailsService implements EmailsContract
      * @param MarketingEmailsPublicEmailTestingDetails $testing
      * @param MarketingEmailsPublicEmailToDetails $to
      * @param MarketingEmailsPublicWebversionDetails $webversion
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -240,8 +233,6 @@ final class EmailsService implements EmailsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateRaw(
@@ -253,7 +244,7 @@ final class EmailsService implements EmailsContract
             $params,
             $requestOptions
         );
-        $query_params = array_flip(['archived']);
+        $query_params = ['archived'];
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -288,10 +279,6 @@ final class EmailsService implements EmailsContract
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
      * @param bool $workflowNames
-     *
-     * @return MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -342,10 +329,6 @@ final class EmailsService implements EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -423,8 +406,6 @@ final class EmailsService implements EmailsContract
      * @param string $cloneName
      * @param string $language
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function clone(
@@ -442,8 +423,6 @@ final class EmailsService implements EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -474,8 +453,6 @@ final class EmailsService implements EmailsContract
      * @param string $contentID
      * @param string $variationName
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createAbTestVariation(
@@ -492,8 +469,6 @@ final class EmailsService implements EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -521,29 +496,10 @@ final class EmailsService implements EmailsContract
      *
      * Get the variation of a an A/B marketing email
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getAbTestVariation(
         string $emailID,
-        ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
-        $params = [];
-
-        return $this->getAbTestVariationRaw($emailID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function getAbTestVariationRaw(
-        string $emailID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): MarketingEmailsPublicEmail {
         // @phpstan-ignore-next-line;
@@ -560,29 +516,10 @@ final class EmailsService implements EmailsContract
      *
      * Get draft version of a marketing email
      *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getDraft(
         string $emailID,
-        ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
-        $params = [];
-
-        return $this->getDraftRaw($emailID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function getDraftRaw(
-        string $emailID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): MarketingEmailsPublicEmail {
         // @phpstan-ignore-next-line;
@@ -603,8 +540,6 @@ final class EmailsService implements EmailsContract
      * @param string $endTimestamp
      * @param string $property
      * @param string $startTimestamp
-     *
-     * @return MarketingEmailsAggregateEmailStatistics<HasRawResponse>
      *
      * @throws APIException
      */
@@ -629,8 +564,6 @@ final class EmailsService implements EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsAggregateEmailStatistics<HasRawResponse>
      *
      * @throws APIException
      */
@@ -663,10 +596,6 @@ final class EmailsService implements EmailsContract
      * @param Interval|value-of<Interval> $interval
      * @param string $startTimestamp
      *
-     * @return MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function getHistogram(
@@ -690,10 +619,6 @@ final class EmailsService implements EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -723,8 +648,6 @@ final class EmailsService implements EmailsContract
      *
      * @param string $emailID
      *
-     * @return MarketingEmailsVersionPublicEmail<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getRevisionByID(
@@ -741,8 +664,6 @@ final class EmailsService implements EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsVersionPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -776,10 +697,6 @@ final class EmailsService implements EmailsContract
      * @param string $before
      * @param int $limit
      *
-     * @return MarketingEmailsCollectionResponseWithTotalVersionPublicEmail<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function getRevisions(
@@ -798,10 +715,6 @@ final class EmailsService implements EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsCollectionResponseWithTotalVersionPublicEmail<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -836,21 +749,6 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = [];
-
-        return $this->publishOrSendRaw($emailID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function publishOrSendRaw(
-        string $emailID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
@@ -870,8 +768,6 @@ final class EmailsService implements EmailsContract
      * @param bool $includeStats
      * @param bool $marketingCampaignNames
      * @param bool $workflowNames
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -899,8 +795,6 @@ final class EmailsService implements EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -935,21 +829,6 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = [];
-
-        return $this->resetDraftRaw($emailID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function resetDraftRaw(
-        string $emailID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
@@ -965,8 +844,6 @@ final class EmailsService implements EmailsContract
      * Restore a revision of a marketing email to DRAFT state
      *
      * @param string $emailID
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -988,8 +865,6 @@ final class EmailsService implements EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -1078,21 +953,6 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = [];
-
-        return $this->unpublishOrCancelRaw($emailID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function unpublishOrCancelRaw(
-        string $emailID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
@@ -1126,8 +986,6 @@ final class EmailsService implements EmailsContract
      * @param MarketingEmailsPublicEmailTestingDetails $testing
      * @param MarketingEmailsPublicEmailToDetails $to
      * @param MarketingEmailsPublicWebversionDetails $webversion
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */
@@ -1183,8 +1041,6 @@ final class EmailsService implements EmailsContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return MarketingEmailsPublicEmail<HasRawResponse>
      *
      * @throws APIException
      */

@@ -6,24 +6,24 @@ namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type cms_hubdb_collection_response_with_total_hub_db_table_v3_forward_paging = array{
  *   results: list<CmsHubdbHubDBTableV3>, total: int, paging?: ForwardPaging
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging implements BaseModel
+final class CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging implements BaseModel, ResponseConverter
 {
     /**
      * @use SdkModel<cms_hubdb_collection_response_with_total_hub_db_table_v3_forward_paging>
      */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<CmsHubdbHubDBTableV3> $results */
     #[Api(list: CmsHubdbHubDBTableV3::class)]

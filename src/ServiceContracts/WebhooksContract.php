@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Webhooks\WebhookCreateParams\EventType;
 use HubspotSDK\Webhooks\WebhooksBatchResponseSubscriptionResponse;
@@ -27,8 +26,6 @@ interface WebhooksContract
      * @param string $objectTypeID
      * @param string $propertyName
      *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function create(
@@ -45,8 +42,6 @@ interface WebhooksContract
      *
      * @param array<string, mixed> $params
      *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createRaw(
@@ -60,8 +55,6 @@ interface WebhooksContract
      *
      * @param int $appID
      * @param bool $active
-     *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -77,8 +70,6 @@ interface WebhooksContract
      *
      * @param array<string, mixed> $params
      *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateRaw(
@@ -90,25 +81,10 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @return WebhooksSubscriptionListResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
-    ): WebhooksSubscriptionListResponse;
-
-    /**
-     * @api
-     *
-     * @return WebhooksSubscriptionListResponse<HasRawResponse>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        int $appID,
-        mixed $params,
         ?RequestOptions $requestOptions = null
     ): WebhooksSubscriptionListResponse;
 
@@ -151,21 +127,8 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @throws APIException
-     */
-    public function clearRaw(
-        int $appID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
      * @param string $targetURL
      * @param WebhooksThrottlingSettings $throttling
-     *
-     * @return WebhooksSettingsResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -181,8 +144,6 @@ interface WebhooksContract
      *
      * @param array<string, mixed> $params
      *
-     * @return WebhooksSettingsResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function configureRaw(
@@ -195,8 +156,6 @@ interface WebhooksContract
      * @api
      *
      * @param int $appID
-     *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
      *
      * @throws APIException
      */
@@ -211,8 +170,6 @@ interface WebhooksContract
      *
      * @param array<string, mixed> $params
      *
-     * @return WebhooksSubscriptionResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function readRaw(
@@ -226,8 +183,6 @@ interface WebhooksContract
      *
      * @param list<WebhooksSubscriptionBatchUpdateRequest> $inputs
      *
-     * @return WebhooksBatchResponseSubscriptionResponse<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateBatch(
@@ -240,8 +195,6 @@ interface WebhooksContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return WebhooksBatchResponseSubscriptionResponse<HasRawResponse>
      *
      * @throws APIException
      */

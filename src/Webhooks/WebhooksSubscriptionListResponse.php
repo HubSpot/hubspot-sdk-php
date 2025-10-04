@@ -6,21 +6,21 @@ namespace HubspotSDK\Webhooks;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type webhooks_subscription_list_response = array{
  *   results: list<WebhooksSubscriptionResponse>
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class WebhooksSubscriptionListResponse implements BaseModel
+final class WebhooksSubscriptionListResponse implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<webhooks_subscription_list_response> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<WebhooksSubscriptionResponse> $results */
     #[Api(list: WebhooksSubscriptionResponse::class)]

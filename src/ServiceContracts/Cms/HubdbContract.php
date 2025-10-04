@@ -16,7 +16,6 @@ use HubspotSDK\Cms\Hubdb\CmsHubdbImportResult;
 use HubspotSDK\Cms\Hubdb\CmsHubdbRandomAccessCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\CmsHubdbStreamingCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Implementation\HasRawResponse;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -36,23 +35,10 @@ interface HubdbContract
     /**
      * @api
      *
-     * @throws APIException
-     */
-    public function archiveTableRaw(
-        string $tableIDOrName,
-        mixed $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
      * @param bool $copyRows
      * @param bool $isHubspotDefined
      * @param string $newLabel
      * @param string $newName
-     *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -70,8 +56,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function cloneDraftTableRaw(
@@ -85,8 +69,6 @@ interface HubdbContract
      *
      * @param string $tableIDOrName
      * @param string $name
-     *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -102,8 +84,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function cloneDraftTableRowRaw(
@@ -116,8 +96,6 @@ interface HubdbContract
      * @api
      *
      * @param list<CmsHubdbHubDBTableRowBatchCloneRequest> $inputs
-     *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -132,8 +110,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function cloneDraftTableRowsRaw(
@@ -147,8 +123,6 @@ interface HubdbContract
      *
      * @param list<CmsHubdbHubDBTableRowV3Request> $inputs
      *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createDraftTableRows(
@@ -161,8 +135,6 @@ interface HubdbContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -184,8 +156,6 @@ interface HubdbContract
      * @param bool $enableChildTablePages
      * @param bool $useForPages
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createTable(
@@ -205,8 +175,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function createTableRaw(
@@ -222,8 +190,6 @@ interface HubdbContract
      * @param int $displayIndex
      * @param string $name
      * @param string $path
-     *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -241,8 +207,6 @@ interface HubdbContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -320,10 +284,6 @@ interface HubdbContract
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
      *
-     * @return CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function getAllDraftTables(
@@ -346,10 +306,6 @@ interface HubdbContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging<
-     *   HasRawResponse
-     * >
      *
      * @throws APIException
      */
@@ -374,10 +330,6 @@ interface HubdbContract
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
      *
-     * @return CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function getAllTables(
@@ -401,10 +353,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging<
-     *   HasRawResponse
-     * >
-     *
      * @throws APIException
      */
     public function getAllTablesRaw(
@@ -418,8 +366,6 @@ interface HubdbContract
      * @param bool $archived
      * @param bool $includeForeignIDs
      * @param bool $isGetLocalizedSchema
-     *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -436,8 +382,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getDraftTableDetailsByIDRaw(
@@ -452,8 +396,6 @@ interface HubdbContract
      * @param string $tableIDOrName
      * @param bool $archived
      *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getDraftTableRowByID(
@@ -467,8 +409,6 @@ interface HubdbContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -485,8 +425,6 @@ interface HubdbContract
      * @param bool $includeForeignIDs
      * @param bool $isGetLocalizedSchema
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getTableDetails(
@@ -502,8 +440,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getTableDetailsRaw(
@@ -518,8 +454,6 @@ interface HubdbContract
      * @param string $tableIDOrName
      * @param bool $archived
      *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function getTableRow(
@@ -533,8 +467,6 @@ interface HubdbContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -586,8 +518,6 @@ interface HubdbContract
      * @param string $config
      * @param string $file
      *
-     * @return CmsHubdbImportResult<HasRawResponse>
-     *
      * @throws APIException
      */
     public function importDraftTable(
@@ -602,8 +532,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbImportResult<HasRawResponse>
-     *
      * @throws APIException
      */
     public function importDraftTableRaw(
@@ -617,8 +545,6 @@ interface HubdbContract
      *
      * @param bool $includeForeignIDs
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function publishDraftTable(
@@ -631,8 +557,6 @@ interface HubdbContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -699,8 +623,6 @@ interface HubdbContract
      *
      * @param list<string> $inputs
      *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function readDraftTableRows(
@@ -713,8 +635,6 @@ interface HubdbContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -729,8 +649,6 @@ interface HubdbContract
      *
      * @param list<string> $inputs
      *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function readTableRows(
@@ -743,8 +661,6 @@ interface HubdbContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -790,8 +706,6 @@ interface HubdbContract
      * @param string $name
      * @param string $path
      *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function replaceDraftTableRow(
@@ -810,8 +724,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function replaceDraftTableRowRaw(
@@ -824,8 +736,6 @@ interface HubdbContract
      * @api
      *
      * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
-     *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -840,8 +750,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function replaceDraftTableRowsRaw(
@@ -854,8 +762,6 @@ interface HubdbContract
      * @api
      *
      * @param bool $includeForeignIDs
-     *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -870,8 +776,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function resetDraftTableRaw(
@@ -885,8 +789,6 @@ interface HubdbContract
      *
      * @param bool $includeForeignIDs
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function unpublishTable(
@@ -899,8 +801,6 @@ interface HubdbContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -925,8 +825,6 @@ interface HubdbContract
      * @param bool $enableChildTablePages
      * @param bool $useForPages
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateDraftTable(
@@ -950,8 +848,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbHubDBTableV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateDraftTableRaw(
@@ -969,8 +865,6 @@ interface HubdbContract
      * @param int $displayIndex
      * @param string $name
      * @param string $path
-     *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */
@@ -990,8 +884,6 @@ interface HubdbContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CmsHubdbHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateDraftTableRowRaw(
@@ -1005,8 +897,6 @@ interface HubdbContract
      *
      * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
      *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
-     *
      * @throws APIException
      */
     public function updateDraftTableRows(
@@ -1019,8 +909,6 @@ interface HubdbContract
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CmsHubdbBatchResponseHubDBTableRowV3<HasRawResponse>
      *
      * @throws APIException
      */

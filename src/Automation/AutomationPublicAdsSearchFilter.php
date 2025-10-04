@@ -96,7 +96,7 @@ final class AutomationPublicAdsSearchFilter implements BaseModel
 
         $obj->adNetwork = $adNetwork;
         $obj->entityType = $entityType;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
         $obj->operator = $operator;
         $obj->searchTerms = $searchTerms;
         $obj->searchTermType = $searchTermType;
@@ -126,7 +126,7 @@ final class AutomationPublicAdsSearchFilter implements BaseModel
     public function withFilterType(FilterType|string $filterType): self
     {
         $obj = clone $this;
-        $obj->filterType = $filterType instanceof FilterType ? $filterType->value : $filterType;
+        $obj['filterType'] = $filterType;
 
         return $obj;
     }

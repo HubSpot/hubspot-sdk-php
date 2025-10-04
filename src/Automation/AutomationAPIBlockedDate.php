@@ -63,7 +63,7 @@ final class AutomationAPIBlockedDate implements BaseModel
         $obj = new self;
 
         $obj->dayOfMonth = $dayOfMonth;
-        $obj->month = $month instanceof Month ? $month->value : $month;
+        $obj['month'] = $month;
 
         null !== $year && $obj->year = $year;
 
@@ -84,7 +84,7 @@ final class AutomationAPIBlockedDate implements BaseModel
     public function withMonth(Month|string $month): self
     {
         $obj = clone $this;
-        $obj->month = $month instanceof Month ? $month->value : $month;
+        $obj['month'] = $month;
 
         return $obj;
     }

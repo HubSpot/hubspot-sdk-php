@@ -6,23 +6,23 @@ namespace HubspotSDK\CRM\Pipelines;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type crm_pipelines_collection_response_public_audit_info_no_paging = array{
  *   results: list<CRMPipelinesPublicAuditInfo>
  * }
- * When used in a response, this type parameter can define a $rawResponse property.
- * @template TRawResponse of object = object{}
- *
- * @mixin TRawResponse
  */
-final class CRMPipelinesCollectionResponsePublicAuditInfoNoPaging implements BaseModel
+final class CRMPipelinesCollectionResponsePublicAuditInfoNoPaging implements BaseModel, ResponseConverter
 {
     /**
      * @use SdkModel<crm_pipelines_collection_response_public_audit_info_no_paging>
      */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<CRMPipelinesPublicAuditInfo> $results */
     #[Api(list: CRMPipelinesPublicAuditInfo::class)]

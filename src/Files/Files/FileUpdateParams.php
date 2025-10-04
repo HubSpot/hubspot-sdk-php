@@ -87,7 +87,7 @@ final class FileUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $access && $obj->access = $access instanceof Access ? $access->value : $access;
+        null !== $access && $obj['access'] = $access;
         null !== $clearExpires && $obj->clearExpires = $clearExpires;
         null !== $expiresAt && $obj->expiresAt = $expiresAt;
         null !== $isUsableInContent && $obj->isUsableInContent = $isUsableInContent;
@@ -104,7 +104,7 @@ final class FileUpdateParams implements BaseModel
     public function withAccess(Access|string $access): self
     {
         $obj = clone $this;
-        $obj->access = $access instanceof Access ? $access->value : $access;
+        $obj['access'] = $access;
 
         return $obj;
     }
