@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\CRMObjectTypeDefinitionLabels;
+use HubspotSDK\CRM\ObjectTypeDefinitionLabels;
 
 /**
  * An object containing the method's parameters.
@@ -28,7 +28,7 @@ use HubspotSDK\CRM\CRMObjectTypeDefinitionLabels;
  *
  * @phpstan-type schema_update_params = array{
  *   clearDescription?: bool,
- *   labels?: CRMObjectTypeDefinitionLabels,
+ *   labels?: ObjectTypeDefinitionLabels,
  *   primaryDisplayProperty?: string,
  *   requiredProperties?: list<string>,
  *   restorable?: bool,
@@ -46,7 +46,7 @@ final class SchemaUpdateParams implements BaseModel
     public ?bool $clearDescription;
 
     #[Api(optional: true)]
-    public ?CRMObjectTypeDefinitionLabels $labels;
+    public ?ObjectTypeDefinitionLabels $labels;
 
     #[Api(optional: true)]
     public ?string $primaryDisplayProperty;
@@ -82,7 +82,7 @@ final class SchemaUpdateParams implements BaseModel
      */
     public static function with(
         ?bool $clearDescription = null,
-        ?CRMObjectTypeDefinitionLabels $labels = null,
+        ?ObjectTypeDefinitionLabels $labels = null,
         ?string $primaryDisplayProperty = null,
         ?array $requiredProperties = null,
         ?bool $restorable = null,
@@ -110,7 +110,7 @@ final class SchemaUpdateParams implements BaseModel
         return $obj;
     }
 
-    public function withLabels(CRMObjectTypeDefinitionLabels $labels): self
+    public function withLabels(ObjectTypeDefinitionLabels $labels): self
     {
         $obj = clone $this;
         $obj->labels = $labels;

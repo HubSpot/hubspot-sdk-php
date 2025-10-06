@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
 
 /**
  * An object containing the method's parameters.
@@ -27,7 +27,7 @@ use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInputUpsert;
  * @see HubspotSDK\CRM\Objects\Companies->upsert
  *
  * @phpstan-type company_upsert_params = array{
- *   inputs: list<CRMObjectsSimplePublicObjectBatchInputUpsert>
+ *   inputs: list<SimplePublicObjectBatchInputUpsert>
  * }
  */
 final class CompanyUpsertParams implements BaseModel
@@ -36,8 +36,8 @@ final class CompanyUpsertParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<CRMObjectsSimplePublicObjectBatchInputUpsert> $inputs */
-    #[Api(list: CRMObjectsSimplePublicObjectBatchInputUpsert::class)]
+    /** @var list<SimplePublicObjectBatchInputUpsert> $inputs */
+    #[Api(list: SimplePublicObjectBatchInputUpsert::class)]
     public array $inputs;
 
     /**
@@ -64,7 +64,7 @@ final class CompanyUpsertParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMObjectsSimplePublicObjectBatchInputUpsert> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -76,7 +76,7 @@ final class CompanyUpsertParams implements BaseModel
     }
 
     /**
-     * @param list<CRMObjectsSimplePublicObjectBatchInputUpsert> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
      */
     public function withInputs(array $inputs): self
     {

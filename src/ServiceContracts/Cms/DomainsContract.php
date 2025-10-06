@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\Domains\CmsDomainsCollectionResponseWithTotalDomainForwardPaging;
-use HubspotSDK\Cms\Domains\CmsDomainsDomain;
+use HubspotSDK\Cms\Domains\CollectionResponseWithTotalDomainForwardPaging;
+use HubspotSDK\Cms\Domains\Domain;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -41,7 +41,7 @@ interface DomainsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsDomainsCollectionResponseWithTotalDomainForwardPaging;
+    ): CollectionResponseWithTotalDomainForwardPaging;
 
     /**
      * @api
@@ -53,7 +53,7 @@ interface DomainsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsDomainsCollectionResponseWithTotalDomainForwardPaging;
+    ): CollectionResponseWithTotalDomainForwardPaging;
 
     /**
      * @api
@@ -63,5 +63,5 @@ interface DomainsContract
     public function read(
         string $domainID,
         ?RequestOptions $requestOptions = null
-    ): CmsDomainsDomain;
+    ): Domain;
 }

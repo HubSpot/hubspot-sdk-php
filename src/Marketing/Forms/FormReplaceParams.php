@@ -29,12 +29,12 @@ use HubspotSDK\Marketing\Forms\FormReplaceParams\FormType;
  * @phpstan-type form_replace_params = array{
  *   id: string,
  *   archived: bool,
- *   configuration: MarketingFormsHubSpotFormConfiguration,
+ *   configuration: HubSpotFormConfiguration,
  *   createdAt: \DateTimeInterface,
- *   displayOptions: MarketingFormsFormDisplayOptions,
- *   fieldGroups: list<MarketingFormsFieldGroup>,
+ *   displayOptions: FormDisplayOptions,
+ *   fieldGroups: list<FieldGroup>,
  *   formType: FormType|value-of<FormType>,
- *   legalConsentOptions: MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess,
+ *   legalConsentOptions: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess,
  *   name: string,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface,
@@ -53,16 +53,16 @@ final class FormReplaceParams implements BaseModel
     public bool $archived;
 
     #[Api]
-    public MarketingFormsHubSpotFormConfiguration $configuration;
+    public HubSpotFormConfiguration $configuration;
 
     #[Api]
     public \DateTimeInterface $createdAt;
 
     #[Api]
-    public MarketingFormsFormDisplayOptions $displayOptions;
+    public FormDisplayOptions $displayOptions;
 
-    /** @var list<MarketingFormsFieldGroup> $fieldGroups */
-    #[Api(list: MarketingFormsFieldGroup::class)]
+    /** @var list<FieldGroup> $fieldGroups */
+    #[Api(list: FieldGroup::class)]
     public array $fieldGroups;
 
     /** @var value-of<FormType> $formType */
@@ -70,7 +70,7 @@ final class FormReplaceParams implements BaseModel
     public string $formType;
 
     #[Api]
-    public MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess $legalConsentOptions;
+    public LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions;
 
     #[Api]
     public string $name;
@@ -126,17 +126,17 @@ final class FormReplaceParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingFormsFieldGroup> $fieldGroups
+     * @param list<FieldGroup> $fieldGroups
      * @param FormType|value-of<FormType> $formType
      */
     public static function with(
         string $id,
         bool $archived,
-        MarketingFormsHubSpotFormConfiguration $configuration,
+        HubSpotFormConfiguration $configuration,
         \DateTimeInterface $createdAt,
-        MarketingFormsFormDisplayOptions $displayOptions,
+        FormDisplayOptions $displayOptions,
         array $fieldGroups,
-        MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess $legalConsentOptions,
+        LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions,
         string $name,
         \DateTimeInterface $updatedAt,
         FormType|string $formType = 'hubspot',
@@ -177,7 +177,7 @@ final class FormReplaceParams implements BaseModel
     }
 
     public function withConfiguration(
-        MarketingFormsHubSpotFormConfiguration $configuration
+        HubSpotFormConfiguration $configuration
     ): self {
         $obj = clone $this;
         $obj->configuration = $configuration;
@@ -193,9 +193,8 @@ final class FormReplaceParams implements BaseModel
         return $obj;
     }
 
-    public function withDisplayOptions(
-        MarketingFormsFormDisplayOptions $displayOptions
-    ): self {
+    public function withDisplayOptions(FormDisplayOptions $displayOptions): self
+    {
         $obj = clone $this;
         $obj->displayOptions = $displayOptions;
 
@@ -203,7 +202,7 @@ final class FormReplaceParams implements BaseModel
     }
 
     /**
-     * @param list<MarketingFormsFieldGroup> $fieldGroups
+     * @param list<FieldGroup> $fieldGroups
      */
     public function withFieldGroups(array $fieldGroups): self
     {
@@ -225,7 +224,7 @@ final class FormReplaceParams implements BaseModel
     }
 
     public function withLegalConsentOptions(
-        MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess $legalConsentOptions,
+        LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions,
     ): self {
         $obj = clone $this;
         $obj->legalConsentOptions = $legalConsentOptions;

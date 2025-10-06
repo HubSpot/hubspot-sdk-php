@@ -9,10 +9,10 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Associations\AssociationCreateParams;
 use HubspotSDK\CRM\Associations\AssociationDeleteParams;
 use HubspotSDK\CRM\Associations\AssociationReadParams;
-use HubspotSDK\CRM\Associations\CRMAssociationsBatchResponsePublicAssociation;
-use HubspotSDK\CRM\Associations\CRMAssociationsBatchResponsePublicAssociationMulti;
-use HubspotSDK\CRM\Associations\CRMAssociationsPublicAssociation;
-use HubspotSDK\CRM\CRMPublicObjectID;
+use HubspotSDK\CRM\Associations\BatchResponsePublicAssociation;
+use HubspotSDK\CRM\Associations\BatchResponsePublicAssociationMulti;
+use HubspotSDK\CRM\Associations\PublicAssociation;
+use HubspotSDK\CRM\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\AssociationsContract;
 use HubspotSDK\Services\CRM\Associations\V4Service;
@@ -38,7 +38,7 @@ final class AssociationsService implements AssociationsContract
      * Create a batch of associations
      *
      * @param string $fromObjectType
-     * @param list<CRMAssociationsPublicAssociation> $inputs
+     * @param list<PublicAssociation> $inputs
      *
      * @throws APIException
      */
@@ -47,7 +47,7 @@ final class AssociationsService implements AssociationsContract
         $fromObjectType,
         $inputs,
         ?RequestOptions $requestOptions = null,
-    ): CRMAssociationsBatchResponsePublicAssociation {
+    ): BatchResponsePublicAssociation {
         $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
 
         return $this->createRaw($toObjectType, $params, $requestOptions);
@@ -64,7 +64,7 @@ final class AssociationsService implements AssociationsContract
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMAssociationsBatchResponsePublicAssociation {
+    ): BatchResponsePublicAssociation {
         [$parsed, $options] = AssociationCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -82,7 +82,7 @@ final class AssociationsService implements AssociationsContract
             ],
             body: (object) array_diff_key($parsed, ['fromObjectType']),
             options: $options,
-            convert: CRMAssociationsBatchResponsePublicAssociation::class,
+            convert: BatchResponsePublicAssociation::class,
         );
     }
 
@@ -92,7 +92,7 @@ final class AssociationsService implements AssociationsContract
      * Archive a batch of associations
      *
      * @param string $fromObjectType
-     * @param list<CRMAssociationsPublicAssociation> $inputs
+     * @param list<PublicAssociation> $inputs
      *
      * @throws APIException
      */
@@ -146,7 +146,7 @@ final class AssociationsService implements AssociationsContract
      * Read a batch of associations
      *
      * @param string $fromObjectType
-     * @param list<CRMPublicObjectID> $inputs
+     * @param list<PublicObjectID> $inputs
      *
      * @throws APIException
      */
@@ -155,7 +155,7 @@ final class AssociationsService implements AssociationsContract
         $fromObjectType,
         $inputs,
         ?RequestOptions $requestOptions = null,
-    ): CRMAssociationsBatchResponsePublicAssociationMulti {
+    ): BatchResponsePublicAssociationMulti {
         $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
 
         return $this->readRaw($toObjectType, $params, $requestOptions);
@@ -172,7 +172,7 @@ final class AssociationsService implements AssociationsContract
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMAssociationsBatchResponsePublicAssociationMulti {
+    ): BatchResponsePublicAssociationMulti {
         [$parsed, $options] = AssociationReadParams::parseRequest(
             $params,
             $requestOptions
@@ -190,7 +190,7 @@ final class AssociationsService implements AssociationsContract
             ],
             body: (object) array_diff_key($parsed, ['fromObjectType']),
             options: $options,
-            convert: CRMAssociationsBatchResponsePublicAssociationMulti::class,
+            convert: BatchResponsePublicAssociationMulti::class,
         );
     }
 }

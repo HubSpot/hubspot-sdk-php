@@ -3,7 +3,7 @@
 namespace Tests\Services\CRM\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -175,7 +175,7 @@ final class DealsTest extends TestCase
 
         $result = $this->client->crm->objects->deals->upsert(
             [
-                CRMObjectsSimplePublicObjectBatchInputUpsert::with(
+                SimplePublicObjectBatchInputUpsert::with(
                     id: 'id',
                     properties: ['foo' => 'string']
                 ),
@@ -194,7 +194,7 @@ final class DealsTest extends TestCase
 
         $result = $this->client->crm->objects->deals->upsert(
             [
-                CRMObjectsSimplePublicObjectBatchInputUpsert::with(
+                SimplePublicObjectBatchInputUpsert::with(
                     id: 'id',
                     properties: ['foo' => 'string']
                 )

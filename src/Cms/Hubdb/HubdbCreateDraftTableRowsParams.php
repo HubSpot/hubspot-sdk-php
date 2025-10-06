@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Hubdb->createDraftTableRows
  *
  * @phpstan-type hubdb_create_draft_table_rows_params = array{
- *   inputs: list<CmsHubdbHubDBTableRowV3Request>
+ *   inputs: list<HubDBTableRowV3Request>
  * }
  */
 final class HubdbCreateDraftTableRowsParams implements BaseModel
@@ -35,8 +35,8 @@ final class HubdbCreateDraftTableRowsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<CmsHubdbHubDBTableRowV3Request> $inputs */
-    #[Api(list: CmsHubdbHubDBTableRowV3Request::class)]
+    /** @var list<HubDBTableRowV3Request> $inputs */
+    #[Api(list: HubDBTableRowV3Request::class)]
     public array $inputs;
 
     /**
@@ -63,7 +63,7 @@ final class HubdbCreateDraftTableRowsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CmsHubdbHubDBTableRowV3Request> $inputs
+     * @param list<HubDBTableRowV3Request> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -75,7 +75,7 @@ final class HubdbCreateDraftTableRowsParams implements BaseModel
     }
 
     /**
-     * @param list<CmsHubdbHubDBTableRowV3Request> $inputs
+     * @param list<HubDBTableRowV3Request> $inputs
      */
     public function withInputs(array $inputs): self
     {

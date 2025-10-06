@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Files;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Files\FilesCollectionResponseFolder;
-use HubspotSDK\Files\FilesFolder;
-use HubspotSDK\Files\FilesFolderActionResponse;
-use HubspotSDK\Files\FilesFolderUpdateTaskLocator;
+use HubspotSDK\Files\CollectionResponseFolder;
+use HubspotSDK\Files\Folder;
+use HubspotSDK\Files\FolderActionResponse;
+use HubspotSDK\Files\FolderUpdateTaskLocator;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -29,7 +29,7 @@ interface FoldersContract
         $parentFolderID = omit,
         $parentPath = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFolder;
+    ): Folder;
 
     /**
      * @api
@@ -41,7 +41,7 @@ interface FoldersContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFolder;
+    ): Folder;
 
     /**
      * @api
@@ -74,7 +74,7 @@ interface FoldersContract
         string $folderID,
         $properties = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFolder;
+    ): Folder;
 
     /**
      * @api
@@ -87,7 +87,7 @@ interface FoldersContract
         string $folderID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFolder;
+    ): Folder;
 
     /**
      * @api
@@ -100,7 +100,7 @@ interface FoldersContract
         string $folderPath,
         $properties = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFolder;
+    ): Folder;
 
     /**
      * @api
@@ -113,7 +113,7 @@ interface FoldersContract
         string $folderPath,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): FilesFolder;
+    ): Folder;
 
     /**
      * @api
@@ -123,7 +123,7 @@ interface FoldersContract
     public function getUpdateAsyncStatus(
         string $taskID,
         ?RequestOptions $requestOptions = null
-    ): FilesFolderActionResponse;
+    ): FolderActionResponse;
 
     /**
      * @api
@@ -167,7 +167,7 @@ interface FoldersContract
         $updatedAtGte = omit,
         $updatedAtLte = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesCollectionResponseFolder;
+    ): CollectionResponseFolder;
 
     /**
      * @api
@@ -179,7 +179,7 @@ interface FoldersContract
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesCollectionResponseFolder;
+    ): CollectionResponseFolder;
 
     /**
      * @api
@@ -195,7 +195,7 @@ interface FoldersContract
         $name = omit,
         $parentFolderID = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFolderUpdateTaskLocator;
+    ): FolderUpdateTaskLocator;
 
     /**
      * @api
@@ -207,7 +207,7 @@ interface FoldersContract
     public function updateAsyncRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFolderUpdateTaskLocator;
+    ): FolderUpdateTaskLocator;
 
     /**
      * @api
@@ -222,7 +222,7 @@ interface FoldersContract
         $name = omit,
         $parentFolderID = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFolder;
+    ): Folder;
 
     /**
      * @api
@@ -235,5 +235,5 @@ interface FoldersContract
         string $folderID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFolder;
+    ): Folder;
 }

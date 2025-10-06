@@ -6,15 +6,10 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\CRMObjectsBatchResponseSimplePublicUpsertObject;
-use HubspotSDK\CRM\Objects\CRMObjectsCollectionResponseSimplePublicObjectWithAssociations;
-use HubspotSDK\CRM\Objects\CRMObjectsCollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsCreatedResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsFilterGroup;
-use HubspotSDK\CRM\Objects\CRMObjectsPublicAssociationsForObject;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\CRM\Objects\CollectionResponseSimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\Deals\DealCreateParams;
 use HubspotSDK\CRM\Objects\Deals\DealListParams;
 use HubspotSDK\CRM\Objects\Deals\DealMergeParams;
@@ -22,6 +17,11 @@ use HubspotSDK\CRM\Objects\Deals\DealReadParams;
 use HubspotSDK\CRM\Objects\Deals\DealSearchParams;
 use HubspotSDK\CRM\Objects\Deals\DealUpdateParams;
 use HubspotSDK\CRM\Objects\Deals\DealUpsertParams;
+use HubspotSDK\CRM\Objects\FilterGroup;
+use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
+use HubspotSDK\CRM\Objects\SimplePublicObject;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\DealsContract;
 use HubspotSDK\Services\CRM\Objects\Deals\AssociationsService;
@@ -56,7 +56,7 @@ final class DealsService implements DealsContract
      * Create
      *
      * @param array<string, string> $properties
-     * @param list<CRMObjectsPublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject> $associations
      *
      * @throws APIException
      */
@@ -64,7 +64,7 @@ final class DealsService implements DealsContract
         $properties,
         $associations = omit,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCreatedResponseSimplePublicObject {
+    ): CreatedResponseSimplePublicObject {
         $params = ['properties' => $properties, 'associations' => $associations];
 
         return $this->createRaw($params, $requestOptions);
@@ -80,7 +80,7 @@ final class DealsService implements DealsContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCreatedResponseSimplePublicObject {
+    ): CreatedResponseSimplePublicObject {
         [$parsed, $options] = DealCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -92,7 +92,7 @@ final class DealsService implements DealsContract
             path: 'crm/v3/objects/0-3',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsCreatedResponseSimplePublicObject::class,
+            convert: CreatedResponseSimplePublicObject::class,
         );
     }
 
@@ -111,7 +111,7 @@ final class DealsService implements DealsContract
         $properties,
         $idProperty = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsSimplePublicObject {
+    ): SimplePublicObject {
         $params = ['properties' => $properties, 'idProperty' => $idProperty];
 
         return $this->updateRaw($dealID, $params, $requestOptions);
@@ -128,7 +128,7 @@ final class DealsService implements DealsContract
         string $dealID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObject {
+    ): SimplePublicObject {
         [$parsed, $options] = DealUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -142,7 +142,7 @@ final class DealsService implements DealsContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: CRMObjectsSimplePublicObject::class,
+            convert: SimplePublicObject::class,
         );
     }
 
@@ -168,7 +168,7 @@ final class DealsService implements DealsContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsCollectionResponseSimplePublicObjectWithAssociations {
+    ): CollectionResponseSimplePublicObjectWithAssociations {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -191,7 +191,7 @@ final class DealsService implements DealsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCollectionResponseSimplePublicObjectWithAssociations {
+    ): CollectionResponseSimplePublicObjectWithAssociations {
         [$parsed, $options] = DealListParams::parseRequest(
             $params,
             $requestOptions
@@ -203,7 +203,7 @@ final class DealsService implements DealsContract
             path: 'crm/v3/objects/0-3',
             query: $parsed,
             options: $options,
-            convert: CRMObjectsCollectionResponseSimplePublicObjectWithAssociations::class,
+            convert: CollectionResponseSimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -241,7 +241,7 @@ final class DealsService implements DealsContract
         $objectIDToMerge,
         $primaryObjectID,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObject {
+    ): SimplePublicObject {
         $params = [
             'objectIDToMerge' => $objectIDToMerge,
             'primaryObjectID' => $primaryObjectID,
@@ -260,7 +260,7 @@ final class DealsService implements DealsContract
     public function mergeRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObject {
+    ): SimplePublicObject {
         [$parsed, $options] = DealMergeParams::parseRequest(
             $params,
             $requestOptions
@@ -272,7 +272,7 @@ final class DealsService implements DealsContract
             path: 'crm/v3/objects/0-3/merge',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsSimplePublicObject::class,
+            convert: SimplePublicObject::class,
         );
     }
 
@@ -297,7 +297,7 @@ final class DealsService implements DealsContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsSimplePublicObjectWithAssociations {
+    ): SimplePublicObjectWithAssociations {
         $params = [
             'archived' => $archived,
             'associations' => $associations,
@@ -320,7 +320,7 @@ final class DealsService implements DealsContract
         string $dealID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObjectWithAssociations {
+    ): SimplePublicObjectWithAssociations {
         [$parsed, $options] = DealReadParams::parseRequest(
             $params,
             $requestOptions
@@ -332,7 +332,7 @@ final class DealsService implements DealsContract
             path: ['crm/v3/objects/0-3/%1$s', $dealID],
             query: $parsed,
             options: $options,
-            convert: CRMObjectsSimplePublicObjectWithAssociations::class,
+            convert: SimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -340,7 +340,7 @@ final class DealsService implements DealsContract
      * @api
      *
      * @param string $after
-     * @param list<CRMObjectsFilterGroup> $filterGroups
+     * @param list<FilterGroup> $filterGroups
      * @param int $limit
      * @param list<string> $properties
      * @param string $query
@@ -356,7 +356,7 @@ final class DealsService implements DealsContract
         $query = omit,
         $sorts = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsCollectionResponseWithTotalSimplePublicObject {
+    ): CollectionResponseWithTotalSimplePublicObject {
         $params = [
             'after' => $after,
             'filterGroups' => $filterGroups,
@@ -379,7 +379,7 @@ final class DealsService implements DealsContract
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCollectionResponseWithTotalSimplePublicObject {
+    ): CollectionResponseWithTotalSimplePublicObject {
         [$parsed, $options] = DealSearchParams::parseRequest(
             $params,
             $requestOptions
@@ -391,7 +391,7 @@ final class DealsService implements DealsContract
             path: 'crm/v3/objects/0-3/search',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsCollectionResponseWithTotalSimplePublicObject::class,
+            convert: CollectionResponseWithTotalSimplePublicObject::class,
         );
     }
 
@@ -400,14 +400,14 @@ final class DealsService implements DealsContract
      *
      * Create or update a batch of deals by unique property values
      *
-     * @param list<CRMObjectsSimplePublicObjectBatchInputUpsert> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
      *
      * @throws APIException
      */
     public function upsert(
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicUpsertObject {
+    ): BatchResponseSimplePublicUpsertObject {
         $params = ['inputs' => $inputs];
 
         return $this->upsertRaw($params, $requestOptions);
@@ -423,7 +423,7 @@ final class DealsService implements DealsContract
     public function upsertRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicUpsertObject {
+    ): BatchResponseSimplePublicUpsertObject {
         [$parsed, $options] = DealUpsertParams::parseRequest(
             $params,
             $requestOptions
@@ -435,7 +435,7 @@ final class DealsService implements DealsContract
             path: 'crm/v3/objects/0-3/batch/upsert',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsBatchResponseSimplePublicUpsertObject::class,
+            convert: BatchResponseSimplePublicUpsertObject::class,
         );
     }
 }

@@ -6,13 +6,13 @@ namespace HubspotSDK\ServiceContracts;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
+use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
+use HubspotSDK\Webhooks\SettingsResponse;
+use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
+use HubspotSDK\Webhooks\SubscriptionListResponse;
+use HubspotSDK\Webhooks\SubscriptionResponse;
+use HubspotSDK\Webhooks\ThrottlingSettings;
 use HubspotSDK\Webhooks\WebhookCreateParams\EventType;
-use HubspotSDK\Webhooks\WebhooksBatchResponseSubscriptionResponse;
-use HubspotSDK\Webhooks\WebhooksSettingsResponse;
-use HubspotSDK\Webhooks\WebhooksSubscriptionBatchUpdateRequest;
-use HubspotSDK\Webhooks\WebhooksSubscriptionListResponse;
-use HubspotSDK\Webhooks\WebhooksSubscriptionResponse;
-use HubspotSDK\Webhooks\WebhooksThrottlingSettings;
 
 use const HubspotSDK\Core\OMIT as omit;
 
@@ -35,7 +35,7 @@ interface WebhooksContract
         $objectTypeID = omit,
         $propertyName = omit,
         ?RequestOptions $requestOptions = null,
-    ): WebhooksSubscriptionResponse;
+    ): SubscriptionResponse;
 
     /**
      * @api
@@ -48,7 +48,7 @@ interface WebhooksContract
         int $appID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSubscriptionResponse;
+    ): SubscriptionResponse;
 
     /**
      * @api
@@ -63,7 +63,7 @@ interface WebhooksContract
         $appID,
         $active = omit,
         ?RequestOptions $requestOptions = null,
-    ): WebhooksSubscriptionResponse;
+    ): SubscriptionResponse;
 
     /**
      * @api
@@ -76,7 +76,7 @@ interface WebhooksContract
         int $subscriptionID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): WebhooksSubscriptionResponse;
+    ): SubscriptionResponse;
 
     /**
      * @api
@@ -86,7 +86,7 @@ interface WebhooksContract
     public function list(
         int $appID,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSubscriptionListResponse;
+    ): SubscriptionListResponse;
 
     /**
      * @api
@@ -128,7 +128,7 @@ interface WebhooksContract
      * @api
      *
      * @param string $targetURL
-     * @param WebhooksThrottlingSettings $throttling
+     * @param ThrottlingSettings $throttling
      *
      * @throws APIException
      */
@@ -137,7 +137,7 @@ interface WebhooksContract
         $targetURL,
         $throttling,
         ?RequestOptions $requestOptions = null,
-    ): WebhooksSettingsResponse;
+    ): SettingsResponse;
 
     /**
      * @api
@@ -150,7 +150,7 @@ interface WebhooksContract
         int $appID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSettingsResponse;
+    ): SettingsResponse;
 
     /**
      * @api
@@ -163,7 +163,7 @@ interface WebhooksContract
         int $subscriptionID,
         $appID,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSubscriptionResponse;
+    ): SubscriptionResponse;
 
     /**
      * @api
@@ -176,12 +176,12 @@ interface WebhooksContract
         int $subscriptionID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): WebhooksSubscriptionResponse;
+    ): SubscriptionResponse;
 
     /**
      * @api
      *
-     * @param list<WebhooksSubscriptionBatchUpdateRequest> $inputs
+     * @param list<SubscriptionBatchUpdateRequest> $inputs
      *
      * @throws APIException
      */
@@ -189,7 +189,7 @@ interface WebhooksContract
         int $appID,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): WebhooksBatchResponseSubscriptionResponse;
+    ): BatchResponseSubscriptionResponse;
 
     /**
      * @api
@@ -202,5 +202,5 @@ interface WebhooksContract
         int $appID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): WebhooksBatchResponseSubscriptionResponse;
+    ): BatchResponseSubscriptionResponse;
 }

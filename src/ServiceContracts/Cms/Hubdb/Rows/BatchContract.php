@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Hubdb\Rows;
 
-use HubspotSDK\Cms\Hubdb\CmsHubdbBatchResponseHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3BatchUpdateRequest;
+use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -14,7 +14,7 @@ interface BatchContract
     /**
      * @api
      *
-     * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      *
      * @throws APIException
      */
@@ -22,7 +22,7 @@ interface BatchContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -35,5 +35,5 @@ interface BatchContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 }

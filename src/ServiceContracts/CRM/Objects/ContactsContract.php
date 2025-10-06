@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\CRMObjectsBatchResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsBatchResponseSimplePublicUpsertObject;
-use HubspotSDK\CRM\Objects\CRMObjectsCollectionResponseSimplePublicObjectWithAssociations;
-use HubspotSDK\CRM\Objects\CRMObjectsCollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsCreatedResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsFilterGroup;
-use HubspotSDK\CRM\Objects\CRMObjectsPublicAssociationsForObject;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectID;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\CRM\Objects\CollectionResponseSimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
+use HubspotSDK\CRM\Objects\FilterGroup;
+use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
+use HubspotSDK\CRM\Objects\SimplePublicObject;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\Objects\SimplePublicObjectID;
+use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -27,7 +27,7 @@ interface ContactsContract
      * @api
      *
      * @param array<string, string> $properties
-     * @param list<CRMObjectsPublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject> $associations
      *
      * @throws APIException
      */
@@ -35,7 +35,7 @@ interface ContactsContract
         $properties,
         $associations = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsCreatedResponseSimplePublicObject;
+    ): CreatedResponseSimplePublicObject;
 
     /**
      * @api
@@ -47,19 +47,19 @@ interface ContactsContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCreatedResponseSimplePublicObject;
+    ): CreatedResponseSimplePublicObject;
 
     /**
      * @api
      *
-     * @param list<CRMObjectsSimplePublicObjectBatchInput> $inputs
+     * @param list<SimplePublicObjectBatchInput> $inputs
      *
      * @throws APIException
      */
     public function update(
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicObject;
+    ): BatchResponseSimplePublicObject;
 
     /**
      * @api
@@ -71,7 +71,7 @@ interface ContactsContract
     public function updateRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicObject;
+    ): BatchResponseSimplePublicObject;
 
     /**
      * @api
@@ -93,7 +93,7 @@ interface ContactsContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsCollectionResponseSimplePublicObjectWithAssociations;
+    ): CollectionResponseSimplePublicObjectWithAssociations;
 
     /**
      * @api
@@ -105,12 +105,12 @@ interface ContactsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCollectionResponseSimplePublicObjectWithAssociations;
+    ): CollectionResponseSimplePublicObjectWithAssociations;
 
     /**
      * @api
      *
-     * @param list<CRMObjectsSimplePublicObjectID> $inputs
+     * @param list<SimplePublicObjectID> $inputs
      *
      * @throws APIException
      */
@@ -143,7 +143,7 @@ interface ContactsContract
         $objectIDToMerge,
         $primaryObjectID,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsSimplePublicObject;
+    ): SimplePublicObject;
 
     /**
      * @api
@@ -155,7 +155,7 @@ interface ContactsContract
     public function mergeRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObject;
+    ): SimplePublicObject;
 
     /**
      * @api
@@ -200,7 +200,7 @@ interface ContactsContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsSimplePublicObjectWithAssociations;
+    ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
@@ -213,13 +213,13 @@ interface ContactsContract
         string $contactID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObjectWithAssociations;
+    ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
      *
      * @param string $after
-     * @param list<CRMObjectsFilterGroup> $filterGroups
+     * @param list<FilterGroup> $filterGroups
      * @param int $limit
      * @param list<string> $properties
      * @param string $query
@@ -235,7 +235,7 @@ interface ContactsContract
         $query = omit,
         $sorts = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsCollectionResponseWithTotalSimplePublicObject;
+    ): CollectionResponseWithTotalSimplePublicObject;
 
     /**
      * @api
@@ -247,19 +247,19 @@ interface ContactsContract
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCollectionResponseWithTotalSimplePublicObject;
+    ): CollectionResponseWithTotalSimplePublicObject;
 
     /**
      * @api
      *
-     * @param list<CRMObjectsSimplePublicObjectBatchInputUpsert> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
      *
      * @throws APIException
      */
     public function upsert(
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicUpsertObject;
+    ): BatchResponseSimplePublicUpsertObject;
 
     /**
      * @api
@@ -271,5 +271,5 @@ interface ContactsContract
     public function upsertRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicUpsertObject;
+    ): BatchResponseSimplePublicUpsertObject;
 }

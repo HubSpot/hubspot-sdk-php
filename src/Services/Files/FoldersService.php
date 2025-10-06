@@ -6,16 +6,16 @@ namespace HubspotSDK\Services\Files;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Files\FilesCollectionResponseFolder;
-use HubspotSDK\Files\FilesFolder;
-use HubspotSDK\Files\FilesFolderActionResponse;
-use HubspotSDK\Files\FilesFolderUpdateTaskLocator;
+use HubspotSDK\Files\CollectionResponseFolder;
+use HubspotSDK\Files\Folder;
+use HubspotSDK\Files\FolderActionResponse;
 use HubspotSDK\Files\Folders\FolderCreateParams;
 use HubspotSDK\Files\Folders\FolderGetByIDParams;
 use HubspotSDK\Files\Folders\FolderGetByPathParams;
 use HubspotSDK\Files\Folders\FolderSearchParams;
 use HubspotSDK\Files\Folders\FolderUpdateAsyncParams;
 use HubspotSDK\Files\Folders\FolderUpdateByIDParams;
+use HubspotSDK\Files\FolderUpdateTaskLocator;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Files\FoldersContract;
 
@@ -44,7 +44,7 @@ final class FoldersService implements FoldersContract
         $parentFolderID = omit,
         $parentPath = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFolder {
+    ): Folder {
         $params = [
             'name' => $name,
             'parentFolderID' => $parentFolderID,
@@ -64,7 +64,7 @@ final class FoldersService implements FoldersContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFolder {
+    ): Folder {
         [$parsed, $options] = FolderCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -76,7 +76,7 @@ final class FoldersService implements FoldersContract
             path: 'files/v3/folders',
             body: (object) $parsed,
             options: $options,
-            convert: FilesFolder::class,
+            convert: Folder::class,
         );
     }
 
@@ -133,7 +133,7 @@ final class FoldersService implements FoldersContract
         string $folderID,
         $properties = omit,
         ?RequestOptions $requestOptions = null
-    ): FilesFolder {
+    ): Folder {
         $params = ['properties' => $properties];
 
         return $this->getByIDRaw($folderID, $params, $requestOptions);
@@ -150,7 +150,7 @@ final class FoldersService implements FoldersContract
         string $folderID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFolder {
+    ): Folder {
         [$parsed, $options] = FolderGetByIDParams::parseRequest(
             $params,
             $requestOptions
@@ -162,7 +162,7 @@ final class FoldersService implements FoldersContract
             path: ['files/v3/folders/%1$s', $folderID],
             query: $parsed,
             options: $options,
-            convert: FilesFolder::class,
+            convert: Folder::class,
         );
     }
 
@@ -179,7 +179,7 @@ final class FoldersService implements FoldersContract
         string $folderPath,
         $properties = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFolder {
+    ): Folder {
         $params = ['properties' => $properties];
 
         return $this->getByPathRaw($folderPath, $params, $requestOptions);
@@ -196,7 +196,7 @@ final class FoldersService implements FoldersContract
         string $folderPath,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFolder {
+    ): Folder {
         [$parsed, $options] = FolderGetByPathParams::parseRequest(
             $params,
             $requestOptions
@@ -208,7 +208,7 @@ final class FoldersService implements FoldersContract
             path: ['files/v3/folders/%1$s', $folderPath],
             query: $parsed,
             options: $options,
-            convert: FilesFolder::class,
+            convert: Folder::class,
         );
     }
 
@@ -222,13 +222,13 @@ final class FoldersService implements FoldersContract
     public function getUpdateAsyncStatus(
         string $taskID,
         ?RequestOptions $requestOptions = null
-    ): FilesFolderActionResponse {
+    ): FolderActionResponse {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['files/v3/folders/update/async/tasks/%1$s/status', $taskID],
             options: $requestOptions,
-            convert: FilesFolderActionResponse::class,
+            convert: FolderActionResponse::class,
         );
     }
 
@@ -276,7 +276,7 @@ final class FoldersService implements FoldersContract
         $updatedAtGte = omit,
         $updatedAtLte = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesCollectionResponseFolder {
+    ): CollectionResponseFolder {
         $params = [
             'after' => $after,
             'before' => $before,
@@ -310,7 +310,7 @@ final class FoldersService implements FoldersContract
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesCollectionResponseFolder {
+    ): CollectionResponseFolder {
         [$parsed, $options] = FolderSearchParams::parseRequest(
             $params,
             $requestOptions
@@ -322,7 +322,7 @@ final class FoldersService implements FoldersContract
             path: 'files/v3/folders/search',
             query: $parsed,
             options: $options,
-            convert: FilesCollectionResponseFolder::class,
+            convert: CollectionResponseFolder::class,
         );
     }
 
@@ -342,7 +342,7 @@ final class FoldersService implements FoldersContract
         $name = omit,
         $parentFolderID = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFolderUpdateTaskLocator {
+    ): FolderUpdateTaskLocator {
         $params = [
             'id' => $id, 'name' => $name, 'parentFolderID' => $parentFolderID,
         ];
@@ -360,7 +360,7 @@ final class FoldersService implements FoldersContract
     public function updateAsyncRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFolderUpdateTaskLocator {
+    ): FolderUpdateTaskLocator {
         [$parsed, $options] = FolderUpdateAsyncParams::parseRequest(
             $params,
             $requestOptions
@@ -372,7 +372,7 @@ final class FoldersService implements FoldersContract
             path: 'files/v3/folders/update/async',
             body: (object) $parsed,
             options: $options,
-            convert: FilesFolderUpdateTaskLocator::class,
+            convert: FolderUpdateTaskLocator::class,
         );
     }
 
@@ -391,7 +391,7 @@ final class FoldersService implements FoldersContract
         $name = omit,
         $parentFolderID = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFolder {
+    ): Folder {
         $params = ['name' => $name, 'parentFolderID' => $parentFolderID];
 
         return $this->updateByIDRaw($folderID, $params, $requestOptions);
@@ -408,7 +408,7 @@ final class FoldersService implements FoldersContract
         string $folderID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFolder {
+    ): Folder {
         [$parsed, $options] = FolderUpdateByIDParams::parseRequest(
             $params,
             $requestOptions
@@ -420,7 +420,7 @@ final class FoldersService implements FoldersContract
             path: ['files/v3/folders/%1$s', $folderID],
             body: (object) $parsed,
             options: $options,
-            convert: FilesFolder::class,
+            convert: Folder::class,
         );
     }
 }

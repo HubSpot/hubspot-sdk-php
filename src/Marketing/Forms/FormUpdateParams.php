@@ -27,10 +27,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type form_update_params = array{
  *   archived?: bool,
- *   configuration?: MarketingFormsHubSpotFormConfiguration,
- *   displayOptions?: MarketingFormsFormDisplayOptions,
- *   fieldGroups?: list<MarketingFormsFieldGroup>,
- *   legalConsentOptions?: MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess,
+ *   configuration?: HubSpotFormConfiguration,
+ *   displayOptions?: FormDisplayOptions,
+ *   fieldGroups?: list<FieldGroup>,
+ *   legalConsentOptions?: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess,
  *   name?: string,
  * }
  */
@@ -44,17 +44,17 @@ final class FormUpdateParams implements BaseModel
     public ?bool $archived;
 
     #[Api(optional: true)]
-    public ?MarketingFormsHubSpotFormConfiguration $configuration;
+    public ?HubSpotFormConfiguration $configuration;
 
     #[Api(optional: true)]
-    public ?MarketingFormsFormDisplayOptions $displayOptions;
+    public ?FormDisplayOptions $displayOptions;
 
-    /** @var list<MarketingFormsFieldGroup>|null $fieldGroups */
-    #[Api(list: MarketingFormsFieldGroup::class, optional: true)]
+    /** @var list<FieldGroup>|null $fieldGroups */
+    #[Api(list: FieldGroup::class, optional: true)]
     public ?array $fieldGroups;
 
     #[Api(optional: true)]
-    public MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess|null $legalConsentOptions;
+    public LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess|null $legalConsentOptions;
 
     #[Api(optional: true)]
     public ?string $name;
@@ -69,14 +69,14 @@ final class FormUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingFormsFieldGroup> $fieldGroups
+     * @param list<FieldGroup> $fieldGroups
      */
     public static function with(
         ?bool $archived = null,
-        ?MarketingFormsHubSpotFormConfiguration $configuration = null,
-        ?MarketingFormsFormDisplayOptions $displayOptions = null,
+        ?HubSpotFormConfiguration $configuration = null,
+        ?FormDisplayOptions $displayOptions = null,
         ?array $fieldGroups = null,
-        MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess|null $legalConsentOptions = null,
+        LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess|null $legalConsentOptions = null,
         ?string $name = null,
     ): self {
         $obj = new self;
@@ -100,7 +100,7 @@ final class FormUpdateParams implements BaseModel
     }
 
     public function withConfiguration(
-        MarketingFormsHubSpotFormConfiguration $configuration
+        HubSpotFormConfiguration $configuration
     ): self {
         $obj = clone $this;
         $obj->configuration = $configuration;
@@ -108,9 +108,8 @@ final class FormUpdateParams implements BaseModel
         return $obj;
     }
 
-    public function withDisplayOptions(
-        MarketingFormsFormDisplayOptions $displayOptions
-    ): self {
+    public function withDisplayOptions(FormDisplayOptions $displayOptions): self
+    {
         $obj = clone $this;
         $obj->displayOptions = $displayOptions;
 
@@ -118,7 +117,7 @@ final class FormUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<MarketingFormsFieldGroup> $fieldGroups
+     * @param list<FieldGroup> $fieldGroups
      */
     public function withFieldGroups(array $fieldGroups): self
     {
@@ -129,7 +128,7 @@ final class FormUpdateParams implements BaseModel
     }
 
     public function withLegalConsentOptions(
-        MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess $legalConsentOptions,
+        LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions,
     ): self {
         $obj = clone $this;
         $obj->legalConsentOptions = $legalConsentOptions;

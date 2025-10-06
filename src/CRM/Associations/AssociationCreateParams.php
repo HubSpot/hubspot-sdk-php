@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\CRM\Associations->create
  *
  * @phpstan-type association_create_params = array{
- *   fromObjectType: string, inputs: list<CRMAssociationsPublicAssociation>
+ *   fromObjectType: string, inputs: list<PublicAssociation>
  * }
  */
 final class AssociationCreateParams implements BaseModel
@@ -38,8 +38,8 @@ final class AssociationCreateParams implements BaseModel
     #[Api]
     public string $fromObjectType;
 
-    /** @var list<CRMAssociationsPublicAssociation> $inputs */
-    #[Api(list: CRMAssociationsPublicAssociation::class)]
+    /** @var list<PublicAssociation> $inputs */
+    #[Api(list: PublicAssociation::class)]
     public array $inputs;
 
     /**
@@ -66,7 +66,7 @@ final class AssociationCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMAssociationsPublicAssociation> $inputs
+     * @param list<PublicAssociation> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -87,7 +87,7 @@ final class AssociationCreateParams implements BaseModel
     }
 
     /**
-     * @param list<CRMAssociationsPublicAssociation> $inputs
+     * @param list<PublicAssociation> $inputs
      */
     public function withInputs(array $inputs): self
     {

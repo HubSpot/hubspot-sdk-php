@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\CRMObjectsFilterGroup;
+use HubspotSDK\CRM\Objects\FilterGroup;
 
 /**
  * An object containing the method's parameters.
@@ -27,7 +27,7 @@ use HubspotSDK\CRM\Objects\CRMObjectsFilterGroup;
  *
  * @phpstan-type deal_search_params = array{
  *   after?: string,
- *   filterGroups?: list<CRMObjectsFilterGroup>,
+ *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
  *   properties?: list<string>,
  *   query?: string,
@@ -43,8 +43,8 @@ final class DealSearchParams implements BaseModel
     #[Api(optional: true)]
     public ?string $after;
 
-    /** @var list<CRMObjectsFilterGroup>|null $filterGroups */
-    #[Api(list: CRMObjectsFilterGroup::class, optional: true)]
+    /** @var list<FilterGroup>|null $filterGroups */
+    #[Api(list: FilterGroup::class, optional: true)]
     public ?array $filterGroups;
 
     #[Api(optional: true)]
@@ -71,7 +71,7 @@ final class DealSearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMObjectsFilterGroup> $filterGroups
+     * @param list<FilterGroup> $filterGroups
      * @param list<string> $properties
      * @param list<string> $sorts
      */
@@ -104,7 +104,7 @@ final class DealSearchParams implements BaseModel
     }
 
     /**
-     * @param list<CRMObjectsFilterGroup> $filterGroups
+     * @param list<FilterGroup> $filterGroups
      */
     public function withFilterGroups(array $filterGroups): self
     {

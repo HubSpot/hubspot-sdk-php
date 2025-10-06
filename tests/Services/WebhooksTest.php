@@ -3,8 +3,8 @@
 namespace Tests\Services;
 
 use HubspotSDK\Client;
-use HubspotSDK\Webhooks\WebhooksSubscriptionBatchUpdateRequest;
-use HubspotSDK\Webhooks\WebhooksThrottlingSettings;
+use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
+use HubspotSDK\Webhooks\ThrottlingSettings;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -143,7 +143,7 @@ final class WebhooksTest extends TestCase
         $result = $this->client->webhooks->configure(
             0,
             targetURL: 'targetUrl',
-            throttling: WebhooksThrottlingSettings::with(maxConcurrentRequests: 0),
+            throttling: ThrottlingSettings::with(maxConcurrentRequests: 0),
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -159,7 +159,7 @@ final class WebhooksTest extends TestCase
         $result = $this->client->webhooks->configure(
             0,
             targetURL: 'targetUrl',
-            throttling: WebhooksThrottlingSettings::with(maxConcurrentRequests: 0),
+            throttling: ThrottlingSettings::with(maxConcurrentRequests: 0),
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -198,7 +198,7 @@ final class WebhooksTest extends TestCase
 
         $result = $this->client->webhooks->updateBatch(
             0,
-            [WebhooksSubscriptionBatchUpdateRequest::with(id: 0, active: true)]
+            [SubscriptionBatchUpdateRequest::with(id: 0, active: true)]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -213,7 +213,7 @@ final class WebhooksTest extends TestCase
 
         $result = $this->client->webhooks->updateBatch(
             0,
-            [WebhooksSubscriptionBatchUpdateRequest::with(id: 0, active: true)]
+            [SubscriptionBatchUpdateRequest::with(id: 0, active: true)]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -30,7 +30,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   name: string,
  *   allowChildTables?: bool,
  *   allowPublicAPIAccess?: bool,
- *   columns?: list<CmsHubdbColumnRequest>,
+ *   columns?: list<ColumnRequest>,
  *   dynamicMetaTags?: array<string, int>,
  *   enableChildTablePages?: bool,
  *   useForPages?: bool,
@@ -54,8 +54,8 @@ final class HubdbCreateTableParams implements BaseModel
     #[Api('allowPublicApiAccess', optional: true)]
     public ?bool $allowPublicAPIAccess;
 
-    /** @var list<CmsHubdbColumnRequest>|null $columns */
-    #[Api(list: CmsHubdbColumnRequest::class, optional: true)]
+    /** @var list<ColumnRequest>|null $columns */
+    #[Api(list: ColumnRequest::class, optional: true)]
     public ?array $columns;
 
     /** @var array<string, int>|null $dynamicMetaTags */
@@ -92,7 +92,7 @@ final class HubdbCreateTableParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CmsHubdbColumnRequest> $columns
+     * @param list<ColumnRequest> $columns
      * @param array<string, int> $dynamicMetaTags
      */
     public static function with(
@@ -153,7 +153,7 @@ final class HubdbCreateTableParams implements BaseModel
     }
 
     /**
-     * @param list<CmsHubdbColumnRequest> $columns
+     * @param list<ColumnRequest> $columns
      */
     public function withColumns(array $columns): self
     {

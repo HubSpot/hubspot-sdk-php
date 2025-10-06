@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Associations;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Associations\V4\AssociationsV4BatchResponseVoid;
-use HubspotSDK\CRM\Associations\V4\AssociationsV4PublicAssociationMultiPost;
-use HubspotSDK\CRM\Associations\V4\AssociationsV4ReportCreationResponse;
-use HubspotSDK\CRM\CRMAssociationSpec;
-use HubspotSDK\CRM\CRMBatchResponsePublicDefaultAssociation;
-use HubspotSDK\CRM\CRMCollectionResponseMultiAssociatedObjectWithLabel;
-use HubspotSDK\CRM\CRMCreatedResponseLabelsBetweenObjectPair;
+use HubspotSDK\CRM\Associations\V4\BatchResponseVoid;
+use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
+use HubspotSDK\CRM\Associations\V4\ReportCreationResponse;
+use HubspotSDK\CRM\AssociationSpec;
+use HubspotSDK\CRM\BatchResponsePublicDefaultAssociation;
+use HubspotSDK\CRM\CollectionResponseMultiAssociatedObjectWithLabel;
+use HubspotSDK\CRM\CreatedResponseLabelsBetweenObjectPair;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -24,7 +24,7 @@ interface V4Contract
      * @param string $objectType
      * @param string $objectID
      * @param string $toObjectType
-     * @param list<CRMAssociationSpec> $body
+     * @param list<AssociationSpec> $body
      *
      * @throws APIException
      */
@@ -35,7 +35,7 @@ interface V4Contract
         $toObjectType,
         $body,
         ?RequestOptions $requestOptions = null,
-    ): CRMCreatedResponseLabelsBetweenObjectPair;
+    ): CreatedResponseLabelsBetweenObjectPair;
 
     /**
      * @api
@@ -48,7 +48,7 @@ interface V4Contract
         string $toObjectID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMCreatedResponseLabelsBetweenObjectPair;
+    ): CreatedResponseLabelsBetweenObjectPair;
 
     /**
      * @api
@@ -67,7 +67,7 @@ interface V4Contract
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMCollectionResponseMultiAssociatedObjectWithLabel;
+    ): CollectionResponseMultiAssociatedObjectWithLabel;
 
     /**
      * @api
@@ -80,7 +80,7 @@ interface V4Contract
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMCollectionResponseMultiAssociatedObjectWithLabel;
+    ): CollectionResponseMultiAssociatedObjectWithLabel;
 
     /**
      * @api
@@ -116,7 +116,7 @@ interface V4Contract
      * @api
      *
      * @param string $fromObjectType
-     * @param list<AssociationsV4PublicAssociationMultiPost> $inputs
+     * @param list<PublicAssociationMultiPost> $inputs
      *
      * @throws APIException
      */
@@ -125,7 +125,7 @@ interface V4Contract
         $fromObjectType,
         $inputs,
         ?RequestOptions $requestOptions = null,
-    ): AssociationsV4BatchResponseVoid;
+    ): BatchResponseVoid;
 
     /**
      * @api
@@ -138,7 +138,7 @@ interface V4Contract
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): AssociationsV4BatchResponseVoid;
+    ): BatchResponseVoid;
 
     /**
      * @api
@@ -155,7 +155,7 @@ interface V4Contract
         $fromObjectID,
         $toObjectType,
         ?RequestOptions $requestOptions = null,
-    ): CRMBatchResponsePublicDefaultAssociation;
+    ): BatchResponsePublicDefaultAssociation;
 
     /**
      * @api
@@ -168,7 +168,7 @@ interface V4Contract
         string $toObjectID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMBatchResponsePublicDefaultAssociation;
+    ): BatchResponsePublicDefaultAssociation;
 
     /**
      * @api
@@ -178,5 +178,5 @@ interface V4Contract
     public function request(
         int $userID,
         ?RequestOptions $requestOptions = null
-    ): AssociationsV4ReportCreationResponse;
+    ): ReportCreationResponse;
 }

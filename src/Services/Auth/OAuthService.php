@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Auth;
 
-use HubspotSDK\Auth\OAuth\AuthOAuthRefreshTokenInfoResponse;
-use HubspotSDK\Auth\OAuth\AuthOAuthTokenResponseIf;
 use HubspotSDK\Auth\OAuth\OAuthCreateParams;
 use HubspotSDK\Auth\OAuth\OAuthCreateParams\GrantType;
+use HubspotSDK\Auth\OAuth\RefreshTokenInfoResponse;
+use HubspotSDK\Auth\OAuth\TokenResponseIf;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
@@ -44,7 +44,7 @@ final class OAuthService implements OAuthContract
         $redirectUri = omit,
         $refreshToken = omit,
         ?RequestOptions $requestOptions = null,
-    ): AuthOAuthTokenResponseIf {
+    ): TokenResponseIf {
         $params = [
             'clientID' => $clientID,
             'clientSecret' => $clientSecret,
@@ -67,7 +67,7 @@ final class OAuthService implements OAuthContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): AuthOAuthTokenResponseIf {
+    ): TokenResponseIf {
         [$parsed, $options] = OAuthCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -80,7 +80,7 @@ final class OAuthService implements OAuthContract
             headers: ['Content-Type' => 'application/x-www-form-urlencoded'],
             body: (object) $parsed,
             options: $options,
-            convert: AuthOAuthTokenResponseIf::class,
+            convert: TokenResponseIf::class,
         );
     }
 
@@ -114,13 +114,13 @@ final class OAuthService implements OAuthContract
     public function get(
         string $token,
         ?RequestOptions $requestOptions = null
-    ): AuthOAuthRefreshTokenInfoResponse {
+    ): RefreshTokenInfoResponse {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['oauth/v1/refresh-tokens/%1$s', $token],
             options: $requestOptions,
-            convert: AuthOAuthRefreshTokenInfoResponse::class,
+            convert: RefreshTokenInfoResponse::class,
         );
     }
 }

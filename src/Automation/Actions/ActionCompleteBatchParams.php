@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Automation\Actions->completeBatch
  *
  * @phpstan-type action_complete_batch_params = array{
- *   inputs: list<AutomationActionsCallbackCompletionBatchRequest>
+ *   inputs: list<CallbackCompletionBatchRequest>
  * }
  */
 final class ActionCompleteBatchParams implements BaseModel
@@ -35,8 +35,8 @@ final class ActionCompleteBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<AutomationActionsCallbackCompletionBatchRequest> $inputs */
-    #[Api(list: AutomationActionsCallbackCompletionBatchRequest::class)]
+    /** @var list<CallbackCompletionBatchRequest> $inputs */
+    #[Api(list: CallbackCompletionBatchRequest::class)]
     public array $inputs;
 
     /**
@@ -63,7 +63,7 @@ final class ActionCompleteBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AutomationActionsCallbackCompletionBatchRequest> $inputs
+     * @param list<CallbackCompletionBatchRequest> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -75,7 +75,7 @@ final class ActionCompleteBatchParams implements BaseModel
     }
 
     /**
-     * @param list<AutomationActionsCallbackCompletionBatchRequest> $inputs
+     * @param list<CallbackCompletionBatchRequest> $inputs
      */
     public function withInputs(array $inputs): self
     {

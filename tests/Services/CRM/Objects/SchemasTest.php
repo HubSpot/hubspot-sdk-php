@@ -3,9 +3,9 @@
 namespace Tests\Services\CRM\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\CRMObjectTypeDefinitionLabels;
-use HubspotSDK\CRM\CRMObjectTypePropertyCreate;
-use HubspotSDK\CRM\Properties\CRMPropertiesOptionInput;
+use HubspotSDK\CRM\ObjectTypeDefinitionLabels;
+use HubspotSDK\CRM\ObjectTypePropertyCreate;
+use HubspotSDK\CRM\Properties\OptionInput;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,10 +41,10 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->create(
             associatedObjects: ['string'],
-            labels: (new CRMObjectTypeDefinitionLabels),
+            labels: (new ObjectTypeDefinitionLabels),
             name: 'name',
             properties: [
-                CRMObjectTypePropertyCreate::with(
+                ObjectTypePropertyCreate::with(
                     fieldType: 'fieldType',
                     label: 'label',
                     name: 'name',
@@ -66,12 +66,12 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->create(
             associatedObjects: ['string'],
-            labels: (new CRMObjectTypeDefinitionLabels)
+            labels: (new ObjectTypeDefinitionLabels)
                 ->withPlural('plural')
                 ->withSingular('singular'),
             name: 'name',
             properties: [
-                CRMObjectTypePropertyCreate::with(
+                ObjectTypePropertyCreate::with(
                     fieldType: 'fieldType',
                     label: 'label',
                     name: 'name',
@@ -85,11 +85,7 @@ final class SchemasTest extends TestCase
                     ->withNumberDisplayHint('unformatted')
                     ->withOptions(
                         [
-                            CRMPropertiesOptionInput::with(
-                                hidden: true,
-                                label: 'label',
-                                value: 'value'
-                            )
+                            OptionInput::with(hidden: true, label: 'label', value: 'value')
                                 ->withDisplayOrder(0),
                         ],
                     )

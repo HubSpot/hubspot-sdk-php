@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Tags\BlogsTagsBatchResponseTag;
-use HubspotSDK\Cms\Blogs\Tags\BlogsTagsCollectionResponseWithTotalTagForwardPaging;
-use HubspotSDK\Cms\Blogs\Tags\BlogsTagsTag;
+use HubspotSDK\Cms\Blogs\Tags\BatchResponseTag;
+use HubspotSDK\Cms\Blogs\Tags\CollectionResponseWithTotalTagForwardPaging;
+use HubspotSDK\Cms\Blogs\Tags\Tag;
 use HubspotSDK\Cms\Blogs\Tags\TagArchiveBatchParams;
 use HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams;
 use HubspotSDK\Cms\Blogs\Tags\TagCreateBatchParams;
@@ -60,7 +60,7 @@ final class TagsService implements TagsContract
         $translatedFromID,
         $updated,
         ?RequestOptions $requestOptions = null,
-    ): BlogsTagsTag {
+    ): Tag {
         $params = [
             'id' => $id,
             'created' => $created,
@@ -84,7 +84,7 @@ final class TagsService implements TagsContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsTag {
+    ): Tag {
         [$parsed, $options] = TagCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -96,7 +96,7 @@ final class TagsService implements TagsContract
             path: 'cms/v3/blogs/tags',
             body: (object) $parsed,
             options: $options,
-            convert: BlogsTagsTag::class,
+            convert: Tag::class,
         );
     }
 
@@ -127,7 +127,7 @@ final class TagsService implements TagsContract
         $updated,
         $archived = omit,
         ?RequestOptions $requestOptions = null,
-    ): BlogsTagsTag {
+    ): Tag {
         $params = [
             'id' => $id,
             'created' => $created,
@@ -153,7 +153,7 @@ final class TagsService implements TagsContract
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsTag {
+    ): Tag {
         [$parsed, $options] = TagUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -167,7 +167,7 @@ final class TagsService implements TagsContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: BlogsTagsTag::class,
+            convert: Tag::class,
         );
     }
 
@@ -203,7 +203,7 @@ final class TagsService implements TagsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): BlogsTagsCollectionResponseWithTotalTagForwardPaging {
+    ): CollectionResponseWithTotalTagForwardPaging {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -231,7 +231,7 @@ final class TagsService implements TagsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsCollectionResponseWithTotalTagForwardPaging {
+    ): CollectionResponseWithTotalTagForwardPaging {
         [$parsed, $options] = TagListParams::parseRequest($params, $requestOptions);
 
         // @phpstan-ignore-next-line;
@@ -240,7 +240,7 @@ final class TagsService implements TagsContract
             path: 'cms/v3/blogs/tags',
             query: $parsed,
             options: $options,
-            convert: BlogsTagsCollectionResponseWithTotalTagForwardPaging::class,
+            convert: CollectionResponseWithTotalTagForwardPaging::class,
         );
     }
 
@@ -394,14 +394,14 @@ final class TagsService implements TagsContract
      *
      * Create a batch of Blog Tags
      *
-     * @param list<BlogsTagsTag> $inputs
+     * @param list<Tag> $inputs
      *
      * @throws APIException
      */
     public function createBatch(
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag {
+    ): BatchResponseTag {
         $params = ['inputs' => $inputs];
 
         return $this->createBatchRaw($params, $requestOptions);
@@ -417,7 +417,7 @@ final class TagsService implements TagsContract
     public function createBatchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag {
+    ): BatchResponseTag {
         [$parsed, $options] = TagCreateBatchParams::parseRequest(
             $params,
             $requestOptions
@@ -429,7 +429,7 @@ final class TagsService implements TagsContract
             path: 'cms/v3/blogs/tags/batch/create',
             body: (object) $parsed,
             options: $options,
-            convert: BlogsTagsBatchResponseTag::class,
+            convert: BatchResponseTag::class,
         );
     }
 
@@ -451,7 +451,7 @@ final class TagsService implements TagsContract
         $language = omit,
         $primaryLanguage = omit,
         ?RequestOptions $requestOptions = null,
-    ): BlogsTagsTag {
+    ): Tag {
         $params = [
             'id' => $id,
             'name' => $name,
@@ -472,7 +472,7 @@ final class TagsService implements TagsContract
     public function createLangVariationRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsTag {
+    ): Tag {
         [$parsed, $options] = TagCreateLangVariationParams::parseRequest(
             $params,
             $requestOptions
@@ -484,7 +484,7 @@ final class TagsService implements TagsContract
             path: 'cms/v3/blogs/tags/multi-language/create-language-variation',
             body: (object) $parsed,
             options: $options,
-            convert: BlogsTagsTag::class,
+            convert: Tag::class,
         );
     }
 
@@ -547,7 +547,7 @@ final class TagsService implements TagsContract
         $archived = omit,
         $property = omit,
         ?RequestOptions $requestOptions = null,
-    ): BlogsTagsTag {
+    ): Tag {
         $params = ['archived' => $archived, 'property' => $property];
 
         return $this->readRaw($objectID, $params, $requestOptions);
@@ -564,7 +564,7 @@ final class TagsService implements TagsContract
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsTag {
+    ): Tag {
         [$parsed, $options] = TagReadParams::parseRequest($params, $requestOptions);
 
         // @phpstan-ignore-next-line;
@@ -573,7 +573,7 @@ final class TagsService implements TagsContract
             path: ['cms/v3/blogs/tags/%1$s', $objectID],
             query: $parsed,
             options: $options,
-            convert: BlogsTagsTag::class,
+            convert: Tag::class,
         );
     }
 
@@ -591,7 +591,7 @@ final class TagsService implements TagsContract
         $inputs,
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag {
+    ): BatchResponseTag {
         $params = ['inputs' => $inputs, 'archived' => $archived];
 
         return $this->readBatchRaw($params, $requestOptions);
@@ -607,7 +607,7 @@ final class TagsService implements TagsContract
     public function readBatchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag {
+    ): BatchResponseTag {
         [$parsed, $options] = TagReadBatchParams::parseRequest(
             $params,
             $requestOptions
@@ -621,7 +621,7 @@ final class TagsService implements TagsContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: BlogsTagsBatchResponseTag::class,
+            convert: BatchResponseTag::class,
         );
     }
 
@@ -683,7 +683,7 @@ final class TagsService implements TagsContract
         $inputs,
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag {
+    ): BatchResponseTag {
         $params = ['inputs' => $inputs, 'archived' => $archived];
 
         return $this->updateBatchRaw($params, $requestOptions);
@@ -699,7 +699,7 @@ final class TagsService implements TagsContract
     public function updateBatchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag {
+    ): BatchResponseTag {
         [$parsed, $options] = TagUpdateBatchParams::parseRequest(
             $params,
             $requestOptions
@@ -713,7 +713,7 @@ final class TagsService implements TagsContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: BlogsTagsBatchResponseTag::class,
+            convert: BatchResponseTag::class,
         );
     }
 

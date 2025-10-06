@@ -6,6 +6,10 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
+use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
+use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalPublicEmailForwardPaging;
+use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalVersionPublicEmail;
 use HubspotSDK\Marketing\Emails\EmailCloneParams;
 use HubspotSDK\Marketing\Emails\EmailCreateAbTestVariationParams;
 use HubspotSDK\Marketing\Emails\EmailCreateParams;
@@ -25,19 +29,15 @@ use HubspotSDK\Marketing\Emails\EmailRestoreDraftRevisionParams;
 use HubspotSDK\Marketing\Emails\EmailRestoreRevisionParams;
 use HubspotSDK\Marketing\Emails\EmailUpdateParams;
 use HubspotSDK\Marketing\Emails\EmailUpsertDraftParams;
-use HubspotSDK\Marketing\Emails\MarketingEmailsAggregateEmailStatistics;
-use HubspotSDK\Marketing\Emails\MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging;
-use HubspotSDK\Marketing\Emails\MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging;
-use HubspotSDK\Marketing\Emails\MarketingEmailsCollectionResponseWithTotalVersionPublicEmail;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmail;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmailContent;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmailFromDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmailSubscriptionDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmailTestingDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmailToDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicRssEmailDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicWebversionDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsVersionPublicEmail;
+use HubspotSDK\Marketing\Emails\PublicEmail;
+use HubspotSDK\Marketing\Emails\PublicEmailContent;
+use HubspotSDK\Marketing\Emails\PublicEmailFromDetails;
+use HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
+use HubspotSDK\Marketing\Emails\PublicEmailToDetails;
+use HubspotSDK\Marketing\Emails\PublicRssEmailDetails;
+use HubspotSDK\Marketing\Emails\PublicWebversionDetails;
+use HubspotSDK\Marketing\Emails\VersionPublicEmail;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\EmailsContract;
 
@@ -60,21 +60,21 @@ final class EmailsService implements EmailsContract
      * @param bool $archived
      * @param int $businessUnitID
      * @param string $campaign
-     * @param MarketingEmailsPublicEmailContent $content
+     * @param PublicEmailContent $content
      * @param string $feedbackSurveyID
-     * @param MarketingEmailsPublicEmailFromDetails $from
+     * @param PublicEmailFromDetails $from
      * @param bool $jitterSendTime
      * @param Language|value-of<Language> $language
      * @param \DateTimeInterface $publishDate
-     * @param MarketingEmailsPublicRssEmailDetails $rssData
+     * @param PublicRssEmailDetails $rssData
      * @param bool $sendOnPublish
      * @param State|value-of<State> $state
      * @param Subcategory|value-of<Subcategory> $subcategory
      * @param string $subject
-     * @param MarketingEmailsPublicEmailSubscriptionDetails $subscriptionDetails
-     * @param MarketingEmailsPublicEmailTestingDetails $testing
-     * @param MarketingEmailsPublicEmailToDetails $to
-     * @param MarketingEmailsPublicWebversionDetails $webversion
+     * @param PublicEmailSubscriptionDetails $subscriptionDetails
+     * @param PublicEmailTestingDetails $testing
+     * @param PublicEmailToDetails $to
+     * @param PublicWebversionDetails $webversion
      *
      * @throws APIException
      */
@@ -100,7 +100,7 @@ final class EmailsService implements EmailsContract
         $to = omit,
         $webversion = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         $params = [
             'name' => $name,
             'activeDomain' => $activeDomain,
@@ -137,7 +137,7 @@ final class EmailsService implements EmailsContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         [$parsed, $options] = EmailCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -149,7 +149,7 @@ final class EmailsService implements EmailsContract
             path: 'marketing/v3/emails/',
             body: (object) $parsed,
             options: $options,
-            convert: MarketingEmailsPublicEmail::class,
+            convert: PublicEmail::class,
         );
     }
 
@@ -162,21 +162,21 @@ final class EmailsService implements EmailsContract
      * @param string $activeDomain
      * @param int $businessUnitID
      * @param string $campaign
-     * @param MarketingEmailsPublicEmailContent $content
-     * @param MarketingEmailsPublicEmailFromDetails $from
+     * @param PublicEmailContent $content
+     * @param PublicEmailFromDetails $from
      * @param bool $jitterSendTime
      * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\Language|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\Language> $language
      * @param string $name
      * @param \DateTimeInterface $publishDate
-     * @param MarketingEmailsPublicRssEmailDetails $rssData
+     * @param PublicRssEmailDetails $rssData
      * @param bool $sendOnPublish
      * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\State|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\State> $state
      * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory> $subcategory
      * @param string $subject
-     * @param MarketingEmailsPublicEmailSubscriptionDetails $subscriptionDetails
-     * @param MarketingEmailsPublicEmailTestingDetails $testing
-     * @param MarketingEmailsPublicEmailToDetails $to
-     * @param MarketingEmailsPublicWebversionDetails $webversion
+     * @param PublicEmailSubscriptionDetails $subscriptionDetails
+     * @param PublicEmailTestingDetails $testing
+     * @param PublicEmailToDetails $to
+     * @param PublicWebversionDetails $webversion
      *
      * @throws APIException
      */
@@ -202,7 +202,7 @@ final class EmailsService implements EmailsContract
         $to = omit,
         $webversion = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         $params = [
             'archived' => $archived,
             'activeDomain' => $activeDomain,
@@ -239,7 +239,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         [$parsed, $options] = EmailUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -253,7 +253,7 @@ final class EmailsService implements EmailsContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: MarketingEmailsPublicEmail::class,
+            convert: PublicEmail::class,
         );
     }
 
@@ -301,7 +301,7 @@ final class EmailsService implements EmailsContract
         $updatedBefore = omit,
         $workflowNames = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging {
+    ): CollectionResponseWithTotalPublicEmailForwardPaging {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -335,7 +335,7 @@ final class EmailsService implements EmailsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging {
+    ): CollectionResponseWithTotalPublicEmailForwardPaging {
         [$parsed, $options] = EmailListParams::parseRequest(
             $params,
             $requestOptions
@@ -347,7 +347,7 @@ final class EmailsService implements EmailsContract
             path: 'marketing/v3/emails/',
             query: $parsed,
             options: $options,
-            convert: MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging::class,
+            convert: CollectionResponseWithTotalPublicEmailForwardPaging::class,
         );
     }
 
@@ -413,7 +413,7 @@ final class EmailsService implements EmailsContract
         $cloneName = omit,
         $language = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         $params = ['id' => $id, 'cloneName' => $cloneName, 'language' => $language];
 
         return $this->cloneRaw($params, $requestOptions);
@@ -429,7 +429,7 @@ final class EmailsService implements EmailsContract
     public function cloneRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         [$parsed, $options] = EmailCloneParams::parseRequest(
             $params,
             $requestOptions
@@ -441,7 +441,7 @@ final class EmailsService implements EmailsContract
             path: 'marketing/v3/emails/clone',
             body: (object) $parsed,
             options: $options,
-            convert: MarketingEmailsPublicEmail::class,
+            convert: PublicEmail::class,
         );
     }
 
@@ -459,7 +459,7 @@ final class EmailsService implements EmailsContract
         $contentID,
         $variationName,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         $params = ['contentID' => $contentID, 'variationName' => $variationName];
 
         return $this->createAbTestVariationRaw($params, $requestOptions);
@@ -475,7 +475,7 @@ final class EmailsService implements EmailsContract
     public function createAbTestVariationRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         [$parsed, $options] = EmailCreateAbTestVariationParams::parseRequest(
             $params,
             $requestOptions
@@ -487,7 +487,7 @@ final class EmailsService implements EmailsContract
             path: 'marketing/v3/emails/ab-test/create-variation',
             body: (object) $parsed,
             options: $options,
-            convert: MarketingEmailsPublicEmail::class,
+            convert: PublicEmail::class,
         );
     }
 
@@ -501,13 +501,13 @@ final class EmailsService implements EmailsContract
     public function getAbTestVariation(
         string $emailID,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/ab-test/get-variation', $emailID],
             options: $requestOptions,
-            convert: MarketingEmailsPublicEmail::class,
+            convert: PublicEmail::class,
         );
     }
 
@@ -521,13 +521,13 @@ final class EmailsService implements EmailsContract
     public function getDraft(
         string $emailID,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/draft', $emailID],
             options: $requestOptions,
-            convert: MarketingEmailsPublicEmail::class,
+            convert: PublicEmail::class,
         );
     }
 
@@ -549,7 +549,7 @@ final class EmailsService implements EmailsContract
         $property = omit,
         $startTimestamp = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsAggregateEmailStatistics {
+    ): AggregateEmailStatistics {
         $params = [
             'emailIDs' => $emailIDs,
             'endTimestamp' => $endTimestamp,
@@ -570,7 +570,7 @@ final class EmailsService implements EmailsContract
     public function getEmailsListRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsAggregateEmailStatistics {
+    ): AggregateEmailStatistics {
         [$parsed, $options] = EmailGetEmailsListParams::parseRequest(
             $params,
             $requestOptions
@@ -582,7 +582,7 @@ final class EmailsService implements EmailsContract
             path: 'marketing/v3/emails/statistics/list',
             query: $parsed,
             options: $options,
-            convert: MarketingEmailsAggregateEmailStatistics::class,
+            convert: AggregateEmailStatistics::class,
         );
     }
 
@@ -604,7 +604,7 @@ final class EmailsService implements EmailsContract
         $interval = omit,
         $startTimestamp = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging {
+    ): CollectionResponseWithTotalEmailStatisticIntervalNoPaging {
         $params = [
             'emailIDs' => $emailIDs,
             'endTimestamp' => $endTimestamp,
@@ -625,7 +625,7 @@ final class EmailsService implements EmailsContract
     public function getHistogramRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging {
+    ): CollectionResponseWithTotalEmailStatisticIntervalNoPaging {
         [$parsed, $options] = EmailGetHistogramParams::parseRequest(
             $params,
             $requestOptions
@@ -637,7 +637,7 @@ final class EmailsService implements EmailsContract
             path: 'marketing/v3/emails/statistics/histogram',
             query: $parsed,
             options: $options,
-            convert: MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging::class,
+            convert: CollectionResponseWithTotalEmailStatisticIntervalNoPaging::class,
         );
     }
 
@@ -654,7 +654,7 @@ final class EmailsService implements EmailsContract
         string $revisionID,
         $emailID,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsVersionPublicEmail {
+    ): VersionPublicEmail {
         $params = ['emailID' => $emailID];
 
         return $this->getRevisionByIDRaw($revisionID, $params, $requestOptions);
@@ -671,7 +671,7 @@ final class EmailsService implements EmailsContract
         string $revisionID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsVersionPublicEmail {
+    ): VersionPublicEmail {
         [$parsed, $options] = EmailGetRevisionByIDParams::parseRequest(
             $params,
             $requestOptions
@@ -684,7 +684,7 @@ final class EmailsService implements EmailsContract
             method: 'get',
             path: ['marketing/v3/emails/%1$s/revisions/%2$s', $emailID, $revisionID],
             options: $options,
-            convert: MarketingEmailsVersionPublicEmail::class,
+            convert: VersionPublicEmail::class,
         );
     }
 
@@ -705,7 +705,7 @@ final class EmailsService implements EmailsContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsCollectionResponseWithTotalVersionPublicEmail {
+    ): CollectionResponseWithTotalVersionPublicEmail {
         $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
 
         return $this->getRevisionsRaw($emailID, $params, $requestOptions);
@@ -722,7 +722,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsCollectionResponseWithTotalVersionPublicEmail {
+    ): CollectionResponseWithTotalVersionPublicEmail {
         [$parsed, $options] = EmailGetRevisionsParams::parseRequest(
             $params,
             $requestOptions
@@ -734,7 +734,7 @@ final class EmailsService implements EmailsContract
             path: ['marketing/v3/emails/%1$s/revisions', $emailID],
             query: $parsed,
             options: $options,
-            convert: MarketingEmailsCollectionResponseWithTotalVersionPublicEmail::class,
+            convert: CollectionResponseWithTotalVersionPublicEmail::class,
         );
     }
 
@@ -779,7 +779,7 @@ final class EmailsService implements EmailsContract
         $marketingCampaignNames = omit,
         $workflowNames = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         $params = [
             'archived' => $archived,
             'includedProperties' => $includedProperties,
@@ -802,7 +802,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         [$parsed, $options] = EmailReadParams::parseRequest(
             $params,
             $requestOptions
@@ -814,7 +814,7 @@ final class EmailsService implements EmailsContract
             path: ['marketing/v3/emails/%1$s', $emailID],
             query: $parsed,
             options: $options,
-            convert: MarketingEmailsPublicEmail::class,
+            convert: PublicEmail::class,
         );
     }
 
@@ -851,7 +851,7 @@ final class EmailsService implements EmailsContract
         int $revisionID,
         $emailID,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         $params = ['emailID' => $emailID];
 
         return $this->restoreDraftRevisionRaw(
@@ -872,7 +872,7 @@ final class EmailsService implements EmailsContract
         int $revisionID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         [$parsed, $options] = EmailRestoreDraftRevisionParams::parseRequest(
             $params,
             $requestOptions
@@ -889,7 +889,7 @@ final class EmailsService implements EmailsContract
                 $revisionID,
             ],
             options: $options,
-            convert: MarketingEmailsPublicEmail::class,
+            convert: PublicEmail::class,
         );
     }
 
@@ -971,21 +971,21 @@ final class EmailsService implements EmailsContract
      * @param bool $archived
      * @param int $businessUnitID
      * @param string $campaign
-     * @param MarketingEmailsPublicEmailContent $content
-     * @param MarketingEmailsPublicEmailFromDetails $from
+     * @param PublicEmailContent $content
+     * @param PublicEmailFromDetails $from
      * @param bool $jitterSendTime
      * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language> $language
      * @param string $name
      * @param \DateTimeInterface $publishDate
-     * @param MarketingEmailsPublicRssEmailDetails $rssData
+     * @param PublicRssEmailDetails $rssData
      * @param bool $sendOnPublish
      * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State> $state
      * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory> $subcategory
      * @param string $subject
-     * @param MarketingEmailsPublicEmailSubscriptionDetails $subscriptionDetails
-     * @param MarketingEmailsPublicEmailTestingDetails $testing
-     * @param MarketingEmailsPublicEmailToDetails $to
-     * @param MarketingEmailsPublicWebversionDetails $webversion
+     * @param PublicEmailSubscriptionDetails $subscriptionDetails
+     * @param PublicEmailTestingDetails $testing
+     * @param PublicEmailToDetails $to
+     * @param PublicWebversionDetails $webversion
      *
      * @throws APIException
      */
@@ -1011,7 +1011,7 @@ final class EmailsService implements EmailsContract
         $to = omit,
         $webversion = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         $params = [
             'activeDomain' => $activeDomain,
             'archived' => $archived,
@@ -1048,7 +1048,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail {
+    ): PublicEmail {
         [$parsed, $options] = EmailUpsertDraftParams::parseRequest(
             $params,
             $requestOptions
@@ -1060,7 +1060,7 @@ final class EmailsService implements EmailsContract
             path: ['marketing/v3/emails/%1$s/draft', $emailID],
             body: (object) $parsed,
             options: $options,
-            convert: MarketingEmailsPublicEmail::class,
+            convert: PublicEmail::class,
         );
     }
 }

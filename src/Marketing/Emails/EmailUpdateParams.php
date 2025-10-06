@@ -33,21 +33,21 @@ use HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory;
  *   activeDomain?: string,
  *   businessUnitID?: int,
  *   campaign?: string,
- *   content?: MarketingEmailsPublicEmailContent,
- *   from?: MarketingEmailsPublicEmailFromDetails,
+ *   content?: PublicEmailContent,
+ *   from?: PublicEmailFromDetails,
  *   jitterSendTime?: bool,
  *   language?: Language|value-of<Language>,
  *   name?: string,
  *   publishDate?: \DateTimeInterface,
- *   rssData?: MarketingEmailsPublicRssEmailDetails,
+ *   rssData?: PublicRssEmailDetails,
  *   sendOnPublish?: bool,
  *   state?: State|value-of<State>,
  *   subcategory?: Subcategory|value-of<Subcategory>,
  *   subject?: string,
- *   subscriptionDetails?: MarketingEmailsPublicEmailSubscriptionDetails,
- *   testing?: MarketingEmailsPublicEmailTestingDetails,
- *   to?: MarketingEmailsPublicEmailToDetails,
- *   webversion?: MarketingEmailsPublicWebversionDetails,
+ *   subscriptionDetails?: PublicEmailSubscriptionDetails,
+ *   testing?: PublicEmailTestingDetails,
+ *   to?: PublicEmailToDetails,
+ *   webversion?: PublicWebversionDetails,
  * }
  */
 final class EmailUpdateParams implements BaseModel
@@ -69,10 +69,10 @@ final class EmailUpdateParams implements BaseModel
     public ?string $campaign;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPublicEmailContent $content;
+    public ?PublicEmailContent $content;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPublicEmailFromDetails $from;
+    public ?PublicEmailFromDetails $from;
 
     #[Api(optional: true)]
     public ?bool $jitterSendTime;
@@ -88,7 +88,7 @@ final class EmailUpdateParams implements BaseModel
     public ?\DateTimeInterface $publishDate;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPublicRssEmailDetails $rssData;
+    public ?PublicRssEmailDetails $rssData;
 
     #[Api(optional: true)]
     public ?bool $sendOnPublish;
@@ -105,16 +105,16 @@ final class EmailUpdateParams implements BaseModel
     public ?string $subject;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPublicEmailSubscriptionDetails $subscriptionDetails;
+    public ?PublicEmailSubscriptionDetails $subscriptionDetails;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPublicEmailTestingDetails $testing;
+    public ?PublicEmailTestingDetails $testing;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPublicEmailToDetails $to;
+    public ?PublicEmailToDetails $to;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPublicWebversionDetails $webversion;
+    public ?PublicWebversionDetails $webversion;
 
     public function __construct()
     {
@@ -135,21 +135,21 @@ final class EmailUpdateParams implements BaseModel
         ?string $activeDomain = null,
         ?int $businessUnitID = null,
         ?string $campaign = null,
-        ?MarketingEmailsPublicEmailContent $content = null,
-        ?MarketingEmailsPublicEmailFromDetails $from = null,
+        ?PublicEmailContent $content = null,
+        ?PublicEmailFromDetails $from = null,
         ?bool $jitterSendTime = null,
         Language|string|null $language = null,
         ?string $name = null,
         ?\DateTimeInterface $publishDate = null,
-        ?MarketingEmailsPublicRssEmailDetails $rssData = null,
+        ?PublicRssEmailDetails $rssData = null,
         ?bool $sendOnPublish = null,
         State|string|null $state = null,
         Subcategory|string|null $subcategory = null,
         ?string $subject = null,
-        ?MarketingEmailsPublicEmailSubscriptionDetails $subscriptionDetails = null,
-        ?MarketingEmailsPublicEmailTestingDetails $testing = null,
-        ?MarketingEmailsPublicEmailToDetails $to = null,
-        ?MarketingEmailsPublicWebversionDetails $webversion = null,
+        ?PublicEmailSubscriptionDetails $subscriptionDetails = null,
+        ?PublicEmailTestingDetails $testing = null,
+        ?PublicEmailToDetails $to = null,
+        ?PublicWebversionDetails $webversion = null,
     ): self {
         $obj = new self;
 
@@ -208,16 +208,15 @@ final class EmailUpdateParams implements BaseModel
         return $obj;
     }
 
-    public function withContent(
-        MarketingEmailsPublicEmailContent $content
-    ): self {
+    public function withContent(PublicEmailContent $content): self
+    {
         $obj = clone $this;
         $obj->content = $content;
 
         return $obj;
     }
 
-    public function withFrom(MarketingEmailsPublicEmailFromDetails $from): self
+    public function withFrom(PublicEmailFromDetails $from): self
     {
         $obj = clone $this;
         $obj->from = $from;
@@ -260,9 +259,8 @@ final class EmailUpdateParams implements BaseModel
         return $obj;
     }
 
-    public function withRssData(
-        MarketingEmailsPublicRssEmailDetails $rssData
-    ): self {
+    public function withRssData(PublicRssEmailDetails $rssData): self
+    {
         $obj = clone $this;
         $obj->rssData = $rssData;
 
@@ -308,7 +306,7 @@ final class EmailUpdateParams implements BaseModel
     }
 
     public function withSubscriptionDetails(
-        MarketingEmailsPublicEmailSubscriptionDetails $subscriptionDetails
+        PublicEmailSubscriptionDetails $subscriptionDetails
     ): self {
         $obj = clone $this;
         $obj->subscriptionDetails = $subscriptionDetails;
@@ -316,16 +314,15 @@ final class EmailUpdateParams implements BaseModel
         return $obj;
     }
 
-    public function withTesting(
-        MarketingEmailsPublicEmailTestingDetails $testing
-    ): self {
+    public function withTesting(PublicEmailTestingDetails $testing): self
+    {
         $obj = clone $this;
         $obj->testing = $testing;
 
         return $obj;
     }
 
-    public function withTo(MarketingEmailsPublicEmailToDetails $to): self
+    public function withTo(PublicEmailToDetails $to): self
     {
         $obj = clone $this;
         $obj->to = $to;
@@ -333,9 +330,8 @@ final class EmailUpdateParams implements BaseModel
         return $obj;
     }
 
-    public function withWebversion(
-        MarketingEmailsPublicWebversionDetails $webversion
-    ): self {
+    public function withWebversion(PublicWebversionDetails $webversion): self
+    {
         $obj = clone $this;
         $obj->webversion = $webversion;
 

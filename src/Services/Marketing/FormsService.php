@@ -6,19 +6,19 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\Forms\CollectionResponseFormDefinitionBaseForwardPaging;
+use HubspotSDK\Marketing\Forms\FieldGroup;
+use HubspotSDK\Marketing\Forms\FormDisplayOptions;
 use HubspotSDK\Marketing\Forms\FormListParams;
 use HubspotSDK\Marketing\Forms\FormReadParams;
 use HubspotSDK\Marketing\Forms\FormReplaceParams;
 use HubspotSDK\Marketing\Forms\FormReplaceParams\FormType;
 use HubspotSDK\Marketing\Forms\FormUpdateParams;
-use HubspotSDK\Marketing\Forms\MarketingFormsCollectionResponseFormDefinitionBaseForwardPaging;
-use HubspotSDK\Marketing\Forms\MarketingFormsFieldGroup;
-use HubspotSDK\Marketing\Forms\MarketingFormsFormDisplayOptions;
-use HubspotSDK\Marketing\Forms\MarketingFormsHubSpotFormConfiguration;
-use HubspotSDK\Marketing\Forms\MarketingFormsLegalConsentOptionsExplicitConsentToProcess;
-use HubspotSDK\Marketing\Forms\MarketingFormsLegalConsentOptionsImplicitConsentToProcess;
-use HubspotSDK\Marketing\Forms\MarketingFormsLegalConsentOptionsLegitimateInterest;
-use HubspotSDK\Marketing\Forms\MarketingFormsLegalConsentOptionsNone;
+use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
+use HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess;
+use HubspotSDK\Marketing\Forms\LegalConsentOptionsImplicitConsentToProcess;
+use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest;
+use HubspotSDK\Marketing\Forms\LegalConsentOptionsNone;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\FormsContract;
 
@@ -55,10 +55,10 @@ final class FormsService implements FormsContract
      * Partially update a form definition
      *
      * @param bool $archived
-     * @param MarketingFormsHubSpotFormConfiguration $configuration
-     * @param MarketingFormsFormDisplayOptions $displayOptions
-     * @param list<MarketingFormsFieldGroup> $fieldGroups
-     * @param MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
+     * @param HubSpotFormConfiguration $configuration
+     * @param FormDisplayOptions $displayOptions
+     * @param list<FieldGroup> $fieldGroups
+     * @param LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
      * @param string $name
      *
      * @throws APIException
@@ -130,7 +130,7 @@ final class FormsService implements FormsContract
         $formTypes = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingFormsCollectionResponseFormDefinitionBaseForwardPaging {
+    ): CollectionResponseFormDefinitionBaseForwardPaging {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -151,7 +151,7 @@ final class FormsService implements FormsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingFormsCollectionResponseFormDefinitionBaseForwardPaging {
+    ): CollectionResponseFormDefinitionBaseForwardPaging {
         [$parsed, $options] = FormListParams::parseRequest(
             $params,
             $requestOptions
@@ -163,7 +163,7 @@ final class FormsService implements FormsContract
             path: 'marketing/v3/forms/',
             query: $parsed,
             options: $options,
-            convert: MarketingFormsCollectionResponseFormDefinitionBaseForwardPaging::class,
+            convert: CollectionResponseFormDefinitionBaseForwardPaging::class,
         );
     }
 
@@ -240,11 +240,11 @@ final class FormsService implements FormsContract
      *
      * @param string $id
      * @param bool $archived
-     * @param MarketingFormsHubSpotFormConfiguration $configuration
+     * @param HubSpotFormConfiguration $configuration
      * @param \DateTimeInterface $createdAt
-     * @param MarketingFormsFormDisplayOptions $displayOptions
-     * @param list<MarketingFormsFieldGroup> $fieldGroups
-     * @param MarketingFormsLegalConsentOptionsNone|MarketingFormsLegalConsentOptionsLegitimateInterest|MarketingFormsLegalConsentOptionsExplicitConsentToProcess|MarketingFormsLegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
+     * @param FormDisplayOptions $displayOptions
+     * @param list<FieldGroup> $fieldGroups
+     * @param LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
      * @param string $name
      * @param \DateTimeInterface $updatedAt
      * @param FormType|value-of<FormType> $formType

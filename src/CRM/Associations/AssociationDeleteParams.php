@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\CRM\Associations->delete
  *
  * @phpstan-type association_delete_params = array{
- *   fromObjectType: string, inputs: list<CRMAssociationsPublicAssociation>
+ *   fromObjectType: string, inputs: list<PublicAssociation>
  * }
  */
 final class AssociationDeleteParams implements BaseModel
@@ -38,8 +38,8 @@ final class AssociationDeleteParams implements BaseModel
     #[Api]
     public string $fromObjectType;
 
-    /** @var list<CRMAssociationsPublicAssociation> $inputs */
-    #[Api(list: CRMAssociationsPublicAssociation::class)]
+    /** @var list<PublicAssociation> $inputs */
+    #[Api(list: PublicAssociation::class)]
     public array $inputs;
 
     /**
@@ -66,7 +66,7 @@ final class AssociationDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMAssociationsPublicAssociation> $inputs
+     * @param list<PublicAssociation> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -87,7 +87,7 @@ final class AssociationDeleteParams implements BaseModel
     }
 
     /**
-     * @param list<CRMAssociationsPublicAssociation> $inputs
+     * @param list<PublicAssociation> $inputs
      */
     public function withInputs(array $inputs): self
     {

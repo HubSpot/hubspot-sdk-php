@@ -3,7 +3,7 @@
 namespace Tests\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Tags\BlogsTagsTag;
+use HubspotSDK\Cms\Blogs\Tags\Tag;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -201,7 +201,7 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->createBatch(
             [
-                BlogsTagsTag::with(
+                Tag::with(
                     id: 'id',
                     created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
@@ -225,7 +225,7 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->createBatch(
             [
-                BlogsTagsTag::with(
+                Tag::with(
                     id: 'id',
                     created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),

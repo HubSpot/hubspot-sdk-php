@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Tags->createBatch
  *
- * @phpstan-type tag_create_batch_params = array{inputs: list<BlogsTagsTag>}
+ * @phpstan-type tag_create_batch_params = array{inputs: list<Tag>}
  */
 final class TagCreateBatchParams implements BaseModel
 {
@@ -33,8 +33,8 @@ final class TagCreateBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<BlogsTagsTag> $inputs */
-    #[Api(list: BlogsTagsTag::class)]
+    /** @var list<Tag> $inputs */
+    #[Api(list: Tag::class)]
     public array $inputs;
 
     /**
@@ -61,7 +61,7 @@ final class TagCreateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BlogsTagsTag> $inputs
+     * @param list<Tag> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -73,7 +73,7 @@ final class TagCreateBatchParams implements BaseModel
     }
 
     /**
-     * @param list<BlogsTagsTag> $inputs
+     * @param list<Tag> $inputs
      */
     public function withInputs(array $inputs): self
     {

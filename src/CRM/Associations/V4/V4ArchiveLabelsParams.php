@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\CRM\Associations\V4->archiveLabels
  *
  * @phpstan-type v4_archive_labels_params = array{
- *   fromObjectType: string, inputs: list<AssociationsV4PublicAssociationMultiPost>
+ *   fromObjectType: string, inputs: list<PublicAssociationMultiPost>
  * }
  */
 final class V4ArchiveLabelsParams implements BaseModel
@@ -38,8 +38,8 @@ final class V4ArchiveLabelsParams implements BaseModel
     #[Api]
     public string $fromObjectType;
 
-    /** @var list<AssociationsV4PublicAssociationMultiPost> $inputs */
-    #[Api(list: AssociationsV4PublicAssociationMultiPost::class)]
+    /** @var list<PublicAssociationMultiPost> $inputs */
+    #[Api(list: PublicAssociationMultiPost::class)]
     public array $inputs;
 
     /**
@@ -66,7 +66,7 @@ final class V4ArchiveLabelsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationsV4PublicAssociationMultiPost> $inputs
+     * @param list<PublicAssociationMultiPost> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -87,7 +87,7 @@ final class V4ArchiveLabelsParams implements BaseModel
     }
 
     /**
-     * @param list<AssociationsV4PublicAssociationMultiPost> $inputs
+     * @param list<PublicAssociationMultiPost> $inputs
      */
     public function withInputs(array $inputs): self
     {

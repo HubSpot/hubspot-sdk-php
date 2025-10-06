@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Webhooks->configure
  *
  * @phpstan-type webhook_configure_params = array{
- *   targetURL: string, throttling: WebhooksThrottlingSettings
+ *   targetURL: string, throttling: ThrottlingSettings
  * }
  */
 final class WebhookConfigureParams implements BaseModel
@@ -39,7 +39,7 @@ final class WebhookConfigureParams implements BaseModel
     public string $targetURL;
 
     #[Api]
-    public WebhooksThrottlingSettings $throttling;
+    public ThrottlingSettings $throttling;
 
     /**
      * `new WebhookConfigureParams()` is missing required properties by the API.
@@ -67,7 +67,7 @@ final class WebhookConfigureParams implements BaseModel
      */
     public static function with(
         string $targetURL,
-        WebhooksThrottlingSettings $throttling
+        ThrottlingSettings $throttling
     ): self {
         $obj = new self;
 
@@ -85,7 +85,7 @@ final class WebhookConfigureParams implements BaseModel
         return $obj;
     }
 
-    public function withThrottling(WebhooksThrottlingSettings $throttling): self
+    public function withThrottling(ThrottlingSettings $throttling): self
     {
         $obj = clone $this;
         $obj->throttling = $throttling;

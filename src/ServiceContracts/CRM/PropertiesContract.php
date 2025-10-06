@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\CRMProperty;
-use HubspotSDK\CRM\Properties\CRMPropertiesBatchResponseProperty;
-use HubspotSDK\CRM\Properties\CRMPropertiesCollectionResponsePropertyGroup;
-use HubspotSDK\CRM\Properties\CRMPropertiesCreatedResponsePropertyGroup;
-use HubspotSDK\CRM\Properties\CRMPropertiesOptionInput;
-use HubspotSDK\CRM\Properties\CRMPropertiesPropertyName;
+use HubspotSDK\CRM\Properties\BatchResponseProperty;
+use HubspotSDK\CRM\Properties\CollectionResponsePropertyGroup;
+use HubspotSDK\CRM\Properties\CreatedResponsePropertyGroup;
+use HubspotSDK\CRM\Properties\OptionInput;
+use HubspotSDK\CRM\Properties\PropertyName;
 use HubspotSDK\CRM\Properties\PropertyReadParams\DataSensitivity;
 use HubspotSDK\CRM\Properties\PropertyUpdateParams\FieldType;
 use HubspotSDK\CRM\Properties\PropertyUpdateParams\Type;
+use HubspotSDK\CRM\Property;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -35,7 +35,7 @@ interface PropertiesContract
         $name,
         $displayOrder = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMPropertiesCreatedResponsePropertyGroup;
+    ): CreatedResponsePropertyGroup;
 
     /**
      * @api
@@ -48,7 +48,7 @@ interface PropertiesContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMPropertiesCreatedResponsePropertyGroup;
+    ): CreatedResponsePropertyGroup;
 
     /**
      * @api
@@ -61,7 +61,7 @@ interface PropertiesContract
      * @param string $groupName
      * @param bool $hidden
      * @param string $label
-     * @param list<CRMPropertiesOptionInput> $options
+     * @param list<OptionInput> $options
      * @param Type|value-of<Type> $type
      *
      * @throws APIException
@@ -79,7 +79,7 @@ interface PropertiesContract
         $options = omit,
         $type = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMProperty;
+    ): Property;
 
     /**
      * @api
@@ -92,7 +92,7 @@ interface PropertiesContract
         string $propertyName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMProperty;
+    ): Property;
 
     /**
      * @api
@@ -102,7 +102,7 @@ interface PropertiesContract
     public function list(
         string $objectType,
         ?RequestOptions $requestOptions = null
-    ): CRMPropertiesCollectionResponsePropertyGroup;
+    ): CollectionResponsePropertyGroup;
 
     /**
      * @api
@@ -145,7 +145,7 @@ interface PropertiesContract
         $archived = omit,
         $properties = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMProperty;
+    ): Property;
 
     /**
      * @api
@@ -158,13 +158,13 @@ interface PropertiesContract
         string $propertyName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMProperty;
+    ): Property;
 
     /**
      * @api
      *
      * @param bool $archived
-     * @param list<CRMPropertiesPropertyName> $inputs
+     * @param list<PropertyName> $inputs
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      *
      * @throws APIException
@@ -175,7 +175,7 @@ interface PropertiesContract
         $inputs,
         $dataSensitivity = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMPropertiesBatchResponseProperty;
+    ): BatchResponseProperty;
 
     /**
      * @api
@@ -188,5 +188,5 @@ interface PropertiesContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMPropertiesBatchResponseProperty;
+    ): BatchResponseProperty;
 }

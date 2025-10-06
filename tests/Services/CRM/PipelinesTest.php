@@ -3,7 +3,7 @@
 namespace Tests\Services\CRM;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesPipelineStageInput;
+use HubspotSDK\CRM\Pipelines\PipelineStageInput;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,9 +41,7 @@ final class PipelinesTest extends TestCase
             'objectType',
             displayOrder: 0,
             label: 'label',
-            stages: [
-                CRMPipelinesPipelineStageInput::with(displayOrder: 0, label: 'label'),
-            ],
+            stages: [PipelineStageInput::with(displayOrder: 0, label: 'label')],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -61,7 +59,7 @@ final class PipelinesTest extends TestCase
             displayOrder: 0,
             label: 'label',
             stages: [
-                CRMPipelinesPipelineStageInput::with(displayOrder: 0, label: 'label')
+                PipelineStageInput::with(displayOrder: 0, label: 'label')
                     ->withMetadata(['foo' => 'string']),
             ],
         );

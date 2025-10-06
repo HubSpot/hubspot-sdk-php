@@ -6,6 +6,10 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\CRM\Objects\CollectionResponseSimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\Contacts\ContactCreateParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactDeleteParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactListParams;
@@ -15,18 +19,14 @@ use HubspotSDK\CRM\Objects\Contacts\ContactReadParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactSearchParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactUpdateParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactUpsertParams;
-use HubspotSDK\CRM\Objects\CRMObjectsBatchResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsBatchResponseSimplePublicUpsertObject;
-use HubspotSDK\CRM\Objects\CRMObjectsCollectionResponseSimplePublicObjectWithAssociations;
-use HubspotSDK\CRM\Objects\CRMObjectsCollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsCreatedResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsFilterGroup;
-use HubspotSDK\CRM\Objects\CRMObjectsPublicAssociationsForObject;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectID;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
+use HubspotSDK\CRM\Objects\FilterGroup;
+use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
+use HubspotSDK\CRM\Objects\SimplePublicObject;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\Objects\SimplePublicObjectID;
+use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\ContactsContract;
 
@@ -45,7 +45,7 @@ final class ContactsService implements ContactsContract
      * Create a contact
      *
      * @param array<string, string> $properties
-     * @param list<CRMObjectsPublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject> $associations
      *
      * @throws APIException
      */
@@ -53,7 +53,7 @@ final class ContactsService implements ContactsContract
         $properties,
         $associations = omit,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCreatedResponseSimplePublicObject {
+    ): CreatedResponseSimplePublicObject {
         $params = ['properties' => $properties, 'associations' => $associations];
 
         return $this->createRaw($params, $requestOptions);
@@ -69,7 +69,7 @@ final class ContactsService implements ContactsContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCreatedResponseSimplePublicObject {
+    ): CreatedResponseSimplePublicObject {
         [$parsed, $options] = ContactCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -81,7 +81,7 @@ final class ContactsService implements ContactsContract
             path: 'crm/v3/objects/contacts',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsCreatedResponseSimplePublicObject::class,
+            convert: CreatedResponseSimplePublicObject::class,
         );
     }
 
@@ -90,14 +90,14 @@ final class ContactsService implements ContactsContract
      *
      * Update a batch of contacts
      *
-     * @param list<CRMObjectsSimplePublicObjectBatchInput> $inputs
+     * @param list<SimplePublicObjectBatchInput> $inputs
      *
      * @throws APIException
      */
     public function update(
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicObject {
+    ): BatchResponseSimplePublicObject {
         $params = ['inputs' => $inputs];
 
         return $this->updateRaw($params, $requestOptions);
@@ -113,7 +113,7 @@ final class ContactsService implements ContactsContract
     public function updateRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicObject {
+    ): BatchResponseSimplePublicObject {
         [$parsed, $options] = ContactUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -125,7 +125,7 @@ final class ContactsService implements ContactsContract
             path: 'crm/v3/objects/contacts/batch/update',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsBatchResponseSimplePublicObject::class,
+            convert: BatchResponseSimplePublicObject::class,
         );
     }
 
@@ -151,7 +151,7 @@ final class ContactsService implements ContactsContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsCollectionResponseSimplePublicObjectWithAssociations {
+    ): CollectionResponseSimplePublicObjectWithAssociations {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -174,7 +174,7 @@ final class ContactsService implements ContactsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCollectionResponseSimplePublicObjectWithAssociations {
+    ): CollectionResponseSimplePublicObjectWithAssociations {
         [$parsed, $options] = ContactListParams::parseRequest(
             $params,
             $requestOptions
@@ -186,7 +186,7 @@ final class ContactsService implements ContactsContract
             path: 'crm/v3/objects/contacts',
             query: $parsed,
             options: $options,
-            convert: CRMObjectsCollectionResponseSimplePublicObjectWithAssociations::class,
+            convert: CollectionResponseSimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -195,7 +195,7 @@ final class ContactsService implements ContactsContract
      *
      * Archive a batch of contacts
      *
-     * @param list<CRMObjectsSimplePublicObjectID> $inputs
+     * @param list<SimplePublicObjectID> $inputs
      *
      * @throws APIException
      */
@@ -248,7 +248,7 @@ final class ContactsService implements ContactsContract
         $objectIDToMerge,
         $primaryObjectID,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObject {
+    ): SimplePublicObject {
         $params = [
             'objectIDToMerge' => $objectIDToMerge,
             'primaryObjectID' => $primaryObjectID,
@@ -267,7 +267,7 @@ final class ContactsService implements ContactsContract
     public function mergeRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObject {
+    ): SimplePublicObject {
         [$parsed, $options] = ContactMergeParams::parseRequest(
             $params,
             $requestOptions
@@ -279,7 +279,7 @@ final class ContactsService implements ContactsContract
             path: 'crm/v3/objects/contacts/merge',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsSimplePublicObject::class,
+            convert: SimplePublicObject::class,
         );
     }
 
@@ -348,7 +348,7 @@ final class ContactsService implements ContactsContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsSimplePublicObjectWithAssociations {
+    ): SimplePublicObjectWithAssociations {
         $params = [
             'archived' => $archived,
             'associations' => $associations,
@@ -370,7 +370,7 @@ final class ContactsService implements ContactsContract
         string $contactID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObjectWithAssociations {
+    ): SimplePublicObjectWithAssociations {
         [$parsed, $options] = ContactReadParams::parseRequest(
             $params,
             $requestOptions
@@ -382,7 +382,7 @@ final class ContactsService implements ContactsContract
             path: ['crm/v3/objects/contacts/%1$s', $contactID],
             query: $parsed,
             options: $options,
-            convert: CRMObjectsSimplePublicObjectWithAssociations::class,
+            convert: SimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -392,7 +392,7 @@ final class ContactsService implements ContactsContract
      * Search for contacts
      *
      * @param string $after
-     * @param list<CRMObjectsFilterGroup> $filterGroups
+     * @param list<FilterGroup> $filterGroups
      * @param int $limit
      * @param list<string> $properties
      * @param string $query
@@ -408,7 +408,7 @@ final class ContactsService implements ContactsContract
         $query = omit,
         $sorts = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsCollectionResponseWithTotalSimplePublicObject {
+    ): CollectionResponseWithTotalSimplePublicObject {
         $params = [
             'after' => $after,
             'filterGroups' => $filterGroups,
@@ -431,7 +431,7 @@ final class ContactsService implements ContactsContract
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCollectionResponseWithTotalSimplePublicObject {
+    ): CollectionResponseWithTotalSimplePublicObject {
         [$parsed, $options] = ContactSearchParams::parseRequest(
             $params,
             $requestOptions
@@ -443,7 +443,7 @@ final class ContactsService implements ContactsContract
             path: 'crm/v3/objects/contacts/search',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsCollectionResponseWithTotalSimplePublicObject::class,
+            convert: CollectionResponseWithTotalSimplePublicObject::class,
         );
     }
 
@@ -452,14 +452,14 @@ final class ContactsService implements ContactsContract
      *
      * Create or update a batch of contacts
      *
-     * @param list<CRMObjectsSimplePublicObjectBatchInputUpsert> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
      *
      * @throws APIException
      */
     public function upsert(
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicUpsertObject {
+    ): BatchResponseSimplePublicUpsertObject {
         $params = ['inputs' => $inputs];
 
         return $this->upsertRaw($params, $requestOptions);
@@ -475,7 +475,7 @@ final class ContactsService implements ContactsContract
     public function upsertRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicUpsertObject {
+    ): BatchResponseSimplePublicUpsertObject {
         [$parsed, $options] = ContactUpsertParams::parseRequest(
             $params,
             $requestOptions
@@ -487,7 +487,7 @@ final class ContactsService implements ContactsContract
             path: 'crm/v3/objects/contacts/batch/upsert',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsBatchResponseSimplePublicUpsertObject::class,
+            convert: BatchResponseSimplePublicUpsertObject::class,
         );
     }
 }

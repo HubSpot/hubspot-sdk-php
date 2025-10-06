@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\Hubdb\Rows;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\CmsHubdbBatchResponseHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3BatchUpdateRequest;
+use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
 use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchReplaceParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
@@ -24,7 +24,7 @@ final class BatchService implements BatchContract
      *
      * Replace rows in batch in draft table
      *
-     * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      *
      * @throws APIException
      */
@@ -32,7 +32,7 @@ final class BatchService implements BatchContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         $params = ['inputs' => $inputs];
 
         return $this->replaceRaw($tableIDOrName, $params, $requestOptions);
@@ -49,7 +49,7 @@ final class BatchService implements BatchContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         [$parsed, $options] = BatchReplaceParams::parseRequest(
             $params,
             $requestOptions
@@ -63,7 +63,7 @@ final class BatchService implements BatchContract
             ],
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbBatchResponseHubDBTableRowV3::class,
+            convert: BatchResponseHubDBTableRowV3::class,
         );
     }
 }

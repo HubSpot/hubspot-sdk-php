@@ -45,21 +45,19 @@ use HubspotSDK\Client;
 
 $client = new Client(accessToken: "pat-123123");
 
-$crmObjectsCreatedResponseSimplePublicObject = $client
-  ->crm
-  ->objects
-  ->contacts
-  ->create(properties: ["foo" => "string"]);
+$createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
+  properties: ["foo" => "string"]
+);
 
-var_dump($crmObjectsCreatedResponseSimplePublicObject->createdResourceId);
+var_dump($createdResponseSimplePublicObject->createdResourceId);
 ```
 
 ### Value Objects
 
-It is recommended to use the static `with` constructor `AutomationActionsCallbackCompletionBatchRequest::with(callbackID: "callbackId", ...)`
+It is recommended to use the static `with` constructor `CallbackCompletionBatchRequest::with(callbackID: "callbackId", ...)`
 and named parameters to initialize value objects.
 
-However, builders are also provided `(new AutomationActionsCallbackCompletionBatchRequest)->withCallbackID("callbackId")`.
+However, builders are also provided `(new CallbackCompletionBatchRequest)->withCallbackID("callbackId")`.
 
 ### Handling errors
 
@@ -71,11 +69,9 @@ When the library is unable to connect to the API, or if the API returns a non-su
 use HubspotSDK\Core\Exceptions\APIConnectionException;
 
 try {
-  $crmObjectsCreatedResponseSimplePublicObject = $client
-    ->crm
-    ->objects
-    ->contacts
-    ->create(properties: ["foo" => "string"]);
+  $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
+    properties: ["foo" => "string"]
+  );
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
   var_dump($e->getPrevious());
@@ -142,11 +138,7 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 
 use HubspotSDK\RequestOptions;
 
-$crmObjectsCreatedResponseSimplePublicObject = $client
-  ->crm
-  ->objects
-  ->contacts
-  ->create(
+$createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
   properties: ["foo" => "string"],
   requestOptions: RequestOptions::with(
     extraQueryParams: ["my_query_parameter" => "value"],
@@ -155,9 +147,7 @@ $crmObjectsCreatedResponseSimplePublicObject = $client
   ),
 );
 
-var_dump(
-  $crmObjectsCreatedResponseSimplePublicObject["my_undocumented_property"]
-);
+var_dump($createdResponseSimplePublicObject["my_undocumented_property"]);
 ```
 
 #### Undocumented request params

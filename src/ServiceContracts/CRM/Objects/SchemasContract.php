@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\CRMAssociationDefinition;
-use HubspotSDK\CRM\CRMCollectionResponseObjectSchemaNoPaging;
-use HubspotSDK\CRM\CRMObjectSchema;
-use HubspotSDK\CRM\CRMObjectTypeDefinition;
-use HubspotSDK\CRM\CRMObjectTypeDefinitionLabels;
-use HubspotSDK\CRM\CRMObjectTypePropertyCreate;
+use HubspotSDK\CRM\AssociationDefinition;
+use HubspotSDK\CRM\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\CRM\ObjectSchema;
+use HubspotSDK\CRM\ObjectTypeDefinition;
+use HubspotSDK\CRM\ObjectTypeDefinitionLabels;
+use HubspotSDK\CRM\ObjectTypePropertyCreate;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -21,9 +21,9 @@ interface SchemasContract
      * @api
      *
      * @param list<string> $associatedObjects
-     * @param CRMObjectTypeDefinitionLabels $labels
+     * @param ObjectTypeDefinitionLabels $labels
      * @param string $name
-     * @param list<CRMObjectTypePropertyCreate> $properties
+     * @param list<ObjectTypePropertyCreate> $properties
      * @param list<string> $requiredProperties
      * @param string $primaryDisplayProperty
      * @param list<string> $searchableProperties
@@ -41,7 +41,7 @@ interface SchemasContract
         $searchableProperties = omit,
         $secondaryDisplayProperties = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectSchema;
+    ): ObjectSchema;
 
     /**
      * @api
@@ -53,13 +53,13 @@ interface SchemasContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectSchema;
+    ): ObjectSchema;
 
     /**
      * @api
      *
      * @param bool $clearDescription
-     * @param CRMObjectTypeDefinitionLabels $labels
+     * @param ObjectTypeDefinitionLabels $labels
      * @param string $primaryDisplayProperty
      * @param list<string> $requiredProperties
      * @param bool $restorable
@@ -78,7 +78,7 @@ interface SchemasContract
         $searchableProperties = omit,
         $secondaryDisplayProperties = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectTypeDefinition;
+    ): ObjectTypeDefinition;
 
     /**
      * @api
@@ -91,7 +91,7 @@ interface SchemasContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectTypeDefinition;
+    ): ObjectTypeDefinition;
 
     /**
      * @api
@@ -103,7 +103,7 @@ interface SchemasContract
     public function list(
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): CRMCollectionResponseObjectSchemaNoPaging;
+    ): CollectionResponseObjectSchemaNoPaging;
 
     /**
      * @api
@@ -115,7 +115,7 @@ interface SchemasContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMCollectionResponseObjectSchemaNoPaging;
+    ): CollectionResponseObjectSchemaNoPaging;
 
     /**
      * @api
@@ -184,7 +184,7 @@ interface SchemasContract
         $toObjectTypeID,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMAssociationDefinition;
+    ): AssociationDefinition;
 
     /**
      * @api
@@ -197,7 +197,7 @@ interface SchemasContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMAssociationDefinition;
+    ): AssociationDefinition;
 
     /**
      * @api
@@ -207,5 +207,5 @@ interface SchemasContract
     public function read(
         string $objectType,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectSchema;
+    ): ObjectSchema;
 }

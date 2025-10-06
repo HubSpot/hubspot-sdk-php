@@ -1,0 +1,175 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Cms\Blogs\Tags;
+
+use HubspotSDK\Cms\Blogs\Tags\Tag\Language;
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
+use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+
+/**
+ * @phpstan-type tag_alias = array{
+ *   id: string,
+ *   created: \DateTimeInterface,
+ *   deletedAt: \DateTimeInterface,
+ *   language: value-of<Language>,
+ *   name: string,
+ *   translatedFromID: int,
+ *   updated: \DateTimeInterface,
+ * }
+ */
+final class Tag implements BaseModel, ResponseConverter
+{
+    /** @use SdkModel<tag_alias> */
+    use SdkModel;
+
+    use SdkResponse;
+
+    #[Api]
+    public string $id;
+
+    #[Api]
+    public \DateTimeInterface $created;
+
+    #[Api]
+    public \DateTimeInterface $deletedAt;
+
+    /** @var value-of<Language> $language */
+    #[Api(enum: Language::class)]
+    public string $language;
+
+    #[Api]
+    public string $name;
+
+    #[Api('translatedFromId')]
+    public int $translatedFromID;
+
+    #[Api]
+    public \DateTimeInterface $updated;
+
+    /**
+     * `new Tag()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * Tag::with(
+     *   id: ...,
+     *   created: ...,
+     *   deletedAt: ...,
+     *   language: ...,
+     *   name: ...,
+     *   translatedFromID: ...,
+     *   updated: ...,
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new Tag)
+     *   ->withID(...)
+     *   ->withCreated(...)
+     *   ->withDeletedAt(...)
+     *   ->withLanguage(...)
+     *   ->withName(...)
+     *   ->withTranslatedFromID(...)
+     *   ->withUpdated(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Language|value-of<Language> $language
+     */
+    public static function with(
+        string $id,
+        \DateTimeInterface $created,
+        \DateTimeInterface $deletedAt,
+        Language|string $language,
+        string $name,
+        int $translatedFromID,
+        \DateTimeInterface $updated,
+    ): self {
+        $obj = new self;
+
+        $obj->id = $id;
+        $obj->created = $created;
+        $obj->deletedAt = $deletedAt;
+        $obj['language'] = $language;
+        $obj->name = $name;
+        $obj->translatedFromID = $translatedFromID;
+        $obj->updated = $updated;
+
+        return $obj;
+    }
+
+    public function withID(string $id): self
+    {
+        $obj = clone $this;
+        $obj->id = $id;
+
+        return $obj;
+    }
+
+    public function withCreated(\DateTimeInterface $created): self
+    {
+        $obj = clone $this;
+        $obj->created = $created;
+
+        return $obj;
+    }
+
+    public function withDeletedAt(\DateTimeInterface $deletedAt): self
+    {
+        $obj = clone $this;
+        $obj->deletedAt = $deletedAt;
+
+        return $obj;
+    }
+
+    /**
+     * @param Language|value-of<Language> $language
+     */
+    public function withLanguage(Language|string $language): self
+    {
+        $obj = clone $this;
+        $obj['language'] = $language;
+
+        return $obj;
+    }
+
+    public function withName(string $name): self
+    {
+        $obj = clone $this;
+        $obj->name = $name;
+
+        return $obj;
+    }
+
+    public function withTranslatedFromID(int $translatedFromID): self
+    {
+        $obj = clone $this;
+        $obj->translatedFromID = $translatedFromID;
+
+        return $obj;
+    }
+
+    public function withUpdated(\DateTimeInterface $updated): self
+    {
+        $obj = clone $this;
+        $obj->updated = $updated;
+
+        return $obj;
+    }
+}

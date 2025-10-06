@@ -6,6 +6,9 @@ namespace HubspotSDK\Services\Files;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Files\CollectionResponseFile;
+use HubspotSDK\Files\File;
+use HubspotSDK\Files\FileActionResponse;
 use HubspotSDK\Files\Files\FileGetByPathParams;
 use HubspotSDK\Files\Files\FileGetParams;
 use HubspotSDK\Files\Files\FileGetSignedURLParams;
@@ -18,12 +21,9 @@ use HubspotSDK\Files\Files\FileSearchParams;
 use HubspotSDK\Files\Files\FileUpdateParams;
 use HubspotSDK\Files\Files\FileUpdateParams\Access;
 use HubspotSDK\Files\Files\FileUploadParams;
-use HubspotSDK\Files\FilesCollectionResponseFile;
-use HubspotSDK\Files\FilesFile;
-use HubspotSDK\Files\FilesFileActionResponse;
-use HubspotSDK\Files\FilesFileStat;
-use HubspotSDK\Files\FilesImportFromURLTaskLocator;
-use HubspotSDK\Files\FilesSignedURL;
+use HubspotSDK\Files\FileStat;
+use HubspotSDK\Files\ImportFromURLTaskLocator;
+use HubspotSDK\Files\SignedURL;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Files\FilesContract;
 
@@ -61,7 +61,7 @@ final class FilesService implements FilesContract
         $parentFolderID = omit,
         $parentFolderPath = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFile {
+    ): File {
         $params = [
             'access' => $access,
             'clearExpires' => $clearExpires,
@@ -86,7 +86,7 @@ final class FilesService implements FilesContract
         string $fileID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFile {
+    ): File {
         [$parsed, $options] = FileUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -98,7 +98,7 @@ final class FilesService implements FilesContract
             path: ['files/v3/files/%1$s', $fileID],
             body: (object) $parsed,
             options: $options,
-            convert: FilesFile::class,
+            convert: File::class,
         );
     }
 
@@ -155,7 +155,7 @@ final class FilesService implements FilesContract
         string $fileID,
         $properties = omit,
         ?RequestOptions $requestOptions = null
-    ): FilesFile {
+    ): File {
         $params = ['properties' => $properties];
 
         return $this->getRaw($fileID, $params, $requestOptions);
@@ -172,7 +172,7 @@ final class FilesService implements FilesContract
         string $fileID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFile {
+    ): File {
         [$parsed, $options] = FileGetParams::parseRequest($params, $requestOptions);
 
         // @phpstan-ignore-next-line;
@@ -181,7 +181,7 @@ final class FilesService implements FilesContract
             path: ['files/v3/files/%1$s', $fileID],
             query: $parsed,
             options: $options,
-            convert: FilesFile::class,
+            convert: File::class,
         );
     }
 
@@ -198,7 +198,7 @@ final class FilesService implements FilesContract
         string $path,
         $properties = omit,
         ?RequestOptions $requestOptions = null
-    ): FilesFileStat {
+    ): FileStat {
         $params = ['properties' => $properties];
 
         return $this->getByPathRaw($path, $params, $requestOptions);
@@ -215,7 +215,7 @@ final class FilesService implements FilesContract
         string $path,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFileStat {
+    ): FileStat {
         [$parsed, $options] = FileGetByPathParams::parseRequest(
             $params,
             $requestOptions
@@ -227,7 +227,7 @@ final class FilesService implements FilesContract
             path: ['files/v3/files/stat/%1$s', $path],
             query: $parsed,
             options: $options,
-            convert: FilesFileStat::class,
+            convert: FileStat::class,
         );
     }
 
@@ -241,13 +241,13 @@ final class FilesService implements FilesContract
     public function getImportFromURLAsyncStatus(
         string $taskID,
         ?RequestOptions $requestOptions = null
-    ): FilesFileActionResponse {
+    ): FileActionResponse {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['files/v3/files/import-from-url/async/tasks/%1$s/status', $taskID],
             options: $requestOptions,
-            convert: FilesFileActionResponse::class,
+            convert: FileActionResponse::class,
         );
     }
 
@@ -268,7 +268,7 @@ final class FilesService implements FilesContract
         $size = omit,
         $upscale = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesSignedURL {
+    ): SignedURL {
         $params = [
             'expirationSeconds' => $expirationSeconds,
             'size' => $size,
@@ -289,7 +289,7 @@ final class FilesService implements FilesContract
         string $fileID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesSignedURL {
+    ): SignedURL {
         [$parsed, $options] = FileGetSignedURLParams::parseRequest(
             $params,
             $requestOptions
@@ -301,7 +301,7 @@ final class FilesService implements FilesContract
             path: ['files/v3/files/%1$s/signed-url', $fileID],
             query: $parsed,
             options: $options,
-            convert: FilesSignedURL::class,
+            convert: SignedURL::class,
         );
     }
 
@@ -335,7 +335,7 @@ final class FilesService implements FilesContract
         $overwrite = omit,
         $ttl = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesImportFromURLTaskLocator {
+    ): ImportFromURLTaskLocator {
         $params = [
             'access' => $access,
             'url' => $url,
@@ -362,7 +362,7 @@ final class FilesService implements FilesContract
     public function importFromURLAsyncRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesImportFromURLTaskLocator {
+    ): ImportFromURLTaskLocator {
         [$parsed, $options] = FileImportFromURLAsyncParams::parseRequest(
             $params,
             $requestOptions
@@ -374,7 +374,7 @@ final class FilesService implements FilesContract
             path: 'files/v3/files/import-from-url/async',
             body: (object) $parsed,
             options: $options,
-            convert: FilesImportFromURLTaskLocator::class,
+            convert: ImportFromURLTaskLocator::class,
         );
     }
 
@@ -395,7 +395,7 @@ final class FilesService implements FilesContract
         $file = omit,
         $options = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFile {
+    ): File {
         $params = [
             'charsetHunch' => $charsetHunch, 'file' => $file, 'options' => $options,
         ];
@@ -414,7 +414,7 @@ final class FilesService implements FilesContract
         string $fileID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFile {
+    ): File {
         [$parsed, $options] = FileReplaceParams::parseRequest(
             $params,
             $requestOptions
@@ -427,7 +427,7 @@ final class FilesService implements FilesContract
             headers: ['Content-Type' => 'multipart/form-data'],
             body: (object) $parsed,
             options: $options,
-            convert: FilesFile::class,
+            convert: File::class,
         );
     }
 
@@ -513,7 +513,7 @@ final class FilesService implements FilesContract
         $widthGte = omit,
         $widthLte = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesCollectionResponseFile {
+    ): CollectionResponseFile {
         $params = [
             'after' => $after,
             'allowsAnonymousAccess' => $allowsAnonymousAccess,
@@ -566,7 +566,7 @@ final class FilesService implements FilesContract
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesCollectionResponseFile {
+    ): CollectionResponseFile {
         [$parsed, $options] = FileSearchParams::parseRequest(
             $params,
             $requestOptions
@@ -578,7 +578,7 @@ final class FilesService implements FilesContract
             path: 'files/v3/files/search',
             query: $parsed,
             options: $options,
-            convert: FilesCollectionResponseFile::class,
+            convert: CollectionResponseFile::class,
         );
     }
 
@@ -604,7 +604,7 @@ final class FilesService implements FilesContract
         $folderPath = omit,
         $options = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFile {
+    ): File {
         $params = [
             'charsetHunch' => $charsetHunch,
             'file' => $file,
@@ -627,7 +627,7 @@ final class FilesService implements FilesContract
     public function uploadRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFile {
+    ): File {
         [$parsed, $options] = FileUploadParams::parseRequest(
             $params,
             $requestOptions
@@ -640,7 +640,7 @@ final class FilesService implements FilesContract
             headers: ['Content-Type' => 'multipart/form-data'],
             body: (object) $parsed,
             options: $options,
-            convert: FilesFile::class,
+            convert: File::class,
         );
     }
 }

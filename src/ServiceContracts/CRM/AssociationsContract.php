@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Associations\CRMAssociationsBatchResponsePublicAssociation;
-use HubspotSDK\CRM\Associations\CRMAssociationsBatchResponsePublicAssociationMulti;
-use HubspotSDK\CRM\Associations\CRMAssociationsPublicAssociation;
-use HubspotSDK\CRM\CRMPublicObjectID;
+use HubspotSDK\CRM\Associations\BatchResponsePublicAssociation;
+use HubspotSDK\CRM\Associations\BatchResponsePublicAssociationMulti;
+use HubspotSDK\CRM\Associations\PublicAssociation;
+use HubspotSDK\CRM\PublicObjectID;
 use HubspotSDK\RequestOptions;
 
 interface AssociationsContract
@@ -17,7 +17,7 @@ interface AssociationsContract
      * @api
      *
      * @param string $fromObjectType
-     * @param list<CRMAssociationsPublicAssociation> $inputs
+     * @param list<PublicAssociation> $inputs
      *
      * @throws APIException
      */
@@ -26,7 +26,7 @@ interface AssociationsContract
         $fromObjectType,
         $inputs,
         ?RequestOptions $requestOptions = null,
-    ): CRMAssociationsBatchResponsePublicAssociation;
+    ): BatchResponsePublicAssociation;
 
     /**
      * @api
@@ -39,13 +39,13 @@ interface AssociationsContract
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMAssociationsBatchResponsePublicAssociation;
+    ): BatchResponsePublicAssociation;
 
     /**
      * @api
      *
      * @param string $fromObjectType
-     * @param list<CRMAssociationsPublicAssociation> $inputs
+     * @param list<PublicAssociation> $inputs
      *
      * @throws APIException
      */
@@ -73,7 +73,7 @@ interface AssociationsContract
      * @api
      *
      * @param string $fromObjectType
-     * @param list<CRMPublicObjectID> $inputs
+     * @param list<PublicObjectID> $inputs
      *
      * @throws APIException
      */
@@ -82,7 +82,7 @@ interface AssociationsContract
         $fromObjectType,
         $inputs,
         ?RequestOptions $requestOptions = null,
-    ): CRMAssociationsBatchResponsePublicAssociationMulti;
+    ): BatchResponsePublicAssociationMulti;
 
     /**
      * @api
@@ -95,5 +95,5 @@ interface AssociationsContract
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMAssociationsBatchResponsePublicAssociationMulti;
+    ): BatchResponsePublicAssociationMulti;
 }

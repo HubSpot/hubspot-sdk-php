@@ -1,0 +1,98 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Automation;
+
+use HubspotSDK\Automation\APITimeWindow\Day;
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-type api_time_window = array{
+ *   day: value-of<Day>, endTime: APITimeOfDay, startTime: APITimeOfDay
+ * }
+ */
+final class APITimeWindow implements BaseModel
+{
+    /** @use SdkModel<api_time_window> */
+    use SdkModel;
+
+    /** @var value-of<Day> $day */
+    #[Api(enum: Day::class)]
+    public string $day;
+
+    #[Api]
+    public APITimeOfDay $endTime;
+
+    #[Api]
+    public APITimeOfDay $startTime;
+
+    /**
+     * `new APITimeWindow()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * APITimeWindow::with(day: ..., endTime: ..., startTime: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new APITimeWindow)->withDay(...)->withEndTime(...)->withStartTime(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Day|value-of<Day> $day
+     */
+    public static function with(
+        Day|string $day,
+        APITimeOfDay $endTime,
+        APITimeOfDay $startTime
+    ): self {
+        $obj = new self;
+
+        $obj['day'] = $day;
+        $obj->endTime = $endTime;
+        $obj->startTime = $startTime;
+
+        return $obj;
+    }
+
+    /**
+     * @param Day|value-of<Day> $day
+     */
+    public function withDay(Day|string $day): self
+    {
+        $obj = clone $this;
+        $obj['day'] = $day;
+
+        return $obj;
+    }
+
+    public function withEndTime(APITimeOfDay $endTime): self
+    {
+        $obj = clone $this;
+        $obj->endTime = $endTime;
+
+        return $obj;
+    }
+
+    public function withStartTime(APITimeOfDay $startTime): self
+    {
+        $obj = clone $this;
+        $obj->startTime = $startTime;
+
+        return $obj;
+    }
+}

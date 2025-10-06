@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Blogs;
 
-use HubspotSDK\Cms\Blogs\Tags\BlogsTagsBatchResponseTag;
-use HubspotSDK\Cms\Blogs\Tags\BlogsTagsCollectionResponseWithTotalTagForwardPaging;
-use HubspotSDK\Cms\Blogs\Tags\BlogsTagsTag;
+use HubspotSDK\Cms\Blogs\Tags\BatchResponseTag;
+use HubspotSDK\Cms\Blogs\Tags\CollectionResponseWithTotalTagForwardPaging;
+use HubspotSDK\Cms\Blogs\Tags\Tag;
 use HubspotSDK\Cms\Blogs\Tags\TagCreateParams\Language;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
@@ -37,7 +37,7 @@ interface TagsContract
         $translatedFromID,
         $updated,
         ?RequestOptions $requestOptions = null,
-    ): BlogsTagsTag;
+    ): Tag;
 
     /**
      * @api
@@ -49,7 +49,7 @@ interface TagsContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsTag;
+    ): Tag;
 
     /**
      * @api
@@ -76,7 +76,7 @@ interface TagsContract
         $updated,
         $archived = omit,
         ?RequestOptions $requestOptions = null,
-    ): BlogsTagsTag;
+    ): Tag;
 
     /**
      * @api
@@ -89,7 +89,7 @@ interface TagsContract
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsTag;
+    ): Tag;
 
     /**
      * @api
@@ -121,7 +121,7 @@ interface TagsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): BlogsTagsCollectionResponseWithTotalTagForwardPaging;
+    ): CollectionResponseWithTotalTagForwardPaging;
 
     /**
      * @api
@@ -133,7 +133,7 @@ interface TagsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsCollectionResponseWithTotalTagForwardPaging;
+    ): CollectionResponseWithTotalTagForwardPaging;
 
     /**
      * @api
@@ -218,14 +218,14 @@ interface TagsContract
     /**
      * @api
      *
-     * @param list<BlogsTagsTag> $inputs
+     * @param list<Tag> $inputs
      *
      * @throws APIException
      */
     public function createBatch(
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag;
+    ): BatchResponseTag;
 
     /**
      * @api
@@ -237,7 +237,7 @@ interface TagsContract
     public function createBatchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag;
+    ): BatchResponseTag;
 
     /**
      * @api
@@ -255,7 +255,7 @@ interface TagsContract
         $language = omit,
         $primaryLanguage = omit,
         ?RequestOptions $requestOptions = null,
-    ): BlogsTagsTag;
+    ): Tag;
 
     /**
      * @api
@@ -267,7 +267,7 @@ interface TagsContract
     public function createLangVariationRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsTag;
+    ): Tag;
 
     /**
      * @api
@@ -306,7 +306,7 @@ interface TagsContract
         $archived = omit,
         $property = omit,
         ?RequestOptions $requestOptions = null,
-    ): BlogsTagsTag;
+    ): Tag;
 
     /**
      * @api
@@ -319,7 +319,7 @@ interface TagsContract
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsTag;
+    ): Tag;
 
     /**
      * @api
@@ -333,7 +333,7 @@ interface TagsContract
         $inputs,
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag;
+    ): BatchResponseTag;
 
     /**
      * @api
@@ -345,7 +345,7 @@ interface TagsContract
     public function readBatchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag;
+    ): BatchResponseTag;
 
     /**
      * @api
@@ -383,7 +383,7 @@ interface TagsContract
         $inputs,
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag;
+    ): BatchResponseTag;
 
     /**
      * @api
@@ -395,7 +395,7 @@ interface TagsContract
     public function updateBatchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BlogsTagsBatchResponseTag;
+    ): BatchResponseTag;
 
     /**
      * @api

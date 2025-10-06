@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\CRMObjectsPublicAssociationsForObject;
+use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 
 /**
  * An object containing the method's parameters.
@@ -28,7 +28,7 @@ use HubspotSDK\CRM\Objects\CRMObjectsPublicAssociationsForObject;
  *
  * @phpstan-type company_create_params = array{
  *   properties: array<string, string>,
- *   associations?: list<CRMObjectsPublicAssociationsForObject>,
+ *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class CompanyCreateParams implements BaseModel
@@ -41,8 +41,8 @@ final class CompanyCreateParams implements BaseModel
     #[Api(map: 'string')]
     public array $properties;
 
-    /** @var list<CRMObjectsPublicAssociationsForObject>|null $associations */
-    #[Api(list: CRMObjectsPublicAssociationsForObject::class, optional: true)]
+    /** @var list<PublicAssociationsForObject>|null $associations */
+    #[Api(list: PublicAssociationsForObject::class, optional: true)]
     public ?array $associations;
 
     /**
@@ -70,7 +70,7 @@ final class CompanyCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string, string> $properties
-     * @param list<CRMObjectsPublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject> $associations
      */
     public static function with(
         array $properties,
@@ -97,7 +97,7 @@ final class CompanyCreateParams implements BaseModel
     }
 
     /**
-     * @param list<CRMObjectsPublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject> $associations
      */
     public function withAssociations(array $associations): self
     {

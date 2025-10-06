@@ -5,18 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\CmsHubdbBatchResponseHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging;
-use HubspotSDK\Cms\Hubdb\CmsHubdbColumnRequest;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowBatchCloneRequest;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3BatchUpdateRequest;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3Request;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbImportResult;
-use HubspotSDK\Cms\Hubdb\CmsHubdbRandomAccessCollectionResponseWithTotalHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbStreamingCollectionResponseWithTotalHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbUnifiedCollectionResponseWithTotalBaseHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\CollectionResponseWithTotalHubDBTableV3ForwardPaging;
+use HubspotSDK\Cms\Hubdb\ColumnRequest;
 use HubspotSDK\Cms\Hubdb\HubdbCloneDraftTableParams;
 use HubspotSDK\Cms\Hubdb\HubdbCloneDraftTableRowParams;
 use HubspotSDK\Cms\Hubdb\HubdbCloneDraftTableRowsParams;
@@ -42,10 +33,19 @@ use HubspotSDK\Cms\Hubdb\HubdbRemoveTableVersionParams;
 use HubspotSDK\Cms\Hubdb\HubdbReplaceDraftTableRowParams;
 use HubspotSDK\Cms\Hubdb\HubdbReplaceDraftTableRowsParams;
 use HubspotSDK\Cms\Hubdb\HubdbResetDraftTableParams;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
+use HubspotSDK\Cms\Hubdb\HubDBTableV3;
 use HubspotSDK\Cms\Hubdb\HubdbUnpublishTableParams;
 use HubspotSDK\Cms\Hubdb\HubdbUpdateDraftTableParams;
 use HubspotSDK\Cms\Hubdb\HubdbUpdateDraftTableRowParams;
 use HubspotSDK\Cms\Hubdb\HubdbUpdateDraftTableRowsParams;
+use HubspotSDK\Cms\Hubdb\ImportResult;
+use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\HubdbContract;
@@ -107,7 +107,7 @@ final class HubdbService implements HubdbContract
         $newLabel = omit,
         $newName = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         $params = [
             'copyRows' => $copyRows,
             'isHubspotDefined' => $isHubspotDefined,
@@ -129,7 +129,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         [$parsed, $options] = HubdbCloneDraftTableParams::parseRequest(
             $params,
             $requestOptions
@@ -141,7 +141,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/draft/clone', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableV3::class,
+            convert: HubDBTableV3::class,
         );
     }
 
@@ -160,7 +160,7 @@ final class HubdbService implements HubdbContract
         $tableIDOrName,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         $params = ['tableIDOrName' => $tableIDOrName, 'name' => $name];
 
         return $this->cloneDraftTableRowRaw($rowID, $params, $requestOptions);
@@ -177,7 +177,7 @@ final class HubdbService implements HubdbContract
         string $rowID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         [$parsed, $options] = HubdbCloneDraftTableRowParams::parseRequest(
             $params,
             $requestOptions
@@ -193,7 +193,7 @@ final class HubdbService implements HubdbContract
             ],
             query: $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableRowV3::class,
+            convert: HubDBTableRowV3::class,
         );
     }
 
@@ -202,7 +202,7 @@ final class HubdbService implements HubdbContract
      *
      * Clone rows in batch
      *
-     * @param list<CmsHubdbHubDBTableRowBatchCloneRequest> $inputs
+     * @param list<HubDBTableRowBatchCloneRequest> $inputs
      *
      * @throws APIException
      */
@@ -210,7 +210,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         $params = ['inputs' => $inputs];
 
         return $this->cloneDraftTableRowsRaw(
@@ -231,7 +231,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         [$parsed, $options] = HubdbCloneDraftTableRowsParams::parseRequest(
             $params,
             $requestOptions
@@ -243,7 +243,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/rows/draft/batch/clone', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbBatchResponseHubDBTableRowV3::class,
+            convert: BatchResponseHubDBTableRowV3::class,
         );
     }
 
@@ -252,7 +252,7 @@ final class HubdbService implements HubdbContract
      *
      * Create rows in batch
      *
-     * @param list<CmsHubdbHubDBTableRowV3Request> $inputs
+     * @param list<HubDBTableRowV3Request> $inputs
      *
      * @throws APIException
      */
@@ -260,7 +260,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         $params = ['inputs' => $inputs];
 
         return $this->createDraftTableRowsRaw(
@@ -281,7 +281,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         [$parsed, $options] = HubdbCreateDraftTableRowsParams::parseRequest(
             $params,
             $requestOptions
@@ -295,7 +295,7 @@ final class HubdbService implements HubdbContract
             ],
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbBatchResponseHubDBTableRowV3::class,
+            convert: BatchResponseHubDBTableRowV3::class,
         );
     }
 
@@ -308,7 +308,7 @@ final class HubdbService implements HubdbContract
      * @param string $name
      * @param bool $allowChildTables
      * @param bool $allowPublicAPIAccess
-     * @param list<CmsHubdbColumnRequest> $columns
+     * @param list<ColumnRequest> $columns
      * @param array<string, int> $dynamicMetaTags
      * @param bool $enableChildTablePages
      * @param bool $useForPages
@@ -325,7 +325,7 @@ final class HubdbService implements HubdbContract
         $enableChildTablePages = omit,
         $useForPages = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         $params = [
             'label' => $label,
             'name' => $name,
@@ -350,7 +350,7 @@ final class HubdbService implements HubdbContract
     public function createTableRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         [$parsed, $options] = HubdbCreateTableParams::parseRequest(
             $params,
             $requestOptions
@@ -362,7 +362,7 @@ final class HubdbService implements HubdbContract
             path: 'cms/v3/hubdb/tables',
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableV3::class,
+            convert: HubDBTableV3::class,
         );
     }
 
@@ -387,7 +387,7 @@ final class HubdbService implements HubdbContract
         $name = omit,
         $path = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         $params = [
             'values' => $values,
             'childTableID' => $childTableID,
@@ -410,7 +410,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         [$parsed, $options] = HubdbCreateTableRowParams::parseRequest(
             $params,
             $requestOptions
@@ -422,7 +422,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableRowV3::class,
+            convert: HubDBTableRowV3::class,
         );
     }
 
@@ -554,7 +554,7 @@ final class HubdbService implements HubdbContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging {
+    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -583,7 +583,7 @@ final class HubdbService implements HubdbContract
     public function getAllDraftTablesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging {
+    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging {
         [$parsed, $options] = HubdbGetAllDraftTablesParams::parseRequest(
             $params,
             $requestOptions
@@ -595,7 +595,7 @@ final class HubdbService implements HubdbContract
             path: 'cms/v3/hubdb/tables/draft',
             query: $parsed,
             options: $options,
-            convert: CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging::class,
+            convert: CollectionResponseWithTotalHubDBTableV3ForwardPaging::class,
         );
     }
 
@@ -633,7 +633,7 @@ final class HubdbService implements HubdbContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging {
+    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -662,7 +662,7 @@ final class HubdbService implements HubdbContract
     public function getAllTablesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging {
+    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging {
         [$parsed, $options] = HubdbGetAllTablesParams::parseRequest(
             $params,
             $requestOptions
@@ -674,7 +674,7 @@ final class HubdbService implements HubdbContract
             path: 'cms/v3/hubdb/tables',
             query: $parsed,
             options: $options,
-            convert: CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging::class,
+            convert: CollectionResponseWithTotalHubDBTableV3ForwardPaging::class,
         );
     }
 
@@ -695,7 +695,7 @@ final class HubdbService implements HubdbContract
         $includeForeignIDs = omit,
         $isGetLocalizedSchema = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         $params = [
             'archived' => $archived,
             'includeForeignIDs' => $includeForeignIDs,
@@ -720,7 +720,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         [$parsed, $options] = HubdbGetDraftTableDetailsByIDParams::parseRequest(
             $params,
             $requestOptions
@@ -732,7 +732,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/draft', $tableIDOrName],
             query: $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableV3::class,
+            convert: HubDBTableV3::class,
         );
     }
 
@@ -751,7 +751,7 @@ final class HubdbService implements HubdbContract
         $tableIDOrName,
         $archived = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         $params = ['tableIDOrName' => $tableIDOrName, 'archived' => $archived];
 
         return $this->getDraftTableRowByIDRaw($rowID, $params, $requestOptions);
@@ -768,7 +768,7 @@ final class HubdbService implements HubdbContract
         string $rowID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         [$parsed, $options] = HubdbGetDraftTableRowByIDParams::parseRequest(
             $params,
             $requestOptions
@@ -784,7 +784,7 @@ final class HubdbService implements HubdbContract
             ],
             query: $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableRowV3::class,
+            convert: HubDBTableRowV3::class,
         );
     }
 
@@ -805,7 +805,7 @@ final class HubdbService implements HubdbContract
         $includeForeignIDs = omit,
         $isGetLocalizedSchema = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         $params = [
             'archived' => $archived,
             'includeForeignIDs' => $includeForeignIDs,
@@ -826,7 +826,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         [$parsed, $options] = HubdbGetTableDetailsParams::parseRequest(
             $params,
             $requestOptions
@@ -838,7 +838,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s', $tableIDOrName],
             query: $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableV3::class,
+            convert: HubDBTableV3::class,
         );
     }
 
@@ -857,7 +857,7 @@ final class HubdbService implements HubdbContract
         $tableIDOrName,
         $archived = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         $params = ['tableIDOrName' => $tableIDOrName, 'archived' => $archived];
 
         return $this->getTableRowRaw($rowID, $params, $requestOptions);
@@ -874,7 +874,7 @@ final class HubdbService implements HubdbContract
         string $rowID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         [$parsed, $options] = HubdbGetTableRowParams::parseRequest(
             $params,
             $requestOptions
@@ -888,7 +888,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/rows/%2$s', $tableIDOrName, $rowID],
             query: $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableRowV3::class,
+            convert: HubDBTableRowV3::class,
         );
     }
 
@@ -915,7 +915,7 @@ final class HubdbService implements HubdbContract
         $properties = omit,
         $sort = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbRandomAccessCollectionResponseWithTotalHubDBTableRowV3|CmsHubdbStreamingCollectionResponseWithTotalHubDBTableRowV3 {
+    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3 {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -939,7 +939,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbRandomAccessCollectionResponseWithTotalHubDBTableRowV3|CmsHubdbStreamingCollectionResponseWithTotalHubDBTableRowV3 {
+    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3 {
         [$parsed, $options] = HubdbGetTableRowsParams::parseRequest(
             $params,
             $requestOptions
@@ -951,7 +951,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
             query: $parsed,
             options: $options,
-            convert: CmsHubdbUnifiedCollectionResponseWithTotalBaseHubDBTableRowV3::class,
+            convert: UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3::class,
         );
     }
 
@@ -970,7 +970,7 @@ final class HubdbService implements HubdbContract
         $config = omit,
         $file = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbImportResult {
+    ): ImportResult {
         $params = ['config' => $config, 'file' => $file];
 
         return $this->importDraftTableRaw($tableIDOrName, $params, $requestOptions);
@@ -987,7 +987,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbImportResult {
+    ): ImportResult {
         [$parsed, $options] = HubdbImportDraftTableParams::parseRequest(
             $params,
             $requestOptions
@@ -1000,7 +1000,7 @@ final class HubdbService implements HubdbContract
             headers: ['Content-Type' => 'multipart/form-data'],
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbImportResult::class,
+            convert: ImportResult::class,
         );
     }
 
@@ -1017,7 +1017,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         $includeForeignIDs = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         $params = ['includeForeignIDs' => $includeForeignIDs];
 
         return $this->publishDraftTableRaw(
@@ -1038,7 +1038,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         [$parsed, $options] = HubdbPublishDraftTableParams::parseRequest(
             $params,
             $requestOptions
@@ -1050,7 +1050,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/draft/publish', $tableIDOrName],
             query: $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableV3::class,
+            convert: HubDBTableV3::class,
         );
     }
 
@@ -1166,7 +1166,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         $params = ['inputs' => $inputs];
 
         return $this->readDraftTableRowsRaw(
@@ -1187,7 +1187,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         [$parsed, $options] = HubdbReadDraftTableRowsParams::parseRequest(
             $params,
             $requestOptions
@@ -1199,7 +1199,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/rows/draft/batch/read', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbBatchResponseHubDBTableRowV3::class,
+            convert: BatchResponseHubDBTableRowV3::class,
         );
     }
 
@@ -1216,7 +1216,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         $params = ['inputs' => $inputs];
 
         return $this->readTableRowsRaw($tableIDOrName, $params, $requestOptions);
@@ -1233,7 +1233,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         [$parsed, $options] = HubdbReadTableRowsParams::parseRequest(
             $params,
             $requestOptions
@@ -1245,7 +1245,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/rows/batch/read', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbBatchResponseHubDBTableRowV3::class,
+            convert: BatchResponseHubDBTableRowV3::class,
         );
     }
 
@@ -1321,7 +1321,7 @@ final class HubdbService implements HubdbContract
         $name = omit,
         $path = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         $params = [
             'tableIDOrName' => $tableIDOrName,
             'values' => $values,
@@ -1345,7 +1345,7 @@ final class HubdbService implements HubdbContract
         string $rowID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         [$parsed, $options] = HubdbReplaceDraftTableRowParams::parseRequest(
             $params,
             $requestOptions
@@ -1361,7 +1361,7 @@ final class HubdbService implements HubdbContract
             ],
             body: (object) array_diff_key($parsed, ['tableIDOrName']),
             options: $options,
-            convert: CmsHubdbHubDBTableRowV3::class,
+            convert: HubDBTableRowV3::class,
         );
     }
 
@@ -1370,7 +1370,7 @@ final class HubdbService implements HubdbContract
      *
      * Replace rows in batch in draft table
      *
-     * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      *
      * @throws APIException
      */
@@ -1378,7 +1378,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         $params = ['inputs' => $inputs];
 
         return $this->replaceDraftTableRowsRaw(
@@ -1399,7 +1399,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         [$parsed, $options] = HubdbReplaceDraftTableRowsParams::parseRequest(
             $params,
             $requestOptions
@@ -1413,7 +1413,7 @@ final class HubdbService implements HubdbContract
             ],
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbBatchResponseHubDBTableRowV3::class,
+            convert: BatchResponseHubDBTableRowV3::class,
         );
     }
 
@@ -1430,7 +1430,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         $includeForeignIDs = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         $params = ['includeForeignIDs' => $includeForeignIDs];
 
         return $this->resetDraftTableRaw($tableIDOrName, $params, $requestOptions);
@@ -1447,7 +1447,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         [$parsed, $options] = HubdbResetDraftTableParams::parseRequest(
             $params,
             $requestOptions
@@ -1459,7 +1459,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/draft/reset', $tableIDOrName],
             query: $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableV3::class,
+            convert: HubDBTableV3::class,
         );
     }
 
@@ -1476,7 +1476,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         $includeForeignIDs = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         $params = ['includeForeignIDs' => $includeForeignIDs];
 
         return $this->unpublishTableRaw($tableIDOrName, $params, $requestOptions);
@@ -1493,7 +1493,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         [$parsed, $options] = HubdbUnpublishTableParams::parseRequest(
             $params,
             $requestOptions
@@ -1505,7 +1505,7 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/unpublish', $tableIDOrName],
             query: $parsed,
             options: $options,
-            convert: CmsHubdbHubDBTableV3::class,
+            convert: HubDBTableV3::class,
         );
     }
 
@@ -1521,7 +1521,7 @@ final class HubdbService implements HubdbContract
      * @param bool $isGetLocalizedSchema
      * @param bool $allowChildTables
      * @param bool $allowPublicAPIAccess
-     * @param list<CmsHubdbColumnRequest> $columns
+     * @param list<ColumnRequest> $columns
      * @param array<string, int> $dynamicMetaTags
      * @param bool $enableChildTablePages
      * @param bool $useForPages
@@ -1542,7 +1542,7 @@ final class HubdbService implements HubdbContract
         $enableChildTablePages = omit,
         $useForPages = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         $params = [
             'label' => $label,
             'name' => $name,
@@ -1571,7 +1571,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableV3 {
+    ): HubDBTableV3 {
         [$parsed, $options] = HubdbUpdateDraftTableParams::parseRequest(
             $params,
             $requestOptions
@@ -1587,7 +1587,7 @@ final class HubdbService implements HubdbContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: CmsHubdbHubDBTableV3::class,
+            convert: HubDBTableV3::class,
         );
     }
 
@@ -1614,7 +1614,7 @@ final class HubdbService implements HubdbContract
         $name = omit,
         $path = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         $params = [
             'tableIDOrName' => $tableIDOrName,
             'values' => $values,
@@ -1638,7 +1638,7 @@ final class HubdbService implements HubdbContract
         string $rowID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3 {
+    ): HubDBTableRowV3 {
         [$parsed, $options] = HubdbUpdateDraftTableRowParams::parseRequest(
             $params,
             $requestOptions
@@ -1654,7 +1654,7 @@ final class HubdbService implements HubdbContract
             ],
             body: (object) array_diff_key($parsed, ['tableIDOrName']),
             options: $options,
-            convert: CmsHubdbHubDBTableRowV3::class,
+            convert: HubDBTableRowV3::class,
         );
     }
 
@@ -1663,7 +1663,7 @@ final class HubdbService implements HubdbContract
      *
      * Update rows in batch in draft table
      *
-     * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      *
      * @throws APIException
      */
@@ -1671,7 +1671,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         $params = ['inputs' => $inputs];
 
         return $this->updateDraftTableRowsRaw(
@@ -1692,7 +1692,7 @@ final class HubdbService implements HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3 {
+    ): BatchResponseHubDBTableRowV3 {
         [$parsed, $options] = HubdbUpdateDraftTableRowsParams::parseRequest(
             $params,
             $requestOptions
@@ -1706,7 +1706,7 @@ final class HubdbService implements HubdbContract
             ],
             body: (object) $parsed,
             options: $options,
-            convert: CmsHubdbBatchResponseHubDBTableRowV3::class,
+            convert: BatchResponseHubDBTableRowV3::class,
         );
     }
 }

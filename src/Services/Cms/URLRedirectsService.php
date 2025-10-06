@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\CmsCollectionResponseWithTotalURLMappingForwardPaging;
-use HubspotSDK\Cms\CmsURLMapping;
+use HubspotSDK\Cms\CollectionResponseWithTotalURLMappingForwardPaging;
+use HubspotSDK\Cms\URLMapping;
 use HubspotSDK\Cms\URLRedirects\URLRedirectCreateParams;
 use HubspotSDK\Cms\URLRedirects\URLRedirectListParams;
 use HubspotSDK\Cms\URLRedirects\URLRedirectUpdateParams;
@@ -53,7 +53,7 @@ final class URLRedirectsService implements URLRedirectsContract
         $isTrailingSlashOptional = omit,
         $precedence = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsURLMapping {
+    ): URLMapping {
         $params = [
             'destination' => $destination,
             'redirectStyle' => $redirectStyle,
@@ -80,7 +80,7 @@ final class URLRedirectsService implements URLRedirectsContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsURLMapping {
+    ): URLMapping {
         [$parsed, $options] = URLRedirectCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -92,7 +92,7 @@ final class URLRedirectsService implements URLRedirectsContract
             path: 'cms/v3/url-redirects/',
             body: (object) $parsed,
             options: $options,
-            convert: CmsURLMapping::class,
+            convert: URLMapping::class,
         );
     }
 
@@ -133,7 +133,7 @@ final class URLRedirectsService implements URLRedirectsContract
         $created = omit,
         $updated = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsURLMapping {
+    ): URLMapping {
         $params = [
             'id' => $id,
             'destination' => $destination,
@@ -164,7 +164,7 @@ final class URLRedirectsService implements URLRedirectsContract
         string $urlRedirectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsURLMapping {
+    ): URLMapping {
         [$parsed, $options] = URLRedirectUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -176,7 +176,7 @@ final class URLRedirectsService implements URLRedirectsContract
             path: ['cms/v3/url-redirects/%1$s', $urlRedirectID],
             body: (object) $parsed,
             options: $options,
-            convert: CmsURLMapping::class,
+            convert: URLMapping::class,
         );
     }
 
@@ -210,7 +210,7 @@ final class URLRedirectsService implements URLRedirectsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsCollectionResponseWithTotalURLMappingForwardPaging {
+    ): CollectionResponseWithTotalURLMappingForwardPaging {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -237,7 +237,7 @@ final class URLRedirectsService implements URLRedirectsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsCollectionResponseWithTotalURLMappingForwardPaging {
+    ): CollectionResponseWithTotalURLMappingForwardPaging {
         [$parsed, $options] = URLRedirectListParams::parseRequest(
             $params,
             $requestOptions
@@ -249,7 +249,7 @@ final class URLRedirectsService implements URLRedirectsContract
             path: 'cms/v3/url-redirects/',
             query: $parsed,
             options: $options,
-            convert: CmsCollectionResponseWithTotalURLMappingForwardPaging::class,
+            convert: CollectionResponseWithTotalURLMappingForwardPaging::class,
         );
     }
 
@@ -283,13 +283,13 @@ final class URLRedirectsService implements URLRedirectsContract
     public function read(
         string $urlRedirectID,
         ?RequestOptions $requestOptions = null
-    ): CmsURLMapping {
+    ): URLMapping {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/url-redirects/%1$s', $urlRedirectID],
             options: $requestOptions,
-            convert: CmsURLMapping::class,
+            convert: URLMapping::class,
         );
     }
 }

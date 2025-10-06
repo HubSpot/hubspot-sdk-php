@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
+use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
+use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalPublicEmailForwardPaging;
+use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalVersionPublicEmail;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
 use HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
 use HubspotSDK\Marketing\Emails\EmailListParams\Type;
-use HubspotSDK\Marketing\Emails\MarketingEmailsAggregateEmailStatistics;
-use HubspotSDK\Marketing\Emails\MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging;
-use HubspotSDK\Marketing\Emails\MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging;
-use HubspotSDK\Marketing\Emails\MarketingEmailsCollectionResponseWithTotalVersionPublicEmail;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmail;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmailContent;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmailFromDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmailSubscriptionDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmailTestingDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicEmailToDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicRssEmailDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPublicWebversionDetails;
-use HubspotSDK\Marketing\Emails\MarketingEmailsVersionPublicEmail;
+use HubspotSDK\Marketing\Emails\PublicEmail;
+use HubspotSDK\Marketing\Emails\PublicEmailContent;
+use HubspotSDK\Marketing\Emails\PublicEmailFromDetails;
+use HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
+use HubspotSDK\Marketing\Emails\PublicEmailToDetails;
+use HubspotSDK\Marketing\Emails\PublicRssEmailDetails;
+use HubspotSDK\Marketing\Emails\PublicWebversionDetails;
+use HubspotSDK\Marketing\Emails\VersionPublicEmail;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -37,21 +37,21 @@ interface EmailsContract
      * @param bool $archived
      * @param int $businessUnitID
      * @param string $campaign
-     * @param MarketingEmailsPublicEmailContent $content
+     * @param PublicEmailContent $content
      * @param string $feedbackSurveyID
-     * @param MarketingEmailsPublicEmailFromDetails $from
+     * @param PublicEmailFromDetails $from
      * @param bool $jitterSendTime
      * @param Language|value-of<Language> $language
      * @param \DateTimeInterface $publishDate
-     * @param MarketingEmailsPublicRssEmailDetails $rssData
+     * @param PublicRssEmailDetails $rssData
      * @param bool $sendOnPublish
      * @param State|value-of<State> $state
      * @param Subcategory|value-of<Subcategory> $subcategory
      * @param string $subject
-     * @param MarketingEmailsPublicEmailSubscriptionDetails $subscriptionDetails
-     * @param MarketingEmailsPublicEmailTestingDetails $testing
-     * @param MarketingEmailsPublicEmailToDetails $to
-     * @param MarketingEmailsPublicWebversionDetails $webversion
+     * @param PublicEmailSubscriptionDetails $subscriptionDetails
+     * @param PublicEmailTestingDetails $testing
+     * @param PublicEmailToDetails $to
+     * @param PublicWebversionDetails $webversion
      *
      * @throws APIException
      */
@@ -77,7 +77,7 @@ interface EmailsContract
         $to = omit,
         $webversion = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -89,7 +89,7 @@ interface EmailsContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -98,21 +98,21 @@ interface EmailsContract
      * @param string $activeDomain
      * @param int $businessUnitID
      * @param string $campaign
-     * @param MarketingEmailsPublicEmailContent $content
-     * @param MarketingEmailsPublicEmailFromDetails $from
+     * @param PublicEmailContent $content
+     * @param PublicEmailFromDetails $from
      * @param bool $jitterSendTime
      * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\Language|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\Language> $language
      * @param string $name
      * @param \DateTimeInterface $publishDate
-     * @param MarketingEmailsPublicRssEmailDetails $rssData
+     * @param PublicRssEmailDetails $rssData
      * @param bool $sendOnPublish
      * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\State|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\State> $state
      * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory> $subcategory
      * @param string $subject
-     * @param MarketingEmailsPublicEmailSubscriptionDetails $subscriptionDetails
-     * @param MarketingEmailsPublicEmailTestingDetails $testing
-     * @param MarketingEmailsPublicEmailToDetails $to
-     * @param MarketingEmailsPublicWebversionDetails $webversion
+     * @param PublicEmailSubscriptionDetails $subscriptionDetails
+     * @param PublicEmailTestingDetails $testing
+     * @param PublicEmailToDetails $to
+     * @param PublicWebversionDetails $webversion
      *
      * @throws APIException
      */
@@ -138,7 +138,7 @@ interface EmailsContract
         $to = omit,
         $webversion = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -151,7 +151,7 @@ interface EmailsContract
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -195,7 +195,7 @@ interface EmailsContract
         $updatedBefore = omit,
         $workflowNames = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging;
+    ): CollectionResponseWithTotalPublicEmailForwardPaging;
 
     /**
      * @api
@@ -207,7 +207,7 @@ interface EmailsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsCollectionResponseWithTotalPublicEmailForwardPaging;
+    ): CollectionResponseWithTotalPublicEmailForwardPaging;
 
     /**
      * @api
@@ -249,7 +249,7 @@ interface EmailsContract
         $cloneName = omit,
         $language = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -261,7 +261,7 @@ interface EmailsContract
     public function cloneRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -275,7 +275,7 @@ interface EmailsContract
         $contentID,
         $variationName,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -287,7 +287,7 @@ interface EmailsContract
     public function createAbTestVariationRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -297,7 +297,7 @@ interface EmailsContract
     public function getAbTestVariation(
         string $emailID,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -307,7 +307,7 @@ interface EmailsContract
     public function getDraft(
         string $emailID,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -325,7 +325,7 @@ interface EmailsContract
         $property = omit,
         $startTimestamp = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsAggregateEmailStatistics;
+    ): AggregateEmailStatistics;
 
     /**
      * @api
@@ -337,7 +337,7 @@ interface EmailsContract
     public function getEmailsListRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsAggregateEmailStatistics;
+    ): AggregateEmailStatistics;
 
     /**
      * @api
@@ -355,7 +355,7 @@ interface EmailsContract
         $interval = omit,
         $startTimestamp = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging;
+    ): CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
 
     /**
      * @api
@@ -367,7 +367,7 @@ interface EmailsContract
     public function getHistogramRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsCollectionResponseWithTotalEmailStatisticIntervalNoPaging;
+    ): CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
 
     /**
      * @api
@@ -380,7 +380,7 @@ interface EmailsContract
         string $revisionID,
         $emailID,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsVersionPublicEmail;
+    ): VersionPublicEmail;
 
     /**
      * @api
@@ -393,7 +393,7 @@ interface EmailsContract
         string $revisionID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsVersionPublicEmail;
+    ): VersionPublicEmail;
 
     /**
      * @api
@@ -410,7 +410,7 @@ interface EmailsContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsCollectionResponseWithTotalVersionPublicEmail;
+    ): CollectionResponseWithTotalVersionPublicEmail;
 
     /**
      * @api
@@ -423,7 +423,7 @@ interface EmailsContract
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsCollectionResponseWithTotalVersionPublicEmail;
+    ): CollectionResponseWithTotalVersionPublicEmail;
 
     /**
      * @api
@@ -454,7 +454,7 @@ interface EmailsContract
         $marketingCampaignNames = omit,
         $workflowNames = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -467,7 +467,7 @@ interface EmailsContract
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -490,7 +490,7 @@ interface EmailsContract
         int $revisionID,
         $emailID,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -503,7 +503,7 @@ interface EmailsContract
         int $revisionID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -548,21 +548,21 @@ interface EmailsContract
      * @param bool $archived
      * @param int $businessUnitID
      * @param string $campaign
-     * @param MarketingEmailsPublicEmailContent $content
-     * @param MarketingEmailsPublicEmailFromDetails $from
+     * @param PublicEmailContent $content
+     * @param PublicEmailFromDetails $from
      * @param bool $jitterSendTime
      * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language> $language
      * @param string $name
      * @param \DateTimeInterface $publishDate
-     * @param MarketingEmailsPublicRssEmailDetails $rssData
+     * @param PublicRssEmailDetails $rssData
      * @param bool $sendOnPublish
      * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State> $state
      * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory> $subcategory
      * @param string $subject
-     * @param MarketingEmailsPublicEmailSubscriptionDetails $subscriptionDetails
-     * @param MarketingEmailsPublicEmailTestingDetails $testing
-     * @param MarketingEmailsPublicEmailToDetails $to
-     * @param MarketingEmailsPublicWebversionDetails $webversion
+     * @param PublicEmailSubscriptionDetails $subscriptionDetails
+     * @param PublicEmailTestingDetails $testing
+     * @param PublicEmailToDetails $to
+     * @param PublicWebversionDetails $webversion
      *
      * @throws APIException
      */
@@ -588,7 +588,7 @@ interface EmailsContract
         $to = omit,
         $webversion = omit,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 
     /**
      * @api
@@ -601,5 +601,5 @@ interface EmailsContract
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): MarketingEmailsPublicEmail;
+    ): PublicEmail;
 }

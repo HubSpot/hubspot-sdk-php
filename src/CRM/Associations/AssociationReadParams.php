@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\CRMPublicObjectID;
+use HubspotSDK\CRM\PublicObjectID;
 
 /**
  * An object containing the method's parameters.
@@ -27,7 +27,7 @@ use HubspotSDK\CRM\CRMPublicObjectID;
  * @see HubspotSDK\CRM\Associations->read
  *
  * @phpstan-type association_read_params = array{
- *   fromObjectType: string, inputs: list<CRMPublicObjectID>
+ *   fromObjectType: string, inputs: list<PublicObjectID>
  * }
  */
 final class AssociationReadParams implements BaseModel
@@ -39,8 +39,8 @@ final class AssociationReadParams implements BaseModel
     #[Api]
     public string $fromObjectType;
 
-    /** @var list<CRMPublicObjectID> $inputs */
-    #[Api(list: CRMPublicObjectID::class)]
+    /** @var list<PublicObjectID> $inputs */
+    #[Api(list: PublicObjectID::class)]
     public array $inputs;
 
     /**
@@ -67,7 +67,7 @@ final class AssociationReadParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMPublicObjectID> $inputs
+     * @param list<PublicObjectID> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -88,7 +88,7 @@ final class AssociationReadParams implements BaseModel
     }
 
     /**
-     * @param list<CRMPublicObjectID> $inputs
+     * @param list<PublicObjectID> $inputs
      */
     public function withInputs(array $inputs): self
     {

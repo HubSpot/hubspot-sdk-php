@@ -3,7 +3,7 @@
 namespace Tests\Services\CRM;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Properties\CRMPropertiesPropertyName;
+use HubspotSDK\CRM\Properties\PropertyName;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -174,7 +174,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->crm->properties->read(
             'objectType',
             archived: true,
-            inputs: [CRMPropertiesPropertyName::with(name: 'name')],
+            inputs: [PropertyName::with(name: 'name')]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -190,7 +190,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->crm->properties->read(
             'objectType',
             archived: true,
-            inputs: [CRMPropertiesPropertyName::with(name: 'name')],
+            inputs: [PropertyName::with(name: 'name')]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
