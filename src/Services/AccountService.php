@@ -6,10 +6,16 @@ namespace HubspotSDK\Services;
 
 use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\AccountContract;
+use HubspotSDK\Services\Account\AuditLogsService;
 use HubspotSDK\Services\Account\InfoService;
 
 final class AccountService implements AccountContract
 {
+    /**
+     * @@api
+     */
+    public AuditLogsService $auditLogs;
+
     /**
      * @@api
      */
@@ -20,6 +26,7 @@ final class AccountService implements AccountContract
      */
     public function __construct(private Client $client)
     {
+        $this->auditLogs = new AuditLogsService($client);
         $this->info = new InfoService($client);
     }
 }

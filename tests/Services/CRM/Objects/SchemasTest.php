@@ -3,8 +3,8 @@
 namespace Tests\Services\CRM\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\ObjectTypeDefinitionLabels;
-use HubspotSDK\CRM\ObjectTypePropertyCreate;
+use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinitionLabels;
+use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate;
 use HubspotSDK\CRM\Properties\OptionInput;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\CollectionResponseWithTotalURLMappingForwardPaging;
-use HubspotSDK\Cms\URLMapping;
+use HubspotSDK\Cms\URLRedirects\CollectionResponseWithTotalURLMappingForwardPaging;
+use HubspotSDK\Cms\URLRedirects\URLMapping;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 

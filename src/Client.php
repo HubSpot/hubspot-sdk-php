@@ -11,9 +11,11 @@ use HubspotSDK\Services\AccountService;
 use HubspotSDK\Services\AuthService;
 use HubspotSDK\Services\AutomationService;
 use HubspotSDK\Services\CmsService;
+use HubspotSDK\Services\ConversationsService;
 use HubspotSDK\Services\CRMService;
 use HubspotSDK\Services\FilesService;
 use HubspotSDK\Services\MarketingService;
+use HubspotSDK\Services\SettingsService;
 use HubspotSDK\Services\WebhooksService;
 
 class Client extends BaseClient
@@ -41,6 +43,11 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public ConversationsService $conversations;
+
+    /**
+     * @api
+     */
     public CRMService $crm;
 
     /**
@@ -52,6 +59,11 @@ class Client extends BaseClient
      * @api
      */
     public MarketingService $marketing;
+
+    /**
+     * @api
+     */
+    public SettingsService $settings;
 
     /**
      * @api
@@ -84,9 +96,11 @@ class Client extends BaseClient
         $this->auth = new AuthService($this);
         $this->automation = new AutomationService($this);
         $this->cms = new CmsService($this);
+        $this->conversations = new ConversationsService($this);
         $this->crm = new CRMService($this);
         $this->files = new FilesService($this);
         $this->marketing = new MarketingService($this);
+        $this->settings = new SettingsService($this);
         $this->webhooks = new WebhooksService($this);
     }
 

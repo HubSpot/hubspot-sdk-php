@@ -6,15 +6,15 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus;
+use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatusesResponse;
+use HubspotSDK\Marketing\Subscriptions\SubscriptionDefinitionsResponse;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams\LegalBasis;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams;
-use HubspotSDK\Marketing\Subscriptions\V3\PublicSubscriptionStatus;
-use HubspotSDK\Marketing\Subscriptions\V3\PublicSubscriptionStatusesResponse;
-use HubspotSDK\Marketing\Subscriptions\V3\SubscriptionDefinitionsResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\SubscriptionsContract;
-use HubspotSDK\Services\Marketing\Subscriptions\V3Service;
+use HubspotSDK\Services\Marketing\Subscriptions\V4Service;
 
 use const HubspotSDK\Core\OMIT as omit;
 
@@ -23,14 +23,14 @@ final class SubscriptionsService implements SubscriptionsContract
     /**
      * @@api
      */
-    public V3Service $v3;
+    public V4Service $v4;
 
     /**
      * @internal
      */
     public function __construct(private Client $client)
     {
-        $this->v3 = new V3Service($client);
+        $this->v4 = new V4Service($client);
     }
 
     /**
