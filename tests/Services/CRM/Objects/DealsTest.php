@@ -23,8 +23,8 @@ final class DealsTest extends TestCase
 
         $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
-            STAINLESS_FIXME_accessToken: 'pat-123123',
-            baseUrl: $testUrl
+            STAINLESS_FIXME_accessToken: 'pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+            baseUrl: $testUrl,
         );
 
         $this->client = $client;

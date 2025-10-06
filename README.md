@@ -43,7 +43,9 @@ Parameters with a default value must be set by name.
 
 use HubspotSDK\Client;
 
-$client = new Client(accessToken: "pat-123123");
+$client = new Client(
+  accessToken: "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+);
 
 $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
   properties: ["foo" => "string"]
