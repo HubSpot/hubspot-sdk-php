@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\AssociationDefinition;
-use HubspotSDK\CRM\CollectionResponseObjectSchemaNoPaging;
-use HubspotSDK\CRM\ObjectSchema;
-use HubspotSDK\CRM\ObjectTypeDefinition;
-use HubspotSDK\CRM\ObjectTypeDefinitionLabels;
-use HubspotSDK\CRM\ObjectTypePropertyCreate;
+use HubspotSDK\CRM\Objects\Schemas\AssociationDefinition;
+use HubspotSDK\CRM\Objects\Schemas\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\CRM\Objects\Schemas\ObjectSchema;
+use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinition;
+use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinitionLabels;
+use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;

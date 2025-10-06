@@ -6,18 +6,18 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\AssociationDefinition;
-use HubspotSDK\CRM\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\CRM\Objects\Schemas\AssociationDefinition;
+use HubspotSDK\CRM\Objects\Schemas\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\CRM\Objects\Schemas\ObjectSchema;
+use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinition;
+use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinitionLabels;
+use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate;
 use HubspotSDK\CRM\Objects\Schemas\SchemaArchiveAssociationParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaCreateAssociationParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaCreateParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaDeleteParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaListParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaUpdateParams;
-use HubspotSDK\CRM\ObjectSchema;
-use HubspotSDK\CRM\ObjectTypeDefinition;
-use HubspotSDK\CRM\ObjectTypeDefinitionLabels;
-use HubspotSDK\CRM\ObjectTypePropertyCreate;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\SchemasContract;
 

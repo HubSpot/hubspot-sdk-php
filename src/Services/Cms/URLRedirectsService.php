@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\CollectionResponseWithTotalURLMappingForwardPaging;
-use HubspotSDK\Cms\URLMapping;
+use HubspotSDK\Cms\URLRedirects\CollectionResponseWithTotalURLMappingForwardPaging;
+use HubspotSDK\Cms\URLRedirects\URLMapping;
 use HubspotSDK\Cms\URLRedirects\URLRedirectCreateParams;
 use HubspotSDK\Cms\URLRedirects\URLRedirectListParams;
 use HubspotSDK\Cms\URLRedirects\URLRedirectUpdateParams;

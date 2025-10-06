@@ -1,0 +1,99 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Automation\Workflows;
+
+use HubspotSDK\Automation\Workflows\APISort\Order;
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-type api_sort = array{
+ *   order: value-of<Order>, property: string, missing?: string
+ * }
+ */
+final class APISort implements BaseModel
+{
+    /** @use SdkModel<api_sort> */
+    use SdkModel;
+
+    /** @var value-of<Order> $order */
+    #[Api(enum: Order::class)]
+    public string $order;
+
+    #[Api]
+    public string $property;
+
+    #[Api(optional: true)]
+    public ?string $missing;
+
+    /**
+     * `new APISort()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * APISort::with(order: ..., property: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new APISort)->withOrder(...)->withProperty(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Order|value-of<Order> $order
+     */
+    public static function with(
+        Order|string $order,
+        string $property,
+        ?string $missing = null
+    ): self {
+        $obj = new self;
+
+        $obj['order'] = $order;
+        $obj->property = $property;
+
+        null !== $missing && $obj->missing = $missing;
+
+        return $obj;
+    }
+
+    /**
+     * @param Order|value-of<Order> $order
+     */
+    public function withOrder(Order|string $order): self
+    {
+        $obj = clone $this;
+        $obj['order'] = $order;
+
+        return $obj;
+    }
+
+    public function withProperty(string $property): self
+    {
+        $obj = clone $this;
+        $obj->property = $property;
+
+        return $obj;
+    }
+
+    public function withMissing(string $missing): self
+    {
+        $obj = clone $this;
+        $obj->missing = $missing;
+
+        return $obj;
+    }
+}

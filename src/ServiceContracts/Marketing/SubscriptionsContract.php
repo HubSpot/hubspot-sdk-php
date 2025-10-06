@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus;
+use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatusesResponse;
+use HubspotSDK\Marketing\Subscriptions\SubscriptionDefinitionsResponse;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams\LegalBasis;
-use HubspotSDK\Marketing\Subscriptions\V3\PublicSubscriptionStatus;
-use HubspotSDK\Marketing\Subscriptions\V3\PublicSubscriptionStatusesResponse;
-use HubspotSDK\Marketing\Subscriptions\V3\SubscriptionDefinitionsResponse;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;

@@ -8,8 +8,6 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\ObjectTypeDefinitionLabels;
-use HubspotSDK\CRM\ObjectTypePropertyCreate;
 
 /**
  * An object containing the method's parameters.

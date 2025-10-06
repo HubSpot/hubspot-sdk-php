@@ -20,7 +20,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   businessUnitID?: int,
  *   communicationMethod?: string,
  *   purpose?: string,
- *   subscriptionTranslations?: list<PublicSubscriptionTranslation>,
  * }
  */
 final class SubscriptionDefinition implements BaseModel
@@ -57,10 +56,6 @@ final class SubscriptionDefinition implements BaseModel
 
     #[Api(optional: true)]
     public ?string $purpose;
-
-    /** @var list<PublicSubscriptionTranslation>|null $subscriptionTranslations */
-    #[Api(list: PublicSubscriptionTranslation::class, optional: true)]
-    public ?array $subscriptionTranslations;
 
     /**
      * `new SubscriptionDefinition()` is missing required properties by the API.
@@ -100,8 +95,6 @@ final class SubscriptionDefinition implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
-     *
-     * @param list<PublicSubscriptionTranslation> $subscriptionTranslations
      */
     public static function with(
         string $id,
@@ -114,7 +107,6 @@ final class SubscriptionDefinition implements BaseModel
         ?int $businessUnitID = null,
         ?string $communicationMethod = null,
         ?string $purpose = null,
-        ?array $subscriptionTranslations = null,
     ): self {
         $obj = new self;
 
@@ -129,7 +121,6 @@ final class SubscriptionDefinition implements BaseModel
         null !== $businessUnitID && $obj->businessUnitID = $businessUnitID;
         null !== $communicationMethod && $obj->communicationMethod = $communicationMethod;
         null !== $purpose && $obj->purpose = $purpose;
-        null !== $subscriptionTranslations && $obj->subscriptionTranslations = $subscriptionTranslations;
 
         return $obj;
     }
@@ -210,18 +201,6 @@ final class SubscriptionDefinition implements BaseModel
     {
         $obj = clone $this;
         $obj->purpose = $purpose;
-
-        return $obj;
-    }
-
-    /**
-     * @param list<PublicSubscriptionTranslation> $subscriptionTranslations
-     */
-    public function withSubscriptionTranslations(
-        array $subscriptionTranslations
-    ): self {
-        $obj = clone $this;
-        $obj->subscriptionTranslations = $subscriptionTranslations;
 
         return $obj;
     }
