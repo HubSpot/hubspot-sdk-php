@@ -2,13 +2,13 @@
 
 namespace Tests\Services\Automation;
 
-use HubspotSDK\Automation\Actions\AutomationActionsCallbackCompletionBatchRequest;
-use HubspotSDK\Automation\Actions\AutomationActionsFieldTypeDefinition;
-use HubspotSDK\Automation\Actions\AutomationActionsInputFieldDefinition;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicActionFunction;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicActionLabels;
+use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
+use HubspotSDK\Automation\Actions\FieldTypeDefinition;
+use HubspotSDK\Automation\Actions\InputFieldDefinition;
+use HubspotSDK\Automation\Actions\PublicActionFunction;
+use HubspotSDK\Automation\Actions\PublicActionLabels;
 use HubspotSDK\Client;
-use HubspotSDK\CRM\CRMOption;
+use HubspotSDK\CRM\Option;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -46,29 +46,25 @@ final class ActionsTest extends TestCase
             0,
             actionURL: 'actionUrl',
             functions: [
-                AutomationActionsPublicActionFunction::with(
+                PublicActionFunction::with(
                     functionSource: 'functionSource',
                     functionType: 'PRE_ACTION_EXECUTION'
                 ),
             ],
             inputFields: [
-                AutomationActionsInputFieldDefinition::with(
+                InputFieldDefinition::with(
                     isRequired: true,
-                    typeDefinition: AutomationActionsFieldTypeDefinition::with(
+                    typeDefinition: FieldTypeDefinition::with(
                         externalOptions: true,
                         name: 'name',
                         options: [
-                            CRMOption::with(hidden: true, label: 'label', value: 'value'),
+                            Option::with(hidden: true, label: 'label', value: 'value'),
                         ],
                         type: 'string',
                     ),
                 ),
             ],
-            labels: [
-                'foo' => AutomationActionsPublicActionLabels::with(
-                    actionName: 'actionName'
-                ),
-            ],
+            labels: ['foo' => PublicActionLabels::with(actionName: 'actionName')],
             objectTypes: ['string'],
             published: true,
         );
@@ -87,20 +83,20 @@ final class ActionsTest extends TestCase
             0,
             actionURL: 'actionUrl',
             functions: [
-                AutomationActionsPublicActionFunction::with(
+                PublicActionFunction::with(
                     functionSource: 'functionSource',
                     functionType: 'PRE_ACTION_EXECUTION'
                 )
                     ->withID('id'),
             ],
             inputFields: [
-                AutomationActionsInputFieldDefinition::with(
+                InputFieldDefinition::with(
                     isRequired: true,
-                    typeDefinition: AutomationActionsFieldTypeDefinition::with(
+                    typeDefinition: FieldTypeDefinition::with(
                         externalOptions: true,
                         name: 'name',
                         options: [
-                            CRMOption::with(hidden: true, label: 'label', value: 'value')
+                            Option::with(hidden: true, label: 'label', value: 'value')
                                 ->withDisplayOrder(0),
                         ],
                         type: 'string',
@@ -116,9 +112,7 @@ final class ActionsTest extends TestCase
                     ->withSupportedValueTypes(['STATIC_VALUE']),
             ],
             labels: [
-                'foo' => AutomationActionsPublicActionLabels::with(
-                    actionName: 'actionName'
-                )
+                'foo' => PublicActionLabels::with(actionName: 'actionName')
                     ->withActionCardContent('actionCardContent')
                     ->withActionDescription('actionDescription')
                     ->withAppDisplayName('appDisplayName')
@@ -300,7 +294,7 @@ final class ActionsTest extends TestCase
 
         $result = $this->client->automation->actions->completeBatch(
             [
-                AutomationActionsCallbackCompletionBatchRequest::with(
+                CallbackCompletionBatchRequest::with(
                     callbackID: 'callbackId',
                     outputFields: ['foo' => 'string']
                 ),
@@ -319,7 +313,7 @@ final class ActionsTest extends TestCase
 
         $result = $this->client->automation->actions->completeBatch(
             [
-                AutomationActionsCallbackCompletionBatchRequest::with(
+                CallbackCompletionBatchRequest::with(
                     callbackID: 'callbackId',
                     outputFields: ['foo' => 'string']
                 ),

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Auth;
 
-use HubspotSDK\Auth\OAuth\AuthOAuthRefreshTokenInfoResponse;
-use HubspotSDK\Auth\OAuth\AuthOAuthTokenResponseIf;
 use HubspotSDK\Auth\OAuth\OAuthCreateParams\GrantType;
+use HubspotSDK\Auth\OAuth\RefreshTokenInfoResponse;
+use HubspotSDK\Auth\OAuth\TokenResponseIf;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -34,7 +34,7 @@ interface OAuthContract
         $redirectUri = omit,
         $refreshToken = omit,
         ?RequestOptions $requestOptions = null,
-    ): AuthOAuthTokenResponseIf;
+    ): TokenResponseIf;
 
     /**
      * @api
@@ -46,7 +46,7 @@ interface OAuthContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): AuthOAuthTokenResponseIf;
+    ): TokenResponseIf;
 
     /**
      * @api
@@ -66,5 +66,5 @@ interface OAuthContract
     public function get(
         string $token,
         ?RequestOptions $requestOptions = null
-    ): AuthOAuthRefreshTokenInfoResponse;
+    ): RefreshTokenInfoResponse;
 }

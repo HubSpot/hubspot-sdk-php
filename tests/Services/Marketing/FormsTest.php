@@ -3,19 +3,19 @@
 namespace Tests\Services\Marketing;
 
 use HubspotSDK\Client;
-use HubspotSDK\Marketing\Forms\MarketingFormsDependentField;
-use HubspotSDK\Marketing\Forms\MarketingFormsDependentFieldFilter;
-use HubspotSDK\Marketing\Forms\MarketingFormsEmailField;
-use HubspotSDK\Marketing\Forms\MarketingFormsEmailFieldValidation;
-use HubspotSDK\Marketing\Forms\MarketingFormsFieldGroup;
-use HubspotSDK\Marketing\Forms\MarketingFormsFormDisplayOptions;
-use HubspotSDK\Marketing\Forms\MarketingFormsFormPostSubmitAction;
-use HubspotSDK\Marketing\Forms\MarketingFormsFormStyle;
-use HubspotSDK\Marketing\Forms\MarketingFormsHubSpotFormConfiguration;
-use HubspotSDK\Marketing\Forms\MarketingFormsLegalConsentOptionsNone;
-use HubspotSDK\Marketing\Forms\MarketingFormsLifecycleStage;
-use HubspotSDK\Marketing\Forms\MarketingFormsPhoneField;
-use HubspotSDK\Marketing\Forms\MarketingFormsPhoneFieldValidation;
+use HubspotSDK\Marketing\Forms\DependentField;
+use HubspotSDK\Marketing\Forms\DependentFieldFilter;
+use HubspotSDK\Marketing\Forms\EmailField;
+use HubspotSDK\Marketing\Forms\EmailFieldValidation;
+use HubspotSDK\Marketing\Forms\FieldGroup;
+use HubspotSDK\Marketing\Forms\FormDisplayOptions;
+use HubspotSDK\Marketing\Forms\FormPostSubmitAction;
+use HubspotSDK\Marketing\Forms\FormStyle;
+use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
+use HubspotSDK\Marketing\Forms\LegalConsentOptionsNone;
+use HubspotSDK\Marketing\Forms\LifecycleStage;
+use HubspotSDK\Marketing\Forms\PhoneField;
+use HubspotSDK\Marketing\Forms\PhoneFieldValidation;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -113,7 +113,7 @@ final class FormsTest extends TestCase
             'formId',
             id: 'id',
             archived: true,
-            configuration: MarketingFormsHubSpotFormConfiguration::with(
+            configuration: HubSpotFormConfiguration::with(
                 allowLinkToResetKnownValues: true,
                 archivable: true,
                 cloneable: true,
@@ -122,7 +122,7 @@ final class FormsTest extends TestCase
                 language: 'af',
                 notifyContactOwner: true,
                 notifyRecipients: ['string'],
-                postSubmitAction: MarketingFormsFormPostSubmitAction::with(
+                postSubmitAction: FormPostSubmitAction::with(
                     type: 'thank_you',
                     value: 'value'
                 ),
@@ -130,9 +130,9 @@ final class FormsTest extends TestCase
                 recaptchaEnabled: true,
             ),
             createdAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            displayOptions: MarketingFormsFormDisplayOptions::with(
+            displayOptions: FormDisplayOptions::with(
                 renderRawHTML: true,
-                style: MarketingFormsFormStyle::with(
+                style: FormStyle::with(
                     backgroundWidth: 'backgroundWidth',
                     fontFamily: 'fontFamily',
                     helpTextColor: 'helpTextColor',
@@ -150,19 +150,19 @@ final class FormsTest extends TestCase
                 theme: 'default_style',
             ),
             fieldGroups: [
-                MarketingFormsFieldGroup::with(
+                FieldGroup::with(
                     fields: [
-                        MarketingFormsEmailField::with(
+                        EmailField::with(
                             dependentFields: [
-                                MarketingFormsDependentField::with(
-                                    dependentCondition: MarketingFormsDependentFieldFilter::with(
+                                DependentField::with(
+                                    dependentCondition: DependentFieldFilter::with(
                                         operator: 'eq',
                                         rangeEnd: 'rangeEnd',
                                         rangeStart: 'rangeStart',
                                         value: 'value',
                                         values: ['string'],
                                     ),
-                                    dependentField: MarketingFormsPhoneField::with(
+                                    dependentField: PhoneField::with(
                                         dependentFields: [],
                                         fieldType: 'phone',
                                         hidden: true,
@@ -171,7 +171,7 @@ final class FormsTest extends TestCase
                                         objectTypeID: 'objectTypeId',
                                         required: true,
                                         useCountryCodeSelect: true,
-                                        validation: MarketingFormsPhoneFieldValidation::with(
+                                        validation: PhoneFieldValidation::with(
                                             maxAllowedDigits: 0,
                                             minAllowedDigits: 0
                                         ),
@@ -184,7 +184,7 @@ final class FormsTest extends TestCase
                             name: 'name',
                             objectTypeID: 'objectTypeId',
                             required: true,
-                            validation: MarketingFormsEmailFieldValidation::with(
+                            validation: EmailFieldValidation::with(
                                 blockedEmailDomains: ['string'],
                                 useDefaultBlockList: true
                             ),
@@ -195,9 +195,7 @@ final class FormsTest extends TestCase
                 ),
             ],
             formType: 'hubspot',
-            legalConsentOptions: MarketingFormsLegalConsentOptionsNone::with(
-                type: 'none'
-            ),
+            legalConsentOptions: LegalConsentOptionsNone::with(type: 'none'),
             name: 'name',
             updatedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
@@ -216,7 +214,7 @@ final class FormsTest extends TestCase
             'formId',
             id: 'id',
             archived: true,
-            configuration: MarketingFormsHubSpotFormConfiguration::with(
+            configuration: HubSpotFormConfiguration::with(
                 allowLinkToResetKnownValues: true,
                 archivable: true,
                 cloneable: true,
@@ -225,7 +223,7 @@ final class FormsTest extends TestCase
                 language: 'af',
                 notifyContactOwner: true,
                 notifyRecipients: ['string'],
-                postSubmitAction: MarketingFormsFormPostSubmitAction::with(
+                postSubmitAction: FormPostSubmitAction::with(
                     type: 'thank_you',
                     value: 'value'
                 ),
@@ -233,17 +231,12 @@ final class FormsTest extends TestCase
                 recaptchaEnabled: true,
             )
                 ->withLifecycleStages(
-                    [
-                        MarketingFormsLifecycleStage::with(
-                            objectTypeID: 'objectTypeId',
-                            value: 'value'
-                        ),
-                    ],
+                    [LifecycleStage::with(objectTypeID: 'objectTypeId', value: 'value')]
                 ),
             createdAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            displayOptions: MarketingFormsFormDisplayOptions::with(
+            displayOptions: FormDisplayOptions::with(
                 renderRawHTML: true,
-                style: MarketingFormsFormStyle::with(
+                style: FormStyle::with(
                     backgroundWidth: 'backgroundWidth',
                     fontFamily: 'fontFamily',
                     helpTextColor: 'helpTextColor',
@@ -262,19 +255,19 @@ final class FormsTest extends TestCase
             )
                 ->withCssClass('cssClass'),
             fieldGroups: [
-                MarketingFormsFieldGroup::with(
+                FieldGroup::with(
                     fields: [
-                        MarketingFormsEmailField::with(
+                        EmailField::with(
                             dependentFields: [
-                                MarketingFormsDependentField::with(
-                                    dependentCondition: MarketingFormsDependentFieldFilter::with(
+                                DependentField::with(
+                                    dependentCondition: DependentFieldFilter::with(
                                         operator: 'eq',
                                         rangeEnd: 'rangeEnd',
                                         rangeStart: 'rangeStart',
                                         value: 'value',
                                         values: ['string'],
                                     ),
-                                    dependentField: MarketingFormsPhoneField::with(
+                                    dependentField: PhoneField::with(
                                         dependentFields: [],
                                         fieldType: 'phone',
                                         hidden: true,
@@ -283,7 +276,7 @@ final class FormsTest extends TestCase
                                         objectTypeID: 'objectTypeId',
                                         required: true,
                                         useCountryCodeSelect: true,
-                                        validation: MarketingFormsPhoneFieldValidation::with(
+                                        validation: PhoneFieldValidation::with(
                                             maxAllowedDigits: 0,
                                             minAllowedDigits: 0
                                         ),
@@ -298,7 +291,7 @@ final class FormsTest extends TestCase
                             name: 'name',
                             objectTypeID: 'objectTypeId',
                             required: true,
-                            validation: MarketingFormsEmailFieldValidation::with(
+                            validation: EmailFieldValidation::with(
                                 blockedEmailDomains: ['string'],
                                 useDefaultBlockList: true
                             ),
@@ -312,9 +305,7 @@ final class FormsTest extends TestCase
                     ->withRichText('richText'),
             ],
             formType: 'hubspot',
-            legalConsentOptions: MarketingFormsLegalConsentOptionsNone::with(
-                type: 'none'
-            ),
+            legalConsentOptions: LegalConsentOptionsNone::with(type: 'none'),
             name: 'name',
             updatedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );

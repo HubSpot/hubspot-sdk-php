@@ -8,17 +8,17 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\WebhooksContract;
+use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
+use HubspotSDK\Webhooks\SettingsResponse;
+use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
+use HubspotSDK\Webhooks\SubscriptionListResponse;
+use HubspotSDK\Webhooks\SubscriptionResponse;
+use HubspotSDK\Webhooks\ThrottlingSettings;
 use HubspotSDK\Webhooks\WebhookConfigureParams;
 use HubspotSDK\Webhooks\WebhookCreateParams;
 use HubspotSDK\Webhooks\WebhookCreateParams\EventType;
 use HubspotSDK\Webhooks\WebhookDeleteParams;
 use HubspotSDK\Webhooks\WebhookReadParams;
-use HubspotSDK\Webhooks\WebhooksBatchResponseSubscriptionResponse;
-use HubspotSDK\Webhooks\WebhooksSettingsResponse;
-use HubspotSDK\Webhooks\WebhooksSubscriptionBatchUpdateRequest;
-use HubspotSDK\Webhooks\WebhooksSubscriptionListResponse;
-use HubspotSDK\Webhooks\WebhooksSubscriptionResponse;
-use HubspotSDK\Webhooks\WebhooksThrottlingSettings;
 use HubspotSDK\Webhooks\WebhookUpdateBatchParams;
 use HubspotSDK\Webhooks\WebhookUpdateParams;
 
@@ -50,7 +50,7 @@ final class WebhooksService implements WebhooksContract
         $objectTypeID = omit,
         $propertyName = omit,
         ?RequestOptions $requestOptions = null,
-    ): WebhooksSubscriptionResponse {
+    ): SubscriptionResponse {
         $params = [
             'eventType' => $eventType,
             'active' => $active,
@@ -72,7 +72,7 @@ final class WebhooksService implements WebhooksContract
         int $appID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSubscriptionResponse {
+    ): SubscriptionResponse {
         [$parsed, $options] = WebhookCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -84,7 +84,7 @@ final class WebhooksService implements WebhooksContract
             path: ['webhooks/v3/%1$s/subscriptions', $appID],
             body: (object) $parsed,
             options: $options,
-            convert: WebhooksSubscriptionResponse::class,
+            convert: SubscriptionResponse::class,
         );
     }
 
@@ -103,7 +103,7 @@ final class WebhooksService implements WebhooksContract
         $appID,
         $active = omit,
         ?RequestOptions $requestOptions = null,
-    ): WebhooksSubscriptionResponse {
+    ): SubscriptionResponse {
         $params = ['appID' => $appID, 'active' => $active];
 
         return $this->updateRaw($subscriptionID, $params, $requestOptions);
@@ -120,7 +120,7 @@ final class WebhooksService implements WebhooksContract
         int $subscriptionID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSubscriptionResponse {
+    ): SubscriptionResponse {
         [$parsed, $options] = WebhookUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -134,7 +134,7 @@ final class WebhooksService implements WebhooksContract
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
             body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
-            convert: WebhooksSubscriptionResponse::class,
+            convert: SubscriptionResponse::class,
         );
     }
 
@@ -148,13 +148,13 @@ final class WebhooksService implements WebhooksContract
     public function list(
         int $appID,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSubscriptionListResponse {
+    ): SubscriptionListResponse {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['webhooks/v3/%1$s/subscriptions', $appID],
             options: $requestOptions,
-            convert: WebhooksSubscriptionListResponse::class,
+            convert: SubscriptionListResponse::class,
         );
     }
 
@@ -231,7 +231,7 @@ final class WebhooksService implements WebhooksContract
      * Update webhook settings
      *
      * @param string $targetURL
-     * @param WebhooksThrottlingSettings $throttling
+     * @param ThrottlingSettings $throttling
      *
      * @throws APIException
      */
@@ -240,7 +240,7 @@ final class WebhooksService implements WebhooksContract
         $targetURL,
         $throttling,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSettingsResponse {
+    ): SettingsResponse {
         $params = ['targetURL' => $targetURL, 'throttling' => $throttling];
 
         return $this->configureRaw($appID, $params, $requestOptions);
@@ -257,7 +257,7 @@ final class WebhooksService implements WebhooksContract
         int $appID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSettingsResponse {
+    ): SettingsResponse {
         [$parsed, $options] = WebhookConfigureParams::parseRequest(
             $params,
             $requestOptions
@@ -269,7 +269,7 @@ final class WebhooksService implements WebhooksContract
             path: ['webhooks/v3/%1$s/settings', $appID],
             body: (object) $parsed,
             options: $options,
-            convert: WebhooksSettingsResponse::class,
+            convert: SettingsResponse::class,
         );
     }
 
@@ -286,7 +286,7 @@ final class WebhooksService implements WebhooksContract
         int $subscriptionID,
         $appID,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSubscriptionResponse {
+    ): SubscriptionResponse {
         $params = ['appID' => $appID];
 
         return $this->readRaw($subscriptionID, $params, $requestOptions);
@@ -303,7 +303,7 @@ final class WebhooksService implements WebhooksContract
         int $subscriptionID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): WebhooksSubscriptionResponse {
+    ): SubscriptionResponse {
         [$parsed, $options] = WebhookReadParams::parseRequest(
             $params,
             $requestOptions
@@ -316,7 +316,7 @@ final class WebhooksService implements WebhooksContract
             method: 'get',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
             options: $options,
-            convert: WebhooksSubscriptionResponse::class,
+            convert: SubscriptionResponse::class,
         );
     }
 
@@ -325,7 +325,7 @@ final class WebhooksService implements WebhooksContract
      *
      * Batch create event subscriptions
      *
-     * @param list<WebhooksSubscriptionBatchUpdateRequest> $inputs
+     * @param list<SubscriptionBatchUpdateRequest> $inputs
      *
      * @throws APIException
      */
@@ -333,7 +333,7 @@ final class WebhooksService implements WebhooksContract
         int $appID,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): WebhooksBatchResponseSubscriptionResponse {
+    ): BatchResponseSubscriptionResponse {
         $params = ['inputs' => $inputs];
 
         return $this->updateBatchRaw($appID, $params, $requestOptions);
@@ -350,7 +350,7 @@ final class WebhooksService implements WebhooksContract
         int $appID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): WebhooksBatchResponseSubscriptionResponse {
+    ): BatchResponseSubscriptionResponse {
         [$parsed, $options] = WebhookUpdateBatchParams::parseRequest(
             $params,
             $requestOptions
@@ -362,7 +362,7 @@ final class WebhooksService implements WebhooksContract
             path: ['webhooks/v3/%1$s/subscriptions/batch/update', $appID],
             body: (object) $parsed,
             options: $options,
-            convert: WebhooksBatchResponseSubscriptionResponse::class,
+            convert: BatchResponseSubscriptionResponse::class,
         );
     }
 }

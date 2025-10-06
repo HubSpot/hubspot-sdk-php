@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\CRMAssociationSpec;
+use HubspotSDK\CRM\AssociationSpec;
 
 /**
  * An object containing the method's parameters.
@@ -30,7 +30,7 @@ use HubspotSDK\CRM\CRMAssociationSpec;
  *   objectType: string,
  *   objectID: string,
  *   toObjectType: string,
- *   body: list<CRMAssociationSpec>,
+ *   body: list<AssociationSpec>,
  * }
  */
 final class V4CreateParams implements BaseModel
@@ -48,8 +48,8 @@ final class V4CreateParams implements BaseModel
     #[Api]
     public string $toObjectType;
 
-    /** @var list<CRMAssociationSpec> $body */
-    #[Api(list: CRMAssociationSpec::class)]
+    /** @var list<AssociationSpec> $body */
+    #[Api(list: AssociationSpec::class)]
     public array $body;
 
     /**
@@ -82,7 +82,7 @@ final class V4CreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMAssociationSpec> $body
+     * @param list<AssociationSpec> $body
      */
     public static function with(
         string $objectType,
@@ -125,7 +125,7 @@ final class V4CreateParams implements BaseModel
     }
 
     /**
-     * @param list<CRMAssociationSpec> $body
+     * @param list<AssociationSpec> $body
      */
     public function withBody(array $body): self
     {

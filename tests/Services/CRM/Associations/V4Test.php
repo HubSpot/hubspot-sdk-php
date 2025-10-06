@@ -3,10 +3,10 @@
 namespace Tests\Services\CRM\Associations;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Associations\V4\AssociationsV4AssociationSpec1;
-use HubspotSDK\CRM\Associations\V4\AssociationsV4PublicAssociationMultiPost;
-use HubspotSDK\CRM\CRMAssociationSpec;
-use HubspotSDK\CRM\CRMPublicObjectID;
+use HubspotSDK\CRM\Associations\V4\AssociationSpec1;
+use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
+use HubspotSDK\CRM\AssociationSpec;
+use HubspotSDK\CRM\PublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -46,7 +46,7 @@ final class V4Test extends TestCase
             objectID: 'objectId',
             toObjectType: 'toObjectType',
             body: [
-                CRMAssociationSpec::with(
+                AssociationSpec::with(
                     associationCategory: 'HUBSPOT_DEFINED',
                     associationTypeID: 0
                 ),
@@ -69,7 +69,7 @@ final class V4Test extends TestCase
             objectID: 'objectId',
             toObjectType: 'toObjectType',
             body: [
-                CRMAssociationSpec::with(
+                AssociationSpec::with(
                     associationCategory: 'HUBSPOT_DEFINED',
                     associationTypeID: 0
                 ),
@@ -156,11 +156,11 @@ final class V4Test extends TestCase
             'toObjectType',
             fromObjectType: 'fromObjectType',
             inputs: [
-                AssociationsV4PublicAssociationMultiPost::with(
-                    from: CRMPublicObjectID::with(id: 'id'),
-                    to: CRMPublicObjectID::with(id: 'id'),
+                PublicAssociationMultiPost::with(
+                    from: PublicObjectID::with(id: 'id'),
+                    to: PublicObjectID::with(id: 'id'),
                     types: [
-                        AssociationsV4AssociationSpec1::with(
+                        AssociationSpec1::with(
                             associationCategory: 'HUBSPOT_DEFINED',
                             associationTypeID: 0
                         ),
@@ -183,11 +183,11 @@ final class V4Test extends TestCase
             'toObjectType',
             fromObjectType: 'fromObjectType',
             inputs: [
-                AssociationsV4PublicAssociationMultiPost::with(
-                    from: CRMPublicObjectID::with(id: 'id'),
-                    to: CRMPublicObjectID::with(id: 'id'),
+                PublicAssociationMultiPost::with(
+                    from: PublicObjectID::with(id: 'id'),
+                    to: PublicObjectID::with(id: 'id'),
                     types: [
-                        AssociationsV4AssociationSpec1::with(
+                        AssociationSpec1::with(
                             associationCategory: 'HUBSPOT_DEFINED',
                             associationTypeID: 0
                         ),

@@ -7,10 +7,10 @@ namespace HubspotSDK\Marketing\Forms\FormUpdateParams;
 use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Marketing\Forms\MarketingFormsLegalConsentOptionsExplicitConsentToProcess;
-use HubspotSDK\Marketing\Forms\MarketingFormsLegalConsentOptionsImplicitConsentToProcess;
-use HubspotSDK\Marketing\Forms\MarketingFormsLegalConsentOptionsLegitimateInterest;
-use HubspotSDK\Marketing\Forms\MarketingFormsLegalConsentOptionsNone;
+use HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess;
+use HubspotSDK\Marketing\Forms\LegalConsentOptionsImplicitConsentToProcess;
+use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest;
+use HubspotSDK\Marketing\Forms\LegalConsentOptionsNone;
 
 final class LegalConsentOptions implements ConverterSource
 {
@@ -23,10 +23,10 @@ final class LegalConsentOptions implements ConverterSource
     public static function variants(): array
     {
         return [
-            MarketingFormsLegalConsentOptionsNone::class,
-            MarketingFormsLegalConsentOptionsLegitimateInterest::class,
-            MarketingFormsLegalConsentOptionsExplicitConsentToProcess::class,
-            MarketingFormsLegalConsentOptionsImplicitConsentToProcess::class,
+            LegalConsentOptionsNone::class,
+            LegalConsentOptionsLegitimateInterest::class,
+            LegalConsentOptionsExplicitConsentToProcess::class,
+            LegalConsentOptionsImplicitConsentToProcess::class,
         ];
     }
 }

@@ -29,13 +29,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type action_update_params = array{
  *   appID: int,
  *   actionURL?: string,
- *   executionRules?: list<AutomationActionsPublicExecutionTranslationRule>,
- *   inputFieldDependencies?: list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency>,
- *   inputFields?: list<AutomationActionsInputFieldDefinition>,
- *   labels?: array<string, AutomationActionsPublicActionLabels>,
- *   objectRequestOptions?: AutomationActionsPublicObjectRequestOptions,
+ *   executionRules?: list<PublicExecutionTranslationRule>,
+ *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>,
+ *   inputFields?: list<InputFieldDefinition>,
+ *   labels?: array<string, PublicActionLabels>,
+ *   objectRequestOptions?: PublicObjectRequestOptions,
  *   objectTypes?: list<string>,
- *   outputFields?: list<AutomationActionsOutputFieldDefinition>,
+ *   outputFields?: list<OutputFieldDefinition>,
  *   published?: bool,
  * }
  */
@@ -51,38 +51,33 @@ final class ActionUpdateParams implements BaseModel
     #[Api('actionUrl', optional: true)]
     public ?string $actionURL;
 
-    /**
-     * @var list<AutomationActionsPublicExecutionTranslationRule>|null $executionRules
-     */
-    #[Api(
-        list: AutomationActionsPublicExecutionTranslationRule::class,
-        optional: true
-    )]
+    /** @var list<PublicExecutionTranslationRule>|null $executionRules */
+    #[Api(list: PublicExecutionTranslationRule::class, optional: true)]
     public ?array $executionRules;
 
     /**
-     * @var list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency>|null $inputFieldDependencies
+     * @var list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null $inputFieldDependencies
      */
     #[Api(list: InputFieldDependency::class, optional: true)]
     public ?array $inputFieldDependencies;
 
-    /** @var list<AutomationActionsInputFieldDefinition>|null $inputFields */
-    #[Api(list: AutomationActionsInputFieldDefinition::class, optional: true)]
+    /** @var list<InputFieldDefinition>|null $inputFields */
+    #[Api(list: InputFieldDefinition::class, optional: true)]
     public ?array $inputFields;
 
-    /** @var array<string, AutomationActionsPublicActionLabels>|null $labels */
-    #[Api(map: AutomationActionsPublicActionLabels::class, optional: true)]
+    /** @var array<string, PublicActionLabels>|null $labels */
+    #[Api(map: PublicActionLabels::class, optional: true)]
     public ?array $labels;
 
     #[Api(optional: true)]
-    public ?AutomationActionsPublicObjectRequestOptions $objectRequestOptions;
+    public ?PublicObjectRequestOptions $objectRequestOptions;
 
     /** @var list<string>|null $objectTypes */
     #[Api(list: 'string', optional: true)]
     public ?array $objectTypes;
 
-    /** @var list<AutomationActionsOutputFieldDefinition>|null $outputFields */
-    #[Api(list: AutomationActionsOutputFieldDefinition::class, optional: true)]
+    /** @var list<OutputFieldDefinition>|null $outputFields */
+    #[Api(list: OutputFieldDefinition::class, optional: true)]
     public ?array $outputFields;
 
     #[Api(optional: true)]
@@ -112,12 +107,12 @@ final class ActionUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AutomationActionsPublicExecutionTranslationRule> $executionRules
-     * @param list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency> $inputFieldDependencies
-     * @param list<AutomationActionsInputFieldDefinition> $inputFields
-     * @param array<string, AutomationActionsPublicActionLabels> $labels
+     * @param list<PublicExecutionTranslationRule> $executionRules
+     * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
+     * @param list<InputFieldDefinition> $inputFields
+     * @param array<string, PublicActionLabels> $labels
      * @param list<string> $objectTypes
-     * @param list<AutomationActionsOutputFieldDefinition> $outputFields
+     * @param list<OutputFieldDefinition> $outputFields
      */
     public static function with(
         int $appID,
@@ -126,7 +121,7 @@ final class ActionUpdateParams implements BaseModel
         ?array $inputFieldDependencies = null,
         ?array $inputFields = null,
         ?array $labels = null,
-        ?AutomationActionsPublicObjectRequestOptions $objectRequestOptions = null,
+        ?PublicObjectRequestOptions $objectRequestOptions = null,
         ?array $objectTypes = null,
         ?array $outputFields = null,
         ?bool $published = null,
@@ -165,7 +160,7 @@ final class ActionUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<AutomationActionsPublicExecutionTranslationRule> $executionRules
+     * @param list<PublicExecutionTranslationRule> $executionRules
      */
     public function withExecutionRules(array $executionRules): self
     {
@@ -176,7 +171,7 @@ final class ActionUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency> $inputFieldDependencies
+     * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
      */
     public function withInputFieldDependencies(
         array $inputFieldDependencies
@@ -188,7 +183,7 @@ final class ActionUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<AutomationActionsInputFieldDefinition> $inputFields
+     * @param list<InputFieldDefinition> $inputFields
      */
     public function withInputFields(array $inputFields): self
     {
@@ -199,7 +194,7 @@ final class ActionUpdateParams implements BaseModel
     }
 
     /**
-     * @param array<string, AutomationActionsPublicActionLabels> $labels
+     * @param array<string, PublicActionLabels> $labels
      */
     public function withLabels(array $labels): self
     {
@@ -210,7 +205,7 @@ final class ActionUpdateParams implements BaseModel
     }
 
     public function withObjectRequestOptions(
-        AutomationActionsPublicObjectRequestOptions $objectRequestOptions
+        PublicObjectRequestOptions $objectRequestOptions
     ): self {
         $obj = clone $this;
         $obj->objectRequestOptions = $objectRequestOptions;
@@ -230,7 +225,7 @@ final class ActionUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<AutomationActionsOutputFieldDefinition> $outputFields
+     * @param list<OutputFieldDefinition> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {

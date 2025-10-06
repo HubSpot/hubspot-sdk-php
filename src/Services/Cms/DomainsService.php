@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Domains\CmsDomainsCollectionResponseWithTotalDomainForwardPaging;
-use HubspotSDK\Cms\Domains\CmsDomainsDomain;
+use HubspotSDK\Cms\Domains\CollectionResponseWithTotalDomainForwardPaging;
+use HubspotSDK\Cms\Domains\Domain;
 use HubspotSDK\Cms\Domains\DomainListParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
@@ -51,7 +51,7 @@ final class DomainsService implements DomainsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsDomainsCollectionResponseWithTotalDomainForwardPaging {
+    ): CollectionResponseWithTotalDomainForwardPaging {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -78,7 +78,7 @@ final class DomainsService implements DomainsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsDomainsCollectionResponseWithTotalDomainForwardPaging {
+    ): CollectionResponseWithTotalDomainForwardPaging {
         [$parsed, $options] = DomainListParams::parseRequest(
             $params,
             $requestOptions
@@ -90,7 +90,7 @@ final class DomainsService implements DomainsContract
             path: 'cms/v3/domains/',
             query: $parsed,
             options: $options,
-            convert: CmsDomainsCollectionResponseWithTotalDomainForwardPaging::class,
+            convert: CollectionResponseWithTotalDomainForwardPaging::class,
         );
     }
 
@@ -104,13 +104,13 @@ final class DomainsService implements DomainsContract
     public function read(
         string $domainID,
         ?RequestOptions $requestOptions = null
-    ): CmsDomainsDomain {
+    ): Domain {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/domains/%1$s', $domainID],
             options: $requestOptions,
-            convert: CmsDomainsDomain::class,
+            convert: Domain::class,
         );
     }
 }

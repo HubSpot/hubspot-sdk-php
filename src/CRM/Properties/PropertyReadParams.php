@@ -28,7 +28,7 @@ use HubspotSDK\CRM\Properties\PropertyReadParams\DataSensitivity;
  *
  * @phpstan-type property_read_params = array{
  *   archived: bool,
- *   inputs: list<CRMPropertiesPropertyName>,
+ *   inputs: list<PropertyName>,
  *   dataSensitivity?: DataSensitivity|value-of<DataSensitivity>,
  * }
  */
@@ -41,8 +41,8 @@ final class PropertyReadParams implements BaseModel
     #[Api]
     public bool $archived;
 
-    /** @var list<CRMPropertiesPropertyName> $inputs */
-    #[Api(list: CRMPropertiesPropertyName::class)]
+    /** @var list<PropertyName> $inputs */
+    #[Api(list: PropertyName::class)]
     public array $inputs;
 
     /** @var value-of<DataSensitivity>|null $dataSensitivity */
@@ -73,7 +73,7 @@ final class PropertyReadParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMPropertiesPropertyName> $inputs
+     * @param list<PropertyName> $inputs
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      */
     public static function with(
@@ -100,7 +100,7 @@ final class PropertyReadParams implements BaseModel
     }
 
     /**
-     * @param list<CRMPropertiesPropertyName> $inputs
+     * @param list<PropertyName> $inputs
      */
     public function withInputs(array $inputs): self
     {

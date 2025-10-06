@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInput;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
 
 /**
  * An object containing the method's parameters.
@@ -27,7 +27,7 @@ use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInput;
  * @see HubspotSDK\CRM\Objects\Companies->update
  *
  * @phpstan-type company_update_params = array{
- *   inputs: list<CRMObjectsSimplePublicObjectBatchInput>
+ *   inputs: list<SimplePublicObjectBatchInput>
  * }
  */
 final class CompanyUpdateParams implements BaseModel
@@ -36,8 +36,8 @@ final class CompanyUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<CRMObjectsSimplePublicObjectBatchInput> $inputs */
-    #[Api(list: CRMObjectsSimplePublicObjectBatchInput::class)]
+    /** @var list<SimplePublicObjectBatchInput> $inputs */
+    #[Api(list: SimplePublicObjectBatchInput::class)]
     public array $inputs;
 
     /**
@@ -64,7 +64,7 @@ final class CompanyUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMObjectsSimplePublicObjectBatchInput> $inputs
+     * @param list<SimplePublicObjectBatchInput> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -76,7 +76,7 @@ final class CompanyUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<CRMObjectsSimplePublicObjectBatchInput> $inputs
+     * @param list<SimplePublicObjectBatchInput> $inputs
      */
     public function withInputs(array $inputs): self
     {

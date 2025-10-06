@@ -3,8 +3,8 @@
 namespace Tests\Services\CRM;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Associations\CRMAssociationsPublicAssociation;
-use HubspotSDK\CRM\CRMPublicObjectID;
+use HubspotSDK\CRM\Associations\PublicAssociation;
+use HubspotSDK\CRM\PublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -42,9 +42,9 @@ final class AssociationsTest extends TestCase
             'toObjectType',
             fromObjectType: 'fromObjectType',
             inputs: [
-                CRMAssociationsPublicAssociation::with(
-                    from: CRMPublicObjectID::with(id: 'id'),
-                    to: CRMPublicObjectID::with(id: 'id'),
+                PublicAssociation::with(
+                    from: PublicObjectID::with(id: 'id'),
+                    to: PublicObjectID::with(id: 'id'),
                     type: 'type',
                 ),
             ],
@@ -64,9 +64,9 @@ final class AssociationsTest extends TestCase
             'toObjectType',
             fromObjectType: 'fromObjectType',
             inputs: [
-                CRMAssociationsPublicAssociation::with(
-                    from: CRMPublicObjectID::with(id: 'id'),
-                    to: CRMPublicObjectID::with(id: 'id'),
+                PublicAssociation::with(
+                    from: PublicObjectID::with(id: 'id'),
+                    to: PublicObjectID::with(id: 'id'),
                     type: 'type',
                 ),
             ],
@@ -86,9 +86,9 @@ final class AssociationsTest extends TestCase
             'toObjectType',
             fromObjectType: 'fromObjectType',
             inputs: [
-                CRMAssociationsPublicAssociation::with(
-                    from: CRMPublicObjectID::with(id: 'id'),
-                    to: CRMPublicObjectID::with(id: 'id'),
+                PublicAssociation::with(
+                    from: PublicObjectID::with(id: 'id'),
+                    to: PublicObjectID::with(id: 'id'),
                     type: 'type',
                 ),
             ],
@@ -108,9 +108,9 @@ final class AssociationsTest extends TestCase
             'toObjectType',
             fromObjectType: 'fromObjectType',
             inputs: [
-                CRMAssociationsPublicAssociation::with(
-                    from: CRMPublicObjectID::with(id: 'id'),
-                    to: CRMPublicObjectID::with(id: 'id'),
+                PublicAssociation::with(
+                    from: PublicObjectID::with(id: 'id'),
+                    to: PublicObjectID::with(id: 'id'),
                     type: 'type',
                 ),
             ],
@@ -129,7 +129,7 @@ final class AssociationsTest extends TestCase
         $result = $this->client->crm->associations->read(
             'toObjectType',
             fromObjectType: 'fromObjectType',
-            inputs: [CRMPublicObjectID::with(id: 'id')],
+            inputs: [PublicObjectID::with(id: 'id')],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -145,7 +145,7 @@ final class AssociationsTest extends TestCase
         $result = $this->client->crm->associations->read(
             'toObjectType',
             fromObjectType: 'fromObjectType',
-            inputs: [CRMPublicObjectID::with(id: 'id')],
+            inputs: [PublicObjectID::with(id: 'id')],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -3,9 +3,9 @@
 namespace Tests\Services\CRM\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectID;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -69,7 +69,7 @@ final class CompaniesTest extends TestCase
 
         $result = $this->client->crm->objects->companies->update(
             [
-                CRMObjectsSimplePublicObjectBatchInput::with(
+                SimplePublicObjectBatchInput::with(
                     id: 'id',
                     properties: ['foo' => 'string']
                 ),
@@ -88,7 +88,7 @@ final class CompaniesTest extends TestCase
 
         $result = $this->client->crm->objects->companies->update(
             [
-                CRMObjectsSimplePublicObjectBatchInput::with(
+                SimplePublicObjectBatchInput::with(
                     id: 'id',
                     properties: ['foo' => 'string']
                 )
@@ -120,7 +120,7 @@ final class CompaniesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->companies->delete(
-            [CRMObjectsSimplePublicObjectID::with(id: 'id')]
+            [SimplePublicObjectID::with(id: 'id')]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -134,7 +134,7 @@ final class CompaniesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->companies->delete(
-            [CRMObjectsSimplePublicObjectID::with(id: 'id')]
+            [SimplePublicObjectID::with(id: 'id')]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -203,7 +203,7 @@ final class CompaniesTest extends TestCase
 
         $result = $this->client->crm->objects->companies->upsert(
             [
-                CRMObjectsSimplePublicObjectBatchInputUpsert::with(
+                SimplePublicObjectBatchInputUpsert::with(
                     id: 'id',
                     properties: ['foo' => 'string']
                 ),
@@ -222,7 +222,7 @@ final class CompaniesTest extends TestCase
 
         $result = $this->client->crm->objects->companies->upsert(
             [
-                CRMObjectsSimplePublicObjectBatchInputUpsert::with(
+                SimplePublicObjectBatchInputUpsert::with(
                     id: 'id',
                     properties: ['foo' => 'string']
                 )

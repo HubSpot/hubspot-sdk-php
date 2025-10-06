@@ -28,16 +28,16 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type action_create_params = array{
  *   actionURL: string,
- *   functions: list<AutomationActionsPublicActionFunction>,
- *   inputFields: list<AutomationActionsInputFieldDefinition>,
- *   labels: array<string, AutomationActionsPublicActionLabels>,
+ *   functions: list<PublicActionFunction>,
+ *   inputFields: list<InputFieldDefinition>,
+ *   labels: array<string, PublicActionLabels>,
  *   objectTypes: list<string>,
  *   published: bool,
  *   archivedAt?: int,
- *   executionRules?: list<AutomationActionsPublicExecutionTranslationRule>,
- *   inputFieldDependencies?: list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency>,
- *   objectRequestOptions?: AutomationActionsPublicObjectRequestOptions,
- *   outputFields?: list<AutomationActionsOutputFieldDefinition>,
+ *   executionRules?: list<PublicExecutionTranslationRule>,
+ *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>,
+ *   objectRequestOptions?: PublicObjectRequestOptions,
+ *   outputFields?: list<OutputFieldDefinition>,
  * }
  */
 final class ActionCreateParams implements BaseModel
@@ -49,16 +49,16 @@ final class ActionCreateParams implements BaseModel
     #[Api('actionUrl')]
     public string $actionURL;
 
-    /** @var list<AutomationActionsPublicActionFunction> $functions */
-    #[Api(list: AutomationActionsPublicActionFunction::class)]
+    /** @var list<PublicActionFunction> $functions */
+    #[Api(list: PublicActionFunction::class)]
     public array $functions;
 
-    /** @var list<AutomationActionsInputFieldDefinition> $inputFields */
-    #[Api(list: AutomationActionsInputFieldDefinition::class)]
+    /** @var list<InputFieldDefinition> $inputFields */
+    #[Api(list: InputFieldDefinition::class)]
     public array $inputFields;
 
-    /** @var array<string, AutomationActionsPublicActionLabels> $labels */
-    #[Api(map: AutomationActionsPublicActionLabels::class)]
+    /** @var array<string, PublicActionLabels> $labels */
+    #[Api(map: PublicActionLabels::class)]
     public array $labels;
 
     /** @var list<string> $objectTypes */
@@ -71,26 +71,21 @@ final class ActionCreateParams implements BaseModel
     #[Api(optional: true)]
     public ?int $archivedAt;
 
-    /**
-     * @var list<AutomationActionsPublicExecutionTranslationRule>|null $executionRules
-     */
-    #[Api(
-        list: AutomationActionsPublicExecutionTranslationRule::class,
-        optional: true
-    )]
+    /** @var list<PublicExecutionTranslationRule>|null $executionRules */
+    #[Api(list: PublicExecutionTranslationRule::class, optional: true)]
     public ?array $executionRules;
 
     /**
-     * @var list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency>|null $inputFieldDependencies
+     * @var list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null $inputFieldDependencies
      */
     #[Api(list: InputFieldDependency::class, optional: true)]
     public ?array $inputFieldDependencies;
 
     #[Api(optional: true)]
-    public ?AutomationActionsPublicObjectRequestOptions $objectRequestOptions;
+    public ?PublicObjectRequestOptions $objectRequestOptions;
 
-    /** @var list<AutomationActionsOutputFieldDefinition>|null $outputFields */
-    #[Api(list: AutomationActionsOutputFieldDefinition::class, optional: true)]
+    /** @var list<OutputFieldDefinition>|null $outputFields */
+    #[Api(list: OutputFieldDefinition::class, optional: true)]
     public ?array $outputFields;
 
     /**
@@ -130,13 +125,13 @@ final class ActionCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AutomationActionsPublicActionFunction> $functions
-     * @param list<AutomationActionsInputFieldDefinition> $inputFields
-     * @param array<string, AutomationActionsPublicActionLabels> $labels
+     * @param list<PublicActionFunction> $functions
+     * @param list<InputFieldDefinition> $inputFields
+     * @param array<string, PublicActionLabels> $labels
      * @param list<string> $objectTypes
-     * @param list<AutomationActionsPublicExecutionTranslationRule> $executionRules
-     * @param list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency> $inputFieldDependencies
-     * @param list<AutomationActionsOutputFieldDefinition> $outputFields
+     * @param list<PublicExecutionTranslationRule> $executionRules
+     * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
+     * @param list<OutputFieldDefinition> $outputFields
      */
     public static function with(
         string $actionURL,
@@ -148,7 +143,7 @@ final class ActionCreateParams implements BaseModel
         ?int $archivedAt = null,
         ?array $executionRules = null,
         ?array $inputFieldDependencies = null,
-        ?AutomationActionsPublicObjectRequestOptions $objectRequestOptions = null,
+        ?PublicObjectRequestOptions $objectRequestOptions = null,
         ?array $outputFields = null,
     ): self {
         $obj = new self;
@@ -178,7 +173,7 @@ final class ActionCreateParams implements BaseModel
     }
 
     /**
-     * @param list<AutomationActionsPublicActionFunction> $functions
+     * @param list<PublicActionFunction> $functions
      */
     public function withFunctions(array $functions): self
     {
@@ -189,7 +184,7 @@ final class ActionCreateParams implements BaseModel
     }
 
     /**
-     * @param list<AutomationActionsInputFieldDefinition> $inputFields
+     * @param list<InputFieldDefinition> $inputFields
      */
     public function withInputFields(array $inputFields): self
     {
@@ -200,7 +195,7 @@ final class ActionCreateParams implements BaseModel
     }
 
     /**
-     * @param array<string, AutomationActionsPublicActionLabels> $labels
+     * @param array<string, PublicActionLabels> $labels
      */
     public function withLabels(array $labels): self
     {
@@ -238,7 +233,7 @@ final class ActionCreateParams implements BaseModel
     }
 
     /**
-     * @param list<AutomationActionsPublicExecutionTranslationRule> $executionRules
+     * @param list<PublicExecutionTranslationRule> $executionRules
      */
     public function withExecutionRules(array $executionRules): self
     {
@@ -249,7 +244,7 @@ final class ActionCreateParams implements BaseModel
     }
 
     /**
-     * @param list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency> $inputFieldDependencies
+     * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
      */
     public function withInputFieldDependencies(
         array $inputFieldDependencies
@@ -261,7 +256,7 @@ final class ActionCreateParams implements BaseModel
     }
 
     public function withObjectRequestOptions(
-        AutomationActionsPublicObjectRequestOptions $objectRequestOptions
+        PublicObjectRequestOptions $objectRequestOptions
     ): self {
         $obj = clone $this;
         $obj->objectRequestOptions = $objectRequestOptions;
@@ -270,7 +265,7 @@ final class ActionCreateParams implements BaseModel
     }
 
     /**
-     * @param list<AutomationActionsOutputFieldDefinition> $outputFields
+     * @param list<OutputFieldDefinition> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {

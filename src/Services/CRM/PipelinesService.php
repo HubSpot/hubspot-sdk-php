@@ -6,16 +6,16 @@ namespace HubspotSDK\Services\CRM;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesCollectionResponsePipelineNoPaging;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesCollectionResponsePublicAuditInfoNoPaging;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesPipeline;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesPipelineStage;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesPipelineStageInput;
+use HubspotSDK\CRM\Pipelines\CollectionResponsePipelineNoPaging;
+use HubspotSDK\CRM\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
+use HubspotSDK\CRM\Pipelines\Pipeline;
 use HubspotSDK\CRM\Pipelines\PipelineCreateParams;
 use HubspotSDK\CRM\Pipelines\PipelineDeleteParams;
 use HubspotSDK\CRM\Pipelines\PipelineGetAuditParams;
 use HubspotSDK\CRM\Pipelines\PipelineReadParams;
 use HubspotSDK\CRM\Pipelines\PipelineReplaceParams;
+use HubspotSDK\CRM\Pipelines\PipelineStage;
+use HubspotSDK\CRM\Pipelines\PipelineStageInput;
 use HubspotSDK\CRM\Pipelines\PipelineUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\PipelinesContract;
@@ -36,7 +36,7 @@ final class PipelinesService implements PipelinesContract
      *
      * @param int $displayOrder
      * @param string $label
-     * @param list<CRMPipelinesPipelineStageInput> $stages
+     * @param list<PipelineStageInput> $stages
      *
      * @throws APIException
      */
@@ -46,7 +46,7 @@ final class PipelinesService implements PipelinesContract
         $label,
         $stages,
         ?RequestOptions $requestOptions = null,
-    ): CRMPipelinesPipeline {
+    ): Pipeline {
         $params = [
             'displayOrder' => $displayOrder, 'label' => $label, 'stages' => $stages,
         ];
@@ -65,7 +65,7 @@ final class PipelinesService implements PipelinesContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesPipeline {
+    ): Pipeline {
         [$parsed, $options] = PipelineCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -77,7 +77,7 @@ final class PipelinesService implements PipelinesContract
             path: ['crm/v3/pipelines/%1$s', $objectType],
             body: (object) $parsed,
             options: $options,
-            convert: CRMPipelinesPipeline::class,
+            convert: Pipeline::class,
         );
     }
 
@@ -104,7 +104,7 @@ final class PipelinesService implements PipelinesContract
         $label = omit,
         $metadata = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMPipelinesPipelineStage {
+    ): PipelineStage {
         $params = [
             'objectType' => $objectType,
             'pipelineID' => $pipelineID,
@@ -128,7 +128,7 @@ final class PipelinesService implements PipelinesContract
         string $stageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesPipelineStage {
+    ): PipelineStage {
         [$parsed, $options] = PipelineUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -152,7 +152,7 @@ final class PipelinesService implements PipelinesContract
                 array_flip(['objectType', 'pipelineID'])
             ),
             options: $options,
-            convert: CRMPipelinesPipelineStage::class,
+            convert: PipelineStage::class,
         );
     }
 
@@ -166,13 +166,13 @@ final class PipelinesService implements PipelinesContract
     public function list(
         string $objectType,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesCollectionResponsePipelineNoPaging {
+    ): CollectionResponsePipelineNoPaging {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/pipelines/%1$s', $objectType],
             options: $requestOptions,
-            convert: CRMPipelinesCollectionResponsePipelineNoPaging::class,
+            convert: CollectionResponsePipelineNoPaging::class,
         );
     }
 
@@ -245,7 +245,7 @@ final class PipelinesService implements PipelinesContract
         string $pipelineID,
         $objectType,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesCollectionResponsePublicAuditInfoNoPaging {
+    ): CollectionResponsePublicAuditInfoNoPaging {
         $params = ['objectType' => $objectType];
 
         return $this->getAuditRaw($pipelineID, $params, $requestOptions);
@@ -262,7 +262,7 @@ final class PipelinesService implements PipelinesContract
         string $pipelineID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesCollectionResponsePublicAuditInfoNoPaging {
+    ): CollectionResponsePublicAuditInfoNoPaging {
         [$parsed, $options] = PipelineGetAuditParams::parseRequest(
             $params,
             $requestOptions
@@ -275,7 +275,7 @@ final class PipelinesService implements PipelinesContract
             method: 'get',
             path: ['crm/v3/pipelines/%1$s/%2$s/audit', $objectType, $pipelineID],
             options: $options,
-            convert: CRMPipelinesCollectionResponsePublicAuditInfoNoPaging::class,
+            convert: CollectionResponsePublicAuditInfoNoPaging::class,
         );
     }
 
@@ -294,7 +294,7 @@ final class PipelinesService implements PipelinesContract
         $objectType,
         $pipelineID,
         ?RequestOptions $requestOptions = null,
-    ): CRMPipelinesPipelineStage {
+    ): PipelineStage {
         $params = ['objectType' => $objectType, 'pipelineID' => $pipelineID];
 
         return $this->readRaw($stageID, $params, $requestOptions);
@@ -311,7 +311,7 @@ final class PipelinesService implements PipelinesContract
         string $stageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesPipelineStage {
+    ): PipelineStage {
         [$parsed, $options] = PipelineReadParams::parseRequest(
             $params,
             $requestOptions
@@ -331,7 +331,7 @@ final class PipelinesService implements PipelinesContract
                 $stageID,
             ],
             options: $options,
-            convert: CRMPipelinesPipelineStage::class,
+            convert: PipelineStage::class,
         );
     }
 
@@ -356,7 +356,7 @@ final class PipelinesService implements PipelinesContract
         $label,
         $metadata = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMPipelinesPipelineStage {
+    ): PipelineStage {
         $params = [
             'objectType' => $objectType,
             'pipelineID' => $pipelineID,
@@ -379,7 +379,7 @@ final class PipelinesService implements PipelinesContract
         string $stageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesPipelineStage {
+    ): PipelineStage {
         [$parsed, $options] = PipelineReplaceParams::parseRequest(
             $params,
             $requestOptions
@@ -403,7 +403,7 @@ final class PipelinesService implements PipelinesContract
                 array_flip(['objectType', 'pipelineID'])
             ),
             options: $options,
-            convert: CRMPipelinesPipelineStage::class,
+            convert: PipelineStage::class,
         );
     }
 }

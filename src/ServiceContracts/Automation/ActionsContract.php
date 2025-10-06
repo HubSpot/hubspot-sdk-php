@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Automation;
 
 use HubspotSDK\Automation\Actions\ActionDeleteParams\FunctionType;
-use HubspotSDK\Automation\Actions\AutomationActionsCallbackCompletionBatchRequest;
-use HubspotSDK\Automation\Actions\AutomationActionsCollectionResponsePublicActionRevisionForwardPaging;
-use HubspotSDK\Automation\Actions\AutomationActionsInputFieldDefinition;
-use HubspotSDK\Automation\Actions\AutomationActionsOutputFieldDefinition;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicActionDefinition;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicActionFunction;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicActionFunctionIdentifier;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicActionLabels;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicConditionalSingleFieldDependency;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicExecutionTranslationRule;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicObjectRequestOptions;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicSingleFieldDependency;
+use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
+use HubspotSDK\Automation\Actions\CollectionResponsePublicActionRevisionForwardPaging;
+use HubspotSDK\Automation\Actions\InputFieldDefinition;
+use HubspotSDK\Automation\Actions\OutputFieldDefinition;
+use HubspotSDK\Automation\Actions\PublicActionDefinition;
+use HubspotSDK\Automation\Actions\PublicActionFunction;
+use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
+use HubspotSDK\Automation\Actions\PublicActionLabels;
+use HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
+use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
+use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
+use HubspotSDK\Automation\Actions\PublicSingleFieldDependency;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -28,16 +28,16 @@ interface ActionsContract
      * @api
      *
      * @param string $actionURL
-     * @param list<AutomationActionsPublicActionFunction> $functions
-     * @param list<AutomationActionsInputFieldDefinition> $inputFields
-     * @param array<string, AutomationActionsPublicActionLabels> $labels
+     * @param list<PublicActionFunction> $functions
+     * @param list<InputFieldDefinition> $inputFields
+     * @param array<string, PublicActionLabels> $labels
      * @param list<string> $objectTypes
      * @param bool $published
      * @param int $archivedAt
-     * @param list<AutomationActionsPublicExecutionTranslationRule> $executionRules
-     * @param list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency> $inputFieldDependencies
-     * @param AutomationActionsPublicObjectRequestOptions $objectRequestOptions
-     * @param list<AutomationActionsOutputFieldDefinition> $outputFields
+     * @param list<PublicExecutionTranslationRule> $executionRules
+     * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
+     * @param PublicObjectRequestOptions $objectRequestOptions
+     * @param list<OutputFieldDefinition> $outputFields
      *
      * @throws APIException
      */
@@ -55,7 +55,7 @@ interface ActionsContract
         $objectRequestOptions = omit,
         $outputFields = omit,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionDefinition;
+    ): PublicActionDefinition;
 
     /**
      * @api
@@ -68,20 +68,20 @@ interface ActionsContract
         int $appID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): AutomationActionsPublicActionDefinition;
+    ): PublicActionDefinition;
 
     /**
      * @api
      *
      * @param int $appID
      * @param string $actionURL
-     * @param list<AutomationActionsPublicExecutionTranslationRule> $executionRules
-     * @param list<AutomationActionsPublicSingleFieldDependency|AutomationActionsPublicConditionalSingleFieldDependency> $inputFieldDependencies
-     * @param list<AutomationActionsInputFieldDefinition> $inputFields
-     * @param array<string, AutomationActionsPublicActionLabels> $labels
-     * @param AutomationActionsPublicObjectRequestOptions $objectRequestOptions
+     * @param list<PublicExecutionTranslationRule> $executionRules
+     * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
+     * @param list<InputFieldDefinition> $inputFields
+     * @param array<string, PublicActionLabels> $labels
+     * @param PublicObjectRequestOptions $objectRequestOptions
      * @param list<string> $objectTypes
-     * @param list<AutomationActionsOutputFieldDefinition> $outputFields
+     * @param list<OutputFieldDefinition> $outputFields
      * @param bool $published
      *
      * @throws APIException
@@ -99,7 +99,7 @@ interface ActionsContract
         $outputFields = omit,
         $published = omit,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionDefinition;
+    ): PublicActionDefinition;
 
     /**
      * @api
@@ -112,7 +112,7 @@ interface ActionsContract
         string $definitionID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionDefinition;
+    ): PublicActionDefinition;
 
     /**
      * @api
@@ -129,7 +129,7 @@ interface ActionsContract
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsCollectionResponsePublicActionRevisionForwardPaging;
+    ): CollectionResponsePublicActionRevisionForwardPaging;
 
     /**
      * @api
@@ -142,7 +142,7 @@ interface ActionsContract
         string $definitionID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsCollectionResponsePublicActionRevisionForwardPaging;
+    ): CollectionResponsePublicActionRevisionForwardPaging;
 
     /**
      * @api
@@ -233,7 +233,7 @@ interface ActionsContract
     /**
      * @api
      *
-     * @param list<AutomationActionsCallbackCompletionBatchRequest> $inputs
+     * @param list<CallbackCompletionBatchRequest> $inputs
      *
      * @throws APIException
      */
@@ -271,7 +271,7 @@ interface ActionsContract
         $functionType,
         $body,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionFunctionIdentifier;
+    ): PublicActionFunctionIdentifier;
 
     /**
      * @api
@@ -284,7 +284,7 @@ interface ActionsContract
         string $functionID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionFunctionIdentifier;
+    ): PublicActionFunctionIdentifier;
 
     /**
      * @api
@@ -302,7 +302,7 @@ interface ActionsContract
         $definitionID,
         $body,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionFunctionIdentifier;
+    ): PublicActionFunctionIdentifier;
 
     /**
      * @api
@@ -316,7 +316,7 @@ interface ActionsContract
         HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionFunctionIdentifier;
+    ): PublicActionFunctionIdentifier;
 
     /**
      * @api
@@ -332,7 +332,7 @@ interface ActionsContract
         $appID,
         $definitionID,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionFunction;
+    ): PublicActionFunction;
 
     /**
      * @api
@@ -346,7 +346,7 @@ interface ActionsContract
         HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|string $functionType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionFunction;
+    ): PublicActionFunction;
 
     /**
      * @api
@@ -363,7 +363,7 @@ interface ActionsContract
         $definitionID,
         $functionType,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionFunction;
+    ): PublicActionFunction;
 
     /**
      * @api
@@ -376,5 +376,5 @@ interface ActionsContract
         string $functionID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): AutomationActionsPublicActionFunction;
+    ): PublicActionFunction;
 }

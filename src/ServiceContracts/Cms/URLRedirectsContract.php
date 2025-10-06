@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\CmsCollectionResponseWithTotalURLMappingForwardPaging;
-use HubspotSDK\Cms\CmsURLMapping;
+use HubspotSDK\Cms\CollectionResponseWithTotalURLMappingForwardPaging;
+use HubspotSDK\Cms\URLMapping;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -41,7 +41,7 @@ interface URLRedirectsContract
         $isTrailingSlashOptional = omit,
         $precedence = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsURLMapping;
+    ): URLMapping;
 
     /**
      * @api
@@ -53,7 +53,7 @@ interface URLRedirectsContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsURLMapping;
+    ): URLMapping;
 
     /**
      * @api
@@ -90,7 +90,7 @@ interface URLRedirectsContract
         $created = omit,
         $updated = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsURLMapping;
+    ): URLMapping;
 
     /**
      * @api
@@ -103,7 +103,7 @@ interface URLRedirectsContract
         string $urlRedirectID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsURLMapping;
+    ): URLMapping;
 
     /**
      * @api
@@ -133,7 +133,7 @@ interface URLRedirectsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsCollectionResponseWithTotalURLMappingForwardPaging;
+    ): CollectionResponseWithTotalURLMappingForwardPaging;
 
     /**
      * @api
@@ -145,7 +145,7 @@ interface URLRedirectsContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsCollectionResponseWithTotalURLMappingForwardPaging;
+    ): CollectionResponseWithTotalURLMappingForwardPaging;
 
     /**
      * @api
@@ -165,5 +165,5 @@ interface URLRedirectsContract
     public function read(
         string $urlRedirectID,
         ?RequestOptions $requestOptions = null
-    ): CmsURLMapping;
+    ): URLMapping;
 }

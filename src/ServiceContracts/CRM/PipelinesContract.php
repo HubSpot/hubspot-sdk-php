@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesCollectionResponsePipelineNoPaging;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesCollectionResponsePublicAuditInfoNoPaging;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesPipeline;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesPipelineStage;
-use HubspotSDK\CRM\Pipelines\CRMPipelinesPipelineStageInput;
+use HubspotSDK\CRM\Pipelines\CollectionResponsePipelineNoPaging;
+use HubspotSDK\CRM\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
+use HubspotSDK\CRM\Pipelines\Pipeline;
+use HubspotSDK\CRM\Pipelines\PipelineStage;
+use HubspotSDK\CRM\Pipelines\PipelineStageInput;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -21,7 +21,7 @@ interface PipelinesContract
      *
      * @param int $displayOrder
      * @param string $label
-     * @param list<CRMPipelinesPipelineStageInput> $stages
+     * @param list<PipelineStageInput> $stages
      *
      * @throws APIException
      */
@@ -31,7 +31,7 @@ interface PipelinesContract
         $label,
         $stages,
         ?RequestOptions $requestOptions = null,
-    ): CRMPipelinesPipeline;
+    ): Pipeline;
 
     /**
      * @api
@@ -44,7 +44,7 @@ interface PipelinesContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMPipelinesPipeline;
+    ): Pipeline;
 
     /**
      * @api
@@ -67,7 +67,7 @@ interface PipelinesContract
         $label = omit,
         $metadata = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMPipelinesPipelineStage;
+    ): PipelineStage;
 
     /**
      * @api
@@ -80,7 +80,7 @@ interface PipelinesContract
         string $stageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesPipelineStage;
+    ): PipelineStage;
 
     /**
      * @api
@@ -90,7 +90,7 @@ interface PipelinesContract
     public function list(
         string $objectType,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesCollectionResponsePipelineNoPaging;
+    ): CollectionResponsePipelineNoPaging;
 
     /**
      * @api
@@ -131,7 +131,7 @@ interface PipelinesContract
         string $pipelineID,
         $objectType,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesCollectionResponsePublicAuditInfoNoPaging;
+    ): CollectionResponsePublicAuditInfoNoPaging;
 
     /**
      * @api
@@ -144,7 +144,7 @@ interface PipelinesContract
         string $pipelineID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CRMPipelinesCollectionResponsePublicAuditInfoNoPaging;
+    ): CollectionResponsePublicAuditInfoNoPaging;
 
     /**
      * @api
@@ -159,7 +159,7 @@ interface PipelinesContract
         $objectType,
         $pipelineID,
         ?RequestOptions $requestOptions = null,
-    ): CRMPipelinesPipelineStage;
+    ): PipelineStage;
 
     /**
      * @api
@@ -172,7 +172,7 @@ interface PipelinesContract
         string $stageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesPipelineStage;
+    ): PipelineStage;
 
     /**
      * @api
@@ -193,7 +193,7 @@ interface PipelinesContract
         $label,
         $metadata = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMPipelinesPipelineStage;
+    ): PipelineStage;
 
     /**
      * @api
@@ -206,5 +206,5 @@ interface PipelinesContract
         string $stageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMPipelinesPipelineStage;
+    ): PipelineStage;
 }

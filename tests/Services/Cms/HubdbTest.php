@@ -3,9 +3,9 @@
 namespace Tests\Services\Cms;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowBatchCloneRequest;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3BatchUpdateRequest;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3Request;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -115,7 +115,7 @@ final class HubdbTest extends TestCase
 
         $result = $this->client->cms->hubdb->cloneDraftTableRows(
             'tableIdOrName',
-            [CmsHubdbHubDBTableRowBatchCloneRequest::with(id: 'id')]
+            [HubDBTableRowBatchCloneRequest::with(id: 'id')]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -130,9 +130,7 @@ final class HubdbTest extends TestCase
 
         $result = $this->client->cms->hubdb->cloneDraftTableRows(
             'tableIdOrName',
-            [
-                CmsHubdbHubDBTableRowBatchCloneRequest::with(id: 'id')->withName('name'),
-            ],
+            [HubDBTableRowBatchCloneRequest::with(id: 'id')->withName('name')],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -147,7 +145,7 @@ final class HubdbTest extends TestCase
 
         $result = $this->client->cms->hubdb->createDraftTableRows(
             'tableIdOrName',
-            [CmsHubdbHubDBTableRowV3Request::with(values: ['foo' => (object) []])],
+            [HubDBTableRowV3Request::with(values: ['foo' => (object) []])],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -163,7 +161,7 @@ final class HubdbTest extends TestCase
         $result = $this->client->cms->hubdb->createDraftTableRows(
             'tableIdOrName',
             [
-                CmsHubdbHubDBTableRowV3Request::with(values: ['foo' => (object) []])
+                HubDBTableRowV3Request::with(values: ['foo' => (object) []])
                     ->withChildTableID(0)
                     ->withDisplayIndex(0)
                     ->withName('name')
@@ -590,7 +588,7 @@ final class HubdbTest extends TestCase
         $result = $this->client->cms->hubdb->replaceDraftTableRows(
             'tableIdOrName',
             [
-                CmsHubdbHubDBTableRowV3BatchUpdateRequest::with(
+                HubDBTableRowV3BatchUpdateRequest::with(
                     id: 'id',
                     values: ['foo' => (object) []]
                 ),
@@ -610,7 +608,7 @@ final class HubdbTest extends TestCase
         $result = $this->client->cms->hubdb->replaceDraftTableRows(
             'tableIdOrName',
             [
-                CmsHubdbHubDBTableRowV3BatchUpdateRequest::with(
+                HubDBTableRowV3BatchUpdateRequest::with(
                     id: 'id',
                     values: ['foo' => (object) []]
                 )
@@ -722,7 +720,7 @@ final class HubdbTest extends TestCase
         $result = $this->client->cms->hubdb->updateDraftTableRows(
             'tableIdOrName',
             [
-                CmsHubdbHubDBTableRowV3BatchUpdateRequest::with(
+                HubDBTableRowV3BatchUpdateRequest::with(
                     id: 'id',
                     values: ['foo' => (object) []]
                 ),
@@ -742,7 +740,7 @@ final class HubdbTest extends TestCase
         $result = $this->client->cms->hubdb->updateDraftTableRows(
             'tableIdOrName',
             [
-                CmsHubdbHubDBTableRowV3BatchUpdateRequest::with(
+                HubDBTableRowV3BatchUpdateRequest::with(
                     id: 'id',
                     values: ['foo' => (object) []]
                 )

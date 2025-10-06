@@ -6,18 +6,18 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\CRMAssociationDefinition;
-use HubspotSDK\CRM\CRMCollectionResponseObjectSchemaNoPaging;
-use HubspotSDK\CRM\CRMObjectSchema;
-use HubspotSDK\CRM\CRMObjectTypeDefinition;
-use HubspotSDK\CRM\CRMObjectTypeDefinitionLabels;
-use HubspotSDK\CRM\CRMObjectTypePropertyCreate;
+use HubspotSDK\CRM\AssociationDefinition;
+use HubspotSDK\CRM\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\CRM\Objects\Schemas\SchemaArchiveAssociationParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaCreateAssociationParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaCreateParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaDeleteParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaListParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaUpdateParams;
+use HubspotSDK\CRM\ObjectSchema;
+use HubspotSDK\CRM\ObjectTypeDefinition;
+use HubspotSDK\CRM\ObjectTypeDefinitionLabels;
+use HubspotSDK\CRM\ObjectTypePropertyCreate;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\SchemasContract;
 
@@ -36,9 +36,9 @@ final class SchemasService implements SchemasContract
      * Create a new schema
      *
      * @param list<string> $associatedObjects
-     * @param CRMObjectTypeDefinitionLabels $labels
+     * @param ObjectTypeDefinitionLabels $labels
      * @param string $name
-     * @param list<CRMObjectTypePropertyCreate> $properties
+     * @param list<ObjectTypePropertyCreate> $properties
      * @param list<string> $requiredProperties
      * @param string $primaryDisplayProperty
      * @param list<string> $searchableProperties
@@ -56,7 +56,7 @@ final class SchemasService implements SchemasContract
         $searchableProperties = omit,
         $secondaryDisplayProperties = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectSchema {
+    ): ObjectSchema {
         $params = [
             'associatedObjects' => $associatedObjects,
             'labels' => $labels,
@@ -81,7 +81,7 @@ final class SchemasService implements SchemasContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectSchema {
+    ): ObjectSchema {
         [$parsed, $options] = SchemaCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -93,7 +93,7 @@ final class SchemasService implements SchemasContract
             path: 'crm-object-schemas/v3/schemas',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectSchema::class,
+            convert: ObjectSchema::class,
         );
     }
 
@@ -103,7 +103,7 @@ final class SchemasService implements SchemasContract
      * Update a schema
      *
      * @param bool $clearDescription
-     * @param CRMObjectTypeDefinitionLabels $labels
+     * @param ObjectTypeDefinitionLabels $labels
      * @param string $primaryDisplayProperty
      * @param list<string> $requiredProperties
      * @param bool $restorable
@@ -122,7 +122,7 @@ final class SchemasService implements SchemasContract
         $searchableProperties = omit,
         $secondaryDisplayProperties = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectTypeDefinition {
+    ): ObjectTypeDefinition {
         $params = [
             'clearDescription' => $clearDescription,
             'labels' => $labels,
@@ -147,7 +147,7 @@ final class SchemasService implements SchemasContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectTypeDefinition {
+    ): ObjectTypeDefinition {
         [$parsed, $options] = SchemaUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -159,7 +159,7 @@ final class SchemasService implements SchemasContract
             path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectTypeDefinition::class,
+            convert: ObjectTypeDefinition::class,
         );
     }
 
@@ -175,7 +175,7 @@ final class SchemasService implements SchemasContract
     public function list(
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): CRMCollectionResponseObjectSchemaNoPaging {
+    ): CollectionResponseObjectSchemaNoPaging {
         $params = ['archived' => $archived];
 
         return $this->listRaw($params, $requestOptions);
@@ -191,7 +191,7 @@ final class SchemasService implements SchemasContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMCollectionResponseObjectSchemaNoPaging {
+    ): CollectionResponseObjectSchemaNoPaging {
         [$parsed, $options] = SchemaListParams::parseRequest(
             $params,
             $requestOptions
@@ -203,7 +203,7 @@ final class SchemasService implements SchemasContract
             path: 'crm-object-schemas/v3/schemas',
             query: $parsed,
             options: $options,
-            convert: CRMCollectionResponseObjectSchemaNoPaging::class,
+            convert: CollectionResponseObjectSchemaNoPaging::class,
         );
     }
 
@@ -325,7 +325,7 @@ final class SchemasService implements SchemasContract
         $toObjectTypeID,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMAssociationDefinition {
+    ): AssociationDefinition {
         $params = [
             'fromObjectTypeID' => $fromObjectTypeID,
             'toObjectTypeID' => $toObjectTypeID,
@@ -346,7 +346,7 @@ final class SchemasService implements SchemasContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMAssociationDefinition {
+    ): AssociationDefinition {
         [$parsed, $options] = SchemaCreateAssociationParams::parseRequest(
             $params,
             $requestOptions
@@ -358,7 +358,7 @@ final class SchemasService implements SchemasContract
             path: ['crm-object-schemas/v3/schemas/%1$s/associations', $objectType],
             body: (object) $parsed,
             options: $options,
-            convert: CRMAssociationDefinition::class,
+            convert: AssociationDefinition::class,
         );
     }
 
@@ -372,13 +372,13 @@ final class SchemasService implements SchemasContract
     public function read(
         string $objectType,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectSchema {
+    ): ObjectSchema {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],
             options: $requestOptions,
-            convert: CRMObjectSchema::class,
+            convert: ObjectSchema::class,
         );
     }
 }

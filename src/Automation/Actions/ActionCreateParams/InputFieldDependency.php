@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions\ActionCreateParams;
 
-use HubspotSDK\Automation\Actions\AutomationActionsPublicConditionalSingleFieldDependency;
-use HubspotSDK\Automation\Actions\AutomationActionsPublicSingleFieldDependency;
+use HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
+use HubspotSDK\Automation\Actions\PublicSingleFieldDependency;
 use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
@@ -21,8 +21,8 @@ final class InputFieldDependency implements ConverterSource
     public static function variants(): array
     {
         return [
-            AutomationActionsPublicSingleFieldDependency::class,
-            AutomationActionsPublicConditionalSingleFieldDependency::class,
+            PublicSingleFieldDependency::class,
+            PublicConditionalSingleFieldDependency::class,
         ];
     }
 }

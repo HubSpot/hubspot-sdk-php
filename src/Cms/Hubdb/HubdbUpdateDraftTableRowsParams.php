@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Hubdb->updateDraftTableRows
  *
  * @phpstan-type hubdb_update_draft_table_rows_params = array{
- *   inputs: list<CmsHubdbHubDBTableRowV3BatchUpdateRequest>
+ *   inputs: list<HubDBTableRowV3BatchUpdateRequest>
  * }
  */
 final class HubdbUpdateDraftTableRowsParams implements BaseModel
@@ -35,8 +35,8 @@ final class HubdbUpdateDraftTableRowsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs */
-    #[Api(list: CmsHubdbHubDBTableRowV3BatchUpdateRequest::class)]
+    /** @var list<HubDBTableRowV3BatchUpdateRequest> $inputs */
+    #[Api(list: HubDBTableRowV3BatchUpdateRequest::class)]
     public array $inputs;
 
     /**
@@ -63,7 +63,7 @@ final class HubdbUpdateDraftTableRowsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -75,7 +75,7 @@ final class HubdbUpdateDraftTableRowsParams implements BaseModel
     }
 
     /**
-     * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      */
     public function withInputs(array $inputs): self
     {

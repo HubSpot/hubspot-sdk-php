@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\CRM\Pipelines->create
  *
  * @phpstan-type pipeline_create_params = array{
- *   displayOrder: int, label: string, stages: list<CRMPipelinesPipelineStageInput>
+ *   displayOrder: int, label: string, stages: list<PipelineStageInput>
  * }
  */
 final class PipelineCreateParams implements BaseModel
@@ -41,8 +41,8 @@ final class PipelineCreateParams implements BaseModel
     #[Api]
     public string $label;
 
-    /** @var list<CRMPipelinesPipelineStageInput> $stages */
-    #[Api(list: CRMPipelinesPipelineStageInput::class)]
+    /** @var list<PipelineStageInput> $stages */
+    #[Api(list: PipelineStageInput::class)]
     public array $stages;
 
     /**
@@ -72,7 +72,7 @@ final class PipelineCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMPipelinesPipelineStageInput> $stages
+     * @param list<PipelineStageInput> $stages
      */
     public static function with(
         int $displayOrder,
@@ -105,7 +105,7 @@ final class PipelineCreateParams implements BaseModel
     }
 
     /**
-     * @param list<CRMPipelinesPipelineStageInput> $stages
+     * @param list<PipelineStageInput> $stages
      */
     public function withStages(array $stages): self
     {

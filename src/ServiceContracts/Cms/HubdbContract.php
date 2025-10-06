@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\Hubdb\CmsHubdbBatchResponseHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging;
-use HubspotSDK\Cms\Hubdb\CmsHubdbColumnRequest;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowBatchCloneRequest;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3BatchUpdateRequest;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3Request;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbImportResult;
-use HubspotSDK\Cms\Hubdb\CmsHubdbRandomAccessCollectionResponseWithTotalHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\CmsHubdbStreamingCollectionResponseWithTotalHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\CollectionResponseWithTotalHubDBTableV3ForwardPaging;
+use HubspotSDK\Cms\Hubdb\ColumnRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
+use HubspotSDK\Cms\Hubdb\HubDBTableV3;
+use HubspotSDK\Cms\Hubdb\ImportResult;
+use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -49,7 +49,7 @@ interface HubdbContract
         $newLabel = omit,
         $newName = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -62,7 +62,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -77,7 +77,7 @@ interface HubdbContract
         $tableIDOrName,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
@@ -90,12 +90,12 @@ interface HubdbContract
         string $rowID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param list<CmsHubdbHubDBTableRowBatchCloneRequest> $inputs
+     * @param list<HubDBTableRowBatchCloneRequest> $inputs
      *
      * @throws APIException
      */
@@ -103,7 +103,7 @@ interface HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -116,12 +116,12 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param list<CmsHubdbHubDBTableRowV3Request> $inputs
+     * @param list<HubDBTableRowV3Request> $inputs
      *
      * @throws APIException
      */
@@ -129,7 +129,7 @@ interface HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -142,7 +142,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -151,7 +151,7 @@ interface HubdbContract
      * @param string $name
      * @param bool $allowChildTables
      * @param bool $allowPublicAPIAccess
-     * @param list<CmsHubdbColumnRequest> $columns
+     * @param list<ColumnRequest> $columns
      * @param array<string, int> $dynamicMetaTags
      * @param bool $enableChildTablePages
      * @param bool $useForPages
@@ -168,7 +168,7 @@ interface HubdbContract
         $enableChildTablePages = omit,
         $useForPages = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -180,7 +180,7 @@ interface HubdbContract
     public function createTableRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -201,7 +201,7 @@ interface HubdbContract
         $name = omit,
         $path = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
@@ -214,7 +214,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
@@ -300,7 +300,7 @@ interface HubdbContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
 
     /**
      * @api
@@ -312,7 +312,7 @@ interface HubdbContract
     public function getAllDraftTablesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
 
     /**
      * @api
@@ -346,7 +346,7 @@ interface HubdbContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
 
     /**
      * @api
@@ -358,7 +358,7 @@ interface HubdbContract
     public function getAllTablesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbCollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
 
     /**
      * @api
@@ -375,7 +375,7 @@ interface HubdbContract
         $includeForeignIDs = omit,
         $isGetLocalizedSchema = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -388,7 +388,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -403,7 +403,7 @@ interface HubdbContract
         $tableIDOrName,
         $archived = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
@@ -416,7 +416,7 @@ interface HubdbContract
         string $rowID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
@@ -433,7 +433,7 @@ interface HubdbContract
         $includeForeignIDs = omit,
         $isGetLocalizedSchema = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -446,7 +446,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -461,7 +461,7 @@ interface HubdbContract
         $tableIDOrName,
         $archived = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
@@ -474,7 +474,7 @@ interface HubdbContract
         string $rowID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
@@ -497,7 +497,7 @@ interface HubdbContract
         $properties = omit,
         $sort = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbRandomAccessCollectionResponseWithTotalHubDBTableRowV3|CmsHubdbStreamingCollectionResponseWithTotalHubDBTableRowV3;
+    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3;
 
     /**
      * @api
@@ -510,7 +510,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbRandomAccessCollectionResponseWithTotalHubDBTableRowV3|CmsHubdbStreamingCollectionResponseWithTotalHubDBTableRowV3;
+    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3;
 
     /**
      * @api
@@ -525,7 +525,7 @@ interface HubdbContract
         $config = omit,
         $file = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbImportResult;
+    ): ImportResult;
 
     /**
      * @api
@@ -538,7 +538,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbImportResult;
+    ): ImportResult;
 
     /**
      * @api
@@ -551,7 +551,7 @@ interface HubdbContract
         string $tableIDOrName,
         $includeForeignIDs = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -564,7 +564,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -629,7 +629,7 @@ interface HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -642,7 +642,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -655,7 +655,7 @@ interface HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -668,7 +668,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -717,7 +717,7 @@ interface HubdbContract
         $name = omit,
         $path = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
@@ -730,12 +730,12 @@ interface HubdbContract
         string $rowID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      *
      * @throws APIException
      */
@@ -743,7 +743,7 @@ interface HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -756,7 +756,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -769,7 +769,7 @@ interface HubdbContract
         string $tableIDOrName,
         $includeForeignIDs = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -782,7 +782,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -795,7 +795,7 @@ interface HubdbContract
         string $tableIDOrName,
         $includeForeignIDs = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -808,7 +808,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -820,7 +820,7 @@ interface HubdbContract
      * @param bool $isGetLocalizedSchema
      * @param bool $allowChildTables
      * @param bool $allowPublicAPIAccess
-     * @param list<CmsHubdbColumnRequest> $columns
+     * @param list<ColumnRequest> $columns
      * @param array<string, int> $dynamicMetaTags
      * @param bool $enableChildTablePages
      * @param bool $useForPages
@@ -841,7 +841,7 @@ interface HubdbContract
         $enableChildTablePages = omit,
         $useForPages = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -854,7 +854,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableV3;
+    ): HubDBTableV3;
 
     /**
      * @api
@@ -877,7 +877,7 @@ interface HubdbContract
         $name = omit,
         $path = omit,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
@@ -890,12 +890,12 @@ interface HubdbContract
         string $rowID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbHubDBTableRowV3;
+    ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      *
      * @throws APIException
      */
@@ -903,7 +903,7 @@ interface HubdbContract
         string $tableIDOrName,
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
@@ -916,5 +916,5 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CmsHubdbBatchResponseHubDBTableRowV3;
+    ): BatchResponseHubDBTableRowV3;
 }

@@ -8,8 +8,8 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\CRMObjectTypeDefinitionLabels;
-use HubspotSDK\CRM\CRMObjectTypePropertyCreate;
+use HubspotSDK\CRM\ObjectTypeDefinitionLabels;
+use HubspotSDK\CRM\ObjectTypePropertyCreate;
 
 /**
  * An object containing the method's parameters.
@@ -29,9 +29,9 @@ use HubspotSDK\CRM\CRMObjectTypePropertyCreate;
  *
  * @phpstan-type schema_create_params = array{
  *   associatedObjects: list<string>,
- *   labels: CRMObjectTypeDefinitionLabels,
+ *   labels: ObjectTypeDefinitionLabels,
  *   name: string,
- *   properties: list<CRMObjectTypePropertyCreate>,
+ *   properties: list<ObjectTypePropertyCreate>,
  *   requiredProperties: list<string>,
  *   primaryDisplayProperty?: string,
  *   searchableProperties?: list<string>,
@@ -49,13 +49,13 @@ final class SchemaCreateParams implements BaseModel
     public array $associatedObjects;
 
     #[Api]
-    public CRMObjectTypeDefinitionLabels $labels;
+    public ObjectTypeDefinitionLabels $labels;
 
     #[Api]
     public string $name;
 
-    /** @var list<CRMObjectTypePropertyCreate> $properties */
-    #[Api(list: CRMObjectTypePropertyCreate::class)]
+    /** @var list<ObjectTypePropertyCreate> $properties */
+    #[Api(list: ObjectTypePropertyCreate::class)]
     public array $properties;
 
     /** @var list<string> $requiredProperties */
@@ -109,14 +109,14 @@ final class SchemaCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $associatedObjects
-     * @param list<CRMObjectTypePropertyCreate> $properties
+     * @param list<ObjectTypePropertyCreate> $properties
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
      */
     public static function with(
         array $associatedObjects,
-        CRMObjectTypeDefinitionLabels $labels,
+        ObjectTypeDefinitionLabels $labels,
         string $name,
         array $properties,
         array $requiredProperties,
@@ -150,7 +150,7 @@ final class SchemaCreateParams implements BaseModel
         return $obj;
     }
 
-    public function withLabels(CRMObjectTypeDefinitionLabels $labels): self
+    public function withLabels(ObjectTypeDefinitionLabels $labels): self
     {
         $obj = clone $this;
         $obj->labels = $labels;
@@ -167,7 +167,7 @@ final class SchemaCreateParams implements BaseModel
     }
 
     /**
-     * @param list<CRMObjectTypePropertyCreate> $properties
+     * @param list<ObjectTypePropertyCreate> $properties
      */
     public function withProperties(array $properties): self
     {

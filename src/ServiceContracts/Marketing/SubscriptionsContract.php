@@ -6,9 +6,9 @@ namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams\LegalBasis;
-use HubspotSDK\Marketing\Subscriptions\V3\SubscriptionsV3PublicSubscriptionStatus;
-use HubspotSDK\Marketing\Subscriptions\V3\SubscriptionsV3PublicSubscriptionStatusesResponse;
-use HubspotSDK\Marketing\Subscriptions\V3\SubscriptionsV3SubscriptionDefinitionsResponse;
+use HubspotSDK\Marketing\Subscriptions\V3\PublicSubscriptionStatus;
+use HubspotSDK\Marketing\Subscriptions\V3\PublicSubscriptionStatusesResponse;
+use HubspotSDK\Marketing\Subscriptions\V3\SubscriptionDefinitionsResponse;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -22,7 +22,7 @@ interface SubscriptionsContract
      */
     public function list(
         ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3SubscriptionDefinitionsResponse;
+    ): SubscriptionDefinitionsResponse;
 
     /**
      * @api
@@ -32,7 +32,7 @@ interface SubscriptionsContract
     public function getEmailStatus(
         string $emailAddress,
         ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3PublicSubscriptionStatusesResponse;
+    ): PublicSubscriptionStatusesResponse;
 
     /**
      * @api
@@ -50,7 +50,7 @@ interface SubscriptionsContract
         $legalBasis = omit,
         $legalBasisExplanation = omit,
         ?RequestOptions $requestOptions = null,
-    ): SubscriptionsV3PublicSubscriptionStatus;
+    ): PublicSubscriptionStatus;
 
     /**
      * @api
@@ -62,7 +62,7 @@ interface SubscriptionsContract
     public function subscribeRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3PublicSubscriptionStatus;
+    ): PublicSubscriptionStatus;
 
     /**
      * @api
@@ -80,7 +80,7 @@ interface SubscriptionsContract
         $legalBasis = omit,
         $legalBasisExplanation = omit,
         ?RequestOptions $requestOptions = null,
-    ): SubscriptionsV3PublicSubscriptionStatus;
+    ): PublicSubscriptionStatus;
 
     /**
      * @api
@@ -92,5 +92,5 @@ interface SubscriptionsContract
     public function unsubscribeRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3PublicSubscriptionStatus;
+    ): PublicSubscriptionStatus;
 }

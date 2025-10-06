@@ -3,7 +3,7 @@
 namespace Tests\Services\Cms\Hubdb\Rows;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3BatchUpdateRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +40,7 @@ final class BatchTest extends TestCase
         $result = $this->client->cms->hubdb->rows->batch->replace(
             'tableIdOrName',
             [
-                CmsHubdbHubDBTableRowV3BatchUpdateRequest::with(
+                HubDBTableRowV3BatchUpdateRequest::with(
                     id: 'id',
                     values: ['foo' => (object) []]
                 ),
@@ -60,7 +60,7 @@ final class BatchTest extends TestCase
         $result = $this->client->cms->hubdb->rows->batch->replace(
             'tableIdOrName',
             [
-                CmsHubdbHubDBTableRowV3BatchUpdateRequest::with(
+                HubDBTableRowV3BatchUpdateRequest::with(
                     id: 'id',
                     values: ['foo' => (object) []]
                 )

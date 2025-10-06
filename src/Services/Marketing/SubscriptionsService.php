@@ -9,9 +9,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams\LegalBasis;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams;
-use HubspotSDK\Marketing\Subscriptions\V3\SubscriptionsV3PublicSubscriptionStatus;
-use HubspotSDK\Marketing\Subscriptions\V3\SubscriptionsV3PublicSubscriptionStatusesResponse;
-use HubspotSDK\Marketing\Subscriptions\V3\SubscriptionsV3SubscriptionDefinitionsResponse;
+use HubspotSDK\Marketing\Subscriptions\V3\PublicSubscriptionStatus;
+use HubspotSDK\Marketing\Subscriptions\V3\PublicSubscriptionStatusesResponse;
+use HubspotSDK\Marketing\Subscriptions\V3\SubscriptionDefinitionsResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\SubscriptionsContract;
 use HubspotSDK\Services\Marketing\Subscriptions\V3Service;
@@ -42,13 +42,13 @@ final class SubscriptionsService implements SubscriptionsContract
      */
     public function list(
         ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3SubscriptionDefinitionsResponse {
+    ): SubscriptionDefinitionsResponse {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: 'communication-preferences/v3/definitions',
             options: $requestOptions,
-            convert: SubscriptionsV3SubscriptionDefinitionsResponse::class,
+            convert: SubscriptionDefinitionsResponse::class,
         );
     }
 
@@ -62,13 +62,13 @@ final class SubscriptionsService implements SubscriptionsContract
     public function getEmailStatus(
         string $emailAddress,
         ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3PublicSubscriptionStatusesResponse {
+    ): PublicSubscriptionStatusesResponse {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['communication-preferences/v3/status/email/%1$s', $emailAddress],
             options: $requestOptions,
-            convert: SubscriptionsV3PublicSubscriptionStatusesResponse::class,
+            convert: PublicSubscriptionStatusesResponse::class,
         );
     }
 
@@ -90,7 +90,7 @@ final class SubscriptionsService implements SubscriptionsContract
         $legalBasis = omit,
         $legalBasisExplanation = omit,
         ?RequestOptions $requestOptions = null,
-    ): SubscriptionsV3PublicSubscriptionStatus {
+    ): PublicSubscriptionStatus {
         $params = [
             'emailAddress' => $emailAddress,
             'subscriptionID' => $subscriptionID,
@@ -111,7 +111,7 @@ final class SubscriptionsService implements SubscriptionsContract
     public function subscribeRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3PublicSubscriptionStatus {
+    ): PublicSubscriptionStatus {
         [$parsed, $options] = SubscriptionSubscribeParams::parseRequest(
             $params,
             $requestOptions
@@ -123,7 +123,7 @@ final class SubscriptionsService implements SubscriptionsContract
             path: 'communication-preferences/v3/subscribe',
             body: (object) $parsed,
             options: $options,
-            convert: SubscriptionsV3PublicSubscriptionStatus::class,
+            convert: PublicSubscriptionStatus::class,
         );
     }
 
@@ -145,7 +145,7 @@ final class SubscriptionsService implements SubscriptionsContract
         $legalBasis = omit,
         $legalBasisExplanation = omit,
         ?RequestOptions $requestOptions = null,
-    ): SubscriptionsV3PublicSubscriptionStatus {
+    ): PublicSubscriptionStatus {
         $params = [
             'emailAddress' => $emailAddress,
             'subscriptionID' => $subscriptionID,
@@ -166,7 +166,7 @@ final class SubscriptionsService implements SubscriptionsContract
     public function unsubscribeRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): SubscriptionsV3PublicSubscriptionStatus {
+    ): PublicSubscriptionStatus {
         [$parsed, $options] = SubscriptionUnsubscribeParams::parseRequest(
             $params,
             $requestOptions
@@ -178,7 +178,7 @@ final class SubscriptionsService implements SubscriptionsContract
             path: 'communication-preferences/v3/unsubscribe',
             body: (object) $parsed,
             options: $options,
-            convert: SubscriptionsV3PublicSubscriptionStatus::class,
+            convert: PublicSubscriptionStatus::class,
         );
     }
 }

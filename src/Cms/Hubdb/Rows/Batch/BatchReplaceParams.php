@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb\Rows\Batch;
 
-use HubspotSDK\Cms\Hubdb\CmsHubdbHubDBTableRowV3BatchUpdateRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Hubdb\Rows\Batch->replace
  *
  * @phpstan-type batch_replace_params = array{
- *   inputs: list<CmsHubdbHubDBTableRowV3BatchUpdateRequest>
+ *   inputs: list<HubDBTableRowV3BatchUpdateRequest>
  * }
  */
 final class BatchReplaceParams implements BaseModel
@@ -36,8 +36,8 @@ final class BatchReplaceParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs */
-    #[Api(list: CmsHubdbHubDBTableRowV3BatchUpdateRequest::class)]
+    /** @var list<HubDBTableRowV3BatchUpdateRequest> $inputs */
+    #[Api(list: HubDBTableRowV3BatchUpdateRequest::class)]
     public array $inputs;
 
     /**
@@ -64,7 +64,7 @@ final class BatchReplaceParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -76,7 +76,7 @@ final class BatchReplaceParams implements BaseModel
     }
 
     /**
-     * @param list<CmsHubdbHubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      */
     public function withInputs(array $inputs): self
     {

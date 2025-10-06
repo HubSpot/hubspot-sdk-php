@@ -6,6 +6,10 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\CRM\Objects\CollectionResponseSimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\Companies\CompanyCreateParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyDeleteParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyListParams;
@@ -14,18 +18,14 @@ use HubspotSDK\CRM\Objects\Companies\CompanyReadParams;
 use HubspotSDK\CRM\Objects\Companies\CompanySearchParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyUpdateParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyUpsertParams;
-use HubspotSDK\CRM\Objects\CRMObjectsBatchResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsBatchResponseSimplePublicUpsertObject;
-use HubspotSDK\CRM\Objects\CRMObjectsCollectionResponseSimplePublicObjectWithAssociations;
-use HubspotSDK\CRM\Objects\CRMObjectsCollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsCreatedResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsFilterGroup;
-use HubspotSDK\CRM\Objects\CRMObjectsPublicAssociationsForObject;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObject;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectID;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
+use HubspotSDK\CRM\Objects\FilterGroup;
+use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
+use HubspotSDK\CRM\Objects\SimplePublicObject;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\Objects\SimplePublicObjectID;
+use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\CompaniesContract;
 
@@ -44,7 +44,7 @@ final class CompaniesService implements CompaniesContract
      * Create a company
      *
      * @param array<string, string> $properties
-     * @param list<CRMObjectsPublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject> $associations
      *
      * @throws APIException
      */
@@ -52,7 +52,7 @@ final class CompaniesService implements CompaniesContract
         $properties,
         $associations = omit,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCreatedResponseSimplePublicObject {
+    ): CreatedResponseSimplePublicObject {
         $params = ['properties' => $properties, 'associations' => $associations];
 
         return $this->createRaw($params, $requestOptions);
@@ -68,7 +68,7 @@ final class CompaniesService implements CompaniesContract
     public function createRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCreatedResponseSimplePublicObject {
+    ): CreatedResponseSimplePublicObject {
         [$parsed, $options] = CompanyCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -80,7 +80,7 @@ final class CompaniesService implements CompaniesContract
             path: 'crm/v3/objects/companies',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsCreatedResponseSimplePublicObject::class,
+            convert: CreatedResponseSimplePublicObject::class,
         );
     }
 
@@ -89,14 +89,14 @@ final class CompaniesService implements CompaniesContract
      *
      * Update a batch of companies
      *
-     * @param list<CRMObjectsSimplePublicObjectBatchInput> $inputs
+     * @param list<SimplePublicObjectBatchInput> $inputs
      *
      * @throws APIException
      */
     public function update(
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicObject {
+    ): BatchResponseSimplePublicObject {
         $params = ['inputs' => $inputs];
 
         return $this->updateRaw($params, $requestOptions);
@@ -112,7 +112,7 @@ final class CompaniesService implements CompaniesContract
     public function updateRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicObject {
+    ): BatchResponseSimplePublicObject {
         [$parsed, $options] = CompanyUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -124,7 +124,7 @@ final class CompaniesService implements CompaniesContract
             path: 'crm/v3/objects/companies/batch/update',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsBatchResponseSimplePublicObject::class,
+            convert: BatchResponseSimplePublicObject::class,
         );
     }
 
@@ -150,7 +150,7 @@ final class CompaniesService implements CompaniesContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsCollectionResponseSimplePublicObjectWithAssociations {
+    ): CollectionResponseSimplePublicObjectWithAssociations {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -173,7 +173,7 @@ final class CompaniesService implements CompaniesContract
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCollectionResponseSimplePublicObjectWithAssociations {
+    ): CollectionResponseSimplePublicObjectWithAssociations {
         [$parsed, $options] = CompanyListParams::parseRequest(
             $params,
             $requestOptions
@@ -185,7 +185,7 @@ final class CompaniesService implements CompaniesContract
             path: 'crm/v3/objects/companies',
             query: $parsed,
             options: $options,
-            convert: CRMObjectsCollectionResponseSimplePublicObjectWithAssociations::class,
+            convert: CollectionResponseSimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -194,7 +194,7 @@ final class CompaniesService implements CompaniesContract
      *
      * Archive a batch of companies
      *
-     * @param list<CRMObjectsSimplePublicObjectID> $inputs
+     * @param list<SimplePublicObjectID> $inputs
      *
      * @throws APIException
      */
@@ -247,7 +247,7 @@ final class CompaniesService implements CompaniesContract
         $objectIDToMerge,
         $primaryObjectID,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObject {
+    ): SimplePublicObject {
         $params = [
             'objectIDToMerge' => $objectIDToMerge,
             'primaryObjectID' => $primaryObjectID,
@@ -266,7 +266,7 @@ final class CompaniesService implements CompaniesContract
     public function mergeRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObject {
+    ): SimplePublicObject {
         [$parsed, $options] = CompanyMergeParams::parseRequest(
             $params,
             $requestOptions
@@ -278,7 +278,7 @@ final class CompaniesService implements CompaniesContract
             path: 'crm/v3/objects/companies/merge',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsSimplePublicObject::class,
+            convert: SimplePublicObject::class,
         );
     }
 
@@ -303,7 +303,7 @@ final class CompaniesService implements CompaniesContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsSimplePublicObjectWithAssociations {
+    ): SimplePublicObjectWithAssociations {
         $params = [
             'archived' => $archived,
             'associations' => $associations,
@@ -326,7 +326,7 @@ final class CompaniesService implements CompaniesContract
         string $companyID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsSimplePublicObjectWithAssociations {
+    ): SimplePublicObjectWithAssociations {
         [$parsed, $options] = CompanyReadParams::parseRequest(
             $params,
             $requestOptions
@@ -338,7 +338,7 @@ final class CompaniesService implements CompaniesContract
             path: ['crm/v3/objects/companies/%1$s', $companyID],
             query: $parsed,
             options: $options,
-            convert: CRMObjectsSimplePublicObjectWithAssociations::class,
+            convert: SimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -348,7 +348,7 @@ final class CompaniesService implements CompaniesContract
      * Search for companies
      *
      * @param string $after
-     * @param list<CRMObjectsFilterGroup> $filterGroups
+     * @param list<FilterGroup> $filterGroups
      * @param int $limit
      * @param list<string> $properties
      * @param string $query
@@ -364,7 +364,7 @@ final class CompaniesService implements CompaniesContract
         $query = omit,
         $sorts = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMObjectsCollectionResponseWithTotalSimplePublicObject {
+    ): CollectionResponseWithTotalSimplePublicObject {
         $params = [
             'after' => $after,
             'filterGroups' => $filterGroups,
@@ -387,7 +387,7 @@ final class CompaniesService implements CompaniesContract
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsCollectionResponseWithTotalSimplePublicObject {
+    ): CollectionResponseWithTotalSimplePublicObject {
         [$parsed, $options] = CompanySearchParams::parseRequest(
             $params,
             $requestOptions
@@ -399,7 +399,7 @@ final class CompaniesService implements CompaniesContract
             path: 'crm/v3/objects/companies/search',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsCollectionResponseWithTotalSimplePublicObject::class,
+            convert: CollectionResponseWithTotalSimplePublicObject::class,
         );
     }
 
@@ -408,14 +408,14 @@ final class CompaniesService implements CompaniesContract
      *
      * Create or update a batch of companies by unique property values
      *
-     * @param list<CRMObjectsSimplePublicObjectBatchInputUpsert> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
      *
      * @throws APIException
      */
     public function upsert(
         $inputs,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicUpsertObject {
+    ): BatchResponseSimplePublicUpsertObject {
         $params = ['inputs' => $inputs];
 
         return $this->upsertRaw($params, $requestOptions);
@@ -431,7 +431,7 @@ final class CompaniesService implements CompaniesContract
     public function upsertRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMObjectsBatchResponseSimplePublicUpsertObject {
+    ): BatchResponseSimplePublicUpsertObject {
         [$parsed, $options] = CompanyUpsertParams::parseRequest(
             $params,
             $requestOptions
@@ -443,7 +443,7 @@ final class CompaniesService implements CompaniesContract
             path: 'crm/v3/objects/companies/batch/upsert',
             body: (object) $parsed,
             options: $options,
-            convert: CRMObjectsBatchResponseSimplePublicUpsertObject::class,
+            convert: BatchResponseSimplePublicUpsertObject::class,
         );
     }
 }

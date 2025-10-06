@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Files;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Files\CollectionResponseFile;
+use HubspotSDK\Files\File;
+use HubspotSDK\Files\FileActionResponse;
 use HubspotSDK\Files\Files\FileGetSignedURLParams\Size;
 use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationScope;
 use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationStrategy;
 use HubspotSDK\Files\Files\FileUpdateParams\Access;
-use HubspotSDK\Files\FilesCollectionResponseFile;
-use HubspotSDK\Files\FilesFile;
-use HubspotSDK\Files\FilesFileActionResponse;
-use HubspotSDK\Files\FilesFileStat;
-use HubspotSDK\Files\FilesImportFromURLTaskLocator;
-use HubspotSDK\Files\FilesSignedURL;
+use HubspotSDK\Files\FileStat;
+use HubspotSDK\Files\ImportFromURLTaskLocator;
+use HubspotSDK\Files\SignedURL;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -44,7 +44,7 @@ interface FilesContract
         $parentFolderID = omit,
         $parentFolderPath = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFile;
+    ): File;
 
     /**
      * @api
@@ -57,7 +57,7 @@ interface FilesContract
         string $fileID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFile;
+    ): File;
 
     /**
      * @api
@@ -90,7 +90,7 @@ interface FilesContract
         string $fileID,
         $properties = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFile;
+    ): File;
 
     /**
      * @api
@@ -103,7 +103,7 @@ interface FilesContract
         string $fileID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFile;
+    ): File;
 
     /**
      * @api
@@ -116,7 +116,7 @@ interface FilesContract
         string $path,
         $properties = omit,
         ?RequestOptions $requestOptions = null
-    ): FilesFileStat;
+    ): FileStat;
 
     /**
      * @api
@@ -129,7 +129,7 @@ interface FilesContract
         string $path,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFileStat;
+    ): FileStat;
 
     /**
      * @api
@@ -139,7 +139,7 @@ interface FilesContract
     public function getImportFromURLAsyncStatus(
         string $taskID,
         ?RequestOptions $requestOptions = null
-    ): FilesFileActionResponse;
+    ): FileActionResponse;
 
     /**
      * @api
@@ -156,7 +156,7 @@ interface FilesContract
         $size = omit,
         $upscale = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesSignedURL;
+    ): SignedURL;
 
     /**
      * @api
@@ -169,7 +169,7 @@ interface FilesContract
         string $fileID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesSignedURL;
+    ): SignedURL;
 
     /**
      * @api
@@ -199,7 +199,7 @@ interface FilesContract
         $overwrite = omit,
         $ttl = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesImportFromURLTaskLocator;
+    ): ImportFromURLTaskLocator;
 
     /**
      * @api
@@ -211,7 +211,7 @@ interface FilesContract
     public function importFromURLAsyncRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesImportFromURLTaskLocator;
+    ): ImportFromURLTaskLocator;
 
     /**
      * @api
@@ -228,7 +228,7 @@ interface FilesContract
         $file = omit,
         $options = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFile;
+    ): File;
 
     /**
      * @api
@@ -241,7 +241,7 @@ interface FilesContract
         string $fileID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFile;
+    ): File;
 
     /**
      * @api
@@ -323,7 +323,7 @@ interface FilesContract
         $widthGte = omit,
         $widthLte = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesCollectionResponseFile;
+    ): CollectionResponseFile;
 
     /**
      * @api
@@ -335,7 +335,7 @@ interface FilesContract
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesCollectionResponseFile;
+    ): CollectionResponseFile;
 
     /**
      * @api
@@ -357,7 +357,7 @@ interface FilesContract
         $folderPath = omit,
         $options = omit,
         ?RequestOptions $requestOptions = null,
-    ): FilesFile;
+    ): File;
 
     /**
      * @api
@@ -369,5 +369,5 @@ interface FilesContract
     public function uploadRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FilesFile;
+    ): File;
 }

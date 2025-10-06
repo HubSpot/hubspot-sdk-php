@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectID;
+use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 
 /**
  * An object containing the method's parameters.
@@ -26,9 +26,7 @@ use HubspotSDK\CRM\Objects\CRMObjectsSimplePublicObjectID;
  *
  * @see HubspotSDK\CRM\Objects\Contacts->delete
  *
- * @phpstan-type contact_delete_params = array{
- *   inputs: list<CRMObjectsSimplePublicObjectID>
- * }
+ * @phpstan-type contact_delete_params = array{inputs: list<SimplePublicObjectID>}
  */
 final class ContactDeleteParams implements BaseModel
 {
@@ -36,8 +34,8 @@ final class ContactDeleteParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<CRMObjectsSimplePublicObjectID> $inputs */
-    #[Api(list: CRMObjectsSimplePublicObjectID::class)]
+    /** @var list<SimplePublicObjectID> $inputs */
+    #[Api(list: SimplePublicObjectID::class)]
     public array $inputs;
 
     /**
@@ -64,7 +62,7 @@ final class ContactDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMObjectsSimplePublicObjectID> $inputs
+     * @param list<SimplePublicObjectID> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -76,7 +74,7 @@ final class ContactDeleteParams implements BaseModel
     }
 
     /**
-     * @param list<CRMObjectsSimplePublicObjectID> $inputs
+     * @param list<SimplePublicObjectID> $inputs
      */
     public function withInputs(array $inputs): self
     {

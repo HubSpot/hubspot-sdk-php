@@ -6,20 +6,20 @@ namespace HubspotSDK\Services\CRM;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\CRMProperty;
-use HubspotSDK\CRM\Properties\CRMPropertiesBatchResponseProperty;
-use HubspotSDK\CRM\Properties\CRMPropertiesCollectionResponsePropertyGroup;
-use HubspotSDK\CRM\Properties\CRMPropertiesCreatedResponsePropertyGroup;
-use HubspotSDK\CRM\Properties\CRMPropertiesOptionInput;
-use HubspotSDK\CRM\Properties\CRMPropertiesPropertyName;
+use HubspotSDK\CRM\Properties\BatchResponseProperty;
+use HubspotSDK\CRM\Properties\CollectionResponsePropertyGroup;
+use HubspotSDK\CRM\Properties\CreatedResponsePropertyGroup;
+use HubspotSDK\CRM\Properties\OptionInput;
 use HubspotSDK\CRM\Properties\PropertyCreateParams;
 use HubspotSDK\CRM\Properties\PropertyDeleteParams;
 use HubspotSDK\CRM\Properties\PropertyGetByNameParams;
+use HubspotSDK\CRM\Properties\PropertyName;
 use HubspotSDK\CRM\Properties\PropertyReadParams;
 use HubspotSDK\CRM\Properties\PropertyReadParams\DataSensitivity;
 use HubspotSDK\CRM\Properties\PropertyUpdateParams;
 use HubspotSDK\CRM\Properties\PropertyUpdateParams\FieldType;
 use HubspotSDK\CRM\Properties\PropertyUpdateParams\Type;
+use HubspotSDK\CRM\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\PropertiesContract;
 
@@ -49,7 +49,7 @@ final class PropertiesService implements PropertiesContract
         $name,
         $displayOrder = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMPropertiesCreatedResponsePropertyGroup {
+    ): CreatedResponsePropertyGroup {
         $params = [
             'label' => $label, 'name' => $name, 'displayOrder' => $displayOrder,
         ];
@@ -68,7 +68,7 @@ final class PropertiesService implements PropertiesContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMPropertiesCreatedResponsePropertyGroup {
+    ): CreatedResponsePropertyGroup {
         [$parsed, $options] = PropertyCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -80,7 +80,7 @@ final class PropertiesService implements PropertiesContract
             path: ['crm/v3/properties/%1$s/groups', $objectType],
             body: (object) $parsed,
             options: $options,
-            convert: CRMPropertiesCreatedResponsePropertyGroup::class,
+            convert: CreatedResponsePropertyGroup::class,
         );
     }
 
@@ -97,7 +97,7 @@ final class PropertiesService implements PropertiesContract
      * @param string $groupName
      * @param bool $hidden
      * @param string $label
-     * @param list<CRMPropertiesOptionInput> $options
+     * @param list<OptionInput> $options
      * @param Type|value-of<Type> $type
      *
      * @throws APIException
@@ -115,7 +115,7 @@ final class PropertiesService implements PropertiesContract
         $options = omit,
         $type = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMProperty {
+    ): Property {
         $params = [
             'objectType' => $objectType,
             'calculationFormula' => $calculationFormula,
@@ -143,7 +143,7 @@ final class PropertiesService implements PropertiesContract
         string $propertyName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMProperty {
+    ): Property {
         [$parsed, $options] = PropertyUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -157,7 +157,7 @@ final class PropertiesService implements PropertiesContract
             path: ['crm/v3/properties/%1$s/%2$s', $objectType, $propertyName],
             body: (object) array_diff_key($parsed, ['objectType']),
             options: $options,
-            convert: CRMProperty::class,
+            convert: Property::class,
         );
     }
 
@@ -171,13 +171,13 @@ final class PropertiesService implements PropertiesContract
     public function list(
         string $objectType,
         ?RequestOptions $requestOptions = null
-    ): CRMPropertiesCollectionResponsePropertyGroup {
+    ): CollectionResponsePropertyGroup {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/properties/%1$s/groups', $objectType],
             options: $requestOptions,
-            convert: CRMPropertiesCollectionResponsePropertyGroup::class,
+            convert: CollectionResponsePropertyGroup::class,
         );
     }
 
@@ -245,7 +245,7 @@ final class PropertiesService implements PropertiesContract
         $archived = omit,
         $properties = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMProperty {
+    ): Property {
         $params = [
             'objectType' => $objectType,
             'archived' => $archived,
@@ -266,7 +266,7 @@ final class PropertiesService implements PropertiesContract
         string $propertyName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMProperty {
+    ): Property {
         [$parsed, $options] = PropertyGetByNameParams::parseRequest(
             $params,
             $requestOptions
@@ -280,7 +280,7 @@ final class PropertiesService implements PropertiesContract
             path: ['crm/v3/properties/%1$s/%2$s', $objectType, $propertyName],
             query: $parsed,
             options: $options,
-            convert: CRMProperty::class,
+            convert: Property::class,
         );
     }
 
@@ -290,7 +290,7 @@ final class PropertiesService implements PropertiesContract
      * Read a batch of properties
      *
      * @param bool $archived
-     * @param list<CRMPropertiesPropertyName> $inputs
+     * @param list<PropertyName> $inputs
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      *
      * @throws APIException
@@ -301,7 +301,7 @@ final class PropertiesService implements PropertiesContract
         $inputs,
         $dataSensitivity = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMPropertiesBatchResponseProperty {
+    ): BatchResponseProperty {
         $params = [
             'archived' => $archived,
             'inputs' => $inputs,
@@ -322,7 +322,7 @@ final class PropertiesService implements PropertiesContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMPropertiesBatchResponseProperty {
+    ): BatchResponseProperty {
         [$parsed, $options] = PropertyReadParams::parseRequest(
             $params,
             $requestOptions
@@ -334,7 +334,7 @@ final class PropertiesService implements PropertiesContract
             path: ['crm/v3/properties/%1$s/batch/read', $objectType],
             body: (object) $parsed,
             options: $options,
-            convert: CRMPropertiesBatchResponseProperty::class,
+            convert: BatchResponseProperty::class,
         );
     }
 }

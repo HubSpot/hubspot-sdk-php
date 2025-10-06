@@ -6,18 +6,18 @@ namespace HubspotSDK\Services\CRM\Associations;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Associations\V4\AssociationsV4BatchResponseVoid;
-use HubspotSDK\CRM\Associations\V4\AssociationsV4PublicAssociationMultiPost;
-use HubspotSDK\CRM\Associations\V4\AssociationsV4ReportCreationResponse;
+use HubspotSDK\CRM\Associations\V4\BatchResponseVoid;
+use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
+use HubspotSDK\CRM\Associations\V4\ReportCreationResponse;
 use HubspotSDK\CRM\Associations\V4\V4ArchiveLabelsParams;
 use HubspotSDK\CRM\Associations\V4\V4CreateDefaultParams;
 use HubspotSDK\CRM\Associations\V4\V4CreateParams;
 use HubspotSDK\CRM\Associations\V4\V4DeleteParams;
 use HubspotSDK\CRM\Associations\V4\V4ListParams;
-use HubspotSDK\CRM\CRMAssociationSpec;
-use HubspotSDK\CRM\CRMBatchResponsePublicDefaultAssociation;
-use HubspotSDK\CRM\CRMCollectionResponseMultiAssociatedObjectWithLabel;
-use HubspotSDK\CRM\CRMCreatedResponseLabelsBetweenObjectPair;
+use HubspotSDK\CRM\AssociationSpec;
+use HubspotSDK\CRM\BatchResponsePublicDefaultAssociation;
+use HubspotSDK\CRM\CollectionResponseMultiAssociatedObjectWithLabel;
+use HubspotSDK\CRM\CreatedResponseLabelsBetweenObjectPair;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Associations\V4Contract;
 
@@ -38,7 +38,7 @@ final class V4Service implements V4Contract
      * @param string $objectType
      * @param string $objectID
      * @param string $toObjectType
-     * @param list<CRMAssociationSpec> $body
+     * @param list<AssociationSpec> $body
      *
      * @throws APIException
      */
@@ -49,7 +49,7 @@ final class V4Service implements V4Contract
         $toObjectType,
         $body,
         ?RequestOptions $requestOptions = null,
-    ): CRMCreatedResponseLabelsBetweenObjectPair {
+    ): CreatedResponseLabelsBetweenObjectPair {
         $params = [
             'objectType' => $objectType,
             'objectID' => $objectID,
@@ -71,7 +71,7 @@ final class V4Service implements V4Contract
         string $toObjectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMCreatedResponseLabelsBetweenObjectPair {
+    ): CreatedResponseLabelsBetweenObjectPair {
         [$parsed, $options] = V4CreateParams::parseRequest(
             $params,
             $requestOptions
@@ -98,7 +98,7 @@ final class V4Service implements V4Contract
                 array_flip(['objectType', 'objectID', 'toObjectType'])
             ),
             options: $options,
-            convert: CRMCreatedResponseLabelsBetweenObjectPair::class,
+            convert: CreatedResponseLabelsBetweenObjectPair::class,
         );
     }
 
@@ -121,7 +121,7 @@ final class V4Service implements V4Contract
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CRMCollectionResponseMultiAssociatedObjectWithLabel {
+    ): CollectionResponseMultiAssociatedObjectWithLabel {
         $params = [
             'objectType' => $objectType,
             'objectID' => $objectID,
@@ -143,7 +143,7 @@ final class V4Service implements V4Contract
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMCollectionResponseMultiAssociatedObjectWithLabel {
+    ): CollectionResponseMultiAssociatedObjectWithLabel {
         [$parsed, $options] = V4ListParams::parseRequest($params, $requestOptions);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
@@ -161,7 +161,7 @@ final class V4Service implements V4Contract
             ],
             query: $parsed,
             options: $options,
-            convert: CRMCollectionResponseMultiAssociatedObjectWithLabel::class,
+            convert: CollectionResponseMultiAssociatedObjectWithLabel::class,
         );
     }
 
@@ -236,7 +236,7 @@ final class V4Service implements V4Contract
      * Delete Specific Labels
      *
      * @param string $fromObjectType
-     * @param list<AssociationsV4PublicAssociationMultiPost> $inputs
+     * @param list<PublicAssociationMultiPost> $inputs
      *
      * @throws APIException
      */
@@ -245,7 +245,7 @@ final class V4Service implements V4Contract
         $fromObjectType,
         $inputs,
         ?RequestOptions $requestOptions = null,
-    ): AssociationsV4BatchResponseVoid {
+    ): BatchResponseVoid {
         $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
 
         return $this->archiveLabelsRaw($toObjectType, $params, $requestOptions);
@@ -262,7 +262,7 @@ final class V4Service implements V4Contract
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): AssociationsV4BatchResponseVoid {
+    ): BatchResponseVoid {
         [$parsed, $options] = V4ArchiveLabelsParams::parseRequest(
             $params,
             $requestOptions
@@ -280,7 +280,7 @@ final class V4Service implements V4Contract
             ],
             body: (object) array_diff_key($parsed, ['fromObjectType']),
             options: $options,
-            convert: AssociationsV4BatchResponseVoid::class,
+            convert: BatchResponseVoid::class,
         );
     }
 
@@ -301,7 +301,7 @@ final class V4Service implements V4Contract
         $fromObjectID,
         $toObjectType,
         ?RequestOptions $requestOptions = null,
-    ): CRMBatchResponsePublicDefaultAssociation {
+    ): BatchResponsePublicDefaultAssociation {
         $params = [
             'fromObjectType' => $fromObjectType,
             'fromObjectID' => $fromObjectID,
@@ -322,7 +322,7 @@ final class V4Service implements V4Contract
         string $toObjectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CRMBatchResponsePublicDefaultAssociation {
+    ): BatchResponsePublicDefaultAssociation {
         [$parsed, $options] = V4CreateDefaultParams::parseRequest(
             $params,
             $requestOptions
@@ -345,7 +345,7 @@ final class V4Service implements V4Contract
                 $toObjectID,
             ],
             options: $options,
-            convert: CRMBatchResponsePublicDefaultAssociation::class,
+            convert: BatchResponsePublicDefaultAssociation::class,
         );
     }
 
@@ -359,13 +359,13 @@ final class V4Service implements V4Contract
     public function request(
         int $userID,
         ?RequestOptions $requestOptions = null
-    ): AssociationsV4ReportCreationResponse {
+    ): ReportCreationResponse {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
             path: ['crm/v4/associations/usage/high-usage-report/%1$s', $userID],
             options: $requestOptions,
-            convert: AssociationsV4ReportCreationResponse::class,
+            convert: ReportCreationResponse::class,
         );
     }
 }

@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Hubdb->cloneDraftTableRows
  *
  * @phpstan-type hubdb_clone_draft_table_rows_params = array{
- *   inputs: list<CmsHubdbHubDBTableRowBatchCloneRequest>
+ *   inputs: list<HubDBTableRowBatchCloneRequest>
  * }
  */
 final class HubdbCloneDraftTableRowsParams implements BaseModel
@@ -35,8 +35,8 @@ final class HubdbCloneDraftTableRowsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<CmsHubdbHubDBTableRowBatchCloneRequest> $inputs */
-    #[Api(list: CmsHubdbHubDBTableRowBatchCloneRequest::class)]
+    /** @var list<HubDBTableRowBatchCloneRequest> $inputs */
+    #[Api(list: HubDBTableRowBatchCloneRequest::class)]
     public array $inputs;
 
     /**
@@ -63,7 +63,7 @@ final class HubdbCloneDraftTableRowsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CmsHubdbHubDBTableRowBatchCloneRequest> $inputs
+     * @param list<HubDBTableRowBatchCloneRequest> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -75,7 +75,7 @@ final class HubdbCloneDraftTableRowsParams implements BaseModel
     }
 
     /**
-     * @param list<CmsHubdbHubDBTableRowBatchCloneRequest> $inputs
+     * @param list<HubDBTableRowBatchCloneRequest> $inputs
      */
     public function withInputs(array $inputs): self
     {
