@@ -8,7 +8,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Associations\BatchResponsePublicAssociation;
 use HubspotSDK\CRM\Associations\BatchResponsePublicAssociationMulti;
 use HubspotSDK\CRM\Associations\PublicAssociation;
-use HubspotSDK\CRM\PublicObjectID;
+use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 
 interface AssociationsContract

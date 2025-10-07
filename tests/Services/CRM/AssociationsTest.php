@@ -4,7 +4,7 @@ namespace Tests\Services\CRM;
 
 use HubspotSDK\Client;
 use HubspotSDK\CRM\Associations\PublicAssociation;
-use HubspotSDK\CRM\PublicObjectID;
+use HubspotSDK\PublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

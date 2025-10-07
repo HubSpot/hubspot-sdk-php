@@ -7,7 +7,6 @@ namespace HubspotSDK\Services\CRM\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\CRM\Objects\CollectionResponseSimplePublicObjectWithAssociations;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\Deals\DealCreateParams;
@@ -22,6 +21,7 @@ use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 use HubspotSDK\CRM\Objects\SimplePublicObject;
 use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
 use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\DealsContract;
 use HubspotSDK\Services\CRM\Objects\Deals\AssociationsService;
@@ -158,6 +158,8 @@ final class DealsService implements DealsContract
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
      *
+     * @return CursorURLPage<SimplePublicObjectWithAssociations>
+     *
      * @throws APIException
      */
     public function list(
@@ -168,7 +170,7 @@ final class DealsService implements DealsContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseSimplePublicObjectWithAssociations {
+    ): CursorURLPage {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -186,12 +188,14 @@ final class DealsService implements DealsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return CursorURLPage<SimplePublicObjectWithAssociations>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseSimplePublicObjectWithAssociations {
+    ): CursorURLPage {
         [$parsed, $options] = DealListParams::parseRequest(
             $params,
             $requestOptions
@@ -203,7 +207,8 @@ final class DealsService implements DealsContract
             path: 'crm/v3/objects/0-3',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseSimplePublicObjectWithAssociations::class,
+            convert: SimplePublicObjectWithAssociations::class,
+            page: CursorURLPage::class,
         );
     }
 

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\CRM\Associations;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CRM\Associations\V4\AssociationSpec1;
 use HubspotSDK\CRM\Associations\V4\BatchResponseVoid;
 use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
 use HubspotSDK\CRM\Associations\V4\ReportCreationResponse;
@@ -14,10 +15,10 @@ use HubspotSDK\CRM\Associations\V4\V4CreateDefaultParams;
 use HubspotSDK\CRM\Associations\V4\V4CreateParams;
 use HubspotSDK\CRM\Associations\V4\V4DeleteParams;
 use HubspotSDK\CRM\Associations\V4\V4ListParams;
-use HubspotSDK\CRM\AssociationSpec;
 use HubspotSDK\CRM\BatchResponsePublicDefaultAssociation;
-use HubspotSDK\CRM\CollectionResponseMultiAssociatedObjectWithLabel;
 use HubspotSDK\CRM\CreatedResponseLabelsBetweenObjectPair;
+use HubspotSDK\CRM\MultiAssociatedObjectWithLabel;
+use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Associations\V4Contract;
 
@@ -38,7 +39,7 @@ final class V4Service implements V4Contract
      * @param string $objectType
      * @param string $objectID
      * @param string $toObjectType
-     * @param list<AssociationSpec> $body
+     * @param list<AssociationSpec1> $body
      *
      * @throws APIException
      */
@@ -112,6 +113,8 @@ final class V4Service implements V4Contract
      * @param string $after
      * @param int $limit
      *
+     * @return CursorURLPage<MultiAssociatedObjectWithLabel>
+     *
      * @throws APIException
      */
     public function list(
@@ -121,7 +124,7 @@ final class V4Service implements V4Contract
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseMultiAssociatedObjectWithLabel {
+    ): CursorURLPage {
         $params = [
             'objectType' => $objectType,
             'objectID' => $objectID,
@@ -137,13 +140,15 @@ final class V4Service implements V4Contract
      *
      * @param array<string, mixed> $params
      *
+     * @return CursorURLPage<MultiAssociatedObjectWithLabel>
+     *
      * @throws APIException
      */
     public function listRaw(
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseMultiAssociatedObjectWithLabel {
+    ): CursorURLPage {
         [$parsed, $options] = V4ListParams::parseRequest($params, $requestOptions);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
@@ -161,7 +166,8 @@ final class V4Service implements V4Contract
             ],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseMultiAssociatedObjectWithLabel::class,
+            convert: MultiAssociatedObjectWithLabel::class,
+            page: CursorURLPage::class,
         );
     }
 

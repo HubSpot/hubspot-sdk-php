@@ -9,6 +9,7 @@ use HubspotSDK\ServiceContracts\CRMContract;
 use HubspotSDK\Services\CRM\AssociationsService;
 use HubspotSDK\Services\CRM\ExtensionsService;
 use HubspotSDK\Services\CRM\ObjectsService;
+use HubspotSDK\Services\CRM\OwnersService;
 use HubspotSDK\Services\CRM\PipelinesService;
 use HubspotSDK\Services\CRM\PropertiesService;
 
@@ -32,6 +33,11 @@ final class CRMService implements CRMContract
     /**
      * @@api
      */
+    public OwnersService $owners;
+
+    /**
+     * @@api
+     */
     public PipelinesService $pipelines;
 
     /**
@@ -47,6 +53,7 @@ final class CRMService implements CRMContract
         $this->associations = new AssociationsService($client);
         $this->extensions = new ExtensionsService($client);
         $this->objects = new ObjectsService($client);
+        $this->owners = new OwnersService($client);
         $this->pipelines = new PipelinesService($client);
         $this->properties = new PropertiesService($client);
     }

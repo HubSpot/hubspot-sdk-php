@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Blogs\Tags\BatchResponseTag;
-use HubspotSDK\Cms\Blogs\Tags\CollectionResponseWithTotalTagForwardPaging;
 use HubspotSDK\Cms\Blogs\Tags\Tag;
 use HubspotSDK\Cms\Blogs\Tags\TagArchiveBatchParams;
 use HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams;
@@ -24,6 +23,7 @@ use HubspotSDK\Cms\Blogs\Tags\TagUpdateBatchParams;
 use HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams;
 use HubspotSDK\Cms\Blogs\Tags\TagUpdateParams;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\TagsContract;
 
@@ -188,6 +188,8 @@ final class TagsService implements TagsContract
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
      *
+     * @return CursorURLPage<Tag>
+     *
      * @throws APIException
      */
     public function list(
@@ -203,7 +205,7 @@ final class TagsService implements TagsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalTagForwardPaging {
+    ): CursorURLPage {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -226,12 +228,14 @@ final class TagsService implements TagsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return CursorURLPage<Tag>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalTagForwardPaging {
+    ): CursorURLPage {
         [$parsed, $options] = TagListParams::parseRequest($params, $requestOptions);
 
         // @phpstan-ignore-next-line;
@@ -240,7 +244,8 @@ final class TagsService implements TagsContract
             path: 'cms/v3/blogs/tags',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalTagForwardPaging::class,
+            convert: Tag::class,
+            page: CursorURLPage::class,
         );
     }
 

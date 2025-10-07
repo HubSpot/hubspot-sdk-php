@@ -6,9 +6,9 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CursorURLPage;
 use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
-use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalPublicEmailForwardPaging;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalVersionPublicEmail;
 use HubspotSDK\Marketing\Emails\EmailCloneParams;
 use HubspotSDK\Marketing\Emails\EmailCreateAbTestVariationParams;
@@ -280,6 +280,8 @@ final class EmailsService implements EmailsContract
      * @param \DateTimeInterface $updatedBefore
      * @param bool $workflowNames
      *
+     * @return CursorURLPage<PublicEmail>
+     *
      * @throws APIException
      */
     public function list(
@@ -301,7 +303,7 @@ final class EmailsService implements EmailsContract
         $updatedBefore = omit,
         $workflowNames = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalPublicEmailForwardPaging {
+    ): CursorURLPage {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -330,12 +332,14 @@ final class EmailsService implements EmailsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return CursorURLPage<PublicEmail>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalPublicEmailForwardPaging {
+    ): CursorURLPage {
         [$parsed, $options] = EmailListParams::parseRequest(
             $params,
             $requestOptions
@@ -347,7 +351,8 @@ final class EmailsService implements EmailsContract
             path: 'marketing/v3/emails/',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalPublicEmailForwardPaging::class,
+            convert: PublicEmail::class,
+            page: CursorURLPage::class,
         );
     }
 

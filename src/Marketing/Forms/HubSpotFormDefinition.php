@@ -6,7 +6,9 @@ namespace HubspotSDK\Marketing\Forms;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Forms\HubSpotFormDefinition\FormType;
 
 /**
@@ -24,10 +26,12 @@ use HubspotSDK\Marketing\Forms\HubSpotFormDefinition\FormType;
  *   archivedAt?: \DateTimeInterface,
  * }
  */
-final class HubSpotFormDefinition implements BaseModel
+final class HubSpotFormDefinition implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<hub_spot_form_definition> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;

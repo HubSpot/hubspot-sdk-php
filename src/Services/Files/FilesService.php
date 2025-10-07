@@ -254,26 +254,6 @@ final class FilesService implements FilesContract
     /**
      * @api
      *
-     * Check import status
-     *
-     * @throws APIException
-     */
-    public function getImportTaskStatus(
-        string $taskID,
-        ?RequestOptions $requestOptions = null
-    ): FileActionResponse {
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'get',
-            path: ['files/v3/files/import-from-url/async/tasks/%1$s/status', $taskID],
-            options: $requestOptions,
-            convert: FileActionResponse::class,
-        );
-    }
-
-    /**
-     * @api
-     *
      * Get signed URL to access private file
      *
      * @param int $expirationSeconds

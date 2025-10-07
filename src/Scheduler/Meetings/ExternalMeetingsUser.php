@@ -1,0 +1,132 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Scheduler\Meetings;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-type external_meetings_user = array{
+ *   id: string,
+ *   calendarProvider: string,
+ *   isSalesStarter: bool,
+ *   userID: string,
+ *   userProfile: ExternalUserProfile,
+ * }
+ */
+final class ExternalMeetingsUser implements BaseModel
+{
+    /** @use SdkModel<external_meetings_user> */
+    use SdkModel;
+
+    #[Api]
+    public string $id;
+
+    #[Api]
+    public string $calendarProvider;
+
+    #[Api]
+    public bool $isSalesStarter;
+
+    #[Api('userId')]
+    public string $userID;
+
+    #[Api]
+    public ExternalUserProfile $userProfile;
+
+    /**
+     * `new ExternalMeetingsUser()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * ExternalMeetingsUser::with(
+     *   id: ...,
+     *   calendarProvider: ...,
+     *   isSalesStarter: ...,
+     *   userID: ...,
+     *   userProfile: ...,
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new ExternalMeetingsUser)
+     *   ->withID(...)
+     *   ->withCalendarProvider(...)
+     *   ->withIsSalesStarter(...)
+     *   ->withUserID(...)
+     *   ->withUserProfile(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(
+        string $id,
+        string $calendarProvider,
+        bool $isSalesStarter,
+        string $userID,
+        ExternalUserProfile $userProfile,
+    ): self {
+        $obj = new self;
+
+        $obj->id = $id;
+        $obj->calendarProvider = $calendarProvider;
+        $obj->isSalesStarter = $isSalesStarter;
+        $obj->userID = $userID;
+        $obj->userProfile = $userProfile;
+
+        return $obj;
+    }
+
+    public function withID(string $id): self
+    {
+        $obj = clone $this;
+        $obj->id = $id;
+
+        return $obj;
+    }
+
+    public function withCalendarProvider(string $calendarProvider): self
+    {
+        $obj = clone $this;
+        $obj->calendarProvider = $calendarProvider;
+
+        return $obj;
+    }
+
+    public function withIsSalesStarter(bool $isSalesStarter): self
+    {
+        $obj = clone $this;
+        $obj->isSalesStarter = $isSalesStarter;
+
+        return $obj;
+    }
+
+    public function withUserID(string $userID): self
+    {
+        $obj = clone $this;
+        $obj->userID = $userID;
+
+        return $obj;
+    }
+
+    public function withUserProfile(ExternalUserProfile $userProfile): self
+    {
+        $obj = clone $this;
+        $obj->userProfile = $userProfile;
+
+        return $obj;
+    }
+}

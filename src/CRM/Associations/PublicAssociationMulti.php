@@ -8,8 +8,8 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\AssociatedID;
-use HubspotSDK\CRM\PublicObjectID;
 use HubspotSDK\Marketing\Emails\Paging;
+use HubspotSDK\PublicObjectID;
 
 /**
  * @phpstan-type public_association_multi = array{

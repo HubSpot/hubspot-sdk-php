@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\CRM\Objects;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\AssociationSpec;
-use HubspotSDK\CRM\PublicObjectID;
+use HubspotSDK\PublicObjectID;
 
 /**
  * @phpstan-type public_associations_for_object = array{

@@ -48,7 +48,11 @@ $client = new Client(
 );
 
 $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-  properties: ["foo" => "string"]
+  properties: [
+    "email" => "mark.s@lumon.industries",
+    "lastname" => "S.",
+    "firstname" => "Mark",
+  ],
 );
 
 var_dump($createdResponseSimplePublicObject->createdResourceId);
@@ -56,10 +60,39 @@ var_dump($createdResponseSimplePublicObject->createdResourceId);
 
 ### Value Objects
 
-It is recommended to use the static `with` constructor `CallbackCompletionBatchRequest::with(callbackID: "callbackId", ...)`
+It is recommended to use the static `with` constructor `AssociationSpec::with(associationCategory: "HUBSPOT_DEFINED", ...)`
 and named parameters to initialize value objects.
 
-However, builders are also provided `(new CallbackCompletionBatchRequest)->withCallbackID("callbackId")`.
+However, builders are also provided `(new AssociationSpec)->withAssociationCategory("HUBSPOT_DEFINED")`.
+
+### Pagination
+
+List methods in the Hub Spot API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```php
+<?php
+
+use HubspotSDK\Client;
+
+$client = new Client(
+  accessToken: "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+);
+
+$page = $client->crm->objects->contacts->list();
+
+var_dump($page);
+
+// fetch items from the current page
+foreach ($page->getItems() as $item) {
+  var_dump($item->id);
+}
+// make additional network requests to fetch items from all pages, including and after the current page
+foreach ($page->pagingEachItem() as $item) {
+  var_dump($item->id);
+}
+```
 
 ### Handling errors
 
@@ -72,7 +105,11 @@ use HubspotSDK\Core\Exceptions\APIConnectionException;
 
 try {
   $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-    properties: ["foo" => "string"]
+    properties: [
+      "email" => "mark.s@lumon.industries",
+      "lastname" => "S.",
+      "firstname" => "Mark",
+    ],
   );
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
@@ -120,7 +157,11 @@ $client = new Client(maxRetries: 0);
 
 // Or, configure per-request:
 $result = $client->crm->objects->contacts->create(
-  properties: ["foo" => "string"],
+  properties: [
+    "email" => "mark.s@lumon.industries",
+    "lastname" => "S.",
+    "firstname" => "Mark",
+  ],
   requestOptions: RequestOptions::with(maxRetries: 5),
 );
 ```
@@ -141,7 +182,11 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 use HubspotSDK\RequestOptions;
 
 $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-  properties: ["foo" => "string"],
+  properties: [
+    "email" => "mark.s@lumon.industries",
+    "lastname" => "S.",
+    "firstname" => "Mark",
+  ],
   requestOptions: RequestOptions::with(
     extraQueryParams: ["my_query_parameter" => "value"],
     extraBodyParams: ["my_body_parameter" => "value"],

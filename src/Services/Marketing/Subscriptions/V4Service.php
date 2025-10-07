@@ -6,27 +6,12 @@ namespace HubspotSDK\Services\Marketing\Subscriptions;
 
 use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4Contract;
-use HubspotSDK\Services\Marketing\Subscriptions\V4\DefinitionsService;
-use HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService;
 
 final class V4Service implements V4Contract
 {
-    /**
-     * @@api
-     */
-    public DefinitionsService $definitions;
-
-    /**
-     * @@api
-     */
-    public StatusesService $statuses;
-
+    // @phpstan-ignore-next-line
     /**
      * @internal
      */
-    public function __construct(private Client $client)
-    {
-        $this->definitions = new DefinitionsService($client);
-        $this->statuses = new StatusesService($client);
-    }
+    public function __construct(private Client $client) {}
 }

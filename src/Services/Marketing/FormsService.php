@@ -6,7 +6,7 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Forms\CollectionResponseFormDefinitionBaseForwardPaging;
+use HubspotSDK\CursorURLPage;
 use HubspotSDK\Marketing\Forms\FieldGroup;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
 use HubspotSDK\Marketing\Forms\FormListParams;
@@ -15,6 +15,7 @@ use HubspotSDK\Marketing\Forms\FormReplaceParams;
 use HubspotSDK\Marketing\Forms\FormReplaceParams\FormType;
 use HubspotSDK\Marketing\Forms\FormUpdateParams;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
+use HubspotSDK\Marketing\Forms\HubSpotFormDefinition;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsImplicitConsentToProcess;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest;
@@ -122,6 +123,8 @@ final class FormsService implements FormsContract
      * @param list<FormListParams\FormType|value-of<FormListParams\FormType>> $formTypes
      * @param int $limit
      *
+     * @return CursorURLPage<HubSpotFormDefinition>
+     *
      * @throws APIException
      */
     public function list(
@@ -130,7 +133,7 @@ final class FormsService implements FormsContract
         $formTypes = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseFormDefinitionBaseForwardPaging {
+    ): CursorURLPage {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -146,12 +149,14 @@ final class FormsService implements FormsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return CursorURLPage<HubSpotFormDefinition>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseFormDefinitionBaseForwardPaging {
+    ): CursorURLPage {
         [$parsed, $options] = FormListParams::parseRequest(
             $params,
             $requestOptions
@@ -163,7 +168,8 @@ final class FormsService implements FormsContract
             path: 'marketing/v3/forms/',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseFormDefinitionBaseForwardPaging::class,
+            convert: HubSpotFormDefinition::class,
+            page: CursorURLPage::class,
         );
     }
 
