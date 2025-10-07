@@ -321,14 +321,14 @@ final class ActionsService implements ActionsContract
      *
      * Delete a function for a definition
      *
-     * @param HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType> $functionType
+     * @param ActionArchiveByFunctionTypeParams\FunctionType|value-of<ActionArchiveByFunctionTypeParams\FunctionType> $functionType
      * @param int $appID
      * @param string $definitionID
      *
      * @throws APIException
      */
     public function archiveByFunctionType(
-        HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|string $functionType,
+        ActionArchiveByFunctionTypeParams\FunctionType|string $functionType,
         $appID,
         $definitionID,
         ?RequestOptions $requestOptions = null,
@@ -345,13 +345,13 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * @param HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType> $functionType
+     * @param ActionArchiveByFunctionTypeParams\FunctionType|value-of<ActionArchiveByFunctionTypeParams\FunctionType> $functionType
      * @param array<string, mixed> $params
      *
      * @throws APIException
      */
     public function archiveByFunctionTypeRaw(
-        HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|string $functionType,
+        ActionArchiveByFunctionTypeParams\FunctionType|string $functionType,
         array $params,
         ?RequestOptions $requestOptions = null,
     ): mixed {
@@ -475,7 +475,7 @@ final class ActionsService implements ActionsContract
      *
      * @param int $appID
      * @param string $definitionID
-     * @param HubspotSDK\Automation\Actions\ActionCreateOrReplaceParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionCreateOrReplaceParams\FunctionType> $functionType
+     * @param ActionCreateOrReplaceParams\FunctionType|value-of<ActionCreateOrReplaceParams\FunctionType> $functionType
      * @param string $body
      *
      * @throws APIException
@@ -546,7 +546,7 @@ final class ActionsService implements ActionsContract
      *
      * Insert a function for a definition
      *
-     * @param HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
+     * @param ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
      * @param int $appID
      * @param string $definitionID
      * @param string $body
@@ -554,7 +554,7 @@ final class ActionsService implements ActionsContract
      * @throws APIException
      */
     public function createOrReplaceByFunctionType(
-        HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
+        ActionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
         $appID,
         $definitionID,
         $body,
@@ -574,13 +574,13 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * @param HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
+     * @param ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
      * @param array<string, mixed> $params
      *
      * @throws APIException
      */
     public function createOrReplaceByFunctionTypeRaw(
-        HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
+        ActionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
         array $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier {
@@ -619,14 +619,14 @@ final class ActionsService implements ActionsContract
      *
      * Retrieve functions by a type for a given definition
      *
-     * @param HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType> $functionType
+     * @param ActionGetByFunctionTypeParams\FunctionType|value-of<ActionGetByFunctionTypeParams\FunctionType> $functionType
      * @param int $appID
      * @param string $definitionID
      *
      * @throws APIException
      */
     public function getByFunctionType(
-        HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|string $functionType,
+        ActionGetByFunctionTypeParams\FunctionType|string $functionType,
         $appID,
         $definitionID,
         ?RequestOptions $requestOptions = null,
@@ -639,13 +639,13 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * @param HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType> $functionType
+     * @param ActionGetByFunctionTypeParams\FunctionType|value-of<ActionGetByFunctionTypeParams\FunctionType> $functionType
      * @param array<string, mixed> $params
      *
      * @throws APIException
      */
     public function getByFunctionTypeRaw(
-        HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|string $functionType,
+        ActionGetByFunctionTypeParams\FunctionType|string $functionType,
         array $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunction {
@@ -679,7 +679,7 @@ final class ActionsService implements ActionsContract
      *
      * @param int $appID
      * @param string $definitionID
-     * @param HubspotSDK\Automation\Actions\ActionReadParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionReadParams\FunctionType> $functionType
+     * @param ActionReadParams\FunctionType|value-of<ActionReadParams\FunctionType> $functionType
      *
      * @throws APIException
      */

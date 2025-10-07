@@ -101,13 +101,13 @@ interface EmailsContract
      * @param PublicEmailContent $content
      * @param PublicEmailFromDetails $from
      * @param bool $jitterSendTime
-     * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\Language|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\Language> $language
+     * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\Language|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\Language> $language
      * @param string $name
      * @param \DateTimeInterface $publishDate
      * @param PublicRssEmailDetails $rssData
      * @param bool $sendOnPublish
-     * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\State|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\State> $state
-     * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory> $subcategory
+     * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\State|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\State> $state
+     * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory> $subcategory
      * @param string $subject
      * @param PublicEmailSubscriptionDetails $subscriptionDetails
      * @param PublicEmailTestingDetails $testing
@@ -551,13 +551,13 @@ interface EmailsContract
      * @param PublicEmailContent $content
      * @param PublicEmailFromDetails $from
      * @param bool $jitterSendTime
-     * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language> $language
+     * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language> $language
      * @param string $name
      * @param \DateTimeInterface $publishDate
      * @param PublicRssEmailDetails $rssData
      * @param bool $sendOnPublish
-     * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State> $state
-     * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory> $subcategory
+     * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State> $state
+     * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory> $subcategory
      * @param string $subject
      * @param PublicEmailSubscriptionDetails $subscriptionDetails
      * @param PublicEmailTestingDetails $testing

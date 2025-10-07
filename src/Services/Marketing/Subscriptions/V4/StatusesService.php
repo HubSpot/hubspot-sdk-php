@@ -89,7 +89,7 @@ final class StatusesService implements StatusesContract
      *
      * Batch retrieve subscription statuses
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetBatchParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetBatchParams\Channel> $channel
+     * @param StatusGetBatchParams\Channel|value-of<StatusGetBatchParams\Channel> $channel
      * @param list<string> $inputs
      * @param int $businessUnitID
      *
@@ -143,7 +143,7 @@ final class StatusesService implements StatusesContract
      *
      * Retrieve a contact's unsubscribed status
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusParams\Channel> $channel
+     * @param StatusGetUnsubscribeAllStatusParams\Channel|value-of<StatusGetUnsubscribeAllStatusParams\Channel> $channel
      * @param int $businessUnitID
      * @param bool $verbose
      *
@@ -204,7 +204,7 @@ final class StatusesService implements StatusesContract
      *
      * Batch retrieve contacts who have opted out of all communications
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusBatchParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusBatchParams\Channel> $channel
+     * @param StatusGetUnsubscribeAllStatusBatchParams\Channel|value-of<StatusGetUnsubscribeAllStatusBatchParams\Channel> $channel
      * @param list<string> $inputs
      * @param int $businessUnitID
      *
@@ -260,7 +260,7 @@ final class StatusesService implements StatusesContract
      *
      * Update a contact's subscription status
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusSetParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusSetParams\Channel> $channel
+     * @param StatusSetParams\Channel|value-of<StatusSetParams\Channel> $channel
      * @param StatusState|value-of<StatusState> $statusState
      * @param int $subscriptionID
      * @param LegalBasis|value-of<LegalBasis> $legalBasis
@@ -320,7 +320,7 @@ final class StatusesService implements StatusesContract
      *
      * Unsubscribe a contact from all subscriptions
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams\Channel> $channel
+     * @param StatusUnsubscribeAllParams\Channel|value-of<StatusUnsubscribeAllParams\Channel> $channel
      * @param int $businessUnitID
      * @param bool $verbose
      *
@@ -381,7 +381,7 @@ final class StatusesService implements StatusesContract
      *
      * Batch unsubscribe contacts from all subscriptions
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllBatchParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllBatchParams\Channel> $channel
+     * @param StatusUnsubscribeAllBatchParams\Channel|value-of<StatusUnsubscribeAllBatchParams\Channel> $channel
      * @param list<string> $inputs
      * @param int $businessUnitID
      * @param bool $verbose

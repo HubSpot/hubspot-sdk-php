@@ -13,7 +13,7 @@ final class FilesService implements FilesContract
     /**
      * @@api
      */
-    public HubspotSDK\Services\Files\FilesService $files;
+    public Files\FilesService $files;
 
     /**
      * @@api
@@ -25,7 +25,7 @@ final class FilesService implements FilesContract
      */
     public function __construct(private Client $client)
     {
-        $this->files = new HubspotSDK\Services\Files\FilesService($client);
+        $this->files = new Files\FilesService($client);
         $this->folders = new FoldersService($client);
     }
 }

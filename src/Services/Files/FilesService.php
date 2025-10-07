@@ -330,7 +330,7 @@ final class FilesService implements FilesContract
      *
      * Import file from URL
      *
-     * @param HubspotSDK\Files\Files\FileImportFromURLAsyncParams\Access|value-of<HubspotSDK\Files\Files\FileImportFromURLAsyncParams\Access> $access
+     * @param FileImportFromURLAsyncParams\Access|value-of<FileImportFromURLAsyncParams\Access> $access
      * @param string $url
      * @param DuplicateValidationScope|value-of<DuplicateValidationScope> $duplicateValidationScope
      * @param DuplicateValidationStrategy|value-of<DuplicateValidationStrategy> $duplicateValidationStrategy

@@ -52,7 +52,7 @@ interface StatusesContract
     /**
      * @api
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetBatchParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetBatchParams\Channel> $channel
+     * @param \HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetBatchParams\Channel|value-of<\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetBatchParams\Channel> $channel
      * @param list<string> $inputs
      * @param int $businessUnitID
      *
@@ -80,7 +80,7 @@ interface StatusesContract
     /**
      * @api
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusParams\Channel> $channel
+     * @param \HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusParams\Channel|value-of<\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusParams\Channel> $channel
      * @param int $businessUnitID
      * @param bool $verbose
      *
@@ -110,7 +110,7 @@ interface StatusesContract
     /**
      * @api
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusBatchParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusBatchParams\Channel> $channel
+     * @param \HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusBatchParams\Channel|value-of<\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusBatchParams\Channel> $channel
      * @param list<string> $inputs
      * @param int $businessUnitID
      *
@@ -138,7 +138,7 @@ interface StatusesContract
     /**
      * @api
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusSetParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusSetParams\Channel> $channel
+     * @param \HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusSetParams\Channel|value-of<\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusSetParams\Channel> $channel
      * @param StatusState|value-of<StatusState> $statusState
      * @param int $subscriptionID
      * @param LegalBasis|value-of<LegalBasis> $legalBasis
@@ -172,7 +172,7 @@ interface StatusesContract
     /**
      * @api
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams\Channel> $channel
+     * @param \HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams\Channel|value-of<\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams\Channel> $channel
      * @param int $businessUnitID
      * @param bool $verbose
      *
@@ -202,7 +202,7 @@ interface StatusesContract
     /**
      * @api
      *
-     * @param HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllBatchParams\Channel|value-of<HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllBatchParams\Channel> $channel
+     * @param \HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllBatchParams\Channel|value-of<\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllBatchParams\Channel> $channel
      * @param list<string> $inputs
      * @param int $businessUnitID
      * @param bool $verbose

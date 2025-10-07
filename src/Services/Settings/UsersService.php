@@ -208,7 +208,7 @@ final class UsersService implements UsersContract
      *
      * Removes a user
      *
-     * @param HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|value-of<HubspotSDK\Settings\Users\UserDeleteParams\IDProperty> $idProperty
+     * @param UserDeleteParams\IDProperty|value-of<UserDeleteParams\IDProperty> $idProperty
      *
      * @throws APIException
      */
@@ -254,7 +254,7 @@ final class UsersService implements UsersContract
      *
      * Retrieves a user
      *
-     * @param HubspotSDK\Settings\Users\UserGetParams\IDProperty|value-of<HubspotSDK\Settings\Users\UserGetParams\IDProperty> $idProperty
+     * @param UserGetParams\IDProperty|value-of<UserGetParams\IDProperty> $idProperty
      *
      * @throws APIException
      */

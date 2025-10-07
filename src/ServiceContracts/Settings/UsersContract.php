@@ -117,7 +117,7 @@ interface UsersContract
     /**
      * @api
      *
-     * @param HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|value-of<HubspotSDK\Settings\Users\UserDeleteParams\IDProperty> $idProperty
+     * @param \HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserDeleteParams\IDProperty> $idProperty
      *
      * @throws APIException
      */
@@ -143,7 +143,7 @@ interface UsersContract
     /**
      * @api
      *
-     * @param HubspotSDK\Settings\Users\UserGetParams\IDProperty|value-of<HubspotSDK\Settings\Users\UserGetParams\IDProperty> $idProperty
+     * @param \HubspotSDK\Settings\Users\UserGetParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserGetParams\IDProperty> $idProperty
      *
      * @throws APIException
      */

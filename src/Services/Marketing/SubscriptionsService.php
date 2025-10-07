@@ -134,7 +134,7 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * @param string $emailAddress
      * @param string $subscriptionID
-     * @param HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|value-of<HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis> $legalBasis
+     * @param SubscriptionUnsubscribeParams\LegalBasis|value-of<SubscriptionUnsubscribeParams\LegalBasis> $legalBasis
      * @param string $legalBasisExplanation
      *
      * @throws APIException

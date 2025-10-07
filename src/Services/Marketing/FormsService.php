@@ -119,7 +119,7 @@ final class FormsService implements FormsContract
      *
      * @param string $after
      * @param bool $archived
-     * @param list<HubspotSDK\Marketing\Forms\FormListParams\FormType|value-of<HubspotSDK\Marketing\Forms\FormListParams\FormType>> $formTypes
+     * @param list<FormListParams\FormType|value-of<FormListParams\FormType>> $formTypes
      * @param int $limit
      *
      * @throws APIException

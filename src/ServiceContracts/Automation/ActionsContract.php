@@ -177,14 +177,14 @@ interface ActionsContract
     /**
      * @api
      *
-     * @param HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType> $functionType
+     * @param \HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType> $functionType
      * @param int $appID
      * @param string $definitionID
      *
      * @throws APIException
      */
     public function archiveByFunctionType(
-        HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|string $functionType,
+        \HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|string $functionType,
         $appID,
         $definitionID,
         ?RequestOptions $requestOptions = null,
@@ -193,13 +193,13 @@ interface ActionsContract
     /**
      * @api
      *
-     * @param HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType> $functionType
+     * @param \HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType> $functionType
      * @param array<string, mixed> $params
      *
      * @throws APIException
      */
     public function archiveByFunctionTypeRaw(
-        HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|string $functionType,
+        \HubspotSDK\Automation\Actions\ActionArchiveByFunctionTypeParams\FunctionType|string $functionType,
         array $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
@@ -259,7 +259,7 @@ interface ActionsContract
      *
      * @param int $appID
      * @param string $definitionID
-     * @param HubspotSDK\Automation\Actions\ActionCreateOrReplaceParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionCreateOrReplaceParams\FunctionType> $functionType
+     * @param \HubspotSDK\Automation\Actions\ActionCreateOrReplaceParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\ActionCreateOrReplaceParams\FunctionType> $functionType
      * @param string $body
      *
      * @throws APIException
@@ -289,7 +289,7 @@ interface ActionsContract
     /**
      * @api
      *
-     * @param HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
+     * @param \HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
      * @param int $appID
      * @param string $definitionID
      * @param string $body
@@ -297,7 +297,7 @@ interface ActionsContract
      * @throws APIException
      */
     public function createOrReplaceByFunctionType(
-        HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
+        \HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
         $appID,
         $definitionID,
         $body,
@@ -307,13 +307,13 @@ interface ActionsContract
     /**
      * @api
      *
-     * @param HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
+     * @param \HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
      * @param array<string, mixed> $params
      *
      * @throws APIException
      */
     public function createOrReplaceByFunctionTypeRaw(
-        HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
+        \HubspotSDK\Automation\Actions\ActionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
         array $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier;
@@ -321,14 +321,14 @@ interface ActionsContract
     /**
      * @api
      *
-     * @param HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType> $functionType
+     * @param \HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType> $functionType
      * @param int $appID
      * @param string $definitionID
      *
      * @throws APIException
      */
     public function getByFunctionType(
-        HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|string $functionType,
+        \HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|string $functionType,
         $appID,
         $definitionID,
         ?RequestOptions $requestOptions = null,
@@ -337,13 +337,13 @@ interface ActionsContract
     /**
      * @api
      *
-     * @param HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType> $functionType
+     * @param \HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType> $functionType
      * @param array<string, mixed> $params
      *
      * @throws APIException
      */
     public function getByFunctionTypeRaw(
-        HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|string $functionType,
+        \HubspotSDK\Automation\Actions\ActionGetByFunctionTypeParams\FunctionType|string $functionType,
         array $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunction;
@@ -353,7 +353,7 @@ interface ActionsContract
      *
      * @param int $appID
      * @param string $definitionID
-     * @param HubspotSDK\Automation\Actions\ActionReadParams\FunctionType|value-of<HubspotSDK\Automation\Actions\ActionReadParams\FunctionType> $functionType
+     * @param \HubspotSDK\Automation\Actions\ActionReadParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\ActionReadParams\FunctionType> $functionType
      *
      * @throws APIException
      */

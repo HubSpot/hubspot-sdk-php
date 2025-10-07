@@ -165,13 +165,13 @@ final class EmailsService implements EmailsContract
      * @param PublicEmailContent $content
      * @param PublicEmailFromDetails $from
      * @param bool $jitterSendTime
-     * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\Language|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\Language> $language
+     * @param EmailUpdateParams\Language|value-of<EmailUpdateParams\Language> $language
      * @param string $name
      * @param \DateTimeInterface $publishDate
      * @param PublicRssEmailDetails $rssData
      * @param bool $sendOnPublish
-     * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\State|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\State> $state
-     * @param HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|value-of<HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory> $subcategory
+     * @param EmailUpdateParams\State|value-of<EmailUpdateParams\State> $state
+     * @param EmailUpdateParams\Subcategory|value-of<EmailUpdateParams\Subcategory> $subcategory
      * @param string $subject
      * @param PublicEmailSubscriptionDetails $subscriptionDetails
      * @param PublicEmailTestingDetails $testing
@@ -974,13 +974,13 @@ final class EmailsService implements EmailsContract
      * @param PublicEmailContent $content
      * @param PublicEmailFromDetails $from
      * @param bool $jitterSendTime
-     * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language> $language
+     * @param EmailUpsertDraftParams\Language|value-of<EmailUpsertDraftParams\Language> $language
      * @param string $name
      * @param \DateTimeInterface $publishDate
      * @param PublicRssEmailDetails $rssData
      * @param bool $sendOnPublish
-     * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State> $state
-     * @param HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory|value-of<HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory> $subcategory
+     * @param EmailUpsertDraftParams\State|value-of<EmailUpsertDraftParams\State> $state
+     * @param EmailUpsertDraftParams\Subcategory|value-of<EmailUpsertDraftParams\Subcategory> $subcategory
      * @param string $subject
      * @param PublicEmailSubscriptionDetails $subscriptionDetails
      * @param PublicEmailTestingDetails $testing
