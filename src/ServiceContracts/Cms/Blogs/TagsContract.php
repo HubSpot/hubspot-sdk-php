@@ -57,7 +57,7 @@ interface TagsContract
      * @param string $id
      * @param \DateTimeInterface $created
      * @param \DateTimeInterface $deletedAt
-     * @param HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language|value-of<HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language> $language
+     * @param \HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language> $language
      * @param string $name
      * @param int $translatedFromID
      * @param \DateTimeInterface $updated

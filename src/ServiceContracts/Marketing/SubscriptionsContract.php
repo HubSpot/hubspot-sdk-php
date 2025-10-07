@@ -69,7 +69,7 @@ interface SubscriptionsContract
      *
      * @param string $emailAddress
      * @param string $subscriptionID
-     * @param HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|value-of<HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis> $legalBasis
+     * @param \HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|value-of<\HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis> $legalBasis
      * @param string $legalBasisExplanation
      *
      * @throws APIException
