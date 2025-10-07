@@ -144,16 +144,6 @@ interface FilesContract
     /**
      * @api
      *
-     * @throws APIException
-     */
-    public function getImportTaskStatus(
-        string $taskID,
-        ?RequestOptions $requestOptions = null
-    ): FileActionResponse;
-
-    /**
-     * @api
-     *
      * @param int $expirationSeconds
      * @param Size|value-of<Size> $size
      * @param bool $upscale

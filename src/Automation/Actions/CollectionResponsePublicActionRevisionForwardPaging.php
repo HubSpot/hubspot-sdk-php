@@ -6,9 +6,7 @@ namespace HubspotSDK\Automation\Actions;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -16,12 +14,10 @@ use HubspotSDK\ForwardPaging;
  *   results: list<PublicActionRevision>, paging?: ForwardPaging
  * }
  */
-final class CollectionResponsePublicActionRevisionForwardPaging implements BaseModel, ResponseConverter
+final class CollectionResponsePublicActionRevisionForwardPaging implements BaseModel
 {
     /** @use SdkModel<collection_response_public_action_revision_forward_paging> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<PublicActionRevision> $results */
     #[Api(list: PublicActionRevision::class)]

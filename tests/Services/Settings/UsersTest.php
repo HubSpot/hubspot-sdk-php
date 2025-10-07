@@ -54,18 +54,6 @@ final class UsersTest extends TestCase
     }
 
     #[Test]
-    public function testUpdate(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->settings->users->update('userId');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testList(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -90,37 +78,25 @@ final class UsersTest extends TestCase
     }
 
     #[Test]
-    public function testGet(): void
+    public function testRead(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->get('userId');
+        $result = $this->client->settings->users->read('userId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testListRoles(): void
+    public function testReplace(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->listRoles();
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testListTeams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->settings->users->listTeams();
+        $result = $this->client->settings->users->replace('userId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

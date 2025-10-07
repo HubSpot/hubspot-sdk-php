@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Associations;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CRM\Associations\V4\AssociationSpec1;
 use HubspotSDK\CRM\Associations\V4\BatchResponseVoid;
 use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
 use HubspotSDK\CRM\Associations\V4\ReportCreationResponse;
-use HubspotSDK\CRM\AssociationSpec;
 use HubspotSDK\CRM\BatchResponsePublicDefaultAssociation;
-use HubspotSDK\CRM\CollectionResponseMultiAssociatedObjectWithLabel;
 use HubspotSDK\CRM\CreatedResponseLabelsBetweenObjectPair;
+use HubspotSDK\CRM\MultiAssociatedObjectWithLabel;
+use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -24,7 +25,7 @@ interface V4Contract
      * @param string $objectType
      * @param string $objectID
      * @param string $toObjectType
-     * @param list<AssociationSpec> $body
+     * @param list<AssociationSpec1> $body
      *
      * @throws APIException
      */
@@ -58,6 +59,8 @@ interface V4Contract
      * @param string $after
      * @param int $limit
      *
+     * @return CursorURLPage<MultiAssociatedObjectWithLabel>
+     *
      * @throws APIException
      */
     public function list(
@@ -67,12 +70,14 @@ interface V4Contract
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseMultiAssociatedObjectWithLabel;
+    ): CursorURLPage;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return CursorURLPage<MultiAssociatedObjectWithLabel>
      *
      * @throws APIException
      */
@@ -80,7 +85,7 @@ interface V4Contract
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseMultiAssociatedObjectWithLabel;
+    ): CursorURLPage;
 
     /**
      * @api

@@ -15,6 +15,7 @@ use HubspotSDK\Services\ConversationsService;
 use HubspotSDK\Services\CRMService;
 use HubspotSDK\Services\FilesService;
 use HubspotSDK\Services\MarketingService;
+use HubspotSDK\Services\SchedulerService;
 use HubspotSDK\Services\SettingsService;
 use HubspotSDK\Services\WebhooksService;
 
@@ -63,6 +64,11 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public SchedulerService $scheduler;
+
+    /**
+     * @api
+     */
     public SettingsService $settings;
 
     /**
@@ -100,6 +106,7 @@ class Client extends BaseClient
         $this->crm = new CRMService($this);
         $this->files = new FilesService($this);
         $this->marketing = new MarketingService($this);
+        $this->scheduler = new SchedulerService($this);
         $this->settings = new SettingsService($this);
         $this->webhooks = new WebhooksService($this);
     }

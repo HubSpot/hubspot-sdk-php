@@ -6,18 +6,19 @@ namespace HubspotSDK\ServiceContracts\Automation;
 
 use HubspotSDK\Automation\Actions\ActionDeleteParams\FunctionType;
 use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
-use HubspotSDK\Automation\Actions\CollectionResponsePublicActionRevisionForwardPaging;
 use HubspotSDK\Automation\Actions\InputFieldDefinition;
 use HubspotSDK\Automation\Actions\OutputFieldDefinition;
 use HubspotSDK\Automation\Actions\PublicActionDefinition;
 use HubspotSDK\Automation\Actions\PublicActionFunction;
 use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
 use HubspotSDK\Automation\Actions\PublicActionLabels;
+use HubspotSDK\Automation\Actions\PublicActionRevision;
 use HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
 use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
 use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
 use HubspotSDK\Automation\Actions\PublicSingleFieldDependency;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -121,6 +122,8 @@ interface ActionsContract
      * @param string $after
      * @param int $limit
      *
+     * @return CursorURLPage<PublicActionRevision>
+     *
      * @throws APIException
      */
     public function list(
@@ -129,12 +132,14 @@ interface ActionsContract
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicActionRevisionForwardPaging;
+    ): CursorURLPage;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return CursorURLPage<PublicActionRevision>
      *
      * @throws APIException
      */
@@ -142,7 +147,7 @@ interface ActionsContract
         string $definitionID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicActionRevisionForwardPaging;
+    ): CursorURLPage;
 
     /**
      * @api

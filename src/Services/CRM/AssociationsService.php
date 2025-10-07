@@ -12,7 +12,7 @@ use HubspotSDK\CRM\Associations\AssociationReadParams;
 use HubspotSDK\CRM\Associations\BatchResponsePublicAssociation;
 use HubspotSDK\CRM\Associations\BatchResponsePublicAssociationMulti;
 use HubspotSDK\CRM\Associations\PublicAssociation;
-use HubspotSDK\CRM\PublicObjectID;
+use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\AssociationsContract;
 use HubspotSDK\Services\CRM\Associations\V4Service;

@@ -7,7 +7,7 @@ namespace HubspotSDK\CRM\Associations;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\PublicObjectID;
+use HubspotSDK\PublicObjectID;
 
 /**
  * @phpstan-type batch_input_public_object_id = array{inputs: list<PublicObjectID>}

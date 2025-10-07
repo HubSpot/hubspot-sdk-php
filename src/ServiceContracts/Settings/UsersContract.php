@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Settings;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
-use HubspotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
-use HubspotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
-use HubspotSDK\Settings\Users\CollectionResponsePublicUserForwardPaging;
 use HubspotSDK\Settings\Users\PublicUser;
-use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
+use HubspotSDK\Settings\Users\UserDeleteParams\IDProperty;
 
 use const HubspotSDK\Core\OMIT as omit;
 
@@ -55,44 +53,10 @@ interface UsersContract
     /**
      * @api
      *
-     * @param IDProperty|value-of<IDProperty> $idProperty
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $primaryTeamID
-     * @param string $roleID
-     * @param list<string> $secondaryTeamIDs
-     *
-     * @throws APIException
-     */
-    public function update(
-        string $userID,
-        $idProperty = omit,
-        $firstName = omit,
-        $lastName = omit,
-        $primaryTeamID = omit,
-        $roleID = omit,
-        $secondaryTeamIDs = omit,
-        ?RequestOptions $requestOptions = null,
-    ): PublicUser;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $userID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PublicUser;
-
-    /**
-     * @api
-     *
      * @param string $after
      * @param int $limit
+     *
+     * @return CursorURLPage<PublicUser>
      *
      * @throws APIException
      */
@@ -100,24 +64,26 @@ interface UsersContract
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicUserForwardPaging;
+    ): CursorURLPage;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return CursorURLPage<PublicUser>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicUserForwardPaging;
+    ): CursorURLPage;
 
     /**
      * @api
      *
-     * @param \HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserDeleteParams\IDProperty> $idProperty
+     * @param IDProperty|value-of<IDProperty> $idProperty
      *
      * @throws APIException
      */
@@ -143,11 +109,11 @@ interface UsersContract
     /**
      * @api
      *
-     * @param \HubspotSDK\Settings\Users\UserGetParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserGetParams\IDProperty> $idProperty
+     * @param \HubspotSDK\Settings\Users\UserReadParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserReadParams\IDProperty> $idProperty
      *
      * @throws APIException
      */
-    public function get(
+    public function read(
         string $userID,
         $idProperty = omit,
         ?RequestOptions $requestOptions = null,
@@ -160,7 +126,7 @@ interface UsersContract
      *
      * @throws APIException
      */
-    public function getRaw(
+    public function readRaw(
         string $userID,
         array $params,
         ?RequestOptions $requestOptions = null
@@ -169,18 +135,36 @@ interface UsersContract
     /**
      * @api
      *
+     * @param \HubspotSDK\Settings\Users\UserReplaceParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserReplaceParams\IDProperty> $idProperty
+     * @param string $firstName
+     * @param string $lastName
+     * @param string $primaryTeamID
+     * @param string $roleID
+     * @param list<string> $secondaryTeamIDs
+     *
      * @throws APIException
      */
-    public function listRoles(
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicPermissionSetNoPaging;
+    public function replace(
+        string $userID,
+        $idProperty = omit,
+        $firstName = omit,
+        $lastName = omit,
+        $primaryTeamID = omit,
+        $roleID = omit,
+        $secondaryTeamIDs = omit,
+        ?RequestOptions $requestOptions = null,
+    ): PublicUser;
 
     /**
      * @api
      *
+     * @param array<string, mixed> $params
+     *
      * @throws APIException
      */
-    public function listTeams(
+    public function replaceRaw(
+        string $userID,
+        array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicTeamNoPaging;
+    ): PublicUser;
 }

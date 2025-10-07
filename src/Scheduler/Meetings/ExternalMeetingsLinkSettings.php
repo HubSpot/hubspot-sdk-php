@@ -1,0 +1,343 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Scheduler\Meetings;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-type external_meetings_link_settings = array{
+ *   availability: array<string, ExternalClosedRange>,
+ *   durations: list<int>,
+ *   formFields: list<ExternalLinkFormField>,
+ *   legalConsentEnabled: bool,
+ *   meetingBufferTime: int,
+ *   ownerPrioritized: bool,
+ *   startTimeIncrementMinutes: string,
+ *   weeksToAdvertise: int,
+ *   customAvailabilityEndDate?: int,
+ *   customAvailabilityStartDate?: int,
+ *   displayInfo?: ExternalLinkDisplayInfo,
+ *   guestSettings?: ExternalGuestSettings,
+ *   language?: string,
+ *   legalConsentOptions?: ExternalLegalConsentOptions,
+ *   locale?: string,
+ *   location?: string,
+ *   redirectURL?: string,
+ *   welcomeScreenInfo?: ExternalMeetingsWelcomeScreenInfo,
+ * }
+ */
+final class ExternalMeetingsLinkSettings implements BaseModel
+{
+    /** @use SdkModel<external_meetings_link_settings> */
+    use SdkModel;
+
+    /** @var array<string, ExternalClosedRange> $availability */
+    #[Api(map: ExternalClosedRange::class)]
+    public array $availability;
+
+    /** @var list<int> $durations */
+    #[Api(list: 'int')]
+    public array $durations;
+
+    /** @var list<ExternalLinkFormField> $formFields */
+    #[Api(list: ExternalLinkFormField::class)]
+    public array $formFields;
+
+    #[Api]
+    public bool $legalConsentEnabled;
+
+    #[Api]
+    public int $meetingBufferTime;
+
+    #[Api]
+    public bool $ownerPrioritized;
+
+    #[Api]
+    public string $startTimeIncrementMinutes;
+
+    #[Api]
+    public int $weeksToAdvertise;
+
+    #[Api(optional: true)]
+    public ?int $customAvailabilityEndDate;
+
+    #[Api(optional: true)]
+    public ?int $customAvailabilityStartDate;
+
+    #[Api(optional: true)]
+    public ?ExternalLinkDisplayInfo $displayInfo;
+
+    #[Api(optional: true)]
+    public ?ExternalGuestSettings $guestSettings;
+
+    #[Api(optional: true)]
+    public ?string $language;
+
+    #[Api(optional: true)]
+    public ?ExternalLegalConsentOptions $legalConsentOptions;
+
+    #[Api(optional: true)]
+    public ?string $locale;
+
+    #[Api(optional: true)]
+    public ?string $location;
+
+    #[Api('redirectUrl', optional: true)]
+    public ?string $redirectURL;
+
+    #[Api(optional: true)]
+    public ?ExternalMeetingsWelcomeScreenInfo $welcomeScreenInfo;
+
+    /**
+     * `new ExternalMeetingsLinkSettings()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * ExternalMeetingsLinkSettings::with(
+     *   availability: ...,
+     *   durations: ...,
+     *   formFields: ...,
+     *   legalConsentEnabled: ...,
+     *   meetingBufferTime: ...,
+     *   ownerPrioritized: ...,
+     *   startTimeIncrementMinutes: ...,
+     *   weeksToAdvertise: ...,
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new ExternalMeetingsLinkSettings)
+     *   ->withAvailability(...)
+     *   ->withDurations(...)
+     *   ->withFormFields(...)
+     *   ->withLegalConsentEnabled(...)
+     *   ->withMeetingBufferTime(...)
+     *   ->withOwnerPrioritized(...)
+     *   ->withStartTimeIncrementMinutes(...)
+     *   ->withWeeksToAdvertise(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param array<string, ExternalClosedRange> $availability
+     * @param list<int> $durations
+     * @param list<ExternalLinkFormField> $formFields
+     */
+    public static function with(
+        array $availability,
+        array $durations,
+        array $formFields,
+        bool $legalConsentEnabled,
+        int $meetingBufferTime,
+        bool $ownerPrioritized,
+        string $startTimeIncrementMinutes,
+        int $weeksToAdvertise,
+        ?int $customAvailabilityEndDate = null,
+        ?int $customAvailabilityStartDate = null,
+        ?ExternalLinkDisplayInfo $displayInfo = null,
+        ?ExternalGuestSettings $guestSettings = null,
+        ?string $language = null,
+        ?ExternalLegalConsentOptions $legalConsentOptions = null,
+        ?string $locale = null,
+        ?string $location = null,
+        ?string $redirectURL = null,
+        ?ExternalMeetingsWelcomeScreenInfo $welcomeScreenInfo = null,
+    ): self {
+        $obj = new self;
+
+        $obj->availability = $availability;
+        $obj->durations = $durations;
+        $obj->formFields = $formFields;
+        $obj->legalConsentEnabled = $legalConsentEnabled;
+        $obj->meetingBufferTime = $meetingBufferTime;
+        $obj->ownerPrioritized = $ownerPrioritized;
+        $obj->startTimeIncrementMinutes = $startTimeIncrementMinutes;
+        $obj->weeksToAdvertise = $weeksToAdvertise;
+
+        null !== $customAvailabilityEndDate && $obj->customAvailabilityEndDate = $customAvailabilityEndDate;
+        null !== $customAvailabilityStartDate && $obj->customAvailabilityStartDate = $customAvailabilityStartDate;
+        null !== $displayInfo && $obj->displayInfo = $displayInfo;
+        null !== $guestSettings && $obj->guestSettings = $guestSettings;
+        null !== $language && $obj->language = $language;
+        null !== $legalConsentOptions && $obj->legalConsentOptions = $legalConsentOptions;
+        null !== $locale && $obj->locale = $locale;
+        null !== $location && $obj->location = $location;
+        null !== $redirectURL && $obj->redirectURL = $redirectURL;
+        null !== $welcomeScreenInfo && $obj->welcomeScreenInfo = $welcomeScreenInfo;
+
+        return $obj;
+    }
+
+    /**
+     * @param array<string, ExternalClosedRange> $availability
+     */
+    public function withAvailability(array $availability): self
+    {
+        $obj = clone $this;
+        $obj->availability = $availability;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<int> $durations
+     */
+    public function withDurations(array $durations): self
+    {
+        $obj = clone $this;
+        $obj->durations = $durations;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<ExternalLinkFormField> $formFields
+     */
+    public function withFormFields(array $formFields): self
+    {
+        $obj = clone $this;
+        $obj->formFields = $formFields;
+
+        return $obj;
+    }
+
+    public function withLegalConsentEnabled(bool $legalConsentEnabled): self
+    {
+        $obj = clone $this;
+        $obj->legalConsentEnabled = $legalConsentEnabled;
+
+        return $obj;
+    }
+
+    public function withMeetingBufferTime(int $meetingBufferTime): self
+    {
+        $obj = clone $this;
+        $obj->meetingBufferTime = $meetingBufferTime;
+
+        return $obj;
+    }
+
+    public function withOwnerPrioritized(bool $ownerPrioritized): self
+    {
+        $obj = clone $this;
+        $obj->ownerPrioritized = $ownerPrioritized;
+
+        return $obj;
+    }
+
+    public function withStartTimeIncrementMinutes(
+        string $startTimeIncrementMinutes
+    ): self {
+        $obj = clone $this;
+        $obj->startTimeIncrementMinutes = $startTimeIncrementMinutes;
+
+        return $obj;
+    }
+
+    public function withWeeksToAdvertise(int $weeksToAdvertise): self
+    {
+        $obj = clone $this;
+        $obj->weeksToAdvertise = $weeksToAdvertise;
+
+        return $obj;
+    }
+
+    public function withCustomAvailabilityEndDate(
+        int $customAvailabilityEndDate
+    ): self {
+        $obj = clone $this;
+        $obj->customAvailabilityEndDate = $customAvailabilityEndDate;
+
+        return $obj;
+    }
+
+    public function withCustomAvailabilityStartDate(
+        int $customAvailabilityStartDate
+    ): self {
+        $obj = clone $this;
+        $obj->customAvailabilityStartDate = $customAvailabilityStartDate;
+
+        return $obj;
+    }
+
+    public function withDisplayInfo(ExternalLinkDisplayInfo $displayInfo): self
+    {
+        $obj = clone $this;
+        $obj->displayInfo = $displayInfo;
+
+        return $obj;
+    }
+
+    public function withGuestSettings(
+        ExternalGuestSettings $guestSettings
+    ): self {
+        $obj = clone $this;
+        $obj->guestSettings = $guestSettings;
+
+        return $obj;
+    }
+
+    public function withLanguage(string $language): self
+    {
+        $obj = clone $this;
+        $obj->language = $language;
+
+        return $obj;
+    }
+
+    public function withLegalConsentOptions(
+        ExternalLegalConsentOptions $legalConsentOptions
+    ): self {
+        $obj = clone $this;
+        $obj->legalConsentOptions = $legalConsentOptions;
+
+        return $obj;
+    }
+
+    public function withLocale(string $locale): self
+    {
+        $obj = clone $this;
+        $obj->locale = $locale;
+
+        return $obj;
+    }
+
+    public function withLocation(string $location): self
+    {
+        $obj = clone $this;
+        $obj->location = $location;
+
+        return $obj;
+    }
+
+    public function withRedirectURL(string $redirectURL): self
+    {
+        $obj = clone $this;
+        $obj->redirectURL = $redirectURL;
+
+        return $obj;
+    }
+
+    public function withWelcomeScreenInfo(
+        ExternalMeetingsWelcomeScreenInfo $welcomeScreenInfo
+    ): self {
+        $obj = clone $this;
+        $obj->welcomeScreenInfo = $welcomeScreenInfo;
+
+        return $obj;
+    }
+}

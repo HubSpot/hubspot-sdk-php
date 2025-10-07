@@ -7,7 +7,7 @@ namespace HubspotSDK\CRM\Associations\V4;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\PublicObjectID;
+use HubspotSDK\PublicObjectID;
 
 /**
  * @phpstan-type public_association_multi_archive = array{

@@ -104,18 +104,6 @@ final class FilesTest extends TestCase
     }
 
     #[Test]
-    public function testGetImportTaskStatus(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->files->files->getImportTaskStatus('taskId');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testGetSignedURL(): void
     {
         if (UnsupportedMockTests::$skip) {

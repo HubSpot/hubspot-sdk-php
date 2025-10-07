@@ -17,19 +17,20 @@ use HubspotSDK\Automation\Actions\ActionListParams;
 use HubspotSDK\Automation\Actions\ActionReadParams;
 use HubspotSDK\Automation\Actions\ActionUpdateParams;
 use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
-use HubspotSDK\Automation\Actions\CollectionResponsePublicActionRevisionForwardPaging;
 use HubspotSDK\Automation\Actions\InputFieldDefinition;
 use HubspotSDK\Automation\Actions\OutputFieldDefinition;
 use HubspotSDK\Automation\Actions\PublicActionDefinition;
 use HubspotSDK\Automation\Actions\PublicActionFunction;
 use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
 use HubspotSDK\Automation\Actions\PublicActionLabels;
+use HubspotSDK\Automation\Actions\PublicActionRevision;
 use HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
 use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
 use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
 use HubspotSDK\Automation\Actions\PublicSingleFieldDependency;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\ActionsContract;
 
@@ -206,6 +207,8 @@ final class ActionsService implements ActionsContract
      * @param string $after
      * @param int $limit
      *
+     * @return CursorURLPage<PublicActionRevision>
+     *
      * @throws APIException
      */
     public function list(
@@ -214,7 +217,7 @@ final class ActionsService implements ActionsContract
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicActionRevisionForwardPaging {
+    ): CursorURLPage {
         $params = ['appID' => $appID, 'after' => $after, 'limit' => $limit];
 
         return $this->listRaw($definitionID, $params, $requestOptions);
@@ -225,13 +228,15 @@ final class ActionsService implements ActionsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return CursorURLPage<PublicActionRevision>
+     *
      * @throws APIException
      */
     public function listRaw(
         string $definitionID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicActionRevisionForwardPaging {
+    ): CursorURLPage {
         [$parsed, $options] = ActionListParams::parseRequest(
             $params,
             $requestOptions
@@ -247,7 +252,8 @@ final class ActionsService implements ActionsContract
             ],
             query: $parsed,
             options: $options,
-            convert: CollectionResponsePublicActionRevisionForwardPaging::class,
+            convert: PublicActionRevision::class,
+            page: CursorURLPage::class,
         );
     }
 
