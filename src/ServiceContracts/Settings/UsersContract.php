@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Settings;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
+use HubspotSDK\Settings\Users\CollectionResponsePublicUserForwardPaging;
 use HubspotSDK\Settings\Users\PublicUser;
 use HubspotSDK\Settings\Users\UserDeleteParams\IDProperty;
 
@@ -56,29 +56,25 @@ interface UsersContract
      * @param string $after
      * @param int $limit
      *
-     * @return CursorURLPage<PublicUser>
-     *
      * @throws APIException
      */
     public function list(
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null
-    ): CursorURLPage;
+    ): CollectionResponsePublicUserForwardPaging;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
-     * @return CursorURLPage<PublicUser>
-     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CursorURLPage;
+    ): CollectionResponsePublicUserForwardPaging;
 
     /**
      * @api

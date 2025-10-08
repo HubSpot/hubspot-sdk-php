@@ -6,7 +6,9 @@ namespace HubspotSDK\Cms\Blogs\Tags;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -14,10 +16,12 @@ use HubspotSDK\ForwardPaging;
  *   results: list<Tag>, total: int, paging?: ForwardPaging
  * }
  */
-final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
+final class CollectionResponseWithTotalTagForwardPaging implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<collection_response_with_total_tag_forward_paging> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<Tag> $results */
     #[Api(list: Tag::class)]

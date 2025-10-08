@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Blogs;
 
 use HubspotSDK\Cms\Blogs\Tags\BatchResponseTag;
+use HubspotSDK\Cms\Blogs\Tags\CollectionResponseWithTotalTagForwardPaging;
 use HubspotSDK\Cms\Blogs\Tags\Tag;
 use HubspotSDK\Cms\Blogs\Tags\TagCreateParams\Language;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -106,8 +106,6 @@ interface TagsContract
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
      *
-     * @return CursorURLPage<Tag>
-     *
      * @throws APIException
      */
     public function list(
@@ -123,21 +121,19 @@ interface TagsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CursorURLPage;
+    ): CollectionResponseWithTotalTagForwardPaging;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
-     * @return CursorURLPage<Tag>
-     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CursorURLPage;
+    ): CollectionResponseWithTotalTagForwardPaging;
 
     /**
      * @api

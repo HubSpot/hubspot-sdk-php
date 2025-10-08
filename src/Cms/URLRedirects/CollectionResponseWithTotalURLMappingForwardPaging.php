@@ -6,7 +6,9 @@ namespace HubspotSDK\Cms\URLRedirects;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -14,10 +16,12 @@ use HubspotSDK\ForwardPaging;
  *   results: list<URLMapping>, total: int, paging?: ForwardPaging
  * }
  */
-final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseModel
+final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<collection_response_with_total_url_mapping_forward_paging> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<URLMapping> $results */
     #[Api(list: URLMapping::class)]
