@@ -10,9 +10,8 @@ use HubspotSDK\CRM\Associations\V4\BatchResponseVoid;
 use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
 use HubspotSDK\CRM\Associations\V4\ReportCreationResponse;
 use HubspotSDK\CRM\BatchResponsePublicDefaultAssociation;
+use HubspotSDK\CRM\CollectionResponseMultiAssociatedObjectWithLabel;
 use HubspotSDK\CRM\CreatedResponseLabelsBetweenObjectPair;
-use HubspotSDK\CRM\MultiAssociatedObjectWithLabel;
-use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -59,8 +58,6 @@ interface V4Contract
      * @param string $after
      * @param int $limit
      *
-     * @return CursorURLPage<MultiAssociatedObjectWithLabel>
-     *
      * @throws APIException
      */
     public function list(
@@ -70,14 +67,12 @@ interface V4Contract
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CursorURLPage;
+    ): CollectionResponseMultiAssociatedObjectWithLabel;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
-     *
-     * @return CursorURLPage<MultiAssociatedObjectWithLabel>
      *
      * @throws APIException
      */
@@ -85,7 +80,7 @@ interface V4Contract
         string $toObjectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CursorURLPage;
+    ): CollectionResponseMultiAssociatedObjectWithLabel;
 
     /**
      * @api

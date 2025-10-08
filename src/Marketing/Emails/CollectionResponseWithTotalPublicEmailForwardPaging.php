@@ -6,7 +6,9 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -14,10 +16,12 @@ use HubspotSDK\ForwardPaging;
  *   results: list<PublicEmail>, total: int, paging?: ForwardPaging
  * }
  */
-final class CollectionResponseWithTotalPublicEmailForwardPaging implements BaseModel
+final class CollectionResponseWithTotalPublicEmailForwardPaging implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<collection_response_with_total_public_email_forward_paging> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<PublicEmail> $results */
     #[Api(list: PublicEmail::class)]

@@ -6,9 +6,9 @@ namespace HubspotSDK\Services\Settings;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Settings\UsersContract;
+use HubspotSDK\Settings\Users\CollectionResponsePublicUserForwardPaging;
 use HubspotSDK\Settings\Users\PublicUser;
 use HubspotSDK\Settings\Users\UserCreateParams;
 use HubspotSDK\Settings\Users\UserDeleteParams;
@@ -98,15 +98,13 @@ final class UsersService implements UsersContract
      * @param string $after
      * @param int $limit
      *
-     * @return CursorURLPage<PublicUser>
-     *
      * @throws APIException
      */
     public function list(
         $after = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null
-    ): CursorURLPage {
+    ): CollectionResponsePublicUserForwardPaging {
         $params = ['after' => $after, 'limit' => $limit];
 
         return $this->listRaw($params, $requestOptions);
@@ -117,14 +115,12 @@ final class UsersService implements UsersContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CursorURLPage<PublicUser>
-     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CursorURLPage {
+    ): CollectionResponsePublicUserForwardPaging {
         [$parsed, $options] = UserListParams::parseRequest(
             $params,
             $requestOptions
@@ -136,8 +132,7 @@ final class UsersService implements UsersContract
             path: 'settings/v3/users/',
             query: $parsed,
             options: $options,
-            convert: PublicUser::class,
-            page: CursorURLPage::class,
+            convert: CollectionResponsePublicUserForwardPaging::class,
         );
     }
 

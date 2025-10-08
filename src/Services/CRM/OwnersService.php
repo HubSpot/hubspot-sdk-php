@@ -6,11 +6,11 @@ namespace HubspotSDK\Services\CRM;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CRM\Owners\CollectionResponsePublicOwnerForwardPaging;
 use HubspotSDK\CRM\Owners\OwnerGetParams;
 use HubspotSDK\CRM\Owners\OwnerGetParams\IDProperty;
 use HubspotSDK\CRM\Owners\OwnerListParams;
 use HubspotSDK\CRM\Owners\PublicOwner;
-use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\OwnersContract;
 
@@ -33,8 +33,6 @@ final class OwnersService implements OwnersContract
      * @param string $email
      * @param int $limit
      *
-     * @return CursorURLPage<PublicOwner>
-     *
      * @throws APIException
      */
     public function list(
@@ -43,7 +41,7 @@ final class OwnersService implements OwnersContract
         $email = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CursorURLPage {
+    ): CollectionResponsePublicOwnerForwardPaging {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -59,14 +57,12 @@ final class OwnersService implements OwnersContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CursorURLPage<PublicOwner>
-     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CursorURLPage {
+    ): CollectionResponsePublicOwnerForwardPaging {
         [$parsed, $options] = OwnerListParams::parseRequest(
             $params,
             $requestOptions
@@ -78,8 +74,7 @@ final class OwnersService implements OwnersContract
             path: 'crm/v3/owners/',
             query: $parsed,
             options: $options,
-            convert: PublicOwner::class,
-            page: CursorURLPage::class,
+            convert: CollectionResponsePublicOwnerForwardPaging::class,
         );
     }
 

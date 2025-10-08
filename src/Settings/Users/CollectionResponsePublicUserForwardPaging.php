@@ -6,7 +6,9 @@ namespace HubspotSDK\Settings\Users;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -14,10 +16,12 @@ use HubspotSDK\ForwardPaging;
  *   results: list<PublicUser>, paging?: ForwardPaging
  * }
  */
-final class CollectionResponsePublicUserForwardPaging implements BaseModel
+final class CollectionResponsePublicUserForwardPaging implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<collection_response_public_user_forward_paging> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<PublicUser> $results */
     #[Api(list: PublicUser::class)]

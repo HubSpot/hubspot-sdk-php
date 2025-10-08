@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
+use HubspotSDK\Cms\Domains\CollectionResponseWithTotalDomainForwardPaging;
 use HubspotSDK\Cms\Domains\Domain;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -27,8 +27,6 @@ interface DomainsContract
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
      *
-     * @return CursorURLPage<Domain>
-     *
      * @throws APIException
      */
     public function list(
@@ -43,21 +41,19 @@ interface DomainsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CursorURLPage;
+    ): CollectionResponseWithTotalDomainForwardPaging;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
-     * @return CursorURLPage<Domain>
-     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CursorURLPage;
+    ): CollectionResponseWithTotalDomainForwardPaging;
 
     /**
      * @api

@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\CRM\Objects\CollectionResponseSimplePublicObjectWithAssociations;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\Companies\CompanyCreateParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyDeleteParams;
@@ -25,7 +26,6 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
 use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
 use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\CursorURLPage;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\CompaniesContract;
 
@@ -140,8 +140,6 @@ final class CompaniesService implements CompaniesContract
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
      *
-     * @return CursorURLPage<SimplePublicObjectWithAssociations>
-     *
      * @throws APIException
      */
     public function list(
@@ -152,7 +150,7 @@ final class CompaniesService implements CompaniesContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CursorURLPage {
+    ): CollectionResponseSimplePublicObjectWithAssociations {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -170,14 +168,12 @@ final class CompaniesService implements CompaniesContract
      *
      * @param array<string, mixed> $params
      *
-     * @return CursorURLPage<SimplePublicObjectWithAssociations>
-     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CursorURLPage {
+    ): CollectionResponseSimplePublicObjectWithAssociations {
         [$parsed, $options] = CompanyListParams::parseRequest(
             $params,
             $requestOptions
@@ -189,8 +185,7 @@ final class CompaniesService implements CompaniesContract
             path: 'crm/v3/objects/companies',
             query: $parsed,
             options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-            page: CursorURLPage::class,
+            convert: CollectionResponseSimplePublicObjectWithAssociations::class,
         );
     }
 

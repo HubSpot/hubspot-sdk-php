@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CursorURLPage;
 use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
+use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalPublicEmailForwardPaging;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalVersionPublicEmail;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
@@ -174,8 +174,6 @@ interface EmailsContract
      * @param \DateTimeInterface $updatedBefore
      * @param bool $workflowNames
      *
-     * @return CursorURLPage<PublicEmail>
-     *
      * @throws APIException
      */
     public function list(
@@ -197,21 +195,19 @@ interface EmailsContract
         $updatedBefore = omit,
         $workflowNames = omit,
         ?RequestOptions $requestOptions = null,
-    ): CursorURLPage;
+    ): CollectionResponseWithTotalPublicEmailForwardPaging;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
-     * @return CursorURLPage<PublicEmail>
-     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CursorURLPage;
+    ): CollectionResponseWithTotalPublicEmailForwardPaging;
 
     /**
      * @api

@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CursorURLPage;
+use HubspotSDK\Marketing\Forms\CollectionResponseFormDefinitionBaseForwardPaging;
 use HubspotSDK\Marketing\Forms\FieldGroup;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
 use HubspotSDK\Marketing\Forms\FormReplaceParams\FormType;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
-use HubspotSDK\Marketing\Forms\HubSpotFormDefinition;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsImplicitConsentToProcess;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest;
@@ -74,8 +73,6 @@ interface FormsContract
      * @param list<\HubspotSDK\Marketing\Forms\FormListParams\FormType|value-of<\HubspotSDK\Marketing\Forms\FormListParams\FormType>> $formTypes
      * @param int $limit
      *
-     * @return CursorURLPage<HubSpotFormDefinition>
-     *
      * @throws APIException
      */
     public function list(
@@ -84,21 +81,19 @@ interface FormsContract
         $formTypes = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CursorURLPage;
+    ): CollectionResponseFormDefinitionBaseForwardPaging;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
-     * @return CursorURLPage<HubSpotFormDefinition>
-     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CursorURLPage;
+    ): CollectionResponseFormDefinitionBaseForwardPaging;
 
     /**
      * @api

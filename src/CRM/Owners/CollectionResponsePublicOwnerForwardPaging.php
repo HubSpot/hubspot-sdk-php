@@ -6,7 +6,9 @@ namespace HubspotSDK\CRM\Owners;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -14,10 +16,12 @@ use HubspotSDK\ForwardPaging;
  *   results: list<PublicOwner>, paging?: ForwardPaging
  * }
  */
-final class CollectionResponsePublicOwnerForwardPaging implements BaseModel
+final class CollectionResponsePublicOwnerForwardPaging implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<collection_response_public_owner_forward_paging> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<PublicOwner> $results */
     #[Api(list: PublicOwner::class)]
