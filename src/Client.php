@@ -78,7 +78,7 @@ class Client extends BaseClient
 
     public function __construct(
         public ?string $accessToken = null,
-        public ?string $developerHapikey = null,
+        public ?string $developerAPIKey = null,
         ?string $baseUrl = null,
     ) {
         $baseUrl ??= getenv('HUB_SPOT_BASE_URL') ?: 'https://api.hubapi.com';
@@ -124,6 +124,6 @@ class Client extends BaseClient
     /** @return array<string, string> */
     protected function authQuery(): array
     {
-        return ['hapikey' => $this->STAINLESS_FIXME_developerHapikey];
+        return ['hapikey' => $this->STAINLESS_FIXME_developerAPIKey];
     }
 }

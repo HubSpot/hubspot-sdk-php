@@ -2,56 +2,56 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CRM\Objects\Contacts;
+namespace HubspotSDK\CRM\Objects\Contacts\Batch;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputForCreate;
 
 /**
  * An object containing the method's parameters.
  * Example usage:
  * ```
- * $params = (new ContactUpsertParams); // set properties as needed
- * $client->crm.objects.contacts->upsert(...$params->toArray());
+ * $params = (new BatchCreateParams); // set properties as needed
+ * $client->crm.objects.contacts.batch->create(...$params->toArray());
  * ```
- * Create or update a batch of contacts.
+ * Create a batch of contacts.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
  *
- *   `$client->crm.objects.contacts->upsert(...$params->toArray());`
+ *   `$client->crm.objects.contacts.batch->create(...$params->toArray());`
  *
- * @see HubspotSDK\CRM\Objects\Contacts->upsert
+ * @see HubspotSDK\CRM\Objects\Contacts\Batch->create
  *
- * @phpstan-type contact_upsert_params = array{
- *   inputs: list<SimplePublicObjectBatchInputUpsert>
+ * @phpstan-type batch_create_params = array{
+ *   inputs: list<SimplePublicObjectBatchInputForCreate>
  * }
  */
-final class ContactUpsertParams implements BaseModel
+final class BatchCreateParams implements BaseModel
 {
-    /** @use SdkModel<contact_upsert_params> */
+    /** @use SdkModel<batch_create_params> */
     use SdkModel;
     use SdkParams;
 
-    /** @var list<SimplePublicObjectBatchInputUpsert> $inputs */
-    #[Api(list: SimplePublicObjectBatchInputUpsert::class)]
+    /** @var list<SimplePublicObjectBatchInputForCreate> $inputs */
+    #[Api(list: SimplePublicObjectBatchInputForCreate::class)]
     public array $inputs;
 
     /**
-     * `new ContactUpsertParams()` is missing required properties by the API.
+     * `new BatchCreateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ContactUpsertParams::with(inputs: ...)
+     * BatchCreateParams::with(inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new ContactUpsertParams)->withInputs(...)
+     * (new BatchCreateParams)->withInputs(...)
      * ```
      */
     public function __construct()
@@ -64,7 +64,7 @@ final class ContactUpsertParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
+     * @param list<SimplePublicObjectBatchInputForCreate> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -76,7 +76,7 @@ final class ContactUpsertParams implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
+     * @param list<SimplePublicObjectBatchInputForCreate> $inputs
      */
     public function withInputs(array $inputs): self
     {

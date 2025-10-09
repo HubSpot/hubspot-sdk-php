@@ -5,16 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\FilterGroup;
 use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 use HubspotSDK\CRM\Objects\SimplePublicObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -52,14 +47,15 @@ interface ContactsContract
     /**
      * @api
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array<string, string> $properties
      *
      * @throws APIException
      */
     public function update(
-        $inputs,
+        string $contactID,
+        $properties,
         ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject;
+    ): SimplePublicObject;
 
     /**
      * @api
@@ -69,9 +65,10 @@ interface ContactsContract
      * @throws APIException
      */
     public function updateRaw(
+        string $contactID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject;
+    ): SimplePublicObject;
 
     /**
      * @api
@@ -114,24 +111,10 @@ interface ContactsContract
     /**
      * @api
      *
-     * @param list<SimplePublicObjectID> $inputs
-     *
      * @throws APIException
      */
     public function delete(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        array $params,
+        string $contactID,
         ?RequestOptions $requestOptions = null
     ): mixed;
 
@@ -252,28 +235,4 @@ interface ContactsContract
         array $params,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject;
 }

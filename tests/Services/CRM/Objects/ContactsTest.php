@@ -3,9 +3,6 @@
 namespace Tests\Services\CRM\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -68,12 +65,8 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->update(
-            [
-                SimplePublicObjectBatchInput::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                ),
-            ],
+            'contactId',
+            ['foo' => 'string']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -87,14 +80,8 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->update(
-            [
-                SimplePublicObjectBatchInput::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                )
-                    ->withIDProperty('idProperty')
-                    ->withObjectWriteTraceID('objectWriteTraceId'),
-            ],
+            'contactId',
+            ['foo' => 'string']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -119,23 +106,7 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->delete(
-            [SimplePublicObjectID::with(id: 'id')]
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testDeleteWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contacts->delete(
-            [SimplePublicObjectID::with(id: 'id')]
-        );
+        $result = $this->client->crm->objects->contacts->delete('contactId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -218,46 +189,6 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->search();
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testUpsert(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contacts->upsert(
-            [
-                SimplePublicObjectBatchInputUpsert::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                ),
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testUpsertWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contacts->upsert(
-            [
-                SimplePublicObjectBatchInputUpsert::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                )
-                    ->withIDProperty('idProperty')
-                    ->withObjectWriteTraceID('objectWriteTraceId'),
-            ],
-        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

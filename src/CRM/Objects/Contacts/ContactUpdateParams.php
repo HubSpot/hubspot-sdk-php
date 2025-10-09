@@ -8,7 +8,6 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
 
 /**
  * An object containing the method's parameters.
@@ -17,7 +16,7 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
  * $params = (new ContactUpdateParams); // set properties as needed
  * $client->crm.objects.contacts->update(...$params->toArray());
  * ```
- * Update a batch of contacts.
+ * Update a contact.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -26,9 +25,7 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
  *
  * @see HubspotSDK\CRM\Objects\Contacts->update
  *
- * @phpstan-type contact_update_params = array{
- *   inputs: list<SimplePublicObjectBatchInput>
- * }
+ * @phpstan-type contact_update_params = array{properties: array<string, string>}
  */
 final class ContactUpdateParams implements BaseModel
 {
@@ -36,22 +33,22 @@ final class ContactUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<SimplePublicObjectBatchInput> $inputs */
-    #[Api(list: SimplePublicObjectBatchInput::class)]
-    public array $inputs;
+    /** @var array<string, string> $properties */
+    #[Api(map: 'string')]
+    public array $properties;
 
     /**
      * `new ContactUpdateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ContactUpdateParams::with(inputs: ...)
+     * ContactUpdateParams::with(properties: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new ContactUpdateParams)->withInputs(...)
+     * (new ContactUpdateParams)->withProperties(...)
      * ```
      */
     public function __construct()
@@ -64,24 +61,24 @@ final class ContactUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array<string, string> $properties
      */
-    public static function with(array $inputs): self
+    public static function with(array $properties): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj->properties = $properties;
 
         return $obj;
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array<string, string> $properties
      */
-    public function withInputs(array $inputs): self
+    public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj->properties = $properties;
 
         return $obj;
     }

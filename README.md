@@ -48,11 +48,7 @@ $client = new Client(
 );
 
 $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-  properties: [
-    "email" => "mark.s@lumon.industries",
-    "lastname" => "S.",
-    "firstname" => "Mark",
-  ],
+  properties: ["email" => "mark.s@lumon.industries"]
 );
 
 var_dump($createdResponseSimplePublicObject->createdResourceId);
@@ -105,11 +101,7 @@ use HubspotSDK\Core\Exceptions\APIConnectionException;
 
 try {
   $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-    properties: [
-      "email" => "mark.s@lumon.industries",
-      "lastname" => "S.",
-      "firstname" => "Mark",
-    ],
+    properties: ["email" => "mark.s@lumon.industries"]
   );
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
@@ -157,11 +149,7 @@ $client = new Client(maxRetries: 0);
 
 // Or, configure per-request:
 $result = $client->crm->objects->contacts->create(
-  properties: [
-    "email" => "mark.s@lumon.industries",
-    "lastname" => "S.",
-    "firstname" => "Mark",
-  ],
+  properties: ["email" => "mark.s@lumon.industries"],
   requestOptions: RequestOptions::with(maxRetries: 5),
 );
 ```
@@ -182,11 +170,7 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 use HubspotSDK\RequestOptions;
 
 $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-  properties: [
-    "email" => "mark.s@lumon.industries",
-    "lastname" => "S.",
-    "firstname" => "Mark",
-  ],
+  properties: ["email" => "mark.s@lumon.industries"],
   requestOptions: RequestOptions::with(
     extraQueryParams: ["my_query_parameter" => "value"],
     extraBodyParams: ["my_body_parameter" => "value"],
