@@ -65,6 +65,35 @@ and named parameters to initialize value objects.
 
 However, builders are also provided `(new AssociationSpec)->withAssociationCategory("HUBSPOT_DEFINED")`.
 
+### Pagination
+
+List methods in the Hub Spot API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```php
+<?php
+
+use HubspotSDK\Client;
+
+$client = new Client(
+  accessToken: "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+);
+
+$page = $client->crm->objects->contacts->list();
+
+var_dump($page);
+
+// fetch items from the current page
+foreach ($page->getItems() as $item) {
+  var_dump($item->id);
+}
+// make additional network requests to fetch items from all pages, including and after the current page
+foreach ($page->pagingEachItem() as $item) {
+  var_dump($item->id);
+}
+```
+
 ### Handling errors
 
 When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `HubspotSDK\Core\Exceptions\APIException` will be thrown:

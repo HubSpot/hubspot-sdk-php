@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\URLRedirects\CollectionResponseWithTotalURLMappingForwardPaging;
 use HubspotSDK\Cms\URLRedirects\URLMapping;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -119,6 +119,8 @@ interface URLRedirectsContract
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
      *
+     * @return Page<URLMapping>
+     *
      * @throws APIException
      */
     public function list(
@@ -133,19 +135,21 @@ interface URLRedirectsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalURLMappingForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<URLMapping>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalURLMappingForwardPaging;
+    ): Page;
 
     /**
      * @api

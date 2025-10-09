@@ -6,9 +6,7 @@ namespace HubspotSDK\Cms\Domains;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -16,12 +14,10 @@ use HubspotSDK\ForwardPaging;
  *   results: list<Domain>, total: int, paging?: ForwardPaging
  * }
  */
-final class CollectionResponseWithTotalDomainForwardPaging implements BaseModel, ResponseConverter
+final class CollectionResponseWithTotalDomainForwardPaging implements BaseModel
 {
     /** @use SdkModel<collection_response_with_total_domain_forward_paging> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<Domain> $results */
     #[Api(list: Domain::class)]
