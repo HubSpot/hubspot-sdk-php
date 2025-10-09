@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CRM\Objects\Contacts;
+namespace HubspotSDK\CRM\Objects\Contacts\Batch;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -14,23 +14,23 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectID;
  * An object containing the method's parameters.
  * Example usage:
  * ```
- * $params = (new ContactDeleteParams); // set properties as needed
- * $client->crm.objects.contacts->delete(...$params->toArray());
+ * $params = (new BatchDeleteParams); // set properties as needed
+ * $client->crm.objects.contacts.batch->delete(...$params->toArray());
  * ```
  * Archive a batch of contacts.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
  *
- *   `$client->crm.objects.contacts->delete(...$params->toArray());`
+ *   `$client->crm.objects.contacts.batch->delete(...$params->toArray());`
  *
- * @see HubspotSDK\CRM\Objects\Contacts->delete
+ * @see HubspotSDK\CRM\Objects\Contacts\Batch->delete
  *
- * @phpstan-type contact_delete_params = array{inputs: list<SimplePublicObjectID>}
+ * @phpstan-type batch_delete_params = array{inputs: list<SimplePublicObjectID>}
  */
-final class ContactDeleteParams implements BaseModel
+final class BatchDeleteParams implements BaseModel
 {
-    /** @use SdkModel<contact_delete_params> */
+    /** @use SdkModel<batch_delete_params> */
     use SdkModel;
     use SdkParams;
 
@@ -39,17 +39,17 @@ final class ContactDeleteParams implements BaseModel
     public array $inputs;
 
     /**
-     * `new ContactDeleteParams()` is missing required properties by the API.
+     * `new BatchDeleteParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ContactDeleteParams::with(inputs: ...)
+     * BatchDeleteParams::with(inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new ContactDeleteParams)->withInputs(...)
+     * (new BatchDeleteParams)->withInputs(...)
      * ```
      */
     public function __construct()

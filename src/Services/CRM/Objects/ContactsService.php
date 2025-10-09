@@ -6,38 +6,40 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\Contacts\ContactCreateParams;
-use HubspotSDK\CRM\Objects\Contacts\ContactDeleteParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactListParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactMergeParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactPurgeParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactReadParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactSearchParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactUpdateParams;
-use HubspotSDK\CRM\Objects\Contacts\ContactUpsertParams;
 use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\FilterGroup;
 use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 use HubspotSDK\CRM\Objects\SimplePublicObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\ContactsContract;
+use HubspotSDK\Services\CRM\Objects\Contacts\BatchService;
 
 use const HubspotSDK\Core\OMIT as omit;
 
 final class ContactsService implements ContactsContract
 {
     /**
+     * @@api
+     */
+    public BatchService $batch;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->batch = new BatchService($client);
+    }
 
     /**
      * @api
@@ -88,19 +90,20 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Update a batch of contacts
+     * Update a contact
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array<string, string> $properties
      *
      * @throws APIException
      */
     public function update(
-        $inputs,
+        string $contactID,
+        $properties,
         ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject {
-        $params = ['inputs' => $inputs];
+    ): SimplePublicObject {
+        $params = ['properties' => $properties];
 
-        return $this->updateRaw($params, $requestOptions);
+        return $this->updateRaw($contactID, $params, $requestOptions);
     }
 
     /**
@@ -111,9 +114,10 @@ final class ContactsService implements ContactsContract
      * @throws APIException
      */
     public function updateRaw(
+        string $contactID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject {
+    ): SimplePublicObject {
         [$parsed, $options] = ContactUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -121,11 +125,11 @@ final class ContactsService implements ContactsContract
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/contacts/batch/update',
+            method: 'patch',
+            path: ['crm/v3/objects/contacts/%1$s', $contactID],
             body: (object) $parsed,
             options: $options,
-            convert: BatchResponseSimplePublicObject::class,
+            convert: SimplePublicObject::class,
         );
     }
 
@@ -198,43 +202,19 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Archive a batch of contacts
-     *
-     * @param list<SimplePublicObjectID> $inputs
+     * Archive a contact
      *
      * @throws APIException
      */
     public function delete(
-        $inputs,
+        string $contactID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
-
-        return $this->deleteRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        [$parsed, $options] = ContactDeleteParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
         // @phpstan-ignore-next-line;
         return $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/contacts/batch/archive',
-            body: (object) $parsed,
-            options: $options,
+            method: 'delete',
+            path: ['crm/v3/objects/contacts/%1$s', $contactID],
+            options: $requestOptions,
             convert: null,
         );
     }
@@ -449,50 +429,6 @@ final class ContactsService implements ContactsContract
             body: (object) $parsed,
             options: $options,
             convert: CollectionResponseWithTotalSimplePublicObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Create or update a batch of contacts
-     *
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject {
-        $params = ['inputs' => $inputs];
-
-        return $this->upsertRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject {
-        [$parsed, $options] = ContactUpsertParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/contacts/batch/upsert',
-            body: (object) $parsed,
-            options: $options,
-            convert: BatchResponseSimplePublicUpsertObject::class,
         );
     }
 }
