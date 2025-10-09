@@ -6,10 +6,16 @@ namespace HubspotSDK\Services\Cms;
 
 use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\Cms\BlogsContract;
+use HubspotSDK\Services\Cms\Blogs\PostsService;
 use HubspotSDK\Services\Cms\Blogs\TagsService;
 
 final class BlogsService implements BlogsContract
 {
+    /**
+     * @@api
+     */
+    public PostsService $posts;
+
     /**
      * @@api
      */
@@ -20,6 +26,7 @@ final class BlogsService implements BlogsContract
      */
     public function __construct(private Client $client)
     {
+        $this->posts = new PostsService($client);
         $this->tags = new TagsService($client);
     }
 }
