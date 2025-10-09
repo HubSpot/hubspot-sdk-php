@@ -19,6 +19,26 @@ use HubspotSDK\Services\SchedulerService;
 use HubspotSDK\Services\SettingsService;
 use HubspotSDK\Services\WebhooksService;
 
+function validateSingleAuth(?string $accessToken, ?string $developerAPIKey): void
+{
+    $provided = [];
+    if (null !== $accessToken && '' !== $accessToken) {
+        $provided[] = 'accessToken';
+    }
+    if (null !== $developerAPIKey && '' !== $developerAPIKey) {
+        $provided[] = 'developerAPIKey';
+    }
+
+    if (count($provided) > 1) {
+        throw new \InvalidArgumentException(
+            sprintf(
+                'You provided multiple authentication methods (%s), but only one can be used at a time. Please use only one of: accessToken or developerAPIKey.',
+                implode(', ', $provided)
+            )
+        );
+    }
+}
+
 class Client extends BaseClient
 {
     /**
@@ -81,6 +101,8 @@ class Client extends BaseClient
         public ?string $developerAPIKey = null,
         ?string $baseUrl = null,
     ) {
+        validateSingleAuth($this->accessToken, $this->developerAPIKey);
+
         $baseUrl ??= getenv('HUB_SPOT_BASE_URL') ?: 'https://api.hubapi.com';
 
         $options = RequestOptions::with(
