@@ -6,7 +6,6 @@ namespace HubspotSDK\ServiceContracts\CRM\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\CRM\Objects\CollectionResponseSimplePublicObjectWithAssociations;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\FilterGroup;
@@ -14,6 +13,7 @@ use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 use HubspotSDK\CRM\Objects\SimplePublicObject;
 use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
 use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -84,6 +84,8 @@ interface DealsContract
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
      *
+     * @return Page<SimplePublicObjectWithAssociations>
+     *
      * @throws APIException
      */
     public function list(
@@ -94,19 +96,21 @@ interface DealsContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseSimplePublicObjectWithAssociations;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<SimplePublicObjectWithAssociations>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseSimplePublicObjectWithAssociations;
+    ): Page;
 
     /**
      * @api

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Owners\CollectionResponsePublicOwnerForwardPaging;
 use HubspotSDK\CRM\Owners\OwnerGetParams\IDProperty;
 use HubspotSDK\CRM\Owners\PublicOwner;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -22,6 +22,8 @@ interface OwnersContract
      * @param string $email
      * @param int $limit
      *
+     * @return Page<PublicOwner>
+     *
      * @throws APIException
      */
     public function list(
@@ -30,19 +32,21 @@ interface OwnersContract
         $email = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicOwnerForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<PublicOwner>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicOwnerForwardPaging;
+    ): Page;
 
     /**
      * @api

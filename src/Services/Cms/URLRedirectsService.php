@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\URLRedirects\CollectionResponseWithTotalURLMappingForwardPaging;
 use HubspotSDK\Cms\URLRedirects\URLMapping;
 use HubspotSDK\Cms\URLRedirects\URLRedirectCreateParams;
 use HubspotSDK\Cms\URLRedirects\URLRedirectListParams;
 use HubspotSDK\Cms\URLRedirects\URLRedirectUpdateParams;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\URLRedirectsContract;
 
@@ -196,6 +196,8 @@ final class URLRedirectsService implements URLRedirectsContract
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
      *
+     * @return Page<URLMapping>
+     *
      * @throws APIException
      */
     public function list(
@@ -210,7 +212,7 @@ final class URLRedirectsService implements URLRedirectsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalURLMappingForwardPaging {
+    ): Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -232,12 +234,14 @@ final class URLRedirectsService implements URLRedirectsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<URLMapping>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalURLMappingForwardPaging {
+    ): Page {
         [$parsed, $options] = URLRedirectListParams::parseRequest(
             $params,
             $requestOptions
@@ -249,7 +253,8 @@ final class URLRedirectsService implements URLRedirectsContract
             path: 'cms/v3/url-redirects/',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalURLMappingForwardPaging::class,
+            convert: URLMapping::class,
+            page: Page::class,
         );
     }
 

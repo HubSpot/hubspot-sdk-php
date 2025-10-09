@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Domains\CollectionResponseWithTotalDomainForwardPaging;
 use HubspotSDK\Cms\Domains\Domain;
 use HubspotSDK\Cms\Domains\DomainListParams;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\DomainsContract;
 
@@ -37,6 +37,8 @@ final class DomainsService implements DomainsContract
      * @param \DateTimeInterface $updatedAt
      * @param \DateTimeInterface $updatedBefore
      *
+     * @return Page<Domain>
+     *
      * @throws APIException
      */
     public function list(
@@ -51,7 +53,7 @@ final class DomainsService implements DomainsContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalDomainForwardPaging {
+    ): Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -73,12 +75,14 @@ final class DomainsService implements DomainsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<Domain>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalDomainForwardPaging {
+    ): Page {
         [$parsed, $options] = DomainListParams::parseRequest(
             $params,
             $requestOptions
@@ -90,7 +94,8 @@ final class DomainsService implements DomainsContract
             path: 'cms/v3/domains/',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalDomainForwardPaging::class,
+            convert: Domain::class,
+            page: Page::class,
         );
     }
 

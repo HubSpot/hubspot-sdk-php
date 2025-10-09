@@ -8,7 +8,6 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
-use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalPublicEmailForwardPaging;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalVersionPublicEmail;
 use HubspotSDK\Marketing\Emails\EmailCloneParams;
 use HubspotSDK\Marketing\Emails\EmailCreateAbTestVariationParams;
@@ -38,6 +37,7 @@ use HubspotSDK\Marketing\Emails\PublicEmailToDetails;
 use HubspotSDK\Marketing\Emails\PublicRssEmailDetails;
 use HubspotSDK\Marketing\Emails\PublicWebversionDetails;
 use HubspotSDK\Marketing\Emails\VersionPublicEmail;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\EmailsContract;
 
@@ -280,6 +280,8 @@ final class EmailsService implements EmailsContract
      * @param \DateTimeInterface $updatedBefore
      * @param bool $workflowNames
      *
+     * @return Page<PublicEmail>
+     *
      * @throws APIException
      */
     public function list(
@@ -301,7 +303,7 @@ final class EmailsService implements EmailsContract
         $updatedBefore = omit,
         $workflowNames = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalPublicEmailForwardPaging {
+    ): Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -330,12 +332,14 @@ final class EmailsService implements EmailsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<PublicEmail>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalPublicEmailForwardPaging {
+    ): Page {
         [$parsed, $options] = EmailListParams::parseRequest(
             $params,
             $requestOptions
@@ -347,7 +351,8 @@ final class EmailsService implements EmailsContract
             path: 'marketing/v3/emails/',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalPublicEmailForwardPaging::class,
+            convert: PublicEmail::class,
+            page: Page::class,
         );
     }
 

@@ -8,7 +8,6 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\CRM\Objects\CollectionResponseSimplePublicObjectWithAssociations;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\Contacts\ContactCreateParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactDeleteParams;
@@ -27,6 +26,7 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
 use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
 use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\ContactsContract;
 
@@ -141,6 +141,8 @@ final class ContactsService implements ContactsContract
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
      *
+     * @return Page<SimplePublicObjectWithAssociations>
+     *
      * @throws APIException
      */
     public function list(
@@ -151,7 +153,7 @@ final class ContactsService implements ContactsContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseSimplePublicObjectWithAssociations {
+    ): Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -169,12 +171,14 @@ final class ContactsService implements ContactsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<SimplePublicObjectWithAssociations>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseSimplePublicObjectWithAssociations {
+    ): Page {
         [$parsed, $options] = ContactListParams::parseRequest(
             $params,
             $requestOptions
@@ -186,7 +190,8 @@ final class ContactsService implements ContactsContract
             path: 'crm/v3/objects/contacts',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseSimplePublicObjectWithAssociations::class,
+            convert: SimplePublicObjectWithAssociations::class,
+            page: Page::class,
         );
     }
 

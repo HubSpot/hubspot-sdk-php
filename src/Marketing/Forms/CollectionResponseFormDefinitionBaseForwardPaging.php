@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Forms;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -16,12 +14,10 @@ use HubspotSDK\ForwardPaging;
  *   results: list<HubSpotFormDefinition>, paging?: ForwardPaging
  * }
  */
-final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseModel, ResponseConverter
+final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseModel
 {
     /** @use SdkModel<collection_response_form_definition_base_forward_paging> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<HubSpotFormDefinition> $results */
     #[Api(list: HubSpotFormDefinition::class)]
