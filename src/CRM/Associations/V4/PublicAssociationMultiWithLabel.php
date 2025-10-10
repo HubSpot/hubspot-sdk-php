@@ -8,14 +8,14 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\MultiAssociatedObjectWithLabel;
-use HubspotSDK\Marketing\Emails\Paging;
+use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
 use HubspotSDK\PublicObjectID;
 
 /**
  * @phpstan-type public_association_multi_with_label = array{
  *   from: PublicObjectID,
  *   to: list<MultiAssociatedObjectWithLabel>,
- *   paging?: Paging,
+ *   paging?: MarketingEmailsPaging,
  * }
  */
 final class PublicAssociationMultiWithLabel implements BaseModel
@@ -31,7 +31,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
     public array $to;
 
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?MarketingEmailsPaging $paging;
 
     /**
      * `new PublicAssociationMultiWithLabel()` is missing required properties by the API.
@@ -62,7 +62,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
     public static function with(
         PublicObjectID $from,
         array $to,
-        ?Paging $paging = null
+        ?MarketingEmailsPaging $paging = null
     ): self {
         $obj = new self;
 
@@ -93,7 +93,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    public function withPaging(MarketingEmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\CRM\Owners\PublicOwner\Type;
-use HubspotSDK\Settings\Users\PublicTeam;
+use HubspotSDK\Settings\Users\SettingsUsersPublicTeam;
 
 /**
  * @phpstan-type public_owner = array{
@@ -22,7 +22,7 @@ use HubspotSDK\Settings\Users\PublicTeam;
  *   email?: string,
  *   firstName?: string,
  *   lastName?: string,
- *   teams?: list<PublicTeam>,
+ *   teams?: list<SettingsUsersPublicTeam>,
  *   userID?: int,
  *   userIDIncludingInactive?: int,
  * }
@@ -59,8 +59,8 @@ final class PublicOwner implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?string $lastName;
 
-    /** @var list<PublicTeam>|null $teams */
-    #[Api(list: PublicTeam::class, optional: true)]
+    /** @var list<SettingsUsersPublicTeam>|null $teams */
+    #[Api(list: SettingsUsersPublicTeam::class, optional: true)]
     public ?array $teams;
 
     #[Api('userId', optional: true)]
@@ -101,7 +101,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param list<PublicTeam> $teams
+     * @param list<SettingsUsersPublicTeam> $teams
      */
     public static function with(
         string $id,
@@ -202,7 +202,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
     }
 
     /**
-     * @param list<PublicTeam> $teams
+     * @param list<SettingsUsersPublicTeam> $teams
      */
     public function withTeams(array $teams): self
     {

@@ -9,16 +9,16 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_team = array{
+ * @phpstan-type settings_users_public_team = array{
  *   id: string,
  *   name: string,
  *   secondaryUserIDs: list<string>,
  *   userIDs: list<string>,
  * }
  */
-final class PublicTeam implements BaseModel
+final class SettingsUsersPublicTeam implements BaseModel
 {
-    /** @use SdkModel<public_team> */
+    /** @use SdkModel<settings_users_public_team> */
     use SdkModel;
 
     #[Api]
@@ -36,17 +36,19 @@ final class PublicTeam implements BaseModel
     public array $userIDs;
 
     /**
-     * `new PublicTeam()` is missing required properties by the API.
+     * `new SettingsUsersPublicTeam()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicTeam::with(id: ..., name: ..., secondaryUserIDs: ..., userIDs: ...)
+     * SettingsUsersPublicTeam::with(
+     *   id: ..., name: ..., secondaryUserIDs: ..., userIDs: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PublicTeam)
+     * (new SettingsUsersPublicTeam)
      *   ->withID(...)
      *   ->withName(...)
      *   ->withSecondaryUserIDs(...)

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type option_alias = array{
+ * @phpstan-type crm_option = array{
  *   hidden: bool, label: string, value: string, displayOrder?: int
  * }
  */
-final class Option implements BaseModel
+final class CRMOption implements BaseModel
 {
-    /** @use SdkModel<option_alias> */
+    /** @use SdkModel<crm_option> */
     use SdkModel;
 
     #[Api]
@@ -31,17 +31,17 @@ final class Option implements BaseModel
     public ?int $displayOrder;
 
     /**
-     * `new Option()` is missing required properties by the API.
+     * `new CRMOption()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * Option::with(hidden: ..., label: ..., value: ...)
+     * CRMOption::with(hidden: ..., label: ..., value: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new Option)->withHidden(...)->withLabel(...)->withValue(...)
+     * (new CRMOption)->withHidden(...)->withLabel(...)->withValue(...)
      * ```
      */
     public function __construct()

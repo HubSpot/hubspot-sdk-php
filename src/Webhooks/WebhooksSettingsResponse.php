@@ -11,16 +11,16 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type settings_response = array{
+ * @phpstan-type webhooks_settings_response = array{
  *   createdAt: \DateTimeInterface,
  *   targetURL: string,
  *   throttling: ThrottlingSettings,
  *   updatedAt?: \DateTimeInterface,
  * }
  */
-final class SettingsResponse implements BaseModel, ResponseConverter
+final class WebhooksSettingsResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<settings_response> */
+    /** @use SdkModel<webhooks_settings_response> */
     use SdkModel;
 
     use SdkResponse;
@@ -38,17 +38,17 @@ final class SettingsResponse implements BaseModel, ResponseConverter
     public ?\DateTimeInterface $updatedAt;
 
     /**
-     * `new SettingsResponse()` is missing required properties by the API.
+     * `new WebhooksSettingsResponse()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SettingsResponse::with(createdAt: ..., targetURL: ..., throttling: ...)
+     * WebhooksSettingsResponse::with(createdAt: ..., targetURL: ..., throttling: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new SettingsResponse)
+     * (new WebhooksSettingsResponse)
      *   ->withCreatedAt(...)
      *   ->withTargetURL(...)
      *   ->withThrottling(...)

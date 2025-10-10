@@ -8,7 +8,7 @@ use HubspotSDK\Automation\Actions\InputFieldDefinition;
 use HubspotSDK\Automation\Actions\PublicActionFunction;
 use HubspotSDK\Automation\Actions\PublicActionLabels;
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Option;
+use HubspotSDK\CRM\CRMOption;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -58,7 +58,7 @@ final class ActionsTest extends TestCase
                         externalOptions: true,
                         name: 'name',
                         options: [
-                            Option::with(hidden: true, label: 'label', value: 'value'),
+                            CRMOption::with(hidden: true, label: 'label', value: 'value'),
                         ],
                         type: 'string',
                     ),
@@ -96,7 +96,7 @@ final class ActionsTest extends TestCase
                         externalOptions: true,
                         name: 'name',
                         options: [
-                            Option::with(hidden: true, label: 'label', value: 'value')
+                            CRMOption::with(hidden: true, label: 'label', value: 'value')
                                 ->withDisplayOrder(0),
                         ],
                         type: 'string',

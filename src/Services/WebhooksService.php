@@ -9,7 +9,6 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\WebhooksContract;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
-use HubspotSDK\Webhooks\SettingsResponse;
 use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
 use HubspotSDK\Webhooks\SubscriptionListResponse;
 use HubspotSDK\Webhooks\SubscriptionResponse;
@@ -19,6 +18,7 @@ use HubspotSDK\Webhooks\WebhookCreateParams;
 use HubspotSDK\Webhooks\WebhookCreateParams\EventType;
 use HubspotSDK\Webhooks\WebhookDeleteParams;
 use HubspotSDK\Webhooks\WebhookReadParams;
+use HubspotSDK\Webhooks\WebhooksSettingsResponse;
 use HubspotSDK\Webhooks\WebhookUpdateBatchParams;
 use HubspotSDK\Webhooks\WebhookUpdateParams;
 
@@ -240,7 +240,7 @@ final class WebhooksService implements WebhooksContract
         $targetURL,
         $throttling,
         ?RequestOptions $requestOptions = null
-    ): SettingsResponse {
+    ): WebhooksSettingsResponse {
         $params = ['targetURL' => $targetURL, 'throttling' => $throttling];
 
         return $this->configureRaw($appID, $params, $requestOptions);
@@ -257,7 +257,7 @@ final class WebhooksService implements WebhooksContract
         int $appID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): SettingsResponse {
+    ): WebhooksSettingsResponse {
         [$parsed, $options] = WebhookConfigureParams::parseRequest(
             $params,
             $requestOptions
@@ -269,7 +269,7 @@ final class WebhooksService implements WebhooksContract
             path: ['webhooks/v3/%1$s/settings', $appID],
             body: (object) $parsed,
             options: $options,
-            convert: SettingsResponse::class,
+            convert: WebhooksSettingsResponse::class,
         );
     }
 

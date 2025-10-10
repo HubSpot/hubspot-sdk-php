@@ -10,13 +10,13 @@ use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Option;
+use HubspotSDK\CRM\CRMOption;
 
 /**
  * @phpstan-type field_type_definition = array{
  *   externalOptions: bool,
  *   name: string,
- *   options: list<Option>,
+ *   options: list<CRMOption>,
  *   type: value-of<Type>,
  *   externalOptionsReferenceType?: string,
  *   fieldType?: value-of<FieldType>,
@@ -37,8 +37,8 @@ final class FieldTypeDefinition implements BaseModel
     #[Api]
     public string $name;
 
-    /** @var list<Option> $options */
-    #[Api(list: Option::class)]
+    /** @var list<CRMOption> $options */
+    #[Api(list: CRMOption::class)]
     public array $options;
 
     /** @var value-of<Type> $type */
@@ -95,7 +95,7 @@ final class FieldTypeDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Option> $options
+     * @param list<CRMOption> $options
      * @param Type|value-of<Type> $type
      * @param FieldType|value-of<FieldType> $fieldType
      * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
@@ -146,7 +146,7 @@ final class FieldTypeDefinition implements BaseModel
     }
 
     /**
-     * @param list<Option> $options
+     * @param list<CRMOption> $options
      */
     public function withOptions(array $options): self
     {

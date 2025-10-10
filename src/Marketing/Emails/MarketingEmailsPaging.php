@@ -11,11 +11,13 @@ use HubspotSDK\NextPage;
 use HubspotSDK\PreviousPage;
 
 /**
- * @phpstan-type paging_alias = array{next: NextPage, prev?: PreviousPage}
+ * @phpstan-type marketing_emails_paging = array{
+ *   next: NextPage, prev?: PreviousPage
+ * }
  */
-final class Paging implements BaseModel
+final class MarketingEmailsPaging implements BaseModel
 {
-    /** @use SdkModel<paging_alias> */
+    /** @use SdkModel<marketing_emails_paging> */
     use SdkModel;
 
     #[Api]
@@ -25,17 +27,17 @@ final class Paging implements BaseModel
     public ?PreviousPage $prev;
 
     /**
-     * `new Paging()` is missing required properties by the API.
+     * `new MarketingEmailsPaging()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * Paging::with(next: ...)
+     * MarketingEmailsPaging::with(next: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new Paging)->withNext(...)
+     * (new MarketingEmailsPaging)->withNext(...)
      * ```
      */
     public function __construct()
