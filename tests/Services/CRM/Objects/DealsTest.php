@@ -3,7 +3,6 @@
 namespace Tests\Services\CRM\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -31,13 +30,13 @@ final class DealsTest extends TestCase
     }
 
     #[Test]
-    public function testCreate(): void
+    public function testCreateByObjectTypeID(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->deals->create(
+        $result = $this->client->crm->objects->deals->createByObjectTypeID(
             properties: ['foo' => 'string']
         );
 
@@ -45,13 +44,13 @@ final class DealsTest extends TestCase
     }
 
     #[Test]
-    public function testCreateWithOptionalParams(): void
+    public function testCreateByObjectTypeIDWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->deals->create(
+        $result = $this->client->crm->objects->deals->createByObjectTypeID(
             properties: ['foo' => 'string']
         );
 
@@ -59,67 +58,51 @@ final class DealsTest extends TestCase
     }
 
     #[Test]
-    public function testUpdate(): void
+    public function testDeleteByObjectTypeID(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->deals->update(
-            'dealId',
-            properties: ['foo' => 'string']
+        $result = $this->client->crm->objects->deals->deleteByObjectTypeID(
+            'dealId'
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testUpdateWithOptionalParams(): void
+    public function testGetByObjectTypeID(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->deals->update(
-            'dealId',
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->deals->getByObjectTypeID('dealId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testList(): void
+    public function testListByObjectTypeID(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->deals->list();
+        $result = $this->client->crm->objects->deals->listByObjectTypeID();
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testDelete(): void
+    public function testMergeByObjectTypeID(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->deals->delete('dealId');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testMerge(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->deals->merge(
+        $result = $this->client->crm->objects->deals->mergeByObjectTypeID(
             objectIDToMerge: 'objectIdToMerge',
             primaryObjectID: 'primaryObjectId'
         );
@@ -128,13 +111,13 @@ final class DealsTest extends TestCase
     }
 
     #[Test]
-    public function testMergeWithOptionalParams(): void
+    public function testMergeByObjectTypeIDWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->deals->merge(
+        $result = $this->client->crm->objects->deals->mergeByObjectTypeID(
             objectIDToMerge: 'objectIdToMerge',
             primaryObjectID: 'primaryObjectId'
         );
@@ -143,64 +126,42 @@ final class DealsTest extends TestCase
     }
 
     #[Test]
-    public function testRead(): void
+    public function testSearchByObjectTypeID(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->deals->read('dealId');
+        $result = $this->client->crm->objects->deals->searchByObjectTypeID();
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testSearch(): void
+    public function testUpdateByObjectTypeID(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->deals->search();
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testUpsert(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->deals->upsert(
-            [
-                SimplePublicObjectBatchInputUpsert::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                ),
-            ],
+        $result = $this->client->crm->objects->deals->updateByObjectTypeID(
+            'dealId',
+            properties: ['foo' => 'string']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testUpsertWithOptionalParams(): void
+    public function testUpdateByObjectTypeIDWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->deals->upsert(
-            [
-                SimplePublicObjectBatchInputUpsert::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                )
-                    ->withIDProperty('idProperty')
-                    ->withObjectWriteTraceID('objectWriteTraceId'),
-            ],
+        $result = $this->client->crm->objects->deals->updateByObjectTypeID(
+            'dealId',
+            properties: ['foo' => 'string']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

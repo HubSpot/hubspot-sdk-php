@@ -193,7 +193,7 @@ interface TagsContract
      * @api
      *
      * @param string $id
-     * @param string $language
+     * @param \HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language> $language
      * @param string $primaryID
      * @param string $primaryLanguage
      *

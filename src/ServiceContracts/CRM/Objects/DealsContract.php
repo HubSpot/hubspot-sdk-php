@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\CRM\Objects\CollectionResponseSimplePublicObjectWithAssociations;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\FilterGroup;
 use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 use HubspotSDK\CRM\Objects\SimplePublicObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
 use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -28,7 +26,7 @@ interface DealsContract
      *
      * @throws APIException
      */
-    public function create(
+    public function createByObjectTypeID(
         $properties,
         $associations = omit,
         ?RequestOptions $requestOptions = null,
@@ -41,7 +39,7 @@ interface DealsContract
      *
      * @throws APIException
      */
-    public function createRaw(
+    public function createByObjectTypeIDRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): CreatedResponseSimplePublicObject;
@@ -49,17 +47,33 @@ interface DealsContract
     /**
      * @api
      *
-     * @param array<string, string> $properties
+     * @throws APIException
+     */
+    public function deleteByObjectTypeID(
+        string $dealID,
+        ?RequestOptions $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param bool $archived
+     * @param list<string> $associations
      * @param string $idProperty
+     * @param list<string> $properties
+     * @param list<string> $propertiesWithHistory
      *
      * @throws APIException
      */
-    public function update(
+    public function getByObjectTypeID(
         string $dealID,
-        $properties,
+        $archived = omit,
+        $associations = omit,
         $idProperty = omit,
+        $properties = omit,
+        $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): SimplePublicObject;
+    ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
@@ -68,11 +82,11 @@ interface DealsContract
      *
      * @throws APIException
      */
-    public function updateRaw(
+    public function getByObjectTypeIDRaw(
         string $dealID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): SimplePublicObject;
+    ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
@@ -84,11 +98,9 @@ interface DealsContract
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
      *
-     * @return Page<SimplePublicObjectWithAssociations>
-     *
      * @throws APIException
      */
-    public function list(
+    public function listByObjectTypeID(
         $after = omit,
         $archived = omit,
         $associations = omit,
@@ -96,31 +108,19 @@ interface DealsContract
         $properties = omit,
         $propertiesWithHistory = omit,
         ?RequestOptions $requestOptions = null,
-    ): Page;
+    ): CollectionResponseSimplePublicObjectWithAssociations;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
-     * @return Page<SimplePublicObjectWithAssociations>
-     *
      * @throws APIException
      */
-    public function listRaw(
+    public function listByObjectTypeIDRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function delete(
-        string $dealID,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
+    ): CollectionResponseSimplePublicObjectWithAssociations;
 
     /**
      * @api
@@ -130,7 +130,7 @@ interface DealsContract
      *
      * @throws APIException
      */
-    public function merge(
+    public function mergeByObjectTypeID(
         $objectIDToMerge,
         $primaryObjectID,
         ?RequestOptions $requestOptions = null,
@@ -143,44 +143,10 @@ interface DealsContract
      *
      * @throws APIException
      */
-    public function mergeRaw(
+    public function mergeByObjectTypeIDRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): SimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param bool $archived
-     * @param list<string> $associations
-     * @param string $idProperty
-     * @param list<string> $properties
-     * @param list<string> $propertiesWithHistory
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $dealID,
-        $archived = omit,
-        $associations = omit,
-        $idProperty = omit,
-        $properties = omit,
-        $propertiesWithHistory = omit,
-        ?RequestOptions $requestOptions = null,
-    ): SimplePublicObjectWithAssociations;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $dealID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
@@ -194,7 +160,7 @@ interface DealsContract
      *
      * @throws APIException
      */
-    public function search(
+    public function searchByObjectTypeID(
         $after = omit,
         $filterGroups = omit,
         $limit = omit,
@@ -211,7 +177,7 @@ interface DealsContract
      *
      * @throws APIException
      */
-    public function searchRaw(
+    public function searchByObjectTypeIDRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
@@ -219,14 +185,17 @@ interface DealsContract
     /**
      * @api
      *
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
+     * @param array<string, string> $properties
+     * @param string $idProperty
      *
      * @throws APIException
      */
-    public function upsert(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject;
+    public function updateByObjectTypeID(
+        string $dealID,
+        $properties,
+        $idProperty = omit,
+        ?RequestOptions $requestOptions = null,
+    ): SimplePublicObject;
 
     /**
      * @api
@@ -235,8 +204,9 @@ interface DealsContract
      *
      * @throws APIException
      */
-    public function upsertRaw(
+    public function updateByObjectTypeIDRaw(
+        string $dealID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject;
+    ): SimplePublicObject;
 }
