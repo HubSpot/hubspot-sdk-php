@@ -8,7 +8,7 @@ use HubspotSDK\Cms\Hubdb\Column\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Option;
+use HubspotSDK\CRM\CRMOption;
 
 /**
  * @phpstan-type column_alias = array{
@@ -26,7 +26,7 @@ use HubspotSDK\CRM\Option;
  *   foreignIDsByName?: array<string, ForeignID>,
  *   foreignTableID?: int,
  *   optionCount?: int,
- *   options?: list<Option>,
+ *   options?: list<CRMOption>,
  *   updatedAt?: \DateTimeInterface,
  *   updatedBy?: SimpleUser,
  *   updatedByUserID?: int,
@@ -84,8 +84,8 @@ final class Column implements BaseModel
     #[Api(optional: true)]
     public ?int $optionCount;
 
-    /** @var list<Option>|null $options */
-    #[Api(list: Option::class, optional: true)]
+    /** @var list<CRMOption>|null $options */
+    #[Api(list: CRMOption::class, optional: true)]
     public ?array $options;
 
     #[Api(optional: true)]
@@ -128,7 +128,7 @@ final class Column implements BaseModel
      * @param list<ForeignID> $foreignIDs
      * @param array<string, ForeignID> $foreignIDsByID
      * @param array<string, ForeignID> $foreignIDsByName
-     * @param list<Option> $options
+     * @param list<CRMOption> $options
      */
     public static function with(
         string $label,
@@ -302,7 +302,7 @@ final class Column implements BaseModel
     }
 
     /**
-     * @param list<Option> $options
+     * @param list<CRMOption> $options
      */
     public function withOptions(array $options): self
     {

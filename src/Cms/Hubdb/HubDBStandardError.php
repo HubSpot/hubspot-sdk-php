@@ -11,7 +11,7 @@ use HubspotSDK\Core\Conversion\ListOf;
 use HubspotSDK\ErrorDetail;
 
 /**
- * @phpstan-type standard_error = array{
+ * @phpstan-type hub_db_standard_error = array{
  *   category: string,
  *   context: array<string, list<string>>,
  *   errors: list<ErrorDetail>,
@@ -22,9 +22,9 @@ use HubspotSDK\ErrorDetail;
  *   id?: string,
  * }
  */
-final class StandardError implements BaseModel
+final class HubDBStandardError implements BaseModel
 {
-    /** @use SdkModel<standard_error> */
+    /** @use SdkModel<hub_db_standard_error> */
     use SdkModel;
 
     #[Api]
@@ -55,11 +55,11 @@ final class StandardError implements BaseModel
     public ?string $id;
 
     /**
-     * `new StandardError()` is missing required properties by the API.
+     * `new HubDBStandardError()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * StandardError::with(
+     * HubDBStandardError::with(
      *   category: ...,
      *   context: ...,
      *   errors: ...,
@@ -73,7 +73,7 @@ final class StandardError implements BaseModel
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new StandardError)
+     * (new HubDBStandardError)
      *   ->withCategory(...)
      *   ->withContext(...)
      *   ->withErrors(...)

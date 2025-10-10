@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type option_alias = array{
+ * @phpstan-type hub_db_option = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   name: string,
@@ -23,9 +23,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   updatedByUserID?: int,
  * }
  */
-final class Option implements BaseModel
+final class HubDBOption implements BaseModel
 {
-    /** @use SdkModel<option_alias> */
+    /** @use SdkModel<hub_db_option> */
     use SdkModel;
 
     #[Api]
@@ -62,11 +62,11 @@ final class Option implements BaseModel
     public ?int $updatedByUserID;
 
     /**
-     * `new Option()` is missing required properties by the API.
+     * `new HubDBOption()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * Option::with(
+     * HubDBOption::with(
      *   id: ..., createdAt: ..., name: ..., order: ..., type: ..., updatedAt: ...
      * )
      * ```
@@ -74,7 +74,7 @@ final class Option implements BaseModel
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new Option)
+     * (new HubDBOption)
      *   ->withID(...)
      *   ->withCreatedAt(...)
      *   ->withName(...)

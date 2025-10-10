@@ -36,7 +36,7 @@ use HubspotSDK\CRM\Properties\PropertyUpdateParams\Type;
  *   groupName?: string,
  *   hidden?: bool,
  *   label?: string,
- *   options?: list<OptionInput>,
+ *   options?: list<CRMPropertiesOptionInput>,
  *   type?: Type|value-of<Type>,
  * }
  */
@@ -71,8 +71,8 @@ final class PropertyUpdateParams implements BaseModel
     #[Api(optional: true)]
     public ?string $label;
 
-    /** @var list<OptionInput>|null $options */
-    #[Api(list: OptionInput::class, optional: true)]
+    /** @var list<CRMPropertiesOptionInput>|null $options */
+    #[Api(list: CRMPropertiesOptionInput::class, optional: true)]
     public ?array $options;
 
     /** @var value-of<Type>|null $type */
@@ -104,7 +104,7 @@ final class PropertyUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FieldType|value-of<FieldType> $fieldType
-     * @param list<OptionInput> $options
+     * @param list<CRMPropertiesOptionInput> $options
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -204,7 +204,7 @@ final class PropertyUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<OptionInput> $options
+     * @param list<CRMPropertiesOptionInput> $options
      */
     public function withOptions(array $options): self
     {

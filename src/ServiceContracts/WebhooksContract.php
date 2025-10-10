@@ -7,12 +7,12 @@ namespace HubspotSDK\ServiceContracts;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
-use HubspotSDK\Webhooks\SettingsResponse;
 use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
 use HubspotSDK\Webhooks\SubscriptionListResponse;
 use HubspotSDK\Webhooks\SubscriptionResponse;
 use HubspotSDK\Webhooks\ThrottlingSettings;
 use HubspotSDK\Webhooks\WebhookCreateParams\EventType;
+use HubspotSDK\Webhooks\WebhooksSettingsResponse;
 
 use const HubspotSDK\Core\OMIT as omit;
 
@@ -137,7 +137,7 @@ interface WebhooksContract
         $targetURL,
         $throttling,
         ?RequestOptions $requestOptions = null,
-    ): SettingsResponse;
+    ): WebhooksSettingsResponse;
 
     /**
      * @api
@@ -150,7 +150,7 @@ interface WebhooksContract
         int $appID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): SettingsResponse;
+    ): WebhooksSettingsResponse;
 
     /**
      * @api

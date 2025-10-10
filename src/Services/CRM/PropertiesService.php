@@ -9,7 +9,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Properties\BatchResponseProperty;
 use HubspotSDK\CRM\Properties\CollectionResponsePropertyGroup;
 use HubspotSDK\CRM\Properties\CreatedResponsePropertyGroup;
-use HubspotSDK\CRM\Properties\OptionInput;
+use HubspotSDK\CRM\Properties\CRMPropertiesOptionInput;
 use HubspotSDK\CRM\Properties\PropertyCreateParams;
 use HubspotSDK\CRM\Properties\PropertyDeleteParams;
 use HubspotSDK\CRM\Properties\PropertyGetByNameParams;
@@ -97,7 +97,7 @@ final class PropertiesService implements PropertiesContract
      * @param string $groupName
      * @param bool $hidden
      * @param string $label
-     * @param list<OptionInput> $options
+     * @param list<CRMPropertiesOptionInput> $options
      * @param Type|value-of<Type> $type
      *
      * @throws APIException

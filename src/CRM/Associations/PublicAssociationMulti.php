@@ -8,12 +8,12 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\AssociatedID;
-use HubspotSDK\Marketing\Emails\Paging;
+use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
 use HubspotSDK\PublicObjectID;
 
 /**
  * @phpstan-type public_association_multi = array{
- *   from: PublicObjectID, to: list<AssociatedID>, paging?: Paging
+ *   from: PublicObjectID, to: list<AssociatedID>, paging?: MarketingEmailsPaging
  * }
  */
 final class PublicAssociationMulti implements BaseModel
@@ -29,7 +29,7 @@ final class PublicAssociationMulti implements BaseModel
     public array $to;
 
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?MarketingEmailsPaging $paging;
 
     /**
      * `new PublicAssociationMulti()` is missing required properties by the API.
@@ -60,7 +60,7 @@ final class PublicAssociationMulti implements BaseModel
     public static function with(
         PublicObjectID $from,
         array $to,
-        ?Paging $paging = null
+        ?MarketingEmailsPaging $paging = null
     ): self {
         $obj = new self;
 
@@ -91,7 +91,7 @@ final class PublicAssociationMulti implements BaseModel
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    public function withPaging(MarketingEmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;
