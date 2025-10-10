@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Emails\EmailListParams\Type;
  * $params = (new EmailListParams); // set properties as needed
  * $client->marketing.emails->list(...$params->toArray());
  * ```
- * Get all marketing emails for a HubSpot account.
+ * Get all marketing emails.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

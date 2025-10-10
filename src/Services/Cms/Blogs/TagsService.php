@@ -345,7 +345,7 @@ final class TagsService implements TagsContract
      * Attach a Blog Tag to a multi-language group
      *
      * @param string $id
-     * @param string $language
+     * @param TagAttachToLangGroupParams\Language|value-of<TagAttachToLangGroupParams\Language> $language
      * @param string $primaryID
      * @param string $primaryLanguage
      *

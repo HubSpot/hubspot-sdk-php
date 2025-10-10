@@ -53,7 +53,7 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
-     * Create a new marketing email.
+     * Create a new marketing email
      *
      * @param string $name
      * @param string $activeDomain
@@ -260,7 +260,7 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
-     * Get all marketing emails for a HubSpot account.
+     * Get all marketing emails
      *
      * @param string $after
      * @param bool $archived
