@@ -11,7 +11,7 @@ use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate\NumberDisplayHint;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate\OptionSortStrategy;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate\TextDisplayHint;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate\Type;
-use HubspotSDK\CRM\Properties\CRMPropertiesOptionInput;
+use HubspotSDK\CRM\Properties\OptionInput;
 
 /**
  * @phpstan-type object_type_property_create = array{
@@ -25,7 +25,7 @@ use HubspotSDK\CRM\Properties\CRMPropertiesOptionInput;
  *   hasUniqueValue?: bool,
  *   hidden?: bool,
  *   numberDisplayHint?: value-of<NumberDisplayHint>,
- *   options?: list<CRMPropertiesOptionInput>,
+ *   options?: list<OptionInput>,
  *   optionSortStrategy?: value-of<OptionSortStrategy>,
  *   referencedObjectType?: string,
  *   searchableInGlobalSearch?: bool,
@@ -70,8 +70,8 @@ final class ObjectTypePropertyCreate implements BaseModel
     #[Api(enum: NumberDisplayHint::class, optional: true)]
     public ?string $numberDisplayHint;
 
-    /** @var list<CRMPropertiesOptionInput>|null $options */
-    #[Api(list: CRMPropertiesOptionInput::class, optional: true)]
+    /** @var list<OptionInput>|null $options */
+    #[Api(list: OptionInput::class, optional: true)]
     public ?array $options;
 
     /** @var value-of<OptionSortStrategy>|null $optionSortStrategy */
@@ -121,7 +121,7 @@ final class ObjectTypePropertyCreate implements BaseModel
      *
      * @param Type|value-of<Type> $type
      * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
-     * @param list<CRMPropertiesOptionInput> $options
+     * @param list<OptionInput> $options
      * @param OptionSortStrategy|value-of<OptionSortStrategy> $optionSortStrategy
      * @param TextDisplayHint|value-of<TextDisplayHint> $textDisplayHint
      */
@@ -254,7 +254,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     }
 
     /**
-     * @param list<CRMPropertiesOptionInput> $options
+     * @param list<OptionInput> $options
      */
     public function withOptions(array $options): self
     {

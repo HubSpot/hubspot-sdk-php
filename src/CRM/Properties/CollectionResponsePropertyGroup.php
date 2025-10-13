@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
+use HubspotSDK\Marketing\Emails\Paging;
 
 /**
  * @phpstan-type collection_response_property_group = array{
- *   results: list<PropertyGroup>, paging?: MarketingEmailsPaging
+ *   results: list<PropertyGroup>, paging?: Paging
  * }
  */
 final class CollectionResponsePropertyGroup implements BaseModel, ResponseConverter
@@ -28,7 +28,7 @@ final class CollectionResponsePropertyGroup implements BaseModel, ResponseConver
     public array $results;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponsePropertyGroup()` is missing required properties by the API.
@@ -56,10 +56,8 @@ final class CollectionResponsePropertyGroup implements BaseModel, ResponseConver
      *
      * @param list<PropertyGroup> $results
      */
-    public static function with(
-        array $results,
-        ?MarketingEmailsPaging $paging = null
-    ): self {
+    public static function with(array $results, ?Paging $paging = null): self
+    {
         $obj = new self;
 
         $obj->results = $results;
@@ -80,7 +78,7 @@ final class CollectionResponsePropertyGroup implements BaseModel, ResponseConver
         return $obj;
     }
 
-    public function withPaging(MarketingEmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

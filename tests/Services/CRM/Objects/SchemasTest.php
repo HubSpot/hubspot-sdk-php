@@ -5,7 +5,7 @@ namespace Tests\Services\CRM\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinitionLabels;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate;
-use HubspotSDK\CRM\Properties\CRMPropertiesOptionInput;
+use HubspotSDK\CRM\Properties\OptionInput;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -85,11 +85,7 @@ final class SchemasTest extends TestCase
                     ->withNumberDisplayHint('unformatted')
                     ->withOptions(
                         [
-                            CRMPropertiesOptionInput::with(
-                                hidden: true,
-                                label: 'label',
-                                value: 'value'
-                            )
+                            OptionInput::with(hidden: true, label: 'label', value: 'value')
                                 ->withDisplayOrder(0),
                         ],
                     )

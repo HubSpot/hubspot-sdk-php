@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
+use HubspotSDK\Marketing\Emails\Paging;
 
 /**
  * @phpstan-type collection_response_with_total_version_blog_post = array{
- *   results: list<VersionBlogPost>, total: int, paging?: MarketingEmailsPaging
+ *   results: list<VersionBlogPost>, total: int, paging?: Paging
  * }
  */
 final class CollectionResponseWithTotalVersionBlogPost implements BaseModel, ResponseConverter
@@ -31,7 +31,7 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel, Res
     public int $total;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponseWithTotalVersionBlogPost()` is missing required properties by the API.
@@ -64,7 +64,7 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel, Res
     public static function with(
         array $results,
         int $total,
-        ?MarketingEmailsPaging $paging = null
+        ?Paging $paging = null
     ): self {
         $obj = new self;
 
@@ -95,7 +95,7 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel, Res
         return $obj;
     }
 
-    public function withPaging(MarketingEmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

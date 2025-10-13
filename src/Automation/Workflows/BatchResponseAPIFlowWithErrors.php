@@ -13,7 +13,7 @@ use HubspotSDK\StandardError;
 /**
  * @phpstan-type batch_response_api_flow_with_errors = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<mixed>,
+ *   results: list<APIContactFlow|APIPlatformFlow>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
  *   errors?: list<StandardError>,
@@ -30,8 +30,8 @@ final class BatchResponseAPIFlowWithErrors implements BaseModel
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<mixed> $results */
-    #[Api(list: 'mixed')]
+    /** @var list<APIContactFlow|APIPlatformFlow> $results */
+    #[Api(list: APIFlow::class)]
     public array $results;
 
     #[Api]
@@ -85,7 +85,7 @@ final class BatchResponseAPIFlowWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $results
+     * @param list<APIContactFlow|APIPlatformFlow> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError> $errors
      * @param array<string, string> $links
@@ -124,7 +124,7 @@ final class BatchResponseAPIFlowWithErrors implements BaseModel
     }
 
     /**
-     * @param list<mixed> $results
+     * @param list<APIContactFlow|APIPlatformFlow> $results
      */
     public function withResults(array $results): self
     {

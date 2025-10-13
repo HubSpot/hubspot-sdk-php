@@ -8,14 +8,11 @@ use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3\Typ
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
+use HubspotSDK\Marketing\Emails\Paging;
 
 /**
  * @phpstan-type streaming_collection_response_with_total_hub_db_table_row_v3 = array{
- *   results: list<mixed>,
- *   total: int,
- *   type: value-of<Type>,
- *   paging?: MarketingEmailsPaging,
+ *   results: list<mixed>, total: int, type: value-of<Type>, paging?: Paging
  * }
  */
 final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseModel
@@ -37,7 +34,7 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
     public string $type;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new StreamingCollectionResponseWithTotalHubDBTableRowV3()` is missing required properties by the API.
@@ -75,7 +72,7 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
         array $results,
         int $total,
         Type|string $type = 'STREAMING',
-        ?MarketingEmailsPaging $paging = null,
+        ?Paging $paging = null,
     ): self {
         $obj = new self;
 
@@ -118,7 +115,7 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
         return $obj;
     }
 
-    public function withPaging(MarketingEmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

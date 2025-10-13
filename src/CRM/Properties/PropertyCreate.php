@@ -25,7 +25,7 @@ use HubspotSDK\CRM\Properties\PropertyCreate\Type;
  *   formField?: bool,
  *   hasUniqueValue?: bool,
  *   hidden?: bool,
- *   options?: list<CRMPropertiesOptionInput>,
+ *   options?: list<OptionInput>,
  *   referencedObjectType?: string,
  * }
  */
@@ -73,8 +73,8 @@ final class PropertyCreate implements BaseModel
     #[Api(optional: true)]
     public ?bool $hidden;
 
-    /** @var list<CRMPropertiesOptionInput>|null $options */
-    #[Api(list: CRMPropertiesOptionInput::class, optional: true)]
+    /** @var list<OptionInput>|null $options */
+    #[Api(list: OptionInput::class, optional: true)]
     public ?array $options;
 
     #[Api(optional: true)]
@@ -114,7 +114,7 @@ final class PropertyCreate implements BaseModel
      * @param FieldType|value-of<FieldType> $fieldType
      * @param Type|value-of<Type> $type
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param list<CRMPropertiesOptionInput> $options
+     * @param list<OptionInput> $options
      */
     public static function with(
         FieldType|string $fieldType,
@@ -260,7 +260,7 @@ final class PropertyCreate implements BaseModel
     }
 
     /**
-     * @param list<CRMPropertiesOptionInput> $options
+     * @param list<OptionInput> $options
      */
     public function withOptions(array $options): self
     {

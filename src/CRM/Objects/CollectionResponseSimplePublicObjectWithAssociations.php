@@ -7,12 +7,11 @@ namespace HubspotSDK\CRM\Objects;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
+use HubspotSDK\Marketing\Emails\Paging;
 
 /**
  * @phpstan-type collection_response_simple_public_object_with_associations = array{
- *   results: list<SimplePublicObjectWithAssociations>,
- *   paging?: MarketingEmailsPaging,
+ *   results: list<SimplePublicObjectWithAssociations>, paging?: Paging
  * }
  */
 final class CollectionResponseSimplePublicObjectWithAssociations implements BaseModel
@@ -25,7 +24,7 @@ final class CollectionResponseSimplePublicObjectWithAssociations implements Base
     public array $results;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponseSimplePublicObjectWithAssociations()` is missing required properties by the API.
@@ -53,10 +52,8 @@ final class CollectionResponseSimplePublicObjectWithAssociations implements Base
      *
      * @param list<SimplePublicObjectWithAssociations> $results
      */
-    public static function with(
-        array $results,
-        ?MarketingEmailsPaging $paging = null
-    ): self {
+    public static function with(array $results, ?Paging $paging = null): self
+    {
         $obj = new self;
 
         $obj->results = $results;
@@ -77,7 +74,7 @@ final class CollectionResponseSimplePublicObjectWithAssociations implements Base
         return $obj;
     }
 
-    public function withPaging(MarketingEmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

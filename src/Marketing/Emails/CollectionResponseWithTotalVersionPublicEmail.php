@@ -12,7 +12,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type collection_response_with_total_version_public_email = array{
- *   results: list<VersionPublicEmail>, total: int, paging?: MarketingEmailsPaging
+ *   results: list<VersionPublicEmail>, total: int, paging?: Paging
  * }
  */
 final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, ResponseConverter
@@ -30,7 +30,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, 
     public int $total;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponseWithTotalVersionPublicEmail()` is missing required properties by the API.
@@ -63,7 +63,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, 
     public static function with(
         array $results,
         int $total,
-        ?MarketingEmailsPaging $paging = null
+        ?Paging $paging = null
     ): self {
         $obj = new self;
 
@@ -94,7 +94,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, 
         return $obj;
     }
 
-    public function withPaging(MarketingEmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

@@ -7,11 +7,11 @@ namespace HubspotSDK\Automation\Workflows;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\MarketingEmailsPaging;
+use HubspotSDK\Marketing\Emails\Paging;
 
 /**
  * @phpstan-type collection_response_api_flow_email_campaign = array{
- *   results: list<APIFlowEmailCampaign>, paging?: MarketingEmailsPaging
+ *   results: list<APIFlowEmailCampaign>, paging?: Paging
  * }
  */
 final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
@@ -24,7 +24,7 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
     public array $results;
 
     #[Api(optional: true)]
-    public ?MarketingEmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponseAPIFlowEmailCampaign()` is missing required properties by the API.
@@ -52,10 +52,8 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
      *
      * @param list<APIFlowEmailCampaign> $results
      */
-    public static function with(
-        array $results,
-        ?MarketingEmailsPaging $paging = null
-    ): self {
+    public static function with(array $results, ?Paging $paging = null): self
+    {
         $obj = new self;
 
         $obj->results = $results;
@@ -76,7 +74,7 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
         return $obj;
     }
 
-    public function withPaging(MarketingEmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

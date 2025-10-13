@@ -8,14 +8,14 @@ use HubspotSDK\Cms\Hubdb\ColumnRequest\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\CRMOption;
+use HubspotSDK\CRM\Option;
 
 /**
  * @phpstan-type column_request = array{
  *   id: int,
  *   label: string,
  *   name: string,
- *   options: list<CRMOption>,
+ *   options: list<Option>,
  *   type: value-of<Type>,
  *   foreignColumnID?: int,
  *   foreignTableID?: int,
@@ -37,8 +37,8 @@ final class ColumnRequest implements BaseModel
     #[Api]
     public string $name;
 
-    /** @var list<CRMOption> $options */
-    #[Api(list: CRMOption::class)]
+    /** @var list<Option> $options */
+    #[Api(list: Option::class)]
     public array $options;
 
     /** @var value-of<Type> $type */
@@ -86,7 +86,7 @@ final class ColumnRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMOption> $options
+     * @param list<Option> $options
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -141,7 +141,7 @@ final class ColumnRequest implements BaseModel
     }
 
     /**
-     * @param list<CRMOption> $options
+     * @param list<Option> $options
      */
     public function withOptions(array $options): self
     {
