@@ -8,10 +8,14 @@ use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3\
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\ListOf;
 
 /**
  * @phpstan-type random_access_collection_response_with_total_hub_db_table_row_v3 = array{
- *   results: list<mixed>, total: int, type: value-of<Type>, paging?: BoundedPaging
+ *   results: list<list<mixed>>,
+ *   total: int,
+ *   type: value-of<Type>,
+ *   paging?: BoundedPaging,
  * }
  */
 final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements BaseModel
@@ -21,8 +25,8 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
      */
     use SdkModel;
 
-    /** @var list<mixed> $results */
-    #[Api(list: 'mixed')]
+    /** @var list<list<mixed>> $results */
+    #[Api(list: new ListOf('mixed'))]
     public array $results;
 
     #[Api]
@@ -64,7 +68,7 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $results
+     * @param list<list<mixed>> $results
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -85,7 +89,7 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
     }
 
     /**
-     * @param list<mixed> $results
+     * @param list<list<mixed>> $results
      */
     public function withResults(array $results): self
     {

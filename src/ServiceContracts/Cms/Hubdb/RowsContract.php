@@ -60,7 +60,7 @@ interface RowsContract
      * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
      * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
      *
-     * @return Page<mixed>
+     * @return Page<list<mixed>>
      *
      * @throws APIException
      */
@@ -80,7 +80,7 @@ interface RowsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return Page<mixed>
+     * @return Page<list<mixed>>
      *
      * @throws APIException
      */
