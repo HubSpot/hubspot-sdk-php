@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
+ * Defines an association between two object types.
+ *
  * @phpstan-type association_definition = array{
  *   id: string,
  *   fromObjectTypeID: string,
@@ -27,21 +29,39 @@ final class AssociationDefinition implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * A unique ID for this association.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * ID of the primary object type to link from.
+     */
     #[Api('fromObjectTypeId')]
     public string $fromObjectTypeID;
 
+    /**
+     * ID of the target object type to link to.
+     */
     #[Api('toObjectTypeId')]
     public string $toObjectTypeID;
 
+    /**
+     * When the association was defined.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * A unique name for this association.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * When the association was last updated.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
@@ -93,6 +113,9 @@ final class AssociationDefinition implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A unique ID for this association.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -101,6 +124,9 @@ final class AssociationDefinition implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * ID of the primary object type to link from.
+     */
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
@@ -109,6 +135,9 @@ final class AssociationDefinition implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * ID of the target object type to link to.
+     */
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
@@ -117,6 +146,9 @@ final class AssociationDefinition implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * When the association was defined.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -125,6 +157,9 @@ final class AssociationDefinition implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A unique name for this association.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -133,6 +168,9 @@ final class AssociationDefinition implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * When the association was last updated.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;

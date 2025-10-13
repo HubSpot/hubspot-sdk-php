@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PipelineGetAuditParams); // set properties as needed
  * $client->crm.pipelines->getAudit(...$params->toArray());
  * ```
- * Return an audit of all changes to the pipeline.
+ * Return a reverse chronological list of all mutations that have occurred on the pipeline identified by `{pipelineId}`.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

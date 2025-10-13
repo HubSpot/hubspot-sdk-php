@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new WebhookConfigureParams); // set properties as needed
  * $client->webhooks->configure(...$params->toArray());
  * ```
- * Update webhook settings.
+ * Update webhook settings for the specified app.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,9 +35,15 @@ final class WebhookConfigureParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * A publicly available URL for HubSpot to call where event payloads will be delivered.
+     */
     #[Api('targetUrl')]
     public string $targetURL;
 
+    /**
+     * Configuration details for webhook throttling.
+     */
     #[Api]
     public ThrottlingSettings $throttling;
 
@@ -77,6 +83,9 @@ final class WebhookConfigureParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * A publicly available URL for HubSpot to call where event payloads will be delivered.
+     */
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
@@ -85,6 +94,9 @@ final class WebhookConfigureParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Configuration details for webhook throttling.
+     */
     public function withThrottling(ThrottlingSettings $throttling): self
     {
         $obj = clone $this;

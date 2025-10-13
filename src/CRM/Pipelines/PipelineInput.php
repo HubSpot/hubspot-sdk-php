@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * An input used to create or replace a pipeline's definition.
+ *
  * @phpstan-type pipeline_input = array{
  *   displayOrder: int, label: string, stages: list<PipelineStageInput>
  * }
@@ -18,13 +20,23 @@ final class PipelineInput implements BaseModel
     /** @use SdkModel<pipeline_input> */
     use SdkModel;
 
+    /**
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     #[Api]
     public int $displayOrder;
 
+    /**
+     * A unique label used to organize pipelines in HubSpot's UI.
+     */
     #[Api]
     public string $label;
 
-    /** @var list<PipelineStageInput> $stages */
+    /**
+     * Pipeline stage inputs used to create the new or replacement pipeline.
+     *
+     * @var list<PipelineStageInput> $stages
+     */
     #[Api(list: PipelineStageInput::class)]
     public array $stages;
 
@@ -68,6 +80,9 @@ final class PipelineInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
@@ -76,6 +91,9 @@ final class PipelineInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique label used to organize pipelines in HubSpot's UI.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -85,6 +103,8 @@ final class PipelineInput implements BaseModel
     }
 
     /**
+     * Pipeline stage inputs used to create the new or replacement pipeline.
+     *
      * @param list<PipelineStageInput> $stages
      */
     public function withStages(array $stages): self

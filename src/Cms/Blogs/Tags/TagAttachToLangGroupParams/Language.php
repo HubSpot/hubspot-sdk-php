@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams;
 
+/**
+ * Designated language of the object to add to a multi-language group.
+ */
 enum Language: string
 {
     case AF = 'af';

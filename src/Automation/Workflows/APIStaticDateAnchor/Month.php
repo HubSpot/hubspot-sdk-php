@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows\APIStaticDateAnchor;
 
+/**
+ * The month of the date to anchor on.
+ */
 enum Month: string
 {
     case JANUARY = 'JANUARY';

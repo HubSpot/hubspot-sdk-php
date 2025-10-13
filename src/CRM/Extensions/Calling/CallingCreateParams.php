@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new CallingCreateParams); // set properties as needed
  * $client->crm.extensions.calling->create(...$params->toArray());
  * ```
- * Configure channel connection settings.
+ * Configure [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#create-channel-connection-settings) for the app.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,9 +33,15 @@ final class CallingCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * If true, this app will be considered to support channel connection.
+     */
     #[Api]
     public bool $isReady;
 
+    /**
+     * The URL to fetch phone numbers available for channel connection.
+     */
     #[Api]
     public string $url;
 
@@ -73,6 +79,9 @@ final class CallingCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * If true, this app will be considered to support channel connection.
+     */
     public function withIsReady(bool $isReady): self
     {
         $obj = clone $this;
@@ -81,6 +90,9 @@ final class CallingCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The URL to fetch phone numbers available for channel connection.
+     */
     public function withURL(string $url): self
     {
         $obj = clone $this;

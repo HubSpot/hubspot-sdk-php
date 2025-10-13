@@ -23,19 +23,35 @@ final class ErrorDetail implements BaseModel
     /** @use SdkModel<error_detail> */
     use SdkModel;
 
+    /**
+     * A human readable message describing the error along with remediation steps where appropriate.
+     */
     #[Api]
     public string $message;
 
+    /**
+     * The status code associated with the error detail.
+     */
     #[Api(optional: true)]
     public ?string $code;
 
-    /** @var array<string, list<string>>|null $context */
+    /**
+     * Context about the error condition.
+     *
+     * @var array<string, list<string>>|null $context
+     */
     #[Api(map: new ListOf('string'), optional: true)]
     public ?array $context;
 
+    /**
+     * The name of the field or parameter in which the error was found.
+     */
     #[Api(optional: true)]
     public ?string $in;
 
+    /**
+     * A specific category that contains more specific detail about the error.
+     */
     #[Api(optional: true)]
     public ?string $subCategory;
 
@@ -84,6 +100,9 @@ final class ErrorDetail implements BaseModel
         return $obj;
     }
 
+    /**
+     * A human readable message describing the error along with remediation steps where appropriate.
+     */
     public function withMessage(string $message): self
     {
         $obj = clone $this;
@@ -92,6 +111,9 @@ final class ErrorDetail implements BaseModel
         return $obj;
     }
 
+    /**
+     * The status code associated with the error detail.
+     */
     public function withCode(string $code): self
     {
         $obj = clone $this;
@@ -101,6 +123,8 @@ final class ErrorDetail implements BaseModel
     }
 
     /**
+     * Context about the error condition.
+     *
      * @param array<string, list<string>> $context
      */
     public function withContext(array $context): self
@@ -111,6 +135,9 @@ final class ErrorDetail implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the field or parameter in which the error was found.
+     */
     public function withIn(string $in): self
     {
         $obj = clone $this;
@@ -119,6 +146,9 @@ final class ErrorDetail implements BaseModel
         return $obj;
     }
 
+    /**
+     * A specific category that contains more specific detail about the error.
+     */
     public function withSubCategory(string $subCategory): self
     {
         $obj = clone $this;

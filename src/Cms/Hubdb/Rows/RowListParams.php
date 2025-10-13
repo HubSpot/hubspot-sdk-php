@@ -16,7 +16,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new RowListParams); // set properties as needed
  * $client->cms.hubdb.rows->list(...$params->toArray());
  * ```
- * Get rows for a table.
+ * Returns a set of rows in the published version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options.
+ * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -40,23 +41,37 @@ final class RowListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * The maximum number of results to return. Default is `1000`.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
     #[Api(optional: true)]
     public ?int $offset;
 
-    /** @var list<string>|null $properties */
+    /**
+     * Specify the column names to get results containing only the required columns instead of all column details.
+     *
+     * @var list<string>|null $properties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $properties;
 
-    /** @var list<string>|null $sort */
+    /**
+     * Specifies the column names to sort the results by. See the above description for more details.
+     *
+     * @var list<string>|null $sort
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $sort;
 
@@ -93,6 +108,9 @@ final class RowListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -109,6 +127,9 @@ final class RowListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of results to return. Default is `1000`.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -126,6 +147,8 @@ final class RowListParams implements BaseModel
     }
 
     /**
+     * Specify the column names to get results containing only the required columns instead of all column details.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -137,6 +160,8 @@ final class RowListParams implements BaseModel
     }
 
     /**
+     * Specifies the column names to sort the results by. See the above description for more details.
+     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self

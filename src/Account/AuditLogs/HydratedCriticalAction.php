@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Details about the a particular security activity for a HubSpot account.
+ *
  * @phpstan-type hydrated_critical_action = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
@@ -28,36 +30,66 @@ final class HydratedCriticalAction implements BaseModel
     /** @use SdkModel<hydrated_critical_action> */
     use SdkModel;
 
+    /**
+     * The unique ID of the activity.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The time the activity took place.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * The type of activity.
+     */
     #[Api]
     public string $type;
 
+    /**
+     * The user's unique ID.
+     */
     #[Api('userId')]
     public int $userID;
 
+    /**
+     * Email address of the user associated with the activity.
+     */
     #[Api(optional: true)]
     public ?string $actingUser;
 
+    /**
+     * The approximate country code.
+     */
     #[Api(optional: true)]
     public ?string $countryCode;
 
+    /**
+     * A link to the URL where the action was taken in the account.
+     */
     #[Api('infoUrl', optional: true)]
     public ?string $infoURL;
 
+    /**
+     * IP address where the activity originated.
+     */
     #[Api(optional: true)]
     public ?string $ipAddress;
 
     #[Api(optional: true)]
     public ?string $location;
 
+    /**
+     * The ID of the affected object.
+     */
     #[Api('objectId', optional: true)]
     public ?string $objectID;
 
+    /**
+     * The approximate region code.
+     */
     #[Api(optional: true)]
     public ?string $regionCode;
 
@@ -120,6 +152,9 @@ final class HydratedCriticalAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID of the activity.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -128,6 +163,9 @@ final class HydratedCriticalAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The time the activity took place.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -136,6 +174,9 @@ final class HydratedCriticalAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The type of activity.
+     */
     public function withType(string $type): self
     {
         $obj = clone $this;
@@ -144,6 +185,9 @@ final class HydratedCriticalAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's unique ID.
+     */
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
@@ -152,6 +196,9 @@ final class HydratedCriticalAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * Email address of the user associated with the activity.
+     */
     public function withActingUser(string $actingUser): self
     {
         $obj = clone $this;
@@ -160,6 +207,9 @@ final class HydratedCriticalAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The approximate country code.
+     */
     public function withCountryCode(string $countryCode): self
     {
         $obj = clone $this;
@@ -168,6 +218,9 @@ final class HydratedCriticalAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * A link to the URL where the action was taken in the account.
+     */
     public function withInfoURL(string $infoURL): self
     {
         $obj = clone $this;
@@ -176,6 +229,9 @@ final class HydratedCriticalAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * IP address where the activity originated.
+     */
     public function withIPAddress(string $ipAddress): self
     {
         $obj = clone $this;
@@ -192,6 +248,9 @@ final class HydratedCriticalAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the affected object.
+     */
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
@@ -200,6 +259,9 @@ final class HydratedCriticalAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The approximate region code.
+     */
     public function withRegionCode(string $regionCode): self
     {
         $obj = clone $this;

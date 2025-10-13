@@ -12,6 +12,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\VersionUser;
 
 /**
+ * Model definition of a version of a blog post.
+ *
  * @phpstan-type version_blog_post = array{
  *   id: string,
  *   object1: BlogPost,
@@ -26,15 +28,24 @@ final class VersionBlogPost implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The id of the version.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Model definition for a Blog Post.
+     */
     #[Api]
     public BlogPost $object1;
 
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * Model definition for a version user. Contains addition information about the user who created a version.
+     */
     #[Api]
     public VersionUser $user;
 
@@ -82,6 +93,9 @@ final class VersionBlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The id of the version.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -90,6 +104,9 @@ final class VersionBlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Model definition for a Blog Post.
+     */
     public function withObject(BlogPost $object1): self
     {
         $obj = clone $this;
@@ -106,6 +123,9 @@ final class VersionBlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Model definition for a version user. Contains addition information about the user who created a version.
+     */
     public function withUser(VersionUser $user): self
     {
         $obj = clone $this;

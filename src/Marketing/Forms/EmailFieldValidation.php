@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Describes how an email address should be validated.
+ *
  * @phpstan-type email_field_validation = array{
  *   blockedEmailDomains: list<string>, useDefaultBlockList: bool
  * }
@@ -18,10 +20,17 @@ final class EmailFieldValidation implements BaseModel
     /** @use SdkModel<email_field_validation> */
     use SdkModel;
 
-    /** @var list<string> $blockedEmailDomains */
+    /**
+     * A list of email domains to block.
+     *
+     * @var list<string> $blockedEmailDomains
+     */
     #[Api(list: 'string')]
     public array $blockedEmailDomains;
 
+    /**
+     * Whether to block the free email providers.
+     */
     #[Api]
     public bool $useDefaultBlockList;
 
@@ -66,6 +75,8 @@ final class EmailFieldValidation implements BaseModel
     }
 
     /**
+     * A list of email domains to block.
+     *
      * @param list<string> $blockedEmailDomains
      */
     public function withBlockedEmailDomains(array $blockedEmailDomains): self
@@ -76,6 +87,9 @@ final class EmailFieldValidation implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to block the free email providers.
+     */
     public function withUseDefaultBlockList(bool $useDefaultBlockList): self
     {
         $obj = clone $this;

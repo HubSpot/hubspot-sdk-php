@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
+ * Response object for collections of marketing emails with pagination information.
+ *
  * @phpstan-type collection_response_with_total_public_email_forward_paging = array{
  *   results: list<PublicEmail>, total: int, paging?: ForwardPaging
  * }
@@ -19,10 +21,17 @@ final class CollectionResponseWithTotalPublicEmailForwardPaging implements BaseM
     /** @use SdkModel<collection_response_with_total_public_email_forward_paging> */
     use SdkModel;
 
-    /** @var list<PublicEmail> $results */
+    /**
+     * Collection of emails.
+     *
+     * @var list<PublicEmail> $results
+     */
     #[Api(list: PublicEmail::class)]
     public array $results;
 
+    /**
+     * Total number of content emails.
+     */
     #[Api]
     public int $total;
 
@@ -75,6 +84,8 @@ final class CollectionResponseWithTotalPublicEmailForwardPaging implements BaseM
     }
 
     /**
+     * Collection of emails.
+     *
      * @param list<PublicEmail> $results
      */
     public function withResults(array $results): self
@@ -85,6 +96,9 @@ final class CollectionResponseWithTotalPublicEmailForwardPaging implements BaseM
         return $obj;
     }
 
+    /**
+     * Total number of content emails.
+     */
     public function withTotal(int $total): self
     {
         $obj = clone $this;

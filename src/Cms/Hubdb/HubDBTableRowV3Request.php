@@ -22,19 +22,32 @@ final class HubDBTableRowV3Request implements BaseModel
     /** @use SdkModel<hub_db_table_row_v3_request> */
     use SdkModel;
 
-    /** @var array<string, mixed> $values */
+    /**
+     * List of key value pairs with the column name and column value.
+     *
+     * @var array<string, mixed> $values
+     */
     #[Api(map: 'mixed')]
     public array $values;
 
+    /**
+     * Specifies the value for the column child table id.
+     */
     #[Api('childTableId', optional: true)]
     public ?int $childTableID;
 
     #[Api(optional: true)]
     public ?int $displayIndex;
 
+    /**
+     * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages.
+     */
     #[Api(optional: true)]
     public ?string $path;
 
@@ -84,6 +97,8 @@ final class HubDBTableRowV3Request implements BaseModel
     }
 
     /**
+     * List of key value pairs with the column name and column value.
+     *
      * @param array<string, mixed> $values
      */
     public function withValues(array $values): self
@@ -94,6 +109,9 @@ final class HubDBTableRowV3Request implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the value for the column child table id.
+     */
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
@@ -110,6 +128,9 @@ final class HubDBTableRowV3Request implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -118,6 +139,9 @@ final class HubDBTableRowV3Request implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages.
+     */
     public function withPath(string $path): self
     {
         $obj = clone $this;

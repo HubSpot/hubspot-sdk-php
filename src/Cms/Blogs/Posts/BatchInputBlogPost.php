@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Wrapper for providing an array of blog posts as inputs.
+ *
  * @phpstan-type batch_input_blog_post = array{inputs: list<BlogPost>}
  */
 final class BatchInputBlogPost implements BaseModel
@@ -16,7 +18,11 @@ final class BatchInputBlogPost implements BaseModel
     /** @use SdkModel<batch_input_blog_post> */
     use SdkModel;
 
-    /** @var list<BlogPost> $inputs */
+    /**
+     * Blog posts to input.
+     *
+     * @var list<BlogPost> $inputs
+     */
     #[Api(list: BlogPost::class)]
     public array $inputs;
 
@@ -56,6 +62,8 @@ final class BatchInputBlogPost implements BaseModel
     }
 
     /**
+     * Blog posts to input.
+     *
      * @param list<BlogPost> $inputs
      */
     public function withInputs(array $inputs): self

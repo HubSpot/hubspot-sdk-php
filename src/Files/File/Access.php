@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files\File;
 
+/**
+ * File access. Can be PUBLIC_INDEXABLE, PUBLIC_NOT_INDEXABLE, PRIVATE.
+ */
 enum Access: string
 {
     case PUBLIC_INDEXABLE = 'PUBLIC_INDEXABLE';

@@ -17,7 +17,7 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputForCreate;
  * $params = (new BatchCreateParams); // set properties as needed
  * $client->crm.objects.contacts.batch->create(...$params->toArray());
  * ```
- * Create a batch of contacts.
+ * Create a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

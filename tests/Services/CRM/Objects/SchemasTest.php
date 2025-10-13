@@ -40,18 +40,18 @@ final class SchemasTest extends TestCase
         }
 
         $result = $this->client->crm->objects->schemas->create(
-            associatedObjects: ['string'],
+            associatedObjects: ['CONTACT'],
             labels: (new ObjectTypeDefinitionLabels),
-            name: 'name',
+            name: 'my_object',
             properties: [
                 ObjectTypePropertyCreate::with(
-                    fieldType: 'fieldType',
-                    label: 'label',
-                    name: 'name',
-                    type: 'string'
+                    fieldType: 'select',
+                    label: 'My object property',
+                    name: 'my_object_property',
+                    type: 'enumeration',
                 ),
             ],
-            requiredProperties: ['string'],
+            requiredProperties: ['my_object_property'],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -65,28 +65,33 @@ final class SchemasTest extends TestCase
         }
 
         $result = $this->client->crm->objects->schemas->create(
-            associatedObjects: ['string'],
+            associatedObjects: ['CONTACT'],
             labels: (new ObjectTypeDefinitionLabels)
-                ->withPlural('plural')
-                ->withSingular('singular'),
-            name: 'name',
+                ->withPlural('My objects')
+                ->withSingular('My object'),
+            name: 'my_object',
             properties: [
                 ObjectTypePropertyCreate::with(
-                    fieldType: 'fieldType',
-                    label: 'label',
-                    name: 'name',
-                    type: 'string'
+                    fieldType: 'select',
+                    label: 'My object property',
+                    name: 'my_object_property',
+                    type: 'enumeration',
                 )
-                    ->withDisplayOrder(0)
+                    ->withDescription('description')
+                    ->withDisplayOrder(2)
                     ->withFormField(true)
-                    ->withGroupName('groupName')
-                    ->withHasUniqueValue(true)
+                    ->withGroupName('my_object_information')
+                    ->withHasUniqueValue(false)
                     ->withHidden(true)
                     ->withNumberDisplayHint('unformatted')
                     ->withOptions(
                         [
-                            OptionInput::with(hidden: true, label: 'label', value: 'value')
-                                ->withDisplayOrder(0),
+                            OptionInput::with(hidden: false, label: 'Option A', value: 'A')
+                                ->withDescription('Choice number one')
+                                ->withDisplayOrder(1),
+                            OptionInput::with(hidden: false, label: 'Option B', value: 'B')
+                                ->withDescription('Choice number two')
+                                ->withDisplayOrder(2),
                         ],
                     )
                     ->withOptionSortStrategy('DISPLAY_ORDER')
@@ -95,7 +100,7 @@ final class SchemasTest extends TestCase
                     ->withShowCurrencySymbol(true)
                     ->withTextDisplayHint('unformatted_single_line'),
             ],
-            requiredProperties: ['string'],
+            requiredProperties: ['my_object_property'],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -176,8 +181,8 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->createAssociation(
             'objectType',
-            fromObjectTypeID: 'fromObjectTypeId',
-            toObjectTypeID: 'toObjectTypeId',
+            fromObjectTypeID: '2-123456',
+            toObjectTypeID: 'contact'
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -192,8 +197,8 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->createAssociation(
             'objectType',
-            fromObjectTypeID: 'fromObjectTypeId',
-            toObjectTypeID: 'toObjectTypeId',
+            fromObjectTypeID: '2-123456',
+            toObjectTypeID: 'contact'
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -9,8 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Defines attributes to update on an object type.
+ *
  * @phpstan-type object_type_definition_patch = array{
  *   clearDescription?: bool,
+ *   description?: string,
  *   labels?: ObjectTypeDefinitionLabels,
  *   primaryDisplayProperty?: string,
  *   requiredProperties?: list<string>,
@@ -28,23 +31,44 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     public ?bool $clearDescription;
 
     #[Api(optional: true)]
+    public ?string $description;
+
+    /**
+     * Singular and plural labels for the object. Used in CRM display.
+     */
+    #[Api(optional: true)]
     public ?ObjectTypeDefinitionLabels $labels;
 
+    /**
+     * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     */
     #[Api(optional: true)]
     public ?string $primaryDisplayProperty;
 
-    /** @var list<string>|null $requiredProperties */
+    /**
+     * The names of properties that should be **required** when creating an object of this type.
+     *
+     * @var list<string>|null $requiredProperties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $requiredProperties;
 
     #[Api(optional: true)]
     public ?bool $restorable;
 
-    /** @var list<string>|null $searchableProperties */
+    /**
+     * Names of properties that will be indexed for this object type in by HubSpot's product search.
+     *
+     * @var list<string>|null $searchableProperties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $searchableProperties;
 
-    /** @var list<string>|null $secondaryDisplayProperties */
+    /**
+     * The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     *
+     * @var list<string>|null $secondaryDisplayProperties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $secondaryDisplayProperties;
 
@@ -64,6 +88,7 @@ final class ObjectTypeDefinitionPatch implements BaseModel
      */
     public static function with(
         ?bool $clearDescription = null,
+        ?string $description = null,
         ?ObjectTypeDefinitionLabels $labels = null,
         ?string $primaryDisplayProperty = null,
         ?array $requiredProperties = null,
@@ -74,6 +99,7 @@ final class ObjectTypeDefinitionPatch implements BaseModel
         $obj = new self;
 
         null !== $clearDescription && $obj->clearDescription = $clearDescription;
+        null !== $description && $obj->description = $description;
         null !== $labels && $obj->labels = $labels;
         null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
         null !== $requiredProperties && $obj->requiredProperties = $requiredProperties;
@@ -92,6 +118,17 @@ final class ObjectTypeDefinitionPatch implements BaseModel
         return $obj;
     }
 
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * Singular and plural labels for the object. Used in CRM display.
+     */
     public function withLabels(ObjectTypeDefinitionLabels $labels): self
     {
         $obj = clone $this;
@@ -100,6 +137,9 @@ final class ObjectTypeDefinitionPatch implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     */
     public function withPrimaryDisplayProperty(
         string $primaryDisplayProperty
     ): self {
@@ -110,6 +150,8 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     }
 
     /**
+     * The names of properties that should be **required** when creating an object of this type.
+     *
      * @param list<string> $requiredProperties
      */
     public function withRequiredProperties(array $requiredProperties): self
@@ -129,6 +171,8 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     }
 
     /**
+     * Names of properties that will be indexed for this object type in by HubSpot's product search.
+     *
      * @param list<string> $searchableProperties
      */
     public function withSearchableProperties(array $searchableProperties): self
@@ -140,6 +184,8 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     }
 
     /**
+     * The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     *
      * @param list<string> $secondaryDisplayProperties
      */
     public function withSecondaryDisplayProperties(

@@ -18,12 +18,21 @@ final class EmailCloneRequestVNext implements BaseModel
     /** @use SdkModel<email_clone_request_v_next> */
     use SdkModel;
 
+    /**
+     * The unique identifier of the email to be cloned.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The name to assign to the cloned email.
+     */
     #[Api(optional: true)]
     public ?string $cloneName;
 
+    /**
+     * The language code for the cloned email, such as 'en' for English.
+     */
     #[Api(optional: true)]
     public ?string $language;
 
@@ -66,6 +75,9 @@ final class EmailCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier of the email to be cloned.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -74,6 +86,9 @@ final class EmailCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name to assign to the cloned email.
+     */
     public function withCloneName(string $cloneName): self
     {
         $obj = clone $this;
@@ -82,6 +97,9 @@ final class EmailCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * The language code for the cloned email, such as 'en' for English.
+     */
     public function withLanguage(string $language): self
     {
         $obj = clone $this;

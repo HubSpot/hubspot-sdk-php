@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
+ * Collections of files.
+ *
  * @phpstan-type collection_response_file = array{
  *   results: list<File>, paging?: Paging
  * }
@@ -23,6 +25,9 @@ final class CollectionResponseFile implements BaseModel
     #[Api(list: File::class)]
     public array $results;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -74,6 +79,9 @@ final class CollectionResponseFile implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

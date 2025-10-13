@@ -28,10 +28,10 @@ final class CallingService implements CallingContract
     /**
      * @api
      *
-     * Configure channel connection settings
+     * Configure [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#create-channel-connection-settings) for the app.
      *
-     * @param bool $isReady
-     * @param string $url
+     * @param bool $isReady If true, this app will be considered to support channel connection
+     * @param string $url The URL to fetch phone numbers available for channel connection
      *
      * @throws APIException
      */
@@ -78,10 +78,10 @@ final class CallingService implements CallingContract
     /**
      * @api
      *
-     * Update channel connection settings
+     * Update existing [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#manage-the-webhook-settings-for-channel-connection) for your app.
      *
-     * @param bool $isReady
-     * @param string $url
+     * @param bool $isReady If true, this app will be considered to support channel connection
+     * @param string $url The URL to fetch phone numbers available for channel connection
      *
      * @throws APIException
      */
@@ -128,7 +128,7 @@ final class CallingService implements CallingContract
     /**
      * @api
      *
-     * Delete channel connection settings
+     * Delete the [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#delete-existing-channel-connection-settings) for the app.
      *
      * @throws APIException
      */
@@ -150,7 +150,7 @@ final class CallingService implements CallingContract
     /**
      * @api
      *
-     * Retrieve recording settings
+     * Retrieve the URL that is registered for [call recording](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
      *
      * @throws APIException
      */
@@ -170,7 +170,7 @@ final class CallingService implements CallingContract
     /**
      * @api
      *
-     * Mark recording as ready for transcription
+     * Mark a call recording as ready for transcription, specifying the call by its ID (`engagementid`).
      *
      * @param int $engagementID
      *
@@ -214,7 +214,7 @@ final class CallingService implements CallingContract
     /**
      * @api
      *
-     * Retrieve channel connection settings
+     * Retrieve the settings related to the app's [channel connection](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#fetch-existing-channel-connection-settings).
      *
      * @throws APIException
      */
@@ -236,7 +236,7 @@ final class CallingService implements CallingContract
     /**
      * @api
      *
-     * Enable the app for call recording
+     * Register an external URL that HubSpot will use to retrieve [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
      *
      * @param string $urlToRetrieveAuthedRecording
      *
@@ -282,7 +282,7 @@ final class CallingService implements CallingContract
     /**
      * @api
      *
-     * Update recording settings
+     * Update the URL that HubSpot will use to retrieve [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
      *
      * @param string $urlToRetrieveAuthedRecording
      *

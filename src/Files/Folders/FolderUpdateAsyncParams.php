@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new FolderUpdateAsyncParams); // set properties as needed
  * $client->files.folders->updateAsync(...$params->toArray());
  * ```
- * Update folder properties.
+ * Update properties of folder by given ID. This action happens asynchronously and will update all of the folder's children as well.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,12 +35,21 @@ final class FolderUpdateAsyncParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The unique identifier of the folder to be updated.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The new name for the folder, which will also update the fullPath and all children of the folder.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * The ID of the new parent folder, which will move the folder and its children into the specified folder.
+     */
     #[Api('parentFolderId', optional: true)]
     public ?int $parentFolderID;
 
@@ -83,6 +92,9 @@ final class FolderUpdateAsyncParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier of the folder to be updated.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -91,6 +103,9 @@ final class FolderUpdateAsyncParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The new name for the folder, which will also update the fullPath and all children of the folder.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -99,6 +114,9 @@ final class FolderUpdateAsyncParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the new parent folder, which will move the folder and its children into the specified folder.
+     */
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;

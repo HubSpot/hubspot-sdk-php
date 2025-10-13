@@ -25,6 +25,9 @@ final class Styles implements BaseModel
     /** @use SdkModel<styles_alias> */
     use SdkModel;
 
+    /**
+     * A color defined by RGB values.
+     */
     #[Api]
     public RgbaColor $backgroundColor;
 
@@ -116,6 +119,9 @@ final class Styles implements BaseModel
         return $obj;
     }
 
+    /**
+     * A color defined by RGB values.
+     */
     public function withBackgroundColor(RgbaColor $backgroundColor): self
     {
         $obj = clone $this;

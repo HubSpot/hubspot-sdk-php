@@ -25,6 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   suppressionListIDs: list<int>,
  *   timeWindows: list<APITimeWindow>,
  *   type: value-of<Type>,
+ *   description?: string,
  *   enrollmentCriteria?: APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
  *   enrollmentSchedule?: APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
  *   eventAnchor?: APIContactPropertyAnchor|APIStaticDateAnchor,
@@ -84,6 +85,9 @@ final class APIContactFlowCreateRequest implements BaseModel
     /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
+
+    #[Api(optional: true)]
+    public ?string $description;
 
     #[Api(optional: true)]
     public APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria;
@@ -177,6 +181,7 @@ final class APIContactFlowCreateRequest implements BaseModel
         array $suppressionListIDs,
         array $timeWindows,
         Type|string $type = 'CONTACT_FLOW',
+        ?string $description = null,
         APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria = null,
         APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule = null,
         APIContactPropertyAnchor|APIStaticDateAnchor|null $eventAnchor = null,
@@ -200,6 +205,7 @@ final class APIContactFlowCreateRequest implements BaseModel
         $obj->timeWindows = $timeWindows;
         $obj['type'] = $type;
 
+        null !== $description && $obj->description = $description;
         null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
         null !== $enrollmentSchedule && $obj->enrollmentSchedule = $enrollmentSchedule;
         null !== $eventAnchor && $obj->eventAnchor = $eventAnchor;
@@ -321,6 +327,14 @@ final class APIContactFlowCreateRequest implements BaseModel
     {
         $obj = clone $this;
         $obj['type'] = $type;
+
+        return $obj;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
 
         return $obj;
     }

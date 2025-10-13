@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new EmailCloneParams); // set properties as needed
  * $client->marketing.emails->clone(...$params->toArray());
  * ```
- * Clone a marketing email.
+ * This will create a duplicate email with the same properties as the original, with the exception of a unique ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,12 +35,21 @@ final class EmailCloneParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The unique identifier of the email to be cloned.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The name to assign to the cloned email.
+     */
     #[Api(optional: true)]
     public ?string $cloneName;
 
+    /**
+     * The language code for the cloned email, such as 'en' for English.
+     */
     #[Api(optional: true)]
     public ?string $language;
 
@@ -83,6 +92,9 @@ final class EmailCloneParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier of the email to be cloned.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -91,6 +103,9 @@ final class EmailCloneParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name to assign to the cloned email.
+     */
     public function withCloneName(string $cloneName): self
     {
         $obj = clone $this;
@@ -99,6 +114,9 @@ final class EmailCloneParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The language code for the cloned email, such as 'en' for English.
+     */
     public function withLanguage(string $language): self
     {
         $obj = clone $this;

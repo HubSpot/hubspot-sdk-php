@@ -10,7 +10,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Property\DataSensitivity;
 
 /**
+ * Defines a property.
+ *
  * @phpstan-type property_alias = array{
+ *   description: string,
  *   fieldType: string,
  *   groupName: string,
  *   label: string,
@@ -43,81 +46,162 @@ final class Property implements BaseModel
     /** @use SdkModel<property_alias> */
     use SdkModel;
 
+    /**
+     * A description of the property that will be shown as help text in HubSpot.
+     */
+    #[Api]
+    public string $description;
+
+    /**
+     * Controls how the property appears in HubSpot.
+     */
     #[Api]
     public string $fieldType;
 
+    /**
+     * The name of the property group the property belongs to.
+     */
     #[Api]
     public string $groupName;
 
+    /**
+     * A human-readable property label that will be shown in HubSpot.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * The internal property name, which must be used when referencing the property via the API.
+     */
     #[Api]
     public string $name;
 
-    /** @var list<Option> $options */
+    /**
+     * A list of valid options for the property. This field is required for enumerated properties, but will be empty for other property types.
+     *
+     * @var list<Option> $options
+     */
     #[Api(list: Option::class)]
     public array $options;
 
+    /**
+     * The property data type.
+     */
     #[Api]
     public string $type;
 
+    /**
+     * Whether or not the property is archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * When the property was archived.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $archivedAt;
 
+    /**
+     * For default properties, true indicates that the property is calculated by a HubSpot process. It has no effect for custom properties.
+     */
     #[Api(optional: true)]
     public ?bool $calculated;
 
+    /**
+     * The formula used for calculated properties.
+     */
     #[Api(optional: true)]
     public ?string $calculationFormula;
 
+    /**
+     * When the property was created.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * The internal ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.
+     */
     #[Api('createdUserId', optional: true)]
     public ?string $createdUserID;
 
-    /** @var value-of<DataSensitivity>|null $dataSensitivity */
+    /**
+     * Indicates the sensitivity level of the property, such as "non_sensitive", "sensitive", or "highly_sensitive".
+     *
+     * @var value-of<DataSensitivity>|null $dataSensitivity
+     */
     #[Api(enum: DataSensitivity::class, optional: true)]
     public ?string $dataSensitivity;
 
+    /**
+     * The order that this property should be displayed in the HubSpot UI relative to other properties for this object type. Properties are displayed in order starting with the lowest positive integer value. A value of -1 will cause the property to be displayed **after** any positive values.
+     */
     #[Api(optional: true)]
     public ?int $displayOrder;
 
+    /**
+     * For default properties, true indicates that the options are stored externally to the property settings.
+     */
     #[Api(optional: true)]
     public ?bool $externalOptions;
 
+    /**
+     * Whether or not the property can be used in a HubSpot form.
+     */
     #[Api(optional: true)]
     public ?bool $formField;
 
+    /**
+     * Whether or not the property's value must be unique. Once set, this can't be changed.
+     */
     #[Api(optional: true)]
     public ?bool $hasUniqueValue;
 
+    /**
+     * Whether or not the property will be hidden from the HubSpot UI. It's recommended that this be set to false for custom properties.
+     */
     #[Api(optional: true)]
     public ?bool $hidden;
 
+    /**
+     * This will be true for default object properties built into HubSpot.
+     */
     #[Api(optional: true)]
     public ?bool $hubspotDefined;
 
     #[Api(optional: true)]
     public ?PropertyModificationMetadata $modificationMetadata;
 
+    /**
+     * If this property is related to other object(s), they'll be listed here.
+     */
     #[Api(optional: true)]
     public ?string $referencedObjectType;
 
-    /** @var list<string>|null $sensitiveDataCategories */
+    /**
+     * When sensitiveData is true, lists the type of sensitive data contained in the property (e.g., "HIPAA").
+     *
+     * @var list<string>|null $sensitiveDataCategories
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $sensitiveDataCategories;
 
+    /**
+     * Whether the property will display the currency symbol set in the account settings.
+     */
     #[Api(optional: true)]
     public ?bool $showCurrencySymbol;
 
+    /**
+     * The timestamp when the property was last updated, in ISO 8601 format.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
+    /**
+     * The internal user ID of the user who updated the property in HubSpot. This field may not exist if the property was updated outside of HubSpot.
+     */
     #[Api('updatedUserId', optional: true)]
     public ?string $updatedUserID;
 
@@ -127,7 +211,13 @@ final class Property implements BaseModel
      * To enforce required parameters use
      * ```
      * Property::with(
-     *   fieldType: ..., groupName: ..., label: ..., name: ..., options: ..., type: ...
+     *   description: ...,
+     *   fieldType: ...,
+     *   groupName: ...,
+     *   label: ...,
+     *   name: ...,
+     *   options: ...,
+     *   type: ...,
      * )
      * ```
      *
@@ -135,6 +225,7 @@ final class Property implements BaseModel
      *
      * ```
      * (new Property)
+     *   ->withDescription(...)
      *   ->withFieldType(...)
      *   ->withGroupName(...)
      *   ->withLabel(...)
@@ -158,6 +249,7 @@ final class Property implements BaseModel
      * @param list<string> $sensitiveDataCategories
      */
     public static function with(
+        string $description,
         string $fieldType,
         string $groupName,
         string $label,
@@ -186,6 +278,7 @@ final class Property implements BaseModel
     ): self {
         $obj = new self;
 
+        $obj->description = $description;
         $obj->fieldType = $fieldType;
         $obj->groupName = $groupName;
         $obj->label = $label;
@@ -216,6 +309,20 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * A description of the property that will be shown as help text in HubSpot.
+     */
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * Controls how the property appears in HubSpot.
+     */
     public function withFieldType(string $fieldType): self
     {
         $obj = clone $this;
@@ -224,6 +331,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the property group the property belongs to.
+     */
     public function withGroupName(string $groupName): self
     {
         $obj = clone $this;
@@ -232,6 +342,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * A human-readable property label that will be shown in HubSpot.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -240,6 +353,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * The internal property name, which must be used when referencing the property via the API.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -249,6 +365,8 @@ final class Property implements BaseModel
     }
 
     /**
+     * A list of valid options for the property. This field is required for enumerated properties, but will be empty for other property types.
+     *
      * @param list<Option> $options
      */
     public function withOptions(array $options): self
@@ -259,6 +377,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * The property data type.
+     */
     public function withType(string $type): self
     {
         $obj = clone $this;
@@ -267,6 +388,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether or not the property is archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -275,6 +399,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * When the property was archived.
+     */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
@@ -283,6 +410,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * For default properties, true indicates that the property is calculated by a HubSpot process. It has no effect for custom properties.
+     */
     public function withCalculated(bool $calculated): self
     {
         $obj = clone $this;
@@ -291,6 +421,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * The formula used for calculated properties.
+     */
     public function withCalculationFormula(string $calculationFormula): self
     {
         $obj = clone $this;
@@ -299,6 +432,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * When the property was created.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -307,6 +443,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * The internal ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.
+     */
     public function withCreatedUserID(string $createdUserID): self
     {
         $obj = clone $this;
@@ -316,6 +455,8 @@ final class Property implements BaseModel
     }
 
     /**
+     * Indicates the sensitivity level of the property, such as "non_sensitive", "sensitive", or "highly_sensitive".
+     *
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      */
     public function withDataSensitivity(
@@ -327,6 +468,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * The order that this property should be displayed in the HubSpot UI relative to other properties for this object type. Properties are displayed in order starting with the lowest positive integer value. A value of -1 will cause the property to be displayed **after** any positive values.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
@@ -335,6 +479,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * For default properties, true indicates that the options are stored externally to the property settings.
+     */
     public function withExternalOptions(bool $externalOptions): self
     {
         $obj = clone $this;
@@ -343,6 +490,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether or not the property can be used in a HubSpot form.
+     */
     public function withFormField(bool $formField): self
     {
         $obj = clone $this;
@@ -351,6 +501,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether or not the property's value must be unique. Once set, this can't be changed.
+     */
     public function withHasUniqueValue(bool $hasUniqueValue): self
     {
         $obj = clone $this;
@@ -359,6 +512,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether or not the property will be hidden from the HubSpot UI. It's recommended that this be set to false for custom properties.
+     */
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
@@ -367,6 +523,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * This will be true for default object properties built into HubSpot.
+     */
     public function withHubspotDefined(bool $hubspotDefined): self
     {
         $obj = clone $this;
@@ -384,6 +543,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * If this property is related to other object(s), they'll be listed here.
+     */
     public function withReferencedObjectType(string $referencedObjectType): self
     {
         $obj = clone $this;
@@ -393,6 +555,8 @@ final class Property implements BaseModel
     }
 
     /**
+     * When sensitiveData is true, lists the type of sensitive data contained in the property (e.g., "HIPAA").
+     *
      * @param list<string> $sensitiveDataCategories
      */
     public function withSensitiveDataCategories(
@@ -404,6 +568,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the property will display the currency symbol set in the account settings.
+     */
     public function withShowCurrencySymbol(bool $showCurrencySymbol): self
     {
         $obj = clone $this;
@@ -412,6 +579,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the property was last updated, in ISO 8601 format.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -420,6 +590,9 @@ final class Property implements BaseModel
         return $obj;
     }
 
+    /**
+     * The internal user ID of the user who updated the property in HubSpot. This field may not exist if the property was updated outside of HubSpot.
+     */
     public function withUpdatedUserID(string $updatedUserID): self
     {
         $obj = clone $this;

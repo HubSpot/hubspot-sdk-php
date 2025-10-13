@@ -33,6 +33,9 @@ final class TagDetachFromLangGroupParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of the object to remove from a multi-language group.
+     */
     #[Api]
     public string $id;
 
@@ -69,6 +72,9 @@ final class TagDetachFromLangGroupParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the object to remove from a multi-language group.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;

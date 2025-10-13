@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
 
 /**
+ * Represents a CRM object that has either been created or updated (upserted).
+ *
  * @phpstan-type simple_public_upsert_object = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
@@ -27,32 +29,58 @@ final class SimplePublicUpsertObject implements BaseModel
     /** @use SdkModel<simple_public_upsert_object> */
     use SdkModel;
 
+    /**
+     * The unique ID of the object.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The timestamp when the object was created, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * Whether the property is new.
+     */
     #[Api]
     public bool $new;
 
-    /** @var array<string, string> $properties */
+    /**
+     * Key value pairs representing the properties of the object.
+     *
+     * @var array<string, string> $properties
+     */
     #[Api(map: 'string')]
     public array $properties;
 
+    /**
+     * The timestamp when the object was last updated, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * Whether the object is archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * The timestamp when the object was archived, in ISO 8601 format.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $archivedAt;
 
     #[Api('objectWriteTraceId', optional: true)]
     public ?string $objectWriteTraceID;
 
-    /** @var array<string, list<ValueWithTimestamp>>|null $propertiesWithHistory */
+    /**
+     * Key-value pairs representing the properties of the object along with their history.
+     *
+     * @var array<string, list<ValueWithTimestamp>>|null $propertiesWithHistory
+     */
     #[Api(map: new ListOf(ValueWithTimestamp::class), optional: true)]
     public ?array $propertiesWithHistory;
 
@@ -117,6 +145,9 @@ final class SimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID of the object.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -125,6 +156,9 @@ final class SimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the object was created, in ISO 8601 format.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -133,6 +167,9 @@ final class SimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the property is new.
+     */
     public function withNew(bool $new): self
     {
         $obj = clone $this;
@@ -142,6 +179,8 @@ final class SimplePublicUpsertObject implements BaseModel
     }
 
     /**
+     * Key value pairs representing the properties of the object.
+     *
      * @param array<string, string> $properties
      */
     public function withProperties(array $properties): self
@@ -152,6 +191,9 @@ final class SimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the object was last updated, in ISO 8601 format.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -160,6 +202,9 @@ final class SimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the object is archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -168,6 +213,9 @@ final class SimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the object was archived, in ISO 8601 format.
+     */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
@@ -185,6 +233,8 @@ final class SimplePublicUpsertObject implements BaseModel
     }
 
     /**
+     * Key-value pairs representing the properties of the object along with their history.
+     *
      * @param array<string, list<ValueWithTimestamp>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(

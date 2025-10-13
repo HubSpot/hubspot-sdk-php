@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * RSS related data if it is a blog or rss email.
+ *
  * @phpstan-type public_rss_email_details = array{
  *   blogEmailType?: string,
  *   blogImageMaxWidth?: int,

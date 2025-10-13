@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * An input used to update some properties on a pipeline definition.
+ *
  * @phpstan-type pipeline_patch_input = array{
  *   archived?: bool, displayOrder?: int, label?: string
  * }
@@ -18,12 +20,21 @@ final class PipelinePatchInput implements BaseModel
     /** @use SdkModel<pipeline_patch_input> */
     use SdkModel;
 
+    /**
+     * Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     #[Api(optional: true)]
     public ?int $displayOrder;
 
+    /**
+     * A unique label used to organize pipelines in HubSpot's UI.
+     */
     #[Api(optional: true)]
     public ?string $label;
 
@@ -51,6 +62,9 @@ final class PipelinePatchInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -59,6 +73,9 @@ final class PipelinePatchInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
@@ -67,6 +84,9 @@ final class PipelinePatchInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique label used to organize pipelines in HubSpot's UI.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;

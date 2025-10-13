@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
+ * Aggregated statistics for the given interval, plus the IDs of emails that were sent during that interval.
+ *
  * @phpstan-type aggregate_email_statistics = array{
  *   aggregate?: EmailStatisticsData,
  *   campaignAggregations?: array<string, EmailStatisticsData>,
@@ -27,11 +29,19 @@ final class AggregateEmailStatistics implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?EmailStatisticsData $aggregate;
 
-    /** @var array<string, EmailStatisticsData>|null $campaignAggregations */
+    /**
+     * The aggregated statistics per campaign.
+     *
+     * @var array<string, EmailStatisticsData>|null $campaignAggregations
+     */
     #[Api(map: EmailStatisticsData::class, optional: true)]
     public ?array $campaignAggregations;
 
-    /** @var list<int>|null $emails */
+    /**
+     * List of email IDs that were sent during the time span.
+     *
+     * @var list<int>|null $emails
+     */
     #[Api(list: 'int', optional: true)]
     public ?array $emails;
 
@@ -71,6 +81,8 @@ final class AggregateEmailStatistics implements BaseModel, ResponseConverter
     }
 
     /**
+     * The aggregated statistics per campaign.
+     *
      * @param array<string, EmailStatisticsData> $campaignAggregations
      */
     public function withCampaignAggregations(array $campaignAggregations): self
@@ -82,6 +94,8 @@ final class AggregateEmailStatistics implements BaseModel, ResponseConverter
     }
 
     /**
+     * List of email IDs that were sent during the time span.
+     *
      * @param list<int> $emails
      */
     public function withEmails(array $emails): self

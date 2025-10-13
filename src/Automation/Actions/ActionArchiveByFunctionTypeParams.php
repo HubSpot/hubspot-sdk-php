@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new ActionArchiveByFunctionTypeParams); // set properties as needed
  * $client->automation.actions->archiveByFunctionType(...$params->toArray());
  * ```
- * Delete a function for a definition.
+ * Delete a function within a given definition.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

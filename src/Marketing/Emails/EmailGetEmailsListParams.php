@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new EmailGetEmailsListParams); // set properties as needed
  * $client->marketing.emails->getEmailsList(...$params->toArray());
  * ```
- * Get aggregated statistics.
+ * Use this endpoint to get aggregated statistics of emails sent in a specified time span. It also returns the list of emails that were sent during the time span.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -38,16 +38,29 @@ final class EmailGetEmailsListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<int>|null $emailIDs */
+    /**
+     * Filter by email IDs. Only include statistics of emails with these IDs.
+     *
+     * @var list<int>|null $emailIDs
+     */
     #[Api(list: 'int', optional: true)]
     public ?array $emailIDs;
 
+    /**
+     * The end timestamp of the time span, in ISO8601 representation.
+     */
     #[Api(optional: true)]
     public ?string $endTimestamp;
 
+    /**
+     * Specifies which email properties should be returned. All properties will be returned by default.
+     */
     #[Api(optional: true)]
     public ?string $property;
 
+    /**
+     * The start timestamp of the time span, in ISO8601 representation.
+     */
     #[Api(optional: true)]
     public ?string $startTimestamp;
 
@@ -80,6 +93,8 @@ final class EmailGetEmailsListParams implements BaseModel
     }
 
     /**
+     * Filter by email IDs. Only include statistics of emails with these IDs.
+     *
      * @param list<int> $emailIDs
      */
     public function withEmailIDs(array $emailIDs): self
@@ -90,6 +105,9 @@ final class EmailGetEmailsListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The end timestamp of the time span, in ISO8601 representation.
+     */
     public function withEndTimestamp(string $endTimestamp): self
     {
         $obj = clone $this;
@@ -98,6 +116,9 @@ final class EmailGetEmailsListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies which email properties should be returned. All properties will be returned by default.
+     */
     public function withProperty(string $property): self
     {
         $obj = clone $this;
@@ -106,6 +127,9 @@ final class EmailGetEmailsListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The start timestamp of the time span, in ISO8601 representation.
+     */
     public function withStartTimestamp(string $startTimestamp): self
     {
         $obj = clone $this;

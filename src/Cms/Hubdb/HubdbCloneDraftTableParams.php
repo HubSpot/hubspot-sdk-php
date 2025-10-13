@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbCloneDraftTableParams); // set properties as needed
  * $client->cms.hubdb->cloneDraftTable(...$params->toArray());
  * ```
- * Clone a table.
+ * Clone an existing HubDB table. The `newName` and `newLabel` of the new table can be sent as JSON in the request body. This will create the cloned table as a draft.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,15 +35,24 @@ final class HubdbCloneDraftTableParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Specifies whether to copy the rows during clone.
+     */
     #[Api]
     public bool $copyRows;
 
     #[Api]
     public bool $isHubspotDefined;
 
+    /**
+     * The new label for the cloned table.
+     */
     #[Api(optional: true)]
     public ?string $newLabel;
 
+    /**
+     * The new name for the cloned table.
+     */
     #[Api(optional: true)]
     public ?string $newName;
 
@@ -88,6 +97,9 @@ final class HubdbCloneDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to copy the rows during clone.
+     */
     public function withCopyRows(bool $copyRows): self
     {
         $obj = clone $this;
@@ -104,6 +116,9 @@ final class HubdbCloneDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The new label for the cloned table.
+     */
     public function withNewLabel(string $newLabel): self
     {
         $obj = clone $this;
@@ -112,6 +127,9 @@ final class HubdbCloneDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The new name for the cloned table.
+     */
     public function withNewName(string $newName): self
     {
         $obj = clone $this;

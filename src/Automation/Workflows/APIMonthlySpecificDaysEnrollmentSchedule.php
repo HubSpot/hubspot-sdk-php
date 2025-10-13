@@ -19,14 +19,22 @@ final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
     /** @use SdkModel<api_monthly_specific_days_enrollment_schedule> */
     use SdkModel;
 
-    /** @var list<int> $daysOfMonth */
+    /**
+     * Which days of the month to run this workflow on.
+     *
+     * @var list<int> $daysOfMonth
+     */
     #[Api(list: 'int')]
     public array $daysOfMonth;
 
     #[Api]
     public APITimeOfDay $timeOfDay;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of enrollment schedule this is, can be: "DAILY", "WEEKLY", "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -77,6 +85,8 @@ final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
     }
 
     /**
+     * Which days of the month to run this workflow on.
+     *
      * @param list<int> $daysOfMonth
      */
     public function withDaysOfMonth(array $daysOfMonth): self
@@ -96,6 +106,8 @@ final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
     }
 
     /**
+     * The type of enrollment schedule this is, can be: "DAILY", "WEEKLY", "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

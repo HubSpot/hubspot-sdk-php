@@ -19,7 +19,7 @@ use HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory;
  * $params = (new EmailUpsertDraftParams); // set properties as needed
  * $client->marketing.emails->upsertDraft(...$params->toArray());
  * ```
- * Create or update draft version.
+ * Create or update the draft version of a marketing email. If no draft exists, the system creates a draft from the current “live” email then applies the request body to that draft. The draft version only lives on the buffer—the email is not cloned.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -56,21 +56,36 @@ final class EmailUpsertDraftParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The active domain of the email.
+     */
     #[Api(optional: true)]
     public ?string $activeDomain;
 
+    /**
+     * Determines if the email is archived or not.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
     #[Api('businessUnitId', optional: true)]
     public ?int $businessUnitID;
 
+    /**
+     * The ID of the campaign this email is associated to.
+     */
     #[Api(optional: true)]
     public ?string $campaign;
 
+    /**
+     * Data structure representing the content of the email.
+     */
     #[Api(optional: true)]
     public ?PublicEmailContent $content;
 
+    /**
+     * Data structure representing the from fields on the email.
+     */
     #[Api(optional: true)]
     public ?PublicEmailFromDetails $from;
 
@@ -81,35 +96,67 @@ final class EmailUpsertDraftParams implements BaseModel
     #[Api(enum: Language::class, optional: true)]
     public ?string $language;
 
+    /**
+     * The name of the email, as displayed on the email dashboard.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $publishDate;
 
+    /**
+     * RSS related data if it is a blog or rss email.
+     */
     #[Api(optional: true)]
     public ?PublicRssEmailDetails $rssData;
 
+    /**
+     * Determines whether the email will be sent immediately on publish.
+     */
     #[Api(optional: true)]
     public ?bool $sendOnPublish;
 
-    /** @var value-of<State>|null $state */
+    /**
+     * The email state.
+     *
+     * @var value-of<State>|null $state
+     */
     #[Api(enum: State::class, optional: true)]
     public ?string $state;
 
-    /** @var value-of<Subcategory>|null $subcategory */
+    /**
+     * The email subcategory.
+     *
+     * @var value-of<Subcategory>|null $subcategory
+     */
     #[Api(enum: Subcategory::class, optional: true)]
     public ?string $subcategory;
 
+    /**
+     * The subject of the email.
+     */
     #[Api(optional: true)]
     public ?string $subject;
 
+    /**
+     * Data structure representing the subscription fields of the email.
+     */
     #[Api(optional: true)]
     public ?PublicEmailSubscriptionDetails $subscriptionDetails;
 
+    /**
+     * AB testing related data. This property is only returned for AB type emails.
+     */
     #[Api(optional: true)]
     public ?PublicEmailTestingDetails $testing;
 
+    /**
+     * Data structure representing the to fields of the email.
+     */
     #[Api(optional: true)]
     public ?PublicEmailToDetails $to;
 
@@ -176,6 +223,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The active domain of the email.
+     */
     public function withActiveDomain(string $activeDomain): self
     {
         $obj = clone $this;
@@ -184,6 +234,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Determines if the email is archived or not.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -200,6 +253,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the campaign this email is associated to.
+     */
     public function withCampaign(string $campaign): self
     {
         $obj = clone $this;
@@ -208,6 +264,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Data structure representing the content of the email.
+     */
     public function withContent(PublicEmailContent $content): self
     {
         $obj = clone $this;
@@ -216,6 +275,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Data structure representing the from fields on the email.
+     */
     public function withFrom(PublicEmailFromDetails $from): self
     {
         $obj = clone $this;
@@ -243,6 +305,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the email, as displayed on the email dashboard.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -251,6 +316,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
+     */
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
         $obj = clone $this;
@@ -259,6 +327,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * RSS related data if it is a blog or rss email.
+     */
     public function withRssData(PublicRssEmailDetails $rssData): self
     {
         $obj = clone $this;
@@ -267,6 +338,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Determines whether the email will be sent immediately on publish.
+     */
     public function withSendOnPublish(bool $sendOnPublish): self
     {
         $obj = clone $this;
@@ -276,6 +350,8 @@ final class EmailUpsertDraftParams implements BaseModel
     }
 
     /**
+     * The email state.
+     *
      * @param State|value-of<State> $state
      */
     public function withState(State|string $state): self
@@ -287,6 +363,8 @@ final class EmailUpsertDraftParams implements BaseModel
     }
 
     /**
+     * The email subcategory.
+     *
      * @param Subcategory|value-of<Subcategory> $subcategory
      */
     public function withSubcategory(Subcategory|string $subcategory): self
@@ -297,6 +375,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The subject of the email.
+     */
     public function withSubject(string $subject): self
     {
         $obj = clone $this;
@@ -305,6 +386,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Data structure representing the subscription fields of the email.
+     */
     public function withSubscriptionDetails(
         PublicEmailSubscriptionDetails $subscriptionDetails
     ): self {
@@ -314,6 +398,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * AB testing related data. This property is only returned for AB type emails.
+     */
     public function withTesting(PublicEmailTestingDetails $testing): self
     {
         $obj = clone $this;
@@ -322,6 +409,9 @@ final class EmailUpsertDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Data structure representing the to fields of the email.
+     */
     public function withTo(PublicEmailToDetails $to): self
     {
         $obj = clone $this;

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new FileUploadParams); // set properties as needed
  * $client->files.files->upload(...$params->toArray());
  * ```
- * Upload file.
+ * Upload a single file with content specified in request body.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -40,21 +40,39 @@ final class FileUploadParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Character set of the uploaded file.
+     */
     #[Api(optional: true)]
     public ?string $charsetHunch;
 
+    /**
+     * File to be uploaded.
+     */
     #[Api(optional: true)]
     public ?string $file;
 
+    /**
+     * Desired name for the uploaded file.
+     */
     #[Api(optional: true)]
     public ?string $fileName;
 
+    /**
+     * Either 'folderId' or 'folderPath' is required. folderId is the ID of the folder the file will be uploaded to.
+     */
     #[Api('folderId', optional: true)]
     public ?string $folderID;
 
+    /**
+     * Either 'folderPath' or 'folderId' is required. This field represents the destination folder path for the uploaded file. If a path doesn't exist, the system will try to create one.
+     */
     #[Api(optional: true)]
     public ?string $folderPath;
 
+    /**
+     * JSON string representing FileUploadOptions.
+     */
     #[Api(optional: true)]
     public ?string $options;
 
@@ -88,6 +106,9 @@ final class FileUploadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Character set of the uploaded file.
+     */
     public function withCharsetHunch(string $charsetHunch): self
     {
         $obj = clone $this;
@@ -96,6 +117,9 @@ final class FileUploadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * File to be uploaded.
+     */
     public function withFile(string $file): self
     {
         $obj = clone $this;
@@ -104,6 +128,9 @@ final class FileUploadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Desired name for the uploaded file.
+     */
     public function withFileName(string $fileName): self
     {
         $obj = clone $this;
@@ -112,6 +139,9 @@ final class FileUploadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Either 'folderId' or 'folderPath' is required. folderId is the ID of the folder the file will be uploaded to.
+     */
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
@@ -120,6 +150,9 @@ final class FileUploadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Either 'folderPath' or 'folderId' is required. This field represents the destination folder path for the uploaded file. If a path doesn't exist, the system will try to create one.
+     */
     public function withFolderPath(string $folderPath): self
     {
         $obj = clone $this;
@@ -128,6 +161,9 @@ final class FileUploadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * JSON string representing FileUploadOptions.
+     */
     public function withOptions(string $options): self
     {
         $obj = clone $this;

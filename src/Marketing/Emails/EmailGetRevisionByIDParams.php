@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new EmailGetRevisionByIDParams); // set properties as needed
  * $client->marketing.emails->getRevisionByID(...$params->toArray());
  * ```
- * Get a revision of a marketing email.
+ * Get a specific revision of a marketing email.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

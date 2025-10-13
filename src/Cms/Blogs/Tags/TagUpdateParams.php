@@ -17,7 +17,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TagUpdateParams); // set properties as needed
  * $client->cms.blogs.tags->update(...$params->toArray());
  * ```
- * Update a Blog Tag.
+ * Sparse updates a single Blog Tag object identified by the id in the path.
+ * All the column values need not be specified. Only the that need to be modified can be specified.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -43,28 +44,47 @@ final class TagUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The unique ID of the Blog Tag.
+     */
     #[Api]
     public string $id;
 
     #[Api]
     public \DateTimeInterface $created;
 
+    /**
+     * The timestamp (ISO8601 format) when this Blog Tag was deleted.
+     */
     #[Api]
     public \DateTimeInterface $deletedAt;
 
-    /** @var value-of<Language> $language */
+    /**
+     * The explicitly defined ISO 639 language code of the tag.
+     *
+     * @var value-of<Language> $language
+     */
     #[Api(enum: Language::class)]
     public string $language;
 
+    /**
+     * The name of the tag.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * ID of the primary tag this object was translated from.
+     */
     #[Api('translatedFromId')]
     public int $translatedFromID;
 
     #[Api]
     public \DateTimeInterface $updated;
 
+    /**
+     * Specifies whether to update deleted Blog Tags. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -134,6 +154,9 @@ final class TagUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID of the Blog Tag.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -150,6 +173,9 @@ final class TagUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp (ISO8601 format) when this Blog Tag was deleted.
+     */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
         $obj = clone $this;
@@ -159,6 +185,8 @@ final class TagUpdateParams implements BaseModel
     }
 
     /**
+     * The explicitly defined ISO 639 language code of the tag.
+     *
      * @param Language|value-of<Language> $language
      */
     public function withLanguage(Language|string $language): self
@@ -169,6 +197,9 @@ final class TagUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the tag.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -177,6 +208,9 @@ final class TagUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the primary tag this object was translated from.
+     */
     public function withTranslatedFromID(int $translatedFromID): self
     {
         $obj = clone $this;
@@ -193,6 +227,9 @@ final class TagUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to update deleted Blog Tags. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;

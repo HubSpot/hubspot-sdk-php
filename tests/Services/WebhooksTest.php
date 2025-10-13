@@ -142,8 +142,8 @@ final class WebhooksTest extends TestCase
 
         $result = $this->client->webhooks->configure(
             0,
-            targetURL: 'targetUrl',
-            throttling: ThrottlingSettings::with(maxConcurrentRequests: 0),
+            targetURL: 'https://www.example.com/hubspot/target',
+            throttling: ThrottlingSettings::with(maxConcurrentRequests: 10),
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -158,8 +158,8 @@ final class WebhooksTest extends TestCase
 
         $result = $this->client->webhooks->configure(
             0,
-            targetURL: 'targetUrl',
-            throttling: ThrottlingSettings::with(maxConcurrentRequests: 0),
+            targetURL: 'https://www.example.com/hubspot/target',
+            throttling: ThrottlingSettings::with(maxConcurrentRequests: 10),
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Tags\TagUpdateParams;
 
+/**
+ * The explicitly defined ISO 639 language code of the tag.
+ */
 enum Language: string
 {
     case AF = 'af';

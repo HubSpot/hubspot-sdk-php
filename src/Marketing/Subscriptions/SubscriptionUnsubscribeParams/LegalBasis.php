@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams;
 
+/**
+ * Legal basis for updating the contact's status (required for GDPR enabled portals).
+ */
 enum LegalBasis: string
 {
     case LEGITIMATE_INTEREST_PQL = 'LEGITIMATE_INTEREST_PQL';

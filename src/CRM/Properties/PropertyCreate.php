@@ -20,6 +20,7 @@ use HubspotSDK\CRM\Properties\PropertyCreate\Type;
  *   type: value-of<Type>,
  *   calculationFormula?: string,
  *   dataSensitivity?: value-of<DataSensitivity>,
+ *   description?: string,
  *   displayOrder?: int,
  *   externalOptions?: bool,
  *   formField?: bool,
@@ -34,23 +35,43 @@ final class PropertyCreate implements BaseModel
     /** @use SdkModel<property_create> */
     use SdkModel;
 
-    /** @var value-of<FieldType> $fieldType */
+    /**
+     * Controls how the property appears in HubSpot.
+     *
+     * @var value-of<FieldType> $fieldType
+     */
     #[Api(enum: FieldType::class)]
     public string $fieldType;
 
+    /**
+     * The name of the property group the property belongs to.
+     */
     #[Api]
     public string $groupName;
 
+    /**
+     * A human-readable property label that will be shown in HubSpot.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * The internal property name, which must be used when referencing the property via the API.
+     */
     #[Api]
     public string $name;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The data type of the property.
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
+    /**
+     * Represents a formula that is used to compute a calculated property.
+     */
     #[Api(optional: true)]
     public ?string $calculationFormula;
 
@@ -58,25 +79,53 @@ final class PropertyCreate implements BaseModel
     #[Api(enum: DataSensitivity::class, optional: true)]
     public ?string $dataSensitivity;
 
+    /**
+     * A description of the property that will be shown as help text in HubSpot.
+     */
+    #[Api(optional: true)]
+    public ?string $description;
+
+    /**
+     * Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property to be displayed after any positive values.
+     */
     #[Api(optional: true)]
     public ?int $displayOrder;
 
+    /**
+     * Applicable only for 'enumeration' type properties.  Should be set to true in conjunction with a 'referencedObjectType' of 'OWNER'.  Otherwise false.
+     */
     #[Api(optional: true)]
     public ?bool $externalOptions;
 
+    /**
+     * Whether or not the property can be used in a HubSpot form.
+     */
     #[Api(optional: true)]
     public ?bool $formField;
 
+    /**
+     * Whether or not the property's value must be unique. Once set, this can't be changed.
+     */
     #[Api(optional: true)]
     public ?bool $hasUniqueValue;
 
+    /**
+     * If true, the option will not be shown in forms, bots, or meeting scheduling pages. Supported for contact, company, ticket, and custom object enumeration properties.
+     */
     #[Api(optional: true)]
     public ?bool $hidden;
 
-    /** @var list<OptionInput>|null $options */
+    /**
+     * A list of valid options for the property. This field is required for enumerated properties.
+     *
+     * @var list<OptionInput>|null $options
+     */
     #[Api(list: OptionInput::class, optional: true)]
     public ?array $options;
 
+    /**
+     * Should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users.
+     */
     #[Api(optional: true)]
     public ?string $referencedObjectType;
 
@@ -124,6 +173,7 @@ final class PropertyCreate implements BaseModel
         Type|string $type,
         ?string $calculationFormula = null,
         DataSensitivity|string|null $dataSensitivity = null,
+        ?string $description = null,
         ?int $displayOrder = null,
         ?bool $externalOptions = null,
         ?bool $formField = null,
@@ -142,6 +192,7 @@ final class PropertyCreate implements BaseModel
 
         null !== $calculationFormula && $obj->calculationFormula = $calculationFormula;
         null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
+        null !== $description && $obj->description = $description;
         null !== $displayOrder && $obj->displayOrder = $displayOrder;
         null !== $externalOptions && $obj->externalOptions = $externalOptions;
         null !== $formField && $obj->formField = $formField;
@@ -154,6 +205,8 @@ final class PropertyCreate implements BaseModel
     }
 
     /**
+     * Controls how the property appears in HubSpot.
+     *
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public function withFieldType(FieldType|string $fieldType): self
@@ -164,6 +217,9 @@ final class PropertyCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the property group the property belongs to.
+     */
     public function withGroupName(string $groupName): self
     {
         $obj = clone $this;
@@ -172,6 +228,9 @@ final class PropertyCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * A human-readable property label that will be shown in HubSpot.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -180,6 +239,9 @@ final class PropertyCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * The internal property name, which must be used when referencing the property via the API.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -189,6 +251,8 @@ final class PropertyCreate implements BaseModel
     }
 
     /**
+     * The data type of the property.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -199,6 +263,9 @@ final class PropertyCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * Represents a formula that is used to compute a calculated property.
+     */
     public function withCalculationFormula(string $calculationFormula): self
     {
         $obj = clone $this;
@@ -219,6 +286,20 @@ final class PropertyCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * A description of the property that will be shown as help text in HubSpot.
+     */
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property to be displayed after any positive values.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
@@ -227,6 +308,9 @@ final class PropertyCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * Applicable only for 'enumeration' type properties.  Should be set to true in conjunction with a 'referencedObjectType' of 'OWNER'.  Otherwise false.
+     */
     public function withExternalOptions(bool $externalOptions): self
     {
         $obj = clone $this;
@@ -235,6 +319,9 @@ final class PropertyCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether or not the property can be used in a HubSpot form.
+     */
     public function withFormField(bool $formField): self
     {
         $obj = clone $this;
@@ -243,6 +330,9 @@ final class PropertyCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether or not the property's value must be unique. Once set, this can't be changed.
+     */
     public function withHasUniqueValue(bool $hasUniqueValue): self
     {
         $obj = clone $this;
@@ -251,6 +341,9 @@ final class PropertyCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * If true, the option will not be shown in forms, bots, or meeting scheduling pages. Supported for contact, company, ticket, and custom object enumeration properties.
+     */
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
@@ -260,6 +353,8 @@ final class PropertyCreate implements BaseModel
     }
 
     /**
+     * A list of valid options for the property. This field is required for enumerated properties.
+     *
      * @param list<OptionInput> $options
      */
     public function withOptions(array $options): self
@@ -270,6 +365,9 @@ final class PropertyCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * Should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users.
+     */
     public function withReferencedObjectType(string $referencedObjectType): self
     {
         $obj = clone $this;

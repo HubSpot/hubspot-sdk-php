@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows\APIWebhookAction;
 
+/**
+ * The HTTP method to use when calling the webhook URL.
+ */
 enum Method: string
 {
     case CONNECT = 'CONNECT';

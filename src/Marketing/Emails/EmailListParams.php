@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Emails\EmailListParams\Type;
  * $params = (new EmailListParams); // set properties as needed
  * $client->marketing.emails->list(...$params->toArray());
  * ```
- * Get all marketing emails.
+ * The results can be filtered, allowing you to find a specific set of emails. See the table below for a full list of filtering options.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -52,57 +52,111 @@ final class EmailListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * Specifies whether to return archived emails. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * Filter by campaign GUID. All emails will be returned if not present.
+     */
     #[Api(optional: true)]
     public ?string $campaign;
 
+    /**
+     * Only return emails created after the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAfter;
 
+    /**
+     * Only return emails created at exactly the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * Only return emails created before the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdBefore;
 
-    /** @var list<string>|null $includedProperties */
+    /**
+     * Limit the response to only include this specified list of properties.
+     *
+     * @var list<string>|null $includedProperties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $includedProperties;
 
+    /**
+     * Include statistics with emails.
+     */
     #[Api(optional: true)]
     public ?bool $includeStats;
 
+    /**
+     * Filter by published/draft emails. All emails will be returned if not present.
+     */
     #[Api(optional: true)]
     public ?bool $isPublished;
 
+    /**
+     * The maximum number of results to return. Default is 10.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
+    /**
+     * Include the names for any associated marketing campaigns.
+     */
     #[Api(optional: true)]
     public ?bool $marketingCampaignNames;
 
-    /** @var list<string>|null $sort */
+    /**
+     * Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     *
+     * @var list<string>|null $sort
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $sort;
 
-    /** @var value-of<Type>|null $type */
+    /**
+     * Email types to be filtered by. Multiple types can be included. All emails will be returned if not present.
+     *
+     * @var value-of<Type>|null $type
+     */
     #[Api(enum: Type::class, optional: true)]
     public ?string $type;
 
+    /**
+     * Only return emails last updated after the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAfter;
 
+    /**
+     * Only return emails last updated at exactly the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
+    /**
+     * Only return emails last updated before the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedBefore;
 
+    /**
+     * Include the names of any workflows associated with the returned emails.
+     */
     #[Api(optional: true)]
     public ?bool $workflowNames;
 
@@ -162,6 +216,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -170,6 +227,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to return archived emails. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -178,6 +238,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Filter by campaign GUID. All emails will be returned if not present.
+     */
     public function withCampaign(string $campaign): self
     {
         $obj = clone $this;
@@ -186,6 +249,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return emails created after the specified time.
+     */
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $obj = clone $this;
@@ -194,6 +260,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return emails created at exactly the specified time.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -202,6 +271,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return emails created before the specified time.
+     */
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
         $obj = clone $this;
@@ -211,6 +283,8 @@ final class EmailListParams implements BaseModel
     }
 
     /**
+     * Limit the response to only include this specified list of properties.
+     *
      * @param list<string> $includedProperties
      */
     public function withIncludedProperties(array $includedProperties): self
@@ -221,6 +295,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Include statistics with emails.
+     */
     public function withIncludeStats(bool $includeStats): self
     {
         $obj = clone $this;
@@ -229,6 +306,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Filter by published/draft emails. All emails will be returned if not present.
+     */
     public function withIsPublished(bool $isPublished): self
     {
         $obj = clone $this;
@@ -237,6 +317,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of results to return. Default is 10.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -245,6 +328,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Include the names for any associated marketing campaigns.
+     */
     public function withMarketingCampaignNames(
         bool $marketingCampaignNames
     ): self {
@@ -255,6 +341,8 @@ final class EmailListParams implements BaseModel
     }
 
     /**
+     * Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self
@@ -266,6 +354,8 @@ final class EmailListParams implements BaseModel
     }
 
     /**
+     * Email types to be filtered by. Multiple types can be included. All emails will be returned if not present.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -276,6 +366,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return emails last updated after the specified time.
+     */
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
         $obj = clone $this;
@@ -284,6 +377,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return emails last updated at exactly the specified time.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -292,6 +388,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return emails last updated before the specified time.
+     */
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
         $obj = clone $this;
@@ -300,6 +399,9 @@ final class EmailListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Include the names of any workflows associated with the returned emails.
+     */
     public function withWorkflowNames(bool $workflowNames): self
     {
         $obj = clone $this;

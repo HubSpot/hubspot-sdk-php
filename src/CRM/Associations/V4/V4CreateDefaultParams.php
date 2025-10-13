@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new V4CreateDefaultParams); // set properties as needed
  * $client->crm.associations.v4->createDefault(...$params->toArray());
  * ```
- * Create Default.
+ * Create the default (most generic) association type between two object types.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

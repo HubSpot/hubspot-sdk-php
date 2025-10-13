@@ -30,38 +30,73 @@ final class HubSpotFormConfiguration implements BaseModel
     /** @use SdkModel<hub_spot_form_configuration> */
     use SdkModel;
 
+    /**
+     * Whether to add a reset link to the form. This removes any pre-populated content on the form and creates a new contact on submission.
+     */
     #[Api]
     public bool $allowLinkToResetKnownValues;
 
+    /**
+     * Whether the form can be archived.
+     */
     #[Api]
     public bool $archivable;
 
+    /**
+     * Whether the form can be cloned.
+     */
     #[Api]
     public bool $cloneable;
 
+    /**
+     * Whether to create a new contact when a form is submitted with an email address that doesn’t match any in your existing contacts records.
+     */
     #[Api]
     public bool $createNewContactForNewEmail;
 
+    /**
+     * Whether the form can be edited.
+     */
     #[Api]
     public bool $editable;
 
-    /** @var value-of<Language> $language */
+    /**
+     * The language of the form.
+     *
+     * @var value-of<Language> $language
+     */
     #[Api(enum: Language::class)]
     public string $language;
 
+    /**
+     * Whether to send a notification email to the contact owner when a submission is received.
+     */
     #[Api]
     public bool $notifyContactOwner;
 
-    /** @var list<string> $notifyRecipients */
+    /**
+     * The list of user IDs to receive a notification email when a submission is received.
+     *
+     * @var list<string> $notifyRecipients
+     */
     #[Api(list: 'string')]
     public array $notifyRecipients;
 
+    /**
+     * What should happen after the customer submits the form.
+     */
     #[Api]
     public FormPostSubmitAction $postSubmitAction;
 
+    /**
+     * Whether contact fields should pre-populate with known information when a contact returns to your site.
+     */
     #[Api]
     public bool $prePopulateKnownValues;
 
+    /**
+     * Whether CAPTCHA (spam prevention) is enabled.
+     */
     #[Api]
     public bool $recaptchaEnabled;
 
@@ -153,6 +188,9 @@ final class HubSpotFormConfiguration implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to add a reset link to the form. This removes any pre-populated content on the form and creates a new contact on submission.
+     */
     public function withAllowLinkToResetKnownValues(
         bool $allowLinkToResetKnownValues
     ): self {
@@ -162,6 +200,9 @@ final class HubSpotFormConfiguration implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the form can be archived.
+     */
     public function withArchivable(bool $archivable): self
     {
         $obj = clone $this;
@@ -170,6 +211,9 @@ final class HubSpotFormConfiguration implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the form can be cloned.
+     */
     public function withCloneable(bool $cloneable): self
     {
         $obj = clone $this;
@@ -178,6 +222,9 @@ final class HubSpotFormConfiguration implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to create a new contact when a form is submitted with an email address that doesn’t match any in your existing contacts records.
+     */
     public function withCreateNewContactForNewEmail(
         bool $createNewContactForNewEmail
     ): self {
@@ -187,6 +234,9 @@ final class HubSpotFormConfiguration implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the form can be edited.
+     */
     public function withEditable(bool $editable): self
     {
         $obj = clone $this;
@@ -196,6 +246,8 @@ final class HubSpotFormConfiguration implements BaseModel
     }
 
     /**
+     * The language of the form.
+     *
      * @param Language|value-of<Language> $language
      */
     public function withLanguage(Language|string $language): self
@@ -206,6 +258,9 @@ final class HubSpotFormConfiguration implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to send a notification email to the contact owner when a submission is received.
+     */
     public function withNotifyContactOwner(bool $notifyContactOwner): self
     {
         $obj = clone $this;
@@ -215,6 +270,8 @@ final class HubSpotFormConfiguration implements BaseModel
     }
 
     /**
+     * The list of user IDs to receive a notification email when a submission is received.
+     *
      * @param list<string> $notifyRecipients
      */
     public function withNotifyRecipients(array $notifyRecipients): self
@@ -225,6 +282,9 @@ final class HubSpotFormConfiguration implements BaseModel
         return $obj;
     }
 
+    /**
+     * What should happen after the customer submits the form.
+     */
     public function withPostSubmitAction(
         FormPostSubmitAction $postSubmitAction
     ): self {
@@ -234,6 +294,9 @@ final class HubSpotFormConfiguration implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether contact fields should pre-populate with known information when a contact returns to your site.
+     */
     public function withPrePopulateKnownValues(
         bool $prePopulateKnownValues
     ): self {
@@ -243,6 +306,9 @@ final class HubSpotFormConfiguration implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether CAPTCHA (spam prevention) is enabled.
+     */
     public function withRecaptchaEnabled(bool $recaptchaEnabled): self
     {
         $obj = clone $this;

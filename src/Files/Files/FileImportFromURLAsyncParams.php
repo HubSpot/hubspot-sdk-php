@@ -19,7 +19,7 @@ use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationStrat
  * $params = (new FileImportFromURLAsyncParams); // set properties as needed
  * $client->files.files->importFromURLAsync(...$params->toArray());
  * ```
- * Import file from URL.
+ * Asynchronously imports the file at the given URL into the file manager.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -47,38 +47,69 @@ final class FileImportFromURLAsyncParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<Access> $access */
+    /**
+     * PUBLIC_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines can index the file. PUBLIC_NOT_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines *can't* index the file. PRIVATE: File is NOT publicly accessible. Requires a signed URL to see content. Search engines *can't* index the file.
+     *
+     * @var value-of<Access> $access
+     */
     #[Api(enum: Access::class)]
     public string $access;
 
+    /**
+     * URL to download the new file from.
+     */
     #[Api]
     public string $url;
 
-    /** @var value-of<DuplicateValidationScope>|null $duplicateValidationScope */
+    /**
+     * ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.
+     *
+     * @var value-of<DuplicateValidationScope>|null $duplicateValidationScope
+     */
     #[Api(enum: DuplicateValidationScope::class, optional: true)]
     public ?string $duplicateValidationScope;
 
     /**
+     * NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
+     *
      * @var value-of<DuplicateValidationStrategy>|null $duplicateValidationStrategy
      */
     #[Api(enum: DuplicateValidationStrategy::class, optional: true)]
     public ?string $duplicateValidationStrategy;
 
+    /**
+     * Specifies the date and time when the file will expire.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $expiresAt;
 
+    /**
+     * One of folderId or folderPath is required. Destination folderId for the uploaded file.
+     */
     #[Api('folderId', optional: true)]
     public ?string $folderID;
 
+    /**
+     * One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.
+     */
     #[Api(optional: true)]
     public ?string $folderPath;
 
+    /**
+     * Name to give the resulting file in the file manager.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * If true, will overwrite existing file if one with the same name and extension exists in the given folder. The overwritten file will be deleted and the uploaded file will take its place with a new ID. If unset or set as false, the new file's name will be updated to prevent colliding with existing file if one exists with the same path, name, and extension.
+     */
     #[Api(optional: true)]
     public ?bool $overwrite;
 
+    /**
+     * Time to live. If specified the file will be deleted after the given time frame. If left unset, the file will exist indefinitely.
+     */
     #[Api(optional: true)]
     public ?string $ttl;
 
@@ -140,6 +171,8 @@ final class FileImportFromURLAsyncParams implements BaseModel
     }
 
     /**
+     * PUBLIC_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines can index the file. PUBLIC_NOT_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines *can't* index the file. PRIVATE: File is NOT publicly accessible. Requires a signed URL to see content. Search engines *can't* index the file.
+     *
      * @param Access|value-of<Access> $access
      */
     public function withAccess(Access|string $access): self
@@ -150,6 +183,9 @@ final class FileImportFromURLAsyncParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * URL to download the new file from.
+     */
     public function withURL(string $url): self
     {
         $obj = clone $this;
@@ -159,6 +195,8 @@ final class FileImportFromURLAsyncParams implements BaseModel
     }
 
     /**
+     * ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.
+     *
      * @param DuplicateValidationScope|value-of<DuplicateValidationScope> $duplicateValidationScope
      */
     public function withDuplicateValidationScope(
@@ -171,6 +209,8 @@ final class FileImportFromURLAsyncParams implements BaseModel
     }
 
     /**
+     * NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
+     *
      * @param DuplicateValidationStrategy|value-of<DuplicateValidationStrategy> $duplicateValidationStrategy
      */
     public function withDuplicateValidationStrategy(
@@ -182,6 +222,9 @@ final class FileImportFromURLAsyncParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the date and time when the file will expire.
+     */
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;
@@ -190,6 +233,9 @@ final class FileImportFromURLAsyncParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * One of folderId or folderPath is required. Destination folderId for the uploaded file.
+     */
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
@@ -198,6 +244,9 @@ final class FileImportFromURLAsyncParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.
+     */
     public function withFolderPath(string $folderPath): self
     {
         $obj = clone $this;
@@ -206,6 +255,9 @@ final class FileImportFromURLAsyncParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name to give the resulting file in the file manager.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -214,6 +266,9 @@ final class FileImportFromURLAsyncParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * If true, will overwrite existing file if one with the same name and extension exists in the given folder. The overwritten file will be deleted and the uploaded file will take its place with a new ID. If unset or set as false, the new file's name will be updated to prevent colliding with existing file if one exists with the same path, name, and extension.
+     */
     public function withOverwrite(bool $overwrite): self
     {
         $obj = clone $this;
@@ -222,6 +277,9 @@ final class FileImportFromURLAsyncParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time to live. If specified the file will be deleted after the given time frame. If left unset, the file will exist indefinitely.
+     */
     public function withTtl(string $ttl): self
     {
         $obj = clone $this;

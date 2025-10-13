@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Data structure representing the subscription fields of the email.
+ *
  * @phpstan-type public_email_subscription_details = array{
  *   officeLocationID?: string,
  *   preferencesGroupID?: string,
@@ -20,12 +22,18 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     /** @use SdkModel<public_email_subscription_details> */
     use SdkModel;
 
+    /**
+     * ID of the selected office location.
+     */
     #[Api('officeLocationId', optional: true)]
     public ?string $officeLocationID;
 
     #[Api('preferencesGroupId', optional: true)]
     public ?string $preferencesGroupID;
 
+    /**
+     * ID of the subscription.
+     */
     #[Api('subscriptionId', optional: true)]
     public ?string $subscriptionID;
 
@@ -53,6 +61,9 @@ final class PublicEmailSubscriptionDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the selected office location.
+     */
     public function withOfficeLocationID(string $officeLocationID): self
     {
         $obj = clone $this;
@@ -69,6 +80,9 @@ final class PublicEmailSubscriptionDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the subscription.
+     */
     public function withSubscriptionID(string $subscriptionID): self
     {
         $obj = clone $this;

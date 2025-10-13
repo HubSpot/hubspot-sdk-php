@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\CRM\Objects\Filter;
 
+/**
+ * null.
+ */
 enum Operator: string
 {
     case EQ = 'EQ';

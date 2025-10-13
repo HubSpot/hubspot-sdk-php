@@ -68,7 +68,7 @@ interface BatchContract
     /**
      * @api
      *
-     * @param list<string> $inputs
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */
@@ -94,7 +94,7 @@ interface BatchContract
     /**
      * @api
      *
-     * @param list<string> $inputs
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */
@@ -120,7 +120,7 @@ interface BatchContract
     /**
      * @api
      *
-     * @param list<string> $inputs
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */

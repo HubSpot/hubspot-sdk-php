@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Data structure representing the to fields of the email.
+ *
  * @phpstan-type public_email_to_details = array{
  *   contactIDs?: PublicEmailRecipients,
  *   contactIlsLists?: PublicEmailRecipients,
@@ -22,12 +24,21 @@ final class PublicEmailToDetails implements BaseModel
     /** @use SdkModel<public_email_to_details> */
     use SdkModel;
 
+    /**
+     * Data structure representing lists of IDs that should be included and excluded.
+     */
     #[Api('contactIds', optional: true)]
     public ?PublicEmailRecipients $contactIDs;
 
+    /**
+     * Data structure representing lists of IDs that should be included and excluded.
+     */
     #[Api(optional: true)]
     public ?PublicEmailRecipients $contactIlsLists;
 
+    /**
+     * Data structure representing lists of IDs that should be included and excluded.
+     */
     #[Api(optional: true)]
     public ?PublicEmailRecipients $contactLists;
 
@@ -65,6 +76,9 @@ final class PublicEmailToDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * Data structure representing lists of IDs that should be included and excluded.
+     */
     public function withContactIDs(PublicEmailRecipients $contactIDs): self
     {
         $obj = clone $this;
@@ -73,6 +87,9 @@ final class PublicEmailToDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * Data structure representing lists of IDs that should be included and excluded.
+     */
     public function withContactIlsLists(
         PublicEmailRecipients $contactIlsLists
     ): self {
@@ -82,6 +99,9 @@ final class PublicEmailToDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * Data structure representing lists of IDs that should be included and excluded.
+     */
     public function withContactLists(PublicEmailRecipients $contactLists): self
     {
         $obj = clone $this;

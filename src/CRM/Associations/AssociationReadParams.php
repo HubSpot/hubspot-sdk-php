@@ -17,7 +17,7 @@ use HubspotSDK\PublicObjectID;
  * $params = (new AssociationReadParams); // set properties as needed
  * $client->crm.associations->read(...$params->toArray());
  * ```
- * Read a batch of associations.
+ * Get the IDs of all `{toObjectType}` objects associated with those specified in the request body.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

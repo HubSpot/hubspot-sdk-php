@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new AssociationCreateParams); // set properties as needed
  * $client->crm.associations->create(...$params->toArray());
  * ```
- * Create a batch of associations.
+ * Associate all pairs of objects identified in the request body.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

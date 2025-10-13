@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
 
 /**
+ * Options for styling the form.
+ *
  * @phpstan-type form_display_options = array{
  *   renderRawHTML: bool,
  *   style: FormStyle,
@@ -23,16 +25,29 @@ final class FormDisplayOptions implements BaseModel
     /** @use SdkModel<form_display_options> */
     use SdkModel;
 
+    /**
+     * Whether the form will render as raw HTML as opposed to inside an iFrame.
+     */
     #[Api('renderRawHtml')]
     public bool $renderRawHTML;
 
+    /**
+     * Styling options for the form.
+     */
     #[Api]
     public FormStyle $style;
 
+    /**
+     * The text displayed on the form submit button.
+     */
     #[Api]
     public string $submitButtonText;
 
-    /** @var value-of<Theme> $theme */
+    /**
+     * The theme used for styling the input fields. This will not apply if the form is added to a HubSpot CMS page.
+     *
+     * @var value-of<Theme> $theme
+     */
     #[Api(enum: Theme::class)]
     public string $theme;
 
@@ -90,6 +105,9 @@ final class FormDisplayOptions implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the form will render as raw HTML as opposed to inside an iFrame.
+     */
     public function withRenderRawHTML(bool $renderRawHTML): self
     {
         $obj = clone $this;
@@ -98,6 +116,9 @@ final class FormDisplayOptions implements BaseModel
         return $obj;
     }
 
+    /**
+     * Styling options for the form.
+     */
     public function withStyle(FormStyle $style): self
     {
         $obj = clone $this;
@@ -106,6 +127,9 @@ final class FormDisplayOptions implements BaseModel
         return $obj;
     }
 
+    /**
+     * The text displayed on the form submit button.
+     */
     public function withSubmitButtonText(string $submitButtonText): self
     {
         $obj = clone $this;
@@ -115,6 +139,8 @@ final class FormDisplayOptions implements BaseModel
     }
 
     /**
+     * The theme used for styling the input fields. This will not apply if the form is added to a HubSpot CMS page.
+     *
      * @param Theme|value-of<Theme> $theme
      */
     public function withTheme(Theme|string $theme): self

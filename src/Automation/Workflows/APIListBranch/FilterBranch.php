@@ -16,6 +16,9 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * The list criteria that determine when to execute this branch. The first matching branch will execute.
+ */
 final class FilterBranch implements ConverterSource
 {
     use SdkUnion;

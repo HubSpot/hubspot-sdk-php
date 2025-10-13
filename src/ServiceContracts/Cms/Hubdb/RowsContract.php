@@ -18,11 +18,12 @@ interface RowsContract
     /**
      * @api
      *
-     * @param array<string, mixed> $values
-     * @param int $childTableID
+     * @param array<string,
+     * mixed,> $values List of key value pairs with the column name and column value
+     * @param int $childTableID Specifies the value for the column child table id
      * @param int $displayIndex
-     * @param string $name
-     * @param string $path
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
@@ -52,12 +53,12 @@ interface RowsContract
     /**
      * @api
      *
-     * @param string $after
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived
-     * @param int $limit
+     * @param int $limit The maximum number of results to return. Default is `1000`.
      * @param int $offset
-     * @param list<string> $properties
-     * @param list<string> $sort
+     * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
+     * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
      *
      * @return Page<mixed>
      *
@@ -202,12 +203,12 @@ interface RowsContract
     /**
      * @api
      *
-     * @param string $after
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived
-     * @param int $limit
+     * @param int $limit The maximum number of results to return. Default is `1000`.
      * @param int $offset
-     * @param list<string> $properties
-     * @param list<string> $sort
+     * @param list<string> $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
+     * @param list<string> $sort specifies the column names to sort the results by
      *
      * @throws APIException
      */
@@ -239,11 +240,12 @@ interface RowsContract
      * @api
      *
      * @param string $tableIDOrName
-     * @param array<string, mixed> $values
-     * @param int $childTableID
+     * @param array<string,
+     * mixed,> $values List of key value pairs with the column name and column value
+     * @param int $childTableID Specifies the value for the column child table id
      * @param int $displayIndex
-     * @param string $name
-     * @param string $path
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
@@ -275,11 +277,12 @@ interface RowsContract
      * @api
      *
      * @param string $tableIDOrName
-     * @param array<string, mixed> $values
-     * @param int $childTableID
+     * @param array<string,
+     * mixed,> $values List of key value pairs with the column name and column value
+     * @param int $childTableID Specifies the value for the column child table id
      * @param int $displayIndex
-     * @param string $name
-     * @param string $path
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */

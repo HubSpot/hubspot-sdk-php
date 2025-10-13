@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new FolderCreateParams); // set properties as needed
  * $client->files.folders->create(...$params->toArray());
  * ```
- * Create folder.
+ * Creates a folder.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,12 +35,21 @@ final class FolderCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Desired name for the folder.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
+     */
     #[Api('parentFolderId', optional: true)]
     public ?string $parentFolderID;
 
+    /**
+     * Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
+     */
     #[Api(optional: true)]
     public ?string $parentPath;
 
@@ -83,6 +92,9 @@ final class FolderCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Desired name for the folder.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -91,6 +103,9 @@ final class FolderCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
+     */
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
@@ -99,6 +114,9 @@ final class FolderCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
+     */
     public function withParentPath(string $parentPath): self
     {
         $obj = clone $this;

@@ -50,7 +50,11 @@ final class LayoutSection implements BaseModel
     #[Api]
     public string $name;
 
-    /** @var array<string, mixed> $params */
+    /**
+     * null.
+     *
+     * @var array<string, mixed> $params
+     */
     #[Api(map: 'mixed')]
     public array $params;
 
@@ -216,6 +220,8 @@ final class LayoutSection implements BaseModel
     }
 
     /**
+     * null.
+     *
      * @param array<string, mixed> $params
      */
     public function withParams(array $params): self

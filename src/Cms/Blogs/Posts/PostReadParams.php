@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostReadParams); // set properties as needed
  * $client->cms.blogs.posts->read(...$params->toArray());
  * ```
- * Retrieve a blog post.
+ * Retrieve a blog post by the post ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,9 +33,15 @@ final class PostReadParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Specifies whether to return deleted blog posts. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * Specific properties to return.
+     */
     #[Api(optional: true)]
     public ?string $property;
 
@@ -61,6 +67,9 @@ final class PostReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to return deleted blog posts. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -69,6 +78,9 @@ final class PostReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specific properties to return.
+     */
     public function withProperty(string $property): self
     {
         $obj = clone $this;

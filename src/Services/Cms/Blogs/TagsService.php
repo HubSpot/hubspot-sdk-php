@@ -39,14 +39,14 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Create a new Blog Tag
+     * Create a new Blog Tag.
      *
-     * @param string $id
+     * @param string $id the unique ID of the Blog Tag
      * @param \DateTimeInterface $created
-     * @param \DateTimeInterface $deletedAt
-     * @param Language|value-of<Language> $language
-     * @param string $name
-     * @param int $translatedFromID
+     * @param \DateTimeInterface $deletedAt the timestamp (ISO8601 format) when this Blog Tag was deleted
+     * @param Language|value-of<Language> $language the explicitly defined ISO 639 language code of the tag
+     * @param string $name the name of the tag
+     * @param int $translatedFromID ID of the primary tag this object was translated from
      * @param \DateTimeInterface $updated
      *
      * @throws APIException
@@ -103,16 +103,17 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Update a Blog Tag
+     * Sparse updates a single Blog Tag object identified by the id in the path.
+     * All the column values need not be specified. Only the that need to be modified can be specified.
      *
-     * @param string $id
+     * @param string $id the unique ID of the Blog Tag
      * @param \DateTimeInterface $created
-     * @param \DateTimeInterface $deletedAt
-     * @param TagUpdateParams\Language|value-of<TagUpdateParams\Language> $language
-     * @param string $name
-     * @param int $translatedFromID
+     * @param \DateTimeInterface $deletedAt the timestamp (ISO8601 format) when this Blog Tag was deleted
+     * @param TagUpdateParams\Language|value-of<TagUpdateParams\Language> $language the explicitly defined ISO 639 language code of the tag
+     * @param string $name the name of the tag
+     * @param int $translatedFromID ID of the primary tag this object was translated from
      * @param \DateTimeInterface $updated
-     * @param bool $archived
+     * @param bool $archived Specifies whether to update deleted Blog Tags. Defaults to `false`.
      *
      * @throws APIException
      */
@@ -174,19 +175,19 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Get all Blog Tags
+     * Get the list of blog tags. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
      *
-     * @param string $after
-     * @param bool $archived
-     * @param \DateTimeInterface $createdAfter
-     * @param \DateTimeInterface $createdAt
-     * @param \DateTimeInterface $createdBefore
-     * @param int $limit
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived Specifies whether to return deleted Blog Tags. Defaults to `false`.
+     * @param \DateTimeInterface $createdAfter only return Blog Tags created after the specified time
+     * @param \DateTimeInterface $createdAt only return Blog Tags created at exactly the specified time
+     * @param \DateTimeInterface $createdBefore only return Blog Tags created before the specified time
+     * @param int $limit The maximum number of results to return. Default is 100.
      * @param string $property
-     * @param list<string> $sort
-     * @param \DateTimeInterface $updatedAfter
-     * @param \DateTimeInterface $updatedAt
-     * @param \DateTimeInterface $updatedBefore
+     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     * @param \DateTimeInterface $updatedAfter only return Blog Tags last updated after the specified time
+     * @param \DateTimeInterface $updatedAt only return Blog Tags last updated at exactly the specified time
+     * @param \DateTimeInterface $updatedBefore only return Blog Tags last updated before the specified time
      *
      * @return Page<Tag>
      *
@@ -252,9 +253,9 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Delete a Blog Tag
+     * Delete the Blog Tag object identified by the id in the path.
      *
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
@@ -298,9 +299,9 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Delete a batch of Blog Tags
+     * Delete the Blog Tag objects identified in the request body.
      *
-     * @param list<string> $inputs
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */
@@ -342,12 +343,12 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Attach a Blog Tag to a multi-language group
+     * Attach a Blog Tag to a multi-language group.
      *
-     * @param string $id
-     * @param TagAttachToLangGroupParams\Language|value-of<TagAttachToLangGroupParams\Language> $language
-     * @param string $primaryID
-     * @param string $primaryLanguage
+     * @param string $id ID of the object to add to a multi-language group
+     * @param TagAttachToLangGroupParams\Language|value-of<TagAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
+     * @param string $primaryID ID of primary language object in multi-language group
+     * @param string $primaryLanguage primary language of the multi-language group
      *
      * @throws APIException
      */
@@ -397,9 +398,9 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Create a batch of Blog Tags
+     * Create the Blog Tag objects detailed in the request body.
      *
-     * @param list<Tag> $inputs
+     * @param list<Tag> $inputs blog tags to input
      *
      * @throws APIException
      */
@@ -441,12 +442,12 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Create a new language variation
+     * Create a new language variation from an existing Blog Tag
      *
-     * @param string $id
-     * @param string $name
-     * @param string $language
-     * @param string $primaryLanguage
+     * @param string $id ID of the object to be cloned
+     * @param string $name name of newly cloned blog tag
+     * @param string $language target language of new variant
+     * @param string $primaryLanguage language of primary blog tag to clone
      *
      * @throws APIException
      */
@@ -496,9 +497,9 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Detach a Blog Tag from a multi-language group
+     * Detach a Blog Tag from a multi-language group.
      *
-     * @param string $id
+     * @param string $id ID of the object to remove from a multi-language group
      *
      * @throws APIException
      */
@@ -540,9 +541,9 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Retrieve a Blog Tag
+     * Retrieve the Blog Tag object identified by the id in the path.
      *
-     * @param bool $archived
+     * @param bool $archived Specifies whether to return deleted Blog Tags. Defaults to `false`.
      * @param string $property
      *
      * @throws APIException
@@ -585,10 +586,10 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Retrieve a batch of Blog Tags
+     * Retrieve the Blog Tag objects identified in the request body.
      *
-     * @param list<string> $inputs
-     * @param bool $archived
+     * @param list<string> $inputs strings to input
+     * @param bool $archived Specifies whether to return deleted Blog Tags. Defaults to `false`.
      *
      * @throws APIException
      */
@@ -633,9 +634,9 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Set a new primary language
+     * Set a Blog Tag as the primary language of a multi-language group.
      *
-     * @param string $id
+     * @param string $id ID of object to set as primary in multi-language group
      *
      * @throws APIException
      */
@@ -677,10 +678,10 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Update a batch of Blog Tags
+     * Update the Blog Tag objects identified in the request body.
      *
-     * @param list<mixed> $inputs
-     * @param bool $archived
+     * @param list<mixed> $inputs JSON nodes to input
+     * @param bool $archived Specifies whether to update deleted Blog Tags. Defaults to `false`.
      *
      * @throws APIException
      */
@@ -725,10 +726,11 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Update languages of multi-language group
+     * Explicitly set new languages for each Blog Tag in a multi-language group.
      *
-     * @param array<string, string> $languages
-     * @param string $primaryID
+     * @param array<string,
+     * string,> $languages Map of object IDs to associated languages of object in the multi-language group
+     * @param string $primaryID ID of the primary object in the multi-language group
      *
      * @throws APIException
      */

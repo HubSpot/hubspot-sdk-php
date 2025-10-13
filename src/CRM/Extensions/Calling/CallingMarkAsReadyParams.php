@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new CallingMarkAsReadyParams); // set properties as needed
  * $client->crm.extensions.calling->markAsReady(...$params->toArray());
  * ```
- * Mark recording as ready for transcription.
+ * Mark a call recording as ready for transcription, specifying the call by its ID (`engagementid`).
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

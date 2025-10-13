@@ -26,30 +26,57 @@ final class APIFlowListing implements BaseModel
     /** @use SdkModel<api_flow_listing> */
     use SdkModel;
 
+    /**
+     * The unique ID for this flow. This is auto-generated when creating the flow.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The timestamp this flow was created.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * Deprecated. Will be removed.
+     */
     #[Api]
     public string $flowType;
 
+    /**
+     * This controls whether or not the flow is "enabled" if it's actively listening for enrollment triggers and executing actions. If this is `false` the flow is not accepting any enrollments or executing any actions.
+     */
     #[Api]
     public bool $isEnabled;
 
+    /**
+     * The CRM object type for objects that can be enrolled into this flow.
+     */
     #[Api('objectTypeId')]
     public string $objectTypeID;
 
+    /**
+     * Deprecated. Will be removed.
+     */
     #[Api('revisionId')]
     public string $revisionID;
 
+    /**
+     * The timestamp this flow was last updated.
+     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * The user-provided name for this flow. Names get auto-created for workflows that are created without a name.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * An optional unique key for this flow. This is only unique per-portal.
+     */
     #[Api(optional: true)]
     public ?string $uuid;
 
@@ -119,6 +146,9 @@ final class APIFlowListing implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID for this flow. This is auto-generated when creating the flow.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -127,6 +157,9 @@ final class APIFlowListing implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp this flow was created.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -135,6 +168,9 @@ final class APIFlowListing implements BaseModel
         return $obj;
     }
 
+    /**
+     * Deprecated. Will be removed.
+     */
     public function withFlowType(string $flowType): self
     {
         $obj = clone $this;
@@ -143,6 +179,9 @@ final class APIFlowListing implements BaseModel
         return $obj;
     }
 
+    /**
+     * This controls whether or not the flow is "enabled" if it's actively listening for enrollment triggers and executing actions. If this is `false` the flow is not accepting any enrollments or executing any actions.
+     */
     public function withIsEnabled(bool $isEnabled): self
     {
         $obj = clone $this;
@@ -151,6 +190,9 @@ final class APIFlowListing implements BaseModel
         return $obj;
     }
 
+    /**
+     * The CRM object type for objects that can be enrolled into this flow.
+     */
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
@@ -159,6 +201,9 @@ final class APIFlowListing implements BaseModel
         return $obj;
     }
 
+    /**
+     * Deprecated. Will be removed.
+     */
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
@@ -167,6 +212,9 @@ final class APIFlowListing implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp this flow was last updated.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -175,6 +223,9 @@ final class APIFlowListing implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user-provided name for this flow. Names get auto-created for workflows that are created without a name.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -183,6 +234,9 @@ final class APIFlowListing implements BaseModel
         return $obj;
     }
 
+    /**
+     * An optional unique key for this flow. This is only unique per-portal.
+     */
     public function withUuid(string $uuid): self
     {
         $obj = clone $this;

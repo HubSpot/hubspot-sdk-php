@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
+ * Response object for collections of blog tags with pagination information.
+ *
  * @phpstan-type collection_response_with_total_tag_forward_paging = array{
  *   results: list<Tag>, total: int, paging?: ForwardPaging
  * }
@@ -19,10 +21,17 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
     /** @use SdkModel<collection_response_with_total_tag_forward_paging> */
     use SdkModel;
 
-    /** @var list<Tag> $results */
+    /**
+     * Collection of blog tags.
+     *
+     * @var list<Tag> $results
+     */
     #[Api(list: Tag::class)]
     public array $results;
 
+    /**
+     * Total number of blog tags.
+     */
     #[Api]
     public int $total;
 
@@ -73,6 +82,8 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
     }
 
     /**
+     * Collection of blog tags.
+     *
      * @param list<Tag> $results
      */
     public function withResults(array $results): self
@@ -83,6 +94,9 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
         return $obj;
     }
 
+    /**
+     * Total number of blog tags.
+     */
     public function withTotal(int $total): self
     {
         $obj = clone $this;

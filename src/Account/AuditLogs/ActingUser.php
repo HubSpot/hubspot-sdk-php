@@ -16,9 +16,15 @@ final class ActingUser implements BaseModel
     /** @use SdkModel<acting_user> */
     use SdkModel;
 
+    /**
+     * The ID of the user who performed the action.
+     */
     #[Api('userId')]
     public int $userID;
 
+    /**
+     * The email address of the user who performed the action.
+     */
     #[Api(optional: true)]
     public ?string $userEmail;
 
@@ -57,6 +63,9 @@ final class ActingUser implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the user who performed the action.
+     */
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
@@ -65,6 +74,9 @@ final class ActingUser implements BaseModel
         return $obj;
     }
 
+    /**
+     * The email address of the user who performed the action.
+     */
     public function withUserEmail(string $userEmail): self
     {
         $obj = clone $this;

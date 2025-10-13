@@ -43,9 +43,9 @@ final class AssociationsTest extends TestCase
             fromObjectType: 'fromObjectType',
             inputs: [
                 PublicAssociation::with(
-                    from: PublicObjectID::with(id: 'id'),
-                    to: PublicObjectID::with(id: 'id'),
-                    type: 'type',
+                    from: PublicObjectID::with(id: '53628'),
+                    to: PublicObjectID::with(id: '12726'),
+                    type: 'contact_to_company',
                 ),
             ],
         );
@@ -65,9 +65,9 @@ final class AssociationsTest extends TestCase
             fromObjectType: 'fromObjectType',
             inputs: [
                 PublicAssociation::with(
-                    from: PublicObjectID::with(id: 'id'),
-                    to: PublicObjectID::with(id: 'id'),
-                    type: 'type',
+                    from: PublicObjectID::with(id: '53628'),
+                    to: PublicObjectID::with(id: '12726'),
+                    type: 'contact_to_company',
                 ),
             ],
         );
@@ -87,9 +87,9 @@ final class AssociationsTest extends TestCase
             fromObjectType: 'fromObjectType',
             inputs: [
                 PublicAssociation::with(
-                    from: PublicObjectID::with(id: 'id'),
-                    to: PublicObjectID::with(id: 'id'),
-                    type: 'type',
+                    from: PublicObjectID::with(id: '53628'),
+                    to: PublicObjectID::with(id: '12726'),
+                    type: 'contact_to_company',
                 ),
             ],
         );
@@ -109,9 +109,9 @@ final class AssociationsTest extends TestCase
             fromObjectType: 'fromObjectType',
             inputs: [
                 PublicAssociation::with(
-                    from: PublicObjectID::with(id: 'id'),
-                    to: PublicObjectID::with(id: 'id'),
-                    type: 'type',
+                    from: PublicObjectID::with(id: '53628'),
+                    to: PublicObjectID::with(id: '12726'),
+                    type: 'contact_to_company',
                 ),
             ],
         );
@@ -129,7 +129,7 @@ final class AssociationsTest extends TestCase
         $result = $this->client->crm->associations->read(
             'toObjectType',
             fromObjectType: 'fromObjectType',
-            inputs: [PublicObjectID::with(id: 'id')],
+            inputs: [PublicObjectID::with(id: '37295')],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -145,7 +145,7 @@ final class AssociationsTest extends TestCase
         $result = $this->client->crm->associations->read(
             'toObjectType',
             fromObjectType: 'fromObjectType',
-            inputs: [PublicObjectID::with(id: 'id')],
+            inputs: [PublicObjectID::with(id: '37295')],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

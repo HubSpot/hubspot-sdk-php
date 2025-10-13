@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Data structure representing lists of IDs that should be included and excluded.
+ *
  * @phpstan-type public_email_recipients = array{
  *   exclude?: list<string>, include1?: list<string>
  * }
@@ -18,11 +20,19 @@ final class PublicEmailRecipients implements BaseModel
     /** @use SdkModel<public_email_recipients> */
     use SdkModel;
 
-    /** @var list<string>|null $exclude */
+    /**
+     * Excluded IDs.
+     *
+     * @var list<string>|null $exclude
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $exclude;
 
-    /** @var list<string>|null $include1 */
+    /**
+     * Included IDs.
+     *
+     * @var list<string>|null $include1
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $include1;
 
@@ -52,6 +62,8 @@ final class PublicEmailRecipients implements BaseModel
     }
 
     /**
+     * Excluded IDs.
+     *
      * @param list<string> $exclude
      */
     public function withExclude(array $exclude): self
@@ -63,6 +75,8 @@ final class PublicEmailRecipients implements BaseModel
     }
 
     /**
+     * Included IDs.
+     *
      * @param list<string> $include1
      */
     public function withInclude(array $include1): self

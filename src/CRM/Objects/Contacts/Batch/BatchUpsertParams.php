@@ -17,7 +17,7 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
  * $params = (new BatchUpsertParams); // set properties as needed
  * $client->crm.objects.contacts.batch->upsert(...$params->toArray());
  * ```
- * Create or update a batch of contacts.
+ * Upsert a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

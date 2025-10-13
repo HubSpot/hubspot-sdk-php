@@ -18,9 +18,15 @@ final class LegalConsentCheckbox implements BaseModel
     /** @use SdkModel<legal_consent_checkbox> */
     use SdkModel;
 
+    /**
+     * The main label for the form field.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * Whether this checkbox is required when submitting the form.
+     */
     #[Api]
     public bool $required;
 
@@ -68,6 +74,9 @@ final class LegalConsentCheckbox implements BaseModel
         return $obj;
     }
 
+    /**
+     * The main label for the form field.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -76,6 +85,9 @@ final class LegalConsentCheckbox implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether this checkbox is required when submitting the form.
+     */
     public function withRequired(bool $required): self
     {
         $obj = clone $this;

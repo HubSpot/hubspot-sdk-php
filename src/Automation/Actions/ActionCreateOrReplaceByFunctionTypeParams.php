@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new ActionCreateOrReplaceByFunctionTypeParams); // set properties as needed
  * $client->automation.actions->createOrReplaceByFunctionType(...$params->toArray());
  * ```
- * Insert a function for a definition.
+ * Add a function for a given definition.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new WebhookReadParams); // set properties as needed
  * $client->webhooks->read(...$params->toArray());
  * ```
- * Read an event subscription.
+ * Retrieve a specific event subscription by ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

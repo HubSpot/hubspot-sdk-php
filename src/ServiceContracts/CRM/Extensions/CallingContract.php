@@ -16,8 +16,8 @@ interface CallingContract
     /**
      * @api
      *
-     * @param bool $isReady
-     * @param string $url
+     * @param bool $isReady If true, this app will be considered to support channel connection
+     * @param string $url The URL to fetch phone numbers available for channel connection
      *
      * @throws APIException
      */
@@ -44,8 +44,8 @@ interface CallingContract
     /**
      * @api
      *
-     * @param bool $isReady
-     * @param string $url
+     * @param bool $isReady If true, this app will be considered to support channel connection
+     * @param string $url The URL to fetch phone numbers available for channel connection
      *
      * @throws APIException
      */

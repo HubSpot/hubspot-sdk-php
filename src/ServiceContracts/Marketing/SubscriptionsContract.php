@@ -37,10 +37,10 @@ interface SubscriptionsContract
     /**
      * @api
      *
-     * @param string $emailAddress
-     * @param string $subscriptionID
-     * @param LegalBasis|value-of<LegalBasis> $legalBasis
-     * @param string $legalBasisExplanation
+     * @param string $emailAddress contact's email address
+     * @param string $subscriptionID ID of the subscription being updated for the contact
+     * @param LegalBasis|value-of<LegalBasis> $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
+     * @param string $legalBasisExplanation a more detailed explanation to go with the legal basis (required for GDPR enabled portals)
      *
      * @throws APIException
      */
@@ -67,10 +67,10 @@ interface SubscriptionsContract
     /**
      * @api
      *
-     * @param string $emailAddress
-     * @param string $subscriptionID
-     * @param \HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|value-of<\HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis> $legalBasis
-     * @param string $legalBasisExplanation
+     * @param string $emailAddress contact's email address
+     * @param string $subscriptionID ID of the subscription being updated for the contact
+     * @param \HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|value-of<\HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis> $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
+     * @param string $legalBasisExplanation a more detailed explanation to go with the legal basis (required for GDPR enabled portals)
      *
      * @throws APIException
      */

@@ -12,6 +12,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\VersionUser;
 
 /**
+ * Model definition for a marketing email version. Contains metadata describing the version of the marketing email. It can be used to view edit history of a marketing email.
+ *
  * @phpstan-type version_public_email = array{
  *   id: string,
  *   object1: PublicEmail,
@@ -26,15 +28,24 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * ID of this marketing email version.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * A marketing email.
+     */
     #[Api]
     public PublicEmail $object1;
 
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * Model definition for a version user. Contains addition information about the user who created a version.
+     */
     #[Api]
     public VersionUser $user;
 
@@ -82,6 +93,9 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * ID of this marketing email version.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -90,6 +104,9 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A marketing email.
+     */
     public function withObject(PublicEmail $object1): self
     {
         $obj = clone $this;
@@ -106,6 +123,9 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Model definition for a version user. Contains addition information about the user who created a version.
+     */
     public function withUser(VersionUser $user): self
     {
         $obj = clone $this;

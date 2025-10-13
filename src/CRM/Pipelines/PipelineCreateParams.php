@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PipelineCreateParams); // set properties as needed
  * $client->crm.pipelines->create(...$params->toArray());
  * ```
- * Create a pipeline.
+ * Create a new pipeline with the provided property values. The entire pipeline object, including its unique ID, will be returned in the response.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,13 +35,23 @@ final class PipelineCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     #[Api]
     public int $displayOrder;
 
+    /**
+     * A unique label used to organize pipelines in HubSpot's UI.
+     */
     #[Api]
     public string $label;
 
-    /** @var list<PipelineStageInput> $stages */
+    /**
+     * Pipeline stage inputs used to create the new or replacement pipeline.
+     *
+     * @var list<PipelineStageInput> $stages
+     */
     #[Api(list: PipelineStageInput::class)]
     public array $stages;
 
@@ -88,6 +98,9 @@ final class PipelineCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
@@ -96,6 +109,9 @@ final class PipelineCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique label used to organize pipelines in HubSpot's UI.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -105,6 +121,8 @@ final class PipelineCreateParams implements BaseModel
     }
 
     /**
+     * Pipeline stage inputs used to create the new or replacement pipeline.
+     *
      * @param list<PipelineStageInput> $stages
      */
     public function withStages(array $stages): self

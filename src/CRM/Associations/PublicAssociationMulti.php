@@ -24,10 +24,17 @@ final class PublicAssociationMulti implements BaseModel
     #[Api]
     public PublicObjectID $from;
 
-    /** @var list<AssociatedID> $to */
+    /**
+     * The IDs of objects that are associated with the object identified by the ID in 'from'.
+     *
+     * @var list<AssociatedID> $to
+     */
     #[Api(list: AssociatedID::class)]
     public array $to;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -81,6 +88,8 @@ final class PublicAssociationMulti implements BaseModel
     }
 
     /**
+     * The IDs of objects that are associated with the object identified by the ID in 'from'.
+     *
      * @param list<AssociatedID> $to
      */
     public function withTo(array $to): self
@@ -91,6 +100,9 @@ final class PublicAssociationMulti implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

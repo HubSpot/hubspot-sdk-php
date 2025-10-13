@@ -23,9 +23,9 @@ interface PropertiesContract
     /**
      * @api
      *
-     * @param string $label
-     * @param string $name
-     * @param int $displayOrder
+     * @param string $label a human-readable label that will be shown in HubSpot
+     * @param string $name the internal property group name, which must be used when referencing the property group via the API
+     * @param int $displayOrder Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
      *
      * @throws APIException
      */
@@ -54,15 +54,16 @@ interface PropertiesContract
      * @api
      *
      * @param string $objectType
-     * @param string $calculationFormula
-     * @param int $displayOrder
-     * @param FieldType|value-of<FieldType> $fieldType
-     * @param bool $formField
-     * @param string $groupName
-     * @param bool $hidden
-     * @param string $label
-     * @param list<OptionInput> $options
-     * @param Type|value-of<Type> $type
+     * @param string $calculationFormula represents a formula that is used to compute a calculated property
+     * @param string $description a description of the property that will be shown as help text in HubSpot
+     * @param int $displayOrder Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
+     * @param FieldType|value-of<FieldType> $fieldType controls how the property appears in HubSpot
+     * @param bool $formField whether or not the property can be used in a HubSpot form
+     * @param string $groupName the name of the property group the property belongs to
+     * @param bool $hidden if true, the property won't be visible and can't be used in HubSpot
+     * @param string $label a human-readable property label that will be shown in HubSpot
+     * @param list<OptionInput> $options a list of valid options for the property
+     * @param Type|value-of<Type> $type the data type of the property
      *
      * @throws APIException
      */
@@ -70,6 +71,7 @@ interface PropertiesContract
         string $propertyName,
         $objectType,
         $calculationFormula = omit,
+        $description = omit,
         $displayOrder = omit,
         $fieldType = omit,
         $formField = omit,
@@ -134,7 +136,7 @@ interface PropertiesContract
      * @api
      *
      * @param string $objectType
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been archived
      * @param string $properties
      *
      * @throws APIException

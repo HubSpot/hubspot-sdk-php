@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new SchemaCreateAssociationParams); // set properties as needed
  * $client->crm.objects.schemas->createAssociation(...$params->toArray());
  * ```
- * Create an association.
+ * Defines a new association between the primary schema's object type and other object types.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,12 +35,21 @@ final class SchemaCreateAssociationParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of the primary object type to link from.
+     */
     #[Api('fromObjectTypeId')]
     public string $fromObjectTypeID;
 
+    /**
+     * ID of the target object type to link to.
+     */
     #[Api('toObjectTypeId')]
     public string $toObjectTypeID;
 
+    /**
+     * A unique name for this association.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
@@ -85,6 +94,9 @@ final class SchemaCreateAssociationParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the primary object type to link from.
+     */
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
@@ -93,6 +105,9 @@ final class SchemaCreateAssociationParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the target object type to link to.
+     */
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
@@ -101,6 +116,9 @@ final class SchemaCreateAssociationParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique name for this association.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;

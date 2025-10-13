@@ -41,27 +41,51 @@ final class Domain implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The unique ID of this domain.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The actual domain or sub-domain. e.g. www.hubspot.com.
+     */
     #[Api]
     public string $domain;
 
+    /**
+     * Whether the DNS for this domain is optimally configured for use with HubSpot.
+     */
     #[Api]
     public bool $isResolving;
 
+    /**
+     * Whether the domain is used for CMS blog posts.
+     */
     #[Api]
     public bool $isUsedForBlogPost;
 
+    /**
+     * Whether the domain is used for CMS email web pages.
+     */
     #[Api]
     public bool $isUsedForEmail;
 
+    /**
+     * Whether the domain is used for CMS knowledge pages.
+     */
     #[Api]
     public bool $isUsedForKnowledge;
 
+    /**
+     * Whether the domain is used for CMS landing pages.
+     */
     #[Api]
     public bool $isUsedForLandingPage;
 
+    /**
+     * Whether the domain is used for CMS site pages.
+     */
     #[Api]
     public bool $isUsedForSitePage;
 
@@ -191,6 +215,9 @@ final class Domain implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The unique ID of this domain.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -199,6 +226,9 @@ final class Domain implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The actual domain or sub-domain. e.g. www.hubspot.com.
+     */
     public function withDomain(string $domain): self
     {
         $obj = clone $this;
@@ -207,6 +237,9 @@ final class Domain implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the DNS for this domain is optimally configured for use with HubSpot.
+     */
     public function withIsResolving(bool $isResolving): self
     {
         $obj = clone $this;
@@ -215,6 +248,9 @@ final class Domain implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the domain is used for CMS blog posts.
+     */
     public function withIsUsedForBlogPost(bool $isUsedForBlogPost): self
     {
         $obj = clone $this;
@@ -223,6 +259,9 @@ final class Domain implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the domain is used for CMS email web pages.
+     */
     public function withIsUsedForEmail(bool $isUsedForEmail): self
     {
         $obj = clone $this;
@@ -231,6 +270,9 @@ final class Domain implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the domain is used for CMS knowledge pages.
+     */
     public function withIsUsedForKnowledge(bool $isUsedForKnowledge): self
     {
         $obj = clone $this;
@@ -239,6 +281,9 @@ final class Domain implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the domain is used for CMS landing pages.
+     */
     public function withIsUsedForLandingPage(bool $isUsedForLandingPage): self
     {
         $obj = clone $this;
@@ -247,6 +292,9 @@ final class Domain implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the domain is used for CMS site pages.
+     */
     public function withIsUsedForSitePage(bool $isUsedForSitePage): self
     {
         $obj = clone $this;

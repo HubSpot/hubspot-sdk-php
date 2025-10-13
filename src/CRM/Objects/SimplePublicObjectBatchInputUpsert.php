@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Represents an object used in batch upsert operations, containing an object’s unique identifier, its properties, and optionally the unique property name and a write trace ID.
+ *
  * @phpstan-type simple_public_object_batch_input_upsert = array{
  *   id: string,
  *   properties: array<string, string>,
@@ -21,16 +23,29 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
     /** @use SdkModel<simple_public_object_batch_input_upsert> */
     use SdkModel;
 
+    /**
+     * The ID of the company to update.
+     */
     #[Api]
     public string $id;
 
-    /** @var array<string, string> $properties */
+    /**
+     * The company property values to set.
+     *
+     * @var array<string, string> $properties
+     */
     #[Api(map: 'string')]
     public array $properties;
 
+    /**
+     * The name of a property whose values are unique for this object.
+     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
+    /**
+     * In each input object, set this field to a unique ID value to enable more granular debugging for error responses. Learn more about [multi-status errors](https://developers.hubspot.com/docs/reference/api/other-resources/error-handling#multi-status-errors).
+     */
     #[Api('objectWriteTraceId', optional: true)]
     public ?string $objectWriteTraceID;
 
@@ -77,6 +92,9 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the company to update.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -86,6 +104,8 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
     }
 
     /**
+     * The company property values to set.
+     *
      * @param array<string, string> $properties
      */
     public function withProperties(array $properties): self
@@ -96,6 +116,9 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of a property whose values are unique for this object.
+     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;
@@ -104,6 +127,9 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
         return $obj;
     }
 
+    /**
+     * In each input object, set this field to a unique ID value to enable more granular debugging for error responses. Learn more about [multi-status errors](https://developers.hubspot.com/docs/reference/api/other-resources/error-handling#multi-status-errors).
+     */
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;

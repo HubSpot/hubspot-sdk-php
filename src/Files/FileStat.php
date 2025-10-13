@@ -16,6 +16,9 @@ final class FileStat implements BaseModel
     /** @use SdkModel<file_stat> */
     use SdkModel;
 
+    /**
+     * File.
+     */
     #[Api(optional: true)]
     public ?File $file;
 
@@ -42,6 +45,9 @@ final class FileStat implements BaseModel
         return $obj;
     }
 
+    /**
+     * File.
+     */
     public function withFile(File $file): self
     {
         $obj = clone $this;

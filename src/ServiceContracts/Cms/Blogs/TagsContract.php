@@ -18,12 +18,12 @@ interface TagsContract
     /**
      * @api
      *
-     * @param string $id
+     * @param string $id the unique ID of the Blog Tag
      * @param \DateTimeInterface $created
-     * @param \DateTimeInterface $deletedAt
-     * @param Language|value-of<Language> $language
-     * @param string $name
-     * @param int $translatedFromID
+     * @param \DateTimeInterface $deletedAt the timestamp (ISO8601 format) when this Blog Tag was deleted
+     * @param Language|value-of<Language> $language the explicitly defined ISO 639 language code of the tag
+     * @param string $name the name of the tag
+     * @param int $translatedFromID ID of the primary tag this object was translated from
      * @param \DateTimeInterface $updated
      *
      * @throws APIException
@@ -54,14 +54,14 @@ interface TagsContract
     /**
      * @api
      *
-     * @param string $id
+     * @param string $id the unique ID of the Blog Tag
      * @param \DateTimeInterface $created
-     * @param \DateTimeInterface $deletedAt
-     * @param \HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language> $language
-     * @param string $name
-     * @param int $translatedFromID
+     * @param \DateTimeInterface $deletedAt the timestamp (ISO8601 format) when this Blog Tag was deleted
+     * @param \HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language> $language the explicitly defined ISO 639 language code of the tag
+     * @param string $name the name of the tag
+     * @param int $translatedFromID ID of the primary tag this object was translated from
      * @param \DateTimeInterface $updated
-     * @param bool $archived
+     * @param bool $archived Specifies whether to update deleted Blog Tags. Defaults to `false`.
      *
      * @throws APIException
      */
@@ -94,17 +94,17 @@ interface TagsContract
     /**
      * @api
      *
-     * @param string $after
-     * @param bool $archived
-     * @param \DateTimeInterface $createdAfter
-     * @param \DateTimeInterface $createdAt
-     * @param \DateTimeInterface $createdBefore
-     * @param int $limit
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived Specifies whether to return deleted Blog Tags. Defaults to `false`.
+     * @param \DateTimeInterface $createdAfter only return Blog Tags created after the specified time
+     * @param \DateTimeInterface $createdAt only return Blog Tags created at exactly the specified time
+     * @param \DateTimeInterface $createdBefore only return Blog Tags created before the specified time
+     * @param int $limit The maximum number of results to return. Default is 100.
      * @param string $property
-     * @param list<string> $sort
-     * @param \DateTimeInterface $updatedAfter
-     * @param \DateTimeInterface $updatedAt
-     * @param \DateTimeInterface $updatedBefore
+     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     * @param \DateTimeInterface $updatedAfter only return Blog Tags last updated after the specified time
+     * @param \DateTimeInterface $updatedAt only return Blog Tags last updated at exactly the specified time
+     * @param \DateTimeInterface $updatedBefore only return Blog Tags last updated before the specified time
      *
      * @return Page<Tag>
      *
@@ -142,7 +142,7 @@ interface TagsContract
     /**
      * @api
      *
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
@@ -168,7 +168,7 @@ interface TagsContract
     /**
      * @api
      *
-     * @param list<string> $inputs
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */
@@ -192,10 +192,10 @@ interface TagsContract
     /**
      * @api
      *
-     * @param string $id
-     * @param \HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language> $language
-     * @param string $primaryID
-     * @param string $primaryLanguage
+     * @param string $id ID of the object to add to a multi-language group
+     * @param \HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
+     * @param string $primaryID ID of primary language object in multi-language group
+     * @param string $primaryLanguage primary language of the multi-language group
      *
      * @throws APIException
      */
@@ -222,7 +222,7 @@ interface TagsContract
     /**
      * @api
      *
-     * @param list<Tag> $inputs
+     * @param list<Tag> $inputs blog tags to input
      *
      * @throws APIException
      */
@@ -246,10 +246,10 @@ interface TagsContract
     /**
      * @api
      *
-     * @param string $id
-     * @param string $name
-     * @param string $language
-     * @param string $primaryLanguage
+     * @param string $id ID of the object to be cloned
+     * @param string $name name of newly cloned blog tag
+     * @param string $language target language of new variant
+     * @param string $primaryLanguage language of primary blog tag to clone
      *
      * @throws APIException
      */
@@ -276,7 +276,7 @@ interface TagsContract
     /**
      * @api
      *
-     * @param string $id
+     * @param string $id ID of the object to remove from a multi-language group
      *
      * @throws APIException
      */
@@ -300,7 +300,7 @@ interface TagsContract
     /**
      * @api
      *
-     * @param bool $archived
+     * @param bool $archived Specifies whether to return deleted Blog Tags. Defaults to `false`.
      * @param string $property
      *
      * @throws APIException
@@ -328,8 +328,8 @@ interface TagsContract
     /**
      * @api
      *
-     * @param list<string> $inputs
-     * @param bool $archived
+     * @param list<string> $inputs strings to input
+     * @param bool $archived Specifies whether to return deleted Blog Tags. Defaults to `false`.
      *
      * @throws APIException
      */
@@ -354,7 +354,7 @@ interface TagsContract
     /**
      * @api
      *
-     * @param string $id
+     * @param string $id ID of object to set as primary in multi-language group
      *
      * @throws APIException
      */
@@ -378,8 +378,8 @@ interface TagsContract
     /**
      * @api
      *
-     * @param list<mixed> $inputs
-     * @param bool $archived
+     * @param list<mixed> $inputs JSON nodes to input
+     * @param bool $archived Specifies whether to update deleted Blog Tags. Defaults to `false`.
      *
      * @throws APIException
      */
@@ -404,8 +404,9 @@ interface TagsContract
     /**
      * @api
      *
-     * @param array<string, string> $languages
-     * @param string $primaryID
+     * @param array<string,
+     * string,> $languages Map of object IDs to associated languages of object in the multi-language group
+     * @param string $primaryID ID of the primary object in the multi-language group
      *
      * @throws APIException
      */

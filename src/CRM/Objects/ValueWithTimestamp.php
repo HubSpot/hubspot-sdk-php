@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Property model that includes timestamp.
+ *
  * @phpstan-type value_with_timestamp = array{
  *   sourceType: string,
  *   timestamp: \DateTimeInterface,
@@ -23,21 +25,39 @@ final class ValueWithTimestamp implements BaseModel
     /** @use SdkModel<value_with_timestamp> */
     use SdkModel;
 
+    /**
+     * The property type.
+     */
     #[Api]
     public string $sourceType;
 
+    /**
+     * The timestamp when the property was updated, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $timestamp;
 
+    /**
+     * The property value.
+     */
     #[Api]
     public string $value;
 
+    /**
+     * The unique ID of the property.
+     */
     #[Api('sourceId', optional: true)]
     public ?string $sourceID;
 
+    /**
+     * A human-readable label.
+     */
     #[Api(optional: true)]
     public ?string $sourceLabel;
 
+    /**
+     * The ID of the user who last updated the property.
+     */
     #[Api('updatedByUserId', optional: true)]
     public ?int $updatedByUserID;
 
@@ -89,6 +109,9 @@ final class ValueWithTimestamp implements BaseModel
         return $obj;
     }
 
+    /**
+     * The property type.
+     */
     public function withSourceType(string $sourceType): self
     {
         $obj = clone $this;
@@ -97,6 +120,9 @@ final class ValueWithTimestamp implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the property was updated, in ISO 8601 format.
+     */
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
@@ -105,6 +131,9 @@ final class ValueWithTimestamp implements BaseModel
         return $obj;
     }
 
+    /**
+     * The property value.
+     */
     public function withValue(string $value): self
     {
         $obj = clone $this;
@@ -113,6 +142,9 @@ final class ValueWithTimestamp implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID of the property.
+     */
     public function withSourceID(string $sourceID): self
     {
         $obj = clone $this;
@@ -121,6 +153,9 @@ final class ValueWithTimestamp implements BaseModel
         return $obj;
     }
 
+    /**
+     * A human-readable label.
+     */
     public function withSourceLabel(string $sourceLabel): self
     {
         $obj = clone $this;
@@ -129,6 +164,9 @@ final class ValueWithTimestamp implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the user who last updated the property.
+     */
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;

@@ -17,7 +17,7 @@ use HubspotSDK\CRM\Owners\OwnerGetParams\IDProperty;
  * $params = (new OwnerGetParams); // set properties as needed
  * $client->crm.owners->get(...$params->toArray());
  * ```
- * Retrieve a paginated list of owners available in the account.
+ * Retrieve details of a specific owner using either their 'id' or 'userId'.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -36,10 +36,17 @@ final class OwnerGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
-    /** @var value-of<IDProperty>|null $idProperty */
+    /**
+     * Specifies whether to use 'id' or 'userId' as the identifier for the owner.
+     *
+     * @var value-of<IDProperty>|null $idProperty
+     */
     #[Api(enum: IDProperty::class, optional: true)]
     public ?string $idProperty;
 
@@ -67,6 +74,9 @@ final class OwnerGetParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -76,6 +86,8 @@ final class OwnerGetParams implements BaseModel
     }
 
     /**
+     * Specifies whether to use 'id' or 'userId' as the identifier for the owner.
+     *
      * @param IDProperty|value-of<IDProperty> $idProperty
      */
     public function withIDProperty(IDProperty|string $idProperty): self

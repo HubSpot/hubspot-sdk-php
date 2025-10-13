@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Object for creating a folder.
+ *
  * @phpstan-type folder_input = array{
  *   name: string, parentFolderID?: string, parentPath?: string
  * }
@@ -18,12 +20,21 @@ final class FolderInput implements BaseModel
     /** @use SdkModel<folder_input> */
     use SdkModel;
 
+    /**
+     * Desired name for the folder.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
+     */
     #[Api('parentFolderId', optional: true)]
     public ?string $parentFolderID;
 
+    /**
+     * Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
+     */
     #[Api(optional: true)]
     public ?string $parentPath;
 
@@ -66,6 +77,9 @@ final class FolderInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * Desired name for the folder.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -74,6 +88,9 @@ final class FolderInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
+     */
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
@@ -82,6 +99,9 @@ final class FolderInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
+     */
     public function withParentPath(string $parentPath): self
     {
         $obj = clone $this;

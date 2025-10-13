@@ -17,7 +17,7 @@ use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
  * $params = (new DealCreateParams); // set properties as needed
  * $client->crm.objects.deals->create(...$params->toArray());
  * ```
- * Create.
+ * Create a deal with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard deals is provided.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -37,7 +37,11 @@ final class DealCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var array<string, string> $properties */
+    /**
+     * The company property values to set.
+     *
+     * @var array<string, string> $properties
+     */
     #[Api(map: 'string')]
     public array $properties;
 
@@ -86,6 +90,8 @@ final class DealCreateParams implements BaseModel
     }
 
     /**
+     * The company property values to set.
+     *
      * @param array<string, string> $properties
      */
     public function withProperties(array $properties): self

@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Object for updating folders.
+ *
  * @phpstan-type folder_update_input = array{name?: string, parentFolderID?: int}
  */
 final class FolderUpdateInput implements BaseModel
@@ -16,9 +18,15 @@ final class FolderUpdateInput implements BaseModel
     /** @use SdkModel<folder_update_input> */
     use SdkModel;
 
+    /**
+     * New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+     */
     #[Api('parentFolderId', optional: true)]
     public ?int $parentFolderID;
 
@@ -44,6 +52,9 @@ final class FolderUpdateInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -52,6 +63,9 @@ final class FolderUpdateInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+     */
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest;
 
+/**
+ * The legal basis for communication.
+ */
 enum LegalBasis: string
 {
     case LEGITIMATE_INTEREST_PQL = 'LEGITIMATE_INTEREST_PQL';

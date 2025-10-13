@@ -25,27 +25,51 @@ final class Error implements BaseModel
     /** @use SdkModel<error_alias> */
     use SdkModel;
 
+    /**
+     * The error category.
+     */
     #[Api]
     public string $category;
 
+    /**
+     * A unique identifier for the request. Include this value with any error reports or support tickets.
+     */
     #[Api('correlationId')]
     public string $correlationID;
 
+    /**
+     * A human readable message describing the error along with remediation steps where appropriate.
+     */
     #[Api]
     public string $message;
 
-    /** @var array<string, list<string>>|null $context */
+    /**
+     * Context about the error condition.
+     *
+     * @var array<string, list<string>>|null $context
+     */
     #[Api(map: new ListOf('string'), optional: true)]
     public ?array $context;
 
-    /** @var list<ErrorDetail>|null $errors */
+    /**
+     * further information about the error.
+     *
+     * @var list<ErrorDetail>|null $errors
+     */
     #[Api(list: ErrorDetail::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /**
+     * A map of link names to associated URIs containing documentation about the error or recommended remediation steps.
+     *
+     * @var array<string, string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * A specific category that contains more specific detail about the error.
+     */
     #[Api(optional: true)]
     public ?string $subCategory;
 
@@ -100,6 +124,9 @@ final class Error implements BaseModel
         return $obj;
     }
 
+    /**
+     * The error category.
+     */
     public function withCategory(string $category): self
     {
         $obj = clone $this;
@@ -108,6 +135,9 @@ final class Error implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique identifier for the request. Include this value with any error reports or support tickets.
+     */
     public function withCorrelationID(string $correlationID): self
     {
         $obj = clone $this;
@@ -116,6 +146,9 @@ final class Error implements BaseModel
         return $obj;
     }
 
+    /**
+     * A human readable message describing the error along with remediation steps where appropriate.
+     */
     public function withMessage(string $message): self
     {
         $obj = clone $this;
@@ -125,6 +158,8 @@ final class Error implements BaseModel
     }
 
     /**
+     * Context about the error condition.
+     *
      * @param array<string, list<string>> $context
      */
     public function withContext(array $context): self
@@ -136,6 +171,8 @@ final class Error implements BaseModel
     }
 
     /**
+     * further information about the error.
+     *
      * @param list<ErrorDetail> $errors
      */
     public function withErrors(array $errors): self
@@ -147,6 +184,8 @@ final class Error implements BaseModel
     }
 
     /**
+     * A map of link names to associated URIs containing documentation about the error or recommended remediation steps.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -157,6 +196,9 @@ final class Error implements BaseModel
         return $obj;
     }
 
+    /**
+     * A specific category that contains more specific detail about the error.
+     */
     public function withSubCategory(string $subCategory): self
     {
         $obj = clone $this;

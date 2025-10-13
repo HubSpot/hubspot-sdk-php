@@ -22,19 +22,35 @@ final class EmailStatisticsData implements BaseModel
     /** @use SdkModel<email_statistics_data> */
     use SdkModel;
 
-    /** @var array<string, int> $counters */
+    /**
+     * Counters like number of `sent`, `open` or `delivered`.
+     *
+     * @var array<string, int> $counters
+     */
     #[Api(map: 'int')]
     public array $counters;
 
-    /** @var array<string, array<string, int>> $deviceBreakdown */
+    /**
+     * Statistics by device.
+     *
+     * @var array<string, array<string, int>> $deviceBreakdown
+     */
     #[Api(map: new MapOf('int'))]
     public array $deviceBreakdown;
 
-    /** @var array<string, array<string, int>> $qualifierStats */
+    /**
+     * Number of emails that were dropped and bounced.
+     *
+     * @var array<string, array<string, int>> $qualifierStats
+     */
     #[Api(map: new MapOf('int'))]
     public array $qualifierStats;
 
-    /** @var array<string, float> $ratios */
+    /**
+     * Ratios like `openratio` or `clickratio`.
+     *
+     * @var array<string, float> $ratios
+     */
     #[Api(map: 'float')]
     public array $ratios;
 
@@ -90,6 +106,8 @@ final class EmailStatisticsData implements BaseModel
     }
 
     /**
+     * Counters like number of `sent`, `open` or `delivered`.
+     *
      * @param array<string, int> $counters
      */
     public function withCounters(array $counters): self
@@ -101,6 +119,8 @@ final class EmailStatisticsData implements BaseModel
     }
 
     /**
+     * Statistics by device.
+     *
      * @param array<string, array<string, int>> $deviceBreakdown
      */
     public function withDeviceBreakdown(array $deviceBreakdown): self
@@ -112,6 +132,8 @@ final class EmailStatisticsData implements BaseModel
     }
 
     /**
+     * Number of emails that were dropped and bounced.
+     *
      * @param array<string, array<string, int>> $qualifierStats
      */
     public function withQualifierStats(array $qualifierStats): self
@@ -123,6 +145,8 @@ final class EmailStatisticsData implements BaseModel
     }
 
     /**
+     * Ratios like `openratio` or `clickratio`.
+     *
      * @param array<string, float> $ratios
      */
     public function withRatios(array $ratios): self

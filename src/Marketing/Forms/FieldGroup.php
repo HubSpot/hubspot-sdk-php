@@ -12,6 +12,8 @@ use HubspotSDK\Marketing\Forms\FieldGroup\GroupType;
 use HubspotSDK\Marketing\Forms\FieldGroup\RichTextType;
 
 /**
+ * A collection of up to three form fields usually displayed in a row.
+ *
  * @phpstan-type field_group = array{
  *   fields: list<EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField>,
  *   groupType: value-of<GroupType>,
@@ -25,6 +27,8 @@ final class FieldGroup implements BaseModel
     use SdkModel;
 
     /**
+     * The form fields included in the group.
+     *
      * @var list<EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField> $fields
      */
     #[Api(list: Field::class)]
@@ -34,10 +38,17 @@ final class FieldGroup implements BaseModel
     #[Api(enum: GroupType::class)]
     public string $groupType;
 
-    /** @var value-of<RichTextType> $richTextType */
+    /**
+     * The type of rich text included. The default value is text.
+     *
+     * @var value-of<RichTextType> $richTextType
+     */
     #[Api(enum: RichTextType::class)]
     public string $richTextType;
 
+    /**
+     * A block of rich text or an image. Those can be used to add extra information for the customers filling in the form. If the field group includes fields, the rich text will be displayed before the fields.
+     */
     #[Api(optional: true)]
     public ?string $richText;
 
@@ -87,6 +98,8 @@ final class FieldGroup implements BaseModel
     }
 
     /**
+     * The form fields included in the group.
+     *
      * @param list<EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField> $fields
      */
     public function withFields(array $fields): self
@@ -109,6 +122,8 @@ final class FieldGroup implements BaseModel
     }
 
     /**
+     * The type of rich text included. The default value is text.
+     *
      * @param RichTextType|value-of<RichTextType> $richTextType
      */
     public function withRichTextType(RichTextType|string $richTextType): self
@@ -119,6 +134,9 @@ final class FieldGroup implements BaseModel
         return $obj;
     }
 
+    /**
+     * A block of rich text or an image. Those can be used to add extra information for the customers filling in the form. If the field group includes fields, the rich text will be displayed before the fields.
+     */
     public function withRichText(string $richText): self
     {
         $obj = clone $this;

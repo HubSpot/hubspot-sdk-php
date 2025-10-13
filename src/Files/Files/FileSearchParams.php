@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new FileSearchParams); // set properties as needed
  * $client->files.files->search(...$params->toArray());
  * ```
- * Search files.
+ * Search through files in the file manager. Does not display hidden or archived files.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -70,48 +70,90 @@ final class FileSearchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000. Narrow your search down if you are reaching this limit.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * Search files by access. If `true`, will show only public files. If `false`, will show only private files.
+     */
     #[Api(optional: true)]
     public ?bool $allowsAnonymousAccess;
 
     #[Api(optional: true)]
     public ?string $before;
 
+    /**
+     * Search files by time of creation.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * Search files by greater than or equal to time of creation. Can be used with `createdAtLte` to create a range.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAtGte;
 
+    /**
+     * Search files by less than or equal to time of creation. Can be used with `createdAtGte` to create a range.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAtLte;
 
+    /**
+     * Search files by specified encoding.
+     */
     #[Api(optional: true)]
     public ?string $encoding;
 
+    /**
+     * Search files by exact expires time. Time must be epoch time in milliseconds.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $expiresAt;
 
+    /**
+     * Search files by greater than or equal to expires time. Can be used with `expiresAtLte` to create a range.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $expiresAtGte;
 
+    /**
+     * Search files by less than or equal to expires time. Can be used with `expiresAtGte` to create a range.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $expiresAtLte;
 
+    /**
+     * Search files by given extension.
+     */
     #[Api(optional: true)]
     public ?string $extension;
 
+    /**
+     * Search files by a specific md5 hash.
+     */
     #[Api(optional: true)]
     public ?string $fileMd5;
 
+    /**
+     * Search files by height of image or video.
+     */
     #[Api(optional: true)]
     public ?int $height;
 
+    /**
+     * Search files by greater than or equal to height of image or video. Can be used with `heightLte` to create a range.
+     */
     #[Api(optional: true)]
     public ?int $heightGte;
 
+    /**
+     * Search files by less than or equal to height of image or video. Can be used with `heightGte` to create a range.
+     */
     #[Api(optional: true)]
     public ?int $heightLte;
 
@@ -121,64 +163,125 @@ final class FileSearchParams implements BaseModel
     #[Api(optional: true)]
     public ?int $idLte;
 
-    /** @var list<int>|null $ids */
+    /**
+     * Search by a list of file IDs.
+     *
+     * @var list<int>|null $ids
+     */
     #[Api(list: 'int', optional: true)]
     public ?array $ids;
 
+    /**
+     * If `true`, shows files that have been marked to be used in new content. If `false`, shows files that should not be used in new content.
+     */
     #[Api(optional: true)]
     public ?bool $isUsableInContent;
 
+    /**
+     * Number of items to return. Default limit is 10, maximum limit is 100.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
+    /**
+     * Search for files containing the given name.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
-    /** @var list<int>|null $parentFolderIDs */
+    /**
+     * Search files within given `folderId`.
+     *
+     * @var list<int>|null $parentFolderIDs
+     */
     #[Api(list: 'int', optional: true)]
     public ?array $parentFolderIDs;
 
+    /**
+     * Search files by path.
+     */
     #[Api(optional: true)]
     public ?string $path;
 
-    /** @var list<string>|null $properties */
+    /**
+     * A list of file properties to return.
+     *
+     * @var list<string>|null $properties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $properties;
 
+    /**
+     * Search files by exact file size in bytes.
+     */
     #[Api(optional: true)]
     public ?int $size;
 
+    /**
+     * Search files by greater than or equal to file size. Can be used with `sizeLte` to create a range.
+     */
     #[Api(optional: true)]
     public ?int $sizeGte;
 
+    /**
+     * Search files by less than or equal to file size. Can be used with `sizeGte` to create a range.
+     */
     #[Api(optional: true)]
     public ?int $sizeLte;
 
-    /** @var list<string>|null $sort */
+    /**
+     * Sort files by a given field.
+     *
+     * @var list<string>|null $sort
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $sort;
 
+    /**
+     * Filter by provided file type.
+     */
     #[Api(optional: true)]
     public ?string $type;
 
+    /**
+     * Search files by time of latest updated.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
+    /**
+     * Search files by greater than or equal to time of latest update. Can be used with `updatedAtLte` to create a range.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAtGte;
 
+    /**
+     * Search files by less than or equal to time of latest update. Can be used with `updatedAtGte` to create a range.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAtLte;
 
+    /**
+     * Search by file URL.
+     */
     #[Api(optional: true)]
     public ?string $url;
 
+    /**
+     * Search files by width of image or video.
+     */
     #[Api(optional: true)]
     public ?int $width;
 
+    /**
+     * Search files by greater than or equal to width of image or video. Can be used with `widthLte` to create a range.
+     */
     #[Api(optional: true)]
     public ?int $widthGte;
 
+    /**
+     * Search files by less than or equal to width of image or video. Can be used with `widthGte` to create a range.
+     */
     #[Api(optional: true)]
     public ?int $widthLte;
 
@@ -277,6 +380,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000. Narrow your search down if you are reaching this limit.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -285,6 +391,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by access. If `true`, will show only public files. If `false`, will show only private files.
+     */
     public function withAllowsAnonymousAccess(bool $allowsAnonymousAccess): self
     {
         $obj = clone $this;
@@ -301,6 +410,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by time of creation.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -309,6 +421,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by greater than or equal to time of creation. Can be used with `createdAtLte` to create a range.
+     */
     public function withCreatedAtGte(\DateTimeInterface $createdAtGte): self
     {
         $obj = clone $this;
@@ -317,6 +432,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by less than or equal to time of creation. Can be used with `createdAtGte` to create a range.
+     */
     public function withCreatedAtLte(\DateTimeInterface $createdAtLte): self
     {
         $obj = clone $this;
@@ -325,6 +443,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by specified encoding.
+     */
     public function withEncoding(string $encoding): self
     {
         $obj = clone $this;
@@ -333,6 +454,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by exact expires time. Time must be epoch time in milliseconds.
+     */
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;
@@ -341,6 +465,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by greater than or equal to expires time. Can be used with `expiresAtLte` to create a range.
+     */
     public function withExpiresAtGte(\DateTimeInterface $expiresAtGte): self
     {
         $obj = clone $this;
@@ -349,6 +476,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by less than or equal to expires time. Can be used with `expiresAtGte` to create a range.
+     */
     public function withExpiresAtLte(\DateTimeInterface $expiresAtLte): self
     {
         $obj = clone $this;
@@ -357,6 +487,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by given extension.
+     */
     public function withExtension(string $extension): self
     {
         $obj = clone $this;
@@ -365,6 +498,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by a specific md5 hash.
+     */
     public function withFileMd5(string $fileMd5): self
     {
         $obj = clone $this;
@@ -373,6 +509,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by height of image or video.
+     */
     public function withHeight(int $height): self
     {
         $obj = clone $this;
@@ -381,6 +520,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by greater than or equal to height of image or video. Can be used with `heightLte` to create a range.
+     */
     public function withHeightGte(int $heightGte): self
     {
         $obj = clone $this;
@@ -389,6 +531,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by less than or equal to height of image or video. Can be used with `heightGte` to create a range.
+     */
     public function withHeightLte(int $heightLte): self
     {
         $obj = clone $this;
@@ -414,6 +559,8 @@ final class FileSearchParams implements BaseModel
     }
 
     /**
+     * Search by a list of file IDs.
+     *
      * @param list<int> $ids
      */
     public function withIDs(array $ids): self
@@ -424,6 +571,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * If `true`, shows files that have been marked to be used in new content. If `false`, shows files that should not be used in new content.
+     */
     public function withIsUsableInContent(bool $isUsableInContent): self
     {
         $obj = clone $this;
@@ -432,6 +582,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Number of items to return. Default limit is 10, maximum limit is 100.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -440,6 +593,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search for files containing the given name.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -449,6 +605,8 @@ final class FileSearchParams implements BaseModel
     }
 
     /**
+     * Search files within given `folderId`.
+     *
      * @param list<int> $parentFolderIDs
      */
     public function withParentFolderIDs(array $parentFolderIDs): self
@@ -459,6 +617,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by path.
+     */
     public function withPath(string $path): self
     {
         $obj = clone $this;
@@ -468,6 +629,8 @@ final class FileSearchParams implements BaseModel
     }
 
     /**
+     * A list of file properties to return.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -478,6 +641,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by exact file size in bytes.
+     */
     public function withSize(int $size): self
     {
         $obj = clone $this;
@@ -486,6 +652,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by greater than or equal to file size. Can be used with `sizeLte` to create a range.
+     */
     public function withSizeGte(int $sizeGte): self
     {
         $obj = clone $this;
@@ -494,6 +663,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by less than or equal to file size. Can be used with `sizeGte` to create a range.
+     */
     public function withSizeLte(int $sizeLte): self
     {
         $obj = clone $this;
@@ -503,6 +675,8 @@ final class FileSearchParams implements BaseModel
     }
 
     /**
+     * Sort files by a given field.
+     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self
@@ -513,6 +687,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Filter by provided file type.
+     */
     public function withType(string $type): self
     {
         $obj = clone $this;
@@ -521,6 +698,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by time of latest updated.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -529,6 +709,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by greater than or equal to time of latest update. Can be used with `updatedAtLte` to create a range.
+     */
     public function withUpdatedAtGte(\DateTimeInterface $updatedAtGte): self
     {
         $obj = clone $this;
@@ -537,6 +720,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by less than or equal to time of latest update. Can be used with `updatedAtGte` to create a range.
+     */
     public function withUpdatedAtLte(\DateTimeInterface $updatedAtLte): self
     {
         $obj = clone $this;
@@ -545,6 +731,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search by file URL.
+     */
     public function withURL(string $url): self
     {
         $obj = clone $this;
@@ -553,6 +742,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by width of image or video.
+     */
     public function withWidth(int $width): self
     {
         $obj = clone $this;
@@ -561,6 +753,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by greater than or equal to width of image or video. Can be used with `widthLte` to create a range.
+     */
     public function withWidthGte(int $widthGte): self
     {
         $obj = clone $this;
@@ -569,6 +764,9 @@ final class FileSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Search files by less than or equal to width of image or video. Can be used with `widthGte` to create a range.
+     */
     public function withWidthLte(int $widthLte): self
     {
         $obj = clone $this;

@@ -35,15 +35,27 @@ final class OwnerListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results (optional).
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * Filter by email address (optional).
+     */
     #[Api(optional: true)]
     public ?string $email;
 
+    /**
+     * The maximum number of results to display per page.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
@@ -73,6 +85,9 @@ final class OwnerListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results (optional).
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -81,6 +96,9 @@ final class OwnerListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -89,6 +107,9 @@ final class OwnerListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Filter by email address (optional).
+     */
     public function withEmail(string $email): self
     {
         $obj = clone $this;
@@ -97,6 +118,9 @@ final class OwnerListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of results to display per page.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;

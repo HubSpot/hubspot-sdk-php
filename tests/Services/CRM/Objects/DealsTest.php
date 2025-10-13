@@ -67,7 +67,15 @@ final class DealsTest extends TestCase
 
         $result = $this->client->crm->objects->deals->update(
             'dealId',
-            properties: ['foo' => 'string']
+            properties: [
+                'property_checkbox' => 'false',
+                'property_date' => '1572480000000',
+                'property_dropdown' => 'choice_b',
+                'property_multiple_checkboxes' => 'chocolate;strawberry',
+                'property_number' => '17',
+                'property_radio' => 'option_1',
+                'property_string' => 'value',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -82,7 +90,15 @@ final class DealsTest extends TestCase
 
         $result = $this->client->crm->objects->deals->update(
             'dealId',
-            properties: ['foo' => 'string']
+            properties: [
+                'property_checkbox' => 'false',
+                'property_date' => '1572480000000',
+                'property_dropdown' => 'choice_b',
+                'property_multiple_checkboxes' => 'chocolate;strawberry',
+                'property_number' => '17',
+                'property_radio' => 'option_1',
+                'property_string' => 'value',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

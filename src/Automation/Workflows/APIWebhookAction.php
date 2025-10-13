@@ -26,10 +26,17 @@ final class APIWebhookAction implements BaseModel
     /** @use SdkModel<api_webhook_action> */
     use SdkModel;
 
+    /**
+     * The ID for this action.
+     */
     #[Api('actionId')]
     public string $actionID;
 
-    /** @var value-of<Method> $method */
+    /**
+     * The HTTP method to use when calling the webhook URL.
+     *
+     * @var value-of<Method> $method
+     */
     #[Api(enum: Method::class)]
     public string $method;
 
@@ -37,13 +44,23 @@ final class APIWebhookAction implements BaseModel
     #[Api(list: APIInputVariable::class)]
     public array $queryParams;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
+    /**
+     * The URL to call each time this action is executed.
+     */
     #[Api('webhookUrl')]
     public string $webhookURL;
 
+    /**
+     * The type of auth to use when calling the webhook endpoint.
+     */
     #[Api(optional: true)]
     public APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings|null $authSettings;
 
@@ -108,6 +125,9 @@ final class APIWebhookAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID for this action.
+     */
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
@@ -117,6 +137,8 @@ final class APIWebhookAction implements BaseModel
     }
 
     /**
+     * The HTTP method to use when calling the webhook URL.
+     *
      * @param Method|value-of<Method> $method
      */
     public function withMethod(Method|string $method): self
@@ -139,6 +161,8 @@ final class APIWebhookAction implements BaseModel
     }
 
     /**
+     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -149,6 +173,9 @@ final class APIWebhookAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The URL to call each time this action is executed.
+     */
     public function withWebhookURL(string $webhookURL): self
     {
         $obj = clone $this;
@@ -157,6 +184,9 @@ final class APIWebhookAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The type of auth to use when calling the webhook endpoint.
+     */
     public function withAuthSettings(
         APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings $authSettings
     ): self {

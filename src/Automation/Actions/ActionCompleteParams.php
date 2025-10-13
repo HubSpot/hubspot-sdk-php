@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new ActionCompleteParams); // set properties as needed
  * $client->automation.actions->complete(...$params->toArray());
  * ```
- * Completes a callback.
+ * Complete a specific blocked action execution by ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new FolderGetByIDParams); // set properties as needed
  * $client->files.folders->getByID(...$params->toArray());
  * ```
- * Retrieve folder by ID.
+ * Retrieve a folder by its ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,7 +33,11 @@ final class FolderGetByIDParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<string>|null $properties */
+    /**
+     * Properties to set on returned folder.
+     *
+     * @var list<string>|null $properties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $properties;
 
@@ -59,6 +63,8 @@ final class FolderGetByIDParams implements BaseModel
     }
 
     /**
+     * Properties to set on returned folder.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self

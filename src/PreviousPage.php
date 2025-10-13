@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * specifies the paging information needed to retrieve the previous set of results in a paginated API response.
+ *
  * @phpstan-type previous_page = array{before: string, link?: string}
  */
 final class PreviousPage implements BaseModel
@@ -16,9 +18,15 @@ final class PreviousPage implements BaseModel
     /** @use SdkModel<previous_page> */
     use SdkModel;
 
+    /**
+     * A paging cursor token for retrieving previous pages.
+     */
     #[Api]
     public string $before;
 
+    /**
+     * A URL that can be used to retrieve the previous pages' results.
+     */
     #[Api(optional: true)]
     public ?string $link;
 
@@ -57,6 +65,9 @@ final class PreviousPage implements BaseModel
         return $obj;
     }
 
+    /**
+     * A paging cursor token for retrieving previous pages.
+     */
     public function withBefore(string $before): self
     {
         $obj = clone $this;
@@ -65,6 +76,9 @@ final class PreviousPage implements BaseModel
         return $obj;
     }
 
+    /**
+     * A URL that can be used to retrieve the previous pages' results.
+     */
     public function withLink(string $link): self
     {
         $obj = clone $this;

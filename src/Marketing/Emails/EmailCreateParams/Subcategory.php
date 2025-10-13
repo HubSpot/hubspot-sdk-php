@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails\EmailCreateParams;
 
+/**
+ * The email subcategory.
+ */
 enum Subcategory: string
 {
     case AB_MASTER = 'ab_master';

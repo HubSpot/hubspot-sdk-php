@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new EmailRestoreRevisionParams); // set properties as needed
  * $client->marketing.emails->restoreRevision(...$params->toArray());
  * ```
- * Restore a revision of a marketing email.
+ * Restores a previous revision of a marketing email. The current revision becomes old, and the restored revision is given a new version number.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

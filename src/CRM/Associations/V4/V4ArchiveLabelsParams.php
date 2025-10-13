@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new V4ArchiveLabelsParams); // set properties as needed
  * $client->crm.associations.v4->archiveLabels(...$params->toArray());
  * ```
- * Delete Specific Labels.
+ * Batch delete specific association labels for objects. Deleting an unlabeled association will also delete all labeled associations between those two objects.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

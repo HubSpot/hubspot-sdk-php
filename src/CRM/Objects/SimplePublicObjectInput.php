@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Represents the input required to create or update a CRM object, containing an object with property names and their corresponding values.
+ *
  * @phpstan-type simple_public_object_input = array{
  *   properties: array<string, string>
  * }
@@ -18,7 +20,11 @@ final class SimplePublicObjectInput implements BaseModel
     /** @use SdkModel<simple_public_object_input> */
     use SdkModel;
 
-    /** @var array<string, string> $properties */
+    /**
+     * The company property values to set.
+     *
+     * @var array<string, string> $properties
+     */
     #[Api(map: 'string')]
     public array $properties;
 
@@ -58,6 +64,8 @@ final class SimplePublicObjectInput implements BaseModel
     }
 
     /**
+     * The company property values to set.
+     *
      * @param array<string, string> $properties
      */
     public function withProperties(array $properties): self

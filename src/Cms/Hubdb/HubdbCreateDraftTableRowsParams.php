@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbCreateDraftTableRowsParams); // set properties as needed
  * $client->cms.hubdb->createDraftTableRows(...$params->toArray());
  * ```
- * Create rows in batch.
+ * Creates rows in the draft version of the specified table, given an array of row objects. Maximum of 100 row object per call. See the overview section for more details with an example.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

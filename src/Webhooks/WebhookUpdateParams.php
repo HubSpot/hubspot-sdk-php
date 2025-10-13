@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new WebhookUpdateParams); // set properties as needed
  * $client->webhooks->update(...$params->toArray());
  * ```
- * Update an event subscription.
+ * Update an existing event subscription by ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -36,6 +36,9 @@ final class WebhookUpdateParams implements BaseModel
     #[Api]
     public int $appID;
 
+    /**
+     * Determines if the subscription is active or paused.
+     */
     #[Api(optional: true)]
     public ?bool $active;
 
@@ -82,6 +85,9 @@ final class WebhookUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Determines if the subscription is active or paused.
+     */
     public function withActive(bool $active): self
     {
         $obj = clone $this;

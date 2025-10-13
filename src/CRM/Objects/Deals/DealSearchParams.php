@@ -40,24 +40,45 @@ final class DealSearchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * A paging cursor token for retrieving subsequent pages.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
-    /** @var list<FilterGroup>|null $filterGroups */
+    /**
+     * Up to 6 groups of filters defining additional query criteria.
+     *
+     * @var list<FilterGroup>|null $filterGroups
+     */
     #[Api(list: FilterGroup::class, optional: true)]
     public ?array $filterGroups;
 
+    /**
+     * The maximum results to return, up to 200 objects.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
-    /** @var list<string>|null $properties */
+    /**
+     * A list of property names to include in the response.
+     *
+     * @var list<string>|null $properties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $properties;
 
+    /**
+     * The search query string, up to 3000 characters.
+     */
     #[Api(optional: true)]
     public ?string $query;
 
-    /** @var list<string>|null $sorts */
+    /**
+     * Specifies sorting order based on object properties.
+     *
+     * @var list<string>|null $sorts
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $sorts;
 
@@ -95,6 +116,9 @@ final class DealSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * A paging cursor token for retrieving subsequent pages.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -104,6 +128,8 @@ final class DealSearchParams implements BaseModel
     }
 
     /**
+     * Up to 6 groups of filters defining additional query criteria.
+     *
      * @param list<FilterGroup> $filterGroups
      */
     public function withFilterGroups(array $filterGroups): self
@@ -114,6 +140,9 @@ final class DealSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum results to return, up to 200 objects.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -123,6 +152,8 @@ final class DealSearchParams implements BaseModel
     }
 
     /**
+     * A list of property names to include in the response.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -133,6 +164,9 @@ final class DealSearchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The search query string, up to 3000 characters.
+     */
     public function withQuery(string $query): self
     {
         $obj = clone $this;
@@ -142,6 +176,8 @@ final class DealSearchParams implements BaseModel
     }
 
     /**
+     * Specifies sorting order based on object properties.
+     *
      * @param list<string> $sorts
      */
     public function withSorts(array $sorts): self

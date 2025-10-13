@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbRemoveTableVersionParams); // set properties as needed
  * $client->cms.hubdb->removeTableVersion(...$params->toArray());
  * ```
- * Delete a table version.
+ * Delete a specific version of a table.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

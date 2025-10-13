@@ -13,6 +13,8 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbStatus;
 use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
 
 /**
+ * AB testing related data. This property is only returned for AB type emails.
+ *
  * @phpstan-type public_email_testing_details = array{
  *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>,
  *   abSamplingDefault?: value-of<AbSamplingDefault>,
@@ -28,28 +30,53 @@ final class PublicEmailTestingDetails implements BaseModel
     /** @use SdkModel<public_email_testing_details> */
     use SdkModel;
 
-    /** @var value-of<AbSampleSizeDefault>|null $abSampleSizeDefault */
+    /**
+     * Version of the email that should be sent if there are too few recipients to conduct an AB test.
+     *
+     * @var value-of<AbSampleSizeDefault>|null $abSampleSizeDefault
+     */
     #[Api(enum: AbSampleSizeDefault::class, optional: true)]
     public ?string $abSampleSizeDefault;
 
-    /** @var value-of<AbSamplingDefault>|null $abSamplingDefault */
+    /**
+     * Version of the email that should be sent if the results are inconclusive after the test period, master or variant.
+     *
+     * @var value-of<AbSamplingDefault>|null $abSamplingDefault
+     */
     #[Api(enum: AbSamplingDefault::class, optional: true)]
     public ?string $abSamplingDefault;
 
-    /** @var value-of<AbStatus>|null $abStatus */
+    /**
+     * Status of the AB test.
+     *
+     * @var value-of<AbStatus>|null $abStatus
+     */
     #[Api(enum: AbStatus::class, optional: true)]
     public ?string $abStatus;
 
-    /** @var value-of<AbSuccessMetric>|null $abSuccessMetric */
+    /**
+     * Metric to determine the version that will be sent to the remaining contacts.
+     *
+     * @var value-of<AbSuccessMetric>|null $abSuccessMetric
+     */
     #[Api(enum: AbSuccessMetric::class, optional: true)]
     public ?string $abSuccessMetric;
 
+    /**
+     * The size of your test group.
+     */
     #[Api(optional: true)]
     public ?int $abTestPercentage;
 
+    /**
+     * Time limit on gathering test results. After this time is up, the winning version will be sent to the remaining contacts.
+     */
     #[Api(optional: true)]
     public ?int $hoursToWait;
 
+    /**
+     * The ID of the AB test.
+     */
     #[Api('testId', optional: true)]
     public ?string $testID;
 
@@ -91,6 +118,8 @@ final class PublicEmailTestingDetails implements BaseModel
     }
 
     /**
+     * Version of the email that should be sent if there are too few recipients to conduct an AB test.
+     *
      * @param AbSampleSizeDefault|value-of<AbSampleSizeDefault> $abSampleSizeDefault
      */
     public function withAbSampleSizeDefault(
@@ -103,6 +132,8 @@ final class PublicEmailTestingDetails implements BaseModel
     }
 
     /**
+     * Version of the email that should be sent if the results are inconclusive after the test period, master or variant.
+     *
      * @param AbSamplingDefault|value-of<AbSamplingDefault> $abSamplingDefault
      */
     public function withAbSamplingDefault(
@@ -115,6 +146,8 @@ final class PublicEmailTestingDetails implements BaseModel
     }
 
     /**
+     * Status of the AB test.
+     *
      * @param AbStatus|value-of<AbStatus> $abStatus
      */
     public function withAbStatus(AbStatus|string $abStatus): self
@@ -126,6 +159,8 @@ final class PublicEmailTestingDetails implements BaseModel
     }
 
     /**
+     * Metric to determine the version that will be sent to the remaining contacts.
+     *
      * @param AbSuccessMetric|value-of<AbSuccessMetric> $abSuccessMetric
      */
     public function withAbSuccessMetric(
@@ -137,6 +172,9 @@ final class PublicEmailTestingDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * The size of your test group.
+     */
     public function withAbTestPercentage(int $abTestPercentage): self
     {
         $obj = clone $this;
@@ -145,6 +183,9 @@ final class PublicEmailTestingDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time limit on gathering test results. After this time is up, the winning version will be sent to the remaining contacts.
+     */
     public function withHoursToWait(int $hoursToWait): self
     {
         $obj = clone $this;
@@ -153,6 +194,9 @@ final class PublicEmailTestingDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the AB test.
+     */
     public function withTestID(string $testID): self
     {
         $obj = clone $this;

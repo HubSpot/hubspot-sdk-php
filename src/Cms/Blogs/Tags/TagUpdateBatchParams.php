@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TagUpdateBatchParams); // set properties as needed
  * $client->cms.blogs.tags->updateBatch(...$params->toArray());
  * ```
- * Update a batch of Blog Tags.
+ * Update the Blog Tag objects identified in the request body.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,10 +35,17 @@ final class TagUpdateBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<mixed> $inputs */
+    /**
+     * JSON nodes to input.
+     *
+     * @var list<mixed> $inputs
+     */
     #[Api(list: 'mixed')]
     public array $inputs;
 
+    /**
+     * Specifies whether to update deleted Blog Tags. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -80,6 +87,8 @@ final class TagUpdateBatchParams implements BaseModel
     }
 
     /**
+     * JSON nodes to input.
+     *
      * @param list<mixed> $inputs
      */
     public function withInputs(array $inputs): self
@@ -90,6 +99,9 @@ final class TagUpdateBatchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to update deleted Blog Tags. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;

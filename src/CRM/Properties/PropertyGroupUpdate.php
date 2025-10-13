@@ -16,9 +16,15 @@ final class PropertyGroupUpdate implements BaseModel
     /** @use SdkModel<property_group_update> */
     use SdkModel;
 
+    /**
+     * Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     */
     #[Api(optional: true)]
     public ?int $displayOrder;
 
+    /**
+     * A human-readable label that will be shown in HubSpot.
+     */
     #[Api(optional: true)]
     public ?string $label;
 
@@ -44,6 +50,9 @@ final class PropertyGroupUpdate implements BaseModel
         return $obj;
     }
 
+    /**
+     * Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
@@ -52,6 +61,9 @@ final class PropertyGroupUpdate implements BaseModel
         return $obj;
     }
 
+    /**
+     * A human-readable label that will be shown in HubSpot.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;

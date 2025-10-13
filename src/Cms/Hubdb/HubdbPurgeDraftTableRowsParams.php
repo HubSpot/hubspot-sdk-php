@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbPurgeDraftTableRowsParams); // set properties as needed
  * $client->cms.hubdb->purgeDraftTableRows(...$params->toArray());
  * ```
- * Permanently deletes rows.
+ * Permanently deletes rows from the draft version of the table, given a set of row IDs. Maximum of 100 row IDs per call.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,7 +33,11 @@ final class HubdbPurgeDraftTableRowsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<string> $inputs */
+    /**
+     * Strings to input.
+     *
+     * @var list<string> $inputs
+     */
     #[Api(list: 'string')]
     public array $inputs;
 
@@ -73,6 +77,8 @@ final class HubdbPurgeDraftTableRowsParams implements BaseModel
     }
 
     /**
+     * Strings to input.
+     *
      * @param list<string> $inputs
      */
     public function withInputs(array $inputs): self

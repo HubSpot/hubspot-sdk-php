@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new CallingUpdateParams); // set properties as needed
  * $client->crm.extensions.calling->update(...$params->toArray());
  * ```
- * Update channel connection settings.
+ * Update existing [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#manage-the-webhook-settings-for-channel-connection) for your app.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,9 +33,15 @@ final class CallingUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * If true, this app will be considered to support channel connection.
+     */
     #[Api(optional: true)]
     public ?bool $isReady;
 
+    /**
+     * The URL to fetch phone numbers available for channel connection.
+     */
     #[Api(optional: true)]
     public ?string $url;
 
@@ -59,6 +65,9 @@ final class CallingUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * If true, this app will be considered to support channel connection.
+     */
     public function withIsReady(bool $isReady): self
     {
         $obj = clone $this;
@@ -67,6 +76,9 @@ final class CallingUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The URL to fetch phone numbers available for channel connection.
+     */
     public function withURL(string $url): self
     {
         $obj = clone $this;

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PipelineReadParams); // set properties as needed
  * $client->crm.pipelines->read(...$params->toArray());
  * ```
- * Return a pipeline stage by ID.
+ * Return the stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

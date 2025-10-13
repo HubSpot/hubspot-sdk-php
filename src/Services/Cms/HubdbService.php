@@ -78,7 +78,7 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Archive a table
+     * Archive (soft delete) an existing HubDB table. This archives both the published and draft versions.
      *
      * @throws APIException
      */
@@ -98,12 +98,12 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Clone a table
+     * Clone an existing HubDB table. The `newName` and `newLabel` of the new table can be sent as JSON in the request body. This will create the cloned table as a draft.
      *
-     * @param bool $copyRows
+     * @param bool $copyRows Specifies whether to copy the rows during clone
      * @param bool $isHubspotDefined
-     * @param string $newLabel
-     * @param string $newName
+     * @param string $newLabel The new label for the cloned table
+     * @param string $newName The new name for the cloned table
      *
      * @throws APIException
      */
@@ -155,7 +155,7 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Clone a row
+     * Clones a single row in the draft version of a table.
      *
      * @param string $tableIDOrName
      * @param string $name
@@ -207,7 +207,7 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Clone rows in batch
+     * Clones rows in the draft version of the specified table, given a set of row ids. Maximum of 100 row ids per call.
      *
      * @param list<HubDBTableRowBatchCloneRequest> $inputs
      *
@@ -257,7 +257,7 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Create rows in batch
+     * Creates rows in the draft version of the specified table, given an array of row objects. Maximum of 100 row object per call. See the overview section for more details with an example.
      *
      * @param list<HubDBTableRowV3Request> $inputs
      *
@@ -309,16 +309,17 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Create a new table
+     * Creates a new draft HubDB table given a JSON schema. The table name and label should be unique for each account.
      *
-     * @param string $label
-     * @param string $name
-     * @param bool $allowChildTables
-     * @param bool $allowPublicAPIAccess
-     * @param list<ColumnRequest> $columns
-     * @param array<string, int> $dynamicMetaTags
-     * @param bool $enableChildTablePages
-     * @param bool $useForPages
+     * @param string $label Label of the table
+     * @param string $name Name of the table
+     * @param bool $allowChildTables Specifies whether child tables can be created
+     * @param bool $allowPublicAPIAccess Specifies whether the table can be read by public without authorization
+     * @param list<ColumnRequest> $columns List of columns in the table
+     * @param array<string,
+     * int,> $dynamicMetaTags Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+     * @param bool $enableChildTablePages Specifies creation of multi-level dynamic pages using child tables
+     * @param bool $useForPages Specifies whether the table can be used for creation of dynamic pages
      *
      * @throws APIException
      */
@@ -376,13 +377,14 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Add a new row to a table
+     * Add a new row to a HubDB table. New rows will be added to the draft version of the table. Use the `/publish` endpoint to push these changes to published version.
      *
-     * @param array<string, mixed> $values
-     * @param int $childTableID
+     * @param array<string,
+     * mixed,> $values List of key value pairs with the column name and column value
+     * @param int $childTableID Specifies the value for the column child table id
      * @param int $displayIndex
-     * @param string $name
-     * @param string $path
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
@@ -436,9 +438,9 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Export a draft table
+     * Exports the draft version of a table to CSV / EXCEL format.
      *
-     * @param string $format
+     * @param string $format The file format to export. Possible values include `CSV`, `XLSX`, and `XLS`.
      *
      * @throws APIException
      */
@@ -483,9 +485,9 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Export a published version of a table
+     * Exports the published version of a table in a specified format.
      *
-     * @param string $format
+     * @param string $format The file format to export. Possible values include `CSV`, `XLSX`, and `XLS`.
      *
      * @throws APIException
      */
@@ -530,20 +532,20 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Return all draft tables
+     * Returns the details for each draft table defined in the specified account, including column definitions.
      *
-     * @param string $after
-     * @param bool $archived
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived Specifies whether to return archived tables. Defaults to `false`.
      * @param string $contentType
-     * @param \DateTimeInterface $createdAfter
-     * @param \DateTimeInterface $createdAt
-     * @param \DateTimeInterface $createdBefore
+     * @param \DateTimeInterface $createdAfter only return tables created after the specified time
+     * @param \DateTimeInterface $createdAt only return tables created at exactly the specified time
+     * @param \DateTimeInterface $createdBefore only return tables created before the specified time
      * @param bool $isGetLocalizedSchema
-     * @param int $limit
-     * @param list<string> $sort
-     * @param \DateTimeInterface $updatedAfter
-     * @param \DateTimeInterface $updatedAt
-     * @param \DateTimeInterface $updatedBefore
+     * @param int $limit The maximum number of results to return. Default is 1000.
+     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     * @param \DateTimeInterface $updatedAfter only return tables last updated after the specified time
+     * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
+     * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
      *
      * @throws APIException
      */
@@ -609,20 +611,20 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Get all published tables
+     * Returns the details for the published version of each table defined in an account, including column definitions.
      *
-     * @param string $after
-     * @param bool $archived
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived Specifies whether to return archived tables. Defaults to `false`.
      * @param string $contentType
-     * @param \DateTimeInterface $createdAfter
-     * @param \DateTimeInterface $createdAt
-     * @param \DateTimeInterface $createdBefore
+     * @param \DateTimeInterface $createdAfter only return tables created after the specified time
+     * @param \DateTimeInterface $createdAt only return tables created at exactly the specified time
+     * @param \DateTimeInterface $createdBefore only return tables created before the specified time
      * @param bool $isGetLocalizedSchema
-     * @param int $limit
-     * @param list<string> $sort
-     * @param \DateTimeInterface $updatedAfter
-     * @param \DateTimeInterface $updatedAt
-     * @param \DateTimeInterface $updatedBefore
+     * @param int $limit The maximum number of results to return. Default is 1000.
+     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     * @param \DateTimeInterface $updatedAfter only return tables last updated after the specified time
+     * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
+     * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
      *
      * @throws APIException
      */
@@ -688,10 +690,10 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Get details for a draft table
+     * Get the details for the draft version of a specific HubDB table. This will include the definitions for the columns in the table and the number of rows in the table.
      *
-     * @param bool $archived
-     * @param bool $includeForeignIDs
+     * @param bool $archived Set this to `true` to return an archived table. Defaults to `false`.
+     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the result
      * @param bool $isGetLocalizedSchema
      *
      * @throws APIException
@@ -746,7 +748,7 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Get a row from the draft table
+     * Get a single row by ID from a table's draft version.
      *
      * @param string $tableIDOrName
      * @param bool $archived
@@ -798,10 +800,12 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Get details of a published table
+     * Returns the details for the published version of the specified table. This will include the definitions for the columns in the table and the number of rows in the table.
      *
-     * @param bool $archived
-     * @param bool $includeForeignIDs
+     * **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access. To do so, you'll need to include the HubSpot account ID in a `portalId` query parameter.
+     *
+     * @param bool $archived Set this to `true` to return details for an archived table. Defaults to `false`.
+     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the result
      * @param bool $isGetLocalizedSchema
      *
      * @throws APIException
@@ -852,7 +856,8 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Get a table row
+     * Get a single row by ID from the published version of a table.
+     * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
      *
      * @param string $tableIDOrName
      * @param bool $archived
@@ -902,14 +907,15 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Get rows for a table
+     * Returns a set of rows in the published version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options.
+     * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
      *
-     * @param string $after
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived
-     * @param int $limit
+     * @param int $limit The maximum number of results to return. Default is `1000`.
      * @param int $offset
-     * @param list<string> $properties
-     * @param list<string> $sort
+     * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
+     * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
      *
      * @throws APIException
      */
@@ -965,7 +971,8 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Import data into draft table
+     * Import the contents of a CSV file into an existing HubDB table. The data will always be imported into the draft version of the table. Use the `/publish` endpoint to push these changes to the published version.
+     * This endpoint takes a multi-part POST request. The first part will be a set of JSON-formatted options for the import and you can specify this with the name as `config`.  The second part will be the CSV file you want to import and you can specify this with the name as `file`. Refer the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#importing-tables) to check the details and format of the JSON-formatted options for the import.
      *
      * @param string $config
      * @param string $file
@@ -1014,9 +1021,9 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Publish a table from draft
+     * Publishes the table by copying the data and table schema changes from draft version to the published version, meaning any website pages using data from the table will be updated.
      *
-     * @param bool $includeForeignIDs
+     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the response
      *
      * @throws APIException
      */
@@ -1064,7 +1071,7 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Permanently deletes a row
+     * Permanently deletes a row from a table's draft version.
      *
      * @param string $tableIDOrName
      *
@@ -1113,9 +1120,9 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Permanently deletes rows
+     * Permanently deletes rows from the draft version of the table, given a set of row IDs. Maximum of 100 row IDs per call.
      *
-     * @param list<string> $inputs
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */
@@ -1163,9 +1170,9 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Get a set of rows from draft table
+     * Returns rows in the draft version of the specified table, given a set of row IDs.
      *
-     * @param list<string> $inputs
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */
@@ -1213,9 +1220,10 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Get a set of rows
+     * Returns rows in the published version of the specified table, given a set of row IDs.
+     * **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access.
      *
-     * @param list<string> $inputs
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */
@@ -1259,7 +1267,7 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Delete a table version
+     * Delete a specific version of a table
      *
      * @param string $tableIDOrName
      *
@@ -1308,14 +1316,16 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Replaces an existing row
+     * Replace a single row in the draft version of a table. All column values must be specified. If a column has a value in the target table and this request doesn't define that value, it will be deleted.
+     * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
      *
      * @param string $tableIDOrName
-     * @param array<string, mixed> $values
-     * @param int $childTableID
+     * @param array<string,
+     * mixed,> $values List of key value pairs with the column name and column value
+     * @param int $childTableID Specifies the value for the column child table id
      * @param int $displayIndex
-     * @param string $name
-     * @param string $path
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
@@ -1375,7 +1385,7 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Replace rows in batch in draft table
+     * Replaces multiple rows as a batch in the draft version of the table, with a maximum of 100 rows per call. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.
      *
      * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      *
@@ -1427,9 +1437,9 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Reset a draft table
+     * Replaces the data in the draft version of the table with values from the published version. Any unpublished changes in the draft will be lost after this call is made.
      *
-     * @param bool $includeForeignIDs
+     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the response
      *
      * @throws APIException
      */
@@ -1473,9 +1483,9 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Unpublish a table
+     * Unpublishes the table, meaning any website pages using data from the table will not render any data.
      *
-     * @param bool $includeForeignIDs
+     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the response
      *
      * @throws APIException
      */
@@ -1519,19 +1529,21 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Update an existing table
+     * Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the draft verion of the table. Use the `/publish` endpoint to push all the changes to the published version. To restore a table, include the query parameter `archived=true` and `"archived": false` in the json body.
+     * **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.
      *
-     * @param string $label
-     * @param string $name
-     * @param bool $archived
-     * @param bool $includeForeignIDs
+     * @param string $label Label of the table
+     * @param string $name Name of the table
+     * @param bool $archived Specifies whether to return archived tables. Defaults to `false`.
+     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the result
      * @param bool $isGetLocalizedSchema
-     * @param bool $allowChildTables
-     * @param bool $allowPublicAPIAccess
-     * @param list<ColumnRequest> $columns
-     * @param array<string, int> $dynamicMetaTags
-     * @param bool $enableChildTablePages
-     * @param bool $useForPages
+     * @param bool $allowChildTables Specifies whether child tables can be created
+     * @param bool $allowPublicAPIAccess Specifies whether the table can be read by public without authorization
+     * @param list<ColumnRequest> $columns List of columns in the table
+     * @param array<string,
+     * int,> $dynamicMetaTags Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+     * @param bool $enableChildTablePages Specifies creation of multi-level dynamic pages using child tables
+     * @param bool $useForPages Specifies whether the table can be used for creation of dynamic pages
      *
      * @throws APIException
      */
@@ -1601,14 +1613,17 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Updates an existing row
+     * Sparse updates a single row in the table's draft version.
+     * All the column values need not be specified. Only the columns or fields that needs to be modified can be specified.
+     * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
      *
      * @param string $tableIDOrName
-     * @param array<string, mixed> $values
-     * @param int $childTableID
+     * @param array<string,
+     * mixed,> $values List of key value pairs with the column name and column value
+     * @param int $childTableID Specifies the value for the column child table id
      * @param int $displayIndex
-     * @param string $name
-     * @param string $path
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
@@ -1668,7 +1683,7 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      *
-     * Update rows in batch in draft table
+     * Updates multiple rows as a batch in the draft version of the table, with a maximum of 100 rows per call. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.
      *
      * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
      *

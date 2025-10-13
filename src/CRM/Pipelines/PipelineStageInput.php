@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * An input used to create or replace a pipeline stage's definition.
+ *
  * @phpstan-type pipeline_stage_input = array{
  *   displayOrder: int, label: string, metadata?: array<string, string>
  * }
@@ -18,13 +20,27 @@ final class PipelineStageInput implements BaseModel
     /** @use SdkModel<pipeline_stage_input> */
     use SdkModel;
 
+    /**
+     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     #[Api]
     public int $displayOrder;
 
+    /**
+     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     */
     #[Api]
     public string $label;
 
-    /** @var array<string, string>|null $metadata */
+    /**
+     * A JSON object containing properties that are not present on all object pipelines.
+     *
+     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+     *
+     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     *
+     * @var array<string, string>|null $metadata
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $metadata;
 
@@ -69,6 +85,9 @@ final class PipelineStageInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
@@ -77,6 +96,9 @@ final class PipelineStageInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -86,6 +108,12 @@ final class PipelineStageInput implements BaseModel
     }
 
     /**
+     * A JSON object containing properties that are not present on all object pipelines.
+     *
+     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+     *
+     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     *
      * @param array<string, string> $metadata
      */
     public function withMetadata(array $metadata): self

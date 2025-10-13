@@ -22,16 +22,29 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
     /** @use SdkModel<public_update_subscription_status_request> */
     use SdkModel;
 
+    /**
+     * Contact's email address.
+     */
     #[Api]
     public string $emailAddress;
 
+    /**
+     * ID of the subscription being updated for the contact.
+     */
     #[Api('subscriptionId')]
     public string $subscriptionID;
 
-    /** @var value-of<LegalBasis>|null $legalBasis */
+    /**
+     * Legal basis for updating the contact's status (required for GDPR enabled portals).
+     *
+     * @var value-of<LegalBasis>|null $legalBasis
+     */
     #[Api(enum: LegalBasis::class, optional: true)]
     public ?string $legalBasis;
 
+    /**
+     * A more detailed explanation to go with the legal basis (required for GDPR enabled portals).
+     */
     #[Api(optional: true)]
     public ?string $legalBasisExplanation;
 
@@ -82,6 +95,9 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contact's email address.
+     */
     public function withEmailAddress(string $emailAddress): self
     {
         $obj = clone $this;
@@ -90,6 +106,9 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the subscription being updated for the contact.
+     */
     public function withSubscriptionID(string $subscriptionID): self
     {
         $obj = clone $this;
@@ -99,6 +118,8 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
     }
 
     /**
+     * Legal basis for updating the contact's status (required for GDPR enabled portals).
+     *
      * @param LegalBasis|value-of<LegalBasis> $legalBasis
      */
     public function withLegalBasis(LegalBasis|string $legalBasis): self
@@ -109,6 +130,9 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * A more detailed explanation to go with the legal basis (required for GDPR enabled portals).
+     */
     public function withLegalBasisExplanation(
         string $legalBasisExplanation
     ): self {

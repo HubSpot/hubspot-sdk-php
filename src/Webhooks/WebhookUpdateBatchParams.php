@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new WebhookUpdateBatchParams); // set properties as needed
  * $client->webhooks->updateBatch(...$params->toArray());
  * ```
- * Batch create event subscriptions.
+ * Batch create event subscriptions for the specified app.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
+ * Response object for collections of EmailStatisticIntervals.
+ *
  * @phpstan-type collection_response_with_total_email_statistic_interval_no_paging = array{
  *   results: list<EmailStatisticInterval>, total: int
  * }
@@ -24,10 +26,17 @@ final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements
 
     use SdkResponse;
 
-    /** @var list<EmailStatisticInterval> $results */
+    /**
+     * Collection of objects.
+     *
+     * @var list<EmailStatisticInterval> $results
+     */
     #[Api(list: EmailStatisticInterval::class)]
     public array $results;
 
+    /**
+     * Total number of objects.
+     */
     #[Api]
     public int $total;
 
@@ -72,6 +81,8 @@ final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements
     }
 
     /**
+     * Collection of objects.
+     *
      * @param list<EmailStatisticInterval> $results
      */
     public function withResults(array $results): self
@@ -82,6 +93,9 @@ final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements
         return $obj;
     }
 
+    /**
+     * Total number of objects.
+     */
     public function withTotal(int $total): self
     {
         $obj = clone $this;

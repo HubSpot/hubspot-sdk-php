@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Files\File\Access;
 
 /**
+ * File.
+ *
  * @phpstan-type file_alias = array{
  *   id: string,
  *   access: value-of<Access>,
@@ -39,67 +41,131 @@ final class File implements BaseModel
     /** @use SdkModel<file_alias> */
     use SdkModel;
 
+    /**
+     * File ID.
+     */
     #[Api]
     public string $id;
 
-    /** @var value-of<Access> $access */
+    /**
+     * File access. Can be PUBLIC_INDEXABLE, PUBLIC_NOT_INDEXABLE, PRIVATE.
+     *
+     * @var value-of<Access> $access
+     */
     #[Api(enum: Access::class)]
     public string $access;
 
+    /**
+     * If the file is deleted.
+     */
     #[Api]
     public bool $archived;
 
+    /**
+     * Creation time of the file object.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * Timestamp of the latest update to the file.
+     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * Deletion time of the file object.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $archivedAt;
 
+    /**
+     * Default hosting URL of the file. This will use one of HubSpot's provided URLs to serve the file.
+     */
     #[Api('defaultHostingUrl', optional: true)]
     public ?string $defaultHostingURL;
 
+    /**
+     * Encoding of the file.
+     */
     #[Api(optional: true)]
     public ?string $encoding;
 
+    /**
+     * The timestamp indicating when the file will expire.
+     */
     #[Api(optional: true)]
     public ?int $expiresAt;
 
+    /**
+     * Extension of the file. ex: .jpg, .png, .gif, .pdf, etc.
+     */
     #[Api(optional: true)]
     public ?string $extension;
 
+    /**
+     * The MD5 hash of the file.
+     */
     #[Api(optional: true)]
     public ?string $fileMd5;
 
+    /**
+     * For image and video files, the height of the content.
+     */
     #[Api(optional: true)]
     public ?int $height;
 
+    /**
+     * Previously "archied". Indicates if the file should be used when creating new content like web pages.
+     */
     #[Api(optional: true)]
     public ?bool $isUsableInContent;
 
+    /**
+     * Name of the file.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * ID of the folder the file is in.
+     */
     #[Api('parentFolderId', optional: true)]
     public ?string $parentFolderID;
 
+    /**
+     * Path of the file in the file manager.
+     */
     #[Api(optional: true)]
     public ?string $path;
 
+    /**
+     * Size of the file in bytes.
+     */
     #[Api(optional: true)]
     public ?int $size;
 
+    /**
+     * The group from which the file originated.
+     */
     #[Api(optional: true)]
     public ?string $sourceGroup;
 
+    /**
+     * Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
+     */
     #[Api(optional: true)]
     public ?string $type;
 
+    /**
+     * URL of the given file. This URL can change depending on the domain settings of the account. Will use the select file hosting domain.
+     */
     #[Api(optional: true)]
     public ?string $url;
 
+    /**
+     * For image and video files, the width of the content.
+     */
     #[Api(optional: true)]
     public ?int $width;
 
@@ -185,6 +251,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * File ID.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -194,6 +263,8 @@ final class File implements BaseModel
     }
 
     /**
+     * File access. Can be PUBLIC_INDEXABLE, PUBLIC_NOT_INDEXABLE, PRIVATE.
+     *
      * @param Access|value-of<Access> $access
      */
     public function withAccess(Access|string $access): self
@@ -204,6 +275,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * If the file is deleted.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -212,6 +286,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Creation time of the file object.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -220,6 +297,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Timestamp of the latest update to the file.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -228,6 +308,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Deletion time of the file object.
+     */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
@@ -236,6 +319,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Default hosting URL of the file. This will use one of HubSpot's provided URLs to serve the file.
+     */
     public function withDefaultHostingURL(string $defaultHostingURL): self
     {
         $obj = clone $this;
@@ -244,6 +330,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Encoding of the file.
+     */
     public function withEncoding(string $encoding): self
     {
         $obj = clone $this;
@@ -252,6 +341,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp indicating when the file will expire.
+     */
     public function withExpiresAt(int $expiresAt): self
     {
         $obj = clone $this;
@@ -260,6 +352,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Extension of the file. ex: .jpg, .png, .gif, .pdf, etc.
+     */
     public function withExtension(string $extension): self
     {
         $obj = clone $this;
@@ -268,6 +363,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * The MD5 hash of the file.
+     */
     public function withFileMd5(string $fileMd5): self
     {
         $obj = clone $this;
@@ -276,6 +374,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * For image and video files, the height of the content.
+     */
     public function withHeight(int $height): self
     {
         $obj = clone $this;
@@ -284,6 +385,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Previously "archied". Indicates if the file should be used when creating new content like web pages.
+     */
     public function withIsUsableInContent(bool $isUsableInContent): self
     {
         $obj = clone $this;
@@ -292,6 +396,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the file.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -300,6 +407,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the folder the file is in.
+     */
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
@@ -308,6 +418,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Path of the file in the file manager.
+     */
     public function withPath(string $path): self
     {
         $obj = clone $this;
@@ -316,6 +429,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Size of the file in bytes.
+     */
     public function withSize(int $size): self
     {
         $obj = clone $this;
@@ -324,6 +440,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * The group from which the file originated.
+     */
     public function withSourceGroup(string $sourceGroup): self
     {
         $obj = clone $this;
@@ -332,6 +451,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
+     */
     public function withType(string $type): self
     {
         $obj = clone $this;
@@ -340,6 +462,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * URL of the given file. This URL can change depending on the domain settings of the account. Will use the select file hosting domain.
+     */
     public function withURL(string $url): self
     {
         $obj = clone $this;
@@ -348,6 +473,9 @@ final class File implements BaseModel
         return $obj;
     }
 
+    /**
+     * For image and video files, the width of the content.
+     */
     public function withWidth(int $width): self
     {
         $obj = clone $this;

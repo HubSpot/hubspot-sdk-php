@@ -25,27 +25,51 @@ final class Folder implements BaseModel
     /** @use SdkModel<folder_alias> */
     use SdkModel;
 
+    /**
+     * ID of the folder.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Marks whether the folder is deleted or not.
+     */
     #[Api]
     public bool $archived;
 
+    /**
+     * Timestamp of folder creation.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * Timestamp of the latest update to the folder.
+     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * Timestamp of folder deletion.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $archivedAt;
 
+    /**
+     * Name of the folder.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * ID of the parent folder.
+     */
     #[Api('parentFolderId', optional: true)]
     public ?string $parentFolderID;
 
+    /**
+     * Path of the folder in the file manager.
+     */
     #[Api(optional: true)]
     public ?string $path;
 
@@ -102,6 +126,9 @@ final class Folder implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the folder.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -110,6 +137,9 @@ final class Folder implements BaseModel
         return $obj;
     }
 
+    /**
+     * Marks whether the folder is deleted or not.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -118,6 +148,9 @@ final class Folder implements BaseModel
         return $obj;
     }
 
+    /**
+     * Timestamp of folder creation.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -126,6 +159,9 @@ final class Folder implements BaseModel
         return $obj;
     }
 
+    /**
+     * Timestamp of the latest update to the folder.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -134,6 +170,9 @@ final class Folder implements BaseModel
         return $obj;
     }
 
+    /**
+     * Timestamp of folder deletion.
+     */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
@@ -142,6 +181,9 @@ final class Folder implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the folder.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -150,6 +192,9 @@ final class Folder implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the parent folder.
+     */
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
@@ -158,6 +203,9 @@ final class Folder implements BaseModel
         return $obj;
     }
 
+    /**
+     * Path of the folder in the file manager.
+     */
     public function withPath(string $path): self
     {
         $obj = clone $this;

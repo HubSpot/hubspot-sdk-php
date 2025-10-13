@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new SchemaArchiveAssociationParams); // set properties as needed
  * $client->crm.objects.schemas->archiveAssociation(...$params->toArray());
  * ```
- * Remove an association.
+ * Removes an existing association from a schema.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

@@ -18,6 +18,9 @@ final class APIStaticBranch implements BaseModel
     /** @use SdkModel<api_static_branch> */
     use SdkModel;
 
+    /**
+     * If value to check for. If the value of the `inputValue` matches this `branchValue` than this `connection` will get traversed.
+     */
     #[Api]
     public string $branchValue;
 
@@ -61,6 +64,9 @@ final class APIStaticBranch implements BaseModel
         return $obj;
     }
 
+    /**
+     * If value to check for. If the value of the `inputValue` matches this `branchValue` than this `connection` will get traversed.
+     */
     public function withBranchValue(string $branchValue): self
     {
         $obj = clone $this;

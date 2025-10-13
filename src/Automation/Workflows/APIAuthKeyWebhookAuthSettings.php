@@ -23,17 +23,31 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
     /** @use SdkModel<api_auth_key_webhook_auth_settings> */
     use SdkModel;
 
-    /** @var value-of<Location> $location */
+    /**
+     * Where in the request this auth key should be located: "HEADER" or "QUERY_PARAM".
+     *
+     * @var value-of<Location> $location
+     */
     #[Api(enum: Location::class)]
     public string $location;
 
+    /**
+     * The name to use for this auth key.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * The secret to pass through in this auth key.
+     */
     #[Api]
     public string $secretName;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of webhook auth settings this is, can be: "AUTH_KEY" or "SIGNATURE".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -87,6 +101,8 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
     }
 
     /**
+     * Where in the request this auth key should be located: "HEADER" or "QUERY_PARAM".
+     *
      * @param Location|value-of<Location> $location
      */
     public function withLocation(Location|string $location): self
@@ -97,6 +113,9 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name to use for this auth key.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -105,6 +124,9 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
         return $obj;
     }
 
+    /**
+     * The secret to pass through in this auth key.
+     */
     public function withSecretName(string $secretName): self
     {
         $obj = clone $this;
@@ -114,6 +136,8 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
     }
 
     /**
+     * The type of webhook auth settings this is, can be: "AUTH_KEY" or "SIGNATURE".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\Filter\Operator;
 
 /**
+ * Defines a single condition for searching CRM objects, specifying the property to filter on, the operator to use (such as equals, greater than, or contains), and the value(s) to compare against.
+ *
  * @phpstan-type filter_alias = array{
  *   operator: value-of<Operator>,
  *   propertyName: string,
@@ -23,20 +25,37 @@ final class Filter implements BaseModel
     /** @use SdkModel<filter_alias> */
     use SdkModel;
 
-    /** @var value-of<Operator> $operator */
+    /**
+     * null.
+     *
+     * @var value-of<Operator> $operator
+     */
     #[Api(enum: Operator::class)]
     public string $operator;
 
+    /**
+     * The name of the property to apply the filter to.
+     */
     #[Api]
     public string $propertyName;
 
+    /**
+     * The upper boundary value when using ranged-based filters.
+     */
     #[Api(optional: true)]
     public ?string $highValue;
 
+    /**
+     * The value to match against the property.
+     */
     #[Api(optional: true)]
     public ?string $value;
 
-    /** @var list<string>|null $values */
+    /**
+     * The values to match against the property.
+     *
+     * @var list<string>|null $values
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $values;
 
@@ -87,6 +106,8 @@ final class Filter implements BaseModel
     }
 
     /**
+     * null.
+     *
      * @param Operator|value-of<Operator> $operator
      */
     public function withOperator(Operator|string $operator): self
@@ -97,6 +118,9 @@ final class Filter implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the property to apply the filter to.
+     */
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
@@ -105,6 +129,9 @@ final class Filter implements BaseModel
         return $obj;
     }
 
+    /**
+     * The upper boundary value when using ranged-based filters.
+     */
     public function withHighValue(string $highValue): self
     {
         $obj = clone $this;
@@ -113,6 +140,9 @@ final class Filter implements BaseModel
         return $obj;
     }
 
+    /**
+     * The value to match against the property.
+     */
     public function withValue(string $value): self
     {
         $obj = clone $this;
@@ -122,6 +152,8 @@ final class Filter implements BaseModel
     }
 
     /**
+     * The values to match against the property.
+     *
      * @param list<string> $values
      */
     public function withValues(array $values): self

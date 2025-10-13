@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new RowGetDraftParams); // set properties as needed
  * $client->cms.hubdb.rows->getDraft(...$params->toArray());
  * ```
- * Get a row from the draft table.
+ * Get a single row by ID from a table's draft version.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

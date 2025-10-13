@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Singular and plural labels for the object. Used in CRM display.
+ *
  * @phpstan-type object_type_definition_labels = array{
  *   plural?: string, singular?: string
  * }
@@ -18,9 +20,15 @@ final class ObjectTypeDefinitionLabels implements BaseModel
     /** @use SdkModel<object_type_definition_labels> */
     use SdkModel;
 
+    /**
+     * The word for multiple objects. (There’s no way to change this later.).
+     */
     #[Api(optional: true)]
     public ?string $plural;
 
+    /**
+     * The word for one object. (There’s no way to change this later.).
+     */
     #[Api(optional: true)]
     public ?string $singular;
 
@@ -46,6 +54,9 @@ final class ObjectTypeDefinitionLabels implements BaseModel
         return $obj;
     }
 
+    /**
+     * The word for multiple objects. (There’s no way to change this later.).
+     */
     public function withPlural(string $plural): self
     {
         $obj = clone $this;
@@ -54,6 +65,9 @@ final class ObjectTypeDefinitionLabels implements BaseModel
         return $obj;
     }
 
+    /**
+     * The word for one object. (There’s no way to change this later.).
+     */
     public function withSingular(string $singular): self
     {
         $obj = clone $this;

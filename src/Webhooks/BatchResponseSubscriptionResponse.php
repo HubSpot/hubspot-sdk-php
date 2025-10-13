@@ -28,24 +28,45 @@ final class BatchResponseSubscriptionResponse implements BaseModel, ResponseConv
 
     use SdkResponse;
 
+    /**
+     * The date and time when the batch operation was completed.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<SubscriptionResponse> $results */
+    /**
+     * The list of results from the batch operation.
+     *
+     * @var list<SubscriptionResponse> $results
+     */
     #[Api(list: SubscriptionResponse::class)]
     public array $results;
 
+    /**
+     * The date and time when the batch operation started.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current status of the batch operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var array<string, string>|null $links */
+    /**
+     * A collection of related links associated with the batch operation.
+     *
+     * @var array<string, string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The date and time when the batch operation was requested.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -104,6 +125,9 @@ final class BatchResponseSubscriptionResponse implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The date and time when the batch operation was completed.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -113,6 +137,8 @@ final class BatchResponseSubscriptionResponse implements BaseModel, ResponseConv
     }
 
     /**
+     * The list of results from the batch operation.
+     *
      * @param list<SubscriptionResponse> $results
      */
     public function withResults(array $results): self
@@ -123,6 +149,9 @@ final class BatchResponseSubscriptionResponse implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The date and time when the batch operation started.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -132,6 +161,8 @@ final class BatchResponseSubscriptionResponse implements BaseModel, ResponseConv
     }
 
     /**
+     * The current status of the batch operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -143,6 +174,8 @@ final class BatchResponseSubscriptionResponse implements BaseModel, ResponseConv
     }
 
     /**
+     * A collection of related links associated with the batch operation.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -153,6 +186,9 @@ final class BatchResponseSubscriptionResponse implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The date and time when the batch operation was requested.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

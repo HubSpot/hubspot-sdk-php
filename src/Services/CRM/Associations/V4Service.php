@@ -34,7 +34,7 @@ final class V4Service implements V4Contract
     /**
      * @api
      *
-     * Create
+     * Set association labels between two records.
      *
      * @param string $objectType
      * @param string $objectID
@@ -106,12 +106,12 @@ final class V4Service implements V4Contract
     /**
      * @api
      *
-     * List
+     * List all associations of an object by object type. Limit 500 per call.
      *
      * @param string $objectType
      * @param string $objectID
-     * @param string $after
-     * @param int $limit
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
      *
      * @return Page<MultiAssociatedObjectWithLabel>
      *
@@ -174,7 +174,7 @@ final class V4Service implements V4Contract
     /**
      * @api
      *
-     * Delete
+     * deletes all associations between two records.
      *
      * @param string $objectType
      * @param string $objectID
@@ -239,7 +239,7 @@ final class V4Service implements V4Contract
     /**
      * @api
      *
-     * Delete Specific Labels
+     * Batch delete specific association labels for objects. Deleting an unlabeled association will also delete all labeled associations between those two objects
      *
      * @param string $fromObjectType
      * @param list<PublicAssociationMultiPost> $inputs
@@ -293,7 +293,7 @@ final class V4Service implements V4Contract
     /**
      * @api
      *
-     * Create Default
+     * Create the default (most generic) association type between two object types
      *
      * @param string $fromObjectType
      * @param string $fromObjectID
@@ -358,7 +358,7 @@ final class V4Service implements V4Contract
     /**
      * @api
      *
-     * Report
+     * Requests a report of all objects in the portal which have a high usage of associations
      *
      * @throws APIException
      */

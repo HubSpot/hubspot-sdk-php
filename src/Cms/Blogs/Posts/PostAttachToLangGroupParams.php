@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostAttachToLangGroupParams); // set properties as needed
  * $client->cms.blogs.posts->attachToLangGroup(...$params->toArray());
  * ```
- * Attach post to a multi-language group.
+ * Attach a blog post to a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -39,16 +39,29 @@ final class PostAttachToLangGroupParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of the object to add to a multi-language group.
+     */
     #[Api]
     public string $id;
 
-    /** @var value-of<Language> $language */
+    /**
+     * Designated language of the object to add to a multi-language group.
+     *
+     * @var value-of<Language> $language
+     */
     #[Api(enum: Language::class)]
     public string $language;
 
+    /**
+     * ID of primary language object in multi-language group.
+     */
     #[Api('primaryId')]
     public string $primaryID;
 
+    /**
+     * Primary language of the multi-language group.
+     */
     #[Api(optional: true)]
     public ?string $primaryLanguage;
 
@@ -98,6 +111,9 @@ final class PostAttachToLangGroupParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the object to add to a multi-language group.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -107,6 +123,8 @@ final class PostAttachToLangGroupParams implements BaseModel
     }
 
     /**
+     * Designated language of the object to add to a multi-language group.
+     *
      * @param Language|value-of<Language> $language
      */
     public function withLanguage(Language|string $language): self
@@ -117,6 +135,9 @@ final class PostAttachToLangGroupParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of primary language object in multi-language group.
+     */
     public function withPrimaryID(string $primaryID): self
     {
         $obj = clone $this;
@@ -125,6 +146,9 @@ final class PostAttachToLangGroupParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Primary language of the multi-language group.
+     */
     public function withPrimaryLanguage(string $primaryLanguage): self
     {
         $obj = clone $this;

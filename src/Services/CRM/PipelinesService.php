@@ -32,11 +32,11 @@ final class PipelinesService implements PipelinesContract
     /**
      * @api
      *
-     * Create a pipeline
+     * Create a new pipeline with the provided property values. The entire pipeline object, including its unique ID, will be returned in the response.
      *
-     * @param int $displayOrder
-     * @param string $label
-     * @param list<PipelineStageInput> $stages
+     * @param int $displayOrder The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * @param string $label A unique label used to organize pipelines in HubSpot's UI
+     * @param list<PipelineStageInput> $stages pipeline stage inputs used to create the new or replacement pipeline
      *
      * @throws APIException
      */
@@ -84,14 +84,19 @@ final class PipelinesService implements PipelinesContract
     /**
      * @api
      *
-     * Update a pipeline stage
+     * Perform a partial update of the pipeline stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`. Any properties not included in this update will keep their existing values. The updated stage will be returned in the response.
      *
      * @param string $objectType
      * @param string $pipelineID
-     * @param bool $archived
-     * @param int $displayOrder
-     * @param string $label
-     * @param array<string, string> $metadata
+     * @param bool $archived whether the pipeline is archived
+     * @param int $displayOrder The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * @param string $label A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     * @param array<string,
+     * string,> $metadata A JSON object containing properties that are not present on all object pipelines.
+     *
+     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+     *
+     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
      * @throws APIException
      */
@@ -159,7 +164,7 @@ final class PipelinesService implements PipelinesContract
     /**
      * @api
      *
-     * Retrieve all pipelines
+     * Return all pipelines for the object type specified by `{objectType}`.
      *
      * @throws APIException
      */
@@ -179,7 +184,7 @@ final class PipelinesService implements PipelinesContract
     /**
      * @api
      *
-     * Delete a pipeline stage
+     * Delete the pipeline stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`.
      *
      * @param string $objectType
      * @param string $pipelineID
@@ -235,7 +240,7 @@ final class PipelinesService implements PipelinesContract
     /**
      * @api
      *
-     * Return an audit of all changes to the pipeline
+     * Return a reverse chronological list of all mutations that have occurred on the pipeline identified by `{pipelineId}`.
      *
      * @param string $objectType
      *
@@ -282,7 +287,7 @@ final class PipelinesService implements PipelinesContract
     /**
      * @api
      *
-     * Return a pipeline stage by ID
+     * Return the stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`.
      *
      * @param string $objectType
      * @param string $pipelineID
@@ -338,13 +343,18 @@ final class PipelinesService implements PipelinesContract
     /**
      * @api
      *
-     * Replace a pipeline stage
+     * Replace all the properties of an existing pipeline stage with the values provided. The updated stage will be returned in the response.
      *
      * @param string $objectType
      * @param string $pipelineID
-     * @param int $displayOrder
-     * @param string $label
-     * @param array<string, string> $metadata
+     * @param int $displayOrder The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * @param string $label A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     * @param array<string,
+     * string,> $metadata A JSON object containing properties that are not present on all object pipelines.
+     *
+     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+     *
+     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
      * @throws APIException
      */

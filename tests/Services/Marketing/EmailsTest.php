@@ -36,7 +36,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->create(name: 'name');
+        $result = $this->client->marketing->emails->create(name: 'My subject');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +48,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->create(name: 'name');
+        $result = $this->client->marketing->emails->create(name: 'My subject');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -121,7 +121,7 @@ final class EmailsTest extends TestCase
         }
 
         $result = $this->client->marketing->emails->createAbTestVariation(
-            contentID: 'contentId',
+            contentID: '7',
             variationName: 'variationName'
         );
 
@@ -136,7 +136,7 @@ final class EmailsTest extends TestCase
         }
 
         $result = $this->client->marketing->emails->createAbTestVariation(
-            contentID: 'contentId',
+            contentID: '7',
             variationName: 'variationName'
         );
 

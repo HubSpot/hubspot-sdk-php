@@ -18,9 +18,15 @@ final class ChannelConnectionSettingsPatchRequest implements BaseModel
     /** @use SdkModel<channel_connection_settings_patch_request> */
     use SdkModel;
 
+    /**
+     * If true, this app will be considered to support channel connection.
+     */
     #[Api(optional: true)]
     public ?bool $isReady;
 
+    /**
+     * The URL to fetch phone numbers available for channel connection.
+     */
     #[Api(optional: true)]
     public ?string $url;
 
@@ -44,6 +50,9 @@ final class ChannelConnectionSettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * If true, this app will be considered to support channel connection.
+     */
     public function withIsReady(bool $isReady): self
     {
         $obj = clone $this;
@@ -52,6 +61,9 @@ final class ChannelConnectionSettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The URL to fetch phone numbers available for channel connection.
+     */
     public function withURL(string $url): self
     {
         $obj = clone $this;

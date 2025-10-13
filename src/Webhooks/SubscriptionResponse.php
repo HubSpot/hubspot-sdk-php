@@ -12,6 +12,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
 
 /**
+ * Complete details for an event subscription.
+ *
  * @phpstan-type subscription_response = array{
  *   id: string,
  *   active: bool,
@@ -29,25 +31,47 @@ final class SubscriptionResponse implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The unique ID of the subscription.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Determines if the subscription is active or paused.
+     */
     #[Api]
     public bool $active;
 
+    /**
+     * When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    /** @var value-of<EventType> $eventType */
+    /**
+     * Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     *
+     * @var value-of<EventType> $eventType
+     */
     #[Api(enum: EventType::class)]
     public string $eventType;
 
+    /**
+     * The identifier of the object type associated with the subscription.
+     */
     #[Api('objectTypeId', optional: true)]
     public ?string $objectTypeID;
 
+    /**
+     * The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.
+     */
     #[Api(optional: true)]
     public ?string $propertyName;
 
+    /**
+     * When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
@@ -104,6 +128,9 @@ final class SubscriptionResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The unique ID of the subscription.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -112,6 +139,9 @@ final class SubscriptionResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Determines if the subscription is active or paused.
+     */
     public function withActive(bool $active): self
     {
         $obj = clone $this;
@@ -120,6 +150,9 @@ final class SubscriptionResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -129,6 +162,8 @@ final class SubscriptionResponse implements BaseModel, ResponseConverter
     }
 
     /**
+     * Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     *
      * @param EventType|value-of<EventType> $eventType
      */
     public function withEventType(EventType|string $eventType): self
@@ -139,6 +174,9 @@ final class SubscriptionResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The identifier of the object type associated with the subscription.
+     */
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
@@ -147,6 +185,9 @@ final class SubscriptionResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.
+     */
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
@@ -155,6 +196,9 @@ final class SubscriptionResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;

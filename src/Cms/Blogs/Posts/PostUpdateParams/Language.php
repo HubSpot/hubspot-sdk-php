@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Posts\PostUpdateParams;
 
+/**
+ * The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
+ */
 enum Language: string
 {
     case AF = 'af';

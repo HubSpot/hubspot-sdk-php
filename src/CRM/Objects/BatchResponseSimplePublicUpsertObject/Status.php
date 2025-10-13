@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
 
+/**
+ * The status of the batch processing request. Can be: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
+ */
 enum Status: string
 {
     case PENDING = 'PENDING';

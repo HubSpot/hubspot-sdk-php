@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new BatchReadDraftBatchParams); // set properties as needed
  * $client->cms.hubdb.rows.draft.batch->readDraftBatch(...$params->toArray());
  * ```
- * Get a set of rows from draft table.
+ * Returns rows in the draft version of the specified table, given a set of row IDs.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,7 +33,11 @@ final class BatchReadDraftBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<string> $inputs */
+    /**
+     * Strings to input.
+     *
+     * @var list<string> $inputs
+     */
     #[Api(list: 'string')]
     public array $inputs;
 
@@ -73,6 +77,8 @@ final class BatchReadDraftBatchParams implements BaseModel
     }
 
     /**
+     * Strings to input.
+     *
      * @param list<string> $inputs
      */
     public function withInputs(array $inputs): self

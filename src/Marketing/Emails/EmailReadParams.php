@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new EmailReadParams); // set properties as needed
  * $client->marketing.emails->read(...$params->toArray());
  * ```
- * Get the details of a specified marketing email.
+ * Get the details for a marketing email.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -39,19 +39,35 @@ final class EmailReadParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
-    /** @var list<string>|null $includedProperties */
+    /**
+     * Limit the response to only include the specified properties.
+     *
+     * @var list<string>|null $includedProperties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $includedProperties;
 
+    /**
+     * Include statistics with email.
+     */
     #[Api(optional: true)]
     public ?bool $includeStats;
 
+    /**
+     * If set to true, loads `campaignName` and `campaignUtm`.
+     */
     #[Api(optional: true)]
     public ?bool $marketingCampaignNames;
 
+    /**
+     * If set to true, loads workflows in which the email is used within a "send email" action.
+     */
     #[Api(optional: true)]
     public ?bool $workflowNames;
 
@@ -85,6 +101,9 @@ final class EmailReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -94,6 +113,8 @@ final class EmailReadParams implements BaseModel
     }
 
     /**
+     * Limit the response to only include the specified properties.
+     *
      * @param list<string> $includedProperties
      */
     public function withIncludedProperties(array $includedProperties): self
@@ -104,6 +125,9 @@ final class EmailReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Include statistics with email.
+     */
     public function withIncludeStats(bool $includeStats): self
     {
         $obj = clone $this;
@@ -112,6 +136,9 @@ final class EmailReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * If set to true, loads `campaignName` and `campaignUtm`.
+     */
     public function withMarketingCampaignNames(
         bool $marketingCampaignNames
     ): self {
@@ -121,6 +148,9 @@ final class EmailReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * If set to true, loads workflows in which the email is used within a "send email" action.
+     */
     public function withWorkflowNames(bool $workflowNames): self
     {
         $obj = clone $this;

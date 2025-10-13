@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbExportTableParams); // set properties as needed
  * $client->cms.hubdb->exportTable(...$params->toArray());
  * ```
- * Export a published version of a table.
+ * Exports the published version of a table in a specified format.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class HubdbExportTableParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The file format to export. Possible values include `CSV`, `XLSX`, and `XLS`.
+     */
     #[Api(optional: true)]
     public ?string $format;
 
@@ -55,6 +58,9 @@ final class HubdbExportTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The file format to export. Possible values include `CSV`, `XLSX`, and `XLS`.
+     */
     public function withFormat(string $format): self
     {
         $obj = clone $this;

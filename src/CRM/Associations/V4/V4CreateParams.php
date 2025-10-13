@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new V4CreateParams); // set properties as needed
  * $client->crm.associations.v4->create(...$params->toArray());
  * ```
- * Create.
+ * Set association labels between two records.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

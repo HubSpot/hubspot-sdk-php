@@ -34,36 +34,69 @@ final class URLMapping implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The unique ID of this URL redirect.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The destination URL, where the target URL should be redirected if it matches the `routePrefix`.
+     */
     #[Api]
     public string $destination;
 
+    /**
+     * Whether the `routePrefix` should match on the entire URL, including the domain.
+     */
     #[Api('isMatchFullUrl')]
     public bool $isMatchFullURL;
 
+    /**
+     * Whether the `routePrefix` should match on the entire URL path, including the query string.
+     */
     #[Api]
     public bool $isMatchQueryString;
 
+    /**
+     * Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.
+     */
     #[Api]
     public bool $isOnlyAfterNotFound;
 
+    /**
+     * Whether the `routePrefix` should match based on pattern.
+     */
     #[Api]
     public bool $isPattern;
 
+    /**
+     * Whether the `routePrefix` should match both HTTP and HTTPS protocols.
+     */
     #[Api]
     public bool $isProtocolAgnostic;
 
+    /**
+     * Whether a trailing slash will be ignored.
+     */
     #[Api]
     public bool $isTrailingSlashOptional;
 
+    /**
+     * Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
+     */
     #[Api]
     public int $precedence;
 
+    /**
+     * The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
+     */
     #[Api]
     public int $redirectStyle;
 
+    /**
+     * The target incoming URL, path, or pattern to match for redirection.
+     */
     #[Api]
     public string $routePrefix;
 
@@ -155,6 +188,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The unique ID of this URL redirect.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -163,6 +199,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The destination URL, where the target URL should be redirected if it matches the `routePrefix`.
+     */
     public function withDestination(string $destination): self
     {
         $obj = clone $this;
@@ -171,6 +210,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the `routePrefix` should match on the entire URL, including the domain.
+     */
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
         $obj = clone $this;
@@ -179,6 +221,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the `routePrefix` should match on the entire URL path, including the query string.
+     */
     public function withIsMatchQueryString(bool $isMatchQueryString): self
     {
         $obj = clone $this;
@@ -187,6 +232,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.
+     */
     public function withIsOnlyAfterNotFound(bool $isOnlyAfterNotFound): self
     {
         $obj = clone $this;
@@ -195,6 +243,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the `routePrefix` should match based on pattern.
+     */
     public function withIsPattern(bool $isPattern): self
     {
         $obj = clone $this;
@@ -203,6 +254,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the `routePrefix` should match both HTTP and HTTPS protocols.
+     */
     public function withIsProtocolAgnostic(bool $isProtocolAgnostic): self
     {
         $obj = clone $this;
@@ -211,6 +265,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether a trailing slash will be ignored.
+     */
     public function withIsTrailingSlashOptional(
         bool $isTrailingSlashOptional
     ): self {
@@ -220,6 +277,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
+     */
     public function withPrecedence(int $precedence): self
     {
         $obj = clone $this;
@@ -228,6 +288,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
+     */
     public function withRedirectStyle(int $redirectStyle): self
     {
         $obj = clone $this;
@@ -236,6 +299,9 @@ final class URLMapping implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The target incoming URL, path, or pattern to match for redirection.
+     */
     public function withRoutePrefix(string $routePrefix): self
     {
         $obj = clone $this;

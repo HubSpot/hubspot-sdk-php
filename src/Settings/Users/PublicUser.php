@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
+ * A user.
+ *
  * @phpstan-type public_user = array{
  *   id: string,
  *   email: string,
@@ -31,9 +33,15 @@ final class PublicUser implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The user's unique ID.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The user's email.
+     */
     #[Api]
     public string $email;
 
@@ -43,9 +51,15 @@ final class PublicUser implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?string $lastName;
 
+    /**
+     * The user's primary team.
+     */
     #[Api('primaryTeamId', optional: true)]
     public ?string $primaryTeamID;
 
+    /**
+     * The user's role.
+     */
     #[Api('roleId', optional: true)]
     public ?string $roleID;
 
@@ -53,7 +67,11 @@ final class PublicUser implements BaseModel, ResponseConverter
     #[Api('roleIds', list: 'string', optional: true)]
     public ?array $roleIDs;
 
-    /** @var list<string>|null $secondaryTeamIDs */
+    /**
+     * The user's additional teams.
+     *
+     * @var list<string>|null $secondaryTeamIDs
+     */
     #[Api('secondaryTeamIds', list: 'string', optional: true)]
     public ?array $secondaryTeamIDs;
 
@@ -119,6 +137,9 @@ final class PublicUser implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The user's unique ID.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -127,6 +148,9 @@ final class PublicUser implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The user's email.
+     */
     public function withEmail(string $email): self
     {
         $obj = clone $this;
@@ -151,6 +175,9 @@ final class PublicUser implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The user's primary team.
+     */
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
@@ -159,6 +186,9 @@ final class PublicUser implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The user's role.
+     */
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
@@ -179,6 +209,8 @@ final class PublicUser implements BaseModel, ResponseConverter
     }
 
     /**
+     * The user's additional teams.
+     *
      * @param list<string> $secondaryTeamIDs
      */
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self

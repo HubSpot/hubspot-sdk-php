@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
 
+/**
+ * The language of the form.
+ */
 enum Language: string
 {
     case AF = 'af';

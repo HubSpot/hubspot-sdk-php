@@ -20,17 +20,31 @@ final class APIStaticDateAnchor implements BaseModel
     /** @use SdkModel<api_static_date_anchor> */
     use SdkModel;
 
+    /**
+     * The day of the date to anchor on.
+     */
     #[Api]
     public int $dayOfMonth;
 
-    /** @var value-of<Month> $month */
+    /**
+     * The month of the date to anchor on.
+     *
+     * @var value-of<Month> $month
+     */
     #[Api(enum: Month::class)]
     public string $month;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of event anchor this is, can be: "CONTACT_PROPERTY_ANCHOR" or "STATIC_DATE_ANCHOR".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
+    /**
+     * The year of the date to anchor on. If this is not provided then this flow will re-run each year.
+     */
     #[Api(optional: true)]
     public ?int $year;
 
@@ -78,6 +92,9 @@ final class APIStaticDateAnchor implements BaseModel
         return $obj;
     }
 
+    /**
+     * The day of the date to anchor on.
+     */
     public function withDayOfMonth(int $dayOfMonth): self
     {
         $obj = clone $this;
@@ -87,6 +104,8 @@ final class APIStaticDateAnchor implements BaseModel
     }
 
     /**
+     * The month of the date to anchor on.
+     *
      * @param Month|value-of<Month> $month
      */
     public function withMonth(Month|string $month): self
@@ -98,6 +117,8 @@ final class APIStaticDateAnchor implements BaseModel
     }
 
     /**
+     * The type of event anchor this is, can be: "CONTACT_PROPERTY_ANCHOR" or "STATIC_DATE_ANCHOR".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -108,6 +129,9 @@ final class APIStaticDateAnchor implements BaseModel
         return $obj;
     }
 
+    /**
+     * The year of the date to anchor on. If this is not provided then this flow will re-run each year.
+     */
     public function withYear(int $year): self
     {
         $obj = clone $this;

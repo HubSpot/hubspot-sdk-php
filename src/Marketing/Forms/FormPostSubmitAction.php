@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormPostSubmitAction\Type;
 
 /**
+ * What should happen after the customer submits the form.
+ *
  * @phpstan-type form_post_submit_action = array{
  *   type: value-of<Type>, value: string
  * }
@@ -19,10 +21,17 @@ final class FormPostSubmitAction implements BaseModel
     /** @use SdkModel<form_post_submit_action> */
     use SdkModel;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The action to take after submit. The default action is displaying a thank you message.
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
+    /**
+     * The thank you text or the page to redirect to.
+     */
     #[Api]
     public string $value;
 
@@ -63,6 +72,8 @@ final class FormPostSubmitAction implements BaseModel
     }
 
     /**
+     * The action to take after submit. The default action is displaying a thank you message.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -73,6 +84,9 @@ final class FormPostSubmitAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The thank you text or the page to redirect to.
+     */
     public function withValue(string $value): self
     {
         $obj = clone $this;

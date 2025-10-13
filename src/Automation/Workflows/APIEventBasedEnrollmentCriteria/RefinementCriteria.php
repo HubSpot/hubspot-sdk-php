@@ -16,6 +16,9 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * List-based criteria to further refine which contacts will enroll in this flow.
+ */
 final class RefinementCriteria implements ConverterSource
 {
     use SdkUnion;

@@ -23,22 +23,35 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
     /** @use SdkModel<hub_spot_form_definition_patch_request> */
     use SdkModel;
 
+    /**
+     * Whether this form is archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
     #[Api(optional: true)]
     public ?HubSpotFormConfiguration $configuration;
 
+    /**
+     * Options for styling the form.
+     */
     #[Api(optional: true)]
     public ?FormDisplayOptions $displayOptions;
 
-    /** @var list<FieldGroup>|null $fieldGroups */
+    /**
+     * The fields in the form, grouped in rows.
+     *
+     * @var list<FieldGroup>|null $fieldGroups
+     */
     #[Api(list: FieldGroup::class, optional: true)]
     public ?array $fieldGroups;
 
     #[Api(optional: true)]
     public LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess|null $legalConsentOptions;
 
+    /**
+     * The name of the form. Expected to be unique for a hub.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
@@ -74,6 +87,9 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether this form is archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -91,6 +107,9 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Options for styling the form.
+     */
     public function withDisplayOptions(FormDisplayOptions $displayOptions): self
     {
         $obj = clone $this;
@@ -100,6 +119,8 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
     }
 
     /**
+     * The fields in the form, grouped in rows.
+     *
      * @param list<FieldGroup> $fieldGroups
      */
     public function withFieldGroups(array $fieldGroups): self
@@ -119,6 +140,9 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the form. Expected to be unique for a hub.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;

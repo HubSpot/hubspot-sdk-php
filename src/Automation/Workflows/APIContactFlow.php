@@ -32,6 +32,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   timeWindows: list<APITimeWindow>,
  *   type: value-of<Type>,
  *   updatedAt: \DateTimeInterface,
+ *   description?: string,
  *   enrollmentCriteria?: APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
  *   enrollmentSchedule?: APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
  *   eventAnchor?: APIContactPropertyAnchor|APIStaticDateAnchor,
@@ -110,6 +111,9 @@ final class APIContactFlow implements BaseModel
 
     #[Api]
     public \DateTimeInterface $updatedAt;
+
+    #[Api(optional: true)]
+    public ?string $description;
 
     #[Api(optional: true)]
     public APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria;
@@ -222,6 +226,7 @@ final class APIContactFlow implements BaseModel
         array $timeWindows,
         \DateTimeInterface $updatedAt,
         Type|string $type = 'CONTACT_FLOW',
+        ?string $description = null,
         APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria = null,
         APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule = null,
         APIContactPropertyAnchor|APIStaticDateAnchor|null $eventAnchor = null,
@@ -251,6 +256,7 @@ final class APIContactFlow implements BaseModel
         $obj['type'] = $type;
         $obj->updatedAt = $updatedAt;
 
+        null !== $description && $obj->description = $description;
         null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
         null !== $enrollmentSchedule && $obj->enrollmentSchedule = $enrollmentSchedule;
         null !== $eventAnchor && $obj->eventAnchor = $eventAnchor;
@@ -425,6 +431,14 @@ final class APIContactFlow implements BaseModel
     {
         $obj = clone $this;
         $obj->updatedAt = $updatedAt;
+
+        return $obj;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
 
         return $obj;
     }

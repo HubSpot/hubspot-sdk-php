@@ -45,6 +45,9 @@ final class HubSpotFormDefinition implements BaseModel, ResponseConverter
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * Options for styling the form.
+     */
     #[Api]
     public FormDisplayOptions $displayOptions;
 
@@ -180,6 +183,9 @@ final class HubSpotFormDefinition implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Options for styling the form.
+     */
     public function withDisplayOptions(FormDisplayOptions $displayOptions): self
     {
         $obj = clone $this;

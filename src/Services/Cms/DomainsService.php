@@ -24,18 +24,18 @@ final class DomainsService implements DomainsContract
     /**
      * @api
      *
-     * Get current domains
+     * Returns all existing domains that have been created. Results can be limited and filtered by creation or updated date.
      *
-     * @param string $after
-     * @param bool $archived
-     * @param \DateTimeInterface $createdAfter
-     * @param \DateTimeInterface $createdAt
-     * @param \DateTimeInterface $createdBefore
-     * @param int $limit
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param \DateTimeInterface $createdAfter only return domains created after this date
+     * @param \DateTimeInterface $createdAt only return domains created at this date
+     * @param \DateTimeInterface $createdBefore only return domains created before this date
+     * @param int $limit maximum number of results per page
      * @param list<string> $sort
-     * @param \DateTimeInterface $updatedAfter
-     * @param \DateTimeInterface $updatedAt
-     * @param \DateTimeInterface $updatedBefore
+     * @param \DateTimeInterface $updatedAfter only return domains updated after this date
+     * @param \DateTimeInterface $updatedAt only return domains updated at this date
+     * @param \DateTimeInterface $updatedBefore only return domains updated before this date
      *
      * @return Page<Domain>
      *
@@ -102,7 +102,7 @@ final class DomainsService implements DomainsContract
     /**
      * @api
      *
-     * Get a single domain
+     * Returns a single domains with the id specified.
      *
      * @throws APIException
      */

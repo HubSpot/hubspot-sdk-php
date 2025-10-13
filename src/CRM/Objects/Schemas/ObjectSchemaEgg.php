@@ -9,12 +9,15 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Defines a new object type, its properties, and associations.
+ *
  * @phpstan-type object_schema_egg = array{
  *   associatedObjects: list<string>,
  *   labels: ObjectTypeDefinitionLabels,
  *   name: string,
  *   properties: list<ObjectTypePropertyCreate>,
  *   requiredProperties: list<string>,
+ *   description?: string,
  *   primaryDisplayProperty?: string,
  *   searchableProperties?: list<string>,
  *   secondaryDisplayProperties?: list<string>,
@@ -25,32 +28,64 @@ final class ObjectSchemaEgg implements BaseModel
     /** @use SdkModel<object_schema_egg> */
     use SdkModel;
 
-    /** @var list<string> $associatedObjects */
+    /**
+     * Associations defined for this object type.
+     *
+     * @var list<string> $associatedObjects
+     */
     #[Api(list: 'string')]
     public array $associatedObjects;
 
+    /**
+     * Singular and plural labels for the object. Used in CRM display.
+     */
     #[Api]
     public ObjectTypeDefinitionLabels $labels;
 
+    /**
+     * A unique name for this object. For internal use only.
+     */
     #[Api]
     public string $name;
 
-    /** @var list<ObjectTypePropertyCreate> $properties */
+    /**
+     * Properties defined for this object type.
+     *
+     * @var list<ObjectTypePropertyCreate> $properties
+     */
     #[Api(list: ObjectTypePropertyCreate::class)]
     public array $properties;
 
-    /** @var list<string> $requiredProperties */
+    /**
+     * The names of properties that should be **required** when creating an object of this type.
+     *
+     * @var list<string> $requiredProperties
+     */
     #[Api(list: 'string')]
     public array $requiredProperties;
 
     #[Api(optional: true)]
+    public ?string $description;
+
+    /**
+     * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     */
+    #[Api(optional: true)]
     public ?string $primaryDisplayProperty;
 
-    /** @var list<string>|null $searchableProperties */
+    /**
+     * Names of properties that will be indexed for this object type in by HubSpot's product search.
+     *
+     * @var list<string>|null $searchableProperties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $searchableProperties;
 
-    /** @var list<string>|null $secondaryDisplayProperties */
+    /**
+     * The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     *
+     * @var list<string>|null $secondaryDisplayProperties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $secondaryDisplayProperties;
 
@@ -101,6 +136,7 @@ final class ObjectSchemaEgg implements BaseModel
         string $name,
         array $properties,
         array $requiredProperties,
+        ?string $description = null,
         ?string $primaryDisplayProperty = null,
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
@@ -113,6 +149,7 @@ final class ObjectSchemaEgg implements BaseModel
         $obj->properties = $properties;
         $obj->requiredProperties = $requiredProperties;
 
+        null !== $description && $obj->description = $description;
         null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
         null !== $searchableProperties && $obj->searchableProperties = $searchableProperties;
         null !== $secondaryDisplayProperties && $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
@@ -121,6 +158,8 @@ final class ObjectSchemaEgg implements BaseModel
     }
 
     /**
+     * Associations defined for this object type.
+     *
      * @param list<string> $associatedObjects
      */
     public function withAssociatedObjects(array $associatedObjects): self
@@ -131,6 +170,9 @@ final class ObjectSchemaEgg implements BaseModel
         return $obj;
     }
 
+    /**
+     * Singular and plural labels for the object. Used in CRM display.
+     */
     public function withLabels(ObjectTypeDefinitionLabels $labels): self
     {
         $obj = clone $this;
@@ -139,6 +181,9 @@ final class ObjectSchemaEgg implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique name for this object. For internal use only.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -148,6 +193,8 @@ final class ObjectSchemaEgg implements BaseModel
     }
 
     /**
+     * Properties defined for this object type.
+     *
      * @param list<ObjectTypePropertyCreate> $properties
      */
     public function withProperties(array $properties): self
@@ -159,6 +206,8 @@ final class ObjectSchemaEgg implements BaseModel
     }
 
     /**
+     * The names of properties that should be **required** when creating an object of this type.
+     *
      * @param list<string> $requiredProperties
      */
     public function withRequiredProperties(array $requiredProperties): self
@@ -169,6 +218,17 @@ final class ObjectSchemaEgg implements BaseModel
         return $obj;
     }
 
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     */
     public function withPrimaryDisplayProperty(
         string $primaryDisplayProperty
     ): self {
@@ -179,6 +239,8 @@ final class ObjectSchemaEgg implements BaseModel
     }
 
     /**
+     * Names of properties that will be indexed for this object type in by HubSpot's product search.
+     *
      * @param list<string> $searchableProperties
      */
     public function withSearchableProperties(array $searchableProperties): self
@@ -190,6 +252,8 @@ final class ObjectSchemaEgg implements BaseModel
     }
 
     /**
+     * The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     *
      * @param list<string> $secondaryDisplayProperties
      */
     public function withSecondaryDisplayProperties(

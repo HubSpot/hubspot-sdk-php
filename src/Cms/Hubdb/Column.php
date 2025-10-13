@@ -20,6 +20,7 @@ use HubspotSDK\CRM\Option;
  *   createdBy?: SimpleUser,
  *   createdByUserID?: int,
  *   deleted?: bool,
+ *   description?: string,
  *   foreignColumnID?: int,
  *   foreignIDs?: list<ForeignID>,
  *   foreignIDsByID?: array<string, ForeignID>,
@@ -38,16 +39,29 @@ final class Column implements BaseModel
     /** @use SdkModel<column_alias> */
     use SdkModel;
 
+    /**
+     * Label of the column.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * Name of the column.
+     */
     #[Api]
     public string $name;
 
-    /** @var value-of<Type> $type */
+    /**
+     * Type of the column.
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
+    /**
+     * Column Id.
+     */
     #[Api(optional: true)]
     public ?string $id;
 
@@ -63,28 +77,56 @@ final class Column implements BaseModel
     #[Api(optional: true)]
     public ?bool $deleted;
 
+    #[Api(optional: true)]
+    public ?string $description;
+
+    /**
+     * Foreign Column id.
+     */
     #[Api('foreignColumnId', optional: true)]
     public ?int $foreignColumnID;
 
-    /** @var list<ForeignID>|null $foreignIDs */
+    /**
+     * Foreign Ids.
+     *
+     * @var list<ForeignID>|null $foreignIDs
+     */
     #[Api('foreignIds', list: ForeignID::class, optional: true)]
     public ?array $foreignIDs;
 
-    /** @var array<string, ForeignID>|null $foreignIDsByID */
+    /**
+     * Foreign ids.
+     *
+     * @var array<string, ForeignID>|null $foreignIDsByID
+     */
     #[Api('foreignIdsById', map: ForeignID::class, optional: true)]
     public ?array $foreignIDsByID;
 
-    /** @var array<string, ForeignID>|null $foreignIDsByName */
+    /**
+     * Foreign ids by name.
+     *
+     * @var array<string, ForeignID>|null $foreignIDsByName
+     */
     #[Api('foreignIdsByName', map: ForeignID::class, optional: true)]
     public ?array $foreignIDsByName;
 
+    /**
+     * Foreign table id referenced.
+     */
     #[Api('foreignTableId', optional: true)]
     public ?int $foreignTableID;
 
+    /**
+     * Number of options available.
+     */
     #[Api(optional: true)]
     public ?int $optionCount;
 
-    /** @var list<Option>|null $options */
+    /**
+     * Options to choose for select and multi-select columns.
+     *
+     * @var list<Option>|null $options
+     */
     #[Api(list: Option::class, optional: true)]
     public ?array $options;
 
@@ -97,6 +139,9 @@ final class Column implements BaseModel
     #[Api('updatedByUserId', optional: true)]
     public ?int $updatedByUserID;
 
+    /**
+     * Column width for HubDB UI.
+     */
     #[Api(optional: true)]
     public ?int $width;
 
@@ -139,6 +184,7 @@ final class Column implements BaseModel
         ?SimpleUser $createdBy = null,
         ?int $createdByUserID = null,
         ?bool $deleted = null,
+        ?string $description = null,
         ?int $foreignColumnID = null,
         ?array $foreignIDs = null,
         ?array $foreignIDsByID = null,
@@ -162,6 +208,7 @@ final class Column implements BaseModel
         null !== $createdBy && $obj->createdBy = $createdBy;
         null !== $createdByUserID && $obj->createdByUserID = $createdByUserID;
         null !== $deleted && $obj->deleted = $deleted;
+        null !== $description && $obj->description = $description;
         null !== $foreignColumnID && $obj->foreignColumnID = $foreignColumnID;
         null !== $foreignIDs && $obj->foreignIDs = $foreignIDs;
         null !== $foreignIDsByID && $obj->foreignIDsByID = $foreignIDsByID;
@@ -177,6 +224,9 @@ final class Column implements BaseModel
         return $obj;
     }
 
+    /**
+     * Label of the column.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -185,6 +235,9 @@ final class Column implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the column.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -194,6 +247,8 @@ final class Column implements BaseModel
     }
 
     /**
+     * Type of the column.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -204,6 +259,9 @@ final class Column implements BaseModel
         return $obj;
     }
 
+    /**
+     * Column Id.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -244,6 +302,17 @@ final class Column implements BaseModel
         return $obj;
     }
 
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * Foreign Column id.
+     */
     public function withForeignColumnID(int $foreignColumnID): self
     {
         $obj = clone $this;
@@ -253,6 +322,8 @@ final class Column implements BaseModel
     }
 
     /**
+     * Foreign Ids.
+     *
      * @param list<ForeignID> $foreignIDs
      */
     public function withForeignIDs(array $foreignIDs): self
@@ -264,6 +335,8 @@ final class Column implements BaseModel
     }
 
     /**
+     * Foreign ids.
+     *
      * @param array<string, ForeignID> $foreignIDsByID
      */
     public function withForeignIDsByID(array $foreignIDsByID): self
@@ -275,6 +348,8 @@ final class Column implements BaseModel
     }
 
     /**
+     * Foreign ids by name.
+     *
      * @param array<string, ForeignID> $foreignIDsByName
      */
     public function withForeignIDsByName(array $foreignIDsByName): self
@@ -285,6 +360,9 @@ final class Column implements BaseModel
         return $obj;
     }
 
+    /**
+     * Foreign table id referenced.
+     */
     public function withForeignTableID(int $foreignTableID): self
     {
         $obj = clone $this;
@@ -293,6 +371,9 @@ final class Column implements BaseModel
         return $obj;
     }
 
+    /**
+     * Number of options available.
+     */
     public function withOptionCount(int $optionCount): self
     {
         $obj = clone $this;
@@ -302,6 +383,8 @@ final class Column implements BaseModel
     }
 
     /**
+     * Options to choose for select and multi-select columns.
+     *
      * @param list<Option> $options
      */
     public function withOptions(array $options): self
@@ -336,6 +419,9 @@ final class Column implements BaseModel
         return $obj;
     }
 
+    /**
+     * Column width for HubDB UI.
+     */
     public function withWidth(int $width): self
     {
         $obj = clone $this;

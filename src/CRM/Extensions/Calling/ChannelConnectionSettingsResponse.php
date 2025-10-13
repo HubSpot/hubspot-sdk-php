@@ -25,15 +25,27 @@ final class ChannelConnectionSettingsResponse implements BaseModel, ResponseConv
 
     use SdkResponse;
 
+    /**
+     * The timestamp this setting was created.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * If true, this app will be considered to support channel connection.
+     */
     #[Api]
     public bool $isReady;
 
+    /**
+     * The timestamp this setting was last updated.
+     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * The URL to fetch phone numbers available for channel connection.
+     */
     #[Api]
     public string $url;
 
@@ -83,6 +95,9 @@ final class ChannelConnectionSettingsResponse implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The timestamp this setting was created.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -91,6 +106,9 @@ final class ChannelConnectionSettingsResponse implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * If true, this app will be considered to support channel connection.
+     */
     public function withIsReady(bool $isReady): self
     {
         $obj = clone $this;
@@ -99,6 +117,9 @@ final class ChannelConnectionSettingsResponse implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The timestamp this setting was last updated.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -107,6 +128,9 @@ final class ChannelConnectionSettingsResponse implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The URL to fetch phone numbers available for channel connection.
+     */
     public function withURL(string $url): self
     {
         $obj = clone $this;

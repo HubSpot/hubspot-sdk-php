@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new CompanyMergeParams); // set properties as needed
  * $client->crm.objects.companies->merge(...$params->toArray());
  * ```
- * Merge two companies.
+ * Merge two company records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,9 +35,15 @@ final class CompanyMergeParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The ID of the company to merge into the primary.
+     */
     #[Api('objectIdToMerge')]
     public string $objectIDToMerge;
 
+    /**
+     * The ID of the primary company, which the other will merge into.
+     */
     #[Api('primaryObjectId')]
     public string $primaryObjectID;
 
@@ -77,6 +83,9 @@ final class CompanyMergeParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the company to merge into the primary.
+     */
     public function withObjectIDToMerge(string $objectIDToMerge): self
     {
         $obj = clone $this;
@@ -85,6 +94,9 @@ final class CompanyMergeParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the primary company, which the other will merge into.
+     */
     public function withPrimaryObjectID(string $primaryObjectID): self
     {
         $obj = clone $this;

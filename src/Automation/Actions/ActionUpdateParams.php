@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new ActionUpdateParams); // set properties as needed
  * $client->automation.actions->update(...$params->toArray());
  * ```
- * Update an existing action definition.
+ * Update an existing action definition by ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

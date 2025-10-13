@@ -14,6 +14,8 @@ use HubspotSDK\Marketing\Emails\PublicEmail\State;
 use HubspotSDK\Marketing\Emails\PublicEmail\Type;
 
 /**
+ * A marketing email.
+ *
  * @phpstan-type public_email = array{
  *   id: string,
  *   content: PublicEmailContent,
@@ -65,34 +67,65 @@ final class PublicEmail implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The email ID.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Data structure representing the content of the email.
+     */
     #[Api]
     public PublicEmailContent $content;
 
+    /**
+     * Data structure representing the from fields on the email.
+     */
     #[Api]
     public PublicEmailFromDetails $from;
 
+    /**
+     * The name of the email, as displayed on the email dashboard.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * Determines whether the email will be sent immediately on publish.
+     */
     #[Api]
     public bool $sendOnPublish;
 
-    /** @var value-of<State> $state */
+    /**
+     * The email state.
+     *
+     * @var value-of<State> $state
+     */
     #[Api(enum: State::class)]
     public string $state;
 
+    /**
+     * The email subcategory.
+     */
     #[Api]
     public string $subcategory;
 
+    /**
+     * The subject of the email.
+     */
     #[Api]
     public string $subject;
 
+    /**
+     * Data structure representing the to fields of the email.
+     */
     #[Api]
     public PublicEmailToDetails $to;
 
+    /**
+     * The active domain of the email.
+     */
     #[Api(optional: true)]
     public ?string $activeDomain;
 
@@ -100,45 +133,75 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api('allEmailCampaignIds', list: 'string', optional: true)]
     public ?array $allEmailCampaignIDs;
 
+    /**
+     * Determines if the email is archived or not.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
     #[Api('businessUnitId', optional: true)]
     public ?string $businessUnitID;
 
+    /**
+     * The campaign GUID on the email.
+     */
     #[Api(optional: true)]
     public ?string $campaign;
 
+    /**
+     * The name of the campaign.
+     */
     #[Api(optional: true)]
     public ?string $campaignName;
 
     #[Api(optional: true)]
     public ?string $campaignUtm;
 
+    /**
+     * The ID of the email this email was cloned from.
+     */
     #[Api(optional: true)]
     public ?string $clonedFrom;
 
+    /**
+     * The date and time of the email's creation, in ISO8601 representation.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * The id of the user who created the email.
+     */
     #[Api('createdById', optional: true)]
     public ?string $createdByID;
 
+    /**
+     * The date and time the email was deleted at, in ISO8601 representation.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $deletedAt;
 
     #[Api('emailCampaignGroupId', optional: true)]
     public ?string $emailCampaignGroupID;
 
+    /**
+     * The ID of the feedback survey linked to the email.
+     */
     #[Api('feedbackSurveyId', optional: true)]
     public ?string $feedbackSurveyID;
 
     #[Api('folderId', optional: true)]
     public ?int $folderID;
 
+    /**
+     * Returns the published status of the email. This is read only.
+     */
     #[Api(optional: true)]
     public ?bool $isPublished;
 
+    /**
+     * Returns whether the email is a transactional email or not. This is read only.
+     */
     #[Api(optional: true)]
     public ?bool $isTransactional;
 
@@ -149,47 +212,79 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api(enum: Language::class, optional: true)]
     public ?string $language;
 
+    /**
+     * The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $publishDate;
 
+    /**
+     * The date and time the email was published at, in ISO8601 representation.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $publishedAt;
 
     #[Api(optional: true)]
     public ?string $publishedByEmail;
 
+    /**
+     * The ID of the user who published the email.
+     */
     #[Api('publishedById', optional: true)]
     public ?string $publishedByID;
 
     #[Api(optional: true)]
     public ?string $publishedByName;
 
+    /**
+     * RSS related data if it is a blog or rss email.
+     */
     #[Api(optional: true)]
     public ?PublicRssEmailDetails $rssData;
 
     #[Api(optional: true)]
     public ?EmailStatisticsData $stats;
 
+    /**
+     * Data structure representing the subscription fields of the email.
+     */
     #[Api(optional: true)]
     public ?PublicEmailSubscriptionDetails $subscriptionDetails;
 
+    /**
+     * AB testing related data. This property is only returned for AB type emails.
+     */
     #[Api(optional: true)]
     public ?PublicEmailTestingDetails $testing;
 
-    /** @var value-of<Type>|null $type */
+    /**
+     * The email type, this is derived from other properties on the email such as subcategory.
+     *
+     * @var value-of<Type>|null $type
+     */
     #[Api(enum: Type::class, optional: true)]
     public ?string $type;
 
+    /**
+     * The date and time of the last update to the email, in ISO8601 representation.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
+    /**
+     * The ID of the user who last updated the email.
+     */
     #[Api('updatedById', optional: true)]
     public ?string $updatedByID;
 
     #[Api(optional: true)]
     public ?PublicWebversionDetails $webversion;
 
-    /** @var list<string>|null $workflowNames */
+    /**
+     * Names of workflows in which the email is used within a "send email" action.
+     *
+     * @var list<string>|null $workflowNames
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $workflowNames;
 
@@ -333,6 +428,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The email ID.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -341,6 +439,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Data structure representing the content of the email.
+     */
     public function withContent(PublicEmailContent $content): self
     {
         $obj = clone $this;
@@ -349,6 +450,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Data structure representing the from fields on the email.
+     */
     public function withFrom(PublicEmailFromDetails $from): self
     {
         $obj = clone $this;
@@ -357,6 +461,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The name of the email, as displayed on the email dashboard.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -365,6 +472,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Determines whether the email will be sent immediately on publish.
+     */
     public function withSendOnPublish(bool $sendOnPublish): self
     {
         $obj = clone $this;
@@ -374,6 +484,8 @@ final class PublicEmail implements BaseModel, ResponseConverter
     }
 
     /**
+     * The email state.
+     *
      * @param State|value-of<State> $state
      */
     public function withState(State|string $state): self
@@ -384,6 +496,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The email subcategory.
+     */
     public function withSubcategory(string $subcategory): self
     {
         $obj = clone $this;
@@ -392,6 +507,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The subject of the email.
+     */
     public function withSubject(string $subject): self
     {
         $obj = clone $this;
@@ -400,6 +518,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Data structure representing the to fields of the email.
+     */
     public function withTo(PublicEmailToDetails $to): self
     {
         $obj = clone $this;
@@ -408,6 +529,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The active domain of the email.
+     */
     public function withActiveDomain(string $activeDomain): self
     {
         $obj = clone $this;
@@ -427,6 +551,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Determines if the email is archived or not.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -443,6 +570,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The campaign GUID on the email.
+     */
     public function withCampaign(string $campaign): self
     {
         $obj = clone $this;
@@ -451,6 +581,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The name of the campaign.
+     */
     public function withCampaignName(string $campaignName): self
     {
         $obj = clone $this;
@@ -467,6 +600,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The ID of the email this email was cloned from.
+     */
     public function withClonedFrom(string $clonedFrom): self
     {
         $obj = clone $this;
@@ -475,6 +611,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The date and time of the email's creation, in ISO8601 representation.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -483,6 +622,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The id of the user who created the email.
+     */
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
@@ -491,6 +633,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The date and time the email was deleted at, in ISO8601 representation.
+     */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
         $obj = clone $this;
@@ -507,6 +652,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The ID of the feedback survey linked to the email.
+     */
     public function withFeedbackSurveyID(string $feedbackSurveyID): self
     {
         $obj = clone $this;
@@ -523,6 +671,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Returns the published status of the email. This is read only.
+     */
     public function withIsPublished(bool $isPublished): self
     {
         $obj = clone $this;
@@ -531,6 +682,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Returns whether the email is a transactional email or not. This is read only.
+     */
     public function withIsTransactional(bool $isTransactional): self
     {
         $obj = clone $this;
@@ -558,6 +712,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
+     */
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
         $obj = clone $this;
@@ -566,6 +723,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The date and time the email was published at, in ISO8601 representation.
+     */
     public function withPublishedAt(\DateTimeInterface $publishedAt): self
     {
         $obj = clone $this;
@@ -582,6 +742,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The ID of the user who published the email.
+     */
     public function withPublishedByID(string $publishedByID): self
     {
         $obj = clone $this;
@@ -598,6 +761,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * RSS related data if it is a blog or rss email.
+     */
     public function withRssData(PublicRssEmailDetails $rssData): self
     {
         $obj = clone $this;
@@ -614,6 +780,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Data structure representing the subscription fields of the email.
+     */
     public function withSubscriptionDetails(
         PublicEmailSubscriptionDetails $subscriptionDetails
     ): self {
@@ -623,6 +792,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * AB testing related data. This property is only returned for AB type emails.
+     */
     public function withTesting(PublicEmailTestingDetails $testing): self
     {
         $obj = clone $this;
@@ -632,6 +804,8 @@ final class PublicEmail implements BaseModel, ResponseConverter
     }
 
     /**
+     * The email type, this is derived from other properties on the email such as subcategory.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -642,6 +816,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The date and time of the last update to the email, in ISO8601 representation.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -650,6 +827,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The ID of the user who last updated the email.
+     */
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
@@ -667,6 +847,8 @@ final class PublicEmail implements BaseModel, ResponseConverter
     }
 
     /**
+     * Names of workflows in which the email is used within a "send email" action.
+     *
      * @param list<string> $workflowNames
      */
     public function withWorkflowNames(array $workflowNames): self

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new CallingRegisterURLFormatParams); // set properties as needed
  * $client->crm.extensions.calling->registerURLFormat(...$params->toArray());
  * ```
- * Enable the app for call recording.
+ * Register an external URL that HubSpot will use to retrieve [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

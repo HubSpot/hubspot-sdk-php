@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbPurgeDraftTableRowParams); // set properties as needed
  * $client->cms.hubdb->purgeDraftTableRow(...$params->toArray());
  * ```
- * Permanently deletes a row.
+ * Permanently deletes a row from a table's draft version.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

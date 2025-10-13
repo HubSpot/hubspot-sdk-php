@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TagSetLangPrimaryParams); // set properties as needed
  * $client->cms.blogs.tags->setLangPrimary(...$params->toArray());
  * ```
- * Set a new primary language.
+ * Set a Blog Tag as the primary language of a multi-language group.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class TagSetLangPrimaryParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of object to set as primary in multi-language group.
+     */
     #[Api]
     public string $id;
 
@@ -69,6 +72,9 @@ final class TagSetLangPrimaryParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of object to set as primary in multi-language group.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new UserCreateParams); // set properties as needed
  * $client->settings.users->create(...$params->toArray());
  * ```
- * Adds a user.
+ * New users will only have minimal permissions, which is contacts-base. A welcome email will prompt them to set a password and log in to HubSpot.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -41,6 +41,9 @@ final class UserCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The created user's email.
+     */
     #[Api]
     public string $email;
 
@@ -50,16 +53,29 @@ final class UserCreateParams implements BaseModel
     #[Api(optional: true)]
     public ?string $lastName;
 
+    /**
+     * The user's primary team.
+     */
     #[Api('primaryTeamId', optional: true)]
     public ?string $primaryTeamID;
 
+    /**
+     * The user's role.
+     */
     #[Api('roleId', optional: true)]
     public ?string $roleID;
 
-    /** @var list<string>|null $secondaryTeamIDs */
+    /**
+     * The user's additional teams.
+     *
+     * @var list<string>|null $secondaryTeamIDs
+     */
     #[Api('secondaryTeamIds', list: 'string', optional: true)]
     public ?array $secondaryTeamIDs;
 
+    /**
+     * Whether to send a welcome email.
+     */
     #[Api(optional: true)]
     public ?bool $sendWelcomeEmail;
 
@@ -112,6 +128,9 @@ final class UserCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The created user's email.
+     */
     public function withEmail(string $email): self
     {
         $obj = clone $this;
@@ -136,6 +155,9 @@ final class UserCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's primary team.
+     */
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
@@ -144,6 +166,9 @@ final class UserCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's role.
+     */
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
@@ -153,6 +178,8 @@ final class UserCreateParams implements BaseModel
     }
 
     /**
+     * The user's additional teams.
+     *
      * @param list<string> $secondaryTeamIDs
      */
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
@@ -163,6 +190,9 @@ final class UserCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to send a welcome email.
+     */
     public function withSendWelcomeEmail(bool $sendWelcomeEmail): self
     {
         $obj = clone $this;

@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Webhooks\SubscriptionCreateRequest\EventType;
 
 /**
+ * New webhook settings for an app.
+ *
  * @phpstan-type subscription_create_request = array{
  *   eventType: value-of<EventType>,
  *   active?: bool,
@@ -22,16 +24,26 @@ final class SubscriptionCreateRequest implements BaseModel
     /** @use SdkModel<subscription_create_request> */
     use SdkModel;
 
-    /** @var value-of<EventType> $eventType */
+    /**
+     * Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     *
+     * @var value-of<EventType> $eventType
+     */
     #[Api(enum: EventType::class)]
     public string $eventType;
 
+    /**
+     * Determines if the subscription is active or paused. Defaults to false.
+     */
     #[Api(optional: true)]
     public ?bool $active;
 
     #[Api('objectTypeId', optional: true)]
     public ?string $objectTypeID;
 
+    /**
+     * The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
+     */
     #[Api(optional: true)]
     public ?string $propertyName;
 
@@ -79,6 +91,8 @@ final class SubscriptionCreateRequest implements BaseModel
     }
 
     /**
+     * Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     *
      * @param EventType|value-of<EventType> $eventType
      */
     public function withEventType(EventType|string $eventType): self
@@ -89,6 +103,9 @@ final class SubscriptionCreateRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Determines if the subscription is active or paused. Defaults to false.
+     */
     public function withActive(bool $active): self
     {
         $obj = clone $this;
@@ -105,6 +122,9 @@ final class SubscriptionCreateRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
+     */
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;

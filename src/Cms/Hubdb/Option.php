@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * A HubSpot property option.
+ *
  * @phpstan-type option_alias = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
@@ -28,36 +30,60 @@ final class Option implements BaseModel
     /** @use SdkModel<option_alias> */
     use SdkModel;
 
+    /**
+     * The unique ID of the option.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The timestamp when the option was created, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * An internal name assigned to the option, distinct from the label.
+     */
     #[Api]
     public string $name;
 
     #[Api]
     public int $order;
 
+    /**
+     * Indicates the category or data type of the option (e.g., string, number).
+     */
     #[Api]
     public string $type;
 
+    /**
+     * The timestamp when the option was last updated, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
     #[Api(optional: true)]
     public ?SimpleUser $createdBy;
 
+    /**
+     * The ID of the user who created the option.
+     */
     #[Api('createdByUserId', optional: true)]
     public ?int $createdByUserID;
 
+    /**
+     * A user-friendly label that identifies the option.
+     */
     #[Api(optional: true)]
     public ?string $label;
 
     #[Api(optional: true)]
     public ?SimpleUser $updatedBy;
 
+    /**
+     * The ID of the user who last updated the option.
+     */
     #[Api('updatedByUserId', optional: true)]
     public ?int $updatedByUserID;
 
@@ -124,6 +150,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID of the option.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -132,6 +161,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the option was created, in ISO 8601 format.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -140,6 +172,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * An internal name assigned to the option, distinct from the label.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -156,6 +191,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates the category or data type of the option (e.g., string, number).
+     */
     public function withType(string $type): self
     {
         $obj = clone $this;
@@ -164,6 +202,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the option was last updated, in ISO 8601 format.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -180,6 +221,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the user who created the option.
+     */
     public function withCreatedByUserID(int $createdByUserID): self
     {
         $obj = clone $this;
@@ -188,6 +232,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * A user-friendly label that identifies the option.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -204,6 +251,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the user who last updated the option.
+     */
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;

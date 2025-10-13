@@ -24,6 +24,9 @@ final class CollectionResponseAssociatedID implements BaseModel
     #[Api(list: AssociatedID::class)]
     public array $results;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -75,6 +78,9 @@ final class CollectionResponseAssociatedID implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

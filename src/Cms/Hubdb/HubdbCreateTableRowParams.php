@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbCreateTableRowParams); // set properties as needed
  * $client->cms.hubdb->createTableRow(...$params->toArray());
  * ```
- * Add a new row to a table.
+ * Add a new row to a HubDB table. New rows will be added to the draft version of the table. Use the `/publish` endpoint to push these changes to published version.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -39,19 +39,32 @@ final class HubdbCreateTableRowParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var array<string, mixed> $values */
+    /**
+     * List of key value pairs with the column name and column value.
+     *
+     * @var array<string, mixed> $values
+     */
     #[Api(map: 'mixed')]
     public array $values;
 
+    /**
+     * Specifies the value for the column child table id.
+     */
     #[Api('childTableId', optional: true)]
     public ?int $childTableID;
 
     #[Api(optional: true)]
     public ?int $displayIndex;
 
+    /**
+     * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages.
+     */
     #[Api(optional: true)]
     public ?string $path;
 
@@ -101,6 +114,8 @@ final class HubdbCreateTableRowParams implements BaseModel
     }
 
     /**
+     * List of key value pairs with the column name and column value.
+     *
      * @param array<string, mixed> $values
      */
     public function withValues(array $values): self
@@ -111,6 +126,9 @@ final class HubdbCreateTableRowParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the value for the column child table id.
+     */
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
@@ -127,6 +145,9 @@ final class HubdbCreateTableRowParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -135,6 +156,9 @@ final class HubdbCreateTableRowParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages.
+     */
     public function withPath(string $path): self
     {
         $obj = clone $this;

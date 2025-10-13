@@ -33,9 +33,15 @@ final class UserListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Results will display maximum 100 users per page. Additional results will be on the next page.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * The number of users to retrieve.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
@@ -59,6 +65,9 @@ final class UserListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Results will display maximum 100 users per page. Additional results will be on the next page.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -67,6 +76,9 @@ final class UserListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The number of users to retrieve.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;

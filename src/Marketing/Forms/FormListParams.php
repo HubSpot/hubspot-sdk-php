@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Forms\FormListParams\FormType;
  * $params = (new FormListParams); // set properties as needed
  * $client->marketing.forms->list(...$params->toArray());
  * ```
- * Get a list of forms.
+ * Returns a list of forms based on the search filters. By default, it returns the first 20 `hubspot` forms.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -39,16 +39,29 @@ final class FormListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
-    /** @var list<value-of<FormType>>|null $formTypes */
+    /**
+     * The form types to be included in the results.
+     *
+     * @var list<value-of<FormType>>|null $formTypes
+     */
     #[Api(list: FormType::class, optional: true)]
     public ?array $formTypes;
 
+    /**
+     * The maximum number of results to display per page.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
@@ -80,6 +93,9 @@ final class FormListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -88,6 +104,9 @@ final class FormListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -97,6 +116,8 @@ final class FormListParams implements BaseModel
     }
 
     /**
+     * The form types to be included in the results.
+     *
      * @param list<FormType|value-of<FormType>> $formTypes
      */
     public function withFormTypes(array $formTypes): self
@@ -107,6 +128,9 @@ final class FormListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of results to display per page.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;

@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * A team that can be assigned to a user.
+ *
  * @phpstan-type public_team = array{
  *   id: string,
  *   name: string,
@@ -21,17 +23,31 @@ final class PublicTeam implements BaseModel
     /** @use SdkModel<public_team> */
     use SdkModel;
 
+    /**
+     * The team's unique ID.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The team's name.
+     */
     #[Api]
     public string $name;
 
-    /** @var list<string> $secondaryUserIDs */
+    /**
+     * Secondary or additional members of this team.
+     *
+     * @var list<string> $secondaryUserIDs
+     */
     #[Api('secondaryUserIds', list: 'string')]
     public array $secondaryUserIDs;
 
-    /** @var list<string> $userIDs */
+    /**
+     * Primary members of this team.
+     *
+     * @var list<string> $userIDs
+     */
     #[Api('userIds', list: 'string')]
     public array $userIDs;
 
@@ -82,6 +98,9 @@ final class PublicTeam implements BaseModel
         return $obj;
     }
 
+    /**
+     * The team's unique ID.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -90,6 +109,9 @@ final class PublicTeam implements BaseModel
         return $obj;
     }
 
+    /**
+     * The team's name.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -99,6 +121,8 @@ final class PublicTeam implements BaseModel
     }
 
     /**
+     * Secondary or additional members of this team.
+     *
      * @param list<string> $secondaryUserIDs
      */
     public function withSecondaryUserIDs(array $secondaryUserIDs): self
@@ -110,6 +134,8 @@ final class PublicTeam implements BaseModel
     }
 
     /**
+     * Primary members of this team.
+     *
      * @param list<string> $userIDs
      */
     public function withUserIDs(array $userIDs): self

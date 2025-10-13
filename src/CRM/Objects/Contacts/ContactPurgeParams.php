@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new ContactPurgeParams); // set properties as needed
  * $client->crm.objects.contacts->purge(...$params->toArray());
  * ```
- * Permanently delete a contact (GDPR-compliant).
+ * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,9 +35,15 @@ final class ContactPurgeParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The ID of the company to delete.
+     */
     #[Api('objectId')]
     public string $objectID;
 
+    /**
+     * The name of a unique property, when identifying records by property instead of ID.
+     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -78,6 +84,9 @@ final class ContactPurgeParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the company to delete.
+     */
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
@@ -86,6 +95,9 @@ final class ContactPurgeParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of a unique property, when identifying records by property instead of ID.
+     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

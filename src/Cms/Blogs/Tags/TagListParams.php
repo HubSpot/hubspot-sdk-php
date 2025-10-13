@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TagListParams); // set properties as needed
  * $client->cms.blogs.tags->list(...$params->toArray());
  * ```
- * Get all Blog Tags.
+ * Get the list of blog tags. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -45,37 +45,68 @@ final class TagListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * Specifies whether to return deleted Blog Tags. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * Only return Blog Tags created after the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAfter;
 
+    /**
+     * Only return Blog Tags created at exactly the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * Only return Blog Tags created before the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdBefore;
 
+    /**
+     * The maximum number of results to return. Default is 100.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
     #[Api(optional: true)]
     public ?string $property;
 
-    /** @var list<string>|null $sort */
+    /**
+     * Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     *
+     * @var list<string>|null $sort
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $sort;
 
+    /**
+     * Only return Blog Tags last updated after the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAfter;
 
+    /**
+     * Only return Blog Tags last updated at exactly the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
+    /**
+     * Only return Blog Tags last updated before the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedBefore;
 
@@ -121,6 +152,9 @@ final class TagListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -129,6 +163,9 @@ final class TagListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to return deleted Blog Tags. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -137,6 +174,9 @@ final class TagListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return Blog Tags created after the specified time.
+     */
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $obj = clone $this;
@@ -145,6 +185,9 @@ final class TagListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return Blog Tags created at exactly the specified time.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -153,6 +196,9 @@ final class TagListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return Blog Tags created before the specified time.
+     */
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
         $obj = clone $this;
@@ -161,6 +207,9 @@ final class TagListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of results to return. Default is 100.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -178,6 +227,8 @@ final class TagListParams implements BaseModel
     }
 
     /**
+     * Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self
@@ -188,6 +239,9 @@ final class TagListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return Blog Tags last updated after the specified time.
+     */
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
         $obj = clone $this;
@@ -196,6 +250,9 @@ final class TagListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return Blog Tags last updated at exactly the specified time.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -204,6 +261,9 @@ final class TagListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return Blog Tags last updated before the specified time.
+     */
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
         $obj = clone $this;

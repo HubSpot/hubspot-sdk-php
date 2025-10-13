@@ -22,7 +22,11 @@ final class SubscriptionDefinitionsResponse implements BaseModel, ResponseConver
 
     use SdkResponse;
 
-    /** @var list<SubscriptionDefinition> $subscriptionDefinitions */
+    /**
+     * A list of all subscription definitions.
+     *
+     * @var list<SubscriptionDefinition> $subscriptionDefinitions
+     */
     #[Api(list: SubscriptionDefinition::class)]
     public array $subscriptionDefinitions;
 
@@ -62,6 +66,8 @@ final class SubscriptionDefinitionsResponse implements BaseModel, ResponseConver
     }
 
     /**
+     * A list of all subscription definitions.
+     *
      * @param list<SubscriptionDefinition> $subscriptionDefinitions
      */
     public function withSubscriptionDefinitions(

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbUnpublishTableParams); // set properties as needed
  * $client->cms.hubdb->unpublishTable(...$params->toArray());
  * ```
- * Unpublish a table.
+ * Unpublishes the table, meaning any website pages using data from the table will not render any data.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class HubdbUnpublishTableParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Set this to `true` to populate foreign ID values in the response.
+     */
     #[Api(optional: true)]
     public ?bool $includeForeignIDs;
 
@@ -55,6 +58,9 @@ final class HubdbUnpublishTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Set this to `true` to populate foreign ID values in the response.
+     */
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;

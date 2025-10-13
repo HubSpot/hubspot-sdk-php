@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new URLRedirectListParams); // set properties as needed
  * $client->cms.urlRedirects->list(...$params->toArray());
  * ```
- * Get current redirects.
+ * Returns all existing URL redirects. Results can be limited and filtered by creation or updated date.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -44,21 +44,39 @@ final class URLRedirectListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * Only return redirects created after this date.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAfter;
 
+    /**
+     * Only return redirects created on exactly this date.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * Only return redirects created before this date.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdBefore;
 
+    /**
+     * Maximum number of result per page.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
@@ -66,12 +84,21 @@ final class URLRedirectListParams implements BaseModel
     #[Api(list: 'string', optional: true)]
     public ?array $sort;
 
+    /**
+     * Only return redirects last updated after this date.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAfter;
 
+    /**
+     * Only return redirects last updated on exactly this date.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
+    /**
+     * Only return redirects last updated before this date.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedBefore;
 
@@ -115,6 +142,9 @@ final class URLRedirectListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -123,6 +153,9 @@ final class URLRedirectListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -131,6 +164,9 @@ final class URLRedirectListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return redirects created after this date.
+     */
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $obj = clone $this;
@@ -139,6 +175,9 @@ final class URLRedirectListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return redirects created on exactly this date.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -147,6 +186,9 @@ final class URLRedirectListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return redirects created before this date.
+     */
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
         $obj = clone $this;
@@ -155,6 +197,9 @@ final class URLRedirectListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Maximum number of result per page.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -174,6 +219,9 @@ final class URLRedirectListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return redirects last updated after this date.
+     */
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
         $obj = clone $this;
@@ -182,6 +230,9 @@ final class URLRedirectListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return redirects last updated on exactly this date.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -190,6 +241,9 @@ final class URLRedirectListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return redirects last updated before this date.
+     */
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
         $obj = clone $this;

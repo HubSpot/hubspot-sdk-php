@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\DependentFieldFilter\Operator;
 
 /**
+ * A condition based on customer input.
+ *
  * @phpstan-type dependent_field_filter = array{
  *   operator: value-of<Operator>,
  *   rangeEnd: string,

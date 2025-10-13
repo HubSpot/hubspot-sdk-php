@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * A role that can be assigned to a user.
+ *
  * @phpstan-type public_permission_set = array{
  *   id: string, name: string, requiresBillingWrite: bool
  * }
@@ -18,12 +20,21 @@ final class PublicPermissionSet implements BaseModel
     /** @use SdkModel<public_permission_set> */
     use SdkModel;
 
+    /**
+     * The role's unique ID.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The role's name.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users.
+     */
     #[Api]
     public bool $requiresBillingWrite;
 
@@ -68,6 +79,9 @@ final class PublicPermissionSet implements BaseModel
         return $obj;
     }
 
+    /**
+     * The role's unique ID.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -76,6 +90,9 @@ final class PublicPermissionSet implements BaseModel
         return $obj;
     }
 
+    /**
+     * The role's name.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -84,6 +101,9 @@ final class PublicPermissionSet implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users.
+     */
     public function withRequiresBillingWrite(bool $requiresBillingWrite): self
     {
         $obj = clone $this;

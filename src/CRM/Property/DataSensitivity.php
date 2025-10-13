@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\CRM\Property;
 
+/**
+ * Indicates the sensitivity level of the property, such as "non_sensitive", "sensitive", or "highly_sensitive".
+ */
 enum DataSensitivity: string
 {
     case NON_SENSITIVE = 'non_sensitive';

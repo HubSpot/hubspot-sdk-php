@@ -17,13 +17,13 @@ interface UsersContract
     /**
      * @api
      *
-     * @param string $email
+     * @param string $email The created user's email
      * @param string $firstName
      * @param string $lastName
-     * @param string $primaryTeamID
-     * @param string $roleID
-     * @param list<string> $secondaryTeamIDs
-     * @param bool $sendWelcomeEmail
+     * @param string $primaryTeamID The user's primary team
+     * @param string $roleID The user's role
+     * @param list<string> $secondaryTeamIDs The user's additional teams
+     * @param bool $sendWelcomeEmail Whether to send a welcome email
      *
      * @throws APIException
      */
@@ -53,8 +53,8 @@ interface UsersContract
     /**
      * @api
      *
-     * @param string $after
-     * @param int $limit
+     * @param string $after Results will display maximum 100 users per page. Additional results will be on the next page.
+     * @param int $limit The number of users to retrieve
      *
      * @return Page<PublicUser>
      *
@@ -83,7 +83,7 @@ interface UsersContract
     /**
      * @api
      *
-     * @param IDProperty|value-of<IDProperty> $idProperty
+     * @param IDProperty|value-of<IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
      *
      * @throws APIException
      */
@@ -109,7 +109,7 @@ interface UsersContract
     /**
      * @api
      *
-     * @param \HubspotSDK\Settings\Users\UserReadParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserReadParams\IDProperty> $idProperty
+     * @param \HubspotSDK\Settings\Users\UserReadParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserReadParams\IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
      *
      * @throws APIException
      */
@@ -135,12 +135,12 @@ interface UsersContract
     /**
      * @api
      *
-     * @param \HubspotSDK\Settings\Users\UserReplaceParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserReplaceParams\IDProperty> $idProperty
+     * @param \HubspotSDK\Settings\Users\UserReplaceParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserReplaceParams\IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
      * @param string $firstName
      * @param string $lastName
-     * @param string $primaryTeamID
-     * @param string $roleID
-     * @param list<string> $secondaryTeamIDs
+     * @param string $primaryTeamID The user's primary team
+     * @param string $roleID The user's role
+     * @param list<string> $secondaryTeamIDs The user's additional teams
      *
      * @throws APIException
      */
