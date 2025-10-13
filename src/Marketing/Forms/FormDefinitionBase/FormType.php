@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Forms\HubSpotFormDefinition;
+namespace HubspotSDK\Marketing\Forms\FormDefinitionBase;
 
 enum FormType: string
 {

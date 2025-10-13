@@ -6,6 +6,7 @@ namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Forms\FieldGroup;
+use HubspotSDK\Marketing\Forms\FormDefinitionBase;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
 use HubspotSDK\Marketing\Forms\FormListParams\FormType;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
@@ -28,7 +29,7 @@ interface FormsContract
      */
     public function create(
         ?RequestOptions $requestOptions = null
-    ): HubSpotFormDefinition;
+    ): FormDefinitionBase;
 
     /**
      * @api
@@ -51,7 +52,7 @@ interface FormsContract
         $legalConsentOptions = omit,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): HubSpotFormDefinition;
+    ): FormDefinitionBase;
 
     /**
      * @api
@@ -64,7 +65,7 @@ interface FormsContract
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): HubSpotFormDefinition;
+    ): FormDefinitionBase;
 
     /**
      * @api
@@ -121,7 +122,7 @@ interface FormsContract
         string $formID,
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): HubSpotFormDefinition;
+    ): FormDefinitionBase;
 
     /**
      * @api
@@ -134,7 +135,7 @@ interface FormsContract
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): HubSpotFormDefinition;
+    ): FormDefinitionBase;
 
     /**
      * @api
@@ -144,5 +145,5 @@ interface FormsContract
     public function replace(
         string $formID,
         ?RequestOptions $requestOptions = null
-    ): HubSpotFormDefinition;
+    ): FormDefinitionBase;
 }
