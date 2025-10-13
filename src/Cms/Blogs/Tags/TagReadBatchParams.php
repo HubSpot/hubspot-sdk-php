@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TagReadBatchParams); // set properties as needed
  * $client->cms.blogs.tags->readBatch(...$params->toArray());
  * ```
- * Retrieve a batch of Blog Tags.
+ * Retrieve the Blog Tag objects identified in the request body.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,10 +35,17 @@ final class TagReadBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<string> $inputs */
+    /**
+     * Strings to input.
+     *
+     * @var list<string> $inputs
+     */
     #[Api(list: 'string')]
     public array $inputs;
 
+    /**
+     * Specifies whether to return deleted Blog Tags. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -80,6 +87,8 @@ final class TagReadBatchParams implements BaseModel
     }
 
     /**
+     * Strings to input.
+     *
      * @param list<string> $inputs
      */
     public function withInputs(array $inputs): self
@@ -90,6 +99,9 @@ final class TagReadBatchParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to return deleted Blog Tags. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;

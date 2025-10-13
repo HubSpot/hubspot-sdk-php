@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new EmailGetRevisionsParams); // set properties as needed
  * $client->marketing.emails->getRevisions(...$params->toArray());
  * ```
- * Get revisions of a marketing email.
+ * Get a list of all versions of a marketing email, with each entry including the full state of that particular version. To view the most recent version, sort by the updatedAt parameter.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,12 +35,21 @@ final class EmailGetRevisionsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * The cursor token value to get the previous set of results. You can get this from the `paging.prev.before` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $before;
 
+    /**
+     * The maximum number of results to return. Default is 10.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
@@ -68,6 +77,9 @@ final class EmailGetRevisionsParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -76,6 +88,9 @@ final class EmailGetRevisionsParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The cursor token value to get the previous set of results. You can get this from the `paging.prev.before` JSON property of a paged response containing more results.
+     */
     public function withBefore(string $before): self
     {
         $obj = clone $this;
@@ -84,6 +99,9 @@ final class EmailGetRevisionsParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of results to return. Default is 10.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;

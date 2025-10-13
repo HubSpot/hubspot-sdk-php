@@ -46,7 +46,7 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * Create a new custom action definition
+     * Create a new custom workflow action.
      *
      * @param string $actionURL
      * @param list<PublicActionFunction> $functions
@@ -124,7 +124,7 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * Update an existing action definition
+     * Update an existing action definition by ID.
      *
      * @param int $appID
      * @param string $actionURL
@@ -201,11 +201,11 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * Retrieve revisions for a given definition
+     * Retrieve the versions of a definition by ID.
      *
      * @param int $appID
-     * @param string $after
-     * @param int $limit
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
      *
      * @return Page<PublicActionRevision>
      *
@@ -325,7 +325,7 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * Delete a function for a definition
+     * Delete a function within a given definition.
      *
      * @param ActionArchiveByFunctionTypeParams\FunctionType|value-of<ActionArchiveByFunctionTypeParams\FunctionType> $functionType
      * @param int $appID
@@ -387,7 +387,7 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * Completes a callback
+     * Complete a specific blocked action execution by ID.
      *
      * @param array<string, string> $outputFields
      *
@@ -433,7 +433,7 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * Complete a batch of callbacks
+     * Complete a batch of blocked action executions.
      *
      * @param list<CallbackCompletionBatchRequest> $inputs
      *
@@ -477,7 +477,7 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * Update a function for a definition
+     * Update a function for a given definition by ID.
      *
      * @param int $appID
      * @param string $definitionID
@@ -550,7 +550,7 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * Insert a function for a definition
+     * Add a function for a given definition.
      *
      * @param ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
      * @param int $appID
@@ -681,7 +681,7 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      *
-     * Retrieve a function from a given definition
+     * Retrieve a specific function from a given definition.
      *
      * @param int $appID
      * @param string $definitionID

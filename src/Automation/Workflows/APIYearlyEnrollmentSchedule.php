@@ -23,17 +23,28 @@ final class APIYearlyEnrollmentSchedule implements BaseModel
     /** @use SdkModel<api_yearly_enrollment_schedule> */
     use SdkModel;
 
+    /**
+     * The day of the date each year to run this flow.
+     */
     #[Api]
     public int $dayOfMonth;
 
-    /** @var value-of<Month> $month */
+    /**
+     * The month of the date each year to run this flow.
+     *
+     * @var value-of<Month> $month
+     */
     #[Api(enum: Month::class)]
     public string $month;
 
     #[Api]
     public APITimeOfDay $timeOfDay;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of enrollment schedule this is, can be: "DAILY", "WEEKLY", "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -86,6 +97,9 @@ final class APIYearlyEnrollmentSchedule implements BaseModel
         return $obj;
     }
 
+    /**
+     * The day of the date each year to run this flow.
+     */
     public function withDayOfMonth(int $dayOfMonth): self
     {
         $obj = clone $this;
@@ -95,6 +109,8 @@ final class APIYearlyEnrollmentSchedule implements BaseModel
     }
 
     /**
+     * The month of the date each year to run this flow.
+     *
      * @param Month|value-of<Month> $month
      */
     public function withMonth(Month|string $month): self
@@ -114,6 +130,8 @@ final class APIYearlyEnrollmentSchedule implements BaseModel
     }
 
     /**
+     * The type of enrollment schedule this is, can be: "DAILY", "WEEKLY", "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

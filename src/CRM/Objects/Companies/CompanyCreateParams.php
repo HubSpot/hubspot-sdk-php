@@ -17,7 +17,7 @@ use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
  * $params = (new CompanyCreateParams); // set properties as needed
  * $client->crm.objects.companies->create(...$params->toArray());
  * ```
- * Create a company.
+ * Create a single company. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the company, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -37,7 +37,11 @@ final class CompanyCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var array<string, string> $properties */
+    /**
+     * The company property values to set.
+     *
+     * @var array<string, string> $properties
+     */
     #[Api(map: 'string')]
     public array $properties;
 
@@ -86,6 +90,8 @@ final class CompanyCreateParams implements BaseModel
     }
 
     /**
+     * The company property values to set.
+     *
      * @param array<string, string> $properties
      */
     public function withProperties(array $properties): self

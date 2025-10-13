@@ -28,30 +28,57 @@ final class FolderActionResponse implements BaseModel
     /** @use SdkModel<folder_action_response> */
     use SdkModel;
 
+    /**
+     * When the requested changes have been completed.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
+    /**
+     * Timestamp representing when the task was started at.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * Current status of the task.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
+    /**
+     * ID of the task.
+     */
     #[Api('taskId')]
     public string $taskID;
 
-    /** @var list<StandardError>|null $errors */
+    /**
+     * Detailed errors resulting from the task.
+     *
+     * @var list<StandardError>|null $errors
+     */
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /**
+     * Link to check the status of the task.
+     *
+     * @var array<string, string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * Number of errors resulting from the requested changes.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * Timestamp representing when the task was requested.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -119,6 +146,9 @@ final class FolderActionResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * When the requested changes have been completed.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -127,6 +157,9 @@ final class FolderActionResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * Timestamp representing when the task was started at.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -136,6 +169,8 @@ final class FolderActionResponse implements BaseModel
     }
 
     /**
+     * Current status of the task.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -146,6 +181,9 @@ final class FolderActionResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the task.
+     */
     public function withTaskID(string $taskID): self
     {
         $obj = clone $this;
@@ -155,6 +193,8 @@ final class FolderActionResponse implements BaseModel
     }
 
     /**
+     * Detailed errors resulting from the task.
+     *
      * @param list<StandardError> $errors
      */
     public function withErrors(array $errors): self
@@ -166,6 +206,8 @@ final class FolderActionResponse implements BaseModel
     }
 
     /**
+     * Link to check the status of the task.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -176,6 +218,9 @@ final class FolderActionResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * Number of errors resulting from the requested changes.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
@@ -184,6 +229,9 @@ final class FolderActionResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * Timestamp representing when the task was requested.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

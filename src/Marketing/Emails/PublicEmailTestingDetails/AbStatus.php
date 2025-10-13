@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
 
+/**
+ * Status of the AB test.
+ */
 enum AbStatus: string
 {
     case MASTER = 'master';

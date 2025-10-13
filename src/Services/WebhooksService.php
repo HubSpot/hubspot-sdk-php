@@ -34,12 +34,12 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Create an event subscription
+     * Create new event subscription for the specified app.
      *
-     * @param EventType|value-of<EventType> $eventType
-     * @param bool $active
+     * @param EventType|value-of<EventType> $eventType Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     * @param bool $active Determines if the subscription is active or paused. Defaults to false.
      * @param string $objectTypeID
-     * @param string $propertyName
+     * @param string $propertyName The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
      *
      * @throws APIException
      */
@@ -91,10 +91,10 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Update an event subscription
+     * Update an existing event subscription by ID.
      *
      * @param int $appID
-     * @param bool $active
+     * @param bool $active determines if the subscription is active or paused
      *
      * @throws APIException
      */
@@ -141,7 +141,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Read event subscriptions
+     * Retrieve event subscriptions for the specified app.
      *
      * @throws APIException
      */
@@ -161,7 +161,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Delete event subscription
+     * Delete an existing event subscription by ID.
      *
      * @param int $appID
      *
@@ -208,7 +208,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Delete webhook settings
+     * Delete the webhook settings for the specified app. Event subscriptions will not be deleted, but will be paused until another webhook is created.
      *
      * @throws APIException
      */
@@ -228,10 +228,10 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Update webhook settings
+     * Update webhook settings for the specified app.
      *
-     * @param string $targetURL
-     * @param ThrottlingSettings $throttling
+     * @param string $targetURL a publicly available URL for HubSpot to call where event payloads will be delivered
+     * @param ThrottlingSettings $throttling configuration details for webhook throttling
      *
      * @throws APIException
      */
@@ -276,7 +276,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Read an event subscription
+     * Retrieve a specific event subscription by ID.
      *
      * @param int $appID
      *
@@ -323,7 +323,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Batch create event subscriptions
+     * Batch create event subscriptions for the specified app.
      *
      * @param list<SubscriptionBatchUpdateRequest> $inputs
      *

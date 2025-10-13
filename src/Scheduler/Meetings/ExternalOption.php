@@ -10,6 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type external_option = array{
+ *   description: string,
  *   displayOrder: int,
  *   doubleData: float,
  *   hidden: bool,
@@ -22,6 +23,9 @@ final class ExternalOption implements BaseModel
 {
     /** @use SdkModel<external_option> */
     use SdkModel;
+
+    #[Api]
+    public string $description;
 
     #[Api]
     public int $displayOrder;
@@ -47,6 +51,7 @@ final class ExternalOption implements BaseModel
      * To enforce required parameters use
      * ```
      * ExternalOption::with(
+     *   description: ...,
      *   displayOrder: ...,
      *   doubleData: ...,
      *   hidden: ...,
@@ -60,6 +65,7 @@ final class ExternalOption implements BaseModel
      *
      * ```
      * (new ExternalOption)
+     *   ->withDescription(...)
      *   ->withDisplayOrder(...)
      *   ->withDoubleData(...)
      *   ->withHidden(...)
@@ -79,6 +85,7 @@ final class ExternalOption implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
+        string $description,
         int $displayOrder,
         float $doubleData,
         bool $hidden,
@@ -88,12 +95,21 @@ final class ExternalOption implements BaseModel
     ): self {
         $obj = new self;
 
+        $obj->description = $description;
         $obj->displayOrder = $displayOrder;
         $obj->doubleData = $doubleData;
         $obj->hidden = $hidden;
         $obj->label = $label;
         $obj->readOnly = $readOnly;
         $obj->value = $value;
+
+        return $obj;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
 
         return $obj;
     }

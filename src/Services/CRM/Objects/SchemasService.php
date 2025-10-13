@@ -33,16 +33,17 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * Create a new schema
+     * Define a new object schema, along with custom properties and associations. The entire object schema, including its object type ID, properties, and associations will be returned in the response.
      *
-     * @param list<string> $associatedObjects
-     * @param ObjectTypeDefinitionLabels $labels
-     * @param string $name
-     * @param list<ObjectTypePropertyCreate> $properties
-     * @param list<string> $requiredProperties
-     * @param string $primaryDisplayProperty
-     * @param list<string> $searchableProperties
-     * @param list<string> $secondaryDisplayProperties
+     * @param list<string> $associatedObjects associations defined for this object type
+     * @param ObjectTypeDefinitionLabels $labels Singular and plural labels for the object. Used in CRM display.
+     * @param string $name A unique name for this object. For internal use only.
+     * @param list<ObjectTypePropertyCreate> $properties properties defined for this object type
+     * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
+     * @param string $description
+     * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
+     * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
      *
      * @throws APIException
      */
@@ -52,6 +53,7 @@ final class SchemasService implements SchemasContract
         $name,
         $properties,
         $requiredProperties,
+        $description = omit,
         $primaryDisplayProperty = omit,
         $searchableProperties = omit,
         $secondaryDisplayProperties = omit,
@@ -63,6 +65,7 @@ final class SchemasService implements SchemasContract
             'name' => $name,
             'properties' => $properties,
             'requiredProperties' => $requiredProperties,
+            'description' => $description,
             'primaryDisplayProperty' => $primaryDisplayProperty,
             'searchableProperties' => $searchableProperties,
             'secondaryDisplayProperties' => $secondaryDisplayProperties,
@@ -100,21 +103,23 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * Update a schema
+     * Update the details for an existing object schema.
      *
      * @param bool $clearDescription
-     * @param ObjectTypeDefinitionLabels $labels
-     * @param string $primaryDisplayProperty
-     * @param list<string> $requiredProperties
+     * @param string $description
+     * @param ObjectTypeDefinitionLabels $labels Singular and plural labels for the object. Used in CRM display.
+     * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
      * @param bool $restorable
-     * @param list<string> $searchableProperties
-     * @param list<string> $secondaryDisplayProperties
+     * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
+     * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
      *
      * @throws APIException
      */
     public function update(
         string $objectType,
         $clearDescription = omit,
+        $description = omit,
         $labels = omit,
         $primaryDisplayProperty = omit,
         $requiredProperties = omit,
@@ -125,6 +130,7 @@ final class SchemasService implements SchemasContract
     ): ObjectTypeDefinition {
         $params = [
             'clearDescription' => $clearDescription,
+            'description' => $description,
             'labels' => $labels,
             'primaryDisplayProperty' => $primaryDisplayProperty,
             'requiredProperties' => $requiredProperties,
@@ -166,9 +172,9 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * Get all schemas
+     * Returns all object schemas that have been defined for your account.
      *
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
@@ -210,9 +216,9 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * Delete a schema
+     * Deletes a schema. Any existing records of this schema must be deleted **first**. Otherwise this call will fail.
      *
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
@@ -256,7 +262,7 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * Remove an association
+     * Removes an existing association from a schema.
      *
      * @param string $objectType
      *
@@ -311,11 +317,11 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * Create an association
+     * Defines a new association between the primary schema's object type and other object types.
      *
-     * @param string $fromObjectTypeID
-     * @param string $toObjectTypeID
-     * @param string $name
+     * @param string $fromObjectTypeID ID of the primary object type to link from
+     * @param string $toObjectTypeID ID of the target object type to link to
+     * @param string $name a unique name for this association
      *
      * @throws APIException
      */
@@ -365,7 +371,7 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * Get an existing schema
+     * Returns an existing object schema.
      *
      * @throws APIException
      */

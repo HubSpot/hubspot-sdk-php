@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Associations\V4\AssociationSpec1\AssociationCategory;
 
 /**
+ * Defines the type, direction, and details of the relationship between two CRM objects.
+ *
  * @phpstan-type association_spec1 = array{
  *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
  * }
@@ -19,10 +21,17 @@ final class AssociationSpec1 implements BaseModel
     /** @use SdkModel<association_spec1> */
     use SdkModel;
 
-    /** @var value-of<AssociationCategory> $associationCategory */
+    /**
+     * The category of the association, such as "HUBSPOT_DEFINED".
+     *
+     * @var value-of<AssociationCategory> $associationCategory
+     */
     #[Api(enum: AssociationCategory::class)]
     public string $associationCategory;
 
+    /**
+     * The ID representing the specific type of association.
+     */
     #[Api('associationTypeId')]
     public int $associationTypeID;
 
@@ -65,6 +74,8 @@ final class AssociationSpec1 implements BaseModel
     }
 
     /**
+     * The category of the association, such as "HUBSPOT_DEFINED".
+     *
      * @param AssociationCategory|value-of<AssociationCategory> $associationCategory
      */
     public function withAssociationCategory(
@@ -76,6 +87,9 @@ final class AssociationSpec1 implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID representing the specific type of association.
+     */
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;

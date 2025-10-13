@@ -16,7 +16,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbReplaceDraftTableRowParams); // set properties as needed
  * $client->cms.hubdb->replaceDraftTableRow(...$params->toArray());
  * ```
- * Replaces an existing row.
+ * Replace a single row in the draft version of a table. All column values must be specified. If a column has a value in the target table and this request doesn't define that value, it will be deleted.
+ * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -43,19 +44,32 @@ final class HubdbReplaceDraftTableRowParams implements BaseModel
     #[Api]
     public string $tableIDOrName;
 
-    /** @var array<string, mixed> $values */
+    /**
+     * List of key value pairs with the column name and column value.
+     *
+     * @var array<string, mixed> $values
+     */
     #[Api(map: 'mixed')]
     public array $values;
 
+    /**
+     * Specifies the value for the column child table id.
+     */
     #[Api('childTableId', optional: true)]
     public ?int $childTableID;
 
     #[Api(optional: true)]
     public ?int $displayIndex;
 
+    /**
+     * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages.
+     */
     #[Api(optional: true)]
     public ?string $path;
 
@@ -115,6 +129,8 @@ final class HubdbReplaceDraftTableRowParams implements BaseModel
     }
 
     /**
+     * List of key value pairs with the column name and column value.
+     *
      * @param array<string, mixed> $values
      */
     public function withValues(array $values): self
@@ -125,6 +141,9 @@ final class HubdbReplaceDraftTableRowParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the value for the column child table id.
+     */
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
@@ -141,6 +160,9 @@ final class HubdbReplaceDraftTableRowParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -149,6 +171,9 @@ final class HubdbReplaceDraftTableRowParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages.
+     */
     public function withPath(string $path): self
     {
         $obj = clone $this;

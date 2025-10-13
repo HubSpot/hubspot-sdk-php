@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Configuration details for webhook throttling.
+ *
  * @phpstan-type throttling_settings = array{maxConcurrentRequests: int}
  */
 final class ThrottlingSettings implements BaseModel
@@ -16,6 +18,9 @@ final class ThrottlingSettings implements BaseModel
     /** @use SdkModel<throttling_settings> */
     use SdkModel;
 
+    /**
+     * The maximum number of concurrent HTTP requests HubSpot will attempt to make to your app.
+     */
     #[Api]
     public int $maxConcurrentRequests;
 
@@ -52,6 +57,9 @@ final class ThrottlingSettings implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of concurrent HTTP requests HubSpot will attempt to make to your app.
+     */
     public function withMaxConcurrentRequests(int $maxConcurrentRequests): self
     {
         $obj = clone $this;

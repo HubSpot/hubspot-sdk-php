@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Request body object for detaching objects from multi-language groups.
+ *
  * @phpstan-type detach_from_lang_group_request_v_next = array{id: string}
  */
 final class DetachFromLangGroupRequestVNext implements BaseModel
@@ -16,6 +18,9 @@ final class DetachFromLangGroupRequestVNext implements BaseModel
     /** @use SdkModel<detach_from_lang_group_request_v_next> */
     use SdkModel;
 
+    /**
+     * ID of the object to remove from a multi-language group.
+     */
     #[Api]
     public string $id;
 
@@ -52,6 +57,9 @@ final class DetachFromLangGroupRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the object to remove from a multi-language group.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;

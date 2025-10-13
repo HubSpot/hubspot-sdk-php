@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostRestorePreviousVersionParams); // set properties as needed
  * $client->cms.blogs.posts->restorePreviousVersion(...$params->toArray());
  * ```
- * Restore a previous version.
+ * Restores a blog post to one of its previous versions.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

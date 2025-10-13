@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * A form field that will be displayed based on what the customer entered in another field.
+ *
  * @phpstan-type dependent_field = array{
  *   dependentCondition: DependentFieldFilter,
  *   dependentField: EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField,
@@ -19,9 +21,15 @@ final class DependentField implements BaseModel
     /** @use SdkModel<dependent_field> */
     use SdkModel;
 
+    /**
+     * A condition based on customer input.
+     */
     #[Api]
     public DependentFieldFilter $dependentCondition;
 
+    /**
+     * A form field used for collecting an email address.
+     */
     #[Api]
     public EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField $dependentField;
 
@@ -61,6 +69,9 @@ final class DependentField implements BaseModel
         return $obj;
     }
 
+    /**
+     * A condition based on customer input.
+     */
     public function withDependentCondition(
         DependentFieldFilter $dependentCondition
     ): self {
@@ -70,6 +81,9 @@ final class DependentField implements BaseModel
         return $obj;
     }
 
+    /**
+     * A form field used for collecting an email address.
+     */
     public function withDependentField(
         EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField $dependentField,
     ): self {

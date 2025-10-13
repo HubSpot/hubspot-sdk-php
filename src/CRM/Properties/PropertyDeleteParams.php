@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PropertyDeleteParams); // set properties as needed
  * $client->crm.properties->delete(...$params->toArray());
  * ```
- * Archive a property.
+ * Move a property identified by {propertyName} to the recycling bin.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

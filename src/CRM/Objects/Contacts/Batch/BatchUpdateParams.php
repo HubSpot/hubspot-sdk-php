@@ -17,7 +17,7 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
  * $params = (new BatchUpdateParams); // set properties as needed
  * $client->crm.objects.contacts.batch->update(...$params->toArray());
  * ```
- * Update a batch of contacts.
+ * Update a batch of contacts by ID (`contactId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

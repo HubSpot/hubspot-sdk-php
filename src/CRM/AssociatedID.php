@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Contains the id and type of an association.
+ *
  * @phpstan-type associated_id = array{id: string, type: string}
  */
 final class AssociatedID implements BaseModel
@@ -16,9 +18,15 @@ final class AssociatedID implements BaseModel
     /** @use SdkModel<associated_id> */
     use SdkModel;
 
+    /**
+     * The ID for the association type.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The type of association.
+     */
     #[Api]
     public string $type;
 
@@ -56,6 +64,9 @@ final class AssociatedID implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID for the association type.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -64,6 +75,9 @@ final class AssociatedID implements BaseModel
         return $obj;
     }
 
+    /**
+     * The type of association.
+     */
     public function withType(string $type): self
     {
         $obj = clone $this;

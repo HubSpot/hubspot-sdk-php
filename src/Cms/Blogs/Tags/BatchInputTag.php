@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Wrapper for providing an array of blog tags as inputs.
+ *
  * @phpstan-type batch_input_tag = array{inputs: list<Tag>}
  */
 final class BatchInputTag implements BaseModel
@@ -16,7 +18,11 @@ final class BatchInputTag implements BaseModel
     /** @use SdkModel<batch_input_tag> */
     use SdkModel;
 
-    /** @var list<Tag> $inputs */
+    /**
+     * Blog tags to input.
+     *
+     * @var list<Tag> $inputs
+     */
     #[Api(list: Tag::class)]
     public array $inputs;
 
@@ -56,6 +62,8 @@ final class BatchInputTag implements BaseModel
     }
 
     /**
+     * Blog tags to input.
+     *
      * @param list<Tag> $inputs
      */
     public function withInputs(array $inputs): self

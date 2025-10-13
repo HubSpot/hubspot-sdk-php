@@ -16,7 +16,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbGetTableRowParams); // set properties as needed
  * $client->cms.hubdb->getTableRow(...$params->toArray());
  * ```
- * Get a table row.
+ * Get a single row by ID from the published version of a table.
+ * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

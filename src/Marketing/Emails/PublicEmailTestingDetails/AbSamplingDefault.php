@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
 
+/**
+ * Version of the email that should be sent if the results are inconclusive after the test period, master or variant.
+ */
 enum AbSamplingDefault: string
 {
     case MASTER = 'master';

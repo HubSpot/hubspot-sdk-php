@@ -20,12 +20,18 @@ final class APIListBranch implements BaseModel
     /** @use SdkModel<api_list_branch> */
     use SdkModel;
 
+    /**
+     * The name of this branch.
+     */
     #[Api(optional: true)]
     public ?string $branchName;
 
     #[Api(optional: true)]
     public ?APIConnection $connection;
 
+    /**
+     * The list criteria that determine when to execute this branch. The first matching branch will execute.
+     */
     #[Api(optional: true)]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
 
@@ -53,6 +59,9 @@ final class APIListBranch implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of this branch.
+     */
     public function withBranchName(string $branchName): self
     {
         $obj = clone $this;
@@ -69,6 +78,9 @@ final class APIListBranch implements BaseModel
         return $obj;
     }
 
+    /**
+     * The list criteria that determine when to execute this branch. The first matching branch will execute.
+     */
     public function withFilterBranch(
         PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {

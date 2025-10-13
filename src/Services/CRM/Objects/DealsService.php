@@ -53,9 +53,9 @@ final class DealsService implements DealsContract
     /**
      * @api
      *
-     * Create
+     * Create a deal with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard deals is provided.
      *
-     * @param array<string, string> $properties
+     * @param array<string, string> $properties the company property values to set
      * @param list<PublicAssociationsForObject> $associations
      *
      * @throws APIException
@@ -99,10 +99,10 @@ final class DealsService implements DealsContract
     /**
      * @api
      *
-     * Update
+     * Perform a partial update of an Object identified by `{dealId}`or optionally a unique property value as specified by the `idProperty` query param. `{dealId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param array<string, string> $properties
-     * @param string $idProperty
+     * @param array<string, string> $properties the company property values to set
+     * @param string $idProperty The name of a property whose values are unique for this object
      *
      * @throws APIException
      */
@@ -149,14 +149,14 @@ final class DealsService implements DealsContract
     /**
      * @api
      *
-     * List
+     * Read a page of deals. Control what is returned via the `properties` query param.
      *
-     * @param string $after
-     * @param bool $archived
-     * @param list<string> $associations
-     * @param int $limit
-     * @param list<string> $properties
-     * @param list<string> $propertiesWithHistory
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of deals that can be read by a single request.
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
@@ -215,7 +215,7 @@ final class DealsService implements DealsContract
     /**
      * @api
      *
-     * Archive
+     * Move an Object identified by `{dealId}` to the recycling bin.
      *
      * @throws APIException
      */
@@ -237,8 +237,8 @@ final class DealsService implements DealsContract
      *
      * Merge two deals with same type
      *
-     * @param string $objectIDToMerge
-     * @param string $primaryObjectID
+     * @param string $objectIDToMerge the ID of the company to merge into the primary
+     * @param string $primaryObjectID the ID of the primary company, which the other will merge into
      *
      * @throws APIException
      */
@@ -284,13 +284,13 @@ final class DealsService implements DealsContract
     /**
      * @api
      *
-     * Read
+     * Read an Object identified by `{dealId}`. `{dealId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
-     * @param bool $archived
-     * @param list<string> $associations
-     * @param string $idProperty
-     * @param list<string> $properties
-     * @param list<string> $propertiesWithHistory
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
      *
      * @throws APIException
      */
@@ -344,12 +344,12 @@ final class DealsService implements DealsContract
     /**
      * @api
      *
-     * @param string $after
-     * @param list<FilterGroup> $filterGroups
-     * @param int $limit
-     * @param list<string> $properties
-     * @param string $query
-     * @param list<string> $sorts
+     * @param string $after a paging cursor token for retrieving subsequent pages
+     * @param list<FilterGroup> $filterGroups up to 6 groups of filters defining additional query criteria
+     * @param int $limit the maximum results to return, up to 200 objects
+     * @param list<string> $properties a list of property names to include in the response
+     * @param string $query the search query string, up to 3000 characters
+     * @param list<string> $sorts specifies sorting order based on object properties
      *
      * @throws APIException
      */
@@ -403,7 +403,7 @@ final class DealsService implements DealsContract
     /**
      * @api
      *
-     * Create or update a batch of deals by unique property values
+     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
      *
      * @param list<SimplePublicObjectBatchInputUpsert> $inputs
      *

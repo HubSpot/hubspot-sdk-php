@@ -10,6 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type external_meetings_welcome_screen_info = array{
+ *   description?: string,
  *   logoURL?: string,
  *   showWelcomeScreen?: bool,
  *   title?: string,
@@ -20,6 +21,9 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
 {
     /** @use SdkModel<external_meetings_welcome_screen_info> */
     use SdkModel;
+
+    #[Api(optional: true)]
+    public ?string $description;
 
     #[Api('logoUrl', optional: true)]
     public ?string $logoURL;
@@ -44,6 +48,7 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
+        ?string $description = null,
         ?string $logoURL = null,
         ?bool $showWelcomeScreen = null,
         ?string $title = null,
@@ -51,10 +56,19 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
     ): self {
         $obj = new self;
 
+        null !== $description && $obj->description = $description;
         null !== $logoURL && $obj->logoURL = $logoURL;
         null !== $showWelcomeScreen && $obj->showWelcomeScreen = $showWelcomeScreen;
         null !== $title && $obj->title = $title;
         null !== $useCompanyLogo && $obj->useCompanyLogo = $useCompanyLogo;
+
+        return $obj;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
 
         return $obj;
     }

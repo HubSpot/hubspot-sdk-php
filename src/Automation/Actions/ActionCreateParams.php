@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new ActionCreateParams); // set properties as needed
  * $client->automation.actions->create(...$params->toArray());
  * ```
- * Create a new custom action definition.
+ * Create a new custom workflow action.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

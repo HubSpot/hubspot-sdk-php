@@ -26,6 +26,9 @@ final class APICustomCodeAction implements BaseModel
     /** @use SdkModel<api_custom_code_action> */
     use SdkModel;
 
+    /**
+     * The ID for this action.
+     */
     #[Api('actionId')]
     public string $actionID;
 
@@ -33,21 +36,39 @@ final class APICustomCodeAction implements BaseModel
     #[Api(list: APIInputVariable::class)]
     public array $inputFields;
 
-    /** @var list<APIEnumerationOutputField> $outputFields */
+    /**
+     * The list of output fields that this custom action makes available to the rest of the flow.
+     *
+     * @var list<APIEnumerationOutputField> $outputFields
+     */
     #[Api(list: APIEnumerationOutputField::class)]
     public array $outputFields;
 
+    /**
+     * The runtime to use to execute the source code. Supported runtimes are: "NODE16X", "NODE20X", "PYTHON39".
+     */
     #[Api]
     public string $runtime;
 
-    /** @var list<string> $secretNames */
+    /**
+     * The names of any "secrets" setup in this portal that will be used in this action.
+     *
+     * @var list<string> $secretNames
+     */
     #[Api(list: 'string')]
     public array $secretNames;
 
+    /**
+     * The source code to execute when this action executes.
+     */
     #[Api]
     public string $sourceCode;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -123,6 +144,9 @@ final class APICustomCodeAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID for this action.
+     */
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
@@ -143,6 +167,8 @@ final class APICustomCodeAction implements BaseModel
     }
 
     /**
+     * The list of output fields that this custom action makes available to the rest of the flow.
+     *
      * @param list<APIEnumerationOutputField> $outputFields
      */
     public function withOutputFields(array $outputFields): self
@@ -153,6 +179,9 @@ final class APICustomCodeAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The runtime to use to execute the source code. Supported runtimes are: "NODE16X", "NODE20X", "PYTHON39".
+     */
     public function withRuntime(string $runtime): self
     {
         $obj = clone $this;
@@ -162,6 +191,8 @@ final class APICustomCodeAction implements BaseModel
     }
 
     /**
+     * The names of any "secrets" setup in this portal that will be used in this action.
+     *
      * @param list<string> $secretNames
      */
     public function withSecretNames(array $secretNames): self
@@ -172,6 +203,9 @@ final class APICustomCodeAction implements BaseModel
         return $obj;
     }
 
+    /**
+     * The source code to execute when this action executes.
+     */
     public function withSourceCode(string $sourceCode): self
     {
         $obj = clone $this;
@@ -181,6 +215,8 @@ final class APICustomCodeAction implements BaseModel
     }
 
     /**
+     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

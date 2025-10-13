@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TagReadParams); // set properties as needed
  * $client->cms.blogs.tags->read(...$params->toArray());
  * ```
- * Retrieve a Blog Tag.
+ * Retrieve the Blog Tag object identified by the id in the path.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class TagReadParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Specifies whether to return deleted Blog Tags. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -61,6 +64,9 @@ final class TagReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to return deleted Blog Tags. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;

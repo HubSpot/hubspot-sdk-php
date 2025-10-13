@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
  * $params = (new EmailGetHistogramParams); // set properties as needed
  * $client->marketing.emails->getHistogram(...$params->toArray());
  * ```
- * Get aggregated statistic intervals.
+ * Get aggregated statistics in intervals for a specified time span. Each interval contains aggregated statistics of the emails that were sent in that time.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -39,17 +39,31 @@ final class EmailGetHistogramParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<int>|null $emailIDs */
+    /**
+     * Filter by email IDs. Only include statistics of emails with these IDs.
+     *
+     * @var list<int>|null $emailIDs
+     */
     #[Api(list: 'int', optional: true)]
     public ?array $emailIDs;
 
+    /**
+     * The end timestamp of the time span, in ISO8601 representation.
+     */
     #[Api(optional: true)]
     public ?string $endTimestamp;
 
-    /** @var value-of<Interval>|null $interval */
+    /**
+     * The interval to aggregate statistics for.
+     *
+     * @var value-of<Interval>|null $interval
+     */
     #[Api(enum: Interval::class, optional: true)]
     public ?string $interval;
 
+    /**
+     * The start timestamp of the time span, in ISO8601 representation.
+     */
     #[Api(optional: true)]
     public ?string $startTimestamp;
 
@@ -83,6 +97,8 @@ final class EmailGetHistogramParams implements BaseModel
     }
 
     /**
+     * Filter by email IDs. Only include statistics of emails with these IDs.
+     *
      * @param list<int> $emailIDs
      */
     public function withEmailIDs(array $emailIDs): self
@@ -93,6 +109,9 @@ final class EmailGetHistogramParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The end timestamp of the time span, in ISO8601 representation.
+     */
     public function withEndTimestamp(string $endTimestamp): self
     {
         $obj = clone $this;
@@ -102,6 +121,8 @@ final class EmailGetHistogramParams implements BaseModel
     }
 
     /**
+     * The interval to aggregate statistics for.
+     *
      * @param Interval|value-of<Interval> $interval
      */
     public function withInterval(Interval|string $interval): self
@@ -112,6 +133,9 @@ final class EmailGetHistogramParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The start timestamp of the time span, in ISO8601 representation.
+     */
     public function withStartTimestamp(string $startTimestamp): self
     {
         $obj = clone $this;

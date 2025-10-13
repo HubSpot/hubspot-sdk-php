@@ -44,28 +44,53 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
     #[Api]
     public \DateTimeInterface $deletedAt;
 
+    /**
+     * Label of the table.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * Name of the table.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * Id of the table.
+     */
     #[Api(optional: true)]
     public ?string $id;
 
+    /**
+     * Specifies whether child tables can be created.
+     */
     #[Api(optional: true)]
     public ?bool $allowChildTables;
 
+    /**
+     * Specifies whether the table can be read by public without authorization.
+     */
     #[Api('allowPublicApiAccess', optional: true)]
     public ?bool $allowPublicAPIAccess;
 
+    /**
+     * Number of columns including deleted.
+     */
     #[Api(optional: true)]
     public ?int $columnCount;
 
-    /** @var list<Column>|null $columns */
+    /**
+     * List of columns in the table.
+     *
+     * @var list<Column>|null $columns
+     */
     #[Api(list: Column::class, optional: true)]
     public ?array $columns;
 
+    /**
+     * Timestamp at which the table is created.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
@@ -75,10 +100,17 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?bool $deleted;
 
-    /** @var array<string, int>|null $dynamicMetaTags */
+    /**
+     * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+     *
+     * @var array<string, int>|null $dynamicMetaTags
+     */
     #[Api(map: 'int', optional: true)]
     public ?array $dynamicMetaTags;
 
+    /**
+     * Specifies creation of multi-level dynamic pages using child tables.
+     */
     #[Api(optional: true)]
     public ?bool $enableChildTablePages;
 
@@ -88,18 +120,30 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?bool $published;
 
+    /**
+     * Timestamp at which the table is published recently.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $publishedAt;
 
+    /**
+     * Number of rows in the table.
+     */
     #[Api(optional: true)]
     public ?int $rowCount;
 
+    /**
+     * Timestamp at which the table is updated recently.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
     #[Api(optional: true)]
     public ?SimpleUser $updatedBy;
 
+    /**
+     * Specifies whether the table can be used for creation of dynamic pages.
+     */
     #[Api(optional: true)]
     public ?bool $useForPages;
 
@@ -187,6 +231,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Label of the table.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -195,6 +242,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Name of the table.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -203,6 +253,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Id of the table.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -211,6 +264,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Specifies whether child tables can be created.
+     */
     public function withAllowChildTables(bool $allowChildTables): self
     {
         $obj = clone $this;
@@ -219,6 +275,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Specifies whether the table can be read by public without authorization.
+     */
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
@@ -227,6 +286,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Number of columns including deleted.
+     */
     public function withColumnCount(int $columnCount): self
     {
         $obj = clone $this;
@@ -236,6 +298,8 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
     }
 
     /**
+     * List of columns in the table.
+     *
      * @param list<Column> $columns
      */
     public function withColumns(array $columns): self
@@ -246,6 +310,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Timestamp at which the table is created.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -271,6 +338,8 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
     }
 
     /**
+     * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+     *
      * @param array<string, int> $dynamicMetaTags
      */
     public function withDynamicMetaTags(array $dynamicMetaTags): self
@@ -281,6 +350,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Specifies creation of multi-level dynamic pages using child tables.
+     */
     public function withEnableChildTablePages(bool $enableChildTablePages): self
     {
         $obj = clone $this;
@@ -305,6 +377,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Timestamp at which the table is published recently.
+     */
     public function withPublishedAt(\DateTimeInterface $publishedAt): self
     {
         $obj = clone $this;
@@ -313,6 +388,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Number of rows in the table.
+     */
     public function withRowCount(int $rowCount): self
     {
         $obj = clone $this;
@@ -321,6 +399,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Timestamp at which the table is updated recently.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -337,6 +418,9 @@ final class HubDBTableV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Specifies whether the table can be used for creation of dynamic pages.
+     */
     public function withUseForPages(bool $useForPages): self
     {
         $obj = clone $this;

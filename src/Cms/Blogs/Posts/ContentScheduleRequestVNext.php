@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Request body object for scheduling the publish of content.
+ *
  * @phpstan-type content_schedule_request_v_next = array{
  *   id: string, publishDate: \DateTimeInterface
  * }
@@ -18,9 +20,15 @@ final class ContentScheduleRequestVNext implements BaseModel
     /** @use SdkModel<content_schedule_request_v_next> */
     use SdkModel;
 
+    /**
+     * The ID of the object to be scheduled.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The date the object should transition from scheduled to published.
+     */
     #[Api]
     public \DateTimeInterface $publishDate;
 
@@ -60,6 +68,9 @@ final class ContentScheduleRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the object to be scheduled.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -68,6 +79,9 @@ final class ContentScheduleRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date the object should transition from scheduled to published.
+     */
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
         $obj = clone $this;

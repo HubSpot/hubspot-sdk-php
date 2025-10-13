@@ -19,10 +19,17 @@ final class APIManualEnrollmentCriteria implements BaseModel
     /** @use SdkModel<api_manual_enrollment_criteria> */
     use SdkModel;
 
+    /**
+     * Whether or not the same object can enroll in this workflow twice.
+     */
     #[Api]
     public bool $shouldReEnroll;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of enrollment criteria this is, this can be "LIST_BASED", "EVENT_BASED", or "MANUAL".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -64,6 +71,9 @@ final class APIManualEnrollmentCriteria implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether or not the same object can enroll in this workflow twice.
+     */
     public function withShouldReEnroll(bool $shouldReEnroll): self
     {
         $obj = clone $this;
@@ -73,6 +83,8 @@ final class APIManualEnrollmentCriteria implements BaseModel
     }
 
     /**
+     * The type of enrollment criteria this is, this can be "LIST_BASED", "EVENT_BASED", or "MANUAL".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

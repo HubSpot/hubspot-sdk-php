@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new ActionReadParams); // set properties as needed
  * $client->automation.actions->read(...$params->toArray());
  * ```
- * Retrieve a function from a given definition.
+ * Retrieve a specific function from a given definition.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostScheduleParams); // set properties as needed
  * $client->cms.blogs.posts->schedule(...$params->toArray());
  * ```
- * Schedule a post to be published.
+ * Schedule a blog post to be published at a specified time.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,9 +35,15 @@ final class PostScheduleParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The ID of the object to be scheduled.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The date the object should transition from scheduled to published.
+     */
     #[Api]
     public \DateTimeInterface $publishDate;
 
@@ -77,6 +83,9 @@ final class PostScheduleParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the object to be scheduled.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -85,6 +94,9 @@ final class PostScheduleParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date the object should transition from scheduled to published.
+     */
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
         $obj = clone $this;

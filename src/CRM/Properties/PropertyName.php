@@ -16,6 +16,9 @@ final class PropertyName implements BaseModel
     /** @use SdkModel<property_name> */
     use SdkModel;
 
+    /**
+     * The name of the property to read or modify.
+     */
     #[Api]
     public string $name;
 
@@ -52,6 +55,9 @@ final class PropertyName implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the property to read or modify.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;

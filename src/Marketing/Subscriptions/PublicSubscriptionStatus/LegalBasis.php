@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus;
 
+/**
+ * The legal reason for the current status of the subscription.
+ */
 enum LegalBasis: string
 {
     case LEGITIMATE_INTEREST_PQL = 'LEGITIMATE_INTEREST_PQL';

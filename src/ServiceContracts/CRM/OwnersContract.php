@@ -17,10 +17,10 @@ interface OwnersContract
     /**
      * @api
      *
-     * @param string $after
-     * @param bool $archived
-     * @param string $email
-     * @param int $limit
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results (optional).
+     * @param bool $archived whether to return only results that have been archived
+     * @param string $email filter by email address (optional)
+     * @param int $limit the maximum number of results to display per page
      *
      * @return Page<PublicOwner>
      *
@@ -51,8 +51,8 @@ interface OwnersContract
     /**
      * @api
      *
-     * @param bool $archived
-     * @param IDProperty|value-of<IDProperty> $idProperty
+     * @param bool $archived whether to return only results that have been archived
+     * @param IDProperty|value-of<IDProperty> $idProperty specifies whether to use 'id' or 'userId' as the identifier for the owner
      *
      * @throws APIException
      */

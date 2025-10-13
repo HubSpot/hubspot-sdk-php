@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type public_subscription_translation = array{
  *   createdAt: int,
+ *   description: string,
  *   languageCode: string,
  *   name: string,
  *   subscriptionID: int,
@@ -24,6 +25,9 @@ final class PublicSubscriptionTranslation implements BaseModel
 
     #[Api]
     public int $createdAt;
+
+    #[Api]
+    public string $description;
 
     #[Api]
     public string $languageCode;
@@ -44,6 +48,7 @@ final class PublicSubscriptionTranslation implements BaseModel
      * ```
      * PublicSubscriptionTranslation::with(
      *   createdAt: ...,
+     *   description: ...,
      *   languageCode: ...,
      *   name: ...,
      *   subscriptionID: ...,
@@ -56,6 +61,7 @@ final class PublicSubscriptionTranslation implements BaseModel
      * ```
      * (new PublicSubscriptionTranslation)
      *   ->withCreatedAt(...)
+     *   ->withDescription(...)
      *   ->withLanguageCode(...)
      *   ->withName(...)
      *   ->withSubscriptionID(...)
@@ -74,6 +80,7 @@ final class PublicSubscriptionTranslation implements BaseModel
      */
     public static function with(
         int $createdAt,
+        string $description,
         string $languageCode,
         string $name,
         int $subscriptionID,
@@ -82,6 +89,7 @@ final class PublicSubscriptionTranslation implements BaseModel
         $obj = new self;
 
         $obj->createdAt = $createdAt;
+        $obj->description = $description;
         $obj->languageCode = $languageCode;
         $obj->name = $name;
         $obj->subscriptionID = $subscriptionID;
@@ -94,6 +102,14 @@ final class PublicSubscriptionTranslation implements BaseModel
     {
         $obj = clone $this;
         $obj->createdAt = $createdAt;
+
+        return $obj;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
 
         return $obj;
     }

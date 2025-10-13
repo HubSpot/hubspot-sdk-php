@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Details about the a particular login activity for a HubSpot account.
+ *
  * @phpstan-type public_login_audit = array{
  *   id: string,
  *   loginAt: \DateTimeInterface,
@@ -27,33 +29,60 @@ final class PublicLoginAudit implements BaseModel
     /** @use SdkModel<public_login_audit> */
     use SdkModel;
 
+    /**
+     * The login activity's unique ID.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The time the login took place.
+     */
     #[Api]
     public \DateTimeInterface $loginAt;
 
+    /**
+     * Whether the login was successful or not.
+     */
     #[Api]
     public bool $loginSucceeded;
 
+    /**
+     * The approximate country code of the login.
+     */
     #[Api(optional: true)]
     public ?string $countryCode;
 
+    /**
+     * Email address of the user associated with the login.
+     */
     #[Api(optional: true)]
     public ?string $email;
 
+    /**
+     * IP address where the activity originated.
+     */
     #[Api(optional: true)]
     public ?string $ipAddress;
 
     #[Api(optional: true)]
     public ?string $location;
 
+    /**
+     * The approximate region code of the login.
+     */
     #[Api(optional: true)]
     public ?string $regionCode;
 
+    /**
+     * Information about the device used for logging in.
+     */
     #[Api(optional: true)]
     public ?string $userAgent;
 
+    /**
+     * The user's unique ID.
+     */
     #[Api('userId', optional: true)]
     public ?int $userID;
 
@@ -110,6 +139,9 @@ final class PublicLoginAudit implements BaseModel
         return $obj;
     }
 
+    /**
+     * The login activity's unique ID.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -118,6 +150,9 @@ final class PublicLoginAudit implements BaseModel
         return $obj;
     }
 
+    /**
+     * The time the login took place.
+     */
     public function withLoginAt(\DateTimeInterface $loginAt): self
     {
         $obj = clone $this;
@@ -126,6 +161,9 @@ final class PublicLoginAudit implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the login was successful or not.
+     */
     public function withLoginSucceeded(bool $loginSucceeded): self
     {
         $obj = clone $this;
@@ -134,6 +172,9 @@ final class PublicLoginAudit implements BaseModel
         return $obj;
     }
 
+    /**
+     * The approximate country code of the login.
+     */
     public function withCountryCode(string $countryCode): self
     {
         $obj = clone $this;
@@ -142,6 +183,9 @@ final class PublicLoginAudit implements BaseModel
         return $obj;
     }
 
+    /**
+     * Email address of the user associated with the login.
+     */
     public function withEmail(string $email): self
     {
         $obj = clone $this;
@@ -150,6 +194,9 @@ final class PublicLoginAudit implements BaseModel
         return $obj;
     }
 
+    /**
+     * IP address where the activity originated.
+     */
     public function withIPAddress(string $ipAddress): self
     {
         $obj = clone $this;
@@ -166,6 +213,9 @@ final class PublicLoginAudit implements BaseModel
         return $obj;
     }
 
+    /**
+     * The approximate region code of the login.
+     */
     public function withRegionCode(string $regionCode): self
     {
         $obj = clone $this;
@@ -174,6 +224,9 @@ final class PublicLoginAudit implements BaseModel
         return $obj;
     }
 
+    /**
+     * Information about the device used for logging in.
+     */
     public function withUserAgent(string $userAgent): self
     {
         $obj = clone $this;
@@ -182,6 +235,9 @@ final class PublicLoginAudit implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's unique ID.
+     */
     public function withUserID(int $userID): self
     {
         $obj = clone $this;

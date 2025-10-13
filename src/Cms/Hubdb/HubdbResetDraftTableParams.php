@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbResetDraftTableParams); // set properties as needed
  * $client->cms.hubdb->resetDraftTable(...$params->toArray());
  * ```
- * Reset a draft table.
+ * Replaces the data in the draft version of the table with values from the published version. Any unpublished changes in the draft will be lost after this call is made.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class HubdbResetDraftTableParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Set this to `true` to populate foreign ID values in the response.
+     */
     #[Api(optional: true)]
     public ?bool $includeForeignIDs;
 
@@ -55,6 +58,9 @@ final class HubdbResetDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Set this to `true` to populate foreign ID values in the response.
+     */
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;

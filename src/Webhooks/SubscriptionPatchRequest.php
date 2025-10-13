@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Updated details for the subscription.
+ *
  * @phpstan-type subscription_patch_request = array{active?: bool}
  */
 final class SubscriptionPatchRequest implements BaseModel
@@ -16,6 +18,9 @@ final class SubscriptionPatchRequest implements BaseModel
     /** @use SdkModel<subscription_patch_request> */
     use SdkModel;
 
+    /**
+     * Determines if the subscription is active or paused.
+     */
     #[Api(optional: true)]
     public ?bool $active;
 
@@ -38,6 +43,9 @@ final class SubscriptionPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Determines if the subscription is active or paused.
+     */
     public function withActive(bool $active): self
     {
         $obj = clone $this;

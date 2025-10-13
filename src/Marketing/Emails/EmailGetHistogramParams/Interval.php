@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails\EmailGetHistogramParams;
 
+/**
+ * The interval to aggregate statistics for.
+ */
 enum Interval: string
 {
     case YEAR = 'YEAR';

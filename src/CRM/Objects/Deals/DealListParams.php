@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new DealListParams); // set properties as needed
  * $client->crm.objects.deals->list(...$params->toArray());
  * ```
- * List.
+ * Read a page of deals. Control what is returned via the `properties` query param.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -40,24 +40,45 @@ final class DealListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
-    /** @var list<string>|null $associations */
+    /**
+     * A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     *
+     * @var list<string>|null $associations
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $associations;
 
+    /**
+     * The maximum number of results to display per page.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
-    /** @var list<string>|null $properties */
+    /**
+     * A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @var list<string>|null $properties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $properties;
 
-    /** @var list<string>|null $propertiesWithHistory */
+    /**
+     * A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of deals that can be read by a single request.
+     *
+     * @var list<string>|null $propertiesWithHistory
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $propertiesWithHistory;
 
@@ -95,6 +116,9 @@ final class DealListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -103,6 +127,9 @@ final class DealListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -112,6 +139,8 @@ final class DealListParams implements BaseModel
     }
 
     /**
+     * A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     *
      * @param list<string> $associations
      */
     public function withAssociations(array $associations): self
@@ -122,6 +151,9 @@ final class DealListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of results to display per page.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -131,6 +163,8 @@ final class DealListParams implements BaseModel
     }
 
     /**
+     * A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -142,6 +176,8 @@ final class DealListParams implements BaseModel
     }
 
     /**
+     * A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of deals that can be read by a single request.
+     *
      * @param list<string> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(

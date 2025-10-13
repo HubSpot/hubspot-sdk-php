@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Data structure representing the from fields on the email.
+ *
  * @phpstan-type public_email_from_details = array{
  *   customReplyTo?: string, fromName?: string, replyTo?: string
  * }
@@ -18,12 +20,21 @@ final class PublicEmailFromDetails implements BaseModel
     /** @use SdkModel<public_email_from_details> */
     use SdkModel;
 
+    /**
+     * The reply to recipients will see.
+     */
     #[Api(optional: true)]
     public ?string $customReplyTo;
 
+    /**
+     * The name recipients will see.
+     */
     #[Api(optional: true)]
     public ?string $fromName;
 
+    /**
+     * The from address and reply to email address (if no customReplyTo defined) recipients will see.
+     */
     #[Api(optional: true)]
     public ?string $replyTo;
 
@@ -51,6 +62,9 @@ final class PublicEmailFromDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * The reply to recipients will see.
+     */
     public function withCustomReplyTo(string $customReplyTo): self
     {
         $obj = clone $this;
@@ -59,6 +73,9 @@ final class PublicEmailFromDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name recipients will see.
+     */
     public function withFromName(string $fromName): self
     {
         $obj = clone $this;
@@ -67,6 +84,9 @@ final class PublicEmailFromDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * The from address and reply to email address (if no customReplyTo defined) recipients will see.
+     */
     public function withReplyTo(string $replyTo): self
     {
         $obj = clone $this;

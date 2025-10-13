@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate;
 
+/**
+ * The data type of the property.
+ */
 enum Type: string
 {
     case STRING = 'string';

@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Request body object for cloning content.
+ *
  * @phpstan-type content_clone_request_v_next = array{
  *   id: string, cloneName?: string
  * }
@@ -18,9 +20,15 @@ final class ContentCloneRequestVNext implements BaseModel
     /** @use SdkModel<content_clone_request_v_next> */
     use SdkModel;
 
+    /**
+     * ID of the object to be cloned.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Name of the cloned object.
+     */
     #[Api(optional: true)]
     public ?string $cloneName;
 
@@ -59,6 +67,9 @@ final class ContentCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the object to be cloned.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -67,6 +78,9 @@ final class ContentCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the cloned object.
+     */
     public function withCloneName(string $cloneName): self
     {
         $obj = clone $this;

@@ -17,7 +17,7 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
  * $params = (new DealUpsertParams); // set properties as needed
  * $client->crm.objects.deals->upsert(...$params->toArray());
  * ```
- * Create or update a batch of deals by unique property values.
+ * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

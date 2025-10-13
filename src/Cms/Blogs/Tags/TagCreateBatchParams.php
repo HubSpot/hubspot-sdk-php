@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TagCreateBatchParams); // set properties as needed
  * $client->cms.blogs.tags->createBatch(...$params->toArray());
  * ```
- * Create a batch of Blog Tags.
+ * Create the Blog Tag objects detailed in the request body.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,7 +33,11 @@ final class TagCreateBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<Tag> $inputs */
+    /**
+     * Blog tags to input.
+     *
+     * @var list<Tag> $inputs
+     */
     #[Api(list: Tag::class)]
     public array $inputs;
 
@@ -73,6 +77,8 @@ final class TagCreateBatchParams implements BaseModel
     }
 
     /**
+     * Blog tags to input.
+     *
      * @param list<Tag> $inputs
      */
     public function withInputs(array $inputs): self

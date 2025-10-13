@@ -18,12 +18,21 @@ final class PropertyGroupCreate implements BaseModel
     /** @use SdkModel<property_group_create> */
     use SdkModel;
 
+    /**
+     * A human-readable label that will be shown in HubSpot.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * The internal property group name, which must be used when referencing the property group via the API.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     */
     #[Api(optional: true)]
     public ?int $displayOrder;
 
@@ -66,6 +75,9 @@ final class PropertyGroupCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * A human-readable label that will be shown in HubSpot.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -74,6 +86,9 @@ final class PropertyGroupCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * The internal property group name, which must be used when referencing the property group via the API.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -82,6 +97,9 @@ final class PropertyGroupCreate implements BaseModel
         return $obj;
     }
 
+    /**
+     * Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;

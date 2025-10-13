@@ -21,6 +21,9 @@ use HubspotSDK\Marketing\Forms\RadioField;
 use HubspotSDK\Marketing\Forms\SingleCheckboxField;
 use HubspotSDK\Marketing\Forms\SingleLineTextField;
 
+/**
+ * A form field used for collecting an email address.
+ */
 final class Field implements ConverterSource
 {
     use SdkUnion;

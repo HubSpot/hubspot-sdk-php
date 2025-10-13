@@ -11,6 +11,8 @@ use HubspotSDK\Core\Conversion\ListOf;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
+ * Represents a CRM object along with its properties, timestamps, and a set of associated object IDs grouped by association type.
+ *
  * @phpstan-type simple_public_object_with_associations = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
@@ -28,33 +30,60 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     /** @use SdkModel<simple_public_object_with_associations> */
     use SdkModel;
 
+    /**
+     * The unique ID of the object.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The timestamp when the object was created, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    /** @var array<string, string> $properties */
+    /**
+     * Key value pairs representing the properties of the object.
+     *
+     * @var array<string, string> $properties
+     */
     #[Api(type: new MapOf('string', nullable: true))]
     public array $properties;
 
+    /**
+     * The timestamp when the object was last updated, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * Whether the object is archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * The timestamp when the object was archived, in ISO 8601 format.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $archivedAt;
 
-    /** @var array<string, CollectionResponseAssociatedID>|null $associations */
+    /**
+     * A list defining relationships with other objects.
+     *
+     * @var array<string, CollectionResponseAssociatedID>|null $associations
+     */
     #[Api(map: CollectionResponseAssociatedID::class, optional: true)]
     public ?array $associations;
 
     #[Api('objectWriteTraceId', optional: true)]
     public ?string $objectWriteTraceID;
 
-    /** @var array<string, list<ValueWithTimestamp>>|null $propertiesWithHistory */
+    /**
+     * Key-value pairs representing the properties of the object along with their history.
+     *
+     * @var array<string, list<ValueWithTimestamp>>|null $propertiesWithHistory
+     */
     #[Api(map: new ListOf(ValueWithTimestamp::class), optional: true)]
     public ?array $propertiesWithHistory;
 
@@ -119,6 +148,9 @@ final class SimplePublicObjectWithAssociations implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID of the object.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -127,6 +159,9 @@ final class SimplePublicObjectWithAssociations implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the object was created, in ISO 8601 format.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -136,6 +171,8 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     }
 
     /**
+     * Key value pairs representing the properties of the object.
+     *
      * @param array<string, string> $properties
      */
     public function withProperties(array $properties): self
@@ -146,6 +183,9 @@ final class SimplePublicObjectWithAssociations implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the object was last updated, in ISO 8601 format.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -154,6 +194,9 @@ final class SimplePublicObjectWithAssociations implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the object is archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -162,6 +205,9 @@ final class SimplePublicObjectWithAssociations implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the object was archived, in ISO 8601 format.
+     */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
@@ -171,6 +217,8 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     }
 
     /**
+     * A list defining relationships with other objects.
+     *
      * @param array<string, CollectionResponseAssociatedID> $associations
      */
     public function withAssociations(array $associations): self
@@ -190,6 +238,8 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     }
 
     /**
+     * Key-value pairs representing the properties of the object along with their history.
+     *
      * @param array<string, list<ValueWithTimestamp>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(

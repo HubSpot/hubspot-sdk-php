@@ -39,8 +39,8 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->create(
             'objectType',
-            label: 'label',
-            name: 'name'
+            label: 'My Property Group',
+            name: 'mypropertygroup'
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -55,8 +55,8 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->create(
             'objectType',
-            label: 'label',
-            name: 'name'
+            label: 'My Property Group',
+            name: 'mypropertygroup'
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -174,7 +174,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->crm->properties->read(
             'objectType',
             archived: true,
-            inputs: [PropertyName::with(name: 'name')]
+            inputs: [PropertyName::with(name: 'my_custom_property')],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -190,7 +190,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->crm->properties->read(
             'objectType',
             archived: true,
-            inputs: [PropertyName::with(name: 'name')]
+            inputs: [PropertyName::with(name: 'my_custom_property')],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

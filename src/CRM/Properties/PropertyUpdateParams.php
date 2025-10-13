@@ -18,7 +18,7 @@ use HubspotSDK\CRM\Properties\PropertyUpdateParams\Type;
  * $params = (new PropertyUpdateParams); // set properties as needed
  * $client->crm.properties->update(...$params->toArray());
  * ```
- * Update a property.
+ * Perform a partial update of a property identified by { propertyName }. Provided fields will be overwritten.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -30,6 +30,7 @@ use HubspotSDK\CRM\Properties\PropertyUpdateParams\Type;
  * @phpstan-type property_update_params = array{
  *   objectType: string,
  *   calculationFormula?: string,
+ *   description?: string,
  *   displayOrder?: int,
  *   fieldType?: FieldType|value-of<FieldType>,
  *   formField?: bool,
@@ -49,33 +50,69 @@ final class PropertyUpdateParams implements BaseModel
     #[Api]
     public string $objectType;
 
+    /**
+     * Represents a formula that is used to compute a calculated property.
+     */
     #[Api(optional: true)]
     public ?string $calculationFormula;
 
+    /**
+     * A description of the property that will be shown as help text in HubSpot.
+     */
+    #[Api(optional: true)]
+    public ?string $description;
+
+    /**
+     * Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
+     */
     #[Api(optional: true)]
     public ?int $displayOrder;
 
-    /** @var value-of<FieldType>|null $fieldType */
+    /**
+     * Controls how the property appears in HubSpot.
+     *
+     * @var value-of<FieldType>|null $fieldType
+     */
     #[Api(enum: FieldType::class, optional: true)]
     public ?string $fieldType;
 
+    /**
+     * Whether or not the property can be used in a HubSpot form.
+     */
     #[Api(optional: true)]
     public ?bool $formField;
 
+    /**
+     * The name of the property group the property belongs to.
+     */
     #[Api(optional: true)]
     public ?string $groupName;
 
+    /**
+     * If true, the property won't be visible and can't be used in HubSpot.
+     */
     #[Api(optional: true)]
     public ?bool $hidden;
 
+    /**
+     * A human-readable property label that will be shown in HubSpot.
+     */
     #[Api(optional: true)]
     public ?string $label;
 
-    /** @var list<OptionInput>|null $options */
+    /**
+     * A list of valid options for the property.
+     *
+     * @var list<OptionInput>|null $options
+     */
     #[Api(list: OptionInput::class, optional: true)]
     public ?array $options;
 
-    /** @var value-of<Type>|null $type */
+    /**
+     * The data type of the property.
+     *
+     * @var value-of<Type>|null $type
+     */
     #[Api(enum: Type::class, optional: true)]
     public ?string $type;
 
@@ -110,6 +147,7 @@ final class PropertyUpdateParams implements BaseModel
     public static function with(
         string $objectType,
         ?string $calculationFormula = null,
+        ?string $description = null,
         ?int $displayOrder = null,
         FieldType|string|null $fieldType = null,
         ?bool $formField = null,
@@ -124,6 +162,7 @@ final class PropertyUpdateParams implements BaseModel
         $obj->objectType = $objectType;
 
         null !== $calculationFormula && $obj->calculationFormula = $calculationFormula;
+        null !== $description && $obj->description = $description;
         null !== $displayOrder && $obj->displayOrder = $displayOrder;
         null !== $fieldType && $obj['fieldType'] = $fieldType;
         null !== $formField && $obj->formField = $formField;
@@ -144,6 +183,9 @@ final class PropertyUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Represents a formula that is used to compute a calculated property.
+     */
     public function withCalculationFormula(string $calculationFormula): self
     {
         $obj = clone $this;
@@ -152,6 +194,20 @@ final class PropertyUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * A description of the property that will be shown as help text in HubSpot.
+     */
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
@@ -161,6 +217,8 @@ final class PropertyUpdateParams implements BaseModel
     }
 
     /**
+     * Controls how the property appears in HubSpot.
+     *
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public function withFieldType(FieldType|string $fieldType): self
@@ -171,6 +229,9 @@ final class PropertyUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether or not the property can be used in a HubSpot form.
+     */
     public function withFormField(bool $formField): self
     {
         $obj = clone $this;
@@ -179,6 +240,9 @@ final class PropertyUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the property group the property belongs to.
+     */
     public function withGroupName(string $groupName): self
     {
         $obj = clone $this;
@@ -187,6 +251,9 @@ final class PropertyUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * If true, the property won't be visible and can't be used in HubSpot.
+     */
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
@@ -195,6 +262,9 @@ final class PropertyUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * A human-readable property label that will be shown in HubSpot.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -204,6 +274,8 @@ final class PropertyUpdateParams implements BaseModel
     }
 
     /**
+     * A list of valid options for the property.
+     *
      * @param list<OptionInput> $options
      */
     public function withOptions(array $options): self
@@ -215,6 +287,8 @@ final class PropertyUpdateParams implements BaseModel
     }
 
     /**
+     * The data type of the property.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new SchemaListParams); // set properties as needed
  * $client->crm.objects.schemas->list(...$params->toArray());
  * ```
- * Get all schemas.
+ * Returns all object schemas that have been defined for your account.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class SchemaListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -55,6 +58,9 @@ final class SchemaListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;

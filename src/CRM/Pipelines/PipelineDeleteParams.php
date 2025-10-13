@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PipelineDeleteParams); // set properties as needed
  * $client->crm.pipelines->delete(...$params->toArray());
  * ```
- * Delete a pipeline stage.
+ * Delete the pipeline stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

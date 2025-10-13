@@ -18,15 +18,24 @@ final class HubDBTableCloneRequest implements BaseModel
     /** @use SdkModel<hub_db_table_clone_request> */
     use SdkModel;
 
+    /**
+     * Specifies whether to copy the rows during clone.
+     */
     #[Api]
     public bool $copyRows;
 
     #[Api]
     public bool $isHubspotDefined;
 
+    /**
+     * The new label for the cloned table.
+     */
     #[Api(optional: true)]
     public ?string $newLabel;
 
+    /**
+     * The new name for the cloned table.
+     */
     #[Api(optional: true)]
     public ?string $newName;
 
@@ -71,6 +80,9 @@ final class HubDBTableCloneRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to copy the rows during clone.
+     */
     public function withCopyRows(bool $copyRows): self
     {
         $obj = clone $this;
@@ -87,6 +99,9 @@ final class HubDBTableCloneRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The new label for the cloned table.
+     */
     public function withNewLabel(string $newLabel): self
     {
         $obj = clone $this;
@@ -95,6 +110,9 @@ final class HubDBTableCloneRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The new name for the cloned table.
+     */
     public function withNewName(string $newName): self
     {
         $obj = clone $this;

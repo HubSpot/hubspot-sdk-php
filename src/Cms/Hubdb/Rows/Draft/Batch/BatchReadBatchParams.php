@@ -16,7 +16,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new BatchReadBatchParams); // set properties as needed
  * $client->cms.hubdb.rows.draft.batch->readBatch(...$params->toArray());
  * ```
- * Get a set of rows.
+ * Returns rows in the published version of the specified table, given a set of row IDs.
+ * **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,7 +34,11 @@ final class BatchReadBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<string> $inputs */
+    /**
+     * Strings to input.
+     *
+     * @var list<string> $inputs
+     */
     #[Api(list: 'string')]
     public array $inputs;
 
@@ -73,6 +78,8 @@ final class BatchReadBatchParams implements BaseModel
     }
 
     /**
+     * Strings to input.
+     *
      * @param list<string> $inputs
      */
     public function withInputs(array $inputs): self

@@ -58,7 +58,7 @@ final class ActionsTest extends TestCase
                         externalOptions: true,
                         name: 'name',
                         options: [
-                            Option::with(hidden: true, label: 'label', value: 'value'),
+                            Option::with(hidden: false, label: 'Option A', value: 'A'),
                         ],
                         type: 'string',
                     ),
@@ -96,11 +96,13 @@ final class ActionsTest extends TestCase
                         externalOptions: true,
                         name: 'name',
                         options: [
-                            Option::with(hidden: true, label: 'label', value: 'value')
-                                ->withDisplayOrder(0),
+                            Option::with(hidden: false, label: 'Option A', value: 'A')
+                                ->withDescription('Choice number one')
+                                ->withDisplayOrder(1),
                         ],
                         type: 'string',
                     )
+                        ->withDescription('description')
                         ->withExternalOptionsReferenceType('externalOptionsReferenceType')
                         ->withFieldType('booleancheckbox')
                         ->withHelpText('helpText')

@@ -26,24 +26,45 @@ final class PublicStatusRequest implements BaseModel
     /** @use SdkModel<public_status_request> */
     use SdkModel;
 
-    /** @var value-of<Channel> $channel */
+    /**
+     * The type of communication channel. Currently, only `EMAIL` is supported.
+     *
+     * @var value-of<Channel> $channel
+     */
     #[Api(enum: Channel::class)]
     public string $channel;
 
-    /** @var value-of<StatusState> $statusState */
+    /**
+     * The status of the contact's subscription.
+     *
+     * @var value-of<StatusState> $statusState
+     */
     #[Api(enum: StatusState::class)]
     public string $statusState;
 
+    /**
+     * The contact's email address.
+     */
     #[Api('subscriberIdString')]
     public string $subscriberIDString;
 
+    /**
+     * The ID of the subscription to update.
+     */
     #[Api('subscriptionId')]
     public int $subscriptionID;
 
-    /** @var value-of<LegalBasis>|null $legalBasis */
+    /**
+     * The legal basis for communication.
+     *
+     * @var value-of<LegalBasis>|null $legalBasis
+     */
     #[Api(enum: LegalBasis::class, optional: true)]
     public ?string $legalBasis;
 
+    /**
+     * The explanation for the legal basis.
+     */
     #[Api(optional: true)]
     public ?string $legalBasisExplanation;
 
@@ -103,6 +124,8 @@ final class PublicStatusRequest implements BaseModel
     }
 
     /**
+     * The type of communication channel. Currently, only `EMAIL` is supported.
+     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -114,6 +137,8 @@ final class PublicStatusRequest implements BaseModel
     }
 
     /**
+     * The status of the contact's subscription.
+     *
      * @param StatusState|value-of<StatusState> $statusState
      */
     public function withStatusState(StatusState|string $statusState): self
@@ -124,6 +149,9 @@ final class PublicStatusRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The contact's email address.
+     */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
@@ -132,6 +160,9 @@ final class PublicStatusRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the subscription to update.
+     */
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
@@ -141,6 +172,8 @@ final class PublicStatusRequest implements BaseModel
     }
 
     /**
+     * The legal basis for communication.
+     *
      * @param LegalBasis|value-of<LegalBasis> $legalBasis
      */
     public function withLegalBasis(LegalBasis|string $legalBasis): self
@@ -151,6 +184,9 @@ final class PublicStatusRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The explanation for the legal basis.
+     */
     public function withLegalBasisExplanation(
         string $legalBasisExplanation
     ): self {

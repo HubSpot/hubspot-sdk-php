@@ -19,10 +19,17 @@ final class APIStaticValue implements BaseModel
     /** @use SdkModel<api_static_value> */
     use SdkModel;
 
+    /**
+     * A static value to use as the input.
+     */
     #[Api]
     public string $staticValue;
 
-    /** @var value-of<Type> $type */
+    /**
+     * This is the type of input value. This can be one of: "FIELD_DATA", "OBJECT_PROPERTY", "STATIC_VALUE", "RELATIVE_DATETIME", "TIMESTAMP", "INCREMENT", "FETCHED_OBJECT_PROPERTY", "APPEND_OBJECT_PROPERTY", "STATIC_APPEND_VALUE", "ENROLLMENT_EVENT_PROPERTY".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -64,6 +71,9 @@ final class APIStaticValue implements BaseModel
         return $obj;
     }
 
+    /**
+     * A static value to use as the input.
+     */
     public function withStaticValue(string $staticValue): self
     {
         $obj = clone $this;
@@ -73,6 +83,8 @@ final class APIStaticValue implements BaseModel
     }
 
     /**
+     * This is the type of input value. This can be one of: "FIELD_DATA", "OBJECT_PROPERTY", "STATIC_VALUE", "RELATIVE_DATETIME", "TIMESTAMP", "INCREMENT", "FETCHED_OBJECT_PROPERTY", "APPEND_OBJECT_PROPERTY", "STATIC_APPEND_VALUE", "ENROLLMENT_EVENT_PROPERTY".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

@@ -36,7 +36,7 @@ final class SubscriptionsService implements SubscriptionsContract
     /**
      * @api
      *
-     * Get subscription definitions
+     * Get a list of all subscription definitions for the portal
      *
      * @throws APIException
      */
@@ -55,7 +55,7 @@ final class SubscriptionsService implements SubscriptionsContract
     /**
      * @api
      *
-     * Get subscription statuses for a contact
+     * Returns a list of subscriptions and their status for a given contact.
      *
      * @throws APIException
      */
@@ -75,12 +75,12 @@ final class SubscriptionsService implements SubscriptionsContract
     /**
      * @api
      *
-     * Subscribe a contact
+     * Subscribes a contact to the given subscription type. This API is not valid to use for subscribing a contact at a brand or portal level and will return an error.
      *
-     * @param string $emailAddress
-     * @param string $subscriptionID
-     * @param LegalBasis|value-of<LegalBasis> $legalBasis
-     * @param string $legalBasisExplanation
+     * @param string $emailAddress contact's email address
+     * @param string $subscriptionID ID of the subscription being updated for the contact
+     * @param LegalBasis|value-of<LegalBasis> $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
+     * @param string $legalBasisExplanation a more detailed explanation to go with the legal basis (required for GDPR enabled portals)
      *
      * @throws APIException
      */
@@ -130,12 +130,12 @@ final class SubscriptionsService implements SubscriptionsContract
     /**
      * @api
      *
-     * Unsubscribe a contact
+     * Unsubscribes a contact from the given subscription type. This API is not valid to use for unsubscribing a contact at a brand or portal level and will return an error.
      *
-     * @param string $emailAddress
-     * @param string $subscriptionID
-     * @param SubscriptionUnsubscribeParams\LegalBasis|value-of<SubscriptionUnsubscribeParams\LegalBasis> $legalBasis
-     * @param string $legalBasisExplanation
+     * @param string $emailAddress contact's email address
+     * @param string $subscriptionID ID of the subscription being updated for the contact
+     * @param SubscriptionUnsubscribeParams\LegalBasis|value-of<SubscriptionUnsubscribeParams\LegalBasis> $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
+     * @param string $legalBasisExplanation a more detailed explanation to go with the legal basis (required for GDPR enabled portals)
      *
      * @throws APIException
      */

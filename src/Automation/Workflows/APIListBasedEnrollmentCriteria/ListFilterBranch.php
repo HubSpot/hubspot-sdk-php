@@ -16,6 +16,9 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * The list filter branch that represents the enrollment trigger to this flow.
+ */
 final class ListFilterBranch implements ConverterSource
 {
     use SdkUnion;

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbCloneDraftTableRowParams); // set properties as needed
  * $client->cms.hubdb->cloneDraftTableRow(...$params->toArray());
  * ```
- * Clone a row.
+ * Clones a single row in the draft version of a table.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

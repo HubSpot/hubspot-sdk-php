@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new FolderUpdateByIDParams); // set properties as needed
  * $client->files.folders->updateByID(...$params->toArray());
  * ```
- * Update folder properties by folder ID.
+ * Update a folder's properties, identified by folder ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,9 +35,15 @@ final class FolderUpdateByIDParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+     */
     #[Api('parentFolderId', optional: true)]
     public ?int $parentFolderID;
 
@@ -63,6 +69,9 @@ final class FolderUpdateByIDParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -71,6 +80,9 @@ final class FolderUpdateByIDParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+     */
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;

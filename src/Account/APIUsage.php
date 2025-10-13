@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * API usage and limits information for a HubSpot account.
+ *
  * @phpstan-type api_usage = array{
  *   collectedAt: \DateTimeInterface,
  *   currentUsage: int,
@@ -24,22 +26,41 @@ final class APIUsage implements BaseModel
     /** @use SdkModel<api_usage> */
     use SdkModel;
 
+    /**
+     * Indicates when the cache was last updated.
+     */
     #[Api]
     public \DateTimeInterface $collectedAt;
 
+    /**
+     * How many API calls an account has made for the current day.
+     */
     #[Api]
     public int $currentUsage;
 
-    /** @var value-of<FetchStatus> $fetchStatus */
+    /**
+     * Status of fetching the information, including if the data came from the cache.
+     *
+     * @var value-of<FetchStatus> $fetchStatus
+     */
     #[Api(enum: FetchStatus::class)]
     public string $fetchStatus;
 
+    /**
+     * Name of the limit type.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * Limits by which a single integration can consume the HubSpot public APIs.
+     */
     #[Api]
     public int $usageLimit;
 
+    /**
+     * Time that the limit will reset.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $resetsAt;
 
@@ -101,6 +122,9 @@ final class APIUsage implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates when the cache was last updated.
+     */
     public function withCollectedAt(\DateTimeInterface $collectedAt): self
     {
         $obj = clone $this;
@@ -109,6 +133,9 @@ final class APIUsage implements BaseModel
         return $obj;
     }
 
+    /**
+     * How many API calls an account has made for the current day.
+     */
     public function withCurrentUsage(int $currentUsage): self
     {
         $obj = clone $this;
@@ -118,6 +145,8 @@ final class APIUsage implements BaseModel
     }
 
     /**
+     * Status of fetching the information, including if the data came from the cache.
+     *
      * @param FetchStatus|value-of<FetchStatus> $fetchStatus
      */
     public function withFetchStatus(FetchStatus|string $fetchStatus): self
@@ -128,6 +157,9 @@ final class APIUsage implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the limit type.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -136,6 +168,9 @@ final class APIUsage implements BaseModel
         return $obj;
     }
 
+    /**
+     * Limits by which a single integration can consume the HubSpot public APIs.
+     */
     public function withUsageLimit(int $usageLimit): self
     {
         $obj = clone $this;
@@ -144,6 +179,9 @@ final class APIUsage implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time that the limit will reset.
+     */
     public function withResetsAt(\DateTimeInterface $resetsAt): self
     {
         $obj = clone $this;

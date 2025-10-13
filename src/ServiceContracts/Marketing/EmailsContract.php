@@ -32,25 +32,25 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param string $name
-     * @param string $activeDomain
-     * @param bool $archived
+     * @param string $name the name of the email, as displayed on the email dashboard
+     * @param string $activeDomain the active domain of the email
+     * @param bool $archived determines if the email is archived or not
      * @param int $businessUnitID
-     * @param string $campaign
-     * @param PublicEmailContent $content
-     * @param string $feedbackSurveyID
-     * @param PublicEmailFromDetails $from
+     * @param string $campaign the ID of the campaign this email is associated to
+     * @param PublicEmailContent $content data structure representing the content of the email
+     * @param string $feedbackSurveyID the ID of the feedback survey linked to the email
+     * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
      * @param Language|value-of<Language> $language
-     * @param \DateTimeInterface $publishDate
-     * @param PublicRssEmailDetails $rssData
-     * @param bool $sendOnPublish
-     * @param State|value-of<State> $state
-     * @param Subcategory|value-of<Subcategory> $subcategory
-     * @param string $subject
-     * @param PublicEmailSubscriptionDetails $subscriptionDetails
-     * @param PublicEmailTestingDetails $testing
-     * @param PublicEmailToDetails $to
+     * @param \DateTimeInterface $publishDate The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
+     * @param PublicRssEmailDetails $rssData RSS related data if it is a blog or rss email
+     * @param bool $sendOnPublish determines whether the email will be sent immediately on publish
+     * @param State|value-of<State> $state the email state
+     * @param Subcategory|value-of<Subcategory> $subcategory the email subcategory
+     * @param string $subject the subject of the email
+     * @param PublicEmailSubscriptionDetails $subscriptionDetails data structure representing the subscription fields of the email
+     * @param PublicEmailTestingDetails $testing AB testing related data. This property is only returned for AB type emails.
+     * @param PublicEmailToDetails $to data structure representing the to fields of the email
      * @param PublicWebversionDetails $webversion
      *
      * @throws APIException
@@ -94,24 +94,24 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param bool $archived
-     * @param string $activeDomain
+     * @param bool $archived determines if the email is archived or not
+     * @param string $activeDomain the active domain of the email
      * @param int $businessUnitID
-     * @param string $campaign
-     * @param PublicEmailContent $content
-     * @param PublicEmailFromDetails $from
+     * @param string $campaign the ID of the campaign this email is associated to
+     * @param PublicEmailContent $content data structure representing the content of the email
+     * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
      * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\Language|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\Language> $language
-     * @param string $name
-     * @param \DateTimeInterface $publishDate
-     * @param PublicRssEmailDetails $rssData
-     * @param bool $sendOnPublish
-     * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\State|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\State> $state
-     * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory> $subcategory
-     * @param string $subject
-     * @param PublicEmailSubscriptionDetails $subscriptionDetails
-     * @param PublicEmailTestingDetails $testing
-     * @param PublicEmailToDetails $to
+     * @param string $name the name of the email, as displayed on the email dashboard
+     * @param \DateTimeInterface $publishDate The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
+     * @param PublicRssEmailDetails $rssData RSS related data if it is a blog or rss email
+     * @param bool $sendOnPublish determines whether the email will be sent immediately on publish
+     * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\State|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\State> $state the email state
+     * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory> $subcategory the email subcategory
+     * @param string $subject the subject of the email
+     * @param PublicEmailSubscriptionDetails $subscriptionDetails data structure representing the subscription fields of the email
+     * @param PublicEmailTestingDetails $testing AB testing related data. This property is only returned for AB type emails.
+     * @param PublicEmailToDetails $to data structure representing the to fields of the email
      * @param PublicWebversionDetails $webversion
      *
      * @throws APIException
@@ -156,23 +156,23 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param string $after
-     * @param bool $archived
-     * @param string $campaign
-     * @param \DateTimeInterface $createdAfter
-     * @param \DateTimeInterface $createdAt
-     * @param \DateTimeInterface $createdBefore
-     * @param list<string> $includedProperties
-     * @param bool $includeStats
-     * @param bool $isPublished
-     * @param int $limit
-     * @param bool $marketingCampaignNames
-     * @param list<string> $sort
-     * @param Type|value-of<Type> $type
-     * @param \DateTimeInterface $updatedAfter
-     * @param \DateTimeInterface $updatedAt
-     * @param \DateTimeInterface $updatedBefore
-     * @param bool $workflowNames
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived Specifies whether to return archived emails. Defaults to `false`.
+     * @param string $campaign Filter by campaign GUID. All emails will be returned if not present.
+     * @param \DateTimeInterface $createdAfter only return emails created after the specified time
+     * @param \DateTimeInterface $createdAt only return emails created at exactly the specified time
+     * @param \DateTimeInterface $createdBefore only return emails created before the specified time
+     * @param list<string> $includedProperties limit the response to only include this specified list of properties
+     * @param bool $includeStats include statistics with emails
+     * @param bool $isPublished Filter by published/draft emails. All emails will be returned if not present.
+     * @param int $limit The maximum number of results to return. Default is 10.
+     * @param bool $marketingCampaignNames include the names for any associated marketing campaigns
+     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     * @param Type|value-of<Type> $type Email types to be filtered by. Multiple types can be included. All emails will be returned if not present.
+     * @param \DateTimeInterface $updatedAfter only return emails last updated after the specified time
+     * @param \DateTimeInterface $updatedAt only return emails last updated at exactly the specified time
+     * @param \DateTimeInterface $updatedBefore only return emails last updated before the specified time
+     * @param bool $workflowNames include the names of any workflows associated with the returned emails
      *
      * @return Page<PublicEmail>
      *
@@ -216,7 +216,7 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
@@ -242,9 +242,9 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param string $id
-     * @param string $cloneName
-     * @param string $language
+     * @param string $id the unique identifier of the email to be cloned
+     * @param string $cloneName the name to assign to the cloned email
+     * @param string $language the language code for the cloned email, such as 'en' for English
      *
      * @throws APIException
      */
@@ -270,7 +270,7 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param string $contentID
+     * @param string $contentID ID of the object to test
      * @param string $variationName
      *
      * @throws APIException
@@ -316,10 +316,10 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param list<int> $emailIDs
-     * @param string $endTimestamp
-     * @param string $property
-     * @param string $startTimestamp
+     * @param list<int> $emailIDs Filter by email IDs. Only include statistics of emails with these IDs.
+     * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
+     * @param string $property Specifies which email properties should be returned. All properties will be returned by default.
+     * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
      *
      * @throws APIException
      */
@@ -346,10 +346,10 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param list<int> $emailIDs
-     * @param string $endTimestamp
-     * @param Interval|value-of<Interval> $interval
-     * @param string $startTimestamp
+     * @param list<int> $emailIDs Filter by email IDs. Only include statistics of emails with these IDs.
+     * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
+     * @param Interval|value-of<Interval> $interval the interval to aggregate statistics for
+     * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
      *
      * @throws APIException
      */
@@ -402,9 +402,9 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param string $after
-     * @param string $before
-     * @param int $limit
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param string $before The cursor token value to get the previous set of results. You can get this from the `paging.prev.before` JSON property of a paged response containing more results.
+     * @param int $limit The maximum number of results to return. Default is 10.
      *
      * @throws APIException
      */
@@ -442,11 +442,11 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param bool $archived
-     * @param list<string> $includedProperties
-     * @param bool $includeStats
-     * @param bool $marketingCampaignNames
-     * @param bool $workflowNames
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $includedProperties limit the response to only include the specified properties
+     * @param bool $includeStats include statistics with email
+     * @param bool $marketingCampaignNames if set to true, loads `campaignName` and `campaignUtm`
+     * @param bool $workflowNames if set to true, loads workflows in which the email is used within a "send email" action
      *
      * @throws APIException
      */
@@ -548,24 +548,24 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param string $activeDomain
-     * @param bool $archived
+     * @param string $activeDomain the active domain of the email
+     * @param bool $archived determines if the email is archived or not
      * @param int $businessUnitID
-     * @param string $campaign
-     * @param PublicEmailContent $content
-     * @param PublicEmailFromDetails $from
+     * @param string $campaign the ID of the campaign this email is associated to
+     * @param PublicEmailContent $content data structure representing the content of the email
+     * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
      * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language> $language
-     * @param string $name
-     * @param \DateTimeInterface $publishDate
-     * @param PublicRssEmailDetails $rssData
-     * @param bool $sendOnPublish
-     * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State> $state
-     * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory> $subcategory
-     * @param string $subject
-     * @param PublicEmailSubscriptionDetails $subscriptionDetails
-     * @param PublicEmailTestingDetails $testing
-     * @param PublicEmailToDetails $to
+     * @param string $name the name of the email, as displayed on the email dashboard
+     * @param \DateTimeInterface $publishDate The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
+     * @param PublicRssEmailDetails $rssData RSS related data if it is a blog or rss email
+     * @param bool $sendOnPublish determines whether the email will be sent immediately on publish
+     * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State> $state the email state
+     * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory> $subcategory the email subcategory
+     * @param string $subject the subject of the email
+     * @param PublicEmailSubscriptionDetails $subscriptionDetails data structure representing the subscription fields of the email
+     * @param PublicEmailTestingDetails $testing AB testing related data. This property is only returned for AB type emails.
+     * @param PublicEmailToDetails $to data structure representing the to fields of the email
      * @param PublicWebversionDetails $webversion
      *
      * @throws APIException

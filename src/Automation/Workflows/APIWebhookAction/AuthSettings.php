@@ -10,6 +10,9 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * The type of auth to use when calling the webhook endpoint.
+ */
 final class AuthSettings implements ConverterSource
 {
     use SdkUnion;

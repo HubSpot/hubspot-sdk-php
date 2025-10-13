@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormStyle\SubmitAlignment;
 
 /**
+ * Styling options for the form.
+ *
  * @phpstan-type form_style = array{
  *   backgroundWidth: string,
  *   fontFamily: string,

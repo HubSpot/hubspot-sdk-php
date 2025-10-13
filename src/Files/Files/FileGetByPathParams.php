@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new FileGetByPathParams); // set properties as needed
  * $client->files.files->getByPath(...$params->toArray());
  * ```
- * Retrieve file by path.
+ * Retrieve a file by its path.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,7 +33,11 @@ final class FileGetByPathParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<string>|null $properties */
+    /**
+     * Properties to return in the response.
+     *
+     * @var list<string>|null $properties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $properties;
 
@@ -59,6 +63,8 @@ final class FileGetByPathParams implements BaseModel
     }
 
     /**
+     * Properties to return in the response.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self

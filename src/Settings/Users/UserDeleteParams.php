@@ -17,7 +17,7 @@ use HubspotSDK\Settings\Users\UserDeleteParams\IDProperty;
  * $params = (new UserDeleteParams); // set properties as needed
  * $client->settings.users->delete(...$params->toArray());
  * ```
- * Removes a user.
+ * Removes a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -36,7 +36,11 @@ final class UserDeleteParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<IDProperty>|null $idProperty */
+    /**
+     * The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`.
+     *
+     * @var value-of<IDProperty>|null $idProperty
+     */
     #[Api(enum: IDProperty::class, optional: true)]
     public ?string $idProperty;
 
@@ -62,6 +66,8 @@ final class UserDeleteParams implements BaseModel
     }
 
     /**
+     * The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`.
+     *
      * @param IDProperty|value-of<IDProperty> $idProperty
      */
     public function withIDProperty(IDProperty|string $idProperty): self

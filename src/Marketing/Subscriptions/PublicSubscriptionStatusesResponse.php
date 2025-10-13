@@ -22,10 +22,17 @@ final class PublicSubscriptionStatusesResponse implements BaseModel, ResponseCon
 
     use SdkResponse;
 
+    /**
+     * Email address of the contact.
+     */
     #[Api]
     public string $recipient;
 
-    /** @var list<PublicSubscriptionStatus> $subscriptionStatuses */
+    /**
+     * A list of all of the contact's subscriptions statuses.
+     *
+     * @var list<PublicSubscriptionStatus> $subscriptionStatuses
+     */
     #[Api(list: PublicSubscriptionStatus::class)]
     public array $subscriptionStatuses;
 
@@ -71,6 +78,9 @@ final class PublicSubscriptionStatusesResponse implements BaseModel, ResponseCon
         return $obj;
     }
 
+    /**
+     * Email address of the contact.
+     */
     public function withRecipient(string $recipient): self
     {
         $obj = clone $this;
@@ -80,6 +90,8 @@ final class PublicSubscriptionStatusesResponse implements BaseModel, ResponseCon
     }
 
     /**
+     * A list of all of the contact's subscriptions statuses.
+     *
      * @param list<PublicSubscriptionStatus> $subscriptionStatuses
      */
     public function withSubscriptionStatuses(array $subscriptionStatuses): self

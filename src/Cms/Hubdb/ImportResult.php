@@ -26,16 +26,29 @@ final class ImportResult implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * Specifies number of duplicate rows.
+     */
     #[Api]
     public int $duplicateRows;
 
-    /** @var list<Error> $errors */
+    /**
+     * List of errors during import.
+     *
+     * @var list<Error> $errors
+     */
     #[Api(list: Error::class)]
     public array $errors;
 
+    /**
+     * Specifies whether row limit exceeded during import.
+     */
     #[Api]
     public bool $rowLimitExceeded;
 
+    /**
+     * Specifies number of rows imported.
+     */
     #[Api]
     public int $rowsImported;
 
@@ -87,6 +100,9 @@ final class ImportResult implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Specifies number of duplicate rows.
+     */
     public function withDuplicateRows(int $duplicateRows): self
     {
         $obj = clone $this;
@@ -96,6 +112,8 @@ final class ImportResult implements BaseModel, ResponseConverter
     }
 
     /**
+     * List of errors during import.
+     *
      * @param list<Error> $errors
      */
     public function withErrors(array $errors): self
@@ -106,6 +124,9 @@ final class ImportResult implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Specifies whether row limit exceeded during import.
+     */
     public function withRowLimitExceeded(bool $rowLimitExceeded): self
     {
         $obj = clone $this;
@@ -114,6 +135,9 @@ final class ImportResult implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Specifies number of rows imported.
+     */
     public function withRowsImported(int $rowsImported): self
     {
         $obj = clone $this;

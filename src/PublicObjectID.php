@@ -16,6 +16,9 @@ final class PublicObjectID implements BaseModel
     /** @use SdkModel<public_object_id> */
     use SdkModel;
 
+    /**
+     * The unique ID that identifies an object.
+     */
     #[Api]
     public string $id;
 
@@ -52,6 +55,9 @@ final class PublicObjectID implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID that identifies an object.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;

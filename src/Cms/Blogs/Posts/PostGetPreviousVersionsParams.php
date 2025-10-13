@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostGetPreviousVersionsParams); // set properties as needed
  * $client->cms.blogs.posts->getPreviousVersions(...$params->toArray());
  * ```
- * Retrieves all previous versions of a post.
+ * Retrieve all the previous versions of a blog post.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,12 +35,18 @@ final class PostGetPreviousVersionsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
     #[Api(optional: true)]
     public ?string $before;
 
+    /**
+     * The maximum number of results to return. Default is 100.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
@@ -68,6 +74,9 @@ final class PostGetPreviousVersionsParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -84,6 +93,9 @@ final class PostGetPreviousVersionsParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of results to return. Default is 100.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;

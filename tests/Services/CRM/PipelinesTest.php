@@ -40,8 +40,11 @@ final class PipelinesTest extends TestCase
         $result = $this->client->crm->pipelines->create(
             'objectType',
             displayOrder: 0,
-            label: 'label',
-            stages: [PipelineStageInput::with(displayOrder: 0, label: 'label')],
+            label: 'My replaced pipeline',
+            stages: [
+                PipelineStageInput::with(displayOrder: 0, label: 'In Progress'),
+                PipelineStageInput::with(displayOrder: 1, label: 'Done'),
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -57,10 +60,12 @@ final class PipelinesTest extends TestCase
         $result = $this->client->crm->pipelines->create(
             'objectType',
             displayOrder: 0,
-            label: 'label',
+            label: 'My replaced pipeline',
             stages: [
-                PipelineStageInput::with(displayOrder: 0, label: 'label')
-                    ->withMetadata(['foo' => 'string']),
+                PipelineStageInput::with(displayOrder: 0, label: 'In Progress')
+                    ->withMetadata(['ticketState' => 'OPEN']),
+                PipelineStageInput::with(displayOrder: 1, label: 'Done')
+                    ->withMetadata(['ticketState' => 'CLOSED']),
             ],
         );
 
@@ -216,8 +221,8 @@ final class PipelinesTest extends TestCase
             'stageId',
             objectType: 'objectType',
             pipelineID: 'pipelineId',
-            displayOrder: 0,
-            label: 'label',
+            displayOrder: 1,
+            label: 'Done',
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -234,8 +239,8 @@ final class PipelinesTest extends TestCase
             'stageId',
             objectType: 'objectType',
             pipelineID: 'pipelineId',
-            displayOrder: 0,
-            label: 'label',
+            displayOrder: 1,
+            label: 'Done',
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

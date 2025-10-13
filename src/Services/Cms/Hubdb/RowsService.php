@@ -44,13 +44,14 @@ final class RowsService implements RowsContract
     /**
      * @api
      *
-     * Add a new row to a table
+     * Add a new row to a HubDB table. New rows will be added to the draft version of the table. Use the `/publish` endpoint to push these changes to published version.
      *
-     * @param array<string, mixed> $values
-     * @param int $childTableID
+     * @param array<string,
+     * mixed,> $values List of key value pairs with the column name and column value
+     * @param int $childTableID Specifies the value for the column child table id
      * @param int $displayIndex
-     * @param string $name
-     * @param string $path
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
@@ -104,14 +105,15 @@ final class RowsService implements RowsContract
     /**
      * @api
      *
-     * Get rows for a table
+     * Returns a set of rows in the published version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options.
+     * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
      *
-     * @param string $after
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived
-     * @param int $limit
+     * @param int $limit The maximum number of results to return. Default is `1000`.
      * @param int $offset
-     * @param list<string> $properties
-     * @param list<string> $sort
+     * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
+     * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
      *
      * @return Page<mixed>
      *
@@ -169,7 +171,7 @@ final class RowsService implements RowsContract
     /**
      * @api
      *
-     * Clone a row
+     * Clones a single row in the draft version of a table.
      *
      * @param string $tableIDOrName
      * @param string $name
@@ -221,7 +223,7 @@ final class RowsService implements RowsContract
     /**
      * @api
      *
-     * Permanently deletes a row
+     * Permanently deletes a row from a table's draft version.
      *
      * @param string $tableIDOrName
      *
@@ -270,7 +272,8 @@ final class RowsService implements RowsContract
     /**
      * @api
      *
-     * Get a table row
+     * Get a single row by ID from the published version of a table.
+     * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
      *
      * @param string $tableIDOrName
      * @param bool $archived
@@ -317,7 +320,7 @@ final class RowsService implements RowsContract
     /**
      * @api
      *
-     * Get a row from the draft table
+     * Get a single row by ID from a table's draft version.
      *
      * @param string $tableIDOrName
      * @param bool $archived
@@ -369,14 +372,14 @@ final class RowsService implements RowsContract
     /**
      * @api
      *
-     * Get rows from draft table
+     * Returns rows in the draft version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options.
      *
-     * @param string $after
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived
-     * @param int $limit
+     * @param int $limit The maximum number of results to return. Default is `1000`.
      * @param int $offset
-     * @param list<string> $properties
-     * @param list<string> $sort
+     * @param list<string> $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
+     * @param list<string> $sort specifies the column names to sort the results by
      *
      * @throws APIException
      */
@@ -432,14 +435,16 @@ final class RowsService implements RowsContract
     /**
      * @api
      *
-     * Replaces an existing row
+     * Replace a single row in the draft version of a table. All column values must be specified. If a column has a value in the target table and this request doesn't define that value, it will be deleted.
+     * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
      *
      * @param string $tableIDOrName
-     * @param array<string, mixed> $values
-     * @param int $childTableID
+     * @param array<string,
+     * mixed,> $values List of key value pairs with the column name and column value
+     * @param int $childTableID Specifies the value for the column child table id
      * @param int $displayIndex
-     * @param string $name
-     * @param string $path
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
@@ -499,14 +504,17 @@ final class RowsService implements RowsContract
     /**
      * @api
      *
-     * Updates an existing row
+     * Sparse updates a single row in the table's draft version.
+     * All the column values need not be specified. Only the columns or fields that needs to be modified can be specified.
+     * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
      *
      * @param string $tableIDOrName
-     * @param array<string, mixed> $values
-     * @param int $childTableID
+     * @param array<string,
+     * mixed,> $values List of key value pairs with the column name and column value
+     * @param int $childTableID Specifies the value for the column child table id
      * @param int $displayIndex
-     * @param string $name
-     * @param string $path
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb\Column;
 
+/**
+ * Type of the column.
+ */
 enum Type: string
 {
     case NULL = 'NULL';

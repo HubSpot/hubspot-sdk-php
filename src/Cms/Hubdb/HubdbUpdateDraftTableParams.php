@@ -16,7 +16,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbUpdateDraftTableParams); // set properties as needed
  * $client->cms.hubdb->updateDraftTable(...$params->toArray());
  * ```
- * Update an existing table.
+ * Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the draft verion of the table. Use the `/publish` endpoint to push all the changes to the published version. To restore a table, include the query parameter `archived=true` and `"archived": false` in the json body.
+ * **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -45,38 +46,70 @@ final class HubdbUpdateDraftTableParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Label of the table.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * Name of the table.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * Specifies whether to return archived tables. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * Set this to `true` to populate foreign ID values in the result.
+     */
     #[Api(optional: true)]
     public ?bool $includeForeignIDs;
 
     #[Api(optional: true)]
     public ?bool $isGetLocalizedSchema;
 
+    /**
+     * Specifies whether child tables can be created.
+     */
     #[Api(optional: true)]
     public ?bool $allowChildTables;
 
+    /**
+     * Specifies whether the table can be read by public without authorization.
+     */
     #[Api('allowPublicApiAccess', optional: true)]
     public ?bool $allowPublicAPIAccess;
 
-    /** @var list<ColumnRequest>|null $columns */
+    /**
+     * List of columns in the table.
+     *
+     * @var list<ColumnRequest>|null $columns
+     */
     #[Api(list: ColumnRequest::class, optional: true)]
     public ?array $columns;
 
-    /** @var array<string, int>|null $dynamicMetaTags */
+    /**
+     * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+     *
+     * @var array<string, int>|null $dynamicMetaTags
+     */
     #[Api(map: 'int', optional: true)]
     public ?array $dynamicMetaTags;
 
+    /**
+     * Specifies creation of multi-level dynamic pages using child tables.
+     */
     #[Api(optional: true)]
     public ?bool $enableChildTablePages;
 
+    /**
+     * Specifies whether the table can be used for creation of dynamic pages.
+     */
     #[Api(optional: true)]
     public ?bool $useForPages;
 
@@ -138,6 +171,9 @@ final class HubdbUpdateDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Label of the table.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -146,6 +182,9 @@ final class HubdbUpdateDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the table.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -154,6 +193,9 @@ final class HubdbUpdateDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to return archived tables. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -162,6 +204,9 @@ final class HubdbUpdateDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Set this to `true` to populate foreign ID values in the result.
+     */
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;
@@ -178,6 +223,9 @@ final class HubdbUpdateDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether child tables can be created.
+     */
     public function withAllowChildTables(bool $allowChildTables): self
     {
         $obj = clone $this;
@@ -186,6 +234,9 @@ final class HubdbUpdateDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether the table can be read by public without authorization.
+     */
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
@@ -195,6 +246,8 @@ final class HubdbUpdateDraftTableParams implements BaseModel
     }
 
     /**
+     * List of columns in the table.
+     *
      * @param list<ColumnRequest> $columns
      */
     public function withColumns(array $columns): self
@@ -206,6 +259,8 @@ final class HubdbUpdateDraftTableParams implements BaseModel
     }
 
     /**
+     * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+     *
      * @param array<string, int> $dynamicMetaTags
      */
     public function withDynamicMetaTags(array $dynamicMetaTags): self
@@ -216,6 +271,9 @@ final class HubdbUpdateDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies creation of multi-level dynamic pages using child tables.
+     */
     public function withEnableChildTablePages(bool $enableChildTablePages): self
     {
         $obj = clone $this;
@@ -224,6 +282,9 @@ final class HubdbUpdateDraftTableParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether the table can be used for creation of dynamic pages.
+     */
     public function withUseForPages(bool $useForPages): self
     {
         $obj = clone $this;

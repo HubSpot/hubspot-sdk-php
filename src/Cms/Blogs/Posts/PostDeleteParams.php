@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostDeleteParams); // set properties as needed
  * $client->cms.blogs.posts->delete(...$params->toArray());
  * ```
- * Delete a blog post.
+ * Delete a blog post by ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class PostDeleteParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Whether to return only results that have been deleted.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -55,6 +58,9 @@ final class PostDeleteParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been deleted.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;

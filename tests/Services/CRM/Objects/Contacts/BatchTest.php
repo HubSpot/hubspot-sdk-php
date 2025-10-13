@@ -69,11 +69,11 @@ final class BatchTest extends TestCase
                     ->withAssociations(
                         [
                             PublicAssociationsForObject::with(
-                                to: PublicObjectID::with(id: 'id'),
+                                to: PublicObjectID::with(id: '37295'),
                                 types: [
                                     AssociationSpec::with(
                                         associationCategory: 'HUBSPOT_DEFINED',
-                                        associationTypeID: 0
+                                        associationTypeID: 279
                                     ),
                                 ],
                             ),
@@ -118,7 +118,7 @@ final class BatchTest extends TestCase
                     id: 'id',
                     properties: ['foo' => 'string']
                 )
-                    ->withIDProperty('idProperty')
+                    ->withIDProperty('my_unique_property_name')
                     ->withObjectWriteTraceID('objectWriteTraceId'),
             ],
         );

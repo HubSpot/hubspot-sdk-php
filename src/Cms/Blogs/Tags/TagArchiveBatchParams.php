@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TagArchiveBatchParams); // set properties as needed
  * $client->cms.blogs.tags->archiveBatch(...$params->toArray());
  * ```
- * Delete a batch of Blog Tags.
+ * Delete the Blog Tag objects identified in the request body.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,7 +33,11 @@ final class TagArchiveBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<string> $inputs */
+    /**
+     * Strings to input.
+     *
+     * @var list<string> $inputs
+     */
     #[Api(list: 'string')]
     public array $inputs;
 
@@ -73,6 +77,8 @@ final class TagArchiveBatchParams implements BaseModel
     }
 
     /**
+     * Strings to input.
+     *
      * @param list<string> $inputs
      */
     public function withInputs(array $inputs): self

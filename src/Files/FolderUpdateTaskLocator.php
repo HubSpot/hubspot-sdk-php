@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Information on the task that has been started, and where to check it's status.
+ *
  * @phpstan-type folder_update_task_locator = array{
  *   id: string, links: array<string, string>
  * }
@@ -18,10 +20,17 @@ final class FolderUpdateTaskLocator implements BaseModel
     /** @use SdkModel<folder_update_task_locator> */
     use SdkModel;
 
+    /**
+     * ID of the task.
+     */
     #[Api]
     public string $id;
 
-    /** @var array<string, string> $links */
+    /**
+     * Links for where to check information related to the task. The `status` link gives the URL for where to check the status of the task.
+     *
+     * @var array<string, string> $links
+     */
     #[Api(map: 'string')]
     public array $links;
 
@@ -61,6 +70,9 @@ final class FolderUpdateTaskLocator implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the task.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -70,6 +82,8 @@ final class FolderUpdateTaskLocator implements BaseModel
     }
 
     /**
+     * Links for where to check information related to the task. The `status` link gives the URL for where to check the status of the task.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self

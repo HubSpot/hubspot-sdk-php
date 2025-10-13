@@ -17,7 +17,7 @@ use HubspotSDK\Files\Files\FileGetSignedURLParams\Size;
  * $params = (new FileGetSignedURLParams); // set properties as needed
  * $client->files.files->getSignedURL(...$params->toArray());
  * ```
- * Get signed URL to access private file.
+ * Generates signed URL that allows temporary access to a private file.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -36,13 +36,23 @@ final class FileGetSignedURLParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * How long in seconds the link will provide access to the file.
+     */
     #[Api(optional: true)]
     public ?int $expirationSeconds;
 
-    /** @var value-of<Size>|null $size */
+    /**
+     * For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL.
+     *
+     * @var value-of<Size>|null $size
+     */
     #[Api(enum: Size::class, optional: true)]
     public ?string $size;
 
+    /**
+     * If size is provided, this will upscale the image to fit the size dimensions.
+     */
     #[Api(optional: true)]
     public ?bool $upscale;
 
@@ -72,6 +82,9 @@ final class FileGetSignedURLParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * How long in seconds the link will provide access to the file.
+     */
     public function withExpirationSeconds(int $expirationSeconds): self
     {
         $obj = clone $this;
@@ -81,6 +94,8 @@ final class FileGetSignedURLParams implements BaseModel
     }
 
     /**
+     * For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL.
+     *
      * @param Size|value-of<Size> $size
      */
     public function withSize(Size|string $size): self
@@ -91,6 +106,9 @@ final class FileGetSignedURLParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * If size is provided, this will upscale the image to fit the size dimensions.
+     */
     public function withUpscale(bool $upscale): self
     {
         $obj = clone $this;

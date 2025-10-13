@@ -19,7 +19,11 @@ final class PublicChannelIntegrationMessageUpdateRequest implements BaseModel
     /** @use SdkModel<public_channel_integration_message_update_request> */
     use SdkModel;
 
-    /** @var value-of<StatusType> $statusType */
+    /**
+     * Valid status are SENT, FAILED, and READ.
+     *
+     * @var value-of<StatusType> $statusType
+     */
     #[Api(enum: StatusType::class)]
     public string $statusType;
 
@@ -66,6 +70,8 @@ final class PublicChannelIntegrationMessageUpdateRequest implements BaseModel
     }
 
     /**
+     * Valid status are SENT, FAILED, and READ.
+     *
      * @param StatusType|value-of<StatusType> $statusType
      */
     public function withStatusType(StatusType|string $statusType): self

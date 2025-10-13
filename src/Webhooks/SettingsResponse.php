@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
+ * Webhook settings for an app.
+ *
  * @phpstan-type settings_response = array{
  *   createdAt: \DateTimeInterface,
  *   targetURL: string,
@@ -25,15 +27,27 @@ final class SettingsResponse implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * A publicly available URL for HubSpot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
+     */
     #[Api('targetUrl')]
     public string $targetURL;
 
+    /**
+     * Configuration details for webhook throttling.
+     */
     #[Api]
     public ThrottlingSettings $throttling;
 
+    /**
+     * When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
@@ -81,6 +95,9 @@ final class SettingsResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -89,6 +106,9 @@ final class SettingsResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A publicly available URL for HubSpot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
+     */
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
@@ -97,6 +117,9 @@ final class SettingsResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Configuration details for webhook throttling.
+     */
     public function withThrottling(ThrottlingSettings $throttling): self
     {
         $obj = clone $this;
@@ -105,6 +128,9 @@ final class SettingsResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;

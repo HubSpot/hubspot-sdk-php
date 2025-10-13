@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Response object for batch operations on blog posts.
+ *
  * @phpstan-type batch_response_blog_post = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<BlogPost>,
@@ -24,24 +26,45 @@ final class BatchResponseBlogPost implements BaseModel
     /** @use SdkModel<batch_response_blog_post> */
     use SdkModel;
 
+    /**
+     * Time of batch operation completion.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<BlogPost> $results */
+    /**
+     * Results of batch operation.
+     *
+     * @var list<BlogPost> $results
+     */
     #[Api(list: BlogPost::class)]
     public array $results;
 
+    /**
+     * Time of batch operation start.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * Status of batch operation.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var array<string, string>|null $links */
+    /**
+     * Links associated with batch operation.
+     *
+     * @var array<string, string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * Time of batch operation request.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -100,6 +123,9 @@ final class BatchResponseBlogPost implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time of batch operation completion.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -109,6 +135,8 @@ final class BatchResponseBlogPost implements BaseModel
     }
 
     /**
+     * Results of batch operation.
+     *
      * @param list<BlogPost> $results
      */
     public function withResults(array $results): self
@@ -119,6 +147,9 @@ final class BatchResponseBlogPost implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time of batch operation start.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -128,6 +159,8 @@ final class BatchResponseBlogPost implements BaseModel
     }
 
     /**
+     * Status of batch operation.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -139,6 +172,8 @@ final class BatchResponseBlogPost implements BaseModel
     }
 
     /**
+     * Links associated with batch operation.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -149,6 +184,9 @@ final class BatchResponseBlogPost implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time of batch operation request.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

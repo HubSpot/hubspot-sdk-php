@@ -16,6 +16,9 @@ final class ColorStop implements BaseModel
     /** @use SdkModel<color_stop> */
     use SdkModel;
 
+    /**
+     * A color defined by RGB values.
+     */
     #[Api]
     public RgbaColor $color;
 
@@ -52,6 +55,9 @@ final class ColorStop implements BaseModel
         return $obj;
     }
 
+    /**
+     * A color defined by RGB values.
+     */
     public function withColor(RgbaColor $color): self
     {
         $obj = clone $this;

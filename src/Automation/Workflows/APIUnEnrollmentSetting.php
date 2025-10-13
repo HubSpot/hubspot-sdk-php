@@ -19,11 +19,23 @@ final class APIUnEnrollmentSetting implements BaseModel
     /** @use SdkModel<api_un_enrollment_setting> */
     use SdkModel;
 
-    /** @var list<string> $flowIDs */
+    /**
+     * The IDs of the flows to unenroll an object in if it's enrolled in this flow.
+     *
+     * @var list<string> $flowIDs
+     */
     #[Api('flowIds', list: 'string')]
     public array $flowIDs;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of unenrollment to perform:
+     *
+     * "ALL" - unenroll the object from all other flows
+     *
+     * "SELECTIVE" - only unenroll the object from the flows specified in `flowIds`
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -65,6 +77,8 @@ final class APIUnEnrollmentSetting implements BaseModel
     }
 
     /**
+     * The IDs of the flows to unenroll an object in if it's enrolled in this flow.
+     *
      * @param list<string> $flowIDs
      */
     public function withFlowIDs(array $flowIDs): self
@@ -76,6 +90,12 @@ final class APIUnEnrollmentSetting implements BaseModel
     }
 
     /**
+     * The type of unenrollment to perform:
+     *
+     * "ALL" - unenroll the object from all other flows
+     *
+     * "SELECTIVE" - only unenroll the object from the flows specified in `flowIds`
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Files\FileUpdateInput\Access;
 
 /**
+ * Object for updating files.
+ *
  * @phpstan-type file_update_input = array{
  *   access?: value-of<Access>,
  *   clearExpires?: bool,
@@ -25,25 +27,47 @@ final class FileUpdateInput implements BaseModel
     /** @use SdkModel<file_update_input> */
     use SdkModel;
 
-    /** @var value-of<Access>|null $access */
+    /**
+     * NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
+     *
+     * @var value-of<Access>|null $access
+     */
     #[Api(enum: Access::class, optional: true)]
     public ?string $access;
 
+    /**
+     * Indicates whether the expiration date of the file should be cleared.
+     */
     #[Api(optional: true)]
     public ?bool $clearExpires;
 
+    /**
+     * Specifies the date and time when the file will expire.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $expiresAt;
 
+    /**
+     * Mark whether the file should be used in new content or not.
+     */
     #[Api(optional: true)]
     public ?bool $isUsableInContent;
 
+    /**
+     * New name for the file.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * FolderId where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
+     */
     #[Api('parentFolderId', optional: true)]
     public ?string $parentFolderID;
 
+    /**
+     * Folder path where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
+     */
     #[Api(optional: true)]
     public ?string $parentFolderPath;
 
@@ -82,6 +106,8 @@ final class FileUpdateInput implements BaseModel
     }
 
     /**
+     * NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
+     *
      * @param Access|value-of<Access> $access
      */
     public function withAccess(Access|string $access): self
@@ -92,6 +118,9 @@ final class FileUpdateInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether the expiration date of the file should be cleared.
+     */
     public function withClearExpires(bool $clearExpires): self
     {
         $obj = clone $this;
@@ -100,6 +129,9 @@ final class FileUpdateInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the date and time when the file will expire.
+     */
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;
@@ -108,6 +140,9 @@ final class FileUpdateInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * Mark whether the file should be used in new content or not.
+     */
     public function withIsUsableInContent(bool $isUsableInContent): self
     {
         $obj = clone $this;
@@ -116,6 +151,9 @@ final class FileUpdateInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * New name for the file.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -124,6 +162,9 @@ final class FileUpdateInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * FolderId where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
+     */
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
@@ -132,6 +173,9 @@ final class FileUpdateInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * Folder path where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
+     */
     public function withParentFolderPath(string $parentFolderPath): self
     {
         $obj = clone $this;

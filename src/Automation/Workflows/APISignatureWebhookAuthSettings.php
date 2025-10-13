@@ -19,10 +19,17 @@ final class APISignatureWebhookAuthSettings implements BaseModel
     /** @use SdkModel<api_signature_webhook_auth_settings> */
     use SdkModel;
 
+    /**
+     * The appId that this signature will be generated for.
+     */
     #[Api('appId')]
     public int $appID;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of webhook auth settings this is, can be: "AUTH_KEY" or "SIGNATURE".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -64,6 +71,9 @@ final class APISignatureWebhookAuthSettings implements BaseModel
         return $obj;
     }
 
+    /**
+     * The appId that this signature will be generated for.
+     */
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
@@ -73,6 +83,8 @@ final class APISignatureWebhookAuthSettings implements BaseModel
     }
 
     /**
+     * The type of webhook auth settings this is, can be: "AUTH_KEY" or "SIGNATURE".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

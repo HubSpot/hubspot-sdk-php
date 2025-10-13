@@ -20,6 +20,9 @@ final class PublicDefaultAssociation implements BaseModel
     /** @use SdkModel<public_default_association> */
     use SdkModel;
 
+    /**
+     * Defines the type, direction, and details of the relationship between two CRM objects.
+     */
     #[Api]
     public AssociationSpec1 $associationSpec;
 
@@ -70,6 +73,9 @@ final class PublicDefaultAssociation implements BaseModel
         return $obj;
     }
 
+    /**
+     * Defines the type, direction, and details of the relationship between two CRM objects.
+     */
     public function withAssociationSpec(AssociationSpec1 $associationSpec): self
     {
         $obj = clone $this;

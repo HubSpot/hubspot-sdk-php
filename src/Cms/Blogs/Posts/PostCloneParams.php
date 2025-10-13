@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostCloneParams); // set properties as needed
  * $client->cms.blogs.posts->clone(...$params->toArray());
  * ```
- * Clone a blog post.
+ * Clone a blog post, making a copy of it in a new blog post.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,9 +33,15 @@ final class PostCloneParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of the object to be cloned.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Name of the cloned object.
+     */
     #[Api(optional: true)]
     public ?string $cloneName;
 
@@ -74,6 +80,9 @@ final class PostCloneParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the object to be cloned.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -82,6 +91,9 @@ final class PostCloneParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the cloned object.
+     */
     public function withCloneName(string $cloneName): self
     {
         $obj = clone $this;

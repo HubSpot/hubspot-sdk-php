@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PropertyGetByNameParams); // set properties as needed
  * $client->crm.properties->getByName(...$params->toArray());
  * ```
- * Read a property.
+ * Read a property identified by {propertyName}.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -38,6 +38,9 @@ final class PropertyGetByNameParams implements BaseModel
     #[Api]
     public string $objectType;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -91,6 +94,9 @@ final class PropertyGetByNameParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;

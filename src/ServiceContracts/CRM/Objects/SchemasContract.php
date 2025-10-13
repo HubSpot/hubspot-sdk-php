@@ -20,14 +20,15 @@ interface SchemasContract
     /**
      * @api
      *
-     * @param list<string> $associatedObjects
-     * @param ObjectTypeDefinitionLabels $labels
-     * @param string $name
-     * @param list<ObjectTypePropertyCreate> $properties
-     * @param list<string> $requiredProperties
-     * @param string $primaryDisplayProperty
-     * @param list<string> $searchableProperties
-     * @param list<string> $secondaryDisplayProperties
+     * @param list<string> $associatedObjects associations defined for this object type
+     * @param ObjectTypeDefinitionLabels $labels Singular and plural labels for the object. Used in CRM display.
+     * @param string $name A unique name for this object. For internal use only.
+     * @param list<ObjectTypePropertyCreate> $properties properties defined for this object type
+     * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
+     * @param string $description
+     * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
+     * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
      *
      * @throws APIException
      */
@@ -37,6 +38,7 @@ interface SchemasContract
         $name,
         $properties,
         $requiredProperties,
+        $description = omit,
         $primaryDisplayProperty = omit,
         $searchableProperties = omit,
         $secondaryDisplayProperties = omit,
@@ -59,18 +61,20 @@ interface SchemasContract
      * @api
      *
      * @param bool $clearDescription
-     * @param ObjectTypeDefinitionLabels $labels
-     * @param string $primaryDisplayProperty
-     * @param list<string> $requiredProperties
+     * @param string $description
+     * @param ObjectTypeDefinitionLabels $labels Singular and plural labels for the object. Used in CRM display.
+     * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
      * @param bool $restorable
-     * @param list<string> $searchableProperties
-     * @param list<string> $secondaryDisplayProperties
+     * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
+     * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
      *
      * @throws APIException
      */
     public function update(
         string $objectType,
         $clearDescription = omit,
+        $description = omit,
         $labels = omit,
         $primaryDisplayProperty = omit,
         $requiredProperties = omit,
@@ -96,7 +100,7 @@ interface SchemasContract
     /**
      * @api
      *
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
@@ -120,7 +124,7 @@ interface SchemasContract
     /**
      * @api
      *
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
@@ -172,9 +176,9 @@ interface SchemasContract
     /**
      * @api
      *
-     * @param string $fromObjectTypeID
-     * @param string $toObjectTypeID
-     * @param string $name
+     * @param string $fromObjectTypeID ID of the primary object type to link from
+     * @param string $toObjectTypeID ID of the target object type to link to
+     * @param string $name a unique name for this association
      *
      * @throws APIException
      */

@@ -17,7 +17,7 @@ use HubspotSDK\Webhooks\WebhookCreateParams\EventType;
  * $params = (new WebhookCreateParams); // set properties as needed
  * $client->webhooks->create(...$params->toArray());
  * ```
- * Create an event subscription.
+ * Create new event subscription for the specified app.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -39,16 +39,26 @@ final class WebhookCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<EventType> $eventType */
+    /**
+     * Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     *
+     * @var value-of<EventType> $eventType
+     */
     #[Api(enum: EventType::class)]
     public string $eventType;
 
+    /**
+     * Determines if the subscription is active or paused. Defaults to false.
+     */
     #[Api(optional: true)]
     public ?bool $active;
 
     #[Api('objectTypeId', optional: true)]
     public ?string $objectTypeID;
 
+    /**
+     * The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
+     */
     #[Api(optional: true)]
     public ?string $propertyName;
 
@@ -96,6 +106,8 @@ final class WebhookCreateParams implements BaseModel
     }
 
     /**
+     * Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     *
      * @param EventType|value-of<EventType> $eventType
      */
     public function withEventType(EventType|string $eventType): self
@@ -106,6 +118,9 @@ final class WebhookCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Determines if the subscription is active or paused. Defaults to false.
+     */
     public function withActive(bool $active): self
     {
         $obj = clone $this;
@@ -122,6 +137,9 @@ final class WebhookCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
+     */
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;

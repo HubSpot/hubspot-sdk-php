@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TablePublishDraftParams); // set properties as needed
  * $client->cms.hubdb.tables->publishDraft(...$params->toArray());
  * ```
- * Publish a table from draft.
+ * Publishes the table by copying the data and table schema changes from draft version to the published version, meaning any website pages using data from the table will be updated.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class TablePublishDraftParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Set this to `true` to populate foreign ID values in the response.
+     */
     #[Api(optional: true)]
     public ?bool $includeForeignIDs;
 
@@ -55,6 +58,9 @@ final class TablePublishDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Set this to `true` to populate foreign ID values in the response.
+     */
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;

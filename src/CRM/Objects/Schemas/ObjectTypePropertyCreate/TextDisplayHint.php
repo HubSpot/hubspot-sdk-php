@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate;
 
+/**
+ * Controls how text properties are formatted in the HubSpot UI.
+ */
 enum TextDisplayHint: string
 {
     case UNFORMATTED_SINGLE_LINE = 'unformatted_single_line';

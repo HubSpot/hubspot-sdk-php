@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbGetAllTablesParams); // set properties as needed
  * $client->cms.hubdb->getAllTables(...$params->toArray());
  * ```
- * Get all published tables.
+ * Returns the details for the published version of each table defined in an account, including column definitions.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -46,40 +46,71 @@ final class HubdbGetAllTablesParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * Specifies whether to return archived tables. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
     #[Api(optional: true)]
     public ?string $contentType;
 
+    /**
+     * Only return tables created after the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAfter;
 
+    /**
+     * Only return tables created at exactly the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * Only return tables created before the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdBefore;
 
     #[Api(optional: true)]
     public ?bool $isGetLocalizedSchema;
 
+    /**
+     * The maximum number of results to return. Default is 1000.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
-    /** @var list<string>|null $sort */
+    /**
+     * Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     *
+     * @var list<string>|null $sort
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $sort;
 
+    /**
+     * Only return tables last updated after the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAfter;
 
+    /**
+     * Only return tables last updated at exactly the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
+    /**
+     * Only return tables last updated before the specified time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedBefore;
 
@@ -127,6 +158,9 @@ final class HubdbGetAllTablesParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -135,6 +169,9 @@ final class HubdbGetAllTablesParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to return archived tables. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -151,6 +188,9 @@ final class HubdbGetAllTablesParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return tables created after the specified time.
+     */
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $obj = clone $this;
@@ -159,6 +199,9 @@ final class HubdbGetAllTablesParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return tables created at exactly the specified time.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -167,6 +210,9 @@ final class HubdbGetAllTablesParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return tables created before the specified time.
+     */
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
         $obj = clone $this;
@@ -183,6 +229,9 @@ final class HubdbGetAllTablesParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of results to return. Default is 1000.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -192,6 +241,8 @@ final class HubdbGetAllTablesParams implements BaseModel
     }
 
     /**
+     * Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
+     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self
@@ -202,6 +253,9 @@ final class HubdbGetAllTablesParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return tables last updated after the specified time.
+     */
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
         $obj = clone $this;
@@ -210,6 +264,9 @@ final class HubdbGetAllTablesParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return tables last updated at exactly the specified time.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -218,6 +275,9 @@ final class HubdbGetAllTablesParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Only return tables last updated before the specified time.
+     */
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
         $obj = clone $this;

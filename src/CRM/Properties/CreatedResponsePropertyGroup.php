@@ -25,6 +25,9 @@ final class CreatedResponsePropertyGroup implements BaseModel, ResponseConverter
     #[Api('createdResourceId')]
     public string $createdResourceID;
 
+    /**
+     * An ID for a group of properties.
+     */
     #[Api]
     public PropertyGroup $entity;
 
@@ -78,6 +81,9 @@ final class CreatedResponsePropertyGroup implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * An ID for a group of properties.
+     */
     public function withEntity(PropertyGroup $entity): self
     {
         $obj = clone $this;

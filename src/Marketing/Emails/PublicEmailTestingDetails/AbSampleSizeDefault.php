@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
 
+/**
+ * Version of the email that should be sent if there are too few recipients to conduct an AB test.
+ */
 enum AbSampleSizeDefault: string
 {
     case MASTER = 'master';

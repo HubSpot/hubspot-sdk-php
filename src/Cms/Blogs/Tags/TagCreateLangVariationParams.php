@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TagCreateLangVariationParams); // set properties as needed
  * $client->cms.blogs.tags->createLangVariation(...$params->toArray());
  * ```
- * Create a new language variation.
+ * Create a new language variation from an existing Blog Tag.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,15 +35,27 @@ final class TagCreateLangVariationParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of the object to be cloned.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Name of newly cloned blog tag.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * Target language of new variant.
+     */
     #[Api(optional: true)]
     public ?string $language;
 
+    /**
+     * Language of primary blog tag to clone.
+     */
     #[Api(optional: true)]
     public ?string $primaryLanguage;
 
@@ -88,6 +100,9 @@ final class TagCreateLangVariationParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the object to be cloned.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -96,6 +111,9 @@ final class TagCreateLangVariationParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of newly cloned blog tag.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -104,6 +122,9 @@ final class TagCreateLangVariationParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Target language of new variant.
+     */
     public function withLanguage(string $language): self
     {
         $obj = clone $this;
@@ -112,6 +133,9 @@ final class TagCreateLangVariationParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Language of primary blog tag to clone.
+     */
     public function withPrimaryLanguage(string $primaryLanguage): self
     {
         $obj = clone $this;

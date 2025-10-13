@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails\EmailListParams;
 
+/**
+ * Email types to be filtered by. Multiple types can be included. All emails will be returned if not present.
+ */
 enum Type: string
 {
     case AB_EMAIL = 'AB_EMAIL';

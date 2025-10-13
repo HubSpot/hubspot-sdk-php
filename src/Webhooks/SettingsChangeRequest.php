@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * New or updated webhook settings for an app.
+ *
  * @phpstan-type settings_change_request = array{
  *   targetURL: string, throttling: ThrottlingSettings
  * }
@@ -18,9 +20,15 @@ final class SettingsChangeRequest implements BaseModel
     /** @use SdkModel<settings_change_request> */
     use SdkModel;
 
+    /**
+     * A publicly available URL for HubSpot to call where event payloads will be delivered.
+     */
     #[Api('targetUrl')]
     public string $targetURL;
 
+    /**
+     * Configuration details for webhook throttling.
+     */
     #[Api]
     public ThrottlingSettings $throttling;
 
@@ -60,6 +68,9 @@ final class SettingsChangeRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * A publicly available URL for HubSpot to call where event payloads will be delivered.
+     */
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
@@ -68,6 +79,9 @@ final class SettingsChangeRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Configuration details for webhook throttling.
+     */
     public function withThrottling(ThrottlingSettings $throttling): self
     {
         $obj = clone $this;

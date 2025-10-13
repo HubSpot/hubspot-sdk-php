@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis;
  * $params = (new SubscriptionUnsubscribeParams); // set properties as needed
  * $client->marketing.subscriptions->unsubscribe(...$params->toArray());
  * ```
- * Unsubscribe a contact.
+ * Unsubscribes a contact from the given subscription type. This API is not valid to use for unsubscribing a contact at a brand or portal level and will return an error.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -39,16 +39,29 @@ final class SubscriptionUnsubscribeParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Contact's email address.
+     */
     #[Api]
     public string $emailAddress;
 
+    /**
+     * ID of the subscription being updated for the contact.
+     */
     #[Api('subscriptionId')]
     public string $subscriptionID;
 
-    /** @var value-of<LegalBasis>|null $legalBasis */
+    /**
+     * Legal basis for updating the contact's status (required for GDPR enabled portals).
+     *
+     * @var value-of<LegalBasis>|null $legalBasis
+     */
     #[Api(enum: LegalBasis::class, optional: true)]
     public ?string $legalBasis;
 
+    /**
+     * A more detailed explanation to go with the legal basis (required for GDPR enabled portals).
+     */
     #[Api(optional: true)]
     public ?string $legalBasisExplanation;
 
@@ -97,6 +110,9 @@ final class SubscriptionUnsubscribeParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contact's email address.
+     */
     public function withEmailAddress(string $emailAddress): self
     {
         $obj = clone $this;
@@ -105,6 +121,9 @@ final class SubscriptionUnsubscribeParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the subscription being updated for the contact.
+     */
     public function withSubscriptionID(string $subscriptionID): self
     {
         $obj = clone $this;
@@ -114,6 +133,8 @@ final class SubscriptionUnsubscribeParams implements BaseModel
     }
 
     /**
+     * Legal basis for updating the contact's status (required for GDPR enabled portals).
+     *
      * @param LegalBasis|value-of<LegalBasis> $legalBasis
      */
     public function withLegalBasis(LegalBasis|string $legalBasis): self
@@ -124,6 +145,9 @@ final class SubscriptionUnsubscribeParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * A more detailed explanation to go with the legal basis (required for GDPR enabled portals).
+     */
     public function withLegalBasisExplanation(
         string $legalBasisExplanation
     ): self {

@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * A color defined by RGB values.
+ *
  * @phpstan-type rgba_color = array{a: float, b: int, g: int, r: int}
  */
 final class RgbaColor implements BaseModel
@@ -16,15 +18,27 @@ final class RgbaColor implements BaseModel
     /** @use SdkModel<rgba_color> */
     use SdkModel;
 
+    /**
+     * Alpha.
+     */
     #[Api]
     public float $a;
 
+    /**
+     * Blue.
+     */
     #[Api]
     public int $b;
 
+    /**
+     * Green.
+     */
     #[Api]
     public int $g;
 
+    /**
+     * Red.
+     */
     #[Api]
     public int $r;
 
@@ -64,6 +78,9 @@ final class RgbaColor implements BaseModel
         return $obj;
     }
 
+    /**
+     * Alpha.
+     */
     public function withA(float $a): self
     {
         $obj = clone $this;
@@ -72,6 +89,9 @@ final class RgbaColor implements BaseModel
         return $obj;
     }
 
+    /**
+     * Blue.
+     */
     public function withB(int $b): self
     {
         $obj = clone $this;
@@ -80,6 +100,9 @@ final class RgbaColor implements BaseModel
         return $obj;
     }
 
+    /**
+     * Green.
+     */
     public function withG(int $g): self
     {
         $obj = clone $this;
@@ -88,6 +111,9 @@ final class RgbaColor implements BaseModel
         return $obj;
     }
 
+    /**
+     * Red.
+     */
     public function withR(int $r): self
     {
         $obj = clone $this;

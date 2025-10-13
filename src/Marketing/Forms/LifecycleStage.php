@@ -16,9 +16,15 @@ final class LifecycleStage implements BaseModel
     /** @use SdkModel<lifecycle_stage> */
     use SdkModel;
 
+    /**
+     * The objectTypeId for both contact and company.
+     */
     #[Api('objectTypeId')]
     public string $objectTypeID;
 
+    /**
+     * The internal name of the contact's lifecycle stage set when submitting a form.
+     */
     #[Api]
     public string $value;
 
@@ -56,6 +62,9 @@ final class LifecycleStage implements BaseModel
         return $obj;
     }
 
+    /**
+     * The objectTypeId for both contact and company.
+     */
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
@@ -64,6 +73,9 @@ final class LifecycleStage implements BaseModel
         return $obj;
     }
 
+    /**
+     * The internal name of the contact's lifecycle stage set when submitting a form.
+     */
     public function withValue(string $value): self
     {
         $obj = clone $this;

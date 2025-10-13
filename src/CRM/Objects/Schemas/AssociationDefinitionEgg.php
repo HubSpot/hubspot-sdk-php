@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Defines an association between two object types.
+ *
  * @phpstan-type association_definition_egg = array{
  *   fromObjectTypeID: string, toObjectTypeID: string, name?: string
  * }
@@ -18,12 +20,21 @@ final class AssociationDefinitionEgg implements BaseModel
     /** @use SdkModel<association_definition_egg> */
     use SdkModel;
 
+    /**
+     * ID of the primary object type to link from.
+     */
     #[Api('fromObjectTypeId')]
     public string $fromObjectTypeID;
 
+    /**
+     * ID of the target object type to link to.
+     */
     #[Api('toObjectTypeId')]
     public string $toObjectTypeID;
 
+    /**
+     * A unique name for this association.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
@@ -68,6 +79,9 @@ final class AssociationDefinitionEgg implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the primary object type to link from.
+     */
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
@@ -76,6 +90,9 @@ final class AssociationDefinitionEgg implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the target object type to link to.
+     */
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
@@ -84,6 +101,9 @@ final class AssociationDefinitionEgg implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique name for this association.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;

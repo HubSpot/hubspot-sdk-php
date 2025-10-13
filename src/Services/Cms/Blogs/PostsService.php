@@ -48,69 +48,73 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Create a new post
+     * Create a new blog post, specifying its content in the request body.
      *
-     * @param string $id
+     * @param string $id the unique ID of the blog post
      * @param AbStatus|value-of<AbStatus> $abStatus
      * @param string $abTestID
-     * @param int $archivedAt
-     * @param bool $archivedInDashboard
-     * @param list<array<string, mixed>> $attachedStylesheets
-     * @param string $authorName
-     * @param string $blogAuthorID
-     * @param string $campaign
-     * @param int $categoryID
-     * @param string $contentGroupID
-     * @param ContentTypeCategory|value-of<ContentTypeCategory> $contentTypeCategory
+     * @param int $archivedAt the timestamp (ISO8601 format) when this Blog Post was deleted
+     * @param bool $archivedInDashboard if True, the post will not show up in your dashboard, although the post could still be live
+     * @param list<array<string,
+     * mixed,>> $attachedStylesheets List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
+     * @param string $authorName the name of the blog author associated with the post
+     * @param string $blogAuthorID the ID of the blog author associated with this post
+     * @param string $campaign the GUID of the marketing campaign the post is associated with
+     * @param int $categoryID ID of the object type
+     * @param string $contentGroupID the ID of the post's parent blog
+     * @param ContentTypeCategory|value-of<ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should always be BLOG_POST.
      * @param \DateTimeInterface $created
-     * @param string $createdByID
+     * @param string $createdByID the ID of the user that created the post
      * @param bool $currentlyPublished
-     * @param CurrentState|value-of<CurrentState> $currentState
-     * @param string $domain
+     * @param CurrentState|value-of<CurrentState> $currentState A generated ENUM descibing the current state of this Blog Post. Should always match state.
+     * @param string $domain The domain that the post lives on. If null, the post will default to the domain of the parent blog.
      * @param string $dynamicPageDataSourceID
      * @param int $dynamicPageDataSourceType
-     * @param string $dynamicPageHubDBTableID
-     * @param bool $enableDomainStylesheets
-     * @param bool $enableGoogleAmpOutputOverride
-     * @param bool $enableLayoutStylesheets
-     * @param string $featuredImage
-     * @param string $featuredImageAltText
+     * @param string $dynamicPageHubDBTableID for dynamic HubDB pages,
+     * the ID of the HubDB table this post references
+     * @param bool $enableDomainStylesheets boolean to determine whether or not the styles from the template should be applied
+     * @param bool $enableGoogleAmpOutputOverride boolean to allow overriding the AMP settings for the blog
+     * @param bool $enableLayoutStylesheets boolean to determine whether or not the styles from the template should be applied
+     * @param string $featuredImage the featuredImage of this Blog Post
+     * @param string $featuredImageAltText alt Text of the featuredImage
      * @param string $folderID
-     * @param string $footerHTML
-     * @param string $headHTML
-     * @param string $htmlTitle
-     * @param bool $includeDefaultCustomCss
-     * @param Language|value-of<Language> $language
+     * @param string $footerHTML custom HTML for embed codes, javascript that should be placed before the </body> tag of the page
+     * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
+     * @param string $htmlTitle the HTML title of the post
+     * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
+     * @param Language|value-of<Language> $language The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
      * @param array<string, LayoutSection> $layoutSections
-     * @param string $linkRelCanonicalURL
+     * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
      * @param string $mabExperimentID
-     * @param string $metaDescription
-     * @param string $name
+     * @param string $metaDescription a description that goes in <meta> tag on the page
+     * @param string $name the internal name of the post
      * @param int $pageExpiryDate
      * @param bool $pageExpiryEnabled
      * @param int $pageExpiryRedirectID
      * @param string $pageExpiryRedirectURL
-     * @param string $password
-     * @param string $postBody
-     * @param string $postSummary
-     * @param list<mixed> $publicAccessRules
-     * @param bool $publicAccessRulesEnabled
-     * @param \DateTimeInterface $publishDate
-     * @param bool $publishImmediately
-     * @param string $rssBody
-     * @param string $rssSummary
-     * @param string $slug
-     * @param string $state
-     * @param list<int> $tagIDs
+     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
+     * @param string $postBody the HTML of the main post body
+     * @param string $postSummary the summary of the blog post that will appear on the main listing page
+     * @param list<mixed> $publicAccessRules rules for require member registration to access private content
+     * @param bool $publicAccessRulesEnabled boolean to determine whether or not to respect publicAccessRules
+     * @param \DateTimeInterface $publishDate the date (ISO8601 format) the blog post is to be published at
+     * @param bool $publishImmediately set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting
+     * @param string $rssBody the contents of the RSS body for this Blog Post
+     * @param string $rssSummary the contents of the RSS summary for this Blog Post
+     * @param string $slug The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
+     * @param string $state an enumeration describing the current publish state of the post
+     * @param list<int> $tagIDs the IDs of the tags associated with this post
      * @param array<string, mixed> $themeSettingsValues
-     * @param string $translatedFromID
+     * @param string $translatedFromID ID of the primary blog post that this post was translated from
      * @param array<string, ContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
-     * @param string $updatedByID
-     * @param string $url
-     * @param bool $useFeaturedImage
-     * @param array<string, mixed> $widgetContainers
-     * @param array<string, mixed> $widgets
+     * @param string $updatedByID the ID of the user that updated the post
+     * @param string $url a generated field representing the URL of this blog post
+     * @param bool $useFeaturedImage boolean to determine if this post should use a featured image
+     * @param array<string,
+     * mixed,> $widgetContainers A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
+     * @param array<string,
+     * mixed,> $widgets A data structure containing the data for all the modules for this page
      *
      * @throws APIException
      */
@@ -274,70 +278,74 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Update a post
+     * Partially updates a single blog post by ID. You only need to specify the values that you want to update.
      *
-     * @param string $id
+     * @param string $id the unique ID of the blog post
      * @param PostUpdateParams\AbStatus|value-of<PostUpdateParams\AbStatus> $abStatus
      * @param string $abTestID
-     * @param int $archivedAt
-     * @param bool $archivedInDashboard
-     * @param list<array<string, mixed>> $attachedStylesheets
-     * @param string $authorName
-     * @param string $blogAuthorID
-     * @param string $campaign
-     * @param int $categoryID
-     * @param string $contentGroupID
-     * @param PostUpdateParams\ContentTypeCategory|value-of<PostUpdateParams\ContentTypeCategory> $contentTypeCategory
+     * @param int $archivedAt the timestamp (ISO8601 format) when this Blog Post was deleted
+     * @param bool $archivedInDashboard if True, the post will not show up in your dashboard, although the post could still be live
+     * @param list<array<string,
+     * mixed,>> $attachedStylesheets List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
+     * @param string $authorName the name of the blog author associated with the post
+     * @param string $blogAuthorID the ID of the blog author associated with this post
+     * @param string $campaign the GUID of the marketing campaign the post is associated with
+     * @param int $categoryID ID of the object type
+     * @param string $contentGroupID the ID of the post's parent blog
+     * @param PostUpdateParams\ContentTypeCategory|value-of<PostUpdateParams\ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should always be BLOG_POST.
      * @param \DateTimeInterface $created
-     * @param string $createdByID
+     * @param string $createdByID the ID of the user that created the post
      * @param bool $currentlyPublished
-     * @param PostUpdateParams\CurrentState|value-of<PostUpdateParams\CurrentState> $currentState
-     * @param string $domain
+     * @param PostUpdateParams\CurrentState|value-of<PostUpdateParams\CurrentState> $currentState A generated ENUM descibing the current state of this Blog Post. Should always match state.
+     * @param string $domain The domain that the post lives on. If null, the post will default to the domain of the parent blog.
      * @param string $dynamicPageDataSourceID
      * @param int $dynamicPageDataSourceType
-     * @param string $dynamicPageHubDBTableID
-     * @param bool $enableDomainStylesheets
-     * @param bool $enableGoogleAmpOutputOverride
-     * @param bool $enableLayoutStylesheets
-     * @param string $featuredImage
-     * @param string $featuredImageAltText
+     * @param string $dynamicPageHubDBTableID for dynamic HubDB pages,
+     * the ID of the HubDB table this post references
+     * @param bool $enableDomainStylesheets boolean to determine whether or not the styles from the template should be applied
+     * @param bool $enableGoogleAmpOutputOverride boolean to allow overriding the AMP settings for the blog
+     * @param bool $enableLayoutStylesheets boolean to determine whether or not the styles from the template should be applied
+     * @param string $featuredImage the featuredImage of this Blog Post
+     * @param string $featuredImageAltText alt Text of the featuredImage
      * @param string $folderID
-     * @param string $footerHTML
-     * @param string $headHTML
-     * @param string $htmlTitle
-     * @param bool $includeDefaultCustomCss
-     * @param PostUpdateParams\Language|value-of<PostUpdateParams\Language> $language
+     * @param string $footerHTML custom HTML for embed codes, javascript that should be placed before the </body> tag of the page
+     * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
+     * @param string $htmlTitle the HTML title of the post
+     * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
+     * @param PostUpdateParams\Language|value-of<PostUpdateParams\Language> $language The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
      * @param array<string, LayoutSection> $layoutSections
-     * @param string $linkRelCanonicalURL
+     * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
      * @param string $mabExperimentID
-     * @param string $metaDescription
-     * @param string $name
+     * @param string $metaDescription a description that goes in <meta> tag on the page
+     * @param string $name the internal name of the post
      * @param int $pageExpiryDate
      * @param bool $pageExpiryEnabled
      * @param int $pageExpiryRedirectID
      * @param string $pageExpiryRedirectURL
-     * @param string $password
-     * @param string $postBody
-     * @param string $postSummary
-     * @param list<mixed> $publicAccessRules
-     * @param bool $publicAccessRulesEnabled
-     * @param \DateTimeInterface $publishDate
-     * @param bool $publishImmediately
-     * @param string $rssBody
-     * @param string $rssSummary
-     * @param string $slug
-     * @param string $state
-     * @param list<int> $tagIDs
+     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
+     * @param string $postBody the HTML of the main post body
+     * @param string $postSummary the summary of the blog post that will appear on the main listing page
+     * @param list<mixed> $publicAccessRules rules for require member registration to access private content
+     * @param bool $publicAccessRulesEnabled boolean to determine whether or not to respect publicAccessRules
+     * @param \DateTimeInterface $publishDate the date (ISO8601 format) the blog post is to be published at
+     * @param bool $publishImmediately set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting
+     * @param string $rssBody the contents of the RSS body for this Blog Post
+     * @param string $rssSummary the contents of the RSS summary for this Blog Post
+     * @param string $slug The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
+     * @param string $state an enumeration describing the current publish state of the post
+     * @param list<int> $tagIDs the IDs of the tags associated with this post
      * @param array<string, mixed> $themeSettingsValues
-     * @param string $translatedFromID
+     * @param string $translatedFromID ID of the primary blog post that this post was translated from
      * @param array<string, ContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
-     * @param string $updatedByID
-     * @param string $url
-     * @param bool $useFeaturedImage
-     * @param array<string, mixed> $widgetContainers
-     * @param array<string, mixed> $widgets
-     * @param bool $archived
+     * @param string $updatedByID the ID of the user that updated the post
+     * @param string $url a generated field representing the URL of this blog post
+     * @param bool $useFeaturedImage boolean to determine if this post should use a featured image
+     * @param array<string,
+     * mixed,> $widgetContainers A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
+     * @param array<string,
+     * mixed,> $widgets A data structure containing the data for all the modules for this page
+     * @param bool $archived Specifies whether to update deleted blog posts. Defaults to `false`.
      *
      * @throws APIException
      */
@@ -507,19 +515,19 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Get all posts
+     * Retrieve all blog posts, with paging and filtering options. This method would be useful for an integration that ingests posts and suggests edits.
      *
-     * @param string $after
-     * @param bool $archived
-     * @param \DateTimeInterface $createdAfter
-     * @param \DateTimeInterface $createdAt
-     * @param \DateTimeInterface $createdBefore
-     * @param int $limit
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived Specifies whether to return deleted blog posts. Defaults to `false`.
+     * @param \DateTimeInterface $createdAfter only return blog posts created after the specified time
+     * @param \DateTimeInterface $createdAt only return blog posts created at exactly the specified time
+     * @param \DateTimeInterface $createdBefore only return blog posts created before the specified time
+     * @param int $limit The maximum number of results to return. Default is 20.
      * @param string $property
-     * @param list<string> $sort
-     * @param \DateTimeInterface $updatedAfter
-     * @param \DateTimeInterface $updatedAt
-     * @param \DateTimeInterface $updatedBefore
+     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `createdAt` (default), `name`, `updatedAt`, `createdBy`, `updatedBy`.
+     * @param \DateTimeInterface $updatedAfter only return blog posts last updated after the specified time
+     * @param \DateTimeInterface $updatedAt only return blog posts last updated at exactly the specified time
+     * @param \DateTimeInterface $updatedBefore only return blog posts last updated before the specified time
      *
      * @return Page<BlogPost>
      *
@@ -588,9 +596,9 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Delete a blog post
+     * Delete a blog post by ID.
      *
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been deleted
      *
      * @throws APIException
      */
@@ -634,12 +642,12 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Attach post to a multi-language group
+     * Attach a blog post to a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
-     * @param string $id
-     * @param PostAttachToLangGroupParams\Language|value-of<PostAttachToLangGroupParams\Language> $language
-     * @param string $primaryID
-     * @param string $primaryLanguage
+     * @param string $id ID of the object to add to a multi-language group
+     * @param PostAttachToLangGroupParams\Language|value-of<PostAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
+     * @param string $primaryID ID of primary language object in multi-language group
+     * @param string $primaryLanguage primary language of the multi-language group
      *
      * @throws APIException
      */
@@ -689,10 +697,10 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Clone a blog post
+     * Clone a blog post, making a copy of it in a new blog post.
      *
-     * @param string $id
-     * @param string $cloneName
+     * @param string $id ID of the object to be cloned
+     * @param string $cloneName name of the cloned object
      *
      * @throws APIException
      */
@@ -735,10 +743,10 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Create a language variation
+     * Create a new language variation from an existing blog post
      *
-     * @param string $id
-     * @param string $language
+     * @param string $id ID of blog post to clone
+     * @param string $language target language of new variant
      *
      * @throws APIException
      */
@@ -781,9 +789,9 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Detach post from a multi-language group
+     * Detach a blog post from a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
-     * @param string $id
+     * @param string $id ID of the object to remove from a multi-language group
      *
      * @throws APIException
      */
@@ -825,7 +833,7 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Retrieve the full draft version of the Blog Post
+     * Retrieve the full draft version of a blog post.
      *
      * @throws APIException
      */
@@ -845,7 +853,7 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Retrieve a previous version of a blog post
+     * Retrieve a previous version of a blog post.
      *
      * @param string $objectID
      *
@@ -892,11 +900,11 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Retrieves all previous versions of a post
+     * Retrieve all the previous versions of a blog post.
      *
-     * @param string $after
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      * @param string $before
-     * @param int $limit
+     * @param int $limit The maximum number of results to return. Default is 100.
      *
      * @throws APIException
      */
@@ -942,7 +950,7 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Publish blog post draft
+     * Publish the draft version of the blog post, sending its content to the live page.
      *
      * @throws APIException
      */
@@ -962,10 +970,10 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Retrieve a blog post
+     * Retrieve a blog post by the post ID.
      *
-     * @param bool $archived
-     * @param string $property
+     * @param bool $archived Specifies whether to return deleted blog posts. Defaults to `false`.
+     * @param string $property specific properties to return
      *
      * @throws APIException
      */
@@ -1010,7 +1018,7 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Reset post draft to the live version
+     * Discard all drafted content, resetting the draft to contain the content in the currently published version.
      *
      * @throws APIException
      */
@@ -1030,7 +1038,7 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Restore a previous version
+     * Restores a blog post to one of its previous versions.
      *
      * @param string $objectID
      *
@@ -1083,7 +1091,7 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Restore a draft to a previous version
+     * Takes a specified version of a blog post, sets it as the new draft version of the blog post.
      *
      * @param string $objectID
      *
@@ -1138,10 +1146,10 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Schedule a post to be published
+     * Schedule a blog post to be published at a specified time.
      *
-     * @param string $id
-     * @param \DateTimeInterface $publishDate
+     * @param string $id the ID of the object to be scheduled
+     * @param \DateTimeInterface $publishDate the date the object should transition from scheduled to published
      *
      * @throws APIException
      */
@@ -1184,9 +1192,9 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Set a new primary language
+     * Set the primary language of a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content) to the language of the provided post (specified as an ID in the request body)
      *
-     * @param string $id
+     * @param string $id ID of object to set as primary in multi-language group
      *
      * @throws APIException
      */
@@ -1228,69 +1236,73 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Update the draft of a post
+     * Partially updates the draft version of a single blog post by ID. You only need to specify the values that you want to update.
      *
-     * @param string $id
+     * @param string $id the unique ID of the blog post
      * @param PostUpdateDraftParams\AbStatus|value-of<PostUpdateDraftParams\AbStatus> $abStatus
      * @param string $abTestID
-     * @param int $archivedAt
-     * @param bool $archivedInDashboard
-     * @param list<array<string, mixed>> $attachedStylesheets
-     * @param string $authorName
-     * @param string $blogAuthorID
-     * @param string $campaign
-     * @param int $categoryID
-     * @param string $contentGroupID
-     * @param PostUpdateDraftParams\ContentTypeCategory|value-of<PostUpdateDraftParams\ContentTypeCategory> $contentTypeCategory
+     * @param int $archivedAt the timestamp (ISO8601 format) when this Blog Post was deleted
+     * @param bool $archivedInDashboard if True, the post will not show up in your dashboard, although the post could still be live
+     * @param list<array<string,
+     * mixed,>> $attachedStylesheets List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
+     * @param string $authorName the name of the blog author associated with the post
+     * @param string $blogAuthorID the ID of the blog author associated with this post
+     * @param string $campaign the GUID of the marketing campaign the post is associated with
+     * @param int $categoryID ID of the object type
+     * @param string $contentGroupID the ID of the post's parent blog
+     * @param PostUpdateDraftParams\ContentTypeCategory|value-of<PostUpdateDraftParams\ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should always be BLOG_POST.
      * @param \DateTimeInterface $created
-     * @param string $createdByID
+     * @param string $createdByID the ID of the user that created the post
      * @param bool $currentlyPublished
-     * @param PostUpdateDraftParams\CurrentState|value-of<PostUpdateDraftParams\CurrentState> $currentState
-     * @param string $domain
+     * @param PostUpdateDraftParams\CurrentState|value-of<PostUpdateDraftParams\CurrentState> $currentState A generated ENUM descibing the current state of this Blog Post. Should always match state.
+     * @param string $domain The domain that the post lives on. If null, the post will default to the domain of the parent blog.
      * @param string $dynamicPageDataSourceID
      * @param int $dynamicPageDataSourceType
-     * @param string $dynamicPageHubDBTableID
-     * @param bool $enableDomainStylesheets
-     * @param bool $enableGoogleAmpOutputOverride
-     * @param bool $enableLayoutStylesheets
-     * @param string $featuredImage
-     * @param string $featuredImageAltText
+     * @param string $dynamicPageHubDBTableID for dynamic HubDB pages,
+     * the ID of the HubDB table this post references
+     * @param bool $enableDomainStylesheets boolean to determine whether or not the styles from the template should be applied
+     * @param bool $enableGoogleAmpOutputOverride boolean to allow overriding the AMP settings for the blog
+     * @param bool $enableLayoutStylesheets boolean to determine whether or not the styles from the template should be applied
+     * @param string $featuredImage the featuredImage of this Blog Post
+     * @param string $featuredImageAltText alt Text of the featuredImage
      * @param string $folderID
-     * @param string $footerHTML
-     * @param string $headHTML
-     * @param string $htmlTitle
-     * @param bool $includeDefaultCustomCss
-     * @param PostUpdateDraftParams\Language|value-of<PostUpdateDraftParams\Language> $language
+     * @param string $footerHTML custom HTML for embed codes, javascript that should be placed before the </body> tag of the page
+     * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
+     * @param string $htmlTitle the HTML title of the post
+     * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
+     * @param PostUpdateDraftParams\Language|value-of<PostUpdateDraftParams\Language> $language The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
      * @param array<string, LayoutSection> $layoutSections
-     * @param string $linkRelCanonicalURL
+     * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
      * @param string $mabExperimentID
-     * @param string $metaDescription
-     * @param string $name
+     * @param string $metaDescription a description that goes in <meta> tag on the page
+     * @param string $name the internal name of the post
      * @param int $pageExpiryDate
      * @param bool $pageExpiryEnabled
      * @param int $pageExpiryRedirectID
      * @param string $pageExpiryRedirectURL
-     * @param string $password
-     * @param string $postBody
-     * @param string $postSummary
-     * @param list<mixed> $publicAccessRules
-     * @param bool $publicAccessRulesEnabled
-     * @param \DateTimeInterface $publishDate
-     * @param bool $publishImmediately
-     * @param string $rssBody
-     * @param string $rssSummary
-     * @param string $slug
-     * @param string $state
-     * @param list<int> $tagIDs
+     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
+     * @param string $postBody the HTML of the main post body
+     * @param string $postSummary the summary of the blog post that will appear on the main listing page
+     * @param list<mixed> $publicAccessRules rules for require member registration to access private content
+     * @param bool $publicAccessRulesEnabled boolean to determine whether or not to respect publicAccessRules
+     * @param \DateTimeInterface $publishDate the date (ISO8601 format) the blog post is to be published at
+     * @param bool $publishImmediately set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting
+     * @param string $rssBody the contents of the RSS body for this Blog Post
+     * @param string $rssSummary the contents of the RSS summary for this Blog Post
+     * @param string $slug The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
+     * @param string $state an enumeration describing the current publish state of the post
+     * @param list<int> $tagIDs the IDs of the tags associated with this post
      * @param array<string, mixed> $themeSettingsValues
-     * @param string $translatedFromID
+     * @param string $translatedFromID ID of the primary blog post that this post was translated from
      * @param array<string, ContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
-     * @param string $updatedByID
-     * @param string $url
-     * @param bool $useFeaturedImage
-     * @param array<string, mixed> $widgetContainers
-     * @param array<string, mixed> $widgets
+     * @param string $updatedByID the ID of the user that updated the post
+     * @param string $url a generated field representing the URL of this blog post
+     * @param bool $useFeaturedImage boolean to determine if this post should use a featured image
+     * @param array<string,
+     * mixed,> $widgetContainers A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
+     * @param array<string,
+     * mixed,> $widgets A data structure containing the data for all the modules for this page
      *
      * @throws APIException
      */
@@ -1456,10 +1468,11 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * Update languages of multi-language group
+     * Explicitly set new languages for each post in a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
-     * @param array<string, string> $languages
-     * @param string $primaryID
+     * @param array<string,
+     * string,> $languages Map of object IDs to associated languages of object in the multi-language group
+     * @param string $primaryID ID of the primary object in the multi-language group
      *
      * @throws APIException
      */

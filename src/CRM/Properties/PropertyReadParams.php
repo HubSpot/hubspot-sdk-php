@@ -17,7 +17,7 @@ use HubspotSDK\CRM\Properties\PropertyReadParams\DataSensitivity;
  * $params = (new PropertyReadParams); // set properties as needed
  * $client->crm.properties->read(...$params->toArray());
  * ```
- * Read a batch of properties.
+ * Read a provided list of properties.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

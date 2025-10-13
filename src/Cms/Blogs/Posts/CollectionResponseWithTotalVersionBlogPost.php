@@ -12,6 +12,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
+ * Response object for collections of blog post versions with pagination information.
+ *
  * @phpstan-type collection_response_with_total_version_blog_post = array{
  *   results: list<VersionBlogPost>, total: int, paging?: Paging
  * }
@@ -23,13 +25,23 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel, Res
 
     use SdkResponse;
 
-    /** @var list<VersionBlogPost> $results */
+    /**
+     * Collection of blog post versions.
+     *
+     * @var list<VersionBlogPost> $results
+     */
     #[Api(list: VersionBlogPost::class)]
     public array $results;
 
+    /**
+     * Total number of blog post versions.
+     */
     #[Api]
     public int $total;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -77,6 +89,8 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel, Res
     }
 
     /**
+     * Collection of blog post versions.
+     *
      * @param list<VersionBlogPost> $results
      */
     public function withResults(array $results): self
@@ -87,6 +101,9 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel, Res
         return $obj;
     }
 
+    /**
+     * Total number of blog post versions.
+     */
     public function withTotal(int $total): self
     {
         $obj = clone $this;
@@ -95,6 +112,9 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel, Res
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new FormReadParams); // set properties as needed
  * $client->marketing.forms->read(...$params->toArray());
  * ```
- * Get a form definition.
+ * Returns a form based on the form ID provided.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class FormReadParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -55,6 +58,9 @@ final class FormReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;

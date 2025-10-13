@@ -35,7 +35,7 @@ final class AssociationsService implements AssociationsContract
     /**
      * @api
      *
-     * Create a batch of associations
+     * Associate all pairs of objects identified in the request body.
      *
      * @param string $fromObjectType
      * @param list<PublicAssociation> $inputs
@@ -89,7 +89,7 @@ final class AssociationsService implements AssociationsContract
     /**
      * @api
      *
-     * Archive a batch of associations
+     * Remove the associations between all pairs of objects identified in the request body.
      *
      * @param string $fromObjectType
      * @param list<PublicAssociation> $inputs
@@ -143,7 +143,7 @@ final class AssociationsService implements AssociationsContract
     /**
      * @api
      *
-     * Read a batch of associations
+     * Get the IDs of all `{toObjectType}` objects associated with those specified in the request body.
      *
      * @param string $fromObjectType
      * @param list<PublicObjectID> $inputs

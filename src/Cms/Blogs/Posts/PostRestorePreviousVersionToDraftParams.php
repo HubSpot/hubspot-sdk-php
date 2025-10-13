@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostRestorePreviousVersionToDraftParams); // set properties as needed
  * $client->cms.blogs.posts->restorePreviousVersionToDraft(...$params->toArray());
  * ```
- * Restore a draft to a previous version.
+ * Takes a specified version of a blog post, sets it as the new draft version of the blog post.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

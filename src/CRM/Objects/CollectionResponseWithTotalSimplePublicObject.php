@@ -23,9 +23,15 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
     #[Api(list: SimplePublicObject::class)]
     public array $results;
 
+    /**
+     * The number of available results.
+     */
     #[Api]
     public int $total;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -83,6 +89,9 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The number of available results.
+     */
     public function withTotal(int $total): self
     {
         $obj = clone $this;
@@ -91,6 +100,9 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

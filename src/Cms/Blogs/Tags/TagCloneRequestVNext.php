@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Request body object for cloning blog tags.
+ *
  * @phpstan-type tag_clone_request_v_next = array{
  *   id: string, name: string, language?: string, primaryLanguage?: string
  * }
@@ -18,15 +20,27 @@ final class TagCloneRequestVNext implements BaseModel
     /** @use SdkModel<tag_clone_request_v_next> */
     use SdkModel;
 
+    /**
+     * ID of the object to be cloned.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Name of newly cloned blog tag.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * Target language of new variant.
+     */
     #[Api(optional: true)]
     public ?string $language;
 
+    /**
+     * Language of primary blog tag to clone.
+     */
     #[Api(optional: true)]
     public ?string $primaryLanguage;
 
@@ -71,6 +85,9 @@ final class TagCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the object to be cloned.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -79,6 +96,9 @@ final class TagCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of newly cloned blog tag.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -87,6 +107,9 @@ final class TagCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * Target language of new variant.
+     */
     public function withLanguage(string $language): self
     {
         $obj = clone $this;
@@ -95,6 +118,9 @@ final class TagCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * Language of primary blog tag to clone.
+     */
     public function withPrimaryLanguage(string $primaryLanguage): self
     {
         $obj = clone $this;

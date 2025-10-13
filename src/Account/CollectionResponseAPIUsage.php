@@ -23,6 +23,9 @@ final class CollectionResponseAPIUsage implements BaseModel
     #[Api(list: APIUsage::class)]
     public array $results;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -74,6 +77,9 @@ final class CollectionResponseAPIUsage implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

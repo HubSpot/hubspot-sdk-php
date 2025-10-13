@@ -18,12 +18,21 @@ final class FolderUpdateInputWithID implements BaseModel
     /** @use SdkModel<folder_update_input_with_id> */
     use SdkModel;
 
+    /**
+     * The unique identifier of the folder to be updated.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The new name for the folder, which will also update the fullPath and all children of the folder.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * The ID of the new parent folder, which will move the folder and its children into the specified folder.
+     */
     #[Api('parentFolderId', optional: true)]
     public ?int $parentFolderID;
 
@@ -66,6 +75,9 @@ final class FolderUpdateInputWithID implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier of the folder to be updated.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -74,6 +86,9 @@ final class FolderUpdateInputWithID implements BaseModel
         return $obj;
     }
 
+    /**
+     * The new name for the folder, which will also update the fullPath and all children of the folder.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -82,6 +97,9 @@ final class FolderUpdateInputWithID implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the new parent folder, which will move the folder and its children into the specified folder.
+     */
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;

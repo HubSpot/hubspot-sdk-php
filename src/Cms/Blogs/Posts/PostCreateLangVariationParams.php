@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostCreateLangVariationParams); // set properties as needed
  * $client->cms.blogs.posts->createLangVariation(...$params->toArray());
  * ```
- * Create a language variation.
+ * Create a new language variation from an existing blog post.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,9 +35,15 @@ final class PostCreateLangVariationParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of blog post to clone.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Target language of new variant.
+     */
     #[Api(optional: true)]
     public ?string $language;
 
@@ -76,6 +82,9 @@ final class PostCreateLangVariationParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of blog post to clone.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -84,6 +93,9 @@ final class PostCreateLangVariationParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Target language of new variant.
+     */
     public function withLanguage(string $language): self
     {
         $obj = clone $this;

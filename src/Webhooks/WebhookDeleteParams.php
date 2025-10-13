@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new WebhookDeleteParams); // set properties as needed
  * $client->webhooks->delete(...$params->toArray());
  * ```
- * Delete event subscription.
+ * Delete an existing event subscription by ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

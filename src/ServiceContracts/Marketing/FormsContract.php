@@ -33,12 +33,12 @@ interface FormsContract
     /**
      * @api
      *
-     * @param bool $archived
+     * @param bool $archived whether this form is archived
      * @param HubSpotFormConfiguration $configuration
-     * @param FormDisplayOptions $displayOptions
-     * @param list<FieldGroup> $fieldGroups
+     * @param FormDisplayOptions $displayOptions options for styling the form
+     * @param list<FieldGroup> $fieldGroups the fields in the form, grouped in rows
      * @param LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
-     * @param string $name
+     * @param string $name The name of the form. Expected to be unique for a hub.
      *
      * @throws APIException
      */
@@ -69,10 +69,10 @@ interface FormsContract
     /**
      * @api
      *
-     * @param string $after
-     * @param bool $archived
-     * @param list<FormType|value-of<FormType>> $formTypes
-     * @param int $limit
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<FormType|value-of<FormType>> $formTypes the form types to be included in the results
+     * @param int $limit the maximum number of results to display per page
      *
      * @return Page<HubSpotFormDefinition>
      *
@@ -113,7 +113,7 @@ interface FormsContract
     /**
      * @api
      *
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */

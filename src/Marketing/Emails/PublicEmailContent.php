@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Data structure representing the content of the email.
+ *
  * @phpstan-type public_email_content = array{
  *   flexAreas?: array<string, mixed>,
  *   plainTextVersion?: string,

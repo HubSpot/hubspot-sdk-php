@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostSetLangPrimaryParams); // set properties as needed
  * $client->cms.blogs.posts->setLangPrimary(...$params->toArray());
  * ```
- * Set a new primary language.
+ * Set the primary language of a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content) to the language of the provided post (specified as an ID in the request body).
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class PostSetLangPrimaryParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of object to set as primary in multi-language group.
+     */
     #[Api]
     public string $id;
 
@@ -69,6 +72,9 @@ final class PostSetLangPrimaryParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of object to set as primary in multi-language group.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;

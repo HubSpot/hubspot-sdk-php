@@ -19,13 +19,23 @@ final class APIActionDataValue implements BaseModel
     /** @use SdkModel<api_action_data_value> */
     use SdkModel;
 
+    /**
+     * Which action to pull data from.
+     */
     #[Api('actionId')]
     public string $actionID;
 
+    /**
+     * The output field name for that action.
+     */
     #[Api]
     public string $dataKey;
 
-    /** @var value-of<Type> $type */
+    /**
+     * This is the type of input value. This can be one of: "FIELD_DATA", "OBJECT_PROPERTY", "STATIC_VALUE", "RELATIVE_DATETIME", "TIMESTAMP", "INCREMENT", "FETCHED_OBJECT_PROPERTY", "APPEND_OBJECT_PROPERTY", "STATIC_APPEND_VALUE", "ENROLLMENT_EVENT_PROPERTY".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -69,6 +79,9 @@ final class APIActionDataValue implements BaseModel
         return $obj;
     }
 
+    /**
+     * Which action to pull data from.
+     */
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
@@ -77,6 +90,9 @@ final class APIActionDataValue implements BaseModel
         return $obj;
     }
 
+    /**
+     * The output field name for that action.
+     */
     public function withDataKey(string $dataKey): self
     {
         $obj = clone $this;
@@ -86,6 +102,8 @@ final class APIActionDataValue implements BaseModel
     }
 
     /**
+     * This is the type of input value. This can be one of: "FIELD_DATA", "OBJECT_PROPERTY", "STATIC_VALUE", "RELATIVE_DATETIME", "TIMESTAMP", "INCREMENT", "FETCHED_OBJECT_PROPERTY", "APPEND_OBJECT_PROPERTY", "STATIC_APPEND_VALUE", "ENROLLMENT_EVENT_PROPERTY".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

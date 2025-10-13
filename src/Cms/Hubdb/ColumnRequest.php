@@ -28,26 +28,49 @@ final class ColumnRequest implements BaseModel
     /** @use SdkModel<column_request> */
     use SdkModel;
 
+    /**
+     * Column Id.
+     */
     #[Api]
     public int $id;
 
+    /**
+     * Label of the column.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * Name of the column.
+     */
     #[Api]
     public string $name;
 
-    /** @var list<Option> $options */
+    /**
+     * Options to choose for select and multi-select columns.
+     *
+     * @var list<Option> $options
+     */
     #[Api(list: Option::class)]
     public array $options;
 
-    /** @var value-of<Type> $type */
+    /**
+     * Type of the column.
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
+    /**
+     * The id of the column from another table to which the column refers/points to.
+     */
     #[Api('foreignColumnId', optional: true)]
     public ?int $foreignColumnID;
 
+    /**
+     * The id of another table to which the column refers/points to.
+     */
     #[Api('foreignTableId', optional: true)]
     public ?int $foreignTableID;
 
@@ -116,6 +139,9 @@ final class ColumnRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Column Id.
+     */
     public function withID(int $id): self
     {
         $obj = clone $this;
@@ -124,6 +150,9 @@ final class ColumnRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Label of the column.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -132,6 +161,9 @@ final class ColumnRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the column.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -141,6 +173,8 @@ final class ColumnRequest implements BaseModel
     }
 
     /**
+     * Options to choose for select and multi-select columns.
+     *
      * @param list<Option> $options
      */
     public function withOptions(array $options): self
@@ -152,6 +186,8 @@ final class ColumnRequest implements BaseModel
     }
 
     /**
+     * Type of the column.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -162,6 +198,9 @@ final class ColumnRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The id of the column from another table to which the column refers/points to.
+     */
     public function withForeignColumnID(int $foreignColumnID): self
     {
         $obj = clone $this;
@@ -170,6 +209,9 @@ final class ColumnRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The id of another table to which the column refers/points to.
+     */
     public function withForeignTableID(int $foreignTableID): self
     {
         $obj = clone $this;

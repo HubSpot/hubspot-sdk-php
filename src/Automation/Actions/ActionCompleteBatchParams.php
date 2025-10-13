@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new ActionCompleteBatchParams); // set properties as needed
  * $client->automation.actions->completeBatch(...$params->toArray());
  * ```
- * Complete a batch of callbacks.
+ * Complete a batch of blocked action executions.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

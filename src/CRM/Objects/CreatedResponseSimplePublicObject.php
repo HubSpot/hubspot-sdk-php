@@ -21,6 +21,9 @@ final class CreatedResponseSimplePublicObject implements BaseModel
     #[Api('createdResourceId')]
     public string $createdResourceID;
 
+    /**
+     * A simple public object.
+     */
     #[Api]
     public SimplePublicObject $entity;
 
@@ -76,6 +79,9 @@ final class CreatedResponseSimplePublicObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * A simple public object.
+     */
     public function withEntity(SimplePublicObject $entity): self
     {
         $obj = clone $this;

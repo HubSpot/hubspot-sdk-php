@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\StandardError;
 
 /**
+ * Response object for batch operations on blog posts with errors.
+ *
  * @phpstan-type batch_response_blog_post_with_errors = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<BlogPost>,
@@ -27,31 +29,59 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
     /** @use SdkModel<batch_response_blog_post_with_errors> */
     use SdkModel;
 
+    /**
+     * Time of batch operation completion.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<BlogPost> $results */
+    /**
+     * Results of batch operation.
+     *
+     * @var list<BlogPost> $results
+     */
     #[Api(list: BlogPost::class)]
     public array $results;
 
+    /**
+     * Time of batch operation start.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * Status of batch operation.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
+    /**
+     * Errors in batch operation.
+     *
+     * @var list<StandardError>|null $errors
+     */
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /**
+     * Links associated with batch operation.
+     *
+     * @var array<string, string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * Number of errors.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * Time of batch operation request.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -115,6 +145,9 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time of batch operation completion.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -124,6 +157,8 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
     }
 
     /**
+     * Results of batch operation.
+     *
      * @param list<BlogPost> $results
      */
     public function withResults(array $results): self
@@ -134,6 +169,9 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time of batch operation start.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -143,6 +181,8 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
     }
 
     /**
+     * Status of batch operation.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -154,6 +194,8 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
     }
 
     /**
+     * Errors in batch operation.
+     *
      * @param list<StandardError> $errors
      */
     public function withErrors(array $errors): self
@@ -165,6 +207,8 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
     }
 
     /**
+     * Links associated with batch operation.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -175,6 +219,9 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
         return $obj;
     }
 
+    /**
+     * Number of errors.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
@@ -183,6 +230,9 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time of batch operation request.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

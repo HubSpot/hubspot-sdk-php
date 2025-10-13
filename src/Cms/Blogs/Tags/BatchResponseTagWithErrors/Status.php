@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Tags\BatchResponseTagWithErrors;
 
+/**
+ * Status of batch operation.
+ */
 enum Status: string
 {
     case PENDING = 'PENDING';

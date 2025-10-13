@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new ActionListParams); // set properties as needed
  * $client->automation.actions->list(...$params->toArray());
  * ```
- * Retrieve revisions for a given definition.
+ * Retrieve the versions of a definition by ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -38,9 +38,15 @@ final class ActionListParams implements BaseModel
     #[Api]
     public int $appID;
 
+    /**
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * The maximum number of results to display per page.
+     */
     #[Api(optional: true)]
     public ?int $limit;
 
@@ -91,6 +97,9 @@ final class ActionListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -99,6 +108,9 @@ final class ActionListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of results to display per page.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;

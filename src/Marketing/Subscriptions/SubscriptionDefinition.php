@@ -12,6 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type subscription_definition = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
+ *   description: string,
  *   isActive: bool,
  *   isDefault: bool,
  *   isInternal: bool,
@@ -27,33 +28,66 @@ final class SubscriptionDefinition implements BaseModel
     /** @use SdkModel<subscription_definition> */
     use SdkModel;
 
+    /**
+     * The ID of the definition.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Time at which the definition was created.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * A description of the subscription.
+     */
+    #[Api]
+    public string $description;
+
+    /**
+     * Whether the definition is active or archived.
+     */
     #[Api]
     public bool $isActive;
 
+    /**
+     * A subscription definition created by HubSpot.
+     */
     #[Api]
     public bool $isDefault;
 
+    /**
+     * A default description that is used by some HubSpot tools and cannot be edited.
+     */
     #[Api]
     public bool $isInternal;
 
+    /**
+     * The name of the subscription.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * Time at which the definition was last updated.
+     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
     #[Api('businessUnitId', optional: true)]
     public ?int $businessUnitID;
 
+    /**
+     * The method or technology used to contact.
+     */
     #[Api(optional: true)]
     public ?string $communicationMethod;
 
+    /**
+     * The purpose of this subscription or the department in your organization that uses it.
+     */
     #[Api(optional: true)]
     public ?string $purpose;
 
@@ -65,6 +99,7 @@ final class SubscriptionDefinition implements BaseModel
      * SubscriptionDefinition::with(
      *   id: ...,
      *   createdAt: ...,
+     *   description: ...,
      *   isActive: ...,
      *   isDefault: ...,
      *   isInternal: ...,
@@ -79,6 +114,7 @@ final class SubscriptionDefinition implements BaseModel
      * (new SubscriptionDefinition)
      *   ->withID(...)
      *   ->withCreatedAt(...)
+     *   ->withDescription(...)
      *   ->withIsActive(...)
      *   ->withIsDefault(...)
      *   ->withIsInternal(...)
@@ -99,6 +135,7 @@ final class SubscriptionDefinition implements BaseModel
     public static function with(
         string $id,
         \DateTimeInterface $createdAt,
+        string $description,
         bool $isActive,
         bool $isDefault,
         bool $isInternal,
@@ -112,6 +149,7 @@ final class SubscriptionDefinition implements BaseModel
 
         $obj->id = $id;
         $obj->createdAt = $createdAt;
+        $obj->description = $description;
         $obj->isActive = $isActive;
         $obj->isDefault = $isDefault;
         $obj->isInternal = $isInternal;
@@ -125,6 +163,9 @@ final class SubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the definition.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -133,6 +174,9 @@ final class SubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time at which the definition was created.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -141,6 +185,20 @@ final class SubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * A description of the subscription.
+     */
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * Whether the definition is active or archived.
+     */
     public function withIsActive(bool $isActive): self
     {
         $obj = clone $this;
@@ -149,6 +207,9 @@ final class SubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * A subscription definition created by HubSpot.
+     */
     public function withIsDefault(bool $isDefault): self
     {
         $obj = clone $this;
@@ -157,6 +218,9 @@ final class SubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * A default description that is used by some HubSpot tools and cannot be edited.
+     */
     public function withIsInternal(bool $isInternal): self
     {
         $obj = clone $this;
@@ -165,6 +229,9 @@ final class SubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the subscription.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -173,6 +240,9 @@ final class SubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * Time at which the definition was last updated.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -189,6 +259,9 @@ final class SubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The method or technology used to contact.
+     */
     public function withCommunicationMethod(string $communicationMethod): self
     {
         $obj = clone $this;
@@ -197,6 +270,9 @@ final class SubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The purpose of this subscription or the department in your organization that uses it.
+     */
     public function withPurpose(string $purpose): self
     {
         $obj = clone $this;

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TagDeleteParams); // set properties as needed
  * $client->cms.blogs.tags->delete(...$params->toArray());
  * ```
- * Delete a Blog Tag.
+ * Delete the Blog Tag object identified by the id in the path.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class TagDeleteParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -55,6 +58,9 @@ final class TagDeleteParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;

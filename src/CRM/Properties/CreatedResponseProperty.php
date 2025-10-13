@@ -22,6 +22,9 @@ final class CreatedResponseProperty implements BaseModel
     #[Api('createdResourceId')]
     public string $createdResourceID;
 
+    /**
+     * Defines a property.
+     */
     #[Api]
     public Property $entity;
 
@@ -75,6 +78,9 @@ final class CreatedResponseProperty implements BaseModel
         return $obj;
     }
 
+    /**
+     * Defines a property.
+     */
     public function withEntity(Property $entity): self
     {
         $obj = clone $this;

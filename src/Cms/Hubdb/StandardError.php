@@ -11,6 +11,8 @@ use HubspotSDK\Core\Conversion\ListOf;
 use HubspotSDK\ErrorDetail;
 
 /**
+ * Ye olde error.
+ *
  * @phpstan-type standard_error = array{
  *   category: string,
  *   context: array<string, list<string>>,
@@ -27,30 +29,57 @@ final class StandardError implements BaseModel
     /** @use SdkModel<standard_error> */
     use SdkModel;
 
+    /**
+     * Specifies the main category of the error, determining the broad area of issue.
+     */
     #[Api]
     public string $category;
 
-    /** @var array<string, list<string>> $context */
+    /**
+     * An object containing context-specific information pertinent to the error.
+     *
+     * @var array<string, list<string>> $context
+     */
     #[Api(map: new ListOf('string'))]
     public array $context;
 
-    /** @var list<ErrorDetail> $errors */
+    /**
+     * The detailed error objects.
+     *
+     * @var list<ErrorDetail> $errors
+     */
     #[Api(list: ErrorDetail::class)]
     public array $errors;
 
-    /** @var array<string, string> $links */
+    /**
+     * An object containing links related to the error, such as documentation URLs or support contact pages.
+     *
+     * @var array<string, string> $links
+     */
     #[Api(map: 'string')]
     public array $links;
 
+    /**
+     * A detailed message describing the error.
+     */
     #[Api]
     public string $message;
 
+    /**
+     * The HTTP status code associated with the error.
+     */
     #[Api]
     public string $status;
 
+    /**
+     * Identifies the subcategory of the error, providing more specific context within the main category.
+     */
     #[Api]
     public mixed $subCategory;
 
+    /**
+     * The unique ID of the error instance.
+     */
     #[Api(optional: true)]
     public ?string $id;
 
@@ -122,6 +151,9 @@ final class StandardError implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the main category of the error, determining the broad area of issue.
+     */
     public function withCategory(string $category): self
     {
         $obj = clone $this;
@@ -131,6 +163,8 @@ final class StandardError implements BaseModel
     }
 
     /**
+     * An object containing context-specific information pertinent to the error.
+     *
      * @param array<string, list<string>> $context
      */
     public function withContext(array $context): self
@@ -142,6 +176,8 @@ final class StandardError implements BaseModel
     }
 
     /**
+     * The detailed error objects.
+     *
      * @param list<ErrorDetail> $errors
      */
     public function withErrors(array $errors): self
@@ -153,6 +189,8 @@ final class StandardError implements BaseModel
     }
 
     /**
+     * An object containing links related to the error, such as documentation URLs or support contact pages.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -163,6 +201,9 @@ final class StandardError implements BaseModel
         return $obj;
     }
 
+    /**
+     * A detailed message describing the error.
+     */
     public function withMessage(string $message): self
     {
         $obj = clone $this;
@@ -171,6 +212,9 @@ final class StandardError implements BaseModel
         return $obj;
     }
 
+    /**
+     * The HTTP status code associated with the error.
+     */
     public function withStatus(string $status): self
     {
         $obj = clone $this;
@@ -179,6 +223,9 @@ final class StandardError implements BaseModel
         return $obj;
     }
 
+    /**
+     * Identifies the subcategory of the error, providing more specific context within the main category.
+     */
     public function withSubCategory(mixed $subCategory): self
     {
         $obj = clone $this;
@@ -187,6 +234,9 @@ final class StandardError implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID of the error instance.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;

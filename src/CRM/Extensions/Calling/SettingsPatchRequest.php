@@ -26,30 +26,57 @@ final class SettingsPatchRequest implements BaseModel
     /** @use SdkModel<settings_patch_request> */
     use SdkModel;
 
+    /**
+     * The target height of the iframe that will contain your phone/calling UI.
+     */
     #[Api(optional: true)]
     public ?int $height;
 
+    /**
+     * When true, this indicates that your calling app is ready for production. Users will be able to select your calling app as their provider and can then click to dial within HubSpot.
+     */
     #[Api(optional: true)]
     public ?bool $isReady;
 
+    /**
+     * The name of your calling service to display to users.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * When true, users will be able to click to dial from custom objects.
+     */
     #[Api(optional: true)]
     public ?bool $supportsCustomObjects;
 
+    /**
+     * When true, this indicates that your calling app supports inbound calling within HubSpot.
+     */
     #[Api(optional: true)]
     public ?bool $supportsInboundCalling;
 
+    /**
+     * The URL to your phone/calling UI, built with the [Calling SDK](#).
+     */
     #[Api(optional: true)]
     public ?string $url;
 
+    /**
+     * When false, this indicates that your calling app does not require the use of the separate calling window to hold the call connection.
+     */
     #[Api(optional: true)]
     public ?bool $usesCallingWindow;
 
+    /**
+     * When false, this indicates that your calling app does not use the anchored calling remote within the HubSpot app.
+     */
     #[Api(optional: true)]
     public ?bool $usesRemote;
 
+    /**
+     * The target width of the iframe that will contain your phone/calling UI.
+     */
     #[Api(optional: true)]
     public ?int $width;
 
@@ -89,6 +116,9 @@ final class SettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The target height of the iframe that will contain your phone/calling UI.
+     */
     public function withHeight(int $height): self
     {
         $obj = clone $this;
@@ -97,6 +127,9 @@ final class SettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * When true, this indicates that your calling app is ready for production. Users will be able to select your calling app as their provider and can then click to dial within HubSpot.
+     */
     public function withIsReady(bool $isReady): self
     {
         $obj = clone $this;
@@ -105,6 +138,9 @@ final class SettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of your calling service to display to users.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -113,6 +149,9 @@ final class SettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * When true, users will be able to click to dial from custom objects.
+     */
     public function withSupportsCustomObjects(bool $supportsCustomObjects): self
     {
         $obj = clone $this;
@@ -121,6 +160,9 @@ final class SettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * When true, this indicates that your calling app supports inbound calling within HubSpot.
+     */
     public function withSupportsInboundCalling(
         bool $supportsInboundCalling
     ): self {
@@ -130,6 +172,9 @@ final class SettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The URL to your phone/calling UI, built with the [Calling SDK](#).
+     */
     public function withURL(string $url): self
     {
         $obj = clone $this;
@@ -138,6 +183,9 @@ final class SettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * When false, this indicates that your calling app does not require the use of the separate calling window to hold the call connection.
+     */
     public function withUsesCallingWindow(bool $usesCallingWindow): self
     {
         $obj = clone $this;
@@ -146,6 +194,9 @@ final class SettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * When false, this indicates that your calling app does not use the anchored calling remote within the HubSpot app.
+     */
     public function withUsesRemote(bool $usesRemote): self
     {
         $obj = clone $this;
@@ -154,6 +205,9 @@ final class SettingsPatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The target width of the iframe that will contain your phone/calling UI.
+     */
     public function withWidth(int $width): self
     {
         $obj = clone $this;

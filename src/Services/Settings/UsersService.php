@@ -29,15 +29,15 @@ final class UsersService implements UsersContract
     /**
      * @api
      *
-     * Adds a user
+     * New users will only have minimal permissions, which is contacts-base. A welcome email will prompt them to set a password and log in to HubSpot.
      *
-     * @param string $email
+     * @param string $email The created user's email
      * @param string $firstName
      * @param string $lastName
-     * @param string $primaryTeamID
-     * @param string $roleID
-     * @param list<string> $secondaryTeamIDs
-     * @param bool $sendWelcomeEmail
+     * @param string $primaryTeamID The user's primary team
+     * @param string $roleID The user's role
+     * @param list<string> $secondaryTeamIDs The user's additional teams
+     * @param bool $sendWelcomeEmail Whether to send a welcome email
      *
      * @throws APIException
      */
@@ -95,8 +95,8 @@ final class UsersService implements UsersContract
      *
      * Retrieves a list of users from an account
      *
-     * @param string $after
-     * @param int $limit
+     * @param string $after Results will display maximum 100 users per page. Additional results will be on the next page.
+     * @param int $limit The number of users to retrieve
      *
      * @return Page<PublicUser>
      *
@@ -144,9 +144,9 @@ final class UsersService implements UsersContract
     /**
      * @api
      *
-     * Removes a user
+     * Removes a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param IDProperty|value-of<IDProperty> $idProperty
+     * @param IDProperty|value-of<IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
      *
      * @throws APIException
      */
@@ -190,9 +190,9 @@ final class UsersService implements UsersContract
     /**
      * @api
      *
-     * Retrieves a user
+     * Retrieves a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param UserReadParams\IDProperty|value-of<UserReadParams\IDProperty> $idProperty
+     * @param UserReadParams\IDProperty|value-of<UserReadParams\IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
      *
      * @throws APIException
      */
@@ -236,14 +236,14 @@ final class UsersService implements UsersContract
     /**
      * @api
      *
-     * Modifies a user
+     * Modifies a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param UserReplaceParams\IDProperty|value-of<UserReplaceParams\IDProperty> $idProperty
+     * @param UserReplaceParams\IDProperty|value-of<UserReplaceParams\IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
      * @param string $firstName
      * @param string $lastName
-     * @param string $primaryTeamID
-     * @param string $roleID
-     * @param list<string> $secondaryTeamIDs
+     * @param string $primaryTeamID The user's primary team
+     * @param string $roleID The user's role
+     * @param list<string> $secondaryTeamIDs The user's additional teams
      *
      * @throws APIException
      */

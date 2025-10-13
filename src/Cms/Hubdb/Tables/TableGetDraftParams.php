@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new TableGetDraftParams); // set properties as needed
  * $client->cms.hubdb.tables->getDraft(...$params->toArray());
  * ```
- * Get details for a draft table.
+ * Get the details for the draft version of a specific HubDB table. This will include the definitions for the columns in the table and the number of rows in the table.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,9 +35,15 @@ final class TableGetDraftParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Set this to `true` to return an archived table. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * Set this to `true` to populate foreign ID values in the result.
+     */
     #[Api(optional: true)]
     public ?bool $includeForeignIDs;
 
@@ -68,6 +74,9 @@ final class TableGetDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Set this to `true` to return an archived table. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -76,6 +85,9 @@ final class TableGetDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Set this to `true` to populate foreign ID values in the result.
+     */
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;

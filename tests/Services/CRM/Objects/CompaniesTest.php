@@ -92,7 +92,7 @@ final class CompaniesTest extends TestCase
                     id: 'id',
                     properties: ['foo' => 'string']
                 )
-                    ->withIDProperty('idProperty')
+                    ->withIDProperty('my_unique_property_name')
                     ->withObjectWriteTraceID('objectWriteTraceId'),
             ],
         );

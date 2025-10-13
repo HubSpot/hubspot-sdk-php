@@ -37,6 +37,9 @@ final class HubSpotFormDefinitionCreateRequest implements BaseModel
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * Options for styling the form.
+     */
     #[Api]
     public FormDisplayOptions $displayOptions;
 
@@ -160,6 +163,9 @@ final class HubSpotFormDefinitionCreateRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Options for styling the form.
+     */
     public function withDisplayOptions(FormDisplayOptions $displayOptions): self
     {
         $obj = clone $this;

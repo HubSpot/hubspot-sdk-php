@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Request body object for creating new blog post language variant.
+ *
  * @phpstan-type blog_post_language_clone_request_v_next = array{
  *   id: string, language?: string
  * }
@@ -18,9 +20,15 @@ final class BlogPostLanguageCloneRequestVNext implements BaseModel
     /** @use SdkModel<blog_post_language_clone_request_v_next> */
     use SdkModel;
 
+    /**
+     * ID of blog post to clone.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * Target language of new variant.
+     */
     #[Api(optional: true)]
     public ?string $language;
 
@@ -59,6 +67,9 @@ final class BlogPostLanguageCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of blog post to clone.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -67,6 +78,9 @@ final class BlogPostLanguageCloneRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * Target language of new variant.
+     */
     public function withLanguage(string $language): self
     {
         $obj = clone $this;

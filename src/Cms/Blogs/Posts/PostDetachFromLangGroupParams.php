@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostDetachFromLangGroupParams); // set properties as needed
  * $client->cms.blogs.posts->detachFromLangGroup(...$params->toArray());
  * ```
- * Detach post from a multi-language group.
+ * Detach a blog post from a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -33,6 +33,9 @@ final class PostDetachFromLangGroupParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of the object to remove from a multi-language group.
+     */
     #[Api]
     public string $id;
 
@@ -69,6 +72,9 @@ final class PostDetachFromLangGroupParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the object to remove from a multi-language group.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;

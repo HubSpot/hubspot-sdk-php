@@ -11,6 +11,8 @@ use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * Represents the result of a batch upsert operation, including the operation’s status, timestamps, and a list of successfully created or updated objects.
+ *
  * @phpstan-type batch_response_simple_public_upsert_object = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<SimplePublicUpsertObject>,
@@ -27,6 +29,9 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     /** @use SdkModel<batch_response_simple_public_upsert_object> */
     use SdkModel;
 
+    /**
+     * The timestamp when the batch process was completed, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
@@ -34,10 +39,17 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     #[Api(list: SimplePublicUpsertObject::class)]
     public array $results;
 
+    /**
+     * The timestamp when the batch process began execution, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The status of the batch processing request. Can be: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
@@ -45,13 +57,20 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /**
+     * An object containing relevant links related to the batch request.
+     *
+     * @var array<string, string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * The timestamp when the batch process was initiated, in ISO 8601 format.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -115,6 +134,9 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the batch process was completed, in ISO 8601 format.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -134,6 +156,9 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the batch process began execution, in ISO 8601 format.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -143,6 +168,8 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     }
 
     /**
+     * The status of the batch processing request. Can be: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -165,6 +192,8 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     }
 
     /**
+     * An object containing relevant links related to the batch request.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -183,6 +212,9 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the batch process was initiated, in ISO 8601 format.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

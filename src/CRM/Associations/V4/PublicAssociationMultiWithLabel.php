@@ -30,6 +30,9 @@ final class PublicAssociationMultiWithLabel implements BaseModel
     #[Api(list: MultiAssociatedObjectWithLabel::class)]
     public array $to;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -93,6 +96,9 @@ final class PublicAssociationMultiWithLabel implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

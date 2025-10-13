@@ -18,6 +18,7 @@ use HubspotSDK\CRM\Option;
  *   name: string,
  *   options: list<Option>,
  *   type: value-of<Type>,
+ *   description?: string,
  *   externalOptionsReferenceType?: string,
  *   fieldType?: value-of<FieldType>,
  *   helpText?: string,
@@ -44,6 +45,9 @@ final class FieldTypeDefinition implements BaseModel
     /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
+
+    #[Api(optional: true)]
+    public ?string $description;
 
     #[Api(optional: true)]
     public ?string $externalOptionsReferenceType;
@@ -105,6 +109,7 @@ final class FieldTypeDefinition implements BaseModel
         string $name,
         array $options,
         Type|string $type,
+        ?string $description = null,
         ?string $externalOptionsReferenceType = null,
         FieldType|string|null $fieldType = null,
         ?string $helpText = null,
@@ -119,6 +124,7 @@ final class FieldTypeDefinition implements BaseModel
         $obj->options = $options;
         $obj['type'] = $type;
 
+        null !== $description && $obj->description = $description;
         null !== $externalOptionsReferenceType && $obj->externalOptionsReferenceType = $externalOptionsReferenceType;
         null !== $fieldType && $obj['fieldType'] = $fieldType;
         null !== $helpText && $obj->helpText = $helpText;
@@ -163,6 +169,14 @@ final class FieldTypeDefinition implements BaseModel
     {
         $obj = clone $this;
         $obj['type'] = $type;
+
+        return $obj;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
 
         return $obj;
     }

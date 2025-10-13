@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Describes how a numeric value should be validated.
+ *
  * @phpstan-type number_field_validation = array{
  *   maxAllowedDigits: int, minAllowedDigits: int
  * }

@@ -119,8 +119,8 @@ interface ActionsContract
      * @api
      *
      * @param int $appID
-     * @param string $after
-     * @param int $limit
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
      *
      * @return Page<PublicActionRevision>
      *

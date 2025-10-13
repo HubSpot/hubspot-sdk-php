@@ -22,7 +22,11 @@ final class APIRelativeDateTimeValue implements BaseModel
     #[Api]
     public APITimeDelay $timeDelay;
 
-    /** @var value-of<Type> $type */
+    /**
+     * This is the type of input value. This can be one of: "FIELD_DATA", "OBJECT_PROPERTY", "STATIC_VALUE", "RELATIVE_DATETIME", "TIMESTAMP", "INCREMENT", "FETCHED_OBJECT_PROPERTY", "APPEND_OBJECT_PROPERTY", "STATIC_APPEND_VALUE", "ENROLLMENT_EVENT_PROPERTY".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -73,6 +77,8 @@ final class APIRelativeDateTimeValue implements BaseModel
     }
 
     /**
+     * This is the type of input value. This can be one of: "FIELD_DATA", "OBJECT_PROPERTY", "STATIC_VALUE", "RELATIVE_DATETIME", "TIMESTAMP", "INCREMENT", "FETCHED_OBJECT_PROPERTY", "APPEND_OBJECT_PROPERTY", "STATIC_APPEND_VALUE", "ENROLLMENT_EVENT_PROPERTY".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

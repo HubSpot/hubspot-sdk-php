@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Model definition for a version user. Contains addition information about the user who created a version.
+ *
  * @phpstan-type version_user = array{id: string, email: string, fullName: string}
  */
 final class VersionUser implements BaseModel
@@ -16,12 +18,21 @@ final class VersionUser implements BaseModel
     /** @use SdkModel<version_user> */
     use SdkModel;
 
+    /**
+     * The unique ID of the User.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The email address of the user.
+     */
     #[Api]
     public string $email;
 
+    /**
+     * The first and last name of the User.
+     */
     #[Api]
     public string $fullName;
 
@@ -63,6 +74,9 @@ final class VersionUser implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID of the User.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -71,6 +85,9 @@ final class VersionUser implements BaseModel
         return $obj;
     }
 
+    /**
+     * The email address of the user.
+     */
     public function withEmail(string $email): self
     {
         $obj = clone $this;
@@ -79,6 +96,9 @@ final class VersionUser implements BaseModel
         return $obj;
     }
 
+    /**
+     * The first and last name of the User.
+     */
     public function withFullName(string $fullName): self
     {
         $obj = clone $this;

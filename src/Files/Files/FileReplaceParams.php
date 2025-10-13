@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new FileReplaceParams); // set properties as needed
  * $client->files.files->replace(...$params->toArray());
  * ```
- * Replace file.
+ * Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,12 +35,21 @@ final class FileReplaceParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Character set of given file data.
+     */
     #[Api(optional: true)]
     public ?string $charsetHunch;
 
+    /**
+     * File data that will replace existing file in the file manager.
+     */
     #[Api(optional: true)]
     public ?string $file;
 
+    /**
+     * JSON string representing FileReplaceOptions. Includes options to set the access and expiresAt properties, which will automatically update when the file is replaced.
+     */
     #[Api(optional: true)]
     public ?string $options;
 
@@ -68,6 +77,9 @@ final class FileReplaceParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Character set of given file data.
+     */
     public function withCharsetHunch(string $charsetHunch): self
     {
         $obj = clone $this;
@@ -76,6 +88,9 @@ final class FileReplaceParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * File data that will replace existing file in the file manager.
+     */
     public function withFile(string $file): self
     {
         $obj = clone $this;
@@ -84,6 +99,9 @@ final class FileReplaceParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * JSON string representing FileReplaceOptions. Includes options to set the access and expiresAt properties, which will automatically update when the file is replaced.
+     */
     public function withOptions(string $options): self
     {
         $obj = clone $this;

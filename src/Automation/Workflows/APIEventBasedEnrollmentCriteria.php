@@ -29,18 +29,30 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
     public array $eventFilterBranches;
 
     /**
+     * If you want to listen to list-membership events (an object was added to a list, an object was removed from a list) you need to use this `listMembershipFilterBranches` property instead of `eventFilterBranches`, because list membership events work differently.
+     *
      * @var list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $listMembershipFilterBranches
      */
     #[Api(list: ListMembershipFilterBranch::class)]
     public array $listMembershipFilterBranches;
 
+    /**
+     * Whether or not the same object can enroll in this workflow twice.
+     */
     #[Api]
     public bool $shouldReEnroll;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of enrollment criteria this is, this can be "LIST_BASED", "EVENT_BASED", or "MANUAL".
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
+    /**
+     * List-based criteria to further refine which contacts will enroll in this flow.
+     */
     #[Api(optional: true)]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $refinementCriteria;
 
@@ -112,6 +124,8 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
     }
 
     /**
+     * If you want to listen to list-membership events (an object was added to a list, an object was removed from a list) you need to use this `listMembershipFilterBranches` property instead of `eventFilterBranches`, because list membership events work differently.
+     *
      * @param list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $listMembershipFilterBranches
      */
     public function withListMembershipFilterBranches(
@@ -123,6 +137,9 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether or not the same object can enroll in this workflow twice.
+     */
     public function withShouldReEnroll(bool $shouldReEnroll): self
     {
         $obj = clone $this;
@@ -132,6 +149,8 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
     }
 
     /**
+     * The type of enrollment criteria this is, this can be "LIST_BASED", "EVENT_BASED", or "MANUAL".
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -142,6 +161,9 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
         return $obj;
     }
 
+    /**
+     * List-based criteria to further refine which contacts will enroll in this flow.
+     */
     public function withRefinementCriteria(
         PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $refinementCriteria,
     ): self {

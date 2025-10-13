@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * A user to update.
+ *
  * @phpstan-type public_user_update = array{
  *   firstName?: string,
  *   lastName?: string,
@@ -28,13 +30,23 @@ final class PublicUserUpdate implements BaseModel
     #[Api(optional: true)]
     public ?string $lastName;
 
+    /**
+     * The user's primary team.
+     */
     #[Api('primaryTeamId', optional: true)]
     public ?string $primaryTeamID;
 
+    /**
+     * The user's role.
+     */
     #[Api('roleId', optional: true)]
     public ?string $roleID;
 
-    /** @var list<string>|null $secondaryTeamIDs */
+    /**
+     * The user's additional teams.
+     *
+     * @var list<string>|null $secondaryTeamIDs
+     */
     #[Api('secondaryTeamIds', list: 'string', optional: true)]
     public ?array $secondaryTeamIDs;
 
@@ -84,6 +96,9 @@ final class PublicUserUpdate implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's primary team.
+     */
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
@@ -92,6 +107,9 @@ final class PublicUserUpdate implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's role.
+     */
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
@@ -101,6 +119,8 @@ final class PublicUserUpdate implements BaseModel
     }
 
     /**
+     * The user's additional teams.
+     *
      * @param list<string> $secondaryTeamIDs
      */
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self

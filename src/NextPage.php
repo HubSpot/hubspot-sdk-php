@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
+ *
  * @phpstan-type next_page = array{after: string, link?: string}
  */
 final class NextPage implements BaseModel
@@ -16,9 +18,15 @@ final class NextPage implements BaseModel
     /** @use SdkModel<next_page> */
     use SdkModel;
 
+    /**
+     * A paging cursor token for retrieving subsequent pages.
+     */
     #[Api]
     public string $after;
 
+    /**
+     * A URL that can be used to retrieve the next page results.
+     */
     #[Api(optional: true)]
     public ?string $link;
 
@@ -57,6 +65,9 @@ final class NextPage implements BaseModel
         return $obj;
     }
 
+    /**
+     * A paging cursor token for retrieving subsequent pages.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -65,6 +76,9 @@ final class NextPage implements BaseModel
         return $obj;
     }
 
+    /**
+     * A URL that can be used to retrieve the next page results.
+     */
     public function withLink(string $link): self
     {
         $obj = clone $this;

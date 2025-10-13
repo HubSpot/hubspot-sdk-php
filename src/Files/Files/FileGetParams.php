@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new FileGetParams); // set properties as needed
  * $client->files.files->get(...$params->toArray());
  * ```
- * Retrieve file by ID.
+ * Retrieve a file by its ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

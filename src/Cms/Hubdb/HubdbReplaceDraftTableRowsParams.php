@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new HubdbReplaceDraftTableRowsParams); // set properties as needed
  * $client->cms.hubdb->replaceDraftTableRows(...$params->toArray());
  * ```
- * Replace rows in batch in draft table.
+ * Replaces multiple rows as a batch in the draft version of the table, with a maximum of 100 rows per call. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

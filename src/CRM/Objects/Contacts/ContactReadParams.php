@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new ContactReadParams); // set properties as needed
  * $client->crm.objects.contacts->read(...$params->toArray());
  * ```
- * Retrieve a contact.
+ * Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -38,18 +38,33 @@ final class ContactReadParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
-    /** @var list<string>|null $associations */
+    /**
+     * A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     *
+     * @var list<string>|null $associations
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $associations;
 
-    /** @var list<string>|null $properties */
+    /**
+     * A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @var list<string>|null $properties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $properties;
 
-    /** @var list<string>|null $propertiesWithHistory */
+    /**
+     * A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @var list<string>|null $propertiesWithHistory
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $propertiesWithHistory;
 
@@ -83,6 +98,9 @@ final class ContactReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -92,6 +110,8 @@ final class ContactReadParams implements BaseModel
     }
 
     /**
+     * A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     *
      * @param list<string> $associations
      */
     public function withAssociations(array $associations): self
@@ -103,6 +123,8 @@ final class ContactReadParams implements BaseModel
     }
 
     /**
+     * A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -114,6 +136,8 @@ final class ContactReadParams implements BaseModel
     }
 
     /**
+     * A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
      * @param list<string> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(

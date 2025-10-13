@@ -23,6 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   objectTypeID: string,
  *   timeWindows: list<APITimeWindow>,
  *   type: value-of<Type>,
+ *   description?: string,
  *   enrollmentCriteria?: APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
  *   enrollmentSchedule?: APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
  *   name?: string,
@@ -73,6 +74,9 @@ final class APIPlatformFlowCreateRequest implements BaseModel
     /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
+
+    #[Api(optional: true)]
+    public ?string $description;
 
     #[Api(optional: true)]
     public APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria;
@@ -153,6 +157,7 @@ final class APIPlatformFlowCreateRequest implements BaseModel
         string $objectTypeID,
         array $timeWindows,
         Type|string $type = 'PLATFORM_FLOW',
+        ?string $description = null,
         APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria = null,
         APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule = null,
         ?string $name = null,
@@ -172,6 +177,7 @@ final class APIPlatformFlowCreateRequest implements BaseModel
         $obj->timeWindows = $timeWindows;
         $obj['type'] = $type;
 
+        null !== $description && $obj->description = $description;
         null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
         null !== $enrollmentSchedule && $obj->enrollmentSchedule = $enrollmentSchedule;
         null !== $name && $obj->name = $name;
@@ -271,6 +277,14 @@ final class APIPlatformFlowCreateRequest implements BaseModel
     {
         $obj = clone $this;
         $obj['type'] = $type;
+
+        return $obj;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
 
         return $obj;
     }

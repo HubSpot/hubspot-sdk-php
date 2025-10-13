@@ -42,22 +42,38 @@ final class TagCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The unique ID of the Blog Tag.
+     */
     #[Api]
     public string $id;
 
     #[Api]
     public \DateTimeInterface $created;
 
+    /**
+     * The timestamp (ISO8601 format) when this Blog Tag was deleted.
+     */
     #[Api]
     public \DateTimeInterface $deletedAt;
 
-    /** @var value-of<Language> $language */
+    /**
+     * The explicitly defined ISO 639 language code of the tag.
+     *
+     * @var value-of<Language> $language
+     */
     #[Api(enum: Language::class)]
     public string $language;
 
+    /**
+     * The name of the tag.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * ID of the primary tag this object was translated from.
+     */
     #[Api('translatedFromId')]
     public int $translatedFromID;
 
@@ -127,6 +143,9 @@ final class TagCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID of the Blog Tag.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -143,6 +162,9 @@ final class TagCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp (ISO8601 format) when this Blog Tag was deleted.
+     */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
         $obj = clone $this;
@@ -152,6 +174,8 @@ final class TagCreateParams implements BaseModel
     }
 
     /**
+     * The explicitly defined ISO 639 language code of the tag.
+     *
      * @param Language|value-of<Language> $language
      */
     public function withLanguage(Language|string $language): self
@@ -162,6 +186,9 @@ final class TagCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the tag.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -170,6 +197,9 @@ final class TagCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the primary tag this object was translated from.
+     */
     public function withTranslatedFromID(int $translatedFromID): self
     {
         $obj = clone $this;

@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Specifies the input for reading a batch of CRM objects, including arrays of object IDs, requested property names (with optional history), and an optional unique identifying property.
+ *
  * @phpstan-type batch_read_input_simple_public_object_id = array{
  *   inputs: list<SimplePublicObjectID>,
  *   properties: list<string>,
@@ -25,14 +27,25 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
     #[Api(list: SimplePublicObjectID::class)]
     public array $inputs;
 
-    /** @var list<string> $properties */
+    /**
+     * Key-value pairs for setting properties for the new object.
+     *
+     * @var list<string> $properties
+     */
     #[Api(list: 'string')]
     public array $properties;
 
-    /** @var list<string> $propertiesWithHistory */
+    /**
+     * Key-value pairs for setting properties for the new object and their histories.
+     *
+     * @var list<string> $propertiesWithHistory
+     */
     #[Api(list: 'string')]
     public array $propertiesWithHistory;
 
+    /**
+     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -98,6 +111,8 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
     }
 
     /**
+     * Key-value pairs for setting properties for the new object.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -109,6 +124,8 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
     }
 
     /**
+     * Key-value pairs for setting properties for the new object and their histories.
+     *
      * @param list<string> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(
@@ -120,6 +137,9 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
         return $obj;
     }
 
+    /**
+     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

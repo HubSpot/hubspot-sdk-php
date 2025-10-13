@@ -17,7 +17,7 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
  * $params = (new CompanyUpdateParams); // set properties as needed
  * $client->crm.objects.companies->update(...$params->toArray());
  * ```
- * Update a batch of companies.
+ * Update a batch of companies by ID.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

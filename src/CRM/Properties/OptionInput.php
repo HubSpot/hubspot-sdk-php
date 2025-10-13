@@ -10,7 +10,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type option_input = array{
- *   hidden: bool, label: string, value: string, displayOrder?: int
+ *   hidden: bool,
+ *   label: string,
+ *   value: string,
+ *   description?: string,
+ *   displayOrder?: int,
  * }
  */
 final class OptionInput implements BaseModel
@@ -18,15 +22,33 @@ final class OptionInput implements BaseModel
     /** @use SdkModel<option_input> */
     use SdkModel;
 
+    /**
+     * If true, the option will not be shown in forms, bots, or meeting scheduling pages. Supported for contact, company, ticket, and custom object enumeration properties.
+     */
     #[Api]
     public bool $hidden;
 
+    /**
+     * A human-readable option label that will be shown in HubSpot.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * The internal value of the option, which must be used when setting the property value through the API.
+     */
     #[Api]
     public string $value;
 
+    /**
+     * A description of the option.
+     */
+    #[Api(optional: true)]
+    public ?string $description;
+
+    /**
+     * Options are shown in order starting with the lowest positive integer value. Values of -1 will cause the option to be displayed after any positive values.
+     */
     #[Api(optional: true)]
     public ?int $displayOrder;
 
@@ -58,7 +80,8 @@ final class OptionInput implements BaseModel
         bool $hidden,
         string $label,
         string $value,
-        ?int $displayOrder = null
+        ?string $description = null,
+        ?int $displayOrder = null,
     ): self {
         $obj = new self;
 
@@ -66,11 +89,15 @@ final class OptionInput implements BaseModel
         $obj->label = $label;
         $obj->value = $value;
 
+        null !== $description && $obj->description = $description;
         null !== $displayOrder && $obj->displayOrder = $displayOrder;
 
         return $obj;
     }
 
+    /**
+     * If true, the option will not be shown in forms, bots, or meeting scheduling pages. Supported for contact, company, ticket, and custom object enumeration properties.
+     */
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
@@ -79,6 +106,9 @@ final class OptionInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * A human-readable option label that will be shown in HubSpot.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -87,6 +117,9 @@ final class OptionInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * The internal value of the option, which must be used when setting the property value through the API.
+     */
     public function withValue(string $value): self
     {
         $obj = clone $this;
@@ -95,6 +128,20 @@ final class OptionInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * A description of the option.
+     */
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * Options are shown in order starting with the lowest positive integer value. Values of -1 will cause the option to be displayed after any positive values.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;

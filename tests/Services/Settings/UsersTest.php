@@ -36,7 +36,9 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->create(email: 'email');
+        $result = $this->client->settings->users->create(
+            email: 'newUser@email.com'
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +50,9 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->create(email: 'email');
+        $result = $this->client->settings->users->create(
+            email: 'newUser@email.com'
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -25,7 +25,11 @@ final class OAuthService implements OAuthContract
     /**
      * @api
      *
-     * Refresh an access token
+     * Use a [previously obtained refresh token](#get-oauth-2.0-access-and-refresh-tokens) to generate a new access token.
+     *
+     * Access tokens are short lived. You can check the `expires_in` parameter when generating an access token to determine its lifetime (in seconds). If you need offline access to HubSpot data, store the refresh token you get when [initiating your OAuth integration](https://developers.hubspot.com/docs/guides/api/app-management/oauth-tokens#initiating-oauth-access) and use it to generate a new access token once the initial one expires.
+     *
+     * Note: HubSpot access tokens will fluctuate in size as the information that's encoded in them changes over time. It's recommended to allow for tokens to be up to 300 characters to account for any potential changes.
      *
      * @param string $clientID
      * @param string $clientSecret
@@ -87,7 +91,9 @@ final class OAuthService implements OAuthContract
     /**
      * @api
      *
-     * Delete a refresh token
+     * Delete a refresh token, typically after a user uninstalls your app. Access tokens generated with the refresh token will not be affected.
+     *
+     * This will not uninstall the application from HubSpot or inhibit data syncing between an account and the app.
      *
      * @throws APIException
      */
@@ -107,7 +113,7 @@ final class OAuthService implements OAuthContract
     /**
      * @api
      *
-     * Retrieve refresh token metadata
+     * Retrieve a refresh token's metadata, including the email address of the user that the token was created for and the ID of the account it's associated with. Learn more about [refresh tokens](https://developers.hubspot.com/docs/guides/api/app-management/oauth-tokens#generate-initial-access-and-refresh-tokens).
      *
      * @throws APIException
      */

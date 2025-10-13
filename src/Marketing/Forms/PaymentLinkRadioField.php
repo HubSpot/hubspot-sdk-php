@@ -20,6 +20,7 @@ use HubspotSDK\Marketing\Forms\PaymentLinkRadioField\FieldType;
  *   objectTypeID: string,
  *   options: list<EnumeratedFieldOption>,
  *   required: bool,
+ *   description?: string,
  * }
  */
 final class PaymentLinkRadioField implements BaseModel
@@ -57,6 +58,9 @@ final class PaymentLinkRadioField implements BaseModel
 
     #[Api]
     public bool $required;
+
+    #[Api(optional: true)]
+    public ?string $description;
 
     /**
      * `new PaymentLinkRadioField()` is missing required properties by the API.
@@ -116,6 +120,7 @@ final class PaymentLinkRadioField implements BaseModel
         array $options,
         bool $required,
         FieldType|string $fieldType = 'payment_link_radio',
+        ?string $description = null,
     ): self {
         $obj = new self;
 
@@ -128,6 +133,8 @@ final class PaymentLinkRadioField implements BaseModel
         $obj->objectTypeID = $objectTypeID;
         $obj->options = $options;
         $obj->required = $required;
+
+        null !== $description && $obj->description = $description;
 
         return $obj;
     }
@@ -212,6 +219,14 @@ final class PaymentLinkRadioField implements BaseModel
     {
         $obj = clone $this;
         $obj->required = $required;
+
+        return $obj;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
 
         return $obj;
     }

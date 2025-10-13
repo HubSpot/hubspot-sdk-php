@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new URLRedirectCreateParams); // set properties as needed
  * $client->cms.urlRedirects->create(...$params->toArray());
  * ```
- * Create a redirect.
+ * Creates and configures a new URL redirect.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

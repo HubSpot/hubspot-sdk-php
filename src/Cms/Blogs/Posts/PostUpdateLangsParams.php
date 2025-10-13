@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new PostUpdateLangsParams); // set properties as needed
  * $client->cms.blogs.posts->updateLangs(...$params->toArray());
  * ```
- * Update languages of multi-language group.
+ * Explicitly set new languages for each post in a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,10 +35,17 @@ final class PostUpdateLangsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var array<string, string> $languages */
+    /**
+     * Map of object IDs to associated languages of object in the multi-language group.
+     *
+     * @var array<string, string> $languages
+     */
     #[Api(map: 'string')]
     public array $languages;
 
+    /**
+     * ID of the primary object in the multi-language group.
+     */
     #[Api('primaryId')]
     public string $primaryID;
 
@@ -79,6 +86,8 @@ final class PostUpdateLangsParams implements BaseModel
     }
 
     /**
+     * Map of object IDs to associated languages of object in the multi-language group.
+     *
      * @param array<string, string> $languages
      */
     public function withLanguages(array $languages): self
@@ -89,6 +98,9 @@ final class PostUpdateLangsParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the primary object in the multi-language group.
+     */
     public function withPrimaryID(string $primaryID): self
     {
         $obj = clone $this;

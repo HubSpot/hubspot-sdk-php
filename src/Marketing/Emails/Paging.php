@@ -11,6 +11,8 @@ use HubspotSDK\NextPage;
 use HubspotSDK\PreviousPage;
 
 /**
+ * Contains information pagination of results.
+ *
  * @phpstan-type paging_alias = array{next: NextPage, prev?: PreviousPage}
  */
 final class Paging implements BaseModel
@@ -18,9 +20,15 @@ final class Paging implements BaseModel
     /** @use SdkModel<paging_alias> */
     use SdkModel;
 
+    /**
+     * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
+     */
     #[Api]
     public NextPage $next;
 
+    /**
+     * specifies the paging information needed to retrieve the previous set of results in a paginated API response.
+     */
     #[Api(optional: true)]
     public ?PreviousPage $prev;
 
@@ -59,6 +67,9 @@ final class Paging implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
+     */
     public function withNext(NextPage $next): self
     {
         $obj = clone $this;
@@ -67,6 +78,9 @@ final class Paging implements BaseModel
         return $obj;
     }
 
+    /**
+     * specifies the paging information needed to retrieve the previous set of results in a paginated API response.
+     */
     public function withPrev(PreviousPage $prev): self
     {
         $obj = clone $this;

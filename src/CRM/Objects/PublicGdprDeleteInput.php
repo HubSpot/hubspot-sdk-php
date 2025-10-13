@@ -18,9 +18,15 @@ final class PublicGdprDeleteInput implements BaseModel
     /** @use SdkModel<public_gdpr_delete_input> */
     use SdkModel;
 
+    /**
+     * The ID of the company to delete.
+     */
     #[Api('objectId')]
     public string $objectID;
 
+    /**
+     * The name of a unique property, when identifying records by property instead of ID.
+     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -61,6 +67,9 @@ final class PublicGdprDeleteInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the company to delete.
+     */
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
@@ -69,6 +78,9 @@ final class PublicGdprDeleteInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of a unique property, when identifying records by property instead of ID.
+     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

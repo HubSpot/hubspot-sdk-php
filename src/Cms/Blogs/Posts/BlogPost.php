@@ -16,6 +16,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
+ * Model definition for a Blog Post.
+ *
  * @phpstan-type blog_post = array{
  *   id: string,
  *   abStatus: value-of<AbStatus>,
@@ -87,6 +89,9 @@ final class BlogPost implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The unique ID of the blog post.
+     */
     #[Api]
     public string $id;
 
@@ -97,48 +102,87 @@ final class BlogPost implements BaseModel, ResponseConverter
     #[Api('abTestId')]
     public string $abTestID;
 
+    /**
+     * The timestamp (ISO8601 format) when this Blog Post was deleted.
+     */
     #[Api]
     public int $archivedAt;
 
+    /**
+     * If True, the post will not show up in your dashboard, although the post could still be live.
+     */
     #[Api]
     public bool $archivedInDashboard;
 
-    /** @var list<array<string, mixed>> $attachedStylesheets */
+    /**
+     * List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
+     *
+     * @var list<array<string, mixed>> $attachedStylesheets
+     */
     #[Api(list: new MapOf('mixed'))]
     public array $attachedStylesheets;
 
+    /**
+     * The name of the blog author associated with the post.
+     */
     #[Api]
     public string $authorName;
 
+    /**
+     * The ID of the blog author associated with this post.
+     */
     #[Api('blogAuthorId')]
     public string $blogAuthorID;
 
+    /**
+     * The GUID of the marketing campaign the post is associated with.
+     */
     #[Api]
     public string $campaign;
 
+    /**
+     * ID of the object type.
+     */
     #[Api('categoryId')]
     public int $categoryID;
 
+    /**
+     * The ID of the post's parent blog.
+     */
     #[Api('contentGroupId')]
     public string $contentGroupID;
 
-    /** @var value-of<ContentTypeCategory> $contentTypeCategory */
+    /**
+     * An ENUM descibing the type of this object. Should always be BLOG_POST.
+     *
+     * @var value-of<ContentTypeCategory> $contentTypeCategory
+     */
     #[Api(enum: ContentTypeCategory::class)]
     public string $contentTypeCategory;
 
     #[Api]
     public \DateTimeInterface $created;
 
+    /**
+     * The ID of the user that created the post.
+     */
     #[Api('createdById')]
     public string $createdByID;
 
     #[Api]
     public bool $currentlyPublished;
 
-    /** @var value-of<CurrentState> $currentState */
+    /**
+     * A generated ENUM descibing the current state of this Blog Post. Should always match state.
+     *
+     * @var value-of<CurrentState> $currentState
+     */
     #[Api(enum: CurrentState::class)]
     public string $currentState;
 
+    /**
+     * The domain that the post lives on. If null, the post will default to the domain of the parent blog.
+     */
     #[Api]
     public string $domain;
 
@@ -148,40 +192,75 @@ final class BlogPost implements BaseModel, ResponseConverter
     #[Api]
     public int $dynamicPageDataSourceType;
 
+    /**
+     * For dynamic HubDB pages,
+     * the ID of the HubDB table this post references.
+     */
     #[Api('dynamicPageHubDbTableId')]
     public string $dynamicPageHubDBTableID;
 
+    /**
+     * Boolean to determine whether or not the styles from the template should be applied.
+     */
     #[Api]
     public bool $enableDomainStylesheets;
 
+    /**
+     * Boolean to allow overriding the AMP settings for the blog.
+     */
     #[Api]
     public bool $enableGoogleAmpOutputOverride;
 
+    /**
+     * Boolean to determine whether or not the styles from the template should be applied.
+     */
     #[Api]
     public bool $enableLayoutStylesheets;
 
+    /**
+     * The featuredImage of this Blog Post.
+     */
     #[Api]
     public string $featuredImage;
 
+    /**
+     * Alt Text of the featuredImage.
+     */
     #[Api]
     public string $featuredImageAltText;
 
     #[Api('folderId')]
     public string $folderID;
 
+    /**
+     * Custom HTML for embed codes, javascript that should be placed before the </body> tag of the page.
+     */
     #[Api('footerHtml')]
     public string $footerHTML;
 
+    /**
+     * Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
+     */
     #[Api('headHtml')]
     public string $headHTML;
 
+    /**
+     * The HTML title of the post.
+     */
     #[Api]
     public string $htmlTitle;
 
+    /**
+     * Boolean to determine whether or not the Primary CSS Files should be applied.
+     */
     #[Api]
     public bool $includeDefaultCustomCss;
 
-    /** @var value-of<Language> $language */
+    /**
+     * The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
+     *
+     * @var value-of<Language> $language
+     */
     #[Api(enum: Language::class)]
     public string $language;
 
@@ -189,15 +268,24 @@ final class BlogPost implements BaseModel, ResponseConverter
     #[Api(map: LayoutSection::class)]
     public array $layoutSections;
 
+    /**
+     * Optional override to set the URL to be used in the rel=canonical link tag on the page.
+     */
     #[Api('linkRelCanonicalUrl')]
     public string $linkRelCanonicalURL;
 
     #[Api('mabExperimentId')]
     public string $mabExperimentID;
 
+    /**
+     * A description that goes in <meta> tag on the page.
+     */
     #[Api]
     public string $metaDescription;
 
+    /**
+     * The internal name of the post.
+     */
     #[Api]
     public string $name;
 
@@ -213,41 +301,79 @@ final class BlogPost implements BaseModel, ResponseConverter
     #[Api('pageExpiryRedirectUrl')]
     public string $pageExpiryRedirectURL;
 
+    /**
+     * Set this to create a password protected page. Entering the password will be required to view the page.
+     */
     #[Api]
     public string $password;
 
+    /**
+     * The HTML of the main post body.
+     */
     #[Api]
     public string $postBody;
 
+    /**
+     * The summary of the blog post that will appear on the main listing page.
+     */
     #[Api]
     public string $postSummary;
 
-    /** @var list<mixed> $publicAccessRules */
+    /**
+     * Rules for require member registration to access private content.
+     *
+     * @var list<mixed> $publicAccessRules
+     */
     #[Api(list: 'mixed')]
     public array $publicAccessRules;
 
+    /**
+     * Boolean to determine whether or not to respect publicAccessRules.
+     */
     #[Api]
     public bool $publicAccessRulesEnabled;
 
+    /**
+     * The date (ISO8601 format) the blog post is to be published at.
+     */
     #[Api]
     public \DateTimeInterface $publishDate;
 
+    /**
+     * Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.
+     */
     #[Api]
     public bool $publishImmediately;
 
+    /**
+     * The contents of the RSS body for this Blog Post.
+     */
     #[Api]
     public string $rssBody;
 
+    /**
+     * The contents of the RSS summary for this Blog Post.
+     */
     #[Api]
     public string $rssSummary;
 
+    /**
+     * The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
+     */
     #[Api]
     public string $slug;
 
+    /**
+     * An enumeration describing the current publish state of the post.
+     */
     #[Api]
     public string $state;
 
-    /** @var list<int> $tagIDs */
+    /**
+     * The IDs of the tags associated with this post.
+     *
+     * @var list<int> $tagIDs
+     */
     #[Api('tagIds', list: 'int')]
     public array $tagIDs;
 
@@ -255,6 +381,9 @@ final class BlogPost implements BaseModel, ResponseConverter
     #[Api(map: 'mixed')]
     public array $themeSettingsValues;
 
+    /**
+     * ID of the primary blog post that this post was translated from.
+     */
     #[Api('translatedFromId')]
     public string $translatedFromID;
 
@@ -265,20 +394,37 @@ final class BlogPost implements BaseModel, ResponseConverter
     #[Api]
     public \DateTimeInterface $updated;
 
+    /**
+     * The ID of the user that updated the post.
+     */
     #[Api('updatedById')]
     public string $updatedByID;
 
+    /**
+     * A generated field representing the URL of this blog post.
+     */
     #[Api]
     public string $url;
 
+    /**
+     * Boolean to determine if this post should use a featured image.
+     */
     #[Api]
     public bool $useFeaturedImage;
 
-    /** @var array<string, mixed> $widgetContainers */
+    /**
+     * A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
+     *
+     * @var array<string, mixed> $widgetContainers
+     */
     #[Api(map: 'mixed')]
     public array $widgetContainers;
 
-    /** @var array<string, mixed> $widgets */
+    /**
+     * A data structure containing the data for all the modules for this page.
+     *
+     * @var array<string, mixed> $widgets
+     */
     #[Api(map: 'mixed')]
     public array $widgets;
 
@@ -572,6 +718,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The unique ID of the blog post.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -599,6 +748,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The timestamp (ISO8601 format) when this Blog Post was deleted.
+     */
     public function withArchivedAt(int $archivedAt): self
     {
         $obj = clone $this;
@@ -607,6 +759,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * If True, the post will not show up in your dashboard, although the post could still be live.
+     */
     public function withArchivedInDashboard(bool $archivedInDashboard): self
     {
         $obj = clone $this;
@@ -616,6 +771,8 @@ final class BlogPost implements BaseModel, ResponseConverter
     }
 
     /**
+     * List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
+     *
      * @param list<array<string, mixed>> $attachedStylesheets
      */
     public function withAttachedStylesheets(array $attachedStylesheets): self
@@ -626,6 +783,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The name of the blog author associated with the post.
+     */
     public function withAuthorName(string $authorName): self
     {
         $obj = clone $this;
@@ -634,6 +794,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The ID of the blog author associated with this post.
+     */
     public function withBlogAuthorID(string $blogAuthorID): self
     {
         $obj = clone $this;
@@ -642,6 +805,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The GUID of the marketing campaign the post is associated with.
+     */
     public function withCampaign(string $campaign): self
     {
         $obj = clone $this;
@@ -650,6 +816,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * ID of the object type.
+     */
     public function withCategoryID(int $categoryID): self
     {
         $obj = clone $this;
@@ -658,6 +827,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The ID of the post's parent blog.
+     */
     public function withContentGroupID(string $contentGroupID): self
     {
         $obj = clone $this;
@@ -667,6 +839,8 @@ final class BlogPost implements BaseModel, ResponseConverter
     }
 
     /**
+     * An ENUM descibing the type of this object. Should always be BLOG_POST.
+     *
      * @param ContentTypeCategory|value-of<ContentTypeCategory> $contentTypeCategory
      */
     public function withContentTypeCategory(
@@ -686,6 +860,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The ID of the user that created the post.
+     */
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
@@ -703,6 +880,8 @@ final class BlogPost implements BaseModel, ResponseConverter
     }
 
     /**
+     * A generated ENUM descibing the current state of this Blog Post. Should always match state.
+     *
      * @param CurrentState|value-of<CurrentState> $currentState
      */
     public function withCurrentState(CurrentState|string $currentState): self
@@ -713,6 +892,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The domain that the post lives on. If null, the post will default to the domain of the parent blog.
+     */
     public function withDomain(string $domain): self
     {
         $obj = clone $this;
@@ -739,6 +921,10 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * For dynamic HubDB pages,
+     * the ID of the HubDB table this post references.
+     */
     public function withDynamicPageHubDBTableID(
         string $dynamicPageHubDBTableID
     ): self {
@@ -748,6 +934,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Boolean to determine whether or not the styles from the template should be applied.
+     */
     public function withEnableDomainStylesheets(
         bool $enableDomainStylesheets
     ): self {
@@ -757,6 +946,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Boolean to allow overriding the AMP settings for the blog.
+     */
     public function withEnableGoogleAmpOutputOverride(
         bool $enableGoogleAmpOutputOverride
     ): self {
@@ -766,6 +958,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Boolean to determine whether or not the styles from the template should be applied.
+     */
     public function withEnableLayoutStylesheets(
         bool $enableLayoutStylesheets
     ): self {
@@ -775,6 +970,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The featuredImage of this Blog Post.
+     */
     public function withFeaturedImage(string $featuredImage): self
     {
         $obj = clone $this;
@@ -783,6 +981,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Alt Text of the featuredImage.
+     */
     public function withFeaturedImageAltText(string $featuredImageAltText): self
     {
         $obj = clone $this;
@@ -799,6 +1000,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Custom HTML for embed codes, javascript that should be placed before the </body> tag of the page.
+     */
     public function withFooterHTML(string $footerHTML): self
     {
         $obj = clone $this;
@@ -807,6 +1011,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
+     */
     public function withHeadHTML(string $headHTML): self
     {
         $obj = clone $this;
@@ -815,6 +1022,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The HTML title of the post.
+     */
     public function withHTMLTitle(string $htmlTitle): self
     {
         $obj = clone $this;
@@ -823,6 +1033,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Boolean to determine whether or not the Primary CSS Files should be applied.
+     */
     public function withIncludeDefaultCustomCss(
         bool $includeDefaultCustomCss
     ): self {
@@ -833,6 +1046,8 @@ final class BlogPost implements BaseModel, ResponseConverter
     }
 
     /**
+     * The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
+     *
      * @param Language|value-of<Language> $language
      */
     public function withLanguage(Language|string $language): self
@@ -854,6 +1069,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Optional override to set the URL to be used in the rel=canonical link tag on the page.
+     */
     public function withLinkRelCanonicalURL(string $linkRelCanonicalURL): self
     {
         $obj = clone $this;
@@ -870,6 +1088,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A description that goes in <meta> tag on the page.
+     */
     public function withMetaDescription(string $metaDescription): self
     {
         $obj = clone $this;
@@ -878,6 +1099,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The internal name of the post.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -919,6 +1143,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Set this to create a password protected page. Entering the password will be required to view the page.
+     */
     public function withPassword(string $password): self
     {
         $obj = clone $this;
@@ -927,6 +1154,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The HTML of the main post body.
+     */
     public function withPostBody(string $postBody): self
     {
         $obj = clone $this;
@@ -935,6 +1165,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The summary of the blog post that will appear on the main listing page.
+     */
     public function withPostSummary(string $postSummary): self
     {
         $obj = clone $this;
@@ -944,6 +1177,8 @@ final class BlogPost implements BaseModel, ResponseConverter
     }
 
     /**
+     * Rules for require member registration to access private content.
+     *
      * @param list<mixed> $publicAccessRules
      */
     public function withPublicAccessRules(array $publicAccessRules): self
@@ -954,6 +1189,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Boolean to determine whether or not to respect publicAccessRules.
+     */
     public function withPublicAccessRulesEnabled(
         bool $publicAccessRulesEnabled
     ): self {
@@ -963,6 +1201,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The date (ISO8601 format) the blog post is to be published at.
+     */
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
         $obj = clone $this;
@@ -971,6 +1212,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.
+     */
     public function withPublishImmediately(bool $publishImmediately): self
     {
         $obj = clone $this;
@@ -979,6 +1223,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The contents of the RSS body for this Blog Post.
+     */
     public function withRssBody(string $rssBody): self
     {
         $obj = clone $this;
@@ -987,6 +1234,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The contents of the RSS summary for this Blog Post.
+     */
     public function withRssSummary(string $rssSummary): self
     {
         $obj = clone $this;
@@ -995,6 +1245,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
+     */
     public function withSlug(string $slug): self
     {
         $obj = clone $this;
@@ -1003,6 +1256,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * An enumeration describing the current publish state of the post.
+     */
     public function withState(string $state): self
     {
         $obj = clone $this;
@@ -1012,6 +1268,8 @@ final class BlogPost implements BaseModel, ResponseConverter
     }
 
     /**
+     * The IDs of the tags associated with this post.
+     *
      * @param list<int> $tagIDs
      */
     public function withTagIDs(array $tagIDs): self
@@ -1033,6 +1291,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * ID of the primary blog post that this post was translated from.
+     */
     public function withTranslatedFromID(string $translatedFromID): self
     {
         $obj = clone $this;
@@ -1060,6 +1321,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The ID of the user that updated the post.
+     */
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
@@ -1068,6 +1332,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A generated field representing the URL of this blog post.
+     */
     public function withURL(string $url): self
     {
         $obj = clone $this;
@@ -1076,6 +1343,9 @@ final class BlogPost implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Boolean to determine if this post should use a featured image.
+     */
     public function withUseFeaturedImage(bool $useFeaturedImage): self
     {
         $obj = clone $this;
@@ -1085,6 +1355,8 @@ final class BlogPost implements BaseModel, ResponseConverter
     }
 
     /**
+     * A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
+     *
      * @param array<string, mixed> $widgetContainers
      */
     public function withWidgetContainers(array $widgetContainers): self
@@ -1096,6 +1368,8 @@ final class BlogPost implements BaseModel, ResponseConverter
     }
 
     /**
+     * A data structure containing the data for all the modules for this page.
+     *
      * @param array<string, mixed> $widgets
      */
     public function withWidgets(array $widgets): self

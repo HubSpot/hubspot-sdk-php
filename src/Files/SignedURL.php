@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Signed Url object with optional ancillary metadata of requested file.
+ *
  * @phpstan-type signed_url = array{
  *   expiresAt: \DateTimeInterface,
  *   extension: string,
@@ -25,27 +27,51 @@ final class SignedURL implements BaseModel
     /** @use SdkModel<signed_url> */
     use SdkModel;
 
+    /**
+     * Timestamp of when the URL will no longer grant access to the file.
+     */
     #[Api]
     public \DateTimeInterface $expiresAt;
 
+    /**
+     * Extension of the requested file.
+     */
     #[Api]
     public string $extension;
 
+    /**
+     * Name of the requested file.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * Size in bytes of the requested file.
+     */
     #[Api]
     public int $size;
 
+    /**
+     * Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
+     */
     #[Api]
     public string $type;
 
+    /**
+     * Signed URL with access to the specified file. Anyone with this URL will be able to access the file until it expires.
+     */
     #[Api]
     public string $url;
 
+    /**
+     * For image and video files. The height of the file.
+     */
     #[Api(optional: true)]
     public ?int $height;
 
+    /**
+     * For image and video files. The width of the file.
+     */
     #[Api(optional: true)]
     public ?int $width;
 
@@ -106,6 +132,9 @@ final class SignedURL implements BaseModel
         return $obj;
     }
 
+    /**
+     * Timestamp of when the URL will no longer grant access to the file.
+     */
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;
@@ -114,6 +143,9 @@ final class SignedURL implements BaseModel
         return $obj;
     }
 
+    /**
+     * Extension of the requested file.
+     */
     public function withExtension(string $extension): self
     {
         $obj = clone $this;
@@ -122,6 +154,9 @@ final class SignedURL implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the requested file.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -130,6 +165,9 @@ final class SignedURL implements BaseModel
         return $obj;
     }
 
+    /**
+     * Size in bytes of the requested file.
+     */
     public function withSize(int $size): self
     {
         $obj = clone $this;
@@ -138,6 +176,9 @@ final class SignedURL implements BaseModel
         return $obj;
     }
 
+    /**
+     * Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
+     */
     public function withType(string $type): self
     {
         $obj = clone $this;
@@ -146,6 +187,9 @@ final class SignedURL implements BaseModel
         return $obj;
     }
 
+    /**
+     * Signed URL with access to the specified file. Anyone with this URL will be able to access the file until it expires.
+     */
     public function withURL(string $url): self
     {
         $obj = clone $this;
@@ -154,6 +198,9 @@ final class SignedURL implements BaseModel
         return $obj;
     }
 
+    /**
+     * For image and video files. The height of the file.
+     */
     public function withHeight(int $height): self
     {
         $obj = clone $this;
@@ -162,6 +209,9 @@ final class SignedURL implements BaseModel
         return $obj;
     }
 
+    /**
+     * For image and video files. The width of the file.
+     */
     public function withWidth(int $width): self
     {
         $obj = clone $this;

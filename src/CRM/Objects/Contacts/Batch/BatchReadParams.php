@@ -17,7 +17,7 @@ use HubspotSDK\CRM\Objects\SimplePublicObjectID;
  * $params = (new BatchReadParams); // set properties as needed
  * $client->crm.objects.contacts.batch->read(...$params->toArray());
  * ```
- * Retrieve a batch of contacts.
+ * Retrieve a batch of contacts by ID (`contactId`) or unique property value (`idProperty`).
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -44,17 +44,31 @@ final class BatchReadParams implements BaseModel
     #[Api(list: SimplePublicObjectID::class)]
     public array $inputs;
 
-    /** @var list<string> $properties */
+    /**
+     * Key-value pairs for setting properties for the new object.
+     *
+     * @var list<string> $properties
+     */
     #[Api(list: 'string')]
     public array $properties;
 
-    /** @var list<string> $propertiesWithHistory */
+    /**
+     * Key-value pairs for setting properties for the new object and their histories.
+     *
+     * @var list<string> $propertiesWithHistory
+     */
     #[Api(list: 'string')]
     public array $propertiesWithHistory;
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -120,6 +134,8 @@ final class BatchReadParams implements BaseModel
     }
 
     /**
+     * Key-value pairs for setting properties for the new object.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -131,6 +147,8 @@ final class BatchReadParams implements BaseModel
     }
 
     /**
+     * Key-value pairs for setting properties for the new object and their histories.
+     *
      * @param list<string> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(
@@ -142,6 +160,9 @@ final class BatchReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to return only results that have been archived.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -150,6 +171,9 @@ final class BatchReadParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

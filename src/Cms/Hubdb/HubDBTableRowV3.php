@@ -29,28 +29,50 @@ final class HubDBTableRowV3 implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
-    /** @var array<string, mixed> $values */
+    /**
+     * List of key value pairs with the column name and column value.
+     *
+     * @var array<string, mixed> $values
+     */
     #[Api(map: 'mixed')]
     public array $values;
 
+    /**
+     * The id of the table row.
+     */
     #[Api(optional: true)]
     public ?string $id;
 
+    /**
+     * Specifies the value for the column child table id.
+     */
     #[Api('childTableId', optional: true)]
     public ?string $childTableID;
 
+    /**
+     * Timestamp at which the row is created.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
+    /**
+     * Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages.
+     */
     #[Api(optional: true)]
     public ?string $path;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $publishedAt;
 
+    /**
+     * Timestamp at which the row is updated last time.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
@@ -106,6 +128,8 @@ final class HubDBTableRowV3 implements BaseModel, ResponseConverter
     }
 
     /**
+     * List of key value pairs with the column name and column value.
+     *
      * @param array<string, mixed> $values
      */
     public function withValues(array $values): self
@@ -116,6 +140,9 @@ final class HubDBTableRowV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The id of the table row.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -124,6 +151,9 @@ final class HubDBTableRowV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Specifies the value for the column child table id.
+     */
     public function withChildTableID(string $childTableID): self
     {
         $obj = clone $this;
@@ -132,6 +162,9 @@ final class HubDBTableRowV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Timestamp at which the row is created.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -140,6 +173,9 @@ final class HubDBTableRowV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -148,6 +184,9 @@ final class HubDBTableRowV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages.
+     */
     public function withPath(string $path): self
     {
         $obj = clone $this;
@@ -164,6 +203,9 @@ final class HubDBTableRowV3 implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Timestamp at which the row is updated last time.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;

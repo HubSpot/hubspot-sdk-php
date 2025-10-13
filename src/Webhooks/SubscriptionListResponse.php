@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
+ * List of event subscriptions for your app.
+ *
  * @phpstan-type subscription_list_response = array{
  *   results: list<SubscriptionResponse>
  * }
@@ -22,7 +24,11 @@ final class SubscriptionListResponse implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
-    /** @var list<SubscriptionResponse> $results */
+    /**
+     * List of event subscriptions for your app.
+     *
+     * @var list<SubscriptionResponse> $results
+     */
     #[Api(list: SubscriptionResponse::class)]
     public array $results;
 
@@ -62,6 +68,8 @@ final class SubscriptionListResponse implements BaseModel, ResponseConverter
     }
 
     /**
+     * List of event subscriptions for your app.
+     *
      * @param list<SubscriptionResponse> $results
      */
     public function withResults(array $results): self

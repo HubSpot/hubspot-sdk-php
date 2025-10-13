@@ -17,7 +17,7 @@ use HubspotSDK\Settings\Users\UserReplaceParams\IDProperty;
  * $params = (new UserReplaceParams); // set properties as needed
  * $client->settings.users->replace(...$params->toArray());
  * ```
- * Modifies a user.
+ * Modifies a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -41,7 +41,11 @@ final class UserReplaceParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<IDProperty>|null $idProperty */
+    /**
+     * The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`.
+     *
+     * @var value-of<IDProperty>|null $idProperty
+     */
     #[Api(enum: IDProperty::class, optional: true)]
     public ?string $idProperty;
 
@@ -51,13 +55,23 @@ final class UserReplaceParams implements BaseModel
     #[Api(optional: true)]
     public ?string $lastName;
 
+    /**
+     * The user's primary team.
+     */
     #[Api('primaryTeamId', optional: true)]
     public ?string $primaryTeamID;
 
+    /**
+     * The user's role.
+     */
     #[Api('roleId', optional: true)]
     public ?string $roleID;
 
-    /** @var list<string>|null $secondaryTeamIDs */
+    /**
+     * The user's additional teams.
+     *
+     * @var list<string>|null $secondaryTeamIDs
+     */
     #[Api('secondaryTeamIds', list: 'string', optional: true)]
     public ?array $secondaryTeamIDs;
 
@@ -95,6 +109,8 @@ final class UserReplaceParams implements BaseModel
     }
 
     /**
+     * The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`.
+     *
      * @param IDProperty|value-of<IDProperty> $idProperty
      */
     public function withIDProperty(IDProperty|string $idProperty): self
@@ -121,6 +137,9 @@ final class UserReplaceParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's primary team.
+     */
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
@@ -129,6 +148,9 @@ final class UserReplaceParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's role.
+     */
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
@@ -138,6 +160,8 @@ final class UserReplaceParams implements BaseModel
     }
 
     /**
+     * The user's additional teams.
+     *
      * @param list<string> $secondaryTeamIDs
      */
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self

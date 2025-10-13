@@ -12,6 +12,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\CRM\Property;
 
 /**
+ * Defines an object schema, including its properties and associations.
+ *
  * @phpstan-type object_schema = array{
  *   id: string,
  *   associations: list<AssociationDefinition>,
@@ -22,6 +24,7 @@ use HubspotSDK\CRM\Property;
  *   archived?: bool,
  *   createdAt?: \DateTimeInterface,
  *   createdByUserID?: int,
+ *   description?: string,
  *   fullyQualifiedName?: string,
  *   objectTypeID?: string,
  *   primaryDisplayProperty?: string,
@@ -38,30 +41,54 @@ final class ObjectSchema implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * A unique ID for this schema's object type. Will be defined as {meta-type}-{unique ID}.
+     */
     #[Api]
     public string $id;
 
-    /** @var list<AssociationDefinition> $associations */
+    /**
+     * Associations defined for a given object type.
+     *
+     * @var list<AssociationDefinition> $associations
+     */
     #[Api(list: AssociationDefinition::class)]
     public array $associations;
 
+    /**
+     * Singular and plural labels for the object. Used in CRM display.
+     */
     #[Api]
     public ObjectTypeDefinitionLabels $labels;
 
+    /**
+     * A unique name for the schema's object type.
+     */
     #[Api]
     public string $name;
 
-    /** @var list<Property> $properties */
+    /**
+     * Properties defined for this object type.
+     *
+     * @var list<Property> $properties
+     */
     #[Api(list: Property::class)]
     public array $properties;
 
-    /** @var list<string> $requiredProperties */
+    /**
+     * The names of properties that should be **required** when creating an object of this type.
+     *
+     * @var list<string> $requiredProperties
+     */
     #[Api(list: 'string')]
     public array $requiredProperties;
 
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * When the object schema was created.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
@@ -69,22 +96,42 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     public ?int $createdByUserID;
 
     #[Api(optional: true)]
+    public ?string $description;
+
+    /**
+     * An assigned unique ID for the object, including portal ID and object name.
+     */
+    #[Api(optional: true)]
     public ?string $fullyQualifiedName;
 
     #[Api('objectTypeId', optional: true)]
     public ?string $objectTypeID;
 
+    /**
+     * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     */
     #[Api(optional: true)]
     public ?string $primaryDisplayProperty;
 
-    /** @var list<string>|null $searchableProperties */
+    /**
+     * Names of properties that will be indexed for this object type in by HubSpot's product search.
+     *
+     * @var list<string>|null $searchableProperties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $searchableProperties;
 
-    /** @var list<string>|null $secondaryDisplayProperties */
+    /**
+     * The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     *
+     * @var list<string>|null $secondaryDisplayProperties
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $secondaryDisplayProperties;
 
+    /**
+     * When the object schema was last updated.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
@@ -144,6 +191,7 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         ?bool $archived = null,
         ?\DateTimeInterface $createdAt = null,
         ?int $createdByUserID = null,
+        ?string $description = null,
         ?string $fullyQualifiedName = null,
         ?string $objectTypeID = null,
         ?string $primaryDisplayProperty = null,
@@ -164,6 +212,7 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         null !== $archived && $obj->archived = $archived;
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $createdByUserID && $obj->createdByUserID = $createdByUserID;
+        null !== $description && $obj->description = $description;
         null !== $fullyQualifiedName && $obj->fullyQualifiedName = $fullyQualifiedName;
         null !== $objectTypeID && $obj->objectTypeID = $objectTypeID;
         null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
@@ -175,6 +224,9 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A unique ID for this schema's object type. Will be defined as {meta-type}-{unique ID}.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -184,6 +236,8 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     }
 
     /**
+     * Associations defined for a given object type.
+     *
      * @param list<AssociationDefinition> $associations
      */
     public function withAssociations(array $associations): self
@@ -194,6 +248,9 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Singular and plural labels for the object. Used in CRM display.
+     */
     public function withLabels(ObjectTypeDefinitionLabels $labels): self
     {
         $obj = clone $this;
@@ -202,6 +259,9 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A unique name for the schema's object type.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -211,6 +271,8 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     }
 
     /**
+     * Properties defined for this object type.
+     *
      * @param list<Property> $properties
      */
     public function withProperties(array $properties): self
@@ -222,6 +284,8 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     }
 
     /**
+     * The names of properties that should be **required** when creating an object of this type.
+     *
      * @param list<string> $requiredProperties
      */
     public function withRequiredProperties(array $requiredProperties): self
@@ -240,6 +304,9 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * When the object schema was created.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -256,6 +323,17 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * An assigned unique ID for the object, including portal ID and object name.
+     */
     public function withFullyQualifiedName(string $fullyQualifiedName): self
     {
         $obj = clone $this;
@@ -272,6 +350,9 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     */
     public function withPrimaryDisplayProperty(
         string $primaryDisplayProperty
     ): self {
@@ -282,6 +363,8 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     }
 
     /**
+     * Names of properties that will be indexed for this object type in by HubSpot's product search.
+     *
      * @param list<string> $searchableProperties
      */
     public function withSearchableProperties(array $searchableProperties): self
@@ -293,6 +376,8 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     }
 
     /**
+     * The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     *
      * @param list<string> $secondaryDisplayProperties
      */
     public function withSecondaryDisplayProperties(
@@ -304,6 +389,9 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * When the object schema was last updated.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;

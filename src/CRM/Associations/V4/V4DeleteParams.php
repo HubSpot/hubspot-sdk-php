@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new V4DeleteParams); // set properties as needed
  * $client->crm.associations.v4->delete(...$params->toArray());
  * ```
- * Delete.
+ * deletes all associations between two records.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.

@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Wrapper for providing an array of JSON nodes as inputs.
+ *
  * @phpstan-type batch_input_json_node = array{inputs: list<mixed>}
  */
 final class BatchInputJsonNode implements BaseModel
@@ -16,7 +18,11 @@ final class BatchInputJsonNode implements BaseModel
     /** @use SdkModel<batch_input_json_node> */
     use SdkModel;
 
-    /** @var list<mixed> $inputs */
+    /**
+     * JSON nodes to input.
+     *
+     * @var list<mixed> $inputs
+     */
     #[Api(list: 'mixed')]
     public array $inputs;
 
@@ -56,6 +62,8 @@ final class BatchInputJsonNode implements BaseModel
     }
 
     /**
+     * JSON nodes to input.
+     *
      * @param list<mixed> $inputs
      */
     public function withInputs(array $inputs): self

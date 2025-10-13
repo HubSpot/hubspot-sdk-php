@@ -12,6 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
+ * Model definition for a Tag.
+ *
  * @phpstan-type tag_alias = array{
  *   id: string,
  *   created: \DateTimeInterface,
@@ -29,22 +31,38 @@ final class Tag implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The unique ID of the Blog Tag.
+     */
     #[Api]
     public string $id;
 
     #[Api]
     public \DateTimeInterface $created;
 
+    /**
+     * The timestamp (ISO8601 format) when this Blog Tag was deleted.
+     */
     #[Api]
     public \DateTimeInterface $deletedAt;
 
-    /** @var value-of<Language> $language */
+    /**
+     * The explicitly defined ISO 639 language code of the tag.
+     *
+     * @var value-of<Language> $language
+     */
     #[Api(enum: Language::class)]
     public string $language;
 
+    /**
+     * The name of the tag.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * ID of the primary tag this object was translated from.
+     */
     #[Api('translatedFromId')]
     public int $translatedFromID;
 
@@ -114,6 +132,9 @@ final class Tag implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The unique ID of the Blog Tag.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -130,6 +151,9 @@ final class Tag implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The timestamp (ISO8601 format) when this Blog Tag was deleted.
+     */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
         $obj = clone $this;
@@ -139,6 +163,8 @@ final class Tag implements BaseModel, ResponseConverter
     }
 
     /**
+     * The explicitly defined ISO 639 language code of the tag.
+     *
      * @param Language|value-of<Language> $language
      */
     public function withLanguage(Language|string $language): self
@@ -149,6 +175,9 @@ final class Tag implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The name of the tag.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -157,6 +186,9 @@ final class Tag implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * ID of the primary tag this object was translated from.
+     */
     public function withTranslatedFromID(int $translatedFromID): self
     {
         $obj = clone $this;

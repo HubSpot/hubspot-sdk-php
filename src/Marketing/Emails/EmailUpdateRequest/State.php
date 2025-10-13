@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails\EmailUpdateRequest;
 
+/**
+ * The email state.
+ */
 enum State: string
 {
     case AUTOMATED = 'AUTOMATED';

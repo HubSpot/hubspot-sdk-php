@@ -24,24 +24,42 @@ final class PublicAPIUserActionEvent implements BaseModel
     /** @use SdkModel<public_api_user_action_event> */
     use SdkModel;
 
+    /**
+     * The unique ID of the activity.
+     */
     #[Api]
     public string $id;
 
     #[Api]
     public ActingUser $actingUser;
 
+    /**
+     * The type of action taken.
+     */
     #[Api]
     public string $action;
 
+    /**
+     * The category of the activity.
+     */
     #[Api]
     public string $category;
 
+    /**
+     * The time that the action occurred at.
+     */
     #[Api]
     public \DateTimeInterface $occurredAt;
 
+    /**
+     * The subcategory of the activity.
+     */
     #[Api(optional: true)]
     public ?string $subCategory;
 
+    /**
+     * The ID of the impacted object.
+     */
     #[Api('targetObjectId', optional: true)]
     public ?string $targetObjectID;
 
@@ -99,6 +117,9 @@ final class PublicAPIUserActionEvent implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique ID of the activity.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -115,6 +136,9 @@ final class PublicAPIUserActionEvent implements BaseModel
         return $obj;
     }
 
+    /**
+     * The type of action taken.
+     */
     public function withAction(string $action): self
     {
         $obj = clone $this;
@@ -123,6 +147,9 @@ final class PublicAPIUserActionEvent implements BaseModel
         return $obj;
     }
 
+    /**
+     * The category of the activity.
+     */
     public function withCategory(string $category): self
     {
         $obj = clone $this;
@@ -131,6 +158,9 @@ final class PublicAPIUserActionEvent implements BaseModel
         return $obj;
     }
 
+    /**
+     * The time that the action occurred at.
+     */
     public function withOccurredAt(\DateTimeInterface $occurredAt): self
     {
         $obj = clone $this;
@@ -139,6 +169,9 @@ final class PublicAPIUserActionEvent implements BaseModel
         return $obj;
     }
 
+    /**
+     * The subcategory of the activity.
+     */
     public function withSubCategory(string $subCategory): self
     {
         $obj = clone $this;
@@ -147,6 +180,9 @@ final class PublicAPIUserActionEvent implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the impacted object.
+     */
     public function withTargetObjectID(string $targetObjectID): self
     {
         $obj = clone $this;

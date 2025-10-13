@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Request body object for setting a new primary language.
+ *
  * @phpstan-type set_new_language_primary_request_v_next = array{id: string}
  */
 final class SetNewLanguagePrimaryRequestVNext implements BaseModel
@@ -16,6 +18,9 @@ final class SetNewLanguagePrimaryRequestVNext implements BaseModel
     /** @use SdkModel<set_new_language_primary_request_v_next> */
     use SdkModel;
 
+    /**
+     * ID of object to set as primary in multi-language group.
+     */
     #[Api]
     public string $id;
 
@@ -52,6 +57,9 @@ final class SetNewLanguagePrimaryRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of object to set as primary in multi-language group.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;

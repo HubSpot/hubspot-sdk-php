@@ -12,6 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type social_metadata = array{
  *   mediaType: string,
  *   id?: string,
+ *   description?: string,
  *   mediaTitle?: string,
  *   mediaURL?: string,
  *   mediaURLString?: string,
@@ -28,6 +29,9 @@ final class SocialMetadata implements BaseModel
 
     #[Api(optional: true)]
     public ?string $id;
+
+    #[Api(optional: true)]
+    public ?string $description;
 
     #[Api(optional: true)]
     public ?string $mediaTitle;
@@ -68,6 +72,7 @@ final class SocialMetadata implements BaseModel
     public static function with(
         string $mediaType,
         ?string $id = null,
+        ?string $description = null,
         ?string $mediaTitle = null,
         ?string $mediaURL = null,
         ?string $mediaURLString = null,
@@ -78,6 +83,7 @@ final class SocialMetadata implements BaseModel
         $obj->mediaType = $mediaType;
 
         null !== $id && $obj->id = $id;
+        null !== $description && $obj->description = $description;
         null !== $mediaTitle && $obj->mediaTitle = $mediaTitle;
         null !== $mediaURL && $obj->mediaURL = $mediaURL;
         null !== $mediaURLString && $obj->mediaURLString = $mediaURLString;
@@ -98,6 +104,14 @@ final class SocialMetadata implements BaseModel
     {
         $obj = clone $this;
         $obj->id = $id;
+
+        return $obj;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
 
         return $obj;
     }

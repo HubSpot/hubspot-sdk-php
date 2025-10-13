@@ -34,7 +34,7 @@ final class FormsService implements FormsContract
     /**
      * @api
      *
-     * Create a form
+     * Add a new `hubspot` form
      *
      * @throws APIException
      */
@@ -53,14 +53,14 @@ final class FormsService implements FormsContract
     /**
      * @api
      *
-     * Partially update a form definition
+     * Update some of the form definition components
      *
-     * @param bool $archived
+     * @param bool $archived whether this form is archived
      * @param HubSpotFormConfiguration $configuration
-     * @param FormDisplayOptions $displayOptions
-     * @param list<FieldGroup> $fieldGroups
+     * @param FormDisplayOptions $displayOptions options for styling the form
+     * @param list<FieldGroup> $fieldGroups the fields in the form, grouped in rows
      * @param LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
-     * @param string $name
+     * @param string $name The name of the form. Expected to be unique for a hub.
      *
      * @throws APIException
      */
@@ -116,12 +116,12 @@ final class FormsService implements FormsContract
     /**
      * @api
      *
-     * Get a list of forms
+     * Returns a list of forms based on the search filters. By default, it returns the first 20 `hubspot` forms
      *
-     * @param string $after
-     * @param bool $archived
-     * @param list<FormType|value-of<FormType>> $formTypes
-     * @param int $limit
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<FormType|value-of<FormType>> $formTypes the form types to be included in the results
+     * @param int $limit the maximum number of results to display per page
      *
      * @return Page<HubSpotFormDefinition>
      *
@@ -176,7 +176,7 @@ final class FormsService implements FormsContract
     /**
      * @api
      *
-     * Archive a form definition
+     * Archive a form definition. New submissions will not be accepted and the form definition will be permanently deleted after 3 months.
      *
      * @throws APIException
      */
@@ -196,9 +196,9 @@ final class FormsService implements FormsContract
     /**
      * @api
      *
-     * Get a form definition
+     * Returns a form based on the form ID provided.
      *
-     * @param bool $archived
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
@@ -242,7 +242,7 @@ final class FormsService implements FormsContract
     /**
      * @api
      *
-     * Update a form definition
+     * Update all fields of a hubspot form definition.
      *
      * @throws APIException
      */

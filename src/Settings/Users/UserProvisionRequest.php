@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * A user creation request.
+ *
  * @phpstan-type user_provision_request = array{
  *   email: string,
  *   firstName?: string,
@@ -24,6 +26,9 @@ final class UserProvisionRequest implements BaseModel
     /** @use SdkModel<user_provision_request> */
     use SdkModel;
 
+    /**
+     * The created user's email.
+     */
     #[Api]
     public string $email;
 
@@ -33,16 +38,29 @@ final class UserProvisionRequest implements BaseModel
     #[Api(optional: true)]
     public ?string $lastName;
 
+    /**
+     * The user's primary team.
+     */
     #[Api('primaryTeamId', optional: true)]
     public ?string $primaryTeamID;
 
+    /**
+     * The user's role.
+     */
     #[Api('roleId', optional: true)]
     public ?string $roleID;
 
-    /** @var list<string>|null $secondaryTeamIDs */
+    /**
+     * The user's additional teams.
+     *
+     * @var list<string>|null $secondaryTeamIDs
+     */
     #[Api('secondaryTeamIds', list: 'string', optional: true)]
     public ?array $secondaryTeamIDs;
 
+    /**
+     * Whether to send a welcome email.
+     */
     #[Api(optional: true)]
     public ?bool $sendWelcomeEmail;
 
@@ -95,6 +113,9 @@ final class UserProvisionRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The created user's email.
+     */
     public function withEmail(string $email): self
     {
         $obj = clone $this;
@@ -119,6 +140,9 @@ final class UserProvisionRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's primary team.
+     */
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
@@ -127,6 +151,9 @@ final class UserProvisionRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's role.
+     */
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
@@ -136,6 +163,8 @@ final class UserProvisionRequest implements BaseModel
     }
 
     /**
+     * The user's additional teams.
+     *
      * @param list<string> $secondaryTeamIDs
      */
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
@@ -146,6 +175,9 @@ final class UserProvisionRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to send a welcome email.
+     */
     public function withSendWelcomeEmail(bool $sendWelcomeEmail): self
     {
         $obj = clone $this;

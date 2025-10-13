@@ -16,6 +16,7 @@ use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\Status;
 /**
  * @phpstan-type public_subscription_status = array{
  *   id: string,
+ *   description: string,
  *   name: string,
  *   sourceOfStatus: value-of<SourceOfStatus>,
  *   status: value-of<Status>,
@@ -32,30 +33,63 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The ID for the subscription.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * A description of the subscription.
+     */
+    #[Api]
+    public string $description;
+
+    /**
+     * The name of the subscription.
+     */
     #[Api]
     public string $name;
 
-    /** @var value-of<SourceOfStatus> $sourceOfStatus */
+    /**
+     * Where the status is determined from e.g. PORTAL_WIDE_STATUS if the contact opted out from the portal.
+     *
+     * @var value-of<SourceOfStatus> $sourceOfStatus
+     */
     #[Api(enum: SourceOfStatus::class)]
     public string $sourceOfStatus;
 
-    /** @var value-of<Status> $status */
+    /**
+     * Whether the contact is subscribed.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
+    /**
+     * The ID of the brand that the subscription is associated with, if there is one.
+     */
     #[Api('brandId', optional: true)]
     public ?int $brandID;
 
-    /** @var value-of<LegalBasis>|null $legalBasis */
+    /**
+     * The legal reason for the current status of the subscription.
+     *
+     * @var value-of<LegalBasis>|null $legalBasis
+     */
     #[Api(enum: LegalBasis::class, optional: true)]
     public ?string $legalBasis;
 
+    /**
+     * A more detailed explanation to go with the legal basis.
+     */
     #[Api(optional: true)]
     public ?string $legalBasisExplanation;
 
+    /**
+     * The name of the preferences group that the subscription is associated with.
+     */
     #[Api(optional: true)]
     public ?string $preferenceGroupName;
 
@@ -65,7 +99,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
      * To enforce required parameters use
      * ```
      * PublicSubscriptionStatus::with(
-     *   id: ..., name: ..., sourceOfStatus: ..., status: ...
+     *   id: ..., description: ..., name: ..., sourceOfStatus: ..., status: ...
      * )
      * ```
      *
@@ -74,6 +108,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
      * ```
      * (new PublicSubscriptionStatus)
      *   ->withID(...)
+     *   ->withDescription(...)
      *   ->withName(...)
      *   ->withSourceOfStatus(...)
      *   ->withStatus(...)
@@ -95,6 +130,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
      */
     public static function with(
         string $id,
+        string $description,
         string $name,
         SourceOfStatus|string $sourceOfStatus,
         Status|string $status,
@@ -106,6 +142,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
         $obj = new self;
 
         $obj->id = $id;
+        $obj->description = $description;
         $obj->name = $name;
         $obj['sourceOfStatus'] = $sourceOfStatus;
         $obj['status'] = $status;
@@ -118,6 +155,9 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The ID for the subscription.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -126,6 +166,20 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A description of the subscription.
+     */
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * The name of the subscription.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -135,6 +189,8 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     }
 
     /**
+     * Where the status is determined from e.g. PORTAL_WIDE_STATUS if the contact opted out from the portal.
+     *
      * @param SourceOfStatus|value-of<SourceOfStatus> $sourceOfStatus
      */
     public function withSourceOfStatus(
@@ -147,6 +203,8 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     }
 
     /**
+     * Whether the contact is subscribed.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -157,6 +215,9 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The ID of the brand that the subscription is associated with, if there is one.
+     */
     public function withBrandID(int $brandID): self
     {
         $obj = clone $this;
@@ -166,6 +227,8 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     }
 
     /**
+     * The legal reason for the current status of the subscription.
+     *
      * @param LegalBasis|value-of<LegalBasis> $legalBasis
      */
     public function withLegalBasis(LegalBasis|string $legalBasis): self
@@ -176,6 +239,9 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A more detailed explanation to go with the legal basis.
+     */
     public function withLegalBasisExplanation(
         string $legalBasisExplanation
     ): self {
@@ -185,6 +251,9 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The name of the preferences group that the subscription is associated with.
+     */
     public function withPreferenceGroupName(string $preferenceGroupName): self
     {
         $obj = clone $this;

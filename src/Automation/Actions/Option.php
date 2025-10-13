@@ -9,7 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * A HubSpot property option.
+ *
  * @phpstan-type option_alias = array{
+ *   description: string,
  *   displayOrder: int,
  *   doubleData: float,
  *   hidden: bool,
@@ -23,21 +26,42 @@ final class Option implements BaseModel
     /** @use SdkModel<option_alias> */
     use SdkModel;
 
+    /**
+     * A description of the option.
+     */
+    #[Api]
+    public string $description;
+
+    /**
+     * The position of the item relative to others in the list.
+     */
     #[Api]
     public int $displayOrder;
 
     #[Api]
     public float $doubleData;
 
+    /**
+     * Whether the option is displayed in HubSpot's UI.
+     */
     #[Api]
     public bool $hidden;
 
+    /**
+     * A user-friendly label that identifies the option.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * Whether the option is read-only.
+     */
     #[Api]
     public bool $readOnly;
 
+    /**
+     * The actual value of the option.
+     */
     #[Api]
     public string $value;
 
@@ -47,6 +71,7 @@ final class Option implements BaseModel
      * To enforce required parameters use
      * ```
      * Option::with(
+     *   description: ...,
      *   displayOrder: ...,
      *   doubleData: ...,
      *   hidden: ...,
@@ -60,6 +85,7 @@ final class Option implements BaseModel
      *
      * ```
      * (new Option)
+     *   ->withDescription(...)
      *   ->withDisplayOrder(...)
      *   ->withDoubleData(...)
      *   ->withHidden(...)
@@ -79,6 +105,7 @@ final class Option implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
+        string $description,
         int $displayOrder,
         float $doubleData,
         bool $hidden,
@@ -88,6 +115,7 @@ final class Option implements BaseModel
     ): self {
         $obj = new self;
 
+        $obj->description = $description;
         $obj->displayOrder = $displayOrder;
         $obj->doubleData = $doubleData;
         $obj->hidden = $hidden;
@@ -98,6 +126,20 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * A description of the option.
+     */
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * The position of the item relative to others in the list.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
@@ -114,6 +156,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the option is displayed in HubSpot's UI.
+     */
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
@@ -122,6 +167,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * A user-friendly label that identifies the option.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -130,6 +178,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the option is read-only.
+     */
     public function withReadOnly(bool $readOnly): self
     {
         $obj = clone $this;
@@ -138,6 +189,9 @@ final class Option implements BaseModel
         return $obj;
     }
 
+    /**
+     * The actual value of the option.
+     */
     public function withValue(string $value): self
     {
         $obj = clone $this;

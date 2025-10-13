@@ -21,10 +21,10 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param EventType|value-of<EventType> $eventType
-     * @param bool $active
+     * @param EventType|value-of<EventType> $eventType Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     * @param bool $active Determines if the subscription is active or paused. Defaults to false.
      * @param string $objectTypeID
-     * @param string $propertyName
+     * @param string $propertyName The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
      *
      * @throws APIException
      */
@@ -54,7 +54,7 @@ interface WebhooksContract
      * @api
      *
      * @param int $appID
-     * @param bool $active
+     * @param bool $active determines if the subscription is active or paused
      *
      * @throws APIException
      */
@@ -127,8 +127,8 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param string $targetURL
-     * @param ThrottlingSettings $throttling
+     * @param string $targetURL a publicly available URL for HubSpot to call where event payloads will be delivered
+     * @param ThrottlingSettings $throttling configuration details for webhook throttling
      *
      * @throws APIException
      */

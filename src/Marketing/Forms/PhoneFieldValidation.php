@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Describes how a phone number should be validated.
+ *
  * @phpstan-type phone_field_validation = array{
  *   maxAllowedDigits: int, minAllowedDigits: int
  * }

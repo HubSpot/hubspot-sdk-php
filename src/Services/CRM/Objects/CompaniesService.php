@@ -41,9 +41,9 @@ final class CompaniesService implements CompaniesContract
     /**
      * @api
      *
-     * Create a company
+     * Create a single company. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the company, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
      *
-     * @param array<string, string> $properties
+     * @param array<string, string> $properties the company property values to set
      * @param list<PublicAssociationsForObject> $associations
      *
      * @throws APIException
@@ -87,7 +87,7 @@ final class CompaniesService implements CompaniesContract
     /**
      * @api
      *
-     * Update a batch of companies
+     * Update a batch of companies by ID.
      *
      * @param list<SimplePublicObjectBatchInput> $inputs
      *
@@ -131,14 +131,14 @@ final class CompaniesService implements CompaniesContract
     /**
      * @api
      *
-     * Retrieve companies
+     * Retrieve all companies, using query parameters to control the information that gets returned.
      *
-     * @param string $after
-     * @param bool $archived
-     * @param list<string> $associations
-     * @param int $limit
-     * @param list<string> $properties
-     * @param list<string> $propertiesWithHistory
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of companies that can be read by a single request.
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
@@ -197,7 +197,7 @@ final class CompaniesService implements CompaniesContract
     /**
      * @api
      *
-     * Archive a batch of companies
+     * Delete a batch of companies by ID. Deleted companies can be restored within 90 days of deletion. Learn more about [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
      *
      * @param list<SimplePublicObjectID> $inputs
      *
@@ -241,10 +241,10 @@ final class CompaniesService implements CompaniesContract
     /**
      * @api
      *
-     * Merge two companies
+     * Merge two company records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
      *
-     * @param string $objectIDToMerge
-     * @param string $primaryObjectID
+     * @param string $objectIDToMerge the ID of the company to merge into the primary
+     * @param string $primaryObjectID the ID of the primary company, which the other will merge into
      *
      * @throws APIException
      */
@@ -290,13 +290,13 @@ final class CompaniesService implements CompaniesContract
     /**
      * @api
      *
-     * Retrieve a company
+     * Retrieve a company by its ID (`companyId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
      *
-     * @param bool $archived
-     * @param list<string> $associations
-     * @param string $idProperty
-     * @param list<string> $properties
-     * @param list<string> $propertiesWithHistory
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
      *
      * @throws APIException
      */
@@ -350,14 +350,14 @@ final class CompaniesService implements CompaniesContract
     /**
      * @api
      *
-     * Search for companies
+     * Search for companies by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
      *
-     * @param string $after
-     * @param list<FilterGroup> $filterGroups
-     * @param int $limit
-     * @param list<string> $properties
-     * @param string $query
-     * @param list<string> $sorts
+     * @param string $after a paging cursor token for retrieving subsequent pages
+     * @param list<FilterGroup> $filterGroups up to 6 groups of filters defining additional query criteria
+     * @param int $limit the maximum results to return, up to 200 objects
+     * @param list<string> $properties a list of property names to include in the response
+     * @param string $query the search query string, up to 3000 characters
+     * @param list<string> $sorts specifies sorting order based on object properties
      *
      * @throws APIException
      */
@@ -411,7 +411,7 @@ final class CompaniesService implements CompaniesContract
     /**
      * @api
      *
-     * Create or update a batch of companies by unique property values
+     * Create or update companies identified by a unique property value as specified by the `idProperty` query parameter. `idProperty` query param refers to a property whose values are unique for the object.
      *
      * @param list<SimplePublicObjectBatchInputUpsert> $inputs
      *

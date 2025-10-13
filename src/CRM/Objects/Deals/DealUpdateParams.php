@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * $params = (new DealUpdateParams); // set properties as needed
  * $client->crm.objects.deals->update(...$params->toArray());
  * ```
- * Update.
+ * Perform a partial update of an Object identified by `{dealId}`or optionally a unique property value as specified by the `idProperty` query param. `{dealId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
  *
  * @method toArray()
  *   Returns the parameters as an associative array suitable for passing to the client method.
@@ -35,10 +35,17 @@ final class DealUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var array<string, string> $properties */
+    /**
+     * The company property values to set.
+     *
+     * @var array<string, string> $properties
+     */
     #[Api(map: 'string')]
     public array $properties;
 
+    /**
+     * The name of a property whose values are unique for this object.
+     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -82,6 +89,8 @@ final class DealUpdateParams implements BaseModel
     }
 
     /**
+     * The company property values to set.
+     *
      * @param array<string, string> $properties
      */
     public function withProperties(array $properties): self
@@ -92,6 +101,9 @@ final class DealUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of a property whose values are unique for this object.
+     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

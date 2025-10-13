@@ -16,6 +16,9 @@ final class ForwardPaging implements BaseModel
     /** @use SdkModel<forward_paging> */
     use SdkModel;
 
+    /**
+     * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
+     */
     #[Api(optional: true)]
     public ?NextPage $next;
 
@@ -38,6 +41,9 @@ final class ForwardPaging implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
+     */
     public function withNext(NextPage $next): self
     {
         $obj = clone $this;
