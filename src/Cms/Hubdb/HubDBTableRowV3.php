@@ -6,7 +6,9 @@ namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type hub_db_table_row_v3 = array{
@@ -20,10 +22,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   updatedAt?: \DateTimeInterface,
  * }
  */
-final class HubDBTableRowV3 implements BaseModel
+final class HubDBTableRowV3 implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<hub_db_table_row_v3> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var array<string, mixed> $values */
     #[Api(map: 'mixed')]

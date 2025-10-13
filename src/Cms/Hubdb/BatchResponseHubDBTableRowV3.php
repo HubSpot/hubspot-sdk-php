@@ -7,7 +7,9 @@ namespace HubspotSDK\Cms\Hubdb;
 use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3\Status;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type batch_response_hub_db_table_row_v3 = array{
@@ -19,10 +21,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   status?: value-of<Status>,
  * }
  */
-final class BatchResponseHubDBTableRowV3 implements BaseModel
+final class BatchResponseHubDBTableRowV3 implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<batch_response_hub_db_table_row_v3> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $completedAt;

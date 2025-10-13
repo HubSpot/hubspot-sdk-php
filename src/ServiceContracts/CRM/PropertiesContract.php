@@ -8,7 +8,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Properties\BatchResponseProperty;
 use HubspotSDK\CRM\Properties\CollectionResponsePropertyGroup;
 use HubspotSDK\CRM\Properties\CreatedResponsePropertyGroup;
-use HubspotSDK\CRM\Properties\CRMPropertiesOptionInput;
+use HubspotSDK\CRM\Properties\OptionInput;
 use HubspotSDK\CRM\Properties\PropertyName;
 use HubspotSDK\CRM\Properties\PropertyReadParams\DataSensitivity;
 use HubspotSDK\CRM\Properties\PropertyUpdateParams\FieldType;
@@ -61,7 +61,7 @@ interface PropertiesContract
      * @param string $groupName
      * @param bool $hidden
      * @param string $label
-     * @param list<CRMPropertiesOptionInput> $options
+     * @param list<OptionInput> $options
      * @param Type|value-of<Type> $type
      *
      * @throws APIException

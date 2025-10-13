@@ -6,7 +6,9 @@ namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Error;
 
 /**
@@ -17,10 +19,12 @@ use HubspotSDK\Error;
  *   rowsImported: int,
  * }
  */
-final class ImportResult implements BaseModel
+final class ImportResult implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<import_result> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public int $duplicateRows;

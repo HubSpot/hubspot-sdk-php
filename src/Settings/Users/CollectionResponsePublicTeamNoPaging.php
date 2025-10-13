@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type collection_response_public_team_no_paging = array{
- *   results: list<SettingsUsersPublicTeam>
+ *   results: list<PublicTeam>
  * }
  */
 final class CollectionResponsePublicTeamNoPaging implements BaseModel
@@ -18,8 +18,8 @@ final class CollectionResponsePublicTeamNoPaging implements BaseModel
     /** @use SdkModel<collection_response_public_team_no_paging> */
     use SdkModel;
 
-    /** @var list<SettingsUsersPublicTeam> $results */
-    #[Api(list: SettingsUsersPublicTeam::class)]
+    /** @var list<PublicTeam> $results */
+    #[Api(list: PublicTeam::class)]
     public array $results;
 
     /**
@@ -46,7 +46,7 @@ final class CollectionResponsePublicTeamNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SettingsUsersPublicTeam> $results
+     * @param list<PublicTeam> $results
      */
     public static function with(array $results): self
     {
@@ -58,7 +58,7 @@ final class CollectionResponsePublicTeamNoPaging implements BaseModel
     }
 
     /**
-     * @param list<SettingsUsersPublicTeam> $results
+     * @param list<PublicTeam> $results
      */
     public function withResults(array $results): self
     {

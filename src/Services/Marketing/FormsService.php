@@ -9,9 +9,8 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Forms\FieldGroup;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
 use HubspotSDK\Marketing\Forms\FormListParams;
+use HubspotSDK\Marketing\Forms\FormListParams\FormType;
 use HubspotSDK\Marketing\Forms\FormReadParams;
-use HubspotSDK\Marketing\Forms\FormReplaceParams;
-use HubspotSDK\Marketing\Forms\FormReplaceParams\FormType;
 use HubspotSDK\Marketing\Forms\FormUpdateParams;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
 use HubspotSDK\Marketing\Forms\HubSpotFormDefinition;
@@ -39,14 +38,15 @@ final class FormsService implements FormsContract
      *
      * @throws APIException
      */
-    public function create(?RequestOptions $requestOptions = null): mixed
-    {
+    public function create(
+        ?RequestOptions $requestOptions = null
+    ): HubSpotFormDefinition {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/forms/',
             options: $requestOptions,
-            convert: 'mixed',
+            convert: HubSpotFormDefinition::class,
         );
     }
 
@@ -73,7 +73,7 @@ final class FormsService implements FormsContract
         $legalConsentOptions = omit,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
+    ): HubSpotFormDefinition {
         $params = [
             'archived' => $archived,
             'configuration' => $configuration,
@@ -97,7 +97,7 @@ final class FormsService implements FormsContract
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): mixed {
+    ): HubSpotFormDefinition {
         [$parsed, $options] = FormUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -109,7 +109,7 @@ final class FormsService implements FormsContract
             path: ['marketing/v3/forms/%1$s', $formID],
             body: (object) $parsed,
             options: $options,
-            convert: 'mixed',
+            convert: HubSpotFormDefinition::class,
         );
     }
 
@@ -120,7 +120,7 @@ final class FormsService implements FormsContract
      *
      * @param string $after
      * @param bool $archived
-     * @param list<FormListParams\FormType|value-of<FormListParams\FormType>> $formTypes
+     * @param list<FormType|value-of<FormType>> $formTypes
      * @param int $limit
      *
      * @return Page<HubSpotFormDefinition>
@@ -206,7 +206,7 @@ final class FormsService implements FormsContract
         string $formID,
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): mixed {
+    ): HubSpotFormDefinition {
         $params = ['archived' => $archived];
 
         return $this->readRaw($formID, $params, $requestOptions);
@@ -223,7 +223,7 @@ final class FormsService implements FormsContract
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): mixed {
+    ): HubSpotFormDefinition {
         [$parsed, $options] = FormReadParams::parseRequest(
             $params,
             $requestOptions
@@ -235,7 +235,7 @@ final class FormsService implements FormsContract
             path: ['marketing/v3/forms/%1$s', $formID],
             query: $parsed,
             options: $options,
-            convert: 'mixed',
+            convert: HubSpotFormDefinition::class,
         );
     }
 
@@ -244,76 +244,18 @@ final class FormsService implements FormsContract
      *
      * Update a form definition
      *
-     * @param string $id
-     * @param bool $archived
-     * @param HubSpotFormConfiguration $configuration
-     * @param \DateTimeInterface $createdAt
-     * @param FormDisplayOptions $displayOptions
-     * @param list<FieldGroup> $fieldGroups
-     * @param LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
-     * @param string $name
-     * @param \DateTimeInterface $updatedAt
-     * @param FormType|value-of<FormType> $formType
-     * @param \DateTimeInterface $archivedAt
-     *
      * @throws APIException
      */
     public function replace(
         string $formID,
-        $id,
-        $archived,
-        $configuration,
-        $createdAt,
-        $displayOptions,
-        $fieldGroups,
-        $legalConsentOptions,
-        $name,
-        $updatedAt,
-        $formType = 'hubspot',
-        $archivedAt = omit,
-        ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = [
-            'id' => $id,
-            'archived' => $archived,
-            'configuration' => $configuration,
-            'createdAt' => $createdAt,
-            'displayOptions' => $displayOptions,
-            'fieldGroups' => $fieldGroups,
-            'formType' => $formType,
-            'legalConsentOptions' => $legalConsentOptions,
-            'name' => $name,
-            'updatedAt' => $updatedAt,
-            'archivedAt' => $archivedAt,
-        ];
-
-        return $this->replaceRaw($formID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function replaceRaw(
-        string $formID,
-        array $params,
         ?RequestOptions $requestOptions = null
-    ): mixed {
-        [$parsed, $options] = FormReplaceParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
+    ): HubSpotFormDefinition {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'put',
             path: ['marketing/v3/forms/%1$s', $formID],
-            body: (object) $parsed,
-            options: $options,
-            convert: 'mixed',
+            options: $requestOptions,
+            convert: HubSpotFormDefinition::class,
         );
     }
 }

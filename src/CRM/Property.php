@@ -15,7 +15,7 @@ use HubspotSDK\CRM\Property\DataSensitivity;
  *   groupName: string,
  *   label: string,
  *   name: string,
- *   options: list<CRMOption>,
+ *   options: list<Option>,
  *   type: string,
  *   archived?: bool,
  *   archivedAt?: \DateTimeInterface,
@@ -55,8 +55,8 @@ final class Property implements BaseModel
     #[Api]
     public string $name;
 
-    /** @var list<CRMOption> $options */
-    #[Api(list: CRMOption::class)]
+    /** @var list<Option> $options */
+    #[Api(list: Option::class)]
     public array $options;
 
     #[Api]
@@ -153,7 +153,7 @@ final class Property implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMOption> $options
+     * @param list<Option> $options
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      * @param list<string> $sensitiveDataCategories
      */
@@ -249,7 +249,7 @@ final class Property implements BaseModel
     }
 
     /**
-     * @param list<CRMOption> $options
+     * @param list<Option> $options
      */
     public function withOptions(array $options): self
     {

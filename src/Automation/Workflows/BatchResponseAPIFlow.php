@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type batch_response_api_flow = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<mixed>,
+ *   results: list<APIContactFlow|APIPlatformFlow>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
  *   links?: array<string, string>,
@@ -27,8 +27,8 @@ final class BatchResponseAPIFlow implements BaseModel
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<mixed> $results */
-    #[Api(list: 'mixed')]
+    /** @var list<APIContactFlow|APIPlatformFlow> $results */
+    #[Api(list: APIFlow::class)]
     public array $results;
 
     #[Api]
@@ -75,7 +75,7 @@ final class BatchResponseAPIFlow implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $results
+     * @param list<APIContactFlow|APIPlatformFlow> $results
      * @param Status|value-of<Status> $status
      * @param array<string, string> $links
      */
@@ -109,7 +109,7 @@ final class BatchResponseAPIFlow implements BaseModel
     }
 
     /**
-     * @param list<mixed> $results
+     * @param list<APIContactFlow|APIPlatformFlow> $results
      */
     public function withResults(array $results): self
     {

@@ -7,7 +7,7 @@ namespace HubspotSDK\ServiceContracts\Marketing;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Forms\FieldGroup;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
-use HubspotSDK\Marketing\Forms\FormReplaceParams\FormType;
+use HubspotSDK\Marketing\Forms\FormListParams\FormType;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
 use HubspotSDK\Marketing\Forms\HubSpotFormDefinition;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess;
@@ -28,7 +28,7 @@ interface FormsContract
      */
     public function create(
         ?RequestOptions $requestOptions = null
-    ): mixed;
+    ): HubSpotFormDefinition;
 
     /**
      * @api
@@ -51,7 +51,7 @@ interface FormsContract
         $legalConsentOptions = omit,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): mixed;
+    ): HubSpotFormDefinition;
 
     /**
      * @api
@@ -64,14 +64,14 @@ interface FormsContract
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): mixed;
+    ): HubSpotFormDefinition;
 
     /**
      * @api
      *
      * @param string $after
      * @param bool $archived
-     * @param list<\HubspotSDK\Marketing\Forms\FormListParams\FormType|value-of<\HubspotSDK\Marketing\Forms\FormListParams\FormType>> $formTypes
+     * @param list<FormType|value-of<FormType>> $formTypes
      * @param int $limit
      *
      * @return Page<HubSpotFormDefinition>
@@ -121,7 +121,7 @@ interface FormsContract
         string $formID,
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): mixed;
+    ): HubSpotFormDefinition;
 
     /**
      * @api
@@ -134,51 +134,15 @@ interface FormsContract
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): mixed;
+    ): HubSpotFormDefinition;
 
     /**
      * @api
-     *
-     * @param string $id
-     * @param bool $archived
-     * @param HubSpotFormConfiguration $configuration
-     * @param \DateTimeInterface $createdAt
-     * @param FormDisplayOptions $displayOptions
-     * @param list<FieldGroup> $fieldGroups
-     * @param LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
-     * @param string $name
-     * @param \DateTimeInterface $updatedAt
-     * @param FormType|value-of<FormType> $formType
-     * @param \DateTimeInterface $archivedAt
      *
      * @throws APIException
      */
     public function replace(
         string $formID,
-        $id,
-        $archived,
-        $configuration,
-        $createdAt,
-        $displayOptions,
-        $fieldGroups,
-        $legalConsentOptions,
-        $name,
-        $updatedAt,
-        $formType = 'hubspot',
-        $archivedAt = omit,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function replaceRaw(
-        string $formID,
-        array $params,
         ?RequestOptions $requestOptions = null
-    ): mixed;
+    ): HubSpotFormDefinition;
 }

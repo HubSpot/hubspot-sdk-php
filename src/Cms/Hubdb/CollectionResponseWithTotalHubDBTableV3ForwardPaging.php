@@ -6,7 +6,9 @@ namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -14,12 +16,14 @@ use HubspotSDK\ForwardPaging;
  *   results: list<HubDBTableV3>, total: int, paging?: ForwardPaging
  * }
  */
-final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements BaseModel
+final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements BaseModel, ResponseConverter
 {
     /**
      * @use SdkModel<collection_response_with_total_hub_db_table_v3_forward_paging>
      */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<HubDBTableV3> $results */
     #[Api(list: HubDBTableV3::class)]
