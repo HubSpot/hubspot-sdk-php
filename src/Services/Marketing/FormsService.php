@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Marketing;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Forms\FieldGroup;
+use HubspotSDK\Marketing\Forms\FormDefinitionBase;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
 use HubspotSDK\Marketing\Forms\FormListParams;
 use HubspotSDK\Marketing\Forms\FormListParams\FormType;
@@ -40,13 +41,13 @@ final class FormsService implements FormsContract
      */
     public function create(
         ?RequestOptions $requestOptions = null
-    ): HubSpotFormDefinition {
+    ): FormDefinitionBase {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/forms/',
             options: $requestOptions,
-            convert: HubSpotFormDefinition::class,
+            convert: FormDefinitionBase::class,
         );
     }
 
@@ -73,7 +74,7 @@ final class FormsService implements FormsContract
         $legalConsentOptions = omit,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): HubSpotFormDefinition {
+    ): FormDefinitionBase {
         $params = [
             'archived' => $archived,
             'configuration' => $configuration,
@@ -97,7 +98,7 @@ final class FormsService implements FormsContract
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): HubSpotFormDefinition {
+    ): FormDefinitionBase {
         [$parsed, $options] = FormUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -109,7 +110,7 @@ final class FormsService implements FormsContract
             path: ['marketing/v3/forms/%1$s', $formID],
             body: (object) $parsed,
             options: $options,
-            convert: HubSpotFormDefinition::class,
+            convert: FormDefinitionBase::class,
         );
     }
 
@@ -206,7 +207,7 @@ final class FormsService implements FormsContract
         string $formID,
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): HubSpotFormDefinition {
+    ): FormDefinitionBase {
         $params = ['archived' => $archived];
 
         return $this->readRaw($formID, $params, $requestOptions);
@@ -223,7 +224,7 @@ final class FormsService implements FormsContract
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): HubSpotFormDefinition {
+    ): FormDefinitionBase {
         [$parsed, $options] = FormReadParams::parseRequest(
             $params,
             $requestOptions
@@ -235,7 +236,7 @@ final class FormsService implements FormsContract
             path: ['marketing/v3/forms/%1$s', $formID],
             query: $parsed,
             options: $options,
-            convert: HubSpotFormDefinition::class,
+            convert: FormDefinitionBase::class,
         );
     }
 
@@ -249,13 +250,13 @@ final class FormsService implements FormsContract
     public function replace(
         string $formID,
         ?RequestOptions $requestOptions = null
-    ): HubSpotFormDefinition {
+    ): FormDefinitionBase {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'put',
             path: ['marketing/v3/forms/%1$s', $formID],
             options: $requestOptions,
-            convert: HubSpotFormDefinition::class,
+            convert: FormDefinitionBase::class,
         );
     }
 }
