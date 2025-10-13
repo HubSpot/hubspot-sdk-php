@@ -18,6 +18,7 @@ use HubspotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
 use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3;
+use HubspotSDK\Core\Conversion\ListOf;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -115,7 +116,7 @@ final class RowsService implements RowsContract
      * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
      * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
      *
-     * @return Page<mixed>
+     * @return Page<list<mixed>>
      *
      * @throws APIException
      */
@@ -146,7 +147,7 @@ final class RowsService implements RowsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return Page<mixed>
+     * @return Page<list<mixed>>
      *
      * @throws APIException
      */
@@ -163,7 +164,7 @@ final class RowsService implements RowsContract
             path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
             query: $parsed,
             options: $options,
-            convert: 'mixed',
+            convert: new ListOf('mixed'),
             page: Page::class,
         );
     }
