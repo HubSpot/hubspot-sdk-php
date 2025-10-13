@@ -6,27 +6,48 @@ namespace HubspotSDK\Marketing\Forms;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Forms\FormDefinitionCreateRequestBase\FormType;
+use HubspotSDK\Marketing\Forms\FormReplaceParams\FormType;
 
 /**
- * @phpstan-type form_definition_create_request_base = array{
+ * An object containing the method's parameters.
+ * Example usage:
+ * ```
+ * $params = (new FormReplaceParams); // set properties as needed
+ * $client->marketing.forms->replace(...$params->toArray());
+ * ```
+ * Update all fields of a hubspot form definition.
+ *
+ * @method toArray()
+ *   Returns the parameters as an associative array suitable for passing to the client method.
+ *
+ *   `$client->marketing.forms->replace(...$params->toArray());`
+ *
+ * @see HubspotSDK\Marketing\Forms->replace
+ *
+ * @phpstan-type form_replace_params = array{
+ *   id: string,
  *   archived: bool,
  *   configuration: HubSpotFormConfiguration,
  *   createdAt: \DateTimeInterface,
  *   displayOptions: FormDisplayOptions,
  *   fieldGroups: list<FieldGroup>,
- *   formType: value-of<FormType>,
+ *   formType: FormType|value-of<FormType>,
  *   legalConsentOptions: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess,
  *   name: string,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface,
  * }
  */
-final class FormDefinitionCreateRequestBase implements BaseModel
+final class FormReplaceParams implements BaseModel
 {
-    /** @use SdkModel<form_definition_create_request_base> */
+    /** @use SdkModel<form_replace_params> */
     use SdkModel;
+    use SdkParams;
+
+    #[Api]
+    public string $id;
 
     #[Api]
     public bool $archived;
@@ -64,11 +85,12 @@ final class FormDefinitionCreateRequestBase implements BaseModel
     public ?\DateTimeInterface $archivedAt;
 
     /**
-     * `new FormDefinitionCreateRequestBase()` is missing required properties by the API.
+     * `new FormReplaceParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FormDefinitionCreateRequestBase::with(
+     * FormReplaceParams::with(
+     *   id: ...,
      *   archived: ...,
      *   configuration: ...,
      *   createdAt: ...,
@@ -84,7 +106,8 @@ final class FormDefinitionCreateRequestBase implements BaseModel
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new FormDefinitionCreateRequestBase)
+     * (new FormReplaceParams)
+     *   ->withID(...)
      *   ->withArchived(...)
      *   ->withConfiguration(...)
      *   ->withCreatedAt(...)
@@ -110,6 +133,7 @@ final class FormDefinitionCreateRequestBase implements BaseModel
      * @param FormType|value-of<FormType> $formType
      */
     public static function with(
+        string $id,
         bool $archived,
         HubSpotFormConfiguration $configuration,
         \DateTimeInterface $createdAt,
@@ -123,6 +147,7 @@ final class FormDefinitionCreateRequestBase implements BaseModel
     ): self {
         $obj = new self;
 
+        $obj->id = $id;
         $obj->archived = $archived;
         $obj->configuration = $configuration;
         $obj->createdAt = $createdAt;
@@ -134,6 +159,14 @@ final class FormDefinitionCreateRequestBase implements BaseModel
         $obj->updatedAt = $updatedAt;
 
         null !== $archivedAt && $obj->archivedAt = $archivedAt;
+
+        return $obj;
+    }
+
+    public function withID(string $id): self
+    {
+        $obj = clone $this;
+        $obj->id = $id;
 
         return $obj;
     }

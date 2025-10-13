@@ -6,9 +6,8 @@ namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Forms\FieldGroup;
-use HubspotSDK\Marketing\Forms\FormDefinitionBase;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
-use HubspotSDK\Marketing\Forms\FormListParams\FormType;
+use HubspotSDK\Marketing\Forms\FormReplaceParams\FormType;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
 use HubspotSDK\Marketing\Forms\HubSpotFormDefinition;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess;
@@ -25,11 +24,26 @@ interface FormsContract
     /**
      * @api
      *
+     * @param mixed $formDefinitionCreateRequestBase
+     *
      * @throws APIException
      */
     public function create(
+        $formDefinitionCreateRequestBase,
         ?RequestOptions $requestOptions = null
-    ): FormDefinitionBase;
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function createRaw(
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): mixed;
 
     /**
      * @api
@@ -52,7 +66,7 @@ interface FormsContract
         $legalConsentOptions = omit,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): FormDefinitionBase;
+    ): mixed;
 
     /**
      * @api
@@ -65,14 +79,14 @@ interface FormsContract
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FormDefinitionBase;
+    ): mixed;
 
     /**
      * @api
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
-     * @param list<FormType|value-of<FormType>> $formTypes the form types to be included in the results
+     * @param list<\HubspotSDK\Marketing\Forms\FormListParams\FormType|value-of<\HubspotSDK\Marketing\Forms\FormListParams\FormType>> $formTypes the form types to be included in the results
      * @param int $limit the maximum number of results to display per page
      *
      * @return Page<HubSpotFormDefinition>
@@ -122,7 +136,7 @@ interface FormsContract
         string $formID,
         $archived = omit,
         ?RequestOptions $requestOptions = null
-    ): FormDefinitionBase;
+    ): mixed;
 
     /**
      * @api
@@ -135,15 +149,51 @@ interface FormsContract
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): FormDefinitionBase;
+    ): mixed;
 
     /**
      * @api
+     *
+     * @param string $id
+     * @param bool $archived
+     * @param HubSpotFormConfiguration $configuration
+     * @param \DateTimeInterface $createdAt
+     * @param FormDisplayOptions $displayOptions options for styling the form
+     * @param list<FieldGroup> $fieldGroups
+     * @param LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
+     * @param string $name
+     * @param \DateTimeInterface $updatedAt
+     * @param FormType|value-of<FormType> $formType
+     * @param \DateTimeInterface $archivedAt
      *
      * @throws APIException
      */
     public function replace(
         string $formID,
+        $id,
+        $archived,
+        $configuration,
+        $createdAt,
+        $displayOptions,
+        $fieldGroups,
+        $legalConsentOptions,
+        $name,
+        $updatedAt,
+        $formType = 'hubspot',
+        $archivedAt = omit,
+        ?RequestOptions $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function replaceRaw(
+        string $formID,
+        array $params,
         ?RequestOptions $requestOptions = null
-    ): FormDefinitionBase;
+    ): mixed;
 }

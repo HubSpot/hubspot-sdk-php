@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Forms\FormDefinitionCreateRequestBase;
+namespace HubspotSDK\Marketing\Forms\FormReplaceParams;
 
 use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
