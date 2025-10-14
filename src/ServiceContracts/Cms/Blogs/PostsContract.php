@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Blogs;
 
 use HubspotSDK\Cms\Blogs\Posts\BlogPost;
-use HubspotSDK\Cms\Blogs\Posts\CollectionResponseWithTotalVersionBlogPost;
 use HubspotSDK\Cms\Blogs\Posts\ContentLanguageVariation;
 use HubspotSDK\Cms\Blogs\Posts\LayoutSection;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
@@ -544,6 +543,8 @@ interface PostsContract
      * @param string $before
      * @param int $limit The maximum number of results to return. Default is 100.
      *
+     * @return Page<VersionBlogPost>
+     *
      * @throws APIException
      */
     public function getPreviousVersions(
@@ -552,12 +553,14 @@ interface PostsContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionBlogPost;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return Page<VersionBlogPost>
      *
      * @throws APIException
      */
@@ -565,7 +568,7 @@ interface PostsContract
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionBlogPost;
+    ): Page;
 
     /**
      * @api

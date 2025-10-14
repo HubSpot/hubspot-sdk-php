@@ -8,7 +8,6 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
-use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalVersionPublicEmail;
 use HubspotSDK\Marketing\Emails\EmailCloneParams;
 use HubspotSDK\Marketing\Emails\EmailCreateAbTestVariationParams;
 use HubspotSDK\Marketing\Emails\EmailCreateParams;
@@ -709,6 +708,8 @@ final class EmailsService implements EmailsContract
      * @param string $before The cursor token value to get the previous set of results. You can get this from the `paging.prev.before` JSON property of a paged response containing more results.
      * @param int $limit The maximum number of results to return. Default is 10.
      *
+     * @return Page<VersionPublicEmail>
+     *
      * @throws APIException
      */
     public function getRevisions(
@@ -717,7 +718,7 @@ final class EmailsService implements EmailsContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionPublicEmail {
+    ): Page {
         $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
 
         return $this->getRevisionsRaw($emailID, $params, $requestOptions);
@@ -728,13 +729,15 @@ final class EmailsService implements EmailsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<VersionPublicEmail>
+     *
      * @throws APIException
      */
     public function getRevisionsRaw(
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionPublicEmail {
+    ): Page {
         [$parsed, $options] = EmailGetRevisionsParams::parseRequest(
             $params,
             $requestOptions
@@ -746,7 +749,8 @@ final class EmailsService implements EmailsContract
             path: ['marketing/v3/emails/%1$s/revisions', $emailID],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalVersionPublicEmail::class,
+            convert: VersionPublicEmail::class,
+            page: Page::class,
         );
     }
 

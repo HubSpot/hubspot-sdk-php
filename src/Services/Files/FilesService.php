@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\Files;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Files\CollectionResponseFile;
 use HubspotSDK\Files\File;
 use HubspotSDK\Files\FileActionResponse;
 use HubspotSDK\Files\Files\FileGetByPathParams;
@@ -24,6 +23,7 @@ use HubspotSDK\Files\Files\FileUploadParams;
 use HubspotSDK\Files\FileStat;
 use HubspotSDK\Files\ImportFromURLTaskLocator;
 use HubspotSDK\Files\SignedURL;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Files\FilesContract;
 
@@ -473,6 +473,8 @@ final class FilesService implements FilesContract
      * @param int $widthGte Search files by greater than or equal to width of image or video. Can be used with `widthLte` to create a range.
      * @param int $widthLte Search files by less than or equal to width of image or video. Can be used with `widthGte` to create a range.
      *
+     * @return Page<File>
+     *
      * @throws APIException
      */
     public function search(
@@ -513,7 +515,7 @@ final class FilesService implements FilesContract
         $widthGte = omit,
         $widthLte = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseFile {
+    ): Page {
         $params = [
             'after' => $after,
             'allowsAnonymousAccess' => $allowsAnonymousAccess,
@@ -561,12 +563,14 @@ final class FilesService implements FilesContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<File>
+     *
      * @throws APIException
      */
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseFile {
+    ): Page {
         [$parsed, $options] = FileSearchParams::parseRequest(
             $params,
             $requestOptions
@@ -578,7 +582,8 @@ final class FilesService implements FilesContract
             path: 'files/v3/files/search',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseFile::class,
+            convert: File::class,
+            page: Page::class,
         );
     }
 

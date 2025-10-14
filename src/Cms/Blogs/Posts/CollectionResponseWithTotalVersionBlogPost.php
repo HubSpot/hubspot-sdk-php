@@ -6,9 +6,7 @@ namespace HubspotSDK\Cms\Blogs\Posts;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
@@ -18,12 +16,10 @@ use HubspotSDK\Marketing\Emails\Paging;
  *   results: list<VersionBlogPost>, total: int, paging?: Paging
  * }
  */
-final class CollectionResponseWithTotalVersionBlogPost implements BaseModel, ResponseConverter
+final class CollectionResponseWithTotalVersionBlogPost implements BaseModel
 {
     /** @use SdkModel<collection_response_with_total_version_blog_post> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Collection of blog post versions.

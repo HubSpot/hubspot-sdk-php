@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Files;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Files\CollectionResponseFolder;
 use HubspotSDK\Files\Folder;
 use HubspotSDK\Files\FolderActionResponse;
 use HubspotSDK\Files\FolderUpdateTaskLocator;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -146,6 +146,8 @@ interface FoldersContract
      * @param \DateTimeInterface $updatedAtGte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range.
      * @param \DateTimeInterface $updatedAtLte Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range.
      *
+     * @return Page<Folder>
+     *
      * @throws APIException
      */
     public function search(
@@ -167,19 +169,21 @@ interface FoldersContract
         $updatedAtGte = omit,
         $updatedAtLte = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseFolder;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<Folder>
+     *
      * @throws APIException
      */
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseFolder;
+    ): Page;
 
     /**
      * @api
