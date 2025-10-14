@@ -23,21 +23,39 @@ final class PublicSubscriptionTranslation implements BaseModel
     /** @use SdkModel<public_subscription_translation> */
     use SdkModel;
 
+    /**
+     * The timestamp indicating when the subscription translation was created.
+     */
     #[Api]
     public int $createdAt;
 
+    /**
+     * A text description of the subscription translation.
+     */
     #[Api]
     public string $description;
 
+    /**
+     * The code representing the language of the subscription translation.
+     */
     #[Api]
     public string $languageCode;
 
+    /**
+     * The name of the subscription translation.
+     */
     #[Api]
     public string $name;
 
+    /**
+     * The unique identifier for the subscription associated with the translation.
+     */
     #[Api('subscriptionId')]
     public int $subscriptionID;
 
+    /**
+     * The timestamp indicating when the subscription translation was last updated.
+     */
     #[Api]
     public int $updatedAt;
 
@@ -98,6 +116,9 @@ final class PublicSubscriptionTranslation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp indicating when the subscription translation was created.
+     */
     public function withCreatedAt(int $createdAt): self
     {
         $obj = clone $this;
@@ -106,6 +127,9 @@ final class PublicSubscriptionTranslation implements BaseModel
         return $obj;
     }
 
+    /**
+     * A text description of the subscription translation.
+     */
     public function withDescription(string $description): self
     {
         $obj = clone $this;
@@ -114,6 +138,9 @@ final class PublicSubscriptionTranslation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The code representing the language of the subscription translation.
+     */
     public function withLanguageCode(string $languageCode): self
     {
         $obj = clone $this;
@@ -122,6 +149,9 @@ final class PublicSubscriptionTranslation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the subscription translation.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -130,6 +160,9 @@ final class PublicSubscriptionTranslation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier for the subscription associated with the translation.
+     */
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
@@ -138,6 +171,9 @@ final class PublicSubscriptionTranslation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp indicating when the subscription translation was last updated.
+     */
     public function withUpdatedAt(int $updatedAt): self
     {
         $obj = clone $this;

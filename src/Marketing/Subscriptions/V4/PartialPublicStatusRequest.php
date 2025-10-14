@@ -25,21 +25,39 @@ final class PartialPublicStatusRequest implements BaseModel
     /** @use SdkModel<partial_public_status_request> */
     use SdkModel;
 
-    /** @var value-of<Channel> $channel */
+    /**
+     * The type of communication channel, with 'EMAIL' as the only supported option.
+     *
+     * @var value-of<Channel> $channel
+     */
     #[Api(enum: Channel::class)]
     public string $channel;
 
-    /** @var value-of<StatusState> $statusState */
+    /**
+     * The current subscription status of the contact, which can be 'SUBSCRIBED', 'UNSUBSCRIBED', or 'NOT_SPECIFIED'.
+     *
+     * @var value-of<StatusState> $statusState
+     */
     #[Api(enum: StatusState::class)]
     public string $statusState;
 
+    /**
+     * The unique identifier of the subscription to be updated.
+     */
     #[Api('subscriptionId')]
     public int $subscriptionID;
 
-    /** @var value-of<LegalBasis>|null $legalBasis */
+    /**
+     * The legal basis for communication, with options including 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', and 'LEGITIMATE_INTEREST_OTHER'.
+     *
+     * @var value-of<LegalBasis>|null $legalBasis
+     */
     #[Api(enum: LegalBasis::class, optional: true)]
     public ?string $legalBasis;
 
+    /**
+     * An explanation for the legal basis used for communication.
+     */
     #[Api(optional: true)]
     public ?string $legalBasisExplanation;
 
@@ -96,6 +114,8 @@ final class PartialPublicStatusRequest implements BaseModel
     }
 
     /**
+     * The type of communication channel, with 'EMAIL' as the only supported option.
+     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -107,6 +127,8 @@ final class PartialPublicStatusRequest implements BaseModel
     }
 
     /**
+     * The current subscription status of the contact, which can be 'SUBSCRIBED', 'UNSUBSCRIBED', or 'NOT_SPECIFIED'.
+     *
      * @param StatusState|value-of<StatusState> $statusState
      */
     public function withStatusState(StatusState|string $statusState): self
@@ -117,6 +139,9 @@ final class PartialPublicStatusRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier of the subscription to be updated.
+     */
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
@@ -126,6 +151,8 @@ final class PartialPublicStatusRequest implements BaseModel
     }
 
     /**
+     * The legal basis for communication, with options including 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', and 'LEGITIMATE_INTEREST_OTHER'.
+     *
      * @param LegalBasis|value-of<LegalBasis> $legalBasis
      */
     public function withLegalBasis(LegalBasis|string $legalBasis): self
@@ -136,6 +163,9 @@ final class PartialPublicStatusRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * An explanation for the legal basis used for communication.
+     */
     public function withLegalBasisExplanation(
         string $legalBasisExplanation
     ): self {

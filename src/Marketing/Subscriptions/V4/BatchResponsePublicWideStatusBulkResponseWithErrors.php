@@ -29,31 +29,59 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
      */
     use SdkModel;
 
+    /**
+     * The date and time when the operation was completed.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<PublicWideStatusBulkResponse> $results */
+    /**
+     * An array containing the results of the operation.
+     *
+     * @var list<PublicWideStatusBulkResponse> $results
+     */
     #[Api(list: PublicWideStatusBulkResponse::class)]
     public array $results;
 
+    /**
+     * The date and time when the operation started.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current status of the operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
+    /**
+     * An array of error objects detailing any issues encountered during the operation.
+     *
+     * @var list<StandardError>|null $errors
+     */
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /**
+     * An object containing related links, where each key is a link name and each value is a URL.
+     *
+     * @var array<string, string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The number of errors encountered during the operation.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * The date and time when the operation was requested.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -117,6 +145,9 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
         return $obj;
     }
 
+    /**
+     * The date and time when the operation was completed.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -126,6 +157,8 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
     }
 
     /**
+     * An array containing the results of the operation.
+     *
      * @param list<PublicWideStatusBulkResponse> $results
      */
     public function withResults(array $results): self
@@ -136,6 +169,9 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
         return $obj;
     }
 
+    /**
+     * The date and time when the operation started.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -145,6 +181,8 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
     }
 
     /**
+     * The current status of the operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -156,6 +194,8 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
     }
 
     /**
+     * An array of error objects detailing any issues encountered during the operation.
+     *
      * @param list<StandardError> $errors
      */
     public function withErrors(array $errors): self
@@ -167,6 +207,8 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
     }
 
     /**
+     * An object containing related links, where each key is a link name and each value is a URL.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -177,6 +219,9 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
         return $obj;
     }
 
+    /**
+     * The number of errors encountered during the operation.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
@@ -185,6 +230,9 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
         return $obj;
     }
 
+    /**
+     * The date and time when the operation was requested.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

@@ -45,6 +45,9 @@ final class PublicEmailToDetails implements BaseModel
     #[Api(optional: true)]
     public ?bool $limitSendFrequency;
 
+    /**
+     * Whether to send to unengaged contacts (false) or not (true).
+     */
     #[Api(optional: true)]
     public ?bool $suppressGraymail;
 
@@ -118,6 +121,9 @@ final class PublicEmailToDetails implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether to send to unengaged contacts (false) or not (true).
+     */
     public function withSuppressGraymail(bool $suppressGraymail): self
     {
         $obj = clone $this;

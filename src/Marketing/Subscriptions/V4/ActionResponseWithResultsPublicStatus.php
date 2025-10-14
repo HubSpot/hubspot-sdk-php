@@ -27,31 +27,59 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
     /** @use SdkModel<action_response_with_results_public_status> */
     use SdkModel;
 
+    /**
+     * The date and time when the operation was completed.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<PublicStatus> $results */
+    /**
+     * An array of results from the operation.
+     *
+     * @var list<PublicStatus> $results
+     */
     #[Api(list: PublicStatus::class)]
     public array $results;
 
+    /**
+     * The date and time when the operation started.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * Indicates the current status of the operation, with possible values: PENDING, PROCESSING, CANCELED, COMPLETE.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
+    /**
+     * A list of errors that occurred during the operation.
+     *
+     * @var list<StandardError>|null $errors
+     */
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /**
+     * Contains URLs related to the response, such as documentation or resources.
+     *
+     * @var array<string, string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The number of errors that occurred during the operation.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * The date and time when the request was made.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -115,6 +143,9 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the operation was completed.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -124,6 +155,8 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
     }
 
     /**
+     * An array of results from the operation.
+     *
      * @param list<PublicStatus> $results
      */
     public function withResults(array $results): self
@@ -134,6 +167,9 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the operation started.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -143,6 +179,8 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
     }
 
     /**
+     * Indicates the current status of the operation, with possible values: PENDING, PROCESSING, CANCELED, COMPLETE.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -154,6 +192,8 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
     }
 
     /**
+     * A list of errors that occurred during the operation.
+     *
      * @param list<StandardError> $errors
      */
     public function withErrors(array $errors): self
@@ -165,6 +205,8 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
     }
 
     /**
+     * Contains URLs related to the response, such as documentation or resources.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -175,6 +217,9 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The number of errors that occurred during the operation.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
@@ -183,6 +228,9 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the request was made.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

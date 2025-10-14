@@ -22,6 +22,7 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
  *   abSuccessMetric?: value-of<AbSuccessMetric>,
  *   abTestPercentage?: int,
  *   hoursToWait?: int,
+ *   isAbVariation?: bool,
  *   testID?: string,
  * }
  */
@@ -74,6 +75,9 @@ final class PublicEmailTestingDetails implements BaseModel
     #[Api(optional: true)]
     public ?int $hoursToWait;
 
+    #[Api(optional: true)]
+    public ?bool $isAbVariation;
+
     /**
      * The ID of the AB test.
      */
@@ -102,6 +106,7 @@ final class PublicEmailTestingDetails implements BaseModel
         AbSuccessMetric|string|null $abSuccessMetric = null,
         ?int $abTestPercentage = null,
         ?int $hoursToWait = null,
+        ?bool $isAbVariation = null,
         ?string $testID = null,
     ): self {
         $obj = new self;
@@ -112,6 +117,7 @@ final class PublicEmailTestingDetails implements BaseModel
         null !== $abSuccessMetric && $obj['abSuccessMetric'] = $abSuccessMetric;
         null !== $abTestPercentage && $obj->abTestPercentage = $abTestPercentage;
         null !== $hoursToWait && $obj->hoursToWait = $hoursToWait;
+        null !== $isAbVariation && $obj->isAbVariation = $isAbVariation;
         null !== $testID && $obj->testID = $testID;
 
         return $obj;
@@ -190,6 +196,14 @@ final class PublicEmailTestingDetails implements BaseModel
     {
         $obj = clone $this;
         $obj->hoursToWait = $hoursToWait;
+
+        return $obj;
+    }
+
+    public function withIsAbVariation(bool $isAbVariation): self
+    {
+        $obj = clone $this;
+        $obj->isAbVariation = $isAbVariation;
 
         return $obj;
     }

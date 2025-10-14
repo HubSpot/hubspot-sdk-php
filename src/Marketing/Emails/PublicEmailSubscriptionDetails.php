@@ -15,6 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   officeLocationID?: string,
  *   preferencesGroupID?: string,
  *   subscriptionID?: string,
+ *   subscriptionName?: string,
  * }
  */
 final class PublicEmailSubscriptionDetails implements BaseModel
@@ -37,6 +38,9 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     #[Api('subscriptionId', optional: true)]
     public ?string $subscriptionID;
 
+    #[Api(optional: true)]
+    public ?string $subscriptionName;
+
     public function __construct()
     {
         $this->initialize();
@@ -51,12 +55,14 @@ final class PublicEmailSubscriptionDetails implements BaseModel
         ?string $officeLocationID = null,
         ?string $preferencesGroupID = null,
         ?string $subscriptionID = null,
+        ?string $subscriptionName = null,
     ): self {
         $obj = new self;
 
         null !== $officeLocationID && $obj->officeLocationID = $officeLocationID;
         null !== $preferencesGroupID && $obj->preferencesGroupID = $preferencesGroupID;
         null !== $subscriptionID && $obj->subscriptionID = $subscriptionID;
+        null !== $subscriptionName && $obj->subscriptionName = $subscriptionName;
 
         return $obj;
     }
@@ -87,6 +93,14 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     {
         $obj = clone $this;
         $obj->subscriptionID = $subscriptionID;
+
+        return $obj;
+    }
+
+    public function withSubscriptionName(string $subscriptionName): self
+    {
+        $obj = clone $this;
+        $obj->subscriptionName = $subscriptionName;
 
         return $obj;
     }

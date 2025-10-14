@@ -32,40 +32,77 @@ final class PublicStatus implements BaseModel
     /** @use SdkModel<public_status> */
     use SdkModel;
 
-    /** @var value-of<Channel> $channel */
+    /**
+     * The type of communication channel, with 'EMAIL' as the only supported option.
+     *
+     * @var value-of<Channel> $channel
+     */
     #[Api(enum: Channel::class)]
     public string $channel;
 
+    /**
+     * The origin or method through which the subscription status was set.
+     */
     #[Api]
     public string $source;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current subscription status of the contact, which can be 'SUBSCRIBED', 'UNSUBSCRIBED', or 'NOT_SPECIFIED'.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
+    /**
+     * The contact's email address.
+     */
     #[Api('subscriberIdString')]
     public string $subscriberIDString;
 
+    /**
+     * The unique identifier of the subscription.
+     */
     #[Api('subscriptionId')]
     public int $subscriptionID;
 
+    /**
+     * The date and time when the subscription status was last updated.
+     */
     #[Api]
     public \DateTimeInterface $timestamp;
 
+    /**
+     * The ID of the business unit associated with the subscription.
+     */
     #[Api('businessUnitId', optional: true)]
     public ?int $businessUnitID;
 
-    /** @var value-of<LegalBasis>|null $legalBasis */
+    /**
+     * The legal basis for communication, with options including 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', and 'LEGITIMATE_INTEREST_OTHER'.
+     *
+     * @var value-of<LegalBasis>|null $legalBasis
+     */
     #[Api(enum: LegalBasis::class, optional: true)]
     public ?string $legalBasis;
 
+    /**
+     * An explanation for the legal basis used for communication.
+     */
     #[Api(optional: true)]
     public ?string $legalBasisExplanation;
 
-    /** @var value-of<SetStatusSuccessReason>|null $setStatusSuccessReason */
+    /**
+     * The reason for the successful change in subscription status, such as 'RESUBSCRIBE_OCCURRED' or 'NO_STATUS_CHANGE'.
+     *
+     * @var value-of<SetStatusSuccessReason>|null $setStatusSuccessReason
+     */
     #[Api(enum: SetStatusSuccessReason::class, optional: true)]
     public ?string $setStatusSuccessReason;
 
+    /**
+     * The name of the subscription.
+     */
     #[Api(optional: true)]
     public ?string $subscriptionName;
 
@@ -143,6 +180,8 @@ final class PublicStatus implements BaseModel
     }
 
     /**
+     * The type of communication channel, with 'EMAIL' as the only supported option.
+     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -153,6 +192,9 @@ final class PublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The origin or method through which the subscription status was set.
+     */
     public function withSource(string $source): self
     {
         $obj = clone $this;
@@ -162,6 +204,8 @@ final class PublicStatus implements BaseModel
     }
 
     /**
+     * The current subscription status of the contact, which can be 'SUBSCRIBED', 'UNSUBSCRIBED', or 'NOT_SPECIFIED'.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -172,6 +216,9 @@ final class PublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The contact's email address.
+     */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
@@ -180,6 +227,9 @@ final class PublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier of the subscription.
+     */
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
@@ -188,6 +238,9 @@ final class PublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the subscription status was last updated.
+     */
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
@@ -196,6 +249,9 @@ final class PublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the business unit associated with the subscription.
+     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
@@ -205,6 +261,8 @@ final class PublicStatus implements BaseModel
     }
 
     /**
+     * The legal basis for communication, with options including 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', and 'LEGITIMATE_INTEREST_OTHER'.
+     *
      * @param LegalBasis|value-of<LegalBasis> $legalBasis
      */
     public function withLegalBasis(LegalBasis|string $legalBasis): self
@@ -215,6 +273,9 @@ final class PublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * An explanation for the legal basis used for communication.
+     */
     public function withLegalBasisExplanation(
         string $legalBasisExplanation
     ): self {
@@ -225,6 +286,8 @@ final class PublicStatus implements BaseModel
     }
 
     /**
+     * The reason for the successful change in subscription status, such as 'RESUBSCRIBE_OCCURRED' or 'NO_STATUS_CHANGE'.
+     *
      * @param SetStatusSuccessReason|value-of<SetStatusSuccessReason> $setStatusSuccessReason
      */
     public function withSetStatusSuccessReason(
@@ -236,6 +299,9 @@ final class PublicStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the subscription.
+     */
     public function withSubscriptionName(string $subscriptionName): self
     {
         $obj = clone $this;

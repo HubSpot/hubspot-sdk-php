@@ -18,10 +18,17 @@ final class PublicWideStatusBulkResponse implements BaseModel
     /** @use SdkModel<public_wide_status_bulk_response> */
     use SdkModel;
 
+    /**
+     * The contact's email address.
+     */
     #[Api('subscriberIdString')]
     public string $subscriberIDString;
 
-    /** @var list<PublicWideStatus> $wideStatuses */
+    /**
+     * An array containing the wide status results for the operation.
+     *
+     * @var list<PublicWideStatus> $wideStatuses
+     */
     #[Api(list: PublicWideStatus::class)]
     public array $wideStatuses;
 
@@ -65,6 +72,9 @@ final class PublicWideStatusBulkResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The contact's email address.
+     */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
@@ -74,6 +84,8 @@ final class PublicWideStatusBulkResponse implements BaseModel
     }
 
     /**
+     * An array containing the wide status results for the operation.
+     *
      * @param list<PublicWideStatus> $wideStatuses
      */
     public function withWideStatuses(array $wideStatuses): self

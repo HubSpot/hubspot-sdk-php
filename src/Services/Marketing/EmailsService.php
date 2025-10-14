@@ -21,6 +21,7 @@ use HubspotSDK\Marketing\Emails\EmailGetHistogramParams;
 use HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
 use HubspotSDK\Marketing\Emails\EmailGetRevisionByIDParams;
 use HubspotSDK\Marketing\Emails\EmailGetRevisionsParams;
+use HubspotSDK\Marketing\Emails\EmailListFullParams;
 use HubspotSDK\Marketing\Emails\EmailListParams;
 use HubspotSDK\Marketing\Emails\EmailListParams\Type;
 use HubspotSDK\Marketing\Emails\EmailReadParams;
@@ -62,6 +63,7 @@ final class EmailsService implements EmailsContract
      * @param string $campaign the ID of the campaign this email is associated to
      * @param PublicEmailContent $content data structure representing the content of the email
      * @param string $feedbackSurveyID the ID of the feedback survey linked to the email
+     * @param int $folderIDV2
      * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
      * @param Language|value-of<Language> $language
@@ -86,6 +88,7 @@ final class EmailsService implements EmailsContract
         $campaign = omit,
         $content = omit,
         $feedbackSurveyID = omit,
+        $folderIDV2 = omit,
         $from = omit,
         $jitterSendTime = omit,
         $language = omit,
@@ -109,6 +112,7 @@ final class EmailsService implements EmailsContract
             'campaign' => $campaign,
             'content' => $content,
             'feedbackSurveyID' => $feedbackSurveyID,
+            'folderIDV2' => $folderIDV2,
             'from' => $from,
             'jitterSendTime' => $jitterSendTime,
             'language' => $language,
@@ -163,6 +167,7 @@ final class EmailsService implements EmailsContract
      * @param int $businessUnitID
      * @param string $campaign the ID of the campaign this email is associated to
      * @param PublicEmailContent $content data structure representing the content of the email
+     * @param int $folderIDV2
      * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
      * @param EmailUpdateParams\Language|value-of<EmailUpdateParams\Language> $language
@@ -187,6 +192,7 @@ final class EmailsService implements EmailsContract
         $businessUnitID = omit,
         $campaign = omit,
         $content = omit,
+        $folderIDV2 = omit,
         $from = omit,
         $jitterSendTime = omit,
         $language = omit,
@@ -209,6 +215,7 @@ final class EmailsService implements EmailsContract
             'businessUnitID' => $businessUnitID,
             'campaign' => $campaign,
             'content' => $content,
+            'folderIDV2' => $folderIDV2,
             'from' => $from,
             'jitterSendTime' => $jitterSendTime,
             'language' => $language,
@@ -455,8 +462,8 @@ final class EmailsService implements EmailsContract
      *
      * Create a variation of a marketing email for an A/B test. The new variation will be created as a draft. If an active variation already exists, a new one won't be created.
      *
-     * @param string $contentID ID of the object to test
-     * @param string $variationName
+     * @param string $contentID ID of the email to test
+     * @param string $variationName name of the variation to be created
      *
      * @throws APIException
      */
@@ -746,6 +753,61 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * Use this endpoint to get aggregated statistics of emails sent in a specified time span. It also returns the list of emails that were sent during the time span.
+     *
+     * @param list<int> $emailIDs Filter by email IDs. Only include statistics of emails with these IDs.
+     * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
+     * @param string $property Specifies which email properties should be returned. All properties will be returned by default.
+     * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
+     *
+     * @throws APIException
+     */
+    public function listFull(
+        $emailIDs = omit,
+        $endTimestamp = omit,
+        $property = omit,
+        $startTimestamp = omit,
+        ?RequestOptions $requestOptions = null,
+    ): AggregateEmailStatistics {
+        $params = [
+            'emailIDs' => $emailIDs,
+            'endTimestamp' => $endTimestamp,
+            'property' => $property,
+            'startTimestamp' => $startTimestamp,
+        ];
+
+        return $this->listFullRaw($params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function listFullRaw(
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): AggregateEmailStatistics {
+        [$parsed, $options] = EmailListFullParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: 'marketing/v3/emails/statistics/list',
+            query: $parsed,
+            options: $options,
+            convert: AggregateEmailStatistics::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * If you have a Marketing Hub Enterprise account or the transactional email add-on, you can use this endpoint to publish an automated email or send/schedule a regular email.
      *
      * @throws APIException
@@ -977,6 +1039,7 @@ final class EmailsService implements EmailsContract
      * @param int $businessUnitID
      * @param string $campaign the ID of the campaign this email is associated to
      * @param PublicEmailContent $content data structure representing the content of the email
+     * @param int $folderIDV2
      * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
      * @param EmailUpsertDraftParams\Language|value-of<EmailUpsertDraftParams\Language> $language
@@ -1001,6 +1064,7 @@ final class EmailsService implements EmailsContract
         $businessUnitID = omit,
         $campaign = omit,
         $content = omit,
+        $folderIDV2 = omit,
         $from = omit,
         $jitterSendTime = omit,
         $language = omit,
@@ -1023,6 +1087,7 @@ final class EmailsService implements EmailsContract
             'businessUnitID' => $businessUnitID,
             'campaign' => $campaign,
             'content' => $content,
+            'folderIDV2' => $folderIDV2,
             'from' => $from,
             'jitterSendTime' => $jitterSendTime,
             'language' => $language,

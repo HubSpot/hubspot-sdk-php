@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Marketing\Emails\PublicEmail\EmailTemplateMode;
 use HubspotSDK\Marketing\Emails\PublicEmail\Language;
 use HubspotSDK\Marketing\Emails\PublicEmail\State;
 use HubspotSDK\Marketing\Emails\PublicEmail\Type;
@@ -38,12 +39,17 @@ use HubspotSDK\Marketing\Emails\PublicEmail\Type;
  *   createdByID?: string,
  *   deletedAt?: \DateTimeInterface,
  *   emailCampaignGroupID?: string,
+ *   emailTemplateMode?: value-of<EmailTemplateMode>,
  *   feedbackSurveyID?: string,
  *   folderID?: int,
+ *   folderIDV2?: int,
+ *   isAb?: bool,
  *   isPublished?: bool,
  *   isTransactional?: bool,
  *   jitterSendTime?: bool,
  *   language?: value-of<Language>,
+ *   previewKey?: string,
+ *   primaryEmailCampaignID?: string,
  *   publishDate?: \DateTimeInterface,
  *   publishedAt?: \DateTimeInterface,
  *   publishedByEmail?: string,
@@ -54,6 +60,7 @@ use HubspotSDK\Marketing\Emails\PublicEmail\Type;
  *   subscriptionDetails?: PublicEmailSubscriptionDetails,
  *   testing?: PublicEmailTestingDetails,
  *   type?: value-of<Type>,
+ *   unpublishedAt?: \DateTimeInterface,
  *   updatedAt?: \DateTimeInterface,
  *   updatedByID?: string,
  *   webversion?: PublicWebversionDetails,
@@ -129,7 +136,11 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?string $activeDomain;
 
-    /** @var list<string>|null $allEmailCampaignIDs */
+    /**
+     * List of emailCampaignIds.
+     *
+     * @var list<string>|null $allEmailCampaignIDs
+     */
     #[Api('allEmailCampaignIds', list: 'string', optional: true)]
     public ?array $allEmailCampaignIDs;
 
@@ -184,6 +195,10 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api('emailCampaignGroupId', optional: true)]
     public ?string $emailCampaignGroupID;
 
+    /** @var value-of<EmailTemplateMode>|null $emailTemplateMode */
+    #[Api(enum: EmailTemplateMode::class, optional: true)]
+    public ?string $emailTemplateMode;
+
     /**
      * The ID of the feedback survey linked to the email.
      */
@@ -192,6 +207,12 @@ final class PublicEmail implements BaseModel, ResponseConverter
 
     #[Api('folderId', optional: true)]
     public ?int $folderID;
+
+    #[Api('folderIdV2', optional: true)]
+    public ?int $folderIDV2;
+
+    #[Api(optional: true)]
+    public ?bool $isAb;
 
     /**
      * Returns the published status of the email. This is read only.
@@ -212,6 +233,12 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api(enum: Language::class, optional: true)]
     public ?string $language;
 
+    #[Api(optional: true)]
+    public ?string $previewKey;
+
+    #[Api('primaryEmailCampaignId', optional: true)]
+    public ?string $primaryEmailCampaignID;
+
     /**
      * The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
      */
@@ -224,6 +251,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?\DateTimeInterface $publishedAt;
 
+    /**
+     * Email of the user who published/sent the email.
+     */
     #[Api(optional: true)]
     public ?string $publishedByEmail;
 
@@ -233,6 +263,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api('publishedById', optional: true)]
     public ?string $publishedByID;
 
+    /**
+     * Name of the user who published the email.
+     */
     #[Api(optional: true)]
     public ?string $publishedByName;
 
@@ -264,6 +297,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
      */
     #[Api(enum: Type::class, optional: true)]
     public ?string $type;
+
+    #[Api(optional: true)]
+    public ?\DateTimeInterface $unpublishedAt;
 
     /**
      * The date and time of the last update to the email, in ISO8601 representation.
@@ -333,6 +369,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
      *
      * @param State|value-of<State> $state
      * @param list<string> $allEmailCampaignIDs
+     * @param EmailTemplateMode|value-of<EmailTemplateMode> $emailTemplateMode
      * @param Language|value-of<Language> $language
      * @param Type|value-of<Type> $type
      * @param list<string> $workflowNames
@@ -359,12 +396,17 @@ final class PublicEmail implements BaseModel, ResponseConverter
         ?string $createdByID = null,
         ?\DateTimeInterface $deletedAt = null,
         ?string $emailCampaignGroupID = null,
+        EmailTemplateMode|string|null $emailTemplateMode = null,
         ?string $feedbackSurveyID = null,
         ?int $folderID = null,
+        ?int $folderIDV2 = null,
+        ?bool $isAb = null,
         ?bool $isPublished = null,
         ?bool $isTransactional = null,
         ?bool $jitterSendTime = null,
         Language|string|null $language = null,
+        ?string $previewKey = null,
+        ?string $primaryEmailCampaignID = null,
         ?\DateTimeInterface $publishDate = null,
         ?\DateTimeInterface $publishedAt = null,
         ?string $publishedByEmail = null,
@@ -375,6 +417,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
         ?PublicEmailSubscriptionDetails $subscriptionDetails = null,
         ?PublicEmailTestingDetails $testing = null,
         Type|string|null $type = null,
+        ?\DateTimeInterface $unpublishedAt = null,
         ?\DateTimeInterface $updatedAt = null,
         ?string $updatedByID = null,
         ?PublicWebversionDetails $webversion = null,
@@ -404,12 +447,17 @@ final class PublicEmail implements BaseModel, ResponseConverter
         null !== $createdByID && $obj->createdByID = $createdByID;
         null !== $deletedAt && $obj->deletedAt = $deletedAt;
         null !== $emailCampaignGroupID && $obj->emailCampaignGroupID = $emailCampaignGroupID;
+        null !== $emailTemplateMode && $obj['emailTemplateMode'] = $emailTemplateMode;
         null !== $feedbackSurveyID && $obj->feedbackSurveyID = $feedbackSurveyID;
         null !== $folderID && $obj->folderID = $folderID;
+        null !== $folderIDV2 && $obj->folderIDV2 = $folderIDV2;
+        null !== $isAb && $obj->isAb = $isAb;
         null !== $isPublished && $obj->isPublished = $isPublished;
         null !== $isTransactional && $obj->isTransactional = $isTransactional;
         null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
         null !== $language && $obj['language'] = $language;
+        null !== $previewKey && $obj->previewKey = $previewKey;
+        null !== $primaryEmailCampaignID && $obj->primaryEmailCampaignID = $primaryEmailCampaignID;
         null !== $publishDate && $obj->publishDate = $publishDate;
         null !== $publishedAt && $obj->publishedAt = $publishedAt;
         null !== $publishedByEmail && $obj->publishedByEmail = $publishedByEmail;
@@ -420,6 +468,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
         null !== $subscriptionDetails && $obj->subscriptionDetails = $subscriptionDetails;
         null !== $testing && $obj->testing = $testing;
         null !== $type && $obj['type'] = $type;
+        null !== $unpublishedAt && $obj->unpublishedAt = $unpublishedAt;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
         null !== $updatedByID && $obj->updatedByID = $updatedByID;
         null !== $webversion && $obj->webversion = $webversion;
@@ -541,6 +590,8 @@ final class PublicEmail implements BaseModel, ResponseConverter
     }
 
     /**
+     * List of emailCampaignIds.
+     *
      * @param list<string> $allEmailCampaignIDs
      */
     public function withAllEmailCampaignIDs(array $allEmailCampaignIDs): self
@@ -653,6 +704,18 @@ final class PublicEmail implements BaseModel, ResponseConverter
     }
 
     /**
+     * @param EmailTemplateMode|value-of<EmailTemplateMode> $emailTemplateMode
+     */
+    public function withEmailTemplateMode(
+        EmailTemplateMode|string $emailTemplateMode
+    ): self {
+        $obj = clone $this;
+        $obj['emailTemplateMode'] = $emailTemplateMode;
+
+        return $obj;
+    }
+
+    /**
      * The ID of the feedback survey linked to the email.
      */
     public function withFeedbackSurveyID(string $feedbackSurveyID): self
@@ -667,6 +730,22 @@ final class PublicEmail implements BaseModel, ResponseConverter
     {
         $obj = clone $this;
         $obj->folderID = $folderID;
+
+        return $obj;
+    }
+
+    public function withFolderIDV2(int $folderIDV2): self
+    {
+        $obj = clone $this;
+        $obj->folderIDV2 = $folderIDV2;
+
+        return $obj;
+    }
+
+    public function withIsAb(bool $isAb): self
+    {
+        $obj = clone $this;
+        $obj->isAb = $isAb;
 
         return $obj;
     }
@@ -712,6 +791,23 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    public function withPreviewKey(string $previewKey): self
+    {
+        $obj = clone $this;
+        $obj->previewKey = $previewKey;
+
+        return $obj;
+    }
+
+    public function withPrimaryEmailCampaignID(
+        string $primaryEmailCampaignID
+    ): self {
+        $obj = clone $this;
+        $obj->primaryEmailCampaignID = $primaryEmailCampaignID;
+
+        return $obj;
+    }
+
     /**
      * The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
      */
@@ -734,6 +830,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Email of the user who published/sent the email.
+     */
     public function withPublishedByEmail(string $publishedByEmail): self
     {
         $obj = clone $this;
@@ -753,6 +852,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Name of the user who published the email.
+     */
     public function withPublishedByName(string $publishedByName): self
     {
         $obj = clone $this;
@@ -812,6 +914,14 @@ final class PublicEmail implements BaseModel, ResponseConverter
     {
         $obj = clone $this;
         $obj['type'] = $type;
+
+        return $obj;
+    }
+
+    public function withUnpublishedAt(\DateTimeInterface $unpublishedAt): self
+    {
+        $obj = clone $this;
+        $obj->unpublishedAt = $unpublishedAt;
 
         return $obj;
     }

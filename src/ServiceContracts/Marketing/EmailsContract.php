@@ -39,6 +39,7 @@ interface EmailsContract
      * @param string $campaign the ID of the campaign this email is associated to
      * @param PublicEmailContent $content data structure representing the content of the email
      * @param string $feedbackSurveyID the ID of the feedback survey linked to the email
+     * @param int $folderIDV2
      * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
      * @param Language|value-of<Language> $language
@@ -63,6 +64,7 @@ interface EmailsContract
         $campaign = omit,
         $content = omit,
         $feedbackSurveyID = omit,
+        $folderIDV2 = omit,
         $from = omit,
         $jitterSendTime = omit,
         $language = omit,
@@ -99,6 +101,7 @@ interface EmailsContract
      * @param int $businessUnitID
      * @param string $campaign the ID of the campaign this email is associated to
      * @param PublicEmailContent $content data structure representing the content of the email
+     * @param int $folderIDV2
      * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
      * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\Language|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\Language> $language
@@ -123,6 +126,7 @@ interface EmailsContract
         $businessUnitID = omit,
         $campaign = omit,
         $content = omit,
+        $folderIDV2 = omit,
         $from = omit,
         $jitterSendTime = omit,
         $language = omit,
@@ -270,8 +274,8 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param string $contentID ID of the object to test
-     * @param string $variationName
+     * @param string $contentID ID of the email to test
+     * @param string $variationName name of the variation to be created
      *
      * @throws APIException
      */
@@ -432,6 +436,36 @@ interface EmailsContract
     /**
      * @api
      *
+     * @param list<int> $emailIDs Filter by email IDs. Only include statistics of emails with these IDs.
+     * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
+     * @param string $property Specifies which email properties should be returned. All properties will be returned by default.
+     * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
+     *
+     * @throws APIException
+     */
+    public function listFull(
+        $emailIDs = omit,
+        $endTimestamp = omit,
+        $property = omit,
+        $startTimestamp = omit,
+        ?RequestOptions $requestOptions = null,
+    ): AggregateEmailStatistics;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function listFullRaw(
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): AggregateEmailStatistics;
+
+    /**
+     * @api
+     *
      * @throws APIException
      */
     public function publishOrSend(
@@ -553,6 +587,7 @@ interface EmailsContract
      * @param int $businessUnitID
      * @param string $campaign the ID of the campaign this email is associated to
      * @param PublicEmailContent $content data structure representing the content of the email
+     * @param int $folderIDV2
      * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
      * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language> $language
@@ -577,6 +612,7 @@ interface EmailsContract
         $businessUnitID = omit,
         $campaign = omit,
         $content = omit,
+        $folderIDV2 = omit,
         $from = omit,
         $jitterSendTime = omit,
         $language = omit,

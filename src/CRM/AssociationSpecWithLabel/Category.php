@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\CRM\AssociationSpecWithLabel;
 
-/**
- * The category of this association type (either HUBSPOT_DEFINED or USER_DEFINED).
- */
 enum Category: string
 {
     case HUBSPOT_DEFINED = 'HUBSPOT_DEFINED';

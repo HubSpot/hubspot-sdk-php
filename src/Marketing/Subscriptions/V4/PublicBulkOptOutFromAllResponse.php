@@ -18,10 +18,17 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
     /** @use SdkModel<public_bulk_opt_out_from_all_response> */
     use SdkModel;
 
+    /**
+     * The email address of the contact.
+     */
     #[Api('subscriberIdString')]
     public string $subscriberIDString;
 
-    /** @var list<PublicStatus>|null $statuses */
+    /**
+     * An array of subscription status objects for the contact.
+     *
+     * @var list<PublicStatus>|null $statuses
+     */
     #[Api(list: PublicStatus::class, optional: true)]
     public ?array $statuses;
 
@@ -64,6 +71,9 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The email address of the contact.
+     */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
@@ -73,6 +83,8 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
     }
 
     /**
+     * An array of subscription status objects for the contact.
+     *
      * @param list<PublicStatus> $statuses
      */
     public function withStatuses(array $statuses): self

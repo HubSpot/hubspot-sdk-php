@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4\PublicStatus;
 
+/**
+ * The reason for the successful change in subscription status, such as 'RESUBSCRIBE_OCCURRED' or 'NO_STATUS_CHANGE'.
+ */
 enum SetStatusSuccessReason: string
 {
     case RESUBSCRIBE_OCCURRED = 'RESUBSCRIBE_OCCURRED';

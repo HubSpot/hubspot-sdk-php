@@ -26,24 +26,45 @@ final class PublicWideStatus implements BaseModel
     /** @use SdkModel<public_wide_status> */
     use SdkModel;
 
-    /** @var value-of<Channel> $channel */
+    /**
+     * The type of communication channel, with 'EMAIL' as the only supported option.
+     *
+     * @var value-of<Channel> $channel
+     */
     #[Api(enum: Channel::class)]
     public string $channel;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The subscription status of the contact, which can be 'SUBSCRIBED', 'UNSUBSCRIBED', or 'NOT_SPECIFIED'.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
+    /**
+     * The email address of the contact.
+     */
     #[Api('subscriberIdString')]
     public string $subscriberIDString;
 
+    /**
+     * The date and time when the status was recorded.
+     */
     #[Api]
     public \DateTimeInterface $timestamp;
 
-    /** @var value-of<WideStatusType> $wideStatusType */
+    /**
+     * The type of wide status, which can be 'PORTAL_WIDE' or 'BUSINESS_UNIT_WIDE'.
+     *
+     * @var value-of<WideStatusType> $wideStatusType
+     */
     #[Api(enum: WideStatusType::class)]
     public string $wideStatusType;
 
+    /**
+     * The ID of the business unit associated with the status.
+     */
     #[Api('businessUnitId', optional: true)]
     public ?int $businessUnitID;
 
@@ -108,6 +129,8 @@ final class PublicWideStatus implements BaseModel
     }
 
     /**
+     * The type of communication channel, with 'EMAIL' as the only supported option.
+     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -119,6 +142,8 @@ final class PublicWideStatus implements BaseModel
     }
 
     /**
+     * The subscription status of the contact, which can be 'SUBSCRIBED', 'UNSUBSCRIBED', or 'NOT_SPECIFIED'.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -129,6 +154,9 @@ final class PublicWideStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The email address of the contact.
+     */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
@@ -137,6 +165,9 @@ final class PublicWideStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the status was recorded.
+     */
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
@@ -146,6 +177,8 @@ final class PublicWideStatus implements BaseModel
     }
 
     /**
+     * The type of wide status, which can be 'PORTAL_WIDE' or 'BUSINESS_UNIT_WIDE'.
+     *
      * @param WideStatusType|value-of<WideStatusType> $wideStatusType
      */
     public function withWideStatusType(
@@ -157,6 +190,9 @@ final class PublicWideStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the business unit associated with the status.
+     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;

@@ -20,6 +20,7 @@ use HubspotSDK\Marketing\Emails\EmailUpdateRequest\Subcategory;
  *   businessUnitID?: int,
  *   campaign?: string,
  *   content?: PublicEmailContent,
+ *   folderIDV2?: int,
  *   from?: PublicEmailFromDetails,
  *   jitterSendTime?: bool,
  *   language?: value-of<Language>,
@@ -67,6 +68,9 @@ final class EmailUpdateRequest implements BaseModel
      */
     #[Api(optional: true)]
     public ?PublicEmailContent $content;
+
+    #[Api('folderIdV2', optional: true)]
+    public ?int $folderIDV2;
 
     /**
      * Data structure representing the from fields on the email.
@@ -168,6 +172,7 @@ final class EmailUpdateRequest implements BaseModel
         ?int $businessUnitID = null,
         ?string $campaign = null,
         ?PublicEmailContent $content = null,
+        ?int $folderIDV2 = null,
         ?PublicEmailFromDetails $from = null,
         ?bool $jitterSendTime = null,
         Language|string|null $language = null,
@@ -190,6 +195,7 @@ final class EmailUpdateRequest implements BaseModel
         null !== $businessUnitID && $obj->businessUnitID = $businessUnitID;
         null !== $campaign && $obj->campaign = $campaign;
         null !== $content && $obj->content = $content;
+        null !== $folderIDV2 && $obj->folderIDV2 = $folderIDV2;
         null !== $from && $obj->from = $from;
         null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
         null !== $language && $obj['language'] = $language;
@@ -256,6 +262,14 @@ final class EmailUpdateRequest implements BaseModel
     {
         $obj = clone $this;
         $obj->content = $content;
+
+        return $obj;
+    }
+
+    public function withFolderIDV2(int $folderIDV2): self
+    {
+        $obj = clone $this;
+        $obj->folderIDV2 = $folderIDV2;
 
         return $obj;
     }

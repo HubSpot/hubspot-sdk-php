@@ -27,31 +27,59 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
     /** @use SdkModel<batch_response_public_bulk_opt_out_from_all_response> */
     use SdkModel;
 
+    /**
+     * The date and time when the bulk opt-out operation was completed.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<PublicBulkOptOutFromAllResponse> $results */
+    /**
+     * An array containing the results of the bulk opt-out from all communications operation.
+     *
+     * @var list<PublicBulkOptOutFromAllResponse> $results
+     */
     #[Api(list: PublicBulkOptOutFromAllResponse::class)]
     public array $results;
 
+    /**
+     * The date and time when the bulk opt-out operation began.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current status of the bulk opt-out operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
+    /**
+     * An array of error objects detailing any issues encountered during the bulk opt-out operation.
+     *
+     * @var list<StandardError>|null $errors
+     */
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /**
+     * A collection of URLs linking to related resources or documentation.
+     *
+     * @var array<string, string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The total number of errors encountered during the bulk opt-out operation.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * The date and time when the bulk opt-out request was made.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -115,6 +143,9 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the bulk opt-out operation was completed.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -124,6 +155,8 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
     }
 
     /**
+     * An array containing the results of the bulk opt-out from all communications operation.
+     *
      * @param list<PublicBulkOptOutFromAllResponse> $results
      */
     public function withResults(array $results): self
@@ -134,6 +167,9 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the bulk opt-out operation began.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -143,6 +179,8 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
     }
 
     /**
+     * The current status of the bulk opt-out operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -154,6 +192,8 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
     }
 
     /**
+     * An array of error objects detailing any issues encountered during the bulk opt-out operation.
+     *
      * @param list<StandardError> $errors
      */
     public function withErrors(array $errors): self
@@ -165,6 +205,8 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
     }
 
     /**
+     * A collection of URLs linking to related resources or documentation.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -175,6 +217,9 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The total number of errors encountered during the bulk opt-out operation.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
@@ -183,6 +228,9 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the bulk opt-out request was made.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

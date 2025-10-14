@@ -10,6 +10,7 @@ use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\CRM\Associations\V4\BatchResponseVoid\Status;
+use HubspotSDK\StandardError;
 
 /**
  * @phpstan-type batch_response_void = array{
@@ -17,7 +18,7 @@ use HubspotSDK\CRM\Associations\V4\BatchResponseVoid\Status;
  *   results: list<mixed>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError1>,
+ *   errors?: list<StandardError>,
  *   links?: array<string, string>,
  *   numErrors?: int,
  *   requestedAt?: \DateTimeInterface,
@@ -44,8 +45,8 @@ final class BatchResponseVoid implements BaseModel, ResponseConverter
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError1>|null $errors */
-    #[Api(list: StandardError1::class, optional: true)]
+    /** @var list<StandardError>|null $errors */
+    #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
     /** @var array<string, string>|null $links */
@@ -90,7 +91,7 @@ final class BatchResponseVoid implements BaseModel, ResponseConverter
      *
      * @param list<mixed> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError1> $errors
+     * @param list<StandardError> $errors
      * @param array<string, string> $links
      */
     public static function with(
@@ -157,7 +158,7 @@ final class BatchResponseVoid implements BaseModel, ResponseConverter
     }
 
     /**
-     * @param list<StandardError1> $errors
+     * @param list<StandardError> $errors
      */
     public function withErrors(array $errors): self
     {

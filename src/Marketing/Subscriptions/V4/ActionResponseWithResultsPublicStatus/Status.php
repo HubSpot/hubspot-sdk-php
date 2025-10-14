@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicStatus;
 
+/**
+ * Indicates the current status of the operation, with possible values: PENDING, PROCESSING, CANCELED, COMPLETE.
+ */
 enum Status: string
 {
     case PENDING = 'PENDING';
