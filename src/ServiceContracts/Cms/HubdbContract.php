@@ -16,6 +16,7 @@ use HubspotSDK\Cms\Hubdb\ImportResult;
 use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -599,6 +600,8 @@ interface HubdbContract
      * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
      * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function getAllDraftTables(
@@ -615,19 +618,21 @@ interface HubdbContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function getAllDraftTablesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): Page;
 
     /**
      * @api
@@ -645,6 +650,8 @@ interface HubdbContract
      * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
      * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function getAllTables(
@@ -661,19 +668,21 @@ interface HubdbContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function getAllTablesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): Page;
 
     /**
      * @api
@@ -831,6 +840,8 @@ interface HubdbContract
      * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
      * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
      *
+     * @return Page<mixed>
+     *
      * @throws APIException
      */
     public function getTableRows(
@@ -842,12 +853,14 @@ interface HubdbContract
         $properties = omit,
         $sort = omit,
         ?RequestOptions $requestOptions = null,
-    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return Page<mixed>
      *
      * @throws APIException
      */
@@ -855,7 +868,7 @@ interface HubdbContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3;
+    ): Page;
 
     /**
      * @api

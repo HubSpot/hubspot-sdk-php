@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Files;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Files\CollectionResponseFile;
 use HubspotSDK\Files\File;
 use HubspotSDK\Files\FileActionResponse;
 use HubspotSDK\Files\Files\FileGetSignedURLParams\Size;
@@ -15,6 +14,7 @@ use HubspotSDK\Files\Files\FileUpdateParams\Access;
 use HubspotSDK\Files\FileStat;
 use HubspotSDK\Files\ImportFromURLTaskLocator;
 use HubspotSDK\Files\SignedURL;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -283,6 +283,8 @@ interface FilesContract
      * @param int $widthGte Search files by greater than or equal to width of image or video. Can be used with `widthLte` to create a range.
      * @param int $widthLte Search files by less than or equal to width of image or video. Can be used with `widthGte` to create a range.
      *
+     * @return Page<File>
+     *
      * @throws APIException
      */
     public function search(
@@ -323,19 +325,21 @@ interface FilesContract
         $widthGte = omit,
         $widthLte = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseFile;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<File>
+     *
      * @throws APIException
      */
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseFile;
+    ): Page;
 
     /**
      * @api

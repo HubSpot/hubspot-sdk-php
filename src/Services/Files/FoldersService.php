@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\Files;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Files\CollectionResponseFolder;
 use HubspotSDK\Files\Folder;
 use HubspotSDK\Files\FolderActionResponse;
 use HubspotSDK\Files\Folders\FolderCreateParams;
@@ -16,6 +15,7 @@ use HubspotSDK\Files\Folders\FolderSearchParams;
 use HubspotSDK\Files\Folders\FolderUpdateAsyncParams;
 use HubspotSDK\Files\Folders\FolderUpdateByIDParams;
 use HubspotSDK\Files\FolderUpdateTaskLocator;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Files\FoldersContract;
 
@@ -255,6 +255,8 @@ final class FoldersService implements FoldersContract
      * @param \DateTimeInterface $updatedAtGte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range.
      * @param \DateTimeInterface $updatedAtLte Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range.
      *
+     * @return Page<Folder>
+     *
      * @throws APIException
      */
     public function search(
@@ -276,7 +278,7 @@ final class FoldersService implements FoldersContract
         $updatedAtGte = omit,
         $updatedAtLte = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseFolder {
+    ): Page {
         $params = [
             'after' => $after,
             'before' => $before,
@@ -305,12 +307,14 @@ final class FoldersService implements FoldersContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<Folder>
+     *
      * @throws APIException
      */
     public function searchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseFolder {
+    ): Page {
         [$parsed, $options] = FolderSearchParams::parseRequest(
             $params,
             $requestOptions
@@ -322,7 +326,8 @@ final class FoldersService implements FoldersContract
             path: 'files/v3/folders/search',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseFolder::class,
+            convert: Folder::class,
+            page: Page::class,
         );
     }
 

@@ -71,6 +71,7 @@ use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\HubdbContract;
 
@@ -1121,6 +1122,8 @@ final class HubdbService implements HubdbContract
      * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
      * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function getAllDraftTables(
@@ -1137,7 +1140,7 @@ final class HubdbService implements HubdbContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging {
+    ): Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -1161,12 +1164,14 @@ final class HubdbService implements HubdbContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function getAllDraftTablesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging {
+    ): Page {
         [$parsed, $options] = HubdbGetAllDraftTablesParams::parseRequest(
             $params,
             $requestOptions
@@ -1178,7 +1183,8 @@ final class HubdbService implements HubdbContract
             path: 'cms/v3/hubdb/tables/draft',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalHubDBTableV3ForwardPaging::class,
+            convert: HubDBTableV3::class,
+            page: Page::class,
         );
     }
 
@@ -1200,6 +1206,8 @@ final class HubdbService implements HubdbContract
      * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
      * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function getAllTables(
@@ -1216,7 +1224,7 @@ final class HubdbService implements HubdbContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging {
+    ): Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -1240,12 +1248,14 @@ final class HubdbService implements HubdbContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function getAllTablesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging {
+    ): Page {
         [$parsed, $options] = HubdbGetAllTablesParams::parseRequest(
             $params,
             $requestOptions
@@ -1257,7 +1267,8 @@ final class HubdbService implements HubdbContract
             path: 'cms/v3/hubdb/tables',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalHubDBTableV3ForwardPaging::class,
+            convert: HubDBTableV3::class,
+            page: Page::class,
         );
     }
 
@@ -1545,6 +1556,8 @@ final class HubdbService implements HubdbContract
      * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
      * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
      *
+     * @return Page<mixed>
+     *
      * @throws APIException
      */
     public function getTableRows(
@@ -1556,7 +1569,7 @@ final class HubdbService implements HubdbContract
         $properties = omit,
         $sort = omit,
         ?RequestOptions $requestOptions = null,
-    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3 {
+    ): Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -1574,13 +1587,15 @@ final class HubdbService implements HubdbContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<mixed>
+     *
      * @throws APIException
      */
     public function getTableRowsRaw(
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3 {
+    ): Page {
         [$parsed, $options] = HubdbGetTableRowsParams::parseRequest(
             $params,
             $requestOptions
@@ -1592,7 +1607,8 @@ final class HubdbService implements HubdbContract
             path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
             query: $parsed,
             options: $options,
-            convert: UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3::class,
+            convert: 'mixed',
+            page: Page::class,
         );
     }
 

@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost;
-use HubspotSDK\Cms\Blogs\Posts\CollectionResponseWithTotalVersionBlogPost;
 use HubspotSDK\Cms\Blogs\Posts\ContentLanguageVariation;
 use HubspotSDK\Cms\Blogs\Posts\LayoutSection;
 use HubspotSDK\Cms\Blogs\Posts\PostAttachToLangGroupParams;
@@ -906,6 +905,8 @@ final class PostsService implements PostsContract
      * @param string $before
      * @param int $limit The maximum number of results to return. Default is 100.
      *
+     * @return Page<VersionBlogPost>
+     *
      * @throws APIException
      */
     public function getPreviousVersions(
@@ -914,7 +915,7 @@ final class PostsService implements PostsContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionBlogPost {
+    ): Page {
         $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
 
         return $this->getPreviousVersionsRaw($objectID, $params, $requestOptions);
@@ -925,13 +926,15 @@ final class PostsService implements PostsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<VersionBlogPost>
+     *
      * @throws APIException
      */
     public function getPreviousVersionsRaw(
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionBlogPost {
+    ): Page {
         [$parsed, $options] = PostGetPreviousVersionsParams::parseRequest(
             $params,
             $requestOptions
@@ -943,7 +946,8 @@ final class PostsService implements PostsContract
             path: ['cms/v3/blogs/posts/%1$s/revisions', $objectID],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalVersionBlogPost::class,
+            convert: VersionBlogPost::class,
+            page: Page::class,
         );
     }
 
