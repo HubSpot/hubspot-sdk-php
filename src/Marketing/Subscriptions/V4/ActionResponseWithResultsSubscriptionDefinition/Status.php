@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsSubscriptionDefinition;
 
+/**
+ * The current status of the operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+ */
 enum Status: string
 {
     case PENDING = 'PENDING';

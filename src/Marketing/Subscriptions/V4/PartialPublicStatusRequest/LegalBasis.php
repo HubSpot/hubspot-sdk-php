@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4\PartialPublicStatusRequest;
 
+/**
+ * The legal basis for communication, with options including 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', and 'LEGITIMATE_INTEREST_OTHER'.
+ */
 enum LegalBasis: string
 {
     case LEGITIMATE_INTEREST_PQL = 'LEGITIMATE_INTEREST_PQL';

@@ -8,7 +8,6 @@ use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\CmsContract;
 use HubspotSDK\Services\Cms\BlogsService;
 use HubspotSDK\Services\Cms\DomainsService;
-use HubspotSDK\Services\Cms\HubdbService;
 use HubspotSDK\Services\Cms\URLRedirectsService;
 
 final class CmsService implements CmsContract
@@ -26,11 +25,6 @@ final class CmsService implements CmsContract
     /**
      * @@api
      */
-    public HubdbService $hubdb;
-
-    /**
-     * @@api
-     */
     public URLRedirectsService $urlRedirects;
 
     /**
@@ -40,7 +34,6 @@ final class CmsService implements CmsContract
     {
         $this->blogs = new BlogsService($client);
         $this->domains = new DomainsService($client);
-        $this->hubdb = new HubdbService($client);
         $this->urlRedirects = new URLRedirectsService($client);
     }
 }

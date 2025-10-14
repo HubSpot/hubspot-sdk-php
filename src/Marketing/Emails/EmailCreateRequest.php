@@ -22,6 +22,7 @@ use HubspotSDK\Marketing\Emails\EmailCreateRequest\Subcategory;
  *   campaign?: string,
  *   content?: PublicEmailContent,
  *   feedbackSurveyID?: string,
+ *   folderIDV2?: int,
  *   from?: PublicEmailFromDetails,
  *   jitterSendTime?: bool,
  *   language?: value-of<Language>,
@@ -80,6 +81,9 @@ final class EmailCreateRequest implements BaseModel
      */
     #[Api('feedbackSurveyId', optional: true)]
     public ?string $feedbackSurveyID;
+
+    #[Api('folderIdV2', optional: true)]
+    public ?int $folderIDV2;
 
     /**
      * Data structure representing the from fields on the email.
@@ -191,6 +195,7 @@ final class EmailCreateRequest implements BaseModel
         ?string $campaign = null,
         ?PublicEmailContent $content = null,
         ?string $feedbackSurveyID = null,
+        ?int $folderIDV2 = null,
         ?PublicEmailFromDetails $from = null,
         ?bool $jitterSendTime = null,
         Language|string|null $language = null,
@@ -215,6 +220,7 @@ final class EmailCreateRequest implements BaseModel
         null !== $campaign && $obj->campaign = $campaign;
         null !== $content && $obj->content = $content;
         null !== $feedbackSurveyID && $obj->feedbackSurveyID = $feedbackSurveyID;
+        null !== $folderIDV2 && $obj->folderIDV2 = $folderIDV2;
         null !== $from && $obj->from = $from;
         null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
         null !== $language && $obj['language'] = $language;
@@ -302,6 +308,14 @@ final class EmailCreateRequest implements BaseModel
     {
         $obj = clone $this;
         $obj->feedbackSurveyID = $feedbackSurveyID;
+
+        return $obj;
+    }
+
+    public function withFolderIDV2(int $folderIDV2): self
+    {
+        $obj = clone $this;
+        $obj->folderIDV2 = $folderIDV2;
 
         return $obj;
     }

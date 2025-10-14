@@ -21,11 +21,14 @@ final class AbTestCreateRequestVNext implements BaseModel
     use SdkModel;
 
     /**
-     * ID of the object to test.
+     * ID of the email to test.
      */
     #[Api('contentId')]
     public string $contentID;
 
+    /**
+     * Name of the variation to be created.
+     */
     #[Api]
     public string $variationName;
 
@@ -64,7 +67,7 @@ final class AbTestCreateRequestVNext implements BaseModel
     }
 
     /**
-     * ID of the object to test.
+     * ID of the email to test.
      */
     public function withContentID(string $contentID): self
     {
@@ -74,6 +77,9 @@ final class AbTestCreateRequestVNext implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the variation to be created.
+     */
     public function withVariationName(string $variationName): self
     {
         $obj = clone $this;

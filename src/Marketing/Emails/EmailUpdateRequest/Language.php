@@ -338,6 +338,8 @@ enum Language: string
 
     case EN_EE = 'en-ee';
 
+    case EN_EG = 'en-eg';
+
     case EN_ER = 'en-er';
 
     case EN_ES = 'en-es';

@@ -18,10 +18,17 @@ final class PublicStatusBulkResponse implements BaseModel
     /** @use SdkModel<public_status_bulk_response> */
     use SdkModel;
 
-    /** @var list<PublicStatus> $statuses */
+    /**
+     * An array of subscription status objects for the contact.
+     *
+     * @var list<PublicStatus> $statuses
+     */
     #[Api(list: PublicStatus::class)]
     public array $statuses;
 
+    /**
+     * The email address of the contact.
+     */
     #[Api('subscriberIdString')]
     public string $subscriberIDString;
 
@@ -64,6 +71,8 @@ final class PublicStatusBulkResponse implements BaseModel
     }
 
     /**
+     * An array of subscription status objects for the contact.
+     *
      * @param list<PublicStatus> $statuses
      */
     public function withStatuses(array $statuses): self
@@ -74,6 +83,9 @@ final class PublicStatusBulkResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The email address of the contact.
+     */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;

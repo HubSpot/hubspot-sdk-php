@@ -33,7 +33,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, 
     public array $results;
 
     /**
-     * Total number of content emails.
+     * Total number of emails.
      */
     #[Api]
     public int $total;
@@ -101,7 +101,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, 
     }
 
     /**
-     * Total number of content emails.
+     * Total number of emails.
      */
     public function withTotal(int $total): self
     {

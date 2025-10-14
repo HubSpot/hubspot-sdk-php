@@ -234,6 +234,18 @@ final class EmailsTest extends TestCase
     }
 
     #[Test]
+    public function testListFull(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->marketing->emails->listFull();
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
     public function testPublishOrSend(): void
     {
         if (UnsupportedMockTests::$skip) {

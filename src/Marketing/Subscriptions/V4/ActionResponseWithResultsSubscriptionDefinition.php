@@ -28,31 +28,59 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     /** @use SdkModel<action_response_with_results_subscription_definition> */
     use SdkModel;
 
+    /**
+     * The date and time when the operation was completed.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<SubscriptionDefinition> $results */
+    /**
+     * An array containing the results of the operation.
+     *
+     * @var list<SubscriptionDefinition> $results
+     */
     #[Api(list: SubscriptionDefinition::class)]
     public array $results;
 
+    /**
+     * The date and time when the operation started.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current status of the operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
+    /**
+     * An array of errors that occurred during the operation.
+     *
+     * @var list<StandardError>|null $errors
+     */
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /**
+     * A collection of related links associated with the operation.
+     *
+     * @var array<string, string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The number of errors encountered during the operation.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * The date and time when the operation was requested.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -116,6 +144,9 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the operation was completed.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -125,6 +156,8 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     }
 
     /**
+     * An array containing the results of the operation.
+     *
      * @param list<SubscriptionDefinition> $results
      */
     public function withResults(array $results): self
@@ -135,6 +168,9 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the operation started.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -144,6 +180,8 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     }
 
     /**
+     * The current status of the operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -155,6 +193,8 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     }
 
     /**
+     * An array of errors that occurred during the operation.
+     *
      * @param list<StandardError> $errors
      */
     public function withErrors(array $errors): self
@@ -166,6 +206,8 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     }
 
     /**
+     * A collection of related links associated with the operation.
+     *
      * @param array<string, string> $links
      */
     public function withLinks(array $links): self
@@ -176,6 +218,9 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The number of errors encountered during the operation.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
@@ -184,6 +229,9 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the operation was requested.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

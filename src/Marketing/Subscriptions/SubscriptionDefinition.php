@@ -76,6 +76,9 @@ final class SubscriptionDefinition implements BaseModel
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * The ID of the business unit associated with the subscription definition.
+     */
     #[Api('businessUnitId', optional: true)]
     public ?int $businessUnitID;
 
@@ -251,6 +254,9 @@ final class SubscriptionDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID of the business unit associated with the subscription definition.
+     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;

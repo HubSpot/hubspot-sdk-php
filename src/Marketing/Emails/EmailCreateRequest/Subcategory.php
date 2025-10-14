@@ -47,6 +47,8 @@ enum Subcategory: string
 
     case AUTOMATED_FOR_FORM_DRAFT = 'automated_for_form_draft';
 
+    case AUTOMATED_FOR_CRM = 'automated_for_crm';
+
     case RSS_TO_EMAIL = 'rss_to_email';
 
     case RSS_TO_EMAIL_CHILD = 'rss_to_email_child';

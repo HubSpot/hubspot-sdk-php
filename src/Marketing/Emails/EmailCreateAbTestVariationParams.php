@@ -36,11 +36,14 @@ final class EmailCreateAbTestVariationParams implements BaseModel
     use SdkParams;
 
     /**
-     * ID of the object to test.
+     * ID of the email to test.
      */
     #[Api('contentId')]
     public string $contentID;
 
+    /**
+     * Name of the variation to be created.
+     */
     #[Api]
     public string $variationName;
 
@@ -81,7 +84,7 @@ final class EmailCreateAbTestVariationParams implements BaseModel
     }
 
     /**
-     * ID of the object to test.
+     * ID of the email to test.
      */
     public function withContentID(string $contentID): self
     {
@@ -91,6 +94,9 @@ final class EmailCreateAbTestVariationParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Name of the variation to be created.
+     */
     public function withVariationName(string $variationName): self
     {
         $obj = clone $this;

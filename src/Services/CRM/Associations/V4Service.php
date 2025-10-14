@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\CRM\Associations;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\CRM\Associations\V4\AssociationSpec1;
 use HubspotSDK\CRM\Associations\V4\BatchResponseVoid;
 use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
 use HubspotSDK\CRM\Associations\V4\ReportCreationResponse;
@@ -39,7 +39,7 @@ final class V4Service implements V4Contract
      * @param string $objectType
      * @param string $objectID
      * @param string $toObjectType
-     * @param list<AssociationSpec> $body
+     * @param list<AssociationSpec1> $body
      *
      * @throws APIException
      */
