@@ -19,23 +19,13 @@ final class AssociationSpecWithLabel1 implements BaseModel
     /** @use SdkModel<association_spec_with_label1> */
     use SdkModel;
 
-    /**
-     * The category of this association type (either HUBSPOT_DEFINED or USER_DEFINED).
-     *
-     * @var value-of<Category> $category
-     */
+    /** @var value-of<Category> $category */
     #[Api(enum: Category::class)]
     public string $category;
 
-    /**
-     * The ID of this association type, unique within an association category.
-     */
     #[Api('typeId')]
     public int $typeID;
 
-    /**
-     * The label for this association type.
-     */
     #[Api(optional: true)]
     public ?string $label;
 
@@ -81,8 +71,6 @@ final class AssociationSpecWithLabel1 implements BaseModel
     }
 
     /**
-     * The category of this association type (either HUBSPOT_DEFINED or USER_DEFINED).
-     *
      * @param Category|value-of<Category> $category
      */
     public function withCategory(Category|string $category): self
@@ -93,9 +81,6 @@ final class AssociationSpecWithLabel1 implements BaseModel
         return $obj;
     }
 
-    /**
-     * The ID of this association type, unique within an association category.
-     */
     public function withTypeID(int $typeID): self
     {
         $obj = clone $this;
@@ -104,9 +89,6 @@ final class AssociationSpecWithLabel1 implements BaseModel
         return $obj;
     }
 
-    /**
-     * The label for this association type.
-     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
