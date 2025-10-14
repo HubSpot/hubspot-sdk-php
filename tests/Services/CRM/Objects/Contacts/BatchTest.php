@@ -73,7 +73,7 @@ final class BatchTest extends TestCase
                                 types: [
                                     AssociationSpec::with(
                                         associationCategory: 'HUBSPOT_DEFINED',
-                                        associationTypeID: 0
+                                        associationTypeID: 279
                                     ),
                                 ],
                             ),

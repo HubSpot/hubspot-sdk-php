@@ -8,7 +8,6 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Associations\V4\BatchResponsePublicAssociationMultiWithLabel\Status;
-use HubspotSDK\StandardError;
 
 /**
  * @phpstan-type batch_response_public_association_multi_with_label = array{
@@ -16,7 +15,7 @@ use HubspotSDK\StandardError;
  *   results: list<PublicAssociationMultiWithLabel>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError>,
+ *   errors?: list<StandardError1>,
  *   links?: array<string, string>,
  *   numErrors?: int,
  *   requestedAt?: \DateTimeInterface,
@@ -41,8 +40,8 @@ final class BatchResponsePublicAssociationMultiWithLabel implements BaseModel
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
-    #[Api(list: StandardError::class, optional: true)]
+    /** @var list<StandardError1>|null $errors */
+    #[Api(list: StandardError1::class, optional: true)]
     public ?array $errors;
 
     /** @var array<string, string>|null $links */
@@ -87,7 +86,7 @@ final class BatchResponsePublicAssociationMultiWithLabel implements BaseModel
      *
      * @param list<PublicAssociationMultiWithLabel> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError> $errors
+     * @param list<StandardError1> $errors
      * @param array<string, string> $links
      */
     public static function with(
@@ -154,7 +153,7 @@ final class BatchResponsePublicAssociationMultiWithLabel implements BaseModel
     }
 
     /**
-     * @param list<StandardError> $errors
+     * @param list<StandardError1> $errors
      */
     public function withErrors(array $errors): self
     {

@@ -46,7 +46,7 @@ final class V4Test extends TestCase
             objectID: 'objectId',
             toObjectType: 'toObjectType',
             body: [
-                AssociationSpec1::with(
+                AssociationSpec::with(
                     associationCategory: 'HUBSPOT_DEFINED',
                     associationTypeID: 279
                 ),
@@ -69,7 +69,7 @@ final class V4Test extends TestCase
             objectID: 'objectId',
             toObjectType: 'toObjectType',
             body: [
-                AssociationSpec1::with(
+                AssociationSpec::with(
                     associationCategory: 'HUBSPOT_DEFINED',
                     associationTypeID: 279
                 ),
@@ -160,7 +160,7 @@ final class V4Test extends TestCase
                     from: PublicObjectID::with(id: '37295'),
                     to: PublicObjectID::with(id: '37295'),
                     types: [
-                        AssociationSpec::with(
+                        AssociationSpec1::with(
                             associationCategory: 'HUBSPOT_DEFINED',
                             associationTypeID: 0
                         ),
@@ -187,7 +187,7 @@ final class V4Test extends TestCase
                     from: PublicObjectID::with(id: '37295'),
                     to: PublicObjectID::with(id: '37295'),
                     types: [
-                        AssociationSpec::with(
+                        AssociationSpec1::with(
                             associationCategory: 'HUBSPOT_DEFINED',
                             associationTypeID: 0
                         ),
