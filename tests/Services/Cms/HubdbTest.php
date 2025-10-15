@@ -33,54 +33,6 @@ final class HubdbTest extends TestCase
     }
 
     #[Test]
-    public function testCreate(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->create(label: 'label', name: 'name');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testCreateWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->create(label: 'label', name: 'name');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testList(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->list();
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testArchive(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->archive('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testArchiveTable(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -88,68 +40,6 @@ final class HubdbTest extends TestCase
         }
 
         $result = $this->client->cms->hubdb->archiveTable('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testCloneBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->cloneBatch(
-            'tableIdOrName',
-            [HubDBTableRowBatchCloneRequest::with(id: 'id')]
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testCloneBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->cloneBatch(
-            'tableIdOrName',
-            [HubDBTableRowBatchCloneRequest::with(id: 'id')->withName('name')],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testCloneDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->cloneDraft(
-            'tableIdOrName',
-            copyRows: true,
-            isHubspotDefined: true
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testCloneDraftWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->cloneDraft(
-            'tableIdOrName',
-            copyRows: true,
-            isHubspotDefined: true
-        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -241,42 +131,6 @@ final class HubdbTest extends TestCase
         $result = $this->client->cms->hubdb->cloneDraftTableRows(
             'tableIdOrName',
             [HubDBTableRowBatchCloneRequest::with(id: 'id')->withName('name')],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testCreateBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->createBatch(
-            'tableIdOrName',
-            [HubDBTableRowV3Request::with(values: ['foo' => (object) []])],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testCreateBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->createBatch(
-            'tableIdOrName',
-            [
-                HubDBTableRowV3Request::with(values: ['foo' => (object) []])
-                    ->withChildTableID(0)
-                    ->withDisplayIndex(0)
-                    ->withName('name')
-                    ->withPath('path'),
-            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -379,84 +233,6 @@ final class HubdbTest extends TestCase
     }
 
     #[Test]
-    public function testDeleteDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->deleteDraft(
-            '321669910225',
-            'tableIdOrName'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testDeleteDraftWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->deleteDraft(
-            '321669910225',
-            'tableIdOrName'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testDeleteVersion(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->deleteVersion(0, 'tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testDeleteVersionWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->deleteVersion(0, 'tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testExport(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->export('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testExportDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->exportDraft('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testExportDraftTable(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -481,18 +257,6 @@ final class HubdbTest extends TestCase
     }
 
     #[Test]
-    public function testGet(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->get('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testGetAllDraftTables(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -512,18 +276,6 @@ final class HubdbTest extends TestCase
         }
 
         $result = $this->client->cms->hubdb->getAllTables();
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testGetDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->getDraft('tableIdOrName');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -627,18 +379,6 @@ final class HubdbTest extends TestCase
     }
 
     #[Test]
-    public function testImportDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->importDraft('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testImportDraftTable(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -651,42 +391,6 @@ final class HubdbTest extends TestCase
     }
 
     #[Test]
-    public function testListDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->listDraft('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testListDrafts(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->listDrafts();
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testPublishDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->publishDraft('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testPublishDraftTable(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -694,36 +398,6 @@ final class HubdbTest extends TestCase
         }
 
         $result = $this->client->cms->hubdb->publishDraftTable('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testPurgeBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->purgeBatch(
-            'tableIdOrName',
-            ['string']
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testPurgeBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->purgeBatch(
-            'tableIdOrName',
-            ['string']
-        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -781,60 +455,6 @@ final class HubdbTest extends TestCase
         }
 
         $result = $this->client->cms->hubdb->purgeDraftTableRows(
-            'tableIdOrName',
-            ['string']
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testReadBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->readBatch('tableIdOrName', ['string']);
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testReadBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->readBatch('tableIdOrName', ['string']);
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testReadDraftBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->readDraftBatch(
-            'tableIdOrName',
-            ['string']
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testReadDraftBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->readDraftBatch(
             'tableIdOrName',
             ['string']
         );
@@ -927,82 +547,6 @@ final class HubdbTest extends TestCase
     }
 
     #[Test]
-    public function testReplaceBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->replaceBatch(
-            'tableIdOrName',
-            [
-                HubDBTableRowV3BatchUpdateRequest::with(
-                    id: 'id',
-                    values: ['foo' => (object) []]
-                ),
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testReplaceBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->replaceBatch(
-            'tableIdOrName',
-            [
-                HubDBTableRowV3BatchUpdateRequest::with(
-                    id: 'id',
-                    values: ['foo' => (object) []]
-                )
-                    ->withChildTableID(0)
-                    ->withDisplayIndex(0)
-                    ->withName('name')
-                    ->withPath('path'),
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testReplaceDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->replaceDraft(
-            '321669910225',
-            tableIDOrName: 'tableIdOrName',
-            values: ['foo' => (object) []],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testReplaceDraftWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->replaceDraft(
-            '321669910225',
-            tableIDOrName: 'tableIdOrName',
-            values: ['foo' => (object) []],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testReplaceDraftTableRow(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -1079,18 +623,6 @@ final class HubdbTest extends TestCase
     }
 
     #[Test]
-    public function testResetDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->resetDraft('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testResetDraftTable(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -1103,18 +635,6 @@ final class HubdbTest extends TestCase
     }
 
     #[Test]
-    public function testUnpublish(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->unpublish('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testUnpublishTable(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -1122,82 +642,6 @@ final class HubdbTest extends TestCase
         }
 
         $result = $this->client->cms->hubdb->unpublishTable('tableIdOrName');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testUpdateBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->updateBatch(
-            'tableIdOrName',
-            [
-                HubDBTableRowV3BatchUpdateRequest::with(
-                    id: 'id',
-                    values: ['foo' => (object) []]
-                ),
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testUpdateBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->updateBatch(
-            'tableIdOrName',
-            [
-                HubDBTableRowV3BatchUpdateRequest::with(
-                    id: 'id',
-                    values: ['foo' => (object) []]
-                )
-                    ->withChildTableID(0)
-                    ->withDisplayIndex(0)
-                    ->withName('name')
-                    ->withPath('path'),
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testUpdateDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->updateDraft(
-            'tableIdOrName',
-            label: 'label',
-            name: 'name'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testUpdateDraftWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->hubdb->updateDraft(
-            'tableIdOrName',
-            label: 'label',
-            name: 'name'
-        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
