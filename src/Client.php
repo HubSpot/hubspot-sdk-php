@@ -136,16 +136,16 @@ class Client extends BaseClient
     /** @return array<string, string> */
     protected function authHeaders(): array
     {
-        if (!$this->STAINLESS_FIXME_accessToken) {
+        if (!$this->accessToken) {
             return [];
         }
 
-        return ['Authorization' => "Bearer {$this->STAINLESS_FIXME_accessToken}"];
+        return ['Authorization' => "Bearer {$this->accessToken}"];
     }
 
     /** @return array<string, string> */
     protected function authQuery(): array
     {
-        return ['hapikey' => $this->STAINLESS_FIXME_developerAPIKey];
+        return ['hapikey' => $this->developerAPIKey];
     }
 }
