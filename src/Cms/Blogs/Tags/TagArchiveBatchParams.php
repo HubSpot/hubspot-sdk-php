@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new TagArchiveBatchParams); // set properties as needed
- * $client->cms.blogs.tags->archiveBatch(...$params->toArray());
- * ```
  * Delete the Blog Tag objects identified in the request body.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.tags->archiveBatch(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Tags->archiveBatch
  *

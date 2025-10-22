@@ -15,18 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PostUpdateParams); // set properties as needed
- * $client->cms.blogs.posts->update(...$params->toArray());
- * ```
  * Partially updates a single blog post by ID. You only need to specify the values that you want to update.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.posts->update(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Posts->update
  *

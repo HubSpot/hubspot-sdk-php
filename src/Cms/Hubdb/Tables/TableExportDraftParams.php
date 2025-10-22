@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new TableExportDraftParams); // set properties as needed
- * $client->cms.hubdb.tables->exportDraft(...$params->toArray());
- * ```
  * Exports the draft version of a table to CSV / EXCEL format.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb.tables->exportDraft(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->exportDraft
  *

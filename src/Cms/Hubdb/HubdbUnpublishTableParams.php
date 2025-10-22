@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new HubdbUnpublishTableParams); // set properties as needed
- * $client->cms.hubdb->unpublishTable(...$params->toArray());
- * ```
  * Unpublishes the table, meaning any website pages using data from the table will not render any data.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb->unpublishTable(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb->unpublishTable
  *

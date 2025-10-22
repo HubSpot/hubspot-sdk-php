@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\FilterGroup;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new CompanySearchParams); // set properties as needed
- * $client->crm.objects.companies->search(...$params->toArray());
- * ```
  * Search for companies by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.companies->search(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Companies->search
  *

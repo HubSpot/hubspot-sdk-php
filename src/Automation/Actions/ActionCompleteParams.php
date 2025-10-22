@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new ActionCompleteParams); // set properties as needed
- * $client->automation.actions->complete(...$params->toArray());
- * ```
  * Complete a specific blocked action execution by ID.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->automation.actions->complete(...$params->toArray());`
  *
  * @see HubspotSDK\Automation\Actions->complete
  *

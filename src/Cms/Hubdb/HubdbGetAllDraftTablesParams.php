@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new HubdbGetAllDraftTablesParams); // set properties as needed
- * $client->cms.hubdb->getAllDraftTables(...$params->toArray());
- * ```
  * Returns the details for each draft table defined in the specified account, including column definitions.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb->getAllDraftTables(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb->getAllDraftTables
  *

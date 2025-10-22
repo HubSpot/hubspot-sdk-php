@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new SchemaDeleteParams); // set properties as needed
- * $client->crm.objects.schemas->delete(...$params->toArray());
- * ```
  * Deletes a schema. Any existing records of this schema must be deleted **first**. Otherwise this call will fail.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.schemas->delete(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Schemas->delete
  *

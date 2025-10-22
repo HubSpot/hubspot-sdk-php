@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new HubdbCreateTableParams); // set properties as needed
- * $client->cms.hubdb->createTable(...$params->toArray());
- * ```
  * Creates a new draft HubDB table given a JSON schema. The table name and label should be unique for each account.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb->createTable(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb->createTable
  *

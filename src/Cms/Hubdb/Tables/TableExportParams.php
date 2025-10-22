@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new TableExportParams); // set properties as needed
- * $client->cms.hubdb.tables->export(...$params->toArray());
- * ```
  * Exports the published version of a table in a specified format.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb.tables->export(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->export
  *

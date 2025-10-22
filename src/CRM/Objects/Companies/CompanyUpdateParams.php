@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new CompanyUpdateParams); // set properties as needed
- * $client->crm.objects.companies->update(...$params->toArray());
- * ```
  * Update a batch of companies by ID.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.companies->update(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Companies->update
  *

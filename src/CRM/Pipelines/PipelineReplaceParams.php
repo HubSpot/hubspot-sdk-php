@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PipelineReplaceParams); // set properties as needed
- * $client->crm.pipelines->replace(...$params->toArray());
- * ```
  * Replace all the properties of an existing pipeline stage with the values provided. The updated stage will be returned in the response.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.pipelines->replace(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Pipelines->replace
  *

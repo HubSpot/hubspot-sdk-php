@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Files\Files\FileUpdateParams\Access;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new FileUpdateParams); // set properties as needed
- * $client->files.files->update(...$params->toArray());
- * ```
  * Update properties of file by ID.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->files.files->update(...$params->toArray());`
  *
  * @see HubspotSDK\Files\Files->update
  *

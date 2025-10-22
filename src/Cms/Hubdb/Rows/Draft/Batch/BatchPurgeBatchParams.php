@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new BatchPurgeBatchParams); // set properties as needed
- * $client->cms.hubdb.rows.draft.batch->purgeBatch(...$params->toArray());
- * ```
  * Permanently deletes rows from the draft version of the table, given a set of row IDs. Maximum of 100 row IDs per call.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb.rows.draft.batch->purgeBatch(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb\Rows\Draft\Batch->purgeBatch
  *

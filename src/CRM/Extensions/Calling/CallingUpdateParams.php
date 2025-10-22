@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new CallingUpdateParams); // set properties as needed
- * $client->crm.extensions.calling->update(...$params->toArray());
- * ```
  * Update existing [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#manage-the-webhook-settings-for-channel-connection) for your app.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.extensions.calling->update(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Extensions\Calling->update
  *

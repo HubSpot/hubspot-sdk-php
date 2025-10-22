@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new TablePublishDraftParams); // set properties as needed
- * $client->cms.hubdb.tables->publishDraft(...$params->toArray());
- * ```
  * Publishes the table by copying the data and table schema changes from draft version to the published version, meaning any website pages using data from the table will be updated.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb.tables->publishDraft(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->publishDraft
  *

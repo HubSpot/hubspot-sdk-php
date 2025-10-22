@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new HubdbReadDraftTableRowsParams); // set properties as needed
- * $client->cms.hubdb->readDraftTableRows(...$params->toArray());
- * ```
  * Returns rows in the draft version of the specified table, given a set of row IDs.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb->readDraftTableRows(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb->readDraftTableRows
  *

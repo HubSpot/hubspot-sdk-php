@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormListParams\FormType;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new FormListParams); // set properties as needed
- * $client->marketing.forms->list(...$params->toArray());
- * ```
  * Returns a list of forms based on the search filters. By default, it returns the first 20 `hubspot` forms.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.forms->list(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Forms->list
  *

@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new FileReplaceParams); // set properties as needed
- * $client->files.files->replace(...$params->toArray());
- * ```
  * Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->files.files->replace(...$params->toArray());`
  *
  * @see HubspotSDK\Files\Files->replace
  *

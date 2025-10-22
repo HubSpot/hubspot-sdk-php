@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PipelineGetAuditParams); // set properties as needed
- * $client->crm.pipelines->getAudit(...$params->toArray());
- * ```
  * Return a reverse chronological list of all mutations that have occurred on the pipeline identified by `{pipelineId}`.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.pipelines->getAudit(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Pipelines->getAudit
  *

@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new CompanyReadParams); // set properties as needed
- * $client->crm.objects.companies->read(...$params->toArray());
- * ```
  * Retrieve a company by its ID (`companyId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.companies->read(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Companies->read
  *

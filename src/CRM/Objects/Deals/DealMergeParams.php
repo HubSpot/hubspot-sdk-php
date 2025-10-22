@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new DealMergeParams); // set properties as needed
- * $client->crm.objects.deals->merge(...$params->toArray());
- * ```
  * Merge two deals with same type.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.deals->merge(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Deals->merge
  *

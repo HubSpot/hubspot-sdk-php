@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PostSetLangPrimaryParams); // set properties as needed
- * $client->cms.blogs.posts->setLangPrimary(...$params->toArray());
- * ```
  * Set the primary language of a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content) to the language of the provided post (specified as an ID in the request body).
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.posts->setLangPrimary(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Posts->setLangPrimary
  *

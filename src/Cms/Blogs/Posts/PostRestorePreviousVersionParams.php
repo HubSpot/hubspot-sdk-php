@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PostRestorePreviousVersionParams); // set properties as needed
- * $client->cms.blogs.posts->restorePreviousVersion(...$params->toArray());
- * ```
  * Restores a blog post to one of its previous versions.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.posts->restorePreviousVersion(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Posts->restorePreviousVersion
  *

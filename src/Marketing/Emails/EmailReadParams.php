@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailReadParams); // set properties as needed
- * $client->marketing.emails->read(...$params->toArray());
- * ```
  * Get the details for a marketing email.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->read(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->read
  *

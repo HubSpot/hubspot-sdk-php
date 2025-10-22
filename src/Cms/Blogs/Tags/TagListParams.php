@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new TagListParams); // set properties as needed
- * $client->cms.blogs.tags->list(...$params->toArray());
- * ```
  * Get the list of blog tags. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.tags->list(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Tags->list
  *

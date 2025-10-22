@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailCreateAbTestVariationParams); // set properties as needed
- * $client->marketing.emails->createAbTestVariation(...$params->toArray());
- * ```
  * Create a variation of a marketing email for an A/B test. The new variation will be created as a draft. If an active variation already exists, a new one won't be created.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->createAbTestVariation(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->createAbTestVariation
  *

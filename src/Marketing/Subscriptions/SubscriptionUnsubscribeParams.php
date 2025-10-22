@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new SubscriptionUnsubscribeParams); // set properties as needed
- * $client->marketing.subscriptions->unsubscribe(...$params->toArray());
- * ```
  * Unsubscribes a contact from the given subscription type. This API is not valid to use for unsubscribing a contact at a brand or portal level and will return an error.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.subscriptions->unsubscribe(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Subscriptions->unsubscribe
  *

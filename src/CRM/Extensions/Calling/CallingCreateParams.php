@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new CallingCreateParams); // set properties as needed
- * $client->crm.extensions.calling->create(...$params->toArray());
- * ```
  * Configure [channel connection settings](https://developers.hubspot.com/docs/guides/api/crm/extensions/third-party-calling#create-channel-connection-settings) for the app.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.extensions.calling->create(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Extensions\Calling->create
  *

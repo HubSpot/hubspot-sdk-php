@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailGetHistogramParams); // set properties as needed
- * $client->marketing.emails->getHistogram(...$params->toArray());
- * ```
  * Get aggregated statistics in intervals for a specified time span. Each interval contains aggregated statistics of the emails that were sent in that time.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->getHistogram(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->getHistogram
  *

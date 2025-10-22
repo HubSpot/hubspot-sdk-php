@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Webhooks\WebhookCreateParams\EventType;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new WebhookCreateParams); // set properties as needed
- * $client->webhooks->create(...$params->toArray());
- * ```
  * Create new event subscription for the specified app.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->webhooks->create(...$params->toArray());`
  *
  * @see HubspotSDK\Webhooks->create
  *

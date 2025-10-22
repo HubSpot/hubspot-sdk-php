@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new FolderUpdateByIDParams); // set properties as needed
- * $client->files.folders->updateByID(...$params->toArray());
- * ```
  * Update a folder's properties, identified by folder ID.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->files.folders->updateByID(...$params->toArray());`
  *
  * @see HubspotSDK\Files\Folders->updateByID
  *

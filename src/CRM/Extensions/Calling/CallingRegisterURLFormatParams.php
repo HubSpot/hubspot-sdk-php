@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new CallingRegisterURLFormatParams); // set properties as needed
- * $client->crm.extensions.calling->registerURLFormat(...$params->toArray());
- * ```
  * Register an external URL that HubSpot will use to retrieve [call recordings](https://developers.hubspot.com/docs/guides/apps/extensions/calling-extensions/recordings-and-transcriptions#register-your-app-s-endpoint-with-hubspot-using-the-calling-settings-api).
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.extensions.calling->registerURLFormat(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Extensions\Calling->registerURLFormat
  *

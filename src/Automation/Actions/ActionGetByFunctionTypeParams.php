@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new ActionGetByFunctionTypeParams); // set properties as needed
- * $client->automation.actions->getByFunctionType(...$params->toArray());
- * ```
  * Retrieve functions by a type for a given definition.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->automation.actions->getByFunctionType(...$params->toArray());`
  *
  * @see HubspotSDK\Automation\Actions->getByFunctionType
  *

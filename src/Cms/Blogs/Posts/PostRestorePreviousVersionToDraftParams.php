@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PostRestorePreviousVersionToDraftParams); // set properties as needed
- * $client->cms.blogs.posts->restorePreviousVersionToDraft(...$params->toArray());
- * ```
  * Takes a specified version of a blog post, sets it as the new draft version of the blog post.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.posts->restorePreviousVersionToDraft(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Posts->restorePreviousVersionToDraft
  *

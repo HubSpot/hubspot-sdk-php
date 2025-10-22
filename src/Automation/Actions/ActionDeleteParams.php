@@ -11,18 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new ActionDeleteParams); // set properties as needed
- * $client->automation.actions->delete(...$params->toArray());
- * ```
  * Archive a function for a definition.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->automation.actions->delete(...$params->toArray());`
  *
  * @see HubspotSDK\Automation\Actions->delete
  *

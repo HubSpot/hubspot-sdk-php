@@ -13,18 +13,7 @@ use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationScope
 use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationStrategy;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new FileImportFromURLAsyncParams); // set properties as needed
- * $client->files.files->importFromURLAsync(...$params->toArray());
- * ```
  * Asynchronously imports the file at the given URL into the file manager.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->files.files->importFromURLAsync(...$params->toArray());`
  *
  * @see HubspotSDK\Files\Files->importFromURLAsync
  *

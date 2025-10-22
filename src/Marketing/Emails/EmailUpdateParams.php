@@ -13,18 +13,7 @@ use HubspotSDK\Marketing\Emails\EmailUpdateParams\State;
 use HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailUpdateParams); // set properties as needed
- * $client->marketing.emails->update(...$params->toArray());
- * ```
  * Change properties of a marketing email.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->update(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->update
  *

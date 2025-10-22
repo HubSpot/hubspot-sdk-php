@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new BatchDeleteParams); // set properties as needed
- * $client->crm.objects.contacts.batch->delete(...$params->toArray());
- * ```
  * Archive a batch of contacts by ID. Archived contacts can be restored within 90 days of deletion. Learn more about the [data impacted by contact deletions](https://knowledge.hubspot.com/privacy-and-consent/understand-restorable-and-permanent-contact-deletions) and how to [restore archived records](https://knowledge.hubspot.com/records/restore-deleted-records).
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.contacts.batch->delete(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Contacts\Batch->delete
  *

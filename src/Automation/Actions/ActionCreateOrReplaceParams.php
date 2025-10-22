@@ -11,18 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new ActionCreateOrReplaceParams); // set properties as needed
- * $client->automation.actions->createOrReplace(...$params->toArray());
- * ```
  * Update a function for a given definition by ID.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->automation.actions->createOrReplace(...$params->toArray());`
  *
  * @see HubspotSDK\Automation\Actions->createOrReplace
  *

@@ -13,18 +13,7 @@ use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailCreateParams); // set properties as needed
- * $client->marketing.emails->create(...$params->toArray());
- * ```
  * Use this endpoint to create a new marketing email.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->create(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->create
  *

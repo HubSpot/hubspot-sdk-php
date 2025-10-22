@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputForCreate;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new BatchCreateParams); // set properties as needed
- * $client->crm.objects.contacts.batch->create(...$params->toArray());
- * ```
  * Create a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.contacts.batch->create(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Contacts\Batch->create
  *

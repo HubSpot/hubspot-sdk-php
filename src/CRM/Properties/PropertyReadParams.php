@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Properties\PropertyReadParams\DataSensitivity;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PropertyReadParams); // set properties as needed
- * $client->crm.properties->read(...$params->toArray());
- * ```
  * Read a provided list of properties.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.properties->read(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Properties->read
  *

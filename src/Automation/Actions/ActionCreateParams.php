@@ -11,18 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new ActionCreateParams); // set properties as needed
- * $client->automation.actions->create(...$params->toArray());
- * ```
  * Create a new custom workflow action.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->automation.actions->create(...$params->toArray());`
  *
  * @see HubspotSDK\Automation\Actions->create
  *

@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new WebhookUpdateBatchParams); // set properties as needed
- * $client->webhooks->updateBatch(...$params->toArray());
- * ```
  * Batch create event subscriptions for the specified app.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->webhooks->updateBatch(...$params->toArray());`
  *
  * @see HubspotSDK\Webhooks->updateBatch
  *

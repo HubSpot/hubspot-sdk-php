@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new OwnerListParams); // set properties as needed
- * $client->crm.owners->list(...$params->toArray());
- * ```
  * Retrieve a paginated list of owners available in the account.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.owners->list(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Owners->list
  *

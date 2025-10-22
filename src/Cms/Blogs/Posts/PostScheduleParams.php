@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PostScheduleParams); // set properties as needed
- * $client->cms.blogs.posts->schedule(...$params->toArray());
- * ```
  * Schedule a blog post to be published at a specified time.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.posts->schedule(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Posts->schedule
  *

@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Files\Files\FileGetSignedURLParams\Size;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new FileGetSignedURLParams); // set properties as needed
- * $client->files.files->getSignedURL(...$params->toArray());
- * ```
  * Generates signed URL that allows temporary access to a private file.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->files.files->getSignedURL(...$params->toArray());`
  *
  * @see HubspotSDK\Files\Files->getSignedURL
  *

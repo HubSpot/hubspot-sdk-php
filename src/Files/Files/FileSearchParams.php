@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new FileSearchParams); // set properties as needed
- * $client->files.files->search(...$params->toArray());
- * ```
  * Search through files in the file manager. Does not display hidden or archived files.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->files.files->search(...$params->toArray());`
  *
  * @see HubspotSDK\Files\Files->search
  *

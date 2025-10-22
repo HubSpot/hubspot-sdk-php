@@ -10,20 +10,9 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new TableGetParams); // set properties as needed
- * $client->cms.hubdb.tables->get(...$params->toArray());
- * ```
  * Returns the details for the published version of the specified table. This will include the definitions for the columns in the table and the number of rows in the table.
  *
  * **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access. To do so, you'll need to include the HubSpot account ID in a `portalId` query parameter.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb.tables->get(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->get
  *

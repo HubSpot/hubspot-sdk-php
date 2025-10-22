@@ -15,18 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PostCreateParams); // set properties as needed
- * $client->cms.blogs.posts->create(...$params->toArray());
- * ```
  * Create a new blog post, specifying its content in the request body.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.posts->create(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Posts->create
  *

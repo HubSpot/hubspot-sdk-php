@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new AssociationDeleteParams); // set properties as needed
- * $client->crm.associations->delete(...$params->toArray());
- * ```
  * Remove the associations between all pairs of objects identified in the request body.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.associations->delete(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Associations->delete
  *

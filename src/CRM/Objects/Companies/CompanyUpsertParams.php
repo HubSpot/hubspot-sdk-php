@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new CompanyUpsertParams); // set properties as needed
- * $client->crm.objects.companies->upsert(...$params->toArray());
- * ```
  * Create or update companies identified by a unique property value as specified by the `idProperty` query parameter. `idProperty` query param refers to a property whose values are unique for the object.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.companies->upsert(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Companies->upsert
  *

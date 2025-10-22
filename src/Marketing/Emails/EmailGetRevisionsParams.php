@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailGetRevisionsParams); // set properties as needed
- * $client->marketing.emails->getRevisions(...$params->toArray());
- * ```
  * Get a list of all versions of a marketing email, with each entry including the full state of that particular version. To view the most recent version, sort by the updatedAt parameter.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->getRevisions(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->getRevisions
  *

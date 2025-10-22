@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\EmailListParams\Type;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailListParams); // set properties as needed
- * $client->marketing.emails->list(...$params->toArray());
- * ```
  * The results can be filtered, allowing you to find a specific set of emails. See the table below for a full list of filtering options.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->list(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->list
  *
