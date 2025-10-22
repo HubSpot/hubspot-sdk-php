@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PostDetachFromLangGroupParams); // set properties as needed
- * $client->cms.blogs.posts->detachFromLangGroup(...$params->toArray());
- * ```
  * Detach a blog post from a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.posts->detachFromLangGroup(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Posts->detachFromLangGroup
  *

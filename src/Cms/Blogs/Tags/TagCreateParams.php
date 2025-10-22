@@ -11,18 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new TagCreateParams); // set properties as needed
- * $client->cms.blogs.tags->create(...$params->toArray());
- * ```
  * Create a new Blog Tag.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.tags->create(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Tags->create
  *

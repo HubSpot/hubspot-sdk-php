@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new AssociationReadParams); // set properties as needed
- * $client->crm.associations->read(...$params->toArray());
- * ```
  * Get the IDs of all `{toObjectType}` objects associated with those specified in the request body.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.associations->read(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Associations->read
  *

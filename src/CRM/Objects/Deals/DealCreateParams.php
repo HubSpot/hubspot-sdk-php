@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new DealCreateParams); // set properties as needed
- * $client->crm.objects.deals->create(...$params->toArray());
- * ```
  * Create a deal with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard deals is provided.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.deals->create(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Deals->create
  *

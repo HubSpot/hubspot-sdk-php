@@ -13,18 +13,7 @@ use HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State;
 use HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailUpsertDraftParams); // set properties as needed
- * $client->marketing.emails->upsertDraft(...$params->toArray());
- * ```
  * Create or update the draft version of a marketing email. If no draft exists, the system creates a draft from the current “live” email then applies the request body to that draft. The draft version only lives on the buffer—the email is not cloned.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->upsertDraft(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->upsertDraft
  *

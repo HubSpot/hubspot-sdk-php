@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new FolderCreateParams); // set properties as needed
- * $client->files.folders->create(...$params->toArray());
- * ```
  * Creates a folder.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->files.folders->create(...$params->toArray());`
  *
  * @see HubspotSDK\Files\Folders->create
  *

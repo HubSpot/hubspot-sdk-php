@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new WebhookDeleteParams); // set properties as needed
- * $client->webhooks->delete(...$params->toArray());
- * ```
  * Delete an existing event subscription by ID.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->webhooks->delete(...$params->toArray());`
  *
  * @see HubspotSDK\Webhooks->delete
  *

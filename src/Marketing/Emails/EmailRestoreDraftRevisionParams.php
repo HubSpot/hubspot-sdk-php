@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailRestoreDraftRevisionParams); // set properties as needed
- * $client->marketing.emails->restoreDraftRevision(...$params->toArray());
- * ```
  * Restores a previous revision of a marketing email to DRAFT state. If there is currently something in the draft for that object, it is overwritten.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->restoreDraftRevision(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->restoreDraftRevision
  *

@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PostCloneParams); // set properties as needed
- * $client->cms.blogs.posts->clone(...$params->toArray());
- * ```
  * Clone a blog post, making a copy of it in a new blog post.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.posts->clone(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Posts->clone
  *

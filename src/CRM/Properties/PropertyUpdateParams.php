@@ -12,18 +12,7 @@ use HubspotSDK\CRM\Properties\PropertyUpdateParams\FieldType;
 use HubspotSDK\CRM\Properties\PropertyUpdateParams\Type;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PropertyUpdateParams); // set properties as needed
- * $client->crm.properties->update(...$params->toArray());
- * ```
  * Perform a partial update of a property identified by { propertyName }. Provided fields will be overwritten.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.properties->update(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Properties->update
  *

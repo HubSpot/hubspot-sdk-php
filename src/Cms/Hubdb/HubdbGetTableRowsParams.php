@@ -10,19 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new HubdbGetTableRowsParams); // set properties as needed
- * $client->cms.hubdb->getTableRows(...$params->toArray());
- * ```
  * Returns a set of rows in the published version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options.
  * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb->getTableRows(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb->getTableRows
  *

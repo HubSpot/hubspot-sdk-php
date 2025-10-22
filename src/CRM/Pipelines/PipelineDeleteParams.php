@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PipelineDeleteParams); // set properties as needed
- * $client->crm.pipelines->delete(...$params->toArray());
- * ```
  * Delete the pipeline stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.pipelines->delete(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Pipelines->delete
  *

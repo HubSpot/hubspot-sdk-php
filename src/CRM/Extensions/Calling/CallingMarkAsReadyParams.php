@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new CallingMarkAsReadyParams); // set properties as needed
- * $client->crm.extensions.calling->markAsReady(...$params->toArray());
- * ```
  * Mark a call recording as ready for transcription, specifying the call by its ID (`engagementid`).
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.extensions.calling->markAsReady(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Extensions\Calling->markAsReady
  *

@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new FormUpdateParams); // set properties as needed
- * $client->marketing.forms->update(...$params->toArray());
- * ```
  * Update some of the form definition components.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.forms->update(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Forms->update
  *

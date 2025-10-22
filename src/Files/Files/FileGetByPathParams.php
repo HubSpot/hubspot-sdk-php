@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new FileGetByPathParams); // set properties as needed
- * $client->files.files->getByPath(...$params->toArray());
- * ```
  * Retrieve a file by its path.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->files.files->getByPath(...$params->toArray());`
  *
  * @see HubspotSDK\Files\Files->getByPath
  *

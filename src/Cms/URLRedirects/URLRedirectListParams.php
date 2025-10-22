@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new URLRedirectListParams); // set properties as needed
- * $client->cms.urlRedirects->list(...$params->toArray());
- * ```
  * Returns all existing URL redirects. Results can be limited and filtered by creation or updated date.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.urlRedirects->list(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\URLRedirects->list
  *

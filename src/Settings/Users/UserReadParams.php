@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Users\UserReadParams\IDProperty;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new UserReadParams); // set properties as needed
- * $client->settings.users->read(...$params->toArray());
- * ```
  * Retrieves a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->settings.users->read(...$params->toArray());`
  *
  * @see HubspotSDK\Settings\Users->read
  *

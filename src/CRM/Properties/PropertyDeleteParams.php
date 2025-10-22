@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PropertyDeleteParams); // set properties as needed
- * $client->crm.properties->delete(...$params->toArray());
- * ```
  * Move a property identified by {propertyName} to the recycling bin.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.properties->delete(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Properties->delete
  *

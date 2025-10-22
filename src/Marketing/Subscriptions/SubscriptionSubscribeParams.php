@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams\LegalBasis;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new SubscriptionSubscribeParams); // set properties as needed
- * $client->marketing.subscriptions->subscribe(...$params->toArray());
- * ```
  * Subscribes a contact to the given subscription type. This API is not valid to use for subscribing a contact at a brand or portal level and will return an error.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.subscriptions->subscribe(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Subscriptions->subscribe
  *

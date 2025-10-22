@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PropertyCreateParams); // set properties as needed
- * $client->crm.properties->create(...$params->toArray());
- * ```
  * Create and return a copy of a new property group.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.properties->create(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Properties->create
  *

@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new ContactCreateParams); // set properties as needed
- * $client->crm.objects.contacts->create(...$params->toArray());
- * ```
  * Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.contacts->create(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Contacts->create
  *

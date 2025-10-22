@@ -11,19 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new TagUpdateParams); // set properties as needed
- * $client->cms.blogs.tags->update(...$params->toArray());
- * ```
  * Sparse updates a single Blog Tag object identified by the id in the path.
  * All the column values need not be specified. Only the that need to be modified can be specified.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.tags->update(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Tags->update
  *

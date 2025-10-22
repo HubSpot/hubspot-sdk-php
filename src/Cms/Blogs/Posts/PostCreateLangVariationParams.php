@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PostCreateLangVariationParams); // set properties as needed
- * $client->cms.blogs.posts->createLangVariation(...$params->toArray());
- * ```
  * Create a new language variation from an existing blog post.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.posts->createLangVariation(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Posts->createLangVariation
  *

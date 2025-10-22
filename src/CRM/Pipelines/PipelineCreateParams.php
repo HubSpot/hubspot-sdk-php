@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new PipelineCreateParams); // set properties as needed
- * $client->crm.pipelines->create(...$params->toArray());
- * ```
  * Create a new pipeline with the provided property values. The entire pipeline object, including its unique ID, will be returned in the response.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.pipelines->create(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Pipelines->create
  *

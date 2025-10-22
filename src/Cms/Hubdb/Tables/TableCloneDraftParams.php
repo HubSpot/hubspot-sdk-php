@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new TableCloneDraftParams); // set properties as needed
- * $client->cms.hubdb.tables->cloneDraft(...$params->toArray());
- * ```
  * Clone an existing HubDB table. The `newName` and `newLabel` of the new table can be sent as JSON in the request body. This will create the cloned table as a draft.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb.tables->cloneDraft(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->cloneDraft
  *

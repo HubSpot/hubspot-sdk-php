@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new CompanyDeleteParams); // set properties as needed
- * $client->crm.objects.companies->delete(...$params->toArray());
- * ```
  * Delete a batch of companies by ID. Deleted companies can be restored within 90 days of deletion. Learn more about [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.companies->delete(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Companies->delete
  *

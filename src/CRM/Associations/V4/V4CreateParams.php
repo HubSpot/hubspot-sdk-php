@@ -11,18 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new V4CreateParams); // set properties as needed
- * $client->crm.associations.v4->create(...$params->toArray());
- * ```
  * Set association labels between two records.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.associations.v4->create(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Associations\V4->create
  *

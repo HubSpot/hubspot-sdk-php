@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailGetRevisionByIDParams); // set properties as needed
- * $client->marketing.emails->getRevisionByID(...$params->toArray());
- * ```
  * Get a specific revision of a marketing email.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->getRevisionByID(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->getRevisionByID
  *

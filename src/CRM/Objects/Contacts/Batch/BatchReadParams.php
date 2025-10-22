@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new BatchReadParams); // set properties as needed
- * $client->crm.objects.contacts.batch->read(...$params->toArray());
- * ```
  * Retrieve a batch of contacts by ID (`contactId`) or unique property value (`idProperty`).
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.contacts.batch->read(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Contacts\Batch->read
  *

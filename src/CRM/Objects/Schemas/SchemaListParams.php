@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new SchemaListParams); // set properties as needed
- * $client->crm.objects.schemas->list(...$params->toArray());
- * ```
  * Returns all object schemas that have been defined for your account.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.objects.schemas->list(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Objects\Schemas->list
  *

@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new TagUpdateLangsParams); // set properties as needed
- * $client->cms.blogs.tags->updateLangs(...$params->toArray());
- * ```
  * Explicitly set new languages for each Blog Tag in a multi-language group.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.blogs.tags->updateLangs(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Blogs\Tags->updateLangs
  *

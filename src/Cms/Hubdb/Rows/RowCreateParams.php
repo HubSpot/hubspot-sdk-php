@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new RowCreateParams); // set properties as needed
- * $client->cms.hubdb.rows->create(...$params->toArray());
- * ```
  * Add a new row to a HubDB table. New rows will be added to the draft version of the table. Use the `/publish` endpoint to push these changes to published version.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb.rows->create(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb\Rows->create
  *

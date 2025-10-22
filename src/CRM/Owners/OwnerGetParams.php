@@ -11,18 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Owners\OwnerGetParams\IDProperty;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new OwnerGetParams); // set properties as needed
- * $client->crm.owners->get(...$params->toArray());
- * ```
  * Retrieve details of a specific owner using either their 'id' or 'userId'.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->crm.owners->get(...$params->toArray());`
  *
  * @see HubspotSDK\CRM\Owners->get
  *

@@ -10,19 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new HubdbReplaceDraftTableRowParams); // set properties as needed
- * $client->cms.hubdb->replaceDraftTableRow(...$params->toArray());
- * ```
  * Replace a single row in the draft version of a table. All column values must be specified. If a column has a value in the target table and this request doesn't define that value, it will be deleted.
  * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->cms.hubdb->replaceDraftTableRow(...$params->toArray());`
  *
  * @see HubspotSDK\Cms\Hubdb->replaceDraftTableRow
  *

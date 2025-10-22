@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailListFullParams); // set properties as needed
- * $client->marketing.emails->listFull(...$params->toArray());
- * ```
  * Use this endpoint to get aggregated statistics of emails sent in a specified time span. It also returns the list of emails that were sent during the time span.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->listFull(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->listFull
  *

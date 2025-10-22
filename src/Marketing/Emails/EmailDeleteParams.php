@@ -10,18 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * An object containing the method's parameters.
- * Example usage:
- * ```
- * $params = (new EmailDeleteParams); // set properties as needed
- * $client->marketing.emails->delete(...$params->toArray());
- * ```
  * Delete a marketing email by its ID.
- *
- * @method toArray()
- *   Returns the parameters as an associative array suitable for passing to the client method.
- *
- *   `$client->marketing.emails->delete(...$params->toArray());`
  *
  * @see HubspotSDK\Marketing\Emails->delete
  *
