@@ -11,8 +11,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
- * Get the IDs of all `{toObjectType}` objects associated with those specified in the request body.
- *
  * @see HubspotSDK\CRM\Associations->read
  *
  * @phpstan-type association_read_params = array{

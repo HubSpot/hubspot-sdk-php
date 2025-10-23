@@ -8,7 +8,7 @@ use HubspotSDK\Cms\Hubdb\ColumnRequest\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Option;
+use HubspotSDK\Option;
 
 /**
  * @phpstan-type column_request = array{

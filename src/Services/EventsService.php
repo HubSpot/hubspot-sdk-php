@@ -6,10 +6,16 @@ namespace HubspotSDK\Services;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Events\EventSendParams;
+use HubspotSDK\Events\EventListParams;
+use HubspotSDK\Events\EventListParams\ObjectProperty;
+use HubspotSDK\Events\EventListParams\Property;
+use HubspotSDK\Events\ExternalUnifiedEvent;
+use HubspotSDK\Events\VisibleExternalEventTypeNames;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\EventsContract;
-use HubspotSDK\Services\Events\BatchService;
+use HubspotSDK\Services\Events\EventDefinitionsService;
+use HubspotSDK\Services\Events\SendService;
 
 use const HubspotSDK\Core\OMIT as omit;
 
@@ -18,53 +24,75 @@ final class EventsService implements EventsContract
     /**
      * @@api
      */
-    public BatchService $batch;
+    public EventDefinitionsService $eventDefinitions;
+
+    /**
+     * @@api
+     */
+    public SendService $send;
 
     /**
      * @internal
      */
     public function __construct(private Client $client)
     {
-        $this->batch = new BatchService($client);
+        $this->eventDefinitions = new EventDefinitionsService($client);
+        $this->send = new SendService($client);
     }
 
     /**
      * @api
      *
-     * Send data for a single event completion.
+     * Retrieve instances of event completion data. For example, retrieve all event completions associated with a specific contact.
      *
-     * @param string $eventName The internal name of the event (`pe<portalID>_eventName`). Can be retrieved through the [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions) or in [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
-     * @param string $email The visitor's email address. Used for associating the event data with a CRM record.
-     * @param string $objectID The ID of the object that completed the event (e.g., contact ID or visitor ID).
-     * @param \DateTimeInterface $occurredAt The time when this event occurred. If this isn't set, the current time will be used.
-     * @param array<string,
-     * string,> $properties The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
-     * @param string $utk The visitor's usertoken. Used for associating the event data with a CRM record.
-     * @param string $uuid Include a universally unique identifier to assign a unique ID to the event completion. Can be useful for matching data between HubSpot and other external systems.
+     * @param list<string> $id ID of an event instance. IDs are 1:1 with event instances. If you provide this filter and additional filters, the other filters must match the values on the event instance to yield results.
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param string $before Pagination cursor for backward navigation. Retrieves events occurring before the specified cursor position. Note: Currently only forward pagination with after is supported.
+     * @param string $eventType The event type name. You can retrieve available event types using the [event types endpoint](#get-%2Fevents%2Fv3%2Fevents%2Fevent-types).
+     * @param int $limit the maximum number of results to display per page
+     * @param int $objectID The ID of the CRM Object to filter event instances on. When including this parameter, you must also include the `objectType` parameter.
+     * @param ObjectProperty $objectProperty
+     * @param string $objectType The type of CRM object to filter event instances on (e.g., `contact`). To retrieve event data for a specific CRM record, include the additional `objectId` query parameter (below).
+     * @param \DateTimeInterface $occurredAfter filter for event data that occurred after a specific datetime
+     * @param \DateTimeInterface $occurredBefore filter for event data that occurred before a specific datetime
+     * @param Property $property
+     * @param list<string> $sort sort direction based on the timestamp of the event instance, `ASCENDING` or `DESCENDING`
+     *
+     * @return Page<ExternalUnifiedEvent>
      *
      * @throws APIException
      */
-    public function send(
-        $eventName,
-        $email = omit,
+    public function list(
+        $id = omit,
+        $after = omit,
+        $before = omit,
+        $eventType = omit,
+        $limit = omit,
         $objectID = omit,
-        $occurredAt = omit,
-        $properties = omit,
-        $utk = omit,
-        $uuid = omit,
+        $objectProperty = omit,
+        $objectType = omit,
+        $occurredAfter = omit,
+        $occurredBefore = omit,
+        $property = omit,
+        $sort = omit,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
+    ): Page {
         $params = [
-            'eventName' => $eventName,
-            'email' => $email,
+            'id' => $id,
+            'after' => $after,
+            'before' => $before,
+            'eventType' => $eventType,
+            'limit' => $limit,
             'objectID' => $objectID,
-            'occurredAt' => $occurredAt,
-            'properties' => $properties,
-            'utk' => $utk,
-            'uuid' => $uuid,
+            'objectProperty' => $objectProperty,
+            'objectType' => $objectType,
+            'occurredAfter' => $occurredAfter,
+            'occurredBefore' => $occurredBefore,
+            'property' => $property,
+            'sort' => $sort,
         ];
 
-        return $this->sendRaw($params, $requestOptions);
+        return $this->listRaw($params, $requestOptions);
     }
 
     /**
@@ -72,24 +100,48 @@ final class EventsService implements EventsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<ExternalUnifiedEvent>
+     *
      * @throws APIException
      */
-    public function sendRaw(
+    public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): mixed {
-        [$parsed, $options] = EventSendParams::parseRequest(
+    ): Page {
+        [$parsed, $options] = EventListParams::parseRequest(
             $params,
             $requestOptions
         );
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
-            method: 'post',
-            path: 'events/v3/send',
-            body: (object) $parsed,
+            method: 'get',
+            path: 'events/v3/events/',
+            query: $parsed,
             options: $options,
-            convert: null,
+            convert: ExternalUnifiedEvent::class,
+            page: Page::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * This endpoint returns a list of event type names which are visible to you. You may use these event type names to query the API for specific event instances of a desired type.
+     *
+     * Note: the `get_types` method is only supported in the Python SDK version `12.0.0-beta.1` or later.
+     *
+     * @throws APIException
+     */
+    public function listEventTypes(
+        ?RequestOptions $requestOptions = null
+    ): VisibleExternalEventTypeNames {
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: 'events/v3/events/event-types',
+            options: $requestOptions,
+            convert: VisibleExternalEventTypeNames::class,
         );
     }
 }

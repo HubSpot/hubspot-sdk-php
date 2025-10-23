@@ -10,6 +10,7 @@ use HubspotSDK\Services\Cms\AuditLogsService;
 use HubspotSDK\Services\Cms\BlogsService;
 use HubspotSDK\Services\Cms\DomainsService;
 use HubspotSDK\Services\Cms\HubdbService;
+use HubspotSDK\Services\Cms\MediaBridgeService;
 use HubspotSDK\Services\Cms\PagesService;
 use HubspotSDK\Services\Cms\SiteSearchService;
 use HubspotSDK\Services\Cms\SourceCodeService;
@@ -40,6 +41,11 @@ final class CmsService implements CmsContract
     /**
      * @@api
      */
+    public MediaBridgeService $mediaBridge;
+
+    /**
+     * @@api
+     */
     public PagesService $pages;
 
     /**
@@ -66,6 +72,7 @@ final class CmsService implements CmsContract
         $this->blogs = new BlogsService($client);
         $this->domains = new DomainsService($client);
         $this->hubdb = new HubdbService($client);
+        $this->mediaBridge = new MediaBridgeService($client);
         $this->pages = new PagesService($client);
         $this->siteSearch = new SiteSearchService($client);
         $this->sourceCode = new SourceCodeService($client);

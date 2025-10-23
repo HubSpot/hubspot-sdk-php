@@ -1,0 +1,82 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Events\EventDefinitions;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * Update a specific custom event definition by name.
+ *
+ * @see HubspotSDK\Events\EventDefinitions->update
+ *
+ * @phpstan-type event_definition_update_params = array{
+ *   description?: string, label?: string
+ * }
+ */
+final class EventDefinitionUpdateParams implements BaseModel
+{
+    /** @use SdkModel<event_definition_update_params> */
+    use SdkModel;
+    use SdkParams;
+
+    /**
+     * A description of the event that will be shown as help text in HubSpot.
+     */
+    #[Api(optional: true)]
+    public ?string $description;
+
+    /**
+     * Human readable label for the event. Used in HubSpot UI.
+     */
+    #[Api(optional: true)]
+    public ?string $label;
+
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(
+        ?string $description = null,
+        ?string $label = null
+    ): self {
+        $obj = new self;
+
+        null !== $description && $obj->description = $description;
+        null !== $label && $obj->label = $label;
+
+        return $obj;
+    }
+
+    /**
+     * A description of the event that will be shown as help text in HubSpot.
+     */
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
+
+        return $obj;
+    }
+
+    /**
+     * Human readable label for the event. Used in HubSpot UI.
+     */
+    public function withLabel(string $label): self
+    {
+        $obj = clone $this;
+        $obj->label = $label;
+
+        return $obj;
+    }
+}

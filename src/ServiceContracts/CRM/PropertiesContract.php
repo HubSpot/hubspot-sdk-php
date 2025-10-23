@@ -7,11 +7,11 @@ namespace HubspotSDK\ServiceContracts\CRM;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Properties\CollectionResponseProperty;
 use HubspotSDK\CRM\Properties\CreatedResponseProperty;
-use HubspotSDK\CRM\Properties\OptionInput;
 use HubspotSDK\CRM\Properties\PropertyCreateParams\DataSensitivity;
 use HubspotSDK\CRM\Properties\PropertyCreateParams\FieldType;
 use HubspotSDK\CRM\Properties\PropertyCreateParams\Type;
-use HubspotSDK\CRM\Property;
+use HubspotSDK\OptionInput;
+use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;

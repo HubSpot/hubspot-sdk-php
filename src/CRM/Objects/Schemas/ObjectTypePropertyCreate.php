@@ -11,7 +11,7 @@ use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate\NumberDisplayHint;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate\OptionSortStrategy;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate\TextDisplayHint;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate\Type;
-use HubspotSDK\CRM\Properties\OptionInput;
+use HubspotSDK\OptionInput;
 
 /**
  * Defines a property to create.

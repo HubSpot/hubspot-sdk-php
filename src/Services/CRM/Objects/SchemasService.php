@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\Schemas\AssociationDefinition;
 use HubspotSDK\CRM\Objects\Schemas\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\CRM\Objects\Schemas\ObjectSchema;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinition;
@@ -18,6 +17,7 @@ use HubspotSDK\CRM\Objects\Schemas\SchemaCreateParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaDeleteParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaListParams;
 use HubspotSDK\CRM\Objects\Schemas\SchemaUpdateParams;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\SchemasContract;
 

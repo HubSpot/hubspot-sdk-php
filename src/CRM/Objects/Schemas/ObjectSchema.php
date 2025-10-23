@@ -9,7 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
-use HubspotSDK\CRM\Property;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
+use HubspotSDK\Property;
 
 /**
  * Defines an object schema, including its properties and associations.

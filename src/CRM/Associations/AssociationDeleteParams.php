@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Remove the associations between all pairs of objects identified in the request body.
- *
  * @see HubspotSDK\CRM\Associations->delete
  *
  * @phpstan-type association_delete_params = array{

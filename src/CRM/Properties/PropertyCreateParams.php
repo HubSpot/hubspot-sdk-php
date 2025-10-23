@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Properties\PropertyCreateParams\DataSensitivity;
 use HubspotSDK\CRM\Properties\PropertyCreateParams\FieldType;
 use HubspotSDK\CRM\Properties\PropertyCreateParams\Type;
+use HubspotSDK\OptionInput;
 
 /**
  * Create and return a copy of a new property for the specified object type.
