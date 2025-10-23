@@ -6,9 +6,7 @@ namespace HubspotSDK\Webhooks;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Webhook settings for an app.
@@ -20,12 +18,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   updatedAt?: \DateTimeInterface,
  * }
  */
-final class SettingsResponse implements BaseModel, ResponseConverter
+final class SettingsResponse implements BaseModel
 {
     /** @use SdkModel<settings_response> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).

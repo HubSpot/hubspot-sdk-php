@@ -1,0 +1,122 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Marketing\MarketingEvents;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * Record a subscriber state between multiple HubSpot contacts and a marketing event, using contact email addresses. Note that the contact must already exist in HubSpot; a contact will not be created. The contactProperties field is used only when creating a new contact. These properties will not update existing contacts.
+ *
+ * @see HubspotSDK\Marketing\MarketingEvents->upsertSubscriberStateByEmail
+ *
+ * @phpstan-type marketing_event_upsert_subscriber_state_by_email_params = array{
+ *   externalEventID: string,
+ *   externalAccountID: string,
+ *   inputs: list<MarketingEventEmailSubscriber>,
+ * }
+ */
+final class MarketingEventUpsertSubscriberStateByEmailParams implements BaseModel
+{
+    /** @use SdkModel<marketing_event_upsert_subscriber_state_by_email_params> */
+    use SdkModel;
+    use SdkParams;
+
+    #[Api]
+    public string $externalEventID;
+
+    /**
+     * The accountId that is associated with this marketing event in the external event application.
+     */
+    #[Api]
+    public string $externalAccountID;
+
+    /**
+     * List of marketing event details to create or update.
+     *
+     * @var list<MarketingEventEmailSubscriber> $inputs
+     */
+    #[Api(list: MarketingEventEmailSubscriber::class)]
+    public array $inputs;
+
+    /**
+     * `new MarketingEventUpsertSubscriberStateByEmailParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * MarketingEventUpsertSubscriberStateByEmailParams::with(
+     *   externalEventID: ..., externalAccountID: ..., inputs: ...
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new MarketingEventUpsertSubscriberStateByEmailParams)
+     *   ->withExternalEventID(...)
+     *   ->withExternalAccountID(...)
+     *   ->withInputs(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<MarketingEventEmailSubscriber> $inputs
+     */
+    public static function with(
+        string $externalEventID,
+        string $externalAccountID,
+        array $inputs
+    ): self {
+        $obj = new self;
+
+        $obj->externalEventID = $externalEventID;
+        $obj->externalAccountID = $externalAccountID;
+        $obj->inputs = $inputs;
+
+        return $obj;
+    }
+
+    public function withExternalEventID(string $externalEventID): self
+    {
+        $obj = clone $this;
+        $obj->externalEventID = $externalEventID;
+
+        return $obj;
+    }
+
+    /**
+     * The accountId that is associated with this marketing event in the external event application.
+     */
+    public function withExternalAccountID(string $externalAccountID): self
+    {
+        $obj = clone $this;
+        $obj->externalAccountID = $externalAccountID;
+
+        return $obj;
+    }
+
+    /**
+     * List of marketing event details to create or update.
+     *
+     * @param list<MarketingEventEmailSubscriber> $inputs
+     */
+    public function withInputs(array $inputs): self
+    {
+        $obj = clone $this;
+        $obj->inputs = $inputs;
+
+        return $obj;
+    }
+}

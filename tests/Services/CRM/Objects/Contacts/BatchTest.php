@@ -73,7 +73,7 @@ final class BatchTest extends TestCase
                                 types: [
                                     AssociationSpec::with(
                                         associationCategory: 'HUBSPOT_DEFINED',
-                                        associationTypeID: 279
+                                        associationTypeID: 0
                                     ),
                                 ],
                             ),
@@ -127,13 +127,13 @@ final class BatchTest extends TestCase
     }
 
     #[Test]
-    public function testDelete(): void
+    public function testArchive(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->batch->delete(
+        $result = $this->client->crm->objects->contacts->batch->archive(
             [SimplePublicObjectID::with(id: 'id')]
         );
 
@@ -141,13 +141,13 @@ final class BatchTest extends TestCase
     }
 
     #[Test]
-    public function testDeleteWithOptionalParams(): void
+    public function testArchiveWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->batch->delete(
+        $result = $this->client->crm->objects->contacts->batch->archive(
             [SimplePublicObjectID::with(id: 'id')]
         );
 

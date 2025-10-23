@@ -35,15 +35,9 @@ final class FileUpdateInput implements BaseModel
     #[Api(enum: Access::class, optional: true)]
     public ?string $access;
 
-    /**
-     * Indicates whether the expiration date of the file should be cleared.
-     */
     #[Api(optional: true)]
     public ?bool $clearExpires;
 
-    /**
-     * Specifies the date and time when the file will expire.
-     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $expiresAt;
 
@@ -118,9 +112,6 @@ final class FileUpdateInput implements BaseModel
         return $obj;
     }
 
-    /**
-     * Indicates whether the expiration date of the file should be cleared.
-     */
     public function withClearExpires(bool $clearExpires): self
     {
         $obj = clone $this;
@@ -129,9 +120,6 @@ final class FileUpdateInput implements BaseModel
         return $obj;
     }
 
-    /**
-     * Specifies the date and time when the file will expire.
-     */
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;

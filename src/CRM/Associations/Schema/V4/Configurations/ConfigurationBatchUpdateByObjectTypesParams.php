@@ -1,0 +1,94 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\CRM\Associations\Schema\V4\Configurations;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\CRM\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest;
+
+/**
+ * Batch update user configurations between two object types.
+ *
+ * @see HubspotSDK\CRM\Associations\Schema\V4\Configurations->batchUpdateByObjectTypes
+ *
+ * @phpstan-type configuration_batch_update_by_object_types_params = array{
+ *   fromObjectType: string,
+ *   inputs: list<PublicAssociationDefinitionConfigurationUpdateRequest>,
+ * }
+ */
+final class ConfigurationBatchUpdateByObjectTypesParams implements BaseModel
+{
+    /** @use SdkModel<configuration_batch_update_by_object_types_params> */
+    use SdkModel;
+    use SdkParams;
+
+    #[Api]
+    public string $fromObjectType;
+
+    /** @var list<PublicAssociationDefinitionConfigurationUpdateRequest> $inputs */
+    #[Api(list: PublicAssociationDefinitionConfigurationUpdateRequest::class)]
+    public array $inputs;
+
+    /**
+     * `new ConfigurationBatchUpdateByObjectTypesParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * ConfigurationBatchUpdateByObjectTypesParams::with(
+     *   fromObjectType: ..., inputs: ...
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new ConfigurationBatchUpdateByObjectTypesParams)
+     *   ->withFromObjectType(...)
+     *   ->withInputs(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest> $inputs
+     */
+    public static function with(string $fromObjectType, array $inputs): self
+    {
+        $obj = new self;
+
+        $obj->fromObjectType = $fromObjectType;
+        $obj->inputs = $inputs;
+
+        return $obj;
+    }
+
+    public function withFromObjectType(string $fromObjectType): self
+    {
+        $obj = clone $this;
+        $obj->fromObjectType = $fromObjectType;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest> $inputs
+     */
+    public function withInputs(array $inputs): self
+    {
+        $obj = clone $this;
+        $obj->inputs = $inputs;
+
+        return $obj;
+    }
+}

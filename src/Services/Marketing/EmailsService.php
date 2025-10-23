@@ -20,7 +20,6 @@ use HubspotSDK\Marketing\Emails\EmailGetHistogramParams;
 use HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
 use HubspotSDK\Marketing\Emails\EmailGetRevisionByIDParams;
 use HubspotSDK\Marketing\Emails\EmailGetRevisionsParams;
-use HubspotSDK\Marketing\Emails\EmailListFullParams;
 use HubspotSDK\Marketing\Emails\EmailListParams;
 use HubspotSDK\Marketing\Emails\EmailListParams\Type;
 use HubspotSDK\Marketing\Emails\EmailReadParams;
@@ -461,8 +460,8 @@ final class EmailsService implements EmailsContract
      *
      * Create a variation of a marketing email for an A/B test. The new variation will be created as a draft. If an active variation already exists, a new one won't be created.
      *
-     * @param string $contentID ID of the email to test
-     * @param string $variationName name of the variation to be created
+     * @param string $contentID ID of the object to test
+     * @param string $variationName name of A/B test variation
      *
      * @throws APIException
      */
@@ -751,61 +750,6 @@ final class EmailsService implements EmailsContract
             options: $options,
             convert: VersionPublicEmail::class,
             page: Page::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Use this endpoint to get aggregated statistics of emails sent in a specified time span. It also returns the list of emails that were sent during the time span.
-     *
-     * @param list<int> $emailIDs Filter by email IDs. Only include statistics of emails with these IDs.
-     * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
-     * @param string $property Specifies which email properties should be returned. All properties will be returned by default.
-     * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
-     *
-     * @throws APIException
-     */
-    public function listFull(
-        $emailIDs = omit,
-        $endTimestamp = omit,
-        $property = omit,
-        $startTimestamp = omit,
-        ?RequestOptions $requestOptions = null,
-    ): AggregateEmailStatistics {
-        $params = [
-            'emailIDs' => $emailIDs,
-            'endTimestamp' => $endTimestamp,
-            'property' => $property,
-            'startTimestamp' => $startTimestamp,
-        ];
-
-        return $this->listFullRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listFullRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): AggregateEmailStatistics {
-        [$parsed, $options] = EmailListFullParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'get',
-            path: 'marketing/v3/emails/statistics/list',
-            query: $parsed,
-            options: $options,
-            convert: AggregateEmailStatistics::class,
         );
     }
 

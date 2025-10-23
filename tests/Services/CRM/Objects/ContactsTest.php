@@ -128,6 +128,46 @@ final class ContactsTest extends TestCase
     }
 
     #[Test]
+    public function testGdprDelete(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->objects->contacts->gdprDelete(
+            objectID: 'objectId'
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testGdprDeleteWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->objects->contacts->gdprDelete(
+            objectID: 'objectId'
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testGet(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->objects->contacts->get('contactId');
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
     public function testMerge(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -153,46 +193,6 @@ final class ContactsTest extends TestCase
             objectIDToMerge: 'objectIdToMerge',
             primaryObjectID: 'primaryObjectId'
         );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testPurge(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contacts->purge(
-            objectID: 'objectId'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testPurgeWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contacts->purge(
-            objectID: 'objectId'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testRead(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contacts->read('contactId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -30,37 +30,49 @@ final class OAuthTest extends TestCase
     }
 
     #[Test]
-    public function testCreate(): void
+    public function testCreateAccessToken(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->auth->oauth->create();
+        $result = $this->client->auth->oauth->createAccessToken();
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testDelete(): void
+    public function testDeleteRefreshToken(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->auth->oauth->delete('token');
+        $result = $this->client->auth->oauth->deleteRefreshToken('token');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testGet(): void
+    public function testGetAccessToken(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->auth->oauth->get('token');
+        $result = $this->client->auth->oauth->getAccessToken('token');
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testGetRefreshToken(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->auth->oauth->getRefreshToken('token');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

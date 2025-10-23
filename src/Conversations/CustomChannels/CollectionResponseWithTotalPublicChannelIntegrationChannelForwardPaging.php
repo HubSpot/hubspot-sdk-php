@@ -6,7 +6,9 @@ namespace HubspotSDK\Conversations\CustomChannels;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -16,12 +18,14 @@ use HubspotSDK\ForwardPaging;
  *   paging?: ForwardPaging,
  * }
  */
-final class CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging implements BaseModel
+final class CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging implements BaseModel, ResponseConverter
 {
     /**
      * @use SdkModel<collection_response_with_total_public_channel_integration_channel_forward_paging>
      */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<PublicChannelIntegrationChannel> $results */
     #[Api(list: PublicChannelIntegrationChannel::class)]

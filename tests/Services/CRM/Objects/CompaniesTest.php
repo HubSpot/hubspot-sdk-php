@@ -3,9 +3,6 @@
 namespace Tests\Services\CRM\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -68,11 +65,15 @@ final class CompaniesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->companies->update(
-            [
-                SimplePublicObjectBatchInput::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                ),
+            'companyId',
+            properties: [
+                'property_checkbox' => 'false',
+                'property_date' => '1572480000000',
+                'property_dropdown' => 'choice_b',
+                'property_multiple_checkboxes' => 'chocolate;strawberry',
+                'property_number' => '17',
+                'property_radio' => 'option_1',
+                'property_string' => 'value',
             ],
         );
 
@@ -87,13 +88,15 @@ final class CompaniesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->companies->update(
-            [
-                SimplePublicObjectBatchInput::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                )
-                    ->withIDProperty('my_unique_property_name')
-                    ->withObjectWriteTraceID('objectWriteTraceId'),
+            'companyId',
+            properties: [
+                'property_checkbox' => 'false',
+                'property_date' => '1572480000000',
+                'property_dropdown' => 'choice_b',
+                'property_multiple_checkboxes' => 'chocolate;strawberry',
+                'property_number' => '17',
+                'property_radio' => 'option_1',
+                'property_string' => 'value',
             ],
         );
 
@@ -119,23 +122,19 @@ final class CompaniesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->delete(
-            [SimplePublicObjectID::with(id: 'id')]
-        );
+        $result = $this->client->crm->objects->companies->delete('companyId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testDeleteWithOptionalParams(): void
+    public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->delete(
-            [SimplePublicObjectID::with(id: 'id')]
-        );
+        $result = $this->client->crm->objects->companies->get('companyId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -171,18 +170,6 @@ final class CompaniesTest extends TestCase
     }
 
     #[Test]
-    public function testRead(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->companies->read('companyId');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testSearch(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -190,46 +177,6 @@ final class CompaniesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->companies->search();
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testUpsert(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->companies->upsert(
-            [
-                SimplePublicObjectBatchInputUpsert::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                ),
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testUpsertWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->companies->upsert(
-            [
-                SimplePublicObjectBatchInputUpsert::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                )
-                    ->withIDProperty('idProperty')
-                    ->withObjectWriteTraceID('objectWriteTraceId'),
-            ],
-        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

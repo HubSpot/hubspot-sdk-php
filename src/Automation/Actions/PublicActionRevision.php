@@ -6,9 +6,7 @@ namespace HubspotSDK\Automation\Actions;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type public_action_revision = array{
@@ -18,12 +16,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   revisionID: string,
  * }
  */
-final class PublicActionRevision implements BaseModel, ResponseConverter
+final class PublicActionRevision implements BaseModel
 {
     /** @use SdkModel<public_action_revision> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

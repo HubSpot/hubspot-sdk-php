@@ -80,9 +80,8 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->update(
-            'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            'pipelineId',
+            objectType: 'objectType'
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -96,9 +95,8 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->update(
-            'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            'pipelineId',
+            objectType: 'objectType'
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -124,9 +122,8 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->delete(
-            'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            'pipelineId',
+            objectType: 'objectType'
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -140,10 +137,33 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->delete(
-            'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            'pipelineId',
+            objectType: 'objectType'
         );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testGet(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->get('pipelineId', 'objectType');
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testGetWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->get('pipelineId', 'objectType');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -179,38 +199,6 @@ final class PipelinesTest extends TestCase
     }
 
     #[Test]
-    public function testRead(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->pipelines->read(
-            'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testReadWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->pipelines->read(
-            'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
     public function testReplace(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -218,11 +206,14 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->replace(
-            'stageId',
+            'pipelineId',
             objectType: 'objectType',
-            pipelineID: 'pipelineId',
-            displayOrder: 1,
-            label: 'Done',
+            displayOrder: 0,
+            label: 'My replaced pipeline',
+            stages: [
+                PipelineStageInput::with(displayOrder: 0, label: 'In Progress'),
+                PipelineStageInput::with(displayOrder: 1, label: 'Done'),
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -236,11 +227,16 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->replace(
-            'stageId',
+            'pipelineId',
             objectType: 'objectType',
-            pipelineID: 'pipelineId',
-            displayOrder: 1,
-            label: 'Done',
+            displayOrder: 0,
+            label: 'My replaced pipeline',
+            stages: [
+                PipelineStageInput::with(displayOrder: 0, label: 'In Progress')
+                    ->withMetadata(['ticketState' => 'OPEN']),
+                PipelineStageInput::with(displayOrder: 1, label: 'Done')
+                    ->withMetadata(['ticketState' => 'CLOSED']),
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

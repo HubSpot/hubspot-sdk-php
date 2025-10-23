@@ -6,9 +6,7 @@ namespace HubspotSDK\Webhooks;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * List of event subscriptions for your app.
@@ -17,12 +15,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   results: list<SubscriptionResponse>
  * }
  */
-final class SubscriptionListResponse implements BaseModel, ResponseConverter
+final class SubscriptionListResponse implements BaseModel
 {
     /** @use SdkModel<subscription_list_response> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * List of event subscriptions for your app.

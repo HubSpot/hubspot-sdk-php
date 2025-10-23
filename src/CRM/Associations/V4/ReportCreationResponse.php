@@ -6,21 +6,17 @@ namespace HubspotSDK\CRM\Associations\V4;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type report_creation_response = array{
  *   enqueueTime: DateTime, userEmail: string, userID: int
  * }
  */
-final class ReportCreationResponse implements BaseModel, ResponseConverter
+final class ReportCreationResponse implements BaseModel
 {
     /** @use SdkModel<report_creation_response> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public DateTime $enqueueTime;

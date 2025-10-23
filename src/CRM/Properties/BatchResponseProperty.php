@@ -6,9 +6,7 @@ namespace HubspotSDK\CRM\Properties;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\CRM\Properties\BatchResponseProperty\Status;
 use HubspotSDK\CRM\Property;
 use HubspotSDK\StandardError;
@@ -25,12 +23,10 @@ use HubspotSDK\StandardError;
  *   requestedAt?: \DateTimeInterface,
  * }
  */
-final class BatchResponseProperty implements BaseModel, ResponseConverter
+final class BatchResponseProperty implements BaseModel
 {
     /** @use SdkModel<batch_response_property> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public \DateTimeInterface $completedAt;

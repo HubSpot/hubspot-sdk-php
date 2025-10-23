@@ -4,15 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\CRM\Associations;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Associations\V4\BatchResponseVoid;
-use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
-use HubspotSDK\CRM\Associations\V4\ReportCreationResponse;
+use HubspotSDK\CRM\Associations\V4\AssociationSpec1;
 use HubspotSDK\CRM\BatchResponsePublicDefaultAssociation;
+use HubspotSDK\CRM\CollectionResponseMultiAssociatedObjectWithLabel;
 use HubspotSDK\CRM\CreatedResponseLabelsBetweenObjectPair;
-use HubspotSDK\CRM\MultiAssociatedObjectWithLabel;
-use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -22,14 +18,106 @@ interface V4Contract
     /**
      * @api
      *
-     * @param string $objectType
-     * @param string $objectID
+     * @param string $fromObjectType
+     * @param string $fromObjectID
      * @param string $toObjectType
-     * @param list<AssociationSpec> $body
      *
      * @throws APIException
      */
-    public function create(
+    public function createDefaultAssociation(
+        string $toObjectID,
+        $fromObjectType,
+        $fromObjectID,
+        $toObjectType,
+        ?RequestOptions $requestOptions = null,
+    ): BatchResponsePublicDefaultAssociation;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function createDefaultAssociationRaw(
+        string $toObjectID,
+        array $params,
+        ?RequestOptions $requestOptions = null,
+    ): BatchResponsePublicDefaultAssociation;
+
+    /**
+     * @api
+     *
+     * @param string $objectType
+     * @param string $objectID
+     * @param string $toObjectType
+     *
+     * @throws APIException
+     */
+    public function deleteAssociation(
+        string $toObjectID,
+        $objectType,
+        $objectID,
+        $toObjectType,
+        ?RequestOptions $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function deleteAssociationRaw(
+        string $toObjectID,
+        array $params,
+        ?RequestOptions $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param string $objectType
+     * @param string $objectID
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
+     *
+     * @throws APIException
+     */
+    public function listAssociationsByType(
+        string $toObjectType,
+        $objectType,
+        $objectID,
+        $after = omit,
+        $limit = omit,
+        ?RequestOptions $requestOptions = null,
+    ): CollectionResponseMultiAssociatedObjectWithLabel;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function listAssociationsByTypeRaw(
+        string $toObjectType,
+        array $params,
+        ?RequestOptions $requestOptions = null,
+    ): CollectionResponseMultiAssociatedObjectWithLabel;
+
+    /**
+     * @api
+     *
+     * @param string $objectType
+     * @param string $objectID
+     * @param string $toObjectType
+     * @param list<AssociationSpec1> $body
+     *
+     * @throws APIException
+     */
+    public function updateAssociationLabels(
         string $toObjectID,
         $objectType,
         $objectID,
@@ -45,143 +133,9 @@ interface V4Contract
      *
      * @throws APIException
      */
-    public function createRaw(
+    public function updateAssociationLabelsRaw(
         string $toObjectID,
         array $params,
         ?RequestOptions $requestOptions = null,
     ): CreatedResponseLabelsBetweenObjectPair;
-
-    /**
-     * @api
-     *
-     * @param string $objectType
-     * @param string $objectID
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit the maximum number of results to display per page
-     *
-     * @return Page<MultiAssociatedObjectWithLabel>
-     *
-     * @throws APIException
-     */
-    public function list(
-        string $toObjectType,
-        $objectType,
-        $objectID,
-        $after = omit,
-        $limit = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<MultiAssociatedObjectWithLabel>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param string $objectType
-     * @param string $objectID
-     * @param string $toObjectType
-     *
-     * @throws APIException
-     */
-    public function delete(
-        string $toObjectID,
-        $objectType,
-        $objectID,
-        $toObjectType,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $toObjectID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $fromObjectType
-     * @param list<PublicAssociationMultiPost> $inputs
-     *
-     * @throws APIException
-     */
-    public function archiveLabels(
-        string $toObjectType,
-        $fromObjectType,
-        $inputs,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseVoid;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function archiveLabelsRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseVoid;
-
-    /**
-     * @api
-     *
-     * @param string $fromObjectType
-     * @param string $fromObjectID
-     * @param string $toObjectType
-     *
-     * @throws APIException
-     */
-    public function createDefault(
-        string $toObjectID,
-        $fromObjectType,
-        $fromObjectID,
-        $toObjectType,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponsePublicDefaultAssociation;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createDefaultRaw(
-        string $toObjectID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponsePublicDefaultAssociation;
-
-    /**
-     * @api
-     *
-     * @throws APIException
-     */
-    public function request(
-        int $userID,
-        ?RequestOptions $requestOptions = null
-    ): ReportCreationResponse;
 }

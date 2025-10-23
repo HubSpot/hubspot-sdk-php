@@ -7,21 +7,17 @@ namespace HubspotSDK\Automation\Actions;
 use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier\FunctionType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type public_action_function_identifier = array{
  *   functionType: value-of<FunctionType>, id?: string
  * }
  */
-final class PublicActionFunctionIdentifier implements BaseModel, ResponseConverter
+final class PublicActionFunctionIdentifier implements BaseModel
 {
     /** @use SdkModel<public_action_function_identifier> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var value-of<FunctionType> $functionType */
     #[Api(enum: FunctionType::class)]

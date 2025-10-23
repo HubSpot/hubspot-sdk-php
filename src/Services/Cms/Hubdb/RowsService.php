@@ -12,16 +12,17 @@ use HubspotSDK\Cms\Hubdb\Rows\RowCreateParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowDeleteDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowGetDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowGetParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowListDraftsParams;
+use HubspotSDK\Cms\Hubdb\Rows\RowListDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowListParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
 use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\RowsContract;
-use HubspotSDK\Services\Cms\Hubdb\Rows\DraftService;
+use HubspotSDK\Services\Cms\Hubdb\Rows\BatchService;
 
 use const HubspotSDK\Core\OMIT as omit;
 
@@ -30,14 +31,14 @@ final class RowsService implements RowsContract
     /**
      * @@api
      */
-    public DraftService $draft;
+    public BatchService $batch;
 
     /**
      * @internal
      */
     public function __construct(private Client $client)
     {
-        $this->draft = new DraftService($client);
+        $this->batch = new BatchService($client);
     }
 
     /**
@@ -114,6 +115,8 @@ final class RowsService implements RowsContract
      * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
      * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
      *
+     * @return Page<mixed>
+     *
      * @throws APIException
      */
     public function list(
@@ -125,7 +128,7 @@ final class RowsService implements RowsContract
         $properties = omit,
         $sort = omit,
         ?RequestOptions $requestOptions = null,
-    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3 {
+    ): Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -143,13 +146,15 @@ final class RowsService implements RowsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<mixed>
+     *
      * @throws APIException
      */
     public function listRaw(
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3 {
+    ): Page {
         [$parsed, $options] = RowListParams::parseRequest($params, $requestOptions);
 
         // @phpstan-ignore-next-line;
@@ -158,7 +163,8 @@ final class RowsService implements RowsContract
             path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
             query: $parsed,
             options: $options,
-            convert: UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3::class,
+            convert: 'mixed',
+            page: Page::class,
         );
     }
 
@@ -377,7 +383,7 @@ final class RowsService implements RowsContract
      *
      * @throws APIException
      */
-    public function listDrafts(
+    public function listDraft(
         string $tableIDOrName,
         $after = omit,
         $archived = omit,
@@ -396,7 +402,7 @@ final class RowsService implements RowsContract
             'sort' => $sort,
         ];
 
-        return $this->listDraftsRaw($tableIDOrName, $params, $requestOptions);
+        return $this->listDraftRaw($tableIDOrName, $params, $requestOptions);
     }
 
     /**
@@ -406,12 +412,12 @@ final class RowsService implements RowsContract
      *
      * @throws APIException
      */
-    public function listDraftsRaw(
+    public function listDraftRaw(
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
     ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3 {
-        [$parsed, $options] = RowListDraftsParams::parseRequest(
+        [$parsed, $options] = RowListDraftParams::parseRequest(
             $params,
             $requestOptions
         );

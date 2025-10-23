@@ -58,11 +58,13 @@ use HubspotSDK\Marketing\Emails\PublicEmail\Type;
  *   rssData?: PublicRssEmailDetails,
  *   stats?: EmailStatisticsData,
  *   subscriptionDetails?: PublicEmailSubscriptionDetails,
+ *   teamsWithAccess?: list<string>,
  *   testing?: PublicEmailTestingDetails,
  *   type?: value-of<Type>,
  *   unpublishedAt?: \DateTimeInterface,
  *   updatedAt?: \DateTimeInterface,
  *   updatedByID?: string,
+ *   usersWithAccess?: list<string>,
  *   webversion?: PublicWebversionDetails,
  *   workflowNames?: list<string>,
  * }
@@ -284,6 +286,10 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?PublicEmailSubscriptionDetails $subscriptionDetails;
 
+    /** @var list<string>|null $teamsWithAccess */
+    #[Api(list: 'string', optional: true)]
+    public ?array $teamsWithAccess;
+
     /**
      * AB testing related data. This property is only returned for AB type emails.
      */
@@ -312,6 +318,10 @@ final class PublicEmail implements BaseModel, ResponseConverter
      */
     #[Api('updatedById', optional: true)]
     public ?string $updatedByID;
+
+    /** @var list<string>|null $usersWithAccess */
+    #[Api(list: 'string', optional: true)]
+    public ?array $usersWithAccess;
 
     #[Api(optional: true)]
     public ?PublicWebversionDetails $webversion;
@@ -371,7 +381,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
      * @param list<string> $allEmailCampaignIDs
      * @param EmailTemplateMode|value-of<EmailTemplateMode> $emailTemplateMode
      * @param Language|value-of<Language> $language
+     * @param list<string> $teamsWithAccess
      * @param Type|value-of<Type> $type
+     * @param list<string> $usersWithAccess
      * @param list<string> $workflowNames
      */
     public static function with(
@@ -415,11 +427,13 @@ final class PublicEmail implements BaseModel, ResponseConverter
         ?PublicRssEmailDetails $rssData = null,
         ?EmailStatisticsData $stats = null,
         ?PublicEmailSubscriptionDetails $subscriptionDetails = null,
+        ?array $teamsWithAccess = null,
         ?PublicEmailTestingDetails $testing = null,
         Type|string|null $type = null,
         ?\DateTimeInterface $unpublishedAt = null,
         ?\DateTimeInterface $updatedAt = null,
         ?string $updatedByID = null,
+        ?array $usersWithAccess = null,
         ?PublicWebversionDetails $webversion = null,
         ?array $workflowNames = null,
     ): self {
@@ -466,11 +480,13 @@ final class PublicEmail implements BaseModel, ResponseConverter
         null !== $rssData && $obj->rssData = $rssData;
         null !== $stats && $obj->stats = $stats;
         null !== $subscriptionDetails && $obj->subscriptionDetails = $subscriptionDetails;
+        null !== $teamsWithAccess && $obj->teamsWithAccess = $teamsWithAccess;
         null !== $testing && $obj->testing = $testing;
         null !== $type && $obj['type'] = $type;
         null !== $unpublishedAt && $obj->unpublishedAt = $unpublishedAt;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
         null !== $updatedByID && $obj->updatedByID = $updatedByID;
+        null !== $usersWithAccess && $obj->usersWithAccess = $usersWithAccess;
         null !== $webversion && $obj->webversion = $webversion;
         null !== $workflowNames && $obj->workflowNames = $workflowNames;
 
@@ -895,6 +911,17 @@ final class PublicEmail implements BaseModel, ResponseConverter
     }
 
     /**
+     * @param list<string> $teamsWithAccess
+     */
+    public function withTeamsWithAccess(array $teamsWithAccess): self
+    {
+        $obj = clone $this;
+        $obj->teamsWithAccess = $teamsWithAccess;
+
+        return $obj;
+    }
+
+    /**
      * AB testing related data. This property is only returned for AB type emails.
      */
     public function withTesting(PublicEmailTestingDetails $testing): self
@@ -944,6 +971,17 @@ final class PublicEmail implements BaseModel, ResponseConverter
     {
         $obj = clone $this;
         $obj->updatedByID = $updatedByID;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<string> $usersWithAccess
+     */
+    public function withUsersWithAccess(array $usersWithAccess): self
+    {
+        $obj = clone $this;
+        $obj->usersWithAccess = $usersWithAccess;
 
         return $obj;
     }

@@ -7,6 +7,7 @@ namespace HubspotSDK\CRM\Objects;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\CRM\Filter;
 
 /**
  * @phpstan-type filter_group = array{filters: list<Filter>}

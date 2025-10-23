@@ -10,16 +10,17 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Replace all the properties of an existing pipeline stage with the values provided. The updated stage will be returned in the response.
+ * Replace all the properties of an existing pipeline with the values provided. This will overwrite any existing pipeline stages. The updated pipeline will be returned in the response.
  *
  * @see HubspotSDK\CRM\Pipelines->replace
  *
  * @phpstan-type pipeline_replace_params = array{
  *   objectType: string,
- *   pipelineID: string,
  *   displayOrder: int,
  *   label: string,
- *   metadata?: array<string, string>,
+ *   stages: list<PipelineStageInput>,
+ *   validateDealStageUsagesBeforeDelete?: bool,
+ *   validateReferencesBeforeDelete?: bool,
  * }
  */
 final class PipelineReplaceParams implements BaseModel
@@ -31,32 +32,31 @@ final class PipelineReplaceParams implements BaseModel
     #[Api]
     public string $objectType;
 
-    #[Api]
-    public string $pipelineID;
-
     /**
-     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
     #[Api]
     public int $displayOrder;
 
     /**
-     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     * A unique label used to organize pipelines in HubSpot's UI.
      */
     #[Api]
     public string $label;
 
     /**
-     * A JSON object containing properties that are not present on all object pipelines.
+     * Pipeline stage inputs used to create the new or replacement pipeline.
      *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @var array<string, string>|null $metadata
+     * @var list<PipelineStageInput> $stages
      */
-    #[Api(map: 'string', optional: true)]
-    public ?array $metadata;
+    #[Api(list: PipelineStageInput::class)]
+    public array $stages;
+
+    #[Api(optional: true)]
+    public ?bool $validateDealStageUsagesBeforeDelete;
+
+    #[Api(optional: true)]
+    public ?bool $validateReferencesBeforeDelete;
 
     /**
      * `new PipelineReplaceParams()` is missing required properties by the API.
@@ -64,7 +64,7 @@ final class PipelineReplaceParams implements BaseModel
      * To enforce required parameters use
      * ```
      * PipelineReplaceParams::with(
-     *   objectType: ..., pipelineID: ..., displayOrder: ..., label: ...
+     *   objectType: ..., displayOrder: ..., label: ..., stages: ...
      * )
      * ```
      *
@@ -73,9 +73,9 @@ final class PipelineReplaceParams implements BaseModel
      * ```
      * (new PipelineReplaceParams)
      *   ->withObjectType(...)
-     *   ->withPipelineID(...)
      *   ->withDisplayOrder(...)
      *   ->withLabel(...)
+     *   ->withStages(...)
      * ```
      */
     public function __construct()
@@ -88,23 +88,25 @@ final class PipelineReplaceParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $metadata
+     * @param list<PipelineStageInput> $stages
      */
     public static function with(
         string $objectType,
-        string $pipelineID,
         int $displayOrder,
         string $label,
-        ?array $metadata = null,
+        array $stages,
+        ?bool $validateDealStageUsagesBeforeDelete = null,
+        ?bool $validateReferencesBeforeDelete = null,
     ): self {
         $obj = new self;
 
         $obj->objectType = $objectType;
-        $obj->pipelineID = $pipelineID;
         $obj->displayOrder = $displayOrder;
         $obj->label = $label;
+        $obj->stages = $stages;
 
-        null !== $metadata && $obj->metadata = $metadata;
+        null !== $validateDealStageUsagesBeforeDelete && $obj->validateDealStageUsagesBeforeDelete = $validateDealStageUsagesBeforeDelete;
+        null !== $validateReferencesBeforeDelete && $obj->validateReferencesBeforeDelete = $validateReferencesBeforeDelete;
 
         return $obj;
     }
@@ -117,16 +119,8 @@ final class PipelineReplaceParams implements BaseModel
         return $obj;
     }
 
-    public function withPipelineID(string $pipelineID): self
-    {
-        $obj = clone $this;
-        $obj->pipelineID = $pipelineID;
-
-        return $obj;
-    }
-
     /**
-     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
     public function withDisplayOrder(int $displayOrder): self
     {
@@ -137,7 +131,7 @@ final class PipelineReplaceParams implements BaseModel
     }
 
     /**
-     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     * A unique label used to organize pipelines in HubSpot's UI.
      */
     public function withLabel(string $label): self
     {
@@ -148,18 +142,32 @@ final class PipelineReplaceParams implements BaseModel
     }
 
     /**
-     * A JSON object containing properties that are not present on all object pipelines.
+     * Pipeline stage inputs used to create the new or replacement pipeline.
      *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @param array<string, string> $metadata
+     * @param list<PipelineStageInput> $stages
      */
-    public function withMetadata(array $metadata): self
+    public function withStages(array $stages): self
     {
         $obj = clone $this;
-        $obj->metadata = $metadata;
+        $obj->stages = $stages;
+
+        return $obj;
+    }
+
+    public function withValidateDealStageUsagesBeforeDelete(
+        bool $validateDealStageUsagesBeforeDelete
+    ): self {
+        $obj = clone $this;
+        $obj->validateDealStageUsagesBeforeDelete = $validateDealStageUsagesBeforeDelete;
+
+        return $obj;
+    }
+
+    public function withValidateReferencesBeforeDelete(
+        bool $validateReferencesBeforeDelete
+    ): self {
+        $obj = clone $this;
+        $obj->validateReferencesBeforeDelete = $validateReferencesBeforeDelete;
 
         return $obj;
     }

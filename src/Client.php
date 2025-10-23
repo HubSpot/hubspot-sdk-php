@@ -10,9 +10,11 @@ use HubspotSDK\Core\BaseClient;
 use HubspotSDK\Services\AccountService;
 use HubspotSDK\Services\AuthService;
 use HubspotSDK\Services\AutomationService;
+use HubspotSDK\Services\BusinessUnitsService;
 use HubspotSDK\Services\CmsService;
 use HubspotSDK\Services\ConversationsService;
 use HubspotSDK\Services\CRMService;
+use HubspotSDK\Services\EventsService;
 use HubspotSDK\Services\FilesService;
 use HubspotSDK\Services\MarketingService;
 use HubspotSDK\Services\SchedulerService;
@@ -39,6 +41,11 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public BusinessUnitsService $businessUnits;
+
+    /**
+     * @api
+     */
     public CmsService $cms;
 
     /**
@@ -50,6 +57,11 @@ class Client extends BaseClient
      * @api
      */
     public CRMService $crm;
+
+    /**
+     * @api
+     */
+    public EventsService $events;
 
     /**
      * @api
@@ -101,9 +113,11 @@ class Client extends BaseClient
         $this->account = new AccountService($this);
         $this->auth = new AuthService($this);
         $this->automation = new AutomationService($this);
+        $this->businessUnits = new BusinessUnitsService($this);
         $this->cms = new CmsService($this);
         $this->conversations = new ConversationsService($this);
         $this->crm = new CRMService($this);
+        $this->events = new EventsService($this);
         $this->files = new FilesService($this);
         $this->marketing = new MarketingService($this);
         $this->scheduler = new SchedulerService($this);

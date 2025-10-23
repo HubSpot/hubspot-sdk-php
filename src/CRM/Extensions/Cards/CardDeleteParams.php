@@ -1,0 +1,68 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\CRM\Extensions\Cards;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.
+ *
+ * @see HubspotSDK\CRM\Extensions\Cards->delete
+ *
+ * @phpstan-type card_delete_params = array{appID: int}
+ */
+final class CardDeleteParams implements BaseModel
+{
+    /** @use SdkModel<card_delete_params> */
+    use SdkModel;
+    use SdkParams;
+
+    #[Api]
+    public int $appID;
+
+    /**
+     * `new CardDeleteParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * CardDeleteParams::with(appID: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new CardDeleteParams)->withAppID(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(int $appID): self
+    {
+        $obj = new self;
+
+        $obj->appID = $appID;
+
+        return $obj;
+    }
+
+    public function withAppID(int $appID): self
+    {
+        $obj = clone $this;
+        $obj->appID = $appID;
+
+        return $obj;
+    }
+}

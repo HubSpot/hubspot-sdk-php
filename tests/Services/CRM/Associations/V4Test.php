@@ -2,11 +2,8 @@
 
 namespace Tests\Services\CRM\Associations;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\CRM\Associations\V4\AssociationSpec1;
-use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
-use HubspotSDK\PublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -34,179 +31,13 @@ final class V4Test extends TestCase
     }
 
     #[Test]
-    public function testCreate(): void
+    public function testCreateDefaultAssociation(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->associations->v4->create(
-            'toObjectId',
-            objectType: 'objectType',
-            objectID: 'objectId',
-            toObjectType: 'toObjectType',
-            body: [
-                AssociationSpec::with(
-                    associationCategory: 'HUBSPOT_DEFINED',
-                    associationTypeID: 279
-                ),
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testCreateWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->associations->v4->create(
-            'toObjectId',
-            objectType: 'objectType',
-            objectID: 'objectId',
-            toObjectType: 'toObjectType',
-            body: [
-                AssociationSpec::with(
-                    associationCategory: 'HUBSPOT_DEFINED',
-                    associationTypeID: 279
-                ),
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testList(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->associations->v4->list(
-            'toObjectType',
-            objectType: 'objectType',
-            objectID: 'objectId'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testListWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->associations->v4->list(
-            'toObjectType',
-            objectType: 'objectType',
-            objectID: 'objectId'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testDelete(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->associations->v4->delete(
-            'toObjectId',
-            objectType: 'objectType',
-            objectID: 'objectId',
-            toObjectType: 'toObjectType',
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testDeleteWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->associations->v4->delete(
-            'toObjectId',
-            objectType: 'objectType',
-            objectID: 'objectId',
-            toObjectType: 'toObjectType',
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testArchiveLabels(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->associations->v4->archiveLabels(
-            'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociationMultiPost::with(
-                    from: PublicObjectID::with(id: '37295'),
-                    to: PublicObjectID::with(id: '37295'),
-                    types: [
-                        AssociationSpec1::with(
-                            associationCategory: 'HUBSPOT_DEFINED',
-                            associationTypeID: 0
-                        ),
-                    ],
-                ),
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testArchiveLabelsWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->associations->v4->archiveLabels(
-            'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociationMultiPost::with(
-                    from: PublicObjectID::with(id: '37295'),
-                    to: PublicObjectID::with(id: '37295'),
-                    types: [
-                        AssociationSpec1::with(
-                            associationCategory: 'HUBSPOT_DEFINED',
-                            associationTypeID: 0
-                        ),
-                    ],
-                ),
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testCreateDefault(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->associations->v4->createDefault(
+        $result = $this->client->crm->associations->v4->createDefaultAssociation(
             'toObjectId',
             fromObjectType: 'fromObjectType',
             fromObjectID: 'fromObjectId',
@@ -217,13 +48,13 @@ final class V4Test extends TestCase
     }
 
     #[Test]
-    public function testCreateDefaultWithOptionalParams(): void
+    public function testCreateDefaultAssociationWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->associations->v4->createDefault(
+        $result = $this->client->crm->associations->v4->createDefaultAssociation(
             'toObjectId',
             fromObjectType: 'fromObjectType',
             fromObjectID: 'fromObjectId',
@@ -234,13 +65,113 @@ final class V4Test extends TestCase
     }
 
     #[Test]
-    public function testRequest(): void
+    public function testDeleteAssociation(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->associations->v4->request(0);
+        $result = $this->client->crm->associations->v4->deleteAssociation(
+            'toObjectId',
+            objectType: 'objectType',
+            objectID: 'objectId',
+            toObjectType: 'toObjectType',
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testDeleteAssociationWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->associations->v4->deleteAssociation(
+            'toObjectId',
+            objectType: 'objectType',
+            objectID: 'objectId',
+            toObjectType: 'toObjectType',
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testListAssociationsByType(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->associations->v4->listAssociationsByType(
+            'toObjectType',
+            objectType: 'objectType',
+            objectID: 'objectId'
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testListAssociationsByTypeWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->associations->v4->listAssociationsByType(
+            'toObjectType',
+            objectType: 'objectType',
+            objectID: 'objectId'
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testUpdateAssociationLabels(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->associations->v4->updateAssociationLabels(
+            'toObjectId',
+            objectType: 'objectType',
+            objectID: 'objectId',
+            toObjectType: 'toObjectType',
+            body: [
+                AssociationSpec1::with(
+                    associationCategory: 'HUBSPOT_DEFINED',
+                    associationTypeID: 279
+                ),
+            ],
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testUpdateAssociationLabelsWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->associations->v4->updateAssociationLabels(
+            'toObjectId',
+            objectType: 'objectType',
+            objectID: 'objectId',
+            toObjectType: 'toObjectType',
+            body: [
+                AssociationSpec1::with(
+                    associationCategory: 'HUBSPOT_DEFINED',
+                    associationTypeID: 279
+                ),
+            ],
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

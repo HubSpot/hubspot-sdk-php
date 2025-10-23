@@ -6,36 +6,27 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\Deals\DealCreateParams;
+use HubspotSDK\CRM\Objects\Deals\DealGetParams;
 use HubspotSDK\CRM\Objects\Deals\DealListParams;
 use HubspotSDK\CRM\Objects\Deals\DealMergeParams;
-use HubspotSDK\CRM\Objects\Deals\DealReadParams;
 use HubspotSDK\CRM\Objects\Deals\DealSearchParams;
 use HubspotSDK\CRM\Objects\Deals\DealUpdateParams;
-use HubspotSDK\CRM\Objects\Deals\DealUpsertParams;
 use HubspotSDK\CRM\Objects\FilterGroup;
 use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 use HubspotSDK\CRM\Objects\SimplePublicObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
 use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\DealsContract;
-use HubspotSDK\Services\CRM\Objects\Deals\AssociationsService;
 use HubspotSDK\Services\CRM\Objects\Deals\BatchService;
 
 use const HubspotSDK\Core\OMIT as omit;
 
 final class DealsService implements DealsContract
 {
-    /**
-     * @@api
-     */
-    public AssociationsService $associations;
-
     /**
      * @@api
      */
@@ -46,7 +37,6 @@ final class DealsService implements DealsContract
      */
     public function __construct(private Client $client)
     {
-        $this->associations = new AssociationsService($client);
         $this->batch = new BatchService($client);
     }
 
@@ -235,6 +225,63 @@ final class DealsService implements DealsContract
     /**
      * @api
      *
+     * Read an Object identified by `{dealId}`. `{dealId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $dealID,
+        $archived = omit,
+        $associations = omit,
+        $idProperty = omit,
+        $properties = omit,
+        $propertiesWithHistory = omit,
+        ?RequestOptions $requestOptions = null,
+    ): SimplePublicObjectWithAssociations {
+        $params = [
+            'archived' => $archived,
+            'associations' => $associations,
+            'idProperty' => $idProperty,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+
+        return $this->getRaw($dealID, $params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        string $dealID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): SimplePublicObjectWithAssociations {
+        [$parsed, $options] = DealGetParams::parseRequest($params, $requestOptions);
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: ['crm/v3/objects/0-3/%1$s', $dealID],
+            query: $parsed,
+            options: $options,
+            convert: SimplePublicObjectWithAssociations::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Merge two deals with same type
      *
      * @param string $objectIDToMerge the ID of the company to merge into the primary
@@ -278,66 +325,6 @@ final class DealsService implements DealsContract
             body: (object) $parsed,
             options: $options,
             convert: SimplePublicObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Read an Object identified by `{dealId}`. `{dealId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
-     *
-     * @param bool $archived whether to return only results that have been archived
-     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param string $idProperty The name of a property whose values are unique for this object
-     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $dealID,
-        $archived = omit,
-        $associations = omit,
-        $idProperty = omit,
-        $properties = omit,
-        $propertiesWithHistory = omit,
-        ?RequestOptions $requestOptions = null,
-    ): SimplePublicObjectWithAssociations {
-        $params = [
-            'archived' => $archived,
-            'associations' => $associations,
-            'idProperty' => $idProperty,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-
-        return $this->readRaw($dealID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $dealID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): SimplePublicObjectWithAssociations {
-        [$parsed, $options] = DealReadParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'get',
-            path: ['crm/v3/objects/0-3/%1$s', $dealID],
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -397,50 +384,6 @@ final class DealsService implements DealsContract
             body: (object) $parsed,
             options: $options,
             convert: CollectionResponseWithTotalSimplePublicObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
-     *
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject {
-        $params = ['inputs' => $inputs];
-
-        return $this->upsertRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject {
-        [$parsed, $options] = DealUpsertParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/0-3/batch/upsert',
-            body: (object) $parsed,
-            options: $options,
-            convert: BatchResponseSimplePublicUpsertObject::class,
         );
     }
 }

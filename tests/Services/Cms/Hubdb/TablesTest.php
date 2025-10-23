@@ -72,13 +72,13 @@ final class TablesTest extends TestCase
     }
 
     #[Test]
-    public function testArchive(): void
+    public function testDelete(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->archive('tableIdOrName');
+        $result = $this->client->cms->hubdb->tables->delete('tableIdOrName');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -206,13 +206,13 @@ final class TablesTest extends TestCase
     }
 
     #[Test]
-    public function testListDrafts(): void
+    public function testListDraft(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->listDrafts();
+        $result = $this->client->cms->hubdb->tables->listDraft();
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

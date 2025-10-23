@@ -7,7 +7,9 @@ namespace HubspotSDK\Automation\Workflows;
 use HubspotSDK\Automation\Workflows\BatchResponseFlowIDWorkflowIDMappingResponse\Status;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type batch_response_flow_id_workflow_id_mapping_response = array{
@@ -19,10 +21,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   requestedAt?: \DateTimeInterface,
  * }
  */
-final class BatchResponseFlowIDWorkflowIDMappingResponse implements BaseModel
+final class BatchResponseFlowIDWorkflowIDMappingResponse implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<batch_response_flow_id_workflow_id_mapping_response> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public \DateTimeInterface $completedAt;

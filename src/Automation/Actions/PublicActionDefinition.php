@@ -7,9 +7,7 @@ namespace HubspotSDK\Automation\Actions;
 use HubspotSDK\Automation\Actions\PublicActionDefinition\InputFieldDependency;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type public_action_definition = array{
@@ -28,12 +26,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   outputFields?: list<OutputFieldDefinition>,
  * }
  */
-final class PublicActionDefinition implements BaseModel, ResponseConverter
+final class PublicActionDefinition implements BaseModel
 {
     /** @use SdkModel<public_action_definition> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

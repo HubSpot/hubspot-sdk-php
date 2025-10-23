@@ -169,7 +169,7 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->attachToLangGroup(
             id: 'id',
-            language: 'af',
+            language: 'language',
             primaryID: 'primaryId'
         );
 
@@ -185,7 +185,7 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->attachToLangGroup(
             id: 'id',
-            language: 'af',
+            language: 'language',
             primaryID: 'primaryId'
         );
 

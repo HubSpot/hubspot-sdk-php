@@ -8,8 +8,8 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\CRM\Objects\Contacts\Batch\BatchArchiveParams;
 use HubspotSDK\CRM\Objects\Contacts\Batch\BatchCreateParams;
-use HubspotSDK\CRM\Objects\Contacts\Batch\BatchDeleteParams;
 use HubspotSDK\CRM\Objects\Contacts\Batch\BatchReadParams;
 use HubspotSDK\CRM\Objects\Contacts\Batch\BatchUpdateParams;
 use HubspotSDK\CRM\Objects\Contacts\Batch\BatchUpsertParams;
@@ -126,13 +126,13 @@ final class BatchService implements BatchContract
      *
      * @throws APIException
      */
-    public function delete(
+    public function archive(
         $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
         $params = ['inputs' => $inputs];
 
-        return $this->deleteRaw($params, $requestOptions);
+        return $this->archiveRaw($params, $requestOptions);
     }
 
     /**
@@ -142,11 +142,11 @@ final class BatchService implements BatchContract
      *
      * @throws APIException
      */
-    public function deleteRaw(
+    public function archiveRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = BatchDeleteParams::parseRequest(
+        [$parsed, $options] = BatchArchiveParams::parseRequest(
             $params,
             $requestOptions
         );

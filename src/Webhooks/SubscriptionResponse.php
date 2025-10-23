@@ -6,9 +6,7 @@ namespace HubspotSDK\Webhooks;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
 
 /**
@@ -24,12 +22,10 @@ use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
  *   updatedAt?: \DateTimeInterface,
  * }
  */
-final class SubscriptionResponse implements BaseModel, ResponseConverter
+final class SubscriptionResponse implements BaseModel
 {
     /** @use SdkModel<subscription_response> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The unique ID of the subscription.

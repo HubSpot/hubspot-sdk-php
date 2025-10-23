@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Auth;
 
-use HubspotSDK\Auth\OAuth\OAuthCreateParams\GrantType;
+use HubspotSDK\Auth\OAuth\AccessTokenInfoResponse;
+use HubspotSDK\Auth\OAuth\OAuthCreateAccessTokenParams\GrantType;
 use HubspotSDK\Auth\OAuth\RefreshTokenInfoResponse;
 use HubspotSDK\Auth\OAuth\TokenResponseIf;
 use HubspotSDK\Core\Exceptions\APIException;
@@ -26,7 +27,7 @@ interface OAuthContract
      *
      * @throws APIException
      */
-    public function create(
+    public function createAccessToken(
         $clientID = omit,
         $clientSecret = omit,
         $code = omit,
@@ -43,7 +44,7 @@ interface OAuthContract
      *
      * @throws APIException
      */
-    public function createRaw(
+    public function createAccessTokenRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): TokenResponseIf;
@@ -53,7 +54,7 @@ interface OAuthContract
      *
      * @throws APIException
      */
-    public function delete(
+    public function deleteRefreshToken(
         string $token,
         ?RequestOptions $requestOptions = null
     ): mixed;
@@ -63,7 +64,17 @@ interface OAuthContract
      *
      * @throws APIException
      */
-    public function get(
+    public function getAccessToken(
+        string $token,
+        ?RequestOptions $requestOptions = null
+    ): AccessTokenInfoResponse;
+
+    /**
+     * @api
+     *
+     * @throws APIException
+     */
+    public function getRefreshToken(
         string $token,
         ?RequestOptions $requestOptions = null
     ): RefreshTokenInfoResponse;

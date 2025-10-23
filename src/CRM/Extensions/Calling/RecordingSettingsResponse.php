@@ -6,21 +6,17 @@ namespace HubspotSDK\CRM\Extensions\Calling;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type recording_settings_response = array{
  *   urlToRetrieveAuthedRecording: string
  * }
  */
-final class RecordingSettingsResponse implements BaseModel, ResponseConverter
+final class RecordingSettingsResponse implements BaseModel
 {
     /** @use SdkModel<recording_settings_response> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $urlToRetrieveAuthedRecording;

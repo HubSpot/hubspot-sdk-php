@@ -6,9 +6,7 @@ namespace HubspotSDK\CRM\Extensions\Calling;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type channel_connection_settings_response = array{
@@ -18,12 +16,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   url: string,
  * }
  */
-final class ChannelConnectionSettingsResponse implements BaseModel, ResponseConverter
+final class ChannelConnectionSettingsResponse implements BaseModel
 {
     /** @use SdkModel<channel_connection_settings_response> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The timestamp this setting was created.

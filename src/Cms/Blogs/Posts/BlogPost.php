@@ -8,6 +8,8 @@ use HubspotSDK\Cms\Blogs\Posts\BlogPost\AbStatus;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost\ContentTypeCategory;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost\Language;
+use HubspotSDK\Cms\LayoutSection;
+use HubspotSDK\Cms\Pages\ContentLanguageVariation;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;

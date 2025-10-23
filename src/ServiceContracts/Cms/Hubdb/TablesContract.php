@@ -9,6 +9,7 @@ use HubspotSDK\Cms\Hubdb\ColumnRequest;
 use HubspotSDK\Cms\Hubdb\HubDBTableV3;
 use HubspotSDK\Cms\Hubdb\ImportResult;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -70,6 +71,8 @@ interface TablesContract
      * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
      * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function list(
@@ -86,26 +89,28 @@ interface TablesContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function listRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @throws APIException
      */
-    public function archive(
+    public function delete(
         string $tableIDOrName,
         ?RequestOptions $requestOptions = null
     ): mixed;
@@ -326,7 +331,7 @@ interface TablesContract
      *
      * @throws APIException
      */
-    public function listDrafts(
+    public function listDraft(
         $after = omit,
         $archived = omit,
         $contentType = omit,
@@ -349,7 +354,7 @@ interface TablesContract
      *
      * @throws APIException
      */
-    public function listDraftsRaw(
+    public function listDraftRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;

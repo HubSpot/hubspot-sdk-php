@@ -12,7 +12,7 @@ use HubspotSDK\Files\Folders\FolderCreateParams;
 use HubspotSDK\Files\Folders\FolderGetByIDParams;
 use HubspotSDK\Files\Folders\FolderGetByPathParams;
 use HubspotSDK\Files\Folders\FolderSearchParams;
-use HubspotSDK\Files\Folders\FolderUpdateAsyncParams;
+use HubspotSDK\Files\Folders\FolderUpdateAsyncByIDParams;
 use HubspotSDK\Files\Folders\FolderUpdateByIDParams;
 use HubspotSDK\Files\FolderUpdateTaskLocator;
 use HubspotSDK\Page;
@@ -342,7 +342,7 @@ final class FoldersService implements FoldersContract
      *
      * @throws APIException
      */
-    public function updateAsync(
+    public function updateAsyncByID(
         $id,
         $name = omit,
         $parentFolderID = omit,
@@ -352,7 +352,7 @@ final class FoldersService implements FoldersContract
             'id' => $id, 'name' => $name, 'parentFolderID' => $parentFolderID,
         ];
 
-        return $this->updateAsyncRaw($params, $requestOptions);
+        return $this->updateAsyncByIDRaw($params, $requestOptions);
     }
 
     /**
@@ -362,11 +362,11 @@ final class FoldersService implements FoldersContract
      *
      * @throws APIException
      */
-    public function updateAsyncRaw(
+    public function updateAsyncByIDRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): FolderUpdateTaskLocator {
-        [$parsed, $options] = FolderUpdateAsyncParams::parseRequest(
+        [$parsed, $options] = FolderUpdateAsyncByIDParams::parseRequest(
             $params,
             $requestOptions
         );

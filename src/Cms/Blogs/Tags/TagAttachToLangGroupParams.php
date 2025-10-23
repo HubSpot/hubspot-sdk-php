@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Tags;
 
-use HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -16,10 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Blogs\Tags->attachToLangGroup
  *
  * @phpstan-type tag_attach_to_lang_group_params = array{
- *   id: string,
- *   language: Language|value-of<Language>,
- *   primaryID: string,
- *   primaryLanguage?: string,
+ *   id: string, language: string, primaryID: string, primaryLanguage?: string
  * }
  */
 final class TagAttachToLangGroupParams implements BaseModel
@@ -36,10 +32,8 @@ final class TagAttachToLangGroupParams implements BaseModel
 
     /**
      * Designated language of the object to add to a multi-language group.
-     *
-     * @var value-of<Language> $language
      */
-    #[Api(enum: Language::class)]
+    #[Api]
     public string $language;
 
     /**
@@ -80,19 +74,17 @@ final class TagAttachToLangGroupParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
-     *
-     * @param Language|value-of<Language> $language
      */
     public static function with(
         string $id,
-        Language|string $language,
+        string $language,
         string $primaryID,
         ?string $primaryLanguage = null,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
-        $obj['language'] = $language;
+        $obj->language = $language;
         $obj->primaryID = $primaryID;
 
         null !== $primaryLanguage && $obj->primaryLanguage = $primaryLanguage;
@@ -113,13 +105,11 @@ final class TagAttachToLangGroupParams implements BaseModel
 
     /**
      * Designated language of the object to add to a multi-language group.
-     *
-     * @param Language|value-of<Language> $language
      */
-    public function withLanguage(Language|string $language): self
+    public function withLanguage(string $language): self
     {
         $obj = clone $this;
-        $obj['language'] = $language;
+        $obj->language = $language;
 
         return $obj;
     }

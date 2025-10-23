@@ -8,15 +8,14 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
 
 /**
- * Update a batch of companies by ID.
+ * Update a company by ID (`companyId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
  *
  * @see HubspotSDK\CRM\Objects\Companies->update
  *
  * @phpstan-type company_update_params = array{
- *   inputs: list<SimplePublicObjectBatchInput>
+ *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class CompanyUpdateParams implements BaseModel
@@ -25,22 +24,32 @@ final class CompanyUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<SimplePublicObjectBatchInput> $inputs */
-    #[Api(list: SimplePublicObjectBatchInput::class)]
-    public array $inputs;
+    /**
+     * The company property values to set.
+     *
+     * @var array<string, string> $properties
+     */
+    #[Api(map: 'string')]
+    public array $properties;
+
+    /**
+     * The name of a property whose values are unique for this object.
+     */
+    #[Api(optional: true)]
+    public ?string $idProperty;
 
     /**
      * `new CompanyUpdateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * CompanyUpdateParams::with(inputs: ...)
+     * CompanyUpdateParams::with(properties: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new CompanyUpdateParams)->withInputs(...)
+     * (new CompanyUpdateParams)->withProperties(...)
      * ```
      */
     public function __construct()
@@ -53,24 +62,41 @@ final class CompanyUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array<string, string> $properties
      */
-    public static function with(array $inputs): self
-    {
+    public static function with(
+        array $properties,
+        ?string $idProperty = null
+    ): self {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj->properties = $properties;
+
+        null !== $idProperty && $obj->idProperty = $idProperty;
 
         return $obj;
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * The company property values to set.
+     *
+     * @param array<string, string> $properties
      */
-    public function withInputs(array $inputs): self
+    public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj->properties = $properties;
+
+        return $obj;
+    }
+
+    /**
+     * The name of a property whose values are unique for this object.
+     */
+    public function withIDProperty(string $idProperty): self
+    {
+        $obj = clone $this;
+        $obj->idProperty = $idProperty;
 
         return $obj;
     }

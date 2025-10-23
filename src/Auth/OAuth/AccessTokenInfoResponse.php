@@ -6,7 +6,9 @@ namespace HubspotSDK\Auth\OAuth;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type access_token_info_response = array{
@@ -21,10 +23,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   user?: string,
  * }
  */
-final class AccessTokenInfoResponse implements BaseModel
+final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<access_token_info_response> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $token;

@@ -6,37 +6,39 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\Companies\CompanyCreateParams;
-use HubspotSDK\CRM\Objects\Companies\CompanyDeleteParams;
+use HubspotSDK\CRM\Objects\Companies\CompanyGetParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyListParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyMergeParams;
-use HubspotSDK\CRM\Objects\Companies\CompanyReadParams;
 use HubspotSDK\CRM\Objects\Companies\CompanySearchParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyUpdateParams;
-use HubspotSDK\CRM\Objects\Companies\CompanyUpsertParams;
 use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\FilterGroup;
 use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 use HubspotSDK\CRM\Objects\SimplePublicObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\CompaniesContract;
+use HubspotSDK\Services\CRM\Objects\Companies\BatchService;
 
 use const HubspotSDK\Core\OMIT as omit;
 
 final class CompaniesService implements CompaniesContract
 {
     /**
+     * @@api
+     */
+    public BatchService $batch;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->batch = new BatchService($client);
+    }
 
     /**
      * @api
@@ -87,19 +89,22 @@ final class CompaniesService implements CompaniesContract
     /**
      * @api
      *
-     * Update a batch of companies by ID.
+     * Update a company by ID (`companyId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array<string, string> $properties the company property values to set
+     * @param string $idProperty The name of a property whose values are unique for this object
      *
      * @throws APIException
      */
     public function update(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject {
-        $params = ['inputs' => $inputs];
+        string $companyID,
+        $properties,
+        $idProperty = omit,
+        ?RequestOptions $requestOptions = null,
+    ): SimplePublicObject {
+        $params = ['properties' => $properties, 'idProperty' => $idProperty];
 
-        return $this->updateRaw($params, $requestOptions);
+        return $this->updateRaw($companyID, $params, $requestOptions);
     }
 
     /**
@@ -110,21 +115,24 @@ final class CompaniesService implements CompaniesContract
      * @throws APIException
      */
     public function updateRaw(
+        string $companyID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject {
+    ): SimplePublicObject {
         [$parsed, $options] = CompanyUpdateParams::parseRequest(
             $params,
             $requestOptions
         );
+        $query_params = ['idProperty'];
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/companies/batch/update',
-            body: (object) $parsed,
+            method: 'patch',
+            path: ['crm/v3/objects/companies/%1$s', $companyID],
+            query: array_diff_key($parsed, $query_params),
+            body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: BatchResponseSimplePublicObject::class,
+            convert: SimplePublicObject::class,
         );
     }
 
@@ -197,19 +205,54 @@ final class CompaniesService implements CompaniesContract
     /**
      * @api
      *
-     * Delete a batch of companies by ID. Deleted companies can be restored within 90 days of deletion. Learn more about [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
-     *
-     * @param list<SimplePublicObjectID> $inputs
+     * Delete a company by ID. Deleted companies can be restored within 90 days of deletion. Learn more about [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
      *
      * @throws APIException
      */
     public function delete(
-        $inputs,
+        string $companyID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'delete',
+            path: ['crm/v3/objects/companies/%1$s', $companyID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
 
-        return $this->deleteRaw($params, $requestOptions);
+    /**
+     * @api
+     *
+     * Retrieve a company by its ID (`companyId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $companyID,
+        $archived = omit,
+        $associations = omit,
+        $idProperty = omit,
+        $properties = omit,
+        $propertiesWithHistory = omit,
+        ?RequestOptions $requestOptions = null,
+    ): SimplePublicObjectWithAssociations {
+        $params = [
+            'archived' => $archived,
+            'associations' => $associations,
+            'idProperty' => $idProperty,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+
+        return $this->getRaw($companyID, $params, $requestOptions);
     }
 
     /**
@@ -219,22 +262,23 @@ final class CompaniesService implements CompaniesContract
      *
      * @throws APIException
      */
-    public function deleteRaw(
+    public function getRaw(
+        string $companyID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): mixed {
-        [$parsed, $options] = CompanyDeleteParams::parseRequest(
+    ): SimplePublicObjectWithAssociations {
+        [$parsed, $options] = CompanyGetParams::parseRequest(
             $params,
             $requestOptions
         );
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/companies/batch/archive',
-            body: (object) $parsed,
+            method: 'get',
+            path: ['crm/v3/objects/companies/%1$s', $companyID],
+            query: $parsed,
             options: $options,
-            convert: null,
+            convert: SimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -284,66 +328,6 @@ final class CompaniesService implements CompaniesContract
             body: (object) $parsed,
             options: $options,
             convert: SimplePublicObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Retrieve a company by its ID (`companyId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
-     *
-     * @param bool $archived whether to return only results that have been archived
-     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param string $idProperty The name of a property whose values are unique for this object
-     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $companyID,
-        $archived = omit,
-        $associations = omit,
-        $idProperty = omit,
-        $properties = omit,
-        $propertiesWithHistory = omit,
-        ?RequestOptions $requestOptions = null,
-    ): SimplePublicObjectWithAssociations {
-        $params = [
-            'archived' => $archived,
-            'associations' => $associations,
-            'idProperty' => $idProperty,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-
-        return $this->readRaw($companyID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $companyID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): SimplePublicObjectWithAssociations {
-        [$parsed, $options] = CompanyReadParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'get',
-            path: ['crm/v3/objects/companies/%1$s', $companyID],
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -405,50 +389,6 @@ final class CompaniesService implements CompaniesContract
             body: (object) $parsed,
             options: $options,
             convert: CollectionResponseWithTotalSimplePublicObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Create or update companies identified by a unique property value as specified by the `idProperty` query parameter. `idProperty` query param refers to a property whose values are unique for the object.
-     *
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject {
-        $params = ['inputs' => $inputs];
-
-        return $this->upsertRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject {
-        [$parsed, $options] = CompanyUpsertParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/companies/batch/upsert',
-            body: (object) $parsed,
-            options: $options,
-            convert: BatchResponseSimplePublicUpsertObject::class,
         );
     }
 }
