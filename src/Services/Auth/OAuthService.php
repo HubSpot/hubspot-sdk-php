@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Auth;
 
-use HubspotSDK\Auth\OAuth\OAuthCreateParams;
-use HubspotSDK\Auth\OAuth\OAuthCreateParams\GrantType;
+use HubspotSDK\Auth\OAuth\AccessTokenInfoResponse;
+use HubspotSDK\Auth\OAuth\OAuthCreateAccessTokenParams;
+use HubspotSDK\Auth\OAuth\OAuthCreateAccessTokenParams\GrantType;
 use HubspotSDK\Auth\OAuth\RefreshTokenInfoResponse;
 use HubspotSDK\Auth\OAuth\TokenResponseIf;
 use HubspotSDK\Client;
@@ -40,7 +41,7 @@ final class OAuthService implements OAuthContract
      *
      * @throws APIException
      */
-    public function create(
+    public function createAccessToken(
         $clientID = omit,
         $clientSecret = omit,
         $code = omit,
@@ -58,7 +59,7 @@ final class OAuthService implements OAuthContract
             'refreshToken' => $refreshToken,
         ];
 
-        return $this->createRaw($params, $requestOptions);
+        return $this->createAccessTokenRaw($params, $requestOptions);
     }
 
     /**
@@ -68,11 +69,11 @@ final class OAuthService implements OAuthContract
      *
      * @throws APIException
      */
-    public function createRaw(
+    public function createAccessTokenRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): TokenResponseIf {
-        [$parsed, $options] = OAuthCreateParams::parseRequest(
+        [$parsed, $options] = OAuthCreateAccessTokenParams::parseRequest(
             $params,
             $requestOptions
         );
@@ -97,7 +98,7 @@ final class OAuthService implements OAuthContract
      *
      * @throws APIException
      */
-    public function delete(
+    public function deleteRefreshToken(
         string $token,
         ?RequestOptions $requestOptions = null
     ): mixed {
@@ -113,11 +114,33 @@ final class OAuthService implements OAuthContract
     /**
      * @api
      *
+     * Retrieve a token's metadata, including the email address of the user that the token was created for and the ID of the account it's associated with.
+     *
+     * Note: HubSpot access tokens will fluctuate in size as the information that's encoded in them changes over time. It's recommended to allow for tokens to be up to 300 characters to account for any potential changes.
+     *
+     * @throws APIException
+     */
+    public function getAccessToken(
+        string $token,
+        ?RequestOptions $requestOptions = null
+    ): AccessTokenInfoResponse {
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: ['oauth/v1/access-tokens/%1$s', $token],
+            options: $requestOptions,
+            convert: AccessTokenInfoResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Retrieve a refresh token's metadata, including the email address of the user that the token was created for and the ID of the account it's associated with. Learn more about [refresh tokens](https://developers.hubspot.com/docs/guides/api/app-management/oauth-tokens#generate-initial-access-and-refresh-tokens).
      *
      * @throws APIException
      */
-    public function get(
+    public function getRefreshToken(
         string $token,
         ?RequestOptions $requestOptions = null
     ): RefreshTokenInfoResponse {

@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows\APIEventBasedEnrollmentCriteria;
 
-use HubspotSDK\Automation\Workflows\PublicAndFilterBranch;
-use HubspotSDK\Automation\Workflows\PublicAssociationFilterBranch;
-use HubspotSDK\Automation\Workflows\PublicNotAllFilterBranch;
-use HubspotSDK\Automation\Workflows\PublicNotAnyFilterBranch;
-use HubspotSDK\Automation\Workflows\PublicOrFilterBranch;
-use HubspotSDK\Automation\Workflows\PublicPropertyAssociationFilterBranch;
-use HubspotSDK\Automation\Workflows\PublicRestrictedFilterBranch;
-use HubspotSDK\Automation\Workflows\PublicUnifiedEventsFilterBranch;
 use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubspotSDK\PublicAndFilterBranch;
+use HubspotSDK\PublicAssociationFilterBranch;
+use HubspotSDK\PublicNotAllFilterBranch;
+use HubspotSDK\PublicNotAnyFilterBranch;
+use HubspotSDK\PublicOrFilterBranch;
+use HubspotSDK\PublicPropertyAssociationFilterBranch;
+use HubspotSDK\PublicRestrictedFilterBranch;
+use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 final class ListMembershipFilterBranch implements ConverterSource
 {

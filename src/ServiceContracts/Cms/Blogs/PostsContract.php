@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Blogs;
 
 use HubspotSDK\Cms\Blogs\Posts\BlogPost;
-use HubspotSDK\Cms\Blogs\Posts\ContentLanguageVariation;
-use HubspotSDK\Cms\Blogs\Posts\LayoutSection;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\ContentTypeCategory;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
 use HubspotSDK\Cms\Blogs\Posts\VersionBlogPost;
+use HubspotSDK\Cms\LayoutSection;
+use HubspotSDK\Cms\Pages\ContentLanguageVariation;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -398,7 +398,7 @@ interface PostsContract
      * @api
      *
      * @param string $id ID of the object to add to a multi-language group
-     * @param \HubspotSDK\Cms\Blogs\Posts\PostAttachToLangGroupParams\Language|value-of<\HubspotSDK\Cms\Blogs\Posts\PostAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
+     * @param string $language designated language of the object to add to a multi-language group
      * @param string $primaryID ID of primary language object in multi-language group
      * @param string $primaryLanguage primary language of the multi-language group
      *

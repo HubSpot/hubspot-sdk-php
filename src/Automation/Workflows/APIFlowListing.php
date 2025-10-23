@@ -6,7 +6,9 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type api_flow_listing = array{
@@ -21,10 +23,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   uuid?: string,
  * }
  */
-final class APIFlowListing implements BaseModel
+final class APIFlowListing implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<api_flow_listing> */
     use SdkModel;
+
+    use SdkResponse;
 
     /**
      * The unique ID for this flow. This is auto-generated when creating the flow.

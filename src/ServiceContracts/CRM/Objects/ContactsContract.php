@@ -121,6 +121,64 @@ interface ContactsContract
     /**
      * @api
      *
+     * @param string $objectID the ID of the company to delete
+     * @param string $idProperty the name of a unique property, when identifying records by property instead of ID
+     *
+     * @throws APIException
+     */
+    public function gdprDelete(
+        $objectID,
+        $idProperty = omit,
+        ?RequestOptions $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function gdprDeleteRaw(
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $contactID,
+        $archived = omit,
+        $associations = omit,
+        $properties = omit,
+        $propertiesWithHistory = omit,
+        ?RequestOptions $requestOptions = null,
+    ): SimplePublicObjectWithAssociations;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        string $contactID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): SimplePublicObjectWithAssociations;
+
+    /**
+     * @api
+     *
      * @param string $objectIDToMerge the ID of the company to merge into the primary
      * @param string $primaryObjectID the ID of the primary company, which the other will merge into
      *
@@ -143,64 +201,6 @@ interface ContactsContract
         array $params,
         ?RequestOptions $requestOptions = null
     ): SimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param string $objectID the ID of the company to delete
-     * @param string $idProperty the name of a unique property, when identifying records by property instead of ID
-     *
-     * @throws APIException
-     */
-    public function purge(
-        $objectID,
-        $idProperty = omit,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function purgeRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param bool $archived whether to return only results that have been archived
-     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $contactID,
-        $archived = omit,
-        $associations = omit,
-        $properties = omit,
-        $propertiesWithHistory = omit,
-        ?RequestOptions $requestOptions = null,
-    ): SimplePublicObjectWithAssociations;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $contactID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): SimplePublicObjectWithAssociations;
 
     /**
      * @api

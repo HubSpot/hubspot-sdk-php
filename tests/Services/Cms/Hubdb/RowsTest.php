@@ -192,13 +192,13 @@ final class RowsTest extends TestCase
     }
 
     #[Test]
-    public function testListDrafts(): void
+    public function testListDraft(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->rows->listDrafts('tableIdOrName');
+        $result = $this->client->cms->hubdb->rows->listDraft('tableIdOrName');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

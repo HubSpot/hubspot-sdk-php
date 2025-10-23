@@ -6,9 +6,7 @@ namespace HubspotSDK\Webhooks;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse\Status;
 
 /**
@@ -21,12 +19,10 @@ use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse\Status;
  *   requestedAt?: \DateTimeInterface,
  * }
  */
-final class BatchResponseSubscriptionResponse implements BaseModel, ResponseConverter
+final class BatchResponseSubscriptionResponse implements BaseModel
 {
     /** @use SdkModel<batch_response_subscription_response> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The date and time when the batch operation was completed.

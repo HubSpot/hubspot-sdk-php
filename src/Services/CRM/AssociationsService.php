@@ -15,10 +15,16 @@ use HubspotSDK\CRM\Associations\PublicAssociation;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\AssociationsContract;
+use HubspotSDK\Services\CRM\Associations\SchemaService;
 use HubspotSDK\Services\CRM\Associations\V4Service;
 
 final class AssociationsService implements AssociationsContract
 {
+    /**
+     * @@api
+     */
+    public SchemaService $schema;
+
     /**
      * @@api
      */
@@ -29,6 +35,7 @@ final class AssociationsService implements AssociationsContract
      */
     public function __construct(private Client $client)
     {
+        $this->schema = new SchemaService($client);
         $this->v4 = new V4Service($client);
     }
 

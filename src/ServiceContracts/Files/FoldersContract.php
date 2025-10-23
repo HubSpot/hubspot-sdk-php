@@ -194,7 +194,7 @@ interface FoldersContract
      *
      * @throws APIException
      */
-    public function updateAsync(
+    public function updateAsyncByID(
         $id,
         $name = omit,
         $parentFolderID = omit,
@@ -208,7 +208,7 @@ interface FoldersContract
      *
      * @throws APIException
      */
-    public function updateAsyncRaw(
+    public function updateAsyncByIDRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): FolderUpdateTaskLocator;

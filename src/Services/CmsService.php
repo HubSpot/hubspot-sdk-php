@@ -6,13 +6,22 @@ namespace HubspotSDK\Services;
 
 use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\CmsContract;
+use HubspotSDK\Services\Cms\AuditLogsService;
 use HubspotSDK\Services\Cms\BlogsService;
 use HubspotSDK\Services\Cms\DomainsService;
 use HubspotSDK\Services\Cms\HubdbService;
+use HubspotSDK\Services\Cms\PagesService;
+use HubspotSDK\Services\Cms\SiteSearchService;
+use HubspotSDK\Services\Cms\SourceCodeService;
 use HubspotSDK\Services\Cms\URLRedirectsService;
 
 final class CmsService implements CmsContract
 {
+    /**
+     * @@api
+     */
+    public AuditLogsService $auditLogs;
+
     /**
      * @@api
      */
@@ -31,6 +40,21 @@ final class CmsService implements CmsContract
     /**
      * @@api
      */
+    public PagesService $pages;
+
+    /**
+     * @@api
+     */
+    public SiteSearchService $siteSearch;
+
+    /**
+     * @@api
+     */
+    public SourceCodeService $sourceCode;
+
+    /**
+     * @@api
+     */
     public URLRedirectsService $urlRedirects;
 
     /**
@@ -38,9 +62,13 @@ final class CmsService implements CmsContract
      */
     public function __construct(private Client $client)
     {
+        $this->auditLogs = new AuditLogsService($client);
         $this->blogs = new BlogsService($client);
         $this->domains = new DomainsService($client);
         $this->hubdb = new HubdbService($client);
+        $this->pages = new PagesService($client);
+        $this->siteSearch = new SiteSearchService($client);
+        $this->sourceCode = new SourceCodeService($client);
         $this->urlRedirects = new URLRedirectsService($client);
     }
 }

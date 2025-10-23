@@ -3,17 +3,17 @@
 namespace Tests\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Posts\Angle;
-use HubspotSDK\Cms\Blogs\Posts\BackgroundImage;
+use HubspotSDK\Cms\Angle;
+use HubspotSDK\Cms\BackgroundImage;
 use HubspotSDK\Cms\Blogs\Posts\BreakpointStyles;
-use HubspotSDK\Cms\Blogs\Posts\ColorStop;
-use HubspotSDK\Cms\Blogs\Posts\ContentLanguageVariation;
-use HubspotSDK\Cms\Blogs\Posts\Gradient;
-use HubspotSDK\Cms\Blogs\Posts\LayoutSection;
-use HubspotSDK\Cms\Blogs\Posts\RgbaColor;
-use HubspotSDK\Cms\Blogs\Posts\RowMetaData;
-use HubspotSDK\Cms\Blogs\Posts\SideOrCorner;
-use HubspotSDK\Cms\Blogs\Posts\Styles;
+use HubspotSDK\Cms\ColorStop;
+use HubspotSDK\Cms\Gradient;
+use HubspotSDK\Cms\LayoutSection;
+use HubspotSDK\Cms\Pages\ContentLanguageVariation;
+use HubspotSDK\Cms\RgbaColor;
+use HubspotSDK\Cms\RowMetaData;
+use HubspotSDK\Cms\SideOrCorner;
+use HubspotSDK\Cms\Styles;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -173,7 +173,6 @@ final class PostsTest extends TestCase
                     archivedInDashboard: true,
                     authorName: 'authorName',
                     campaign: 'campaign',
-                    campaignName: 'campaignName',
                     created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     name: 'name',
                     password: 'password',
@@ -347,7 +346,6 @@ final class PostsTest extends TestCase
                     archivedInDashboard: true,
                     authorName: 'authorName',
                     campaign: 'campaign',
-                    campaignName: 'campaignName',
                     created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     name: 'name',
                     password: 'password',
@@ -505,7 +503,6 @@ final class PostsTest extends TestCase
                     archivedInDashboard: true,
                     authorName: 'authorName',
                     campaign: 'campaign',
-                    campaignName: 'campaignName',
                     created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     name: 'name',
                     password: 'password',
@@ -680,7 +677,6 @@ final class PostsTest extends TestCase
                     archivedInDashboard: true,
                     authorName: 'authorName',
                     campaign: 'campaign',
-                    campaignName: 'campaignName',
                     created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     name: 'name',
                     password: 'password',
@@ -737,7 +733,7 @@ final class PostsTest extends TestCase
 
         $result = $this->client->cms->blogs->posts->attachToLangGroup(
             id: 'id',
-            language: 'af',
+            language: 'language',
             primaryID: 'primaryId'
         );
 
@@ -753,7 +749,7 @@ final class PostsTest extends TestCase
 
         $result = $this->client->cms->blogs->posts->attachToLangGroup(
             id: 'id',
-            language: 'af',
+            language: 'language',
             primaryID: 'primaryId'
         );
 
@@ -1170,7 +1166,6 @@ final class PostsTest extends TestCase
                     archivedInDashboard: true,
                     authorName: 'authorName',
                     campaign: 'campaign',
-                    campaignName: 'campaignName',
                     created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     name: 'name',
                     password: 'password',
@@ -1345,7 +1340,6 @@ final class PostsTest extends TestCase
                     archivedInDashboard: true,
                     authorName: 'authorName',
                     campaign: 'campaign',
-                    campaignName: 'campaignName',
                     created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     name: 'name',
                     password: 'password',

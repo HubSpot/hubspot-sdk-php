@@ -6,17 +6,21 @@ namespace HubspotSDK\Settings\Users;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type collection_response_public_team_no_paging = array{
  *   results: list<PublicTeam>
  * }
  */
-final class CollectionResponsePublicTeamNoPaging implements BaseModel
+final class CollectionResponsePublicTeamNoPaging implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<collection_response_public_team_no_paging> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<PublicTeam> $results */
     #[Api(list: PublicTeam::class)]

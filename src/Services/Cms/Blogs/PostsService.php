@@ -6,8 +6,6 @@ namespace HubspotSDK\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost;
-use HubspotSDK\Cms\Blogs\Posts\ContentLanguageVariation;
-use HubspotSDK\Cms\Blogs\Posts\LayoutSection;
 use HubspotSDK\Cms\Blogs\Posts\PostAttachToLangGroupParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCloneParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateLangVariationParams;
@@ -30,19 +28,30 @@ use HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams;
 use HubspotSDK\Cms\Blogs\Posts\PostUpdateLangsParams;
 use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams;
 use HubspotSDK\Cms\Blogs\Posts\VersionBlogPost;
+use HubspotSDK\Cms\LayoutSection;
+use HubspotSDK\Cms\Pages\ContentLanguageVariation;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\PostsContract;
+use HubspotSDK\Services\Cms\Blogs\Posts\BatchService;
 
 use const HubspotSDK\Core\OMIT as omit;
 
 final class PostsService implements PostsContract
 {
     /**
+     * @@api
+     */
+    public BatchService $batch;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->batch = new BatchService($client);
+    }
 
     /**
      * @api
@@ -644,7 +653,7 @@ final class PostsService implements PostsContract
      * Attach a blog post to a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
      * @param string $id ID of the object to add to a multi-language group
-     * @param PostAttachToLangGroupParams\Language|value-of<PostAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
+     * @param string $language designated language of the object to add to a multi-language group
      * @param string $primaryID ID of primary language object in multi-language group
      * @param string $primaryLanguage primary language of the multi-language group
      *

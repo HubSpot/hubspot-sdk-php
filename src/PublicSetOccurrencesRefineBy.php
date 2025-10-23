@@ -1,0 +1,85 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PublicSetOccurrencesRefineBy\Type;
+
+/**
+ * @phpstan-type public_set_occurrences_refine_by = array{
+ *   setType: string, type: value-of<Type>
+ * }
+ */
+final class PublicSetOccurrencesRefineBy implements BaseModel
+{
+    /** @use SdkModel<public_set_occurrences_refine_by> */
+    use SdkModel;
+
+    #[Api]
+    public string $setType;
+
+    /** @var value-of<Type> $type */
+    #[Api(enum: Type::class)]
+    public string $type;
+
+    /**
+     * `new PublicSetOccurrencesRefineBy()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * PublicSetOccurrencesRefineBy::with(setType: ..., type: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new PublicSetOccurrencesRefineBy)->withSetType(...)->withType(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Type|value-of<Type> $type
+     */
+    public static function with(
+        string $setType,
+        Type|string $type = 'SET_OCCURRENCES'
+    ): self {
+        $obj = new self;
+
+        $obj->setType = $setType;
+        $obj['type'] = $type;
+
+        return $obj;
+    }
+
+    public function withSetType(string $setType): self
+    {
+        $obj = clone $this;
+        $obj->setType = $setType;
+
+        return $obj;
+    }
+
+    /**
+     * @param Type|value-of<Type> $type
+     */
+    public function withType(Type|string $type): self
+    {
+        $obj = clone $this;
+        $obj['type'] = $type;
+
+        return $obj;
+    }
+}

@@ -16,21 +16,12 @@ final class PublicTeam implements BaseModel
     /** @use SdkModel<public_team> */
     use SdkModel;
 
-    /**
-     * The unique ID for the team.
-     */
     #[Api]
     public string $id;
 
-    /**
-     * The team's name.
-     */
     #[Api]
     public string $name;
 
-    /**
-     * Whether this is the owner's primary team.
-     */
     #[Api]
     public bool $primary;
 
@@ -69,9 +60,6 @@ final class PublicTeam implements BaseModel
         return $obj;
     }
 
-    /**
-     * The unique ID for the team.
-     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -80,9 +68,6 @@ final class PublicTeam implements BaseModel
         return $obj;
     }
 
-    /**
-     * The team's name.
-     */
     public function withName(string $name): self
     {
         $obj = clone $this;
@@ -91,9 +76,6 @@ final class PublicTeam implements BaseModel
         return $obj;
     }
 
-    /**
-     * Whether this is the owner's primary team.
-     */
     public function withPrimary(bool $primary): self
     {
         $obj = clone $this;

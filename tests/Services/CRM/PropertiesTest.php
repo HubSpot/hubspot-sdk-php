@@ -3,7 +3,6 @@
 namespace Tests\Services\CRM;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Properties\PropertyName;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -39,8 +38,11 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->create(
             'objectType',
-            label: 'My Property Group',
-            name: 'mypropertygroup'
+            fieldType: 'select',
+            groupName: 'contactinformation',
+            label: 'My Contact Property',
+            name: 'my_contact_property',
+            type: 'enumeration',
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -55,8 +57,11 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->create(
             'objectType',
-            label: 'My Property Group',
-            name: 'mypropertygroup'
+            fieldType: 'select',
+            groupName: 'contactinformation',
+            label: 'My Contact Property',
+            name: 'my_contact_property',
+            type: 'enumeration',
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -135,13 +140,13 @@ final class PropertiesTest extends TestCase
     }
 
     #[Test]
-    public function testGetByName(): void
+    public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->properties->getByName(
+        $result = $this->client->crm->properties->get(
             'propertyName',
             objectType: 'objectType'
         );
@@ -150,47 +155,15 @@ final class PropertiesTest extends TestCase
     }
 
     #[Test]
-    public function testGetByNameWithOptionalParams(): void
+    public function testGetWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->properties->getByName(
+        $result = $this->client->crm->properties->get(
             'propertyName',
             objectType: 'objectType'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testRead(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->properties->read(
-            'objectType',
-            archived: true,
-            inputs: [PropertyName::with(name: 'my_custom_property')],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testReadWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->properties->read(
-            'objectType',
-            archived: true,
-            inputs: [PropertyName::with(name: 'my_custom_property')],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

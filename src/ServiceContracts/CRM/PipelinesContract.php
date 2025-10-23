@@ -8,7 +8,6 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Pipelines\CollectionResponsePipelineNoPaging;
 use HubspotSDK\CRM\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
 use HubspotSDK\CRM\Pipelines\Pipeline;
-use HubspotSDK\CRM\Pipelines\PipelineStage;
 use HubspotSDK\CRM\Pipelines\PipelineStageInput;
 use HubspotSDK\RequestOptions;
 
@@ -50,29 +49,24 @@ interface PipelinesContract
      * @api
      *
      * @param string $objectType
-     * @param string $pipelineID
-     * @param bool $archived whether the pipeline is archived
-     * @param int $displayOrder The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
-     * @param string $label A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
-     * @param array<string,
-     * string,> $metadata A JSON object containing properties that are not present on all object pipelines.
-     *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     * @param bool $validateDealStageUsagesBeforeDelete
+     * @param bool $validateReferencesBeforeDelete
+     * @param bool $archived Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.
+     * @param int $displayOrder The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * @param string $label A unique label used to organize pipelines in HubSpot's UI
      *
      * @throws APIException
      */
     public function update(
-        string $stageID,
+        string $pipelineID,
         $objectType,
-        $pipelineID,
+        $validateDealStageUsagesBeforeDelete = omit,
+        $validateReferencesBeforeDelete = omit,
         $archived = omit,
         $displayOrder = omit,
         $label = omit,
-        $metadata = omit,
         ?RequestOptions $requestOptions = null,
-    ): PipelineStage;
+    ): Pipeline;
 
     /**
      * @api
@@ -82,10 +76,10 @@ interface PipelinesContract
      * @throws APIException
      */
     public function updateRaw(
-        string $stageID,
+        string $pipelineID,
         array $params,
-        ?RequestOptions $requestOptions = null
-    ): PipelineStage;
+        ?RequestOptions $requestOptions = null,
+    ): Pipeline;
 
     /**
      * @api
@@ -101,14 +95,16 @@ interface PipelinesContract
      * @api
      *
      * @param string $objectType
-     * @param string $pipelineID
+     * @param bool $validateDealStageUsagesBeforeDelete
+     * @param bool $validateReferencesBeforeDelete
      *
      * @throws APIException
      */
     public function delete(
-        string $stageID,
+        string $pipelineID,
         $objectType,
-        $pipelineID,
+        $validateDealStageUsagesBeforeDelete = omit,
+        $validateReferencesBeforeDelete = omit,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
@@ -120,10 +116,36 @@ interface PipelinesContract
      * @throws APIException
      */
     public function deleteRaw(
-        string $stageID,
+        string $pipelineID,
         array $params,
-        ?RequestOptions $requestOptions = null
+        ?RequestOptions $requestOptions = null,
     ): mixed;
+
+    /**
+     * @api
+     *
+     * @param string $objectType
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $pipelineID,
+        $objectType,
+        ?RequestOptions $requestOptions = null
+    ): Pipeline;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        string $pipelineID,
+        array $params,
+        ?RequestOptions $requestOptions = null,
+    ): Pipeline;
 
     /**
      * @api
@@ -155,55 +177,24 @@ interface PipelinesContract
      * @api
      *
      * @param string $objectType
-     * @param string $pipelineID
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $stageID,
-        $objectType,
-        $pipelineID,
-        ?RequestOptions $requestOptions = null,
-    ): PipelineStage;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $stageID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PipelineStage;
-
-    /**
-     * @api
-     *
-     * @param string $objectType
-     * @param string $pipelineID
-     * @param int $displayOrder The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
-     * @param string $label A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
-     * @param array<string,
-     * string,> $metadata A JSON object containing properties that are not present on all object pipelines.
-     *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     * @param int $displayOrder The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * @param string $label A unique label used to organize pipelines in HubSpot's UI
+     * @param list<PipelineStageInput> $stages pipeline stage inputs used to create the new or replacement pipeline
+     * @param bool $validateDealStageUsagesBeforeDelete
+     * @param bool $validateReferencesBeforeDelete
      *
      * @throws APIException
      */
     public function replace(
-        string $stageID,
+        string $pipelineID,
         $objectType,
-        $pipelineID,
         $displayOrder,
         $label,
-        $metadata = omit,
+        $stages,
+        $validateDealStageUsagesBeforeDelete = omit,
+        $validateReferencesBeforeDelete = omit,
         ?RequestOptions $requestOptions = null,
-    ): PipelineStage;
+    ): Pipeline;
 
     /**
      * @api
@@ -213,8 +204,8 @@ interface PipelinesContract
      * @throws APIException
      */
     public function replaceRaw(
-        string $stageID,
+        string $pipelineID,
         array $params,
-        ?RequestOptions $requestOptions = null
-    ): PipelineStage;
+        ?RequestOptions $requestOptions = null,
+    ): Pipeline;
 }

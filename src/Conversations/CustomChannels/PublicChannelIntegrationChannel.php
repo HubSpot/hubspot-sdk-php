@@ -6,7 +6,9 @@ namespace HubspotSDK\Conversations\CustomChannels;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type public_channel_integration_channel = array{
@@ -20,10 +22,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   webhookURL?: string,
  * }
  */
-final class PublicChannelIntegrationChannel implements BaseModel
+final class PublicChannelIntegrationChannel implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<public_channel_integration_channel> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;

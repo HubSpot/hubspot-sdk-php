@@ -5,16 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
 use HubspotSDK\CRM\Objects\FilterGroup;
 use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
 use HubspotSDK\CRM\Objects\SimplePublicObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
 use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -52,14 +47,17 @@ interface CompaniesContract
     /**
      * @api
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array<string, string> $properties the company property values to set
+     * @param string $idProperty The name of a property whose values are unique for this object
      *
      * @throws APIException
      */
     public function update(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject;
+        string $companyID,
+        $properties,
+        $idProperty = omit,
+        ?RequestOptions $requestOptions = null,
+    ): SimplePublicObject;
 
     /**
      * @api
@@ -69,9 +67,10 @@ interface CompaniesContract
      * @throws APIException
      */
     public function updateRaw(
+        string $companyID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject;
+    ): SimplePublicObject;
 
     /**
      * @api
@@ -114,14 +113,33 @@ interface CompaniesContract
     /**
      * @api
      *
-     * @param list<SimplePublicObjectID> $inputs
-     *
      * @throws APIException
      */
     public function delete(
-        $inputs,
+        string $companyID,
         ?RequestOptions $requestOptions = null
     ): mixed;
+
+    /**
+     * @api
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $companyID,
+        $archived = omit,
+        $associations = omit,
+        $idProperty = omit,
+        $properties = omit,
+        $propertiesWithHistory = omit,
+        ?RequestOptions $requestOptions = null,
+    ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
@@ -130,10 +148,11 @@ interface CompaniesContract
      *
      * @throws APIException
      */
-    public function deleteRaw(
+    public function getRaw(
+        string $companyID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): mixed;
+    ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
@@ -160,40 +179,6 @@ interface CompaniesContract
         array $params,
         ?RequestOptions $requestOptions = null
     ): SimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param bool $archived whether to return only results that have been archived
-     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param string $idProperty The name of a property whose values are unique for this object
-     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $companyID,
-        $archived = omit,
-        $associations = omit,
-        $idProperty = omit,
-        $properties = omit,
-        $propertiesWithHistory = omit,
-        ?RequestOptions $requestOptions = null,
-    ): SimplePublicObjectWithAssociations;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $companyID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
@@ -228,28 +213,4 @@ interface CompaniesContract
         array $params,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject;
 }

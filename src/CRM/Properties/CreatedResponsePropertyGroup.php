@@ -6,21 +6,17 @@ namespace HubspotSDK\CRM\Properties;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type created_response_property_group = array{
  *   createdResourceID: string, entity: PropertyGroup, location?: string
  * }
  */
-final class CreatedResponsePropertyGroup implements BaseModel, ResponseConverter
+final class CreatedResponsePropertyGroup implements BaseModel
 {
     /** @use SdkModel<created_response_property_group> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api('createdResourceId')]
     public string $createdResourceID;

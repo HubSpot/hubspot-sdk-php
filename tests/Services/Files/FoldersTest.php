@@ -126,25 +126,25 @@ final class FoldersTest extends TestCase
     }
 
     #[Test]
-    public function testUpdateAsync(): void
+    public function testUpdateAsyncByID(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->updateAsync(id: 'id');
+        $result = $this->client->files->folders->updateAsyncByID(id: 'id');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testUpdateAsyncWithOptionalParams(): void
+    public function testUpdateAsyncByIDWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->updateAsync(id: 'id');
+        $result = $this->client->files->folders->updateAsyncByID(id: 'id');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -7,6 +7,14 @@ namespace HubspotSDK\Automation\Workflows;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PublicAndFilterBranch;
+use HubspotSDK\PublicAssociationFilterBranch;
+use HubspotSDK\PublicNotAllFilterBranch;
+use HubspotSDK\PublicNotAnyFilterBranch;
+use HubspotSDK\PublicOrFilterBranch;
+use HubspotSDK\PublicPropertyAssociationFilterBranch;
+use HubspotSDK\PublicRestrictedFilterBranch;
+use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
  * @phpstan-type api_list_branch = array{

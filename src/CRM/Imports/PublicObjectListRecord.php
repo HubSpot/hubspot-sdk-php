@@ -1,0 +1,88 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\CRM\Imports;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-type public_object_list_record = array{
+ *   listID: string, objectType: string
+ * }
+ */
+final class PublicObjectListRecord implements BaseModel
+{
+    /** @use SdkModel<public_object_list_record> */
+    use SdkModel;
+
+    /**
+     * The ID of the list containing the imported objects.
+     */
+    #[Api('listId')]
+    public string $listID;
+
+    /**
+     * The type of object contained in the list.
+     */
+    #[Api]
+    public string $objectType;
+
+    /**
+     * `new PublicObjectListRecord()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * PublicObjectListRecord::with(listID: ..., objectType: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new PublicObjectListRecord)->withListID(...)->withObjectType(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(string $listID, string $objectType): self
+    {
+        $obj = new self;
+
+        $obj->listID = $listID;
+        $obj->objectType = $objectType;
+
+        return $obj;
+    }
+
+    /**
+     * The ID of the list containing the imported objects.
+     */
+    public function withListID(string $listID): self
+    {
+        $obj = clone $this;
+        $obj->listID = $listID;
+
+        return $obj;
+    }
+
+    /**
+     * The type of object contained in the list.
+     */
+    public function withObjectType(string $objectType): self
+    {
+        $obj = clone $this;
+        $obj->objectType = $objectType;
+
+        return $obj;
+    }
+}

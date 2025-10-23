@@ -6,7 +6,9 @@ namespace HubspotSDK\CRM\Properties;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\CRM\Property;
 
 /**
@@ -14,10 +16,12 @@ use HubspotSDK\CRM\Property;
  *   createdResourceID: string, entity: Property, location?: string
  * }
  */
-final class CreatedResponseProperty implements BaseModel
+final class CreatedResponseProperty implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<created_response_property> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api('createdResourceId')]
     public string $createdResourceID;

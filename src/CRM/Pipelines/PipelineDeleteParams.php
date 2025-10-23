@@ -10,12 +10,14 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Delete the pipeline stage identified by `{stageId}` associated with the pipeline identified by `{pipelineId}`.
+ * Delete the pipeline identified by `{pipelineId}`.
  *
  * @see HubspotSDK\CRM\Pipelines->delete
  *
  * @phpstan-type pipeline_delete_params = array{
- *   objectType: string, pipelineID: string
+ *   objectType: string,
+ *   validateDealStageUsagesBeforeDelete?: bool,
+ *   validateReferencesBeforeDelete?: bool,
  * }
  */
 final class PipelineDeleteParams implements BaseModel
@@ -27,21 +29,24 @@ final class PipelineDeleteParams implements BaseModel
     #[Api]
     public string $objectType;
 
-    #[Api]
-    public string $pipelineID;
+    #[Api(optional: true)]
+    public ?bool $validateDealStageUsagesBeforeDelete;
+
+    #[Api(optional: true)]
+    public ?bool $validateReferencesBeforeDelete;
 
     /**
      * `new PipelineDeleteParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PipelineDeleteParams::with(objectType: ..., pipelineID: ...)
+     * PipelineDeleteParams::with(objectType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PipelineDeleteParams)->withObjectType(...)->withPipelineID(...)
+     * (new PipelineDeleteParams)->withObjectType(...)
      * ```
      */
     public function __construct()
@@ -54,12 +59,17 @@ final class PipelineDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectType, string $pipelineID): self
-    {
+    public static function with(
+        string $objectType,
+        ?bool $validateDealStageUsagesBeforeDelete = null,
+        ?bool $validateReferencesBeforeDelete = null,
+    ): self {
         $obj = new self;
 
         $obj->objectType = $objectType;
-        $obj->pipelineID = $pipelineID;
+
+        null !== $validateDealStageUsagesBeforeDelete && $obj->validateDealStageUsagesBeforeDelete = $validateDealStageUsagesBeforeDelete;
+        null !== $validateReferencesBeforeDelete && $obj->validateReferencesBeforeDelete = $validateReferencesBeforeDelete;
 
         return $obj;
     }
@@ -72,10 +82,20 @@ final class PipelineDeleteParams implements BaseModel
         return $obj;
     }
 
-    public function withPipelineID(string $pipelineID): self
-    {
+    public function withValidateDealStageUsagesBeforeDelete(
+        bool $validateDealStageUsagesBeforeDelete
+    ): self {
         $obj = clone $this;
-        $obj->pipelineID = $pipelineID;
+        $obj->validateDealStageUsagesBeforeDelete = $validateDealStageUsagesBeforeDelete;
+
+        return $obj;
+    }
+
+    public function withValidateReferencesBeforeDelete(
+        bool $validateReferencesBeforeDelete
+    ): self {
+        $obj = clone $this;
+        $obj->validateReferencesBeforeDelete = $validateReferencesBeforeDelete;
 
         return $obj;
     }

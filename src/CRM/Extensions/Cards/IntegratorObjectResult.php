@@ -1,0 +1,138 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\CRM\Extensions\Cards;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\CRM\Extensions\Cards\IntegratorObjectResult\Action;
+
+/**
+ * @phpstan-type integrator_object_result = array{
+ *   id: string,
+ *   actions: list<ActionHookActionBody|IFrameActionBody>,
+ *   title: string,
+ *   tokens: list<ObjectToken>,
+ *   linkURL?: string,
+ * }
+ */
+final class IntegratorObjectResult implements BaseModel
+{
+    /** @use SdkModel<integrator_object_result> */
+    use SdkModel;
+
+    #[Api]
+    public string $id;
+
+    /** @var list<ActionHookActionBody|IFrameActionBody> $actions */
+    #[Api(list: Action::class)]
+    public array $actions;
+
+    #[Api]
+    public string $title;
+
+    /** @var list<ObjectToken> $tokens */
+    #[Api(list: ObjectToken::class)]
+    public array $tokens;
+
+    #[Api('linkUrl', optional: true)]
+    public ?string $linkURL;
+
+    /**
+     * `new IntegratorObjectResult()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * IntegratorObjectResult::with(id: ..., actions: ..., title: ..., tokens: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new IntegratorObjectResult)
+     *   ->withID(...)
+     *   ->withActions(...)
+     *   ->withTitle(...)
+     *   ->withTokens(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<ActionHookActionBody|IFrameActionBody> $actions
+     * @param list<ObjectToken> $tokens
+     */
+    public static function with(
+        string $id,
+        array $actions,
+        string $title,
+        array $tokens,
+        ?string $linkURL = null,
+    ): self {
+        $obj = new self;
+
+        $obj->id = $id;
+        $obj->actions = $actions;
+        $obj->title = $title;
+        $obj->tokens = $tokens;
+
+        null !== $linkURL && $obj->linkURL = $linkURL;
+
+        return $obj;
+    }
+
+    public function withID(string $id): self
+    {
+        $obj = clone $this;
+        $obj->id = $id;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<ActionHookActionBody|IFrameActionBody> $actions
+     */
+    public function withActions(array $actions): self
+    {
+        $obj = clone $this;
+        $obj->actions = $actions;
+
+        return $obj;
+    }
+
+    public function withTitle(string $title): self
+    {
+        $obj = clone $this;
+        $obj->title = $title;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<ObjectToken> $tokens
+     */
+    public function withTokens(array $tokens): self
+    {
+        $obj = clone $this;
+        $obj->tokens = $tokens;
+
+        return $obj;
+    }
+
+    public function withLinkURL(string $linkURL): self
+    {
+        $obj = clone $this;
+        $obj->linkURL = $linkURL;
+
+        return $obj;
+    }
+}

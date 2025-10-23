@@ -193,7 +193,7 @@ interface TagsContract
      * @api
      *
      * @param string $id ID of the object to add to a multi-language group
-     * @param \HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
+     * @param string $language designated language of the object to add to a multi-language group
      * @param string $primaryID ID of primary language object in multi-language group
      * @param string $primaryLanguage primary language of the multi-language group
      *

@@ -91,9 +91,6 @@ final class File implements BaseModel
     #[Api(optional: true)]
     public ?string $encoding;
 
-    /**
-     * The timestamp indicating when the file will expire.
-     */
     #[Api(optional: true)]
     public ?int $expiresAt;
 
@@ -145,9 +142,6 @@ final class File implements BaseModel
     #[Api(optional: true)]
     public ?int $size;
 
-    /**
-     * The group from which the file originated.
-     */
     #[Api(optional: true)]
     public ?string $sourceGroup;
 
@@ -341,9 +335,6 @@ final class File implements BaseModel
         return $obj;
     }
 
-    /**
-     * The timestamp indicating when the file will expire.
-     */
     public function withExpiresAt(int $expiresAt): self
     {
         $obj = clone $this;
@@ -440,9 +431,6 @@ final class File implements BaseModel
         return $obj;
     }
 
-    /**
-     * The group from which the file originated.
-     */
     public function withSourceGroup(string $sourceGroup): self
     {
         $obj = clone $this;

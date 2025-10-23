@@ -72,7 +72,7 @@ interface BatchContract
      *
      * @throws APIException
      */
-    public function delete(
+    public function archive(
         $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed;
@@ -84,7 +84,7 @@ interface BatchContract
      *
      * @throws APIException
      */
-    public function deleteRaw(
+    public function archiveRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): mixed;

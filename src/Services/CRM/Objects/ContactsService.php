@@ -8,10 +8,10 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\CRM\Objects\Contacts\ContactCreateParams;
+use HubspotSDK\CRM\Objects\Contacts\ContactGdprDeleteParams;
+use HubspotSDK\CRM\Objects\Contacts\ContactGetParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactListParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactMergeParams;
-use HubspotSDK\CRM\Objects\Contacts\ContactPurgeParams;
-use HubspotSDK\CRM\Objects\Contacts\ContactReadParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactSearchParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactUpdateParams;
 use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
@@ -222,6 +222,109 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
+     * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
+     *
+     * @param string $objectID the ID of the company to delete
+     * @param string $idProperty the name of a unique property, when identifying records by property instead of ID
+     *
+     * @throws APIException
+     */
+    public function gdprDelete(
+        $objectID,
+        $idProperty = omit,
+        ?RequestOptions $requestOptions = null
+    ): mixed {
+        $params = ['objectID' => $objectID, 'idProperty' => $idProperty];
+
+        return $this->gdprDeleteRaw($params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function gdprDeleteRaw(
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): mixed {
+        [$parsed, $options] = ContactGdprDeleteParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: 'crm/v3/objects/contacts/gdpr-delete',
+            body: (object) $parsed,
+            options: $options,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $contactID,
+        $archived = omit,
+        $associations = omit,
+        $properties = omit,
+        $propertiesWithHistory = omit,
+        ?RequestOptions $requestOptions = null,
+    ): SimplePublicObjectWithAssociations {
+        $params = [
+            'archived' => $archived,
+            'associations' => $associations,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+
+        return $this->getRaw($contactID, $params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        string $contactID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): SimplePublicObjectWithAssociations {
+        [$parsed, $options] = ContactGetParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: ['crm/v3/objects/contacts/%1$s', $contactID],
+            query: $parsed,
+            options: $options,
+            convert: SimplePublicObjectWithAssociations::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
      *
      * @param string $objectIDToMerge the ID of the company to merge into the primary
@@ -265,109 +368,6 @@ final class ContactsService implements ContactsContract
             body: (object) $parsed,
             options: $options,
             convert: SimplePublicObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
-     *
-     * @param string $objectID the ID of the company to delete
-     * @param string $idProperty the name of a unique property, when identifying records by property instead of ID
-     *
-     * @throws APIException
-     */
-    public function purge(
-        $objectID,
-        $idProperty = omit,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['objectID' => $objectID, 'idProperty' => $idProperty];
-
-        return $this->purgeRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function purgeRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        [$parsed, $options] = ContactPurgeParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/contacts/gdpr-delete',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
-     *
-     * @param bool $archived whether to return only results that have been archived
-     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $contactID,
-        $archived = omit,
-        $associations = omit,
-        $properties = omit,
-        $propertiesWithHistory = omit,
-        ?RequestOptions $requestOptions = null,
-    ): SimplePublicObjectWithAssociations {
-        $params = [
-            'archived' => $archived,
-            'associations' => $associations,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-
-        return $this->readRaw($contactID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $contactID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): SimplePublicObjectWithAssociations {
-        [$parsed, $options] = ContactReadParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'get',
-            path: ['crm/v3/objects/contacts/%1$s', $contactID],
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
         );
     }
 

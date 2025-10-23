@@ -6,52 +6,104 @@ namespace HubspotSDK\Services\CRM;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Properties\BatchResponseProperty;
-use HubspotSDK\CRM\Properties\CollectionResponsePropertyGroup;
-use HubspotSDK\CRM\Properties\CreatedResponsePropertyGroup;
+use HubspotSDK\CRM\Properties\CollectionResponseProperty;
+use HubspotSDK\CRM\Properties\CreatedResponseProperty;
 use HubspotSDK\CRM\Properties\OptionInput;
 use HubspotSDK\CRM\Properties\PropertyCreateParams;
+use HubspotSDK\CRM\Properties\PropertyCreateParams\DataSensitivity;
+use HubspotSDK\CRM\Properties\PropertyCreateParams\FieldType;
+use HubspotSDK\CRM\Properties\PropertyCreateParams\Type;
 use HubspotSDK\CRM\Properties\PropertyDeleteParams;
-use HubspotSDK\CRM\Properties\PropertyGetByNameParams;
-use HubspotSDK\CRM\Properties\PropertyName;
-use HubspotSDK\CRM\Properties\PropertyReadParams;
-use HubspotSDK\CRM\Properties\PropertyReadParams\DataSensitivity;
+use HubspotSDK\CRM\Properties\PropertyGetParams;
+use HubspotSDK\CRM\Properties\PropertyListParams;
 use HubspotSDK\CRM\Properties\PropertyUpdateParams;
-use HubspotSDK\CRM\Properties\PropertyUpdateParams\FieldType;
-use HubspotSDK\CRM\Properties\PropertyUpdateParams\Type;
 use HubspotSDK\CRM\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\PropertiesContract;
+use HubspotSDK\Services\CRM\Properties\BatchService;
+use HubspotSDK\Services\CRM\Properties\GroupsService;
 
 use const HubspotSDK\Core\OMIT as omit;
 
 final class PropertiesService implements PropertiesContract
 {
     /**
+     * @@api
+     */
+    public BatchService $batch;
+
+    /**
+     * @@api
+     */
+    public GroupsService $groups;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->batch = new BatchService($client);
+        $this->groups = new GroupsService($client);
+    }
 
     /**
      * @api
      *
-     * Create and return a copy of a new property group.
+     * Create and return a copy of a new property for the specified object type.
      *
-     * @param string $label a human-readable label that will be shown in HubSpot
-     * @param string $name the internal property group name, which must be used when referencing the property group via the API
-     * @param int $displayOrder Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     * @param FieldType|value-of<FieldType> $fieldType controls how the property appears in HubSpot
+     * @param string $groupName the name of the property group the property belongs to
+     * @param string $label a human-readable property label that will be shown in HubSpot
+     * @param string $name the internal property name, which must be used when referencing the property via the API
+     * @param Type|value-of<Type> $type the data type of the property
+     * @param string $calculationFormula represents a formula that is used to compute a calculated property
+     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
+     * @param string $description a description of the property that will be shown as help text in HubSpot
+     * @param int $displayOrder Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property to be displayed after any positive values.
+     * @param bool $externalOptions Applicable only for 'enumeration' type properties.  Should be set to true in conjunction with a 'referencedObjectType' of 'OWNER'.  Otherwise false.
+     * @param bool $formField whether or not the property can be used in a HubSpot form
+     * @param bool $hasUniqueValue Whether or not the property's value must be unique. Once set, this can't be changed.
+     * @param bool $hidden If true, the option will not be shown in forms, bots, or meeting scheduling pages. Supported for contact, company, ticket, and custom object enumeration properties.
+     * @param list<OptionInput> $options A list of valid options for the property. This field is required for enumerated properties.
+     * @param string $referencedObjectType should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
+        $fieldType,
+        $groupName,
         $label,
         $name,
+        $type,
+        $calculationFormula = omit,
+        $dataSensitivity = omit,
+        $description = omit,
         $displayOrder = omit,
+        $externalOptions = omit,
+        $formField = omit,
+        $hasUniqueValue = omit,
+        $hidden = omit,
+        $options = omit,
+        $referencedObjectType = omit,
         ?RequestOptions $requestOptions = null,
-    ): CreatedResponsePropertyGroup {
+    ): CreatedResponseProperty {
         $params = [
-            'label' => $label, 'name' => $name, 'displayOrder' => $displayOrder,
+            'fieldType' => $fieldType,
+            'groupName' => $groupName,
+            'label' => $label,
+            'name' => $name,
+            'type' => $type,
+            'calculationFormula' => $calculationFormula,
+            'dataSensitivity' => $dataSensitivity,
+            'description' => $description,
+            'displayOrder' => $displayOrder,
+            'externalOptions' => $externalOptions,
+            'formField' => $formField,
+            'hasUniqueValue' => $hasUniqueValue,
+            'hidden' => $hidden,
+            'options' => $options,
+            'referencedObjectType' => $referencedObjectType,
         ];
 
         return $this->createRaw($objectType, $params, $requestOptions);
@@ -68,7 +120,7 @@ final class PropertiesService implements PropertiesContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CreatedResponsePropertyGroup {
+    ): CreatedResponseProperty {
         [$parsed, $options] = PropertyCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -77,10 +129,10 @@ final class PropertiesService implements PropertiesContract
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
-            path: ['crm/v3/properties/%1$s/groups', $objectType],
+            path: ['crm/v3/properties/%1$s', $objectType],
             body: (object) $parsed,
             options: $options,
-            convert: CreatedResponsePropertyGroup::class,
+            convert: CreatedResponseProperty::class,
         );
     }
 
@@ -93,13 +145,13 @@ final class PropertiesService implements PropertiesContract
      * @param string $calculationFormula represents a formula that is used to compute a calculated property
      * @param string $description a description of the property that will be shown as help text in HubSpot
      * @param int $displayOrder Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
-     * @param FieldType|value-of<FieldType> $fieldType controls how the property appears in HubSpot
+     * @param PropertyUpdateParams\FieldType|value-of<PropertyUpdateParams\FieldType> $fieldType controls how the property appears in HubSpot
      * @param bool $formField whether or not the property can be used in a HubSpot form
      * @param string $groupName the name of the property group the property belongs to
      * @param bool $hidden if true, the property won't be visible and can't be used in HubSpot
      * @param string $label a human-readable property label that will be shown in HubSpot
      * @param list<OptionInput> $options a list of valid options for the property
-     * @param Type|value-of<Type> $type the data type of the property
+     * @param PropertyUpdateParams\Type|value-of<PropertyUpdateParams\Type> $type the data type of the property
      *
      * @throws APIException
      */
@@ -167,20 +219,48 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
-     * Read all existing property groups for the specified object type and HubSpot account.
+     * Read all existing properties for the specified object type and HubSpot account.
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param string $properties
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
+        $archived = omit,
+        $properties = omit,
+        ?RequestOptions $requestOptions = null,
+    ): CollectionResponseProperty {
+        $params = ['archived' => $archived, 'properties' => $properties];
+
+        return $this->listRaw($objectType, $params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function listRaw(
+        string $objectType,
+        array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePropertyGroup {
+    ): CollectionResponseProperty {
+        [$parsed, $options] = PropertyListParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
-            path: ['crm/v3/properties/%1$s/groups', $objectType],
-            options: $requestOptions,
-            convert: CollectionResponsePropertyGroup::class,
+            path: ['crm/v3/properties/%1$s', $objectType],
+            query: $parsed,
+            options: $options,
+            convert: CollectionResponseProperty::class,
         );
     }
 
@@ -242,7 +322,7 @@ final class PropertiesService implements PropertiesContract
      *
      * @throws APIException
      */
-    public function getByName(
+    public function get(
         string $propertyName,
         $objectType,
         $archived = omit,
@@ -255,7 +335,7 @@ final class PropertiesService implements PropertiesContract
             'properties' => $properties,
         ];
 
-        return $this->getByNameRaw($propertyName, $params, $requestOptions);
+        return $this->getRaw($propertyName, $params, $requestOptions);
     }
 
     /**
@@ -265,12 +345,12 @@ final class PropertiesService implements PropertiesContract
      *
      * @throws APIException
      */
-    public function getByNameRaw(
+    public function getRaw(
         string $propertyName,
         array $params,
         ?RequestOptions $requestOptions = null
     ): Property {
-        [$parsed, $options] = PropertyGetByNameParams::parseRequest(
+        [$parsed, $options] = PropertyGetParams::parseRequest(
             $params,
             $requestOptions
         );
@@ -284,60 +364,6 @@ final class PropertiesService implements PropertiesContract
             query: $parsed,
             options: $options,
             convert: Property::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Read a provided list of properties.
-     *
-     * @param bool $archived
-     * @param list<PropertyName> $inputs
-     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $objectType,
-        $archived,
-        $inputs,
-        $dataSensitivity = omit,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseProperty {
-        $params = [
-            'archived' => $archived,
-            'inputs' => $inputs,
-            'dataSensitivity' => $dataSensitivity,
-        ];
-
-        return $this->readRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseProperty {
-        [$parsed, $options] = PropertyReadParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'post',
-            path: ['crm/v3/properties/%1$s/batch/read', $objectType],
-            body: (object) $parsed,
-            options: $options,
-            convert: BatchResponseProperty::class,
         );
     }
 }

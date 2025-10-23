@@ -34,53 +34,28 @@ final class PublicOwner implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
-    /**
-     * The unique ID for the owner.
-     */
     #[Api]
     public string $id;
 
-    /**
-     * Whether the owner is archived.
-     */
     #[Api]
     public bool $archived;
 
-    /**
-     * The timestamp when the owner was created, in ISO 8601 format.
-     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    /**
-     * The type of owner. Accepted values are: PERSON, QUEUE.
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
-    /**
-     * The timestamp when the owner was last updated, in ISO 8601 format.
-     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
-    /**
-     * The owner's email address.
-     */
     #[Api(optional: true)]
     public ?string $email;
 
-    /**
-     * The owner's first name.
-     */
     #[Api(optional: true)]
     public ?string $firstName;
 
-    /**
-     * The owner's last name.
-     */
     #[Api(optional: true)]
     public ?string $lastName;
 
@@ -88,15 +63,9 @@ final class PublicOwner implements BaseModel, ResponseConverter
     #[Api(list: PublicTeam::class, optional: true)]
     public ?array $teams;
 
-    /**
-     * The ID of the active HubSpot user associated with the owner.
-     */
     #[Api('userId', optional: true)]
     public ?int $userID;
 
-    /**
-     * The user ID, including inactive users.
-     */
     #[Api('userIdIncludingInactive', optional: true)]
     public ?int $userIDIncludingInactive;
 
@@ -165,9 +134,6 @@ final class PublicOwner implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * The unique ID for the owner.
-     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -176,9 +142,6 @@ final class PublicOwner implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * Whether the owner is archived.
-     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -187,9 +150,6 @@ final class PublicOwner implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * The timestamp when the owner was created, in ISO 8601 format.
-     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -199,8 +159,6 @@ final class PublicOwner implements BaseModel, ResponseConverter
     }
 
     /**
-     * The type of owner. Accepted values are: PERSON, QUEUE.
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -211,9 +169,6 @@ final class PublicOwner implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * The timestamp when the owner was last updated, in ISO 8601 format.
-     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -222,9 +177,6 @@ final class PublicOwner implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * The owner's email address.
-     */
     public function withEmail(string $email): self
     {
         $obj = clone $this;
@@ -233,9 +185,6 @@ final class PublicOwner implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * The owner's first name.
-     */
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
@@ -244,9 +193,6 @@ final class PublicOwner implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * The owner's last name.
-     */
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;
@@ -266,9 +212,6 @@ final class PublicOwner implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * The ID of the active HubSpot user associated with the owner.
-     */
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
@@ -277,9 +220,6 @@ final class PublicOwner implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * The user ID, including inactive users.
-     */
     public function withUserIDIncludingInactive(
         int $userIDIncludingInactive
     ): self {
