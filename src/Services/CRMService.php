@@ -6,6 +6,7 @@ namespace HubspotSDK\Services;
 
 use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\CRMContract;
+use HubspotSDK\Services\CRM\AppUninstallsService;
 use HubspotSDK\Services\CRM\AssociationsService;
 use HubspotSDK\Services\CRM\ExportsService;
 use HubspotSDK\Services\CRM\ExtensionsService;
@@ -19,6 +20,11 @@ use HubspotSDK\Services\CRM\TimelineService;
 
 final class CRMService implements CRMContract
 {
+    /**
+     * @@api
+     */
+    public AppUninstallsService $appUninstalls;
+
     /**
      * @@api
      */
@@ -74,6 +80,7 @@ final class CRMService implements CRMContract
      */
     public function __construct(private Client $client)
     {
+        $this->appUninstalls = new AppUninstallsService($client);
         $this->associations = new AssociationsService($client);
         $this->exports = new ExportsService($client);
         $this->extensions = new ExtensionsService($client);

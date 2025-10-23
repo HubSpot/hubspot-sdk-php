@@ -3,9 +3,9 @@
 namespace Tests\Services\CRM\Properties;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Properties\OptionInput;
 use HubspotSDK\CRM\Properties\PropertyCreate;
 use HubspotSDK\CRM\Properties\PropertyName;
+use HubspotSDK\OptionInput;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -82,12 +82,20 @@ final class BatchTest extends TestCase
                     ->withHidden(false)
                     ->withOptions(
                         [
-                            OptionInput::with(hidden: false, label: 'Option A', value: 'A')
-                                ->withDescription('Choice number one')
-                                ->withDisplayOrder(1),
-                            OptionInput::with(hidden: false, label: 'Option B', value: 'B')
-                                ->withDescription('Choice number two')
-                                ->withDisplayOrder(2),
+                            OptionInput::with(
+                                displayOrder: 1,
+                                hidden: false,
+                                label: 'Option A',
+                                value: 'A'
+                            )
+                                ->withDescription('Choice number one'),
+                            OptionInput::with(
+                                displayOrder: 2,
+                                hidden: false,
+                                label: 'Option B',
+                                value: 'B'
+                            )
+                                ->withDescription('Choice number two'),
                         ],
                     )
                     ->withReferencedObjectType('referencedObjectType'),

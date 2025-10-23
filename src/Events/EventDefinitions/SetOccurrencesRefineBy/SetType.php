@@ -1,0 +1,20 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Events\EventDefinitions\SetOccurrencesRefineBy;
+
+enum SetType: string
+{
+    case ALL = 'ALL';
+
+    case ALL_INCLUDE_EMPTY = 'ALL_INCLUDE_EMPTY';
+
+    case ANY = 'ANY';
+
+    case NONE = 'NONE';
+
+    case NONE_EXCLUDE_EMPTY = 'NONE_EXCLUDE_EMPTY';
+
+    case ANY_INCLUDE_EMPTY = 'ANY_INCLUDE_EMPTY';
+}

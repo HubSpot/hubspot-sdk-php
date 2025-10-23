@@ -10,6 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Properties\PropertyUpdateParams\FieldType;
 use HubspotSDK\CRM\Properties\PropertyUpdateParams\Type;
+use HubspotSDK\OptionInput;
 
 /**
  * Perform a partial update of a property identified by { propertyName }. Provided fields will be overwritten.

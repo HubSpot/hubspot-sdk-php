@@ -10,6 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Properties\PropertyCreate\DataSensitivity;
 use HubspotSDK\CRM\Properties\PropertyCreate\FieldType;
 use HubspotSDK\CRM\Properties\PropertyCreate\Type;
+use HubspotSDK\OptionInput;
 
 /**
  * @phpstan-type property_create = array{

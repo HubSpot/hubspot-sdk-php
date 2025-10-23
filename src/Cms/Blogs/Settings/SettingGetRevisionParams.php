@@ -1,0 +1,68 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Cms\Blogs\Settings;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * Retrieves a previous version of a Blog.
+ *
+ * @see HubspotSDK\Cms\Blogs\Settings->getRevision
+ *
+ * @phpstan-type setting_get_revision_params = array{blogID: string}
+ */
+final class SettingGetRevisionParams implements BaseModel
+{
+    /** @use SdkModel<setting_get_revision_params> */
+    use SdkModel;
+    use SdkParams;
+
+    #[Api]
+    public string $blogID;
+
+    /**
+     * `new SettingGetRevisionParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * SettingGetRevisionParams::with(blogID: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new SettingGetRevisionParams)->withBlogID(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(string $blogID): self
+    {
+        $obj = new self;
+
+        $obj->blogID = $blogID;
+
+        return $obj;
+    }
+
+    public function withBlogID(string $blogID): self
+    {
+        $obj = clone $this;
+        $obj->blogID = $blogID;
+
+        return $obj;
+    }
+}

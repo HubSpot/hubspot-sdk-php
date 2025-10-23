@@ -9,8 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
-use HubspotSDK\CRM\Property;
 use HubspotSDK\Marketing\Emails\Paging;
+use HubspotSDK\Property;
 
 /**
  * @phpstan-type collection_response_property = array{

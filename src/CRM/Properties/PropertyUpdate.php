@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Properties\PropertyUpdate\FieldType;
 use HubspotSDK\CRM\Properties\PropertyUpdate\Type;
+use HubspotSDK\OptionInput;
 
 /**
  * @phpstan-type property_update = array{

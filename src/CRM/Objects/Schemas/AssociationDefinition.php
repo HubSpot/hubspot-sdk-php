@@ -6,9 +6,7 @@ namespace HubspotSDK\CRM\Objects\Schemas;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Defines an association between two object types.
@@ -22,12 +20,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   updatedAt?: \DateTimeInterface,
  * }
  */
-final class AssociationDefinition implements BaseModel, ResponseConverter
+final class AssociationDefinition implements BaseModel
 {
     /** @use SdkModel<association_definition> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * A unique ID for this association.

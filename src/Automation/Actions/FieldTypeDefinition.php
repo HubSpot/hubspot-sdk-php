@@ -10,7 +10,7 @@ use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Option;
+use HubspotSDK\Option;
 
 /**
  * @phpstan-type field_type_definition = array{

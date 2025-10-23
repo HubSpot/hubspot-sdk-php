@@ -30,25 +30,25 @@ final class EventsTest extends TestCase
     }
 
     #[Test]
-    public function testSend(): void
+    public function testList(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->send(eventName: 'pe123456_account_login');
+        $result = $this->client->events->list();
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testSendWithOptionalParams(): void
+    public function testListEventTypes(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->send(eventName: 'pe123456_account_login');
+        $result = $this->client->events->listEventTypes();
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

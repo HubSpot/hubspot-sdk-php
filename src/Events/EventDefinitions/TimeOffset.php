@@ -1,0 +1,107 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Events\EventDefinitions;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Events\EventDefinitions\TimeOffset\OffsetDirection;
+use HubspotSDK\Events\EventDefinitions\TimeOffset\TimeUnit;
+
+/**
+ * @phpstan-type time_offset = array{
+ *   amount: int,
+ *   offsetDirection: value-of<OffsetDirection>,
+ *   timeUnit: value-of<TimeUnit>,
+ * }
+ */
+final class TimeOffset implements BaseModel
+{
+    /** @use SdkModel<time_offset> */
+    use SdkModel;
+
+    #[Api]
+    public int $amount;
+
+    /** @var value-of<OffsetDirection> $offsetDirection */
+    #[Api(enum: OffsetDirection::class)]
+    public string $offsetDirection;
+
+    /** @var value-of<TimeUnit> $timeUnit */
+    #[Api(enum: TimeUnit::class)]
+    public string $timeUnit;
+
+    /**
+     * `new TimeOffset()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * TimeOffset::with(amount: ..., offsetDirection: ..., timeUnit: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new TimeOffset)->withAmount(...)->withOffsetDirection(...)->withTimeUnit(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param OffsetDirection|value-of<OffsetDirection> $offsetDirection
+     * @param TimeUnit|value-of<TimeUnit> $timeUnit
+     */
+    public static function with(
+        int $amount,
+        OffsetDirection|string $offsetDirection,
+        TimeUnit|string $timeUnit,
+    ): self {
+        $obj = new self;
+
+        $obj->amount = $amount;
+        $obj['offsetDirection'] = $offsetDirection;
+        $obj['timeUnit'] = $timeUnit;
+
+        return $obj;
+    }
+
+    public function withAmount(int $amount): self
+    {
+        $obj = clone $this;
+        $obj->amount = $amount;
+
+        return $obj;
+    }
+
+    /**
+     * @param OffsetDirection|value-of<OffsetDirection> $offsetDirection
+     */
+    public function withOffsetDirection(
+        OffsetDirection|string $offsetDirection
+    ): self {
+        $obj = clone $this;
+        $obj['offsetDirection'] = $offsetDirection;
+
+        return $obj;
+    }
+
+    /**
+     * @param TimeUnit|value-of<TimeUnit> $timeUnit
+     */
+    public function withTimeUnit(TimeUnit|string $timeUnit): self
+    {
+        $obj = clone $this;
+        $obj['timeUnit'] = $timeUnit;
+
+        return $obj;
+    }
+}

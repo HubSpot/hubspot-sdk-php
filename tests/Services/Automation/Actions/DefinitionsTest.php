@@ -7,7 +7,7 @@ use HubspotSDK\Automation\Actions\InputFieldDefinition;
 use HubspotSDK\Automation\Actions\PublicActionFunction;
 use HubspotSDK\Automation\Actions\PublicActionLabels;
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Option;
+use HubspotSDK\Option;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

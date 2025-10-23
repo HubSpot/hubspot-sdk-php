@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Associate all pairs of objects identified in the request body.
- *
  * @see HubspotSDK\CRM\Associations->create
  *
  * @phpstan-type association_create_params = array{
