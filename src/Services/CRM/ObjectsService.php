@@ -10,7 +10,6 @@ use HubspotSDK\Services\CRM\Objects\AppointmentsService;
 use HubspotSDK\Services\CRM\Objects\CallsService;
 use HubspotSDK\Services\CRM\Objects\CartsService;
 use HubspotSDK\Services\CRM\Objects\CommercePaymentsService;
-use HubspotSDK\Services\CRM\Objects\CommerceSubscriptionsService;
 use HubspotSDK\Services\CRM\Objects\CommunicationsService;
 use HubspotSDK\Services\CRM\Objects\CompaniesService;
 use HubspotSDK\Services\CRM\Objects\ContactsService;
@@ -63,11 +62,6 @@ final class ObjectsService implements ObjectsContract
      * @@api
      */
     public CommercePaymentsService $commercePayments;
-
-    /**
-     * @@api
-     */
-    public CommerceSubscriptionsService $commerceSubscriptions;
 
     /**
      * @@api
@@ -233,7 +227,6 @@ final class ObjectsService implements ObjectsContract
         $this->calls = new CallsService($client);
         $this->carts = new CartsService($client);
         $this->commercePayments = new CommercePaymentsService($client);
-        $this->commerceSubscriptions = new CommerceSubscriptionsService($client);
         $this->communications = new CommunicationsService($client);
         $this->companies = new CompaniesService($client);
         $this->contacts = new ContactsService($client);
