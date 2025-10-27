@@ -9,8 +9,6 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Defines a enumeration property option.
- *
  * @phpstan-type option_input = array{
  *   displayOrder: int,
  *   hidden: bool,
@@ -24,33 +22,18 @@ final class OptionInput implements BaseModel
     /** @use SdkModel<option_input> */
     use SdkModel;
 
-    /**
-     * Options are shown in order starting with the lowest positive integer value. Values of -1 will cause the option to be displayed after any positive values.
-     */
     #[Api]
     public int $displayOrder;
 
-    /**
-     * Hidden options won't be shown in HubSpot.
-     */
     #[Api]
     public bool $hidden;
 
-    /**
-     * A human-readable option label that will be shown in HubSpot.
-     */
     #[Api]
     public string $label;
 
-    /**
-     * The internal value of the option, which must be used when setting the property value through the API.
-     */
     #[Api]
     public string $value;
 
-    /**
-     * A description of the option.
-     */
     #[Api(optional: true)]
     public ?string $description;
 
@@ -101,9 +84,6 @@ final class OptionInput implements BaseModel
         return $obj;
     }
 
-    /**
-     * Options are shown in order starting with the lowest positive integer value. Values of -1 will cause the option to be displayed after any positive values.
-     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
@@ -112,9 +92,6 @@ final class OptionInput implements BaseModel
         return $obj;
     }
 
-    /**
-     * Hidden options won't be shown in HubSpot.
-     */
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
@@ -123,9 +100,6 @@ final class OptionInput implements BaseModel
         return $obj;
     }
 
-    /**
-     * A human-readable option label that will be shown in HubSpot.
-     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -134,9 +108,6 @@ final class OptionInput implements BaseModel
         return $obj;
     }
 
-    /**
-     * The internal value of the option, which must be used when setting the property value through the API.
-     */
     public function withValue(string $value): self
     {
         $obj = clone $this;
@@ -145,9 +116,6 @@ final class OptionInput implements BaseModel
         return $obj;
     }
 
-    /**
-     * A description of the option.
-     */
     public function withDescription(string $description): self
     {
         $obj = clone $this;

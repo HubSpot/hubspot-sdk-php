@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\CRM\Properties;
 
+use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Properties\Batch\BatchCreateParams;
 use HubspotSDK\CRM\Properties\Batch\BatchDeleteParams;
 use HubspotSDK\CRM\Properties\Batch\BatchReadParams;
 use HubspotSDK\CRM\Properties\Batch\BatchReadParams\DataSensitivity;
-use HubspotSDK\CRM\Properties\BatchResponseProperty;
-use HubspotSDK\CRM\Properties\PropertyCreate;
-use HubspotSDK\CRM\Properties\PropertyName;
+use HubspotSDK\PropertyCreate;
+use HubspotSDK\PropertyName;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Properties\BatchContract;
 

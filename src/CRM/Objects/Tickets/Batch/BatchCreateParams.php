@@ -1,0 +1,77 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\CRM\Objects\Tickets\Batch;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\CRM\SimplePublicObjectBatchInputForCreate;
+
+/**
+ * Create a batch of tickets. The `inputs` array can contain a `properties` object to define property values for the ticket, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
+ *
+ * @see HubspotSDK\CRM\Objects\Tickets\Batch->create
+ *
+ * @phpstan-type batch_create_params = array{
+ *   inputs: list<SimplePublicObjectBatchInputForCreate>
+ * }
+ */
+final class BatchCreateParams implements BaseModel
+{
+    /** @use SdkModel<batch_create_params> */
+    use SdkModel;
+    use SdkParams;
+
+    /** @var list<SimplePublicObjectBatchInputForCreate> $inputs */
+    #[Api(list: SimplePublicObjectBatchInputForCreate::class)]
+    public array $inputs;
+
+    /**
+     * `new BatchCreateParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * BatchCreateParams::with(inputs: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new BatchCreateParams)->withInputs(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<SimplePublicObjectBatchInputForCreate> $inputs
+     */
+    public static function with(array $inputs): self
+    {
+        $obj = new self;
+
+        $obj->inputs = $inputs;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<SimplePublicObjectBatchInputForCreate> $inputs
+     */
+    public function withInputs(array $inputs): self
+    {
+        $obj = clone $this;
+        $obj->inputs = $inputs;
+
+        return $obj;
+    }
+}

@@ -24,14 +24,11 @@ final class ContactGdprDeleteParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The ID of the company to delete.
-     */
     #[Api('objectId')]
     public string $objectID;
 
     /**
-     * The name of a unique property, when identifying records by property instead of ID.
+     * The name of a property whose values are unique for this object.
      */
     #[Api(optional: true)]
     public ?string $idProperty;
@@ -73,9 +70,6 @@ final class ContactGdprDeleteParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * The ID of the company to delete.
-     */
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
@@ -85,7 +79,7 @@ final class ContactGdprDeleteParams implements BaseModel
     }
 
     /**
-     * The name of a unique property, when identifying records by property instead of ID.
+     * The name of a property whose values are unique for this object.
      */
     public function withIDProperty(string $idProperty): self
     {

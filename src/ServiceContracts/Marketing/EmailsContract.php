@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
-use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
+use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalVersionPublicEmail;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
-use HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
 use HubspotSDK\Marketing\Emails\EmailListParams\Type;
 use HubspotSDK\Marketing\Emails\PublicEmail;
 use HubspotSDK\Marketing\Emails\PublicEmailContent;
@@ -299,6 +297,40 @@ interface EmailsContract
     /**
      * @api
      *
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $includedProperties limit the response to only include the specified properties
+     * @param bool $includeStats include statistics with email
+     * @param bool $marketingCampaignNames if set to true, loads `campaignName` and `campaignUtm`
+     * @param bool $workflowNames if set to true, loads workflows in which the email is used within a "send email" action
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $emailID,
+        $archived = omit,
+        $includedProperties = omit,
+        $includeStats = omit,
+        $marketingCampaignNames = omit,
+        $workflowNames = omit,
+        ?RequestOptions $requestOptions = null,
+    ): PublicEmail;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        string $emailID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): PublicEmail;
+
+    /**
+     * @api
+     *
      * @throws APIException
      */
     public function getAbTestVariation(
@@ -319,71 +351,11 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param list<int> $emailIDs Filter by email IDs. Only include statistics of emails with these IDs.
-     * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
-     * @param string $property Specifies which email properties should be returned. All properties will be returned by default.
-     * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
-     *
-     * @throws APIException
-     */
-    public function getEmailsList(
-        $emailIDs = omit,
-        $endTimestamp = omit,
-        $property = omit,
-        $startTimestamp = omit,
-        ?RequestOptions $requestOptions = null,
-    ): AggregateEmailStatistics;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getEmailsListRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): AggregateEmailStatistics;
-
-    /**
-     * @api
-     *
-     * @param list<int> $emailIDs Filter by email IDs. Only include statistics of emails with these IDs.
-     * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
-     * @param Interval|value-of<Interval> $interval the interval to aggregate statistics for
-     * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
-     *
-     * @throws APIException
-     */
-    public function getHistogram(
-        $emailIDs = omit,
-        $endTimestamp = omit,
-        $interval = omit,
-        $startTimestamp = omit,
-        ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getHistogramRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
-
-    /**
-     * @api
-     *
      * @param string $emailID
      *
      * @throws APIException
      */
-    public function getRevisionByID(
+    public function getRevision(
         string $revisionID,
         $emailID,
         ?RequestOptions $requestOptions = null
@@ -396,7 +368,7 @@ interface EmailsContract
      *
      * @throws APIException
      */
-    public function getRevisionByIDRaw(
+    public function getRevisionRaw(
         string $revisionID,
         array $params,
         ?RequestOptions $requestOptions = null,
@@ -409,76 +381,38 @@ interface EmailsContract
      * @param string $before The cursor token value to get the previous set of results. You can get this from the `paging.prev.before` JSON property of a paged response containing more results.
      * @param int $limit The maximum number of results to return. Default is 10.
      *
-     * @return Page<VersionPublicEmail>
-     *
      * @throws APIException
      */
-    public function getRevisions(
+    public function listRevisions(
         string $emailID,
         $after = omit,
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): Page;
+    ): CollectionResponseWithTotalVersionPublicEmail;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
-     * @return Page<VersionPublicEmail>
-     *
      * @throws APIException
      */
-    public function getRevisionsRaw(
+    public function listRevisionsRaw(
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): Page;
+    ): CollectionResponseWithTotalVersionPublicEmail;
 
     /**
      * @api
      *
      * @throws APIException
      */
-    public function publishOrSend(
+    public function publish(
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed;
-
-    /**
-     * @api
-     *
-     * @param bool $archived whether to return only results that have been archived
-     * @param list<string> $includedProperties limit the response to only include the specified properties
-     * @param bool $includeStats include statistics with email
-     * @param bool $marketingCampaignNames if set to true, loads `campaignName` and `campaignUtm`
-     * @param bool $workflowNames if set to true, loads workflows in which the email is used within a "send email" action
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $emailID,
-        $archived = omit,
-        $includedProperties = omit,
-        $includeStats = omit,
-        $marketingCampaignNames = omit,
-        $workflowNames = omit,
-        ?RequestOptions $requestOptions = null,
-    ): PublicEmail;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $emailID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PublicEmail;
 
     /**
      * @api
@@ -489,32 +423,6 @@ interface EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $emailID
-     *
-     * @throws APIException
-     */
-    public function restoreDraftRevision(
-        int $revisionID,
-        $emailID,
-        ?RequestOptions $requestOptions = null
-    ): PublicEmail;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function restoreDraftRevisionRaw(
-        int $revisionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PublicEmail;
 
     /**
      * @api
@@ -545,9 +453,35 @@ interface EmailsContract
     /**
      * @api
      *
+     * @param string $emailID
+     *
      * @throws APIException
      */
-    public function unpublishOrCancel(
+    public function restoreRevisionToDraft(
+        int $revisionID,
+        $emailID,
+        ?RequestOptions $requestOptions = null
+    ): PublicEmail;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function restoreRevisionToDraftRaw(
+        int $revisionID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): PublicEmail;
+
+    /**
+     * @api
+     *
+     * @throws APIException
+     */
+    public function unpublish(
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed;
@@ -563,13 +497,13 @@ interface EmailsContract
      * @param int $folderIDV2
      * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
-     * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Language> $language
+     * @param \HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Language|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Language> $language
      * @param string $name the name of the email, as displayed on the email dashboard
      * @param \DateTimeInterface $publishDate The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
      * @param PublicRssEmailDetails $rssData RSS related data if it is a blog or rss email
      * @param bool $sendOnPublish determines whether the email will be sent immediately on publish
-     * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\State> $state the email state
-     * @param \HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory|value-of<\HubspotSDK\Marketing\Emails\EmailUpsertDraftParams\Subcategory> $subcategory the email subcategory
+     * @param \HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\State|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\State> $state the email state
+     * @param \HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory> $subcategory the email subcategory
      * @param string $subject the subject of the email
      * @param PublicEmailSubscriptionDetails $subscriptionDetails data structure representing the subscription fields of the email
      * @param PublicEmailTestingDetails $testing AB testing related data. This property is only returned for AB type emails.
@@ -578,7 +512,7 @@ interface EmailsContract
      *
      * @throws APIException
      */
-    public function upsertDraft(
+    public function updateDraft(
         string $emailID,
         $activeDomain = omit,
         $archived = omit,
@@ -610,7 +544,7 @@ interface EmailsContract
      *
      * @throws APIException
      */
-    public function upsertDraftRaw(
+    public function updateDraftRaw(
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null

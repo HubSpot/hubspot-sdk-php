@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\MarketingEvents;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type marketing_event_public_read_response = array{
@@ -33,12 +31,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   startDateTime?: \DateTimeInterface,
  * }
  */
-final class MarketingEventPublicReadResponse implements BaseModel, ResponseConverter
+final class MarketingEventPublicReadResponse implements BaseModel
 {
     /** @use SdkModel<marketing_event_public_read_response> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

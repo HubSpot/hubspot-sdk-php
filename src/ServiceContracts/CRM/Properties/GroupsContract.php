@@ -17,9 +17,9 @@ interface GroupsContract
     /**
      * @api
      *
-     * @param string $label a human-readable label that will be shown in HubSpot
-     * @param string $name the internal property group name, which must be used when referencing the property group via the API
-     * @param int $displayOrder Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     * @param string $label
+     * @param string $name
+     * @param int $displayOrder
      *
      * @throws APIException
      */
@@ -48,8 +48,8 @@ interface GroupsContract
      * @api
      *
      * @param string $objectType
-     * @param int $displayOrder Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
-     * @param string $label a human-readable label that will be shown in HubSpot
+     * @param int $displayOrder
+     * @param string $label
      *
      * @throws APIException
      */

@@ -6,7 +6,9 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Response object for collections of marketing emails with pagination information.
@@ -15,10 +17,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   results: list<VersionPublicEmail>, total: int, paging?: Paging
  * }
  */
-final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
+final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<collection_response_with_total_version_public_email> */
     use SdkModel;
+
+    use SdkResponse;
 
     /**
      * Collection of emails.

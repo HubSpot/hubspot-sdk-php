@@ -5,7 +5,7 @@ namespace Tests\Services\Conversations\CustomChannels;
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
 use HubspotSDK\Conversations\CustomChannels\FileAttachment;
-use HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
+use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

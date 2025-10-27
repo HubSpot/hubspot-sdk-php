@@ -7,7 +7,7 @@ namespace HubspotSDK\CRM\Objects\DealSplits;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\SimplePublicObject;
+use HubspotSDK\CRM\SimplePublicObject;
 
 /**
  * @phpstan-type deal_to_deal_splits = array{

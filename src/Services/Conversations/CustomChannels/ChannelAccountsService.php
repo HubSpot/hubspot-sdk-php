@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\CollectionResponseWithTotalPublicChannelAccountForwardPaging;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountCreateParams;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountGetParams;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
-use HubspotSDK\Conversations\CustomChannels\CollectionResponseWithTotalPublicChannelAccountForwardPaging;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccount;
-use HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
+use HubspotSDK\Conversations\PublicChannelAccount;
+use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountsContract;

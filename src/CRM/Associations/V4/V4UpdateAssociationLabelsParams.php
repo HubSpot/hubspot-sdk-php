@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\CRM\Associations\V4;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -18,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   objectType: string,
  *   objectID: string,
  *   toObjectType: string,
- *   body: list<AssociationSpec1>,
+ *   body: list<AssociationSpec>,
  * }
  */
 final class V4UpdateAssociationLabelsParams implements BaseModel
@@ -36,8 +37,8 @@ final class V4UpdateAssociationLabelsParams implements BaseModel
     #[Api]
     public string $toObjectType;
 
-    /** @var list<AssociationSpec1> $body */
-    #[Api(list: AssociationSpec1::class)]
+    /** @var list<AssociationSpec> $body */
+    #[Api(list: AssociationSpec::class)]
     public array $body;
 
     /**
@@ -70,7 +71,7 @@ final class V4UpdateAssociationLabelsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationSpec1> $body
+     * @param list<AssociationSpec> $body
      */
     public static function with(
         string $objectType,
@@ -113,7 +114,7 @@ final class V4UpdateAssociationLabelsParams implements BaseModel
     }
 
     /**
-     * @param list<AssociationSpec1> $body
+     * @param list<AssociationSpec> $body
      */
     public function withBody(array $body): self
     {

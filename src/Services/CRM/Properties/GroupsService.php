@@ -30,9 +30,9 @@ final class GroupsService implements GroupsContract
      *
      * Create and return a copy of a new property group.
      *
-     * @param string $label a human-readable label that will be shown in HubSpot
-     * @param string $name the internal property group name, which must be used when referencing the property group via the API
-     * @param int $displayOrder Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     * @param string $label
+     * @param string $name
+     * @param int $displayOrder
      *
      * @throws APIException
      */
@@ -83,8 +83,8 @@ final class GroupsService implements GroupsContract
      * Perform a partial update of a property group identified by {groupName}. Provided fields will be overwritten.
      *
      * @param string $objectType
-     * @param int $displayOrder Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
-     * @param string $label a human-readable label that will be shown in HubSpot
+     * @param int $displayOrder
+     * @param string $label
      *
      * @throws APIException
      */

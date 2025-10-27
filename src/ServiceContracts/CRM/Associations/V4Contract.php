@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\CRM\Associations;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Associations\V4\AssociationSpec1;
 use HubspotSDK\CRM\BatchResponsePublicDefaultAssociation;
 use HubspotSDK\CRM\CollectionResponseMultiAssociatedObjectWithLabel;
 use HubspotSDK\CRM\CreatedResponseLabelsBetweenObjectPair;
@@ -113,7 +113,7 @@ interface V4Contract
      * @param string $objectType
      * @param string $objectID
      * @param string $toObjectType
-     * @param list<AssociationSpec1> $body
+     * @param list<AssociationSpec> $body
      *
      * @throws APIException
      */

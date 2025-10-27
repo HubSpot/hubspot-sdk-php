@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams;
+
+/**
+ * The interval to aggregate statistics for.
+ */
+enum Interval: string
+{
+    case YEAR = 'YEAR';
+
+    case QUARTER = 'QUARTER';
+
+    case MONTH = 'MONTH';
+
+    case WEEK = 'WEEK';
+
+    case DAY = 'DAY';
+
+    case HOUR = 'HOUR';
+
+    case QUARTER_HOUR = 'QUARTER_HOUR';
+
+    case MINUTE = 'MINUTE';
+
+    case SECOND = 'SECOND';
+}

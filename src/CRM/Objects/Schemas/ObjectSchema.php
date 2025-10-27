@@ -10,6 +10,7 @@ use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
+use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\Property;
 
 /**
@@ -56,9 +57,6 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     #[Api(list: AssociationDefinition::class)]
     public array $associations;
 
-    /**
-     * Singular and plural labels for the object. Used in CRM display.
-     */
     #[Api]
     public ObjectTypeDefinitionLabels $labels;
 
@@ -249,9 +247,6 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * Singular and plural labels for the object. Used in CRM display.
-     */
     public function withLabels(ObjectTypeDefinitionLabels $labels): self
     {
         $obj = clone $this;

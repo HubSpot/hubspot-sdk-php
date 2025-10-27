@@ -51,21 +51,21 @@ final class PropertiesService implements PropertiesContract
      *
      * Create and return a copy of a new property for the specified object type.
      *
-     * @param FieldType|value-of<FieldType> $fieldType controls how the property appears in HubSpot
-     * @param string $groupName the name of the property group the property belongs to
-     * @param string $label a human-readable property label that will be shown in HubSpot
-     * @param string $name the internal property name, which must be used when referencing the property via the API
-     * @param Type|value-of<Type> $type the data type of the property
-     * @param string $calculationFormula represents a formula that is used to compute a calculated property
+     * @param FieldType|value-of<FieldType> $fieldType
+     * @param string $groupName
+     * @param string $label
+     * @param string $name
+     * @param Type|value-of<Type> $type
+     * @param string $calculationFormula
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param string $description a description of the property that will be shown as help text in HubSpot
-     * @param int $displayOrder Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property to be displayed after any positive values.
-     * @param bool $externalOptions Applicable only for 'enumeration' type properties.  Should be set to true in conjunction with a 'referencedObjectType' of 'OWNER'.  Otherwise false.
-     * @param bool $formField whether or not the property can be used in a HubSpot form
-     * @param bool $hasUniqueValue Whether or not the property's value must be unique. Once set, this can't be changed.
-     * @param bool $hidden If true, the option will not be shown in forms, bots, or meeting scheduling pages. Supported for contact, company, ticket, and custom object enumeration properties.
-     * @param list<OptionInput> $options A list of valid options for the property. This field is required for enumerated properties.
-     * @param string $referencedObjectType should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users
+     * @param string $description
+     * @param int $displayOrder
+     * @param bool $externalOptions
+     * @param bool $formField
+     * @param bool $hasUniqueValue
+     * @param bool $hidden
+     * @param list<OptionInput> $options
+     * @param string $referencedObjectType
      *
      * @throws APIException
      */

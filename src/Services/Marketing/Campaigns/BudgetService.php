@@ -1,0 +1,266 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Services\Marketing\Campaigns;
+
+use HubspotSDK\Client;
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\Campaigns\Budget\BudgetCreateParams;
+use HubspotSDK\Marketing\Campaigns\Budget\BudgetDeleteParams;
+use HubspotSDK\Marketing\Campaigns\Budget\BudgetGetParams;
+use HubspotSDK\Marketing\Campaigns\Budget\BudgetUpdateParams;
+use HubspotSDK\Marketing\Campaigns\PublicBudgetItem;
+use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
+use HubspotSDK\RequestOptions;
+use HubspotSDK\ServiceContracts\Marketing\Campaigns\BudgetContract;
+
+use const HubspotSDK\Core\OMIT as omit;
+
+final class BudgetService implements BudgetContract
+{
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * Add a new budget item to the campaign
+     *
+     * @param float $amount
+     * @param string $name
+     * @param int $order
+     * @param string $description
+     *
+     * @throws APIException
+     */
+    public function create(
+        string $campaignGuid,
+        $amount,
+        $name,
+        $order,
+        $description = omit,
+        ?RequestOptions $requestOptions = null,
+    ): PublicBudgetItem {
+        $params = [
+            'amount' => $amount,
+            'name' => $name,
+            'order' => $order,
+            'description' => $description,
+        ];
+
+        return $this->createRaw($campaignGuid, $params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function createRaw(
+        string $campaignGuid,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): PublicBudgetItem {
+        [$parsed, $options] = BudgetCreateParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: ['marketing/v3/campaigns/%1$s/budget', $campaignGuid],
+            body: (object) $parsed,
+            options: $options,
+            convert: PublicBudgetItem::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Update a specific budget item by ID
+     *
+     * @param string $campaignGuid
+     * @param float $amount
+     * @param string $name
+     * @param int $order
+     * @param string $description
+     *
+     * @throws APIException
+     */
+    public function update(
+        int $budgetID,
+        $campaignGuid,
+        $amount,
+        $name,
+        $order,
+        $description = omit,
+        ?RequestOptions $requestOptions = null,
+    ): PublicBudgetItem {
+        $params = [
+            'campaignGuid' => $campaignGuid,
+            'amount' => $amount,
+            'name' => $name,
+            'order' => $order,
+            'description' => $description,
+        ];
+
+        return $this->updateRaw($budgetID, $params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function updateRaw(
+        int $budgetID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): PublicBudgetItem {
+        [$parsed, $options] = BudgetUpdateParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+        $campaignGuid = $parsed['campaignGuid'];
+        unset($parsed['campaignGuid']);
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'put',
+            path: [
+                'marketing/v3/campaigns/%1$s/budget/%2$s', $campaignGuid, $budgetID,
+            ],
+            body: (object) array_diff_key($parsed, ['campaignGuid']),
+            options: $options,
+            convert: PublicBudgetItem::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Delete a specific budget item by ID
+     *
+     * @param string $campaignGuid
+     *
+     * @throws APIException
+     */
+    public function delete(
+        int $budgetID,
+        $campaignGuid,
+        ?RequestOptions $requestOptions = null
+    ): mixed {
+        $params = ['campaignGuid' => $campaignGuid];
+
+        return $this->deleteRaw($budgetID, $params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function deleteRaw(
+        int $budgetID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): mixed {
+        [$parsed, $options] = BudgetDeleteParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+        $campaignGuid = $parsed['campaignGuid'];
+        unset($parsed['campaignGuid']);
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'delete',
+            path: [
+                'marketing/v3/campaigns/%1$s/budget/%2$s', $campaignGuid, $budgetID,
+            ],
+            options: $options,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Get a specific budget item by ID
+     *
+     * @param string $campaignGuid
+     *
+     * @throws APIException
+     */
+    public function get(
+        int $budgetID,
+        $campaignGuid,
+        ?RequestOptions $requestOptions = null
+    ): PublicBudgetItem {
+        $params = ['campaignGuid' => $campaignGuid];
+
+        return $this->getRaw($budgetID, $params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        int $budgetID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): PublicBudgetItem {
+        [$parsed, $options] = BudgetGetParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+        $campaignGuid = $parsed['campaignGuid'];
+        unset($parsed['campaignGuid']);
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'marketing/v3/campaigns/%1$s/budget/%2$s', $campaignGuid, $budgetID,
+            ],
+            options: $options,
+            convert: PublicBudgetItem::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve detailed information about the budget and spend items for a specified campaign, including the total budget, total spend, and remaining budget.
+     * Budget and Spend items may be returned in any order, but the order field specifies their sequence based on the creation date. The item with order 0 is the oldest, and items with higher order values are newer
+     *
+     * @throws APIException
+     */
+    public function getTotals(
+        string $campaignGuid,
+        ?RequestOptions $requestOptions = null
+    ): PublicBudgetTotals {
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: ['marketing/v3/campaigns/%1$s/budget/totals', $campaignGuid],
+            options: $requestOptions,
+            convert: PublicBudgetTotals::class,
+        );
+    }
+}

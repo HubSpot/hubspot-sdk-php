@@ -7,6 +7,7 @@ namespace HubspotSDK\CRM\Objects\Schemas;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
  * Defines attributes to update on an object type.
@@ -33,9 +34,6 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     #[Api(optional: true)]
     public ?string $description;
 
-    /**
-     * Singular and plural labels for the object. Used in CRM display.
-     */
     #[Api(optional: true)]
     public ?ObjectTypeDefinitionLabels $labels;
 
@@ -126,9 +124,6 @@ final class ObjectTypeDefinitionPatch implements BaseModel
         return $obj;
     }
 
-    /**
-     * Singular and plural labels for the object. Used in CRM display.
-     */
     public function withLabels(ObjectTypeDefinitionLabels $labels): self
     {
         $obj = clone $this;

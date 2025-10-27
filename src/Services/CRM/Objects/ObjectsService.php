@@ -6,18 +6,18 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\FilterGroup;
+use HubspotSDK\CRM\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\CRM\CreatedResponseSimplePublicObject;
+use HubspotSDK\CRM\FilterGroup;
 use HubspotSDK\CRM\Objects\Objects\ObjectCreateParams;
 use HubspotSDK\CRM\Objects\Objects\ObjectDeleteParams;
 use HubspotSDK\CRM\Objects\Objects\ObjectListParams;
 use HubspotSDK\CRM\Objects\Objects\ObjectReadParams;
 use HubspotSDK\CRM\Objects\Objects\ObjectSearchParams;
 use HubspotSDK\CRM\Objects\Objects\ObjectUpdateParams;
-use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
-use HubspotSDK\CRM\Objects\SimplePublicObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\PublicAssociationsForObject;
+use HubspotSDK\CRM\SimplePublicObject;
+use HubspotSDK\CRM\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\ObjectsContract;
@@ -45,7 +45,8 @@ final class ObjectsService implements ObjectsContract
      *
      * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
      *
-     * @param array<string, string> $properties the company property values to set
+     * @param array<string,
+     * string,> $properties Key-value pairs for setting properties for the new object
      * @param list<PublicAssociationsForObject> $associations
      *
      * @throws APIException
@@ -94,7 +95,8 @@ final class ObjectsService implements ObjectsContract
      * Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
      * @param string $objectType
-     * @param array<string, string> $properties the company property values to set
+     * @param array<string,
+     * string,> $properties Key value pairs representing the properties of the object
      * @param string $idProperty The name of a property whose values are unique for this object
      *
      * @throws APIException

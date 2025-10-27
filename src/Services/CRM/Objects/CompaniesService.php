@@ -6,18 +6,18 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\CRM\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\CRM\CreatedResponseSimplePublicObject;
+use HubspotSDK\CRM\FilterGroup;
 use HubspotSDK\CRM\Objects\Companies\CompanyCreateParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyGetParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyListParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyMergeParams;
 use HubspotSDK\CRM\Objects\Companies\CompanySearchParams;
 use HubspotSDK\CRM\Objects\Companies\CompanyUpdateParams;
-use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\FilterGroup;
-use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
-use HubspotSDK\CRM\Objects\SimplePublicObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\PublicAssociationsForObject;
+use HubspotSDK\CRM\SimplePublicObject;
+use HubspotSDK\CRM\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\CompaniesContract;
@@ -45,7 +45,8 @@ final class CompaniesService implements CompaniesContract
      *
      * Create a single company. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the company, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
      *
-     * @param array<string, string> $properties the company property values to set
+     * @param array<string,
+     * string,> $properties Key-value pairs for setting properties for the new object
      * @param list<PublicAssociationsForObject> $associations
      *
      * @throws APIException
@@ -91,7 +92,8 @@ final class CompaniesService implements CompaniesContract
      *
      * Update a company by ID (`companyId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param array<string, string> $properties the company property values to set
+     * @param array<string,
+     * string,> $properties Key value pairs representing the properties of the object
      * @param string $idProperty The name of a property whose values are unique for this object
      *
      * @throws APIException
@@ -287,8 +289,8 @@ final class CompaniesService implements CompaniesContract
      *
      * Merge two company records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
      *
-     * @param string $objectIDToMerge the ID of the company to merge into the primary
-     * @param string $primaryObjectID the ID of the primary company, which the other will merge into
+     * @param string $objectIDToMerge
+     * @param string $primaryObjectID
      *
      * @throws APIException
      */

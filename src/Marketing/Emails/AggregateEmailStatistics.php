@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Aggregated statistics for the given interval, plus the IDs of emails that were sent during that interval.
@@ -19,12 +17,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   emails?: list<int>,
  * }
  */
-final class AggregateEmailStatistics implements BaseModel, ResponseConverter
+final class AggregateEmailStatistics implements BaseModel
 {
     /** @use SdkModel<aggregate_email_statistics> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?EmailStatisticsData $aggregate;

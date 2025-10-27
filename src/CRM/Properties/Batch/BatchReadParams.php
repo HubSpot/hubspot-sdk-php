@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Properties\Batch\BatchReadParams\DataSensitivity;
-use HubspotSDK\CRM\Properties\PropertyName;
+use HubspotSDK\PropertyName;
 
 /**
  * Read a provided list of properties.
