@@ -38,11 +38,11 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->create(
             'objectType',
-            fieldType: 'select',
-            groupName: 'contactinformation',
-            label: 'My Contact Property',
-            name: 'my_contact_property',
-            type: 'enumeration',
+            fieldType: 'booleancheckbox',
+            groupName: 'groupName',
+            label: 'label',
+            name: 'name',
+            type: 'bool',
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -57,11 +57,11 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->create(
             'objectType',
-            fieldType: 'select',
-            groupName: 'contactinformation',
-            label: 'My Contact Property',
-            name: 'my_contact_property',
-            type: 'enumeration',
+            fieldType: 'booleancheckbox',
+            groupName: 'groupName',
+            label: 'label',
+            name: 'name',
+            type: 'bool',
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -9,6 +9,7 @@ use HubspotSDK\ServiceContracts\CRM\Extensions\CallingContract;
 use HubspotSDK\Services\CRM\Extensions\Calling\ChannelConnectionSettingsService;
 use HubspotSDK\Services\CRM\Extensions\Calling\RecordingSettingsService;
 use HubspotSDK\Services\CRM\Extensions\Calling\SettingsService;
+use HubspotSDK\Services\CRM\Extensions\Calling\TranscriptsService;
 
 final class CallingService implements CallingContract
 {
@@ -28,6 +29,11 @@ final class CallingService implements CallingContract
     public SettingsService $settings;
 
     /**
+     * @@api
+     */
+    public TranscriptsService $transcripts;
+
+    /**
      * @internal
      */
     public function __construct(private Client $client)
@@ -35,5 +41,6 @@ final class CallingService implements CallingContract
         $this->channelConnectionSettings = new ChannelConnectionSettingsService($client);
         $this->recordingSettings = new RecordingSettingsService($client);
         $this->settings = new SettingsService($client);
+        $this->transcripts = new TranscriptsService($client);
     }
 }

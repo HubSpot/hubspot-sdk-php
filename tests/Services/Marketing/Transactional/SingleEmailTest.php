@@ -3,7 +3,7 @@
 namespace Tests\Services\Marketing\Transactional;
 
 use HubspotSDK\Client;
-use HubspotSDK\Marketing\Transactional\PublicSingleSendEmail;
+use HubspotSDK\Marketing\PublicSingleSendEmail;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

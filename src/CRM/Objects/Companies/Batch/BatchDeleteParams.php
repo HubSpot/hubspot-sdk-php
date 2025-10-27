@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
+use HubspotSDK\CRM\SimplePublicObjectID;
 
 /**
  * Delete a batch of companies by ID. Deleted companies can be restored within 90 days of deletion. Learn more about [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).

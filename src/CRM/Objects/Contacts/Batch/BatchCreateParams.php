@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\CRM\SimplePublicObjectBatchInputForCreate;
 
 /**
  * Create a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.

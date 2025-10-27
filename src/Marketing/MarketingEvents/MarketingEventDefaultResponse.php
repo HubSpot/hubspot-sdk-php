@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\MarketingEvents;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type marketing_event_default_response = array{
@@ -25,12 +23,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   startDateTime?: \DateTimeInterface,
  * }
  */
-final class MarketingEventDefaultResponse implements BaseModel, ResponseConverter
+final class MarketingEventDefaultResponse implements BaseModel
 {
     /** @use SdkModel<marketing_event_default_response> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The name of the marketing event.

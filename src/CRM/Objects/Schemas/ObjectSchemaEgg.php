@@ -7,6 +7,7 @@ namespace HubspotSDK\CRM\Objects\Schemas;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
  * Defines a new object type, its properties, and associations.
@@ -36,9 +37,6 @@ final class ObjectSchemaEgg implements BaseModel
     #[Api(list: 'string')]
     public array $associatedObjects;
 
-    /**
-     * Singular and plural labels for the object. Used in CRM display.
-     */
     #[Api]
     public ObjectTypeDefinitionLabels $labels;
 
@@ -170,9 +168,6 @@ final class ObjectSchemaEgg implements BaseModel
         return $obj;
     }
 
-    /**
-     * Singular and plural labels for the object. Used in CRM display.
-     */
     public function withLabels(ObjectTypeDefinitionLabels $labels): self
     {
         $obj = clone $this;

@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Marketing\Campaigns\PublicBusinessUnit;
 
 /**
  * A response object containing a collection of Business Units.

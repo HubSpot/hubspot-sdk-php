@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
+use HubspotSDK\CRM\PublicAssociationsForObject;
 
 /**
  * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
@@ -27,7 +27,7 @@ final class CustomCreateParams implements BaseModel
     use SdkParams;
 
     /**
-     * The company property values to set.
+     * Key-value pairs for setting properties for the new object.
      *
      * @var array<string, string> $properties
      */
@@ -79,7 +79,7 @@ final class CustomCreateParams implements BaseModel
     }
 
     /**
-     * The company property values to set.
+     * Key-value pairs for setting properties for the new object.
      *
      * @param array<string, string> $properties
      */

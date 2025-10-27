@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Properties\BatchReadInputPropertyName\DataSensitivity;
+use HubspotSDK\PropertyName;
 
 /**
  * @phpstan-type batch_read_input_property_name = array{

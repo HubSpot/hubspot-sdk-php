@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\MarketingEvents;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse\Status;
 use HubspotSDK\StandardError;
 
@@ -24,12 +22,10 @@ use HubspotSDK\StandardError;
  *   requestedAt?: \DateTimeInterface,
  * }
  */
-final class BatchResponseMarketingEventPublicDefaultResponse implements BaseModel, ResponseConverter
+final class BatchResponseMarketingEventPublicDefaultResponse implements BaseModel
 {
     /** @use SdkModel<batch_response_marketing_event_public_default_response> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public \DateTimeInterface $completedAt;

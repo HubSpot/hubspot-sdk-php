@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\SimplePublicObjectBatchInputUpsert;
 
 /**
  * Create or update companies identified by a unique property value as specified by the `idProperty` query parameter. `idProperty` query param refers to a property whose values are unique for the object.

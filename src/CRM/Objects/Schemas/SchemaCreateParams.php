@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
  * Define a new object schema, along with custom properties and associations. The entire object schema, including its object type ID, properties, and associations will be returned in the response.
@@ -40,9 +41,6 @@ final class SchemaCreateParams implements BaseModel
     #[Api(list: 'string')]
     public array $associatedObjects;
 
-    /**
-     * Singular and plural labels for the object. Used in CRM display.
-     */
     #[Api]
     public ObjectTypeDefinitionLabels $labels;
 
@@ -174,9 +172,6 @@ final class SchemaCreateParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * Singular and plural labels for the object. Used in CRM display.
-     */
     public function withLabels(ObjectTypeDefinitionLabels $labels): self
     {
         $obj = clone $this;

@@ -2,8 +2,8 @@
 
 namespace Tests\Services\CRM\Associations;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Associations\V4\AssociationSpec1;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -143,9 +143,9 @@ final class V4Test extends TestCase
             objectID: 'objectId',
             toObjectType: 'toObjectType',
             body: [
-                AssociationSpec1::with(
+                AssociationSpec::with(
                     associationCategory: 'HUBSPOT_DEFINED',
-                    associationTypeID: 279
+                    associationTypeID: 0
                 ),
             ],
         );
@@ -166,9 +166,9 @@ final class V4Test extends TestCase
             objectID: 'objectId',
             toObjectType: 'toObjectType',
             body: [
-                AssociationSpec1::with(
+                AssociationSpec::with(
                     associationCategory: 'HUBSPOT_DEFINED',
-                    associationTypeID: 279
+                    associationTypeID: 0
                 ),
             ],
         );

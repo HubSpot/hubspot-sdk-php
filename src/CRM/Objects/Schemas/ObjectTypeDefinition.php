@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
  * Defines an object type.
@@ -43,9 +44,6 @@ final class ObjectTypeDefinition implements BaseModel, ResponseConverter
     #[Api]
     public string $id;
 
-    /**
-     * Singular and plural labels for the object. Used in CRM display.
-     */
     #[Api]
     public ObjectTypeDefinitionLabels $labels;
 
@@ -197,9 +195,6 @@ final class ObjectTypeDefinition implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * Singular and plural labels for the object. Used in CRM display.
-     */
     public function withLabels(ObjectTypeDefinitionLabels $labels): self
     {
         $obj = clone $this;

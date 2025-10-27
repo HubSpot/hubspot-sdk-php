@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage;
 
-use HubspotSDK\Conversations\CustomChannels\PublicContact;
-use HubspotSDK\Conversations\CustomChannels\PublicFile;
-use HubspotSDK\Conversations\CustomChannels\PublicLocation;
-use HubspotSDK\Conversations\CustomChannels\PublicMessageHeader;
-use HubspotSDK\Conversations\CustomChannels\PublicQuickReplies;
-use HubspotSDK\Conversations\CustomChannels\PublicSocialMetadataAttachment;
-use HubspotSDK\Conversations\CustomChannels\PublicUnsupportedContent;
-use HubspotSDK\Conversations\CustomChannels\PublicWhatsAppTemplateMetadata;
+use HubspotSDK\Conversations\PublicContact;
+use HubspotSDK\Conversations\PublicFile;
+use HubspotSDK\Conversations\PublicLocation;
+use HubspotSDK\Conversations\PublicMessageHeader;
+use HubspotSDK\Conversations\PublicQuickReplies;
+use HubspotSDK\Conversations\PublicSocialMetadataAttachment;
+use HubspotSDK\Conversations\PublicUnsupportedContent;
+use HubspotSDK\Conversations\PublicWhatsAppTemplateMetadata;
 use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;

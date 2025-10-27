@@ -3,8 +3,8 @@
 namespace Tests\Services\CRM\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinitionLabels;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate;
+use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\OptionInput;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -88,14 +88,14 @@ final class SchemasTest extends TestCase
                         [
                             OptionInput::with(
                                 displayOrder: 1,
-                                hidden: false,
+                                hidden: true,
                                 label: 'Option A',
                                 value: 'A'
                             )
                                 ->withDescription('Choice number one'),
                             OptionInput::with(
                                 displayOrder: 2,
-                                hidden: false,
+                                hidden: true,
                                 label: 'Option B',
                                 value: 'B'
                             )
@@ -189,8 +189,8 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->createAssociation(
             'objectType',
-            fromObjectTypeID: '2-123456',
-            toObjectTypeID: 'contact'
+            fromObjectTypeID: 'fromObjectTypeId',
+            toObjectTypeID: 'toObjectTypeId',
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -205,8 +205,8 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->createAssociation(
             'objectType',
-            fromObjectTypeID: '2-123456',
-            toObjectTypeID: 'contact'
+            fromObjectTypeID: 'fromObjectTypeId',
+            toObjectTypeID: 'toObjectTypeId',
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

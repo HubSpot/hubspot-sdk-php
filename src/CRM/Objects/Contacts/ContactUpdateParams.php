@@ -23,7 +23,7 @@ final class ContactUpdateParams implements BaseModel
     use SdkParams;
 
     /**
-     * The company property values to set.
+     * Key value pairs representing the properties of the object.
      *
      * @var array<string, string> $properties
      */
@@ -66,7 +66,7 @@ final class ContactUpdateParams implements BaseModel
     }
 
     /**
-     * The company property values to set.
+     * Key value pairs representing the properties of the object.
      *
      * @param array<string, string> $properties
      */

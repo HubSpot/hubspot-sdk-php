@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Objects\Contacts;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
+use HubspotSDK\CRM\BatchResponseSimplePublicObject;
+use HubspotSDK\CRM\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\CRM\SimplePublicObjectBatchInput;
+use HubspotSDK\CRM\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\CRM\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;

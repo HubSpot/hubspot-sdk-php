@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Transactional\PublicSingleSendEmail;
+use HubspotSDK\Marketing\PublicSingleSendEmail;
 
 /**
  * Asynchronously send a transactional email. Returns the status of the email send with a statusId that can be used to continuously query for the status using the Email Send Status API.
@@ -29,7 +29,7 @@ final class SingleEmailSendParams implements BaseModel
     use SdkParams;
 
     /**
-     * The content ID for the transactional email, which can be found in email tool UI.
+     * The content ID for the email, which can be found in email tool UI.
      */
     #[Api('emailId')]
     public int $emailID;
@@ -41,7 +41,7 @@ final class SingleEmailSendParams implements BaseModel
     public PublicSingleSendEmail $message;
 
     /**
-     * The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while you’re sending the email. For example, when sending a reciept you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.
+     * The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while you’re sending the email. For example, when sending a receipt you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.
      *
      * @var array<string, string>|null $contactProperties
      */
@@ -102,7 +102,7 @@ final class SingleEmailSendParams implements BaseModel
     }
 
     /**
-     * The content ID for the transactional email, which can be found in email tool UI.
+     * The content ID for the email, which can be found in email tool UI.
      */
     public function withEmailID(int $emailID): self
     {
@@ -124,7 +124,7 @@ final class SingleEmailSendParams implements BaseModel
     }
 
     /**
-     * The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while you’re sending the email. For example, when sending a reciept you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.
+     * The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while you’re sending the email. For example, when sending a receipt you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.
      *
      * @param array<string, string> $contactProperties
      */

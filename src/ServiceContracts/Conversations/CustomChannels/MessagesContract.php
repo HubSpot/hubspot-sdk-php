@@ -12,10 +12,10 @@ use HubspotSDK\Conversations\CustomChannels\MessageHeaderAttachment;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams\StatusType;
 use HubspotSDK\Conversations\CustomChannels\PreResolvedContacts;
-use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage;
 use HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment;
 use HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment;
 use HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment;
+use HubspotSDK\Conversations\PublicConversationsMessage;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 

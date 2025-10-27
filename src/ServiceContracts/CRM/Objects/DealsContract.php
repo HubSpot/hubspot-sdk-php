@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\CRM\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\FilterGroup;
-use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
-use HubspotSDK\CRM\Objects\SimplePublicObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\CRM\CreatedResponseSimplePublicObject;
+use HubspotSDK\CRM\FilterGroup;
+use HubspotSDK\CRM\PublicAssociationsForObject;
+use HubspotSDK\CRM\SimplePublicObject;
+use HubspotSDK\CRM\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
@@ -21,7 +21,8 @@ interface DealsContract
     /**
      * @api
      *
-     * @param array<string, string> $properties the company property values to set
+     * @param array<string,
+     * string,> $properties Key-value pairs for setting properties for the new object
      * @param list<PublicAssociationsForObject> $associations
      *
      * @throws APIException
@@ -47,7 +48,8 @@ interface DealsContract
     /**
      * @api
      *
-     * @param array<string, string> $properties the company property values to set
+     * @param array<string,
+     * string,> $properties Key value pairs representing the properties of the object
      * @param string $idProperty The name of a property whose values are unique for this object
      *
      * @throws APIException
@@ -157,8 +159,8 @@ interface DealsContract
     /**
      * @api
      *
-     * @param string $objectIDToMerge the ID of the company to merge into the primary
-     * @param string $primaryObjectID the ID of the primary company, which the other will merge into
+     * @param string $objectIDToMerge
+     * @param string $primaryObjectID
      *
      * @throws APIException
      */

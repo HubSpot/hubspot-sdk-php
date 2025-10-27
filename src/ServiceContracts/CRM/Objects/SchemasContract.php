@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\CRM\Objects;
 
+use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\Schemas\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\CRM\Objects\Schemas\ObjectSchema;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinition;
-use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinitionLabels;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypePropertyCreate;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
+use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -21,7 +21,7 @@ interface SchemasContract
      * @api
      *
      * @param list<string> $associatedObjects associations defined for this object type
-     * @param ObjectTypeDefinitionLabels $labels Singular and plural labels for the object. Used in CRM display.
+     * @param ObjectTypeDefinitionLabels $labels
      * @param string $name A unique name for this object. For internal use only.
      * @param list<ObjectTypePropertyCreate> $properties properties defined for this object type
      * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
@@ -62,7 +62,7 @@ interface SchemasContract
      *
      * @param bool $clearDescription
      * @param string $description
-     * @param ObjectTypeDefinitionLabels $labels Singular and plural labels for the object. Used in CRM display.
+     * @param ObjectTypeDefinitionLabels $labels
      * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
      * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
      * @param bool $restorable
@@ -176,9 +176,9 @@ interface SchemasContract
     /**
      * @api
      *
-     * @param string $fromObjectTypeID ID of the primary object type to link from
-     * @param string $toObjectTypeID ID of the target object type to link to
-     * @param string $name a unique name for this association
+     * @param string $fromObjectTypeID
+     * @param string $toObjectTypeID
+     * @param string $name
      *
      * @throws APIException
      */

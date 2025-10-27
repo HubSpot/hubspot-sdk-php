@@ -70,12 +70,12 @@ final class EventDefinitionsTest extends TestCase
                     ->withOptions(
                         [
                             OptionInput::with(
-                                displayOrder: 1,
-                                hidden: false,
-                                label: 'Option A',
-                                value: 'A'
+                                displayOrder: 0,
+                                hidden: true,
+                                label: 'label',
+                                value: 'value'
                             )
-                                ->withDescription('Choice number one'),
+                                ->withDescription('description'),
                         ],
                     ),
             ],

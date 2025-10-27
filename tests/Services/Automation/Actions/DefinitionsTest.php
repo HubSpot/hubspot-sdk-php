@@ -57,7 +57,15 @@ final class DefinitionsTest extends TestCase
                         externalOptions: true,
                         name: 'name',
                         options: [
-                            Option::with(hidden: false, label: 'Option A', value: 'A'),
+                            Option::with(
+                                description: '',
+                                displayOrder: 0,
+                                doubleData: 0,
+                                hidden: false,
+                                label: '',
+                                readOnly: false,
+                                value: '',
+                            ),
                         ],
                         type: 'string',
                     ),
@@ -95,9 +103,15 @@ final class DefinitionsTest extends TestCase
                         externalOptions: true,
                         name: 'name',
                         options: [
-                            Option::with(hidden: false, label: 'Option A', value: 'A')
-                                ->withDescription('Choice number one')
-                                ->withDisplayOrder(1),
+                            Option::with(
+                                description: '',
+                                displayOrder: 0,
+                                doubleData: 0,
+                                hidden: false,
+                                label: '',
+                                readOnly: false,
+                                value: '',
+                            ),
                         ],
                         type: 'string',
                     )

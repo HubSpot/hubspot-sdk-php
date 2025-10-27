@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\CRM\Properties;
 
+use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\CRM\Properties\Batch\BatchReadParams\DataSensitivity;
-use HubspotSDK\CRM\Properties\BatchResponseProperty;
-use HubspotSDK\CRM\Properties\PropertyCreate;
-use HubspotSDK\CRM\Properties\PropertyName;
+use HubspotSDK\PropertyCreate;
+use HubspotSDK\PropertyName;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;

@@ -144,6 +144,18 @@ final class EmailsTest extends TestCase
     }
 
     #[Test]
+    public function testGet(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->marketing->emails->get('emailId');
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
     public function testGetAbTestVariation(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -168,37 +180,13 @@ final class EmailsTest extends TestCase
     }
 
     #[Test]
-    public function testGetEmailsList(): void
+    public function testGetRevision(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->getEmailsList();
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testGetHistogram(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->marketing->emails->getHistogram();
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testGetRevisionByID(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->marketing->emails->getRevisionByID(
+        $result = $this->client->marketing->emails->getRevision(
             'revisionId',
             'emailId'
         );
@@ -207,13 +195,13 @@ final class EmailsTest extends TestCase
     }
 
     #[Test]
-    public function testGetRevisionByIDWithOptionalParams(): void
+    public function testGetRevisionWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->getRevisionByID(
+        $result = $this->client->marketing->emails->getRevision(
             'revisionId',
             'emailId'
         );
@@ -222,37 +210,25 @@ final class EmailsTest extends TestCase
     }
 
     #[Test]
-    public function testGetRevisions(): void
+    public function testListRevisions(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->getRevisions('emailId');
+        $result = $this->client->marketing->emails->listRevisions('emailId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testPublishOrSend(): void
+    public function testPublish(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->publishOrSend('emailId');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testRead(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->marketing->emails->read('emailId');
+        $result = $this->client->marketing->emails->publish('emailId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -265,36 +241,6 @@ final class EmailsTest extends TestCase
         }
 
         $result = $this->client->marketing->emails->resetDraft('emailId');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testRestoreDraftRevision(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->marketing->emails->restoreDraftRevision(
-            0,
-            'emailId'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testRestoreDraftRevisionWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->marketing->emails->restoreDraftRevision(
-            0,
-            'emailId'
-        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -330,25 +276,55 @@ final class EmailsTest extends TestCase
     }
 
     #[Test]
-    public function testUnpublishOrCancel(): void
+    public function testRestoreRevisionToDraft(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->unpublishOrCancel('emailId');
+        $result = $this->client->marketing->emails->restoreRevisionToDraft(
+            0,
+            'emailId'
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testUpsertDraft(): void
+    public function testRestoreRevisionToDraftWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->upsertDraft('emailId');
+        $result = $this->client->marketing->emails->restoreRevisionToDraft(
+            0,
+            'emailId'
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testUnpublish(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->marketing->emails->unpublish('emailId');
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testUpdateDraft(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->marketing->emails->updateDraft('emailId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

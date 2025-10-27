@@ -1,0 +1,147 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\ServiceContracts\Marketing;
+
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\Campaigns\PublicCampaign;
+use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
+use HubspotSDK\Page;
+use HubspotSDK\RequestOptions;
+
+use const HubspotSDK\Core\OMIT as omit;
+
+interface CampaignsContract
+{
+    /**
+     * @api
+     *
+     * @param array<string, string> $properties
+     *
+     * @throws APIException
+     */
+    public function create(
+        $properties,
+        ?RequestOptions $requestOptions = null
+    ): PublicCampaign;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function createRaw(
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): PublicCampaign;
+
+    /**
+     * @api
+     *
+     * @param array<string, string> $properties
+     *
+     * @throws APIException
+     */
+    public function update(
+        string $campaignGuid,
+        $properties,
+        ?RequestOptions $requestOptions = null,
+    ): PublicCampaign;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function updateRaw(
+        string $campaignGuid,
+        array $params,
+        ?RequestOptions $requestOptions = null,
+    ): PublicCampaign;
+
+    /**
+     * @api
+     *
+     * @param string $after A cursor for pagination. If provided, the results will start after the given cursor.
+     * Example: NTI1Cg%3D%3D
+     * @param int $limit The maximum number of results to return. Allowed values range from 1 to 100
+     * Default: 50
+     * @param string $name A filter to return campaigns whose names contain the specified substring. This allows partial matching of campaign names, returning all campaigns that include the given substring in their name. If this parameter is not provided, the search will return all campaigns
+     * @param list<string> $properties A comma-separated list of the properties to be returned in the response. If any of the specified properties has empty value on the requested object(s), they will be ignored and not returned in response. If this parameter is empty, the response will include an empty properties map
+     * @param string $sort The field by which to sort the results. Allowed values are hs_name, createdAt, updatedAt. An optional '-' before the property name can denote descending order
+     * Default: hs_name
+     *
+     * @return Page<PublicCampaign>
+     *
+     * @throws APIException
+     */
+    public function list(
+        $after = omit,
+        $limit = omit,
+        $name = omit,
+        $properties = omit,
+        $sort = omit,
+        ?RequestOptions $requestOptions = null,
+    ): Page;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @return Page<PublicCampaign>
+     *
+     * @throws APIException
+     */
+    public function listRaw(
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): Page;
+
+    /**
+     * @api
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $campaignGuid,
+        ?RequestOptions $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param string $endDate  End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
+     * If not provided, no asset metrics will be fetched.
+     * @param list<string> $properties A comma-separated list of the properties to be returned in the response. If any of the specified properties has empty value on the requested object, they will be ignored and not returned in response. If this parameter is empty, the response will include an empty properties map.
+     * @param string $startDate Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
+     * If not provided, no asset metrics will be fetched.
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $campaignGuid,
+        $endDate = omit,
+        $properties = omit,
+        $startDate = omit,
+        ?RequestOptions $requestOptions = null,
+    ): PublicCampaignWithAssets;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        string $campaignGuid,
+        array $params,
+        ?RequestOptions $requestOptions = null,
+    ): PublicCampaignWithAssets;
+}

@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
+use HubspotSDK\CRM\SimplePublicObjectID;
 
 /**
  * Archive a batch of meetings by ID.

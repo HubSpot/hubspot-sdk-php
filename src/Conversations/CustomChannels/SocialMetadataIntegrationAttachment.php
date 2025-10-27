@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations\CustomChannels;
 
 use HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment\Type;
+use HubspotSDK\Conversations\SocialMetadata;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;

@@ -6,17 +6,17 @@ namespace HubspotSDK\Services\CRM\Objects\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\CRM\BatchResponseSimplePublicObject;
+use HubspotSDK\CRM\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\CRM\Objects\Objects\Batch\BatchCreateParams;
 use HubspotSDK\CRM\Objects\Objects\Batch\BatchDeleteParams;
 use HubspotSDK\CRM\Objects\Objects\Batch\BatchReadParams;
 use HubspotSDK\CRM\Objects\Objects\Batch\BatchUpdateParams;
 use HubspotSDK\CRM\Objects\Objects\Batch\BatchUpsertParams;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
+use HubspotSDK\CRM\SimplePublicObjectBatchInput;
+use HubspotSDK\CRM\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\CRM\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\Objects\BatchContract;
 

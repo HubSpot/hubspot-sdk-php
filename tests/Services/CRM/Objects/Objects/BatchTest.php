@@ -4,11 +4,11 @@ namespace Tests\Services\CRM\Objects\Objects;
 
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
-use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\CRM\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\CRM\Objects\SimplePublicObjectID;
+use HubspotSDK\CRM\PublicAssociationsForObject;
+use HubspotSDK\CRM\SimplePublicObjectBatchInput;
+use HubspotSDK\CRM\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\CRM\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\CRM\SimplePublicObjectID;
 use HubspotSDK\PublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;

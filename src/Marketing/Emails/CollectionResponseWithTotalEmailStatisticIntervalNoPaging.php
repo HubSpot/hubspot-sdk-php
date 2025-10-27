@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Response object for collections of EmailStatisticIntervals.
@@ -17,14 +15,12 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   results: list<EmailStatisticInterval>, total: int
  * }
  */
-final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements BaseModel
 {
     /**
      * @use SdkModel<collection_response_with_total_email_statistic_interval_no_paging>
      */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Collection of objects.

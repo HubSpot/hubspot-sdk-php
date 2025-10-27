@@ -6,7 +6,9 @@ namespace HubspotSDK\Services\CRM\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\CRM\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\CRM\CreatedResponseSimplePublicObject;
+use HubspotSDK\CRM\FilterGroup;
 use HubspotSDK\CRM\Objects\Contacts\ContactCreateParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactGdprDeleteParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactGetParams;
@@ -14,11 +16,9 @@ use HubspotSDK\CRM\Objects\Contacts\ContactListParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactMergeParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactSearchParams;
 use HubspotSDK\CRM\Objects\Contacts\ContactUpdateParams;
-use HubspotSDK\CRM\Objects\CreatedResponseSimplePublicObject;
-use HubspotSDK\CRM\Objects\FilterGroup;
-use HubspotSDK\CRM\Objects\PublicAssociationsForObject;
-use HubspotSDK\CRM\Objects\SimplePublicObject;
-use HubspotSDK\CRM\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\CRM\PublicAssociationsForObject;
+use HubspotSDK\CRM\SimplePublicObject;
+use HubspotSDK\CRM\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\CRM\Objects\ContactsContract;
@@ -46,7 +46,8 @@ final class ContactsService implements ContactsContract
      *
      * Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
      *
-     * @param array<string, string> $properties the company property values to set
+     * @param array<string,
+     * string,> $properties Key-value pairs for setting properties for the new object
      * @param list<PublicAssociationsForObject> $associations
      *
      * @throws APIException
@@ -92,7 +93,8 @@ final class ContactsService implements ContactsContract
      *
      * Update an existing contact, identified by ID or email/unique property value. To identify a contact by ID, include the ID in the request URL path. To identify a contact by their email or other unique property, include the email/property value in the request URL path, and add the `idProperty` query parameter (`/crm/v3/objects/contacts/jon@website.com?idProperty=email`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param array<string, string> $properties the company property values to set
+     * @param array<string,
+     * string,> $properties Key value pairs representing the properties of the object
      *
      * @throws APIException
      */
@@ -224,8 +226,8 @@ final class ContactsService implements ContactsContract
      *
      * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
      *
-     * @param string $objectID the ID of the company to delete
-     * @param string $idProperty the name of a unique property, when identifying records by property instead of ID
+     * @param string $objectID
+     * @param string $idProperty The name of a property whose values are unique for this object
      *
      * @throws APIException
      */
@@ -327,8 +329,8 @@ final class ContactsService implements ContactsContract
      *
      * Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
      *
-     * @param string $objectIDToMerge the ID of the company to merge into the primary
-     * @param string $primaryObjectID the ID of the primary company, which the other will merge into
+     * @param string $objectIDToMerge
+     * @param string $primaryObjectID
      *
      * @throws APIException
      */

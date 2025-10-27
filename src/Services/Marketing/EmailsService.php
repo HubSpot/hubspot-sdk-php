@@ -6,8 +6,7 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
-use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
+use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalVersionPublicEmail;
 use HubspotSDK\Marketing\Emails\EmailCloneParams;
 use HubspotSDK\Marketing\Emails\EmailCreateAbTestVariationParams;
 use HubspotSDK\Marketing\Emails\EmailCreateParams;
@@ -15,18 +14,15 @@ use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
 use HubspotSDK\Marketing\Emails\EmailDeleteParams;
-use HubspotSDK\Marketing\Emails\EmailGetEmailsListParams;
-use HubspotSDK\Marketing\Emails\EmailGetHistogramParams;
-use HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
-use HubspotSDK\Marketing\Emails\EmailGetRevisionByIDParams;
-use HubspotSDK\Marketing\Emails\EmailGetRevisionsParams;
+use HubspotSDK\Marketing\Emails\EmailGetParams;
+use HubspotSDK\Marketing\Emails\EmailGetRevisionParams;
 use HubspotSDK\Marketing\Emails\EmailListParams;
 use HubspotSDK\Marketing\Emails\EmailListParams\Type;
-use HubspotSDK\Marketing\Emails\EmailReadParams;
-use HubspotSDK\Marketing\Emails\EmailRestoreDraftRevisionParams;
+use HubspotSDK\Marketing\Emails\EmailListRevisionsParams;
 use HubspotSDK\Marketing\Emails\EmailRestoreRevisionParams;
+use HubspotSDK\Marketing\Emails\EmailRestoreRevisionToDraftParams;
+use HubspotSDK\Marketing\Emails\EmailUpdateDraftParams;
 use HubspotSDK\Marketing\Emails\EmailUpdateParams;
-use HubspotSDK\Marketing\Emails\EmailUpsertDraftParams;
 use HubspotSDK\Marketing\Emails\PublicEmail;
 use HubspotSDK\Marketing\Emails\PublicEmailContent;
 use HubspotSDK\Marketing\Emails\PublicEmailFromDetails;
@@ -39,15 +35,31 @@ use HubspotSDK\Marketing\Emails\VersionPublicEmail;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\EmailsContract;
+use HubspotSDK\Services\Marketing\Emails\SingleSendService;
+use HubspotSDK\Services\Marketing\Emails\StatisticsService;
 
 use const HubspotSDK\Core\OMIT as omit;
 
 final class EmailsService implements EmailsContract
 {
     /**
+     * @@api
+     */
+    public SingleSendService $singleSend;
+
+    /**
+     * @@api
+     */
+    public StatisticsService $statistics;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->singleSend = new SingleSendService($client);
+        $this->statistics = new StatisticsService($client);
+    }
 
     /**
      * @api
@@ -504,6 +516,66 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * Get the details for a marketing email.
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $includedProperties limit the response to only include the specified properties
+     * @param bool $includeStats include statistics with email
+     * @param bool $marketingCampaignNames if set to true, loads `campaignName` and `campaignUtm`
+     * @param bool $workflowNames if set to true, loads workflows in which the email is used within a "send email" action
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $emailID,
+        $archived = omit,
+        $includedProperties = omit,
+        $includeStats = omit,
+        $marketingCampaignNames = omit,
+        $workflowNames = omit,
+        ?RequestOptions $requestOptions = null,
+    ): PublicEmail {
+        $params = [
+            'archived' => $archived,
+            'includedProperties' => $includedProperties,
+            'includeStats' => $includeStats,
+            'marketingCampaignNames' => $marketingCampaignNames,
+            'workflowNames' => $workflowNames,
+        ];
+
+        return $this->getRaw($emailID, $params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        string $emailID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): PublicEmail {
+        [$parsed, $options] = EmailGetParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: ['marketing/v3/emails/%1$s', $emailID],
+            query: $parsed,
+            options: $options,
+            convert: PublicEmail::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * This endpoint lets you obtain the variation of an A/B marketing email. If the email is variation A (master) it will return variation B (variant) and vice versa.
      *
      * @throws APIException
@@ -544,130 +616,20 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
-     * Use this endpoint to get aggregated statistics of emails sent in a specified time span. It also returns the list of emails that were sent during the time span.
-     *
-     * @param list<int> $emailIDs Filter by email IDs. Only include statistics of emails with these IDs.
-     * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
-     * @param string $property Specifies which email properties should be returned. All properties will be returned by default.
-     * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
-     *
-     * @throws APIException
-     */
-    public function getEmailsList(
-        $emailIDs = omit,
-        $endTimestamp = omit,
-        $property = omit,
-        $startTimestamp = omit,
-        ?RequestOptions $requestOptions = null,
-    ): AggregateEmailStatistics {
-        $params = [
-            'emailIDs' => $emailIDs,
-            'endTimestamp' => $endTimestamp,
-            'property' => $property,
-            'startTimestamp' => $startTimestamp,
-        ];
-
-        return $this->getEmailsListRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getEmailsListRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): AggregateEmailStatistics {
-        [$parsed, $options] = EmailGetEmailsListParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'get',
-            path: 'marketing/v3/emails/statistics/list',
-            query: $parsed,
-            options: $options,
-            convert: AggregateEmailStatistics::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Get aggregated statistics in intervals for a specified time span. Each interval contains aggregated statistics of the emails that were sent in that time.
-     *
-     * @param list<int> $emailIDs Filter by email IDs. Only include statistics of emails with these IDs.
-     * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
-     * @param Interval|value-of<Interval> $interval the interval to aggregate statistics for
-     * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
-     *
-     * @throws APIException
-     */
-    public function getHistogram(
-        $emailIDs = omit,
-        $endTimestamp = omit,
-        $interval = omit,
-        $startTimestamp = omit,
-        ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalEmailStatisticIntervalNoPaging {
-        $params = [
-            'emailIDs' => $emailIDs,
-            'endTimestamp' => $endTimestamp,
-            'interval' => $interval,
-            'startTimestamp' => $startTimestamp,
-        ];
-
-        return $this->getHistogramRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getHistogramRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalEmailStatisticIntervalNoPaging {
-        [$parsed, $options] = EmailGetHistogramParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'get',
-            path: 'marketing/v3/emails/statistics/histogram',
-            query: $parsed,
-            options: $options,
-            convert: CollectionResponseWithTotalEmailStatisticIntervalNoPaging::class,
-        );
-    }
-
-    /**
-     * @api
-     *
      * Get a specific revision of a marketing email.
      *
      * @param string $emailID
      *
      * @throws APIException
      */
-    public function getRevisionByID(
+    public function getRevision(
         string $revisionID,
         $emailID,
         ?RequestOptions $requestOptions = null
     ): VersionPublicEmail {
         $params = ['emailID' => $emailID];
 
-        return $this->getRevisionByIDRaw($revisionID, $params, $requestOptions);
+        return $this->getRevisionRaw($revisionID, $params, $requestOptions);
     }
 
     /**
@@ -677,12 +639,12 @@ final class EmailsService implements EmailsContract
      *
      * @throws APIException
      */
-    public function getRevisionByIDRaw(
+    public function getRevisionRaw(
         string $revisionID,
         array $params,
         ?RequestOptions $requestOptions = null
     ): VersionPublicEmail {
-        [$parsed, $options] = EmailGetRevisionByIDParams::parseRequest(
+        [$parsed, $options] = EmailGetRevisionParams::parseRequest(
             $params,
             $requestOptions
         );
@@ -707,20 +669,18 @@ final class EmailsService implements EmailsContract
      * @param string $before The cursor token value to get the previous set of results. You can get this from the `paging.prev.before` JSON property of a paged response containing more results.
      * @param int $limit The maximum number of results to return. Default is 10.
      *
-     * @return Page<VersionPublicEmail>
-     *
      * @throws APIException
      */
-    public function getRevisions(
+    public function listRevisions(
         string $emailID,
         $after = omit,
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): Page {
+    ): CollectionResponseWithTotalVersionPublicEmail {
         $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
 
-        return $this->getRevisionsRaw($emailID, $params, $requestOptions);
+        return $this->listRevisionsRaw($emailID, $params, $requestOptions);
     }
 
     /**
@@ -728,16 +688,14 @@ final class EmailsService implements EmailsContract
      *
      * @param array<string, mixed> $params
      *
-     * @return Page<VersionPublicEmail>
-     *
      * @throws APIException
      */
-    public function getRevisionsRaw(
+    public function listRevisionsRaw(
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): Page {
-        [$parsed, $options] = EmailGetRevisionsParams::parseRequest(
+    ): CollectionResponseWithTotalVersionPublicEmail {
+        [$parsed, $options] = EmailListRevisionsParams::parseRequest(
             $params,
             $requestOptions
         );
@@ -748,8 +706,7 @@ final class EmailsService implements EmailsContract
             path: ['marketing/v3/emails/%1$s/revisions', $emailID],
             query: $parsed,
             options: $options,
-            convert: VersionPublicEmail::class,
-            page: Page::class,
+            convert: CollectionResponseWithTotalVersionPublicEmail::class,
         );
     }
 
@@ -760,7 +717,7 @@ final class EmailsService implements EmailsContract
      *
      * @throws APIException
      */
-    public function publishOrSend(
+    public function publish(
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
@@ -770,66 +727,6 @@ final class EmailsService implements EmailsContract
             path: ['marketing/v3/emails/%1$s/publish', $emailID],
             options: $requestOptions,
             convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Get the details for a marketing email.
-     *
-     * @param bool $archived whether to return only results that have been archived
-     * @param list<string> $includedProperties limit the response to only include the specified properties
-     * @param bool $includeStats include statistics with email
-     * @param bool $marketingCampaignNames if set to true, loads `campaignName` and `campaignUtm`
-     * @param bool $workflowNames if set to true, loads workflows in which the email is used within a "send email" action
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $emailID,
-        $archived = omit,
-        $includedProperties = omit,
-        $includeStats = omit,
-        $marketingCampaignNames = omit,
-        $workflowNames = omit,
-        ?RequestOptions $requestOptions = null,
-    ): PublicEmail {
-        $params = [
-            'archived' => $archived,
-            'includedProperties' => $includedProperties,
-            'includeStats' => $includeStats,
-            'marketingCampaignNames' => $marketingCampaignNames,
-            'workflowNames' => $workflowNames,
-        ];
-
-        return $this->readRaw($emailID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $emailID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PublicEmail {
-        [$parsed, $options] = EmailReadParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'get',
-            path: ['marketing/v3/emails/%1$s', $emailID],
-            query: $parsed,
-            options: $options,
-            convert: PublicEmail::class,
         );
     }
 
@@ -850,61 +747,6 @@ final class EmailsService implements EmailsContract
             path: ['marketing/v3/emails/%1$s/draft/reset', $emailID],
             options: $requestOptions,
             convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Restores a previous revision of a marketing email to DRAFT state. If there is currently something in the draft for that object, it is overwritten.
-     *
-     * @param string $emailID
-     *
-     * @throws APIException
-     */
-    public function restoreDraftRevision(
-        int $revisionID,
-        $emailID,
-        ?RequestOptions $requestOptions = null
-    ): PublicEmail {
-        $params = ['emailID' => $emailID];
-
-        return $this->restoreDraftRevisionRaw(
-            $revisionID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function restoreDraftRevisionRaw(
-        int $revisionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PublicEmail {
-        [$parsed, $options] = EmailRestoreDraftRevisionParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $emailID = $parsed['emailID'];
-        unset($parsed['emailID']);
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'post',
-            path: [
-                'marketing/v3/emails/%1$s/revisions/%2$s/restore-to-draft',
-                $emailID,
-                $revisionID,
-            ],
-            options: $options,
-            convert: PublicEmail::class,
         );
     }
 
@@ -960,11 +802,66 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * Restores a previous revision of a marketing email to DRAFT state. If there is currently something in the draft for that object, it is overwritten.
+     *
+     * @param string $emailID
+     *
+     * @throws APIException
+     */
+    public function restoreRevisionToDraft(
+        int $revisionID,
+        $emailID,
+        ?RequestOptions $requestOptions = null
+    ): PublicEmail {
+        $params = ['emailID' => $emailID];
+
+        return $this->restoreRevisionToDraftRaw(
+            $revisionID,
+            $params,
+            $requestOptions
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function restoreRevisionToDraftRaw(
+        int $revisionID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): PublicEmail {
+        [$parsed, $options] = EmailRestoreRevisionToDraftParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+        $emailID = $parsed['emailID'];
+        unset($parsed['emailID']);
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: [
+                'marketing/v3/emails/%1$s/revisions/%2$s/restore-to-draft',
+                $emailID,
+                $revisionID,
+            ],
+            options: $options,
+            convert: PublicEmail::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * If you have a Marketing Hub Enterprise account or the transactional email add-on, you can use this endpoint to unpublish an automated email or cancel a regular email. If the email is already in the process of being sent, canceling might not be possible.
      *
      * @throws APIException
      */
-    public function unpublishOrCancel(
+    public function unpublish(
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
@@ -990,13 +887,13 @@ final class EmailsService implements EmailsContract
      * @param int $folderIDV2
      * @param PublicEmailFromDetails $from data structure representing the from fields on the email
      * @param bool $jitterSendTime
-     * @param EmailUpsertDraftParams\Language|value-of<EmailUpsertDraftParams\Language> $language
+     * @param EmailUpdateDraftParams\Language|value-of<EmailUpdateDraftParams\Language> $language
      * @param string $name the name of the email, as displayed on the email dashboard
      * @param \DateTimeInterface $publishDate The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
      * @param PublicRssEmailDetails $rssData RSS related data if it is a blog or rss email
      * @param bool $sendOnPublish determines whether the email will be sent immediately on publish
-     * @param EmailUpsertDraftParams\State|value-of<EmailUpsertDraftParams\State> $state the email state
-     * @param EmailUpsertDraftParams\Subcategory|value-of<EmailUpsertDraftParams\Subcategory> $subcategory the email subcategory
+     * @param EmailUpdateDraftParams\State|value-of<EmailUpdateDraftParams\State> $state the email state
+     * @param EmailUpdateDraftParams\Subcategory|value-of<EmailUpdateDraftParams\Subcategory> $subcategory the email subcategory
      * @param string $subject the subject of the email
      * @param PublicEmailSubscriptionDetails $subscriptionDetails data structure representing the subscription fields of the email
      * @param PublicEmailTestingDetails $testing AB testing related data. This property is only returned for AB type emails.
@@ -1005,7 +902,7 @@ final class EmailsService implements EmailsContract
      *
      * @throws APIException
      */
-    public function upsertDraft(
+    public function updateDraft(
         string $emailID,
         $activeDomain = omit,
         $archived = omit,
@@ -1052,7 +949,7 @@ final class EmailsService implements EmailsContract
             'webversion' => $webversion,
         ];
 
-        return $this->upsertDraftRaw($emailID, $params, $requestOptions);
+        return $this->updateDraftRaw($emailID, $params, $requestOptions);
     }
 
     /**
@@ -1062,12 +959,12 @@ final class EmailsService implements EmailsContract
      *
      * @throws APIException
      */
-    public function upsertDraftRaw(
+    public function updateDraftRaw(
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
     ): PublicEmail {
-        [$parsed, $options] = EmailUpsertDraftParams::parseRequest(
+        [$parsed, $options] = EmailUpdateDraftParams::parseRequest(
             $params,
             $requestOptions
         );

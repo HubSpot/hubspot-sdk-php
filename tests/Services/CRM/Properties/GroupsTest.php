@@ -38,8 +38,8 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->create(
             'objectType',
-            label: 'My Property Group',
-            name: 'mypropertygroup'
+            label: 'label',
+            name: 'name'
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -54,8 +54,8 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->create(
             'objectType',
-            label: 'My Property Group',
-            name: 'mypropertygroup'
+            label: 'label',
+            name: 'name'
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
