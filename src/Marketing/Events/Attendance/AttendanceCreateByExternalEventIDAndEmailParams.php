@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\MarketingEventEmailSubscriber;
+use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
 
 /**
  * Records the participation of multiple HubSpot contacts in a Marketing Event using their email addresses.

@@ -6,12 +6,12 @@ namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\CollectionResponseWithTotalPublicListNoPaging;
 use HubspotSDK\Marketing\Events\Associations\AssociationAssociateByExternalAccountParams;
 use HubspotSDK\Marketing\Events\Associations\AssociationAssociateParams;
 use HubspotSDK\Marketing\Events\Associations\AssociationDeleteByExternalAccountParams;
 use HubspotSDK\Marketing\Events\Associations\AssociationDeleteParams;
 use HubspotSDK\Marketing\Events\Associations\AssociationListByExternalAccountParams;
+use HubspotSDK\Marketing\Events\CollectionResponseWithTotalPublicListNoPaging;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\AssociationsContract;
 

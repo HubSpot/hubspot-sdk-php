@@ -7,7 +7,7 @@ namespace HubspotSDK\Cms\Pages;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\Paging;
 
 /**
  * Response object for collections of content folder versions with pagination information.
@@ -35,6 +35,9 @@ final class CollectionResponseWithTotalVersionContentFolder implements BaseModel
     #[Api]
     public int $total;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -105,6 +108,9 @@ final class CollectionResponseWithTotalVersionContentFolder implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

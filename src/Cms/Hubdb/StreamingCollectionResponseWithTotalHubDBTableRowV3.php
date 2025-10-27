@@ -8,7 +8,7 @@ use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3\Typ
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\Paging;
 
 /**
  * @phpstan-type streaming_collection_response_with_total_hub_db_table_row_v3 = array{
@@ -33,6 +33,9 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
     #[Api(enum: Type::class)]
     public string $type;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -115,6 +118,9 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

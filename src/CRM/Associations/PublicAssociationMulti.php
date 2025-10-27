@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\AssociatedID;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\Paging;
 use HubspotSDK\PublicObjectID;
 
 /**
@@ -32,6 +32,9 @@ final class PublicAssociationMulti implements BaseModel
     #[Api(list: AssociatedID::class)]
     public array $to;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -97,6 +100,9 @@ final class PublicAssociationMulti implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

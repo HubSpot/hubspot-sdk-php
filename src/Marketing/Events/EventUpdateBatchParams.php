@@ -8,7 +8,6 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\MarketingEventPublicUpdateRequestFullV2;
 
 /**
  * Updates multiple Marketing Events on the portal based on their objectId, if they exist.

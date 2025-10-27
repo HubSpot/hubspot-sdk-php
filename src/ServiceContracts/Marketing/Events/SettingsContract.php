@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing\Events;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\EventDetailSettings;
+use HubspotSDK\Marketing\Events\EventDetailSettings;
 use HubspotSDK\RequestOptions;
 
 interface SettingsContract
