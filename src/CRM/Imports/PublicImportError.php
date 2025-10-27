@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Imports\PublicImportError\ErrorType;
 use HubspotSDK\CRM\Imports\PublicImportError\ObjectType;
-use HubspotSDK\Marketing\MarketingEvents\PropertyValue;
+use HubspotSDK\Marketing\PropertyValue;
 
 /**
  * @phpstan-type public_import_error = array{

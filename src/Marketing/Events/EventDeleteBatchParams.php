@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest;
+use HubspotSDK\Marketing\MarketingEventPublicObjectIDDeleteRequest;
 
 /**
  * Deletes multiple Marketing Events from the portal based on their objectId, if they exist.

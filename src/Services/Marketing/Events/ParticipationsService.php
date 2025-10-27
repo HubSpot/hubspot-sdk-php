@@ -6,12 +6,12 @@ namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\AttendanceCounters;
+use HubspotSDK\Marketing\CollectionResponseWithTotalParticipationBreakdownForwardPaging;
 use HubspotSDK\Marketing\Events\Participations\ParticipationGetByExternalAccountAndEventIDParams;
 use HubspotSDK\Marketing\Events\Participations\ParticipationListBreakdownByContactParams;
 use HubspotSDK\Marketing\Events\Participations\ParticipationListBreakdownByExternalAccountAndEventIDParams;
 use HubspotSDK\Marketing\Events\Participations\ParticipationListBreakdownByIDParams;
-use HubspotSDK\Marketing\MarketingEvents\AttendanceCounters;
-use HubspotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalParticipationBreakdownForwardPaging;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\ParticipationsContract;
 

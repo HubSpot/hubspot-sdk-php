@@ -8,7 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\MarketingEvents\PropertyValue;
+use HubspotSDK\Marketing\PropertyValue;
 
 /**
  * Updates the details of an existing Marketing Event identified by its externalAccountId, externalEventId if it exists.

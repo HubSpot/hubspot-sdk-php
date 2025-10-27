@@ -6,14 +6,14 @@ namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\BatchResponseSubscriberEmailResponse;
+use HubspotSDK\Marketing\BatchResponseSubscriberVidResponse;
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByEventIDAndContactIDParams;
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByEventIDAndEmailParams;
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByExternalEventIDAndContactIDParams;
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByExternalEventIDAndEmailParams;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseSubscriberEmailResponse;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseSubscriberVidResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventSubscriber;
+use HubspotSDK\Marketing\MarketingEventEmailSubscriber;
+use HubspotSDK\Marketing\MarketingEventSubscriber;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\AttendanceContract;
 

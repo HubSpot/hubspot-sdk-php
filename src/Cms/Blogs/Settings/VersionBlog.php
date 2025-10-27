@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Settings;
 
+use HubspotSDK\Cms\VersionUser;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
-use HubspotSDK\VersionUser;
 
 /**
  * Model definition for a Version Blog. Contains metadata describing the version of the Blog. It can be used to view edit history of the settings.

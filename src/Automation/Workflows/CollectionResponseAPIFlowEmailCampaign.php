@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
-use HubspotSDK\Marketing\Emails\Paging;
+use HubspotSDK\Paging;
 
 /**
  * @phpstan-type collection_response_api_flow_email_campaign = array{
@@ -27,9 +27,6 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel, Respons
     #[Api(list: APIFlowEmailCampaign::class)]
     public array $results;
 
-    /**
-     * Contains information pagination of results.
-     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -81,9 +78,6 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel, Respons
         return $obj;
     }
 
-    /**
-     * Contains information pagination of results.
-     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
