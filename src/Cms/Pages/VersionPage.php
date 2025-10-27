@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages;
 
+use HubspotSDK\Cms\VersionUser;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\VersionUser;
 
 /**
  * Model definition for a landing page or site page version. Contains metadata describing the version of the page. It can be used to view edit history of a page.

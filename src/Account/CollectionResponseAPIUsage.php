@@ -7,7 +7,7 @@ namespace HubspotSDK\Account;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\Paging;
+use HubspotSDK\Paging;
 
 /**
  * @phpstan-type collection_response_api_usage = array{
@@ -23,9 +23,6 @@ final class CollectionResponseAPIUsage implements BaseModel
     #[Api(list: APIUsage::class)]
     public array $results;
 
-    /**
-     * Contains information pagination of results.
-     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -77,9 +74,6 @@ final class CollectionResponseAPIUsage implements BaseModel
         return $obj;
     }
 
-    /**
-     * Contains information pagination of results.
-     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

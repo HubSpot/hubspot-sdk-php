@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing\Events;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseSubscriberEmailResponse;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseSubscriberVidResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventSubscriber;
+use HubspotSDK\Marketing\BatchResponseSubscriberEmailResponse;
+use HubspotSDK\Marketing\BatchResponseSubscriberVidResponse;
+use HubspotSDK\Marketing\MarketingEventEmailSubscriber;
+use HubspotSDK\Marketing\MarketingEventSubscriber;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
