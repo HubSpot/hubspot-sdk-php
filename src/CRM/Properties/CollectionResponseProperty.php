@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\Paging;
 use HubspotSDK\Property;
 
 /**
@@ -28,6 +28,9 @@ final class CollectionResponseProperty implements BaseModel, ResponseConverter
     #[Api(list: Property::class)]
     public array $results;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -79,6 +82,9 @@ final class CollectionResponseProperty implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

@@ -7,7 +7,7 @@ namespace HubspotSDK\CRM\Lists;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\Paging;
 
 /**
  * @phpstan-type api_collection_response_join_time_and_record_id = array{
@@ -23,6 +23,9 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
     #[Api(list: JoinTimeAndRecordID::class)]
     public array $results;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -81,6 +84,9 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

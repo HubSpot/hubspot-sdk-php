@@ -10,6 +10,7 @@ use HubspotSDK\Services\Marketing\CampaignsService;
 use HubspotSDK\Services\Marketing\EmailsService;
 use HubspotSDK\Services\Marketing\EventsService;
 use HubspotSDK\Services\Marketing\FormsService;
+use HubspotSDK\Services\Marketing\SingleSendService;
 use HubspotSDK\Services\Marketing\SubscriptionsService;
 use HubspotSDK\Services\Marketing\TransactionalService;
 
@@ -38,6 +39,11 @@ final class MarketingService implements MarketingContract
     /**
      * @@api
      */
+    public SingleSendService $singleSend;
+
+    /**
+     * @@api
+     */
     public SubscriptionsService $subscriptions;
 
     /**
@@ -54,6 +60,7 @@ final class MarketingService implements MarketingContract
         $this->emails = new EmailsService($client);
         $this->events = new EventsService($client);
         $this->forms = new FormsService($client);
+        $this->singleSend = new SingleSendService($client);
         $this->subscriptions = new SubscriptionsService($client);
         $this->transactional = new TransactionalService($client);
     }

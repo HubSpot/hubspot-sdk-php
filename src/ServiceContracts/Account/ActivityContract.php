@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Account;
 
-use HubspotSDK\Account\CollectionResponseHydratedCriticalActionForwardPaging;
-use HubspotSDK\Account\CollectionResponsePublicAPIUserActionEventForwardPaging;
-use HubspotSDK\Account\CollectionResponsePublicLoginAuditForwardPaging;
+use HubspotSDK\Account\Activity\CollectionResponseHydratedCriticalActionForwardPaging;
+use HubspotSDK\Account\Activity\CollectionResponsePublicAPIUserActionEventForwardPaging;
+use HubspotSDK\Account\Activity\CollectionResponsePublicLoginAuditForwardPaging;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 

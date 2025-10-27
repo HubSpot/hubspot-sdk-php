@@ -6,7 +6,7 @@ namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\EventDetailSettings;
+use HubspotSDK\Marketing\Events\EventDetailSettings;
 use HubspotSDK\Marketing\Events\Settings\SettingCreateOrUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\SettingsContract;

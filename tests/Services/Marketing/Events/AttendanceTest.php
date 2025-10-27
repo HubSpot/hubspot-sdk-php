@@ -3,8 +3,8 @@
 namespace Tests\Services\Marketing\Events;
 
 use HubspotSDK\Client;
-use HubspotSDK\Marketing\MarketingEventEmailSubscriber;
-use HubspotSDK\Marketing\MarketingEventSubscriber;
+use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
+use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

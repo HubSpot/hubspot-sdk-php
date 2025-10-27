@@ -8,7 +8,6 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\PropertyValue;
 
 /**
  * Creates a new marketing event in HubSpot.

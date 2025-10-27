@@ -7,7 +7,7 @@ namespace HubspotSDK\Cms\AuditLogs;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubspotSDK\Marketing\Emails\Paging;
 
 /**
  * The collection of audit logs.
@@ -25,6 +25,9 @@ final class CollectionResponsePublicAuditLog implements BaseModel
     #[Api(list: PublicAuditLog::class)]
     public array $results;
 
+    /**
+     * Contains information pagination of results.
+     */
     #[Api(optional: true)]
     public ?Paging $paging;
 
@@ -76,6 +79,9 @@ final class CollectionResponsePublicAuditLog implements BaseModel
         return $obj;
     }
 
+    /**
+     * Contains information pagination of results.
+     */
     public function withPaging(Paging $paging): self
     {
         $obj = clone $this;

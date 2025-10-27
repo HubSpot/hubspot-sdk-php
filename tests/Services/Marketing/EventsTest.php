@@ -3,13 +3,13 @@
 namespace Tests\Services\Marketing;
 
 use HubspotSDK\Client;
-use HubspotSDK\Marketing\MarketingEventCreateRequestParams;
-use HubspotSDK\Marketing\MarketingEventEmailSubscriber;
-use HubspotSDK\Marketing\MarketingEventExternalUniqueIdentifier;
-use HubspotSDK\Marketing\MarketingEventPublicObjectIDDeleteRequest;
-use HubspotSDK\Marketing\MarketingEventPublicUpdateRequestFullV2;
-use HubspotSDK\Marketing\MarketingEventSubscriber;
-use HubspotSDK\Marketing\PropertyValue;
+use HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams;
+use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
+use HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier;
+use HubspotSDK\Marketing\Events\MarketingEventPublicObjectIDDeleteRequest;
+use HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2;
+use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
+use HubspotSDK\Marketing\Events\PropertyValue;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

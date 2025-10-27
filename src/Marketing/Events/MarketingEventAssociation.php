@@ -1,0 +1,108 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Marketing\Events;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-type marketing_event_association = array{
+ *   marketingEventID: string,
+ *   name: string,
+ *   externalAccountID?: string,
+ *   externalEventID?: string,
+ * }
+ */
+final class MarketingEventAssociation implements BaseModel
+{
+    /** @use SdkModel<marketing_event_association> */
+    use SdkModel;
+
+    #[Api('marketingEventId')]
+    public string $marketingEventID;
+
+    #[Api]
+    public string $name;
+
+    #[Api('externalAccountId', optional: true)]
+    public ?string $externalAccountID;
+
+    #[Api('externalEventId', optional: true)]
+    public ?string $externalEventID;
+
+    /**
+     * `new MarketingEventAssociation()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * MarketingEventAssociation::with(marketingEventID: ..., name: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new MarketingEventAssociation)->withMarketingEventID(...)->withName(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(
+        string $marketingEventID,
+        string $name,
+        ?string $externalAccountID = null,
+        ?string $externalEventID = null,
+    ): self {
+        $obj = new self;
+
+        $obj->marketingEventID = $marketingEventID;
+        $obj->name = $name;
+
+        null !== $externalAccountID && $obj->externalAccountID = $externalAccountID;
+        null !== $externalEventID && $obj->externalEventID = $externalEventID;
+
+        return $obj;
+    }
+
+    public function withMarketingEventID(string $marketingEventID): self
+    {
+        $obj = clone $this;
+        $obj->marketingEventID = $marketingEventID;
+
+        return $obj;
+    }
+
+    public function withName(string $name): self
+    {
+        $obj = clone $this;
+        $obj->name = $name;
+
+        return $obj;
+    }
+
+    public function withExternalAccountID(string $externalAccountID): self
+    {
+        $obj = clone $this;
+        $obj->externalAccountID = $externalAccountID;
+
+        return $obj;
+    }
+
+    public function withExternalEventID(string $externalEventID): self
+    {
+        $obj = clone $this;
+        $obj->externalEventID = $externalEventID;
+
+        return $obj;
+    }
+}

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing\Events;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\AttendanceCounters;
-use HubspotSDK\Marketing\CollectionResponseWithTotalParticipationBreakdownForwardPaging;
+use HubspotSDK\Marketing\Events\AttendanceCounters;
+use HubspotSDK\Marketing\Events\CollectionResponseWithTotalParticipationBreakdownForwardPaging;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;

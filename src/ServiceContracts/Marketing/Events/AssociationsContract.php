@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing\Events;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\CollectionResponseWithTotalPublicListNoPaging;
+use HubspotSDK\Marketing\Events\CollectionResponseWithTotalPublicListNoPaging;
 use HubspotSDK\RequestOptions;
 
 interface AssociationsContract
