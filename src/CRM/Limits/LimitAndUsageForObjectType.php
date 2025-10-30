@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type limit_and_usage_for_object_type = array{
+ * @phpstan-type LimitAndUsageForObjectTypeShape = array{
  *   limit: int,
  *   objectTypeID: string,
  *   percentage: float,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LimitAndUsageForObjectType implements BaseModel
 {
-    /** @use SdkModel<limit_and_usage_for_object_type> */
+    /** @use SdkModel<LimitAndUsageForObjectTypeShape> */
     use SdkModel;
 
     #[Api]

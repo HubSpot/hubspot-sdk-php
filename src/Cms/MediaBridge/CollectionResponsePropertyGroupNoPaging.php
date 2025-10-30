@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Properties\PropertyGroup;
 
 /**
- * @phpstan-type collection_response_property_group_no_paging = array{
+ * @phpstan-type CollectionResponsePropertyGroupNoPagingShape = array{
  *   results: list<PropertyGroup>
  * }
  */
 final class CollectionResponsePropertyGroupNoPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_property_group_no_paging> */
+    /** @use SdkModel<CollectionResponsePropertyGroupNoPagingShape> */
     use SdkModel;
 
     /** @var list<PropertyGroup> $results */

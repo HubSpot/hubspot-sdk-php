@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Associations\Schema\V4\Definitions->update
  *
- * @phpstan-type definition_update_params = array{
+ * @phpstan-type DefinitionUpdateParamsShape = array{
  *   fromObjectType: string,
  *   associationTypeID: int,
  *   label: string,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class DefinitionUpdateParams implements BaseModel
 {
-    /** @use SdkModel<definition_update_params> */
+    /** @use SdkModel<DefinitionUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormDefinitionCreateRequestBase\FormType;
 
 /**
- * @phpstan-type form_definition_create_request_base = array{
+ * @phpstan-type FormDefinitionCreateRequestBaseShape = array{
  *   archived: bool,
  *   configuration: HubSpotFormConfiguration,
  *   createdAt: \DateTimeInterface,
@@ -25,7 +25,7 @@ use HubspotSDK\Marketing\Forms\FormDefinitionCreateRequestBase\FormType;
  */
 final class FormDefinitionCreateRequestBase implements BaseModel
 {
-    /** @use SdkModel<form_definition_create_request_base> */
+    /** @use SdkModel<FormDefinitionCreateRequestBaseShape> */
     use SdkModel;
 
     #[Api]

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->cancelByExternalEventID
  *
- * @phpstan-type event_cancel_by_external_event_id_params = array{
+ * @phpstan-type EventCancelByExternalEventIDParamsShape = array{
  *   externalAccountID: string
  * }
  */
 final class EventCancelByExternalEventIDParams implements BaseModel
 {
-    /** @use SdkModel<event_cancel_by_external_event_id_params> */
+    /** @use SdkModel<EventCancelByExternalEventIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

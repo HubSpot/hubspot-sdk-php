@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Invoices->get
  *
- * @phpstan-type invoice_get_params = array{
+ * @phpstan-type InvoiceGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class InvoiceGetParams implements BaseModel
 {
-    /** @use SdkModel<invoice_get_params> */
+    /** @use SdkModel<InvoiceGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

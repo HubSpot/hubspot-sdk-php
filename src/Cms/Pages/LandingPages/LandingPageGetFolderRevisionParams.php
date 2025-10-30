@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->getFolderRevision
  *
- * @phpstan-type landing_page_get_folder_revision_params = array{objectID: string}
+ * @phpstan-type LandingPageGetFolderRevisionParamsShape = array{objectID: string}
  */
 final class LandingPageGetFolderRevisionParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_get_folder_revision_params> */
+    /** @use SdkModel<LandingPageGetFolderRevisionParamsShape> */
     use SdkModel;
     use SdkParams;
 

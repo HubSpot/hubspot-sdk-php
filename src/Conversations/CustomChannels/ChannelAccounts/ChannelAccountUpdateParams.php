@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\CustomChannels\ChannelAccounts->update
  *
- * @phpstan-type channel_account_update_params = array{
+ * @phpstan-type ChannelAccountUpdateParamsShape = array{
  *   channelID: string, authorized?: bool, name?: string
  * }
  */
 final class ChannelAccountUpdateParams implements BaseModel
 {
-    /** @use SdkModel<channel_account_update_params> */
+    /** @use SdkModel<ChannelAccountUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

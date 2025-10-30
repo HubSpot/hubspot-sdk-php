@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->list
  *
- * @phpstan-type table_list_params = array{
+ * @phpstan-type TableListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   contentType?: string,
@@ -31,7 +31,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TableListParams implements BaseModel
 {
-    /** @use SdkModel<table_list_params> */
+    /** @use SdkModel<TableListParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,7 +14,7 @@ use HubspotSDK\Marketing\Emails\EmailUpdateRequest\Subcategory;
 /**
  * Properties of a marketing email you can update via the API.
  *
- * @phpstan-type email_update_request = array{
+ * @phpstan-type EmailUpdateRequestShape = array{
  *   activeDomain?: string,
  *   archived?: bool,
  *   businessUnitID?: int,
@@ -39,7 +39,7 @@ use HubspotSDK\Marketing\Emails\EmailUpdateRequest\Subcategory;
  */
 final class EmailUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<email_update_request> */
+    /** @use SdkModel<EmailUpdateRequestShape> */
     use SdkModel;
 
     /**

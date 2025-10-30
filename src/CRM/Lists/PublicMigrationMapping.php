@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_migration_mapping = array{
+ * @phpstan-type PublicMigrationMappingShape = array{
  *   legacyListID: string, listID: string
  * }
  */
 final class PublicMigrationMapping implements BaseModel
 {
-    /** @use SdkModel<public_migration_mapping> */
+    /** @use SdkModel<PublicMigrationMappingShape> */
     use SdkModel;
 
     /**

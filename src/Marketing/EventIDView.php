@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The ID of a send event.
  *
- * @phpstan-type event_id_view = array{id: string, created: \DateTimeInterface}
+ * @phpstan-type EventIDViewShape = array{id: string, created: \DateTimeInterface}
  */
 final class EventIDView implements BaseModel
 {
-    /** @use SdkModel<event_id_view> */
+    /** @use SdkModel<EventIDViewShape> */
     use SdkModel;
 
     /**

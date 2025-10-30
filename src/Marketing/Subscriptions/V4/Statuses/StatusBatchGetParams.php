@@ -15,13 +15,13 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetParams\Channel;
  *
  * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->batchGet
  *
- * @phpstan-type status_batch_get_params = array{
+ * @phpstan-type StatusBatchGetParamsShape = array{
  *   channel: Channel|value-of<Channel>, inputs: list<string>, businessUnitID?: int
  * }
  */
 final class StatusBatchGetParams implements BaseModel
 {
-    /** @use SdkModel<status_batch_get_params> */
+    /** @use SdkModel<StatusBatchGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

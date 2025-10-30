@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Limits->getAssociationRecordsLimitsByObjectType
  *
- * @phpstan-type limit_get_association_records_limits_by_object_type_params = array{
+ * @phpstan-type LimitGetAssociationRecordsLimitsByObjectTypeParamsShape = array{
  *   fromObjectTypeID: string
  * }
  */
 final class LimitGetAssociationRecordsLimitsByObjectTypeParams implements BaseModel
 {
-    /** @use SdkModel<limit_get_association_records_limits_by_object_type_params> */
+    /** @use SdkModel<LimitGetAssociationRecordsLimitsByObjectTypeParamsShape> */
     use SdkModel;
     use SdkParams;
 

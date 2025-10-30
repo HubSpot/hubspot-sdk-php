@@ -12,7 +12,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Forms\FormDefinitionBase\FormType;
 
 /**
- * @phpstan-type form_definition_base = array{
+ * @phpstan-type FormDefinitionBaseShape = array{
  *   id: string,
  *   archived: bool,
  *   configuration: HubSpotFormConfiguration,
@@ -28,7 +28,7 @@ use HubspotSDK\Marketing\Forms\FormDefinitionBase\FormType;
  */
 final class FormDefinitionBase implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<form_definition_base> */
+    /** @use SdkModel<FormDefinitionBaseShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type attention_span_calculated_values = array{
+ * @phpstan-type AttentionSpanCalculatedValuesShape = array{
  *   totalPercentPlayed: float, totalSecondsPlayed: int
  * }
  */
 final class AttentionSpanCalculatedValues implements BaseModel
 {
-    /** @use SdkModel<attention_span_calculated_values> */
+    /** @use SdkModel<AttentionSpanCalculatedValuesShape> */
     use SdkModel;
 
     #[Api]

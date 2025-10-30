@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type hub_spot_form_definition_patch_request = array{
+ * @phpstan-type HubSpotFormDefinitionPatchRequestShape = array{
  *   archived?: bool,
  *   configuration?: HubSpotFormConfiguration,
  *   displayOptions?: FormDisplayOptions,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class HubSpotFormDefinitionPatchRequest implements BaseModel
 {
-    /** @use SdkModel<hub_spot_form_definition_patch_request> */
+    /** @use SdkModel<HubSpotFormDefinitionPatchRequestShape> */
     use SdkModel;
 
     /**

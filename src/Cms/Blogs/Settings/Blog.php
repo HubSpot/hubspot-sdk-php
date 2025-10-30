@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type blog_alias = array{
+ * @phpstan-type BlogShape = array{
  *   id: string,
  *   absoluteURL: string,
  *   allowComments: bool,
@@ -32,7 +32,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class Blog implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<blog_alias> */
+    /** @use SdkModel<BlogShape> */
     use SdkModel;
 
     use SdkResponse;

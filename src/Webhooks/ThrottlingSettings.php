@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Configuration details for webhook throttling.
  *
- * @phpstan-type throttling_settings = array{maxConcurrentRequests: int}
+ * @phpstan-type ThrottlingSettingsShape = array{maxConcurrentRequests: int}
  */
 final class ThrottlingSettings implements BaseModel
 {
-    /** @use SdkModel<throttling_settings> */
+    /** @use SdkModel<ThrottlingSettingsShape> */
     use SdkModel;
 
     /**

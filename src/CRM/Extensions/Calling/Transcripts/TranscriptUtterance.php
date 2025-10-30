@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type transcript_utterance = array{
+ * @phpstan-type TranscriptUtteranceShape = array{
  *   id: string,
  *   endTimeMillis: int,
  *   startTimeMillis: int,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TranscriptUtterance implements BaseModel
 {
-    /** @use SdkModel<transcript_utterance> */
+    /** @use SdkModel<TranscriptUtteranceShape> */
     use SdkModel;
 
     #[Api]

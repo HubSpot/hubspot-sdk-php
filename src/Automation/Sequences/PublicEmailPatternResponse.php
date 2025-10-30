@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_email_pattern_response = array{
+ * @phpstan-type PublicEmailPatternResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   templateID: string,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicEmailPatternResponse implements BaseModel
 {
-    /** @use SdkModel<public_email_pattern_response> */
+    /** @use SdkModel<PublicEmailPatternResponseShape> */
     use SdkModel;
 
     #[Api]

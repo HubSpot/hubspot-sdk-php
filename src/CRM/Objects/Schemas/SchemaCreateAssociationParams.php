@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Schemas->createAssociation
  *
- * @phpstan-type schema_create_association_params = array{
+ * @phpstan-type SchemaCreateAssociationParamsShape = array{
  *   fromObjectTypeID: string, toObjectTypeID: string, name?: string
  * }
  */
 final class SchemaCreateAssociationParams implements BaseModel
 {
-    /** @use SdkModel<schema_create_association_params> */
+    /** @use SdkModel<SchemaCreateAssociationParamsShape> */
     use SdkModel;
     use SdkParams;
 

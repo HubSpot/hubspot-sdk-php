@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_flow_batch_input = array{
+ * @phpstan-type APIFlowBatchInputShape = array{
  *   inputs: list<APIFlowBatchFetchFlowIDCoordinate>
  * }
  */
 final class APIFlowBatchInput implements BaseModel
 {
-    /** @use SdkModel<api_flow_batch_input> */
+    /** @use SdkModel<APIFlowBatchInputShape> */
     use SdkModel;
 
     /** @var list<APIFlowBatchFetchFlowIDCoordinate> $inputs */

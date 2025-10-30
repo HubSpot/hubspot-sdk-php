@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\PublicSingleSendEmail;
  *
  * @see HubspotSDK\Marketing\Transactional\SingleEmail->send
  *
- * @phpstan-type single_email_send_params = array{
+ * @phpstan-type SingleEmailSendParamsShape = array{
  *   emailID: int,
  *   message: PublicSingleSendEmail,
  *   contactProperties?: array<string, string>,
@@ -24,7 +24,7 @@ use HubspotSDK\Marketing\PublicSingleSendEmail;
  */
 final class SingleEmailSendParams implements BaseModel
 {
-    /** @use SdkModel<single_email_send_params> */
+    /** @use SdkModel<SingleEmailSendParamsShape> */
     use SdkModel;
     use SdkParams;
 

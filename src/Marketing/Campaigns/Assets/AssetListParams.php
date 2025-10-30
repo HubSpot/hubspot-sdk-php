@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Assets->list
  *
- * @phpstan-type asset_list_params = array{
+ * @phpstan-type AssetListParamsShape = array{
  *   campaignGuid: string,
  *   after?: string,
  *   endDate?: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AssetListParams implements BaseModel
 {
-    /** @use SdkModel<asset_list_params> */
+    /** @use SdkModel<AssetListParamsShape> */
     use SdkModel;
     use SdkParams;
 

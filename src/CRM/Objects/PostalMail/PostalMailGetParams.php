@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\PostalMail->get
  *
- * @phpstan-type postal_mail_get_params = array{
+ * @phpstan-type PostalMailGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PostalMailGetParams implements BaseModel
 {
-    /** @use SdkModel<postal_mail_get_params> */
+    /** @use SdkModel<PostalMailGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Callbacks->completeBatch
  *
- * @phpstan-type callback_complete_batch_params = array{
+ * @phpstan-type CallbackCompleteBatchParamsShape = array{
  *   inputs: list<CallbackCompletionBatchRequest>
  * }
  */
 final class CallbackCompleteBatchParams implements BaseModel
 {
-    /** @use SdkModel<callback_complete_batch_params> */
+    /** @use SdkModel<CallbackCompleteBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

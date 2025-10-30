@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type property_name = array{name: string}
+ * @phpstan-type PropertyNameShape = array{name: string}
  */
 final class PropertyName implements BaseModel
 {
-    /** @use SdkModel<property_name> */
+    /** @use SdkModel<PropertyNameShape> */
     use SdkModel;
 
     #[Api]

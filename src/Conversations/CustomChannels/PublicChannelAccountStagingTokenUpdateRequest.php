@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_channel_account_staging_token_update_request = array{
+ * @phpstan-type PublicChannelAccountStagingTokenUpdateRequestShape = array{
  *   accountName: string, deliveryIdentifier: PublicDeliveryIdentifier
  * }
  */
 final class PublicChannelAccountStagingTokenUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<public_channel_account_staging_token_update_request> */
+    /** @use SdkModel<PublicChannelAccountStagingTokenUpdateRequestShape> */
     use SdkModel;
 
     #[Api]

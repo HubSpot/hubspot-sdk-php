@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type file_extract_request = array{path: string}
+ * @phpstan-type FileExtractRequestShape = array{path: string}
  */
 final class FileExtractRequest implements BaseModel
 {
-    /** @use SdkModel<file_extract_request> */
+    /** @use SdkModel<FileExtractRequestShape> */
     use SdkModel;
 
     #[Api]

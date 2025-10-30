@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type custom_object_limit_response = array{
+ * @phpstan-type CustomObjectLimitResponseShape = array{
  *   limit: int, percentage: float, usage: int
  * }
  */
 final class CustomObjectLimitResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<custom_object_limit_response> */
+    /** @use SdkModel<CustomObjectLimitResponseShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->get
  *
- * @phpstan-type site_page_get_params = array{archived?: bool, property?: string}
+ * @phpstan-type SitePageGetParamsShape = array{archived?: bool, property?: string}
  */
 final class SitePageGetParams implements BaseModel
 {
-    /** @use SdkModel<site_page_get_params> */
+    /** @use SdkModel<SitePageGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

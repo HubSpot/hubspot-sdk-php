@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type association_definition_egg = array{
+ * @phpstan-type AssociationDefinitionEggShape = array{
  *   fromObjectTypeID: string, toObjectTypeID: string, name?: string
  * }
  */
 final class AssociationDefinitionEgg implements BaseModel
 {
-    /** @use SdkModel<association_definition_egg> */
+    /** @use SdkModel<AssociationDefinitionEggShape> */
     use SdkModel;
 
     #[Api('fromObjectTypeId')]

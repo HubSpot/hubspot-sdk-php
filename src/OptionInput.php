@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type option_input = array{
+ * @phpstan-type OptionInputShape = array{
  *   displayOrder: int,
  *   hidden: bool,
  *   label: string,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class OptionInput implements BaseModel
 {
-    /** @use SdkModel<option_input> */
+    /** @use SdkModel<OptionInputShape> */
     use SdkModel;
 
     #[Api]

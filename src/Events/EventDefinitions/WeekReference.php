@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\WeekReference\DayOfWeek;
 use HubspotSDK\Events\EventDefinitions\WeekReference\ReferenceType;
 
 /**
- * @phpstan-type week_reference = array{
+ * @phpstan-type WeekReferenceShape = array{
  *   dayOfWeek: value-of<DayOfWeek>,
  *   referenceType: value-of<ReferenceType>,
  *   hour?: int,
@@ -22,7 +22,7 @@ use HubspotSDK\Events\EventDefinitions\WeekReference\ReferenceType;
  */
 final class WeekReference implements BaseModel
 {
-    /** @use SdkModel<week_reference> */
+    /** @use SdkModel<WeekReferenceShape> */
     use SdkModel;
 
     /** @var value-of<DayOfWeek> $dayOfWeek */

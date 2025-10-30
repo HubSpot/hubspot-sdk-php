@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Tags->read
  *
- * @phpstan-type tag_read_params = array{archived?: bool, property?: string}
+ * @phpstan-type TagReadParamsShape = array{archived?: bool, property?: string}
  */
 final class TagReadParams implements BaseModel
 {
-    /** @use SdkModel<tag_read_params> */
+    /** @use SdkModel<TagReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

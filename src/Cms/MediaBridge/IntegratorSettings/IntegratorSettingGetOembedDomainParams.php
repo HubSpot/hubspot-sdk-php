@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->getOembedDomain
  *
- * @phpstan-type integrator_setting_get_oembed_domain_params = array{appID: string}
+ * @phpstan-type IntegratorSettingGetOembedDomainParamsShape = array{appID: string}
  */
 final class IntegratorSettingGetOembedDomainParams implements BaseModel
 {
-    /** @use SdkModel<integrator_setting_get_oembed_domain_params> */
+    /** @use SdkModel<IntegratorSettingGetOembedDomainParamsShape> */
     use SdkModel;
     use SdkParams;
 

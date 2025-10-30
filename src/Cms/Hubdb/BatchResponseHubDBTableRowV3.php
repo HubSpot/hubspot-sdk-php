@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_response_hub_db_table_row_v3 = array{
+ * @phpstan-type BatchResponseHubDBTableRowV3Shape = array{
  *   completedAt?: \DateTimeInterface,
  *   links?: array<string, string>,
  *   requestedAt?: \DateTimeInterface,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class BatchResponseHubDBTableRowV3 implements BaseModel
 {
-    /** @use SdkModel<batch_response_hub_db_table_row_v3> */
+    /** @use SdkModel<BatchResponseHubDBTableRowV3Shape> */
     use SdkModel;
 
     #[Api(optional: true)]

@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_list_folder = array{
+ * @phpstan-type PublicListFolderShape = array{
  *   id: string,
  *   childLists: list<int>,
  *   childNodes: list<PublicListFolder>,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicListFolder implements BaseModel
 {
-    /** @use SdkModel<public_list_folder> */
+    /** @use SdkModel<PublicListFolderShape> */
     use SdkModel;
 
     /**

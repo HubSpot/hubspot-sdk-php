@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_meeting_booking_response = array{
+ * @phpstan-type ExternalMeetingBookingResponseShape = array{
  *   bookingTimezone: string,
  *   calendarEventID: string,
  *   contactID: string,
@@ -29,7 +29,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalMeetingBookingResponse implements BaseModel
 {
-    /** @use SdkModel<external_meeting_booking_response> */
+    /** @use SdkModel<ExternalMeetingBookingResponseShape> */
     use SdkModel;
 
     #[Api]

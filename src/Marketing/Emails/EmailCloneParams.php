@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Emails->clone
  *
- * @phpstan-type email_clone_params = array{
+ * @phpstan-type EmailCloneParamsShape = array{
  *   id: string, cloneName?: string, language?: string
  * }
  */
 final class EmailCloneParams implements BaseModel
 {
-    /** @use SdkModel<email_clone_params> */
+    /** @use SdkModel<EmailCloneParamsShape> */
     use SdkModel;
     use SdkParams;
 

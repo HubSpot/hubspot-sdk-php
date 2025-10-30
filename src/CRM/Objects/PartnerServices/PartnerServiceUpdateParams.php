@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\PartnerServices->update
  *
- * @phpstan-type partner_service_update_params = array{
+ * @phpstan-type PartnerServiceUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class PartnerServiceUpdateParams implements BaseModel
 {
-    /** @use SdkModel<partner_service_update_params> */
+    /** @use SdkModel<PartnerServiceUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

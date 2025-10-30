@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type calculated_property_limit_response = array{
+ * @phpstan-type CalculatedPropertyLimitResponseShape = array{
  *   byObjectType: list<UsageForObjectType>,
  *   overallLimit: int,
  *   overallPercentage: float,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class CalculatedPropertyLimitResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<calculated_property_limit_response> */
+    /** @use SdkModel<CalculatedPropertyLimitResponseShape> */
     use SdkModel;
 
     use SdkResponse;

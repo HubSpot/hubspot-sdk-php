@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Authors->attachToLangGroup
  *
- * @phpstan-type author_attach_to_lang_group_params = array{
+ * @phpstan-type AuthorAttachToLangGroupParamsShape = array{
  *   id: string, language: string, primaryID: string, primaryLanguage?: string
  * }
  */
 final class AuthorAttachToLangGroupParams implements BaseModel
 {
-    /** @use SdkModel<author_attach_to_lang_group_params> */
+    /** @use SdkModel<AuthorAttachToLangGroupParamsShape> */
     use SdkModel;
     use SdkParams;
 

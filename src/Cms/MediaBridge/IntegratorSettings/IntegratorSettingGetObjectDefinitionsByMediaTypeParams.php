@@ -14,14 +14,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->getObjectDefinitionsByMediaType
  *
- * @phpstan-type integrator_setting_get_object_definitions_by_media_type_params = array{
+ * @phpstan-type IntegratorSettingGetObjectDefinitionsByMediaTypeParamsShape = array{
  *   appID: string
  * }
  */
 final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements BaseModel
 {
     /**
-     * @use SdkModel<integrator_setting_get_object_definitions_by_media_type_params>
+     * @use SdkModel<IntegratorSettingGetObjectDefinitionsByMediaTypeParamsShape>
      */
     use SdkModel;
     use SdkParams;

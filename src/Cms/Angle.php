@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type angle_alias = array{units: string, value: float}
+ * @phpstan-type AngleShape = array{units: string, value: float}
  */
 final class Angle implements BaseModel
 {
-    /** @use SdkModel<angle_alias> */
+    /** @use SdkModel<AngleShape> */
     use SdkModel;
 
     #[Api]

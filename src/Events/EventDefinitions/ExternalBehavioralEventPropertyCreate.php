@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\OptionInput;
 
 /**
- * @phpstan-type external_behavioral_event_property_create = array{
+ * @phpstan-type ExternalBehavioralEventPropertyCreateShape = array{
  *   label: string,
  *   type: string,
  *   description?: string,
@@ -20,7 +20,7 @@ use HubspotSDK\OptionInput;
  */
 final class ExternalBehavioralEventPropertyCreate implements BaseModel
 {
-    /** @use SdkModel<external_behavioral_event_property_create> */
+    /** @use SdkModel<ExternalBehavioralEventPropertyCreateShape> */
     use SdkModel;
 
     /**

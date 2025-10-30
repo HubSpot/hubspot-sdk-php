@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Response object for batch operations on blog posts.
  *
- * @phpstan-type batch_response_blog_post = array{
+ * @phpstan-type BatchResponseBlogPostShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<BlogPost>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class BatchResponseBlogPost implements BaseModel
 {
-    /** @use SdkModel<batch_response_blog_post> */
+    /** @use SdkModel<BatchResponseBlogPostShape> */
     use SdkModel;
 
     /**

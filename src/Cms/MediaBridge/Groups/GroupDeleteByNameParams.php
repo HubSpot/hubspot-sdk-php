@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Groups->deleteByName
  *
- * @phpstan-type group_delete_by_name_params = array{
+ * @phpstan-type GroupDeleteByNameParamsShape = array{
  *   appID: string, objectType: string
  * }
  */
 final class GroupDeleteByNameParams implements BaseModel
 {
-    /** @use SdkModel<group_delete_by_name_params> */
+    /** @use SdkModel<GroupDeleteByNameParamsShape> */
     use SdkModel;
     use SdkParams;
 

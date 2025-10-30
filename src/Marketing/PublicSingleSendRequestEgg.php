@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A request to send a single email asynchronously.
  *
- * @phpstan-type public_single_send_request_egg = array{
+ * @phpstan-type PublicSingleSendRequestEggShape = array{
  *   emailID: int,
  *   message: PublicSingleSendEmail,
  *   contactProperties?: array<string, string>,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicSingleSendRequestEgg implements BaseModel
 {
-    /** @use SdkModel<public_single_send_request_egg> */
+    /** @use SdkModel<PublicSingleSendRequestEggShape> */
     use SdkModel;
 
     /**

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type simple_user = array{
+ * @phpstan-type SimpleUserShape = array{
  *   id: string, email: string, firstName: string, lastName: string
  * }
  */
 final class SimpleUser implements BaseModel
 {
-    /** @use SdkModel<simple_user> */
+    /** @use SdkModel<SimpleUserShape> */
     use SdkModel;
 
     #[Api]

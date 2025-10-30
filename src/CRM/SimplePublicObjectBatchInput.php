@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Contains an array of CRM object records to be processed in a batch operation, each defined by their ID and properties.
  *
- * @phpstan-type simple_public_object_batch_input = array{
+ * @phpstan-type SimplePublicObjectBatchInputShape = array{
  *   id: string,
  *   properties: array<string, string>,
  *   idProperty?: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SimplePublicObjectBatchInput implements BaseModel
 {
-    /** @use SdkModel<simple_public_object_batch_input> */
+    /** @use SdkModel<SimplePublicObjectBatchInputShape> */
     use SdkModel;
 
     /**

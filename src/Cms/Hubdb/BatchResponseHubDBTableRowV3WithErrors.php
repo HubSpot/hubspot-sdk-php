@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_hub_db_table_row_v3_with_errors = array{
+ * @phpstan-type BatchResponseHubDBTableRowV3WithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<HubDBTableRowV3>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseHubDBTableRowV3WithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_hub_db_table_row_v3_with_errors> */
+    /** @use SdkModel<BatchResponseHubDBTableRowV3WithErrorsShape> */
     use SdkModel;
 
     #[Api]

@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type collection_response_object_type_near_or_at_association_limit_no_paging = array{
+ * @phpstan-type CollectionResponseObjectTypeNearOrAtAssociationLimitNoPagingShape = array{
  *   results: list<ObjectTypeNearOrAtAssociationLimit>
  * }
  */
 final class CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging implements BaseModel, ResponseConverter
 {
     /**
-     * @use SdkModel<collection_response_object_type_near_or_at_association_limit_no_paging>
+     * @use SdkModel<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPagingShape>
      */
     use SdkModel;
 

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Extensions\Calling\Settings->create
  *
- * @phpstan-type setting_create_params = array{
+ * @phpstan-type SettingCreateParamsShape = array{
  *   name: string,
  *   url: string,
  *   height?: int,
@@ -28,7 +28,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SettingCreateParams implements BaseModel
 {
-    /** @use SdkModel<setting_create_params> */
+    /** @use SdkModel<SettingCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

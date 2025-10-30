@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicNowReference\ReferenceType;
 
 /**
- * @phpstan-type public_now_reference = array{
+ * @phpstan-type PublicNowReferenceShape = array{
  *   referenceType: value-of<ReferenceType>,
  *   hour?: int,
  *   millisecond?: int,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicNowReference\ReferenceType;
  */
 final class PublicNowReference implements BaseModel
 {
-    /** @use SdkModel<public_now_reference> */
+    /** @use SdkModel<PublicNowReferenceShape> */
     use SdkModel;
 
     /** @var value-of<ReferenceType> $referenceType */

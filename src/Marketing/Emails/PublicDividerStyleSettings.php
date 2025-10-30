@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_divider_style_settings = array{
+ * @phpstan-type PublicDividerStyleSettingsShape = array{
  *   color?: mixed, height?: int, lineType?: string
  * }
  */
 final class PublicDividerStyleSettings implements BaseModel
 {
-    /** @use SdkModel<public_divider_style_settings> */
+    /** @use SdkModel<PublicDividerStyleSettingsShape> */
     use SdkModel;
 
     #[Api(optional: true)]

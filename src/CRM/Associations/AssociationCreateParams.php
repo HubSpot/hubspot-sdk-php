@@ -12,13 +12,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\CRM\Associations->create
  *
- * @phpstan-type association_create_params = array{
+ * @phpstan-type AssociationCreateParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicAssociation>
  * }
  */
 final class AssociationCreateParams implements BaseModel
 {
-    /** @use SdkModel<association_create_params> */
+    /** @use SdkModel<AssociationCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

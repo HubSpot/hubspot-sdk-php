@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events\Participations->listBreakdownByExternalAccountAndEventID
  *
- * @phpstan-type participation_list_breakdown_by_external_account_and_event_id_params = array{
+ * @phpstan-type ParticipationListBreakdownByExternalAccountAndEventIDParamsShape = array{
  *   externalAccountID: string,
  *   after?: string,
  *   contactIdentifier?: string,
@@ -25,9 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 final class ParticipationListBreakdownByExternalAccountAndEventIDParams implements BaseModel
 {
     /**
-     * @use SdkModel<
-     *   participation_list_breakdown_by_external_account_and_event_id_params
-     * >
+     * @use SdkModel<ParticipationListBreakdownByExternalAccountAndEventIDParamsShape>
      */
     use SdkModel;
     use SdkParams;

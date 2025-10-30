@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Tags->delete
  *
- * @phpstan-type tag_delete_params = array{archived?: bool}
+ * @phpstan-type TagDeleteParamsShape = array{archived?: bool}
  */
 final class TagDeleteParams implements BaseModel
 {
-    /** @use SdkModel<tag_delete_params> */
+    /** @use SdkModel<TagDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Budget->delete
  *
- * @phpstan-type budget_delete_params = array{campaignGuid: string}
+ * @phpstan-type BudgetDeleteParamsShape = array{campaignGuid: string}
  */
 final class BudgetDeleteParams implements BaseModel
 {
-    /** @use SdkModel<budget_delete_params> */
+    /** @use SdkModel<BudgetDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

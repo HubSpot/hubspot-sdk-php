@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicPrivacyAnalyticsFilter\FilterType;
 
 /**
- * @phpstan-type public_privacy_analytics_filter = array{
+ * @phpstan-type PublicPrivacyAnalyticsFilterShape = array{
  *   filterType: value-of<FilterType>, operator: string, privacyName: string
  * }
  */
 final class PublicPrivacyAnalyticsFilter implements BaseModel
 {
-    /** @use SdkModel<public_privacy_analytics_filter> */
+    /** @use SdkModel<PublicPrivacyAnalyticsFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

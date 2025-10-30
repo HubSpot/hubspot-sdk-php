@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Associations\Schema\V4\Configurations->getByObjectTypes
  *
- * @phpstan-type configuration_get_by_object_types_params = array{
+ * @phpstan-type ConfigurationGetByObjectTypesParamsShape = array{
  *   fromObjectType: string
  * }
  */
 final class ConfigurationGetByObjectTypesParams implements BaseModel
 {
-    /** @use SdkModel<configuration_get_by_object_types_params> */
+    /** @use SdkModel<ConfigurationGetByObjectTypesParamsShape> */
     use SdkModel;
     use SdkParams;
 

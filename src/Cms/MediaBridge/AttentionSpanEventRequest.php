@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type attention_span_event_request = array{
+ * @phpstan-type AttentionSpanEventRequestShape = array{
  *   mediaType: value-of<MediaType>,
  *   occurredTimestamp: int,
  *   rawDataMap: array<string, int>,
@@ -31,7 +31,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AttentionSpanEventRequest implements BaseModel
 {
-    /** @use SdkModel<attention_span_event_request> */
+    /** @use SdkModel<AttentionSpanEventRequestShape> */
     use SdkModel;
 
     /** @var value-of<MediaType> $mediaType */

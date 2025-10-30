@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_calendar_meeting_event_create_request = array{
+ * @phpstan-type ExternalCalendarMeetingEventCreateRequestShape = array{
  *   associations: list<ExternalAssociationCreateRequest>,
  *   emailReminderSchedule: ExternalEmailReminderSchedule,
  *   properties: ExternalCalendarMeetingEventCreateProperties,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
 {
-    /** @use SdkModel<external_calendar_meeting_event_create_request> */
+    /** @use SdkModel<ExternalCalendarMeetingEventCreateRequestShape> */
     use SdkModel;
 
     /** @var list<ExternalAssociationCreateRequest> $associations */

@@ -21,7 +21,7 @@ use HubspotSDK\Option;
 /**
  * A HubSpot property.
  *
- * @phpstan-type property_alias = array{
+ * @phpstan-type PropertyShape = array{
  *   allowedObjectTypes: list<ObjectTypeIDProto>,
  *   calculated: bool,
  *   canArchive: bool,
@@ -73,7 +73,7 @@ use HubspotSDK\Option;
  */
 final class Property implements BaseModel
 {
-    /** @use SdkModel<property_alias> */
+    /** @use SdkModel<PropertyShape> */
     use SdkModel;
 
     /**

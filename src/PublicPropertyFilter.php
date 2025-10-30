@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicPropertyFilter\FilterType;
 
 /**
- * @phpstan-type public_property_filter = array{
+ * @phpstan-type PublicPropertyFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operation: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
  *   property: string,
@@ -18,7 +18,7 @@ use HubspotSDK\PublicPropertyFilter\FilterType;
  */
 final class PublicPropertyFilter implements BaseModel
 {
-    /** @use SdkModel<public_property_filter> */
+    /** @use SdkModel<PublicPropertyFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

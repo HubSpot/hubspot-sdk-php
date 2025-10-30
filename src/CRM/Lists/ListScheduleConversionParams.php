@@ -16,7 +16,7 @@ use HubspotSDK\CRM\Lists\ListScheduleConversionParams\TimeUnit;
  *
  * @see HubspotSDK\CRM\Lists->scheduleConversion
  *
- * @phpstan-type list_schedule_conversion_params = array{
+ * @phpstan-type ListScheduleConversionParamsShape = array{
  *   conversionType: ConversionType|value-of<ConversionType>,
  *   day: int,
  *   month: int,
@@ -27,7 +27,7 @@ use HubspotSDK\CRM\Lists\ListScheduleConversionParams\TimeUnit;
  */
 final class ListScheduleConversionParams implements BaseModel
 {
-    /** @use SdkModel<list_schedule_conversion_params> */
+    /** @use SdkModel<ListScheduleConversionParamsShape> */
     use SdkModel;
     use SdkParams;
 

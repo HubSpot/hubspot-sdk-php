@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type llm_actor = array{
+ * @phpstan-type LlmActorShape = array{
  *   id: string, type: value-of<Type>, avatar?: string, name?: string
  * }
  */
 final class LlmActor implements BaseModel
 {
-    /** @use SdkModel<llm_actor> */
+    /** @use SdkModel<LlmActorShape> */
     use SdkModel;
 
     #[Api]

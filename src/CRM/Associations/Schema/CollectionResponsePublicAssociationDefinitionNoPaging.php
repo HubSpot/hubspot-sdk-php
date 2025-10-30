@@ -11,15 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type collection_response_public_association_definition_no_paging = array{
+ * @phpstan-type CollectionResponsePublicAssociationDefinitionNoPagingShape = array{
  *   results: list<PublicAssociationDefinition>
  * }
  */
 final class CollectionResponsePublicAssociationDefinitionNoPaging implements BaseModel, ResponseConverter
 {
-    /**
-     * @use SdkModel<collection_response_public_association_definition_no_paging>
-     */
+    /** @use SdkModel<CollectionResponsePublicAssociationDefinitionNoPagingShape> */
     use SdkModel;
 
     use SdkResponse;

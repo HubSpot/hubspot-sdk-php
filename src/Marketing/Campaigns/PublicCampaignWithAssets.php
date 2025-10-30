@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type public_campaign_with_assets = array{
+ * @phpstan-type PublicCampaignWithAssetsShape = array{
  *   id: string,
  *   assets: array<string, CollectionResponsePublicCampaignAsset>,
  *   businessUnits: list<PublicBusinessUnit>,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_campaign_with_assets> */
+    /** @use SdkModel<PublicCampaignWithAssetsShape> */
     use SdkModel;
 
     use SdkResponse;

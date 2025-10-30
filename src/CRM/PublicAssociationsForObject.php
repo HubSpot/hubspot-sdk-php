@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
- * @phpstan-type public_associations_for_object = array{
+ * @phpstan-type PublicAssociationsForObjectShape = array{
  *   to: PublicObjectID, types: list<AssociationSpec>
  * }
  */
 final class PublicAssociationsForObject implements BaseModel
 {
-    /** @use SdkModel<public_associations_for_object> */
+    /** @use SdkModel<PublicAssociationsForObjectShape> */
     use SdkModel;
 
     #[Api]

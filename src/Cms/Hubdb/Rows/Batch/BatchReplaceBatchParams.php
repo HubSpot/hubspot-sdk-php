@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows\Batch->replaceBatch
  *
- * @phpstan-type batch_replace_batch_params = array{
+ * @phpstan-type BatchReplaceBatchParamsShape = array{
  *   inputs: list<HubDBTableRowV3BatchUpdateRequest>
  * }
  */
 final class BatchReplaceBatchParams implements BaseModel
 {
-    /** @use SdkModel<batch_replace_batch_params> */
+    /** @use SdkModel<BatchReplaceBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Folders->rename
  *
- * @phpstan-type folder_rename_params = array{newFolderName?: string}
+ * @phpstan-type FolderRenameParamsShape = array{newFolderName?: string}
  */
 final class FolderRenameParams implements BaseModel
 {
-    /** @use SdkModel<folder_rename_params> */
+    /** @use SdkModel<FolderRenameParamsShape> */
     use SdkModel;
     use SdkParams;
 

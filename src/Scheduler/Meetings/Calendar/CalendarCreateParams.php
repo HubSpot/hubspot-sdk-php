@@ -15,7 +15,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
 /**
  * @see HubspotSDK\Scheduler\Meetings\Calendar->create
  *
- * @phpstan-type calendar_create_params = array{
+ * @phpstan-type CalendarCreateParamsShape = array{
  *   associations: list<ExternalAssociationCreateRequest>,
  *   emailReminderSchedule: ExternalEmailReminderSchedule,
  *   properties: ExternalCalendarMeetingEventCreateProperties,
@@ -24,7 +24,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
  */
 final class CalendarCreateParams implements BaseModel
 {
-    /** @use SdkModel<calendar_create_params> */
+    /** @use SdkModel<CalendarCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

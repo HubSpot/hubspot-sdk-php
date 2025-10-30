@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type marketing_event_public_default_response_v2 = array{
+ * @phpstan-type MarketingEventPublicDefaultResponseV2Shape = array{
  *   createdAt: \DateTimeInterface,
  *   customProperties: list<CRMPropertyWrapper>,
  *   eventName: string,
@@ -30,7 +30,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class MarketingEventPublicDefaultResponseV2 implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<marketing_event_public_default_response_v2> */
+    /** @use SdkModel<MarketingEventPublicDefaultResponseV2Shape> */
     use SdkModel;
 
     use SdkResponse;

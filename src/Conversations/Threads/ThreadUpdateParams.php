@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\Threads->update
  *
- * @phpstan-type thread_update_params = array{
+ * @phpstan-type ThreadUpdateParamsShape = array{
  *   archived?: bool, status?: Status|value-of<Status>
  * }
  */
 final class ThreadUpdateParams implements BaseModel
 {
-    /** @use SdkModel<thread_update_params> */
+    /** @use SdkModel<ThreadUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

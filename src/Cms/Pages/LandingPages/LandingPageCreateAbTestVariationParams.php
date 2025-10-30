@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->createAbTestVariation
  *
- * @phpstan-type landing_page_create_ab_test_variation_params = array{
+ * @phpstan-type LandingPageCreateAbTestVariationParamsShape = array{
  *   contentID: string, variationName: string
  * }
  */
 final class LandingPageCreateAbTestVariationParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_create_ab_test_variation_params> */
+    /** @use SdkModel<LandingPageCreateAbTestVariationParamsShape> */
     use SdkModel;
     use SdkParams;
 

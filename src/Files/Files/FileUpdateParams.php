@@ -15,7 +15,7 @@ use HubspotSDK\Files\Files\FileUpdateParams\Access;
  *
  * @see HubspotSDK\Files\Files->update
  *
- * @phpstan-type file_update_params = array{
+ * @phpstan-type FileUpdateParamsShape = array{
  *   access?: Access|value-of<Access>,
  *   clearExpires?: bool,
  *   expiresAt?: \DateTimeInterface,
@@ -27,7 +27,7 @@ use HubspotSDK\Files\Files\FileUpdateParams\Access;
  */
 final class FileUpdateParams implements BaseModel
 {
-    /** @use SdkModel<file_update_params> */
+    /** @use SdkModel<FileUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

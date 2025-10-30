@@ -11,7 +11,7 @@ use HubspotSDK\PublicFormSubmissionFilter\FilterType;
 use HubspotSDK\PublicFormSubmissionFilter\Operator;
 
 /**
- * @phpstan-type public_form_submission_filter = array{
+ * @phpstan-type PublicFormSubmissionFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operator: value-of<Operator>,
  *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
@@ -21,7 +21,7 @@ use HubspotSDK\PublicFormSubmissionFilter\Operator;
  */
 final class PublicFormSubmissionFilter implements BaseModel
 {
-    /** @use SdkModel<public_form_submission_filter> */
+    /** @use SdkModel<PublicFormSubmissionFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

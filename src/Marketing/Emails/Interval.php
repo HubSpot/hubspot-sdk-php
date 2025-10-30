@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type interval_alias = array{
+ * @phpstan-type IntervalShape = array{
  *   end: \DateTimeInterface, start: \DateTimeInterface
  * }
  */
 final class Interval implements BaseModel
 {
-    /** @use SdkModel<interval_alias> */
+    /** @use SdkModel<IntervalShape> */
     use SdkModel;
 
     #[Api]

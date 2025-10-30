@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type unenrollment_settings_response = array{
+ * @phpstan-type UnenrollmentSettingsResponseShape = array{
  *   emailSettings: EmailSettingsResponse, meetingSettings: MeetingSettingsResponse
  * }
  */
 final class UnenrollmentSettingsResponse implements BaseModel
 {
-    /** @use SdkModel<unenrollment_settings_response> */
+    /** @use SdkModel<UnenrollmentSettingsResponseShape> */
     use SdkModel;
 
     #[Api]

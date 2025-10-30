@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_communication_consent_checkbox = array{
+ * @phpstan-type ExternalCommunicationConsentCheckboxShape = array{
  *   communicationTypeID: string, label: string, required: bool
  * }
  */
 final class ExternalCommunicationConsentCheckbox implements BaseModel
 {
-    /** @use SdkModel<external_communication_consent_checkbox> */
+    /** @use SdkModel<ExternalCommunicationConsentCheckboxShape> */
     use SdkModel;
 
     #[Api('communicationTypeId')]

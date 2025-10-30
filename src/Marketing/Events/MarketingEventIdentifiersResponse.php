@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type marketing_event_identifiers_response = array{
+ * @phpstan-type MarketingEventIdentifiersResponseShape = array{
  *   externalEventID: string,
  *   marketingEventName: string,
  *   objectID: string,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MarketingEventIdentifiersResponse implements BaseModel
 {
-    /** @use SdkModel<marketing_event_identifiers_response> */
+    /** @use SdkModel<MarketingEventIdentifiersResponseShape> */
     use SdkModel;
 
     #[Api('externalEventId')]

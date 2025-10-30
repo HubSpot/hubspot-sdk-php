@@ -15,13 +15,13 @@ use HubspotSDK\CRM\SimplePublicObjectBatchInput;
  *
  * @see HubspotSDK\CRM\Objects\PartnerClients\Batch->batchUpdate
  *
- * @phpstan-type batch_batch_update_params = array{
+ * @phpstan-type BatchBatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>
  * }
  */
 final class BatchBatchUpdateParams implements BaseModel
 {
-    /** @use SdkModel<batch_batch_update_params> */
+    /** @use SdkModel<BatchBatchUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -12,13 +12,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\CRM\Extensions\Calling\Transcripts->create
  *
- * @phpstan-type transcript_create_params = array{
+ * @phpstan-type TranscriptCreateParamsShape = array{
  *   engagementID: int, transcriptCreateUtterances: list<TranscriptCreateUtterance>
  * }
  */
 final class TranscriptCreateParams implements BaseModel
 {
-    /** @use SdkModel<transcript_create_params> */
+    /** @use SdkModel<TranscriptCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

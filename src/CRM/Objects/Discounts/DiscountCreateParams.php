@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Discounts->create
  *
- * @phpstan-type discount_create_params = array{
+ * @phpstan-type DiscountCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class DiscountCreateParams implements BaseModel
 {
-    /** @use SdkModel<discount_create_params> */
+    /** @use SdkModel<DiscountCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

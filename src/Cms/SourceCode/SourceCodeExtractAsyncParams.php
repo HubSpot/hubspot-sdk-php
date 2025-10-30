@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\SourceCode->extractAsync
  *
- * @phpstan-type source_code_extract_async_params = array{path: string}
+ * @phpstan-type SourceCodeExtractAsyncParamsShape = array{path: string}
  */
 final class SourceCodeExtractAsyncParams implements BaseModel
 {
-    /** @use SdkModel<source_code_extract_async_params> */
+    /** @use SdkModel<SourceCodeExtractAsyncParamsShape> */
     use SdkModel;
     use SdkParams;
 

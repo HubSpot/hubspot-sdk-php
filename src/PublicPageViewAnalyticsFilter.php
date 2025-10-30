@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicPageViewAnalyticsFilter\FilterType;
 
 /**
- * @phpstan-type public_page_view_analytics_filter = array{
+ * @phpstan-type PublicPageViewAnalyticsFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operator: string,
  *   pageURL: string,
@@ -21,7 +21,7 @@ use HubspotSDK\PublicPageViewAnalyticsFilter\FilterType;
  */
 final class PublicPageViewAnalyticsFilter implements BaseModel
 {
-    /** @use SdkModel<public_page_view_analytics_filter> */
+    /** @use SdkModel<PublicPageViewAnalyticsFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

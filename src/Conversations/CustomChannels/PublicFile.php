@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_file = array{
+ * @phpstan-type PublicFileShape = array{
  *   fileID: string,
  *   fileUsageType: string,
  *   type: value-of<Type>,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicFile implements BaseModel
 {
-    /** @use SdkModel<public_file> */
+    /** @use SdkModel<PublicFileShape> */
     use SdkModel;
 
     #[Api('fileId')]

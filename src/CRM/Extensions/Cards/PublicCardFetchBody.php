@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_card_fetch_body = array{
+ * @phpstan-type PublicCardFetchBodyShape = array{
  *   objectTypes: list<CardObjectTypeBody>, targetURL: string
  * }
  */
 final class PublicCardFetchBody implements BaseModel
 {
-    /** @use SdkModel<public_card_fetch_body> */
+    /** @use SdkModel<PublicCardFetchBodyShape> */
     use SdkModel;
 
     /** @var list<CardObjectTypeBody> $objectTypes */

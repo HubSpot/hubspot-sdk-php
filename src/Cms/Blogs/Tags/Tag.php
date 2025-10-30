@@ -14,7 +14,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * Model definition for a Tag.
  *
- * @phpstan-type tag_alias = array{
+ * @phpstan-type TagShape = array{
  *   id: string,
  *   created: \DateTimeInterface,
  *   deletedAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class Tag implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<tag_alias> */
+    /** @use SdkModel<TagShape> */
     use SdkModel;
 
     use SdkResponse;

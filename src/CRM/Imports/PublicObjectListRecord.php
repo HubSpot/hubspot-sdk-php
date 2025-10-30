@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_object_list_record = array{
+ * @phpstan-type PublicObjectListRecordShape = array{
  *   listID: string, objectType: string
  * }
  */
 final class PublicObjectListRecord implements BaseModel
 {
-    /** @use SdkModel<public_object_list_record> */
+    /** @use SdkModel<PublicObjectListRecordShape> */
     use SdkModel;
 
     /**

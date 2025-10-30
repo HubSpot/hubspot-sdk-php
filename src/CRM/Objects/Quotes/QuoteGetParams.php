@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Quotes->get
  *
- * @phpstan-type quote_get_params = array{
+ * @phpstan-type QuoteGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class QuoteGetParams implements BaseModel
 {
-    /** @use SdkModel<quote_get_params> */
+    /** @use SdkModel<QuoteGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

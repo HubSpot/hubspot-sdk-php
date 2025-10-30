@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Mapping->getIDMapping
  *
- * @phpstan-type mapping_get_id_mapping_params = array{legacyListID?: string}
+ * @phpstan-type MappingGetIDMappingParamsShape = array{legacyListID?: string}
  */
 final class MappingGetIDMappingParams implements BaseModel
 {
-    /** @use SdkModel<mapping_get_id_mapping_params> */
+    /** @use SdkModel<MappingGetIDMappingParamsShape> */
     use SdkModel;
     use SdkParams;
 

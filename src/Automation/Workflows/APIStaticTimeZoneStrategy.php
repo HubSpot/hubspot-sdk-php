@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_static_time_zone_strategy = array{
+ * @phpstan-type APIStaticTimeZoneStrategyShape = array{
  *   timeZoneID: string, type: value-of<Type>
  * }
  */
 final class APIStaticTimeZoneStrategy implements BaseModel
 {
-    /** @use SdkModel<api_static_time_zone_strategy> */
+    /** @use SdkModel<APIStaticTimeZoneStrategyShape> */
     use SdkModel;
 
     #[Api('timeZoneId')]

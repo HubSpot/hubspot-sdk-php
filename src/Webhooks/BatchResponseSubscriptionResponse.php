@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse\Status;
 
 /**
- * @phpstan-type batch_response_subscription_response = array{
+ * @phpstan-type BatchResponseSubscriptionResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<SubscriptionResponse>,
  *   startedAt: \DateTimeInterface,
@@ -21,7 +21,7 @@ use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse\Status;
  */
 final class BatchResponseSubscriptionResponse implements BaseModel
 {
-    /** @use SdkModel<batch_response_subscription_response> */
+    /** @use SdkModel<BatchResponseSubscriptionResponseShape> */
     use SdkModel;
 
     /**

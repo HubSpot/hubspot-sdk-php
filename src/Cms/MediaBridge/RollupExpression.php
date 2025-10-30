@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
-  * @phpstan-type rollup_expression = array{
+  * @phpstan-type RollupExpressionShape = array{
   *   associationTypes: list<AssociationSpec>,
   *   rollupOperator: string,
   *   sourceObjectTypeID: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class RollupExpression implements BaseModel
 {
-  /** @use SdkModel<rollup_expression> */
+  /** @use SdkModel<RollupExpressionShape> */
   use SdkModel;
 
   /** @var list<AssociationSpec> $associationTypes */

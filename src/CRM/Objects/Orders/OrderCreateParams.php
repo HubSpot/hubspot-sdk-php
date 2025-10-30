@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Orders->create
  *
- * @phpstan-type order_create_params = array{
+ * @phpstan-type OrderCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class OrderCreateParams implements BaseModel
 {
-    /** @use SdkModel<order_create_params> */
+    /** @use SdkModel<OrderCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

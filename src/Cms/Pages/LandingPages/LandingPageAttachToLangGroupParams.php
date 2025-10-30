@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->attachToLangGroup
  *
- * @phpstan-type landing_page_attach_to_lang_group_params = array{
+ * @phpstan-type LandingPageAttachToLangGroupParamsShape = array{
  *   id: string, language: string, primaryID: string, primaryLanguage?: string
  * }
  */
 final class LandingPageAttachToLangGroupParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_attach_to_lang_group_params> */
+    /** @use SdkModel<LandingPageAttachToLangGroupParamsShape> */
     use SdkModel;
     use SdkParams;
 

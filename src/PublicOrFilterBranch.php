@@ -12,7 +12,7 @@ use HubspotSDK\PublicOrFilterBranch\FilterBranch;
 use HubspotSDK\PublicOrFilterBranch\FilterBranchType;
 
 /**
- * @phpstan-type public_or_filter_branch = array{
+ * @phpstan-type PublicOrFilterBranchShape = array{
  *   filterBranches: list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch>,
  *   filterBranchOperator: string,
  *   filterBranchType: value-of<FilterBranchType>,
@@ -21,7 +21,7 @@ use HubspotSDK\PublicOrFilterBranch\FilterBranchType;
  */
 final class PublicOrFilterBranch implements BaseModel
 {
-    /** @use SdkModel<public_or_filter_branch> */
+    /** @use SdkModel<PublicOrFilterBranchShape> */
     use SdkModel;
 
     /**

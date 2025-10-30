@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type app_info = array{id: string, name: string}
+ * @phpstan-type AppInfoShape = array{id: string, name: string}
  */
 final class AppInfo implements BaseModel
 {
-    /** @use SdkModel<app_info> */
+    /** @use SdkModel<AppInfoShape> */
     use SdkModel;
 
     #[Api]

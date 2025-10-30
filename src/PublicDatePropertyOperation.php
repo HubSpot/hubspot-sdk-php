@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicDatePropertyOperation\OperationType;
 
 /**
- * @phpstan-type public_date_property_operation = array{
+ * @phpstan-type PublicDatePropertyOperationShape = array{
  *   day: int,
  *   includeObjectsWithNoValueSet: bool,
  *   month: string,
@@ -21,7 +21,7 @@ use HubspotSDK\PublicDatePropertyOperation\OperationType;
  */
 final class PublicDatePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<public_date_property_operation> */
+    /** @use SdkModel<PublicDatePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

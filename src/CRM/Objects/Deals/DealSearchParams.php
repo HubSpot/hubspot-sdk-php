@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Deals->search
  *
- * @phpstan-type deal_search_params = array{
+ * @phpstan-type DealSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class DealSearchParams implements BaseModel
 {
-    /** @use SdkModel<deal_search_params> */
+    /** @use SdkModel<DealSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

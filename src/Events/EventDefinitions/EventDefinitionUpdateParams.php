@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Events\EventDefinitions->update
  *
- * @phpstan-type event_definition_update_params = array{
+ * @phpstan-type EventDefinitionUpdateParamsShape = array{
  *   description?: string, label?: string
  * }
  */
 final class EventDefinitionUpdateParams implements BaseModel
 {
-    /** @use SdkModel<event_definition_update_params> */
+    /** @use SdkModel<EventDefinitionUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

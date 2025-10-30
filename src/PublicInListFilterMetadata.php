@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_in_list_filter_metadata = array{
+ * @phpstan-type PublicInListFilterMetadataShape = array{
  *   id: string, inListType: string
  * }
  */
 final class PublicInListFilterMetadata implements BaseModel
 {
-    /** @use SdkModel<public_in_list_filter_metadata> */
+    /** @use SdkModel<PublicInListFilterMetadataShape> */
     use SdkModel;
 
     #[Api]

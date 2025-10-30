@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type api_collection_response_join_time_and_record_id = array{
+ * @phpstan-type APICollectionResponseJoinTimeAndRecordIDShape = array{
  *   results: list<JoinTimeAndRecordID>, paging?: Paging, total?: int
  * }
  */
 final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
 {
-    /** @use SdkModel<api_collection_response_join_time_and_record_id> */
+    /** @use SdkModel<APICollectionResponseJoinTimeAndRecordIDShape> */
     use SdkModel;
 
     /** @var list<JoinTimeAndRecordID> $results */

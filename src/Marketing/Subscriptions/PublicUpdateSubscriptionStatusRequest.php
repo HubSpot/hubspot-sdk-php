@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\PublicUpdateSubscriptionStatusRequest\LegalBasis;
 
 /**
- * @phpstan-type public_update_subscription_status_request = array{
+ * @phpstan-type PublicUpdateSubscriptionStatusRequestShape = array{
  *   emailAddress: string,
  *   subscriptionID: string,
  *   legalBasis?: value-of<LegalBasis>,
@@ -19,7 +19,7 @@ use HubspotSDK\Marketing\Subscriptions\PublicUpdateSubscriptionStatusRequest\Leg
  */
 final class PublicUpdateSubscriptionStatusRequest implements BaseModel
 {
-    /** @use SdkModel<public_update_subscription_status_request> */
+    /** @use SdkModel<PublicUpdateSubscriptionStatusRequestShape> */
     use SdkModel;
 
     /**

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Events->createAttentionSpanEvent
  *
- * @phpstan-type event_create_attention_span_event_params = array{
+ * @phpstan-type EventCreateAttentionSpanEventParamsShape = array{
  *   mediaType: MediaType|value-of<MediaType>,
  *   occurredTimestamp: int,
  *   rawDataMap: array<string, int>,
@@ -37,7 +37,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EventCreateAttentionSpanEventParams implements BaseModel
 {
-    /** @use SdkModel<event_create_attention_span_event_params> */
+    /** @use SdkModel<EventCreateAttentionSpanEventParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Timeline\Templates->delete
  *
- * @phpstan-type template_delete_params = array{appID: int}
+ * @phpstan-type TemplateDeleteParamsShape = array{appID: int}
  */
 final class TemplateDeleteParams implements BaseModel
 {
-    /** @use SdkModel<template_delete_params> */
+    /** @use SdkModel<TemplateDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

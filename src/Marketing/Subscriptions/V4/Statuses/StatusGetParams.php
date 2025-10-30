@@ -15,13 +15,13 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetParams\Channel;
  *
  * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->get
  *
- * @phpstan-type status_get_params = array{
+ * @phpstan-type StatusGetParamsShape = array{
  *   channel: Channel|value-of<Channel>, businessUnitID?: int
  * }
  */
 final class StatusGetParams implements BaseModel
 {
-    /** @use SdkModel<status_get_params> */
+    /** @use SdkModel<StatusGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

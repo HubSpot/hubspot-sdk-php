@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type settings_patch_request = array{
+ * @phpstan-type SettingsPatchRequestShape = array{
  *   height?: int,
  *   isReady?: bool,
  *   name?: string,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SettingsPatchRequest implements BaseModel
 {
-    /** @use SdkModel<settings_patch_request> */
+    /** @use SdkModel<SettingsPatchRequestShape> */
     use SdkModel;
 
     /**

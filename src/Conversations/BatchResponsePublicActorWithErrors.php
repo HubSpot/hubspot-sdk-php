@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_public_actor_with_errors = array{
+ * @phpstan-type BatchResponsePublicActorWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponsePublicActorWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_public_actor_with_errors> */
+    /** @use SdkModel<BatchResponsePublicActorWithErrorsShape> */
     use SdkModel;
 
     #[Api]

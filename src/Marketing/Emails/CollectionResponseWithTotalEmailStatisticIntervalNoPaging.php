@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Response object for collections of EmailStatisticIntervals.
  *
- * @phpstan-type collection_response_with_total_email_statistic_interval_no_paging = array{
+ * @phpstan-type CollectionResponseWithTotalEmailStatisticIntervalNoPagingShape = array{
  *   results: list<EmailStatisticInterval>, total: int
  * }
  */
 final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements BaseModel
 {
     /**
-     * @use SdkModel<collection_response_with_total_email_statistic_interval_no_paging>
+     * @use SdkModel<CollectionResponseWithTotalEmailStatisticIntervalNoPagingShape>
      */
     use SdkModel;
 

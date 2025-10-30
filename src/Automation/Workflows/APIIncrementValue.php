@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_increment_value = array{
+ * @phpstan-type APIIncrementValueShape = array{
  *   incrementAmount: float, type: value-of<Type>
  * }
  */
 final class APIIncrementValue implements BaseModel
 {
-    /** @use SdkModel<api_increment_value> */
+    /** @use SdkModel<APIIncrementValueShape> */
     use SdkModel;
 
     /**

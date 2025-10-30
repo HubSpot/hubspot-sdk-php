@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type public_card_list_response = array{
+ * @phpstan-type PublicCardListResponseShape = array{
  *   results: list<PublicCardResponse>
  * }
  */
 final class PublicCardListResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_card_list_response> */
+    /** @use SdkModel<PublicCardListResponseShape> */
     use SdkModel;
 
     use SdkResponse;

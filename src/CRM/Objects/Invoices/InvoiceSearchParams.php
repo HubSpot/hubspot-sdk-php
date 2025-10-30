@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Invoices->search
  *
- * @phpstan-type invoice_search_params = array{
+ * @phpstan-type InvoiceSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class InvoiceSearchParams implements BaseModel
 {
-    /** @use SdkModel<invoice_search_params> */
+    /** @use SdkModel<InvoiceSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

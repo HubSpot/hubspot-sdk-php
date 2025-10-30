@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request body object for scheduling the publish of content.
  *
- * @phpstan-type content_schedule_request_v_next = array{
+ * @phpstan-type ContentScheduleRequestVNextShape = array{
  *   id: string, publishDate: \DateTimeInterface
  * }
  */
 final class ContentScheduleRequestVNext implements BaseModel
 {
-    /** @use SdkModel<content_schedule_request_v_next> */
+    /** @use SdkModel<ContentScheduleRequestVNextShape> */
     use SdkModel;
 
     /**

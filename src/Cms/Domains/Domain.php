@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type domain_alias = array{
+ * @phpstan-type DomainShape = array{
  *   id: string,
  *   domain: string,
  *   isResolving: bool,
@@ -36,7 +36,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class Domain implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<domain_alias> */
+    /** @use SdkModel<DomainShape> */
     use SdkModel;
 
     use SdkResponse;

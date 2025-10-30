@@ -14,11 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts\Batch->read
  *
- * @phpstan-type batch_read_params = array{inputs: list<string>, archived?: bool}
+ * @phpstan-type BatchReadParamsShape = array{
+ *   inputs: list<string>, archived?: bool
+ * }
  */
 final class BatchReadParams implements BaseModel
 {
-    /** @use SdkModel<batch_read_params> */
+    /** @use SdkModel<BatchReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

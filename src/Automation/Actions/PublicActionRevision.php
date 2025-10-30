@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_action_revision = array{
+ * @phpstan-type PublicActionRevisionShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   definition: PublicActionDefinition,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicActionRevision implements BaseModel
 {
-    /** @use SdkModel<public_action_revision> */
+    /** @use SdkModel<PublicActionRevisionShape> */
     use SdkModel;
 
     #[Api]

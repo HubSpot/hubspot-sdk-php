@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_single_connection_action = array{
+ * @phpstan-type APISingleConnectionActionShape = array{
  *   actionID: string,
  *   actionTypeID: string,
  *   actionTypeVersion: int,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APISingleConnectionAction implements BaseModel
 {
-    /** @use SdkModel<api_single_connection_action> */
+    /** @use SdkModel<APISingleConnectionActionShape> */
     use SdkModel;
 
     /**

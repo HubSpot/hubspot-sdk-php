@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\PartnerClients\Associations->update
  *
- * @phpstan-type association_update_params = array{
+ * @phpstan-type AssociationUpdateParamsShape = array{
  *   partnerClientID: string, toObjectType: string, toObjectID: string
  * }
  */
 final class AssociationUpdateParams implements BaseModel
 {
-    /** @use SdkModel<association_update_params> */
+    /** @use SdkModel<AssociationUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

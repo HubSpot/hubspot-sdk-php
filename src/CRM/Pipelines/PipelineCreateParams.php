@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Pipelines->create
  *
- * @phpstan-type pipeline_create_params = array{
+ * @phpstan-type PipelineCreateParamsShape = array{
  *   displayOrder: int, label: string, stages: list<PipelineStageInput>
  * }
  */
 final class PipelineCreateParams implements BaseModel
 {
-    /** @use SdkModel<pipeline_create_params> */
+    /** @use SdkModel<PipelineCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Extensions\Cards\IFrameActionBody\Type;
 
 /**
- * @phpstan-type i_frame_action_body = array{
+ * @phpstan-type IFrameActionBodyShape = array{
  *   height: int,
  *   propertyNamesIncluded: list<string>,
  *   type: value-of<Type>,
@@ -21,7 +21,7 @@ use HubspotSDK\CRM\Extensions\Cards\IFrameActionBody\Type;
  */
 final class IFrameActionBody implements BaseModel
 {
-    /** @use SdkModel<i_frame_action_body> */
+    /** @use SdkModel<IFrameActionBodyShape> */
     use SdkModel;
 
     #[Api]

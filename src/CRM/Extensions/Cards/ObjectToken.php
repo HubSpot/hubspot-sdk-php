@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Extensions\Cards\ObjectToken\DataType;
 
 /**
- * @phpstan-type object_token = array{
+ * @phpstan-type ObjectTokenShape = array{
  *   value: string, dataType?: value-of<DataType>, label?: string, name?: string
  * }
  */
 final class ObjectToken implements BaseModel
 {
-    /** @use SdkModel<object_token> */
+    /** @use SdkModel<ObjectTokenShape> */
     use SdkModel;
 
     #[Api]

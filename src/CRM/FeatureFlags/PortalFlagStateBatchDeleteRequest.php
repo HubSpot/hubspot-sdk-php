@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type portal_flag_state_batch_delete_request = array{
+ * @phpstan-type PortalFlagStateBatchDeleteRequestShape = array{
  *   portalIDs: list<int>
  * }
  */
 final class PortalFlagStateBatchDeleteRequest implements BaseModel
 {
-    /** @use SdkModel<portal_flag_state_batch_delete_request> */
+    /** @use SdkModel<PortalFlagStateBatchDeleteRequestShape> */
     use SdkModel;
 
     /** @var list<int> $portalIDs */

@@ -15,13 +15,13 @@ use HubspotSDK\PropertyName;
  *
  * @see HubspotSDK\Cms\MediaBridge\Properties->archiveBatch
  *
- * @phpstan-type property_archive_batch_params = array{
+ * @phpstan-type PropertyArchiveBatchParamsShape = array{
  *   appID: string, inputs: list<PropertyName>
  * }
  */
 final class PropertyArchiveBatchParams implements BaseModel
 {
-    /** @use SdkModel<property_archive_batch_params> */
+    /** @use SdkModel<PropertyArchiveBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

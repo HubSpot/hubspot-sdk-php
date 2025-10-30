@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type group_view = array{
+ * @phpstan-type GroupViewShape = array{
  *   displayName: string,
  *   displayOrder: int,
  *   fulcrumPortalID: int,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class GroupView implements BaseModel
 {
-    /** @use SdkModel<group_view> */
+    /** @use SdkModel<GroupViewShape> */
     use SdkModel;
 
     #[Api]

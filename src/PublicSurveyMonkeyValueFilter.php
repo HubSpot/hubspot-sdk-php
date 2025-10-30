@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicSurveyMonkeyValueFilter\FilterType;
 
 /**
- * @phpstan-type public_survey_monkey_value_filter = array{
+ * @phpstan-type PublicSurveyMonkeyValueFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operator: string,
  *   surveyID: string,
@@ -22,7 +22,7 @@ use HubspotSDK\PublicSurveyMonkeyValueFilter\FilterType;
  */
 final class PublicSurveyMonkeyValueFilter implements BaseModel
 {
-    /** @use SdkModel<public_survey_monkey_value_filter> */
+    /** @use SdkModel<PublicSurveyMonkeyValueFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

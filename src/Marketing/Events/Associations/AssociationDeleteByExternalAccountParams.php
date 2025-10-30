@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events\Associations->deleteByExternalAccount
  *
- * @phpstan-type association_delete_by_external_account_params = array{
+ * @phpstan-type AssociationDeleteByExternalAccountParamsShape = array{
  *   externalAccountID: string, externalEventID: string
  * }
  */
 final class AssociationDeleteByExternalAccountParams implements BaseModel
 {
-    /** @use SdkModel<association_delete_by_external_account_params> */
+    /** @use SdkModel<AssociationDeleteByExternalAccountParamsShape> */
     use SdkModel;
     use SdkParams;
 

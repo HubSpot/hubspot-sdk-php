@@ -21,7 +21,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->updateDraft
  *
- * @phpstan-type post_update_draft_params = array{
+ * @phpstan-type PostUpdateDraftParamsShape = array{
  *   id: string,
  *   abStatus: AbStatus|value-of<AbStatus>,
  *   abTestID: string,
@@ -87,7 +87,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class PostUpdateDraftParams implements BaseModel
 {
-    /** @use SdkModel<post_update_draft_params> */
+    /** @use SdkModel<PostUpdateDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

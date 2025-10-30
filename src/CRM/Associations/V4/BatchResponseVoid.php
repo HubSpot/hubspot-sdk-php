@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Associations\V4\BatchResponseVoid\Status;
 
 /**
- * @phpstan-type batch_response_void = array{
+ * @phpstan-type BatchResponseVoidShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<mixed>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\CRM\Associations\V4\BatchResponseVoid\Status;
  */
 final class BatchResponseVoid implements BaseModel
 {
-    /** @use SdkModel<batch_response_void> */
+    /** @use SdkModel<BatchResponseVoidShape> */
     use SdkModel;
 
     #[Api]

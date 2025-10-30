@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request body object for detaching objects from multi-language groups.
  *
- * @phpstan-type detach_from_lang_group_request_v_next = array{id: string}
+ * @phpstan-type DetachFromLangGroupRequestVNextShape = array{id: string}
  */
 final class DetachFromLangGroupRequestVNext implements BaseModel
 {
-    /** @use SdkModel<detach_from_lang_group_request_v_next> */
+    /** @use SdkModel<DetachFromLangGroupRequestVNextShape> */
     use SdkModel;
 
     /**

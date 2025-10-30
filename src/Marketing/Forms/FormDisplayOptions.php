@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
 /**
  * Options for styling the form.
  *
- * @phpstan-type form_display_options = array{
+ * @phpstan-type FormDisplayOptionsShape = array{
  *   renderRawHTML: bool,
  *   style: FormStyle,
  *   submitButtonText: string,
@@ -22,7 +22,7 @@ use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
  */
 final class FormDisplayOptions implements BaseModel
 {
-    /** @use SdkModel<form_display_options> */
+    /** @use SdkModel<FormDisplayOptionsShape> */
     use SdkModel;
 
     /**

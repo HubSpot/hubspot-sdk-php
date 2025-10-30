@@ -14,7 +14,7 @@ use HubspotSDK\Events\EventDefinitions\RangedTimeOperation\PropertyType;
 use HubspotSDK\Events\EventDefinitions\RangedTimeOperation\UpperBoundEndpointBehavior;
 
 /**
- * @phpstan-type ranged_time_operation = array{
+ * @phpstan-type RangedTimeOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   lowerBoundEndpointBehavior: value-of<LowerBoundEndpointBehavior>,
  *   lowerBoundTimePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime,
@@ -31,7 +31,7 @@ use HubspotSDK\Events\EventDefinitions\RangedTimeOperation\UpperBoundEndpointBeh
  */
 final class RangedTimeOperation implements BaseModel
 {
-    /** @use SdkModel<ranged_time_operation> */
+    /** @use SdkModel<RangedTimeOperationShape> */
     use SdkModel;
 
     #[Api]

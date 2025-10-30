@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\CustomChannels\ChannelAccountStagingTokens->update
  *
- * @phpstan-type channel_account_staging_token_update_params = array{
+ * @phpstan-type ChannelAccountStagingTokenUpdateParamsShape = array{
  *   channelID: string,
  *   accountName: string,
  *   deliveryIdentifier: PublicDeliveryIdentifier,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ChannelAccountStagingTokenUpdateParams implements BaseModel
 {
-    /** @use SdkModel<channel_account_staging_token_update_params> */
+    /** @use SdkModel<ChannelAccountStagingTokenUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

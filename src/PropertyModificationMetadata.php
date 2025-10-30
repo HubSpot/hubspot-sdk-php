@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type property_modification_metadata = array{
+ * @phpstan-type PropertyModificationMetadataShape = array{
  *   archivable: bool,
  *   readOnlyDefinition: bool,
  *   readOnlyValue: bool,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PropertyModificationMetadata implements BaseModel
 {
-    /** @use SdkModel<property_modification_metadata> */
+    /** @use SdkModel<PropertyModificationMetadataShape> */
     use SdkModel;
 
     #[Api]

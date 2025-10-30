@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\PaymentLinkRadioField\FieldType;
 
 /**
- * @phpstan-type payment_link_radio_field = array{
+ * @phpstan-type PaymentLinkRadioFieldShape = array{
  *   defaultValues: list<string>,
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
@@ -25,7 +25,7 @@ use HubspotSDK\Marketing\Forms\PaymentLinkRadioField\FieldType;
  */
 final class PaymentLinkRadioField implements BaseModel
 {
-    /** @use SdkModel<payment_link_radio_field> */
+    /** @use SdkModel<PaymentLinkRadioFieldShape> */
     use SdkModel;
 
     /** @var list<string> $defaultValues */

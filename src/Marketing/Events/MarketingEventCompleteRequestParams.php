@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type marketing_event_complete_request_params = array{
+ * @phpstan-type MarketingEventCompleteRequestParamsShape = array{
  *   endDateTime: \DateTimeInterface, startDateTime: \DateTimeInterface
  * }
  */
 final class MarketingEventCompleteRequestParams implements BaseModel
 {
-    /** @use SdkModel<marketing_event_complete_request_params> */
+    /** @use SdkModel<MarketingEventCompleteRequestParamsShape> */
     use SdkModel;
 
     #[Api]

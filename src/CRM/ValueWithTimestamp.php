@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Property model that includes timestamp.
  *
- * @phpstan-type value_with_timestamp = array{
+ * @phpstan-type ValueWithTimestampShape = array{
  *   sourceType: string,
  *   timestamp: \DateTimeInterface,
  *   value: string,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ValueWithTimestamp implements BaseModel
 {
-    /** @use SdkModel<value_with_timestamp> */
+    /** @use SdkModel<ValueWithTimestampShape> */
     use SdkModel;
 
     /**

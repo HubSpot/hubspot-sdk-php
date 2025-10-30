@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type refresh_token_info_response = array{
+ * @phpstan-type RefreshTokenInfoResponseShape = array{
  *   token: string,
  *   clientID: string,
  *   hubID: int,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<refresh_token_info_response> */
+    /** @use SdkModel<RefreshTokenInfoResponseShape> */
     use SdkModel;
 
     use SdkResponse;

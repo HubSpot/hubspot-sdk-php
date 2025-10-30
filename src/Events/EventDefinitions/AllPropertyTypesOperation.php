@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\AllPropertyTypesOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\AllPropertyTypesOperation\PropertyType;
 
 /**
- * @phpstan-type all_property_types_operation = array{
+ * @phpstan-type AllPropertyTypesOperationShape = array{
  *   coalescingRefineBy: NumOccurrencesRefineBy|SetOccurrencesRefineBy,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Events\EventDefinitions\AllPropertyTypesOperation\PropertyType;
  */
 final class AllPropertyTypesOperation implements BaseModel
 {
-    /** @use SdkModel<all_property_types_operation> */
+    /** @use SdkModel<AllPropertyTypesOperationShape> */
     use SdkModel;
 
     #[Api]

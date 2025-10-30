@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\RelativeRangedTimestampRefineBy\RangeType
 use HubspotSDK\Events\EventDefinitions\RelativeRangedTimestampRefineBy\Type;
 
 /**
- * @phpstan-type relative_ranged_timestamp_refine_by = array{
+ * @phpstan-type RelativeRangedTimestampRefineByShape = array{
  *   lowerBoundOffset: TimeOffset,
  *   rangeType: value-of<RangeType>,
  *   type: value-of<Type>,
@@ -20,7 +20,7 @@ use HubspotSDK\Events\EventDefinitions\RelativeRangedTimestampRefineBy\Type;
  */
 final class RelativeRangedTimestampRefineBy implements BaseModel
 {
-    /** @use SdkModel<relative_ranged_timestamp_refine_by> */
+    /** @use SdkModel<RelativeRangedTimestampRefineByShape> */
     use SdkModel;
 
     #[Api]

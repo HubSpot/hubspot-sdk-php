@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type combo_event_rule = array{
+ * @phpstan-type ComboEventRuleShape = array{
  *   count: int,
  *   eventTypeID: string,
  *   propertyFilters: list<PropertyFilter>,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ComboEventRule implements BaseModel
 {
-    /** @use SdkModel<combo_event_rule> */
+    /** @use SdkModel<ComboEventRuleShape> */
     use SdkModel;
 
     #[Api]

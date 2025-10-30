@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_association_timestamp_data_source = array{
+ * @phpstan-type APIAssociationTimestampDataSourceShape = array{
  *   associationCategory: value-of<AssociationCategory>,
  *   associationTypeID: int,
  *   name: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIAssociationTimestampDataSource implements BaseModel
 {
-    /** @use SdkModel<api_association_timestamp_data_source> */
+    /** @use SdkModel<APIAssociationTimestampDataSourceShape> */
     use SdkModel;
 
     /** @var value-of<AssociationCategory> $associationCategory */

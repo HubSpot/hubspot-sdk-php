@@ -14,7 +14,7 @@ use HubspotSDK\VersionUser;
 /**
  * Model definition of a version of a blog post.
  *
- * @phpstan-type version_blog_post = array{
+ * @phpstan-type VersionBlogPostShape = array{
  *   id: string,
  *   object1: BlogPost,
  *   updatedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\VersionUser;
  */
 final class VersionBlogPost implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<version_blog_post> */
+    /** @use SdkModel<VersionBlogPostShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -16,7 +16,7 @@ use HubspotSDK\CRM\FeatureFlags\Apps\AppUpdateParams\OverrideState;
  *
  * @see HubspotSDK\CRM\FeatureFlags\Apps->update
  *
- * @phpstan-type app_update_params = array{
+ * @phpstan-type AppUpdateParamsShape = array{
  *   appID: int,
  *   defaultState: DefaultState|value-of<DefaultState>,
  *   overrideState?: OverrideState|value-of<OverrideState>,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FeatureFlags\Apps\AppUpdateParams\OverrideState;
  */
 final class AppUpdateParams implements BaseModel
 {
-    /** @use SdkModel<app_update_params> */
+    /** @use SdkModel<AppUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

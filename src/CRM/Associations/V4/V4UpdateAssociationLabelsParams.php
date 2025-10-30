@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Associations\V4->updateAssociationLabels
  *
- * @phpstan-type v4_update_association_labels_params = array{
+ * @phpstan-type V4UpdateAssociationLabelsParamsShape = array{
  *   objectType: string,
  *   objectID: string,
  *   toObjectType: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class V4UpdateAssociationLabelsParams implements BaseModel
 {
-    /** @use SdkModel<v4_update_association_labels_params> */
+    /** @use SdkModel<V4UpdateAssociationLabelsParamsShape> */
     use SdkModel;
     use SdkParams;
 

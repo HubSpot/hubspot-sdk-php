@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events\Associations->delete
  *
- * @phpstan-type association_delete_params = array{marketingEventID: string}
+ * @phpstan-type AssociationDeleteParamsShape = array{marketingEventID: string}
  */
 final class AssociationDeleteParams implements BaseModel
 {
-    /** @use SdkModel<association_delete_params> */
+    /** @use SdkModel<AssociationDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

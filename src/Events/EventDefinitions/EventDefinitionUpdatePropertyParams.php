@@ -15,7 +15,7 @@ use HubspotSDK\OptionInput;
  *
  * @see HubspotSDK\Events\EventDefinitions->updateProperty
  *
- * @phpstan-type event_definition_update_property_params = array{
+ * @phpstan-type EventDefinitionUpdatePropertyParamsShape = array{
  *   eventName: string,
  *   description?: string,
  *   label?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\OptionInput;
  */
 final class EventDefinitionUpdatePropertyParams implements BaseModel
 {
-    /** @use SdkModel<event_definition_update_property_params> */
+    /** @use SdkModel<EventDefinitionUpdatePropertyParamsShape> */
     use SdkModel;
     use SdkParams;
 

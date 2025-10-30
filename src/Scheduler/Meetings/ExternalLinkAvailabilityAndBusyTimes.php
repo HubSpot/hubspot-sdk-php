@@ -9,14 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_link_availability_and_busy_times = array{
+ * @phpstan-type ExternalLinkAvailabilityAndBusyTimesShape = array{
  *   allUsersBusyTimes: list<ExternalUserBusyTimes>,
  *   linkAvailability?: ExternalLinkAvailability,
  * }
  */
 final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
 {
-    /** @use SdkModel<external_link_availability_and_busy_times> */
+    /** @use SdkModel<ExternalLinkAvailabilityAndBusyTimesShape> */
     use SdkModel;
 
     /** @var list<ExternalUserBusyTimes> $allUsersBusyTimes */

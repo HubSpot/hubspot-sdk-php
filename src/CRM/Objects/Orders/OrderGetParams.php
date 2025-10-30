@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Orders->get
  *
- * @phpstan-type order_get_params = array{
+ * @phpstan-type OrderGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class OrderGetParams implements BaseModel
 {
-    /** @use SdkModel<order_get_params> */
+    /** @use SdkModel<OrderGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

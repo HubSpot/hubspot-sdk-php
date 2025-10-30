@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Settings\Currencies->batchUpdate
  *
- * @phpstan-type currency_batch_update_params = array{
+ * @phpstan-type CurrencyBatchUpdateParamsShape = array{
  *   inputs: list<ExchangeRateUpdateRequest>
  * }
  */
 final class CurrencyBatchUpdateParams implements BaseModel
 {
-    /** @use SdkModel<currency_batch_update_params> */
+    /** @use SdkModel<CurrencyBatchUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

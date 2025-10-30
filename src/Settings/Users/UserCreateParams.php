@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Settings\Users->create
  *
- * @phpstan-type user_create_params = array{
+ * @phpstan-type UserCreateParamsShape = array{
  *   email: string,
  *   firstName?: string,
  *   lastName?: string,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class UserCreateParams implements BaseModel
 {
-    /** @use SdkModel<user_create_params> */
+    /** @use SdkModel<UserCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

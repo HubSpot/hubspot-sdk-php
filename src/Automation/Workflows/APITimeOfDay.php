@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_time_of_day = array{hour: int, minute: int}
+ * @phpstan-type APITimeOfDayShape = array{hour: int, minute: int}
  */
 final class APITimeOfDay implements BaseModel
 {
-    /** @use SdkModel<api_time_of_day> */
+    /** @use SdkModel<APITimeOfDayShape> */
     use SdkModel;
 
     #[Api]

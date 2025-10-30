@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Timeline\Templates->get
  *
- * @phpstan-type template_get_params = array{appID: int}
+ * @phpstan-type TemplateGetParamsShape = array{appID: int}
  */
 final class TemplateGetParams implements BaseModel
 {
-    /** @use SdkModel<template_get_params> */
+    /** @use SdkModel<TemplateGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

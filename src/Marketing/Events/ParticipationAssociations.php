@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type participation_associations = array{
+ * @phpstan-type ParticipationAssociationsShape = array{
  *   contact: ContactAssociation, marketingEvent: MarketingEventAssociation
  * }
  */
 final class ParticipationAssociations implements BaseModel
 {
-    /** @use SdkModel<participation_associations> */
+    /** @use SdkModel<ParticipationAssociationsShape> */
     use SdkModel;
 
     #[Api]

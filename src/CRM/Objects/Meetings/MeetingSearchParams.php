@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Meetings->search
  *
- * @phpstan-type meeting_search_params = array{
+ * @phpstan-type MeetingSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class MeetingSearchParams implements BaseModel
 {
-    /** @use SdkModel<meeting_search_params> */
+    /** @use SdkModel<MeetingSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

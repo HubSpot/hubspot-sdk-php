@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Fees->update
  *
- * @phpstan-type fee_update_params = array{
+ * @phpstan-type FeeUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class FeeUpdateParams implements BaseModel
 {
-    /** @use SdkModel<fee_update_params> */
+    /** @use SdkModel<FeeUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

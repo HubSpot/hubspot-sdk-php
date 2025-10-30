@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Pipelines->update
  *
- * @phpstan-type pipeline_update_params = array{
+ * @phpstan-type PipelineUpdateParamsShape = array{
  *   objectType: string,
  *   validateDealStageUsagesBeforeDelete?: bool,
  *   validateReferencesBeforeDelete?: bool,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PipelineUpdateParams implements BaseModel
 {
-    /** @use SdkModel<pipeline_update_params> */
+    /** @use SdkModel<PipelineUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

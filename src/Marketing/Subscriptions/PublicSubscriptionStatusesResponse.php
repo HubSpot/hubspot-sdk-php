@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type public_subscription_statuses_response = array{
+ * @phpstan-type PublicSubscriptionStatusesResponseShape = array{
  *   recipient: string, subscriptionStatuses: list<PublicSubscriptionStatus>
  * }
  */
 final class PublicSubscriptionStatusesResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_subscription_statuses_response> */
+    /** @use SdkModel<PublicSubscriptionStatusesResponseShape> */
     use SdkModel;
 
     use SdkResponse;

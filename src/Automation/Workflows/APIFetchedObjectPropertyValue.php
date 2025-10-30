@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_fetched_object_property_value = array{
+ * @phpstan-type APIFetchedObjectPropertyValueShape = array{
  *   propertyToken: string, type: value-of<Type>
  * }
  */
 final class APIFetchedObjectPropertyValue implements BaseModel
 {
-    /** @use SdkModel<api_fetched_object_property_value> */
+    /** @use SdkModel<APIFetchedObjectPropertyValueShape> */
     use SdkModel;
 
     /**

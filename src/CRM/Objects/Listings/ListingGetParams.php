@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Listings->get
  *
- * @phpstan-type listing_get_params = array{
+ * @phpstan-type ListingGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ListingGetParams implements BaseModel
 {
-    /** @use SdkModel<listing_get_params> */
+    /** @use SdkModel<ListingGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

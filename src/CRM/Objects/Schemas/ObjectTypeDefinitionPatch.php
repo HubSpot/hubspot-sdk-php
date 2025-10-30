@@ -12,7 +12,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
 /**
  * Defines attributes to update on an object type.
  *
- * @phpstan-type object_type_definition_patch = array{
+ * @phpstan-type ObjectTypeDefinitionPatchShape = array{
  *   clearDescription?: bool,
  *   description?: string,
  *   labels?: ObjectTypeDefinitionLabels,
@@ -25,7 +25,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  */
 final class ObjectTypeDefinitionPatch implements BaseModel
 {
-    /** @use SdkModel<object_type_definition_patch> */
+    /** @use SdkModel<ObjectTypeDefinitionPatchShape> */
     use SdkModel;
 
     #[Api(optional: true)]

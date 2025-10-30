@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->createBatch
  *
- * @phpstan-type landing_page_create_batch_params = array{inputs: list<Page>}
+ * @phpstan-type LandingPageCreateBatchParamsShape = array{inputs: list<Page>}
  */
 final class LandingPageCreateBatchParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_create_batch_params> */
+    /** @use SdkModel<LandingPageCreateBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -11,13 +11,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type meeting_settings_response = array{
+ * @phpstan-type MeetingSettingsResponseShape = array{
  *   criteria: value-of<Criteria>, sellingStrategy: value-of<SellingStrategy>
  * }
  */
 final class MeetingSettingsResponse implements BaseModel
 {
-    /** @use SdkModel<meeting_settings_response> */
+    /** @use SdkModel<MeetingSettingsResponseShape> */
     use SdkModel;
 
     /** @var value-of<Criteria> $criteria */

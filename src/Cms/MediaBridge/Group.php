@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type group_alias = array{
+ * @phpstan-type GroupShape = array{
  *   deleted: bool,
  *   displayName: string,
  *   displayOrder: int,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class Group implements BaseModel
 {
-    /** @use SdkModel<group_alias> */
+    /** @use SdkModel<GroupShape> */
     use SdkModel;
 
     #[Api]

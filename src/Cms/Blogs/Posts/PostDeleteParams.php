@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->delete
  *
- * @phpstan-type post_delete_params = array{archived?: bool}
+ * @phpstan-type PostDeleteParamsShape = array{archived?: bool}
  */
 final class PostDeleteParams implements BaseModel
 {
-    /** @use SdkModel<post_delete_params> */
+    /** @use SdkModel<PostDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

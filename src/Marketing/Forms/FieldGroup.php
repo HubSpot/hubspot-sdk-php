@@ -14,7 +14,7 @@ use HubspotSDK\Marketing\Forms\FieldGroup\RichTextType;
 /**
  * A collection of up to three form fields usually displayed in a row.
  *
- * @phpstan-type field_group = array{
+ * @phpstan-type FieldGroupShape = array{
  *   fields: list<EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField>,
  *   groupType: value-of<GroupType>,
  *   richTextType: value-of<RichTextType>,
@@ -23,7 +23,7 @@ use HubspotSDK\Marketing\Forms\FieldGroup\RichTextType;
  */
 final class FieldGroup implements BaseModel
 {
-    /** @use SdkModel<field_group> */
+    /** @use SdkModel<FieldGroupShape> */
     use SdkModel;
 
     /**

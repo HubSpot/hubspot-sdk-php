@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Pipelines\Stages->list
  *
- * @phpstan-type stage_list_params = array{objectType: string}
+ * @phpstan-type StageListParamsShape = array{objectType: string}
  */
 final class StageListParams implements BaseModel
 {
-    /** @use SdkModel<stage_list_params> */
+    /** @use SdkModel<StageListParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicWideStatusBulkRespo
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_public_wide_status_bulk_response_with_errors = array{
+ * @phpstan-type BatchResponsePublicWideStatusBulkResponseWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicWideStatusBulkResponse>,
  *   startedAt: \DateTimeInterface,
@@ -24,9 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseModel
 {
-    /**
-     * @use SdkModel<batch_response_public_wide_status_bulk_response_with_errors>
-     */
+    /** @use SdkModel<BatchResponsePublicWideStatusBulkResponseWithErrorsShape> */
     use SdkModel;
 
     /**

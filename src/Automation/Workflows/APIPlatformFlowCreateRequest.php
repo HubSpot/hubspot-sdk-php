@@ -21,7 +21,7 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
- * @phpstan-type api_platform_flow_create_request = array{
+ * @phpstan-type APIPlatformFlowCreateRequestShape = array{
  *   actions: list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction>,
  *   blockedDates: list<APIBlockedDate>,
  *   customProperties: array<string, string>,
@@ -42,7 +42,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  */
 final class APIPlatformFlowCreateRequest implements BaseModel
 {
-    /** @use SdkModel<api_platform_flow_create_request> */
+    /** @use SdkModel<APIPlatformFlowCreateRequestShape> */
     use SdkModel;
 
     /**

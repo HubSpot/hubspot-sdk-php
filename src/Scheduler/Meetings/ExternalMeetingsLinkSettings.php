@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_meetings_link_settings = array{
+ * @phpstan-type ExternalMeetingsLinkSettingsShape = array{
  *   availability: array<string, ExternalClosedRange>,
  *   durations: list<int>,
  *   formFields: list<ExternalLinkFormField>,
@@ -32,7 +32,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalMeetingsLinkSettings implements BaseModel
 {
-    /** @use SdkModel<external_meetings_link_settings> */
+    /** @use SdkModel<ExternalMeetingsLinkSettingsShape> */
     use SdkModel;
 
     /** @var array<string, ExternalClosedRange> $availability */

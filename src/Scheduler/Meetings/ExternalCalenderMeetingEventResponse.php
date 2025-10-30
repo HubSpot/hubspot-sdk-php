@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_calender_meeting_event_response = array{
+ * @phpstan-type ExternalCalenderMeetingEventResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   lastUpdatedAt: \DateTimeInterface,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalCalenderMeetingEventResponse implements BaseModel
 {
-    /** @use SdkModel<external_calender_meeting_event_response> */
+    /** @use SdkModel<ExternalCalenderMeetingEventResponseShape> */
     use SdkModel;
 
     #[Api]

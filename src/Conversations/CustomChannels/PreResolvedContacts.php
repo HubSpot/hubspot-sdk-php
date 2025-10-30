@@ -9,11 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type pre_resolved_contacts = array{contacts: list<PreResolvedContact>}
+ * @phpstan-type PreResolvedContactsShape = array{
+ *   contacts: list<PreResolvedContact>
+ * }
  */
 final class PreResolvedContacts implements BaseModel
 {
-    /** @use SdkModel<pre_resolved_contacts> */
+    /** @use SdkModel<PreResolvedContactsShape> */
     use SdkModel;
 
     /** @var list<PreResolvedContact> $contacts */

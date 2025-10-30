@@ -12,13 +12,13 @@ use HubspotSDK\ForwardPaging;
 /**
  * Response object for collections of blog tags with pagination information.
  *
- * @phpstan-type collection_response_with_total_tag_forward_paging = array{
+ * @phpstan-type CollectionResponseWithTotalTagForwardPagingShape = array{
  *   results: list<Tag>, total: int, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_with_total_tag_forward_paging> */
+    /** @use SdkModel<CollectionResponseWithTotalTagForwardPagingShape> */
     use SdkModel;
 
     /**

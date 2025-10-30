@@ -11,11 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Model definition for a version user. Contains addition information about the user who created a version.
  *
- * @phpstan-type version_user = array{id: string, email: string, fullName: string}
+ * @phpstan-type VersionUserShape = array{
+ *   id: string, email: string, fullName: string
+ * }
  */
 final class VersionUser implements BaseModel
 {
-    /** @use SdkModel<version_user> */
+    /** @use SdkModel<VersionUserShape> */
     use SdkModel;
 
     /**

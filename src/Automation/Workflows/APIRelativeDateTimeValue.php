@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_relative_date_time_value = array{
+ * @phpstan-type APIRelativeDateTimeValueShape = array{
  *   timeDelay: APITimeDelay, type: value-of<Type>
  * }
  */
 final class APIRelativeDateTimeValue implements BaseModel
 {
-    /** @use SdkModel<api_relative_date_time_value> */
+    /** @use SdkModel<APIRelativeDateTimeValueShape> */
     use SdkModel;
 
     #[Api]

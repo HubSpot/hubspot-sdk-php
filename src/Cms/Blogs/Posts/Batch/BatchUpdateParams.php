@@ -14,11 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts\Batch->update
  *
- * @phpstan-type batch_update_params = array{inputs: list<mixed>, archived?: bool}
+ * @phpstan-type BatchUpdateParamsShape = array{
+ *   inputs: list<mixed>, archived?: bool
+ * }
  */
 final class BatchUpdateParams implements BaseModel
 {
-    /** @use SdkModel<batch_update_params> */
+    /** @use SdkModel<BatchUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Emails->restoreRevisionToDraft
  *
- * @phpstan-type email_restore_revision_to_draft_params = array{emailID: string}
+ * @phpstan-type EmailRestoreRevisionToDraftParamsShape = array{emailID: string}
  */
 final class EmailRestoreRevisionToDraftParams implements BaseModel
 {
-    /** @use SdkModel<email_restore_revision_to_draft_params> */
+    /** @use SdkModel<EmailRestoreRevisionToDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

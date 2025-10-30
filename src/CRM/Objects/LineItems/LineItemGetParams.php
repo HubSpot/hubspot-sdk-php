@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\LineItems->get
  *
- * @phpstan-type line_item_get_params = array{
+ * @phpstan-type LineItemGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LineItemGetParams implements BaseModel
 {
-    /** @use SdkModel<line_item_get_params> */
+    /** @use SdkModel<LineItemGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_font_style = array{
+ * @phpstan-type PublicFontStyleShape = array{
  *   bold?: bool,
  *   color?: string,
  *   font?: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicFontStyle implements BaseModel
 {
-    /** @use SdkModel<public_font_style> */
+    /** @use SdkModel<PublicFontStyleShape> */
     use SdkModel;
 
     #[Api(optional: true)]

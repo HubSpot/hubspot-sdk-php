@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->publishDraft
  *
- * @phpstan-type table_publish_draft_params = array{includeForeignIDs?: bool}
+ * @phpstan-type TablePublishDraftParamsShape = array{includeForeignIDs?: bool}
  */
 final class TablePublishDraftParams implements BaseModel
 {
-    /** @use SdkModel<table_publish_draft_params> */
+    /** @use SdkModel<TablePublishDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

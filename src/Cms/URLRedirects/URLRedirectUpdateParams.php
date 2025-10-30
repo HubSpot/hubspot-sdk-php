@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\URLRedirects->update
  *
- * @phpstan-type url_redirect_update_params = array{
+ * @phpstan-type URLRedirectUpdateParamsShape = array{
  *   id: string,
  *   destination: string,
  *   isMatchFullURL: bool,
@@ -32,7 +32,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class URLRedirectUpdateParams implements BaseModel
 {
-    /** @use SdkModel<url_redirect_update_params> */
+    /** @use SdkModel<URLRedirectUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

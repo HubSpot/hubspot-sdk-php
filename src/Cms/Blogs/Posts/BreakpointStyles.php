@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type breakpoint_styles = array{
+ * @phpstan-type BreakpointStylesShape = array{
  *   hidden: bool, margin: mixed, padding: mixed
  * }
  */
 final class BreakpointStyles implements BaseModel
 {
-    /** @use SdkModel<breakpoint_styles> */
+    /** @use SdkModel<BreakpointStylesShape> */
     use SdkModel;
 
     #[Api]

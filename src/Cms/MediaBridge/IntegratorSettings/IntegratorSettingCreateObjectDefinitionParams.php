@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->createObjectDefinition
  *
- * @phpstan-type integrator_setting_create_object_definition_params = array{
+ * @phpstan-type IntegratorSettingCreateObjectDefinitionParamsShape = array{
  *   mediaTypes: list<MediaType|value-of<MediaType>>
  * }
  */
 final class IntegratorSettingCreateObjectDefinitionParams implements BaseModel
 {
-    /** @use SdkModel<integrator_setting_create_object_definition_params> */
+    /** @use SdkModel<IntegratorSettingCreateObjectDefinitionParamsShape> */
     use SdkModel;
     use SdkParams;
 

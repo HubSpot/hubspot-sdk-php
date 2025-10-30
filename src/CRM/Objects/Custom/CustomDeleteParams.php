@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Custom->delete
  *
- * @phpstan-type custom_delete_params = array{objectType: string}
+ * @phpstan-type CustomDeleteParamsShape = array{objectType: string}
  */
 final class CustomDeleteParams implements BaseModel
 {
-    /** @use SdkModel<custom_delete_params> */
+    /** @use SdkModel<CustomDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

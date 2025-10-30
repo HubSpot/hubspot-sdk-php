@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type foreign_id = array{id: string, name: string, type: string}
+ * @phpstan-type ForeignIDShape = array{id: string, name: string, type: string}
  */
 final class ForeignID implements BaseModel
 {
-    /** @use SdkModel<foreign_id> */
+    /** @use SdkModel<ForeignIDShape> */
     use SdkModel;
 
     #[Api]

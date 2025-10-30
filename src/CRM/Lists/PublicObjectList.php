@@ -19,7 +19,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
 /**
  * An object list definition.
  *
- * @phpstan-type public_object_list = array{
+ * @phpstan-type PublicObjectListShape = array{
  *   listID: string,
  *   listVersion: int,
  *   name: string,
@@ -40,7 +40,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  */
 final class PublicObjectList implements BaseModel
 {
-    /** @use SdkModel<public_object_list> */
+    /** @use SdkModel<PublicObjectListShape> */
     use SdkModel;
 
     /**

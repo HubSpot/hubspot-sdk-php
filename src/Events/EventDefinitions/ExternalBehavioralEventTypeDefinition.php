@@ -13,7 +13,7 @@ use HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventTypeDefinition\Tra
 use HubspotSDK\Property;
 
 /**
- * @phpstan-type external_behavioral_event_type_definition = array{
+ * @phpstan-type ExternalBehavioralEventTypeDefinitionShape = array{
  *   id: string,
  *   archived: bool,
  *   associations: list<AssociationDefinition>,
@@ -33,7 +33,7 @@ use HubspotSDK\Property;
  */
 final class ExternalBehavioralEventTypeDefinition implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<external_behavioral_event_type_definition> */
+    /** @use SdkModel<ExternalBehavioralEventTypeDefinitionShape> */
     use SdkModel;
 
     use SdkResponse;

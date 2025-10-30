@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->deleteFoldersBatch
  *
- * @phpstan-type landing_page_delete_folders_batch_params = array{
+ * @phpstan-type LandingPageDeleteFoldersBatchParamsShape = array{
  *   inputs: list<string>
  * }
  */
 final class LandingPageDeleteFoldersBatchParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_delete_folders_batch_params> */
+    /** @use SdkModel<LandingPageDeleteFoldersBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

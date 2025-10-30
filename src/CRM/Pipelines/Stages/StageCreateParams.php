@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Pipelines\Stages->create
  *
- * @phpstan-type stage_create_params = array{
+ * @phpstan-type StageCreateParamsShape = array{
  *   objectType: string,
  *   displayOrder: int,
  *   label: string,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class StageCreateParams implements BaseModel
 {
-    /** @use SdkModel<stage_create_params> */
+    /** @use SdkModel<StageCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

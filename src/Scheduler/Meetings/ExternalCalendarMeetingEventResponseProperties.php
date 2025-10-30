@@ -11,7 +11,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties
 use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties\HsMeetingLocationType;
 
 /**
- * @phpstan-type external_calendar_meeting_event_response_properties = array{
+ * @phpstan-type ExternalCalendarMeetingEventResponsePropertiesShape = array{
  *   hsEngagementSource: value-of<HsEngagementSource>,
  *   hsEngagementSourceID: string,
  *   hsMeetingEndTime: \DateTimeInterface,
@@ -34,7 +34,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties
  */
 final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
 {
-    /** @use SdkModel<external_calendar_meeting_event_response_properties> */
+    /** @use SdkModel<ExternalCalendarMeetingEventResponsePropertiesShape> */
     use SdkModel;
 
     /** @var value-of<HsEngagementSource> $hsEngagementSource */

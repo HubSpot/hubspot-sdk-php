@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Courses->update
  *
- * @phpstan-type course_update_params = array{
+ * @phpstan-type CourseUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class CourseUpdateParams implements BaseModel
 {
-    /** @use SdkModel<course_update_params> */
+    /** @use SdkModel<CourseUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

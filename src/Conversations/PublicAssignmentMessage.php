@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_assignment_message = array{
+ * @phpstan-type PublicAssignmentMessageShape = array{
  *   id: string,
  *   archived: bool,
  *   client: PublicClient,
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicAssignmentMessage implements BaseModel
 {
-    /** @use SdkModel<public_assignment_message> */
+    /** @use SdkModel<PublicAssignmentMessageShape> */
     use SdkModel;
 
     #[Api]

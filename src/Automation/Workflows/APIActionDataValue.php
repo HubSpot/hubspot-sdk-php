@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_action_data_value = array{
+ * @phpstan-type APIActionDataValueShape = array{
  *   actionID: string, dataKey: string, type: value-of<Type>
  * }
  */
 final class APIActionDataValue implements BaseModel
 {
-    /** @use SdkModel<api_action_data_value> */
+    /** @use SdkModel<APIActionDataValueShape> */
     use SdkModel;
 
     /**

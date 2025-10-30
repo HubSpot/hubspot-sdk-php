@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponse
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_marketing_event_public_default_response = array{
+ * @phpstan-type BatchResponseMarketingEventPublicDefaultResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<MarketingEventPublicDefaultResponse>,
  *   startedAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseMarketingEventPublicDefaultResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<batch_response_marketing_event_public_default_response> */
+    /** @use SdkModel<BatchResponseMarketingEventPublicDefaultResponseShape> */
     use SdkModel;
 
     use SdkResponse;

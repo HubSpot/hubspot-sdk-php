@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyName;
 
 /**
- * @phpstan-type batch_read_input_property_name = array{
+ * @phpstan-type BatchReadInputPropertyNameShape = array{
  *   archived: bool,
  *   dataSensitivity: value-of<DataSensitivity>,
  *   inputs: list<PropertyName>,
@@ -19,7 +19,7 @@ use HubspotSDK\PropertyName;
  */
 final class BatchReadInputPropertyName implements BaseModel
 {
-    /** @use SdkModel<batch_read_input_property_name> */
+    /** @use SdkModel<BatchReadInputPropertyNameShape> */
     use SdkModel;
 
     #[Api]

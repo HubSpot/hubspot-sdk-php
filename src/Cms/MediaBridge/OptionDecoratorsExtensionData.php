@@ -9,14 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type option_decorators_extension_data = array{
+ * @phpstan-type OptionDecoratorsExtensionDataShape = array{
  *   optionDecorators: array<string, OptionDecorations>,
  *   optionDecoratorStyle: string,
  * }
  */
 final class OptionDecoratorsExtensionData implements BaseModel
 {
-    /** @use SdkModel<option_decorators_extension_data> */
+    /** @use SdkModel<OptionDecoratorsExtensionDataShape> */
     use SdkModel;
 
     /** @var array<string, OptionDecorations> $optionDecorators */

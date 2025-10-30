@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Tickets->list
  *
- * @phpstan-type ticket_list_params = array{
+ * @phpstan-type TicketListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TicketListParams implements BaseModel
 {
-    /** @use SdkModel<ticket_list_params> */
+    /** @use SdkModel<TicketListParamsShape> */
     use SdkModel;
     use SdkParams;
 

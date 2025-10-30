@@ -10,11 +10,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_file_egg = array{fileID: string, type: value-of<Type>}
+ * @phpstan-type PublicFileEggShape = array{fileID: string, type: value-of<Type>}
  */
 final class PublicFileEgg implements BaseModel
 {
-    /** @use SdkModel<public_file_egg> */
+    /** @use SdkModel<PublicFileEggShape> */
     use SdkModel;
 
     #[Api('fileId')]

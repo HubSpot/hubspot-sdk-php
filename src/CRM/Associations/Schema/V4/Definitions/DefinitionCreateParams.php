@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Associations\Schema\V4\Definitions->create
  *
- * @phpstan-type definition_create_params = array{
+ * @phpstan-type DefinitionCreateParamsShape = array{
  *   fromObjectType: string, label: string, name: string, inverseLabel?: string
  * }
  */
 final class DefinitionCreateParams implements BaseModel
 {
-    /** @use SdkModel<definition_create_params> */
+    /** @use SdkModel<DefinitionCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Fees->create
  *
- * @phpstan-type fee_create_params = array{
+ * @phpstan-type FeeCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class FeeCreateParams implements BaseModel
 {
-    /** @use SdkModel<fee_create_params> */
+    /** @use SdkModel<FeeCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

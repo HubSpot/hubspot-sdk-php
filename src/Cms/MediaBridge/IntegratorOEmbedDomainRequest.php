@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type integrator_o_embed_domain_request = array{
+ * @phpstan-type IntegratorOEmbedDomainRequestShape = array{
  *   endpoints: Endpoints, portalID?: int
  * }
  */
 final class IntegratorOEmbedDomainRequest implements BaseModel
 {
-    /** @use SdkModel<integrator_o_embed_domain_request> */
+    /** @use SdkModel<IntegratorOEmbedDomainRequestShape> */
     use SdkModel;
 
     #[Api]

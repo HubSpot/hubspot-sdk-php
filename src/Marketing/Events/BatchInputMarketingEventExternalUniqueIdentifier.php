@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_marketing_event_external_unique_identifier = array{
+ * @phpstan-type BatchInputMarketingEventExternalUniqueIdentifierShape = array{
  *   inputs: list<MarketingEventExternalUniqueIdentifier>
  * }
  */
 final class BatchInputMarketingEventExternalUniqueIdentifier implements BaseModel
 {
-    /** @use SdkModel<batch_input_marketing_event_external_unique_identifier> */
+    /** @use SdkModel<BatchInputMarketingEventExternalUniqueIdentifierShape> */
     use SdkModel;
 
     /** @var list<MarketingEventExternalUniqueIdentifier> $inputs */

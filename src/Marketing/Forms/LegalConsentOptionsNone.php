@@ -10,11 +10,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsNone\Type;
 
 /**
- * @phpstan-type legal_consent_options_none = array{type: value-of<Type>}
+ * @phpstan-type LegalConsentOptionsNoneShape = array{type: value-of<Type>}
  */
 final class LegalConsentOptionsNone implements BaseModel
 {
-    /** @use SdkModel<legal_consent_options_none> */
+    /** @use SdkModel<LegalConsentOptionsNoneShape> */
     use SdkModel;
 
     /** @var value-of<Type> $type */

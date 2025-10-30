@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_static_branch = array{
+ * @phpstan-type APIStaticBranchShape = array{
  *   branchValue: string, connection?: APIConnection
  * }
  */
 final class APIStaticBranch implements BaseModel
 {
-    /** @use SdkModel<api_static_branch> */
+    /** @use SdkModel<APIStaticBranchShape> */
     use SdkModel;
 
     /**

@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type collection_response_currency_code_info_no_paging = array{
+ * @phpstan-type CollectionResponseCurrencyCodeInfoNoPagingShape = array{
  *   results: list<CurrencyCodeInfo>
  * }
  */
 final class CollectionResponseCurrencyCodeInfoNoPaging implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_currency_code_info_no_paging> */
+    /** @use SdkModel<CollectionResponseCurrencyCodeInfoNoPagingShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type field_level_permission = array{accessLevel: string}
+ * @phpstan-type FieldLevelPermissionShape = array{accessLevel: string}
  */
 final class FieldLevelPermission implements BaseModel
 {
-    /** @use SdkModel<field_level_permission> */
+    /** @use SdkModel<FieldLevelPermissionShape> */
     use SdkModel;
 
     #[Api]

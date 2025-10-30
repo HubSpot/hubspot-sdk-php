@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\CommercePayments->update
  *
- * @phpstan-type commerce_payment_update_params = array{
+ * @phpstan-type CommercePaymentUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class CommercePaymentUpdateParams implements BaseModel
 {
-    /** @use SdkModel<commerce_payment_update_params> */
+    /** @use SdkModel<CommercePaymentUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

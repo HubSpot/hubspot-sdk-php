@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type asset_file_metadata = array{
+ * @phpstan-type AssetFileMetadataShape = array{
  *   id: string,
  *   createdAt: int,
  *   folder: bool,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class AssetFileMetadata implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<asset_file_metadata> */
+    /** @use SdkModel<AssetFileMetadataShape> */
     use SdkModel;
 
     use SdkResponse;

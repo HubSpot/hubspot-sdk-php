@@ -15,7 +15,7 @@ use HubspotSDK\Settings\Currencies\CurrencyCreateExchangeRateParams\FromCurrency
  *
  * @see HubspotSDK\Settings\Currencies->createExchangeRate
  *
- * @phpstan-type currency_create_exchange_rate_params = array{
+ * @phpstan-type CurrencyCreateExchangeRateParamsShape = array{
  *   conversionRate: float,
  *   fromCurrencyCode: FromCurrencyCode|value-of<FromCurrencyCode>,
  *   effectiveAt?: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\Settings\Currencies\CurrencyCreateExchangeRateParams\FromCurrency
  */
 final class CurrencyCreateExchangeRateParams implements BaseModel
 {
-    /** @use SdkModel<currency_create_exchange_rate_params> */
+    /** @use SdkModel<CurrencyCreateExchangeRateParamsShape> */
     use SdkModel;
     use SdkParams;
 

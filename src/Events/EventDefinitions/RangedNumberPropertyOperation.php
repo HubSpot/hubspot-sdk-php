@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\RangedNumberPropertyOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\RangedNumberPropertyOperation\PropertyType;
 
 /**
- * @phpstan-type ranged_number_property_operation = array{
+ * @phpstan-type RangedNumberPropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   lowerBound: int,
  *   operationType: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Events\EventDefinitions\RangedNumberPropertyOperation\PropertyTyp
  */
 final class RangedNumberPropertyOperation implements BaseModel
 {
-    /** @use SdkModel<ranged_number_property_operation> */
+    /** @use SdkModel<RangedNumberPropertyOperationShape> */
     use SdkModel;
 
     #[Api]

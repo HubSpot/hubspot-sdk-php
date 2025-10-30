@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows\Batch->purgeBatch
  *
- * @phpstan-type batch_purge_batch_params = array{inputs: list<string>}
+ * @phpstan-type BatchPurgeBatchParamsShape = array{inputs: list<string>}
  */
 final class BatchPurgeBatchParams implements BaseModel
 {
-    /** @use SdkModel<batch_purge_batch_params> */
+    /** @use SdkModel<BatchPurgeBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

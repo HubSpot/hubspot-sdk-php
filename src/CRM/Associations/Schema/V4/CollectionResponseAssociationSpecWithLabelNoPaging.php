@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\AssociationSpecWithLabel;
 
 /**
- * @phpstan-type collection_response_association_spec_with_label_no_paging = array{
+ * @phpstan-type CollectionResponseAssociationSpecWithLabelNoPagingShape = array{
  *   results: list<AssociationSpecWithLabel>
  * }
  */
 final class CollectionResponseAssociationSpecWithLabelNoPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_association_spec_with_label_no_paging> */
+    /** @use SdkModel<CollectionResponseAssociationSpecWithLabelNoPagingShape> */
     use SdkModel;
 
     /** @var list<AssociationSpecWithLabel> $results */

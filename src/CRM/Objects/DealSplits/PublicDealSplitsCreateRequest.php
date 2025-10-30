@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_deal_splits_create_request = array{
+ * @phpstan-type PublicDealSplitsCreateRequestShape = array{
  *   id: int, splits: list<PublicDealSplitInput>
  * }
  */
 final class PublicDealSplitsCreateRequest implements BaseModel
 {
-    /** @use SdkModel<public_deal_splits_create_request> */
+    /** @use SdkModel<PublicDealSplitsCreateRequestShape> */
     use SdkModel;
 
     #[Api]

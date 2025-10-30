@@ -14,7 +14,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * Response object for batch operations on blog tags.
  *
- * @phpstan-type batch_response_tag = array{
+ * @phpstan-type BatchResponseTagShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<Tag>,
  *   startedAt: \DateTimeInterface,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class BatchResponseTag implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<batch_response_tag> */
+    /** @use SdkModel<BatchResponseTagShape> */
     use SdkModel;
 
     use SdkResponse;

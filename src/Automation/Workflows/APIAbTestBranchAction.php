@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_ab_test_branch_action = array{
+ * @phpstan-type APIAbTestBranchActionShape = array{
  *   actionID: string, testBranches: list<APIConnection>, type: value-of<Type>
  * }
  */
 final class APIAbTestBranchAction implements BaseModel
 {
-    /** @use SdkModel<api_ab_test_branch_action> */
+    /** @use SdkModel<APIAbTestBranchActionShape> */
     use SdkModel;
 
     /**

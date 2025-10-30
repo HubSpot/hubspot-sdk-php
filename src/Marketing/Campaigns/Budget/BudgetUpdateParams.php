@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Budget->update
  *
- * @phpstan-type budget_update_params = array{
+ * @phpstan-type BudgetUpdateParamsShape = array{
  *   campaignGuid: string,
  *   amount: float,
  *   name: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class BudgetUpdateParams implements BaseModel
 {
-    /** @use SdkModel<budget_update_params> */
+    /** @use SdkModel<BudgetUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

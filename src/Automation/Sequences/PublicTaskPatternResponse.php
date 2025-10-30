@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_task_pattern_response = array{
+ * @phpstan-type PublicTaskPatternResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   taskPriority: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicTaskPatternResponse implements BaseModel
 {
-    /** @use SdkModel<public_task_pattern_response> */
+    /** @use SdkModel<PublicTaskPatternResponseShape> */
     use SdkModel;
 
     #[Api]

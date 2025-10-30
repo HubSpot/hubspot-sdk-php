@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Calls->update
  *
- * @phpstan-type call_update_params = array{
+ * @phpstan-type CallUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class CallUpdateParams implements BaseModel
 {
-    /** @use SdkModel<call_update_params> */
+    /** @use SdkModel<CallUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

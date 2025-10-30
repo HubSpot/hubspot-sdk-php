@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type legal_consent_checkbox = array{
+ * @phpstan-type LegalConsentCheckboxShape = array{
  *   label: string, required: bool, subscriptionTypeID: int
  * }
  */
 final class LegalConsentCheckbox implements BaseModel
 {
-    /** @use SdkModel<legal_consent_checkbox> */
+    /** @use SdkModel<LegalConsentCheckboxShape> */
     use SdkModel;
 
     /**

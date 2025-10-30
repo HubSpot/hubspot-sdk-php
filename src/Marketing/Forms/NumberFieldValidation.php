@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Describes how a numeric value should be validated.
  *
- * @phpstan-type number_field_validation = array{
+ * @phpstan-type NumberFieldValidationShape = array{
  *   maxAllowedDigits: int, minAllowedDigits: int
  * }
  */
 final class NumberFieldValidation implements BaseModel
 {
-    /** @use SdkModel<number_field_validation> */
+    /** @use SdkModel<NumberFieldValidationShape> */
     use SdkModel;
 
     #[Api]

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type near_limit_record_sample = array{
+ * @phpstan-type NearLimitRecordSampleShape = array{
  *   label: string, objectID: int, percentage: float, usage: int
  * }
  */
 final class NearLimitRecordSample implements BaseModel
 {
-    /** @use SdkModel<near_limit_record_sample> */
+    /** @use SdkModel<NearLimitRecordSampleShape> */
     use SdkModel;
 
     #[Api]

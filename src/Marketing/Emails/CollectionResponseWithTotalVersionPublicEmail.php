@@ -13,13 +13,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * Response object for collections of marketing emails with pagination information.
  *
- * @phpstan-type collection_response_with_total_version_public_email = array{
+ * @phpstan-type CollectionResponseWithTotalVersionPublicEmailShape = array{
  *   results: list<VersionPublicEmail>, total: int, paging?: Paging
  * }
  */
 final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_with_total_version_public_email> */
+    /** @use SdkModel<CollectionResponseWithTotalVersionPublicEmailShape> */
     use SdkModel;
 
     use SdkResponse;

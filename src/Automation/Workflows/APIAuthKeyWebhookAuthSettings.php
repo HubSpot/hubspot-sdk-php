@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_auth_key_webhook_auth_settings = array{
+ * @phpstan-type APIAuthKeyWebhookAuthSettingsShape = array{
  *   location: value-of<Location>,
  *   name: string,
  *   secretName: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIAuthKeyWebhookAuthSettings implements BaseModel
 {
-    /** @use SdkModel<api_auth_key_webhook_auth_settings> */
+    /** @use SdkModel<APIAuthKeyWebhookAuthSettingsShape> */
     use SdkModel;
 
     /**

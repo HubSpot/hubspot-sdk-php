@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_campaign_delete_input = array{id: string}
+ * @phpstan-type PublicCampaignDeleteInputShape = array{id: string}
  */
 final class PublicCampaignDeleteInput implements BaseModel
 {
-    /** @use SdkModel<public_campaign_delete_input> */
+    /** @use SdkModel<PublicCampaignDeleteInputShape> */
     use SdkModel;
 
     #[Api]

@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\MobilePhoneField\FieldType;
 /**
  * A form field used for collecting a mobile phone number.
  *
- * @phpstan-type mobile_phone_field = array{
+ * @phpstan-type MobilePhoneFieldShape = array{
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
@@ -28,7 +28,7 @@ use HubspotSDK\Marketing\Forms\MobilePhoneField\FieldType;
  */
 final class MobilePhoneField implements BaseModel
 {
-    /** @use SdkModel<mobile_phone_field> */
+    /** @use SdkModel<MobilePhoneFieldShape> */
     use SdkModel;
 
     /**

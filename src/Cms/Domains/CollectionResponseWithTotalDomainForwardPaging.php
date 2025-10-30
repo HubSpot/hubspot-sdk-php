@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_with_total_domain_forward_paging = array{
+ * @phpstan-type CollectionResponseWithTotalDomainForwardPagingShape = array{
  *   results: list<Domain>, total: int, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseWithTotalDomainForwardPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_with_total_domain_forward_paging> */
+    /** @use SdkModel<CollectionResponseWithTotalDomainForwardPagingShape> */
     use SdkModel;
 
     /** @var list<Domain> $results */

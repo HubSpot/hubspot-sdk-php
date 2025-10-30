@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_append_object_property_value = array{
+ * @phpstan-type APIAppendObjectPropertyValueShape = array{
  *   appendPropertyName: string, type: value-of<Type>
  * }
  */
 final class APIAppendObjectPropertyValue implements BaseModel
 {
-    /** @use SdkModel<api_append_object_property_value> */
+    /** @use SdkModel<APIAppendObjectPropertyValueShape> */
     use SdkModel;
 
     /**

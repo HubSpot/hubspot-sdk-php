@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAdsSearchFilter\FilterType;
 
 /**
- * @phpstan-type public_ads_search_filter = array{
+ * @phpstan-type PublicAdsSearchFilterShape = array{
  *   adNetwork: string,
  *   entityType: string,
  *   filterType: value-of<FilterType>,
@@ -21,7 +21,7 @@ use HubspotSDK\PublicAdsSearchFilter\FilterType;
  */
 final class PublicAdsSearchFilter implements BaseModel
 {
-    /** @use SdkModel<public_ads_search_filter> */
+    /** @use SdkModel<PublicAdsSearchFilterShape> */
     use SdkModel;
 
     #[Api]

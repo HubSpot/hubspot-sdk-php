@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Authors->updateLanguages
  *
- * @phpstan-type author_update_languages_params = array{
+ * @phpstan-type AuthorUpdateLanguagesParamsShape = array{
  *   languages: array<string, string>, primaryID: string
  * }
  */
 final class AuthorUpdateLanguagesParams implements BaseModel
 {
-    /** @use SdkModel<author_update_languages_params> */
+    /** @use SdkModel<AuthorUpdateLanguagesParamsShape> */
     use SdkModel;
     use SdkParams;
 

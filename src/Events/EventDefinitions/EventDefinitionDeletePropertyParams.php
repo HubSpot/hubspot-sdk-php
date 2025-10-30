@@ -14,11 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Events\EventDefinitions->deleteProperty
  *
- * @phpstan-type event_definition_delete_property_params = array{eventName: string}
+ * @phpstan-type EventDefinitionDeletePropertyParamsShape = array{
+ *   eventName: string
+ * }
  */
 final class EventDefinitionDeletePropertyParams implements BaseModel
 {
-    /** @use SdkModel<event_definition_delete_property_params> */
+    /** @use SdkModel<EventDefinitionDeletePropertyParamsShape> */
     use SdkModel;
     use SdkParams;
 

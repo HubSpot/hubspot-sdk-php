@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Functions->read
  *
- * @phpstan-type function_read_params = array{
+ * @phpstan-type FunctionReadParamsShape = array{
  *   appID: int,
  *   definitionID: string,
  *   functionType: FunctionType|value-of<FunctionType>,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class FunctionReadParams implements BaseModel
 {
-    /** @use SdkModel<function_read_params> */
+    /** @use SdkModel<FunctionReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

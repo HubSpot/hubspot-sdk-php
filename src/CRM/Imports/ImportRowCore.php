@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type import_row_core = array{
+ * @phpstan-type ImportRowCoreShape = array{
  *   containsEncryptedProperties: bool,
  *   fileID: int,
  *   lineNumber: int,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ImportRowCore implements BaseModel
 {
-    /** @use SdkModel<import_row_core> */
+    /** @use SdkModel<ImportRowCoreShape> */
     use SdkModel;
 
     #[Api]

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->updateByExternalEventID
  *
- * @phpstan-type event_update_by_external_event_id_params = array{
+ * @phpstan-type EventUpdateByExternalEventIDParamsShape = array{
  *   externalAccountID: string,
  *   customProperties?: list<PropertyValue>,
  *   endDateTime?: \DateTimeInterface,
@@ -32,7 +32,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EventUpdateByExternalEventIDParams implements BaseModel
 {
-    /** @use SdkModel<event_update_by_external_event_id_params> */
+    /** @use SdkModel<EventUpdateByExternalEventIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

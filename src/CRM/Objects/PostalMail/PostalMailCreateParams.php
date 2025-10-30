@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\PostalMail->create
  *
- * @phpstan-type postal_mail_create_params = array{
+ * @phpstan-type PostalMailCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class PostalMailCreateParams implements BaseModel
 {
-    /** @use SdkModel<postal_mail_create_params> */
+    /** @use SdkModel<PostalMailCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

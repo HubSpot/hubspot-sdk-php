@@ -15,7 +15,7 @@ use HubspotSDK\CRM\FilterGroup;
  *
  * @see HubspotSDK\CRM\Objects\GoalTargets->search
  *
- * @phpstan-type goal_target_search_params = array{
+ * @phpstan-type GoalTargetSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -26,7 +26,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class GoalTargetSearchParams implements BaseModel
 {
-    /** @use SdkModel<goal_target_search_params> */
+    /** @use SdkModel<GoalTargetSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

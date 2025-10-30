@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_branding_metadata = array{
+ * @phpstan-type ExternalBrandingMetadataShape = array{
  *   logoAltText: string,
  *   showMarketingAd: bool,
  *   showSalesAd: bool,
@@ -33,7 +33,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalBrandingMetadata implements BaseModel
 {
-    /** @use SdkModel<external_branding_metadata> */
+    /** @use SdkModel<ExternalBrandingMetadataShape> */
     use SdkModel;
 
     #[Api]

@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Information on the task that has been started, and where to check it's status.
  *
- * @phpstan-type import_from_url_task_locator = array{
+ * @phpstan-type ImportFromURLTaskLocatorShape = array{
  *   id: string, links: array<string, string>
  * }
  */
 final class ImportFromURLTaskLocator implements BaseModel
 {
-    /** @use SdkModel<import_from_url_task_locator> */
+    /** @use SdkModel<ImportFromURLTaskLocatorShape> */
     use SdkModel;
 
     /**

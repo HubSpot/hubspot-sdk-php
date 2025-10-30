@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Files\Files->replace
  *
- * @phpstan-type file_replace_params = array{
+ * @phpstan-type FileReplaceParamsShape = array{
  *   charsetHunch?: string, file?: string, options?: string
  * }
  */
 final class FileReplaceParams implements BaseModel
 {
-    /** @use SdkModel<file_replace_params> */
+    /** @use SdkModel<FileReplaceParamsShape> */
     use SdkModel;
     use SdkParams;
 

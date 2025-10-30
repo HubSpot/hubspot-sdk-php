@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Associations\V4\BatchResponsePublicAssociationMultiWithLabel\Status;
 
 /**
- * @phpstan-type batch_response_public_association_multi_with_label = array{
+ * @phpstan-type BatchResponsePublicAssociationMultiWithLabelShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicAssociationMultiWithLabel>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\CRM\Associations\V4\BatchResponsePublicAssociationMultiWithLabel\
  */
 final class BatchResponsePublicAssociationMultiWithLabel implements BaseModel
 {
-    /** @use SdkModel<batch_response_public_association_multi_with_label> */
+    /** @use SdkModel<BatchResponsePublicAssociationMultiWithLabelShape> */
     use SdkModel;
 
     #[Api]

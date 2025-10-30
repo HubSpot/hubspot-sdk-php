@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\DealSplits->batchUpsert
  *
- * @phpstan-type deal_split_batch_upsert_params = array{
+ * @phpstan-type DealSplitBatchUpsertParamsShape = array{
  *   inputs: list<PublicDealSplitsCreateRequest>
  * }
  */
 final class DealSplitBatchUpsertParams implements BaseModel
 {
-    /** @use SdkModel<deal_split_batch_upsert_params> */
+    /** @use SdkModel<DealSplitBatchUpsertParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,7 +14,7 @@ use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\SourceOfStatus;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\Status;
 
 /**
- * @phpstan-type public_subscription_status = array{
+ * @phpstan-type PublicSubscriptionStatusShape = array{
  *   id: string,
  *   description: string,
  *   name: string,
@@ -28,7 +28,7 @@ use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\Status;
  */
 final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_subscription_status> */
+    /** @use SdkModel<PublicSubscriptionStatusShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\GoalTargets->create
  *
- * @phpstan-type goal_target_create_params = array{
+ * @phpstan-type GoalTargetCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class GoalTargetCreateParams implements BaseModel
 {
-    /** @use SdkModel<goal_target_create_params> */
+    /** @use SdkModel<GoalTargetCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

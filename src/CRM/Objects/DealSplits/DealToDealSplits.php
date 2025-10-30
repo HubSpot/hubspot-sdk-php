@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\SimplePublicObject;
 
 /**
- * @phpstan-type deal_to_deal_splits = array{
+ * @phpstan-type DealToDealSplitsShape = array{
  *   id: string, splits: list<SimplePublicObject>
  * }
  */
 final class DealToDealSplits implements BaseModel
 {
-    /** @use SdkModel<deal_to_deal_splits> */
+    /** @use SdkModel<DealToDealSplitsShape> */
     use SdkModel;
 
     #[Api]

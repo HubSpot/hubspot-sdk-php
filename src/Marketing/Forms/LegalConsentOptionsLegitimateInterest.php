@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest\LawfulBasis
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest\Type;
 
 /**
- * @phpstan-type legal_consent_options_legitimate_interest = array{
+ * @phpstan-type LegalConsentOptionsLegitimateInterestShape = array{
  *   lawfulBasis: value-of<LawfulBasis>,
  *   privacyText: string,
  *   subscriptionTypeIDs: list<int>,
@@ -20,7 +20,7 @@ use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest\Type;
  */
 final class LegalConsentOptionsLegitimateInterest implements BaseModel
 {
-    /** @use SdkModel<legal_consent_options_legitimate_interest> */
+    /** @use SdkModel<LegalConsentOptionsLegitimateInterestShape> */
     use SdkModel;
 
     /** @var value-of<LawfulBasis> $lawfulBasis */

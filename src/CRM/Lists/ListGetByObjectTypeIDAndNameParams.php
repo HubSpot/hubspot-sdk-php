@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists->getByObjectTypeIDAndName
  *
- * @phpstan-type list_get_by_object_type_id_and_name_params = array{
+ * @phpstan-type ListGetByObjectTypeIDAndNameParamsShape = array{
  *   objectTypeID: string, includeFilters?: bool
  * }
  */
 final class ListGetByObjectTypeIDAndNameParams implements BaseModel
 {
-    /** @use SdkModel<list_get_by_object_type_id_and_name_params> */
+    /** @use SdkModel<ListGetByObjectTypeIDAndNameParamsShape> */
     use SdkModel;
     use SdkParams;
 

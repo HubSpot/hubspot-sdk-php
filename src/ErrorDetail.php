@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
 
 /**
- * @phpstan-type error_detail = array{
+ * @phpstan-type ErrorDetailShape = array{
  *   message: string,
  *   code?: string,
  *   context?: array<string, list<string>>,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Conversion\ListOf;
  */
 final class ErrorDetail implements BaseModel
 {
-    /** @use SdkModel<error_detail> */
+    /** @use SdkModel<ErrorDetailShape> */
     use SdkModel;
 
     /**

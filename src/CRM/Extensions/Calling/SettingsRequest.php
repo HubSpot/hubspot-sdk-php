@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type settings_request = array{
+ * @phpstan-type SettingsRequestShape = array{
  *   name: string,
  *   url: string,
  *   height?: int,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SettingsRequest implements BaseModel
 {
-    /** @use SdkModel<settings_request> */
+    /** @use SdkModel<SettingsRequestShape> */
     use SdkModel;
 
     /**

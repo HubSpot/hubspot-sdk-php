@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Emails->get
  *
- * @phpstan-type email_get_params = array{
+ * @phpstan-type EmailGetParamsShape = array{
  *   archived?: bool,
  *   includedProperties?: list<string>,
  *   includeStats?: bool,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EmailGetParams implements BaseModel
 {
-    /** @use SdkModel<email_get_params> */
+    /** @use SdkModel<EmailGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

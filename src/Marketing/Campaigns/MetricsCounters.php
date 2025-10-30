@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type metrics_counters = array{
+ * @phpstan-type MetricsCountersShape = array{
  *   influencedContacts: int,
  *   newContactsFirstTouch: int,
  *   newContactsLastTouch: int,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MetricsCounters implements BaseModel
 {
-    /** @use SdkModel<metrics_counters> */
+    /** @use SdkModel<MetricsCountersShape> */
     use SdkModel;
 
     #[Api]

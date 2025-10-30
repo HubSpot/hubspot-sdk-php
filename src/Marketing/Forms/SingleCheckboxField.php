@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\SingleCheckboxField\FieldType;
 /**
  * A form field consisting of a single checkbox.
  *
- * @phpstan-type single_checkbox_field = array{
+ * @phpstan-type SingleCheckboxFieldShape = array{
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
@@ -26,7 +26,7 @@ use HubspotSDK\Marketing\Forms\SingleCheckboxField\FieldType;
  */
 final class SingleCheckboxField implements BaseModel
 {
-    /** @use SdkModel<single_checkbox_field> */
+    /** @use SdkModel<SingleCheckboxFieldShape> */
     use SdkModel;
 
     /**

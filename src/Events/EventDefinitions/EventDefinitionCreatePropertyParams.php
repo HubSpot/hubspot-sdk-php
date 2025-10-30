@@ -15,7 +15,7 @@ use HubspotSDK\OptionInput;
  *
  * @see HubspotSDK\Events\EventDefinitions->createProperty
  *
- * @phpstan-type event_definition_create_property_params = array{
+ * @phpstan-type EventDefinitionCreatePropertyParamsShape = array{
  *   label: string,
  *   type: string,
  *   description?: string,
@@ -25,7 +25,7 @@ use HubspotSDK\OptionInput;
  */
 final class EventDefinitionCreatePropertyParams implements BaseModel
 {
-    /** @use SdkModel<event_definition_create_property_params> */
+    /** @use SdkModel<EventDefinitionCreatePropertyParamsShape> */
     use SdkModel;
     use SdkParams;
 

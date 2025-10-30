@@ -11,7 +11,7 @@ use HubspotSDK\CRM\Associations\Schema\V4\BatchResponsePublicAssociationDefiniti
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_public_association_definition_configuration_update_result_with_errors = array{
+ * @phpstan-type BatchResponsePublicAssociationDefinitionConfigurationUpdateResultWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicAssociationDefinitionConfigurationUpdateResult>,
  *   startedAt: \DateTimeInterface,
@@ -25,7 +25,7 @@ use HubspotSDK\StandardError;
 final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResultWithErrors implements BaseModel
 {
     /**
-     * @use SdkModel<batch_response_public_association_definition_configuration_update_result_with_errors>
+     * @use SdkModel<BatchResponsePublicAssociationDefinitionConfigurationUpdateResultWithErrorsShape>
      */
     use SdkModel;
 

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_api_flow_with_errors = array{
+ * @phpstan-type BatchResponseAPIFlowWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<APIContactFlow|APIPlatformFlow>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseAPIFlowWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_api_flow_with_errors> */
+    /** @use SdkModel<BatchResponseAPIFlowWithErrorsShape> */
     use SdkModel;
 
     #[Api]

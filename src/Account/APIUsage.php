@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * API usage and limits information for a HubSpot account.
  *
- * @phpstan-type api_usage = array{
+ * @phpstan-type APIUsageShape = array{
  *   collectedAt: \DateTimeInterface,
  *   currentUsage: int,
  *   fetchStatus: value-of<FetchStatus>,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIUsage implements BaseModel
 {
-    /** @use SdkModel<api_usage> */
+    /** @use SdkModel<APIUsageShape> */
     use SdkModel;
 
     /**

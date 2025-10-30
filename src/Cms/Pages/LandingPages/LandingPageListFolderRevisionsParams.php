@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->listFolderRevisions
  *
- * @phpstan-type landing_page_list_folder_revisions_params = array{
+ * @phpstan-type LandingPageListFolderRevisionsParamsShape = array{
  *   after?: string, before?: string, limit?: int
  * }
  */
 final class LandingPageListFolderRevisionsParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_list_folder_revisions_params> */
+    /** @use SdkModel<LandingPageListFolderRevisionsParamsShape> */
     use SdkModel;
     use SdkParams;
 

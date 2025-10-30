@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\SourceCode->delete
  *
- * @phpstan-type source_code_delete_params = array{environment: string}
+ * @phpstan-type SourceCodeDeleteParamsShape = array{environment: string}
  */
 final class SourceCodeDeleteParams implements BaseModel
 {
-    /** @use SdkModel<source_code_delete_params> */
+    /** @use SdkModel<SourceCodeDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

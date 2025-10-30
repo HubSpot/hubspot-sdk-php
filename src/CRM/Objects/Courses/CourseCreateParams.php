@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Courses->create
  *
- * @phpstan-type course_create_params = array{
+ * @phpstan-type CourseCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class CourseCreateParams implements BaseModel
 {
-    /** @use SdkModel<course_create_params> */
+    /** @use SdkModel<CourseCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

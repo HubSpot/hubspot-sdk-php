@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicSurveyMonkeyFilter\FilterType;
 
 /**
- * @phpstan-type public_survey_monkey_filter = array{
+ * @phpstan-type PublicSurveyMonkeyFilterShape = array{
  *   filterType: value-of<FilterType>, operator: string, surveyID: string
  * }
  */
 final class PublicSurveyMonkeyFilter implements BaseModel
 {
-    /** @use SdkModel<public_survey_monkey_filter> */
+    /** @use SdkModel<PublicSurveyMonkeyFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

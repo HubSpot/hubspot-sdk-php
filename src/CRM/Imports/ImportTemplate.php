@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Imports\ImportTemplate\TemplateType;
 
 /**
- * @phpstan-type import_template = array{
+ * @phpstan-type ImportTemplateShape = array{
  *   templateID: int, templateType: value-of<TemplateType>
  * }
  */
 final class ImportTemplate implements BaseModel
 {
-    /** @use SdkModel<import_template> */
+    /** @use SdkModel<ImportTemplateShape> */
     use SdkModel;
 
     #[Api('templateId')]

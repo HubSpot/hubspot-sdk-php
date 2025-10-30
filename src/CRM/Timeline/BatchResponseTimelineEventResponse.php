@@ -12,7 +12,7 @@ use HubspotSDK\CRM\Timeline\BatchResponseTimelineEventResponse\Status;
 /**
  * The state of the batch event request.
  *
- * @phpstan-type batch_response_timeline_event_response = array{
+ * @phpstan-type BatchResponseTimelineEventResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<TimelineEventResponse>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\CRM\Timeline\BatchResponseTimelineEventResponse\Status;
  */
 final class BatchResponseTimelineEventResponse implements BaseModel
 {
-    /** @use SdkModel<batch_response_timeline_event_response> */
+    /** @use SdkModel<BatchResponseTimelineEventResponseShape> */
     use SdkModel;
 
     /**

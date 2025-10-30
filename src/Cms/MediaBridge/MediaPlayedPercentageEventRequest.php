@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type media_played_percentage_event_request = array{
+ * @phpstan-type MediaPlayedPercentageEventRequestShape = array{
  *   mediaType: value-of<MediaType>,
  *   occurredTimestamp: int,
  *   playedPercent: int,
@@ -29,7 +29,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MediaPlayedPercentageEventRequest implements BaseModel
 {
-    /** @use SdkModel<media_played_percentage_event_request> */
+    /** @use SdkModel<MediaPlayedPercentageEventRequestShape> */
     use SdkModel;
 
     /** @var value-of<MediaType> $mediaType */

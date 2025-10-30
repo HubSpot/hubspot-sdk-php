@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Revisions->list
  *
- * @phpstan-type revision_list_params = array{
+ * @phpstan-type RevisionListParamsShape = array{
  *   appID: int, after?: string, limit?: int
  * }
  */
 final class RevisionListParams implements BaseModel
 {
-    /** @use SdkModel<revision_list_params> */
+    /** @use SdkModel<RevisionListParamsShape> */
     use SdkModel;
     use SdkParams;
 

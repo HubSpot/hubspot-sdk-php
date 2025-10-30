@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\FeatureFlags\Apps->get
  *
- * @phpstan-type app_get_params = array{appID: int}
+ * @phpstan-type AppGetParamsShape = array{appID: int}
  */
 final class AppGetParams implements BaseModel
 {
-    /** @use SdkModel<app_get_params> */
+    /** @use SdkModel<AppGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

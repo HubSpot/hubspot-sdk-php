@@ -9,15 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_marketing_event_public_object_id_delete_request = array{
+ * @phpstan-type BatchInputMarketingEventPublicObjectIDDeleteRequestShape = array{
  *   inputs: list<MarketingEventPublicObjectIDDeleteRequest>
  * }
  */
 final class BatchInputMarketingEventPublicObjectIDDeleteRequest implements BaseModel
 {
-    /**
-     * @use SdkModel<batch_input_marketing_event_public_object_id_delete_request>
-     */
+    /** @use SdkModel<BatchInputMarketingEventPublicObjectIDDeleteRequestShape> */
     use SdkModel;
 
     /** @var list<MarketingEventPublicObjectIDDeleteRequest> $inputs */

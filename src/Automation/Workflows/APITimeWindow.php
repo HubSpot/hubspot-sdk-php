@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_time_window = array{
+ * @phpstan-type APITimeWindowShape = array{
  *   day: value-of<Day>, endTime: APITimeOfDay, startTime: APITimeOfDay
  * }
  */
 final class APITimeWindow implements BaseModel
 {
-    /** @use SdkModel<api_time_window> */
+    /** @use SdkModel<APITimeWindowShape> */
     use SdkModel;
 
     /** @var value-of<Day> $day */

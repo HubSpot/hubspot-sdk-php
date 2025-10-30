@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
- * @phpstan-type object_schema = array{
+ * @phpstan-type ObjectSchemaShape = array{
  *   id: string,
  *   allowsSensitiveProperties: bool,
  *   archived: bool,
@@ -34,7 +34,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  */
 final class ObjectSchema implements BaseModel
 {
-    /** @use SdkModel<object_schema> */
+    /** @use SdkModel<ObjectSchemaShape> */
     use SdkModel;
 
     #[Api]

@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type search_public_response_wrapper = array{
+ * @phpstan-type SearchPublicResponseWrapperShape = array{
  *   appID: int,
  *   externalAccountID: string,
  *   externalEventID: string,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SearchPublicResponseWrapper implements BaseModel
 {
-    /** @use SdkModel<search_public_response_wrapper> */
+    /** @use SdkModel<SearchPublicResponseWrapperShape> */
     use SdkModel;
 
     #[Api('appId')]

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type public_sequence_response = array{
+ * @phpstan-type PublicSequenceResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   dependencies: list<PublicSequenceStepDependencyResponse>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class PublicSequenceResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_sequence_response> */
+    /** @use SdkModel<PublicSequenceResponseShape> */
     use SdkModel;
 
     use SdkResponse;

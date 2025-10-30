@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type social_metadata = array{
+ * @phpstan-type SocialMetadataShape = array{
  *   mediaType: string,
  *   id?: string,
  *   description?: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SocialMetadata implements BaseModel
 {
-    /** @use SdkModel<social_metadata> */
+    /** @use SdkModel<SocialMetadataShape> */
     use SdkModel;
 
     #[Api]

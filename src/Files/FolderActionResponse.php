@@ -11,7 +11,7 @@ use HubspotSDK\Files\FolderActionResponse\Status;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type folder_action_response = array{
+ * @phpstan-type FolderActionResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
@@ -25,7 +25,7 @@ use HubspotSDK\StandardError;
  */
 final class FolderActionResponse implements BaseModel
 {
-    /** @use SdkModel<folder_action_response> */
+    /** @use SdkModel<FolderActionResponseShape> */
     use SdkModel;
 
     /**

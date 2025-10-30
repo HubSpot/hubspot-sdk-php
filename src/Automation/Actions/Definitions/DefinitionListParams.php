@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Definitions->list
  *
- * @phpstan-type definition_list_params = array{
+ * @phpstan-type DefinitionListParamsShape = array{
  *   after?: string, archived?: bool, limit?: int
  * }
  */
 final class DefinitionListParams implements BaseModel
 {
-    /** @use SdkModel<definition_list_params> */
+    /** @use SdkModel<DefinitionListParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type filter_group = array{filters: list<Filter>}
+ * @phpstan-type FilterGroupShape = array{filters: list<Filter>}
  */
 final class FilterGroup implements BaseModel
 {
-    /** @use SdkModel<filter_group> */
+    /** @use SdkModel<FilterGroupShape> */
     use SdkModel;
 
     /** @var list<Filter> $filters */

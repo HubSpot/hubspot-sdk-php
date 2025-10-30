@@ -12,7 +12,7 @@ use HubspotSDK\Property\DataSensitivity;
 /**
  * Defines a property.
  *
- * @phpstan-type property_alias = array{
+ * @phpstan-type PropertyShape = array{
  *   description: string,
  *   fieldType: string,
  *   groupName: string,
@@ -43,7 +43,7 @@ use HubspotSDK\Property\DataSensitivity;
  */
 final class Property implements BaseModel
 {
-    /** @use SdkModel<property_alias> */
+    /** @use SdkModel<PropertyShape> */
     use SdkModel;
 
     /**

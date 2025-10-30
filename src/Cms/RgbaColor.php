@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A color defined by RGB values.
  *
- * @phpstan-type rgba_color = array{a: float, b: int, g: int, r: int}
+ * @phpstan-type RgbaColorShape = array{a: float, b: int, g: int, r: int}
  */
 final class RgbaColor implements BaseModel
 {
-    /** @use SdkModel<rgba_color> */
+    /** @use SdkModel<RgbaColorShape> */
     use SdkModel;
 
     /**

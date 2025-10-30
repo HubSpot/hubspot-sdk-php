@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->updateEventVisibilitySettings
  *
- * @phpstan-type integrator_setting_update_event_visibility_settings_params = array{
+ * @phpstan-type IntegratorSettingUpdateEventVisibilitySettingsParamsShape = array{
  *   eventType: EventType|value-of<EventType>,
  *   updatedAt: int,
  *   showInReporting?: bool,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class IntegratorSettingUpdateEventVisibilitySettingsParams implements BaseModel
 {
-    /** @use SdkModel<integrator_setting_update_event_visibility_settings_params> */
+    /** @use SdkModel<IntegratorSettingUpdateEventVisibilitySettingsParamsShape> */
     use SdkModel;
     use SdkParams;
 

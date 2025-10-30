@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->list
  *
- * @phpstan-type landing_page_list_params = array{
+ * @phpstan-type LandingPageListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   createdAfter?: \DateTimeInterface,
@@ -30,7 +30,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LandingPageListParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_list_params> */
+    /** @use SdkModel<LandingPageListParamsShape> */
     use SdkModel;
     use SdkParams;
 

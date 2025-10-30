@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->restorePreviousVersionToDraft
  *
- * @phpstan-type post_restore_previous_version_to_draft_params = array{
+ * @phpstan-type PostRestorePreviousVersionToDraftParamsShape = array{
  *   objectID: string
  * }
  */
 final class PostRestorePreviousVersionToDraftParams implements BaseModel
 {
-    /** @use SdkModel<post_restore_previous_version_to_draft_params> */
+    /** @use SdkModel<PostRestorePreviousVersionToDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

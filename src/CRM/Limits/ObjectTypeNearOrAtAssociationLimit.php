@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type object_type_near_or_at_association_limit = array{
+ * @phpstan-type ObjectTypeNearOrAtAssociationLimitShape = array{
  *   hasRecordsAtLimit: bool,
  *   hasRecordsNearLimit: bool,
  *   objectTypeID: string,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
 {
-    /** @use SdkModel<object_type_near_or_at_association_limit> */
+    /** @use SdkModel<ObjectTypeNearOrAtAssociationLimitShape> */
     use SdkModel;
 
     #[Api]

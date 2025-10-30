@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\PartnerServices->list
  *
- * @phpstan-type partner_service_list_params = array{
+ * @phpstan-type PartnerServiceListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PartnerServiceListParams implements BaseModel
 {
-    /** @use SdkModel<partner_service_list_params> */
+    /** @use SdkModel<PartnerServiceListParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\DateTimePropertyOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\DateTimePropertyOperation\PropertyType;
 
 /**
- * @phpstan-type date_time_property_operation = array{
+ * @phpstan-type DateTimePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
  *   operator: value-of<Operator>,
@@ -24,7 +24,7 @@ use HubspotSDK\Events\EventDefinitions\DateTimePropertyOperation\PropertyType;
  */
 final class DateTimePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<date_time_property_operation> */
+    /** @use SdkModel<DateTimePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

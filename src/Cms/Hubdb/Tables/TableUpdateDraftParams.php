@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->updateDraft
  *
- * @phpstan-type table_update_draft_params = array{
+ * @phpstan-type TableUpdateDraftParamsShape = array{
  *   label: string,
  *   name: string,
  *   archived?: bool,
@@ -32,7 +32,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TableUpdateDraftParams implements BaseModel
 {
-    /** @use SdkModel<table_update_draft_params> */
+    /** @use SdkModel<TableUpdateDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

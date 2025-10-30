@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_list = array{
+ * @phpstan-type PublicListShape = array{
  *   listID: string,
  *   listVersion: int,
  *   name: string,
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicList implements BaseModel
 {
-    /** @use SdkModel<public_list> */
+    /** @use SdkModel<PublicListShape> */
     use SdkModel;
 
     #[Api('listId')]

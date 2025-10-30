@@ -15,11 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns->update
  *
- * @phpstan-type campaign_update_params = array{properties: array<string, string>}
+ * @phpstan-type CampaignUpdateParamsShape = array{
+ *   properties: array<string, string>
+ * }
  */
 final class CampaignUpdateParams implements BaseModel
 {
-    /** @use SdkModel<campaign_update_params> */
+    /** @use SdkModel<CampaignUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

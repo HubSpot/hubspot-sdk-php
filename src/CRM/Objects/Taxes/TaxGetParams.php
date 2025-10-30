@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Taxes->get
  *
- * @phpstan-type tax_get_params = array{
+ * @phpstan-type TaxGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TaxGetParams implements BaseModel
 {
-    /** @use SdkModel<tax_get_params> */
+    /** @use SdkModel<TaxGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

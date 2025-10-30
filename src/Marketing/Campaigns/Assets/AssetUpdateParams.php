@@ -16,13 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Assets->update
  *
- * @phpstan-type asset_update_params = array{
+ * @phpstan-type AssetUpdateParamsShape = array{
  *   campaignGuid: string, assetType: string
  * }
  */
 final class AssetUpdateParams implements BaseModel
 {
-    /** @use SdkModel<asset_update_params> */
+    /** @use SdkModel<AssetUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

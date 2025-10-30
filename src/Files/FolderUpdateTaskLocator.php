@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Information on the task that has been started, and where to check it's status.
  *
- * @phpstan-type folder_update_task_locator = array{
+ * @phpstan-type FolderUpdateTaskLocatorShape = array{
  *   id: string, links: array<string, string>
  * }
  */
 final class FolderUpdateTaskLocator implements BaseModel
 {
-    /** @use SdkModel<folder_update_task_locator> */
+    /** @use SdkModel<FolderUpdateTaskLocatorShape> */
     use SdkModel;
 
     /**

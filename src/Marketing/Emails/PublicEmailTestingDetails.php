@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
 /**
  * AB testing related data. This property is only returned for AB type emails.
  *
- * @phpstan-type public_email_testing_details = array{
+ * @phpstan-type PublicEmailTestingDetailsShape = array{
  *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>,
  *   abSamplingDefault?: value-of<AbSamplingDefault>,
  *   abStatus?: value-of<AbStatus>,
@@ -28,7 +28,7 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
  */
 final class PublicEmailTestingDetails implements BaseModel
 {
-    /** @use SdkModel<public_email_testing_details> */
+    /** @use SdkModel<PublicEmailTestingDetailsShape> */
     use SdkModel;
 
     /**

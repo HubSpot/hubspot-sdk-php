@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type public_channel_integration_channel = array{
+ * @phpstan-type PublicChannelIntegrationChannelShape = array{
  *   id: string,
  *   capabilities: array<string, mixed>,
  *   createdAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class PublicChannelIntegrationChannel implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_channel_integration_channel> */
+    /** @use SdkModel<PublicChannelIntegrationChannelShape> */
     use SdkModel;
 
     use SdkResponse;

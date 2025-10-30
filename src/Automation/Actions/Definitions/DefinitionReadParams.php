@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Definitions->read
  *
- * @phpstan-type definition_read_params = array{appID: int, archived?: bool}
+ * @phpstan-type DefinitionReadParamsShape = array{appID: int, archived?: bool}
  */
 final class DefinitionReadParams implements BaseModel
 {
-    /** @use SdkModel<definition_read_params> */
+    /** @use SdkModel<DefinitionReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

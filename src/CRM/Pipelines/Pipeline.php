@@ -13,7 +13,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * A pipeline definition.
  *
- * @phpstan-type pipeline_alias = array{
+ * @phpstan-type PipelineShape = array{
  *   id: string,
  *   archived: bool,
  *   createdAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class Pipeline implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<pipeline_alias> */
+    /** @use SdkModel<PipelineShape> */
     use SdkModel;
 
     use SdkResponse;

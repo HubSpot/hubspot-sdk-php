@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_public_association_multi_post = array{
+ * @phpstan-type BatchInputPublicAssociationMultiPostShape = array{
  *   inputs: list<PublicAssociationMultiPost>
  * }
  */
 final class BatchInputPublicAssociationMultiPost implements BaseModel
 {
-    /** @use SdkModel<batch_input_public_association_multi_post> */
+    /** @use SdkModel<BatchInputPublicAssociationMultiPostShape> */
     use SdkModel;
 
     /** @var list<PublicAssociationMultiPost> $inputs */

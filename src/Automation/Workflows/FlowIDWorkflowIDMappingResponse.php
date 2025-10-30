@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type flow_id_workflow_id_mapping_response = array{
+ * @phpstan-type FlowIDWorkflowIDMappingResponseShape = array{
  *   flowID: int, workflowID: int
  * }
  */
 final class FlowIDWorkflowIDMappingResponse implements BaseModel
 {
-    /** @use SdkModel<flow_id_workflow_id_mapping_response> */
+    /** @use SdkModel<FlowIDWorkflowIDMappingResponseShape> */
     use SdkModel;
 
     #[Api('flowId')]

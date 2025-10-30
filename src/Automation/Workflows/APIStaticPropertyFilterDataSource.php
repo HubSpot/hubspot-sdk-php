@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_static_property_filter_data_source = array{
+ * @phpstan-type APIStaticPropertyFilterDataSourceShape = array{
  *   name: string,
  *   propertyName: string,
  *   staticValue: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIStaticPropertyFilterDataSource implements BaseModel
 {
-    /** @use SdkModel<api_static_property_filter_data_source> */
+    /** @use SdkModel<APIStaticPropertyFilterDataSourceShape> */
     use SdkModel;
 
     #[Api]

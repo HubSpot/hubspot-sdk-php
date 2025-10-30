@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Carts->create
  *
- * @phpstan-type cart_create_params = array{
+ * @phpstan-type CartCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class CartCreateParams implements BaseModel
 {
-    /** @use SdkModel<cart_create_params> */
+    /** @use SdkModel<CartCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

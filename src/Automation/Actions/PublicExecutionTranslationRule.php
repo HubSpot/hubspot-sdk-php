@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_execution_translation_rule = array{
+ * @phpstan-type PublicExecutionTranslationRuleShape = array{
  *   conditions: array<string, mixed>, labelName: string
  * }
  */
 final class PublicExecutionTranslationRule implements BaseModel
 {
-    /** @use SdkModel<public_execution_translation_rule> */
+    /** @use SdkModel<PublicExecutionTranslationRuleShape> */
     use SdkModel;
 
     /** @var array<string, mixed> $conditions */

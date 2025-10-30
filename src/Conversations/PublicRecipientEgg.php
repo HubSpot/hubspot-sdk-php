@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_recipient_egg = array{
+ * @phpstan-type PublicRecipientEggShape = array{
  *   deliveryIdentifiers: list<PublicDeliveryIdentifier>,
  *   actorID?: string,
  *   deliveryIdentifier?: PublicDeliveryIdentifier,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicRecipientEgg implements BaseModel
 {
-    /** @use SdkModel<public_recipient_egg> */
+    /** @use SdkModel<PublicRecipientEggShape> */
     use SdkModel;
 
     /** @var list<PublicDeliveryIdentifier> $deliveryIdentifiers */

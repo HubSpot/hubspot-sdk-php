@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssetsWithErro
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_public_campaign_with_assets_with_errors = array{
+ * @phpstan-type BatchResponsePublicCampaignWithAssetsWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicCampaignWithAssets>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponsePublicCampaignWithAssetsWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_public_campaign_with_assets_with_errors> */
+    /** @use SdkModel<BatchResponsePublicCampaignWithAssetsWithErrorsShape> */
     use SdkModel;
 
     #[Api]

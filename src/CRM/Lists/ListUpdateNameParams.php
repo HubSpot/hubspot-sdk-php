@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists->updateName
  *
- * @phpstan-type list_update_name_params = array{
+ * @phpstan-type ListUpdateNameParamsShape = array{
  *   includeFilters?: bool, listName?: string
  * }
  */
 final class ListUpdateNameParams implements BaseModel
 {
-    /** @use SdkModel<list_update_name_params> */
+    /** @use SdkModel<ListUpdateNameParamsShape> */
     use SdkModel;
     use SdkParams;
 

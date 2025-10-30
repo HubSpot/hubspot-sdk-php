@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type collection_response_associated_id = array{
+ * @phpstan-type CollectionResponseAssociatedIDShape = array{
  *   results: list<AssociatedID>, paging?: Paging
  * }
  */
 final class CollectionResponseAssociatedID implements BaseModel
 {
-    /** @use SdkModel<collection_response_associated_id> */
+    /** @use SdkModel<CollectionResponseAssociatedIDShape> */
     use SdkModel;
 
     /** @var list<AssociatedID> $results */

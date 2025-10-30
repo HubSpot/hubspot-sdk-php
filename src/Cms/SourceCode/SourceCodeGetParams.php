@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\SourceCode->get
  *
- * @phpstan-type source_code_get_params = array{environment: string}
+ * @phpstan-type SourceCodeGetParamsShape = array{environment: string}
  */
 final class SourceCodeGetParams implements BaseModel
 {
-    /** @use SdkModel<source_code_get_params> */
+    /** @use SdkModel<SourceCodeGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\BusinessUnits->getByUserID
  *
- * @phpstan-type business_unit_get_by_user_id_params = array{
+ * @phpstan-type BusinessUnitGetByUserIDParamsShape = array{
  *   name?: list<string>, properties?: list<string>
  * }
  */
 final class BusinessUnitGetByUserIDParams implements BaseModel
 {
-    /** @use SdkModel<business_unit_get_by_user_id_params> */
+    /** @use SdkModel<BusinessUnitGetByUserIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

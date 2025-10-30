@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_status_bulk_response = array{
+ * @phpstan-type PublicStatusBulkResponseShape = array{
  *   statuses: list<PublicStatus>, subscriberIDString: string
  * }
  */
 final class PublicStatusBulkResponse implements BaseModel
 {
-    /** @use SdkModel<public_status_bulk_response> */
+    /** @use SdkModel<PublicStatusBulkResponseShape> */
     use SdkModel;
 
     /**

@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type company_currency = array{
+ * @phpstan-type CompanyCurrencyShape = array{
  *   id: string, createdAt: \DateTimeInterface
  * }
  */
 final class CompanyCurrency implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<company_currency> */
+    /** @use SdkModel<CompanyCurrencyShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Pipelines\Stages->getAudit
  *
- * @phpstan-type stage_get_audit_params = array{
+ * @phpstan-type StageGetAuditParamsShape = array{
  *   objectType: string, pipelineID: string
  * }
  */
 final class StageGetAuditParams implements BaseModel
 {
-    /** @use SdkModel<stage_get_audit_params> */
+    /** @use SdkModel<StageGetAuditParamsShape> */
     use SdkModel;
     use SdkParams;
 

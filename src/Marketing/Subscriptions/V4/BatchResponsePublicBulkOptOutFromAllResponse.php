@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicBulkOptOutFromAllRe
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_public_bulk_opt_out_from_all_response = array{
+ * @phpstan-type BatchResponsePublicBulkOptOutFromAllResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicBulkOptOutFromAllResponse>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
 {
-    /** @use SdkModel<batch_response_public_bulk_opt_out_from_all_response> */
+    /** @use SdkModel<BatchResponsePublicBulkOptOutFromAllResponseShape> */
     use SdkModel;
 
     /**

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type styles_alias = array{
+ * @phpstan-type StylesShape = array{
  *   backgroundColor: RgbaColor,
  *   backgroundGradient: Gradient,
  *   backgroundImage: BackgroundImage,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class Styles implements BaseModel
 {
-    /** @use SdkModel<styles_alias> */
+    /** @use SdkModel<StylesShape> */
     use SdkModel;
 
     /**

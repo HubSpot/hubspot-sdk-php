@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Appointments->update
  *
- * @phpstan-type appointment_update_params = array{
+ * @phpstan-type AppointmentUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class AppointmentUpdateParams implements BaseModel
 {
-    /** @use SdkModel<appointment_update_params> */
+    /** @use SdkModel<AppointmentUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

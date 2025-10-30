@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Meetings->list
  *
- * @phpstan-type meeting_list_params = array{
+ * @phpstan-type MeetingListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MeetingListParams implements BaseModel
 {
-    /** @use SdkModel<meeting_list_params> */
+    /** @use SdkModel<MeetingListParamsShape> */
     use SdkModel;
     use SdkParams;
 

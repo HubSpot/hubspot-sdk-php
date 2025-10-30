@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateResult\Category;
 
 /**
- * @phpstan-type public_association_definition_configuration_update_result = array{
+ * @phpstan-type PublicAssociationDefinitionConfigurationUpdateResultShape = array{
  *   category: value-of<Category>, typeID: int, userEnforcedMaxToObjectIDs?: int
  * }
  */
 final class PublicAssociationDefinitionConfigurationUpdateResult implements BaseModel
 {
-    /** @use SdkModel<public_association_definition_configuration_update_result> */
+    /** @use SdkModel<PublicAssociationDefinitionConfigurationUpdateResultShape> */
     use SdkModel;
 
     /** @var value-of<Category> $category */

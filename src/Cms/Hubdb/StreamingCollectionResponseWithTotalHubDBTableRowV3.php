@@ -11,15 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type streaming_collection_response_with_total_hub_db_table_row_v3 = array{
+ * @phpstan-type StreamingCollectionResponseWithTotalHubDBTableRowV3Shape = array{
  *   results: list<mixed>, total: int, type: value-of<Type>, paging?: Paging
  * }
  */
 final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseModel
 {
-    /**
-     * @use SdkModel<streaming_collection_response_with_total_hub_db_table_row_v3>
-     */
+    /** @use SdkModel<StreamingCollectionResponseWithTotalHubDBTableRowV3Shape> */
     use SdkModel;
 
     /** @var list<mixed> $results */

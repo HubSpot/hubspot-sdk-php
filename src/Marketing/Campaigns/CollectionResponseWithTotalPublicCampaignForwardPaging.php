@@ -10,14 +10,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_with_total_public_campaign_forward_paging = array{
+ * @phpstan-type CollectionResponseWithTotalPublicCampaignForwardPagingShape = array{
  *   results: list<PublicCampaign>, total: int, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseWithTotalPublicCampaignForwardPaging implements BaseModel
 {
     /**
-     * @use SdkModel<collection_response_with_total_public_campaign_forward_paging>
+     * @use SdkModel<CollectionResponseWithTotalPublicCampaignForwardPagingShape>
      */
     use SdkModel;
 

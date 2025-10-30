@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type background_image = array{
+ * @phpstan-type BackgroundImageShape = array{
  *   backgroundPosition: string, backgroundSize: string, imageURL: string
  * }
  */
 final class BackgroundImage implements BaseModel
 {
-    /** @use SdkModel<background_image> */
+    /** @use SdkModel<BackgroundImageShape> */
     use SdkModel;
 
     #[Api]

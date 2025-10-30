@@ -15,7 +15,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  *
  * @see HubspotSDK\CRM\Objects\Schemas->update
  *
- * @phpstan-type schema_update_params = array{
+ * @phpstan-type SchemaUpdateParamsShape = array{
  *   clearDescription?: bool,
  *   description?: string,
  *   labels?: ObjectTypeDefinitionLabels,
@@ -28,7 +28,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  */
 final class SchemaUpdateParams implements BaseModel
 {
-    /** @use SdkModel<schema_update_params> */
+    /** @use SdkModel<SchemaUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

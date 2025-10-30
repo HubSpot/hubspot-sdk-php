@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_manual_enrollment_criteria = array{
+ * @phpstan-type APIManualEnrollmentCriteriaShape = array{
  *   shouldReEnroll: bool, type: value-of<Type>
  * }
  */
 final class APIManualEnrollmentCriteria implements BaseModel
 {
-    /** @use SdkModel<api_manual_enrollment_criteria> */
+    /** @use SdkModel<APIManualEnrollmentCriteriaShape> */
     use SdkModel;
 
     /**

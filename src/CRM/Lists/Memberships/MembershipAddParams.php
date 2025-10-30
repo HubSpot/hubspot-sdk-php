@@ -16,11 +16,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Memberships->add
  *
- * @phpstan-type membership_add_params = array{body: list<string>}
+ * @phpstan-type MembershipAddParamsShape = array{body: list<string>}
  */
 final class MembershipAddParams implements BaseModel
 {
-    /** @use SdkModel<membership_add_params> */
+    /** @use SdkModel<MembershipAddParamsShape> */
     use SdkModel;
     use SdkParams;
 

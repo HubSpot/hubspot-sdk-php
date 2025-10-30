@@ -12,7 +12,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\CRM\Extensions\Calling\Transcripts\TranscriptResponse\TranscriptSource;
 
 /**
- * @phpstan-type transcript_response = array{
+ * @phpstan-type TranscriptResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   engagementID: int,
@@ -23,7 +23,7 @@ use HubspotSDK\CRM\Extensions\Calling\Transcripts\TranscriptResponse\TranscriptS
  */
 final class TranscriptResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<transcript_response> */
+    /** @use SdkModel<TranscriptResponseShape> */
     use SdkModel;
 
     use SdkResponse;

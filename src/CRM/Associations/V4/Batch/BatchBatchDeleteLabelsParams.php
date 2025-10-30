@@ -15,13 +15,13 @@ use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
  *
  * @see HubspotSDK\CRM\Associations\V4\Batch->batchDeleteLabels
  *
- * @phpstan-type batch_batch_delete_labels_params = array{
+ * @phpstan-type BatchBatchDeleteLabelsParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicAssociationMultiPost>
  * }
  */
 final class BatchBatchDeleteLabelsParams implements BaseModel
 {
-    /** @use SdkModel<batch_batch_delete_labels_params> */
+    /** @use SdkModel<BatchBatchDeleteLabelsParamsShape> */
     use SdkModel;
     use SdkParams;
 

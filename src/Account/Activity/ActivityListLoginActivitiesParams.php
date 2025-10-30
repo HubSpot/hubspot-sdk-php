@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Account\Activity->listLoginActivities
  *
- * @phpstan-type activity_list_login_activities_params = array{
+ * @phpstan-type ActivityListLoginActivitiesParamsShape = array{
  *   after?: string, limit?: int, userID?: int
  * }
  */
 final class ActivityListLoginActivitiesParams implements BaseModel
 {
-    /** @use SdkModel<activity_list_login_activities_params> */
+    /** @use SdkModel<ActivityListLoginActivitiesParamsShape> */
     use SdkModel;
     use SdkParams;
 

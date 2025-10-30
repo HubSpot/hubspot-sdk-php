@@ -15,13 +15,13 @@ use HubspotSDK\Webhooks\ThrottlingSettings;
  *
  * @see HubspotSDK\Webhooks\Settings->update
  *
- * @phpstan-type setting_update_params = array{
+ * @phpstan-type SettingUpdateParamsShape = array{
  *   targetURL: string, throttling: ThrottlingSettings
  * }
  */
 final class SettingUpdateParams implements BaseModel
 {
-    /** @use SdkModel<setting_update_params> */
+    /** @use SdkModel<SettingUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Memberships->getLists
  *
- * @phpstan-type membership_get_lists_params = array{objectTypeID: string}
+ * @phpstan-type MembershipGetListsParamsShape = array{objectTypeID: string}
  */
 final class MembershipGetListsParams implements BaseModel
 {
-    /** @use SdkModel<membership_get_lists_params> */
+    /** @use SdkModel<MembershipGetListsParamsShape> */
     use SdkModel;
     use SdkParams;
 

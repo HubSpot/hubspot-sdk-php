@@ -20,7 +20,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * Model definition for a Blog Post.
  *
- * @phpstan-type blog_post = array{
+ * @phpstan-type BlogPostShape = array{
  *   id: string,
  *   abStatus: value-of<AbStatus>,
  *   abTestID: string,
@@ -86,7 +86,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class BlogPost implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<blog_post> */
+    /** @use SdkModel<BlogPostShape> */
     use SdkModel;
 
     use SdkResponse;

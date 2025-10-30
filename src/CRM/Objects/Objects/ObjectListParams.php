@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Objects->list
  *
- * @phpstan-type object_list_params = array{
+ * @phpstan-type ObjectListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ObjectListParams implements BaseModel
 {
-    /** @use SdkModel<object_list_params> */
+    /** @use SdkModel<ObjectListParamsShape> */
     use SdkModel;
     use SdkParams;
 

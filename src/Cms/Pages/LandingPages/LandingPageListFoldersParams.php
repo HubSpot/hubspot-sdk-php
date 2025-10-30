@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->listFolders
  *
- * @phpstan-type landing_page_list_folders_params = array{
+ * @phpstan-type LandingPageListFoldersParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   createdAfter?: \DateTimeInterface,
@@ -30,7 +30,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LandingPageListFoldersParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_list_folders_params> */
+    /** @use SdkModel<LandingPageListFoldersParamsShape> */
     use SdkModel;
     use SdkParams;
 

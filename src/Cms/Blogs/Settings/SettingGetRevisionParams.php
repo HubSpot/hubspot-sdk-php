@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Settings->getRevision
  *
- * @phpstan-type setting_get_revision_params = array{blogID: string}
+ * @phpstan-type SettingGetRevisionParamsShape = array{blogID: string}
  */
 final class SettingGetRevisionParams implements BaseModel
 {
-    /** @use SdkModel<setting_get_revision_params> */
+    /** @use SdkModel<SettingGetRevisionParamsShape> */
     use SdkModel;
     use SdkParams;
 

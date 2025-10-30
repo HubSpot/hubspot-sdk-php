@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Lists record is member of.
  *
- * @phpstan-type record_list_membership = array{
+ * @phpstan-type RecordListMembershipShape = array{
  *   firstAddedTimestamp: \DateTimeInterface,
  *   lastAddedTimestamp: \DateTimeInterface,
  *   listID: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class RecordListMembership implements BaseModel
 {
-    /** @use SdkModel<record_list_membership> */
+    /** @use SdkModel<RecordListMembershipShape> */
     use SdkModel;
 
     #[Api]

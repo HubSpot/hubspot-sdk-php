@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Pipelines\Stages->update
  *
- * @phpstan-type stage_update_params = array{
+ * @phpstan-type StageUpdateParamsShape = array{
  *   objectType: string,
  *   pipelineID: string,
  *   archived?: bool,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class StageUpdateParams implements BaseModel
 {
-    /** @use SdkModel<stage_update_params> */
+    /** @use SdkModel<StageUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

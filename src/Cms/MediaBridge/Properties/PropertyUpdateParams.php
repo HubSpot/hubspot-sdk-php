@@ -17,7 +17,7 @@ use HubspotSDK\OptionInput;
  *
  * @see HubspotSDK\Cms\MediaBridge\Properties->update
  *
- * @phpstan-type property_update_params = array{
+ * @phpstan-type PropertyUpdateParamsShape = array{
  *   appID: string,
  *   objectType: string,
  *   calculationFormula?: string,
@@ -35,7 +35,7 @@ use HubspotSDK\OptionInput;
  */
 final class PropertyUpdateParams implements BaseModel
 {
-    /** @use SdkModel<property_update_params> */
+    /** @use SdkModel<PropertyUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

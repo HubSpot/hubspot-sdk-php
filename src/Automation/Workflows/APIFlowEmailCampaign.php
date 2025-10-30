@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_flow_email_campaign = array{
+ * @phpstan-type APIFlowEmailCampaignShape = array{
  *   emailCampaignID: string, emailContentID: string, flowID: string
  * }
  */
 final class APIFlowEmailCampaign implements BaseModel
 {
-    /** @use SdkModel<api_flow_email_campaign> */
+    /** @use SdkModel<APIFlowEmailCampaignShape> */
     use SdkModel;
 
     #[Api('emailCampaignId')]

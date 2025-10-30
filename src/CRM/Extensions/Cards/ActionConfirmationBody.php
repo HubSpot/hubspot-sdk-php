@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type action_confirmation_body = array{
+ * @phpstan-type ActionConfirmationBodyShape = array{
  *   cancelButtonLabel: string, confirmButtonLabel: string, prompt: string
  * }
  */
 final class ActionConfirmationBody implements BaseModel
 {
-    /** @use SdkModel<action_confirmation_body> */
+    /** @use SdkModel<ActionConfirmationBodyShape> */
     use SdkModel;
 
     #[Api]

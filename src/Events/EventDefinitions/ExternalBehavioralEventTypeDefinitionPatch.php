@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_behavioral_event_type_definition_patch = array{
+ * @phpstan-type ExternalBehavioralEventTypeDefinitionPatchShape = array{
  *   description?: string, label?: string
  * }
  */
 final class ExternalBehavioralEventTypeDefinitionPatch implements BaseModel
 {
-    /** @use SdkModel<external_behavioral_event_type_definition_patch> */
+    /** @use SdkModel<ExternalBehavioralEventTypeDefinitionPatchShape> */
     use SdkModel;
 
     /**

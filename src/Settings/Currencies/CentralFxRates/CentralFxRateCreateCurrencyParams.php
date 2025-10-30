@@ -13,13 +13,13 @@ use HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyPar
 /**
  * @see HubspotSDK\Settings\Currencies\CentralFxRates->createCurrency
  *
- * @phpstan-type central_fx_rate_create_currency_params = array{
+ * @phpstan-type CentralFxRateCreateCurrencyParamsShape = array{
  *   currencyCode: CurrencyCode|value-of<CurrencyCode>
  * }
  */
 final class CentralFxRateCreateCurrencyParams implements BaseModel
 {
-    /** @use SdkModel<central_fx_rate_create_currency_params> */
+    /** @use SdkModel<CentralFxRateCreateCurrencyParamsShape> */
     use SdkModel;
     use SdkParams;
 

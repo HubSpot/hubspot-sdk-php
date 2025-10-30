@@ -15,13 +15,13 @@ use HubspotSDK\CRM\FeatureFlags\Portals\PortalUpdateParams\FlagState;
  *
  * @see HubspotSDK\CRM\FeatureFlags\Portals->update
  *
- * @phpstan-type portal_update_params = array{
+ * @phpstan-type PortalUpdateParamsShape = array{
  *   appID: int, flagName: string, flagState: FlagState|value-of<FlagState>
  * }
  */
 final class PortalUpdateParams implements BaseModel
 {
-    /** @use SdkModel<portal_update_params> */
+    /** @use SdkModel<PortalUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

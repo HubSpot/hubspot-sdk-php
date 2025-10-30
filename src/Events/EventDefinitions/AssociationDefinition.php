@@ -16,7 +16,7 @@ use HubspotSDK\Events\EventDefinitions\AssociationDefinition\ToObjectType;
 /**
  * The definition of an association.
  *
- * @phpstan-type association_definition = array{
+ * @phpstan-type AssociationDefinitionShape = array{
  *   id: int,
  *   allowsCustomLabels: bool,
  *   cardinality: value-of<Cardinality>,
@@ -47,7 +47,7 @@ use HubspotSDK\Events\EventDefinitions\AssociationDefinition\ToObjectType;
  */
 final class AssociationDefinition implements BaseModel
 {
-    /** @use SdkModel<association_definition> */
+    /** @use SdkModel<AssociationDefinitionShape> */
     use SdkModel;
 
     /**

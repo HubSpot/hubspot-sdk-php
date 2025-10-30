@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type marketing_event_association = array{
+ * @phpstan-type MarketingEventAssociationShape = array{
  *   marketingEventID: string,
  *   name: string,
  *   externalAccountID?: string,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MarketingEventAssociation implements BaseModel
 {
-    /** @use SdkModel<marketing_event_association> */
+    /** @use SdkModel<MarketingEventAssociationShape> */
     use SdkModel;
 
     #[Api('marketingEventId')]

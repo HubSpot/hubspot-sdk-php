@@ -25,7 +25,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_conversations_message = array{
+ * @phpstan-type PublicConversationsMessageShape = array{
  *   id: string,
  *   archived: bool,
  *   attachments: list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment>,
@@ -50,7 +50,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicConversationsMessage implements BaseModel
 {
-    /** @use SdkModel<public_conversations_message> */
+    /** @use SdkModel<PublicConversationsMessageShape> */
     use SdkModel;
 
     #[Api]

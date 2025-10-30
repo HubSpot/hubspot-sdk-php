@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Associations\Schema\V4\Definitions->delete
  *
- * @phpstan-type definition_delete_params = array{
+ * @phpstan-type DefinitionDeleteParamsShape = array{
  *   fromObjectType: string, toObjectType: string
  * }
  */
 final class DefinitionDeleteParams implements BaseModel
 {
-    /** @use SdkModel<definition_delete_params> */
+    /** @use SdkModel<DefinitionDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

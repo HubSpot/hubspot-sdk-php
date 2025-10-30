@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Definitions->create
  *
- * @phpstan-type definition_create_params = array{
+ * @phpstan-type DefinitionCreateParamsShape = array{
  *   actionURL: string,
  *   functions: list<PublicActionFunction>,
  *   inputFields: list<InputFieldDefinition>,
@@ -39,7 +39,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class DefinitionCreateParams implements BaseModel
 {
-    /** @use SdkModel<definition_create_params> */
+    /** @use SdkModel<DefinitionCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_with_total_external_behavioral_event_type_definition_forward_paging = array{
+ * @phpstan-type CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPagingShape = array{
  *   results: list<ExternalBehavioralEventTypeDefinition>,
  *   total: int,
  *   paging?: ForwardPaging,
@@ -19,7 +19,7 @@ use HubspotSDK\ForwardPaging;
 final class CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPaging implements BaseModel
 {
     /**
-     * @use SdkModel<collection_response_with_total_external_behavioral_event_type_definition_forward_paging>
+     * @use SdkModel<CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPagingShape>
      */
     use SdkModel;
 

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->updateFoldersBatch
  *
- * @phpstan-type landing_page_update_folders_batch_params = array{
+ * @phpstan-type LandingPageUpdateFoldersBatchParamsShape = array{
  *   inputs: list<mixed>, archived?: bool
  * }
  */
 final class LandingPageUpdateFoldersBatchParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_update_folders_batch_params> */
+    /** @use SdkModel<LandingPageUpdateFoldersBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals\CurrencyCode;
 
 /**
- * @phpstan-type public_budget_totals = array{
+ * @phpstan-type PublicBudgetTotalsShape = array{
  *   budgetItems: list<PublicBudgetItem>,
  *   currencyCode: value-of<CurrencyCode>,
  *   spendItems: list<PublicSpendItem>,
@@ -21,7 +21,7 @@ use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals\CurrencyCode;
  */
 final class PublicBudgetTotals implements BaseModel
 {
-    /** @use SdkModel<public_budget_totals> */
+    /** @use SdkModel<PublicBudgetTotalsShape> */
     use SdkModel;
 
     /** @var list<PublicBudgetItem> $budgetItems */

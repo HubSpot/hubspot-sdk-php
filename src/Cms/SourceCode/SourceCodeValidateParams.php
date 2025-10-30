@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\SourceCode->validate
  *
- * @phpstan-type source_code_validate_params = array{
+ * @phpstan-type SourceCodeValidateParamsShape = array{
  *   environment: string, file?: string
  * }
  */
 final class SourceCodeValidateParams implements BaseModel
 {
-    /** @use SdkModel<source_code_validate_params> */
+    /** @use SdkModel<SourceCodeValidateParamsShape> */
     use SdkModel;
     use SdkParams;
 

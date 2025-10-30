@@ -15,7 +15,7 @@ use HubspotSDK\CRM\Timeline\TimelineEventTemplateTokenOption;
  *
  * @see HubspotSDK\CRM\Timeline\Tokens->update
  *
- * @phpstan-type token_update_params = array{
+ * @phpstan-type TokenUpdateParamsShape = array{
  *   appID: int,
  *   eventTemplateID: string,
  *   label: string,
@@ -25,7 +25,7 @@ use HubspotSDK\CRM\Timeline\TimelineEventTemplateTokenOption;
  */
 final class TokenUpdateParams implements BaseModel
 {
-    /** @use SdkModel<token_update_params> */
+    /** @use SdkModel<TokenUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

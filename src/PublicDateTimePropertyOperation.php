@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicDateTimePropertyOperation\OperationType;
 
 /**
- * @phpstan-type public_date_time_property_operation = array{
+ * @phpstan-type PublicDateTimePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: value-of<OperationType>,
  *   operator: string,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicDateTimePropertyOperation\OperationType;
  */
 final class PublicDateTimePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<public_date_time_property_operation> */
+    /** @use SdkModel<PublicDateTimePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

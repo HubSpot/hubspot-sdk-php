@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicUnifiedEventsFilter\FilterType;
 
 /**
- * @phpstan-type public_unified_events_filter = array{
+ * @phpstan-type PublicUnifiedEventsFilterShape = array{
  *   filterLines: list<PublicEventFilterMetadata>,
  *   filterType: value-of<FilterType>,
  *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicUnifiedEventsFilter\FilterType;
  */
 final class PublicUnifiedEventsFilter implements BaseModel
 {
-    /** @use SdkModel<public_unified_events_filter> */
+    /** @use SdkModel<PublicUnifiedEventsFilterShape> */
     use SdkModel;
 
     /** @var list<PublicEventFilterMetadata> $filterLines */

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\MonthReference\ReferenceType;
 
 /**
- * @phpstan-type month_reference = array{
+ * @phpstan-type MonthReferenceShape = array{
  *   day: int,
  *   referenceType: value-of<ReferenceType>,
  *   hour?: int,
@@ -21,7 +21,7 @@ use HubspotSDK\Events\EventDefinitions\MonthReference\ReferenceType;
  */
 final class MonthReference implements BaseModel
 {
-    /** @use SdkModel<month_reference> */
+    /** @use SdkModel<MonthReferenceShape> */
     use SdkModel;
 
     #[Api]

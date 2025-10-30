@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_object_request_options = array{properties: list<string>}
+ * @phpstan-type PublicObjectRequestOptionsShape = array{properties: list<string>}
  */
 final class PublicObjectRequestOptions implements BaseModel
 {
-    /** @use SdkModel<public_object_request_options> */
+    /** @use SdkModel<PublicObjectRequestOptionsShape> */
     use SdkModel;
 
     /** @var list<string> $properties */

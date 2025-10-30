@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_message_header = array{
+ * @phpstan-type PublicMessageHeaderShape = array{
  *   type: value-of<Type>, fileID?: int, text?: string
  * }
  */
 final class PublicMessageHeader implements BaseModel
 {
-    /** @use SdkModel<public_message_header> */
+    /** @use SdkModel<PublicMessageHeaderShape> */
     use SdkModel;
 
     /** @var value-of<Type> $type */

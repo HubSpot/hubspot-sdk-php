@@ -14,7 +14,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * Response object for batch operations on blog authors.
  *
- * @phpstan-type batch_response_blog_author = array{
+ * @phpstan-type BatchResponseBlogAuthorShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<BlogAuthor>,
  *   startedAt: \DateTimeInterface,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class BatchResponseBlogAuthor implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<batch_response_blog_author> */
+    /** @use SdkModel<BatchResponseBlogAuthorShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -9,14 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_batch_migration_mapping = array{
+ * @phpstan-type PublicBatchMigrationMappingShape = array{
  *   legacyListIDsToIDsMapping: list<PublicMigrationMapping>,
  *   missingLegacyListIDs: list<string>,
  * }
  */
 final class PublicBatchMigrationMapping implements BaseModel
 {
-    /** @use SdkModel<public_batch_migration_mapping> */
+    /** @use SdkModel<PublicBatchMigrationMappingShape> */
     use SdkModel;
 
     /** @var list<PublicMigrationMapping> $legacyListIDsToIDsMapping */

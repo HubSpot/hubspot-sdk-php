@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\AuditLogs->list
  *
- * @phpstan-type audit_log_list_params = array{
+ * @phpstan-type AuditLogListParamsShape = array{
  *   after?: string,
  *   before?: string,
  *   eventType?: list<string>,
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AuditLogListParams implements BaseModel
 {
-    /** @use SdkModel<audit_log_list_params> */
+    /** @use SdkModel<AuditLogListParamsShape> */
     use SdkModel;
     use SdkParams;
 

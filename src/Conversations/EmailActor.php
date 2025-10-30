@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type email_actor = array{
+ * @phpstan-type EmailActorShape = array{
  *   id: string, email: string, type: value-of<Type>
  * }
  */
 final class EmailActor implements BaseModel
 {
-    /** @use SdkModel<email_actor> */
+    /** @use SdkModel<EmailActorShape> */
     use SdkModel;
 
     #[Api]

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Revisions->read
  *
- * @phpstan-type revision_read_params = array{appID: int, definitionID: string}
+ * @phpstan-type RevisionReadParamsShape = array{appID: int, definitionID: string}
  */
 final class RevisionReadParams implements BaseModel
 {
-    /** @use SdkModel<revision_read_params> */
+    /** @use SdkModel<RevisionReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

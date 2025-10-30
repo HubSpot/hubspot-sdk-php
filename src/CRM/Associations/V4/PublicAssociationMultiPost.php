@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
- * @phpstan-type public_association_multi_post = array{
+ * @phpstan-type PublicAssociationMultiPostShape = array{
  *   from: PublicObjectID, to: PublicObjectID, types: list<AssociationSpec1>
  * }
  */
 final class PublicAssociationMultiPost implements BaseModel
 {
-    /** @use SdkModel<public_association_multi_post> */
+    /** @use SdkModel<PublicAssociationMultiPostShape> */
     use SdkModel;
 
     #[Api]

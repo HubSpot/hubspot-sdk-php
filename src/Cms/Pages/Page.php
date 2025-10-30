@@ -17,7 +17,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * Model definition for a landing page or site page.
  *
- * @phpstan-type page_alias = array{
+ * @phpstan-type PageShape = array{
  *   id: string,
  *   abStatus: value-of<AbStatus>,
  *   abTestID: string,
@@ -79,7 +79,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class Page implements BaseModel
 {
-    /** @use SdkModel<page_alias> */
+    /** @use SdkModel<PageShape> */
     use SdkModel;
 
     /**

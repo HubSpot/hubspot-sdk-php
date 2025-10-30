@@ -12,13 +12,13 @@ use HubspotSDK\Marketing\Emails\Paging;
 /**
  * Collections of files.
  *
- * @phpstan-type collection_response_file = array{
+ * @phpstan-type CollectionResponseFileShape = array{
  *   results: list<File>, paging?: Paging
  * }
  */
 final class CollectionResponseFile implements BaseModel
 {
-    /** @use SdkModel<collection_response_file> */
+    /** @use SdkModel<CollectionResponseFileShape> */
     use SdkModel;
 
     /** @var list<File> $results */

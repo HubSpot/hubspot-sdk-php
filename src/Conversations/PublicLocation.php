@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_location = array{
+ * @phpstan-type PublicLocationShape = array{
  *   latitude: float,
  *   longitude: float,
  *   type: value-of<Type>,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicLocation implements BaseModel
 {
-    /** @use SdkModel<public_location> */
+    /** @use SdkModel<PublicLocationShape> */
     use SdkModel;
 
     #[Api]

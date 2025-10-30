@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type behavioral_event_http_completion_request = array{
+ * @phpstan-type BehavioralEventHTTPCompletionRequestShape = array{
  *   eventName: string,
  *   email?: string,
  *   objectID?: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class BehavioralEventHTTPCompletionRequest implements BaseModel
 {
-    /** @use SdkModel<behavioral_event_http_completion_request> */
+    /** @use SdkModel<BehavioralEventHTTPCompletionRequestShape> */
     use SdkModel;
 
     /**

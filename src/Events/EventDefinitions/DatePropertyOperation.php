@@ -12,7 +12,7 @@ use HubspotSDK\Events\EventDefinitions\DatePropertyOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\DatePropertyOperation\PropertyType;
 
 /**
- * @phpstan-type date_property_operation = array{
+ * @phpstan-type DatePropertyOperationShape = array{
  *   day: int,
  *   includeObjectsWithNoValueSet: bool,
  *   month: value-of<Month>,
@@ -26,7 +26,7 @@ use HubspotSDK\Events\EventDefinitions\DatePropertyOperation\PropertyType;
  */
 final class DatePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<date_property_operation> */
+    /** @use SdkModel<DatePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

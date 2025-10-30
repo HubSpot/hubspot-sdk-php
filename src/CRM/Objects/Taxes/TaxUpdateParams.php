@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Taxes->update
  *
- * @phpstan-type tax_update_params = array{
+ * @phpstan-type TaxUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class TaxUpdateParams implements BaseModel
 {
-    /** @use SdkModel<tax_update_params> */
+    /** @use SdkModel<TaxUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

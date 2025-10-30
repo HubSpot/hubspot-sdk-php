@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Signed Url object with optional ancillary metadata of requested file.
  *
- * @phpstan-type signed_url = array{
+ * @phpstan-type SignedURLShape = array{
  *   expiresAt: \DateTimeInterface,
  *   extension: string,
  *   name: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SignedURL implements BaseModel
 {
-    /** @use SdkModel<signed_url> */
+    /** @use SdkModel<SignedURLShape> */
     use SdkModel;
 
     /**

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicPropertyReferencedTime\TimeType;
 
 /**
- * @phpstan-type public_property_referenced_time = array{
+ * @phpstan-type PublicPropertyReferencedTimeShape = array{
  *   property: string,
  *   referenceType: string,
  *   timeType: value-of<TimeType>,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicPropertyReferencedTime\TimeType;
  */
 final class PublicPropertyReferencedTime implements BaseModel
 {
-    /** @use SdkModel<public_property_referenced_time> */
+    /** @use SdkModel<PublicPropertyReferencedTimeShape> */
     use SdkModel;
 
     #[Api]

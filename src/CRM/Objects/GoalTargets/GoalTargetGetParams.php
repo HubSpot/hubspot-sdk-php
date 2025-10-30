@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\GoalTargets->get
  *
- * @phpstan-type goal_target_get_params = array{
+ * @phpstan-type GoalTargetGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class GoalTargetGetParams implements BaseModel
 {
-    /** @use SdkModel<goal_target_get_params> */
+    /** @use SdkModel<GoalTargetGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

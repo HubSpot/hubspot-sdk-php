@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\ComboEventRuleBranch\OperationType;
 
 /**
- * @phpstan-type combo_event_rule_branch = array{
+ * @phpstan-type ComboEventRuleBranchShape = array{
  *   composingRules: list<ComboEventRule>,
  *   operationType: value-of<OperationType>,
  *   ruleBranches: list<ComboEventRuleBranch>,
@@ -18,7 +18,7 @@ use HubspotSDK\Events\EventDefinitions\ComboEventRuleBranch\OperationType;
  */
 final class ComboEventRuleBranch implements BaseModel
 {
-    /** @use SdkModel<combo_event_rule_branch> */
+    /** @use SdkModel<ComboEventRuleBranchShape> */
     use SdkModel;
 
     /** @var list<ComboEventRule> $composingRules */

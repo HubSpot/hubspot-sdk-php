@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\URLRedirects->create
  *
- * @phpstan-type url_redirect_create_params = array{
+ * @phpstan-type URLRedirectCreateParamsShape = array{
  *   destination: string,
  *   redirectStyle: int,
  *   routePrefix: string,
@@ -29,7 +29,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class URLRedirectCreateParams implements BaseModel
 {
-    /** @use SdkModel<url_redirect_create_params> */
+    /** @use SdkModel<URLRedirectCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

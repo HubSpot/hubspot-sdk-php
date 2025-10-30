@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Forms->update
  *
- * @phpstan-type form_update_params = array{
+ * @phpstan-type FormUpdateParamsShape = array{
  *   archived?: bool,
  *   configuration?: HubSpotFormConfiguration,
  *   displayOptions?: FormDisplayOptions,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class FormUpdateParams implements BaseModel
 {
-    /** @use SdkModel<form_update_params> */
+    /** @use SdkModel<FormUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

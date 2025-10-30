@@ -14,11 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Contacts->update
  *
- * @phpstan-type contact_update_params = array{properties: array<string, string>}
+ * @phpstan-type ContactUpdateParamsShape = array{
+ *   properties: array<string, string>
+ * }
  */
 final class ContactUpdateParams implements BaseModel
 {
-    /** @use SdkModel<contact_update_params> */
+    /** @use SdkModel<ContactUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

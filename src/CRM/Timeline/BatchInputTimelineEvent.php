@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Used to create timeline events in batches.
  *
- * @phpstan-type batch_input_timeline_event = array{inputs: list<TimelineEvent>}
+ * @phpstan-type BatchInputTimelineEventShape = array{inputs: list<TimelineEvent>}
  */
 final class BatchInputTimelineEvent implements BaseModel
 {
-    /** @use SdkModel<batch_input_timeline_event> */
+    /** @use SdkModel<BatchInputTimelineEventShape> */
     use SdkModel;
 
     /**

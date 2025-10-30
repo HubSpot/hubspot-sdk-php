@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\DatePoint\TimeType;
 use HubspotSDK\Events\EventDefinitions\DatePoint\TimezoneSource;
 
 /**
- * @phpstan-type date_point = array{
+ * @phpstan-type DatePointShape = array{
  *   day: int,
  *   month: int,
  *   timeType: value-of<TimeType>,
@@ -26,7 +26,7 @@ use HubspotSDK\Events\EventDefinitions\DatePoint\TimezoneSource;
  */
 final class DatePoint implements BaseModel
 {
-    /** @use SdkModel<date_point> */
+    /** @use SdkModel<DatePointShape> */
     use SdkModel;
 
     #[Api]

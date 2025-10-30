@@ -10,14 +10,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_with_total_participation_breakdown_forward_paging = array{
+ * @phpstan-type CollectionResponseWithTotalParticipationBreakdownForwardPagingShape = array{
  *   results: list<ParticipationBreakdown>, total: int, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseWithTotalParticipationBreakdownForwardPaging implements BaseModel
 {
     /**
-     * @use SdkModel<collection_response_with_total_participation_breakdown_forward_paging>
+     * @use SdkModel<CollectionResponseWithTotalParticipationBreakdownForwardPagingShape>
      */
     use SdkModel;
 

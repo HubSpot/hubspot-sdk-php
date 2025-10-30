@@ -13,11 +13,11 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * The response object containing the lists found for a multi-list fetch.
  *
- * @phpstan-type lists_by_id_response = array{lists: list<PublicObjectList>}
+ * @phpstan-type ListsByIDResponseShape = array{lists: list<PublicObjectList>}
  */
 final class ListsByIDResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<lists_by_id_response> */
+    /** @use SdkModel<ListsByIDResponseShape> */
     use SdkModel;
 
     use SdkResponse;

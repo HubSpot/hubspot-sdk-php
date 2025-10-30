@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_user_profile = array{
+ * @phpstan-type ExternalUserProfileShape = array{
  *   email: string, firstName?: string, fullName?: string, lastName?: string
  * }
  */
 final class ExternalUserProfile implements BaseModel
 {
-    /** @use SdkModel<external_user_profile> */
+    /** @use SdkModel<ExternalUserProfileShape> */
     use SdkModel;
 
     #[Api]

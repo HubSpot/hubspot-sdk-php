@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Webhook settings for an app.
  *
- * @phpstan-type settings_response = array{
+ * @phpstan-type SettingsResponseShape = array{
  *   createdAt: \DateTimeInterface,
  *   targetURL: string,
  *   throttling: ThrottlingSettings,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SettingsResponse implements BaseModel
 {
-    /** @use SdkModel<settings_response> */
+    /** @use SdkModel<SettingsResponseShape> */
     use SdkModel;
 
     /**

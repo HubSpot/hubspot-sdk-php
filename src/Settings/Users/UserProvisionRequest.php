@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A user creation request.
  *
- * @phpstan-type user_provision_request = array{
+ * @phpstan-type UserProvisionRequestShape = array{
  *   email: string,
  *   firstName?: string,
  *   lastName?: string,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class UserProvisionRequest implements BaseModel
 {
-    /** @use SdkModel<user_provision_request> */
+    /** @use SdkModel<UserProvisionRequestShape> */
     use SdkModel;
 
     /**

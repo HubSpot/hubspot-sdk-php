@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Emails->update
  *
- * @phpstan-type email_update_params = array{
+ * @phpstan-type EmailUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class EmailUpdateParams implements BaseModel
 {
-    /** @use SdkModel<email_update_params> */
+    /** @use SdkModel<EmailUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

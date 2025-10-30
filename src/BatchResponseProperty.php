@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_response_property = array{
+ * @phpstan-type BatchResponsePropertyShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<Property>,
  *   startedAt: \DateTimeInterface,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class BatchResponseProperty implements BaseModel
 {
-    /** @use SdkModel<batch_response_property> */
+    /** @use SdkModel<BatchResponsePropertyShape> */
     use SdkModel;
 
     #[Api]

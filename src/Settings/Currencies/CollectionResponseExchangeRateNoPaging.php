@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type collection_response_exchange_rate_no_paging = array{
+ * @phpstan-type CollectionResponseExchangeRateNoPagingShape = array{
  *   results: list<ExchangeRate>
  * }
  */
 final class CollectionResponseExchangeRateNoPaging implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_exchange_rate_no_paging> */
+    /** @use SdkModel<CollectionResponseExchangeRateNoPagingShape> */
     use SdkModel;
 
     use SdkResponse;

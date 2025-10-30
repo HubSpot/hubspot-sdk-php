@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\PhoneField\FieldType;
 /**
  * A form field used for collecting a phone number.
  *
- * @phpstan-type phone_field = array{
+ * @phpstan-type PhoneFieldShape = array{
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
@@ -29,7 +29,7 @@ use HubspotSDK\Marketing\Forms\PhoneField\FieldType;
  */
 final class PhoneField implements BaseModel
 {
-    /** @use SdkModel<phone_field> */
+    /** @use SdkModel<PhoneFieldShape> */
     use SdkModel;
 
     /**

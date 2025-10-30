@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
- * @phpstan-type external_association_create_request = array{
+ * @phpstan-type ExternalAssociationCreateRequestShape = array{
  *   to: PublicObjectID, types: list<AssociationSpec>
  * }
  */
 final class ExternalAssociationCreateRequest implements BaseModel
 {
-    /** @use SdkModel<external_association_create_request> */
+    /** @use SdkModel<ExternalAssociationCreateRequestShape> */
     use SdkModel;
 
     #[Api]

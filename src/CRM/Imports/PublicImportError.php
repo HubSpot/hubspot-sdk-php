@@ -12,7 +12,7 @@ use HubspotSDK\CRM\Imports\PublicImportError\ObjectType;
 use HubspotSDK\Marketing\Events\PropertyValue;
 
 /**
- * @phpstan-type public_import_error = array{
+ * @phpstan-type PublicImportErrorShape = array{
  *   id: string,
  *   createdAt: int,
  *   errorType: value-of<ErrorType>,
@@ -29,7 +29,7 @@ use HubspotSDK\Marketing\Events\PropertyValue;
  */
 final class PublicImportError implements BaseModel
 {
-    /** @use SdkModel<public_import_error> */
+    /** @use SdkModel<PublicImportErrorShape> */
     use SdkModel;
 
     #[Api]

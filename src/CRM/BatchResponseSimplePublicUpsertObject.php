@@ -13,7 +13,7 @@ use HubspotSDK\StandardError;
 /**
  * Represents the result of a batch upsert operation, including the operation’s status, timestamps, and a list of successfully created or updated objects.
  *
- * @phpstan-type batch_response_simple_public_upsert_object = array{
+ * @phpstan-type BatchResponseSimplePublicUpsertObjectShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<SimplePublicUpsertObject>,
  *   startedAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseSimplePublicUpsertObject implements BaseModel
 {
-    /** @use SdkModel<batch_response_simple_public_upsert_object> */
+    /** @use SdkModel<BatchResponseSimplePublicUpsertObjectShape> */
     use SdkModel;
 
     /**

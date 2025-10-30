@@ -19,7 +19,7 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
- * @phpstan-type api_contact_flow_put_request = array{
+ * @phpstan-type APIContactFlowPutRequestShape = array{
  *   actions: list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction>,
  *   blockedDates: list<APIBlockedDate>,
  *   canEnrollFromSalesforce: bool,
@@ -42,7 +42,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  */
 final class APIContactFlowPutRequest implements BaseModel
 {
-    /** @use SdkModel<api_contact_flow_put_request> */
+    /** @use SdkModel<APIContactFlowPutRequestShape> */
     use SdkModel;
 
     /**

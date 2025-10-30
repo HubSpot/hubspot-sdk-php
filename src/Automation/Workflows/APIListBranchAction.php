@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_list_branch_action = array{
+ * @phpstan-type APIListBranchActionShape = array{
  *   actionID: string,
  *   listBranches: list<APIListBranch>,
  *   type: value-of<Type>,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIListBranchAction implements BaseModel
 {
-    /** @use SdkModel<api_list_branch_action> */
+    /** @use SdkModel<APIListBranchActionShape> */
     use SdkModel;
 
     /**

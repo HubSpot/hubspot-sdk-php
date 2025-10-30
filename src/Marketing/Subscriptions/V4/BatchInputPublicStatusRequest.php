@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_public_status_request = array{
+ * @phpstan-type BatchInputPublicStatusRequestShape = array{
  *   inputs: list<PublicStatusRequest>
  * }
  */
 final class BatchInputPublicStatusRequest implements BaseModel
 {
-    /** @use SdkModel<batch_input_public_status_request> */
+    /** @use SdkModel<BatchInputPublicStatusRequestShape> */
     use SdkModel;
 
     /** @var list<PublicStatusRequest> $inputs */

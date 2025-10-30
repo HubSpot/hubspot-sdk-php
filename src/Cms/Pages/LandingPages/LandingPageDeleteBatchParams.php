@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->deleteBatch
  *
- * @phpstan-type landing_page_delete_batch_params = array{inputs: list<string>}
+ * @phpstan-type LandingPageDeleteBatchParamsShape = array{inputs: list<string>}
  */
 final class LandingPageDeleteBatchParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_delete_batch_params> */
+    /** @use SdkModel<LandingPageDeleteBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

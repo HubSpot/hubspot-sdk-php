@@ -16,13 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->deleteBatchByExternalEventID
  *
- * @phpstan-type event_delete_batch_by_external_event_id_params = array{
+ * @phpstan-type EventDeleteBatchByExternalEventIDParamsShape = array{
  *   inputs: list<MarketingEventExternalUniqueIdentifier>
  * }
  */
 final class EventDeleteBatchByExternalEventIDParams implements BaseModel
 {
-    /** @use SdkModel<event_delete_batch_by_external_event_id_params> */
+    /** @use SdkModel<EventDeleteBatchByExternalEventIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

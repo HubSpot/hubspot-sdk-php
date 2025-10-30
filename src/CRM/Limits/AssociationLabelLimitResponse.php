@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinition;
 
 /**
- * @phpstan-type association_label_limit_response = array{
+ * @phpstan-type AssociationLabelLimitResponseShape = array{
  *   allLabels: list<string>,
  *   fromObjectType: ObjectTypeDefinition,
  *   limit: int,
@@ -21,7 +21,7 @@ use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinition;
  */
 final class AssociationLabelLimitResponse implements BaseModel
 {
-    /** @use SdkModel<association_label_limit_response> */
+    /** @use SdkModel<AssociationLabelLimitResponseShape> */
     use SdkModel;
 
     /** @var list<string> $allLabels */

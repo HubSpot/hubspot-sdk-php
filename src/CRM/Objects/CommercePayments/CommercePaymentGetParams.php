@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\CommercePayments->get
  *
- * @phpstan-type commerce_payment_get_params = array{
+ * @phpstan-type CommercePaymentGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CommercePaymentGetParams implements BaseModel
 {
-    /** @use SdkModel<commerce_payment_get_params> */
+    /** @use SdkModel<CommercePaymentGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

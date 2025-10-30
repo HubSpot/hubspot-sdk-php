@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_team = array{id: string, name: string, primary: bool}
+ * @phpstan-type PublicTeamShape = array{id: string, name: string, primary: bool}
  */
 final class PublicTeam implements BaseModel
 {
-    /** @use SdkModel<public_team> */
+    /** @use SdkModel<PublicTeamShape> */
     use SdkModel;
 
     #[Api]

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Emails->list
  *
- * @phpstan-type email_list_params = array{
+ * @phpstan-type EmailListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EmailListParams implements BaseModel
 {
-    /** @use SdkModel<email_list_params> */
+    /** @use SdkModel<EmailListParamsShape> */
     use SdkModel;
     use SdkParams;
 

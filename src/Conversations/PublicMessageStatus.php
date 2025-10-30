@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_message_status = array{
+ * @phpstan-type PublicMessageStatusShape = array{
  *   statusType: value-of<StatusType>, failureDetails?: PublicMessageFailureDetails
  * }
  */
 final class PublicMessageStatus implements BaseModel
 {
-    /** @use SdkModel<public_message_status> */
+    /** @use SdkModel<PublicMessageStatusShape> */
     use SdkModel;
 
     /** @var value-of<StatusType> $statusType */

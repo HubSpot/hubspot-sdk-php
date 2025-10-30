@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batched_behavioral_event_http_completion_request = array{
+ * @phpstan-type BatchedBehavioralEventHTTPCompletionRequestShape = array{
  *   inputs: list<BehavioralEventHTTPCompletionRequest>
  * }
  */
 final class BatchedBehavioralEventHTTPCompletionRequest implements BaseModel
 {
-    /** @use SdkModel<batched_behavioral_event_http_completion_request> */
+    /** @use SdkModel<BatchedBehavioralEventHTTPCompletionRequestShape> */
     use SdkModel;
 
     /** @var list<BehavioralEventHTTPCompletionRequest> $inputs */

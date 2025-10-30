@@ -15,13 +15,13 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams\Ch
  *
  * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->unsubscribeAll
  *
- * @phpstan-type status_unsubscribe_all_params = array{
+ * @phpstan-type StatusUnsubscribeAllParamsShape = array{
  *   channel: Channel|value-of<Channel>, businessUnitID?: int, verbose?: bool
  * }
  */
 final class StatusUnsubscribeAllParams implements BaseModel
 {
-    /** @use SdkModel<status_unsubscribe_all_params> */
+    /** @use SdkModel<StatusUnsubscribeAllParamsShape> */
     use SdkModel;
     use SdkParams;
 

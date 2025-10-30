@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Events\Send->sendBatch
  *
- * @phpstan-type send_send_batch_params = array{
+ * @phpstan-type SendSendBatchParamsShape = array{
  *   inputs: list<BehavioralEventHTTPCompletionRequest>
  * }
  */
 final class SendSendBatchParams implements BaseModel
 {
-    /** @use SdkModel<send_send_batch_params> */
+    /** @use SdkModel<SendSendBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

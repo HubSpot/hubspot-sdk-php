@@ -12,7 +12,7 @@ use HubspotSDK\Core\Conversion\ListOf;
 /**
  * Represents a CRM object that has either been created or updated (upserted).
  *
- * @phpstan-type simple_public_upsert_object = array{
+ * @phpstan-type SimplePublicUpsertObjectShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   new: bool,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Conversion\ListOf;
  */
 final class SimplePublicUpsertObject implements BaseModel
 {
-    /** @use SdkModel<simple_public_upsert_object> */
+    /** @use SdkModel<SimplePublicUpsertObjectShape> */
     use SdkModel;
 
     /**

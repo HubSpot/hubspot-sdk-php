@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Services->create
  *
- * @phpstan-type service_create_params = array{
+ * @phpstan-type ServiceCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class ServiceCreateParams implements BaseModel
 {
-    /** @use SdkModel<service_create_params> */
+    /** @use SdkModel<ServiceCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

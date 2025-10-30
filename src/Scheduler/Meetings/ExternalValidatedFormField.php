@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_validated_form_field = array{
+ * @phpstan-type ExternalValidatedFormFieldShape = array{
  *   isCustom: bool,
  *   label: string,
  *   name: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalValidatedFormField implements BaseModel
 {
-    /** @use SdkModel<external_validated_form_field> */
+    /** @use SdkModel<ExternalValidatedFormFieldShape> */
     use SdkModel;
 
     #[Api]

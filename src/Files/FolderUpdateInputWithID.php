@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type folder_update_input_with_id = array{
+ * @phpstan-type FolderUpdateInputWithIDShape = array{
  *   id: string, name?: string, parentFolderID?: int
  * }
  */
 final class FolderUpdateInputWithID implements BaseModel
 {
-    /** @use SdkModel<folder_update_input_with_id> */
+    /** @use SdkModel<FolderUpdateInputWithIDShape> */
     use SdkModel;
 
     /**

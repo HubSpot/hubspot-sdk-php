@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Wrapper for providing an array of strings as inputs.
  *
- * @phpstan-type batch_input_string = array{inputs: list<string>}
+ * @phpstan-type BatchInputStringShape = array{inputs: list<string>}
  */
 final class BatchInputString implements BaseModel
 {
-    /** @use SdkModel<batch_input_string> */
+    /** @use SdkModel<BatchInputStringShape> */
     use SdkModel;
 
     /**

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Leads->update
  *
- * @phpstan-type lead_update_params = array{
+ * @phpstan-type LeadUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class LeadUpdateParams implements BaseModel
 {
-    /** @use SdkModel<lead_update_params> */
+    /** @use SdkModel<LeadUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

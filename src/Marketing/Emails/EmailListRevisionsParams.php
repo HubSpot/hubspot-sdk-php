@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Emails->listRevisions
  *
- * @phpstan-type email_list_revisions_params = array{
+ * @phpstan-type EmailListRevisionsParamsShape = array{
  *   after?: string, before?: string, limit?: int
  * }
  */
 final class EmailListRevisionsParams implements BaseModel
 {
-    /** @use SdkModel<email_list_revisions_params> */
+    /** @use SdkModel<EmailListRevisionsParamsShape> */
     use SdkModel;
     use SdkParams;
 

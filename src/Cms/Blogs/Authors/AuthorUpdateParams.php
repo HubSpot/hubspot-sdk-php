@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Authors->update
  *
- * @phpstan-type author_update_params = array{
+ * @phpstan-type AuthorUpdateParamsShape = array{
  *   id: string,
  *   avatar: string,
  *   bio: string,
@@ -39,7 +39,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AuthorUpdateParams implements BaseModel
 {
-    /** @use SdkModel<author_update_params> */
+    /** @use SdkModel<AuthorUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

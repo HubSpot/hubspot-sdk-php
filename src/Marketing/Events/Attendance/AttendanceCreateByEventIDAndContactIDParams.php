@@ -23,13 +23,13 @@ use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
  *
  * @see HubspotSDK\Marketing\Events\Attendance->createByEventIDAndContactID
  *
- * @phpstan-type attendance_create_by_event_id_and_contact_id_params = array{
+ * @phpstan-type AttendanceCreateByEventIDAndContactIDParamsShape = array{
  *   objectID: string, inputs: list<MarketingEventSubscriber>
  * }
  */
 final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
 {
-    /** @use SdkModel<attendance_create_by_event_id_and_contact_id_params> */
+    /** @use SdkModel<AttendanceCreateByEventIDAndContactIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

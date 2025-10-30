@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Pipelines\Stages->replace
  *
- * @phpstan-type stage_replace_params = array{
+ * @phpstan-type StageReplaceParamsShape = array{
  *   objectType: string,
  *   pipelineID: string,
  *   displayOrder: int,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class StageReplaceParams implements BaseModel
 {
-    /** @use SdkModel<stage_replace_params> */
+    /** @use SdkModel<StageReplaceParamsShape> */
     use SdkModel;
     use SdkParams;
 

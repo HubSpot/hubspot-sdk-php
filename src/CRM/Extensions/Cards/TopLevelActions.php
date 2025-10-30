@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Extensions\Cards\TopLevelActions\Secondary;
 
 /**
- * @phpstan-type top_level_actions = array{
+ * @phpstan-type TopLevelActionsShape = array{
  *   secondary: list<ActionHookActionBody|IFrameActionBody>,
  *   primary?: ActionHookActionBody|IFrameActionBody,
  *   settings?: IFrameActionBody,
@@ -18,7 +18,7 @@ use HubspotSDK\CRM\Extensions\Cards\TopLevelActions\Secondary;
  */
 final class TopLevelActions implements BaseModel
 {
-    /** @use SdkModel<top_level_actions> */
+    /** @use SdkModel<TopLevelActionsShape> */
     use SdkModel;
 
     /** @var list<ActionHookActionBody|IFrameActionBody> $secondary */

@@ -9,14 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_public_association_definition_configuration_create_request = array{
+ * @phpstan-type BatchInputPublicAssociationDefinitionConfigurationCreateRequestShape = array{
  *   inputs: list<PublicAssociationDefinitionConfigurationCreateRequest>
  * }
  */
 final class BatchInputPublicAssociationDefinitionConfigurationCreateRequest implements BaseModel
 {
     /**
-     * @use SdkModel<batch_input_public_association_definition_configuration_create_request>
+     * @use SdkModel<BatchInputPublicAssociationDefinitionConfigurationCreateRequestShape>
      */
     use SdkModel;
 

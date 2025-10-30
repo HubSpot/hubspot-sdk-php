@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_monthly_relative_days_enrollment_schedule = array{
+ * @phpstan-type APIMonthlyRelativeDaysEnrollmentScheduleShape = array{
  *   monthlyRelativeDays: value-of<MonthlyRelativeDays>,
  *   timeOfDay: APITimeOfDay,
  *   type: value-of<Type>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIMonthlyRelativeDaysEnrollmentSchedule implements BaseModel
 {
-    /** @use SdkModel<api_monthly_relative_days_enrollment_schedule> */
+    /** @use SdkModel<APIMonthlyRelativeDaysEnrollmentScheduleShape> */
     use SdkModel;
 
     /**

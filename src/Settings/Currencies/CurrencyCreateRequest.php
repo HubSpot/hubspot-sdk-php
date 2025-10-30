@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\CurrencyCreateRequest\CurrencyCode;
 
 /**
- * @phpstan-type currency_create_request = array{
+ * @phpstan-type CurrencyCreateRequestShape = array{
  *   currencyCode: value-of<CurrencyCode>
  * }
  */
 final class CurrencyCreateRequest implements BaseModel
 {
-    /** @use SdkModel<currency_create_request> */
+    /** @use SdkModel<CurrencyCreateRequestShape> */
     use SdkModel;
 
     /** @var value-of<CurrencyCode> $currencyCode */

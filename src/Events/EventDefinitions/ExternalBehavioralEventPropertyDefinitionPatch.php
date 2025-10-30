@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\OptionInput;
 
 /**
- * @phpstan-type external_behavioral_event_property_definition_patch = array{
+ * @phpstan-type ExternalBehavioralEventPropertyDefinitionPatchShape = array{
  *   description?: string, label?: string, options?: list<OptionInput>
  * }
  */
 final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
 {
-    /** @use SdkModel<external_behavioral_event_property_definition_patch> */
+    /** @use SdkModel<ExternalBehavioralEventPropertyDefinitionPatchShape> */
     use SdkModel;
 
     /**

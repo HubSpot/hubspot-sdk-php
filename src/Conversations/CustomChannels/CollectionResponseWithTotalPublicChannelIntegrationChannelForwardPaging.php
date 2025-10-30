@@ -12,7 +12,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_with_total_public_channel_integration_channel_forward_paging = array{
+ * @phpstan-type CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPagingShape = array{
  *   results: list<PublicChannelIntegrationChannel>,
  *   total: int,
  *   paging?: ForwardPaging,
@@ -21,7 +21,7 @@ use HubspotSDK\ForwardPaging;
 final class CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging implements BaseModel, ResponseConverter
 {
     /**
-     * @use SdkModel<collection_response_with_total_public_channel_integration_channel_forward_paging>
+     * @use SdkModel<CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPagingShape>
      */
     use SdkModel;
 

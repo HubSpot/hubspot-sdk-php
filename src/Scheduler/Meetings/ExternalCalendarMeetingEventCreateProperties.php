@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_calendar_meeting_event_create_properties = array{
+ * @phpstan-type ExternalCalendarMeetingEventCreatePropertiesShape = array{
  *   hsMeetingEndTime: \DateTimeInterface,
  *   hsMeetingOutcome: string,
  *   hsMeetingStartTime: \DateTimeInterface,
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
 {
-    /** @use SdkModel<external_calendar_meeting_event_create_properties> */
+    /** @use SdkModel<ExternalCalendarMeetingEventCreatePropertiesShape> */
     use SdkModel;
 
     #[Api('hs_meeting_end_time')]

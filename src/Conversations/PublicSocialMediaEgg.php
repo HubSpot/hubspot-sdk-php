@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_social_media_egg = array{
+ * @phpstan-type PublicSocialMediaEggShape = array{
  *   socialMetadata: SocialMetadata, type: value-of<Type>
  * }
  */
 final class PublicSocialMediaEgg implements BaseModel
 {
-    /** @use SdkModel<public_social_media_egg> */
+    /** @use SdkModel<PublicSocialMediaEggShape> */
     use SdkModel;
 
     #[Api]

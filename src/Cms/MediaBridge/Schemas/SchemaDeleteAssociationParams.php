@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Schemas->deleteAssociation
  *
- * @phpstan-type schema_delete_association_params = array{
+ * @phpstan-type SchemaDeleteAssociationParamsShape = array{
  *   appID: string, objectType: string
  * }
  */
 final class SchemaDeleteAssociationParams implements BaseModel
 {
-    /** @use SdkModel<schema_delete_association_params> */
+    /** @use SdkModel<SchemaDeleteAssociationParamsShape> */
     use SdkModel;
     use SdkParams;
 

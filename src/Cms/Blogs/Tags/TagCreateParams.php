@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Tags->create
  *
- * @phpstan-type tag_create_params = array{
+ * @phpstan-type TagCreateParamsShape = array{
  *   id: string,
  *   created: \DateTimeInterface,
  *   deletedAt: \DateTimeInterface,
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TagCreateParams implements BaseModel
 {
-    /** @use SdkModel<tag_create_params> */
+    /** @use SdkModel<TagCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

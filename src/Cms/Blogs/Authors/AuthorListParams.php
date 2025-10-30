@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Authors->list
  *
- * @phpstan-type author_list_params = array{
+ * @phpstan-type AuthorListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   createdAfter?: \DateTimeInterface,
@@ -30,7 +30,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AuthorListParams implements BaseModel
 {
-    /** @use SdkModel<author_list_params> */
+    /** @use SdkModel<AuthorListParamsShape> */
     use SdkModel;
     use SdkParams;
 

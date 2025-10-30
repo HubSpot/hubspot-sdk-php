@@ -16,13 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Memberships->addAndRemove
  *
- * @phpstan-type membership_add_and_remove_params = array{
+ * @phpstan-type MembershipAddAndRemoveParamsShape = array{
  *   recordIDsToAdd: list<string>, recordIDsToRemove: list<string>
  * }
  */
 final class MembershipAddAndRemoveParams implements BaseModel
 {
-    /** @use SdkModel<membership_add_and_remove_params> */
+    /** @use SdkModel<MembershipAddAndRemoveParamsShape> */
     use SdkModel;
     use SdkParams;
 

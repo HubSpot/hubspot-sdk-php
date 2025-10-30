@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type collection_response_public_audit_info_no_paging = array{
+ * @phpstan-type CollectionResponsePublicAuditInfoNoPagingShape = array{
  *   results: list<PublicAuditInfo>
  * }
  */
 final class CollectionResponsePublicAuditInfoNoPaging implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_public_audit_info_no_paging> */
+    /** @use SdkModel<CollectionResponsePublicAuditInfoNoPagingShape> */
     use SdkModel;
 
     use SdkResponse;

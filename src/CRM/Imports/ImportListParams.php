@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Imports->list
  *
- * @phpstan-type import_list_params = array{
+ * @phpstan-type ImportListParamsShape = array{
  *   after?: string, before?: string, limit?: int
  * }
  */
 final class ImportListParams implements BaseModel
 {
-    /** @use SdkModel<import_list_params> */
+    /** @use SdkModel<ImportListParamsShape> */
     use SdkModel;
     use SdkParams;
 

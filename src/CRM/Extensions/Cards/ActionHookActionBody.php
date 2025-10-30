@@ -11,7 +11,7 @@ use HubspotSDK\CRM\Extensions\Cards\ActionHookActionBody\HTTPMethod;
 use HubspotSDK\CRM\Extensions\Cards\ActionHookActionBody\Type;
 
 /**
- * @phpstan-type action_hook_action_body = array{
+ * @phpstan-type ActionHookActionBodyShape = array{
  *   httpMethod: value-of<HTTPMethod>,
  *   propertyNamesIncluded: list<string>,
  *   type: value-of<Type>,
@@ -22,7 +22,7 @@ use HubspotSDK\CRM\Extensions\Cards\ActionHookActionBody\Type;
  */
 final class ActionHookActionBody implements BaseModel
 {
-    /** @use SdkModel<action_hook_action_body> */
+    /** @use SdkModel<ActionHookActionBodyShape> */
     use SdkModel;
 
     /** @var value-of<HTTPMethod> $httpMethod */

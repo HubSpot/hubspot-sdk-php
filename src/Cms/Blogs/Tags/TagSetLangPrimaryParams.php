@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Tags->setLangPrimary
  *
- * @phpstan-type tag_set_lang_primary_params = array{id: string}
+ * @phpstan-type TagSetLangPrimaryParamsShape = array{id: string}
  */
 final class TagSetLangPrimaryParams implements BaseModel
 {
-    /** @use SdkModel<tag_set_lang_primary_params> */
+    /** @use SdkModel<TagSetLangPrimaryParamsShape> */
     use SdkModel;
     use SdkParams;
 

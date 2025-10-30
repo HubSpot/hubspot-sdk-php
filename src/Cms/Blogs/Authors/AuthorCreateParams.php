@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Authors->create
  *
- * @phpstan-type author_create_params = array{
+ * @phpstan-type AuthorCreateParamsShape = array{
  *   id: string,
  *   avatar: string,
  *   bio: string,
@@ -37,7 +37,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AuthorCreateParams implements BaseModel
 {
-    /** @use SdkModel<author_create_params> */
+    /** @use SdkModel<AuthorCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

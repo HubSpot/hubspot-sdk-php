@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Properties\Groups->get
  *
- * @phpstan-type group_get_params = array{objectType: string}
+ * @phpstan-type GroupGetParamsShape = array{objectType: string}
  */
 final class GroupGetParams implements BaseModel
 {
-    /** @use SdkModel<group_get_params> */
+    /** @use SdkModel<GroupGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

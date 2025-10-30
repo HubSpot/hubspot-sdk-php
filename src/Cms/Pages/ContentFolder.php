@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Model definition for a content folder.
  *
- * @phpstan-type content_folder = array{
+ * @phpstan-type ContentFolderShape = array{
  *   id: string,
  *   category: int,
  *   created: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ContentFolder implements BaseModel
 {
-    /** @use SdkModel<content_folder> */
+    /** @use SdkModel<ContentFolderShape> */
     use SdkModel;
 
     /**

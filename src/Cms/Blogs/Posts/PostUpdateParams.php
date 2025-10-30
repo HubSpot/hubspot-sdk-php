@@ -21,7 +21,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->update
  *
- * @phpstan-type post_update_params = array{
+ * @phpstan-type PostUpdateParamsShape = array{
  *   id: string,
  *   abStatus: AbStatus|value-of<AbStatus>,
  *   abTestID: string,
@@ -88,7 +88,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class PostUpdateParams implements BaseModel
 {
-    /** @use SdkModel<post_update_params> */
+    /** @use SdkModel<PostUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

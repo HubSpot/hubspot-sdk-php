@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type collection_response_with_total_public_list_no_paging = array{
+ * @phpstan-type CollectionResponseWithTotalPublicListNoPagingShape = array{
  *   results: list<PublicList>, total: int
  * }
  */
 final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_with_total_public_list_no_paging> */
+    /** @use SdkModel<CollectionResponseWithTotalPublicListNoPagingShape> */
     use SdkModel;
 
     /** @var list<PublicList> $results */

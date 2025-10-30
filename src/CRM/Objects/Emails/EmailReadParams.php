@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Emails->read
  *
- * @phpstan-type email_read_params = array{
+ * @phpstan-type EmailReadParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EmailReadParams implements BaseModel
 {
-    /** @use SdkModel<email_read_params> */
+    /** @use SdkModel<EmailReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

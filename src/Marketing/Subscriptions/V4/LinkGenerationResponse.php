@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type link_generation_response = array{
+ * @phpstan-type LinkGenerationResponseShape = array{
  *   managePreferencesURL: string,
  *   subscriberIDString: string,
  *   unsubscribeAllURL: string,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LinkGenerationResponse implements BaseModel
 {
-    /** @use SdkModel<link_generation_response> */
+    /** @use SdkModel<LinkGenerationResponseShape> */
     use SdkModel;
 
     #[Api('managePreferencesUrl')]

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\SourceCode->getMetadata
  *
- * @phpstan-type source_code_get_metadata_params = array{
+ * @phpstan-type SourceCodeGetMetadataParamsShape = array{
  *   environment: string, properties?: string
  * }
  */
 final class SourceCodeGetMetadataParams implements BaseModel
 {
-    /** @use SdkModel<source_code_get_metadata_params> */
+    /** @use SdkModel<SourceCodeGetMetadataParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_spend_item_input = array{
+ * @phpstan-type PublicSpendItemInputShape = array{
  *   amount: float, name: string, order: int, description?: string
  * }
  */
 final class PublicSpendItemInput implements BaseModel
 {
-    /** @use SdkModel<public_spend_item_input> */
+    /** @use SdkModel<PublicSpendItemInputShape> */
     use SdkModel;
 
     #[Api]

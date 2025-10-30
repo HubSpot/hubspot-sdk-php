@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo\LinkType;
 
 /**
- * @phpstan-type external_booking_info = array{
+ * @phpstan-type ExternalBookingInfoShape = array{
  *   allUsersBusyTimes: list<ExternalUserBusyTimes>,
  *   customParams: ExternalMeetingsLinkSettings,
  *   isOffline: bool,
@@ -22,7 +22,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo\LinkType;
  */
 final class ExternalBookingInfo implements BaseModel
 {
-    /** @use SdkModel<external_booking_info> */
+    /** @use SdkModel<ExternalBookingInfoShape> */
     use SdkModel;
 
     /** @var list<ExternalUserBusyTimes> $allUsersBusyTimes */

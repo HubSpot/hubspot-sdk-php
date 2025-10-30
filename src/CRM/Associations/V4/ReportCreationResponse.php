@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type report_creation_response = array{
+ * @phpstan-type ReportCreationResponseShape = array{
  *   enqueueTime: DateTime, userEmail: string, userID: int
  * }
  */
 final class ReportCreationResponse implements BaseModel
 {
-    /** @use SdkModel<report_creation_response> */
+    /** @use SdkModel<ReportCreationResponseShape> */
     use SdkModel;
 
     #[Api]

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_button_style_settings = array{
+ * @phpstan-type PublicButtonStyleSettingsShape = array{
  *   backgroundColor?: mixed, cornerRadius?: int, fontStyle?: PublicFontStyle
  * }
  */
 final class PublicButtonStyleSettings implements BaseModel
 {
-    /** @use SdkModel<public_button_style_settings> */
+    /** @use SdkModel<PublicButtonStyleSettingsShape> */
     use SdkModel;
 
     #[Api(optional: true)]

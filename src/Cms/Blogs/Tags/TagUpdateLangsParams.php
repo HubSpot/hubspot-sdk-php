@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Tags->updateLangs
  *
- * @phpstan-type tag_update_langs_params = array{
+ * @phpstan-type TagUpdateLangsParamsShape = array{
  *   languages: array<string, string>, primaryID: string
  * }
  */
 final class TagUpdateLangsParams implements BaseModel
 {
-    /** @use SdkModel<tag_update_langs_params> */
+    /** @use SdkModel<TagUpdateLangsParamsShape> */
     use SdkModel;
     use SdkParams;
 

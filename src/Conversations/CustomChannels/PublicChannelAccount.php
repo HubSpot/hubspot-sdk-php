@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_channel_account = array{
+ * @phpstan-type PublicChannelAccountShape = array{
  *   id: string,
  *   active: bool,
  *   archived: bool,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicChannelAccount implements BaseModel
 {
-    /** @use SdkModel<public_channel_account> */
+    /** @use SdkModel<PublicChannelAccountShape> */
     use SdkModel;
 
     #[Api]

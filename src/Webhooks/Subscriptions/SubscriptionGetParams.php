@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Webhooks\Subscriptions->get
  *
- * @phpstan-type subscription_get_params = array{appID: int}
+ * @phpstan-type SubscriptionGetParamsShape = array{appID: int}
  */
 final class SubscriptionGetParams implements BaseModel
 {
-    /** @use SdkModel<subscription_get_params> */
+    /** @use SdkModel<SubscriptionGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

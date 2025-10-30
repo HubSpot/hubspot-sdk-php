@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\PartnerServices\Associations->list
  *
- * @phpstan-type association_list_params = array{
+ * @phpstan-type AssociationListParamsShape = array{
  *   partnerServiceID: string, after?: string, includeFa?: bool, limit?: int
  * }
  */
 final class AssociationListParams implements BaseModel
 {
-    /** @use SdkModel<association_list_params> */
+    /** @use SdkModel<AssociationListParamsShape> */
     use SdkModel;
     use SdkParams;
 

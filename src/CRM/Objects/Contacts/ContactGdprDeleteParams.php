@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Contacts->gdprDelete
  *
- * @phpstan-type contact_gdpr_delete_params = array{
+ * @phpstan-type ContactGdprDeleteParamsShape = array{
  *   objectID: string, idProperty?: string
  * }
  */
 final class ContactGdprDeleteParams implements BaseModel
 {
-    /** @use SdkModel<contact_gdpr_delete_params> */
+    /** @use SdkModel<ContactGdprDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

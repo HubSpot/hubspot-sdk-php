@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * An ID for a group of properties.
  *
- * @phpstan-type property_group = array{
+ * @phpstan-type PropertyGroupShape = array{
  *   archived: bool, displayOrder: int, label: string, name: string
  * }
  */
 final class PropertyGroup implements BaseModel
 {
-    /** @use SdkModel<property_group> */
+    /** @use SdkModel<PropertyGroupShape> */
     use SdkModel;
 
     #[Api]

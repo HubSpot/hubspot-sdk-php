@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->clone
  *
- * @phpstan-type post_clone_params = array{id: string, cloneName?: string}
+ * @phpstan-type PostCloneParamsShape = array{id: string, cloneName?: string}
  */
 final class PostCloneParams implements BaseModel
 {
-    /** @use SdkModel<post_clone_params> */
+    /** @use SdkModel<PostCloneParamsShape> */
     use SdkModel;
     use SdkParams;
 

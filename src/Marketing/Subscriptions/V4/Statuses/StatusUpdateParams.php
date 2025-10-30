@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\StatusStat
  *
  * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->update
  *
- * @phpstan-type status_update_params = array{
+ * @phpstan-type StatusUpdateParamsShape = array{
  *   channel: Channel|value-of<Channel>,
  *   statusState: StatusState|value-of<StatusState>,
  *   subscriptionID: int,
@@ -27,7 +27,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\StatusStat
  */
 final class StatusUpdateParams implements BaseModel
 {
-    /** @use SdkModel<status_update_params> */
+    /** @use SdkModel<StatusUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

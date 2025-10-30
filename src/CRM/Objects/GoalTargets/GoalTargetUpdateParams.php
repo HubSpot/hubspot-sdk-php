@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\GoalTargets->update
  *
- * @phpstan-type goal_target_update_params = array{
+ * @phpstan-type GoalTargetUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class GoalTargetUpdateParams implements BaseModel
 {
-    /** @use SdkModel<goal_target_update_params> */
+    /** @use SdkModel<GoalTargetUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

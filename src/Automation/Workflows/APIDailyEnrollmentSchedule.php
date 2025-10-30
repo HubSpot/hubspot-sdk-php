@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_daily_enrollment_schedule = array{
+ * @phpstan-type APIDailyEnrollmentScheduleShape = array{
  *   timeOfDay: APITimeOfDay, type: value-of<Type>
  * }
  */
 final class APIDailyEnrollmentSchedule implements BaseModel
 {
-    /** @use SdkModel<api_daily_enrollment_schedule> */
+    /** @use SdkModel<APIDailyEnrollmentScheduleShape> */
     use SdkModel;
 
     #[Api]

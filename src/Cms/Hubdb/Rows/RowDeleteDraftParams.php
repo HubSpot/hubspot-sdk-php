@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows->deleteDraft
  *
- * @phpstan-type row_delete_draft_params = array{tableIDOrName: string}
+ * @phpstan-type RowDeleteDraftParamsShape = array{tableIDOrName: string}
  */
 final class RowDeleteDraftParams implements BaseModel
 {
-    /** @use SdkModel<row_delete_draft_params> */
+    /** @use SdkModel<RowDeleteDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

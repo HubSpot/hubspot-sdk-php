@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_static_value = array{
+ * @phpstan-type APIStaticValueShape = array{
  *   staticValue: string, type: value-of<Type>
  * }
  */
 final class APIStaticValue implements BaseModel
 {
-    /** @use SdkModel<api_static_value> */
+    /** @use SdkModel<APIStaticValueShape> */
     use SdkModel;
 
     /**

@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Notes->create
  *
- * @phpstan-type note_create_params = array{
+ * @phpstan-type NoteCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class NoteCreateParams implements BaseModel
 {
-    /** @use SdkModel<note_create_params> */
+    /** @use SdkModel<NoteCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

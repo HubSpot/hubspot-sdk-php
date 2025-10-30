@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Emails->createAbTestVariation
  *
- * @phpstan-type email_create_ab_test_variation_params = array{
+ * @phpstan-type EmailCreateAbTestVariationParamsShape = array{
  *   contentID: string, variationName: string
  * }
  */
 final class EmailCreateAbTestVariationParams implements BaseModel
 {
-    /** @use SdkModel<email_create_ab_test_variation_params> */
+    /** @use SdkModel<EmailCreateAbTestVariationParamsShape> */
     use SdkModel;
     use SdkParams;
 

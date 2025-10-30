@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The current state of the template definition.
  *
- * @phpstan-type timeline_event_template = array{
+ * @phpstan-type TimelineEventTemplateShape = array{
  *   id: string,
  *   name: string,
  *   objectType: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TimelineEventTemplate implements BaseModel
 {
-    /** @use SdkModel<timeline_event_template> */
+    /** @use SdkModel<TimelineEventTemplateShape> */
     use SdkModel;
 
     /**

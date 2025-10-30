@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The details Markdown rendered as HTML.
  *
- * @phpstan-type event_detail = array{details: string}
+ * @phpstan-type EventDetailShape = array{details: string}
  */
 final class EventDetail implements BaseModel
 {
-    /** @use SdkModel<event_detail> */
+    /** @use SdkModel<EventDetailShape> */
     use SdkModel;
 
     /**

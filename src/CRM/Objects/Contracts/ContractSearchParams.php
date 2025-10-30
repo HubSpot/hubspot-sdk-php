@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Contracts->search
  *
- * @phpstan-type contract_search_params = array{
+ * @phpstan-type ContractSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class ContractSearchParams implements BaseModel
 {
-    /** @use SdkModel<contract_search_params> */
+    /** @use SdkModel<ContractSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

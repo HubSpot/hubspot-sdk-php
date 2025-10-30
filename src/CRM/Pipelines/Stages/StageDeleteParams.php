@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Pipelines\Stages->delete
  *
- * @phpstan-type stage_delete_params = array{
+ * @phpstan-type StageDeleteParamsShape = array{
  *   objectType: string, pipelineID: string
  * }
  */
 final class StageDeleteParams implements BaseModel
 {
-    /** @use SdkModel<stage_delete_params> */
+    /** @use SdkModel<StageDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * New or updated webhook settings for an app.
  *
- * @phpstan-type settings_change_request = array{
+ * @phpstan-type SettingsChangeRequestShape = array{
  *   targetURL: string, throttling: ThrottlingSettings
  * }
  */
 final class SettingsChangeRequest implements BaseModel
 {
-    /** @use SdkModel<settings_change_request> */
+    /** @use SdkModel<SettingsChangeRequestShape> */
     use SdkModel;
 
     /**

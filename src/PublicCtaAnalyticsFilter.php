@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicCtaAnalyticsFilter\FilterType;
 
 /**
- * @phpstan-type public_cta_analytics_filter = array{
+ * @phpstan-type PublicCtaAnalyticsFilterShape = array{
  *   ctaName: string,
  *   filterType: value-of<FilterType>,
  *   operator: string,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicCtaAnalyticsFilter\FilterType;
  */
 final class PublicCtaAnalyticsFilter implements BaseModel
 {
-    /** @use SdkModel<public_cta_analytics_filter> */
+    /** @use SdkModel<PublicCtaAnalyticsFilterShape> */
     use SdkModel;
 
     #[Api]

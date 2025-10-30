@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_smtp_api_token_view_forward_paging = array{
+ * @phpstan-type CollectionResponseSmtpAPITokenViewForwardPagingShape = array{
  *   results: list<SmtpAPITokenView>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseSmtpAPITokenViewForwardPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_smtp_api_token_view_forward_paging> */
+    /** @use SdkModel<CollectionResponseSmtpAPITokenViewForwardPagingShape> */
     use SdkModel;
 
     /** @var list<SmtpAPITokenView> $results */

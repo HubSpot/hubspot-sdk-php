@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Products->create
  *
- * @phpstan-type product_create_params = array{
+ * @phpstan-type ProductCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class ProductCreateParams implements BaseModel
 {
-    /** @use SdkModel<product_create_params> */
+    /** @use SdkModel<ProductCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

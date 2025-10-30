@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * An input used to create or replace a pipeline stage's definition.
  *
- * @phpstan-type pipeline_stage_input = array{
+ * @phpstan-type PipelineStageInputShape = array{
  *   displayOrder: int, label: string, metadata?: array<string, string>
  * }
  */
 final class PipelineStageInput implements BaseModel
 {
-    /** @use SdkModel<pipeline_stage_input> */
+    /** @use SdkModel<PipelineStageInputShape> */
     use SdkModel;
 
     /**

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Response object for successful batch operations on content folders.
  *
- * @phpstan-type batch_response_content_folder = array{
+ * @phpstan-type BatchResponseContentFolderShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<ContentFolder>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class BatchResponseContentFolder implements BaseModel
 {
-    /** @use SdkModel<batch_response_content_folder> */
+    /** @use SdkModel<BatchResponseContentFolderShape> */
     use SdkModel;
 
     #[Api]

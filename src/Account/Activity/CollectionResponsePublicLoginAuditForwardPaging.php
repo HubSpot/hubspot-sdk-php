@@ -12,13 +12,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_public_login_audit_forward_paging = array{
+ * @phpstan-type CollectionResponsePublicLoginAuditForwardPagingShape = array{
  *   results: list<PublicLoginAudit>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponsePublicLoginAuditForwardPaging implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_public_login_audit_forward_paging> */
+    /** @use SdkModel<CollectionResponsePublicLoginAuditForwardPagingShape> */
     use SdkModel;
 
     use SdkResponse;

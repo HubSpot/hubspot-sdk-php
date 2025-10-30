@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_link_availability_for_duration = array{
+ * @phpstan-type ExternalLinkAvailabilityForDurationShape = array{
  *   availabilities: list<ExternalMeetingAvailability>, meetingDurationMillis: int
  * }
  */
 final class ExternalLinkAvailabilityForDuration implements BaseModel
 {
-    /** @use SdkModel<external_link_availability_for_duration> */
+    /** @use SdkModel<ExternalLinkAvailabilityForDurationShape> */
     use SdkModel;
 
     /** @var list<ExternalMeetingAvailability> $availabilities */

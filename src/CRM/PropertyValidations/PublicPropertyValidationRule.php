@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_property_validation_rule = array{
+ * @phpstan-type PublicPropertyValidationRuleShape = array{
  *   ruleArguments: list<string>, ruleType: string
  * }
  */
 final class PublicPropertyValidationRule implements BaseModel
 {
-    /** @use SdkModel<public_property_validation_rule> */
+    /** @use SdkModel<PublicPropertyValidationRuleShape> */
     use SdkModel;
 
     /** @var list<string> $ruleArguments */

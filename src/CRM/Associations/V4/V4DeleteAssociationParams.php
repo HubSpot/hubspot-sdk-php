@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Associations\V4->deleteAssociation
  *
- * @phpstan-type v4_delete_association_params = array{
+ * @phpstan-type V4DeleteAssociationParamsShape = array{
  *   objectType: string, objectID: string, toObjectType: string
  * }
  */
 final class V4DeleteAssociationParams implements BaseModel
 {
-    /** @use SdkModel<v4_delete_association_params> */
+    /** @use SdkModel<V4DeleteAssociationParamsShape> */
     use SdkModel;
     use SdkParams;
 

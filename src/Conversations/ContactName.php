@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type contact_name = array{
+ * @phpstan-type ContactNameShape = array{
  *   firstName?: string,
  *   lastName?: string,
  *   middleName?: string,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ContactName implements BaseModel
 {
-    /** @use SdkModel<contact_name> */
+    /** @use SdkModel<ContactNameShape> */
     use SdkModel;
 
     #[Api(optional: true)]

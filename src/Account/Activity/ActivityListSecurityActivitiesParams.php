@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Account\Activity->listSecurityActivities
  *
- * @phpstan-type activity_list_security_activities_params = array{
+ * @phpstan-type ActivityListSecurityActivitiesParamsShape = array{
  *   after?: string,
  *   fromTimestamp?: int,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ActivityListSecurityActivitiesParams implements BaseModel
 {
-    /** @use SdkModel<activity_list_security_activities_params> */
+    /** @use SdkModel<ActivityListSecurityActivitiesParamsShape> */
     use SdkModel;
     use SdkParams;
 

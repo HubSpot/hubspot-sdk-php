@@ -11,7 +11,7 @@ use HubspotSDK\CRM\Timeline\BatchResponseTimelineEventResponseWithErrors\Status;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_timeline_event_response_with_errors = array{
+ * @phpstan-type BatchResponseTimelineEventResponseWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<TimelineEventResponse>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseTimelineEventResponseWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_timeline_event_response_with_errors> */
+    /** @use SdkModel<BatchResponseTimelineEventResponseWithErrorsShape> */
     use SdkModel;
 
     #[Api]

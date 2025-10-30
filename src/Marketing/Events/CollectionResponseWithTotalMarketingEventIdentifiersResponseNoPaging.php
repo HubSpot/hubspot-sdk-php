@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type collection_response_with_total_marketing_event_identifiers_response_no_paging = array{
+ * @phpstan-type CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPagingShape = array{
  *   results: list<MarketingEventIdentifiersResponse>, total: int
  * }
  */
 final class CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging implements BaseModel, ResponseConverter
 {
     /**
-     * @use SdkModel<collection_response_with_total_marketing_event_identifiers_response_no_paging>
+     * @use SdkModel<CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPagingShape>
      */
     use SdkModel;
 

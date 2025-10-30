@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Communications->create
  *
- * @phpstan-type communication_create_params = array{
+ * @phpstan-type CommunicationCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class CommunicationCreateParams implements BaseModel
 {
-    /** @use SdkModel<communication_create_params> */
+    /** @use SdkModel<CommunicationCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

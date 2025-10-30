@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The request object used for searching through lists.
  *
- * @phpstan-type list_search_request = array{
+ * @phpstan-type ListSearchRequestShape = array{
  *   additionalProperties?: list<string>,
  *   count?: int,
  *   listIDs?: list<string>,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ListSearchRequest implements BaseModel
 {
-    /** @use SdkModel<list_search_request> */
+    /** @use SdkModel<ListSearchRequestShape> */
     use SdkModel;
 
     /**

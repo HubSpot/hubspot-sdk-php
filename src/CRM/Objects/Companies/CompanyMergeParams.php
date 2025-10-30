@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Companies->merge
  *
- * @phpstan-type company_merge_params = array{
+ * @phpstan-type CompanyMergeParamsShape = array{
  *   objectIDToMerge: string, primaryObjectID: string
  * }
  */
 final class CompanyMergeParams implements BaseModel
 {
-    /** @use SdkModel<company_merge_params> */
+    /** @use SdkModel<CompanyMergeParamsShape> */
     use SdkModel;
     use SdkParams;
 

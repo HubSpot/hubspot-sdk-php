@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type integrator_actor = array{
+ * @phpstan-type IntegratorActorShape = array{
  *   id: string, name: string, type: value-of<Type>, avatar?: string
  * }
  */
 final class IntegratorActor implements BaseModel
 {
-    /** @use SdkModel<integrator_actor> */
+    /** @use SdkModel<IntegratorActorShape> */
     use SdkModel;
 
     #[Api]

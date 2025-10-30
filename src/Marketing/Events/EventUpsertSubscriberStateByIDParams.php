@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->upsertSubscriberStateByID
  *
- * @phpstan-type event_upsert_subscriber_state_by_id_params = array{
+ * @phpstan-type EventUpsertSubscriberStateByIDParamsShape = array{
  *   externalEventID: string,
  *   externalAccountID: string,
  *   inputs: list<MarketingEventSubscriber>,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EventUpsertSubscriberStateByIDParams implements BaseModel
 {
-    /** @use SdkModel<event_upsert_subscriber_state_by_id_params> */
+    /** @use SdkModel<EventUpsertSubscriberStateByIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

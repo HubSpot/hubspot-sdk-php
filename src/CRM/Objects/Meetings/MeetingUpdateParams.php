@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Meetings->update
  *
- * @phpstan-type meeting_update_params = array{
+ * @phpstan-type MeetingUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class MeetingUpdateParams implements BaseModel
 {
-    /** @use SdkModel<meeting_update_params> */
+    /** @use SdkModel<MeetingUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

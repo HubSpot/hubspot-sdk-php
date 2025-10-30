@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Tags->update
  *
- * @phpstan-type tag_update_params = array{
+ * @phpstan-type TagUpdateParamsShape = array{
  *   id: string,
  *   created: \DateTimeInterface,
  *   deletedAt: \DateTimeInterface,
@@ -29,7 +29,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TagUpdateParams implements BaseModel
 {
-    /** @use SdkModel<tag_update_params> */
+    /** @use SdkModel<TagUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

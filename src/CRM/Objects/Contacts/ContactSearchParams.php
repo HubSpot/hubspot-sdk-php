@@ -15,7 +15,7 @@ use HubspotSDK\CRM\FilterGroup;
  *
  * @see HubspotSDK\CRM\Objects\Contacts->search
  *
- * @phpstan-type contact_search_params = array{
+ * @phpstan-type ContactSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -26,7 +26,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class ContactSearchParams implements BaseModel
 {
-    /** @use SdkModel<contact_search_params> */
+    /** @use SdkModel<ContactSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

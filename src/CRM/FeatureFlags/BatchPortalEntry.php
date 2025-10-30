@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\FeatureFlags\BatchPortalEntry\FlagState;
 
 /**
- * @phpstan-type batch_portal_entry = array{
+ * @phpstan-type BatchPortalEntryShape = array{
  *   flagState: value-of<FlagState>, portalID: int
  * }
  */
 final class BatchPortalEntry implements BaseModel
 {
-    /** @use SdkModel<batch_portal_entry> */
+    /** @use SdkModel<BatchPortalEntryShape> */
     use SdkModel;
 
     /** @var value-of<FlagState> $flagState */

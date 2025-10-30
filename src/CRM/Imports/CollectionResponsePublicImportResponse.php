@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type collection_response_public_import_response = array{
+ * @phpstan-type CollectionResponsePublicImportResponseShape = array{
  *   results: list<PublicImportResponse>, paging?: Paging
  * }
  */
 final class CollectionResponsePublicImportResponse implements BaseModel
 {
-    /** @use SdkModel<collection_response_public_import_response> */
+    /** @use SdkModel<CollectionResponsePublicImportResponseShape> */
     use SdkModel;
 
     /** @var list<PublicImportResponse> $results */

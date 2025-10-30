@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type marketing_event_create_request_params = array{
+ * @phpstan-type MarketingEventCreateRequestParamsShape = array{
  *   eventName: string,
  *   eventOrganizer: string,
  *   externalAccountID: string,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MarketingEventCreateRequestParams implements BaseModel
 {
-    /** @use SdkModel<marketing_event_create_request_params> */
+    /** @use SdkModel<MarketingEventCreateRequestParamsShape> */
     use SdkModel;
 
     /**

@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * An input used to update some properties on a pipeline definition.
  *
- * @phpstan-type pipeline_patch_input = array{
+ * @phpstan-type PipelinePatchInputShape = array{
  *   archived?: bool, displayOrder?: int, label?: string
  * }
  */
 final class PipelinePatchInput implements BaseModel
 {
-    /** @use SdkModel<pipeline_patch_input> */
+    /** @use SdkModel<PipelinePatchInputShape> */
     use SdkModel;
 
     /**

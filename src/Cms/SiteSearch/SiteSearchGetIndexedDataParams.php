@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\SiteSearch->getIndexedData
  *
- * @phpstan-type site_search_get_indexed_data_params = array{
+ * @phpstan-type SiteSearchGetIndexedDataParamsShape = array{
  *   type?: Type|value-of<Type>
  * }
  */
 final class SiteSearchGetIndexedDataParams implements BaseModel
 {
-    /** @use SdkModel<site_search_get_indexed_data_params> */
+    /** @use SdkModel<SiteSearchGetIndexedDataParamsShape> */
     use SdkModel;
     use SdkParams;
 

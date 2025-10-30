@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_options_meta_data = array{
+ * @phpstan-type ExternalOptionsMetaDataShape = array{
  *   filter?: FilteringMetaData, relatedObjectTypeID?: string
  * }
  */
 final class ExternalOptionsMetaData implements BaseModel
 {
-    /** @use SdkModel<external_options_meta_data> */
+    /** @use SdkModel<ExternalOptionsMetaDataShape> */
     use SdkModel;
 
     #[Api(optional: true)]

@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_closed_range = array{end: int, start: int}
+ * @phpstan-type ExternalClosedRangeShape = array{end: int, start: int}
  */
 final class ExternalClosedRange implements BaseModel
 {
-    /** @use SdkModel<external_closed_range> */
+    /** @use SdkModel<ExternalClosedRangeShape> */
     use SdkModel;
 
     #[Api]

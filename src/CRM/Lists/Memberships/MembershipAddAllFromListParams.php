@@ -18,11 +18,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Memberships->addAllFromList
  *
- * @phpstan-type membership_add_all_from_list_params = array{listID: string}
+ * @phpstan-type MembershipAddAllFromListParamsShape = array{listID: string}
  */
 final class MembershipAddAllFromListParams implements BaseModel
 {
-    /** @use SdkModel<membership_add_all_from_list_params> */
+    /** @use SdkModel<MembershipAddAllFromListParamsShape> */
     use SdkModel;
     use SdkParams;
 

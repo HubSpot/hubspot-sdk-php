@@ -12,7 +12,7 @@ use HubspotSDK\PropertyCreate\FieldType;
 use HubspotSDK\PropertyCreate\Type;
 
 /**
- * @phpstan-type property_create = array{
+ * @phpstan-type PropertyCreateShape = array{
  *   fieldType: value-of<FieldType>,
  *   groupName: string,
  *   label: string,
@@ -32,7 +32,7 @@ use HubspotSDK\PropertyCreate\Type;
  */
 final class PropertyCreate implements BaseModel
 {
-    /** @use SdkModel<property_create> */
+    /** @use SdkModel<PropertyCreateShape> */
     use SdkModel;
 
     /** @var value-of<FieldType> $fieldType */

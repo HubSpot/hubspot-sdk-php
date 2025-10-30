@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Properties\Groups->delete
  *
- * @phpstan-type group_delete_params = array{objectType: string}
+ * @phpstan-type GroupDeleteParamsShape = array{objectType: string}
  */
 final class GroupDeleteParams implements BaseModel
 {
-    /** @use SdkModel<group_delete_params> */
+    /** @use SdkModel<GroupDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

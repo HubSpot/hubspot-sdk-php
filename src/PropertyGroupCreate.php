@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type property_group_create = array{
+ * @phpstan-type PropertyGroupCreateShape = array{
  *   label: string, name: string, displayOrder?: int
  * }
  */
 final class PropertyGroupCreate implements BaseModel
 {
-    /** @use SdkModel<property_group_create> */
+    /** @use SdkModel<PropertyGroupCreateShape> */
     use SdkModel;
 
     #[Api]

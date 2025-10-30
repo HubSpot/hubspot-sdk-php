@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type custom_object_record_limit_response = array{
+ * @phpstan-type CustomObjectRecordLimitResponseShape = array{
  *   byObjectType: list<UsageForObjectType>,
  *   overallLimit: int,
  *   overallPercentage: float,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CustomObjectRecordLimitResponse implements BaseModel
 {
-    /** @use SdkModel<custom_object_record_limit_response> */
+    /** @use SdkModel<CustomObjectRecordLimitResponseShape> */
     use SdkModel;
 
     /** @var list<UsageForObjectType> $byObjectType */

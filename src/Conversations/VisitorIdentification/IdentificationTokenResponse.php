@@ -13,11 +13,11 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * The identification token to be passed to the Conversations JS API to identify the visitor.
  *
- * @phpstan-type identification_token_response = array{token: string}
+ * @phpstan-type IdentificationTokenResponseShape = array{token: string}
  */
 final class IdentificationTokenResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<identification_token_response> */
+    /** @use SdkModel<IdentificationTokenResponseShape> */
     use SdkModel;
 
     use SdkResponse;

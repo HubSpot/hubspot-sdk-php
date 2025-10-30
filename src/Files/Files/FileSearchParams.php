@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Files\Files->search
  *
- * @phpstan-type file_search_params = array{
+ * @phpstan-type FileSearchParamsShape = array{
  *   after?: string,
  *   allowsAnonymousAccess?: bool,
  *   before?: string,
@@ -55,7 +55,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class FileSearchParams implements BaseModel
 {
-    /** @use SdkModel<file_search_params> */
+    /** @use SdkModel<FileSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

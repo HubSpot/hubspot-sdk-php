@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type collection_response_public_team_no_paging = array{
+ * @phpstan-type CollectionResponsePublicTeamNoPagingShape = array{
  *   results: list<PublicTeam>
  * }
  */
 final class CollectionResponsePublicTeamNoPaging implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_public_team_no_paging> */
+    /** @use SdkModel<CollectionResponsePublicTeamNoPagingShape> */
     use SdkModel;
 
     use SdkResponse;

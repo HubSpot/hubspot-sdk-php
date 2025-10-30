@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
- * @phpstan-type object_type_definition_patch = array{
+ * @phpstan-type ObjectTypeDefinitionPatchShape = array{
  *   clearDescription: bool,
  *   allowsSensitiveProperties?: bool,
  *   description?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  */
 final class ObjectTypeDefinitionPatch implements BaseModel
 {
-    /** @use SdkModel<object_type_definition_patch> */
+    /** @use SdkModel<ObjectTypeDefinitionPatchShape> */
     use SdkModel;
 
     #[Api]

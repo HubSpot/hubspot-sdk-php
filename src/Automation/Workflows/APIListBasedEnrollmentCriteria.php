@@ -19,7 +19,7 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
- * @phpstan-type api_list_based_enrollment_criteria = array{
+ * @phpstan-type APIListBasedEnrollmentCriteriaShape = array{
  *   listFilterBranch: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
  *   reEnrollmentTriggersFilterBranches: list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch>,
  *   shouldReEnroll: bool,
@@ -29,7 +29,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  */
 final class APIListBasedEnrollmentCriteria implements BaseModel
 {
-    /** @use SdkModel<api_list_based_enrollment_criteria> */
+    /** @use SdkModel<APIListBasedEnrollmentCriteriaShape> */
     use SdkModel;
 
     /**

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * State of the template definition being updated.
  *
- * @phpstan-type timeline_event_template_update_request = array{
+ * @phpstan-type TimelineEventTemplateUpdateRequestShape = array{
  *   id: string,
  *   name: string,
  *   tokens: list<TimelineEventTemplateToken>,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TimelineEventTemplateUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<timeline_event_template_update_request> */
+    /** @use SdkModel<TimelineEventTemplateUpdateRequestShape> */
     use SdkModel;
 
     /**

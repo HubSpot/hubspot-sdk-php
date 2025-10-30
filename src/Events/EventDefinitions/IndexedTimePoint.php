@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\IndexedTimePoint\TimeType;
 use HubspotSDK\Events\EventDefinitions\IndexedTimePoint\TimezoneSource;
 
 /**
- * @phpstan-type indexed_time_point = array{
+ * @phpstan-type IndexedTimePointShape = array{
  *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
  *   timeType: value-of<TimeType>,
  *   timezoneSource: value-of<TimezoneSource>,
@@ -21,7 +21,7 @@ use HubspotSDK\Events\EventDefinitions\IndexedTimePoint\TimezoneSource;
  */
 final class IndexedTimePoint implements BaseModel
 {
-    /** @use SdkModel<indexed_time_point> */
+    /** @use SdkModel<IndexedTimePointShape> */
     use SdkModel;
 
     #[Api]

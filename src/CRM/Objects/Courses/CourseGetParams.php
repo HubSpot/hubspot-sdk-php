@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Courses->get
  *
- * @phpstan-type course_get_params = array{
+ * @phpstan-type CourseGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CourseGetParams implements BaseModel
 {
-    /** @use SdkModel<course_get_params> */
+    /** @use SdkModel<CourseGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

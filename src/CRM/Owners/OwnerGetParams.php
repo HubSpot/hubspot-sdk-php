@@ -15,13 +15,13 @@ use HubspotSDK\CRM\Owners\OwnerGetParams\IDProperty;
  *
  * @see HubspotSDK\CRM\Owners->get
  *
- * @phpstan-type owner_get_params = array{
+ * @phpstan-type OwnerGetParamsShape = array{
  *   archived?: bool, idProperty?: IDProperty|value-of<IDProperty>
  * }
  */
 final class OwnerGetParams implements BaseModel
 {
-    /** @use SdkModel<owner_get_params> */
+    /** @use SdkModel<OwnerGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Services->get
  *
- * @phpstan-type service_get_params = array{
+ * @phpstan-type ServiceGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ServiceGetParams implements BaseModel
 {
-    /** @use SdkModel<service_get_params> */
+    /** @use SdkModel<ServiceGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

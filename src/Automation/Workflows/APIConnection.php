@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_connection = array{edgeType: string, nextActionID: string}
+ * @phpstan-type APIConnectionShape = array{edgeType: string, nextActionID: string}
  */
 final class APIConnection implements BaseModel
 {
-    /** @use SdkModel<api_connection> */
+    /** @use SdkModel<APIConnectionShape> */
     use SdkModel;
 
     #[Api]

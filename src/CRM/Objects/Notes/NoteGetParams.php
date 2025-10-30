@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Notes->get
  *
- * @phpstan-type note_get_params = array{
+ * @phpstan-type NoteGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class NoteGetParams implements BaseModel
 {
-    /** @use SdkModel<note_get_params> */
+    /** @use SdkModel<NoteGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

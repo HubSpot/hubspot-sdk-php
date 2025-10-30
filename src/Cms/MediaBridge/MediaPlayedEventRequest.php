@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type media_played_event_request = array{
+ * @phpstan-type MediaPlayedEventRequestShape = array{
  *   mediaType: value-of<MediaType>,
  *   occurredTimestamp: int,
  *   sessionID: string,
@@ -31,7 +31,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MediaPlayedEventRequest implements BaseModel
 {
-    /** @use SdkModel<media_played_event_request> */
+    /** @use SdkModel<MediaPlayedEventRequestShape> */
     use SdkModel;
 
     /** @var value-of<MediaType> $mediaType */

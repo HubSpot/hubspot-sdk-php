@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_action_function_identifier = array{
+ * @phpstan-type PublicActionFunctionIdentifierShape = array{
  *   functionType: value-of<FunctionType>, id?: string
  * }
  */
 final class PublicActionFunctionIdentifier implements BaseModel
 {
-    /** @use SdkModel<public_action_function_identifier> */
+    /** @use SdkModel<PublicActionFunctionIdentifierShape> */
     use SdkModel;
 
     /** @var value-of<FunctionType> $functionType */

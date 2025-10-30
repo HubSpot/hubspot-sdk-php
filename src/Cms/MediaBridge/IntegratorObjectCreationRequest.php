@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type integrator_object_creation_request = array{
+ * @phpstan-type IntegratorObjectCreationRequestShape = array{
  *   mediaTypes: list<value-of<MediaType>>
  * }
  */
 final class IntegratorObjectCreationRequest implements BaseModel
 {
-    /** @use SdkModel<integrator_object_creation_request> */
+    /** @use SdkModel<IntegratorObjectCreationRequestShape> */
     use SdkModel;
 
     /** @var list<value-of<MediaType>> $mediaTypes */

@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_link_form_field = array{
+ * @phpstan-type ExternalLinkFormFieldShape = array{
  *   fieldType: string,
  *   isCustom: bool,
  *   isRequired: bool,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalLinkFormField implements BaseModel
 {
-    /** @use SdkModel<external_link_form_field> */
+    /** @use SdkModel<ExternalLinkFormFieldShape> */
     use SdkModel;
 
     #[Api]

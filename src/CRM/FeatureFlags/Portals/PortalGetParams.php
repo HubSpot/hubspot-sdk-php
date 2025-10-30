@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\FeatureFlags\Portals->get
  *
- * @phpstan-type portal_get_params = array{appID: int, flagName: string}
+ * @phpstan-type PortalGetParamsShape = array{appID: int, flagName: string}
  */
 final class PortalGetParams implements BaseModel
 {
-    /** @use SdkModel<portal_get_params> */
+    /** @use SdkModel<PortalGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

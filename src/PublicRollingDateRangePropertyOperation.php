@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicRollingDateRangePropertyOperation\OperationType;
 
 /**
- * @phpstan-type public_rolling_date_range_property_operation = array{
+ * @phpstan-type PublicRollingDateRangePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   numberOfDays: int,
  *   operationType: value-of<OperationType>,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicRollingDateRangePropertyOperation\OperationType;
  */
 final class PublicRollingDateRangePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<public_rolling_date_range_property_operation> */
+    /** @use SdkModel<PublicRollingDateRangePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

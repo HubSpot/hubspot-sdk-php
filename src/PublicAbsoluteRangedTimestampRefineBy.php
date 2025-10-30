@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAbsoluteRangedTimestampRefineBy\Type;
 
 /**
- * @phpstan-type public_absolute_ranged_timestamp_refine_by = array{
+ * @phpstan-type PublicAbsoluteRangedTimestampRefineByShape = array{
  *   lowerTimestamp: int,
  *   rangeType: string,
  *   type: value-of<Type>,
@@ -19,7 +19,7 @@ use HubspotSDK\PublicAbsoluteRangedTimestampRefineBy\Type;
  */
 final class PublicAbsoluteRangedTimestampRefineBy implements BaseModel
 {
-    /** @use SdkModel<public_absolute_ranged_timestamp_refine_by> */
+    /** @use SdkModel<PublicAbsoluteRangedTimestampRefineByShape> */
     use SdkModel;
 
     #[Api]

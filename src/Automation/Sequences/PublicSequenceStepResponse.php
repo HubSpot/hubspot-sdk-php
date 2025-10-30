@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_sequence_step_response = array{
+ * @phpstan-type PublicSequenceStepResponseShape = array{
  *   id: string,
  *   actionType: string,
  *   createdAt: \DateTimeInterface,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicSequenceStepResponse implements BaseModel
 {
-    /** @use SdkModel<public_sequence_step_response> */
+    /** @use SdkModel<PublicSequenceStepResponseShape> */
     use SdkModel;
 
     #[Api]

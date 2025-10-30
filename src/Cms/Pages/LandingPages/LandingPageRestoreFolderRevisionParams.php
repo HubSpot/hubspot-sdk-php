@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->restoreFolderRevision
  *
- * @phpstan-type landing_page_restore_folder_revision_params = array{
+ * @phpstan-type LandingPageRestoreFolderRevisionParamsShape = array{
  *   objectID: string
  * }
  */
 final class LandingPageRestoreFolderRevisionParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_restore_folder_revision_params> */
+    /** @use SdkModel<LandingPageRestoreFolderRevisionParamsShape> */
     use SdkModel;
     use SdkParams;
 

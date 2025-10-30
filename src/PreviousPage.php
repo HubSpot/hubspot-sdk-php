@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * specifies the paging information needed to retrieve the previous set of results in a paginated API response.
  *
- * @phpstan-type previous_page = array{before: string, link?: string}
+ * @phpstan-type PreviousPageShape = array{before: string, link?: string}
  */
 final class PreviousPage implements BaseModel
 {
-    /** @use SdkModel<previous_page> */
+    /** @use SdkModel<PreviousPageShape> */
     use SdkModel;
 
     /**

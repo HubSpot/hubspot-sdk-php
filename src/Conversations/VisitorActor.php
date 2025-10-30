@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type visitor_actor = array{
+ * @phpstan-type VisitorActorShape = array{
  *   id: string,
  *   type: value-of<Type>,
  *   avatar?: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class VisitorActor implements BaseModel
 {
-    /** @use SdkModel<visitor_actor> */
+    /** @use SdkModel<VisitorActorShape> */
     use SdkModel;
 
     #[Api]

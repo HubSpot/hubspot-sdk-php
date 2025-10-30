@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\FeedbackSubmissions->search
  *
- * @phpstan-type feedback_submission_search_params = array{
+ * @phpstan-type FeedbackSubmissionSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class FeedbackSubmissionSearchParams implements BaseModel
 {
-    /** @use SdkModel<feedback_submission_search_params> */
+    /** @use SdkModel<FeedbackSubmissionSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

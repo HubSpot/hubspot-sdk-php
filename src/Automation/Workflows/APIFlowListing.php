@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type api_flow_listing = array{
+ * @phpstan-type APIFlowListingShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   flowType: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class APIFlowListing implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<api_flow_listing> */
+    /** @use SdkModel<APIFlowListingShape> */
     use SdkModel;
 
     use SdkResponse;

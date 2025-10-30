@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Authors->updateBatch
  *
- * @phpstan-type author_update_batch_params = array{
+ * @phpstan-type AuthorUpdateBatchParamsShape = array{
  *   inputs: list<mixed>, archived?: bool
  * }
  */
 final class AuthorUpdateBatchParams implements BaseModel
 {
-    /** @use SdkModel<author_update_batch_params> */
+    /** @use SdkModel<AuthorUpdateBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

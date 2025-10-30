@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Groups->updateByName
  *
- * @phpstan-type group_update_by_name_params = array{
+ * @phpstan-type GroupUpdateByNameParamsShape = array{
  *   appID: string, objectType: string, displayOrder?: int, label?: string
  * }
  */
 final class GroupUpdateByNameParams implements BaseModel
 {
-    /** @use SdkModel<group_update_by_name_params> */
+    /** @use SdkModel<GroupUpdateByNameParamsShape> */
     use SdkModel;
     use SdkParams;
 

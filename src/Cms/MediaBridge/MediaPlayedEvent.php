@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type media_played_event = array{
+ * @phpstan-type MediaPlayedEventShape = array{
  *   contactID: int,
  *   mediaBridgeID: int,
  *   mediaBridgeObjectCoordinates: string,
@@ -33,7 +33,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MediaPlayedEvent implements BaseModel
 {
-    /** @use SdkModel<media_played_event> */
+    /** @use SdkModel<MediaPlayedEventShape> */
     use SdkModel;
 
     #[Api('contactId')]

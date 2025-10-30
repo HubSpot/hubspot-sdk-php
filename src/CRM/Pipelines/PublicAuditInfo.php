@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_audit_info = array{
+ * @phpstan-type PublicAuditInfoShape = array{
  *   action: string,
  *   identifier: string,
  *   portalID: int,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicAuditInfo implements BaseModel
 {
-    /** @use SdkModel<public_audit_info> */
+    /** @use SdkModel<PublicAuditInfoShape> */
     use SdkModel;
 
     #[Api]

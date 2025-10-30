@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_meetings_user = array{
+ * @phpstan-type ExternalMeetingsUserShape = array{
  *   id: string,
  *   calendarProvider: string,
  *   isSalesStarter: bool,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalMeetingsUser implements BaseModel
 {
-    /** @use SdkModel<external_meetings_user> */
+    /** @use SdkModel<ExternalMeetingsUserShape> */
     use SdkModel;
 
     #[Api]

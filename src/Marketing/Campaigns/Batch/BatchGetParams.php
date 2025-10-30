@@ -18,7 +18,7 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
  *
  * @see HubspotSDK\Marketing\Campaigns\Batch->get
  *
- * @phpstan-type batch_get_params = array{
+ * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<PublicCampaignReadInput>,
  *   endDate?: string,
  *   properties?: list<string>,
@@ -27,7 +27,7 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
  */
 final class BatchGetParams implements BaseModel
 {
-    /** @use SdkModel<batch_get_params> */
+    /** @use SdkModel<BatchGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicNumAssociationsFilter\FilterType;
 
 /**
- * @phpstan-type public_num_associations_filter = array{
+ * @phpstan-type PublicNumAssociationsFilterShape = array{
  *   associationCategory: string,
  *   associationTypeID: int,
  *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
@@ -19,7 +19,7 @@ use HubspotSDK\PublicNumAssociationsFilter\FilterType;
  */
 final class PublicNumAssociationsFilter implements BaseModel
 {
-    /** @use SdkModel<public_num_associations_filter> */
+    /** @use SdkModel<PublicNumAssociationsFilterShape> */
     use SdkModel;
 
     #[Api]

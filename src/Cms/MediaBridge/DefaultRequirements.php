@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type default_requirements = array{
+ * @phpstan-type DefaultRequirementsShape = array{
  *   gates: list<string>,
  *   operator: value-of<Operator>,
  *   scopeNames: list<string>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class DefaultRequirements implements BaseModel
 {
-    /** @use SdkModel<default_requirements> */
+    /** @use SdkModel<DefaultRequirementsShape> */
     use SdkModel;
 
     /** @var list<string> $gates */

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->updateBatch
  *
- * @phpstan-type event_update_batch_params = array{
+ * @phpstan-type EventUpdateBatchParamsShape = array{
  *   inputs: list<MarketingEventPublicUpdateRequestFullV2>
  * }
  */
 final class EventUpdateBatchParams implements BaseModel
 {
-    /** @use SdkModel<event_update_batch_params> */
+    /** @use SdkModel<EventUpdateBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

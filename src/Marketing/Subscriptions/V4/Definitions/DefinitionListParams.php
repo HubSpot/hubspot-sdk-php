@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Subscriptions\V4\Definitions->list
  *
- * @phpstan-type definition_list_params = array{
+ * @phpstan-type DefinitionListParamsShape = array{
  *   businessUnitID?: int, includeTranslations?: bool
  * }
  */
 final class DefinitionListParams implements BaseModel
 {
-    /** @use SdkModel<definition_list_params> */
+    /** @use SdkModel<DefinitionListParamsShape> */
     use SdkModel;
     use SdkParams;
 

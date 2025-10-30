@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Represents the input required to create or update a CRM object, containing an object with property names and their corresponding values.
  *
- * @phpstan-type simple_public_object_input = array{
+ * @phpstan-type SimplePublicObjectInputShape = array{
  *   properties: array<string, string>
  * }
  */
 final class SimplePublicObjectInput implements BaseModel
 {
-    /** @use SdkModel<simple_public_object_input> */
+    /** @use SdkModel<SimplePublicObjectInputShape> */
     use SdkModel;
 
     /**

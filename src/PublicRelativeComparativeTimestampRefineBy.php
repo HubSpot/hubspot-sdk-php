@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicRelativeComparativeTimestampRefineBy\Type;
 
 /**
- * @phpstan-type public_relative_comparative_timestamp_refine_by = array{
+ * @phpstan-type PublicRelativeComparativeTimestampRefineByShape = array{
  *   comparison: string, timeOffset: PublicTimeOffset, type: value-of<Type>
  * }
  */
 final class PublicRelativeComparativeTimestampRefineBy implements BaseModel
 {
-    /** @use SdkModel<public_relative_comparative_timestamp_refine_by> */
+    /** @use SdkModel<PublicRelativeComparativeTimestampRefineByShape> */
     use SdkModel;
 
     #[Api]

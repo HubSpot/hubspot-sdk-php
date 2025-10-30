@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_api_flow_listing_forward_paging = array{
+ * @phpstan-type CollectionResponseAPIFlowListingForwardPagingShape = array{
  *   results: list<APIFlowListing>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseAPIFlowListingForwardPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_api_flow_listing_forward_paging> */
+    /** @use SdkModel<CollectionResponseAPIFlowListingForwardPagingShape> */
     use SdkModel;
 
     /** @var list<APIFlowListing> $results */

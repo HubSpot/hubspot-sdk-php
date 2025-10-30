@@ -9,11 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_message_content = array{richText?: string, text?: string}
+ * @phpstan-type PublicMessageContentShape = array{
+ *   richText?: string, text?: string
+ * }
  */
 final class PublicMessageContent implements BaseModel
 {
-    /** @use SdkModel<public_message_content> */
+    /** @use SdkModel<PublicMessageContentShape> */
     use SdkModel;
 
     #[Api(optional: true)]

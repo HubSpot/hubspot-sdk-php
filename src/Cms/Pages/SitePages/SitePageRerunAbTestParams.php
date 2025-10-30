@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->rerunAbTest
  *
- * @phpstan-type site_page_rerun_ab_test_params = array{
+ * @phpstan-type SitePageRerunAbTestParamsShape = array{
  *   abTestID: string, variationID: string
  * }
  */
 final class SitePageRerunAbTestParams implements BaseModel
 {
-    /** @use SdkModel<site_page_rerun_ab_test_params> */
+    /** @use SdkModel<SitePageRerunAbTestParamsShape> */
     use SdkModel;
     use SdkParams;
 

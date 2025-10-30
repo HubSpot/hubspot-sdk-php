@@ -13,7 +13,7 @@ use HubspotSDK\CRM\Exports\PublicExportViewRequest\Format;
 use HubspotSDK\CRM\Exports\PublicExportViewRequest\Language;
 
 /**
- * @phpstan-type public_export_view_request = array{
+ * @phpstan-type PublicExportViewRequestShape = array{
  *   exportInternalValuesOptions: list<value-of<ExportInternalValuesOption>>,
  *   exportName: string,
  *   exportType: value-of<ExportType>,
@@ -28,7 +28,7 @@ use HubspotSDK\CRM\Exports\PublicExportViewRequest\Language;
  */
 final class PublicExportViewRequest implements BaseModel
 {
-    /** @use SdkModel<public_export_view_request> */
+    /** @use SdkModel<PublicExportViewRequestShape> */
     use SdkModel;
 
     /**

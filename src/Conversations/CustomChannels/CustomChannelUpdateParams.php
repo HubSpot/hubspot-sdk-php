@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\CustomChannels->update
  *
- * @phpstan-type custom_channel_update_params = array{
+ * @phpstan-type CustomChannelUpdateParamsShape = array{
  *   capabilities: array<string, mixed>,
  *   channelDescription: mixed,
  *   channelLogoURL: mixed,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CustomChannelUpdateParams implements BaseModel
 {
-    /** @use SdkModel<custom_channel_update_params> */
+    /** @use SdkModel<CustomChannelUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

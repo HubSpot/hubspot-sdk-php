@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_sequence_settings_response = array{
+ * @phpstan-type PublicSequenceSettingsResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   eligibleFollowUpDays: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicSequenceSettingsResponse implements BaseModel
 {
-    /** @use SdkModel<public_sequence_settings_response> */
+    /** @use SdkModel<PublicSequenceSettingsResponseShape> */
     use SdkModel;
 
     #[Api]

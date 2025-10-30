@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_meetings_welcome_screen_info = array{
+ * @phpstan-type ExternalMeetingsWelcomeScreenInfoShape = array{
  *   description?: string,
  *   logoURL?: string,
  *   showWelcomeScreen?: bool,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
 {
-    /** @use SdkModel<external_meetings_welcome_screen_info> */
+    /** @use SdkModel<ExternalMeetingsWelcomeScreenInfoShape> */
     use SdkModel;
 
     #[Api(optional: true)]

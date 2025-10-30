@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type marketing_event_update_request_params = array{
+ * @phpstan-type MarketingEventUpdateRequestParamsShape = array{
  *   customProperties?: list<PropertyValue>,
  *   endDateTime?: \DateTimeInterface,
  *   eventCancelled?: bool,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MarketingEventUpdateRequestParams implements BaseModel
 {
-    /** @use SdkModel<marketing_event_update_request_params> */
+    /** @use SdkModel<MarketingEventUpdateRequestParamsShape> */
     use SdkModel;
 
     /**

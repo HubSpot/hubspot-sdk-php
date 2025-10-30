@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type file_attachment = array{
+ * @phpstan-type FileAttachmentShape = array{
  *   fileID: string, type: value-of<Type>, fileUsageType?: string
  * }
  */
 final class FileAttachment implements BaseModel
 {
-    /** @use SdkModel<file_attachment> */
+    /** @use SdkModel<FileAttachmentShape> */
     use SdkModel;
 
     #[Api('fileId')]

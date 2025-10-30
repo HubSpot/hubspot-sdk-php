@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Taxes->create
  *
- * @phpstan-type tax_create_params = array{
+ * @phpstan-type TaxCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class TaxCreateParams implements BaseModel
 {
-    /** @use SdkModel<tax_create_params> */
+    /** @use SdkModel<TaxCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

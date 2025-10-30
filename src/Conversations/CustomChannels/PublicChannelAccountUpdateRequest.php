@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_channel_account_update_request = array{
+ * @phpstan-type PublicChannelAccountUpdateRequestShape = array{
  *   authorized?: bool, name?: string
  * }
  */
 final class PublicChannelAccountUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<public_channel_account_update_request> */
+    /** @use SdkModel<PublicChannelAccountUpdateRequestShape> */
     use SdkModel;
 
     #[Api(optional: true)]

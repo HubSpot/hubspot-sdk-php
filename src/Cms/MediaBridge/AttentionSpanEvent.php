@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type attention_span_event = array{
+ * @phpstan-type AttentionSpanEventShape = array{
  *   contactID: int,
  *   mediaBridgeID: int,
  *   mediaBridgeObjectCoordinates: string,
@@ -34,7 +34,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AttentionSpanEvent implements BaseModel
 {
-    /** @use SdkModel<attention_span_event> */
+    /** @use SdkModel<AttentionSpanEventShape> */
     use SdkModel;
 
     /**

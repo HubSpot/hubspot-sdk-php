@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_email_reminder_schedule = array{
+ * @phpstan-type ExternalEmailReminderScheduleShape = array{
  *   reminders: list<ExternalReminder>, shouldIncludeInviteDescription: bool
  * }
  */
 final class ExternalEmailReminderSchedule implements BaseModel
 {
-    /** @use SdkModel<external_email_reminder_schedule> */
+    /** @use SdkModel<ExternalEmailReminderScheduleShape> */
     use SdkModel;
 
     /** @var list<ExternalReminder> $reminders */

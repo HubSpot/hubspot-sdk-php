@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_action_function = array{
+ * @phpstan-type PublicActionFunctionShape = array{
  *   functionSource: string, functionType: value-of<FunctionType>, id?: string
  * }
  */
 final class PublicActionFunction implements BaseModel
 {
-    /** @use SdkModel<public_action_function> */
+    /** @use SdkModel<PublicActionFunctionShape> */
     use SdkModel;
 
     #[Api]

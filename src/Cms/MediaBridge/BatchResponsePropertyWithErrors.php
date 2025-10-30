@@ -12,7 +12,7 @@ use HubspotSDK\Property;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_property_with_errors = array{
+ * @phpstan-type BatchResponsePropertyWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<Property>,
  *   startedAt: \DateTimeInterface,
@@ -25,7 +25,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponsePropertyWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_property_with_errors> */
+    /** @use SdkModel<BatchResponsePropertyWithErrorsShape> */
     use SdkModel;
 
     #[Api]

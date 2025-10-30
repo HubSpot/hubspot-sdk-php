@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\VisitorIdentification->generateToken
  *
- * @phpstan-type visitor_identification_generate_token_params = array{
+ * @phpstan-type VisitorIdentificationGenerateTokenParamsShape = array{
  *   email: string, firstName?: string, lastName?: string
  * }
  */
 final class VisitorIdentificationGenerateTokenParams implements BaseModel
 {
-    /** @use SdkModel<visitor_identification_generate_token_params> */
+    /** @use SdkModel<VisitorIdentificationGenerateTokenParamsShape> */
     use SdkModel;
     use SdkParams;
 

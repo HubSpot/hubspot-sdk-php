@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->upsertByExternalEventID
  *
- * @phpstan-type event_upsert_by_external_event_id_params = array{
+ * @phpstan-type EventUpsertByExternalEventIDParamsShape = array{
  *   eventName: string,
  *   eventOrganizer: string,
  *   externalAccountID: string,
@@ -31,7 +31,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EventUpsertByExternalEventIDParams implements BaseModel
 {
-    /** @use SdkModel<event_upsert_by_external_event_id_params> */
+    /** @use SdkModel<EventUpsertByExternalEventIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

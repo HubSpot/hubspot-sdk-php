@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Spend->create
  *
- * @phpstan-type spend_create_params = array{
+ * @phpstan-type SpendCreateParamsShape = array{
  *   amount: float, name: string, order: int, description?: string
  * }
  */
 final class SpendCreateParams implements BaseModel
 {
-    /** @use SdkModel<spend_create_params> */
+    /** @use SdkModel<SpendCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

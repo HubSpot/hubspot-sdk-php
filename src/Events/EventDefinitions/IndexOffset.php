@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type index_offset = array{
+ * @phpstan-type IndexOffsetShape = array{
  *   days?: int,
  *   hours?: int,
  *   milliseconds?: int,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class IndexOffset implements BaseModel
 {
-    /** @use SdkModel<index_offset> */
+    /** @use SdkModel<IndexOffsetShape> */
     use SdkModel;
 
     #[Api(optional: true)]

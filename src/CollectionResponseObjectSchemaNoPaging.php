@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Objects\Schemas\ObjectSchema;
 
 /**
- * @phpstan-type collection_response_object_schema_no_paging = array{
+ * @phpstan-type CollectionResponseObjectSchemaNoPagingShape = array{
  *   results: list<ObjectSchema>
  * }
  */
 final class CollectionResponseObjectSchemaNoPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_object_schema_no_paging> */
+    /** @use SdkModel<CollectionResponseObjectSchemaNoPagingShape> */
     use SdkModel;
 
     /** @var list<ObjectSchema> $results */

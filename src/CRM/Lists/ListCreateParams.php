@@ -22,7 +22,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *
  * @see HubspotSDK\CRM\Lists->create
  *
- * @phpstan-type list_create_params = array{
+ * @phpstan-type ListCreateParamsShape = array{
  *   name: string,
  *   objectTypeID: string,
  *   processingType: string,
@@ -35,7 +35,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  */
 final class ListCreateParams implements BaseModel
 {
-    /** @use SdkModel<list_create_params> */
+    /** @use SdkModel<ListCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

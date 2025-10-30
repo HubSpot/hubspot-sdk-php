@@ -12,7 +12,7 @@ use HubspotSDK\Files\File\Access;
 /**
  * File.
  *
- * @phpstan-type file_alias = array{
+ * @phpstan-type FileShape = array{
  *   id: string,
  *   access: value-of<Access>,
  *   archived: bool,
@@ -38,7 +38,7 @@ use HubspotSDK\Files\File\Access;
  */
 final class File implements BaseModel
 {
-    /** @use SdkModel<file_alias> */
+    /** @use SdkModel<FileShape> */
     use SdkModel;
 
     /**

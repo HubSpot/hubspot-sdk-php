@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts\Batch->delete
  *
- * @phpstan-type batch_delete_params = array{inputs: list<string>}
+ * @phpstan-type BatchDeleteParamsShape = array{inputs: list<string>}
  */
 final class BatchDeleteParams implements BaseModel
 {
-    /** @use SdkModel<batch_delete_params> */
+    /** @use SdkModel<BatchDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

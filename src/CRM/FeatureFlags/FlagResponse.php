@@ -11,7 +11,7 @@ use HubspotSDK\CRM\FeatureFlags\FlagResponse\DefaultState;
 use HubspotSDK\CRM\FeatureFlags\FlagResponse\OverrideState;
 
 /**
- * @phpstan-type flag_response = array{
+ * @phpstan-type FlagResponseShape = array{
  *   appID: int,
  *   defaultState: value-of<DefaultState>,
  *   flagName: string,
@@ -20,7 +20,7 @@ use HubspotSDK\CRM\FeatureFlags\FlagResponse\OverrideState;
  */
 final class FlagResponse implements BaseModel
 {
-    /** @use SdkModel<flag_response> */
+    /** @use SdkModel<FlagResponseShape> */
     use SdkModel;
 
     #[Api('appId')]

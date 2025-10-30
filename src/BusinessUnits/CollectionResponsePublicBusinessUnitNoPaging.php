@@ -14,13 +14,13 @@ use HubspotSDK\Marketing\Campaigns\PublicBusinessUnit;
 /**
  * A response object containing a collection of Business Units.
  *
- * @phpstan-type collection_response_public_business_unit_no_paging = array{
+ * @phpstan-type CollectionResponsePublicBusinessUnitNoPagingShape = array{
  *   results: list<PublicBusinessUnit>
  * }
  */
 final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_public_business_unit_no_paging> */
+    /** @use SdkModel<CollectionResponsePublicBusinessUnitNoPagingShape> */
     use SdkModel;
 
     use SdkResponse;

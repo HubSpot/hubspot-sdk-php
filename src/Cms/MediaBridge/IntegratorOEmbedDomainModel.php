@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type integrator_o_embed_domain_model = array{
+ * @phpstan-type IntegratorOEmbedDomainModelShape = array{
  *   id: int,
  *   appID: int,
  *   createdAt: int,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class IntegratorOEmbedDomainModel implements BaseModel
 {
-    /** @use SdkModel<integrator_o_embed_domain_model> */
+    /** @use SdkModel<IntegratorOEmbedDomainModelShape> */
     use SdkModel;
 
     #[Api]

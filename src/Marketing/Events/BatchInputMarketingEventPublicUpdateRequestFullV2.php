@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_marketing_event_public_update_request_full_v2 = array{
+ * @phpstan-type BatchInputMarketingEventPublicUpdateRequestFullV2Shape = array{
  *   inputs: list<MarketingEventPublicUpdateRequestFullV2>
  * }
  */
 final class BatchInputMarketingEventPublicUpdateRequestFullV2 implements BaseModel
 {
-    /** @use SdkModel<batch_input_marketing_event_public_update_request_full_v2> */
+    /** @use SdkModel<BatchInputMarketingEventPublicUpdateRequestFullV2Shape> */
     use SdkModel;
 
     /** @var list<MarketingEventPublicUpdateRequestFullV2> $inputs */

@@ -22,7 +22,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->updateDraft
  *
- * @phpstan-type landing_page_update_draft_params = array{
+ * @phpstan-type LandingPageUpdateDraftParamsShape = array{
  *   id: string,
  *   abStatus: AbStatus|value-of<AbStatus>,
  *   abTestID: string,
@@ -84,7 +84,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class LandingPageUpdateDraftParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_update_draft_params> */
+    /** @use SdkModel<LandingPageUpdateDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

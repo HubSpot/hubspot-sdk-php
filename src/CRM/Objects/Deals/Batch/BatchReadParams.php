@@ -15,7 +15,7 @@ use HubspotSDK\CRM\SimplePublicObjectID;
  *
  * @see HubspotSDK\CRM\Objects\Deals\Batch->read
  *
- * @phpstan-type batch_read_params = array{
+ * @phpstan-type BatchReadParamsShape = array{
  *   inputs: list<SimplePublicObjectID>,
  *   properties: list<string>,
  *   propertiesWithHistory: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\CRM\SimplePublicObjectID;
  */
 final class BatchReadParams implements BaseModel
 {
-    /** @use SdkModel<batch_read_params> */
+    /** @use SdkModel<BatchReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

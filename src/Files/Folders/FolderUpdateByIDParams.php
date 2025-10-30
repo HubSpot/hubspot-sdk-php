@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Files\Folders->updateByID
  *
- * @phpstan-type folder_update_by_id_params = array{
+ * @phpstan-type FolderUpdateByIDParamsShape = array{
  *   name?: string, parentFolderID?: int
  * }
  */
 final class FolderUpdateByIDParams implements BaseModel
 {
-    /** @use SdkModel<folder_update_by_id_params> */
+    /** @use SdkModel<FolderUpdateByIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

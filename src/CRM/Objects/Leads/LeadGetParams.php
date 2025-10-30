@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Leads->get
  *
- * @phpstan-type lead_get_params = array{
+ * @phpstan-type LeadGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LeadGetParams implements BaseModel
 {
-    /** @use SdkModel<lead_get_params> */
+    /** @use SdkModel<LeadGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

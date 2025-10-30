@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Represents an object used in batch upsert operations, containing an object’s unique identifier, its properties, and optionally the unique property name and a write trace ID.
  *
- * @phpstan-type simple_public_object_batch_input_upsert = array{
+ * @phpstan-type SimplePublicObjectBatchInputUpsertShape = array{
  *   id: string,
  *   properties: array<string, string>,
  *   idProperty?: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SimplePublicObjectBatchInputUpsert implements BaseModel
 {
-    /** @use SdkModel<simple_public_object_batch_input_upsert> */
+    /** @use SdkModel<SimplePublicObjectBatchInputUpsertShape> */
     use SdkModel;
 
     /**

@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type list_folder_fetch_response = array{folder: PublicListFolder}
+ * @phpstan-type ListFolderFetchResponseShape = array{folder: PublicListFolder}
  */
 final class ListFolderFetchResponse implements BaseModel
 {
-    /** @use SdkModel<list_folder_fetch_response> */
+    /** @use SdkModel<ListFolderFetchResponseShape> */
     use SdkModel;
 
     #[Api]

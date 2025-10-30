@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows->cloneDraft
  *
- * @phpstan-type row_clone_draft_params = array{
+ * @phpstan-type RowCloneDraftParamsShape = array{
  *   tableIDOrName: string, name?: string
  * }
  */
 final class RowCloneDraftParams implements BaseModel
 {
-    /** @use SdkModel<row_clone_draft_params> */
+    /** @use SdkModel<RowCloneDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

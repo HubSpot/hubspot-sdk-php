@@ -15,13 +15,13 @@ use HubspotSDK\CRM\SimplePublicObjectBatchInputForCreate;
  *
  * @see HubspotSDK\CRM\Users\Batch->create
  *
- * @phpstan-type batch_create_params = array{
+ * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>
  * }
  */
 final class BatchCreateParams implements BaseModel
 {
-    /** @use SdkModel<batch_create_params> */
+    /** @use SdkModel<BatchCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

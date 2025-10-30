@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicTimePointOperation\OperationType;
 
 /**
- * @phpstan-type public_time_point_operation = array{
+ * @phpstan-type PublicTimePointOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: value-of<OperationType>,
  *   operator: string,
@@ -22,7 +22,7 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
  */
 final class PublicTimePointOperation implements BaseModel
 {
-    /** @use SdkModel<public_time_point_operation> */
+    /** @use SdkModel<PublicTimePointOperationShape> */
     use SdkModel;
 
     #[Api]

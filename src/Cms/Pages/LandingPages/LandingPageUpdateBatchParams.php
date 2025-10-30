@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->updateBatch
  *
- * @phpstan-type landing_page_update_batch_params = array{
+ * @phpstan-type LandingPageUpdateBatchParamsShape = array{
  *   inputs: list<mixed>, archived?: bool
  * }
  */
 final class LandingPageUpdateBatchParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_update_batch_params> */
+    /** @use SdkModel<LandingPageUpdateBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

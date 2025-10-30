@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\Status;
 use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\WideStatusType;
 
 /**
- * @phpstan-type public_wide_status = array{
+ * @phpstan-type PublicWideStatusShape = array{
  *   channel: value-of<Channel>,
  *   status: value-of<Status>,
  *   subscriberIDString: string,
@@ -23,7 +23,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\WideStatusType;
  */
 final class PublicWideStatus implements BaseModel
 {
-    /** @use SdkModel<public_wide_status> */
+    /** @use SdkModel<PublicWideStatusShape> */
     use SdkModel;
 
     /**

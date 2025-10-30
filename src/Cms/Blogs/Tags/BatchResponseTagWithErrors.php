@@ -13,7 +13,7 @@ use HubspotSDK\StandardError;
 /**
  * Response object for batch operations on blog tags with errors.
  *
- * @phpstan-type batch_response_tag_with_errors = array{
+ * @phpstan-type BatchResponseTagWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<Tag>,
  *   startedAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseTagWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_tag_with_errors> */
+    /** @use SdkModel<BatchResponseTagWithErrorsShape> */
     use SdkModel;
 
     /**

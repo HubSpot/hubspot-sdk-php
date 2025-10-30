@@ -16,7 +16,7 @@ use HubspotSDK\OptionInput;
 /**
  * Defines a property to create.
  *
- * @phpstan-type object_type_property_create = array{
+ * @phpstan-type ObjectTypePropertyCreateShape = array{
  *   fieldType: string,
  *   label: string,
  *   name: string,
@@ -38,7 +38,7 @@ use HubspotSDK\OptionInput;
  */
 final class ObjectTypePropertyCreate implements BaseModel
 {
-    /** @use SdkModel<object_type_property_create> */
+    /** @use SdkModel<ObjectTypePropertyCreateShape> */
     use SdkModel;
 
     /**

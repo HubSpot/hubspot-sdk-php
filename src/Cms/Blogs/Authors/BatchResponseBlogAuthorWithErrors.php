@@ -13,7 +13,7 @@ use HubspotSDK\StandardError;
 /**
  * Response object for batch operations on blog authors with errors.
  *
- * @phpstan-type batch_response_blog_author_with_errors = array{
+ * @phpstan-type BatchResponseBlogAuthorWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<BlogAuthor>,
  *   startedAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseBlogAuthorWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_blog_author_with_errors> */
+    /** @use SdkModel<BatchResponseBlogAuthorWithErrorsShape> */
     use SdkModel;
 
     /**

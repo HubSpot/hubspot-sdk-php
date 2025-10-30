@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type settings_response = array{
+ * @phpstan-type SettingsResponseShape = array{
  *   createdAt: \DateTimeInterface,
  *   height: int,
  *   isReady: bool,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SettingsResponse implements BaseModel
 {
-    /** @use SdkModel<settings_response> */
+    /** @use SdkModel<SettingsResponseShape> */
     use SdkModel;
 
     /**

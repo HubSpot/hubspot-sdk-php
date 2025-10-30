@@ -11,7 +11,7 @@ use HubspotSDK\Settings\Currencies\BatchResponseExchangeRateWithErrors\Status;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_exchange_rate_with_errors = array{
+ * @phpstan-type BatchResponseExchangeRateWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<ExchangeRate>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseExchangeRateWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_exchange_rate_with_errors> */
+    /** @use SdkModel<BatchResponseExchangeRateWithErrorsShape> */
     use SdkModel;
 
     #[Api]

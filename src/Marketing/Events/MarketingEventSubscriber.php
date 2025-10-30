@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type marketing_event_subscriber = array{
+ * @phpstan-type MarketingEventSubscriberShape = array{
  *   interactionDateTime: int, properties?: array<string, string>, vid?: int
  * }
  */
 final class MarketingEventSubscriber implements BaseModel
 {
-    /** @use SdkModel<marketing_event_subscriber> */
+    /** @use SdkModel<MarketingEventSubscriberShape> */
     use SdkModel;
 
     /**

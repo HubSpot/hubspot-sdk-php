@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type timeline_event_i_frame = array{
+ * @phpstan-type TimelineEventIFrameShape = array{
  *   headerLabel: string, height: int, linkLabel: string, url: string, width: int
  * }
  */
 final class TimelineEventIFrame implements BaseModel
 {
-    /** @use SdkModel<timeline_event_i_frame> */
+    /** @use SdkModel<TimelineEventIFrameShape> */
     use SdkModel;
 
     /**

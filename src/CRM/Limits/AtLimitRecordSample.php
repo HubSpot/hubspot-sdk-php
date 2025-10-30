@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type at_limit_record_sample = array{label: string, objectID: int}
+ * @phpstan-type AtLimitRecordSampleShape = array{label: string, objectID: int}
  */
 final class AtLimitRecordSample implements BaseModel
 {
-    /** @use SdkModel<at_limit_record_sample> */
+    /** @use SdkModel<AtLimitRecordSampleShape> */
     use SdkModel;
 
     #[Api]

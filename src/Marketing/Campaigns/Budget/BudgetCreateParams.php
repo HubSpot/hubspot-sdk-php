@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Budget->create
  *
- * @phpstan-type budget_create_params = array{
+ * @phpstan-type BudgetCreateParamsShape = array{
  *   amount: float, name: string, order: int, description?: string
  * }
  */
 final class BudgetCreateParams implements BaseModel
 {
-    /** @use SdkModel<budget_create_params> */
+    /** @use SdkModel<BudgetCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

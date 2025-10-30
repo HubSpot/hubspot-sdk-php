@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Calls->get
  *
- * @phpstan-type call_get_params = array{
+ * @phpstan-type CallGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CallGetParams implements BaseModel
 {
-    /** @use SdkModel<call_get_params> */
+    /** @use SdkModel<CallGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

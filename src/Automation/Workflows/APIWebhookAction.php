@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_webhook_action = array{
+ * @phpstan-type APIWebhookActionShape = array{
  *   actionID: string,
  *   method: value-of<Method>,
  *   queryParams: list<APIInputVariable>,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIWebhookAction implements BaseModel
 {
-    /** @use SdkModel<api_webhook_action> */
+    /** @use SdkModel<APIWebhookActionShape> */
     use SdkModel;
 
     /**

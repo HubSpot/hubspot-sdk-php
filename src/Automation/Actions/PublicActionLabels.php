@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
- * @phpstan-type public_action_labels = array{
+ * @phpstan-type PublicActionLabelsShape = array{
  *   actionName: string,
  *   actionCardContent?: string,
  *   actionDescription?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class PublicActionLabels implements BaseModel
 {
-    /** @use SdkModel<public_action_labels> */
+    /** @use SdkModel<PublicActionLabelsShape> */
     use SdkModel;
 
     #[Api]

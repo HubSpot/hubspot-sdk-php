@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type scope_mapping = array{
+ * @phpstan-type ScopeMappingShape = array{
  *   accessLevel: string, requestAction: string, scopeName: string
  * }
  */
 final class ScopeMapping implements BaseModel
 {
-    /** @use SdkModel<scope_mapping> */
+    /** @use SdkModel<ScopeMappingShape> */
     use SdkModel;
 
     #[Api]

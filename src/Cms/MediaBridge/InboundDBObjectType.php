@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type inbound_db_object_type = array{
+ * @phpstan-type InboundDBObjectTypeShape = array{
  *   id: int,
  *   allowsSensitiveProperties: bool,
  *   createDatePropertyName: string,
@@ -54,7 +54,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class InboundDBObjectType implements BaseModel
 {
-    /** @use SdkModel<inbound_db_object_type> */
+    /** @use SdkModel<InboundDBObjectTypeShape> */
     use SdkModel;
 
     #[Api]

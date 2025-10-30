@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_action_definition_patch = array{
+ * @phpstan-type PublicActionDefinitionPatchShape = array{
  *   actionURL?: string,
  *   executionRules?: list<PublicExecutionTranslationRule>,
  *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicActionDefinitionPatch implements BaseModel
 {
-    /** @use SdkModel<public_action_definition_patch> */
+    /** @use SdkModel<PublicActionDefinitionPatchShape> */
     use SdkModel;
 
     #[Api('actionUrl', optional: true)]

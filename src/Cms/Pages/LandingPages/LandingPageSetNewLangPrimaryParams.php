@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->setNewLangPrimary
  *
- * @phpstan-type landing_page_set_new_lang_primary_params = array{id: string}
+ * @phpstan-type LandingPageSetNewLangPrimaryParamsShape = array{id: string}
  */
 final class LandingPageSetNewLangPrimaryParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_set_new_lang_primary_params> */
+    /** @use SdkModel<LandingPageSetNewLangPrimaryParamsShape> */
     use SdkModel;
     use SdkParams;
 

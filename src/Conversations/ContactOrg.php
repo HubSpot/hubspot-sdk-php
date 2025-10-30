@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type contact_org = array{
+ * @phpstan-type ContactOrgShape = array{
  *   company?: string, department?: string, title?: string
  * }
  */
 final class ContactOrg implements BaseModel
 {
-    /** @use SdkModel<contact_org> */
+    /** @use SdkModel<ContactOrgShape> */
     use SdkModel;
 
     #[Api(optional: true)]

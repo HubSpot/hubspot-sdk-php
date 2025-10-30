@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Functions->createOrReplaceByFunctionType
  *
- * @phpstan-type function_create_or_replace_by_function_type_params = array{
+ * @phpstan-type FunctionCreateOrReplaceByFunctionTypeParamsShape = array{
  *   appID: int, definitionID: string, body: string
  * }
  */
 final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
 {
-    /** @use SdkModel<function_create_or_replace_by_function_type_params> */
+    /** @use SdkModel<FunctionCreateOrReplaceByFunctionTypeParamsShape> */
     use SdkModel;
     use SdkParams;
 

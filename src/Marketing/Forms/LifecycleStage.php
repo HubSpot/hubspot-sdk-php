@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type lifecycle_stage = array{objectTypeID: string, value: string}
+ * @phpstan-type LifecycleStageShape = array{objectTypeID: string, value: string}
  */
 final class LifecycleStage implements BaseModel
 {
-    /** @use SdkModel<lifecycle_stage> */
+    /** @use SdkModel<LifecycleStageShape> */
     use SdkModel;
 
     /**

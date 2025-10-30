@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\FeatureFlags\Portals->delete
  *
- * @phpstan-type portal_delete_params = array{appID: int, flagName: string}
+ * @phpstan-type PortalDeleteParamsShape = array{appID: int, flagName: string}
  */
 final class PortalDeleteParams implements BaseModel
 {
-    /** @use SdkModel<portal_delete_params> */
+    /** @use SdkModel<PortalDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

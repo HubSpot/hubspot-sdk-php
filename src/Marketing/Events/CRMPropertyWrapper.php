@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type crm_property_wrapper = array{name: string, value: string}
+ * @phpstan-type CRMPropertyWrapperShape = array{name: string, value: string}
  */
 final class CRMPropertyWrapper implements BaseModel
 {
-    /** @use SdkModel<crm_property_wrapper> */
+    /** @use SdkModel<CRMPropertyWrapperShape> */
     use SdkModel;
 
     #[Api]

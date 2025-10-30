@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_sequence_enrollment_lite_response = array{
+ * @phpstan-type PublicSequenceEnrollmentLiteResponseShape = array{
  *   id: string,
  *   enrolledAt: \DateTimeInterface,
  *   toEmail: string,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicSequenceEnrollmentLiteResponse implements BaseModel
 {
-    /** @use SdkModel<public_sequence_enrollment_lite_response> */
+    /** @use SdkModel<PublicSequenceEnrollmentLiteResponseShape> */
     use SdkModel;
 
     #[Api]

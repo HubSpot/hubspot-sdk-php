@@ -14,7 +14,7 @@ use HubspotSDK\VersionUser;
 /**
  * Model definition for a marketing email version. Contains metadata describing the version of the marketing email. It can be used to view edit history of a marketing email.
  *
- * @phpstan-type version_public_email = array{
+ * @phpstan-type VersionPublicEmailShape = array{
  *   id: string,
  *   object1: PublicEmail,
  *   updatedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\VersionUser;
  */
 final class VersionPublicEmail implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<version_public_email> */
+    /** @use SdkModel<VersionPublicEmailShape> */
     use SdkModel;
 
     use SdkResponse;

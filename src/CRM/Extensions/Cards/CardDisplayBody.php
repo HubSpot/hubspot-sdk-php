@@ -11,11 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Configuration for displayed info on a card.
  *
- * @phpstan-type card_display_body = array{properties: list<CardDisplayProperty>}
+ * @phpstan-type CardDisplayBodyShape = array{
+ *   properties: list<CardDisplayProperty>
+ * }
  */
 final class CardDisplayBody implements BaseModel
 {
-    /** @use SdkModel<card_display_body> */
+    /** @use SdkModel<CardDisplayBodyShape> */
     use SdkModel;
 
     /**

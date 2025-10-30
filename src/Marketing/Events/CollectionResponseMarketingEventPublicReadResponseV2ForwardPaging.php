@@ -10,14 +10,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_marketing_event_public_read_response_v2_forward_paging = array{
+ * @phpstan-type CollectionResponseMarketingEventPublicReadResponseV2ForwardPagingShape = array{
  *   results: list<MarketingEventPublicReadResponseV2>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging implements BaseModel
 {
     /**
-     * @use SdkModel<collection_response_marketing_event_public_read_response_v2_forward_paging>
+     * @use SdkModel<CollectionResponseMarketingEventPublicReadResponseV2ForwardPagingShape>
      */
     use SdkModel;
 

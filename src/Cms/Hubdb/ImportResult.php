@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Error;
 
 /**
- * @phpstan-type import_result = array{
+ * @phpstan-type ImportResultShape = array{
  *   duplicateRows: int,
  *   errors: list<Error>,
  *   rowLimitExceeded: bool,
@@ -19,7 +19,7 @@ use HubspotSDK\Error;
  */
 final class ImportResult implements BaseModel
 {
-    /** @use SdkModel<import_result> */
+    /** @use SdkModel<ImportResultShape> */
     use SdkModel;
 
     /**

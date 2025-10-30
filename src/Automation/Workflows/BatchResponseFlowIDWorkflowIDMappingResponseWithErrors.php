@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_flow_id_workflow_id_mapping_response_with_errors = array{
+ * @phpstan-type BatchResponseFlowIDWorkflowIDMappingResponseWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<FlowIDWorkflowIDMappingResponse>,
  *   startedAt: \DateTimeInterface,
@@ -25,7 +25,7 @@ use HubspotSDK\StandardError;
 final class BatchResponseFlowIDWorkflowIDMappingResponseWithErrors implements BaseModel
 {
     /**
-     * @use SdkModel<batch_response_flow_id_workflow_id_mapping_response_with_errors>
+     * @use SdkModel<BatchResponseFlowIDWorkflowIDMappingResponseWithErrorsShape>
      */
     use SdkModel;
 

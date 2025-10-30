@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_message_failure_details = array{
+ * @phpstan-type PublicMessageFailureDetailsShape = array{
  *   errorMessageTokens: array<string, string>, errorMessage?: string
  * }
  */
 final class PublicMessageFailureDetails implements BaseModel
 {
-    /** @use SdkModel<public_message_failure_details> */
+    /** @use SdkModel<PublicMessageFailureDetailsShape> */
     use SdkModel;
 
     /** @var array<string, string> $errorMessageTokens */

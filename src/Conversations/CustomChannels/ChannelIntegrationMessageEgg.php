@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type channel_integration_message_egg = array{
+ * @phpstan-type ChannelIntegrationMessageEggShape = array{
  *   attachments: list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment>,
  *   channelAccountID: string,
  *   integrationThreadID: string,
@@ -28,7 +28,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ChannelIntegrationMessageEgg implements BaseModel
 {
-    /** @use SdkModel<channel_integration_message_egg> */
+    /** @use SdkModel<ChannelIntegrationMessageEggShape> */
     use SdkModel;
 
     /**

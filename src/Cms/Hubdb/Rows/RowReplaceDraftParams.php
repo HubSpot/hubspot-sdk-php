@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows->replaceDraft
  *
- * @phpstan-type row_replace_draft_params = array{
+ * @phpstan-type RowReplaceDraftParamsShape = array{
  *   tableIDOrName: string,
  *   values: array<string, mixed>,
  *   childTableID?: int,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class RowReplaceDraftParams implements BaseModel
 {
-    /** @use SdkModel<row_replace_draft_params> */
+    /** @use SdkModel<RowReplaceDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

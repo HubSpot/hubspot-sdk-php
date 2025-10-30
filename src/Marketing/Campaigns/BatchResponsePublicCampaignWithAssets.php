@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets\Status;
 
 /**
- * @phpstan-type batch_response_public_campaign_with_assets = array{
+ * @phpstan-type BatchResponsePublicCampaignWithAssetsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicCampaignWithAssets>,
  *   startedAt: \DateTimeInterface,
@@ -21,7 +21,7 @@ use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets\Status;
  */
 final class BatchResponsePublicCampaignWithAssets implements BaseModel
 {
-    /** @use SdkModel<batch_response_public_campaign_with_assets> */
+    /** @use SdkModel<BatchResponsePublicCampaignWithAssetsShape> */
     use SdkModel;
 
     #[Api]

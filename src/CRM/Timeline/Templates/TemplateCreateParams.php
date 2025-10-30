@@ -15,7 +15,7 @@ use HubspotSDK\CRM\Timeline\TimelineEventTemplateToken;
  *
  * @see HubspotSDK\CRM\Timeline\Templates->create
  *
- * @phpstan-type template_create_params = array{
+ * @phpstan-type TemplateCreateParamsShape = array{
  *   name: string,
  *   objectType: string,
  *   tokens: list<TimelineEventTemplateToken>,
@@ -25,7 +25,7 @@ use HubspotSDK\CRM\Timeline\TimelineEventTemplateToken;
  */
 final class TemplateCreateParams implements BaseModel
 {
-    /** @use SdkModel<template_create_params> */
+    /** @use SdkModel<TemplateCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

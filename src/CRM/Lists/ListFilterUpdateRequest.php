@@ -19,13 +19,13 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
 /**
  * The definition of the list filter branch update request.
  *
- * @phpstan-type list_filter_update_request = array{
+ * @phpstan-type ListFilterUpdateRequestShape = array{
  *   filterBranch: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
  * }
  */
 final class ListFilterUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<list_filter_update_request> */
+    /** @use SdkModel<ListFilterUpdateRequestShape> */
     use SdkModel;
 
     #[Api]

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_comment_egg = array{
+ * @phpstan-type PublicCommentEggShape = array{
  *   attachments: list<PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg>,
  *   text: string,
  *   type: value-of<Type>,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicCommentEgg implements BaseModel
 {
-    /** @use SdkModel<public_comment_egg> */
+    /** @use SdkModel<PublicCommentEggShape> */
     use SdkModel;
 
     /**

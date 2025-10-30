@@ -12,7 +12,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate\Status;
 
 /**
- * @phpstan-type batch_response_exchange_rate = array{
+ * @phpstan-type BatchResponseExchangeRateShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<ExchangeRate>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate\Status;
  */
 final class BatchResponseExchangeRate implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<batch_response_exchange_rate> */
+    /** @use SdkModel<BatchResponseExchangeRateShape> */
     use SdkModel;
 
     use SdkResponse;

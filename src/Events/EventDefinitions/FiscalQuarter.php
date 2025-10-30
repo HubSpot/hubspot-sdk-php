@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\FiscalQuarter\ReferenceType;
 
 /**
- * @phpstan-type fiscal_quarter = array{
+ * @phpstan-type FiscalQuarterShape = array{
  *   day: int,
  *   month: int,
  *   referenceType: value-of<ReferenceType>,
@@ -22,7 +22,7 @@ use HubspotSDK\Events\EventDefinitions\FiscalQuarter\ReferenceType;
  */
 final class FiscalQuarter implements BaseModel
 {
-    /** @use SdkModel<fiscal_quarter> */
+    /** @use SdkModel<FiscalQuarterShape> */
     use SdkModel;
 
     #[Api]

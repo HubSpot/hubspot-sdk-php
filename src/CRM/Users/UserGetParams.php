@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Users->get
  *
- * @phpstan-type user_get_params = array{
+ * @phpstan-type UserGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class UserGetParams implements BaseModel
 {
-    /** @use SdkModel<user_get_params> */
+    /** @use SdkModel<UserGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

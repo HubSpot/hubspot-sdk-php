@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicStatusBulkResponse\Status;
 
 /**
- * @phpstan-type batch_response_public_status_bulk_response = array{
+ * @phpstan-type BatchResponsePublicStatusBulkResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicStatusBulkResponse>,
  *   startedAt: \DateTimeInterface,
@@ -21,7 +21,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicStatusBulkResponse\
  */
 final class BatchResponsePublicStatusBulkResponse implements BaseModel
 {
-    /** @use SdkModel<batch_response_public_status_bulk_response> */
+    /** @use SdkModel<BatchResponsePublicStatusBulkResponseShape> */
     use SdkModel;
 
     /**

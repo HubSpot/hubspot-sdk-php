@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Taxes->search
  *
- * @phpstan-type tax_search_params = array{
+ * @phpstan-type TaxSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class TaxSearchParams implements BaseModel
 {
-    /** @use SdkModel<tax_search_params> */
+    /** @use SdkModel<TaxSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

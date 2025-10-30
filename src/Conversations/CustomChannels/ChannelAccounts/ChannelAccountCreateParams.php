@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\CustomChannels\ChannelAccounts->create
  *
- * @phpstan-type channel_account_create_params = array{
+ * @phpstan-type ChannelAccountCreateParamsShape = array{
  *   authorized: bool,
  *   inboxID: string,
  *   name: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ChannelAccountCreateParams implements BaseModel
 {
-    /** @use SdkModel<channel_account_create_params> */
+    /** @use SdkModel<ChannelAccountCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

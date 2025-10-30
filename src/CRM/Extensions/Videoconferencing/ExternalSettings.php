@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The URLs of the various actions provided by the video conferencing application. All URLs must use the `https` protocol.
  *
- * @phpstan-type external_settings = array{
+ * @phpstan-type ExternalSettingsShape = array{
  *   createMeetingURL: string,
  *   deleteMeetingURL?: string,
  *   fetchAccountsUri?: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalSettings implements BaseModel
 {
-    /** @use SdkModel<external_settings> */
+    /** @use SdkModel<ExternalSettingsShape> */
     use SdkModel;
 
     /**

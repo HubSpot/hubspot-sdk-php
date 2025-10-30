@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The state of the timeline event.
  *
- * @phpstan-type timeline_event = array{
+ * @phpstan-type TimelineEventShape = array{
  *   eventTemplateID: string,
  *   tokens: array<string, string>,
  *   id?: string,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TimelineEvent implements BaseModel
 {
-    /** @use SdkModel<timeline_event> */
+    /** @use SdkModel<TimelineEventShape> */
     use SdkModel;
 
     /**

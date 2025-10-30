@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->updateAppName
  *
- * @phpstan-type integrator_setting_update_app_name_params = array{
+ * @phpstan-type IntegratorSettingUpdateAppNameParamsShape = array{
  *   updatedAt: int, name?: string
  * }
  */
 final class IntegratorSettingUpdateAppNameParams implements BaseModel
 {
-    /** @use SdkModel<integrator_setting_update_app_name_params> */
+    /** @use SdkModel<IntegratorSettingUpdateAppNameParamsShape> */
     use SdkModel;
     use SdkParams;
 

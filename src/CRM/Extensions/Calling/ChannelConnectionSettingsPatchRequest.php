@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type channel_connection_settings_patch_request = array{
+ * @phpstan-type ChannelConnectionSettingsPatchRequestShape = array{
  *   isReady?: bool, url?: string
  * }
  */
 final class ChannelConnectionSettingsPatchRequest implements BaseModel
 {
-    /** @use SdkModel<channel_connection_settings_patch_request> */
+    /** @use SdkModel<ChannelConnectionSettingsPatchRequestShape> */
     use SdkModel;
 
     /**

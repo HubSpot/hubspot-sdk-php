@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\PartnerServices->search
  *
- * @phpstan-type partner_service_search_params = array{
+ * @phpstan-type PartnerServiceSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class PartnerServiceSearchParams implements BaseModel
 {
-    /** @use SdkModel<partner_service_search_params> */
+    /** @use SdkModel<PartnerServiceSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

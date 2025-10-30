@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_monthly_specific_days_enrollment_schedule = array{
+ * @phpstan-type APIMonthlySpecificDaysEnrollmentScheduleShape = array{
  *   daysOfMonth: list<int>, timeOfDay: APITimeOfDay, type: value-of<Type>
  * }
  */
 final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
 {
-    /** @use SdkModel<api_monthly_specific_days_enrollment_schedule> */
+    /** @use SdkModel<APIMonthlySpecificDaysEnrollmentScheduleShape> */
     use SdkModel;
 
     /**

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Folders->move
  *
- * @phpstan-type folder_move_params = array{folderID: string}
+ * @phpstan-type FolderMoveParamsShape = array{folderID: string}
  */
 final class FolderMoveParams implements BaseModel
 {
-    /** @use SdkModel<folder_move_params> */
+    /** @use SdkModel<FolderMoveParamsShape> */
     use SdkModel;
     use SdkParams;
 

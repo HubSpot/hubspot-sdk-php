@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicSetOccurrencesRefineBy\Type;
 
 /**
- * @phpstan-type public_set_occurrences_refine_by = array{
+ * @phpstan-type PublicSetOccurrencesRefineByShape = array{
  *   setType: string, type: value-of<Type>
  * }
  */
 final class PublicSetOccurrencesRefineBy implements BaseModel
 {
-    /** @use SdkModel<public_set_occurrences_refine_by> */
+    /** @use SdkModel<PublicSetOccurrencesRefineByShape> */
     use SdkModel;
 
     #[Api]

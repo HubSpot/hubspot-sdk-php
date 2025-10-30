@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Definitions->update
  *
- * @phpstan-type definition_update_params = array{
+ * @phpstan-type DefinitionUpdateParamsShape = array{
  *   appID: int,
  *   actionURL?: string,
  *   executionRules?: list<PublicExecutionTranslationRule>,
@@ -37,7 +37,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class DefinitionUpdateParams implements BaseModel
 {
-    /** @use SdkModel<definition_update_params> */
+    /** @use SdkModel<DefinitionUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

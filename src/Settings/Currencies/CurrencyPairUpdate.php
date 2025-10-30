@@ -11,7 +11,7 @@ use HubspotSDK\Settings\Currencies\CurrencyPairUpdate\FromCurrencyCode;
 use HubspotSDK\Settings\Currencies\CurrencyPairUpdate\ToCurrencyCode;
 
 /**
- * @phpstan-type currency_pair_update = array{
+ * @phpstan-type CurrencyPairUpdateShape = array{
  *   fromCurrencyCode: value-of<FromCurrencyCode>,
  *   toCurrencyCode: value-of<ToCurrencyCode>,
  *   visibleInUi: bool,
@@ -19,7 +19,7 @@ use HubspotSDK\Settings\Currencies\CurrencyPairUpdate\ToCurrencyCode;
  */
 final class CurrencyPairUpdate implements BaseModel
 {
-    /** @use SdkModel<currency_pair_update> */
+    /** @use SdkModel<CurrencyPairUpdateShape> */
     use SdkModel;
 
     /** @var value-of<FromCurrencyCode> $fromCurrencyCode */

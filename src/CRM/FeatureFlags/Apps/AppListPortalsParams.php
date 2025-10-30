@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\FeatureFlags\Apps->listPortals
  *
- * @phpstan-type app_list_portals_params = array{
+ * @phpstan-type AppListPortalsParamsShape = array{
  *   appID: int, limit?: int, startPortalID?: int
  * }
  */
 final class AppListPortalsParams implements BaseModel
 {
-    /** @use SdkModel<app_list_portals_params> */
+    /** @use SdkModel<AppListPortalsParamsShape> */
     use SdkModel;
     use SdkParams;
 

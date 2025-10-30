@@ -11,7 +11,7 @@ use HubspotSDK\CRM\Objects\DealSplits\BatchResponseDealToDealSplitsWithErrors\St
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_deal_to_deal_splits_with_errors = array{
+ * @phpstan-type BatchResponseDealToDealSplitsWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<DealToDealSplits>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseDealToDealSplitsWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_deal_to_deal_splits_with_errors> */
+    /** @use SdkModel<BatchResponseDealToDealSplitsWithErrorsShape> */
     use SdkModel;
 
     #[Api]

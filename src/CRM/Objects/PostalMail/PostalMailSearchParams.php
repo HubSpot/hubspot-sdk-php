@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\PostalMail->search
  *
- * @phpstan-type postal_mail_search_params = array{
+ * @phpstan-type PostalMailSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class PostalMailSearchParams implements BaseModel
 {
-    /** @use SdkModel<postal_mail_search_params> */
+    /** @use SdkModel<PostalMailSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

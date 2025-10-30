@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Transactional\SmtpTokens->list
  *
- * @phpstan-type smtp_token_list_params = array{
+ * @phpstan-type SmtpTokenListParamsShape = array{
  *   after?: string, campaignName?: string, emailCampaignID?: string, limit?: int
  * }
  */
 final class SmtpTokenListParams implements BaseModel
 {
-    /** @use SdkModel<smtp_token_list_params> */
+    /** @use SdkModel<SmtpTokenListParamsShape> */
     use SdkModel;
     use SdkParams;
 

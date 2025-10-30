@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A Business Unit's logo metadata.
  *
- * @phpstan-type public_business_unit_logo_metadata = array{
+ * @phpstan-type PublicBusinessUnitLogoMetadataShape = array{
  *   logoAltText?: string, logoURL?: string, resizedURL?: string
  * }
  */
 final class PublicBusinessUnitLogoMetadata implements BaseModel
 {
-    /** @use SdkModel<public_business_unit_logo_metadata> */
+    /** @use SdkModel<PublicBusinessUnitLogoMetadataShape> */
     use SdkModel;
 
     /**

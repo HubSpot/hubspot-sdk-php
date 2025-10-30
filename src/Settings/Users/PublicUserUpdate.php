@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A user to update.
  *
- * @phpstan-type public_user_update = array{
+ * @phpstan-type PublicUserUpdateShape = array{
  *   firstName?: string,
  *   lastName?: string,
  *   primaryTeamID?: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicUserUpdate implements BaseModel
 {
-    /** @use SdkModel<public_user_update> */
+    /** @use SdkModel<PublicUserUpdateShape> */
     use SdkModel;
 
     #[Api(optional: true)]

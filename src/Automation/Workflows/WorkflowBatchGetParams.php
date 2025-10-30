@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Workflows->batchGet
  *
- * @phpstan-type workflow_batch_get_params = array{
+ * @phpstan-type WorkflowBatchGetParamsShape = array{
  *   inputs: list<APIFlowBatchFetchFlowIDCoordinate>
  * }
  */
 final class WorkflowBatchGetParams implements BaseModel
 {
-    /** @use SdkModel<workflow_batch_get_params> */
+    /** @use SdkModel<WorkflowBatchGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type batch_response_api_flow = array{
+ * @phpstan-type BatchResponseAPIFlowShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<APIContactFlow|APIPlatformFlow>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class BatchResponseAPIFlow implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<batch_response_api_flow> */
+    /** @use SdkModel<BatchResponseAPIFlowShape> */
     use SdkModel;
 
     use SdkResponse;

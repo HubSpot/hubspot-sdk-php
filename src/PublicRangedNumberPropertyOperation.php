@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicRangedNumberPropertyOperation\OperationType;
 
 /**
- * @phpstan-type public_ranged_number_property_operation = array{
+ * @phpstan-type PublicRangedNumberPropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   lowerBound: int,
  *   operationType: value-of<OperationType>,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicRangedNumberPropertyOperation\OperationType;
  */
 final class PublicRangedNumberPropertyOperation implements BaseModel
 {
-    /** @use SdkModel<public_ranged_number_property_operation> */
+    /** @use SdkModel<PublicRangedNumberPropertyOperationShape> */
     use SdkModel;
 
     #[Api]

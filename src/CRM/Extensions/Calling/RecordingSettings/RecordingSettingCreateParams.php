@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Extensions\Calling\RecordingSettings->create
  *
- * @phpstan-type recording_setting_create_params = array{
+ * @phpstan-type RecordingSettingCreateParamsShape = array{
  *   urlToRetrieveAuthedRecording: string
  * }
  */
 final class RecordingSettingCreateParams implements BaseModel
 {
-    /** @use SdkModel<recording_setting_create_params> */
+    /** @use SdkModel<RecordingSettingCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

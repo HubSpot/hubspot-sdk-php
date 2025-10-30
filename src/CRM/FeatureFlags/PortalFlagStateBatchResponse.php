@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type portal_flag_state_batch_response = array{
+ * @phpstan-type PortalFlagStateBatchResponseShape = array{
  *   portalFlagStates: list<PortalFlagStateResponse>
  * }
  */
 final class PortalFlagStateBatchResponse implements BaseModel
 {
-    /** @use SdkModel<portal_flag_state_batch_response> */
+    /** @use SdkModel<PortalFlagStateBatchResponseShape> */
     use SdkModel;
 
     /** @var list<PortalFlagStateResponse> $portalFlagStates */

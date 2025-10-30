@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_enrolled_record_property_filter_data_source = array{
+ * @phpstan-type APIEnrolledRecordPropertyFilterDataSourceShape = array{
  *   name: string,
  *   propertyName: string,
  *   recordFieldName: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIEnrolledRecordPropertyFilterDataSource implements BaseModel
 {
-    /** @use SdkModel<api_enrolled_record_property_filter_data_source> */
+    /** @use SdkModel<APIEnrolledRecordPropertyFilterDataSourceShape> */
     use SdkModel;
 
     #[Api]

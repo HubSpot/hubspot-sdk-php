@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->list
  *
- * @phpstan-type post_list_params = array{
+ * @phpstan-type PostListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   createdAfter?: \DateTimeInterface,
@@ -30,7 +30,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PostListParams implements BaseModel
 {
-    /** @use SdkModel<post_list_params> */
+    /** @use SdkModel<PostListParamsShape> */
     use SdkModel;
     use SdkParams;
 

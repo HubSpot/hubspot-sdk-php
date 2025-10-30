@@ -12,7 +12,7 @@ use HubspotSDK\CRM\Pipelines\PipelineStage\WritePermissions;
 /**
  * A pipeline stage definition.
  *
- * @phpstan-type pipeline_stage = array{
+ * @phpstan-type PipelineStageShape = array{
  *   id: string,
  *   archived: bool,
  *   createdAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\CRM\Pipelines\PipelineStage\WritePermissions;
  */
 final class PipelineStage implements BaseModel
 {
-    /** @use SdkModel<pipeline_stage> */
+    /** @use SdkModel<PipelineStageShape> */
     use SdkModel;
 
     /**

@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\SetStatusSuccessReason;
 use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Status;
 
 /**
- * @phpstan-type public_status = array{
+ * @phpstan-type PublicStatusShape = array{
  *   channel: value-of<Channel>,
  *   source: string,
  *   status: value-of<Status>,
@@ -29,7 +29,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Status;
  */
 final class PublicStatus implements BaseModel
 {
-    /** @use SdkModel<public_status> */
+    /** @use SdkModel<PublicStatusShape> */
     use SdkModel;
 
     /**

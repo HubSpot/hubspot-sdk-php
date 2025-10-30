@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Filter;
 
 /**
- * @phpstan-type public_crm_search_request = array{
+ * @phpstan-type PublicCRMSearchRequestShape = array{
  *   filters: list<Filter>, query: string, sorts: list<string>
  * }
  */
 final class PublicCRMSearchRequest implements BaseModel
 {
-    /** @use SdkModel<public_crm_search_request> */
+    /** @use SdkModel<PublicCRMSearchRequestShape> */
     use SdkModel;
 
     /** @var list<Filter> $filters */

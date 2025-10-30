@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type external_unified_event = array{
+ * @phpstan-type ExternalUnifiedEventShape = array{
  *   id: string,
  *   eventType: string,
  *   objectID: string,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<external_unified_event> */
+    /** @use SdkModel<ExternalUnifiedEventShape> */
     use SdkModel;
 
     use SdkResponse;

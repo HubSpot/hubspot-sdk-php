@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Communications->read
  *
- * @phpstan-type communication_read_params = array{
+ * @phpstan-type CommunicationReadParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CommunicationReadParams implements BaseModel
 {
-    /** @use SdkModel<communication_read_params> */
+    /** @use SdkModel<CommunicationReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Schemas->delete
  *
- * @phpstan-type schema_delete_params = array{archived?: bool}
+ * @phpstan-type SchemaDeleteParamsShape = array{archived?: bool}
  */
 final class SchemaDeleteParams implements BaseModel
 {
-    /** @use SdkModel<schema_delete_params> */
+    /** @use SdkModel<SchemaDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

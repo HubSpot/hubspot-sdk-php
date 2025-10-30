@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type list_move_request = array{listID: string, newFolderID: string}
+ * @phpstan-type ListMoveRequestShape = array{listID: string, newFolderID: string}
  */
 final class ListMoveRequest implements BaseModel
 {
-    /** @use SdkModel<list_move_request> */
+    /** @use SdkModel<ListMoveRequestShape> */
     use SdkModel;
 
     /**

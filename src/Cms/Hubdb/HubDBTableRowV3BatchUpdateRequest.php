@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type hub_db_table_row_v3_batch_update_request = array{
+ * @phpstan-type HubDBTableRowV3BatchUpdateRequestShape = array{
  *   id: string,
  *   values: array<string, mixed>,
  *   childTableID?: int,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<hub_db_table_row_v3_batch_update_request> */
+    /** @use SdkModel<HubDBTableRowV3BatchUpdateRequestShape> */
     use SdkModel;
 
     /**

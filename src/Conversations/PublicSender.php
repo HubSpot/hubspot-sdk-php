@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_sender = array{
+ * @phpstan-type PublicSenderShape = array{
  *   actorID?: string,
  *   deliveryIdentifier?: PublicDeliveryIdentifier,
  *   name?: string,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicSender implements BaseModel
 {
-    /** @use SdkModel<public_sender> */
+    /** @use SdkModel<PublicSenderShape> */
     use SdkModel;
 
     #[Api('actorId', optional: true)]

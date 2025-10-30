@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Quotes->search
  *
- * @phpstan-type quote_search_params = array{
+ * @phpstan-type QuoteSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class QuoteSearchParams implements BaseModel
 {
-    /** @use SdkModel<quote_search_params> */
+    /** @use SdkModel<QuoteSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

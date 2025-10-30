@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Account\Activity->listAuditLogs
  *
- * @phpstan-type activity_list_audit_logs_params = array{
+ * @phpstan-type ActivityListAuditLogsParamsShape = array{
  *   actingUserID?: list<int>,
  *   after?: string,
  *   limit?: int,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ActivityListAuditLogsParams implements BaseModel
 {
-    /** @use SdkModel<activity_list_audit_logs_params> */
+    /** @use SdkModel<ActivityListAuditLogsParamsShape> */
     use SdkModel;
     use SdkParams;
 

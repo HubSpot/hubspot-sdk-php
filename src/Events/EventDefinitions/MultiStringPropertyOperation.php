@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\PropertyType;
 
 /**
- * @phpstan-type multi_string_property_operation = array{
+ * @phpstan-type MultiStringPropertyOperationShape = array{
  *   coalescingRefineBy: NumOccurrencesRefineBy|SetOccurrencesRefineBy,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\PropertyType
  */
 final class MultiStringPropertyOperation implements BaseModel
 {
-    /** @use SdkModel<multi_string_property_operation> */
+    /** @use SdkModel<MultiStringPropertyOperationShape> */
     use SdkModel;
 
     #[Api]

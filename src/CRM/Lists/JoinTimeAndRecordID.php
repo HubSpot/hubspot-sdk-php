@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type join_time_and_record_id = array{
+ * @phpstan-type JoinTimeAndRecordIDShape = array{
  *   membershipTimestamp: \DateTimeInterface, recordID: string
  * }
  */
 final class JoinTimeAndRecordID implements BaseModel
 {
-    /** @use SdkModel<join_time_and_record_id> */
+    /** @use SdkModel<JoinTimeAndRecordIDShape> */
     use SdkModel;
 
     #[Api]

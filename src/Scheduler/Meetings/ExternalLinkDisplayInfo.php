@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_link_display_info = array{
+ * @phpstan-type ExternalLinkDisplayInfoShape = array{
  *   avatar?: string,
  *   companyAvatar?: string,
  *   headline?: string,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalLinkDisplayInfo implements BaseModel
 {
-    /** @use SdkModel<external_link_display_info> */
+    /** @use SdkModel<ExternalLinkDisplayInfoShape> */
     use SdkModel;
 
     #[Api(optional: true)]

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns->get
  *
- * @phpstan-type campaign_get_params = array{
+ * @phpstan-type CampaignGetParamsShape = array{
  *   endDate?: string, properties?: list<string>, startDate?: string
  * }
  */
 final class CampaignGetParams implements BaseModel
 {
-    /** @use SdkModel<campaign_get_params> */
+    /** @use SdkModel<CampaignGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type object_definition_response = array{
+ * @phpstan-type ObjectDefinitionResponseShape = array{
  *   objectTypeID: string,
  *   objectTypeName: string,
  *   properties: list<PropertyDefinition>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ObjectDefinitionResponse implements BaseModel
 {
-    /** @use SdkModel<object_definition_response> */
+    /** @use SdkModel<ObjectDefinitionResponseShape> */
     use SdkModel;
 
     #[Api('objectTypeId')]

@@ -15,13 +15,13 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest;
  *
  * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->batchUpdate
  *
- * @phpstan-type status_batch_update_params = array{
+ * @phpstan-type StatusBatchUpdateParamsShape = array{
  *   inputs: list<PublicStatusRequest>
  * }
  */
 final class StatusBatchUpdateParams implements BaseModel
 {
-    /** @use SdkModel<status_batch_update_params> */
+    /** @use SdkModel<StatusBatchUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

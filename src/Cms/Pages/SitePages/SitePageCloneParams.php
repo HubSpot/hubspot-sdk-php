@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->clone
  *
- * @phpstan-type site_page_clone_params = array{id: string, cloneName?: string}
+ * @phpstan-type SitePageCloneParamsShape = array{id: string, cloneName?: string}
  */
 final class SitePageCloneParams implements BaseModel
 {
-    /** @use SdkModel<site_page_clone_params> */
+    /** @use SdkModel<SitePageCloneParamsShape> */
     use SdkModel;
     use SdkParams;
 

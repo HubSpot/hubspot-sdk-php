@@ -9,14 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_input_variable = array{
+ * @phpstan-type APIInputVariableShape = array{
  *   name: string,
  *   value: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue,
  * }
  */
 final class APIInputVariable implements BaseModel
 {
-    /** @use SdkModel<api_input_variable> */
+    /** @use SdkModel<APIInputVariableShape> */
     use SdkModel;
 
     #[Api]

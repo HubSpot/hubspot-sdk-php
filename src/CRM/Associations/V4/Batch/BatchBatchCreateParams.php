@@ -15,13 +15,13 @@ use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiPost;
  *
  * @see HubspotSDK\CRM\Associations\V4\Batch->batchCreate
  *
- * @phpstan-type batch_batch_create_params = array{
+ * @phpstan-type BatchBatchCreateParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicAssociationMultiPost>
  * }
  */
 final class BatchBatchCreateParams implements BaseModel
 {
-    /** @use SdkModel<batch_batch_create_params> */
+    /** @use SdkModel<BatchBatchCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

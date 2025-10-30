@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_yearly_enrollment_schedule = array{
+ * @phpstan-type APIYearlyEnrollmentScheduleShape = array{
  *   dayOfMonth: int,
  *   month: value-of<Month>,
  *   timeOfDay: APITimeOfDay,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIYearlyEnrollmentSchedule implements BaseModel
 {
-    /** @use SdkModel<api_yearly_enrollment_schedule> */
+    /** @use SdkModel<APIYearlyEnrollmentScheduleShape> */
     use SdkModel;
 
     /**

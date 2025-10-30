@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request body object for cloning blog authors.
  *
- * @phpstan-type blog_author_clone_request_v_next = array{
+ * @phpstan-type BlogAuthorCloneRequestVNextShape = array{
  *   id: string,
  *   blogAuthor: BlogAuthor,
  *   language?: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class BlogAuthorCloneRequestVNext implements BaseModel
 {
-    /** @use SdkModel<blog_author_clone_request_v_next> */
+    /** @use SdkModel<BlogAuthorCloneRequestVNextShape> */
     use SdkModel;
 
     /**

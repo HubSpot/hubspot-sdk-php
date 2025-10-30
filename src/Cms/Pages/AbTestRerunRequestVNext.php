@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request body object for rerunning A/B tests.
  *
- * @phpstan-type ab_test_rerun_request_v_next = array{
+ * @phpstan-type AbTestRerunRequestVNextShape = array{
  *   abTestID: string, variationID: string
  * }
  */
 final class AbTestRerunRequestVNext implements BaseModel
 {
-    /** @use SdkModel<ab_test_rerun_request_v_next> */
+    /** @use SdkModel<AbTestRerunRequestVNextShape> */
     use SdkModel;
 
     /**

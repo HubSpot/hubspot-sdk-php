@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type output_field_definition = array{
+ * @phpstan-type OutputFieldDefinitionShape = array{
  *   typeDefinition: FieldTypeDefinition
  * }
  */
 final class OutputFieldDefinition implements BaseModel
 {
-    /** @use SdkModel<output_field_definition> */
+    /** @use SdkModel<OutputFieldDefinitionShape> */
     use SdkModel;
 
     #[Api]

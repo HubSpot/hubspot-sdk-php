@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Tasks->update
  *
- * @phpstan-type task_update_params = array{
+ * @phpstan-type TaskUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class TaskUpdateParams implements BaseModel
 {
-    /** @use SdkModel<task_update_params> */
+    /** @use SdkModel<TaskUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

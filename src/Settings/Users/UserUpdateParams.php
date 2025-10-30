@@ -15,7 +15,7 @@ use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
  *
  * @see HubspotSDK\Settings\Users->update
  *
- * @phpstan-type user_update_params = array{
+ * @phpstan-type UserUpdateParamsShape = array{
  *   idProperty?: IDProperty|value-of<IDProperty>,
  *   firstName?: string,
  *   lastName?: string,
@@ -26,7 +26,7 @@ use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
  */
 final class UserUpdateParams implements BaseModel
 {
-    /** @use SdkModel<user_update_params> */
+    /** @use SdkModel<UserUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

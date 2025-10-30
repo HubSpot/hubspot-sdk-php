@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request body object for setting a new primary language.
  *
- * @phpstan-type set_new_language_primary_request_v_next = array{id: string}
+ * @phpstan-type SetNewLanguagePrimaryRequestVNextShape = array{id: string}
  */
 final class SetNewLanguagePrimaryRequestVNext implements BaseModel
 {
-    /** @use SdkModel<set_new_language_primary_request_v_next> */
+    /** @use SdkModel<SetNewLanguagePrimaryRequestVNextShape> */
     use SdkModel;
 
     /**

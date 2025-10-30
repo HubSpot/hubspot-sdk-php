@@ -9,14 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type collection_response_public_association_definition_user_configuration_no_paging = array{
+ * @phpstan-type CollectionResponsePublicAssociationDefinitionUserConfigurationNoPagingShape = array{
  *   results: list<PublicAssociationDefinitionUserConfiguration>
  * }
  */
 final class CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging implements BaseModel
 {
     /**
-     * @use SdkModel<collection_response_public_association_definition_user_configuration_no_paging>
+     * @use SdkModel<CollectionResponsePublicAssociationDefinitionUserConfigurationNoPagingShape>
      */
     use SdkModel;
 

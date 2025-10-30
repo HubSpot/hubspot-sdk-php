@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Settings\Currencies->updateExchangeRate
  *
- * @phpstan-type currency_update_exchange_rate_params = array{
+ * @phpstan-type CurrencyUpdateExchangeRateParamsShape = array{
  *   conversionRate: float, effectiveAt?: \DateTimeInterface
  * }
  */
 final class CurrencyUpdateExchangeRateParams implements BaseModel
 {
-    /** @use SdkModel<currency_update_exchange_rate_params> */
+    /** @use SdkModel<CurrencyUpdateExchangeRateParamsShape> */
     use SdkModel;
     use SdkParams;
 

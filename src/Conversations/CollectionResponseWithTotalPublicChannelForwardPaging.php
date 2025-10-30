@@ -10,15 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_with_total_public_channel_forward_paging = array{
+ * @phpstan-type CollectionResponseWithTotalPublicChannelForwardPagingShape = array{
  *   results: list<PublicChannel>, total: int, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseWithTotalPublicChannelForwardPaging implements BaseModel
 {
-    /**
-     * @use SdkModel<collection_response_with_total_public_channel_forward_paging>
-     */
+    /** @use SdkModel<CollectionResponseWithTotalPublicChannelForwardPagingShape> */
     use SdkModel;
 
     /** @var list<PublicChannel> $results */

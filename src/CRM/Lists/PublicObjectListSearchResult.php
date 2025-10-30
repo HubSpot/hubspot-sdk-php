@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_object_list_search_result = array{
+ * @phpstan-type PublicObjectListSearchResultShape = array{
  *   additionalProperties: array<string, string>,
  *   listID: string,
  *   listVersion: int,
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicObjectListSearchResult implements BaseModel
 {
-    /** @use SdkModel<public_object_list_search_result> */
+    /** @use SdkModel<PublicObjectListSearchResultShape> */
     use SdkModel;
 
     /**

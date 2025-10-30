@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\RangedDatePropertyOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\RangedDatePropertyOperation\PropertyType;
 
 /**
- * @phpstan-type ranged_date_property_operation = array{
+ * @phpstan-type RangedDatePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   lowerBoundTimestamp: int,
  *   operationType: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Events\EventDefinitions\RangedDatePropertyOperation\PropertyType;
  */
 final class RangedDatePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<ranged_date_property_operation> */
+    /** @use SdkModel<RangedDatePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

@@ -11,7 +11,7 @@ use HubspotSDK\PublicWeekReference\DayOfWeek;
 use HubspotSDK\PublicWeekReference\ReferenceType;
 
 /**
- * @phpstan-type public_week_reference = array{
+ * @phpstan-type PublicWeekReferenceShape = array{
  *   dayOfWeek: value-of<DayOfWeek>,
  *   referenceType: value-of<ReferenceType>,
  *   hour?: int,
@@ -22,7 +22,7 @@ use HubspotSDK\PublicWeekReference\ReferenceType;
  */
 final class PublicWeekReference implements BaseModel
 {
-    /** @use SdkModel<public_week_reference> */
+    /** @use SdkModel<PublicWeekReferenceShape> */
     use SdkModel;
 
     /** @var value-of<DayOfWeek> $dayOfWeek */

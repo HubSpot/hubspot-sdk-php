@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Quotes->create
  *
- * @phpstan-type quote_create_params = array{
+ * @phpstan-type QuoteCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class QuoteCreateParams implements BaseModel
 {
-    /** @use SdkModel<quote_create_params> */
+    /** @use SdkModel<QuoteCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

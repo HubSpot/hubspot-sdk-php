@@ -16,13 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->upsertBatch
  *
- * @phpstan-type event_upsert_batch_params = array{
+ * @phpstan-type EventUpsertBatchParamsShape = array{
  *   inputs: list<MarketingEventCreateRequestParams>
  * }
  */
 final class EventUpsertBatchParams implements BaseModel
 {
-    /** @use SdkModel<event_upsert_batch_params> */
+    /** @use SdkModel<EventUpsertBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

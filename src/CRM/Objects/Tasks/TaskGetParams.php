@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Tasks->get
  *
- * @phpstan-type task_get_params = array{
+ * @phpstan-type TaskGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TaskGetParams implements BaseModel
 {
-    /** @use SdkModel<task_get_params> */
+    /** @use SdkModel<TaskGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Groups->create
  *
- * @phpstan-type group_create_params = array{
+ * @phpstan-type GroupCreateParamsShape = array{
  *   appID: string, label: string, name: string, displayOrder?: int
  * }
  */
 final class GroupCreateParams implements BaseModel
 {
-    /** @use SdkModel<group_create_params> */
+    /** @use SdkModel<GroupCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_list_permissions = array{
+ * @phpstan-type PublicListPermissionsShape = array{
  *   teamsWithEditAccess: list<int>, usersWithEditAccess: list<int>
  * }
  */
 final class PublicListPermissions implements BaseModel
 {
-    /** @use SdkModel<public_list_permissions> */
+    /** @use SdkModel<PublicListPermissionsShape> */
     use SdkModel;
 
     /** @var list<int> $teamsWithEditAccess */

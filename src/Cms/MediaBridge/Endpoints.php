@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type endpoints_alias = array{
+ * @phpstan-type EndpointsShape = array{
  *   discovery: bool, schemes: list<string>, url: string
  * }
  */
 final class Endpoints implements BaseModel
 {
-    /** @use SdkModel<endpoints_alias> */
+    /** @use SdkModel<EndpointsShape> */
     use SdkModel;
 
     #[Api]

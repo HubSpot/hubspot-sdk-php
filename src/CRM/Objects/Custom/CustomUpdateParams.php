@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Custom->update
  *
- * @phpstan-type custom_update_params = array{
+ * @phpstan-type CustomUpdateParamsShape = array{
  *   objectType: string, properties: array<string, string>, idProperty?: string
  * }
  */
 final class CustomUpdateParams implements BaseModel
 {
-    /** @use SdkModel<custom_update_params> */
+    /** @use SdkModel<CustomUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

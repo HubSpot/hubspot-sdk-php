@@ -10,15 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_with_total_hub_db_table_v3_forward_paging = array{
+ * @phpstan-type CollectionResponseWithTotalHubDBTableV3ForwardPagingShape = array{
  *   results: list<HubDBTableV3>, total: int, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements BaseModel
 {
-    /**
-     * @use SdkModel<collection_response_with_total_hub_db_table_v3_forward_paging>
-     */
+    /** @use SdkModel<CollectionResponseWithTotalHubDBTableV3ForwardPagingShape> */
     use SdkModel;
 
     /** @var list<HubDBTableV3> $results */

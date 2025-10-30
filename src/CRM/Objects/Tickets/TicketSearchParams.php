@@ -15,7 +15,7 @@ use HubspotSDK\CRM\FilterGroup;
  *
  * @see HubspotSDK\CRM\Objects\Tickets->search
  *
- * @phpstan-type ticket_search_params = array{
+ * @phpstan-type TicketSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -26,7 +26,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class TicketSearchParams implements BaseModel
 {
-    /** @use SdkModel<ticket_search_params> */
+    /** @use SdkModel<TicketSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

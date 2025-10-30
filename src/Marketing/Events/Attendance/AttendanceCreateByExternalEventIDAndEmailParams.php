@@ -25,7 +25,7 @@ use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
  *
  * @see HubspotSDK\Marketing\Events\Attendance->createByExternalEventIDAndEmail
  *
- * @phpstan-type attendance_create_by_external_event_id_and_email_params = array{
+ * @phpstan-type AttendanceCreateByExternalEventIDAndEmailParamsShape = array{
  *   externalEventID: string,
  *   inputs: list<MarketingEventEmailSubscriber>,
  *   externalAccountID?: string,
@@ -33,7 +33,7 @@ use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
  */
 final class AttendanceCreateByExternalEventIDAndEmailParams implements BaseModel
 {
-    /** @use SdkModel<attendance_create_by_external_event_id_and_email_params> */
+    /** @use SdkModel<AttendanceCreateByExternalEventIDAndEmailParamsShape> */
     use SdkModel;
     use SdkParams;
 

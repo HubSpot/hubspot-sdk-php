@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type case_change_test_extension_data = array{mood: string}
+ * @phpstan-type CaseChangeTestExtensionDataShape = array{mood: string}
  */
 final class CaseChangeTestExtensionData implements BaseModel
 {
-    /** @use SdkModel<case_change_test_extension_data> */
+    /** @use SdkModel<CaseChangeTestExtensionDataShape> */
     use SdkModel;
 
     #[Api]
