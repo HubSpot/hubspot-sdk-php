@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request body object for cloning content.
  *
- * @phpstan-type content_clone_request_v_next = array{
+ * @phpstan-type ContentCloneRequestVNextShape = array{
  *   id: string, cloneName?: string
  * }
  */
 final class ContentCloneRequestVNext implements BaseModel
 {
-    /** @use SdkModel<content_clone_request_v_next> */
+    /** @use SdkModel<ContentCloneRequestVNextShape> */
     use SdkModel;
 
     /**

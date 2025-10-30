@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type public_tax_rate_group = array{
+ * @phpstan-type PublicTaxRateGroupShape = array{
  *   id: string,
  *   active: bool,
  *   createdAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class PublicTaxRateGroup implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_tax_rate_group> */
+    /** @use SdkModel<PublicTaxRateGroupShape> */
     use SdkModel;
 
     use SdkResponse;

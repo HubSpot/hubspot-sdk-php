@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->unpublish
  *
- * @phpstan-type table_unpublish_params = array{includeForeignIDs?: bool}
+ * @phpstan-type TableUnpublishParamsShape = array{includeForeignIDs?: bool}
  */
 final class TableUnpublishParams implements BaseModel
 {
-    /** @use SdkModel<table_unpublish_params> */
+    /** @use SdkModel<TableUnpublishParamsShape> */
     use SdkModel;
     use SdkParams;
 

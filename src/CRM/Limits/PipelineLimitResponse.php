@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type pipeline_limit_response = array{
+ * @phpstan-type PipelineLimitResponseShape = array{
  *   customObjectTypes: CustomObjectRecordLimitResponse,
  *   hubspotDefinedObjectTypes: list<LimitAndUsageForObjectType>,
  * }
  */
 final class PipelineLimitResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<pipeline_limit_response> */
+    /** @use SdkModel<PipelineLimitResponseShape> */
     use SdkModel;
 
     use SdkResponse;

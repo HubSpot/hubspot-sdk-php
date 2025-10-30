@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type media_bridge_provider_partial = array{
+ * @phpstan-type MediaBridgeProviderPartialShape = array{
  *   updatedAt: int, name?: string
  * }
  */
 final class MediaBridgeProviderPartial implements BaseModel
 {
-    /** @use SdkModel<media_bridge_provider_partial> */
+    /** @use SdkModel<MediaBridgeProviderPartialShape> */
     use SdkModel;
 
     #[Api]

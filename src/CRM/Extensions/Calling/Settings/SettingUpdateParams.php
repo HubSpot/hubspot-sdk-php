@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Extensions\Calling\Settings->update
  *
- * @phpstan-type setting_update_params = array{
+ * @phpstan-type SettingUpdateParamsShape = array{
  *   height?: int,
  *   isReady?: bool,
  *   name?: string,
@@ -28,7 +28,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SettingUpdateParams implements BaseModel
 {
-    /** @use SdkModel<setting_update_params> */
+    /** @use SdkModel<SettingUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

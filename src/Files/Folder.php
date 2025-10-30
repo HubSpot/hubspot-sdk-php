@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type folder_alias = array{
+ * @phpstan-type FolderShape = array{
  *   id: string,
  *   archived: bool,
  *   createdAt: \DateTimeInterface,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class Folder implements BaseModel
 {
-    /** @use SdkModel<folder_alias> */
+    /** @use SdkModel<FolderShape> */
     use SdkModel;
 
     /**

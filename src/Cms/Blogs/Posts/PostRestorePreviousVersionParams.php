@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->restorePreviousVersion
  *
- * @phpstan-type post_restore_previous_version_params = array{objectID: string}
+ * @phpstan-type PostRestorePreviousVersionParamsShape = array{objectID: string}
  */
 final class PostRestorePreviousVersionParams implements BaseModel
 {
-    /** @use SdkModel<post_restore_previous_version_params> */
+    /** @use SdkModel<PostRestorePreviousVersionParamsShape> */
     use SdkModel;
     use SdkParams;
 

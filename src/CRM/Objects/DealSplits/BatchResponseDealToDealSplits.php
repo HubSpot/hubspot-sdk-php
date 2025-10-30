@@ -12,7 +12,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\CRM\Objects\DealSplits\BatchResponseDealToDealSplits\Status;
 
 /**
- * @phpstan-type batch_response_deal_to_deal_splits = array{
+ * @phpstan-type BatchResponseDealToDealSplitsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<DealToDealSplits>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\CRM\Objects\DealSplits\BatchResponseDealToDealSplits\Status;
  */
 final class BatchResponseDealToDealSplits implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<batch_response_deal_to_deal_splits> */
+    /** @use SdkModel<BatchResponseDealToDealSplitsShape> */
     use SdkModel;
 
     use SdkResponse;

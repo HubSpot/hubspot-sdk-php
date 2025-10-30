@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * An individual search result.
  *
- * @phpstan-type content_search_result = array{
+ * @phpstan-type ContentSearchResultShape = array{
  *   id: int,
  *   domain: string,
  *   score: float,
@@ -35,7 +35,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ContentSearchResult implements BaseModel
 {
-    /** @use SdkModel<content_search_result> */
+    /** @use SdkModel<ContentSearchResultShape> */
     use SdkModel;
 
     /**

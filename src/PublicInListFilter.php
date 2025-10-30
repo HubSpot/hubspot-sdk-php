@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicInListFilter\FilterType;
 
 /**
- * @phpstan-type public_in_list_filter = array{
+ * @phpstan-type PublicInListFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   listID: string,
  *   operator: string,
@@ -19,7 +19,7 @@ use HubspotSDK\PublicInListFilter\FilterType;
  */
 final class PublicInListFilter implements BaseModel
 {
-    /** @use SdkModel<public_in_list_filter> */
+    /** @use SdkModel<PublicInListFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

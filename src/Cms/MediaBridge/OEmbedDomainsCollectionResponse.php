@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type o_embed_domains_collection_response = array{
+ * @phpstan-type OEmbedDomainsCollectionResponseShape = array{
  *   results: list<IntegratorOEmbedDomainModel>, totalCount?: int
  * }
  */
 final class OEmbedDomainsCollectionResponse implements BaseModel
 {
-    /** @use SdkModel<o_embed_domains_collection_response> */
+    /** @use SdkModel<OEmbedDomainsCollectionResponseShape> */
     use SdkModel;
 
     /** @var list<IntegratorOEmbedDomainModel> $results */

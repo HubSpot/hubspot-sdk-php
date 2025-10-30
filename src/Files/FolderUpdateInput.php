@@ -11,11 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Object for updating folders.
  *
- * @phpstan-type folder_update_input = array{name?: string, parentFolderID?: int}
+ * @phpstan-type FolderUpdateInputShape = array{
+ *   name?: string, parentFolderID?: int
+ * }
  */
 final class FolderUpdateInput implements BaseModel
 {
-    /** @use SdkModel<folder_update_input> */
+    /** @use SdkModel<FolderUpdateInputShape> */
     use SdkModel;
 
     /**

@@ -16,13 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->deleteByExternalEventID
  *
- * @phpstan-type event_delete_by_external_event_id_params = array{
+ * @phpstan-type EventDeleteByExternalEventIDParamsShape = array{
  *   externalAccountID: string
  * }
  */
 final class EventDeleteByExternalEventIDParams implements BaseModel
 {
-    /** @use SdkModel<event_delete_by_external_event_id_params> */
+    /** @use SdkModel<EventDeleteByExternalEventIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

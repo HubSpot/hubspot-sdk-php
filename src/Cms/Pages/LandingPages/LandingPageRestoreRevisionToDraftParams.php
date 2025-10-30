@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->restoreRevisionToDraft
  *
- * @phpstan-type landing_page_restore_revision_to_draft_params = array{
+ * @phpstan-type LandingPageRestoreRevisionToDraftParamsShape = array{
  *   objectID: string
  * }
  */
 final class LandingPageRestoreRevisionToDraftParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_restore_revision_to_draft_params> */
+    /** @use SdkModel<LandingPageRestoreRevisionToDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

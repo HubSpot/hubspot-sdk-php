@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_meeting_availability = array{
+ * @phpstan-type ExternalMeetingAvailabilityShape = array{
  *   endMillisUtc: int, startMillisUtc: int
  * }
  */
 final class ExternalMeetingAvailability implements BaseModel
 {
-    /** @use SdkModel<external_meeting_availability> */
+    /** @use SdkModel<ExternalMeetingAvailabilityShape> */
     use SdkModel;
 
     #[Api]

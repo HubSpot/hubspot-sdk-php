@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type property_definition_source = array{
+ * @phpstan-type PropertyDefinitionSourceShape = array{
  *   type: value-of<Type>, name?: string
  * }
  */
 final class PropertyDefinitionSource implements BaseModel
 {
-    /** @use SdkModel<property_definition_source> */
+    /** @use SdkModel<PropertyDefinitionSourceShape> */
     use SdkModel;
 
     /** @var value-of<Type> $type */

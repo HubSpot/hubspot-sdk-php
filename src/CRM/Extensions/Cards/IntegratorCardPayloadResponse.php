@@ -14,7 +14,7 @@ use HubspotSDK\CRM\Extensions\Cards\IntegratorCardPayloadResponse\ResponseVersio
 /**
  * The card details payload, sent to HubSpot by an app in response to a data fetch request when a user visits a CRM record page.
  *
- * @phpstan-type integrator_card_payload_response = array{
+ * @phpstan-type IntegratorCardPayloadResponseShape = array{
  *   totalCount: int,
  *   allItemsLinkURL?: string,
  *   cardLabel?: string,
@@ -25,7 +25,7 @@ use HubspotSDK\CRM\Extensions\Cards\IntegratorCardPayloadResponse\ResponseVersio
  */
 final class IntegratorCardPayloadResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<integrator_card_payload_response> */
+    /** @use SdkModel<IntegratorCardPayloadResponseShape> */
     use SdkModel;
 
     use SdkResponse;

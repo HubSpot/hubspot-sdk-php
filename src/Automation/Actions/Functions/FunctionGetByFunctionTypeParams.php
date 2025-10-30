@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Functions->getByFunctionType
  *
- * @phpstan-type function_get_by_function_type_params = array{
+ * @phpstan-type FunctionGetByFunctionTypeParamsShape = array{
  *   appID: int, definitionID: string
  * }
  */
 final class FunctionGetByFunctionTypeParams implements BaseModel
 {
-    /** @use SdkModel<function_get_by_function_type_params> */
+    /** @use SdkModel<FunctionGetByFunctionTypeParamsShape> */
     use SdkModel;
     use SdkParams;
 

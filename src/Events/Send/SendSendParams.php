@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Events\Send->send
  *
- * @phpstan-type send_send_params = array{
+ * @phpstan-type SendSendParamsShape = array{
  *   eventName: string,
  *   email?: string,
  *   objectID?: string,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SendSendParams implements BaseModel
 {
-    /** @use SdkModel<send_send_params> */
+    /** @use SdkModel<SendSendParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -17,7 +17,7 @@ use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationStrat
  *
  * @see HubspotSDK\Files\Files->importFromURLAsync
  *
- * @phpstan-type file_import_from_url_async_params = array{
+ * @phpstan-type FileImportFromURLAsyncParamsShape = array{
  *   access: Access|value-of<Access>,
  *   url: string,
  *   duplicateValidationScope?: DuplicateValidationScope|value-of<DuplicateValidationScope>,
@@ -32,7 +32,7 @@ use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationStrat
  */
 final class FileImportFromURLAsyncParams implements BaseModel
 {
-    /** @use SdkModel<file_import_from_url_async_params> */
+    /** @use SdkModel<FileImportFromURLAsyncParamsShape> */
     use SdkModel;
     use SdkParams;
 

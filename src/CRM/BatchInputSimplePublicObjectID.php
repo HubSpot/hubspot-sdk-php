@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_simple_public_object_id = array{
+ * @phpstan-type BatchInputSimplePublicObjectIDShape = array{
  *   inputs: list<SimplePublicObjectID>
  * }
  */
 final class BatchInputSimplePublicObjectID implements BaseModel
 {
-    /** @use SdkModel<batch_input_simple_public_object_id> */
+    /** @use SdkModel<BatchInputSimplePublicObjectIDShape> */
     use SdkModel;
 
     /** @var list<SimplePublicObjectID> $inputs */

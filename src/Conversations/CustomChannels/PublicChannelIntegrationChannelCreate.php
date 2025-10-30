@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_channel_integration_channel_create = array{
+ * @phpstan-type PublicChannelIntegrationChannelCreateShape = array{
  *   capabilities: array<string, mixed>,
  *   name: string,
  *   channelAccountConnectionRedirectURL?: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicChannelIntegrationChannelCreate implements BaseModel
 {
-    /** @use SdkModel<public_channel_integration_channel_create> */
+    /** @use SdkModel<PublicChannelIntegrationChannelCreateShape> */
     use SdkModel;
 
     /** @var array<string, mixed> $capabilities */

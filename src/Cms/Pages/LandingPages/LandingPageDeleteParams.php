@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->delete
  *
- * @phpstan-type landing_page_delete_params = array{archived?: bool}
+ * @phpstan-type LandingPageDeleteParamsShape = array{archived?: bool}
  */
 final class LandingPageDeleteParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_delete_params> */
+    /** @use SdkModel<LandingPageDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

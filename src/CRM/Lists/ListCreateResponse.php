@@ -13,11 +13,11 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * The response for a list create request.
  *
- * @phpstan-type list_create_response = array{list: PublicObjectList}
+ * @phpstan-type ListCreateResponseShape = array{list: PublicObjectList}
  */
 final class ListCreateResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<list_create_response> */
+    /** @use SdkModel<ListCreateResponseShape> */
     use SdkModel;
 
     use SdkResponse;

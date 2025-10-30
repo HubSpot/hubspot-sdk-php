@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\URLRedirects->list
  *
- * @phpstan-type url_redirect_list_params = array{
+ * @phpstan-type URLRedirectListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   createdAfter?: \DateTimeInterface,
@@ -29,7 +29,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class URLRedirectListParams implements BaseModel
 {
-    /** @use SdkModel<url_redirect_list_params> */
+    /** @use SdkModel<URLRedirectListParamsShape> */
     use SdkModel;
     use SdkParams;
 

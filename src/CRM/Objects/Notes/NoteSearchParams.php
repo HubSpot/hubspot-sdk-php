@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Notes->search
  *
- * @phpstan-type note_search_params = array{
+ * @phpstan-type NoteSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class NoteSearchParams implements BaseModel
 {
-    /** @use SdkModel<note_search_params> */
+    /** @use SdkModel<NoteSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

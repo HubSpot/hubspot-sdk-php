@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Describes how an email address should be validated.
  *
- * @phpstan-type email_field_validation = array{
+ * @phpstan-type EmailFieldValidationShape = array{
  *   blockedEmailDomains: list<string>, useDefaultBlockList: bool
  * }
  */
 final class EmailFieldValidation implements BaseModel
 {
-    /** @use SdkModel<email_field_validation> */
+    /** @use SdkModel<EmailFieldValidationShape> */
     use SdkModel;
 
     /**

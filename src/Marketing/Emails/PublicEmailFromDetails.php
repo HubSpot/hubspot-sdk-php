@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Data structure representing the from fields on the email.
  *
- * @phpstan-type public_email_from_details = array{
+ * @phpstan-type PublicEmailFromDetailsShape = array{
  *   customReplyTo?: string, fromName?: string, replyTo?: string
  * }
  */
 final class PublicEmailFromDetails implements BaseModel
 {
-    /** @use SdkModel<public_email_from_details> */
+    /** @use SdkModel<PublicEmailFromDetailsShape> */
     use SdkModel;
 
     /**

@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type subscriber_email_response = array{email: string, vid: int}
+ * @phpstan-type SubscriberEmailResponseShape = array{email: string, vid: int}
  */
 final class SubscriberEmailResponse implements BaseModel
 {
-    /** @use SdkModel<subscriber_email_response> */
+    /** @use SdkModel<SubscriberEmailResponseShape> */
     use SdkModel;
 
     #[Api]

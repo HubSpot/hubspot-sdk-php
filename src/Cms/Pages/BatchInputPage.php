@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Wrapper for providing an array of pages as inputs.
  *
- * @phpstan-type batch_input_page = array{inputs: list<Page>}
+ * @phpstan-type BatchInputPageShape = array{inputs: list<Page>}
  */
 final class BatchInputPage implements BaseModel
 {
-    /** @use SdkModel<batch_input_page> */
+    /** @use SdkModel<BatchInputPageShape> */
     use SdkModel;
 
     /**

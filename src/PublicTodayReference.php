@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicTodayReference\ReferenceType;
 
 /**
- * @phpstan-type public_today_reference = array{
+ * @phpstan-type PublicTodayReferenceShape = array{
  *   referenceType: value-of<ReferenceType>,
  *   hour?: int,
  *   millisecond?: int,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicTodayReference\ReferenceType;
  */
 final class PublicTodayReference implements BaseModel
 {
-    /** @use SdkModel<public_today_reference> */
+    /** @use SdkModel<PublicTodayReferenceShape> */
     use SdkModel;
 
     /** @var value-of<ReferenceType> $referenceType */

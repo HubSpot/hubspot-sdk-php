@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->createFolder
  *
- * @phpstan-type landing_page_create_folder_params = array{
+ * @phpstan-type LandingPageCreateFolderParamsShape = array{
  *   id: string,
  *   category: int,
  *   created: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LandingPageCreateFolderParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_create_folder_params> */
+    /** @use SdkModel<LandingPageCreateFolderParamsShape> */
     use SdkModel;
     use SdkParams;
 

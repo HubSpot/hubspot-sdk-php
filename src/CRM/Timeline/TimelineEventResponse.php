@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The current state of the timeline event.
  *
- * @phpstan-type timeline_event_response = array{
+ * @phpstan-type TimelineEventResponseShape = array{
  *   id: string,
  *   eventTemplateID: string,
  *   objectType: string,
@@ -28,7 +28,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TimelineEventResponse implements BaseModel
 {
-    /** @use SdkModel<timeline_event_response> */
+    /** @use SdkModel<TimelineEventResponseShape> */
     use SdkModel;
 
     /**

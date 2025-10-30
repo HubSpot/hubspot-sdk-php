@@ -12,7 +12,7 @@ use HubspotSDK\CRM\Extensions\Cards\CardDisplayProperty\DataType;
 /**
  * Definition for a card display property.
  *
- * @phpstan-type card_display_property = array{
+ * @phpstan-type CardDisplayPropertyShape = array{
  *   dataType: value-of<DataType>,
  *   label: string,
  *   name: string,
@@ -21,7 +21,7 @@ use HubspotSDK\CRM\Extensions\Cards\CardDisplayProperty\DataType;
  */
 final class CardDisplayProperty implements BaseModel
 {
-    /** @use SdkModel<card_display_property> */
+    /** @use SdkModel<CardDisplayPropertyShape> */
     use SdkModel;
 
     /**

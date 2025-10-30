@@ -13,7 +13,7 @@ use HubspotSDK\StandardError;
 /**
  * Response object for batch operations on pages with errors.
  *
- * @phpstan-type batch_response_page_with_errors = array{
+ * @phpstan-type BatchResponsePageWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<Page>,
  *   startedAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponsePageWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_page_with_errors> */
+    /** @use SdkModel<BatchResponsePageWithErrorsShape> */
     use SdkModel;
 
     /**

@@ -13,11 +13,11 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * The response for a list fetch request.
  *
- * @phpstan-type list_fetch_response = array{list: PublicObjectList}
+ * @phpstan-type ListFetchResponseShape = array{list: PublicObjectList}
  */
 final class ListFetchResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<list_fetch_response> */
+    /** @use SdkModel<ListFetchResponseShape> */
     use SdkModel;
 
     use SdkResponse;

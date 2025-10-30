@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Extensions\Cards->delete
  *
- * @phpstan-type card_delete_params = array{appID: int}
+ * @phpstan-type CardDeleteParamsShape = array{appID: int}
  */
 final class CardDeleteParams implements BaseModel
 {
-    /** @use SdkModel<card_delete_params> */
+    /** @use SdkModel<CardDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

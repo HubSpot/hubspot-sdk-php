@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type hub_db_table_clone_request = array{
+ * @phpstan-type HubDBTableCloneRequestShape = array{
  *   copyRows: bool, isHubspotDefined: bool, newLabel?: string, newName?: string
  * }
  */
 final class HubDBTableCloneRequest implements BaseModel
 {
-    /** @use SdkModel<hub_db_table_clone_request> */
+    /** @use SdkModel<HubDBTableCloneRequestShape> */
     use SdkModel;
 
     /**

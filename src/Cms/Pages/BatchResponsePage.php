@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Response object for successful batch operations on pages.
  *
- * @phpstan-type batch_response_page = array{
+ * @phpstan-type BatchResponsePageShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<Page>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class BatchResponsePage implements BaseModel
 {
-    /** @use SdkModel<batch_response_page> */
+    /** @use SdkModel<BatchResponsePageShape> */
     use SdkModel;
 
     #[Api]

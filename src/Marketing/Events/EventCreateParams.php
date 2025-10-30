@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->create
  *
- * @phpstan-type event_create_params = array{
+ * @phpstan-type EventCreateParamsShape = array{
  *   eventName: string,
  *   eventOrganizer: string,
  *   externalAccountID: string,
@@ -31,7 +31,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EventCreateParams implements BaseModel
 {
-    /** @use SdkModel<event_create_params> */
+    /** @use SdkModel<EventCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

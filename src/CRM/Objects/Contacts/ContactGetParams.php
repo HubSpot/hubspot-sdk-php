@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Contacts->get
  *
- * @phpstan-type contact_get_params = array{
+ * @phpstan-type ContactGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   properties?: list<string>,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ContactGetParams implements BaseModel
 {
-    /** @use SdkModel<contact_get_params> */
+    /** @use SdkModel<ContactGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

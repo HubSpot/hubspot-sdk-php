@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->deleteFolder
  *
- * @phpstan-type landing_page_delete_folder_params = array{archived?: bool}
+ * @phpstan-type LandingPageDeleteFolderParamsShape = array{archived?: bool}
  */
 final class LandingPageDeleteFolderParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_delete_folder_params> */
+    /** @use SdkModel<LandingPageDeleteFolderParamsShape> */
     use SdkModel;
     use SdkParams;
 

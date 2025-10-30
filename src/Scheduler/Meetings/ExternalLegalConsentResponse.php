@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_legal_consent_response = array{
+ * @phpstan-type ExternalLegalConsentResponseShape = array{
  *   communicationTypeID: string, consented: bool
  * }
  */
 final class ExternalLegalConsentResponse implements BaseModel
 {
-    /** @use SdkModel<external_legal_consent_response> */
+    /** @use SdkModel<ExternalLegalConsentResponseShape> */
     use SdkModel;
 
     #[Api('communicationTypeId')]

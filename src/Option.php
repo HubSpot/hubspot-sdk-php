@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A HubSpot property option.
  *
- * @phpstan-type option_alias = array{
+ * @phpstan-type OptionShape = array{
  *   description: string,
  *   displayOrder: int,
  *   doubleData: float,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class Option implements BaseModel
 {
-    /** @use SdkModel<option_alias> */
+    /** @use SdkModel<OptionShape> */
     use SdkModel;
 
     /**

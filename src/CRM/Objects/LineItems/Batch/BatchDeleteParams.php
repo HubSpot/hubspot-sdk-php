@@ -15,11 +15,11 @@ use HubspotSDK\CRM\SimplePublicObjectID;
  *
  * @see HubspotSDK\CRM\Objects\LineItems\Batch->delete
  *
- * @phpstan-type batch_delete_params = array{inputs: list<SimplePublicObjectID>}
+ * @phpstan-type BatchDeleteParamsShape = array{inputs: list<SimplePublicObjectID>}
  */
 final class BatchDeleteParams implements BaseModel
 {
-    /** @use SdkModel<batch_delete_params> */
+    /** @use SdkModel<BatchDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

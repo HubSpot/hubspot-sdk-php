@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\YearReference\ReferenceType;
 
 /**
- * @phpstan-type year_reference = array{
+ * @phpstan-type YearReferenceShape = array{
  *   day: int,
  *   month: int,
  *   referenceType: value-of<ReferenceType>,
@@ -22,7 +22,7 @@ use HubspotSDK\Events\EventDefinitions\YearReference\ReferenceType;
  */
 final class YearReference implements BaseModel
 {
-    /** @use SdkModel<year_reference> */
+    /** @use SdkModel<YearReferenceShape> */
     use SdkModel;
 
     #[Api]

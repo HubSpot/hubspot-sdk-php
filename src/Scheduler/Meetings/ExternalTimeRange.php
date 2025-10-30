@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_time_range = array{end: int, start: int}
+ * @phpstan-type ExternalTimeRangeShape = array{end: int, start: int}
  */
 final class ExternalTimeRange implements BaseModel
 {
-    /** @use SdkModel<external_time_range> */
+    /** @use SdkModel<ExternalTimeRangeShape> */
     use SdkModel;
 
     #[Api]

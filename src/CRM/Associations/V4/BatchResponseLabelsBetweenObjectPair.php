@@ -11,7 +11,7 @@ use HubspotSDK\CRM\Associations\V4\BatchResponseLabelsBetweenObjectPair\Status;
 use HubspotSDK\CRM\LabelsBetweenObjectPair;
 
 /**
- * @phpstan-type batch_response_labels_between_object_pair = array{
+ * @phpstan-type BatchResponseLabelsBetweenObjectPairShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<LabelsBetweenObjectPair>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\LabelsBetweenObjectPair;
  */
 final class BatchResponseLabelsBetweenObjectPair implements BaseModel
 {
-    /** @use SdkModel<batch_response_labels_between_object_pair> */
+    /** @use SdkModel<BatchResponseLabelsBetweenObjectPairShape> */
     use SdkModel;
 
     #[Api]

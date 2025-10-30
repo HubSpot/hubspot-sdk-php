@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Listings->update
  *
- * @phpstan-type listing_update_params = array{
+ * @phpstan-type ListingUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class ListingUpdateParams implements BaseModel
 {
-    /** @use SdkModel<listing_update_params> */
+    /** @use SdkModel<ListingUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

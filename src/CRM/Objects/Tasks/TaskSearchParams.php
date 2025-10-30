@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Tasks->search
  *
- * @phpstan-type task_search_params = array{
+ * @phpstan-type TaskSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class TaskSearchParams implements BaseModel
 {
-    /** @use SdkModel<task_search_params> */
+    /** @use SdkModel<TaskSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

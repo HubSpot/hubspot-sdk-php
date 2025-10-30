@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type integrator_object_creation_response = array{
+ * @phpstan-type IntegratorObjectCreationResponseShape = array{
  *   objectType: InboundDBObjectType,
  *   properties: list<PropertyDefinition>,
  *   propertyGroups: list<Group>,
@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class IntegratorObjectCreationResponse implements BaseModel
 {
-    /** @use SdkModel<integrator_object_creation_response> */
+    /** @use SdkModel<IntegratorObjectCreationResponseShape> */
     use SdkModel;
 
     #[Api]

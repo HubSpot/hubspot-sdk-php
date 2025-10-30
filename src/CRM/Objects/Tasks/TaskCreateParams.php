@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Tasks->create
  *
- * @phpstan-type task_create_params = array{
+ * @phpstan-type TaskCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class TaskCreateParams implements BaseModel
 {
-    /** @use SdkModel<task_create_params> */
+    /** @use SdkModel<TaskCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

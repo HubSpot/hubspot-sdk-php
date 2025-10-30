@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type collection_response_folder = array{
+ * @phpstan-type CollectionResponseFolderShape = array{
  *   results: list<Folder>, paging?: Paging
  * }
  */
 final class CollectionResponseFolder implements BaseModel
 {
-    /** @use SdkModel<collection_response_folder> */
+    /** @use SdkModel<CollectionResponseFolderShape> */
     use SdkModel;
 
     /** @var list<Folder> $results */

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->resetDraft
  *
- * @phpstan-type table_reset_draft_params = array{includeForeignIDs?: bool}
+ * @phpstan-type TableResetDraftParamsShape = array{includeForeignIDs?: bool}
  */
 final class TableResetDraftParams implements BaseModel
 {
-    /** @use SdkModel<table_reset_draft_params> */
+    /** @use SdkModel<TableResetDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

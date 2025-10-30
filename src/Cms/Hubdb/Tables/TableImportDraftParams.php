@@ -15,11 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->importDraft
  *
- * @phpstan-type table_import_draft_params = array{config?: string, file?: string}
+ * @phpstan-type TableImportDraftParamsShape = array{
+ *   config?: string, file?: string
+ * }
  */
 final class TableImportDraftParams implements BaseModel
 {
-    /** @use SdkModel<table_import_draft_params> */
+    /** @use SdkModel<TableImportDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

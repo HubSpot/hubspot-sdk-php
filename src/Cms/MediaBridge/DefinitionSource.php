@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type definition_source = array{type: string, name?: string}
+ * @phpstan-type DefinitionSourceShape = array{type: string, name?: string}
  */
 final class DefinitionSource implements BaseModel
 {
-    /** @use SdkModel<definition_source> */
+    /** @use SdkModel<DefinitionSourceShape> */
     use SdkModel;
 
     #[Api]

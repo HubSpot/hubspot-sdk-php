@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_import_metadata = array{
+ * @phpstan-type PublicImportMetadataShape = array{
  *   counters: array<string, int>,
  *   fileIDs: list<string>,
  *   objectLists: list<PublicObjectListRecord>,
@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicImportMetadata implements BaseModel
 {
-    /** @use SdkModel<public_import_metadata> */
+    /** @use SdkModel<PublicImportMetadataShape> */
     use SdkModel;
 
     /**

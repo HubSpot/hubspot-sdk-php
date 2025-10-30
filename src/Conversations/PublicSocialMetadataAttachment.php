@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_social_metadata_attachment = array{
+ * @phpstan-type PublicSocialMetadataAttachmentShape = array{
  *   socialMetadata: SocialMetadata, type: value-of<Type>
  * }
  */
 final class PublicSocialMetadataAttachment implements BaseModel
 {
-    /** @use SdkModel<public_social_metadata_attachment> */
+    /** @use SdkModel<PublicSocialMetadataAttachmentShape> */
     use SdkModel;
 
     #[Api]

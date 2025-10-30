@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type hub_db_table_v3_request = array{
+ * @phpstan-type HubDBTableV3RequestShape = array{
  *   label: string,
  *   name: string,
  *   allowChildTables?: bool,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class HubDBTableV3Request implements BaseModel
 {
-    /** @use SdkModel<hub_db_table_v3_request> */
+    /** @use SdkModel<HubDBTableV3RequestShape> */
     use SdkModel;
 
     /**

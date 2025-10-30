@@ -15,7 +15,7 @@ use HubspotSDK\CRM\Timeline\TimelineEventTemplateToken;
  *
  * @see HubspotSDK\CRM\Timeline\Templates->update
  *
- * @phpstan-type template_update_params = array{
+ * @phpstan-type TemplateUpdateParamsShape = array{
  *   appID: int,
  *   id: string,
  *   name: string,
@@ -26,7 +26,7 @@ use HubspotSDK\CRM\Timeline\TimelineEventTemplateToken;
  */
 final class TemplateUpdateParams implements BaseModel
 {
-    /** @use SdkModel<template_update_params> */
+    /** @use SdkModel<TemplateUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

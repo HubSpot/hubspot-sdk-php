@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_flow_batch_fetch_migration_workflow_id_coordinate = array{
+ * @phpstan-type APIFlowBatchFetchMigrationWorkflowIDCoordinateShape = array{
  *   flowMigrationStatusForClassicWorkflows: string, type: value-of<Type>
  * }
  */
 final class APIFlowBatchFetchMigrationWorkflowIDCoordinate implements BaseModel
 {
-    /** @use SdkModel<api_flow_batch_fetch_migration_workflow_id_coordinate> */
+    /** @use SdkModel<APIFlowBatchFetchMigrationWorkflowIDCoordinateShape> */
     use SdkModel;
 
     /**

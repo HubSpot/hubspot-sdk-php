@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_static_branch_action = array{
+ * @phpstan-type APIStaticBranchActionShape = array{
  *   actionID: string,
  *   inputValue: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue,
  *   staticBranches: list<APIStaticBranch>,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIStaticBranchAction implements BaseModel
 {
-    /** @use SdkModel<api_static_branch_action> */
+    /** @use SdkModel<APIStaticBranchActionShape> */
     use SdkModel;
 
     /**

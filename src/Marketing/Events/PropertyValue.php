@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
 /**
  * Represents a single custom property of a marketing event, storing its name, value, metadata (like source, timestamp, and sensitivity), and related audit information for tracking changes.
  *
- * @phpstan-type property_value = array{
+ * @phpstan-type PropertyValueShape = array{
  *   name: string,
  *   sourceUpstreamDeployable: string,
  *   value: string,
@@ -37,7 +37,7 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  */
 final class PropertyValue implements BaseModel
 {
-    /** @use SdkModel<property_value> */
+    /** @use SdkModel<PropertyValueShape> */
     use SdkModel;
 
     /**

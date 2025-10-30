@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type central_exchange_rates_information = array{
+ * @phpstan-type CentralExchangeRatesInformationShape = array{
  *   centralExchangeRatesEnabled: bool
  * }
  */
 final class CentralExchangeRatesInformation implements BaseModel
 {
-    /** @use SdkModel<central_exchange_rates_information> */
+    /** @use SdkModel<CentralExchangeRatesInformationShape> */
     use SdkModel;
 
     #[Api]

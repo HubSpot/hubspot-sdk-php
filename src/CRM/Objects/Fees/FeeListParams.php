@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Fees->list
  *
- * @phpstan-type fee_list_params = array{
+ * @phpstan-type FeeListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class FeeListParams implements BaseModel
 {
-    /** @use SdkModel<fee_list_params> */
+    /** @use SdkModel<FeeListParamsShape> */
     use SdkModel;
     use SdkParams;
 

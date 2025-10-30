@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type object_type_id_proto = array{innerID: int, metaTypeID: int}
+ * @phpstan-type ObjectTypeIDProtoShape = array{innerID: int, metaTypeID: int}
  */
 final class ObjectTypeIDProto implements BaseModel
 {
-    /** @use SdkModel<object_type_id_proto> */
+    /** @use SdkModel<ObjectTypeIDProtoShape> */
     use SdkModel;
 
     #[Api('innerId')]

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Quotes->update
  *
- * @phpstan-type quote_update_params = array{
+ * @phpstan-type QuoteUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class QuoteUpdateParams implements BaseModel
 {
-    /** @use SdkModel<quote_update_params> */
+    /** @use SdkModel<QuoteUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

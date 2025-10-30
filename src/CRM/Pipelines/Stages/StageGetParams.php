@@ -14,11 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Pipelines\Stages->get
  *
- * @phpstan-type stage_get_params = array{objectType: string, pipelineID: string}
+ * @phpstan-type StageGetParamsShape = array{
+ *   objectType: string, pipelineID: string
+ * }
  */
 final class StageGetParams implements BaseModel
 {
-    /** @use SdkModel<stage_get_params> */
+    /** @use SdkModel<StageGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type collection_response_with_total_simple_public_object = array{
+ * @phpstan-type CollectionResponseWithTotalSimplePublicObjectShape = array{
  *   results: list<SimplePublicObject>, total: int, paging?: Paging
  * }
  */
 final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
 {
-    /** @use SdkModel<collection_response_with_total_simple_public_object> */
+    /** @use SdkModel<CollectionResponseWithTotalSimplePublicObjectShape> */
     use SdkModel;
 
     /** @var list<SimplePublicObject> $results */

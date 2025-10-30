@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type acting_user = array{userID: int, userEmail?: string}
+ * @phpstan-type ActingUserShape = array{userID: int, userEmail?: string}
  */
 final class ActingUser implements BaseModel
 {
-    /** @use SdkModel<acting_user> */
+    /** @use SdkModel<ActingUserShape> */
     use SdkModel;
 
     /**

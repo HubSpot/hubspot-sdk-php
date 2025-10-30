@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type event_visibility_response = array{
+ * @phpstan-type EventVisibilityResponseShape = array{
  *   createdAt: \DateTimeInterface, visibilitySettings: list<EventVisibilityChange>
  * }
  */
 final class EventVisibilityResponse implements BaseModel
 {
-    /** @use SdkModel<event_visibility_response> */
+    /** @use SdkModel<EventVisibilityResponseShape> */
     use SdkModel;
 
     #[Api]

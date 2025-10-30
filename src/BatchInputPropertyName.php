@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_property_name = array{inputs: list<PropertyName>}
+ * @phpstan-type BatchInputPropertyNameShape = array{inputs: list<PropertyName>}
  */
 final class BatchInputPropertyName implements BaseModel
 {
-    /** @use SdkModel<batch_input_property_name> */
+    /** @use SdkModel<BatchInputPropertyNameShape> */
     use SdkModel;
 
     /** @var list<PropertyName> $inputs */

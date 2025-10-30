@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Orders->update
  *
- * @phpstan-type order_update_params = array{
+ * @phpstan-type OrderUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class OrderUpdateParams implements BaseModel
 {
-    /** @use SdkModel<order_update_params> */
+    /** @use SdkModel<OrderUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

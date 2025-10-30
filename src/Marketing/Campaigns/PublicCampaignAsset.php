@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_campaign_asset = array{
+ * @phpstan-type PublicCampaignAssetShape = array{
  *   id: string, metrics: array<string, float>, name?: string
  * }
  */
 final class PublicCampaignAsset implements BaseModel
 {
-    /** @use SdkModel<public_campaign_asset> */
+    /** @use SdkModel<PublicCampaignAssetShape> */
     use SdkModel;
 
     #[Api]

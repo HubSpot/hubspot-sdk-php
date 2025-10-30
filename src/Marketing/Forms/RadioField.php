@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\RadioField\FieldType;
 /**
  * A form field consisting of a set of radio options, out of which one can be selected at a time.
  *
- * @phpstan-type radio_field = array{
+ * @phpstan-type RadioFieldShape = array{
  *   defaultValues: list<string>,
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
@@ -28,7 +28,7 @@ use HubspotSDK\Marketing\Forms\RadioField\FieldType;
  */
 final class RadioField implements BaseModel
 {
-    /** @use SdkModel<radio_field> */
+    /** @use SdkModel<RadioFieldShape> */
     use SdkModel;
 
     /**

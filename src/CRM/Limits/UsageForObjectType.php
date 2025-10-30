@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type usage_for_object_type = array{
+ * @phpstan-type UsageForObjectTypeShape = array{
  *   objectTypeID: string, pluralLabel: string, singularLabel: string, usage: int
  * }
  */
 final class UsageForObjectType implements BaseModel
 {
-    /** @use SdkModel<usage_for_object_type> */
+    /** @use SdkModel<UsageForObjectTypeShape> */
     use SdkModel;
 
     #[Api('objectTypeId')]

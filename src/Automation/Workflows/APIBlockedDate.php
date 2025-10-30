@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_blocked_date = array{
+ * @phpstan-type APIBlockedDateShape = array{
  *   dayOfMonth: int, month: value-of<Month>, year?: int
  * }
  */
 final class APIBlockedDate implements BaseModel
 {
-    /** @use SdkModel<api_blocked_date> */
+    /** @use SdkModel<APIBlockedDateShape> */
     use SdkModel;
 
     #[Api]

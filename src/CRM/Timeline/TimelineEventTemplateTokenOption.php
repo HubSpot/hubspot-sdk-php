@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type timeline_event_template_token_option = array{
+ * @phpstan-type TimelineEventTemplateTokenOptionShape = array{
  *   label: string, value: string
  * }
  */
 final class TimelineEventTemplateTokenOption implements BaseModel
 {
-    /** @use SdkModel<timeline_event_template_token_option> */
+    /** @use SdkModel<TimelineEventTemplateTokenOptionShape> */
     use SdkModel;
 
     #[Api]

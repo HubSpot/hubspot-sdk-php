@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicWebinarFilter\FilterType;
 
 /**
- * @phpstan-type public_webinar_filter = array{
+ * @phpstan-type PublicWebinarFilterShape = array{
  *   filterType: value-of<FilterType>, operator: string, webinarID?: string
  * }
  */
 final class PublicWebinarFilter implements BaseModel
 {
-    /** @use SdkModel<public_webinar_filter> */
+    /** @use SdkModel<PublicWebinarFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

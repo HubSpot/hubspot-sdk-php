@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_thread_update_request = array{
+ * @phpstan-type PublicThreadUpdateRequestShape = array{
  *   archived?: bool, status?: value-of<Status>
  * }
  */
 final class PublicThreadUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<public_thread_update_request> */
+    /** @use SdkModel<PublicThreadUpdateRequestShape> */
     use SdkModel;
 
     /**

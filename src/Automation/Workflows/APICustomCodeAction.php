@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_custom_code_action = array{
+ * @phpstan-type APICustomCodeActionShape = array{
  *   actionID: string,
  *   inputFields: list<APIInputVariable>,
  *   outputFields: list<APIEnumerationOutputField>,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APICustomCodeAction implements BaseModel
 {
-    /** @use SdkModel<api_custom_code_action> */
+    /** @use SdkModel<APICustomCodeActionShape> */
     use SdkModel;
 
     /**

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_thread_status_change = array{
+ * @phpstan-type PublicThreadStatusChangeShape = array{
  *   id: string,
  *   archived: bool,
  *   client: PublicClient,
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicThreadStatusChange implements BaseModel
 {
-    /** @use SdkModel<public_thread_status_change> */
+    /** @use SdkModel<PublicThreadStatusChangeShape> */
     use SdkModel;
 
     #[Api]

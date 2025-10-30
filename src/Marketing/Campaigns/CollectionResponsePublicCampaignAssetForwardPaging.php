@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_public_campaign_asset_forward_paging = array{
+ * @phpstan-type CollectionResponsePublicCampaignAssetForwardPagingShape = array{
  *   results: list<PublicCampaignAsset>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponsePublicCampaignAssetForwardPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_public_campaign_asset_forward_paging> */
+    /** @use SdkModel<CollectionResponsePublicCampaignAssetForwardPagingShape> */
     use SdkModel;
 
     /** @var list<PublicCampaignAsset> $results */

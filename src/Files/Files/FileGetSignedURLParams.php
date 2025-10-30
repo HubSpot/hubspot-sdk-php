@@ -15,13 +15,13 @@ use HubspotSDK\Files\Files\FileGetSignedURLParams\Size;
  *
  * @see HubspotSDK\Files\Files->getSignedURL
  *
- * @phpstan-type file_get_signed_url_params = array{
+ * @phpstan-type FileGetSignedURLParamsShape = array{
  *   expirationSeconds?: int, size?: Size|value-of<Size>, upscale?: bool
  * }
  */
 final class FileGetSignedURLParams implements BaseModel
 {
-    /** @use SdkModel<file_get_signed_url_params> */
+    /** @use SdkModel<FileGetSignedURLParamsShape> */
     use SdkModel;
     use SdkParams;
 

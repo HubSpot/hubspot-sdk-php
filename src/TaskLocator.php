@@ -9,11 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type task_locator = array{id: string, links?: array<string, string>}
+ * @phpstan-type TaskLocatorShape = array{
+ *   id: string, links?: array<string, string>
+ * }
  */
 final class TaskLocator implements BaseModel
 {
-    /** @use SdkModel<task_locator> */
+    /** @use SdkModel<TaskLocatorShape> */
     use SdkModel;
 
     #[Api]

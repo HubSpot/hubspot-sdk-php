@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Events\BatchResponseSubscriberVidResponse\Status;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_subscriber_vid_response = array{
+ * @phpstan-type BatchResponseSubscriberVidResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<SubscriberVidResponse>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseSubscriberVidResponse implements BaseModel
 {
-    /** @use SdkModel<batch_response_subscriber_vid_response> */
+    /** @use SdkModel<BatchResponseSubscriberVidResponseShape> */
     use SdkModel;
 
     #[Api]

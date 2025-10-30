@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Appointments->get
  *
- * @phpstan-type appointment_get_params = array{
+ * @phpstan-type AppointmentGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AppointmentGetParams implements BaseModel
 {
-    /** @use SdkModel<appointment_get_params> */
+    /** @use SdkModel<AppointmentGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

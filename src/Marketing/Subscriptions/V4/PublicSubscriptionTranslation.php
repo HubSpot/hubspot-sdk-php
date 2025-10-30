@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_subscription_translation = array{
+ * @phpstan-type PublicSubscriptionTranslationShape = array{
  *   createdAt: int,
  *   description: string,
  *   languageCode: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicSubscriptionTranslation implements BaseModel
 {
-    /** @use SdkModel<public_subscription_translation> */
+    /** @use SdkModel<PublicSubscriptionTranslationShape> */
     use SdkModel;
 
     /**

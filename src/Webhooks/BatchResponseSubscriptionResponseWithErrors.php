@@ -11,7 +11,7 @@ use HubspotSDK\StandardError;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponseWithErrors\Status;
 
 /**
- * @phpstan-type batch_response_subscription_response_with_errors = array{
+ * @phpstan-type BatchResponseSubscriptionResponseWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<SubscriptionResponse>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\Webhooks\BatchResponseSubscriptionResponseWithErrors\Status;
  */
 final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_subscription_response_with_errors> */
+    /** @use SdkModel<BatchResponseSubscriptionResponseWithErrorsShape> */
     use SdkModel;
 
     #[Api]

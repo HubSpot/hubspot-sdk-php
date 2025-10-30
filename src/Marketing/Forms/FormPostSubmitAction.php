@@ -12,13 +12,13 @@ use HubspotSDK\Marketing\Forms\FormPostSubmitAction\Type;
 /**
  * What should happen after the customer submits the form.
  *
- * @phpstan-type form_post_submit_action = array{
+ * @phpstan-type FormPostSubmitActionShape = array{
  *   type: value-of<Type>, value: string
  * }
  */
 final class FormPostSubmitAction implements BaseModel
 {
-    /** @use SdkModel<form_post_submit_action> */
+    /** @use SdkModel<FormPostSubmitActionShape> */
     use SdkModel;
 
     /**

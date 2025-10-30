@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_enumeration_output_field = array{
+ * @phpstan-type APIEnumerationOutputFieldShape = array{
  *   name: string, options: list<string>, type: value-of<Type>
  * }
  */
 final class APIEnumerationOutputField implements BaseModel
 {
-    /** @use SdkModel<api_enumeration_output_field> */
+    /** @use SdkModel<APIEnumerationOutputFieldShape> */
     use SdkModel;
 
     #[Api]

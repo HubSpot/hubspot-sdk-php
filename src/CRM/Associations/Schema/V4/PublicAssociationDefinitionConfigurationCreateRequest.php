@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest\Category;
 
 /**
- * @phpstan-type public_association_definition_configuration_create_request = array{
+ * @phpstan-type PublicAssociationDefinitionConfigurationCreateRequestShape = array{
  *   category: value-of<Category>, maxToObjectIDs: int, typeID: int
  * }
  */
 final class PublicAssociationDefinitionConfigurationCreateRequest implements BaseModel
 {
-    /** @use SdkModel<public_association_definition_configuration_create_request> */
+    /** @use SdkModel<PublicAssociationDefinitionConfigurationCreateRequestShape> */
     use SdkModel;
 
     /** @var value-of<Category> $category */

@@ -12,7 +12,7 @@ use HubspotSDK\CRM\Filter\Operator;
 /**
  * Defines a single condition for searching CRM objects, specifying the property to filter on, the operator to use (such as equals, greater than, or contains), and the value(s) to compare against.
  *
- * @phpstan-type filter_alias = array{
+ * @phpstan-type FilterShape = array{
  *   operator: value-of<Operator>,
  *   propertyName: string,
  *   highValue?: string,
@@ -22,7 +22,7 @@ use HubspotSDK\CRM\Filter\Operator;
  */
 final class Filter implements BaseModel
 {
-    /** @use SdkModel<filter_alias> */
+    /** @use SdkModel<FilterShape> */
     use SdkModel;
 
     /**

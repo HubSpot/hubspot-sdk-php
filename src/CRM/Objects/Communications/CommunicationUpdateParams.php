@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Communications->update
  *
- * @phpstan-type communication_update_params = array{
+ * @phpstan-type CommunicationUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class CommunicationUpdateParams implements BaseModel
 {
-    /** @use SdkModel<communication_update_params> */
+    /** @use SdkModel<CommunicationUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

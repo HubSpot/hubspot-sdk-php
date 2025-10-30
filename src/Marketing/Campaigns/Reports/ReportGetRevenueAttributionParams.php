@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Reports->getRevenueAttribution
  *
- * @phpstan-type report_get_revenue_attribution_params = array{
+ * @phpstan-type ReportGetRevenueAttributionParamsShape = array{
  *   attributionModel?: string, endDate?: string, startDate?: string
  * }
  */
 final class ReportGetRevenueAttributionParams implements BaseModel
 {
-    /** @use SdkModel<report_get_revenue_attribution_params> */
+    /** @use SdkModel<ReportGetRevenueAttributionParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Tickets->merge
  *
- * @phpstan-type ticket_merge_params = array{
+ * @phpstan-type TicketMergeParamsShape = array{
  *   objectIDToMerge: string, primaryObjectID: string
  * }
  */
 final class TicketMergeParams implements BaseModel
 {
-    /** @use SdkModel<ticket_merge_params> */
+    /** @use SdkModel<TicketMergeParamsShape> */
     use SdkModel;
     use SdkParams;
 

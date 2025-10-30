@@ -11,13 +11,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_timestamp_value = array{
+ * @phpstan-type APITimestampValueShape = array{
  *   timestampType: value-of<TimestampType>, type: value-of<Type>
  * }
  */
 final class APITimestampValue implements BaseModel
 {
-    /** @use SdkModel<api_timestamp_value> */
+    /** @use SdkModel<APITimestampValueShape> */
     use SdkModel;
 
     /**

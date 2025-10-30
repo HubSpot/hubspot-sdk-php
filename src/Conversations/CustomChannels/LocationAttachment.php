@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type location_attachment = array{
+ * @phpstan-type LocationAttachmentShape = array{
  *   latitude: float,
  *   longitude: float,
  *   type: value-of<Type>,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LocationAttachment implements BaseModel
 {
-    /** @use SdkModel<location_attachment> */
+    /** @use SdkModel<LocationAttachmentShape> */
     use SdkModel;
 
     #[Api]

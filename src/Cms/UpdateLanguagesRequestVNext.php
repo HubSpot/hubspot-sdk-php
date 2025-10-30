@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request object for updating languages within a multi-language group.
  *
- * @phpstan-type update_languages_request_v_next = array{
+ * @phpstan-type UpdateLanguagesRequestVNextShape = array{
  *   languages: array<string, string>, primaryID: string
  * }
  */
 final class UpdateLanguagesRequestVNext implements BaseModel
 {
-    /** @use SdkModel<update_languages_request_v_next> */
+    /** @use SdkModel<UpdateLanguagesRequestVNextShape> */
     use SdkModel;
 
     /**

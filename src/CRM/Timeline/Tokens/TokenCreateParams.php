@@ -16,7 +16,7 @@ use HubspotSDK\CRM\Timeline\Tokens\TokenCreateParams\Type;
  *
  * @see HubspotSDK\CRM\Timeline\Tokens->create
  *
- * @phpstan-type token_create_params = array{
+ * @phpstan-type TokenCreateParamsShape = array{
  *   appID: int,
  *   label: string,
  *   name: string,
@@ -29,7 +29,7 @@ use HubspotSDK\CRM\Timeline\Tokens\TokenCreateParams\Type;
  */
 final class TokenCreateParams implements BaseModel
 {
-    /** @use SdkModel<token_create_params> */
+    /** @use SdkModel<TokenCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

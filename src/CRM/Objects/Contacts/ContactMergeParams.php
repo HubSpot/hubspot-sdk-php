@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Contacts->merge
  *
- * @phpstan-type contact_merge_params = array{
+ * @phpstan-type ContactMergeParamsShape = array{
  *   objectIDToMerge: string, primaryObjectID: string
  * }
  */
 final class ContactMergeParams implements BaseModel
 {
-    /** @use SdkModel<contact_merge_params> */
+    /** @use SdkModel<ContactMergeParamsShape> */
     use SdkModel;
     use SdkParams;
 

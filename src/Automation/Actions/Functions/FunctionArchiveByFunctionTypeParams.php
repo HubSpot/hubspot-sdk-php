@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Functions->archiveByFunctionType
  *
- * @phpstan-type function_archive_by_function_type_params = array{
+ * @phpstan-type FunctionArchiveByFunctionTypeParamsShape = array{
  *   appID: int, definitionID: string
  * }
  */
 final class FunctionArchiveByFunctionTypeParams implements BaseModel
 {
-    /** @use SdkModel<function_archive_by_function_type_params> */
+    /** @use SdkModel<FunctionArchiveByFunctionTypeParamsShape> */
     use SdkModel;
     use SdkParams;
 

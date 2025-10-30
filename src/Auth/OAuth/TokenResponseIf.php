@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type token_response_if = array{
+ * @phpstan-type TokenResponseIfShape = array{
  *   accessToken: string,
  *   expiresIn: int,
  *   refreshToken: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class TokenResponseIf implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<token_response_if> */
+    /** @use SdkModel<TokenResponseIfShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Users->search
  *
- * @phpstan-type user_search_params = array{
+ * @phpstan-type UserSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class UserSearchParams implements BaseModel
 {
-    /** @use SdkModel<user_search_params> */
+    /** @use SdkModel<UserSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

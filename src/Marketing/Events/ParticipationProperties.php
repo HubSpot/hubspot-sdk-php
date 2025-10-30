@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Events\ParticipationProperties\AttendanceState;
 
 /**
- * @phpstan-type participation_properties = array{
+ * @phpstan-type ParticipationPropertiesShape = array{
  *   attendanceState: value-of<AttendanceState>,
  *   occurredAt: int,
  *   attendanceDurationSeconds?: int,
@@ -19,7 +19,7 @@ use HubspotSDK\Marketing\Events\ParticipationProperties\AttendanceState;
  */
 final class ParticipationProperties implements BaseModel
 {
-    /** @use SdkModel<participation_properties> */
+    /** @use SdkModel<ParticipationPropertiesShape> */
     use SdkModel;
 
     /** @var value-of<AttendanceState> $attendanceState */

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicRangedDatePropertyOperation\OperationType;
 
 /**
- * @phpstan-type public_ranged_date_property_operation = array{
+ * @phpstan-type PublicRangedDatePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   lowerBound: int,
  *   operationType: value-of<OperationType>,
@@ -21,7 +21,7 @@ use HubspotSDK\PublicRangedDatePropertyOperation\OperationType;
  */
 final class PublicRangedDatePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<public_ranged_date_property_operation> */
+    /** @use SdkModel<PublicRangedDatePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

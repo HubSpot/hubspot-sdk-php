@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_form_definition_base_forward_paging = array{
+ * @phpstan-type CollectionResponseFormDefinitionBaseForwardPagingShape = array{
  *   results: list<HubSpotFormDefinition>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_form_definition_base_forward_paging> */
+    /** @use SdkModel<CollectionResponseFormDefinitionBaseForwardPagingShape> */
     use SdkModel;
 
     /** @var list<HubSpotFormDefinition> $results */

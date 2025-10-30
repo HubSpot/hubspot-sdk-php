@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_sequence_lite_response = array{
+ * @phpstan-type PublicSequenceLiteResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   name: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicSequenceLiteResponse implements BaseModel
 {
-    /** @use SdkModel<public_sequence_lite_response> */
+    /** @use SdkModel<PublicSequenceLiteResponseShape> */
     use SdkModel;
 
     #[Api]

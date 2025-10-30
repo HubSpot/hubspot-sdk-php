@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_thread_associations = array{associatedTicketID?: string}
+ * @phpstan-type PublicThreadAssociationsShape = array{associatedTicketID?: string}
  */
 final class PublicThreadAssociations implements BaseModel
 {
-    /** @use SdkModel<public_thread_associations> */
+    /** @use SdkModel<PublicThreadAssociationsShape> */
     use SdkModel;
 
     #[Api('associatedTicketId', optional: true)]

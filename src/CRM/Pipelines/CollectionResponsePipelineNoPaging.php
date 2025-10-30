@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type collection_response_pipeline_no_paging = array{
+ * @phpstan-type CollectionResponsePipelineNoPagingShape = array{
  *   results: list<Pipeline>
  * }
  */
 final class CollectionResponsePipelineNoPaging implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_pipeline_no_paging> */
+    /** @use SdkModel<CollectionResponsePipelineNoPagingShape> */
     use SdkModel;
 
     use SdkResponse;

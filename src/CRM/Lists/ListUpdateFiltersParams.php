@@ -22,14 +22,14 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *
  * @see HubspotSDK\CRM\Lists->updateFilters
  *
- * @phpstan-type list_update_filters_params = array{
+ * @phpstan-type ListUpdateFiltersParamsShape = array{
  *   filterBranch: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
  *   enrollObjectsInWorkflows?: bool,
  * }
  */
 final class ListUpdateFiltersParams implements BaseModel
 {
-    /** @use SdkModel<list_update_filters_params> */
+    /** @use SdkModel<ListUpdateFiltersParamsShape> */
     use SdkModel;
     use SdkParams;
 

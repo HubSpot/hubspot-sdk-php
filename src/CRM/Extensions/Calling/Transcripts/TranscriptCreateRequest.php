@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type transcript_create_request = array{
+ * @phpstan-type TranscriptCreateRequestShape = array{
  *   engagementID: int, transcriptCreateUtterances: list<TranscriptCreateUtterance>
  * }
  */
 final class TranscriptCreateRequest implements BaseModel
 {
-    /** @use SdkModel<transcript_create_request> */
+    /** @use SdkModel<TranscriptCreateRequestShape> */
     use SdkModel;
 
     #[Api('engagementId')]

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->updateFolder
  *
- * @phpstan-type landing_page_update_folder_params = array{
+ * @phpstan-type LandingPageUpdateFolderParamsShape = array{
  *   id: string,
  *   category: int,
  *   created: \DateTimeInterface,
@@ -28,7 +28,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LandingPageUpdateFolderParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_update_folder_params> */
+    /** @use SdkModel<LandingPageUpdateFolderParamsShape> */
     use SdkModel;
     use SdkParams;
 

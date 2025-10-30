@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_time_delay = array{
+ * @phpstan-type APITimeDelayShape = array{
  *   daysOfWeek: list<value-of<DaysOfWeek>>,
  *   delta: int,
  *   timeUnit: value-of<TimeUnit>,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APITimeDelay implements BaseModel
 {
-    /** @use SdkModel<api_time_delay> */
+    /** @use SdkModel<APITimeDelayShape> */
     use SdkModel;
 
     /** @var list<value-of<DaysOfWeek>> $daysOfWeek */

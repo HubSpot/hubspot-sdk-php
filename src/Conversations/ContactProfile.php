@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type contact_profile = array{
+ * @phpstan-type ContactProfileShape = array{
  *   addresses: list<ContactAddress>,
  *   emails: list<ContactEmail>,
  *   phones: list<ContactPhone>,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ContactProfile implements BaseModel
 {
-    /** @use SdkModel<contact_profile> */
+    /** @use SdkModel<ContactProfileShape> */
     use SdkModel;
 
     /** @var list<ContactAddress> $addresses */

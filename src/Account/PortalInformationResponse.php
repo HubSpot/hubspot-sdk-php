@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type portal_information_response = array{
+ * @phpstan-type PortalInformationResponseShape = array{
  *   accountType: value-of<AccountType>,
  *   additionalCurrencies: list<string>,
  *   companyCurrency: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PortalInformationResponse implements BaseModel
 {
-    /** @use SdkModel<portal_information_response> */
+    /** @use SdkModel<PortalInformationResponseShape> */
     use SdkModel;
 
     /** @var value-of<AccountType> $accountType */

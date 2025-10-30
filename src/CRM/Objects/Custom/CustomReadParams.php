@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Custom->read
  *
- * @phpstan-type custom_read_params = array{
+ * @phpstan-type CustomReadParamsShape = array{
  *   objectType: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CustomReadParams implements BaseModel
 {
-    /** @use SdkModel<custom_read_params> */
+    /** @use SdkModel<CustomReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type option1_alias = array{
+ * @phpstan-type Option1Shape = array{
  *   hidden: bool,
  *   label: string,
  *   value: string,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class Option1 implements BaseModel
 {
-    /** @use SdkModel<option1_alias> */
+    /** @use SdkModel<Option1Shape> */
     use SdkModel;
 
     #[Api]

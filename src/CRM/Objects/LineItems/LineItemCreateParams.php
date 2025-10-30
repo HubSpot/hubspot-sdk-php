@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\LineItems->create
  *
- * @phpstan-type line_item_create_params = array{
+ * @phpstan-type LineItemCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class LineItemCreateParams implements BaseModel
 {
-    /** @use SdkModel<line_item_create_params> */
+    /** @use SdkModel<LineItemCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type channel_connection_settings_response = array{
+ * @phpstan-type ChannelConnectionSettingsResponseShape = array{
  *   createdAt: \DateTimeInterface,
  *   isReady: bool,
  *   updatedAt: \DateTimeInterface,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ChannelConnectionSettingsResponse implements BaseModel
 {
-    /** @use SdkModel<channel_connection_settings_response> */
+    /** @use SdkModel<ChannelConnectionSettingsResponseShape> */
     use SdkModel;
 
     /**

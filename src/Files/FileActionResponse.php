@@ -11,7 +11,7 @@ use HubspotSDK\Files\FileActionResponse\Status;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type file_action_response = array{
+ * @phpstan-type FileActionResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
@@ -25,7 +25,7 @@ use HubspotSDK\StandardError;
  */
 final class FileActionResponse implements BaseModel
 {
-    /** @use SdkModel<file_action_response> */
+    /** @use SdkModel<FileActionResponseShape> */
     use SdkModel;
 
     /**

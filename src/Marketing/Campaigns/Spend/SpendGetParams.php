@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Spend->get
  *
- * @phpstan-type spend_get_params = array{campaignGuid: string}
+ * @phpstan-type SpendGetParamsShape = array{campaignGuid: string}
  */
 final class SpendGetParams implements BaseModel
 {
-    /** @use SdkModel<spend_get_params> */
+    /** @use SdkModel<SpendGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

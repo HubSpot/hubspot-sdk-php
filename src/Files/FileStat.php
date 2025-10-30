@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type file_stat = array{file?: File, folder?: Folder}
+ * @phpstan-type FileStatShape = array{file?: File, folder?: Folder}
  */
 final class FileStat implements BaseModel
 {
-    /** @use SdkModel<file_stat> */
+    /** @use SdkModel<FileStatShape> */
     use SdkModel;
 
     /**

@@ -12,13 +12,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\CRM\Imports->listErrors
  *
- * @phpstan-type import_list_errors_params = array{
+ * @phpstan-type ImportListErrorsParamsShape = array{
  *   after?: string, includeErrorMessage?: bool, includeRowData?: bool, limit?: int
  * }
  */
 final class ImportListErrorsParams implements BaseModel
 {
-    /** @use SdkModel<import_list_errors_params> */
+    /** @use SdkModel<ImportListErrorsParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Body for a patch with optional fields.
  *
- * @phpstan-type card_patch_request = array{
+ * @phpstan-type CardPatchRequestShape = array{
  *   actions?: CardActions,
  *   display?: CardDisplayBody,
  *   fetch?: CardFetchBodyPatch,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CardPatchRequest implements BaseModel
 {
-    /** @use SdkModel<card_patch_request> */
+    /** @use SdkModel<CardPatchRequestShape> */
     use SdkModel;
 
     /**

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type marketing_event_public_object_id_delete_request = array{
+ * @phpstan-type MarketingEventPublicObjectIDDeleteRequestShape = array{
  *   objectID: string
  * }
  */
 final class MarketingEventPublicObjectIDDeleteRequest implements BaseModel
 {
-    /** @use SdkModel<marketing_event_public_object_id_delete_request> */
+    /** @use SdkModel<MarketingEventPublicObjectIDDeleteRequestShape> */
     use SdkModel;
 
     #[Api('objectId')]

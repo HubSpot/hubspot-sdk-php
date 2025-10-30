@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request body object for creating A/B tests.
  *
- * @phpstan-type ab_test_create_request_v_next = array{
+ * @phpstan-type AbTestCreateRequestVNextShape = array{
  *   contentID: string, variationName: string
  * }
  */
 final class AbTestCreateRequestVNext implements BaseModel
 {
-    /** @use SdkModel<ab_test_create_request_v_next> */
+    /** @use SdkModel<AbTestCreateRequestVNextShape> */
     use SdkModel;
 
     /**

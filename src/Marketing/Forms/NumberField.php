@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\NumberField\FieldType;
 /**
  * A form field used for collecting a numeric value.
  *
- * @phpstan-type number_field = array{
+ * @phpstan-type NumberFieldShape = array{
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
@@ -28,7 +28,7 @@ use HubspotSDK\Marketing\Forms\NumberField\FieldType;
  */
 final class NumberField implements BaseModel
 {
-    /** @use SdkModel<number_field> */
+    /** @use SdkModel<NumberFieldShape> */
     use SdkModel;
 
     /**

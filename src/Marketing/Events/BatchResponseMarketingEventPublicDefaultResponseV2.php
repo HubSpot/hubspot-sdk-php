@@ -12,7 +12,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponseV2\Status;
 
 /**
- * @phpstan-type batch_response_marketing_event_public_default_response_v2 = array{
+ * @phpstan-type BatchResponseMarketingEventPublicDefaultResponseV2Shape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<MarketingEventPublicDefaultResponseV2>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponse
  */
 final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<batch_response_marketing_event_public_default_response_v2> */
+    /** @use SdkModel<BatchResponseMarketingEventPublicDefaultResponseV2Shape> */
     use SdkModel;
 
     use SdkResponse;

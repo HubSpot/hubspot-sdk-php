@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_dataset_field_property_filter_data_source = array{
+ * @phpstan-type APIDatasetFieldPropertyFilterDataSourceShape = array{
  *   datasetFieldName: string,
  *   name: string,
  *   propertyName: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIDatasetFieldPropertyFilterDataSource implements BaseModel
 {
-    /** @use SdkModel<api_dataset_field_property_filter_data_source> */
+    /** @use SdkModel<APIDatasetFieldPropertyFilterDataSourceShape> */
     use SdkModel;
 
     #[Api]

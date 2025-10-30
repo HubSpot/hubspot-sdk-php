@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Invoices->create
  *
- * @phpstan-type invoice_create_params = array{
+ * @phpstan-type InvoiceCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class InvoiceCreateParams implements BaseModel
 {
-    /** @use SdkModel<invoice_create_params> */
+    /** @use SdkModel<InvoiceCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

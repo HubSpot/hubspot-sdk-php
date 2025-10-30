@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type marketing_event_public_update_request_v2 = array{
+ * @phpstan-type MarketingEventPublicUpdateRequestV2Shape = array{
  *   customProperties: list<PropertyValue>,
  *   endDateTime?: \DateTimeInterface,
  *   eventCancelled?: bool,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MarketingEventPublicUpdateRequestV2 implements BaseModel
 {
-    /** @use SdkModel<marketing_event_public_update_request_v2> */
+    /** @use SdkModel<MarketingEventPublicUpdateRequestV2Shape> */
     use SdkModel;
 
     /** @var list<PropertyValue> $customProperties */

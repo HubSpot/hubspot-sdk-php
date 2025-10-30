@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_inbox = array{
+ * @phpstan-type PublicInboxShape = array{
  *   archived: bool,
  *   type: string,
  *   id?: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicInbox implements BaseModel
 {
-    /** @use SdkModel<public_inbox> */
+    /** @use SdkModel<PublicInboxShape> */
     use SdkModel;
 
     #[Api]

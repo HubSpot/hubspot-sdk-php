@@ -15,11 +15,13 @@ use HubspotSDK\PublicObjectID;
  *
  * @see HubspotSDK\CRM\Objects\DealSplits->batchRead
  *
- * @phpstan-type deal_split_batch_read_params = array{inputs: list<PublicObjectID>}
+ * @phpstan-type DealSplitBatchReadParamsShape = array{
+ *   inputs: list<PublicObjectID>
+ * }
  */
 final class DealSplitBatchReadParams implements BaseModel
 {
-    /** @use SdkModel<deal_split_batch_read_params> */
+    /** @use SdkModel<DealSplitBatchReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

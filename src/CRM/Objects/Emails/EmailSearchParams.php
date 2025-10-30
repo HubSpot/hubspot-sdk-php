@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Emails->search
  *
- * @phpstan-type email_search_params = array{
+ * @phpstan-type EmailSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class EmailSearchParams implements BaseModel
 {
-    /** @use SdkModel<email_search_params> */
+    /** @use SdkModel<EmailSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

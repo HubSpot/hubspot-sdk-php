@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Schemas->get
  *
- * @phpstan-type schema_get_params = array{appID: string}
+ * @phpstan-type SchemaGetParamsShape = array{appID: string}
  */
 final class SchemaGetParams implements BaseModel
 {
-    /** @use SdkModel<schema_get_params> */
+    /** @use SdkModel<SchemaGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

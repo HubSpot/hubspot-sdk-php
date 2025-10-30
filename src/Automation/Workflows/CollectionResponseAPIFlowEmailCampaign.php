@@ -12,13 +12,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type collection_response_api_flow_email_campaign = array{
+ * @phpstan-type CollectionResponseAPIFlowEmailCampaignShape = array{
  *   results: list<APIFlowEmailCampaign>, paging?: Paging
  * }
  */
 final class CollectionResponseAPIFlowEmailCampaign implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_api_flow_email_campaign> */
+    /** @use SdkModel<CollectionResponseAPIFlowEmailCampaignShape> */
     use SdkModel;
 
     use SdkResponse;

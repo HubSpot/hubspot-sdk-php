@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Webhooks\Subscriptions->delete
  *
- * @phpstan-type subscription_delete_params = array{appID: int}
+ * @phpstan-type SubscriptionDeleteParamsShape = array{appID: int}
  */
 final class SubscriptionDeleteParams implements BaseModel
 {
-    /** @use SdkModel<subscription_delete_params> */
+    /** @use SdkModel<SubscriptionDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

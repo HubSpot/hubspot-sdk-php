@@ -12,13 +12,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Property;
 
 /**
- * @phpstan-type created_response_property = array{
+ * @phpstan-type CreatedResponsePropertyShape = array{
  *   createdResourceID: string, entity: Property, location?: string
  * }
  */
 final class CreatedResponseProperty implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<created_response_property> */
+    /** @use SdkModel<CreatedResponsePropertyShape> */
     use SdkModel;
 
     use SdkResponse;

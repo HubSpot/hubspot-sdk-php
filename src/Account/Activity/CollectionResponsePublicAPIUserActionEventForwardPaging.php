@@ -12,14 +12,14 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_public_api_user_action_event_forward_paging = array{
+ * @phpstan-type CollectionResponsePublicAPIUserActionEventForwardPagingShape = array{
  *   results: list<PublicAPIUserActionEvent>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponsePublicAPIUserActionEventForwardPaging implements BaseModel, ResponseConverter
 {
     /**
-     * @use SdkModel<collection_response_public_api_user_action_event_forward_paging>
+     * @use SdkModel<CollectionResponsePublicAPIUserActionEventForwardPagingShape>
      */
     use SdkModel;
 

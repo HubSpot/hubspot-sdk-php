@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->deleteVersion
  *
- * @phpstan-type table_delete_version_params = array{tableIDOrName: string}
+ * @phpstan-type TableDeleteVersionParamsShape = array{tableIDOrName: string}
  */
 final class TableDeleteVersionParams implements BaseModel
 {
-    /** @use SdkModel<table_delete_version_params> */
+    /** @use SdkModel<TableDeleteVersionParamsShape> */
     use SdkModel;
     use SdkParams;
 

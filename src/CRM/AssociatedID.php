@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Contains the id and type of an association.
  *
- * @phpstan-type associated_id = array{id: string, type: string}
+ * @phpstan-type AssociatedIDShape = array{id: string, type: string}
  */
 final class AssociatedID implements BaseModel
 {
-    /** @use SdkModel<associated_id> */
+    /** @use SdkModel<AssociatedIDShape> */
     use SdkModel;
 
     /**

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_gdpr_delete_input = array{
+ * @phpstan-type PublicGdprDeleteInputShape = array{
  *   objectID: string, idProperty?: string
  * }
  */
 final class PublicGdprDeleteInput implements BaseModel
 {
-    /** @use SdkModel<public_gdpr_delete_input> */
+    /** @use SdkModel<PublicGdprDeleteInputShape> */
     use SdkModel;
 
     #[Api('objectId')]

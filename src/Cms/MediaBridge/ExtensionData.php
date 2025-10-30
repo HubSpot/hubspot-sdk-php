@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type extension_data = array{
+ * @phpstan-type ExtensionDataShape = array{
  *   extensionStatusMap: array<string, string>,
  *   tags: list<string>,
  *   caseChangeTestExtensionData?: CaseChangeTestExtensionData,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExtensionData implements BaseModel
 {
-    /** @use SdkModel<extension_data> */
+    /** @use SdkModel<ExtensionDataShape> */
     use SdkModel;
 
     /** @var array<string, string> $extensionStatusMap */

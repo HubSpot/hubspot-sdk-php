@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Events\EventDefinitions->list
  *
- * @phpstan-type event_definition_list_params = array{
+ * @phpstan-type EventDefinitionListParamsShape = array{
  *   after?: string,
  *   includeProperties?: bool,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EventDefinitionListParams implements BaseModel
 {
-    /** @use SdkModel<event_definition_list_params> */
+    /** @use SdkModel<EventDefinitionListParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -12,13 +12,13 @@ use HubspotSDK\VersionUser;
 /**
  * Model definition for a landing page or site page version. Contains metadata describing the version of the page. It can be used to view edit history of a page.
  *
- * @phpstan-type version_page = array{
+ * @phpstan-type VersionPageShape = array{
  *   id: string, object1: Page, updatedAt: \DateTimeInterface, user: VersionUser
  * }
  */
 final class VersionPage implements BaseModel
 {
-    /** @use SdkModel<version_page> */
+    /** @use SdkModel<VersionPageShape> */
     use SdkModel;
 
     /**

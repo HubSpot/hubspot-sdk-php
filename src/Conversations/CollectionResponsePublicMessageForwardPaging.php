@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_public_message_forward_paging = array{
+ * @phpstan-type CollectionResponsePublicMessageForwardPagingShape = array{
  *   results: list<PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange>,
  *   paging?: ForwardPaging,
  * }
  */
 final class CollectionResponsePublicMessageForwardPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_public_message_forward_paging> */
+    /** @use SdkModel<CollectionResponsePublicMessageForwardPagingShape> */
     use SdkModel;
 
     /**

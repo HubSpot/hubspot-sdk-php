@@ -9,14 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_event_filter_metadata = array{
+ * @phpstan-type PublicEventFilterMetadataShape = array{
  *   operation: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
  *   property: string,
  * }
  */
 final class PublicEventFilterMetadata implements BaseModel
 {
-    /** @use SdkModel<public_event_filter_metadata> */
+    /** @use SdkModel<PublicEventFilterMetadataShape> */
     use SdkModel;
 
     #[Api]

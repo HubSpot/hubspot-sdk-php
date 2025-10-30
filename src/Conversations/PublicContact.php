@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_contact = array{
+ * @phpstan-type PublicContactShape = array{
  *   contactProfile: ContactProfile, type: value-of<Type>
  * }
  */
 final class PublicContact implements BaseModel
 {
-    /** @use SdkModel<public_contact> */
+    /** @use SdkModel<PublicContactShape> */
     use SdkModel;
 
     #[Api]

@@ -13,7 +13,7 @@ use HubspotSDK\Settings\Currencies\ExchangeRate\FromCurrencyCode;
 use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
 
 /**
- * @phpstan-type exchange_rate = array{
+ * @phpstan-type ExchangeRateShape = array{
  *   id: string,
  *   conversionRate: float,
  *   createdAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
  */
 final class ExchangeRate implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<exchange_rate> */
+    /** @use SdkModel<ExchangeRateShape> */
     use SdkModel;
 
     use SdkResponse;

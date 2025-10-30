@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Functions->delete
  *
- * @phpstan-type function_delete_params = array{
+ * @phpstan-type FunctionDeleteParamsShape = array{
  *   appID: int,
  *   definitionID: string,
  *   functionType: FunctionType|value-of<FunctionType>,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class FunctionDeleteParams implements BaseModel
 {
-    /** @use SdkModel<function_delete_params> */
+    /** @use SdkModel<FunctionDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

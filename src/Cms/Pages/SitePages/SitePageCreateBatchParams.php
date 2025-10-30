@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->createBatch
  *
- * @phpstan-type site_page_create_batch_params = array{inputs: list<Page>}
+ * @phpstan-type SitePageCreateBatchParamsShape = array{inputs: list<Page>}
  */
 final class SitePageCreateBatchParams implements BaseModel
 {
-    /** @use SdkModel<site_page_create_batch_params> */
+    /** @use SdkModel<SitePageCreateBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

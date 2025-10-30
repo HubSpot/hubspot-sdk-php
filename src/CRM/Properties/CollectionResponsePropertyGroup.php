@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type collection_response_property_group = array{
+ * @phpstan-type CollectionResponsePropertyGroupShape = array{
  *   results: list<PropertyGroup>, paging?: Paging
  * }
  */
 final class CollectionResponsePropertyGroup implements BaseModel
 {
-    /** @use SdkModel<collection_response_property_group> */
+    /** @use SdkModel<CollectionResponsePropertyGroupShape> */
     use SdkModel;
 
     /** @var list<PropertyGroup> $results */

@@ -15,13 +15,13 @@ use HubspotSDK\Settings\Users\UserGetParams\IDProperty;
  *
  * @see HubspotSDK\Settings\Users->get
  *
- * @phpstan-type user_get_params = array{
+ * @phpstan-type UserGetParamsShape = array{
  *   idProperty?: IDProperty|value-of<IDProperty>
  * }
  */
 final class UserGetParams implements BaseModel
 {
-    /** @use SdkModel<user_get_params> */
+    /** @use SdkModel<UserGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

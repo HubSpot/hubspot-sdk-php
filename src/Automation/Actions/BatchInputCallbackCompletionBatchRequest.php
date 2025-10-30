@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_callback_completion_batch_request = array{
+ * @phpstan-type BatchInputCallbackCompletionBatchRequestShape = array{
  *   inputs: list<CallbackCompletionBatchRequest>
  * }
  */
 final class BatchInputCallbackCompletionBatchRequest implements BaseModel
 {
-    /** @use SdkModel<batch_input_callback_completion_batch_request> */
+    /** @use SdkModel<BatchInputCallbackCompletionBatchRequestShape> */
     use SdkModel;
 
     /** @var list<CallbackCompletionBatchRequest> $inputs */

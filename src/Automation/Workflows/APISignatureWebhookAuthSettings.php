@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_signature_webhook_auth_settings = array{
+ * @phpstan-type APISignatureWebhookAuthSettingsShape = array{
  *   appID: int, type: value-of<Type>
  * }
  */
 final class APISignatureWebhookAuthSettings implements BaseModel
 {
-    /** @use SdkModel<api_signature_webhook_auth_settings> */
+    /** @use SdkModel<APISignatureWebhookAuthSettingsShape> */
     use SdkModel;
 
     /**

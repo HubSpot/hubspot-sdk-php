@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\FeatureFlags\Portals->batchDelete
  *
- * @phpstan-type portal_batch_delete_params = array{
+ * @phpstan-type PortalBatchDeleteParamsShape = array{
  *   appID: int, portalIDs: list<int>
  * }
  */
 final class PortalBatchDeleteParams implements BaseModel
 {
-    /** @use SdkModel<portal_batch_delete_params> */
+    /** @use SdkModel<PortalBatchDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

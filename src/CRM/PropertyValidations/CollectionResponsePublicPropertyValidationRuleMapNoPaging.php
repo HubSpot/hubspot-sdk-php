@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type collection_response_public_property_validation_rule_map_no_paging = array{
+ * @phpstan-type CollectionResponsePublicPropertyValidationRuleMapNoPagingShape = array{
  *   results: list<PublicPropertyValidationRuleMap>
  * }
  */
 final class CollectionResponsePublicPropertyValidationRuleMapNoPaging implements BaseModel, ResponseConverter
 {
     /**
-     * @use SdkModel<collection_response_public_property_validation_rule_map_no_paging>
+     * @use SdkModel<CollectionResponsePublicPropertyValidationRuleMapNoPagingShape>
      */
     use SdkModel;
 

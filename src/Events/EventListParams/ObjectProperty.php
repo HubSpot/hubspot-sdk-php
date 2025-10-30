@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type object_property = array{propname?: mixed}
+ * @phpstan-type ObjectPropertyShape = array{propname?: mixed}
  */
 final class ObjectProperty implements BaseModel
 {
-    /** @use SdkModel<object_property> */
+    /** @use SdkModel<ObjectPropertyShape> */
     use SdkModel;
 
     /**

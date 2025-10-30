@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\EmailField\FieldType;
 /**
  * A form field used for collecting an email address.
  *
- * @phpstan-type email_field = array{
+ * @phpstan-type EmailFieldShape = array{
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
@@ -28,7 +28,7 @@ use HubspotSDK\Marketing\Forms\EmailField\FieldType;
  */
 final class EmailField implements BaseModel
 {
-    /** @use SdkModel<email_field> */
+    /** @use SdkModel<EmailFieldShape> */
     use SdkModel;
 
     /**

@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Wrapper for providing an array of blog authors as inputs.
  *
- * @phpstan-type batch_input_blog_author = array{inputs: list<BlogAuthor>}
+ * @phpstan-type BatchInputBlogAuthorShape = array{inputs: list<BlogAuthor>}
  */
 final class BatchInputBlogAuthor implements BaseModel
 {
-    /** @use SdkModel<batch_input_blog_author> */
+    /** @use SdkModel<BatchInputBlogAuthorShape> */
     use SdkModel;
 
     /**

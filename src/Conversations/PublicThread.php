@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_thread = array{
+ * @phpstan-type PublicThreadShape = array{
  *   id: string,
  *   associatedContactID: string,
  *   createdAt: \DateTimeInterface,
@@ -30,7 +30,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicThread implements BaseModel
 {
-    /** @use SdkModel<public_thread> */
+    /** @use SdkModel<PublicThreadShape> */
     use SdkModel;
 
     /**

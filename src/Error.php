@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
 
 /**
- * @phpstan-type error_alias = array{
+ * @phpstan-type ErrorShape = array{
  *   category: string,
  *   correlationID: string,
  *   message: string,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Conversion\ListOf;
  */
 final class Error implements BaseModel
 {
-    /** @use SdkModel<error_alias> */
+    /** @use SdkModel<ErrorShape> */
     use SdkModel;
 
     /**

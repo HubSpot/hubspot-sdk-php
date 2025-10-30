@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type callback_completion_request = array{
+ * @phpstan-type CallbackCompletionRequestShape = array{
  *   outputFields: array<string, string>
  * }
  */
 final class CallbackCompletionRequest implements BaseModel
 {
-    /** @use SdkModel<callback_completion_request> */
+    /** @use SdkModel<CallbackCompletionRequestShape> */
     use SdkModel;
 
     /** @var array<string, string> $outputFields */

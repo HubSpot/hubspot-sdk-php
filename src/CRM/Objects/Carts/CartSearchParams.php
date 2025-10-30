@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Carts->search
  *
- * @phpstan-type cart_search_params = array{
+ * @phpstan-type CartSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class CartSearchParams implements BaseModel
 {
-    /** @use SdkModel<cart_search_params> */
+    /** @use SdkModel<CartSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

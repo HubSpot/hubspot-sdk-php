@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type labels_between_object_pair = array{
+ * @phpstan-type LabelsBetweenObjectPairShape = array{
  *   fromObjectID: string,
  *   fromObjectTypeID: string,
  *   labels: list<string>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LabelsBetweenObjectPair implements BaseModel
 {
-    /** @use SdkModel<labels_between_object_pair> */
+    /** @use SdkModel<LabelsBetweenObjectPairShape> */
     use SdkModel;
 
     #[Api('fromObjectId')]

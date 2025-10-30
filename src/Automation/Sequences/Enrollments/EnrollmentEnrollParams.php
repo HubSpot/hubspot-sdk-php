@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Sequences\Enrollments->enroll
  *
- * @phpstan-type enrollment_enroll_params = array{
+ * @phpstan-type EnrollmentEnrollParamsShape = array{
  *   contactID: string,
  *   senderEmail: string,
  *   sequenceID: string,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EnrollmentEnrollParams implements BaseModel
 {
-    /** @use SdkModel<enrollment_enroll_params> */
+    /** @use SdkModel<EnrollmentEnrollParamsShape> */
     use SdkModel;
     use SdkParams;
 

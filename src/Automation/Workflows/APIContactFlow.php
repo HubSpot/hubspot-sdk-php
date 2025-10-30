@@ -22,7 +22,7 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
- * @phpstan-type api_contact_flow = array{
+ * @phpstan-type APIContactFlowShape = array{
  *   id: string,
  *   actions: list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction>,
  *   blockedDates: list<APIBlockedDate>,
@@ -53,7 +53,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  */
 final class APIContactFlow implements BaseModel
 {
-    /** @use SdkModel<api_contact_flow> */
+    /** @use SdkModel<APIContactFlowShape> */
     use SdkModel;
 
     #[Api]

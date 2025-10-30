@@ -16,7 +16,7 @@ use HubspotSDK\PropertyName;
  *
  * @see HubspotSDK\Cms\MediaBridge\Properties->getBatch
  *
- * @phpstan-type property_get_batch_params = array{
+ * @phpstan-type PropertyGetBatchParamsShape = array{
  *   appID: string,
  *   archived: bool,
  *   inputs: list<PropertyName>,
@@ -25,7 +25,7 @@ use HubspotSDK\PropertyName;
  */
 final class PropertyGetBatchParams implements BaseModel
 {
-    /** @use SdkModel<property_get_batch_params> */
+    /** @use SdkModel<PropertyGetBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

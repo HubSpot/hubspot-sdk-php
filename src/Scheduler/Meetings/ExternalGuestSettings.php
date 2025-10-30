@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_guest_settings = array{
+ * @phpstan-type ExternalGuestSettingsShape = array{
  *   canAddGuests: bool, maxGuestCount: int
  * }
  */
 final class ExternalGuestSettings implements BaseModel
 {
-    /** @use SdkModel<external_guest_settings> */
+    /** @use SdkModel<ExternalGuestSettingsShape> */
     use SdkModel;
 
     #[Api]

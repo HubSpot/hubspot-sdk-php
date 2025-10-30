@@ -13,7 +13,7 @@ use HubspotSDK\CRM\Exports\ActionResponseWithSingleResultUri\Status;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type action_response_with_single_result_uri = array{
+ * @phpstan-type ActionResponseWithSingleResultUriShape = array{
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
@@ -26,7 +26,7 @@ use HubspotSDK\StandardError;
  */
 final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<action_response_with_single_result_uri> */
+    /** @use SdkModel<ActionResponseWithSingleResultUriShape> */
     use SdkModel;
 
     use SdkResponse;

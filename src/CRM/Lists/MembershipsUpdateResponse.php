@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * The IDs of the records that were `added`, `removed`, and/or found to be `missing` as a result of the
  * membership update request.
  *
- * @phpstan-type memberships_update_response = array{
+ * @phpstan-type MembershipsUpdateResponseShape = array{
  *   recordIDsMissing: list<string>,
  *   recordIDsRemoved: list<string>,
  *   recordsIDsAdded: list<string>,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MembershipsUpdateResponse implements BaseModel
 {
-    /** @use SdkModel<memberships_update_response> */
+    /** @use SdkModel<MembershipsUpdateResponseShape> */
     use SdkModel;
 
     /**

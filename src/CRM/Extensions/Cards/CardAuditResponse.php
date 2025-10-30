@@ -11,7 +11,7 @@ use HubspotSDK\CRM\Extensions\Cards\CardAuditResponse\ActionType;
 use HubspotSDK\CRM\Extensions\Cards\CardAuditResponse\AuthSource;
 
 /**
- * @phpstan-type card_audit_response = array{
+ * @phpstan-type CardAuditResponseShape = array{
  *   actionType: value-of<ActionType>,
  *   applicationID: int,
  *   authSource: value-of<AuthSource>,
@@ -22,7 +22,7 @@ use HubspotSDK\CRM\Extensions\Cards\CardAuditResponse\AuthSource;
  */
 final class CardAuditResponse implements BaseModel
 {
-    /** @use SdkModel<card_audit_response> */
+    /** @use SdkModel<CardAuditResponseShape> */
     use SdkModel;
 
     /** @var value-of<ActionType> $actionType */

@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type url_mapping_create_request_body = array{
+ * @phpstan-type URLMappingCreateRequestBodyShape = array{
  *   destination: string,
  *   redirectStyle: int,
  *   routePrefix: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class URLMappingCreateRequestBody implements BaseModel
 {
-    /** @use SdkModel<url_mapping_create_request_body> */
+    /** @use SdkModel<URLMappingCreateRequestBodyShape> */
     use SdkModel;
 
     #[Api]

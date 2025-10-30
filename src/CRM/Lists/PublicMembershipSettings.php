@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_membership_settings = array{
+ * @phpstan-type PublicMembershipSettingsShape = array{
  *   includeUnassigned?: bool, membershipTeamID?: int
  * }
  */
 final class PublicMembershipSettings implements BaseModel
 {
-    /** @use SdkModel<public_membership_settings> */
+    /** @use SdkModel<PublicMembershipSettingsShape> */
     use SdkModel;
 
     #[Api(optional: true)]

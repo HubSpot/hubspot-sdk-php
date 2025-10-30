@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type input_field_definition = array{
+ * @phpstan-type InputFieldDefinitionShape = array{
  *   isRequired: bool,
  *   typeDefinition: FieldTypeDefinition,
  *   automationFieldType?: string,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class InputFieldDefinition implements BaseModel
 {
-    /** @use SdkModel<input_field_definition> */
+    /** @use SdkModel<InputFieldDefinitionShape> */
     use SdkModel;
 
     #[Api]

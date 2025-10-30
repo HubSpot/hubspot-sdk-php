@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Callbacks->complete
  *
- * @phpstan-type callback_complete_params = array{
+ * @phpstan-type CallbackCompleteParamsShape = array{
  *   outputFields: array<string, string>
  * }
  */
 final class CallbackCompleteParams implements BaseModel
 {
-    /** @use SdkModel<callback_complete_params> */
+    /** @use SdkModel<CallbackCompleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

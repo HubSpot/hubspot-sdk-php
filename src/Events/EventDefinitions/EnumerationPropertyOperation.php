@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\EnumerationPropertyOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\EnumerationPropertyOperation\PropertyType;
 
 /**
- * @phpstan-type enumeration_property_operation = array{
+ * @phpstan-type EnumerationPropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
  *   operator: value-of<Operator>,
@@ -23,7 +23,7 @@ use HubspotSDK\Events\EventDefinitions\EnumerationPropertyOperation\PropertyType
  */
 final class EnumerationPropertyOperation implements BaseModel
 {
-    /** @use SdkModel<enumeration_property_operation> */
+    /** @use SdkModel<EnumerationPropertyOperationShape> */
     use SdkModel;
 
     #[Api]

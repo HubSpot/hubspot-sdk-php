@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Lists\PublicListConversionDate\ConversionType;
 
 /**
- * @phpstan-type public_list_conversion_date = array{
+ * @phpstan-type PublicListConversionDateShape = array{
  *   conversionType: value-of<ConversionType>, day: int, month: int, year: int
  * }
  */
 final class PublicListConversionDate implements BaseModel
 {
-    /** @use SdkModel<public_list_conversion_date> */
+    /** @use SdkModel<PublicListConversionDateShape> */
     use SdkModel;
 
     /** @var value-of<ConversionType> $conversionType */

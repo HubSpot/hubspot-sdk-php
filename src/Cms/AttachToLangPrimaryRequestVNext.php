@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request body object for attaching objects to multi-language groups.
  *
- * @phpstan-type attach_to_lang_primary_request_v_next = array{
+ * @phpstan-type AttachToLangPrimaryRequestVNextShape = array{
  *   id: string, language: string, primaryID: string, primaryLanguage?: string
  * }
  */
 final class AttachToLangPrimaryRequestVNext implements BaseModel
 {
-    /** @use SdkModel<attach_to_lang_primary_request_v_next> */
+    /** @use SdkModel<AttachToLangPrimaryRequestVNextShape> */
     use SdkModel;
 
     /**

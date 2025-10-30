@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type speaker_alias = array{id: string, name: string, email?: string}
+ * @phpstan-type SpeakerShape = array{id: string, name: string, email?: string}
  */
 final class Speaker implements BaseModel
 {
-    /** @use SdkModel<speaker_alias> */
+    /** @use SdkModel<SpeakerShape> */
     use SdkModel;
 
     #[Api]

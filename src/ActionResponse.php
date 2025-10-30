@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type action_response = array{
+ * @phpstan-type ActionResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ActionResponse implements BaseModel
 {
-    /** @use SdkModel<action_response> */
+    /** @use SdkModel<ActionResponseShape> */
     use SdkModel;
 
     #[Api]

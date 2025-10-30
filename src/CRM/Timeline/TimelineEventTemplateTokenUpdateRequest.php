@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * State of the token definition for update requests.
  *
- * @phpstan-type timeline_event_template_token_update_request = array{
+ * @phpstan-type TimelineEventTemplateTokenUpdateRequestShape = array{
  *   label: string,
  *   objectPropertyName?: string,
  *   options?: list<TimelineEventTemplateTokenOption>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<timeline_event_template_token_update_request> */
+    /** @use SdkModel<TimelineEventTemplateTokenUpdateRequestShape> */
     use SdkModel;
 
     /**

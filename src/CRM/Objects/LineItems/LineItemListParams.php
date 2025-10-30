@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\LineItems->list
  *
- * @phpstan-type line_item_list_params = array{
+ * @phpstan-type LineItemListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class LineItemListParams implements BaseModel
 {
-    /** @use SdkModel<line_item_list_params> */
+    /** @use SdkModel<LineItemListParamsShape> */
     use SdkModel;
     use SdkParams;
 

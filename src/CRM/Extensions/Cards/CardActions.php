@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Configuration for custom user actions on cards.
  *
- * @phpstan-type card_actions = array{baseURLs: list<string>}
+ * @phpstan-type CardActionsShape = array{baseURLs: list<string>}
  */
 final class CardActions implements BaseModel
 {
-    /** @use SdkModel<card_actions> */
+    /** @use SdkModel<CardActionsShape> */
     use SdkModel;
 
     /**

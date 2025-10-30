@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicRollingPropertyUpdatedOperation\OperationType;
 
 /**
- * @phpstan-type public_rolling_property_updated_operation = array{
+ * @phpstan-type PublicRollingPropertyUpdatedOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   numberOfDays: int,
  *   operationType: value-of<OperationType>,
@@ -19,7 +19,7 @@ use HubspotSDK\PublicRollingPropertyUpdatedOperation\OperationType;
  */
 final class PublicRollingPropertyUpdatedOperation implements BaseModel
 {
-    /** @use SdkModel<public_rolling_property_updated_operation> */
+    /** @use SdkModel<PublicRollingPropertyUpdatedOperationShape> */
     use SdkModel;
 
     #[Api]

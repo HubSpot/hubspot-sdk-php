@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Leads->create
  *
- * @phpstan-type lead_create_params = array{
+ * @phpstan-type LeadCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class LeadCreateParams implements BaseModel
 {
-    /** @use SdkModel<lead_create_params> */
+    /** @use SdkModel<LeadCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

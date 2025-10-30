@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Extensions\Cards\IntegratorObjectResult\Action;
 
 /**
- * @phpstan-type integrator_object_result = array{
+ * @phpstan-type IntegratorObjectResultShape = array{
  *   id: string,
  *   actions: list<ActionHookActionBody|IFrameActionBody>,
  *   title: string,
@@ -20,7 +20,7 @@ use HubspotSDK\CRM\Extensions\Cards\IntegratorObjectResult\Action;
  */
 final class IntegratorObjectResult implements BaseModel
 {
-    /** @use SdkModel<integrator_object_result> */
+    /** @use SdkModel<IntegratorObjectResultShape> */
     use SdkModel;
 
     #[Api]

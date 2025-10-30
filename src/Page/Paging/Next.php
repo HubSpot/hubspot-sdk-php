@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type next_alias = array{after?: string}
+ * @phpstan-type NextShape = array{after?: string}
  */
 final class Next implements BaseModel
 {
-    /** @use SdkModel<next_alias> */
+    /** @use SdkModel<NextShape> */
     use SdkModel;
 
     #[Api(optional: true)]

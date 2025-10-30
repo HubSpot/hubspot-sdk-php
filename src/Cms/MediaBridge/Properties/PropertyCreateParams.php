@@ -18,7 +18,7 @@ use HubspotSDK\OptionInput;
  *
  * @see HubspotSDK\Cms\MediaBridge\Properties->create
  *
- * @phpstan-type property_create_params = array{
+ * @phpstan-type PropertyCreateParamsShape = array{
  *   appID: string,
  *   fieldType: FieldType|value-of<FieldType>,
  *   groupName: string,
@@ -39,7 +39,7 @@ use HubspotSDK\OptionInput;
  */
 final class PropertyCreateParams implements BaseModel
 {
-    /** @use SdkModel<property_create_params> */
+    /** @use SdkModel<PropertyCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

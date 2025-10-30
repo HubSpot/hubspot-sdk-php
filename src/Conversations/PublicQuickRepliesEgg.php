@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_quick_replies_egg = array{
+ * @phpstan-type PublicQuickRepliesEggShape = array{
  *   quickReplies: list<QuickReply>, type: value-of<Type>
  * }
  */
 final class PublicQuickRepliesEgg implements BaseModel
 {
-    /** @use SdkModel<public_quick_replies_egg> */
+    /** @use SdkModel<PublicQuickRepliesEggShape> */
     use SdkModel;
 
     /** @var list<QuickReply> $quickReplies */

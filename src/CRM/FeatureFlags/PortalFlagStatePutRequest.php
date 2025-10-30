@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\FeatureFlags\PortalFlagStatePutRequest\FlagState;
 
 /**
- * @phpstan-type portal_flag_state_put_request = array{
+ * @phpstan-type PortalFlagStatePutRequestShape = array{
  *   flagState: value-of<FlagState>
  * }
  */
 final class PortalFlagStatePutRequest implements BaseModel
 {
-    /** @use SdkModel<portal_flag_state_put_request> */
+    /** @use SdkModel<PortalFlagStatePutRequestShape> */
     use SdkModel;
 
     /** @var value-of<FlagState> $flagState */

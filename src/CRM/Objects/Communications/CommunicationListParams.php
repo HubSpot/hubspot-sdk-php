@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Communications->list
  *
- * @phpstan-type communication_list_params = array{
+ * @phpstan-type CommunicationListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CommunicationListParams implements BaseModel
 {
-    /** @use SdkModel<communication_list_params> */
+    /** @use SdkModel<CommunicationListParamsShape> */
     use SdkModel;
     use SdkParams;
 

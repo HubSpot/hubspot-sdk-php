@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate\CurrencyCode;
 
 /**
- * @phpstan-type revenue_attribution_aggregate = array{
+ * @phpstan-type RevenueAttributionAggregateShape = array{
  *   contactsNumber?: int,
  *   currencyCode?: value-of<CurrencyCode>,
  *   dealAmount?: float,
@@ -20,7 +20,7 @@ use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate\CurrencyCode;
  */
 final class RevenueAttributionAggregate implements BaseModel
 {
-    /** @use SdkModel<revenue_attribution_aggregate> */
+    /** @use SdkModel<RevenueAttributionAggregateShape> */
     use SdkModel;
 
     #[Api(optional: true)]

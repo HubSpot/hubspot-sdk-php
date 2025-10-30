@@ -14,7 +14,7 @@ use HubspotSDK\Marketing\Emails\EmailCreateRequest\Subcategory;
 /**
  * Properties of a marketing email you can set when creating a marketing email.
  *
- * @phpstan-type email_create_request = array{
+ * @phpstan-type EmailCreateRequestShape = array{
  *   name: string,
  *   activeDomain?: string,
  *   archived?: bool,
@@ -40,7 +40,7 @@ use HubspotSDK\Marketing\Emails\EmailCreateRequest\Subcategory;
  */
 final class EmailCreateRequest implements BaseModel
 {
-    /** @use SdkModel<email_create_request> */
+    /** @use SdkModel<EmailCreateRequestShape> */
     use SdkModel;
 
     /**

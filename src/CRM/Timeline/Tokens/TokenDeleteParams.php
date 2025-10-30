@@ -14,11 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Timeline\Tokens->delete
  *
- * @phpstan-type token_delete_params = array{appID: int, eventTemplateID: string}
+ * @phpstan-type TokenDeleteParamsShape = array{
+ *   appID: int, eventTemplateID: string
+ * }
  */
 final class TokenDeleteParams implements BaseModel
 {
-    /** @use SdkModel<token_delete_params> */
+    /** @use SdkModel<TokenDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

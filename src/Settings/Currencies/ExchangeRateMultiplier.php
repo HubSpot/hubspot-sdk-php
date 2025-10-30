@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type exchange_rate_multiplier = array{
+ * @phpstan-type ExchangeRateMultiplierShape = array{
  *   conversionRate: float, effectiveAt?: \DateTimeInterface
  * }
  */
 final class ExchangeRateMultiplier implements BaseModel
 {
-    /** @use SdkModel<exchange_rate_multiplier> */
+    /** @use SdkModel<ExchangeRateMultiplierShape> */
     use SdkModel;
 
     #[Api]

@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type object_type_enablement_public_response = array{enablement: bool}
+ * @phpstan-type ObjectTypeEnablementPublicResponseShape = array{enablement: bool}
  */
 final class ObjectTypeEnablementPublicResponse implements BaseModel
 {
-    /** @use SdkModel<object_type_enablement_public_response> */
+    /** @use SdkModel<ObjectTypeEnablementPublicResponseShape> */
     use SdkModel;
 
     #[Api]

@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A form field that will be displayed based on what the customer entered in another field.
  *
- * @phpstan-type dependent_field = array{
+ * @phpstan-type DependentFieldShape = array{
  *   dependentCondition: DependentFieldFilter,
  *   dependentField: EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField,
  * }
  */
 final class DependentField implements BaseModel
 {
-    /** @use SdkModel<dependent_field> */
+    /** @use SdkModel<DependentFieldShape> */
     use SdkModel;
 
     /**

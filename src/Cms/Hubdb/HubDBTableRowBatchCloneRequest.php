@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type hub_db_table_row_batch_clone_request = array{
+ * @phpstan-type HubDBTableRowBatchCloneRequestShape = array{
  *   id: string, name?: string
  * }
  */
 final class HubDBTableRowBatchCloneRequest implements BaseModel
 {
-    /** @use SdkModel<hub_db_table_row_batch_clone_request> */
+    /** @use SdkModel<HubDBTableRowBatchCloneRequestShape> */
     use SdkModel;
 
     #[Api]

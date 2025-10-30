@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_time_offset = array{
+ * @phpstan-type PublicTimeOffsetShape = array{
  *   amount: int, offsetDirection: string, timeUnit: string
  * }
  */
 final class PublicTimeOffset implements BaseModel
 {
-    /** @use SdkModel<public_time_offset> */
+    /** @use SdkModel<PublicTimeOffsetShape> */
     use SdkModel;
 
     #[Api]

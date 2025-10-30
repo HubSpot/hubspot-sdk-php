@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Schemas->list
  *
- * @phpstan-type schema_list_params = array{archived?: bool}
+ * @phpstan-type SchemaListParamsShape = array{archived?: bool}
  */
 final class SchemaListParams implements BaseModel
 {
-    /** @use SdkModel<schema_list_params> */
+    /** @use SdkModel<SchemaListParamsShape> */
     use SdkModel;
     use SdkParams;
 

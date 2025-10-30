@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_channel_integration_message_update_request = array{
+ * @phpstan-type PublicChannelIntegrationMessageUpdateRequestShape = array{
  *   statusType: value-of<StatusType>, errorMessage?: string
  * }
  */
 final class PublicChannelIntegrationMessageUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<public_channel_integration_message_update_request> */
+    /** @use SdkModel<PublicChannelIntegrationMessageUpdateRequestShape> */
     use SdkModel;
 
     /**

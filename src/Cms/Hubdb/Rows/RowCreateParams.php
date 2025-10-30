@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows->create
  *
- * @phpstan-type row_create_params = array{
+ * @phpstan-type RowCreateParamsShape = array{
  *   values: array<string, mixed>,
  *   childTableID?: int,
  *   displayIndex?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class RowCreateParams implements BaseModel
 {
-    /** @use SdkModel<row_create_params> */
+    /** @use SdkModel<RowCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

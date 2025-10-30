@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A JSON object containing anything you want to override.
  *
- * @phpstan-type public_single_send_email = array{
+ * @phpstan-type PublicSingleSendEmailShape = array{
  *   to: string,
  *   bcc?: list<string>,
  *   cc?: list<string>,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicSingleSendEmail implements BaseModel
 {
-    /** @use SdkModel<public_single_send_email> */
+    /** @use SdkModel<PublicSingleSendEmailShape> */
     use SdkModel;
 
     /**

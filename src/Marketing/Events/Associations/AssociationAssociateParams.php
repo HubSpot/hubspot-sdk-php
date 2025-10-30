@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events\Associations->associate
  *
- * @phpstan-type association_associate_params = array{marketingEventID: string}
+ * @phpstan-type AssociationAssociateParamsShape = array{marketingEventID: string}
  */
 final class AssociationAssociateParams implements BaseModel
 {
-    /** @use SdkModel<association_associate_params> */
+    /** @use SdkModel<AssociationAssociateParamsShape> */
     use SdkModel;
     use SdkParams;
 

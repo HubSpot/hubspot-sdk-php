@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type indexed_field = array{
+ * @phpstan-type IndexedFieldShape = array{
  *   metadataField: bool, name: string, value: mixed, values: list<mixed>
  * }
  */
 final class IndexedField implements BaseModel
 {
-    /** @use SdkModel<indexed_field> */
+    /** @use SdkModel<IndexedFieldShape> */
     use SdkModel;
 
     #[Api]

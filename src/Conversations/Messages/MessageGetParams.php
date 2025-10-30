@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\Messages->get
  *
- * @phpstan-type message_get_params = array{threadID: string}
+ * @phpstan-type MessageGetParamsShape = array{threadID: string}
  */
 final class MessageGetParams implements BaseModel
 {
-    /** @use SdkModel<message_get_params> */
+    /** @use SdkModel<MessageGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

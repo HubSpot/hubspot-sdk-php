@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Appointments->search
  *
- * @phpstan-type appointment_search_params = array{
+ * @phpstan-type AppointmentSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class AppointmentSearchParams implements BaseModel
 {
-    /** @use SdkModel<appointment_search_params> */
+    /** @use SdkModel<AppointmentSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

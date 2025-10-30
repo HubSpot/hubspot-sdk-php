@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_contact_property_anchor = array{
+ * @phpstan-type APIContactPropertyAnchorShape = array{
  *   contactProperty: string, type: value-of<Type>
  * }
  */
 final class APIContactPropertyAnchor implements BaseModel
 {
-    /** @use SdkModel<api_contact_property_anchor> */
+    /** @use SdkModel<APIContactPropertyAnchorShape> */
     use SdkModel;
 
     /**

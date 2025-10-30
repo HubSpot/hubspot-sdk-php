@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyModificationMetadata;
 
 /**
- * @phpstan-type property1_alias = array{
+ * @phpstan-type Property1Shape = array{
  *   description: string,
  *   fieldType: string,
  *   groupName: string,
@@ -44,7 +44,7 @@ use HubspotSDK\PropertyModificationMetadata;
  */
 final class Property1 implements BaseModel
 {
-    /** @use SdkModel<property1_alias> */
+    /** @use SdkModel<Property1Shape> */
     use SdkModel;
 
     #[Api]

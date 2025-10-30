@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Folders->get
  *
- * @phpstan-type folder_get_params = array{folderID?: string}
+ * @phpstan-type FolderGetParamsShape = array{folderID?: string}
  */
 final class FolderGetParams implements BaseModel
 {
-    /** @use SdkModel<folder_get_params> */
+    /** @use SdkModel<FolderGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

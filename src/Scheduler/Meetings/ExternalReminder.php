@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_reminder = array{
+ * @phpstan-type ExternalReminderShape = array{
  *   numberOfTimeUnits: int, timeUnit: string
  * }
  */
 final class ExternalReminder implements BaseModel
 {
-    /** @use SdkModel<external_reminder> */
+    /** @use SdkModel<ExternalReminderShape> */
     use SdkModel;
 
     #[Api]

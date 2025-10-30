@@ -16,7 +16,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
  *
  * @see HubspotSDK\Scheduler\Meetings\MeetingsLinks->book
  *
- * @phpstan-type meetings_link_book_params = array{
+ * @phpstan-type MeetingsLinkBookParamsShape = array{
  *   duration: int,
  *   email: string,
  *   firstName: string,
@@ -32,7 +32,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
  */
 final class MeetingsLinkBookParams implements BaseModel
 {
-    /** @use SdkModel<meetings_link_book_params> */
+    /** @use SdkModel<MeetingsLinkBookParamsShape> */
     use SdkModel;
     use SdkParams;
 

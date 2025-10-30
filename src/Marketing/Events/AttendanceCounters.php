@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type attendance_counters = array{
+ * @phpstan-type AttendanceCountersShape = array{
  *   attended: int, cancelled: int, noShows: int, registered: int
  * }
  */
 final class AttendanceCounters implements BaseModel
 {
-    /** @use SdkModel<attendance_counters> */
+    /** @use SdkModel<AttendanceCountersShape> */
     use SdkModel;
 
     #[Api]

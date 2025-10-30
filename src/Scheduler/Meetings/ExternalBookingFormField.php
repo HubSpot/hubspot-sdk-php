@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_booking_form_field = array{name: string, value: string}
+ * @phpstan-type ExternalBookingFormFieldShape = array{name: string, value: string}
  */
 final class ExternalBookingFormField implements BaseModel
 {
-    /** @use SdkModel<external_booking_form_field> */
+    /** @use SdkModel<ExternalBookingFormFieldShape> */
     use SdkModel;
 
     #[Api]

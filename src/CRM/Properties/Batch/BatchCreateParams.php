@@ -15,11 +15,11 @@ use HubspotSDK\PropertyCreate;
  *
  * @see HubspotSDK\CRM\Properties\Batch->create
  *
- * @phpstan-type batch_create_params = array{inputs: list<PropertyCreate>}
+ * @phpstan-type BatchCreateParamsShape = array{inputs: list<PropertyCreate>}
  */
 final class BatchCreateParams implements BaseModel
 {
-    /** @use SdkModel<batch_create_params> */
+    /** @use SdkModel<BatchCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

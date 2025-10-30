@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type simple_public_object_id = array{id: string}
+ * @phpstan-type SimplePublicObjectIDShape = array{id: string}
  */
 final class SimplePublicObjectID implements BaseModel
 {
-    /** @use SdkModel<simple_public_object_id> */
+    /** @use SdkModel<SimplePublicObjectIDShape> */
     use SdkModel;
 
     #[Api]

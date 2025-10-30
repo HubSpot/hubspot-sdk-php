@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * List of event subscriptions for your app.
  *
- * @phpstan-type subscription_list_response = array{
+ * @phpstan-type SubscriptionListResponseShape = array{
  *   results: list<SubscriptionResponse>
  * }
  */
 final class SubscriptionListResponse implements BaseModel
 {
-    /** @use SdkModel<subscription_list_response> */
+    /** @use SdkModel<SubscriptionListResponseShape> */
     use SdkModel;
 
     /**

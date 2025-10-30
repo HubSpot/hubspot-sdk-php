@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\CommercePayments->create
  *
- * @phpstan-type commerce_payment_create_params = array{
+ * @phpstan-type CommercePaymentCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class CommercePaymentCreateParams implements BaseModel
 {
-    /** @use SdkModel<commerce_payment_create_params> */
+    /** @use SdkModel<CommercePaymentCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

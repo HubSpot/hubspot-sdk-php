@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->export
  *
- * @phpstan-type table_export_params = array{format?: string}
+ * @phpstan-type TableExportParamsShape = array{format?: string}
  */
 final class TableExportParams implements BaseModel
 {
-    /** @use SdkModel<table_export_params> */
+    /** @use SdkModel<TableExportParamsShape> */
     use SdkModel;
     use SdkParams;
 

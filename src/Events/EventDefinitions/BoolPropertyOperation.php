@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\BoolPropertyOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\BoolPropertyOperation\PropertyType;
 
 /**
- * @phpstan-type bool_property_operation = array{
+ * @phpstan-type BoolPropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
  *   operator: value-of<Operator>,
@@ -23,7 +23,7 @@ use HubspotSDK\Events\EventDefinitions\BoolPropertyOperation\PropertyType;
  */
 final class BoolPropertyOperation implements BaseModel
 {
-    /** @use SdkModel<bool_property_operation> */
+    /** @use SdkModel<BoolPropertyOperationShape> */
     use SdkModel;
 
     #[Api]

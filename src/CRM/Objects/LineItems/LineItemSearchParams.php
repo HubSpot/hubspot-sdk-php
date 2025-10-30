@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\LineItems->search
  *
- * @phpstan-type line_item_search_params = array{
+ * @phpstan-type LineItemSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class LineItemSearchParams implements BaseModel
 {
-    /** @use SdkModel<line_item_search_params> */
+    /** @use SdkModel<LineItemSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicEmailSubscriptionFilter\FilterType;
 
 /**
- * @phpstan-type public_email_subscription_filter = array{
+ * @phpstan-type PublicEmailSubscriptionFilterShape = array{
  *   acceptedStatuses: list<string>,
  *   filterType: value-of<FilterType>,
  *   subscriptionIDs: list<string>,
@@ -19,7 +19,7 @@ use HubspotSDK\PublicEmailSubscriptionFilter\FilterType;
  */
 final class PublicEmailSubscriptionFilter implements BaseModel
 {
-    /** @use SdkModel<public_email_subscription_filter> */
+    /** @use SdkModel<PublicEmailSubscriptionFilterShape> */
     use SdkModel;
 
     /** @var list<string> $acceptedStatuses */

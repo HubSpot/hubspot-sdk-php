@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
- * @phpstan-type layout_section = array{
+ * @phpstan-type LayoutSectionShape = array{
  *   cells: list<LayoutSection>,
  *   cssClass: string,
  *   cssID: string,
@@ -28,7 +28,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class LayoutSection implements BaseModel
 {
-    /** @use SdkModel<layout_section> */
+    /** @use SdkModel<LayoutSectionShape> */
     use SdkModel;
 
     /** @var list<LayoutSection> $cells */

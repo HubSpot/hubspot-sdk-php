@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\CustomChannels\ChannelAccounts->get
  *
- * @phpstan-type channel_account_get_params = array{channelID: string}
+ * @phpstan-type ChannelAccountGetParamsShape = array{channelID: string}
  */
 final class ChannelAccountGetParams implements BaseModel
 {
-    /** @use SdkModel<channel_account_get_params> */
+    /** @use SdkModel<ChannelAccountGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Object for creating a folder.
  *
- * @phpstan-type folder_input = array{
+ * @phpstan-type FolderInputShape = array{
  *   name: string, parentFolderID?: string, parentPath?: string
  * }
  */
 final class FolderInput implements BaseModel
 {
-    /** @use SdkModel<folder_input> */
+    /** @use SdkModel<FolderInputShape> */
     use SdkModel;
 
     /**

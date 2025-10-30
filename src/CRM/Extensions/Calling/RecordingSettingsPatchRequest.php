@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type recording_settings_patch_request = array{
+ * @phpstan-type RecordingSettingsPatchRequestShape = array{
  *   urlToRetrieveAuthedRecording?: string
  * }
  */
 final class RecordingSettingsPatchRequest implements BaseModel
 {
-    /** @use SdkModel<recording_settings_patch_request> */
+    /** @use SdkModel<RecordingSettingsPatchRequestShape> */
     use SdkModel;
 
     #[Api(optional: true)]

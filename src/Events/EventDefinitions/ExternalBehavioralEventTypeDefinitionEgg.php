@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_behavioral_event_type_definition_egg = array{
+ * @phpstan-type ExternalBehavioralEventTypeDefinitionEggShape = array{
  *   label: string,
  *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreate>,
  *   description?: string,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
 {
-    /** @use SdkModel<external_behavioral_event_type_definition_egg> */
+    /** @use SdkModel<ExternalBehavioralEventTypeDefinitionEggShape> */
     use SdkModel;
 
     /**

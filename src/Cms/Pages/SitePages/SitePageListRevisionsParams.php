@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->listRevisions
  *
- * @phpstan-type site_page_list_revisions_params = array{
+ * @phpstan-type SitePageListRevisionsParamsShape = array{
  *   after?: string, before?: string, limit?: int
  * }
  */
 final class SitePageListRevisionsParams implements BaseModel
 {
-    /** @use SdkModel<site_page_list_revisions_params> */
+    /** @use SdkModel<SitePageListRevisionsParamsShape> */
     use SdkModel;
     use SdkParams;
 

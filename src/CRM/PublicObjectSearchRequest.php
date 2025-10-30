@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Describes a search request.
  *
- * @phpstan-type public_object_search_request = array{
+ * @phpstan-type PublicObjectSearchRequestShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicObjectSearchRequest implements BaseModel
 {
-    /** @use SdkModel<public_object_search_request> */
+    /** @use SdkModel<PublicObjectSearchRequestShape> */
     use SdkModel;
 
     /**

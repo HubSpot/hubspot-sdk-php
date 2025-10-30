@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\MultiLineTextField\FieldType;
 /**
  * A form field consisting of a multiple-line text box.
  *
- * @phpstan-type multi_line_text_field = array{
+ * @phpstan-type MultiLineTextFieldShape = array{
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
@@ -27,7 +27,7 @@ use HubspotSDK\Marketing\Forms\MultiLineTextField\FieldType;
  */
 final class MultiLineTextField implements BaseModel
 {
-    /** @use SdkModel<multi_line_text_field> */
+    /** @use SdkModel<MultiLineTextFieldShape> */
     use SdkModel;
 
     /**

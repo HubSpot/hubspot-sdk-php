@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Authors->createBatch
  *
- * @phpstan-type author_create_batch_params = array{inputs: list<BlogAuthor>}
+ * @phpstan-type AuthorCreateBatchParamsShape = array{inputs: list<BlogAuthor>}
  */
 final class AuthorCreateBatchParams implements BaseModel
 {
-    /** @use SdkModel<author_create_batch_params> */
+    /** @use SdkModel<AuthorCreateBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

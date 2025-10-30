@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_collection_response_record_list_membership_no_paging = array{
+ * @phpstan-type APICollectionResponseRecordListMembershipNoPagingShape = array{
  *   results: list<RecordListMembership>, total?: int
  * }
  */
 final class APICollectionResponseRecordListMembershipNoPaging implements BaseModel
 {
-    /** @use SdkModel<api_collection_response_record_list_membership_no_paging> */
+    /** @use SdkModel<APICollectionResponseRecordListMembershipNoPagingShape> */
     use SdkModel;
 
     /** @var list<RecordListMembership> $results */

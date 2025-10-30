@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type association_record_limit_response = array{
+ * @phpstan-type AssociationRecordLimitResponseShape = array{
  *   atLimitFromRecordSamples: list<AtLimitRecordSample>,
  *   limit: int,
  *   nearLimitFromRecordSamples: list<NearLimitRecordSample>,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class AssociationRecordLimitResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<association_record_limit_response> */
+    /** @use SdkModel<AssociationRecordLimitResponseShape> */
     use SdkModel;
 
     use SdkResponse;

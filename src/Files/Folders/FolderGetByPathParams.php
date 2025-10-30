@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Files\Folders->getByPath
  *
- * @phpstan-type folder_get_by_path_params = array{properties?: list<string>}
+ * @phpstan-type FolderGetByPathParamsShape = array{properties?: list<string>}
  */
 final class FolderGetByPathParams implements BaseModel
 {
-    /** @use SdkModel<folder_get_by_path_params> */
+    /** @use SdkModel<FolderGetByPathParamsShape> */
     use SdkModel;
     use SdkParams;
 

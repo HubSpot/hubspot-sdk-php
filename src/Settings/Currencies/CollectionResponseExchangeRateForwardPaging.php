@@ -12,13 +12,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_exchange_rate_forward_paging = array{
+ * @phpstan-type CollectionResponseExchangeRateForwardPagingShape = array{
  *   results: list<ExchangeRate>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseExchangeRateForwardPaging implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_exchange_rate_forward_paging> */
+    /** @use SdkModel<CollectionResponseExchangeRateForwardPagingShape> */
     use SdkModel;
 
     use SdkResponse;

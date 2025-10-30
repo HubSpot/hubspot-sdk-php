@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\PropertyValidations->get
  *
- * @phpstan-type property_validation_get_params = array{objectTypeID: string}
+ * @phpstan-type PropertyValidationGetParamsShape = array{objectTypeID: string}
  */
 final class PropertyValidationGetParams implements BaseModel
 {
-    /** @use SdkModel<property_validation_get_params> */
+    /** @use SdkModel<PropertyValidationGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->listRevisions
  *
- * @phpstan-type landing_page_list_revisions_params = array{
+ * @phpstan-type LandingPageListRevisionsParamsShape = array{
  *   after?: string, before?: string, limit?: int
  * }
  */
 final class LandingPageListRevisionsParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_list_revisions_params> */
+    /** @use SdkModel<LandingPageListRevisionsParamsShape> */
     use SdkModel;
     use SdkParams;
 

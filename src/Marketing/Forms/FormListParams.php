@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Forms\FormListParams\FormType;
  *
  * @see HubspotSDK\Marketing\Forms->list
  *
- * @phpstan-type form_list_params = array{
+ * @phpstan-type FormListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   formTypes?: list<FormType|value-of<FormType>>,
@@ -24,7 +24,7 @@ use HubspotSDK\Marketing\Forms\FormListParams\FormType;
  */
 final class FormListParams implements BaseModel
 {
-    /** @use SdkModel<form_list_params> */
+    /** @use SdkModel<FormListParamsShape> */
     use SdkModel;
     use SdkParams;
 

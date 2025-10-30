@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type row_meta_data = array{cssClass: string, styles: Styles}
+ * @phpstan-type RowMetaDataShape = array{cssClass: string, styles: Styles}
  */
 final class RowMetaData implements BaseModel
 {
-    /** @use SdkModel<row_meta_data> */
+    /** @use SdkModel<RowMetaDataShape> */
     use SdkModel;
 
     #[Api]

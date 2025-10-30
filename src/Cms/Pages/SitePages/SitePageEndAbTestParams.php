@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->endAbTest
  *
- * @phpstan-type site_page_end_ab_test_params = array{
+ * @phpstan-type SitePageEndAbTestParamsShape = array{
  *   abTestID: string, winnerID: string
  * }
  */
 final class SitePageEndAbTestParams implements BaseModel
 {
-    /** @use SdkModel<site_page_end_ab_test_params> */
+    /** @use SdkModel<SitePageEndAbTestParamsShape> */
     use SdkModel;
     use SdkParams;
 

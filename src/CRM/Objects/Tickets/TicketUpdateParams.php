@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Tickets->update
  *
- * @phpstan-type ticket_update_params = array{
+ * @phpstan-type TicketUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class TicketUpdateParams implements BaseModel
 {
-    /** @use SdkModel<ticket_update_params> */
+    /** @use SdkModel<TicketUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

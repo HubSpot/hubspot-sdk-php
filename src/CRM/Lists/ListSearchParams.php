@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists->search
  *
- * @phpstan-type list_search_params = array{
+ * @phpstan-type ListSearchParamsShape = array{
  *   additionalProperties?: list<string>,
  *   count?: int,
  *   listIDs?: list<string>,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ListSearchParams implements BaseModel
 {
-    /** @use SdkModel<list_search_params> */
+    /** @use SdkModel<ListSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

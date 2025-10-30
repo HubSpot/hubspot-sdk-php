@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_marketing_event_create_request_params = array{
+ * @phpstan-type BatchInputMarketingEventCreateRequestParamsShape = array{
  *   inputs: list<MarketingEventCreateRequestParams>
  * }
  */
 final class BatchInputMarketingEventCreateRequestParams implements BaseModel
 {
-    /** @use SdkModel<batch_input_marketing_event_create_request_params> */
+    /** @use SdkModel<BatchInputMarketingEventCreateRequestParamsShape> */
     use SdkModel;
 
     /** @var list<MarketingEventCreateRequestParams> $inputs */

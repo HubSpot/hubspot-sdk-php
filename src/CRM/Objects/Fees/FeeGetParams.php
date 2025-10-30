@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Fees->get
  *
- * @phpstan-type fee_get_params = array{
+ * @phpstan-type FeeGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class FeeGetParams implements BaseModel
 {
-    /** @use SdkModel<fee_get_params> */
+    /** @use SdkModel<FeeGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

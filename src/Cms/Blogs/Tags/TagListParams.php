@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Tags->list
  *
- * @phpstan-type tag_list_params = array{
+ * @phpstan-type TagListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   createdAfter?: \DateTimeInterface,
@@ -30,7 +30,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TagListParams implements BaseModel
 {
-    /** @use SdkModel<tag_list_params> */
+    /** @use SdkModel<TagListParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,11 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type event_detail_settings = array{appID: int, eventDetailsURL: string}
+ * @phpstan-type EventDetailSettingsShape = array{
+ *   appID: int, eventDetailsURL: string
+ * }
  */
 final class EventDetailSettings implements BaseModel
 {
-    /** @use SdkModel<event_detail_settings> */
+    /** @use SdkModel<EventDetailSettingsShape> */
     use SdkModel;
 
     /**

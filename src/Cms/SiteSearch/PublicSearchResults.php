@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type public_search_results = array{
+ * @phpstan-type PublicSearchResultsShape = array{
  *   limit: int,
  *   offset: int,
  *   page: int,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class PublicSearchResults implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_search_results> */
+    /** @use SdkModel<PublicSearchResultsShape> */
     use SdkModel;
 
     use SdkResponse;

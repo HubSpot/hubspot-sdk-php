@@ -12,7 +12,7 @@ use HubspotSDK\Events\EventDefinitions\PropertyReferencedTime\TimeType;
 use HubspotSDK\Events\EventDefinitions\PropertyReferencedTime\TimezoneSource;
 
 /**
- * @phpstan-type property_referenced_time = array{
+ * @phpstan-type PropertyReferencedTimeShape = array{
  *   property: string,
  *   referenceType: value-of<ReferenceType>,
  *   timeType: value-of<TimeType>,
@@ -22,7 +22,7 @@ use HubspotSDK\Events\EventDefinitions\PropertyReferencedTime\TimezoneSource;
  */
 final class PropertyReferencedTime implements BaseModel
 {
-    /** @use SdkModel<property_referenced_time> */
+    /** @use SdkModel<PropertyReferencedTimeShape> */
     use SdkModel;
 
     #[Api]

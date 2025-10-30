@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_link_availability = array{
+ * @phpstan-type ExternalLinkAvailabilityShape = array{
  *   hasMore: bool,
  *   linkAvailabilityByDuration: array<string,
  *   ExternalLinkAvailabilityForDuration,>,
@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalLinkAvailability implements BaseModel
 {
-    /** @use SdkModel<external_link_availability> */
+    /** @use SdkModel<ExternalLinkAvailabilityShape> */
     use SdkModel;
 
     #[Api]

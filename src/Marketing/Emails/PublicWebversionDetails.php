@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_webversion_details = array{
+ * @phpstan-type PublicWebversionDetailsShape = array{
  *   domain?: string,
  *   enabled?: bool,
  *   expiresAt?: \DateTimeInterface,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicWebversionDetails implements BaseModel
 {
-    /** @use SdkModel<public_webversion_details> */
+    /** @use SdkModel<PublicWebversionDetailsShape> */
     use SdkModel;
 
     #[Api(optional: true)]

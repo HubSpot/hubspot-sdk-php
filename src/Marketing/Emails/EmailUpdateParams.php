@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory;
  *
  * @see HubspotSDK\Marketing\Emails->update
  *
- * @phpstan-type email_update_params = array{
+ * @phpstan-type EmailUpdateParamsShape = array{
  *   archived?: bool,
  *   activeDomain?: string,
  *   businessUnitID?: int,
@@ -42,7 +42,7 @@ use HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory;
  */
 final class EmailUpdateParams implements BaseModel
 {
-    /** @use SdkModel<email_update_params> */
+    /** @use SdkModel<EmailUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Authors->get
  *
- * @phpstan-type author_get_params = array{archived?: bool, property?: string}
+ * @phpstan-type AuthorGetParamsShape = array{archived?: bool, property?: string}
  */
 final class AuthorGetParams implements BaseModel
 {
-    /** @use SdkModel<author_get_params> */
+    /** @use SdkModel<AuthorGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

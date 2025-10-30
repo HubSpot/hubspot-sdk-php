@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * State of the template definition being created.
  *
- * @phpstan-type timeline_event_template_create_request = array{
+ * @phpstan-type TimelineEventTemplateCreateRequestShape = array{
  *   name: string,
  *   objectType: string,
  *   tokens: list<TimelineEventTemplateToken>,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TimelineEventTemplateCreateRequest implements BaseModel
 {
-    /** @use SdkModel<timeline_event_template_create_request> */
+    /** @use SdkModel<TimelineEventTemplateCreateRequestShape> */
     use SdkModel;
 
     /**

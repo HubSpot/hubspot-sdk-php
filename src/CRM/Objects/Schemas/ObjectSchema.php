@@ -16,7 +16,7 @@ use HubspotSDK\Property;
 /**
  * Defines an object schema, including its properties and associations.
  *
- * @phpstan-type object_schema = array{
+ * @phpstan-type ObjectSchemaShape = array{
  *   id: string,
  *   associations: list<AssociationDefinition>,
  *   labels: ObjectTypeDefinitionLabels,
@@ -38,7 +38,7 @@ use HubspotSDK\Property;
  */
 final class ObjectSchema implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<object_schema> */
+    /** @use SdkModel<ObjectSchemaShape> */
     use SdkModel;
 
     use SdkResponse;

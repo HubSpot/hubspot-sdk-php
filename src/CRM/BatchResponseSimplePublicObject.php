@@ -13,7 +13,7 @@ use HubspotSDK\StandardError;
 /**
  * A public object batch response object.
  *
- * @phpstan-type batch_response_simple_public_object = array{
+ * @phpstan-type BatchResponseSimplePublicObjectShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<SimplePublicObject>,
  *   startedAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseSimplePublicObject implements BaseModel
 {
-    /** @use SdkModel<batch_response_simple_public_object> */
+    /** @use SdkModel<BatchResponseSimplePublicObjectShape> */
     use SdkModel;
 
     /**

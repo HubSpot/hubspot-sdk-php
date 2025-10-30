@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Emails->delete
  *
- * @phpstan-type email_delete_params = array{archived?: bool}
+ * @phpstan-type EmailDeleteParamsShape = array{archived?: bool}
  */
 final class EmailDeleteParams implements BaseModel
 {
-    /** @use SdkModel<email_delete_params> */
+    /** @use SdkModel<EmailDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

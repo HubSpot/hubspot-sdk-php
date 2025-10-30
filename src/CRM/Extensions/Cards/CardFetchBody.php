@@ -12,7 +12,7 @@ use HubspotSDK\CRM\Extensions\Cards\CardFetchBody\CardType;
 /**
  * Configuration for this card's data fetch request.
  *
- * @phpstan-type card_fetch_body = array{
+ * @phpstan-type CardFetchBodyShape = array{
  *   objectTypes: list<CardObjectTypeBody>,
  *   targetURL: string,
  *   cardType?: value-of<CardType>,
@@ -21,7 +21,7 @@ use HubspotSDK\CRM\Extensions\Cards\CardFetchBody\CardType;
  */
 final class CardFetchBody implements BaseModel
 {
-    /** @use SdkModel<card_fetch_body> */
+    /** @use SdkModel<CardFetchBodyShape> */
     use SdkModel;
 
     /**

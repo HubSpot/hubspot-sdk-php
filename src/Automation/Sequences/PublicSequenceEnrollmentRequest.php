@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_sequence_enrollment_request = array{
+ * @phpstan-type PublicSequenceEnrollmentRequestShape = array{
  *   contactID: string,
  *   senderEmail: string,
  *   sequenceID: string,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicSequenceEnrollmentRequest implements BaseModel
 {
-    /** @use SdkModel<public_sequence_enrollment_request> */
+    /** @use SdkModel<PublicSequenceEnrollmentRequestShape> */
     use SdkModel;
 
     #[Api('contactId')]

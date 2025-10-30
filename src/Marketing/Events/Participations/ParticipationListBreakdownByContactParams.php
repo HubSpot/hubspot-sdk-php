@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events\Participations->listBreakdownByContact
  *
- * @phpstan-type participation_list_breakdown_by_contact_params = array{
+ * @phpstan-type ParticipationListBreakdownByContactParamsShape = array{
  *   after?: string, limit?: int, state?: string
  * }
  */
 final class ParticipationListBreakdownByContactParams implements BaseModel
 {
-    /** @use SdkModel<participation_list_breakdown_by_contact_params> */
+    /** @use SdkModel<ParticipationListBreakdownByContactParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -15,11 +15,11 @@ use HubspotSDK\PublicObjectID;
  *
  * @see HubspotSDK\Settings\Currencies->batchGet
  *
- * @phpstan-type currency_batch_get_params = array{inputs: list<PublicObjectID>}
+ * @phpstan-type CurrencyBatchGetParamsShape = array{inputs: list<PublicObjectID>}
  */
 final class CurrencyBatchGetParams implements BaseModel
 {
-    /** @use SdkModel<currency_batch_get_params> */
+    /** @use SdkModel<CurrencyBatchGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

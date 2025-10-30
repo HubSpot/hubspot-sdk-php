@@ -11,7 +11,7 @@ use HubspotSDK\PublicEmailEventFilter\FilterType;
 use HubspotSDK\PublicEmailEventFilter\Operator;
 
 /**
- * @phpstan-type public_email_event_filter = array{
+ * @phpstan-type PublicEmailEventFilterShape = array{
  *   appID: string,
  *   emailID: string,
  *   filterType: value-of<FilterType>,
@@ -23,7 +23,7 @@ use HubspotSDK\PublicEmailEventFilter\Operator;
  */
 final class PublicEmailEventFilter implements BaseModel
 {
-    /** @use SdkModel<public_email_event_filter> */
+    /** @use SdkModel<PublicEmailEventFilterShape> */
     use SdkModel;
 
     #[Api('appId')]

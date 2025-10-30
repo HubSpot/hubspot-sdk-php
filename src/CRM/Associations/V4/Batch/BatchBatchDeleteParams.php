@@ -15,13 +15,13 @@ use HubspotSDK\CRM\Associations\V4\PublicAssociationMultiArchive;
  *
  * @see HubspotSDK\CRM\Associations\V4\Batch->batchDelete
  *
- * @phpstan-type batch_batch_delete_params = array{
+ * @phpstan-type BatchBatchDeleteParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicAssociationMultiArchive>
  * }
  */
 final class BatchBatchDeleteParams implements BaseModel
 {
-    /** @use SdkModel<batch_batch_delete_params> */
+    /** @use SdkModel<BatchBatchDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

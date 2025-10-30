@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Timeline\Events->getDetail
  *
- * @phpstan-type event_get_detail_params = array{eventTemplateID: string}
+ * @phpstan-type EventGetDetailParamsShape = array{eventTemplateID: string}
  */
 final class EventGetDetailParams implements BaseModel
 {
-    /** @use SdkModel<event_get_detail_params> */
+    /** @use SdkModel<EventGetDetailParamsShape> */
     use SdkModel;
     use SdkParams;
 

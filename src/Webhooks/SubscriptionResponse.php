@@ -12,7 +12,7 @@ use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
 /**
  * Complete details for an event subscription.
  *
- * @phpstan-type subscription_response = array{
+ * @phpstan-type SubscriptionResponseShape = array{
  *   id: string,
  *   active: bool,
  *   createdAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
  */
 final class SubscriptionResponse implements BaseModel
 {
-    /** @use SdkModel<subscription_response> */
+    /** @use SdkModel<SubscriptionResponseShape> */
     use SdkModel;
 
     /**

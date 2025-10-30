@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_contact_reference_forward_paging = array{
+ * @phpstan-type CollectionResponseContactReferenceForwardPagingShape = array{
  *   results: list<ContactReference>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseContactReferenceForwardPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_contact_reference_forward_paging> */
+    /** @use SdkModel<CollectionResponseContactReferenceForwardPagingShape> */
     use SdkModel;
 
     /** @var list<ContactReference> $results */

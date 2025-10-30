@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicComparativePropertyUpdatedOperation\OperationType;
 
 /**
- * @phpstan-type public_comparative_property_updated_operation = array{
+ * @phpstan-type PublicComparativePropertyUpdatedOperationShape = array{
  *   comparisonPropertyName: string,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: value-of<OperationType>,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicComparativePropertyUpdatedOperation\OperationType;
  */
 final class PublicComparativePropertyUpdatedOperation implements BaseModel
 {
-    /** @use SdkModel<public_comparative_property_updated_operation> */
+    /** @use SdkModel<PublicComparativePropertyUpdatedOperationShape> */
     use SdkModel;
 
     #[Api]

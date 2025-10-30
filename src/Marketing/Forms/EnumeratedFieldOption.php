@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type enumerated_field_option = array{
+ * @phpstan-type EnumeratedFieldOptionShape = array{
  *   displayOrder: int, label: string, value: string, description?: string
  * }
  */
 final class EnumeratedFieldOption implements BaseModel
 {
-    /** @use SdkModel<enumerated_field_option> */
+    /** @use SdkModel<EnumeratedFieldOptionShape> */
     use SdkModel;
 
     /**

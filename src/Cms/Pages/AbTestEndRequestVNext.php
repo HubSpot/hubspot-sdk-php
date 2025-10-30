@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request body object for ending A/B tests.
  *
- * @phpstan-type ab_test_end_request_v_next = array{
+ * @phpstan-type AbTestEndRequestVNextShape = array{
  *   abTestID: string, winnerID: string
  * }
  */
 final class AbTestEndRequestVNext implements BaseModel
 {
-    /** @use SdkModel<ab_test_end_request_v_next> */
+    /** @use SdkModel<AbTestEndRequestVNextShape> */
     use SdkModel;
 
     /**

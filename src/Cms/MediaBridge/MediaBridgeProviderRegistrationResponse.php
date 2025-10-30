@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type media_bridge_provider_registration_response = array{
+ * @phpstan-type MediaBridgeProviderRegistrationResponseShape = array{
  *   appID: int, name: string
  * }
  */
 final class MediaBridgeProviderRegistrationResponse implements BaseModel
 {
-    /** @use SdkModel<media_bridge_provider_registration_response> */
+    /** @use SdkModel<MediaBridgeProviderRegistrationResponseShape> */
     use SdkModel;
 
     #[Api('appId')]

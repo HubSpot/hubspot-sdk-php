@@ -17,7 +17,7 @@ use HubspotSDK\OptionInput;
  *
  * @see HubspotSDK\CRM\Properties->update
  *
- * @phpstan-type property_update_params = array{
+ * @phpstan-type PropertyUpdateParamsShape = array{
  *   objectType: string,
  *   calculationFormula?: string,
  *   description?: string,
@@ -33,7 +33,7 @@ use HubspotSDK\OptionInput;
  */
 final class PropertyUpdateParams implements BaseModel
 {
-    /** @use SdkModel<property_update_params> */
+    /** @use SdkModel<PropertyUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

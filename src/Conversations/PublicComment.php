@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_comment = array{
+ * @phpstan-type PublicCommentShape = array{
  *   id: string,
  *   archived: bool,
  *   attachments: list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment>,
@@ -29,7 +29,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicComment implements BaseModel
 {
-    /** @use SdkModel<public_comment> */
+    /** @use SdkModel<PublicCommentShape> */
     use SdkModel;
 
     #[Api]

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->restoreRevisionToDraft
  *
- * @phpstan-type site_page_restore_revision_to_draft_params = array{
+ * @phpstan-type SitePageRestoreRevisionToDraftParamsShape = array{
  *   objectID: string
  * }
  */
 final class SitePageRestoreRevisionToDraftParams implements BaseModel
 {
-    /** @use SdkModel<site_page_restore_revision_to_draft_params> */
+    /** @use SdkModel<SitePageRestoreRevisionToDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicNumOccurrencesRefineBy\Type;
 
 /**
- * @phpstan-type public_num_occurrences_refine_by = array{
+ * @phpstan-type PublicNumOccurrencesRefineByShape = array{
  *   type: value-of<Type>, maxOccurrences?: int, minOccurrences?: int
  * }
  */
 final class PublicNumOccurrencesRefineBy implements BaseModel
 {
-    /** @use SdkModel<public_num_occurrences_refine_by> */
+    /** @use SdkModel<PublicNumOccurrencesRefineByShape> */
     use SdkModel;
 
     /** @var value-of<Type> $type */

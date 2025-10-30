@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Functions->createOrReplace
  *
- * @phpstan-type function_create_or_replace_params = array{
+ * @phpstan-type FunctionCreateOrReplaceParamsShape = array{
  *   appID: int,
  *   definitionID: string,
  *   functionType: FunctionType|value-of<FunctionType>,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class FunctionCreateOrReplaceParams implements BaseModel
 {
-    /** @use SdkModel<function_create_or_replace_params> */
+    /** @use SdkModel<FunctionCreateOrReplaceParamsShape> */
     use SdkModel;
     use SdkParams;
 

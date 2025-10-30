@@ -11,13 +11,13 @@ use HubspotSDK\Events\EventDefinitions\SetOccurrencesRefineBy\SetType;
 use HubspotSDK\Events\EventDefinitions\SetOccurrencesRefineBy\Type;
 
 /**
- * @phpstan-type set_occurrences_refine_by = array{
+ * @phpstan-type SetOccurrencesRefineByShape = array{
  *   setType: value-of<SetType>, type: value-of<Type>
  * }
  */
 final class SetOccurrencesRefineBy implements BaseModel
 {
-    /** @use SdkModel<set_occurrences_refine_by> */
+    /** @use SdkModel<SetOccurrencesRefineByShape> */
     use SdkModel;
 
     /** @var value-of<SetType> $setType */

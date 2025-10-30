@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
 
 /**
- * @phpstan-type column_request = array{
+ * @phpstan-type ColumnRequestShape = array{
  *   id: int,
  *   label: string,
  *   name: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Option;
  */
 final class ColumnRequest implements BaseModel
 {
-    /** @use SdkModel<column_request> */
+    /** @use SdkModel<ColumnRequestShape> */
     use SdkModel;
 
     /**

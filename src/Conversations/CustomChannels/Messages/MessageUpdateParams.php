@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\CustomChannels\Messages->update
  *
- * @phpstan-type message_update_params = array{
+ * @phpstan-type MessageUpdateParamsShape = array{
  *   channelID: string,
  *   statusType: StatusType|value-of<StatusType>,
  *   errorMessage?: string,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MessageUpdateParams implements BaseModel
 {
-    /** @use SdkModel<message_update_params> */
+    /** @use SdkModel<MessageUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

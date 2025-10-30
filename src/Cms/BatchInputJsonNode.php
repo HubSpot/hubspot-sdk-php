@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Wrapper for providing an array of JSON nodes as inputs.
  *
- * @phpstan-type batch_input_json_node = array{inputs: list<mixed>}
+ * @phpstan-type BatchInputJsonNodeShape = array{inputs: list<mixed>}
  */
 final class BatchInputJsonNode implements BaseModel
 {
-    /** @use SdkModel<batch_input_json_node> */
+    /** @use SdkModel<BatchInputJsonNodeShape> */
     use SdkModel;
 
     /**

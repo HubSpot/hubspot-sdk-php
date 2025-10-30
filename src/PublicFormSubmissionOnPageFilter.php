@@ -11,7 +11,7 @@ use HubspotSDK\PublicFormSubmissionOnPageFilter\FilterType;
 use HubspotSDK\PublicFormSubmissionOnPageFilter\Operator;
 
 /**
- * @phpstan-type public_form_submission_on_page_filter = array{
+ * @phpstan-type PublicFormSubmissionOnPageFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operator: value-of<Operator>,
  *   pageID: string,
@@ -22,7 +22,7 @@ use HubspotSDK\PublicFormSubmissionOnPageFilter\Operator;
  */
 final class PublicFormSubmissionOnPageFilter implements BaseModel
 {
-    /** @use SdkModel<public_form_submission_on_page_filter> */
+    /** @use SdkModel<PublicFormSubmissionOnPageFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

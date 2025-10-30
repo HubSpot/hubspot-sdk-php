@@ -17,13 +17,13 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput;
  *
  * @see HubspotSDK\Marketing\Campaigns\Batch->delete
  *
- * @phpstan-type batch_delete_params = array{
+ * @phpstan-type BatchDeleteParamsShape = array{
  *   inputs: list<PublicCampaignDeleteInput>
  * }
  */
 final class BatchDeleteParams implements BaseModel
 {
-    /** @use SdkModel<batch_delete_params> */
+    /** @use SdkModel<BatchDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type marketing_event_external_unique_identifier = array{
+ * @phpstan-type MarketingEventExternalUniqueIdentifierShape = array{
  *   appID: int, externalAccountID: string, externalEventID: string
  * }
  */
 final class MarketingEventExternalUniqueIdentifier implements BaseModel
 {
-    /** @use SdkModel<marketing_event_external_unique_identifier> */
+    /** @use SdkModel<MarketingEventExternalUniqueIdentifierShape> */
     use SdkModel;
 
     /**

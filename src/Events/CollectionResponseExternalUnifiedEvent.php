@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type collection_response_external_unified_event = array{
+ * @phpstan-type CollectionResponseExternalUnifiedEventShape = array{
  *   results: list<ExternalUnifiedEvent>, paging?: Paging
  * }
  */
 final class CollectionResponseExternalUnifiedEvent implements BaseModel
 {
-    /** @use SdkModel<collection_response_external_unified_event> */
+    /** @use SdkModel<CollectionResponseExternalUnifiedEventShape> */
     use SdkModel;
 
     /** @var list<ExternalUnifiedEvent> $results */

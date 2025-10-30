@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_option = array{
+ * @phpstan-type ExternalOptionShape = array{
  *   description: string,
  *   displayOrder: int,
  *   doubleData: float,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalOption implements BaseModel
 {
-    /** @use SdkModel<external_option> */
+    /** @use SdkModel<ExternalOptionShape> */
     use SdkModel;
 
     #[Api]

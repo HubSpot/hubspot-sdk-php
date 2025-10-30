@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type email_clone_request_v_next = array{
+ * @phpstan-type EmailCloneRequestVNextShape = array{
  *   id: string, cloneName?: string, language?: string
  * }
  */
 final class EmailCloneRequestVNext implements BaseModel
 {
-    /** @use SdkModel<email_clone_request_v_next> */
+    /** @use SdkModel<EmailCloneRequestVNextShape> */
     use SdkModel;
 
     /**

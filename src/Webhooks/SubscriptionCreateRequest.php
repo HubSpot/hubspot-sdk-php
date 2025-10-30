@@ -12,7 +12,7 @@ use HubspotSDK\Webhooks\SubscriptionCreateRequest\EventType;
 /**
  * New webhook settings for an app.
  *
- * @phpstan-type subscription_create_request = array{
+ * @phpstan-type SubscriptionCreateRequestShape = array{
  *   eventType: value-of<EventType>,
  *   active?: bool,
  *   objectTypeID?: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Webhooks\SubscriptionCreateRequest\EventType;
  */
 final class SubscriptionCreateRequest implements BaseModel
 {
-    /** @use SdkModel<subscription_create_request> */
+    /** @use SdkModel<SubscriptionCreateRequestShape> */
     use SdkModel;
 
     /**

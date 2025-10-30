@@ -10,14 +10,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_with_total_external_link_metadata_forward_paging = array{
+ * @phpstan-type CollectionResponseWithTotalExternalLinkMetadataForwardPagingShape = array{
  *   results: list<ExternalLinkMetadata>, total: int, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseWithTotalExternalLinkMetadataForwardPaging implements BaseModel
 {
     /**
-     * @use SdkModel<collection_response_with_total_external_link_metadata_forward_paging>
+     * @use SdkModel<CollectionResponseWithTotalExternalLinkMetadataForwardPagingShape>
      */
     use SdkModel;
 

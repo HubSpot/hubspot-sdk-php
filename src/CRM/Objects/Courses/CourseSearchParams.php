@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Courses->search
  *
- * @phpstan-type course_search_params = array{
+ * @phpstan-type CourseSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class CourseSearchParams implements BaseModel
 {
-    /** @use SdkModel<course_search_params> */
+    /** @use SdkModel<CourseSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

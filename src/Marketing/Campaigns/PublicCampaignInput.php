@@ -9,11 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_campaign_input = array{properties: array<string, string>}
+ * @phpstan-type PublicCampaignInputShape = array{
+ *   properties: array<string, string>
+ * }
  */
 final class PublicCampaignInput implements BaseModel
 {
-    /** @use SdkModel<public_campaign_input> */
+    /** @use SdkModel<PublicCampaignInputShape> */
     use SdkModel;
 
     /** @var array<string, string> $properties */

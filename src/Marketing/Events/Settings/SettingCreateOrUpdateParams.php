@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events\Settings->createOrUpdate
  *
- * @phpstan-type setting_create_or_update_params = array{eventDetailsURL: string}
+ * @phpstan-type SettingCreateOrUpdateParamsShape = array{eventDetailsURL: string}
  */
 final class SettingCreateOrUpdateParams implements BaseModel
 {
-    /** @use SdkModel<setting_create_or_update_params> */
+    /** @use SdkModel<SettingCreateOrUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

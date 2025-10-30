@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\DatepickerField\FieldType;
 /**
  * A form field used to select a date.
  *
- * @phpstan-type datepicker_field = array{
+ * @phpstan-type DatepickerFieldShape = array{
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
@@ -27,7 +27,7 @@ use HubspotSDK\Marketing\Forms\DatepickerField\FieldType;
  */
 final class DatepickerField implements BaseModel
 {
-    /** @use SdkModel<datepicker_field> */
+    /** @use SdkModel<DatepickerFieldShape> */
     use SdkModel;
 
     /**

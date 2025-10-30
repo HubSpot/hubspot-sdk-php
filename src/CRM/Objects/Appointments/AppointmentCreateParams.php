@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Appointments->create
  *
- * @phpstan-type appointment_create_params = array{
+ * @phpstan-type AppointmentCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class AppointmentCreateParams implements BaseModel
 {
-    /** @use SdkModel<appointment_create_params> */
+    /** @use SdkModel<AppointmentCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

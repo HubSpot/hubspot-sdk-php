@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Functions->list
  *
- * @phpstan-type function_list_params = array{appID: int}
+ * @phpstan-type FunctionListParamsShape = array{appID: int}
  */
 final class FunctionListParams implements BaseModel
 {
-    /** @use SdkModel<function_list_params> */
+    /** @use SdkModel<FunctionListParamsShape> */
     use SdkModel;
     use SdkParams;
 

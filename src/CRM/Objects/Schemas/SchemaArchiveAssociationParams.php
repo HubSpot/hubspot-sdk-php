@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Schemas->archiveAssociation
  *
- * @phpstan-type schema_archive_association_params = array{objectType: string}
+ * @phpstan-type SchemaArchiveAssociationParamsShape = array{objectType: string}
  */
 final class SchemaArchiveAssociationParams implements BaseModel
 {
-    /** @use SdkModel<schema_archive_association_params> */
+    /** @use SdkModel<SchemaArchiveAssociationParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_action_definition = array{
+ * @phpstan-type PublicActionDefinitionShape = array{
  *   id: string,
  *   actionURL: string,
  *   functions: list<PublicActionFunctionIdentifier>,
@@ -28,7 +28,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicActionDefinition implements BaseModel
 {
-    /** @use SdkModel<public_action_definition> */
+    /** @use SdkModel<PublicActionDefinitionShape> */
     use SdkModel;
 
     #[Api]

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Orders->list
  *
- * @phpstan-type order_list_params = array{
+ * @phpstan-type OrderListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class OrderListParams implements BaseModel
 {
-    /** @use SdkModel<order_list_params> */
+    /** @use SdkModel<OrderListParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\ComparativePropertyUpdatedOperation\Opera
 use HubspotSDK\Events\EventDefinitions\ComparativePropertyUpdatedOperation\PropertyType;
 
 /**
- * @phpstan-type comparative_property_updated_operation = array{
+ * @phpstan-type ComparativePropertyUpdatedOperationShape = array{
  *   comparisonPropertyName: string,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Events\EventDefinitions\ComparativePropertyUpdatedOperation\Prope
  */
 final class ComparativePropertyUpdatedOperation implements BaseModel
 {
-    /** @use SdkModel<comparative_property_updated_operation> */
+    /** @use SdkModel<ComparativePropertyUpdatedOperationShape> */
     use SdkModel;
 
     #[Api]

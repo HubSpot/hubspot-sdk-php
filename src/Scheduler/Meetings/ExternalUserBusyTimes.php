@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_user_busy_times = array{
+ * @phpstan-type ExternalUserBusyTimesShape = array{
  *   busyTimes: list<ExternalTimeRange>,
  *   isOffline: bool,
  *   meetingsUser: ExternalMeetingsUser,
@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalUserBusyTimes implements BaseModel
 {
-    /** @use SdkModel<external_user_busy_times> */
+    /** @use SdkModel<ExternalUserBusyTimesShape> */
     use SdkModel;
 
     /** @var list<ExternalTimeRange> $busyTimes */

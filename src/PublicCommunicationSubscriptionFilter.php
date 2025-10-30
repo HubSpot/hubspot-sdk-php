@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicCommunicationSubscriptionFilter\FilterType;
 
 /**
- * @phpstan-type public_communication_subscription_filter = array{
+ * @phpstan-type PublicCommunicationSubscriptionFilterShape = array{
  *   acceptedOptStates: list<string>,
  *   channel: string,
  *   filterType: value-of<FilterType>,
@@ -21,7 +21,7 @@ use HubspotSDK\PublicCommunicationSubscriptionFilter\FilterType;
  */
 final class PublicCommunicationSubscriptionFilter implements BaseModel
 {
-    /** @use SdkModel<public_communication_subscription_filter> */
+    /** @use SdkModel<PublicCommunicationSubscriptionFilterShape> */
     use SdkModel;
 
     /** @var list<string> $acceptedOptStates */

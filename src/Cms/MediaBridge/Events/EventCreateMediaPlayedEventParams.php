@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Events->createMediaPlayedEvent
  *
- * @phpstan-type event_create_media_played_event_params = array{
+ * @phpstan-type EventCreateMediaPlayedEventParamsShape = array{
  *   mediaType: MediaType|value-of<MediaType>,
  *   occurredTimestamp: int,
  *   sessionID: string,
@@ -36,7 +36,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EventCreateMediaPlayedEventParams implements BaseModel
 {
-    /** @use SdkModel<event_create_media_played_event_params> */
+    /** @use SdkModel<EventCreateMediaPlayedEventParamsShape> */
     use SdkModel;
     use SdkParams;
 

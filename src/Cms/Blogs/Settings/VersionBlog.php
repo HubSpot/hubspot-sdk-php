@@ -14,13 +14,13 @@ use HubspotSDK\VersionUser;
 /**
  * Model definition for a Version Blog. Contains metadata describing the version of the Blog. It can be used to view edit history of the settings.
  *
- * @phpstan-type version_blog = array{
+ * @phpstan-type VersionBlogShape = array{
  *   id: string, object1: Blog, updatedAt: \DateTimeInterface, user: VersionUser
  * }
  */
 final class VersionBlog implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<version_blog> */
+    /** @use SdkModel<VersionBlogShape> */
     use SdkModel;
 
     use SdkResponse;

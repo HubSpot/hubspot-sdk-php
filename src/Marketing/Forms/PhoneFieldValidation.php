@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Describes how a phone number should be validated.
  *
- * @phpstan-type phone_field_validation = array{
+ * @phpstan-type PhoneFieldValidationShape = array{
  *   maxAllowedDigits: int, minAllowedDigits: int
  * }
  */
 final class PhoneFieldValidation implements BaseModel
 {
-    /** @use SdkModel<phone_field_validation> */
+    /** @use SdkModel<PhoneFieldValidationShape> */
     use SdkModel;
 
     #[Api]

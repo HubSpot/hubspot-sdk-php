@@ -10,11 +10,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Page\Paging\Next;
 
 /**
- * @phpstan-type paging_alias = array{next?: Next}
+ * @phpstan-type PagingShape = array{next?: Next}
  */
 final class Paging implements BaseModel
 {
-    /** @use SdkModel<paging_alias> */
+    /** @use SdkModel<PagingShape> */
     use SdkModel;
 
     #[Api(optional: true)]

@@ -13,7 +13,7 @@ use HubspotSDK\CRM\Associations\BatchResponsePublicAssociationMulti\Status;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_public_association_multi = array{
+ * @phpstan-type BatchResponsePublicAssociationMultiShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicAssociationMulti>,
  *   startedAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponsePublicAssociationMulti implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<batch_response_public_association_multi> */
+    /** @use SdkModel<BatchResponsePublicAssociationMultiShape> */
     use SdkModel;
 
     use SdkResponse;

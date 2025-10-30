@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Contacts->list
  *
- * @phpstan-type contact_list_params = array{
+ * @phpstan-type ContactListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ContactListParams implements BaseModel
 {
-    /** @use SdkModel<contact_list_params> */
+    /** @use SdkModel<ContactListParamsShape> */
     use SdkModel;
     use SdkParams;
 

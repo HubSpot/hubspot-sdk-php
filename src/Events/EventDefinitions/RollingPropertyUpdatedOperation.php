@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\RollingPropertyUpdatedOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\RollingPropertyUpdatedOperation\PropertyType;
 
 /**
- * @phpstan-type rolling_property_updated_operation = array{
+ * @phpstan-type RollingPropertyUpdatedOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   numberOfDays: int,
  *   operationType: string,
@@ -23,7 +23,7 @@ use HubspotSDK\Events\EventDefinitions\RollingPropertyUpdatedOperation\PropertyT
  */
 final class RollingPropertyUpdatedOperation implements BaseModel
 {
-    /** @use SdkModel<rolling_property_updated_operation> */
+    /** @use SdkModel<RollingPropertyUpdatedOperationShape> */
     use SdkModel;
 
     #[Api]

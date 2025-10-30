@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_action_definition_egg = array{
+ * @phpstan-type PublicActionDefinitionEggShape = array{
  *   actionURL: string,
  *   functions: list<PublicActionFunction>,
  *   inputFields: list<InputFieldDefinition>,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicActionDefinitionEgg implements BaseModel
 {
-    /** @use SdkModel<public_action_definition_egg> */
+    /** @use SdkModel<PublicActionDefinitionEggShape> */
     use SdkModel;
 
     #[Api('actionUrl')]

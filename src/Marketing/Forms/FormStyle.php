@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\FormStyle\SubmitAlignment;
 /**
  * Styling options for the form.
  *
- * @phpstan-type form_style = array{
+ * @phpstan-type FormStyleShape = array{
  *   backgroundWidth: string,
  *   fontFamily: string,
  *   helpTextColor: string,
@@ -29,7 +29,7 @@ use HubspotSDK\Marketing\Forms\FormStyle\SubmitAlignment;
  */
 final class FormStyle implements BaseModel
 {
-    /** @use SdkModel<form_style> */
+    /** @use SdkModel<FormStyleShape> */
     use SdkModel;
 
     #[Api]

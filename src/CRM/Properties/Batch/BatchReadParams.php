@@ -16,7 +16,7 @@ use HubspotSDK\PropertyName;
  *
  * @see HubspotSDK\CRM\Properties\Batch->read
  *
- * @phpstan-type batch_read_params = array{
+ * @phpstan-type BatchReadParamsShape = array{
  *   archived: bool,
  *   inputs: list<PropertyName>,
  *   dataSensitivity?: DataSensitivity|value-of<DataSensitivity>,
@@ -24,7 +24,7 @@ use HubspotSDK\PropertyName;
  */
 final class BatchReadParams implements BaseModel
 {
-    /** @use SdkModel<batch_read_params> */
+    /** @use SdkModel<BatchReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

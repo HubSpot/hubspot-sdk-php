@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->schedule
  *
- * @phpstan-type post_schedule_params = array{
+ * @phpstan-type PostScheduleParamsShape = array{
  *   id: string, publishDate: \DateTimeInterface
  * }
  */
 final class PostScheduleParams implements BaseModel
 {
-    /** @use SdkModel<post_schedule_params> */
+    /** @use SdkModel<PostScheduleParamsShape> */
     use SdkModel;
     use SdkParams;
 

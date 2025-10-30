@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type color_stop = array{color: RgbaColor}
+ * @phpstan-type ColorStopShape = array{color: RgbaColor}
  */
 final class ColorStop implements BaseModel
 {
-    /** @use SdkModel<color_stop> */
+    /** @use SdkModel<ColorStopShape> */
     use SdkModel;
 
     /**

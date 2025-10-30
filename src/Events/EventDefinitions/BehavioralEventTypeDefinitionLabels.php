@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type behavioral_event_type_definition_labels = array{
+ * @phpstan-type BehavioralEventTypeDefinitionLabelsShape = array{
  *   singular: string, plural?: string
  * }
  */
 final class BehavioralEventTypeDefinitionLabels implements BaseModel
 {
-    /** @use SdkModel<behavioral_event_type_definition_labels> */
+    /** @use SdkModel<BehavioralEventTypeDefinitionLabelsShape> */
     use SdkModel;
 
     #[Api]

@@ -15,7 +15,7 @@ use HubspotSDK\CRM\FilterGroup;
  *
  * @see HubspotSDK\CRM\Objects\Calls->search
  *
- * @phpstan-type call_search_params = array{
+ * @phpstan-type CallSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -26,7 +26,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class CallSearchParams implements BaseModel
 {
-    /** @use SdkModel<call_search_params> */
+    /** @use SdkModel<CallSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Fees->search
  *
- * @phpstan-type fee_search_params = array{
+ * @phpstan-type FeeSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class FeeSearchParams implements BaseModel
 {
-    /** @use SdkModel<fee_search_params> */
+    /** @use SdkModel<FeeSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

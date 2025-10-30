@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicFiscalQuarterReference\ReferenceType;
 
 /**
- * @phpstan-type public_fiscal_quarter_reference = array{
+ * @phpstan-type PublicFiscalQuarterReferenceShape = array{
  *   day: int,
  *   month: int,
  *   referenceType: value-of<ReferenceType>,
@@ -22,7 +22,7 @@ use HubspotSDK\PublicFiscalQuarterReference\ReferenceType;
  */
 final class PublicFiscalQuarterReference implements BaseModel
 {
-    /** @use SdkModel<public_fiscal_quarter_reference> */
+    /** @use SdkModel<PublicFiscalQuarterReferenceShape> */
     use SdkModel;
 
     #[Api]

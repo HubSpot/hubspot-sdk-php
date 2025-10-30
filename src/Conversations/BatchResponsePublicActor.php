@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_response_public_actor = array{
+ * @phpstan-type BatchResponsePublicActorShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor>,
  *   startedAt: \DateTimeInterface,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class BatchResponsePublicActor implements BaseModel
 {
-    /** @use SdkModel<batch_response_public_actor> */
+    /** @use SdkModel<BatchResponsePublicActorShape> */
     use SdkModel;
 
     #[Api]

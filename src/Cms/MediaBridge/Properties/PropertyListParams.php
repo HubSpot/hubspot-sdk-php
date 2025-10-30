@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Properties->list
  *
- * @phpstan-type property_list_params = array{appID: string}
+ * @phpstan-type PropertyListParamsShape = array{appID: string}
  */
 final class PropertyListParams implements BaseModel
 {
-    /** @use SdkModel<property_list_params> */
+    /** @use SdkModel<PropertyListParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Deals->list
  *
- * @phpstan-type deal_list_params = array{
+ * @phpstan-type DealListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class DealListParams implements BaseModel
 {
-    /** @use SdkModel<deal_list_params> */
+    /** @use SdkModel<DealListParamsShape> */
     use SdkModel;
     use SdkParams;
 

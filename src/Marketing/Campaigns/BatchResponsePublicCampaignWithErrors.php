@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithErrors\Status;
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type batch_response_public_campaign_with_errors = array{
+ * @phpstan-type BatchResponsePublicCampaignWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicCampaign>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponsePublicCampaignWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_public_campaign_with_errors> */
+    /** @use SdkModel<BatchResponsePublicCampaignWithErrorsShape> */
     use SdkModel;
 
     #[Api]

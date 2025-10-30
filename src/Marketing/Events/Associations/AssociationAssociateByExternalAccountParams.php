@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events\Associations->associateByExternalAccount
  *
- * @phpstan-type association_associate_by_external_account_params = array{
+ * @phpstan-type AssociationAssociateByExternalAccountParamsShape = array{
  *   externalAccountID: string, externalEventID: string
  * }
  */
 final class AssociationAssociateByExternalAccountParams implements BaseModel
 {
-    /** @use SdkModel<association_associate_by_external_account_params> */
+    /** @use SdkModel<AssociationAssociateByExternalAccountParamsShape> */
     use SdkModel;
     use SdkParams;
 

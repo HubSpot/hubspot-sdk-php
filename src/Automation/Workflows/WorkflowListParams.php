@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Workflows->list
  *
- * @phpstan-type workflow_list_params = array{after?: string, limit?: int}
+ * @phpstan-type WorkflowListParamsShape = array{after?: string, limit?: int}
  */
 final class WorkflowListParams implements BaseModel
 {
-    /** @use SdkModel<workflow_list_params> */
+    /** @use SdkModel<WorkflowListParamsShape> */
     use SdkModel;
     use SdkParams;
 

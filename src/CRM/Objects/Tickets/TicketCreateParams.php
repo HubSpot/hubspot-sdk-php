@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Tickets->create
  *
- * @phpstan-type ticket_create_params = array{
+ * @phpstan-type TicketCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class TicketCreateParams implements BaseModel
 {
-    /** @use SdkModel<ticket_create_params> */
+    /** @use SdkModel<TicketCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

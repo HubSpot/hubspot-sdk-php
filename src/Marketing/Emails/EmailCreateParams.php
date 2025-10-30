@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
  *
  * @see HubspotSDK\Marketing\Emails->create
  *
- * @phpstan-type email_create_params = array{
+ * @phpstan-type EmailCreateParamsShape = array{
  *   name: string,
  *   activeDomain?: string,
  *   archived?: bool,
@@ -43,7 +43,7 @@ use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
  */
 final class EmailCreateParams implements BaseModel
 {
-    /** @use SdkModel<email_create_params> */
+    /** @use SdkModel<EmailCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

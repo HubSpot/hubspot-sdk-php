@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Emails\PublicEmail\Type;
 /**
  * A marketing email.
  *
- * @phpstan-type public_email = array{
+ * @phpstan-type PublicEmailShape = array{
  *   id: string,
  *   content: PublicEmailContent,
  *   from: PublicEmailFromDetails,
@@ -71,7 +71,7 @@ use HubspotSDK\Marketing\Emails\PublicEmail\Type;
  */
 final class PublicEmail implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_email> */
+    /** @use SdkModel<PublicEmailShape> */
     use SdkModel;
 
     use SdkResponse;

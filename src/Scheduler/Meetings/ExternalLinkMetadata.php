@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_link_metadata = array{
+ * @phpstan-type ExternalLinkMetadataShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   defaultLink: bool,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalLinkMetadata implements BaseModel
 {
-    /** @use SdkModel<external_link_metadata> */
+    /** @use SdkModel<ExternalLinkMetadataShape> */
     use SdkModel;
 
     #[Api]

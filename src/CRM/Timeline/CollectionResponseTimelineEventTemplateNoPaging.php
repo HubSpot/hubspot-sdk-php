@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type collection_response_timeline_event_template_no_paging = array{
+ * @phpstan-type CollectionResponseTimelineEventTemplateNoPagingShape = array{
  *   results: list<TimelineEventTemplate>
  * }
  */
 final class CollectionResponseTimelineEventTemplateNoPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_timeline_event_template_no_paging> */
+    /** @use SdkModel<CollectionResponseTimelineEventTemplateNoPagingShape> */
     use SdkModel;
 
     /** @var list<TimelineEventTemplate> $results */

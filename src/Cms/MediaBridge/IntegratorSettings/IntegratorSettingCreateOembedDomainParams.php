@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->createOembedDomain
  *
- * @phpstan-type integrator_setting_create_oembed_domain_params = array{
+ * @phpstan-type IntegratorSettingCreateOembedDomainParamsShape = array{
  *   endpoints: Endpoints, portalID?: int
  * }
  */
 final class IntegratorSettingCreateOembedDomainParams implements BaseModel
 {
-    /** @use SdkModel<integrator_setting_create_oembed_domain_params> */
+    /** @use SdkModel<IntegratorSettingCreateOembedDomainParamsShape> */
     use SdkModel;
     use SdkParams;
 

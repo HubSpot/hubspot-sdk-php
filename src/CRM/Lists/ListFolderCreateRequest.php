@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type list_folder_create_request = array{
+ * @phpstan-type ListFolderCreateRequestShape = array{
  *   name: string, parentFolderID?: string
  * }
  */
 final class ListFolderCreateRequest implements BaseModel
 {
-    /** @use SdkModel<list_folder_create_request> */
+    /** @use SdkModel<ListFolderCreateRequestShape> */
     use SdkModel;
 
     /**

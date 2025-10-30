@@ -10,14 +10,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAdsTimeFilter\FilterType;
 
 /**
- * @phpstan-type public_ads_time_filter = array{
+ * @phpstan-type PublicAdsTimeFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   pruningRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
 final class PublicAdsTimeFilter implements BaseModel
 {
-    /** @use SdkModel<public_ads_time_filter> */
+    /** @use SdkModel<PublicAdsTimeFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

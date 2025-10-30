@@ -15,13 +15,13 @@ use HubspotSDK\CRM\Associations\Schema\V4\PublicAssociationSpec;
  *
  * @see HubspotSDK\CRM\Associations\Schema\V4\Configurations->batchDeleteByObjectTypes
  *
- * @phpstan-type configuration_batch_delete_by_object_types_params = array{
+ * @phpstan-type ConfigurationBatchDeleteByObjectTypesParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicAssociationSpec>
  * }
  */
 final class ConfigurationBatchDeleteByObjectTypesParams implements BaseModel
 {
-    /** @use SdkModel<configuration_batch_delete_by_object_types_params> */
+    /** @use SdkModel<ConfigurationBatchDeleteByObjectTypesParamsShape> */
     use SdkModel;
     use SdkParams;
 

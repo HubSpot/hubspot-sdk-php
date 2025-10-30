@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_channel_account_egg = array{
+ * @phpstan-type PublicChannelAccountEggShape = array{
  *   authorized: bool,
  *   inboxID: string,
  *   name: string,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicChannelAccountEgg implements BaseModel
 {
-    /** @use SdkModel<public_channel_account_egg> */
+    /** @use SdkModel<PublicChannelAccountEggShape> */
     use SdkModel;
 
     #[Api]

@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_client = array{
+ * @phpstan-type PublicClientShape = array{
  *   clientType?: value-of<ClientType>, integrationAppID?: int
  * }
  */
 final class PublicClient implements BaseModel
 {
-    /** @use SdkModel<public_client> */
+    /** @use SdkModel<PublicClientShape> */
     use SdkModel;
 
     /**

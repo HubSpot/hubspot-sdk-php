@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type soft_required_properties_extension_data = array{
+ * @phpstan-type SoftRequiredPropertiesExtensionDataShape = array{
  *   isSoftRequiredProperty: bool
  * }
  */
 final class SoftRequiredPropertiesExtensionData implements BaseModel
 {
-    /** @use SdkModel<soft_required_properties_extension_data> */
+    /** @use SdkModel<SoftRequiredPropertiesExtensionDataShape> */
     use SdkModel;
 
     #[Api]

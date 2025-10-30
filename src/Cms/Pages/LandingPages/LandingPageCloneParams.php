@@ -14,11 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->clone
  *
- * @phpstan-type landing_page_clone_params = array{id: string, cloneName?: string}
+ * @phpstan-type LandingPageCloneParamsShape = array{
+ *   id: string, cloneName?: string
+ * }
  */
 final class LandingPageCloneParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_clone_params> */
+    /** @use SdkModel<LandingPageCloneParamsShape> */
     use SdkModel;
     use SdkParams;
 

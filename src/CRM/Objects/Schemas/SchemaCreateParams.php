@@ -15,7 +15,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  *
  * @see HubspotSDK\CRM\Objects\Schemas->create
  *
- * @phpstan-type schema_create_params = array{
+ * @phpstan-type SchemaCreateParamsShape = array{
  *   associatedObjects: list<string>,
  *   labels: ObjectTypeDefinitionLabels,
  *   name: string,
@@ -29,7 +29,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  */
 final class SchemaCreateParams implements BaseModel
 {
-    /** @use SdkModel<schema_create_params> */
+    /** @use SdkModel<SchemaCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
 
 /**
- * @phpstan-type column_alias = array{
+ * @phpstan-type ColumnShape = array{
  *   label: string,
  *   name: string,
  *   type: value-of<Type>,
@@ -36,7 +36,7 @@ use HubspotSDK\Option;
  */
 final class Column implements BaseModel
 {
-    /** @use SdkModel<column_alias> */
+    /** @use SdkModel<ColumnShape> */
     use SdkModel;
 
     /**

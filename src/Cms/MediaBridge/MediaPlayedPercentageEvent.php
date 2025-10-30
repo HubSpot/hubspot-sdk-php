@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type media_played_percentage_event = array{
+ * @phpstan-type MediaPlayedPercentageEventShape = array{
  *   contactID: int,
  *   mediaBridgeID: int,
  *   mediaBridgeObjectCoordinates: string,
@@ -31,7 +31,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MediaPlayedPercentageEvent implements BaseModel
 {
-    /** @use SdkModel<media_played_percentage_event> */
+    /** @use SdkModel<MediaPlayedPercentageEventShape> */
     use SdkModel;
 
     /**

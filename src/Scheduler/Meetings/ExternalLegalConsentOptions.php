@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterestLegalBasis;
 
 /**
- * @phpstan-type external_legal_consent_options = array{
+ * @phpstan-type ExternalLegalConsentOptionsShape = array{
  *   communicationConsentCheckboxes: list<ExternalCommunicationConsentCheckbox>,
  *   communicationConsentText: string,
  *   isLegitimateInterest: bool,
@@ -25,7 +25,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterest
  */
 final class ExternalLegalConsentOptions implements BaseModel
 {
-    /** @use SdkModel<external_legal_consent_options> */
+    /** @use SdkModel<ExternalLegalConsentOptionsShape> */
     use SdkModel;
 
     /**

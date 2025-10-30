@@ -11,7 +11,7 @@ use HubspotSDK\CRM\Lists\PublicListConversionInactivity\ConversionType;
 use HubspotSDK\CRM\Lists\PublicListConversionInactivity\TimeUnit;
 
 /**
- * @phpstan-type public_list_conversion_inactivity = array{
+ * @phpstan-type PublicListConversionInactivityShape = array{
  *   conversionType: value-of<ConversionType>,
  *   offset: int,
  *   timeUnit: value-of<TimeUnit>,
@@ -19,7 +19,7 @@ use HubspotSDK\CRM\Lists\PublicListConversionInactivity\TimeUnit;
  */
 final class PublicListConversionInactivity implements BaseModel
 {
-    /** @use SdkModel<public_list_conversion_inactivity> */
+    /** @use SdkModel<PublicListConversionInactivityShape> */
     use SdkModel;
 
     /** @var value-of<ConversionType> $conversionType */

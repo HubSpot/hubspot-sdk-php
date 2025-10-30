@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Limits->getAssociationLabelLimits
  *
- * @phpstan-type limit_get_association_label_limits_params = array{
+ * @phpstan-type LimitGetAssociationLabelLimitsParamsShape = array{
  *   fromObjectTypeID?: string, toObjectTypeID?: string
  * }
  */
 final class LimitGetAssociationLabelLimitsParams implements BaseModel
 {
-    /** @use SdkModel<limit_get_association_label_limits_params> */
+    /** @use SdkModel<LimitGetAssociationLabelLimitsParamsShape> */
     use SdkModel;
     use SdkParams;
 

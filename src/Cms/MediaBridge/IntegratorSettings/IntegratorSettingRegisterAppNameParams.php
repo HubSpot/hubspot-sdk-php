@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @deprecated
  * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->registerAppName
  *
- * @phpstan-type integrator_setting_register_app_name_params = array{
+ * @phpstan-type IntegratorSettingRegisterAppNameParamsShape = array{
  *   updatedAt: int, name?: string
  * }
  */
 final class IntegratorSettingRegisterAppNameParams implements BaseModel
 {
-    /** @use SdkModel<integrator_setting_register_app_name_params> */
+    /** @use SdkModel<IntegratorSettingRegisterAppNameParamsShape> */
     use SdkModel;
     use SdkParams;
 

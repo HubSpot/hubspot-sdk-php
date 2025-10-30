@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->create
  *
- * @phpstan-type table_create_params = array{
+ * @phpstan-type TableCreateParamsShape = array{
  *   label: string,
  *   name: string,
  *   allowChildTables?: bool,
@@ -28,7 +28,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TableCreateParams implements BaseModel
 {
-    /** @use SdkModel<table_create_params> */
+    /** @use SdkModel<TableCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

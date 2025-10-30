@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_weekly_enrollment_schedule = array{
+ * @phpstan-type APIWeeklyEnrollmentScheduleShape = array{
  *   daysOfWeek: list<value-of<DaysOfWeek>>,
  *   timeOfDay: APITimeOfDay,
  *   type: value-of<Type>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIWeeklyEnrollmentSchedule implements BaseModel
 {
-    /** @use SdkModel<api_weekly_enrollment_schedule> */
+    /** @use SdkModel<APIWeeklyEnrollmentScheduleShape> */
     use SdkModel;
 
     /**

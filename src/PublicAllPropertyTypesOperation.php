@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAllPropertyTypesOperation\OperationType;
 
 /**
- * @phpstan-type public_all_property_types_operation = array{
+ * @phpstan-type PublicAllPropertyTypesOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: value-of<OperationType>,
  *   operator: string,
@@ -18,7 +18,7 @@ use HubspotSDK\PublicAllPropertyTypesOperation\OperationType;
  */
 final class PublicAllPropertyTypesOperation implements BaseModel
 {
-    /** @use SdkModel<public_all_property_types_operation> */
+    /** @use SdkModel<PublicAllPropertyTypesOperationShape> */
     use SdkModel;
 
     #[Api]

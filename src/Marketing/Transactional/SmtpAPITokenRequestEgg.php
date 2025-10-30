@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A request object to create a SMTP API token.
  *
- * @phpstan-type smtp_api_token_request_egg = array{
+ * @phpstan-type SmtpAPITokenRequestEggShape = array{
  *   campaignName: string, createContact: bool
  * }
  */
 final class SmtpAPITokenRequestEgg implements BaseModel
 {
-    /** @use SdkModel<smtp_api_token_request_egg> */
+    /** @use SdkModel<SmtpAPITokenRequestEggShape> */
     use SdkModel;
 
     /**

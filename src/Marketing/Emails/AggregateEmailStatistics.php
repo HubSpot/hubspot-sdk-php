@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Aggregated statistics for the given interval, plus the IDs of emails that were sent during that interval.
  *
- * @phpstan-type aggregate_email_statistics = array{
+ * @phpstan-type AggregateEmailStatisticsShape = array{
  *   aggregate?: EmailStatisticsData,
  *   campaignAggregations?: array<string, EmailStatisticsData>,
  *   emails?: list<int>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AggregateEmailStatistics implements BaseModel
 {
-    /** @use SdkModel<aggregate_email_statistics> */
+    /** @use SdkModel<AggregateEmailStatisticsShape> */
     use SdkModel;
 
     #[Api(optional: true)]

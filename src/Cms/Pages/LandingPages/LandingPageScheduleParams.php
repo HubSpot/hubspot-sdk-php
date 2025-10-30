@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->schedule
  *
- * @phpstan-type landing_page_schedule_params = array{
+ * @phpstan-type LandingPageScheduleParamsShape = array{
  *   id: string, publishDate: \DateTimeInterface
  * }
  */
 final class LandingPageScheduleParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_schedule_params> */
+    /** @use SdkModel<LandingPageScheduleParamsShape> */
     use SdkModel;
     use SdkParams;
 

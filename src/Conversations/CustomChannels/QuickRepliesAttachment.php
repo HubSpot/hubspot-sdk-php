@@ -11,13 +11,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type quick_replies_attachment = array{
+ * @phpstan-type QuickRepliesAttachmentShape = array{
  *   quickReplies: list<QuickReply>, type: value-of<Type>
  * }
  */
 final class QuickRepliesAttachment implements BaseModel
 {
-    /** @use SdkModel<quick_replies_attachment> */
+    /** @use SdkModel<QuickRepliesAttachmentShape> */
     use SdkModel;
 
     /** @var list<QuickReply> $quickReplies */

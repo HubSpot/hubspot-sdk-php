@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Emails->create
  *
- * @phpstan-type email_create_params = array{
+ * @phpstan-type EmailCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class EmailCreateParams implements BaseModel
 {
-    /** @use SdkModel<email_create_params> */
+    /** @use SdkModel<EmailCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Meetings->create
  *
- * @phpstan-type meeting_create_params = array{
+ * @phpstan-type MeetingCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class MeetingCreateParams implements BaseModel
 {
-    /** @use SdkModel<meeting_create_params> */
+    /** @use SdkModel<MeetingCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

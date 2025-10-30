@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type transcript_create_response = array{id: string}
+ * @phpstan-type TranscriptCreateResponseShape = array{id: string}
  */
 final class TranscriptCreateResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<transcript_create_response> */
+    /** @use SdkModel<TranscriptCreateResponseShape> */
     use SdkModel;
 
     use SdkResponse;

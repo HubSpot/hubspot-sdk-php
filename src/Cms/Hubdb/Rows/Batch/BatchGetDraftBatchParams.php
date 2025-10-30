@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows\Batch->getDraftBatch
  *
- * @phpstan-type batch_get_draft_batch_params = array{inputs: list<string>}
+ * @phpstan-type BatchGetDraftBatchParamsShape = array{inputs: list<string>}
  */
 final class BatchGetDraftBatchParams implements BaseModel
 {
-    /** @use SdkModel<batch_get_draft_batch_params> */
+    /** @use SdkModel<BatchGetDraftBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

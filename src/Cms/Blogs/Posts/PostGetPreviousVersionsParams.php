@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->getPreviousVersions
  *
- * @phpstan-type post_get_previous_versions_params = array{
+ * @phpstan-type PostGetPreviousVersionsParamsShape = array{
  *   after?: string, before?: string, limit?: int
  * }
  */
 final class PostGetPreviousVersionsParams implements BaseModel
 {
-    /** @use SdkModel<post_get_previous_versions_params> */
+    /** @use SdkModel<PostGetPreviousVersionsParamsShape> */
     use SdkModel;
     use SdkParams;
 

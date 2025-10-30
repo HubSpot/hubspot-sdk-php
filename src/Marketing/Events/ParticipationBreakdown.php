@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type participation_breakdown = array{
+ * @phpstan-type ParticipationBreakdownShape = array{
  *   id: string,
  *   associations: ParticipationAssociations,
  *   createdAt: \DateTimeInterface,
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ParticipationBreakdown implements BaseModel
 {
-    /** @use SdkModel<participation_breakdown> */
+    /** @use SdkModel<ParticipationBreakdownShape> */
     use SdkModel;
 
     #[Api]

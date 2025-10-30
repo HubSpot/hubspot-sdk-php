@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Events\EventDefinitions->create
  *
- * @phpstan-type event_definition_create_params = array{
+ * @phpstan-type EventDefinitionCreateParamsShape = array{
  *   label: string,
  *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreate>,
  *   description?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EventDefinitionCreateParams implements BaseModel
 {
-    /** @use SdkModel<event_definition_create_params> */
+    /** @use SdkModel<EventDefinitionCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

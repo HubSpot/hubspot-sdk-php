@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_email_style_settings = array{
+ * @phpstan-type PublicEmailStyleSettingsShape = array{
  *   backgroundColor?: string,
  *   backgroundImage?: string,
  *   backgroundImageType?: string,
@@ -44,7 +44,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicEmailStyleSettings implements BaseModel
 {
-    /** @use SdkModel<public_email_style_settings> */
+    /** @use SdkModel<PublicEmailStyleSettingsShape> */
     use SdkModel;
 
     #[Api(optional: true)]

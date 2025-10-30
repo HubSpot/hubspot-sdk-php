@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->createFoldersBatch
  *
- * @phpstan-type landing_page_create_folders_batch_params = array{
+ * @phpstan-type LandingPageCreateFoldersBatchParamsShape = array{
  *   inputs: list<ContentFolder>
  * }
  */
 final class LandingPageCreateFoldersBatchParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_create_folders_batch_params> */
+    /** @use SdkModel<LandingPageCreateFoldersBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

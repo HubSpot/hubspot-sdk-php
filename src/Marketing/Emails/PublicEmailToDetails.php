@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Data structure representing the to fields of the email.
  *
- * @phpstan-type public_email_to_details = array{
+ * @phpstan-type PublicEmailToDetailsShape = array{
  *   contactIDs?: PublicEmailRecipients,
  *   contactIlsLists?: PublicEmailRecipients,
  *   contactLists?: PublicEmailRecipients,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicEmailToDetails implements BaseModel
 {
-    /** @use SdkModel<public_email_to_details> */
+    /** @use SdkModel<PublicEmailToDetailsShape> */
     use SdkModel;
 
     /**

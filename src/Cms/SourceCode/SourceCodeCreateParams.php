@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @deprecated
  * @see HubspotSDK\Cms\SourceCode->create
  *
- * @phpstan-type source_code_create_params = array{
+ * @phpstan-type SourceCodeCreateParamsShape = array{
  *   environment: string, file?: string
  * }
  */
 final class SourceCodeCreateParams implements BaseModel
 {
-    /** @use SdkModel<source_code_create_params> */
+    /** @use SdkModel<SourceCodeCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

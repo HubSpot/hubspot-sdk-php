@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type mark_recording_as_ready_request = array{engagementID: int}
+ * @phpstan-type MarkRecordingAsReadyRequestShape = array{engagementID: int}
  */
 final class MarkRecordingAsReadyRequest implements BaseModel
 {
-    /** @use SdkModel<mark_recording_as_ready_request> */
+    /** @use SdkModel<MarkRecordingAsReadyRequestShape> */
     use SdkModel;
 
     #[Api('engagementId')]

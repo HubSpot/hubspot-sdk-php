@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A role that can be assigned to a user.
  *
- * @phpstan-type public_permission_set = array{
+ * @phpstan-type PublicPermissionSetShape = array{
  *   id: string, name: string, requiresBillingWrite: bool
  * }
  */
 final class PublicPermissionSet implements BaseModel
 {
-    /** @use SdkModel<public_permission_set> */
+    /** @use SdkModel<PublicPermissionSetShape> */
     use SdkModel;
 
     /**

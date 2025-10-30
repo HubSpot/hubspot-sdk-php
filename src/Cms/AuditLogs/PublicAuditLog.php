@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type public_audit_log = array{
+ * @phpstan-type PublicAuditLogShape = array{
  *   event: value-of<Event>,
  *   fullName: string,
  *   objectID: string,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class PublicAuditLog implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_audit_log> */
+    /** @use SdkModel<PublicAuditLogShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -10,14 +10,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type random_access_collection_response_with_total_hub_db_table_row_v3 = array{
+ * @phpstan-type RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape = array{
  *   results: list<mixed>, total: int, type: value-of<Type>, paging?: BoundedPaging
  * }
  */
 final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements BaseModel
 {
     /**
-     * @use SdkModel<random_access_collection_response_with_total_hub_db_table_row_v3>
+     * @use SdkModel<RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape>
      */
     use SdkModel;
 

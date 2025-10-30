@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\DropdownField\FieldType;
 /**
  * A field consisting of a drop down with multiple choices.
  *
- * @phpstan-type dropdown_field = array{
+ * @phpstan-type DropdownFieldShape = array{
  *   defaultValues: list<string>,
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
@@ -28,7 +28,7 @@ use HubspotSDK\Marketing\Forms\DropdownField\FieldType;
  */
 final class DropdownField implements BaseModel
 {
-    /** @use SdkModel<dropdown_field> */
+    /** @use SdkModel<DropdownFieldShape> */
     use SdkModel;
 
     /**

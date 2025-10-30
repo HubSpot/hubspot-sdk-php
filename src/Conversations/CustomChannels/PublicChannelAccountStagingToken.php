@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_channel_account_staging_token = array{
+ * @phpstan-type PublicChannelAccountStagingTokenShape = array{
  *   accountToken: string,
  *   createdAt: \DateTimeInterface,
  *   genericChannelID: int,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicChannelAccountStagingToken implements BaseModel
 {
-    /** @use SdkModel<public_channel_account_staging_token> */
+    /** @use SdkModel<PublicChannelAccountStagingTokenShape> */
     use SdkModel;
 
     #[Api]

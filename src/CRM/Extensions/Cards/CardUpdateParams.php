@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Extensions\Cards->update
  *
- * @phpstan-type card_update_params = array{
+ * @phpstan-type CardUpdateParamsShape = array{
  *   appID: int,
  *   actions?: CardActions,
  *   display?: CardDisplayBody,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CardUpdateParams implements BaseModel
 {
-    /** @use SdkModel<card_update_params> */
+    /** @use SdkModel<CardUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->list
  *
- * @phpstan-type site_page_list_params = array{
+ * @phpstan-type SitePageListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   createdAfter?: \DateTimeInterface,
@@ -30,7 +30,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SitePageListParams implements BaseModel
 {
-    /** @use SdkModel<site_page_list_params> */
+    /** @use SdkModel<SitePageListParamsShape> */
     use SdkModel;
     use SdkParams;
 

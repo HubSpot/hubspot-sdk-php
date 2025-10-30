@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Information used to generate a token.
  *
- * @phpstan-type identification_token_generation_request = array{
+ * @phpstan-type IdentificationTokenGenerationRequestShape = array{
  *   email: string, firstName?: string, lastName?: string
  * }
  */
 final class IdentificationTokenGenerationRequest implements BaseModel
 {
-    /** @use SdkModel<identification_token_generation_request> */
+    /** @use SdkModel<IdentificationTokenGenerationRequestShape> */
     use SdkModel;
 
     /**

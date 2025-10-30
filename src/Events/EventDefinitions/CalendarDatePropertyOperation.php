@@ -13,7 +13,7 @@ use HubspotSDK\Events\EventDefinitions\CalendarDatePropertyOperation\PropertyTyp
 use HubspotSDK\Events\EventDefinitions\CalendarDatePropertyOperation\TimeUnit;
 
 /**
- * @phpstan-type calendar_date_property_operation = array{
+ * @phpstan-type CalendarDatePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
  *   operator: value-of<Operator>,
@@ -28,7 +28,7 @@ use HubspotSDK\Events\EventDefinitions\CalendarDatePropertyOperation\TimeUnit;
  */
 final class CalendarDatePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<calendar_date_property_operation> */
+    /** @use SdkModel<CalendarDatePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

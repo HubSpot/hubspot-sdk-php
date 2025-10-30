@@ -15,13 +15,13 @@ use HubspotSDK\CRM\FeatureFlags\BatchPortalEntry;
  *
  * @see HubspotSDK\CRM\FeatureFlags\Portals->batchUpsert
  *
- * @phpstan-type portal_batch_upsert_params = array{
+ * @phpstan-type PortalBatchUpsertParamsShape = array{
  *   appID: int, portalStates: list<BatchPortalEntry>
  * }
  */
 final class PortalBatchUpsertParams implements BaseModel
 {
-    /** @use SdkModel<portal_batch_upsert_params> */
+    /** @use SdkModel<PortalBatchUpsertParamsShape> */
     use SdkModel;
     use SdkParams;
 

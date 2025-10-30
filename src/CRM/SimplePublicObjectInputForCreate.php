@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Is the input object used to create a new CRM object, containing the properties to be set and optional associations to link the new record with other CRM objects.
  *
- * @phpstan-type simple_public_object_input_for_create = array{
+ * @phpstan-type SimplePublicObjectInputForCreateShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class SimplePublicObjectInputForCreate implements BaseModel
 {
-    /** @use SdkModel<simple_public_object_input_for_create> */
+    /** @use SdkModel<SimplePublicObjectInputForCreateShape> */
     use SdkModel;
 
     /**

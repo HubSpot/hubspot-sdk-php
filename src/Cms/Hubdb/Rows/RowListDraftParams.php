@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows->listDraft
  *
- * @phpstan-type row_list_draft_params = array{
+ * @phpstan-type RowListDraftParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   limit?: int,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class RowListDraftParams implements BaseModel
 {
-    /** @use SdkModel<row_list_draft_params> */
+    /** @use SdkModel<RowListDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

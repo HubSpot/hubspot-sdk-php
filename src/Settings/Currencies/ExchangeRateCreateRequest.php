@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest\FromCurrencyCode;
 
 /**
- * @phpstan-type exchange_rate_create_request = array{
+ * @phpstan-type ExchangeRateCreateRequestShape = array{
  *   conversionRate: float,
  *   fromCurrencyCode: value-of<FromCurrencyCode>,
  *   effectiveAt?: \DateTimeInterface,
@@ -18,7 +18,7 @@ use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest\FromCurrencyCode;
  */
 final class ExchangeRateCreateRequest implements BaseModel
 {
-    /** @use SdkModel<exchange_rate_create_request> */
+    /** @use SdkModel<ExchangeRateCreateRequestShape> */
     use SdkModel;
 
     #[Api]

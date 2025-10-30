@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Emails\Paging;
 use HubspotSDK\PublicObjectID;
 
 /**
- * @phpstan-type public_association_multi_with_label = array{
+ * @phpstan-type PublicAssociationMultiWithLabelShape = array{
  *   from: PublicObjectID,
  *   to: list<MultiAssociatedObjectWithLabel>,
  *   paging?: Paging,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicObjectID;
  */
 final class PublicAssociationMultiWithLabel implements BaseModel
 {
-    /** @use SdkModel<public_association_multi_with_label> */
+    /** @use SdkModel<PublicAssociationMultiWithLabelShape> */
     use SdkModel;
 
     #[Api]

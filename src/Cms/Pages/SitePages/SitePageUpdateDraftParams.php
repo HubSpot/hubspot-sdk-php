@@ -22,7 +22,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->updateDraft
  *
- * @phpstan-type site_page_update_draft_params = array{
+ * @phpstan-type SitePageUpdateDraftParamsShape = array{
  *   id: string,
  *   abStatus: AbStatus|value-of<AbStatus>,
  *   abTestID: string,
@@ -84,7 +84,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class SitePageUpdateDraftParams implements BaseModel
 {
-    /** @use SdkModel<site_page_update_draft_params> */
+    /** @use SdkModel<SitePageUpdateDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -16,11 +16,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Memberships->remove
  *
- * @phpstan-type membership_remove_params = array{body: list<string>}
+ * @phpstan-type MembershipRemoveParamsShape = array{body: list<string>}
  */
 final class MembershipRemoveParams implements BaseModel
 {
-    /** @use SdkModel<membership_remove_params> */
+    /** @use SdkModel<MembershipRemoveParamsShape> */
     use SdkModel;
     use SdkParams;
 

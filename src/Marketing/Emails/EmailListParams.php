@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Emails\EmailListParams\Type;
  *
  * @see HubspotSDK\Marketing\Emails->list
  *
- * @phpstan-type email_list_params = array{
+ * @phpstan-type EmailListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   campaign?: string,
@@ -37,7 +37,7 @@ use HubspotSDK\Marketing\Emails\EmailListParams\Type;
  */
 final class EmailListParams implements BaseModel
 {
-    /** @use SdkModel<email_list_params> */
+    /** @use SdkModel<EmailListParamsShape> */
     use SdkModel;
     use SdkParams;
 

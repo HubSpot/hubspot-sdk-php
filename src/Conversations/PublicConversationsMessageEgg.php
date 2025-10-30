@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_conversations_message_egg = array{
+ * @phpstan-type PublicConversationsMessageEggShape = array{
  *   attachments: list<PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg>,
  *   channelAccountID: string,
  *   channelID: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicConversationsMessageEgg implements BaseModel
 {
-    /** @use SdkModel<public_conversations_message_egg> */
+    /** @use SdkModel<PublicConversationsMessageEggShape> */
     use SdkModel;
 
     /**

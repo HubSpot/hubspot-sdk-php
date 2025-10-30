@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Extensions\Cards\CardObjectTypeBody\Name;
 
 /**
- * @phpstan-type card_object_type_body = array{
+ * @phpstan-type CardObjectTypeBodyShape = array{
  *   name: value-of<Name>, propertiesToSend: list<string>
  * }
  */
 final class CardObjectTypeBody implements BaseModel
 {
-    /** @use SdkModel<card_object_type_body> */
+    /** @use SdkModel<CardObjectTypeBodyShape> */
     use SdkModel;
 
     /**

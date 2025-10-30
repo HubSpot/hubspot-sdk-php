@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Associations\V4->createDefaultAssociation
  *
- * @phpstan-type v4_create_default_association_params = array{
+ * @phpstan-type V4CreateDefaultAssociationParamsShape = array{
  *   fromObjectType: string, fromObjectID: string, toObjectType: string
  * }
  */
 final class V4CreateDefaultAssociationParams implements BaseModel
 {
-    /** @use SdkModel<v4_create_default_association_params> */
+    /** @use SdkModel<V4CreateDefaultAssociationParamsShape> */
     use SdkModel;
     use SdkParams;
 

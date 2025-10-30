@@ -13,7 +13,7 @@ use HubspotSDK\CRM\Imports\PublicImportResponse\ImportSource;
 use HubspotSDK\CRM\Imports\PublicImportResponse\State;
 
 /**
- * @phpstan-type public_import_response = array{
+ * @phpstan-type PublicImportResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   mappedObjectTypeIDs: list<string>,
@@ -29,7 +29,7 @@ use HubspotSDK\CRM\Imports\PublicImportResponse\State;
  */
 final class PublicImportResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_import_response> */
+    /** @use SdkModel<PublicImportResponseShape> */
     use SdkModel;
 
     use SdkResponse;

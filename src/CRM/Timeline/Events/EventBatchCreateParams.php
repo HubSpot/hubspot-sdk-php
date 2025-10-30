@@ -15,11 +15,11 @@ use HubspotSDK\CRM\Timeline\TimelineEvent;
  *
  * @see HubspotSDK\CRM\Timeline\Events->batchCreate
  *
- * @phpstan-type event_batch_create_params = array{inputs: list<TimelineEvent>}
+ * @phpstan-type EventBatchCreateParamsShape = array{inputs: list<TimelineEvent>}
  */
 final class EventBatchCreateParams implements BaseModel
 {
-    /** @use SdkModel<event_batch_create_params> */
+    /** @use SdkModel<EventBatchCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

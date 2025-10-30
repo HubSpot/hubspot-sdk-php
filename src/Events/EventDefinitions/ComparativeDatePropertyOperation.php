@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\ComparativeDatePropertyOperation\Operator
 use HubspotSDK\Events\EventDefinitions\ComparativeDatePropertyOperation\PropertyType;
 
 /**
- * @phpstan-type comparative_date_property_operation = array{
+ * @phpstan-type ComparativeDatePropertyOperationShape = array{
  *   comparisonPropertyName: string,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Events\EventDefinitions\ComparativeDatePropertyOperation\Property
  */
 final class ComparativeDatePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<comparative_date_property_operation> */
+    /** @use SdkModel<ComparativeDatePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

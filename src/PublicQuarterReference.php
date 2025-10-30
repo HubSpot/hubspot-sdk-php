@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicQuarterReference\ReferenceType;
 
 /**
- * @phpstan-type public_quarter_reference = array{
+ * @phpstan-type PublicQuarterReferenceShape = array{
  *   day: int,
  *   month: int,
  *   referenceType: value-of<ReferenceType>,
@@ -22,7 +22,7 @@ use HubspotSDK\PublicQuarterReference\ReferenceType;
  */
 final class PublicQuarterReference implements BaseModel
 {
-    /** @use SdkModel<public_quarter_reference> */
+    /** @use SdkModel<PublicQuarterReferenceShape> */
     use SdkModel;
 
     #[Api]

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type access_token_info_response = array{
+ * @phpstan-type AccessTokenInfoResponseShape = array{
  *   token: string,
  *   appID: int,
  *   expiresIn: int,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<access_token_info_response> */
+    /** @use SdkModel<AccessTokenInfoResponseShape> */
     use SdkModel;
 
     use SdkResponse;

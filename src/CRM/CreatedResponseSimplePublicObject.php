@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type created_response_simple_public_object = array{
+ * @phpstan-type CreatedResponseSimplePublicObjectShape = array{
  *   createdResourceID: string, entity: SimplePublicObject, location?: string
  * }
  */
 final class CreatedResponseSimplePublicObject implements BaseModel
 {
-    /** @use SdkModel<created_response_simple_public_object> */
+    /** @use SdkModel<CreatedResponseSimplePublicObjectShape> */
     use SdkModel;
 
     #[Api('createdResourceId')]

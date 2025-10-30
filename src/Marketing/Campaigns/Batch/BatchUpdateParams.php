@@ -17,13 +17,13 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem;
  *
  * @see HubspotSDK\Marketing\Campaigns\Batch->update
  *
- * @phpstan-type batch_update_params = array{
+ * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<PublicCampaignBatchUpdateItem>
  * }
  */
 final class BatchUpdateParams implements BaseModel
 {
-    /** @use SdkModel<batch_update_params> */
+    /** @use SdkModel<BatchUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

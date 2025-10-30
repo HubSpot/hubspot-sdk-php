@@ -16,11 +16,11 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignInput;
  *
  * @see HubspotSDK\Marketing\Campaigns\Batch->create
  *
- * @phpstan-type batch_create_params = array{inputs: list<PublicCampaignInput>}
+ * @phpstan-type BatchCreateParamsShape = array{inputs: list<PublicCampaignInput>}
  */
 final class BatchCreateParams implements BaseModel
 {
-    /** @use SdkModel<batch_create_params> */
+    /** @use SdkModel<BatchCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

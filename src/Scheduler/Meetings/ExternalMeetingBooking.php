@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type external_meeting_booking = array{
+ * @phpstan-type ExternalMeetingBookingShape = array{
  *   duration: int,
  *   email: string,
  *   firstName: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ExternalMeetingBooking implements BaseModel
 {
-    /** @use SdkModel<external_meeting_booking> */
+    /** @use SdkModel<ExternalMeetingBookingShape> */
     use SdkModel;
 
     #[Api]

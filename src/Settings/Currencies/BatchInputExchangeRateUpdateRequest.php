@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_exchange_rate_update_request = array{
+ * @phpstan-type BatchInputExchangeRateUpdateRequestShape = array{
  *   inputs: list<ExchangeRateUpdateRequest>
  * }
  */
 final class BatchInputExchangeRateUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<batch_input_exchange_rate_update_request> */
+    /** @use SdkModel<BatchInputExchangeRateUpdateRequestShape> */
     use SdkModel;
 
     /** @var list<ExchangeRateUpdateRequest> $inputs */

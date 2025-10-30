@@ -15,13 +15,13 @@ use HubspotSDK\CRM\Associations\V4\PublicDefaultAssociationMultiPost;
  *
  * @see HubspotSDK\CRM\Associations\V4\Batch->batchAssociateDefault
  *
- * @phpstan-type batch_batch_associate_default_params = array{
+ * @phpstan-type BatchBatchAssociateDefaultParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicDefaultAssociationMultiPost>
  * }
  */
 final class BatchBatchAssociateDefaultParams implements BaseModel
 {
-    /** @use SdkModel<batch_batch_associate_default_params> */
+    /** @use SdkModel<BatchBatchAssociateDefaultParamsShape> */
     use SdkModel;
     use SdkParams;
 

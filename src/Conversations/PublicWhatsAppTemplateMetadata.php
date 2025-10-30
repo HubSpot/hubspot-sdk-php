@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_whats_app_template_metadata = array{
+ * @phpstan-type PublicWhatsAppTemplateMetadataShape = array{
  *   crmObjectIDs: array<string, int>,
  *   mappedTemplateID: string,
  *   parameters: array<string, string>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicWhatsAppTemplateMetadata implements BaseModel
 {
-    /** @use SdkModel<public_whats_app_template_metadata> */
+    /** @use SdkModel<PublicWhatsAppTemplateMetadataShape> */
     use SdkModel;
 
     /** @var array<string, int> $crmObjectIDs */

@@ -19,7 +19,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
 /**
  * The request object used when creating a new object list.
  *
- * @phpstan-type list_create_request = array{
+ * @phpstan-type ListCreateRequestShape = array{
  *   name: string,
  *   objectTypeID: string,
  *   processingType: string,
@@ -32,7 +32,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  */
 final class ListCreateRequest implements BaseModel
 {
-    /** @use SdkModel<list_create_request> */
+    /** @use SdkModel<ListCreateRequestShape> */
     use SdkModel;
 
     /**

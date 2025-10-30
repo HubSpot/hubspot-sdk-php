@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Wrapper for providing an array of content folders as inputs.
  *
- * @phpstan-type batch_input_content_folder = array{inputs: list<ContentFolder>}
+ * @phpstan-type BatchInputContentFolderShape = array{inputs: list<ContentFolder>}
  */
 final class BatchInputContentFolder implements BaseModel
 {
-    /** @use SdkModel<batch_input_content_folder> */
+    /** @use SdkModel<BatchInputContentFolderShape> */
     use SdkModel;
 
     /**

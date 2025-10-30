@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_api_user_action_event = array{
+ * @phpstan-type PublicAPIUserActionEventShape = array{
  *   id: string,
  *   actingUser: ActingUser,
  *   action: string,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicAPIUserActionEvent implements BaseModel
 {
-    /** @use SdkModel<public_api_user_action_event> */
+    /** @use SdkModel<PublicAPIUserActionEventShape> */
     use SdkModel;
 
     /**

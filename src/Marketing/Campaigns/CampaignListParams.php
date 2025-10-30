@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns->list
  *
- * @phpstan-type campaign_list_params = array{
+ * @phpstan-type CampaignListParamsShape = array{
  *   after?: string,
  *   limit?: int,
  *   name?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CampaignListParams implements BaseModel
 {
-    /** @use SdkModel<campaign_list_params> */
+    /** @use SdkModel<CampaignListParamsShape> */
     use SdkModel;
     use SdkParams;
 

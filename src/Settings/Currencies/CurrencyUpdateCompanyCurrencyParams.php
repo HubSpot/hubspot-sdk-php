@@ -15,13 +15,13 @@ use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams\CurrencyC
  *
  * @see HubspotSDK\Settings\Currencies->updateCompanyCurrency
  *
- * @phpstan-type currency_update_company_currency_params = array{
+ * @phpstan-type CurrencyUpdateCompanyCurrencyParamsShape = array{
  *   currencyCode: CurrencyCode|value-of<CurrencyCode>
  * }
  */
 final class CurrencyUpdateCompanyCurrencyParams implements BaseModel
 {
-    /** @use SdkModel<currency_update_company_currency_params> */
+    /** @use SdkModel<CurrencyUpdateCompanyCurrencyParamsShape> */
     use SdkModel;
     use SdkParams;
 

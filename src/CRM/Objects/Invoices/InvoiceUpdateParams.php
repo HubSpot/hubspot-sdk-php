@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Invoices->update
  *
- * @phpstan-type invoice_update_params = array{
+ * @phpstan-type InvoiceUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class InvoiceUpdateParams implements BaseModel
 {
-    /** @use SdkModel<invoice_update_params> */
+    /** @use SdkModel<InvoiceUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

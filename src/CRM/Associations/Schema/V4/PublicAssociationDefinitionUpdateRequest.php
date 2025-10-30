@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_association_definition_update_request = array{
+ * @phpstan-type PublicAssociationDefinitionUpdateRequestShape = array{
  *   associationTypeID: int, label: string, inverseLabel?: string
  * }
  */
 final class PublicAssociationDefinitionUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<public_association_definition_update_request> */
+    /** @use SdkModel<PublicAssociationDefinitionUpdateRequestShape> */
     use SdkModel;
 
     #[Api('associationTypeId')]

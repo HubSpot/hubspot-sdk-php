@@ -13,7 +13,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * The response object with the list search hits and additional information regarding pagination.
  *
- * @phpstan-type list_search_response = array{
+ * @phpstan-type ListSearchResponseShape = array{
  *   hasMore: bool,
  *   lists: list<PublicObjectListSearchResult>,
  *   offset: int,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class ListSearchResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<list_search_response> */
+    /** @use SdkModel<ListSearchResponseShape> */
     use SdkModel;
 
     use SdkResponse;

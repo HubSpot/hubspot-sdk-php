@@ -15,7 +15,7 @@ use HubspotSDK\CRM\FilterGroup;
  *
  * @see HubspotSDK\CRM\Objects\Companies->search
  *
- * @phpstan-type company_search_params = array{
+ * @phpstan-type CompanySearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -26,7 +26,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class CompanySearchParams implements BaseModel
 {
-    /** @use SdkModel<company_search_params> */
+    /** @use SdkModel<CompanySearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

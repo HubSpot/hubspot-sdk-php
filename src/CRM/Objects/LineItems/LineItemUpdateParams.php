@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\LineItems->update
  *
- * @phpstan-type line_item_update_params = array{
+ * @phpstan-type LineItemUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class LineItemUpdateParams implements BaseModel
 {
-    /** @use SdkModel<line_item_update_params> */
+    /** @use SdkModel<LineItemUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

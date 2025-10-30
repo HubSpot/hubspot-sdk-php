@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type portal_object_type_enablement_public_response = array{
+ * @phpstan-type PortalObjectTypeEnablementPublicResponseShape = array{
  *   enablementByObjectTypeID: array<string, bool>
  * }
  */
 final class PortalObjectTypeEnablementPublicResponse implements BaseModel
 {
-    /** @use SdkModel<portal_object_type_enablement_public_response> */
+    /** @use SdkModel<PortalObjectTypeEnablementPublicResponseShape> */
     use SdkModel;
 
     /** @var array<string, bool> $enablementByObjectTypeID */

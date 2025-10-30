@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Tags->createBatch
  *
- * @phpstan-type tag_create_batch_params = array{inputs: list<Tag>}
+ * @phpstan-type TagCreateBatchParamsShape = array{inputs: list<Tag>}
  */
 final class TagCreateBatchParams implements BaseModel
 {
-    /** @use SdkModel<tag_create_batch_params> */
+    /** @use SdkModel<TagCreateBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

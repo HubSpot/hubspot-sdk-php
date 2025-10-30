@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\NowReference\ReferenceType;
 
 /**
- * @phpstan-type now_reference = array{
+ * @phpstan-type NowReferenceShape = array{
  *   referenceType: value-of<ReferenceType>,
  *   hour?: int,
  *   millisecond?: int,
@@ -20,7 +20,7 @@ use HubspotSDK\Events\EventDefinitions\NowReference\ReferenceType;
  */
 final class NowReference implements BaseModel
 {
-    /** @use SdkModel<now_reference> */
+    /** @use SdkModel<NowReferenceShape> */
     use SdkModel;
 
     /** @var value-of<ReferenceType> $referenceType */

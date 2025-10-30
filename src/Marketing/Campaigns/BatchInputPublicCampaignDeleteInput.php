@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_public_campaign_delete_input = array{
+ * @phpstan-type BatchInputPublicCampaignDeleteInputShape = array{
  *   inputs: list<PublicCampaignDeleteInput>
  * }
  */
 final class BatchInputPublicCampaignDeleteInput implements BaseModel
 {
-    /** @use SdkModel<batch_input_public_campaign_delete_input> */
+    /** @use SdkModel<BatchInputPublicCampaignDeleteInputShape> */
     use SdkModel;
 
     /** @var list<PublicCampaignDeleteInput> $inputs */

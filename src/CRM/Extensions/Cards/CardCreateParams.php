@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Extensions\Cards->create
  *
- * @phpstan-type card_create_params = array{
+ * @phpstan-type CardCreateParamsShape = array{
  *   actions: CardActions,
  *   display: CardDisplayBody,
  *   fetch: CardFetchBody,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CardCreateParams implements BaseModel
 {
-    /** @use SdkModel<card_create_params> */
+    /** @use SdkModel<CardCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

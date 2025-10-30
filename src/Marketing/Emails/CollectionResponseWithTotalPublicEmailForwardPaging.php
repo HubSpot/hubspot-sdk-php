@@ -12,13 +12,13 @@ use HubspotSDK\ForwardPaging;
 /**
  * Response object for collections of marketing emails with pagination information.
  *
- * @phpstan-type collection_response_with_total_public_email_forward_paging = array{
+ * @phpstan-type CollectionResponseWithTotalPublicEmailForwardPagingShape = array{
  *   results: list<PublicEmail>, total: int, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseWithTotalPublicEmailForwardPaging implements BaseModel
 {
-    /** @use SdkModel<collection_response_with_total_public_email_forward_paging> */
+    /** @use SdkModel<CollectionResponseWithTotalPublicEmailForwardPagingShape> */
     use SdkModel;
 
     /**

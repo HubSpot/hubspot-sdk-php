@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->getRevision
  *
- * @phpstan-type site_page_get_revision_params = array{objectID: string}
+ * @phpstan-type SitePageGetRevisionParamsShape = array{objectID: string}
  */
 final class SitePageGetRevisionParams implements BaseModel
 {
-    /** @use SdkModel<site_page_get_revision_params> */
+    /** @use SdkModel<SitePageGetRevisionParamsShape> */
     use SdkModel;
     use SdkParams;
 

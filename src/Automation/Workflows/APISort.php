@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_sort = array{
+ * @phpstan-type APISortShape = array{
  *   order: value-of<Order>, property: string, missing?: string
  * }
  */
 final class APISort implements BaseModel
 {
-    /** @use SdkModel<api_sort> */
+    /** @use SdkModel<APISortShape> */
     use SdkModel;
 
     /** @var value-of<Order> $order */

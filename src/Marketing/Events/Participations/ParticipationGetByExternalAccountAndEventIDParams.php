@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events\Participations->getByExternalAccountAndEventID
  *
- * @phpstan-type participation_get_by_external_account_and_event_id_params = array{
+ * @phpstan-type ParticipationGetByExternalAccountAndEventIDParamsShape = array{
  *   externalAccountID: string
  * }
  */
 final class ParticipationGetByExternalAccountAndEventIDParams implements BaseModel
 {
-    /** @use SdkModel<participation_get_by_external_account_and_event_id_params> */
+    /** @use SdkModel<ParticipationGetByExternalAccountAndEventIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

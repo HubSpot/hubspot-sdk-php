@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Groups->getByName
  *
- * @phpstan-type group_get_by_name_params = array{
+ * @phpstan-type GroupGetByNameParamsShape = array{
  *   appID: string, objectType: string
  * }
  */
 final class GroupGetByNameParams implements BaseModel
 {
-    /** @use SdkModel<group_get_by_name_params> */
+    /** @use SdkModel<GroupGetByNameParamsShape> */
     use SdkModel;
     use SdkParams;
 

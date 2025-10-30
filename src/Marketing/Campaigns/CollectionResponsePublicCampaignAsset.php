@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type collection_response_public_campaign_asset = array{
+ * @phpstan-type CollectionResponsePublicCampaignAssetShape = array{
  *   results: list<PublicCampaignAsset>, paging?: Paging
  * }
  */
 final class CollectionResponsePublicCampaignAsset implements BaseModel
 {
-    /** @use SdkModel<collection_response_public_campaign_asset> */
+    /** @use SdkModel<CollectionResponsePublicCampaignAssetShape> */
     use SdkModel;
 
     /** @var list<PublicCampaignAsset> $results */

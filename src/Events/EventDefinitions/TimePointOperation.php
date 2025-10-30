@@ -13,7 +13,7 @@ use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyParser;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyType;
 
 /**
- * @phpstan-type time_point_operation = array{
+ * @phpstan-type TimePointOperationShape = array{
  *   endpointBehavior: value-of<EndpointBehavior>,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
@@ -28,7 +28,7 @@ use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyType;
  */
 final class TimePointOperation implements BaseModel
 {
-    /** @use SdkModel<time_point_operation> */
+    /** @use SdkModel<TimePointOperationShape> */
     use SdkModel;
 
     /** @var value-of<EndpointBehavior> $endpointBehavior */

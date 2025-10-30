@@ -18,7 +18,7 @@ use HubspotSDK\OptionInput;
  *
  * @see HubspotSDK\CRM\Properties->create
  *
- * @phpstan-type property_create_params = array{
+ * @phpstan-type PropertyCreateParamsShape = array{
  *   fieldType: FieldType|value-of<FieldType>,
  *   groupName: string,
  *   label: string,
@@ -38,7 +38,7 @@ use HubspotSDK\OptionInput;
  */
 final class PropertyCreateParams implements BaseModel
 {
-    /** @use SdkModel<property_create_params> */
+    /** @use SdkModel<PropertyCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

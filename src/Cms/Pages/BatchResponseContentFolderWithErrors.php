@@ -13,7 +13,7 @@ use HubspotSDK\StandardError;
 /**
  * Response object for batch operations on content folders with errors.
  *
- * @phpstan-type batch_response_content_folder_with_errors = array{
+ * @phpstan-type BatchResponseContentFolderWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<ContentFolder>,
  *   startedAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseContentFolderWithErrors implements BaseModel
 {
-    /** @use SdkModel<batch_response_content_folder_with_errors> */
+    /** @use SdkModel<BatchResponseContentFolderWithErrorsShape> */
     use SdkModel;
 
     /**

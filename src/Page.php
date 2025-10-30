@@ -16,7 +16,7 @@ use HubspotSDK\Page\Paging;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * @phpstan-type page_alias = array{
+ * @phpstan-type PageShape = array{
  *   results?: list<mixed>|null, paging?: Paging|null
  * }
  *
@@ -26,7 +26,7 @@ use Psr\Http\Message\ResponseInterface;
  */
 final class Page implements BaseModel, BasePage
 {
-    /** @use SdkModel<page_alias> */
+    /** @use SdkModel<PageShape> */
     use SdkModel;
 
     /** @use SdkPage<TItem> */

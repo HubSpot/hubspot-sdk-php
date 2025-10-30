@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists->get
  *
- * @phpstan-type list_get_params = array{includeFilters?: bool}
+ * @phpstan-type ListGetParamsShape = array{includeFilters?: bool}
  */
 final class ListGetParams implements BaseModel
 {
-    /** @use SdkModel<list_get_params> */
+    /** @use SdkModel<ListGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

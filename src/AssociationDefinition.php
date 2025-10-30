@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The definition of an association.
  *
- * @phpstan-type association_definition = array{
+ * @phpstan-type AssociationDefinitionShape = array{
  *   id: string,
  *   fromObjectTypeID: string,
  *   toObjectTypeID: string,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AssociationDefinition implements BaseModel
 {
-    /** @use SdkModel<association_definition> */
+    /** @use SdkModel<AssociationDefinitionShape> */
     use SdkModel;
 
     /**

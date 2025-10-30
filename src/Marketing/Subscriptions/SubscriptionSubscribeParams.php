@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams\LegalBasis;
  *
  * @see HubspotSDK\Marketing\Subscriptions->subscribe
  *
- * @phpstan-type subscription_subscribe_params = array{
+ * @phpstan-type SubscriptionSubscribeParamsShape = array{
  *   emailAddress: string,
  *   subscriptionID: string,
  *   legalBasis?: LegalBasis|value-of<LegalBasis>,
@@ -24,7 +24,7 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams\LegalBasis;
  */
 final class SubscriptionSubscribeParams implements BaseModel
 {
-    /** @use SdkModel<subscription_subscribe_params> */
+    /** @use SdkModel<SubscriptionSubscribeParamsShape> */
     use SdkModel;
     use SdkParams;
 

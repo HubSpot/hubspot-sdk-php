@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\FileField\FieldType;
 /**
  * A form field used for uploading one or more files.
  *
- * @phpstan-type file_field = array{
+ * @phpstan-type FileFieldShape = array{
  *   allowMultipleFiles: bool,
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
@@ -28,7 +28,7 @@ use HubspotSDK\Marketing\Forms\FileField\FieldType;
  */
 final class FileField implements BaseModel
 {
-    /** @use SdkModel<file_field> */
+    /** @use SdkModel<FileFieldShape> */
     use SdkModel;
 
     /**

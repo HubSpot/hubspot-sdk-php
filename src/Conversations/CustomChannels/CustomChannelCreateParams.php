@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\CustomChannels->create
  *
- * @phpstan-type custom_channel_create_params = array{
+ * @phpstan-type CustomChannelCreateParamsShape = array{
  *   capabilities: array<string, mixed>,
  *   name: string,
  *   channelAccountConnectionRedirectURL?: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CustomChannelCreateParams implements BaseModel
 {
-    /** @use SdkModel<custom_channel_create_params> */
+    /** @use SdkModel<CustomChannelCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

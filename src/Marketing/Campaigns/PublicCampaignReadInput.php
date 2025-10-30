@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_campaign_read_input = array{id: string}
+ * @phpstan-type PublicCampaignReadInputShape = array{id: string}
  */
 final class PublicCampaignReadInput implements BaseModel
 {
-    /** @use SdkModel<public_campaign_read_input> */
+    /** @use SdkModel<PublicCampaignReadInputShape> */
     use SdkModel;
 
     #[Api]

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Data structure representing the subscription fields of the email.
  *
- * @phpstan-type public_email_subscription_details = array{
+ * @phpstan-type PublicEmailSubscriptionDetailsShape = array{
  *   officeLocationID?: string,
  *   preferencesGroupID?: string,
  *   subscriptionID?: string,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicEmailSubscriptionDetails implements BaseModel
 {
-    /** @use SdkModel<public_email_subscription_details> */
+    /** @use SdkModel<PublicEmailSubscriptionDetailsShape> */
     use SdkModel;
 
     /**

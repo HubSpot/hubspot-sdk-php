@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Auth\OAuth->createAccessToken
  *
- * @phpstan-type oauth_create_access_token_params = array{
+ * @phpstan-type OAuthCreateAccessTokenParamsShape = array{
  *   clientID?: string,
  *   clientSecret?: string,
  *   code?: string,
@@ -30,7 +30,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class OAuthCreateAccessTokenParams implements BaseModel
 {
-    /** @use SdkModel<oauth_create_access_token_params> */
+    /** @use SdkModel<OAuthCreateAccessTokenParamsShape> */
     use SdkModel;
     use SdkParams;
 

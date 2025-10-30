@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type event_visibility_change = array{
+ * @phpstan-type EventVisibilityChangeShape = array{
  *   eventType: value-of<EventType>,
  *   updatedAt: int,
  *   showInReporting?: bool,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EventVisibilityChange implements BaseModel
 {
-    /** @use SdkModel<event_visibility_change> */
+    /** @use SdkModel<EventVisibilityChangeShape> */
     use SdkModel;
 
     /** @var value-of<EventType> $eventType */

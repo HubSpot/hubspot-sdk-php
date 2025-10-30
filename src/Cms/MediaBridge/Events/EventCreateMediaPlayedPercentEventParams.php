@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Events->createMediaPlayedPercentEvent
  *
- * @phpstan-type event_create_media_played_percent_event_params = array{
+ * @phpstan-type EventCreateMediaPlayedPercentEventParamsShape = array{
  *   mediaType: MediaType|value-of<MediaType>,
  *   occurredTimestamp: int,
  *   playedPercent: int,
@@ -34,7 +34,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class EventCreateMediaPlayedPercentEventParams implements BaseModel
 {
-    /** @use SdkModel<event_create_media_played_percent_event_params> */
+    /** @use SdkModel<EventCreateMediaPlayedPercentEventParamsShape> */
     use SdkModel;
     use SdkParams;
 

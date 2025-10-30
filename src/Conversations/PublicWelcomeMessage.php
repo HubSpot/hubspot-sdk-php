@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_welcome_message = array{
+ * @phpstan-type PublicWelcomeMessageShape = array{
  *   id: string,
  *   archived: bool,
  *   channelAccountID: string,
@@ -29,7 +29,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicWelcomeMessage implements BaseModel
 {
-    /** @use SdkModel<public_welcome_message> */
+    /** @use SdkModel<PublicWelcomeMessageShape> */
     use SdkModel;
 
     #[Api]

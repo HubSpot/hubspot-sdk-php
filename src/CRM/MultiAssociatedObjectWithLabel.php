@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Associations\V4\AssociationSpecWithLabel1;
 
 /**
- * @phpstan-type multi_associated_object_with_label = array{
+ * @phpstan-type MultiAssociatedObjectWithLabelShape = array{
  *   associationTypes: list<AssociationSpecWithLabel1>, toObjectID: string
  * }
  */
 final class MultiAssociatedObjectWithLabel implements BaseModel
 {
-    /** @use SdkModel<multi_associated_object_with_label> */
+    /** @use SdkModel<MultiAssociatedObjectWithLabelShape> */
     use SdkModel;
 
     /** @var list<AssociationSpecWithLabel1> $associationTypes */

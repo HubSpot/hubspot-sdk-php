@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
 
 /**
- * @phpstan-type field_type_definition = array{
+ * @phpstan-type FieldTypeDefinitionShape = array{
  *   externalOptions: bool,
  *   name: string,
  *   options: list<Option>,
@@ -29,7 +29,7 @@ use HubspotSDK\Option;
  */
 final class FieldTypeDefinition implements BaseModel
 {
-    /** @use SdkModel<field_type_definition> */
+    /** @use SdkModel<FieldTypeDefinitionShape> */
     use SdkModel;
 
     #[Api]

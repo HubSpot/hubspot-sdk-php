@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Reports->getAttributionMetrics
  *
- * @phpstan-type report_get_attribution_metrics_params = array{
+ * @phpstan-type ReportGetAttributionMetricsParamsShape = array{
  *   endDate?: string, startDate?: string
  * }
  */
 final class ReportGetAttributionMetricsParams implements BaseModel
 {
-    /** @use SdkModel<report_get_attribution_metrics_params> */
+    /** @use SdkModel<ReportGetAttributionMetricsParamsShape> */
     use SdkModel;
     use SdkParams;
 

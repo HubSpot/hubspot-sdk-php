@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type public_list_conversion_response = array{
+ * @phpstan-type PublicListConversionResponseShape = array{
  *   listID: string,
  *   convertedAt?: \DateTimeInterface,
  *   requestedConversionTime?: PublicListConversionDate|PublicListConversionInactivity,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class PublicListConversionResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_list_conversion_response> */
+    /** @use SdkModel<PublicListConversionResponseShape> */
     use SdkModel;
 
     use SdkResponse;

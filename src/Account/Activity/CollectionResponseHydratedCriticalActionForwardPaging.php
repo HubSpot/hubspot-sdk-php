@@ -12,15 +12,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_hydrated_critical_action_forward_paging = array{
+ * @phpstan-type CollectionResponseHydratedCriticalActionForwardPagingShape = array{
  *   results: list<HydratedCriticalAction>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponseHydratedCriticalActionForwardPaging implements BaseModel, ResponseConverter
 {
-    /**
-     * @use SdkModel<collection_response_hydrated_critical_action_forward_paging>
-     */
+    /** @use SdkModel<CollectionResponseHydratedCriticalActionForwardPagingShape> */
     use SdkModel;
 
     use SdkResponse;

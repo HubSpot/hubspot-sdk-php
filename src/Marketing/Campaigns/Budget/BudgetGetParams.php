@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Budget->get
  *
- * @phpstan-type budget_get_params = array{campaignGuid: string}
+ * @phpstan-type BudgetGetParamsShape = array{campaignGuid: string}
  */
 final class BudgetGetParams implements BaseModel
 {
-    /** @use SdkModel<budget_get_params> */
+    /** @use SdkModel<BudgetGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

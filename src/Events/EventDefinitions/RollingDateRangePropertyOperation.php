@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\RollingDateRangePropertyOperation\Operato
 use HubspotSDK\Events\EventDefinitions\RollingDateRangePropertyOperation\PropertyType;
 
 /**
- * @phpstan-type rolling_date_range_property_operation = array{
+ * @phpstan-type RollingDateRangePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   numberOfDays: int,
  *   operationType: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Events\EventDefinitions\RollingDateRangePropertyOperation\Propert
  */
 final class RollingDateRangePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<rolling_date_range_property_operation> */
+    /** @use SdkModel<RollingDateRangePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

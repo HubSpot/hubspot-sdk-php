@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\AssociationSpecWithLabel\Category;
 
 /**
- * @phpstan-type association_spec_with_label = array{
+ * @phpstan-type AssociationSpecWithLabelShape = array{
  *   category: value-of<Category>, typeID: int, label?: string
  * }
  */
 final class AssociationSpecWithLabel implements BaseModel
 {
-    /** @use SdkModel<association_spec_with_label> */
+    /** @use SdkModel<AssociationSpecWithLabelShape> */
     use SdkModel;
 
     /** @var value-of<Category> $category */

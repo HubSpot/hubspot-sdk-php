@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicComparativeDatePropertyOperation\OperationType;
 
 /**
- * @phpstan-type public_comparative_date_property_operation = array{
+ * @phpstan-type PublicComparativeDatePropertyOperationShape = array{
  *   comparisonPropertyName: string,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: value-of<OperationType>,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicComparativeDatePropertyOperation\OperationType;
  */
 final class PublicComparativeDatePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<public_comparative_date_property_operation> */
+    /** @use SdkModel<PublicComparativeDatePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

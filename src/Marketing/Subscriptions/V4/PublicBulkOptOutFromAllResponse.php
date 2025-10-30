@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_bulk_opt_out_from_all_response = array{
+ * @phpstan-type PublicBulkOptOutFromAllResponseShape = array{
  *   subscriberIDString: string, statuses?: list<PublicStatus>
  * }
  */
 final class PublicBulkOptOutFromAllResponse implements BaseModel
 {
-    /** @use SdkModel<public_bulk_opt_out_from_all_response> */
+    /** @use SdkModel<PublicBulkOptOutFromAllResponseShape> */
     use SdkModel;
 
     /**

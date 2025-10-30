@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Properties\Groups->update
  *
- * @phpstan-type group_update_params = array{
+ * @phpstan-type GroupUpdateParamsShape = array{
  *   objectType: string, displayOrder?: int, label?: string
  * }
  */
 final class GroupUpdateParams implements BaseModel
 {
-    /** @use SdkModel<group_update_params> */
+    /** @use SdkModel<GroupUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

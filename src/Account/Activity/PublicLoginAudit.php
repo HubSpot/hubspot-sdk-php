@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Details about the a particular login activity for a HubSpot account.
  *
- * @phpstan-type public_login_audit = array{
+ * @phpstan-type PublicLoginAuditShape = array{
  *   id: string,
  *   loginAt: \DateTimeInterface,
  *   loginSucceeded: bool,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicLoginAudit implements BaseModel
 {
-    /** @use SdkModel<public_login_audit> */
+    /** @use SdkModel<PublicLoginAuditShape> */
     use SdkModel;
 
     /**

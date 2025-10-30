@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicDatePoint\TimeType;
 
 /**
- * @phpstan-type public_date_point = array{
+ * @phpstan-type PublicDatePointShape = array{
  *   day: int,
  *   month: int,
  *   timeType: value-of<TimeType>,
@@ -25,7 +25,7 @@ use HubspotSDK\PublicDatePoint\TimeType;
  */
 final class PublicDatePoint implements BaseModel
 {
-    /** @use SdkModel<public_date_point> */
+    /** @use SdkModel<PublicDatePointShape> */
     use SdkModel;
 
     #[Api]

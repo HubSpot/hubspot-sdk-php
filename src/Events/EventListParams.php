@@ -16,7 +16,7 @@ use HubspotSDK\Events\EventListParams\Property;
  *
  * @see HubspotSDK\Events->list
  *
- * @phpstan-type event_list_params = array{
+ * @phpstan-type EventListParamsShape = array{
  *   id?: list<string>,
  *   after?: string,
  *   before?: string,
@@ -33,7 +33,7 @@ use HubspotSDK\Events\EventListParams\Property;
  */
 final class EventListParams implements BaseModel
 {
-    /** @use SdkModel<event_list_params> */
+    /** @use SdkModel<EventListParamsShape> */
     use SdkModel;
     use SdkParams;
 

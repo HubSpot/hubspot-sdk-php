@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows->get
  *
- * @phpstan-type row_get_params = array{tableIDOrName: string, archived?: bool}
+ * @phpstan-type RowGetParamsShape = array{tableIDOrName: string, archived?: bool}
  */
 final class RowGetParams implements BaseModel
 {
-    /** @use SdkModel<row_get_params> */
+    /** @use SdkModel<RowGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

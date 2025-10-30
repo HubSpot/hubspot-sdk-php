@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Discounts->update
  *
- * @phpstan-type discount_update_params = array{
+ * @phpstan-type DiscountUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class DiscountUpdateParams implements BaseModel
 {
-    /** @use SdkModel<discount_update_params> */
+    /** @use SdkModel<DiscountUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_quick_replies = array{
+ * @phpstan-type PublicQuickRepliesShape = array{
  *   allowMultiSelect: bool,
  *   allowUserInput: bool,
  *   quickReplies: list<QuickReply>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicQuickReplies implements BaseModel
 {
-    /** @use SdkModel<public_quick_replies> */
+    /** @use SdkModel<PublicQuickRepliesShape> */
     use SdkModel;
 
     #[Api]

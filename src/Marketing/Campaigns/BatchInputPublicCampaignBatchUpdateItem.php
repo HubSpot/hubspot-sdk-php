@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_public_campaign_batch_update_item = array{
+ * @phpstan-type BatchInputPublicCampaignBatchUpdateItemShape = array{
  *   inputs: list<PublicCampaignBatchUpdateItem>
  * }
  */
 final class BatchInputPublicCampaignBatchUpdateItem implements BaseModel
 {
-    /** @use SdkModel<batch_input_public_campaign_batch_update_item> */
+    /** @use SdkModel<BatchInputPublicCampaignBatchUpdateItemShape> */
     use SdkModel;
 
     /** @var list<PublicCampaignBatchUpdateItem> $inputs */

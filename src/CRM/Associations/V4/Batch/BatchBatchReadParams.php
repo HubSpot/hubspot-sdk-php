@@ -15,13 +15,13 @@ use HubspotSDK\CRM\Associations\V4\PublicFetchAssociationsBatchRequest;
  *
  * @see HubspotSDK\CRM\Associations\V4\Batch->batchRead
  *
- * @phpstan-type batch_batch_read_params = array{
+ * @phpstan-type BatchBatchReadParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicFetchAssociationsBatchRequest>
  * }
  */
 final class BatchBatchReadParams implements BaseModel
 {
-    /** @use SdkModel<batch_batch_read_params> */
+    /** @use SdkModel<BatchBatchReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

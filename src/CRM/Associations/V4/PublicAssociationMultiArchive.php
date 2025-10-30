@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
- * @phpstan-type public_association_multi_archive = array{
+ * @phpstan-type PublicAssociationMultiArchiveShape = array{
  *   from: PublicObjectID, to: list<PublicObjectID>
  * }
  */
 final class PublicAssociationMultiArchive implements BaseModel
 {
-    /** @use SdkModel<public_association_multi_archive> */
+    /** @use SdkModel<PublicAssociationMultiArchiveShape> */
     use SdkModel;
 
     #[Api]

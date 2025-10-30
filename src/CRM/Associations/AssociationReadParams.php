@@ -13,13 +13,13 @@ use HubspotSDK\PublicObjectID;
 /**
  * @see HubspotSDK\CRM\Associations->read
  *
- * @phpstan-type association_read_params = array{
+ * @phpstan-type AssociationReadParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicObjectID>
  * }
  */
 final class AssociationReadParams implements BaseModel
 {
-    /** @use SdkModel<association_read_params> */
+    /** @use SdkModel<AssociationReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

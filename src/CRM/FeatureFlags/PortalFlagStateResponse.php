@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\FeatureFlags\PortalFlagStateResponse\FlagState;
 
 /**
- * @phpstan-type portal_flag_state_response = array{
+ * @phpstan-type PortalFlagStateResponseShape = array{
  *   appID: int, flagName: string, flagState: value-of<FlagState>, portalID: int
  * }
  */
 final class PortalFlagStateResponse implements BaseModel
 {
-    /** @use SdkModel<portal_flag_state_response> */
+    /** @use SdkModel<PortalFlagStateResponseShape> */
     use SdkModel;
 
     #[Api('appId')]

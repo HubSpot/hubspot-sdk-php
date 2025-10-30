@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->getRevision
  *
- * @phpstan-type landing_page_get_revision_params = array{objectID: string}
+ * @phpstan-type LandingPageGetRevisionParamsShape = array{objectID: string}
  */
 final class LandingPageGetRevisionParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_get_revision_params> */
+    /** @use SdkModel<LandingPageGetRevisionParamsShape> */
     use SdkModel;
     use SdkParams;
 

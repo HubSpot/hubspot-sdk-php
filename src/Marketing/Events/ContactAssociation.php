@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type contact_association = array{
+ * @phpstan-type ContactAssociationShape = array{
  *   contactID: string, email: string, firstname?: string, lastname?: string
  * }
  */
 final class ContactAssociation implements BaseModel
 {
-    /** @use SdkModel<contact_association> */
+    /** @use SdkModel<ContactAssociationShape> */
     use SdkModel;
 
     #[Api('contactId')]

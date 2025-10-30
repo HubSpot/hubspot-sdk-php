@@ -12,13 +12,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_public_tax_rate_group_forward_paging = array{
+ * @phpstan-type CollectionResponsePublicTaxRateGroupForwardPagingShape = array{
  *   results: list<PublicTaxRateGroup>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_public_tax_rate_group_forward_paging> */
+    /** @use SdkModel<CollectionResponsePublicTaxRateGroupForwardPagingShape> */
     use SdkModel;
 
     use SdkResponse;

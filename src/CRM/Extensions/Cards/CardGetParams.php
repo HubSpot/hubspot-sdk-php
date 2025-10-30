@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Extensions\Cards->get
  *
- * @phpstan-type card_get_params = array{appID: int}
+ * @phpstan-type CardGetParamsShape = array{appID: int}
  */
 final class CardGetParams implements BaseModel
 {
-    /** @use SdkModel<card_get_params> */
+    /** @use SdkModel<CardGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicCampaignInfluencedFilter\FilterType;
 
 /**
- * @phpstan-type public_campaign_influenced_filter = array{
+ * @phpstan-type PublicCampaignInfluencedFilterShape = array{
  *   campaignID: string, filterType: value-of<FilterType>
  * }
  */
 final class PublicCampaignInfluencedFilter implements BaseModel
 {
-    /** @use SdkModel<public_campaign_influenced_filter> */
+    /** @use SdkModel<PublicCampaignInfluencedFilterShape> */
     use SdkModel;
 
     #[Api('campaignId')]

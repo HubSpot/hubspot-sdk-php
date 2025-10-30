@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->get
  *
- * @phpstan-type landing_page_get_params = array{
+ * @phpstan-type LandingPageGetParamsShape = array{
  *   archived?: bool, property?: string
  * }
  */
 final class LandingPageGetParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_get_params> */
+    /** @use SdkModel<LandingPageGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

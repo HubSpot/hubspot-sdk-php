@@ -12,7 +12,7 @@ use HubspotSDK\CRM\Extensions\Cards\CardFetchBodyPatch\CardType;
 /**
  * Variant of CardFetchBody with fields as optional for patches.
  *
- * @phpstan-type card_fetch_body_patch = array{
+ * @phpstan-type CardFetchBodyPatchShape = array{
  *   objectTypes: list<CardObjectTypeBody>,
  *   cardType?: value-of<CardType>,
  *   serverlessFunction?: string,
@@ -21,7 +21,7 @@ use HubspotSDK\CRM\Extensions\Cards\CardFetchBodyPatch\CardType;
  */
 final class CardFetchBodyPatch implements BaseModel
 {
-    /** @use SdkModel<card_fetch_body_patch> */
+    /** @use SdkModel<CardFetchBodyPatchShape> */
     use SdkModel;
 
     /**

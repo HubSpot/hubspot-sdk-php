@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->getBatch
  *
- * @phpstan-type site_page_get_batch_params = array{
+ * @phpstan-type SitePageGetBatchParamsShape = array{
  *   inputs: list<string>, archived?: bool
  * }
  */
 final class SitePageGetBatchParams implements BaseModel
 {
-    /** @use SdkModel<site_page_get_batch_params> */
+    /** @use SdkModel<SitePageGetBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

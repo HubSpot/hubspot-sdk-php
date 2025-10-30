@@ -11,13 +11,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_static_date_anchor = array{
+ * @phpstan-type APIStaticDateAnchorShape = array{
  *   dayOfMonth: int, month: value-of<Month>, type: value-of<Type>, year?: int
  * }
  */
 final class APIStaticDateAnchor implements BaseModel
 {
-    /** @use SdkModel<api_static_date_anchor> */
+    /** @use SdkModel<APIStaticDateAnchorShape> */
     use SdkModel;
 
     /**

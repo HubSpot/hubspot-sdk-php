@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_hub_db_table_row_v3_batch_update_request = array{
+ * @phpstan-type BatchInputHubDBTableRowV3BatchUpdateRequestShape = array{
  *   inputs: list<HubDBTableRowV3BatchUpdateRequest>
  * }
  */
 final class BatchInputHubDBTableRowV3BatchUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<batch_input_hub_db_table_row_v3_batch_update_request> */
+    /** @use SdkModel<BatchInputHubDBTableRowV3BatchUpdateRequestShape> */
     use SdkModel;
 
     /** @var list<HubDBTableRowV3BatchUpdateRequest> $inputs */

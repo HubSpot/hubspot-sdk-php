@@ -13,7 +13,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * Represents a CRM object along with its properties, timestamps, and a set of associated object IDs grouped by association type.
  *
- * @phpstan-type simple_public_object_with_associations = array{
+ * @phpstan-type SimplePublicObjectWithAssociationsShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   properties: array<string, string>,
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class SimplePublicObjectWithAssociations implements BaseModel
 {
-    /** @use SdkModel<simple_public_object_with_associations> */
+    /** @use SdkModel<SimplePublicObjectWithAssociationsShape> */
     use SdkModel;
 
     /**

@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams\Interval;
  *
  * @see HubspotSDK\Marketing\Emails\Statistics->getHistogram
  *
- * @phpstan-type statistic_get_histogram_params = array{
+ * @phpstan-type StatisticGetHistogramParamsShape = array{
  *   emailIDs?: list<int>,
  *   endTimestamp?: string,
  *   interval?: Interval|value-of<Interval>,
@@ -24,7 +24,7 @@ use HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams\Interval;
  */
 final class StatisticGetHistogramParams implements BaseModel
 {
-    /** @use SdkModel<statistic_get_histogram_params> */
+    /** @use SdkModel<StatisticGetHistogramParamsShape> */
     use SdkModel;
     use SdkParams;
 

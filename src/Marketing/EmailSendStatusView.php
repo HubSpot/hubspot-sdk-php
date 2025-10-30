@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\EmailSendStatusView\Status;
 /**
  * Describes the status of an email send request.
  *
- * @phpstan-type email_send_status_view = array{
+ * @phpstan-type EmailSendStatusViewShape = array{
  *   status: value-of<Status>,
  *   statusID: string,
  *   completedAt?: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\Marketing\EmailSendStatusView\Status;
  */
 final class EmailSendStatusView implements BaseModel
 {
-    /** @use SdkModel<email_send_status_view> */
+    /** @use SdkModel<EmailSendStatusViewShape> */
     use SdkModel;
 
     /**

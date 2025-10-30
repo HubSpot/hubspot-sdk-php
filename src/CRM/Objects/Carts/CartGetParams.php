@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Carts->get
  *
- * @phpstan-type cart_get_params = array{
+ * @phpstan-type CartGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CartGetParams implements BaseModel
 {
-    /** @use SdkModel<cart_get_params> */
+    /** @use SdkModel<CartGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

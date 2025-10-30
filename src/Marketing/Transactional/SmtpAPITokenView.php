@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A SMTP API token provides both an ID and password that can be used to send email through the HubSpot SMTP API.
  *
- * @phpstan-type smtp_api_token_view = array{
+ * @phpstan-type SmtpAPITokenViewShape = array{
  *   id: string,
  *   campaignName: string,
  *   createContact: bool,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SmtpAPITokenView implements BaseModel
 {
-    /** @use SdkModel<smtp_api_token_view> */
+    /** @use SdkModel<SmtpAPITokenViewShape> */
     use SdkModel;
 
     /**

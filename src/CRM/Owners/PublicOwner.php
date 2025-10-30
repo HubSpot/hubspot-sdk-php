@@ -13,7 +13,7 @@ use HubspotSDK\CRM\Owners\PublicOwner\Type;
 use HubspotSDK\Settings\Users\PublicTeam;
 
 /**
- * @phpstan-type public_owner = array{
+ * @phpstan-type PublicOwnerShape = array{
  *   id: string,
  *   archived: bool,
  *   createdAt: \DateTimeInterface,
@@ -29,7 +29,7 @@ use HubspotSDK\Settings\Users\PublicTeam;
  */
 final class PublicOwner implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_owner> */
+    /** @use SdkModel<PublicOwnerShape> */
     use SdkModel;
 
     use SdkResponse;

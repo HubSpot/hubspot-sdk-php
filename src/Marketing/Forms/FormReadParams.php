@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Forms->read
  *
- * @phpstan-type form_read_params = array{archived?: bool}
+ * @phpstan-type FormReadParamsShape = array{archived?: bool}
  */
 final class FormReadParams implements BaseModel
 {
-    /** @use SdkModel<form_read_params> */
+    /** @use SdkModel<FormReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

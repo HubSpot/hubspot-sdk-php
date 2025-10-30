@@ -13,7 +13,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * A simple public object.
  *
- * @phpstan-type simple_public_object = array{
+ * @phpstan-type SimplePublicObjectShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   properties: array<string, string>,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class SimplePublicObject implements BaseModel
 {
-    /** @use SdkModel<simple_public_object> */
+    /** @use SdkModel<SimplePublicObjectShape> */
     use SdkModel;
 
     /**

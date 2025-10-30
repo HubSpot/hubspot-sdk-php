@@ -12,7 +12,7 @@ use HubspotSDK\VersionUser;
 /**
  * Model definition for a content folder version. Contains metadata describing the version of the folder. It can be used to view edit history of a folder.
  *
- * @phpstan-type version_content_folder = array{
+ * @phpstan-type VersionContentFolderShape = array{
  *   id: string,
  *   object1: ContentFolder,
  *   updatedAt: \DateTimeInterface,
@@ -21,7 +21,7 @@ use HubspotSDK\VersionUser;
  */
 final class VersionContentFolder implements BaseModel
 {
-    /** @use SdkModel<version_content_folder> */
+    /** @use SdkModel<VersionContentFolderShape> */
     use SdkModel;
 
     /**

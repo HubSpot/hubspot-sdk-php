@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Listings->create
  *
- * @phpstan-type listing_create_params = array{
+ * @phpstan-type ListingCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class ListingCreateParams implements BaseModel
 {
-    /** @use SdkModel<listing_create_params> */
+    /** @use SdkModel<ListingCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

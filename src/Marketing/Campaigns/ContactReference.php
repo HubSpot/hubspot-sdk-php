@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type contact_reference = array{id: string}
+ * @phpstan-type ContactReferenceShape = array{id: string}
  */
 final class ContactReference implements BaseModel
 {
-    /** @use SdkModel<contact_reference> */
+    /** @use SdkModel<ContactReferenceShape> */
     use SdkModel;
 
     #[Api]

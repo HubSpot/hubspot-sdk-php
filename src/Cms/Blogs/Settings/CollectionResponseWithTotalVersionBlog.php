@@ -14,13 +14,13 @@ use HubspotSDK\Marketing\Emails\Paging;
 /**
  * Response object for collections of blog versions with pagination information.
  *
- * @phpstan-type collection_response_with_total_version_blog = array{
+ * @phpstan-type CollectionResponseWithTotalVersionBlogShape = array{
  *   results: list<VersionBlog>, total: int, paging?: Paging
  * }
  */
 final class CollectionResponseWithTotalVersionBlog implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_with_total_version_blog> */
+    /** @use SdkModel<CollectionResponseWithTotalVersionBlogShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Updated details for the subscription.
  *
- * @phpstan-type subscription_patch_request = array{active?: bool}
+ * @phpstan-type SubscriptionPatchRequestShape = array{active?: bool}
  */
 final class SubscriptionPatchRequest implements BaseModel
 {
-    /** @use SdkModel<subscription_patch_request> */
+    /** @use SdkModel<SubscriptionPatchRequestShape> */
     use SdkModel;
 
     /**

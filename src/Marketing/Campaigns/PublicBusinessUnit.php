@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_business_unit = array{id: int}
+ * @phpstan-type PublicBusinessUnitShape = array{id: int}
  */
 final class PublicBusinessUnit implements BaseModel
 {
-    /** @use SdkModel<public_business_unit> */
+    /** @use SdkModel<PublicBusinessUnitShape> */
     use SdkModel;
 
     #[Api]

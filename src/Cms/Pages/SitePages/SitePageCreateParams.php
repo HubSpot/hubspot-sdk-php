@@ -21,7 +21,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->create
  *
- * @phpstan-type site_page_create_params = array{
+ * @phpstan-type SitePageCreateParamsShape = array{
  *   id: string,
  *   abStatus: AbStatus|value-of<AbStatus>,
  *   abTestID: string,
@@ -83,7 +83,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class SitePageCreateParams implements BaseModel
 {
-    /** @use SdkModel<site_page_create_params> */
+    /** @use SdkModel<SitePageCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

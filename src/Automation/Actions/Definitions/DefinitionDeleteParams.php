@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Definitions->delete
  *
- * @phpstan-type definition_delete_params = array{appID: int}
+ * @phpstan-type DefinitionDeleteParamsShape = array{appID: int}
  */
 final class DefinitionDeleteParams implements BaseModel
 {
-    /** @use SdkModel<definition_delete_params> */
+    /** @use SdkModel<DefinitionDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

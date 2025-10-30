@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type collection_response_multi_associated_object_with_label = array{
+ * @phpstan-type CollectionResponseMultiAssociatedObjectWithLabelShape = array{
  *   results: list<MultiAssociatedObjectWithLabel>, paging?: Paging
  * }
  */
 final class CollectionResponseMultiAssociatedObjectWithLabel implements BaseModel
 {
-    /** @use SdkModel<collection_response_multi_associated_object_with_label> */
+    /** @use SdkModel<CollectionResponseMultiAssociatedObjectWithLabelShape> */
     use SdkModel;
 
     /** @var list<MultiAssociatedObjectWithLabel> $results */

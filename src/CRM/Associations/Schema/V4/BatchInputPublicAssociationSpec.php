@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type batch_input_public_association_spec = array{
+ * @phpstan-type BatchInputPublicAssociationSpecShape = array{
  *   inputs: list<PublicAssociationSpec>
  * }
  */
 final class BatchInputPublicAssociationSpec implements BaseModel
 {
-    /** @use SdkModel<batch_input_public_association_spec> */
+    /** @use SdkModel<BatchInputPublicAssociationSpecShape> */
     use SdkModel;
 
     /** @var list<PublicAssociationSpec> $inputs */

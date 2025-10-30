@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type contact_address = array{
+ * @phpstan-type ContactAddressShape = array{
  *   city?: string,
  *   country?: string,
  *   countryCode?: string,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ContactAddress implements BaseModel
 {
-    /** @use SdkModel<contact_address> */
+    /** @use SdkModel<ContactAddressShape> */
     use SdkModel;
 
     #[Api(optional: true)]

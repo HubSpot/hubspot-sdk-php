@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->createLangVariation
  *
- * @phpstan-type post_create_lang_variation_params = array{
+ * @phpstan-type PostCreateLangVariationParamsShape = array{
  *   id: string, language?: string
  * }
  */
 final class PostCreateLangVariationParams implements BaseModel
 {
-    /** @use SdkModel<post_create_lang_variation_params> */
+    /** @use SdkModel<PostCreateLangVariationParamsShape> */
     use SdkModel;
     use SdkParams;
 

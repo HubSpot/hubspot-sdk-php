@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicIndexedTimePoint\TimeType;
 
 /**
- * @phpstan-type public_indexed_time_point = array{
+ * @phpstan-type PublicIndexedTimePointShape = array{
  *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
  *   timeType: value-of<TimeType>,
  *   zoneID: string,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicIndexedTimePoint\TimeType;
  */
 final class PublicIndexedTimePoint implements BaseModel
 {
-    /** @use SdkModel<public_indexed_time_point> */
+    /** @use SdkModel<PublicIndexedTimePointShape> */
     use SdkModel;
 
     #[Api]

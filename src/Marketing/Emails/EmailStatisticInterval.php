@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type email_statistic_interval = array{
+ * @phpstan-type EmailStatisticIntervalShape = array{
  *   aggregations?: EmailStatisticsData, interval?: Interval
  * }
  */
 final class EmailStatisticInterval implements BaseModel
 {
-    /** @use SdkModel<email_statistic_interval> */
+    /** @use SdkModel<EmailStatisticIntervalShape> */
     use SdkModel;
 
     #[Api(optional: true)]

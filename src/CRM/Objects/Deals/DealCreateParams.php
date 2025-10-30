@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Deals->create
  *
- * @phpstan-type deal_create_params = array{
+ * @phpstan-type DealCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class DealCreateParams implements BaseModel
 {
-    /** @use SdkModel<deal_create_params> */
+    /** @use SdkModel<DealCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type channel_integration_participant = array{
+ * @phpstan-type ChannelIntegrationParticipantShape = array{
  *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string
  * }
  */
 final class ChannelIntegrationParticipant implements BaseModel
 {
-    /** @use SdkModel<channel_integration_participant> */
+    /** @use SdkModel<ChannelIntegrationParticipantShape> */
     use SdkModel;
 
     #[Api]

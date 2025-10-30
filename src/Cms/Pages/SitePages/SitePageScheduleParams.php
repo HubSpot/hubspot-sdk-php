@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->schedule
  *
- * @phpstan-type site_page_schedule_params = array{
+ * @phpstan-type SitePageScheduleParamsShape = array{
  *   id: string, publishDate: \DateTimeInterface
  * }
  */
 final class SitePageScheduleParams implements BaseModel
 {
-    /** @use SdkModel<site_page_schedule_params> */
+    /** @use SdkModel<SitePageScheduleParamsShape> */
     use SdkModel;
     use SdkParams;
 

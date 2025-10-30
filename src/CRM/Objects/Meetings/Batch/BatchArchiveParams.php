@@ -15,11 +15,13 @@ use HubspotSDK\CRM\SimplePublicObjectID;
  *
  * @see HubspotSDK\CRM\Objects\Meetings\Batch->archive
  *
- * @phpstan-type batch_archive_params = array{inputs: list<SimplePublicObjectID>}
+ * @phpstan-type BatchArchiveParamsShape = array{
+ *   inputs: list<SimplePublicObjectID>
+ * }
  */
 final class BatchArchiveParams implements BaseModel
 {
-    /** @use SdkModel<batch_archive_params> */
+    /** @use SdkModel<BatchArchiveParamsShape> */
     use SdkModel;
     use SdkParams;
 

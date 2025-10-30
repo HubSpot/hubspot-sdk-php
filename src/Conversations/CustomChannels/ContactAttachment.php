@@ -11,13 +11,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type contact_attachment = array{
+ * @phpstan-type ContactAttachmentShape = array{
  *   contactProfile: ContactProfile, type: value-of<Type>
  * }
  */
 final class ContactAttachment implements BaseModel
 {
-    /** @use SdkModel<contact_attachment> */
+    /** @use SdkModel<ContactAttachmentShape> */
     use SdkModel;
 
     #[Api]

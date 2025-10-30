@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_enrollment_event_property_value = array{
+ * @phpstan-type APIEnrollmentEventPropertyValueShape = array{
  *   enrollmentEventPropertyToken: string, type: value-of<Type>
  * }
  */
 final class APIEnrollmentEventPropertyValue implements BaseModel
 {
-    /** @use SdkModel<api_enrollment_event_property_value> */
+    /** @use SdkModel<APIEnrollmentEventPropertyValueShape> */
     use SdkModel;
 
     #[Api]

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Mapping->batchCreateIDMapping
  *
- * @phpstan-type mapping_batch_create_id_mapping_params = array{body: list<string>}
+ * @phpstan-type MappingBatchCreateIDMappingParamsShape = array{body: list<string>}
  */
 final class MappingBatchCreateIDMappingParams implements BaseModel
 {
-    /** @use SdkModel<mapping_batch_create_id_mapping_params> */
+    /** @use SdkModel<MappingBatchCreateIDMappingParamsShape> */
     use SdkModel;
     use SdkParams;
 

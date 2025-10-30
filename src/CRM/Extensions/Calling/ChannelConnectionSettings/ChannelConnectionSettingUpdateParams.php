@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Extensions\Calling\ChannelConnectionSettings->update
  *
- * @phpstan-type channel_connection_setting_update_params = array{
+ * @phpstan-type ChannelConnectionSettingUpdateParamsShape = array{
  *   isReady?: bool, url?: string
  * }
  */
 final class ChannelConnectionSettingUpdateParams implements BaseModel
 {
-    /** @use SdkModel<channel_connection_setting_update_params> */
+    /** @use SdkModel<ChannelConnectionSettingUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

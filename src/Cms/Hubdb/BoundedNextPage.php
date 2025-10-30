@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type bounded_next_page = array{offset: int, link?: string}
+ * @phpstan-type BoundedNextPageShape = array{offset: int, link?: string}
  */
 final class BoundedNextPage implements BaseModel
 {
-    /** @use SdkModel<bounded_next_page> */
+    /** @use SdkModel<BoundedNextPageShape> */
     use SdkModel;
 
     #[Api]

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\SourceCode->upsert
  *
- * @phpstan-type source_code_upsert_params = array{
+ * @phpstan-type SourceCodeUpsertParamsShape = array{
  *   environment: string, file?: string
  * }
  */
 final class SourceCodeUpsertParams implements BaseModel
 {
-    /** @use SdkModel<source_code_upsert_params> */
+    /** @use SdkModel<SourceCodeUpsertParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -12,7 +12,7 @@ use HubspotSDK\Files\ImportFromURLInput\DuplicateValidationScope;
 use HubspotSDK\Files\ImportFromURLInput\DuplicateValidationStrategy;
 
 /**
- * @phpstan-type import_from_url_input = array{
+ * @phpstan-type ImportFromURLInputShape = array{
  *   access: value-of<Access>,
  *   url: string,
  *   duplicateValidationScope?: value-of<DuplicateValidationScope>,
@@ -27,7 +27,7 @@ use HubspotSDK\Files\ImportFromURLInput\DuplicateValidationStrategy;
  */
 final class ImportFromURLInput implements BaseModel
 {
-    /** @use SdkModel<import_from_url_input> */
+    /** @use SdkModel<ImportFromURLInputShape> */
     use SdkModel;
 
     /**

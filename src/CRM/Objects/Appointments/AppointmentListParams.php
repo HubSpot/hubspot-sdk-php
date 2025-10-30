@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Appointments->list
  *
- * @phpstan-type appointment_list_params = array{
+ * @phpstan-type AppointmentListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AppointmentListParams implements BaseModel
 {
-    /** @use SdkModel<appointment_list_params> */
+    /** @use SdkModel<AppointmentListParamsShape> */
     use SdkModel;
     use SdkParams;
 

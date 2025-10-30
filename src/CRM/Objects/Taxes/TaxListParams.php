@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Taxes->list
  *
- * @phpstan-type tax_list_params = array{
+ * @phpstan-type TaxListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class TaxListParams implements BaseModel
 {
-    /** @use SdkModel<tax_list_params> */
+    /** @use SdkModel<TaxListParamsShape> */
     use SdkModel;
     use SdkParams;
 

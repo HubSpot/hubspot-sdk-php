@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Properties->get
  *
- * @phpstan-type property_get_params = array{
+ * @phpstan-type PropertyGetParamsShape = array{
  *   objectType: string, archived?: bool, properties?: string
  * }
  */
 final class PropertyGetParams implements BaseModel
 {
-    /** @use SdkModel<property_get_params> */
+    /** @use SdkModel<PropertyGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

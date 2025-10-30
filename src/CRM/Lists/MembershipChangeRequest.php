@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The IDs of the records to add and/or remove from a list.
  *
- * @phpstan-type membership_change_request = array{
+ * @phpstan-type MembershipChangeRequestShape = array{
  *   recordIDsToAdd: list<string>, recordIDsToRemove: list<string>
  * }
  */
 final class MembershipChangeRequest implements BaseModel
 {
-    /** @use SdkModel<membership_change_request> */
+    /** @use SdkModel<MembershipChangeRequestShape> */
     use SdkModel;
 
     /** @var list<string> $recordIDsToAdd */

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Associations\V4->listAssociationsByType
  *
- * @phpstan-type v4_list_associations_by_type_params = array{
+ * @phpstan-type V4ListAssociationsByTypeParamsShape = array{
  *   objectType: string, objectID: string, after?: string, limit?: int
  * }
  */
 final class V4ListAssociationsByTypeParams implements BaseModel
 {
-    /** @use SdkModel<v4_list_associations_by_type_params> */
+    /** @use SdkModel<V4ListAssociationsByTypeParamsShape> */
     use SdkModel;
     use SdkParams;
 

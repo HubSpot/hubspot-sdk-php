@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type message_header_attachment = array{
+ * @phpstan-type MessageHeaderAttachmentShape = array{
  *   type: value-of<Type>, fileID?: int, text?: string
  * }
  */
 final class MessageHeaderAttachment implements BaseModel
 {
-    /** @use SdkModel<message_header_attachment> */
+    /** @use SdkModel<MessageHeaderAttachmentShape> */
     use SdkModel;
 
     /** @var value-of<Type> $type */

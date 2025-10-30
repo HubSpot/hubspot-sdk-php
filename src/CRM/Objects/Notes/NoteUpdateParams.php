@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Notes->update
  *
- * @phpstan-type note_update_params = array{
+ * @phpstan-type NoteUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class NoteUpdateParams implements BaseModel
 {
-    /** @use SdkModel<note_update_params> */
+    /** @use SdkModel<NoteUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

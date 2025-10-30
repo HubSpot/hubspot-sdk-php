@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type side_or_corner = array{
+ * @phpstan-type SideOrCornerShape = array{
  *   horizontalSide: string, verticalSide: string
  * }
  */
 final class SideOrCorner implements BaseModel
 {
-    /** @use SdkModel<side_or_corner> */
+    /** @use SdkModel<SideOrCornerShape> */
     use SdkModel;
 
     #[Api]

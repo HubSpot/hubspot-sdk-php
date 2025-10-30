@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_delivery_identifier = array{type: string, value: string}
+ * @phpstan-type PublicDeliveryIdentifierShape = array{type: string, value: string}
  */
 final class PublicDeliveryIdentifier implements BaseModel
 {
-    /** @use SdkModel<public_delivery_identifier> */
+    /** @use SdkModel<PublicDeliveryIdentifierShape> */
     use SdkModel;
 
     #[Api]

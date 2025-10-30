@@ -15,13 +15,13 @@ use HubspotSDK\CRM\SimplePublicObjectBatchInputUpsert;
  *
  * @see HubspotSDK\CRM\Objects\Quotes\Batch->upsert
  *
- * @phpstan-type batch_upsert_params = array{
+ * @phpstan-type BatchUpsertParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputUpsert>
  * }
  */
 final class BatchUpsertParams implements BaseModel
 {
-    /** @use SdkModel<batch_upsert_params> */
+    /** @use SdkModel<BatchUpsertParamsShape> */
     use SdkModel;
     use SdkParams;
 

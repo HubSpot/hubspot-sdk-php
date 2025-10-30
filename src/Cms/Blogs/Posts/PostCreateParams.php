@@ -21,7 +21,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->create
  *
- * @phpstan-type post_create_params = array{
+ * @phpstan-type PostCreateParamsShape = array{
  *   id: string,
  *   abStatus: AbStatus|value-of<AbStatus>,
  *   abTestID: string,
@@ -87,7 +87,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class PostCreateParams implements BaseModel
 {
-    /** @use SdkModel<post_create_params> */
+    /** @use SdkModel<PostCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

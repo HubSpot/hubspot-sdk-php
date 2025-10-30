@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Data structure representing the content of the email.
  *
- * @phpstan-type public_email_content = array{
+ * @phpstan-type PublicEmailContentShape = array{
  *   flexAreas?: array<string, mixed>,
  *   plainTextVersion?: string,
  *   smartFields?: array<string, mixed>,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicEmailContent implements BaseModel
 {
-    /** @use SdkModel<public_email_content> */
+    /** @use SdkModel<PublicEmailContentShape> */
     use SdkModel;
 
     /** @var array<string, mixed>|null $flexAreas */

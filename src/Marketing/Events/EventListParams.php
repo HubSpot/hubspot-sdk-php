@@ -16,11 +16,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->list
  *
- * @phpstan-type event_list_params = array{after?: string, limit?: int}
+ * @phpstan-type EventListParamsShape = array{after?: string, limit?: int}
  */
 final class EventListParams implements BaseModel
 {
-    /** @use SdkModel<event_list_params> */
+    /** @use SdkModel<EventListParamsShape> */
     use SdkModel;
     use SdkParams;
 

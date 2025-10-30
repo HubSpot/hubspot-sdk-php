@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicEventAnalyticsFilter\FilterType;
 
 /**
- * @phpstan-type public_event_analytics_filter = array{
+ * @phpstan-type PublicEventAnalyticsFilterShape = array{
  *   eventID: string,
  *   filterType: value-of<FilterType>,
  *   operator: string,
@@ -20,7 +20,7 @@ use HubspotSDK\PublicEventAnalyticsFilter\FilterType;
  */
 final class PublicEventAnalyticsFilter implements BaseModel
 {
-    /** @use SdkModel<public_event_analytics_filter> */
+    /** @use SdkModel<PublicEventAnalyticsFilterShape> */
     use SdkModel;
 
     #[Api('eventId')]

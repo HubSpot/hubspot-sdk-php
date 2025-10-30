@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type filtering_meta_data = array{
+ * @phpstan-type FilteringMetaDataShape = array{
  *   includeUnconfirmedUsers: bool, pipelineIDs: list<string>
  * }
  */
 final class FilteringMetaData implements BaseModel
 {
-    /** @use SdkModel<filtering_meta_data> */
+    /** @use SdkModel<FilteringMetaDataShape> */
     use SdkModel;
 
     #[Api]

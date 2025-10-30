@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\CustomChannels\Messages->create
  *
- * @phpstan-type message_create_params = array{
+ * @phpstan-type MessageCreateParamsShape = array{
  *   attachments: list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment>,
  *   channelAccountID: string,
  *   integrationThreadID: string,
@@ -42,7 +42,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class MessageCreateParams implements BaseModel
 {
-    /** @use SdkModel<message_create_params> */
+    /** @use SdkModel<MessageCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

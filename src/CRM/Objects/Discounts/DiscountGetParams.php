@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Discounts->get
  *
- * @phpstan-type discount_get_params = array{
+ * @phpstan-type DiscountGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class DiscountGetParams implements BaseModel
 {
-    /** @use SdkModel<discount_get_params> */
+    /** @use SdkModel<DiscountGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

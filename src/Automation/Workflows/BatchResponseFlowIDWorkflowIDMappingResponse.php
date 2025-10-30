@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type batch_response_flow_id_workflow_id_mapping_response = array{
+ * @phpstan-type BatchResponseFlowIDWorkflowIDMappingResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<FlowIDWorkflowIDMappingResponse>,
  *   startedAt: \DateTimeInterface,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class BatchResponseFlowIDWorkflowIDMappingResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<batch_response_flow_id_workflow_id_mapping_response> */
+    /** @use SdkModel<BatchResponseFlowIDWorkflowIDMappingResponseShape> */
     use SdkModel;
 
     use SdkResponse;

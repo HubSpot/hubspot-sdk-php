@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type subscription_batch_update_request = array{id: int, active: bool}
+ * @phpstan-type SubscriptionBatchUpdateRequestShape = array{id: int, active: bool}
  */
 final class SubscriptionBatchUpdateRequest implements BaseModel
 {
-    /** @use SdkModel<subscription_batch_update_request> */
+    /** @use SdkModel<SubscriptionBatchUpdateRequestShape> */
     use SdkModel;
 
     #[Api]

@@ -18,13 +18,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->deleteBatch
  *
- * @phpstan-type event_delete_batch_params = array{
+ * @phpstan-type EventDeleteBatchParamsShape = array{
  *   inputs: list<MarketingEventPublicObjectIDDeleteRequest>
  * }
  */
 final class EventDeleteBatchParams implements BaseModel
 {
-    /** @use SdkModel<event_delete_batch_params> */
+    /** @use SdkModel<EventDeleteBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

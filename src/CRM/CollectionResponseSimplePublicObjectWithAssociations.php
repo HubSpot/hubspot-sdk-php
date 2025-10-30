@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\Paging;
 
 /**
- * @phpstan-type collection_response_simple_public_object_with_associations = array{
+ * @phpstan-type CollectionResponseSimplePublicObjectWithAssociationsShape = array{
  *   results: list<SimplePublicObjectWithAssociations>, paging?: Paging
  * }
  */
 final class CollectionResponseSimplePublicObjectWithAssociations implements BaseModel
 {
-    /** @use SdkModel<collection_response_simple_public_object_with_associations> */
+    /** @use SdkModel<CollectionResponseSimplePublicObjectWithAssociationsShape> */
     use SdkModel;
 
     /** @var list<SimplePublicObjectWithAssociations> $results */

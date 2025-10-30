@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows->getDraft
  *
- * @phpstan-type row_get_draft_params = array{
+ * @phpstan-type RowGetDraftParamsShape = array{
  *   tableIDOrName: string, archived?: bool
  * }
  */
 final class RowGetDraftParams implements BaseModel
 {
-    /** @use SdkModel<row_get_draft_params> */
+    /** @use SdkModel<RowGetDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

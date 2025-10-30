@@ -14,11 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Properties->delete
  *
- * @phpstan-type property_delete_params = array{appID: string, objectType: string}
+ * @phpstan-type PropertyDeleteParamsShape = array{
+ *   appID: string, objectType: string
+ * }
  */
 final class PropertyDeleteParams implements BaseModel
 {
-    /** @use SdkModel<property_delete_params> */
+    /** @use SdkModel<PropertyDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\PostalMail->update
  *
- * @phpstan-type postal_mail_update_params = array{
+ * @phpstan-type PostalMailUpdateParamsShape = array{
  *   properties: array<string, string>, idProperty?: string
  * }
  */
 final class PostalMailUpdateParams implements BaseModel
 {
-    /** @use SdkModel<postal_mail_update_params> */
+    /** @use SdkModel<PostalMailUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

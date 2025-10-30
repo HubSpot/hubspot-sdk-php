@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type link_generation_request = array{
+ * @phpstan-type LinkGenerationRequestShape = array{
  *   subscriberIDString: string, language?: string, subscriptionID?: int
  * }
  */
 final class LinkGenerationRequest implements BaseModel
 {
-    /** @use SdkModel<link_generation_request> */
+    /** @use SdkModel<LinkGenerationRequestShape> */
     use SdkModel;
 
     #[Api('subscriberIdString')]

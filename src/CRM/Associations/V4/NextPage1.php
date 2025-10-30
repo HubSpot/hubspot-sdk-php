@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
  *
- * @phpstan-type next_page1 = array{after: string, link?: string}
+ * @phpstan-type NextPage1Shape = array{after: string, link?: string}
  */
 final class NextPage1 implements BaseModel
 {
-    /** @use SdkModel<next_page1> */
+    /** @use SdkModel<NextPage1Shape> */
     use SdkModel;
 
     /**

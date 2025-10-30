@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->createLanguageVariation
  *
- * @phpstan-type site_page_create_language_variation_params = array{
+ * @phpstan-type SitePageCreateLanguageVariationParamsShape = array{
  *   id: string, language?: string, primaryLanguage?: string
  * }
  */
 final class SitePageCreateLanguageVariationParams implements BaseModel
 {
-    /** @use SdkModel<site_page_create_language_variation_params> */
+    /** @use SdkModel<SitePageCreateLanguageVariationParamsShape> */
     use SdkModel;
     use SdkParams;
 

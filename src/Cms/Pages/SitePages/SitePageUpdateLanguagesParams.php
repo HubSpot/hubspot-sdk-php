@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->updateLanguages
  *
- * @phpstan-type site_page_update_languages_params = array{
+ * @phpstan-type SitePageUpdateLanguagesParamsShape = array{
  *   languages: array<string, string>, primaryID: string
  * }
  */
 final class SitePageUpdateLanguagesParams implements BaseModel
 {
-    /** @use SdkModel<site_page_update_languages_params> */
+    /** @use SdkModel<SitePageUpdateLanguagesParamsShape> */
     use SdkModel;
     use SdkParams;
 

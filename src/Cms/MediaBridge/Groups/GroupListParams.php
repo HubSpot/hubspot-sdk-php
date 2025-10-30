@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Groups->list
  *
- * @phpstan-type group_list_params = array{appID: string}
+ * @phpstan-type GroupListParamsShape = array{appID: string}
  */
 final class GroupListParams implements BaseModel
 {
-    /** @use SdkModel<group_list_params> */
+    /** @use SdkModel<GroupListParamsShape> */
     use SdkModel;
     use SdkParams;
 

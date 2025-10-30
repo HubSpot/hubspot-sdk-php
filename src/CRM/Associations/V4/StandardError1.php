@@ -13,7 +13,7 @@ use HubspotSDK\ErrorDetail;
 /**
  * Ye olde error.
  *
- * @phpstan-type standard_error1 = array{
+ * @phpstan-type StandardError1Shape = array{
  *   category: string,
  *   context: array<string, list<string>>,
  *   errors: list<ErrorDetail>,
@@ -26,7 +26,7 @@ use HubspotSDK\ErrorDetail;
  */
 final class StandardError1 implements BaseModel
 {
-    /** @use SdkModel<standard_error1> */
+    /** @use SdkModel<StandardError1Shape> */
     use SdkModel;
 
     /**

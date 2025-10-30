@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows\Batch->cloneBatch
  *
- * @phpstan-type batch_clone_batch_params = array{
+ * @phpstan-type BatchCloneBatchParamsShape = array{
  *   inputs: list<HubDBTableRowBatchCloneRequest>
  * }
  */
 final class BatchCloneBatchParams implements BaseModel
 {
-    /** @use SdkModel<batch_clone_batch_params> */
+    /** @use SdkModel<BatchCloneBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

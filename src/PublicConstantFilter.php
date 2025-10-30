@@ -10,13 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicConstantFilter\FilterType;
 
 /**
- * @phpstan-type public_constant_filter = array{
+ * @phpstan-type PublicConstantFilterShape = array{
  *   filterType: value-of<FilterType>, shouldAccept: bool, source?: string
  * }
  */
 final class PublicConstantFilter implements BaseModel
 {
-    /** @use SdkModel<public_constant_filter> */
+    /** @use SdkModel<PublicConstantFilterShape> */
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */

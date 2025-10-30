@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration\Language;
 
 /**
- * @phpstan-type hub_spot_form_configuration = array{
+ * @phpstan-type HubSpotFormConfigurationShape = array{
  *   allowLinkToResetKnownValues: bool,
  *   archivable: bool,
  *   cloneable: bool,
@@ -27,7 +27,7 @@ use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration\Language;
  */
 final class HubSpotFormConfiguration implements BaseModel
 {
-    /** @use SdkModel<hub_spot_form_configuration> */
+    /** @use SdkModel<HubSpotFormConfigurationShape> */
     use SdkModel;
 
     /**

@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\CommercePayments->search
  *
- * @phpstan-type commerce_payment_search_params = array{
+ * @phpstan-type CommercePaymentSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class CommercePaymentSearchParams implements BaseModel
 {
-    /** @use SdkModel<commerce_payment_search_params> */
+    /** @use SdkModel<CommercePaymentSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

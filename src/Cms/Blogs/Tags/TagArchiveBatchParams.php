@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Tags->archiveBatch
  *
- * @phpstan-type tag_archive_batch_params = array{inputs: list<string>}
+ * @phpstan-type TagArchiveBatchParamsShape = array{inputs: list<string>}
  */
 final class TagArchiveBatchParams implements BaseModel
 {
-    /** @use SdkModel<tag_archive_batch_params> */
+    /** @use SdkModel<TagArchiveBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

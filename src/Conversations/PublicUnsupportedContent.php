@@ -10,11 +10,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_unsupported_content = array{type: value-of<Type>}
+ * @phpstan-type PublicUnsupportedContentShape = array{type: value-of<Type>}
  */
 final class PublicUnsupportedContent implements BaseModel
 {
-    /** @use SdkModel<public_unsupported_content> */
+    /** @use SdkModel<PublicUnsupportedContentShape> */
     use SdkModel;
 
     /** @var value-of<Type> $type */

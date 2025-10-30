@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Pipelines->delete
  *
- * @phpstan-type pipeline_delete_params = array{
+ * @phpstan-type PipelineDeleteParamsShape = array{
  *   objectType: string,
  *   validateDealStageUsagesBeforeDelete?: bool,
  *   validateReferencesBeforeDelete?: bool,
@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PipelineDeleteParams implements BaseModel
 {
-    /** @use SdkModel<pipeline_delete_params> */
+    /** @use SdkModel<PipelineDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

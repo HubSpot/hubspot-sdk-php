@@ -15,7 +15,7 @@ use HubspotSDK\CRM\FilterGroup;
  *
  * @see HubspotSDK\CRM\Objects\Communications->search
  *
- * @phpstan-type communication_search_params = array{
+ * @phpstan-type CommunicationSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -26,7 +26,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class CommunicationSearchParams implements BaseModel
 {
-    /** @use SdkModel<communication_search_params> */
+    /** @use SdkModel<CommunicationSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

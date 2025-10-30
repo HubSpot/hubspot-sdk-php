@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_un_enrollment_setting = array{
+ * @phpstan-type APIUnEnrollmentSettingShape = array{
  *   flowIDs: list<string>, type: value-of<Type>
  * }
  */
 final class APIUnEnrollmentSetting implements BaseModel
 {
-    /** @use SdkModel<api_un_enrollment_setting> */
+    /** @use SdkModel<APIUnEnrollmentSettingShape> */
     use SdkModel;
 
     /**

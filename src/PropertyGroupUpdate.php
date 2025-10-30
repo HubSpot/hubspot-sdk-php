@@ -9,11 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type property_group_update = array{displayOrder?: int, label?: string}
+ * @phpstan-type PropertyGroupUpdateShape = array{
+ *   displayOrder?: int, label?: string
+ * }
  */
 final class PropertyGroupUpdate implements BaseModel
 {
-    /** @use SdkModel<property_group_update> */
+    /** @use SdkModel<PropertyGroupUpdateShape> */
     use SdkModel;
 
     #[Api(optional: true)]

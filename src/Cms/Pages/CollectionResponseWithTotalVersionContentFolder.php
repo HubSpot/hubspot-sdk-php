@@ -12,13 +12,13 @@ use HubspotSDK\Marketing\Emails\Paging;
 /**
  * Response object for collections of content folder versions with pagination information.
  *
- * @phpstan-type collection_response_with_total_version_content_folder = array{
+ * @phpstan-type CollectionResponseWithTotalVersionContentFolderShape = array{
  *   results: list<VersionContentFolder>, total: int, paging?: Paging
  * }
  */
 final class CollectionResponseWithTotalVersionContentFolder implements BaseModel
 {
-    /** @use SdkModel<collection_response_with_total_version_content_folder> */
+    /** @use SdkModel<CollectionResponseWithTotalVersionContentFolderShape> */
     use SdkModel;
 
     /**

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\OptionInput;
 
 /**
- * @phpstan-type media_bridge_property_update = array{
+ * @phpstan-type MediaBridgePropertyUpdateShape = array{
  *   calculationFormula?: string,
  *   description?: string,
  *   displayOrder?: int,
@@ -28,7 +28,7 @@ use HubspotSDK\OptionInput;
  */
 final class MediaBridgePropertyUpdate implements BaseModel
 {
-    /** @use SdkModel<media_bridge_property_update> */
+    /** @use SdkModel<MediaBridgePropertyUpdateShape> */
     use SdkModel;
 
     #[Api(optional: true)]

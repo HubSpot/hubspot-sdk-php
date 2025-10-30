@@ -15,13 +15,13 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetUnsubscribeAllS
  *
  * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->batchGetUnsubscribeAllStatus
  *
- * @phpstan-type status_batch_get_unsubscribe_all_status_params = array{
+ * @phpstan-type StatusBatchGetUnsubscribeAllStatusParamsShape = array{
  *   channel: Channel|value-of<Channel>, inputs: list<string>, businessUnitID?: int
  * }
  */
 final class StatusBatchGetUnsubscribeAllStatusParams implements BaseModel
 {
-    /** @use SdkModel<status_batch_get_unsubscribe_all_status_params> */
+    /** @use SdkModel<StatusBatchGetUnsubscribeAllStatusParamsShape> */
     use SdkModel;
     use SdkParams;
 

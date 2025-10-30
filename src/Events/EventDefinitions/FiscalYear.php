@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\FiscalYear\ReferenceType;
 
 /**
- * @phpstan-type fiscal_year = array{
+ * @phpstan-type FiscalYearShape = array{
  *   day: int,
  *   month: int,
  *   referenceType: value-of<ReferenceType>,
@@ -22,7 +22,7 @@ use HubspotSDK\Events\EventDefinitions\FiscalYear\ReferenceType;
  */
 final class FiscalYear implements BaseModel
 {
-    /** @use SdkModel<fiscal_year> */
+    /** @use SdkModel<FiscalYearShape> */
     use SdkModel;
 
     #[Api]

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type currency_code_info = array{
+ * @phpstan-type CurrencyCodeInfoShape = array{
  *   currencyCode: string, currencyName: string
  * }
  */
 final class CurrencyCodeInfo implements BaseModel
 {
-    /** @use SdkModel<currency_code_info> */
+    /** @use SdkModel<CurrencyCodeInfoShape> */
     use SdkModel;
 
     #[Api]

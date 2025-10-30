@@ -16,7 +16,7 @@ use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams\ToCurrencyCode
  *
  * @see HubspotSDK\Settings\Currencies->updateVisibility
  *
- * @phpstan-type currency_update_visibility_params = array{
+ * @phpstan-type CurrencyUpdateVisibilityParamsShape = array{
  *   fromCurrencyCode: FromCurrencyCode|value-of<FromCurrencyCode>,
  *   toCurrencyCode: ToCurrencyCode|value-of<ToCurrencyCode>,
  *   visibleInUi: bool,
@@ -24,7 +24,7 @@ use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams\ToCurrencyCode
  */
 final class CurrencyUpdateVisibilityParams implements BaseModel
 {
-    /** @use SdkModel<currency_update_visibility_params> */
+    /** @use SdkModel<CurrencyUpdateVisibilityParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -14,11 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns->create
  *
- * @phpstan-type campaign_create_params = array{properties: array<string, string>}
+ * @phpstan-type CampaignCreateParamsShape = array{
+ *   properties: array<string, string>
+ * }
  */
 final class CampaignCreateParams implements BaseModel
 {
-    /** @use SdkModel<campaign_create_params> */
+    /** @use SdkModel<CampaignCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

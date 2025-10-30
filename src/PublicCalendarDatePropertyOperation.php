@@ -11,7 +11,7 @@ use HubspotSDK\PublicCalendarDatePropertyOperation\FiscalYearStart;
 use HubspotSDK\PublicCalendarDatePropertyOperation\OperationType;
 
 /**
- * @phpstan-type public_calendar_date_property_operation = array{
+ * @phpstan-type PublicCalendarDatePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: value-of<OperationType>,
  *   operator: string,
@@ -23,7 +23,7 @@ use HubspotSDK\PublicCalendarDatePropertyOperation\OperationType;
  */
 final class PublicCalendarDatePropertyOperation implements BaseModel
 {
-    /** @use SdkModel<public_calendar_date_property_operation> */
+    /** @use SdkModel<PublicCalendarDatePropertyOperationShape> */
     use SdkModel;
 
     #[Api]

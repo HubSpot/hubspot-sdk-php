@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Reports->listContactIDsByType
  *
- * @phpstan-type report_list_contact_ids_by_type_params = array{
+ * @phpstan-type ReportListContactIDsByTypeParamsShape = array{
  *   campaignGuid: string,
  *   after?: string,
  *   endDate?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ReportListContactIDsByTypeParams implements BaseModel
 {
-    /** @use SdkModel<report_list_contact_ids_by_type_params> */
+    /** @use SdkModel<ReportListContactIDsByTypeParamsShape> */
     use SdkModel;
     use SdkParams;
 

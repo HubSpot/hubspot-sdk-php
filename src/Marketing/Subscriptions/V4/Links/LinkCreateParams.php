@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
 /**
  * @see HubspotSDK\Marketing\Subscriptions\V4\Links->create
  *
- * @phpstan-type link_create_params = array{
+ * @phpstan-type LinkCreateParamsShape = array{
  *   channel: Channel|value-of<Channel>,
  *   subscriberIDString: string,
  *   businessUnitID?: int,
@@ -23,7 +23,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
  */
 final class LinkCreateParams implements BaseModel
 {
-    /** @use SdkModel<link_create_params> */
+    /** @use SdkModel<LinkCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

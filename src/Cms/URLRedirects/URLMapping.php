@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type url_mapping = array{
+ * @phpstan-type URLMappingShape = array{
  *   id: string,
  *   destination: string,
  *   isMatchFullURL: bool,
@@ -29,7 +29,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class URLMapping implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<url_mapping> */
+    /** @use SdkModel<URLMappingShape> */
     use SdkModel;
 
     use SdkResponse;

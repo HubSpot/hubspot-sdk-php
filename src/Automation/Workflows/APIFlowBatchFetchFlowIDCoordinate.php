@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_flow_batch_fetch_flow_id_coordinate = array{
+ * @phpstan-type APIFlowBatchFetchFlowIDCoordinateShape = array{
  *   flowID: string, type: value-of<Type>
  * }
  */
 final class APIFlowBatchFetchFlowIDCoordinate implements BaseModel
 {
-    /** @use SdkModel<api_flow_batch_fetch_flow_id_coordinate> */
+    /** @use SdkModel<APIFlowBatchFetchFlowIDCoordinateShape> */
     use SdkModel;
 
     #[Api('flowId')]

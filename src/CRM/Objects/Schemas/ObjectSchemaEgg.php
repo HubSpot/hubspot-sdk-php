@@ -12,7 +12,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
 /**
  * Defines a new object type, its properties, and associations.
  *
- * @phpstan-type object_schema_egg = array{
+ * @phpstan-type ObjectSchemaEggShape = array{
  *   associatedObjects: list<string>,
  *   labels: ObjectTypeDefinitionLabels,
  *   name: string,
@@ -26,7 +26,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  */
 final class ObjectSchemaEgg implements BaseModel
 {
-    /** @use SdkModel<object_schema_egg> */
+    /** @use SdkModel<ObjectSchemaEggShape> */
     use SdkModel;
 
     /**

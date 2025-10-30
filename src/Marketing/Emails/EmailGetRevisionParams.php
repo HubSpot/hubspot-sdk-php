@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Emails->getRevision
  *
- * @phpstan-type email_get_revision_params = array{emailID: string}
+ * @phpstan-type EmailGetRevisionParamsShape = array{emailID: string}
  */
 final class EmailGetRevisionParams implements BaseModel
 {
-    /** @use SdkModel<email_get_revision_params> */
+    /** @use SdkModel<EmailGetRevisionParamsShape> */
     use SdkModel;
     use SdkParams;
 

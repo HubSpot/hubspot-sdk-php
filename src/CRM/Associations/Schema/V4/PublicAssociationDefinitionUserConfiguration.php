@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Associations\Schema\V4\PublicAssociationDefinitionUserConfiguration\Category;
 
 /**
- * @phpstan-type public_association_definition_user_configuration = array{
+ * @phpstan-type PublicAssociationDefinitionUserConfigurationShape = array{
  *   category: value-of<Category>,
  *   typeID: int,
  *   label?: string,
@@ -19,7 +19,7 @@ use HubspotSDK\CRM\Associations\Schema\V4\PublicAssociationDefinitionUserConfigu
  */
 final class PublicAssociationDefinitionUserConfiguration implements BaseModel
 {
-    /** @use SdkModel<public_association_definition_user_configuration> */
+    /** @use SdkModel<PublicAssociationDefinitionUserConfigurationShape> */
     use SdkModel;
 
     /** @var value-of<Category> $category */

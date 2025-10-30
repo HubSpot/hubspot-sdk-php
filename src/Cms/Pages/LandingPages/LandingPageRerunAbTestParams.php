@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->rerunAbTest
  *
- * @phpstan-type landing_page_rerun_ab_test_params = array{
+ * @phpstan-type LandingPageRerunAbTestParamsShape = array{
  *   abTestID: string, variationID: string
  * }
  */
 final class LandingPageRerunAbTestParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_rerun_ab_test_params> */
+    /** @use SdkModel<LandingPageRerunAbTestParamsShape> */
     use SdkModel;
     use SdkParams;
 

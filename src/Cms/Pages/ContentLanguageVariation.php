@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type content_language_variation = array{
+ * @phpstan-type ContentLanguageVariationShape = array{
  *   id: int,
  *   archivedInDashboard: bool,
  *   authorName: string,
@@ -28,7 +28,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ContentLanguageVariation implements BaseModel
 {
-    /** @use SdkModel<content_language_variation> */
+    /** @use SdkModel<ContentLanguageVariationShape> */
     use SdkModel;
 
     #[Api]

@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Files\Files->getByPath
  *
- * @phpstan-type file_get_by_path_params = array{properties?: list<string>}
+ * @phpstan-type FileGetByPathParamsShape = array{properties?: list<string>}
  */
 final class FileGetByPathParams implements BaseModel
 {
-    /** @use SdkModel<file_get_by_path_params> */
+    /** @use SdkModel<FileGetByPathParamsShape> */
     use SdkModel;
     use SdkParams;
 

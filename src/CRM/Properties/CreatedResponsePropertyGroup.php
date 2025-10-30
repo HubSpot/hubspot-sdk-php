@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type created_response_property_group = array{
+ * @phpstan-type CreatedResponsePropertyGroupShape = array{
  *   createdResourceID: string, entity: PropertyGroup, location?: string
  * }
  */
 final class CreatedResponsePropertyGroup implements BaseModel
 {
-    /** @use SdkModel<created_response_property_group> */
+    /** @use SdkModel<CreatedResponsePropertyGroupShape> */
     use SdkModel;
 
     #[Api('createdResourceId')]

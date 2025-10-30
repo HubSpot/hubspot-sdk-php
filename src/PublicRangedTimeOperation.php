@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicRangedTimeOperation\Type;
 
 /**
- * @phpstan-type public_ranged_time_operation = array{
+ * @phpstan-type PublicRangedTimeOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
  *   operationType: string,
@@ -24,7 +24,7 @@ use HubspotSDK\PublicRangedTimeOperation\Type;
  */
 final class PublicRangedTimeOperation implements BaseModel
 {
-    /** @use SdkModel<public_ranged_time_operation> */
+    /** @use SdkModel<PublicRangedTimeOperationShape> */
     use SdkModel;
 
     #[Api]

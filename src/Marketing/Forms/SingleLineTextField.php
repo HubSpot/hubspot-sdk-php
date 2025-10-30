@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\SingleLineTextField\FieldType;
 /**
  * A form field consisting of a single-line text box.
  *
- * @phpstan-type single_line_text_field = array{
+ * @phpstan-type SingleLineTextFieldShape = array{
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
@@ -27,7 +27,7 @@ use HubspotSDK\Marketing\Forms\SingleLineTextField\FieldType;
  */
 final class SingleLineTextField implements BaseModel
 {
-    /** @use SdkModel<single_line_text_field> */
+    /** @use SdkModel<SingleLineTextFieldShape> */
     use SdkModel;
 
     /**

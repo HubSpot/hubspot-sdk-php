@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Files\Folders->search
  *
- * @phpstan-type folder_search_params = array{
+ * @phpstan-type FolderSearchParamsShape = array{
  *   after?: string,
  *   before?: string,
  *   createdAt?: \DateTimeInterface,
@@ -36,7 +36,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class FolderSearchParams implements BaseModel
 {
-    /** @use SdkModel<folder_search_params> */
+    /** @use SdkModel<FolderSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

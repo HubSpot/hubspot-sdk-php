@@ -9,11 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type date_time = array{dateOnly: bool, timeZoneShift: int, value: int}
+ * @phpstan-type DateTimeShape = array{
+ *   dateOnly: bool, timeZoneShift: int, value: int
+ * }
  */
 final class DateTime implements BaseModel
 {
-    /** @use SdkModel<date_time> */
+    /** @use SdkModel<DateTimeShape> */
     use SdkModel;
 
     #[Api]

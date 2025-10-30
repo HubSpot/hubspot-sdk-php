@@ -13,7 +13,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch\FilterBranchType;
 use HubspotSDK\PublicUnifiedEventsFilterBranch\Operator;
 
 /**
- * @phpstan-type public_unified_events_filter_branch = array{
+ * @phpstan-type PublicUnifiedEventsFilterBranchShape = array{
  *   eventTypeID: string,
  *   filterBranches: list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch>,
  *   filterBranchOperator: string,
@@ -25,7 +25,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch\Operator;
  */
 final class PublicUnifiedEventsFilterBranch implements BaseModel
 {
-    /** @use SdkModel<public_unified_events_filter_branch> */
+    /** @use SdkModel<PublicUnifiedEventsFilterBranchShape> */
     use SdkModel;
 
     #[Api('eventTypeId')]

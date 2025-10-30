@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_channel_integration_channel_patch = array{
+ * @phpstan-type PublicChannelIntegrationChannelPatchShape = array{
  *   capabilities: array<string, mixed>,
  *   channelDescription: mixed,
  *   channelLogoURL: mixed,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicChannelIntegrationChannelPatch implements BaseModel
 {
-    /** @use SdkModel<public_channel_integration_channel_patch> */
+    /** @use SdkModel<PublicChannelIntegrationChannelPatchShape> */
     use SdkModel;
 
     /** @var array<string, mixed> $capabilities */

@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_deal_split_input = array{ownerID: int, percentage: float}
+ * @phpstan-type PublicDealSplitInputShape = array{ownerID: int, percentage: float}
  */
 final class PublicDealSplitInput implements BaseModel
 {
-    /** @use SdkModel<public_deal_split_input> */
+    /** @use SdkModel<PublicDealSplitInputShape> */
     use SdkModel;
 
     #[Api('ownerId')]

@@ -15,14 +15,14 @@ use HubspotSDK\CRM\PublicAssociationsForObject;
  *
  * @see HubspotSDK\CRM\Objects\Contacts->create
  *
- * @phpstan-type contact_create_params = array{
+ * @phpstan-type ContactCreateParamsShape = array{
  *   properties: array<string, string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class ContactCreateParams implements BaseModel
 {
-    /** @use SdkModel<contact_create_params> */
+    /** @use SdkModel<ContactCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

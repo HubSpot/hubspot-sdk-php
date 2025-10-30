@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_merge_input = array{
+ * @phpstan-type PublicMergeInputShape = array{
  *   objectIDToMerge: string, primaryObjectID: string
  * }
  */
 final class PublicMergeInput implements BaseModel
 {
-    /** @use SdkModel<public_merge_input> */
+    /** @use SdkModel<PublicMergeInputShape> */
     use SdkModel;
 
     #[Api('objectIdToMerge')]

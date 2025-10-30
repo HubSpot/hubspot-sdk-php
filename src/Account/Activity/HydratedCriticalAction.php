@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Details about the a particular security activity for a HubSpot account.
  *
- * @phpstan-type hydrated_critical_action = array{
+ * @phpstan-type HydratedCriticalActionShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   type: string,
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class HydratedCriticalAction implements BaseModel
 {
-    /** @use SdkModel<hydrated_critical_action> */
+    /** @use SdkModel<HydratedCriticalActionShape> */
     use SdkModel;
 
     /**

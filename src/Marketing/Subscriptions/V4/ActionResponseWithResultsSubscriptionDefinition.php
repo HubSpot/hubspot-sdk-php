@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsSubscriptionD
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type action_response_with_results_subscription_definition = array{
+ * @phpstan-type ActionResponseWithResultsSubscriptionDefinitionShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<SubscriptionDefinition>,
  *   startedAt: \DateTimeInterface,
@@ -25,7 +25,7 @@ use HubspotSDK\StandardError;
  */
 final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
 {
-    /** @use SdkModel<action_response_with_results_subscription_definition> */
+    /** @use SdkModel<ActionResponseWithResultsSubscriptionDefinitionShape> */
     use SdkModel;
 
     /**

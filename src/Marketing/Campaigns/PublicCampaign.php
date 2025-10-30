@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type public_campaign = array{
+ * @phpstan-type PublicCampaignShape = array{
  *   id: string,
  *   businessUnits: list<PublicBusinessUnit>,
  *   createdAt: \DateTimeInterface,
@@ -21,7 +21,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class PublicCampaign implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_campaign> */
+    /** @use SdkModel<PublicCampaignShape> */
     use SdkModel;
 
     use SdkResponse;

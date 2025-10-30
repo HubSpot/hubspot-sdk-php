@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_conditional_single_field_dependency = array{
+ * @phpstan-type PublicConditionalSingleFieldDependencyShape = array{
  *   controllingFieldName: string,
  *   controllingFieldValue: string,
  *   dependencyType: value-of<DependencyType>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicConditionalSingleFieldDependency implements BaseModel
 {
-    /** @use SdkModel<public_conditional_single_field_dependency> */
+    /** @use SdkModel<PublicConditionalSingleFieldDependencyShape> */
     use SdkModel;
 
     #[Api]

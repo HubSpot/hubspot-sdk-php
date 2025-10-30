@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Posts->read
  *
- * @phpstan-type post_read_params = array{archived?: bool, property?: string}
+ * @phpstan-type PostReadParamsShape = array{archived?: bool, property?: string}
  */
 final class PostReadParams implements BaseModel
 {
-    /** @use SdkModel<post_read_params> */
+    /** @use SdkModel<PostReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

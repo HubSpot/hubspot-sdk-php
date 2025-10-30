@@ -13,7 +13,7 @@ use HubspotSDK\CRM\FilterGroup;
 /**
  * @see HubspotSDK\CRM\Objects\Orders->search
  *
- * @phpstan-type order_search_params = array{
+ * @phpstan-type OrderSearchParamsShape = array{
  *   after?: string,
  *   filterGroups?: list<FilterGroup>,
  *   limit?: int,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\FilterGroup;
  */
 final class OrderSearchParams implements BaseModel
 {
-    /** @use SdkModel<order_search_params> */
+    /** @use SdkModel<OrderSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type bulk_integrator_object_creation_response = array{
+ * @phpstan-type BulkIntegratorObjectCreationResponseShape = array{
  *   createdObjects: array<string, IntegratorObjectCreationResponse>
  * }
  */
 final class BulkIntegratorObjectCreationResponse implements BaseModel
 {
-    /** @use SdkModel<bulk_integrator_object_creation_response> */
+    /** @use SdkModel<BulkIntegratorObjectCreationResponseShape> */
     use SdkModel;
 
     /** @var array<string, IntegratorObjectCreationResponse> $createdObjects */

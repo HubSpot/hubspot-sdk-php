@@ -16,13 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->get
  *
- * @phpstan-type table_get_params = array{
+ * @phpstan-type TableGetParamsShape = array{
  *   archived?: bool, includeForeignIDs?: bool, isGetLocalizedSchema?: bool
  * }
  */
 final class TableGetParams implements BaseModel
 {
-    /** @use SdkModel<table_get_params> */
+    /** @use SdkModel<TableGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

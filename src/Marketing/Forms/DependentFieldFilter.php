@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\DependentFieldFilter\Operator;
 /**
  * A condition based on customer input.
  *
- * @phpstan-type dependent_field_filter = array{
+ * @phpstan-type DependentFieldFilterShape = array{
  *   operator: value-of<Operator>,
  *   rangeEnd: string,
  *   rangeStart: string,
@@ -22,7 +22,7 @@ use HubspotSDK\Marketing\Forms\DependentFieldFilter\Operator;
  */
 final class DependentFieldFilter implements BaseModel
 {
-    /** @use SdkModel<dependent_field_filter> */
+    /** @use SdkModel<DependentFieldFilterShape> */
     use SdkModel;
 
     /** @var value-of<Operator> $operator */

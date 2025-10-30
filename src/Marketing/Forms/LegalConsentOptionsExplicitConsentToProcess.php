@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess\Type;
 
 /**
- * @phpstan-type legal_consent_options_explicit_consent_to_process = array{
+ * @phpstan-type LegalConsentOptionsExplicitConsentToProcessShape = array{
  *   communicationsCheckboxes: list<LegalConsentCheckbox>,
  *   privacyText: string,
  *   type: value-of<Type>,
@@ -22,7 +22,7 @@ use HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess\Type;
  */
 final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
 {
-    /** @use SdkModel<legal_consent_options_explicit_consent_to_process> */
+    /** @use SdkModel<LegalConsentOptionsExplicitConsentToProcessShape> */
     use SdkModel;
 
     /** @var list<LegalConsentCheckbox> $communicationsCheckboxes */

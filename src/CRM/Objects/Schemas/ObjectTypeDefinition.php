@@ -14,7 +14,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
 /**
  * Defines an object type.
  *
- * @phpstan-type object_type_definition = array{
+ * @phpstan-type ObjectTypeDefinitionShape = array{
  *   id: string,
  *   labels: ObjectTypeDefinitionLabels,
  *   name: string,
@@ -33,7 +33,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  */
 final class ObjectTypeDefinition implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<object_type_definition> */
+    /** @use SdkModel<ObjectTypeDefinitionShape> */
     use SdkModel;
 
     use SdkResponse;

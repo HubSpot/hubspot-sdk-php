@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Files\Files->upload
  *
- * @phpstan-type file_upload_params = array{
+ * @phpstan-type FileUploadParamsShape = array{
  *   charsetHunch?: string,
  *   file?: string,
  *   fileName?: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class FileUploadParams implements BaseModel
 {
-    /** @use SdkModel<file_upload_params> */
+    /** @use SdkModel<FileUploadParamsShape> */
     use SdkModel;
     use SdkParams;
 

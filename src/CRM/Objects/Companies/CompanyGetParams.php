@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Companies->get
  *
- * @phpstan-type company_get_params = array{
+ * @phpstan-type CompanyGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
  *   idProperty?: string,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CompanyGetParams implements BaseModel
 {
-    /** @use SdkModel<company_get_params> */
+    /** @use SdkModel<CompanyGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

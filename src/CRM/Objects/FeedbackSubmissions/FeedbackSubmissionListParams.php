@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\FeedbackSubmissions->list
  *
- * @phpstan-type feedback_submission_list_params = array{
+ * @phpstan-type FeedbackSubmissionListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   associations?: list<string>,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class FeedbackSubmissionListParams implements BaseModel
 {
-    /** @use SdkModel<feedback_submission_list_params> */
+    /** @use SdkModel<FeedbackSubmissionListParamsShape> */
     use SdkModel;
     use SdkParams;
 

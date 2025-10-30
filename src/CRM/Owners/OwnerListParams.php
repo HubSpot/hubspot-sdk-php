@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Owners->list
  *
- * @phpstan-type owner_list_params = array{
+ * @phpstan-type OwnerListParamsShape = array{
  *   after?: string, archived?: bool, email?: string, limit?: int
  * }
  */
 final class OwnerListParams implements BaseModel
 {
-    /** @use SdkModel<owner_list_params> */
+    /** @use SdkModel<OwnerListParamsShape> */
     use SdkModel;
     use SdkParams;
 

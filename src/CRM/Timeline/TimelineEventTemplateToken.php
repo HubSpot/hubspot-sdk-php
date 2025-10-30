@@ -12,7 +12,7 @@ use HubspotSDK\CRM\Timeline\TimelineEventTemplateToken\Type;
 /**
  * State of the token definition.
  *
- * @phpstan-type timeline_event_template_token = array{
+ * @phpstan-type TimelineEventTemplateTokenShape = array{
  *   label: string,
  *   name: string,
  *   type: value-of<Type>,
@@ -24,7 +24,7 @@ use HubspotSDK\CRM\Timeline\TimelineEventTemplateToken\Type;
  */
 final class TimelineEventTemplateToken implements BaseModel
 {
-    /** @use SdkModel<timeline_event_template_token> */
+    /** @use SdkModel<TimelineEventTemplateTokenShape> */
     use SdkModel;
 
     /**

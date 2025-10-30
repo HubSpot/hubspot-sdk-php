@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type public_association_definition = array{id: string, name: string}
+ * @phpstan-type PublicAssociationDefinitionShape = array{id: string, name: string}
  */
 final class PublicAssociationDefinition implements BaseModel
 {
-    /** @use SdkModel<public_association_definition> */
+    /** @use SdkModel<PublicAssociationDefinitionShape> */
     use SdkModel;
 
     #[Api]

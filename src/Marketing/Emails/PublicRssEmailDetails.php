@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * RSS related data if it is a blog or rss email.
  *
- * @phpstan-type public_rss_email_details = array{
+ * @phpstan-type PublicRssEmailDetailsShape = array{
  *   blogEmailType?: string,
  *   blogImageMaxWidth?: int,
  *   blogLayout?: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicRssEmailDetails implements BaseModel
 {
-    /** @use SdkModel<public_rss_email_details> */
+    /** @use SdkModel<PublicRssEmailDetailsShape> */
     use SdkModel;
 
     #[Api(optional: true)]

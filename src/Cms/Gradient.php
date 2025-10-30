@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type gradient_alias = array{
+ * @phpstan-type GradientShape = array{
  *   angle: Angle, colors: list<ColorStop>, sideOrCorner: SideOrCorner
  * }
  */
 final class Gradient implements BaseModel
 {
-    /** @use SdkModel<gradient_alias> */
+    /** @use SdkModel<GradientShape> */
     use SdkModel;
 
     #[Api]

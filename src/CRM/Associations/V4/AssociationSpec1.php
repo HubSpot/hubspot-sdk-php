@@ -12,13 +12,13 @@ use HubspotSDK\CRM\Associations\V4\AssociationSpec1\AssociationCategory;
 /**
  * Defines the type, direction, and details of the relationship between two CRM objects.
  *
- * @phpstan-type association_spec1 = array{
+ * @phpstan-type AssociationSpec1Shape = array{
  *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
  * }
  */
 final class AssociationSpec1 implements BaseModel
 {
-    /** @use SdkModel<association_spec1> */
+    /** @use SdkModel<AssociationSpec1Shape> */
     use SdkModel;
 
     /**

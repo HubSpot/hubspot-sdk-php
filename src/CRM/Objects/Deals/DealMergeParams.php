@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Objects\Deals->merge
  *
- * @phpstan-type deal_merge_params = array{
+ * @phpstan-type DealMergeParamsShape = array{
  *   objectIDToMerge: string, primaryObjectID: string
  * }
  */
 final class DealMergeParams implements BaseModel
 {
-    /** @use SdkModel<deal_merge_params> */
+    /** @use SdkModel<DealMergeParamsShape> */
     use SdkModel;
     use SdkParams;
 

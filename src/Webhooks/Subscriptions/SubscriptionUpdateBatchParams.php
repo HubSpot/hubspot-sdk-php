@@ -15,13 +15,13 @@ use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
  *
  * @see HubspotSDK\Webhooks\Subscriptions->updateBatch
  *
- * @phpstan-type subscription_update_batch_params = array{
+ * @phpstan-type SubscriptionUpdateBatchParamsShape = array{
  *   inputs: list<SubscriptionBatchUpdateRequest>
  * }
  */
 final class SubscriptionUpdateBatchParams implements BaseModel
 {
-    /** @use SdkModel<subscription_update_batch_params> */
+    /** @use SdkModel<SubscriptionUpdateBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

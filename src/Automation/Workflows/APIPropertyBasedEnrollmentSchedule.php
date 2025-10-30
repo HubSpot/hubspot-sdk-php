@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type api_property_based_enrollment_schedule = array{
+ * @phpstan-type APIPropertyBasedEnrollmentScheduleShape = array{
  *   dateProperty: string,
  *   daysDelta: int,
  *   timeOfDay: APITimeOfDay,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class APIPropertyBasedEnrollmentSchedule implements BaseModel
 {
-    /** @use SdkModel<api_property_based_enrollment_schedule> */
+    /** @use SdkModel<APIPropertyBasedEnrollmentScheduleShape> */
     use SdkModel;
 
     #[Api]

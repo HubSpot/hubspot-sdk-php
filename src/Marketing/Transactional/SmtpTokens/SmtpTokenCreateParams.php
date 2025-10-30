@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Transactional\SmtpTokens->create
  *
- * @phpstan-type smtp_token_create_params = array{
+ * @phpstan-type SmtpTokenCreateParamsShape = array{
  *   campaignName: string, createContact: bool
  * }
  */
 final class SmtpTokenCreateParams implements BaseModel
 {
-    /** @use SdkModel<smtp_token_create_params> */
+    /** @use SdkModel<SmtpTokenCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

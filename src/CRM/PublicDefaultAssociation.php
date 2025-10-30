@@ -11,13 +11,13 @@ use HubspotSDK\CRM\Associations\V4\AssociationSpec1;
 use HubspotSDK\PublicObjectID;
 
 /**
- * @phpstan-type public_default_association = array{
+ * @phpstan-type PublicDefaultAssociationShape = array{
  *   associationSpec: AssociationSpec1, from: PublicObjectID, to: PublicObjectID
  * }
  */
 final class PublicDefaultAssociation implements BaseModel
 {
-    /** @use SdkModel<public_default_association> */
+    /** @use SdkModel<PublicDefaultAssociationShape> */
     use SdkModel;
 
     /**

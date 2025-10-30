@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\CRM\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult\Status;
 
 /**
- * @phpstan-type batch_response_public_association_definition_configuration_update_result = array{
+ * @phpstan-type BatchResponsePublicAssociationDefinitionConfigurationUpdateResultShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicAssociationDefinitionConfigurationUpdateResult>,
  *   startedAt: \DateTimeInterface,
@@ -22,7 +22,7 @@ use HubspotSDK\CRM\Associations\Schema\V4\BatchResponsePublicAssociationDefiniti
 final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult implements BaseModel
 {
     /**
-     * @use SdkModel<batch_response_public_association_definition_configuration_update_result>
+     * @use SdkModel<BatchResponsePublicAssociationDefinitionConfigurationUpdateResultShape>
      */
     use SdkModel;
 

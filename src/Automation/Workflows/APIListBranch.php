@@ -17,7 +17,7 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
- * @phpstan-type api_list_branch = array{
+ * @phpstan-type APIListBranchShape = array{
  *   branchName?: string,
  *   connection?: APIConnection,
  *   filterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
@@ -25,7 +25,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  */
 final class APIListBranch implements BaseModel
 {
-    /** @use SdkModel<api_list_branch> */
+    /** @use SdkModel<APIListBranchShape> */
     use SdkModel;
 
     /**

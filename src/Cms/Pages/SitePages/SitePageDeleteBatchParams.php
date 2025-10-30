@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->deleteBatch
  *
- * @phpstan-type site_page_delete_batch_params = array{inputs: list<string>}
+ * @phpstan-type SitePageDeleteBatchParamsShape = array{inputs: list<string>}
  */
 final class SitePageDeleteBatchParams implements BaseModel
 {
-    /** @use SdkModel<site_page_delete_batch_params> */
+    /** @use SdkModel<SitePageDeleteBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

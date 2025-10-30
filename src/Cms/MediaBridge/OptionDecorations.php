@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type option_decorations = array{color: string}
+ * @phpstan-type OptionDecorationsShape = array{color: string}
  */
 final class OptionDecorations implements BaseModel
 {
-    /** @use SdkModel<option_decorations> */
+    /** @use SdkModel<OptionDecorationsShape> */
     use SdkModel;
 
     #[Api]

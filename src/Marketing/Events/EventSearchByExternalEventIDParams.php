@@ -16,11 +16,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events->searchByExternalEventID
  *
- * @phpstan-type event_search_by_external_event_id_params = array{q: string}
+ * @phpstan-type EventSearchByExternalEventIDParamsShape = array{q: string}
  */
 final class EventSearchByExternalEventIDParams implements BaseModel
 {
-    /** @use SdkModel<event_search_by_external_event_id_params> */
+    /** @use SdkModel<EventSearchByExternalEventIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

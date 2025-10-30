@@ -15,14 +15,14 @@ use HubspotSDK\CRM\Associations\Schema\V4\PublicAssociationDefinitionConfigurati
  *
  * @see HubspotSDK\CRM\Associations\Schema\V4\Configurations->batchUpdateByObjectTypes
  *
- * @phpstan-type configuration_batch_update_by_object_types_params = array{
+ * @phpstan-type ConfigurationBatchUpdateByObjectTypesParamsShape = array{
  *   fromObjectType: string,
  *   inputs: list<PublicAssociationDefinitionConfigurationUpdateRequest>,
  * }
  */
 final class ConfigurationBatchUpdateByObjectTypesParams implements BaseModel
 {
-    /** @use SdkModel<configuration_batch_update_by_object_types_params> */
+    /** @use SdkModel<ConfigurationBatchUpdateByObjectTypesParamsShape> */
     use SdkModel;
     use SdkParams;
 

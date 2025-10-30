@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\Messages->getOriginalContent
  *
- * @phpstan-type message_get_original_content_params = array{threadID: string}
+ * @phpstan-type MessageGetOriginalContentParamsShape = array{threadID: string}
  */
 final class MessageGetOriginalContentParams implements BaseModel
 {
-    /** @use SdkModel<message_get_original_content_params> */
+    /** @use SdkModel<MessageGetOriginalContentParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicWideSta
 use HubspotSDK\StandardError;
 
 /**
- * @phpstan-type action_response_with_results_public_wide_status = array{
+ * @phpstan-type ActionResponseWithResultsPublicWideStatusShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicWideStatus>,
  *   startedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class ActionResponseWithResultsPublicWideStatus implements BaseModel
 {
-    /** @use SdkModel<action_response_with_results_public_wide_status> */
+    /** @use SdkModel<ActionResponseWithResultsPublicWideStatusShape> */
     use SdkModel;
 
     /**

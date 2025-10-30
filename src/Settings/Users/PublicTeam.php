@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A team that can be assigned to a user.
  *
- * @phpstan-type public_team = array{
+ * @phpstan-type PublicTeamShape = array{
  *   id: string,
  *   name: string,
  *   secondaryUserIDs: list<string>,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class PublicTeam implements BaseModel
 {
-    /** @use SdkModel<public_team> */
+    /** @use SdkModel<PublicTeamShape> */
     use SdkModel;
 
     /**

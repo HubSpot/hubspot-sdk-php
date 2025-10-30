@@ -11,7 +11,7 @@ use HubspotSDK\Events\EventDefinitions\NumberPropertyOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\NumberPropertyOperation\PropertyType;
 
 /**
- * @phpstan-type number_property_operation = array{
+ * @phpstan-type NumberPropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
  *   operator: value-of<Operator>,
@@ -23,7 +23,7 @@ use HubspotSDK\Events\EventDefinitions\NumberPropertyOperation\PropertyType;
  */
 final class NumberPropertyOperation implements BaseModel
 {
-    /** @use SdkModel<number_property_operation> */
+    /** @use SdkModel<NumberPropertyOperationShape> */
     use SdkModel;
 
     #[Api]

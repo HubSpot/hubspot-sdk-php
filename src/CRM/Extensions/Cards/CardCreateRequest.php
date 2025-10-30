@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * State of card definition to be created.
  *
- * @phpstan-type card_create_request = array{
+ * @phpstan-type CardCreateRequestShape = array{
  *   actions: CardActions,
  *   display: CardDisplayBody,
  *   fetch: CardFetchBody,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CardCreateRequest implements BaseModel
 {
-    /** @use SdkModel<card_create_request> */
+    /** @use SdkModel<CardCreateRequestShape> */
     use SdkModel;
 
     /**

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * Model definition for a Blog Author.
  *
- * @phpstan-type blog_author = array{
+ * @phpstan-type BlogAuthorShape = array{
  *   id: string,
  *   avatar: string,
  *   bio: string,
@@ -36,7 +36,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class BlogAuthor implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<blog_author> */
+    /** @use SdkModel<BlogAuthorShape> */
     use SdkModel;
 
     use SdkResponse;

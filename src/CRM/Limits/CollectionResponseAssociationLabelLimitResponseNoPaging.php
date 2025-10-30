@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type collection_response_association_label_limit_response_no_paging = array{
+ * @phpstan-type CollectionResponseAssociationLabelLimitResponseNoPagingShape = array{
  *   results: list<AssociationLabelLimitResponse>
  * }
  */
 final class CollectionResponseAssociationLabelLimitResponseNoPaging implements BaseModel, ResponseConverter
 {
     /**
-     * @use SdkModel<collection_response_association_label_limit_response_no_paging>
+     * @use SdkModel<CollectionResponseAssociationLabelLimitResponseNoPagingShape>
      */
     use SdkModel;
 

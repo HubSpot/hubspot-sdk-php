@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type subscription_definition = array{
+ * @phpstan-type SubscriptionDefinitionShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   description: string,
@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SubscriptionDefinition implements BaseModel
 {
-    /** @use SdkModel<subscription_definition> */
+    /** @use SdkModel<SubscriptionDefinitionShape> */
     use SdkModel;
 
     /**

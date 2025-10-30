@@ -12,7 +12,7 @@ use HubspotSDK\Files\FileUpdateInput\Access;
 /**
  * Object for updating files.
  *
- * @phpstan-type file_update_input = array{
+ * @phpstan-type FileUpdateInputShape = array{
  *   access?: value-of<Access>,
  *   clearExpires?: bool,
  *   expiresAt?: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\Files\FileUpdateInput\Access;
  */
 final class FileUpdateInput implements BaseModel
 {
-    /** @use SdkModel<file_update_input> */
+    /** @use SdkModel<FileUpdateInputShape> */
     use SdkModel;
 
     /**

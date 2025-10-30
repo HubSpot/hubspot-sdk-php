@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Rows->updateDraft
  *
- * @phpstan-type row_update_draft_params = array{
+ * @phpstan-type RowUpdateDraftParamsShape = array{
  *   tableIDOrName: string,
  *   values: array<string, mixed>,
  *   childTableID?: int,
@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class RowUpdateDraftParams implements BaseModel
 {
-    /** @use SdkModel<row_update_draft_params> */
+    /** @use SdkModel<RowUpdateDraftParamsShape> */
     use SdkModel;
     use SdkParams;
 

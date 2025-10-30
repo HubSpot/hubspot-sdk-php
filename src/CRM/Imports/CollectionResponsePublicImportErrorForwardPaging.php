@@ -12,13 +12,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
- * @phpstan-type collection_response_public_import_error_forward_paging = array{
+ * @phpstan-type CollectionResponsePublicImportErrorForwardPagingShape = array{
  *   results: list<PublicImportError>, paging?: ForwardPaging
  * }
  */
 final class CollectionResponsePublicImportErrorForwardPaging implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<collection_response_public_import_error_forward_paging> */
+    /** @use SdkModel<CollectionResponsePublicImportErrorForwardPagingShape> */
     use SdkModel;
 
     use SdkResponse;

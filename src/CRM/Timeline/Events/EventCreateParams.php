@@ -15,7 +15,7 @@ use HubspotSDK\CRM\Timeline\TimelineEventIFrame;
  *
  * @see HubspotSDK\CRM\Timeline\Events->create
  *
- * @phpstan-type event_create_params = array{
+ * @phpstan-type EventCreateParamsShape = array{
  *   eventTemplateID: string,
  *   tokens: array<string, string>,
  *   id?: string,
@@ -30,7 +30,7 @@ use HubspotSDK\CRM\Timeline\TimelineEventIFrame;
  */
 final class EventCreateParams implements BaseModel
 {
-    /** @use SdkModel<event_create_params> */
+    /** @use SdkModel<EventCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 

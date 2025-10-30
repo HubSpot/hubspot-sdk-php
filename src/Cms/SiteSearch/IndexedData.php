@@ -14,13 +14,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * The indexed data in HubSpot.
  *
- * @phpstan-type indexed_data = array{
+ * @phpstan-type IndexedDataShape = array{
  *   id: string, fields: array<string, IndexedField>, type: value-of<Type>
  * }
  */
 final class IndexedData implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<indexed_data> */
+    /** @use SdkModel<IndexedDataShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Specifies the input for reading a batch of CRM objects, including arrays of object IDs, requested property names (with optional history), and an optional unique identifying property.
  *
- * @phpstan-type batch_read_input_simple_public_object_id = array{
+ * @phpstan-type BatchReadInputSimplePublicObjectIDShape = array{
  *   inputs: list<SimplePublicObjectID>,
  *   properties: list<string>,
  *   propertiesWithHistory: list<string>,
@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class BatchReadInputSimplePublicObjectID implements BaseModel
 {
-    /** @use SdkModel<batch_read_input_simple_public_object_id> */
+    /** @use SdkModel<BatchReadInputSimplePublicObjectIDShape> */
     use SdkModel;
 
     /** @var list<SimplePublicObjectID> $inputs */

@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\SiteSearch->search
  *
- * @phpstan-type site_search_search_params = array{
+ * @phpstan-type SiteSearchSearchParamsShape = array{
  *   autocomplete?: bool,
  *   boostLimit?: float,
  *   boostRecent?: string,
@@ -39,7 +39,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class SiteSearchSearchParams implements BaseModel
 {
-    /** @use SdkModel<site_search_search_params> */
+    /** @use SdkModel<SiteSearchSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

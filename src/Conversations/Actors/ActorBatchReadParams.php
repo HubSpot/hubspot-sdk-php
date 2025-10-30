@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\Actors->batchRead
  *
- * @phpstan-type actor_batch_read_params = array{inputs: list<string>}
+ * @phpstan-type ActorBatchReadParamsShape = array{inputs: list<string>}
  */
 final class ActorBatchReadParams implements BaseModel
 {
-    /** @use SdkModel<actor_batch_read_params> */
+    /** @use SdkModel<ActorBatchReadParamsShape> */
     use SdkModel;
     use SdkParams;
 

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type marketing_event_public_read_response = array{
+ * @phpstan-type MarketingEventPublicReadResponseShape = array{
  *   id: string,
  *   attendees: int,
  *   cancellations: int,
@@ -35,7 +35,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class MarketingEventPublicReadResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<marketing_event_public_read_response> */
+    /** @use SdkModel<MarketingEventPublicReadResponseShape> */
     use SdkModel;
 
     use SdkResponse;

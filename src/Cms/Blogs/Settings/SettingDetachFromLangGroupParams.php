@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Settings->detachFromLangGroup
  *
- * @phpstan-type setting_detach_from_lang_group_params = array{id: string}
+ * @phpstan-type SettingDetachFromLangGroupParamsShape = array{id: string}
  */
 final class SettingDetachFromLangGroupParams implements BaseModel
 {
-    /** @use SdkModel<setting_detach_from_lang_group_params> */
+    /** @use SdkModel<SettingDetachFromLangGroupParamsShape> */
     use SdkModel;
     use SdkParams;
 

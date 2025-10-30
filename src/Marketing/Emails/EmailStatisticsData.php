@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
- * @phpstan-type email_statistics_data = array{
+ * @phpstan-type EmailStatisticsDataShape = array{
  *   counters: array<string, int>,
  *   deviceBreakdown: array<string, array<string, int>>,
  *   qualifierStats: array<string, array<string, int>>,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  */
 final class EmailStatisticsData implements BaseModel
 {
-    /** @use SdkModel<email_statistics_data> */
+    /** @use SdkModel<EmailStatisticsDataShape> */
     use SdkModel;
 
     /**

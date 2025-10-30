@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Spend->delete
  *
- * @phpstan-type spend_delete_params = array{campaignGuid: string}
+ * @phpstan-type SpendDeleteParamsShape = array{campaignGuid: string}
  */
 final class SpendDeleteParams implements BaseModel
 {
-    /** @use SdkModel<spend_delete_params> */
+    /** @use SdkModel<SpendDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

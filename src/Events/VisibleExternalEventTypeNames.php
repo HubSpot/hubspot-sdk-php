@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type visible_external_event_type_names = array{
+ * @phpstan-type VisibleExternalEventTypeNamesShape = array{
  *   eventTypes: list<string>
  * }
  */
 final class VisibleExternalEventTypeNames implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<visible_external_event_type_names> */
+    /** @use SdkModel<VisibleExternalEventTypeNamesShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Campaigns\Assets->delete
  *
- * @phpstan-type asset_delete_params = array{
+ * @phpstan-type AssetDeleteParamsShape = array{
  *   campaignGuid: string, assetType: string
  * }
  */
 final class AssetDeleteParams implements BaseModel
 {
-    /** @use SdkModel<asset_delete_params> */
+    /** @use SdkModel<AssetDeleteParamsShape> */
     use SdkModel;
     use SdkParams;
 

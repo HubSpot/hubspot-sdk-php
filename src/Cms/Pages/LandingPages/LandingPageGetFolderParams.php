@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\LandingPages->getFolder
  *
- * @phpstan-type landing_page_get_folder_params = array{
+ * @phpstan-type LandingPageGetFolderParamsShape = array{
  *   archived?: bool, property?: string
  * }
  */
 final class LandingPageGetFolderParams implements BaseModel
 {
-    /** @use SdkModel<landing_page_get_folder_params> */
+    /** @use SdkModel<LandingPageGetFolderParamsShape> */
     use SdkModel;
     use SdkParams;
 

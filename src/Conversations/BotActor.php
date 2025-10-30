@@ -10,13 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type bot_actor = array{
+ * @phpstan-type BotActorShape = array{
  *   id: string, type: value-of<Type>, avatar?: string, name?: string
  * }
  */
 final class BotActor implements BaseModel
 {
-    /** @use SdkModel<bot_actor> */
+    /** @use SdkModel<BotActorShape> */
     use SdkModel;
 
     #[Api]

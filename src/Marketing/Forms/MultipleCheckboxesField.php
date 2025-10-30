@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\MultipleCheckboxesField\FieldType;
 /**
  * A form field consisting of a set of checkboxes allowing multiple choices to be selected at one time.
  *
- * @phpstan-type multiple_checkboxes_field = array{
+ * @phpstan-type MultipleCheckboxesFieldShape = array{
  *   defaultValues: list<string>,
  *   dependentFields: list<DependentField>,
  *   fieldType: value-of<FieldType>,
@@ -27,7 +27,7 @@ use HubspotSDK\Marketing\Forms\MultipleCheckboxesField\FieldType;
  */
 final class MultipleCheckboxesField implements BaseModel
 {
-    /** @use SdkModel<multiple_checkboxes_field> */
+    /** @use SdkModel<MultipleCheckboxesFieldShape> */
     use SdkModel;
 
     /**

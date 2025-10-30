@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type created_response_labels_between_object_pair = array{
+ * @phpstan-type CreatedResponseLabelsBetweenObjectPairShape = array{
  *   createdResourceID: string, entity: LabelsBetweenObjectPair, location?: string
  * }
  */
 final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
 {
-    /** @use SdkModel<created_response_labels_between_object_pair> */
+    /** @use SdkModel<CreatedResponseLabelsBetweenObjectPairShape> */
     use SdkModel;
 
     #[Api('createdResourceId')]

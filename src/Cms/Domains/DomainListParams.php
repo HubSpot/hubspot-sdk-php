@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Domains->list
  *
- * @phpstan-type domain_list_params = array{
+ * @phpstan-type DomainListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
  *   createdAfter?: \DateTimeInterface,
@@ -29,7 +29,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class DomainListParams implements BaseModel
 {
-    /** @use SdkModel<domain_list_params> */
+    /** @use SdkModel<DomainListParamsShape> */
     use SdkModel;
     use SdkParams;
 

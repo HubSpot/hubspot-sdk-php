@@ -15,13 +15,13 @@ use HubspotSDK\PropertyCreate;
  *
  * @see HubspotSDK\Cms\MediaBridge\Properties->createBatch
  *
- * @phpstan-type property_create_batch_params = array{
+ * @phpstan-type PropertyCreateBatchParamsShape = array{
  *   appID: string, inputs: list<PropertyCreate>
  * }
  */
 final class PropertyCreateBatchParams implements BaseModel
 {
-    /** @use SdkModel<property_create_batch_params> */
+    /** @use SdkModel<PropertyCreateBatchParamsShape> */
     use SdkModel;
     use SdkParams;
 

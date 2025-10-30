@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type hub_db_table_v3 = array{
+ * @phpstan-type HubDBTableV3Shape = array{
  *   deletedAt: \DateTimeInterface,
  *   label: string,
  *   name: string,
@@ -34,7 +34,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class HubDBTableV3 implements BaseModel
 {
-    /** @use SdkModel<hub_db_table_v3> */
+    /** @use SdkModel<HubDBTableV3Shape> */
     use SdkModel;
 
     #[Api]

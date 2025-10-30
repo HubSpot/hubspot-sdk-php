@@ -13,7 +13,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * A user.
  *
- * @phpstan-type public_user = array{
+ * @phpstan-type PublicUserShape = array{
  *   id: string,
  *   email: string,
  *   firstName?: string,
@@ -28,7 +28,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class PublicUser implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<public_user> */
+    /** @use SdkModel<PublicUserShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Blogs\Authors->createLanguageVariation
  *
- * @phpstan-type author_create_language_variation_params = array{
+ * @phpstan-type AuthorCreateLanguageVariationParamsShape = array{
  *   id: string,
  *   blogAuthor: BlogAuthor,
  *   language?: string,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class AuthorCreateLanguageVariationParams implements BaseModel
 {
-    /** @use SdkModel<author_create_language_variation_params> */
+    /** @use SdkModel<AuthorCreateLanguageVariationParamsShape> */
     use SdkModel;
     use SdkParams;
 

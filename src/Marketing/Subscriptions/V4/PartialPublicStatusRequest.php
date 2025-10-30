@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PartialPublicStatusRequest\LegalBasis;
 use HubspotSDK\Marketing\Subscriptions\V4\PartialPublicStatusRequest\StatusState;
 
 /**
- * @phpstan-type partial_public_status_request = array{
+ * @phpstan-type PartialPublicStatusRequestShape = array{
  *   channel: value-of<Channel>,
  *   statusState: value-of<StatusState>,
  *   subscriptionID: int,
@@ -22,7 +22,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PartialPublicStatusRequest\StatusState
  */
 final class PartialPublicStatusRequest implements BaseModel
 {
-    /** @use SdkModel<partial_public_status_request> */
+    /** @use SdkModel<PartialPublicStatusRequestShape> */
     use SdkModel;
 
     /**

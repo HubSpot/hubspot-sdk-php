@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type quick_reply = array{
+ * @phpstan-type QuickReplyShape = array{
  *   value: string, valueType: string, label?: string
  * }
  */
 final class QuickReply implements BaseModel
 {
-    /** @use SdkModel<quick_reply> */
+    /** @use SdkModel<QuickReplyShape> */
     use SdkModel;
 
     #[Api]

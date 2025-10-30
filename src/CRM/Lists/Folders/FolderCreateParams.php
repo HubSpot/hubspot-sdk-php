@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\CRM\Lists\Folders->create
  *
- * @phpstan-type folder_create_params = array{
+ * @phpstan-type FolderCreateParamsShape = array{
  *   name: string, parentFolderID?: string
  * }
  */
 final class FolderCreateParams implements BaseModel
 {
-    /** @use SdkModel<folder_create_params> */
+    /** @use SdkModel<FolderCreateParamsShape> */
     use SdkModel;
     use SdkParams;
 
