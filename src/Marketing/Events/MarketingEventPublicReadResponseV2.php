@@ -13,7 +13,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * @phpstan-type MarketingEventPublicReadResponseV2Shape = array{
  *   createdAt: \DateTimeInterface,
- *   customProperties: list<CRMPropertyWrapper>,
+ *   customProperties: list<CrmPropertyWrapper>,
  *   eventName: string,
  *   objectID: string,
  *   updatedAt: \DateTimeInterface,
@@ -44,8 +44,8 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    /** @var list<CRMPropertyWrapper> $customProperties */
-    #[Api(list: CRMPropertyWrapper::class)]
+    /** @var list<CrmPropertyWrapper> $customProperties */
+    #[Api(list: CrmPropertyWrapper::class)]
     public array $customProperties;
 
     #[Api]
@@ -137,7 +137,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CRMPropertyWrapper> $customProperties
+     * @param list<CrmPropertyWrapper> $customProperties
      */
     public static function with(
         \DateTimeInterface $createdAt,
@@ -197,7 +197,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
     }
 
     /**
-     * @param list<CRMPropertyWrapper> $customProperties
+     * @param list<CrmPropertyWrapper> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {

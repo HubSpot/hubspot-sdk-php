@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIContactFlow\Action;
-use HubspotSDK\Automation\Workflows\APIContactFlow\CRMObjectCreationStatus;
+use HubspotSDK\Automation\Workflows\APIContactFlow\CrmObjectCreationStatus;
 use HubspotSDK\Automation\Workflows\APIContactFlow\DataSource;
 use HubspotSDK\Automation\Workflows\APIContactFlow\FlowType;
 use HubspotSDK\Automation\Workflows\APIContactFlow\Type;
@@ -28,7 +28,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   blockedDates: list<APIBlockedDate>,
  *   canEnrollFromSalesforce: bool,
  *   createdAt: \DateTimeInterface,
- *   crmObjectCreationStatus: value-of<CRMObjectCreationStatus>,
+ *   crmObjectCreationStatus: value-of<CrmObjectCreationStatus>,
  *   customProperties: array<string, string>,
  *   dataSources: list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource>,
  *   flowType: value-of<FlowType>,
@@ -75,8 +75,8 @@ final class APIContactFlow implements BaseModel
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    /** @var value-of<CRMObjectCreationStatus> $crmObjectCreationStatus */
-    #[Api(enum: CRMObjectCreationStatus::class)]
+    /** @var value-of<CrmObjectCreationStatus> $crmObjectCreationStatus */
+    #[Api(enum: CrmObjectCreationStatus::class)]
     public string $crmObjectCreationStatus;
 
     /** @var array<string, string> $customProperties */
@@ -182,7 +182,7 @@ final class APIContactFlow implements BaseModel
      *   ->withBlockedDates(...)
      *   ->withCanEnrollFromSalesforce(...)
      *   ->withCreatedAt(...)
-     *   ->withCRMObjectCreationStatus(...)
+     *   ->withCrmObjectCreationStatus(...)
      *   ->withCustomProperties(...)
      *   ->withDataSources(...)
      *   ->withFlowType(...)
@@ -208,7 +208,7 @@ final class APIContactFlow implements BaseModel
      *
      * @param list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction> $actions
      * @param list<APIBlockedDate> $blockedDates
-     * @param CRMObjectCreationStatus|value-of<CRMObjectCreationStatus> $crmObjectCreationStatus
+     * @param CrmObjectCreationStatus|value-of<CrmObjectCreationStatus> $crmObjectCreationStatus
      * @param array<string, string> $customProperties
      * @param list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource> $dataSources
      * @param FlowType|value-of<FlowType> $flowType
@@ -222,7 +222,7 @@ final class APIContactFlow implements BaseModel
         array $blockedDates,
         bool $canEnrollFromSalesforce,
         \DateTimeInterface $createdAt,
-        CRMObjectCreationStatus|string $crmObjectCreationStatus,
+        CrmObjectCreationStatus|string $crmObjectCreationStatus,
         array $customProperties,
         array $dataSources,
         FlowType|string $flowType,
@@ -325,10 +325,10 @@ final class APIContactFlow implements BaseModel
     }
 
     /**
-     * @param CRMObjectCreationStatus|value-of<CRMObjectCreationStatus> $crmObjectCreationStatus
+     * @param CrmObjectCreationStatus|value-of<CrmObjectCreationStatus> $crmObjectCreationStatus
      */
-    public function withCRMObjectCreationStatus(
-        CRMObjectCreationStatus|string $crmObjectCreationStatus
+    public function withCrmObjectCreationStatus(
+        CrmObjectCreationStatus|string $crmObjectCreationStatus
     ): self {
         $obj = clone $this;
         $obj['crmObjectCreationStatus'] = $crmObjectCreationStatus;

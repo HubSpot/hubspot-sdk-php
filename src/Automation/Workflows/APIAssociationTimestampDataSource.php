@@ -28,6 +28,9 @@ final class APIAssociationTimestampDataSource implements BaseModel
     #[Api(enum: AssociationCategory::class)]
     public string $associationCategory;
 
+    /**
+     * The ID representing the type of association.
+     */
     #[Api('associationTypeId')]
     public int $associationTypeID;
 
@@ -109,6 +112,9 @@ final class APIAssociationTimestampDataSource implements BaseModel
         return $obj;
     }
 
+    /**
+     * The ID representing the type of association.
+     */
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;

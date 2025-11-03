@@ -9,7 +9,7 @@ use HubspotSDK\Cms\Blogs\Posts\BlogPost\ContentTypeCategory;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost\Language;
 use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Cms\Pages\ContentLanguageVariation;
+use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
@@ -75,7 +75,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   tagIDs: list<int>,
  *   themeSettingsValues: array<string, mixed>,
  *   translatedFromID: string,
- *   translations: array<string, ContentLanguageVariation>,
+ *   translations: array<string, PagesContentLanguageVariation>,
  *   updated: \DateTimeInterface,
  *   updatedByID: string,
  *   url: string,
@@ -389,8 +389,8 @@ final class BlogPost implements BaseModel, ResponseConverter
     #[Api('translatedFromId')]
     public string $translatedFromID;
 
-    /** @var array<string, ContentLanguageVariation> $translations */
-    #[Api(map: ContentLanguageVariation::class)]
+    /** @var array<string, PagesContentLanguageVariation> $translations */
+    #[Api(map: PagesContentLanguageVariation::class)]
     public array $translations;
 
     #[Api]
@@ -586,7 +586,7 @@ final class BlogPost implements BaseModel, ResponseConverter
      * @param list<mixed> $publicAccessRules
      * @param list<int> $tagIDs
      * @param array<string, mixed> $themeSettingsValues
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param array<string, mixed> $widgetContainers
      * @param array<string, mixed> $widgets
      */
@@ -1305,7 +1305,7 @@ final class BlogPost implements BaseModel, ResponseConverter
     }
 
     /**
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      */
     public function withTranslations(array $translations): self
     {

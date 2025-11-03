@@ -51,7 +51,7 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
      *
      * ```
      * (new PublicWhatsAppTemplateMetadata)
-     *   ->withCRMObjectIDs(...)
+     *   ->withCrmObjectIDs(...)
      *   ->withMappedTemplateID(...)
      *   ->withParameters(...)
      *   ->withType(...)
@@ -90,7 +90,7 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
     /**
      * @param array<string, int> $crmObjectIDs
      */
-    public function withCRMObjectIDs(array $crmObjectIDs): self
+    public function withCrmObjectIDs(array $crmObjectIDs): self
     {
         $obj = clone $this;
         $obj->crmObjectIDs = $crmObjectIDs;

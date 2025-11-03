@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CollectionResponsePublicMessageForwardPaging;
 
+use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\PublicAssignmentMessage;
 use HubspotSDK\Conversations\PublicComment;
-use HubspotSDK\Conversations\PublicConversationsMessage;
 use HubspotSDK\Conversations\PublicThreadInboxChange;
 use HubspotSDK\Conversations\PublicThreadStatusChange;
 use HubspotSDK\Conversations\PublicWelcomeMessage;
@@ -25,7 +25,7 @@ final class Result implements ConverterSource
     public static function variants(): array
     {
         return [
-            PublicConversationsMessage::class,
+            ConversationsPublicConversationsMessage::class,
             PublicComment::class,
             PublicWelcomeMessage::class,
             PublicAssignmentMessage::class,

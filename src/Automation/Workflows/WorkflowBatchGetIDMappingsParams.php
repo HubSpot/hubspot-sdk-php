@@ -11,8 +11,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve the IDs of v3 workflows that have been migrated to the v4 API.
- *
  * @see HubspotSDK\Automation\Workflows->batchGetIDMappings
  *
  * @phpstan-type WorkflowBatchGetIDMappingsParamsShape = array{

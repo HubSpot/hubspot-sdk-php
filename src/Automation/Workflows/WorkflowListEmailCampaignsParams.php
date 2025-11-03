@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve emails sent by a workflow by ID.
- *
  * @see HubspotSDK\Automation\Workflows->listEmailCampaigns
  *
  * @phpstan-type WorkflowListEmailCampaignsParamsShape = array{
@@ -24,26 +22,16 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     */
     #[Api(optional: true)]
     public ?string $after;
 
     #[Api(optional: true)]
     public ?string $before;
 
-    /**
-     * The ID of the workflow.
-     *
-     * @var list<string>|null $flowID
-     */
+    /** @var list<string>|null $flowID */
     #[Api(list: 'string', optional: true)]
     public ?array $flowID;
 
-    /**
-     * The maximum number of results to display per page.
-     */
     #[Api(optional: true)]
     public ?int $limit;
 
@@ -75,9 +63,6 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -95,8 +80,6 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
     }
 
     /**
-     * The ID of the workflow.
-     *
      * @param list<string> $flowID
      */
     public function withFlowID(array $flowID): self
@@ -107,9 +90,6 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * The maximum number of results to display per page.
-     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;

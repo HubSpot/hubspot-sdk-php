@@ -43,8 +43,8 @@ interface WorkflowsContract
     /**
      * @api
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit the maximum number of results to display per page
+     * @param string $after
+     * @param int $limit
      *
      * @return Page<APIFlowListing>
      *
@@ -141,10 +141,10 @@ interface WorkflowsContract
     /**
      * @api
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param string $after
      * @param string $before
-     * @param list<string> $flowID the ID of the workflow
-     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $flowID
+     * @param int $limit
      *
      * @throws APIException
      */

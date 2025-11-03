@@ -6,10 +6,10 @@ namespace HubspotSDK\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\CollectionResponseWithTotalPublicChannelAccountForwardPaging;
+use HubspotSDK\Conversations\ConversationsPublicChannelAccount;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountCreateParams;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountGetParams;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
-use HubspotSDK\Conversations\PublicChannelAccount;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
@@ -43,7 +43,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         $name,
         $deliveryIdentifier = omit,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccount {
+    ): ConversationsPublicChannelAccount {
         $params = [
             'authorized' => $authorized,
             'inboxID' => $inboxID,
@@ -65,7 +65,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         string $channelID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): PublicChannelAccount {
+    ): ConversationsPublicChannelAccount {
         [$parsed, $options] = ChannelAccountCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -79,7 +79,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
             ],
             body: (object) $parsed,
             options: $options,
-            convert: PublicChannelAccount::class,
+            convert: ConversationsPublicChannelAccount::class,
         );
     }
 
@@ -100,7 +100,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         $authorized = omit,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccount {
+    ): ConversationsPublicChannelAccount {
         $params = [
             'channelID' => $channelID, 'authorized' => $authorized, 'name' => $name,
         ];
@@ -119,7 +119,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         string $channelAccountID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccount {
+    ): ConversationsPublicChannelAccount {
         [$parsed, $options] = ChannelAccountUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -137,7 +137,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
             ],
             body: (object) array_diff_key($parsed, ['channelID']),
             options: $options,
-            convert: PublicChannelAccount::class,
+            convert: ConversationsPublicChannelAccount::class,
         );
     }
 
@@ -176,7 +176,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         string $channelAccountID,
         $channelID,
         ?RequestOptions $requestOptions = null
-    ): PublicChannelAccount {
+    ): ConversationsPublicChannelAccount {
         $params = ['channelID' => $channelID];
 
         return $this->getRaw($channelAccountID, $params, $requestOptions);
@@ -193,7 +193,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         string $channelAccountID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccount {
+    ): ConversationsPublicChannelAccount {
         [$parsed, $options] = ChannelAccountGetParams::parseRequest(
             $params,
             $requestOptions
@@ -210,7 +210,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
                 $channelAccountID,
             ],
             options: $options,
-            convert: PublicChannelAccount::class,
+            convert: ConversationsPublicChannelAccount::class,
         );
     }
 }

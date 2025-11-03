@@ -22,7 +22,7 @@ final class FunctionsTest extends TestCase
 
         $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
-            accessToken: 'pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+            accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,
         );
 
@@ -89,50 +89,6 @@ final class FunctionsTest extends TestCase
             definitionID: 'definitionId',
             functionType: 'PRE_ACTION_EXECUTION',
         );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testArchiveByFunctionType(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this
-            ->client
-            ->automation
-            ->actions
-            ->functions
-            ->archiveByFunctionType(
-                'PRE_ACTION_EXECUTION',
-                appID: 0,
-                definitionID: 'definitionId'
-            )
-        ;
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testArchiveByFunctionTypeWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this
-            ->client
-            ->automation
-            ->actions
-            ->functions
-            ->archiveByFunctionType(
-                'PRE_ACTION_EXECUTION',
-                appID: 0,
-                definitionID: 'definitionId'
-            )
-        ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -220,6 +176,84 @@ final class FunctionsTest extends TestCase
     }
 
     #[Test]
+    public function testDeleteByFunctionType(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this
+            ->client
+            ->automation
+            ->actions
+            ->functions
+            ->deleteByFunctionType(
+                'PRE_ACTION_EXECUTION',
+                appID: 0,
+                definitionID: 'definitionId'
+            )
+        ;
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testDeleteByFunctionTypeWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this
+            ->client
+            ->automation
+            ->actions
+            ->functions
+            ->deleteByFunctionType(
+                'PRE_ACTION_EXECUTION',
+                appID: 0,
+                definitionID: 'definitionId'
+            )
+        ;
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testGet(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->automation->actions->functions->get(
+            'functionId',
+            appID: 0,
+            definitionID: 'definitionId',
+            functionType: 'PRE_ACTION_EXECUTION',
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testGetWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->automation->actions->functions->get(
+            'functionId',
+            appID: 0,
+            definitionID: 'definitionId',
+            functionType: 'PRE_ACTION_EXECUTION',
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
     public function testGetByFunctionType(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -246,40 +280,6 @@ final class FunctionsTest extends TestCase
             'PRE_ACTION_EXECUTION',
             appID: 0,
             definitionID: 'definitionId'
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testRead(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->automation->actions->functions->read(
-            'functionId',
-            appID: 0,
-            definitionID: 'definitionId',
-            functionType: 'PRE_ACTION_EXECUTION',
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testReadWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->automation->actions->functions->read(
-            'functionId',
-            appID: 0,
-            definitionID: 'definitionId',
-            functionType: 'PRE_ACTION_EXECUTION',
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

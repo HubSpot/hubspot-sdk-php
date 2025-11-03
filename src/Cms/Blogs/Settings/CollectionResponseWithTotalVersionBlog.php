@@ -9,13 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
-use HubspotSDK\Marketing\Emails\Paging;
+use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * Response object for collections of blog versions with pagination information.
  *
  * @phpstan-type CollectionResponseWithTotalVersionBlogShape = array{
- *   results: list<VersionBlog>, total: int, paging?: Paging
+ *   results: list<VersionBlog>, total: int, paging?: EmailsPaging
  * }
  */
 final class CollectionResponseWithTotalVersionBlog implements BaseModel, ResponseConverter
@@ -43,7 +43,7 @@ final class CollectionResponseWithTotalVersionBlog implements BaseModel, Respons
      * Contains information pagination of results.
      */
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?EmailsPaging $paging;
 
     /**
      * `new CollectionResponseWithTotalVersionBlog()` is missing required properties by the API.
@@ -74,7 +74,7 @@ final class CollectionResponseWithTotalVersionBlog implements BaseModel, Respons
     public static function with(
         array $results,
         int $total,
-        ?Paging $paging = null
+        ?EmailsPaging $paging = null
     ): self {
         $obj = new self;
 
@@ -113,7 +113,7 @@ final class CollectionResponseWithTotalVersionBlog implements BaseModel, Respons
     /**
      * Contains information pagination of results.
      */
-    public function withPaging(Paging $paging): self
+    public function withPaging(EmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

@@ -51,9 +51,6 @@ final class EventListParams implements BaseModel
     #[Api(optional: true)]
     public ?string $after;
 
-    /**
-     * Pagination cursor for backward navigation. Retrieves events occurring before the specified cursor position. Note: Currently only forward pagination with after is supported.
-     */
     #[Api(optional: true)]
     public ?string $before;
 
@@ -176,9 +173,6 @@ final class EventListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * Pagination cursor for backward navigation. Retrieves events occurring before the specified cursor position. Note: Currently only forward pagination with after is supported.
-     */
     public function withBefore(string $before): self
     {
         $obj = clone $this;

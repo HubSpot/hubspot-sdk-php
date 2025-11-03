@@ -22,22 +22,14 @@ final class APIMonthlyRelativeDaysEnrollmentSchedule implements BaseModel
     /** @use SdkModel<APIMonthlyRelativeDaysEnrollmentScheduleShape> */
     use SdkModel;
 
-    /**
-     * Can be either "LAST_DAY_OF_MONTH" or "FIRST_MONDAY_OF_MONTH".
-     *
-     * @var value-of<MonthlyRelativeDays> $monthlyRelativeDays
-     */
+    /** @var value-of<MonthlyRelativeDays> $monthlyRelativeDays */
     #[Api(enum: MonthlyRelativeDays::class)]
     public string $monthlyRelativeDays;
 
     #[Api]
     public APITimeOfDay $timeOfDay;
 
-    /**
-     * The type of enrollment schedule this is, can be: "DAILY", "WEEKLY", "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -88,8 +80,6 @@ final class APIMonthlyRelativeDaysEnrollmentSchedule implements BaseModel
     }
 
     /**
-     * Can be either "LAST_DAY_OF_MONTH" or "FIRST_MONDAY_OF_MONTH".
-     *
      * @param MonthlyRelativeDays|value-of<MonthlyRelativeDays> $monthlyRelativeDays
      */
     public function withMonthlyRelativeDays(
@@ -110,8 +100,6 @@ final class APIMonthlyRelativeDaysEnrollmentSchedule implements BaseModel
     }
 
     /**
-     * The type of enrollment schedule this is, can be: "DAILY", "WEEKLY", "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

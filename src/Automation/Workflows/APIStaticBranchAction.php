@@ -24,15 +24,9 @@ final class APIStaticBranchAction implements BaseModel
     /** @use SdkModel<APIStaticBranchActionShape> */
     use SdkModel;
 
-    /**
-     * The ID for this action.
-     */
     #[Api('actionId')]
     public string $actionID;
 
-    /**
-     * The input value to branch off of.
-     */
     #[Api]
     public APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue;
 
@@ -40,20 +34,13 @@ final class APIStaticBranchAction implements BaseModel
     #[Api(list: APIStaticBranch::class)]
     public array $staticBranches;
 
-    /**
-     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
     #[Api(optional: true)]
     public ?APIConnection $defaultBranch;
 
-    /**
-     * The name of the default branch, the branch that gets executed if `inputValue` does not match any of the `staticBranches`.
-     */
     #[Api(optional: true)]
     public ?string $defaultBranchName;
 
@@ -111,9 +98,6 @@ final class APIStaticBranchAction implements BaseModel
         return $obj;
     }
 
-    /**
-     * The ID for this action.
-     */
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
@@ -122,9 +106,6 @@ final class APIStaticBranchAction implements BaseModel
         return $obj;
     }
 
-    /**
-     * The input value to branch off of.
-     */
     public function withInputValue(
         APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue,
     ): self {
@@ -146,8 +127,6 @@ final class APIStaticBranchAction implements BaseModel
     }
 
     /**
-     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -166,9 +145,6 @@ final class APIStaticBranchAction implements BaseModel
         return $obj;
     }
 
-    /**
-     * The name of the default branch, the branch that gets executed if `inputValue` does not match any of the `staticBranches`.
-     */
     public function withDefaultBranchName(string $defaultBranchName): self
     {
         $obj = clone $this;

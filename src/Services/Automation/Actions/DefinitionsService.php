@@ -6,8 +6,8 @@ namespace HubspotSDK\Services\Automation\Actions;
 
 use HubspotSDK\Automation\Actions\Definitions\DefinitionCreateParams;
 use HubspotSDK\Automation\Actions\Definitions\DefinitionDeleteParams;
+use HubspotSDK\Automation\Actions\Definitions\DefinitionGetParams;
 use HubspotSDK\Automation\Actions\Definitions\DefinitionListParams;
-use HubspotSDK\Automation\Actions\Definitions\DefinitionReadParams;
 use HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams;
 use HubspotSDK\Automation\Actions\InputFieldDefinition;
 use HubspotSDK\Automation\Actions\OutputFieldDefinition;
@@ -300,7 +300,7 @@ final class DefinitionsService implements DefinitionsContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         string $definitionID,
         $appID,
         $archived = omit,
@@ -308,7 +308,7 @@ final class DefinitionsService implements DefinitionsContract
     ): PublicActionDefinition {
         $params = ['appID' => $appID, 'archived' => $archived];
 
-        return $this->readRaw($definitionID, $params, $requestOptions);
+        return $this->getRaw($definitionID, $params, $requestOptions);
     }
 
     /**
@@ -318,12 +318,12 @@ final class DefinitionsService implements DefinitionsContract
      *
      * @throws APIException
      */
-    public function readRaw(
+    public function getRaw(
         string $definitionID,
         array $params,
         ?RequestOptions $requestOptions = null
     ): PublicActionDefinition {
-        [$parsed, $options] = DefinitionReadParams::parseRequest(
+        [$parsed, $options] = DefinitionGetParams::parseRequest(
             $params,
             $requestOptions
         );

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  * Response object for collections of marketing emails with pagination information.
  *
  * @phpstan-type CollectionResponseWithTotalVersionPublicEmailShape = array{
- *   results: list<VersionPublicEmail>, total: int, paging?: Paging
+ *   results: list<VersionPublicEmail>, total: int, paging?: EmailsPaging
  * }
  */
 final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, ResponseConverter
@@ -42,7 +42,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, 
      * Contains information pagination of results.
      */
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?EmailsPaging $paging;
 
     /**
      * `new CollectionResponseWithTotalVersionPublicEmail()` is missing required properties by the API.
@@ -75,7 +75,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, 
     public static function with(
         array $results,
         int $total,
-        ?Paging $paging = null
+        ?EmailsPaging $paging = null
     ): self {
         $obj = new self;
 
@@ -114,7 +114,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel, 
     /**
      * Contains information pagination of results.
      */
-    public function withPaging(Paging $paging): self
+    public function withPaging(EmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

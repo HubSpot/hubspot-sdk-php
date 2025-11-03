@@ -285,7 +285,7 @@ final class URLRedirectsService implements URLRedirectsContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         string $urlRedirectID,
         ?RequestOptions $requestOptions = null
     ): URLMapping {

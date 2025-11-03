@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Automation\Actions;
 
 use HubspotSDK\Automation\Actions\PublicActionRevision;
+use HubspotSDK\Automation\Actions\Revisions\RevisionGetParams;
 use HubspotSDK\Automation\Actions\Revisions\RevisionListParams;
-use HubspotSDK\Automation\Actions\Revisions\RevisionReadParams;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -91,7 +91,7 @@ final class RevisionsService implements RevisionsContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         string $revisionID,
         $appID,
         $definitionID,
@@ -99,7 +99,7 @@ final class RevisionsService implements RevisionsContract
     ): PublicActionRevision {
         $params = ['appID' => $appID, 'definitionID' => $definitionID];
 
-        return $this->readRaw($revisionID, $params, $requestOptions);
+        return $this->getRaw($revisionID, $params, $requestOptions);
     }
 
     /**
@@ -109,12 +109,12 @@ final class RevisionsService implements RevisionsContract
      *
      * @throws APIException
      */
-    public function readRaw(
+    public function getRaw(
         string $revisionID,
         array $params,
         ?RequestOptions $requestOptions = null
     ): PublicActionRevision {
-        [$parsed, $options] = RevisionReadParams::parseRequest(
+        [$parsed, $options] = RevisionGetParams::parseRequest(
             $params,
             $requestOptions
         );

@@ -27,7 +27,7 @@
     "preferred-install": "dist",
     "sort-packages": true
   },
-  "description": "Hub Spot PHP SDK",
+  "description": "Hubspot PHP SDK",
   "name": "hubspot/hubspot-sdk",
   "require": {
     "php": "^8.1",

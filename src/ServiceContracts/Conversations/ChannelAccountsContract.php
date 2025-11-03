@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Conversations;
 
 use HubspotSDK\Conversations\CollectionResponseWithTotalPublicChannelAccountForwardPaging;
-use HubspotSDK\Conversations\PublicChannelAccount;
+use HubspotSDK\Conversations\ConversationsPublicChannelAccount;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -28,5 +28,5 @@ interface ChannelAccountsContract
     public function get(
         string $channelAccountID,
         ?RequestOptions $requestOptions = null
-    ): PublicChannelAccount;
+    ): ConversationsPublicChannelAccount;
 }

@@ -21,7 +21,7 @@ interface EventsContract
      *
      * @param list<string> $id ID of an event instance. IDs are 1:1 with event instances. If you provide this filter and additional filters, the other filters must match the values on the event instance to yield results.
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param string $before Pagination cursor for backward navigation. Retrieves events occurring before the specified cursor position. Note: Currently only forward pagination with after is supported.
+     * @param string $before
      * @param string $eventType The event type name. You can retrieve available event types using the [event types endpoint](#get-%2Fevents%2Fv3%2Fevents%2Fevent-types).
      * @param int $limit the maximum number of results to display per page
      * @param int $objectID The ID of the CRM Object to filter event instances on. When including this parameter, you must also include the `objectType` parameter.

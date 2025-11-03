@@ -24,7 +24,7 @@ final class WorkflowsTest extends TestCase
 
         $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
-            accessToken: 'pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+            accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,
         );
 
@@ -127,7 +127,7 @@ final class WorkflowsTest extends TestCase
         $result = $this->client->automation->workflows->batchGetIDMappings(
             [
                 APIFlowBatchFetchMigrationFlowIDCoordinate::with(
-                    flowMigrationStatuses: '12345',
+                    flowMigrationStatuses: 'flowMigrationStatuses',
                     type: 'FLOW_ID'
                 ),
             ],
@@ -146,7 +146,7 @@ final class WorkflowsTest extends TestCase
         $result = $this->client->automation->workflows->batchGetIDMappings(
             [
                 APIFlowBatchFetchMigrationFlowIDCoordinate::with(
-                    flowMigrationStatuses: '12345',
+                    flowMigrationStatuses: 'flowMigrationStatuses',
                     type: 'FLOW_ID'
                 ),
             ],

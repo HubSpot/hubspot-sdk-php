@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieves all the previous versions of a Blog.
- *
  * @see HubspotSDK\Cms\Blogs\Settings->listRevisions
  *
  * @phpstan-type SettingListRevisionsParamsShape = array{
@@ -24,18 +22,12 @@ final class SettingListRevisionsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     */
     #[Api(optional: true)]
     public ?string $after;
 
     #[Api(optional: true)]
     public ?string $before;
 
-    /**
-     * The maximum number of results to return. Default is 100.
-     */
     #[Api(optional: true)]
     public ?int $limit;
 
@@ -63,9 +55,6 @@ final class SettingListRevisionsParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -82,9 +71,6 @@ final class SettingListRevisionsParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * The maximum number of results to return. Default is 100.
-     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;

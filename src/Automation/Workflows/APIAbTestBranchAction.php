@@ -19,9 +19,6 @@ final class APIAbTestBranchAction implements BaseModel
     /** @use SdkModel<APIAbTestBranchActionShape> */
     use SdkModel;
 
-    /**
-     * The ID for this action.
-     */
     #[Api('actionId')]
     public string $actionID;
 
@@ -29,11 +26,7 @@ final class APIAbTestBranchAction implements BaseModel
     #[Api(list: APIConnection::class)]
     public array $testBranches;
 
-    /**
-     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -81,9 +74,6 @@ final class APIAbTestBranchAction implements BaseModel
         return $obj;
     }
 
-    /**
-     * The ID for this action.
-     */
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
@@ -104,8 +94,6 @@ final class APIAbTestBranchAction implements BaseModel
     }
 
     /**
-     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

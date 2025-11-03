@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Create a new language variation from an existing blog.
- *
  * @see HubspotSDK\Cms\Blogs\Settings->createLanguageVariation
  *
  * @phpstan-type SettingCreateLanguageVariationParamsShape = array{

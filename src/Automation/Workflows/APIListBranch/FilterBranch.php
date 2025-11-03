@@ -16,9 +16,6 @@ use HubspotSDK\PublicPropertyAssociationFilterBranch;
 use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
-/**
- * The list criteria that determine when to execute this branch. The first matching branch will execute.
- */
 final class FilterBranch implements ConverterSource
 {
     use SdkUnion;

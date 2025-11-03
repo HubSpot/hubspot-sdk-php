@@ -11,7 +11,7 @@ use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
 use HubspotSDK\Cms\Blogs\Posts\VersionBlogPost;
 use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Cms\Pages\ContentLanguageVariation;
+use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -79,7 +79,7 @@ interface PostsContract
      * @param list<int> $tagIDs the IDs of the tags associated with this post
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary blog post that this post was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated the post
      * @param string $url a generated field representing the URL of this blog post
@@ -227,7 +227,7 @@ interface PostsContract
      * @param list<int> $tagIDs the IDs of the tags associated with this post
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary blog post that this post was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated the post
      * @param string $url a generated field representing the URL of this blog post
@@ -503,6 +503,34 @@ interface PostsContract
     /**
      * @api
      *
+     * @param bool $archived Specifies whether to return deleted blog posts. Defaults to `false`.
+     * @param string $property specific properties to return
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $objectID,
+        $archived = omit,
+        $property = omit,
+        ?RequestOptions $requestOptions = null,
+    ): BlogPost;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        string $objectID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): BlogPost;
+
+    /**
+     * @api
+     *
      * @throws APIException
      */
     public function getDraftByID(
@@ -579,34 +607,6 @@ interface PostsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed;
-
-    /**
-     * @api
-     *
-     * @param bool $archived Specifies whether to return deleted blog posts. Defaults to `false`.
-     * @param string $property specific properties to return
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $objectID,
-        $archived = omit,
-        $property = omit,
-        ?RequestOptions $requestOptions = null,
-    ): BlogPost;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BlogPost;
 
     /**
      * @api
@@ -779,7 +779,7 @@ interface PostsContract
      * @param list<int> $tagIDs the IDs of the tags associated with this post
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary blog post that this post was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated the post
      * @param string $url a generated field representing the URL of this blog post

@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Generates a new visitor identification token. This token will be unique every time this endpoint is called, even if called with the same email address. This token is temporary and will expire after 12 hours.
- *
  * @see HubspotSDK\Conversations\VisitorIdentification->generateToken
  *
  * @phpstan-type VisitorIdentificationGenerateTokenParamsShape = array{

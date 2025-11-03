@@ -18,9 +18,6 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
-/**
- * The input value to branch off of.
- */
 final class InputValue implements ConverterSource
 {
     use SdkUnion;

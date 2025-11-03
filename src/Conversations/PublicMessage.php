@@ -19,7 +19,7 @@ final class PublicMessage implements ConverterSource
     public static function variants(): array
     {
         return [
-            PublicConversationsMessage::class,
+            ConversationsPublicConversationsMessage::class,
             PublicComment::class,
             PublicWelcomeMessage::class,
             PublicAssignmentMessage::class,

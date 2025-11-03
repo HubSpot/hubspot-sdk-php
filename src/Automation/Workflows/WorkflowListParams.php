@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve all workflows from an account.
- *
  * @see HubspotSDK\Automation\Workflows->list
  *
  * @phpstan-type WorkflowListParamsShape = array{after?: string, limit?: int}
@@ -22,15 +20,9 @@ final class WorkflowListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     */
     #[Api(optional: true)]
     public ?string $after;
 
-    /**
-     * The maximum number of results to display per page.
-     */
     #[Api(optional: true)]
     public ?int $limit;
 
@@ -54,9 +46,6 @@ final class WorkflowListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -65,9 +54,6 @@ final class WorkflowListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * The maximum number of results to display per page.
-     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;

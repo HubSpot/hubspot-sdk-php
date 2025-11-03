@@ -36,8 +36,6 @@ final class WorkflowsService implements WorkflowsContract
     /**
      * @api
      *
-     * Create a new workflow.
-     *
      * @throws APIException
      */
     public function create(
@@ -54,8 +52,6 @@ final class WorkflowsService implements WorkflowsContract
 
     /**
      * @api
-     *
-     * Update a workflow by ID.
      *
      * @throws APIException
      */
@@ -75,10 +71,8 @@ final class WorkflowsService implements WorkflowsContract
     /**
      * @api
      *
-     * Retrieve all workflows from an account.
-     *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit the maximum number of results to display per page
+     * @param string $after
+     * @param int $limit
      *
      * @return Page<APIFlowListing>
      *
@@ -126,8 +120,6 @@ final class WorkflowsService implements WorkflowsContract
     /**
      * @api
      *
-     * Fully delete a workflow by ID. Deleted workflows cannot be restored via the API. If you need to restore an accidentally deleted flow, you'll need to contact support.
-     *
      * @throws APIException
      */
     public function delete(
@@ -145,8 +137,6 @@ final class WorkflowsService implements WorkflowsContract
 
     /**
      * @api
-     *
-     * Retrieve a batch of workflows by ID.
      *
      * @param list<APIFlowBatchFetchFlowIDCoordinate> $inputs
      *
@@ -190,8 +180,6 @@ final class WorkflowsService implements WorkflowsContract
     /**
      * @api
      *
-     * Retrieve the IDs of v3 workflows that have been migrated to the v4 API.
-     *
      * @param list<APIFlowBatchFetchMigrationFlowIDCoordinate|APIFlowBatchFetchMigrationWorkflowIDCoordinate> $inputs
      *
      * @throws APIException
@@ -234,8 +222,6 @@ final class WorkflowsService implements WorkflowsContract
     /**
      * @api
      *
-     * Retrieve all details for a specific workflow by ID.
-     *
      * @throws APIException
      */
     public function get(
@@ -254,12 +240,10 @@ final class WorkflowsService implements WorkflowsContract
     /**
      * @api
      *
-     * Retrieve emails sent by a workflow by ID.
-     *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param string $after
      * @param string $before
-     * @param list<string> $flowID the ID of the workflow
-     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $flowID
+     * @param int $limit
      *
      * @throws APIException
      */

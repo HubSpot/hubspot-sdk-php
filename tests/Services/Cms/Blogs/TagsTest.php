@@ -23,7 +23,7 @@ final class TagsTest extends TestCase
 
         $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
-            accessToken: 'pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+            accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,
         );
 
@@ -132,30 +132,6 @@ final class TagsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->tags->delete('objectId');
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testArchiveBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->tags->archiveBatch(['string']);
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testArchiveBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->tags->archiveBatch(['string']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -271,6 +247,30 @@ final class TagsTest extends TestCase
     }
 
     #[Test]
+    public function testDeleteBatch(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->tags->deleteBatch(['string']);
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testDeleteBatchWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->tags->deleteBatch(['string']);
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
     public function testDetachFromLangGroup(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -295,37 +295,37 @@ final class TagsTest extends TestCase
     }
 
     #[Test]
-    public function testRead(): void
+    public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->read('objectId');
+        $result = $this->client->cms->blogs->tags->get('objectId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testReadBatch(): void
+    public function testGetBatch(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->readBatch(inputs: ['string']);
+        $result = $this->client->cms->blogs->tags->getBatch(inputs: ['string']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
 
     #[Test]
-    public function testReadBatchWithOptionalParams(): void
+    public function testGetBatchWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->readBatch(inputs: ['string']);
+        $result = $this->client->cms->blogs->tags->getBatch(inputs: ['string']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Conversations;
 
 use HubspotSDK\Conversations\CollectionResponsePublicMessageForwardPaging;
+use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\PublicAssignmentMessage;
 use HubspotSDK\Conversations\PublicComment;
-use HubspotSDK\Conversations\PublicConversationsMessage;
 use HubspotSDK\Conversations\PublicMessageContent;
 use HubspotSDK\Conversations\PublicThreadInboxChange;
 use HubspotSDK\Conversations\PublicThreadStatusChange;
@@ -25,7 +25,7 @@ interface MessagesContract
     public function create(
         string $threadID,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
+    ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
 
     /**
      * @api
@@ -48,7 +48,7 @@ interface MessagesContract
         string $messageID,
         $threadID,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
+    ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
 
     /**
      * @api
@@ -61,7 +61,7 @@ interface MessagesContract
         string $messageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
+    ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
 
     /**
      * @api

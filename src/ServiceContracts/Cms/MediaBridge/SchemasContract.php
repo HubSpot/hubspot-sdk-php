@@ -6,8 +6,8 @@ namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
 
 use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\Schemas\ObjectSchema;
-use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinition;
+use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
+use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
@@ -43,7 +43,7 @@ interface SchemasContract
         $searchableProperties = omit,
         $secondaryDisplayProperties = omit,
         ?RequestOptions $requestOptions = null,
-    ): ObjectTypeDefinition;
+    ): ObjectsSchemasObjectTypeDefinition;
 
     /**
      * @api
@@ -56,7 +56,7 @@ interface SchemasContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): ObjectTypeDefinition;
+    ): ObjectsSchemasObjectTypeDefinition;
 
     /**
      * @api

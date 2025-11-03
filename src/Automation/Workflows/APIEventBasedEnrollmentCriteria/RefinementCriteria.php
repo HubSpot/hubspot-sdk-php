@@ -16,9 +16,6 @@ use HubspotSDK\PublicPropertyAssociationFilterBranch;
 use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
-/**
- * List-based criteria to further refine which contacts will enroll in this flow.
- */
 final class RefinementCriteria implements ConverterSource
 {
     use SdkUnion;

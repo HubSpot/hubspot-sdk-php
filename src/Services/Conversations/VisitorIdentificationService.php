@@ -23,8 +23,6 @@ final class VisitorIdentificationService implements VisitorIdentificationContrac
     /**
      * @api
      *
-     * Generates a new visitor identification token. This token will be unique every time this endpoint is called, even if called with the same email address. This token is temporary and will expire after 12 hours
-     *
      * @param string $email The email of the visitor that you wish to identify
      * @param string $firstName The first name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where first name is unknown. Optional.
      * @param string $lastName The last name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where last name is unknown. Optional.

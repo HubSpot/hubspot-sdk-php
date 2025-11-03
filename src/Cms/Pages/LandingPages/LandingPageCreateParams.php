@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Pages\LandingPages;
 
 use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Cms\Pages\ContentLanguageVariation;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
+use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -72,7 +72,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   templatePath: string,
  *   themeSettingsValues: array<string, mixed>,
  *   translatedFromID: string,
- *   translations: array<string, ContentLanguageVariation>,
+ *   translations: array<string, PagesContentLanguageVariation>,
  *   updated: \DateTimeInterface,
  *   updatedByID: string,
  *   url: string,
@@ -380,8 +380,8 @@ final class LandingPageCreateParams implements BaseModel
     #[Api('translatedFromId')]
     public string $translatedFromID;
 
-    /** @var array<string, ContentLanguageVariation> $translations */
-    #[Api(map: ContentLanguageVariation::class)]
+    /** @var array<string, PagesContentLanguageVariation> $translations */
+    #[Api(map: PagesContentLanguageVariation::class)]
     public array $translations;
 
     #[Api]
@@ -568,7 +568,7 @@ final class LandingPageCreateParams implements BaseModel
      * @param array<string, LayoutSection> $layoutSections
      * @param list<mixed> $publicAccessRules
      * @param array<string, mixed> $themeSettingsValues
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param array<string, mixed> $widgetContainers
      * @param array<string, mixed> $widgets
      */
@@ -1251,7 +1251,7 @@ final class LandingPageCreateParams implements BaseModel
     }
 
     /**
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      */
     public function withTranslations(array $translations): self
     {

@@ -7,11 +7,11 @@ namespace HubspotSDK\Events;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\Paging;
+use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type CollectionResponseExternalUnifiedEventShape = array{
- *   results: list<ExternalUnifiedEvent>, paging?: Paging
+ *   results: list<ExternalUnifiedEvent>, paging?: EmailsPaging
  * }
  */
 final class CollectionResponseExternalUnifiedEvent implements BaseModel
@@ -27,7 +27,7 @@ final class CollectionResponseExternalUnifiedEvent implements BaseModel
      * Contains information pagination of results.
      */
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?EmailsPaging $paging;
 
     /**
      * `new CollectionResponseExternalUnifiedEvent()` is missing required properties by the API.
@@ -55,8 +55,10 @@ final class CollectionResponseExternalUnifiedEvent implements BaseModel
      *
      * @param list<ExternalUnifiedEvent> $results
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        ?EmailsPaging $paging = null
+    ): self {
         $obj = new self;
 
         $obj->results = $results;
@@ -80,7 +82,7 @@ final class CollectionResponseExternalUnifiedEvent implements BaseModel
     /**
      * Contains information pagination of results.
      */
-    public function withPaging(Paging $paging): self
+    public function withPaging(EmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

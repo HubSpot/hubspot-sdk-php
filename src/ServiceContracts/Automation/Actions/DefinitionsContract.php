@@ -179,7 +179,7 @@ interface DefinitionsContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         string $definitionID,
         $appID,
         $archived = omit,
@@ -193,7 +193,7 @@ interface DefinitionsContract
      *
      * @throws APIException
      */
-    public function readRaw(
+    public function getRaw(
         string $definitionID,
         array $params,
         ?RequestOptions $requestOptions = null,

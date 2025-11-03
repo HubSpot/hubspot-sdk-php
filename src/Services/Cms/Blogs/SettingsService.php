@@ -33,18 +33,16 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * Get the list of Blogs. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
-     *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived Specifies whether to return archived Blogs. Defaults to `false`.
-     * @param \DateTimeInterface $createdAfter only return Blogs created after the specified time
-     * @param \DateTimeInterface $createdAt only return Blogs created at exactly the specified time
-     * @param \DateTimeInterface $createdBefore only return Blogs created before the specified time
-     * @param int $limit The maximum number of results to return. Default is 100.
-     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name` and `id`
-     * @param \DateTimeInterface $updatedAfter only return Blogs last updated after the specified time
-     * @param \DateTimeInterface $updatedAt only return Blogs last updated at exactly the specified time
-     * @param \DateTimeInterface $updatedBefore only return Blogs last updated before the specified time
+     * @param string $after
+     * @param bool $archived
+     * @param \DateTimeInterface $createdAfter
+     * @param \DateTimeInterface $createdAt
+     * @param \DateTimeInterface $createdBefore
+     * @param int $limit
+     * @param list<string> $sort
+     * @param \DateTimeInterface $updatedAfter
+     * @param \DateTimeInterface $updatedAt
+     * @param \DateTimeInterface $updatedBefore
      *
      * @return Page<Blog>
      *
@@ -111,8 +109,6 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * Attach a blog to a multi-language group.
-     *
      * @param string $id ID of the object to add to a multi-language group
      * @param string $language designated language of the object to add to a multi-language group
      * @param string $primaryID ID of primary language object in multi-language group
@@ -165,8 +161,6 @@ final class SettingsService implements SettingsContract
 
     /**
      * @api
-     *
-     * Create a new language variation from an existing blog
      *
      * @param string $id ID of blog to clone
      * @param string $language target language of new variant
@@ -221,8 +215,6 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * Detach a blog from a multi-language group.
-     *
      * @param string $id ID of the object to remove from a multi-language group
      *
      * @throws APIException
@@ -265,8 +257,6 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * Retrieve the Blog object identified by the id in the path.
-     *
      * @throws APIException
      */
     public function get(
@@ -284,8 +274,6 @@ final class SettingsService implements SettingsContract
 
     /**
      * @api
-     *
-     * Retrieves a previous version of a Blog
      *
      * @param string $blogID
      *
@@ -336,11 +324,9 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * Retrieves all the previous versions of a Blog
-     *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param string $after
      * @param string $before
-     * @param int $limit The maximum number of results to return. Default is 100.
+     * @param int $limit
      *
      * @throws APIException
      */
@@ -386,8 +372,6 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * Set a blog as the primary language of a multi-language group.
-     *
      * @param string $id ID of object to set as primary in multi-language group
      *
      * @throws APIException
@@ -429,8 +413,6 @@ final class SettingsService implements SettingsContract
 
     /**
      * @api
-     *
-     * Explicitly set new languages for each blog in a multi-language group.
      *
      * @param array<string,
      * string,> $languages Map of object IDs to associated languages of object in the multi-language group

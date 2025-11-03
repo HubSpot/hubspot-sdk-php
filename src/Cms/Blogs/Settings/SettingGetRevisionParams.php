@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieves a previous version of a Blog.
- *
  * @see HubspotSDK\Cms\Blogs\Settings->getRevision
  *
  * @phpstan-type SettingGetRevisionParamsShape = array{blogID: string}

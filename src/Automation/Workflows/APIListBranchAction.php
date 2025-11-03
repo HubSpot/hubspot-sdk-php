@@ -23,9 +23,6 @@ final class APIListBranchAction implements BaseModel
     /** @use SdkModel<APIListBranchActionShape> */
     use SdkModel;
 
-    /**
-     * The ID for this action.
-     */
     #[Api('actionId')]
     public string $actionID;
 
@@ -33,20 +30,13 @@ final class APIListBranchAction implements BaseModel
     #[Api(list: APIListBranch::class)]
     public array $listBranches;
 
-    /**
-     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
     #[Api(optional: true)]
     public ?APIConnection $defaultBranch;
 
-    /**
-     * The name of the default branch, the branch that gets executed if the object does not match any of the `listBranch` criteria.
-     */
     #[Api(optional: true)]
     public ?string $defaultBranchName;
 
@@ -99,9 +89,6 @@ final class APIListBranchAction implements BaseModel
         return $obj;
     }
 
-    /**
-     * The ID for this action.
-     */
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
@@ -122,8 +109,6 @@ final class APIListBranchAction implements BaseModel
     }
 
     /**
-     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -142,9 +127,6 @@ final class APIListBranchAction implements BaseModel
         return $obj;
     }
 
-    /**
-     * The name of the default branch, the branch that gets executed if the object does not match any of the `listBranch` criteria.
-     */
     public function withDefaultBranchName(string $defaultBranchName): self
     {
         $obj = clone $this;

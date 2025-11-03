@@ -22,22 +22,14 @@ final class APIWeeklyEnrollmentSchedule implements BaseModel
     /** @use SdkModel<APIWeeklyEnrollmentScheduleShape> */
     use SdkModel;
 
-    /**
-     * Which days of the week to allow enrollments.
-     *
-     * @var list<value-of<DaysOfWeek>> $daysOfWeek
-     */
+    /** @var list<value-of<DaysOfWeek>> $daysOfWeek */
     #[Api(list: DaysOfWeek::class)]
     public array $daysOfWeek;
 
     #[Api]
     public APITimeOfDay $timeOfDay;
 
-    /**
-     * The type of enrollment schedule this is, can be: "DAILY", "WEEKLY", "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -86,8 +78,6 @@ final class APIWeeklyEnrollmentSchedule implements BaseModel
     }
 
     /**
-     * Which days of the week to allow enrollments.
-     *
      * @param list<DaysOfWeek|value-of<DaysOfWeek>> $daysOfWeek
      */
     public function withDaysOfWeek(array $daysOfWeek): self
@@ -107,8 +97,6 @@ final class APIWeeklyEnrollmentSchedule implements BaseModel
     }
 
     /**
-     * The type of enrollment schedule this is, can be: "DAILY", "WEEKLY", "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

@@ -19,17 +19,10 @@ final class APIIncrementValue implements BaseModel
     /** @use SdkModel<APIIncrementValueShape> */
     use SdkModel;
 
-    /**
-     * The amount be which to increment.
-     */
     #[Api]
     public float $incrementAmount;
 
-    /**
-     * This is the type of input value. This can be one of: "FIELD_DATA", "OBJECT_PROPERTY", "STATIC_VALUE", "RELATIVE_DATETIME", "TIMESTAMP", "INCREMENT", "FETCHED_OBJECT_PROPERTY", "APPEND_OBJECT_PROPERTY", "STATIC_APPEND_VALUE", "ENROLLMENT_EVENT_PROPERTY".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -71,9 +64,6 @@ final class APIIncrementValue implements BaseModel
         return $obj;
     }
 
-    /**
-     * The amount be which to increment.
-     */
     public function withIncrementAmount(float $incrementAmount): self
     {
         $obj = clone $this;
@@ -83,8 +73,6 @@ final class APIIncrementValue implements BaseModel
     }
 
     /**
-     * This is the type of input value. This can be one of: "FIELD_DATA", "OBJECT_PROPERTY", "STATIC_VALUE", "RELATIVE_DATETIME", "TIMESTAMP", "INCREMENT", "FETCHED_OBJECT_PROPERTY", "APPEND_OBJECT_PROPERTY", "STATIC_APPEND_VALUE", "ENROLLMENT_EVENT_PROPERTY".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

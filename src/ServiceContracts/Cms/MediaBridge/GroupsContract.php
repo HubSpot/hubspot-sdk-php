@@ -6,7 +6,7 @@ namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyGroupNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Properties\PropertyGroup;
+use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;

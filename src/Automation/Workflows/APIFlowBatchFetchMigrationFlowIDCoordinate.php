@@ -19,17 +19,10 @@ final class APIFlowBatchFetchMigrationFlowIDCoordinate implements BaseModel
     /** @use SdkModel<APIFlowBatchFetchMigrationFlowIDCoordinateShape> */
     use SdkModel;
 
-    /**
-     * The flowId from the V4 API.
-     */
     #[Api]
     public string $flowMigrationStatuses;
 
-    /**
-     * The type of input this is, can be FLOW_ID or WORKFLOW_ID.
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -75,9 +68,6 @@ final class APIFlowBatchFetchMigrationFlowIDCoordinate implements BaseModel
         return $obj;
     }
 
-    /**
-     * The flowId from the V4 API.
-     */
     public function withFlowMigrationStatuses(
         string $flowMigrationStatuses
     ): self {
@@ -88,8 +78,6 @@ final class APIFlowBatchFetchMigrationFlowIDCoordinate implements BaseModel
     }
 
     /**
-     * The type of input this is, can be FLOW_ID or WORKFLOW_ID.
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

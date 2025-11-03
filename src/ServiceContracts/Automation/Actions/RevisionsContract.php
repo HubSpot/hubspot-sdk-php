@@ -55,7 +55,7 @@ interface RevisionsContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         string $revisionID,
         $appID,
         $definitionID,
@@ -69,7 +69,7 @@ interface RevisionsContract
      *
      * @throws APIException
      */
-    public function readRaw(
+    public function getRaw(
         string $revisionID,
         array $params,
         ?RequestOptions $requestOptions = null,

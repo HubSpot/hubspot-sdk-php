@@ -168,30 +168,6 @@ interface TagsContract
     /**
      * @api
      *
-     * @param list<string> $inputs strings to input
-     *
-     * @throws APIException
-     */
-    public function archiveBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function archiveBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
      * @param string $id ID of the object to add to a multi-language group
      * @param string $language designated language of the object to add to a multi-language group
      * @param string $primaryID ID of primary language object in multi-language group
@@ -276,6 +252,30 @@ interface TagsContract
     /**
      * @api
      *
+     * @param list<string> $inputs strings to input
+     *
+     * @throws APIException
+     */
+    public function deleteBatch(
+        $inputs,
+        ?RequestOptions $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function deleteBatchRaw(
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
      * @param string $id ID of the object to remove from a multi-language group
      *
      * @throws APIException
@@ -305,7 +305,7 @@ interface TagsContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         string $objectID,
         $archived = omit,
         $property = omit,
@@ -319,7 +319,7 @@ interface TagsContract
      *
      * @throws APIException
      */
-    public function readRaw(
+    public function getRaw(
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
@@ -333,7 +333,7 @@ interface TagsContract
      *
      * @throws APIException
      */
-    public function readBatch(
+    public function getBatch(
         $inputs,
         $archived = omit,
         ?RequestOptions $requestOptions = null
@@ -346,7 +346,7 @@ interface TagsContract
      *
      * @throws APIException
      */
-    public function readBatchRaw(
+    public function getBatchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseTag;

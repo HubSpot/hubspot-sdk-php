@@ -9,8 +9,8 @@ use HubspotSDK\Cms\Blogs\Posts\BreakpointStyles;
 use HubspotSDK\Cms\ColorStop;
 use HubspotSDK\Cms\Gradient;
 use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Cms\Pages\ContentLanguageVariation;
 use HubspotSDK\Cms\Pages\Page;
+use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Cms\RgbaColor;
 use HubspotSDK\Cms\RowMetaData;
 use HubspotSDK\Cms\SideOrCorner;
@@ -34,7 +34,7 @@ final class SitePagesTest extends TestCase
 
         $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
-            accessToken: 'pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+            accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,
         );
 
@@ -165,7 +165,7 @@ final class SitePagesTest extends TestCase
             themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
-                'foo' => ContentLanguageVariation::with(
+                'foo' => PagesContentLanguageVariation::with(
                     id: 0,
                     archivedInDashboard: true,
                     authorName: 'authorName',
@@ -334,7 +334,7 @@ final class SitePagesTest extends TestCase
             themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
-                'foo' => ContentLanguageVariation::with(
+                'foo' => PagesContentLanguageVariation::with(
                     id: 0,
                     archivedInDashboard: true,
                     authorName: 'authorName',
@@ -487,7 +487,7 @@ final class SitePagesTest extends TestCase
             themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
-                'foo' => ContentLanguageVariation::with(
+                'foo' => PagesContentLanguageVariation::with(
                     id: 0,
                     archivedInDashboard: true,
                     authorName: 'authorName',
@@ -657,7 +657,7 @@ final class SitePagesTest extends TestCase
             themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
-                'foo' => ContentLanguageVariation::with(
+                'foo' => PagesContentLanguageVariation::with(
                     id: 0,
                     archivedInDashboard: true,
                     authorName: 'authorName',
@@ -923,7 +923,7 @@ final class SitePagesTest extends TestCase
                     themeSettingsValues: ['foo' => (object) []],
                     translatedFromID: 'translatedFromId',
                     translations: [
-                        'foo' => ContentLanguageVariation::with(
+                        'foo' => PagesContentLanguageVariation::with(
                             id: 0,
                             archivedInDashboard: true,
                             authorName: 'authorName',
@@ -1098,7 +1098,7 @@ final class SitePagesTest extends TestCase
                     themeSettingsValues: ['foo' => (object) []],
                     translatedFromID: 'translatedFromId',
                     translations: [
-                        'foo' => ContentLanguageVariation::with(
+                        'foo' => PagesContentLanguageVariation::with(
                             id: 0,
                             archivedInDashboard: true,
                             authorName: 'authorName',
@@ -1649,7 +1649,7 @@ final class SitePagesTest extends TestCase
             themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
-                'foo' => ContentLanguageVariation::with(
+                'foo' => PagesContentLanguageVariation::with(
                     id: 0,
                     archivedInDashboard: true,
                     authorName: 'authorName',
@@ -1819,7 +1819,7 @@ final class SitePagesTest extends TestCase
             themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
-                'foo' => ContentLanguageVariation::with(
+                'foo' => PagesContentLanguageVariation::with(
                     id: 0,
                     archivedInDashboard: true,
                     authorName: 'authorName',

@@ -6,7 +6,7 @@ namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\CollectionResponseWithTotalPublicChannelAccountForwardPaging;
-use HubspotSDK\Conversations\PublicChannelAccount;
+use HubspotSDK\Conversations\ConversationsPublicChannelAccount;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ChannelAccountsContract;
@@ -47,7 +47,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
     public function get(
         string $channelAccountID,
         ?RequestOptions $requestOptions = null
-    ): PublicChannelAccount {
+    ): ConversationsPublicChannelAccount {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
@@ -56,7 +56,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
                 $channelAccountID,
             ],
             options: $requestOptions,
-            convert: PublicChannelAccount::class,
+            convert: ConversationsPublicChannelAccount::class,
         );
     }
 }

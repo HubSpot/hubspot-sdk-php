@@ -72,36 +72,6 @@ interface FunctionsContract
     /**
      * @api
      *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionArchiveByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionArchiveByFunctionTypeParams\FunctionType> $functionType
-     * @param int $appID
-     * @param string $definitionID
-     *
-     * @throws APIException
-     */
-    public function archiveByFunctionType(
-        \HubspotSDK\Automation\Actions\Functions\FunctionArchiveByFunctionTypeParams\FunctionType|string $functionType,
-        $appID,
-        $definitionID,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionArchiveByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionArchiveByFunctionTypeParams\FunctionType> $functionType
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function archiveByFunctionTypeRaw(
-        \HubspotSDK\Automation\Actions\Functions\FunctionArchiveByFunctionTypeParams\FunctionType|string $functionType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
      * @param int $appID
      * @param string $definitionID
      * @param \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType> $functionType
@@ -166,6 +136,66 @@ interface FunctionsContract
     /**
      * @api
      *
+     * @param \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType> $functionType
+     * @param int $appID
+     * @param string $definitionID
+     *
+     * @throws APIException
+     */
+    public function deleteByFunctionType(
+        \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
+        $appID,
+        $definitionID,
+        ?RequestOptions $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType> $functionType
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function deleteByFunctionTypeRaw(
+        \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
+        array $params,
+        ?RequestOptions $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param int $appID
+     * @param string $definitionID
+     * @param \HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType> $functionType
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $functionID,
+        $appID,
+        $definitionID,
+        $functionType,
+        ?RequestOptions $requestOptions = null,
+    ): PublicActionFunction;
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        string $functionID,
+        array $params,
+        ?RequestOptions $requestOptions = null,
+    ): PublicActionFunction;
+
+    /**
+     * @api
+     *
      * @param \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType> $functionType
      * @param int $appID
      * @param string $definitionID
@@ -189,36 +219,6 @@ interface FunctionsContract
      */
     public function getByFunctionTypeRaw(
         \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): PublicActionFunction;
-
-    /**
-     * @api
-     *
-     * @param int $appID
-     * @param string $definitionID
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionReadParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionReadParams\FunctionType> $functionType
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $functionID,
-        $appID,
-        $definitionID,
-        $functionType,
-        ?RequestOptions $requestOptions = null,
-    ): PublicActionFunction;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $functionID,
         array $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunction;

@@ -22,11 +22,7 @@ final class APIDailyEnrollmentSchedule implements BaseModel
     #[Api]
     public APITimeOfDay $timeOfDay;
 
-    /**
-     * The type of enrollment schedule this is, can be: "DAILY", "WEEKLY", "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -77,8 +73,6 @@ final class APIDailyEnrollmentSchedule implements BaseModel
     }
 
     /**
-     * The type of enrollment schedule this is, can be: "DAILY", "WEEKLY", "MONTHLY_SPECIFIC_DAYS", "MONTHLY_RELATIVE_DAYS", "YEARLY".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

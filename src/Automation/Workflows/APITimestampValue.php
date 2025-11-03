@@ -20,19 +20,11 @@ final class APITimestampValue implements BaseModel
     /** @use SdkModel<APITimestampValueShape> */
     use SdkModel;
 
-    /**
-     * Currently only EXECUTION_TIME is supported.
-     *
-     * @var value-of<TimestampType> $timestampType
-     */
+    /** @var value-of<TimestampType> $timestampType */
     #[Api(enum: TimestampType::class)]
     public string $timestampType;
 
-    /**
-     * This is the type of input value. This can be one of: "FIELD_DATA", "OBJECT_PROPERTY", "STATIC_VALUE", "RELATIVE_DATETIME", "TIMESTAMP", "INCREMENT", "FETCHED_OBJECT_PROPERTY", "APPEND_OBJECT_PROPERTY", "STATIC_APPEND_VALUE", "ENROLLMENT_EVENT_PROPERTY".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -76,8 +68,6 @@ final class APITimestampValue implements BaseModel
     }
 
     /**
-     * Currently only EXECUTION_TIME is supported.
-     *
      * @param TimestampType|value-of<TimestampType> $timestampType
      */
     public function withTimestampType(TimestampType|string $timestampType): self
@@ -89,8 +79,6 @@ final class APITimestampValue implements BaseModel
     }
 
     /**
-     * This is the type of input value. This can be one of: "FIELD_DATA", "OBJECT_PROPERTY", "STATIC_VALUE", "RELATIVE_DATETIME", "TIMESTAMP", "INCREMENT", "FETCHED_OBJECT_PROPERTY", "APPEND_OBJECT_PROPERTY", "STATIC_APPEND_VALUE", "ENROLLMENT_EVENT_PROPERTY".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

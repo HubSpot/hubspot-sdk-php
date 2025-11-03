@@ -7,7 +7,7 @@ namespace HubspotSDK\Services\Cms\Blogs\Posts;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Blogs\Posts\Batch\BatchCreateParams;
 use HubspotSDK\Cms\Blogs\Posts\Batch\BatchDeleteParams;
-use HubspotSDK\Cms\Blogs\Posts\Batch\BatchReadParams;
+use HubspotSDK\Cms\Blogs\Posts\Batch\BatchGetParams;
 use HubspotSDK\Cms\Blogs\Posts\Batch\BatchUpdateParams;
 use HubspotSDK\Cms\Blogs\Posts\BatchResponseBlogPost;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost;
@@ -171,14 +171,14 @@ final class BatchService implements BatchContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         $inputs,
         $archived = omit,
         ?RequestOptions $requestOptions = null
     ): BatchResponseBlogPost {
         $params = ['inputs' => $inputs, 'archived' => $archived];
 
-        return $this->readRaw($params, $requestOptions);
+        return $this->getRaw($params, $requestOptions);
     }
 
     /**
@@ -188,11 +188,11 @@ final class BatchService implements BatchContract
      *
      * @throws APIException
      */
-    public function readRaw(
+    public function getRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseBlogPost {
-        [$parsed, $options] = BatchReadParams::parseRequest(
+        [$parsed, $options] = BatchGetParams::parseRequest(
             $params,
             $requestOptions
         );
