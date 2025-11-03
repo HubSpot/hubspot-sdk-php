@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Get the list of Blogs. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
- *
  * @see HubspotSDK\Cms\Blogs\Settings->list
  *
  * @phpstan-type SettingListParamsShape = array{
@@ -33,65 +31,34 @@ final class SettingListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     */
     #[Api(optional: true)]
     public ?string $after;
 
-    /**
-     * Specifies whether to return archived Blogs. Defaults to `false`.
-     */
     #[Api(optional: true)]
     public ?bool $archived;
 
-    /**
-     * Only return Blogs created after the specified time.
-     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAfter;
 
-    /**
-     * Only return Blogs created at exactly the specified time.
-     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
-    /**
-     * Only return Blogs created before the specified time.
-     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdBefore;
 
-    /**
-     * The maximum number of results to return. Default is 100.
-     */
     #[Api(optional: true)]
     public ?int $limit;
 
-    /**
-     * Specifies which fields to use for sorting results. Valid fields are `name` and `id`.
-     *
-     * @var list<string>|null $sort
-     */
+    /** @var list<string>|null $sort */
     #[Api(list: 'string', optional: true)]
     public ?array $sort;
 
-    /**
-     * Only return Blogs last updated after the specified time.
-     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAfter;
 
-    /**
-     * Only return Blogs last updated at exactly the specified time.
-     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
-    /**
-     * Only return Blogs last updated before the specified time.
-     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedBefore;
 
@@ -135,9 +102,6 @@ final class SettingListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;
@@ -146,9 +110,6 @@ final class SettingListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * Specifies whether to return archived Blogs. Defaults to `false`.
-     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -157,9 +118,6 @@ final class SettingListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * Only return Blogs created after the specified time.
-     */
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $obj = clone $this;
@@ -168,9 +126,6 @@ final class SettingListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * Only return Blogs created at exactly the specified time.
-     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -179,9 +134,6 @@ final class SettingListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * Only return Blogs created before the specified time.
-     */
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
         $obj = clone $this;
@@ -190,9 +142,6 @@ final class SettingListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * The maximum number of results to return. Default is 100.
-     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -202,8 +151,6 @@ final class SettingListParams implements BaseModel
     }
 
     /**
-     * Specifies which fields to use for sorting results. Valid fields are `name` and `id`.
-     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self
@@ -214,9 +161,6 @@ final class SettingListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * Only return Blogs last updated after the specified time.
-     */
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
         $obj = clone $this;
@@ -225,9 +169,6 @@ final class SettingListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * Only return Blogs last updated at exactly the specified time.
-     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -236,9 +177,6 @@ final class SettingListParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * Only return Blogs last updated before the specified time.
-     */
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
         $obj = clone $this;

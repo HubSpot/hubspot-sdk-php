@@ -7,7 +7,7 @@ namespace HubspotSDK\Cms\MediaBridge;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Properties\PropertyGroup;
+use HubspotSDK\Crm\Properties\PropertyGroup;
 
 /**
  * @phpstan-type CollectionResponsePropertyGroupNoPagingShape = array{

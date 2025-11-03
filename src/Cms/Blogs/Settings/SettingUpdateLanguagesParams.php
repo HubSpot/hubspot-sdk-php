@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Explicitly set new languages for each blog in a multi-language group.
- *
  * @see HubspotSDK\Cms\Blogs\Settings->updateLanguages
  *
  * @phpstan-type SettingUpdateLanguagesParamsShape = array{

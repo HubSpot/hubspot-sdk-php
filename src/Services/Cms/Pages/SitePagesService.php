@@ -8,8 +8,8 @@ use HubspotSDK\Client;
 use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\BatchResponsePage;
 use HubspotSDK\Cms\Pages\CollectionResponseWithTotalVersionPage;
-use HubspotSDK\Cms\Pages\ContentLanguageVariation;
 use HubspotSDK\Cms\Pages\Page;
+use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Cms\Pages\SitePages\SitePageAttachToLangGroupParams;
 use HubspotSDK\Cms\Pages\SitePages\SitePageCloneParams;
 use HubspotSDK\Cms\Pages\SitePages\SitePageCreateAbTestVariationParams;
@@ -108,7 +108,7 @@ final class SitePagesService implements SitePagesContract
      * @param string $templatePath string detailing the path of the template used for this page
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary page this object was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated this page
      * @param string $url a generated field representing the URL of this page
@@ -326,7 +326,7 @@ final class SitePagesService implements SitePagesContract
      * @param string $templatePath string detailing the path of the template used for this page
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary page this object was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated this page
      * @param string $url a generated field representing the URL of this page
@@ -1601,7 +1601,7 @@ final class SitePagesService implements SitePagesContract
      * @param string $templatePath string detailing the path of the template used for this page
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary page this object was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated this page
      * @param string $url a generated field representing the URL of this page

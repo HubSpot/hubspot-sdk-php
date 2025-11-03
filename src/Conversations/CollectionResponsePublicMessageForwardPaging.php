@@ -12,7 +12,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponsePublicMessageForwardPagingShape = array{
- *   results: list<PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange>,
+ *   results: list<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange>,
  *   paging?: ForwardPaging,
  * }
  */
@@ -22,7 +22,7 @@ final class CollectionResponsePublicMessageForwardPaging implements BaseModel
     use SdkModel;
 
     /**
-     * @var list<PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange> $results
+     * @var list<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange> $results
      */
     #[Api(list: Result::class)]
     public array $results;
@@ -54,7 +54,7 @@ final class CollectionResponsePublicMessageForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange> $results
+     * @param list<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange> $results
      */
     public static function with(
         array $results,
@@ -70,7 +70,7 @@ final class CollectionResponsePublicMessageForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange> $results
+     * @param list<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange> $results
      */
     public function withResults(array $results): self
     {

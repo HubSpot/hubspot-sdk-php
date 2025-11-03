@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Conversations\CustomChannels;
 
 use HubspotSDK\Conversations\CollectionResponseWithTotalPublicChannelAccountForwardPaging;
-use HubspotSDK\Conversations\PublicChannelAccount;
+use HubspotSDK\Conversations\ConversationsPublicChannelAccount;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
@@ -31,7 +31,7 @@ interface ChannelAccountsContract
         $name,
         $deliveryIdentifier = omit,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccount;
+    ): ConversationsPublicChannelAccount;
 
     /**
      * @api
@@ -44,7 +44,7 @@ interface ChannelAccountsContract
         string $channelID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): PublicChannelAccount;
+    ): ConversationsPublicChannelAccount;
 
     /**
      * @api
@@ -61,7 +61,7 @@ interface ChannelAccountsContract
         $authorized = omit,
         $name = omit,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccount;
+    ): ConversationsPublicChannelAccount;
 
     /**
      * @api
@@ -74,7 +74,7 @@ interface ChannelAccountsContract
         string $channelAccountID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccount;
+    ): ConversationsPublicChannelAccount;
 
     /**
      * @api
@@ -97,7 +97,7 @@ interface ChannelAccountsContract
         string $channelAccountID,
         $channelID,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccount;
+    ): ConversationsPublicChannelAccount;
 
     /**
      * @api
@@ -110,5 +110,5 @@ interface ChannelAccountsContract
         string $channelAccountID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccount;
+    ): ConversationsPublicChannelAccount;
 }

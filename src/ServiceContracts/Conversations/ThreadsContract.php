@@ -56,7 +56,7 @@ interface ThreadsContract
      *
      * @throws APIException
      */
-    public function archive(
+    public function delete(
         string $threadID,
         ?RequestOptions $requestOptions = null
     ): mixed;

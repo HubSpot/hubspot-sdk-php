@@ -13,7 +13,7 @@ use HubspotSDK\Services\AutomationService;
 use HubspotSDK\Services\BusinessUnitsService;
 use HubspotSDK\Services\CmsService;
 use HubspotSDK\Services\ConversationsService;
-use HubspotSDK\Services\CRMService;
+use HubspotSDK\Services\CrmService;
 use HubspotSDK\Services\EventsService;
 use HubspotSDK\Services\FilesService;
 use HubspotSDK\Services\MarketingService;
@@ -56,7 +56,7 @@ class Client extends BaseClient
     /**
      * @api
      */
-    public CRMService $crm;
+    public CrmService $crm;
 
     /**
      * @api
@@ -93,7 +93,7 @@ class Client extends BaseClient
         public ?string $developerAPIKey = null,
         ?string $baseUrl = null,
     ) {
-        $baseUrl ??= getenv('HUB_SPOT_BASE_URL') ?: 'https://api.hubapi.com';
+        $baseUrl ??= getenv('HUBSPOT_BASE_URL') ?: 'https://api.hubapi.com';
 
         $options = RequestOptions::with(
             uriFactory: Psr17FactoryDiscovery::findUriFactory(),
@@ -116,7 +116,7 @@ class Client extends BaseClient
         $this->businessUnits = new BusinessUnitsService($this);
         $this->cms = new CmsService($this);
         $this->conversations = new ConversationsService($this);
-        $this->crm = new CRMService($this);
+        $this->crm = new CrmService($this);
         $this->events = new EventsService($this);
         $this->files = new FilesService($this);
         $this->marketing = new MarketingService($this);

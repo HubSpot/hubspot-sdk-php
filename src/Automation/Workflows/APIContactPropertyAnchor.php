@@ -19,17 +19,10 @@ final class APIContactPropertyAnchor implements BaseModel
     /** @use SdkModel<APIContactPropertyAnchorShape> */
     use SdkModel;
 
-    /**
-     * A date property on the contact to use as the anchor point of this workflow.
-     */
     #[Api]
     public string $contactProperty;
 
-    /**
-     * The type of event anchor this is, can be: "CONTACT_PROPERTY_ANCHOR" or "STATIC_DATE_ANCHOR".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -71,9 +64,6 @@ final class APIContactPropertyAnchor implements BaseModel
         return $obj;
     }
 
-    /**
-     * A date property on the contact to use as the anchor point of this workflow.
-     */
     public function withContactProperty(string $contactProperty): self
     {
         $obj = clone $this;
@@ -83,8 +73,6 @@ final class APIContactPropertyAnchor implements BaseModel
     }
 
     /**
-     * The type of event anchor this is, can be: "CONTACT_PROPERTY_ANCHOR" or "STATIC_DATE_ANCHOR".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

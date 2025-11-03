@@ -7,17 +7,17 @@ namespace HubspotSDK\Services\Cms\Blogs;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Blogs\Tags\BatchResponseTag;
 use HubspotSDK\Cms\Blogs\Tags\Tag;
-use HubspotSDK\Cms\Blogs\Tags\TagArchiveBatchParams;
 use HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams;
 use HubspotSDK\Cms\Blogs\Tags\TagCreateBatchParams;
 use HubspotSDK\Cms\Blogs\Tags\TagCreateLangVariationParams;
 use HubspotSDK\Cms\Blogs\Tags\TagCreateParams;
 use HubspotSDK\Cms\Blogs\Tags\TagCreateParams\Language;
+use HubspotSDK\Cms\Blogs\Tags\TagDeleteBatchParams;
 use HubspotSDK\Cms\Blogs\Tags\TagDeleteParams;
 use HubspotSDK\Cms\Blogs\Tags\TagDetachFromLangGroupParams;
+use HubspotSDK\Cms\Blogs\Tags\TagGetBatchParams;
+use HubspotSDK\Cms\Blogs\Tags\TagGetParams;
 use HubspotSDK\Cms\Blogs\Tags\TagListParams;
-use HubspotSDK\Cms\Blogs\Tags\TagReadBatchParams;
-use HubspotSDK\Cms\Blogs\Tags\TagReadParams;
 use HubspotSDK\Cms\Blogs\Tags\TagSetLangPrimaryParams;
 use HubspotSDK\Cms\Blogs\Tags\TagUpdateBatchParams;
 use HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams;
@@ -299,50 +299,6 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * Delete the Blog Tag objects identified in the request body.
-     *
-     * @param list<string> $inputs strings to input
-     *
-     * @throws APIException
-     */
-    public function archiveBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['inputs' => $inputs];
-
-        return $this->archiveBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function archiveBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        [$parsed, $options] = TagArchiveBatchParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'post',
-            path: 'cms/v3/blogs/tags/batch/archive',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
      * Attach a Blog Tag to a multi-language group.
      *
      * @param string $id ID of the object to add to a multi-language group
@@ -497,6 +453,50 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
+     * Delete the Blog Tag objects identified in the request body.
+     *
+     * @param list<string> $inputs strings to input
+     *
+     * @throws APIException
+     */
+    public function deleteBatch(
+        $inputs,
+        ?RequestOptions $requestOptions = null
+    ): mixed {
+        $params = ['inputs' => $inputs];
+
+        return $this->deleteBatchRaw($params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function deleteBatchRaw(
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): mixed {
+        [$parsed, $options] = TagDeleteBatchParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: 'cms/v3/blogs/tags/batch/archive',
+            body: (object) $parsed,
+            options: $options,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Detach a Blog Tag from a multi-language group.
      *
      * @param string $id ID of the object to remove from a multi-language group
@@ -548,7 +548,7 @@ final class TagsService implements TagsContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         string $objectID,
         $archived = omit,
         $property = omit,
@@ -556,7 +556,7 @@ final class TagsService implements TagsContract
     ): Tag {
         $params = ['archived' => $archived, 'property' => $property];
 
-        return $this->readRaw($objectID, $params, $requestOptions);
+        return $this->getRaw($objectID, $params, $requestOptions);
     }
 
     /**
@@ -566,12 +566,12 @@ final class TagsService implements TagsContract
      *
      * @throws APIException
      */
-    public function readRaw(
+    public function getRaw(
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
     ): Tag {
-        [$parsed, $options] = TagReadParams::parseRequest($params, $requestOptions);
+        [$parsed, $options] = TagGetParams::parseRequest($params, $requestOptions);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -593,14 +593,14 @@ final class TagsService implements TagsContract
      *
      * @throws APIException
      */
-    public function readBatch(
+    public function getBatch(
         $inputs,
         $archived = omit,
         ?RequestOptions $requestOptions = null
     ): BatchResponseTag {
         $params = ['inputs' => $inputs, 'archived' => $archived];
 
-        return $this->readBatchRaw($params, $requestOptions);
+        return $this->getBatchRaw($params, $requestOptions);
     }
 
     /**
@@ -610,11 +610,11 @@ final class TagsService implements TagsContract
      *
      * @throws APIException
      */
-    public function readBatchRaw(
+    public function getBatchRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseTag {
-        [$parsed, $options] = TagReadBatchParams::parseRequest(
+        [$parsed, $options] = TagGetBatchParams::parseRequest(
             $params,
             $requestOptions
         );

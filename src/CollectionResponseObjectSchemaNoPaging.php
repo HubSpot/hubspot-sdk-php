@@ -7,7 +7,7 @@ namespace HubspotSDK;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\CRM\Objects\Schemas\ObjectSchema;
+use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 
 /**
  * @phpstan-type CollectionResponseObjectSchemaNoPagingShape = array{

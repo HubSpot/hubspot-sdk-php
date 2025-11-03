@@ -9,11 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
-use HubspotSDK\Marketing\Emails\Paging;
+use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type CollectionResponseAPIFlowEmailCampaignShape = array{
- *   results: list<APIFlowEmailCampaign>, paging?: Paging
+ *   results: list<APIFlowEmailCampaign>, paging?: EmailsPaging
  * }
  */
 final class CollectionResponseAPIFlowEmailCampaign implements BaseModel, ResponseConverter
@@ -31,7 +31,7 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel, Respons
      * Contains information pagination of results.
      */
     #[Api(optional: true)]
-    public ?Paging $paging;
+    public ?EmailsPaging $paging;
 
     /**
      * `new CollectionResponseAPIFlowEmailCampaign()` is missing required properties by the API.
@@ -59,8 +59,10 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel, Respons
      *
      * @param list<APIFlowEmailCampaign> $results
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        ?EmailsPaging $paging = null
+    ): self {
         $obj = new self;
 
         $obj->results = $results;
@@ -84,7 +86,7 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel, Respons
     /**
      * Contains information pagination of results.
      */
-    public function withPaging(Paging $paging): self
+    public function withPaging(EmailsPaging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

@@ -12,7 +12,6 @@ use HubspotSDK\Cms\Pages\CollectionResponseWithTotalContentFolderForwardPaging;
 use HubspotSDK\Cms\Pages\CollectionResponseWithTotalVersionContentFolder;
 use HubspotSDK\Cms\Pages\CollectionResponseWithTotalVersionPage;
 use HubspotSDK\Cms\Pages\ContentFolder;
-use HubspotSDK\Cms\Pages\ContentLanguageVariation;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageAttachToLangGroupParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCloneParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateAbTestVariationParams;
@@ -54,6 +53,7 @@ use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateFoldersBatchParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateLanguagesParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
 use HubspotSDK\Cms\Pages\Page;
+use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Cms\Pages\VersionContentFolder;
 use HubspotSDK\Cms\Pages\VersionPage;
 use HubspotSDK\Core\Exceptions\APIException;
@@ -125,7 +125,7 @@ final class LandingPagesService implements LandingPagesContract
      * @param string $templatePath string detailing the path of the template used for this page
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary page this object was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated this page
      * @param string $url a generated field representing the URL of this page
@@ -343,7 +343,7 @@ final class LandingPagesService implements LandingPagesContract
      * @param string $templatePath string detailing the path of the template used for this page
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary page this object was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated this page
      * @param string $url a generated field representing the URL of this page
@@ -2146,7 +2146,7 @@ final class LandingPagesService implements LandingPagesContract
      * @param string $templatePath string detailing the path of the template used for this page
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary page this object was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated this page
      * @param string $url a generated field representing the URL of this page

@@ -18,16 +18,16 @@ interface SettingsContract
     /**
      * @api
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived Specifies whether to return archived Blogs. Defaults to `false`.
-     * @param \DateTimeInterface $createdAfter only return Blogs created after the specified time
-     * @param \DateTimeInterface $createdAt only return Blogs created at exactly the specified time
-     * @param \DateTimeInterface $createdBefore only return Blogs created before the specified time
-     * @param int $limit The maximum number of results to return. Default is 100.
-     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name` and `id`
-     * @param \DateTimeInterface $updatedAfter only return Blogs last updated after the specified time
-     * @param \DateTimeInterface $updatedAt only return Blogs last updated at exactly the specified time
-     * @param \DateTimeInterface $updatedBefore only return Blogs last updated before the specified time
+     * @param string $after
+     * @param bool $archived
+     * @param \DateTimeInterface $createdAfter
+     * @param \DateTimeInterface $createdAt
+     * @param \DateTimeInterface $createdBefore
+     * @param int $limit
+     * @param list<string> $sort
+     * @param \DateTimeInterface $updatedAfter
+     * @param \DateTimeInterface $updatedAt
+     * @param \DateTimeInterface $updatedBefore
      *
      * @return Page<Blog>
      *
@@ -184,9 +184,9 @@ interface SettingsContract
     /**
      * @api
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param string $after
      * @param string $before
-     * @param int $limit The maximum number of results to return. Default is 100.
+     * @param int $limit
      *
      * @throws APIException
      */

@@ -16,9 +16,6 @@ use HubspotSDK\PublicPropertyAssociationFilterBranch;
 use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
-/**
- * The list filter branch that represents the enrollment trigger to this flow.
- */
 final class ListFilterBranch implements ConverterSource
 {
     use SdkUnion;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
 use HubspotSDK\Conversations\CustomChannels\ContactAttachment;
 use HubspotSDK\Conversations\CustomChannels\FileAttachment;
@@ -19,7 +20,6 @@ use HubspotSDK\Conversations\CustomChannels\PreResolvedContacts;
 use HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment;
 use HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment;
 use HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment;
-use HubspotSDK\Conversations\PublicConversationsMessage;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\MessagesContract;
@@ -68,7 +68,7 @@ final class MessagesService implements MessagesContract
         $preResolvedContacts = omit,
         $richText = omit,
         ?RequestOptions $requestOptions = null,
-    ): PublicConversationsMessage {
+    ): ConversationsPublicConversationsMessage {
         $params = [
             'attachments' => $attachments,
             'channelAccountID' => $channelAccountID,
@@ -98,7 +98,7 @@ final class MessagesService implements MessagesContract
         string $channelID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage {
+    ): ConversationsPublicConversationsMessage {
         [$parsed, $options] = MessageCreateParams::parseRequest(
             $params,
             $requestOptions
@@ -110,7 +110,7 @@ final class MessagesService implements MessagesContract
             path: ['conversations/v3/custom-channels/%1$s/messages', $channelID],
             body: (object) $parsed,
             options: $options,
-            convert: PublicConversationsMessage::class,
+            convert: ConversationsPublicConversationsMessage::class,
         );
     }
 
@@ -131,7 +131,7 @@ final class MessagesService implements MessagesContract
         $statusType,
         $errorMessage = omit,
         ?RequestOptions $requestOptions = null,
-    ): PublicConversationsMessage {
+    ): ConversationsPublicConversationsMessage {
         $params = [
             'channelID' => $channelID,
             'statusType' => $statusType,
@@ -152,7 +152,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage {
+    ): ConversationsPublicConversationsMessage {
         [$parsed, $options] = MessageUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -170,7 +170,7 @@ final class MessagesService implements MessagesContract
             ],
             body: (object) array_diff_key($parsed, ['channelID']),
             options: $options,
-            convert: PublicConversationsMessage::class,
+            convert: ConversationsPublicConversationsMessage::class,
         );
     }
 
@@ -187,7 +187,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         $channelID,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage {
+    ): ConversationsPublicConversationsMessage {
         $params = ['channelID' => $channelID];
 
         return $this->getRaw($messageID, $params, $requestOptions);
@@ -204,7 +204,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage {
+    ): ConversationsPublicConversationsMessage {
         [$parsed, $options] = MessageGetParams::parseRequest(
             $params,
             $requestOptions
@@ -221,7 +221,7 @@ final class MessagesService implements MessagesContract
                 $messageID,
             ],
             options: $options,
-            convert: PublicConversationsMessage::class,
+            convert: ConversationsPublicConversationsMessage::class,
         );
     }
 }

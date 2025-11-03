@@ -27,7 +27,7 @@ final class DefinitionsTest extends TestCase
 
         $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
-            accessToken: 'pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+            accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,
         );
 
@@ -57,15 +57,7 @@ final class DefinitionsTest extends TestCase
                         externalOptions: true,
                         name: 'name',
                         options: [
-                            Option::with(
-                                description: '',
-                                displayOrder: 0,
-                                doubleData: 0,
-                                hidden: false,
-                                label: '',
-                                readOnly: false,
-                                value: '',
-                            ),
+                            Option::with(hidden: false, label: 'Option A', value: 'A'),
                         ],
                         type: 'string',
                     ),
@@ -103,15 +95,9 @@ final class DefinitionsTest extends TestCase
                         externalOptions: true,
                         name: 'name',
                         options: [
-                            Option::with(
-                                description: '',
-                                displayOrder: 0,
-                                doubleData: 0,
-                                hidden: false,
-                                label: '',
-                                readOnly: false,
-                                value: '',
-                            ),
+                            Option::with(hidden: false, label: 'Option A', value: 'A')
+                                ->withDescription('Choice number one')
+                                ->withDisplayOrder(1),
                         ],
                         type: 'string',
                     )
@@ -217,13 +203,13 @@ final class DefinitionsTest extends TestCase
     }
 
     #[Test]
-    public function testRead(): void
+    public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->actions->definitions->read(
+        $result = $this->client->automation->actions->definitions->get(
             'definitionId',
             appID: 0
         );
@@ -232,13 +218,13 @@ final class DefinitionsTest extends TestCase
     }
 
     #[Test]
-    public function testReadWithOptionalParams(): void
+    public function testGetWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->actions->definitions->read(
+        $result = $this->client->automation->actions->definitions->get(
             'definitionId',
             appID: 0
         );

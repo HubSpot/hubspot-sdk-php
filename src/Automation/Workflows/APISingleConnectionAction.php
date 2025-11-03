@@ -24,37 +24,20 @@ final class APISingleConnectionAction implements BaseModel
     /** @use SdkModel<APISingleConnectionActionShape> */
     use SdkModel;
 
-    /**
-     * The ID for this action.
-     */
     #[Api('actionId')]
     public string $actionID;
 
-    /**
-     * The ID of the actionType to use.
-     */
     #[Api('actionTypeId')]
     public string $actionTypeID;
 
-    /**
-     * The version of this actionType to use.
-     */
     #[Api]
     public int $actionTypeVersion;
 
-    /**
-     * The fields to pass into this action. Different action types accept different fields.
-     *
-     * @var array<string, mixed> $fields
-     */
+    /** @var array<string, mixed> $fields */
     #[Api(map: 'mixed')]
     public array $fields;
 
-    /**
-     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -120,9 +103,6 @@ final class APISingleConnectionAction implements BaseModel
         return $obj;
     }
 
-    /**
-     * The ID for this action.
-     */
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
@@ -131,9 +111,6 @@ final class APISingleConnectionAction implements BaseModel
         return $obj;
     }
 
-    /**
-     * The ID of the actionType to use.
-     */
     public function withActionTypeID(string $actionTypeID): self
     {
         $obj = clone $this;
@@ -142,9 +119,6 @@ final class APISingleConnectionAction implements BaseModel
         return $obj;
     }
 
-    /**
-     * The version of this actionType to use.
-     */
     public function withActionTypeVersion(int $actionTypeVersion): self
     {
         $obj = clone $this;
@@ -154,8 +128,6 @@ final class APISingleConnectionAction implements BaseModel
     }
 
     /**
-     * The fields to pass into this action. Different action types accept different fields.
-     *
      * @param array<string, mixed> $fields
      */
     public function withFields(array $fields): self
@@ -167,8 +139,6 @@ final class APISingleConnectionAction implements BaseModel
     }
 
     /**
-     * The type of action this is, can be: "STATIC_BRANCH", "LIST_BRANCH", "AB_TEST_BRANCH", "CUSTOM_CODE", "WEBHOOK", or "SINGLE_CONNECTION".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

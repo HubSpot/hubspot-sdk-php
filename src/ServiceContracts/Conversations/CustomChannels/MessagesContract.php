@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Conversations\CustomChannels;
 
+use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
 use HubspotSDK\Conversations\CustomChannels\ContactAttachment;
 use HubspotSDK\Conversations\CustomChannels\FileAttachment;
@@ -15,7 +16,6 @@ use HubspotSDK\Conversations\CustomChannels\PreResolvedContacts;
 use HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment;
 use HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment;
 use HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment;
-use HubspotSDK\Conversations\PublicConversationsMessage;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -56,7 +56,7 @@ interface MessagesContract
         $preResolvedContacts = omit,
         $richText = omit,
         ?RequestOptions $requestOptions = null,
-    ): PublicConversationsMessage;
+    ): ConversationsPublicConversationsMessage;
 
     /**
      * @api
@@ -69,7 +69,7 @@ interface MessagesContract
         string $channelID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage;
+    ): ConversationsPublicConversationsMessage;
 
     /**
      * @api
@@ -86,7 +86,7 @@ interface MessagesContract
         $statusType,
         $errorMessage = omit,
         ?RequestOptions $requestOptions = null,
-    ): PublicConversationsMessage;
+    ): ConversationsPublicConversationsMessage;
 
     /**
      * @api
@@ -99,7 +99,7 @@ interface MessagesContract
         string $messageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage;
+    ): ConversationsPublicConversationsMessage;
 
     /**
      * @api
@@ -112,7 +112,7 @@ interface MessagesContract
         string $messageID,
         $channelID,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage;
+    ): ConversationsPublicConversationsMessage;
 
     /**
      * @api
@@ -125,5 +125,5 @@ interface MessagesContract
         string $messageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage;
+    ): ConversationsPublicConversationsMessage;
 }

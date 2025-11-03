@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows\APIYearlyEnrollmentSchedule;
 
-/**
- * The month of the date each year to run this flow.
- */
 enum Month: string
 {
     case JANUARY = 'JANUARY';

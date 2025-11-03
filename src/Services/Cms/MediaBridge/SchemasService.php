@@ -11,8 +11,8 @@ use HubspotSDK\Cms\MediaBridge\Schemas\SchemaGetParams;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaUpdateParams;
 use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Objects\Schemas\ObjectSchema;
-use HubspotSDK\CRM\Objects\Schemas\ObjectTypeDefinition;
+use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
+use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
@@ -56,7 +56,7 @@ final class SchemasService implements SchemasContract
         $searchableProperties = omit,
         $secondaryDisplayProperties = omit,
         ?RequestOptions $requestOptions = null,
-    ): ObjectTypeDefinition {
+    ): ObjectsSchemasObjectTypeDefinition {
         $params = [
             'appID' => $appID,
             'clearDescription' => $clearDescription,
@@ -83,7 +83,7 @@ final class SchemasService implements SchemasContract
         string $objectType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): ObjectTypeDefinition {
+    ): ObjectsSchemasObjectTypeDefinition {
         [$parsed, $options] = SchemaUpdateParams::parseRequest(
             $params,
             $requestOptions
@@ -97,7 +97,7 @@ final class SchemasService implements SchemasContract
             path: ['media-bridge/v1/%1$s/schemas/%2$s', $appID, $objectType],
             body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
-            convert: ObjectTypeDefinition::class,
+            convert: ObjectsSchemasObjectTypeDefinition::class,
         );
     }
 

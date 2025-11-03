@@ -22,7 +22,7 @@ final class FormsTest extends TestCase
 
         $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
-            accessToken: 'pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+            accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,
         );
 
@@ -78,13 +78,13 @@ final class FormsTest extends TestCase
     }
 
     #[Test]
-    public function testRead(): void
+    public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->forms->read('formId');
+        $result = $this->client->marketing->forms->get('formId');
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

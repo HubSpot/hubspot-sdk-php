@@ -106,7 +106,7 @@ final class DomainsService implements DomainsContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         string $domainID,
         ?RequestOptions $requestOptions = null
     ): Domain {

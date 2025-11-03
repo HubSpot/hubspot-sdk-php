@@ -16,10 +16,10 @@ use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
 use HubspotSDK\Cms\Blogs\Posts\PostDeleteParams;
 use HubspotSDK\Cms\Blogs\Posts\PostDetachFromLangGroupParams;
+use HubspotSDK\Cms\Blogs\Posts\PostGetParams;
 use HubspotSDK\Cms\Blogs\Posts\PostGetPreviousVersionParams;
 use HubspotSDK\Cms\Blogs\Posts\PostGetPreviousVersionsParams;
 use HubspotSDK\Cms\Blogs\Posts\PostListParams;
-use HubspotSDK\Cms\Blogs\Posts\PostReadParams;
 use HubspotSDK\Cms\Blogs\Posts\PostRestorePreviousVersionParams;
 use HubspotSDK\Cms\Blogs\Posts\PostRestorePreviousVersionToDraftParams;
 use HubspotSDK\Cms\Blogs\Posts\PostScheduleParams;
@@ -29,7 +29,7 @@ use HubspotSDK\Cms\Blogs\Posts\PostUpdateLangsParams;
 use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams;
 use HubspotSDK\Cms\Blogs\Posts\VersionBlogPost;
 use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Cms\Pages\ContentLanguageVariation;
+use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -114,7 +114,7 @@ final class PostsService implements PostsContract
      * @param list<int> $tagIDs the IDs of the tags associated with this post
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary blog post that this post was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated the post
      * @param string $url a generated field representing the URL of this blog post
@@ -344,7 +344,7 @@ final class PostsService implements PostsContract
      * @param list<int> $tagIDs the IDs of the tags associated with this post
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary blog post that this post was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated the post
      * @param string $url a generated field representing the URL of this blog post
@@ -841,6 +841,51 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
+     * Retrieve a blog post by the post ID.
+     *
+     * @param bool $archived Specifies whether to return deleted blog posts. Defaults to `false`.
+     * @param string $property specific properties to return
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $objectID,
+        $archived = omit,
+        $property = omit,
+        ?RequestOptions $requestOptions = null,
+    ): BlogPost {
+        $params = ['archived' => $archived, 'property' => $property];
+
+        return $this->getRaw($objectID, $params, $requestOptions);
+    }
+
+    /**
+     * @api
+     *
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function getRaw(
+        string $objectID,
+        array $params,
+        ?RequestOptions $requestOptions = null
+    ): BlogPost {
+        [$parsed, $options] = PostGetParams::parseRequest($params, $requestOptions);
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: ['cms/v3/blogs/posts/%1$s', $objectID],
+            query: $parsed,
+            options: $options,
+            convert: BlogPost::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Retrieve the full draft version of a blog post.
      *
      * @throws APIException
@@ -977,54 +1022,6 @@ final class PostsService implements PostsContract
             path: ['cms/v3/blogs/posts/%1$s/draft/push-live', $objectID],
             options: $requestOptions,
             convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Retrieve a blog post by the post ID.
-     *
-     * @param bool $archived Specifies whether to return deleted blog posts. Defaults to `false`.
-     * @param string $property specific properties to return
-     *
-     * @throws APIException
-     */
-    public function read(
-        string $objectID,
-        $archived = omit,
-        $property = omit,
-        ?RequestOptions $requestOptions = null,
-    ): BlogPost {
-        $params = ['archived' => $archived, 'property' => $property];
-
-        return $this->readRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function readRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BlogPost {
-        [$parsed, $options] = PostReadParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'get',
-            path: ['cms/v3/blogs/posts/%1$s', $objectID],
-            query: $parsed,
-            options: $options,
-            convert: BlogPost::class,
         );
     }
 
@@ -1307,7 +1304,7 @@ final class PostsService implements PostsContract
      * @param list<int> $tagIDs the IDs of the tags associated with this post
      * @param array<string, mixed> $themeSettingsValues
      * @param string $translatedFromID ID of the primary blog post that this post was translated from
-     * @param array<string, ContentLanguageVariation> $translations
+     * @param array<string, PagesContentLanguageVariation> $translations
      * @param \DateTimeInterface $updated
      * @param string $updatedByID the ID of the user that updated the post
      * @param string $url a generated field representing the URL of this blog post

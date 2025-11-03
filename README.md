@@ -1,13 +1,13 @@
-# Hub Spot PHP API library
+# Hubspot PHP API library
 
 > [!NOTE]
-> The Hub Spot PHP API Library is currently in **beta** and we're excited for you to experiment with it!
+> The Hubspot PHP API Library is currently in **beta** and we're excited for you to experiment with it!
 >
 > This library has not yet been exhaustively tested in production environments and may be missing some features you'd expect in a stable release. As we continue development, there may be breaking changes that require updates to your code.
 >
 > **We'd love your feedback!** Please share any suggestions, bug reports, feature requests, or general thoughts by [filing an issue](https://www.github.com/stainless-sdks/hubspot-sdk-php/issues/new).
 
-The Hub Spot PHP library provides convenient access to the Hub Spot REST API from any PHP 8.1.0+ application.
+The Hubspot PHP library provides convenient access to the Hubspot REST API from any PHP 8.1.0+ application.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
@@ -43,9 +43,7 @@ Parameters with a default value must be set by name.
 
 use HubspotSDK\Client;
 
-$client = new Client(
-  accessToken: "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-);
+$client = new Client(accessToken: "pat-na1-xxxxxxxx-xxxx");
 
 $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
   properties: ["email" => "mark.s@lumon.industries"]
@@ -63,7 +61,7 @@ However, builders are also provided `(new AssociationSpec)->withAssociationCateg
 
 ### Pagination
 
-List methods in the Hub Spot API are paginated.
+List methods in the Hubspot API are paginated.
 
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
@@ -72,9 +70,7 @@ This library provides auto-paginating iterators with each list response, so you 
 
 use HubspotSDK\Client;
 
-$client = new Client(
-  accessToken: "pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-);
+$client = new Client(accessToken: "pat-na1-xxxxxxxx-xxxx");
 
 $page = $client->crm->objects->contacts->list();
 

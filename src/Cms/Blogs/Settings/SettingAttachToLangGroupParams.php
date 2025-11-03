@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Attach a blog to a multi-language group.
- *
  * @see HubspotSDK\Cms\Blogs\Settings->attachToLangGroup
  *
  * @phpstan-type SettingAttachToLangGroupParamsShape = array{

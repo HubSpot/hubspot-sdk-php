@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve a batch of workflows by ID.
- *
  * @see HubspotSDK\Automation\Workflows->batchGet
  *
  * @phpstan-type WorkflowBatchGetParamsShape = array{

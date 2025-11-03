@@ -32,37 +32,22 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
     /** @use SdkModel<APIListBasedEnrollmentCriteriaShape> */
     use SdkModel;
 
-    /**
-     * The list filter branch that represents the enrollment trigger to this flow.
-     */
     #[Api]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $listFilterBranch;
 
     /**
-     * A list of filter branches to listen for in order to re-enroll objects into this workflow.
-     *
      * @var list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $reEnrollmentTriggersFilterBranches
      */
     #[Api(list: ReEnrollmentTriggersFilterBranch::class)]
     public array $reEnrollmentTriggersFilterBranches;
 
-    /**
-     * Whether or not the same object can enroll in this workflow twice.
-     */
     #[Api]
     public bool $shouldReEnroll;
 
-    /**
-     * The type of enrollment criteria this is, this can be "LIST_BASED", "EVENT_BASED", or "MANUAL".
-     *
-     * @var value-of<Type> $type
-     */
+    /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
     public string $type;
 
-    /**
-     * Whether or not to remove objects from this workflow if they stop meeting the enrollment criteria.
-     */
     #[Api]
     public bool $unEnrollObjectsNotMeetingCriteria;
 
@@ -122,9 +107,6 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
         return $obj;
     }
 
-    /**
-     * The list filter branch that represents the enrollment trigger to this flow.
-     */
     public function withListFilterBranch(
         PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $listFilterBranch,
     ): self {
@@ -135,8 +117,6 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
     }
 
     /**
-     * A list of filter branches to listen for in order to re-enroll objects into this workflow.
-     *
      * @param list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $reEnrollmentTriggersFilterBranches
      */
     public function withReEnrollmentTriggersFilterBranches(
@@ -148,9 +128,6 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
         return $obj;
     }
 
-    /**
-     * Whether or not the same object can enroll in this workflow twice.
-     */
     public function withShouldReEnroll(bool $shouldReEnroll): self
     {
         $obj = clone $this;
@@ -160,8 +137,6 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
     }
 
     /**
-     * The type of enrollment criteria this is, this can be "LIST_BASED", "EVENT_BASED", or "MANUAL".
-     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -172,9 +147,6 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
         return $obj;
     }
 
-    /**
-     * Whether or not to remove objects from this workflow if they stop meeting the enrollment criteria.
-     */
     public function withUnEnrollObjectsNotMeetingCriteria(
         bool $unEnrollObjectsNotMeetingCriteria
     ): self {

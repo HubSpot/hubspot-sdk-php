@@ -9,9 +9,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Forms\FieldGroup;
 use HubspotSDK\Marketing\Forms\FormDefinitionBase;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
+use HubspotSDK\Marketing\Forms\FormGetParams;
 use HubspotSDK\Marketing\Forms\FormListParams;
 use HubspotSDK\Marketing\Forms\FormListParams\FormType;
-use HubspotSDK\Marketing\Forms\FormReadParams;
 use HubspotSDK\Marketing\Forms\FormUpdateParams;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
 use HubspotSDK\Marketing\Forms\HubSpotFormDefinition;
@@ -203,14 +203,14 @@ final class FormsService implements FormsContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         string $formID,
         $archived = omit,
         ?RequestOptions $requestOptions = null
     ): FormDefinitionBase {
         $params = ['archived' => $archived];
 
-        return $this->readRaw($formID, $params, $requestOptions);
+        return $this->getRaw($formID, $params, $requestOptions);
     }
 
     /**
@@ -220,15 +220,12 @@ final class FormsService implements FormsContract
      *
      * @throws APIException
      */
-    public function readRaw(
+    public function getRaw(
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null
     ): FormDefinitionBase {
-        [$parsed, $options] = FormReadParams::parseRequest(
-            $params,
-            $requestOptions
-        );
+        [$parsed, $options] = FormGetParams::parseRequest($params, $requestOptions);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

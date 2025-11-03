@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Archive a function for a definition.
+ * Archive a function for a specific definition.
  *
  * @see HubspotSDK\Automation\Actions\Functions->delete
  *

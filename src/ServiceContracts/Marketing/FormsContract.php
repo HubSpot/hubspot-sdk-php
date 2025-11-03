@@ -118,7 +118,7 @@ interface FormsContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         string $formID,
         $archived = omit,
         ?RequestOptions $requestOptions = null
@@ -131,7 +131,7 @@ interface FormsContract
      *
      * @throws APIException
      */
-    public function readRaw(
+    public function getRaw(
         string $formID,
         array $params,
         ?RequestOptions $requestOptions = null

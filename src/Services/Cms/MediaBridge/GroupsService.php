@@ -12,7 +12,7 @@ use HubspotSDK\Cms\MediaBridge\Groups\GroupGetByNameParams;
 use HubspotSDK\Cms\MediaBridge\Groups\GroupListParams;
 use HubspotSDK\Cms\MediaBridge\Groups\GroupUpdateByNameParams;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\CRM\Properties\PropertyGroup;
+use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\GroupsContract;
 

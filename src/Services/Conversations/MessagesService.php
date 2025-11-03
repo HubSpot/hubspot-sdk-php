@@ -6,11 +6,11 @@ namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\CollectionResponsePublicMessageForwardPaging;
+use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\Messages\MessageGetOriginalContentParams;
 use HubspotSDK\Conversations\Messages\MessageGetParams;
 use HubspotSDK\Conversations\PublicAssignmentMessage;
 use HubspotSDK\Conversations\PublicComment;
-use HubspotSDK\Conversations\PublicConversationsMessage;
 use HubspotSDK\Conversations\PublicMessage;
 use HubspotSDK\Conversations\PublicMessageContent;
 use HubspotSDK\Conversations\PublicThreadInboxChange;
@@ -37,7 +37,7 @@ final class MessagesService implements MessagesContract
     public function create(
         string $threadID,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
+    ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
@@ -80,7 +80,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         $threadID,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
+    ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
         $params = ['threadID' => $threadID];
 
         return $this->getRaw($messageID, $params, $requestOptions);
@@ -97,7 +97,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): PublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
+    ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
         [$parsed, $options] = MessageGetParams::parseRequest(
             $params,
             $requestOptions

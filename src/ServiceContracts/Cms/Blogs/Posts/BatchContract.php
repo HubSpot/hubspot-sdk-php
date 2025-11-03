@@ -95,7 +95,7 @@ interface BatchContract
      *
      * @throws APIException
      */
-    public function read(
+    public function get(
         $inputs,
         $archived = omit,
         ?RequestOptions $requestOptions = null
@@ -108,7 +108,7 @@ interface BatchContract
      *
      * @throws APIException
      */
-    public function readRaw(
+    public function getRaw(
         array $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseBlogPost;
