@@ -6,7 +6,6 @@ namespace HubspotSDK\ServiceContracts\Cms\Pages;
 
 use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\BatchResponsePage;
-use HubspotSDK\Cms\Pages\CollectionResponseWithTotalVersionPage;
 use HubspotSDK\Cms\Pages\Page;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Cms\Pages\SitePages\SitePageCreateParams\AbStatus;
@@ -682,6 +681,8 @@ interface SitePagesContract
      * @param string $before
      * @param int $limit The maximum number of results to return. Default is 100.
      *
+     * @return \HubspotSDK\Page<VersionPage>
+     *
      * @throws APIException
      */
     public function listRevisions(
@@ -690,12 +691,14 @@ interface SitePagesContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionPage;
+    ): \HubspotSDK\Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return \HubspotSDK\Page<VersionPage>
      *
      * @throws APIException
      */
@@ -703,7 +706,7 @@ interface SitePagesContract
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionPage;
+    ): \HubspotSDK\Page;
 
     /**
      * @api

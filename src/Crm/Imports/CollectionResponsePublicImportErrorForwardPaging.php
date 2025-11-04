@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Imports;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -16,12 +14,10 @@ use HubspotSDK\ForwardPaging;
  *   results: list<PublicImportError>, paging?: ForwardPaging
  * }
  */
-final class CollectionResponsePublicImportErrorForwardPaging implements BaseModel, ResponseConverter
+final class CollectionResponsePublicImportErrorForwardPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponsePublicImportErrorForwardPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<PublicImportError> $results */
     #[Api(list: PublicImportError::class)]

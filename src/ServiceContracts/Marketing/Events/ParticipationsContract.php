@@ -6,7 +6,8 @@ namespace HubspotSDK\ServiceContracts\Marketing\Events;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\AttendanceCounters;
-use HubspotSDK\Marketing\Events\CollectionResponseWithTotalParticipationBreakdownForwardPaging;
+use HubspotSDK\Marketing\Events\ParticipationBreakdown;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -56,6 +57,8 @@ interface ParticipationsContract
      * @param int $limit The limit for response size. The default value is 10, the max number is 100
      * @param string $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
      *
+     * @return Page<ParticipationBreakdown>
+     *
      * @throws APIException
      */
     public function listBreakdownByContact(
@@ -64,12 +67,14 @@ interface ParticipationsContract
         $limit = omit,
         $state = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return Page<ParticipationBreakdown>
      *
      * @throws APIException
      */
@@ -77,7 +82,7 @@ interface ParticipationsContract
         string $contactIdentifier,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging;
+    ): Page;
 
     /**
      * @api
@@ -87,6 +92,8 @@ interface ParticipationsContract
      * @param string $contactIdentifier The identifier of the Contact. It may be email or internal id.
      * @param int $limit The limit for response size. The default value is 10, the max number is 100
      * @param string $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
+     *
+     * @return Page<ParticipationBreakdown>
      *
      * @throws APIException
      */
@@ -98,12 +105,14 @@ interface ParticipationsContract
         $limit = omit,
         $state = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return Page<ParticipationBreakdown>
      *
      * @throws APIException
      */
@@ -111,7 +120,7 @@ interface ParticipationsContract
         string $externalEventID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging;
+    ): Page;
 
     /**
      * @api
@@ -120,6 +129,8 @@ interface ParticipationsContract
      * @param string $contactIdentifier The identifier of the Contact. It may be email or internal id.
      * @param int $limit The limit for response size. The default value is 10, the max number is 100
      * @param string $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
+     *
+     * @return Page<ParticipationBreakdown>
      *
      * @throws APIException
      */
@@ -130,12 +141,14 @@ interface ParticipationsContract
         $limit = omit,
         $state = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return Page<ParticipationBreakdown>
      *
      * @throws APIException
      */
@@ -143,5 +156,5 @@ interface ParticipationsContract
         int $marketingEventID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging;
+    ): Page;
 }

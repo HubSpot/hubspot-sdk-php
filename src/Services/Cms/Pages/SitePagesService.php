@@ -7,7 +7,6 @@ namespace HubspotSDK\Services\Cms\Pages;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\BatchResponsePage;
-use HubspotSDK\Cms\Pages\CollectionResponseWithTotalVersionPage;
 use HubspotSDK\Cms\Pages\Page;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Cms\Pages\SitePages\SitePageAttachToLangGroupParams;
@@ -1173,6 +1172,8 @@ final class SitePagesService implements SitePagesContract
      * @param string $before
      * @param int $limit The maximum number of results to return. Default is 100.
      *
+     * @return \HubspotSDK\Page<VersionPage>
+     *
      * @throws APIException
      */
     public function listRevisions(
@@ -1181,7 +1182,7 @@ final class SitePagesService implements SitePagesContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionPage {
+    ): \HubspotSDK\Page {
         $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
 
         return $this->listRevisionsRaw($objectID, $params, $requestOptions);
@@ -1192,13 +1193,15 @@ final class SitePagesService implements SitePagesContract
      *
      * @param array<string, mixed> $params
      *
+     * @return \HubspotSDK\Page<VersionPage>
+     *
      * @throws APIException
      */
     public function listRevisionsRaw(
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionPage {
+    ): \HubspotSDK\Page {
         [$parsed, $options] = SitePageListRevisionsParams::parseRequest(
             $params,
             $requestOptions
@@ -1210,7 +1213,8 @@ final class SitePagesService implements SitePagesContract
             path: ['cms/v3/pages/site-pages/%1$s/revisions', $objectID],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalVersionPage::class,
+            convert: VersionPage::class,
+            page: \HubspotSDK\Page::class,
         );
     }
 

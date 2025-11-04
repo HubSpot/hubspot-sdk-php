@@ -9,11 +9,11 @@ use HubspotSDK\Automation\Workflows\APIFlow;
 use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate;
 use HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationFlowIDCoordinate;
 use HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationWorkflowIDCoordinate;
+use HubspotSDK\Automation\Workflows\APIFlowEmailCampaign;
 use HubspotSDK\Automation\Workflows\APIFlowListing;
 use HubspotSDK\Automation\Workflows\APIPlatformFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseAPIFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseFlowIDWorkflowIDMappingResponse;
-use HubspotSDK\Automation\Workflows\CollectionResponseAPIFlowEmailCampaign;
 use HubspotSDK\Automation\Workflows\WorkflowBatchGetIDMappingsParams;
 use HubspotSDK\Automation\Workflows\WorkflowBatchGetParams;
 use HubspotSDK\Automation\Workflows\WorkflowListEmailCampaignsParams;
@@ -245,6 +245,8 @@ final class WorkflowsService implements WorkflowsContract
      * @param list<string> $flowID
      * @param int $limit
      *
+     * @return Page<APIFlowEmailCampaign>
+     *
      * @throws APIException
      */
     public function listEmailCampaigns(
@@ -253,7 +255,7 @@ final class WorkflowsService implements WorkflowsContract
         $flowID = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseAPIFlowEmailCampaign {
+    ): Page {
         $params = [
             'after' => $after,
             'before' => $before,
@@ -269,12 +271,14 @@ final class WorkflowsService implements WorkflowsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<APIFlowEmailCampaign>
+     *
      * @throws APIException
      */
     public function listEmailCampaignsRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseAPIFlowEmailCampaign {
+    ): Page {
         [$parsed, $options] = WorkflowListEmailCampaignsParams::parseRequest(
             $params,
             $requestOptions
@@ -286,7 +290,8 @@ final class WorkflowsService implements WorkflowsContract
             path: 'automation/v4/flows/email-campaigns',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseAPIFlowEmailCampaign::class,
+            convert: APIFlowEmailCampaign::class,
+            page: Page::class,
         );
     }
 }

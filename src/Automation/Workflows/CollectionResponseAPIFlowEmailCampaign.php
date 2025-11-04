@@ -6,9 +6,7 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
@@ -16,12 +14,10 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
  *   results: list<APIFlowEmailCampaign>, paging?: EmailsPaging
  * }
  */
-final class CollectionResponseAPIFlowEmailCampaign implements BaseModel, ResponseConverter
+final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
 {
     /** @use SdkModel<CollectionResponseAPIFlowEmailCampaignShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<APIFlowEmailCampaign> $results */
     #[Api(list: APIFlowEmailCampaign::class)]

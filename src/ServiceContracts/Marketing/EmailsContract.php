@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalVersionPublicEmail;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
@@ -381,6 +380,8 @@ interface EmailsContract
      * @param string $before The cursor token value to get the previous set of results. You can get this from the `paging.prev.before` JSON property of a paged response containing more results.
      * @param int $limit The maximum number of results to return. Default is 10.
      *
+     * @return Page<VersionPublicEmail>
+     *
      * @throws APIException
      */
     public function listRevisions(
@@ -389,12 +390,14 @@ interface EmailsContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionPublicEmail;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return Page<VersionPublicEmail>
      *
      * @throws APIException
      */
@@ -402,7 +405,7 @@ interface EmailsContract
         string $emailID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionPublicEmail;
+    ): Page;
 
     /**
      * @api

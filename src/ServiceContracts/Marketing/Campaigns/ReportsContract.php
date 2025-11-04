@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing\Campaigns;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\CollectionResponseContactReferenceForwardPaging;
+use HubspotSDK\Marketing\Campaigns\ContactReference;
 use HubspotSDK\Marketing\Campaigns\MetricsCounters;
 use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -90,6 +91,8 @@ interface ReportsContract
      * @param string $startDate The start date for the report data, formatted as YYYY-MM-DD.
      * Default value: 2006-01-01
      *
+     * @return Page<ContactReference>
+     *
      * @throws APIException
      */
     public function listContactIDsByType(
@@ -100,12 +103,14 @@ interface ReportsContract
         $limit = omit,
         $startDate = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseContactReferenceForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return Page<ContactReference>
      *
      * @throws APIException
      */
@@ -113,5 +118,5 @@ interface ReportsContract
         string $contactType,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseContactReferenceForwardPaging;
+    ): Page;
 }

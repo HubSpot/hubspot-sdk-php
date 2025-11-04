@@ -6,7 +6,7 @@ namespace HubspotSDK\ServiceContracts\Crm;
 
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Imports\CollectionResponsePublicImportErrorForwardPaging;
+use HubspotSDK\Crm\Imports\PublicImportError;
 use HubspotSDK\Crm\Imports\PublicImportResponse;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -101,6 +101,8 @@ interface ImportsContract
      * @param bool $includeRowData set to True to receive the data values for the errored row
      * @param int $limit the maximum number of results to display per page
      *
+     * @return Page<PublicImportError>
+     *
      * @throws APIException
      */
     public function listErrors(
@@ -110,12 +112,14 @@ interface ImportsContract
         $includeRowData = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicImportErrorForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return Page<PublicImportError>
      *
      * @throws APIException
      */
@@ -123,5 +127,5 @@ interface ImportsContract
         int $importID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicImportErrorForwardPaging;
+    ): Page;
 }

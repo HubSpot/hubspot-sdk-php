@@ -6,7 +6,9 @@ namespace HubspotSDK\Crm\Imports;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Imports\PublicImportError\ErrorType;
 use HubspotSDK\Crm\Imports\PublicImportError\ObjectType;
 use HubspotSDK\Marketing\Events\PropertyValue;
@@ -27,10 +29,12 @@ use HubspotSDK\Marketing\Events\PropertyValue;
  *   objectTypeID?: string,
  * }
  */
-final class PublicImportError implements BaseModel
+final class PublicImportError implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<PublicImportErrorShape> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;

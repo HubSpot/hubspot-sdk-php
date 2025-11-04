@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\Cms\Hubdb;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\Rows\RowCloneDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowCreateParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowDeleteDraftParams;
@@ -16,8 +15,6 @@ use HubspotSDK\Cms\Hubdb\Rows\RowListDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowListParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
-use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -381,6 +378,8 @@ final class RowsService implements RowsContract
      * @param list<string> $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
      * @param list<string> $sort specifies the column names to sort the results by
      *
+     * @return Page<mixed>
+     *
      * @throws APIException
      */
     public function listDraft(
@@ -392,7 +391,7 @@ final class RowsService implements RowsContract
         $properties = omit,
         $sort = omit,
         ?RequestOptions $requestOptions = null,
-    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3 {
+    ): Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -410,13 +409,15 @@ final class RowsService implements RowsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<mixed>
+     *
      * @throws APIException
      */
     public function listDraftRaw(
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3 {
+    ): Page {
         [$parsed, $options] = RowListDraftParams::parseRequest(
             $params,
             $requestOptions
@@ -428,7 +429,8 @@ final class RowsService implements RowsContract
             path: ['cms/v3/hubdb/tables/%1$s/rows/draft', $tableIDOrName],
             query: $parsed,
             options: $options,
-            convert: UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3::class,
+            convert: 'mixed',
+            page: Page::class,
         );
     }
 

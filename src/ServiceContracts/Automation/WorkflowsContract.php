@@ -8,11 +8,11 @@ use HubspotSDK\Automation\Workflows\APIContactFlow;
 use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate;
 use HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationFlowIDCoordinate;
 use HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationWorkflowIDCoordinate;
+use HubspotSDK\Automation\Workflows\APIFlowEmailCampaign;
 use HubspotSDK\Automation\Workflows\APIFlowListing;
 use HubspotSDK\Automation\Workflows\APIPlatformFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseAPIFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseFlowIDWorkflowIDMappingResponse;
-use HubspotSDK\Automation\Workflows\CollectionResponseAPIFlowEmailCampaign;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -146,6 +146,8 @@ interface WorkflowsContract
      * @param list<string> $flowID
      * @param int $limit
      *
+     * @return Page<APIFlowEmailCampaign>
+     *
      * @throws APIException
      */
     public function listEmailCampaigns(
@@ -154,17 +156,19 @@ interface WorkflowsContract
         $flowID = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseAPIFlowEmailCampaign;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<APIFlowEmailCampaign>
+     *
      * @throws APIException
      */
     public function listEmailCampaignsRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseAPIFlowEmailCampaign;
+    ): Page;
 }
