@@ -8,9 +8,6 @@ use HubspotSDK\Client;
 use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
 use HubspotSDK\Cms\Pages\BatchResponsePage;
-use HubspotSDK\Cms\Pages\CollectionResponseWithTotalContentFolderForwardPaging;
-use HubspotSDK\Cms\Pages\CollectionResponseWithTotalVersionContentFolder;
-use HubspotSDK\Cms\Pages\CollectionResponseWithTotalVersionPage;
 use HubspotSDK\Cms\Pages\ContentFolder;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageAttachToLangGroupParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCloneParams;
@@ -1537,6 +1534,8 @@ final class LandingPagesService implements LandingPagesContract
      * @param string $before
      * @param int $limit The maximum number of results to return. Default is 100.
      *
+     * @return \HubspotSDK\Page<VersionContentFolder>
+     *
      * @throws APIException
      */
     public function listFolderRevisions(
@@ -1545,7 +1544,7 @@ final class LandingPagesService implements LandingPagesContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionContentFolder {
+    ): \HubspotSDK\Page {
         $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
 
         return $this->listFolderRevisionsRaw($objectID, $params, $requestOptions);
@@ -1556,13 +1555,15 @@ final class LandingPagesService implements LandingPagesContract
      *
      * @param array<string, mixed> $params
      *
+     * @return \HubspotSDK\Page<VersionContentFolder>
+     *
      * @throws APIException
      */
     public function listFolderRevisionsRaw(
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionContentFolder {
+    ): \HubspotSDK\Page {
         [$parsed, $options] = LandingPageListFolderRevisionsParams::parseRequest(
             $params,
             $requestOptions
@@ -1574,7 +1575,8 @@ final class LandingPagesService implements LandingPagesContract
             path: ['cms/v3/pages/landing-pages/folders/%1$s/revisions', $objectID],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalVersionContentFolder::class,
+            convert: VersionContentFolder::class,
+            page: \HubspotSDK\Page::class,
         );
     }
 
@@ -1595,6 +1597,8 @@ final class LandingPagesService implements LandingPagesContract
      * @param \DateTimeInterface $updatedAt only return Folders last updated at exactly the specified time
      * @param \DateTimeInterface $updatedBefore only return Folders last updated before the specified time
      *
+     * @return \HubspotSDK\Page<ContentFolder>
+     *
      * @throws APIException
      */
     public function listFolders(
@@ -1610,7 +1614,7 @@ final class LandingPagesService implements LandingPagesContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalContentFolderForwardPaging {
+    ): \HubspotSDK\Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -1633,12 +1637,14 @@ final class LandingPagesService implements LandingPagesContract
      *
      * @param array<string, mixed> $params
      *
+     * @return \HubspotSDK\Page<ContentFolder>
+     *
      * @throws APIException
      */
     public function listFoldersRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalContentFolderForwardPaging {
+    ): \HubspotSDK\Page {
         [$parsed, $options] = LandingPageListFoldersParams::parseRequest(
             $params,
             $requestOptions
@@ -1650,7 +1656,8 @@ final class LandingPagesService implements LandingPagesContract
             path: 'cms/v3/pages/landing-pages/folders',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalContentFolderForwardPaging::class,
+            convert: ContentFolder::class,
+            page: \HubspotSDK\Page::class,
         );
     }
 
@@ -1663,6 +1670,8 @@ final class LandingPagesService implements LandingPagesContract
      * @param string $before
      * @param int $limit The maximum number of results to return. Default is 100.
      *
+     * @return \HubspotSDK\Page<VersionPage>
+     *
      * @throws APIException
      */
     public function listRevisions(
@@ -1671,7 +1680,7 @@ final class LandingPagesService implements LandingPagesContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionPage {
+    ): \HubspotSDK\Page {
         $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
 
         return $this->listRevisionsRaw($objectID, $params, $requestOptions);
@@ -1682,13 +1691,15 @@ final class LandingPagesService implements LandingPagesContract
      *
      * @param array<string, mixed> $params
      *
+     * @return \HubspotSDK\Page<VersionPage>
+     *
      * @throws APIException
      */
     public function listRevisionsRaw(
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionPage {
+    ): \HubspotSDK\Page {
         [$parsed, $options] = LandingPageListRevisionsParams::parseRequest(
             $params,
             $requestOptions
@@ -1700,7 +1711,8 @@ final class LandingPagesService implements LandingPagesContract
             path: ['cms/v3/pages/landing-pages/%1$s/revisions', $objectID],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalVersionPage::class,
+            convert: VersionPage::class,
+            page: \HubspotSDK\Page::class,
         );
     }
 

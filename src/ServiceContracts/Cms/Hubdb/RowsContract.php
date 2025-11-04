@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Hubdb;
 
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -210,6 +208,8 @@ interface RowsContract
      * @param list<string> $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
      * @param list<string> $sort specifies the column names to sort the results by
      *
+     * @return Page<mixed>
+     *
      * @throws APIException
      */
     public function listDraft(
@@ -221,12 +221,14 @@ interface RowsContract
         $properties = omit,
         $sort = omit,
         ?RequestOptions $requestOptions = null,
-    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return Page<mixed>
      *
      * @throws APIException
      */
@@ -234,7 +236,7 @@ interface RowsContract
         string $tableIDOrName,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3;
+    ): Page;
 
     /**
      * @api

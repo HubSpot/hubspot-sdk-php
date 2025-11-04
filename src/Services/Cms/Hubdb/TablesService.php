@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\Hubdb;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\CollectionResponseWithTotalHubDBTableV3ForwardPaging;
 use HubspotSDK\Cms\Hubdb\ColumnRequest;
 use HubspotSDK\Cms\Hubdb\HubDBTableV3;
 use HubspotSDK\Cms\Hubdb\ImportResult;
@@ -587,6 +586,8 @@ final class TablesService implements TablesContract
      * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
      * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function listDraft(
@@ -603,7 +604,7 @@ final class TablesService implements TablesContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging {
+    ): Page {
         $params = [
             'after' => $after,
             'archived' => $archived,
@@ -627,12 +628,14 @@ final class TablesService implements TablesContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function listDraftRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging {
+    ): Page {
         [$parsed, $options] = TableListDraftParams::parseRequest(
             $params,
             $requestOptions
@@ -644,7 +647,8 @@ final class TablesService implements TablesContract
             path: 'cms/v3/hubdb/tables/draft',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalHubDBTableV3ForwardPaging::class,
+            convert: HubDBTableV3::class,
+            page: Page::class,
         );
     }
 

@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Blogs\Settings\Blog;
-use HubspotSDK\Cms\Blogs\Settings\CollectionResponseWithTotalVersionBlog;
 use HubspotSDK\Cms\Blogs\Settings\SettingAttachToLangGroupParams;
 use HubspotSDK\Cms\Blogs\Settings\SettingCreateLanguageVariationParams;
 use HubspotSDK\Cms\Blogs\Settings\SettingDetachFromLangGroupParams;
@@ -328,6 +327,8 @@ final class SettingsService implements SettingsContract
      * @param string $before
      * @param int $limit
      *
+     * @return Page<VersionBlog>
+     *
      * @throws APIException
      */
     public function listRevisions(
@@ -336,7 +337,7 @@ final class SettingsService implements SettingsContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionBlog {
+    ): Page {
         $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
 
         return $this->listRevisionsRaw($blogID, $params, $requestOptions);
@@ -347,13 +348,15 @@ final class SettingsService implements SettingsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<VersionBlog>
+     *
      * @throws APIException
      */
     public function listRevisionsRaw(
         string $blogID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionBlog {
+    ): Page {
         [$parsed, $options] = SettingListRevisionsParams::parseRequest(
             $params,
             $requestOptions
@@ -365,7 +368,8 @@ final class SettingsService implements SettingsContract
             path: ['cms/v3/blog-settings/settings/%1$s/revisions', $blogID],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalVersionBlog::class,
+            convert: VersionBlog::class,
+            page: Page::class,
         );
     }
 

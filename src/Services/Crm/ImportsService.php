@@ -7,10 +7,10 @@ namespace HubspotSDK\Services\Crm;
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Imports\CollectionResponsePublicImportErrorForwardPaging;
 use HubspotSDK\Crm\Imports\ImportCreateParams;
 use HubspotSDK\Crm\Imports\ImportListErrorsParams;
 use HubspotSDK\Crm\Imports\ImportListParams;
+use HubspotSDK\Crm\Imports\PublicImportError;
 use HubspotSDK\Crm\Imports\PublicImportResponse;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -173,6 +173,8 @@ final class ImportsService implements ImportsContract
      * @param bool $includeRowData set to True to receive the data values for the errored row
      * @param int $limit the maximum number of results to display per page
      *
+     * @return Page<PublicImportError>
+     *
      * @throws APIException
      */
     public function listErrors(
@@ -182,7 +184,7 @@ final class ImportsService implements ImportsContract
         $includeRowData = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicImportErrorForwardPaging {
+    ): Page {
         $params = [
             'after' => $after,
             'includeErrorMessage' => $includeErrorMessage,
@@ -198,13 +200,15 @@ final class ImportsService implements ImportsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<PublicImportError>
+     *
      * @throws APIException
      */
     public function listErrorsRaw(
         int $importID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicImportErrorForwardPaging {
+    ): Page {
         [$parsed, $options] = ImportListErrorsParams::parseRequest(
             $params,
             $requestOptions
@@ -216,7 +220,8 @@ final class ImportsService implements ImportsContract
             path: ['crm/v3/imports/%1$s/errors', $importID],
             query: $parsed,
             options: $options,
-            convert: CollectionResponsePublicImportErrorForwardPaging::class,
+            convert: PublicImportError::class,
+            page: Page::class,
         );
     }
 }

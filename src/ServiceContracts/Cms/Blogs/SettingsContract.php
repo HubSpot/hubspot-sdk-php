@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Blogs;
 
 use HubspotSDK\Cms\Blogs\Settings\Blog;
-use HubspotSDK\Cms\Blogs\Settings\CollectionResponseWithTotalVersionBlog;
 use HubspotSDK\Cms\Blogs\Settings\VersionBlog;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -188,6 +187,8 @@ interface SettingsContract
      * @param string $before
      * @param int $limit
      *
+     * @return Page<VersionBlog>
+     *
      * @throws APIException
      */
     public function listRevisions(
@@ -196,12 +197,14 @@ interface SettingsContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionBlog;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return Page<VersionBlog>
      *
      * @throws APIException
      */
@@ -209,7 +212,7 @@ interface SettingsContract
         string $blogID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionBlog;
+    ): Page;
 
     /**
      * @api

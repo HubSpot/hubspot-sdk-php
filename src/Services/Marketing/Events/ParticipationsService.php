@@ -7,11 +7,12 @@ namespace HubspotSDK\Services\Marketing\Events;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\AttendanceCounters;
-use HubspotSDK\Marketing\Events\CollectionResponseWithTotalParticipationBreakdownForwardPaging;
+use HubspotSDK\Marketing\Events\ParticipationBreakdown;
 use HubspotSDK\Marketing\Events\Participations\ParticipationGetByExternalAccountAndEventIDParams;
 use HubspotSDK\Marketing\Events\Participations\ParticipationListBreakdownByContactParams;
 use HubspotSDK\Marketing\Events\Participations\ParticipationListBreakdownByExternalAccountAndEventIDParams;
 use HubspotSDK\Marketing\Events\Participations\ParticipationListBreakdownByIDParams;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\ParticipationsContract;
 
@@ -112,6 +113,8 @@ final class ParticipationsService implements ParticipationsContract
      * @param int $limit The limit for response size. The default value is 10, the max number is 100
      * @param string $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
      *
+     * @return Page<ParticipationBreakdown>
+     *
      * @throws APIException
      */
     public function listBreakdownByContact(
@@ -120,7 +123,7 @@ final class ParticipationsService implements ParticipationsContract
         $limit = omit,
         $state = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging {
+    ): Page {
         $params = ['after' => $after, 'limit' => $limit, 'state' => $state];
 
         return $this->listBreakdownByContactRaw(
@@ -135,13 +138,15 @@ final class ParticipationsService implements ParticipationsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<ParticipationBreakdown>
+     *
      * @throws APIException
      */
     public function listBreakdownByContactRaw(
         string $contactIdentifier,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging {
+    ): Page {
         [
             $parsed, $options,
         ] = ParticipationListBreakdownByContactParams::parseRequest(
@@ -158,7 +163,8 @@ final class ParticipationsService implements ParticipationsContract
             ],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalParticipationBreakdownForwardPaging::class,
+            convert: ParticipationBreakdown::class,
+            page: Page::class,
         );
     }
 
@@ -173,6 +179,8 @@ final class ParticipationsService implements ParticipationsContract
      * @param int $limit The limit for response size. The default value is 10, the max number is 100
      * @param string $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
      *
+     * @return Page<ParticipationBreakdown>
+     *
      * @throws APIException
      */
     public function listBreakdownByExternalAccountAndEventID(
@@ -183,7 +191,7 @@ final class ParticipationsService implements ParticipationsContract
         $limit = omit,
         $state = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging {
+    ): Page {
         $params = [
             'externalAccountID' => $externalAccountID,
             'after' => $after,
@@ -204,13 +212,15 @@ final class ParticipationsService implements ParticipationsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<ParticipationBreakdown>
+     *
      * @throws APIException
      */
     public function listBreakdownByExternalAccountAndEventIDRaw(
         string $externalEventID,
         array $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging {
+    ): Page {
         [
             $parsed, $options,
         ] = ParticipationListBreakdownByExternalAccountAndEventIDParams::parseRequest(
@@ -230,7 +240,8 @@ final class ParticipationsService implements ParticipationsContract
             ],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalParticipationBreakdownForwardPaging::class,
+            convert: ParticipationBreakdown::class,
+            page: Page::class,
         );
     }
 
@@ -244,6 +255,8 @@ final class ParticipationsService implements ParticipationsContract
      * @param int $limit The limit for response size. The default value is 10, the max number is 100
      * @param string $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
      *
+     * @return Page<ParticipationBreakdown>
+     *
      * @throws APIException
      */
     public function listBreakdownByID(
@@ -253,7 +266,7 @@ final class ParticipationsService implements ParticipationsContract
         $limit = omit,
         $state = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging {
+    ): Page {
         $params = [
             'after' => $after,
             'contactIdentifier' => $contactIdentifier,
@@ -273,13 +286,15 @@ final class ParticipationsService implements ParticipationsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<ParticipationBreakdown>
+     *
      * @throws APIException
      */
     public function listBreakdownByIDRaw(
         int $marketingEventID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalParticipationBreakdownForwardPaging {
+    ): Page {
         [$parsed, $options] = ParticipationListBreakdownByIDParams::parseRequest(
             $params,
             $requestOptions
@@ -294,7 +309,8 @@ final class ParticipationsService implements ParticipationsContract
             ],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseWithTotalParticipationBreakdownForwardPaging::class,
+            convert: ParticipationBreakdown::class,
+            page: Page::class,
         );
     }
 }

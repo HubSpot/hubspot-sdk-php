@@ -6,12 +6,13 @@ namespace HubspotSDK\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\CollectionResponseContactReferenceForwardPaging;
+use HubspotSDK\Marketing\Campaigns\ContactReference;
 use HubspotSDK\Marketing\Campaigns\MetricsCounters;
 use HubspotSDK\Marketing\Campaigns\Reports\ReportGetAttributionMetricsParams;
 use HubspotSDK\Marketing\Campaigns\Reports\ReportGetRevenueAttributionParams;
 use HubspotSDK\Marketing\Campaigns\Reports\ReportListContactIDsByTypeParams;
 use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\ReportsContract;
 
@@ -154,6 +155,8 @@ final class ReportsService implements ReportsContract
      * @param string $startDate The start date for the report data, formatted as YYYY-MM-DD.
      * Default value: 2006-01-01
      *
+     * @return Page<ContactReference>
+     *
      * @throws APIException
      */
     public function listContactIDsByType(
@@ -164,7 +167,7 @@ final class ReportsService implements ReportsContract
         $limit = omit,
         $startDate = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseContactReferenceForwardPaging {
+    ): Page {
         $params = [
             'campaignGuid' => $campaignGuid,
             'after' => $after,
@@ -185,13 +188,15 @@ final class ReportsService implements ReportsContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<ContactReference>
+     *
      * @throws APIException
      */
     public function listContactIDsByTypeRaw(
         string $contactType,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseContactReferenceForwardPaging {
+    ): Page {
         [$parsed, $options] = ReportListContactIDsByTypeParams::parseRequest(
             $params,
             $requestOptions
@@ -209,7 +214,8 @@ final class ReportsService implements ReportsContract
             ],
             query: $parsed,
             options: $options,
-            convert: CollectionResponseContactReferenceForwardPaging::class,
+            convert: ContactReference::class,
+            page: Page::class,
         );
     }
 }

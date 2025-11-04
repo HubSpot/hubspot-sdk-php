@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Account;
 
-use HubspotSDK\Account\Activity\CollectionResponseHydratedCriticalActionForwardPaging;
-use HubspotSDK\Account\Activity\CollectionResponsePublicAPIUserActionEventForwardPaging;
-use HubspotSDK\Account\Activity\CollectionResponsePublicLoginAuditForwardPaging;
+use HubspotSDK\Account\Activity\HydratedCriticalAction;
+use HubspotSDK\Account\Activity\PublicAPIUserActionEvent;
+use HubspotSDK\Account\Activity\PublicLoginAudit;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 use const HubspotSDK\Core\OMIT as omit;
@@ -24,6 +25,8 @@ interface ActivityContract
      * @param \DateTimeInterface $occurredBefore a timestamp, as an end point for retrieving activity logs
      * @param list<string> $sort Set to `occurredAt` to order results by the time of the event. By default, events are ordered from oldest to newest.
      *
+     * @return Page<PublicAPIUserActionEvent>
+     *
      * @throws APIException
      */
     public function listAuditLogs(
@@ -34,19 +37,21 @@ interface ActivityContract
         $occurredBefore = omit,
         $sort = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicAPIUserActionEventForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<PublicAPIUserActionEvent>
+     *
      * @throws APIException
      */
     public function listAuditLogsRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicAPIUserActionEventForwardPaging;
+    ): Page;
 
     /**
      * @api
@@ -55,6 +60,8 @@ interface ActivityContract
      * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
      * @param int $userID the ID of a user, for retrieving user-specific logs
      *
+     * @return Page<PublicLoginAudit>
+     *
      * @throws APIException
      */
     public function listLoginActivities(
@@ -62,19 +69,21 @@ interface ActivityContract
         $limit = omit,
         $userID = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicLoginAuditForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<PublicLoginAudit>
+     *
      * @throws APIException
      */
     public function listLoginActivitiesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicLoginAuditForwardPaging;
+    ): Page;
 
     /**
      * @api
@@ -85,6 +94,8 @@ interface ActivityContract
      * @param int $toTimestamp the end time, for retrieving logs within a specific timeframe
      * @param int $userID the ID of a user, for retrieving user-specific logs
      *
+     * @return Page<HydratedCriticalAction>
+     *
      * @throws APIException
      */
     public function listSecurityActivities(
@@ -94,17 +105,19 @@ interface ActivityContract
         $toTimestamp = omit,
         $userID = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseHydratedCriticalActionForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<HydratedCriticalAction>
+     *
      * @throws APIException
      */
     public function listSecurityActivitiesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseHydratedCriticalActionForwardPaging;
+    ): Page;
 }

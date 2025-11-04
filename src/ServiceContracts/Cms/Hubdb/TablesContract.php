@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Hubdb;
 
-use HubspotSDK\Cms\Hubdb\CollectionResponseWithTotalHubDBTableV3ForwardPaging;
 use HubspotSDK\Cms\Hubdb\ColumnRequest;
 use HubspotSDK\Cms\Hubdb\HubDBTableV3;
 use HubspotSDK\Cms\Hubdb\ImportResult;
@@ -329,6 +328,8 @@ interface TablesContract
      * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
      * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function listDraft(
@@ -345,19 +346,21 @@ interface TablesContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<HubDBTableV3>
+     *
      * @throws APIException
      */
     public function listDraftRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalHubDBTableV3ForwardPaging;
+    ): Page;
 
     /**
      * @api

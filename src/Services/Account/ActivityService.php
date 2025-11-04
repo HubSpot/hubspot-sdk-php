@@ -7,11 +7,12 @@ namespace HubspotSDK\Services\Account;
 use HubspotSDK\Account\Activity\ActivityListAuditLogsParams;
 use HubspotSDK\Account\Activity\ActivityListLoginActivitiesParams;
 use HubspotSDK\Account\Activity\ActivityListSecurityActivitiesParams;
-use HubspotSDK\Account\Activity\CollectionResponseHydratedCriticalActionForwardPaging;
-use HubspotSDK\Account\Activity\CollectionResponsePublicAPIUserActionEventForwardPaging;
-use HubspotSDK\Account\Activity\CollectionResponsePublicLoginAuditForwardPaging;
+use HubspotSDK\Account\Activity\HydratedCriticalAction;
+use HubspotSDK\Account\Activity\PublicAPIUserActionEvent;
+use HubspotSDK\Account\Activity\PublicLoginAudit;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Account\ActivityContract;
 
@@ -36,6 +37,8 @@ final class ActivityService implements ActivityContract
      * @param \DateTimeInterface $occurredBefore a timestamp, as an end point for retrieving activity logs
      * @param list<string> $sort Set to `occurredAt` to order results by the time of the event. By default, events are ordered from oldest to newest.
      *
+     * @return Page<PublicAPIUserActionEvent>
+     *
      * @throws APIException
      */
     public function listAuditLogs(
@@ -46,7 +49,7 @@ final class ActivityService implements ActivityContract
         $occurredBefore = omit,
         $sort = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicAPIUserActionEventForwardPaging {
+    ): Page {
         $params = [
             'actingUserID' => $actingUserID,
             'after' => $after,
@@ -64,12 +67,14 @@ final class ActivityService implements ActivityContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<PublicAPIUserActionEvent>
+     *
      * @throws APIException
      */
     public function listAuditLogsRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicAPIUserActionEventForwardPaging {
+    ): Page {
         [$parsed, $options] = ActivityListAuditLogsParams::parseRequest(
             $params,
             $requestOptions
@@ -81,7 +86,8 @@ final class ActivityService implements ActivityContract
             path: 'account-info/v3/activity/audit-logs',
             query: $parsed,
             options: $options,
-            convert: CollectionResponsePublicAPIUserActionEventForwardPaging::class,
+            convert: PublicAPIUserActionEvent::class,
+            page: Page::class,
         );
     }
 
@@ -94,6 +100,8 @@ final class ActivityService implements ActivityContract
      * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
      * @param int $userID the ID of a user, for retrieving user-specific logs
      *
+     * @return Page<PublicLoginAudit>
+     *
      * @throws APIException
      */
     public function listLoginActivities(
@@ -101,7 +109,7 @@ final class ActivityService implements ActivityContract
         $limit = omit,
         $userID = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicLoginAuditForwardPaging {
+    ): Page {
         $params = ['after' => $after, 'limit' => $limit, 'userID' => $userID];
 
         return $this->listLoginActivitiesRaw($params, $requestOptions);
@@ -112,12 +120,14 @@ final class ActivityService implements ActivityContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<PublicLoginAudit>
+     *
      * @throws APIException
      */
     public function listLoginActivitiesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicLoginAuditForwardPaging {
+    ): Page {
         [$parsed, $options] = ActivityListLoginActivitiesParams::parseRequest(
             $params,
             $requestOptions
@@ -129,7 +139,8 @@ final class ActivityService implements ActivityContract
             path: 'account-info/v3/activity/login',
             query: $parsed,
             options: $options,
-            convert: CollectionResponsePublicLoginAuditForwardPaging::class,
+            convert: PublicLoginAudit::class,
+            page: Page::class,
         );
     }
 
@@ -144,6 +155,8 @@ final class ActivityService implements ActivityContract
      * @param int $toTimestamp the end time, for retrieving logs within a specific timeframe
      * @param int $userID the ID of a user, for retrieving user-specific logs
      *
+     * @return Page<HydratedCriticalAction>
+     *
      * @throws APIException
      */
     public function listSecurityActivities(
@@ -153,7 +166,7 @@ final class ActivityService implements ActivityContract
         $toTimestamp = omit,
         $userID = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseHydratedCriticalActionForwardPaging {
+    ): Page {
         $params = [
             'after' => $after,
             'fromTimestamp' => $fromTimestamp,
@@ -170,12 +183,14 @@ final class ActivityService implements ActivityContract
      *
      * @param array<string, mixed> $params
      *
+     * @return Page<HydratedCriticalAction>
+     *
      * @throws APIException
      */
     public function listSecurityActivitiesRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseHydratedCriticalActionForwardPaging {
+    ): Page {
         [$parsed, $options] = ActivityListSecurityActivitiesParams::parseRequest(
             $params,
             $requestOptions
@@ -187,7 +202,8 @@ final class ActivityService implements ActivityContract
             path: 'account-info/v3/activity/security',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseHydratedCriticalActionForwardPaging::class,
+            convert: HydratedCriticalAction::class,
+            page: Page::class,
         );
     }
 }

@@ -6,9 +6,7 @@ namespace HubspotSDK\Account\Activity;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -16,12 +14,10 @@ use HubspotSDK\ForwardPaging;
  *   results: list<PublicLoginAudit>, paging?: ForwardPaging
  * }
  */
-final class CollectionResponsePublicLoginAuditForwardPaging implements BaseModel, ResponseConverter
+final class CollectionResponsePublicLoginAuditForwardPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponsePublicLoginAuditForwardPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<PublicLoginAudit> $results */
     #[Api(list: PublicLoginAudit::class)]

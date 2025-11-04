@@ -7,9 +7,6 @@ namespace HubspotSDK\ServiceContracts\Cms\Pages;
 use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
 use HubspotSDK\Cms\Pages\BatchResponsePage;
-use HubspotSDK\Cms\Pages\CollectionResponseWithTotalContentFolderForwardPaging;
-use HubspotSDK\Cms\Pages\CollectionResponseWithTotalVersionContentFolder;
-use HubspotSDK\Cms\Pages\CollectionResponseWithTotalVersionPage;
 use HubspotSDK\Cms\Pages\ContentFolder;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
@@ -877,6 +874,8 @@ interface LandingPagesContract
      * @param string $before
      * @param int $limit The maximum number of results to return. Default is 100.
      *
+     * @return \HubspotSDK\Page<VersionContentFolder>
+     *
      * @throws APIException
      */
     public function listFolderRevisions(
@@ -885,12 +884,14 @@ interface LandingPagesContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionContentFolder;
+    ): \HubspotSDK\Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return \HubspotSDK\Page<VersionContentFolder>
      *
      * @throws APIException
      */
@@ -898,7 +899,7 @@ interface LandingPagesContract
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionContentFolder;
+    ): \HubspotSDK\Page;
 
     /**
      * @api
@@ -915,6 +916,8 @@ interface LandingPagesContract
      * @param \DateTimeInterface $updatedAt only return Folders last updated at exactly the specified time
      * @param \DateTimeInterface $updatedBefore only return Folders last updated before the specified time
      *
+     * @return \HubspotSDK\Page<ContentFolder>
+     *
      * @throws APIException
      */
     public function listFolders(
@@ -930,19 +933,21 @@ interface LandingPagesContract
         $updatedAt = omit,
         $updatedBefore = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalContentFolderForwardPaging;
+    ): \HubspotSDK\Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
      *
+     * @return \HubspotSDK\Page<ContentFolder>
+     *
      * @throws APIException
      */
     public function listFoldersRaw(
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalContentFolderForwardPaging;
+    ): \HubspotSDK\Page;
 
     /**
      * @api
@@ -950,6 +955,8 @@ interface LandingPagesContract
      * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      * @param string $before
      * @param int $limit The maximum number of results to return. Default is 100.
+     *
+     * @return \HubspotSDK\Page<VersionPage>
      *
      * @throws APIException
      */
@@ -959,12 +966,14 @@ interface LandingPagesContract
         $before = omit,
         $limit = omit,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalVersionPage;
+    ): \HubspotSDK\Page;
 
     /**
      * @api
      *
      * @param array<string, mixed> $params
+     *
+     * @return \HubspotSDK\Page<VersionPage>
      *
      * @throws APIException
      */
@@ -972,7 +981,7 @@ interface LandingPagesContract
         string $objectID,
         array $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalVersionPage;
+    ): \HubspotSDK\Page;
 
     /**
      * @api
