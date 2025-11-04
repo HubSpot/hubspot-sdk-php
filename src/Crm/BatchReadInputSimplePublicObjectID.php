@@ -43,9 +43,6 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
     #[Api(list: 'string')]
     public array $propertiesWithHistory;
 
-    /**
-     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
-     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -137,9 +134,6 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
         return $obj;
     }
 
-    /**
-     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
-     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

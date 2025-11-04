@@ -45,7 +45,7 @@ interface BatchContract
      * @param list<string> $properties key-value pairs for setting properties for the new object
      * @param list<string> $propertiesWithHistory key-value pairs for setting properties for the new object and their histories
      * @param bool $archived whether to return only results that have been archived
-     * @param string $idProperty When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+     * @param string $idProperty
      *
      * @throws APIException
      */

@@ -21,9 +21,6 @@ final class PublicGdprDeleteInput implements BaseModel
     #[Api('objectId')]
     public string $objectID;
 
-    /**
-     * The name of a property whose values are unique for this object.
-     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -72,9 +69,6 @@ final class PublicGdprDeleteInput implements BaseModel
         return $obj;
     }
 
-    /**
-     * The name of a property whose values are unique for this object.
-     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

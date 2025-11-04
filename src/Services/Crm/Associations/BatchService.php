@@ -78,6 +78,8 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
+     * This endpoint allows you to archive multiple associations between specified 'from' and 'to' object types in a single batch request.
+     *
      * @param string $fromObjectType
      * @param list<PublicAssociation> $inputs
      *

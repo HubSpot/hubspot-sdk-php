@@ -38,7 +38,7 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
     public array $properties;
 
     /**
-     * The name of a property whose values are unique for this object.
+     * The name of a unique identifier property, which can be used for identifying objects instead of the object ID.
      */
     #[Api(optional: true)]
     public ?string $idProperty;
@@ -117,7 +117,7 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
     }
 
     /**
-     * The name of a property whose values are unique for this object.
+     * The name of a unique identifier property, which can be used for identifying objects instead of the object ID.
      */
     public function withIDProperty(string $idProperty): self
     {

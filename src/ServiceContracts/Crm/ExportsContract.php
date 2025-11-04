@@ -6,6 +6,7 @@ namespace HubspotSDK\ServiceContracts\Crm;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
+use HubspotSDK\Crm\Exports\PublicExportResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\TaskLocator;
 
@@ -16,9 +17,19 @@ interface ExportsContract
      *
      * @throws APIException
      */
-    public function create(
+    public function createAsync(
         ?RequestOptions $requestOptions = null
     ): TaskLocator;
+
+    /**
+     * @api
+     *
+     * @throws APIException
+     */
+    public function get(
+        int $exportID,
+        ?RequestOptions $requestOptions = null
+    ): PublicExportResponse;
 
     /**
      * @api

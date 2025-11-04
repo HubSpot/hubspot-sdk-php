@@ -6,7 +6,9 @@ namespace HubspotSDK\Crm\Exports;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Exports\PublicExportResponse\ExportState;
 use HubspotSDK\Crm\Exports\PublicExportResponse\ExportType;
 
@@ -23,10 +25,12 @@ use HubspotSDK\Crm\Exports\PublicExportResponse\ExportType;
  *   recordCount?: int,
  * }
  */
-final class PublicExportResponse implements BaseModel
+final class PublicExportResponse implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<PublicExportResponseShape> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;

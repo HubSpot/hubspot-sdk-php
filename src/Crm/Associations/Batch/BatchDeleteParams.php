@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\PublicAssociation;
 
 /**
+ * This endpoint allows you to archive multiple associations between specified 'from' and 'to' object types in a single batch request.
+ *
  * @see HubspotSDK\Crm\Associations\Batch->delete
  *
  * @phpstan-type BatchDeleteParamsShape = array{

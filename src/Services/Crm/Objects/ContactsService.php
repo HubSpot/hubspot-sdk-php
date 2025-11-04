@@ -227,7 +227,7 @@ final class ContactsService implements ContactsContract
      * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
      *
      * @param string $objectID
-     * @param string $idProperty The name of a property whose values are unique for this object
+     * @param string $idProperty
      *
      * @throws APIException
      */

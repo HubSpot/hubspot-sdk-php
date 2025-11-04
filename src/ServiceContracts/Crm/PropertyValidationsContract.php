@@ -7,6 +7,7 @@ namespace HubspotSDK\ServiceContracts\Crm;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleMapNoPaging;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleNoPaging;
+use HubspotSDK\Crm\PropertyValidations\PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams\RuleType;
 use HubspotSDK\RequestOptions;
 
 interface PropertyValidationsContract
@@ -20,6 +21,38 @@ interface PropertyValidationsContract
         string $objectTypeID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicPropertyValidationRuleMapNoPaging;
+
+    /**
+     * @api
+     *
+     * @param RuleType|value-of<RuleType> $ruleType
+     * @param string $objectTypeID
+     * @param string $propertyName
+     * @param list<string> $ruleArguments
+     *
+     * @throws APIException
+     */
+    public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
+        RuleType|string $ruleType,
+        $objectTypeID,
+        $propertyName,
+        $ruleArguments,
+        ?RequestOptions $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param RuleType|value-of<RuleType> $ruleType
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeRaw(
+        RuleType|string $ruleType,
+        array $params,
+        ?RequestOptions $requestOptions = null,
+    ): mixed;
 
     /**
      * @api

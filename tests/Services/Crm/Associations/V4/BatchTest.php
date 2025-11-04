@@ -2,8 +2,8 @@
 
 namespace Tests\Services\Crm\Associations\V4;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Associations\V4\AssociationSpec1;
 use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiArchive;
 use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost;
 use HubspotSDK\Crm\Associations\V4\PublicDefaultAssociationMultiPost;
@@ -50,7 +50,7 @@ final class BatchTest extends TestCase
                     from: PublicObjectID::with(id: '37295'),
                     to: PublicObjectID::with(id: '37295'),
                     types: [
-                        AssociationSpec1::with(
+                        AssociationSpec::with(
                             associationCategory: 'HUBSPOT_DEFINED',
                             associationTypeID: 0
                         ),
@@ -77,7 +77,7 @@ final class BatchTest extends TestCase
                     from: PublicObjectID::with(id: '37295'),
                     to: PublicObjectID::with(id: '37295'),
                     types: [
-                        AssociationSpec1::with(
+                        AssociationSpec::with(
                             associationCategory: 'HUBSPOT_DEFINED',
                             associationTypeID: 0
                         ),
@@ -188,7 +188,7 @@ final class BatchTest extends TestCase
                     from: PublicObjectID::with(id: '37295'),
                     to: PublicObjectID::with(id: '37295'),
                     types: [
-                        AssociationSpec1::with(
+                        AssociationSpec::with(
                             associationCategory: 'HUBSPOT_DEFINED',
                             associationTypeID: 0
                         ),
@@ -215,7 +215,7 @@ final class BatchTest extends TestCase
                     from: PublicObjectID::with(id: '37295'),
                     to: PublicObjectID::with(id: '37295'),
                     types: [
-                        AssociationSpec1::with(
+                        AssociationSpec::with(
                             associationCategory: 'HUBSPOT_DEFINED',
                             associationTypeID: 0
                         ),

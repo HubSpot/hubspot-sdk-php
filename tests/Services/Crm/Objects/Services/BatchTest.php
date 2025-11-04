@@ -2,8 +2,8 @@
 
 namespace Tests\Services\Crm\Objects\Services;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Associations\V4\AssociationSpec1;
 use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
@@ -71,7 +71,7 @@ final class BatchTest extends TestCase
                             PublicAssociationsForObject::with(
                                 to: PublicObjectID::with(id: '37295'),
                                 types: [
-                                    AssociationSpec::with(
+                                    AssociationSpec1::with(
                                         associationCategory: 'HUBSPOT_DEFINED',
                                         associationTypeID: 0
                                     ),

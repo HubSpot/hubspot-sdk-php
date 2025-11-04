@@ -1,0 +1,62 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule;
+
+enum RuleType: string
+{
+    case FORMAT = 'FORMAT';
+
+    case ALPHANUMERIC = 'ALPHANUMERIC';
+
+    case MAX_LENGTH = 'MAX_LENGTH';
+
+    case MIN_LENGTH = 'MIN_LENGTH';
+
+    case MIN_NUMBER = 'MIN_NUMBER';
+
+    case MAX_NUMBER = 'MAX_NUMBER';
+
+    case START_DATE = 'START_DATE';
+
+    case END_DATE = 'END_DATE';
+
+    case SPECIAL_CHARACTERS = 'SPECIAL_CHARACTERS';
+
+    case WHITESPACE = 'WHITESPACE';
+
+    case DECIMAL = 'DECIMAL';
+
+    case BEFORE_DURATION = 'BEFORE_DURATION';
+
+    case AFTER_DURATION = 'AFTER_DURATION';
+
+    case DAYS_OF_WEEK = 'DAYS_OF_WEEK';
+
+    case REGEX = 'REGEX';
+
+    case START_DATETIME = 'START_DATETIME';
+
+    case END_DATETIME = 'END_DATETIME';
+
+    case BEFORE_DATETIME_DURATION = 'BEFORE_DATETIME_DURATION';
+
+    case AFTER_DATETIME_DURATION = 'AFTER_DATETIME_DURATION';
+
+    case PHONE_NUMBER_WITH_EXPLICIT_COUNTRY_CODE = 'PHONE_NUMBER_WITH_EXPLICIT_COUNTRY_CODE';
+
+    case URL = 'URL';
+
+    case URL_ALLOWED_DOMAINS = 'URL_ALLOWED_DOMAINS';
+
+    case URL_BLOCKED_DOMAINS = 'URL_BLOCKED_DOMAINS';
+
+    case EMAIL = 'EMAIL';
+
+    case EMAIL_ALLOWED_DOMAINS = 'EMAIL_ALLOWED_DOMAINS';
+
+    case EMAIL_BLOCKED_DOMAINS = 'EMAIL_BLOCKED_DOMAINS';
+
+    case DOMAIN = 'DOMAIN';
+}

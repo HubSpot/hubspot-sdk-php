@@ -8,6 +8,8 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleMapNoPaging;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleNoPaging;
+use HubspotSDK\Crm\PropertyValidations\PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams;
+use HubspotSDK\Crm\PropertyValidations\PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams\RuleType;
 use HubspotSDK\Crm\PropertyValidations\PropertyValidationGetParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\PropertyValidationsContract;
@@ -36,6 +38,78 @@ final class PropertyValidationsService implements PropertyValidationsContract
             path: ['crm/v3/property-validations/%1$s', $objectTypeID],
             options: $requestOptions,
             convert: CollectionResponsePublicPropertyValidationRuleMapNoPaging::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RuleType|value-of<RuleType> $ruleType
+     * @param string $objectTypeID
+     * @param string $propertyName
+     * @param list<string> $ruleArguments
+     *
+     * @throws APIException
+     */
+    public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
+        RuleType|string $ruleType,
+        $objectTypeID,
+        $propertyName,
+        $ruleArguments,
+        ?RequestOptions $requestOptions = null,
+    ): mixed {
+        $params = [
+            'objectTypeID' => $objectTypeID,
+            'propertyName' => $propertyName,
+            'ruleArguments' => $ruleArguments,
+        ];
+
+        return $this->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeRaw(
+            $ruleType,
+            $params,
+            $requestOptions
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RuleType|value-of<RuleType> $ruleType
+     * @param array<string, mixed> $params
+     *
+     * @throws APIException
+     */
+    public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeRaw(
+        RuleType|string $ruleType,
+        array $params,
+        ?RequestOptions $requestOptions = null,
+    ): mixed {
+        [
+            $parsed, $options,
+        ] = PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams::parseRequest(
+            $params,
+            $requestOptions
+        );
+        $objectTypeID = $parsed['objectTypeID'];
+        unset($parsed['objectTypeID']);
+        $propertyName = $parsed['propertyName'];
+        unset($parsed['propertyName']);
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'put',
+            path: [
+                'crm/v3/property-validations/%1$s/%2$s/rule-type/%3$s',
+                $objectTypeID,
+                $propertyName,
+                $ruleType,
+            ],
+            body: (object) array_diff_key(
+                $parsed,
+                array_flip(['objectTypeID', 'propertyName'])
+            ),
+            options: $options,
+            convert: null,
         );
     }
 
