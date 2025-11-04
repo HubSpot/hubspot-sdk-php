@@ -23,9 +23,6 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
     #[Api(list: SimplePublicObject::class)]
     public array $results;
 
-    /**
-     * The number of available results.
-     */
     #[Api]
     public int $total;
 
@@ -89,9 +86,6 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
         return $obj;
     }
 
-    /**
-     * The number of available results.
-     */
     public function withTotal(int $total): self
     {
         $obj = clone $this;

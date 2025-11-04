@@ -124,7 +124,7 @@ interface ContactsContract
      * @api
      *
      * @param string $objectID
-     * @param string $idProperty The name of a property whose values are unique for this object
+     * @param string $idProperty
      *
      * @throws APIException
      */

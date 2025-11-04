@@ -30,13 +30,25 @@ final class ExportsTest extends TestCase
     }
 
     #[Test]
-    public function testCreate(): void
+    public function testCreateAsync(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->exports->create();
+        $result = $this->client->crm->exports->createAsync();
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testGet(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->exports->get(0);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -42,6 +42,50 @@ final class PropertyValidationsTest extends TestCase
     }
 
     #[Test]
+    public function testCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this
+            ->client
+            ->crm
+            ->propertyValidations
+            ->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
+                'FORMAT',
+                objectTypeID: 'objectTypeId',
+                propertyName: 'propertyName',
+                ruleArguments: ['string'],
+            )
+        ;
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this
+            ->client
+            ->crm
+            ->propertyValidations
+            ->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
+                'FORMAT',
+                objectTypeID: 'objectTypeId',
+                propertyName: 'propertyName',
+                ruleArguments: ['string'],
+            )
+        ;
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
     public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {

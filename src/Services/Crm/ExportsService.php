@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Crm;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
+use HubspotSDK\Crm\Exports\PublicExportResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\ExportsContract;
 use HubspotSDK\TaskLocator;
@@ -25,14 +26,33 @@ final class ExportsService implements ExportsContract
      *
      * @throws APIException
      */
-    public function create(?RequestOptions $requestOptions = null): TaskLocator
-    {
+    public function createAsync(
+        ?RequestOptions $requestOptions = null
+    ): TaskLocator {
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/exports/export/async',
             options: $requestOptions,
             convert: TaskLocator::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @throws APIException
+     */
+    public function get(
+        int $exportID,
+        ?RequestOptions $requestOptions = null
+    ): PublicExportResponse {
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'get',
+            path: ['crm/v3/exports/export/%1$s', $exportID],
+            options: $requestOptions,
+            convert: PublicExportResponse::class,
         );
     }
 

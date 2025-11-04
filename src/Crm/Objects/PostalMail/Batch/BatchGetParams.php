@@ -52,9 +52,6 @@ final class BatchGetParams implements BaseModel
     #[Api(optional: true)]
     public ?bool $archived;
 
-    /**
-     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
-     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -154,9 +151,6 @@ final class BatchGetParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
-     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

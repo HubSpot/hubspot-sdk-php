@@ -7,10 +7,11 @@ namespace HubspotSDK\Crm\PropertyValidations;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule\RuleType;
 
 /**
  * @phpstan-type PublicPropertyValidationRuleShape = array{
- *   ruleArguments: list<string>, ruleType: string
+ *   ruleArguments: list<string>, ruleType: value-of<RuleType>
  * }
  */
 final class PublicPropertyValidationRule implements BaseModel
@@ -22,7 +23,8 @@ final class PublicPropertyValidationRule implements BaseModel
     #[Api(list: 'string')]
     public array $ruleArguments;
 
-    #[Api]
+    /** @var value-of<RuleType> $ruleType */
+    #[Api(enum: RuleType::class)]
     public string $ruleType;
 
     /**
@@ -50,13 +52,16 @@ final class PublicPropertyValidationRule implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $ruleArguments
+     * @param RuleType|value-of<RuleType> $ruleType
      */
-    public static function with(array $ruleArguments, string $ruleType): self
-    {
+    public static function with(
+        array $ruleArguments,
+        RuleType|string $ruleType
+    ): self {
         $obj = new self;
 
         $obj->ruleArguments = $ruleArguments;
-        $obj->ruleType = $ruleType;
+        $obj['ruleType'] = $ruleType;
 
         return $obj;
     }
@@ -72,10 +77,13 @@ final class PublicPropertyValidationRule implements BaseModel
         return $obj;
     }
 
-    public function withRuleType(string $ruleType): self
+    /**
+     * @param RuleType|value-of<RuleType> $ruleType
+     */
+    public function withRuleType(RuleType|string $ruleType): self
     {
         $obj = clone $this;
-        $obj->ruleType = $ruleType;
+        $obj['ruleType'] = $ruleType;
 
         return $obj;
     }
