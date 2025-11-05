@@ -160,16 +160,14 @@ class Client extends BaseClient
     /** @return array<string, string> */
     protected function authHeaders(): array
     {
-        if (!$this->accessToken) {
-            return [];
-        }
-
-        return ['Authorization' => "Bearer {$this->accessToken}"];
+        return $this->accessToken ? [
+            'Authorization' => "Bearer {$this->accessToken}",
+        ] : [];
     }
 
     /** @return array<string, string> */
     protected function authQuery(): array
     {
-        return ['hapikey' => $this->developerAPIKey];
+        return $this->developerAPIKey ? ['hapikey' => $this->developerAPIKey] : [];
     }
 }
