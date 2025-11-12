@@ -11,9 +11,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type ComboEventRuleShape = array{
  *   count: int,
- *   eventTypeID: string,
+ *   eventTypeId: string,
  *   propertyFilters: list<PropertyFilter>,
- *   lookbackWindowDays?: int,
+ *   lookbackWindowDays?: int|null,
  * }
  */
 final class ComboEventRule implements BaseModel
@@ -24,8 +24,8 @@ final class ComboEventRule implements BaseModel
     #[Api]
     public int $count;
 
-    #[Api('eventTypeId')]
-    public string $eventTypeID;
+    #[Api]
+    public string $eventTypeId;
 
     /** @var list<PropertyFilter> $propertyFilters */
     #[Api(list: PropertyFilter::class)]
@@ -39,7 +39,7 @@ final class ComboEventRule implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ComboEventRule::with(count: ..., eventTypeID: ..., propertyFilters: ...)
+     * ComboEventRule::with(count: ..., eventTypeId: ..., propertyFilters: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -65,14 +65,14 @@ final class ComboEventRule implements BaseModel
      */
     public static function with(
         int $count,
-        string $eventTypeID,
+        string $eventTypeId,
         array $propertyFilters,
         ?int $lookbackWindowDays = null,
     ): self {
         $obj = new self;
 
         $obj->count = $count;
-        $obj->eventTypeID = $eventTypeID;
+        $obj->eventTypeId = $eventTypeId;
         $obj->propertyFilters = $propertyFilters;
 
         null !== $lookbackWindowDays && $obj->lookbackWindowDays = $lookbackWindowDays;
@@ -91,7 +91,7 @@ final class ComboEventRule implements BaseModel
     public function withEventTypeID(string $eventTypeID): self
     {
         $obj = clone $this;
-        $obj->eventTypeID = $eventTypeID;
+        $obj->eventTypeId = $eventTypeID;
 
         return $obj;
     }

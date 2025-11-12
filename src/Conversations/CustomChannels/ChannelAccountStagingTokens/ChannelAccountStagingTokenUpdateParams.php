@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Conversations\CustomChannels\ChannelAccountStagingTokens->update
  *
  * @phpstan-type ChannelAccountStagingTokenUpdateParamsShape = array{
- *   channelID: string,
+ *   channelId: string,
  *   accountName: string,
  *   deliveryIdentifier: PublicDeliveryIdentifier,
  * }
@@ -28,7 +28,7 @@ final class ChannelAccountStagingTokenUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $channelID;
+    public string $channelId;
 
     #[Api]
     public string $accountName;
@@ -42,7 +42,7 @@ final class ChannelAccountStagingTokenUpdateParams implements BaseModel
      * To enforce required parameters use
      * ```
      * ChannelAccountStagingTokenUpdateParams::with(
-     *   channelID: ..., accountName: ..., deliveryIdentifier: ...
+     *   channelId: ..., accountName: ..., deliveryIdentifier: ...
      * )
      * ```
      *
@@ -66,13 +66,13 @@ final class ChannelAccountStagingTokenUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $channelID,
+        string $channelId,
         string $accountName,
         PublicDeliveryIdentifier $deliveryIdentifier,
     ): self {
         $obj = new self;
 
-        $obj->channelID = $channelID;
+        $obj->channelId = $channelId;
         $obj->accountName = $accountName;
         $obj->deliveryIdentifier = $deliveryIdentifier;
 
@@ -82,7 +82,7 @@ final class ChannelAccountStagingTokenUpdateParams implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj->channelID = $channelID;
+        $obj->channelId = $channelID;
 
         return $obj;
     }

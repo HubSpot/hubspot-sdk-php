@@ -36,7 +36,7 @@ final class OAuthTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->auth->oauth->createAccessToken();
+        $result = $this->client->auth->oauth->createAccessToken([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

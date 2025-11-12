@@ -10,19 +10,19 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExternalCalendarMeetingEventCreatePropertiesShape = array{
- *   hsMeetingEndTime: \DateTimeInterface,
- *   hsMeetingOutcome: string,
- *   hsMeetingStartTime: \DateTimeInterface,
- *   hsMeetingTitle: string,
- *   hsTimestamp: \DateTimeInterface,
- *   hsActivityType?: string,
- *   hsAttachmentIDs?: list<string>,
- *   hsAttendeeOwnerIDs?: list<string>,
- *   hsInternalMeetingNotes?: string,
- *   hsMeetingBody?: string,
- *   hsMeetingLocation?: string,
- *   hsMeetingLocationType?: string,
- *   hubspotOwnerID?: string,
+ *   hs_meeting_end_time: \DateTimeInterface,
+ *   hs_meeting_outcome: string,
+ *   hs_meeting_start_time: \DateTimeInterface,
+ *   hs_meeting_title: string,
+ *   hs_timestamp: \DateTimeInterface,
+ *   hs_activity_type?: string|null,
+ *   hs_attachment_ids?: list<string>|null,
+ *   hs_attendee_owner_ids?: list<string>|null,
+ *   hs_internal_meeting_notes?: string|null,
+ *   hs_meeting_body?: string|null,
+ *   hs_meeting_location?: string|null,
+ *   hs_meeting_location_type?: string|null,
+ *   hubspot_owner_id?: string|null,
  * }
  */
 final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
@@ -30,46 +30,46 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     /** @use SdkModel<ExternalCalendarMeetingEventCreatePropertiesShape> */
     use SdkModel;
 
-    #[Api('hs_meeting_end_time')]
-    public \DateTimeInterface $hsMeetingEndTime;
+    #[Api]
+    public \DateTimeInterface $hs_meeting_end_time;
 
-    #[Api('hs_meeting_outcome')]
-    public string $hsMeetingOutcome;
+    #[Api]
+    public string $hs_meeting_outcome;
 
-    #[Api('hs_meeting_start_time')]
-    public \DateTimeInterface $hsMeetingStartTime;
+    #[Api]
+    public \DateTimeInterface $hs_meeting_start_time;
 
-    #[Api('hs_meeting_title')]
-    public string $hsMeetingTitle;
+    #[Api]
+    public string $hs_meeting_title;
 
-    #[Api('hs_timestamp')]
-    public \DateTimeInterface $hsTimestamp;
+    #[Api]
+    public \DateTimeInterface $hs_timestamp;
 
-    #[Api('hs_activity_type', optional: true)]
-    public ?string $hsActivityType;
+    #[Api(optional: true)]
+    public ?string $hs_activity_type;
 
-    /** @var list<string>|null $hsAttachmentIDs */
-    #[Api('hs_attachment_ids', list: 'string', optional: true)]
-    public ?array $hsAttachmentIDs;
+    /** @var list<string>|null $hs_attachment_ids */
+    #[Api(list: 'string', optional: true)]
+    public ?array $hs_attachment_ids;
 
-    /** @var list<string>|null $hsAttendeeOwnerIDs */
-    #[Api('hs_attendee_owner_ids', list: 'string', optional: true)]
-    public ?array $hsAttendeeOwnerIDs;
+    /** @var list<string>|null $hs_attendee_owner_ids */
+    #[Api(list: 'string', optional: true)]
+    public ?array $hs_attendee_owner_ids;
 
-    #[Api('hs_internal_meeting_notes', optional: true)]
-    public ?string $hsInternalMeetingNotes;
+    #[Api(optional: true)]
+    public ?string $hs_internal_meeting_notes;
 
-    #[Api('hs_meeting_body', optional: true)]
-    public ?string $hsMeetingBody;
+    #[Api(optional: true)]
+    public ?string $hs_meeting_body;
 
-    #[Api('hs_meeting_location', optional: true)]
-    public ?string $hsMeetingLocation;
+    #[Api(optional: true)]
+    public ?string $hs_meeting_location;
 
-    #[Api('hs_meeting_location_type', optional: true)]
-    public ?string $hsMeetingLocationType;
+    #[Api(optional: true)]
+    public ?string $hs_meeting_location_type;
 
-    #[Api('hubspot_owner_id', optional: true)]
-    public ?string $hubspotOwnerID;
+    #[Api(optional: true)]
+    public ?string $hubspot_owner_id;
 
     /**
      * `new ExternalCalendarMeetingEventCreateProperties()` is missing required properties by the API.
@@ -77,11 +77,11 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
      * To enforce required parameters use
      * ```
      * ExternalCalendarMeetingEventCreateProperties::with(
-     *   hsMeetingEndTime: ...,
-     *   hsMeetingOutcome: ...,
-     *   hsMeetingStartTime: ...,
-     *   hsMeetingTitle: ...,
-     *   hsTimestamp: ...,
+     *   hs_meeting_end_time: ...,
+     *   hs_meeting_outcome: ...,
+     *   hs_meeting_start_time: ...,
+     *   hs_meeting_title: ...,
+     *   hs_timestamp: ...,
      * )
      * ```
      *
@@ -106,40 +106,40 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $hsAttachmentIDs
-     * @param list<string> $hsAttendeeOwnerIDs
+     * @param list<string> $hs_attachment_ids
+     * @param list<string> $hs_attendee_owner_ids
      */
     public static function with(
-        \DateTimeInterface $hsMeetingEndTime,
-        string $hsMeetingOutcome,
-        \DateTimeInterface $hsMeetingStartTime,
-        string $hsMeetingTitle,
-        \DateTimeInterface $hsTimestamp,
-        ?string $hsActivityType = null,
-        ?array $hsAttachmentIDs = null,
-        ?array $hsAttendeeOwnerIDs = null,
-        ?string $hsInternalMeetingNotes = null,
-        ?string $hsMeetingBody = null,
-        ?string $hsMeetingLocation = null,
-        ?string $hsMeetingLocationType = null,
-        ?string $hubspotOwnerID = null,
+        \DateTimeInterface $hs_meeting_end_time,
+        string $hs_meeting_outcome,
+        \DateTimeInterface $hs_meeting_start_time,
+        string $hs_meeting_title,
+        \DateTimeInterface $hs_timestamp,
+        ?string $hs_activity_type = null,
+        ?array $hs_attachment_ids = null,
+        ?array $hs_attendee_owner_ids = null,
+        ?string $hs_internal_meeting_notes = null,
+        ?string $hs_meeting_body = null,
+        ?string $hs_meeting_location = null,
+        ?string $hs_meeting_location_type = null,
+        ?string $hubspot_owner_id = null,
     ): self {
         $obj = new self;
 
-        $obj->hsMeetingEndTime = $hsMeetingEndTime;
-        $obj->hsMeetingOutcome = $hsMeetingOutcome;
-        $obj->hsMeetingStartTime = $hsMeetingStartTime;
-        $obj->hsMeetingTitle = $hsMeetingTitle;
-        $obj->hsTimestamp = $hsTimestamp;
+        $obj->hs_meeting_end_time = $hs_meeting_end_time;
+        $obj->hs_meeting_outcome = $hs_meeting_outcome;
+        $obj->hs_meeting_start_time = $hs_meeting_start_time;
+        $obj->hs_meeting_title = $hs_meeting_title;
+        $obj->hs_timestamp = $hs_timestamp;
 
-        null !== $hsActivityType && $obj->hsActivityType = $hsActivityType;
-        null !== $hsAttachmentIDs && $obj->hsAttachmentIDs = $hsAttachmentIDs;
-        null !== $hsAttendeeOwnerIDs && $obj->hsAttendeeOwnerIDs = $hsAttendeeOwnerIDs;
-        null !== $hsInternalMeetingNotes && $obj->hsInternalMeetingNotes = $hsInternalMeetingNotes;
-        null !== $hsMeetingBody && $obj->hsMeetingBody = $hsMeetingBody;
-        null !== $hsMeetingLocation && $obj->hsMeetingLocation = $hsMeetingLocation;
-        null !== $hsMeetingLocationType && $obj->hsMeetingLocationType = $hsMeetingLocationType;
-        null !== $hubspotOwnerID && $obj->hubspotOwnerID = $hubspotOwnerID;
+        null !== $hs_activity_type && $obj->hs_activity_type = $hs_activity_type;
+        null !== $hs_attachment_ids && $obj->hs_attachment_ids = $hs_attachment_ids;
+        null !== $hs_attendee_owner_ids && $obj->hs_attendee_owner_ids = $hs_attendee_owner_ids;
+        null !== $hs_internal_meeting_notes && $obj->hs_internal_meeting_notes = $hs_internal_meeting_notes;
+        null !== $hs_meeting_body && $obj->hs_meeting_body = $hs_meeting_body;
+        null !== $hs_meeting_location && $obj->hs_meeting_location = $hs_meeting_location;
+        null !== $hs_meeting_location_type && $obj->hs_meeting_location_type = $hs_meeting_location_type;
+        null !== $hubspot_owner_id && $obj->hubspot_owner_id = $hubspot_owner_id;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
         \DateTimeInterface $hsMeetingEndTime
     ): self {
         $obj = clone $this;
-        $obj->hsMeetingEndTime = $hsMeetingEndTime;
+        $obj->hs_meeting_end_time = $hsMeetingEndTime;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     public function withHsMeetingOutcome(string $hsMeetingOutcome): self
     {
         $obj = clone $this;
-        $obj->hsMeetingOutcome = $hsMeetingOutcome;
+        $obj->hs_meeting_outcome = $hsMeetingOutcome;
 
         return $obj;
     }
@@ -165,7 +165,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
         \DateTimeInterface $hsMeetingStartTime
     ): self {
         $obj = clone $this;
-        $obj->hsMeetingStartTime = $hsMeetingStartTime;
+        $obj->hs_meeting_start_time = $hsMeetingStartTime;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     public function withHsMeetingTitle(string $hsMeetingTitle): self
     {
         $obj = clone $this;
-        $obj->hsMeetingTitle = $hsMeetingTitle;
+        $obj->hs_meeting_title = $hsMeetingTitle;
 
         return $obj;
     }
@@ -181,7 +181,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     public function withHsTimestamp(\DateTimeInterface $hsTimestamp): self
     {
         $obj = clone $this;
-        $obj->hsTimestamp = $hsTimestamp;
+        $obj->hs_timestamp = $hsTimestamp;
 
         return $obj;
     }
@@ -189,7 +189,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     public function withHsActivityType(string $hsActivityType): self
     {
         $obj = clone $this;
-        $obj->hsActivityType = $hsActivityType;
+        $obj->hs_activity_type = $hsActivityType;
 
         return $obj;
     }
@@ -200,7 +200,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     public function withHsAttachmentIDs(array $hsAttachmentIDs): self
     {
         $obj = clone $this;
-        $obj->hsAttachmentIDs = $hsAttachmentIDs;
+        $obj->hs_attachment_ids = $hsAttachmentIDs;
 
         return $obj;
     }
@@ -211,7 +211,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     public function withHsAttendeeOwnerIDs(array $hsAttendeeOwnerIDs): self
     {
         $obj = clone $this;
-        $obj->hsAttendeeOwnerIDs = $hsAttendeeOwnerIDs;
+        $obj->hs_attendee_owner_ids = $hsAttendeeOwnerIDs;
 
         return $obj;
     }
@@ -220,7 +220,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
         string $hsInternalMeetingNotes
     ): self {
         $obj = clone $this;
-        $obj->hsInternalMeetingNotes = $hsInternalMeetingNotes;
+        $obj->hs_internal_meeting_notes = $hsInternalMeetingNotes;
 
         return $obj;
     }
@@ -228,7 +228,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     public function withHsMeetingBody(string $hsMeetingBody): self
     {
         $obj = clone $this;
-        $obj->hsMeetingBody = $hsMeetingBody;
+        $obj->hs_meeting_body = $hsMeetingBody;
 
         return $obj;
     }
@@ -236,7 +236,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     public function withHsMeetingLocation(string $hsMeetingLocation): self
     {
         $obj = clone $this;
-        $obj->hsMeetingLocation = $hsMeetingLocation;
+        $obj->hs_meeting_location = $hsMeetingLocation;
 
         return $obj;
     }
@@ -245,7 +245,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
         string $hsMeetingLocationType
     ): self {
         $obj = clone $this;
-        $obj->hsMeetingLocationType = $hsMeetingLocationType;
+        $obj->hs_meeting_location_type = $hsMeetingLocationType;
 
         return $obj;
     }
@@ -253,7 +253,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     public function withHubspotOwnerID(string $hubspotOwnerID): self
     {
         $obj = clone $this;
-        $obj->hubspotOwnerID = $hubspotOwnerID;
+        $obj->hubspot_owner_id = $hubspotOwnerID;
 
         return $obj;
     }

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Pages\LandingPages->rerunAbTest
  *
  * @phpstan-type LandingPageRerunAbTestParamsShape = array{
- *   abTestID: string, variationID: string
+ *   abTestId: string, variationId: string
  * }
  */
 final class LandingPageRerunAbTestParams implements BaseModel
@@ -27,21 +27,21 @@ final class LandingPageRerunAbTestParams implements BaseModel
     /**
      * ID of the test to rerun.
      */
-    #[Api('abTestId')]
-    public string $abTestID;
+    #[Api]
+    public string $abTestId;
 
     /**
      * ID of the object to reactivate as a test variation.
      */
-    #[Api('variationId')]
-    public string $variationID;
+    #[Api]
+    public string $variationId;
 
     /**
      * `new LandingPageRerunAbTestParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * LandingPageRerunAbTestParams::with(abTestID: ..., variationID: ...)
+     * LandingPageRerunAbTestParams::with(abTestId: ..., variationId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,12 +60,12 @@ final class LandingPageRerunAbTestParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $abTestID, string $variationID): self
+    public static function with(string $abTestId, string $variationId): self
     {
         $obj = new self;
 
-        $obj->abTestID = $abTestID;
-        $obj->variationID = $variationID;
+        $obj->abTestId = $abTestId;
+        $obj->variationId = $variationId;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class LandingPageRerunAbTestParams implements BaseModel
     public function withAbTestID(string $abTestID): self
     {
         $obj = clone $this;
-        $obj->abTestID = $abTestID;
+        $obj->abTestId = $abTestID;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class LandingPageRerunAbTestParams implements BaseModel
     public function withVariationID(string $variationID): self
     {
         $obj = clone $this;
-        $obj->variationID = $variationID;
+        $obj->variationId = $variationID;
 
         return $obj;
     }

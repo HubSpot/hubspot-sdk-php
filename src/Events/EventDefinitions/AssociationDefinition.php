@@ -21,28 +21,28 @@ use HubspotSDK\Events\EventDefinitions\AssociationDefinition\ToObjectType;
  *   allowsCustomLabels: bool,
  *   cardinality: value-of<Cardinality>,
  *   category: value-of<Category>,
- *   fromObjectTypeID: string,
+ *   fromObjectTypeId: string,
  *   hasAllAssociatedObjects: bool,
  *   hasCascadingDeletes: bool,
- *   hasUserEnforcedMaxFromObjectIDs: bool,
- *   hasUserEnforcedMaxToObjectIDs: bool,
+ *   hasUserEnforcedMaxFromObjectIds: bool,
+ *   hasUserEnforcedMaxToObjectIds: bool,
  *   hidden: bool,
  *   inverseAllowsCustomLabels: bool,
  *   inverseCardinality: value-of<InverseCardinality>,
  *   inverseHasAllAssociatedObjects: bool,
- *   inverseID: int,
+ *   inverseId: int,
  *   inverseName: string,
  *   isInversePrimary: bool,
  *   isPrimary: bool,
- *   maxFromObjectIDs: int,
- *   maxToObjectIDs: int,
+ *   maxFromObjectIds: int,
+ *   maxToObjectIds: int,
  *   name: string,
  *   portalUniqueIdentifier: string,
- *   toObjectTypeID: string,
- *   fromObjectType?: value-of<FromObjectType>,
- *   inverseLabel?: string,
- *   label?: string,
- *   toObjectType?: value-of<ToObjectType>,
+ *   toObjectTypeId: string,
+ *   fromObjectType?: value-of<FromObjectType>|null,
+ *   inverseLabel?: string|null,
+ *   label?: string|null,
+ *   toObjectType?: value-of<ToObjectType>|null,
  * }
  */
 final class AssociationDefinition implements BaseModel
@@ -81,8 +81,8 @@ final class AssociationDefinition implements BaseModel
     /**
      * The ID of the source object type (e.g., 0-1 for contacts).
      */
-    #[Api('fromObjectTypeId')]
-    public string $fromObjectTypeID;
+    #[Api]
+    public string $fromObjectTypeId;
 
     /**
      * Whether all potential linked objects are included in the association.
@@ -99,14 +99,14 @@ final class AssociationDefinition implements BaseModel
     /**
      * Whether a user has set a limit for the number of source objects.
      */
-    #[Api('hasUserEnforcedMaxFromObjectIds')]
-    public bool $hasUserEnforcedMaxFromObjectIDs;
+    #[Api]
+    public bool $hasUserEnforcedMaxFromObjectIds;
 
     /**
      * Whether a user has set a limit for the number of destination objects.
      */
-    #[Api('hasUserEnforcedMaxToObjectIds')]
-    public bool $hasUserEnforcedMaxToObjectIDs;
+    #[Api]
+    public bool $hasUserEnforcedMaxToObjectIds;
 
     /**
      * Whether the association is hidden or not.
@@ -137,8 +137,8 @@ final class AssociationDefinition implements BaseModel
     /**
      * The unique ID for the inverse side of the association.
      */
-    #[Api('inverseId')]
-    public int $inverseID;
+    #[Api]
+    public int $inverseId;
 
     /**
      * The name used to describe the inverse relationship in this association.
@@ -161,14 +161,14 @@ final class AssociationDefinition implements BaseModel
     /**
      * The maximum number of source object IDs allowed in the association.
      */
-    #[Api('maxFromObjectIds')]
-    public int $maxFromObjectIDs;
+    #[Api]
+    public int $maxFromObjectIds;
 
     /**
      * The maximum number of destination object IDs allowed in the association.
      */
-    #[Api('maxToObjectIds')]
-    public int $maxToObjectIDs;
+    #[Api]
+    public int $maxToObjectIds;
 
     /**
      * For labeled association types, the internal name of the association.
@@ -185,8 +185,8 @@ final class AssociationDefinition implements BaseModel
     /**
      * The ID of the destination object type (e.g., 0-3 for deals).
      */
-    #[Api('toObjectTypeId')]
-    public string $toObjectTypeID;
+    #[Api]
+    public string $toObjectTypeId;
 
     /**
      * The name of the source object type (e.g,. "DEAL" or "QUOTE").
@@ -226,24 +226,24 @@ final class AssociationDefinition implements BaseModel
      *   allowsCustomLabels: ...,
      *   cardinality: ...,
      *   category: ...,
-     *   fromObjectTypeID: ...,
+     *   fromObjectTypeId: ...,
      *   hasAllAssociatedObjects: ...,
      *   hasCascadingDeletes: ...,
-     *   hasUserEnforcedMaxFromObjectIDs: ...,
-     *   hasUserEnforcedMaxToObjectIDs: ...,
+     *   hasUserEnforcedMaxFromObjectIds: ...,
+     *   hasUserEnforcedMaxToObjectIds: ...,
      *   hidden: ...,
      *   inverseAllowsCustomLabels: ...,
      *   inverseCardinality: ...,
      *   inverseHasAllAssociatedObjects: ...,
-     *   inverseID: ...,
+     *   inverseId: ...,
      *   inverseName: ...,
      *   isInversePrimary: ...,
      *   isPrimary: ...,
-     *   maxFromObjectIDs: ...,
-     *   maxToObjectIDs: ...,
+     *   maxFromObjectIds: ...,
+     *   maxToObjectIds: ...,
      *   name: ...,
      *   portalUniqueIdentifier: ...,
-     *   toObjectTypeID: ...,
+     *   toObjectTypeId: ...,
      * )
      * ```
      *
@@ -296,24 +296,24 @@ final class AssociationDefinition implements BaseModel
         bool $allowsCustomLabels,
         Cardinality|string $cardinality,
         Category|string $category,
-        string $fromObjectTypeID,
+        string $fromObjectTypeId,
         bool $hasAllAssociatedObjects,
         bool $hasCascadingDeletes,
-        bool $hasUserEnforcedMaxFromObjectIDs,
-        bool $hasUserEnforcedMaxToObjectIDs,
+        bool $hasUserEnforcedMaxFromObjectIds,
+        bool $hasUserEnforcedMaxToObjectIds,
         bool $hidden,
         bool $inverseAllowsCustomLabels,
         InverseCardinality|string $inverseCardinality,
         bool $inverseHasAllAssociatedObjects,
-        int $inverseID,
+        int $inverseId,
         string $inverseName,
         bool $isInversePrimary,
         bool $isPrimary,
-        int $maxFromObjectIDs,
-        int $maxToObjectIDs,
+        int $maxFromObjectIds,
+        int $maxToObjectIds,
         string $name,
         string $portalUniqueIdentifier,
-        string $toObjectTypeID,
+        string $toObjectTypeId,
         FromObjectType|string|null $fromObjectType = null,
         ?string $inverseLabel = null,
         ?string $label = null,
@@ -325,24 +325,24 @@ final class AssociationDefinition implements BaseModel
         $obj->allowsCustomLabels = $allowsCustomLabels;
         $obj['cardinality'] = $cardinality;
         $obj['category'] = $category;
-        $obj->fromObjectTypeID = $fromObjectTypeID;
+        $obj->fromObjectTypeId = $fromObjectTypeId;
         $obj->hasAllAssociatedObjects = $hasAllAssociatedObjects;
         $obj->hasCascadingDeletes = $hasCascadingDeletes;
-        $obj->hasUserEnforcedMaxFromObjectIDs = $hasUserEnforcedMaxFromObjectIDs;
-        $obj->hasUserEnforcedMaxToObjectIDs = $hasUserEnforcedMaxToObjectIDs;
+        $obj->hasUserEnforcedMaxFromObjectIds = $hasUserEnforcedMaxFromObjectIds;
+        $obj->hasUserEnforcedMaxToObjectIds = $hasUserEnforcedMaxToObjectIds;
         $obj->hidden = $hidden;
         $obj->inverseAllowsCustomLabels = $inverseAllowsCustomLabels;
         $obj['inverseCardinality'] = $inverseCardinality;
         $obj->inverseHasAllAssociatedObjects = $inverseHasAllAssociatedObjects;
-        $obj->inverseID = $inverseID;
+        $obj->inverseId = $inverseId;
         $obj->inverseName = $inverseName;
         $obj->isInversePrimary = $isInversePrimary;
         $obj->isPrimary = $isPrimary;
-        $obj->maxFromObjectIDs = $maxFromObjectIDs;
-        $obj->maxToObjectIDs = $maxToObjectIDs;
+        $obj->maxFromObjectIds = $maxFromObjectIds;
+        $obj->maxToObjectIds = $maxToObjectIds;
         $obj->name = $name;
         $obj->portalUniqueIdentifier = $portalUniqueIdentifier;
-        $obj->toObjectTypeID = $toObjectTypeID;
+        $obj->toObjectTypeId = $toObjectTypeId;
 
         null !== $fromObjectType && $obj['fromObjectType'] = $fromObjectType;
         null !== $inverseLabel && $obj->inverseLabel = $inverseLabel;
@@ -406,7 +406,7 @@ final class AssociationDefinition implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeID = $fromObjectTypeID;
+        $obj->fromObjectTypeId = $fromObjectTypeID;
 
         return $obj;
     }
@@ -441,7 +441,7 @@ final class AssociationDefinition implements BaseModel
         bool $hasUserEnforcedMaxFromObjectIDs
     ): self {
         $obj = clone $this;
-        $obj->hasUserEnforcedMaxFromObjectIDs = $hasUserEnforcedMaxFromObjectIDs;
+        $obj->hasUserEnforcedMaxFromObjectIds = $hasUserEnforcedMaxFromObjectIDs;
 
         return $obj;
     }
@@ -453,7 +453,7 @@ final class AssociationDefinition implements BaseModel
         bool $hasUserEnforcedMaxToObjectIDs
     ): self {
         $obj = clone $this;
-        $obj->hasUserEnforcedMaxToObjectIDs = $hasUserEnforcedMaxToObjectIDs;
+        $obj->hasUserEnforcedMaxToObjectIds = $hasUserEnforcedMaxToObjectIDs;
 
         return $obj;
     }
@@ -513,7 +513,7 @@ final class AssociationDefinition implements BaseModel
     public function withInverseID(int $inverseID): self
     {
         $obj = clone $this;
-        $obj->inverseID = $inverseID;
+        $obj->inverseId = $inverseID;
 
         return $obj;
     }
@@ -557,7 +557,7 @@ final class AssociationDefinition implements BaseModel
     public function withMaxFromObjectIDs(int $maxFromObjectIDs): self
     {
         $obj = clone $this;
-        $obj->maxFromObjectIDs = $maxFromObjectIDs;
+        $obj->maxFromObjectIds = $maxFromObjectIDs;
 
         return $obj;
     }
@@ -568,7 +568,7 @@ final class AssociationDefinition implements BaseModel
     public function withMaxToObjectIDs(int $maxToObjectIDs): self
     {
         $obj = clone $this;
-        $obj->maxToObjectIDs = $maxToObjectIDs;
+        $obj->maxToObjectIds = $maxToObjectIDs;
 
         return $obj;
     }
@@ -602,7 +602,7 @@ final class AssociationDefinition implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->toObjectTypeID = $toObjectTypeID;
+        $obj->toObjectTypeId = $toObjectTypeID;
 
         return $obj;
     }

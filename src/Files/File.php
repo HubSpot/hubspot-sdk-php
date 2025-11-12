@@ -18,22 +18,22 @@ use HubspotSDK\Files\File\Access;
  *   archived: bool,
  *   createdAt: \DateTimeInterface,
  *   updatedAt: \DateTimeInterface,
- *   archivedAt?: \DateTimeInterface,
- *   defaultHostingURL?: string,
- *   encoding?: string,
- *   expiresAt?: int,
- *   extension?: string,
- *   fileMd5?: string,
- *   height?: int,
- *   isUsableInContent?: bool,
- *   name?: string,
- *   parentFolderID?: string,
- *   path?: string,
- *   size?: int,
- *   sourceGroup?: string,
- *   type?: string,
- *   url?: string,
- *   width?: int,
+ *   archivedAt?: \DateTimeInterface|null,
+ *   defaultHostingUrl?: string|null,
+ *   encoding?: string|null,
+ *   expiresAt?: int|null,
+ *   extension?: string|null,
+ *   fileMd5?: string|null,
+ *   height?: int|null,
+ *   isUsableInContent?: bool|null,
+ *   name?: string|null,
+ *   parentFolderId?: string|null,
+ *   path?: string|null,
+ *   size?: int|null,
+ *   sourceGroup?: string|null,
+ *   type?: string|null,
+ *   url?: string|null,
+ *   width?: int|null,
  * }
  */
 final class File implements BaseModel
@@ -82,8 +82,8 @@ final class File implements BaseModel
     /**
      * Default hosting URL of the file. This will use one of HubSpot's provided URLs to serve the file.
      */
-    #[Api('defaultHostingUrl', optional: true)]
-    public ?string $defaultHostingURL;
+    #[Api(optional: true)]
+    public ?string $defaultHostingUrl;
 
     /**
      * Encoding of the file.
@@ -127,8 +127,8 @@ final class File implements BaseModel
     /**
      * ID of the folder the file is in.
      */
-    #[Api('parentFolderId', optional: true)]
-    public ?string $parentFolderID;
+    #[Api(optional: true)]
+    public ?string $parentFolderId;
 
     /**
      * Path of the file in the file manager.
@@ -201,7 +201,7 @@ final class File implements BaseModel
         \DateTimeInterface $createdAt,
         \DateTimeInterface $updatedAt,
         ?\DateTimeInterface $archivedAt = null,
-        ?string $defaultHostingURL = null,
+        ?string $defaultHostingUrl = null,
         ?string $encoding = null,
         ?int $expiresAt = null,
         ?string $extension = null,
@@ -209,7 +209,7 @@ final class File implements BaseModel
         ?int $height = null,
         ?bool $isUsableInContent = null,
         ?string $name = null,
-        ?string $parentFolderID = null,
+        ?string $parentFolderId = null,
         ?string $path = null,
         ?int $size = null,
         ?string $sourceGroup = null,
@@ -226,7 +226,7 @@ final class File implements BaseModel
         $obj->updatedAt = $updatedAt;
 
         null !== $archivedAt && $obj->archivedAt = $archivedAt;
-        null !== $defaultHostingURL && $obj->defaultHostingURL = $defaultHostingURL;
+        null !== $defaultHostingUrl && $obj->defaultHostingUrl = $defaultHostingUrl;
         null !== $encoding && $obj->encoding = $encoding;
         null !== $expiresAt && $obj->expiresAt = $expiresAt;
         null !== $extension && $obj->extension = $extension;
@@ -234,7 +234,7 @@ final class File implements BaseModel
         null !== $height && $obj->height = $height;
         null !== $isUsableInContent && $obj->isUsableInContent = $isUsableInContent;
         null !== $name && $obj->name = $name;
-        null !== $parentFolderID && $obj->parentFolderID = $parentFolderID;
+        null !== $parentFolderId && $obj->parentFolderId = $parentFolderId;
         null !== $path && $obj->path = $path;
         null !== $size && $obj->size = $size;
         null !== $sourceGroup && $obj->sourceGroup = $sourceGroup;
@@ -319,7 +319,7 @@ final class File implements BaseModel
     public function withDefaultHostingURL(string $defaultHostingURL): self
     {
         $obj = clone $this;
-        $obj->defaultHostingURL = $defaultHostingURL;
+        $obj->defaultHostingUrl = $defaultHostingURL;
 
         return $obj;
     }
@@ -404,7 +404,7 @@ final class File implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderID;
 
         return $obj;
     }

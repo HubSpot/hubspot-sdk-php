@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   objectType: string,
  *   displayOrder: int,
  *   label: string,
- *   metadata?: array<string, string>,
+ *   metadata?: array<string,string>,
  * }
  */
 final class StageCreateParams implements BaseModel
@@ -49,7 +49,7 @@ final class StageCreateParams implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @var array<string, string>|null $metadata
+     * @var array<string,string>|null $metadata
      */
     #[Api(map: 'string', optional: true)]
     public ?array $metadata;
@@ -81,7 +81,7 @@ final class StageCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $metadata
+     * @param array<string,string> $metadata
      */
     public static function with(
         string $objectType,
@@ -137,7 +137,7 @@ final class StageCreateParams implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @param array<string, string> $metadata
+     * @param array<string,string> $metadata
      */
     public function withMetadata(array $metadata): self
     {

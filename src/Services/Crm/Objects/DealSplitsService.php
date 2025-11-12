@@ -9,7 +9,6 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits;
 use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchReadParams;
 use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchUpsertParams;
-use HubspotSDK\Crm\Objects\DealSplits\PublicDealSplitsCreateRequest;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\DealSplitsContract;
@@ -26,33 +25,19 @@ final class DealSplitsService implements DealSplitsContract
      *
      * Read a batch of deal split objects by their associated deal object internal ID
      *
-     * @param list<PublicObjectID> $inputs
+     * @param array{
+     *   inputs: list<array{id: string}|PublicObjectID>
+     * }|DealSplitBatchReadParams $params
      *
      * @throws APIException
      */
     public function batchRead(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseDealToDealSplits {
-        $params = ['inputs' => $inputs];
-
-        return $this->batchReadRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchReadRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|DealSplitBatchReadParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseDealToDealSplits {
         [$parsed, $options] = DealSplitBatchReadParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -70,33 +55,19 @@ final class DealSplitsService implements DealSplitsContract
      *
      * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
      *
-     * @param list<PublicDealSplitsCreateRequest> $inputs
+     * @param array{
+     *   inputs: list<array{id: int, splits: list<array<mixed>>}>
+     * }|DealSplitBatchUpsertParams $params
      *
      * @throws APIException
      */
     public function batchUpsert(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseDealToDealSplits {
-        $params = ['inputs' => $inputs];
-
-        return $this->batchUpsertRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchUpsertRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|DealSplitBatchUpsertParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseDealToDealSplits {
         [$parsed, $options] = DealSplitBatchUpsertParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type URLRedirectUpdateParamsShape = array{
  *   id: string,
  *   destination: string,
- *   isMatchFullURL: bool,
+ *   isMatchFullUrl: bool,
  *   isMatchQueryString: bool,
  *   isOnlyAfterNotFound: bool,
  *   isPattern: bool,
@@ -51,8 +51,8 @@ final class URLRedirectUpdateParams implements BaseModel
     /**
      * Whether the `routePrefix` should match on the entire URL, including the domain.
      */
-    #[Api('isMatchFullUrl')]
-    public bool $isMatchFullURL;
+    #[Api]
+    public bool $isMatchFullUrl;
 
     /**
      * Whether the `routePrefix` should match on the entire URL path, including the query string.
@@ -116,7 +116,7 @@ final class URLRedirectUpdateParams implements BaseModel
      * URLRedirectUpdateParams::with(
      *   id: ...,
      *   destination: ...,
-     *   isMatchFullURL: ...,
+     *   isMatchFullUrl: ...,
      *   isMatchQueryString: ...,
      *   isOnlyAfterNotFound: ...,
      *   isPattern: ...,
@@ -158,7 +158,7 @@ final class URLRedirectUpdateParams implements BaseModel
     public static function with(
         string $id,
         string $destination,
-        bool $isMatchFullURL,
+        bool $isMatchFullUrl,
         bool $isMatchQueryString,
         bool $isOnlyAfterNotFound,
         bool $isPattern,
@@ -174,7 +174,7 @@ final class URLRedirectUpdateParams implements BaseModel
 
         $obj->id = $id;
         $obj->destination = $destination;
-        $obj->isMatchFullURL = $isMatchFullURL;
+        $obj->isMatchFullUrl = $isMatchFullUrl;
         $obj->isMatchQueryString = $isMatchQueryString;
         $obj->isOnlyAfterNotFound = $isOnlyAfterNotFound;
         $obj->isPattern = $isPattern;
@@ -218,7 +218,7 @@ final class URLRedirectUpdateParams implements BaseModel
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
         $obj = clone $this;
-        $obj->isMatchFullURL = $isMatchFullURL;
+        $obj->isMatchFullUrl = $isMatchFullURL;
 
         return $obj;
     }

@@ -14,9 +14,9 @@ use HubspotSDK\Crm\Extensions\Cards\CardFetchBody\CardType;
  *
  * @phpstan-type CardFetchBodyShape = array{
  *   objectTypes: list<CardObjectTypeBody>,
- *   targetURL: string,
- *   cardType?: value-of<CardType>,
- *   serverlessFunction?: string,
+ *   targetUrl: string,
+ *   cardType?: value-of<CardType>|null,
+ *   serverlessFunction?: string|null,
  * }
  */
 final class CardFetchBody implements BaseModel
@@ -35,8 +35,8 @@ final class CardFetchBody implements BaseModel
     /**
      * URL to a service endpoints that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
      */
-    #[Api('targetUrl')]
-    public string $targetURL;
+    #[Api]
+    public string $targetUrl;
 
     /** @var value-of<CardType>|null $cardType */
     #[Api(enum: CardType::class, optional: true)]
@@ -50,7 +50,7 @@ final class CardFetchBody implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * CardFetchBody::with(objectTypes: ..., targetURL: ...)
+     * CardFetchBody::with(objectTypes: ..., targetUrl: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -74,14 +74,14 @@ final class CardFetchBody implements BaseModel
      */
     public static function with(
         array $objectTypes,
-        string $targetURL,
+        string $targetUrl,
         CardType|string|null $cardType = null,
         ?string $serverlessFunction = null,
     ): self {
         $obj = new self;
 
         $obj->objectTypes = $objectTypes;
-        $obj->targetURL = $targetURL;
+        $obj->targetUrl = $targetUrl;
 
         null !== $cardType && $obj['cardType'] = $cardType;
         null !== $serverlessFunction && $obj->serverlessFunction = $serverlessFunction;
@@ -108,7 +108,7 @@ final class CardFetchBody implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj->targetURL = $targetURL;
+        $obj->targetUrl = $targetURL;
 
         return $obj;
     }

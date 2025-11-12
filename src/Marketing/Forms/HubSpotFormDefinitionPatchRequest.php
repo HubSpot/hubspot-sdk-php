@@ -10,12 +10,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type HubSpotFormDefinitionPatchRequestShape = array{
- *   archived?: bool,
- *   configuration?: HubSpotFormConfiguration,
- *   displayOptions?: FormDisplayOptions,
- *   fieldGroups?: list<FieldGroup>,
- *   legalConsentOptions?: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess,
- *   name?: string,
+ *   archived?: bool|null,
+ *   configuration?: HubSpotFormConfiguration|null,
+ *   displayOptions?: FormDisplayOptions|null,
+ *   fieldGroups?: list<FieldGroup>|null,
+ *   legalConsentOptions?: null|LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess,
+ *   name?: string|null,
  * }
  */
 final class HubSpotFormDefinitionPatchRequest implements BaseModel

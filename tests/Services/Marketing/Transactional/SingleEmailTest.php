@@ -3,7 +3,6 @@
 namespace Tests\Services\Marketing\Transactional;
 
 use HubspotSDK\Client;
-use HubspotSDK\Marketing\PublicSingleSendEmail;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -37,10 +36,9 @@ final class SingleEmailTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->transactional->singleEmail->send(
-            emailID: 0,
-            message: PublicSingleSendEmail::with(to: 'to')
-        );
+        $result = $this->client->marketing->transactional->singleEmail->send([
+            'emailId' => 0, 'message' => ['to' => 'to'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -52,15 +50,17 @@ final class SingleEmailTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->transactional->singleEmail->send(
-            emailID: 0,
-            message: PublicSingleSendEmail::with(to: 'to')
-                ->withBcc(['string'])
-                ->withCc(['string'])
-                ->withFrom('from')
-                ->withReplyTo(['string'])
-                ->withSendID('sendId'),
-        );
+        $result = $this->client->marketing->transactional->singleEmail->send([
+            'emailId' => 0,
+            'message' => [
+                'to' => 'to',
+                'bcc' => ['string'],
+                'cc' => ['string'],
+                'from' => 'from',
+                'replyTo' => ['string'],
+                'sendId' => 'sendId',
+            ],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

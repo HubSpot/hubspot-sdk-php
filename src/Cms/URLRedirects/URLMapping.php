@@ -14,7 +14,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  * @phpstan-type URLMappingShape = array{
  *   id: string,
  *   destination: string,
- *   isMatchFullURL: bool,
+ *   isMatchFullUrl: bool,
  *   isMatchQueryString: bool,
  *   isOnlyAfterNotFound: bool,
  *   isPattern: bool,
@@ -23,8 +23,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   precedence: int,
  *   redirectStyle: int,
  *   routePrefix: string,
- *   created?: \DateTimeInterface,
- *   updated?: \DateTimeInterface,
+ *   created?: \DateTimeInterface|null,
+ *   updated?: \DateTimeInterface|null,
  * }
  */
 final class URLMapping implements BaseModel, ResponseConverter
@@ -49,8 +49,8 @@ final class URLMapping implements BaseModel, ResponseConverter
     /**
      * Whether the `routePrefix` should match on the entire URL, including the domain.
      */
-    #[Api('isMatchFullUrl')]
-    public bool $isMatchFullURL;
+    #[Api]
+    public bool $isMatchFullUrl;
 
     /**
      * Whether the `routePrefix` should match on the entire URL path, including the query string.
@@ -114,7 +114,7 @@ final class URLMapping implements BaseModel, ResponseConverter
      * URLMapping::with(
      *   id: ...,
      *   destination: ...,
-     *   isMatchFullURL: ...,
+     *   isMatchFullUrl: ...,
      *   isMatchQueryString: ...,
      *   isOnlyAfterNotFound: ...,
      *   isPattern: ...,
@@ -156,7 +156,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public static function with(
         string $id,
         string $destination,
-        bool $isMatchFullURL,
+        bool $isMatchFullUrl,
         bool $isMatchQueryString,
         bool $isOnlyAfterNotFound,
         bool $isPattern,
@@ -172,7 +172,7 @@ final class URLMapping implements BaseModel, ResponseConverter
 
         $obj->id = $id;
         $obj->destination = $destination;
-        $obj->isMatchFullURL = $isMatchFullURL;
+        $obj->isMatchFullUrl = $isMatchFullUrl;
         $obj->isMatchQueryString = $isMatchQueryString;
         $obj->isOnlyAfterNotFound = $isOnlyAfterNotFound;
         $obj->isPattern = $isPattern;
@@ -216,7 +216,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
         $obj = clone $this;
-        $obj->isMatchFullURL = $isMatchFullURL;
+        $obj->isMatchFullUrl = $isMatchFullURL;
 
         return $obj;
     }

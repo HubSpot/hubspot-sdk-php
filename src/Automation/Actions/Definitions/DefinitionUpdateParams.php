@@ -23,12 +23,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Automation\Actions\Definitions->update
  *
  * @phpstan-type DefinitionUpdateParamsShape = array{
- *   appID: int,
- *   actionURL?: string,
+ *   appId: int,
+ *   actionUrl?: string,
  *   executionRules?: list<PublicExecutionTranslationRule>,
  *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>,
  *   inputFields?: list<InputFieldDefinition>,
- *   labels?: array<string, PublicActionLabels>,
+ *   labels?: array<string,PublicActionLabels>,
  *   objectRequestOptions?: PublicObjectRequestOptions,
  *   objectTypes?: list<string>,
  *   outputFields?: list<OutputFieldDefinition>,
@@ -42,10 +42,10 @@ final class DefinitionUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
-    #[Api('actionUrl', optional: true)]
-    public ?string $actionURL;
+    #[Api(optional: true)]
+    public ?string $actionUrl;
 
     /** @var list<PublicExecutionTranslationRule>|null $executionRules */
     #[Api(list: PublicExecutionTranslationRule::class, optional: true)]
@@ -61,7 +61,7 @@ final class DefinitionUpdateParams implements BaseModel
     #[Api(list: InputFieldDefinition::class, optional: true)]
     public ?array $inputFields;
 
-    /** @var array<string, PublicActionLabels>|null $labels */
+    /** @var array<string,PublicActionLabels>|null $labels */
     #[Api(map: PublicActionLabels::class, optional: true)]
     public ?array $labels;
 
@@ -84,7 +84,7 @@ final class DefinitionUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * DefinitionUpdateParams::with(appID: ...)
+     * DefinitionUpdateParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -106,13 +106,13 @@ final class DefinitionUpdateParams implements BaseModel
      * @param list<PublicExecutionTranslationRule> $executionRules
      * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
      * @param list<InputFieldDefinition> $inputFields
-     * @param array<string, PublicActionLabels> $labels
+     * @param array<string,PublicActionLabels> $labels
      * @param list<string> $objectTypes
      * @param list<OutputFieldDefinition> $outputFields
      */
     public static function with(
-        int $appID,
-        ?string $actionURL = null,
+        int $appId,
+        ?string $actionUrl = null,
         ?array $executionRules = null,
         ?array $inputFieldDependencies = null,
         ?array $inputFields = null,
@@ -124,9 +124,9 @@ final class DefinitionUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
-        null !== $actionURL && $obj->actionURL = $actionURL;
+        null !== $actionUrl && $obj->actionUrl = $actionUrl;
         null !== $executionRules && $obj->executionRules = $executionRules;
         null !== $inputFieldDependencies && $obj->inputFieldDependencies = $inputFieldDependencies;
         null !== $inputFields && $obj->inputFields = $inputFields;
@@ -142,7 +142,7 @@ final class DefinitionUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class DefinitionUpdateParams implements BaseModel
     public function withActionURL(string $actionURL): self
     {
         $obj = clone $this;
-        $obj->actionURL = $actionURL;
+        $obj->actionUrl = $actionURL;
 
         return $obj;
     }
@@ -190,7 +190,7 @@ final class DefinitionUpdateParams implements BaseModel
     }
 
     /**
-     * @param array<string, PublicActionLabels> $labels
+     * @param array<string,PublicActionLabels> $labels
      */
     public function withLabels(array $labels): self
     {

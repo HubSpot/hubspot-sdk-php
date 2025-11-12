@@ -41,7 +41,7 @@ final class ReportsTest extends TestCase
             ->marketing
             ->campaigns
             ->reports
-            ->getAttributionMetrics('campaignGuid')
+            ->getAttributionMetrics('campaignGuid', [])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -59,7 +59,7 @@ final class ReportsTest extends TestCase
             ->marketing
             ->campaigns
             ->reports
-            ->getRevenueAttribution('campaignGuid')
+            ->getRevenueAttribution('campaignGuid', [])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -77,7 +77,7 @@ final class ReportsTest extends TestCase
             ->marketing
             ->campaigns
             ->reports
-            ->listContactIDsByType('contactType', campaignGuid: 'campaignGuid')
+            ->listContactIDsByType('contactType', ['campaignGuid' => 'campaignGuid'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -95,7 +95,7 @@ final class ReportsTest extends TestCase
             ->marketing
             ->campaigns
             ->reports
-            ->listContactIDsByType('contactType', campaignGuid: 'campaignGuid')
+            ->listContactIDsByType('contactType', ['campaignGuid' => 'campaignGuid'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

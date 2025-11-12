@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIAbTestBranchActionShape = array{
- *   actionID: string, testBranches: list<APIConnection>, type: value-of<Type>
+ *   actionId: string, testBranches: list<APIConnection>, type: value-of<Type>
  * }
  */
 final class APIAbTestBranchAction implements BaseModel
@@ -19,8 +19,8 @@ final class APIAbTestBranchAction implements BaseModel
     /** @use SdkModel<APIAbTestBranchActionShape> */
     use SdkModel;
 
-    #[Api('actionId')]
-    public string $actionID;
+    #[Api]
+    public string $actionId;
 
     /** @var list<APIConnection> $testBranches */
     #[Api(list: APIConnection::class)]
@@ -35,7 +35,7 @@ final class APIAbTestBranchAction implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * APIAbTestBranchAction::with(actionID: ..., testBranches: ..., type: ...)
+     * APIAbTestBranchAction::with(actionId: ..., testBranches: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -61,13 +61,13 @@ final class APIAbTestBranchAction implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $actionID,
+        string $actionId,
         array $testBranches,
         Type|string $type = 'AB_TEST_BRANCH'
     ): self {
         $obj = new self;
 
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionId;
         $obj->testBranches = $testBranches;
         $obj['type'] = $type;
 
@@ -77,7 +77,7 @@ final class APIAbTestBranchAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionID;
 
         return $obj;
     }

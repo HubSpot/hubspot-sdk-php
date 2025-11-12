@@ -14,7 +14,7 @@ use HubspotSDK\Property;
 
 /**
  * @phpstan-type CollectionResponsePropertyShape = array{
- *   results: list<Property>, paging?: EmailsPaging
+ *   results: list<Property>, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponseProperty implements BaseModel, ResponseConverter

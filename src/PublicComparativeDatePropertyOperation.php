@@ -15,7 +15,7 @@ use HubspotSDK\PublicComparativeDatePropertyOperation\OperationType;
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: value-of<OperationType>,
  *   operator: string,
- *   defaultComparisonValue?: string,
+ *   defaultComparisonValue?: string|null,
  * }
  */
 final class PublicComparativeDatePropertyOperation implements BaseModel

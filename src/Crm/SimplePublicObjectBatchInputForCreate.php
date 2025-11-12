@@ -10,9 +10,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type SimplePublicObjectBatchInputForCreateShape = array{
- *   properties: array<string, string>,
- *   associations?: list<PublicAssociationsForObject>,
- *   objectWriteTraceID?: string,
+ *   properties: array<string,string>,
+ *   associations?: list<PublicAssociationsForObject>|null,
+ *   objectWriteTraceId?: string|null,
  * }
  */
 final class SimplePublicObjectBatchInputForCreate implements BaseModel
@@ -20,7 +20,7 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     /** @use SdkModel<SimplePublicObjectBatchInputForCreateShape> */
     use SdkModel;
 
-    /** @var array<string, string> $properties */
+    /** @var array<string,string> $properties */
     #[Api(map: 'string')]
     public array $properties;
 
@@ -28,8 +28,8 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     #[Api(list: PublicAssociationsForObject::class, optional: true)]
     public ?array $associations;
 
-    #[Api('objectWriteTraceId', optional: true)]
-    public ?string $objectWriteTraceID;
+    #[Api(optional: true)]
+    public ?string $objectWriteTraceId;
 
     /**
      * `new SimplePublicObjectBatchInputForCreate()` is missing required properties by the API.
@@ -55,26 +55,26 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      * @param list<PublicAssociationsForObject> $associations
      */
     public static function with(
         array $properties,
         ?array $associations = null,
-        ?string $objectWriteTraceID = null,
+        ?string $objectWriteTraceId = null,
     ): self {
         $obj = new self;
 
         $obj->properties = $properties;
 
         null !== $associations && $obj->associations = $associations;
-        null !== $objectWriteTraceID && $obj->objectWriteTraceID = $objectWriteTraceID;
+        null !== $objectWriteTraceId && $obj->objectWriteTraceId = $objectWriteTraceId;
 
         return $obj;
     }
 
     /**
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {
@@ -98,7 +98,7 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
-        $obj->objectWriteTraceID = $objectWriteTraceID;
+        $obj->objectWriteTraceId = $objectWriteTraceID;
 
         return $obj;
     }

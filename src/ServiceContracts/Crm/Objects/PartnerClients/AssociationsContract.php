@@ -6,51 +6,32 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects\PartnerClients;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\AssociatedID;
+use HubspotSDK\Crm\Objects\PartnerClients\Associations\AssociationDeleteParams;
+use HubspotSDK\Crm\Objects\PartnerClients\Associations\AssociationListParams;
+use HubspotSDK\Crm\Objects\PartnerClients\Associations\AssociationUpdateParams;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface AssociationsContract
 {
     /**
      * @api
      *
-     * @param string $partnerClientID
-     * @param string $toObjectType
-     * @param string $toObjectID
+     * @param array<mixed>|AssociationUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $associationType,
-        $partnerClientID,
-        $toObjectType,
-        $toObjectID,
+        array|AssociationUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $associationType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): SimplePublicObjectWithAssociations;
-
-    /**
-     * @api
-     *
-     * @param string $partnerClientID
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $includeFa
-     * @param int $limit the maximum number of results to display per page
+     * @param array<mixed>|AssociationListParams $params
      *
      * @return Page<AssociatedID>
      *
@@ -58,55 +39,20 @@ interface AssociationsContract
      */
     public function list(
         string $toObjectType,
-        $partnerClientID,
-        $after = omit,
-        $includeFa = omit,
-        $limit = omit,
+        array|AssociationListParams $params,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<AssociatedID>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param string $partnerClientID
-     * @param string $toObjectType
-     * @param string $toObjectID
+     * @param array<mixed>|AssociationDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $associationType,
-        $partnerClientID,
-        $toObjectType,
-        $toObjectID,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $associationType,
-        array $params,
+        array|AssociationDeleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 }

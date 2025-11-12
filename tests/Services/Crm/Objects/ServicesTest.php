@@ -36,9 +36,9 @@ final class ServicesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->services->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->services->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -50,9 +50,9 @@ final class ServicesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->services->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->services->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -66,7 +66,7 @@ final class ServicesTest extends TestCase
 
         $result = $this->client->crm->objects->services->update(
             'serviceId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -81,7 +81,7 @@ final class ServicesTest extends TestCase
 
         $result = $this->client->crm->objects->services->update(
             'serviceId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -94,7 +94,7 @@ final class ServicesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->services->list();
+        $result = $this->client->crm->objects->services->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -118,7 +118,7 @@ final class ServicesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->services->get('serviceId');
+        $result = $this->client->crm->objects->services->get('serviceId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -130,7 +130,7 @@ final class ServicesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->services->search();
+        $result = $this->client->crm->objects->services->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

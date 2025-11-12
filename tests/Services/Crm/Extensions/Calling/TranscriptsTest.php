@@ -3,8 +3,6 @@
 namespace Tests\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\Speaker;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateUtterance;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,17 +36,17 @@ final class TranscriptsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->transcripts->create(
-            engagementID: 0,
-            transcriptCreateUtterances: [
-                TranscriptCreateUtterance::with(
-                    endTimeMillis: 0,
-                    speaker: Speaker::with(id: 'id', name: 'name'),
-                    startTimeMillis: 0,
-                    text: 'text',
-                ),
+        $result = $this->client->crm->extensions->calling->transcripts->create([
+            'engagementId' => 0,
+            'transcriptCreateUtterances' => [
+                [
+                    'endTimeMillis' => 0,
+                    'speaker' => ['id' => 'id', 'name' => 'name'],
+                    'startTimeMillis' => 0,
+                    'text' => 'text',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -60,18 +58,18 @@ final class TranscriptsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->transcripts->create(
-            engagementID: 0,
-            transcriptCreateUtterances: [
-                TranscriptCreateUtterance::with(
-                    endTimeMillis: 0,
-                    speaker: Speaker::with(id: 'id', name: 'name')->withEmail('email'),
-                    startTimeMillis: 0,
-                    text: 'text',
-                )
-                    ->withLanguageCode('languageCode'),
+        $result = $this->client->crm->extensions->calling->transcripts->create([
+            'engagementId' => 0,
+            'transcriptCreateUtterances' => [
+                [
+                    'endTimeMillis' => 0,
+                    'speaker' => ['id' => 'id', 'name' => 'name', 'email' => 'email'],
+                    'startTimeMillis' => 0,
+                    'text' => 'text',
+                    'languageCode' => 'languageCode',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

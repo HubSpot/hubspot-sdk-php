@@ -14,12 +14,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createdAt: \DateTimeInterface,
  *   defaultLink: bool,
  *   link: string,
- *   organizerUserID: string,
+ *   organizerUserId: string,
  *   slug: string,
  *   type: string,
- *   userIDsOfLinkMembers: list<string>,
- *   name?: string,
- *   updatedAt?: \DateTimeInterface,
+ *   userIdsOfLinkMembers: list<string>,
+ *   name?: string|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class ExternalLinkMetadata implements BaseModel
@@ -39,8 +39,8 @@ final class ExternalLinkMetadata implements BaseModel
     #[Api]
     public string $link;
 
-    #[Api('organizerUserId')]
-    public string $organizerUserID;
+    #[Api]
+    public string $organizerUserId;
 
     #[Api]
     public string $slug;
@@ -48,9 +48,9 @@ final class ExternalLinkMetadata implements BaseModel
     #[Api]
     public string $type;
 
-    /** @var list<string> $userIDsOfLinkMembers */
-    #[Api('userIdsOfLinkMembers', list: 'string')]
-    public array $userIDsOfLinkMembers;
+    /** @var list<string> $userIdsOfLinkMembers */
+    #[Api(list: 'string')]
+    public array $userIdsOfLinkMembers;
 
     #[Api(optional: true)]
     public ?string $name;
@@ -68,10 +68,10 @@ final class ExternalLinkMetadata implements BaseModel
      *   createdAt: ...,
      *   defaultLink: ...,
      *   link: ...,
-     *   organizerUserID: ...,
+     *   organizerUserId: ...,
      *   slug: ...,
      *   type: ...,
-     *   userIDsOfLinkMembers: ...,
+     *   userIdsOfLinkMembers: ...,
      * )
      * ```
      *
@@ -99,17 +99,17 @@ final class ExternalLinkMetadata implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $userIDsOfLinkMembers
+     * @param list<string> $userIdsOfLinkMembers
      */
     public static function with(
         string $id,
         \DateTimeInterface $createdAt,
         bool $defaultLink,
         string $link,
-        string $organizerUserID,
+        string $organizerUserId,
         string $slug,
         string $type,
-        array $userIDsOfLinkMembers,
+        array $userIdsOfLinkMembers,
         ?string $name = null,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
@@ -119,10 +119,10 @@ final class ExternalLinkMetadata implements BaseModel
         $obj->createdAt = $createdAt;
         $obj->defaultLink = $defaultLink;
         $obj->link = $link;
-        $obj->organizerUserID = $organizerUserID;
+        $obj->organizerUserId = $organizerUserId;
         $obj->slug = $slug;
         $obj->type = $type;
-        $obj->userIDsOfLinkMembers = $userIDsOfLinkMembers;
+        $obj->userIdsOfLinkMembers = $userIdsOfLinkMembers;
 
         null !== $name && $obj->name = $name;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
@@ -165,7 +165,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withOrganizerUserID(string $organizerUserID): self
     {
         $obj = clone $this;
-        $obj->organizerUserID = $organizerUserID;
+        $obj->organizerUserId = $organizerUserID;
 
         return $obj;
     }
@@ -192,7 +192,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withUserIDsOfLinkMembers(array $userIDsOfLinkMembers): self
     {
         $obj = clone $this;
-        $obj->userIDsOfLinkMembers = $userIDsOfLinkMembers;
+        $obj->userIdsOfLinkMembers = $userIDsOfLinkMembers;
 
         return $obj;
     }

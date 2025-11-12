@@ -17,13 +17,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   id: string,
  *   loginAt: \DateTimeInterface,
  *   loginSucceeded: bool,
- *   countryCode?: string,
- *   email?: string,
- *   ipAddress?: string,
- *   location?: string,
- *   regionCode?: string,
- *   userAgent?: string,
- *   userID?: int,
+ *   countryCode?: string|null,
+ *   email?: string|null,
+ *   ipAddress?: string|null,
+ *   location?: string|null,
+ *   regionCode?: string|null,
+ *   userAgent?: string|null,
+ *   userId?: int|null,
  * }
  */
 final class PublicLoginAudit implements BaseModel, ResponseConverter
@@ -87,8 +87,8 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     /**
      * The user's unique ID.
      */
-    #[Api('userId', optional: true)]
-    public ?int $userID;
+    #[Api(optional: true)]
+    public ?int $userId;
 
     /**
      * `new PublicLoginAudit()` is missing required properties by the API.
@@ -124,7 +124,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
         ?string $location = null,
         ?string $regionCode = null,
         ?string $userAgent = null,
-        ?int $userID = null,
+        ?int $userId = null,
     ): self {
         $obj = new self;
 
@@ -138,7 +138,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
         null !== $location && $obj->location = $location;
         null !== $regionCode && $obj->regionCode = $regionCode;
         null !== $userAgent && $obj->userAgent = $userAgent;
-        null !== $userID && $obj->userID = $userID;
+        null !== $userId && $obj->userId = $userId;
 
         return $obj;
     }
@@ -245,7 +245,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }

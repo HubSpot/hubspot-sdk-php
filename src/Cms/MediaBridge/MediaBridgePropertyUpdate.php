@@ -13,17 +13,17 @@ use HubspotSDK\OptionInput;
 
 /**
  * @phpstan-type MediaBridgePropertyUpdateShape = array{
- *   calculationFormula?: string,
- *   description?: string,
- *   displayOrder?: int,
- *   fieldType?: value-of<FieldType>,
- *   formField?: bool,
- *   groupName?: string,
- *   hasUniqueValue?: bool,
- *   hidden?: bool,
- *   label?: string,
- *   options?: list<OptionInput>,
- *   type?: value-of<Type>,
+ *   calculationFormula?: string|null,
+ *   description?: string|null,
+ *   displayOrder?: int|null,
+ *   fieldType?: value-of<FieldType>|null,
+ *   formField?: bool|null,
+ *   groupName?: string|null,
+ *   hasUniqueValue?: bool|null,
+ *   hidden?: bool|null,
+ *   label?: string|null,
+ *   options?: list<OptionInput>|null,
+ *   type?: value-of<Type>|null,
  * }
  */
 final class MediaBridgePropertyUpdate implements BaseModel

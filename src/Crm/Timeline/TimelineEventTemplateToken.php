@@ -16,10 +16,10 @@ use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken\Type;
  *   label: string,
  *   name: string,
  *   type: value-of<Type>,
- *   createdAt?: \DateTimeInterface,
- *   objectPropertyName?: string,
- *   options?: list<TimelineEventTemplateTokenOption>,
- *   updatedAt?: \DateTimeInterface,
+ *   createdAt?: \DateTimeInterface|null,
+ *   objectPropertyName?: string|null,
+ *   options?: list<TimelineEventTemplateTokenOption>|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class TimelineEventTemplateToken implements BaseModel

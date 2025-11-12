@@ -15,8 +15,6 @@ use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\BudgetContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class BudgetService implements BudgetContract
 {
     /**
@@ -29,46 +27,20 @@ final class BudgetService implements BudgetContract
      *
      * Add a new budget item to the campaign
      *
-     * @param float $amount
-     * @param string $name
-     * @param int $order
-     * @param string $description
+     * @param array{
+     *   amount: float, name: string, order: int, description?: string
+     * }|BudgetCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $campaignGuid,
-        $amount,
-        $name,
-        $order,
-        $description = omit,
+        array|BudgetCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicBudgetItem {
-        $params = [
-            'amount' => $amount,
-            'name' => $name,
-            'order' => $order,
-            'description' => $description,
-        ];
-
-        return $this->createRaw($campaignGuid, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $campaignGuid,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicBudgetItem {
         [$parsed, $options] = BudgetCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -86,49 +58,24 @@ final class BudgetService implements BudgetContract
      *
      * Update a specific budget item by ID
      *
-     * @param string $campaignGuid
-     * @param float $amount
-     * @param string $name
-     * @param int $order
-     * @param string $description
+     * @param array{
+     *   campaignGuid: string,
+     *   amount: float,
+     *   name: string,
+     *   order: int,
+     *   description?: string,
+     * }|BudgetUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         int $budgetID,
-        $campaignGuid,
-        $amount,
-        $name,
-        $order,
-        $description = omit,
+        array|BudgetUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicBudgetItem {
-        $params = [
-            'campaignGuid' => $campaignGuid,
-            'amount' => $amount,
-            'name' => $name,
-            'order' => $order,
-            'description' => $description,
-        ];
-
-        return $this->updateRaw($budgetID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        int $budgetID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicBudgetItem {
         [$parsed, $options] = BudgetUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
@@ -150,35 +97,18 @@ final class BudgetService implements BudgetContract
      *
      * Delete a specific budget item by ID
      *
-     * @param string $campaignGuid
+     * @param array{campaignGuid: string}|BudgetDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         int $budgetID,
-        $campaignGuid,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['campaignGuid' => $campaignGuid];
-
-        return $this->deleteRaw($budgetID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        int $budgetID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|BudgetDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = BudgetDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
@@ -199,35 +129,18 @@ final class BudgetService implements BudgetContract
      *
      * Get a specific budget item by ID
      *
-     * @param string $campaignGuid
+     * @param array{campaignGuid: string}|BudgetGetParams $params
      *
      * @throws APIException
      */
     public function get(
         int $budgetID,
-        $campaignGuid,
-        ?RequestOptions $requestOptions = null
-    ): PublicBudgetItem {
-        $params = ['campaignGuid' => $campaignGuid];
-
-        return $this->getRaw($budgetID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        int $budgetID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|BudgetGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicBudgetItem {
         [$parsed, $options] = BudgetGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);

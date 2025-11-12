@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Request body object for ending A/B tests.
  *
  * @phpstan-type AbTestEndRequestVNextShape = array{
- *   abTestID: string, winnerID: string
+ *   abTestId: string, winnerId: string
  * }
  */
 final class AbTestEndRequestVNext implements BaseModel
@@ -23,21 +23,21 @@ final class AbTestEndRequestVNext implements BaseModel
     /**
      * ID of the test to end.
      */
-    #[Api('abTestId')]
-    public string $abTestID;
+    #[Api]
+    public string $abTestId;
 
     /**
      * ID of the object to designate as the test winner.
      */
-    #[Api('winnerId')]
-    public string $winnerID;
+    #[Api]
+    public string $winnerId;
 
     /**
      * `new AbTestEndRequestVNext()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * AbTestEndRequestVNext::with(abTestID: ..., winnerID: ...)
+     * AbTestEndRequestVNext::with(abTestId: ..., winnerId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -56,12 +56,12 @@ final class AbTestEndRequestVNext implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $abTestID, string $winnerID): self
+    public static function with(string $abTestId, string $winnerId): self
     {
         $obj = new self;
 
-        $obj->abTestID = $abTestID;
-        $obj->winnerID = $winnerID;
+        $obj->abTestId = $abTestId;
+        $obj->winnerId = $winnerId;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class AbTestEndRequestVNext implements BaseModel
     public function withAbTestID(string $abTestID): self
     {
         $obj = clone $this;
-        $obj->abTestID = $abTestID;
+        $obj->abTestId = $abTestID;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class AbTestEndRequestVNext implements BaseModel
     public function withWinnerID(string $winnerID): self
     {
         $obj = clone $this;
-        $obj->winnerID = $winnerID;
+        $obj->winnerId = $winnerID;
 
         return $obj;
     }

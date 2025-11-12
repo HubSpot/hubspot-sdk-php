@@ -13,8 +13,6 @@ use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\RecordingSettingsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class RecordingSettingsService implements RecordingSettingsContract
 {
     /**
@@ -25,35 +23,20 @@ final class RecordingSettingsService implements RecordingSettingsContract
     /**
      * @api
      *
-     * @param string $urlToRetrieveAuthedRecording
+     * @param array{
+     *   urlToRetrieveAuthedRecording: string
+     * }|RecordingSettingCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        $urlToRetrieveAuthedRecording,
+        array|RecordingSettingCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): RecordingSettingsResponse {
-        $params = ['urlToRetrieveAuthedRecording' => $urlToRetrieveAuthedRecording];
-
-        return $this->createRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): RecordingSettingsResponse {
         [$parsed, $options] = RecordingSettingCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -69,35 +52,20 @@ final class RecordingSettingsService implements RecordingSettingsContract
     /**
      * @api
      *
-     * @param string $urlToRetrieveAuthedRecording
+     * @param array{
+     *   urlToRetrieveAuthedRecording?: string
+     * }|RecordingSettingUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         int $appID,
-        $urlToRetrieveAuthedRecording = omit,
+        array|RecordingSettingUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): RecordingSettingsResponse {
-        $params = ['urlToRetrieveAuthedRecording' => $urlToRetrieveAuthedRecording];
-
-        return $this->updateRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): RecordingSettingsResponse {
         [$parsed, $options] = RecordingSettingUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -131,33 +99,17 @@ final class RecordingSettingsService implements RecordingSettingsContract
     /**
      * @api
      *
-     * @param int $engagementID
+     * @param array{engagementId: int}|RecordingSettingMarkReadyParams $params
      *
      * @throws APIException
      */
     public function markReady(
-        $engagementID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['engagementID' => $engagementID];
-
-        return $this->markReadyRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function markReadyRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|RecordingSettingMarkReadyParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = RecordingSettingMarkReadyParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

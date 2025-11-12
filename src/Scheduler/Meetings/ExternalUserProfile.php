@@ -10,7 +10,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExternalUserProfileShape = array{
- *   email: string, firstName?: string, fullName?: string, lastName?: string
+ *   email: string,
+ *   firstName?: string|null,
+ *   fullName?: string|null,
+ *   lastName?: string|null,
  * }
  */
 final class ExternalUserProfile implements BaseModel

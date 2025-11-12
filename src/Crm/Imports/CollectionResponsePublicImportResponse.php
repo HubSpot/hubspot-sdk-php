@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type CollectionResponsePublicImportResponseShape = array{
- *   results: list<PublicImportResponse>, paging?: EmailsPaging
+ *   results: list<PublicImportResponse>, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponsePublicImportResponse implements BaseModel

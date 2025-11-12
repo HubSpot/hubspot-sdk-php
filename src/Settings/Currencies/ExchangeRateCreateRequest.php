@@ -13,7 +13,7 @@ use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest\FromCurrencyCode;
  * @phpstan-type ExchangeRateCreateRequestShape = array{
  *   conversionRate: float,
  *   fromCurrencyCode: value-of<FromCurrencyCode>,
- *   effectiveAt?: \DateTimeInterface,
+ *   effectiveAt?: \DateTimeInterface|null,
  * }
  */
 final class ExchangeRateCreateRequest implements BaseModel

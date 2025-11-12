@@ -25,7 +25,7 @@ use HubspotSDK\Crm\Exports\PublicExportViewRequest\Language;
  *   objectProperties: list<string>,
  *   objectType: string,
  *   overrideAssociatedObjectsPerDefinitionPerRowLimit: bool,
- *   publicCrmSearchRequest?: PublicCrmSearchRequest,
+ *   publicCrmSearchRequest?: PublicCrmSearchRequest|null,
  * }
  */
 final class PublicExportViewRequest implements BaseModel

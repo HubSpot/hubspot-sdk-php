@@ -11,10 +11,10 @@ use HubspotSDK\Core\Conversion\MapOf;
 
 /**
  * @phpstan-type EmailStatisticsDataShape = array{
- *   counters: array<string, int>,
- *   deviceBreakdown: array<string, array<string, int>>,
- *   qualifierStats: array<string, array<string, int>>,
- *   ratios: array<string, float>,
+ *   counters: array<string,int>,
+ *   deviceBreakdown: array<string,array<string,int>>,
+ *   qualifierStats: array<string,array<string,int>>,
+ *   ratios: array<string,float>,
  * }
  */
 final class EmailStatisticsData implements BaseModel
@@ -25,7 +25,7 @@ final class EmailStatisticsData implements BaseModel
     /**
      * Counters like number of `sent`, `open` or `delivered`.
      *
-     * @var array<string, int> $counters
+     * @var array<string,int> $counters
      */
     #[Api(map: 'int')]
     public array $counters;
@@ -33,7 +33,7 @@ final class EmailStatisticsData implements BaseModel
     /**
      * Statistics by device.
      *
-     * @var array<string, array<string, int>> $deviceBreakdown
+     * @var array<string,array<string,int>> $deviceBreakdown
      */
     #[Api(map: new MapOf('int'))]
     public array $deviceBreakdown;
@@ -41,7 +41,7 @@ final class EmailStatisticsData implements BaseModel
     /**
      * Number of emails that were dropped and bounced.
      *
-     * @var array<string, array<string, int>> $qualifierStats
+     * @var array<string,array<string,int>> $qualifierStats
      */
     #[Api(map: new MapOf('int'))]
     public array $qualifierStats;
@@ -49,7 +49,7 @@ final class EmailStatisticsData implements BaseModel
     /**
      * Ratios like `openratio` or `clickratio`.
      *
-     * @var array<string, float> $ratios
+     * @var array<string,float> $ratios
      */
     #[Api(map: 'float')]
     public array $ratios;
@@ -84,10 +84,10 @@ final class EmailStatisticsData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, int> $counters
-     * @param array<string, array<string, int>> $deviceBreakdown
-     * @param array<string, array<string, int>> $qualifierStats
-     * @param array<string, float> $ratios
+     * @param array<string,int> $counters
+     * @param array<string,array<string,int>> $deviceBreakdown
+     * @param array<string,array<string,int>> $qualifierStats
+     * @param array<string,float> $ratios
      */
     public static function with(
         array $counters,
@@ -108,7 +108,7 @@ final class EmailStatisticsData implements BaseModel
     /**
      * Counters like number of `sent`, `open` or `delivered`.
      *
-     * @param array<string, int> $counters
+     * @param array<string,int> $counters
      */
     public function withCounters(array $counters): self
     {
@@ -121,7 +121,7 @@ final class EmailStatisticsData implements BaseModel
     /**
      * Statistics by device.
      *
-     * @param array<string, array<string, int>> $deviceBreakdown
+     * @param array<string,array<string,int>> $deviceBreakdown
      */
     public function withDeviceBreakdown(array $deviceBreakdown): self
     {
@@ -134,7 +134,7 @@ final class EmailStatisticsData implements BaseModel
     /**
      * Number of emails that were dropped and bounced.
      *
-     * @param array<string, array<string, int>> $qualifierStats
+     * @param array<string,array<string,int>> $qualifierStats
      */
     public function withQualifierStats(array $qualifierStats): self
     {
@@ -147,7 +147,7 @@ final class EmailStatisticsData implements BaseModel
     /**
      * Ratios like `openratio` or `clickratio`.
      *
-     * @param array<string, float> $ratios
+     * @param array<string,float> $ratios
      */
     public function withRatios(array $ratios): self
     {

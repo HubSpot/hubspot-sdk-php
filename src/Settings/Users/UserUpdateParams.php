@@ -19,9 +19,9 @@ use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
  *   idProperty?: IDProperty|value-of<IDProperty>,
  *   firstName?: string,
  *   lastName?: string,
- *   primaryTeamID?: string,
- *   roleID?: string,
- *   secondaryTeamIDs?: list<string>,
+ *   primaryTeamId?: string,
+ *   roleId?: string,
+ *   secondaryTeamIds?: list<string>,
  * }
  */
 final class UserUpdateParams implements BaseModel
@@ -47,22 +47,22 @@ final class UserUpdateParams implements BaseModel
     /**
      * The user's primary team.
      */
-    #[Api('primaryTeamId', optional: true)]
-    public ?string $primaryTeamID;
+    #[Api(optional: true)]
+    public ?string $primaryTeamId;
 
     /**
      * The user's role.
      */
-    #[Api('roleId', optional: true)]
-    public ?string $roleID;
+    #[Api(optional: true)]
+    public ?string $roleId;
 
     /**
      * The user's additional teams.
      *
-     * @var list<string>|null $secondaryTeamIDs
+     * @var list<string>|null $secondaryTeamIds
      */
-    #[Api('secondaryTeamIds', list: 'string', optional: true)]
-    public ?array $secondaryTeamIDs;
+    #[Api(list: 'string', optional: true)]
+    public ?array $secondaryTeamIds;
 
     public function __construct()
     {
@@ -75,24 +75,24 @@ final class UserUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param IDProperty|value-of<IDProperty> $idProperty
-     * @param list<string> $secondaryTeamIDs
+     * @param list<string> $secondaryTeamIds
      */
     public static function with(
         IDProperty|string|null $idProperty = null,
         ?string $firstName = null,
         ?string $lastName = null,
-        ?string $primaryTeamID = null,
-        ?string $roleID = null,
-        ?array $secondaryTeamIDs = null,
+        ?string $primaryTeamId = null,
+        ?string $roleId = null,
+        ?array $secondaryTeamIds = null,
     ): self {
         $obj = new self;
 
         null !== $idProperty && $obj['idProperty'] = $idProperty;
         null !== $firstName && $obj->firstName = $firstName;
         null !== $lastName && $obj->lastName = $lastName;
-        null !== $primaryTeamID && $obj->primaryTeamID = $primaryTeamID;
-        null !== $roleID && $obj->roleID = $roleID;
-        null !== $secondaryTeamIDs && $obj->secondaryTeamIDs = $secondaryTeamIDs;
+        null !== $primaryTeamId && $obj->primaryTeamId = $primaryTeamId;
+        null !== $roleId && $obj->roleId = $roleId;
+        null !== $secondaryTeamIds && $obj->secondaryTeamIds = $secondaryTeamIds;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class UserUpdateParams implements BaseModel
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
-        $obj->primaryTeamID = $primaryTeamID;
+        $obj->primaryTeamId = $primaryTeamID;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class UserUpdateParams implements BaseModel
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
-        $obj->roleID = $roleID;
+        $obj->roleId = $roleID;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class UserUpdateParams implements BaseModel
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
     {
         $obj = clone $this;
-        $obj->secondaryTeamIDs = $secondaryTeamIDs;
+        $obj->secondaryTeamIds = $secondaryTeamIDs;
 
         return $obj;
     }

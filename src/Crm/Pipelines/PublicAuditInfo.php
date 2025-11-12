@@ -12,11 +12,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicAuditInfoShape = array{
  *   action: string,
  *   identifier: string,
- *   portalID: int,
- *   fromUserID?: int,
- *   message?: string,
+ *   portalId: int,
+ *   fromUserId?: int|null,
+ *   message?: string|null,
  *   rawObject?: mixed,
- *   timestamp?: \DateTimeInterface,
+ *   timestamp?: \DateTimeInterface|null,
  * }
  */
 final class PublicAuditInfo implements BaseModel
@@ -39,14 +39,14 @@ final class PublicAuditInfo implements BaseModel
     /**
      * The unique identifier for the HubSpot portal where the audit event occurred.
      */
-    #[Api('portalId')]
-    public int $portalID;
+    #[Api]
+    public int $portalId;
 
     /**
      * The ID of the user who initiated the audit event.
      */
-    #[Api('fromUserId', optional: true)]
-    public ?int $fromUserID;
+    #[Api(optional: true)]
+    public ?int $fromUserId;
 
     /**
      * A descriptive message related to the audit event.
@@ -71,7 +71,7 @@ final class PublicAuditInfo implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicAuditInfo::with(action: ..., identifier: ..., portalID: ...)
+     * PublicAuditInfo::with(action: ..., identifier: ..., portalId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -93,8 +93,8 @@ final class PublicAuditInfo implements BaseModel
     public static function with(
         string $action,
         string $identifier,
-        int $portalID,
-        ?int $fromUserID = null,
+        int $portalId,
+        ?int $fromUserId = null,
         ?string $message = null,
         mixed $rawObject = null,
         ?\DateTimeInterface $timestamp = null,
@@ -103,9 +103,9 @@ final class PublicAuditInfo implements BaseModel
 
         $obj->action = $action;
         $obj->identifier = $identifier;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalId;
 
-        null !== $fromUserID && $obj->fromUserID = $fromUserID;
+        null !== $fromUserId && $obj->fromUserId = $fromUserId;
         null !== $message && $obj->message = $message;
         null !== $rawObject && $obj->rawObject = $rawObject;
         null !== $timestamp && $obj->timestamp = $timestamp;
@@ -141,7 +141,7 @@ final class PublicAuditInfo implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class PublicAuditInfo implements BaseModel
     public function withFromUserID(int $fromUserID): self
     {
         $obj = clone $this;
-        $obj->fromUserID = $fromUserID;
+        $obj->fromUserId = $fromUserID;
 
         return $obj;
     }

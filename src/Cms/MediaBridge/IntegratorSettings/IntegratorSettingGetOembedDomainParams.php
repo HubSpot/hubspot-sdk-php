@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->getOembedDomain
  *
- * @phpstan-type IntegratorSettingGetOembedDomainParamsShape = array{appID: string}
+ * @phpstan-type IntegratorSettingGetOembedDomainParamsShape = array{appId: string}
  */
 final class IntegratorSettingGetOembedDomainParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class IntegratorSettingGetOembedDomainParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appID;
+    public string $appId;
 
     /**
      * `new IntegratorSettingGetOembedDomainParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * IntegratorSettingGetOembedDomainParams::with(appID: ...)
+     * IntegratorSettingGetOembedDomainParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class IntegratorSettingGetOembedDomainParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $appID): self
+    public static function with(string $appId): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class IntegratorSettingGetOembedDomainParams implements BaseModel
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

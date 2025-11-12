@@ -12,16 +12,16 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * The state of the timeline event.
  *
  * @phpstan-type TimelineEventShape = array{
- *   eventTemplateID: string,
- *   tokens: array<string, string>,
- *   id?: string,
- *   domain?: string,
- *   email?: string,
+ *   eventTemplateId: string,
+ *   tokens: array<string,string>,
+ *   id?: string|null,
+ *   domain?: string|null,
+ *   email?: string|null,
  *   extraData?: mixed,
- *   objectID?: string,
- *   timelineIFrame?: TimelineEventIFrame,
- *   timestamp?: \DateTimeInterface,
- *   utk?: string,
+ *   objectId?: string|null,
+ *   timelineIFrame?: TimelineEventIFrame|null,
+ *   timestamp?: \DateTimeInterface|null,
+ *   utk?: string|null,
  * }
  */
 final class TimelineEvent implements BaseModel
@@ -32,13 +32,13 @@ final class TimelineEvent implements BaseModel
     /**
      * The event template ID.
      */
-    #[Api('eventTemplateId')]
-    public string $eventTemplateID;
+    #[Api]
+    public string $eventTemplateId;
 
     /**
      * A collection of token keys and values associated with the template tokens.
      *
-     * @var array<string, string> $tokens
+     * @var array<string,string> $tokens
      */
     #[Api(map: 'string')]
     public array $tokens;
@@ -70,8 +70,8 @@ final class TimelineEvent implements BaseModel
     /**
      * The CRM object identifier. This is required for every event other than contacts (where utk or email can be used).
      */
-    #[Api('objectId', optional: true)]
-    public ?string $objectID;
+    #[Api(optional: true)]
+    public ?string $objectId;
 
     #[Api(optional: true)]
     public ?TimelineEventIFrame $timelineIFrame;
@@ -93,7 +93,7 @@ final class TimelineEvent implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * TimelineEvent::with(eventTemplateID: ..., tokens: ...)
+     * TimelineEvent::with(eventTemplateId: ..., tokens: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -112,30 +112,30 @@ final class TimelineEvent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $tokens
+     * @param array<string,string> $tokens
      */
     public static function with(
-        string $eventTemplateID,
+        string $eventTemplateId,
         array $tokens,
         ?string $id = null,
         ?string $domain = null,
         ?string $email = null,
         mixed $extraData = null,
-        ?string $objectID = null,
+        ?string $objectId = null,
         ?TimelineEventIFrame $timelineIFrame = null,
         ?\DateTimeInterface $timestamp = null,
         ?string $utk = null,
     ): self {
         $obj = new self;
 
-        $obj->eventTemplateID = $eventTemplateID;
+        $obj->eventTemplateId = $eventTemplateId;
         $obj->tokens = $tokens;
 
         null !== $id && $obj->id = $id;
         null !== $domain && $obj->domain = $domain;
         null !== $email && $obj->email = $email;
         null !== $extraData && $obj->extraData = $extraData;
-        null !== $objectID && $obj->objectID = $objectID;
+        null !== $objectId && $obj->objectId = $objectId;
         null !== $timelineIFrame && $obj->timelineIFrame = $timelineIFrame;
         null !== $timestamp && $obj->timestamp = $timestamp;
         null !== $utk && $obj->utk = $utk;
@@ -149,7 +149,7 @@ final class TimelineEvent implements BaseModel
     public function withEventTemplateID(string $eventTemplateID): self
     {
         $obj = clone $this;
-        $obj->eventTemplateID = $eventTemplateID;
+        $obj->eventTemplateId = $eventTemplateID;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class TimelineEvent implements BaseModel
     /**
      * A collection of token keys and values associated with the template tokens.
      *
-     * @param array<string, string> $tokens
+     * @param array<string,string> $tokens
      */
     public function withTokens(array $tokens): self
     {
@@ -217,7 +217,7 @@ final class TimelineEvent implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

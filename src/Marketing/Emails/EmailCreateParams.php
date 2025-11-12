@@ -21,11 +21,11 @@ use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
  *   name: string,
  *   activeDomain?: string,
  *   archived?: bool,
- *   businessUnitID?: int,
+ *   businessUnitId?: int,
  *   campaign?: string,
  *   content?: PublicEmailContent,
- *   feedbackSurveyID?: string,
- *   folderIDV2?: int,
+ *   feedbackSurveyId?: string,
+ *   folderIdV2?: int,
  *   from?: PublicEmailFromDetails,
  *   jitterSendTime?: bool,
  *   language?: Language|value-of<Language>,
@@ -65,8 +65,8 @@ final class EmailCreateParams implements BaseModel
     #[Api(optional: true)]
     public ?bool $archived;
 
-    #[Api('businessUnitId', optional: true)]
-    public ?int $businessUnitID;
+    #[Api(optional: true)]
+    public ?int $businessUnitId;
 
     /**
      * The ID of the campaign this email is associated to.
@@ -83,11 +83,11 @@ final class EmailCreateParams implements BaseModel
     /**
      * The ID of the feedback survey linked to the email.
      */
-    #[Api('feedbackSurveyId', optional: true)]
-    public ?string $feedbackSurveyID;
+    #[Api(optional: true)]
+    public ?string $feedbackSurveyId;
 
-    #[Api('folderIdV2', optional: true)]
-    public ?int $folderIDV2;
+    #[Api(optional: true)]
+    public ?int $folderIdV2;
 
     /**
      * Data structure representing the from fields on the email.
@@ -195,11 +195,11 @@ final class EmailCreateParams implements BaseModel
         string $name,
         ?string $activeDomain = null,
         ?bool $archived = null,
-        ?int $businessUnitID = null,
+        ?int $businessUnitId = null,
         ?string $campaign = null,
         ?PublicEmailContent $content = null,
-        ?string $feedbackSurveyID = null,
-        ?int $folderIDV2 = null,
+        ?string $feedbackSurveyId = null,
+        ?int $folderIdV2 = null,
         ?PublicEmailFromDetails $from = null,
         ?bool $jitterSendTime = null,
         Language|string|null $language = null,
@@ -220,11 +220,11 @@ final class EmailCreateParams implements BaseModel
 
         null !== $activeDomain && $obj->activeDomain = $activeDomain;
         null !== $archived && $obj->archived = $archived;
-        null !== $businessUnitID && $obj->businessUnitID = $businessUnitID;
+        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
         null !== $campaign && $obj->campaign = $campaign;
         null !== $content && $obj->content = $content;
-        null !== $feedbackSurveyID && $obj->feedbackSurveyID = $feedbackSurveyID;
-        null !== $folderIDV2 && $obj->folderIDV2 = $folderIDV2;
+        null !== $feedbackSurveyId && $obj->feedbackSurveyId = $feedbackSurveyId;
+        null !== $folderIdV2 && $obj->folderIdV2 = $folderIdV2;
         null !== $from && $obj->from = $from;
         null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
         null !== $language && $obj['language'] = $language;
@@ -278,7 +278,7 @@ final class EmailCreateParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitID = $businessUnitID;
+        $obj->businessUnitId = $businessUnitID;
 
         return $obj;
     }
@@ -311,7 +311,7 @@ final class EmailCreateParams implements BaseModel
     public function withFeedbackSurveyID(string $feedbackSurveyID): self
     {
         $obj = clone $this;
-        $obj->feedbackSurveyID = $feedbackSurveyID;
+        $obj->feedbackSurveyId = $feedbackSurveyID;
 
         return $obj;
     }
@@ -319,7 +319,7 @@ final class EmailCreateParams implements BaseModel
     public function withFolderIDV2(int $folderIDV2): self
     {
         $obj = clone $this;
-        $obj->folderIDV2 = $folderIDV2;
+        $obj->folderIdV2 = $folderIDV2;
 
         return $obj;
     }

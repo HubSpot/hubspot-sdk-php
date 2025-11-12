@@ -12,20 +12,20 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicThreadShape = array{
  *   id: string,
- *   associatedContactID: string,
+ *   associatedContactId: string,
  *   createdAt: \DateTimeInterface,
- *   inboxID: string,
- *   originalChannelAccountID: string,
- *   originalChannelID: string,
+ *   inboxId: string,
+ *   originalChannelAccountId: string,
+ *   originalChannelId: string,
  *   spam: bool,
  *   status: value-of<Status>,
- *   archived?: bool,
- *   assignedTo?: string,
- *   closedAt?: \DateTimeInterface,
- *   latestMessageReceivedTimestamp?: \DateTimeInterface,
- *   latestMessageSentTimestamp?: \DateTimeInterface,
- *   latestMessageTimestamp?: \DateTimeInterface,
- *   threadAssociations?: PublicThreadAssociations,
+ *   archived?: bool|null,
+ *   assignedTo?: string|null,
+ *   closedAt?: \DateTimeInterface|null,
+ *   latestMessageReceivedTimestamp?: \DateTimeInterface|null,
+ *   latestMessageSentTimestamp?: \DateTimeInterface|null,
+ *   latestMessageTimestamp?: \DateTimeInterface|null,
+ *   threadAssociations?: PublicThreadAssociations|null,
  * }
  */
 final class PublicThread implements BaseModel
@@ -42,8 +42,8 @@ final class PublicThread implements BaseModel
     /**
      * The ID of the associated Contact in the CRM. If the Contact for the thread has not yet been added or created, the `associatedContactId` returned will be a visitorID and cannot be used to search for the Contact in the CRM.
      */
-    #[Api('associatedContactId')]
-    public string $associatedContactID;
+    #[Api]
+    public string $associatedContactId;
 
     /**
      * When the thread was created.
@@ -54,14 +54,14 @@ final class PublicThread implements BaseModel
     /**
      * The ID of the conversations inbox containing the thread.
      */
-    #[Api('inboxId')]
-    public string $inboxID;
+    #[Api]
+    public string $inboxId;
 
-    #[Api('originalChannelAccountId')]
-    public string $originalChannelAccountID;
+    #[Api]
+    public string $originalChannelAccountId;
 
-    #[Api('originalChannelId')]
-    public string $originalChannelID;
+    #[Api]
+    public string $originalChannelId;
 
     /**
      * Whether the thread is marked as spam.
@@ -120,11 +120,11 @@ final class PublicThread implements BaseModel
      * ```
      * PublicThread::with(
      *   id: ...,
-     *   associatedContactID: ...,
+     *   associatedContactId: ...,
      *   createdAt: ...,
-     *   inboxID: ...,
-     *   originalChannelAccountID: ...,
-     *   originalChannelID: ...,
+     *   inboxId: ...,
+     *   originalChannelAccountId: ...,
+     *   originalChannelId: ...,
      *   spam: ...,
      *   status: ...,
      * )
@@ -158,11 +158,11 @@ final class PublicThread implements BaseModel
      */
     public static function with(
         string $id,
-        string $associatedContactID,
+        string $associatedContactId,
         \DateTimeInterface $createdAt,
-        string $inboxID,
-        string $originalChannelAccountID,
-        string $originalChannelID,
+        string $inboxId,
+        string $originalChannelAccountId,
+        string $originalChannelId,
         bool $spam,
         Status|string $status,
         ?bool $archived = null,
@@ -176,11 +176,11 @@ final class PublicThread implements BaseModel
         $obj = new self;
 
         $obj->id = $id;
-        $obj->associatedContactID = $associatedContactID;
+        $obj->associatedContactId = $associatedContactId;
         $obj->createdAt = $createdAt;
-        $obj->inboxID = $inboxID;
-        $obj->originalChannelAccountID = $originalChannelAccountID;
-        $obj->originalChannelID = $originalChannelID;
+        $obj->inboxId = $inboxId;
+        $obj->originalChannelAccountId = $originalChannelAccountId;
+        $obj->originalChannelId = $originalChannelId;
         $obj->spam = $spam;
         $obj['status'] = $status;
 
@@ -212,7 +212,7 @@ final class PublicThread implements BaseModel
     public function withAssociatedContactID(string $associatedContactID): self
     {
         $obj = clone $this;
-        $obj->associatedContactID = $associatedContactID;
+        $obj->associatedContactId = $associatedContactID;
 
         return $obj;
     }
@@ -234,7 +234,7 @@ final class PublicThread implements BaseModel
     public function withInboxID(string $inboxID): self
     {
         $obj = clone $this;
-        $obj->inboxID = $inboxID;
+        $obj->inboxId = $inboxID;
 
         return $obj;
     }
@@ -243,7 +243,7 @@ final class PublicThread implements BaseModel
         string $originalChannelAccountID
     ): self {
         $obj = clone $this;
-        $obj->originalChannelAccountID = $originalChannelAccountID;
+        $obj->originalChannelAccountId = $originalChannelAccountID;
 
         return $obj;
     }
@@ -251,7 +251,7 @@ final class PublicThread implements BaseModel
     public function withOriginalChannelID(string $originalChannelID): self
     {
         $obj = clone $this;
-        $obj->originalChannelID = $originalChannelID;
+        $obj->originalChannelId = $originalChannelID;
 
         return $obj;
     }

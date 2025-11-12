@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Crm\FeatureFlags\Portals->get
  *
- * @phpstan-type PortalGetParamsShape = array{appID: int, flagName: string}
+ * @phpstan-type PortalGetParamsShape = array{appId: int, flagName: string}
  */
 final class PortalGetParams implements BaseModel
 {
@@ -23,7 +23,7 @@ final class PortalGetParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     #[Api]
     public string $flagName;
@@ -33,7 +33,7 @@ final class PortalGetParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PortalGetParams::with(appID: ..., flagName: ...)
+     * PortalGetParams::with(appId: ..., flagName: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,11 +52,11 @@ final class PortalGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID, string $flagName): self
+    public static function with(int $appId, string $flagName): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj->flagName = $flagName;
 
         return $obj;
@@ -65,7 +65,7 @@ final class PortalGetParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

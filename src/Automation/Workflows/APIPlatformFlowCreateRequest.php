@@ -24,20 +24,20 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  * @phpstan-type APIPlatformFlowCreateRequestShape = array{
  *   actions: list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction>,
  *   blockedDates: list<APIBlockedDate>,
- *   customProperties: array<string, string>,
+ *   customProperties: array<string,string>,
  *   dataSources: list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource>,
  *   flowType: value-of<FlowType>,
  *   isEnabled: bool,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   timeWindows: list<APITimeWindow>,
  *   type: value-of<Type>,
- *   description?: string,
- *   enrollmentCriteria?: APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
- *   enrollmentSchedule?: APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
- *   name?: string,
- *   startActionID?: string,
- *   suppressionFilterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
- *   uuid?: string,
+ *   description?: string|null,
+ *   enrollmentCriteria?: null|APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
+ *   enrollmentSchedule?: null|APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
+ *   name?: string|null,
+ *   startActionId?: string|null,
+ *   suppressionFilterBranch?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   uuid?: string|null,
  * }
  */
 final class APIPlatformFlowCreateRequest implements BaseModel
@@ -55,7 +55,7 @@ final class APIPlatformFlowCreateRequest implements BaseModel
     #[Api(list: APIBlockedDate::class)]
     public array $blockedDates;
 
-    /** @var array<string, string> $customProperties */
+    /** @var array<string,string> $customProperties */
     #[Api(map: 'string')]
     public array $customProperties;
 
@@ -72,8 +72,8 @@ final class APIPlatformFlowCreateRequest implements BaseModel
     #[Api]
     public bool $isEnabled;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /** @var list<APITimeWindow> $timeWindows */
     #[Api(list: APITimeWindow::class)]
@@ -95,8 +95,8 @@ final class APIPlatformFlowCreateRequest implements BaseModel
     #[Api(optional: true)]
     public ?string $name;
 
-    #[Api('startActionId', optional: true)]
-    public ?string $startActionID;
+    #[Api(optional: true)]
+    public ?string $startActionId;
 
     #[Api(optional: true)]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch;
@@ -116,7 +116,7 @@ final class APIPlatformFlowCreateRequest implements BaseModel
      *   dataSources: ...,
      *   flowType: ...,
      *   isEnabled: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   timeWindows: ...,
      *   type: ...,
      * )
@@ -149,7 +149,7 @@ final class APIPlatformFlowCreateRequest implements BaseModel
      *
      * @param list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction> $actions
      * @param list<APIBlockedDate> $blockedDates
-     * @param array<string, string> $customProperties
+     * @param array<string,string> $customProperties
      * @param list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource> $dataSources
      * @param FlowType|value-of<FlowType> $flowType
      * @param list<APITimeWindow> $timeWindows
@@ -162,14 +162,14 @@ final class APIPlatformFlowCreateRequest implements BaseModel
         array $dataSources,
         FlowType|string $flowType,
         bool $isEnabled,
-        string $objectTypeID,
+        string $objectTypeId,
         array $timeWindows,
         Type|string $type = 'PLATFORM_FLOW',
         ?string $description = null,
         APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria = null,
         APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule = null,
         ?string $name = null,
-        ?string $startActionID = null,
+        ?string $startActionId = null,
         PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch = null,
         ?string $uuid = null,
     ): self {
@@ -181,7 +181,7 @@ final class APIPlatformFlowCreateRequest implements BaseModel
         $obj->dataSources = $dataSources;
         $obj['flowType'] = $flowType;
         $obj->isEnabled = $isEnabled;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->timeWindows = $timeWindows;
         $obj['type'] = $type;
 
@@ -189,7 +189,7 @@ final class APIPlatformFlowCreateRequest implements BaseModel
         null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
         null !== $enrollmentSchedule && $obj->enrollmentSchedule = $enrollmentSchedule;
         null !== $name && $obj->name = $name;
-        null !== $startActionID && $obj->startActionID = $startActionID;
+        null !== $startActionId && $obj->startActionId = $startActionId;
         null !== $suppressionFilterBranch && $obj->suppressionFilterBranch = $suppressionFilterBranch;
         null !== $uuid && $obj->uuid = $uuid;
 
@@ -219,7 +219,7 @@ final class APIPlatformFlowCreateRequest implements BaseModel
     }
 
     /**
-     * @param array<string, string> $customProperties
+     * @param array<string,string> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {
@@ -262,7 +262,7 @@ final class APIPlatformFlowCreateRequest implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -326,7 +326,7 @@ final class APIPlatformFlowCreateRequest implements BaseModel
     public function withStartActionID(string $startActionID): self
     {
         $obj = clone $this;
-        $obj->startActionID = $startActionID;
+        $obj->startActionId = $startActionID;
 
         return $obj;
     }

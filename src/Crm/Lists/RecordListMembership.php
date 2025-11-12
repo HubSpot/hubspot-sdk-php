@@ -14,9 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type RecordListMembershipShape = array{
  *   firstAddedTimestamp: \DateTimeInterface,
  *   lastAddedTimestamp: \DateTimeInterface,
- *   listID: string,
+ *   listId: string,
  *   listVersion: int,
- *   isPublicList?: bool,
+ *   isPublicList?: bool|null,
  * }
  */
 final class RecordListMembership implements BaseModel
@@ -30,8 +30,8 @@ final class RecordListMembership implements BaseModel
     #[Api]
     public \DateTimeInterface $lastAddedTimestamp;
 
-    #[Api('listId')]
-    public string $listID;
+    #[Api]
+    public string $listId;
 
     #[Api]
     public int $listVersion;
@@ -47,7 +47,7 @@ final class RecordListMembership implements BaseModel
      * RecordListMembership::with(
      *   firstAddedTimestamp: ...,
      *   lastAddedTimestamp: ...,
-     *   listID: ...,
+     *   listId: ...,
      *   listVersion: ...,
      * )
      * ```
@@ -75,7 +75,7 @@ final class RecordListMembership implements BaseModel
     public static function with(
         \DateTimeInterface $firstAddedTimestamp,
         \DateTimeInterface $lastAddedTimestamp,
-        string $listID,
+        string $listId,
         int $listVersion,
         ?bool $isPublicList = null,
     ): self {
@@ -83,7 +83,7 @@ final class RecordListMembership implements BaseModel
 
         $obj->firstAddedTimestamp = $firstAddedTimestamp;
         $obj->lastAddedTimestamp = $lastAddedTimestamp;
-        $obj->listID = $listID;
+        $obj->listId = $listId;
         $obj->listVersion = $listVersion;
 
         null !== $isPublicList && $obj->isPublicList = $isPublicList;
@@ -112,7 +112,7 @@ final class RecordListMembership implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listID = $listID;
+        $obj->listId = $listID;
 
         return $obj;
     }

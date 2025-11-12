@@ -18,11 +18,11 @@ use HubspotSDK\Crm\ValueWithTimestamp;
  *   id: string,
  *   archived: bool,
  *   createdAt: \DateTimeInterface,
- *   properties: array<string, string>,
+ *   properties: array<string,string>,
  *   updatedAt: \DateTimeInterface,
- *   archivedAt?: \DateTimeInterface,
- *   objectWriteTraceID?: string,
- *   propertiesWithHistory?: array<string, list<ValueWithTimestamp>>,
+ *   archivedAt?: \DateTimeInterface|null,
+ *   objectWriteTraceId?: string|null,
+ *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
  * }
  */
 final class AssociationsV4SimplePublicObject implements BaseModel
@@ -51,7 +51,7 @@ final class AssociationsV4SimplePublicObject implements BaseModel
     /**
      * Key-value pairs representing the properties of the object.
      *
-     * @var array<string, string> $properties
+     * @var array<string,string> $properties
      */
     #[Api(type: new MapOf('string', nullable: true))]
     public array $properties;
@@ -68,13 +68,13 @@ final class AssociationsV4SimplePublicObject implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $archivedAt;
 
-    #[Api('objectWriteTraceId', optional: true)]
-    public ?string $objectWriteTraceID;
+    #[Api(optional: true)]
+    public ?string $objectWriteTraceId;
 
     /**
      * Key-value pairs representing the properties of the object along with their history.
      *
-     * @var array<string, list<ValueWithTimestamp>>|null $propertiesWithHistory
+     * @var array<string,list<ValueWithTimestamp>>|null $propertiesWithHistory
      */
     #[Api(map: new ListOf(ValueWithTimestamp::class), optional: true)]
     public ?array $propertiesWithHistory;
@@ -110,8 +110,8 @@ final class AssociationsV4SimplePublicObject implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
-     * @param array<string, list<ValueWithTimestamp>> $propertiesWithHistory
+     * @param array<string,string> $properties
+     * @param array<string,list<ValueWithTimestamp>> $propertiesWithHistory
      */
     public static function with(
         string $id,
@@ -120,7 +120,7 @@ final class AssociationsV4SimplePublicObject implements BaseModel
         array $properties,
         \DateTimeInterface $updatedAt,
         ?\DateTimeInterface $archivedAt = null,
-        ?string $objectWriteTraceID = null,
+        ?string $objectWriteTraceId = null,
         ?array $propertiesWithHistory = null,
     ): self {
         $obj = new self;
@@ -132,7 +132,7 @@ final class AssociationsV4SimplePublicObject implements BaseModel
         $obj->updatedAt = $updatedAt;
 
         null !== $archivedAt && $obj->archivedAt = $archivedAt;
-        null !== $objectWriteTraceID && $obj->objectWriteTraceID = $objectWriteTraceID;
+        null !== $objectWriteTraceId && $obj->objectWriteTraceId = $objectWriteTraceId;
         null !== $propertiesWithHistory && $obj->propertiesWithHistory = $propertiesWithHistory;
 
         return $obj;
@@ -174,7 +174,7 @@ final class AssociationsV4SimplePublicObject implements BaseModel
     /**
      * Key-value pairs representing the properties of the object.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {
@@ -209,7 +209,7 @@ final class AssociationsV4SimplePublicObject implements BaseModel
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
-        $obj->objectWriteTraceID = $objectWriteTraceID;
+        $obj->objectWriteTraceId = $objectWriteTraceID;
 
         return $obj;
     }
@@ -217,7 +217,7 @@ final class AssociationsV4SimplePublicObject implements BaseModel
     /**
      * Key-value pairs representing the properties of the object along with their history.
      *
-     * @param array<string, list<ValueWithTimestamp>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestamp>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(
         array $propertiesWithHistory

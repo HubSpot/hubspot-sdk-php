@@ -18,7 +18,7 @@ use HubspotSDK\OptionInput;
  * @see HubspotSDK\Cms\MediaBridge\Properties->update
  *
  * @phpstan-type PropertyUpdateParamsShape = array{
- *   appID: string,
+ *   appId: string,
  *   objectType: string,
  *   calculationFormula?: string,
  *   description?: string,
@@ -40,7 +40,7 @@ final class PropertyUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appID;
+    public string $appId;
 
     #[Api]
     public string $objectType;
@@ -86,7 +86,7 @@ final class PropertyUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PropertyUpdateParams::with(appID: ..., objectType: ...)
+     * PropertyUpdateParams::with(appId: ..., objectType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -110,7 +110,7 @@ final class PropertyUpdateParams implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $appID,
+        string $appId,
         string $objectType,
         ?string $calculationFormula = null,
         ?string $description = null,
@@ -126,7 +126,7 @@ final class PropertyUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj->objectType = $objectType;
 
         null !== $calculationFormula && $obj->calculationFormula = $calculationFormula;
@@ -147,7 +147,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

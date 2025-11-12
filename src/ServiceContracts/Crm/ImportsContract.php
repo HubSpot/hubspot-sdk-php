@@ -6,70 +6,39 @@ namespace HubspotSDK\ServiceContracts\Crm;
 
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\Imports\ImportCreateParams;
+use HubspotSDK\Crm\Imports\ImportListErrorsParams;
+use HubspotSDK\Crm\Imports\ImportListParams;
 use HubspotSDK\Crm\Imports\PublicImportError;
 use HubspotSDK\Crm\Imports\PublicImportResponse;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface ImportsContract
 {
     /**
      * @api
      *
-     * @param string $files
-     * @param string $importRequest
+     * @param array<mixed>|ImportCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $files = omit,
-        $importRequest = omit,
-        ?RequestOptions $requestOptions = null,
-    ): PublicImportResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|ImportCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): PublicImportResponse;
 
     /**
      * @api
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param string $before
-     * @param int $limit the maximum number of results to display per page
+     * @param array<mixed>|ImportListParams $params
      *
      * @return Page<PublicImportResponse>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $before = omit,
-        $limit = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicImportResponse>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|ImportListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page;
 
@@ -96,10 +65,7 @@ interface ImportsContract
     /**
      * @api
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $includeErrorMessage set to True to receive a message explaining the error
-     * @param bool $includeRowData set to True to receive the data values for the errored row
-     * @param int $limit the maximum number of results to display per page
+     * @param array<mixed>|ImportListErrorsParams $params
      *
      * @return Page<PublicImportError>
      *
@@ -107,25 +73,7 @@ interface ImportsContract
      */
     public function listErrors(
         int $importID,
-        $after = omit,
-        $includeErrorMessage = omit,
-        $includeRowData = omit,
-        $limit = omit,
+        array|ImportListErrorsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicImportError>
-     *
-     * @throws APIException
-     */
-    public function listErrorsRaw(
-        int $importID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page;
 }

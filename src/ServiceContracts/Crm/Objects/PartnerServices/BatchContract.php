@@ -6,67 +6,33 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects\PartnerServices;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\PartnerServices\Batch\BatchGetParams;
+use HubspotSDK\Crm\Objects\PartnerServices\Batch\BatchUpdateParams;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface BatchContract
 {
     /**
      * @api
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array<mixed>|BatchUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
-        $inputs,
+        array|BatchUpdateParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param list<SimplePublicObjectID> $inputs
-     * @param list<string> $properties key-value pairs for setting properties for the new object
-     * @param list<string> $propertiesWithHistory key-value pairs for setting properties for the new object and their histories
-     * @param bool $archived whether to return only results that have been archived
-     * @param string $idProperty
+     * @param array<mixed>|BatchGetParams $params
      *
      * @throws APIException
      */
     public function get(
-        $inputs,
-        $properties,
-        $propertiesWithHistory,
-        $archived = omit,
-        $idProperty = omit,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        array $params,
+        array|BatchGetParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject;
 }

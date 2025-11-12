@@ -16,7 +16,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  * @see HubspotSDK\Cms\MediaBridge\Schemas->update
  *
  * @phpstan-type SchemaUpdateParamsShape = array{
- *   appID: string,
+ *   appId: string,
  *   clearDescription?: bool,
  *   description?: string,
  *   labels?: ObjectTypeDefinitionLabels,
@@ -34,7 +34,7 @@ final class SchemaUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appID;
+    public string $appId;
 
     #[Api(optional: true)]
     public ?bool $clearDescription;
@@ -83,7 +83,7 @@ final class SchemaUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SchemaUpdateParams::with(appID: ...)
+     * SchemaUpdateParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -107,7 +107,7 @@ final class SchemaUpdateParams implements BaseModel
      * @param list<string> $secondaryDisplayProperties
      */
     public static function with(
-        string $appID,
+        string $appId,
         ?bool $clearDescription = null,
         ?string $description = null,
         ?ObjectTypeDefinitionLabels $labels = null,
@@ -119,7 +119,7 @@ final class SchemaUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         null !== $clearDescription && $obj->clearDescription = $clearDescription;
         null !== $description && $obj->description = $description;
@@ -136,7 +136,7 @@ final class SchemaUpdateParams implements BaseModel
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

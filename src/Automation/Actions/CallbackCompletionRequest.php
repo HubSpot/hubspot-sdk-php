@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type CallbackCompletionRequestShape = array{
- *   outputFields: array<string, string>
+ *   outputFields: array<string,string>
  * }
  */
 final class CallbackCompletionRequest implements BaseModel
@@ -18,7 +18,7 @@ final class CallbackCompletionRequest implements BaseModel
     /** @use SdkModel<CallbackCompletionRequestShape> */
     use SdkModel;
 
-    /** @var array<string, string> $outputFields */
+    /** @var array<string,string> $outputFields */
     #[Api(map: 'string')]
     public array $outputFields;
 
@@ -46,7 +46,7 @@ final class CallbackCompletionRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $outputFields
+     * @param array<string,string> $outputFields
      */
     public static function with(array $outputFields): self
     {
@@ -58,7 +58,7 @@ final class CallbackCompletionRequest implements BaseModel
     }
 
     /**
-     * @param array<string, string> $outputFields
+     * @param array<string,string> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {

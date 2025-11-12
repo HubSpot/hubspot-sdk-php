@@ -13,18 +13,18 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicWelcomeMessageShape = array{
  *   id: string,
  *   archived: bool,
- *   channelAccountID: string,
- *   channelID: string,
+ *   channelAccountId: string,
+ *   channelId: string,
  *   client: PublicClient,
- *   conversationsThreadID: string,
+ *   conversationsThreadId: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   recipients: list<PublicRecipient>,
  *   senders: list<PublicSender>,
  *   text: string,
  *   type: value-of<Type>,
- *   richText?: string,
- *   updatedAt?: \DateTimeInterface,
+ *   richText?: string|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class PublicWelcomeMessage implements BaseModel
@@ -38,17 +38,17 @@ final class PublicWelcomeMessage implements BaseModel
     #[Api]
     public bool $archived;
 
-    #[Api('channelAccountId')]
-    public string $channelAccountID;
+    #[Api]
+    public string $channelAccountId;
 
-    #[Api('channelId')]
-    public string $channelID;
+    #[Api]
+    public string $channelId;
 
     #[Api]
     public PublicClient $client;
 
-    #[Api('conversationsThreadId')]
-    public string $conversationsThreadID;
+    #[Api]
+    public string $conversationsThreadId;
 
     #[Api]
     public \DateTimeInterface $createdAt;
@@ -85,10 +85,10 @@ final class PublicWelcomeMessage implements BaseModel
      * PublicWelcomeMessage::with(
      *   id: ...,
      *   archived: ...,
-     *   channelAccountID: ...,
-     *   channelID: ...,
+     *   channelAccountId: ...,
+     *   channelId: ...,
      *   client: ...,
-     *   conversationsThreadID: ...,
+     *   conversationsThreadId: ...,
      *   createdAt: ...,
      *   createdBy: ...,
      *   recipients: ...,
@@ -133,10 +133,10 @@ final class PublicWelcomeMessage implements BaseModel
     public static function with(
         string $id,
         bool $archived,
-        string $channelAccountID,
-        string $channelID,
+        string $channelAccountId,
+        string $channelId,
         PublicClient $client,
-        string $conversationsThreadID,
+        string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
         array $recipients,
@@ -150,10 +150,10 @@ final class PublicWelcomeMessage implements BaseModel
 
         $obj->id = $id;
         $obj->archived = $archived;
-        $obj->channelAccountID = $channelAccountID;
-        $obj->channelID = $channelID;
+        $obj->channelAccountId = $channelAccountId;
+        $obj->channelId = $channelId;
         $obj->client = $client;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadId;
         $obj->createdAt = $createdAt;
         $obj->createdBy = $createdBy;
         $obj->recipients = $recipients;
@@ -186,7 +186,7 @@ final class PublicWelcomeMessage implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj->channelAccountID = $channelAccountID;
+        $obj->channelAccountId = $channelAccountID;
 
         return $obj;
     }
@@ -194,7 +194,7 @@ final class PublicWelcomeMessage implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj->channelID = $channelID;
+        $obj->channelId = $channelID;
 
         return $obj;
     }
@@ -211,7 +211,7 @@ final class PublicWelcomeMessage implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadID;
 
         return $obj;
     }

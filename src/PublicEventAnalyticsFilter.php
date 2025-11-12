@@ -11,11 +11,11 @@ use HubspotSDK\PublicEventAnalyticsFilter\FilterType;
 
 /**
  * @phpstan-type PublicEventAnalyticsFilterShape = array{
- *   eventID: string,
+ *   eventId: string,
  *   filterType: value-of<FilterType>,
  *   operator: string,
- *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
- *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
 final class PublicEventAnalyticsFilter implements BaseModel
@@ -23,8 +23,8 @@ final class PublicEventAnalyticsFilter implements BaseModel
     /** @use SdkModel<PublicEventAnalyticsFilterShape> */
     use SdkModel;
 
-    #[Api('eventId')]
-    public string $eventID;
+    #[Api]
+    public string $eventId;
 
     /** @var value-of<FilterType> $filterType */
     #[Api(enum: FilterType::class)]
@@ -44,7 +44,7 @@ final class PublicEventAnalyticsFilter implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicEventAnalyticsFilter::with(eventID: ..., filterType: ..., operator: ...)
+     * PublicEventAnalyticsFilter::with(eventId: ..., filterType: ..., operator: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -69,7 +69,7 @@ final class PublicEventAnalyticsFilter implements BaseModel
      * @param FilterType|value-of<FilterType> $filterType
      */
     public static function with(
-        string $eventID,
+        string $eventId,
         string $operator,
         FilterType|string $filterType = 'EVENT',
         PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
@@ -77,7 +77,7 @@ final class PublicEventAnalyticsFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->eventID = $eventID;
+        $obj->eventId = $eventId;
         $obj['filterType'] = $filterType;
         $obj->operator = $operator;
 
@@ -90,7 +90,7 @@ final class PublicEventAnalyticsFilter implements BaseModel
     public function withEventID(string $eventID): self
     {
         $obj = clone $this;
-        $obj->eventID = $eventID;
+        $obj->eventId = $eventID;
 
         return $obj;
     }

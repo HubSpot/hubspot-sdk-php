@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
+use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteBatchParams;
+use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -13,50 +14,25 @@ interface CallbacksContract
     /**
      * @api
      *
-     * @param array<string, string> $outputFields
+     * @param array<mixed>|CallbackCompleteParams $params
      *
      * @throws APIException
      */
     public function complete(
         string $callbackID,
-        $outputFields,
+        array|CallbackCompleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function completeRaw(
-        string $callbackID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param list<CallbackCompletionBatchRequest> $inputs
+     * @param array<mixed>|CallbackCompleteBatchParams $params
      *
      * @throws APIException
      */
     public function completeBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function completeBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|CallbackCompleteBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed;
 }

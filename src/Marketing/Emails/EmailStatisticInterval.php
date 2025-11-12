@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type EmailStatisticIntervalShape = array{
- *   aggregations?: EmailStatisticsData, interval?: Interval
+ *   aggregations?: EmailStatisticsData|null, interval?: Interval|null
  * }
  */
 final class EmailStatisticInterval implements BaseModel

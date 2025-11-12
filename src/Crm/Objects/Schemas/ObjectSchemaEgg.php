@@ -18,10 +18,10 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  *   name: string,
  *   properties: list<ObjectTypePropertyCreate>,
  *   requiredProperties: list<string>,
- *   description?: string,
- *   primaryDisplayProperty?: string,
- *   searchableProperties?: list<string>,
- *   secondaryDisplayProperties?: list<string>,
+ *   description?: string|null,
+ *   primaryDisplayProperty?: string|null,
+ *   searchableProperties?: list<string>|null,
+ *   secondaryDisplayProperties?: list<string>|null,
  * }
  */
 final class ObjectSchemaEgg implements BaseModel

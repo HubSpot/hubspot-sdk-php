@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicChannelAccountUpdateRequestShape = array{
- *   authorized?: bool, name?: string
+ *   authorized?: bool|null, name?: string|null
  * }
  */
 final class PublicChannelAccountUpdateRequest implements BaseModel

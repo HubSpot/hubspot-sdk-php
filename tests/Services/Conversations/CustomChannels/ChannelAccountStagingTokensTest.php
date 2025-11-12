@@ -3,7 +3,6 @@
 namespace Tests\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -44,12 +43,11 @@ final class ChannelAccountStagingTokensTest extends TestCase
             ->channelAccountStagingTokens
             ->update(
                 'accountToken',
-                channelID: 'channelId',
-                accountName: 'accountName',
-                deliveryIdentifier: PublicDeliveryIdentifier::with(
-                    type: 'type',
-                    value: 'value'
-                ),
+                [
+                    'channelId' => 'channelId',
+                    'accountName' => 'accountName',
+                    'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
+                ],
             )
         ;
 
@@ -70,12 +68,11 @@ final class ChannelAccountStagingTokensTest extends TestCase
             ->channelAccountStagingTokens
             ->update(
                 'accountToken',
-                channelID: 'channelId',
-                accountName: 'accountName',
-                deliveryIdentifier: PublicDeliveryIdentifier::with(
-                    type: 'type',
-                    value: 'value'
-                ),
+                [
+                    'channelId' => 'channelId',
+                    'accountName' => 'accountName',
+                    'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
+                ],
             )
         ;
 

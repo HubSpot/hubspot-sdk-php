@@ -11,15 +11,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type MarketingEventPublicUpdateRequestFullV2Shape = array{
  *   customProperties: list<PropertyValue>,
- *   objectID: string,
- *   endDateTime?: \DateTimeInterface,
- *   eventCancelled?: bool,
- *   eventDescription?: string,
- *   eventName?: string,
- *   eventOrganizer?: string,
- *   eventType?: string,
- *   eventURL?: string,
- *   startDateTime?: \DateTimeInterface,
+ *   objectId: string,
+ *   endDateTime?: \DateTimeInterface|null,
+ *   eventCancelled?: bool|null,
+ *   eventDescription?: string|null,
+ *   eventName?: string|null,
+ *   eventOrganizer?: string|null,
+ *   eventType?: string|null,
+ *   eventUrl?: string|null,
+ *   startDateTime?: \DateTimeInterface|null,
  * }
  */
 final class MarketingEventPublicUpdateRequestFullV2 implements BaseModel
@@ -31,8 +31,8 @@ final class MarketingEventPublicUpdateRequestFullV2 implements BaseModel
     #[Api(list: PropertyValue::class)]
     public array $customProperties;
 
-    #[Api('objectId')]
-    public string $objectID;
+    #[Api]
+    public string $objectId;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $endDateTime;
@@ -52,8 +52,8 @@ final class MarketingEventPublicUpdateRequestFullV2 implements BaseModel
     #[Api(optional: true)]
     public ?string $eventType;
 
-    #[Api('eventUrl', optional: true)]
-    public ?string $eventURL;
+    #[Api(optional: true)]
+    public ?string $eventUrl;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $startDateTime;
@@ -64,7 +64,7 @@ final class MarketingEventPublicUpdateRequestFullV2 implements BaseModel
      * To enforce required parameters use
      * ```
      * MarketingEventPublicUpdateRequestFullV2::with(
-     *   customProperties: ..., objectID: ...
+     *   customProperties: ..., objectId: ...
      * )
      * ```
      *
@@ -90,20 +90,20 @@ final class MarketingEventPublicUpdateRequestFullV2 implements BaseModel
      */
     public static function with(
         array $customProperties,
-        string $objectID,
+        string $objectId,
         ?\DateTimeInterface $endDateTime = null,
         ?bool $eventCancelled = null,
         ?string $eventDescription = null,
         ?string $eventName = null,
         ?string $eventOrganizer = null,
         ?string $eventType = null,
-        ?string $eventURL = null,
+        ?string $eventUrl = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
 
         $obj->customProperties = $customProperties;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
 
         null !== $endDateTime && $obj->endDateTime = $endDateTime;
         null !== $eventCancelled && $obj->eventCancelled = $eventCancelled;
@@ -111,7 +111,7 @@ final class MarketingEventPublicUpdateRequestFullV2 implements BaseModel
         null !== $eventName && $obj->eventName = $eventName;
         null !== $eventOrganizer && $obj->eventOrganizer = $eventOrganizer;
         null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventURL && $obj->eventURL = $eventURL;
+        null !== $eventUrl && $obj->eventUrl = $eventUrl;
         null !== $startDateTime && $obj->startDateTime = $startDateTime;
 
         return $obj;
@@ -131,7 +131,7 @@ final class MarketingEventPublicUpdateRequestFullV2 implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }
@@ -187,7 +187,7 @@ final class MarketingEventPublicUpdateRequestFullV2 implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventURL = $eventURL;
+        $obj->eventUrl = $eventURL;
 
         return $obj;
     }

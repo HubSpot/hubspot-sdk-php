@@ -13,17 +13,17 @@ use HubspotSDK\Services\Settings\UsersService;
 final class SettingsService implements SettingsContract
 {
     /**
-     * @@api
+     * @api
      */
     public CurrenciesService $currencies;
 
     /**
-     * @@api
+     * @api
      */
     public TaxRatesService $taxRates;
 
     /**
-     * @@api
+     * @api
      */
     public UsersService $users;
 

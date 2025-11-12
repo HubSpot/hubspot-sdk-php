@@ -17,11 +17,11 @@ use HubspotSDK\StandardError;
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError>,
- *   links?: array<string, string>,
- *   numErrors?: int,
- *   requestedAt?: \DateTimeInterface,
- *   result?: string,
+ *   errors?: list<StandardError>|null,
+ *   links?: array<string,string>|null,
+ *   numErrors?: int|null,
+ *   requestedAt?: \DateTimeInterface|null,
+ *   result?: string|null,
  * }
  */
 final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConverter
@@ -45,7 +45,7 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /** @var array<string,string>|null $links */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
@@ -89,7 +89,7 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
      *
      * @param Status|value-of<Status> $status
      * @param list<StandardError> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -155,7 +155,7 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
     }
 
     /**
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

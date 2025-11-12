@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Crm\FeatureFlags\Apps->delete
  *
- * @phpstan-type AppDeleteParamsShape = array{appID: int}
+ * @phpstan-type AppDeleteParamsShape = array{appId: int}
  */
 final class AppDeleteParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class AppDeleteParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /**
      * `new AppDeleteParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * AppDeleteParams::with(appID: ...)
+     * AppDeleteParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class AppDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID): self
+    public static function with(int $appId): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class AppDeleteParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

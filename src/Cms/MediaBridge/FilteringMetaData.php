@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type FilteringMetaDataShape = array{
- *   includeUnconfirmedUsers: bool, pipelineIDs: list<string>
+ *   includeUnconfirmedUsers: bool, pipelineIds: list<string>
  * }
  */
 final class FilteringMetaData implements BaseModel
@@ -21,16 +21,16 @@ final class FilteringMetaData implements BaseModel
     #[Api]
     public bool $includeUnconfirmedUsers;
 
-    /** @var list<string> $pipelineIDs */
-    #[Api('pipelineIds', list: 'string')]
-    public array $pipelineIDs;
+    /** @var list<string> $pipelineIds */
+    #[Api(list: 'string')]
+    public array $pipelineIds;
 
     /**
      * `new FilteringMetaData()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FilteringMetaData::with(includeUnconfirmedUsers: ..., pipelineIDs: ...)
+     * FilteringMetaData::with(includeUnconfirmedUsers: ..., pipelineIds: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,16 +49,16 @@ final class FilteringMetaData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $pipelineIDs
+     * @param list<string> $pipelineIds
      */
     public static function with(
         bool $includeUnconfirmedUsers,
-        array $pipelineIDs
+        array $pipelineIds
     ): self {
         $obj = new self;
 
         $obj->includeUnconfirmedUsers = $includeUnconfirmedUsers;
-        $obj->pipelineIDs = $pipelineIDs;
+        $obj->pipelineIds = $pipelineIds;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class FilteringMetaData implements BaseModel
     public function withPipelineIDs(array $pipelineIDs): self
     {
         $obj = clone $this;
-        $obj->pipelineIDs = $pipelineIDs;
+        $obj->pipelineIds = $pipelineIDs;
 
         return $obj;
     }

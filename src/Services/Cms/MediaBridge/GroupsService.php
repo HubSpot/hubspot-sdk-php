@@ -16,8 +16,6 @@ use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\GroupsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class GroupsService implements GroupsContract
 {
     /**
@@ -30,49 +28,23 @@ final class GroupsService implements GroupsContract
      *
      * Create a new property group for the specified object type.
      *
-     * @param string $appID
-     * @param string $label
-     * @param string $name
-     * @param int $displayOrder
+     * @param array{
+     *   appId: string, label: string, name: string, displayOrder?: int
+     * }|GroupCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        $appID,
-        $label,
-        $name,
-        $displayOrder = omit,
+        array|GroupCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PropertyGroup {
-        $params = [
-            'appID' => $appID,
-            'label' => $label,
-            'name' => $name,
-            'displayOrder' => $displayOrder,
-        ];
-
-        return $this->createRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PropertyGroup {
         [$parsed, $options] = GroupCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -80,7 +52,7 @@ final class GroupsService implements GroupsContract
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/groups', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: PropertyGroup::class,
         );
@@ -91,38 +63,21 @@ final class GroupsService implements GroupsContract
      *
      * Get the property groups for a specified object type.
      *
-     * @param string $appID
+     * @param array{appId: string}|GroupListParams $params
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponsePropertyGroupNoPaging {
-        $params = ['appID' => $appID];
-
-        return $this->listRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|GroupListParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponsePropertyGroupNoPaging {
         [$parsed, $options] = GroupListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -140,40 +95,21 @@ final class GroupsService implements GroupsContract
      *
      * Delete an existing property group by name
      *
-     * @param string $appID
-     * @param string $objectType
+     * @param array{appId: string, objectType: string}|GroupDeleteByNameParams $params
      *
      * @throws APIException
      */
     public function deleteByName(
         string $groupName,
-        $appID,
-        $objectType,
+        array|GroupDeleteByNameParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['appID' => $appID, 'objectType' => $objectType];
-
-        return $this->deleteByNameRaw($groupName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteByNameRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = GroupDeleteByNameParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -196,40 +132,21 @@ final class GroupsService implements GroupsContract
      *
      * Get the details of an existing property group by name.
      *
-     * @param string $appID
-     * @param string $objectType
+     * @param array{appId: string, objectType: string}|GroupGetByNameParams $params
      *
      * @throws APIException
      */
     public function getByName(
         string $groupName,
-        $appID,
-        $objectType,
+        array|GroupGetByNameParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PropertyGroup {
-        $params = ['appID' => $appID, 'objectType' => $objectType];
-
-        return $this->getByNameRaw($groupName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getByNameRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PropertyGroup {
         [$parsed, $options] = GroupGetByNameParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -252,49 +169,23 @@ final class GroupsService implements GroupsContract
      *
      * Update an existing property group by name.
      *
-     * @param string $appID
-     * @param string $objectType
-     * @param int $displayOrder
-     * @param string $label
+     * @param array{
+     *   appId: string, objectType: string, displayOrder?: int, label?: string
+     * }|GroupUpdateByNameParams $params
      *
      * @throws APIException
      */
     public function updateByName(
         string $groupName,
-        $appID,
-        $objectType,
-        $displayOrder = omit,
-        $label = omit,
+        array|GroupUpdateByNameParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PropertyGroup {
-        $params = [
-            'appID' => $appID,
-            'objectType' => $objectType,
-            'displayOrder' => $displayOrder,
-            'label' => $label,
-        ];
-
-        return $this->updateByNameRaw($groupName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateByNameRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PropertyGroup {
         [$parsed, $options] = GroupUpdateByNameParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -309,7 +200,7 @@ final class GroupsService implements GroupsContract
             ],
             body: (object) array_diff_key(
                 $parsed,
-                array_flip(['appID', 'objectType'])
+                array_flip(['appId', 'objectType'])
             ),
             options: $options,
             convert: PropertyGroup::class,

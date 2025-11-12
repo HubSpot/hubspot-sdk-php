@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type GroupViewShape = array{
  *   displayName: string,
  *   displayOrder: int,
- *   fulcrumPortalID: int,
+ *   fulcrumPortalId: int,
  *   fulcrumTimestamp: int,
  *   hubspotDefined: bool,
  *   name: string,
@@ -29,8 +29,8 @@ final class GroupView implements BaseModel
     #[Api]
     public int $displayOrder;
 
-    #[Api('fulcrumPortalId')]
-    public int $fulcrumPortalID;
+    #[Api]
+    public int $fulcrumPortalId;
 
     #[Api]
     public int $fulcrumTimestamp;
@@ -49,7 +49,7 @@ final class GroupView implements BaseModel
      * GroupView::with(
      *   displayName: ...,
      *   displayOrder: ...,
-     *   fulcrumPortalID: ...,
+     *   fulcrumPortalId: ...,
      *   fulcrumTimestamp: ...,
      *   hubspotDefined: ...,
      *   name: ...,
@@ -81,7 +81,7 @@ final class GroupView implements BaseModel
     public static function with(
         string $displayName,
         int $displayOrder,
-        int $fulcrumPortalID,
+        int $fulcrumPortalId,
         int $fulcrumTimestamp,
         bool $hubspotDefined,
         string $name,
@@ -90,7 +90,7 @@ final class GroupView implements BaseModel
 
         $obj->displayName = $displayName;
         $obj->displayOrder = $displayOrder;
-        $obj->fulcrumPortalID = $fulcrumPortalID;
+        $obj->fulcrumPortalId = $fulcrumPortalId;
         $obj->fulcrumTimestamp = $fulcrumTimestamp;
         $obj->hubspotDefined = $hubspotDefined;
         $obj->name = $name;
@@ -117,7 +117,7 @@ final class GroupView implements BaseModel
     public function withFulcrumPortalID(int $fulcrumPortalID): self
     {
         $obj = clone $this;
-        $obj->fulcrumPortalID = $fulcrumPortalID;
+        $obj->fulcrumPortalId = $fulcrumPortalID;
 
         return $obj;
     }

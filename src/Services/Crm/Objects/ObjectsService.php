@@ -6,29 +6,27 @@ namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\Associations\V4\AssociationSpec1;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Objects\ObjectCreateParams;
 use HubspotSDK\Crm\Objects\Objects\ObjectDeleteParams;
 use HubspotSDK\Crm\Objects\Objects\ObjectGetParams;
 use HubspotSDK\Crm\Objects\Objects\ObjectListParams;
 use HubspotSDK\Crm\Objects\Objects\ObjectSearchParams;
 use HubspotSDK\Crm\Objects\Objects\ObjectUpdateParams;
-use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
+use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\ObjectsContract;
 use HubspotSDK\Services\Crm\Objects\Objects\BatchService;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class ObjectsService implements ObjectsContract
 {
     /**
-     * @@api
+     * @api
      */
     public BatchService $batch;
 
@@ -45,38 +43,23 @@ final class ObjectsService implements ObjectsContract
      *
      * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
      *
-     * @param array<string,
-     * string,> $properties Key-value pairs for setting properties for the new object
-     * @param list<PublicAssociationsForObject> $associations
+     * @param array{
+     *   properties: array<string,string>,
+     *   associations?: list<array{
+     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec1>
+     *   }>,
+     * }|ObjectCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        $properties,
-        $associations = omit,
+        array|ObjectCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CreatedResponseSimplePublicObject {
-        $params = ['properties' => $properties, 'associations' => $associations];
-
-        return $this->createRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): CreatedResponseSimplePublicObject {
         [$parsed, $options] = ObjectCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -94,44 +77,20 @@ final class ObjectsService implements ObjectsContract
      *
      * Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $objectType
-     * @param array<string,
-     * string,> $properties Key value pairs representing the properties of the object
-     * @param string $idProperty The name of a property whose values are unique for this object
+     * @param array{
+     *   objectType: string, properties: array<string,string>, idProperty?: string
+     * }|ObjectUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $objectID,
-        $objectType,
-        $properties,
-        $idProperty = omit,
+        array|ObjectUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): SimplePublicObject {
-        $params = [
-            'objectType' => $objectType,
-            'properties' => $properties,
-            'idProperty' => $idProperty,
-        ];
-
-        return $this->updateRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): SimplePublicObject {
         [$parsed, $options] = ObjectUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
@@ -156,12 +115,14 @@ final class ObjectsService implements ObjectsContract
      *
      * Read a page of objects. Control what is returned via the `properties` query param.
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived whether to return only results that have been archived
-     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param int $limit the maximum number of results to display per page
-     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   associations?: list<string>,
+     *   limit?: int,
+     *   properties?: list<string>,
+     *   propertiesWithHistory?: list<string>,
+     * }|ObjectListParams $params
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
@@ -169,43 +130,12 @@ final class ObjectsService implements ObjectsContract
      */
     public function list(
         string $objectType,
-        $after = omit,
-        $archived = omit,
-        $associations = omit,
-        $limit = omit,
-        $properties = omit,
-        $propertiesWithHistory = omit,
+        array|ObjectListParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'associations' => $associations,
-            'limit' => $limit,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-
-        return $this->listRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<SimplePublicObjectWithAssociations>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = ObjectListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -224,35 +154,18 @@ final class ObjectsService implements ObjectsContract
      *
      * Move an Object identified by `{objectId}` to the recycling bin.
      *
-     * @param string $objectType
+     * @param array{objectType: string}|ObjectDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $objectID,
-        $objectType,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['objectType' => $objectType];
-
-        return $this->deleteRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|ObjectDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = ObjectDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
@@ -271,52 +184,25 @@ final class ObjectsService implements ObjectsContract
      *
      * Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
-     * @param string $objectType
-     * @param bool $archived whether to return only results that have been archived
-     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param string $idProperty The name of a property whose values are unique for this object
-     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param array{
+     *   objectType: string,
+     *   archived?: bool,
+     *   associations?: list<string>,
+     *   idProperty?: string,
+     *   properties?: list<string>,
+     *   propertiesWithHistory?: list<string>,
+     * }|ObjectGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $objectID,
-        $objectType,
-        $archived = omit,
-        $associations = omit,
-        $idProperty = omit,
-        $properties = omit,
-        $propertiesWithHistory = omit,
+        array|ObjectGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): SimplePublicObjectWithAssociations {
-        $params = [
-            'objectType' => $objectType,
-            'archived' => $archived,
-            'associations' => $associations,
-            'idProperty' => $idProperty,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-
-        return $this->getRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): SimplePublicObjectWithAssociations {
         [$parsed, $options] = ObjectGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
@@ -334,52 +220,25 @@ final class ObjectsService implements ObjectsContract
     /**
      * @api
      *
-     * @param string $after a paging cursor token for retrieving subsequent pages
-     * @param list<FilterGroup> $filterGroups up to 6 groups of filters defining additional query criteria
-     * @param int $limit the maximum results to return, up to 200 objects
-     * @param list<string> $properties a list of property names to include in the response
-     * @param string $query the search query string, up to 3000 characters
-     * @param list<string> $sorts specifies sorting order based on object properties
+     * @param array{
+     *   after?: string,
+     *   filterGroups?: list<array{filters: list<array<mixed>>}>,
+     *   limit?: int,
+     *   properties?: list<string>,
+     *   query?: string,
+     *   sorts?: list<string>,
+     * }|ObjectSearchParams $params
      *
      * @throws APIException
      */
     public function search(
         string $objectType,
-        $after = omit,
-        $filterGroups = omit,
-        $limit = omit,
-        $properties = omit,
-        $query = omit,
-        $sorts = omit,
+        array|ObjectSearchParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalSimplePublicObject {
-        $params = [
-            'after' => $after,
-            'filterGroups' => $filterGroups,
-            'limit' => $limit,
-            'properties' => $properties,
-            'query' => $query,
-            'sorts' => $sorts,
-        ];
-
-        return $this->searchRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function searchRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject {
         [$parsed, $options] = ObjectSearchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

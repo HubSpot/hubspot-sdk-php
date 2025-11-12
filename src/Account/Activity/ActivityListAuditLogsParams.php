@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Account\Activity->listAuditLogs
  *
  * @phpstan-type ActivityListAuditLogsParamsShape = array{
- *   actingUserID?: list<int>,
+ *   actingUserId?: list<int>,
  *   after?: string,
  *   limit?: int,
  *   occurredAfter?: \DateTimeInterface,
@@ -32,10 +32,10 @@ final class ActivityListAuditLogsParams implements BaseModel
     /**
      * The ID of a user, for retrieving user-specific logs.
      *
-     * @var list<int>|null $actingUserID
+     * @var list<int>|null $actingUserId
      */
     #[Api(list: 'int', optional: true)]
-    public ?array $actingUserID;
+    public ?array $actingUserId;
 
     /**
      * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
@@ -79,11 +79,11 @@ final class ActivityListAuditLogsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<int> $actingUserID
+     * @param list<int> $actingUserId
      * @param list<string> $sort
      */
     public static function with(
-        ?array $actingUserID = null,
+        ?array $actingUserId = null,
         ?string $after = null,
         ?int $limit = null,
         ?\DateTimeInterface $occurredAfter = null,
@@ -92,7 +92,7 @@ final class ActivityListAuditLogsParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $actingUserID && $obj->actingUserID = $actingUserID;
+        null !== $actingUserId && $obj->actingUserId = $actingUserId;
         null !== $after && $obj->after = $after;
         null !== $limit && $obj->limit = $limit;
         null !== $occurredAfter && $obj->occurredAfter = $occurredAfter;
@@ -110,7 +110,7 @@ final class ActivityListAuditLogsParams implements BaseModel
     public function withActingUserID(array $actingUserID): self
     {
         $obj = clone $this;
-        $obj->actingUserID = $actingUserID;
+        $obj->actingUserId = $actingUserID;
 
         return $obj;
     }

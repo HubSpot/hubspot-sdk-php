@@ -9,13 +9,10 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption;
 use HubspotSDK\Crm\Timeline\Tokens\TokenCreateParams;
-use HubspotSDK\Crm\Timeline\Tokens\TokenCreateParams\Type;
 use HubspotSDK\Crm\Timeline\Tokens\TokenDeleteParams;
 use HubspotSDK\Crm\Timeline\Tokens\TokenUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Timeline\TokensContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class TokensService implements TokensContract
 {
@@ -29,61 +26,32 @@ final class TokensService implements TokensContract
      *
      * Update an existing event type template with new tokens.
      *
-     * @param int $appID
-     * @param string $label used for list segmentation and reporting
-     * @param string $name The name of the token referenced in the templates. This must be unique for the specific template. It may only contain alphanumeric characters, periods, dashes, or underscores (. - _).
-     * @param Type|value-of<Type> $type The data type of the token. You can currently choose from [string, number, date, enumeration].
-     * @param \DateTimeInterface $createdAt The date and time that the Event Template Token was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
-     * @param string $objectPropertyName The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
-     * @param list<TimelineEventTemplateTokenOption> $options if type is `enumeration`, we should have a list of options to choose from
-     * @param \DateTimeInterface $updatedAt The date and time that the Event Template Token was last updated, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
+     * @param array{
+     *   appId: int,
+     *   label: string,
+     *   name: string,
+     *   type: "date"|"enumeration"|"number"|"string",
+     *   createdAt?: string|\DateTimeInterface,
+     *   objectPropertyName?: string,
+     *   options?: list<array{
+     *     label: string, value: string
+     *   }|TimelineEventTemplateTokenOption>,
+     *   updatedAt?: string|\DateTimeInterface,
+     * }|TokenCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $eventTemplateID,
-        $appID,
-        $label,
-        $name,
-        $type,
-        $createdAt = omit,
-        $objectPropertyName = omit,
-        $options = omit,
-        $updatedAt = omit,
-        ?RequestOptions $requestOptions = null,
-    ): TimelineEventTemplateToken {
-        $params = [
-            'appID' => $appID,
-            'label' => $label,
-            'name' => $name,
-            'type' => $type,
-            'createdAt' => $createdAt,
-            'objectPropertyName' => $objectPropertyName,
-            'options' => $options,
-            'updatedAt' => $updatedAt,
-        ];
-
-        return $this->createRaw($eventTemplateID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $eventTemplateID,
-        array $params,
+        array|TokenCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): TimelineEventTemplateToken {
         [$parsed, $options] = TokenCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -93,7 +61,7 @@ final class TokensService implements TokensContract
                 $appID,
                 $eventTemplateID,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: TimelineEventTemplateToken::class,
         );
@@ -104,54 +72,31 @@ final class TokensService implements TokensContract
      *
      * Update an event type template token, specified by token name.
      *
-     * @param int $appID
-     * @param string $eventTemplateID
-     * @param string $label used for list segmentation and reporting
-     * @param string $objectPropertyName The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
-     * @param list<TimelineEventTemplateTokenOption> $options if type is `enumeration`, we should have a list of options to choose from
+     * @param array{
+     *   appId: int,
+     *   eventTemplateId: string,
+     *   label: string,
+     *   objectPropertyName?: string,
+     *   options?: list<array{
+     *     label: string, value: string
+     *   }|TimelineEventTemplateTokenOption>,
+     * }|TokenUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $tokenName,
-        $appID,
-        $eventTemplateID,
-        $label,
-        $objectPropertyName = omit,
-        $options = omit,
+        array|TokenUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): TimelineEventTemplateToken {
-        $params = [
-            'appID' => $appID,
-            'eventTemplateID' => $eventTemplateID,
-            'label' => $label,
-            'objectPropertyName' => $objectPropertyName,
-            'options' => $options,
-        ];
-
-        return $this->updateRaw($tokenName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $tokenName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): TimelineEventTemplateToken {
         [$parsed, $options] = TokenUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $eventTemplateID = $parsed['eventTemplateID'];
-        unset($parsed['eventTemplateID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
+        $eventTemplateID = $parsed['eventTemplateId'];
+        unset($parsed['eventTemplateId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -164,7 +109,7 @@ final class TokensService implements TokensContract
             ],
             body: (object) array_diff_key(
                 $parsed,
-                array_flip(['appID', 'eventTemplateID'])
+                array_flip(['appId', 'eventTemplateId'])
             ),
             options: $options,
             convert: TimelineEventTemplateToken::class,
@@ -176,42 +121,23 @@ final class TokensService implements TokensContract
      *
      * Delete an existing token from a specific event type template.
      *
-     * @param int $appID
-     * @param string $eventTemplateID
+     * @param array{appId: int, eventTemplateId: string}|TokenDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $tokenName,
-        $appID,
-        $eventTemplateID,
+        array|TokenDeleteParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['appID' => $appID, 'eventTemplateID' => $eventTemplateID];
-
-        return $this->deleteRaw($tokenName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $tokenName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = TokenDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $eventTemplateID = $parsed['eventTemplateID'];
-        unset($parsed['eventTemplateID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
+        $eventTemplateID = $parsed['eventTemplateId'];
+        unset($parsed['eventTemplateId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

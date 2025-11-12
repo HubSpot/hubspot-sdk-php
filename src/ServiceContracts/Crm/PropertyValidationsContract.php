@@ -7,7 +7,9 @@ namespace HubspotSDK\ServiceContracts\Crm;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleMapNoPaging;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleNoPaging;
+use HubspotSDK\Crm\PropertyValidations\PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams;
 use HubspotSDK\Crm\PropertyValidations\PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams\RuleType;
+use HubspotSDK\Crm\PropertyValidations\PropertyValidationGetParams;
 use HubspotSDK\RequestOptions;
 
 interface PropertyValidationsContract
@@ -26,57 +28,26 @@ interface PropertyValidationsContract
      * @api
      *
      * @param RuleType|value-of<RuleType> $ruleType
-     * @param string $objectTypeID
-     * @param string $propertyName
-     * @param list<string> $ruleArguments
+     * @param array<mixed>|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params
      *
      * @throws APIException
      */
     public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
         RuleType|string $ruleType,
-        $objectTypeID,
-        $propertyName,
-        $ruleArguments,
+        array|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param RuleType|value-of<RuleType> $ruleType
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeRaw(
-        RuleType|string $ruleType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $objectTypeID
+     * @param array<mixed>|PropertyValidationGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $propertyName,
-        $objectTypeID,
-        ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicPropertyValidationRuleNoPaging;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $propertyName,
-        array $params,
+        array|PropertyValidationGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicPropertyValidationRuleNoPaging;
 }

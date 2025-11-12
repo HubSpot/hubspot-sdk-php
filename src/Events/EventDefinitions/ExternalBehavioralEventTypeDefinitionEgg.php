@@ -12,9 +12,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ExternalBehavioralEventTypeDefinitionEggShape = array{
  *   label: string,
  *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreate>,
- *   description?: string,
- *   name?: string,
- *   primaryObject?: string,
+ *   description?: string|null,
+ *   name?: string|null,
+ *   primaryObject?: string|null,
  * }
  */
 final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel

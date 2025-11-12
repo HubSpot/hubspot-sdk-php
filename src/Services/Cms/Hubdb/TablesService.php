@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\Hubdb;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\ColumnRequest;
 use HubspotSDK\Cms\Hubdb\HubDBTableV3;
 use HubspotSDK\Cms\Hubdb\ImportResult;
 use HubspotSDK\Cms\Hubdb\Tables\TableCloneDraftParams;
@@ -23,11 +22,10 @@ use HubspotSDK\Cms\Hubdb\Tables\TableResetDraftParams;
 use HubspotSDK\Cms\Hubdb\Tables\TableUnpublishParams;
 use HubspotSDK\Cms\Hubdb\Tables\TableUpdateDraftParams;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Option;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\TablesContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class TablesService implements TablesContract
 {
@@ -41,57 +39,36 @@ final class TablesService implements TablesContract
      *
      * Creates a new draft HubDB table given a JSON schema. The table name and label should be unique for each account.
      *
-     * @param string $label Label of the table
-     * @param string $name Name of the table
-     * @param bool $allowChildTables Specifies whether child tables can be created
-     * @param bool $allowPublicAPIAccess Specifies whether the table can be read by public without authorization
-     * @param list<ColumnRequest> $columns List of columns in the table
-     * @param array<string,
-     * int,> $dynamicMetaTags Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
-     * @param bool $enableChildTablePages Specifies creation of multi-level dynamic pages using child tables
-     * @param bool $useForPages Specifies whether the table can be used for creation of dynamic pages
+     * @param array{
+     *   label: string,
+     *   name: string,
+     *   allowChildTables?: bool,
+     *   allowPublicApiAccess?: bool,
+     *   columns?: list<array{
+     *     id: int,
+     *     label: string,
+     *     name: string,
+     *     options: list<array<mixed>|Option>,
+     *     type: "NULL"|"TEXT"|"NUMBER"|"URL"|"IMAGE"|"SELECT"|"MULTISELECT"|"BOOLEAN"|"LOCATION"|"DATE"|"DATETIME"|"CURRENCY"|"RICHTEXT"|"FOREIGN_ID"|"VIDEO"|"CTA"|"FILE"|"JSON"|"COMPOSITE"|"CODE"|"HUBSPOT_VIDEO"|"EMBED",
+     *     foreignColumnId?: int,
+     *     foreignTableId?: int,
+     *     maxNumberOfCharacters?: int,
+     *     maxNumberOfOptions?: int,
+     *   }>,
+     *   dynamicMetaTags?: array<string,int>,
+     *   enableChildTablePages?: bool,
+     *   useForPages?: bool,
+     * }|TableCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $label,
-        $name,
-        $allowChildTables = omit,
-        $allowPublicAPIAccess = omit,
-        $columns = omit,
-        $dynamicMetaTags = omit,
-        $enableChildTablePages = omit,
-        $useForPages = omit,
-        ?RequestOptions $requestOptions = null,
-    ): HubDBTableV3 {
-        $params = [
-            'label' => $label,
-            'name' => $name,
-            'allowChildTables' => $allowChildTables,
-            'allowPublicAPIAccess' => $allowPublicAPIAccess,
-            'columns' => $columns,
-            'dynamicMetaTags' => $dynamicMetaTags,
-            'enableChildTablePages' => $enableChildTablePages,
-            'useForPages' => $useForPages,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|TableCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): HubDBTableV3 {
         [$parsed, $options] = TableCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -109,72 +86,32 @@ final class TablesService implements TablesContract
      *
      * Returns the details for the published version of each table defined in an account, including column definitions.
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived Specifies whether to return archived tables. Defaults to `false`.
-     * @param string $contentType
-     * @param \DateTimeInterface $createdAfter only return tables created after the specified time
-     * @param \DateTimeInterface $createdAt only return tables created at exactly the specified time
-     * @param \DateTimeInterface $createdBefore only return tables created before the specified time
-     * @param bool $isGetLocalizedSchema
-     * @param int $limit The maximum number of results to return. Default is 1000.
-     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
-     * @param \DateTimeInterface $updatedAfter only return tables last updated after the specified time
-     * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
-     * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   contentType?: string,
+     *   createdAfter?: string|\DateTimeInterface,
+     *   createdAt?: string|\DateTimeInterface,
+     *   createdBefore?: string|\DateTimeInterface,
+     *   isGetLocalizedSchema?: bool,
+     *   limit?: int,
+     *   sort?: list<string>,
+     *   updatedAfter?: string|\DateTimeInterface,
+     *   updatedAt?: string|\DateTimeInterface,
+     *   updatedBefore?: string|\DateTimeInterface,
+     * }|TableListParams $params
      *
      * @return Page<HubDBTableV3>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $archived = omit,
-        $contentType = omit,
-        $createdAfter = omit,
-        $createdAt = omit,
-        $createdBefore = omit,
-        $isGetLocalizedSchema = omit,
-        $limit = omit,
-        $sort = omit,
-        $updatedAfter = omit,
-        $updatedAt = omit,
-        $updatedBefore = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'contentType' => $contentType,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'isGetLocalizedSchema' => $isGetLocalizedSchema,
-            'limit' => $limit,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<HubDBTableV3>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|TableListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = TableListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -213,46 +150,20 @@ final class TablesService implements TablesContract
      *
      * Clone an existing HubDB table. The `newName` and `newLabel` of the new table can be sent as JSON in the request body. This will create the cloned table as a draft.
      *
-     * @param bool $copyRows Specifies whether to copy the rows during clone
-     * @param bool $isHubspotDefined
-     * @param string $newLabel The new label for the cloned table
-     * @param string $newName The new name for the cloned table
+     * @param array{
+     *   copyRows: bool, isHubspotDefined: bool, newLabel?: string, newName?: string
+     * }|TableCloneDraftParams $params
      *
      * @throws APIException
      */
     public function cloneDraft(
         string $tableIDOrName,
-        $copyRows,
-        $isHubspotDefined,
-        $newLabel = omit,
-        $newName = omit,
+        array|TableCloneDraftParams $params,
         ?RequestOptions $requestOptions = null,
-    ): HubDBTableV3 {
-        $params = [
-            'copyRows' => $copyRows,
-            'isHubspotDefined' => $isHubspotDefined,
-            'newLabel' => $newLabel,
-            'newName' => $newName,
-        ];
-
-        return $this->cloneDraftRaw($tableIDOrName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function cloneDraftRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): HubDBTableV3 {
         [$parsed, $options] = TableCloneDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -270,38 +181,21 @@ final class TablesService implements TablesContract
      *
      * Delete a specific version of a table
      *
-     * @param string $tableIDOrName
+     * @param array{tableIdOrName: string}|TableDeleteVersionParams $params
      *
      * @throws APIException
      */
     public function deleteVersion(
         int $versionID,
-        $tableIDOrName,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['tableIDOrName' => $tableIDOrName];
-
-        return $this->deleteVersionRaw($versionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteVersionRaw(
-        int $versionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|TableDeleteVersionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = TableDeleteVersionParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $tableIDOrName = $parsed['tableIDOrName'];
-        unset($parsed['tableIDOrName']);
+        $tableIDOrName = $parsed['tableIdOrName'];
+        unset($parsed['tableIdOrName']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -319,35 +213,18 @@ final class TablesService implements TablesContract
      *
      * Exports the published version of a table in a specified format.
      *
-     * @param string $format The file format to export. Possible values include `CSV`, `XLSX`, and `XLS`.
+     * @param array{format?: string}|TableExportParams $params
      *
      * @throws APIException
      */
     public function export(
         string $tableIDOrName,
-        $format = omit,
+        array|TableExportParams $params,
         ?RequestOptions $requestOptions = null,
-    ): string {
-        $params = ['format' => $format];
-
-        return $this->exportRaw($tableIDOrName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function exportRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): string {
         [$parsed, $options] = TableExportParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -366,35 +243,18 @@ final class TablesService implements TablesContract
      *
      * Exports the draft version of a table to CSV / EXCEL format.
      *
-     * @param string $format The file format to export. Possible values include `CSV`, `XLSX`, and `XLS`.
+     * @param array{format?: string}|TableExportDraftParams $params
      *
      * @throws APIException
      */
     public function exportDraft(
         string $tableIDOrName,
-        $format = omit,
+        array|TableExportDraftParams $params,
         ?RequestOptions $requestOptions = null,
-    ): string {
-        $params = ['format' => $format];
-
-        return $this->exportDraftRaw($tableIDOrName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function exportDraftRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): string {
         [$parsed, $options] = TableExportDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -415,43 +275,20 @@ final class TablesService implements TablesContract
      *
      * **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access. To do so, you'll need to include the HubSpot account ID in a `portalId` query parameter.
      *
-     * @param bool $archived Set this to `true` to return details for an archived table. Defaults to `false`.
-     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the result
-     * @param bool $isGetLocalizedSchema
+     * @param array{
+     *   archived?: bool, includeForeignIds?: bool, isGetLocalizedSchema?: bool
+     * }|TableGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $tableIDOrName,
-        $archived = omit,
-        $includeForeignIDs = omit,
-        $isGetLocalizedSchema = omit,
+        array|TableGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): HubDBTableV3 {
-        $params = [
-            'archived' => $archived,
-            'includeForeignIDs' => $includeForeignIDs,
-            'isGetLocalizedSchema' => $isGetLocalizedSchema,
-        ];
-
-        return $this->getRaw($tableIDOrName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): HubDBTableV3 {
         [$parsed, $options] = TableGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -469,43 +306,20 @@ final class TablesService implements TablesContract
      *
      * Get the details for the draft version of a specific HubDB table. This will include the definitions for the columns in the table and the number of rows in the table.
      *
-     * @param bool $archived Set this to `true` to return an archived table. Defaults to `false`.
-     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the result
-     * @param bool $isGetLocalizedSchema
+     * @param array{
+     *   archived?: bool, includeForeignIds?: bool, isGetLocalizedSchema?: bool
+     * }|TableGetDraftParams $params
      *
      * @throws APIException
      */
     public function getDraft(
         string $tableIDOrName,
-        $archived = omit,
-        $includeForeignIDs = omit,
-        $isGetLocalizedSchema = omit,
+        array|TableGetDraftParams $params,
         ?RequestOptions $requestOptions = null,
-    ): HubDBTableV3 {
-        $params = [
-            'archived' => $archived,
-            'includeForeignIDs' => $includeForeignIDs,
-            'isGetLocalizedSchema' => $isGetLocalizedSchema,
-        ];
-
-        return $this->getDraftRaw($tableIDOrName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getDraftRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): HubDBTableV3 {
         [$parsed, $options] = TableGetDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -524,37 +338,18 @@ final class TablesService implements TablesContract
      * Import the contents of a CSV file into an existing HubDB table. The data will always be imported into the draft version of the table. Use the `/publish` endpoint to push these changes to the published version.
      * This endpoint takes a multi-part POST request. The first part will be a set of JSON-formatted options for the import and you can specify this with the name as `config`.  The second part will be the CSV file you want to import and you can specify this with the name as `file`. Refer the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#importing-tables) to check the details and format of the JSON-formatted options for the import.
      *
-     * @param string $config
-     * @param string $file
+     * @param array{config?: string, file?: string}|TableImportDraftParams $params
      *
      * @throws APIException
      */
     public function importDraft(
         string $tableIDOrName,
-        $config = omit,
-        $file = omit,
+        array|TableImportDraftParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ImportResult {
-        $params = ['config' => $config, 'file' => $file];
-
-        return $this->importDraftRaw($tableIDOrName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function importDraftRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ImportResult {
         [$parsed, $options] = TableImportDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -573,72 +368,32 @@ final class TablesService implements TablesContract
      *
      * Returns the details for each draft table defined in the specified account, including column definitions.
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived Specifies whether to return archived tables. Defaults to `false`.
-     * @param string $contentType
-     * @param \DateTimeInterface $createdAfter only return tables created after the specified time
-     * @param \DateTimeInterface $createdAt only return tables created at exactly the specified time
-     * @param \DateTimeInterface $createdBefore only return tables created before the specified time
-     * @param bool $isGetLocalizedSchema
-     * @param int $limit The maximum number of results to return. Default is 1000.
-     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
-     * @param \DateTimeInterface $updatedAfter only return tables last updated after the specified time
-     * @param \DateTimeInterface $updatedAt only return tables last updated at exactly the specified time
-     * @param \DateTimeInterface $updatedBefore only return tables last updated before the specified time
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   contentType?: string,
+     *   createdAfter?: string|\DateTimeInterface,
+     *   createdAt?: string|\DateTimeInterface,
+     *   createdBefore?: string|\DateTimeInterface,
+     *   isGetLocalizedSchema?: bool,
+     *   limit?: int,
+     *   sort?: list<string>,
+     *   updatedAfter?: string|\DateTimeInterface,
+     *   updatedAt?: string|\DateTimeInterface,
+     *   updatedBefore?: string|\DateTimeInterface,
+     * }|TableListDraftParams $params
      *
      * @return Page<HubDBTableV3>
      *
      * @throws APIException
      */
     public function listDraft(
-        $after = omit,
-        $archived = omit,
-        $contentType = omit,
-        $createdAfter = omit,
-        $createdAt = omit,
-        $createdBefore = omit,
-        $isGetLocalizedSchema = omit,
-        $limit = omit,
-        $sort = omit,
-        $updatedAfter = omit,
-        $updatedAt = omit,
-        $updatedBefore = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'contentType' => $contentType,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'isGetLocalizedSchema' => $isGetLocalizedSchema,
-            'limit' => $limit,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-
-        return $this->listDraftRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<HubDBTableV3>
-     *
-     * @throws APIException
-     */
-    public function listDraftRaw(
-        array $params,
+        array|TableListDraftParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = TableListDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -657,35 +412,18 @@ final class TablesService implements TablesContract
      *
      * Publishes the table by copying the data and table schema changes from draft version to the published version, meaning any website pages using data from the table will be updated.
      *
-     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the response
+     * @param array{includeForeignIds?: bool}|TablePublishDraftParams $params
      *
      * @throws APIException
      */
     public function publishDraft(
         string $tableIDOrName,
-        $includeForeignIDs = omit,
+        array|TablePublishDraftParams $params,
         ?RequestOptions $requestOptions = null,
-    ): HubDBTableV3 {
-        $params = ['includeForeignIDs' => $includeForeignIDs];
-
-        return $this->publishDraftRaw($tableIDOrName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function publishDraftRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): HubDBTableV3 {
         [$parsed, $options] = TablePublishDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -703,35 +441,18 @@ final class TablesService implements TablesContract
      *
      * Replaces the data in the draft version of the table with values from the published version. Any unpublished changes in the draft will be lost after this call is made.
      *
-     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the response
+     * @param array{includeForeignIds?: bool}|TableResetDraftParams $params
      *
      * @throws APIException
      */
     public function resetDraft(
         string $tableIDOrName,
-        $includeForeignIDs = omit,
+        array|TableResetDraftParams $params,
         ?RequestOptions $requestOptions = null,
-    ): HubDBTableV3 {
-        $params = ['includeForeignIDs' => $includeForeignIDs];
-
-        return $this->resetDraftRaw($tableIDOrName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function resetDraftRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): HubDBTableV3 {
         [$parsed, $options] = TableResetDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -749,35 +470,18 @@ final class TablesService implements TablesContract
      *
      * Unpublishes the table, meaning any website pages using data from the table will not render any data.
      *
-     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the response
+     * @param array{includeForeignIds?: bool}|TableUnpublishParams $params
      *
      * @throws APIException
      */
     public function unpublish(
         string $tableIDOrName,
-        $includeForeignIDs = omit,
+        array|TableUnpublishParams $params,
         ?RequestOptions $requestOptions = null,
-    ): HubDBTableV3 {
-        $params = ['includeForeignIDs' => $includeForeignIDs];
-
-        return $this->unpublishRaw($tableIDOrName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function unpublishRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): HubDBTableV3 {
         [$parsed, $options] = TableUnpublishParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -796,68 +500,40 @@ final class TablesService implements TablesContract
      * Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the draft verion of the table. Use the `/publish` endpoint to push all the changes to the published version. To restore a table, include the query parameter `archived=true` and `"archived": false` in the json body.
      * **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.
      *
-     * @param string $label Label of the table
-     * @param string $name Name of the table
-     * @param bool $archived Specifies whether to return archived tables. Defaults to `false`.
-     * @param bool $includeForeignIDs set this to `true` to populate foreign ID values in the result
-     * @param bool $isGetLocalizedSchema
-     * @param bool $allowChildTables Specifies whether child tables can be created
-     * @param bool $allowPublicAPIAccess Specifies whether the table can be read by public without authorization
-     * @param list<ColumnRequest> $columns List of columns in the table
-     * @param array<string,
-     * int,> $dynamicMetaTags Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
-     * @param bool $enableChildTablePages Specifies creation of multi-level dynamic pages using child tables
-     * @param bool $useForPages Specifies whether the table can be used for creation of dynamic pages
+     * @param array{
+     *   label: string,
+     *   name: string,
+     *   archived?: bool,
+     *   includeForeignIds?: bool,
+     *   isGetLocalizedSchema?: bool,
+     *   allowChildTables?: bool,
+     *   allowPublicApiAccess?: bool,
+     *   columns?: list<array{
+     *     id: int,
+     *     label: string,
+     *     name: string,
+     *     options: list<array<mixed>|Option>,
+     *     type: "NULL"|"TEXT"|"NUMBER"|"URL"|"IMAGE"|"SELECT"|"MULTISELECT"|"BOOLEAN"|"LOCATION"|"DATE"|"DATETIME"|"CURRENCY"|"RICHTEXT"|"FOREIGN_ID"|"VIDEO"|"CTA"|"FILE"|"JSON"|"COMPOSITE"|"CODE"|"HUBSPOT_VIDEO"|"EMBED",
+     *     foreignColumnId?: int,
+     *     foreignTableId?: int,
+     *     maxNumberOfCharacters?: int,
+     *     maxNumberOfOptions?: int,
+     *   }>,
+     *   dynamicMetaTags?: array<string,int>,
+     *   enableChildTablePages?: bool,
+     *   useForPages?: bool,
+     * }|TableUpdateDraftParams $params
      *
      * @throws APIException
      */
     public function updateDraft(
         string $tableIDOrName,
-        $label,
-        $name,
-        $archived = omit,
-        $includeForeignIDs = omit,
-        $isGetLocalizedSchema = omit,
-        $allowChildTables = omit,
-        $allowPublicAPIAccess = omit,
-        $columns = omit,
-        $dynamicMetaTags = omit,
-        $enableChildTablePages = omit,
-        $useForPages = omit,
+        array|TableUpdateDraftParams $params,
         ?RequestOptions $requestOptions = null,
-    ): HubDBTableV3 {
-        $params = [
-            'label' => $label,
-            'name' => $name,
-            'archived' => $archived,
-            'includeForeignIDs' => $includeForeignIDs,
-            'isGetLocalizedSchema' => $isGetLocalizedSchema,
-            'allowChildTables' => $allowChildTables,
-            'allowPublicAPIAccess' => $allowPublicAPIAccess,
-            'columns' => $columns,
-            'dynamicMetaTags' => $dynamicMetaTags,
-            'enableChildTablePages' => $enableChildTablePages,
-            'useForPages' => $useForPages,
-        ];
-
-        return $this->updateDraftRaw($tableIDOrName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateDraftRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): HubDBTableV3 {
         [$parsed, $options] = TableUpdateDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = array_flip(
             ['archived', 'includeForeignIds', 'isGetLocalizedSchema']

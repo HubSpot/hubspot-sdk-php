@@ -11,8 +11,6 @@ use HubspotSDK\Marketing\Subscriptions\V4\Definitions\DefinitionListParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\DefinitionsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class DefinitionsService implements DefinitionsContract
 {
     /**
@@ -25,38 +23,19 @@ final class DefinitionsService implements DefinitionsContract
      *
      * Get a list of subscription status definitions from the account.
      *
-     * @param int $businessUnitID If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
-     * @param bool $includeTranslations set to `true` to return subscription translations associated with each definition
+     * @param array{
+     *   businessUnitId?: int, includeTranslations?: bool
+     * }|DefinitionListParams $params
      *
      * @throws APIException
      */
     public function list(
-        $businessUnitID = omit,
-        $includeTranslations = omit,
-        ?RequestOptions $requestOptions = null,
-    ): ActionResponseWithResultsSubscriptionDefinition {
-        $params = [
-            'businessUnitID' => $businessUnitID,
-            'includeTranslations' => $includeTranslations,
-        ];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|DefinitionListParams $params,
         ?RequestOptions $requestOptions = null
     ): ActionResponseWithResultsSubscriptionDefinition {
         [$parsed, $options] = DefinitionListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

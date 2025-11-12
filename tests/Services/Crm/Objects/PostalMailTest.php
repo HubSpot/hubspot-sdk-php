@@ -36,9 +36,9 @@ final class PostalMailTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->postalMail->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->postalMail->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -50,9 +50,9 @@ final class PostalMailTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->postalMail->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->postalMail->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -66,7 +66,7 @@ final class PostalMailTest extends TestCase
 
         $result = $this->client->crm->objects->postalMail->update(
             'postalMailId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -81,7 +81,7 @@ final class PostalMailTest extends TestCase
 
         $result = $this->client->crm->objects->postalMail->update(
             'postalMailId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -94,7 +94,7 @@ final class PostalMailTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->postalMail->list();
+        $result = $this->client->crm->objects->postalMail->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -118,7 +118,7 @@ final class PostalMailTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->postalMail->get('postalMailId');
+        $result = $this->client->crm->objects->postalMail->get('postalMailId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -130,7 +130,7 @@ final class PostalMailTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->postalMail->search();
+        $result = $this->client->crm->objects->postalMail->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

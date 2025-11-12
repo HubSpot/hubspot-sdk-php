@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MessageHeaderAttachmentShape = array{
- *   type: value-of<Type>, fileID?: int, text?: string
+ *   type: value-of<Type>, fileId?: int|null, text?: string|null
  * }
  */
 final class MessageHeaderAttachment implements BaseModel
@@ -23,8 +23,8 @@ final class MessageHeaderAttachment implements BaseModel
     #[Api(enum: Type::class)]
     public string $type;
 
-    #[Api('fileId', optional: true)]
-    public ?int $fileID;
+    #[Api(optional: true)]
+    public ?int $fileId;
 
     #[Api(optional: true)]
     public ?string $text;
@@ -57,14 +57,14 @@ final class MessageHeaderAttachment implements BaseModel
      */
     public static function with(
         Type|string $type = 'MESSAGE_HEADER',
-        ?int $fileID = null,
+        ?int $fileId = null,
         ?string $text = null,
     ): self {
         $obj = new self;
 
         $obj['type'] = $type;
 
-        null !== $fileID && $obj->fileID = $fileID;
+        null !== $fileId && $obj->fileId = $fileId;
         null !== $text && $obj->text = $text;
 
         return $obj;
@@ -84,7 +84,7 @@ final class MessageHeaderAttachment implements BaseModel
     public function withFileID(int $fileID): self
     {
         $obj = clone $this;
-        $obj->fileID = $fileID;
+        $obj->fileId = $fileID;
 
         return $obj;
     }

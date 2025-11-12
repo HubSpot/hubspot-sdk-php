@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type BoundedPagingShape = array{next?: BoundedNextPage}
+ * @phpstan-type BoundedPagingShape = array{next?: BoundedNextPage|null}
  */
 final class BoundedPaging implements BaseModel
 {

@@ -36,12 +36,18 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->events->createAttentionSpanEvent(
-            mediaType: 'VIDEO',
-            occurredTimestamp: 0,
-            rawDataMap: ['foo' => 0],
-            sessionID: 'sessionId',
-        );
+        $result = $this
+            ->client
+            ->cms
+            ->mediaBridge
+            ->events
+            ->createAttentionSpanEvent([
+                'mediaType' => 'VIDEO',
+                'occurredTimestamp' => 0,
+                'rawDataMap' => ['foo' => 0],
+                'sessionId' => 'sessionId',
+            ])
+        ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -53,12 +59,18 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->events->createAttentionSpanEvent(
-            mediaType: 'VIDEO',
-            occurredTimestamp: 0,
-            rawDataMap: ['foo' => 0],
-            sessionID: 'sessionId',
-        );
+        $result = $this
+            ->client
+            ->cms
+            ->mediaBridge
+            ->events
+            ->createAttentionSpanEvent([
+                'mediaType' => 'VIDEO',
+                'occurredTimestamp' => 0,
+                'rawDataMap' => ['foo' => 0],
+                'sessionId' => 'sessionId',
+            ])
+        ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -70,12 +82,12 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent(
-            mediaType: 'VIDEO',
-            occurredTimestamp: 0,
-            sessionID: 'sessionId',
-            state: 'STARTED',
-        );
+        $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent([
+            'mediaType' => 'VIDEO',
+            'occurredTimestamp' => 0,
+            'sessionId' => 'sessionId',
+            'state' => 'STARTED',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -87,12 +99,12 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent(
-            mediaType: 'VIDEO',
-            occurredTimestamp: 0,
-            sessionID: 'sessionId',
-            state: 'STARTED',
-        );
+        $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent([
+            'mediaType' => 'VIDEO',
+            'occurredTimestamp' => 0,
+            'sessionId' => 'sessionId',
+            'state' => 'STARTED',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -109,12 +121,12 @@ final class EventsTest extends TestCase
             ->cms
             ->mediaBridge
             ->events
-            ->createMediaPlayedPercentEvent(
-                mediaType: 'VIDEO',
-                occurredTimestamp: 0,
-                playedPercent: 0,
-                sessionID: 'sessionId',
-            )
+            ->createMediaPlayedPercentEvent([
+                'mediaType' => 'VIDEO',
+                'occurredTimestamp' => 0,
+                'playedPercent' => 0,
+                'sessionId' => 'sessionId',
+            ])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -132,12 +144,12 @@ final class EventsTest extends TestCase
             ->cms
             ->mediaBridge
             ->events
-            ->createMediaPlayedPercentEvent(
-                mediaType: 'VIDEO',
-                occurredTimestamp: 0,
-                playedPercent: 0,
-                sessionID: 'sessionId',
-            )
+            ->createMediaPlayedPercentEvent([
+                'mediaType' => 'VIDEO',
+                'occurredTimestamp' => 0,
+                'playedPercent' => 0,
+                'sessionId' => 'sessionId',
+            ])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

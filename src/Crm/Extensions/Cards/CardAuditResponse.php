@@ -13,11 +13,11 @@ use HubspotSDK\Crm\Extensions\Cards\CardAuditResponse\AuthSource;
 /**
  * @phpstan-type CardAuditResponseShape = array{
  *   actionType: value-of<ActionType>,
- *   applicationID: int,
+ *   applicationId: int,
  *   authSource: value-of<AuthSource>,
  *   changedAt: int,
- *   initiatingUserID: int,
- *   objectTypeID: int,
+ *   initiatingUserId: int,
+ *   objectTypeId: int,
  * }
  */
 final class CardAuditResponse implements BaseModel
@@ -29,8 +29,8 @@ final class CardAuditResponse implements BaseModel
     #[Api(enum: ActionType::class)]
     public string $actionType;
 
-    #[Api('applicationId')]
-    public int $applicationID;
+    #[Api]
+    public int $applicationId;
 
     /** @var value-of<AuthSource> $authSource */
     #[Api(enum: AuthSource::class)]
@@ -39,11 +39,11 @@ final class CardAuditResponse implements BaseModel
     #[Api]
     public int $changedAt;
 
-    #[Api('initiatingUserId')]
-    public int $initiatingUserID;
+    #[Api]
+    public int $initiatingUserId;
 
-    #[Api('objectTypeId')]
-    public int $objectTypeID;
+    #[Api]
+    public int $objectTypeId;
 
     /**
      * `new CardAuditResponse()` is missing required properties by the API.
@@ -52,11 +52,11 @@ final class CardAuditResponse implements BaseModel
      * ```
      * CardAuditResponse::with(
      *   actionType: ...,
-     *   applicationID: ...,
+     *   applicationId: ...,
      *   authSource: ...,
      *   changedAt: ...,
-     *   initiatingUserID: ...,
-     *   objectTypeID: ...,
+     *   initiatingUserId: ...,
+     *   objectTypeId: ...,
      * )
      * ```
      *
@@ -87,20 +87,20 @@ final class CardAuditResponse implements BaseModel
      */
     public static function with(
         ActionType|string $actionType,
-        int $applicationID,
+        int $applicationId,
         AuthSource|string $authSource,
         int $changedAt,
-        int $initiatingUserID,
-        int $objectTypeID,
+        int $initiatingUserId,
+        int $objectTypeId,
     ): self {
         $obj = new self;
 
         $obj['actionType'] = $actionType;
-        $obj->applicationID = $applicationID;
+        $obj->applicationId = $applicationId;
         $obj['authSource'] = $authSource;
         $obj->changedAt = $changedAt;
-        $obj->initiatingUserID = $initiatingUserID;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->initiatingUserId = $initiatingUserId;
+        $obj->objectTypeId = $objectTypeId;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class CardAuditResponse implements BaseModel
     public function withApplicationID(int $applicationID): self
     {
         $obj = clone $this;
-        $obj->applicationID = $applicationID;
+        $obj->applicationId = $applicationID;
 
         return $obj;
     }
@@ -146,7 +146,7 @@ final class CardAuditResponse implements BaseModel
     public function withInitiatingUserID(int $initiatingUserID): self
     {
         $obj = clone $this;
-        $obj->initiatingUserID = $initiatingUserID;
+        $obj->initiatingUserId = $initiatingUserID;
 
         return $obj;
     }
@@ -154,7 +154,7 @@ final class CardAuditResponse implements BaseModel
     public function withObjectTypeID(int $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

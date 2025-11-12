@@ -7,71 +7,39 @@ namespace HubspotSDK\ServiceContracts\Crm\Properties;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponsePropertyGroup;
 use HubspotSDK\Crm\Properties\CreatedResponsePropertyGroup;
+use HubspotSDK\Crm\Properties\Groups\GroupCreateParams;
+use HubspotSDK\Crm\Properties\Groups\GroupDeleteParams;
+use HubspotSDK\Crm\Properties\Groups\GroupGetParams;
+use HubspotSDK\Crm\Properties\Groups\GroupUpdateParams;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface GroupsContract
 {
     /**
      * @api
      *
-     * @param string $label
-     * @param string $name
-     * @param int $displayOrder
+     * @param array<mixed>|GroupCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        $label,
-        $name,
-        $displayOrder = omit,
+        array|GroupCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): CreatedResponsePropertyGroup;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): CreatedResponsePropertyGroup;
-
-    /**
-     * @api
-     *
-     * @param string $objectType
-     * @param int $displayOrder
-     * @param string $label
+     * @param array<mixed>|GroupUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $groupName,
-        $objectType,
-        $displayOrder = omit,
-        $label = omit,
+        array|GroupUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PropertyGroup;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PropertyGroup;
 
     /**
@@ -87,52 +55,26 @@ interface GroupsContract
     /**
      * @api
      *
-     * @param string $objectType
+     * @param array<mixed>|GroupDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $groupName,
-        $objectType,
-        ?RequestOptions $requestOptions = null
+        array|GroupDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $objectType
+     * @param array<mixed>|GroupGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $groupName,
-        $objectType,
-        ?RequestOptions $requestOptions = null
-    ): PropertyGroup;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|GroupGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PropertyGroup;
 }

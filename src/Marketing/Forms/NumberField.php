@@ -18,12 +18,12 @@ use HubspotSDK\Marketing\Forms\NumberField\FieldType;
  *   hidden: bool,
  *   label: string,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   required: bool,
- *   defaultValue?: string,
- *   description?: string,
- *   placeholder?: string,
- *   validation?: NumberFieldValidation,
+ *   defaultValue?: string|null,
+ *   description?: string|null,
+ *   placeholder?: string|null,
+ *   validation?: NumberFieldValidation|null,
  * }
  */
 final class NumberField implements BaseModel
@@ -68,8 +68,8 @@ final class NumberField implements BaseModel
     /**
      * A unique ID for this field's CRM object type. For example a CONTACT field will have the object type ID 0-1.
      */
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /**
      * Whether a value for this field is required when submitting the form.
@@ -112,7 +112,7 @@ final class NumberField implements BaseModel
      *   hidden: ...,
      *   label: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   required: ...,
      * )
      * ```
@@ -148,7 +148,7 @@ final class NumberField implements BaseModel
         bool $hidden,
         string $label,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         bool $required,
         FieldType|string $fieldType = 'number',
         ?string $defaultValue = null,
@@ -163,7 +163,7 @@ final class NumberField implements BaseModel
         $obj->hidden = $hidden;
         $obj->label = $label;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->required = $required;
 
         null !== $defaultValue && $obj->defaultValue = $defaultValue;
@@ -239,7 +239,7 @@ final class NumberField implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

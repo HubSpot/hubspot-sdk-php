@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Defines the type, direction, and details of the relationship between two CRM objects.
  *
  * @phpstan-type AssociationSpecShape = array{
- *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
+ *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
  * }
  */
 final class AssociationSpec implements BaseModel
@@ -32,15 +32,15 @@ final class AssociationSpec implements BaseModel
     /**
      * The ID representing the specific type of association.
      */
-    #[Api('associationTypeId')]
-    public int $associationTypeID;
+    #[Api]
+    public int $associationTypeId;
 
     /**
      * `new AssociationSpec()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * AssociationSpec::with(associationCategory: ..., associationTypeID: ...)
+     * AssociationSpec::with(associationCategory: ..., associationTypeId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -63,12 +63,12 @@ final class AssociationSpec implements BaseModel
      */
     public static function with(
         AssociationCategory|string $associationCategory,
-        int $associationTypeID
+        int $associationTypeId
     ): self {
         $obj = new self;
 
         $obj['associationCategory'] = $associationCategory;
-        $obj->associationTypeID = $associationTypeID;
+        $obj->associationTypeId = $associationTypeId;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class AssociationSpec implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj->associationTypeID = $associationTypeID;
+        $obj->associationTypeId = $associationTypeID;
 
         return $obj;
     }

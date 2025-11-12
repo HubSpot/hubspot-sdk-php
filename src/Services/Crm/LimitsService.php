@@ -19,8 +19,6 @@ use HubspotSDK\Crm\Limits\RecordLimitResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\LimitsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class LimitsService implements LimitsContract
 {
     /**
@@ -33,38 +31,19 @@ final class LimitsService implements LimitsContract
      *
      * Returns limits and usage for custom association labels
      *
-     * @param string $fromObjectTypeID
-     * @param string $toObjectTypeID
+     * @param array{
+     *   fromObjectTypeId?: string, toObjectTypeId?: string
+     * }|LimitGetAssociationLabelLimitsParams $params
      *
      * @throws APIException
      */
     public function getAssociationLabelLimits(
-        $fromObjectTypeID = omit,
-        $toObjectTypeID = omit,
+        array|LimitGetAssociationLabelLimitsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseAssociationLabelLimitResponseNoPaging {
-        $params = [
-            'fromObjectTypeID' => $fromObjectTypeID,
-            'toObjectTypeID' => $toObjectTypeID,
-        ];
-
-        return $this->getAssociationLabelLimitsRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getAssociationLabelLimitsRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): CollectionResponseAssociationLabelLimitResponseNoPaging {
         [$parsed, $options] = LimitGetAssociationLabelLimitsParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -82,44 +61,23 @@ final class LimitsService implements LimitsContract
      *
      * Returns records approaching or at association limits between two objects
      *
-     * @param string $fromObjectTypeID
+     * @param array{
+     *   fromObjectTypeId: string
+     * }|LimitGetAssociationRecordsLimitsByObjectTypeParams $params
      *
      * @throws APIException
      */
     public function getAssociationRecordsLimitsByObjectType(
         string $toObjectTypeID,
-        $fromObjectTypeID,
+        array|LimitGetAssociationRecordsLimitsByObjectTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssociationRecordLimitResponse {
-        $params = ['fromObjectTypeID' => $fromObjectTypeID];
-
-        return $this->getAssociationRecordsLimitsByObjectTypeRaw(
-            $toObjectTypeID,
+        [$parsed, $options] = LimitGetAssociationRecordsLimitsByObjectTypeParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getAssociationRecordsLimitsByObjectTypeRaw(
-        string $toObjectTypeID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): AssociationRecordLimitResponse {
-        [
-            $parsed, $options,
-        ] = LimitGetAssociationRecordsLimitsByObjectTypeParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $fromObjectTypeID = $parsed['fromObjectTypeID'];
-        unset($parsed['fromObjectTypeID']);
+        $fromObjectTypeID = $parsed['fromObjectTypeId'];
+        unset($parsed['fromObjectTypeId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

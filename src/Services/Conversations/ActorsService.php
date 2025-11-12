@@ -31,33 +31,17 @@ final class ActorsService implements ActorsContract
      *
      * Resolve a set of `ActorId`s to the underlying actors/participants.
      *
-     * @param list<string> $inputs strings to input
+     * @param array{inputs: list<string>}|ActorBatchReadParams $params
      *
      * @throws APIException
      */
     public function batchRead(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponsePublicActor {
-        $params = ['inputs' => $inputs];
-
-        return $this->batchReadRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchReadRaw(
-        array $params,
+        array|ActorBatchReadParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponsePublicActor {
         [$parsed, $options] = ActorBatchReadParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

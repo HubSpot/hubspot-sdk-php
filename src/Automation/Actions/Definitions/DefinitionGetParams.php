@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Definitions->get
  *
- * @phpstan-type DefinitionGetParamsShape = array{appID: int, archived?: bool}
+ * @phpstan-type DefinitionGetParamsShape = array{appId: int, archived?: bool}
  */
 final class DefinitionGetParams implements BaseModel
 {
@@ -23,7 +23,7 @@ final class DefinitionGetParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /**
      * Whether to return only results that have been archived.
@@ -36,7 +36,7 @@ final class DefinitionGetParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * DefinitionGetParams::with(appID: ...)
+     * DefinitionGetParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -55,11 +55,11 @@ final class DefinitionGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID, ?bool $archived = null): self
+    public static function with(int $appId, ?bool $archived = null): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         null !== $archived && $obj->archived = $archived;
 
@@ -69,7 +69,7 @@ final class DefinitionGetParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

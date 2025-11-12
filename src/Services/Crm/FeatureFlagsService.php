@@ -12,12 +12,12 @@ use HubspotSDK\Services\Crm\FeatureFlags\PortalsService;
 final class FeatureFlagsService implements FeatureFlagsContract
 {
     /**
-     * @@api
+     * @api
      */
     public AppsService $apps;
 
     /**
-     * @@api
+     * @api
      */
     public PortalsService $portals;
 

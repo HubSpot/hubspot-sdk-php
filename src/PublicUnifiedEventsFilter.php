@@ -13,9 +13,9 @@ use HubspotSDK\PublicUnifiedEventsFilter\FilterType;
  * @phpstan-type PublicUnifiedEventsFilterShape = array{
  *   filterLines: list<PublicEventFilterMetadata>,
  *   filterType: value-of<FilterType>,
- *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
- *   eventTypeID?: string,
- *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   eventTypeId?: string|null,
+ *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
 final class PublicUnifiedEventsFilter implements BaseModel
@@ -34,8 +34,8 @@ final class PublicUnifiedEventsFilter implements BaseModel
     #[Api(optional: true)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
-    #[Api('eventTypeId', optional: true)]
-    public ?string $eventTypeID;
+    #[Api(optional: true)]
+    public ?string $eventTypeId;
 
     #[Api(optional: true)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
@@ -71,7 +71,7 @@ final class PublicUnifiedEventsFilter implements BaseModel
         array $filterLines,
         FilterType|string $filterType = 'UNIFIED_EVENTS',
         PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
-        ?string $eventTypeID = null,
+        ?string $eventTypeId = null,
         PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
         $obj = new self;
@@ -80,7 +80,7 @@ final class PublicUnifiedEventsFilter implements BaseModel
         $obj['filterType'] = $filterType;
 
         null !== $coalescingRefineBy && $obj->coalescingRefineBy = $coalescingRefineBy;
-        null !== $eventTypeID && $obj->eventTypeID = $eventTypeID;
+        null !== $eventTypeId && $obj->eventTypeId = $eventTypeId;
         null !== $pruningRefineBy && $obj->pruningRefineBy = $pruningRefineBy;
 
         return $obj;
@@ -120,7 +120,7 @@ final class PublicUnifiedEventsFilter implements BaseModel
     public function withEventTypeID(string $eventTypeID): self
     {
         $obj = clone $this;
-        $obj->eventTypeID = $eventTypeID;
+        $obj->eventTypeId = $eventTypeID;
 
         return $obj;
     }

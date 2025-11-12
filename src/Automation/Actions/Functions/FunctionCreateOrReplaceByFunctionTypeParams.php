@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Automation\Actions\Functions->createOrReplaceByFunctionType
  *
  * @phpstan-type FunctionCreateOrReplaceByFunctionTypeParamsShape = array{
- *   appID: int, definitionID: string, body: string
+ *   appId: int, definitionId: string, body: string
  * }
  */
 final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
@@ -25,10 +25,10 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     #[Api]
-    public string $definitionID;
+    public string $definitionId;
 
     #[Api]
     public string $body;
@@ -39,7 +39,7 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
      * To enforce required parameters use
      * ```
      * FunctionCreateOrReplaceByFunctionTypeParams::with(
-     *   appID: ..., definitionID: ..., body: ...
+     *   appId: ..., definitionId: ..., body: ...
      * )
      * ```
      *
@@ -63,14 +63,14 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appID,
-        string $definitionID,
+        int $appId,
+        string $definitionId,
         string $body
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->definitionID = $definitionID;
+        $obj->appId = $appId;
+        $obj->definitionId = $definitionId;
         $obj->body = $body;
 
         return $obj;
@@ -79,7 +79,7 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
     public function withDefinitionID(string $definitionID): self
     {
         $obj = clone $this;
-        $obj->definitionID = $definitionID;
+        $obj->definitionId = $definitionID;
 
         return $obj;
     }

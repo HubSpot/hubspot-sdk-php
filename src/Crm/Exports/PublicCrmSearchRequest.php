@@ -15,7 +15,7 @@ use HubspotSDK\Crm\FilterGroup;
  *   filterGroups: list<FilterGroup>,
  *   filters: list<Filter>,
  *   sorts: list<string>,
- *   query?: string,
+ *   query?: string|null,
  * }
  */
 final class PublicCrmSearchRequest implements BaseModel

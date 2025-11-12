@@ -13,7 +13,7 @@ use HubspotSDK\ForwardPaging;
  * Response object for collections of marketing emails with pagination information.
  *
  * @phpstan-type CollectionResponseWithTotalPublicEmailForwardPagingShape = array{
- *   results: list<PublicEmail>, total: int, paging?: ForwardPaging
+ *   results: list<PublicEmail>, total: int, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseWithTotalPublicEmailForwardPaging implements BaseModel

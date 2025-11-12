@@ -16,8 +16,8 @@ use HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption;
  * @see HubspotSDK\Crm\Timeline\Tokens->update
  *
  * @phpstan-type TokenUpdateParamsShape = array{
- *   appID: int,
- *   eventTemplateID: string,
+ *   appId: int,
+ *   eventTemplateId: string,
  *   label: string,
  *   objectPropertyName?: string,
  *   options?: list<TimelineEventTemplateTokenOption>,
@@ -30,10 +30,10 @@ final class TokenUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     #[Api]
-    public string $eventTemplateID;
+    public string $eventTemplateId;
 
     /**
      * Used for list segmentation and reporting.
@@ -60,7 +60,7 @@ final class TokenUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * TokenUpdateParams::with(appID: ..., eventTemplateID: ..., label: ...)
+     * TokenUpdateParams::with(appId: ..., eventTemplateId: ..., label: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -85,16 +85,16 @@ final class TokenUpdateParams implements BaseModel
      * @param list<TimelineEventTemplateTokenOption> $options
      */
     public static function with(
-        int $appID,
-        string $eventTemplateID,
+        int $appId,
+        string $eventTemplateId,
         string $label,
         ?string $objectPropertyName = null,
         ?array $options = null,
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->eventTemplateID = $eventTemplateID;
+        $obj->appId = $appId;
+        $obj->eventTemplateId = $eventTemplateId;
         $obj->label = $label;
 
         null !== $objectPropertyName && $obj->objectPropertyName = $objectPropertyName;
@@ -106,7 +106,7 @@ final class TokenUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class TokenUpdateParams implements BaseModel
     public function withEventTemplateID(string $eventTemplateID): self
     {
         $obj = clone $this;
-        $obj->eventTemplateID = $eventTemplateID;
+        $obj->eventTemplateId = $eventTemplateID;
 
         return $obj;
     }

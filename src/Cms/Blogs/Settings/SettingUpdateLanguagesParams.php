@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Blogs\Settings->updateLanguages
  *
  * @phpstan-type SettingUpdateLanguagesParamsShape = array{
- *   languages: array<string, string>, primaryID: string
+ *   languages: array<string,string>, primaryId: string
  * }
  */
 final class SettingUpdateLanguagesParams implements BaseModel
@@ -25,7 +25,7 @@ final class SettingUpdateLanguagesParams implements BaseModel
     /**
      * Map of object IDs to associated languages of object in the multi-language group.
      *
-     * @var array<string, string> $languages
+     * @var array<string,string> $languages
      */
     #[Api(map: 'string')]
     public array $languages;
@@ -33,15 +33,15 @@ final class SettingUpdateLanguagesParams implements BaseModel
     /**
      * ID of the primary object in the multi-language group.
      */
-    #[Api('primaryId')]
-    public string $primaryID;
+    #[Api]
+    public string $primaryId;
 
     /**
      * `new SettingUpdateLanguagesParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SettingUpdateLanguagesParams::with(languages: ..., primaryID: ...)
+     * SettingUpdateLanguagesParams::with(languages: ..., primaryId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,14 +60,14 @@ final class SettingUpdateLanguagesParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $languages
+     * @param array<string,string> $languages
      */
-    public static function with(array $languages, string $primaryID): self
+    public static function with(array $languages, string $primaryId): self
     {
         $obj = new self;
 
         $obj->languages = $languages;
-        $obj->primaryID = $primaryID;
+        $obj->primaryId = $primaryId;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class SettingUpdateLanguagesParams implements BaseModel
     /**
      * Map of object IDs to associated languages of object in the multi-language group.
      *
-     * @param array<string, string> $languages
+     * @param array<string,string> $languages
      */
     public function withLanguages(array $languages): self
     {
@@ -91,7 +91,7 @@ final class SettingUpdateLanguagesParams implements BaseModel
     public function withPrimaryID(string $primaryID): self
     {
         $obj = clone $this;
-        $obj->primaryID = $primaryID;
+        $obj->primaryId = $primaryID;
 
         return $obj;
     }

@@ -11,7 +11,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponseFormDefinitionBaseForwardPagingShape = array{
- *   results: list<HubSpotFormDefinition>, paging?: ForwardPaging
+ *   results: list<HubSpotFormDefinition>, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseModel

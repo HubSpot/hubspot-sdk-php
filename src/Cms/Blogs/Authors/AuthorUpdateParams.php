@@ -30,7 +30,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   linkedin: string,
  *   name: string,
  *   slug: string,
- *   translatedFromID: int,
+ *   translatedFromId: int,
  *   twitter: string,
  *   updated: \DateTimeInterface,
  *   website: string,
@@ -114,8 +114,8 @@ final class AuthorUpdateParams implements BaseModel
     /**
      * ID of the primary blog author this object was translated from.
      */
-    #[Api('translatedFromId')]
-    public int $translatedFromID;
+    #[Api]
+    public int $translatedFromId;
 
     /**
      * URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.
@@ -157,7 +157,7 @@ final class AuthorUpdateParams implements BaseModel
      *   linkedin: ...,
      *   name: ...,
      *   slug: ...,
-     *   translatedFromID: ...,
+     *   translatedFromId: ...,
      *   twitter: ...,
      *   updated: ...,
      *   website: ...,
@@ -213,7 +213,7 @@ final class AuthorUpdateParams implements BaseModel
         string $linkedin,
         string $name,
         string $slug,
-        int $translatedFromID,
+        int $translatedFromId,
         string $twitter,
         \DateTimeInterface $updated,
         string $website,
@@ -234,7 +234,7 @@ final class AuthorUpdateParams implements BaseModel
         $obj->linkedin = $linkedin;
         $obj->name = $name;
         $obj->slug = $slug;
-        $obj->translatedFromID = $translatedFromID;
+        $obj->translatedFromId = $translatedFromId;
         $obj->twitter = $twitter;
         $obj->updated = $updated;
         $obj->website = $website;
@@ -383,7 +383,7 @@ final class AuthorUpdateParams implements BaseModel
     public function withTranslatedFromID(int $translatedFromID): self
     {
         $obj = clone $this;
-        $obj->translatedFromID = $translatedFromID;
+        $obj->translatedFromId = $translatedFromID;
 
         return $obj;
     }

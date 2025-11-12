@@ -9,141 +9,68 @@ use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponse
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponseV2;
 use HubspotSDK\Marketing\Events\CollectionResponseSearchPublicResponseWrapperNoPaging;
 use HubspotSDK\Marketing\Events\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging;
-use HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams;
+use HubspotSDK\Marketing\Events\EventCancelByExternalEventIDParams;
+use HubspotSDK\Marketing\Events\EventCompleteByExternalEventIDParams;
+use HubspotSDK\Marketing\Events\EventCreateParams;
+use HubspotSDK\Marketing\Events\EventDeleteBatchByExternalEventIDParams;
+use HubspotSDK\Marketing\Events\EventDeleteBatchParams;
+use HubspotSDK\Marketing\Events\EventDeleteByExternalEventIDParams;
+use HubspotSDK\Marketing\Events\EventGetByExternalEventIDParams;
+use HubspotSDK\Marketing\Events\EventListParams;
+use HubspotSDK\Marketing\Events\EventSearchByExternalEventIDParams;
+use HubspotSDK\Marketing\Events\EventUpdateBatchParams;
+use HubspotSDK\Marketing\Events\EventUpdateByExternalEventIDParams;
+use HubspotSDK\Marketing\Events\EventUpdateParams;
+use HubspotSDK\Marketing\Events\EventUpsertBatchParams;
+use HubspotSDK\Marketing\Events\EventUpsertByExternalEventIDParams;
+use HubspotSDK\Marketing\Events\EventUpsertSubscriberStateByEmailParams;
+use HubspotSDK\Marketing\Events\EventUpsertSubscriberStateByIDParams;
 use HubspotSDK\Marketing\Events\MarketingEventDefaultResponse;
-use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
-use HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponseV2;
-use HubspotSDK\Marketing\Events\MarketingEventPublicObjectIDDeleteRequest;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponseV2;
-use HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2;
-use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
-use HubspotSDK\Marketing\Events\PropertyValue;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface EventsContract
 {
     /**
      * @api
      *
-     * @param string $eventName the name of the marketing event
-     * @param string $eventOrganizer the name of the organizer of the marketing event
-     * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
-     * @param string $externalEventID the id of the marketing event in the external event application
-     * @param list<PropertyValue> $customProperties A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
-     * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
-     * @param \DateTimeInterface $endDateTime the end date and time of the marketing event
-     * @param bool $eventCancelled Indicates if the marketing event has been cancelled.  Defaults to `false`
-     * @param bool $eventCompleted
-     * @param string $eventDescription the description of the marketing event
-     * @param string $eventType Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`
-     * @param string $eventURL a URL in the external event application where the marketing event can be managed
-     * @param \DateTimeInterface $startDateTime the start date and time of the marketing event
+     * @param array<mixed>|EventCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $eventName,
-        $eventOrganizer,
-        $externalAccountID,
-        $externalEventID,
-        $customProperties = omit,
-        $endDateTime = omit,
-        $eventCancelled = omit,
-        $eventCompleted = omit,
-        $eventDescription = omit,
-        $eventType = omit,
-        $eventURL = omit,
-        $startDateTime = omit,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventDefaultResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|EventCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): MarketingEventDefaultResponse;
 
     /**
      * @api
      *
-     * @param list<PropertyValue> $customProperties
-     * @param \DateTimeInterface $endDateTime
-     * @param bool $eventCancelled
-     * @param string $eventDescription
-     * @param string $eventName
-     * @param string $eventOrganizer
-     * @param string $eventType
-     * @param string $eventURL
-     * @param \DateTimeInterface $startDateTime
+     * @param array<mixed>|EventUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $objectID,
-        $customProperties,
-        $endDateTime = omit,
-        $eventCancelled = omit,
-        $eventDescription = omit,
-        $eventName = omit,
-        $eventOrganizer = omit,
-        $eventType = omit,
-        $eventURL = omit,
-        $startDateTime = omit,
+        array|EventUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicDefaultResponseV2;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): MarketingEventPublicDefaultResponseV2;
-
-    /**
-     * @api
-     *
-     * @param string $after the cursor indicating the position of the last retrieved item
-     * @param int $limit The limit for response size. The default value is 10, the max number is 100
+     * @param array<mixed>|EventListParams $params
      *
      * @return Page<MarketingEventPublicReadResponseV2>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $limit = omit,
-        ?RequestOptions $requestOptions = null
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<MarketingEventPublicReadResponseV2>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|EventListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page;
 
@@ -160,130 +87,63 @@ interface EventsContract
     /**
      * @api
      *
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
+     * @param array<mixed>|EventCancelByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function cancelByExternalEventID(
         string $externalEventID,
-        $externalAccountID,
+        array|EventCancelByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventDefaultResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function cancelByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventDefaultResponse;
-
-    /**
-     * @api
-     *
-     * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
-     * @param \DateTimeInterface $endDateTime
-     * @param \DateTimeInterface $startDateTime
+     * @param array<mixed>|EventCompleteByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function completeByExternalEventID(
         string $externalEventID,
-        $externalAccountID,
-        $endDateTime,
-        $startDateTime,
+        array|EventCompleteByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventDefaultResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function completeByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventDefaultResponse;
-
-    /**
-     * @api
-     *
-     * @param list<MarketingEventPublicObjectIDDeleteRequest> $inputs
+     * @param array<mixed>|EventDeleteBatchParams $params
      *
      * @throws APIException
      */
     public function deleteBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
+        array|EventDeleteBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param list<MarketingEventExternalUniqueIdentifier> $inputs
+     * @param array<mixed>|EventDeleteBatchByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function deleteBatchByExternalEventID(
-        $inputs,
-        ?RequestOptions $requestOptions = null
+        array|EventDeleteBatchByExternalEventIDParams $params,
+        ?RequestOptions $requestOptions = null,
     ): string;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteBatchByExternalEventIDRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): string;
-
-    /**
-     * @api
-     *
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
+     * @param array<mixed>|EventDeleteByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function deleteByExternalEventID(
         string $externalEventID,
-        $externalAccountID,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
+        array|EventDeleteByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
@@ -300,51 +160,26 @@ interface EventsContract
     /**
      * @api
      *
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
+     * @param array<mixed>|EventGetByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function getByExternalEventID(
         string $externalEventID,
-        $externalAccountID,
+        array|EventGetByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicReadResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventPublicReadResponse;
-
-    /**
-     * @api
-     *
-     * @param string $q The id of the marketing event in the external event application (externalEventId)
+     * @param array<mixed>|EventSearchByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function searchByExternalEventID(
-        $q,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseSearchPublicResponseWrapperNoPaging;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function searchByExternalEventIDRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|EventSearchByExternalEventIDParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponseSearchPublicResponseWrapperNoPaging;
 
     /**
@@ -360,204 +195,76 @@ interface EventsContract
     /**
      * @api
      *
-     * @param list<MarketingEventPublicUpdateRequestFullV2> $inputs
+     * @param array<mixed>|EventUpdateBatchParams $params
      *
      * @throws APIException
      */
     public function updateBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
+        array|EventUpdateBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseMarketingEventPublicDefaultResponseV2;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseMarketingEventPublicDefaultResponseV2;
-
-    /**
-     * @api
-     *
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
-     * @param list<PropertyValue> $customProperties A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
-     * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
-     * @param \DateTimeInterface $endDateTime the end date and time of the marketing event
-     * @param bool $eventCancelled Indicates if the marketing event has been cancelled. Defaults to `false`
-     * @param bool $eventCompleted
-     * @param string $eventDescription the description of the marketing event
-     * @param string $eventName the name of the marketing event
-     * @param string $eventOrganizer the name of the organizer of the marketing event
-     * @param string $eventType Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`
-     * @param string $eventURL a URL in the external event application where the marketing event can be managed
-     * @param \DateTimeInterface $startDateTime the start date and time of the marketing event
+     * @param array<mixed>|EventUpdateByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function updateByExternalEventID(
         string $externalEventID,
-        $externalAccountID,
-        $customProperties = omit,
-        $endDateTime = omit,
-        $eventCancelled = omit,
-        $eventCompleted = omit,
-        $eventDescription = omit,
-        $eventName = omit,
-        $eventOrganizer = omit,
-        $eventType = omit,
-        $eventURL = omit,
-        $startDateTime = omit,
+        array|EventUpdateByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicDefaultResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventPublicDefaultResponse;
-
-    /**
-     * @api
-     *
-     * @param list<MarketingEventCreateRequestParams> $inputs
+     * @param array<mixed>|EventUpsertBatchParams $params
      *
      * @throws APIException
      */
     public function upsertBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
+        array|EventUpsertBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseMarketingEventPublicDefaultResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseMarketingEventPublicDefaultResponse;
-
-    /**
-     * @api
-     *
-     * @param string $eventName the name of the marketing event
-     * @param string $eventOrganizer the name of the organizer of the marketing event
-     * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
-     * @param string $externalEventID1 the id of the marketing event in the external event application
-     * @param list<PropertyValue> $customProperties A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
-     * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
-     * @param \DateTimeInterface $endDateTime the end date and time of the marketing event
-     * @param bool $eventCancelled Indicates if the marketing event has been cancelled.  Defaults to `false`
-     * @param bool $eventCompleted
-     * @param string $eventDescription the description of the marketing event
-     * @param string $eventType Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`
-     * @param string $eventURL a URL in the external event application where the marketing event can be managed
-     * @param \DateTimeInterface $startDateTime the start date and time of the marketing event
+     * @param array<mixed>|EventUpsertByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function upsertByExternalEventID(
         string $externalEventID,
-        $eventName,
-        $eventOrganizer,
-        $externalAccountID,
-        $externalEventID1,
-        $customProperties = omit,
-        $endDateTime = omit,
-        $eventCancelled = omit,
-        $eventCompleted = omit,
-        $eventDescription = omit,
-        $eventType = omit,
-        $eventURL = omit,
-        $startDateTime = omit,
+        array|EventUpsertByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicDefaultResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventPublicDefaultResponse;
-
-    /**
-     * @api
-     *
-     * @param string $externalEventID
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
-     * @param list<MarketingEventEmailSubscriber> $inputs List of marketing event details to create or update
+     * @param array<mixed>|EventUpsertSubscriberStateByEmailParams $params
      *
      * @throws APIException
      */
     public function upsertSubscriberStateByEmail(
         string $subscriberState,
-        $externalEventID,
-        $externalAccountID,
-        $inputs,
+        array|EventUpsertSubscriberStateByEmailParams $params,
         ?RequestOptions $requestOptions = null,
     ): string;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertSubscriberStateByEmailRaw(
-        string $subscriberState,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): string;
-
-    /**
-     * @api
-     *
-     * @param string $externalEventID
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
-     * @param list<MarketingEventSubscriber> $inputs List of HubSpot contacts to subscribe to the marketing event
+     * @param array<mixed>|EventUpsertSubscriberStateByIDParams $params
      *
      * @throws APIException
      */
     public function upsertSubscriberStateByID(
         string $subscriberState,
-        $externalEventID,
-        $externalAccountID,
-        $inputs,
-        ?RequestOptions $requestOptions = null,
-    ): string;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertSubscriberStateByIDRaw(
-        string $subscriberState,
-        array $params,
+        array|EventUpsertSubscriberStateByIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): string;
 }

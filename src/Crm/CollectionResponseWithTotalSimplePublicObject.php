@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type CollectionResponseWithTotalSimplePublicObjectShape = array{
- *   results: list<SimplePublicObject>, total: int, paging?: EmailsPaging
+ *   results: list<SimplePublicObject>, total: int, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponseWithTotalSimplePublicObject implements BaseModel

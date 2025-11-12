@@ -11,14 +11,12 @@ use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
 use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateObjectDefinitionParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateObjectDefinitionParams\MediaType;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateOembedDomainParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetObjectDefinitionsByMediaTypeParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetOembedDomainParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingRegisterAppNameParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateAppNameParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams\EventType;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateOembedDomainParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
@@ -26,8 +24,6 @@ use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\IntegratorSettingsContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class IntegratorSettingsService implements IntegratorSettingsContract
 {
@@ -41,37 +37,20 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Create a new media object type
      *
-     * @param list<MediaType|value-of<MediaType>> $mediaTypes
+     * @param array{
+     *   mediaTypes: list<"VIDEO"|"AUDIO"|"DOCUMENT"|"OTHER"|"IMAGE">
+     * }|IntegratorSettingCreateObjectDefinitionParams $params
      *
      * @throws APIException
      */
     public function createObjectDefinition(
         string $appID,
-        $mediaTypes,
-        ?RequestOptions $requestOptions = null
+        array|IntegratorSettingCreateObjectDefinitionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BulkIntegratorObjectCreationResponse {
-        $params = ['mediaTypes' => $mediaTypes];
-
-        return $this->createObjectDefinitionRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createObjectDefinitionRaw(
-        string $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BulkIntegratorObjectCreationResponse {
-        [
-            $parsed, $options,
-        ] = IntegratorSettingCreateObjectDefinitionParams::parseRequest(
+        [$parsed, $options] = IntegratorSettingCreateObjectDefinitionParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -89,39 +68,23 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Set up a new oEmbed domain for your media bridge app.
      *
-     * @param Endpoints $endpoints
-     * @param int $portalID
+     * @param array{
+     *   endpoints: array{
+     *     discovery: bool, schemes: list<string>, url: string
+     *   }|Endpoints,
+     *   portalId?: int,
+     * }|IntegratorSettingCreateOembedDomainParams $params
      *
      * @throws APIException
      */
     public function createOembedDomain(
         string $appID,
-        $endpoints,
-        $portalID = omit,
+        array|IntegratorSettingCreateOembedDomainParams $params,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel {
-        $params = ['endpoints' => $endpoints, 'portalID' => $portalID];
-
-        return $this->createOembedDomainRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createOembedDomainRaw(
-        string $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): IntegratorOEmbedDomainModel {
-        [
-            $parsed, $options,
-        ] = IntegratorSettingCreateOembedDomainParams::parseRequest(
+        [$parsed, $options] = IntegratorSettingCreateOembedDomainParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -179,44 +142,23 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Get the existing objects types that belong to the specified media type.
      *
-     * @param string $appID
+     * @param array{
+     *   appId: string
+     * }|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
      *
      * @throws APIException
      */
     public function getObjectDefinitionsByMediaType(
         string $mediaType,
-        $appID,
-        ?RequestOptions $requestOptions = null
+        array|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ObjectDefinitionResponse {
-        $params = ['appID' => $appID];
-
-        return $this->getObjectDefinitionsByMediaTypeRaw(
-            $mediaType,
+        [$parsed, $options] = IntegratorSettingGetObjectDefinitionsByMediaTypeParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getObjectDefinitionsByMediaTypeRaw(
-        string $mediaType,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): ObjectDefinitionResponse {
-        [
-            $parsed, $options,
-        ] = IntegratorSettingGetObjectDefinitionsByMediaTypeParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -236,38 +178,21 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Get the details for an existing oEmbed domain.
      *
-     * @param string $appID
+     * @param array{appId: string}|IntegratorSettingGetOembedDomainParams $params
      *
      * @throws APIException
      */
     public function getOembedDomain(
         string $oEmbedDomainID,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): IntegratorOEmbedDomainModel {
-        $params = ['appID' => $appID];
-
-        return $this->getOembedDomainRaw($oEmbedDomainID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getOembedDomainRaw(
-        string $oEmbedDomainID,
-        array $params,
+        array|IntegratorSettingGetOembedDomainParams $params,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel {
         [$parsed, $options] = IntegratorSettingGetOembedDomainParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -309,39 +234,20 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Register the name that your app will display when a user is selecting media bridge items.
      *
-     * @param int $updatedAt
-     * @param string $name
+     * @param array{
+     *   updatedAt: int, name?: string
+     * }|IntegratorSettingRegisterAppNameParams $params
      *
      * @throws APIException
      */
     public function registerAppName(
         string $appID,
-        $updatedAt,
-        $name = omit,
+        array|IntegratorSettingRegisterAppNameParams $params,
         ?RequestOptions $requestOptions = null,
-    ): MediaBridgeProviderRegistrationResponse {
-        $params = ['updatedAt' => $updatedAt, 'name' => $name];
-
-        return $this->registerAppNameRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @deprecated
-     *
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function registerAppNameRaw(
-        string $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): MediaBridgeProviderRegistrationResponse {
         [$parsed, $options] = IntegratorSettingRegisterAppNameParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -359,37 +265,20 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Update the name that your app will display when a user is selecting media bridge items.
      *
-     * @param int $updatedAt
-     * @param string $name
+     * @param array{
+     *   updatedAt: int, name?: string
+     * }|IntegratorSettingUpdateAppNameParams $params
      *
      * @throws APIException
      */
     public function updateAppName(
         string $appID,
-        $updatedAt,
-        $name = omit,
+        array|IntegratorSettingUpdateAppNameParams $params,
         ?RequestOptions $requestOptions = null,
-    ): MediaBridgeProviderRegistrationResponse {
-        $params = ['updatedAt' => $updatedAt, 'name' => $name];
-
-        return $this->updateAppNameRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateAppNameRaw(
-        string $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): MediaBridgeProviderRegistrationResponse {
         [$parsed, $options] = IntegratorSettingUpdateAppNameParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -407,55 +296,24 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Set the visibility settings for media bridge events created by your app.
      *
-     * @param EventType|value-of<EventType> $eventType
-     * @param int $updatedAt
-     * @param bool $showInReporting
-     * @param bool $showInTimeline
-     * @param bool $showInWorkflows
+     * @param array{
+     *   eventType: "ALL"|"MEDIA_PLAYS"|"MEDIA_PLAYS_PERCENT"|"ATTENTION_SPAN",
+     *   updatedAt: int,
+     *   showInReporting?: bool,
+     *   showInTimeline?: bool,
+     *   showInWorkflows?: bool,
+     * }|IntegratorSettingUpdateEventVisibilitySettingsParams $params
      *
      * @throws APIException
      */
     public function updateEventVisibilitySettings(
         string $appID,
-        $eventType,
-        $updatedAt,
-        $showInReporting = omit,
-        $showInTimeline = omit,
-        $showInWorkflows = omit,
+        array|IntegratorSettingUpdateEventVisibilitySettingsParams $params,
         ?RequestOptions $requestOptions = null,
     ): EventVisibilityChange {
-        $params = [
-            'eventType' => $eventType,
-            'updatedAt' => $updatedAt,
-            'showInReporting' => $showInReporting,
-            'showInTimeline' => $showInTimeline,
-            'showInWorkflows' => $showInWorkflows,
-        ];
-
-        return $this->updateEventVisibilitySettingsRaw(
-            $appID,
+        [$parsed, $options] = IntegratorSettingUpdateEventVisibilitySettingsParams::parseRequest(
             $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateEventVisibilitySettingsRaw(
-        string $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): EventVisibilityChange {
-        [
-            $parsed, $options,
-        ] = IntegratorSettingUpdateEventVisibilitySettingsParams::parseRequest(
-            $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -473,50 +331,27 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Update an existing oEmbed domain.
      *
-     * @param string $appID
-     * @param Endpoints $endpoints
-     * @param int $portalID
+     * @param array{
+     *   appId: string,
+     *   endpoints: array{
+     *     discovery: bool, schemes: list<string>, url: string
+     *   }|Endpoints,
+     *   portalId?: int,
+     * }|IntegratorSettingUpdateOembedDomainParams $params
      *
      * @throws APIException
      */
     public function updateOembedDomain(
         string $oEmbedDomainID,
-        $appID,
-        $endpoints,
-        $portalID = omit,
+        array|IntegratorSettingUpdateOembedDomainParams $params,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel {
-        $params = [
-            'appID' => $appID, 'endpoints' => $endpoints, 'portalID' => $portalID,
-        ];
-
-        return $this->updateOembedDomainRaw(
-            $oEmbedDomainID,
+        [$parsed, $options] = IntegratorSettingUpdateOembedDomainParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateOembedDomainRaw(
-        string $oEmbedDomainID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): IntegratorOEmbedDomainModel {
-        [
-            $parsed, $options,
-        ] = IntegratorSettingUpdateOembedDomainParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -526,7 +361,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
                 $appID,
                 $oEmbedDomainID,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: IntegratorOEmbedDomainModel::class,
         );

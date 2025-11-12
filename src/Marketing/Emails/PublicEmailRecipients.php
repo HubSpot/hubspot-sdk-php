@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Data structure representing lists of IDs that should be included and excluded.
  *
  * @phpstan-type PublicEmailRecipientsShape = array{
- *   exclude?: list<string>, include1?: list<string>
+ *   exclude?: list<string>|null, include1?: list<string>|null
  * }
  */
 final class PublicEmailRecipients implements BaseModel

@@ -26,17 +26,11 @@ use HubspotSDK\Marketing\Events\EventUpsertBatchParams;
 use HubspotSDK\Marketing\Events\EventUpsertByExternalEventIDParams;
 use HubspotSDK\Marketing\Events\EventUpsertSubscriberStateByEmailParams;
 use HubspotSDK\Marketing\Events\EventUpsertSubscriberStateByIDParams;
-use HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams;
 use HubspotSDK\Marketing\Events\MarketingEventDefaultResponse;
-use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
-use HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponseV2;
-use HubspotSDK\Marketing\Events\MarketingEventPublicObjectIDDeleteRequest;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponseV2;
-use HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2;
-use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
 use HubspotSDK\Marketing\Events\PropertyValue;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -46,27 +40,25 @@ use HubspotSDK\Services\Marketing\Events\AttendanceService;
 use HubspotSDK\Services\Marketing\Events\ParticipationsService;
 use HubspotSDK\Services\Marketing\Events\SettingsService;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class EventsService implements EventsContract
 {
     /**
-     * @@api
+     * @api
      */
     public AssociationsService $associations;
 
     /**
-     * @@api
+     * @api
      */
     public AttendanceService $attendance;
 
     /**
-     * @@api
+     * @api
      */
     public ParticipationsService $participations;
 
     /**
-     * @@api
+     * @api
      */
     public SettingsService $settings;
 
@@ -86,69 +78,50 @@ final class EventsService implements EventsContract
      *
      * Creates a new marketing event in HubSpot
      *
-     * @param string $eventName the name of the marketing event
-     * @param string $eventOrganizer the name of the organizer of the marketing event
-     * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
-     * @param string $externalEventID the id of the marketing event in the external event application
-     * @param list<PropertyValue> $customProperties A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
-     * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
-     * @param \DateTimeInterface $endDateTime the end date and time of the marketing event
-     * @param bool $eventCancelled Indicates if the marketing event has been cancelled.  Defaults to `false`
-     * @param bool $eventCompleted
-     * @param string $eventDescription the description of the marketing event
-     * @param string $eventType Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`
-     * @param string $eventURL a URL in the external event application where the marketing event can be managed
-     * @param \DateTimeInterface $startDateTime the start date and time of the marketing event
+     * @param array{
+     *   eventName: string,
+     *   eventOrganizer: string,
+     *   externalAccountId: string,
+     *   externalEventId: string,
+     *   customProperties?: list<array{
+     *     name: string,
+     *     sourceUpstreamDeployable: string,
+     *     value: string,
+     *     dataSensitivity?: "none"|"standard"|"high",
+     *     isEncrypted?: bool,
+     *     isLargeValue?: bool,
+     *     persistenceTimestamp?: int,
+     *     requestId?: string,
+     *     selectedByUser?: bool,
+     *     selectedByUserTimestamp?: int,
+     *     source?: "UNKNOWN"|"IMPORT"|"API"|"FORM"|"ANALYTICS"|"MIGRATION"|"SALESFORCE"|"INTEGRATION"|"CONTACTS_WEB"|"WAL_INCREMENTAL"|"TASK"|"EMAIL"|"WORKFLOWS"|"CALCULATED"|"SOCIAL"|"BATCH_UPDATE"|"SIGNALS"|"BIDEN"|"DEFAULT"|"COMPANIES"|"DEALS"|"ASSISTS"|"PRESENTATIONS"|"TALLY"|"SIDEKICK"|"CRM_UI"|"MERGE_CONTACTS"|"PORTAL_USER_ASSOCIATOR"|"INTEGRATIONS_PLATFORM"|"BCC_TO_CRM"|"FORWARD_TO_CRM"|"ENGAGEMENTS"|"SALES"|"HEISENBERG"|"LEADIN"|"GMAIL_INTEGRATION"|"ACADEMY"|"SALES_MESSAGES"|"AVATARS_SERVICE"|"MERGE_COMPANIES"|"SEQUENCES"|"COMPANY_FAMILIES"|"MOBILE_IOS"|"MOBILE_ANDROID"|"CONTACTS"|"ASSOCIATIONS"|"EXTENSION"|"SUCCESS"|"BOT"|"INTEGRATIONS_SYNC"|"AUTOMATION_PLATFORM"|"CONVERSATIONS"|"EMAIL_INTEGRATION"|"CONTENT_MEMBERSHIP"|"QUOTES"|"BET_ASSIGNMENT"|"QUOTAS"|"BET_CRM_CONNECTOR"|"MEETINGS"|"MERGE_OBJECTS"|"RECYCLING_BIN"|"ADS"|"AI_GROUP"|"COMMUNICATOR"|"SETTINGS"|"PROPERTY_SETTINGS"|"PIPELINE_SETTINGS"|"COMPANY_INSIGHTS"|"BEHAVIORAL_EVENTS"|"PAYMENTS"|"GOALS"|"PORTAL_OBJECT_SYNC"|"APPROVALS"|"FILE_MANAGER"|"MARKETPLACE"|"INTERNAL_PROCESSING"|"FORECASTING"|"SLACK_INTEGRATION"|"CRM_UI_BULK_ACTION"|"WORKFLOW_CONTACT_DELETE_ACTION"|"ACCEPTANCE_TEST"|"PLAYBOOKS"|"CHATSPOT"|"FLYWHEEL_PRODUCT_DATA_SYNC"|"HELP_DESK"|"BILLING"|"DATA_ENRICHMENT"|"AUTOMATION_JOURNEY"|"MICROAPPS"|"INTENT"|"PROSPECTING_AGENT"|"CENTRAL_EXCHANGE_RATES"|"HELP_DESK_AI"|"CONVERSATIONAL_ENRICHMENT"|"CRM_PROCESSES_PLATFORM"|"CLONE_OBJECTS"|"MARKET_SOURCING"|"DATASET"|"PROPERTY_RESTORE",
+     *     sourceId?: string,
+     *     sourceLabel?: string,
+     *     sourceMetadata?: string,
+     *     sourceVid?: list<int>,
+     *     timestamp?: int,
+     *     unit?: string,
+     *     updatedByUserId?: int,
+     *     useTimestampAsPersistenceTimestamp?: bool,
+     *   }|PropertyValue>,
+     *   endDateTime?: string|\DateTimeInterface,
+     *   eventCancelled?: bool,
+     *   eventCompleted?: bool,
+     *   eventDescription?: string,
+     *   eventType?: string,
+     *   eventUrl?: string,
+     *   startDateTime?: string|\DateTimeInterface,
+     * }|EventCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $eventName,
-        $eventOrganizer,
-        $externalAccountID,
-        $externalEventID,
-        $customProperties = omit,
-        $endDateTime = omit,
-        $eventCancelled = omit,
-        $eventCompleted = omit,
-        $eventDescription = omit,
-        $eventType = omit,
-        $eventURL = omit,
-        $startDateTime = omit,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventDefaultResponse {
-        $params = [
-            'eventName' => $eventName,
-            'eventOrganizer' => $eventOrganizer,
-            'externalAccountID' => $externalAccountID,
-            'externalEventID' => $externalEventID,
-            'customProperties' => $customProperties,
-            'endDateTime' => $endDateTime,
-            'eventCancelled' => $eventCancelled,
-            'eventCompleted' => $eventCompleted,
-            'eventDescription' => $eventDescription,
-            'eventType' => $eventType,
-            'eventURL' => $eventURL,
-            'startDateTime' => $startDateTime,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|EventCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): MarketingEventDefaultResponse {
         [$parsed, $options] = EventCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -166,61 +139,48 @@ final class EventsService implements EventsContract
      *
      * Updates the details of an existing Marketing Event identified by its objectId, if it exists.
      *
-     * @param list<PropertyValue> $customProperties
-     * @param \DateTimeInterface $endDateTime
-     * @param bool $eventCancelled
-     * @param string $eventDescription
-     * @param string $eventName
-     * @param string $eventOrganizer
-     * @param string $eventType
-     * @param string $eventURL
-     * @param \DateTimeInterface $startDateTime
+     * @param array{
+     *   customProperties: list<array{
+     *     name: string,
+     *     sourceUpstreamDeployable: string,
+     *     value: string,
+     *     dataSensitivity?: "none"|"standard"|"high",
+     *     isEncrypted?: bool,
+     *     isLargeValue?: bool,
+     *     persistenceTimestamp?: int,
+     *     requestId?: string,
+     *     selectedByUser?: bool,
+     *     selectedByUserTimestamp?: int,
+     *     source?: "UNKNOWN"|"IMPORT"|"API"|"FORM"|"ANALYTICS"|"MIGRATION"|"SALESFORCE"|"INTEGRATION"|"CONTACTS_WEB"|"WAL_INCREMENTAL"|"TASK"|"EMAIL"|"WORKFLOWS"|"CALCULATED"|"SOCIAL"|"BATCH_UPDATE"|"SIGNALS"|"BIDEN"|"DEFAULT"|"COMPANIES"|"DEALS"|"ASSISTS"|"PRESENTATIONS"|"TALLY"|"SIDEKICK"|"CRM_UI"|"MERGE_CONTACTS"|"PORTAL_USER_ASSOCIATOR"|"INTEGRATIONS_PLATFORM"|"BCC_TO_CRM"|"FORWARD_TO_CRM"|"ENGAGEMENTS"|"SALES"|"HEISENBERG"|"LEADIN"|"GMAIL_INTEGRATION"|"ACADEMY"|"SALES_MESSAGES"|"AVATARS_SERVICE"|"MERGE_COMPANIES"|"SEQUENCES"|"COMPANY_FAMILIES"|"MOBILE_IOS"|"MOBILE_ANDROID"|"CONTACTS"|"ASSOCIATIONS"|"EXTENSION"|"SUCCESS"|"BOT"|"INTEGRATIONS_SYNC"|"AUTOMATION_PLATFORM"|"CONVERSATIONS"|"EMAIL_INTEGRATION"|"CONTENT_MEMBERSHIP"|"QUOTES"|"BET_ASSIGNMENT"|"QUOTAS"|"BET_CRM_CONNECTOR"|"MEETINGS"|"MERGE_OBJECTS"|"RECYCLING_BIN"|"ADS"|"AI_GROUP"|"COMMUNICATOR"|"SETTINGS"|"PROPERTY_SETTINGS"|"PIPELINE_SETTINGS"|"COMPANY_INSIGHTS"|"BEHAVIORAL_EVENTS"|"PAYMENTS"|"GOALS"|"PORTAL_OBJECT_SYNC"|"APPROVALS"|"FILE_MANAGER"|"MARKETPLACE"|"INTERNAL_PROCESSING"|"FORECASTING"|"SLACK_INTEGRATION"|"CRM_UI_BULK_ACTION"|"WORKFLOW_CONTACT_DELETE_ACTION"|"ACCEPTANCE_TEST"|"PLAYBOOKS"|"CHATSPOT"|"FLYWHEEL_PRODUCT_DATA_SYNC"|"HELP_DESK"|"BILLING"|"DATA_ENRICHMENT"|"AUTOMATION_JOURNEY"|"MICROAPPS"|"INTENT"|"PROSPECTING_AGENT"|"CENTRAL_EXCHANGE_RATES"|"HELP_DESK_AI"|"CONVERSATIONAL_ENRICHMENT"|"CRM_PROCESSES_PLATFORM"|"CLONE_OBJECTS"|"MARKET_SOURCING"|"DATASET"|"PROPERTY_RESTORE",
+     *     sourceId?: string,
+     *     sourceLabel?: string,
+     *     sourceMetadata?: string,
+     *     sourceVid?: list<int>,
+     *     timestamp?: int,
+     *     unit?: string,
+     *     updatedByUserId?: int,
+     *     useTimestampAsPersistenceTimestamp?: bool,
+     *   }|PropertyValue>,
+     *   endDateTime?: string|\DateTimeInterface,
+     *   eventCancelled?: bool,
+     *   eventDescription?: string,
+     *   eventName?: string,
+     *   eventOrganizer?: string,
+     *   eventType?: string,
+     *   eventUrl?: string,
+     *   startDateTime?: string|\DateTimeInterface,
+     * }|EventUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $objectID,
-        $customProperties,
-        $endDateTime = omit,
-        $eventCancelled = omit,
-        $eventDescription = omit,
-        $eventName = omit,
-        $eventOrganizer = omit,
-        $eventType = omit,
-        $eventURL = omit,
-        $startDateTime = omit,
+        array|EventUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): MarketingEventPublicDefaultResponseV2 {
-        $params = [
-            'customProperties' => $customProperties,
-            'endDateTime' => $endDateTime,
-            'eventCancelled' => $eventCancelled,
-            'eventDescription' => $eventDescription,
-            'eventName' => $eventName,
-            'eventOrganizer' => $eventOrganizer,
-            'eventType' => $eventType,
-            'eventURL' => $eventURL,
-            'startDateTime' => $startDateTime,
-        ];
-
-        return $this->updateRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): MarketingEventPublicDefaultResponseV2 {
         [$parsed, $options] = EventUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -240,39 +200,19 @@ final class EventsService implements EventsContract
      *
      * The marketing events returned by this endpoint are sorted by objectId.
      *
-     * @param string $after the cursor indicating the position of the last retrieved item
-     * @param int $limit The limit for response size. The default value is 10, the max number is 100
+     * @param array{after?: string, limit?: int}|EventListParams $params
      *
      * @return Page<MarketingEventPublicReadResponseV2>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $limit = omit,
-        ?RequestOptions $requestOptions = null
-    ): Page {
-        $params = ['after' => $after, 'limit' => $limit];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<MarketingEventPublicReadResponseV2>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|EventListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = EventListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -311,39 +251,20 @@ final class EventsService implements EventsContract
      *
      * Mark a marketing event as cancelled.
      *
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
+     * @param array{
+     *   externalAccountId: string
+     * }|EventCancelByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function cancelByExternalEventID(
         string $externalEventID,
-        $externalAccountID,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventDefaultResponse {
-        $params = ['externalAccountID' => $externalAccountID];
-
-        return $this->cancelByExternalEventIDRaw(
-            $externalEventID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function cancelByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
+        array|EventCancelByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventDefaultResponse {
         [$parsed, $options] = EventCancelByExternalEventIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -363,47 +284,22 @@ final class EventsService implements EventsContract
      *
      * Mark a marketing event as completed
      *
-     * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
-     * @param \DateTimeInterface $endDateTime
-     * @param \DateTimeInterface $startDateTime
+     * @param array{
+     *   externalAccountId: string,
+     *   endDateTime: string|\DateTimeInterface,
+     *   startDateTime: string|\DateTimeInterface,
+     * }|EventCompleteByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function completeByExternalEventID(
         string $externalEventID,
-        $externalAccountID,
-        $endDateTime,
-        $startDateTime,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventDefaultResponse {
-        $params = [
-            'externalAccountID' => $externalAccountID,
-            'endDateTime' => $endDateTime,
-            'startDateTime' => $startDateTime,
-        ];
-
-        return $this->completeByExternalEventIDRaw(
-            $externalEventID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function completeByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
+        array|EventCompleteByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventDefaultResponse {
         [$parsed, $options] = EventCompleteByExternalEventIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['externalAccountId'];
 
@@ -429,33 +325,19 @@ final class EventsService implements EventsContract
      * 204: Returned if all specified Marketing Events were successfully deleted.
      * 207: Returned if some objectIds did not correspond to any existing Marketing Events.
      *
-     * @param list<MarketingEventPublicObjectIDDeleteRequest> $inputs
+     * @param array{
+     *   inputs: list<array{objectId: string}>
+     * }|EventDeleteBatchParams $params
      *
      * @throws APIException
      */
     public function deleteBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['inputs' => $inputs];
-
-        return $this->deleteBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteBatchRaw(
-        array $params,
+        array|EventDeleteBatchParams $params,
         ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = EventDeleteBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -475,33 +357,21 @@ final class EventsService implements EventsContract
      *
      * Only Marketing Events created by the same apps will be deleted; events from other apps cannot be removed by this endpoint.
      *
-     * @param list<MarketingEventExternalUniqueIdentifier> $inputs
+     * @param array{
+     *   inputs: list<array{
+     *     appId: int, externalAccountId: string, externalEventId: string
+     *   }>,
+     * }|EventDeleteBatchByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function deleteBatchByExternalEventID(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): string {
-        $params = ['inputs' => $inputs];
-
-        return $this->deleteBatchByExternalEventIDRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteBatchByExternalEventIDRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|EventDeleteBatchByExternalEventIDParams $params,
+        ?RequestOptions $requestOptions = null,
     ): string {
         [$parsed, $options] = EventDeleteBatchByExternalEventIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -522,39 +392,20 @@ final class EventsService implements EventsContract
      *
      * Only Marketing Events created by the same app can be deleted.
      *
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
+     * @param array{
+     *   externalAccountId: string
+     * }|EventDeleteByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function deleteByExternalEventID(
         string $externalEventID,
-        $externalAccountID,
-        ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['externalAccountID' => $externalAccountID];
-
-        return $this->deleteByExternalEventIDRaw(
-            $externalEventID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
+        array|EventDeleteByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = EventDeleteByExternalEventIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -594,39 +445,18 @@ final class EventsService implements EventsContract
      *
      * Only Marketing Events created by the same app making the request can be retrieved.
      *
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
+     * @param array{externalAccountId: string}|EventGetByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function getByExternalEventID(
         string $externalEventID,
-        $externalAccountID,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventPublicReadResponse {
-        $params = ['externalAccountID' => $externalAccountID];
-
-        return $this->getByExternalEventIDRaw(
-            $externalEventID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
+        array|EventGetByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicReadResponse {
         [$parsed, $options] = EventGetByExternalEventIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -646,33 +476,17 @@ final class EventsService implements EventsContract
      *
      * Marketing Events created by other apps will not be included in the results.
      *
-     * @param string $q The id of the marketing event in the external event application (externalEventId)
+     * @param array{q: string}|EventSearchByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function searchByExternalEventID(
-        $q,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseSearchPublicResponseWrapperNoPaging {
-        $params = ['q' => $q];
-
-        return $this->searchByExternalEventIDRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function searchByExternalEventIDRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|EventSearchByExternalEventIDParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponseSearchPublicResponseWrapperNoPaging {
         [$parsed, $options] = EventSearchByExternalEventIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -718,33 +532,30 @@ final class EventsService implements EventsContract
      *
      * Updates multiple Marketing Events on the portal based on their objectId, if they exist.
      *
-     * @param list<MarketingEventPublicUpdateRequestFullV2> $inputs
+     * @param array{
+     *   inputs: list<array{
+     *     customProperties: list<array<mixed>|PropertyValue>,
+     *     objectId: string,
+     *     endDateTime?: string|\DateTimeInterface,
+     *     eventCancelled?: bool,
+     *     eventDescription?: string,
+     *     eventName?: string,
+     *     eventOrganizer?: string,
+     *     eventType?: string,
+     *     eventUrl?: string,
+     *     startDateTime?: string|\DateTimeInterface,
+     *   }>,
+     * }|EventUpdateBatchParams $params
      *
      * @throws APIException
      */
     public function updateBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseMarketingEventPublicDefaultResponseV2 {
-        $params = ['inputs' => $inputs];
-
-        return $this->updateBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateBatchRaw(
-        array $params,
+        array|EventUpdateBatchParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseMarketingEventPublicDefaultResponseV2 {
         [$parsed, $options] = EventUpdateBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -764,72 +575,50 @@ final class EventsService implements EventsContract
      *
      * Only Marketing Events created by the same app can be updated.
      *
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
-     * @param list<PropertyValue> $customProperties A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
-     * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
-     * @param \DateTimeInterface $endDateTime the end date and time of the marketing event
-     * @param bool $eventCancelled Indicates if the marketing event has been cancelled. Defaults to `false`
-     * @param bool $eventCompleted
-     * @param string $eventDescription the description of the marketing event
-     * @param string $eventName the name of the marketing event
-     * @param string $eventOrganizer the name of the organizer of the marketing event
-     * @param string $eventType Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`
-     * @param string $eventURL a URL in the external event application where the marketing event can be managed
-     * @param \DateTimeInterface $startDateTime the start date and time of the marketing event
+     * @param array{
+     *   externalAccountId: string,
+     *   customProperties?: list<array{
+     *     name: string,
+     *     sourceUpstreamDeployable: string,
+     *     value: string,
+     *     dataSensitivity?: "none"|"standard"|"high",
+     *     isEncrypted?: bool,
+     *     isLargeValue?: bool,
+     *     persistenceTimestamp?: int,
+     *     requestId?: string,
+     *     selectedByUser?: bool,
+     *     selectedByUserTimestamp?: int,
+     *     source?: "UNKNOWN"|"IMPORT"|"API"|"FORM"|"ANALYTICS"|"MIGRATION"|"SALESFORCE"|"INTEGRATION"|"CONTACTS_WEB"|"WAL_INCREMENTAL"|"TASK"|"EMAIL"|"WORKFLOWS"|"CALCULATED"|"SOCIAL"|"BATCH_UPDATE"|"SIGNALS"|"BIDEN"|"DEFAULT"|"COMPANIES"|"DEALS"|"ASSISTS"|"PRESENTATIONS"|"TALLY"|"SIDEKICK"|"CRM_UI"|"MERGE_CONTACTS"|"PORTAL_USER_ASSOCIATOR"|"INTEGRATIONS_PLATFORM"|"BCC_TO_CRM"|"FORWARD_TO_CRM"|"ENGAGEMENTS"|"SALES"|"HEISENBERG"|"LEADIN"|"GMAIL_INTEGRATION"|"ACADEMY"|"SALES_MESSAGES"|"AVATARS_SERVICE"|"MERGE_COMPANIES"|"SEQUENCES"|"COMPANY_FAMILIES"|"MOBILE_IOS"|"MOBILE_ANDROID"|"CONTACTS"|"ASSOCIATIONS"|"EXTENSION"|"SUCCESS"|"BOT"|"INTEGRATIONS_SYNC"|"AUTOMATION_PLATFORM"|"CONVERSATIONS"|"EMAIL_INTEGRATION"|"CONTENT_MEMBERSHIP"|"QUOTES"|"BET_ASSIGNMENT"|"QUOTAS"|"BET_CRM_CONNECTOR"|"MEETINGS"|"MERGE_OBJECTS"|"RECYCLING_BIN"|"ADS"|"AI_GROUP"|"COMMUNICATOR"|"SETTINGS"|"PROPERTY_SETTINGS"|"PIPELINE_SETTINGS"|"COMPANY_INSIGHTS"|"BEHAVIORAL_EVENTS"|"PAYMENTS"|"GOALS"|"PORTAL_OBJECT_SYNC"|"APPROVALS"|"FILE_MANAGER"|"MARKETPLACE"|"INTERNAL_PROCESSING"|"FORECASTING"|"SLACK_INTEGRATION"|"CRM_UI_BULK_ACTION"|"WORKFLOW_CONTACT_DELETE_ACTION"|"ACCEPTANCE_TEST"|"PLAYBOOKS"|"CHATSPOT"|"FLYWHEEL_PRODUCT_DATA_SYNC"|"HELP_DESK"|"BILLING"|"DATA_ENRICHMENT"|"AUTOMATION_JOURNEY"|"MICROAPPS"|"INTENT"|"PROSPECTING_AGENT"|"CENTRAL_EXCHANGE_RATES"|"HELP_DESK_AI"|"CONVERSATIONAL_ENRICHMENT"|"CRM_PROCESSES_PLATFORM"|"CLONE_OBJECTS"|"MARKET_SOURCING"|"DATASET"|"PROPERTY_RESTORE",
+     *     sourceId?: string,
+     *     sourceLabel?: string,
+     *     sourceMetadata?: string,
+     *     sourceVid?: list<int>,
+     *     timestamp?: int,
+     *     unit?: string,
+     *     updatedByUserId?: int,
+     *     useTimestampAsPersistenceTimestamp?: bool,
+     *   }|PropertyValue>,
+     *   endDateTime?: string|\DateTimeInterface,
+     *   eventCancelled?: bool,
+     *   eventCompleted?: bool,
+     *   eventDescription?: string,
+     *   eventName?: string,
+     *   eventOrganizer?: string,
+     *   eventType?: string,
+     *   eventUrl?: string,
+     *   startDateTime?: string|\DateTimeInterface,
+     * }|EventUpdateByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function updateByExternalEventID(
         string $externalEventID,
-        $externalAccountID,
-        $customProperties = omit,
-        $endDateTime = omit,
-        $eventCancelled = omit,
-        $eventCompleted = omit,
-        $eventDescription = omit,
-        $eventName = omit,
-        $eventOrganizer = omit,
-        $eventType = omit,
-        $eventURL = omit,
-        $startDateTime = omit,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventPublicDefaultResponse {
-        $params = [
-            'externalAccountID' => $externalAccountID,
-            'customProperties' => $customProperties,
-            'endDateTime' => $endDateTime,
-            'eventCancelled' => $eventCancelled,
-            'eventCompleted' => $eventCompleted,
-            'eventDescription' => $eventDescription,
-            'eventName' => $eventName,
-            'eventOrganizer' => $eventOrganizer,
-            'eventType' => $eventType,
-            'eventURL' => $eventURL,
-            'startDateTime' => $startDateTime,
-        ];
-
-        return $this->updateByExternalEventIDRaw(
-            $externalEventID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
+        array|EventUpdateByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicDefaultResponse {
         [$parsed, $options] = EventUpdateByExternalEventIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['externalAccountId'];
 
@@ -851,33 +640,32 @@ final class EventsService implements EventsContract
      *
      * Only Marketing Events originally created by the same app can be updated.
      *
-     * @param list<MarketingEventCreateRequestParams> $inputs
+     * @param array{
+     *   inputs: list<array{
+     *     eventName: string,
+     *     eventOrganizer: string,
+     *     externalAccountId: string,
+     *     externalEventId: string,
+     *     customProperties?: list<array<mixed>|PropertyValue>,
+     *     endDateTime?: string|\DateTimeInterface,
+     *     eventCancelled?: bool,
+     *     eventCompleted?: bool,
+     *     eventDescription?: string,
+     *     eventType?: string,
+     *     eventUrl?: string,
+     *     startDateTime?: string|\DateTimeInterface,
+     *   }>,
+     * }|EventUpsertBatchParams $params
      *
      * @throws APIException
      */
     public function upsertBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseMarketingEventPublicDefaultResponse {
-        $params = ['inputs' => $inputs];
-
-        return $this->upsertBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertBatchRaw(
-        array $params,
+        array|EventUpsertBatchParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseMarketingEventPublicDefaultResponse {
         [$parsed, $options] = EventUpsertBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -895,75 +683,51 @@ final class EventsService implements EventsContract
      *
      * Upserts a marketing event If there is an existing marketing event with the specified ID, it will be updated; otherwise a new event will be created.
      *
-     * @param string $eventName the name of the marketing event
-     * @param string $eventOrganizer the name of the organizer of the marketing event
-     * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
-     * @param string $externalEventID1 the id of the marketing event in the external event application
-     * @param list<PropertyValue> $customProperties A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
-     * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
-     * @param \DateTimeInterface $endDateTime the end date and time of the marketing event
-     * @param bool $eventCancelled Indicates if the marketing event has been cancelled.  Defaults to `false`
-     * @param bool $eventCompleted
-     * @param string $eventDescription the description of the marketing event
-     * @param string $eventType Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`
-     * @param string $eventURL a URL in the external event application where the marketing event can be managed
-     * @param \DateTimeInterface $startDateTime the start date and time of the marketing event
+     * @param array{
+     *   eventName: string,
+     *   eventOrganizer: string,
+     *   externalAccountId: string,
+     *   externalEventId: string,
+     *   customProperties?: list<array{
+     *     name: string,
+     *     sourceUpstreamDeployable: string,
+     *     value: string,
+     *     dataSensitivity?: "none"|"standard"|"high",
+     *     isEncrypted?: bool,
+     *     isLargeValue?: bool,
+     *     persistenceTimestamp?: int,
+     *     requestId?: string,
+     *     selectedByUser?: bool,
+     *     selectedByUserTimestamp?: int,
+     *     source?: "UNKNOWN"|"IMPORT"|"API"|"FORM"|"ANALYTICS"|"MIGRATION"|"SALESFORCE"|"INTEGRATION"|"CONTACTS_WEB"|"WAL_INCREMENTAL"|"TASK"|"EMAIL"|"WORKFLOWS"|"CALCULATED"|"SOCIAL"|"BATCH_UPDATE"|"SIGNALS"|"BIDEN"|"DEFAULT"|"COMPANIES"|"DEALS"|"ASSISTS"|"PRESENTATIONS"|"TALLY"|"SIDEKICK"|"CRM_UI"|"MERGE_CONTACTS"|"PORTAL_USER_ASSOCIATOR"|"INTEGRATIONS_PLATFORM"|"BCC_TO_CRM"|"FORWARD_TO_CRM"|"ENGAGEMENTS"|"SALES"|"HEISENBERG"|"LEADIN"|"GMAIL_INTEGRATION"|"ACADEMY"|"SALES_MESSAGES"|"AVATARS_SERVICE"|"MERGE_COMPANIES"|"SEQUENCES"|"COMPANY_FAMILIES"|"MOBILE_IOS"|"MOBILE_ANDROID"|"CONTACTS"|"ASSOCIATIONS"|"EXTENSION"|"SUCCESS"|"BOT"|"INTEGRATIONS_SYNC"|"AUTOMATION_PLATFORM"|"CONVERSATIONS"|"EMAIL_INTEGRATION"|"CONTENT_MEMBERSHIP"|"QUOTES"|"BET_ASSIGNMENT"|"QUOTAS"|"BET_CRM_CONNECTOR"|"MEETINGS"|"MERGE_OBJECTS"|"RECYCLING_BIN"|"ADS"|"AI_GROUP"|"COMMUNICATOR"|"SETTINGS"|"PROPERTY_SETTINGS"|"PIPELINE_SETTINGS"|"COMPANY_INSIGHTS"|"BEHAVIORAL_EVENTS"|"PAYMENTS"|"GOALS"|"PORTAL_OBJECT_SYNC"|"APPROVALS"|"FILE_MANAGER"|"MARKETPLACE"|"INTERNAL_PROCESSING"|"FORECASTING"|"SLACK_INTEGRATION"|"CRM_UI_BULK_ACTION"|"WORKFLOW_CONTACT_DELETE_ACTION"|"ACCEPTANCE_TEST"|"PLAYBOOKS"|"CHATSPOT"|"FLYWHEEL_PRODUCT_DATA_SYNC"|"HELP_DESK"|"BILLING"|"DATA_ENRICHMENT"|"AUTOMATION_JOURNEY"|"MICROAPPS"|"INTENT"|"PROSPECTING_AGENT"|"CENTRAL_EXCHANGE_RATES"|"HELP_DESK_AI"|"CONVERSATIONAL_ENRICHMENT"|"CRM_PROCESSES_PLATFORM"|"CLONE_OBJECTS"|"MARKET_SOURCING"|"DATASET"|"PROPERTY_RESTORE",
+     *     sourceId?: string,
+     *     sourceLabel?: string,
+     *     sourceMetadata?: string,
+     *     sourceVid?: list<int>,
+     *     timestamp?: int,
+     *     unit?: string,
+     *     updatedByUserId?: int,
+     *     useTimestampAsPersistenceTimestamp?: bool,
+     *   }|PropertyValue>,
+     *   endDateTime?: string|\DateTimeInterface,
+     *   eventCancelled?: bool,
+     *   eventCompleted?: bool,
+     *   eventDescription?: string,
+     *   eventType?: string,
+     *   eventUrl?: string,
+     *   startDateTime?: string|\DateTimeInterface,
+     * }|EventUpsertByExternalEventIDParams $params
      *
      * @throws APIException
      */
     public function upsertByExternalEventID(
         string $externalEventID,
-        $eventName,
-        $eventOrganizer,
-        $externalAccountID,
-        $externalEventID1,
-        $customProperties = omit,
-        $endDateTime = omit,
-        $eventCancelled = omit,
-        $eventCompleted = omit,
-        $eventDescription = omit,
-        $eventType = omit,
-        $eventURL = omit,
-        $startDateTime = omit,
-        ?RequestOptions $requestOptions = null,
-    ): MarketingEventPublicDefaultResponse {
-        $params = [
-            'eventName' => $eventName,
-            'eventOrganizer' => $eventOrganizer,
-            'externalAccountID' => $externalAccountID,
-            'externalEventID' => $externalEventID1,
-            'customProperties' => $customProperties,
-            'endDateTime' => $endDateTime,
-            'eventCancelled' => $eventCancelled,
-            'eventCompleted' => $eventCompleted,
-            'eventDescription' => $eventDescription,
-            'eventType' => $eventType,
-            'eventURL' => $eventURL,
-            'startDateTime' => $startDateTime,
-        ];
-
-        return $this->upsertByExternalEventIDRaw(
-            $externalEventID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertByExternalEventIDRaw(
-        string $externalEventID,
-        array $params,
+        array|EventUpsertByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicDefaultResponse {
         [$parsed, $options] = EventUpsertByExternalEventIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -981,50 +745,30 @@ final class EventsService implements EventsContract
      *
      * Record a subscriber state between multiple HubSpot contacts and a marketing event, using contact email addresses. Note that the contact must already exist in HubSpot; a contact will not be created. The contactProperties field is used only when creating a new contact. These properties will not update existing contacts.
      *
-     * @param string $externalEventID
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
-     * @param list<MarketingEventEmailSubscriber> $inputs List of marketing event details to create or update
+     * @param array{
+     *   externalEventId: string,
+     *   externalAccountId: string,
+     *   inputs: list<array{
+     *     email: string,
+     *     interactionDateTime: int,
+     *     contactProperties?: array<string,string>,
+     *     properties?: array<string,string>,
+     *   }>,
+     * }|EventUpsertSubscriberStateByEmailParams $params
      *
      * @throws APIException
      */
     public function upsertSubscriberStateByEmail(
         string $subscriberState,
-        $externalEventID,
-        $externalAccountID,
-        $inputs,
-        ?RequestOptions $requestOptions = null,
-    ): string {
-        $params = [
-            'externalEventID' => $externalEventID,
-            'externalAccountID' => $externalAccountID,
-            'inputs' => $inputs,
-        ];
-
-        return $this->upsertSubscriberStateByEmailRaw(
-            $subscriberState,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertSubscriberStateByEmailRaw(
-        string $subscriberState,
-        array $params,
+        array|EventUpsertSubscriberStateByEmailParams $params,
         ?RequestOptions $requestOptions = null,
     ): string {
         [$parsed, $options] = EventUpsertSubscriberStateByEmailParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $externalEventID = $parsed['externalEventID'];
-        unset($parsed['externalEventID']);
+        $externalEventID = $parsed['externalEventId'];
+        unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
         // @phpstan-ignore-next-line;
@@ -1039,7 +783,7 @@ final class EventsService implements EventsContract
             headers: ['Accept' => '*/*'],
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventID']
+                ['externalEventId']
             ),
             options: $options,
             convert: 'string',
@@ -1051,50 +795,27 @@ final class EventsService implements EventsContract
      *
      * Record a subscriber state between multiple HubSpot contacts and a marketing event, using HubSpot contact IDs. Note that the contact must already exist in HubSpot; a contact will not be created.
      *
-     * @param string $externalEventID
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
-     * @param list<MarketingEventSubscriber> $inputs List of HubSpot contacts to subscribe to the marketing event
+     * @param array{
+     *   externalEventId: string,
+     *   externalAccountId: string,
+     *   inputs: list<array{
+     *     interactionDateTime: int, properties?: array<string,string>, vid?: int
+     *   }>,
+     * }|EventUpsertSubscriberStateByIDParams $params
      *
      * @throws APIException
      */
     public function upsertSubscriberStateByID(
         string $subscriberState,
-        $externalEventID,
-        $externalAccountID,
-        $inputs,
-        ?RequestOptions $requestOptions = null,
-    ): string {
-        $params = [
-            'externalEventID' => $externalEventID,
-            'externalAccountID' => $externalAccountID,
-            'inputs' => $inputs,
-        ];
-
-        return $this->upsertSubscriberStateByIDRaw(
-            $subscriberState,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertSubscriberStateByIDRaw(
-        string $subscriberState,
-        array $params,
+        array|EventUpsertSubscriberStateByIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): string {
         [$parsed, $options] = EventUpsertSubscriberStateByIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $externalEventID = $parsed['externalEventID'];
-        unset($parsed['externalEventID']);
+        $externalEventID = $parsed['externalEventId'];
+        unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
         // @phpstan-ignore-next-line;
@@ -1109,7 +830,7 @@ final class EventsService implements EventsContract
             headers: ['Accept' => '*/*'],
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventID']
+                ['externalEventId']
             ),
             options: $options,
             convert: 'string',

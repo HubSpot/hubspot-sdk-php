@@ -15,9 +15,9 @@ use HubspotSDK\Marketing\Subscriptions\V4\PartialPublicStatusRequest\StatusState
  * @phpstan-type PartialPublicStatusRequestShape = array{
  *   channel: value-of<Channel>,
  *   statusState: value-of<StatusState>,
- *   subscriptionID: int,
- *   legalBasis?: value-of<LegalBasis>,
- *   legalBasisExplanation?: string,
+ *   subscriptionId: int,
+ *   legalBasis?: value-of<LegalBasis>|null,
+ *   legalBasisExplanation?: string|null,
  * }
  */
 final class PartialPublicStatusRequest implements BaseModel
@@ -44,8 +44,8 @@ final class PartialPublicStatusRequest implements BaseModel
     /**
      * The unique identifier of the subscription to be updated.
      */
-    #[Api('subscriptionId')]
-    public int $subscriptionID;
+    #[Api]
+    public int $subscriptionId;
 
     /**
      * The legal basis for communication, with options including 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', and 'LEGITIMATE_INTEREST_OTHER'.
@@ -67,7 +67,7 @@ final class PartialPublicStatusRequest implements BaseModel
      * To enforce required parameters use
      * ```
      * PartialPublicStatusRequest::with(
-     *   channel: ..., statusState: ..., subscriptionID: ...
+     *   channel: ..., statusState: ..., subscriptionId: ...
      * )
      * ```
      *
@@ -97,7 +97,7 @@ final class PartialPublicStatusRequest implements BaseModel
     public static function with(
         Channel|string $channel,
         StatusState|string $statusState,
-        int $subscriptionID,
+        int $subscriptionId,
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
     ): self {
@@ -105,7 +105,7 @@ final class PartialPublicStatusRequest implements BaseModel
 
         $obj['channel'] = $channel;
         $obj['statusState'] = $statusState;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionId;
 
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
@@ -145,7 +145,7 @@ final class PartialPublicStatusRequest implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionID;
 
         return $obj;
     }

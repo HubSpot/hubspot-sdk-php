@@ -26,7 +26,7 @@ use HubspotSDK\Events\EventDefinitions\RangedTimeOperation\UpperBoundEndpointBeh
  *   type: string,
  *   upperBoundEndpointBehavior: value-of<UpperBoundEndpointBehavior>,
  *   upperBoundTimePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class RangedTimeOperation implements BaseModel

@@ -36,10 +36,9 @@ final class SmtpTokensTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->transactional->smtpTokens->create(
-            campaignName: 'campaignName',
-            createContact: true
-        );
+        $result = $this->client->marketing->transactional->smtpTokens->create([
+            'campaignName' => 'campaignName', 'createContact' => true,
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -51,10 +50,9 @@ final class SmtpTokensTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->transactional->smtpTokens->create(
-            campaignName: 'campaignName',
-            createContact: true
-        );
+        $result = $this->client->marketing->transactional->smtpTokens->create([
+            'campaignName' => 'campaignName', 'createContact' => true,
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -66,7 +64,7 @@ final class SmtpTokensTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->transactional->smtpTokens->list();
+        $result = $this->client->marketing->transactional->smtpTokens->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

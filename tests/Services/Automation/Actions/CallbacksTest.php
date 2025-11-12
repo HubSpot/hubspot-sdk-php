@@ -2,7 +2,6 @@
 
 namespace Tests\Services\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
 use HubspotSDK\Client;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -39,7 +38,7 @@ final class CallbacksTest extends TestCase
 
         $result = $this->client->automation->actions->callbacks->complete(
             'callbackId',
-            ['foo' => 'string']
+            ['outputFields' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -54,7 +53,7 @@ final class CallbacksTest extends TestCase
 
         $result = $this->client->automation->actions->callbacks->complete(
             'callbackId',
-            ['foo' => 'string']
+            ['outputFields' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -67,14 +66,11 @@ final class CallbacksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->actions->callbacks->completeBatch(
-            [
-                CallbackCompletionBatchRequest::with(
-                    callbackID: 'callbackId',
-                    outputFields: ['foo' => 'string']
-                ),
+        $result = $this->client->automation->actions->callbacks->completeBatch([
+            'inputs' => [
+                ['callbackId' => 'callbackId', 'outputFields' => ['foo' => 'string']],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -86,14 +82,11 @@ final class CallbacksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->actions->callbacks->completeBatch(
-            [
-                CallbackCompletionBatchRequest::with(
-                    callbackID: 'callbackId',
-                    outputFields: ['foo' => 'string']
-                ),
+        $result = $this->client->automation->actions->callbacks->completeBatch([
+            'inputs' => [
+                ['callbackId' => 'callbackId', 'outputFields' => ['foo' => 'string']],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

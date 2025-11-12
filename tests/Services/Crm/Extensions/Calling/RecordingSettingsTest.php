@@ -42,7 +42,10 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->create(0, 'urlToRetrieveAuthedRecording')
+            ->create(
+                0,
+                ['urlToRetrieveAuthedRecording' => 'urlToRetrieveAuthedRecording']
+            )
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -61,7 +64,10 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->create(0, 'urlToRetrieveAuthedRecording')
+            ->create(
+                0,
+                ['urlToRetrieveAuthedRecording' => 'urlToRetrieveAuthedRecording']
+            )
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -80,7 +86,7 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->update(0)
+            ->update(0, [])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -113,7 +119,7 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->markReady(0)
+            ->markReady(['engagementId' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -132,7 +138,7 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->markReady(0)
+            ->markReady(['engagementId' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

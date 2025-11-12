@@ -7,7 +7,6 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientGetParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientListParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientSearchParams;
@@ -20,17 +19,15 @@ use HubspotSDK\ServiceContracts\Crm\Objects\PartnerClientsContract;
 use HubspotSDK\Services\Crm\Objects\PartnerClients\AssociationsService;
 use HubspotSDK\Services\Crm\Objects\PartnerClients\BatchService;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class PartnerClientsService implements PartnerClientsContract
 {
     /**
-     * @@api
+     * @api
      */
     public AssociationsService $associations;
 
     /**
-     * @@api
+     * @api
      */
     public BatchService $batch;
 
@@ -46,38 +43,20 @@ final class PartnerClientsService implements PartnerClientsContract
     /**
      * @api
      *
-     * @param array<string,
-     * string,> $properties Key value pairs representing the properties of the object
-     * @param string $idProperty
+     * @param array{
+     *   properties: array<string,string>, idProperty?: string
+     * }|PartnerClientUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $partnerClientID,
-        $properties,
-        $idProperty = omit,
-        ?RequestOptions $requestOptions = null,
-    ): SimplePublicObject {
-        $params = ['properties' => $properties, 'idProperty' => $idProperty];
-
-        return $this->updateRaw($partnerClientID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $partnerClientID,
-        array $params,
+        array|PartnerClientUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
         [$parsed, $options] = PartnerClientUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['idProperty'];
 
@@ -95,54 +74,26 @@ final class PartnerClientsService implements PartnerClientsContract
     /**
      * @api
      *
-     * @param string $after
-     * @param bool $archived
-     * @param list<string> $associations
-     * @param int $limit
-     * @param list<string> $properties
-     * @param list<string> $propertiesWithHistory
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   associations?: list<string>,
+     *   limit?: int,
+     *   properties?: list<string>,
+     *   propertiesWithHistory?: list<string>,
+     * }|PartnerClientListParams $params
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $archived = omit,
-        $associations = omit,
-        $limit = omit,
-        $properties = omit,
-        $propertiesWithHistory = omit,
+        array|PartnerClientListParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'associations' => $associations,
-            'limit' => $limit,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<SimplePublicObjectWithAssociations>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = PartnerClientListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -159,49 +110,24 @@ final class PartnerClientsService implements PartnerClientsContract
     /**
      * @api
      *
-     * @param bool $archived
-     * @param list<string> $associations
-     * @param string $idProperty
-     * @param list<string> $properties
-     * @param list<string> $propertiesWithHistory
+     * @param array{
+     *   archived?: bool,
+     *   associations?: list<string>,
+     *   idProperty?: string,
+     *   properties?: list<string>,
+     *   propertiesWithHistory?: list<string>,
+     * }|PartnerClientGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $partnerClientID,
-        $archived = omit,
-        $associations = omit,
-        $idProperty = omit,
-        $properties = omit,
-        $propertiesWithHistory = omit,
-        ?RequestOptions $requestOptions = null,
-    ): SimplePublicObjectWithAssociations {
-        $params = [
-            'archived' => $archived,
-            'associations' => $associations,
-            'idProperty' => $idProperty,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-
-        return $this->getRaw($partnerClientID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $partnerClientID,
-        array $params,
+        array|PartnerClientGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
         [$parsed, $options] = PartnerClientGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -217,50 +143,24 @@ final class PartnerClientsService implements PartnerClientsContract
     /**
      * @api
      *
-     * @param string $after a paging cursor token for retrieving subsequent pages
-     * @param list<FilterGroup> $filterGroups up to 6 groups of filters defining additional query criteria
-     * @param int $limit the maximum results to return, up to 200 objects
-     * @param list<string> $properties a list of property names to include in the response
-     * @param string $query the search query string, up to 3000 characters
-     * @param list<string> $sorts specifies sorting order based on object properties
+     * @param array{
+     *   after?: string,
+     *   filterGroups?: list<array{filters: list<array<mixed>>}>,
+     *   limit?: int,
+     *   properties?: list<string>,
+     *   query?: string,
+     *   sorts?: list<string>,
+     * }|PartnerClientSearchParams $params
      *
      * @throws APIException
      */
     public function search(
-        $after = omit,
-        $filterGroups = omit,
-        $limit = omit,
-        $properties = omit,
-        $query = omit,
-        $sorts = omit,
+        array|PartnerClientSearchParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalSimplePublicObject {
-        $params = [
-            'after' => $after,
-            'filterGroups' => $filterGroups,
-            'limit' => $limit,
-            'properties' => $properties,
-            'query' => $query,
-            'sorts' => $sorts,
-        ];
-
-        return $this->searchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function searchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject {
         [$parsed, $options] = PartnerClientSearchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

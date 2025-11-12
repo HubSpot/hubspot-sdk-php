@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type OEmbedDomainsCollectionResponseShape = array{
- *   results: list<IntegratorOEmbedDomainModel>, totalCount?: int
+ *   results: list<IntegratorOEmbedDomainModel>, totalCount?: int|null
  * }
  */
 final class OEmbedDomainsCollectionResponse implements BaseModel

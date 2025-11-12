@@ -14,12 +14,12 @@ use HubspotSDK\PublicAssociationFilterBranch\FilterBranchType;
 /**
  * @phpstan-type PublicAssociationFilterBranchShape = array{
  *   associationCategory: string,
- *   associationTypeID: int,
+ *   associationTypeId: int,
  *   filterBranches: list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch>,
  *   filterBranchOperator: string,
  *   filterBranchType: value-of<FilterBranchType>,
  *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   operator: string,
  * }
  */
@@ -31,8 +31,8 @@ final class PublicAssociationFilterBranch implements BaseModel
     #[Api]
     public string $associationCategory;
 
-    #[Api('associationTypeId')]
-    public int $associationTypeID;
+    #[Api]
+    public int $associationTypeId;
 
     /**
      * @var list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $filterBranches
@@ -53,8 +53,8 @@ final class PublicAssociationFilterBranch implements BaseModel
     #[Api(list: Filter::class)]
     public array $filters;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     #[Api]
     public string $operator;
@@ -66,12 +66,12 @@ final class PublicAssociationFilterBranch implements BaseModel
      * ```
      * PublicAssociationFilterBranch::with(
      *   associationCategory: ...,
-     *   associationTypeID: ...,
+     *   associationTypeId: ...,
      *   filterBranches: ...,
      *   filterBranchOperator: ...,
      *   filterBranchType: ...,
      *   filters: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   operator: ...,
      * )
      * ```
@@ -106,23 +106,23 @@ final class PublicAssociationFilterBranch implements BaseModel
      */
     public static function with(
         string $associationCategory,
-        int $associationTypeID,
+        int $associationTypeId,
         array $filterBranches,
         string $filterBranchOperator,
         array $filters,
-        string $objectTypeID,
+        string $objectTypeId,
         string $operator,
         FilterBranchType|string $filterBranchType = 'ASSOCIATION',
     ): self {
         $obj = new self;
 
         $obj->associationCategory = $associationCategory;
-        $obj->associationTypeID = $associationTypeID;
+        $obj->associationTypeId = $associationTypeId;
         $obj->filterBranches = $filterBranches;
         $obj->filterBranchOperator = $filterBranchOperator;
         $obj['filterBranchType'] = $filterBranchType;
         $obj->filters = $filters;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->operator = $operator;
 
         return $obj;
@@ -139,7 +139,7 @@ final class PublicAssociationFilterBranch implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj->associationTypeID = $associationTypeID;
+        $obj->associationTypeId = $associationTypeID;
 
         return $obj;
     }
@@ -189,7 +189,7 @@ final class PublicAssociationFilterBranch implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

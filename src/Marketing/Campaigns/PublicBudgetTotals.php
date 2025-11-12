@@ -14,9 +14,9 @@ use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals\CurrencyCode;
  *   budgetItems: list<PublicBudgetItem>,
  *   currencyCode: value-of<CurrencyCode>,
  *   spendItems: list<PublicSpendItem>,
- *   budgetTotal?: float,
- *   remainingBudget?: float,
- *   spendTotal?: float,
+ *   budgetTotal?: float|null,
+ *   remainingBudget?: float|null,
+ *   spendTotal?: float|null,
  * }
  */
 final class PublicBudgetTotals implements BaseModel

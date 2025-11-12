@@ -27,7 +27,7 @@ use HubspotSDK\Option;
  *   canArchive: bool,
  *   canRestore: bool,
  *   createdAt: int,
- *   createdUserID: int,
+ *   createdUserId: int,
  *   currencyPropertyName: string,
  *   dataSensitivity: value-of<DataSensitivity>,
  *   dateDisplayHint: value-of<DateDisplayHint>,
@@ -42,7 +42,7 @@ use HubspotSDK\Option;
  *   favoritedOrder: int,
  *   fieldType: string,
  *   formField: bool,
- *   fromUserID: int,
+ *   fromUserId: int,
  *   groupName: string,
  *   hasUniqueValue: bool,
  *   hidden: bool,
@@ -57,8 +57,8 @@ use HubspotSDK\Option;
  *   options: list<Option>,
  *   optionsAreMutable: bool,
  *   optionSortStrategy: value-of<OptionSortStrategy>,
- *   owningAppID: int,
- *   portalID: int,
+ *   owningAppId: int,
+ *   portalId: int,
  *   readOnlyDefinition: bool,
  *   readOnlyValue: bool,
  *   referencedObjectType: value-of<ReferencedObjectType>,
@@ -105,8 +105,8 @@ final class Property implements BaseModel
     /**
      * The ID of the user who created the property.
      */
-    #[Api('createdUserId')]
-    public int $createdUserID;
+    #[Api]
+    public int $createdUserId;
 
     /**
      * The name of the related currency property.
@@ -194,8 +194,8 @@ final class Property implements BaseModel
     /**
      * The ID of the user who last updated the property.
      */
-    #[Api('fromUserId')]
-    public int $fromUserID;
+    #[Api]
+    public int $fromUserId;
 
     /**
      * The name of the group to which the property is assigned.
@@ -287,14 +287,14 @@ final class Property implements BaseModel
     #[Api(enum: OptionSortStrategy::class)]
     public string $optionSortStrategy;
 
-    #[Api('owningAppId')]
-    public int $owningAppID;
+    #[Api]
+    public int $owningAppId;
 
     /**
      * The ID of the HubSpot account where the property is defined.
      */
-    #[Api('portalId')]
-    public int $portalID;
+    #[Api]
+    public int $portalId;
 
     /**
      * Whether the property's description is read-only.
@@ -373,7 +373,7 @@ final class Property implements BaseModel
      *   canArchive: ...,
      *   canRestore: ...,
      *   createdAt: ...,
-     *   createdUserID: ...,
+     *   createdUserId: ...,
      *   currencyPropertyName: ...,
      *   dataSensitivity: ...,
      *   dateDisplayHint: ...,
@@ -388,7 +388,7 @@ final class Property implements BaseModel
      *   favoritedOrder: ...,
      *   fieldType: ...,
      *   formField: ...,
-     *   fromUserID: ...,
+     *   fromUserId: ...,
      *   groupName: ...,
      *   hasUniqueValue: ...,
      *   hidden: ...,
@@ -403,8 +403,8 @@ final class Property implements BaseModel
      *   options: ...,
      *   optionsAreMutable: ...,
      *   optionSortStrategy: ...,
-     *   owningAppID: ...,
-     *   portalID: ...,
+     *   owningAppId: ...,
+     *   portalId: ...,
      *   readOnlyDefinition: ...,
      *   readOnlyValue: ...,
      *   referencedObjectType: ...,
@@ -500,7 +500,7 @@ final class Property implements BaseModel
         bool $canArchive,
         bool $canRestore,
         int $createdAt,
-        int $createdUserID,
+        int $createdUserId,
         string $currencyPropertyName,
         DataSensitivity|string $dataSensitivity,
         DateDisplayHint|string $dateDisplayHint,
@@ -515,7 +515,7 @@ final class Property implements BaseModel
         int $favoritedOrder,
         string $fieldType,
         bool $formField,
-        int $fromUserID,
+        int $fromUserId,
         string $groupName,
         bool $hasUniqueValue,
         bool $hidden,
@@ -530,8 +530,8 @@ final class Property implements BaseModel
         array $options,
         bool $optionsAreMutable,
         OptionSortStrategy|string $optionSortStrategy,
-        int $owningAppID,
-        int $portalID,
+        int $owningAppId,
+        int $portalId,
         bool $readOnlyDefinition,
         bool $readOnlyValue,
         ReferencedObjectType|string $referencedObjectType,
@@ -550,7 +550,7 @@ final class Property implements BaseModel
         $obj->canArchive = $canArchive;
         $obj->canRestore = $canRestore;
         $obj->createdAt = $createdAt;
-        $obj->createdUserID = $createdUserID;
+        $obj->createdUserId = $createdUserId;
         $obj->currencyPropertyName = $currencyPropertyName;
         $obj['dataSensitivity'] = $dataSensitivity;
         $obj['dateDisplayHint'] = $dateDisplayHint;
@@ -565,7 +565,7 @@ final class Property implements BaseModel
         $obj->favoritedOrder = $favoritedOrder;
         $obj->fieldType = $fieldType;
         $obj->formField = $formField;
-        $obj->fromUserID = $fromUserID;
+        $obj->fromUserId = $fromUserId;
         $obj->groupName = $groupName;
         $obj->hasUniqueValue = $hasUniqueValue;
         $obj->hidden = $hidden;
@@ -580,8 +580,8 @@ final class Property implements BaseModel
         $obj->options = $options;
         $obj->optionsAreMutable = $optionsAreMutable;
         $obj['optionSortStrategy'] = $optionSortStrategy;
-        $obj->owningAppID = $owningAppID;
-        $obj->portalID = $portalID;
+        $obj->owningAppId = $owningAppId;
+        $obj->portalId = $portalId;
         $obj->readOnlyDefinition = $readOnlyDefinition;
         $obj->readOnlyValue = $readOnlyValue;
         $obj['referencedObjectType'] = $referencedObjectType;
@@ -653,7 +653,7 @@ final class Property implements BaseModel
     public function withCreatedUserID(int $createdUserID): self
     {
         $obj = clone $this;
-        $obj->createdUserID = $createdUserID;
+        $obj->createdUserId = $createdUserID;
 
         return $obj;
     }
@@ -823,7 +823,7 @@ final class Property implements BaseModel
     public function withFromUserID(int $fromUserID): self
     {
         $obj = clone $this;
-        $obj->fromUserID = $fromUserID;
+        $obj->fromUserId = $fromUserID;
 
         return $obj;
     }
@@ -994,7 +994,7 @@ final class Property implements BaseModel
     public function withOwningAppID(int $owningAppID): self
     {
         $obj = clone $this;
-        $obj->owningAppID = $owningAppID;
+        $obj->owningAppId = $owningAppID;
 
         return $obj;
     }
@@ -1005,7 +1005,7 @@ final class Property implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }

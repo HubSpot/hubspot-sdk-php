@@ -19,7 +19,7 @@ use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams\ToCurrencyCode
  * @phpstan-type CurrencyUpdateVisibilityParamsShape = array{
  *   fromCurrencyCode: FromCurrencyCode|value-of<FromCurrencyCode>,
  *   toCurrencyCode: ToCurrencyCode|value-of<ToCurrencyCode>,
- *   visibleInUi: bool,
+ *   visibleInUI: bool,
  * }
  */
 final class CurrencyUpdateVisibilityParams implements BaseModel
@@ -36,8 +36,8 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
     #[Api(enum: ToCurrencyCode::class)]
     public string $toCurrencyCode;
 
-    #[Api('visibleInUI')]
-    public bool $visibleInUi;
+    #[Api]
+    public bool $visibleInUI;
 
     /**
      * `new CurrencyUpdateVisibilityParams()` is missing required properties by the API.
@@ -45,7 +45,7 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
      * To enforce required parameters use
      * ```
      * CurrencyUpdateVisibilityParams::with(
-     *   fromCurrencyCode: ..., toCurrencyCode: ..., visibleInUi: ...
+     *   fromCurrencyCode: ..., toCurrencyCode: ..., visibleInUI: ...
      * )
      * ```
      *
@@ -74,13 +74,13 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
     public static function with(
         FromCurrencyCode|string $fromCurrencyCode,
         ToCurrencyCode|string $toCurrencyCode,
-        bool $visibleInUi,
+        bool $visibleInUI,
     ): self {
         $obj = new self;
 
         $obj['fromCurrencyCode'] = $fromCurrencyCode;
         $obj['toCurrencyCode'] = $toCurrencyCode;
-        $obj->visibleInUi = $visibleInUi;
+        $obj->visibleInUI = $visibleInUI;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
     public function withVisibleInUi(bool $visibleInUi): self
     {
         $obj = clone $this;
-        $obj->visibleInUi = $visibleInUi;
+        $obj->visibleInUI = $visibleInUi;
 
         return $obj;
     }

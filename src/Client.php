@@ -157,7 +157,7 @@ class Client extends BaseClient
         $this->webhooks = new WebhooksService($this);
     }
 
-    /** @return array<string, string> */
+    /** @return array<string,string> */
     protected function authHeaders(): array
     {
         return $this->accessToken ? [
@@ -165,7 +165,7 @@ class Client extends BaseClient
         ] : [];
     }
 
-    /** @return array<string, string> */
+    /** @return array<string,string> */
     protected function authQuery(): array
     {
         return $this->developerAPIKey ? ['hapikey' => $this->developerAPIKey] : [];

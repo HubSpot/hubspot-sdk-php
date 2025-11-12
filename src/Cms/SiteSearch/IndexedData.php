@@ -15,7 +15,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  * The indexed data in HubSpot.
  *
  * @phpstan-type IndexedDataShape = array{
- *   id: string, fields: array<string, IndexedField>, type: value-of<Type>
+ *   id: string, fields: array<string,IndexedField>, type: value-of<Type>
  * }
  */
 final class IndexedData implements BaseModel, ResponseConverter
@@ -34,7 +34,7 @@ final class IndexedData implements BaseModel, ResponseConverter
     /**
      * The indexed fields in HubSpot.
      *
-     * @var array<string, IndexedField> $fields
+     * @var array<string,IndexedField> $fields
      */
     #[Api(map: IndexedField::class)]
     public array $fields;
@@ -71,7 +71,7 @@ final class IndexedData implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, IndexedField> $fields
+     * @param array<string,IndexedField> $fields
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -102,7 +102,7 @@ final class IndexedData implements BaseModel, ResponseConverter
     /**
      * The indexed fields in HubSpot.
      *
-     * @param array<string, IndexedField> $fields
+     * @param array<string,IndexedField> $fields
      */
     public function withFields(array $fields): self
     {

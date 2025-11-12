@@ -16,10 +16,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type StageReplaceParamsShape = array{
  *   objectType: string,
- *   pipelineID: string,
+ *   pipelineId: string,
  *   displayOrder: int,
  *   label: string,
- *   metadata?: array<string, string>,
+ *   metadata?: array<string,string>,
  * }
  */
 final class StageReplaceParams implements BaseModel
@@ -32,7 +32,7 @@ final class StageReplaceParams implements BaseModel
     public string $objectType;
 
     #[Api]
-    public string $pipelineID;
+    public string $pipelineId;
 
     /**
      * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
@@ -53,7 +53,7 @@ final class StageReplaceParams implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @var array<string, string>|null $metadata
+     * @var array<string,string>|null $metadata
      */
     #[Api(map: 'string', optional: true)]
     public ?array $metadata;
@@ -64,7 +64,7 @@ final class StageReplaceParams implements BaseModel
      * To enforce required parameters use
      * ```
      * StageReplaceParams::with(
-     *   objectType: ..., pipelineID: ..., displayOrder: ..., label: ...
+     *   objectType: ..., pipelineId: ..., displayOrder: ..., label: ...
      * )
      * ```
      *
@@ -88,11 +88,11 @@ final class StageReplaceParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $metadata
+     * @param array<string,string> $metadata
      */
     public static function with(
         string $objectType,
-        string $pipelineID,
+        string $pipelineId,
         int $displayOrder,
         string $label,
         ?array $metadata = null,
@@ -100,7 +100,7 @@ final class StageReplaceParams implements BaseModel
         $obj = new self;
 
         $obj->objectType = $objectType;
-        $obj->pipelineID = $pipelineID;
+        $obj->pipelineId = $pipelineId;
         $obj->displayOrder = $displayOrder;
         $obj->label = $label;
 
@@ -120,7 +120,7 @@ final class StageReplaceParams implements BaseModel
     public function withPipelineID(string $pipelineID): self
     {
         $obj = clone $this;
-        $obj->pipelineID = $pipelineID;
+        $obj->pipelineId = $pipelineID;
 
         return $obj;
     }
@@ -154,7 +154,7 @@ final class StageReplaceParams implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @param array<string, string> $metadata
+     * @param array<string,string> $metadata
      */
     public function withMetadata(array $metadata): self
     {

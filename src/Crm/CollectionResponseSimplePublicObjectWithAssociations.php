@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type CollectionResponseSimplePublicObjectWithAssociationsShape = array{
- *   results: list<SimplePublicObjectWithAssociations>, paging?: EmailsPaging
+ *   results: list<SimplePublicObjectWithAssociations>, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponseSimplePublicObjectWithAssociations implements BaseModel

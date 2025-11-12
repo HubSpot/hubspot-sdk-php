@@ -38,8 +38,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->create(
             'objectType',
-            label: 'label',
-            name: 'name'
+            ['label' => 'label', 'name' => 'name']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -54,8 +53,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->create(
             'objectType',
-            label: 'label',
-            name: 'name'
+            ['label' => 'label', 'name' => 'name']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -70,7 +68,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->update(
             'groupName',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -85,7 +83,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->update(
             'groupName',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -112,7 +110,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->delete(
             'groupName',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -127,7 +125,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->delete(
             'groupName',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -142,7 +140,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->get(
             'groupName',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -157,7 +155,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->get(
             'groupName',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

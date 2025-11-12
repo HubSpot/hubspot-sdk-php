@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Marketing\Events->updateByExternalEventID
  *
  * @phpstan-type EventUpdateByExternalEventIDParamsShape = array{
- *   externalAccountID: string,
+ *   externalAccountId: string,
  *   customProperties?: list<PropertyValue>,
  *   endDateTime?: \DateTimeInterface,
  *   eventCancelled?: bool,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   eventName?: string,
  *   eventOrganizer?: string,
  *   eventType?: string,
- *   eventURL?: string,
+ *   eventUrl?: string,
  *   startDateTime?: \DateTimeInterface,
  * }
  */
@@ -40,7 +40,7 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      * The accountId that is associated with this marketing event in the external event application.
      */
     #[Api]
-    public string $externalAccountID;
+    public string $externalAccountId;
 
     /**
      * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
@@ -93,8 +93,8 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
     /**
      * A URL in the external event application where the marketing event can be managed.
      */
-    #[Api('eventUrl', optional: true)]
-    public ?string $eventURL;
+    #[Api(optional: true)]
+    public ?string $eventUrl;
 
     /**
      * The start date and time of the marketing event.
@@ -107,7 +107,7 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * EventUpdateByExternalEventIDParams::with(externalAccountID: ...)
+     * EventUpdateByExternalEventIDParams::with(externalAccountId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -129,7 +129,7 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      * @param list<PropertyValue> $customProperties
      */
     public static function with(
-        string $externalAccountID,
+        string $externalAccountId,
         ?array $customProperties = null,
         ?\DateTimeInterface $endDateTime = null,
         ?bool $eventCancelled = null,
@@ -138,12 +138,12 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
         ?string $eventName = null,
         ?string $eventOrganizer = null,
         ?string $eventType = null,
-        ?string $eventURL = null,
+        ?string $eventUrl = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
 
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountId;
 
         null !== $customProperties && $obj->customProperties = $customProperties;
         null !== $endDateTime && $obj->endDateTime = $endDateTime;
@@ -153,7 +153,7 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
         null !== $eventName && $obj->eventName = $eventName;
         null !== $eventOrganizer && $obj->eventOrganizer = $eventOrganizer;
         null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventURL && $obj->eventURL = $eventURL;
+        null !== $eventUrl && $obj->eventUrl = $eventUrl;
         null !== $startDateTime && $obj->startDateTime = $startDateTime;
 
         return $obj;
@@ -165,7 +165,7 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountID;
 
         return $obj;
     }
@@ -264,7 +264,7 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventURL = $eventURL;
+        $obj->eventUrl = $eventURL;
 
         return $obj;
     }

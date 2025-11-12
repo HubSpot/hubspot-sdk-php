@@ -3,9 +3,6 @@
 namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate;
-use HubspotSDK\ObjectTypeDefinitionLabels;
-use HubspotSDK\OptionInput;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -39,20 +36,20 @@ final class SchemasTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->schemas->create(
-            associatedObjects: ['CONTACT'],
-            labels: (new ObjectTypeDefinitionLabels),
-            name: 'my_object',
-            properties: [
-                ObjectTypePropertyCreate::with(
-                    fieldType: 'select',
-                    label: 'My object property',
-                    name: 'my_object_property',
-                    type: 'enumeration',
-                ),
+        $result = $this->client->crm->objects->schemas->create([
+            'associatedObjects' => ['CONTACT'],
+            'labels' => [],
+            'name' => 'my_object',
+            'properties' => [
+                [
+                    'fieldType' => 'select',
+                    'label' => 'My object property',
+                    'name' => 'my_object_property',
+                    'type' => 'enumeration',
+                ],
             ],
-            requiredProperties: ['my_object_property'],
-        );
+            'requiredProperties' => ['my_object_property'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -64,52 +61,48 @@ final class SchemasTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->schemas->create(
-            associatedObjects: ['CONTACT'],
-            labels: (new ObjectTypeDefinitionLabels)
-                ->withPlural('My objects')
-                ->withSingular('My object'),
-            name: 'my_object',
-            properties: [
-                ObjectTypePropertyCreate::with(
-                    fieldType: 'select',
-                    label: 'My object property',
-                    name: 'my_object_property',
-                    type: 'enumeration',
-                )
-                    ->withDescription('description')
-                    ->withDisplayOrder(2)
-                    ->withFormField(true)
-                    ->withGroupName('my_object_information')
-                    ->withHasUniqueValue(false)
-                    ->withHidden(true)
-                    ->withNumberDisplayHint('unformatted')
-                    ->withOptions(
+        $result = $this->client->crm->objects->schemas->create([
+            'associatedObjects' => ['CONTACT'],
+            'labels' => ['plural' => 'My objects', 'singular' => 'My object'],
+            'name' => 'my_object',
+            'properties' => [
+                [
+                    'fieldType' => 'select',
+                    'label' => 'My object property',
+                    'name' => 'my_object_property',
+                    'type' => 'enumeration',
+                    'description' => 'description',
+                    'displayOrder' => 2,
+                    'formField' => true,
+                    'groupName' => 'my_object_information',
+                    'hasUniqueValue' => false,
+                    'hidden' => true,
+                    'numberDisplayHint' => 'unformatted',
+                    'options' => [
                         [
-                            OptionInput::with(
-                                displayOrder: 1,
-                                hidden: true,
-                                label: 'Option A',
-                                value: 'A'
-                            )
-                                ->withDescription('Choice number one'),
-                            OptionInput::with(
-                                displayOrder: 2,
-                                hidden: true,
-                                label: 'Option B',
-                                value: 'B'
-                            )
-                                ->withDescription('Choice number two'),
+                            'displayOrder' => 1,
+                            'hidden' => true,
+                            'label' => 'Option A',
+                            'value' => 'A',
+                            'description' => 'Choice number one',
                         ],
-                    )
-                    ->withOptionSortStrategy('DISPLAY_ORDER')
-                    ->withReferencedObjectType('referencedObjectType')
-                    ->withSearchableInGlobalSearch(true)
-                    ->withShowCurrencySymbol(true)
-                    ->withTextDisplayHint('unformatted_single_line'),
+                        [
+                            'displayOrder' => 2,
+                            'hidden' => true,
+                            'label' => 'Option B',
+                            'value' => 'B',
+                            'description' => 'Choice number two',
+                        ],
+                    ],
+                    'optionSortStrategy' => 'DISPLAY_ORDER',
+                    'referencedObjectType' => 'referencedObjectType',
+                    'searchableInGlobalSearch' => true,
+                    'showCurrencySymbol' => true,
+                    'textDisplayHint' => 'unformatted_single_line',
+                ],
             ],
-            requiredProperties: ['my_object_property'],
-        );
+            'requiredProperties' => ['my_object_property'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -121,7 +114,7 @@ final class SchemasTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->schemas->update('objectType');
+        $result = $this->client->crm->objects->schemas->update('objectType', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -133,7 +126,7 @@ final class SchemasTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->schemas->list();
+        $result = $this->client->crm->objects->schemas->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -145,7 +138,7 @@ final class SchemasTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->schemas->delete('objectType');
+        $result = $this->client->crm->objects->schemas->delete('objectType', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -159,8 +152,10 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->createAssociation(
             'objectType',
-            fromObjectTypeID: 'fromObjectTypeId',
-            toObjectTypeID: 'toObjectTypeId',
+            [
+                'fromObjectTypeId' => 'fromObjectTypeId',
+                'toObjectTypeId' => 'toObjectTypeId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -175,8 +170,10 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->createAssociation(
             'objectType',
-            fromObjectTypeID: 'fromObjectTypeId',
-            toObjectTypeID: 'toObjectTypeId',
+            [
+                'fromObjectTypeId' => 'fromObjectTypeId',
+                'toObjectTypeId' => 'toObjectTypeId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -191,7 +188,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->deleteAssociation(
             'associationIdentifier',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -206,7 +203,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->deleteAssociation(
             'associationIdentifier',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

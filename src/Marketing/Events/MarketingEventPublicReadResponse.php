@@ -18,19 +18,19 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   createdAt: \DateTimeInterface,
  *   eventName: string,
  *   eventOrganizer: string,
- *   externalEventID: string,
+ *   externalEventId: string,
  *   noShows: int,
  *   registrants: int,
  *   updatedAt: \DateTimeInterface,
- *   customProperties?: list<PropertyValue>,
- *   endDateTime?: \DateTimeInterface,
- *   eventCancelled?: bool,
- *   eventCompleted?: bool,
- *   eventDescription?: string,
- *   eventType?: string,
- *   eventURL?: string,
- *   objectID?: string,
- *   startDateTime?: \DateTimeInterface,
+ *   customProperties?: list<PropertyValue>|null,
+ *   endDateTime?: \DateTimeInterface|null,
+ *   eventCancelled?: bool|null,
+ *   eventCompleted?: bool|null,
+ *   eventDescription?: string|null,
+ *   eventType?: string|null,
+ *   eventUrl?: string|null,
+ *   objectId?: string|null,
+ *   startDateTime?: \DateTimeInterface|null,
  * }
  */
 final class MarketingEventPublicReadResponse implements BaseModel, ResponseConverter
@@ -73,8 +73,8 @@ final class MarketingEventPublicReadResponse implements BaseModel, ResponseConve
     /**
      * The id of the marketing event in the external event application.
      */
-    #[Api('externalEventId')]
-    public string $externalEventID;
+    #[Api]
+    public string $externalEventId;
 
     /**
      * The number of HubSpot contacts that registered for this marketing event, but did not attend. This field only had a value when the event is over.
@@ -130,11 +130,11 @@ final class MarketingEventPublicReadResponse implements BaseModel, ResponseConve
     /**
      * A URL in the external event application where the marketing event can be managed.
      */
-    #[Api('eventUrl', optional: true)]
-    public ?string $eventURL;
+    #[Api(optional: true)]
+    public ?string $eventUrl;
 
-    #[Api('objectId', optional: true)]
-    public ?string $objectID;
+    #[Api(optional: true)]
+    public ?string $objectId;
 
     /**
      * The start date and time of the marketing event.
@@ -154,7 +154,7 @@ final class MarketingEventPublicReadResponse implements BaseModel, ResponseConve
      *   createdAt: ...,
      *   eventName: ...,
      *   eventOrganizer: ...,
-     *   externalEventID: ...,
+     *   externalEventId: ...,
      *   noShows: ...,
      *   registrants: ...,
      *   updatedAt: ...,
@@ -196,7 +196,7 @@ final class MarketingEventPublicReadResponse implements BaseModel, ResponseConve
         \DateTimeInterface $createdAt,
         string $eventName,
         string $eventOrganizer,
-        string $externalEventID,
+        string $externalEventId,
         int $noShows,
         int $registrants,
         \DateTimeInterface $updatedAt,
@@ -206,8 +206,8 @@ final class MarketingEventPublicReadResponse implements BaseModel, ResponseConve
         ?bool $eventCompleted = null,
         ?string $eventDescription = null,
         ?string $eventType = null,
-        ?string $eventURL = null,
-        ?string $objectID = null,
+        ?string $eventUrl = null,
+        ?string $objectId = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -218,7 +218,7 @@ final class MarketingEventPublicReadResponse implements BaseModel, ResponseConve
         $obj->createdAt = $createdAt;
         $obj->eventName = $eventName;
         $obj->eventOrganizer = $eventOrganizer;
-        $obj->externalEventID = $externalEventID;
+        $obj->externalEventId = $externalEventId;
         $obj->noShows = $noShows;
         $obj->registrants = $registrants;
         $obj->updatedAt = $updatedAt;
@@ -229,8 +229,8 @@ final class MarketingEventPublicReadResponse implements BaseModel, ResponseConve
         null !== $eventCompleted && $obj->eventCompleted = $eventCompleted;
         null !== $eventDescription && $obj->eventDescription = $eventDescription;
         null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventURL && $obj->eventURL = $eventURL;
-        null !== $objectID && $obj->objectID = $objectID;
+        null !== $eventUrl && $obj->eventUrl = $eventUrl;
+        null !== $objectId && $obj->objectId = $objectId;
         null !== $startDateTime && $obj->startDateTime = $startDateTime;
 
         return $obj;
@@ -302,7 +302,7 @@ final class MarketingEventPublicReadResponse implements BaseModel, ResponseConve
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventID = $externalEventID;
+        $obj->externalEventId = $externalEventID;
 
         return $obj;
     }
@@ -409,7 +409,7 @@ final class MarketingEventPublicReadResponse implements BaseModel, ResponseConve
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventURL = $eventURL;
+        $obj->eventUrl = $eventURL;
 
         return $obj;
     }
@@ -417,7 +417,7 @@ final class MarketingEventPublicReadResponse implements BaseModel, ResponseConve
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

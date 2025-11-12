@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MarketingEventExternalUniqueIdentifierShape = array{
- *   appID: int, externalAccountID: string, externalEventID: string
+ *   appId: int, externalAccountId: string, externalEventId: string
  * }
  */
 final class MarketingEventExternalUniqueIdentifier implements BaseModel
@@ -21,20 +21,20 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
     /**
      * The id of the application that created the marketing event in HubSpot.
      */
-    #[Api('appId')]
-    public int $appID;
+    #[Api]
+    public int $appId;
 
     /**
      * The accountId that is associated with this marketing event in the external event application.
      */
-    #[Api('externalAccountId')]
-    public string $externalAccountID;
+    #[Api]
+    public string $externalAccountId;
 
     /**
      * The id of the marketing event in the external event application.
      */
-    #[Api('externalEventId')]
-    public string $externalEventID;
+    #[Api]
+    public string $externalEventId;
 
     /**
      * `new MarketingEventExternalUniqueIdentifier()` is missing required properties by the API.
@@ -42,7 +42,7 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
      * To enforce required parameters use
      * ```
      * MarketingEventExternalUniqueIdentifier::with(
-     *   appID: ..., externalAccountID: ..., externalEventID: ...
+     *   appId: ..., externalAccountId: ..., externalEventId: ...
      * )
      * ```
      *
@@ -66,15 +66,15 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appID,
-        string $externalAccountID,
-        string $externalEventID
+        int $appId,
+        string $externalAccountId,
+        string $externalEventId
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->externalAccountID = $externalAccountID;
-        $obj->externalEventID = $externalEventID;
+        $obj->appId = $appId;
+        $obj->externalAccountId = $externalAccountId;
+        $obj->externalEventId = $externalEventId;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountID;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventID = $externalEventID;
+        $obj->externalEventId = $externalEventID;
 
         return $obj;
     }

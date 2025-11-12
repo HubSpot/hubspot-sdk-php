@@ -19,17 +19,17 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  *   fullyQualifiedName: string,
  *   labels: ObjectTypeDefinitionLabels,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   properties: list<Property1>,
  *   requiredProperties: list<string>,
  *   searchableProperties: list<string>,
  *   secondaryDisplayProperties: list<string>,
- *   createdAt?: \DateTimeInterface,
- *   createdByUserID?: int,
- *   description?: string,
- *   primaryDisplayProperty?: string,
- *   updatedAt?: \DateTimeInterface,
- *   updatedByUserID?: int,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdByUserId?: int|null,
+ *   description?: string|null,
+ *   primaryDisplayProperty?: string|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedByUserId?: int|null,
  * }
  */
 final class ObjectSchema implements BaseModel
@@ -59,8 +59,8 @@ final class ObjectSchema implements BaseModel
     #[Api]
     public string $name;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /** @var list<Property1> $properties */
     #[Api(list: Property1::class)]
@@ -81,8 +81,8 @@ final class ObjectSchema implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api('createdByUserId', optional: true)]
-    public ?int $createdByUserID;
+    #[Api(optional: true)]
+    public ?int $createdByUserId;
 
     #[Api(optional: true)]
     public ?string $description;
@@ -93,8 +93,8 @@ final class ObjectSchema implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Api('updatedByUserId', optional: true)]
-    public ?int $updatedByUserID;
+    #[Api(optional: true)]
+    public ?int $updatedByUserId;
 
     /**
      * `new ObjectSchema()` is missing required properties by the API.
@@ -109,7 +109,7 @@ final class ObjectSchema implements BaseModel
      *   fullyQualifiedName: ...,
      *   labels: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   properties: ...,
      *   requiredProperties: ...,
      *   searchableProperties: ...,
@@ -159,17 +159,17 @@ final class ObjectSchema implements BaseModel
         string $fullyQualifiedName,
         ObjectTypeDefinitionLabels $labels,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         array $properties,
         array $requiredProperties,
         array $searchableProperties,
         array $secondaryDisplayProperties,
         ?\DateTimeInterface $createdAt = null,
-        ?int $createdByUserID = null,
+        ?int $createdByUserId = null,
         ?string $description = null,
         ?string $primaryDisplayProperty = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?int $updatedByUserID = null,
+        ?int $updatedByUserId = null,
     ): self {
         $obj = new self;
 
@@ -180,18 +180,18 @@ final class ObjectSchema implements BaseModel
         $obj->fullyQualifiedName = $fullyQualifiedName;
         $obj->labels = $labels;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->properties = $properties;
         $obj->requiredProperties = $requiredProperties;
         $obj->searchableProperties = $searchableProperties;
         $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
 
         null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdByUserID && $obj->createdByUserID = $createdByUserID;
+        null !== $createdByUserId && $obj->createdByUserId = $createdByUserId;
         null !== $description && $obj->description = $description;
         null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedByUserID && $obj->updatedByUserID = $updatedByUserID;
+        null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
 
         return $obj;
     }
@@ -259,7 +259,7 @@ final class ObjectSchema implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -320,7 +320,7 @@ final class ObjectSchema implements BaseModel
     public function withCreatedByUserID(int $createdByUserID): self
     {
         $obj = clone $this;
-        $obj->createdByUserID = $createdByUserID;
+        $obj->createdByUserId = $createdByUserID;
 
         return $obj;
     }
@@ -353,7 +353,7 @@ final class ObjectSchema implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj->updatedByUserID = $updatedByUserID;
+        $obj->updatedByUserId = $updatedByUserID;
 
         return $obj;
     }

@@ -13,17 +13,17 @@ use HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService;
 final class V4Service implements V4Contract
 {
     /**
-     * @@api
+     * @api
      */
     public DefinitionsService $definitions;
 
     /**
-     * @@api
+     * @api
      */
     public LinksService $links;
 
     /**
-     * @@api
+     * @api
      */
     public StatusesService $statuses;
 

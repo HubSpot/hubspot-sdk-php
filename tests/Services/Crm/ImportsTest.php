@@ -36,7 +36,7 @@ final class ImportsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->imports->create();
+        $result = $this->client->crm->imports->create([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +48,7 @@ final class ImportsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->imports->list();
+        $result = $this->client->crm->imports->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -84,7 +84,7 @@ final class ImportsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->imports->listErrors(0);
+        $result = $this->client->crm->imports->listErrors(0, []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -18,10 +18,10 @@ use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject\Status;
  *   results: list<SimplePublicUpsertObject>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError1>,
- *   links?: array<string, string>,
- *   numErrors?: int,
- *   requestedAt?: \DateTimeInterface,
+ *   errors?: list<StandardError1>|null,
+ *   links?: array<string,string>|null,
+ *   numErrors?: int|null,
+ *   requestedAt?: \DateTimeInterface|null,
  * }
  */
 final class BatchResponseSimplePublicUpsertObject implements BaseModel
@@ -60,7 +60,7 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     /**
      * An object containing relevant links related to the batch request.
      *
-     * @var array<string, string>|null $links
+     * @var array<string,string>|null $links
      */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
@@ -107,7 +107,7 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
      * @param list<SimplePublicUpsertObject> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError1> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -194,7 +194,7 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     /**
      * An object containing relevant links related to the batch request.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

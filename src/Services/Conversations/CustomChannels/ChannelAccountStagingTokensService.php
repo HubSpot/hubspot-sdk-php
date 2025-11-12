@@ -24,46 +24,27 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
      *
      * Update a channel account staging token's account name and delivery identifier. This information will be applied to the channel account created from this staging token. This is used for public apps.
      *
-     * @param string $channelID
-     * @param string $accountName
-     * @param PublicDeliveryIdentifier $deliveryIdentifier
+     * @param array{
+     *   channelId: string,
+     *   accountName: string,
+     *   deliveryIdentifier: array{
+     *     type: string, value: string
+     *   }|PublicDeliveryIdentifier,
+     * }|ChannelAccountStagingTokenUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $accountToken,
-        $channelID,
-        $accountName,
-        $deliveryIdentifier,
+        array|ChannelAccountStagingTokenUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccountStagingToken {
-        $params = [
-            'channelID' => $channelID,
-            'accountName' => $accountName,
-            'deliveryIdentifier' => $deliveryIdentifier,
-        ];
-
-        return $this->updateRaw($accountToken, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $accountToken,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicChannelAccountStagingToken {
         [$parsed, $options] = ChannelAccountStagingTokenUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $channelID = $parsed['channelID'];
-        unset($parsed['channelID']);
+        $channelID = $parsed['channelId'];
+        unset($parsed['channelId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -73,7 +54,7 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
                 $channelID,
                 $accountToken,
             ],
-            body: (object) array_diff_key($parsed, ['channelID']),
+            body: (object) array_diff_key($parsed, ['channelId']),
             options: $options,
             convert: PublicChannelAccountStagingToken::class,
         );

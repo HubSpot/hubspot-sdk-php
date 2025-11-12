@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type CollectionResponseAPIFlowEmailCampaignShape = array{
- *   results: list<APIFlowEmailCampaign>, paging?: EmailsPaging
+ *   results: list<APIFlowEmailCampaign>, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponseAPIFlowEmailCampaign implements BaseModel

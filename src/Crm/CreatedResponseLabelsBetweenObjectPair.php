@@ -10,7 +10,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type CreatedResponseLabelsBetweenObjectPairShape = array{
- *   createdResourceID: string, entity: LabelsBetweenObjectPair, location?: string
+ *   createdResourceId: string,
+ *   entity: LabelsBetweenObjectPair,
+ *   location?: string|null,
  * }
  */
 final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
@@ -18,8 +20,8 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
     /** @use SdkModel<CreatedResponseLabelsBetweenObjectPairShape> */
     use SdkModel;
 
-    #[Api('createdResourceId')]
-    public string $createdResourceID;
+    #[Api]
+    public string $createdResourceId;
 
     #[Api]
     public LabelsBetweenObjectPair $entity;
@@ -33,7 +35,7 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
      * To enforce required parameters use
      * ```
      * CreatedResponseLabelsBetweenObjectPair::with(
-     *   createdResourceID: ..., entity: ...
+     *   createdResourceId: ..., entity: ...
      * )
      * ```
      *
@@ -56,13 +58,13 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $createdResourceID,
+        string $createdResourceId,
         LabelsBetweenObjectPair $entity,
         ?string $location = null,
     ): self {
         $obj = new self;
 
-        $obj->createdResourceID = $createdResourceID;
+        $obj->createdResourceId = $createdResourceId;
         $obj->entity = $entity;
 
         null !== $location && $obj->location = $location;
@@ -73,7 +75,7 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
-        $obj->createdResourceID = $createdResourceID;
+        $obj->createdResourceId = $createdResourceID;
 
         return $obj;
     }

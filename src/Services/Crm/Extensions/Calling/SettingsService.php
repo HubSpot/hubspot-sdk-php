@@ -12,8 +12,6 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\SettingsContract;
 use HubspotSDK\Webhooks\SettingsResponse;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class SettingsService implements SettingsContract
 {
     /**
@@ -24,61 +22,28 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * @param string $name
-     * @param string $url
-     * @param int $height
-     * @param bool $isReady
-     * @param bool $supportsCustomObjects
-     * @param bool $supportsInboundCalling
-     * @param bool $usesCallingWindow
-     * @param bool $usesRemote
-     * @param int $width
+     * @param array{
+     *   name: string,
+     *   url: string,
+     *   height?: int,
+     *   isReady?: bool,
+     *   supportsCustomObjects?: bool,
+     *   supportsInboundCalling?: bool,
+     *   usesCallingWindow?: bool,
+     *   usesRemote?: bool,
+     *   width?: int,
+     * }|SettingCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        $name,
-        $url,
-        $height = omit,
-        $isReady = omit,
-        $supportsCustomObjects = omit,
-        $supportsInboundCalling = omit,
-        $usesCallingWindow = omit,
-        $usesRemote = omit,
-        $width = omit,
+        array|SettingCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): SettingsResponse {
-        $params = [
-            'name' => $name,
-            'url' => $url,
-            'height' => $height,
-            'isReady' => $isReady,
-            'supportsCustomObjects' => $supportsCustomObjects,
-            'supportsInboundCalling' => $supportsInboundCalling,
-            'usesCallingWindow' => $usesCallingWindow,
-            'usesRemote' => $usesRemote,
-            'width' => $width,
-        ];
-
-        return $this->createRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): SettingsResponse {
         [$parsed, $options] = SettingCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -94,61 +59,28 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * @param int $height
-     * @param bool $isReady
-     * @param string $name
-     * @param bool $supportsCustomObjects
-     * @param bool $supportsInboundCalling
-     * @param string $url
-     * @param bool $usesCallingWindow
-     * @param bool $usesRemote
-     * @param int $width
+     * @param array{
+     *   height?: int,
+     *   isReady?: bool,
+     *   name?: string,
+     *   supportsCustomObjects?: bool,
+     *   supportsInboundCalling?: bool,
+     *   url?: string,
+     *   usesCallingWindow?: bool,
+     *   usesRemote?: bool,
+     *   width?: int,
+     * }|SettingUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         int $appID,
-        $height = omit,
-        $isReady = omit,
-        $name = omit,
-        $supportsCustomObjects = omit,
-        $supportsInboundCalling = omit,
-        $url = omit,
-        $usesCallingWindow = omit,
-        $usesRemote = omit,
-        $width = omit,
+        array|SettingUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): SettingsResponse {
-        $params = [
-            'height' => $height,
-            'isReady' => $isReady,
-            'name' => $name,
-            'supportsCustomObjects' => $supportsCustomObjects,
-            'supportsInboundCalling' => $supportsInboundCalling,
-            'url' => $url,
-            'usesCallingWindow' => $usesCallingWindow,
-            'usesRemote' => $usesRemote,
-            'width' => $width,
-        ];
-
-        return $this->updateRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): SettingsResponse {
         [$parsed, $options] = SettingUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

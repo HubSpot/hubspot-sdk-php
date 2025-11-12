@@ -36,7 +36,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   isUsableInContent?: bool,
  *   limit?: int,
  *   name?: string,
- *   parentFolderIDs?: list<int>,
+ *   parentFolderIds?: list<int>,
  *   path?: string,
  *   properties?: list<string>,
  *   size?: int,
@@ -181,10 +181,10 @@ final class FileSearchParams implements BaseModel
     /**
      * Search files within given `folderId`.
      *
-     * @var list<int>|null $parentFolderIDs
+     * @var list<int>|null $parentFolderIds
      */
     #[Api(list: 'int', optional: true)]
-    public ?array $parentFolderIDs;
+    public ?array $parentFolderIds;
 
     /**
      * Search files by path.
@@ -285,7 +285,7 @@ final class FileSearchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<int> $ids
-     * @param list<int> $parentFolderIDs
+     * @param list<int> $parentFolderIds
      * @param list<string> $properties
      * @param list<string> $sort
      */
@@ -311,7 +311,7 @@ final class FileSearchParams implements BaseModel
         ?bool $isUsableInContent = null,
         ?int $limit = null,
         ?string $name = null,
-        ?array $parentFolderIDs = null,
+        ?array $parentFolderIds = null,
         ?string $path = null,
         ?array $properties = null,
         ?int $size = null,
@@ -350,7 +350,7 @@ final class FileSearchParams implements BaseModel
         null !== $isUsableInContent && $obj->isUsableInContent = $isUsableInContent;
         null !== $limit && $obj->limit = $limit;
         null !== $name && $obj->name = $name;
-        null !== $parentFolderIDs && $obj->parentFolderIDs = $parentFolderIDs;
+        null !== $parentFolderIds && $obj->parentFolderIds = $parentFolderIds;
         null !== $path && $obj->path = $path;
         null !== $properties && $obj->properties = $properties;
         null !== $size && $obj->size = $size;
@@ -601,7 +601,7 @@ final class FileSearchParams implements BaseModel
     public function withParentFolderIDs(array $parentFolderIDs): self
     {
         $obj = clone $this;
-        $obj->parentFolderIDs = $parentFolderIDs;
+        $obj->parentFolderIds = $parentFolderIDs;
 
         return $obj;
     }

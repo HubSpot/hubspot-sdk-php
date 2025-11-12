@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicCampaignAssetShape = array{
- *   id: string, metrics: array<string, float>, name?: string
+ *   id: string, metrics: array<string,float>, name?: string|null
  * }
  */
 final class PublicCampaignAsset implements BaseModel
@@ -21,7 +21,7 @@ final class PublicCampaignAsset implements BaseModel
     #[Api]
     public string $id;
 
-    /** @var array<string, float> $metrics */
+    /** @var array<string,float> $metrics */
     #[Api(map: 'float')]
     public array $metrics;
 
@@ -52,7 +52,7 @@ final class PublicCampaignAsset implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, float> $metrics
+     * @param array<string,float> $metrics
      */
     public static function with(
         string $id,
@@ -78,7 +78,7 @@ final class PublicCampaignAsset implements BaseModel
     }
 
     /**
-     * @param array<string, float> $metrics
+     * @param array<string,float> $metrics
      */
     public function withMetrics(array $metrics): self
     {

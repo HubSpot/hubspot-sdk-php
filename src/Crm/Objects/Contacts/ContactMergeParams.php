@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Objects\Contacts->merge
  *
  * @phpstan-type ContactMergeParamsShape = array{
- *   objectIDToMerge: string, primaryObjectID: string
+ *   objectIdToMerge: string, primaryObjectId: string
  * }
  */
 final class ContactMergeParams implements BaseModel
@@ -24,18 +24,18 @@ final class ContactMergeParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api('objectIdToMerge')]
-    public string $objectIDToMerge;
+    #[Api]
+    public string $objectIdToMerge;
 
-    #[Api('primaryObjectId')]
-    public string $primaryObjectID;
+    #[Api]
+    public string $primaryObjectId;
 
     /**
      * `new ContactMergeParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ContactMergeParams::with(objectIDToMerge: ..., primaryObjectID: ...)
+     * ContactMergeParams::with(objectIdToMerge: ..., primaryObjectId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -55,13 +55,13 @@ final class ContactMergeParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $objectIDToMerge,
-        string $primaryObjectID
+        string $objectIdToMerge,
+        string $primaryObjectId
     ): self {
         $obj = new self;
 
-        $obj->objectIDToMerge = $objectIDToMerge;
-        $obj->primaryObjectID = $primaryObjectID;
+        $obj->objectIdToMerge = $objectIdToMerge;
+        $obj->primaryObjectId = $primaryObjectId;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class ContactMergeParams implements BaseModel
     public function withObjectIDToMerge(string $objectIDToMerge): self
     {
         $obj = clone $this;
-        $obj->objectIDToMerge = $objectIDToMerge;
+        $obj->objectIdToMerge = $objectIDToMerge;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class ContactMergeParams implements BaseModel
     public function withPrimaryObjectID(string $primaryObjectID): self
     {
         $obj = clone $this;
-        $obj->primaryObjectID = $primaryObjectID;
+        $obj->primaryObjectId = $primaryObjectID;
 
         return $obj;
     }

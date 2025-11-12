@@ -12,9 +12,9 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type PublicListConversionResponseShape = array{
- *   listID: string,
- *   convertedAt?: \DateTimeInterface,
- *   requestedConversionTime?: PublicListConversionDate|PublicListConversionInactivity,
+ *   listId: string,
+ *   convertedAt?: \DateTimeInterface|null,
+ *   requestedConversionTime?: null|PublicListConversionDate|PublicListConversionInactivity,
  * }
  */
 final class PublicListConversionResponse implements BaseModel, ResponseConverter
@@ -24,8 +24,8 @@ final class PublicListConversionResponse implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
-    #[Api('listId')]
-    public string $listID;
+    #[Api]
+    public string $listId;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $convertedAt;
@@ -38,7 +38,7 @@ final class PublicListConversionResponse implements BaseModel, ResponseConverter
      *
      * To enforce required parameters use
      * ```
-     * PublicListConversionResponse::with(listID: ...)
+     * PublicListConversionResponse::with(listId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -58,13 +58,13 @@ final class PublicListConversionResponse implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $listID,
+        string $listId,
         ?\DateTimeInterface $convertedAt = null,
         PublicListConversionDate|PublicListConversionInactivity|null $requestedConversionTime = null,
     ): self {
         $obj = new self;
 
-        $obj->listID = $listID;
+        $obj->listId = $listId;
 
         null !== $convertedAt && $obj->convertedAt = $convertedAt;
         null !== $requestedConversionTime && $obj->requestedConversionTime = $requestedConversionTime;
@@ -75,7 +75,7 @@ final class PublicListConversionResponse implements BaseModel, ResponseConverter
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listID = $listID;
+        $obj->listId = $listID;
 
         return $obj;
     }

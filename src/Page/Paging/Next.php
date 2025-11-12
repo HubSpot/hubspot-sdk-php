@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type NextShape = array{after?: string}
+ * @phpstan-type NextShape = array{after?: string|null}
  */
 final class Next implements BaseModel
 {

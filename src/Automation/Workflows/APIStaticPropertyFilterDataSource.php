@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   propertyName: string,
  *   staticValue: string,
  *   type: value-of<Type>,
- *   sortBy?: APISort,
+ *   sortBy?: APISort|null,
  * }
  */
 final class APIStaticPropertyFilterDataSource implements BaseModel

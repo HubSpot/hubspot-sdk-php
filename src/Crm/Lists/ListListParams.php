@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Lists->list
  *
  * @phpstan-type ListListParamsShape = array{
- *   includeFilters?: bool, listIDs?: list<string>
+ *   includeFilters?: bool, listIds?: list<string>
  * }
  */
 final class ListListParams implements BaseModel
@@ -33,10 +33,10 @@ final class ListListParams implements BaseModel
     /**
      * The **ILS IDs** of the lists to fetch.
      *
-     * @var list<string>|null $listIDs
+     * @var list<string>|null $listIds
      */
     #[Api(list: 'string', optional: true)]
-    public ?array $listIDs;
+    public ?array $listIds;
 
     public function __construct()
     {
@@ -48,16 +48,16 @@ final class ListListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $listIDs
+     * @param list<string> $listIds
      */
     public static function with(
         ?bool $includeFilters = null,
-        ?array $listIDs = null
+        ?array $listIds = null
     ): self {
         $obj = new self;
 
         null !== $includeFilters && $obj->includeFilters = $includeFilters;
-        null !== $listIDs && $obj->listIDs = $listIDs;
+        null !== $listIds && $obj->listIds = $listIds;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class ListListParams implements BaseModel
     public function withListIDs(array $listIDs): self
     {
         $obj = clone $this;
-        $obj->listIDs = $listIDs;
+        $obj->listIds = $listIDs;
 
         return $obj;
     }

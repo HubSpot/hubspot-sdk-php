@@ -16,12 +16,10 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\SubscriptionsContract;
 use HubspotSDK\Services\Marketing\Subscriptions\V4Service;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class SubscriptionsService implements SubscriptionsContract
 {
     /**
-     * @@api
+     * @api
      */
     public V4Service $v4;
 
@@ -77,44 +75,22 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Subscribes a contact to the given subscription type. This API is not valid to use for subscribing a contact at a brand or portal level and will return an error.
      *
-     * @param string $emailAddress contact's email address
-     * @param string $subscriptionID ID of the subscription being updated for the contact
-     * @param LegalBasis|value-of<LegalBasis> $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
-     * @param string $legalBasisExplanation a more detailed explanation to go with the legal basis (required for GDPR enabled portals)
+     * @param array{
+     *   emailAddress: string,
+     *   subscriptionId: string,
+     *   legalBasis?: value-of<LegalBasis>,
+     *   legalBasisExplanation?: string,
+     * }|SubscriptionSubscribeParams $params
      *
      * @throws APIException
      */
     public function subscribe(
-        $emailAddress,
-        $subscriptionID,
-        $legalBasis = omit,
-        $legalBasisExplanation = omit,
+        array|SubscriptionSubscribeParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicSubscriptionStatus {
-        $params = [
-            'emailAddress' => $emailAddress,
-            'subscriptionID' => $subscriptionID,
-            'legalBasis' => $legalBasis,
-            'legalBasisExplanation' => $legalBasisExplanation,
-        ];
-
-        return $this->subscribeRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function subscribeRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicSubscriptionStatus {
         [$parsed, $options] = SubscriptionSubscribeParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -132,44 +108,22 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Unsubscribes a contact from the given subscription type. This API is not valid to use for unsubscribing a contact at a brand or portal level and will return an error.
      *
-     * @param string $emailAddress contact's email address
-     * @param string $subscriptionID ID of the subscription being updated for the contact
-     * @param SubscriptionUnsubscribeParams\LegalBasis|value-of<SubscriptionUnsubscribeParams\LegalBasis> $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
-     * @param string $legalBasisExplanation a more detailed explanation to go with the legal basis (required for GDPR enabled portals)
+     * @param array{
+     *   emailAddress: string,
+     *   subscriptionId: string,
+     *   legalBasis?: value-of<SubscriptionUnsubscribeParams\LegalBasis>,
+     *   legalBasisExplanation?: string,
+     * }|SubscriptionUnsubscribeParams $params
      *
      * @throws APIException
      */
     public function unsubscribe(
-        $emailAddress,
-        $subscriptionID,
-        $legalBasis = omit,
-        $legalBasisExplanation = omit,
+        array|SubscriptionUnsubscribeParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicSubscriptionStatus {
-        $params = [
-            'emailAddress' => $emailAddress,
-            'subscriptionID' => $subscriptionID,
-            'legalBasis' => $legalBasis,
-            'legalBasisExplanation' => $legalBasisExplanation,
-        ];
-
-        return $this->unsubscribeRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function unsubscribeRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicSubscriptionStatus {
         [$parsed, $options] = SubscriptionUnsubscribeParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

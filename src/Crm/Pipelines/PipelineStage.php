@@ -19,9 +19,9 @@ use HubspotSDK\Crm\Pipelines\PipelineStage\WritePermissions;
  *   displayOrder: int,
  *   label: string,
  *   updatedAt: \DateTimeInterface,
- *   archivedAt?: \DateTimeInterface,
- *   metadata?: array<string, string>,
- *   writePermissions?: value-of<WritePermissions>,
+ *   archivedAt?: \DateTimeInterface|null,
+ *   metadata?: array<string,string>|null,
+ *   writePermissions?: value-of<WritePermissions>|null,
  * }
  */
 final class PipelineStage implements BaseModel
@@ -78,7 +78,7 @@ final class PipelineStage implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @var array<string, string>|null $metadata
+     * @var array<string,string>|null $metadata
      */
     #[Api(map: 'string', optional: true)]
     public ?array $metadata;
@@ -128,7 +128,7 @@ final class PipelineStage implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $metadata
+     * @param array<string,string> $metadata
      * @param WritePermissions|value-of<WritePermissions> $writePermissions
      */
     public static function with(
@@ -242,7 +242,7 @@ final class PipelineStage implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @param array<string, string> $metadata
+     * @param array<string,string> $metadata
      */
     public function withMetadata(array $metadata): self
     {

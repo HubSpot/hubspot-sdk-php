@@ -22,7 +22,7 @@ use HubspotSDK\Crm\Exports\PublicExportListRequest\Language;
  *   includeLabeledAssociations: bool,
  *   includePrimaryDisplayPropertyForAssociatedObjects: bool,
  *   language: value-of<Language>,
- *   listID: string,
+ *   listId: string,
  *   objectProperties: list<string>,
  *   objectType: string,
  *   overrideAssociatedObjectsPerDefinitionPerRowLimit: bool,
@@ -64,8 +64,8 @@ final class PublicExportListRequest implements BaseModel
     #[Api(enum: Language::class)]
     public string $language;
 
-    #[Api('listId')]
-    public string $listID;
+    #[Api]
+    public string $listId;
 
     /** @var list<string> $objectProperties */
     #[Api(list: 'string')]
@@ -91,7 +91,7 @@ final class PublicExportListRequest implements BaseModel
      *   includeLabeledAssociations: ...,
      *   includePrimaryDisplayPropertyForAssociatedObjects: ...,
      *   language: ...,
-     *   listID: ...,
+     *   listId: ...,
      *   objectProperties: ...,
      *   objectType: ...,
      *   overrideAssociatedObjectsPerDefinitionPerRowLimit: ...,
@@ -141,7 +141,7 @@ final class PublicExportListRequest implements BaseModel
         bool $includeLabeledAssociations,
         bool $includePrimaryDisplayPropertyForAssociatedObjects,
         Language|string $language,
-        string $listID,
+        string $listId,
         array $objectProperties,
         string $objectType,
         bool $overrideAssociatedObjectsPerDefinitionPerRowLimit,
@@ -157,7 +157,7 @@ final class PublicExportListRequest implements BaseModel
         $obj->includeLabeledAssociations = $includeLabeledAssociations;
         $obj->includePrimaryDisplayPropertyForAssociatedObjects = $includePrimaryDisplayPropertyForAssociatedObjects;
         $obj['language'] = $language;
-        $obj->listID = $listID;
+        $obj->listId = $listId;
         $obj->objectProperties = $objectProperties;
         $obj->objectType = $objectType;
         $obj->overrideAssociatedObjectsPerDefinitionPerRowLimit = $overrideAssociatedObjectsPerDefinitionPerRowLimit;
@@ -250,7 +250,7 @@ final class PublicExportListRequest implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listID = $listID;
+        $obj->listId = $listID;
 
         return $obj;
     }

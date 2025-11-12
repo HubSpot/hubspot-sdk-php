@@ -2,13 +2,7 @@
 
 namespace Tests\Services\Scheduler\Meetings;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
-use HubspotSDK\PublicObjectID;
-use HubspotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest;
-use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties;
-use HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
-use HubspotSDK\Scheduler\Meetings\ExternalReminder;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -42,33 +36,31 @@ final class CalendarTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->scheduler->meetings->calendar->create(
-            associations: [
-                ExternalAssociationCreateRequest::with(
-                    to: PublicObjectID::with(id: '37295'),
-                    types: [
-                        AssociationSpec::with(
-                            associationCategory: 'HUBSPOT_DEFINED',
-                            associationTypeID: 0
-                        ),
+        $result = $this->client->scheduler->meetings->calendar->create([
+            'associations' => [
+                [
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeId' => 0,
+                        ],
                     ],
-                ),
-            ],
-            emailReminderSchedule: ExternalEmailReminderSchedule::with(
-                reminders: [
-                    ExternalReminder::with(numberOfTimeUnits: 0, timeUnit: 'timeUnit'),
                 ],
-                shouldIncludeInviteDescription: true,
-            ),
-            properties: ExternalCalendarMeetingEventCreateProperties::with(
-                hsMeetingEndTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                hsMeetingOutcome: 'hs_meeting_outcome',
-                hsMeetingStartTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                hsMeetingTitle: 'hs_meeting_title',
-                hsTimestamp: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            ),
-            timezone: 'timezone',
-        );
+            ],
+            'emailReminderSchedule' => [
+                'reminders' => [['numberOfTimeUnits' => 0, 'timeUnit' => 'timeUnit']],
+                'shouldIncludeInviteDescription' => true,
+            ],
+            'properties' => [
+                'hs_meeting_end_time' => '2019-12-27T18:11:19.117Z',
+                'hs_meeting_outcome' => 'hs_meeting_outcome',
+                'hs_meeting_start_time' => '2019-12-27T18:11:19.117Z',
+                'hs_meeting_title' => 'hs_meeting_title',
+                'hs_timestamp' => '2019-12-27T18:11:19.117Z',
+            ],
+            'timezone' => 'timezone',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -80,41 +72,39 @@ final class CalendarTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->scheduler->meetings->calendar->create(
-            associations: [
-                ExternalAssociationCreateRequest::with(
-                    to: PublicObjectID::with(id: '37295'),
-                    types: [
-                        AssociationSpec::with(
-                            associationCategory: 'HUBSPOT_DEFINED',
-                            associationTypeID: 0
-                        ),
+        $result = $this->client->scheduler->meetings->calendar->create([
+            'associations' => [
+                [
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeId' => 0,
+                        ],
                     ],
-                ),
-            ],
-            emailReminderSchedule: ExternalEmailReminderSchedule::with(
-                reminders: [
-                    ExternalReminder::with(numberOfTimeUnits: 0, timeUnit: 'timeUnit'),
                 ],
-                shouldIncludeInviteDescription: true,
-            ),
-            properties: ExternalCalendarMeetingEventCreateProperties::with(
-                hsMeetingEndTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                hsMeetingOutcome: 'hs_meeting_outcome',
-                hsMeetingStartTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                hsMeetingTitle: 'hs_meeting_title',
-                hsTimestamp: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            )
-                ->withHsActivityType('hs_activity_type')
-                ->withHsAttachmentIDs(['string'])
-                ->withHsAttendeeOwnerIDs(['string'])
-                ->withHsInternalMeetingNotes('hs_internal_meeting_notes')
-                ->withHsMeetingBody('hs_meeting_body')
-                ->withHsMeetingLocation('hs_meeting_location')
-                ->withHsMeetingLocationType('hs_meeting_location_type')
-                ->withHubspotOwnerID('hubspot_owner_id'),
-            timezone: 'timezone',
-        );
+            ],
+            'emailReminderSchedule' => [
+                'reminders' => [['numberOfTimeUnits' => 0, 'timeUnit' => 'timeUnit']],
+                'shouldIncludeInviteDescription' => true,
+            ],
+            'properties' => [
+                'hs_meeting_end_time' => '2019-12-27T18:11:19.117Z',
+                'hs_meeting_outcome' => 'hs_meeting_outcome',
+                'hs_meeting_start_time' => '2019-12-27T18:11:19.117Z',
+                'hs_meeting_title' => 'hs_meeting_title',
+                'hs_timestamp' => '2019-12-27T18:11:19.117Z',
+                'hs_activity_type' => 'hs_activity_type',
+                'hs_attachment_ids' => ['string'],
+                'hs_attendee_owner_ids' => ['string'],
+                'hs_internal_meeting_notes' => 'hs_internal_meeting_notes',
+                'hs_meeting_body' => 'hs_meeting_body',
+                'hs_meeting_location' => 'hs_meeting_location',
+                'hs_meeting_location_type' => 'hs_meeting_location_type',
+                'hubspot_owner_id' => 'hubspot_owner_id',
+            ],
+            'timezone' => 'timezone',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -62,7 +62,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            'threadId'
+            ['threadId' => 'threadId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -77,7 +77,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            'threadId'
+            ['threadId' => 'threadId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -92,7 +92,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            'threadId'
+            ['threadId' => 'threadId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -107,7 +107,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            'threadId'
+            ['threadId' => 'threadId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

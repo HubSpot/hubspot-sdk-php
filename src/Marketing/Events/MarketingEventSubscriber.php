@@ -10,7 +10,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MarketingEventSubscriberShape = array{
- *   interactionDateTime: int, properties?: array<string, string>, vid?: int
+ *   interactionDateTime: int,
+ *   properties?: array<string,string>|null,
+ *   vid?: int|null,
  * }
  */
 final class MarketingEventSubscriber implements BaseModel
@@ -24,7 +26,7 @@ final class MarketingEventSubscriber implements BaseModel
     #[Api]
     public int $interactionDateTime;
 
-    /** @var array<string, string>|null $properties */
+    /** @var array<string,string>|null $properties */
     #[Api(map: 'string', optional: true)]
     public ?array $properties;
 
@@ -55,7 +57,7 @@ final class MarketingEventSubscriber implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(
         int $interactionDateTime,
@@ -84,7 +86,7 @@ final class MarketingEventSubscriber implements BaseModel
     }
 
     /**
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

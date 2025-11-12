@@ -11,20 +11,20 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
   * @phpstan-type PropertyDefinitionShape = array{
-  *   objectTypeID: string,
+  *   objectTypeId: string,
   *   property: Property,
-  *   calculationExpression?: ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|PeriodToMonths|PeriodToWeeks|And|Or|Xor|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|AddTime|SubtractTime,
-  *   calculationFormula?: string,
-  *   definitionSource?: PropertyDefinitionSource,
-  *   extensionData?: ExtensionData,
-  *   externalOptionsMetaData?: ExternalOptionsMetaData,
-  *   fulcrumPortalID?: int,
-  *   fulcrumTimestamp?: int,
-  *   janusGroup?: string,
-  *   permission?: FieldLevelPermission,
-  *   propertyDefinitionSource?: DefinitionSource,
-  *   propertyRequirements?: DefaultRequirements,
-  *   rollupExpression?: RollupExpression,
+  *   calculationExpression?: null|ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|PeriodToMonths|PeriodToWeeks|And|Or|Xor|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|AddTime|SubtractTime,
+  *   calculationFormula?: string|null,
+  *   definitionSource?: PropertyDefinitionSource|null,
+  *   extensionData?: ExtensionData|null,
+  *   externalOptionsMetaData?: ExternalOptionsMetaData|null,
+  *   fulcrumPortalId?: int|null,
+  *   fulcrumTimestamp?: int|null,
+  *   janusGroup?: string|null,
+  *   permission?: FieldLevelPermission|null,
+  *   propertyDefinitionSource?: DefinitionSource|null,
+  *   propertyRequirements?: DefaultRequirements|null,
+  *   rollupExpression?: RollupExpression|null,
   * }
   * 
  */
@@ -33,9 +33,9 @@ final class PropertyDefinition implements BaseModel
   /** @use SdkModel<PropertyDefinitionShape> */
   use SdkModel;
 
-  /** @var string $objectTypeID */
-  #[Api("objectTypeId")]
-  public string $objectTypeID;
+  /** @var string $objectTypeId */
+  #[Api]
+  public string $objectTypeId;
 
   /**
   * Defines a property
@@ -67,9 +67,9 @@ final class PropertyDefinition implements BaseModel
   #[Api(optional: true)]
   public ?ExternalOptionsMetaData $externalOptionsMetaData;
 
-  /** @var int|null $fulcrumPortalID */
-  #[Api("fulcrumPortalId", optional: true)]
-  public ?int $fulcrumPortalID;
+  /** @var int|null $fulcrumPortalId */
+  #[Api(optional: true)]
+  public ?int $fulcrumPortalId;
 
   /** @var int|null $fulcrumTimestamp */
   #[Api(optional: true)]
@@ -100,7 +100,7 @@ final class PropertyDefinition implements BaseModel
   * 
   * To enforce required parameters use
   * ```
-  * PropertyDefinition::with(objectTypeID: ..., property: ...)
+  * PropertyDefinition::with(objectTypeId: ..., property: ...)
   * ```
   * 
   * Otherwise ensure the following setters are called
@@ -109,21 +109,21 @@ final class PropertyDefinition implements BaseModel
   * (new PropertyDefinition)->withObjectTypeID(...)->withProperty(...)
   * ```
  */
-  public function __construct(){$this->initialize();}
+  public function __construct() {$this->initialize();}
 
   /**
   * Construct an instance from the required parameters.
   * 
   * You must use named parameters to construct any parameters with a default value.
   * 
-  * @param string $objectTypeID
+  * @param string $objectTypeId
   * @param Property $property
   * @param ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|PeriodToMonths|PeriodToWeeks|And|Or|Xor|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|AddTime|SubtractTime $calculationExpression
   * @param string $calculationFormula
   * @param PropertyDefinitionSource $definitionSource
   * @param ExtensionData $extensionData
   * @param ExternalOptionsMetaData $externalOptionsMetaData
-  * @param int $fulcrumPortalID
+  * @param int $fulcrumPortalId
   * @param int $fulcrumTimestamp
   * @param string $janusGroup
   * @param FieldLevelPermission $permission
@@ -134,14 +134,14 @@ final class PropertyDefinition implements BaseModel
   * @return self
  */
   public static function with(
-    string $objectTypeID,
+    string $objectTypeId,
     Property $property,
     ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|PeriodToMonths|PeriodToWeeks|And|Or|Xor|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|AddTime|SubtractTime $calculationExpression = null,
     string $calculationFormula = null,
     PropertyDefinitionSource $definitionSource = null,
     ExtensionData $extensionData = null,
     ExternalOptionsMetaData $externalOptionsMetaData = null,
-    int $fulcrumPortalID = null,
+    int $fulcrumPortalId = null,
     int $fulcrumTimestamp = null,
     string $janusGroup = null,
     FieldLevelPermission $permission = null,
@@ -151,7 +151,7 @@ final class PropertyDefinition implements BaseModel
   ): self {
     $obj = new self;
 
-    $obj->objectTypeID = $objectTypeID;
+    $obj->objectTypeId = $objectTypeId;
     $obj->property = $property;
 
     null !== $calculationExpression && $obj->calculationExpression = $calculationExpression;
@@ -159,7 +159,7 @@ final class PropertyDefinition implements BaseModel
     null !== $definitionSource && $obj->definitionSource = $definitionSource;
     null !== $extensionData && $obj->extensionData = $extensionData;
     null !== $externalOptionsMetaData && $obj->externalOptionsMetaData = $externalOptionsMetaData;
-    null !== $fulcrumPortalID && $obj->fulcrumPortalID = $fulcrumPortalID;
+    null !== $fulcrumPortalId && $obj->fulcrumPortalId = $fulcrumPortalId;
     null !== $fulcrumTimestamp && $obj->fulcrumTimestamp = $fulcrumTimestamp;
     null !== $janusGroup && $obj->janusGroup = $janusGroup;
     null !== $permission && $obj->permission = $permission;
@@ -177,7 +177,7 @@ final class PropertyDefinition implements BaseModel
  */
   public function withObjectTypeID(string $objectTypeID): self {
     $obj = clone $this;
-    $obj->objectTypeID = $objectTypeID;
+    $obj->objectTypeId = $objectTypeID;
     return $obj;
   }
 
@@ -262,7 +262,7 @@ final class PropertyDefinition implements BaseModel
  */
   public function withFulcrumPortalID(int $fulcrumPortalID): self {
     $obj = clone $this;
-    $obj->fulcrumPortalID = $fulcrumPortalID;
+    $obj->fulcrumPortalId = $fulcrumPortalID;
     return $obj;
   }
 

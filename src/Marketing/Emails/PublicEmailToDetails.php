@@ -12,11 +12,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Data structure representing the to fields of the email.
  *
  * @phpstan-type PublicEmailToDetailsShape = array{
- *   contactIDs?: PublicEmailRecipients,
- *   contactIlsLists?: PublicEmailRecipients,
- *   contactLists?: PublicEmailRecipients,
- *   limitSendFrequency?: bool,
- *   suppressGraymail?: bool,
+ *   contactIds?: PublicEmailRecipients|null,
+ *   contactIlsLists?: PublicEmailRecipients|null,
+ *   contactLists?: PublicEmailRecipients|null,
+ *   limitSendFrequency?: bool|null,
+ *   suppressGraymail?: bool|null,
  * }
  */
 final class PublicEmailToDetails implements BaseModel
@@ -27,8 +27,8 @@ final class PublicEmailToDetails implements BaseModel
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      */
-    #[Api('contactIds', optional: true)]
-    public ?PublicEmailRecipients $contactIDs;
+    #[Api(optional: true)]
+    public ?PublicEmailRecipients $contactIds;
 
     /**
      * Data structure representing lists of IDs that should be included and excluded.
@@ -62,7 +62,7 @@ final class PublicEmailToDetails implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?PublicEmailRecipients $contactIDs = null,
+        ?PublicEmailRecipients $contactIds = null,
         ?PublicEmailRecipients $contactIlsLists = null,
         ?PublicEmailRecipients $contactLists = null,
         ?bool $limitSendFrequency = null,
@@ -70,7 +70,7 @@ final class PublicEmailToDetails implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $contactIDs && $obj->contactIDs = $contactIDs;
+        null !== $contactIds && $obj->contactIds = $contactIds;
         null !== $contactIlsLists && $obj->contactIlsLists = $contactIlsLists;
         null !== $contactLists && $obj->contactLists = $contactLists;
         null !== $limitSendFrequency && $obj->limitSendFrequency = $limitSendFrequency;
@@ -85,7 +85,7 @@ final class PublicEmailToDetails implements BaseModel
     public function withContactIDs(PublicEmailRecipients $contactIDs): self
     {
         $obj = clone $this;
-        $obj->contactIDs = $contactIDs;
+        $obj->contactIds = $contactIDs;
 
         return $obj;
     }

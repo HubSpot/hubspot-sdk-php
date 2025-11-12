@@ -12,12 +12,12 @@ use HubspotSDK\Services\Webhooks\SubscriptionsService;
 final class WebhooksService implements WebhooksContract
 {
     /**
-     * @@api
+     * @api
      */
     public SettingsService $settings;
 
     /**
-     * @@api
+     * @api
      */
     public SubscriptionsService $subscriptions;
 

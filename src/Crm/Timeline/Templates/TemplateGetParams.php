@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Crm\Timeline\Templates->get
  *
- * @phpstan-type TemplateGetParamsShape = array{appID: int}
+ * @phpstan-type TemplateGetParamsShape = array{appId: int}
  */
 final class TemplateGetParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class TemplateGetParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /**
      * `new TemplateGetParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * TemplateGetParams::with(appID: ...)
+     * TemplateGetParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class TemplateGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID): self
+    public static function with(int $appId): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class TemplateGetParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

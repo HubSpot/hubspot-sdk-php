@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type PublicChannelShape = array{id?: string, name?: string}
+ * @phpstan-type PublicChannelShape = array{id?: string|null, name?: string|null}
  */
 final class PublicChannel implements BaseModel
 {

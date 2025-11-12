@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Files\Folders->updateAsyncByID
  *
  * @phpstan-type FolderUpdateAsyncByIDParamsShape = array{
- *   id: string, name?: string, parentFolderID?: int
+ *   id: string, name?: string, parentFolderId?: int
  * }
  */
 final class FolderUpdateAsyncByIDParams implements BaseModel
@@ -39,8 +39,8 @@ final class FolderUpdateAsyncByIDParams implements BaseModel
     /**
      * The ID of the new parent folder, which will move the folder and its children into the specified folder.
      */
-    #[Api('parentFolderId', optional: true)]
-    public ?int $parentFolderID;
+    #[Api(optional: true)]
+    public ?int $parentFolderId;
 
     /**
      * `new FolderUpdateAsyncByIDParams()` is missing required properties by the API.
@@ -69,14 +69,14 @@ final class FolderUpdateAsyncByIDParams implements BaseModel
     public static function with(
         string $id,
         ?string $name = null,
-        ?int $parentFolderID = null
+        ?int $parentFolderId = null
     ): self {
         $obj = new self;
 
         $obj->id = $id;
 
         null !== $name && $obj->name = $name;
-        null !== $parentFolderID && $obj->parentFolderID = $parentFolderID;
+        null !== $parentFolderId && $obj->parentFolderId = $parentFolderId;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class FolderUpdateAsyncByIDParams implements BaseModel
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderID;
 
         return $obj;
     }

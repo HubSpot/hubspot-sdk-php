@@ -15,8 +15,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   daysOfWeek: list<value-of<DaysOfWeek>>,
  *   delta: int,
  *   timeUnit: value-of<TimeUnit>,
- *   timeOfDay?: APITimeOfDay,
- *   timeZoneStrategy?: APIStaticTimeZoneStrategy,
+ *   timeOfDay?: APITimeOfDay|null,
+ *   timeZoneStrategy?: APIStaticTimeZoneStrategy|null,
  * }
  */
 final class APITimeDelay implements BaseModel

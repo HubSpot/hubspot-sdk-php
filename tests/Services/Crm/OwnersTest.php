@@ -36,7 +36,7 @@ final class OwnersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->owners->list();
+        $result = $this->client->crm->owners->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +48,7 @@ final class OwnersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->owners->get(0);
+        $result = $this->client->crm->owners->get(0, []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

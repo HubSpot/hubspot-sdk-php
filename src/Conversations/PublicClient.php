@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicClientShape = array{
- *   clientType?: value-of<ClientType>, integrationAppID?: int
+ *   clientType?: value-of<ClientType>|null, integrationAppId?: int|null
  * }
  */
 final class PublicClient implements BaseModel
@@ -30,8 +30,8 @@ final class PublicClient implements BaseModel
     /**
      * The ID of the client if the client is an integration.
      */
-    #[Api('integrationAppId', optional: true)]
-    public ?int $integrationAppID;
+    #[Api(optional: true)]
+    public ?int $integrationAppId;
 
     public function __construct()
     {
@@ -47,12 +47,12 @@ final class PublicClient implements BaseModel
      */
     public static function with(
         ClientType|string|null $clientType = null,
-        ?int $integrationAppID = null
+        ?int $integrationAppId = null
     ): self {
         $obj = new self;
 
         null !== $clientType && $obj['clientType'] = $clientType;
-        null !== $integrationAppID && $obj->integrationAppID = $integrationAppID;
+        null !== $integrationAppId && $obj->integrationAppId = $integrationAppId;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class PublicClient implements BaseModel
     public function withIntegrationAppID(int $integrationAppID): self
     {
         $obj = clone $this;
-        $obj->integrationAppID = $integrationAppID;
+        $obj->integrationAppId = $integrationAppID;
 
         return $obj;
     }

@@ -18,11 +18,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   order: int,
  *   type: string,
  *   updatedAt: \DateTimeInterface,
- *   createdBy?: SimpleUser,
- *   createdByUserID?: int,
- *   label?: string,
- *   updatedBy?: SimpleUser,
- *   updatedByUserID?: int,
+ *   createdBy?: SimpleUser|null,
+ *   createdByUserId?: int|null,
+ *   label?: string|null,
+ *   updatedBy?: SimpleUser|null,
+ *   updatedByUserId?: int|null,
  * }
  */
 final class Option implements BaseModel
@@ -69,8 +69,8 @@ final class Option implements BaseModel
     /**
      * The ID of the user who created the option.
      */
-    #[Api('createdByUserId', optional: true)]
-    public ?int $createdByUserID;
+    #[Api(optional: true)]
+    public ?int $createdByUserId;
 
     /**
      * A user-friendly label that identifies the option.
@@ -84,8 +84,8 @@ final class Option implements BaseModel
     /**
      * The ID of the user who last updated the option.
      */
-    #[Api('updatedByUserId', optional: true)]
-    public ?int $updatedByUserID;
+    #[Api(optional: true)]
+    public ?int $updatedByUserId;
 
     /**
      * `new Option()` is missing required properties by the API.
@@ -127,10 +127,10 @@ final class Option implements BaseModel
         string $type,
         \DateTimeInterface $updatedAt,
         ?SimpleUser $createdBy = null,
-        ?int $createdByUserID = null,
+        ?int $createdByUserId = null,
         ?string $label = null,
         ?SimpleUser $updatedBy = null,
-        ?int $updatedByUserID = null,
+        ?int $updatedByUserId = null,
     ): self {
         $obj = new self;
 
@@ -142,10 +142,10 @@ final class Option implements BaseModel
         $obj->updatedAt = $updatedAt;
 
         null !== $createdBy && $obj->createdBy = $createdBy;
-        null !== $createdByUserID && $obj->createdByUserID = $createdByUserID;
+        null !== $createdByUserId && $obj->createdByUserId = $createdByUserId;
         null !== $label && $obj->label = $label;
         null !== $updatedBy && $obj->updatedBy = $updatedBy;
-        null !== $updatedByUserID && $obj->updatedByUserID = $updatedByUserID;
+        null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
 
         return $obj;
     }
@@ -227,7 +227,7 @@ final class Option implements BaseModel
     public function withCreatedByUserID(int $createdByUserID): self
     {
         $obj = clone $this;
-        $obj->createdByUserID = $createdByUserID;
+        $obj->createdByUserId = $createdByUserID;
 
         return $obj;
     }
@@ -257,7 +257,7 @@ final class Option implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj->updatedByUserID = $updatedByUserID;
+        $obj->updatedByUserId = $updatedByUserID;
 
         return $obj;
     }

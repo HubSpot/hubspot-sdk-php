@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MultiAssociatedObjectWithLabelShape = array{
- *   associationTypes: list<AssociationSpecWithLabel>, toObjectID: string
+ *   associationTypes: list<AssociationSpecWithLabel>, toObjectId: string
  * }
  */
 final class MultiAssociatedObjectWithLabel implements BaseModel
@@ -22,15 +22,15 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     #[Api(list: AssociationSpecWithLabel::class)]
     public array $associationTypes;
 
-    #[Api('toObjectId')]
-    public string $toObjectID;
+    #[Api]
+    public string $toObjectId;
 
     /**
      * `new MultiAssociatedObjectWithLabel()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MultiAssociatedObjectWithLabel::with(associationTypes: ..., toObjectID: ...)
+     * MultiAssociatedObjectWithLabel::with(associationTypes: ..., toObjectId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -55,12 +55,12 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
      */
     public static function with(
         array $associationTypes,
-        string $toObjectID
+        string $toObjectId
     ): self {
         $obj = new self;
 
         $obj->associationTypes = $associationTypes;
-        $obj->toObjectID = $toObjectID;
+        $obj->toObjectId = $toObjectId;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     public function withToObjectID(string $toObjectID): self
     {
         $obj = clone $this;
-        $obj->toObjectID = $toObjectID;
+        $obj->toObjectId = $toObjectID;
 
         return $obj;
     }

@@ -13,11 +13,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type APIAssociationDataSourceShape = array{
  *   associationCategory: value-of<AssociationCategory>,
- *   associationTypeID: int,
+ *   associationTypeId: int,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   type: value-of<Type>,
- *   sortBy?: APISort,
+ *   sortBy?: APISort|null,
  * }
  */
 final class APIAssociationDataSource implements BaseModel
@@ -29,14 +29,14 @@ final class APIAssociationDataSource implements BaseModel
     #[Api(enum: AssociationCategory::class)]
     public string $associationCategory;
 
-    #[Api('associationTypeId')]
-    public int $associationTypeID;
+    #[Api]
+    public int $associationTypeId;
 
     #[Api]
     public string $name;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
@@ -52,9 +52,9 @@ final class APIAssociationDataSource implements BaseModel
      * ```
      * APIAssociationDataSource::with(
      *   associationCategory: ...,
-     *   associationTypeID: ...,
+     *   associationTypeId: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   type: ...,
      * )
      * ```
@@ -85,18 +85,18 @@ final class APIAssociationDataSource implements BaseModel
      */
     public static function with(
         AssociationCategory|string $associationCategory,
-        int $associationTypeID,
+        int $associationTypeId,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         Type|string $type = 'ASSOCIATION',
         ?APISort $sortBy = null,
     ): self {
         $obj = new self;
 
         $obj['associationCategory'] = $associationCategory;
-        $obj->associationTypeID = $associationTypeID;
+        $obj->associationTypeId = $associationTypeId;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj['type'] = $type;
 
         null !== $sortBy && $obj->sortBy = $sortBy;
@@ -119,7 +119,7 @@ final class APIAssociationDataSource implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj->associationTypeID = $associationTypeID;
+        $obj->associationTypeId = $associationTypeID;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class APIAssociationDataSource implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

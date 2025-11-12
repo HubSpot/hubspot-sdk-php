@@ -20,22 +20,22 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  * An object list definition.
  *
  * @phpstan-type PublicObjectListShape = array{
- *   listID: string,
+ *   listId: string,
  *   listVersion: int,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   processingStatus: string,
  *   processingType: string,
- *   createdAt?: \DateTimeInterface,
- *   createdByID?: string,
- *   deletedAt?: \DateTimeInterface,
- *   filterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
- *   filtersUpdatedAt?: \DateTimeInterface,
- *   listPermissions?: PublicListPermissions,
- *   membershipSettings?: PublicMembershipSettings,
- *   size?: int,
- *   updatedAt?: \DateTimeInterface,
- *   updatedByID?: string,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdById?: string|null,
+ *   deletedAt?: \DateTimeInterface|null,
+ *   filterBranch?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   filtersUpdatedAt?: \DateTimeInterface|null,
+ *   listPermissions?: PublicListPermissions|null,
+ *   membershipSettings?: PublicMembershipSettings|null,
+ *   size?: int|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedById?: string|null,
  * }
  */
 final class PublicObjectList implements BaseModel
@@ -46,8 +46,8 @@ final class PublicObjectList implements BaseModel
     /**
      * The **ILS ID** of the list.
      */
-    #[Api('listId')]
-    public string $listID;
+    #[Api]
+    public string $listId;
 
     /**
      * The version of the list.
@@ -64,8 +64,8 @@ final class PublicObjectList implements BaseModel
     /**
      * The object type of the list.
      */
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /**
      * The processing status of the list.
@@ -88,8 +88,8 @@ final class PublicObjectList implements BaseModel
     /**
      * The ID of the user that created the list.
      */
-    #[Api('createdById', optional: true)]
-    public ?string $createdByID;
+    #[Api(optional: true)]
+    public ?string $createdById;
 
     /**
      * The time when the list was deleted.
@@ -127,8 +127,8 @@ final class PublicObjectList implements BaseModel
     /**
      * The ID of the user that last updated the list.
      */
-    #[Api('updatedById', optional: true)]
-    public ?string $updatedByID;
+    #[Api(optional: true)]
+    public ?string $updatedById;
 
     /**
      * `new PublicObjectList()` is missing required properties by the API.
@@ -136,10 +136,10 @@ final class PublicObjectList implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicObjectList::with(
-     *   listID: ...,
+     *   listId: ...,
      *   listVersion: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   processingStatus: ...,
      *   processingType: ...,
      * )
@@ -168,14 +168,14 @@ final class PublicObjectList implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $listID,
+        string $listId,
         int $listVersion,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         string $processingStatus,
         string $processingType,
         ?\DateTimeInterface $createdAt = null,
-        ?string $createdByID = null,
+        ?string $createdById = null,
         ?\DateTimeInterface $deletedAt = null,
         PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
         ?\DateTimeInterface $filtersUpdatedAt = null,
@@ -183,19 +183,19 @@ final class PublicObjectList implements BaseModel
         ?PublicMembershipSettings $membershipSettings = null,
         ?int $size = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?string $updatedByID = null,
+        ?string $updatedById = null,
     ): self {
         $obj = new self;
 
-        $obj->listID = $listID;
+        $obj->listId = $listId;
         $obj->listVersion = $listVersion;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->processingStatus = $processingStatus;
         $obj->processingType = $processingType;
 
         null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdByID && $obj->createdByID = $createdByID;
+        null !== $createdById && $obj->createdById = $createdById;
         null !== $deletedAt && $obj->deletedAt = $deletedAt;
         null !== $filterBranch && $obj->filterBranch = $filterBranch;
         null !== $filtersUpdatedAt && $obj->filtersUpdatedAt = $filtersUpdatedAt;
@@ -203,7 +203,7 @@ final class PublicObjectList implements BaseModel
         null !== $membershipSettings && $obj->membershipSettings = $membershipSettings;
         null !== $size && $obj->size = $size;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedByID && $obj->updatedByID = $updatedByID;
+        null !== $updatedById && $obj->updatedById = $updatedById;
 
         return $obj;
     }
@@ -214,7 +214,7 @@ final class PublicObjectList implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listID = $listID;
+        $obj->listId = $listID;
 
         return $obj;
     }
@@ -247,7 +247,7 @@ final class PublicObjectList implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -291,7 +291,7 @@ final class PublicObjectList implements BaseModel
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
-        $obj->createdByID = $createdByID;
+        $obj->createdById = $createdByID;
 
         return $obj;
     }
@@ -374,7 +374,7 @@ final class PublicObjectList implements BaseModel
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
-        $obj->updatedByID = $updatedByID;
+        $obj->updatedById = $updatedByID;
 
         return $obj;
     }

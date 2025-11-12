@@ -12,12 +12,12 @@ use HubspotSDK\Core\Conversion\ListOf;
 /**
  * @phpstan-type ErrorShape = array{
  *   category: string,
- *   correlationID: string,
+ *   correlationId: string,
  *   message: string,
- *   context?: array<string, list<string>>,
- *   errors?: list<ErrorDetail>,
- *   links?: array<string, string>,
- *   subCategory?: string,
+ *   context?: array<string,list<string>>|null,
+ *   errors?: list<ErrorDetail>|null,
+ *   links?: array<string,string>|null,
+ *   subCategory?: string|null,
  * }
  */
 final class Error implements BaseModel
@@ -34,8 +34,8 @@ final class Error implements BaseModel
     /**
      * A unique identifier for the request. Include this value with any error reports or support tickets.
      */
-    #[Api('correlationId')]
-    public string $correlationID;
+    #[Api]
+    public string $correlationId;
 
     /**
      * A human readable message describing the error along with remediation steps where appropriate.
@@ -46,7 +46,7 @@ final class Error implements BaseModel
     /**
      * Context about the error condition.
      *
-     * @var array<string, list<string>>|null $context
+     * @var array<string,list<string>>|null $context
      */
     #[Api(map: new ListOf('string'), optional: true)]
     public ?array $context;
@@ -62,7 +62,7 @@ final class Error implements BaseModel
     /**
      * A map of link names to associated URIs containing documentation about the error or recommended remediation steps.
      *
-     * @var array<string, string>|null $links
+     * @var array<string,string>|null $links
      */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
@@ -78,7 +78,7 @@ final class Error implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * Error::with(category: ..., correlationID: ..., message: ...)
+     * Error::with(category: ..., correlationId: ..., message: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -97,13 +97,13 @@ final class Error implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, list<string>> $context
+     * @param array<string,list<string>> $context
      * @param list<ErrorDetail> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         string $category,
-        string $correlationID,
+        string $correlationId,
         string $message,
         ?array $context = null,
         ?array $errors = null,
@@ -113,7 +113,7 @@ final class Error implements BaseModel
         $obj = new self;
 
         $obj->category = $category;
-        $obj->correlationID = $correlationID;
+        $obj->correlationId = $correlationId;
         $obj->message = $message;
 
         null !== $context && $obj->context = $context;
@@ -141,7 +141,7 @@ final class Error implements BaseModel
     public function withCorrelationID(string $correlationID): self
     {
         $obj = clone $this;
-        $obj->correlationID = $correlationID;
+        $obj->correlationId = $correlationID;
 
         return $obj;
     }
@@ -160,7 +160,7 @@ final class Error implements BaseModel
     /**
      * Context about the error condition.
      *
-     * @param array<string, list<string>> $context
+     * @param array<string,list<string>> $context
      */
     public function withContext(array $context): self
     {
@@ -186,7 +186,7 @@ final class Error implements BaseModel
     /**
      * A map of link names to associated URIs containing documentation about the error or recommended remediation steps.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

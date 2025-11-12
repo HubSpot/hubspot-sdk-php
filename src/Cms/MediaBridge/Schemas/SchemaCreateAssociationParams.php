@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\MediaBridge\Schemas->createAssociation
  *
  * @phpstan-type SchemaCreateAssociationParamsShape = array{
- *   appID: string, fromObjectTypeID: string, toObjectTypeID: string, name?: string
+ *   appId: string, fromObjectTypeId: string, toObjectTypeId: string, name?: string
  * }
  */
 final class SchemaCreateAssociationParams implements BaseModel
@@ -25,13 +25,13 @@ final class SchemaCreateAssociationParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appID;
+    public string $appId;
 
-    #[Api('fromObjectTypeId')]
-    public string $fromObjectTypeID;
+    #[Api]
+    public string $fromObjectTypeId;
 
-    #[Api('toObjectTypeId')]
-    public string $toObjectTypeID;
+    #[Api]
+    public string $toObjectTypeId;
 
     #[Api(optional: true)]
     public ?string $name;
@@ -42,7 +42,7 @@ final class SchemaCreateAssociationParams implements BaseModel
      * To enforce required parameters use
      * ```
      * SchemaCreateAssociationParams::with(
-     *   appID: ..., fromObjectTypeID: ..., toObjectTypeID: ...
+     *   appId: ..., fromObjectTypeId: ..., toObjectTypeId: ...
      * )
      * ```
      *
@@ -66,16 +66,16 @@ final class SchemaCreateAssociationParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $appID,
-        string $fromObjectTypeID,
-        string $toObjectTypeID,
+        string $appId,
+        string $fromObjectTypeId,
+        string $toObjectTypeId,
         ?string $name = null,
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->fromObjectTypeID = $fromObjectTypeID;
-        $obj->toObjectTypeID = $toObjectTypeID;
+        $obj->appId = $appId;
+        $obj->fromObjectTypeId = $fromObjectTypeId;
+        $obj->toObjectTypeId = $toObjectTypeId;
 
         null !== $name && $obj->name = $name;
 
@@ -85,7 +85,7 @@ final class SchemaCreateAssociationParams implements BaseModel
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class SchemaCreateAssociationParams implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeID = $fromObjectTypeID;
+        $obj->fromObjectTypeId = $fromObjectTypeID;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class SchemaCreateAssociationParams implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->toObjectTypeID = $toObjectTypeID;
+        $obj->toObjectTypeId = $toObjectTypeID;
 
         return $obj;
     }

@@ -27,8 +27,6 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\AuthorsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class AuthorsService implements AuthorsContract
 {
     /**
@@ -41,83 +39,35 @@ final class AuthorsService implements AuthorsContract
      *
      * Create a new Blog Author.
      *
-     * @param string $id the unique ID of the Blog Author
-     * @param string $avatar URL to the blog author's avatar, if supplying a custom one
-     * @param string $bio a short biography of the blog author
-     * @param \DateTimeInterface $created
-     * @param \DateTimeInterface $deletedAt the timestamp (ISO8601 format) when this Blog Author was deleted
-     * @param string $displayName the full name of the Blog Author to be displayed
-     * @param string $email email address of the Blog Author
-     * @param string $facebook URL to the Blog Author's Facebook page
-     * @param string $fullName
-     * @param Language|value-of<Language> $language the explicitly defined ISO 639 language code of the blog author
-     * @param string $linkedin URL to the blog author's LinkedIn page
-     * @param string $name
-     * @param string $slug
-     * @param int $translatedFromID ID of the primary blog author this object was translated from
-     * @param string $twitter URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.
-     * @param \DateTimeInterface $updated
-     * @param string $website URL to the website of the Blog Author
+     * @param array{
+     *   id: string,
+     *   avatar: string,
+     *   bio: string,
+     *   created: string|\DateTimeInterface,
+     *   deletedAt: string|\DateTimeInterface,
+     *   displayName: string,
+     *   email: string,
+     *   facebook: string,
+     *   fullName: string,
+     *   language: value-of<Language>,
+     *   linkedin: string,
+     *   name: string,
+     *   slug: string,
+     *   translatedFromId: int,
+     *   twitter: string,
+     *   updated: string|\DateTimeInterface,
+     *   website: string,
+     * }|AuthorCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $id,
-        $avatar,
-        $bio,
-        $created,
-        $deletedAt,
-        $displayName,
-        $email,
-        $facebook,
-        $fullName,
-        $language,
-        $linkedin,
-        $name,
-        $slug,
-        $translatedFromID,
-        $twitter,
-        $updated,
-        $website,
-        ?RequestOptions $requestOptions = null,
-    ): BlogAuthor {
-        $params = [
-            'id' => $id,
-            'avatar' => $avatar,
-            'bio' => $bio,
-            'created' => $created,
-            'deletedAt' => $deletedAt,
-            'displayName' => $displayName,
-            'email' => $email,
-            'facebook' => $facebook,
-            'fullName' => $fullName,
-            'language' => $language,
-            'linkedin' => $linkedin,
-            'name' => $name,
-            'slug' => $slug,
-            'translatedFromID' => $translatedFromID,
-            'twitter' => $twitter,
-            'updated' => $updated,
-            'website' => $website,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|AuthorCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): BlogAuthor {
         [$parsed, $options] = AuthorCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -136,88 +86,37 @@ final class AuthorsService implements AuthorsContract
      * Sparse updates a single Blog Author object identified by the id in the path.
      * All the column values need not be specified. Only the that need to be modified can be specified.
      *
-     * @param string $id the unique ID of the Blog Author
-     * @param string $avatar URL to the blog author's avatar, if supplying a custom one
-     * @param string $bio a short biography of the blog author
-     * @param \DateTimeInterface $created
-     * @param \DateTimeInterface $deletedAt the timestamp (ISO8601 format) when this Blog Author was deleted
-     * @param string $displayName the full name of the Blog Author to be displayed
-     * @param string $email email address of the Blog Author
-     * @param string $facebook URL to the Blog Author's Facebook page
-     * @param string $fullName
-     * @param AuthorUpdateParams\Language|value-of<AuthorUpdateParams\Language> $language the explicitly defined ISO 639 language code of the blog author
-     * @param string $linkedin URL to the blog author's LinkedIn page
-     * @param string $name
-     * @param string $slug
-     * @param int $translatedFromID ID of the primary blog author this object was translated from
-     * @param string $twitter URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.
-     * @param \DateTimeInterface $updated
-     * @param string $website URL to the website of the Blog Author
-     * @param bool $archived Specifies whether to update deleted Blog Authors. Defaults to `false`.
+     * @param array{
+     *   id: string,
+     *   avatar: string,
+     *   bio: string,
+     *   created: string|\DateTimeInterface,
+     *   deletedAt: string|\DateTimeInterface,
+     *   displayName: string,
+     *   email: string,
+     *   facebook: string,
+     *   fullName: string,
+     *   language: value-of<AuthorUpdateParams\Language>,
+     *   linkedin: string,
+     *   name: string,
+     *   slug: string,
+     *   translatedFromId: int,
+     *   twitter: string,
+     *   updated: string|\DateTimeInterface,
+     *   website: string,
+     *   archived?: bool,
+     * }|AuthorUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $objectID,
-        $id,
-        $avatar,
-        $bio,
-        $created,
-        $deletedAt,
-        $displayName,
-        $email,
-        $facebook,
-        $fullName,
-        $language,
-        $linkedin,
-        $name,
-        $slug,
-        $translatedFromID,
-        $twitter,
-        $updated,
-        $website,
-        $archived = omit,
+        array|AuthorUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BlogAuthor {
-        $params = [
-            'id' => $id,
-            'avatar' => $avatar,
-            'bio' => $bio,
-            'created' => $created,
-            'deletedAt' => $deletedAt,
-            'displayName' => $displayName,
-            'email' => $email,
-            'facebook' => $facebook,
-            'fullName' => $fullName,
-            'language' => $language,
-            'linkedin' => $linkedin,
-            'name' => $name,
-            'slug' => $slug,
-            'translatedFromID' => $translatedFromID,
-            'twitter' => $twitter,
-            'updated' => $updated,
-            'website' => $website,
-            'archived' => $archived,
-        ];
-
-        return $this->updateRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BlogAuthor {
         [$parsed, $options] = AuthorUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -237,69 +136,31 @@ final class AuthorsService implements AuthorsContract
      *
      * Get the list of blog authors. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived Specifies whether to return deleted Blog Authors. Defaults to `false`.
-     * @param \DateTimeInterface $createdAfter only return Blog Authors created after the specified time
-     * @param \DateTimeInterface $createdAt only return Blog Authors created at exactly the specified time
-     * @param \DateTimeInterface $createdBefore only return Blog Authors created before the specified time
-     * @param int $limit The maximum number of results to return. Default is 100.
-     * @param string $property
-     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
-     * @param \DateTimeInterface $updatedAfter only return Blog Authors last updated after the specified time
-     * @param \DateTimeInterface $updatedAt only return Blog Authors last updated at exactly the specified time
-     * @param \DateTimeInterface $updatedBefore only return Blog Authors last updated before the specified time
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: string|\DateTimeInterface,
+     *   createdAt?: string|\DateTimeInterface,
+     *   createdBefore?: string|\DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: string|\DateTimeInterface,
+     *   updatedAt?: string|\DateTimeInterface,
+     *   updatedBefore?: string|\DateTimeInterface,
+     * }|AuthorListParams $params
      *
      * @return Page<BlogAuthor>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $archived = omit,
-        $createdAfter = omit,
-        $createdAt = omit,
-        $createdBefore = omit,
-        $limit = omit,
-        $property = omit,
-        $sort = omit,
-        $updatedAfter = omit,
-        $updatedAt = omit,
-        $updatedBefore = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'limit' => $limit,
-            'property' => $property,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<BlogAuthor>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|AuthorListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = AuthorListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -318,35 +179,18 @@ final class AuthorsService implements AuthorsContract
      *
      * Delete the Blog Author object identified by the id in the path.
      *
-     * @param bool $archived whether to return only results that have been archived
+     * @param array{archived?: bool}|AuthorDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $objectID,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['archived' => $archived];
-
-        return $this->deleteRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|AuthorDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = AuthorDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -364,44 +208,19 @@ final class AuthorsService implements AuthorsContract
      *
      * Attach a Blog Author to a multi-language group.
      *
-     * @param string $id ID of the object to add to a multi-language group
-     * @param string $language designated language of the object to add to a multi-language group
-     * @param string $primaryID ID of primary language object in multi-language group
-     * @param string $primaryLanguage primary language of the multi-language group
+     * @param array{
+     *   id: string, language: string, primaryId: string, primaryLanguage?: string
+     * }|AuthorAttachToLangGroupParams $params
      *
      * @throws APIException
      */
     public function attachToLangGroup(
-        $id,
-        $language,
-        $primaryID,
-        $primaryLanguage = omit,
+        array|AuthorAttachToLangGroupParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryID' => $primaryID,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-
-        return $this->attachToLangGroupRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function attachToLangGroupRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = AuthorAttachToLangGroupParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -419,33 +238,37 @@ final class AuthorsService implements AuthorsContract
      *
      * Create the Blog Author objects detailed in the request body.
      *
-     * @param list<BlogAuthor> $inputs blog authors to input
+     * @param array{
+     *   inputs: list<array{
+     *     id: string,
+     *     avatar: string,
+     *     bio: string,
+     *     created: string|\DateTimeInterface,
+     *     deletedAt: string|\DateTimeInterface,
+     *     displayName: string,
+     *     email: string,
+     *     facebook: string,
+     *     fullName: string,
+     *     language: "af"|"af-na"|"af-za"|"agq"|"agq-cm"|"ak"|"ak-gh"|"am"|"am-et"|"ar"|"ar-001"|"ar-ae"|"ar-bh"|"ar-dj"|"ar-dz"|"ar-eg"|"ar-eh"|"ar-er"|"ar-il"|"ar-iq"|"ar-jo"|"ar-km"|"ar-kw"|"ar-lb"|"ar-ly"|"ar-ma"|"ar-mr"|"ar-om"|"ar-ps"|"ar-qa"|"ar-sa"|"ar-sd"|"ar-so"|"ar-ss"|"ar-sy"|"ar-td"|"ar-tn"|"ar-ye"|"as"|"as-in"|"asa"|"asa-tz"|"ast"|"ast-es"|"az"|"az-az"|"bas"|"bas-cm"|"be"|"be-by"|"bem"|"bem-zm"|"bez"|"bez-tz"|"bg"|"bg-bg"|"bm"|"bm-ml"|"bn"|"bn-bd"|"bn-in"|"bo"|"bo-cn"|"bo-in"|"br"|"br-fr"|"brx"|"brx-in"|"bs"|"bs-ba"|"ca"|"ca-ad"|"ca-es"|"ca-fr"|"ca-it"|"ccp"|"ccp-bd"|"ccp-in"|"ce"|"ce-ru"|"ceb"|"ceb-ph"|"cgg"|"cgg-ug"|"chr"|"chr-us"|"ckb"|"ckb-iq"|"ckb-ir"|"cs"|"cs-cz"|"cu"|"cu-ru"|"cy"|"cy-gb"|"da"|"da-dk"|"da-gl"|"dav"|"dav-ke"|"de"|"de-at"|"de-be"|"de-ch"|"de-de"|"de-gr"|"de-it"|"de-li"|"de-lu"|"dje"|"dje-ne"|"doi"|"doi-in"|"dsb"|"dsb-de"|"dua"|"dua-cm"|"dyo"|"dyo-sn"|"dz"|"dz-bt"|"ebu"|"ebu-ke"|"ee"|"ee-gh"|"ee-tg"|"el"|"el-cy"|"el-gr"|"en"|"en-001"|"en-150"|"en-ae"|"en-ag"|"en-ai"|"en-as"|"en-at"|"en-au"|"en-bb"|"en-be"|"en-bi"|"en-bm"|"en-bs"|"en-bw"|"en-bz"|"en-ca"|"en-cc"|"en-ch"|"en-ck"|"en-cm"|"en-cn"|"en-cx"|"en-cy"|"en-de"|"en-dg"|"en-dk"|"en-dm"|"en-er"|"en-fi"|"en-fj"|"en-fk"|"en-fm"|"en-gb"|"en-gd"|"en-gg"|"en-gh"|"en-gi"|"en-gm"|"en-gu"|"en-gy"|"en-hk"|"en-ie"|"en-il"|"en-im"|"en-in"|"en-io"|"en-je"|"en-jm"|"en-ke"|"en-ki"|"en-kn"|"en-ky"|"en-lc"|"en-lr"|"en-ls"|"en-lu"|"en-mg"|"en-mh"|"en-mo"|"en-mp"|"en-ms"|"en-mt"|"en-mu"|"en-mw"|"en-mx"|"en-my"|"en-na"|"en-nf"|"en-ng"|"en-nl"|"en-nr"|"en-nu"|"en-nz"|"en-pg"|"en-ph"|"en-pk"|"en-pn"|"en-pr"|"en-pw"|"en-rw"|"en-sb"|"en-sc"|"en-sd"|"en-se"|"en-sg"|"en-sh"|"en-si"|"en-sl"|"en-ss"|"en-sx"|"en-sz"|"en-tc"|"en-tk"|"en-to"|"en-tt"|"en-tv"|"en-tz"|"en-ug"|"en-um"|"en-us"|"en-vc"|"en-vg"|"en-vi"|"en-vu"|"en-ws"|"en-za"|"en-zm"|"en-zw"|"eo"|"eo-001"|"es"|"es-419"|"es-ar"|"es-bo"|"es-br"|"es-bz"|"es-cl"|"es-co"|"es-cr"|"es-cu"|"es-do"|"es-ea"|"es-ec"|"es-es"|"es-gq"|"es-gt"|"es-hn"|"es-ic"|"es-mx"|"es-ni"|"es-pa"|"es-pe"|"es-ph"|"es-pr"|"es-py"|"es-sv"|"es-us"|"es-uy"|"es-ve"|"et"|"et-ee"|"eu"|"eu-es"|"ewo"|"ewo-cm"|"fa"|"fa-af"|"fa-ir"|"ff"|"ff-bf"|"ff-cm"|"ff-gh"|"ff-gm"|"ff-gn"|"ff-gw"|"ff-lr"|"ff-mr"|"ff-ne"|"ff-ng"|"ff-sl"|"ff-sn"|"fi"|"fi-fi"|"fil"|"fil-ph"|"fo"|"fo-dk"|"fo-fo"|"fr"|"fr-be"|"fr-bf"|"fr-bi"|"fr-bj"|"fr-bl"|"fr-ca"|"fr-cd"|"fr-cf"|"fr-cg"|"fr-ch"|"fr-ci"|"fr-cm"|"fr-dj"|"fr-dz"|"fr-fr"|"fr-ga"|"fr-gf"|"fr-gn"|"fr-gp"|"fr-gq"|"fr-ht"|"fr-km"|"fr-lu"|"fr-ma"|"fr-mc"|"fr-mf"|"fr-mg"|"fr-ml"|"fr-mq"|"fr-mr"|"fr-mu"|"fr-nc"|"fr-ne"|"fr-pf"|"fr-pm"|"fr-re"|"fr-rw"|"fr-sc"|"fr-sn"|"fr-sy"|"fr-td"|"fr-tg"|"fr-tn"|"fr-vu"|"fr-wf"|"fr-yt"|"fur"|"fur-it"|"fy"|"fy-nl"|"ga"|"ga-gb"|"ga-ie"|"gd"|"gd-gb"|"gl"|"gl-es"|"gsw"|"gsw-ch"|"gsw-fr"|"gsw-li"|"gu"|"gu-in"|"guz"|"guz-ke"|"gv"|"gv-im"|"ha"|"ha-gh"|"ha-ne"|"ha-ng"|"haw"|"haw-us"|"he"|"hi"|"hi-in"|"hr"|"hr-ba"|"hr-hr"|"hsb"|"hsb-de"|"hu"|"hu-hu"|"hy"|"hy-am"|"ia"|"ia-001"|"id"|"ig"|"ig-ng"|"ii"|"ii-cn"|"id-id"|"is"|"is-is"|"it"|"it-ch"|"it-it"|"it-sm"|"it-va"|"he-il"|"ja"|"ja-jp"|"jgo"|"jgo-cm"|"yi"|"yi-001"|"jmc"|"jmc-tz"|"jv"|"jv-id"|"ka"|"ka-ge"|"kab"|"kab-dz"|"kam"|"kam-ke"|"kde"|"kde-tz"|"kea"|"kea-cv"|"khq"|"khq-ml"|"ki"|"ki-ke"|"kk"|"kk-kz"|"kkj"|"kkj-cm"|"kl"|"kl-gl"|"kln"|"kln-ke"|"km"|"km-kh"|"kn"|"kn-in"|"ko"|"ko-kp"|"ko-kr"|"kok"|"kok-in"|"ks"|"ks-in"|"ksb"|"ksb-tz"|"ksf"|"ksf-cm"|"ksh"|"ksh-de"|"kw"|"kw-gb"|"ku"|"ku-tr"|"ky"|"ky-kg"|"lag"|"lag-tz"|"lb"|"lb-lu"|"lg"|"lg-ug"|"lkt"|"lkt-us"|"ln"|"ln-ao"|"ln-cd"|"ln-cf"|"ln-cg"|"lo"|"lo-la"|"lrc"|"lrc-iq"|"lrc-ir"|"lt"|"lt-lt"|"lu"|"lu-cd"|"luo"|"luo-ke"|"luy"|"luy-ke"|"lv"|"lv-lv"|"mai"|"mai-in"|"mas"|"mas-ke"|"mas-tz"|"mer"|"mer-ke"|"mfe"|"mfe-mu"|"mg"|"mg-mg"|"mgh"|"mgh-mz"|"mgo"|"mgo-cm"|"mi"|"mi-nz"|"mk"|"mk-mk"|"ml"|"ml-in"|"mn"|"mn-mn"|"mni"|"mni-in"|"mr"|"mr-in"|"ms"|"ms-bn"|"ms-id"|"ms-my"|"ms-sg"|"mt"|"mt-mt"|"mua"|"mua-cm"|"my"|"my-mm"|"mzn"|"mzn-ir"|"naq"|"naq-na"|"nb"|"nb-no"|"nb-sj"|"nd"|"nd-zw"|"nds"|"nds-de"|"nds-nl"|"ne"|"ne-in"|"ne-np"|"nl"|"nl-aw"|"nl-be"|"nl-ch"|"nl-bq"|"nl-cw"|"nl-lu"|"nl-nl"|"nl-sr"|"nl-sx"|"nmg"|"nmg-cm"|"nn"|"nn-no"|"nnh"|"nnh-cm"|"no"|"no-no"|"nus"|"nus-ss"|"nyn"|"nyn-ug"|"om"|"om-et"|"om-ke"|"or"|"or-in"|"os"|"os-ge"|"os-ru"|"pa"|"pa-in"|"pa-pk"|"pcm"|"pcm-ng"|"pl"|"pl-pl"|"prg"|"prg-001"|"ps"|"ps-af"|"ps-pk"|"pt"|"pt-ao"|"pt-br"|"pt-ch"|"pt-cv"|"pt-gq"|"pt-gw"|"pt-lu"|"pt-mo"|"pt-mz"|"pt-pt"|"pt-st"|"pt-tl"|"qu"|"qu-bo"|"qu-ec"|"qu-pe"|"rm"|"rm-ch"|"rn"|"rn-bi"|"ro"|"ro-md"|"ro-ro"|"rof"|"rof-tz"|"ru"|"ru-by"|"ru-kg"|"ru-kz"|"ru-md"|"ru-ru"|"ru-ua"|"rw"|"rw-rw"|"rwk"|"rwk-tz"|"sa"|"sa-in"|"sah"|"sah-ru"|"saq"|"saq-ke"|"sat"|"sat-in"|"sbp"|"sbp-tz"|"sd"|"sd-in"|"sd-pk"|"se"|"se-fi"|"se-no"|"se-se"|"seh"|"seh-mz"|"ses"|"ses-ml"|"sg"|"sg-cf"|"shi"|"shi-ma"|"si"|"si-lk"|"sk"|"sk-sk"|"sl"|"sl-si"|"smn"|"smn-fi"|"sn"|"sn-zw"|"so"|"so-dj"|"so-et"|"so-ke"|"so-so"|"sq"|"sq-al"|"sq-mk"|"sq-xk"|"sr"|"sr-ba"|"sr-cs"|"sr-me"|"sr-rs"|"sr-xk"|"su"|"su-id"|"sv"|"sv-ax"|"sv-fi"|"sv-se"|"sw"|"sw-cd"|"sw-ke"|"sw-tz"|"sw-ug"|"sy"|"ta"|"ta-in"|"ta-lk"|"ta-my"|"ta-sg"|"te"|"te-in"|"teo"|"teo-ke"|"teo-ug"|"tg"|"tg-tj"|"th"|"th-th"|"ti"|"ti-er"|"ti-et"|"tk"|"tk-tm"|"tl"|"to"|"to-to"|"tr"|"tr-cy"|"tr-tr"|"tt"|"tt-ru"|"twq"|"twq-ne"|"tzm"|"tzm-ma"|"ug"|"ug-cn"|"uk"|"uk-ua"|"ur"|"ur-in"|"ur-pk"|"uz"|"uz-af"|"uz-uz"|"vai"|"vai-lr"|"vi"|"vi-vn"|"vo"|"vo-001"|"vun"|"vun-tz"|"wae"|"wae-ch"|"wo"|"wo-sn"|"xh"|"xh-za"|"xog"|"xog-ug"|"yav"|"yav-cm"|"yo"|"yo-bj"|"yo-ng"|"yue"|"yue-cn"|"yue-hk"|"zgh"|"zgh-ma"|"zh"|"zh-cn"|"zh-hk"|"zh-mo"|"zh-sg"|"zh-tw"|"zh-hans"|"zh-hant"|"zu"|"zu-za",
+     *     linkedin: string,
+     *     name: string,
+     *     slug: string,
+     *     translatedFromId: int,
+     *     twitter: string,
+     *     updated: string|\DateTimeInterface,
+     *     website: string,
+     *   }|BlogAuthor>,
+     * }|AuthorCreateBatchParams $params
      *
      * @throws APIException
      */
     public function createBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseBlogAuthor {
-        $params = ['inputs' => $inputs];
-
-        return $this->createBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|AuthorCreateBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseBlogAuthor {
         [$parsed, $options] = AuthorCreateBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -463,44 +286,40 @@ final class AuthorsService implements AuthorsContract
      *
      * Create a new language variation from an existing Blog Author.
      *
-     * @param string $id ID of the object to be cloned
-     * @param BlogAuthor $blogAuthor model definition for a Blog Author
-     * @param string $language language of newly cloned object
-     * @param string $primaryLanguage primary language in multi-language group
+     * @param array{
+     *   id: string,
+     *   blogAuthor: array{
+     *     id: string,
+     *     avatar: string,
+     *     bio: string,
+     *     created: string|\DateTimeInterface,
+     *     deletedAt: string|\DateTimeInterface,
+     *     displayName: string,
+     *     email: string,
+     *     facebook: string,
+     *     fullName: string,
+     *     language: "af"|"af-na"|"af-za"|"agq"|"agq-cm"|"ak"|"ak-gh"|"am"|"am-et"|"ar"|"ar-001"|"ar-ae"|"ar-bh"|"ar-dj"|"ar-dz"|"ar-eg"|"ar-eh"|"ar-er"|"ar-il"|"ar-iq"|"ar-jo"|"ar-km"|"ar-kw"|"ar-lb"|"ar-ly"|"ar-ma"|"ar-mr"|"ar-om"|"ar-ps"|"ar-qa"|"ar-sa"|"ar-sd"|"ar-so"|"ar-ss"|"ar-sy"|"ar-td"|"ar-tn"|"ar-ye"|"as"|"as-in"|"asa"|"asa-tz"|"ast"|"ast-es"|"az"|"az-az"|"bas"|"bas-cm"|"be"|"be-by"|"bem"|"bem-zm"|"bez"|"bez-tz"|"bg"|"bg-bg"|"bm"|"bm-ml"|"bn"|"bn-bd"|"bn-in"|"bo"|"bo-cn"|"bo-in"|"br"|"br-fr"|"brx"|"brx-in"|"bs"|"bs-ba"|"ca"|"ca-ad"|"ca-es"|"ca-fr"|"ca-it"|"ccp"|"ccp-bd"|"ccp-in"|"ce"|"ce-ru"|"ceb"|"ceb-ph"|"cgg"|"cgg-ug"|"chr"|"chr-us"|"ckb"|"ckb-iq"|"ckb-ir"|"cs"|"cs-cz"|"cu"|"cu-ru"|"cy"|"cy-gb"|"da"|"da-dk"|"da-gl"|"dav"|"dav-ke"|"de"|"de-at"|"de-be"|"de-ch"|"de-de"|"de-gr"|"de-it"|"de-li"|"de-lu"|"dje"|"dje-ne"|"doi"|"doi-in"|"dsb"|"dsb-de"|"dua"|"dua-cm"|"dyo"|"dyo-sn"|"dz"|"dz-bt"|"ebu"|"ebu-ke"|"ee"|"ee-gh"|"ee-tg"|"el"|"el-cy"|"el-gr"|"en"|"en-001"|"en-150"|"en-ae"|"en-ag"|"en-ai"|"en-as"|"en-at"|"en-au"|"en-bb"|"en-be"|"en-bi"|"en-bm"|"en-bs"|"en-bw"|"en-bz"|"en-ca"|"en-cc"|"en-ch"|"en-ck"|"en-cm"|"en-cn"|"en-cx"|"en-cy"|"en-de"|"en-dg"|"en-dk"|"en-dm"|"en-er"|"en-fi"|"en-fj"|"en-fk"|"en-fm"|"en-gb"|"en-gd"|"en-gg"|"en-gh"|"en-gi"|"en-gm"|"en-gu"|"en-gy"|"en-hk"|"en-ie"|"en-il"|"en-im"|"en-in"|"en-io"|"en-je"|"en-jm"|"en-ke"|"en-ki"|"en-kn"|"en-ky"|"en-lc"|"en-lr"|"en-ls"|"en-lu"|"en-mg"|"en-mh"|"en-mo"|"en-mp"|"en-ms"|"en-mt"|"en-mu"|"en-mw"|"en-mx"|"en-my"|"en-na"|"en-nf"|"en-ng"|"en-nl"|"en-nr"|"en-nu"|"en-nz"|"en-pg"|"en-ph"|"en-pk"|"en-pn"|"en-pr"|"en-pw"|"en-rw"|"en-sb"|"en-sc"|"en-sd"|"en-se"|"en-sg"|"en-sh"|"en-si"|"en-sl"|"en-ss"|"en-sx"|"en-sz"|"en-tc"|"en-tk"|"en-to"|"en-tt"|"en-tv"|"en-tz"|"en-ug"|"en-um"|"en-us"|"en-vc"|"en-vg"|"en-vi"|"en-vu"|"en-ws"|"en-za"|"en-zm"|"en-zw"|"eo"|"eo-001"|"es"|"es-419"|"es-ar"|"es-bo"|"es-br"|"es-bz"|"es-cl"|"es-co"|"es-cr"|"es-cu"|"es-do"|"es-ea"|"es-ec"|"es-es"|"es-gq"|"es-gt"|"es-hn"|"es-ic"|"es-mx"|"es-ni"|"es-pa"|"es-pe"|"es-ph"|"es-pr"|"es-py"|"es-sv"|"es-us"|"es-uy"|"es-ve"|"et"|"et-ee"|"eu"|"eu-es"|"ewo"|"ewo-cm"|"fa"|"fa-af"|"fa-ir"|"ff"|"ff-bf"|"ff-cm"|"ff-gh"|"ff-gm"|"ff-gn"|"ff-gw"|"ff-lr"|"ff-mr"|"ff-ne"|"ff-ng"|"ff-sl"|"ff-sn"|"fi"|"fi-fi"|"fil"|"fil-ph"|"fo"|"fo-dk"|"fo-fo"|"fr"|"fr-be"|"fr-bf"|"fr-bi"|"fr-bj"|"fr-bl"|"fr-ca"|"fr-cd"|"fr-cf"|"fr-cg"|"fr-ch"|"fr-ci"|"fr-cm"|"fr-dj"|"fr-dz"|"fr-fr"|"fr-ga"|"fr-gf"|"fr-gn"|"fr-gp"|"fr-gq"|"fr-ht"|"fr-km"|"fr-lu"|"fr-ma"|"fr-mc"|"fr-mf"|"fr-mg"|"fr-ml"|"fr-mq"|"fr-mr"|"fr-mu"|"fr-nc"|"fr-ne"|"fr-pf"|"fr-pm"|"fr-re"|"fr-rw"|"fr-sc"|"fr-sn"|"fr-sy"|"fr-td"|"fr-tg"|"fr-tn"|"fr-vu"|"fr-wf"|"fr-yt"|"fur"|"fur-it"|"fy"|"fy-nl"|"ga"|"ga-gb"|"ga-ie"|"gd"|"gd-gb"|"gl"|"gl-es"|"gsw"|"gsw-ch"|"gsw-fr"|"gsw-li"|"gu"|"gu-in"|"guz"|"guz-ke"|"gv"|"gv-im"|"ha"|"ha-gh"|"ha-ne"|"ha-ng"|"haw"|"haw-us"|"he"|"hi"|"hi-in"|"hr"|"hr-ba"|"hr-hr"|"hsb"|"hsb-de"|"hu"|"hu-hu"|"hy"|"hy-am"|"ia"|"ia-001"|"id"|"ig"|"ig-ng"|"ii"|"ii-cn"|"id-id"|"is"|"is-is"|"it"|"it-ch"|"it-it"|"it-sm"|"it-va"|"he-il"|"ja"|"ja-jp"|"jgo"|"jgo-cm"|"yi"|"yi-001"|"jmc"|"jmc-tz"|"jv"|"jv-id"|"ka"|"ka-ge"|"kab"|"kab-dz"|"kam"|"kam-ke"|"kde"|"kde-tz"|"kea"|"kea-cv"|"khq"|"khq-ml"|"ki"|"ki-ke"|"kk"|"kk-kz"|"kkj"|"kkj-cm"|"kl"|"kl-gl"|"kln"|"kln-ke"|"km"|"km-kh"|"kn"|"kn-in"|"ko"|"ko-kp"|"ko-kr"|"kok"|"kok-in"|"ks"|"ks-in"|"ksb"|"ksb-tz"|"ksf"|"ksf-cm"|"ksh"|"ksh-de"|"kw"|"kw-gb"|"ku"|"ku-tr"|"ky"|"ky-kg"|"lag"|"lag-tz"|"lb"|"lb-lu"|"lg"|"lg-ug"|"lkt"|"lkt-us"|"ln"|"ln-ao"|"ln-cd"|"ln-cf"|"ln-cg"|"lo"|"lo-la"|"lrc"|"lrc-iq"|"lrc-ir"|"lt"|"lt-lt"|"lu"|"lu-cd"|"luo"|"luo-ke"|"luy"|"luy-ke"|"lv"|"lv-lv"|"mai"|"mai-in"|"mas"|"mas-ke"|"mas-tz"|"mer"|"mer-ke"|"mfe"|"mfe-mu"|"mg"|"mg-mg"|"mgh"|"mgh-mz"|"mgo"|"mgo-cm"|"mi"|"mi-nz"|"mk"|"mk-mk"|"ml"|"ml-in"|"mn"|"mn-mn"|"mni"|"mni-in"|"mr"|"mr-in"|"ms"|"ms-bn"|"ms-id"|"ms-my"|"ms-sg"|"mt"|"mt-mt"|"mua"|"mua-cm"|"my"|"my-mm"|"mzn"|"mzn-ir"|"naq"|"naq-na"|"nb"|"nb-no"|"nb-sj"|"nd"|"nd-zw"|"nds"|"nds-de"|"nds-nl"|"ne"|"ne-in"|"ne-np"|"nl"|"nl-aw"|"nl-be"|"nl-ch"|"nl-bq"|"nl-cw"|"nl-lu"|"nl-nl"|"nl-sr"|"nl-sx"|"nmg"|"nmg-cm"|"nn"|"nn-no"|"nnh"|"nnh-cm"|"no"|"no-no"|"nus"|"nus-ss"|"nyn"|"nyn-ug"|"om"|"om-et"|"om-ke"|"or"|"or-in"|"os"|"os-ge"|"os-ru"|"pa"|"pa-in"|"pa-pk"|"pcm"|"pcm-ng"|"pl"|"pl-pl"|"prg"|"prg-001"|"ps"|"ps-af"|"ps-pk"|"pt"|"pt-ao"|"pt-br"|"pt-ch"|"pt-cv"|"pt-gq"|"pt-gw"|"pt-lu"|"pt-mo"|"pt-mz"|"pt-pt"|"pt-st"|"pt-tl"|"qu"|"qu-bo"|"qu-ec"|"qu-pe"|"rm"|"rm-ch"|"rn"|"rn-bi"|"ro"|"ro-md"|"ro-ro"|"rof"|"rof-tz"|"ru"|"ru-by"|"ru-kg"|"ru-kz"|"ru-md"|"ru-ru"|"ru-ua"|"rw"|"rw-rw"|"rwk"|"rwk-tz"|"sa"|"sa-in"|"sah"|"sah-ru"|"saq"|"saq-ke"|"sat"|"sat-in"|"sbp"|"sbp-tz"|"sd"|"sd-in"|"sd-pk"|"se"|"se-fi"|"se-no"|"se-se"|"seh"|"seh-mz"|"ses"|"ses-ml"|"sg"|"sg-cf"|"shi"|"shi-ma"|"si"|"si-lk"|"sk"|"sk-sk"|"sl"|"sl-si"|"smn"|"smn-fi"|"sn"|"sn-zw"|"so"|"so-dj"|"so-et"|"so-ke"|"so-so"|"sq"|"sq-al"|"sq-mk"|"sq-xk"|"sr"|"sr-ba"|"sr-cs"|"sr-me"|"sr-rs"|"sr-xk"|"su"|"su-id"|"sv"|"sv-ax"|"sv-fi"|"sv-se"|"sw"|"sw-cd"|"sw-ke"|"sw-tz"|"sw-ug"|"sy"|"ta"|"ta-in"|"ta-lk"|"ta-my"|"ta-sg"|"te"|"te-in"|"teo"|"teo-ke"|"teo-ug"|"tg"|"tg-tj"|"th"|"th-th"|"ti"|"ti-er"|"ti-et"|"tk"|"tk-tm"|"tl"|"to"|"to-to"|"tr"|"tr-cy"|"tr-tr"|"tt"|"tt-ru"|"twq"|"twq-ne"|"tzm"|"tzm-ma"|"ug"|"ug-cn"|"uk"|"uk-ua"|"ur"|"ur-in"|"ur-pk"|"uz"|"uz-af"|"uz-uz"|"vai"|"vai-lr"|"vi"|"vi-vn"|"vo"|"vo-001"|"vun"|"vun-tz"|"wae"|"wae-ch"|"wo"|"wo-sn"|"xh"|"xh-za"|"xog"|"xog-ug"|"yav"|"yav-cm"|"yo"|"yo-bj"|"yo-ng"|"yue"|"yue-cn"|"yue-hk"|"zgh"|"zgh-ma"|"zh"|"zh-cn"|"zh-hk"|"zh-mo"|"zh-sg"|"zh-tw"|"zh-hans"|"zh-hant"|"zu"|"zu-za",
+     *     linkedin: string,
+     *     name: string,
+     *     slug: string,
+     *     translatedFromId: int,
+     *     twitter: string,
+     *     updated: string|\DateTimeInterface,
+     *     website: string,
+     *   }|BlogAuthor,
+     *   language?: string,
+     *   primaryLanguage?: string,
+     * }|AuthorCreateLanguageVariationParams $params
      *
      * @throws APIException
      */
     public function createLanguageVariation(
-        $id,
-        $blogAuthor,
-        $language = omit,
-        $primaryLanguage = omit,
+        array|AuthorCreateLanguageVariationParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BlogAuthor {
-        $params = [
-            'id' => $id,
-            'blogAuthor' => $blogAuthor,
-            'language' => $language,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-
-        return $this->createLanguageVariationRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createLanguageVariationRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BlogAuthor {
         [$parsed, $options] = AuthorCreateLanguageVariationParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -518,33 +337,17 @@ final class AuthorsService implements AuthorsContract
      *
      * Delete the Blog Author objects identified in the request body.
      *
-     * @param list<string> $inputs strings to input
+     * @param array{inputs: list<string>}|AuthorDeleteBatchParams $params
      *
      * @throws APIException
      */
     public function deleteBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['inputs' => $inputs];
-
-        return $this->deleteBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|AuthorDeleteBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = AuthorDeleteBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -562,33 +365,17 @@ final class AuthorsService implements AuthorsContract
      *
      * Detach a Blog Author from a multi-language group.
      *
-     * @param string $id ID of the object to remove from a multi-language group
+     * @param array{id: string}|AuthorDetachFromLangGroupParams $params
      *
      * @throws APIException
      */
     public function detachFromLangGroup(
-        $id,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['id' => $id];
-
-        return $this->detachFromLangGroupRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function detachFromLangGroupRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|AuthorDetachFromLangGroupParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = AuthorDetachFromLangGroupParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -606,37 +393,18 @@ final class AuthorsService implements AuthorsContract
      *
      * Retrieve the Blog Author object identified by the id in the path.
      *
-     * @param bool $archived Specifies whether to return deleted Blog Authors. Defaults to `false`.
-     * @param string $property
+     * @param array{archived?: bool, property?: string}|AuthorGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $objectID,
-        $archived = omit,
-        $property = omit,
+        array|AuthorGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BlogAuthor {
-        $params = ['archived' => $archived, 'property' => $property];
-
-        return $this->getRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BlogAuthor {
         [$parsed, $options] = AuthorGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -654,35 +422,17 @@ final class AuthorsService implements AuthorsContract
      *
      * Retrieve the Blog Author objects identified in the request body.
      *
-     * @param list<string> $inputs strings to input
-     * @param bool $archived Specifies whether to return deleted Blog Authors. Defaults to `false`.
+     * @param array{inputs: list<string>, archived?: bool}|AuthorGetBatchParams $params
      *
      * @throws APIException
      */
     public function getBatch(
-        $inputs,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseBlogAuthor {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-
-        return $this->getBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getBatchRaw(
-        array $params,
+        array|AuthorGetBatchParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseBlogAuthor {
         [$parsed, $options] = AuthorGetBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -702,33 +452,17 @@ final class AuthorsService implements AuthorsContract
      *
      * Set a Blog Author as the primary language of a multi-language group.
      *
-     * @param string $id ID of object to set as primary in multi-language group
+     * @param array{id: string}|AuthorSetNewLangPrimaryParams $params
      *
      * @throws APIException
      */
     public function setNewLangPrimary(
-        $id,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['id' => $id];
-
-        return $this->setNewLangPrimaryRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function setNewLangPrimaryRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|AuthorSetNewLangPrimaryParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = AuthorSetNewLangPrimaryParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -746,35 +480,19 @@ final class AuthorsService implements AuthorsContract
      *
      * Update the Blog Author objects identified in the request body.
      *
-     * @param list<mixed> $inputs JSON nodes to input
-     * @param bool $archived Specifies whether to update deleted Blog Authors. Defaults to `false`.
+     * @param array{
+     *   inputs: list<mixed>, archived?: bool
+     * }|AuthorUpdateBatchParams $params
      *
      * @throws APIException
      */
     public function updateBatch(
-        $inputs,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseBlogAuthor {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-
-        return $this->updateBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|AuthorUpdateBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseBlogAuthor {
         [$parsed, $options] = AuthorUpdateBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -794,36 +512,19 @@ final class AuthorsService implements AuthorsContract
      *
      * Explicitly set new languages for each Blog Author in a multi-language group.
      *
-     * @param array<string,
-     * string,> $languages Map of object IDs to associated languages of object in the multi-language group
-     * @param string $primaryID ID of the primary object in the multi-language group
+     * @param array{
+     *   languages: array<string,string>, primaryId: string
+     * }|AuthorUpdateLanguagesParams $params
      *
      * @throws APIException
      */
     public function updateLanguages(
-        $languages,
-        $primaryID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['languages' => $languages, 'primaryID' => $primaryID];
-
-        return $this->updateLanguagesRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateLanguagesRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|AuthorUpdateLanguagesParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = AuthorUpdateLanguagesParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

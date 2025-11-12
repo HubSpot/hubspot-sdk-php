@@ -5,58 +5,38 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Hubdb;
 
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\Rows\RowCloneDraftParams;
+use HubspotSDK\Cms\Hubdb\Rows\RowCreateParams;
+use HubspotSDK\Cms\Hubdb\Rows\RowDeleteDraftParams;
+use HubspotSDK\Cms\Hubdb\Rows\RowGetDraftParams;
+use HubspotSDK\Cms\Hubdb\Rows\RowGetParams;
+use HubspotSDK\Cms\Hubdb\Rows\RowListDraftParams;
+use HubspotSDK\Cms\Hubdb\Rows\RowListParams;
+use HubspotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
+use HubspotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface RowsContract
 {
     /**
      * @api
      *
-     * @param array<string,
-     * mixed,> $values List of key value pairs with the column name and column value
-     * @param int $childTableID Specifies the value for the column child table id
-     * @param int $displayIndex
-     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
-     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
+     * @param array<mixed>|RowCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $tableIDOrName,
-        $values,
-        $childTableID = omit,
-        $displayIndex = omit,
-        $name = omit,
-        $path = omit,
+        array|RowCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): HubDBTableRowV3;
-
-    /**
-     * @api
-     *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived
-     * @param int $limit The maximum number of results to return. Default is `1000`.
-     * @param int $offset
-     * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
-     * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
+     * @param array<mixed>|RowListParams $params
      *
      * @return Page<mixed>
      *
@@ -64,149 +44,66 @@ interface RowsContract
      */
     public function list(
         string $tableIDOrName,
-        $after = omit,
-        $archived = omit,
-        $limit = omit,
-        $offset = omit,
-        $properties = omit,
-        $sort = omit,
+        array|RowListParams $params,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<mixed>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param string $tableIDOrName
-     * @param string $name
+     * @param array<mixed>|RowCloneDraftParams $params
      *
      * @throws APIException
      */
     public function cloneDraft(
         string $rowID,
-        $tableIDOrName,
-        $name = omit,
+        array|RowCloneDraftParams $params,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function cloneDraftRaw(
-        string $rowID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): HubDBTableRowV3;
-
-    /**
-     * @api
-     *
-     * @param string $tableIDOrName
+     * @param array<mixed>|RowDeleteDraftParams $params
      *
      * @throws APIException
      */
     public function deleteDraft(
         string $rowID,
-        $tableIDOrName,
-        ?RequestOptions $requestOptions = null
+        array|RowDeleteDraftParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteDraftRaw(
-        string $rowID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $tableIDOrName
-     * @param bool $archived
+     * @param array<mixed>|RowGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $rowID,
-        $tableIDOrName,
-        $archived = omit,
+        array|RowGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $rowID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): HubDBTableRowV3;
-
-    /**
-     * @api
-     *
-     * @param string $tableIDOrName
-     * @param bool $archived
+     * @param array<mixed>|RowGetDraftParams $params
      *
      * @throws APIException
      */
     public function getDraft(
         string $rowID,
-        $tableIDOrName,
-        $archived = omit,
+        array|RowGetDraftParams $params,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getDraftRaw(
-        string $rowID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): HubDBTableRowV3;
-
-    /**
-     * @api
-     *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived
-     * @param int $limit The maximum number of results to return. Default is `1000`.
-     * @param int $offset
-     * @param list<string> $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
-     * @param list<string> $sort specifies the column names to sort the results by
+     * @param array<mixed>|RowListDraftParams $params
      *
      * @return Page<mixed>
      *
@@ -214,101 +111,33 @@ interface RowsContract
      */
     public function listDraft(
         string $tableIDOrName,
-        $after = omit,
-        $archived = omit,
-        $limit = omit,
-        $offset = omit,
-        $properties = omit,
-        $sort = omit,
+        array|RowListDraftParams $params,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<mixed>
-     *
-     * @throws APIException
-     */
-    public function listDraftRaw(
-        string $tableIDOrName,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param string $tableIDOrName
-     * @param array<string,
-     * mixed,> $values List of key value pairs with the column name and column value
-     * @param int $childTableID Specifies the value for the column child table id
-     * @param int $displayIndex
-     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
-     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
+     * @param array<mixed>|RowReplaceDraftParams $params
      *
      * @throws APIException
      */
     public function replaceDraft(
         string $rowID,
-        $tableIDOrName,
-        $values,
-        $childTableID = omit,
-        $displayIndex = omit,
-        $name = omit,
-        $path = omit,
+        array|RowReplaceDraftParams $params,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function replaceDraftRaw(
-        string $rowID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): HubDBTableRowV3;
-
-    /**
-     * @api
-     *
-     * @param string $tableIDOrName
-     * @param array<string,
-     * mixed,> $values List of key value pairs with the column name and column value
-     * @param int $childTableID Specifies the value for the column child table id
-     * @param int $displayIndex
-     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
-     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
+     * @param array<mixed>|RowUpdateDraftParams $params
      *
      * @throws APIException
      */
     public function updateDraft(
         string $rowID,
-        $tableIDOrName,
-        $values,
-        $childTableID = omit,
-        $displayIndex = omit,
-        $name = omit,
-        $path = omit,
+        array|RowUpdateDraftParams $params,
         ?RequestOptions $requestOptions = null,
-    ): HubDBTableRowV3;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateDraftRaw(
-        string $rowID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): HubDBTableRowV3;
 }

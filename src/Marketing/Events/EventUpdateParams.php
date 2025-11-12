@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   eventName?: string,
  *   eventOrganizer?: string,
  *   eventType?: string,
- *   eventURL?: string,
+ *   eventUrl?: string,
  *   startDateTime?: \DateTimeInterface,
  * }
  */
@@ -54,8 +54,8 @@ final class EventUpdateParams implements BaseModel
     #[Api(optional: true)]
     public ?string $eventType;
 
-    #[Api('eventUrl', optional: true)]
-    public ?string $eventURL;
+    #[Api(optional: true)]
+    public ?string $eventUrl;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $startDateTime;
@@ -94,7 +94,7 @@ final class EventUpdateParams implements BaseModel
         ?string $eventName = null,
         ?string $eventOrganizer = null,
         ?string $eventType = null,
-        ?string $eventURL = null,
+        ?string $eventUrl = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -107,7 +107,7 @@ final class EventUpdateParams implements BaseModel
         null !== $eventName && $obj->eventName = $eventName;
         null !== $eventOrganizer && $obj->eventOrganizer = $eventOrganizer;
         null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventURL && $obj->eventURL = $eventURL;
+        null !== $eventUrl && $obj->eventUrl = $eventUrl;
         null !== $startDateTime && $obj->startDateTime = $startDateTime;
 
         return $obj;
@@ -175,7 +175,7 @@ final class EventUpdateParams implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventURL = $eventURL;
+        $obj->eventUrl = $eventURL;
 
         return $obj;
     }

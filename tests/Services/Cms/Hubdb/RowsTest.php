@@ -38,7 +38,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->create(
             'tableIdOrName',
-            values: ['foo' => (object) []]
+            ['values' => ['foo' => []]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +53,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->create(
             'tableIdOrName',
-            values: ['foo' => (object) []]
+            ['values' => ['foo' => []]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -66,7 +66,7 @@ final class RowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->rows->list('tableIdOrName');
+        $result = $this->client->cms->hubdb->rows->list('tableIdOrName', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -80,7 +80,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->cloneDraft(
             '321669910225',
-            tableIDOrName: 'tableIdOrName'
+            ['tableIdOrName' => 'tableIdOrName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -95,7 +95,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->cloneDraft(
             '321669910225',
-            tableIDOrName: 'tableIdOrName'
+            ['tableIdOrName' => 'tableIdOrName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -110,7 +110,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->deleteDraft(
             '321669910225',
-            'tableIdOrName'
+            ['tableIdOrName' => 'tableIdOrName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -125,7 +125,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->deleteDraft(
             '321669910225',
-            'tableIdOrName'
+            ['tableIdOrName' => 'tableIdOrName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -140,7 +140,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->get(
             '321669910225',
-            tableIDOrName: 'tableIdOrName'
+            ['tableIdOrName' => 'tableIdOrName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -155,7 +155,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->get(
             '321669910225',
-            tableIDOrName: 'tableIdOrName'
+            ['tableIdOrName' => 'tableIdOrName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -170,7 +170,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->getDraft(
             '321669910225',
-            tableIDOrName: 'tableIdOrName'
+            ['tableIdOrName' => 'tableIdOrName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -185,7 +185,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->getDraft(
             '321669910225',
-            tableIDOrName: 'tableIdOrName'
+            ['tableIdOrName' => 'tableIdOrName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -198,7 +198,7 @@ final class RowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->rows->listDraft('tableIdOrName');
+        $result = $this->client->cms->hubdb->rows->listDraft('tableIdOrName', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -212,8 +212,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->replaceDraft(
             '321669910225',
-            tableIDOrName: 'tableIdOrName',
-            values: ['foo' => (object) []],
+            ['tableIdOrName' => 'tableIdOrName', 'values' => ['foo' => []]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -228,8 +227,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->replaceDraft(
             '321669910225',
-            tableIDOrName: 'tableIdOrName',
-            values: ['foo' => (object) []],
+            ['tableIdOrName' => 'tableIdOrName', 'values' => ['foo' => []]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -244,8 +242,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->updateDraft(
             '321669910225',
-            tableIDOrName: 'tableIdOrName',
-            values: ['foo' => (object) []],
+            ['tableIdOrName' => 'tableIdOrName', 'values' => ['foo' => []]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -260,8 +257,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->updateDraft(
             '321669910225',
-            tableIDOrName: 'tableIdOrName',
-            values: ['foo' => (object) []],
+            ['tableIdOrName' => 'tableIdOrName', 'values' => ['foo' => []]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

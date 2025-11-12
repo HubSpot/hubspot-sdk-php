@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APISignatureWebhookAuthSettingsShape = array{
- *   appID: int, type: value-of<Type>
+ *   appId: int, type: value-of<Type>
  * }
  */
 final class APISignatureWebhookAuthSettings implements BaseModel
@@ -19,8 +19,8 @@ final class APISignatureWebhookAuthSettings implements BaseModel
     /** @use SdkModel<APISignatureWebhookAuthSettingsShape> */
     use SdkModel;
 
-    #[Api('appId')]
-    public int $appID;
+    #[Api]
+    public int $appId;
 
     /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
@@ -31,7 +31,7 @@ final class APISignatureWebhookAuthSettings implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * APISignatureWebhookAuthSettings::with(appID: ..., type: ...)
+     * APISignatureWebhookAuthSettings::with(appId: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -53,12 +53,12 @@ final class APISignatureWebhookAuthSettings implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        int $appID,
+        int $appId,
         Type|string $type = 'SIGNATURE'
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APISignatureWebhookAuthSettings implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

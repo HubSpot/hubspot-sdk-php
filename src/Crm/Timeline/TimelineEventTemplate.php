@@ -16,10 +16,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   name: string,
  *   objectType: string,
  *   tokens: list<TimelineEventTemplateToken>,
- *   createdAt?: \DateTimeInterface,
- *   detailTemplate?: string,
- *   headerTemplate?: string,
- *   updatedAt?: \DateTimeInterface,
+ *   createdAt?: \DateTimeInterface|null,
+ *   detailTemplate?: string|null,
+ *   headerTemplate?: string|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class TimelineEventTemplate implements BaseModel

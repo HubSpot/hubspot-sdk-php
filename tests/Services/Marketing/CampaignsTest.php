@@ -36,7 +36,9 @@ final class CampaignsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->create(['foo' => 'string']);
+        $result = $this->client->marketing->campaigns->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +50,9 @@ final class CampaignsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->create(['foo' => 'string']);
+        $result = $this->client->marketing->campaigns->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -62,7 +66,7 @@ final class CampaignsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->update(
             'campaignGuid',
-            ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -77,7 +81,7 @@ final class CampaignsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->update(
             'campaignGuid',
-            ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -90,7 +94,7 @@ final class CampaignsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->list();
+        $result = $this->client->marketing->campaigns->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -114,7 +118,7 @@ final class CampaignsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->get('campaignGuid');
+        $result = $this->client->marketing->campaigns->get('campaignGuid', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Represents the input required to create or update a CRM object, containing an object with property names and their corresponding values.
  *
  * @phpstan-type SimplePublicObjectInputShape = array{
- *   properties: array<string, string>
+ *   properties: array<string,string>
  * }
  */
 final class SimplePublicObjectInput implements BaseModel
@@ -23,7 +23,7 @@ final class SimplePublicObjectInput implements BaseModel
     /**
      * Key value pairs representing the properties of the object.
      *
-     * @var array<string, string> $properties
+     * @var array<string,string> $properties
      */
     #[Api(map: 'string')]
     public array $properties;
@@ -52,7 +52,7 @@ final class SimplePublicObjectInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(array $properties): self
     {
@@ -66,7 +66,7 @@ final class SimplePublicObjectInput implements BaseModel
     /**
      * Key value pairs representing the properties of the object.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

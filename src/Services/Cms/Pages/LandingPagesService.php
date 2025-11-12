@@ -17,8 +17,6 @@ use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateFolderParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateFoldersBatchParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateLanguageVariationParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageDeleteBatchParams;
@@ -53,11 +51,10 @@ use HubspotSDK\Cms\Pages\Page;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Cms\Pages\VersionContentFolder;
 use HubspotSDK\Cms\Pages\VersionPage;
+use HubspotSDK\Cms\Styles;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Pages\LandingPagesContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class LandingPagesService implements LandingPagesContract
 {
@@ -69,208 +66,108 @@ final class LandingPagesService implements LandingPagesContract
     /**
      * @api
      *
+     * @phpstan-type AbStatus = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
+     *
      * Create a new Landing Page
      *
-     * @param string $id the unique ID of the page
-     * @param AbStatus|value-of<AbStatus> $abStatus The status of the AB test associated with this page, if applicable
-     * @param string $abTestID The ID of the AB test associated with this page, if applicable
-     * @param \DateTimeInterface $archivedAt the timestamp (ISO8601 format) when this page was deleted
-     * @param bool $archivedInDashboard if True, the page will not show up in your dashboard, although the page could still be live
-     * @param list<array<string,
-     * mixed,>> $attachedStylesheets List of stylesheets to attach to this page. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
-     * @param string $authorName the name of the user that updated this page
-     * @param string $campaign the GUID of the marketing campaign this page is a part of
-     * @param int $categoryID ID of the type of object this is. Should always .
-     * @param string $contentGroupID
-     * @param ContentTypeCategory|value-of<ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.
-     * @param \DateTimeInterface $created
-     * @param string $createdByID the ID of the user that created this page
-     * @param bool $currentlyPublished
-     * @param CurrentState|value-of<CurrentState> $currentState a generated ENUM descibing the current state of this page
-     * @param string $domain The domain this page will resolve to. If null, the page will default to the primary domain for this content type.
-     * @param string $dynamicPageDataSourceID
-     * @param int $dynamicPageDataSourceType
-     * @param string $dynamicPageHubDBTableID The ID of the HubDB table this page references, if applicable
-     * @param bool $enableDomainStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param bool $enableLayoutStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param string $featuredImage the featuredImage of this page
-     * @param string $featuredImageAltText alt Text of the featuredImage
-     * @param string $folderID the ID of the associated folder this landing page is organized under in the app dashboard
-     * @param string $footerHTML custom HTML for embed codes, javascript that should be placed before the </body> tag of the page
-     * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
-     * @param string $htmlTitle the html title of this page
-     * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
-     * @param Language|value-of<Language> $language The explicitly defined ISO 639 language code of the page. If null, the page will default to the language of the Domain.
-     * @param array<string, LayoutSection> $layoutSections
-     * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
-     * @param string $mabExperimentID The ID of the MAB test (or dynamic test) associated with this page, if applicable
-     * @param string $metaDescription a description that goes in <meta> tag on the page
-     * @param string $name the internal name of the page
-     * @param int $pageExpiryDate the date at which this page should expire and begin redirecting to another url or page
-     * @param bool $pageExpiryEnabled Boolean describing if the page expiration feature is enabled for this page
-     * @param int $pageExpiryRedirectID The ID of another page this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectUrl.
-     * @param string $pageExpiryRedirectURL The URL this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectId.
-     * @param bool $pageRedirected a generated Boolean describing whether or not this page is currently expired and being redirected
-     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
-     * @param list<mixed> $publicAccessRules rules for require member registration to access private content
-     * @param bool $publicAccessRulesEnabled boolean to determine whether or not to respect publicAccessRules
-     * @param \DateTimeInterface $publishDate the date (ISO8601 format) the page is to be published at
-     * @param bool $publishImmediately set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting
-     * @param string $slug The path of the this page. This field is appended to the domain to construct the url of this page.
-     * @param string $state an ENUM descibing the current state of this page
-     * @param string $subcategory Details the type of page this is. Should always be landing_page or site_page
-     * @param string $templatePath string detailing the path of the template used for this page
-     * @param array<string, mixed> $themeSettingsValues
-     * @param string $translatedFromID ID of the primary page this object was translated from
-     * @param array<string, PagesContentLanguageVariation> $translations
-     * @param \DateTimeInterface $updated
-     * @param string $updatedByID the ID of the user that updated this page
-     * @param string $url a generated field representing the URL of this page
-     * @param bool $useFeaturedImage boolean to determine if this page should use a featuredImage
-     * @param array<string,
-     * mixed,> $widgetContainers A data structure containing the data for all the modules inside the containers for this page. This will only be populated if the page has widget containers.
-     * @param array<string,
-     * mixed,> $widgets A data structure containing the data for all the modules for this page
+     * @param array{
+     *   id: string,
+     *   abStatus: AbStatus,
+     *   abTestId: string,
+     *   archivedAt: string|\DateTimeInterface,
+     *   archivedInDashboard: bool,
+     *   attachedStylesheets: list<array<string,mixed>>,
+     *   authorName: string,
+     *   campaign: string,
+     *   categoryId: int,
+     *   contentGroupId: string,
+     *   contentTypeCategory: "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"10"|"11"|"12",
+     *   created: string|\DateTimeInterface,
+     *   createdById: string,
+     *   currentlyPublished: bool,
+     *   currentState: value-of<CurrentState>,
+     *   domain: string,
+     *   dynamicPageDataSourceId: string,
+     *   dynamicPageDataSourceType: int,
+     *   dynamicPageHubDbTableId: string,
+     *   enableDomainStylesheets: bool,
+     *   enableLayoutStylesheets: bool,
+     *   featuredImage: string,
+     *   featuredImageAltText: string,
+     *   folderId: string,
+     *   footerHtml: string,
+     *   headHtml: string,
+     *   htmlTitle: string,
+     *   includeDefaultCustomCss: bool,
+     *   language: value-of<Language>,
+     *   layoutSections: array<string,array{
+     *     cells: list<mixed>,
+     *     cssClass: string,
+     *     cssId: string,
+     *     cssStyle: string,
+     *     label: string,
+     *     name: string,
+     *     params: array<string,mixed>,
+     *     rowMetaData: list<mixed>,
+     *     rows: list<array<string,mixed>>,
+     *     styles: array<mixed>|Styles,
+     *     type: string,
+     *     w: int,
+     *     x: int,
+     *   }|LayoutSection>,
+     *   linkRelCanonicalUrl: string,
+     *   mabExperimentId: string,
+     *   metaDescription: string,
+     *   name: string,
+     *   pageExpiryDate: int,
+     *   pageExpiryEnabled: bool,
+     *   pageExpiryRedirectId: int,
+     *   pageExpiryRedirectUrl: string,
+     *   pageRedirected: bool,
+     *   password: string,
+     *   publicAccessRules: list<mixed>,
+     *   publicAccessRulesEnabled: bool,
+     *   publishDate: string|\DateTimeInterface,
+     *   publishImmediately: bool,
+     *   slug: string,
+     *   state: string,
+     *   subcategory: string,
+     *   templatePath: string,
+     *   themeSettingsValues: array<string,mixed>,
+     *   translatedFromId: string,
+     *   translations: array<string,array{
+     *     id: int,
+     *     archivedInDashboard: bool,
+     *     authorName: string,
+     *     campaign: string,
+     *     created: string|\DateTimeInterface,
+     *     name: string,
+     *     password: string,
+     *     publicAccessRules: list<mixed>,
+     *     publicAccessRulesEnabled: bool,
+     *     publishDate: string|\DateTimeInterface,
+     *     slug: string,
+     *     state: string,
+     *     updated: string|\DateTimeInterface,
+     *     tagIds?: list<int>,
+     *   }|PagesContentLanguageVariation>,
+     *   updated: string|\DateTimeInterface,
+     *   updatedById: string,
+     *   url: string,
+     *   useFeaturedImage: bool,
+     *   widgetContainers: array<string,mixed>,
+     *   widgets: array<string,mixed>,
+     * }|LandingPageCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $id,
-        $abStatus,
-        $abTestID,
-        $archivedAt,
-        $archivedInDashboard,
-        $attachedStylesheets,
-        $authorName,
-        $campaign,
-        $categoryID,
-        $contentGroupID,
-        $contentTypeCategory,
-        $created,
-        $createdByID,
-        $currentlyPublished,
-        $currentState,
-        $domain,
-        $dynamicPageDataSourceID,
-        $dynamicPageDataSourceType,
-        $dynamicPageHubDBTableID,
-        $enableDomainStylesheets,
-        $enableLayoutStylesheets,
-        $featuredImage,
-        $featuredImageAltText,
-        $folderID,
-        $footerHTML,
-        $headHTML,
-        $htmlTitle,
-        $includeDefaultCustomCss,
-        $language,
-        $layoutSections,
-        $linkRelCanonicalURL,
-        $mabExperimentID,
-        $metaDescription,
-        $name,
-        $pageExpiryDate,
-        $pageExpiryEnabled,
-        $pageExpiryRedirectID,
-        $pageExpiryRedirectURL,
-        $pageRedirected,
-        $password,
-        $publicAccessRules,
-        $publicAccessRulesEnabled,
-        $publishDate,
-        $publishImmediately,
-        $slug,
-        $state,
-        $subcategory,
-        $templatePath,
-        $themeSettingsValues,
-        $translatedFromID,
-        $translations,
-        $updated,
-        $updatedByID,
-        $url,
-        $useFeaturedImage,
-        $widgetContainers,
-        $widgets,
+        array|LandingPageCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'pageRedirected' => $pageRedirected,
-            'password' => $password,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'slug' => $slug,
-            'state' => $state,
-            'subcategory' => $subcategory,
-            'templatePath' => $templatePath,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = LandingPageCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -286,214 +183,111 @@ final class LandingPagesService implements LandingPagesContract
     /**
      * @api
      *
+     * @phpstan-type AbStatusShape = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
+     *
      * Sparse updates a single Landing Page object identified by the id in the path.
      * You only need to specify the column values that you are modifying.
      *
-     * @param string $id the unique ID of the page
-     * @param LandingPageUpdateParams\AbStatus|value-of<LandingPageUpdateParams\AbStatus> $abStatus The status of the AB test associated with this page, if applicable
-     * @param string $abTestID The ID of the AB test associated with this page, if applicable
-     * @param \DateTimeInterface $archivedAt the timestamp (ISO8601 format) when this page was deleted
-     * @param bool $archivedInDashboard if True, the page will not show up in your dashboard, although the page could still be live
-     * @param list<array<string,
-     * mixed,>> $attachedStylesheets List of stylesheets to attach to this page. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
-     * @param string $authorName the name of the user that updated this page
-     * @param string $campaign the GUID of the marketing campaign this page is a part of
-     * @param int $categoryID ID of the type of object this is. Should always .
-     * @param string $contentGroupID
-     * @param LandingPageUpdateParams\ContentTypeCategory|value-of<LandingPageUpdateParams\ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.
-     * @param \DateTimeInterface $created
-     * @param string $createdByID the ID of the user that created this page
-     * @param bool $currentlyPublished
-     * @param LandingPageUpdateParams\CurrentState|value-of<LandingPageUpdateParams\CurrentState> $currentState a generated ENUM descibing the current state of this page
-     * @param string $domain The domain this page will resolve to. If null, the page will default to the primary domain for this content type.
-     * @param string $dynamicPageDataSourceID
-     * @param int $dynamicPageDataSourceType
-     * @param string $dynamicPageHubDBTableID The ID of the HubDB table this page references, if applicable
-     * @param bool $enableDomainStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param bool $enableLayoutStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param string $featuredImage the featuredImage of this page
-     * @param string $featuredImageAltText alt Text of the featuredImage
-     * @param string $folderID the ID of the associated folder this landing page is organized under in the app dashboard
-     * @param string $footerHTML custom HTML for embed codes, javascript that should be placed before the </body> tag of the page
-     * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
-     * @param string $htmlTitle the html title of this page
-     * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
-     * @param LandingPageUpdateParams\Language|value-of<LandingPageUpdateParams\Language> $language The explicitly defined ISO 639 language code of the page. If null, the page will default to the language of the Domain.
-     * @param array<string, LayoutSection> $layoutSections
-     * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
-     * @param string $mabExperimentID The ID of the MAB test (or dynamic test) associated with this page, if applicable
-     * @param string $metaDescription a description that goes in <meta> tag on the page
-     * @param string $name the internal name of the page
-     * @param int $pageExpiryDate the date at which this page should expire and begin redirecting to another url or page
-     * @param bool $pageExpiryEnabled Boolean describing if the page expiration feature is enabled for this page
-     * @param int $pageExpiryRedirectID The ID of another page this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectUrl.
-     * @param string $pageExpiryRedirectURL The URL this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectId.
-     * @param bool $pageRedirected a generated Boolean describing whether or not this page is currently expired and being redirected
-     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
-     * @param list<mixed> $publicAccessRules rules for require member registration to access private content
-     * @param bool $publicAccessRulesEnabled boolean to determine whether or not to respect publicAccessRules
-     * @param \DateTimeInterface $publishDate the date (ISO8601 format) the page is to be published at
-     * @param bool $publishImmediately set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting
-     * @param string $slug The path of the this page. This field is appended to the domain to construct the url of this page.
-     * @param string $state an ENUM descibing the current state of this page
-     * @param string $subcategory Details the type of page this is. Should always be landing_page or site_page
-     * @param string $templatePath string detailing the path of the template used for this page
-     * @param array<string, mixed> $themeSettingsValues
-     * @param string $translatedFromID ID of the primary page this object was translated from
-     * @param array<string, PagesContentLanguageVariation> $translations
-     * @param \DateTimeInterface $updated
-     * @param string $updatedByID the ID of the user that updated this page
-     * @param string $url a generated field representing the URL of this page
-     * @param bool $useFeaturedImage boolean to determine if this page should use a featuredImage
-     * @param array<string,
-     * mixed,> $widgetContainers A data structure containing the data for all the modules inside the containers for this page. This will only be populated if the page has widget containers.
-     * @param array<string,
-     * mixed,> $widgets A data structure containing the data for all the modules for this page
-     * @param bool $archived Specifies whether to update deleted Landing Pages. Defaults to `false`.
+     * @param array{
+     *   id: string,
+     *   abStatus: AbStatusShape,
+     *   abTestId: string,
+     *   archivedAt: string|\DateTimeInterface,
+     *   archivedInDashboard: bool,
+     *   attachedStylesheets: list<array<string,mixed>>,
+     *   authorName: string,
+     *   campaign: string,
+     *   categoryId: int,
+     *   contentGroupId: string,
+     *   contentTypeCategory: "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"10"|"11"|"12",
+     *   created: string|\DateTimeInterface,
+     *   createdById: string,
+     *   currentlyPublished: bool,
+     *   currentState: value-of<LandingPageUpdateParams\CurrentState>,
+     *   domain: string,
+     *   dynamicPageDataSourceId: string,
+     *   dynamicPageDataSourceType: int,
+     *   dynamicPageHubDbTableId: string,
+     *   enableDomainStylesheets: bool,
+     *   enableLayoutStylesheets: bool,
+     *   featuredImage: string,
+     *   featuredImageAltText: string,
+     *   folderId: string,
+     *   footerHtml: string,
+     *   headHtml: string,
+     *   htmlTitle: string,
+     *   includeDefaultCustomCss: bool,
+     *   language: value-of<LandingPageUpdateParams\Language>,
+     *   layoutSections: array<string,array{
+     *     cells: list<mixed>,
+     *     cssClass: string,
+     *     cssId: string,
+     *     cssStyle: string,
+     *     label: string,
+     *     name: string,
+     *     params: array<string,mixed>,
+     *     rowMetaData: list<mixed>,
+     *     rows: list<array<string,mixed>>,
+     *     styles: array<mixed>|Styles,
+     *     type: string,
+     *     w: int,
+     *     x: int,
+     *   }|LayoutSection>,
+     *   linkRelCanonicalUrl: string,
+     *   mabExperimentId: string,
+     *   metaDescription: string,
+     *   name: string,
+     *   pageExpiryDate: int,
+     *   pageExpiryEnabled: bool,
+     *   pageExpiryRedirectId: int,
+     *   pageExpiryRedirectUrl: string,
+     *   pageRedirected: bool,
+     *   password: string,
+     *   publicAccessRules: list<mixed>,
+     *   publicAccessRulesEnabled: bool,
+     *   publishDate: string|\DateTimeInterface,
+     *   publishImmediately: bool,
+     *   slug: string,
+     *   state: string,
+     *   subcategory: string,
+     *   templatePath: string,
+     *   themeSettingsValues: array<string,mixed>,
+     *   translatedFromId: string,
+     *   translations: array<string,array{
+     *     id: int,
+     *     archivedInDashboard: bool,
+     *     authorName: string,
+     *     campaign: string,
+     *     created: string|\DateTimeInterface,
+     *     name: string,
+     *     password: string,
+     *     publicAccessRules: list<mixed>,
+     *     publicAccessRulesEnabled: bool,
+     *     publishDate: string|\DateTimeInterface,
+     *     slug: string,
+     *     state: string,
+     *     updated: string|\DateTimeInterface,
+     *     tagIds?: list<int>,
+     *   }|PagesContentLanguageVariation>,
+     *   updated: string|\DateTimeInterface,
+     *   updatedById: string,
+     *   url: string,
+     *   useFeaturedImage: bool,
+     *   widgetContainers: array<string,mixed>,
+     *   widgets: array<string,mixed>,
+     *   archived?: bool,
+     * }|LandingPageUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $objectID,
-        $id,
-        $abStatus,
-        $abTestID,
-        $archivedAt,
-        $archivedInDashboard,
-        $attachedStylesheets,
-        $authorName,
-        $campaign,
-        $categoryID,
-        $contentGroupID,
-        $contentTypeCategory,
-        $created,
-        $createdByID,
-        $currentlyPublished,
-        $currentState,
-        $domain,
-        $dynamicPageDataSourceID,
-        $dynamicPageDataSourceType,
-        $dynamicPageHubDBTableID,
-        $enableDomainStylesheets,
-        $enableLayoutStylesheets,
-        $featuredImage,
-        $featuredImageAltText,
-        $folderID,
-        $footerHTML,
-        $headHTML,
-        $htmlTitle,
-        $includeDefaultCustomCss,
-        $language,
-        $layoutSections,
-        $linkRelCanonicalURL,
-        $mabExperimentID,
-        $metaDescription,
-        $name,
-        $pageExpiryDate,
-        $pageExpiryEnabled,
-        $pageExpiryRedirectID,
-        $pageExpiryRedirectURL,
-        $pageRedirected,
-        $password,
-        $publicAccessRules,
-        $publicAccessRulesEnabled,
-        $publishDate,
-        $publishImmediately,
-        $slug,
-        $state,
-        $subcategory,
-        $templatePath,
-        $themeSettingsValues,
-        $translatedFromID,
-        $translations,
-        $updated,
-        $updatedByID,
-        $url,
-        $useFeaturedImage,
-        $widgetContainers,
-        $widgets,
-        $archived = omit,
+        array|LandingPageUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'pageRedirected' => $pageRedirected,
-            'password' => $password,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'slug' => $slug,
-            'state' => $state,
-            'subcategory' => $subcategory,
-            'templatePath' => $templatePath,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-            'archived' => $archived,
-        ];
-
-        return $this->updateRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = LandingPageUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -513,69 +307,31 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Get the list of landing pages. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived Specifies whether to return deleted Landing Pages. Defaults to `false`.
-     * @param \DateTimeInterface $createdAfter only return Landing Pages created after the specified time
-     * @param \DateTimeInterface $createdAt only return Landing Pages created at exactly the specified time
-     * @param \DateTimeInterface $createdBefore only return Landing Pages created before the specified time
-     * @param int $limit The maximum number of results to return. Default is 100.
-     * @param string $property
-     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
-     * @param \DateTimeInterface $updatedAfter only return Landing Pages last updated after the specified time
-     * @param \DateTimeInterface $updatedAt only return Landing Pages last updated at exactly the specified time
-     * @param \DateTimeInterface $updatedBefore only return Landing Pages last updated before the specified time
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: string|\DateTimeInterface,
+     *   createdAt?: string|\DateTimeInterface,
+     *   createdBefore?: string|\DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: string|\DateTimeInterface,
+     *   updatedAt?: string|\DateTimeInterface,
+     *   updatedBefore?: string|\DateTimeInterface,
+     * }|LandingPageListParams $params
      *
      * @return \HubspotSDK\Page<Page>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $archived = omit,
-        $createdAfter = omit,
-        $createdAt = omit,
-        $createdBefore = omit,
-        $limit = omit,
-        $property = omit,
-        $sort = omit,
-        $updatedAfter = omit,
-        $updatedAt = omit,
-        $updatedBefore = omit,
-        ?RequestOptions $requestOptions = null,
-    ): \HubspotSDK\Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'limit' => $limit,
-            'property' => $property,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return \HubspotSDK\Page<Page>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|LandingPageListParams $params,
         ?RequestOptions $requestOptions = null
     ): \HubspotSDK\Page {
         [$parsed, $options] = LandingPageListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -594,35 +350,18 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Delete the Landing Page object identified by the id in the path.
      *
-     * @param bool $archived whether to return only results that have been archived
+     * @param array{archived?: bool}|LandingPageDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $objectID,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['archived' => $archived];
-
-        return $this->deleteRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = LandingPageDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -640,44 +379,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Attach a landing page to a multi-language group.
      *
-     * @param string $id ID of the object to add to a multi-language group
-     * @param string $language designated language of the object to add to a multi-language group
-     * @param string $primaryID ID of primary language object in multi-language group
-     * @param string $primaryLanguage primary language of the multi-language group
+     * @param array{
+     *   id: string, language: string, primaryId: string, primaryLanguage?: string
+     * }|LandingPageAttachToLangGroupParams $params
      *
      * @throws APIException
      */
     public function attachToLangGroup(
-        $id,
-        $language,
-        $primaryID,
-        $primaryLanguage = omit,
+        array|LandingPageAttachToLangGroupParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryID' => $primaryID,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-
-        return $this->attachToLangGroupRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function attachToLangGroupRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = LandingPageAttachToLangGroupParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -695,35 +409,17 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Clone a Landing Page
      *
-     * @param string $id ID of the object to be cloned
-     * @param string $cloneName name of the cloned object
+     * @param array{id: string, cloneName?: string}|LandingPageCloneParams $params
      *
      * @throws APIException
      */
     public function clone(
-        $id,
-        $cloneName = omit,
-        ?RequestOptions $requestOptions = null
-    ): Page {
-        $params = ['id' => $id, 'cloneName' => $cloneName];
-
-        return $this->cloneRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function cloneRaw(
-        array $params,
+        array|LandingPageCloneParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = LandingPageCloneParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -741,35 +437,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Create a new A/B test variation based on the information provided in the request body.
      *
-     * @param string $contentID ID of the object to test
-     * @param string $variationName name of A/B test variation
+     * @param array{
+     *   contentId: string, variationName: string
+     * }|LandingPageCreateAbTestVariationParams $params
      *
      * @throws APIException
      */
     public function createAbTestVariation(
-        $contentID,
-        $variationName,
-        ?RequestOptions $requestOptions = null
-    ): Page {
-        $params = ['contentID' => $contentID, 'variationName' => $variationName];
-
-        return $this->createAbTestVariationRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createAbTestVariationRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageCreateAbTestVariationParams $params,
+        ?RequestOptions $requestOptions = null,
     ): Page {
         [$parsed, $options] = LandingPageCreateAbTestVariationParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -787,33 +467,77 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Create the Landing Page objects detailed in the request body.
      *
-     * @param list<Page> $inputs pages to input
+     * @param array{
+     *   inputs: list<array{
+     *     id: string,
+     *     abStatus: "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant",
+     *     abTestId: string,
+     *     archivedAt: string|\DateTimeInterface,
+     *     archivedInDashboard: bool,
+     *     attachedStylesheets: list<array<string,mixed>>,
+     *     authorName: string,
+     *     campaign: string,
+     *     categoryId: int,
+     *     contentGroupId: string,
+     *     contentTypeCategory: "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"10"|"11"|"12",
+     *     created: string|\DateTimeInterface,
+     *     createdById: string,
+     *     currentlyPublished: bool,
+     *     currentState: "AUTOMATED"|"AUTOMATED_DRAFT"|"AUTOMATED_SENDING"|"AUTOMATED_FOR_FORM"|"AUTOMATED_FOR_FORM_BUFFER"|"AUTOMATED_FOR_FORM_DRAFT"|"AUTOMATED_FOR_FORM_LEGACY"|"BLOG_EMAIL_DRAFT"|"BLOG_EMAIL_PUBLISHED"|"DRAFT"|"DRAFT_AB"|"DRAFT_AB_VARIANT"|"ERROR"|"LOSER_AB_VARIANT"|"PAGE_STUB"|"PRE_PROCESSING"|"PROCESSING"|"PUBLISHED"|"PUBLISHED_AB"|"PUBLISHED_AB_VARIANT"|"PUBLISHED_OR_SCHEDULED"|"RSS_TO_EMAIL_DRAFT"|"RSS_TO_EMAIL_PUBLISHED"|"SCHEDULED"|"SCHEDULED_AB"|"SCHEDULED_OR_PUBLISHED"|"AUTOMATED_AB"|"AUTOMATED_AB_VARIANT"|"AUTOMATED_DRAFT_AB"|"AUTOMATED_DRAFT_ABVARIANT"|"AUTOMATED_LOSER_ABVARIANT",
+     *     domain: string,
+     *     dynamicPageDataSourceId: string,
+     *     dynamicPageDataSourceType: int,
+     *     dynamicPageHubDbTableId: string,
+     *     enableDomainStylesheets: bool,
+     *     enableLayoutStylesheets: bool,
+     *     featuredImage: string,
+     *     featuredImageAltText: string,
+     *     folderId: string,
+     *     footerHtml: string,
+     *     headHtml: string,
+     *     htmlTitle: string,
+     *     includeDefaultCustomCss: bool,
+     *     language: "af"|"af-na"|"af-za"|"agq"|"agq-cm"|"ak"|"ak-gh"|"am"|"am-et"|"ar"|"ar-001"|"ar-ae"|"ar-bh"|"ar-dj"|"ar-dz"|"ar-eg"|"ar-eh"|"ar-er"|"ar-il"|"ar-iq"|"ar-jo"|"ar-km"|"ar-kw"|"ar-lb"|"ar-ly"|"ar-ma"|"ar-mr"|"ar-om"|"ar-ps"|"ar-qa"|"ar-sa"|"ar-sd"|"ar-so"|"ar-ss"|"ar-sy"|"ar-td"|"ar-tn"|"ar-ye"|"as"|"as-in"|"asa"|"asa-tz"|"ast"|"ast-es"|"az"|"az-az"|"bas"|"bas-cm"|"be"|"be-by"|"bem"|"bem-zm"|"bez"|"bez-tz"|"bg"|"bg-bg"|"bm"|"bm-ml"|"bn"|"bn-bd"|"bn-in"|"bo"|"bo-cn"|"bo-in"|"br"|"br-fr"|"brx"|"brx-in"|"bs"|"bs-ba"|"ca"|"ca-ad"|"ca-es"|"ca-fr"|"ca-it"|"ccp"|"ccp-bd"|"ccp-in"|"ce"|"ce-ru"|"ceb"|"ceb-ph"|"cgg"|"cgg-ug"|"chr"|"chr-us"|"ckb"|"ckb-iq"|"ckb-ir"|"cs"|"cs-cz"|"cu"|"cu-ru"|"cy"|"cy-gb"|"da"|"da-dk"|"da-gl"|"dav"|"dav-ke"|"de"|"de-at"|"de-be"|"de-ch"|"de-de"|"de-gr"|"de-it"|"de-li"|"de-lu"|"dje"|"dje-ne"|"doi"|"doi-in"|"dsb"|"dsb-de"|"dua"|"dua-cm"|"dyo"|"dyo-sn"|"dz"|"dz-bt"|"ebu"|"ebu-ke"|"ee"|"ee-gh"|"ee-tg"|"el"|"el-cy"|"el-gr"|"en"|"en-001"|"en-150"|"en-ae"|"en-ag"|"en-ai"|"en-as"|"en-at"|"en-au"|"en-bb"|"en-be"|"en-bi"|"en-bm"|"en-bs"|"en-bw"|"en-bz"|"en-ca"|"en-cc"|"en-ch"|"en-ck"|"en-cm"|"en-cn"|"en-cx"|"en-cy"|"en-de"|"en-dg"|"en-dk"|"en-dm"|"en-er"|"en-fi"|"en-fj"|"en-fk"|"en-fm"|"en-gb"|"en-gd"|"en-gg"|"en-gh"|"en-gi"|"en-gm"|"en-gu"|"en-gy"|"en-hk"|"en-ie"|"en-il"|"en-im"|"en-in"|"en-io"|"en-je"|"en-jm"|"en-ke"|"en-ki"|"en-kn"|"en-ky"|"en-lc"|"en-lr"|"en-ls"|"en-lu"|"en-mg"|"en-mh"|"en-mo"|"en-mp"|"en-ms"|"en-mt"|"en-mu"|"en-mw"|"en-mx"|"en-my"|"en-na"|"en-nf"|"en-ng"|"en-nl"|"en-nr"|"en-nu"|"en-nz"|"en-pg"|"en-ph"|"en-pk"|"en-pn"|"en-pr"|"en-pw"|"en-rw"|"en-sb"|"en-sc"|"en-sd"|"en-se"|"en-sg"|"en-sh"|"en-si"|"en-sl"|"en-ss"|"en-sx"|"en-sz"|"en-tc"|"en-tk"|"en-to"|"en-tt"|"en-tv"|"en-tz"|"en-ug"|"en-um"|"en-us"|"en-vc"|"en-vg"|"en-vi"|"en-vu"|"en-ws"|"en-za"|"en-zm"|"en-zw"|"eo"|"eo-001"|"es"|"es-419"|"es-ar"|"es-bo"|"es-br"|"es-bz"|"es-cl"|"es-co"|"es-cr"|"es-cu"|"es-do"|"es-ea"|"es-ec"|"es-es"|"es-gq"|"es-gt"|"es-hn"|"es-ic"|"es-mx"|"es-ni"|"es-pa"|"es-pe"|"es-ph"|"es-pr"|"es-py"|"es-sv"|"es-us"|"es-uy"|"es-ve"|"et"|"et-ee"|"eu"|"eu-es"|"ewo"|"ewo-cm"|"fa"|"fa-af"|"fa-ir"|"ff"|"ff-bf"|"ff-cm"|"ff-gh"|"ff-gm"|"ff-gn"|"ff-gw"|"ff-lr"|"ff-mr"|"ff-ne"|"ff-ng"|"ff-sl"|"ff-sn"|"fi"|"fi-fi"|"fil"|"fil-ph"|"fo"|"fo-dk"|"fo-fo"|"fr"|"fr-be"|"fr-bf"|"fr-bi"|"fr-bj"|"fr-bl"|"fr-ca"|"fr-cd"|"fr-cf"|"fr-cg"|"fr-ch"|"fr-ci"|"fr-cm"|"fr-dj"|"fr-dz"|"fr-fr"|"fr-ga"|"fr-gf"|"fr-gn"|"fr-gp"|"fr-gq"|"fr-ht"|"fr-km"|"fr-lu"|"fr-ma"|"fr-mc"|"fr-mf"|"fr-mg"|"fr-ml"|"fr-mq"|"fr-mr"|"fr-mu"|"fr-nc"|"fr-ne"|"fr-pf"|"fr-pm"|"fr-re"|"fr-rw"|"fr-sc"|"fr-sn"|"fr-sy"|"fr-td"|"fr-tg"|"fr-tn"|"fr-vu"|"fr-wf"|"fr-yt"|"fur"|"fur-it"|"fy"|"fy-nl"|"ga"|"ga-gb"|"ga-ie"|"gd"|"gd-gb"|"gl"|"gl-es"|"gsw"|"gsw-ch"|"gsw-fr"|"gsw-li"|"gu"|"gu-in"|"guz"|"guz-ke"|"gv"|"gv-im"|"ha"|"ha-gh"|"ha-ne"|"ha-ng"|"haw"|"haw-us"|"he"|"hi"|"hi-in"|"hr"|"hr-ba"|"hr-hr"|"hsb"|"hsb-de"|"hu"|"hu-hu"|"hy"|"hy-am"|"ia"|"ia-001"|"id"|"ig"|"ig-ng"|"ii"|"ii-cn"|"id-id"|"is"|"is-is"|"it"|"it-ch"|"it-it"|"it-sm"|"it-va"|"he-il"|"ja"|"ja-jp"|"jgo"|"jgo-cm"|"yi"|"yi-001"|"jmc"|"jmc-tz"|"jv"|"jv-id"|"ka"|"ka-ge"|"kab"|"kab-dz"|"kam"|"kam-ke"|"kde"|"kde-tz"|"kea"|"kea-cv"|"khq"|"khq-ml"|"ki"|"ki-ke"|"kk"|"kk-kz"|"kkj"|"kkj-cm"|"kl"|"kl-gl"|"kln"|"kln-ke"|"km"|"km-kh"|"kn"|"kn-in"|"ko"|"ko-kp"|"ko-kr"|"kok"|"kok-in"|"ks"|"ks-in"|"ksb"|"ksb-tz"|"ksf"|"ksf-cm"|"ksh"|"ksh-de"|"kw"|"kw-gb"|"ku"|"ku-tr"|"ky"|"ky-kg"|"lag"|"lag-tz"|"lb"|"lb-lu"|"lg"|"lg-ug"|"lkt"|"lkt-us"|"ln"|"ln-ao"|"ln-cd"|"ln-cf"|"ln-cg"|"lo"|"lo-la"|"lrc"|"lrc-iq"|"lrc-ir"|"lt"|"lt-lt"|"lu"|"lu-cd"|"luo"|"luo-ke"|"luy"|"luy-ke"|"lv"|"lv-lv"|"mai"|"mai-in"|"mas"|"mas-ke"|"mas-tz"|"mer"|"mer-ke"|"mfe"|"mfe-mu"|"mg"|"mg-mg"|"mgh"|"mgh-mz"|"mgo"|"mgo-cm"|"mi"|"mi-nz"|"mk"|"mk-mk"|"ml"|"ml-in"|"mn"|"mn-mn"|"mni"|"mni-in"|"mr"|"mr-in"|"ms"|"ms-bn"|"ms-id"|"ms-my"|"ms-sg"|"mt"|"mt-mt"|"mua"|"mua-cm"|"my"|"my-mm"|"mzn"|"mzn-ir"|"naq"|"naq-na"|"nb"|"nb-no"|"nb-sj"|"nd"|"nd-zw"|"nds"|"nds-de"|"nds-nl"|"ne"|"ne-in"|"ne-np"|"nl"|"nl-aw"|"nl-be"|"nl-ch"|"nl-bq"|"nl-cw"|"nl-lu"|"nl-nl"|"nl-sr"|"nl-sx"|"nmg"|"nmg-cm"|"nn"|"nn-no"|"nnh"|"nnh-cm"|"no"|"no-no"|"nus"|"nus-ss"|"nyn"|"nyn-ug"|"om"|"om-et"|"om-ke"|"or"|"or-in"|"os"|"os-ge"|"os-ru"|"pa"|"pa-in"|"pa-pk"|"pcm"|"pcm-ng"|"pl"|"pl-pl"|"prg"|"prg-001"|"ps"|"ps-af"|"ps-pk"|"pt"|"pt-ao"|"pt-br"|"pt-ch"|"pt-cv"|"pt-gq"|"pt-gw"|"pt-lu"|"pt-mo"|"pt-mz"|"pt-pt"|"pt-st"|"pt-tl"|"qu"|"qu-bo"|"qu-ec"|"qu-pe"|"rm"|"rm-ch"|"rn"|"rn-bi"|"ro"|"ro-md"|"ro-ro"|"rof"|"rof-tz"|"ru"|"ru-by"|"ru-kg"|"ru-kz"|"ru-md"|"ru-ru"|"ru-ua"|"rw"|"rw-rw"|"rwk"|"rwk-tz"|"sa"|"sa-in"|"sah"|"sah-ru"|"saq"|"saq-ke"|"sat"|"sat-in"|"sbp"|"sbp-tz"|"sd"|"sd-in"|"sd-pk"|"se"|"se-fi"|"se-no"|"se-se"|"seh"|"seh-mz"|"ses"|"ses-ml"|"sg"|"sg-cf"|"shi"|"shi-ma"|"si"|"si-lk"|"sk"|"sk-sk"|"sl"|"sl-si"|"smn"|"smn-fi"|"sn"|"sn-zw"|"so"|"so-dj"|"so-et"|"so-ke"|"so-so"|"sq"|"sq-al"|"sq-mk"|"sq-xk"|"sr"|"sr-ba"|"sr-cs"|"sr-me"|"sr-rs"|"sr-xk"|"su"|"su-id"|"sv"|"sv-ax"|"sv-fi"|"sv-se"|"sw"|"sw-cd"|"sw-ke"|"sw-tz"|"sw-ug"|"sy"|"ta"|"ta-in"|"ta-lk"|"ta-my"|"ta-sg"|"te"|"te-in"|"teo"|"teo-ke"|"teo-ug"|"tg"|"tg-tj"|"th"|"th-th"|"ti"|"ti-er"|"ti-et"|"tk"|"tk-tm"|"tl"|"to"|"to-to"|"tr"|"tr-cy"|"tr-tr"|"tt"|"tt-ru"|"twq"|"twq-ne"|"tzm"|"tzm-ma"|"ug"|"ug-cn"|"uk"|"uk-ua"|"ur"|"ur-in"|"ur-pk"|"uz"|"uz-af"|"uz-uz"|"vai"|"vai-lr"|"vi"|"vi-vn"|"vo"|"vo-001"|"vun"|"vun-tz"|"wae"|"wae-ch"|"wo"|"wo-sn"|"xh"|"xh-za"|"xog"|"xog-ug"|"yav"|"yav-cm"|"yo"|"yo-bj"|"yo-ng"|"yue"|"yue-cn"|"yue-hk"|"zgh"|"zgh-ma"|"zh"|"zh-cn"|"zh-hk"|"zh-mo"|"zh-sg"|"zh-tw"|"zh-hans"|"zh-hant"|"zu"|"zu-za",
+     *     layoutSections: array<string,mixed>,
+     *     linkRelCanonicalUrl: string,
+     *     mabExperimentId: string,
+     *     metaDescription: string,
+     *     name: string,
+     *     pageExpiryDate: int,
+     *     pageExpiryEnabled: bool,
+     *     pageExpiryRedirectId: int,
+     *     pageExpiryRedirectUrl: string,
+     *     pageRedirected: bool,
+     *     password: string,
+     *     publicAccessRules: list<mixed>,
+     *     publicAccessRulesEnabled: bool,
+     *     publishDate: string|\DateTimeInterface,
+     *     publishImmediately: bool,
+     *     slug: string,
+     *     state: string,
+     *     subcategory: string,
+     *     templatePath: string,
+     *     themeSettingsValues: array<string,mixed>,
+     *     translatedFromId: string,
+     *     translations: array<string,mixed>,
+     *     updated: string|\DateTimeInterface,
+     *     updatedById: string,
+     *     url: string,
+     *     useFeaturedImage: bool,
+     *     widgetContainers: array<string,mixed>,
+     *     widgets: array<string,mixed>,
+     *   }|Page>,
+     * }|LandingPageCreateBatchParams $params
      *
      * @throws APIException
      */
     public function createBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponsePage {
-        $params = ['inputs' => $inputs];
-
-        return $this->createBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageCreateBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponsePage {
         [$parsed, $options] = LandingPageCreateBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -831,53 +555,25 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Create a new Folder
      *
-     * @param string $id the unique ID of the content folder
-     * @param int $category The type of object this folder applies to. Should always be LANDING_PAGE.
-     * @param \DateTimeInterface $created
-     * @param \DateTimeInterface $deletedAt the timestamp (ISO8601 format) when this content folder was deleted
-     * @param string $name The name of the folder which will show up in the app dashboard
-     * @param int $parentFolderID The ID of the content folder this folder is nested under
-     * @param \DateTimeInterface $updated
+     * @param array{
+     *   id: string,
+     *   category: int,
+     *   created: string|\DateTimeInterface,
+     *   deletedAt: string|\DateTimeInterface,
+     *   name: string,
+     *   parentFolderId: int,
+     *   updated: string|\DateTimeInterface,
+     * }|LandingPageCreateFolderParams $params
      *
      * @throws APIException
      */
     public function createFolder(
-        $id,
-        $category,
-        $created,
-        $deletedAt,
-        $name,
-        $parentFolderID,
-        $updated,
+        array|LandingPageCreateFolderParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ContentFolder {
-        $params = [
-            'id' => $id,
-            'category' => $category,
-            'created' => $created,
-            'deletedAt' => $deletedAt,
-            'name' => $name,
-            'parentFolderID' => $parentFolderID,
-            'updated' => $updated,
-        ];
-
-        return $this->createFolderRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createFolderRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ContentFolder {
         [$parsed, $options] = LandingPageCreateFolderParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -895,33 +591,27 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Create the Folder objects detailed in the request body.
      *
-     * @param list<ContentFolder> $inputs content folders to input
+     * @param array{
+     *   inputs: list<array{
+     *     id: string,
+     *     category: int,
+     *     created: string|\DateTimeInterface,
+     *     deletedAt: string|\DateTimeInterface,
+     *     name: string,
+     *     parentFolderId: int,
+     *     updated: string|\DateTimeInterface,
+     *   }|ContentFolder>,
+     * }|LandingPageCreateFoldersBatchParams $params
      *
      * @throws APIException
      */
     public function createFoldersBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseContentFolder {
-        $params = ['inputs' => $inputs];
-
-        return $this->createFoldersBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createFoldersBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageCreateFoldersBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseContentFolder {
         [$parsed, $options] = LandingPageCreateFoldersBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -939,43 +629,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Create a new language variation from an existing landing page
      *
-     * @param string $id ID of content to clone
-     * @param string $language target language of new variant
-     * @param string $primaryLanguage language of primary content to clone
+     * @param array{
+     *   id: string, language?: string, primaryLanguage?: string
+     * }|LandingPageCreateLanguageVariationParams $params
      *
      * @throws APIException
      */
     public function createLanguageVariation(
-        $id,
-        $language = omit,
-        $primaryLanguage = omit,
+        array|LandingPageCreateLanguageVariationParams $params,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-
-        return $this->createLanguageVariationRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createLanguageVariationRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): Page {
-        [
-            $parsed, $options,
-        ] = LandingPageCreateLanguageVariationParams::parseRequest(
+        [$parsed, $options] = LandingPageCreateLanguageVariationParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -994,33 +660,17 @@ final class LandingPagesService implements LandingPagesContract
      * Delete the Landing Page objects identified in the request body.
      * Note: This is not the same as the dashboard `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to true.
      *
-     * @param list<string> $inputs strings to input
+     * @param array{inputs: list<string>}|LandingPageDeleteBatchParams $params
      *
      * @throws APIException
      */
     public function deleteBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['inputs' => $inputs];
-
-        return $this->deleteBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageDeleteBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = LandingPageDeleteBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1038,35 +688,18 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Delete the Folder object identified by the id in the path.
      *
-     * @param bool $archived whether to return only results that have been archived
+     * @param array{archived?: bool}|LandingPageDeleteFolderParams $params
      *
      * @throws APIException
      */
     public function deleteFolder(
         string $objectID,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['archived' => $archived];
-
-        return $this->deleteFolderRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteFolderRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageDeleteFolderParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = LandingPageDeleteFolderParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1084,33 +717,17 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Delete the Folder objects identified in the request body.
      *
-     * @param list<string> $inputs strings to input
+     * @param array{inputs: list<string>}|LandingPageDeleteFoldersBatchParams $params
      *
      * @throws APIException
      */
     public function deleteFoldersBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['inputs' => $inputs];
-
-        return $this->deleteFoldersBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteFoldersBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageDeleteFoldersBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = LandingPageDeleteFoldersBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1128,33 +745,17 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Detach a landing page from a multi-language group.
      *
-     * @param string $id ID of the object to remove from a multi-language group
+     * @param array{id: string}|LandingPageDetachFromLangGroupParams $params
      *
      * @throws APIException
      */
     public function detachFromLangGroup(
-        $id,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['id' => $id];
-
-        return $this->detachFromLangGroupRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function detachFromLangGroupRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageDetachFromLangGroupParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = LandingPageDetachFromLangGroupParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1172,35 +773,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * End an active A/B test and designate a winner.
      *
-     * @param string $abTestID ID of the test to end
-     * @param string $winnerID ID of the object to designate as the test winner
+     * @param array{
+     *   abTestId: string, winnerId: string
+     * }|LandingPageEndAbTestParams $params
      *
      * @throws APIException
      */
     public function endAbTest(
-        $abTestID,
-        $winnerID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['abTestID' => $abTestID, 'winnerID' => $winnerID];
-
-        return $this->endAbTestRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function endAbTestRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageEndAbTestParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = LandingPageEndAbTestParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1218,37 +803,18 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Retrieve the Landing Page object identified by the id in the path.
      *
-     * @param bool $archived Specifies whether to return deleted Landing Pages. Defaults to `false`.
-     * @param string $property
+     * @param array{archived?: bool, property?: string}|LandingPageGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $objectID,
-        $archived = omit,
-        $property = omit,
+        array|LandingPageGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = ['archived' => $archived, 'property' => $property];
-
-        return $this->getRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = LandingPageGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1266,35 +832,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Retrieve the Landing Page objects identified in the request body.
      *
-     * @param list<string> $inputs strings to input
-     * @param bool $archived Specifies whether to return deleted Landing Pages. Defaults to `false`.
+     * @param array{
+     *   inputs: list<string>, archived?: bool
+     * }|LandingPageGetBatchParams $params
      *
      * @throws APIException
      */
     public function getBatch(
-        $inputs,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponsePage {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-
-        return $this->getBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageGetBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponsePage {
         [$parsed, $options] = LandingPageGetBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -1334,37 +884,20 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Retrieve the Folder object identified by the id in the path.
      *
-     * @param bool $archived Specifies whether to return deleted Folders. Defaults to `false`.
-     * @param string $property
+     * @param array{
+     *   archived?: bool, property?: string
+     * }|LandingPageGetFolderParams $params
      *
      * @throws APIException
      */
     public function getFolder(
         string $objectID,
-        $archived = omit,
-        $property = omit,
+        array|LandingPageGetFolderParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ContentFolder {
-        $params = ['archived' => $archived, 'property' => $property];
-
-        return $this->getFolderRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getFolderRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ContentFolder {
         [$parsed, $options] = LandingPageGetFolderParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1382,38 +915,21 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Retrieves a previous version of a Folder
      *
-     * @param string $objectID
+     * @param array{objectId: string}|LandingPageGetFolderRevisionParams $params
      *
      * @throws APIException
      */
     public function getFolderRevision(
         string $revisionID,
-        $objectID,
-        ?RequestOptions $requestOptions = null
-    ): VersionContentFolder {
-        $params = ['objectID' => $objectID];
-
-        return $this->getFolderRevisionRaw($revisionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getFolderRevisionRaw(
-        string $revisionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageGetFolderRevisionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): VersionContentFolder {
         [$parsed, $options] = LandingPageGetFolderRevisionParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $objectID = $parsed['objectId'];
+        unset($parsed['objectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -1433,35 +949,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Update the Folder objects identified in the request body.
      *
-     * @param list<string> $inputs strings to input
-     * @param bool $archived Specifies whether to return deleted Folders. Defaults to `false`.
+     * @param array{
+     *   inputs: list<string>, archived?: bool
+     * }|LandingPageGetFoldersBatchParams $params
      *
      * @throws APIException
      */
     public function getFoldersBatch(
-        $inputs,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseContentFolder {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-
-        return $this->getFoldersBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getFoldersBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageGetFoldersBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseContentFolder {
         [$parsed, $options] = LandingPageGetFoldersBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -1481,38 +981,21 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Retrieves a previous version of a Landing Page
      *
-     * @param string $objectID
+     * @param array{objectId: string}|LandingPageGetRevisionParams $params
      *
      * @throws APIException
      */
     public function getRevision(
         string $revisionID,
-        $objectID,
-        ?RequestOptions $requestOptions = null
-    ): VersionPage {
-        $params = ['objectID' => $objectID];
-
-        return $this->getRevisionRaw($revisionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRevisionRaw(
-        string $revisionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageGetRevisionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): VersionPage {
         [$parsed, $options] = LandingPageGetRevisionParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $objectID = $parsed['objectId'];
+        unset($parsed['objectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -1530,9 +1013,9 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Retrieves all the previous versions of a Folder.
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param string $before
-     * @param int $limit The maximum number of results to return. Default is 100.
+     * @param array{
+     *   after?: string, before?: string, limit?: int
+     * }|LandingPageListFolderRevisionsParams $params
      *
      * @return \HubspotSDK\Page<VersionContentFolder>
      *
@@ -1540,33 +1023,12 @@ final class LandingPagesService implements LandingPagesContract
      */
     public function listFolderRevisions(
         string $objectID,
-        $after = omit,
-        $before = omit,
-        $limit = omit,
+        array|LandingPageListFolderRevisionsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): \HubspotSDK\Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-
-        return $this->listFolderRevisionsRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return \HubspotSDK\Page<VersionContentFolder>
-     *
-     * @throws APIException
-     */
-    public function listFolderRevisionsRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): \HubspotSDK\Page {
         [$parsed, $options] = LandingPageListFolderRevisionsParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1585,69 +1047,31 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Get the list of Landing Page Folders. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived Specifies whether to return deleted Folders. Defaults to `false`.
-     * @param \DateTimeInterface $createdAfter only return Folders created after the specified time
-     * @param \DateTimeInterface $createdAt only return Folders created at exactly the specified time
-     * @param \DateTimeInterface $createdBefore only return Folders created before the specified time
-     * @param int $limit The maximum number of results to return. Default is 100.
-     * @param string $property
-     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
-     * @param \DateTimeInterface $updatedAfter only return Folders last updated after the specified time
-     * @param \DateTimeInterface $updatedAt only return Folders last updated at exactly the specified time
-     * @param \DateTimeInterface $updatedBefore only return Folders last updated before the specified time
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: string|\DateTimeInterface,
+     *   createdAt?: string|\DateTimeInterface,
+     *   createdBefore?: string|\DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: string|\DateTimeInterface,
+     *   updatedAt?: string|\DateTimeInterface,
+     *   updatedBefore?: string|\DateTimeInterface,
+     * }|LandingPageListFoldersParams $params
      *
      * @return \HubspotSDK\Page<ContentFolder>
      *
      * @throws APIException
      */
     public function listFolders(
-        $after = omit,
-        $archived = omit,
-        $createdAfter = omit,
-        $createdAt = omit,
-        $createdBefore = omit,
-        $limit = omit,
-        $property = omit,
-        $sort = omit,
-        $updatedAfter = omit,
-        $updatedAt = omit,
-        $updatedBefore = omit,
+        array|LandingPageListFoldersParams $params,
         ?RequestOptions $requestOptions = null,
-    ): \HubspotSDK\Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'limit' => $limit,
-            'property' => $property,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-
-        return $this->listFoldersRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return \HubspotSDK\Page<ContentFolder>
-     *
-     * @throws APIException
-     */
-    public function listFoldersRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): \HubspotSDK\Page {
         [$parsed, $options] = LandingPageListFoldersParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1666,9 +1090,9 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Retrieves all the previous versions of a Landing Page.
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param string $before
-     * @param int $limit The maximum number of results to return. Default is 100.
+     * @param array{
+     *   after?: string, before?: string, limit?: int
+     * }|LandingPageListRevisionsParams $params
      *
      * @return \HubspotSDK\Page<VersionPage>
      *
@@ -1676,33 +1100,12 @@ final class LandingPagesService implements LandingPagesContract
      */
     public function listRevisions(
         string $objectID,
-        $after = omit,
-        $before = omit,
-        $limit = omit,
+        array|LandingPageListRevisionsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): \HubspotSDK\Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-
-        return $this->listRevisionsRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return \HubspotSDK\Page<VersionPage>
-     *
-     * @throws APIException
-     */
-    public function listRevisionsRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): \HubspotSDK\Page {
         [$parsed, $options] = LandingPageListRevisionsParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1741,35 +1144,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Rerun a previous A/B test.
      *
-     * @param string $abTestID ID of the test to rerun
-     * @param string $variationID ID of the object to reactivate as a test variation
+     * @param array{
+     *   abTestId: string, variationId: string
+     * }|LandingPageRerunAbTestParams $params
      *
      * @throws APIException
      */
     public function rerunAbTest(
-        $abTestID,
-        $variationID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['abTestID' => $abTestID, 'variationID' => $variationID];
-
-        return $this->rerunAbTestRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function rerunAbTestRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageRerunAbTestParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = LandingPageRerunAbTestParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1807,42 +1194,21 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Takes a specified version of a Folder and restores it.
      *
-     * @param string $objectID
+     * @param array{objectId: string}|LandingPageRestoreFolderRevisionParams $params
      *
      * @throws APIException
      */
     public function restoreFolderRevision(
         string $revisionID,
-        $objectID,
-        ?RequestOptions $requestOptions = null
-    ): ContentFolder {
-        $params = ['objectID' => $objectID];
-
-        return $this->restoreFolderRevisionRaw(
-            $revisionID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function restoreFolderRevisionRaw(
-        string $revisionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageRestoreFolderRevisionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ContentFolder {
         [$parsed, $options] = LandingPageRestoreFolderRevisionParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $objectID = $parsed['objectId'];
+        unset($parsed['objectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -1862,38 +1228,21 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Takes a specified version of a Landing Page and restores it.
      *
-     * @param string $objectID
+     * @param array{objectId: string}|LandingPageRestoreRevisionParams $params
      *
      * @throws APIException
      */
     public function restoreRevision(
         string $revisionID,
-        $objectID,
-        ?RequestOptions $requestOptions = null
-    ): Page {
-        $params = ['objectID' => $objectID];
-
-        return $this->restoreRevisionRaw($revisionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function restoreRevisionRaw(
-        string $revisionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageRestoreRevisionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): Page {
         [$parsed, $options] = LandingPageRestoreRevisionParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $objectID = $parsed['objectId'];
+        unset($parsed['objectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -1913,42 +1262,21 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Takes a specified version of a Landing Page, sets it as the new draft version of the Landing Page.
      *
-     * @param string $objectID
+     * @param array{objectId: string}|LandingPageRestoreRevisionToDraftParams $params
      *
      * @throws APIException
      */
     public function restoreRevisionToDraft(
         int $revisionID,
-        $objectID,
-        ?RequestOptions $requestOptions = null
-    ): Page {
-        $params = ['objectID' => $objectID];
-
-        return $this->restoreRevisionToDraftRaw(
-            $revisionID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function restoreRevisionToDraftRaw(
-        int $revisionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageRestoreRevisionToDraftParams $params,
+        ?RequestOptions $requestOptions = null,
     ): Page {
         [$parsed, $options] = LandingPageRestoreRevisionToDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $objectID = $parsed['objectId'];
+        unset($parsed['objectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -1968,35 +1296,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Schedule a Landing Page to be Published
      *
-     * @param string $id the ID of the object to be scheduled
-     * @param \DateTimeInterface $publishDate the date the object should transition from scheduled to published
+     * @param array{
+     *   id: string, publishDate: string|\DateTimeInterface
+     * }|LandingPageScheduleParams $params
      *
      * @throws APIException
      */
     public function schedule(
-        $id,
-        $publishDate,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['id' => $id, 'publishDate' => $publishDate];
-
-        return $this->scheduleRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function scheduleRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageScheduleParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = LandingPageScheduleParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -2014,33 +1326,17 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Set a landing page as the primary language of a multi-language group.
      *
-     * @param string $id ID of object to set as primary in multi-language group
+     * @param array{id: string}|LandingPageSetNewLangPrimaryParams $params
      *
      * @throws APIException
      */
     public function setNewLangPrimary(
-        $id,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['id' => $id];
-
-        return $this->setNewLangPrimaryRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function setNewLangPrimaryRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageSetNewLangPrimaryParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = LandingPageSetNewLangPrimaryParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -2058,35 +1354,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Update the Landing Page objects identified in the request body.
      *
-     * @param list<mixed> $inputs JSON nodes to input
-     * @param bool $archived Specifies whether to update deleted Landing Pages. Defaults to `false`.
+     * @param array{
+     *   inputs: list<mixed>, archived?: bool
+     * }|LandingPageUpdateBatchParams $params
      *
      * @throws APIException
      */
     public function updateBatch(
-        $inputs,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponsePage {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-
-        return $this->updateBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageUpdateBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponsePage {
         [$parsed, $options] = LandingPageUpdateBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -2104,211 +1384,110 @@ final class LandingPagesService implements LandingPagesContract
     /**
      * @api
      *
+     * @phpstan-type AbStatus1 = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
+     *
      * Sparse updates the draft version of a single Landing Page object identified by the id in the path.
      * You only need to specify the column values that you are modifying.
      *
-     * @param string $id the unique ID of the page
-     * @param LandingPageUpdateDraftParams\AbStatus|value-of<LandingPageUpdateDraftParams\AbStatus> $abStatus The status of the AB test associated with this page, if applicable
-     * @param string $abTestID The ID of the AB test associated with this page, if applicable
-     * @param \DateTimeInterface $archivedAt the timestamp (ISO8601 format) when this page was deleted
-     * @param bool $archivedInDashboard if True, the page will not show up in your dashboard, although the page could still be live
-     * @param list<array<string,
-     * mixed,>> $attachedStylesheets List of stylesheets to attach to this page. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
-     * @param string $authorName the name of the user that updated this page
-     * @param string $campaign the GUID of the marketing campaign this page is a part of
-     * @param int $categoryID ID of the type of object this is. Should always .
-     * @param string $contentGroupID
-     * @param LandingPageUpdateDraftParams\ContentTypeCategory|value-of<LandingPageUpdateDraftParams\ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.
-     * @param \DateTimeInterface $created
-     * @param string $createdByID the ID of the user that created this page
-     * @param bool $currentlyPublished
-     * @param LandingPageUpdateDraftParams\CurrentState|value-of<LandingPageUpdateDraftParams\CurrentState> $currentState a generated ENUM descibing the current state of this page
-     * @param string $domain The domain this page will resolve to. If null, the page will default to the primary domain for this content type.
-     * @param string $dynamicPageDataSourceID
-     * @param int $dynamicPageDataSourceType
-     * @param string $dynamicPageHubDBTableID The ID of the HubDB table this page references, if applicable
-     * @param bool $enableDomainStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param bool $enableLayoutStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param string $featuredImage the featuredImage of this page
-     * @param string $featuredImageAltText alt Text of the featuredImage
-     * @param string $folderID the ID of the associated folder this landing page is organized under in the app dashboard
-     * @param string $footerHTML custom HTML for embed codes, javascript that should be placed before the </body> tag of the page
-     * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
-     * @param string $htmlTitle the html title of this page
-     * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
-     * @param LandingPageUpdateDraftParams\Language|value-of<LandingPageUpdateDraftParams\Language> $language The explicitly defined ISO 639 language code of the page. If null, the page will default to the language of the Domain.
-     * @param array<string, LayoutSection> $layoutSections
-     * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
-     * @param string $mabExperimentID The ID of the MAB test (or dynamic test) associated with this page, if applicable
-     * @param string $metaDescription a description that goes in <meta> tag on the page
-     * @param string $name the internal name of the page
-     * @param int $pageExpiryDate the date at which this page should expire and begin redirecting to another url or page
-     * @param bool $pageExpiryEnabled Boolean describing if the page expiration feature is enabled for this page
-     * @param int $pageExpiryRedirectID The ID of another page this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectUrl.
-     * @param string $pageExpiryRedirectURL The URL this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectId.
-     * @param bool $pageRedirected a generated Boolean describing whether or not this page is currently expired and being redirected
-     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
-     * @param list<mixed> $publicAccessRules rules for require member registration to access private content
-     * @param bool $publicAccessRulesEnabled boolean to determine whether or not to respect publicAccessRules
-     * @param \DateTimeInterface $publishDate the date (ISO8601 format) the page is to be published at
-     * @param bool $publishImmediately set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting
-     * @param string $slug The path of the this page. This field is appended to the domain to construct the url of this page.
-     * @param string $state an ENUM descibing the current state of this page
-     * @param string $subcategory Details the type of page this is. Should always be landing_page or site_page
-     * @param string $templatePath string detailing the path of the template used for this page
-     * @param array<string, mixed> $themeSettingsValues
-     * @param string $translatedFromID ID of the primary page this object was translated from
-     * @param array<string, PagesContentLanguageVariation> $translations
-     * @param \DateTimeInterface $updated
-     * @param string $updatedByID the ID of the user that updated this page
-     * @param string $url a generated field representing the URL of this page
-     * @param bool $useFeaturedImage boolean to determine if this page should use a featuredImage
-     * @param array<string,
-     * mixed,> $widgetContainers A data structure containing the data for all the modules inside the containers for this page. This will only be populated if the page has widget containers.
-     * @param array<string,
-     * mixed,> $widgets A data structure containing the data for all the modules for this page
+     * @param array{
+     *   id: string,
+     *   abStatus: AbStatus1,
+     *   abTestId: string,
+     *   archivedAt: string|\DateTimeInterface,
+     *   archivedInDashboard: bool,
+     *   attachedStylesheets: list<array<string,mixed>>,
+     *   authorName: string,
+     *   campaign: string,
+     *   categoryId: int,
+     *   contentGroupId: string,
+     *   contentTypeCategory: "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"10"|"11"|"12",
+     *   created: string|\DateTimeInterface,
+     *   createdById: string,
+     *   currentlyPublished: bool,
+     *   currentState: value-of<LandingPageUpdateDraftParams\CurrentState>,
+     *   domain: string,
+     *   dynamicPageDataSourceId: string,
+     *   dynamicPageDataSourceType: int,
+     *   dynamicPageHubDbTableId: string,
+     *   enableDomainStylesheets: bool,
+     *   enableLayoutStylesheets: bool,
+     *   featuredImage: string,
+     *   featuredImageAltText: string,
+     *   folderId: string,
+     *   footerHtml: string,
+     *   headHtml: string,
+     *   htmlTitle: string,
+     *   includeDefaultCustomCss: bool,
+     *   language: value-of<LandingPageUpdateDraftParams\Language>,
+     *   layoutSections: array<string,array{
+     *     cells: list<mixed>,
+     *     cssClass: string,
+     *     cssId: string,
+     *     cssStyle: string,
+     *     label: string,
+     *     name: string,
+     *     params: array<string,mixed>,
+     *     rowMetaData: list<mixed>,
+     *     rows: list<array<string,mixed>>,
+     *     styles: array<mixed>|Styles,
+     *     type: string,
+     *     w: int,
+     *     x: int,
+     *   }|LayoutSection>,
+     *   linkRelCanonicalUrl: string,
+     *   mabExperimentId: string,
+     *   metaDescription: string,
+     *   name: string,
+     *   pageExpiryDate: int,
+     *   pageExpiryEnabled: bool,
+     *   pageExpiryRedirectId: int,
+     *   pageExpiryRedirectUrl: string,
+     *   pageRedirected: bool,
+     *   password: string,
+     *   publicAccessRules: list<mixed>,
+     *   publicAccessRulesEnabled: bool,
+     *   publishDate: string|\DateTimeInterface,
+     *   publishImmediately: bool,
+     *   slug: string,
+     *   state: string,
+     *   subcategory: string,
+     *   templatePath: string,
+     *   themeSettingsValues: array<string,mixed>,
+     *   translatedFromId: string,
+     *   translations: array<string,array{
+     *     id: int,
+     *     archivedInDashboard: bool,
+     *     authorName: string,
+     *     campaign: string,
+     *     created: string|\DateTimeInterface,
+     *     name: string,
+     *     password: string,
+     *     publicAccessRules: list<mixed>,
+     *     publicAccessRulesEnabled: bool,
+     *     publishDate: string|\DateTimeInterface,
+     *     slug: string,
+     *     state: string,
+     *     updated: string|\DateTimeInterface,
+     *     tagIds?: list<int>,
+     *   }|PagesContentLanguageVariation>,
+     *   updated: string|\DateTimeInterface,
+     *   updatedById: string,
+     *   url: string,
+     *   useFeaturedImage: bool,
+     *   widgetContainers: array<string,mixed>,
+     *   widgets: array<string,mixed>,
+     * }|LandingPageUpdateDraftParams $params
      *
      * @throws APIException
      */
     public function updateDraft(
         string $objectID,
-        $id,
-        $abStatus,
-        $abTestID,
-        $archivedAt,
-        $archivedInDashboard,
-        $attachedStylesheets,
-        $authorName,
-        $campaign,
-        $categoryID,
-        $contentGroupID,
-        $contentTypeCategory,
-        $created,
-        $createdByID,
-        $currentlyPublished,
-        $currentState,
-        $domain,
-        $dynamicPageDataSourceID,
-        $dynamicPageDataSourceType,
-        $dynamicPageHubDBTableID,
-        $enableDomainStylesheets,
-        $enableLayoutStylesheets,
-        $featuredImage,
-        $featuredImageAltText,
-        $folderID,
-        $footerHTML,
-        $headHTML,
-        $htmlTitle,
-        $includeDefaultCustomCss,
-        $language,
-        $layoutSections,
-        $linkRelCanonicalURL,
-        $mabExperimentID,
-        $metaDescription,
-        $name,
-        $pageExpiryDate,
-        $pageExpiryEnabled,
-        $pageExpiryRedirectID,
-        $pageExpiryRedirectURL,
-        $pageRedirected,
-        $password,
-        $publicAccessRules,
-        $publicAccessRulesEnabled,
-        $publishDate,
-        $publishImmediately,
-        $slug,
-        $state,
-        $subcategory,
-        $templatePath,
-        $themeSettingsValues,
-        $translatedFromID,
-        $translations,
-        $updated,
-        $updatedByID,
-        $url,
-        $useFeaturedImage,
-        $widgetContainers,
-        $widgets,
+        array|LandingPageUpdateDraftParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'pageRedirected' => $pageRedirected,
-            'password' => $password,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'slug' => $slug,
-            'state' => $state,
-            'subcategory' => $subcategory,
-            'templatePath' => $templatePath,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-        ];
-
-        return $this->updateDraftRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateDraftRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = LandingPageUpdateDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -2327,58 +1506,27 @@ final class LandingPagesService implements LandingPagesContract
      * Sparse updates a single Folder object identified by the id in the path.
      * You only need to specify the column values that you are modifying.
      *
-     * @param string $id the unique ID of the content folder
-     * @param int $category The type of object this folder applies to. Should always be LANDING_PAGE.
-     * @param \DateTimeInterface $created
-     * @param \DateTimeInterface $deletedAt the timestamp (ISO8601 format) when this content folder was deleted
-     * @param string $name The name of the folder which will show up in the app dashboard
-     * @param int $parentFolderID The ID of the content folder this folder is nested under
-     * @param \DateTimeInterface $updated
-     * @param bool $archived Specifies whether to update deleted Folders. Defaults to `false`.
+     * @param array{
+     *   id: string,
+     *   category: int,
+     *   created: string|\DateTimeInterface,
+     *   deletedAt: string|\DateTimeInterface,
+     *   name: string,
+     *   parentFolderId: int,
+     *   updated: string|\DateTimeInterface,
+     *   archived?: bool,
+     * }|LandingPageUpdateFolderParams $params
      *
      * @throws APIException
      */
     public function updateFolder(
         string $objectID,
-        $id,
-        $category,
-        $created,
-        $deletedAt,
-        $name,
-        $parentFolderID,
-        $updated,
-        $archived = omit,
+        array|LandingPageUpdateFolderParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ContentFolder {
-        $params = [
-            'id' => $id,
-            'category' => $category,
-            'created' => $created,
-            'deletedAt' => $deletedAt,
-            'name' => $name,
-            'parentFolderID' => $parentFolderID,
-            'updated' => $updated,
-            'archived' => $archived,
-        ];
-
-        return $this->updateFolderRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateFolderRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ContentFolder {
         [$parsed, $options] = LandingPageUpdateFolderParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -2398,35 +1546,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Update the Folder objects identified in the request body.
      *
-     * @param list<mixed> $inputs JSON nodes to input
-     * @param bool $archived whether to return only results that have been archived
+     * @param array{
+     *   inputs: list<mixed>, archived?: bool
+     * }|LandingPageUpdateFoldersBatchParams $params
      *
      * @throws APIException
      */
     public function updateFoldersBatch(
-        $inputs,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseContentFolder {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-
-        return $this->updateFoldersBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateFoldersBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageUpdateFoldersBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseContentFolder {
         [$parsed, $options] = LandingPageUpdateFoldersBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -2446,36 +1578,19 @@ final class LandingPagesService implements LandingPagesContract
      *
      * Explicitly set new languages for each landing page in a multi-language group.
      *
-     * @param array<string,
-     * string,> $languages Map of object IDs to associated languages of object in the multi-language group
-     * @param string $primaryID ID of the primary object in the multi-language group
+     * @param array{
+     *   languages: array<string,string>, primaryId: string
+     * }|LandingPageUpdateLanguagesParams $params
      *
      * @throws APIException
      */
     public function updateLanguages(
-        $languages,
-        $primaryID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['languages' => $languages, 'primaryID' => $primaryID];
-
-        return $this->updateLanguagesRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateLanguagesRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|LandingPageUpdateLanguagesParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = LandingPageUpdateLanguagesParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

@@ -15,7 +15,7 @@ use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse\TranscriptS
  * @phpstan-type TranscriptResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
- *   engagementID: int,
+ *   engagementId: int,
  *   transcriptSource: value-of<TranscriptSource>,
  *   transcriptUtterances: list<TranscriptUtterance>,
  *   updatedAt: \DateTimeInterface,
@@ -34,8 +34,8 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    #[Api('engagementId')]
-    public int $engagementID;
+    #[Api]
+    public int $engagementId;
 
     /** @var value-of<TranscriptSource> $transcriptSource */
     #[Api(enum: TranscriptSource::class)]
@@ -56,7 +56,7 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
      * TranscriptResponse::with(
      *   id: ...,
      *   createdAt: ...,
-     *   engagementID: ...,
+     *   engagementId: ...,
      *   transcriptSource: ...,
      *   transcriptUtterances: ...,
      *   updatedAt: ...,
@@ -91,7 +91,7 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
     public static function with(
         string $id,
         \DateTimeInterface $createdAt,
-        int $engagementID,
+        int $engagementId,
         TranscriptSource|string $transcriptSource,
         array $transcriptUtterances,
         \DateTimeInterface $updatedAt,
@@ -100,7 +100,7 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
 
         $obj->id = $id;
         $obj->createdAt = $createdAt;
-        $obj->engagementID = $engagementID;
+        $obj->engagementId = $engagementId;
         $obj['transcriptSource'] = $transcriptSource;
         $obj->transcriptUtterances = $transcriptUtterances;
         $obj->updatedAt = $updatedAt;
@@ -127,7 +127,7 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
     public function withEngagementID(int $engagementID): self
     {
         $obj = clone $this;
-        $obj->engagementID = $engagementID;
+        $obj->engagementId = $engagementID;
 
         return $obj;
     }

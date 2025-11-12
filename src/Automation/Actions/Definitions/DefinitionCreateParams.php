@@ -24,10 +24,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Automation\Actions\Definitions->create
  *
  * @phpstan-type DefinitionCreateParamsShape = array{
- *   actionURL: string,
+ *   actionUrl: string,
  *   functions: list<PublicActionFunction>,
  *   inputFields: list<InputFieldDefinition>,
- *   labels: array<string, PublicActionLabels>,
+ *   labels: array<string,PublicActionLabels>,
  *   objectTypes: list<string>,
  *   published: bool,
  *   archivedAt?: int,
@@ -43,8 +43,8 @@ final class DefinitionCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api('actionUrl')]
-    public string $actionURL;
+    #[Api]
+    public string $actionUrl;
 
     /** @var list<PublicActionFunction> $functions */
     #[Api(list: PublicActionFunction::class)]
@@ -54,7 +54,7 @@ final class DefinitionCreateParams implements BaseModel
     #[Api(list: InputFieldDefinition::class)]
     public array $inputFields;
 
-    /** @var array<string, PublicActionLabels> $labels */
+    /** @var array<string,PublicActionLabels> $labels */
     #[Api(map: PublicActionLabels::class)]
     public array $labels;
 
@@ -91,7 +91,7 @@ final class DefinitionCreateParams implements BaseModel
      * To enforce required parameters use
      * ```
      * DefinitionCreateParams::with(
-     *   actionURL: ...,
+     *   actionUrl: ...,
      *   functions: ...,
      *   inputFields: ...,
      *   labels: ...,
@@ -124,14 +124,14 @@ final class DefinitionCreateParams implements BaseModel
      *
      * @param list<PublicActionFunction> $functions
      * @param list<InputFieldDefinition> $inputFields
-     * @param array<string, PublicActionLabels> $labels
+     * @param array<string,PublicActionLabels> $labels
      * @param list<string> $objectTypes
      * @param list<PublicExecutionTranslationRule> $executionRules
      * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
      * @param list<OutputFieldDefinition> $outputFields
      */
     public static function with(
-        string $actionURL,
+        string $actionUrl,
         array $functions,
         array $inputFields,
         array $labels,
@@ -145,7 +145,7 @@ final class DefinitionCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->actionURL = $actionURL;
+        $obj->actionUrl = $actionUrl;
         $obj->functions = $functions;
         $obj->inputFields = $inputFields;
         $obj->labels = $labels;
@@ -164,7 +164,7 @@ final class DefinitionCreateParams implements BaseModel
     public function withActionURL(string $actionURL): self
     {
         $obj = clone $this;
-        $obj->actionURL = $actionURL;
+        $obj->actionUrl = $actionURL;
 
         return $obj;
     }
@@ -192,7 +192,7 @@ final class DefinitionCreateParams implements BaseModel
     }
 
     /**
-     * @param array<string, PublicActionLabels> $labels
+     * @param array<string,PublicActionLabels> $labels
      */
     public function withLabels(array $labels): self
     {

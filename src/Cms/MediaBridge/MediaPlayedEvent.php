@@ -12,23 +12,23 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MediaPlayedEventShape = array{
- *   contactID: int,
- *   mediaBridgeID: int,
+ *   contactId: int,
+ *   mediaBridgeId: int,
  *   mediaBridgeObjectCoordinates: string,
- *   mediaBridgeObjectTypeID: string,
+ *   mediaBridgeObjectTypeId: string,
  *   mediaName: string,
  *   mediaType: value-of<MediaType>,
  *   occurredTimestamp: int,
- *   portalID: int,
- *   providerID: int,
- *   sessionID: string,
+ *   portalId: int,
+ *   providerId: int,
+ *   sessionId: string,
  *   state: value-of<State>,
- *   iframeURL?: string,
- *   mediaURL?: string,
- *   pageID?: int,
- *   pageName?: string,
- *   pageObjectCoordinates?: string,
- *   pageURL?: string,
+ *   iframeUrl?: string|null,
+ *   mediaUrl?: string|null,
+ *   pageId?: int|null,
+ *   pageName?: string|null,
+ *   pageObjectCoordinates?: string|null,
+ *   pageUrl?: string|null,
  * }
  */
 final class MediaPlayedEvent implements BaseModel
@@ -36,17 +36,17 @@ final class MediaPlayedEvent implements BaseModel
     /** @use SdkModel<MediaPlayedEventShape> */
     use SdkModel;
 
-    #[Api('contactId')]
-    public int $contactID;
+    #[Api]
+    public int $contactId;
 
-    #[Api('mediaBridgeId')]
-    public int $mediaBridgeID;
+    #[Api]
+    public int $mediaBridgeId;
 
     #[Api]
     public string $mediaBridgeObjectCoordinates;
 
-    #[Api('mediaBridgeObjectTypeId')]
-    public string $mediaBridgeObjectTypeID;
+    #[Api]
+    public string $mediaBridgeObjectTypeId;
 
     #[Api]
     public string $mediaName;
@@ -58,27 +58,27 @@ final class MediaPlayedEvent implements BaseModel
     #[Api]
     public int $occurredTimestamp;
 
-    #[Api('portalId')]
-    public int $portalID;
+    #[Api]
+    public int $portalId;
 
-    #[Api('providerId')]
-    public int $providerID;
+    #[Api]
+    public int $providerId;
 
-    #[Api('sessionId')]
-    public string $sessionID;
+    #[Api]
+    public string $sessionId;
 
     /** @var value-of<State> $state */
     #[Api(enum: State::class)]
     public string $state;
 
-    #[Api('iframeUrl', optional: true)]
-    public ?string $iframeURL;
+    #[Api(optional: true)]
+    public ?string $iframeUrl;
 
-    #[Api('mediaUrl', optional: true)]
-    public ?string $mediaURL;
+    #[Api(optional: true)]
+    public ?string $mediaUrl;
 
-    #[Api('pageId', optional: true)]
-    public ?int $pageID;
+    #[Api(optional: true)]
+    public ?int $pageId;
 
     #[Api(optional: true)]
     public ?string $pageName;
@@ -86,8 +86,8 @@ final class MediaPlayedEvent implements BaseModel
     #[Api(optional: true)]
     public ?string $pageObjectCoordinates;
 
-    #[Api('pageUrl', optional: true)]
-    public ?string $pageURL;
+    #[Api(optional: true)]
+    public ?string $pageUrl;
 
     /**
      * `new MediaPlayedEvent()` is missing required properties by the API.
@@ -95,16 +95,16 @@ final class MediaPlayedEvent implements BaseModel
      * To enforce required parameters use
      * ```
      * MediaPlayedEvent::with(
-     *   contactID: ...,
-     *   mediaBridgeID: ...,
+     *   contactId: ...,
+     *   mediaBridgeId: ...,
      *   mediaBridgeObjectCoordinates: ...,
-     *   mediaBridgeObjectTypeID: ...,
+     *   mediaBridgeObjectTypeId: ...,
      *   mediaName: ...,
      *   mediaType: ...,
      *   occurredTimestamp: ...,
-     *   portalID: ...,
-     *   providerID: ...,
-     *   sessionID: ...,
+     *   portalId: ...,
+     *   providerId: ...,
+     *   sessionId: ...,
      *   state: ...,
      * )
      * ```
@@ -140,44 +140,44 @@ final class MediaPlayedEvent implements BaseModel
      * @param State|value-of<State> $state
      */
     public static function with(
-        int $contactID,
-        int $mediaBridgeID,
+        int $contactId,
+        int $mediaBridgeId,
         string $mediaBridgeObjectCoordinates,
-        string $mediaBridgeObjectTypeID,
+        string $mediaBridgeObjectTypeId,
         string $mediaName,
         MediaType|string $mediaType,
         int $occurredTimestamp,
-        int $portalID,
-        int $providerID,
-        string $sessionID,
+        int $portalId,
+        int $providerId,
+        string $sessionId,
         State|string $state,
-        ?string $iframeURL = null,
-        ?string $mediaURL = null,
-        ?int $pageID = null,
+        ?string $iframeUrl = null,
+        ?string $mediaUrl = null,
+        ?int $pageId = null,
         ?string $pageName = null,
         ?string $pageObjectCoordinates = null,
-        ?string $pageURL = null,
+        ?string $pageUrl = null,
     ): self {
         $obj = new self;
 
-        $obj->contactID = $contactID;
-        $obj->mediaBridgeID = $mediaBridgeID;
+        $obj->contactId = $contactId;
+        $obj->mediaBridgeId = $mediaBridgeId;
         $obj->mediaBridgeObjectCoordinates = $mediaBridgeObjectCoordinates;
-        $obj->mediaBridgeObjectTypeID = $mediaBridgeObjectTypeID;
+        $obj->mediaBridgeObjectTypeId = $mediaBridgeObjectTypeId;
         $obj->mediaName = $mediaName;
         $obj['mediaType'] = $mediaType;
         $obj->occurredTimestamp = $occurredTimestamp;
-        $obj->portalID = $portalID;
-        $obj->providerID = $providerID;
-        $obj->sessionID = $sessionID;
+        $obj->portalId = $portalId;
+        $obj->providerId = $providerId;
+        $obj->sessionId = $sessionId;
         $obj['state'] = $state;
 
-        null !== $iframeURL && $obj->iframeURL = $iframeURL;
-        null !== $mediaURL && $obj->mediaURL = $mediaURL;
-        null !== $pageID && $obj->pageID = $pageID;
+        null !== $iframeUrl && $obj->iframeUrl = $iframeUrl;
+        null !== $mediaUrl && $obj->mediaUrl = $mediaUrl;
+        null !== $pageId && $obj->pageId = $pageId;
         null !== $pageName && $obj->pageName = $pageName;
         null !== $pageObjectCoordinates && $obj->pageObjectCoordinates = $pageObjectCoordinates;
-        null !== $pageURL && $obj->pageURL = $pageURL;
+        null !== $pageUrl && $obj->pageUrl = $pageUrl;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withContactID(int $contactID): self
     {
         $obj = clone $this;
-        $obj->contactID = $contactID;
+        $obj->contactId = $contactID;
 
         return $obj;
     }
@@ -193,7 +193,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withMediaBridgeID(int $mediaBridgeID): self
     {
         $obj = clone $this;
-        $obj->mediaBridgeID = $mediaBridgeID;
+        $obj->mediaBridgeId = $mediaBridgeID;
 
         return $obj;
     }
@@ -211,7 +211,7 @@ final class MediaPlayedEvent implements BaseModel
         string $mediaBridgeObjectTypeID
     ): self {
         $obj = clone $this;
-        $obj->mediaBridgeObjectTypeID = $mediaBridgeObjectTypeID;
+        $obj->mediaBridgeObjectTypeId = $mediaBridgeObjectTypeID;
 
         return $obj;
     }
@@ -246,7 +246,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }
@@ -254,7 +254,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withProviderID(int $providerID): self
     {
         $obj = clone $this;
-        $obj->providerID = $providerID;
+        $obj->providerId = $providerID;
 
         return $obj;
     }
@@ -262,7 +262,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withSessionID(string $sessionID): self
     {
         $obj = clone $this;
-        $obj->sessionID = $sessionID;
+        $obj->sessionId = $sessionID;
 
         return $obj;
     }
@@ -281,7 +281,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withIframeURL(string $iframeURL): self
     {
         $obj = clone $this;
-        $obj->iframeURL = $iframeURL;
+        $obj->iframeUrl = $iframeURL;
 
         return $obj;
     }
@@ -289,7 +289,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withMediaURL(string $mediaURL): self
     {
         $obj = clone $this;
-        $obj->mediaURL = $mediaURL;
+        $obj->mediaUrl = $mediaURL;
 
         return $obj;
     }
@@ -297,7 +297,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withPageID(int $pageID): self
     {
         $obj = clone $this;
-        $obj->pageID = $pageID;
+        $obj->pageId = $pageID;
 
         return $obj;
     }
@@ -322,7 +322,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withPageURL(string $pageURL): self
     {
         $obj = clone $this;
-        $obj->pageURL = $pageURL;
+        $obj->pageUrl = $pageURL;
 
         return $obj;
     }

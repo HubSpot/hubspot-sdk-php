@@ -3,8 +3,6 @@
 namespace Tests\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
-use HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,24 +38,18 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->create(
             0,
-            name: 'PetSpot Registration',
-            objectType: 'contacts',
-            tokens: [
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Name',
-                    name: 'petName',
-                    type: 'string'
-                ),
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Age',
-                    name: 'petAge',
-                    type: 'number'
-                ),
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Color',
-                    name: 'petColor',
-                    type: 'enumeration'
-                ),
+            [
+                'name' => 'PetSpot Registration',
+                'objectType' => 'contacts',
+                'tokens' => [
+                    ['label' => 'Pet Name', 'name' => 'petName', 'type' => 'string'],
+                    ['label' => 'Pet Age', 'name' => 'petAge', 'type' => 'number'],
+                    [
+                        'label' => 'Pet Color',
+                        'name' => 'petColor',
+                        'type' => 'enumeration',
+                    ],
+                ],
             ],
         );
 
@@ -73,65 +65,49 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->create(
             0,
-            name: 'PetSpot Registration',
-            objectType: 'contacts',
-            tokens: [
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Name',
-                    name: 'petName',
-                    type: 'string'
-                )
-                    ->withCreatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z'))
-                    ->withObjectPropertyName('customPropertyPetType')
-                    ->withOptions(
-                        [
-                            TimelineEventTemplateTokenOption::with(label: 'Dog', value: 'dog'),
-                            TimelineEventTemplateTokenOption::with(label: 'Cat', value: 'cat'),
+            [
+                'name' => 'PetSpot Registration',
+                'objectType' => 'contacts',
+                'tokens' => [
+                    [
+                        'label' => 'Pet Name',
+                        'name' => 'petName',
+                        'type' => 'string',
+                        'createdAt' => '2020-02-12T20:58:26Z',
+                        'objectPropertyName' => 'customPropertyPetType',
+                        'options' => [
+                            ['label' => 'Dog', 'value' => 'dog'],
+                            ['label' => 'Cat', 'value' => 'cat'],
                         ],
-                    )
-                    ->withUpdatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z')),
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Age',
-                    name: 'petAge',
-                    type: 'number'
-                )
-                    ->withCreatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z'))
-                    ->withObjectPropertyName('customPropertyPetType')
-                    ->withOptions(
-                        [
-                            TimelineEventTemplateTokenOption::with(label: 'Dog', value: 'dog'),
-                            TimelineEventTemplateTokenOption::with(label: 'Cat', value: 'cat'),
+                        'updatedAt' => '2020-02-12T20:58:26Z',
+                    ],
+                    [
+                        'label' => 'Pet Age',
+                        'name' => 'petAge',
+                        'type' => 'number',
+                        'createdAt' => '2020-02-12T20:58:26Z',
+                        'objectPropertyName' => 'customPropertyPetType',
+                        'options' => [
+                            ['label' => 'Dog', 'value' => 'dog'],
+                            ['label' => 'Cat', 'value' => 'cat'],
                         ],
-                    )
-                    ->withUpdatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z')),
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Color',
-                    name: 'petColor',
-                    type: 'enumeration'
-                )
-                    ->withCreatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z'))
-                    ->withObjectPropertyName('customPropertyPetType')
-                    ->withOptions(
-                        [
-                            TimelineEventTemplateTokenOption::with(
-                                label: 'White',
-                                value: 'white'
-                            ),
-                            TimelineEventTemplateTokenOption::with(
-                                label: 'Black',
-                                value: 'black'
-                            ),
-                            TimelineEventTemplateTokenOption::with(
-                                label: 'Brown',
-                                value: 'brown'
-                            ),
-                            TimelineEventTemplateTokenOption::with(
-                                label: 'Other',
-                                value: 'other'
-                            ),
+                        'updatedAt' => '2020-02-12T20:58:26Z',
+                    ],
+                    [
+                        'label' => 'Pet Color',
+                        'name' => 'petColor',
+                        'type' => 'enumeration',
+                        'createdAt' => '2020-02-12T20:58:26Z',
+                        'objectPropertyName' => 'customPropertyPetType',
+                        'options' => [
+                            ['label' => 'White', 'value' => 'white'],
+                            ['label' => 'Black', 'value' => 'black'],
+                            ['label' => 'Brown', 'value' => 'brown'],
+                            ['label' => 'Other', 'value' => 'other'],
                         ],
-                    )
-                    ->withUpdatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z')),
+                        'updatedAt' => '2020-02-12T20:58:26Z',
+                    ],
+                ],
             ],
         );
 
@@ -147,25 +123,19 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->update(
             'eventTemplateId',
-            appID: 0,
-            id: '1001298',
-            name: 'PetSpot Registration',
-            tokens: [
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Name',
-                    name: 'petName',
-                    type: 'string'
-                ),
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Age',
-                    name: 'petAge',
-                    type: 'number'
-                ),
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Color',
-                    name: 'petColor',
-                    type: 'enumeration'
-                ),
+            [
+                'appId' => 0,
+                'id' => '1001298',
+                'name' => 'PetSpot Registration',
+                'tokens' => [
+                    ['label' => 'Pet Name', 'name' => 'petName', 'type' => 'string'],
+                    ['label' => 'Pet Age', 'name' => 'petAge', 'type' => 'number'],
+                    [
+                        'label' => 'Pet Color',
+                        'name' => 'petColor',
+                        'type' => 'enumeration',
+                    ],
+                ],
             ],
         );
 
@@ -181,70 +151,51 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->update(
             'eventTemplateId',
-            appID: 0,
-            id: '1001298',
-            name: 'PetSpot Registration',
-            tokens: [
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Name',
-                    name: 'petName',
-                    type: 'string'
-                )
-                    ->withCreatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z'))
-                    ->withObjectPropertyName('firstname')
-                    ->withOptions(
-                        [
-                            TimelineEventTemplateTokenOption::with(label: 'Dog', value: 'dog'),
-                            TimelineEventTemplateTokenOption::with(label: 'Cat', value: 'cat'),
+            [
+                'appId' => 0,
+                'id' => '1001298',
+                'name' => 'PetSpot Registration',
+                'tokens' => [
+                    [
+                        'label' => 'Pet Name',
+                        'name' => 'petName',
+                        'type' => 'string',
+                        'createdAt' => '2020-02-12T20:58:26Z',
+                        'objectPropertyName' => 'firstname',
+                        'options' => [
+                            ['label' => 'Dog', 'value' => 'dog'],
+                            ['label' => 'Cat', 'value' => 'cat'],
                         ],
-                    )
-                    ->withUpdatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z')),
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Age',
-                    name: 'petAge',
-                    type: 'number'
-                )
-                    ->withCreatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z'))
-                    ->withObjectPropertyName('customPropertyPetType')
-                    ->withOptions(
-                        [
-                            TimelineEventTemplateTokenOption::with(label: 'Dog', value: 'dog'),
-                            TimelineEventTemplateTokenOption::with(label: 'Cat', value: 'cat'),
+                        'updatedAt' => '2020-02-12T20:58:26Z',
+                    ],
+                    [
+                        'label' => 'Pet Age',
+                        'name' => 'petAge',
+                        'type' => 'number',
+                        'createdAt' => '2020-02-12T20:58:26Z',
+                        'objectPropertyName' => 'customPropertyPetType',
+                        'options' => [
+                            ['label' => 'Dog', 'value' => 'dog'],
+                            ['label' => 'Cat', 'value' => 'cat'],
                         ],
-                    )
-                    ->withUpdatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z')),
-                TimelineEventTemplateToken::with(
-                    label: 'Pet Color',
-                    name: 'petColor',
-                    type: 'enumeration'
-                )
-                    ->withCreatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z'))
-                    ->withObjectPropertyName('customPropertyPetType')
-                    ->withOptions(
-                        [
-                            TimelineEventTemplateTokenOption::with(
-                                label: 'White',
-                                value: 'white'
-                            ),
-                            TimelineEventTemplateTokenOption::with(
-                                label: 'Black',
-                                value: 'black'
-                            ),
-                            TimelineEventTemplateTokenOption::with(
-                                label: 'Brown',
-                                value: 'brown'
-                            ),
-                            TimelineEventTemplateTokenOption::with(
-                                label: 'Yellow',
-                                value: 'yellow'
-                            ),
-                            TimelineEventTemplateTokenOption::with(
-                                label: 'Other',
-                                value: 'other'
-                            ),
+                        'updatedAt' => '2020-02-12T20:58:26Z',
+                    ],
+                    [
+                        'label' => 'Pet Color',
+                        'name' => 'petColor',
+                        'type' => 'enumeration',
+                        'createdAt' => '2020-02-12T20:58:26Z',
+                        'objectPropertyName' => 'customPropertyPetType',
+                        'options' => [
+                            ['label' => 'White', 'value' => 'white'],
+                            ['label' => 'Black', 'value' => 'black'],
+                            ['label' => 'Brown', 'value' => 'brown'],
+                            ['label' => 'Yellow', 'value' => 'yellow'],
+                            ['label' => 'Other', 'value' => 'other'],
                         ],
-                    )
-                    ->withUpdatedAt(new \DateTimeImmutable('2020-02-12T20:58:26Z')),
+                        'updatedAt' => '2020-02-12T20:58:26Z',
+                    ],
+                ],
             ],
         );
 
@@ -272,7 +223,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->delete(
             'eventTemplateId',
-            0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -287,7 +238,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->delete(
             'eventTemplateId',
-            0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -302,7 +253,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->get(
             'eventTemplateId',
-            0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -317,7 +268,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->get(
             'eventTemplateId',
-            0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

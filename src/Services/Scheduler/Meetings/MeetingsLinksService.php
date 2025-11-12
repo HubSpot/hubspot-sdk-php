@@ -8,15 +8,12 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Scheduler\Meetings\CollectionResponseWithTotalExternalLinkMetadataForwardPaging;
-use HubspotSDK\Scheduler\Meetings\ExternalBookingFormField;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
 use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
 use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
 use HubspotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
 use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkBookParams;
 use HubspotSDK\ServiceContracts\Scheduler\Meetings\MeetingsLinksContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class MeetingsLinksService implements MeetingsLinksContract
 {
@@ -49,65 +46,31 @@ final class MeetingsLinksService implements MeetingsLinksContract
      *
      * Book a meeting for a specified meeting page.
      *
-     * @param int $duration
-     * @param string $email
-     * @param string $firstName
-     * @param list<ExternalBookingFormField> $formFields
-     * @param string $lastName
-     * @param list<ExternalLegalConsentResponse> $legalConsentResponses
-     * @param list<string> $likelyAvailableUserIDs
-     * @param string $slug
-     * @param \DateTimeInterface $startTime
-     * @param string $locale
-     * @param string $timezone
+     * @param array{
+     *   duration: int,
+     *   email: string,
+     *   firstName: string,
+     *   formFields: list<array{name: string, value: string}>,
+     *   lastName: string,
+     *   legalConsentResponses: list<array{
+     *     communicationTypeId: string, consented: bool
+     *   }|ExternalLegalConsentResponse>,
+     *   likelyAvailableUserIds: list<string>,
+     *   slug: string,
+     *   startTime: string|\DateTimeInterface,
+     *   locale?: string,
+     *   timezone?: string,
+     * }|MeetingsLinkBookParams $params
      *
      * @throws APIException
      */
     public function book(
-        $duration,
-        $email,
-        $firstName,
-        $formFields,
-        $lastName,
-        $legalConsentResponses,
-        $likelyAvailableUserIDs,
-        $slug,
-        $startTime,
-        $locale = omit,
-        $timezone = omit,
-        ?RequestOptions $requestOptions = null,
-    ): ExternalMeetingBookingResponse {
-        $params = [
-            'duration' => $duration,
-            'email' => $email,
-            'firstName' => $firstName,
-            'formFields' => $formFields,
-            'lastName' => $lastName,
-            'legalConsentResponses' => $legalConsentResponses,
-            'likelyAvailableUserIDs' => $likelyAvailableUserIDs,
-            'slug' => $slug,
-            'startTime' => $startTime,
-            'locale' => $locale,
-            'timezone' => $timezone,
-        ];
-
-        return $this->bookRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function bookRaw(
-        array $params,
+        array|MeetingsLinkBookParams $params,
         ?RequestOptions $requestOptions = null
     ): ExternalMeetingBookingResponse {
         [$parsed, $options] = MeetingsLinkBookParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

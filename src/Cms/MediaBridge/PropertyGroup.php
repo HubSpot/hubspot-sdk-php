@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PropertyGroupShape = array{
- *   archived: bool, label: string, name: string, displayOrder?: int
+ *   archived: bool, label: string, name: string, displayOrder?: int|null
  * }
  */
 final class PropertyGroup implements BaseModel

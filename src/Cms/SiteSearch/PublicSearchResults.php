@@ -17,7 +17,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   page: int,
  *   results: list<ContentSearchResult>,
  *   total: int,
- *   searchTerm?: string,
+ *   searchTerm?: string|null,
  * }
  */
 final class PublicSearchResults implements BaseModel, ResponseConverter

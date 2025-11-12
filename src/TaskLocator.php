@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type TaskLocatorShape = array{
- *   id: string, links?: array<string, string>
+ *   id: string, links?: array<string,string>|null
  * }
  */
 final class TaskLocator implements BaseModel
@@ -21,7 +21,7 @@ final class TaskLocator implements BaseModel
     #[Api]
     public string $id;
 
-    /** @var array<string, string>|null $links */
+    /** @var array<string,string>|null $links */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
@@ -49,7 +49,7 @@ final class TaskLocator implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(string $id, ?array $links = null): self
     {
@@ -71,7 +71,7 @@ final class TaskLocator implements BaseModel
     }
 
     /**
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

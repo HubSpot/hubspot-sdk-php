@@ -16,8 +16,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Automation\Actions\Functions->get
  *
  * @phpstan-type FunctionGetParamsShape = array{
- *   appID: int,
- *   definitionID: string,
+ *   appId: int,
+ *   definitionId: string,
  *   functionType: FunctionType|value-of<FunctionType>,
  * }
  */
@@ -28,10 +28,10 @@ final class FunctionGetParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     #[Api]
-    public string $definitionID;
+    public string $definitionId;
 
     /** @var value-of<FunctionType> $functionType */
     #[Api(enum: FunctionType::class)]
@@ -42,7 +42,7 @@ final class FunctionGetParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * FunctionGetParams::with(appID: ..., definitionID: ..., functionType: ...)
+     * FunctionGetParams::with(appId: ..., definitionId: ..., functionType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -67,14 +67,14 @@ final class FunctionGetParams implements BaseModel
      * @param FunctionType|value-of<FunctionType> $functionType
      */
     public static function with(
-        int $appID,
-        string $definitionID,
+        int $appId,
+        string $definitionId,
         FunctionType|string $functionType
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->definitionID = $definitionID;
+        $obj->appId = $appId;
+        $obj->definitionId = $definitionId;
         $obj['functionType'] = $functionType;
 
         return $obj;
@@ -83,7 +83,7 @@ final class FunctionGetParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class FunctionGetParams implements BaseModel
     public function withDefinitionID(string $definitionID): self
     {
         $obj = clone $this;
-        $obj->definitionID = $definitionID;
+        $obj->definitionId = $definitionID;
 
         return $obj;
     }

@@ -13,17 +13,17 @@ use HubspotSDK\Services\Crm\Timeline\TokensService;
 final class TimelineService implements TimelineContract
 {
     /**
-     * @@api
+     * @api
      */
     public EventsService $events;
 
     /**
-     * @@api
+     * @api
      */
     public TemplatesService $templates;
 
     /**
-     * @@api
+     * @api
      */
     public TokensService $tokens;
 

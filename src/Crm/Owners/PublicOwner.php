@@ -19,12 +19,12 @@ use HubspotSDK\Settings\Users\PublicTeam;
  *   createdAt: \DateTimeInterface,
  *   type: value-of<Type>,
  *   updatedAt: \DateTimeInterface,
- *   email?: string,
- *   firstName?: string,
- *   lastName?: string,
- *   teams?: list<PublicTeam>,
- *   userID?: int,
- *   userIDIncludingInactive?: int,
+ *   email?: string|null,
+ *   firstName?: string|null,
+ *   lastName?: string|null,
+ *   teams?: list<PublicTeam>|null,
+ *   userId?: int|null,
+ *   userIdIncludingInactive?: int|null,
  * }
  */
 final class PublicOwner implements BaseModel, ResponseConverter
@@ -91,14 +91,14 @@ final class PublicOwner implements BaseModel, ResponseConverter
     /**
      * The user ID of the owner.
      */
-    #[Api('userId', optional: true)]
-    public ?int $userID;
+    #[Api(optional: true)]
+    public ?int $userId;
 
     /**
      * The user ID of the owner, including inactive users.
      */
-    #[Api('userIdIncludingInactive', optional: true)]
-    public ?int $userIDIncludingInactive;
+    #[Api(optional: true)]
+    public ?int $userIdIncludingInactive;
 
     /**
      * `new PublicOwner()` is missing required properties by the API.
@@ -144,8 +144,8 @@ final class PublicOwner implements BaseModel, ResponseConverter
         ?string $firstName = null,
         ?string $lastName = null,
         ?array $teams = null,
-        ?int $userID = null,
-        ?int $userIDIncludingInactive = null,
+        ?int $userId = null,
+        ?int $userIdIncludingInactive = null,
     ): self {
         $obj = new self;
 
@@ -159,8 +159,8 @@ final class PublicOwner implements BaseModel, ResponseConverter
         null !== $firstName && $obj->firstName = $firstName;
         null !== $lastName && $obj->lastName = $lastName;
         null !== $teams && $obj->teams = $teams;
-        null !== $userID && $obj->userID = $userID;
-        null !== $userIDIncludingInactive && $obj->userIDIncludingInactive = $userIDIncludingInactive;
+        null !== $userId && $obj->userId = $userId;
+        null !== $userIdIncludingInactive && $obj->userIdIncludingInactive = $userIdIncludingInactive;
 
         return $obj;
     }
@@ -272,7 +272,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }
@@ -284,7 +284,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
         int $userIDIncludingInactive
     ): self {
         $obj = clone $this;
-        $obj->userIDIncludingInactive = $userIDIncludingInactive;
+        $obj->userIdIncludingInactive = $userIDIncludingInactive;
 
         return $obj;
     }

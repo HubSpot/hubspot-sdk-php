@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Objects\Custom->update
  *
  * @phpstan-type CustomUpdateParamsShape = array{
- *   objectType: string, properties: array<string, string>, idProperty?: string
+ *   objectType: string, properties: array<string,string>, idProperty?: string
  * }
  */
 final class CustomUpdateParams implements BaseModel
@@ -30,7 +30,7 @@ final class CustomUpdateParams implements BaseModel
     /**
      * Key value pairs representing the properties of the object.
      *
-     * @var array<string, string> $properties
+     * @var array<string,string> $properties
      */
     #[Api(map: 'string')]
     public array $properties;
@@ -65,7 +65,7 @@ final class CustomUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(
         string $objectType,
@@ -93,7 +93,7 @@ final class CustomUpdateParams implements BaseModel
     /**
      * Key value pairs representing the properties of the object.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

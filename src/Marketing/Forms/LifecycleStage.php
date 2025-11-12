@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type LifecycleStageShape = array{objectTypeID: string, value: string}
+ * @phpstan-type LifecycleStageShape = array{objectTypeId: string, value: string}
  */
 final class LifecycleStage implements BaseModel
 {
@@ -19,8 +19,8 @@ final class LifecycleStage implements BaseModel
     /**
      * The objectTypeId for both contact and company.
      */
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /**
      * The internal name of the contact's lifecycle stage set when submitting a form.
@@ -33,7 +33,7 @@ final class LifecycleStage implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * LifecycleStage::with(objectTypeID: ..., value: ...)
+     * LifecycleStage::with(objectTypeId: ..., value: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,11 +52,11 @@ final class LifecycleStage implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectTypeID, string $value): self
+    public static function with(string $objectTypeId, string $value): self
     {
         $obj = new self;
 
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->value = $value;
 
         return $obj;
@@ -68,7 +68,7 @@ final class LifecycleStage implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

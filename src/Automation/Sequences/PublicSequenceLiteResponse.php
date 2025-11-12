@@ -14,8 +14,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createdAt: \DateTimeInterface,
  *   name: string,
  *   updatedAt: \DateTimeInterface,
- *   userID: string,
- *   folderID?: string,
+ *   userId: string,
+ *   folderId?: string|null,
  * }
  */
 final class PublicSequenceLiteResponse implements BaseModel
@@ -35,11 +35,11 @@ final class PublicSequenceLiteResponse implements BaseModel
     #[Api]
     public \DateTimeInterface $updatedAt;
 
-    #[Api('userId')]
-    public string $userID;
+    #[Api]
+    public string $userId;
 
-    #[Api('folderId', optional: true)]
-    public ?string $folderID;
+    #[Api(optional: true)]
+    public ?string $folderId;
 
     /**
      * `new PublicSequenceLiteResponse()` is missing required properties by the API.
@@ -47,7 +47,7 @@ final class PublicSequenceLiteResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicSequenceLiteResponse::with(
-     *   id: ..., createdAt: ..., name: ..., updatedAt: ..., userID: ...
+     *   id: ..., createdAt: ..., name: ..., updatedAt: ..., userId: ...
      * )
      * ```
      *
@@ -77,8 +77,8 @@ final class PublicSequenceLiteResponse implements BaseModel
         \DateTimeInterface $createdAt,
         string $name,
         \DateTimeInterface $updatedAt,
-        string $userID,
-        ?string $folderID = null,
+        string $userId,
+        ?string $folderId = null,
     ): self {
         $obj = new self;
 
@@ -86,9 +86,9 @@ final class PublicSequenceLiteResponse implements BaseModel
         $obj->createdAt = $createdAt;
         $obj->name = $name;
         $obj->updatedAt = $updatedAt;
-        $obj->userID = $userID;
+        $obj->userId = $userId;
 
-        null !== $folderID && $obj->folderID = $folderID;
+        null !== $folderId && $obj->folderId = $folderId;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class PublicSequenceLiteResponse implements BaseModel
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }
@@ -136,7 +136,7 @@ final class PublicSequenceLiteResponse implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderID = $folderID;
+        $obj->folderId = $folderID;
 
         return $obj;
     }

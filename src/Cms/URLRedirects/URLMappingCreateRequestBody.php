@@ -13,13 +13,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   destination: string,
  *   redirectStyle: int,
  *   routePrefix: string,
- *   isMatchFullURL?: bool,
- *   isMatchQueryString?: bool,
- *   isOnlyAfterNotFound?: bool,
- *   isPattern?: bool,
- *   isProtocolAgnostic?: bool,
- *   isTrailingSlashOptional?: bool,
- *   precedence?: int,
+ *   isMatchFullUrl?: bool|null,
+ *   isMatchQueryString?: bool|null,
+ *   isOnlyAfterNotFound?: bool|null,
+ *   isPattern?: bool|null,
+ *   isProtocolAgnostic?: bool|null,
+ *   isTrailingSlashOptional?: bool|null,
+ *   precedence?: int|null,
  * }
  */
 final class URLMappingCreateRequestBody implements BaseModel
@@ -36,8 +36,8 @@ final class URLMappingCreateRequestBody implements BaseModel
     #[Api]
     public string $routePrefix;
 
-    #[Api('isMatchFullUrl', optional: true)]
-    public ?bool $isMatchFullURL;
+    #[Api(optional: true)]
+    public ?bool $isMatchFullUrl;
 
     #[Api(optional: true)]
     public ?bool $isMatchQueryString;
@@ -90,7 +90,7 @@ final class URLMappingCreateRequestBody implements BaseModel
         string $destination,
         int $redirectStyle,
         string $routePrefix,
-        ?bool $isMatchFullURL = null,
+        ?bool $isMatchFullUrl = null,
         ?bool $isMatchQueryString = null,
         ?bool $isOnlyAfterNotFound = null,
         ?bool $isPattern = null,
@@ -104,7 +104,7 @@ final class URLMappingCreateRequestBody implements BaseModel
         $obj->redirectStyle = $redirectStyle;
         $obj->routePrefix = $routePrefix;
 
-        null !== $isMatchFullURL && $obj->isMatchFullURL = $isMatchFullURL;
+        null !== $isMatchFullUrl && $obj->isMatchFullUrl = $isMatchFullUrl;
         null !== $isMatchQueryString && $obj->isMatchQueryString = $isMatchQueryString;
         null !== $isOnlyAfterNotFound && $obj->isOnlyAfterNotFound = $isOnlyAfterNotFound;
         null !== $isPattern && $obj->isPattern = $isPattern;
@@ -142,7 +142,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
         $obj = clone $this;
-        $obj->isMatchFullURL = $isMatchFullURL;
+        $obj->isMatchFullUrl = $isMatchFullURL;
 
         return $obj;
     }

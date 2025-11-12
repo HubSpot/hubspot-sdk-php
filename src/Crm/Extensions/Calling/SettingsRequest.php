@@ -12,13 +12,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type SettingsRequestShape = array{
  *   name: string,
  *   url: string,
- *   height?: int,
- *   isReady?: bool,
- *   supportsCustomObjects?: bool,
- *   supportsInboundCalling?: bool,
- *   usesCallingWindow?: bool,
- *   usesRemote?: bool,
- *   width?: int,
+ *   height?: int|null,
+ *   isReady?: bool|null,
+ *   supportsCustomObjects?: bool|null,
+ *   supportsInboundCalling?: bool|null,
+ *   usesCallingWindow?: bool|null,
+ *   usesRemote?: bool|null,
+ *   width?: int|null,
  * }
  */
 final class SettingsRequest implements BaseModel

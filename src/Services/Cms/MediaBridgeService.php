@@ -15,27 +15,27 @@ use HubspotSDK\Services\Cms\MediaBridge\SchemasService;
 final class MediaBridgeService implements MediaBridgeContract
 {
     /**
-     * @@api
+     * @api
      */
     public EventsService $events;
 
     /**
-     * @@api
+     * @api
      */
     public GroupsService $groups;
 
     /**
-     * @@api
+     * @api
      */
     public IntegratorSettingsService $integratorSettings;
 
     /**
-     * @@api
+     * @api
      */
     public PropertiesService $properties;
 
     /**
-     * @@api
+     * @api
      */
     public SchemasService $schemas;
 

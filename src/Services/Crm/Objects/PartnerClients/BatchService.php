@@ -9,12 +9,8 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchBatchGetParams;
 use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchBatchUpdateParams;
-use HubspotSDK\Crm\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\PartnerClients\BatchContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class BatchService implements BatchContract
 {
@@ -26,47 +22,23 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * @param list<SimplePublicObjectID> $inputs
-     * @param list<string> $properties key-value pairs for setting properties for the new object
-     * @param list<string> $propertiesWithHistory key-value pairs for setting properties for the new object and their histories
-     * @param bool $archived
-     * @param string $idProperty
+     * @param array{
+     *   inputs: list<array{id: string}>,
+     *   properties: list<string>,
+     *   propertiesWithHistory: list<string>,
+     *   archived?: bool,
+     *   idProperty?: string,
+     * }|BatchBatchGetParams $params
      *
      * @throws APIException
      */
     public function batchGet(
-        $inputs,
-        $properties,
-        $propertiesWithHistory,
-        $archived = omit,
-        $idProperty = omit,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseSimplePublicObject {
-        $params = [
-            'inputs' => $inputs,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-            'archived' => $archived,
-            'idProperty' => $idProperty,
-        ];
-
-        return $this->batchGetRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchGetRaw(
-        array $params,
+        array|BatchBatchGetParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject {
         [$parsed, $options] = BatchBatchGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -84,33 +56,24 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array{
+     *   inputs: list<array{
+     *     id: string,
+     *     properties: array<string,string>,
+     *     idProperty?: string,
+     *     objectWriteTraceId?: string,
+     *   }>,
+     * }|BatchBatchUpdateParams $params
      *
      * @throws APIException
      */
     public function batchUpdate(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject {
-        $params = ['inputs' => $inputs];
-
-        return $this->batchUpdateRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchUpdateRaw(
-        array $params,
+        array|BatchBatchUpdateParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject {
         [$parsed, $options] = BatchBatchUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

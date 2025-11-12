@@ -16,8 +16,6 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\ReportsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class ReportsService implements ReportsContract
 {
     /**
@@ -30,43 +28,20 @@ final class ReportsService implements ReportsContract
      *
      * This endpoint retrieves key attribution metrics for a specified campaign, such as sessions, new contacts, and influenced contacts.
      *
-     * @param string $endDate End date for the report data, formatted as YYYY-MM-DD.
-     * Default value: Current date
-     * @param string $startDate The start date for the report data, formatted as YYYY-MM-DD.
-     * Default value: 2006-01-01
+     * @param array{
+     *   endDate?: string, startDate?: string
+     * }|ReportGetAttributionMetricsParams $params
      *
      * @throws APIException
      */
     public function getAttributionMetrics(
         string $campaignGuid,
-        $endDate = omit,
-        $startDate = omit,
+        array|ReportGetAttributionMetricsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): MetricsCounters {
-        $params = ['endDate' => $endDate, 'startDate' => $startDate];
-
-        return $this->getAttributionMetricsRaw(
-            $campaignGuid,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getAttributionMetricsRaw(
-        string $campaignGuid,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): MetricsCounters {
         [$parsed, $options] = ReportGetAttributionMetricsParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -84,50 +59,20 @@ final class ReportsService implements ReportsContract
      *
      * Fetch revenue attribution report data for a specified campaign
      *
-     * @param string $attributionModel Allowed values: LINEAR, FIRST_INTERACTION, LAST_INTERACTION, FULL_PATH, U_SHAPED, W_SHAPED, TIME_DECAY, J_SHAPED, INVERSE_J_SHAPED
-     * Default value: LINEAR
-     * @param string $endDate End date for the report data, formatted as YYYY-MM-DD.
-     * Default value: Current date
-     * @param string $startDate The start date for the report data, formatted as YYYY-MM-DD.
-     * Default value: 2006-01-01
+     * @param array{
+     *   attributionModel?: string, endDate?: string, startDate?: string
+     * }|ReportGetRevenueAttributionParams $params
      *
      * @throws APIException
      */
     public function getRevenueAttribution(
         string $campaignGuid,
-        $attributionModel = omit,
-        $endDate = omit,
-        $startDate = omit,
+        array|ReportGetRevenueAttributionParams $params,
         ?RequestOptions $requestOptions = null,
-    ): RevenueAttributionAggregate {
-        $params = [
-            'attributionModel' => $attributionModel,
-            'endDate' => $endDate,
-            'startDate' => $startDate,
-        ];
-
-        return $this->getRevenueAttributionRaw(
-            $campaignGuid,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRevenueAttributionRaw(
-        string $campaignGuid,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): RevenueAttributionAggregate {
         [$parsed, $options] = ReportGetRevenueAttributionParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -145,15 +90,13 @@ final class ReportsService implements ReportsContract
      *
      * Fetch the list of contact IDs for the specified campaign and contact type
      *
-     * @param string $campaignGuid
-     * @param string $after A cursor for pagination. If provided, the results will start after the given cursor.
-     * Example: NTI1Cg%3D%3D
-     * @param string $endDate End date for the report data, formatted as YYYY-MM-DD.
-     * Default value: Current date
-     * @param int $limit Limit for the number of contacts to fetch
-     * Default: 100
-     * @param string $startDate The start date for the report data, formatted as YYYY-MM-DD.
-     * Default value: 2006-01-01
+     * @param array{
+     *   campaignGuid: string,
+     *   after?: string,
+     *   endDate?: string,
+     *   limit?: int,
+     *   startDate?: string,
+     * }|ReportListContactIDsByTypeParams $params
      *
      * @return Page<ContactReference>
      *
@@ -161,45 +104,12 @@ final class ReportsService implements ReportsContract
      */
     public function listContactIDsByType(
         string $contactType,
-        $campaignGuid,
-        $after = omit,
-        $endDate = omit,
-        $limit = omit,
-        $startDate = omit,
+        array|ReportListContactIDsByTypeParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'campaignGuid' => $campaignGuid,
-            'after' => $after,
-            'endDate' => $endDate,
-            'limit' => $limit,
-            'startDate' => $startDate,
-        ];
-
-        return $this->listContactIDsByTypeRaw(
-            $contactType,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<ContactReference>
-     *
-     * @throws APIException
-     */
-    public function listContactIDsByTypeRaw(
-        string $contactType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = ReportListContactIDsByTypeParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);

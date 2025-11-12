@@ -13,8 +13,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type InputFieldDefinitionShape = array{
  *   isRequired: bool,
  *   typeDefinition: FieldTypeDefinition,
- *   automationFieldType?: string,
- *   supportedValueTypes?: list<value-of<SupportedValueType>>,
+ *   automationFieldType?: string|null,
+ *   supportedValueTypes?: list<value-of<SupportedValueType>>|null,
  * }
  */
 final class InputFieldDefinition implements BaseModel

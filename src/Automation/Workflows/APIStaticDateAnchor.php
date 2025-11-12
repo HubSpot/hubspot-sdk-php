@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIStaticDateAnchorShape = array{
- *   dayOfMonth: int, month: value-of<Month>, type: value-of<Type>, year?: int
+ *   dayOfMonth: int, month: value-of<Month>, type: value-of<Type>, year?: int|null
  * }
  */
 final class APIStaticDateAnchor implements BaseModel

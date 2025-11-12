@@ -14,22 +14,22 @@ use HubspotSDK\Services\Crm\Extensions\Calling\TranscriptsService;
 final class CallingService implements CallingContract
 {
     /**
-     * @@api
+     * @api
      */
     public ChannelConnectionSettingsService $channelConnectionSettings;
 
     /**
-     * @@api
+     * @api
      */
     public RecordingSettingsService $recordingSettings;
 
     /**
-     * @@api
+     * @api
      */
     public SettingsService $settings;
 
     /**
-     * @@api
+     * @api
      */
     public TranscriptsService $transcripts;
 

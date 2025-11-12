@@ -23,7 +23,7 @@ use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationStrat
  *   duplicateValidationScope?: DuplicateValidationScope|value-of<DuplicateValidationScope>,
  *   duplicateValidationStrategy?: DuplicateValidationStrategy|value-of<DuplicateValidationStrategy>,
  *   expiresAt?: \DateTimeInterface,
- *   folderID?: string,
+ *   folderId?: string,
  *   folderPath?: string,
  *   name?: string,
  *   overwrite?: bool,
@@ -75,8 +75,8 @@ final class FileImportFromURLAsyncParams implements BaseModel
     /**
      * One of folderId or folderPath is required. Destination folderId for the uploaded file.
      */
-    #[Api('folderId', optional: true)]
-    public ?string $folderID;
+    #[Api(optional: true)]
+    public ?string $folderId;
 
     /**
      * One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.
@@ -136,7 +136,7 @@ final class FileImportFromURLAsyncParams implements BaseModel
         DuplicateValidationScope|string|null $duplicateValidationScope = null,
         DuplicateValidationStrategy|string|null $duplicateValidationStrategy = null,
         ?\DateTimeInterface $expiresAt = null,
-        ?string $folderID = null,
+        ?string $folderId = null,
         ?string $folderPath = null,
         ?string $name = null,
         ?bool $overwrite = null,
@@ -150,7 +150,7 @@ final class FileImportFromURLAsyncParams implements BaseModel
         null !== $duplicateValidationScope && $obj['duplicateValidationScope'] = $duplicateValidationScope;
         null !== $duplicateValidationStrategy && $obj['duplicateValidationStrategy'] = $duplicateValidationStrategy;
         null !== $expiresAt && $obj->expiresAt = $expiresAt;
-        null !== $folderID && $obj->folderID = $folderID;
+        null !== $folderId && $obj->folderId = $folderId;
         null !== $folderPath && $obj->folderPath = $folderPath;
         null !== $name && $obj->name = $name;
         null !== $overwrite && $obj->overwrite = $overwrite;
@@ -228,7 +228,7 @@ final class FileImportFromURLAsyncParams implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderID = $folderID;
+        $obj->folderId = $folderID;
 
         return $obj;
     }

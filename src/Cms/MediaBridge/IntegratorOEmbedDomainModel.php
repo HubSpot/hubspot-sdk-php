@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type IntegratorOEmbedDomainModelShape = array{
  *   id: int,
- *   appID: int,
+ *   appId: int,
  *   createdAt: int,
  *   deletedAt: int,
  *   endpoints: Endpoints,
- *   portalID: int,
+ *   portalId: int,
  *   updatedAt: int,
  * }
  */
@@ -27,8 +27,8 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     #[Api]
     public int $id;
 
-    #[Api('appId')]
-    public int $appID;
+    #[Api]
+    public int $appId;
 
     #[Api]
     public int $createdAt;
@@ -39,8 +39,8 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     #[Api]
     public Endpoints $endpoints;
 
-    #[Api('portalId')]
-    public int $portalID;
+    #[Api]
+    public int $portalId;
 
     #[Api]
     public int $updatedAt;
@@ -52,11 +52,11 @@ final class IntegratorOEmbedDomainModel implements BaseModel
      * ```
      * IntegratorOEmbedDomainModel::with(
      *   id: ...,
-     *   appID: ...,
+     *   appId: ...,
      *   createdAt: ...,
      *   deletedAt: ...,
      *   endpoints: ...,
-     *   portalID: ...,
+     *   portalId: ...,
      *   updatedAt: ...,
      * )
      * ```
@@ -86,21 +86,21 @@ final class IntegratorOEmbedDomainModel implements BaseModel
      */
     public static function with(
         int $id,
-        int $appID,
+        int $appId,
         int $createdAt,
         int $deletedAt,
         Endpoints $endpoints,
-        int $portalID,
+        int $portalId,
         int $updatedAt,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj->createdAt = $createdAt;
         $obj->deletedAt = $deletedAt;
         $obj->endpoints = $endpoints;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalId;
         $obj->updatedAt = $updatedAt;
 
         return $obj;
@@ -117,7 +117,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }

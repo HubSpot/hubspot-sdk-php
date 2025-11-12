@@ -12,12 +12,12 @@ use HubspotSDK\Services\Cms\Pages\SitePagesService;
 final class PagesService implements PagesContract
 {
     /**
-     * @@api
+     * @api
      */
     public LandingPagesService $landingPages;
 
     /**
-     * @@api
+     * @api
      */
     public SitePagesService $sitePages;
 

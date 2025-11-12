@@ -14,10 +14,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  * @phpstan-type ExternalUnifiedEventShape = array{
  *   id: string,
  *   eventType: string,
- *   objectID: string,
+ *   objectId: string,
  *   objectType: string,
  *   occurredAt: \DateTimeInterface,
- *   properties?: array<string, string>,
+ *   properties?: array<string,string>|null,
  * }
  */
 final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
@@ -42,8 +42,8 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     /**
      * The objectId of the object which did the event.
      */
-    #[Api('objectId')]
-    public string $objectID;
+    #[Api]
+    public string $objectId;
 
     /**
      * The objectType for the object which did the event.
@@ -60,7 +60,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     /**
      * A key-value map of event-specific properties. The available properties depend on the event type definition.
      *
-     * @var array<string, string>|null $properties
+     * @var array<string,string>|null $properties
      */
     #[Api(map: 'string', optional: true)]
     public ?array $properties;
@@ -71,7 +71,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
      * To enforce required parameters use
      * ```
      * ExternalUnifiedEvent::with(
-     *   id: ..., eventType: ..., objectID: ..., objectType: ..., occurredAt: ...
+     *   id: ..., eventType: ..., objectId: ..., objectType: ..., occurredAt: ...
      * )
      * ```
      *
@@ -96,12 +96,12 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(
         string $id,
         string $eventType,
-        string $objectID,
+        string $objectId,
         string $objectType,
         \DateTimeInterface $occurredAt,
         ?array $properties = null,
@@ -110,7 +110,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
 
         $obj->id = $id;
         $obj->eventType = $eventType;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
         $obj->objectType = $objectType;
         $obj->occurredAt = $occurredAt;
 
@@ -147,7 +147,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }
@@ -177,7 +177,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     /**
      * A key-value map of event-specific properties. The available properties depend on the event type definition.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

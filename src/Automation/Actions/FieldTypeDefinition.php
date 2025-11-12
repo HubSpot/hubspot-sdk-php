@@ -18,13 +18,13 @@ use HubspotSDK\Option;
  *   name: string,
  *   options: list<Option>,
  *   type: value-of<Type>,
- *   description?: string,
- *   externalOptionsReferenceType?: string,
- *   fieldType?: value-of<FieldType>,
- *   helpText?: string,
- *   label?: string,
- *   optionsURL?: string,
- *   referencedObjectType?: value-of<ReferencedObjectType>,
+ *   description?: string|null,
+ *   externalOptionsReferenceType?: string|null,
+ *   fieldType?: value-of<FieldType>|null,
+ *   helpText?: string|null,
+ *   label?: string|null,
+ *   optionsUrl?: string|null,
+ *   referencedObjectType?: value-of<ReferencedObjectType>|null,
  * }
  */
 final class FieldTypeDefinition implements BaseModel
@@ -62,8 +62,8 @@ final class FieldTypeDefinition implements BaseModel
     #[Api(optional: true)]
     public ?string $label;
 
-    #[Api('optionsUrl', optional: true)]
-    public ?string $optionsURL;
+    #[Api(optional: true)]
+    public ?string $optionsUrl;
 
     /** @var value-of<ReferencedObjectType>|null $referencedObjectType */
     #[Api(enum: ReferencedObjectType::class, optional: true)]
@@ -114,7 +114,7 @@ final class FieldTypeDefinition implements BaseModel
         FieldType|string|null $fieldType = null,
         ?string $helpText = null,
         ?string $label = null,
-        ?string $optionsURL = null,
+        ?string $optionsUrl = null,
         ReferencedObjectType|string|null $referencedObjectType = null,
     ): self {
         $obj = new self;
@@ -129,7 +129,7 @@ final class FieldTypeDefinition implements BaseModel
         null !== $fieldType && $obj['fieldType'] = $fieldType;
         null !== $helpText && $obj->helpText = $helpText;
         null !== $label && $obj->label = $label;
-        null !== $optionsURL && $obj->optionsURL = $optionsURL;
+        null !== $optionsUrl && $obj->optionsUrl = $optionsUrl;
         null !== $referencedObjectType && $obj['referencedObjectType'] = $referencedObjectType;
 
         return $obj;
@@ -220,7 +220,7 @@ final class FieldTypeDefinition implements BaseModel
     public function withOptionsURL(string $optionsURL): self
     {
         $obj = clone $this;
-        $obj->optionsURL = $optionsURL;
+        $obj->optionsUrl = $optionsURL;
 
         return $obj;
     }

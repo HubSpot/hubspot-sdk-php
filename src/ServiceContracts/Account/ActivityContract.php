@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Account;
 
+use HubspotSDK\Account\Activity\ActivityListAuditLogsParams;
+use HubspotSDK\Account\Activity\ActivityListLoginActivitiesParams;
+use HubspotSDK\Account\Activity\ActivityListSecurityActivitiesParams;
 use HubspotSDK\Account\Activity\HydratedCriticalAction;
 use HubspotSDK\Account\Activity\PublicAPIUserActionEvent;
 use HubspotSDK\Account\Activity\PublicLoginAudit;
@@ -11,113 +14,47 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 interface ActivityContract
 {
     /**
      * @api
      *
-     * @param list<int> $actingUserID the ID of a user, for retrieving user-specific logs
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit the maximum number of results to display per page
-     * @param \DateTimeInterface $occurredAfter a timestamp, as a starting point for retrieving activity logs
-     * @param \DateTimeInterface $occurredBefore a timestamp, as an end point for retrieving activity logs
-     * @param list<string> $sort Set to `occurredAt` to order results by the time of the event. By default, events are ordered from oldest to newest.
+     * @param array<mixed>|ActivityListAuditLogsParams $params
      *
      * @return Page<PublicAPIUserActionEvent>
      *
      * @throws APIException
      */
     public function listAuditLogs(
-        $actingUserID = omit,
-        $after = omit,
-        $limit = omit,
-        $occurredAfter = omit,
-        $occurredBefore = omit,
-        $sort = omit,
+        array|ActivityListAuditLogsParams $params,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicAPIUserActionEvent>
-     *
-     * @throws APIException
-     */
-    public function listAuditLogsRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
-     * @param int $userID the ID of a user, for retrieving user-specific logs
+     * @param array<mixed>|ActivityListLoginActivitiesParams $params
      *
      * @return Page<PublicLoginAudit>
      *
      * @throws APIException
      */
     public function listLoginActivities(
-        $after = omit,
-        $limit = omit,
-        $userID = omit,
+        array|ActivityListLoginActivitiesParams $params,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicLoginAudit>
-     *
-     * @throws APIException
-     */
-    public function listLoginActivitiesRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $fromTimestamp the start time, for retrieving logs within a specific timeframe
-     * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
-     * @param int $toTimestamp the end time, for retrieving logs within a specific timeframe
-     * @param int $userID the ID of a user, for retrieving user-specific logs
+     * @param array<mixed>|ActivityListSecurityActivitiesParams $params
      *
      * @return Page<HydratedCriticalAction>
      *
      * @throws APIException
      */
     public function listSecurityActivities(
-        $after = omit,
-        $fromTimestamp = omit,
-        $limit = omit,
-        $toTimestamp = omit,
-        $userID = omit,
+        array|ActivityListSecurityActivitiesParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<HydratedCriticalAction>
-     *
-     * @throws APIException
-     */
-    public function listSecurityActivitiesRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page;
 }

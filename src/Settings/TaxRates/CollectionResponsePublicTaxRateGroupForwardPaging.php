@@ -13,7 +13,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponsePublicTaxRateGroupForwardPagingShape = array{
- *   results: list<PublicTaxRateGroup>, paging?: ForwardPaging
+ *   results: list<PublicTaxRateGroup>, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseModel, ResponseConverter

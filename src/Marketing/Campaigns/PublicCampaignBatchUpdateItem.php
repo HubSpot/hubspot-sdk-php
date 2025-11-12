@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicCampaignBatchUpdateItemShape = array{
- *   id: string, properties: array<string, string>
+ *   id: string, properties: array<string,string>
  * }
  */
 final class PublicCampaignBatchUpdateItem implements BaseModel
@@ -21,7 +21,7 @@ final class PublicCampaignBatchUpdateItem implements BaseModel
     #[Api]
     public string $id;
 
-    /** @var array<string, string> $properties */
+    /** @var array<string,string> $properties */
     #[Api(map: 'string')]
     public array $properties;
 
@@ -49,7 +49,7 @@ final class PublicCampaignBatchUpdateItem implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(string $id, array $properties): self
     {
@@ -70,7 +70,7 @@ final class PublicCampaignBatchUpdateItem implements BaseModel
     }
 
     /**
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

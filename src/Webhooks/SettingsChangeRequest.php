@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * New or updated webhook settings for an app.
  *
  * @phpstan-type SettingsChangeRequestShape = array{
- *   targetURL: string, throttling: ThrottlingSettings
+ *   targetUrl: string, throttling: ThrottlingSettings
  * }
  */
 final class SettingsChangeRequest implements BaseModel
@@ -23,8 +23,8 @@ final class SettingsChangeRequest implements BaseModel
     /**
      * A publicly available URL for HubSpot to call where event payloads will be delivered.
      */
-    #[Api('targetUrl')]
-    public string $targetURL;
+    #[Api]
+    public string $targetUrl;
 
     /**
      * Configuration details for webhook throttling.
@@ -37,7 +37,7 @@ final class SettingsChangeRequest implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SettingsChangeRequest::with(targetURL: ..., throttling: ...)
+     * SettingsChangeRequest::with(targetUrl: ..., throttling: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -57,12 +57,12 @@ final class SettingsChangeRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $targetURL,
+        string $targetUrl,
         ThrottlingSettings $throttling
     ): self {
         $obj = new self;
 
-        $obj->targetURL = $targetURL;
+        $obj->targetUrl = $targetUrl;
         $obj->throttling = $throttling;
 
         return $obj;
@@ -74,7 +74,7 @@ final class SettingsChangeRequest implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj->targetURL = $targetURL;
+        $obj->targetUrl = $targetURL;
 
         return $obj;
     }

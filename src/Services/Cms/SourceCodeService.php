@@ -19,8 +19,6 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\SourceCodeContract;
 use HubspotSDK\TaskLocator;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class SourceCodeService implements SourceCodeContract
 {
     /**
@@ -35,39 +33,18 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Creates a file at the specified path in the specified environment. Accepts multipart/form-data content type. Throws an error if a file already exists at the specified path.
      *
-     * @param string $environment
-     * @param string $file
+     * @param array{environment: string, file?: string}|SourceCodeCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $path,
-        $environment,
-        $file = omit,
+        array|SourceCodeCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): AssetFileMetadata {
-        $params = ['environment' => $environment, 'file' => $file];
-
-        return $this->createRaw($path, $params, $requestOptions);
-    }
-
-    /**
-     * @deprecated
-     *
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): AssetFileMetadata {
         [$parsed, $options] = SourceCodeCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $environment = $parsed['environment'];
         unset($parsed['environment']);
@@ -88,35 +65,18 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Deletes the file at the specified path in the specified environment.
      *
-     * @param string $environment
+     * @param array{environment: string}|SourceCodeDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $path,
-        $environment,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['environment' => $environment];
-
-        return $this->deleteRaw($path, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SourceCodeDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = SourceCodeDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $environment = $parsed['environment'];
         unset($parsed['environment']);
@@ -135,33 +95,17 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Extract a zip file in the developer file system. Extraction status can be checked with the `/extract/async/tasks/taskId/status` endpoint below.
      *
-     * @param string $path
+     * @param array{path: string}|SourceCodeExtractAsyncParams $params
      *
      * @throws APIException
      */
     public function extractAsync(
-        $path,
-        ?RequestOptions $requestOptions = null
-    ): TaskLocator {
-        $params = ['path' => $path];
-
-        return $this->extractAsyncRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function extractAsyncRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SourceCodeExtractAsyncParams $params,
+        ?RequestOptions $requestOptions = null,
     ): TaskLocator {
         [$parsed, $options] = SourceCodeExtractAsyncParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -179,35 +123,18 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Downloads the byte contents of the file at the specified path in the specified environment.
      *
-     * @param string $environment
+     * @param array{environment: string}|SourceCodeGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $path,
-        $environment,
-        ?RequestOptions $requestOptions = null
-    ): string {
-        $params = ['environment' => $environment];
-
-        return $this->getRaw($path, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SourceCodeGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): string {
         [$parsed, $options] = SourceCodeGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $environment = $parsed['environment'];
         unset($parsed['environment']);
@@ -247,37 +174,20 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Gets the metadata object for the file at the specified path in the specified environment.
      *
-     * @param string $environment
-     * @param string $properties
+     * @param array{
+     *   environment: string, properties?: string
+     * }|SourceCodeGetMetadataParams $params
      *
      * @throws APIException
      */
     public function getMetadata(
         string $path,
-        $environment,
-        $properties = omit,
+        array|SourceCodeGetMetadataParams $params,
         ?RequestOptions $requestOptions = null,
-    ): AssetFileMetadata {
-        $params = ['environment' => $environment, 'properties' => $properties];
-
-        return $this->getMetadataRaw($path, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getMetadataRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): AssetFileMetadata {
         [$parsed, $options] = SourceCodeGetMetadataParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $environment = $parsed['environment'];
         unset($parsed['environment']);
@@ -297,37 +207,18 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Upserts a file at the specified path in the specified environment. Accepts multipart/form-data content type.
      *
-     * @param string $environment
-     * @param string $file
+     * @param array{environment: string, file?: string}|SourceCodeUpsertParams $params
      *
      * @throws APIException
      */
     public function upsert(
         string $path,
-        $environment,
-        $file = omit,
+        array|SourceCodeUpsertParams $params,
         ?RequestOptions $requestOptions = null,
-    ): AssetFileMetadata {
-        $params = ['environment' => $environment, 'file' => $file];
-
-        return $this->upsertRaw($path, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): AssetFileMetadata {
         [$parsed, $options] = SourceCodeUpsertParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $environment = $parsed['environment'];
         unset($parsed['environment']);
@@ -348,37 +239,20 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Validates the file contents passed to the endpoint given a specified path and environment. Accepts multipart/form-data content type.
      *
-     * @param string $environment
-     * @param string $file
+     * @param array{
+     *   environment: string, file?: string
+     * }|SourceCodeValidateParams $params
      *
      * @throws APIException
      */
     public function validate(
         string $path,
-        $environment,
-        $file = omit,
+        array|SourceCodeValidateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): string {
-        $params = ['environment' => $environment, 'file' => $file];
-
-        return $this->validateRaw($path, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function validateRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): string {
         [$parsed, $options] = SourceCodeValidateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $environment = $parsed['environment'];
         unset($parsed['environment']);

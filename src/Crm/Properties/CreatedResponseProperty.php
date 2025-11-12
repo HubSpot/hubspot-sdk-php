@@ -13,7 +13,7 @@ use HubspotSDK\Property;
 
 /**
  * @phpstan-type CreatedResponsePropertyShape = array{
- *   createdResourceID: string, entity: Property, location?: string
+ *   createdResourceId: string, entity: Property, location?: string|null
  * }
  */
 final class CreatedResponseProperty implements BaseModel, ResponseConverter
@@ -23,8 +23,8 @@ final class CreatedResponseProperty implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
-    #[Api('createdResourceId')]
-    public string $createdResourceID;
+    #[Api]
+    public string $createdResourceId;
 
     /**
      * Defines a property.
@@ -40,7 +40,7 @@ final class CreatedResponseProperty implements BaseModel, ResponseConverter
      *
      * To enforce required parameters use
      * ```
-     * CreatedResponseProperty::with(createdResourceID: ..., entity: ...)
+     * CreatedResponseProperty::with(createdResourceId: ..., entity: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,13 +60,13 @@ final class CreatedResponseProperty implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $createdResourceID,
+        string $createdResourceId,
         Property $entity,
         ?string $location = null
     ): self {
         $obj = new self;
 
-        $obj->createdResourceID = $createdResourceID;
+        $obj->createdResourceId = $createdResourceId;
         $obj->entity = $entity;
 
         null !== $location && $obj->location = $location;
@@ -77,7 +77,7 @@ final class CreatedResponseProperty implements BaseModel, ResponseConverter
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
-        $obj->createdResourceID = $createdResourceID;
+        $obj->createdResourceId = $createdResourceID;
 
         return $obj;
     }

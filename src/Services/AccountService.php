@@ -13,17 +13,17 @@ use HubspotSDK\Services\Account\UsageService;
 final class AccountService implements AccountContract
 {
     /**
-     * @@api
+     * @api
      */
     public ActivityService $activity;
 
     /**
-     * @@api
+     * @api
      */
     public DetailsService $details;
 
     /**
-     * @@api
+     * @api
      */
     public UsageService $usage;
 

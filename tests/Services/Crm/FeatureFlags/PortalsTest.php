@@ -3,7 +3,6 @@
 namespace Tests\Services\Crm\FeatureFlags;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -39,9 +38,7 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->update(
             0,
-            appID: 0,
-            flagName: 'flagName',
-            flagState: 'OFF'
+            ['appId' => 0, 'flagName' => 'flagName', 'flagState' => 'OFF']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -56,9 +53,7 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->update(
             0,
-            appID: 0,
-            flagName: 'flagName',
-            flagState: 'OFF'
+            ['appId' => 0, 'flagName' => 'flagName', 'flagState' => 'OFF']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -73,8 +68,7 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->delete(
             0,
-            appID: 0,
-            flagName: 'flagName'
+            ['appId' => 0, 'flagName' => 'flagName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -89,8 +83,7 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->delete(
             0,
-            appID: 0,
-            flagName: 'flagName'
+            ['appId' => 0, 'flagName' => 'flagName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -105,8 +98,7 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->batchDelete(
             'flagName',
-            appID: 0,
-            portalIDs: [0]
+            ['appId' => 0, 'portalIds' => [0]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -121,8 +113,7 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->batchDelete(
             'flagName',
-            appID: 0,
-            portalIDs: [0]
+            ['appId' => 0, 'portalIds' => [0]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -137,8 +128,10 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->batchUpsert(
             'flagName',
-            appID: 0,
-            portalStates: [BatchPortalEntry::with(flagState: 'OFF', portalID: 0)],
+            [
+                'appId' => 0,
+                'portalStates' => [['flagState' => 'OFF', 'portalId' => 0]],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -153,8 +146,10 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->batchUpsert(
             'flagName',
-            appID: 0,
-            portalStates: [BatchPortalEntry::with(flagState: 'OFF', portalID: 0)],
+            [
+                'appId' => 0,
+                'portalStates' => [['flagState' => 'OFF', 'portalId' => 0]],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -169,8 +164,7 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->get(
             0,
-            appID: 0,
-            flagName: 'flagName'
+            ['appId' => 0, 'flagName' => 'flagName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -185,8 +179,7 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->get(
             0,
-            appID: 0,
-            flagName: 'flagName'
+            ['appId' => 0, 'flagName' => 'flagName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

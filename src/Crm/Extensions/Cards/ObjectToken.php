@@ -11,7 +11,10 @@ use HubspotSDK\Crm\Extensions\Cards\ObjectToken\DataType;
 
 /**
  * @phpstan-type ObjectTokenShape = array{
- *   value: string, dataType?: value-of<DataType>, label?: string, name?: string
+ *   value: string,
+ *   dataType?: value-of<DataType>|null,
+ *   label?: string|null,
+ *   name?: string|null,
  * }
  */
 final class ObjectToken implements BaseModel

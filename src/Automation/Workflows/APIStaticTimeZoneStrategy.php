@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIStaticTimeZoneStrategyShape = array{
- *   timeZoneID: string, type: value-of<Type>
+ *   timeZoneId: string, type: value-of<Type>
  * }
  */
 final class APIStaticTimeZoneStrategy implements BaseModel
@@ -19,8 +19,8 @@ final class APIStaticTimeZoneStrategy implements BaseModel
     /** @use SdkModel<APIStaticTimeZoneStrategyShape> */
     use SdkModel;
 
-    #[Api('timeZoneId')]
-    public string $timeZoneID;
+    #[Api]
+    public string $timeZoneId;
 
     /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
@@ -31,7 +31,7 @@ final class APIStaticTimeZoneStrategy implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * APIStaticTimeZoneStrategy::with(timeZoneID: ..., type: ...)
+     * APIStaticTimeZoneStrategy::with(timeZoneId: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -53,12 +53,12 @@ final class APIStaticTimeZoneStrategy implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $timeZoneID,
+        string $timeZoneId,
         Type|string $type = 'STATIC_TIME_ZONE'
     ): self {
         $obj = new self;
 
-        $obj->timeZoneID = $timeZoneID;
+        $obj->timeZoneId = $timeZoneId;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APIStaticTimeZoneStrategy implements BaseModel
     public function withTimeZoneID(string $timeZoneID): self
     {
         $obj = clone $this;
-        $obj->timeZoneID = $timeZoneID;
+        $obj->timeZoneId = $timeZoneID;
 
         return $obj;
     }

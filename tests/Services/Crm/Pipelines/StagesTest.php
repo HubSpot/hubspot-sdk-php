@@ -38,9 +38,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->create(
             'pipelineId',
-            objectType: 'objectType',
-            displayOrder: 1,
-            label: 'Done'
+            ['objectType' => 'objectType', 'displayOrder' => 1, 'label' => 'Done'],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -55,9 +53,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->create(
             'pipelineId',
-            objectType: 'objectType',
-            displayOrder: 1,
-            label: 'Done'
+            ['objectType' => 'objectType', 'displayOrder' => 1, 'label' => 'Done'],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -72,8 +68,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->update(
             'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -88,8 +83,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->update(
             'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -104,7 +98,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->list(
             'pipelineId',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -119,7 +113,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->list(
             'pipelineId',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -134,8 +128,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->delete(
             'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -150,8 +143,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->delete(
             'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -166,8 +158,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->get(
             'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -182,8 +173,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->get(
             'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -198,8 +188,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->getAudit(
             'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -214,8 +203,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->getAudit(
             'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -230,10 +218,12 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->replace(
             'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId',
-            displayOrder: 1,
-            label: 'Done',
+            [
+                'objectType' => 'objectType',
+                'pipelineId' => 'pipelineId',
+                'displayOrder' => 1,
+                'label' => 'Done',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -248,10 +238,12 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->replace(
             'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId',
-            displayOrder: 1,
-            label: 'Done',
+            [
+                'objectType' => 'objectType',
+                'pipelineId' => 'pipelineId',
+                'displayOrder' => 1,
+                'label' => 'Done',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -12,9 +12,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Aggregated statistics for the given interval, plus the IDs of emails that were sent during that interval.
  *
  * @phpstan-type AggregateEmailStatisticsShape = array{
- *   aggregate?: EmailStatisticsData,
- *   campaignAggregations?: array<string, EmailStatisticsData>,
- *   emails?: list<int>,
+ *   aggregate?: EmailStatisticsData|null,
+ *   campaignAggregations?: array<string,EmailStatisticsData>|null,
+ *   emails?: list<int>|null,
  * }
  */
 final class AggregateEmailStatistics implements BaseModel
@@ -28,7 +28,7 @@ final class AggregateEmailStatistics implements BaseModel
     /**
      * The aggregated statistics per campaign.
      *
-     * @var array<string, EmailStatisticsData>|null $campaignAggregations
+     * @var array<string,EmailStatisticsData>|null $campaignAggregations
      */
     #[Api(map: EmailStatisticsData::class, optional: true)]
     public ?array $campaignAggregations;
@@ -51,7 +51,7 @@ final class AggregateEmailStatistics implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, EmailStatisticsData> $campaignAggregations
+     * @param array<string,EmailStatisticsData> $campaignAggregations
      * @param list<int> $emails
      */
     public static function with(
@@ -79,7 +79,7 @@ final class AggregateEmailStatistics implements BaseModel
     /**
      * The aggregated statistics per campaign.
      *
-     * @param array<string, EmailStatisticsData> $campaignAggregations
+     * @param array<string,EmailStatisticsData> $campaignAggregations
      */
     public function withCampaignAggregations(array $campaignAggregations): self
     {

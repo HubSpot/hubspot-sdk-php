@@ -23,35 +23,18 @@ final class SettingsService implements SettingsContract
      *
      * Create or update the current settings for the application.
      *
-     * @param string $eventDetailsURL The url that will be used to fetch marketing event details by id. Must contain a `%s` character sequence that will be substituted with the event id. For example: `https://my.event.app/events/%s`
+     * @param array{eventDetailsUrl: string}|SettingCreateOrUpdateParams $params
      *
      * @throws APIException
      */
     public function createOrUpdate(
         int $appID,
-        $eventDetailsURL,
-        ?RequestOptions $requestOptions = null
-    ): EventDetailSettings {
-        $params = ['eventDetailsURL' => $eventDetailsURL];
-
-        return $this->createOrUpdateRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createOrUpdateRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SettingCreateOrUpdateParams $params,
+        ?RequestOptions $requestOptions = null,
     ): EventDetailSettings {
         [$parsed, $options] = SettingCreateOrUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Pages\SitePages->rerunAbTest
  *
  * @phpstan-type SitePageRerunAbTestParamsShape = array{
- *   abTestID: string, variationID: string
+ *   abTestId: string, variationId: string
  * }
  */
 final class SitePageRerunAbTestParams implements BaseModel
@@ -27,21 +27,21 @@ final class SitePageRerunAbTestParams implements BaseModel
     /**
      * ID of the test to rerun.
      */
-    #[Api('abTestId')]
-    public string $abTestID;
+    #[Api]
+    public string $abTestId;
 
     /**
      * ID of the object to reactivate as a test variation.
      */
-    #[Api('variationId')]
-    public string $variationID;
+    #[Api]
+    public string $variationId;
 
     /**
      * `new SitePageRerunAbTestParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SitePageRerunAbTestParams::with(abTestID: ..., variationID: ...)
+     * SitePageRerunAbTestParams::with(abTestId: ..., variationId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,12 +60,12 @@ final class SitePageRerunAbTestParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $abTestID, string $variationID): self
+    public static function with(string $abTestId, string $variationId): self
     {
         $obj = new self;
 
-        $obj->abTestID = $abTestID;
-        $obj->variationID = $variationID;
+        $obj->abTestId = $abTestId;
+        $obj->variationId = $variationId;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class SitePageRerunAbTestParams implements BaseModel
     public function withAbTestID(string $abTestID): self
     {
         $obj = clone $this;
-        $obj->abTestID = $abTestID;
+        $obj->abTestId = $abTestID;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class SitePageRerunAbTestParams implements BaseModel
     public function withVariationID(string $variationID): self
     {
         $obj = clone $this;
-        $obj->variationID = $variationID;
+        $obj->variationId = $variationID;
 
         return $obj;
     }

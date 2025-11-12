@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExternalMeetingsLinkSettingsShape = array{
- *   availability: array<string, ExternalClosedRange>,
+ *   availability: array<string,ExternalClosedRange>,
  *   durations: list<int>,
  *   formFields: list<ExternalLinkFormField>,
  *   legalConsentEnabled: bool,
@@ -18,16 +18,16 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   ownerPrioritized: bool,
  *   startTimeIncrementMinutes: string,
  *   weeksToAdvertise: int,
- *   customAvailabilityEndDate?: int,
- *   customAvailabilityStartDate?: int,
- *   displayInfo?: ExternalLinkDisplayInfo,
- *   guestSettings?: ExternalGuestSettings,
- *   language?: string,
- *   legalConsentOptions?: ExternalLegalConsentOptions,
- *   locale?: string,
- *   location?: string,
- *   redirectURL?: string,
- *   welcomeScreenInfo?: ExternalMeetingsWelcomeScreenInfo,
+ *   customAvailabilityEndDate?: int|null,
+ *   customAvailabilityStartDate?: int|null,
+ *   displayInfo?: ExternalLinkDisplayInfo|null,
+ *   guestSettings?: ExternalGuestSettings|null,
+ *   language?: string|null,
+ *   legalConsentOptions?: ExternalLegalConsentOptions|null,
+ *   locale?: string|null,
+ *   location?: string|null,
+ *   redirectUrl?: string|null,
+ *   welcomeScreenInfo?: ExternalMeetingsWelcomeScreenInfo|null,
  * }
  */
 final class ExternalMeetingsLinkSettings implements BaseModel
@@ -35,7 +35,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     /** @use SdkModel<ExternalMeetingsLinkSettingsShape> */
     use SdkModel;
 
-    /** @var array<string, ExternalClosedRange> $availability */
+    /** @var array<string,ExternalClosedRange> $availability */
     #[Api(map: ExternalClosedRange::class)]
     public array $availability;
 
@@ -86,8 +86,8 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     #[Api(optional: true)]
     public ?string $location;
 
-    #[Api('redirectUrl', optional: true)]
-    public ?string $redirectURL;
+    #[Api(optional: true)]
+    public ?string $redirectUrl;
 
     #[Api(optional: true)]
     public ?ExternalMeetingsWelcomeScreenInfo $welcomeScreenInfo;
@@ -133,7 +133,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, ExternalClosedRange> $availability
+     * @param array<string,ExternalClosedRange> $availability
      * @param list<int> $durations
      * @param list<ExternalLinkFormField> $formFields
      */
@@ -154,7 +154,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
         ?ExternalLegalConsentOptions $legalConsentOptions = null,
         ?string $locale = null,
         ?string $location = null,
-        ?string $redirectURL = null,
+        ?string $redirectUrl = null,
         ?ExternalMeetingsWelcomeScreenInfo $welcomeScreenInfo = null,
     ): self {
         $obj = new self;
@@ -176,14 +176,14 @@ final class ExternalMeetingsLinkSettings implements BaseModel
         null !== $legalConsentOptions && $obj->legalConsentOptions = $legalConsentOptions;
         null !== $locale && $obj->locale = $locale;
         null !== $location && $obj->location = $location;
-        null !== $redirectURL && $obj->redirectURL = $redirectURL;
+        null !== $redirectUrl && $obj->redirectUrl = $redirectUrl;
         null !== $welcomeScreenInfo && $obj->welcomeScreenInfo = $welcomeScreenInfo;
 
         return $obj;
     }
 
     /**
-     * @param array<string, ExternalClosedRange> $availability
+     * @param array<string,ExternalClosedRange> $availability
      */
     public function withAvailability(array $availability): self
     {
@@ -327,7 +327,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withRedirectURL(string $redirectURL): self
     {
         $obj = clone $this;
-        $obj->redirectURL = $redirectURL;
+        $obj->redirectUrl = $redirectURL;
 
         return $obj;
     }

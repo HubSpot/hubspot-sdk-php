@@ -10,7 +10,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicButtonStyleSettingsShape = array{
- *   backgroundColor?: mixed, cornerRadius?: int, fontStyle?: PublicFontStyle
+ *   backgroundColor?: mixed,
+ *   cornerRadius?: int|null,
+ *   fontStyle?: PublicFontStyle|null,
  * }
  */
 final class PublicButtonStyleSettings implements BaseModel

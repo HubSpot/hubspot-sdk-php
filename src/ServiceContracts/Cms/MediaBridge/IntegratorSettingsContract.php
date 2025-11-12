@@ -5,74 +5,49 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
-use HubspotSDK\Cms\MediaBridge\Endpoints;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
 use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateObjectDefinitionParams\MediaType;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams\EventType;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateObjectDefinitionParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateOembedDomainParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetObjectDefinitionsByMediaTypeParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetOembedDomainParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingRegisterAppNameParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateAppNameParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateOembedDomainParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
 use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 interface IntegratorSettingsContract
 {
     /**
      * @api
      *
-     * @param list<MediaType|value-of<MediaType>> $mediaTypes
+     * @param array<mixed>|IntegratorSettingCreateObjectDefinitionParams $params
      *
      * @throws APIException
      */
     public function createObjectDefinition(
         string $appID,
-        $mediaTypes,
-        ?RequestOptions $requestOptions = null
+        array|IntegratorSettingCreateObjectDefinitionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BulkIntegratorObjectCreationResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createObjectDefinitionRaw(
-        string $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BulkIntegratorObjectCreationResponse;
-
-    /**
-     * @api
-     *
-     * @param Endpoints $endpoints
-     * @param int $portalID
+     * @param array<mixed>|IntegratorSettingCreateOembedDomainParams $params
      *
      * @throws APIException
      */
     public function createOembedDomain(
         string $appID,
-        $endpoints,
-        $portalID = omit,
+        array|IntegratorSettingCreateOembedDomainParams $params,
         ?RequestOptions $requestOptions = null,
-    ): IntegratorOEmbedDomainModel;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createOembedDomainRaw(
-        string $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): IntegratorOEmbedDomainModel;
 
     /**
@@ -98,52 +73,26 @@ interface IntegratorSettingsContract
     /**
      * @api
      *
-     * @param string $appID
+     * @param array<mixed>|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
      *
      * @throws APIException
      */
     public function getObjectDefinitionsByMediaType(
         string $mediaType,
-        $appID,
-        ?RequestOptions $requestOptions = null
+        array|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ObjectDefinitionResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getObjectDefinitionsByMediaTypeRaw(
-        string $mediaType,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): ObjectDefinitionResponse;
-
-    /**
-     * @api
-     *
-     * @param string $appID
+     * @param array<mixed>|IntegratorSettingGetOembedDomainParams $params
      *
      * @throws APIException
      */
     public function getOembedDomain(
         string $oEmbedDomainID,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): IntegratorOEmbedDomainModel;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getOembedDomainRaw(
-        string $oEmbedDomainID,
-        array $params,
+        array|IntegratorSettingGetOembedDomainParams $params,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel;
 
@@ -162,122 +111,52 @@ interface IntegratorSettingsContract
      *
      * @api
      *
-     * @param int $updatedAt
-     * @param string $name
+     * @param array<mixed>|IntegratorSettingRegisterAppNameParams $params
      *
      * @throws APIException
      */
     public function registerAppName(
         string $appID,
-        $updatedAt,
-        $name = omit,
+        array|IntegratorSettingRegisterAppNameParams $params,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse;
 
     /**
-     * @deprecated
-     *
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function registerAppNameRaw(
-        string $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): MediaBridgeProviderRegistrationResponse;
-
-    /**
-     * @api
-     *
-     * @param int $updatedAt
-     * @param string $name
+     * @param array<mixed>|IntegratorSettingUpdateAppNameParams $params
      *
      * @throws APIException
      */
     public function updateAppName(
         string $appID,
-        $updatedAt,
-        $name = omit,
+        array|IntegratorSettingUpdateAppNameParams $params,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateAppNameRaw(
-        string $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): MediaBridgeProviderRegistrationResponse;
-
-    /**
-     * @api
-     *
-     * @param EventType|value-of<EventType> $eventType
-     * @param int $updatedAt
-     * @param bool $showInReporting
-     * @param bool $showInTimeline
-     * @param bool $showInWorkflows
+     * @param array<mixed>|IntegratorSettingUpdateEventVisibilitySettingsParams $params
      *
      * @throws APIException
      */
     public function updateEventVisibilitySettings(
         string $appID,
-        $eventType,
-        $updatedAt,
-        $showInReporting = omit,
-        $showInTimeline = omit,
-        $showInWorkflows = omit,
+        array|IntegratorSettingUpdateEventVisibilitySettingsParams $params,
         ?RequestOptions $requestOptions = null,
     ): EventVisibilityChange;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateEventVisibilitySettingsRaw(
-        string $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): EventVisibilityChange;
-
-    /**
-     * @api
-     *
-     * @param string $appID
-     * @param Endpoints $endpoints
-     * @param int $portalID
+     * @param array<mixed>|IntegratorSettingUpdateOembedDomainParams $params
      *
      * @throws APIException
      */
     public function updateOembedDomain(
         string $oEmbedDomainID,
-        $appID,
-        $endpoints,
-        $portalID = omit,
-        ?RequestOptions $requestOptions = null,
-    ): IntegratorOEmbedDomainModel;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateOembedDomainRaw(
-        string $oEmbedDomainID,
-        array $params,
+        array|IntegratorSettingUpdateOembedDomainParams $params,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel;
 }

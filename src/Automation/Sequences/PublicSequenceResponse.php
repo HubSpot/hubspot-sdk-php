@@ -18,9 +18,9 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   name: string,
  *   steps: list<PublicSequenceStepResponse>,
  *   updatedAt: \DateTimeInterface,
- *   userID: string,
- *   folderID?: string,
- *   settings?: PublicSequenceSettingsResponse,
+ *   userId: string,
+ *   folderId?: string|null,
+ *   settings?: PublicSequenceSettingsResponse|null,
  * }
  */
 final class PublicSequenceResponse implements BaseModel, ResponseConverter
@@ -50,11 +50,11 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
     #[Api]
     public \DateTimeInterface $updatedAt;
 
-    #[Api('userId')]
-    public string $userID;
+    #[Api]
+    public string $userId;
 
-    #[Api('folderId', optional: true)]
-    public ?string $folderID;
+    #[Api(optional: true)]
+    public ?string $folderId;
 
     #[Api(optional: true)]
     public ?PublicSequenceSettingsResponse $settings;
@@ -71,7 +71,7 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
      *   name: ...,
      *   steps: ...,
      *   updatedAt: ...,
-     *   userID: ...,
+     *   userId: ...,
      * )
      * ```
      *
@@ -108,8 +108,8 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
         string $name,
         array $steps,
         \DateTimeInterface $updatedAt,
-        string $userID,
-        ?string $folderID = null,
+        string $userId,
+        ?string $folderId = null,
         ?PublicSequenceSettingsResponse $settings = null,
     ): self {
         $obj = new self;
@@ -120,9 +120,9 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
         $obj->name = $name;
         $obj->steps = $steps;
         $obj->updatedAt = $updatedAt;
-        $obj->userID = $userID;
+        $obj->userId = $userId;
 
-        null !== $folderID && $obj->folderID = $folderID;
+        null !== $folderId && $obj->folderId = $folderId;
         null !== $settings && $obj->settings = $settings;
 
         return $obj;
@@ -185,7 +185,7 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }
@@ -193,7 +193,7 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderID = $folderID;
+        $obj->folderId = $folderID;
 
         return $obj;
     }

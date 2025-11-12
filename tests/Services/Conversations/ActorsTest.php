@@ -36,7 +36,9 @@ final class ActorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->actors->batchRead(['string']);
+        $result = $this->client->conversations->actors->batchRead([
+            'inputs' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +50,9 @@ final class ActorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->actors->batchRead(['string']);
+        $result = $this->client->conversations->actors->batchRead([
+            'inputs' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -11,7 +11,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponseContactReferenceForwardPagingShape = array{
- *   results: list<ContactReference>, paging?: ForwardPaging
+ *   results: list<ContactReference>, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseContactReferenceForwardPaging implements BaseModel

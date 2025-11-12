@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Hubdb\Rows->cloneDraft
  *
  * @phpstan-type RowCloneDraftParamsShape = array{
- *   tableIDOrName: string, name?: string
+ *   tableIdOrName: string, name?: string
  * }
  */
 final class RowCloneDraftParams implements BaseModel
@@ -25,7 +25,7 @@ final class RowCloneDraftParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $tableIDOrName;
+    public string $tableIdOrName;
 
     #[Api(optional: true)]
     public ?string $name;
@@ -35,7 +35,7 @@ final class RowCloneDraftParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * RowCloneDraftParams::with(tableIDOrName: ...)
+     * RowCloneDraftParams::with(tableIdOrName: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -55,12 +55,12 @@ final class RowCloneDraftParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $tableIDOrName,
+        string $tableIdOrName,
         ?string $name = null
     ): self {
         $obj = new self;
 
-        $obj->tableIDOrName = $tableIDOrName;
+        $obj->tableIdOrName = $tableIdOrName;
 
         null !== $name && $obj->name = $name;
 
@@ -70,7 +70,7 @@ final class RowCloneDraftParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj->tableIDOrName = $tableIDOrName;
+        $obj->tableIdOrName = $tableIDOrName;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Automation\Actions\Revisions->get
  *
- * @phpstan-type RevisionGetParamsShape = array{appID: int, definitionID: string}
+ * @phpstan-type RevisionGetParamsShape = array{appId: int, definitionId: string}
  */
 final class RevisionGetParams implements BaseModel
 {
@@ -23,17 +23,17 @@ final class RevisionGetParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     #[Api]
-    public string $definitionID;
+    public string $definitionId;
 
     /**
      * `new RevisionGetParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * RevisionGetParams::with(appID: ..., definitionID: ...)
+     * RevisionGetParams::with(appId: ..., definitionId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,12 +52,12 @@ final class RevisionGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID, string $definitionID): self
+    public static function with(int $appId, string $definitionId): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->definitionID = $definitionID;
+        $obj->appId = $appId;
+        $obj->definitionId = $definitionId;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class RevisionGetParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class RevisionGetParams implements BaseModel
     public function withDefinitionID(string $definitionID): self
     {
         $obj = clone $this;
-        $obj->definitionID = $definitionID;
+        $obj->definitionId = $definitionID;
 
         return $obj;
     }

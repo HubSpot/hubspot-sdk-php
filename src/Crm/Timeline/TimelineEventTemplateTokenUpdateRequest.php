@@ -13,8 +13,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type TimelineEventTemplateTokenUpdateRequestShape = array{
  *   label: string,
- *   objectPropertyName?: string,
- *   options?: list<TimelineEventTemplateTokenOption>,
+ *   objectPropertyName?: string|null,
+ *   options?: list<TimelineEventTemplateTokenOption>|null,
  * }
  */
 final class TimelineEventTemplateTokenUpdateRequest implements BaseModel

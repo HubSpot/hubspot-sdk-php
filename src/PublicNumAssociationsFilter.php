@@ -12,7 +12,7 @@ use HubspotSDK\PublicNumAssociationsFilter\FilterType;
 /**
  * @phpstan-type PublicNumAssociationsFilterShape = array{
  *   associationCategory: string,
- *   associationTypeID: int,
+ *   associationTypeId: int,
  *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  *   filterType: value-of<FilterType>,
  * }
@@ -25,8 +25,8 @@ final class PublicNumAssociationsFilter implements BaseModel
     #[Api]
     public string $associationCategory;
 
-    #[Api('associationTypeId')]
-    public int $associationTypeID;
+    #[Api]
+    public int $associationTypeId;
 
     #[Api]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy;
@@ -42,7 +42,7 @@ final class PublicNumAssociationsFilter implements BaseModel
      * ```
      * PublicNumAssociationsFilter::with(
      *   associationCategory: ...,
-     *   associationTypeID: ...,
+     *   associationTypeId: ...,
      *   coalescingRefineBy: ...,
      *   filterType: ...,
      * )
@@ -72,14 +72,14 @@ final class PublicNumAssociationsFilter implements BaseModel
      */
     public static function with(
         string $associationCategory,
-        int $associationTypeID,
+        int $associationTypeId,
         PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
         FilterType|string $filterType = 'NUM_ASSOCIATIONS',
     ): self {
         $obj = new self;
 
         $obj->associationCategory = $associationCategory;
-        $obj->associationTypeID = $associationTypeID;
+        $obj->associationTypeId = $associationTypeId;
         $obj->coalescingRefineBy = $coalescingRefineBy;
         $obj['filterType'] = $filterType;
 
@@ -97,7 +97,7 @@ final class PublicNumAssociationsFilter implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj->associationTypeID = $associationTypeID;
+        $obj->associationTypeId = $associationTypeID;
 
         return $obj;
     }

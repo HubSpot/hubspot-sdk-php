@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExternalOptionsMetaDataShape = array{
- *   filter?: FilteringMetaData, relatedObjectTypeID?: string
+ *   filter?: FilteringMetaData|null, relatedObjectTypeId?: string|null
  * }
  */
 final class ExternalOptionsMetaData implements BaseModel
@@ -21,8 +21,8 @@ final class ExternalOptionsMetaData implements BaseModel
     #[Api(optional: true)]
     public ?FilteringMetaData $filter;
 
-    #[Api('relatedObjectTypeId', optional: true)]
-    public ?string $relatedObjectTypeID;
+    #[Api(optional: true)]
+    public ?string $relatedObjectTypeId;
 
     public function __construct()
     {
@@ -36,12 +36,12 @@ final class ExternalOptionsMetaData implements BaseModel
      */
     public static function with(
         ?FilteringMetaData $filter = null,
-        ?string $relatedObjectTypeID = null
+        ?string $relatedObjectTypeId = null
     ): self {
         $obj = new self;
 
         null !== $filter && $obj->filter = $filter;
-        null !== $relatedObjectTypeID && $obj->relatedObjectTypeID = $relatedObjectTypeID;
+        null !== $relatedObjectTypeId && $obj->relatedObjectTypeId = $relatedObjectTypeId;
 
         return $obj;
     }
@@ -57,7 +57,7 @@ final class ExternalOptionsMetaData implements BaseModel
     public function withRelatedObjectTypeID(string $relatedObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->relatedObjectTypeID = $relatedObjectTypeID;
+        $obj->relatedObjectTypeId = $relatedObjectTypeID;
 
         return $obj;
     }

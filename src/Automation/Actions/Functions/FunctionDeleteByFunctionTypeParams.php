@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Automation\Actions\Functions->deleteByFunctionType
  *
  * @phpstan-type FunctionDeleteByFunctionTypeParamsShape = array{
- *   appID: int, definitionID: string
+ *   appId: int, definitionId: string
  * }
  */
 final class FunctionDeleteByFunctionTypeParams implements BaseModel
@@ -25,17 +25,17 @@ final class FunctionDeleteByFunctionTypeParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     #[Api]
-    public string $definitionID;
+    public string $definitionId;
 
     /**
      * `new FunctionDeleteByFunctionTypeParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FunctionDeleteByFunctionTypeParams::with(appID: ..., definitionID: ...)
+     * FunctionDeleteByFunctionTypeParams::with(appId: ..., definitionId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class FunctionDeleteByFunctionTypeParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID, string $definitionID): self
+    public static function with(int $appId, string $definitionId): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->definitionID = $definitionID;
+        $obj->appId = $appId;
+        $obj->definitionId = $definitionId;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class FunctionDeleteByFunctionTypeParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class FunctionDeleteByFunctionTypeParams implements BaseModel
     public function withDefinitionID(string $definitionID): self
     {
         $obj = clone $this;
-        $obj->definitionID = $definitionID;
+        $obj->definitionId = $definitionID;
 
         return $obj;
     }

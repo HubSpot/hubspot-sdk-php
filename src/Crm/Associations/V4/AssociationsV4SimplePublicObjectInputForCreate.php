@@ -14,7 +14,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
  *
  * @phpstan-type AssociationsV4SimplePublicObjectInputForCreateShape = array{
  *   associations: list<PublicAssociationsForObject>,
- *   properties: array<string, string>,
+ *   properties: array<string,string>,
  * }
  */
 final class AssociationsV4SimplePublicObjectInputForCreate implements BaseModel
@@ -29,7 +29,7 @@ final class AssociationsV4SimplePublicObjectInputForCreate implements BaseModel
     /**
      * Key-value pairs for setting properties for the new object.
      *
-     * @var array<string, string> $properties
+     * @var array<string,string> $properties
      */
     #[Api(map: 'string')]
     public array $properties;
@@ -63,7 +63,7 @@ final class AssociationsV4SimplePublicObjectInputForCreate implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicAssociationsForObject> $associations
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(array $associations, array $properties): self
     {
@@ -89,7 +89,7 @@ final class AssociationsV4SimplePublicObjectInputForCreate implements BaseModel
     /**
      * Key-value pairs for setting properties for the new object.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

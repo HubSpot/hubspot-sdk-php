@@ -12,15 +12,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * RSS related data if it is a blog or rss email.
  *
  * @phpstan-type PublicRssEmailDetailsShape = array{
- *   blogEmailType?: string,
- *   blogImageMaxWidth?: int,
- *   blogLayout?: string,
- *   hubspotBlogID?: string,
- *   maxEntries?: int,
- *   rssEntryTemplate?: string,
- *   timing?: array<string, mixed>,
- *   url?: string,
- *   useHeadlineAsSubject?: bool,
+ *   blogEmailType?: string|null,
+ *   blogImageMaxWidth?: int|null,
+ *   blogLayout?: string|null,
+ *   hubspotBlogId?: string|null,
+ *   maxEntries?: int|null,
+ *   rssEntryTemplate?: string|null,
+ *   timing?: array<string,mixed>|null,
+ *   url?: string|null,
+ *   useHeadlineAsSubject?: bool|null,
  * }
  */
 final class PublicRssEmailDetails implements BaseModel
@@ -37,8 +37,8 @@ final class PublicRssEmailDetails implements BaseModel
     #[Api(optional: true)]
     public ?string $blogLayout;
 
-    #[Api('hubspotBlogId', optional: true)]
-    public ?string $hubspotBlogID;
+    #[Api(optional: true)]
+    public ?string $hubspotBlogId;
 
     #[Api(optional: true)]
     public ?int $maxEntries;
@@ -46,7 +46,7 @@ final class PublicRssEmailDetails implements BaseModel
     #[Api(optional: true)]
     public ?string $rssEntryTemplate;
 
-    /** @var array<string, mixed>|null $timing */
+    /** @var array<string,mixed>|null $timing */
     #[Api(map: 'mixed', optional: true)]
     public ?array $timing;
 
@@ -66,13 +66,13 @@ final class PublicRssEmailDetails implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, mixed> $timing
+     * @param array<string,mixed> $timing
      */
     public static function with(
         ?string $blogEmailType = null,
         ?int $blogImageMaxWidth = null,
         ?string $blogLayout = null,
-        ?string $hubspotBlogID = null,
+        ?string $hubspotBlogId = null,
         ?int $maxEntries = null,
         ?string $rssEntryTemplate = null,
         ?array $timing = null,
@@ -84,7 +84,7 @@ final class PublicRssEmailDetails implements BaseModel
         null !== $blogEmailType && $obj->blogEmailType = $blogEmailType;
         null !== $blogImageMaxWidth && $obj->blogImageMaxWidth = $blogImageMaxWidth;
         null !== $blogLayout && $obj->blogLayout = $blogLayout;
-        null !== $hubspotBlogID && $obj->hubspotBlogID = $hubspotBlogID;
+        null !== $hubspotBlogId && $obj->hubspotBlogId = $hubspotBlogId;
         null !== $maxEntries && $obj->maxEntries = $maxEntries;
         null !== $rssEntryTemplate && $obj->rssEntryTemplate = $rssEntryTemplate;
         null !== $timing && $obj->timing = $timing;
@@ -121,7 +121,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withHubspotBlogID(string $hubspotBlogID): self
     {
         $obj = clone $this;
-        $obj->hubspotBlogID = $hubspotBlogID;
+        $obj->hubspotBlogId = $hubspotBlogID;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class PublicRssEmailDetails implements BaseModel
     }
 
     /**
-     * @param array<string, mixed> $timing
+     * @param array<string,mixed> $timing
      */
     public function withTiming(array $timing): self
     {

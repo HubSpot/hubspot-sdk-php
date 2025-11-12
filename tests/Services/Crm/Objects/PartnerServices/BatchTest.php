@@ -3,8 +3,6 @@
 namespace Tests\Services\Crm\Objects\PartnerServices;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\SimplePublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,14 +36,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerServices->batch->update(
-            [
-                SimplePublicObjectBatchInput::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                ),
-            ],
-        );
+        $result = $this->client->crm->objects->partnerServices->batch->update([
+            'inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -57,16 +50,16 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerServices->batch->update(
-            [
-                SimplePublicObjectBatchInput::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                )
-                    ->withIDProperty('my_unique_property_name')
-                    ->withObjectWriteTraceID('objectWriteTraceId'),
+        $result = $this->client->crm->objects->partnerServices->batch->update([
+            'inputs' => [
+                [
+                    'id' => 'id',
+                    'properties' => ['foo' => 'string'],
+                    'idProperty' => 'my_unique_property_name',
+                    'objectWriteTraceId' => 'objectWriteTraceId',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -78,11 +71,11 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerServices->batch->get(
-            inputs: [SimplePublicObjectID::with(id: 'id')],
-            properties: ['string'],
-            propertiesWithHistory: ['string'],
-        );
+        $result = $this->client->crm->objects->partnerServices->batch->get([
+            'inputs' => [['id' => 'id']],
+            'properties' => ['string'],
+            'propertiesWithHistory' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -94,11 +87,11 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerServices->batch->get(
-            inputs: [SimplePublicObjectID::with(id: 'id')],
-            properties: ['string'],
-            propertiesWithHistory: ['string'],
-        );
+        $result = $this->client->crm->objects->partnerServices->batch->get([
+            'inputs' => [['id' => 'id']],
+            'properties' => ['string'],
+            'propertiesWithHistory' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

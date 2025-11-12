@@ -16,10 +16,10 @@ use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation\Status;
  *   results: list<PublicDefaultAssociation>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError1>,
- *   links?: array<string, string>,
- *   numErrors?: int,
- *   requestedAt?: \DateTimeInterface,
+ *   errors?: list<StandardError1>|null,
+ *   links?: array<string,string>|null,
+ *   numErrors?: int|null,
+ *   requestedAt?: \DateTimeInterface|null,
  * }
  */
 final class BatchResponsePublicDefaultAssociation implements BaseModel
@@ -45,7 +45,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     #[Api(list: StandardError1::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /** @var array<string,string>|null $links */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
@@ -88,7 +88,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
      * @param list<PublicDefaultAssociation> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError1> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -165,7 +165,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     }
 
     /**
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

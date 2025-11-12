@@ -38,9 +38,7 @@ final class BudgetTest extends TestCase
 
         $result = $this->client->marketing->campaigns->budget->create(
             'campaignGuid',
-            amount: 0,
-            name: 'name',
-            order: 0
+            ['amount' => 0, 'name' => 'name', 'order' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -55,9 +53,7 @@ final class BudgetTest extends TestCase
 
         $result = $this->client->marketing->campaigns->budget->create(
             'campaignGuid',
-            amount: 0,
-            name: 'name',
-            order: 0
+            ['amount' => 0, 'name' => 'name', 'order' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -72,10 +68,12 @@ final class BudgetTest extends TestCase
 
         $result = $this->client->marketing->campaigns->budget->update(
             0,
-            campaignGuid: 'campaignGuid',
-            amount: 0,
-            name: 'name',
-            order: 0
+            [
+                'campaignGuid' => 'campaignGuid',
+                'amount' => 0,
+                'name' => 'name',
+                'order' => 0,
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -90,10 +88,12 @@ final class BudgetTest extends TestCase
 
         $result = $this->client->marketing->campaigns->budget->update(
             0,
-            campaignGuid: 'campaignGuid',
-            amount: 0,
-            name: 'name',
-            order: 0
+            [
+                'campaignGuid' => 'campaignGuid',
+                'amount' => 0,
+                'name' => 'name',
+                'order' => 0,
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -108,7 +108,7 @@ final class BudgetTest extends TestCase
 
         $result = $this->client->marketing->campaigns->budget->delete(
             0,
-            'campaignGuid'
+            ['campaignGuid' => 'campaignGuid']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -123,7 +123,7 @@ final class BudgetTest extends TestCase
 
         $result = $this->client->marketing->campaigns->budget->delete(
             0,
-            'campaignGuid'
+            ['campaignGuid' => 'campaignGuid']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -138,7 +138,7 @@ final class BudgetTest extends TestCase
 
         $result = $this->client->marketing->campaigns->budget->get(
             0,
-            'campaignGuid'
+            ['campaignGuid' => 'campaignGuid']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -153,7 +153,7 @@ final class BudgetTest extends TestCase
 
         $result = $this->client->marketing->campaigns->budget->get(
             0,
-            'campaignGuid'
+            ['campaignGuid' => 'campaignGuid']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

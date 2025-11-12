@@ -12,10 +12,10 @@ use HubspotSDK\Crm\FeatureFlags\FlagResponse\OverrideState;
 
 /**
  * @phpstan-type FlagResponseShape = array{
- *   appID: int,
+ *   appId: int,
  *   defaultState: value-of<DefaultState>,
  *   flagName: string,
- *   overrideState?: value-of<OverrideState>,
+ *   overrideState?: value-of<OverrideState>|null,
  * }
  */
 final class FlagResponse implements BaseModel
@@ -23,8 +23,8 @@ final class FlagResponse implements BaseModel
     /** @use SdkModel<FlagResponseShape> */
     use SdkModel;
 
-    #[Api('appId')]
-    public int $appID;
+    #[Api]
+    public int $appId;
 
     /** @var value-of<DefaultState> $defaultState */
     #[Api(enum: DefaultState::class)]
@@ -42,7 +42,7 @@ final class FlagResponse implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * FlagResponse::with(appID: ..., defaultState: ..., flagName: ...)
+     * FlagResponse::with(appId: ..., defaultState: ..., flagName: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -65,14 +65,14 @@ final class FlagResponse implements BaseModel
      * @param OverrideState|value-of<OverrideState> $overrideState
      */
     public static function with(
-        int $appID,
+        int $appId,
         DefaultState|string $defaultState,
         string $flagName,
         OverrideState|string|null $overrideState = null,
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj['defaultState'] = $defaultState;
         $obj->flagName = $flagName;
 
@@ -84,7 +84,7 @@ final class FlagResponse implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

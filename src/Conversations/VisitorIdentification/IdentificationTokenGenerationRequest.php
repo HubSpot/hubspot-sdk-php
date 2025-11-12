@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Information used to generate a token.
  *
  * @phpstan-type IdentificationTokenGenerationRequestShape = array{
- *   email: string, firstName?: string, lastName?: string
+ *   email: string, firstName?: string|null, lastName?: string|null
  * }
  */
 final class IdentificationTokenGenerationRequest implements BaseModel

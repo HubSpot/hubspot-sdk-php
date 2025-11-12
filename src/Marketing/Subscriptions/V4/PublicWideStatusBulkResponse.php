@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicWideStatusBulkResponseShape = array{
- *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
+ *   subscriberIdString: string, wideStatuses: list<PublicWideStatus>
  * }
  */
 final class PublicWideStatusBulkResponse implements BaseModel
@@ -21,8 +21,8 @@ final class PublicWideStatusBulkResponse implements BaseModel
     /**
      * The contact's email address.
      */
-    #[Api('subscriberIdString')]
-    public string $subscriberIDString;
+    #[Api]
+    public string $subscriberIdString;
 
     /**
      * An array containing the wide status results for the operation.
@@ -37,7 +37,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicWideStatusBulkResponse::with(subscriberIDString: ..., wideStatuses: ...)
+     * PublicWideStatusBulkResponse::with(subscriberIdString: ..., wideStatuses: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -61,12 +61,12 @@ final class PublicWideStatusBulkResponse implements BaseModel
      * @param list<PublicWideStatus> $wideStatuses
      */
     public static function with(
-        string $subscriberIDString,
+        string $subscriberIdString,
         array $wideStatuses
     ): self {
         $obj = new self;
 
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIdString;
         $obj->wideStatuses = $wideStatuses;
 
         return $obj;
@@ -78,7 +78,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIDString;
 
         return $obj;
     }

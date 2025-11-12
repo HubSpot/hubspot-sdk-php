@@ -20,26 +20,26 @@ use HubspotSDK\PropertyModificationMetadata;
  *   name: string,
  *   options: list<Option1>,
  *   type: string,
- *   archived?: bool,
- *   archivedAt?: \DateTimeInterface,
- *   calculated?: bool,
- *   calculationFormula?: string,
- *   createdAt?: \DateTimeInterface,
- *   createdUserID?: string,
- *   dataSensitivity?: value-of<DataSensitivity>,
- *   dateDisplayHint?: value-of<DateDisplayHint>,
- *   displayOrder?: int,
- *   externalOptions?: bool,
- *   formField?: bool,
- *   hasUniqueValue?: bool,
- *   hidden?: bool,
- *   hubspotDefined?: bool,
- *   modificationMetadata?: PropertyModificationMetadata,
- *   referencedObjectType?: string,
- *   sensitiveDataCategories?: list<string>,
- *   showCurrencySymbol?: bool,
- *   updatedAt?: \DateTimeInterface,
- *   updatedUserID?: string,
+ *   archived?: bool|null,
+ *   archivedAt?: \DateTimeInterface|null,
+ *   calculated?: bool|null,
+ *   calculationFormula?: string|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdUserId?: string|null,
+ *   dataSensitivity?: value-of<DataSensitivity>|null,
+ *   dateDisplayHint?: value-of<DateDisplayHint>|null,
+ *   displayOrder?: int|null,
+ *   externalOptions?: bool|null,
+ *   formField?: bool|null,
+ *   hasUniqueValue?: bool|null,
+ *   hidden?: bool|null,
+ *   hubspotDefined?: bool|null,
+ *   modificationMetadata?: PropertyModificationMetadata|null,
+ *   referencedObjectType?: string|null,
+ *   sensitiveDataCategories?: list<string>|null,
+ *   showCurrencySymbol?: bool|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedUserId?: string|null,
  * }
  */
 final class Property1 implements BaseModel
@@ -84,8 +84,8 @@ final class Property1 implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api('createdUserId', optional: true)]
-    public ?string $createdUserID;
+    #[Api(optional: true)]
+    public ?string $createdUserId;
 
     /** @var value-of<DataSensitivity>|null $dataSensitivity */
     #[Api(enum: DataSensitivity::class, optional: true)]
@@ -129,8 +129,8 @@ final class Property1 implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Api('updatedUserId', optional: true)]
-    public ?string $updatedUserID;
+    #[Api(optional: true)]
+    public ?string $updatedUserId;
 
     /**
      * `new Property1()` is missing required properties by the API.
@@ -189,7 +189,7 @@ final class Property1 implements BaseModel
         ?bool $calculated = null,
         ?string $calculationFormula = null,
         ?\DateTimeInterface $createdAt = null,
-        ?string $createdUserID = null,
+        ?string $createdUserId = null,
         DataSensitivity|string|null $dataSensitivity = null,
         DateDisplayHint|string|null $dateDisplayHint = null,
         ?int $displayOrder = null,
@@ -203,7 +203,7 @@ final class Property1 implements BaseModel
         ?array $sensitiveDataCategories = null,
         ?bool $showCurrencySymbol = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?string $updatedUserID = null,
+        ?string $updatedUserId = null,
     ): self {
         $obj = new self;
 
@@ -220,7 +220,7 @@ final class Property1 implements BaseModel
         null !== $calculated && $obj->calculated = $calculated;
         null !== $calculationFormula && $obj->calculationFormula = $calculationFormula;
         null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdUserID && $obj->createdUserID = $createdUserID;
+        null !== $createdUserId && $obj->createdUserId = $createdUserId;
         null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
         null !== $dateDisplayHint && $obj['dateDisplayHint'] = $dateDisplayHint;
         null !== $displayOrder && $obj->displayOrder = $displayOrder;
@@ -234,7 +234,7 @@ final class Property1 implements BaseModel
         null !== $sensitiveDataCategories && $obj->sensitiveDataCategories = $sensitiveDataCategories;
         null !== $showCurrencySymbol && $obj->showCurrencySymbol = $showCurrencySymbol;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedUserID && $obj->updatedUserID = $updatedUserID;
+        null !== $updatedUserId && $obj->updatedUserId = $updatedUserId;
 
         return $obj;
     }
@@ -341,7 +341,7 @@ final class Property1 implements BaseModel
     public function withCreatedUserID(string $createdUserID): self
     {
         $obj = clone $this;
-        $obj->createdUserID = $createdUserID;
+        $obj->createdUserId = $createdUserID;
 
         return $obj;
     }
@@ -466,7 +466,7 @@ final class Property1 implements BaseModel
     public function withUpdatedUserID(string $updatedUserID): self
     {
         $obj = clone $this;
-        $obj->updatedUserID = $updatedUserID;
+        $obj->updatedUserId = $updatedUserID;
 
         return $obj;
     }

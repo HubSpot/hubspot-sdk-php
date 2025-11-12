@@ -17,15 +17,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type EventUpsertByExternalEventIDParamsShape = array{
  *   eventName: string,
  *   eventOrganizer: string,
- *   externalAccountID: string,
- *   externalEventID: string,
+ *   externalAccountId: string,
+ *   externalEventId: string,
  *   customProperties?: list<PropertyValue>,
  *   endDateTime?: \DateTimeInterface,
  *   eventCancelled?: bool,
  *   eventCompleted?: bool,
  *   eventDescription?: string,
  *   eventType?: string,
- *   eventURL?: string,
+ *   eventUrl?: string,
  *   startDateTime?: \DateTimeInterface,
  * }
  */
@@ -50,14 +50,14 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     /**
      * The accountId that is associated with this marketing event in the external event application.
      */
-    #[Api('externalAccountId')]
-    public string $externalAccountID;
+    #[Api]
+    public string $externalAccountId;
 
     /**
      * The id of the marketing event in the external event application.
      */
-    #[Api('externalEventId')]
-    public string $externalEventID;
+    #[Api]
+    public string $externalEventId;
 
     /**
      * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
@@ -98,8 +98,8 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     /**
      * A URL in the external event application where the marketing event can be managed.
      */
-    #[Api('eventUrl', optional: true)]
-    public ?string $eventURL;
+    #[Api(optional: true)]
+    public ?string $eventUrl;
 
     /**
      * The start date and time of the marketing event.
@@ -115,8 +115,8 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
      * EventUpsertByExternalEventIDParams::with(
      *   eventName: ...,
      *   eventOrganizer: ...,
-     *   externalAccountID: ...,
-     *   externalEventID: ...,
+     *   externalAccountId: ...,
+     *   externalEventId: ...,
      * )
      * ```
      *
@@ -145,23 +145,23 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     public static function with(
         string $eventName,
         string $eventOrganizer,
-        string $externalAccountID,
-        string $externalEventID,
+        string $externalAccountId,
+        string $externalEventId,
         ?array $customProperties = null,
         ?\DateTimeInterface $endDateTime = null,
         ?bool $eventCancelled = null,
         ?bool $eventCompleted = null,
         ?string $eventDescription = null,
         ?string $eventType = null,
-        ?string $eventURL = null,
+        ?string $eventUrl = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
 
         $obj->eventName = $eventName;
         $obj->eventOrganizer = $eventOrganizer;
-        $obj->externalAccountID = $externalAccountID;
-        $obj->externalEventID = $externalEventID;
+        $obj->externalAccountId = $externalAccountId;
+        $obj->externalEventId = $externalEventId;
 
         null !== $customProperties && $obj->customProperties = $customProperties;
         null !== $endDateTime && $obj->endDateTime = $endDateTime;
@@ -169,7 +169,7 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
         null !== $eventCompleted && $obj->eventCompleted = $eventCompleted;
         null !== $eventDescription && $obj->eventDescription = $eventDescription;
         null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventURL && $obj->eventURL = $eventURL;
+        null !== $eventUrl && $obj->eventUrl = $eventUrl;
         null !== $startDateTime && $obj->startDateTime = $startDateTime;
 
         return $obj;
@@ -203,7 +203,7 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountID;
 
         return $obj;
     }
@@ -214,7 +214,7 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventID = $externalEventID;
+        $obj->externalEventId = $externalEventID;
 
         return $obj;
     }
@@ -291,7 +291,7 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventURL = $eventURL;
+        $obj->eventUrl = $eventURL;
 
         return $obj;
     }

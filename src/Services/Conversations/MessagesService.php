@@ -72,38 +72,21 @@ final class MessagesService implements MessagesContract
      *
      * Retrieve a single message from a thread using the message ID.
      *
-     * @param string $threadID
+     * @param array{threadId: string}|MessageGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $messageID,
-        $threadID,
-        ?RequestOptions $requestOptions = null
-    ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
-        $params = ['threadID' => $threadID];
-
-        return $this->getRaw($messageID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $messageID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|MessageGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
         [$parsed, $options] = MessageGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $threadID = $parsed['threadID'];
-        unset($parsed['threadID']);
+        $threadID = $parsed['threadId'];
+        unset($parsed['threadId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -123,38 +106,21 @@ final class MessagesService implements MessagesContract
      *
      * Returns the complete original text and rich text bodies of a message. This will be different from the text and rich text in the message itself if the message's `truncationStatus` is anything other than `NOT_TRUNCATED`.
      *
-     * @param string $threadID
+     * @param array{threadId: string}|MessageGetOriginalContentParams $params
      *
      * @throws APIException
      */
     public function getOriginalContent(
         string $messageID,
-        $threadID,
-        ?RequestOptions $requestOptions = null
-    ): PublicMessageContent {
-        $params = ['threadID' => $threadID];
-
-        return $this->getOriginalContentRaw($messageID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getOriginalContentRaw(
-        string $messageID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|MessageGetOriginalContentParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicMessageContent {
         [$parsed, $options] = MessageGetOriginalContentParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $threadID = $parsed['threadID'];
-        unset($parsed['threadID']);
+        $threadID = $parsed['threadId'];
+        unset($parsed['threadId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

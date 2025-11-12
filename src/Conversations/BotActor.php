@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type BotActorShape = array{
- *   id: string, type: value-of<Type>, avatar?: string, name?: string
+ *   id: string, type: value-of<Type>, avatar?: string|null, name?: string|null
  * }
  */
 final class BotActor implements BaseModel

@@ -16,8 +16,8 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
  *   operator: string,
  *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
  *   type: string,
- *   endpointBehavior?: string,
- *   propertyParser?: string,
+ *   endpointBehavior?: string|null,
+ *   propertyParser?: string|null,
  * }
  */
 final class PublicTimePointOperation implements BaseModel

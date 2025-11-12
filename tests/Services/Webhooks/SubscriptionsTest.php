@@ -3,7 +3,6 @@
 namespace Tests\Services\Webhooks;
 
 use HubspotSDK\Client;
-use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -39,7 +38,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->create(
             0,
-            eventType: 'contact.propertyChange'
+            ['eventType' => 'contact.propertyChange']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -54,7 +53,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->create(
             0,
-            eventType: 'contact.propertyChange'
+            ['eventType' => 'contact.propertyChange']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -67,7 +66,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->update(0, appID: 0);
+        $result = $this->client->webhooks->subscriptions->update(0, ['appId' => 0]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -79,7 +78,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->update(0, appID: 0);
+        $result = $this->client->webhooks->subscriptions->update(0, ['appId' => 0]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -103,7 +102,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->delete(0, 0);
+        $result = $this->client->webhooks->subscriptions->delete(0, ['appId' => 0]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -115,7 +114,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->delete(0, 0);
+        $result = $this->client->webhooks->subscriptions->delete(0, ['appId' => 0]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -127,7 +126,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->get(0, 0);
+        $result = $this->client->webhooks->subscriptions->get(0, ['appId' => 0]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -139,7 +138,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->get(0, 0);
+        $result = $this->client->webhooks->subscriptions->get(0, ['appId' => 0]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -153,7 +152,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->updateBatch(
             0,
-            [SubscriptionBatchUpdateRequest::with(id: 0, active: true)]
+            ['inputs' => [['id' => 0, 'active' => true]]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -168,7 +167,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->updateBatch(
             0,
-            [SubscriptionBatchUpdateRequest::with(id: 0, active: true)]
+            ['inputs' => [['id' => 0, 'active' => true]]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

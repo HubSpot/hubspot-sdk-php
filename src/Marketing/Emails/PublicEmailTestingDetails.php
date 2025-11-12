@@ -16,14 +16,14 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
  * AB testing related data. This property is only returned for AB type emails.
  *
  * @phpstan-type PublicEmailTestingDetailsShape = array{
- *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>,
- *   abSamplingDefault?: value-of<AbSamplingDefault>,
- *   abStatus?: value-of<AbStatus>,
- *   abSuccessMetric?: value-of<AbSuccessMetric>,
- *   abTestPercentage?: int,
- *   hoursToWait?: int,
- *   isAbVariation?: bool,
- *   testID?: string,
+ *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>|null,
+ *   abSamplingDefault?: value-of<AbSamplingDefault>|null,
+ *   abStatus?: value-of<AbStatus>|null,
+ *   abSuccessMetric?: value-of<AbSuccessMetric>|null,
+ *   abTestPercentage?: int|null,
+ *   hoursToWait?: int|null,
+ *   isAbVariation?: bool|null,
+ *   testId?: string|null,
  * }
  */
 final class PublicEmailTestingDetails implements BaseModel
@@ -81,8 +81,8 @@ final class PublicEmailTestingDetails implements BaseModel
     /**
      * The ID of the AB test.
      */
-    #[Api('testId', optional: true)]
-    public ?string $testID;
+    #[Api(optional: true)]
+    public ?string $testId;
 
     public function __construct()
     {
@@ -107,7 +107,7 @@ final class PublicEmailTestingDetails implements BaseModel
         ?int $abTestPercentage = null,
         ?int $hoursToWait = null,
         ?bool $isAbVariation = null,
-        ?string $testID = null,
+        ?string $testId = null,
     ): self {
         $obj = new self;
 
@@ -118,7 +118,7 @@ final class PublicEmailTestingDetails implements BaseModel
         null !== $abTestPercentage && $obj->abTestPercentage = $abTestPercentage;
         null !== $hoursToWait && $obj->hoursToWait = $hoursToWait;
         null !== $isAbVariation && $obj->isAbVariation = $isAbVariation;
-        null !== $testID && $obj->testID = $testID;
+        null !== $testId && $obj->testId = $testId;
 
         return $obj;
     }
@@ -214,7 +214,7 @@ final class PublicEmailTestingDetails implements BaseModel
     public function withTestID(string $testID): self
     {
         $obj = clone $this;
-        $obj->testID = $testID;
+        $obj->testId = $testID;
 
         return $obj;
     }

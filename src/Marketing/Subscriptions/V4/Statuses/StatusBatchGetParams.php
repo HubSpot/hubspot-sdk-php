@@ -16,7 +16,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetParams\Channel;
  * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->batchGet
  *
  * @phpstan-type StatusBatchGetParamsShape = array{
- *   channel: Channel|value-of<Channel>, inputs: list<string>, businessUnitID?: int
+ *   channel: Channel|value-of<Channel>, inputs: list<string>, businessUnitId?: int
  * }
  */
 final class StatusBatchGetParams implements BaseModel
@@ -45,7 +45,7 @@ final class StatusBatchGetParams implements BaseModel
      * If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
      */
     #[Api(optional: true)]
-    public ?int $businessUnitID;
+    public ?int $businessUnitId;
 
     /**
      * `new StatusBatchGetParams()` is missing required properties by the API.
@@ -77,14 +77,14 @@ final class StatusBatchGetParams implements BaseModel
     public static function with(
         Channel|string $channel,
         array $inputs,
-        ?int $businessUnitID = null
+        ?int $businessUnitId = null
     ): self {
         $obj = new self;
 
         $obj['channel'] = $channel;
         $obj->inputs = $inputs;
 
-        null !== $businessUnitID && $obj->businessUnitID = $businessUnitID;
+        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class StatusBatchGetParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitID = $businessUnitID;
+        $obj->businessUnitId = $businessUnitID;
 
         return $obj;
     }

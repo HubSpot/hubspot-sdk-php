@@ -36,9 +36,9 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->contacts->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -50,9 +50,9 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->contacts->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -66,7 +66,7 @@ final class ContactsTest extends TestCase
 
         $result = $this->client->crm->objects->contacts->update(
             'contactId',
-            ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -81,7 +81,7 @@ final class ContactsTest extends TestCase
 
         $result = $this->client->crm->objects->contacts->update(
             'contactId',
-            ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -94,7 +94,7 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->list();
+        $result = $this->client->crm->objects->contacts->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -118,9 +118,9 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->gdprDelete(
-            objectID: 'objectId'
-        );
+        $result = $this->client->crm->objects->contacts->gdprDelete([
+            'objectId' => 'objectId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -132,9 +132,9 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->gdprDelete(
-            objectID: 'objectId'
-        );
+        $result = $this->client->crm->objects->contacts->gdprDelete([
+            'objectId' => 'objectId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -146,7 +146,7 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->get('contactId');
+        $result = $this->client->crm->objects->contacts->get('contactId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -158,10 +158,10 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->merge(
-            objectIDToMerge: 'objectIdToMerge',
-            primaryObjectID: 'primaryObjectId'
-        );
+        $result = $this->client->crm->objects->contacts->merge([
+            'objectIdToMerge' => 'objectIdToMerge',
+            'primaryObjectId' => 'primaryObjectId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -173,10 +173,10 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->merge(
-            objectIDToMerge: 'objectIdToMerge',
-            primaryObjectID: 'primaryObjectId'
-        );
+        $result = $this->client->crm->objects->contacts->merge([
+            'objectIdToMerge' => 'objectIdToMerge',
+            'primaryObjectId' => 'primaryObjectId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -188,7 +188,7 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->search();
+        $result = $this->client->crm->objects->contacts->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

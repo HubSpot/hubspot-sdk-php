@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Objects\PartnerServices\Associations->list
  *
  * @phpstan-type AssociationListParamsShape = array{
- *   partnerServiceID: string, after?: string, includeFa?: bool, limit?: int
+ *   partnerServiceId: string, after?: string, includeFA?: bool, limit?: int
  * }
  */
 final class AssociationListParams implements BaseModel
@@ -25,7 +25,7 @@ final class AssociationListParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $partnerServiceID;
+    public string $partnerServiceId;
 
     /**
      * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
@@ -34,7 +34,7 @@ final class AssociationListParams implements BaseModel
     public ?string $after;
 
     #[Api(optional: true)]
-    public ?bool $includeFa;
+    public ?bool $includeFA;
 
     /**
      * The maximum number of results to display per page.
@@ -47,7 +47,7 @@ final class AssociationListParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * AssociationListParams::with(partnerServiceID: ...)
+     * AssociationListParams::with(partnerServiceId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -67,17 +67,17 @@ final class AssociationListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $partnerServiceID,
+        string $partnerServiceId,
         ?string $after = null,
-        ?bool $includeFa = null,
+        ?bool $includeFA = null,
         ?int $limit = null,
     ): self {
         $obj = new self;
 
-        $obj->partnerServiceID = $partnerServiceID;
+        $obj->partnerServiceId = $partnerServiceId;
 
         null !== $after && $obj->after = $after;
-        null !== $includeFa && $obj->includeFa = $includeFa;
+        null !== $includeFA && $obj->includeFA = $includeFA;
         null !== $limit && $obj->limit = $limit;
 
         return $obj;
@@ -86,7 +86,7 @@ final class AssociationListParams implements BaseModel
     public function withPartnerServiceID(string $partnerServiceID): self
     {
         $obj = clone $this;
-        $obj->partnerServiceID = $partnerServiceID;
+        $obj->partnerServiceId = $partnerServiceID;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class AssociationListParams implements BaseModel
     public function withIncludeFa(bool $includeFa): self
     {
         $obj = clone $this;
-        $obj->includeFa = $includeFa;
+        $obj->includeFA = $includeFa;
 
         return $obj;
     }

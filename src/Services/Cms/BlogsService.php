@@ -14,22 +14,22 @@ use HubspotSDK\Services\Cms\Blogs\TagsService;
 final class BlogsService implements BlogsContract
 {
     /**
-     * @@api
+     * @api
      */
     public AuthorsService $authors;
 
     /**
-     * @@api
+     * @api
      */
     public PostsService $posts;
 
     /**
-     * @@api
+     * @api
      */
     public SettingsService $settings;
 
     /**
-     * @@api
+     * @api
      */
     public TagsService $tags;
 

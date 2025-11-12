@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APISortShape = array{
- *   order: value-of<Order>, property: string, missing?: string
+ *   order: value-of<Order>, property: string, missing?: string|null
  * }
  */
 final class APISort implements BaseModel

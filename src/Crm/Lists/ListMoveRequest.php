@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type ListMoveRequestShape = array{listID: string, newFolderID: string}
+ * @phpstan-type ListMoveRequestShape = array{listId: string, newFolderId: string}
  */
 final class ListMoveRequest implements BaseModel
 {
@@ -19,21 +19,21 @@ final class ListMoveRequest implements BaseModel
     /**
      * The Id of the list to move.
      */
-    #[Api('listId')]
-    public string $listID;
+    #[Api]
+    public string $listId;
 
     /**
      * The Id of folder to move the list to, the root folder is Id 0.
      */
-    #[Api('newFolderId')]
-    public string $newFolderID;
+    #[Api]
+    public string $newFolderId;
 
     /**
      * `new ListMoveRequest()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ListMoveRequest::with(listID: ..., newFolderID: ...)
+     * ListMoveRequest::with(listId: ..., newFolderId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,12 +52,12 @@ final class ListMoveRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $listID, string $newFolderID): self
+    public static function with(string $listId, string $newFolderId): self
     {
         $obj = new self;
 
-        $obj->listID = $listID;
-        $obj->newFolderID = $newFolderID;
+        $obj->listId = $listId;
+        $obj->newFolderId = $newFolderId;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class ListMoveRequest implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listID = $listID;
+        $obj->listId = $listID;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class ListMoveRequest implements BaseModel
     public function withNewFolderID(string $newFolderID): self
     {
         $obj = clone $this;
-        $obj->newFolderID = $newFolderID;
+        $obj->newFolderId = $newFolderID;
 
         return $obj;
     }

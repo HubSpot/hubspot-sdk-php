@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicMessageFailureDetailsShape = array{
- *   errorMessageTokens: array<string, string>, errorMessage?: string
+ *   errorMessageTokens: array<string,string>, errorMessage?: string|null
  * }
  */
 final class PublicMessageFailureDetails implements BaseModel
@@ -18,7 +18,7 @@ final class PublicMessageFailureDetails implements BaseModel
     /** @use SdkModel<PublicMessageFailureDetailsShape> */
     use SdkModel;
 
-    /** @var array<string, string> $errorMessageTokens */
+    /** @var array<string,string> $errorMessageTokens */
     #[Api(map: 'string')]
     public array $errorMessageTokens;
 
@@ -49,7 +49,7 @@ final class PublicMessageFailureDetails implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $errorMessageTokens
+     * @param array<string,string> $errorMessageTokens
      */
     public static function with(
         array $errorMessageTokens,
@@ -65,7 +65,7 @@ final class PublicMessageFailureDetails implements BaseModel
     }
 
     /**
-     * @param array<string, string> $errorMessageTokens
+     * @param array<string,string> $errorMessageTokens
      */
     public function withErrorMessageTokens(array $errorMessageTokens): self
     {

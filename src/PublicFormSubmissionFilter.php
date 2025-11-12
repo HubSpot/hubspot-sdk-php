@@ -14,9 +14,9 @@ use HubspotSDK\PublicFormSubmissionFilter\Operator;
  * @phpstan-type PublicFormSubmissionFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operator: value-of<Operator>,
- *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
- *   formID?: string,
- *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   formId?: string|null,
+ *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
 final class PublicFormSubmissionFilter implements BaseModel
@@ -35,8 +35,8 @@ final class PublicFormSubmissionFilter implements BaseModel
     #[Api(optional: true)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
-    #[Api('formId', optional: true)]
-    public ?string $formID;
+    #[Api(optional: true)]
+    public ?string $formId;
 
     #[Api(optional: true)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
@@ -72,7 +72,7 @@ final class PublicFormSubmissionFilter implements BaseModel
         Operator|string $operator,
         FilterType|string $filterType = 'FORM_SUBMISSION',
         PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
-        ?string $formID = null,
+        ?string $formId = null,
         PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
         $obj = new self;
@@ -81,7 +81,7 @@ final class PublicFormSubmissionFilter implements BaseModel
         $obj['operator'] = $operator;
 
         null !== $coalescingRefineBy && $obj->coalescingRefineBy = $coalescingRefineBy;
-        null !== $formID && $obj->formID = $formID;
+        null !== $formId && $obj->formId = $formId;
         null !== $pruningRefineBy && $obj->pruningRefineBy = $pruningRefineBy;
 
         return $obj;
@@ -121,7 +121,7 @@ final class PublicFormSubmissionFilter implements BaseModel
     public function withFormID(string $formID): self
     {
         $obj = clone $this;
-        $obj->formID = $formID;
+        $obj->formId = $formID;
 
         return $obj;
     }

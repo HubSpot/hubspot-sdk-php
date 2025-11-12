@@ -20,15 +20,15 @@ use HubspotSDK\Property;
  *   fullyQualifiedName: string,
  *   labels: BehavioralEventTypeDefinitionLabels,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   properties: list<Property>,
- *   comboEventRules?: ComboEventRuleBranch,
- *   createdAt?: \DateTimeInterface,
- *   createdUserID?: int,
- *   description?: string,
- *   primaryObject?: string,
- *   primaryObjectID?: string,
- *   trackingType?: value-of<TrackingType>,
+ *   comboEventRules?: ComboEventRuleBranch|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdUserId?: int|null,
+ *   description?: string|null,
+ *   primaryObject?: string|null,
+ *   primaryObjectId?: string|null,
+ *   trackingType?: value-of<TrackingType>|null,
  * }
  */
 final class ExternalBehavioralEventTypeDefinition implements BaseModel, ResponseConverter
@@ -57,8 +57,8 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     #[Api]
     public string $name;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /** @var list<Property> $properties */
     #[Api(list: Property::class)]
@@ -70,8 +70,8 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api('createdUserId', optional: true)]
-    public ?int $createdUserID;
+    #[Api(optional: true)]
+    public ?int $createdUserId;
 
     #[Api(optional: true)]
     public ?string $description;
@@ -79,8 +79,8 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     #[Api(optional: true)]
     public ?string $primaryObject;
 
-    #[Api('primaryObjectId', optional: true)]
-    public ?string $primaryObjectID;
+    #[Api(optional: true)]
+    public ?string $primaryObjectId;
 
     /** @var value-of<TrackingType>|null $trackingType */
     #[Api(enum: TrackingType::class, optional: true)]
@@ -98,7 +98,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
      *   fullyQualifiedName: ...,
      *   labels: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   properties: ...,
      * )
      * ```
@@ -138,14 +138,14 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
         string $fullyQualifiedName,
         BehavioralEventTypeDefinitionLabels $labels,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         array $properties,
         ?ComboEventRuleBranch $comboEventRules = null,
         ?\DateTimeInterface $createdAt = null,
-        ?int $createdUserID = null,
+        ?int $createdUserId = null,
         ?string $description = null,
         ?string $primaryObject = null,
-        ?string $primaryObjectID = null,
+        ?string $primaryObjectId = null,
         TrackingType|string|null $trackingType = null,
     ): self {
         $obj = new self;
@@ -156,15 +156,15 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
         $obj->fullyQualifiedName = $fullyQualifiedName;
         $obj->labels = $labels;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->properties = $properties;
 
         null !== $comboEventRules && $obj->comboEventRules = $comboEventRules;
         null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdUserID && $obj->createdUserID = $createdUserID;
+        null !== $createdUserId && $obj->createdUserId = $createdUserId;
         null !== $description && $obj->description = $description;
         null !== $primaryObject && $obj->primaryObject = $primaryObject;
-        null !== $primaryObjectID && $obj->primaryObjectID = $primaryObjectID;
+        null !== $primaryObjectId && $obj->primaryObjectId = $primaryObjectId;
         null !== $trackingType && $obj['trackingType'] = $trackingType;
 
         return $obj;
@@ -225,7 +225,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -261,7 +261,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withCreatedUserID(int $createdUserID): self
     {
         $obj = clone $this;
-        $obj->createdUserID = $createdUserID;
+        $obj->createdUserId = $createdUserID;
 
         return $obj;
     }
@@ -285,7 +285,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withPrimaryObjectID(string $primaryObjectID): self
     {
         $obj = clone $this;
-        $obj->primaryObjectID = $primaryObjectID;
+        $obj->primaryObjectId = $primaryObjectID;
 
         return $obj;
     }

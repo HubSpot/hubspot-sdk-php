@@ -12,8 +12,6 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Sequences\EnrollmentsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class EnrollmentsService implements EnrollmentsContract
 {
     /**
@@ -26,44 +24,22 @@ final class EnrollmentsService implements EnrollmentsContract
      *
      * Enroll a contact into a sequence using the specified user ID and sequence details.
      *
-     * @param string $contactID
-     * @param string $senderEmail
-     * @param string $sequenceID
-     * @param string $senderAliasAddress
+     * @param array{
+     *   contactId: string,
+     *   senderEmail: string,
+     *   sequenceId: string,
+     *   senderAliasAddress?: string,
+     * }|EnrollmentEnrollParams $params
      *
      * @throws APIException
      */
     public function enroll(
-        $contactID,
-        $senderEmail,
-        $sequenceID,
-        $senderAliasAddress = omit,
-        ?RequestOptions $requestOptions = null,
-    ): PublicSequenceEnrollmentLiteResponse {
-        $params = [
-            'contactID' => $contactID,
-            'senderEmail' => $senderEmail,
-            'sequenceID' => $sequenceID,
-            'senderAliasAddress' => $senderAliasAddress,
-        ];
-
-        return $this->enrollRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function enrollRaw(
-        array $params,
+        array|EnrollmentEnrollParams $params,
         ?RequestOptions $requestOptions = null
     ): PublicSequenceEnrollmentLiteResponse {
         [$parsed, $options] = EnrollmentEnrollParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

@@ -12,7 +12,10 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type StreamingCollectionResponseWithTotalHubDBTableRowV3Shape = array{
- *   results: list<mixed>, total: int, type: value-of<Type>, paging?: EmailsPaging
+ *   results: list<mixed>,
+ *   total: int,
+ *   type: value-of<Type>,
+ *   paging?: EmailsPaging|null,
  * }
  */
 final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseModel

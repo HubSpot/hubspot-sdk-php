@@ -12,13 +12,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIWebhookActionShape = array{
- *   actionID: string,
+ *   actionId: string,
  *   method: value-of<Method>,
  *   queryParams: list<APIInputVariable>,
  *   type: value-of<Type>,
- *   webhookURL: string,
- *   authSettings?: APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings,
- *   connection?: APIConnection,
+ *   webhookUrl: string,
+ *   authSettings?: null|APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings,
+ *   connection?: APIConnection|null,
  * }
  */
 final class APIWebhookAction implements BaseModel
@@ -26,8 +26,8 @@ final class APIWebhookAction implements BaseModel
     /** @use SdkModel<APIWebhookActionShape> */
     use SdkModel;
 
-    #[Api('actionId')]
-    public string $actionID;
+    #[Api]
+    public string $actionId;
 
     /** @var value-of<Method> $method */
     #[Api(enum: Method::class)]
@@ -41,8 +41,8 @@ final class APIWebhookAction implements BaseModel
     #[Api(enum: Type::class)]
     public string $type;
 
-    #[Api('webhookUrl')]
-    public string $webhookURL;
+    #[Api]
+    public string $webhookUrl;
 
     #[Api(optional: true)]
     public APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings|null $authSettings;
@@ -56,7 +56,7 @@ final class APIWebhookAction implements BaseModel
      * To enforce required parameters use
      * ```
      * APIWebhookAction::with(
-     *   actionID: ..., method: ..., queryParams: ..., type: ..., webhookURL: ...
+     *   actionId: ..., method: ..., queryParams: ..., type: ..., webhookUrl: ...
      * )
      * ```
      *
@@ -86,21 +86,21 @@ final class APIWebhookAction implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $actionID,
+        string $actionId,
         Method|string $method,
         array $queryParams,
-        string $webhookURL,
+        string $webhookUrl,
         Type|string $type = 'WEBHOOK',
         APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings|null $authSettings = null,
         ?APIConnection $connection = null,
     ): self {
         $obj = new self;
 
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionId;
         $obj['method'] = $method;
         $obj->queryParams = $queryParams;
         $obj['type'] = $type;
-        $obj->webhookURL = $webhookURL;
+        $obj->webhookUrl = $webhookUrl;
 
         null !== $authSettings && $obj->authSettings = $authSettings;
         null !== $connection && $obj->connection = $connection;
@@ -111,7 +111,7 @@ final class APIWebhookAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionID;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class APIWebhookAction implements BaseModel
     public function withWebhookURL(string $webhookURL): self
     {
         $obj = clone $this;
-        $obj->webhookURL = $webhookURL;
+        $obj->webhookUrl = $webhookURL;
 
         return $obj;
     }

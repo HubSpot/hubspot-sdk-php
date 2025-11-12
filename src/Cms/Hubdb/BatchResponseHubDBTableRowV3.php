@@ -11,12 +11,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type BatchResponseHubDBTableRowV3Shape = array{
- *   completedAt?: \DateTimeInterface,
- *   links?: array<string, string>,
- *   requestedAt?: \DateTimeInterface,
- *   results?: list<HubDBTableRowV3>,
- *   startedAt?: \DateTimeInterface,
- *   status?: value-of<Status>,
+ *   completedAt?: \DateTimeInterface|null,
+ *   links?: array<string,string>|null,
+ *   requestedAt?: \DateTimeInterface|null,
+ *   results?: list<HubDBTableRowV3>|null,
+ *   startedAt?: \DateTimeInterface|null,
+ *   status?: value-of<Status>|null,
  * }
  */
 final class BatchResponseHubDBTableRowV3 implements BaseModel
@@ -27,7 +27,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $completedAt;
 
-    /** @var array<string, string>|null $links */
+    /** @var array<string,string>|null $links */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
@@ -55,7 +55,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      * @param list<HubDBTableRowV3> $results
      * @param Status|value-of<Status> $status
      */
@@ -88,7 +88,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     }
 
     /**
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

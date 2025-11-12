@@ -11,7 +11,7 @@ use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse\FlagState;
 
 /**
  * @phpstan-type PortalFlagStateResponseShape = array{
- *   appID: int, flagName: string, flagState: value-of<FlagState>, portalID: int
+ *   appId: int, flagName: string, flagState: value-of<FlagState>, portalId: int
  * }
  */
 final class PortalFlagStateResponse implements BaseModel
@@ -19,8 +19,8 @@ final class PortalFlagStateResponse implements BaseModel
     /** @use SdkModel<PortalFlagStateResponseShape> */
     use SdkModel;
 
-    #[Api('appId')]
-    public int $appID;
+    #[Api]
+    public int $appId;
 
     #[Api]
     public string $flagName;
@@ -29,8 +29,8 @@ final class PortalFlagStateResponse implements BaseModel
     #[Api(enum: FlagState::class)]
     public string $flagState;
 
-    #[Api('portalId')]
-    public int $portalID;
+    #[Api]
+    public int $portalId;
 
     /**
      * `new PortalFlagStateResponse()` is missing required properties by the API.
@@ -38,7 +38,7 @@ final class PortalFlagStateResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * PortalFlagStateResponse::with(
-     *   appID: ..., flagName: ..., flagState: ..., portalID: ...
+     *   appId: ..., flagName: ..., flagState: ..., portalId: ...
      * )
      * ```
      *
@@ -65,17 +65,17 @@ final class PortalFlagStateResponse implements BaseModel
      * @param FlagState|value-of<FlagState> $flagState
      */
     public static function with(
-        int $appID,
+        int $appId,
         string $flagName,
         FlagState|string $flagState,
-        int $portalID
+        int $portalId
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj->flagName = $flagName;
         $obj['flagState'] = $flagState;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalId;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class PortalFlagStateResponse implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class PortalFlagStateResponse implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }

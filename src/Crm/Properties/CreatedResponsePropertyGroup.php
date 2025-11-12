@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type CreatedResponsePropertyGroupShape = array{
- *   createdResourceID: string, entity: PropertyGroup, location?: string
+ *   createdResourceId: string, entity: PropertyGroup, location?: string|null
  * }
  */
 final class CreatedResponsePropertyGroup implements BaseModel
@@ -18,8 +18,8 @@ final class CreatedResponsePropertyGroup implements BaseModel
     /** @use SdkModel<CreatedResponsePropertyGroupShape> */
     use SdkModel;
 
-    #[Api('createdResourceId')]
-    public string $createdResourceID;
+    #[Api]
+    public string $createdResourceId;
 
     /**
      * An ID for a group of properties.
@@ -35,7 +35,7 @@ final class CreatedResponsePropertyGroup implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * CreatedResponsePropertyGroup::with(createdResourceID: ..., entity: ...)
+     * CreatedResponsePropertyGroup::with(createdResourceId: ..., entity: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -55,13 +55,13 @@ final class CreatedResponsePropertyGroup implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $createdResourceID,
+        string $createdResourceId,
         PropertyGroup $entity,
         ?string $location = null
     ): self {
         $obj = new self;
 
-        $obj->createdResourceID = $createdResourceID;
+        $obj->createdResourceId = $createdResourceId;
         $obj->entity = $entity;
 
         null !== $location && $obj->location = $location;
@@ -72,7 +72,7 @@ final class CreatedResponsePropertyGroup implements BaseModel
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
-        $obj->createdResourceID = $createdResourceID;
+        $obj->createdResourceId = $createdResourceID;
 
         return $obj;
     }

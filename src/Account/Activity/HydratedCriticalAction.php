@@ -17,14 +17,14 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   type: string,
- *   userID: int,
- *   actingUser?: string,
- *   countryCode?: string,
- *   infoURL?: string,
- *   ipAddress?: string,
- *   location?: string,
- *   objectID?: string,
- *   regionCode?: string,
+ *   userId: int,
+ *   actingUser?: string|null,
+ *   countryCode?: string|null,
+ *   infoUrl?: string|null,
+ *   ipAddress?: string|null,
+ *   location?: string|null,
+ *   objectId?: string|null,
+ *   regionCode?: string|null,
  * }
  */
 final class HydratedCriticalAction implements BaseModel, ResponseConverter
@@ -55,8 +55,8 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     /**
      * The user's unique ID.
      */
-    #[Api('userId')]
-    public int $userID;
+    #[Api]
+    public int $userId;
 
     /**
      * Email address of the user associated with the activity.
@@ -73,8 +73,8 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     /**
      * A link to the URL where the action was taken in the account.
      */
-    #[Api('infoUrl', optional: true)]
-    public ?string $infoURL;
+    #[Api(optional: true)]
+    public ?string $infoUrl;
 
     /**
      * IP address where the activity originated.
@@ -88,8 +88,8 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     /**
      * The ID of the affected object.
      */
-    #[Api('objectId', optional: true)]
-    public ?string $objectID;
+    #[Api(optional: true)]
+    public ?string $objectId;
 
     /**
      * The approximate region code.
@@ -102,7 +102,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
      *
      * To enforce required parameters use
      * ```
-     * HydratedCriticalAction::with(id: ..., createdAt: ..., type: ..., userID: ...)
+     * HydratedCriticalAction::with(id: ..., createdAt: ..., type: ..., userId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -129,13 +129,13 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
         string $id,
         \DateTimeInterface $createdAt,
         string $type,
-        int $userID,
+        int $userId,
         ?string $actingUser = null,
         ?string $countryCode = null,
-        ?string $infoURL = null,
+        ?string $infoUrl = null,
         ?string $ipAddress = null,
         ?string $location = null,
-        ?string $objectID = null,
+        ?string $objectId = null,
         ?string $regionCode = null,
     ): self {
         $obj = new self;
@@ -143,14 +143,14 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
         $obj->id = $id;
         $obj->createdAt = $createdAt;
         $obj->type = $type;
-        $obj->userID = $userID;
+        $obj->userId = $userId;
 
         null !== $actingUser && $obj->actingUser = $actingUser;
         null !== $countryCode && $obj->countryCode = $countryCode;
-        null !== $infoURL && $obj->infoURL = $infoURL;
+        null !== $infoUrl && $obj->infoUrl = $infoUrl;
         null !== $ipAddress && $obj->ipAddress = $ipAddress;
         null !== $location && $obj->location = $location;
-        null !== $objectID && $obj->objectID = $objectID;
+        null !== $objectId && $obj->objectId = $objectId;
         null !== $regionCode && $obj->regionCode = $regionCode;
 
         return $obj;
@@ -195,7 +195,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }
@@ -228,7 +228,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withInfoURL(string $infoURL): self
     {
         $obj = clone $this;
-        $obj->infoURL = $infoURL;
+        $obj->infoUrl = $infoURL;
 
         return $obj;
     }
@@ -258,7 +258,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

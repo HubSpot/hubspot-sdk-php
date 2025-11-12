@@ -5,122 +5,69 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Settings;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate;
 use HubspotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
 use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateForwardPaging;
 use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
 use HubspotSDK\Settings\Currencies\CompanyCurrency;
-use HubspotSDK\Settings\Currencies\CurrencyCreateExchangeRateParams\FromCurrencyCode;
-use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams\CurrencyCode;
-use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams\ToCurrencyCode;
+use HubspotSDK\Settings\Currencies\CurrencyBatchCreateParams;
+use HubspotSDK\Settings\Currencies\CurrencyBatchGetParams;
+use HubspotSDK\Settings\Currencies\CurrencyBatchUpdateParams;
+use HubspotSDK\Settings\Currencies\CurrencyCreateExchangeRateParams;
+use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams;
+use HubspotSDK\Settings\Currencies\CurrencyUpdateExchangeRateParams;
+use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams;
 use HubspotSDK\Settings\Currencies\ExchangeRate;
-use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest;
-use HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface CurrenciesContract
 {
     /**
      * @api
      *
-     * @param list<ExchangeRateCreateRequest> $inputs
+     * @param array<mixed>|CurrencyBatchCreateParams $params
      *
      * @throws APIException
      */
     public function batchCreate(
-        $inputs,
-        ?RequestOptions $requestOptions = null
+        array|CurrencyBatchCreateParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseExchangeRate;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchCreateRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseExchangeRate;
-
-    /**
-     * @api
-     *
-     * @param list<PublicObjectID> $inputs
+     * @param array<mixed>|CurrencyBatchGetParams $params
      *
      * @throws APIException
      */
     public function batchGet(
-        $inputs,
-        ?RequestOptions $requestOptions = null
+        array|CurrencyBatchGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseExchangeRate;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchGetRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseExchangeRate;
-
-    /**
-     * @api
-     *
-     * @param list<ExchangeRateUpdateRequest> $inputs
+     * @param array<mixed>|CurrencyBatchUpdateParams $params
      *
      * @throws APIException
      */
     public function batchUpdate(
-        $inputs,
-        ?RequestOptions $requestOptions = null
+        array|CurrencyBatchUpdateParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseExchangeRate;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchUpdateRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseExchangeRate;
-
-    /**
-     * @api
-     *
-     * @param float $conversionRate
-     * @param FromCurrencyCode|value-of<FromCurrencyCode> $fromCurrencyCode
-     * @param \DateTimeInterface $effectiveAt
+     * @param array<mixed>|CurrencyCreateExchangeRateParams $params
      *
      * @throws APIException
      */
     public function createExchangeRate(
-        $conversionRate,
-        $fromCurrencyCode,
-        $effectiveAt = omit,
+        array|CurrencyCreateExchangeRateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ExchangeRate;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createExchangeRateRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ExchangeRate;
 
     /**
@@ -172,80 +119,37 @@ interface CurrenciesContract
     /**
      * @api
      *
-     * @param CurrencyCode|value-of<CurrencyCode> $currencyCode
+     * @param array<mixed>|CurrencyUpdateCompanyCurrencyParams $params
      *
      * @throws APIException
      */
     public function updateCompanyCurrency(
-        $currencyCode,
-        ?RequestOptions $requestOptions = null
+        array|CurrencyUpdateCompanyCurrencyParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CompanyCurrency;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateCompanyCurrencyRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): CompanyCurrency;
-
-    /**
-     * @api
-     *
-     * @param float $conversionRate
-     * @param \DateTimeInterface $effectiveAt
+     * @param array<mixed>|CurrencyUpdateExchangeRateParams $params
      *
      * @throws APIException
      */
     public function updateExchangeRate(
         string $exchangeRateID,
-        $conversionRate,
-        $effectiveAt = omit,
+        array|CurrencyUpdateExchangeRateParams $params,
         ?RequestOptions $requestOptions = null,
     ): ExchangeRate;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateExchangeRateRaw(
-        string $exchangeRateID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): ExchangeRate;
-
-    /**
-     * @api
-     *
-     * @param \HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams\FromCurrencyCode|value-of<\HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams\FromCurrencyCode> $fromCurrencyCode
-     * @param ToCurrencyCode|value-of<ToCurrencyCode> $toCurrencyCode
-     * @param bool $visibleInUi
+     * @param array<mixed>|CurrencyUpdateVisibilityParams $params
      *
      * @throws APIException
      */
     public function updateVisibility(
-        $fromCurrencyCode,
-        $toCurrencyCode,
-        $visibleInUi,
+        array|CurrencyUpdateVisibilityParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateVisibilityRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed;
 }

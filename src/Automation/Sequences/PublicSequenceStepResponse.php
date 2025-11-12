@@ -16,8 +16,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   delayMillis: int,
  *   stepOrder: int,
  *   updatedAt: \DateTimeInterface,
- *   emailPattern?: PublicEmailPatternResponse,
- *   taskPattern?: PublicTaskPatternResponse,
+ *   emailPattern?: PublicEmailPatternResponse|null,
+ *   taskPattern?: PublicTaskPatternResponse|null,
  * }
  */
 final class PublicSequenceStepResponse implements BaseModel

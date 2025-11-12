@@ -3,7 +3,6 @@
 namespace Tests\Services\Events;
 
 use HubspotSDK\Client;
-use HubspotSDK\Events\Send\BehavioralEventHTTPCompletionRequest;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -37,7 +36,7 @@ final class SendTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->send->send(eventName: 'eventName');
+        $result = $this->client->events->send->send(['eventName' => 'eventName']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -49,7 +48,7 @@ final class SendTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->send->send(eventName: 'eventName');
+        $result = $this->client->events->send->send(['eventName' => 'eventName']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -61,9 +60,9 @@ final class SendTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->send->sendBatch(
-            [BehavioralEventHTTPCompletionRequest::with(eventName: 'eventName')]
-        );
+        $result = $this->client->events->send->sendBatch([
+            'inputs' => [['eventName' => 'eventName']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -75,17 +74,19 @@ final class SendTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->send->sendBatch(
-            [
-                BehavioralEventHTTPCompletionRequest::with(eventName: 'eventName')
-                    ->withEmail('email')
-                    ->withObjectID('objectId')
-                    ->withOccurredAt(new \DateTimeImmutable('2019-12-27T18:11:19.117Z'))
-                    ->withProperties(['foo' => 'string'])
-                    ->withUtk('utk')
-                    ->withUuid('uuid'),
+        $result = $this->client->events->send->sendBatch([
+            'inputs' => [
+                [
+                    'eventName' => 'eventName',
+                    'email' => 'email',
+                    'objectId' => 'objectId',
+                    'occurredAt' => '2019-12-27T18:11:19.117Z',
+                    'properties' => ['foo' => 'string'],
+                    'utk' => 'utk',
+                    'uuid' => 'uuid',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Webhooks\Subscriptions->delete
  *
- * @phpstan-type SubscriptionDeleteParamsShape = array{appID: int}
+ * @phpstan-type SubscriptionDeleteParamsShape = array{appId: int}
  */
 final class SubscriptionDeleteParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class SubscriptionDeleteParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /**
      * `new SubscriptionDeleteParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SubscriptionDeleteParams::with(appID: ...)
+     * SubscriptionDeleteParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class SubscriptionDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID): self
+    public static function with(int $appId): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class SubscriptionDeleteParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Blogs\Posts->restorePreviousVersionToDraft
  *
  * @phpstan-type PostRestorePreviousVersionToDraftParamsShape = array{
- *   objectID: string
+ *   objectId: string
  * }
  */
 final class PostRestorePreviousVersionToDraftParams implements BaseModel
@@ -25,14 +25,14 @@ final class PostRestorePreviousVersionToDraftParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $objectID;
+    public string $objectId;
 
     /**
      * `new PostRestorePreviousVersionToDraftParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PostRestorePreviousVersionToDraftParams::with(objectID: ...)
+     * PostRestorePreviousVersionToDraftParams::with(objectId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -51,11 +51,11 @@ final class PostRestorePreviousVersionToDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectID): self
+    public static function with(string $objectId): self
     {
         $obj = new self;
 
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class PostRestorePreviousVersionToDraftParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

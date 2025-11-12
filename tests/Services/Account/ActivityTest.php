@@ -36,7 +36,7 @@ final class ActivityTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->account->activity->listAuditLogs();
+        $result = $this->client->account->activity->listAuditLogs([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +48,7 @@ final class ActivityTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->account->activity->listLoginActivities();
+        $result = $this->client->account->activity->listLoginActivities([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -60,7 +60,7 @@ final class ActivityTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->account->activity->listSecurityActivities();
+        $result = $this->client->account->activity->listSecurityActivities([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

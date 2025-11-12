@@ -11,7 +11,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponseWithTotalParticipationBreakdownForwardPagingShape = array{
- *   results: list<ParticipationBreakdown>, total: int, paging?: ForwardPaging
+ *   results: list<ParticipationBreakdown>, total: int, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseWithTotalParticipationBreakdownForwardPaging implements BaseModel

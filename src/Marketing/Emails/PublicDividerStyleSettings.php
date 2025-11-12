@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicDividerStyleSettingsShape = array{
- *   color?: mixed, height?: int, lineType?: string
+ *   color?: mixed, height?: int|null, lineType?: string|null
  * }
  */
 final class PublicDividerStyleSettings implements BaseModel

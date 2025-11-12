@@ -10,19 +10,19 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicListShape = array{
- *   listID: string,
+ *   listId: string,
  *   listVersion: int,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   processingStatus: string,
  *   processingType: string,
- *   createdAt?: \DateTimeInterface,
- *   createdByID?: string,
- *   deletedAt?: \DateTimeInterface,
- *   filtersUpdatedAt?: \DateTimeInterface,
- *   size?: int,
- *   updatedAt?: \DateTimeInterface,
- *   updatedByID?: string,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdById?: string|null,
+ *   deletedAt?: \DateTimeInterface|null,
+ *   filtersUpdatedAt?: \DateTimeInterface|null,
+ *   size?: int|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedById?: string|null,
  * }
  */
 final class PublicList implements BaseModel
@@ -30,8 +30,8 @@ final class PublicList implements BaseModel
     /** @use SdkModel<PublicListShape> */
     use SdkModel;
 
-    #[Api('listId')]
-    public string $listID;
+    #[Api]
+    public string $listId;
 
     #[Api]
     public int $listVersion;
@@ -39,8 +39,8 @@ final class PublicList implements BaseModel
     #[Api]
     public string $name;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     #[Api]
     public string $processingStatus;
@@ -51,8 +51,8 @@ final class PublicList implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api('createdById', optional: true)]
-    public ?string $createdByID;
+    #[Api(optional: true)]
+    public ?string $createdById;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $deletedAt;
@@ -66,8 +66,8 @@ final class PublicList implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Api('updatedById', optional: true)]
-    public ?string $updatedByID;
+    #[Api(optional: true)]
+    public ?string $updatedById;
 
     /**
      * `new PublicList()` is missing required properties by the API.
@@ -75,10 +75,10 @@ final class PublicList implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicList::with(
-     *   listID: ...,
+     *   listId: ...,
      *   listVersion: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   processingStatus: ...,
      *   processingType: ...,
      * )
@@ -107,36 +107,36 @@ final class PublicList implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $listID,
+        string $listId,
         int $listVersion,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         string $processingStatus,
         string $processingType,
         ?\DateTimeInterface $createdAt = null,
-        ?string $createdByID = null,
+        ?string $createdById = null,
         ?\DateTimeInterface $deletedAt = null,
         ?\DateTimeInterface $filtersUpdatedAt = null,
         ?int $size = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?string $updatedByID = null,
+        ?string $updatedById = null,
     ): self {
         $obj = new self;
 
-        $obj->listID = $listID;
+        $obj->listId = $listId;
         $obj->listVersion = $listVersion;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->processingStatus = $processingStatus;
         $obj->processingType = $processingType;
 
         null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdByID && $obj->createdByID = $createdByID;
+        null !== $createdById && $obj->createdById = $createdById;
         null !== $deletedAt && $obj->deletedAt = $deletedAt;
         null !== $filtersUpdatedAt && $obj->filtersUpdatedAt = $filtersUpdatedAt;
         null !== $size && $obj->size = $size;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedByID && $obj->updatedByID = $updatedByID;
+        null !== $updatedById && $obj->updatedById = $updatedById;
 
         return $obj;
     }
@@ -144,7 +144,7 @@ final class PublicList implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listID = $listID;
+        $obj->listId = $listID;
 
         return $obj;
     }
@@ -168,7 +168,7 @@ final class PublicList implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -200,7 +200,7 @@ final class PublicList implements BaseModel
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
-        $obj->createdByID = $createdByID;
+        $obj->createdById = $createdByID;
 
         return $obj;
     }
@@ -241,7 +241,7 @@ final class PublicList implements BaseModel
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
-        $obj->updatedByID = $updatedByID;
+        $obj->updatedById = $updatedByID;
 
         return $obj;
     }

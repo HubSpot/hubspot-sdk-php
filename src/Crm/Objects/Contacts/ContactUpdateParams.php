@@ -14,9 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Crm\Objects\Contacts->update
  *
- * @phpstan-type ContactUpdateParamsShape = array{
- *   properties: array<string, string>
- * }
+ * @phpstan-type ContactUpdateParamsShape = array{properties: array<string,string>}
  */
 final class ContactUpdateParams implements BaseModel
 {
@@ -27,7 +25,7 @@ final class ContactUpdateParams implements BaseModel
     /**
      * Key value pairs representing the properties of the object.
      *
-     * @var array<string, string> $properties
+     * @var array<string,string> $properties
      */
     #[Api(map: 'string')]
     public array $properties;
@@ -56,7 +54,7 @@ final class ContactUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(array $properties): self
     {
@@ -70,7 +68,7 @@ final class ContactUpdateParams implements BaseModel
     /**
      * Key value pairs representing the properties of the object.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

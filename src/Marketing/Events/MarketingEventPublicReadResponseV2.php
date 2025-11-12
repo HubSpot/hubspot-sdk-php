@@ -15,23 +15,23 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   createdAt: \DateTimeInterface,
  *   customProperties: list<CrmPropertyWrapper>,
  *   eventName: string,
- *   objectID: string,
+ *   objectId: string,
  *   updatedAt: \DateTimeInterface,
- *   appInfo?: AppInfo,
- *   attendees?: int,
- *   cancellations?: int,
- *   endDateTime?: \DateTimeInterface,
- *   eventCancelled?: bool,
- *   eventCompleted?: bool,
- *   eventDescription?: string,
- *   eventOrganizer?: string,
- *   eventStatus?: string,
- *   eventType?: string,
- *   eventURL?: string,
- *   externalEventID?: string,
- *   noShows?: int,
- *   registrants?: int,
- *   startDateTime?: \DateTimeInterface,
+ *   appInfo?: AppInfo|null,
+ *   attendees?: int|null,
+ *   cancellations?: int|null,
+ *   endDateTime?: \DateTimeInterface|null,
+ *   eventCancelled?: bool|null,
+ *   eventCompleted?: bool|null,
+ *   eventDescription?: string|null,
+ *   eventOrganizer?: string|null,
+ *   eventStatus?: string|null,
+ *   eventType?: string|null,
+ *   eventUrl?: string|null,
+ *   externalEventId?: string|null,
+ *   noShows?: int|null,
+ *   registrants?: int|null,
+ *   startDateTime?: \DateTimeInterface|null,
  * }
  */
 final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseConverter
@@ -51,8 +51,8 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
     #[Api]
     public string $eventName;
 
-    #[Api('objectId')]
-    public string $objectID;
+    #[Api]
+    public string $objectId;
 
     #[Api]
     public \DateTimeInterface $updatedAt;
@@ -87,11 +87,11 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
     #[Api(optional: true)]
     public ?string $eventType;
 
-    #[Api('eventUrl', optional: true)]
-    public ?string $eventURL;
+    #[Api(optional: true)]
+    public ?string $eventUrl;
 
-    #[Api('externalEventId', optional: true)]
-    public ?string $externalEventID;
+    #[Api(optional: true)]
+    public ?string $externalEventId;
 
     #[Api(optional: true)]
     public ?int $noShows;
@@ -111,7 +111,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
      *   createdAt: ...,
      *   customProperties: ...,
      *   eventName: ...,
-     *   objectID: ...,
+     *   objectId: ...,
      *   updatedAt: ...,
      * )
      * ```
@@ -143,7 +143,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
         \DateTimeInterface $createdAt,
         array $customProperties,
         string $eventName,
-        string $objectID,
+        string $objectId,
         \DateTimeInterface $updatedAt,
         ?AppInfo $appInfo = null,
         ?int $attendees = null,
@@ -155,8 +155,8 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
         ?string $eventOrganizer = null,
         ?string $eventStatus = null,
         ?string $eventType = null,
-        ?string $eventURL = null,
-        ?string $externalEventID = null,
+        ?string $eventUrl = null,
+        ?string $externalEventId = null,
         ?int $noShows = null,
         ?int $registrants = null,
         ?\DateTimeInterface $startDateTime = null,
@@ -166,7 +166,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
         $obj->createdAt = $createdAt;
         $obj->customProperties = $customProperties;
         $obj->eventName = $eventName;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
         $obj->updatedAt = $updatedAt;
 
         null !== $appInfo && $obj->appInfo = $appInfo;
@@ -179,8 +179,8 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
         null !== $eventOrganizer && $obj->eventOrganizer = $eventOrganizer;
         null !== $eventStatus && $obj->eventStatus = $eventStatus;
         null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventURL && $obj->eventURL = $eventURL;
-        null !== $externalEventID && $obj->externalEventID = $externalEventID;
+        null !== $eventUrl && $obj->eventUrl = $eventUrl;
+        null !== $externalEventId && $obj->externalEventId = $externalEventId;
         null !== $noShows && $obj->noShows = $noShows;
         null !== $registrants && $obj->registrants = $registrants;
         null !== $startDateTime && $obj->startDateTime = $startDateTime;
@@ -218,7 +218,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }
@@ -314,7 +314,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventURL = $eventURL;
+        $obj->eventUrl = $eventURL;
 
         return $obj;
     }
@@ -322,7 +322,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseCon
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventID = $externalEventID;
+        $obj->externalEventId = $externalEventID;
 
         return $obj;
     }

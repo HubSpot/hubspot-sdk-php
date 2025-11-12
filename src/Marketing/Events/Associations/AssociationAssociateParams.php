@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Marketing\Events\Associations->associate
  *
- * @phpstan-type AssociationAssociateParamsShape = array{marketingEventID: string}
+ * @phpstan-type AssociationAssociateParamsShape = array{marketingEventId: string}
  */
 final class AssociationAssociateParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class AssociationAssociateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $marketingEventID;
+    public string $marketingEventId;
 
     /**
      * `new AssociationAssociateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * AssociationAssociateParams::with(marketingEventID: ...)
+     * AssociationAssociateParams::with(marketingEventId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class AssociationAssociateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $marketingEventID): self
+    public static function with(string $marketingEventId): self
     {
         $obj = new self;
 
-        $obj->marketingEventID = $marketingEventID;
+        $obj->marketingEventId = $marketingEventId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class AssociationAssociateParams implements BaseModel
     public function withMarketingEventID(string $marketingEventID): self
     {
         $obj = clone $this;
-        $obj->marketingEventID = $marketingEventID;
+        $obj->marketingEventId = $marketingEventID;
 
         return $obj;
     }

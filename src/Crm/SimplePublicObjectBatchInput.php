@@ -13,9 +13,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type SimplePublicObjectBatchInputShape = array{
  *   id: string,
- *   properties: array<string, string>,
- *   idProperty?: string,
- *   objectWriteTraceID?: string,
+ *   properties: array<string,string>,
+ *   idProperty?: string|null,
+ *   objectWriteTraceId?: string|null,
  * }
  */
 final class SimplePublicObjectBatchInput implements BaseModel
@@ -32,7 +32,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     /**
      * Key-value pairs representing the properties of the object.
      *
-     * @var array<string, string> $properties
+     * @var array<string,string> $properties
      */
     #[Api(map: 'string')]
     public array $properties;
@@ -46,8 +46,8 @@ final class SimplePublicObjectBatchInput implements BaseModel
     /**
      * A unique identifier for tracing the request.
      */
-    #[Api('objectWriteTraceId', optional: true)]
-    public ?string $objectWriteTraceID;
+    #[Api(optional: true)]
+    public ?string $objectWriteTraceId;
 
     /**
      * `new SimplePublicObjectBatchInput()` is missing required properties by the API.
@@ -73,13 +73,13 @@ final class SimplePublicObjectBatchInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(
         string $id,
         array $properties,
         ?string $idProperty = null,
-        ?string $objectWriteTraceID = null,
+        ?string $objectWriteTraceId = null,
     ): self {
         $obj = new self;
 
@@ -87,7 +87,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
         $obj->properties = $properties;
 
         null !== $idProperty && $obj->idProperty = $idProperty;
-        null !== $objectWriteTraceID && $obj->objectWriteTraceID = $objectWriteTraceID;
+        null !== $objectWriteTraceId && $obj->objectWriteTraceId = $objectWriteTraceId;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     /**
      * Key-value pairs representing the properties of the object.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {
@@ -133,7 +133,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
-        $obj->objectWriteTraceID = $objectWriteTraceID;
+        $obj->objectWriteTraceId = $objectWriteTraceID;
 
         return $obj;
     }

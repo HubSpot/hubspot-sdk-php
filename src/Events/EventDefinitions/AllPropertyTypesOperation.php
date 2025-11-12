@@ -18,8 +18,8 @@ use HubspotSDK\Events\EventDefinitions\AllPropertyTypesOperation\PropertyType;
  *   operator: value-of<Operator>,
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
- *   defaultValue?: string,
- *   pruningRefineBy?: RelativeComparativeTimestampRefineBy|RelativeRangedTimestampRefineBy|AbsoluteComparativeTimestampRefineBy|AbsoluteRangedTimestampRefineBy|AllHistoryRefineBy|TimePointOperation|RangedTimeOperation,
+ *   defaultValue?: string|null,
+ *   pruningRefineBy?: null|RelativeComparativeTimestampRefineBy|RelativeRangedTimestampRefineBy|AbsoluteComparativeTimestampRefineBy|AbsoluteRangedTimestampRefineBy|AllHistoryRefineBy|TimePointOperation|RangedTimeOperation,
  * }
  */
 final class AllPropertyTypesOperation implements BaseModel

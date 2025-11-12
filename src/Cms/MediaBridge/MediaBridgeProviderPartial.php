@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MediaBridgeProviderPartialShape = array{
- *   updatedAt: int, name?: string
+ *   updatedAt: int, name?: string|null
  * }
  */
 final class MediaBridgeProviderPartial implements BaseModel

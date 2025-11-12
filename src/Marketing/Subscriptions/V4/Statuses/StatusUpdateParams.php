@@ -20,7 +20,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\StatusStat
  * @phpstan-type StatusUpdateParamsShape = array{
  *   channel: Channel|value-of<Channel>,
  *   statusState: StatusState|value-of<StatusState>,
- *   subscriptionID: int,
+ *   subscriptionId: int,
  *   legalBasis?: LegalBasis|value-of<LegalBasis>,
  *   legalBasisExplanation?: string,
  * }
@@ -50,8 +50,8 @@ final class StatusUpdateParams implements BaseModel
     /**
      * The unique identifier of the subscription to be updated.
      */
-    #[Api('subscriptionId')]
-    public int $subscriptionID;
+    #[Api]
+    public int $subscriptionId;
 
     /**
      * The legal basis for communication, with options including 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', and 'LEGITIMATE_INTEREST_OTHER'.
@@ -72,7 +72,7 @@ final class StatusUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * StatusUpdateParams::with(channel: ..., statusState: ..., subscriptionID: ...)
+     * StatusUpdateParams::with(channel: ..., statusState: ..., subscriptionId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -101,7 +101,7 @@ final class StatusUpdateParams implements BaseModel
     public static function with(
         Channel|string $channel,
         StatusState|string $statusState,
-        int $subscriptionID,
+        int $subscriptionId,
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
     ): self {
@@ -109,7 +109,7 @@ final class StatusUpdateParams implements BaseModel
 
         $obj['channel'] = $channel;
         $obj['statusState'] = $statusState;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionId;
 
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
@@ -149,7 +149,7 @@ final class StatusUpdateParams implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionID;
 
         return $obj;
     }

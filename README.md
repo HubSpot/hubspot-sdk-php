@@ -45,9 +45,9 @@ use HubspotSDK\Client;
 
 $client = new Client(accessToken: "pat-na1-xxxxxxxx-xxxx");
 
-$createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-  properties: ["email" => "mark.s@lumon.industries"]
-);
+$createdResponseSimplePublicObject = $client->crm->objects->contacts->create([
+  "properties" => ["email" => "mark.s@lumon.industries"]
+]);
 
 var_dump($createdResponseSimplePublicObject->createdResourceId);
 ```
@@ -72,7 +72,7 @@ use HubspotSDK\Client;
 
 $client = new Client(accessToken: "pat-na1-xxxxxxxx-xxxx");
 
-$page = $client->crm->objects->contacts->list();
+$page = $client->crm->objects->contacts->list([]);
 
 var_dump($page);
 
@@ -96,9 +96,9 @@ When the library is unable to connect to the API, or if the API returns a non-su
 use HubspotSDK\Core\Exceptions\APIConnectionException;
 
 try {
-  $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-    properties: ["email" => "mark.s@lumon.industries"]
-  );
+  $createdResponseSimplePublicObject = $client->crm->objects->contacts->create([
+    "properties" => ["email" => "mark.s@lumon.industries"]
+  ]);
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
   var_dump($e->getPrevious());
@@ -145,8 +145,8 @@ $client = new Client(maxRetries: 0);
 
 // Or, configure per-request:
 $result = $client->crm->objects->contacts->create(
-  properties: ["email" => "mark.s@lumon.industries"],
-  requestOptions: RequestOptions::with(maxRetries: 5),
+  ["properties" => ["email" => "mark.s@lumon.industries"]],
+  RequestOptions::with(maxRetries: 5),
 );
 ```
 
@@ -166,15 +166,13 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 use HubspotSDK\RequestOptions;
 
 $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-  properties: ["email" => "mark.s@lumon.industries"],
-  requestOptions: RequestOptions::with(
+  ["properties" => ["email" => "mark.s@lumon.industries"]],
+  RequestOptions::with(
     extraQueryParams: ["my_query_parameter" => "value"],
     extraBodyParams: ["my_body_parameter" => "value"],
     extraHeaders: ["my-header" => "value"],
   ),
 );
-
-var_dump($createdResponseSimplePublicObject["my_undocumented_property"]);
 ```
 
 #### Undocumented request params

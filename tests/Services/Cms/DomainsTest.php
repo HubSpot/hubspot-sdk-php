@@ -36,7 +36,7 @@ final class DomainsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->domains->list();
+        $result = $this->client->cms->domains->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

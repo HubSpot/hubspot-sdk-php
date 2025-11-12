@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type ContactURLShape = array{url: string, type?: value-of<Type>}
+ * @phpstan-type ContactURLShape = array{url: string, type?: value-of<Type>|null}
  */
 final class ContactURL implements BaseModel
 {

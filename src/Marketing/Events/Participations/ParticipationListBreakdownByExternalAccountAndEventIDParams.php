@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Marketing\Events\Participations->listBreakdownByExternalAccountAndEventID
  *
  * @phpstan-type ParticipationListBreakdownByExternalAccountAndEventIDParamsShape = array{
- *   externalAccountID: string,
+ *   externalAccountId: string,
  *   after?: string,
  *   contactIdentifier?: string,
  *   limit?: int,
@@ -31,7 +31,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     use SdkParams;
 
     #[Api]
-    public string $externalAccountID;
+    public string $externalAccountId;
 
     /**
      * The cursor indicating the position of the last retrieved item.
@@ -63,7 +63,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
      * To enforce required parameters use
      * ```
      * ParticipationListBreakdownByExternalAccountAndEventIDParams::with(
-     *   externalAccountID: ...
+     *   externalAccountId: ...
      * )
      * ```
      *
@@ -85,7 +85,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $externalAccountID,
+        string $externalAccountId,
         ?string $after = null,
         ?string $contactIdentifier = null,
         ?int $limit = null,
@@ -93,7 +93,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     ): self {
         $obj = new self;
 
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountId;
 
         null !== $after && $obj->after = $after;
         null !== $contactIdentifier && $obj->contactIdentifier = $contactIdentifier;
@@ -106,7 +106,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountID;
 
         return $obj;
     }

@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type BoundedNextPageShape = array{offset: int, link?: string}
+ * @phpstan-type BoundedNextPageShape = array{offset: int, link?: string|null}
  */
 final class BoundedNextPage implements BaseModel
 {

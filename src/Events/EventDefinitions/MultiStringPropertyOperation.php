@@ -19,8 +19,8 @@ use HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\PropertyType
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
  *   values: list<string>,
- *   defaultValue?: string,
- *   pruningRefineBy?: RelativeComparativeTimestampRefineBy|RelativeRangedTimestampRefineBy|AbsoluteComparativeTimestampRefineBy|AbsoluteRangedTimestampRefineBy|AllHistoryRefineBy|TimePointOperation|RangedTimeOperation,
+ *   defaultValue?: string|null,
+ *   pruningRefineBy?: null|RelativeComparativeTimestampRefineBy|RelativeRangedTimestampRefineBy|AbsoluteComparativeTimestampRefineBy|AbsoluteRangedTimestampRefineBy|AllHistoryRefineBy|TimePointOperation|RangedTimeOperation,
  * }
  */
 final class MultiStringPropertyOperation implements BaseModel

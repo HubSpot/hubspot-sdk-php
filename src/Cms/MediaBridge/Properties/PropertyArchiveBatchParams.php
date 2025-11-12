@@ -16,7 +16,7 @@ use HubspotSDK\PropertyName;
  * @see HubspotSDK\Cms\MediaBridge\Properties->archiveBatch
  *
  * @phpstan-type PropertyArchiveBatchParamsShape = array{
- *   appID: string, inputs: list<PropertyName>
+ *   appId: string, inputs: list<PropertyName>
  * }
  */
 final class PropertyArchiveBatchParams implements BaseModel
@@ -26,7 +26,7 @@ final class PropertyArchiveBatchParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appID;
+    public string $appId;
 
     /** @var list<PropertyName> $inputs */
     #[Api(list: PropertyName::class)]
@@ -37,7 +37,7 @@ final class PropertyArchiveBatchParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PropertyArchiveBatchParams::with(appID: ..., inputs: ...)
+     * PropertyArchiveBatchParams::with(appId: ..., inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -58,11 +58,11 @@ final class PropertyArchiveBatchParams implements BaseModel
      *
      * @param list<PropertyName> $inputs
      */
-    public static function with(string $appID, array $inputs): self
+    public static function with(string $appId, array $inputs): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj->inputs = $inputs;
 
         return $obj;
@@ -71,7 +71,7 @@ final class PropertyArchiveBatchParams implements BaseModel
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

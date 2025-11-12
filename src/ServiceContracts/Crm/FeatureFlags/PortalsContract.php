@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\FeatureFlags;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
-use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState;
+use HubspotSDK\Crm\FeatureFlags\Portals\PortalBatchDeleteParams;
+use HubspotSDK\Crm\FeatureFlags\Portals\PortalBatchUpsertParams;
+use HubspotSDK\Crm\FeatureFlags\Portals\PortalDeleteParams;
+use HubspotSDK\Crm\FeatureFlags\Portals\PortalGetParams;
+use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams;
 use HubspotSDK\RequestOptions;
 
 interface PortalsContract
@@ -16,142 +19,65 @@ interface PortalsContract
     /**
      * @api
      *
-     * @param int $appID
-     * @param string $flagName
-     * @param FlagState|value-of<FlagState> $flagState
+     * @param array<mixed>|PortalUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         int $portalID,
-        $appID,
-        $flagName,
-        $flagState,
+        array|PortalUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        int $portalID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PortalFlagStateResponse;
-
-    /**
-     * @api
-     *
-     * @param int $appID
-     * @param string $flagName
+     * @param array<mixed>|PortalDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         int $portalID,
-        $appID,
-        $flagName,
-        ?RequestOptions $requestOptions = null
+        array|PortalDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PortalFlagStateResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        int $portalID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PortalFlagStateResponse;
-
-    /**
-     * @api
-     *
-     * @param int $appID
-     * @param list<int> $portalIDs
+     * @param array<mixed>|PortalBatchDeleteParams $params
      *
      * @throws APIException
      */
     public function batchDelete(
         string $flagName,
-        $appID,
-        $portalIDs,
+        array|PortalBatchDeleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateBatchResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchDeleteRaw(
-        string $flagName,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PortalFlagStateBatchResponse;
-
-    /**
-     * @api
-     *
-     * @param int $appID
-     * @param list<BatchPortalEntry> $portalStates
+     * @param array<mixed>|PortalBatchUpsertParams $params
      *
      * @throws APIException
      */
     public function batchUpsert(
         string $flagName,
-        $appID,
-        $portalStates,
+        array|PortalBatchUpsertParams $params,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateBatchResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchUpsertRaw(
-        string $flagName,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PortalFlagStateBatchResponse;
-
-    /**
-     * @api
-     *
-     * @param int $appID
-     * @param string $flagName
+     * @param array<mixed>|PortalGetParams $params
      *
      * @throws APIException
      */
     public function get(
         int $portalID,
-        $appID,
-        $flagName,
-        ?RequestOptions $requestOptions = null
-    ): PortalFlagStateResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        int $portalID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PortalGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PortalFlagStateResponse;
 }

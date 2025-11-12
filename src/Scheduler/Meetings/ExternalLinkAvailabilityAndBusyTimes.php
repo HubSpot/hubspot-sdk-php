@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type ExternalLinkAvailabilityAndBusyTimesShape = array{
  *   allUsersBusyTimes: list<ExternalUserBusyTimes>,
- *   linkAvailability?: ExternalLinkAvailability,
+ *   linkAvailability?: ExternalLinkAvailability|null,
  * }
  */
 final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel

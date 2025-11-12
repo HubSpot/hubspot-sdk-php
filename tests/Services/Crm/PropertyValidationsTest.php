@@ -54,9 +54,11 @@ final class PropertyValidationsTest extends TestCase
             ->propertyValidations
             ->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
                 'FORMAT',
-                objectTypeID: 'objectTypeId',
-                propertyName: 'propertyName',
-                ruleArguments: ['string'],
+                [
+                    'objectTypeId' => 'objectTypeId',
+                    'propertyName' => 'propertyName',
+                    'ruleArguments' => ['string'],
+                ],
             )
         ;
 
@@ -76,9 +78,11 @@ final class PropertyValidationsTest extends TestCase
             ->propertyValidations
             ->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
                 'FORMAT',
-                objectTypeID: 'objectTypeId',
-                propertyName: 'propertyName',
-                ruleArguments: ['string'],
+                [
+                    'objectTypeId' => 'objectTypeId',
+                    'propertyName' => 'propertyName',
+                    'ruleArguments' => ['string'],
+                ],
             )
         ;
 
@@ -94,7 +98,7 @@ final class PropertyValidationsTest extends TestCase
 
         $result = $this->client->crm->propertyValidations->get(
             'propertyName',
-            'objectTypeId'
+            ['objectTypeId' => 'objectTypeId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -109,7 +113,7 @@ final class PropertyValidationsTest extends TestCase
 
         $result = $this->client->crm->propertyValidations->get(
             'propertyName',
-            'objectTypeId'
+            ['objectTypeId' => 'objectTypeId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

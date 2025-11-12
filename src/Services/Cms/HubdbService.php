@@ -12,12 +12,12 @@ use HubspotSDK\Services\Cms\Hubdb\TablesService;
 final class HubdbService implements HubdbContract
 {
     /**
-     * @@api
+     * @api
      */
     public RowsService $rows;
 
     /**
-     * @@api
+     * @api
      */
     public TablesService $tables;
 

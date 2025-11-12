@@ -23,17 +23,17 @@ use HubspotSDK\Property;
  *   name: string,
  *   properties: list<Property>,
  *   requiredProperties: list<string>,
- *   archived?: bool,
- *   createdAt?: \DateTimeInterface,
- *   createdByUserID?: int,
- *   description?: string,
- *   fullyQualifiedName?: string,
- *   objectTypeID?: string,
- *   primaryDisplayProperty?: string,
- *   searchableProperties?: list<string>,
- *   secondaryDisplayProperties?: list<string>,
- *   updatedAt?: \DateTimeInterface,
- *   updatedByUserID?: int,
+ *   archived?: bool|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdByUserId?: int|null,
+ *   description?: string|null,
+ *   fullyQualifiedName?: string|null,
+ *   objectTypeId?: string|null,
+ *   primaryDisplayProperty?: string|null,
+ *   searchableProperties?: list<string>|null,
+ *   secondaryDisplayProperties?: list<string>|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedByUserId?: int|null,
  * }
  */
 final class ObjectSchema implements BaseModel, ResponseConverter
@@ -91,8 +91,8 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api('createdByUserId', optional: true)]
-    public ?int $createdByUserID;
+    #[Api(optional: true)]
+    public ?int $createdByUserId;
 
     #[Api(optional: true)]
     public ?string $description;
@@ -103,8 +103,8 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?string $fullyQualifiedName;
 
-    #[Api('objectTypeId', optional: true)]
-    public ?string $objectTypeID;
+    #[Api(optional: true)]
+    public ?string $objectTypeId;
 
     /**
      * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
@@ -134,8 +134,8 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Api('updatedByUserId', optional: true)]
-    public ?int $updatedByUserID;
+    #[Api(optional: true)]
+    public ?int $updatedByUserId;
 
     /**
      * `new ObjectSchema()` is missing required properties by the API.
@@ -189,15 +189,15 @@ final class ObjectSchema implements BaseModel, ResponseConverter
         array $requiredProperties,
         ?bool $archived = null,
         ?\DateTimeInterface $createdAt = null,
-        ?int $createdByUserID = null,
+        ?int $createdByUserId = null,
         ?string $description = null,
         ?string $fullyQualifiedName = null,
-        ?string $objectTypeID = null,
+        ?string $objectTypeId = null,
         ?string $primaryDisplayProperty = null,
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?int $updatedByUserID = null,
+        ?int $updatedByUserId = null,
     ): self {
         $obj = new self;
 
@@ -210,15 +210,15 @@ final class ObjectSchema implements BaseModel, ResponseConverter
 
         null !== $archived && $obj->archived = $archived;
         null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdByUserID && $obj->createdByUserID = $createdByUserID;
+        null !== $createdByUserId && $obj->createdByUserId = $createdByUserId;
         null !== $description && $obj->description = $description;
         null !== $fullyQualifiedName && $obj->fullyQualifiedName = $fullyQualifiedName;
-        null !== $objectTypeID && $obj->objectTypeID = $objectTypeID;
+        null !== $objectTypeId && $obj->objectTypeId = $objectTypeId;
         null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
         null !== $searchableProperties && $obj->searchableProperties = $searchableProperties;
         null !== $secondaryDisplayProperties && $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedByUserID && $obj->updatedByUserID = $updatedByUserID;
+        null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
 
         return $obj;
     }
@@ -314,7 +314,7 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     public function withCreatedByUserID(int $createdByUserID): self
     {
         $obj = clone $this;
-        $obj->createdByUserID = $createdByUserID;
+        $obj->createdByUserId = $createdByUserID;
 
         return $obj;
     }
@@ -341,7 +341,7 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -399,7 +399,7 @@ final class ObjectSchema implements BaseModel, ResponseConverter
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj->updatedByUserID = $updatedByUserID;
+        $obj->updatedByUserId = $updatedByUserID;
 
         return $obj;
     }

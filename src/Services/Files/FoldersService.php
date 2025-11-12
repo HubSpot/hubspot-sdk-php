@@ -19,8 +19,6 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Files\FoldersContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class FoldersService implements FoldersContract
 {
     /**
@@ -33,41 +31,19 @@ final class FoldersService implements FoldersContract
      *
      * Creates a folder.
      *
-     * @param string $name desired name for the folder
-     * @param string $parentFolderID FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
-     * @param string $parentPath Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
+     * @param array{
+     *   name: string, parentFolderId?: string, parentPath?: string
+     * }|FolderCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $name,
-        $parentFolderID = omit,
-        $parentPath = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Folder {
-        $params = [
-            'name' => $name,
-            'parentFolderID' => $parentFolderID,
-            'parentPath' => $parentPath,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|FolderCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): Folder {
         [$parsed, $options] = FolderCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -125,35 +101,18 @@ final class FoldersService implements FoldersContract
      *
      * Retrieve a folder by its ID.
      *
-     * @param list<string> $properties properties to set on returned folder
+     * @param array{properties?: list<string>}|FolderGetByIDParams $params
      *
      * @throws APIException
      */
     public function getByID(
         string $folderID,
-        $properties = omit,
-        ?RequestOptions $requestOptions = null
-    ): Folder {
-        $params = ['properties' => $properties];
-
-        return $this->getByIDRaw($folderID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getByIDRaw(
-        string $folderID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|FolderGetByIDParams $params,
+        ?RequestOptions $requestOptions = null,
     ): Folder {
         [$parsed, $options] = FolderGetByIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -171,35 +130,18 @@ final class FoldersService implements FoldersContract
      *
      * Retrieve a folder, identified by its path.
      *
-     * @param list<string> $properties properties to set on returned folder
+     * @param array{properties?: list<string>}|FolderGetByPathParams $params
      *
      * @throws APIException
      */
     public function getByPath(
         string $folderPath,
-        $properties = omit,
+        array|FolderGetByPathParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Folder {
-        $params = ['properties' => $properties];
-
-        return $this->getByPathRaw($folderPath, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getByPathRaw(
-        string $folderPath,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Folder {
         [$parsed, $options] = FolderGetByPathParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -237,87 +179,37 @@ final class FoldersService implements FoldersContract
      *
      * Search for folders. Does not contain hidden or archived folders.
      *
-     * @param string $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000. Narrow your search down if you are reaching this limit.
-     * @param string $before
-     * @param \DateTimeInterface $createdAt Search folders by exact time of creation. Time must be epoch time in milliseconds.
-     * @param \DateTimeInterface $createdAtGte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range.
-     * @param \DateTimeInterface $createdAtLte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range.
-     * @param int $idGte
-     * @param int $idLte
-     * @param list<int> $ids
-     * @param int $limit Number of items to return. Default limit is 10, maximum limit is 100.
-     * @param string $name search for folders containing the specified name
-     * @param list<int> $parentFolderIDs search folders with the given parent folderId
-     * @param string $path search folders by path
-     * @param list<string> $properties properties that should be included in the returned folders
-     * @param list<string> $sort Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending.
-     * @param \DateTimeInterface $updatedAt Search folders by exact time of latest updated. Time must be epoch time in milliseconds.
-     * @param \DateTimeInterface $updatedAtGte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range.
-     * @param \DateTimeInterface $updatedAtLte Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range.
+     * @param array{
+     *   after?: string,
+     *   before?: string,
+     *   createdAt?: string|\DateTimeInterface,
+     *   createdAtGte?: string|\DateTimeInterface,
+     *   createdAtLte?: string|\DateTimeInterface,
+     *   idGte?: int,
+     *   idLte?: int,
+     *   ids?: list<int>,
+     *   limit?: int,
+     *   name?: string,
+     *   parentFolderIds?: list<int>,
+     *   path?: string,
+     *   properties?: list<string>,
+     *   sort?: list<string>,
+     *   updatedAt?: string|\DateTimeInterface,
+     *   updatedAtGte?: string|\DateTimeInterface,
+     *   updatedAtLte?: string|\DateTimeInterface,
+     * }|FolderSearchParams $params
      *
      * @return Page<Folder>
      *
      * @throws APIException
      */
     public function search(
-        $after = omit,
-        $before = omit,
-        $createdAt = omit,
-        $createdAtGte = omit,
-        $createdAtLte = omit,
-        $idGte = omit,
-        $idLte = omit,
-        $ids = omit,
-        $limit = omit,
-        $name = omit,
-        $parentFolderIDs = omit,
-        $path = omit,
-        $properties = omit,
-        $sort = omit,
-        $updatedAt = omit,
-        $updatedAtGte = omit,
-        $updatedAtLte = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'before' => $before,
-            'createdAt' => $createdAt,
-            'createdAtGte' => $createdAtGte,
-            'createdAtLte' => $createdAtLte,
-            'idGte' => $idGte,
-            'idLte' => $idLte,
-            'ids' => $ids,
-            'limit' => $limit,
-            'name' => $name,
-            'parentFolderIDs' => $parentFolderIDs,
-            'path' => $path,
-            'properties' => $properties,
-            'sort' => $sort,
-            'updatedAt' => $updatedAt,
-            'updatedAtGte' => $updatedAtGte,
-            'updatedAtLte' => $updatedAtLte,
-        ];
-
-        return $this->searchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<Folder>
-     *
-     * @throws APIException
-     */
-    public function searchRaw(
-        array $params,
+        array|FolderSearchParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = FolderSearchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -336,39 +228,19 @@ final class FoldersService implements FoldersContract
      *
      * Update properties of folder by given ID. This action happens asynchronously and will update all of the folder's children as well.
      *
-     * @param string $id the unique identifier of the folder to be updated
-     * @param string $name the new name for the folder, which will also update the fullPath and all children of the folder
-     * @param int $parentFolderID the ID of the new parent folder, which will move the folder and its children into the specified folder
+     * @param array{
+     *   id: string, name?: string, parentFolderId?: int
+     * }|FolderUpdateAsyncByIDParams $params
      *
      * @throws APIException
      */
     public function updateAsyncByID(
-        $id,
-        $name = omit,
-        $parentFolderID = omit,
+        array|FolderUpdateAsyncByIDParams $params,
         ?RequestOptions $requestOptions = null,
-    ): FolderUpdateTaskLocator {
-        $params = [
-            'id' => $id, 'name' => $name, 'parentFolderID' => $parentFolderID,
-        ];
-
-        return $this->updateAsyncByIDRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateAsyncByIDRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): FolderUpdateTaskLocator {
         [$parsed, $options] = FolderUpdateAsyncByIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -386,37 +258,18 @@ final class FoldersService implements FoldersContract
      *
      * Update a folder's properties, identified by folder ID.
      *
-     * @param string $name New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
-     * @param int $parentFolderID New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+     * @param array{name?: string, parentFolderId?: int}|FolderUpdateByIDParams $params
      *
      * @throws APIException
      */
     public function updateByID(
         string $folderID,
-        $name = omit,
-        $parentFolderID = omit,
+        array|FolderUpdateByIDParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Folder {
-        $params = ['name' => $name, 'parentFolderID' => $parentFolderID];
-
-        return $this->updateByIDRaw($folderID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateByIDRaw(
-        string $folderID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Folder {
         [$parsed, $options] = FolderUpdateByIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

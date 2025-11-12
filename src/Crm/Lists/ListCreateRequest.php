@@ -21,13 +21,13 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *
  * @phpstan-type ListCreateRequestShape = array{
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   processingType: string,
- *   customProperties?: array<string, string>,
- *   filterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
- *   listFolderID?: int,
- *   listPermissions?: PublicListPermissions,
- *   membershipSettings?: PublicMembershipSettings,
+ *   customProperties?: array<string,string>|null,
+ *   filterBranch?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   listFolderId?: int|null,
+ *   listPermissions?: PublicListPermissions|null,
+ *   membershipSettings?: PublicMembershipSettings|null,
  * }
  */
 final class ListCreateRequest implements BaseModel
@@ -44,8 +44,8 @@ final class ListCreateRequest implements BaseModel
     /**
      * The object type ID of the type of objects that the list will store.
      */
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /**
      * The processing type of the list. One of: `SNAPSHOT`, `MANUAL`, or `DYNAMIC`.
@@ -56,7 +56,7 @@ final class ListCreateRequest implements BaseModel
     /**
      * The list of custom properties to tie to the list. Custom property name is the key, the value is the value.
      *
-     * @var array<string, string>|null $customProperties
+     * @var array<string,string>|null $customProperties
      */
     #[Api(map: 'string', optional: true)]
     public ?array $customProperties;
@@ -67,8 +67,8 @@ final class ListCreateRequest implements BaseModel
     /**
      * The ID of the folder that the list should be created in. If left blank, then the list will be created in the root of the list folder structure.
      */
-    #[Api('listFolderId', optional: true)]
-    public ?int $listFolderID;
+    #[Api(optional: true)]
+    public ?int $listFolderId;
 
     #[Api(optional: true)]
     public ?PublicListPermissions $listPermissions;
@@ -81,7 +81,7 @@ final class ListCreateRequest implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ListCreateRequest::with(name: ..., objectTypeID: ..., processingType: ...)
+     * ListCreateRequest::with(name: ..., objectTypeId: ..., processingType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -103,27 +103,27 @@ final class ListCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $customProperties
+     * @param array<string,string> $customProperties
      */
     public static function with(
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         string $processingType,
         ?array $customProperties = null,
         PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
-        ?int $listFolderID = null,
+        ?int $listFolderId = null,
         ?PublicListPermissions $listPermissions = null,
         ?PublicMembershipSettings $membershipSettings = null,
     ): self {
         $obj = new self;
 
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->processingType = $processingType;
 
         null !== $customProperties && $obj->customProperties = $customProperties;
         null !== $filterBranch && $obj->filterBranch = $filterBranch;
-        null !== $listFolderID && $obj->listFolderID = $listFolderID;
+        null !== $listFolderId && $obj->listFolderId = $listFolderId;
         null !== $listPermissions && $obj->listPermissions = $listPermissions;
         null !== $membershipSettings && $obj->membershipSettings = $membershipSettings;
 
@@ -147,7 +147,7 @@ final class ListCreateRequest implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class ListCreateRequest implements BaseModel
     /**
      * The list of custom properties to tie to the list. Custom property name is the key, the value is the value.
      *
-     * @param array<string, string> $customProperties
+     * @param array<string,string> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {
@@ -191,7 +191,7 @@ final class ListCreateRequest implements BaseModel
     public function withListFolderID(int $listFolderID): self
     {
         $obj = clone $this;
-        $obj->listFolderID = $listFolderID;
+        $obj->listFolderId = $listFolderID;
 
         return $obj;
     }

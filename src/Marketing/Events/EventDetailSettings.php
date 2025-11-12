@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type EventDetailSettingsShape = array{
- *   appID: int, eventDetailsURL: string
+ *   appId: int, eventDetailsUrl: string
  * }
  */
 final class EventDetailSettings implements BaseModel
@@ -21,21 +21,21 @@ final class EventDetailSettings implements BaseModel
     /**
      * The id of the application the settings are for.
      */
-    #[Api('appId')]
-    public int $appID;
+    #[Api]
+    public int $appId;
 
     /**
      * The url that will be used to fetch marketing event details by id.
      */
-    #[Api('eventDetailsUrl')]
-    public string $eventDetailsURL;
+    #[Api]
+    public string $eventDetailsUrl;
 
     /**
      * `new EventDetailSettings()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * EventDetailSettings::with(appID: ..., eventDetailsURL: ...)
+     * EventDetailSettings::with(appId: ..., eventDetailsUrl: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class EventDetailSettings implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID, string $eventDetailsURL): self
+    public static function with(int $appId, string $eventDetailsUrl): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->eventDetailsURL = $eventDetailsURL;
+        $obj->appId = $appId;
+        $obj->eventDetailsUrl = $eventDetailsUrl;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class EventDetailSettings implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class EventDetailSettings implements BaseModel
     public function withEventDetailsURL(string $eventDetailsURL): self
     {
         $obj = clone $this;
-        $obj->eventDetailsURL = $eventDetailsURL;
+        $obj->eventDetailsUrl = $eventDetailsURL;
 
         return $obj;
     }

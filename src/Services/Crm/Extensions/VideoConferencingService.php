@@ -11,7 +11,7 @@ use HubspotSDK\Services\Crm\Extensions\VideoConferencing\SettingsService;
 final class VideoConferencingService implements VideoConferencingContract
 {
     /**
-     * @@api
+     * @api
      */
     public SettingsService $settings;
 

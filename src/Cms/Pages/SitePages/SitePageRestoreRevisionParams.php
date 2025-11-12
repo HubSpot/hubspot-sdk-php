@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Pages\SitePages->restoreRevision
  *
- * @phpstan-type SitePageRestoreRevisionParamsShape = array{objectID: string}
+ * @phpstan-type SitePageRestoreRevisionParamsShape = array{objectId: string}
  */
 final class SitePageRestoreRevisionParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class SitePageRestoreRevisionParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $objectID;
+    public string $objectId;
 
     /**
      * `new SitePageRestoreRevisionParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SitePageRestoreRevisionParams::with(objectID: ...)
+     * SitePageRestoreRevisionParams::with(objectId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class SitePageRestoreRevisionParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectID): self
+    public static function with(string $objectId): self
     {
         $obj = new self;
 
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class SitePageRestoreRevisionParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

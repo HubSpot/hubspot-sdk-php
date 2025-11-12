@@ -11,10 +11,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicRecipientEggShape = array{
  *   deliveryIdentifiers: list<PublicDeliveryIdentifier>,
- *   actorID?: string,
- *   deliveryIdentifier?: PublicDeliveryIdentifier,
- *   name?: string,
- *   recipientField?: string,
+ *   actorId?: string|null,
+ *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+ *   name?: string|null,
+ *   recipientField?: string|null,
  * }
  */
 final class PublicRecipientEgg implements BaseModel
@@ -26,8 +26,8 @@ final class PublicRecipientEgg implements BaseModel
     #[Api(list: PublicDeliveryIdentifier::class)]
     public array $deliveryIdentifiers;
 
-    #[Api('actorId', optional: true)]
-    public ?string $actorID;
+    #[Api(optional: true)]
+    public ?string $actorId;
 
     #[Api(optional: true)]
     public ?PublicDeliveryIdentifier $deliveryIdentifier;
@@ -66,7 +66,7 @@ final class PublicRecipientEgg implements BaseModel
      */
     public static function with(
         array $deliveryIdentifiers,
-        ?string $actorID = null,
+        ?string $actorId = null,
         ?PublicDeliveryIdentifier $deliveryIdentifier = null,
         ?string $name = null,
         ?string $recipientField = null,
@@ -75,7 +75,7 @@ final class PublicRecipientEgg implements BaseModel
 
         $obj->deliveryIdentifiers = $deliveryIdentifiers;
 
-        null !== $actorID && $obj->actorID = $actorID;
+        null !== $actorId && $obj->actorId = $actorId;
         null !== $deliveryIdentifier && $obj->deliveryIdentifier = $deliveryIdentifier;
         null !== $name && $obj->name = $name;
         null !== $recipientField && $obj->recipientField = $recipientField;
@@ -97,7 +97,7 @@ final class PublicRecipientEgg implements BaseModel
     public function withActorID(string $actorID): self
     {
         $obj = clone $this;
-        $obj->actorID = $actorID;
+        $obj->actorId = $actorID;
 
         return $obj;
     }

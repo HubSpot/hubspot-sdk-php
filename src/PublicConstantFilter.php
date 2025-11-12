@@ -11,7 +11,7 @@ use HubspotSDK\PublicConstantFilter\FilterType;
 
 /**
  * @phpstan-type PublicConstantFilterShape = array{
- *   filterType: value-of<FilterType>, shouldAccept: bool, source?: string
+ *   filterType: value-of<FilterType>, shouldAccept: bool, source?: string|null
  * }
  */
 final class PublicConstantFilter implements BaseModel

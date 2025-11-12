@@ -21,7 +21,7 @@ use HubspotSDK\Events\EventDefinitions\DatePropertyOperation\PropertyType;
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
  *   year: int,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class DatePropertyOperation implements BaseModel

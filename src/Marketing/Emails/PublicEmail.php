@@ -27,46 +27,46 @@ use HubspotSDK\Marketing\Emails\PublicEmail\Type;
  *   subcategory: string,
  *   subject: string,
  *   to: PublicEmailToDetails,
- *   activeDomain?: string,
- *   allEmailCampaignIDs?: list<string>,
- *   archived?: bool,
- *   businessUnitID?: string,
- *   campaign?: string,
- *   campaignName?: string,
- *   campaignUtm?: string,
- *   clonedFrom?: string,
- *   createdAt?: \DateTimeInterface,
- *   createdByID?: string,
- *   deletedAt?: \DateTimeInterface,
- *   emailCampaignGroupID?: string,
- *   emailTemplateMode?: value-of<EmailTemplateMode>,
- *   feedbackSurveyID?: string,
- *   folderID?: int,
- *   folderIDV2?: int,
- *   isAb?: bool,
- *   isPublished?: bool,
- *   isTransactional?: bool,
- *   jitterSendTime?: bool,
- *   language?: value-of<Language>,
- *   previewKey?: string,
- *   primaryEmailCampaignID?: string,
- *   publishDate?: \DateTimeInterface,
- *   publishedAt?: \DateTimeInterface,
- *   publishedByEmail?: string,
- *   publishedByID?: string,
- *   publishedByName?: string,
- *   rssData?: PublicRssEmailDetails,
- *   stats?: EmailStatisticsData,
- *   subscriptionDetails?: PublicEmailSubscriptionDetails,
- *   teamsWithAccess?: list<string>,
- *   testing?: PublicEmailTestingDetails,
- *   type?: value-of<Type>,
- *   unpublishedAt?: \DateTimeInterface,
- *   updatedAt?: \DateTimeInterface,
- *   updatedByID?: string,
- *   usersWithAccess?: list<string>,
- *   webversion?: PublicWebversionDetails,
- *   workflowNames?: list<string>,
+ *   activeDomain?: string|null,
+ *   allEmailCampaignIds?: list<string>|null,
+ *   archived?: bool|null,
+ *   businessUnitId?: string|null,
+ *   campaign?: string|null,
+ *   campaignName?: string|null,
+ *   campaignUtm?: string|null,
+ *   clonedFrom?: string|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdById?: string|null,
+ *   deletedAt?: \DateTimeInterface|null,
+ *   emailCampaignGroupId?: string|null,
+ *   emailTemplateMode?: value-of<EmailTemplateMode>|null,
+ *   feedbackSurveyId?: string|null,
+ *   folderId?: int|null,
+ *   folderIdV2?: int|null,
+ *   isAb?: bool|null,
+ *   isPublished?: bool|null,
+ *   isTransactional?: bool|null,
+ *   jitterSendTime?: bool|null,
+ *   language?: value-of<Language>|null,
+ *   previewKey?: string|null,
+ *   primaryEmailCampaignId?: string|null,
+ *   publishDate?: \DateTimeInterface|null,
+ *   publishedAt?: \DateTimeInterface|null,
+ *   publishedByEmail?: string|null,
+ *   publishedById?: string|null,
+ *   publishedByName?: string|null,
+ *   rssData?: PublicRssEmailDetails|null,
+ *   stats?: EmailStatisticsData|null,
+ *   subscriptionDetails?: PublicEmailSubscriptionDetails|null,
+ *   teamsWithAccess?: list<string>|null,
+ *   testing?: PublicEmailTestingDetails|null,
+ *   type?: value-of<Type>|null,
+ *   unpublishedAt?: \DateTimeInterface|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedById?: string|null,
+ *   usersWithAccess?: list<string>|null,
+ *   webversion?: PublicWebversionDetails|null,
+ *   workflowNames?: list<string>|null,
  * }
  */
 final class PublicEmail implements BaseModel, ResponseConverter
@@ -141,10 +141,10 @@ final class PublicEmail implements BaseModel, ResponseConverter
     /**
      * List of emailCampaignIds.
      *
-     * @var list<string>|null $allEmailCampaignIDs
+     * @var list<string>|null $allEmailCampaignIds
      */
-    #[Api('allEmailCampaignIds', list: 'string', optional: true)]
-    public ?array $allEmailCampaignIDs;
+    #[Api(list: 'string', optional: true)]
+    public ?array $allEmailCampaignIds;
 
     /**
      * Determines if the email is archived or not.
@@ -152,8 +152,8 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?bool $archived;
 
-    #[Api('businessUnitId', optional: true)]
-    public ?string $businessUnitID;
+    #[Api(optional: true)]
+    public ?string $businessUnitId;
 
     /**
      * The campaign GUID on the email.
@@ -185,8 +185,8 @@ final class PublicEmail implements BaseModel, ResponseConverter
     /**
      * The id of the user who created the email.
      */
-    #[Api('createdById', optional: true)]
-    public ?string $createdByID;
+    #[Api(optional: true)]
+    public ?string $createdById;
 
     /**
      * The date and time the email was deleted at, in ISO8601 representation.
@@ -194,8 +194,8 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?\DateTimeInterface $deletedAt;
 
-    #[Api('emailCampaignGroupId', optional: true)]
-    public ?string $emailCampaignGroupID;
+    #[Api(optional: true)]
+    public ?string $emailCampaignGroupId;
 
     /** @var value-of<EmailTemplateMode>|null $emailTemplateMode */
     #[Api(enum: EmailTemplateMode::class, optional: true)]
@@ -204,14 +204,14 @@ final class PublicEmail implements BaseModel, ResponseConverter
     /**
      * The ID of the feedback survey linked to the email.
      */
-    #[Api('feedbackSurveyId', optional: true)]
-    public ?string $feedbackSurveyID;
+    #[Api(optional: true)]
+    public ?string $feedbackSurveyId;
 
-    #[Api('folderId', optional: true)]
-    public ?int $folderID;
+    #[Api(optional: true)]
+    public ?int $folderId;
 
-    #[Api('folderIdV2', optional: true)]
-    public ?int $folderIDV2;
+    #[Api(optional: true)]
+    public ?int $folderIdV2;
 
     #[Api(optional: true)]
     public ?bool $isAb;
@@ -238,8 +238,8 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?string $previewKey;
 
-    #[Api('primaryEmailCampaignId', optional: true)]
-    public ?string $primaryEmailCampaignID;
+    #[Api(optional: true)]
+    public ?string $primaryEmailCampaignId;
 
     /**
      * The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
@@ -262,8 +262,8 @@ final class PublicEmail implements BaseModel, ResponseConverter
     /**
      * The ID of the user who published the email.
      */
-    #[Api('publishedById', optional: true)]
-    public ?string $publishedByID;
+    #[Api(optional: true)]
+    public ?string $publishedById;
 
     /**
      * Name of the user who published the email.
@@ -316,8 +316,8 @@ final class PublicEmail implements BaseModel, ResponseConverter
     /**
      * The ID of the user who last updated the email.
      */
-    #[Api('updatedById', optional: true)]
-    public ?string $updatedByID;
+    #[Api(optional: true)]
+    public ?string $updatedById;
 
     /** @var list<string>|null $usersWithAccess */
     #[Api(list: 'string', optional: true)]
@@ -378,7 +378,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param State|value-of<State> $state
-     * @param list<string> $allEmailCampaignIDs
+     * @param list<string> $allEmailCampaignIds
      * @param EmailTemplateMode|value-of<EmailTemplateMode> $emailTemplateMode
      * @param Language|value-of<Language> $language
      * @param list<string> $teamsWithAccess
@@ -397,32 +397,32 @@ final class PublicEmail implements BaseModel, ResponseConverter
         string $subject,
         PublicEmailToDetails $to,
         ?string $activeDomain = null,
-        ?array $allEmailCampaignIDs = null,
+        ?array $allEmailCampaignIds = null,
         ?bool $archived = null,
-        ?string $businessUnitID = null,
+        ?string $businessUnitId = null,
         ?string $campaign = null,
         ?string $campaignName = null,
         ?string $campaignUtm = null,
         ?string $clonedFrom = null,
         ?\DateTimeInterface $createdAt = null,
-        ?string $createdByID = null,
+        ?string $createdById = null,
         ?\DateTimeInterface $deletedAt = null,
-        ?string $emailCampaignGroupID = null,
+        ?string $emailCampaignGroupId = null,
         EmailTemplateMode|string|null $emailTemplateMode = null,
-        ?string $feedbackSurveyID = null,
-        ?int $folderID = null,
-        ?int $folderIDV2 = null,
+        ?string $feedbackSurveyId = null,
+        ?int $folderId = null,
+        ?int $folderIdV2 = null,
         ?bool $isAb = null,
         ?bool $isPublished = null,
         ?bool $isTransactional = null,
         ?bool $jitterSendTime = null,
         Language|string|null $language = null,
         ?string $previewKey = null,
-        ?string $primaryEmailCampaignID = null,
+        ?string $primaryEmailCampaignId = null,
         ?\DateTimeInterface $publishDate = null,
         ?\DateTimeInterface $publishedAt = null,
         ?string $publishedByEmail = null,
-        ?string $publishedByID = null,
+        ?string $publishedById = null,
         ?string $publishedByName = null,
         ?PublicRssEmailDetails $rssData = null,
         ?EmailStatisticsData $stats = null,
@@ -432,7 +432,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
         Type|string|null $type = null,
         ?\DateTimeInterface $unpublishedAt = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?string $updatedByID = null,
+        ?string $updatedById = null,
         ?array $usersWithAccess = null,
         ?PublicWebversionDetails $webversion = null,
         ?array $workflowNames = null,
@@ -450,32 +450,32 @@ final class PublicEmail implements BaseModel, ResponseConverter
         $obj->to = $to;
 
         null !== $activeDomain && $obj->activeDomain = $activeDomain;
-        null !== $allEmailCampaignIDs && $obj->allEmailCampaignIDs = $allEmailCampaignIDs;
+        null !== $allEmailCampaignIds && $obj->allEmailCampaignIds = $allEmailCampaignIds;
         null !== $archived && $obj->archived = $archived;
-        null !== $businessUnitID && $obj->businessUnitID = $businessUnitID;
+        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
         null !== $campaign && $obj->campaign = $campaign;
         null !== $campaignName && $obj->campaignName = $campaignName;
         null !== $campaignUtm && $obj->campaignUtm = $campaignUtm;
         null !== $clonedFrom && $obj->clonedFrom = $clonedFrom;
         null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdByID && $obj->createdByID = $createdByID;
+        null !== $createdById && $obj->createdById = $createdById;
         null !== $deletedAt && $obj->deletedAt = $deletedAt;
-        null !== $emailCampaignGroupID && $obj->emailCampaignGroupID = $emailCampaignGroupID;
+        null !== $emailCampaignGroupId && $obj->emailCampaignGroupId = $emailCampaignGroupId;
         null !== $emailTemplateMode && $obj['emailTemplateMode'] = $emailTemplateMode;
-        null !== $feedbackSurveyID && $obj->feedbackSurveyID = $feedbackSurveyID;
-        null !== $folderID && $obj->folderID = $folderID;
-        null !== $folderIDV2 && $obj->folderIDV2 = $folderIDV2;
+        null !== $feedbackSurveyId && $obj->feedbackSurveyId = $feedbackSurveyId;
+        null !== $folderId && $obj->folderId = $folderId;
+        null !== $folderIdV2 && $obj->folderIdV2 = $folderIdV2;
         null !== $isAb && $obj->isAb = $isAb;
         null !== $isPublished && $obj->isPublished = $isPublished;
         null !== $isTransactional && $obj->isTransactional = $isTransactional;
         null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
         null !== $language && $obj['language'] = $language;
         null !== $previewKey && $obj->previewKey = $previewKey;
-        null !== $primaryEmailCampaignID && $obj->primaryEmailCampaignID = $primaryEmailCampaignID;
+        null !== $primaryEmailCampaignId && $obj->primaryEmailCampaignId = $primaryEmailCampaignId;
         null !== $publishDate && $obj->publishDate = $publishDate;
         null !== $publishedAt && $obj->publishedAt = $publishedAt;
         null !== $publishedByEmail && $obj->publishedByEmail = $publishedByEmail;
-        null !== $publishedByID && $obj->publishedByID = $publishedByID;
+        null !== $publishedById && $obj->publishedById = $publishedById;
         null !== $publishedByName && $obj->publishedByName = $publishedByName;
         null !== $rssData && $obj->rssData = $rssData;
         null !== $stats && $obj->stats = $stats;
@@ -485,7 +485,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
         null !== $type && $obj['type'] = $type;
         null !== $unpublishedAt && $obj->unpublishedAt = $unpublishedAt;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedByID && $obj->updatedByID = $updatedByID;
+        null !== $updatedById && $obj->updatedById = $updatedById;
         null !== $usersWithAccess && $obj->usersWithAccess = $usersWithAccess;
         null !== $webversion && $obj->webversion = $webversion;
         null !== $workflowNames && $obj->workflowNames = $workflowNames;
@@ -613,7 +613,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withAllEmailCampaignIDs(array $allEmailCampaignIDs): self
     {
         $obj = clone $this;
-        $obj->allEmailCampaignIDs = $allEmailCampaignIDs;
+        $obj->allEmailCampaignIds = $allEmailCampaignIDs;
 
         return $obj;
     }
@@ -632,7 +632,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withBusinessUnitID(string $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitID = $businessUnitID;
+        $obj->businessUnitId = $businessUnitID;
 
         return $obj;
     }
@@ -695,7 +695,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
-        $obj->createdByID = $createdByID;
+        $obj->createdById = $createdByID;
 
         return $obj;
     }
@@ -714,7 +714,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withEmailCampaignGroupID(string $emailCampaignGroupID): self
     {
         $obj = clone $this;
-        $obj->emailCampaignGroupID = $emailCampaignGroupID;
+        $obj->emailCampaignGroupId = $emailCampaignGroupID;
 
         return $obj;
     }
@@ -737,7 +737,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withFeedbackSurveyID(string $feedbackSurveyID): self
     {
         $obj = clone $this;
-        $obj->feedbackSurveyID = $feedbackSurveyID;
+        $obj->feedbackSurveyId = $feedbackSurveyID;
 
         return $obj;
     }
@@ -745,7 +745,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withFolderID(int $folderID): self
     {
         $obj = clone $this;
-        $obj->folderID = $folderID;
+        $obj->folderId = $folderID;
 
         return $obj;
     }
@@ -753,7 +753,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withFolderIDV2(int $folderIDV2): self
     {
         $obj = clone $this;
-        $obj->folderIDV2 = $folderIDV2;
+        $obj->folderIdV2 = $folderIDV2;
 
         return $obj;
     }
@@ -819,7 +819,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
         string $primaryEmailCampaignID
     ): self {
         $obj = clone $this;
-        $obj->primaryEmailCampaignID = $primaryEmailCampaignID;
+        $obj->primaryEmailCampaignId = $primaryEmailCampaignID;
 
         return $obj;
     }
@@ -863,7 +863,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withPublishedByID(string $publishedByID): self
     {
         $obj = clone $this;
-        $obj->publishedByID = $publishedByID;
+        $obj->publishedById = $publishedByID;
 
         return $obj;
     }
@@ -970,7 +970,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
-        $obj->updatedByID = $updatedByID;
+        $obj->updatedById = $updatedByID;
 
         return $obj;
     }

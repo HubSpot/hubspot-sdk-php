@@ -12,11 +12,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicInboxShape = array{
  *   archived: bool,
  *   type: string,
- *   id?: string,
- *   archivedAt?: \DateTimeInterface,
- *   createdAt?: \DateTimeInterface,
- *   name?: string,
- *   updatedAt?: \DateTimeInterface,
+ *   id?: string|null,
+ *   archivedAt?: \DateTimeInterface|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   name?: string|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class PublicInbox implements BaseModel

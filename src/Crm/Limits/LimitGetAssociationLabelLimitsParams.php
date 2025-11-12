@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Limits->getAssociationLabelLimits
  *
  * @phpstan-type LimitGetAssociationLabelLimitsParamsShape = array{
- *   fromObjectTypeID?: string, toObjectTypeID?: string
+ *   fromObjectTypeId?: string, toObjectTypeId?: string
  * }
  */
 final class LimitGetAssociationLabelLimitsParams implements BaseModel
@@ -25,10 +25,10 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
     use SdkParams;
 
     #[Api(optional: true)]
-    public ?string $fromObjectTypeID;
+    public ?string $fromObjectTypeId;
 
     #[Api(optional: true)]
-    public ?string $toObjectTypeID;
+    public ?string $toObjectTypeId;
 
     public function __construct()
     {
@@ -41,13 +41,13 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?string $fromObjectTypeID = null,
-        ?string $toObjectTypeID = null
+        ?string $fromObjectTypeId = null,
+        ?string $toObjectTypeId = null
     ): self {
         $obj = new self;
 
-        null !== $fromObjectTypeID && $obj->fromObjectTypeID = $fromObjectTypeID;
-        null !== $toObjectTypeID && $obj->toObjectTypeID = $toObjectTypeID;
+        null !== $fromObjectTypeId && $obj->fromObjectTypeId = $fromObjectTypeId;
+        null !== $toObjectTypeId && $obj->toObjectTypeId = $toObjectTypeId;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeID = $fromObjectTypeID;
+        $obj->fromObjectTypeId = $fromObjectTypeID;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->toObjectTypeID = $toObjectTypeID;
+        $obj->toObjectTypeId = $toObjectTypeID;
 
         return $obj;
     }

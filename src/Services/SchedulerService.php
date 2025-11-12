@@ -11,7 +11,7 @@ use HubspotSDK\Services\Scheduler\MeetingsService;
 final class SchedulerService implements SchedulerContract
 {
     /**
-     * @@api
+     * @api
      */
     public MeetingsService $meetings;
 

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type EmailCloneRequestVNextShape = array{
- *   id: string, cloneName?: string, language?: string
+ *   id: string, cloneName?: string|null, language?: string|null
  * }
  */
 final class EmailCloneRequestVNext implements BaseModel

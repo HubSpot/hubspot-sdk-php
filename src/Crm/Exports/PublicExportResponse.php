@@ -21,8 +21,8 @@ use HubspotSDK\Crm\Exports\PublicExportResponse\ExportType;
  *   objectProperties: list<string>,
  *   objectType: string,
  *   updatedAt: \DateTimeInterface,
- *   exportName?: string,
- *   recordCount?: int,
+ *   exportName?: string|null,
+ *   recordCount?: int|null,
  * }
  */
 final class PublicExportResponse implements BaseModel, ResponseConverter

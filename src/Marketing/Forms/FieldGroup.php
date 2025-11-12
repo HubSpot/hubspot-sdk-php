@@ -18,7 +18,7 @@ use HubspotSDK\Marketing\Forms\FieldGroup\RichTextType;
  *   fields: list<EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField>,
  *   groupType: value-of<GroupType>,
  *   richTextType: value-of<RichTextType>,
- *   richText?: string,
+ *   richText?: string|null,
  * }
  */
 final class FieldGroup implements BaseModel

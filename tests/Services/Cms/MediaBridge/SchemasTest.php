@@ -38,7 +38,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->update(
             'objectType',
-            appID: 'appId'
+            ['appId' => 'appId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +53,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->update(
             'objectType',
-            appID: 'appId'
+            ['appId' => 'appId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -80,9 +80,11 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->createAssociation(
             'objectType',
-            appID: 'appId',
-            fromObjectTypeID: 'fromObjectTypeId',
-            toObjectTypeID: 'toObjectTypeId',
+            [
+                'appId' => 'appId',
+                'fromObjectTypeId' => 'fromObjectTypeId',
+                'toObjectTypeId' => 'toObjectTypeId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -97,9 +99,11 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->createAssociation(
             'objectType',
-            appID: 'appId',
-            fromObjectTypeID: 'fromObjectTypeId',
-            toObjectTypeID: 'toObjectTypeId',
+            [
+                'appId' => 'appId',
+                'fromObjectTypeId' => 'fromObjectTypeId',
+                'toObjectTypeId' => 'toObjectTypeId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -114,8 +118,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->deleteAssociation(
             'associationId',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -130,8 +133,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->deleteAssociation(
             'associationId',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -146,7 +148,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->get(
             'objectType',
-            'appId'
+            ['appId' => 'appId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -161,7 +163,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->get(
             'objectType',
-            'appId'
+            ['appId' => 'appId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -15,12 +15,12 @@ use HubspotSDK\StandardError;
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   taskID: string,
- *   errors?: list<StandardError>,
- *   links?: array<string, string>,
- *   numErrors?: int,
- *   requestedAt?: \DateTimeInterface,
- *   result?: File,
+ *   taskId: string,
+ *   errors?: list<StandardError>|null,
+ *   links?: array<string,string>|null,
+ *   numErrors?: int|null,
+ *   requestedAt?: \DateTimeInterface|null,
+ *   result?: File|null,
  * }
  */
 final class FileActionResponse implements BaseModel
@@ -51,8 +51,8 @@ final class FileActionResponse implements BaseModel
     /**
      * ID of the requested task.
      */
-    #[Api('taskId')]
-    public string $taskID;
+    #[Api]
+    public string $taskId;
 
     /**
      * Descriptive error messages.
@@ -65,7 +65,7 @@ final class FileActionResponse implements BaseModel
     /**
      * Link to check the status of the requested task.
      *
-     * @var array<string, string>|null $links
+     * @var array<string,string>|null $links
      */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
@@ -94,7 +94,7 @@ final class FileActionResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * FileActionResponse::with(
-     *   completedAt: ..., startedAt: ..., status: ..., taskID: ...
+     *   completedAt: ..., startedAt: ..., status: ..., taskId: ...
      * )
      * ```
      *
@@ -120,13 +120,13 @@ final class FileActionResponse implements BaseModel
      *
      * @param Status|value-of<Status> $status
      * @param list<StandardError> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        string $taskID,
+        string $taskId,
         ?array $errors = null,
         ?array $links = null,
         ?int $numErrors = null,
@@ -138,7 +138,7 @@ final class FileActionResponse implements BaseModel
         $obj->completedAt = $completedAt;
         $obj->startedAt = $startedAt;
         $obj['status'] = $status;
-        $obj->taskID = $taskID;
+        $obj->taskId = $taskId;
 
         null !== $errors && $obj->errors = $errors;
         null !== $links && $obj->links = $links;
@@ -190,7 +190,7 @@ final class FileActionResponse implements BaseModel
     public function withTaskID(string $taskID): self
     {
         $obj = clone $this;
-        $obj->taskID = $taskID;
+        $obj->taskId = $taskID;
 
         return $obj;
     }
@@ -211,7 +211,7 @@ final class FileActionResponse implements BaseModel
     /**
      * Link to check the status of the requested task.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

@@ -36,7 +36,7 @@ final class BusinessUnitsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->businessUnits->getByUserID('userId');
+        $result = $this->client->businessUnits->getByUserID('userId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

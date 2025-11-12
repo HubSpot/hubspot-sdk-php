@@ -3,12 +3,6 @@
 namespace Tests\Services\Crm\Extensions;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Extensions\Cards\CardActions;
-use HubspotSDK\Crm\Extensions\Cards\CardDisplayBody;
-use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty;
-use HubspotSDK\Crm\Extensions\Cards\CardFetchBody;
-use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody;
-use HubspotSDK\Crm\Extensions\Cards\DisplayOption;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -44,29 +38,28 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->create(
             0,
-            actions: CardActions::with(baseURLs: ['https://www.example.com/hubspot']),
-            display: CardDisplayBody::with(
-                properties: [
-                    CardDisplayProperty::with(
-                        dataType: 'STRING',
-                        label: 'Pets Name',
-                        name: 'pet_name',
-                        options: [
-                            DisplayOption::with(label: 'label', name: 'name', type: 'DEFAULT'),
+            [
+                'actions' => ['baseUrls' => ['https://www.example.com/hubspot']],
+                'display' => [
+                    'properties' => [
+                        [
+                            'dataType' => 'STRING',
+                            'label' => 'Pets Name',
+                            'name' => 'pet_name',
+                            'options' => [
+                                ['label' => 'label', 'name' => 'name', 'type' => 'DEFAULT'],
+                            ],
                         ],
-                    ),
+                    ],
                 ],
-            ),
-            fetch: CardFetchBody::with(
-                objectTypes: [
-                    CardObjectTypeBody::with(
-                        name: 'contacts',
-                        propertiesToSend: ['email', 'firstname']
-                    ),
+                'fetch' => [
+                    'objectTypes' => [
+                        ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
+                    ],
+                    'targetUrl' => 'https://www.example.com/hubspot/target',
                 ],
-                targetURL: 'https://www.example.com/hubspot/target',
-            ),
-            title: 'PetSpot',
+                'title' => 'PetSpot',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -81,31 +74,30 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->create(
             0,
-            actions: CardActions::with(baseURLs: ['https://www.example.com/hubspot']),
-            display: CardDisplayBody::with(
-                properties: [
-                    CardDisplayProperty::with(
-                        dataType: 'STRING',
-                        label: 'Pets Name',
-                        name: 'pet_name',
-                        options: [
-                            DisplayOption::with(label: 'label', name: 'name', type: 'DEFAULT'),
+            [
+                'actions' => ['baseUrls' => ['https://www.example.com/hubspot']],
+                'display' => [
+                    'properties' => [
+                        [
+                            'dataType' => 'STRING',
+                            'label' => 'Pets Name',
+                            'name' => 'pet_name',
+                            'options' => [
+                                ['label' => 'label', 'name' => 'name', 'type' => 'DEFAULT'],
+                            ],
                         ],
-                    ),
+                    ],
                 ],
-            ),
-            fetch: CardFetchBody::with(
-                objectTypes: [
-                    CardObjectTypeBody::with(
-                        name: 'contacts',
-                        propertiesToSend: ['email', 'firstname']
-                    ),
+                'fetch' => [
+                    'objectTypes' => [
+                        ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
+                    ],
+                    'targetUrl' => 'https://www.example.com/hubspot/target',
+                    'cardType' => 'EXTERNAL',
+                    'serverlessFunction' => 'serverlessFunction',
                 ],
-                targetURL: 'https://www.example.com/hubspot/target',
-            )
-                ->withCardType('EXTERNAL')
-                ->withServerlessFunction('serverlessFunction'),
-            title: 'PetSpot',
+                'title' => 'PetSpot',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -118,7 +110,10 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->update('cardId', appID: 0);
+        $result = $this->client->crm->extensions->cards->update(
+            'cardId',
+            ['appId' => 0]
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -130,7 +125,10 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->update('cardId', appID: 0);
+        $result = $this->client->crm->extensions->cards->update(
+            'cardId',
+            ['appId' => 0]
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -154,7 +152,10 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->delete('cardId', 0);
+        $result = $this->client->crm->extensions->cards->delete(
+            'cardId',
+            ['appId' => 0]
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -166,7 +167,10 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->delete('cardId', 0);
+        $result = $this->client->crm->extensions->cards->delete(
+            'cardId',
+            ['appId' => 0]
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -178,7 +182,10 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->get('cardId', 0);
+        $result = $this->client->crm->extensions->cards->get(
+            'cardId',
+            ['appId' => 0]
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -190,7 +197,10 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->get('cardId', 0);
+        $result = $this->client->crm->extensions->cards->get(
+            'cardId',
+            ['appId' => 0]
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -18,7 +18,7 @@ use HubspotSDK\Events\EventDefinitions\RollingPropertyUpdatedOperation\PropertyT
  *   operator: value-of<Operator>,
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class RollingPropertyUpdatedOperation implements BaseModel

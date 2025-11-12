@@ -9,31 +9,25 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponseProperty;
 use HubspotSDK\Crm\Properties\CreatedResponseProperty;
 use HubspotSDK\Crm\Properties\PropertyCreateParams;
-use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
-use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
-use HubspotSDK\Crm\Properties\PropertyCreateParams\Type;
 use HubspotSDK\Crm\Properties\PropertyDeleteParams;
 use HubspotSDK\Crm\Properties\PropertyGetParams;
 use HubspotSDK\Crm\Properties\PropertyListParams;
 use HubspotSDK\Crm\Properties\PropertyUpdateParams;
-use HubspotSDK\OptionInput;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\PropertiesContract;
 use HubspotSDK\Services\Crm\Properties\BatchService;
 use HubspotSDK\Services\Crm\Properties\GroupsService;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class PropertiesService implements PropertiesContract
 {
     /**
-     * @@api
+     * @api
      */
     public BatchService $batch;
 
     /**
-     * @@api
+     * @api
      */
     public GroupsService $groups;
 
@@ -49,81 +43,44 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
+     * @phpstan-type FieldType = "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea"
+     *
      * Create and return a copy of a new property for the specified object type.
      *
-     * @param FieldType|value-of<FieldType> $fieldType
-     * @param string $groupName
-     * @param string $label
-     * @param string $name
-     * @param Type|value-of<Type> $type
-     * @param string $calculationFormula
-     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param string $description
-     * @param int $displayOrder
-     * @param bool $externalOptions
-     * @param bool $formField
-     * @param bool $hasUniqueValue
-     * @param bool $hidden
-     * @param list<OptionInput> $options
-     * @param string $referencedObjectType
+     * @param array{
+     *   fieldType: FieldType,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   type: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     *   calculationFormula?: string,
+     *   dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *   description?: string,
+     *   displayOrder?: int,
+     *   externalOptions?: bool,
+     *   formField?: bool,
+     *   hasUniqueValue?: bool,
+     *   hidden?: bool,
+     *   options?: list<array{
+     *     displayOrder: int,
+     *     hidden: bool,
+     *     label: string,
+     *     value: string,
+     *     description?: string,
+     *   }>,
+     *   referencedObjectType?: string,
+     * }|PropertyCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        $fieldType,
-        $groupName,
-        $label,
-        $name,
-        $type,
-        $calculationFormula = omit,
-        $dataSensitivity = omit,
-        $description = omit,
-        $displayOrder = omit,
-        $externalOptions = omit,
-        $formField = omit,
-        $hasUniqueValue = omit,
-        $hidden = omit,
-        $options = omit,
-        $referencedObjectType = omit,
+        array|PropertyCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CreatedResponseProperty {
-        $params = [
-            'fieldType' => $fieldType,
-            'groupName' => $groupName,
-            'label' => $label,
-            'name' => $name,
-            'type' => $type,
-            'calculationFormula' => $calculationFormula,
-            'dataSensitivity' => $dataSensitivity,
-            'description' => $description,
-            'displayOrder' => $displayOrder,
-            'externalOptions' => $externalOptions,
-            'formField' => $formField,
-            'hasUniqueValue' => $hasUniqueValue,
-            'hidden' => $hidden,
-            'options' => $options,
-            'referencedObjectType' => $referencedObjectType,
-        ];
-
-        return $this->createRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): CreatedResponseProperty {
         [$parsed, $options] = PropertyCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -139,69 +96,40 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
+     * @phpstan-type FieldTypeShape = "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea"
+     *
      * Perform a partial update of a property identified by { propertyName }. Provided fields will be overwritten.
      *
-     * @param string $objectType
-     * @param string $calculationFormula represents a formula that is used to compute a calculated property
-     * @param string $description a description of the property that will be shown as help text in HubSpot
-     * @param int $displayOrder Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
-     * @param PropertyUpdateParams\FieldType|value-of<PropertyUpdateParams\FieldType> $fieldType controls how the property appears in HubSpot
-     * @param bool $formField whether or not the property can be used in a HubSpot form
-     * @param string $groupName the name of the property group the property belongs to
-     * @param bool $hidden if true, the property won't be visible and can't be used in HubSpot
-     * @param string $label a human-readable property label that will be shown in HubSpot
-     * @param list<OptionInput> $options a list of valid options for the property
-     * @param PropertyUpdateParams\Type|value-of<PropertyUpdateParams\Type> $type the data type of the property
+     * @param array{
+     *   objectType: string,
+     *   calculationFormula?: string,
+     *   description?: string,
+     *   displayOrder?: int,
+     *   fieldType?: FieldTypeShape,
+     *   formField?: bool,
+     *   groupName?: string,
+     *   hidden?: bool,
+     *   label?: string,
+     *   options?: list<array{
+     *     displayOrder: int,
+     *     hidden: bool,
+     *     label: string,
+     *     value: string,
+     *     description?: string,
+     *   }>,
+     *   type?: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     * }|PropertyUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $propertyName,
-        $objectType,
-        $calculationFormula = omit,
-        $description = omit,
-        $displayOrder = omit,
-        $fieldType = omit,
-        $formField = omit,
-        $groupName = omit,
-        $hidden = omit,
-        $label = omit,
-        $options = omit,
-        $type = omit,
+        array|PropertyUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Property {
-        $params = [
-            'objectType' => $objectType,
-            'calculationFormula' => $calculationFormula,
-            'description' => $description,
-            'displayOrder' => $displayOrder,
-            'fieldType' => $fieldType,
-            'formField' => $formField,
-            'groupName' => $groupName,
-            'hidden' => $hidden,
-            'label' => $label,
-            'options' => $options,
-            'type' => $type,
-        ];
-
-        return $this->updateRaw($propertyName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $propertyName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Property {
         [$parsed, $options] = PropertyUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
@@ -221,37 +149,18 @@ final class PropertiesService implements PropertiesContract
      *
      * Read all existing properties for the specified object type and HubSpot account.
      *
-     * @param bool $archived whether to return only results that have been archived
-     * @param string $properties
+     * @param array{archived?: bool, properties?: string}|PropertyListParams $params
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        $archived = omit,
-        $properties = omit,
+        array|PropertyListParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseProperty {
-        $params = ['archived' => $archived, 'properties' => $properties];
-
-        return $this->listRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): CollectionResponseProperty {
         [$parsed, $options] = PropertyListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -269,35 +178,18 @@ final class PropertiesService implements PropertiesContract
      *
      * Move a property identified by {propertyName} to the recycling bin.
      *
-     * @param string $objectType
+     * @param array{objectType: string}|PropertyDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $propertyName,
-        $objectType,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['objectType' => $objectType];
-
-        return $this->deleteRaw($propertyName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $propertyName,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PropertyDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = PropertyDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
@@ -316,43 +208,20 @@ final class PropertiesService implements PropertiesContract
      *
      * Read a property identified by {propertyName}.
      *
-     * @param string $objectType
-     * @param bool $archived whether to return only results that have been archived
-     * @param string $properties
+     * @param array{
+     *   objectType: string, archived?: bool, properties?: string
+     * }|PropertyGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $propertyName,
-        $objectType,
-        $archived = omit,
-        $properties = omit,
+        array|PropertyGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Property {
-        $params = [
-            'objectType' => $objectType,
-            'archived' => $archived,
-            'properties' => $properties,
-        ];
-
-        return $this->getRaw($propertyName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $propertyName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Property {
         [$parsed, $options] = PropertyGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);

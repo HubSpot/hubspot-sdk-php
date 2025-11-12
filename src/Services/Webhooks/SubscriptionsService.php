@@ -9,7 +9,6 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Webhooks\SubscriptionsContract;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
-use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
 use HubspotSDK\Webhooks\SubscriptionListResponse;
 use HubspotSDK\Webhooks\SubscriptionResponse;
 use HubspotSDK\Webhooks\Subscriptions\SubscriptionCreateParams;
@@ -18,8 +17,6 @@ use HubspotSDK\Webhooks\Subscriptions\SubscriptionDeleteParams;
 use HubspotSDK\Webhooks\Subscriptions\SubscriptionGetParams;
 use HubspotSDK\Webhooks\Subscriptions\SubscriptionUpdateBatchParams;
 use HubspotSDK\Webhooks\Subscriptions\SubscriptionUpdateParams;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class SubscriptionsService implements SubscriptionsContract
 {
@@ -33,46 +30,23 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Create new event subscription for the specified app.
      *
-     * @param EventType|value-of<EventType> $eventType Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
-     * @param bool $active Determines if the subscription is active or paused. Defaults to false.
-     * @param string $objectTypeID
-     * @param string $propertyName The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
+     * @param array{
+     *   eventType: value-of<EventType>,
+     *   active?: bool,
+     *   objectTypeId?: string,
+     *   propertyName?: string,
+     * }|SubscriptionCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        $eventType,
-        $active = omit,
-        $objectTypeID = omit,
-        $propertyName = omit,
+        array|SubscriptionCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): SubscriptionResponse {
-        $params = [
-            'eventType' => $eventType,
-            'active' => $active,
-            'objectTypeID' => $objectTypeID,
-            'propertyName' => $propertyName,
-        ];
-
-        return $this->createRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): SubscriptionResponse {
         [$parsed, $options] = SubscriptionCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -90,46 +64,27 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Update an existing event subscription by ID.
      *
-     * @param int $appID
-     * @param bool $active determines if the subscription is active or paused
+     * @param array{appId: int, active?: bool}|SubscriptionUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         int $subscriptionID,
-        $appID,
-        $active = omit,
+        array|SubscriptionUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): SubscriptionResponse {
-        $params = ['appID' => $appID, 'active' => $active];
-
-        return $this->updateRaw($subscriptionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        int $subscriptionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): SubscriptionResponse {
         [$parsed, $options] = SubscriptionUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'patch',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: SubscriptionResponse::class,
         );
@@ -160,38 +115,21 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Delete an existing event subscription by ID.
      *
-     * @param int $appID
+     * @param array{appId: int}|SubscriptionDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         int $subscriptionID,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['appID' => $appID];
-
-        return $this->deleteRaw($subscriptionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        int $subscriptionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SubscriptionDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = SubscriptionDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -207,38 +145,21 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Retrieve a specific event subscription by ID.
      *
-     * @param int $appID
+     * @param array{appId: int}|SubscriptionGetParams $params
      *
      * @throws APIException
      */
     public function get(
         int $subscriptionID,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): SubscriptionResponse {
-        $params = ['appID' => $appID];
-
-        return $this->getRaw($subscriptionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        int $subscriptionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SubscriptionGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): SubscriptionResponse {
         [$parsed, $options] = SubscriptionGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -254,35 +175,20 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Batch create event subscriptions for the specified app.
      *
-     * @param list<SubscriptionBatchUpdateRequest> $inputs
+     * @param array{
+     *   inputs: list<array{id: int, active: bool}>
+     * }|SubscriptionUpdateBatchParams $params
      *
      * @throws APIException
      */
     public function updateBatch(
         int $appID,
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSubscriptionResponse {
-        $params = ['inputs' => $inputs];
-
-        return $this->updateBatchRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateBatchRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SubscriptionUpdateBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriptionResponse {
         [$parsed, $options] = SubscriptionUpdateBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

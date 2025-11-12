@@ -20,10 +20,10 @@ use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\Status;
  *   name: string,
  *   sourceOfStatus: value-of<SourceOfStatus>,
  *   status: value-of<Status>,
- *   brandID?: int,
- *   legalBasis?: value-of<LegalBasis>,
- *   legalBasisExplanation?: string,
- *   preferenceGroupName?: string,
+ *   brandId?: int|null,
+ *   legalBasis?: value-of<LegalBasis>|null,
+ *   legalBasisExplanation?: string|null,
+ *   preferenceGroupName?: string|null,
  * }
  */
 final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
@@ -70,8 +70,8 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     /**
      * The ID of the brand that the subscription is associated with, if there is one.
      */
-    #[Api('brandId', optional: true)]
-    public ?int $brandID;
+    #[Api(optional: true)]
+    public ?int $brandId;
 
     /**
      * The legal reason for the current status of the subscription.
@@ -134,7 +134,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
         string $name,
         SourceOfStatus|string $sourceOfStatus,
         Status|string $status,
-        ?int $brandID = null,
+        ?int $brandId = null,
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
         ?string $preferenceGroupName = null,
@@ -147,7 +147,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
         $obj['sourceOfStatus'] = $sourceOfStatus;
         $obj['status'] = $status;
 
-        null !== $brandID && $obj->brandID = $brandID;
+        null !== $brandId && $obj->brandId = $brandId;
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
         null !== $preferenceGroupName && $obj->preferenceGroupName = $preferenceGroupName;
@@ -221,7 +221,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     public function withBrandID(int $brandID): self
     {
         $obj = clone $this;
-        $obj->brandID = $brandID;
+        $obj->brandId = $brandID;
 
         return $obj;
     }

@@ -13,17 +13,17 @@ use HubspotSDK\Services\Crm\Extensions\VideoConferencingService;
 final class ExtensionsService implements ExtensionsContract
 {
     /**
-     * @@api
+     * @api
      */
     public CallingService $calling;
 
     /**
-     * @@api
+     * @api
      */
     public CardsService $cards;
 
     /**
-     * @@api
+     * @api
      */
     public VideoConferencingService $videoConferencing;
 

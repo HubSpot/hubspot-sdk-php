@@ -10,15 +10,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type SettingsPatchRequestShape = array{
- *   height?: int,
- *   isReady?: bool,
- *   name?: string,
- *   supportsCustomObjects?: bool,
- *   supportsInboundCalling?: bool,
- *   url?: string,
- *   usesCallingWindow?: bool,
- *   usesRemote?: bool,
- *   width?: int,
+ *   height?: int|null,
+ *   isReady?: bool|null,
+ *   name?: string|null,
+ *   supportsCustomObjects?: bool|null,
+ *   supportsInboundCalling?: bool|null,
+ *   url?: string|null,
+ *   usesCallingWindow?: bool|null,
+ *   usesRemote?: bool|null,
+ *   width?: int|null,
  * }
  */
 final class SettingsPatchRequest implements BaseModel

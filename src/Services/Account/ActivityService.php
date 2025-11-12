@@ -16,8 +16,6 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Account\ActivityContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class ActivityService implements ActivityContract
 {
     /**
@@ -30,54 +28,26 @@ final class ActivityService implements ActivityContract
      *
      * Retrieve activity history for user actions related to approvals, content updates, CRM object updates, security activity, and more (Enterprise only). Learn more about [activities included in audit log exports](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history-in-a-centralized-audit-log?hubs_content=knowledge.hubspot.com/account-management/view-and-export-account-activity-history&hubs_content-cta=centralized%20audit%20log#data-included-in-the-centralized-audit-log).
      *
-     * @param list<int> $actingUserID the ID of a user, for retrieving user-specific logs
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit the maximum number of results to display per page
-     * @param \DateTimeInterface $occurredAfter a timestamp, as a starting point for retrieving activity logs
-     * @param \DateTimeInterface $occurredBefore a timestamp, as an end point for retrieving activity logs
-     * @param list<string> $sort Set to `occurredAt` to order results by the time of the event. By default, events are ordered from oldest to newest.
+     * @param array{
+     *   actingUserId?: list<int>,
+     *   after?: string,
+     *   limit?: int,
+     *   occurredAfter?: string|\DateTimeInterface,
+     *   occurredBefore?: string|\DateTimeInterface,
+     *   sort?: list<string>,
+     * }|ActivityListAuditLogsParams $params
      *
      * @return Page<PublicAPIUserActionEvent>
      *
      * @throws APIException
      */
     public function listAuditLogs(
-        $actingUserID = omit,
-        $after = omit,
-        $limit = omit,
-        $occurredAfter = omit,
-        $occurredBefore = omit,
-        $sort = omit,
+        array|ActivityListAuditLogsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'actingUserID' => $actingUserID,
-            'after' => $after,
-            'limit' => $limit,
-            'occurredAfter' => $occurredAfter,
-            'occurredBefore' => $occurredBefore,
-            'sort' => $sort,
-        ];
-
-        return $this->listAuditLogsRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicAPIUserActionEvent>
-     *
-     * @throws APIException
-     */
-    public function listAuditLogsRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = ActivityListAuditLogsParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -96,41 +66,21 @@ final class ActivityService implements ActivityContract
      *
      * Retrieve logs of user actions related to [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
-     * @param int $userID the ID of a user, for retrieving user-specific logs
+     * @param array{
+     *   after?: string, limit?: int, userId?: int
+     * }|ActivityListLoginActivitiesParams $params
      *
      * @return Page<PublicLoginAudit>
      *
      * @throws APIException
      */
     public function listLoginActivities(
-        $after = omit,
-        $limit = omit,
-        $userID = omit,
+        array|ActivityListLoginActivitiesParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = ['after' => $after, 'limit' => $limit, 'userID' => $userID];
-
-        return $this->listLoginActivitiesRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicLoginAudit>
-     *
-     * @throws APIException
-     */
-    public function listLoginActivitiesRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = ActivityListLoginActivitiesParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -149,51 +99,25 @@ final class ActivityService implements ActivityContract
      *
      * Retrieve logs of user actions related to [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $fromTimestamp the start time, for retrieving logs within a specific timeframe
-     * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
-     * @param int $toTimestamp the end time, for retrieving logs within a specific timeframe
-     * @param int $userID the ID of a user, for retrieving user-specific logs
+     * @param array{
+     *   after?: string,
+     *   fromTimestamp?: int,
+     *   limit?: int,
+     *   toTimestamp?: int,
+     *   userId?: int,
+     * }|ActivityListSecurityActivitiesParams $params
      *
      * @return Page<HydratedCriticalAction>
      *
      * @throws APIException
      */
     public function listSecurityActivities(
-        $after = omit,
-        $fromTimestamp = omit,
-        $limit = omit,
-        $toTimestamp = omit,
-        $userID = omit,
+        array|ActivityListSecurityActivitiesParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'fromTimestamp' => $fromTimestamp,
-            'limit' => $limit,
-            'toTimestamp' => $toTimestamp,
-            'userID' => $userID,
-        ];
-
-        return $this->listSecurityActivitiesRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<HydratedCriticalAction>
-     *
-     * @throws APIException
-     */
-    public function listSecurityActivitiesRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = ActivityListSecurityActivitiesParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

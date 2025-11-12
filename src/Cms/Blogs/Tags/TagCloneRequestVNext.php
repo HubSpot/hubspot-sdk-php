@@ -12,7 +12,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Request body object for cloning blog tags.
  *
  * @phpstan-type TagCloneRequestVNextShape = array{
- *   id: string, name: string, language?: string, primaryLanguage?: string
+ *   id: string,
+ *   name: string,
+ *   language?: string|null,
+ *   primaryLanguage?: string|null,
  * }
  */
 final class TagCloneRequestVNext implements BaseModel

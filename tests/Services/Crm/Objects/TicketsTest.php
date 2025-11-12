@@ -36,9 +36,9 @@ final class TicketsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->tickets->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->tickets->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -50,9 +50,9 @@ final class TicketsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->tickets->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->tickets->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -66,7 +66,7 @@ final class TicketsTest extends TestCase
 
         $result = $this->client->crm->objects->tickets->update(
             'ticketId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -81,7 +81,7 @@ final class TicketsTest extends TestCase
 
         $result = $this->client->crm->objects->tickets->update(
             'ticketId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -94,7 +94,7 @@ final class TicketsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->tickets->list();
+        $result = $this->client->crm->objects->tickets->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -118,7 +118,7 @@ final class TicketsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->tickets->get('ticketId');
+        $result = $this->client->crm->objects->tickets->get('ticketId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -130,10 +130,10 @@ final class TicketsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->tickets->merge(
-            objectIDToMerge: 'objectIdToMerge',
-            primaryObjectID: 'primaryObjectId'
-        );
+        $result = $this->client->crm->objects->tickets->merge([
+            'objectIdToMerge' => 'objectIdToMerge',
+            'primaryObjectId' => 'primaryObjectId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -145,10 +145,10 @@ final class TicketsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->tickets->merge(
-            objectIDToMerge: 'objectIdToMerge',
-            primaryObjectID: 'primaryObjectId'
-        );
+        $result = $this->client->crm->objects->tickets->merge([
+            'objectIdToMerge' => 'objectIdToMerge',
+            'primaryObjectId' => 'primaryObjectId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -160,7 +160,7 @@ final class TicketsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->tickets->search();
+        $result = $this->client->crm->objects->tickets->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

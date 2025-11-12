@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\Crm\Extensions\Calling\RecordingSettings->markReady
  *
- * @phpstan-type RecordingSettingMarkReadyParamsShape = array{engagementID: int}
+ * @phpstan-type RecordingSettingMarkReadyParamsShape = array{engagementId: int}
  */
 final class RecordingSettingMarkReadyParams implements BaseModel
 {
@@ -20,15 +20,15 @@ final class RecordingSettingMarkReadyParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api('engagementId')]
-    public int $engagementID;
+    #[Api]
+    public int $engagementId;
 
     /**
      * `new RecordingSettingMarkReadyParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * RecordingSettingMarkReadyParams::with(engagementID: ...)
+     * RecordingSettingMarkReadyParams::with(engagementId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -47,11 +47,11 @@ final class RecordingSettingMarkReadyParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $engagementID): self
+    public static function with(int $engagementId): self
     {
         $obj = new self;
 
-        $obj->engagementID = $engagementID;
+        $obj->engagementId = $engagementId;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class RecordingSettingMarkReadyParams implements BaseModel
     public function withEngagementID(int $engagementID): self
     {
         $obj = clone $this;
-        $obj->engagementID = $engagementID;
+        $obj->engagementId = $engagementID;
 
         return $obj;
     }

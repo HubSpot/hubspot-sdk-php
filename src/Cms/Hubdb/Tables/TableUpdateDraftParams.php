@@ -20,12 +20,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   label: string,
  *   name: string,
  *   archived?: bool,
- *   includeForeignIDs?: bool,
+ *   includeForeignIds?: bool,
  *   isGetLocalizedSchema?: bool,
  *   allowChildTables?: bool,
- *   allowPublicAPIAccess?: bool,
+ *   allowPublicApiAccess?: bool,
  *   columns?: list<ColumnRequest>,
- *   dynamicMetaTags?: array<string, int>,
+ *   dynamicMetaTags?: array<string,int>,
  *   enableChildTablePages?: bool,
  *   useForPages?: bool,
  * }
@@ -58,7 +58,7 @@ final class TableUpdateDraftParams implements BaseModel
      * Set this to `true` to populate foreign ID values in the result.
      */
     #[Api(optional: true)]
-    public ?bool $includeForeignIDs;
+    public ?bool $includeForeignIds;
 
     #[Api(optional: true)]
     public ?bool $isGetLocalizedSchema;
@@ -72,8 +72,8 @@ final class TableUpdateDraftParams implements BaseModel
     /**
      * Specifies whether the table can be read by public without authorization.
      */
-    #[Api('allowPublicApiAccess', optional: true)]
-    public ?bool $allowPublicAPIAccess;
+    #[Api(optional: true)]
+    public ?bool $allowPublicApiAccess;
 
     /**
      * List of columns in the table.
@@ -86,7 +86,7 @@ final class TableUpdateDraftParams implements BaseModel
     /**
      * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
      *
-     * @var array<string, int>|null $dynamicMetaTags
+     * @var array<string,int>|null $dynamicMetaTags
      */
     #[Api(map: 'int', optional: true)]
     public ?array $dynamicMetaTags;
@@ -128,16 +128,16 @@ final class TableUpdateDraftParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<ColumnRequest> $columns
-     * @param array<string, int> $dynamicMetaTags
+     * @param array<string,int> $dynamicMetaTags
      */
     public static function with(
         string $label,
         string $name,
         ?bool $archived = null,
-        ?bool $includeForeignIDs = null,
+        ?bool $includeForeignIds = null,
         ?bool $isGetLocalizedSchema = null,
         ?bool $allowChildTables = null,
-        ?bool $allowPublicAPIAccess = null,
+        ?bool $allowPublicApiAccess = null,
         ?array $columns = null,
         ?array $dynamicMetaTags = null,
         ?bool $enableChildTablePages = null,
@@ -149,10 +149,10 @@ final class TableUpdateDraftParams implements BaseModel
         $obj->name = $name;
 
         null !== $archived && $obj->archived = $archived;
-        null !== $includeForeignIDs && $obj->includeForeignIDs = $includeForeignIDs;
+        null !== $includeForeignIds && $obj->includeForeignIds = $includeForeignIds;
         null !== $isGetLocalizedSchema && $obj->isGetLocalizedSchema = $isGetLocalizedSchema;
         null !== $allowChildTables && $obj->allowChildTables = $allowChildTables;
-        null !== $allowPublicAPIAccess && $obj->allowPublicAPIAccess = $allowPublicAPIAccess;
+        null !== $allowPublicApiAccess && $obj->allowPublicApiAccess = $allowPublicApiAccess;
         null !== $columns && $obj->columns = $columns;
         null !== $dynamicMetaTags && $obj->dynamicMetaTags = $dynamicMetaTags;
         null !== $enableChildTablePages && $obj->enableChildTablePages = $enableChildTablePages;
@@ -200,7 +200,7 @@ final class TableUpdateDraftParams implements BaseModel
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;
-        $obj->includeForeignIDs = $includeForeignIDs;
+        $obj->includeForeignIds = $includeForeignIDs;
 
         return $obj;
     }
@@ -230,7 +230,7 @@ final class TableUpdateDraftParams implements BaseModel
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
-        $obj->allowPublicAPIAccess = $allowPublicAPIAccess;
+        $obj->allowPublicApiAccess = $allowPublicAPIAccess;
 
         return $obj;
     }
@@ -251,7 +251,7 @@ final class TableUpdateDraftParams implements BaseModel
     /**
      * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
      *
-     * @param array<string, int> $dynamicMetaTags
+     * @param array<string,int> $dynamicMetaTags
      */
     public function withDynamicMetaTags(array $dynamicMetaTags): self
     {

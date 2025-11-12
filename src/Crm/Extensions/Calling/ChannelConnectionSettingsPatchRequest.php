@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ChannelConnectionSettingsPatchRequestShape = array{
- *   isReady?: bool, url?: string
+ *   isReady?: bool|null, url?: string|null
  * }
  */
 final class ChannelConnectionSettingsPatchRequest implements BaseModel

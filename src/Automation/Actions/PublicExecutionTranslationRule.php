@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicExecutionTranslationRuleShape = array{
- *   conditions: array<string, mixed>, labelName: string
+ *   conditions: array<string,mixed>, labelName: string
  * }
  */
 final class PublicExecutionTranslationRule implements BaseModel
@@ -18,7 +18,7 @@ final class PublicExecutionTranslationRule implements BaseModel
     /** @use SdkModel<PublicExecutionTranslationRuleShape> */
     use SdkModel;
 
-    /** @var array<string, mixed> $conditions */
+    /** @var array<string,mixed> $conditions */
     #[Api(map: 'mixed')]
     public array $conditions;
 
@@ -49,7 +49,7 @@ final class PublicExecutionTranslationRule implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, mixed> $conditions
+     * @param array<string,mixed> $conditions
      */
     public static function with(array $conditions, string $labelName): self
     {
@@ -62,7 +62,7 @@ final class PublicExecutionTranslationRule implements BaseModel
     }
 
     /**
-     * @param array<string, mixed> $conditions
+     * @param array<string,mixed> $conditions
      */
     public function withConditions(array $conditions): self
     {

@@ -13,7 +13,7 @@ use HubspotSDK\ForwardPaging;
  * Response object for collections of blog authors with pagination information.
  *
  * @phpstan-type CollectionResponseWithTotalBlogAuthorForwardPagingShape = array{
- *   results: list<BlogAuthor>, total: int, paging?: ForwardPaging
+ *   results: list<BlogAuthor>, total: int, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseWithTotalBlogAuthorForwardPaging implements BaseModel

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type QuickReplyShape = array{
- *   value: string, valueType: string, label?: string
+ *   value: string, valueType: string, label?: string|null
  * }
  */
 final class QuickReply implements BaseModel

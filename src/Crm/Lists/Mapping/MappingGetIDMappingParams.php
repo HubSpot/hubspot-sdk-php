@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Crm\Lists\Mapping->getIDMapping
  *
- * @phpstan-type MappingGetIDMappingParamsShape = array{legacyListID?: string}
+ * @phpstan-type MappingGetIDMappingParamsShape = array{legacyListId?: string}
  */
 final class MappingGetIDMappingParams implements BaseModel
 {
@@ -26,7 +26,7 @@ final class MappingGetIDMappingParams implements BaseModel
      * The legacy list id from lists v1 API.
      */
     #[Api(optional: true)]
-    public ?string $legacyListID;
+    public ?string $legacyListId;
 
     public function __construct()
     {
@@ -38,11 +38,11 @@ final class MappingGetIDMappingParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(?string $legacyListID = null): self
+    public static function with(?string $legacyListId = null): self
     {
         $obj = new self;
 
-        null !== $legacyListID && $obj->legacyListID = $legacyListID;
+        null !== $legacyListId && $obj->legacyListId = $legacyListId;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class MappingGetIDMappingParams implements BaseModel
     public function withLegacyListID(string $legacyListID): self
     {
         $obj = clone $this;
-        $obj->legacyListID = $legacyListID;
+        $obj->legacyListId = $legacyListID;
 
         return $obj;
     }

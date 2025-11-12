@@ -17,10 +17,10 @@ use HubspotSDK\Marketing\Forms\PaymentLinkRadioField\FieldType;
  *   hidden: bool,
  *   label: string,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   options: list<EnumeratedFieldOption>,
  *   required: bool,
- *   description?: string,
+ *   description?: string|null,
  * }
  */
 final class PaymentLinkRadioField implements BaseModel
@@ -49,8 +49,8 @@ final class PaymentLinkRadioField implements BaseModel
     #[Api]
     public string $name;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /** @var list<EnumeratedFieldOption> $options */
     #[Api(list: EnumeratedFieldOption::class)]
@@ -74,7 +74,7 @@ final class PaymentLinkRadioField implements BaseModel
      *   hidden: ...,
      *   label: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   options: ...,
      *   required: ...,
      * )
@@ -116,7 +116,7 @@ final class PaymentLinkRadioField implements BaseModel
         bool $hidden,
         string $label,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         array $options,
         bool $required,
         FieldType|string $fieldType = 'payment_link_radio',
@@ -130,7 +130,7 @@ final class PaymentLinkRadioField implements BaseModel
         $obj->hidden = $hidden;
         $obj->label = $label;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->options = $options;
         $obj->required = $required;
 
@@ -199,7 +199,7 @@ final class PaymentLinkRadioField implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

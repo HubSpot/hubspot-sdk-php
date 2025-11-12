@@ -15,9 +15,9 @@ use HubspotSDK\Crm\Filter\Operator;
  * @phpstan-type FilterShape = array{
  *   operator: value-of<Operator>,
  *   propertyName: string,
- *   highValue?: string,
- *   value?: string,
- *   values?: list<string>,
+ *   highValue?: string|null,
+ *   value?: string|null,
+ *   values?: list<string>|null,
  * }
  */
 final class Filter implements BaseModel

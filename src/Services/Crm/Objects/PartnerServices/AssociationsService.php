@@ -15,8 +15,6 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\PartnerServices\AssociationsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class AssociationsService implements AssociationsContract
 {
     /**
@@ -29,50 +27,27 @@ final class AssociationsService implements AssociationsContract
      *
      * Associate a partner service with another object
      *
-     * @param string $partnerServiceID
-     * @param string $toObjectType
-     * @param string $toObjectID
+     * @param array{
+     *   partnerServiceId: string, toObjectType: string, toObjectId: string
+     * }|AssociationUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $associationType,
-        $partnerServiceID,
-        $toObjectType,
-        $toObjectID,
-        ?RequestOptions $requestOptions = null,
-    ): SimplePublicObjectWithAssociations {
-        $params = [
-            'partnerServiceID' => $partnerServiceID,
-            'toObjectType' => $toObjectType,
-            'toObjectID' => $toObjectID,
-        ];
-
-        return $this->updateRaw($associationType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $associationType,
-        array $params,
+        array|AssociationUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
         [$parsed, $options] = AssociationUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $partnerServiceID = $parsed['partnerServiceID'];
-        unset($parsed['partnerServiceID']);
+        $partnerServiceID = $parsed['partnerServiceId'];
+        unset($parsed['partnerServiceId']);
         $toObjectType = $parsed['toObjectType'];
         unset($parsed['toObjectType']);
-        $toObjectID = $parsed['toObjectID'];
-        unset($parsed['toObjectID']);
+        $toObjectID = $parsed['toObjectId'];
+        unset($parsed['toObjectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -94,10 +69,9 @@ final class AssociationsService implements AssociationsContract
      *
      * List associations of a partner service by type
      *
-     * @param string $partnerServiceID
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $includeFa
-     * @param int $limit the maximum number of results to display per page
+     * @param array{
+     *   partnerServiceId: string, after?: string, includeFA?: bool, limit?: int
+     * }|AssociationListParams $params
      *
      * @return Page<AssociatedID>
      *
@@ -105,42 +79,15 @@ final class AssociationsService implements AssociationsContract
      */
     public function list(
         string $toObjectType,
-        $partnerServiceID,
-        $after = omit,
-        $includeFa = omit,
-        $limit = omit,
+        array|AssociationListParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'partnerServiceID' => $partnerServiceID,
-            'after' => $after,
-            'includeFa' => $includeFa,
-            'limit' => $limit,
-        ];
-
-        return $this->listRaw($toObjectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<AssociatedID>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = AssociationListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $partnerServiceID = $parsed['partnerServiceID'];
-        unset($parsed['partnerServiceID']);
+        $partnerServiceID = $parsed['partnerServiceId'];
+        unset($parsed['partnerServiceId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -162,50 +109,27 @@ final class AssociationsService implements AssociationsContract
      *
      * Remove an association between two partner services
      *
-     * @param string $partnerServiceID
-     * @param string $toObjectType
-     * @param string $toObjectID
+     * @param array{
+     *   partnerServiceId: string, toObjectType: string, toObjectId: string
+     * }|AssociationDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $associationType,
-        $partnerServiceID,
-        $toObjectType,
-        $toObjectID,
-        ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = [
-            'partnerServiceID' => $partnerServiceID,
-            'toObjectType' => $toObjectType,
-            'toObjectID' => $toObjectID,
-        ];
-
-        return $this->deleteRaw($associationType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $associationType,
-        array $params,
+        array|AssociationDeleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = AssociationDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $partnerServiceID = $parsed['partnerServiceID'];
-        unset($parsed['partnerServiceID']);
+        $partnerServiceID = $parsed['partnerServiceId'];
+        unset($parsed['partnerServiceId']);
         $toObjectType = $parsed['toObjectType'];
         unset($parsed['toObjectType']);
-        $toObjectID = $parsed['toObjectID'];
-        unset($parsed['toObjectID']);
+        $toObjectID = $parsed['toObjectId'];
+        unset($parsed['toObjectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

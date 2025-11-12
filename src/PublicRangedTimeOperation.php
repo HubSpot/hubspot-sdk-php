@@ -17,9 +17,9 @@ use HubspotSDK\PublicRangedTimeOperation\Type;
  *   operator: string,
  *   type: value-of<Type>,
  *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
- *   lowerBoundEndpointBehavior?: string,
- *   propertyParser?: string,
- *   upperBoundEndpointBehavior?: string,
+ *   lowerBoundEndpointBehavior?: string|null,
+ *   propertyParser?: string|null,
+ *   upperBoundEndpointBehavior?: string|null,
  * }
  */
 final class PublicRangedTimeOperation implements BaseModel

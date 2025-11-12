@@ -12,10 +12,10 @@ use HubspotSDK\PublicTodayReference\ReferenceType;
 /**
  * @phpstan-type PublicTodayReferenceShape = array{
  *   referenceType: value-of<ReferenceType>,
- *   hour?: int,
- *   millisecond?: int,
- *   minute?: int,
- *   second?: int,
+ *   hour?: int|null,
+ *   millisecond?: int|null,
+ *   minute?: int|null,
+ *   second?: int|null,
  * }
  */
 final class PublicTodayReference implements BaseModel

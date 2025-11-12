@@ -15,23 +15,23 @@ use HubspotSDK\Option;
  *   label: string,
  *   name: string,
  *   type: value-of<Type>,
- *   id?: string,
- *   createdAt?: \DateTimeInterface,
- *   createdBy?: SimpleUser,
- *   createdByUserID?: int,
- *   deleted?: bool,
- *   description?: string,
- *   foreignColumnID?: int,
- *   foreignIDs?: list<ForeignID>,
- *   foreignIDsByID?: array<string, ForeignID>,
- *   foreignIDsByName?: array<string, ForeignID>,
- *   foreignTableID?: int,
- *   optionCount?: int,
- *   options?: list<Option>,
- *   updatedAt?: \DateTimeInterface,
- *   updatedBy?: SimpleUser,
- *   updatedByUserID?: int,
- *   width?: int,
+ *   id?: string|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdBy?: SimpleUser|null,
+ *   createdByUserId?: int|null,
+ *   deleted?: bool|null,
+ *   description?: string|null,
+ *   foreignColumnId?: int|null,
+ *   foreignIds?: list<ForeignID>|null,
+ *   foreignIdsById?: array<string,ForeignID>|null,
+ *   foreignIdsByName?: array<string,ForeignID>|null,
+ *   foreignTableId?: int|null,
+ *   optionCount?: int|null,
+ *   options?: list<Option>|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedBy?: SimpleUser|null,
+ *   updatedByUserId?: int|null,
+ *   width?: int|null,
  * }
  */
 final class Column implements BaseModel
@@ -71,8 +71,8 @@ final class Column implements BaseModel
     #[Api(optional: true)]
     public ?SimpleUser $createdBy;
 
-    #[Api('createdByUserId', optional: true)]
-    public ?int $createdByUserID;
+    #[Api(optional: true)]
+    public ?int $createdByUserId;
 
     #[Api(optional: true)]
     public ?bool $deleted;
@@ -83,38 +83,38 @@ final class Column implements BaseModel
     /**
      * Foreign Column id.
      */
-    #[Api('foreignColumnId', optional: true)]
-    public ?int $foreignColumnID;
+    #[Api(optional: true)]
+    public ?int $foreignColumnId;
 
     /**
      * Foreign Ids.
      *
-     * @var list<ForeignID>|null $foreignIDs
+     * @var list<ForeignID>|null $foreignIds
      */
-    #[Api('foreignIds', list: ForeignID::class, optional: true)]
-    public ?array $foreignIDs;
+    #[Api(list: ForeignID::class, optional: true)]
+    public ?array $foreignIds;
 
     /**
      * Foreign ids.
      *
-     * @var array<string, ForeignID>|null $foreignIDsByID
+     * @var array<string,ForeignID>|null $foreignIdsById
      */
-    #[Api('foreignIdsById', map: ForeignID::class, optional: true)]
-    public ?array $foreignIDsByID;
+    #[Api(map: ForeignID::class, optional: true)]
+    public ?array $foreignIdsById;
 
     /**
      * Foreign ids by name.
      *
-     * @var array<string, ForeignID>|null $foreignIDsByName
+     * @var array<string,ForeignID>|null $foreignIdsByName
      */
-    #[Api('foreignIdsByName', map: ForeignID::class, optional: true)]
-    public ?array $foreignIDsByName;
+    #[Api(map: ForeignID::class, optional: true)]
+    public ?array $foreignIdsByName;
 
     /**
      * Foreign table id referenced.
      */
-    #[Api('foreignTableId', optional: true)]
-    public ?int $foreignTableID;
+    #[Api(optional: true)]
+    public ?int $foreignTableId;
 
     /**
      * Number of options available.
@@ -136,8 +136,8 @@ final class Column implements BaseModel
     #[Api(optional: true)]
     public ?SimpleUser $updatedBy;
 
-    #[Api('updatedByUserId', optional: true)]
-    public ?int $updatedByUserID;
+    #[Api(optional: true)]
+    public ?int $updatedByUserId;
 
     /**
      * Column width for HubDB UI.
@@ -170,9 +170,9 @@ final class Column implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param list<ForeignID> $foreignIDs
-     * @param array<string, ForeignID> $foreignIDsByID
-     * @param array<string, ForeignID> $foreignIDsByName
+     * @param list<ForeignID> $foreignIds
+     * @param array<string,ForeignID> $foreignIdsById
+     * @param array<string,ForeignID> $foreignIdsByName
      * @param list<Option> $options
      */
     public static function with(
@@ -182,19 +182,19 @@ final class Column implements BaseModel
         ?string $id = null,
         ?\DateTimeInterface $createdAt = null,
         ?SimpleUser $createdBy = null,
-        ?int $createdByUserID = null,
+        ?int $createdByUserId = null,
         ?bool $deleted = null,
         ?string $description = null,
-        ?int $foreignColumnID = null,
-        ?array $foreignIDs = null,
-        ?array $foreignIDsByID = null,
-        ?array $foreignIDsByName = null,
-        ?int $foreignTableID = null,
+        ?int $foreignColumnId = null,
+        ?array $foreignIds = null,
+        ?array $foreignIdsById = null,
+        ?array $foreignIdsByName = null,
+        ?int $foreignTableId = null,
         ?int $optionCount = null,
         ?array $options = null,
         ?\DateTimeInterface $updatedAt = null,
         ?SimpleUser $updatedBy = null,
-        ?int $updatedByUserID = null,
+        ?int $updatedByUserId = null,
         ?int $width = null,
     ): self {
         $obj = new self;
@@ -206,19 +206,19 @@ final class Column implements BaseModel
         null !== $id && $obj->id = $id;
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $createdBy && $obj->createdBy = $createdBy;
-        null !== $createdByUserID && $obj->createdByUserID = $createdByUserID;
+        null !== $createdByUserId && $obj->createdByUserId = $createdByUserId;
         null !== $deleted && $obj->deleted = $deleted;
         null !== $description && $obj->description = $description;
-        null !== $foreignColumnID && $obj->foreignColumnID = $foreignColumnID;
-        null !== $foreignIDs && $obj->foreignIDs = $foreignIDs;
-        null !== $foreignIDsByID && $obj->foreignIDsByID = $foreignIDsByID;
-        null !== $foreignIDsByName && $obj->foreignIDsByName = $foreignIDsByName;
-        null !== $foreignTableID && $obj->foreignTableID = $foreignTableID;
+        null !== $foreignColumnId && $obj->foreignColumnId = $foreignColumnId;
+        null !== $foreignIds && $obj->foreignIds = $foreignIds;
+        null !== $foreignIdsById && $obj->foreignIdsById = $foreignIdsById;
+        null !== $foreignIdsByName && $obj->foreignIdsByName = $foreignIdsByName;
+        null !== $foreignTableId && $obj->foreignTableId = $foreignTableId;
         null !== $optionCount && $obj->optionCount = $optionCount;
         null !== $options && $obj->options = $options;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
         null !== $updatedBy && $obj->updatedBy = $updatedBy;
-        null !== $updatedByUserID && $obj->updatedByUserID = $updatedByUserID;
+        null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
         null !== $width && $obj->width = $width;
 
         return $obj;
@@ -289,7 +289,7 @@ final class Column implements BaseModel
     public function withCreatedByUserID(int $createdByUserID): self
     {
         $obj = clone $this;
-        $obj->createdByUserID = $createdByUserID;
+        $obj->createdByUserId = $createdByUserID;
 
         return $obj;
     }
@@ -316,7 +316,7 @@ final class Column implements BaseModel
     public function withForeignColumnID(int $foreignColumnID): self
     {
         $obj = clone $this;
-        $obj->foreignColumnID = $foreignColumnID;
+        $obj->foreignColumnId = $foreignColumnID;
 
         return $obj;
     }
@@ -329,7 +329,7 @@ final class Column implements BaseModel
     public function withForeignIDs(array $foreignIDs): self
     {
         $obj = clone $this;
-        $obj->foreignIDs = $foreignIDs;
+        $obj->foreignIds = $foreignIDs;
 
         return $obj;
     }
@@ -337,12 +337,12 @@ final class Column implements BaseModel
     /**
      * Foreign ids.
      *
-     * @param array<string, ForeignID> $foreignIDsByID
+     * @param array<string,ForeignID> $foreignIDsByID
      */
     public function withForeignIDsByID(array $foreignIDsByID): self
     {
         $obj = clone $this;
-        $obj->foreignIDsByID = $foreignIDsByID;
+        $obj->foreignIdsById = $foreignIDsByID;
 
         return $obj;
     }
@@ -350,12 +350,12 @@ final class Column implements BaseModel
     /**
      * Foreign ids by name.
      *
-     * @param array<string, ForeignID> $foreignIDsByName
+     * @param array<string,ForeignID> $foreignIDsByName
      */
     public function withForeignIDsByName(array $foreignIDsByName): self
     {
         $obj = clone $this;
-        $obj->foreignIDsByName = $foreignIDsByName;
+        $obj->foreignIdsByName = $foreignIDsByName;
 
         return $obj;
     }
@@ -366,7 +366,7 @@ final class Column implements BaseModel
     public function withForeignTableID(int $foreignTableID): self
     {
         $obj = clone $this;
-        $obj->foreignTableID = $foreignTableID;
+        $obj->foreignTableId = $foreignTableID;
 
         return $obj;
     }
@@ -414,7 +414,7 @@ final class Column implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj->updatedByUserID = $updatedByUserID;
+        $obj->updatedByUserId = $updatedByUserID;
 
         return $obj;
     }

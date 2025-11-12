@@ -12,7 +12,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type APIFlowEmailCampaignShape = array{
- *   emailCampaignID: string, emailContentID: string, flowID: string
+ *   emailCampaignId: string, emailContentId: string, flowId: string
  * }
  */
 final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
@@ -22,14 +22,14 @@ final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
-    #[Api('emailCampaignId')]
-    public string $emailCampaignID;
+    #[Api]
+    public string $emailCampaignId;
 
-    #[Api('emailContentId')]
-    public string $emailContentID;
+    #[Api]
+    public string $emailContentId;
 
-    #[Api('flowId')]
-    public string $flowID;
+    #[Api]
+    public string $flowId;
 
     /**
      * `new APIFlowEmailCampaign()` is missing required properties by the API.
@@ -37,7 +37,7 @@ final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
      * To enforce required parameters use
      * ```
      * APIFlowEmailCampaign::with(
-     *   emailCampaignID: ..., emailContentID: ..., flowID: ...
+     *   emailCampaignId: ..., emailContentId: ..., flowId: ...
      * )
      * ```
      *
@@ -61,15 +61,15 @@ final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $emailCampaignID,
-        string $emailContentID,
-        string $flowID
+        string $emailCampaignId,
+        string $emailContentId,
+        string $flowId
     ): self {
         $obj = new self;
 
-        $obj->emailCampaignID = $emailCampaignID;
-        $obj->emailContentID = $emailContentID;
-        $obj->flowID = $flowID;
+        $obj->emailCampaignId = $emailCampaignId;
+        $obj->emailContentId = $emailContentId;
+        $obj->flowId = $flowId;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
     public function withEmailCampaignID(string $emailCampaignID): self
     {
         $obj = clone $this;
-        $obj->emailCampaignID = $emailCampaignID;
+        $obj->emailCampaignId = $emailCampaignID;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
     public function withEmailContentID(string $emailContentID): self
     {
         $obj = clone $this;
-        $obj->emailContentID = $emailContentID;
+        $obj->emailContentId = $emailContentID;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
     public function withFlowID(string $flowID): self
     {
         $obj = clone $this;
-        $obj->flowID = $flowID;
+        $obj->flowId = $flowID;
 
         return $obj;
     }

@@ -11,7 +11,7 @@ use HubspotSDK\Crm\AssociationSpecWithLabel\Category;
 
 /**
  * @phpstan-type AssociationSpecWithLabelShape = array{
- *   category: value-of<Category>, typeID: int, label?: string
+ *   category: value-of<Category>, typeId: int, label?: string|null
  * }
  */
 final class AssociationSpecWithLabel implements BaseModel
@@ -23,8 +23,8 @@ final class AssociationSpecWithLabel implements BaseModel
     #[Api(enum: Category::class)]
     public string $category;
 
-    #[Api('typeId')]
-    public int $typeID;
+    #[Api]
+    public int $typeId;
 
     #[Api(optional: true)]
     public ?string $label;
@@ -34,7 +34,7 @@ final class AssociationSpecWithLabel implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * AssociationSpecWithLabel::with(category: ..., typeID: ...)
+     * AssociationSpecWithLabel::with(category: ..., typeId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -57,13 +57,13 @@ final class AssociationSpecWithLabel implements BaseModel
      */
     public static function with(
         Category|string $category,
-        int $typeID,
+        int $typeId,
         ?string $label = null
     ): self {
         $obj = new self;
 
         $obj['category'] = $category;
-        $obj->typeID = $typeID;
+        $obj->typeId = $typeId;
 
         null !== $label && $obj->label = $label;
 
@@ -84,7 +84,7 @@ final class AssociationSpecWithLabel implements BaseModel
     public function withTypeID(int $typeID): self
     {
         $obj = clone $this;
-        $obj->typeID = $typeID;
+        $obj->typeId = $typeID;
 
         return $obj;
     }

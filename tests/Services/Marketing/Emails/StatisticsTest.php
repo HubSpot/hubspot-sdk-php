@@ -36,7 +36,7 @@ final class StatisticsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->statistics->get();
+        $result = $this->client->marketing->emails->statistics->get([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +48,7 @@ final class StatisticsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->statistics->getHistogram();
+        $result = $this->client->marketing->emails->statistics->getHistogram([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

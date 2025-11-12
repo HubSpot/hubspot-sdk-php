@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicActionFunctionIdentifierShape = array{
- *   functionType: value-of<FunctionType>, id?: string
+ *   functionType: value-of<FunctionType>, id?: string|null
  * }
  */
 final class PublicActionFunctionIdentifier implements BaseModel

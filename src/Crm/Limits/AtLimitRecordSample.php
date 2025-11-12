@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type AtLimitRecordSampleShape = array{label: string, objectID: int}
+ * @phpstan-type AtLimitRecordSampleShape = array{label: string, objectId: int}
  */
 final class AtLimitRecordSample implements BaseModel
 {
@@ -19,15 +19,15 @@ final class AtLimitRecordSample implements BaseModel
     #[Api]
     public string $label;
 
-    #[Api('objectId')]
-    public int $objectID;
+    #[Api]
+    public int $objectId;
 
     /**
      * `new AtLimitRecordSample()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * AtLimitRecordSample::with(label: ..., objectID: ...)
+     * AtLimitRecordSample::with(label: ..., objectId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -46,12 +46,12 @@ final class AtLimitRecordSample implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $label, int $objectID): self
+    public static function with(string $label, int $objectId): self
     {
         $obj = new self;
 
         $obj->label = $label;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class AtLimitRecordSample implements BaseModel
     public function withObjectID(int $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

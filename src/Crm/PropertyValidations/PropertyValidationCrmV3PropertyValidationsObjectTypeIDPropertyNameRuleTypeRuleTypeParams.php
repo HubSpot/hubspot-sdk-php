@@ -13,21 +13,19 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\PropertyValidations->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType
  *
  * @phpstan-type PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParamsShape = array{
- *   objectTypeID: string, propertyName: string, ruleArguments: list<string>
+ *   objectTypeId: string, propertyName: string, ruleArguments: list<string>
  * }
  */
 final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams implements BaseModel
 {
     /**
-     * @use SdkModel<
-     *   PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParamsShape,
-     * >
+     * @use SdkModel<PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParamsShape,>
      */
     use SdkModel;
     use SdkParams;
 
     #[Api]
-    public string $objectTypeID;
+    public string $objectTypeId;
 
     #[Api]
     public string $propertyName;
@@ -42,7 +40,7 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
      * To enforce required parameters use
      * ```
      * PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams::with(
-     *   objectTypeID: ..., propertyName: ..., ruleArguments: ...
+     *   objectTypeId: ..., propertyName: ..., ruleArguments: ...
      * )
      * ```
      *
@@ -68,13 +66,13 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
      * @param list<string> $ruleArguments
      */
     public static function with(
-        string $objectTypeID,
+        string $objectTypeId,
         string $propertyName,
         array $ruleArguments
     ): self {
         $obj = new self;
 
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->propertyName = $propertyName;
         $obj->ruleArguments = $ruleArguments;
 
@@ -84,7 +82,7 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

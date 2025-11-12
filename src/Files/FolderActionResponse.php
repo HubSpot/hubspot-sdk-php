@@ -15,12 +15,12 @@ use HubspotSDK\StandardError;
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   taskID: string,
- *   errors?: list<StandardError>,
- *   links?: array<string, string>,
- *   numErrors?: int,
- *   requestedAt?: \DateTimeInterface,
- *   result?: Folder,
+ *   taskId: string,
+ *   errors?: list<StandardError>|null,
+ *   links?: array<string,string>|null,
+ *   numErrors?: int|null,
+ *   requestedAt?: \DateTimeInterface|null,
+ *   result?: Folder|null,
  * }
  */
 final class FolderActionResponse implements BaseModel
@@ -51,8 +51,8 @@ final class FolderActionResponse implements BaseModel
     /**
      * ID of the task.
      */
-    #[Api('taskId')]
-    public string $taskID;
+    #[Api]
+    public string $taskId;
 
     /**
      * Detailed errors resulting from the task.
@@ -65,7 +65,7 @@ final class FolderActionResponse implements BaseModel
     /**
      * Link to check the status of the task.
      *
-     * @var array<string, string>|null $links
+     * @var array<string,string>|null $links
      */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
@@ -91,7 +91,7 @@ final class FolderActionResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * FolderActionResponse::with(
-     *   completedAt: ..., startedAt: ..., status: ..., taskID: ...
+     *   completedAt: ..., startedAt: ..., status: ..., taskId: ...
      * )
      * ```
      *
@@ -117,13 +117,13 @@ final class FolderActionResponse implements BaseModel
      *
      * @param Status|value-of<Status> $status
      * @param list<StandardError> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        string $taskID,
+        string $taskId,
         ?array $errors = null,
         ?array $links = null,
         ?int $numErrors = null,
@@ -135,7 +135,7 @@ final class FolderActionResponse implements BaseModel
         $obj->completedAt = $completedAt;
         $obj->startedAt = $startedAt;
         $obj['status'] = $status;
-        $obj->taskID = $taskID;
+        $obj->taskId = $taskId;
 
         null !== $errors && $obj->errors = $errors;
         null !== $links && $obj->links = $links;
@@ -187,7 +187,7 @@ final class FolderActionResponse implements BaseModel
     public function withTaskID(string $taskID): self
     {
         $obj = clone $this;
-        $obj->taskID = $taskID;
+        $obj->taskId = $taskID;
 
         return $obj;
     }
@@ -208,7 +208,7 @@ final class FolderActionResponse implements BaseModel
     /**
      * Link to check the status of the task.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

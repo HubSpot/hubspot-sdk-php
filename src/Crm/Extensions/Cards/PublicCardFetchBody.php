@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicCardFetchBodyShape = array{
- *   objectTypes: list<CardObjectTypeBody>, targetURL: string
+ *   objectTypes: list<CardObjectTypeBody>, targetUrl: string
  * }
  */
 final class PublicCardFetchBody implements BaseModel
@@ -22,15 +22,15 @@ final class PublicCardFetchBody implements BaseModel
     #[Api(list: CardObjectTypeBody::class)]
     public array $objectTypes;
 
-    #[Api('targetUrl')]
-    public string $targetURL;
+    #[Api]
+    public string $targetUrl;
 
     /**
      * `new PublicCardFetchBody()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicCardFetchBody::with(objectTypes: ..., targetURL: ...)
+     * PublicCardFetchBody::with(objectTypes: ..., targetUrl: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -51,12 +51,12 @@ final class PublicCardFetchBody implements BaseModel
      *
      * @param list<CardObjectTypeBody> $objectTypes
      */
-    public static function with(array $objectTypes, string $targetURL): self
+    public static function with(array $objectTypes, string $targetUrl): self
     {
         $obj = new self;
 
         $obj->objectTypes = $objectTypes;
-        $obj->targetURL = $targetURL;
+        $obj->targetUrl = $targetUrl;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class PublicCardFetchBody implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj->targetURL = $targetURL;
+        $obj->targetUrl = $targetURL;
 
         return $obj;
     }

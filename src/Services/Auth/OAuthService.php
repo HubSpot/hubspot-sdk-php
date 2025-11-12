@@ -6,15 +6,12 @@ namespace HubspotSDK\Services\Auth;
 
 use HubspotSDK\Auth\OAuth\AccessTokenInfoResponse;
 use HubspotSDK\Auth\OAuth\OAuthCreateAccessTokenParams;
-use HubspotSDK\Auth\OAuth\OAuthCreateAccessTokenParams\GrantType;
 use HubspotSDK\Auth\OAuth\RefreshTokenInfoResponse;
 use HubspotSDK\Auth\OAuth\TokenResponseIf;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Auth\OAuthContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class OAuthService implements OAuthContract
 {
@@ -32,50 +29,24 @@ final class OAuthService implements OAuthContract
      *
      * Note: HubSpot access tokens will fluctuate in size as the information that's encoded in them changes over time. It's recommended to allow for tokens to be up to 300 characters to account for any potential changes.
      *
-     * @param string $clientID
-     * @param string $clientSecret
-     * @param string $code
-     * @param GrantType|value-of<GrantType> $grantType
-     * @param string $redirectUri
-     * @param string $refreshToken
+     * @param array{
+     *   client_id?: string,
+     *   client_secret?: string,
+     *   code?: string,
+     *   grant_type?: "authorization_code"|"refresh_token",
+     *   redirect_uri?: string,
+     *   refresh_token?: string,
+     * }|OAuthCreateAccessTokenParams $params
      *
      * @throws APIException
      */
     public function createAccessToken(
-        $clientID = omit,
-        $clientSecret = omit,
-        $code = omit,
-        $grantType = omit,
-        $redirectUri = omit,
-        $refreshToken = omit,
+        array|OAuthCreateAccessTokenParams $params,
         ?RequestOptions $requestOptions = null,
-    ): TokenResponseIf {
-        $params = [
-            'clientID' => $clientID,
-            'clientSecret' => $clientSecret,
-            'code' => $code,
-            'grantType' => $grantType,
-            'redirectUri' => $redirectUri,
-            'refreshToken' => $refreshToken,
-        ];
-
-        return $this->createAccessTokenRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createAccessTokenRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): TokenResponseIf {
         [$parsed, $options] = OAuthCreateAccessTokenParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

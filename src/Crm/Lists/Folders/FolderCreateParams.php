@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Lists\Folders->create
  *
  * @phpstan-type FolderCreateParamsShape = array{
- *   name: string, parentFolderID?: string
+ *   name: string, parentFolderId?: string
  * }
  */
 final class FolderCreateParams implements BaseModel
@@ -33,8 +33,8 @@ final class FolderCreateParams implements BaseModel
     /**
      * The folder this should be created in, if not specified will be created in the root folder 0.
      */
-    #[Api('parentFolderId', optional: true)]
-    public ?string $parentFolderID;
+    #[Api(optional: true)]
+    public ?string $parentFolderId;
 
     /**
      * `new FolderCreateParams()` is missing required properties by the API.
@@ -62,13 +62,13 @@ final class FolderCreateParams implements BaseModel
      */
     public static function with(
         string $name,
-        ?string $parentFolderID = null
+        ?string $parentFolderId = null
     ): self {
         $obj = new self;
 
         $obj->name = $name;
 
-        null !== $parentFolderID && $obj->parentFolderID = $parentFolderID;
+        null !== $parentFolderId && $obj->parentFolderId = $parentFolderId;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class FolderCreateParams implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderID;
 
         return $obj;
     }

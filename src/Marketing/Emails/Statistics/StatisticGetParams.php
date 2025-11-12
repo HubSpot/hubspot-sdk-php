@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Marketing\Emails\Statistics->get
  *
  * @phpstan-type StatisticGetParamsShape = array{
- *   emailIDs?: list<int>,
+ *   emailIds?: list<int>,
  *   endTimestamp?: string,
  *   property?: string,
  *   startTimestamp?: string,
@@ -30,10 +30,10 @@ final class StatisticGetParams implements BaseModel
     /**
      * Filter by email IDs. Only include statistics of emails with these IDs.
      *
-     * @var list<int>|null $emailIDs
+     * @var list<int>|null $emailIds
      */
     #[Api(list: 'int', optional: true)]
-    public ?array $emailIDs;
+    public ?array $emailIds;
 
     /**
      * The end timestamp of the time span, in ISO8601 representation.
@@ -63,17 +63,17 @@ final class StatisticGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<int> $emailIDs
+     * @param list<int> $emailIds
      */
     public static function with(
-        ?array $emailIDs = null,
+        ?array $emailIds = null,
         ?string $endTimestamp = null,
         ?string $property = null,
         ?string $startTimestamp = null,
     ): self {
         $obj = new self;
 
-        null !== $emailIDs && $obj->emailIDs = $emailIDs;
+        null !== $emailIds && $obj->emailIds = $emailIds;
         null !== $endTimestamp && $obj->endTimestamp = $endTimestamp;
         null !== $property && $obj->property = $property;
         null !== $startTimestamp && $obj->startTimestamp = $startTimestamp;
@@ -89,7 +89,7 @@ final class StatisticGetParams implements BaseModel
     public function withEmailIDs(array $emailIDs): self
     {
         $obj = clone $this;
-        $obj->emailIDs = $emailIDs;
+        $obj->emailIds = $emailIDs;
 
         return $obj;
     }

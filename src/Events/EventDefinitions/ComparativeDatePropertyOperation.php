@@ -18,8 +18,8 @@ use HubspotSDK\Events\EventDefinitions\ComparativeDatePropertyOperation\Property
  *   operator: value-of<Operator>,
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
- *   defaultComparisonValue?: string,
- *   defaultValue?: string,
+ *   defaultComparisonValue?: string|null,
+ *   defaultValue?: string|null,
  * }
  */
 final class ComparativeDatePropertyOperation implements BaseModel

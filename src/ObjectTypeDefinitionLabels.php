@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ObjectTypeDefinitionLabelsShape = array{
- *   plural?: string, singular?: string
+ *   plural?: string|null, singular?: string|null
  * }
  */
 final class ObjectTypeDefinitionLabels implements BaseModel

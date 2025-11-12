@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Pipelines\Stages->get
  *
  * @phpstan-type StageGetParamsShape = array{
- *   objectType: string, pipelineID: string
+ *   objectType: string, pipelineId: string
  * }
  */
 final class StageGetParams implements BaseModel
@@ -28,14 +28,14 @@ final class StageGetParams implements BaseModel
     public string $objectType;
 
     #[Api]
-    public string $pipelineID;
+    public string $pipelineId;
 
     /**
      * `new StageGetParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * StageGetParams::with(objectType: ..., pipelineID: ...)
+     * StageGetParams::with(objectType: ..., pipelineId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class StageGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectType, string $pipelineID): self
+    public static function with(string $objectType, string $pipelineId): self
     {
         $obj = new self;
 
         $obj->objectType = $objectType;
-        $obj->pipelineID = $pipelineID;
+        $obj->pipelineId = $pipelineId;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class StageGetParams implements BaseModel
     public function withPipelineID(string $pipelineID): self
     {
         $obj = clone $this;
-        $obj->pipelineID = $pipelineID;
+        $obj->pipelineId = $pipelineID;
 
         return $obj;
     }

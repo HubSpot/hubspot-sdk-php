@@ -36,7 +36,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->create(name: 'name');
+        $result = $this->client->files->folders->create(['name' => 'name']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +48,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->create(name: 'name');
+        $result = $this->client->files->folders->create(['name' => 'name']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -84,7 +84,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->getByID('321669910225');
+        $result = $this->client->files->folders->getByID('321669910225', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -96,7 +96,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->getByPath('folderPath');
+        $result = $this->client->files->folders->getByPath('folderPath', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -120,7 +120,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->search();
+        $result = $this->client->files->folders->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -132,7 +132,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->updateAsyncByID(id: 'id');
+        $result = $this->client->files->folders->updateAsyncByID(['id' => 'id']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -144,7 +144,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->updateAsyncByID(id: 'id');
+        $result = $this->client->files->folders->updateAsyncByID(['id' => 'id']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -156,7 +156,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->updateByID('321669910225');
+        $result = $this->client->files->folders->updateByID('321669910225', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

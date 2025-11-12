@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   archived: bool,
  *   attachments: list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment>,
  *   client: PublicClient,
- *   conversationsThreadID: string,
+ *   conversationsThreadId: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   recipients: list<PublicRecipient>,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   senders: list<PublicSender>,
  *   text: string,
  *   type: value-of<Type>,
- *   updatedAt?: \DateTimeInterface,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class PublicComment implements BaseModel
@@ -47,8 +47,8 @@ final class PublicComment implements BaseModel
     #[Api]
     public PublicClient $client;
 
-    #[Api('conversationsThreadId')]
-    public string $conversationsThreadID;
+    #[Api]
+    public string $conversationsThreadId;
 
     #[Api]
     public \DateTimeInterface $createdAt;
@@ -87,7 +87,7 @@ final class PublicComment implements BaseModel
      *   archived: ...,
      *   attachments: ...,
      *   client: ...,
-     *   conversationsThreadID: ...,
+     *   conversationsThreadId: ...,
      *   createdAt: ...,
      *   createdBy: ...,
      *   recipients: ...,
@@ -136,7 +136,7 @@ final class PublicComment implements BaseModel
         bool $archived,
         array $attachments,
         PublicClient $client,
-        string $conversationsThreadID,
+        string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
         array $recipients,
@@ -152,7 +152,7 @@ final class PublicComment implements BaseModel
         $obj->archived = $archived;
         $obj->attachments = $attachments;
         $obj->client = $client;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadId;
         $obj->createdAt = $createdAt;
         $obj->createdBy = $createdBy;
         $obj->recipients = $recipients;
@@ -205,7 +205,7 @@ final class PublicComment implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadID;
 
         return $obj;
     }

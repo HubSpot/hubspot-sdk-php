@@ -16,14 +16,14 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  * @phpstan-type PublicUserShape = array{
  *   id: string,
  *   email: string,
- *   firstName?: string,
- *   lastName?: string,
- *   primaryTeamID?: string,
- *   roleID?: string,
- *   roleIDs?: list<string>,
- *   secondaryTeamIDs?: list<string>,
- *   sendWelcomeEmail?: bool,
- *   superAdmin?: bool,
+ *   firstName?: string|null,
+ *   lastName?: string|null,
+ *   primaryTeamId?: string|null,
+ *   roleId?: string|null,
+ *   roleIds?: list<string>|null,
+ *   secondaryTeamIds?: list<string>|null,
+ *   sendWelcomeEmail?: bool|null,
+ *   superAdmin?: bool|null,
  * }
  */
 final class PublicUser implements BaseModel, ResponseConverter
@@ -54,26 +54,26 @@ final class PublicUser implements BaseModel, ResponseConverter
     /**
      * The user's primary team.
      */
-    #[Api('primaryTeamId', optional: true)]
-    public ?string $primaryTeamID;
+    #[Api(optional: true)]
+    public ?string $primaryTeamId;
 
     /**
      * The user's role.
      */
-    #[Api('roleId', optional: true)]
-    public ?string $roleID;
+    #[Api(optional: true)]
+    public ?string $roleId;
 
-    /** @var list<string>|null $roleIDs */
-    #[Api('roleIds', list: 'string', optional: true)]
-    public ?array $roleIDs;
+    /** @var list<string>|null $roleIds */
+    #[Api(list: 'string', optional: true)]
+    public ?array $roleIds;
 
     /**
      * The user's additional teams.
      *
-     * @var list<string>|null $secondaryTeamIDs
+     * @var list<string>|null $secondaryTeamIds
      */
-    #[Api('secondaryTeamIds', list: 'string', optional: true)]
-    public ?array $secondaryTeamIDs;
+    #[Api(list: 'string', optional: true)]
+    public ?array $secondaryTeamIds;
 
     #[Api(optional: true)]
     public ?bool $sendWelcomeEmail;
@@ -105,18 +105,18 @@ final class PublicUser implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $roleIDs
-     * @param list<string> $secondaryTeamIDs
+     * @param list<string> $roleIds
+     * @param list<string> $secondaryTeamIds
      */
     public static function with(
         string $id,
         string $email,
         ?string $firstName = null,
         ?string $lastName = null,
-        ?string $primaryTeamID = null,
-        ?string $roleID = null,
-        ?array $roleIDs = null,
-        ?array $secondaryTeamIDs = null,
+        ?string $primaryTeamId = null,
+        ?string $roleId = null,
+        ?array $roleIds = null,
+        ?array $secondaryTeamIds = null,
         ?bool $sendWelcomeEmail = null,
         ?bool $superAdmin = null,
     ): self {
@@ -127,10 +127,10 @@ final class PublicUser implements BaseModel, ResponseConverter
 
         null !== $firstName && $obj->firstName = $firstName;
         null !== $lastName && $obj->lastName = $lastName;
-        null !== $primaryTeamID && $obj->primaryTeamID = $primaryTeamID;
-        null !== $roleID && $obj->roleID = $roleID;
-        null !== $roleIDs && $obj->roleIDs = $roleIDs;
-        null !== $secondaryTeamIDs && $obj->secondaryTeamIDs = $secondaryTeamIDs;
+        null !== $primaryTeamId && $obj->primaryTeamId = $primaryTeamId;
+        null !== $roleId && $obj->roleId = $roleId;
+        null !== $roleIds && $obj->roleIds = $roleIds;
+        null !== $secondaryTeamIds && $obj->secondaryTeamIds = $secondaryTeamIds;
         null !== $sendWelcomeEmail && $obj->sendWelcomeEmail = $sendWelcomeEmail;
         null !== $superAdmin && $obj->superAdmin = $superAdmin;
 
@@ -181,7 +181,7 @@ final class PublicUser implements BaseModel, ResponseConverter
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
-        $obj->primaryTeamID = $primaryTeamID;
+        $obj->primaryTeamId = $primaryTeamID;
 
         return $obj;
     }
@@ -192,7 +192,7 @@ final class PublicUser implements BaseModel, ResponseConverter
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
-        $obj->roleID = $roleID;
+        $obj->roleId = $roleID;
 
         return $obj;
     }
@@ -203,7 +203,7 @@ final class PublicUser implements BaseModel, ResponseConverter
     public function withRoleIDs(array $roleIDs): self
     {
         $obj = clone $this;
-        $obj->roleIDs = $roleIDs;
+        $obj->roleIds = $roleIDs;
 
         return $obj;
     }
@@ -216,7 +216,7 @@ final class PublicUser implements BaseModel, ResponseConverter
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
     {
         $obj = clone $this;
-        $obj->secondaryTeamIDs = $secondaryTeamIDs;
+        $obj->secondaryTeamIds = $secondaryTeamIDs;
 
         return $obj;
     }

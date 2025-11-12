@@ -83,8 +83,7 @@ final class ConditionalExpression implements ConverterSource
   use SdkUnion;
 
   /**
-  * @return list<string|Converter|ConverterSource>|array<string,
-  * string|Converter|ConverterSource,>
+  * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
  */
   static function variants(): array {
     return [

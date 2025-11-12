@@ -6,94 +6,49 @@ namespace HubspotSDK\ServiceContracts\Crm\Properties;
 
 use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
-use HubspotSDK\PropertyCreate;
-use HubspotSDK\PropertyName;
+use HubspotSDK\Crm\Properties\Batch\BatchCreateParams;
+use HubspotSDK\Crm\Properties\Batch\BatchDeleteParams;
+use HubspotSDK\Crm\Properties\Batch\BatchGetParams;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface BatchContract
 {
     /**
      * @api
      *
-     * @param list<PropertyCreate> $inputs
+     * @param array<mixed>|BatchCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseProperty;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $objectType,
-        array $params,
+        array|BatchCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseProperty;
 
     /**
      * @api
      *
-     * @param list<PropertyName> $inputs
+     * @param array<mixed>|BatchDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $objectType,
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $objectType,
-        array $params,
+        array|BatchDeleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param bool $archived
-     * @param list<PropertyName> $inputs
-     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
+     * @param array<mixed>|BatchGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $objectType,
-        $archived,
-        $inputs,
-        $dataSensitivity = omit,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseProperty;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $objectType,
-        array $params,
+        array|BatchGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseProperty;
 }

@@ -11,7 +11,9 @@ use HubspotSDK\OptionInput;
 
 /**
  * @phpstan-type ExternalBehavioralEventPropertyDefinitionPatchShape = array{
- *   description?: string, label?: string, options?: list<OptionInput>
+ *   description?: string|null,
+ *   label?: string|null,
+ *   options?: list<OptionInput>|null,
  * }
  */
 final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel

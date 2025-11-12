@@ -16,8 +16,6 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\ImportsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class ImportsService implements ImportsContract
 {
     /**
@@ -30,35 +28,17 @@ final class ImportsService implements ImportsContract
      *
      * Begins importing data from the specified file resources. This uploads the corresponding file and uses the import request object to convert rows in the files to objects.
      *
-     * @param string $files
-     * @param string $importRequest
+     * @param array{files?: string, importRequest?: string}|ImportCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $files = omit,
-        $importRequest = omit,
-        ?RequestOptions $requestOptions = null
-    ): PublicImportResponse {
-        $params = ['files' => $files, 'importRequest' => $importRequest];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|ImportCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): PublicImportResponse {
         [$parsed, $options] = ImportCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -77,41 +57,21 @@ final class ImportsService implements ImportsContract
      *
      * Returns a paged list of active imports for this account.
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param string $before
-     * @param int $limit the maximum number of results to display per page
+     * @param array{
+     *   after?: string, before?: string, limit?: int
+     * }|ImportListParams $params
      *
      * @return Page<PublicImportResponse>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $before = omit,
-        $limit = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicImportResponse>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|ImportListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = ImportListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -168,10 +128,9 @@ final class ImportsService implements ImportsContract
     /**
      * @api
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $includeErrorMessage set to True to receive a message explaining the error
-     * @param bool $includeRowData set to True to receive the data values for the errored row
-     * @param int $limit the maximum number of results to display per page
+     * @param array{
+     *   after?: string, includeErrorMessage?: bool, includeRowData?: bool, limit?: int
+     * }|ImportListErrorsParams $params
      *
      * @return Page<PublicImportError>
      *
@@ -179,39 +138,12 @@ final class ImportsService implements ImportsContract
      */
     public function listErrors(
         int $importID,
-        $after = omit,
-        $includeErrorMessage = omit,
-        $includeRowData = omit,
-        $limit = omit,
+        array|ImportListErrorsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'includeErrorMessage' => $includeErrorMessage,
-            'includeRowData' => $includeRowData,
-            'limit' => $limit,
-        ];
-
-        return $this->listErrorsRaw($importID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicImportError>
-     *
-     * @throws APIException
-     */
-    public function listErrorsRaw(
-        int $importID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = ImportListErrorsParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

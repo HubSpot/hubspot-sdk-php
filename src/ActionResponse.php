@@ -14,8 +14,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   links?: array<string, string>,
- *   requestedAt?: \DateTimeInterface,
+ *   links?: array<string,string>|null,
+ *   requestedAt?: \DateTimeInterface|null,
  * }
  */
 final class ActionResponse implements BaseModel
@@ -33,7 +33,7 @@ final class ActionResponse implements BaseModel
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var array<string, string>|null $links */
+    /** @var array<string,string>|null $links */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
@@ -65,7 +65,7 @@ final class ActionResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -114,7 +114,7 @@ final class ActionResponse implements BaseModel
     }
 
     /**
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

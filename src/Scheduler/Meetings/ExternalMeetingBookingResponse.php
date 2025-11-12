@@ -11,8 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type ExternalMeetingBookingResponseShape = array{
  *   bookingTimezone: string,
- *   calendarEventID: string,
- *   contactID: string,
+ *   calendarEventId: string,
+ *   contactId: string,
  *   duration: int,
  *   end: \DateTimeInterface,
  *   formFields: list<ExternalValidatedFormField>,
@@ -21,10 +21,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   legalConsentResponses: list<ExternalLegalConsentResponse>,
  *   start: \DateTimeInterface,
  *   subject: string,
- *   locale?: string,
- *   location?: string,
- *   webConferenceMeetingID?: string,
- *   webConferenceURL?: string,
+ *   locale?: string|null,
+ *   location?: string|null,
+ *   webConferenceMeetingId?: string|null,
+ *   webConferenceUrl?: string|null,
  * }
  */
 final class ExternalMeetingBookingResponse implements BaseModel
@@ -35,11 +35,11 @@ final class ExternalMeetingBookingResponse implements BaseModel
     #[Api]
     public string $bookingTimezone;
 
-    #[Api('calendarEventId')]
-    public string $calendarEventID;
+    #[Api]
+    public string $calendarEventId;
 
-    #[Api('contactId')]
-    public string $contactID;
+    #[Api]
+    public string $contactId;
 
     #[Api]
     public int $duration;
@@ -74,11 +74,11 @@ final class ExternalMeetingBookingResponse implements BaseModel
     #[Api(optional: true)]
     public ?string $location;
 
-    #[Api('webConferenceMeetingId', optional: true)]
-    public ?string $webConferenceMeetingID;
+    #[Api(optional: true)]
+    public ?string $webConferenceMeetingId;
 
-    #[Api('webConferenceUrl', optional: true)]
-    public ?string $webConferenceURL;
+    #[Api(optional: true)]
+    public ?string $webConferenceUrl;
 
     /**
      * `new ExternalMeetingBookingResponse()` is missing required properties by the API.
@@ -87,8 +87,8 @@ final class ExternalMeetingBookingResponse implements BaseModel
      * ```
      * ExternalMeetingBookingResponse::with(
      *   bookingTimezone: ...,
-     *   calendarEventID: ...,
-     *   contactID: ...,
+     *   calendarEventId: ...,
+     *   contactId: ...,
      *   duration: ...,
      *   end: ...,
      *   formFields: ...,
@@ -133,8 +133,8 @@ final class ExternalMeetingBookingResponse implements BaseModel
      */
     public static function with(
         string $bookingTimezone,
-        string $calendarEventID,
-        string $contactID,
+        string $calendarEventId,
+        string $contactId,
         int $duration,
         \DateTimeInterface $end,
         array $formFields,
@@ -145,14 +145,14 @@ final class ExternalMeetingBookingResponse implements BaseModel
         string $subject,
         ?string $locale = null,
         ?string $location = null,
-        ?string $webConferenceMeetingID = null,
-        ?string $webConferenceURL = null,
+        ?string $webConferenceMeetingId = null,
+        ?string $webConferenceUrl = null,
     ): self {
         $obj = new self;
 
         $obj->bookingTimezone = $bookingTimezone;
-        $obj->calendarEventID = $calendarEventID;
-        $obj->contactID = $contactID;
+        $obj->calendarEventId = $calendarEventId;
+        $obj->contactId = $contactId;
         $obj->duration = $duration;
         $obj->end = $end;
         $obj->formFields = $formFields;
@@ -164,8 +164,8 @@ final class ExternalMeetingBookingResponse implements BaseModel
 
         null !== $locale && $obj->locale = $locale;
         null !== $location && $obj->location = $location;
-        null !== $webConferenceMeetingID && $obj->webConferenceMeetingID = $webConferenceMeetingID;
-        null !== $webConferenceURL && $obj->webConferenceURL = $webConferenceURL;
+        null !== $webConferenceMeetingId && $obj->webConferenceMeetingId = $webConferenceMeetingId;
+        null !== $webConferenceUrl && $obj->webConferenceUrl = $webConferenceUrl;
 
         return $obj;
     }
@@ -181,7 +181,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withCalendarEventID(string $calendarEventID): self
     {
         $obj = clone $this;
-        $obj->calendarEventID = $calendarEventID;
+        $obj->calendarEventId = $calendarEventID;
 
         return $obj;
     }
@@ -189,7 +189,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withContactID(string $contactID): self
     {
         $obj = clone $this;
-        $obj->contactID = $contactID;
+        $obj->contactId = $contactID;
 
         return $obj;
     }
@@ -288,7 +288,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
         string $webConferenceMeetingID
     ): self {
         $obj = clone $this;
-        $obj->webConferenceMeetingID = $webConferenceMeetingID;
+        $obj->webConferenceMeetingId = $webConferenceMeetingID;
 
         return $obj;
     }
@@ -296,7 +296,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withWebConferenceURL(string $webConferenceURL): self
     {
         $obj = clone $this;
-        $obj->webConferenceURL = $webConferenceURL;
+        $obj->webConferenceUrl = $webConferenceURL;
 
         return $obj;
     }

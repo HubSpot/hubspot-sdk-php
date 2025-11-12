@@ -18,7 +18,7 @@ use HubspotSDK\Events\EventDefinitions\BoolPropertyOperation\PropertyType;
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
  *   value: bool,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class BoolPropertyOperation implements BaseModel

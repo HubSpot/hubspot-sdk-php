@@ -14,9 +14,9 @@ use HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType;
  *
  * @phpstan-type CardFetchBodyPatchShape = array{
  *   objectTypes: list<CardObjectTypeBody>,
- *   cardType?: value-of<CardType>,
- *   serverlessFunction?: string,
- *   targetURL?: string,
+ *   cardType?: value-of<CardType>|null,
+ *   serverlessFunction?: string|null,
+ *   targetUrl?: string|null,
  * }
  */
 final class CardFetchBodyPatch implements BaseModel
@@ -42,8 +42,8 @@ final class CardFetchBodyPatch implements BaseModel
     /**
      * URL to a service endpoint that will respond with details for this card. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
      */
-    #[Api('targetUrl', optional: true)]
-    public ?string $targetURL;
+    #[Api(optional: true)]
+    public ?string $targetUrl;
 
     /**
      * `new CardFetchBodyPatch()` is missing required properties by the API.
@@ -76,7 +76,7 @@ final class CardFetchBodyPatch implements BaseModel
         array $objectTypes,
         CardType|string|null $cardType = null,
         ?string $serverlessFunction = null,
-        ?string $targetURL = null,
+        ?string $targetUrl = null,
     ): self {
         $obj = new self;
 
@@ -84,7 +84,7 @@ final class CardFetchBodyPatch implements BaseModel
 
         null !== $cardType && $obj['cardType'] = $cardType;
         null !== $serverlessFunction && $obj->serverlessFunction = $serverlessFunction;
-        null !== $targetURL && $obj->targetURL = $targetURL;
+        null !== $targetUrl && $obj->targetUrl = $targetUrl;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class CardFetchBodyPatch implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj->targetURL = $targetURL;
+        $obj->targetUrl = $targetURL;
 
         return $obj;
     }

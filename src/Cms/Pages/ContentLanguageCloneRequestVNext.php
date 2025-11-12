@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Request body object for creating new language variant content.
  *
  * @phpstan-type ContentLanguageCloneRequestVNextShape = array{
- *   id: string, language?: string, primaryLanguage?: string
+ *   id: string, language?: string|null, primaryLanguage?: string|null
  * }
  */
 final class ContentLanguageCloneRequestVNext implements BaseModel

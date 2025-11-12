@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicMessageContentShape = array{
- *   richText?: string, text?: string
+ *   richText?: string|null, text?: string|null
  * }
  */
 final class PublicMessageContent implements BaseModel

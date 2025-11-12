@@ -17,15 +17,15 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  *   fullyQualifiedName: string,
  *   labels: ObjectTypeDefinitionLabels,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   requiredProperties: list<string>,
  *   searchableProperties: list<string>,
  *   secondaryDisplayProperties: list<string>,
- *   createdAt?: \DateTimeInterface,
- *   description?: string,
- *   portalID?: int,
- *   primaryDisplayProperty?: string,
- *   updatedAt?: \DateTimeInterface,
+ *   createdAt?: \DateTimeInterface|null,
+ *   description?: string|null,
+ *   portalId?: int|null,
+ *   primaryDisplayProperty?: string|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class ObjectTypeDefinition implements BaseModel
@@ -51,8 +51,8 @@ final class ObjectTypeDefinition implements BaseModel
     #[Api]
     public string $name;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /** @var list<string> $requiredProperties */
     #[Api(list: 'string')]
@@ -72,8 +72,8 @@ final class ObjectTypeDefinition implements BaseModel
     #[Api(optional: true)]
     public ?string $description;
 
-    #[Api('portalId', optional: true)]
-    public ?int $portalID;
+    #[Api(optional: true)]
+    public ?int $portalId;
 
     #[Api(optional: true)]
     public ?string $primaryDisplayProperty;
@@ -93,7 +93,7 @@ final class ObjectTypeDefinition implements BaseModel
      *   fullyQualifiedName: ...,
      *   labels: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   requiredProperties: ...,
      *   searchableProperties: ...,
      *   secondaryDisplayProperties: ...,
@@ -137,13 +137,13 @@ final class ObjectTypeDefinition implements BaseModel
         string $fullyQualifiedName,
         ObjectTypeDefinitionLabels $labels,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         array $requiredProperties,
         array $searchableProperties,
         array $secondaryDisplayProperties,
         ?\DateTimeInterface $createdAt = null,
         ?string $description = null,
-        ?int $portalID = null,
+        ?int $portalId = null,
         ?string $primaryDisplayProperty = null,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
@@ -155,14 +155,14 @@ final class ObjectTypeDefinition implements BaseModel
         $obj->fullyQualifiedName = $fullyQualifiedName;
         $obj->labels = $labels;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->requiredProperties = $requiredProperties;
         $obj->searchableProperties = $searchableProperties;
         $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
 
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $description && $obj->description = $description;
-        null !== $portalID && $obj->portalID = $portalID;
+        null !== $portalId && $obj->portalId = $portalId;
         null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
 
@@ -221,7 +221,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -279,7 +279,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }

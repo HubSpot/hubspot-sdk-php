@@ -14,10 +14,10 @@ use HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess\Type;
  *   communicationsCheckboxes: list<LegalConsentCheckbox>,
  *   privacyText: string,
  *   type: value-of<Type>,
- *   communicationConsentText?: string,
- *   consentToProcessCheckboxLabel?: string,
- *   consentToProcessFooterText?: string,
- *   consentToProcessText?: string,
+ *   communicationConsentText?: string|null,
+ *   consentToProcessCheckboxLabel?: string|null,
+ *   consentToProcessFooterText?: string|null,
+ *   consentToProcessText?: string|null,
  * }
  */
 final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel

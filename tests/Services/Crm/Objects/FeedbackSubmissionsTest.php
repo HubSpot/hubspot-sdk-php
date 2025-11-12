@@ -36,7 +36,7 @@ final class FeedbackSubmissionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->feedbackSubmissions->list();
+        $result = $this->client->crm->objects->feedbackSubmissions->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -49,7 +49,8 @@ final class FeedbackSubmissionsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->feedbackSubmissions->get(
-            'feedbackSubmissionId'
+            'feedbackSubmissionId',
+            []
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -62,7 +63,7 @@ final class FeedbackSubmissionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->feedbackSubmissions->search();
+        $result = $this->client->crm->objects->feedbackSubmissions->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

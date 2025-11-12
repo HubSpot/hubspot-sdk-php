@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExchangeRateUpdateRequestShape = array{
- *   id: string, conversionRate: float, effectiveAt?: \DateTimeInterface
+ *   id: string, conversionRate: float, effectiveAt?: \DateTimeInterface|null
  * }
  */
 final class ExchangeRateUpdateRequest implements BaseModel

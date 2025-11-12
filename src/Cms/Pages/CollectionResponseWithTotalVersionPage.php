@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
  * Response object for collections of page versions with pagination information.
  *
  * @phpstan-type CollectionResponseWithTotalVersionPageShape = array{
- *   results: list<VersionPage>, total: int, paging?: EmailsPaging
+ *   results: list<VersionPage>, total: int, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponseWithTotalVersionPage implements BaseModel

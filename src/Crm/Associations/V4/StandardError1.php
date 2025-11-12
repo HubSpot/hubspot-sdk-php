@@ -15,12 +15,12 @@ use HubspotSDK\ErrorDetail;
  *
  * @phpstan-type StandardError1Shape = array{
  *   category: string,
- *   context: array<string, list<string>>,
+ *   context: array<string,list<string>>,
  *   errors: list<ErrorDetail>,
- *   links: array<string, string>,
+ *   links: array<string,string>,
  *   message: string,
  *   status: string,
- *   id?: string,
+ *   id?: string|null,
  *   subCategory?: mixed,
  * }
  */
@@ -38,7 +38,7 @@ final class StandardError1 implements BaseModel
     /**
      * Additional context-specific information related to the error.
      *
-     * @var array<string, list<string>> $context
+     * @var array<string,list<string>> $context
      */
     #[Api(map: new ListOf('string'))]
     public array $context;
@@ -54,7 +54,7 @@ final class StandardError1 implements BaseModel
     /**
      * URLs linking to documentation or resources associated with the error.
      *
-     * @var array<string, string> $links
+     * @var array<string,string> $links
      */
     #[Api(map: 'string')]
     public array $links;
@@ -120,9 +120,9 @@ final class StandardError1 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, list<string>> $context
+     * @param array<string,list<string>> $context
      * @param list<ErrorDetail> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         string $category,
@@ -163,7 +163,7 @@ final class StandardError1 implements BaseModel
     /**
      * Additional context-specific information related to the error.
      *
-     * @param array<string, list<string>> $context
+     * @param array<string,list<string>> $context
      */
     public function withContext(array $context): self
     {
@@ -189,7 +189,7 @@ final class StandardError1 implements BaseModel
     /**
      * URLs linking to documentation or resources associated with the error.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

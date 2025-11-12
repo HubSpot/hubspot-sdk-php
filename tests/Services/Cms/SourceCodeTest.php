@@ -38,7 +38,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->create(
             'path',
-            environment: 'environment'
+            ['environment' => 'environment']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +53,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->create(
             'path',
-            environment: 'environment'
+            ['environment' => 'environment']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -66,7 +66,10 @@ final class SourceCodeTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->sourceCode->delete('path', 'environment');
+        $result = $this->client->cms->sourceCode->delete(
+            'path',
+            ['environment' => 'environment']
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -78,7 +81,10 @@ final class SourceCodeTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->sourceCode->delete('path', 'environment');
+        $result = $this->client->cms->sourceCode->delete(
+            'path',
+            ['environment' => 'environment']
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -90,7 +96,7 @@ final class SourceCodeTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->sourceCode->extractAsync('path');
+        $result = $this->client->cms->sourceCode->extractAsync(['path' => 'path']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -102,7 +108,7 @@ final class SourceCodeTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->sourceCode->extractAsync('path');
+        $result = $this->client->cms->sourceCode->extractAsync(['path' => 'path']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -114,7 +120,10 @@ final class SourceCodeTest extends TestCase
             $this->markTestSkipped("Prism doesn't support application/octet-stream responses");
         }
 
-        $result = $this->client->cms->sourceCode->get('path', 'environment');
+        $result = $this->client->cms->sourceCode->get(
+            'path',
+            ['environment' => 'environment']
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -126,7 +135,10 @@ final class SourceCodeTest extends TestCase
             $this->markTestSkipped("Prism doesn't support application/octet-stream responses");
         }
 
-        $result = $this->client->cms->sourceCode->get('path', 'environment');
+        $result = $this->client->cms->sourceCode->get(
+            'path',
+            ['environment' => 'environment']
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -152,7 +164,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->getMetadata(
             'path',
-            environment: 'environment'
+            ['environment' => 'environment']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -167,7 +179,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->getMetadata(
             'path',
-            environment: 'environment'
+            ['environment' => 'environment']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -182,7 +194,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->upsert(
             'path',
-            environment: 'environment'
+            ['environment' => 'environment']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -197,7 +209,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->upsert(
             'path',
-            environment: 'environment'
+            ['environment' => 'environment']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -212,7 +224,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->validate(
             'path',
-            environment: 'environment'
+            ['environment' => 'environment']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -227,7 +239,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->validate(
             'path',
-            environment: 'environment'
+            ['environment' => 'environment']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -13,10 +13,10 @@ use HubspotSDK\PublicPageViewAnalyticsFilter\FilterType;
  * @phpstan-type PublicPageViewAnalyticsFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operator: string,
- *   pageURL: string,
- *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
- *   enableTracking?: bool,
- *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   pageUrl: string,
+ *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   enableTracking?: bool|null,
+ *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
 final class PublicPageViewAnalyticsFilter implements BaseModel
@@ -31,8 +31,8 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
     #[Api]
     public string $operator;
 
-    #[Api('pageUrl')]
-    public string $pageURL;
+    #[Api]
+    public string $pageUrl;
 
     #[Api(optional: true)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
@@ -49,7 +49,7 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicPageViewAnalyticsFilter::with(
-     *   filterType: ..., operator: ..., pageURL: ...
+     *   filterType: ..., operator: ..., pageUrl: ...
      * )
      * ```
      *
@@ -76,7 +76,7 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
      */
     public static function with(
         string $operator,
-        string $pageURL,
+        string $pageUrl,
         FilterType|string $filterType = 'PAGE_VIEW',
         PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
         ?bool $enableTracking = null,
@@ -86,7 +86,7 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
 
         $obj['filterType'] = $filterType;
         $obj->operator = $operator;
-        $obj->pageURL = $pageURL;
+        $obj->pageUrl = $pageUrl;
 
         null !== $coalescingRefineBy && $obj->coalescingRefineBy = $coalescingRefineBy;
         null !== $enableTracking && $obj->enableTracking = $enableTracking;
@@ -117,7 +117,7 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
     public function withPageURL(string $pageURL): self
     {
         $obj = clone $this;
-        $obj->pageURL = $pageURL;
+        $obj->pageUrl = $pageURL;
 
         return $obj;
     }

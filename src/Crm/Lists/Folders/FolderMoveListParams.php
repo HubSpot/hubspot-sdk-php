@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Lists\Folders->moveList
  *
  * @phpstan-type FolderMoveListParamsShape = array{
- *   listID: string, newFolderID: string
+ *   listId: string, newFolderId: string
  * }
  */
 final class FolderMoveListParams implements BaseModel
@@ -27,21 +27,21 @@ final class FolderMoveListParams implements BaseModel
     /**
      * The Id of the list to move.
      */
-    #[Api('listId')]
-    public string $listID;
+    #[Api]
+    public string $listId;
 
     /**
      * The Id of folder to move the list to, the root folder is Id 0.
      */
-    #[Api('newFolderId')]
-    public string $newFolderID;
+    #[Api]
+    public string $newFolderId;
 
     /**
      * `new FolderMoveListParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FolderMoveListParams::with(listID: ..., newFolderID: ...)
+     * FolderMoveListParams::with(listId: ..., newFolderId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,12 +60,12 @@ final class FolderMoveListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $listID, string $newFolderID): self
+    public static function with(string $listId, string $newFolderId): self
     {
         $obj = new self;
 
-        $obj->listID = $listID;
-        $obj->newFolderID = $newFolderID;
+        $obj->listId = $listId;
+        $obj->newFolderId = $newFolderId;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class FolderMoveListParams implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listID = $listID;
+        $obj->listId = $listID;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class FolderMoveListParams implements BaseModel
     public function withNewFolderID(string $newFolderID): self
     {
         $obj = clone $this;
-        $obj->newFolderID = $newFolderID;
+        $obj->newFolderId = $newFolderID;
 
         return $obj;
     }

@@ -5,157 +5,79 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyGroupNoPaging;
+use HubspotSDK\Cms\MediaBridge\Groups\GroupCreateParams;
+use HubspotSDK\Cms\MediaBridge\Groups\GroupDeleteByNameParams;
+use HubspotSDK\Cms\MediaBridge\Groups\GroupGetByNameParams;
+use HubspotSDK\Cms\MediaBridge\Groups\GroupListParams;
+use HubspotSDK\Cms\MediaBridge\Groups\GroupUpdateByNameParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface GroupsContract
 {
     /**
      * @api
      *
-     * @param string $appID
-     * @param string $label
-     * @param string $name
-     * @param int $displayOrder
+     * @param array<mixed>|GroupCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        $appID,
-        $label,
-        $name,
-        $displayOrder = omit,
+        array|GroupCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): PropertyGroup;
-
-    /**
-     * @api
-     *
-     * @param string $appID
+     * @param array<mixed>|GroupListParams $params
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponsePropertyGroupNoPaging;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $objectType,
-        array $params,
+        array|GroupListParams $params,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePropertyGroupNoPaging;
 
     /**
      * @api
      *
-     * @param string $appID
-     * @param string $objectType
+     * @param array<mixed>|GroupDeleteByNameParams $params
      *
      * @throws APIException
      */
     public function deleteByName(
         string $groupName,
-        $appID,
-        $objectType,
+        array|GroupDeleteByNameParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteByNameRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $appID
-     * @param string $objectType
+     * @param array<mixed>|GroupGetByNameParams $params
      *
      * @throws APIException
      */
     public function getByName(
         string $groupName,
-        $appID,
-        $objectType,
+        array|GroupGetByNameParams $params,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getByNameRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PropertyGroup;
-
-    /**
-     * @api
-     *
-     * @param string $appID
-     * @param string $objectType
-     * @param int $displayOrder
-     * @param string $label
+     * @param array<mixed>|GroupUpdateByNameParams $params
      *
      * @throws APIException
      */
     public function updateByName(
         string $groupName,
-        $appID,
-        $objectType,
-        $displayOrder = omit,
-        $label = omit,
+        array|GroupUpdateByNameParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PropertyGroup;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateByNameRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PropertyGroup;
 }

@@ -16,8 +16,6 @@ use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Lists\FoldersContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class FoldersService implements FoldersContract
 {
     /**
@@ -30,35 +28,17 @@ final class FoldersService implements FoldersContract
      *
      * Creates a folder with the given information.
      *
-     * @param string $name the name of the folder to be created
-     * @param string $parentFolderID the folder this should be created in, if not specified will be created in the root folder 0
+     * @param array{name: string, parentFolderId?: string}|FolderCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $name,
-        $parentFolderID = omit,
-        ?RequestOptions $requestOptions = null
-    ): ListFolderCreateResponse {
-        $params = ['name' => $name, 'parentFolderID' => $parentFolderID];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|FolderCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): ListFolderCreateResponse {
         [$parsed, $options] = FolderCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -96,33 +76,17 @@ final class FoldersService implements FoldersContract
      *
      * Retrieves a folder and recursively includes all folders via the childNodes attribute.  The child lists field will be empty in all child nodes. Only the folder retrieved will include the child lists in that folder.
      *
-     * @param string $folderID the Id of the folder to retrieve
+     * @param array{folderId?: string}|FolderGetParams $params
      *
      * @throws APIException
      */
     public function get(
-        $folderID = omit,
-        ?RequestOptions $requestOptions = null
-    ): ListFolderFetchResponse {
-        $params = ['folderID' => $folderID];
-
-        return $this->getRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        array $params,
+        array|FolderGetParams $params,
         ?RequestOptions $requestOptions = null
     ): ListFolderFetchResponse {
         [$parsed, $options] = FolderGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -140,38 +104,21 @@ final class FoldersService implements FoldersContract
      *
      * This moves the folder from its current location to a new location. It updates the parent of this folder to the new Id given.
      *
-     * @param string $folderID
+     * @param array{folderId: string}|FolderMoveParams $params
      *
      * @throws APIException
      */
     public function move(
         string $newParentFolderID,
-        $folderID,
-        ?RequestOptions $requestOptions = null
-    ): ListFolderFetchResponse {
-        $params = ['folderID' => $folderID];
-
-        return $this->moveRaw($newParentFolderID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function moveRaw(
-        string $newParentFolderID,
-        array $params,
+        array|FolderMoveParams $params,
         ?RequestOptions $requestOptions = null,
     ): ListFolderFetchResponse {
         [$parsed, $options] = FolderMoveParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $folderID = $parsed['folderID'];
-        unset($parsed['folderID']);
+        $folderID = $parsed['folderId'];
+        unset($parsed['folderId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -189,35 +136,17 @@ final class FoldersService implements FoldersContract
      *
      * Given a list and a folder, the list will be moved to that folder.
      *
-     * @param string $listID the Id of the list to move
-     * @param string $newFolderID the Id of folder to move the list to, the root folder is Id 0
+     * @param array{listId: string, newFolderId: string}|FolderMoveListParams $params
      *
      * @throws APIException
      */
     public function moveList(
-        $listID,
-        $newFolderID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['listID' => $listID, 'newFolderID' => $newFolderID];
-
-        return $this->moveListRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function moveListRaw(
-        array $params,
+        array|FolderMoveListParams $params,
         ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = FolderMoveListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -235,35 +164,18 @@ final class FoldersService implements FoldersContract
      *
      * Renames the given folderId with a new name.
      *
-     * @param string $newFolderName the new name of the folder
+     * @param array{newFolderName?: string}|FolderRenameParams $params
      *
      * @throws APIException
      */
     public function rename(
         string $folderID,
-        $newFolderName = omit,
+        array|FolderRenameParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ListFolderFetchResponse {
-        $params = ['newFolderName' => $newFolderName];
-
-        return $this->renameRaw($folderID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function renameRaw(
-        string $folderID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ListFolderFetchResponse {
         [$parsed, $options] = FolderRenameParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

@@ -19,7 +19,7 @@ use HubspotSDK\Events\EventDefinitions\RangedNumberPropertyOperation\PropertyTyp
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
  *   upperBound: int,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class RangedNumberPropertyOperation implements BaseModel

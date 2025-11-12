@@ -7,24 +7,21 @@ namespace HubspotSDK\ServiceContracts\Crm\Lists;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Lists\APICollectionResponseRecordListMembershipNoPaging;
 use HubspotSDK\Crm\Lists\JoinTimeAndRecordID;
+use HubspotSDK\Crm\Lists\Memberships\MembershipAddAllFromListParams;
+use HubspotSDK\Crm\Lists\Memberships\MembershipAddAndRemoveParams;
+use HubspotSDK\Crm\Lists\Memberships\MembershipGetListsParams;
+use HubspotSDK\Crm\Lists\Memberships\MembershipGetPageOrderedByAddedToListDateParams;
+use HubspotSDK\Crm\Lists\Memberships\MembershipListParams;
 use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface MembershipsContract
 {
     /**
      * @api
      *
-     * @param string $after The paging offset token for the page that comes `after` the previously requested records.
-     *
-     * If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the `before` offset.
-     * @param string $before The paging offset token for the page that comes `before` the previously requested records.
-     *
-     * If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order.
-     * @param int $limit The number of records to return in the response. The maximum `limit` is 250.
+     * @param array<mixed>|MembershipListParams $params
      *
      * @return Page<JoinTimeAndRecordID>
      *
@@ -32,49 +29,19 @@ interface MembershipsContract
      */
     public function list(
         string $listID,
-        $after = omit,
-        $before = omit,
-        $limit = omit,
+        array|MembershipListParams $params,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<JoinTimeAndRecordID>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param list<string> $body
+     * @param list<string> $params
      *
      * @throws APIException
      */
     public function add(
         string $listID,
-        $body,
-        ?RequestOptions $requestOptions = null
-    ): MembershipsUpdateResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function addRaw(
-        string $listID,
         array $params,
         ?RequestOptions $requestOptions = null
     ): MembershipsUpdateResponse;
@@ -82,93 +49,46 @@ interface MembershipsContract
     /**
      * @api
      *
-     * @param string $listID
+     * @param array<mixed>|MembershipAddAllFromListParams $params
      *
      * @throws APIException
      */
     public function addAllFromList(
         string $sourceListID,
-        $listID,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function addAllFromListRaw(
-        string $sourceListID,
-        array $params,
+        array|MembershipAddAllFromListParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param list<string> $recordIDsToAdd
-     * @param list<string> $recordIDsToRemove
+     * @param array<mixed>|MembershipAddAndRemoveParams $params
      *
      * @throws APIException
      */
     public function addAndRemove(
         string $listID,
-        $recordIDsToAdd,
-        $recordIDsToRemove,
+        array|MembershipAddAndRemoveParams $params,
         ?RequestOptions $requestOptions = null,
     ): MembershipsUpdateResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function addAndRemoveRaw(
-        string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): MembershipsUpdateResponse;
-
-    /**
-     * @api
-     *
-     * @param string $objectTypeID
+     * @param array<mixed>|MembershipGetListsParams $params
      *
      * @throws APIException
      */
     public function getLists(
         string $recordID,
-        $objectTypeID,
-        ?RequestOptions $requestOptions = null
+        array|MembershipGetListsParams $params,
+        ?RequestOptions $requestOptions = null,
     ): APICollectionResponseRecordListMembershipNoPaging;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getListsRaw(
-        string $recordID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): APICollectionResponseRecordListMembershipNoPaging;
-
-    /**
-     * @api
-     *
-     * @param string $after The paging offset token for the page that comes `after` the previously requested records.
-     *
-     * If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the `before` offset.
-     * @param string $before The paging offset token for the page that comes `before` the previously requested records.
-     *
-     * If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order.
-     * @param int $limit The number of records to return in the response. The maximum `limit` is 250.
+     * @param array<mixed>|MembershipGetPageOrderedByAddedToListDateParams $params
      *
      * @return Page<JoinTimeAndRecordID>
      *
@@ -176,48 +96,18 @@ interface MembershipsContract
      */
     public function getPageOrderedByAddedToListDate(
         string $listID,
-        $after = omit,
-        $before = omit,
-        $limit = omit,
+        array|MembershipGetPageOrderedByAddedToListDateParams $params,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<JoinTimeAndRecordID>
-     *
-     * @throws APIException
-     */
-    public function getPageOrderedByAddedToListDateRaw(
-        string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param list<string> $body
+     * @param list<string> $params
      *
      * @throws APIException
      */
     public function remove(
-        string $listID,
-        $body,
-        ?RequestOptions $requestOptions = null
-    ): MembershipsUpdateResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function removeRaw(
         string $listID,
         array $params,
         ?RequestOptions $requestOptions = null

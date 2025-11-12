@@ -20,7 +20,7 @@ use HubspotSDK\Events\EventDefinitions\RangedDatePropertyOperation\PropertyType;
  *   propertyType: value-of<PropertyType>,
  *   requiresTimeZoneConversion: bool,
  *   upperBoundTimestamp: int,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class RangedDatePropertyOperation implements BaseModel

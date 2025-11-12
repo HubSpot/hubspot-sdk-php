@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicBulkOptOutFromAllResponseShape = array{
- *   subscriberIDString: string, statuses?: list<PublicStatus>
+ *   subscriberIdString: string, statuses?: list<PublicStatus>|null
  * }
  */
 final class PublicBulkOptOutFromAllResponse implements BaseModel
@@ -21,8 +21,8 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
     /**
      * The email address of the contact.
      */
-    #[Api('subscriberIdString')]
-    public string $subscriberIDString;
+    #[Api]
+    public string $subscriberIdString;
 
     /**
      * An array of subscription status objects for the contact.
@@ -37,7 +37,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicBulkOptOutFromAllResponse::with(subscriberIDString: ...)
+     * PublicBulkOptOutFromAllResponse::with(subscriberIdString: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -59,12 +59,12 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      * @param list<PublicStatus> $statuses
      */
     public static function with(
-        string $subscriberIDString,
+        string $subscriberIdString,
         ?array $statuses = null
     ): self {
         $obj = new self;
 
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIdString;
 
         null !== $statuses && $obj->statuses = $statuses;
 
@@ -77,7 +77,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIDString;
 
         return $obj;
     }

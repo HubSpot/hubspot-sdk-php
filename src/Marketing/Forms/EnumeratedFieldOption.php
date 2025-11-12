@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type EnumeratedFieldOptionShape = array{
- *   displayOrder: int, label: string, value: string, description?: string
+ *   displayOrder: int, label: string, value: string, description?: string|null
  * }
  */
 final class EnumeratedFieldOption implements BaseModel

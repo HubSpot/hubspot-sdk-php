@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type ActingUserShape = array{userID: int, userEmail?: string}
+ * @phpstan-type ActingUserShape = array{userId: int, userEmail?: string|null}
  */
 final class ActingUser implements BaseModel
 {
@@ -19,8 +19,8 @@ final class ActingUser implements BaseModel
     /**
      * The ID of the user who performed the action.
      */
-    #[Api('userId')]
-    public int $userID;
+    #[Api]
+    public int $userId;
 
     /**
      * The email address of the user who performed the action.
@@ -33,7 +33,7 @@ final class ActingUser implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ActingUser::with(userID: ...)
+     * ActingUser::with(userId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,11 +52,11 @@ final class ActingUser implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $userID, ?string $userEmail = null): self
+    public static function with(int $userId, ?string $userEmail = null): self
     {
         $obj = new self;
 
-        $obj->userID = $userID;
+        $obj->userId = $userId;
 
         null !== $userEmail && $obj->userEmail = $userEmail;
 
@@ -69,7 +69,7 @@ final class ActingUser implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }

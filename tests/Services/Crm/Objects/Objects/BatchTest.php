@@ -3,13 +3,6 @@
 namespace Tests\Services\Crm\Objects\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Associations\V4\AssociationSpec1;
-use HubspotSDK\Crm\PublicAssociationsForObject;
-use HubspotSDK\Crm\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\Crm\SimplePublicObjectID;
-use HubspotSDK\PublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -45,11 +38,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->create(
             'objectType',
-            [
-                SimplePublicObjectBatchInputForCreate::with(
-                    properties: ['foo' => 'string']
-                ),
-            ],
+            ['inputs' => [['properties' => ['foo' => 'string']]]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -65,23 +54,23 @@ final class BatchTest extends TestCase
         $result = $this->client->crm->objects->objects->batch->create(
             'objectType',
             [
-                SimplePublicObjectBatchInputForCreate::with(
-                    properties: ['foo' => 'string']
-                )
-                    ->withAssociations(
-                        [
-                            PublicAssociationsForObject::with(
-                                to: PublicObjectID::with(id: '37295'),
-                                types: [
-                                    AssociationSpec1::with(
-                                        associationCategory: 'HUBSPOT_DEFINED',
-                                        associationTypeID: 0
-                                    ),
+                'inputs' => [
+                    [
+                        'properties' => ['foo' => 'string'],
+                        'associations' => [
+                            [
+                                'to' => ['id' => '37295'],
+                                'types' => [
+                                    [
+                                        'associationCategory' => 'HUBSPOT_DEFINED',
+                                        'associationTypeId' => 0,
+                                    ],
                                 ],
-                            ),
+                            ],
                         ],
-                    )
-                    ->withObjectWriteTraceID('objectWriteTraceId'),
+                        'objectWriteTraceId' => 'objectWriteTraceId',
+                    ],
+                ],
             ],
         );
 
@@ -97,12 +86,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->update(
             'objectType',
-            [
-                SimplePublicObjectBatchInput::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                ),
-            ],
+            ['inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -118,12 +102,14 @@ final class BatchTest extends TestCase
         $result = $this->client->crm->objects->objects->batch->update(
             'objectType',
             [
-                SimplePublicObjectBatchInput::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                )
-                    ->withIDProperty('my_unique_property_name')
-                    ->withObjectWriteTraceID('objectWriteTraceId'),
+                'inputs' => [
+                    [
+                        'id' => 'id',
+                        'properties' => ['foo' => 'string'],
+                        'idProperty' => 'my_unique_property_name',
+                        'objectWriteTraceId' => 'objectWriteTraceId',
+                    ],
+                ],
             ],
         );
 
@@ -139,7 +125,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->delete(
             'objectType',
-            [SimplePublicObjectID::with(id: 'id')]
+            ['inputs' => [['id' => 'id']]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -154,7 +140,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->delete(
             'objectType',
-            [SimplePublicObjectID::with(id: 'id')]
+            ['inputs' => [['id' => 'id']]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -169,9 +155,11 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->get(
             'objectType',
-            inputs: [SimplePublicObjectID::with(id: 'id')],
-            properties: ['string'],
-            propertiesWithHistory: ['string'],
+            [
+                'inputs' => [['id' => 'id']],
+                'properties' => ['string'],
+                'propertiesWithHistory' => ['string'],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -186,9 +174,11 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->get(
             'objectType',
-            inputs: [SimplePublicObjectID::with(id: 'id')],
-            properties: ['string'],
-            propertiesWithHistory: ['string'],
+            [
+                'inputs' => [['id' => 'id']],
+                'properties' => ['string'],
+                'propertiesWithHistory' => ['string'],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -203,12 +193,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->upsert(
             'objectType',
-            [
-                SimplePublicObjectBatchInputUpsert::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                ),
-            ],
+            ['inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -224,12 +209,14 @@ final class BatchTest extends TestCase
         $result = $this->client->crm->objects->objects->batch->upsert(
             'objectType',
             [
-                SimplePublicObjectBatchInputUpsert::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                )
-                    ->withIDProperty('idProperty')
-                    ->withObjectWriteTraceID('objectWriteTraceId'),
+                'inputs' => [
+                    [
+                        'id' => 'id',
+                        'properties' => ['foo' => 'string'],
+                        'idProperty' => 'idProperty',
+                        'objectWriteTraceId' => 'objectWriteTraceId',
+                    ],
+                ],
             ],
         );
 

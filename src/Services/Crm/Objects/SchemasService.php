@@ -9,7 +9,6 @@ use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
-use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate;
 use HubspotSDK\Crm\Objects\Schemas\SchemaCreateAssociationParams;
 use HubspotSDK\Crm\Objects\Schemas\SchemaCreateParams;
 use HubspotSDK\Crm\Objects\Schemas\SchemaDeleteAssociationParams;
@@ -21,8 +20,6 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\SchemasContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class SchemasService implements SchemasContract
 {
     /**
@@ -33,59 +30,45 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * @param list<string> $associatedObjects associations defined for this object type
-     * @param ObjectTypeDefinitionLabels $labels
-     * @param string $name A unique name for this object. For internal use only.
-     * @param list<ObjectTypePropertyCreate> $properties properties defined for this object type
-     * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
-     * @param string $description
-     * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
-     * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
-     * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     * @param array{
+     *   associatedObjects: list<string>,
+     *   labels: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
+     *   name: string,
+     *   properties: list<array{
+     *     fieldType: string,
+     *     label: string,
+     *     name: string,
+     *     type: "string"|"number"|"date"|"datetime"|"enumeration"|"bool",
+     *     description?: string,
+     *     displayOrder?: int,
+     *     formField?: bool,
+     *     groupName?: string,
+     *     hasUniqueValue?: bool,
+     *     hidden?: bool,
+     *     numberDisplayHint?: "unformatted"|"formatted"|"currency"|"percentage"|"duration"|"probability",
+     *     options?: list<array<mixed>>,
+     *     optionSortStrategy?: "DISPLAY_ORDER"|"ALPHABETICAL",
+     *     referencedObjectType?: string,
+     *     searchableInGlobalSearch?: bool,
+     *     showCurrencySymbol?: bool,
+     *     textDisplayHint?: "unformatted_single_line"|"multi_line"|"email"|"phone_number"|"domain_name"|"ip_address"|"physical_address"|"postal_code",
+     *   }>,
+     *   requiredProperties: list<string>,
+     *   description?: string,
+     *   primaryDisplayProperty?: string,
+     *   searchableProperties?: list<string>,
+     *   secondaryDisplayProperties?: list<string>,
+     * }|SchemaCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $associatedObjects,
-        $labels,
-        $name,
-        $properties,
-        $requiredProperties,
-        $description = omit,
-        $primaryDisplayProperty = omit,
-        $searchableProperties = omit,
-        $secondaryDisplayProperties = omit,
-        ?RequestOptions $requestOptions = null,
-    ): ObjectSchema {
-        $params = [
-            'associatedObjects' => $associatedObjects,
-            'labels' => $labels,
-            'name' => $name,
-            'properties' => $properties,
-            'requiredProperties' => $requiredProperties,
-            'description' => $description,
-            'primaryDisplayProperty' => $primaryDisplayProperty,
-            'searchableProperties' => $searchableProperties,
-            'secondaryDisplayProperties' => $secondaryDisplayProperties,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|SchemaCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): ObjectSchema {
         [$parsed, $options] = SchemaCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -101,58 +84,27 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * @param bool $clearDescription
-     * @param string $description
-     * @param ObjectTypeDefinitionLabels $labels
-     * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
-     * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
-     * @param bool $restorable
-     * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
-     * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     * @param array{
+     *   clearDescription?: bool,
+     *   description?: string,
+     *   labels?: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
+     *   primaryDisplayProperty?: string,
+     *   requiredProperties?: list<string>,
+     *   restorable?: bool,
+     *   searchableProperties?: list<string>,
+     *   secondaryDisplayProperties?: list<string>,
+     * }|SchemaUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $objectType,
-        $clearDescription = omit,
-        $description = omit,
-        $labels = omit,
-        $primaryDisplayProperty = omit,
-        $requiredProperties = omit,
-        $restorable = omit,
-        $searchableProperties = omit,
-        $secondaryDisplayProperties = omit,
+        array|SchemaUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ObjectsSchemasObjectTypeDefinition {
-        $params = [
-            'clearDescription' => $clearDescription,
-            'description' => $description,
-            'labels' => $labels,
-            'primaryDisplayProperty' => $primaryDisplayProperty,
-            'requiredProperties' => $requiredProperties,
-            'restorable' => $restorable,
-            'searchableProperties' => $searchableProperties,
-            'secondaryDisplayProperties' => $secondaryDisplayProperties,
-        ];
-
-        return $this->updateRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ObjectsSchemasObjectTypeDefinition {
         [$parsed, $options] = SchemaUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -168,33 +120,17 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * @param bool $archived whether to return only results that have been archived
+     * @param array{archived?: bool}|SchemaListParams $params
      *
      * @throws APIException
      */
     public function list(
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseObjectSchemaNoPaging {
-        $params = ['archived' => $archived];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|SchemaListParams $params,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseObjectSchemaNoPaging {
         [$parsed, $options] = SchemaListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -210,35 +146,18 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * @param bool $archived whether to return only results that have been archived
+     * @param array{archived?: bool}|SchemaDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $objectType,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['archived' => $archived];
-
-        return $this->deleteRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SchemaDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = SchemaDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -254,43 +173,20 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * @param string $fromObjectTypeID
-     * @param string $toObjectTypeID
-     * @param string $name
+     * @param array{
+     *   fromObjectTypeId: string, toObjectTypeId: string, name?: string
+     * }|SchemaCreateAssociationParams $params
      *
      * @throws APIException
      */
     public function createAssociation(
         string $objectType,
-        $fromObjectTypeID,
-        $toObjectTypeID,
-        $name = omit,
+        array|SchemaCreateAssociationParams $params,
         ?RequestOptions $requestOptions = null,
-    ): AssociationDefinition {
-        $params = [
-            'fromObjectTypeID' => $fromObjectTypeID,
-            'toObjectTypeID' => $toObjectTypeID,
-            'name' => $name,
-        ];
-
-        return $this->createAssociationRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createAssociationRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): AssociationDefinition {
         [$parsed, $options] = SchemaCreateAssociationParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -306,39 +202,18 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * @param string $objectType
+     * @param array{objectType: string}|SchemaDeleteAssociationParams $params
      *
      * @throws APIException
      */
     public function deleteAssociation(
         string $associationIdentifier,
-        $objectType,
-        ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['objectType' => $objectType];
-
-        return $this->deleteAssociationRaw(
-            $associationIdentifier,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteAssociationRaw(
-        string $associationIdentifier,
-        array $params,
+        array|SchemaDeleteAssociationParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = SchemaDeleteAssociationParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);

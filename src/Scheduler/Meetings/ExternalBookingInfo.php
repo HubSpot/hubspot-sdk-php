@@ -14,10 +14,10 @@ use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo\LinkType;
  *   allUsersBusyTimes: list<ExternalUserBusyTimes>,
  *   customParams: ExternalMeetingsLinkSettings,
  *   isOffline: bool,
- *   linkID: string,
+ *   linkId: string,
  *   linkType: value-of<LinkType>,
- *   brandingMetadata?: ExternalBrandingMetadata,
- *   linkAvailability?: ExternalLinkAvailability,
+ *   brandingMetadata?: ExternalBrandingMetadata|null,
+ *   linkAvailability?: ExternalLinkAvailability|null,
  * }
  */
 final class ExternalBookingInfo implements BaseModel
@@ -35,8 +35,8 @@ final class ExternalBookingInfo implements BaseModel
     #[Api]
     public bool $isOffline;
 
-    #[Api('linkId')]
-    public string $linkID;
+    #[Api]
+    public string $linkId;
 
     /** @var value-of<LinkType> $linkType */
     #[Api(enum: LinkType::class)]
@@ -57,7 +57,7 @@ final class ExternalBookingInfo implements BaseModel
      *   allUsersBusyTimes: ...,
      *   customParams: ...,
      *   isOffline: ...,
-     *   linkID: ...,
+     *   linkId: ...,
      *   linkType: ...,
      * )
      * ```
@@ -90,7 +90,7 @@ final class ExternalBookingInfo implements BaseModel
         array $allUsersBusyTimes,
         ExternalMeetingsLinkSettings $customParams,
         bool $isOffline,
-        string $linkID,
+        string $linkId,
         LinkType|string $linkType,
         ?ExternalBrandingMetadata $brandingMetadata = null,
         ?ExternalLinkAvailability $linkAvailability = null,
@@ -100,7 +100,7 @@ final class ExternalBookingInfo implements BaseModel
         $obj->allUsersBusyTimes = $allUsersBusyTimes;
         $obj->customParams = $customParams;
         $obj->isOffline = $isOffline;
-        $obj->linkID = $linkID;
+        $obj->linkId = $linkId;
         $obj['linkType'] = $linkType;
 
         null !== $brandingMetadata && $obj->brandingMetadata = $brandingMetadata;
@@ -140,7 +140,7 @@ final class ExternalBookingInfo implements BaseModel
     public function withLinkID(string $linkID): self
     {
         $obj = clone $this;
-        $obj->linkID = $linkID;
+        $obj->linkId = $linkID;
 
         return $obj;
     }

@@ -13,7 +13,9 @@ use HubspotSDK\PreviousPage;
 /**
  * Contains information pagination of results.
  *
- * @phpstan-type EmailsPagingShape = array{next: NextPage, prev?: PreviousPage}
+ * @phpstan-type EmailsPagingShape = array{
+ *   next: NextPage, prev?: PreviousPage|null
+ * }
  */
 final class EmailsPaging implements BaseModel
 {

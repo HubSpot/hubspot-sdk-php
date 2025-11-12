@@ -19,7 +19,7 @@ use HubspotSDK\Events\EventDefinitions\DateTimePropertyOperation\PropertyType;
  *   propertyType: value-of<PropertyType>,
  *   requiresTimeZoneConversion: bool,
  *   timestamp: int,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class DateTimePropertyOperation implements BaseModel

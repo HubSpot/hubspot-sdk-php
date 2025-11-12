@@ -11,8 +11,6 @@ use HubspotSDK\Crm\Extensions\VideoConferencing\Settings\SettingUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\VideoConferencing\SettingsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class SettingsService implements SettingsContract
 {
     /**
@@ -23,49 +21,24 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * @param string $createMeetingURL the URL that HubSpot will send requests to create a new video conference
-     * @param string $deleteMeetingURL the URL that HubSpot will send notifications of meetings that have been deleted in HubSpot
-     * @param string $fetchAccountsUri
-     * @param string $updateMeetingURL The URL that HubSpot will send updates to existing meetings. Typically called when the user changes the topic or times of a meeting.
-     * @param string $userVerifyURL the URL that HubSpot will use to verify that a user exists in the video conference application
+     * @param array{
+     *   createMeetingUrl: string,
+     *   deleteMeetingUrl?: string,
+     *   fetchAccountsUri?: string,
+     *   updateMeetingUrl?: string,
+     *   userVerifyUrl?: string,
+     * }|SettingUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         int $appID,
-        $createMeetingURL,
-        $deleteMeetingURL = omit,
-        $fetchAccountsUri = omit,
-        $updateMeetingURL = omit,
-        $userVerifyURL = omit,
+        array|SettingUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ExternalSettings {
-        $params = [
-            'createMeetingURL' => $createMeetingURL,
-            'deleteMeetingURL' => $deleteMeetingURL,
-            'fetchAccountsUri' => $fetchAccountsUri,
-            'updateMeetingURL' => $updateMeetingURL,
-            'userVerifyURL' => $userVerifyURL,
-        ];
-
-        return $this->updateRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ExternalSettings {
         [$parsed, $options] = SettingUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

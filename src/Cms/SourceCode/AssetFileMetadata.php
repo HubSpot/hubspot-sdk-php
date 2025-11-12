@@ -17,9 +17,9 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   folder: bool,
  *   name: string,
  *   updatedAt: int,
- *   archivedAt?: int,
- *   children?: list<string>,
- *   hash?: string,
+ *   archivedAt?: int|null,
+ *   children?: list<string>|null,
+ *   hash?: string|null,
  * }
  */
 final class AssetFileMetadata implements BaseModel, ResponseConverter

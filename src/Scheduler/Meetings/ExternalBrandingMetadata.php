@@ -13,22 +13,22 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   logoAltText: string,
  *   showMarketingAd: bool,
  *   showSalesAd: bool,
- *   accent2Color?: string,
- *   accentColor?: string,
- *   companyAddressLine1?: string,
- *   companyAddressLine2?: string,
- *   companyAvatar?: string,
- *   companyCity?: string,
- *   companyCountry?: string,
- *   companyDomain?: string,
- *   companyName?: string,
- *   companyState?: string,
- *   companyZip?: string,
- *   logoHeight?: int,
- *   logoURL?: string,
- *   logoWidth?: int,
- *   primaryColor?: string,
- *   secondaryColor?: string,
+ *   accent2Color?: string|null,
+ *   accentColor?: string|null,
+ *   companyAddressLine1?: string|null,
+ *   companyAddressLine2?: string|null,
+ *   companyAvatar?: string|null,
+ *   companyCity?: string|null,
+ *   companyCountry?: string|null,
+ *   companyDomain?: string|null,
+ *   companyName?: string|null,
+ *   companyState?: string|null,
+ *   companyZip?: string|null,
+ *   logoHeight?: int|null,
+ *   logoUrl?: string|null,
+ *   logoWidth?: int|null,
+ *   primaryColor?: string|null,
+ *   secondaryColor?: string|null,
  * }
  */
 final class ExternalBrandingMetadata implements BaseModel
@@ -81,8 +81,8 @@ final class ExternalBrandingMetadata implements BaseModel
     #[Api(optional: true)]
     public ?int $logoHeight;
 
-    #[Api('logoUrl', optional: true)]
-    public ?string $logoURL;
+    #[Api(optional: true)]
+    public ?string $logoUrl;
 
     #[Api(optional: true)]
     public ?int $logoWidth;
@@ -138,7 +138,7 @@ final class ExternalBrandingMetadata implements BaseModel
         ?string $companyState = null,
         ?string $companyZip = null,
         ?int $logoHeight = null,
-        ?string $logoURL = null,
+        ?string $logoUrl = null,
         ?int $logoWidth = null,
         ?string $primaryColor = null,
         ?string $secondaryColor = null,
@@ -161,7 +161,7 @@ final class ExternalBrandingMetadata implements BaseModel
         null !== $companyState && $obj->companyState = $companyState;
         null !== $companyZip && $obj->companyZip = $companyZip;
         null !== $logoHeight && $obj->logoHeight = $logoHeight;
-        null !== $logoURL && $obj->logoURL = $logoURL;
+        null !== $logoUrl && $obj->logoUrl = $logoUrl;
         null !== $logoWidth && $obj->logoWidth = $logoWidth;
         null !== $primaryColor && $obj->primaryColor = $primaryColor;
         null !== $secondaryColor && $obj->secondaryColor = $secondaryColor;
@@ -292,7 +292,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withLogoURL(string $logoURL): self
     {
         $obj = clone $this;
-        $obj->logoURL = $logoURL;
+        $obj->logoUrl = $logoURL;
 
         return $obj;
     }

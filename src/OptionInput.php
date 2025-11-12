@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   hidden: bool,
  *   label: string,
  *   value: string,
- *   description?: string,
+ *   description?: string|null,
  * }
  */
 final class OptionInput implements BaseModel

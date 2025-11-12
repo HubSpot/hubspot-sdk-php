@@ -11,8 +11,6 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\BusinessUnitsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class BusinessUnitsService implements BusinessUnitsContract
 {
     /**
@@ -25,37 +23,20 @@ final class BusinessUnitsService implements BusinessUnitsContract
      *
      * Get Business Units identified by `userId`. The `userId` refers to the user’s ID.
      *
-     * @param list<string> $name The names of Business Units to retrieve. If empty or not provided, then all associated Business Units will be returned.
-     * @param list<string> $properties The names of properties to optionally include in the response body. The only valid value is `logoMetadata`.
+     * @param array{
+     *   name?: list<string>, properties?: list<string>
+     * }|BusinessUnitGetByUserIDParams $params
      *
      * @throws APIException
      */
     public function getByUserID(
         string $userID,
-        $name = omit,
-        $properties = omit,
+        array|BusinessUnitGetByUserIDParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicBusinessUnitNoPaging {
-        $params = ['name' => $name, 'properties' => $properties];
-
-        return $this->getByUserIDRaw($userID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getByUserIDRaw(
-        string $userID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicBusinessUnitNoPaging {
         [$parsed, $options] = BusinessUnitGetByUserIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

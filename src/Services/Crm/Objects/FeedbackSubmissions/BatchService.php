@@ -8,11 +8,8 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\FeedbackSubmissions\Batch\BatchGetParams;
-use HubspotSDK\Crm\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\FeedbackSubmissions\BatchContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class BatchService implements BatchContract
 {
@@ -26,47 +23,23 @@ final class BatchService implements BatchContract
      *
      * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
-     * @param list<SimplePublicObjectID> $inputs
-     * @param list<string> $properties key-value pairs for setting properties for the new object
-     * @param list<string> $propertiesWithHistory key-value pairs for setting properties for the new object and their histories
-     * @param bool $archived whether to return only results that have been archived
-     * @param string $idProperty
+     * @param array{
+     *   inputs: list<array{id: string}>,
+     *   properties: list<string>,
+     *   propertiesWithHistory: list<string>,
+     *   archived?: bool,
+     *   idProperty?: string,
+     * }|BatchGetParams $params
      *
      * @throws APIException
      */
     public function get(
-        $inputs,
-        $properties,
-        $propertiesWithHistory,
-        $archived = omit,
-        $idProperty = omit,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseSimplePublicObject {
-        $params = [
-            'inputs' => $inputs,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-            'archived' => $archived,
-            'idProperty' => $idProperty,
-        ];
-
-        return $this->getRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        array $params,
+        array|BatchGetParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject {
         [$parsed, $options] = BatchGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 

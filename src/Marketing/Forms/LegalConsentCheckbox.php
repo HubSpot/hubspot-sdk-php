@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type LegalConsentCheckboxShape = array{
- *   label: string, required: bool, subscriptionTypeID: int
+ *   label: string, required: bool, subscriptionTypeId: int
  * }
  */
 final class LegalConsentCheckbox implements BaseModel
@@ -30,15 +30,15 @@ final class LegalConsentCheckbox implements BaseModel
     #[Api]
     public bool $required;
 
-    #[Api('subscriptionTypeId')]
-    public int $subscriptionTypeID;
+    #[Api]
+    public int $subscriptionTypeId;
 
     /**
      * `new LegalConsentCheckbox()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * LegalConsentCheckbox::with(label: ..., required: ..., subscriptionTypeID: ...)
+     * LegalConsentCheckbox::with(label: ..., required: ..., subscriptionTypeId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -63,13 +63,13 @@ final class LegalConsentCheckbox implements BaseModel
     public static function with(
         string $label,
         bool $required,
-        int $subscriptionTypeID
+        int $subscriptionTypeId
     ): self {
         $obj = new self;
 
         $obj->label = $label;
         $obj->required = $required;
-        $obj->subscriptionTypeID = $subscriptionTypeID;
+        $obj->subscriptionTypeId = $subscriptionTypeId;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class LegalConsentCheckbox implements BaseModel
     public function withSubscriptionTypeID(int $subscriptionTypeID): self
     {
         $obj = clone $this;
-        $obj->subscriptionTypeID = $subscriptionTypeID;
+        $obj->subscriptionTypeId = $subscriptionTypeID;
 
         return $obj;
     }

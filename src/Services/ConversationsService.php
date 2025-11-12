@@ -18,42 +18,42 @@ use HubspotSDK\Services\Conversations\VisitorIdentificationService;
 final class ConversationsService implements ConversationsContract
 {
     /**
-     * @@api
+     * @api
      */
     public ActorsService $actors;
 
     /**
-     * @@api
+     * @api
      */
     public ChannelAccountsService $channelAccounts;
 
     /**
-     * @@api
+     * @api
      */
     public ChannelsService $channels;
 
     /**
-     * @@api
+     * @api
      */
     public CustomChannelsService $customChannels;
 
     /**
-     * @@api
+     * @api
      */
     public InboxesService $inboxes;
 
     /**
-     * @@api
+     * @api
      */
     public MessagesService $messages;
 
     /**
-     * @@api
+     * @api
      */
     public ThreadsService $threads;
 
     /**
-     * @@api
+     * @api
      */
     public VisitorIdentificationService $visitorIdentification;
 

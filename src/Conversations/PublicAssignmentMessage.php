@@ -14,15 +14,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   archived: bool,
  *   client: PublicClient,
- *   conversationsThreadID: string,
+ *   conversationsThreadId: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   recipients: list<PublicRecipient>,
  *   senders: list<PublicSender>,
  *   type: value-of<Type>,
- *   assignedFrom?: string,
- *   assignedTo?: string,
- *   updatedAt?: \DateTimeInterface,
+ *   assignedFrom?: string|null,
+ *   assignedTo?: string|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class PublicAssignmentMessage implements BaseModel
@@ -39,8 +39,8 @@ final class PublicAssignmentMessage implements BaseModel
     #[Api]
     public PublicClient $client;
 
-    #[Api('conversationsThreadId')]
-    public string $conversationsThreadID;
+    #[Api]
+    public string $conversationsThreadId;
 
     #[Api]
     public \DateTimeInterface $createdAt;
@@ -78,7 +78,7 @@ final class PublicAssignmentMessage implements BaseModel
      *   id: ...,
      *   archived: ...,
      *   client: ...,
-     *   conversationsThreadID: ...,
+     *   conversationsThreadId: ...,
      *   createdAt: ...,
      *   createdBy: ...,
      *   recipients: ...,
@@ -120,7 +120,7 @@ final class PublicAssignmentMessage implements BaseModel
         string $id,
         bool $archived,
         PublicClient $client,
-        string $conversationsThreadID,
+        string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
         array $recipients,
@@ -135,7 +135,7 @@ final class PublicAssignmentMessage implements BaseModel
         $obj->id = $id;
         $obj->archived = $archived;
         $obj->client = $client;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadId;
         $obj->createdAt = $createdAt;
         $obj->createdBy = $createdBy;
         $obj->recipients = $recipients;
@@ -177,7 +177,7 @@ final class PublicAssignmentMessage implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadID;
 
         return $obj;
     }

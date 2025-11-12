@@ -38,8 +38,7 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->update(
             'assetId',
-            campaignGuid: 'campaignGuid',
-            assetType: 'assetType'
+            ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -54,8 +53,7 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->update(
             'assetId',
-            campaignGuid: 'campaignGuid',
-            assetType: 'assetType'
+            ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -70,7 +68,7 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->list(
             'assetType',
-            campaignGuid: 'campaignGuid'
+            ['campaignGuid' => 'campaignGuid']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -85,7 +83,7 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->list(
             'assetType',
-            campaignGuid: 'campaignGuid'
+            ['campaignGuid' => 'campaignGuid']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -100,8 +98,7 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->delete(
             'assetId',
-            campaignGuid: 'campaignGuid',
-            assetType: 'assetType'
+            ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -116,8 +113,7 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->delete(
             'assetId',
-            campaignGuid: 'campaignGuid',
-            assetType: 'assetType'
+            ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

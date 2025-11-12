@@ -7,13 +7,10 @@ namespace HubspotSDK\ServiceContracts\Scheduler\Meetings;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Scheduler\Meetings\CollectionResponseWithTotalExternalLinkMetadataForwardPaging;
-use HubspotSDK\Scheduler\Meetings\ExternalBookingFormField;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
-use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
 use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
 use HubspotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
-
-use const HubspotSDK\Core\OMIT as omit;
+use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkBookParams;
 
 interface MeetingsLinksContract
 {
@@ -29,45 +26,13 @@ interface MeetingsLinksContract
     /**
      * @api
      *
-     * @param int $duration
-     * @param string $email
-     * @param string $firstName
-     * @param list<ExternalBookingFormField> $formFields
-     * @param string $lastName
-     * @param list<ExternalLegalConsentResponse> $legalConsentResponses
-     * @param list<string> $likelyAvailableUserIDs
-     * @param string $slug
-     * @param \DateTimeInterface $startTime
-     * @param string $locale
-     * @param string $timezone
+     * @param array<mixed>|MeetingsLinkBookParams $params
      *
      * @throws APIException
      */
     public function book(
-        $duration,
-        $email,
-        $firstName,
-        $formFields,
-        $lastName,
-        $legalConsentResponses,
-        $likelyAvailableUserIDs,
-        $slug,
-        $startTime,
-        $locale = omit,
-        $timezone = omit,
+        array|MeetingsLinkBookParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ExternalMeetingBookingResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function bookRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ExternalMeetingBookingResponse;
 
     /**

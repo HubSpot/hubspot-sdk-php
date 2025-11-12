@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type MarketingEventPublicUpdateRequestV2Shape = array{
  *   customProperties: list<PropertyValue>,
- *   endDateTime?: \DateTimeInterface,
- *   eventCancelled?: bool,
- *   eventDescription?: string,
- *   eventName?: string,
- *   eventOrganizer?: string,
- *   eventType?: string,
- *   eventURL?: string,
- *   startDateTime?: \DateTimeInterface,
+ *   endDateTime?: \DateTimeInterface|null,
+ *   eventCancelled?: bool|null,
+ *   eventDescription?: string|null,
+ *   eventName?: string|null,
+ *   eventOrganizer?: string|null,
+ *   eventType?: string|null,
+ *   eventUrl?: string|null,
+ *   startDateTime?: \DateTimeInterface|null,
  * }
  */
 final class MarketingEventPublicUpdateRequestV2 implements BaseModel
@@ -48,8 +48,8 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
     #[Api(optional: true)]
     public ?string $eventType;
 
-    #[Api('eventUrl', optional: true)]
-    public ?string $eventURL;
+    #[Api(optional: true)]
+    public ?string $eventUrl;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $startDateTime;
@@ -88,7 +88,7 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
         ?string $eventName = null,
         ?string $eventOrganizer = null,
         ?string $eventType = null,
-        ?string $eventURL = null,
+        ?string $eventUrl = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -101,7 +101,7 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
         null !== $eventName && $obj->eventName = $eventName;
         null !== $eventOrganizer && $obj->eventOrganizer = $eventOrganizer;
         null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventURL && $obj->eventURL = $eventURL;
+        null !== $eventUrl && $obj->eventUrl = $eventUrl;
         null !== $startDateTime && $obj->startDateTime = $startDateTime;
 
         return $obj;
@@ -169,7 +169,7 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventURL = $eventURL;
+        $obj->eventUrl = $eventURL;
 
         return $obj;
     }

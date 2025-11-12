@@ -23,7 +23,7 @@ use HubspotSDK\Marketing\Forms\FormDefinitionBase\FormType;
  *   legalConsentOptions: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess,
  *   name: string,
  *   updatedAt: \DateTimeInterface,
- *   archivedAt?: \DateTimeInterface,
+ *   archivedAt?: \DateTimeInterface|null,
  * }
  */
 final class FormDefinitionBase implements BaseModel, ResponseConverter

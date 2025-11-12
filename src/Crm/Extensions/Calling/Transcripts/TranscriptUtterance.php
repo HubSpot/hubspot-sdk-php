@@ -14,8 +14,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   endTimeMillis: int,
  *   startTimeMillis: int,
  *   text: string,
- *   languageCode?: string,
- *   speaker?: Speaker,
+ *   languageCode?: string|null,
+ *   speaker?: Speaker|null,
  * }
  */
 final class TranscriptUtterance implements BaseModel

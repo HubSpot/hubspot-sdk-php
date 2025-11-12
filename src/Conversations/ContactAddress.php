@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ContactAddressShape = array{
- *   city?: string,
- *   country?: string,
- *   countryCode?: string,
- *   state?: string,
- *   street?: string,
- *   type?: value-of<Type>,
- *   zip?: string,
+ *   city?: string|null,
+ *   country?: string|null,
+ *   countryCode?: string|null,
+ *   state?: string|null,
+ *   street?: string|null,
+ *   type?: value-of<Type>|null,
+ *   zip?: string|null,
  * }
  */
 final class ContactAddress implements BaseModel

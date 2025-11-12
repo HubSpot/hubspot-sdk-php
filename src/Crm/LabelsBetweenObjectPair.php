@@ -10,11 +10,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type LabelsBetweenObjectPairShape = array{
- *   fromObjectID: string,
- *   fromObjectTypeID: string,
+ *   fromObjectId: string,
+ *   fromObjectTypeId: string,
  *   labels: list<string>,
- *   toObjectID: string,
- *   toObjectTypeID: string,
+ *   toObjectId: string,
+ *   toObjectTypeId: string,
  * }
  */
 final class LabelsBetweenObjectPair implements BaseModel
@@ -25,14 +25,14 @@ final class LabelsBetweenObjectPair implements BaseModel
     /**
      * The ID of the source object in the association.
      */
-    #[Api('fromObjectId')]
-    public string $fromObjectID;
+    #[Api]
+    public string $fromObjectId;
 
     /**
      * The type ID of the source object in the association.
      */
-    #[Api('fromObjectTypeId')]
-    public string $fromObjectTypeID;
+    #[Api]
+    public string $fromObjectTypeId;
 
     /**
      * An array of labels associated with the relationship between the objects.
@@ -45,14 +45,14 @@ final class LabelsBetweenObjectPair implements BaseModel
     /**
      * The ID of the target object in the association.
      */
-    #[Api('toObjectId')]
-    public string $toObjectID;
+    #[Api]
+    public string $toObjectId;
 
     /**
      * The type ID of the target object in the association.
      */
-    #[Api('toObjectTypeId')]
-    public string $toObjectTypeID;
+    #[Api]
+    public string $toObjectTypeId;
 
     /**
      * `new LabelsBetweenObjectPair()` is missing required properties by the API.
@@ -60,11 +60,11 @@ final class LabelsBetweenObjectPair implements BaseModel
      * To enforce required parameters use
      * ```
      * LabelsBetweenObjectPair::with(
-     *   fromObjectID: ...,
-     *   fromObjectTypeID: ...,
+     *   fromObjectId: ...,
+     *   fromObjectTypeId: ...,
      *   labels: ...,
-     *   toObjectID: ...,
-     *   toObjectTypeID: ...,
+     *   toObjectId: ...,
+     *   toObjectTypeId: ...,
      * )
      * ```
      *
@@ -92,19 +92,19 @@ final class LabelsBetweenObjectPair implements BaseModel
      * @param list<string> $labels
      */
     public static function with(
-        string $fromObjectID,
-        string $fromObjectTypeID,
+        string $fromObjectId,
+        string $fromObjectTypeId,
         array $labels,
-        string $toObjectID,
-        string $toObjectTypeID,
+        string $toObjectId,
+        string $toObjectTypeId,
     ): self {
         $obj = new self;
 
-        $obj->fromObjectID = $fromObjectID;
-        $obj->fromObjectTypeID = $fromObjectTypeID;
+        $obj->fromObjectId = $fromObjectId;
+        $obj->fromObjectTypeId = $fromObjectTypeId;
         $obj->labels = $labels;
-        $obj->toObjectID = $toObjectID;
-        $obj->toObjectTypeID = $toObjectTypeID;
+        $obj->toObjectId = $toObjectId;
+        $obj->toObjectTypeId = $toObjectTypeId;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     public function withFromObjectID(string $fromObjectID): self
     {
         $obj = clone $this;
-        $obj->fromObjectID = $fromObjectID;
+        $obj->fromObjectId = $fromObjectID;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeID = $fromObjectTypeID;
+        $obj->fromObjectTypeId = $fromObjectTypeID;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     public function withToObjectID(string $toObjectID): self
     {
         $obj = clone $this;
-        $obj->toObjectID = $toObjectID;
+        $obj->toObjectId = $toObjectID;
 
         return $obj;
     }
@@ -161,7 +161,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->toObjectTypeID = $toObjectTypeID;
+        $obj->toObjectTypeId = $toObjectTypeID;
 
         return $obj;
     }
