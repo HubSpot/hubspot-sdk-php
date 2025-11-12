@@ -2,12 +2,7 @@
 
 namespace Tests\Services\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\FieldTypeDefinition;
-use HubspotSDK\Automation\Actions\InputFieldDefinition;
-use HubspotSDK\Automation\Actions\PublicActionFunction;
-use HubspotSDK\Automation\Actions\PublicActionLabels;
 use HubspotSDK\Client;
-use HubspotSDK\Option;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -43,29 +38,31 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->create(
             0,
-            actionURL: 'actionUrl',
-            functions: [
-                PublicActionFunction::with(
-                    functionSource: 'functionSource',
-                    functionType: 'PRE_ACTION_EXECUTION'
-                ),
-            ],
-            inputFields: [
-                InputFieldDefinition::with(
-                    isRequired: true,
-                    typeDefinition: FieldTypeDefinition::with(
-                        externalOptions: true,
-                        name: 'name',
-                        options: [
-                            Option::with(hidden: false, label: 'Option A', value: 'A'),
+            [
+                'actionUrl' => 'actionUrl',
+                'functions' => [
+                    [
+                        'functionSource' => 'functionSource',
+                        'functionType' => 'PRE_ACTION_EXECUTION',
+                    ],
+                ],
+                'inputFields' => [
+                    [
+                        'isRequired' => true,
+                        'typeDefinition' => [
+                            'externalOptions' => true,
+                            'name' => 'name',
+                            'options' => [
+                                ['hidden' => false, 'label' => 'Option A', 'value' => 'A'],
+                            ],
+                            'type' => 'string',
                         ],
-                        type: 'string',
-                    ),
-                ),
+                    ],
+                ],
+                'labels' => ['foo' => ['actionName' => 'actionName']],
+                'objectTypes' => ['string'],
+                'published' => true,
             ],
-            labels: ['foo' => PublicActionLabels::with(actionName: 'actionName')],
-            objectTypes: ['string'],
-            published: true,
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -80,51 +77,59 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->create(
             0,
-            actionURL: 'actionUrl',
-            functions: [
-                PublicActionFunction::with(
-                    functionSource: 'functionSource',
-                    functionType: 'PRE_ACTION_EXECUTION'
-                )
-                    ->withID('id'),
-            ],
-            inputFields: [
-                InputFieldDefinition::with(
-                    isRequired: true,
-                    typeDefinition: FieldTypeDefinition::with(
-                        externalOptions: true,
-                        name: 'name',
-                        options: [
-                            Option::with(hidden: false, label: 'Option A', value: 'A')
-                                ->withDescription('Choice number one')
-                                ->withDisplayOrder(1),
+            [
+                'actionUrl' => 'actionUrl',
+                'functions' => [
+                    [
+                        'functionSource' => 'functionSource',
+                        'functionType' => 'PRE_ACTION_EXECUTION',
+                        'id' => 'id',
+                    ],
+                ],
+                'inputFields' => [
+                    [
+                        'isRequired' => true,
+                        'typeDefinition' => [
+                            'externalOptions' => true,
+                            'name' => 'name',
+                            'options' => [
+                                [
+                                    'hidden' => false,
+                                    'label' => 'Option A',
+                                    'value' => 'A',
+                                    'description' => 'Choice number one',
+                                    'displayOrder' => 1,
+                                ],
+                            ],
+                            'type' => 'string',
+                            'description' => 'description',
+                            'externalOptionsReferenceType' => 'externalOptionsReferenceType',
+                            'fieldType' => 'booleancheckbox',
+                            'helpText' => 'helpText',
+                            'label' => 'label',
+                            'optionsUrl' => 'optionsUrl',
+                            'referencedObjectType' => 'CONTACT',
                         ],
-                        type: 'string',
-                    )
-                        ->withDescription('description')
-                        ->withExternalOptionsReferenceType('externalOptionsReferenceType')
-                        ->withFieldType('booleancheckbox')
-                        ->withHelpText('helpText')
-                        ->withLabel('label')
-                        ->withOptionsURL('optionsUrl')
-                        ->withReferencedObjectType('CONTACT'),
-                )
-                    ->withAutomationFieldType('automationFieldType')
-                    ->withSupportedValueTypes(['STATIC_VALUE']),
+                        'automationFieldType' => 'automationFieldType',
+                        'supportedValueTypes' => ['STATIC_VALUE'],
+                    ],
+                ],
+                'labels' => [
+                    'foo' => [
+                        'actionName' => 'actionName',
+                        'actionCardContent' => 'actionCardContent',
+                        'actionDescription' => 'actionDescription',
+                        'appDisplayName' => 'appDisplayName',
+                        'executionRules' => ['foo' => 'string'],
+                        'inputFieldDescriptions' => ['foo' => 'string'],
+                        'inputFieldLabels' => ['foo' => 'string'],
+                        'inputFieldOptionLabels' => ['foo' => ['foo' => 'string']],
+                        'outputFieldLabels' => ['foo' => 'string'],
+                    ],
+                ],
+                'objectTypes' => ['string'],
+                'published' => true,
             ],
-            labels: [
-                'foo' => PublicActionLabels::with(actionName: 'actionName')
-                    ->withActionCardContent('actionCardContent')
-                    ->withActionDescription('actionDescription')
-                    ->withAppDisplayName('appDisplayName')
-                    ->withExecutionRules(['foo' => 'string'])
-                    ->withInputFieldDescriptions(['foo' => 'string'])
-                    ->withInputFieldLabels(['foo' => 'string'])
-                    ->withInputFieldOptionLabels(['foo' => ['foo' => 'string']])
-                    ->withOutputFieldLabels(['foo' => 'string']),
-            ],
-            objectTypes: ['string'],
-            published: true,
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -139,7 +144,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->update(
             'definitionId',
-            appID: 0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -154,7 +159,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->update(
             'definitionId',
-            appID: 0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -167,7 +172,7 @@ final class DefinitionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->actions->definitions->list(0);
+        $result = $this->client->automation->actions->definitions->list(0, []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -181,7 +186,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->delete(
             'definitionId',
-            0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -196,7 +201,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->delete(
             'definitionId',
-            0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -211,7 +216,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->get(
             'definitionId',
-            appID: 0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -226,7 +231,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->get(
             'definitionId',
-            appID: 0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

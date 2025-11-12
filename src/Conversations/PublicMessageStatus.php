@@ -11,7 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicMessageStatusShape = array{
- *   statusType: value-of<StatusType>, failureDetails?: PublicMessageFailureDetails
+ *   statusType: value-of<StatusType>,
+ *   failureDetails?: PublicMessageFailureDetails|null,
  * }
  */
 final class PublicMessageStatus implements BaseModel

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ListFolderCreateRequestShape = array{
- *   name: string, parentFolderID?: string
+ *   name: string, parentFolderId?: string|null
  * }
  */
 final class ListFolderCreateRequest implements BaseModel
@@ -27,8 +27,8 @@ final class ListFolderCreateRequest implements BaseModel
     /**
      * The folder this should be created in, if not specified will be created in the root folder 0.
      */
-    #[Api('parentFolderId', optional: true)]
-    public ?string $parentFolderID;
+    #[Api(optional: true)]
+    public ?string $parentFolderId;
 
     /**
      * `new ListFolderCreateRequest()` is missing required properties by the API.
@@ -56,13 +56,13 @@ final class ListFolderCreateRequest implements BaseModel
      */
     public static function with(
         string $name,
-        ?string $parentFolderID = null
+        ?string $parentFolderId = null
     ): self {
         $obj = new self;
 
         $obj->name = $name;
 
-        null !== $parentFolderID && $obj->parentFolderID = $parentFolderID;
+        null !== $parentFolderId && $obj->parentFolderId = $parentFolderId;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class ListFolderCreateRequest implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderID;
 
         return $obj;
     }

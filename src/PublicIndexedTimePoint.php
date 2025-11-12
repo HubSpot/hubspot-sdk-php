@@ -13,9 +13,9 @@ use HubspotSDK\PublicIndexedTimePoint\TimeType;
  * @phpstan-type PublicIndexedTimePointShape = array{
  *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
  *   timeType: value-of<TimeType>,
- *   zoneID: string,
- *   offset?: PublicIndexOffset,
- *   timezoneSource?: string,
+ *   zoneId: string,
+ *   offset?: PublicIndexOffset|null,
+ *   timezoneSource?: string|null,
  * }
  */
 final class PublicIndexedTimePoint implements BaseModel
@@ -30,8 +30,8 @@ final class PublicIndexedTimePoint implements BaseModel
     #[Api(enum: TimeType::class)]
     public string $timeType;
 
-    #[Api('zoneId')]
-    public string $zoneID;
+    #[Api]
+    public string $zoneId;
 
     #[Api(optional: true)]
     public ?PublicIndexOffset $offset;
@@ -44,7 +44,7 @@ final class PublicIndexedTimePoint implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicIndexedTimePoint::with(indexReference: ..., timeType: ..., zoneID: ...)
+     * PublicIndexedTimePoint::with(indexReference: ..., timeType: ..., zoneId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -70,7 +70,7 @@ final class PublicIndexedTimePoint implements BaseModel
      */
     public static function with(
         PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference $indexReference,
-        string $zoneID,
+        string $zoneId,
         TimeType|string $timeType = 'INDEXED',
         ?PublicIndexOffset $offset = null,
         ?string $timezoneSource = null,
@@ -79,7 +79,7 @@ final class PublicIndexedTimePoint implements BaseModel
 
         $obj->indexReference = $indexReference;
         $obj['timeType'] = $timeType;
-        $obj->zoneID = $zoneID;
+        $obj->zoneId = $zoneId;
 
         null !== $offset && $obj->offset = $offset;
         null !== $timezoneSource && $obj->timezoneSource = $timezoneSource;
@@ -110,7 +110,7 @@ final class PublicIndexedTimePoint implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj->zoneID = $zoneID;
+        $obj->zoneId = $zoneID;
 
         return $obj;
     }

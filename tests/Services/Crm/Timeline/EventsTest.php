@@ -3,8 +3,6 @@
 namespace Tests\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Timeline\TimelineEvent;
-use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,12 +36,12 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->timeline->events->create(
-            eventTemplateID: '1001298',
-            tokens: [
+        $result = $this->client->crm->timeline->events->create([
+            'eventTemplateId' => '1001298',
+            'tokens' => [
                 'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -55,12 +53,12 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->timeline->events->create(
-            eventTemplateID: '1001298',
-            tokens: [
+        $result = $this->client->crm->timeline->events->create([
+            'eventTemplateId' => '1001298',
+            'tokens' => [
                 'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -72,22 +70,22 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->timeline->events->batchCreate(
-            [
-                TimelineEvent::with(
-                    eventTemplateID: '1001298',
-                    tokens: [
+        $result = $this->client->crm->timeline->events->batchCreate([
+            'inputs' => [
+                [
+                    'eventTemplateId' => '1001298',
+                    'tokens' => [
                         'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
                     ],
-                ),
-                TimelineEvent::with(
-                    eventTemplateID: '1001298',
-                    tokens: [
+                ],
+                [
+                    'eventTemplateId' => '1001298',
+                    'tokens' => [
                         'petAge' => 'string', 'petColor' => 'yellow', 'petName' => 'Pocket',
                     ],
-                ),
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -99,71 +97,63 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->timeline->events->batchCreate(
-            [
-                TimelineEvent::with(
-                    eventTemplateID: '1001298',
-                    tokens: [
+        $result = $this->client->crm->timeline->events->batchCreate([
+            'inputs' => [
+                [
+                    'eventTemplateId' => '1001298',
+                    'tokens' => [
                         'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
                     ],
-                )
-                    ->withID('id')
-                    ->withDomain('domain')
-                    ->withEmail('art3mis-pup@petspot.com')
-                    ->withExtraData(
-                        [
-                            'questions' => [
-                                ['answer' => 'Bark!', 'question' => "Who's a good girl?"],
-                                ['answer' => 'Woof!', 'question' => 'Do you wanna go on a walk?'],
-                            ],
+                    'id' => 'id',
+                    'domain' => 'domain',
+                    'email' => 'art3mis-pup@petspot.com',
+                    'extraData' => [
+                        'questions' => [
+                            ['answer' => 'Bark!', 'question' => "Who's a good girl?"],
+                            ['answer' => 'Woof!', 'question' => 'Do you wanna go on a walk?'],
                         ],
-                    )
-                    ->withObjectID('objectId')
-                    ->withTimelineIFrame(
-                        TimelineEventIFrame::with(
-                            headerLabel: 'Art3mis dog',
-                            height: 400,
-                            linkLabel: 'View Art3mis',
-                            url: 'https://my.petspot.com/pets/Art3mis',
-                            width: 600,
-                        ),
-                    )
-                    ->withTimestamp(new \DateTimeImmutable('2019-12-27T18:11:19.117Z'))
-                    ->withUtk('utk'),
-                TimelineEvent::with(
-                    eventTemplateID: '1001298',
-                    tokens: [
+                    ],
+                    'objectId' => 'objectId',
+                    'timelineIFrame' => [
+                        'headerLabel' => 'Art3mis dog',
+                        'height' => 400,
+                        'linkLabel' => 'View Art3mis',
+                        'url' => 'https://my.petspot.com/pets/Art3mis',
+                        'width' => 600,
+                    ],
+                    'timestamp' => '2019-12-27T18:11:19.117Z',
+                    'utk' => 'utk',
+                ],
+                [
+                    'eventTemplateId' => '1001298',
+                    'tokens' => [
                         'petAge' => 'string', 'petColor' => 'yellow', 'petName' => 'Pocket',
                     ],
-                )
-                    ->withID('id')
-                    ->withDomain('domain')
-                    ->withEmail('pocket-tiger@petspot.com')
-                    ->withExtraData(
-                        [
-                            'questions' => [
-                                ['answer' => 'Purr...', 'question' => "Who's a good kitty?"],
-                                [
-                                    'answer' => 'Meow!',
-                                    'question' => 'Will you stop playing with that?',
-                                ],
+                    'id' => 'id',
+                    'domain' => 'domain',
+                    'email' => 'pocket-tiger@petspot.com',
+                    'extraData' => [
+                        'questions' => [
+                            ['answer' => 'Purr...', 'question' => "Who's a good kitty?"],
+                            [
+                                'answer' => 'Meow!',
+                                'question' => 'Will you stop playing with that?',
                             ],
                         ],
-                    )
-                    ->withObjectID('objectId')
-                    ->withTimelineIFrame(
-                        TimelineEventIFrame::with(
-                            headerLabel: 'Pocket Tiger',
-                            height: 400,
-                            linkLabel: 'View Pocket',
-                            url: 'https://my.petspot.com/pets/Pocket',
-                            width: 600,
-                        ),
-                    )
-                    ->withTimestamp(new \DateTimeImmutable('2019-12-27T18:11:19.117Z'))
-                    ->withUtk('utk'),
+                    ],
+                    'objectId' => 'objectId',
+                    'timelineIFrame' => [
+                        'headerLabel' => 'Pocket Tiger',
+                        'height' => 400,
+                        'linkLabel' => 'View Pocket',
+                        'url' => 'https://my.petspot.com/pets/Pocket',
+                        'width' => 600,
+                    ],
+                    'timestamp' => '2019-12-27T18:11:19.117Z',
+                    'utk' => 'utk',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -177,7 +167,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->get(
             'eventId',
-            'eventTemplateId'
+            ['eventTemplateId' => 'eventTemplateId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -192,7 +182,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->get(
             'eventId',
-            'eventTemplateId'
+            ['eventTemplateId' => 'eventTemplateId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -207,7 +197,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->getDetail(
             'eventId',
-            'eventTemplateId'
+            ['eventTemplateId' => 'eventTemplateId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -222,7 +212,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->getDetail(
             'eventId',
-            'eventTemplateId'
+            ['eventTemplateId' => 'eventTemplateId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

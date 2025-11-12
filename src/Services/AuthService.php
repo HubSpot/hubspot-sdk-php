@@ -11,7 +11,7 @@ use HubspotSDK\Services\Auth\OAuthService;
 final class AuthService implements AuthContract
 {
     /**
-     * @@api
+     * @api
      */
     public OAuthService $oauth;
 

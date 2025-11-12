@@ -11,7 +11,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape = array{
- *   results: list<mixed>, total: int, type: value-of<Type>, paging?: BoundedPaging
+ *   results: list<mixed>,
+ *   total: int,
+ *   type: value-of<Type>,
+ *   paging?: BoundedPaging|null,
  * }
  */
 final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements BaseModel

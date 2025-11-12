@@ -5,19 +5,18 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Automation;
 
 use HubspotSDK\Automation\Workflows\APIContactFlow;
-use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate;
-use HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationFlowIDCoordinate;
-use HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationWorkflowIDCoordinate;
 use HubspotSDK\Automation\Workflows\APIFlowEmailCampaign;
 use HubspotSDK\Automation\Workflows\APIFlowListing;
 use HubspotSDK\Automation\Workflows\APIPlatformFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseAPIFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseFlowIDWorkflowIDMappingResponse;
+use HubspotSDK\Automation\Workflows\WorkflowBatchGetIDMappingsParams;
+use HubspotSDK\Automation\Workflows\WorkflowBatchGetParams;
+use HubspotSDK\Automation\Workflows\WorkflowListEmailCampaignsParams;
+use HubspotSDK\Automation\Workflows\WorkflowListParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface WorkflowsContract
 {
@@ -43,30 +42,14 @@ interface WorkflowsContract
     /**
      * @api
      *
-     * @param string $after
-     * @param int $limit
+     * @param array<mixed>|WorkflowListParams $params
      *
      * @return Page<APIFlowListing>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $limit = omit,
-        ?RequestOptions $requestOptions = null
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<APIFlowListing>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|WorkflowListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page;
 
@@ -83,49 +66,25 @@ interface WorkflowsContract
     /**
      * @api
      *
-     * @param list<APIFlowBatchFetchFlowIDCoordinate> $inputs
+     * @param array<mixed>|WorkflowBatchGetParams $params
      *
      * @throws APIException
      */
     public function batchGet(
-        $inputs,
-        ?RequestOptions $requestOptions = null
+        array|WorkflowBatchGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseAPIFlow;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchGetRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseAPIFlow;
-
-    /**
-     * @api
-     *
-     * @param list<APIFlowBatchFetchMigrationFlowIDCoordinate|APIFlowBatchFetchMigrationWorkflowIDCoordinate> $inputs
+     * @param array<mixed>|WorkflowBatchGetIDMappingsParams $params
      *
      * @throws APIException
      */
     public function batchGetIDMappings(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseFlowIDWorkflowIDMappingResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchGetIDMappingsRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|WorkflowBatchGetIDMappingsParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseFlowIDWorkflowIDMappingResponse;
 
     /**
@@ -141,34 +100,14 @@ interface WorkflowsContract
     /**
      * @api
      *
-     * @param string $after
-     * @param string $before
-     * @param list<string> $flowID
-     * @param int $limit
+     * @param array<mixed>|WorkflowListEmailCampaignsParams $params
      *
      * @return Page<APIFlowEmailCampaign>
      *
      * @throws APIException
      */
     public function listEmailCampaigns(
-        $after = omit,
-        $before = omit,
-        $flowID = omit,
-        $limit = omit,
+        array|WorkflowListEmailCampaignsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<APIFlowEmailCampaign>
-     *
-     * @throws APIException
-     */
-    public function listEmailCampaignsRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page;
 }

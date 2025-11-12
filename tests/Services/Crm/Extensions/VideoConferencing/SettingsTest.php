@@ -42,7 +42,7 @@ final class SettingsTest extends TestCase
             ->extensions
             ->videoConferencing
             ->settings
-            ->update(0, createMeetingURL: 'https://example.com/create-meeting')
+            ->update(0, ['createMeetingUrl' => 'https://example.com/create-meeting'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -61,7 +61,7 @@ final class SettingsTest extends TestCase
             ->extensions
             ->videoConferencing
             ->settings
-            ->update(0, createMeetingURL: 'https://example.com/create-meeting')
+            ->update(0, ['createMeetingUrl' => 'https://example.com/create-meeting'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

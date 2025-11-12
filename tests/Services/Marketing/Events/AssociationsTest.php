@@ -52,7 +52,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->marketing->events->associations->delete(
             'listId',
-            'marketingEventId'
+            ['marketingEventId' => 'marketingEventId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -67,7 +67,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->marketing->events->associations->delete(
             'listId',
-            'marketingEventId'
+            ['marketingEventId' => 'marketingEventId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -82,7 +82,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->marketing->events->associations->associate(
             'listId',
-            'marketingEventId'
+            ['marketingEventId' => 'marketingEventId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -97,7 +97,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->marketing->events->associations->associate(
             'listId',
-            'marketingEventId'
+            ['marketingEventId' => 'marketingEventId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -117,8 +117,10 @@ final class AssociationsTest extends TestCase
             ->associations
             ->associateByExternalAccount(
                 'listId',
-                externalAccountID: 'externalAccountId',
-                externalEventID: 'externalEventId',
+                [
+                    'externalAccountId' => 'externalAccountId',
+                    'externalEventId' => 'externalEventId',
+                ],
             )
         ;
 
@@ -139,8 +141,10 @@ final class AssociationsTest extends TestCase
             ->associations
             ->associateByExternalAccount(
                 'listId',
-                externalAccountID: 'externalAccountId',
-                externalEventID: 'externalEventId',
+                [
+                    'externalAccountId' => 'externalAccountId',
+                    'externalEventId' => 'externalEventId',
+                ],
             )
         ;
 
@@ -161,8 +165,10 @@ final class AssociationsTest extends TestCase
             ->associations
             ->deleteByExternalAccount(
                 'listId',
-                externalAccountID: 'externalAccountId',
-                externalEventID: 'externalEventId',
+                [
+                    'externalAccountId' => 'externalAccountId',
+                    'externalEventId' => 'externalEventId',
+                ],
             )
         ;
 
@@ -183,8 +189,10 @@ final class AssociationsTest extends TestCase
             ->associations
             ->deleteByExternalAccount(
                 'listId',
-                externalAccountID: 'externalAccountId',
-                externalEventID: 'externalEventId',
+                [
+                    'externalAccountId' => 'externalAccountId',
+                    'externalEventId' => 'externalEventId',
+                ],
             )
         ;
 
@@ -203,7 +211,10 @@ final class AssociationsTest extends TestCase
             ->marketing
             ->events
             ->associations
-            ->listByExternalAccount('externalEventId', 'externalAccountId')
+            ->listByExternalAccount(
+                'externalEventId',
+                ['externalAccountId' => 'externalAccountId']
+            )
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -221,7 +232,10 @@ final class AssociationsTest extends TestCase
             ->marketing
             ->events
             ->associations
-            ->listByExternalAccount('externalEventId', 'externalAccountId')
+            ->listByExternalAccount(
+                'externalEventId',
+                ['externalAccountId' => 'externalAccountId']
+            )
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

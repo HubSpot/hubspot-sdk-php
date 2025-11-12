@@ -12,18 +12,18 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicActionDefinitionShape = array{
  *   id: string,
- *   actionURL: string,
+ *   actionUrl: string,
  *   functions: list<PublicActionFunctionIdentifier>,
  *   inputFields: list<InputFieldDefinition>,
- *   labels: array<string, PublicActionLabels>,
+ *   labels: array<string,PublicActionLabels>,
  *   objectTypes: list<string>,
  *   published: bool,
- *   revisionID: string,
- *   archivedAt?: int,
- *   executionRules?: list<PublicExecutionTranslationRule>,
- *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>,
- *   objectRequestOptions?: PublicObjectRequestOptions,
- *   outputFields?: list<OutputFieldDefinition>,
+ *   revisionId: string,
+ *   archivedAt?: int|null,
+ *   executionRules?: list<PublicExecutionTranslationRule>|null,
+ *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
+ *   objectRequestOptions?: PublicObjectRequestOptions|null,
+ *   outputFields?: list<OutputFieldDefinition>|null,
  * }
  */
 final class PublicActionDefinition implements BaseModel
@@ -34,8 +34,8 @@ final class PublicActionDefinition implements BaseModel
     #[Api]
     public string $id;
 
-    #[Api('actionUrl')]
-    public string $actionURL;
+    #[Api]
+    public string $actionUrl;
 
     /** @var list<PublicActionFunctionIdentifier> $functions */
     #[Api(list: PublicActionFunctionIdentifier::class)]
@@ -45,7 +45,7 @@ final class PublicActionDefinition implements BaseModel
     #[Api(list: InputFieldDefinition::class)]
     public array $inputFields;
 
-    /** @var array<string, PublicActionLabels> $labels */
+    /** @var array<string,PublicActionLabels> $labels */
     #[Api(map: PublicActionLabels::class)]
     public array $labels;
 
@@ -56,8 +56,8 @@ final class PublicActionDefinition implements BaseModel
     #[Api]
     public bool $published;
 
-    #[Api('revisionId')]
-    public string $revisionID;
+    #[Api]
+    public string $revisionId;
 
     #[Api(optional: true)]
     public ?int $archivedAt;
@@ -86,13 +86,13 @@ final class PublicActionDefinition implements BaseModel
      * ```
      * PublicActionDefinition::with(
      *   id: ...,
-     *   actionURL: ...,
+     *   actionUrl: ...,
      *   functions: ...,
      *   inputFields: ...,
      *   labels: ...,
      *   objectTypes: ...,
      *   published: ...,
-     *   revisionID: ...,
+     *   revisionId: ...,
      * )
      * ```
      *
@@ -122,7 +122,7 @@ final class PublicActionDefinition implements BaseModel
      *
      * @param list<PublicActionFunctionIdentifier> $functions
      * @param list<InputFieldDefinition> $inputFields
-     * @param array<string, PublicActionLabels> $labels
+     * @param array<string,PublicActionLabels> $labels
      * @param list<string> $objectTypes
      * @param list<PublicExecutionTranslationRule> $executionRules
      * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
@@ -130,13 +130,13 @@ final class PublicActionDefinition implements BaseModel
      */
     public static function with(
         string $id,
-        string $actionURL,
+        string $actionUrl,
         array $functions,
         array $inputFields,
         array $labels,
         array $objectTypes,
         bool $published,
-        string $revisionID,
+        string $revisionId,
         ?int $archivedAt = null,
         ?array $executionRules = null,
         ?array $inputFieldDependencies = null,
@@ -146,13 +146,13 @@ final class PublicActionDefinition implements BaseModel
         $obj = new self;
 
         $obj->id = $id;
-        $obj->actionURL = $actionURL;
+        $obj->actionUrl = $actionUrl;
         $obj->functions = $functions;
         $obj->inputFields = $inputFields;
         $obj->labels = $labels;
         $obj->objectTypes = $objectTypes;
         $obj->published = $published;
-        $obj->revisionID = $revisionID;
+        $obj->revisionId = $revisionId;
 
         null !== $archivedAt && $obj->archivedAt = $archivedAt;
         null !== $executionRules && $obj->executionRules = $executionRules;
@@ -174,7 +174,7 @@ final class PublicActionDefinition implements BaseModel
     public function withActionURL(string $actionURL): self
     {
         $obj = clone $this;
-        $obj->actionURL = $actionURL;
+        $obj->actionUrl = $actionURL;
 
         return $obj;
     }
@@ -202,7 +202,7 @@ final class PublicActionDefinition implements BaseModel
     }
 
     /**
-     * @param array<string, PublicActionLabels> $labels
+     * @param array<string,PublicActionLabels> $labels
      */
     public function withLabels(array $labels): self
     {
@@ -234,7 +234,7 @@ final class PublicActionDefinition implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj->revisionID = $revisionID;
+        $obj->revisionId = $revisionID;
 
         return $obj;
     }

@@ -17,9 +17,9 @@ use HubspotSDK\PublicPropertyAssociationFilterBranch\FilterBranchType;
  *   filterBranchOperator: string,
  *   filterBranchType: value-of<FilterBranchType>,
  *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   operator: string,
- *   propertyWithObjectID: string,
+ *   propertyWithObjectId: string,
  * }
  */
 final class PublicPropertyAssociationFilterBranch implements BaseModel
@@ -46,14 +46,14 @@ final class PublicPropertyAssociationFilterBranch implements BaseModel
     #[Api(list: Filter::class)]
     public array $filters;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     #[Api]
     public string $operator;
 
-    #[Api('propertyWithObjectId')]
-    public string $propertyWithObjectID;
+    #[Api]
+    public string $propertyWithObjectId;
 
     /**
      * `new PublicPropertyAssociationFilterBranch()` is missing required properties by the API.
@@ -65,9 +65,9 @@ final class PublicPropertyAssociationFilterBranch implements BaseModel
      *   filterBranchOperator: ...,
      *   filterBranchType: ...,
      *   filters: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   operator: ...,
-     *   propertyWithObjectID: ...,
+     *   propertyWithObjectId: ...,
      * )
      * ```
      *
@@ -102,9 +102,9 @@ final class PublicPropertyAssociationFilterBranch implements BaseModel
         array $filterBranches,
         string $filterBranchOperator,
         array $filters,
-        string $objectTypeID,
+        string $objectTypeId,
         string $operator,
-        string $propertyWithObjectID,
+        string $propertyWithObjectId,
         FilterBranchType|string $filterBranchType = 'PROPERTY_ASSOCIATION',
     ): self {
         $obj = new self;
@@ -113,9 +113,9 @@ final class PublicPropertyAssociationFilterBranch implements BaseModel
         $obj->filterBranchOperator = $filterBranchOperator;
         $obj['filterBranchType'] = $filterBranchType;
         $obj->filters = $filters;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->operator = $operator;
-        $obj->propertyWithObjectID = $propertyWithObjectID;
+        $obj->propertyWithObjectId = $propertyWithObjectId;
 
         return $obj;
     }
@@ -165,7 +165,7 @@ final class PublicPropertyAssociationFilterBranch implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -181,7 +181,7 @@ final class PublicPropertyAssociationFilterBranch implements BaseModel
     public function withPropertyWithObjectID(string $propertyWithObjectID): self
     {
         $obj = clone $this;
-        $obj->propertyWithObjectID = $propertyWithObjectID;
+        $obj->propertyWithObjectId = $propertyWithObjectID;
 
         return $obj;
     }

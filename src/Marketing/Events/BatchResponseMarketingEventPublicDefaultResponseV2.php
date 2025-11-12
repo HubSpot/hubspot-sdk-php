@@ -17,8 +17,8 @@ use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponse
  *   results: list<MarketingEventPublicDefaultResponseV2>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   links?: array<string, string>,
- *   requestedAt?: \DateTimeInterface,
+ *   links?: array<string,string>|null,
+ *   requestedAt?: \DateTimeInterface|null,
  * }
  */
 final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseModel, ResponseConverter
@@ -42,7 +42,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var array<string, string>|null $links */
+    /** @var array<string,string>|null $links */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
@@ -81,7 +81,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
      *
      * @param list<MarketingEventPublicDefaultResponseV2> $results
      * @param Status|value-of<Status> $status
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -143,7 +143,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
     }
 
     /**
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

@@ -10,14 +10,10 @@ use HubspotSDK\Crm\FeatureFlags\Apps\AppDeleteParams;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppGetParams;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppListPortalsParams;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams;
-use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams\DefaultState;
-use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams\OverrideState;
 use HubspotSDK\Crm\FeatureFlags\FlagResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\FeatureFlags\AppsContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class AppsService implements AppsContract
 {
@@ -31,52 +27,31 @@ final class AppsService implements AppsContract
      *
      * Set a feature flag for an app. For example, update the `hs-hide-crm-cards` flag's `defaultState` to `ON` to hide classic CRM cards from new installs.
      *
-     * @param int $appID
-     * @param DefaultState|value-of<DefaultState> $defaultState
-     * @param OverrideState|value-of<OverrideState> $overrideState
+     * @param array{
+     *   appId: int,
+     *   defaultState: "OFF"|"ON"|"ABSENT",
+     *   overrideState?: "OFF"|"ON"|"ABSENT",
+     * }|AppUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $flagName,
-        $appID,
-        $defaultState,
-        $overrideState = omit,
+        array|AppUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): FlagResponse {
-        $params = [
-            'appID' => $appID,
-            'defaultState' => $defaultState,
-            'overrideState' => $overrideState,
-        ];
-
-        return $this->updateRaw($flagName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $flagName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): FlagResponse {
         [$parsed, $options] = AppUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'put',
             path: ['feature-flags/v3/%1$s/flags/%2$s', $appID, $flagName],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: FlagResponse::class,
         );
@@ -87,38 +62,21 @@ final class AppsService implements AppsContract
      *
      * Delete a feature flag in an app.  For example, delete the `hs-release-app-cards` flag after all accounts have been migrated.
      *
-     * @param int $appID
+     * @param array{appId: int}|AppDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $flagName,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): FlagResponse {
-        $params = ['appID' => $appID];
-
-        return $this->deleteRaw($flagName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $flagName,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|AppDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): FlagResponse {
         [$parsed, $options] = AppDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -134,35 +92,21 @@ final class AppsService implements AppsContract
      *
      * Retrieve the current status of the app's feature flags. No request body is included.
      *
-     * @param int $appID
+     * @param array{appId: int}|AppGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $flagName,
-        $appID,
-        ?RequestOptions $requestOptions = null
+        array|AppGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): FlagResponse {
-        $params = ['appID' => $appID];
-
-        return $this->getRaw($flagName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $flagName,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): FlagResponse {
-        [$parsed, $options] = AppGetParams::parseRequest($params, $requestOptions);
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        [$parsed, $options] = AppGetParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -178,44 +122,23 @@ final class AppsService implements AppsContract
      *
      * Retrieve a list of HubSpot accounts with an account-level flag setting for the specified app. No request body is included.
      *
-     * @param int $appID
-     * @param int $limit the maximum number of results to return in a single request
-     * @param int $startPortalID the initial account ID for listing, enabling pagination
+     * @param array{
+     *   appId: int, limit?: int, startPortalId?: int
+     * }|AppListPortalsParams $params
      *
      * @throws APIException
      */
     public function listPortals(
         string $flagName,
-        $appID,
-        $limit = omit,
-        $startPortalID = omit,
+        array|AppListPortalsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PortalFlagStateBatchResponse {
-        $params = [
-            'appID' => $appID, 'limit' => $limit, 'startPortalID' => $startPortalID,
-        ];
-
-        return $this->listPortalsRaw($flagName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listPortalsRaw(
-        string $flagName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PortalFlagStateBatchResponse {
         [$parsed, $options] = AppListPortalsParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

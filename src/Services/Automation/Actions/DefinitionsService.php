@@ -9,22 +9,19 @@ use HubspotSDK\Automation\Actions\Definitions\DefinitionDeleteParams;
 use HubspotSDK\Automation\Actions\Definitions\DefinitionGetParams;
 use HubspotSDK\Automation\Actions\Definitions\DefinitionListParams;
 use HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams;
+use HubspotSDK\Automation\Actions\FieldTypeDefinition;
 use HubspotSDK\Automation\Actions\InputFieldDefinition;
 use HubspotSDK\Automation\Actions\OutputFieldDefinition;
 use HubspotSDK\Automation\Actions\PublicActionDefinition;
 use HubspotSDK\Automation\Actions\PublicActionFunction;
 use HubspotSDK\Automation\Actions\PublicActionLabels;
-use HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
 use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
 use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
-use HubspotSDK\Automation\Actions\PublicSingleFieldDependency;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\DefinitionsContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class DefinitionsService implements DefinitionsContract
 {
@@ -38,67 +35,55 @@ final class DefinitionsService implements DefinitionsContract
      *
      * Create a new custom workflow action.
      *
-     * @param string $actionURL
-     * @param list<PublicActionFunction> $functions
-     * @param list<InputFieldDefinition> $inputFields
-     * @param array<string, PublicActionLabels> $labels
-     * @param list<string> $objectTypes
-     * @param bool $published
-     * @param int $archivedAt
-     * @param list<PublicExecutionTranslationRule> $executionRules
-     * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
-     * @param PublicObjectRequestOptions $objectRequestOptions
-     * @param list<OutputFieldDefinition> $outputFields
+     * @param array{
+     *   actionUrl: string,
+     *   functions: list<array{
+     *     functionSource: string,
+     *     functionType: "PRE_ACTION_EXECUTION"|"PRE_FETCH_OPTIONS"|"POST_FETCH_OPTIONS"|"POST_ACTION_EXECUTION",
+     *     id?: string,
+     *   }|PublicActionFunction>,
+     *   inputFields: list<array{
+     *     isRequired: bool,
+     *     typeDefinition: array<mixed>|FieldTypeDefinition,
+     *     automationFieldType?: string,
+     *     supportedValueTypes?: list<mixed>,
+     *   }|InputFieldDefinition>,
+     *   labels: array<string,array{
+     *     actionName: string,
+     *     actionCardContent?: string,
+     *     actionDescription?: string,
+     *     appDisplayName?: string,
+     *     executionRules?: array<string,string>,
+     *     inputFieldDescriptions?: array<string,string>,
+     *     inputFieldLabels?: array<string,string>,
+     *     inputFieldOptionLabels?: array<string,array<string,string>>,
+     *     outputFieldLabels?: array<string,string>,
+     *   }|PublicActionLabels>,
+     *   objectTypes: list<string>,
+     *   published: bool,
+     *   archivedAt?: int,
+     *   executionRules?: list<array{
+     *     conditions: array<string,mixed>, labelName: string
+     *   }|PublicExecutionTranslationRule>,
+     *   inputFieldDependencies?: list<array<string,mixed>>,
+     *   objectRequestOptions?: array{
+     *     properties: list<string>
+     *   }|PublicObjectRequestOptions,
+     *   outputFields?: list<array{
+     *     typeDefinition: array<mixed>|FieldTypeDefinition
+     *   }|OutputFieldDefinition>,
+     * }|DefinitionCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        $actionURL,
-        $functions,
-        $inputFields,
-        $labels,
-        $objectTypes,
-        $published,
-        $archivedAt = omit,
-        $executionRules = omit,
-        $inputFieldDependencies = omit,
-        $objectRequestOptions = omit,
-        $outputFields = omit,
+        array|DefinitionCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicActionDefinition {
-        $params = [
-            'actionURL' => $actionURL,
-            'functions' => $functions,
-            'inputFields' => $inputFields,
-            'labels' => $labels,
-            'objectTypes' => $objectTypes,
-            'published' => $published,
-            'archivedAt' => $archivedAt,
-            'executionRules' => $executionRules,
-            'inputFieldDependencies' => $inputFieldDependencies,
-            'objectRequestOptions' => $objectRequestOptions,
-            'outputFields' => $outputFields,
-        ];
-
-        return $this->createRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicActionDefinition {
         [$parsed, $options] = DefinitionCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -116,73 +101,59 @@ final class DefinitionsService implements DefinitionsContract
      *
      * Update an existing action definition by ID.
      *
-     * @param int $appID
-     * @param string $actionURL
-     * @param list<PublicExecutionTranslationRule> $executionRules
-     * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
-     * @param list<InputFieldDefinition> $inputFields
-     * @param array<string, PublicActionLabels> $labels
-     * @param PublicObjectRequestOptions $objectRequestOptions
-     * @param list<string> $objectTypes
-     * @param list<OutputFieldDefinition> $outputFields
-     * @param bool $published
+     * @param array{
+     *   appId: int,
+     *   actionUrl?: string,
+     *   executionRules?: list<array{
+     *     conditions: array<string,mixed>, labelName: string
+     *   }|PublicExecutionTranslationRule>,
+     *   inputFieldDependencies?: list<array<string,mixed>>,
+     *   inputFields?: list<array{
+     *     isRequired: bool,
+     *     typeDefinition: array<mixed>|FieldTypeDefinition,
+     *     automationFieldType?: string,
+     *     supportedValueTypes?: list<mixed>,
+     *   }|InputFieldDefinition>,
+     *   labels?: array<string,array{
+     *     actionName: string,
+     *     actionCardContent?: string,
+     *     actionDescription?: string,
+     *     appDisplayName?: string,
+     *     executionRules?: array<string,string>,
+     *     inputFieldDescriptions?: array<string,string>,
+     *     inputFieldLabels?: array<string,string>,
+     *     inputFieldOptionLabels?: array<string,array<string,string>>,
+     *     outputFieldLabels?: array<string,string>,
+     *   }|PublicActionLabels>,
+     *   objectRequestOptions?: array{
+     *     properties: list<string>
+     *   }|PublicObjectRequestOptions,
+     *   objectTypes?: list<string>,
+     *   outputFields?: list<array{
+     *     typeDefinition: array<mixed>|FieldTypeDefinition
+     *   }|OutputFieldDefinition>,
+     *   published?: bool,
+     * }|DefinitionUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $definitionID,
-        $appID,
-        $actionURL = omit,
-        $executionRules = omit,
-        $inputFieldDependencies = omit,
-        $inputFields = omit,
-        $labels = omit,
-        $objectRequestOptions = omit,
-        $objectTypes = omit,
-        $outputFields = omit,
-        $published = omit,
+        array|DefinitionUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicActionDefinition {
-        $params = [
-            'appID' => $appID,
-            'actionURL' => $actionURL,
-            'executionRules' => $executionRules,
-            'inputFieldDependencies' => $inputFieldDependencies,
-            'inputFields' => $inputFields,
-            'labels' => $labels,
-            'objectRequestOptions' => $objectRequestOptions,
-            'objectTypes' => $objectTypes,
-            'outputFields' => $outputFields,
-            'published' => $published,
-        ];
-
-        return $this->updateRaw($definitionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $definitionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicActionDefinition {
         [$parsed, $options] = DefinitionUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'patch',
             path: ['automation/v4/actions/%1$s/%2$s', $appID, $definitionID],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: PublicActionDefinition::class,
         );
@@ -193,9 +164,9 @@ final class DefinitionsService implements DefinitionsContract
      *
      * Retrieve custom workflow action definitions by app ID.
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived whether to return only results that have been archived
-     * @param int $limit the maximum number of results to display per page
+     * @param array{
+     *   after?: string, archived?: bool, limit?: int
+     * }|DefinitionListParams $params
      *
      * @return Page<PublicActionDefinition>
      *
@@ -203,33 +174,12 @@ final class DefinitionsService implements DefinitionsContract
      */
     public function list(
         int $appID,
-        $after = omit,
-        $archived = omit,
-        $limit = omit,
+        array|DefinitionListParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = ['after' => $after, 'archived' => $archived, 'limit' => $limit];
-
-        return $this->listRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicActionDefinition>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = DefinitionListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -248,38 +198,21 @@ final class DefinitionsService implements DefinitionsContract
      *
      * Delete an action definition by ID.
      *
-     * @param int $appID
+     * @param array{appId: int}|DefinitionDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $definitionID,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['appID' => $appID];
-
-        return $this->deleteRaw($definitionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $definitionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|DefinitionDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = DefinitionDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -295,40 +228,21 @@ final class DefinitionsService implements DefinitionsContract
      *
      * Retrieve a custom workflow action definition by ID.
      *
-     * @param int $appID
-     * @param bool $archived whether to return only results that have been archived
+     * @param array{appId: int, archived?: bool}|DefinitionGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $definitionID,
-        $appID,
-        $archived = omit,
+        array|DefinitionGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicActionDefinition {
-        $params = ['appID' => $appID, 'archived' => $archived];
-
-        return $this->getRaw($definitionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $definitionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicActionDefinition {
         [$parsed, $options] = DefinitionGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

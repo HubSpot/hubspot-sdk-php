@@ -11,7 +11,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponsePublicAPIUserActionEventForwardPagingShape = array{
- *   results: list<PublicAPIUserActionEvent>, paging?: ForwardPaging
+ *   results: list<PublicAPIUserActionEvent>, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponsePublicAPIUserActionEventForwardPaging implements BaseModel

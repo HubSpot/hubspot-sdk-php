@@ -11,7 +11,7 @@ use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState;
 
 /**
  * @phpstan-type BatchPortalEntryShape = array{
- *   flagState: value-of<FlagState>, portalID: int
+ *   flagState: value-of<FlagState>, portalId: int
  * }
  */
 final class BatchPortalEntry implements BaseModel
@@ -23,15 +23,15 @@ final class BatchPortalEntry implements BaseModel
     #[Api(enum: FlagState::class)]
     public string $flagState;
 
-    #[Api('portalId')]
-    public int $portalID;
+    #[Api]
+    public int $portalId;
 
     /**
      * `new BatchPortalEntry()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * BatchPortalEntry::with(flagState: ..., portalID: ...)
+     * BatchPortalEntry::with(flagState: ..., portalId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class BatchPortalEntry implements BaseModel
      */
     public static function with(
         FlagState|string $flagState,
-        int $portalID
+        int $portalId
     ): self {
         $obj = new self;
 
         $obj['flagState'] = $flagState;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalId;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class BatchPortalEntry implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }

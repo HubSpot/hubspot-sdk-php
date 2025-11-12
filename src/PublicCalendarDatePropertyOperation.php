@@ -16,9 +16,9 @@ use HubspotSDK\PublicCalendarDatePropertyOperation\OperationType;
  *   operationType: value-of<OperationType>,
  *   operator: string,
  *   timeUnit: string,
- *   fiscalYearStart?: value-of<FiscalYearStart>,
- *   timeUnitCount?: int,
- *   useFiscalYear?: bool,
+ *   fiscalYearStart?: value-of<FiscalYearStart>|null,
+ *   timeUnitCount?: int|null,
+ *   useFiscalYear?: bool|null,
  * }
  */
 final class PublicCalendarDatePropertyOperation implements BaseModel

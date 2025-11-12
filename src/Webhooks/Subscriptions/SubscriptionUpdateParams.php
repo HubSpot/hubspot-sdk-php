@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Webhooks\Subscriptions->update
  *
- * @phpstan-type SubscriptionUpdateParamsShape = array{appID: int, active?: bool}
+ * @phpstan-type SubscriptionUpdateParamsShape = array{appId: int, active?: bool}
  */
 final class SubscriptionUpdateParams implements BaseModel
 {
@@ -23,7 +23,7 @@ final class SubscriptionUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /**
      * Determines if the subscription is active or paused.
@@ -36,7 +36,7 @@ final class SubscriptionUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SubscriptionUpdateParams::with(appID: ...)
+     * SubscriptionUpdateParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -55,11 +55,11 @@ final class SubscriptionUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID, ?bool $active = null): self
+    public static function with(int $appId, ?bool $active = null): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         null !== $active && $obj->active = $active;
 
@@ -69,7 +69,7 @@ final class SubscriptionUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

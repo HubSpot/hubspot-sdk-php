@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type RecordingSettingsPatchRequestShape = array{
- *   urlToRetrieveAuthedRecording?: string
+ *   urlToRetrieveAuthedRecording?: string|null
  * }
  */
 final class RecordingSettingsPatchRequest implements BaseModel

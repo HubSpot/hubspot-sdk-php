@@ -25,42 +25,42 @@ use HubspotSDK\Core\Conversion\MapOf;
  * @phpstan-type SitePageUpdateParamsShape = array{
  *   id: string,
  *   abStatus: AbStatus|value-of<AbStatus>,
- *   abTestID: string,
+ *   abTestId: string,
  *   archivedAt: \DateTimeInterface,
  *   archivedInDashboard: bool,
- *   attachedStylesheets: list<array<string, mixed>>,
+ *   attachedStylesheets: list<array<string,mixed>>,
  *   authorName: string,
  *   campaign: string,
- *   categoryID: int,
- *   contentGroupID: string,
+ *   categoryId: int,
+ *   contentGroupId: string,
  *   contentTypeCategory: ContentTypeCategory|value-of<ContentTypeCategory>,
  *   created: \DateTimeInterface,
- *   createdByID: string,
+ *   createdById: string,
  *   currentlyPublished: bool,
  *   currentState: CurrentState|value-of<CurrentState>,
  *   domain: string,
- *   dynamicPageDataSourceID: string,
+ *   dynamicPageDataSourceId: string,
  *   dynamicPageDataSourceType: int,
- *   dynamicPageHubDBTableID: string,
+ *   dynamicPageHubDbTableId: string,
  *   enableDomainStylesheets: bool,
  *   enableLayoutStylesheets: bool,
  *   featuredImage: string,
  *   featuredImageAltText: string,
- *   folderID: string,
- *   footerHTML: string,
- *   headHTML: string,
+ *   folderId: string,
+ *   footerHtml: string,
+ *   headHtml: string,
  *   htmlTitle: string,
  *   includeDefaultCustomCss: bool,
  *   language: Language|value-of<Language>,
- *   layoutSections: array<string, LayoutSection>,
- *   linkRelCanonicalURL: string,
- *   mabExperimentID: string,
+ *   layoutSections: array<string,LayoutSection>,
+ *   linkRelCanonicalUrl: string,
+ *   mabExperimentId: string,
  *   metaDescription: string,
  *   name: string,
  *   pageExpiryDate: int,
  *   pageExpiryEnabled: bool,
- *   pageExpiryRedirectID: int,
- *   pageExpiryRedirectURL: string,
+ *   pageExpiryRedirectId: int,
+ *   pageExpiryRedirectUrl: string,
  *   pageRedirected: bool,
  *   password: string,
  *   publicAccessRules: list<mixed>,
@@ -71,15 +71,15 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   state: string,
  *   subcategory: string,
  *   templatePath: string,
- *   themeSettingsValues: array<string, mixed>,
- *   translatedFromID: string,
- *   translations: array<string, PagesContentLanguageVariation>,
+ *   themeSettingsValues: array<string,mixed>,
+ *   translatedFromId: string,
+ *   translations: array<string,PagesContentLanguageVariation>,
  *   updated: \DateTimeInterface,
- *   updatedByID: string,
+ *   updatedById: string,
  *   url: string,
  *   useFeaturedImage: bool,
- *   widgetContainers: array<string, mixed>,
- *   widgets: array<string, mixed>,
+ *   widgetContainers: array<string,mixed>,
+ *   widgets: array<string,mixed>,
  *   archived?: bool,
  * }
  */
@@ -106,8 +106,8 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * The ID of the AB test associated with this page, if applicable.
      */
-    #[Api('abTestId')]
-    public string $abTestID;
+    #[Api]
+    public string $abTestId;
 
     /**
      * The timestamp (ISO8601 format) when this page was deleted.
@@ -124,7 +124,7 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * List of stylesheets to attach to this page. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
      *
-     * @var list<array<string, mixed>> $attachedStylesheets
+     * @var list<array<string,mixed>> $attachedStylesheets
      */
     #[Api(list: new MapOf('mixed'))]
     public array $attachedStylesheets;
@@ -144,11 +144,11 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * ID of the type of object this is. Should always .
      */
-    #[Api('categoryId')]
-    public int $categoryID;
+    #[Api]
+    public int $categoryId;
 
-    #[Api('contentGroupId')]
-    public string $contentGroupID;
+    #[Api]
+    public string $contentGroupId;
 
     /**
      * An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.
@@ -164,8 +164,8 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * The ID of the user that created this page.
      */
-    #[Api('createdById')]
-    public string $createdByID;
+    #[Api]
+    public string $createdById;
 
     #[Api]
     public bool $currentlyPublished;
@@ -184,8 +184,8 @@ final class SitePageUpdateParams implements BaseModel
     #[Api]
     public string $domain;
 
-    #[Api('dynamicPageDataSourceId')]
-    public string $dynamicPageDataSourceID;
+    #[Api]
+    public string $dynamicPageDataSourceId;
 
     #[Api]
     public int $dynamicPageDataSourceType;
@@ -193,8 +193,8 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * The ID of the HubDB table this page references, if applicable.
      */
-    #[Api('dynamicPageHubDbTableId')]
-    public string $dynamicPageHubDBTableID;
+    #[Api]
+    public string $dynamicPageHubDbTableId;
 
     /**
      * Boolean to determine whether or not the styles from the template should be applied.
@@ -223,20 +223,20 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * The ID of the associated folder this landing page is organized under in the app dashboard.
      */
-    #[Api('folderId')]
-    public string $folderID;
+    #[Api]
+    public string $folderId;
 
     /**
      * Custom HTML for embed codes, javascript that should be placed before the </body> tag of the page.
      */
-    #[Api('footerHtml')]
-    public string $footerHTML;
+    #[Api]
+    public string $footerHtml;
 
     /**
      * Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
      */
-    #[Api('headHtml')]
-    public string $headHTML;
+    #[Api]
+    public string $headHtml;
 
     /**
      * The html title of this page.
@@ -258,21 +258,21 @@ final class SitePageUpdateParams implements BaseModel
     #[Api(enum: Language::class)]
     public string $language;
 
-    /** @var array<string, LayoutSection> $layoutSections */
+    /** @var array<string,LayoutSection> $layoutSections */
     #[Api(map: LayoutSection::class)]
     public array $layoutSections;
 
     /**
      * Optional override to set the URL to be used in the rel=canonical link tag on the page.
      */
-    #[Api('linkRelCanonicalUrl')]
-    public string $linkRelCanonicalURL;
+    #[Api]
+    public string $linkRelCanonicalUrl;
 
     /**
      * The ID of the MAB test (or dynamic test) associated with this page, if applicable.
      */
-    #[Api('mabExperimentId')]
-    public string $mabExperimentID;
+    #[Api]
+    public string $mabExperimentId;
 
     /**
      * A description that goes in <meta> tag on the page.
@@ -301,14 +301,14 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * The ID of another page this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectUrl.
      */
-    #[Api('pageExpiryRedirectId')]
-    public int $pageExpiryRedirectID;
+    #[Api]
+    public int $pageExpiryRedirectId;
 
     /**
      * The URL this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectId.
      */
-    #[Api('pageExpiryRedirectUrl')]
-    public string $pageExpiryRedirectURL;
+    #[Api]
+    public string $pageExpiryRedirectUrl;
 
     /**
      * A generated Boolean describing whether or not this page is currently expired and being redirected.
@@ -372,17 +372,17 @@ final class SitePageUpdateParams implements BaseModel
     #[Api]
     public string $templatePath;
 
-    /** @var array<string, mixed> $themeSettingsValues */
+    /** @var array<string,mixed> $themeSettingsValues */
     #[Api(map: 'mixed')]
     public array $themeSettingsValues;
 
     /**
      * ID of the primary page this object was translated from.
      */
-    #[Api('translatedFromId')]
-    public string $translatedFromID;
+    #[Api]
+    public string $translatedFromId;
 
-    /** @var array<string, PagesContentLanguageVariation> $translations */
+    /** @var array<string,PagesContentLanguageVariation> $translations */
     #[Api(map: PagesContentLanguageVariation::class)]
     public array $translations;
 
@@ -392,8 +392,8 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * The ID of the user that updated this page.
      */
-    #[Api('updatedById')]
-    public string $updatedByID;
+    #[Api]
+    public string $updatedById;
 
     /**
      * A generated field representing the URL of this page.
@@ -410,7 +410,7 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * A data structure containing the data for all the modules inside the containers for this page. This will only be populated if the page has widget containers.
      *
-     * @var array<string, mixed> $widgetContainers
+     * @var array<string,mixed> $widgetContainers
      */
     #[Api(map: 'mixed')]
     public array $widgetContainers;
@@ -418,7 +418,7 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * A data structure containing the data for all the modules for this page.
      *
-     * @var array<string, mixed> $widgets
+     * @var array<string,mixed> $widgets
      */
     #[Api(map: 'mixed')]
     public array $widgets;
@@ -437,42 +437,42 @@ final class SitePageUpdateParams implements BaseModel
      * SitePageUpdateParams::with(
      *   id: ...,
      *   abStatus: ...,
-     *   abTestID: ...,
+     *   abTestId: ...,
      *   archivedAt: ...,
      *   archivedInDashboard: ...,
      *   attachedStylesheets: ...,
      *   authorName: ...,
      *   campaign: ...,
-     *   categoryID: ...,
-     *   contentGroupID: ...,
+     *   categoryId: ...,
+     *   contentGroupId: ...,
      *   contentTypeCategory: ...,
      *   created: ...,
-     *   createdByID: ...,
+     *   createdById: ...,
      *   currentlyPublished: ...,
      *   currentState: ...,
      *   domain: ...,
-     *   dynamicPageDataSourceID: ...,
+     *   dynamicPageDataSourceId: ...,
      *   dynamicPageDataSourceType: ...,
-     *   dynamicPageHubDBTableID: ...,
+     *   dynamicPageHubDbTableId: ...,
      *   enableDomainStylesheets: ...,
      *   enableLayoutStylesheets: ...,
      *   featuredImage: ...,
      *   featuredImageAltText: ...,
-     *   folderID: ...,
-     *   footerHTML: ...,
-     *   headHTML: ...,
+     *   folderId: ...,
+     *   footerHtml: ...,
+     *   headHtml: ...,
      *   htmlTitle: ...,
      *   includeDefaultCustomCss: ...,
      *   language: ...,
      *   layoutSections: ...,
-     *   linkRelCanonicalURL: ...,
-     *   mabExperimentID: ...,
+     *   linkRelCanonicalUrl: ...,
+     *   mabExperimentId: ...,
      *   metaDescription: ...,
      *   name: ...,
      *   pageExpiryDate: ...,
      *   pageExpiryEnabled: ...,
-     *   pageExpiryRedirectID: ...,
-     *   pageExpiryRedirectURL: ...,
+     *   pageExpiryRedirectId: ...,
+     *   pageExpiryRedirectUrl: ...,
      *   pageRedirected: ...,
      *   password: ...,
      *   publicAccessRules: ...,
@@ -484,10 +484,10 @@ final class SitePageUpdateParams implements BaseModel
      *   subcategory: ...,
      *   templatePath: ...,
      *   themeSettingsValues: ...,
-     *   translatedFromID: ...,
+     *   translatedFromId: ...,
      *   translations: ...,
      *   updated: ...,
-     *   updatedByID: ...,
+     *   updatedById: ...,
      *   url: ...,
      *   useFeaturedImage: ...,
      *   widgetContainers: ...,
@@ -569,56 +569,56 @@ final class SitePageUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param AbStatus|value-of<AbStatus> $abStatus
-     * @param list<array<string, mixed>> $attachedStylesheets
+     * @param list<array<string,mixed>> $attachedStylesheets
      * @param ContentTypeCategory|value-of<ContentTypeCategory> $contentTypeCategory
      * @param CurrentState|value-of<CurrentState> $currentState
      * @param Language|value-of<Language> $language
-     * @param array<string, LayoutSection> $layoutSections
+     * @param array<string,LayoutSection> $layoutSections
      * @param list<mixed> $publicAccessRules
-     * @param array<string, mixed> $themeSettingsValues
-     * @param array<string, PagesContentLanguageVariation> $translations
-     * @param array<string, mixed> $widgetContainers
-     * @param array<string, mixed> $widgets
+     * @param array<string,mixed> $themeSettingsValues
+     * @param array<string,PagesContentLanguageVariation> $translations
+     * @param array<string,mixed> $widgetContainers
+     * @param array<string,mixed> $widgets
      */
     public static function with(
         string $id,
         AbStatus|string $abStatus,
-        string $abTestID,
+        string $abTestId,
         \DateTimeInterface $archivedAt,
         bool $archivedInDashboard,
         array $attachedStylesheets,
         string $authorName,
         string $campaign,
-        int $categoryID,
-        string $contentGroupID,
+        int $categoryId,
+        string $contentGroupId,
         ContentTypeCategory|string $contentTypeCategory,
         \DateTimeInterface $created,
-        string $createdByID,
+        string $createdById,
         bool $currentlyPublished,
         CurrentState|string $currentState,
         string $domain,
-        string $dynamicPageDataSourceID,
+        string $dynamicPageDataSourceId,
         int $dynamicPageDataSourceType,
-        string $dynamicPageHubDBTableID,
+        string $dynamicPageHubDbTableId,
         bool $enableDomainStylesheets,
         bool $enableLayoutStylesheets,
         string $featuredImage,
         string $featuredImageAltText,
-        string $folderID,
-        string $footerHTML,
-        string $headHTML,
+        string $folderId,
+        string $footerHtml,
+        string $headHtml,
         string $htmlTitle,
         bool $includeDefaultCustomCss,
         Language|string $language,
         array $layoutSections,
-        string $linkRelCanonicalURL,
-        string $mabExperimentID,
+        string $linkRelCanonicalUrl,
+        string $mabExperimentId,
         string $metaDescription,
         string $name,
         int $pageExpiryDate,
         bool $pageExpiryEnabled,
-        int $pageExpiryRedirectID,
-        string $pageExpiryRedirectURL,
+        int $pageExpiryRedirectId,
+        string $pageExpiryRedirectUrl,
         bool $pageRedirected,
         string $password,
         array $publicAccessRules,
@@ -630,10 +630,10 @@ final class SitePageUpdateParams implements BaseModel
         string $subcategory,
         string $templatePath,
         array $themeSettingsValues,
-        string $translatedFromID,
+        string $translatedFromId,
         array $translations,
         \DateTimeInterface $updated,
-        string $updatedByID,
+        string $updatedById,
         string $url,
         bool $useFeaturedImage,
         array $widgetContainers,
@@ -644,42 +644,42 @@ final class SitePageUpdateParams implements BaseModel
 
         $obj->id = $id;
         $obj['abStatus'] = $abStatus;
-        $obj->abTestID = $abTestID;
+        $obj->abTestId = $abTestId;
         $obj->archivedAt = $archivedAt;
         $obj->archivedInDashboard = $archivedInDashboard;
         $obj->attachedStylesheets = $attachedStylesheets;
         $obj->authorName = $authorName;
         $obj->campaign = $campaign;
-        $obj->categoryID = $categoryID;
-        $obj->contentGroupID = $contentGroupID;
+        $obj->categoryId = $categoryId;
+        $obj->contentGroupId = $contentGroupId;
         $obj['contentTypeCategory'] = $contentTypeCategory;
         $obj->created = $created;
-        $obj->createdByID = $createdByID;
+        $obj->createdById = $createdById;
         $obj->currentlyPublished = $currentlyPublished;
         $obj['currentState'] = $currentState;
         $obj->domain = $domain;
-        $obj->dynamicPageDataSourceID = $dynamicPageDataSourceID;
+        $obj->dynamicPageDataSourceId = $dynamicPageDataSourceId;
         $obj->dynamicPageDataSourceType = $dynamicPageDataSourceType;
-        $obj->dynamicPageHubDBTableID = $dynamicPageHubDBTableID;
+        $obj->dynamicPageHubDbTableId = $dynamicPageHubDbTableId;
         $obj->enableDomainStylesheets = $enableDomainStylesheets;
         $obj->enableLayoutStylesheets = $enableLayoutStylesheets;
         $obj->featuredImage = $featuredImage;
         $obj->featuredImageAltText = $featuredImageAltText;
-        $obj->folderID = $folderID;
-        $obj->footerHTML = $footerHTML;
-        $obj->headHTML = $headHTML;
+        $obj->folderId = $folderId;
+        $obj->footerHtml = $footerHtml;
+        $obj->headHtml = $headHtml;
         $obj->htmlTitle = $htmlTitle;
         $obj->includeDefaultCustomCss = $includeDefaultCustomCss;
         $obj['language'] = $language;
         $obj->layoutSections = $layoutSections;
-        $obj->linkRelCanonicalURL = $linkRelCanonicalURL;
-        $obj->mabExperimentID = $mabExperimentID;
+        $obj->linkRelCanonicalUrl = $linkRelCanonicalUrl;
+        $obj->mabExperimentId = $mabExperimentId;
         $obj->metaDescription = $metaDescription;
         $obj->name = $name;
         $obj->pageExpiryDate = $pageExpiryDate;
         $obj->pageExpiryEnabled = $pageExpiryEnabled;
-        $obj->pageExpiryRedirectID = $pageExpiryRedirectID;
-        $obj->pageExpiryRedirectURL = $pageExpiryRedirectURL;
+        $obj->pageExpiryRedirectId = $pageExpiryRedirectId;
+        $obj->pageExpiryRedirectUrl = $pageExpiryRedirectUrl;
         $obj->pageRedirected = $pageRedirected;
         $obj->password = $password;
         $obj->publicAccessRules = $publicAccessRules;
@@ -691,10 +691,10 @@ final class SitePageUpdateParams implements BaseModel
         $obj->subcategory = $subcategory;
         $obj->templatePath = $templatePath;
         $obj->themeSettingsValues = $themeSettingsValues;
-        $obj->translatedFromID = $translatedFromID;
+        $obj->translatedFromId = $translatedFromId;
         $obj->translations = $translations;
         $obj->updated = $updated;
-        $obj->updatedByID = $updatedByID;
+        $obj->updatedById = $updatedById;
         $obj->url = $url;
         $obj->useFeaturedImage = $useFeaturedImage;
         $obj->widgetContainers = $widgetContainers;
@@ -735,7 +735,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withAbTestID(string $abTestID): self
     {
         $obj = clone $this;
-        $obj->abTestID = $abTestID;
+        $obj->abTestId = $abTestID;
 
         return $obj;
     }
@@ -765,7 +765,7 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * List of stylesheets to attach to this page. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
      *
-     * @param list<array<string, mixed>> $attachedStylesheets
+     * @param list<array<string,mixed>> $attachedStylesheets
      */
     public function withAttachedStylesheets(array $attachedStylesheets): self
     {
@@ -803,7 +803,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withCategoryID(int $categoryID): self
     {
         $obj = clone $this;
-        $obj->categoryID = $categoryID;
+        $obj->categoryId = $categoryID;
 
         return $obj;
     }
@@ -811,7 +811,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withContentGroupID(string $contentGroupID): self
     {
         $obj = clone $this;
-        $obj->contentGroupID = $contentGroupID;
+        $obj->contentGroupId = $contentGroupID;
 
         return $obj;
     }
@@ -844,7 +844,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
-        $obj->createdByID = $createdByID;
+        $obj->createdById = $createdByID;
 
         return $obj;
     }
@@ -885,7 +885,7 @@ final class SitePageUpdateParams implements BaseModel
         string $dynamicPageDataSourceID
     ): self {
         $obj = clone $this;
-        $obj->dynamicPageDataSourceID = $dynamicPageDataSourceID;
+        $obj->dynamicPageDataSourceId = $dynamicPageDataSourceID;
 
         return $obj;
     }
@@ -906,7 +906,7 @@ final class SitePageUpdateParams implements BaseModel
         string $dynamicPageHubDBTableID
     ): self {
         $obj = clone $this;
-        $obj->dynamicPageHubDBTableID = $dynamicPageHubDBTableID;
+        $obj->dynamicPageHubDbTableId = $dynamicPageHubDBTableID;
 
         return $obj;
     }
@@ -963,7 +963,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderID = $folderID;
+        $obj->folderId = $folderID;
 
         return $obj;
     }
@@ -974,7 +974,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withFooterHTML(string $footerHTML): self
     {
         $obj = clone $this;
-        $obj->footerHTML = $footerHTML;
+        $obj->footerHtml = $footerHTML;
 
         return $obj;
     }
@@ -985,7 +985,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withHeadHTML(string $headHTML): self
     {
         $obj = clone $this;
-        $obj->headHTML = $headHTML;
+        $obj->headHtml = $headHTML;
 
         return $obj;
     }
@@ -1027,7 +1027,7 @@ final class SitePageUpdateParams implements BaseModel
     }
 
     /**
-     * @param array<string, LayoutSection> $layoutSections
+     * @param array<string,LayoutSection> $layoutSections
      */
     public function withLayoutSections(array $layoutSections): self
     {
@@ -1043,7 +1043,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withLinkRelCanonicalURL(string $linkRelCanonicalURL): self
     {
         $obj = clone $this;
-        $obj->linkRelCanonicalURL = $linkRelCanonicalURL;
+        $obj->linkRelCanonicalUrl = $linkRelCanonicalURL;
 
         return $obj;
     }
@@ -1054,7 +1054,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withMabExperimentID(string $mabExperimentID): self
     {
         $obj = clone $this;
-        $obj->mabExperimentID = $mabExperimentID;
+        $obj->mabExperimentId = $mabExperimentID;
 
         return $obj;
     }
@@ -1109,7 +1109,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withPageExpiryRedirectID(int $pageExpiryRedirectID): self
     {
         $obj = clone $this;
-        $obj->pageExpiryRedirectID = $pageExpiryRedirectID;
+        $obj->pageExpiryRedirectId = $pageExpiryRedirectID;
 
         return $obj;
     }
@@ -1121,7 +1121,7 @@ final class SitePageUpdateParams implements BaseModel
         string $pageExpiryRedirectURL
     ): self {
         $obj = clone $this;
-        $obj->pageExpiryRedirectURL = $pageExpiryRedirectURL;
+        $obj->pageExpiryRedirectUrl = $pageExpiryRedirectURL;
 
         return $obj;
     }
@@ -1240,7 +1240,7 @@ final class SitePageUpdateParams implements BaseModel
     }
 
     /**
-     * @param array<string, mixed> $themeSettingsValues
+     * @param array<string,mixed> $themeSettingsValues
      */
     public function withThemeSettingsValues(array $themeSettingsValues): self
     {
@@ -1256,13 +1256,13 @@ final class SitePageUpdateParams implements BaseModel
     public function withTranslatedFromID(string $translatedFromID): self
     {
         $obj = clone $this;
-        $obj->translatedFromID = $translatedFromID;
+        $obj->translatedFromId = $translatedFromID;
 
         return $obj;
     }
 
     /**
-     * @param array<string, PagesContentLanguageVariation> $translations
+     * @param array<string,PagesContentLanguageVariation> $translations
      */
     public function withTranslations(array $translations): self
     {
@@ -1286,7 +1286,7 @@ final class SitePageUpdateParams implements BaseModel
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
-        $obj->updatedByID = $updatedByID;
+        $obj->updatedById = $updatedByID;
 
         return $obj;
     }
@@ -1316,7 +1316,7 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * A data structure containing the data for all the modules inside the containers for this page. This will only be populated if the page has widget containers.
      *
-     * @param array<string, mixed> $widgetContainers
+     * @param array<string,mixed> $widgetContainers
      */
     public function withWidgetContainers(array $widgetContainers): self
     {
@@ -1329,7 +1329,7 @@ final class SitePageUpdateParams implements BaseModel
     /**
      * A data structure containing the data for all the modules for this page.
      *
-     * @param array<string, mixed> $widgets
+     * @param array<string,mixed> $widgets
      */
     public function withWidgets(array $widgets): self
     {

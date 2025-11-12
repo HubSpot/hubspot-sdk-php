@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicFetchAssociationsBatchRequestShape = array{
- *   id: string, after?: string
+ *   id: string, after?: string|null
  * }
  */
 final class PublicFetchAssociationsBatchRequest implements BaseModel

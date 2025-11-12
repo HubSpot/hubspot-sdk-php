@@ -12,8 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type MarketingEventEmailSubscriberShape = array{
  *   email: string,
  *   interactionDateTime: int,
- *   contactProperties?: array<string, string>,
- *   properties?: array<string, string>,
+ *   contactProperties?: array<string,string>|null,
+ *   properties?: array<string,string>|null,
  * }
  */
 final class MarketingEventEmailSubscriber implements BaseModel
@@ -33,11 +33,11 @@ final class MarketingEventEmailSubscriber implements BaseModel
     #[Api]
     public int $interactionDateTime;
 
-    /** @var array<string, string>|null $contactProperties */
+    /** @var array<string,string>|null $contactProperties */
     #[Api(map: 'string', optional: true)]
     public ?array $contactProperties;
 
-    /** @var array<string, string>|null $properties */
+    /** @var array<string,string>|null $properties */
     #[Api(map: 'string', optional: true)]
     public ?array $properties;
 
@@ -67,8 +67,8 @@ final class MarketingEventEmailSubscriber implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $contactProperties
-     * @param array<string, string> $properties
+     * @param array<string,string> $contactProperties
+     * @param array<string,string> $properties
      */
     public static function with(
         string $email,
@@ -110,7 +110,7 @@ final class MarketingEventEmailSubscriber implements BaseModel
     }
 
     /**
-     * @param array<string, string> $contactProperties
+     * @param array<string,string> $contactProperties
      */
     public function withContactProperties(array $contactProperties): self
     {
@@ -121,7 +121,7 @@ final class MarketingEventEmailSubscriber implements BaseModel
     }
 
     /**
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

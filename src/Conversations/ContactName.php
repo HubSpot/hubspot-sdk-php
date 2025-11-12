@@ -10,11 +10,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ContactNameShape = array{
- *   firstName?: string,
- *   lastName?: string,
- *   middleName?: string,
- *   prefix?: string,
- *   suffix?: string,
+ *   firstName?: string|null,
+ *   lastName?: string|null,
+ *   middleName?: string|null,
+ *   prefix?: string|null,
+ *   suffix?: string|null,
  * }
  */
 final class ContactName implements BaseModel

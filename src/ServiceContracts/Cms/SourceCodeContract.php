@@ -6,11 +6,16 @@ namespace HubspotSDK\ServiceContracts\Cms;
 
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Cms\SourceCode\AssetFileMetadata;
+use HubspotSDK\Cms\SourceCode\SourceCodeCreateParams;
+use HubspotSDK\Cms\SourceCode\SourceCodeDeleteParams;
+use HubspotSDK\Cms\SourceCode\SourceCodeExtractAsyncParams;
+use HubspotSDK\Cms\SourceCode\SourceCodeGetMetadataParams;
+use HubspotSDK\Cms\SourceCode\SourceCodeGetParams;
+use HubspotSDK\Cms\SourceCode\SourceCodeUpsertParams;
+use HubspotSDK\Cms\SourceCode\SourceCodeValidateParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\TaskLocator;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface SourceCodeContract
 {
@@ -19,107 +24,52 @@ interface SourceCodeContract
      *
      * @api
      *
-     * @param string $environment
-     * @param string $file
+     * @param array<mixed>|SourceCodeCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $path,
-        $environment,
-        $file = omit,
+        array|SourceCodeCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata;
 
     /**
-     * @deprecated
-     *
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): AssetFileMetadata;
-
-    /**
-     * @api
-     *
-     * @param string $environment
+     * @param array<mixed>|SourceCodeDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $path,
-        $environment,
-        ?RequestOptions $requestOptions = null
+        array|SourceCodeDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $path
+     * @param array<mixed>|SourceCodeExtractAsyncParams $params
      *
      * @throws APIException
      */
     public function extractAsync(
-        $path,
-        ?RequestOptions $requestOptions = null
+        array|SourceCodeExtractAsyncParams $params,
+        ?RequestOptions $requestOptions = null,
     ): TaskLocator;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function extractAsyncRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): TaskLocator;
-
-    /**
-     * @api
-     *
-     * @param string $environment
+     * @param array<mixed>|SourceCodeGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $path,
-        $environment,
-        ?RequestOptions $requestOptions = null
-    ): string;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SourceCodeGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): string;
 
     /**
@@ -135,84 +85,39 @@ interface SourceCodeContract
     /**
      * @api
      *
-     * @param string $environment
-     * @param string $properties
+     * @param array<mixed>|SourceCodeGetMetadataParams $params
      *
      * @throws APIException
      */
     public function getMetadata(
         string $path,
-        $environment,
-        $properties = omit,
+        array|SourceCodeGetMetadataParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getMetadataRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): AssetFileMetadata;
-
-    /**
-     * @api
-     *
-     * @param string $environment
-     * @param string $file
+     * @param array<mixed>|SourceCodeUpsertParams $params
      *
      * @throws APIException
      */
     public function upsert(
         string $path,
-        $environment,
-        $file = omit,
+        array|SourceCodeUpsertParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): AssetFileMetadata;
-
-    /**
-     * @api
-     *
-     * @param string $environment
-     * @param string $file
+     * @param array<mixed>|SourceCodeValidateParams $params
      *
      * @throws APIException
      */
     public function validate(
         string $path,
-        $environment,
-        $file = omit,
+        array|SourceCodeValidateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): string;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function validateRaw(
-        string $path,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): string;
 }

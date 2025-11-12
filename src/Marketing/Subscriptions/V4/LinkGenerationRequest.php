@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type LinkGenerationRequestShape = array{
- *   subscriberIDString: string, language?: string, subscriptionID?: int
+ *   subscriberIdString: string, language?: string|null, subscriptionId?: int|null
  * }
  */
 final class LinkGenerationRequest implements BaseModel
@@ -18,21 +18,21 @@ final class LinkGenerationRequest implements BaseModel
     /** @use SdkModel<LinkGenerationRequestShape> */
     use SdkModel;
 
-    #[Api('subscriberIdString')]
-    public string $subscriberIDString;
+    #[Api]
+    public string $subscriberIdString;
 
     #[Api(optional: true)]
     public ?string $language;
 
-    #[Api('subscriptionId', optional: true)]
-    public ?int $subscriptionID;
+    #[Api(optional: true)]
+    public ?int $subscriptionId;
 
     /**
      * `new LinkGenerationRequest()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * LinkGenerationRequest::with(subscriberIDString: ...)
+     * LinkGenerationRequest::with(subscriberIdString: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,16 +52,16 @@ final class LinkGenerationRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $subscriberIDString,
+        string $subscriberIdString,
         ?string $language = null,
-        ?int $subscriptionID = null,
+        ?int $subscriptionId = null,
     ): self {
         $obj = new self;
 
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIdString;
 
         null !== $language && $obj->language = $language;
-        null !== $subscriptionID && $obj->subscriptionID = $subscriptionID;
+        null !== $subscriptionId && $obj->subscriptionId = $subscriptionId;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class LinkGenerationRequest implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIDString;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class LinkGenerationRequest implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionID;
 
         return $obj;
     }

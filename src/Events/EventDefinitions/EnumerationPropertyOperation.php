@@ -18,7 +18,7 @@ use HubspotSDK\Events\EventDefinitions\EnumerationPropertyOperation\PropertyType
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
  *   values: list<string>,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class EnumerationPropertyOperation implements BaseModel

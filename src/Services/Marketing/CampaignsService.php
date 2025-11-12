@@ -21,32 +21,30 @@ use HubspotSDK\Services\Marketing\Campaigns\BudgetService;
 use HubspotSDK\Services\Marketing\Campaigns\ReportsService;
 use HubspotSDK\Services\Marketing\Campaigns\SpendService;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class CampaignsService implements CampaignsContract
 {
     /**
-     * @@api
+     * @api
      */
     public AssetsService $assets;
 
     /**
-     * @@api
+     * @api
      */
     public BatchService $batch;
 
     /**
-     * @@api
+     * @api
      */
     public BudgetService $budget;
 
     /**
-     * @@api
+     * @api
      */
     public ReportsService $reports;
 
     /**
-     * @@api
+     * @api
      */
     public SpendService $spend;
 
@@ -67,33 +65,17 @@ final class CampaignsService implements CampaignsContract
      *
      * Create a campaign with the given properties and return the campaign object, including the campaignGuid and created properties.
      *
-     * @param array<string, string> $properties
+     * @param array{properties: array<string,string>}|CampaignCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $properties,
-        ?RequestOptions $requestOptions = null
-    ): PublicCampaign {
-        $params = ['properties' => $properties];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|CampaignCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): PublicCampaign {
         [$parsed, $options] = CampaignCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -112,35 +94,18 @@ final class CampaignsService implements CampaignsContract
      * Perform a partial update of a campaign identified by the specified campaignGuid. Provided property values will be overwritten. Read-only and non-existent properties will cause 400 error.
      * If an empty string is passed for any property in the Batch Update, it will reset that property's value.
      *
-     * @param array<string, string> $properties
+     * @param array{properties: array<string,string>}|CampaignUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $campaignGuid,
-        $properties,
-        ?RequestOptions $requestOptions = null
-    ): PublicCampaign {
-        $params = ['properties' => $properties];
-
-        return $this->updateRaw($campaignGuid, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $campaignGuid,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|CampaignUpdateParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicCampaign {
         [$parsed, $options] = CampaignUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -158,54 +123,25 @@ final class CampaignsService implements CampaignsContract
      *
      * This endpoint allows users to search for and return a page of campaigns based on various query parameters. Users can filter by name, sort, and paginate through the campaigns, as well as control which properties are returned in the response.
      *
-     * @param string $after A cursor for pagination. If provided, the results will start after the given cursor.
-     * Example: NTI1Cg%3D%3D
-     * @param int $limit The maximum number of results to return. Allowed values range from 1 to 100
-     * Default: 50
-     * @param string $name A filter to return campaigns whose names contain the specified substring. This allows partial matching of campaign names, returning all campaigns that include the given substring in their name. If this parameter is not provided, the search will return all campaigns
-     * @param list<string> $properties A comma-separated list of the properties to be returned in the response. If any of the specified properties has empty value on the requested object(s), they will be ignored and not returned in response. If this parameter is empty, the response will include an empty properties map
-     * @param string $sort The field by which to sort the results. Allowed values are hs_name, createdAt, updatedAt. An optional '-' before the property name can denote descending order
-     * Default: hs_name
+     * @param array{
+     *   after?: string,
+     *   limit?: int,
+     *   name?: string,
+     *   properties?: list<string>,
+     *   sort?: string,
+     * }|CampaignListParams $params
      *
      * @return Page<PublicCampaign>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $limit = omit,
-        $name = omit,
-        $properties = omit,
-        $sort = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'limit' => $limit,
-            'name' => $name,
-            'properties' => $properties,
-            'sort' => $sort,
-        ];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicCampaign>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|CampaignListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = CampaignListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -245,45 +181,20 @@ final class CampaignsService implements CampaignsContract
      *
      * Get a campaign identified by a specific campaignGuid with the given properties. Along with the campaign information, it also returns information about assets. Depending on the query parameters used, this can also be used to return information about the corresponding assets' metrics. Metrics are available only if startDate and endDate are provided.
      *
-     * @param string $endDate  End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
-     * If not provided, no asset metrics will be fetched.
-     * @param list<string> $properties A comma-separated list of the properties to be returned in the response. If any of the specified properties has empty value on the requested object, they will be ignored and not returned in response. If this parameter is empty, the response will include an empty properties map.
-     * @param string $startDate Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
-     * If not provided, no asset metrics will be fetched.
+     * @param array{
+     *   endDate?: string, properties?: list<string>, startDate?: string
+     * }|CampaignGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $campaignGuid,
-        $endDate = omit,
-        $properties = omit,
-        $startDate = omit,
+        array|CampaignGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicCampaignWithAssets {
-        $params = [
-            'endDate' => $endDate,
-            'properties' => $properties,
-            'startDate' => $startDate,
-        ];
-
-        return $this->getRaw($campaignGuid, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $campaignGuid,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicCampaignWithAssets {
         [$parsed, $options] = CampaignGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

@@ -22,8 +22,8 @@ use HubspotSDK\Events\EventDefinitions\CalendarDatePropertyOperation\TimeUnit;
  *   timeUnit: value-of<TimeUnit>,
  *   timeUnitCount: int,
  *   useFiscalYear: bool,
- *   defaultValue?: string,
- *   fiscalYearStart?: value-of<FiscalYearStart>,
+ *   defaultValue?: string|null,
+ *   fiscalYearStart?: value-of<FiscalYearStart>|null,
  * }
  */
 final class CalendarDatePropertyOperation implements BaseModel

@@ -10,12 +10,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExtensionDataShape = array{
- *   extensionStatusMap: array<string, string>,
+ *   extensionStatusMap: array<string,string>,
  *   tags: list<string>,
- *   caseChangeTestExtensionData?: CaseChangeTestExtensionData,
- *   optionDecoratorsExtensionData?: OptionDecoratorsExtensionData,
- *   requiredPropertiesExtensionData?: RequiredPropertiesExtensionData,
- *   softRequiredPropertiesExtensionData?: SoftRequiredPropertiesExtensionData,
+ *   caseChangeTestExtensionData?: CaseChangeTestExtensionData|null,
+ *   optionDecoratorsExtensionData?: OptionDecoratorsExtensionData|null,
+ *   requiredPropertiesExtensionData?: RequiredPropertiesExtensionData|null,
+ *   softRequiredPropertiesExtensionData?: SoftRequiredPropertiesExtensionData|null,
  * }
  */
 final class ExtensionData implements BaseModel
@@ -23,7 +23,7 @@ final class ExtensionData implements BaseModel
     /** @use SdkModel<ExtensionDataShape> */
     use SdkModel;
 
-    /** @var array<string, string> $extensionStatusMap */
+    /** @var array<string,string> $extensionStatusMap */
     #[Api(map: 'string')]
     public array $extensionStatusMap;
 
@@ -67,7 +67,7 @@ final class ExtensionData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $extensionStatusMap
+     * @param array<string,string> $extensionStatusMap
      * @param list<string> $tags
      */
     public static function with(
@@ -92,7 +92,7 @@ final class ExtensionData implements BaseModel
     }
 
     /**
-     * @param array<string, string> $extensionStatusMap
+     * @param array<string,string> $extensionStatusMap
      */
     public function withExtensionStatusMap(array $extensionStatusMap): self
     {

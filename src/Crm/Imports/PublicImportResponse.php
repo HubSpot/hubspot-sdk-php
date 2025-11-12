@@ -16,15 +16,15 @@ use HubspotSDK\Crm\Imports\PublicImportResponse\State;
  * @phpstan-type PublicImportResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
- *   mappedObjectTypeIDs: list<string>,
+ *   mappedObjectTypeIds: list<string>,
  *   metadata: PublicImportMetadata,
  *   optOutImport: bool,
  *   state: value-of<State>,
  *   updatedAt: \DateTimeInterface,
- *   importName?: string,
+ *   importName?: string|null,
  *   importRequestJson?: mixed,
- *   importSource?: value-of<ImportSource>,
- *   importTemplate?: ImportTemplate,
+ *   importSource?: value-of<ImportSource>|null,
+ *   importTemplate?: ImportTemplate|null,
  * }
  */
 final class PublicImportResponse implements BaseModel, ResponseConverter
@@ -40,9 +40,9 @@ final class PublicImportResponse implements BaseModel, ResponseConverter
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    /** @var list<string> $mappedObjectTypeIDs */
-    #[Api('mappedObjectTypeIds', list: 'string')]
-    public array $mappedObjectTypeIDs;
+    /** @var list<string> $mappedObjectTypeIds */
+    #[Api(list: 'string')]
+    public array $mappedObjectTypeIds;
 
     #[Api]
     public PublicImportMetadata $metadata;
@@ -85,7 +85,7 @@ final class PublicImportResponse implements BaseModel, ResponseConverter
      * PublicImportResponse::with(
      *   id: ...,
      *   createdAt: ...,
-     *   mappedObjectTypeIDs: ...,
+     *   mappedObjectTypeIds: ...,
      *   metadata: ...,
      *   optOutImport: ...,
      *   state: ...,
@@ -116,14 +116,14 @@ final class PublicImportResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $mappedObjectTypeIDs
+     * @param list<string> $mappedObjectTypeIds
      * @param State|value-of<State> $state
      * @param ImportSource|value-of<ImportSource> $importSource
      */
     public static function with(
         string $id,
         \DateTimeInterface $createdAt,
-        array $mappedObjectTypeIDs,
+        array $mappedObjectTypeIds,
         PublicImportMetadata $metadata,
         bool $optOutImport,
         State|string $state,
@@ -137,7 +137,7 @@ final class PublicImportResponse implements BaseModel, ResponseConverter
 
         $obj->id = $id;
         $obj->createdAt = $createdAt;
-        $obj->mappedObjectTypeIDs = $mappedObjectTypeIDs;
+        $obj->mappedObjectTypeIds = $mappedObjectTypeIds;
         $obj->metadata = $metadata;
         $obj->optOutImport = $optOutImport;
         $obj['state'] = $state;
@@ -173,7 +173,7 @@ final class PublicImportResponse implements BaseModel, ResponseConverter
     public function withMappedObjectTypeIDs(array $mappedObjectTypeIDs): self
     {
         $obj = clone $this;
-        $obj->mappedObjectTypeIDs = $mappedObjectTypeIDs;
+        $obj->mappedObjectTypeIds = $mappedObjectTypeIDs;
 
         return $obj;
     }

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   inputs: list<SimplePublicObjectID>,
  *   properties: list<string>,
  *   propertiesWithHistory: list<string>,
- *   idProperty?: string,
+ *   idProperty?: string|null,
  * }
  */
 final class BatchReadInputSimplePublicObjectID implements BaseModel

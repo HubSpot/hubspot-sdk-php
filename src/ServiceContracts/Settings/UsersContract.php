@@ -10,164 +10,77 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
 use HubspotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
 use HubspotSDK\Settings\Users\PublicUser;
-use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
-
-use const HubspotSDK\Core\OMIT as omit;
+use HubspotSDK\Settings\Users\UserCreateParams;
+use HubspotSDK\Settings\Users\UserDeleteParams;
+use HubspotSDK\Settings\Users\UserGetParams;
+use HubspotSDK\Settings\Users\UserListParams;
+use HubspotSDK\Settings\Users\UserUpdateParams;
 
 interface UsersContract
 {
     /**
      * @api
      *
-     * @param string $email The created user's email
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $primaryTeamID The user's primary team
-     * @param string $roleID The user's role
-     * @param list<string> $secondaryTeamIDs The user's additional teams
-     * @param bool $sendWelcomeEmail Whether to send a welcome email
+     * @param array<mixed>|UserCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $email,
-        $firstName = omit,
-        $lastName = omit,
-        $primaryTeamID = omit,
-        $roleID = omit,
-        $secondaryTeamIDs = omit,
-        $sendWelcomeEmail = omit,
-        ?RequestOptions $requestOptions = null,
-    ): PublicUser;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|UserCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): PublicUser;
 
     /**
      * @api
      *
-     * @param IDProperty|value-of<IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $primaryTeamID The user's primary team
-     * @param string $roleID The user's role
-     * @param list<string> $secondaryTeamIDs The user's additional teams
+     * @param array<mixed>|UserUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $userID,
-        $idProperty = omit,
-        $firstName = omit,
-        $lastName = omit,
-        $primaryTeamID = omit,
-        $roleID = omit,
-        $secondaryTeamIDs = omit,
+        array|UserUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicUser;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $userID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PublicUser;
-
-    /**
-     * @api
-     *
-     * @param string $after Results will display maximum 100 users per page. Additional results will be on the next page.
-     * @param int $limit The number of users to retrieve
+     * @param array<mixed>|UserListParams $params
      *
      * @return Page<PublicUser>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $limit = omit,
+        array|UserListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicUser>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param \HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserDeleteParams\IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
+     * @param array<mixed>|UserDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $userID,
-        $idProperty = omit,
+        array|UserDeleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $userID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param \HubspotSDK\Settings\Users\UserGetParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserGetParams\IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
+     * @param array<mixed>|UserGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $userID,
-        $idProperty = omit,
+        array|UserGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicUser;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $userID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicUser;
 
     /**

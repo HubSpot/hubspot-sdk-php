@@ -11,7 +11,7 @@ use HubspotSDK\PublicWebinarFilter\FilterType;
 
 /**
  * @phpstan-type PublicWebinarFilterShape = array{
- *   filterType: value-of<FilterType>, operator: string, webinarID?: string
+ *   filterType: value-of<FilterType>, operator: string, webinarId?: string|null
  * }
  */
 final class PublicWebinarFilter implements BaseModel
@@ -26,8 +26,8 @@ final class PublicWebinarFilter implements BaseModel
     #[Api]
     public string $operator;
 
-    #[Api('webinarId', optional: true)]
-    public ?string $webinarID;
+    #[Api(optional: true)]
+    public ?string $webinarId;
 
     /**
      * `new PublicWebinarFilter()` is missing required properties by the API.
@@ -58,14 +58,14 @@ final class PublicWebinarFilter implements BaseModel
     public static function with(
         string $operator,
         FilterType|string $filterType = 'WEBINAR',
-        ?string $webinarID = null,
+        ?string $webinarId = null,
     ): self {
         $obj = new self;
 
         $obj['filterType'] = $filterType;
         $obj->operator = $operator;
 
-        null !== $webinarID && $obj->webinarID = $webinarID;
+        null !== $webinarId && $obj->webinarId = $webinarId;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class PublicWebinarFilter implements BaseModel
     public function withWebinarID(string $webinarID): self
     {
         $obj = clone $this;
-        $obj->webinarID = $webinarID;
+        $obj->webinarId = $webinarID;
 
         return $obj;
     }

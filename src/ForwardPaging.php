@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type ForwardPagingShape = array{next?: NextPage}
+ * @phpstan-type ForwardPagingShape = array{next?: NextPage|null}
  */
 final class ForwardPaging implements BaseModel
 {

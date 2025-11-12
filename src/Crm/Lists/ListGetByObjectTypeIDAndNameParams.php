@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Lists->getByObjectTypeIDAndName
  *
  * @phpstan-type ListGetByObjectTypeIDAndNameParamsShape = array{
- *   objectTypeID: string, includeFilters?: bool
+ *   objectTypeId: string, includeFilters?: bool
  * }
  */
 final class ListGetByObjectTypeIDAndNameParams implements BaseModel
@@ -25,7 +25,7 @@ final class ListGetByObjectTypeIDAndNameParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $objectTypeID;
+    public string $objectTypeId;
 
     /**
      * A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response.
@@ -38,7 +38,7 @@ final class ListGetByObjectTypeIDAndNameParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ListGetByObjectTypeIDAndNameParams::with(objectTypeID: ...)
+     * ListGetByObjectTypeIDAndNameParams::with(objectTypeId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -58,12 +58,12 @@ final class ListGetByObjectTypeIDAndNameParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $objectTypeID,
+        string $objectTypeId,
         ?bool $includeFilters = null
     ): self {
         $obj = new self;
 
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
 
         null !== $includeFilters && $obj->includeFilters = $includeFilters;
 
@@ -73,7 +73,7 @@ final class ListGetByObjectTypeIDAndNameParams implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

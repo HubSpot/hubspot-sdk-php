@@ -38,7 +38,7 @@ final class PartnerServicesTest extends TestCase
 
         $result = $this->client->crm->objects->partnerServices->update(
             'partnerServiceId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +53,7 @@ final class PartnerServicesTest extends TestCase
 
         $result = $this->client->crm->objects->partnerServices->update(
             'partnerServiceId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -66,7 +66,7 @@ final class PartnerServicesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerServices->list();
+        $result = $this->client->crm->objects->partnerServices->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -79,7 +79,8 @@ final class PartnerServicesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->partnerServices->get(
-            'partnerServiceId'
+            'partnerServiceId',
+            []
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -92,7 +93,7 @@ final class PartnerServicesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerServices->search();
+        $result = $this->client->crm->objects->partnerServices->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

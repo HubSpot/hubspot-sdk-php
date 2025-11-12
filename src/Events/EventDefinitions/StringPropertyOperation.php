@@ -18,7 +18,7 @@ use HubspotSDK\Events\EventDefinitions\StringPropertyOperation\PropertyType;
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
  *   value: string,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class StringPropertyOperation implements BaseModel

@@ -10,17 +10,15 @@ use HubspotSDK\Crm\Extensions\Cards\CardActions;
 use HubspotSDK\Crm\Extensions\Cards\CardCreateParams;
 use HubspotSDK\Crm\Extensions\Cards\CardDeleteParams;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayBody;
-use HubspotSDK\Crm\Extensions\Cards\CardFetchBody;
-use HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch;
+use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty;
 use HubspotSDK\Crm\Extensions\Cards\CardGetParams;
+use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody;
 use HubspotSDK\Crm\Extensions\Cards\CardUpdateParams;
 use HubspotSDK\Crm\Extensions\Cards\IntegratorCardPayloadResponse;
 use HubspotSDK\Crm\Extensions\Cards\PublicCardListResponse;
 use HubspotSDK\Crm\Extensions\Cards\PublicCardResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\CardsContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class CardsService implements CardsContract
 {
@@ -34,46 +32,30 @@ final class CardsService implements CardsContract
      *
      * Defines a new card that will become active on an account when this app is installed.
      *
-     * @param CardActions $actions configuration for custom user actions on cards
-     * @param CardDisplayBody $display Configuration for displayed info on a card
-     * @param CardFetchBody $fetch configuration for this card's data fetch request
-     * @param string $title The top-level title for this card. Displayed to users in the CRM UI.
+     * @param array{
+     *   actions: array{baseUrls: list<string>}|CardActions,
+     *   display: array{
+     *     properties: list<array<mixed>|CardDisplayProperty>
+     *   }|CardDisplayBody,
+     *   fetch: array{
+     *     objectTypes: list<array<mixed>|CardObjectTypeBody>,
+     *     targetUrl: string,
+     *     cardType?: "EXTERNAL"|"SERVERLESS",
+     *     serverlessFunction?: string,
+     *   },
+     *   title: string,
+     * }|CardCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        $actions,
-        $display,
-        $fetch,
-        $title,
+        array|CardCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicCardResponse {
-        $params = [
-            'actions' => $actions,
-            'display' => $display,
-            'fetch' => $fetch,
-            'title' => $title,
-        ];
-
-        return $this->createRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicCardResponse {
         [$parsed, $options] = CardCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -91,58 +73,40 @@ final class CardsService implements CardsContract
      *
      * Update a card definition with new details.
      *
-     * @param int $appID
-     * @param CardActions $actions configuration for custom user actions on cards
-     * @param CardDisplayBody $display Configuration for displayed info on a card
-     * @param CardFetchBodyPatch $fetch Variant of CardFetchBody with fields as optional for patches
-     * @param string $title The top-level title for this card. Displayed to users in the CRM UI.
+     * @param array{
+     *   appId: int,
+     *   actions?: array{baseUrls: list<string>}|CardActions,
+     *   display?: array{
+     *     properties: list<array<mixed>|CardDisplayProperty>
+     *   }|CardDisplayBody,
+     *   fetch?: array{
+     *     objectTypes: list<array<mixed>|CardObjectTypeBody>,
+     *     cardType?: "EXTERNAL"|"SERVERLESS",
+     *     serverlessFunction?: string,
+     *     targetUrl?: string,
+     *   },
+     *   title?: string,
+     * }|CardUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $cardID,
-        $appID,
-        $actions = omit,
-        $display = omit,
-        $fetch = omit,
-        $title = omit,
+        array|CardUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicCardResponse {
-        $params = [
-            'appID' => $appID,
-            'actions' => $actions,
-            'display' => $display,
-            'fetch' => $fetch,
-            'title' => $title,
-        ];
-
-        return $this->updateRaw($cardID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $cardID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicCardResponse {
         [$parsed, $options] = CardUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/extensions/cards-dev/%1$s/%2$s', $appID, $cardID],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: PublicCardResponse::class,
         );
@@ -173,38 +137,21 @@ final class CardsService implements CardsContract
      *
      * Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.
      *
-     * @param int $appID
+     * @param array{appId: int}|CardDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $cardID,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['appID' => $appID];
-
-        return $this->deleteRaw($cardID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $cardID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|CardDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = CardDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -220,35 +167,21 @@ final class CardsService implements CardsContract
      *
      * Returns the definition for a card with the given ID.
      *
-     * @param int $appID
+     * @param array{appId: int}|CardGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $cardID,
-        $appID,
-        ?RequestOptions $requestOptions = null
+        array|CardGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicCardResponse {
-        $params = ['appID' => $appID];
-
-        return $this->getRaw($cardID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $cardID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PublicCardResponse {
-        [$parsed, $options] = CardGetParams::parseRequest($params, $requestOptions);
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        [$parsed, $options] = CardGetParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

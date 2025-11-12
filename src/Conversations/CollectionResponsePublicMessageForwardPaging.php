@@ -13,7 +13,7 @@ use HubspotSDK\ForwardPaging;
 /**
  * @phpstan-type CollectionResponsePublicMessageForwardPagingShape = array{
  *   results: list<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange>,
- *   paging?: ForwardPaging,
+ *   paging?: ForwardPaging|null,
  * }
  */
 final class CollectionResponsePublicMessageForwardPaging implements BaseModel

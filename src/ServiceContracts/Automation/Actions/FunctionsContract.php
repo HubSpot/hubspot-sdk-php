@@ -5,7 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Automation\Actions;
 
 use HubspotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
-use HubspotSDK\Automation\Actions\Functions\FunctionDeleteParams\FunctionType;
+use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType;
+use HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams;
+use HubspotSDK\Automation\Actions\Functions\FunctionDeleteParams;
+use HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams;
+use HubspotSDK\Automation\Actions\Functions\FunctionGetParams;
+use HubspotSDK\Automation\Actions\Functions\FunctionListParams;
 use HubspotSDK\Automation\Actions\PublicActionFunction;
 use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
@@ -16,210 +21,91 @@ interface FunctionsContract
     /**
      * @api
      *
-     * @param int $appID
+     * @param array<mixed>|FunctionListParams $params
      *
      * @throws APIException
      */
     public function list(
         string $definitionID,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicActionFunctionIdentifierNoPaging;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $definitionID,
-        array $params,
+        array|FunctionListParams $params,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicActionFunctionIdentifierNoPaging;
 
     /**
      * @api
      *
-     * @param int $appID
-     * @param string $definitionID
-     * @param FunctionType|value-of<FunctionType> $functionType
+     * @param array<mixed>|FunctionDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $functionID,
-        $appID,
-        $definitionID,
-        $functionType,
+        array|FunctionDeleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $functionID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param int $appID
-     * @param string $definitionID
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType> $functionType
-     * @param string $body
      *
      * @throws APIException
      */
     public function createOrReplace(
         string $functionID,
-        $appID,
-        $definitionID,
-        $functionType,
-        $body,
+        string $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createOrReplaceRaw(
-        string $functionID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): PublicActionFunctionIdentifier;
-
-    /**
-     * @api
-     *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
-     * @param int $appID
-     * @param string $definitionID
-     * @param string $body
+     * @param FunctionType|value-of<FunctionType> $functionType
      *
      * @throws APIException
      */
     public function createOrReplaceByFunctionType(
-        \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
-        $appID,
-        $definitionID,
-        $body,
+        FunctionType|string $functionType,
+        string $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier;
 
     /**
      * @api
      *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createOrReplaceByFunctionTypeRaw(
-        \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): PublicActionFunctionIdentifier;
-
-    /**
-     * @api
-     *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType> $functionType
-     * @param int $appID
-     * @param string $definitionID
+     * @param FunctionDeleteByFunctionTypeParams\FunctionType|value-of<FunctionDeleteByFunctionTypeParams\FunctionType> $functionType
+     * @param array<mixed>|FunctionDeleteByFunctionTypeParams $params
      *
      * @throws APIException
      */
     public function deleteByFunctionType(
-        \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
-        $appID,
-        $definitionID,
+        FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
+        array|FunctionDeleteByFunctionTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType> $functionType
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteByFunctionTypeRaw(
-        \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param int $appID
-     * @param string $definitionID
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType> $functionType
+     * @param array<mixed>|FunctionGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $functionID,
-        $appID,
-        $definitionID,
-        $functionType,
+        array|FunctionGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunction;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $functionID,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): PublicActionFunction;
-
-    /**
-     * @api
-     *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType> $functionType
-     * @param int $appID
-     * @param string $definitionID
+     * @param FunctionGetByFunctionTypeParams\FunctionType|value-of<FunctionGetByFunctionTypeParams\FunctionType> $functionType
+     * @param array<mixed>|FunctionGetByFunctionTypeParams $params
      *
      * @throws APIException
      */
     public function getByFunctionType(
-        \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
-        $appID,
-        $definitionID,
-        ?RequestOptions $requestOptions = null,
-    ): PublicActionFunction;
-
-    /**
-     * @api
-     *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType> $functionType
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getByFunctionTypeRaw(
-        \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
-        array $params,
+        FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
+        array|FunctionGetByFunctionTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunction;
 }

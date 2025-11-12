@@ -15,8 +15,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   name: string,
  *   objectType: string,
  *   tokens: list<TimelineEventTemplateToken>,
- *   detailTemplate?: string,
- *   headerTemplate?: string,
+ *   detailTemplate?: string|null,
+ *   headerTemplate?: string|null,
  * }
  */
 final class TimelineEventTemplateCreateRequest implements BaseModel

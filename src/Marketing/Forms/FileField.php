@@ -19,11 +19,11 @@ use HubspotSDK\Marketing\Forms\FileField\FieldType;
  *   hidden: bool,
  *   label: string,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   required: bool,
- *   defaultValue?: string,
- *   description?: string,
- *   placeholder?: string,
+ *   defaultValue?: string|null,
+ *   description?: string|null,
+ *   placeholder?: string|null,
  * }
  */
 final class FileField implements BaseModel
@@ -74,8 +74,8 @@ final class FileField implements BaseModel
     /**
      * A unique ID for this field's CRM object type. For example a CONTACT field will have the object type ID 0-1.
      */
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /**
      * Whether a value for this field is required when submitting the form.
@@ -113,7 +113,7 @@ final class FileField implements BaseModel
      *   hidden: ...,
      *   label: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   required: ...,
      * )
      * ```
@@ -151,7 +151,7 @@ final class FileField implements BaseModel
         bool $hidden,
         string $label,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         bool $required,
         FieldType|string $fieldType = 'file',
         ?string $defaultValue = null,
@@ -166,7 +166,7 @@ final class FileField implements BaseModel
         $obj->hidden = $hidden;
         $obj->label = $label;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->required = $required;
 
         null !== $defaultValue && $obj->defaultValue = $defaultValue;
@@ -252,7 +252,7 @@ final class FileField implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\Hubdb\Tables->resetDraft
  *
- * @phpstan-type TableResetDraftParamsShape = array{includeForeignIDs?: bool}
+ * @phpstan-type TableResetDraftParamsShape = array{includeForeignIds?: bool}
  */
 final class TableResetDraftParams implements BaseModel
 {
@@ -26,7 +26,7 @@ final class TableResetDraftParams implements BaseModel
      * Set this to `true` to populate foreign ID values in the response.
      */
     #[Api(optional: true)]
-    public ?bool $includeForeignIDs;
+    public ?bool $includeForeignIds;
 
     public function __construct()
     {
@@ -38,11 +38,11 @@ final class TableResetDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(?bool $includeForeignIDs = null): self
+    public static function with(?bool $includeForeignIds = null): self
     {
         $obj = new self;
 
-        null !== $includeForeignIDs && $obj->includeForeignIDs = $includeForeignIDs;
+        null !== $includeForeignIds && $obj->includeForeignIds = $includeForeignIds;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class TableResetDraftParams implements BaseModel
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;
-        $obj->includeForeignIDs = $includeForeignIDs;
+        $obj->includeForeignIds = $includeForeignIDs;
 
         return $obj;
     }

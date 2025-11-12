@@ -15,8 +15,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   hidden: bool,
  *   label: string,
  *   value: string,
- *   description?: string,
- *   displayOrder?: int,
+ *   description?: string|null,
+ *   displayOrder?: int|null,
  * }
  */
 final class Option implements BaseModel

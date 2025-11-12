@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Automation\Actions\Revisions->list
  *
  * @phpstan-type RevisionListParamsShape = array{
- *   appID: int, after?: string, limit?: int
+ *   appId: int, after?: string, limit?: int
  * }
  */
 final class RevisionListParams implements BaseModel
@@ -25,7 +25,7 @@ final class RevisionListParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /**
      * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
@@ -44,7 +44,7 @@ final class RevisionListParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * RevisionListParams::with(appID: ...)
+     * RevisionListParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -64,13 +64,13 @@ final class RevisionListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appID,
+        int $appId,
         ?string $after = null,
         ?int $limit = null
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         null !== $after && $obj->after = $after;
         null !== $limit && $obj->limit = $limit;
@@ -81,7 +81,7 @@ final class RevisionListParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

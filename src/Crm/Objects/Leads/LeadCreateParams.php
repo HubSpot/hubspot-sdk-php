@@ -16,7 +16,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
  * @see HubspotSDK\Crm\Objects\Leads->create
  *
  * @phpstan-type LeadCreateParamsShape = array{
- *   properties: array<string, string>,
+ *   properties: array<string,string>,
  *   associations?: list<PublicAssociationsForObject>,
  * }
  */
@@ -29,7 +29,7 @@ final class LeadCreateParams implements BaseModel
     /**
      * Key-value pairs for setting properties for the new object.
      *
-     * @var array<string, string> $properties
+     * @var array<string,string> $properties
      */
     #[Api(map: 'string')]
     public array $properties;
@@ -62,7 +62,7 @@ final class LeadCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      * @param list<PublicAssociationsForObject> $associations
      */
     public static function with(
@@ -81,7 +81,7 @@ final class LeadCreateParams implements BaseModel
     /**
      * Key-value pairs for setting properties for the new object.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

@@ -6,10 +6,10 @@ namespace HubspotSDK\Services\Automation\Actions;
 
 use HubspotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
 use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams;
+use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType;
 use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionDeleteParams;
-use HubspotSDK\Automation\Actions\Functions\FunctionDeleteParams\FunctionType;
 use HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionGetParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionListParams;
@@ -32,38 +32,21 @@ final class FunctionsService implements FunctionsContract
      *
      * Retrieve all functions included in a definition.
      *
-     * @param int $appID
+     * @param array{appId: int}|FunctionListParams $params
      *
      * @throws APIException
      */
     public function list(
         string $definitionID,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicActionFunctionIdentifierNoPaging {
-        $params = ['appID' => $appID];
-
-        return $this->listRaw($definitionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $definitionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|FunctionListParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicActionFunctionIdentifierNoPaging {
         [$parsed, $options] = FunctionListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -79,50 +62,29 @@ final class FunctionsService implements FunctionsContract
     /**
      * @api
      *
+     * @phpstan-type FunctionTypeShape = "PRE_ACTION_EXECUTION"|"PRE_FETCH_OPTIONS"|"POST_FETCH_OPTIONS"|"POST_ACTION_EXECUTION"
+     *
      * Archive a function for a specific definition.
      *
-     * @param int $appID
-     * @param string $definitionID
-     * @param FunctionType|value-of<FunctionType> $functionType
+     * @param array{
+     *   appId: int, definitionId: string, functionType: FunctionTypeShape
+     * }|FunctionDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $functionID,
-        $appID,
-        $definitionID,
-        $functionType,
+        array|FunctionDeleteParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = [
-            'appID' => $appID,
-            'definitionID' => $definitionID,
-            'functionType' => $functionType,
-        ];
-
-        return $this->deleteRaw($functionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $functionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = FunctionDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $definitionID = $parsed['definitionID'];
-        unset($parsed['definitionID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
+        $definitionID = $parsed['definitionId'];
+        unset($parsed['definitionId']);
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
@@ -146,51 +108,21 @@ final class FunctionsService implements FunctionsContract
      *
      * Update a function for a given definition by ID.
      *
-     * @param int $appID
-     * @param string $definitionID
-     * @param FunctionCreateOrReplaceParams\FunctionType|value-of<FunctionCreateOrReplaceParams\FunctionType> $functionType
-     * @param string $body
-     *
      * @throws APIException
      */
     public function createOrReplace(
         string $functionID,
-        $appID,
-        $definitionID,
-        $functionType,
-        $body,
-        ?RequestOptions $requestOptions = null,
-    ): PublicActionFunctionIdentifier {
-        $params = [
-            'appID' => $appID,
-            'definitionID' => $definitionID,
-            'functionType' => $functionType,
-            'body' => $body,
-        ];
-
-        return $this->createOrReplaceRaw($functionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createOrReplaceRaw(
-        string $functionID,
-        array $params,
+        string $params,
         ?RequestOptions $requestOptions = null
     ): PublicActionFunctionIdentifier {
         [$parsed, $options] = FunctionCreateOrReplaceParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $definitionID = $parsed['definitionID'];
-        unset($parsed['definitionID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
+        $definitionID = $parsed['definitionId'];
+        unset($parsed['definitionId']);
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
@@ -207,7 +139,7 @@ final class FunctionsService implements FunctionsContract
             headers: ['Content-Type' => 'text/plain'],
             body: array_diff_key(
                 $parsed['body'],
-                array_flip(['appID', 'definitionID', 'functionType'])
+                array_flip(['appId', 'definitionId', 'functionType'])
             ),
             options: $options,
             convert: PublicActionFunctionIdentifier::class,
@@ -219,54 +151,23 @@ final class FunctionsService implements FunctionsContract
      *
      * Add a function for a given definition.
      *
-     * @param FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<FunctionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
-     * @param int $appID
-     * @param string $definitionID
-     * @param string $body
+     * @param FunctionType|value-of<FunctionType> $functionType
      *
      * @throws APIException
      */
     public function createOrReplaceByFunctionType(
-        FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
-        $appID,
-        $definitionID,
-        $body,
+        FunctionType|string $functionType,
+        string $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier {
-        $params = [
-            'appID' => $appID, 'definitionID' => $definitionID, 'body' => $body,
-        ];
-
-        return $this->createOrReplaceByFunctionTypeRaw(
-            $functionType,
+        [$parsed, $options] = FunctionCreateOrReplaceByFunctionTypeParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-    }
-
-    /**
-     * @api
-     *
-     * @param FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<FunctionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createOrReplaceByFunctionTypeRaw(
-        FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): PublicActionFunctionIdentifier {
-        [
-            $parsed, $options,
-        ] = FunctionCreateOrReplaceByFunctionTypeParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $definitionID = $parsed['definitionID'];
-        unset($parsed['definitionID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
+        $definitionID = $parsed['definitionId'];
+        unset($parsed['definitionId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -280,7 +181,7 @@ final class FunctionsService implements FunctionsContract
             headers: ['Content-Type' => 'text/plain'],
             body: array_diff_key(
                 $parsed['body'],
-                array_flip(['appID', 'definitionID'])
+                array_flip(['appId', 'definitionId'])
             ),
             options: $options,
             convert: PublicActionFunctionIdentifier::class,
@@ -293,47 +194,25 @@ final class FunctionsService implements FunctionsContract
      * Delete a function within a given definition.
      *
      * @param FunctionDeleteByFunctionTypeParams\FunctionType|value-of<FunctionDeleteByFunctionTypeParams\FunctionType> $functionType
-     * @param int $appID
-     * @param string $definitionID
+     * @param array{
+     *   appId: int, definitionId: string
+     * }|FunctionDeleteByFunctionTypeParams $params
      *
      * @throws APIException
      */
     public function deleteByFunctionType(
         FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
-        $appID,
-        $definitionID,
-        ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['appID' => $appID, 'definitionID' => $definitionID];
-
-        return $this->deleteByFunctionTypeRaw(
-            $functionType,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param FunctionDeleteByFunctionTypeParams\FunctionType|value-of<FunctionDeleteByFunctionTypeParams\FunctionType> $functionType
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteByFunctionTypeRaw(
-        FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
-        array $params,
+        array|FunctionDeleteByFunctionTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = FunctionDeleteByFunctionTypeParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $definitionID = $parsed['definitionID'];
-        unset($parsed['definitionID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
+        $definitionID = $parsed['definitionId'];
+        unset($parsed['definitionId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -352,50 +231,29 @@ final class FunctionsService implements FunctionsContract
     /**
      * @api
      *
+     * @phpstan-type FunctionType1 = "PRE_ACTION_EXECUTION"|"PRE_FETCH_OPTIONS"|"POST_FETCH_OPTIONS"|"POST_ACTION_EXECUTION"
+     *
      * Retrieve a specific function from a given definition.
      *
-     * @param int $appID
-     * @param string $definitionID
-     * @param FunctionGetParams\FunctionType|value-of<FunctionGetParams\FunctionType> $functionType
+     * @param array{
+     *   appId: int, definitionId: string, functionType: FunctionType1
+     * }|FunctionGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $functionID,
-        $appID,
-        $definitionID,
-        $functionType,
+        array|FunctionGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicActionFunction {
-        $params = [
-            'appID' => $appID,
-            'definitionID' => $definitionID,
-            'functionType' => $functionType,
-        ];
-
-        return $this->getRaw($functionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $functionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicActionFunction {
         [$parsed, $options] = FunctionGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $definitionID = $parsed['definitionID'];
-        unset($parsed['definitionID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
+        $definitionID = $parsed['definitionId'];
+        unset($parsed['definitionId']);
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
@@ -420,43 +278,25 @@ final class FunctionsService implements FunctionsContract
      * Retrieve functions of a specific type for a given definition.
      *
      * @param FunctionGetByFunctionTypeParams\FunctionType|value-of<FunctionGetByFunctionTypeParams\FunctionType> $functionType
-     * @param int $appID
-     * @param string $definitionID
+     * @param array{
+     *   appId: int, definitionId: string
+     * }|FunctionGetByFunctionTypeParams $params
      *
      * @throws APIException
      */
     public function getByFunctionType(
         FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
-        $appID,
-        $definitionID,
-        ?RequestOptions $requestOptions = null,
-    ): PublicActionFunction {
-        $params = ['appID' => $appID, 'definitionID' => $definitionID];
-
-        return $this->getByFunctionTypeRaw($functionType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param FunctionGetByFunctionTypeParams\FunctionType|value-of<FunctionGetByFunctionTypeParams\FunctionType> $functionType
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getByFunctionTypeRaw(
-        FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
-        array $params,
+        array|FunctionGetByFunctionTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunction {
         [$parsed, $options] = FunctionGetByFunctionTypeParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $definitionID = $parsed['definitionID'];
-        unset($parsed['definitionID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
+        $definitionID = $parsed['definitionId'];
+        unset($parsed['definitionId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

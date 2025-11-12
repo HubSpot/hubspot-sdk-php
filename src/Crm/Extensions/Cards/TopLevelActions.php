@@ -12,8 +12,8 @@ use HubspotSDK\Crm\Extensions\Cards\TopLevelActions\Secondary;
 /**
  * @phpstan-type TopLevelActionsShape = array{
  *   secondary: list<ActionHookActionBody|IFrameActionBody>,
- *   primary?: ActionHookActionBody|IFrameActionBody,
- *   settings?: IFrameActionBody,
+ *   primary?: null|ActionHookActionBody|IFrameActionBody,
+ *   settings?: IFrameActionBody|null,
  * }
  */
 final class TopLevelActions implements BaseModel

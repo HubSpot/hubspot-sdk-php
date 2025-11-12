@@ -10,15 +10,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicIndexOffsetShape = array{
- *   days?: int,
- *   hours?: int,
- *   milliseconds?: int,
- *   minutes?: int,
- *   months?: int,
- *   quarters?: int,
- *   seconds?: int,
- *   weeks?: int,
- *   years?: int,
+ *   days?: int|null,
+ *   hours?: int|null,
+ *   milliseconds?: int|null,
+ *   minutes?: int|null,
+ *   months?: int|null,
+ *   quarters?: int|null,
+ *   seconds?: int|null,
+ *   weeks?: int|null,
+ *   years?: int|null,
  * }
  */
 final class PublicIndexOffset implements BaseModel

@@ -17,10 +17,10 @@ use HubspotSDK\StandardError;
  *   results: list<SubscriptionDefinition>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError>,
- *   links?: array<string, string>,
- *   numErrors?: int,
- *   requestedAt?: \DateTimeInterface,
+ *   errors?: list<StandardError>|null,
+ *   links?: array<string,string>|null,
+ *   numErrors?: int|null,
+ *   requestedAt?: \DateTimeInterface|null,
  * }
  */
 final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
@@ -67,7 +67,7 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     /**
      * A collection of related links associated with the operation.
      *
-     * @var array<string, string>|null $links
+     * @var array<string,string>|null $links
      */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
@@ -117,7 +117,7 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
      * @param list<SubscriptionDefinition> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -208,7 +208,7 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     /**
      * A collection of related links associated with the operation.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

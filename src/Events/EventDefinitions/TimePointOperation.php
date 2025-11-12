@@ -23,7 +23,7 @@ use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyType;
  *   propertyType: value-of<PropertyType>,
  *   timePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime,
  *   type: string,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class TimePointOperation implements BaseModel

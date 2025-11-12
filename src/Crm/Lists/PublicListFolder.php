@@ -13,12 +13,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   childLists: list<int>,
  *   childNodes: list<PublicListFolder>,
- *   parentFolderID: string,
- *   createdAt?: \DateTimeInterface,
- *   name?: string,
- *   updatedAt?: \DateTimeInterface,
- *   updatedContentsAt?: \DateTimeInterface,
- *   userID?: int,
+ *   parentFolderId: string,
+ *   createdAt?: \DateTimeInterface|null,
+ *   name?: string|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedContentsAt?: \DateTimeInterface|null,
+ *   userId?: int|null,
  * }
  */
 final class PublicListFolder implements BaseModel
@@ -47,8 +47,8 @@ final class PublicListFolder implements BaseModel
     /**
      * The Id of the folder this folder is in, the root folder is represented as 0.
      */
-    #[Api('parentFolderId')]
-    public string $parentFolderID;
+    #[Api]
+    public string $parentFolderId;
 
     /**
      * The time the folder was created at.
@@ -77,8 +77,8 @@ final class PublicListFolder implements BaseModel
     /**
      * The user Id of the owner of the folder.
      */
-    #[Api('userId', optional: true)]
-    public ?int $userID;
+    #[Api(optional: true)]
+    public ?int $userId;
 
     /**
      * `new PublicListFolder()` is missing required properties by the API.
@@ -86,7 +86,7 @@ final class PublicListFolder implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicListFolder::with(
-     *   id: ..., childLists: ..., childNodes: ..., parentFolderID: ...
+     *   id: ..., childLists: ..., childNodes: ..., parentFolderId: ...
      * )
      * ```
      *
@@ -117,25 +117,25 @@ final class PublicListFolder implements BaseModel
         string $id,
         array $childLists,
         array $childNodes,
-        string $parentFolderID,
+        string $parentFolderId,
         ?\DateTimeInterface $createdAt = null,
         ?string $name = null,
         ?\DateTimeInterface $updatedAt = null,
         ?\DateTimeInterface $updatedContentsAt = null,
-        ?int $userID = null,
+        ?int $userId = null,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
         $obj->childLists = $childLists;
         $obj->childNodes = $childNodes;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderId;
 
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $name && $obj->name = $name;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
         null !== $updatedContentsAt && $obj->updatedContentsAt = $updatedContentsAt;
-        null !== $userID && $obj->userID = $userID;
+        null !== $userId && $obj->userId = $userId;
 
         return $obj;
     }
@@ -181,7 +181,7 @@ final class PublicListFolder implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderID;
 
         return $obj;
     }
@@ -237,7 +237,7 @@ final class PublicListFolder implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }

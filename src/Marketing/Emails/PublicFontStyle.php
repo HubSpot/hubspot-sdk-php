@@ -10,12 +10,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicFontStyleShape = array{
- *   bold?: bool,
- *   color?: string,
- *   font?: string,
- *   italic?: bool,
- *   size?: int,
- *   underline?: bool,
+ *   bold?: bool|null,
+ *   color?: string|null,
+ *   font?: string|null,
+ *   italic?: bool|null,
+ *   size?: int|null,
+ *   underline?: bool|null,
  * }
  */
 final class PublicFontStyle implements BaseModel

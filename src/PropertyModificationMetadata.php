@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   archivable: bool,
  *   readOnlyDefinition: bool,
  *   readOnlyValue: bool,
- *   readOnlyOptions?: bool,
+ *   readOnlyOptions?: bool|null,
  * }
  */
 final class PropertyModificationMetadata implements BaseModel

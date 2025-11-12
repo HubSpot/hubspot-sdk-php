@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Pages\LandingPages->updateLanguages
  *
  * @phpstan-type LandingPageUpdateLanguagesParamsShape = array{
- *   languages: array<string, string>, primaryID: string
+ *   languages: array<string,string>, primaryId: string
  * }
  */
 final class LandingPageUpdateLanguagesParams implements BaseModel
@@ -27,7 +27,7 @@ final class LandingPageUpdateLanguagesParams implements BaseModel
     /**
      * Map of object IDs to associated languages of object in the multi-language group.
      *
-     * @var array<string, string> $languages
+     * @var array<string,string> $languages
      */
     #[Api(map: 'string')]
     public array $languages;
@@ -35,15 +35,15 @@ final class LandingPageUpdateLanguagesParams implements BaseModel
     /**
      * ID of the primary object in the multi-language group.
      */
-    #[Api('primaryId')]
-    public string $primaryID;
+    #[Api]
+    public string $primaryId;
 
     /**
      * `new LandingPageUpdateLanguagesParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * LandingPageUpdateLanguagesParams::with(languages: ..., primaryID: ...)
+     * LandingPageUpdateLanguagesParams::with(languages: ..., primaryId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -62,14 +62,14 @@ final class LandingPageUpdateLanguagesParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $languages
+     * @param array<string,string> $languages
      */
-    public static function with(array $languages, string $primaryID): self
+    public static function with(array $languages, string $primaryId): self
     {
         $obj = new self;
 
         $obj->languages = $languages;
-        $obj->primaryID = $primaryID;
+        $obj->primaryId = $primaryId;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class LandingPageUpdateLanguagesParams implements BaseModel
     /**
      * Map of object IDs to associated languages of object in the multi-language group.
      *
-     * @param array<string, string> $languages
+     * @param array<string,string> $languages
      */
     public function withLanguages(array $languages): self
     {
@@ -93,7 +93,7 @@ final class LandingPageUpdateLanguagesParams implements BaseModel
     public function withPrimaryID(string $primaryID): self
     {
         $obj = clone $this;
-        $obj->primaryID = $primaryID;
+        $obj->primaryId = $primaryID;
 
         return $obj;
     }

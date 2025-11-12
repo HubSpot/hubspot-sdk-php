@@ -36,10 +36,9 @@ final class CustomChannelsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->customChannels->create(
-            capabilities: ['foo' => (object) []],
-            name: 'name'
-        );
+        $result = $this->client->conversations->customChannels->create([
+            'capabilities' => ['foo' => []], 'name' => 'name',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -51,10 +50,9 @@ final class CustomChannelsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->customChannels->create(
-            capabilities: ['foo' => (object) []],
-            name: 'name'
-        );
+        $result = $this->client->conversations->customChannels->create([
+            'capabilities' => ['foo' => []], 'name' => 'name',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -68,9 +66,11 @@ final class CustomChannelsTest extends TestCase
 
         $result = $this->client->conversations->customChannels->update(
             'channelId',
-            capabilities: ['foo' => (object) []],
-            channelDescription: (object) [],
-            channelLogoURL: (object) [],
+            [
+                'capabilities' => ['foo' => []],
+                'channelDescription' => [],
+                'channelLogoUrl' => [],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -85,9 +85,11 @@ final class CustomChannelsTest extends TestCase
 
         $result = $this->client->conversations->customChannels->update(
             'channelId',
-            capabilities: ['foo' => (object) []],
-            channelDescription: (object) [],
-            channelLogoURL: (object) [],
+            [
+                'capabilities' => ['foo' => []],
+                'channelDescription' => [],
+                'channelLogoUrl' => [],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

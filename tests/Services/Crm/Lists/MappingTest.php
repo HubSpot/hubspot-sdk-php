@@ -36,9 +36,9 @@ final class MappingTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->mapping->batchCreateIDMapping(
-            ['string']
-        );
+        $result = $this->client->crm->lists->mapping->batchCreateIDMapping([
+            'body' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -50,9 +50,9 @@ final class MappingTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->mapping->batchCreateIDMapping(
-            ['string']
-        );
+        $result = $this->client->crm->lists->mapping->batchCreateIDMapping([
+            'body' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -64,7 +64,7 @@ final class MappingTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->mapping->getIDMapping();
+        $result = $this->client->crm->lists->mapping->getIDMapping([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

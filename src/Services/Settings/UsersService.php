@@ -17,9 +17,6 @@ use HubspotSDK\Settings\Users\UserDeleteParams;
 use HubspotSDK\Settings\Users\UserGetParams;
 use HubspotSDK\Settings\Users\UserListParams;
 use HubspotSDK\Settings\Users\UserUpdateParams;
-use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class UsersService implements UsersContract
 {
@@ -33,53 +30,25 @@ final class UsersService implements UsersContract
      *
      * New users will only have minimal permissions, which is contacts-base. A welcome email will prompt them to set a password and log in to HubSpot.
      *
-     * @param string $email The created user's email
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $primaryTeamID The user's primary team
-     * @param string $roleID The user's role
-     * @param list<string> $secondaryTeamIDs The user's additional teams
-     * @param bool $sendWelcomeEmail Whether to send a welcome email
+     * @param array{
+     *   email: string,
+     *   firstName?: string,
+     *   lastName?: string,
+     *   primaryTeamId?: string,
+     *   roleId?: string,
+     *   secondaryTeamIds?: list<string>,
+     *   sendWelcomeEmail?: bool,
+     * }|UserCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $email,
-        $firstName = omit,
-        $lastName = omit,
-        $primaryTeamID = omit,
-        $roleID = omit,
-        $secondaryTeamIDs = omit,
-        $sendWelcomeEmail = omit,
-        ?RequestOptions $requestOptions = null,
-    ): PublicUser {
-        $params = [
-            'email' => $email,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'primaryTeamID' => $primaryTeamID,
-            'roleID' => $roleID,
-            'secondaryTeamIDs' => $secondaryTeamIDs,
-            'sendWelcomeEmail' => $sendWelcomeEmail,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|UserCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): PublicUser {
         [$parsed, $options] = UserCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -97,52 +66,25 @@ final class UsersService implements UsersContract
      *
      * Modifies a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param IDProperty|value-of<IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $primaryTeamID The user's primary team
-     * @param string $roleID The user's role
-     * @param list<string> $secondaryTeamIDs The user's additional teams
+     * @param array{
+     *   idProperty?: "USER_ID"|"EMAIL",
+     *   firstName?: string,
+     *   lastName?: string,
+     *   primaryTeamId?: string,
+     *   roleId?: string,
+     *   secondaryTeamIds?: list<string>,
+     * }|UserUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $userID,
-        $idProperty = omit,
-        $firstName = omit,
-        $lastName = omit,
-        $primaryTeamID = omit,
-        $roleID = omit,
-        $secondaryTeamIDs = omit,
+        array|UserUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicUser {
-        $params = [
-            'idProperty' => $idProperty,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'primaryTeamID' => $primaryTeamID,
-            'roleID' => $roleID,
-            'secondaryTeamIDs' => $secondaryTeamIDs,
-        ];
-
-        return $this->updateRaw($userID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $userID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicUser {
         [$parsed, $options] = UserUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['idProperty'];
 
@@ -162,39 +104,19 @@ final class UsersService implements UsersContract
      *
      * Retrieves a list of users from an account
      *
-     * @param string $after Results will display maximum 100 users per page. Additional results will be on the next page.
-     * @param int $limit The number of users to retrieve
+     * @param array{after?: string, limit?: int}|UserListParams $params
      *
      * @return Page<PublicUser>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $limit = omit,
-        ?RequestOptions $requestOptions = null
-    ): Page {
-        $params = ['after' => $after, 'limit' => $limit];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<PublicUser>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|UserListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = UserListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -213,35 +135,18 @@ final class UsersService implements UsersContract
      *
      * Removes a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param UserDeleteParams\IDProperty|value-of<UserDeleteParams\IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
+     * @param array{idProperty?: "USER_ID"|"EMAIL"}|UserDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $userID,
-        $idProperty = omit,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['idProperty' => $idProperty];
-
-        return $this->deleteRaw($userID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $userID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|UserDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = UserDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -259,33 +164,19 @@ final class UsersService implements UsersContract
      *
      * Retrieves a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param UserGetParams\IDProperty|value-of<UserGetParams\IDProperty> $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
+     * @param array{idProperty?: "USER_ID"|"EMAIL"}|UserGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $userID,
-        $idProperty = omit,
-        ?RequestOptions $requestOptions = null
+        array|UserGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicUser {
-        $params = ['idProperty' => $idProperty];
-
-        return $this->getRaw($userID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $userID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PublicUser {
-        [$parsed, $options] = UserGetParams::parseRequest($params, $requestOptions);
+        [$parsed, $options] = UserGetParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

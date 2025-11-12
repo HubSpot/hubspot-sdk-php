@@ -21,35 +21,18 @@ final class SchemaService implements SchemaContract
     /**
      * @api
      *
-     * @param string $fromObjectType
+     * @param array{fromObjectType: string}|SchemaListParams $params
      *
      * @throws APIException
      */
     public function list(
         string $toObjectType,
-        $fromObjectType,
+        array|SchemaListParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicAssociationDefinitionNoPaging {
-        $params = ['fromObjectType' => $fromObjectType];
-
-        return $this->listRaw($toObjectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicAssociationDefinitionNoPaging {
         [$parsed, $options] = SchemaListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);

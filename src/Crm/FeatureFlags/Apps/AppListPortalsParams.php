@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\FeatureFlags\Apps->listPortals
  *
  * @phpstan-type AppListPortalsParamsShape = array{
- *   appID: int, limit?: int, startPortalID?: int
+ *   appId: int, limit?: int, startPortalId?: int
  * }
  */
 final class AppListPortalsParams implements BaseModel
@@ -25,7 +25,7 @@ final class AppListPortalsParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /**
      * The maximum number of results to return in a single request.
@@ -37,14 +37,14 @@ final class AppListPortalsParams implements BaseModel
      * The initial account ID for listing, enabling pagination.
      */
     #[Api(optional: true)]
-    public ?int $startPortalID;
+    public ?int $startPortalId;
 
     /**
      * `new AppListPortalsParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * AppListPortalsParams::with(appID: ...)
+     * AppListPortalsParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -64,16 +64,16 @@ final class AppListPortalsParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appID,
+        int $appId,
         ?int $limit = null,
-        ?int $startPortalID = null
+        ?int $startPortalId = null
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         null !== $limit && $obj->limit = $limit;
-        null !== $startPortalID && $obj->startPortalID = $startPortalID;
+        null !== $startPortalId && $obj->startPortalId = $startPortalId;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class AppListPortalsParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class AppListPortalsParams implements BaseModel
     public function withStartPortalID(int $startPortalID): self
     {
         $obj = clone $this;
-        $obj->startPortalID = $startPortalID;
+        $obj->startPortalId = $startPortalID;
 
         return $obj;
     }

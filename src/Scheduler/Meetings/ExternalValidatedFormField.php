@@ -14,9 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   label: string,
  *   name: string,
  *   value: string,
- *   fieldType?: string,
- *   translatedLabel?: string,
- *   valueLabel?: string,
+ *   fieldType?: string|null,
+ *   translatedLabel?: string|null,
+ *   valueLabel?: string|null,
  * }
  */
 final class ExternalValidatedFormField implements BaseModel

@@ -13,8 +13,6 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Transactional\SmtpTokensContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class SmtpTokensService implements SmtpTokensContract
 {
     /**
@@ -27,37 +25,19 @@ final class SmtpTokensService implements SmtpTokensContract
      *
      * Create a SMTP API token.
      *
-     * @param string $campaignName a name for the campaign tied to the SMTP API token
-     * @param bool $createContact indicates whether a contact should be created for email recipients
+     * @param array{
+     *   campaignName: string, createContact: bool
+     * }|SmtpTokenCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $campaignName,
-        $createContact,
-        ?RequestOptions $requestOptions = null
-    ): SmtpAPITokenView {
-        $params = [
-            'campaignName' => $campaignName, 'createContact' => $createContact,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|SmtpTokenCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): SmtpAPITokenView {
         [$parsed, $options] = SmtpTokenCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -75,48 +55,21 @@ final class SmtpTokensService implements SmtpTokensContract
      *
      * Query multiple SMTP API tokens by campaign name or a single token by emailCampaignId.
      *
-     * @param string $after starting point to get the next set of results
-     * @param string $campaignName a name for the campaign tied to the SMTP API token
-     * @param string $emailCampaignID identifier assigned to the campaign provided during the token creation
-     * @param int $limit maximum number of tokens to return
+     * @param array{
+     *   after?: string, campaignName?: string, emailCampaignId?: string, limit?: int
+     * }|SmtpTokenListParams $params
      *
      * @return Page<SmtpAPITokenView>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $campaignName = omit,
-        $emailCampaignID = omit,
-        $limit = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'campaignName' => $campaignName,
-            'emailCampaignID' => $emailCampaignID,
-            'limit' => $limit,
-        ];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<SmtpAPITokenView>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|SmtpTokenListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = SmtpTokenListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

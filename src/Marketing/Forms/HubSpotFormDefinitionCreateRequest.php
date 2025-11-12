@@ -20,7 +20,7 @@ use HubspotSDK\Marketing\Forms\HubSpotFormDefinitionCreateRequest\FormType;
  *   legalConsentOptions: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess,
  *   name: string,
  *   updatedAt: \DateTimeInterface,
- *   archivedAt?: \DateTimeInterface,
+ *   archivedAt?: \DateTimeInterface|null,
  * }
  */
 final class HubSpotFormDefinitionCreateRequest implements BaseModel

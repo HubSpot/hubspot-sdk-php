@@ -10,11 +10,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MarketingEventIdentifiersResponseShape = array{
- *   externalEventID: string,
+ *   externalEventId: string,
  *   marketingEventName: string,
- *   objectID: string,
- *   appInfo?: AppInfo,
- *   externalAccountID?: string,
+ *   objectId: string,
+ *   appInfo?: AppInfo|null,
+ *   externalAccountId?: string|null,
  * }
  */
 final class MarketingEventIdentifiersResponse implements BaseModel
@@ -22,20 +22,20 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     /** @use SdkModel<MarketingEventIdentifiersResponseShape> */
     use SdkModel;
 
-    #[Api('externalEventId')]
-    public string $externalEventID;
+    #[Api]
+    public string $externalEventId;
 
     #[Api]
     public string $marketingEventName;
 
-    #[Api('objectId')]
-    public string $objectID;
+    #[Api]
+    public string $objectId;
 
     #[Api(optional: true)]
     public ?AppInfo $appInfo;
 
-    #[Api('externalAccountId', optional: true)]
-    public ?string $externalAccountID;
+    #[Api(optional: true)]
+    public ?string $externalAccountId;
 
     /**
      * `new MarketingEventIdentifiersResponse()` is missing required properties by the API.
@@ -43,7 +43,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * MarketingEventIdentifiersResponse::with(
-     *   externalEventID: ..., marketingEventName: ..., objectID: ...
+     *   externalEventId: ..., marketingEventName: ..., objectId: ...
      * )
      * ```
      *
@@ -67,20 +67,20 @@ final class MarketingEventIdentifiersResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $externalEventID,
+        string $externalEventId,
         string $marketingEventName,
-        string $objectID,
+        string $objectId,
         ?AppInfo $appInfo = null,
-        ?string $externalAccountID = null,
+        ?string $externalAccountId = null,
     ): self {
         $obj = new self;
 
-        $obj->externalEventID = $externalEventID;
+        $obj->externalEventId = $externalEventId;
         $obj->marketingEventName = $marketingEventName;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
 
         null !== $appInfo && $obj->appInfo = $appInfo;
-        null !== $externalAccountID && $obj->externalAccountID = $externalAccountID;
+        null !== $externalAccountId && $obj->externalAccountId = $externalAccountId;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventID = $externalEventID;
+        $obj->externalEventId = $externalEventID;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountID;
 
         return $obj;
     }

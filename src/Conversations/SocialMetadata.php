@@ -11,12 +11,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type SocialMetadataShape = array{
  *   mediaType: string,
- *   id?: string,
- *   description?: string,
- *   mediaTitle?: string,
- *   mediaURL?: string,
- *   mediaURLString?: string,
- *   thumbnailURL?: string,
+ *   id?: string|null,
+ *   description?: string|null,
+ *   mediaTitle?: string|null,
+ *   mediaUrl?: string|null,
+ *   mediaUrlString?: string|null,
+ *   thumbnailUrl?: string|null,
  * }
  */
 final class SocialMetadata implements BaseModel
@@ -36,14 +36,14 @@ final class SocialMetadata implements BaseModel
     #[Api(optional: true)]
     public ?string $mediaTitle;
 
-    #[Api('mediaUrl', optional: true)]
-    public ?string $mediaURL;
+    #[Api(optional: true)]
+    public ?string $mediaUrl;
 
-    #[Api('mediaUrlString', optional: true)]
-    public ?string $mediaURLString;
+    #[Api(optional: true)]
+    public ?string $mediaUrlString;
 
-    #[Api('thumbnailUrl', optional: true)]
-    public ?string $thumbnailURL;
+    #[Api(optional: true)]
+    public ?string $thumbnailUrl;
 
     /**
      * `new SocialMetadata()` is missing required properties by the API.
@@ -74,9 +74,9 @@ final class SocialMetadata implements BaseModel
         ?string $id = null,
         ?string $description = null,
         ?string $mediaTitle = null,
-        ?string $mediaURL = null,
-        ?string $mediaURLString = null,
-        ?string $thumbnailURL = null,
+        ?string $mediaUrl = null,
+        ?string $mediaUrlString = null,
+        ?string $thumbnailUrl = null,
     ): self {
         $obj = new self;
 
@@ -85,9 +85,9 @@ final class SocialMetadata implements BaseModel
         null !== $id && $obj->id = $id;
         null !== $description && $obj->description = $description;
         null !== $mediaTitle && $obj->mediaTitle = $mediaTitle;
-        null !== $mediaURL && $obj->mediaURL = $mediaURL;
-        null !== $mediaURLString && $obj->mediaURLString = $mediaURLString;
-        null !== $thumbnailURL && $obj->thumbnailURL = $thumbnailURL;
+        null !== $mediaUrl && $obj->mediaUrl = $mediaUrl;
+        null !== $mediaUrlString && $obj->mediaUrlString = $mediaUrlString;
+        null !== $thumbnailUrl && $obj->thumbnailUrl = $thumbnailUrl;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class SocialMetadata implements BaseModel
     public function withMediaURL(string $mediaURL): self
     {
         $obj = clone $this;
-        $obj->mediaURL = $mediaURL;
+        $obj->mediaUrl = $mediaURL;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class SocialMetadata implements BaseModel
     public function withMediaURLString(string $mediaURLString): self
     {
         $obj = clone $this;
-        $obj->mediaURLString = $mediaURLString;
+        $obj->mediaUrlString = $mediaURLString;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class SocialMetadata implements BaseModel
     public function withThumbnailURL(string $thumbnailURL): self
     {
         $obj = clone $this;
-        $obj->thumbnailURL = $thumbnailURL;
+        $obj->thumbnailUrl = $thumbnailURL;
 
         return $obj;
     }

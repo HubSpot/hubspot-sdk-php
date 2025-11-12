@@ -16,7 +16,7 @@ use HubspotSDK\PropertyCreate;
  * @see HubspotSDK\Cms\MediaBridge\Properties->createBatch
  *
  * @phpstan-type PropertyCreateBatchParamsShape = array{
- *   appID: string, inputs: list<PropertyCreate>
+ *   appId: string, inputs: list<PropertyCreate>
  * }
  */
 final class PropertyCreateBatchParams implements BaseModel
@@ -26,7 +26,7 @@ final class PropertyCreateBatchParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appID;
+    public string $appId;
 
     /** @var list<PropertyCreate> $inputs */
     #[Api(list: PropertyCreate::class)]
@@ -37,7 +37,7 @@ final class PropertyCreateBatchParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PropertyCreateBatchParams::with(appID: ..., inputs: ...)
+     * PropertyCreateBatchParams::with(appId: ..., inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -58,11 +58,11 @@ final class PropertyCreateBatchParams implements BaseModel
      *
      * @param list<PropertyCreate> $inputs
      */
-    public static function with(string $appID, array $inputs): self
+    public static function with(string $appId, array $inputs): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj->inputs = $inputs;
 
         return $obj;
@@ -71,7 +71,7 @@ final class PropertyCreateBatchParams implements BaseModel
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

@@ -22,7 +22,7 @@ use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration\Language;
  *   postSubmitAction: FormPostSubmitAction,
  *   prePopulateKnownValues: bool,
  *   recaptchaEnabled: bool,
- *   lifecycleStages?: list<LifecycleStage>,
+ *   lifecycleStages?: list<LifecycleStage>|null,
  * }
  */
 final class HubSpotFormConfiguration implements BaseModel

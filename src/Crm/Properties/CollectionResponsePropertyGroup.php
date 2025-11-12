@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type CollectionResponsePropertyGroupShape = array{
- *   results: list<PropertyGroup>, paging?: EmailsPaging
+ *   results: list<PropertyGroup>, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponsePropertyGroup implements BaseModel

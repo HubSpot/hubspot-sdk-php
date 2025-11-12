@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * A Business Unit.
  *
  * @phpstan-type PublicBusinessUnitShape = array{
- *   id: string, name: string, logoMetadata?: PublicBusinessUnitLogoMetadata
+ *   id: string, name: string, logoMetadata?: PublicBusinessUnitLogoMetadata|null
  * }
  */
 final class PublicBusinessUnit implements BaseModel

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type CallbackCompletionBatchRequestShape = array{
- *   callbackID: string, outputFields: array<string, string>
+ *   callbackId: string, outputFields: array<string,string>
  * }
  */
 final class CallbackCompletionBatchRequest implements BaseModel
@@ -18,10 +18,10 @@ final class CallbackCompletionBatchRequest implements BaseModel
     /** @use SdkModel<CallbackCompletionBatchRequestShape> */
     use SdkModel;
 
-    #[Api('callbackId')]
-    public string $callbackID;
+    #[Api]
+    public string $callbackId;
 
-    /** @var array<string, string> $outputFields */
+    /** @var array<string,string> $outputFields */
     #[Api(map: 'string')]
     public array $outputFields;
 
@@ -30,7 +30,7 @@ final class CallbackCompletionBatchRequest implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * CallbackCompletionBatchRequest::with(callbackID: ..., outputFields: ...)
+     * CallbackCompletionBatchRequest::with(callbackId: ..., outputFields: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,13 +49,13 @@ final class CallbackCompletionBatchRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $outputFields
+     * @param array<string,string> $outputFields
      */
-    public static function with(string $callbackID, array $outputFields): self
+    public static function with(string $callbackId, array $outputFields): self
     {
         $obj = new self;
 
-        $obj->callbackID = $callbackID;
+        $obj->callbackId = $callbackId;
         $obj->outputFields = $outputFields;
 
         return $obj;
@@ -64,13 +64,13 @@ final class CallbackCompletionBatchRequest implements BaseModel
     public function withCallbackID(string $callbackID): self
     {
         $obj = clone $this;
-        $obj->callbackID = $callbackID;
+        $obj->callbackId = $callbackID;
 
         return $obj;
     }
 
     /**
-     * @param array<string, string> $outputFields
+     * @param array<string,string> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {

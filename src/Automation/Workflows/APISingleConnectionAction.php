@@ -11,12 +11,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APISingleConnectionActionShape = array{
- *   actionID: string,
- *   actionTypeID: string,
+ *   actionId: string,
+ *   actionTypeId: string,
  *   actionTypeVersion: int,
- *   fields: array<string, mixed>,
+ *   fields: array<string,mixed>,
  *   type: value-of<Type>,
- *   connection?: APIConnection,
+ *   connection?: APIConnection|null,
  * }
  */
 final class APISingleConnectionAction implements BaseModel
@@ -24,16 +24,16 @@ final class APISingleConnectionAction implements BaseModel
     /** @use SdkModel<APISingleConnectionActionShape> */
     use SdkModel;
 
-    #[Api('actionId')]
-    public string $actionID;
+    #[Api]
+    public string $actionId;
 
-    #[Api('actionTypeId')]
-    public string $actionTypeID;
+    #[Api]
+    public string $actionTypeId;
 
     #[Api]
     public int $actionTypeVersion;
 
-    /** @var array<string, mixed> $fields */
+    /** @var array<string,mixed> $fields */
     #[Api(map: 'mixed')]
     public array $fields;
 
@@ -50,8 +50,8 @@ final class APISingleConnectionAction implements BaseModel
      * To enforce required parameters use
      * ```
      * APISingleConnectionAction::with(
-     *   actionID: ...,
-     *   actionTypeID: ...,
+     *   actionId: ...,
+     *   actionTypeId: ...,
      *   actionTypeVersion: ...,
      *   fields: ...,
      *   type: ...,
@@ -79,12 +79,12 @@ final class APISingleConnectionAction implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, mixed> $fields
+     * @param array<string,mixed> $fields
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $actionID,
-        string $actionTypeID,
+        string $actionId,
+        string $actionTypeId,
         int $actionTypeVersion,
         array $fields,
         Type|string $type = 'SINGLE_CONNECTION',
@@ -92,8 +92,8 @@ final class APISingleConnectionAction implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->actionID = $actionID;
-        $obj->actionTypeID = $actionTypeID;
+        $obj->actionId = $actionId;
+        $obj->actionTypeId = $actionTypeId;
         $obj->actionTypeVersion = $actionTypeVersion;
         $obj->fields = $fields;
         $obj['type'] = $type;
@@ -106,7 +106,7 @@ final class APISingleConnectionAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionID;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class APISingleConnectionAction implements BaseModel
     public function withActionTypeID(string $actionTypeID): self
     {
         $obj = clone $this;
-        $obj->actionTypeID = $actionTypeID;
+        $obj->actionTypeId = $actionTypeID;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class APISingleConnectionAction implements BaseModel
     }
 
     /**
-     * @param array<string, mixed> $fields
+     * @param array<string,mixed> $fields
      */
     public function withFields(array $fields): self
     {

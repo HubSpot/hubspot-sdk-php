@@ -12,14 +12,14 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
 /**
  * @phpstan-type ObjectTypeDefinitionPatchShape = array{
  *   clearDescription: bool,
- *   allowsSensitiveProperties?: bool,
- *   description?: string,
- *   labels?: ObjectTypeDefinitionLabels,
- *   primaryDisplayProperty?: string,
- *   requiredProperties?: list<string>,
- *   restorable?: bool,
- *   searchableProperties?: list<string>,
- *   secondaryDisplayProperties?: list<string>,
+ *   allowsSensitiveProperties?: bool|null,
+ *   description?: string|null,
+ *   labels?: ObjectTypeDefinitionLabels|null,
+ *   primaryDisplayProperty?: string|null,
+ *   requiredProperties?: list<string>|null,
+ *   restorable?: bool|null,
+ *   searchableProperties?: list<string>|null,
+ *   secondaryDisplayProperties?: list<string>|null,
  * }
  */
 final class ObjectTypeDefinitionPatch implements BaseModel

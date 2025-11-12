@@ -10,12 +10,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicChannelIntegrationChannelCreateShape = array{
- *   capabilities: array<string, mixed>,
+ *   capabilities: array<string,mixed>,
  *   name: string,
- *   channelAccountConnectionRedirectURL?: string,
- *   channelDescription?: string,
- *   channelLogoURL?: string,
- *   webhookURL?: string,
+ *   channelAccountConnectionRedirectUrl?: string|null,
+ *   channelDescription?: string|null,
+ *   channelLogoUrl?: string|null,
+ *   webhookUrl?: string|null,
  * }
  */
 final class PublicChannelIntegrationChannelCreate implements BaseModel
@@ -23,24 +23,24 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
     /** @use SdkModel<PublicChannelIntegrationChannelCreateShape> */
     use SdkModel;
 
-    /** @var array<string, mixed> $capabilities */
+    /** @var array<string,mixed> $capabilities */
     #[Api(map: 'mixed')]
     public array $capabilities;
 
     #[Api]
     public string $name;
 
-    #[Api('channelAccountConnectionRedirectUrl', optional: true)]
-    public ?string $channelAccountConnectionRedirectURL;
+    #[Api(optional: true)]
+    public ?string $channelAccountConnectionRedirectUrl;
 
     #[Api(optional: true)]
     public ?string $channelDescription;
 
-    #[Api('channelLogoUrl', optional: true)]
-    public ?string $channelLogoURL;
+    #[Api(optional: true)]
+    public ?string $channelLogoUrl;
 
-    #[Api('webhookUrl', optional: true)]
-    public ?string $webhookURL;
+    #[Api(optional: true)]
+    public ?string $webhookUrl;
 
     /**
      * `new PublicChannelIntegrationChannelCreate()` is missing required properties by the API.
@@ -68,31 +68,31 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, mixed> $capabilities
+     * @param array<string,mixed> $capabilities
      */
     public static function with(
         array $capabilities,
         string $name,
-        ?string $channelAccountConnectionRedirectURL = null,
+        ?string $channelAccountConnectionRedirectUrl = null,
         ?string $channelDescription = null,
-        ?string $channelLogoURL = null,
-        ?string $webhookURL = null,
+        ?string $channelLogoUrl = null,
+        ?string $webhookUrl = null,
     ): self {
         $obj = new self;
 
         $obj->capabilities = $capabilities;
         $obj->name = $name;
 
-        null !== $channelAccountConnectionRedirectURL && $obj->channelAccountConnectionRedirectURL = $channelAccountConnectionRedirectURL;
+        null !== $channelAccountConnectionRedirectUrl && $obj->channelAccountConnectionRedirectUrl = $channelAccountConnectionRedirectUrl;
         null !== $channelDescription && $obj->channelDescription = $channelDescription;
-        null !== $channelLogoURL && $obj->channelLogoURL = $channelLogoURL;
-        null !== $webhookURL && $obj->webhookURL = $webhookURL;
+        null !== $channelLogoUrl && $obj->channelLogoUrl = $channelLogoUrl;
+        null !== $webhookUrl && $obj->webhookUrl = $webhookUrl;
 
         return $obj;
     }
 
     /**
-     * @param array<string, mixed> $capabilities
+     * @param array<string,mixed> $capabilities
      */
     public function withCapabilities(array $capabilities): self
     {
@@ -114,7 +114,7 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
         string $channelAccountConnectionRedirectURL
     ): self {
         $obj = clone $this;
-        $obj->channelAccountConnectionRedirectURL = $channelAccountConnectionRedirectURL;
+        $obj->channelAccountConnectionRedirectUrl = $channelAccountConnectionRedirectURL;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
     public function withChannelLogoURL(string $channelLogoURL): self
     {
         $obj = clone $this;
-        $obj->channelLogoURL = $channelLogoURL;
+        $obj->channelLogoUrl = $channelLogoURL;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
     public function withWebhookURL(string $webhookURL): self
     {
         $obj = clone $this;
-        $obj->webhookURL = $webhookURL;
+        $obj->webhookUrl = $webhookURL;
 
         return $obj;
     }

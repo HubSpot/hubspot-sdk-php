@@ -13,23 +13,23 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   deletedAt: \DateTimeInterface,
  *   label: string,
  *   name: string,
- *   id?: string,
- *   allowChildTables?: bool,
- *   allowPublicAPIAccess?: bool,
- *   columnCount?: int,
- *   columns?: list<Column>,
- *   createdAt?: \DateTimeInterface,
- *   createdBy?: SimpleUser,
- *   deleted?: bool,
- *   dynamicMetaTags?: array<string, int>,
- *   enableChildTablePages?: bool,
- *   isOrderedManually?: bool,
- *   published?: bool,
- *   publishedAt?: \DateTimeInterface,
- *   rowCount?: int,
- *   updatedAt?: \DateTimeInterface,
- *   updatedBy?: SimpleUser,
- *   useForPages?: bool,
+ *   id?: string|null,
+ *   allowChildTables?: bool|null,
+ *   allowPublicApiAccess?: bool|null,
+ *   columnCount?: int|null,
+ *   columns?: list<Column>|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdBy?: SimpleUser|null,
+ *   deleted?: bool|null,
+ *   dynamicMetaTags?: array<string,int>|null,
+ *   enableChildTablePages?: bool|null,
+ *   isOrderedManually?: bool|null,
+ *   published?: bool|null,
+ *   publishedAt?: \DateTimeInterface|null,
+ *   rowCount?: int|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedBy?: SimpleUser|null,
+ *   useForPages?: bool|null,
  * }
  */
 final class HubDBTableV3 implements BaseModel
@@ -67,8 +67,8 @@ final class HubDBTableV3 implements BaseModel
     /**
      * Specifies whether the table can be read by public without authorization.
      */
-    #[Api('allowPublicApiAccess', optional: true)]
-    public ?bool $allowPublicAPIAccess;
+    #[Api(optional: true)]
+    public ?bool $allowPublicApiAccess;
 
     /**
      * Number of columns including deleted.
@@ -99,7 +99,7 @@ final class HubDBTableV3 implements BaseModel
     /**
      * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
      *
-     * @var array<string, int>|null $dynamicMetaTags
+     * @var array<string,int>|null $dynamicMetaTags
      */
     #[Api(map: 'int', optional: true)]
     public ?array $dynamicMetaTags;
@@ -168,7 +168,7 @@ final class HubDBTableV3 implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<Column> $columns
-     * @param array<string, int> $dynamicMetaTags
+     * @param array<string,int> $dynamicMetaTags
      */
     public static function with(
         \DateTimeInterface $deletedAt,
@@ -176,7 +176,7 @@ final class HubDBTableV3 implements BaseModel
         string $name,
         ?string $id = null,
         ?bool $allowChildTables = null,
-        ?bool $allowPublicAPIAccess = null,
+        ?bool $allowPublicApiAccess = null,
         ?int $columnCount = null,
         ?array $columns = null,
         ?\DateTimeInterface $createdAt = null,
@@ -200,7 +200,7 @@ final class HubDBTableV3 implements BaseModel
 
         null !== $id && $obj->id = $id;
         null !== $allowChildTables && $obj->allowChildTables = $allowChildTables;
-        null !== $allowPublicAPIAccess && $obj->allowPublicAPIAccess = $allowPublicAPIAccess;
+        null !== $allowPublicApiAccess && $obj->allowPublicApiAccess = $allowPublicApiAccess;
         null !== $columnCount && $obj->columnCount = $columnCount;
         null !== $columns && $obj->columns = $columns;
         null !== $createdAt && $obj->createdAt = $createdAt;
@@ -277,7 +277,7 @@ final class HubDBTableV3 implements BaseModel
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
-        $obj->allowPublicAPIAccess = $allowPublicAPIAccess;
+        $obj->allowPublicApiAccess = $allowPublicAPIAccess;
 
         return $obj;
     }
@@ -336,7 +336,7 @@ final class HubDBTableV3 implements BaseModel
     /**
      * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
      *
-     * @param array<string, int> $dynamicMetaTags
+     * @param array<string,int> $dynamicMetaTags
      */
     public function withDynamicMetaTags(array $dynamicMetaTags): self
     {

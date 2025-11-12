@@ -16,9 +16,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Hubdb\Rows->replaceDraft
  *
  * @phpstan-type RowReplaceDraftParamsShape = array{
- *   tableIDOrName: string,
- *   values: array<string, mixed>,
- *   childTableID?: int,
+ *   tableIdOrName: string,
+ *   values: array<string,mixed>,
+ *   childTableId?: int,
  *   displayIndex?: int,
  *   name?: string,
  *   path?: string,
@@ -31,12 +31,12 @@ final class RowReplaceDraftParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $tableIDOrName;
+    public string $tableIdOrName;
 
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @var array<string, mixed> $values
+     * @var array<string,mixed> $values
      */
     #[Api(map: 'mixed')]
     public array $values;
@@ -44,8 +44,8 @@ final class RowReplaceDraftParams implements BaseModel
     /**
      * Specifies the value for the column child table id.
      */
-    #[Api('childTableId', optional: true)]
-    public ?int $childTableID;
+    #[Api(optional: true)]
+    public ?int $childTableId;
 
     #[Api(optional: true)]
     public ?int $displayIndex;
@@ -67,7 +67,7 @@ final class RowReplaceDraftParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * RowReplaceDraftParams::with(tableIDOrName: ..., values: ...)
+     * RowReplaceDraftParams::with(tableIdOrName: ..., values: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -86,22 +86,22 @@ final class RowReplaceDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, mixed> $values
+     * @param array<string,mixed> $values
      */
     public static function with(
-        string $tableIDOrName,
+        string $tableIdOrName,
         array $values,
-        ?int $childTableID = null,
+        ?int $childTableId = null,
         ?int $displayIndex = null,
         ?string $name = null,
         ?string $path = null,
     ): self {
         $obj = new self;
 
-        $obj->tableIDOrName = $tableIDOrName;
+        $obj->tableIdOrName = $tableIdOrName;
         $obj->values = $values;
 
-        null !== $childTableID && $obj->childTableID = $childTableID;
+        null !== $childTableId && $obj->childTableId = $childTableId;
         null !== $displayIndex && $obj->displayIndex = $displayIndex;
         null !== $name && $obj->name = $name;
         null !== $path && $obj->path = $path;
@@ -112,7 +112,7 @@ final class RowReplaceDraftParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj->tableIDOrName = $tableIDOrName;
+        $obj->tableIdOrName = $tableIDOrName;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class RowReplaceDraftParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string, mixed> $values
+     * @param array<string,mixed> $values
      */
     public function withValues(array $values): self
     {
@@ -136,7 +136,7 @@ final class RowReplaceDraftParams implements BaseModel
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
-        $obj->childTableID = $childTableID;
+        $obj->childTableId = $childTableID;
 
         return $obj;
     }

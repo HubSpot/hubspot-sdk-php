@@ -16,8 +16,6 @@ use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Properties\GroupsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class GroupsService implements GroupsContract
 {
     /**
@@ -30,41 +28,20 @@ final class GroupsService implements GroupsContract
      *
      * Create and return a copy of a new property group.
      *
-     * @param string $label
-     * @param string $name
-     * @param int $displayOrder
+     * @param array{
+     *   label: string, name: string, displayOrder?: int
+     * }|GroupCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        $label,
-        $name,
-        $displayOrder = omit,
+        array|GroupCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CreatedResponsePropertyGroup {
-        $params = [
-            'label' => $label, 'name' => $name, 'displayOrder' => $displayOrder,
-        ];
-
-        return $this->createRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): CreatedResponsePropertyGroup {
         [$parsed, $options] = GroupCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -82,43 +59,20 @@ final class GroupsService implements GroupsContract
      *
      * Perform a partial update of a property group identified by {groupName}. Provided fields will be overwritten.
      *
-     * @param string $objectType
-     * @param int $displayOrder
-     * @param string $label
+     * @param array{
+     *   objectType: string, displayOrder?: int, label?: string
+     * }|GroupUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $groupName,
-        $objectType,
-        $displayOrder = omit,
-        $label = omit,
+        array|GroupUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PropertyGroup {
-        $params = [
-            'objectType' => $objectType,
-            'displayOrder' => $displayOrder,
-            'label' => $label,
-        ];
-
-        return $this->updateRaw($groupName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PropertyGroup {
         [$parsed, $options] = GroupUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
@@ -158,35 +112,18 @@ final class GroupsService implements GroupsContract
      *
      * Move a property group identified by {groupName} to the recycling bin.
      *
-     * @param string $objectType
+     * @param array{objectType: string}|GroupDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $groupName,
-        $objectType,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['objectType' => $objectType];
-
-        return $this->deleteRaw($groupName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|GroupDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = GroupDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
@@ -205,35 +142,18 @@ final class GroupsService implements GroupsContract
      *
      * Read a property group identified by {groupName}.
      *
-     * @param string $objectType
+     * @param array{objectType: string}|GroupGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $groupName,
-        $objectType,
-        ?RequestOptions $requestOptions = null
-    ): PropertyGroup {
-        $params = ['objectType' => $objectType];
-
-        return $this->getRaw($groupName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $groupName,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|GroupGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PropertyGroup {
         [$parsed, $options] = GroupGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);

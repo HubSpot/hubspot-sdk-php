@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ReportCreationResponseShape = array{
- *   enqueueTime: DateTime, userEmail: string, userID: int
+ *   enqueueTime: DateTime, userEmail: string, userId: int
  * }
  */
 final class ReportCreationResponse implements BaseModel
@@ -24,15 +24,15 @@ final class ReportCreationResponse implements BaseModel
     #[Api]
     public string $userEmail;
 
-    #[Api('userId')]
-    public int $userID;
+    #[Api]
+    public int $userId;
 
     /**
      * `new ReportCreationResponse()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ReportCreationResponse::with(enqueueTime: ..., userEmail: ..., userID: ...)
+     * ReportCreationResponse::with(enqueueTime: ..., userEmail: ..., userId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -57,13 +57,13 @@ final class ReportCreationResponse implements BaseModel
     public static function with(
         DateTime $enqueueTime,
         string $userEmail,
-        int $userID
+        int $userId
     ): self {
         $obj = new self;
 
         $obj->enqueueTime = $enqueueTime;
         $obj->userEmail = $userEmail;
-        $obj->userID = $userID;
+        $obj->userId = $userId;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class ReportCreationResponse implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }

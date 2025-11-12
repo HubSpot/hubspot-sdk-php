@@ -38,7 +38,7 @@ final class RevisionsTest extends TestCase
 
         $result = $this->client->automation->actions->revisions->list(
             'definitionId',
-            appID: 0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +53,7 @@ final class RevisionsTest extends TestCase
 
         $result = $this->client->automation->actions->revisions->list(
             'definitionId',
-            appID: 0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -68,8 +68,7 @@ final class RevisionsTest extends TestCase
 
         $result = $this->client->automation->actions->revisions->get(
             'revisionId',
-            appID: 0,
-            definitionID: 'definitionId'
+            ['appId' => 0, 'definitionId' => 'definitionId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -84,8 +83,7 @@ final class RevisionsTest extends TestCase
 
         $result = $this->client->automation->actions->revisions->get(
             'revisionId',
-            appID: 0,
-            definitionID: 'definitionId'
+            ['appId' => 0, 'definitionId' => 'definitionId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

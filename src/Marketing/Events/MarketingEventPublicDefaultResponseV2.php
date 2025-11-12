@@ -15,17 +15,17 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   createdAt: \DateTimeInterface,
  *   customProperties: list<CrmPropertyWrapper>,
  *   eventName: string,
- *   objectID: string,
+ *   objectId: string,
  *   updatedAt: \DateTimeInterface,
- *   appInfo?: AppInfo,
- *   endDateTime?: \DateTimeInterface,
- *   eventCancelled?: bool,
- *   eventCompleted?: bool,
- *   eventDescription?: string,
- *   eventOrganizer?: string,
- *   eventType?: string,
- *   eventURL?: string,
- *   startDateTime?: \DateTimeInterface,
+ *   appInfo?: AppInfo|null,
+ *   endDateTime?: \DateTimeInterface|null,
+ *   eventCancelled?: bool|null,
+ *   eventCompleted?: bool|null,
+ *   eventDescription?: string|null,
+ *   eventOrganizer?: string|null,
+ *   eventType?: string|null,
+ *   eventUrl?: string|null,
+ *   startDateTime?: \DateTimeInterface|null,
  * }
  */
 final class MarketingEventPublicDefaultResponseV2 implements BaseModel, ResponseConverter
@@ -45,8 +45,8 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     #[Api]
     public string $eventName;
 
-    #[Api('objectId')]
-    public string $objectID;
+    #[Api]
+    public string $objectId;
 
     #[Api]
     public \DateTimeInterface $updatedAt;
@@ -72,8 +72,8 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     #[Api(optional: true)]
     public ?string $eventType;
 
-    #[Api('eventUrl', optional: true)]
-    public ?string $eventURL;
+    #[Api(optional: true)]
+    public ?string $eventUrl;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $startDateTime;
@@ -87,7 +87,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
      *   createdAt: ...,
      *   customProperties: ...,
      *   eventName: ...,
-     *   objectID: ...,
+     *   objectId: ...,
      *   updatedAt: ...,
      * )
      * ```
@@ -119,7 +119,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
         \DateTimeInterface $createdAt,
         array $customProperties,
         string $eventName,
-        string $objectID,
+        string $objectId,
         \DateTimeInterface $updatedAt,
         ?AppInfo $appInfo = null,
         ?\DateTimeInterface $endDateTime = null,
@@ -128,7 +128,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
         ?string $eventDescription = null,
         ?string $eventOrganizer = null,
         ?string $eventType = null,
-        ?string $eventURL = null,
+        ?string $eventUrl = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -136,7 +136,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
         $obj->createdAt = $createdAt;
         $obj->customProperties = $customProperties;
         $obj->eventName = $eventName;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
         $obj->updatedAt = $updatedAt;
 
         null !== $appInfo && $obj->appInfo = $appInfo;
@@ -146,7 +146,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
         null !== $eventDescription && $obj->eventDescription = $eventDescription;
         null !== $eventOrganizer && $obj->eventOrganizer = $eventOrganizer;
         null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventURL && $obj->eventURL = $eventURL;
+        null !== $eventUrl && $obj->eventUrl = $eventUrl;
         null !== $startDateTime && $obj->startDateTime = $startDateTime;
 
         return $obj;
@@ -182,7 +182,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }
@@ -254,7 +254,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventURL = $eventURL;
+        $obj->eventUrl = $eventURL;
 
         return $obj;
     }

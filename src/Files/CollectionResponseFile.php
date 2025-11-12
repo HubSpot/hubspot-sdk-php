@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
  * Collections of files.
  *
  * @phpstan-type CollectionResponseFileShape = array{
- *   results: list<File>, paging?: EmailsPaging
+ *   results: list<File>, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponseFile implements BaseModel

@@ -10,7 +10,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type HubDBTableCloneRequestShape = array{
- *   copyRows: bool, isHubspotDefined: bool, newLabel?: string, newName?: string
+ *   copyRows: bool,
+ *   isHubspotDefined: bool,
+ *   newLabel?: string|null,
+ *   newName?: string|null,
  * }
  */
 final class HubDBTableCloneRequest implements BaseModel

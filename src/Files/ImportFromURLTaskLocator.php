@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Information on the task that has been started, and where to check it's status.
  *
  * @phpstan-type ImportFromURLTaskLocatorShape = array{
- *   id: string, links: array<string, string>
+ *   id: string, links: array<string,string>
  * }
  */
 final class ImportFromURLTaskLocator implements BaseModel
@@ -29,7 +29,7 @@ final class ImportFromURLTaskLocator implements BaseModel
     /**
      * Links for where to check information related to the task. The `status` link gives the URL for where to check the status of the task.
      *
-     * @var array<string, string> $links
+     * @var array<string,string> $links
      */
     #[Api(map: 'string')]
     public array $links;
@@ -58,7 +58,7 @@ final class ImportFromURLTaskLocator implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(string $id, array $links): self
     {
@@ -84,7 +84,7 @@ final class ImportFromURLTaskLocator implements BaseModel
     /**
      * Links for where to check information related to the task. The `status` link gives the URL for where to check the status of the task.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

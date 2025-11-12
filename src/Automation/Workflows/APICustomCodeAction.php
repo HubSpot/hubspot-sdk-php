@@ -11,14 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APICustomCodeActionShape = array{
- *   actionID: string,
+ *   actionId: string,
  *   inputFields: list<APIInputVariable>,
  *   outputFields: list<APIEnumerationOutputField>,
  *   runtime: string,
  *   secretNames: list<string>,
  *   sourceCode: string,
  *   type: value-of<Type>,
- *   connection?: APIConnection,
+ *   connection?: APIConnection|null,
  * }
  */
 final class APICustomCodeAction implements BaseModel
@@ -26,8 +26,8 @@ final class APICustomCodeAction implements BaseModel
     /** @use SdkModel<APICustomCodeActionShape> */
     use SdkModel;
 
-    #[Api('actionId')]
-    public string $actionID;
+    #[Api]
+    public string $actionId;
 
     /** @var list<APIInputVariable> $inputFields */
     #[Api(list: APIInputVariable::class)]
@@ -60,7 +60,7 @@ final class APICustomCodeAction implements BaseModel
      * To enforce required parameters use
      * ```
      * APICustomCodeAction::with(
-     *   actionID: ...,
+     *   actionId: ...,
      *   inputFields: ...,
      *   outputFields: ...,
      *   runtime: ...,
@@ -99,7 +99,7 @@ final class APICustomCodeAction implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $actionID,
+        string $actionId,
         array $inputFields,
         array $outputFields,
         string $runtime,
@@ -110,7 +110,7 @@ final class APICustomCodeAction implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionId;
         $obj->inputFields = $inputFields;
         $obj->outputFields = $outputFields;
         $obj->runtime = $runtime;
@@ -126,7 +126,7 @@ final class APICustomCodeAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionID;
 
         return $obj;
     }

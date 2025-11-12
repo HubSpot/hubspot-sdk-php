@@ -20,7 +20,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterest
  *   processingConsentFooterText: string,
  *   processingConsentText: string,
  *   processingConsentType: string,
- *   legitimateInterestLegalBasis?: value-of<LegitimateInterestLegalBasis>,
+ *   legitimateInterestLegalBasis?: value-of<LegitimateInterestLegalBasis>|null,
  * }
  */
 final class ExternalLegalConsentOptions implements BaseModel

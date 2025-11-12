@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APICollectionResponseRecordListMembershipNoPagingShape = array{
- *   results: list<RecordListMembership>, total?: int
+ *   results: list<RecordListMembership>, total?: int|null
  * }
  */
 final class APICollectionResponseRecordListMembershipNoPaging implements BaseModel

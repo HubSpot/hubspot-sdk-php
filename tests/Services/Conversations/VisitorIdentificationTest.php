@@ -40,7 +40,7 @@ final class VisitorIdentificationTest extends TestCase
             ->client
             ->conversations
             ->visitorIdentification
-            ->generateToken(email: 'visitor-email@example.com')
+            ->generateToken(['email' => 'visitor-email@example.com'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -57,7 +57,7 @@ final class VisitorIdentificationTest extends TestCase
             ->client
             ->conversations
             ->visitorIdentification
-            ->generateToken(email: 'visitor-email@example.com')
+            ->generateToken(['email' => 'visitor-email@example.com'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

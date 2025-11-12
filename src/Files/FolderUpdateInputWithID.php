@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type FolderUpdateInputWithIDShape = array{
- *   id: string, name?: string, parentFolderID?: int
+ *   id: string, name?: string|null, parentFolderId?: int|null
  * }
  */
 final class FolderUpdateInputWithID implements BaseModel
@@ -33,8 +33,8 @@ final class FolderUpdateInputWithID implements BaseModel
     /**
      * The ID of the new parent folder, which will move the folder and its children into the specified folder.
      */
-    #[Api('parentFolderId', optional: true)]
-    public ?int $parentFolderID;
+    #[Api(optional: true)]
+    public ?int $parentFolderId;
 
     /**
      * `new FolderUpdateInputWithID()` is missing required properties by the API.
@@ -63,14 +63,14 @@ final class FolderUpdateInputWithID implements BaseModel
     public static function with(
         string $id,
         ?string $name = null,
-        ?int $parentFolderID = null
+        ?int $parentFolderId = null
     ): self {
         $obj = new self;
 
         $obj->id = $id;
 
         null !== $name && $obj->name = $name;
-        null !== $parentFolderID && $obj->parentFolderID = $parentFolderID;
+        null !== $parentFolderId && $obj->parentFolderId = $parentFolderId;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class FolderUpdateInputWithID implements BaseModel
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderID;
 
         return $obj;
     }

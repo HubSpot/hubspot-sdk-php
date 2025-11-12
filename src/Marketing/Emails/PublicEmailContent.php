@@ -12,14 +12,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Data structure representing the content of the email.
  *
  * @phpstan-type PublicEmailContentShape = array{
- *   flexAreas?: array<string, mixed>,
- *   plainTextVersion?: string,
- *   smartFields?: array<string, mixed>,
- *   styleSettings?: PublicEmailStyleSettings,
- *   templatePath?: string,
- *   themeSettingsValues?: array<string, mixed>,
- *   widgetContainers?: array<string, mixed>,
- *   widgets?: array<string, mixed>,
+ *   flexAreas?: array<string,mixed>|null,
+ *   plainTextVersion?: string|null,
+ *   smartFields?: array<string,mixed>|null,
+ *   styleSettings?: PublicEmailStyleSettings|null,
+ *   templatePath?: string|null,
+ *   themeSettingsValues?: array<string,mixed>|null,
+ *   widgetContainers?: array<string,mixed>|null,
+ *   widgets?: array<string,mixed>|null,
  * }
  */
 final class PublicEmailContent implements BaseModel
@@ -27,14 +27,14 @@ final class PublicEmailContent implements BaseModel
     /** @use SdkModel<PublicEmailContentShape> */
     use SdkModel;
 
-    /** @var array<string, mixed>|null $flexAreas */
+    /** @var array<string,mixed>|null $flexAreas */
     #[Api(map: 'mixed', optional: true)]
     public ?array $flexAreas;
 
     #[Api(optional: true)]
     public ?string $plainTextVersion;
 
-    /** @var array<string, mixed>|null $smartFields */
+    /** @var array<string,mixed>|null $smartFields */
     #[Api(map: 'mixed', optional: true)]
     public ?array $smartFields;
 
@@ -44,15 +44,15 @@ final class PublicEmailContent implements BaseModel
     #[Api(optional: true)]
     public ?string $templatePath;
 
-    /** @var array<string, mixed>|null $themeSettingsValues */
+    /** @var array<string,mixed>|null $themeSettingsValues */
     #[Api(map: 'mixed', optional: true)]
     public ?array $themeSettingsValues;
 
-    /** @var array<string, mixed>|null $widgetContainers */
+    /** @var array<string,mixed>|null $widgetContainers */
     #[Api(map: 'mixed', optional: true)]
     public ?array $widgetContainers;
 
-    /** @var array<string, mixed>|null $widgets */
+    /** @var array<string,mixed>|null $widgets */
     #[Api(map: 'mixed', optional: true)]
     public ?array $widgets;
 
@@ -66,11 +66,11 @@ final class PublicEmailContent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, mixed> $flexAreas
-     * @param array<string, mixed> $smartFields
-     * @param array<string, mixed> $themeSettingsValues
-     * @param array<string, mixed> $widgetContainers
-     * @param array<string, mixed> $widgets
+     * @param array<string,mixed> $flexAreas
+     * @param array<string,mixed> $smartFields
+     * @param array<string,mixed> $themeSettingsValues
+     * @param array<string,mixed> $widgetContainers
+     * @param array<string,mixed> $widgets
      */
     public static function with(
         ?array $flexAreas = null,
@@ -97,7 +97,7 @@ final class PublicEmailContent implements BaseModel
     }
 
     /**
-     * @param array<string, mixed> $flexAreas
+     * @param array<string,mixed> $flexAreas
      */
     public function withFlexAreas(array $flexAreas): self
     {
@@ -116,7 +116,7 @@ final class PublicEmailContent implements BaseModel
     }
 
     /**
-     * @param array<string, mixed> $smartFields
+     * @param array<string,mixed> $smartFields
      */
     public function withSmartFields(array $smartFields): self
     {
@@ -144,7 +144,7 @@ final class PublicEmailContent implements BaseModel
     }
 
     /**
-     * @param array<string, mixed> $themeSettingsValues
+     * @param array<string,mixed> $themeSettingsValues
      */
     public function withThemeSettingsValues(array $themeSettingsValues): self
     {
@@ -155,7 +155,7 @@ final class PublicEmailContent implements BaseModel
     }
 
     /**
-     * @param array<string, mixed> $widgetContainers
+     * @param array<string,mixed> $widgetContainers
      */
     public function withWidgetContainers(array $widgetContainers): self
     {
@@ -166,7 +166,7 @@ final class PublicEmailContent implements BaseModel
     }
 
     /**
-     * @param array<string, mixed> $widgets
+     * @param array<string,mixed> $widgets
      */
     public function withWidgets(array $widgets): self
     {

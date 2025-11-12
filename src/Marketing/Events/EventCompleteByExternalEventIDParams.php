@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Marketing\Events->completeByExternalEventID
  *
  * @phpstan-type EventCompleteByExternalEventIDParamsShape = array{
- *   externalAccountID: string,
+ *   externalAccountId: string,
  *   endDateTime: \DateTimeInterface,
  *   startDateTime: \DateTimeInterface,
  * }
@@ -30,7 +30,7 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
      * The accountId that is associated with this marketing event in the external event application.
      */
     #[Api]
-    public string $externalAccountID;
+    public string $externalAccountId;
 
     #[Api]
     public \DateTimeInterface $endDateTime;
@@ -44,7 +44,7 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
      * To enforce required parameters use
      * ```
      * EventCompleteByExternalEventIDParams::with(
-     *   externalAccountID: ..., endDateTime: ..., startDateTime: ...
+     *   externalAccountId: ..., endDateTime: ..., startDateTime: ...
      * )
      * ```
      *
@@ -68,13 +68,13 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $externalAccountID,
+        string $externalAccountId,
         \DateTimeInterface $endDateTime,
         \DateTimeInterface $startDateTime,
     ): self {
         $obj = new self;
 
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountId;
         $obj->endDateTime = $endDateTime;
         $obj->startDateTime = $startDateTime;
 
@@ -87,7 +87,7 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountID;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use HubspotSDK\PropertyName;
  * @phpstan-type BatchReadInputPropertyNameShape = array{
  *   archived: bool,
  *   inputs: list<PropertyName>,
- *   dataSensitivity?: value-of<DataSensitivity>,
+ *   dataSensitivity?: value-of<DataSensitivity>|null,
  * }
  */
 final class BatchReadInputPropertyName implements BaseModel

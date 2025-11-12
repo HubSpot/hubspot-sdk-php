@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   ids?: list<int>,
  *   limit?: int,
  *   name?: string,
- *   parentFolderIDs?: list<int>,
+ *   parentFolderIds?: list<int>,
  *   path?: string,
  *   properties?: list<string>,
  *   sort?: list<string>,
@@ -92,10 +92,10 @@ final class FolderSearchParams implements BaseModel
     /**
      * Search folders with the given parent folderId.
      *
-     * @var list<int>|null $parentFolderIDs
+     * @var list<int>|null $parentFolderIds
      */
     #[Api(list: 'int', optional: true)]
-    public ?array $parentFolderIDs;
+    public ?array $parentFolderIds;
 
     /**
      * Search folders by path.
@@ -148,7 +148,7 @@ final class FolderSearchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<int> $ids
-     * @param list<int> $parentFolderIDs
+     * @param list<int> $parentFolderIds
      * @param list<string> $properties
      * @param list<string> $sort
      */
@@ -163,7 +163,7 @@ final class FolderSearchParams implements BaseModel
         ?array $ids = null,
         ?int $limit = null,
         ?string $name = null,
-        ?array $parentFolderIDs = null,
+        ?array $parentFolderIds = null,
         ?string $path = null,
         ?array $properties = null,
         ?array $sort = null,
@@ -183,7 +183,7 @@ final class FolderSearchParams implements BaseModel
         null !== $ids && $obj->ids = $ids;
         null !== $limit && $obj->limit = $limit;
         null !== $name && $obj->name = $name;
-        null !== $parentFolderIDs && $obj->parentFolderIDs = $parentFolderIDs;
+        null !== $parentFolderIds && $obj->parentFolderIds = $parentFolderIds;
         null !== $path && $obj->path = $path;
         null !== $properties && $obj->properties = $properties;
         null !== $sort && $obj->sort = $sort;
@@ -303,7 +303,7 @@ final class FolderSearchParams implements BaseModel
     public function withParentFolderIDs(array $parentFolderIDs): self
     {
         $obj = clone $this;
-        $obj->parentFolderIDs = $parentFolderIDs;
+        $obj->parentFolderIds = $parentFolderIDs;
 
         return $obj;
     }

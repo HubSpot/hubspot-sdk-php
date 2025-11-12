@@ -16,7 +16,7 @@ use HubspotSDK\Crm\Extensions\Cards\IFrameActionBody\Type;
  *   type: value-of<Type>,
  *   url: string,
  *   width: int,
- *   label?: string,
+ *   label?: string|null,
  * }
  */
 final class IFrameActionBody implements BaseModel

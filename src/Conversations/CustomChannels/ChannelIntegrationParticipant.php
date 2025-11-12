@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ChannelIntegrationParticipantShape = array{
- *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string
+ *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
  * }
  */
 final class ChannelIntegrationParticipant implements BaseModel

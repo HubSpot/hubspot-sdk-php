@@ -36,9 +36,9 @@ final class CommercePaymentsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->commercePayments->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->commercePayments->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -50,9 +50,9 @@ final class CommercePaymentsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->commercePayments->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->commercePayments->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -66,7 +66,7 @@ final class CommercePaymentsTest extends TestCase
 
         $result = $this->client->crm->objects->commercePayments->update(
             'commercePaymentId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -81,7 +81,7 @@ final class CommercePaymentsTest extends TestCase
 
         $result = $this->client->crm->objects->commercePayments->update(
             'commercePaymentId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -94,7 +94,7 @@ final class CommercePaymentsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->commercePayments->list();
+        $result = $this->client->crm->objects->commercePayments->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -121,7 +121,8 @@ final class CommercePaymentsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->commercePayments->get(
-            'commercePaymentId'
+            'commercePaymentId',
+            []
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -134,7 +135,7 @@ final class CommercePaymentsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->commercePayments->search();
+        $result = $this->client->crm->objects->commercePayments->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

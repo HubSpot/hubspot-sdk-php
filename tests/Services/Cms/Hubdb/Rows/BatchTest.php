@@ -3,9 +3,6 @@
 namespace Tests\Services\Cms\Hubdb\Rows;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
-use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
-use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +38,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->cloneBatch(
             'tableIdOrName',
-            [HubDBTableRowBatchCloneRequest::with(id: 'id')]
+            ['inputs' => [['id' => 'id']]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -56,7 +53,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->cloneBatch(
             'tableIdOrName',
-            [HubDBTableRowBatchCloneRequest::with(id: 'id')->withName('name')],
+            ['inputs' => [['id' => 'id', 'name' => 'name']]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -71,7 +68,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->createBatch(
             'tableIdOrName',
-            [HubDBTableRowV3Request::with(values: ['foo' => (object) []])],
+            ['inputs' => [['values' => ['foo' => []]]]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -87,11 +84,15 @@ final class BatchTest extends TestCase
         $result = $this->client->cms->hubdb->rows->batch->createBatch(
             'tableIdOrName',
             [
-                HubDBTableRowV3Request::with(values: ['foo' => (object) []])
-                    ->withChildTableID(0)
-                    ->withDisplayIndex(0)
-                    ->withName('name')
-                    ->withPath('path'),
+                'inputs' => [
+                    [
+                        'values' => ['foo' => []],
+                        'childTableId' => 0,
+                        'displayIndex' => 0,
+                        'name' => 'name',
+                        'path' => 'path',
+                    ],
+                ],
             ],
         );
 
@@ -107,7 +108,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->getBatch(
             'tableIdOrName',
-            ['string']
+            ['inputs' => ['string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -122,7 +123,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->getBatch(
             'tableIdOrName',
-            ['string']
+            ['inputs' => ['string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -137,7 +138,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->getDraftBatch(
             'tableIdOrName',
-            ['string']
+            ['inputs' => ['string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -152,7 +153,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->getDraftBatch(
             'tableIdOrName',
-            ['string']
+            ['inputs' => ['string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -167,7 +168,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->purgeBatch(
             'tableIdOrName',
-            ['string']
+            ['inputs' => ['string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -182,7 +183,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->purgeBatch(
             'tableIdOrName',
-            ['string']
+            ['inputs' => ['string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -197,12 +198,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->replaceBatch(
             'tableIdOrName',
-            [
-                HubDBTableRowV3BatchUpdateRequest::with(
-                    id: 'id',
-                    values: ['foo' => (object) []]
-                ),
-            ],
+            ['inputs' => [['id' => 'id', 'values' => ['foo' => []]]]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -218,14 +214,16 @@ final class BatchTest extends TestCase
         $result = $this->client->cms->hubdb->rows->batch->replaceBatch(
             'tableIdOrName',
             [
-                HubDBTableRowV3BatchUpdateRequest::with(
-                    id: 'id',
-                    values: ['foo' => (object) []]
-                )
-                    ->withChildTableID(0)
-                    ->withDisplayIndex(0)
-                    ->withName('name')
-                    ->withPath('path'),
+                'inputs' => [
+                    [
+                        'id' => 'id',
+                        'values' => ['foo' => []],
+                        'childTableId' => 0,
+                        'displayIndex' => 0,
+                        'name' => 'name',
+                        'path' => 'path',
+                    ],
+                ],
             ],
         );
 
@@ -241,12 +239,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->updateBatch(
             'tableIdOrName',
-            [
-                HubDBTableRowV3BatchUpdateRequest::with(
-                    id: 'id',
-                    values: ['foo' => (object) []]
-                ),
-            ],
+            ['inputs' => [['id' => 'id', 'values' => ['foo' => []]]]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -262,14 +255,16 @@ final class BatchTest extends TestCase
         $result = $this->client->cms->hubdb->rows->batch->updateBatch(
             'tableIdOrName',
             [
-                HubDBTableRowV3BatchUpdateRequest::with(
-                    id: 'id',
-                    values: ['foo' => (object) []]
-                )
-                    ->withChildTableID(0)
-                    ->withDisplayIndex(0)
-                    ->withName('name')
-                    ->withPath('path'),
+                'inputs' => [
+                    [
+                        'id' => 'id',
+                        'values' => ['foo' => []],
+                        'childTableId' => 0,
+                        'displayIndex' => 0,
+                        'name' => 'name',
+                        'path' => 'path',
+                    ],
+                ],
             ],
         );
 

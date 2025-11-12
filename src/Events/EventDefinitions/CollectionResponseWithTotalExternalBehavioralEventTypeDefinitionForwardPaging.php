@@ -13,7 +13,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-type CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPagingShape = array{
  *   results: list<ExternalBehavioralEventTypeDefinition>,
  *   total: int,
- *   paging?: ForwardPaging,
+ *   paging?: ForwardPaging|null,
  * }
  */
 final class CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPaging implements BaseModel

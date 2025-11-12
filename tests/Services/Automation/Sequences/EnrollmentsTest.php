@@ -36,11 +36,11 @@ final class EnrollmentsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->sequences->enrollments->enroll(
-            contactID: 'contactId',
-            senderEmail: 'senderEmail',
-            sequenceID: 'sequenceId',
-        );
+        $result = $this->client->automation->sequences->enrollments->enroll([
+            'contactId' => 'contactId',
+            'senderEmail' => 'senderEmail',
+            'sequenceId' => 'sequenceId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -52,11 +52,11 @@ final class EnrollmentsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->sequences->enrollments->enroll(
-            contactID: 'contactId',
-            senderEmail: 'senderEmail',
-            sequenceID: 'sequenceId',
-        );
+        $result = $this->client->automation->sequences->enrollments->enroll([
+            'contactId' => 'contactId',
+            'senderEmail' => 'senderEmail',
+            'sequenceId' => 'sequenceId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

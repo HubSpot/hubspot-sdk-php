@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   enrolledAt: \DateTimeInterface,
  *   enrolledBy: string,
  *   enrolledByEmail: string,
- *   sequenceID: string,
+ *   sequenceId: string,
  *   sequenceName: string,
  *   toEmail: string,
  *   updatedAt: \DateTimeInterface,
@@ -37,8 +37,8 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     #[Api]
     public string $enrolledByEmail;
 
-    #[Api('sequenceId')]
-    public string $sequenceID;
+    #[Api]
+    public string $sequenceId;
 
     #[Api]
     public string $sequenceName;
@@ -59,7 +59,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
      *   enrolledAt: ...,
      *   enrolledBy: ...,
      *   enrolledByEmail: ...,
-     *   sequenceID: ...,
+     *   sequenceId: ...,
      *   sequenceName: ...,
      *   toEmail: ...,
      *   updatedAt: ...,
@@ -95,7 +95,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
         \DateTimeInterface $enrolledAt,
         string $enrolledBy,
         string $enrolledByEmail,
-        string $sequenceID,
+        string $sequenceId,
         string $sequenceName,
         string $toEmail,
         \DateTimeInterface $updatedAt,
@@ -106,7 +106,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
         $obj->enrolledAt = $enrolledAt;
         $obj->enrolledBy = $enrolledBy;
         $obj->enrolledByEmail = $enrolledByEmail;
-        $obj->sequenceID = $sequenceID;
+        $obj->sequenceId = $sequenceId;
         $obj->sequenceName = $sequenceName;
         $obj->toEmail = $toEmail;
         $obj->updatedAt = $updatedAt;
@@ -149,7 +149,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     public function withSequenceID(string $sequenceID): self
     {
         $obj = clone $this;
-        $obj->sequenceID = $sequenceID;
+        $obj->sequenceId = $sequenceID;
 
         return $obj;
     }

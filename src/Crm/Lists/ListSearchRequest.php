@@ -12,13 +12,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * The request object used for searching through lists.
  *
  * @phpstan-type ListSearchRequestShape = array{
- *   additionalProperties?: list<string>,
- *   count?: int,
- *   listIDs?: list<string>,
- *   offset?: int,
- *   processingTypes?: list<string>,
- *   query?: string,
- *   sort?: string,
+ *   additionalProperties?: list<string>|null,
+ *   count?: int|null,
+ *   listIds?: list<string>|null,
+ *   offset?: int|null,
+ *   processingTypes?: list<string>|null,
+ *   query?: string|null,
+ *   sort?: string|null,
  * }
  */
 final class ListSearchRequest implements BaseModel
@@ -47,10 +47,10 @@ final class ListSearchRequest implements BaseModel
      *
      * If no value is provided, or if an empty list is provided, then the results will not be filtered by `listId`.
      *
-     * @var list<string>|null $listIDs
+     * @var list<string>|null $listIds
      */
-    #[Api('listIds', list: 'string', optional: true)]
-    public ?array $listIDs;
+    #[Api(list: 'string', optional: true)]
+    public ?array $listIds;
 
     /**
      * Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
@@ -90,13 +90,13 @@ final class ListSearchRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $additionalProperties
-     * @param list<string> $listIDs
+     * @param list<string> $listIds
      * @param list<string> $processingTypes
      */
     public static function with(
         ?array $additionalProperties = null,
         ?int $count = null,
-        ?array $listIDs = null,
+        ?array $listIds = null,
         ?int $offset = null,
         ?array $processingTypes = null,
         ?string $query = null,
@@ -106,7 +106,7 @@ final class ListSearchRequest implements BaseModel
 
         null !== $additionalProperties && $obj->additionalProperties = $additionalProperties;
         null !== $count && $obj->count = $count;
-        null !== $listIDs && $obj->listIDs = $listIDs;
+        null !== $listIds && $obj->listIds = $listIds;
         null !== $offset && $obj->offset = $offset;
         null !== $processingTypes && $obj->processingTypes = $processingTypes;
         null !== $query && $obj->query = $query;
@@ -151,7 +151,7 @@ final class ListSearchRequest implements BaseModel
     public function withListIDs(array $listIDs): self
     {
         $obj = clone $this;
-        $obj->listIDs = $listIDs;
+        $obj->listIds = $listIDs;
 
         return $obj;
     }

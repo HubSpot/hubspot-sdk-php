@@ -3,7 +3,6 @@
 namespace Tests\Services\Webhooks;
 
 use HubspotSDK\Client;
-use HubspotSDK\Webhooks\ThrottlingSettings;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -39,8 +38,10 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->webhooks->settings->update(
             0,
-            targetURL: 'https://www.example.com/hubspot/target',
-            throttling: ThrottlingSettings::with(maxConcurrentRequests: 10),
+            [
+                'targetUrl' => 'https://www.example.com/hubspot/target',
+                'throttling' => ['maxConcurrentRequests' => 10],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -55,8 +56,10 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->webhooks->settings->update(
             0,
-            targetURL: 'https://www.example.com/hubspot/target',
-            throttling: ThrottlingSettings::with(maxConcurrentRequests: 10),
+            [
+                'targetUrl' => 'https://www.example.com/hubspot/target',
+                'throttling' => ['maxConcurrentRequests' => 10],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

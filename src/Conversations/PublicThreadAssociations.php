@@ -9,15 +9,17 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type PublicThreadAssociationsShape = array{associatedTicketID?: string}
+ * @phpstan-type PublicThreadAssociationsShape = array{
+ *   associatedTicketId?: string|null
+ * }
  */
 final class PublicThreadAssociations implements BaseModel
 {
     /** @use SdkModel<PublicThreadAssociationsShape> */
     use SdkModel;
 
-    #[Api('associatedTicketId', optional: true)]
-    public ?string $associatedTicketID;
+    #[Api(optional: true)]
+    public ?string $associatedTicketId;
 
     public function __construct()
     {
@@ -29,11 +31,11 @@ final class PublicThreadAssociations implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(?string $associatedTicketID = null): self
+    public static function with(?string $associatedTicketId = null): self
     {
         $obj = new self;
 
-        null !== $associatedTicketID && $obj->associatedTicketID = $associatedTicketID;
+        null !== $associatedTicketId && $obj->associatedTicketId = $associatedTicketId;
 
         return $obj;
     }
@@ -41,7 +43,7 @@ final class PublicThreadAssociations implements BaseModel
     public function withAssociatedTicketID(string $associatedTicketID): self
     {
         $obj = clone $this;
-        $obj->associatedTicketID = $associatedTicketID;
+        $obj->associatedTicketId = $associatedTicketID;
 
         return $obj;
     }

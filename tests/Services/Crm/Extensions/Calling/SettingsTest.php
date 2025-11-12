@@ -38,8 +38,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->crm->extensions->calling->settings->create(
             0,
-            name: 'name',
-            url: 'url'
+            ['name' => 'name', 'url' => 'url']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -54,8 +53,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->crm->extensions->calling->settings->create(
             0,
-            name: 'name',
-            url: 'url'
+            ['name' => 'name', 'url' => 'url']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -68,7 +66,7 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->settings->update(0);
+        $result = $this->client->crm->extensions->calling->settings->update(0, []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

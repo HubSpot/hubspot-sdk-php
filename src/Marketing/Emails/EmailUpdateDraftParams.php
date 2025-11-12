@@ -20,10 +20,10 @@ use HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory;
  * @phpstan-type EmailUpdateDraftParamsShape = array{
  *   activeDomain?: string,
  *   archived?: bool,
- *   businessUnitID?: int,
+ *   businessUnitId?: int,
  *   campaign?: string,
  *   content?: PublicEmailContent,
- *   folderIDV2?: int,
+ *   folderIdV2?: int,
  *   from?: PublicEmailFromDetails,
  *   jitterSendTime?: bool,
  *   language?: Language|value-of<Language>,
@@ -58,8 +58,8 @@ final class EmailUpdateDraftParams implements BaseModel
     #[Api(optional: true)]
     public ?bool $archived;
 
-    #[Api('businessUnitId', optional: true)]
-    public ?int $businessUnitID;
+    #[Api(optional: true)]
+    public ?int $businessUnitId;
 
     /**
      * The ID of the campaign this email is associated to.
@@ -73,8 +73,8 @@ final class EmailUpdateDraftParams implements BaseModel
     #[Api(optional: true)]
     public ?PublicEmailContent $content;
 
-    #[Api('folderIdV2', optional: true)]
-    public ?int $folderIDV2;
+    #[Api(optional: true)]
+    public ?int $folderIdV2;
 
     /**
      * Data structure representing the from fields on the email.
@@ -173,10 +173,10 @@ final class EmailUpdateDraftParams implements BaseModel
     public static function with(
         ?string $activeDomain = null,
         ?bool $archived = null,
-        ?int $businessUnitID = null,
+        ?int $businessUnitId = null,
         ?string $campaign = null,
         ?PublicEmailContent $content = null,
-        ?int $folderIDV2 = null,
+        ?int $folderIdV2 = null,
         ?PublicEmailFromDetails $from = null,
         ?bool $jitterSendTime = null,
         Language|string|null $language = null,
@@ -196,10 +196,10 @@ final class EmailUpdateDraftParams implements BaseModel
 
         null !== $activeDomain && $obj->activeDomain = $activeDomain;
         null !== $archived && $obj->archived = $archived;
-        null !== $businessUnitID && $obj->businessUnitID = $businessUnitID;
+        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
         null !== $campaign && $obj->campaign = $campaign;
         null !== $content && $obj->content = $content;
-        null !== $folderIDV2 && $obj->folderIDV2 = $folderIDV2;
+        null !== $folderIdV2 && $obj->folderIdV2 = $folderIdV2;
         null !== $from && $obj->from = $from;
         null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
         null !== $language && $obj['language'] = $language;
@@ -243,7 +243,7 @@ final class EmailUpdateDraftParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitID = $businessUnitID;
+        $obj->businessUnitId = $businessUnitID;
 
         return $obj;
     }
@@ -273,7 +273,7 @@ final class EmailUpdateDraftParams implements BaseModel
     public function withFolderIDV2(int $folderIDV2): self
     {
         $obj = clone $this;
-        $obj->folderIDV2 = $folderIDV2;
+        $obj->folderIdV2 = $folderIDV2;
 
         return $obj;
     }

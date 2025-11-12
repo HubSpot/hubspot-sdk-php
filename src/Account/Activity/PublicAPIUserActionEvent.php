@@ -17,8 +17,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   action: string,
  *   category: string,
  *   occurredAt: \DateTimeInterface,
- *   subCategory?: string,
- *   targetObjectID?: string,
+ *   subCategory?: string|null,
+ *   targetObjectId?: string|null,
  * }
  */
 final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
@@ -64,8 +64,8 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
     /**
      * The ID of the impacted object.
      */
-    #[Api('targetObjectId', optional: true)]
-    public ?string $targetObjectID;
+    #[Api(optional: true)]
+    public ?string $targetObjectId;
 
     /**
      * `new PublicAPIUserActionEvent()` is missing required properties by the API.
@@ -105,7 +105,7 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
         string $category,
         \DateTimeInterface $occurredAt,
         ?string $subCategory = null,
-        ?string $targetObjectID = null,
+        ?string $targetObjectId = null,
     ): self {
         $obj = new self;
 
@@ -116,7 +116,7 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
         $obj->occurredAt = $occurredAt;
 
         null !== $subCategory && $obj->subCategory = $subCategory;
-        null !== $targetObjectID && $obj->targetObjectID = $targetObjectID;
+        null !== $targetObjectId && $obj->targetObjectId = $targetObjectId;
 
         return $obj;
     }
@@ -190,7 +190,7 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
     public function withTargetObjectID(string $targetObjectID): self
     {
         $obj = clone $this;
-        $obj->targetObjectID = $targetObjectID;
+        $obj->targetObjectId = $targetObjectID;
 
         return $obj;
     }

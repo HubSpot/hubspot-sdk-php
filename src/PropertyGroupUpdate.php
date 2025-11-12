@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PropertyGroupUpdateShape = array{
- *   displayOrder?: int, label?: string
+ *   displayOrder?: int|null, label?: string|null
  * }
  */
 final class PropertyGroupUpdate implements BaseModel

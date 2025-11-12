@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type AssociationDefinitionEggShape = array{
- *   fromObjectTypeID: string, toObjectTypeID: string, name?: string
+ *   fromObjectTypeId: string, toObjectTypeId: string, name?: string|null
  * }
  */
 final class AssociationDefinitionEgg implements BaseModel
@@ -18,11 +18,11 @@ final class AssociationDefinitionEgg implements BaseModel
     /** @use SdkModel<AssociationDefinitionEggShape> */
     use SdkModel;
 
-    #[Api('fromObjectTypeId')]
-    public string $fromObjectTypeID;
+    #[Api]
+    public string $fromObjectTypeId;
 
-    #[Api('toObjectTypeId')]
-    public string $toObjectTypeID;
+    #[Api]
+    public string $toObjectTypeId;
 
     #[Api(optional: true)]
     public ?string $name;
@@ -32,7 +32,7 @@ final class AssociationDefinitionEgg implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * AssociationDefinitionEgg::with(fromObjectTypeID: ..., toObjectTypeID: ...)
+     * AssociationDefinitionEgg::with(fromObjectTypeId: ..., toObjectTypeId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,14 +54,14 @@ final class AssociationDefinitionEgg implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $fromObjectTypeID,
-        string $toObjectTypeID,
+        string $fromObjectTypeId,
+        string $toObjectTypeId,
         ?string $name = null
     ): self {
         $obj = new self;
 
-        $obj->fromObjectTypeID = $fromObjectTypeID;
-        $obj->toObjectTypeID = $toObjectTypeID;
+        $obj->fromObjectTypeId = $fromObjectTypeId;
+        $obj->toObjectTypeId = $toObjectTypeId;
 
         null !== $name && $obj->name = $name;
 
@@ -71,7 +71,7 @@ final class AssociationDefinitionEgg implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeID = $fromObjectTypeID;
+        $obj->fromObjectTypeId = $fromObjectTypeID;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class AssociationDefinitionEgg implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->toObjectTypeID = $toObjectTypeID;
+        $obj->toObjectTypeId = $toObjectTypeID;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Crm\Timeline\Templates->delete
  *
- * @phpstan-type TemplateDeleteParamsShape = array{appID: int}
+ * @phpstan-type TemplateDeleteParamsShape = array{appId: int}
  */
 final class TemplateDeleteParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class TemplateDeleteParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /**
      * `new TemplateDeleteParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * TemplateDeleteParams::with(appID: ...)
+     * TemplateDeleteParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class TemplateDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID): self
+    public static function with(int $appId): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class TemplateDeleteParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

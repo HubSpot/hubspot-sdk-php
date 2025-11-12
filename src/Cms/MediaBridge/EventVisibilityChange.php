@@ -13,9 +13,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type EventVisibilityChangeShape = array{
  *   eventType: value-of<EventType>,
  *   updatedAt: int,
- *   showInReporting?: bool,
- *   showInTimeline?: bool,
- *   showInWorkflows?: bool,
+ *   showInReporting?: bool|null,
+ *   showInTimeline?: bool|null,
+ *   showInWorkflows?: bool|null,
  * }
  */
 final class EventVisibilityChange implements BaseModel

@@ -18,13 +18,13 @@ use HubspotSDK\Marketing\Forms\PhoneField\FieldType;
  *   hidden: bool,
  *   label: string,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   required: bool,
  *   useCountryCodeSelect: bool,
  *   validation: PhoneFieldValidation,
- *   defaultValue?: string,
- *   description?: string,
- *   placeholder?: string,
+ *   defaultValue?: string|null,
+ *   description?: string|null,
+ *   placeholder?: string|null,
  * }
  */
 final class PhoneField implements BaseModel
@@ -69,8 +69,8 @@ final class PhoneField implements BaseModel
     /**
      * A unique ID for this field's CRM object type. For example a CONTACT field will have the object type ID 0-1.
      */
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /**
      * Whether a value for this field is required when submitting the form.
@@ -119,7 +119,7 @@ final class PhoneField implements BaseModel
      *   hidden: ...,
      *   label: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   required: ...,
      *   useCountryCodeSelect: ...,
      *   validation: ...,
@@ -159,7 +159,7 @@ final class PhoneField implements BaseModel
         bool $hidden,
         string $label,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         bool $required,
         bool $useCountryCodeSelect,
         PhoneFieldValidation $validation,
@@ -175,7 +175,7 @@ final class PhoneField implements BaseModel
         $obj->hidden = $hidden;
         $obj->label = $label;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->required = $required;
         $obj->useCountryCodeSelect = $useCountryCodeSelect;
         $obj->validation = $validation;
@@ -252,7 +252,7 @@ final class PhoneField implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

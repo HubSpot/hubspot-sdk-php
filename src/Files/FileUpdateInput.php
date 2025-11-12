@@ -13,13 +13,13 @@ use HubspotSDK\Files\FileUpdateInput\Access;
  * Object for updating files.
  *
  * @phpstan-type FileUpdateInputShape = array{
- *   access?: value-of<Access>,
- *   clearExpires?: bool,
- *   expiresAt?: \DateTimeInterface,
- *   isUsableInContent?: bool,
- *   name?: string,
- *   parentFolderID?: string,
- *   parentFolderPath?: string,
+ *   access?: value-of<Access>|null,
+ *   clearExpires?: bool|null,
+ *   expiresAt?: \DateTimeInterface|null,
+ *   isUsableInContent?: bool|null,
+ *   name?: string|null,
+ *   parentFolderId?: string|null,
+ *   parentFolderPath?: string|null,
  * }
  */
 final class FileUpdateInput implements BaseModel
@@ -56,8 +56,8 @@ final class FileUpdateInput implements BaseModel
     /**
      * FolderId where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
      */
-    #[Api('parentFolderId', optional: true)]
-    public ?string $parentFolderID;
+    #[Api(optional: true)]
+    public ?string $parentFolderId;
 
     /**
      * Folder path where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
@@ -83,7 +83,7 @@ final class FileUpdateInput implements BaseModel
         ?\DateTimeInterface $expiresAt = null,
         ?bool $isUsableInContent = null,
         ?string $name = null,
-        ?string $parentFolderID = null,
+        ?string $parentFolderId = null,
         ?string $parentFolderPath = null,
     ): self {
         $obj = new self;
@@ -93,7 +93,7 @@ final class FileUpdateInput implements BaseModel
         null !== $expiresAt && $obj->expiresAt = $expiresAt;
         null !== $isUsableInContent && $obj->isUsableInContent = $isUsableInContent;
         null !== $name && $obj->name = $name;
-        null !== $parentFolderID && $obj->parentFolderID = $parentFolderID;
+        null !== $parentFolderId && $obj->parentFolderId = $parentFolderId;
         null !== $parentFolderPath && $obj->parentFolderPath = $parentFolderPath;
 
         return $obj;
@@ -156,7 +156,7 @@ final class FileUpdateInput implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderID;
 
         return $obj;
     }

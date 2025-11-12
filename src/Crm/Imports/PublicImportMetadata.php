@@ -10,8 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicImportMetadataShape = array{
- *   counters: array<string, int>,
- *   fileIDs: list<string>,
+ *   counters: array<string,int>,
+ *   fileIds: list<string>,
  *   objectLists: list<PublicObjectListRecord>,
  * }
  */
@@ -23,7 +23,7 @@ final class PublicImportMetadata implements BaseModel
     /**
      * Summarized outcomes of each row a developer attempted to import into HubSpot.
      *
-     * @var array<string, int> $counters
+     * @var array<string,int> $counters
      */
     #[Api(map: 'int')]
     public array $counters;
@@ -31,10 +31,10 @@ final class PublicImportMetadata implements BaseModel
     /**
      * The IDs of files uploaded in the File Manager API.
      *
-     * @var list<string> $fileIDs
+     * @var list<string> $fileIds
      */
-    #[Api('fileIds', list: 'string')]
-    public array $fileIDs;
+    #[Api(list: 'string')]
+    public array $fileIds;
 
     /**
      * The lists containing the imported objects.
@@ -49,7 +49,7 @@ final class PublicImportMetadata implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicImportMetadata::with(counters: ..., fileIDs: ..., objectLists: ...)
+     * PublicImportMetadata::with(counters: ..., fileIds: ..., objectLists: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -71,19 +71,19 @@ final class PublicImportMetadata implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, int> $counters
-     * @param list<string> $fileIDs
+     * @param array<string,int> $counters
+     * @param list<string> $fileIds
      * @param list<PublicObjectListRecord> $objectLists
      */
     public static function with(
         array $counters,
-        array $fileIDs,
+        array $fileIds,
         array $objectLists
     ): self {
         $obj = new self;
 
         $obj->counters = $counters;
-        $obj->fileIDs = $fileIDs;
+        $obj->fileIds = $fileIds;
         $obj->objectLists = $objectLists;
 
         return $obj;
@@ -92,7 +92,7 @@ final class PublicImportMetadata implements BaseModel
     /**
      * Summarized outcomes of each row a developer attempted to import into HubSpot.
      *
-     * @param array<string, int> $counters
+     * @param array<string,int> $counters
      */
     public function withCounters(array $counters): self
     {
@@ -110,7 +110,7 @@ final class PublicImportMetadata implements BaseModel
     public function withFileIDs(array $fileIDs): self
     {
         $obj = clone $this;
-        $obj->fileIDs = $fileIDs;
+        $obj->fileIds = $fileIDs;
 
         return $obj;
     }

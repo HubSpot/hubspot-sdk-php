@@ -11,25 +11,25 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type AttentionSpanEventShape = array{
- *   contactID: int,
- *   mediaBridgeID: int,
+ *   contactId: int,
+ *   mediaBridgeId: int,
  *   mediaBridgeObjectCoordinates: string,
- *   mediaBridgeObjectTypeID: string,
+ *   mediaBridgeObjectTypeId: string,
  *   mediaName: string,
  *   mediaType: value-of<MediaType>,
  *   occurredTimestamp: int,
  *   percentRange: string,
- *   portalID: int,
- *   providerID: int,
- *   sessionID: string,
+ *   portalId: int,
+ *   providerId: int,
+ *   sessionId: string,
  *   totalPercentPlayed: float,
- *   mediaURL?: string,
- *   pageID?: int,
- *   pageName?: string,
- *   pageObjectCoordinates?: string,
- *   pageURL?: string,
- *   rawData?: string,
- *   totalSecondsPlayed?: int,
+ *   mediaUrl?: string|null,
+ *   pageId?: int|null,
+ *   pageName?: string|null,
+ *   pageObjectCoordinates?: string|null,
+ *   pageUrl?: string|null,
+ *   rawData?: string|null,
+ *   totalSecondsPlayed?: int|null,
  * }
  */
 final class AttentionSpanEvent implements BaseModel
@@ -40,17 +40,17 @@ final class AttentionSpanEvent implements BaseModel
     /**
      * The ID of the contact in HubSpot’s system that consumed the media. This can be fetched using HubSpot's Get contact by usertoken (utk) API. The API also supports supplying a usertoken, and will handle converting this into a contact ID automatically.
      */
-    #[Api('contactId')]
-    public int $contactID;
+    #[Api]
+    public int $contactId;
 
-    #[Api('mediaBridgeId')]
-    public int $mediaBridgeID;
+    #[Api]
+    public int $mediaBridgeId;
 
     #[Api]
     public string $mediaBridgeObjectCoordinates;
 
-    #[Api('mediaBridgeObjectTypeId')]
-    public string $mediaBridgeObjectTypeID;
+    #[Api]
+    public string $mediaBridgeObjectTypeId;
 
     #[Api]
     public string $mediaName;
@@ -71,14 +71,14 @@ final class AttentionSpanEvent implements BaseModel
     /**
      * The ID of the HubSpot account.
      */
-    #[Api('portalId')]
-    public int $portalID;
+    #[Api]
+    public int $portalId;
 
-    #[Api('providerId')]
-    public int $providerID;
+    #[Api]
+    public int $providerId;
 
-    #[Api('sessionId')]
-    public string $sessionID;
+    #[Api]
+    public string $sessionId;
 
     /**
      * The percent of the media that the user consumed. Providers may calculate this differently depending on how they consider repeated views of the same portion of media. For this reason, the API will not attempt to validate totalPercentWatched against the attention span information for the event. If it is missing, HubSpot will calculate this from the attention span map as follows: (number of spans with a value of 1 or more)/(Total number of spans).
@@ -86,14 +86,14 @@ final class AttentionSpanEvent implements BaseModel
     #[Api]
     public float $totalPercentPlayed;
 
-    #[Api('mediaUrl', optional: true)]
-    public ?string $mediaURL;
+    #[Api(optional: true)]
+    public ?string $mediaUrl;
 
     /**
      * The ID of the page, if hosted on HubSpot. Required for HubSpot pages.
      */
-    #[Api('pageId', optional: true)]
-    public ?int $pageID;
+    #[Api(optional: true)]
+    public ?int $pageId;
 
     /**
      * The name of the page. Required if the page is not hosted on HubSpot.
@@ -107,8 +107,8 @@ final class AttentionSpanEvent implements BaseModel
     /**
      * The URL of the page that an event happened on. Required if the page is not hosted on HubSpot.
      */
-    #[Api('pageUrl', optional: true)]
-    public ?string $pageURL;
+    #[Api(optional: true)]
+    public ?string $pageUrl;
 
     /**
      * This is the raw data which provides the most granular data about spans of the media, and how many times each span was consumed by the user. For example, for a 10 second video where each second is a span, if a visitor watches the first 5 seconds of the video, then restarts the video and watches the first 2 seconds again, the resulting `rawDataString` would be `“0=2;1=2;2=1;3=1;4=1;5=0;6=0;7=0;8=0;9=0;”`.
@@ -128,17 +128,17 @@ final class AttentionSpanEvent implements BaseModel
      * To enforce required parameters use
      * ```
      * AttentionSpanEvent::with(
-     *   contactID: ...,
-     *   mediaBridgeID: ...,
+     *   contactId: ...,
+     *   mediaBridgeId: ...,
      *   mediaBridgeObjectCoordinates: ...,
-     *   mediaBridgeObjectTypeID: ...,
+     *   mediaBridgeObjectTypeId: ...,
      *   mediaName: ...,
      *   mediaType: ...,
      *   occurredTimestamp: ...,
      *   percentRange: ...,
-     *   portalID: ...,
-     *   providerID: ...,
-     *   sessionID: ...,
+     *   portalId: ...,
+     *   providerId: ...,
+     *   sessionId: ...,
      *   totalPercentPlayed: ...,
      * )
      * ```
@@ -174,46 +174,46 @@ final class AttentionSpanEvent implements BaseModel
      * @param MediaType|value-of<MediaType> $mediaType
      */
     public static function with(
-        int $contactID,
-        int $mediaBridgeID,
+        int $contactId,
+        int $mediaBridgeId,
         string $mediaBridgeObjectCoordinates,
-        string $mediaBridgeObjectTypeID,
+        string $mediaBridgeObjectTypeId,
         string $mediaName,
         MediaType|string $mediaType,
         int $occurredTimestamp,
         string $percentRange,
-        int $portalID,
-        int $providerID,
-        string $sessionID,
+        int $portalId,
+        int $providerId,
+        string $sessionId,
         float $totalPercentPlayed,
-        ?string $mediaURL = null,
-        ?int $pageID = null,
+        ?string $mediaUrl = null,
+        ?int $pageId = null,
         ?string $pageName = null,
         ?string $pageObjectCoordinates = null,
-        ?string $pageURL = null,
+        ?string $pageUrl = null,
         ?string $rawData = null,
         ?int $totalSecondsPlayed = null,
     ): self {
         $obj = new self;
 
-        $obj->contactID = $contactID;
-        $obj->mediaBridgeID = $mediaBridgeID;
+        $obj->contactId = $contactId;
+        $obj->mediaBridgeId = $mediaBridgeId;
         $obj->mediaBridgeObjectCoordinates = $mediaBridgeObjectCoordinates;
-        $obj->mediaBridgeObjectTypeID = $mediaBridgeObjectTypeID;
+        $obj->mediaBridgeObjectTypeId = $mediaBridgeObjectTypeId;
         $obj->mediaName = $mediaName;
         $obj['mediaType'] = $mediaType;
         $obj->occurredTimestamp = $occurredTimestamp;
         $obj->percentRange = $percentRange;
-        $obj->portalID = $portalID;
-        $obj->providerID = $providerID;
-        $obj->sessionID = $sessionID;
+        $obj->portalId = $portalId;
+        $obj->providerId = $providerId;
+        $obj->sessionId = $sessionId;
         $obj->totalPercentPlayed = $totalPercentPlayed;
 
-        null !== $mediaURL && $obj->mediaURL = $mediaURL;
-        null !== $pageID && $obj->pageID = $pageID;
+        null !== $mediaUrl && $obj->mediaUrl = $mediaUrl;
+        null !== $pageId && $obj->pageId = $pageId;
         null !== $pageName && $obj->pageName = $pageName;
         null !== $pageObjectCoordinates && $obj->pageObjectCoordinates = $pageObjectCoordinates;
-        null !== $pageURL && $obj->pageURL = $pageURL;
+        null !== $pageUrl && $obj->pageUrl = $pageUrl;
         null !== $rawData && $obj->rawData = $rawData;
         null !== $totalSecondsPlayed && $obj->totalSecondsPlayed = $totalSecondsPlayed;
 
@@ -226,7 +226,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withContactID(int $contactID): self
     {
         $obj = clone $this;
-        $obj->contactID = $contactID;
+        $obj->contactId = $contactID;
 
         return $obj;
     }
@@ -234,7 +234,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withMediaBridgeID(int $mediaBridgeID): self
     {
         $obj = clone $this;
-        $obj->mediaBridgeID = $mediaBridgeID;
+        $obj->mediaBridgeId = $mediaBridgeID;
 
         return $obj;
     }
@@ -252,7 +252,7 @@ final class AttentionSpanEvent implements BaseModel
         string $mediaBridgeObjectTypeID
     ): self {
         $obj = clone $this;
-        $obj->mediaBridgeObjectTypeID = $mediaBridgeObjectTypeID;
+        $obj->mediaBridgeObjectTypeId = $mediaBridgeObjectTypeID;
 
         return $obj;
     }
@@ -301,7 +301,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }
@@ -309,7 +309,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withProviderID(int $providerID): self
     {
         $obj = clone $this;
-        $obj->providerID = $providerID;
+        $obj->providerId = $providerID;
 
         return $obj;
     }
@@ -317,7 +317,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withSessionID(string $sessionID): self
     {
         $obj = clone $this;
-        $obj->sessionID = $sessionID;
+        $obj->sessionId = $sessionID;
 
         return $obj;
     }
@@ -336,7 +336,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withMediaURL(string $mediaURL): self
     {
         $obj = clone $this;
-        $obj->mediaURL = $mediaURL;
+        $obj->mediaUrl = $mediaURL;
 
         return $obj;
     }
@@ -347,7 +347,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withPageID(int $pageID): self
     {
         $obj = clone $this;
-        $obj->pageID = $pageID;
+        $obj->pageId = $pageID;
 
         return $obj;
     }
@@ -378,7 +378,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withPageURL(string $pageURL): self
     {
         $obj = clone $this;
-        $obj->pageURL = $pageURL;
+        $obj->pageUrl = $pageURL;
 
         return $obj;
     }

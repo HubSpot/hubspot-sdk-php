@@ -10,7 +10,9 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type ContactEmailShape = array{email: string, type?: value-of<Type>}
+ * @phpstan-type ContactEmailShape = array{
+ *   email: string, type?: value-of<Type>|null
+ * }
  */
 final class ContactEmail implements BaseModel
 {

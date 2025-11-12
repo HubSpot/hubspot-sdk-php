@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type StageUpdateParamsShape = array{
  *   objectType: string,
- *   pipelineID: string,
+ *   pipelineId: string,
  *   archived?: bool,
  *   displayOrder?: int,
  *   label?: string,
- *   metadata?: array<string, string>,
+ *   metadata?: array<string,string>,
  * }
  */
 final class StageUpdateParams implements BaseModel
@@ -31,7 +31,7 @@ final class StageUpdateParams implements BaseModel
     public string $objectType;
 
     #[Api]
-    public string $pipelineID;
+    public string $pipelineId;
 
     /**
      * Whether the pipeline is archived.
@@ -58,7 +58,7 @@ final class StageUpdateParams implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @var array<string, string>|null $metadata
+     * @var array<string,string>|null $metadata
      */
     #[Api(map: 'string', optional: true)]
     public ?array $metadata;
@@ -68,7 +68,7 @@ final class StageUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * StageUpdateParams::with(objectType: ..., pipelineID: ...)
+     * StageUpdateParams::with(objectType: ..., pipelineId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -87,11 +87,11 @@ final class StageUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $metadata
+     * @param array<string,string> $metadata
      */
     public static function with(
         string $objectType,
-        string $pipelineID,
+        string $pipelineId,
         ?bool $archived = null,
         ?int $displayOrder = null,
         ?string $label = null,
@@ -100,7 +100,7 @@ final class StageUpdateParams implements BaseModel
         $obj = new self;
 
         $obj->objectType = $objectType;
-        $obj->pipelineID = $pipelineID;
+        $obj->pipelineId = $pipelineId;
 
         null !== $archived && $obj->archived = $archived;
         null !== $displayOrder && $obj->displayOrder = $displayOrder;
@@ -121,7 +121,7 @@ final class StageUpdateParams implements BaseModel
     public function withPipelineID(string $pipelineID): self
     {
         $obj = clone $this;
-        $obj->pipelineID = $pipelineID;
+        $obj->pipelineId = $pipelineID;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class StageUpdateParams implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @param array<string, string> $metadata
+     * @param array<string,string> $metadata
      */
     public function withMetadata(array $metadata): self
     {

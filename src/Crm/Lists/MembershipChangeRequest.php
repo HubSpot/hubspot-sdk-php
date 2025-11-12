@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * The IDs of the records to add and/or remove from a list.
  *
  * @phpstan-type MembershipChangeRequestShape = array{
- *   recordIDsToAdd: list<string>, recordIDsToRemove: list<string>
+ *   recordIdsToAdd: list<string>, recordIdsToRemove: list<string>
  * }
  */
 final class MembershipChangeRequest implements BaseModel
@@ -20,20 +20,20 @@ final class MembershipChangeRequest implements BaseModel
     /** @use SdkModel<MembershipChangeRequestShape> */
     use SdkModel;
 
-    /** @var list<string> $recordIDsToAdd */
-    #[Api('recordIdsToAdd', list: 'string')]
-    public array $recordIDsToAdd;
+    /** @var list<string> $recordIdsToAdd */
+    #[Api(list: 'string')]
+    public array $recordIdsToAdd;
 
-    /** @var list<string> $recordIDsToRemove */
-    #[Api('recordIdsToRemove', list: 'string')]
-    public array $recordIDsToRemove;
+    /** @var list<string> $recordIdsToRemove */
+    #[Api(list: 'string')]
+    public array $recordIdsToRemove;
 
     /**
      * `new MembershipChangeRequest()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MembershipChangeRequest::with(recordIDsToAdd: ..., recordIDsToRemove: ...)
+     * MembershipChangeRequest::with(recordIdsToAdd: ..., recordIdsToRemove: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,17 +54,17 @@ final class MembershipChangeRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $recordIDsToAdd
-     * @param list<string> $recordIDsToRemove
+     * @param list<string> $recordIdsToAdd
+     * @param list<string> $recordIdsToRemove
      */
     public static function with(
-        array $recordIDsToAdd,
-        array $recordIDsToRemove
+        array $recordIdsToAdd,
+        array $recordIdsToRemove
     ): self {
         $obj = new self;
 
-        $obj->recordIDsToAdd = $recordIDsToAdd;
-        $obj->recordIDsToRemove = $recordIDsToRemove;
+        $obj->recordIdsToAdd = $recordIdsToAdd;
+        $obj->recordIdsToRemove = $recordIdsToRemove;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class MembershipChangeRequest implements BaseModel
     public function withRecordIDsToAdd(array $recordIDsToAdd): self
     {
         $obj = clone $this;
-        $obj->recordIDsToAdd = $recordIDsToAdd;
+        $obj->recordIdsToAdd = $recordIDsToAdd;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class MembershipChangeRequest implements BaseModel
     public function withRecordIDsToRemove(array $recordIDsToRemove): self
     {
         $obj = clone $this;
-        $obj->recordIDsToRemove = $recordIDsToRemove;
+        $obj->recordIdsToRemove = $recordIDsToRemove;
 
         return $obj;
     }

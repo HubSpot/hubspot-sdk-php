@@ -15,8 +15,8 @@ use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicWideStatusBulkRespo
  *   results: list<PublicWideStatusBulkResponse>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   links?: array<string, string>,
- *   requestedAt?: \DateTimeInterface,
+ *   links?: array<string,string>|null,
+ *   requestedAt?: \DateTimeInterface|null,
  * }
  */
 final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
@@ -55,7 +55,7 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
     /**
      * A collection of related links associated with the batch response.
      *
-     * @var array<string, string>|null $links
+     * @var array<string,string>|null $links
      */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
@@ -98,7 +98,7 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
      *
      * @param list<PublicWideStatusBulkResponse> $results
      * @param Status|value-of<Status> $status
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -172,7 +172,7 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
     /**
      * A collection of related links associated with the batch response.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

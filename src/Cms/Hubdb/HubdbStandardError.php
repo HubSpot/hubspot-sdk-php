@@ -15,13 +15,13 @@ use HubspotSDK\ErrorDetail;
  *
  * @phpstan-type HubdbStandardErrorShape = array{
  *   category: string,
- *   context: array<string, list<string>>,
+ *   context: array<string,list<string>>,
  *   errors: list<ErrorDetail>,
- *   links: array<string, string>,
+ *   links: array<string,string>,
  *   message: string,
  *   status: string,
  *   subCategory: mixed,
- *   id?: string,
+ *   id?: string|null,
  * }
  */
 final class HubdbStandardError implements BaseModel
@@ -38,7 +38,7 @@ final class HubdbStandardError implements BaseModel
     /**
      * An object containing context-specific information pertinent to the error.
      *
-     * @var array<string, list<string>> $context
+     * @var array<string,list<string>> $context
      */
     #[Api(map: new ListOf('string'))]
     public array $context;
@@ -54,7 +54,7 @@ final class HubdbStandardError implements BaseModel
     /**
      * An object containing links related to the error, such as documentation URLs or support contact pages.
      *
-     * @var array<string, string> $links
+     * @var array<string,string> $links
      */
     #[Api(map: 'string')]
     public array $links;
@@ -122,9 +122,9 @@ final class HubdbStandardError implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, list<string>> $context
+     * @param array<string,list<string>> $context
      * @param list<ErrorDetail> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         string $category,
@@ -165,7 +165,7 @@ final class HubdbStandardError implements BaseModel
     /**
      * An object containing context-specific information pertinent to the error.
      *
-     * @param array<string, list<string>> $context
+     * @param array<string,list<string>> $context
      */
     public function withContext(array $context): self
     {
@@ -191,7 +191,7 @@ final class HubdbStandardError implements BaseModel
     /**
      * An object containing links related to the error, such as documentation URLs or support contact pages.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

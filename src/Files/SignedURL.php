@@ -18,8 +18,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   size: int,
  *   type: string,
  *   url: string,
- *   height?: int,
- *   width?: int,
+ *   height?: int|null,
+ *   width?: int|null,
  * }
  */
 final class SignedURL implements BaseModel

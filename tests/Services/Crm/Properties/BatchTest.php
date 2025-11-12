@@ -3,9 +3,6 @@
 namespace Tests\Services\Crm\Properties;
 
 use HubspotSDK\Client;
-use HubspotSDK\OptionInput;
-use HubspotSDK\PropertyCreate;
-use HubspotSDK\PropertyName;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -42,13 +39,15 @@ final class BatchTest extends TestCase
         $result = $this->client->crm->properties->batch->create(
             'objectType',
             [
-                PropertyCreate::with(
-                    fieldType: 'booleancheckbox',
-                    groupName: 'groupName',
-                    label: 'label',
-                    name: 'name',
-                    type: 'bool',
-                ),
+                'inputs' => [
+                    [
+                        'fieldType' => 'booleancheckbox',
+                        'groupName' => 'groupName',
+                        'label' => 'label',
+                        'name' => 'name',
+                        'type' => 'bool',
+                    ],
+                ],
             ],
         );
 
@@ -65,33 +64,33 @@ final class BatchTest extends TestCase
         $result = $this->client->crm->properties->batch->create(
             'objectType',
             [
-                PropertyCreate::with(
-                    fieldType: 'booleancheckbox',
-                    groupName: 'groupName',
-                    label: 'label',
-                    name: 'name',
-                    type: 'bool',
-                )
-                    ->withCalculationFormula('calculationFormula')
-                    ->withDataSensitivity('non_sensitive')
-                    ->withDescription('description')
-                    ->withDisplayOrder(0)
-                    ->withExternalOptions(true)
-                    ->withFormField(true)
-                    ->withHasUniqueValue(true)
-                    ->withHidden(true)
-                    ->withOptions(
-                        [
-                            OptionInput::with(
-                                displayOrder: 0,
-                                hidden: true,
-                                label: 'label',
-                                value: 'value'
-                            )
-                                ->withDescription('description'),
+                'inputs' => [
+                    [
+                        'fieldType' => 'booleancheckbox',
+                        'groupName' => 'groupName',
+                        'label' => 'label',
+                        'name' => 'name',
+                        'type' => 'bool',
+                        'calculationFormula' => 'calculationFormula',
+                        'dataSensitivity' => 'non_sensitive',
+                        'description' => 'description',
+                        'displayOrder' => 0,
+                        'externalOptions' => true,
+                        'formField' => true,
+                        'hasUniqueValue' => true,
+                        'hidden' => true,
+                        'options' => [
+                            [
+                                'displayOrder' => 0,
+                                'hidden' => true,
+                                'label' => 'label',
+                                'value' => 'value',
+                                'description' => 'description',
+                            ],
                         ],
-                    )
-                    ->withReferencedObjectType('referencedObjectType'),
+                        'referencedObjectType' => 'referencedObjectType',
+                    ],
+                ],
             ],
         );
 
@@ -107,7 +106,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->delete(
             'objectType',
-            [PropertyName::with(name: 'name')]
+            ['inputs' => [['name' => 'name']]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -122,7 +121,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->delete(
             'objectType',
-            [PropertyName::with(name: 'name')]
+            ['inputs' => [['name' => 'name']]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -137,8 +136,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->get(
             'objectType',
-            archived: true,
-            inputs: [PropertyName::with(name: 'name')]
+            ['archived' => true, 'inputs' => [['name' => 'name']]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -153,8 +151,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->get(
             'objectType',
-            archived: true,
-            inputs: [PropertyName::with(name: 'name')]
+            ['archived' => true, 'inputs' => [['name' => 'name']]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

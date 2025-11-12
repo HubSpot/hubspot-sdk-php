@@ -18,8 +18,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   display: CardDisplayBody,
  *   fetch: PublicCardFetchBody,
  *   title: string,
- *   createdAt?: \DateTimeInterface,
- *   updatedAt?: \DateTimeInterface,
+ *   createdAt?: \DateTimeInterface|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class PublicCardResponse implements BaseModel, ResponseConverter

@@ -12,12 +12,12 @@ use HubspotSDK\Services\Marketing\Transactional\SmtpTokensService;
 final class TransactionalService implements TransactionalContract
 {
     /**
-     * @@api
+     * @api
      */
     public SingleEmailService $singleEmail;
 
     /**
-     * @@api
+     * @api
      */
     public SmtpTokensService $smtpTokens;
 

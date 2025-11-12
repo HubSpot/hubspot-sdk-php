@@ -36,7 +36,7 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->files->update('321669910225');
+        $result = $this->client->files->files->update('321669910225', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -72,7 +72,7 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->files->get('321669910225');
+        $result = $this->client->files->files->get('321669910225', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -84,7 +84,7 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->files->getByPath('path');
+        $result = $this->client->files->files->getByPath('path', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -108,7 +108,7 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->files->getSignedURL('321669910225');
+        $result = $this->client->files->files->getSignedURL('321669910225', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -120,10 +120,9 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->files->importFromURLAsync(
-            access: 'PUBLIC_INDEXABLE',
-            url: 'url'
-        );
+        $result = $this->client->files->files->importFromURLAsync([
+            'access' => 'PUBLIC_INDEXABLE', 'url' => 'url',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -135,10 +134,9 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->files->importFromURLAsync(
-            access: 'PUBLIC_INDEXABLE',
-            url: 'url'
-        );
+        $result = $this->client->files->files->importFromURLAsync([
+            'access' => 'PUBLIC_INDEXABLE', 'url' => 'url',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -150,7 +148,7 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->files->replace('321669910225');
+        $result = $this->client->files->files->replace('321669910225', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -162,7 +160,7 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->files->search();
+        $result = $this->client->files->files->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -174,7 +172,7 @@ final class FilesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->files->upload();
+        $result = $this->client->files->files->upload([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

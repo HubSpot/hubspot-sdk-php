@@ -16,11 +16,11 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  * @phpstan-type PublicAuditLogShape = array{
  *   event: value-of<Event>,
  *   fullName: string,
- *   objectID: string,
+ *   objectId: string,
  *   objectName: string,
  *   objectType: value-of<ObjectType>,
  *   timestamp: \DateTimeInterface,
- *   userID: string,
+ *   userId: string,
  *   meta?: mixed,
  * }
  */
@@ -48,8 +48,8 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     /**
      * The ID of the object.
      */
-    #[Api('objectId')]
-    public string $objectID;
+    #[Api]
+    public string $objectId;
 
     /**
      * The internal name of the object in HubSpot.
@@ -74,8 +74,8 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     /**
      * The ID of the user who caused the event.
      */
-    #[Api('userId')]
-    public string $userID;
+    #[Api]
+    public string $userId;
 
     #[Api(optional: true)]
     public mixed $meta;
@@ -88,11 +88,11 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
      * PublicAuditLog::with(
      *   event: ...,
      *   fullName: ...,
-     *   objectID: ...,
+     *   objectId: ...,
      *   objectName: ...,
      *   objectType: ...,
      *   timestamp: ...,
-     *   userID: ...,
+     *   userId: ...,
      * )
      * ```
      *
@@ -125,22 +125,22 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     public static function with(
         Event|string $event,
         string $fullName,
-        string $objectID,
+        string $objectId,
         string $objectName,
         ObjectType|string $objectType,
         \DateTimeInterface $timestamp,
-        string $userID,
+        string $userId,
         mixed $meta = null,
     ): self {
         $obj = new self;
 
         $obj['event'] = $event;
         $obj->fullName = $fullName;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
         $obj->objectName = $objectName;
         $obj['objectType'] = $objectType;
         $obj->timestamp = $timestamp;
-        $obj->userID = $userID;
+        $obj->userId = $userId;
 
         null !== $meta && $obj->meta = $meta;
 
@@ -177,7 +177,7 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }
@@ -223,7 +223,7 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Associations\V4;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\V4\Batch\BatchCreateDefaultParams;
@@ -14,11 +15,8 @@ use HubspotSDK\Crm\Associations\V4\Batch\BatchGetParams;
 use HubspotSDK\Crm\Associations\V4\BatchResponseLabelsBetweenObjectPair;
 use HubspotSDK\Crm\Associations\V4\BatchResponsePublicAssociationMultiWithLabel;
 use HubspotSDK\Crm\Associations\V4\BatchResponseVoid;
-use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiArchive;
-use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost;
-use HubspotSDK\Crm\Associations\V4\PublicDefaultAssociationMultiPost;
-use HubspotSDK\Crm\Associations\V4\PublicFetchAssociationsBatchRequest;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
+use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\V4\BatchContract;
 
@@ -34,37 +32,25 @@ final class BatchService implements BatchContract
      *
      * Batch create associations for objects
      *
-     * @param string $fromObjectType
-     * @param list<PublicAssociationMultiPost> $inputs
+     * @param array{
+     *   fromObjectType: string,
+     *   inputs: list<array{
+     *     from: array<mixed>|PublicObjectID,
+     *     to: array<mixed>|PublicObjectID,
+     *     types: list<array<mixed>|AssociationSpec>,
+     *   }>,
+     * }|BatchCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $toObjectType,
-        $fromObjectType,
-        $inputs,
+        array|BatchCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BatchResponseLabelsBetweenObjectPair {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
-
-        return $this->createRaw($toObjectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BatchResponseLabelsBetweenObjectPair {
         [$parsed, $options] = BatchCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
@@ -88,37 +74,23 @@ final class BatchService implements BatchContract
      *
      * Batch delete associations for objects
      *
-     * @param string $fromObjectType
-     * @param list<PublicAssociationMultiArchive> $inputs
+     * @param array{
+     *   fromObjectType: string,
+     *   inputs: list<array{
+     *     from: array<mixed>|PublicObjectID, to: list<array<mixed>|PublicObjectID>
+     *   }>,
+     * }|BatchDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $toObjectType,
-        $fromObjectType,
-        $inputs,
+        array|BatchDeleteParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BatchResponseVoid {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
-
-        return $this->deleteRaw($toObjectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BatchResponseVoid {
         [$parsed, $options] = BatchDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
@@ -142,37 +114,23 @@ final class BatchService implements BatchContract
      *
      * Create the default (most generic) association type between two object types
      *
-     * @param string $fromObjectType
-     * @param list<PublicDefaultAssociationMultiPost> $inputs
+     * @param array{
+     *   fromObjectType: string,
+     *   inputs: list<array{
+     *     from: array<mixed>|PublicObjectID, to: array<mixed>|PublicObjectID
+     *   }>,
+     * }|BatchCreateDefaultParams $params
      *
      * @throws APIException
      */
     public function createDefault(
         string $toObjectType,
-        $fromObjectType,
-        $inputs,
+        array|BatchCreateDefaultParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BatchResponsePublicDefaultAssociation {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
-
-        return $this->createDefaultRaw($toObjectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createDefaultRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BatchResponsePublicDefaultAssociation {
         [$parsed, $options] = BatchCreateDefaultParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
@@ -196,37 +154,25 @@ final class BatchService implements BatchContract
      *
      * Batch delete specific association labels for objects. Deleting an unlabeled association will also delete all labeled associations between those two objects
      *
-     * @param string $fromObjectType
-     * @param list<PublicAssociationMultiPost> $inputs
+     * @param array{
+     *   fromObjectType: string,
+     *   inputs: list<array{
+     *     from: array<mixed>|PublicObjectID,
+     *     to: array<mixed>|PublicObjectID,
+     *     types: list<array<mixed>|AssociationSpec>,
+     *   }>,
+     * }|BatchDeleteLabelsParams $params
      *
      * @throws APIException
      */
     public function deleteLabels(
         string $toObjectType,
-        $fromObjectType,
-        $inputs,
+        array|BatchDeleteLabelsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BatchResponseVoid {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
-
-        return $this->deleteLabelsRaw($toObjectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteLabelsRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BatchResponseVoid {
         [$parsed, $options] = BatchDeleteLabelsParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
@@ -250,37 +196,20 @@ final class BatchService implements BatchContract
      *
      * Batch read associations for objects to specific object type. The 'after' field in a returned paging object  can be added alongside the 'id' to retrieve the next page of associations from that objectId. The 'link' field is deprecated and should be ignored. Note: The 'paging' field will only be present if there are more pages and absent otherwise.
      *
-     * @param string $fromObjectType
-     * @param list<PublicFetchAssociationsBatchRequest> $inputs
+     * @param array{
+     *   fromObjectType: string, inputs: list<array{id: string, after?: string}>
+     * }|BatchGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $toObjectType,
-        $fromObjectType,
-        $inputs,
+        array|BatchGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BatchResponsePublicAssociationMultiWithLabel {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
-
-        return $this->getRaw($toObjectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BatchResponsePublicAssociationMultiWithLabel {
         [$parsed, $options] = BatchGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);

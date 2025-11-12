@@ -19,10 +19,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   before?: string,
  *   eventType?: list<string>,
  *   limit?: int,
- *   objectID?: list<string>,
+ *   objectId?: list<string>,
  *   objectType?: list<string>,
  *   sort?: list<string>,
- *   userID?: list<string>,
+ *   userId?: list<string>,
  * }
  */
 final class AuditLogListParams implements BaseModel
@@ -60,10 +60,10 @@ final class AuditLogListParams implements BaseModel
     /**
      * Comma separated list of object ids to filter by.
      *
-     * @var list<string>|null $objectID
+     * @var list<string>|null $objectId
      */
     #[Api(list: 'string', optional: true)]
-    public ?array $objectID;
+    public ?array $objectId;
 
     /**
      * Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.).
@@ -84,10 +84,10 @@ final class AuditLogListParams implements BaseModel
     /**
      * Comma separated list of user ids to filter by.
      *
-     * @var list<string>|null $userID
+     * @var list<string>|null $userId
      */
     #[Api(list: 'string', optional: true)]
-    public ?array $userID;
+    public ?array $userId;
 
     public function __construct()
     {
@@ -100,20 +100,20 @@ final class AuditLogListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $eventType
-     * @param list<string> $objectID
+     * @param list<string> $objectId
      * @param list<string> $objectType
      * @param list<string> $sort
-     * @param list<string> $userID
+     * @param list<string> $userId
      */
     public static function with(
         ?string $after = null,
         ?string $before = null,
         ?array $eventType = null,
         ?int $limit = null,
-        ?array $objectID = null,
+        ?array $objectId = null,
         ?array $objectType = null,
         ?array $sort = null,
-        ?array $userID = null,
+        ?array $userId = null,
     ): self {
         $obj = new self;
 
@@ -121,10 +121,10 @@ final class AuditLogListParams implements BaseModel
         null !== $before && $obj->before = $before;
         null !== $eventType && $obj->eventType = $eventType;
         null !== $limit && $obj->limit = $limit;
-        null !== $objectID && $obj->objectID = $objectID;
+        null !== $objectId && $obj->objectId = $objectId;
         null !== $objectType && $obj->objectType = $objectType;
         null !== $sort && $obj->sort = $sort;
-        null !== $userID && $obj->userID = $userID;
+        null !== $userId && $obj->userId = $userId;
 
         return $obj;
     }
@@ -183,7 +183,7 @@ final class AuditLogListParams implements BaseModel
     public function withObjectID(array $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }
@@ -222,7 +222,7 @@ final class AuditLogListParams implements BaseModel
     public function withUserID(array $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }

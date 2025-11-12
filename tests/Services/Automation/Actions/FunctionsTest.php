@@ -38,7 +38,7 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->list(
             'definitionId',
-            0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +53,7 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->list(
             'definitionId',
-            0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -68,9 +68,11 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->delete(
             'functionId',
-            appID: 0,
-            definitionID: 'definitionId',
-            functionType: 'PRE_ACTION_EXECUTION',
+            [
+                'appId' => 0,
+                'definitionId' => 'definitionId',
+                'functionType' => 'PRE_ACTION_EXECUTION',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -85,9 +87,11 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->delete(
             'functionId',
-            appID: 0,
-            definitionID: 'definitionId',
-            functionType: 'PRE_ACTION_EXECUTION',
+            [
+                'appId' => 0,
+                'definitionId' => 'definitionId',
+                'functionType' => 'PRE_ACTION_EXECUTION',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -102,10 +106,12 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->createOrReplace(
             'functionId',
-            appID: 0,
-            definitionID: 'definitionId',
-            functionType: 'PRE_ACTION_EXECUTION',
-            body: 'body',
+            [
+                'appId' => 0,
+                'definitionId' => 'definitionId',
+                'functionType' => 'PRE_ACTION_EXECUTION',
+                'body' => 'body',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -120,10 +126,12 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->createOrReplace(
             'functionId',
-            appID: 0,
-            definitionID: 'definitionId',
-            functionType: 'PRE_ACTION_EXECUTION',
-            body: 'body',
+            [
+                'appId' => 0,
+                'definitionId' => 'definitionId',
+                'functionType' => 'PRE_ACTION_EXECUTION',
+                'body' => 'body',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -143,9 +151,7 @@ final class FunctionsTest extends TestCase
             ->functions
             ->createOrReplaceByFunctionType(
                 'PRE_ACTION_EXECUTION',
-                appID: 0,
-                definitionID: 'definitionId',
-                body: 'body',
+                ['appId' => 0, 'definitionId' => 'definitionId', 'body' => 'body'],
             )
         ;
 
@@ -166,9 +172,7 @@ final class FunctionsTest extends TestCase
             ->functions
             ->createOrReplaceByFunctionType(
                 'PRE_ACTION_EXECUTION',
-                appID: 0,
-                definitionID: 'definitionId',
-                body: 'body',
+                ['appId' => 0, 'definitionId' => 'definitionId', 'body' => 'body'],
             )
         ;
 
@@ -189,8 +193,7 @@ final class FunctionsTest extends TestCase
             ->functions
             ->deleteByFunctionType(
                 'PRE_ACTION_EXECUTION',
-                appID: 0,
-                definitionID: 'definitionId'
+                ['appId' => 0, 'definitionId' => 'definitionId']
             )
         ;
 
@@ -211,8 +214,7 @@ final class FunctionsTest extends TestCase
             ->functions
             ->deleteByFunctionType(
                 'PRE_ACTION_EXECUTION',
-                appID: 0,
-                definitionID: 'definitionId'
+                ['appId' => 0, 'definitionId' => 'definitionId']
             )
         ;
 
@@ -228,9 +230,11 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->get(
             'functionId',
-            appID: 0,
-            definitionID: 'definitionId',
-            functionType: 'PRE_ACTION_EXECUTION',
+            [
+                'appId' => 0,
+                'definitionId' => 'definitionId',
+                'functionType' => 'PRE_ACTION_EXECUTION',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -245,9 +249,11 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->get(
             'functionId',
-            appID: 0,
-            definitionID: 'definitionId',
-            functionType: 'PRE_ACTION_EXECUTION',
+            [
+                'appId' => 0,
+                'definitionId' => 'definitionId',
+                'functionType' => 'PRE_ACTION_EXECUTION',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -262,8 +268,7 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->getByFunctionType(
             'PRE_ACTION_EXECUTION',
-            appID: 0,
-            definitionID: 'definitionId'
+            ['appId' => 0, 'definitionId' => 'definitionId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -278,8 +283,7 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->getByFunctionType(
             'PRE_ACTION_EXECUTION',
-            appID: 0,
-            definitionID: 'definitionId'
+            ['appId' => 0, 'definitionId' => 'definitionId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

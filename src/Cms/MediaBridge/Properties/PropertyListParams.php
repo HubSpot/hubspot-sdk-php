@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Cms\MediaBridge\Properties->list
  *
- * @phpstan-type PropertyListParamsShape = array{appID: string}
+ * @phpstan-type PropertyListParamsShape = array{appId: string}
  */
 final class PropertyListParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class PropertyListParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appID;
+    public string $appId;
 
     /**
      * `new PropertyListParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PropertyListParams::with(appID: ...)
+     * PropertyListParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class PropertyListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $appID): self
+    public static function with(string $appId): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class PropertyListParams implements BaseModel
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

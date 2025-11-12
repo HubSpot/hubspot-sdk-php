@@ -18,7 +18,7 @@ use HubspotSDK\Events\EventDefinitions\NumberPropertyOperation\PropertyType;
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
  *   value: float,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class NumberPropertyOperation implements BaseModel

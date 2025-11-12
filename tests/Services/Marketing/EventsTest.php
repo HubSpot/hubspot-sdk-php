@@ -3,13 +3,6 @@
 namespace Tests\Services\Marketing;
 
 use HubspotSDK\Client;
-use HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams;
-use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
-use HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier;
-use HubspotSDK\Marketing\Events\MarketingEventPublicObjectIDDeleteRequest;
-use HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2;
-use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
-use HubspotSDK\Marketing\Events\PropertyValue;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -43,12 +36,12 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->create(
-            eventName: 'eventName',
-            eventOrganizer: 'eventOrganizer',
-            externalAccountID: 'externalAccountId',
-            externalEventID: 'externalEventId',
-        );
+        $result = $this->client->marketing->events->create([
+            'eventName' => 'eventName',
+            'eventOrganizer' => 'eventOrganizer',
+            'externalAccountId' => 'externalAccountId',
+            'externalEventId' => 'externalEventId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -60,12 +53,12 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->create(
-            eventName: 'eventName',
-            eventOrganizer: 'eventOrganizer',
-            externalAccountID: 'externalAccountId',
-            externalEventID: 'externalEventId',
-        );
+        $result = $this->client->marketing->events->create([
+            'eventName' => 'eventName',
+            'eventOrganizer' => 'eventOrganizer',
+            'externalAccountId' => 'externalAccountId',
+            'externalEventId' => 'externalEventId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -79,12 +72,14 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->update(
             'objectId',
-            customProperties: [
-                PropertyValue::with(
-                    name: '',
-                    sourceUpstreamDeployable: 'sourceUpstreamDeployable',
-                    value: '',
-                ),
+            [
+                'customProperties' => [
+                    [
+                        'name' => '',
+                        'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                        'value' => '',
+                    ],
+                ],
             ],
         );
 
@@ -100,28 +95,30 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->update(
             'objectId',
-            customProperties: [
-                PropertyValue::with(
-                    name: '',
-                    sourceUpstreamDeployable: 'sourceUpstreamDeployable',
-                    value: '',
-                )
-                    ->withDataSensitivity('none')
-                    ->withIsEncrypted(false)
-                    ->withIsLargeValue(true)
-                    ->withPersistenceTimestamp(0)
-                    ->withRequestID('')
-                    ->withSelectedByUser(false)
-                    ->withSelectedByUserTimestamp(0)
-                    ->withSource('UNKNOWN')
-                    ->withSourceID('')
-                    ->withSourceLabel('')
-                    ->withSourceMetadata('')
-                    ->withSourceVid([0])
-                    ->withTimestamp(0)
-                    ->withUnit('')
-                    ->withUpdatedByUserID(0)
-                    ->withUseTimestampAsPersistenceTimestamp(true),
+            [
+                'customProperties' => [
+                    [
+                        'name' => '',
+                        'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                        'value' => '',
+                        'dataSensitivity' => 'none',
+                        'isEncrypted' => false,
+                        'isLargeValue' => true,
+                        'persistenceTimestamp' => 0,
+                        'requestId' => '',
+                        'selectedByUser' => false,
+                        'selectedByUserTimestamp' => 0,
+                        'source' => 'UNKNOWN',
+                        'sourceId' => '',
+                        'sourceLabel' => '',
+                        'sourceMetadata' => '',
+                        'sourceVid' => [0],
+                        'timestamp' => 0,
+                        'unit' => '',
+                        'updatedByUserId' => 0,
+                        'useTimestampAsPersistenceTimestamp' => true,
+                    ],
+                ],
             ],
         );
 
@@ -135,7 +132,7 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->list();
+        $result = $this->client->marketing->events->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -161,7 +158,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->cancelByExternalEventID(
             'externalEventId',
-            'externalAccountId'
+            ['externalAccountId' => 'externalAccountId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -176,7 +173,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->cancelByExternalEventID(
             'externalEventId',
-            'externalAccountId'
+            ['externalAccountId' => 'externalAccountId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -191,9 +188,11 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->completeByExternalEventID(
             'externalEventId',
-            externalAccountID: 'externalAccountId',
-            endDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            startDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            [
+                'externalAccountId' => 'externalAccountId',
+                'endDateTime' => '2019-12-27T18:11:19.117Z',
+                'startDateTime' => '2019-12-27T18:11:19.117Z',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -208,9 +207,11 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->completeByExternalEventID(
             'externalEventId',
-            externalAccountID: 'externalAccountId',
-            endDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            startDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            [
+                'externalAccountId' => 'externalAccountId',
+                'endDateTime' => '2019-12-27T18:11:19.117Z',
+                'startDateTime' => '2019-12-27T18:11:19.117Z',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -223,9 +224,9 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->deleteBatch(
-            [MarketingEventPublicObjectIDDeleteRequest::with(objectID: 'objectId')]
-        );
+        $result = $this->client->marketing->events->deleteBatch([
+            'inputs' => [['objectId' => 'objectId']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -237,9 +238,9 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->deleteBatch(
-            [MarketingEventPublicObjectIDDeleteRequest::with(objectID: 'objectId')]
-        );
+        $result = $this->client->marketing->events->deleteBatch([
+            'inputs' => [['objectId' => 'objectId']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -251,15 +252,15 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->deleteBatchByExternalEventID(
-            [
-                MarketingEventExternalUniqueIdentifier::with(
-                    appID: 0,
-                    externalAccountID: 'externalAccountId',
-                    externalEventID: 'externalEventId',
-                ),
+        $result = $this->client->marketing->events->deleteBatchByExternalEventID([
+            'inputs' => [
+                [
+                    'appId' => 0,
+                    'externalAccountId' => 'externalAccountId',
+                    'externalEventId' => 'externalEventId',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -271,15 +272,15 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->deleteBatchByExternalEventID(
-            [
-                MarketingEventExternalUniqueIdentifier::with(
-                    appID: 0,
-                    externalAccountID: 'externalAccountId',
-                    externalEventID: 'externalEventId',
-                ),
+        $result = $this->client->marketing->events->deleteBatchByExternalEventID([
+            'inputs' => [
+                [
+                    'appId' => 0,
+                    'externalAccountId' => 'externalAccountId',
+                    'externalEventId' => 'externalEventId',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -293,7 +294,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->deleteByExternalEventID(
             'externalEventId',
-            'externalAccountId'
+            ['externalAccountId' => 'externalAccountId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -308,7 +309,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->deleteByExternalEventID(
             'externalEventId',
-            'externalAccountId'
+            ['externalAccountId' => 'externalAccountId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -335,7 +336,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->getByExternalEventID(
             'externalEventId',
-            'externalAccountId'
+            ['externalAccountId' => 'externalAccountId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -350,7 +351,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->getByExternalEventID(
             'externalEventId',
-            'externalAccountId'
+            ['externalAccountId' => 'externalAccountId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -363,7 +364,9 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->searchByExternalEventID('q');
+        $result = $this->client->marketing->events->searchByExternalEventID([
+            'q' => 'q',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -375,7 +378,9 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->searchByExternalEventID('q');
+        $result = $this->client->marketing->events->searchByExternalEventID([
+            'q' => 'q',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -404,20 +409,20 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->updateBatch(
-            [
-                MarketingEventPublicUpdateRequestFullV2::with(
-                    customProperties: [
-                        PropertyValue::with(
-                            name: '',
-                            sourceUpstreamDeployable: 'sourceUpstreamDeployable',
-                            value: '',
-                        ),
+        $result = $this->client->marketing->events->updateBatch([
+            'inputs' => [
+                [
+                    'customProperties' => [
+                        [
+                            'name' => '',
+                            'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                            'value' => '',
+                        ],
                     ],
-                    objectID: 'objectId',
-                ),
+                    'objectId' => 'objectId',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -429,46 +434,44 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->updateBatch(
-            [
-                MarketingEventPublicUpdateRequestFullV2::with(
-                    customProperties: [
-                        PropertyValue::with(
-                            name: '',
-                            sourceUpstreamDeployable: 'sourceUpstreamDeployable',
-                            value: '',
-                        )
-                            ->withDataSensitivity('none')
-                            ->withIsEncrypted(false)
-                            ->withIsLargeValue(true)
-                            ->withPersistenceTimestamp(0)
-                            ->withRequestID('')
-                            ->withSelectedByUser(false)
-                            ->withSelectedByUserTimestamp(0)
-                            ->withSource('UNKNOWN')
-                            ->withSourceID('')
-                            ->withSourceLabel('')
-                            ->withSourceMetadata('')
-                            ->withSourceVid([0])
-                            ->withTimestamp(0)
-                            ->withUnit('')
-                            ->withUpdatedByUserID(0)
-                            ->withUseTimestampAsPersistenceTimestamp(true),
+        $result = $this->client->marketing->events->updateBatch([
+            'inputs' => [
+                [
+                    'customProperties' => [
+                        [
+                            'name' => '',
+                            'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                            'value' => '',
+                            'dataSensitivity' => 'none',
+                            'isEncrypted' => false,
+                            'isLargeValue' => true,
+                            'persistenceTimestamp' => 0,
+                            'requestId' => '',
+                            'selectedByUser' => false,
+                            'selectedByUserTimestamp' => 0,
+                            'source' => 'UNKNOWN',
+                            'sourceId' => '',
+                            'sourceLabel' => '',
+                            'sourceMetadata' => '',
+                            'sourceVid' => [0],
+                            'timestamp' => 0,
+                            'unit' => '',
+                            'updatedByUserId' => 0,
+                            'useTimestampAsPersistenceTimestamp' => true,
+                        ],
                     ],
-                    objectID: 'objectId',
-                )
-                    ->withEndDateTime(new \DateTimeImmutable('2019-12-27T18:11:19.117Z'))
-                    ->withEventCancelled(true)
-                    ->withEventDescription('eventDescription')
-                    ->withEventName('eventName')
-                    ->withEventOrganizer('eventOrganizer')
-                    ->withEventType('eventType')
-                    ->withEventURL('eventUrl')
-                    ->withStartDateTime(
-                        new \DateTimeImmutable('2019-12-27T18:11:19.117Z')
-                    ),
+                    'objectId' => 'objectId',
+                    'endDateTime' => '2019-12-27T18:11:19.117Z',
+                    'eventCancelled' => true,
+                    'eventDescription' => 'eventDescription',
+                    'eventName' => 'eventName',
+                    'eventOrganizer' => 'eventOrganizer',
+                    'eventType' => 'eventType',
+                    'eventUrl' => 'eventUrl',
+                    'startDateTime' => '2019-12-27T18:11:19.117Z',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -482,7 +485,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->updateByExternalEventID(
             'externalEventId',
-            externalAccountID: 'externalAccountId'
+            ['externalAccountId' => 'externalAccountId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -497,7 +500,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->updateByExternalEventID(
             'externalEventId',
-            externalAccountID: 'externalAccountId'
+            ['externalAccountId' => 'externalAccountId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -510,16 +513,16 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->upsertBatch(
-            [
-                MarketingEventCreateRequestParams::with(
-                    eventName: 'eventName',
-                    eventOrganizer: 'eventOrganizer',
-                    externalAccountID: 'externalAccountId',
-                    externalEventID: 'externalEventId',
-                ),
+        $result = $this->client->marketing->events->upsertBatch([
+            'inputs' => [
+                [
+                    'eventName' => 'eventName',
+                    'eventOrganizer' => 'eventOrganizer',
+                    'externalAccountId' => 'externalAccountId',
+                    'externalEventId' => 'externalEventId',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -531,50 +534,46 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->upsertBatch(
-            [
-                MarketingEventCreateRequestParams::with(
-                    eventName: 'eventName',
-                    eventOrganizer: 'eventOrganizer',
-                    externalAccountID: 'externalAccountId',
-                    externalEventID: 'externalEventId',
-                )
-                    ->withCustomProperties(
+        $result = $this->client->marketing->events->upsertBatch([
+            'inputs' => [
+                [
+                    'eventName' => 'eventName',
+                    'eventOrganizer' => 'eventOrganizer',
+                    'externalAccountId' => 'externalAccountId',
+                    'externalEventId' => 'externalEventId',
+                    'customProperties' => [
                         [
-                            PropertyValue::with(
-                                name: '',
-                                sourceUpstreamDeployable: 'sourceUpstreamDeployable',
-                                value: '',
-                            )
-                                ->withDataSensitivity('none')
-                                ->withIsEncrypted(false)
-                                ->withIsLargeValue(true)
-                                ->withPersistenceTimestamp(0)
-                                ->withRequestID('')
-                                ->withSelectedByUser(false)
-                                ->withSelectedByUserTimestamp(0)
-                                ->withSource('UNKNOWN')
-                                ->withSourceID('')
-                                ->withSourceLabel('')
-                                ->withSourceMetadata('')
-                                ->withSourceVid([0])
-                                ->withTimestamp(0)
-                                ->withUnit('')
-                                ->withUpdatedByUserID(0)
-                                ->withUseTimestampAsPersistenceTimestamp(true),
+                            'name' => '',
+                            'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                            'value' => '',
+                            'dataSensitivity' => 'none',
+                            'isEncrypted' => false,
+                            'isLargeValue' => true,
+                            'persistenceTimestamp' => 0,
+                            'requestId' => '',
+                            'selectedByUser' => false,
+                            'selectedByUserTimestamp' => 0,
+                            'source' => 'UNKNOWN',
+                            'sourceId' => '',
+                            'sourceLabel' => '',
+                            'sourceMetadata' => '',
+                            'sourceVid' => [0],
+                            'timestamp' => 0,
+                            'unit' => '',
+                            'updatedByUserId' => 0,
+                            'useTimestampAsPersistenceTimestamp' => true,
                         ],
-                    )
-                    ->withEndDateTime(new \DateTimeImmutable('2019-12-27T18:11:19.117Z'))
-                    ->withEventCancelled(true)
-                    ->withEventCompleted(true)
-                    ->withEventDescription('eventDescription')
-                    ->withEventType('eventType')
-                    ->withEventURL('eventUrl')
-                    ->withStartDateTime(
-                        new \DateTimeImmutable('2019-12-27T18:11:19.117Z')
-                    ),
+                    ],
+                    'endDateTime' => '2019-12-27T18:11:19.117Z',
+                    'eventCancelled' => true,
+                    'eventCompleted' => true,
+                    'eventDescription' => 'eventDescription',
+                    'eventType' => 'eventType',
+                    'eventUrl' => 'eventUrl',
+                    'startDateTime' => '2019-12-27T18:11:19.117Z',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -588,10 +587,12 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertByExternalEventID(
             'externalEventId',
-            eventName: 'eventName',
-            eventOrganizer: 'eventOrganizer',
-            externalAccountID: 'externalAccountId',
-            externalEventID1: 'externalEventId',
+            [
+                'eventName' => 'eventName',
+                'eventOrganizer' => 'eventOrganizer',
+                'externalAccountId' => 'externalAccountId',
+                'externalEventId' => 'externalEventId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -606,10 +607,12 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertByExternalEventID(
             'externalEventId',
-            eventName: 'eventName',
-            eventOrganizer: 'eventOrganizer',
-            externalAccountID: 'externalAccountId',
-            externalEventID1: 'externalEventId',
+            [
+                'eventName' => 'eventName',
+                'eventOrganizer' => 'eventOrganizer',
+                'externalAccountId' => 'externalAccountId',
+                'externalEventId' => 'externalEventId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -624,13 +627,10 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertSubscriberStateByEmail(
             'subscriberState',
-            externalEventID: 'externalEventId',
-            externalAccountID: 'externalAccountId',
-            inputs: [
-                MarketingEventEmailSubscriber::with(
-                    email: 'email',
-                    interactionDateTime: 0
-                ),
+            [
+                'externalEventId' => 'externalEventId',
+                'externalAccountId' => 'externalAccountId',
+                'inputs' => [['email' => 'email', 'interactionDateTime' => 0]],
             ],
         );
 
@@ -646,15 +646,17 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertSubscriberStateByEmail(
             'subscriberState',
-            externalEventID: 'externalEventId',
-            externalAccountID: 'externalAccountId',
-            inputs: [
-                MarketingEventEmailSubscriber::with(
-                    email: 'email',
-                    interactionDateTime: 0
-                )
-                    ->withContactProperties(['foo' => 'string'])
-                    ->withProperties(['foo' => 'string']),
+            [
+                'externalEventId' => 'externalEventId',
+                'externalAccountId' => 'externalAccountId',
+                'inputs' => [
+                    [
+                        'email' => 'email',
+                        'interactionDateTime' => 0,
+                        'contactProperties' => ['foo' => 'string'],
+                        'properties' => ['foo' => 'string'],
+                    ],
+                ],
             ],
         );
 
@@ -670,9 +672,11 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertSubscriberStateByID(
             'subscriberState',
-            externalEventID: 'externalEventId',
-            externalAccountID: 'externalAccountId',
-            inputs: [MarketingEventSubscriber::with(interactionDateTime: 0)],
+            [
+                'externalEventId' => 'externalEventId',
+                'externalAccountId' => 'externalAccountId',
+                'inputs' => [['interactionDateTime' => 0]],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -687,12 +691,16 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertSubscriberStateByID(
             'subscriberState',
-            externalEventID: 'externalEventId',
-            externalAccountID: 'externalAccountId',
-            inputs: [
-                MarketingEventSubscriber::with(interactionDateTime: 0)
-                    ->withProperties(['foo' => 'string'])
-                    ->withVid(0),
+            [
+                'externalEventId' => 'externalEventId',
+                'externalAccountId' => 'externalAccountId',
+                'inputs' => [
+                    [
+                        'interactionDateTime' => 0,
+                        'properties' => ['foo' => 'string'],
+                        'vid' => 0,
+                    ],
+                ],
             ],
         );
 

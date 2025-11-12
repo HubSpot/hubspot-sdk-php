@@ -16,7 +16,7 @@ use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
  * @see HubspotSDK\Crm\FeatureFlags\Portals->batchUpsert
  *
  * @phpstan-type PortalBatchUpsertParamsShape = array{
- *   appID: int, portalStates: list<BatchPortalEntry>
+ *   appId: int, portalStates: list<BatchPortalEntry>
  * }
  */
 final class PortalBatchUpsertParams implements BaseModel
@@ -26,7 +26,7 @@ final class PortalBatchUpsertParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /** @var list<BatchPortalEntry> $portalStates */
     #[Api(list: BatchPortalEntry::class)]
@@ -37,7 +37,7 @@ final class PortalBatchUpsertParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PortalBatchUpsertParams::with(appID: ..., portalStates: ...)
+     * PortalBatchUpsertParams::with(appId: ..., portalStates: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -58,11 +58,11 @@ final class PortalBatchUpsertParams implements BaseModel
      *
      * @param list<BatchPortalEntry> $portalStates
      */
-    public static function with(int $appID, array $portalStates): self
+    public static function with(int $appId, array $portalStates): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj->portalStates = $portalStates;
 
         return $obj;
@@ -71,7 +71,7 @@ final class PortalBatchUpsertParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

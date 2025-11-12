@@ -6,40 +6,20 @@ namespace HubspotSDK\ServiceContracts\Scheduler\Meetings;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
-use HubspotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest;
-use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties;
+use HubspotSDK\Scheduler\Meetings\Calendar\CalendarCreateParams;
 use HubspotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
-use HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
 
 interface CalendarContract
 {
     /**
      * @api
      *
-     * @param list<ExternalAssociationCreateRequest> $associations
-     * @param ExternalEmailReminderSchedule $emailReminderSchedule
-     * @param ExternalCalendarMeetingEventCreateProperties $properties
-     * @param string $timezone
+     * @param array<mixed>|CalendarCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $associations,
-        $emailReminderSchedule,
-        $properties,
-        $timezone,
+        array|CalendarCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ExternalCalenderMeetingEventResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ExternalCalenderMeetingEventResponse;
 }

@@ -29,26 +29,26 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   canEnrollFromSalesforce: bool,
  *   createdAt: \DateTimeInterface,
  *   crmObjectCreationStatus: value-of<CrmObjectCreationStatus>,
- *   customProperties: array<string, string>,
+ *   customProperties: array<string,string>,
  *   dataSources: list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource>,
  *   flowType: value-of<FlowType>,
  *   isEnabled: bool,
- *   nextAvailableActionID: string,
- *   objectTypeID: string,
- *   revisionID: string,
- *   suppressionListIDs: list<int>,
+ *   nextAvailableActionId: string,
+ *   objectTypeId: string,
+ *   revisionId: string,
+ *   suppressionListIds: list<int>,
  *   timeWindows: list<APITimeWindow>,
  *   type: value-of<Type>,
  *   updatedAt: \DateTimeInterface,
- *   description?: string,
- *   enrollmentCriteria?: APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
- *   enrollmentSchedule?: APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
- *   eventAnchor?: APIContactPropertyAnchor|APIStaticDateAnchor,
- *   goalFilterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
- *   name?: string,
- *   startActionID?: string,
- *   unEnrollmentSetting?: APIUnEnrollmentSetting,
- *   uuid?: string,
+ *   description?: string|null,
+ *   enrollmentCriteria?: null|APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
+ *   enrollmentSchedule?: null|APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
+ *   eventAnchor?: null|APIContactPropertyAnchor|APIStaticDateAnchor,
+ *   goalFilterBranch?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   name?: string|null,
+ *   startActionId?: string|null,
+ *   unEnrollmentSetting?: APIUnEnrollmentSetting|null,
+ *   uuid?: string|null,
  * }
  */
 final class APIContactFlow implements BaseModel
@@ -79,7 +79,7 @@ final class APIContactFlow implements BaseModel
     #[Api(enum: CrmObjectCreationStatus::class)]
     public string $crmObjectCreationStatus;
 
-    /** @var array<string, string> $customProperties */
+    /** @var array<string,string> $customProperties */
     #[Api(map: 'string')]
     public array $customProperties;
 
@@ -96,18 +96,18 @@ final class APIContactFlow implements BaseModel
     #[Api]
     public bool $isEnabled;
 
-    #[Api('nextAvailableActionId')]
-    public string $nextAvailableActionID;
+    #[Api]
+    public string $nextAvailableActionId;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
-    #[Api('revisionId')]
-    public string $revisionID;
+    #[Api]
+    public string $revisionId;
 
-    /** @var list<int> $suppressionListIDs */
-    #[Api('suppressionListIds', list: 'int')]
-    public array $suppressionListIDs;
+    /** @var list<int> $suppressionListIds */
+    #[Api(list: 'int')]
+    public array $suppressionListIds;
 
     /** @var list<APITimeWindow> $timeWindows */
     #[Api(list: APITimeWindow::class)]
@@ -138,8 +138,8 @@ final class APIContactFlow implements BaseModel
     #[Api(optional: true)]
     public ?string $name;
 
-    #[Api('startActionId', optional: true)]
-    public ?string $startActionID;
+    #[Api(optional: true)]
+    public ?string $startActionId;
 
     #[Api(optional: true)]
     public ?APIUnEnrollmentSetting $unEnrollmentSetting;
@@ -163,10 +163,10 @@ final class APIContactFlow implements BaseModel
      *   dataSources: ...,
      *   flowType: ...,
      *   isEnabled: ...,
-     *   nextAvailableActionID: ...,
-     *   objectTypeID: ...,
-     *   revisionID: ...,
-     *   suppressionListIDs: ...,
+     *   nextAvailableActionId: ...,
+     *   objectTypeId: ...,
+     *   revisionId: ...,
+     *   suppressionListIds: ...,
      *   timeWindows: ...,
      *   type: ...,
      *   updatedAt: ...,
@@ -209,10 +209,10 @@ final class APIContactFlow implements BaseModel
      * @param list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction> $actions
      * @param list<APIBlockedDate> $blockedDates
      * @param CrmObjectCreationStatus|value-of<CrmObjectCreationStatus> $crmObjectCreationStatus
-     * @param array<string, string> $customProperties
+     * @param array<string,string> $customProperties
      * @param list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource> $dataSources
      * @param FlowType|value-of<FlowType> $flowType
-     * @param list<int> $suppressionListIDs
+     * @param list<int> $suppressionListIds
      * @param list<APITimeWindow> $timeWindows
      * @param Type|value-of<Type> $type
      */
@@ -227,10 +227,10 @@ final class APIContactFlow implements BaseModel
         array $dataSources,
         FlowType|string $flowType,
         bool $isEnabled,
-        string $nextAvailableActionID,
-        string $objectTypeID,
-        string $revisionID,
-        array $suppressionListIDs,
+        string $nextAvailableActionId,
+        string $objectTypeId,
+        string $revisionId,
+        array $suppressionListIds,
         array $timeWindows,
         \DateTimeInterface $updatedAt,
         Type|string $type = 'CONTACT_FLOW',
@@ -240,7 +240,7 @@ final class APIContactFlow implements BaseModel
         APIContactPropertyAnchor|APIStaticDateAnchor|null $eventAnchor = null,
         PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $goalFilterBranch = null,
         ?string $name = null,
-        ?string $startActionID = null,
+        ?string $startActionId = null,
         ?APIUnEnrollmentSetting $unEnrollmentSetting = null,
         ?string $uuid = null,
     ): self {
@@ -256,10 +256,10 @@ final class APIContactFlow implements BaseModel
         $obj->dataSources = $dataSources;
         $obj['flowType'] = $flowType;
         $obj->isEnabled = $isEnabled;
-        $obj->nextAvailableActionID = $nextAvailableActionID;
-        $obj->objectTypeID = $objectTypeID;
-        $obj->revisionID = $revisionID;
-        $obj->suppressionListIDs = $suppressionListIDs;
+        $obj->nextAvailableActionId = $nextAvailableActionId;
+        $obj->objectTypeId = $objectTypeId;
+        $obj->revisionId = $revisionId;
+        $obj->suppressionListIds = $suppressionListIds;
         $obj->timeWindows = $timeWindows;
         $obj['type'] = $type;
         $obj->updatedAt = $updatedAt;
@@ -270,7 +270,7 @@ final class APIContactFlow implements BaseModel
         null !== $eventAnchor && $obj->eventAnchor = $eventAnchor;
         null !== $goalFilterBranch && $obj->goalFilterBranch = $goalFilterBranch;
         null !== $name && $obj->name = $name;
-        null !== $startActionID && $obj->startActionID = $startActionID;
+        null !== $startActionId && $obj->startActionId = $startActionId;
         null !== $unEnrollmentSetting && $obj->unEnrollmentSetting = $unEnrollmentSetting;
         null !== $uuid && $obj->uuid = $uuid;
 
@@ -337,7 +337,7 @@ final class APIContactFlow implements BaseModel
     }
 
     /**
-     * @param array<string, string> $customProperties
+     * @param array<string,string> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {
@@ -381,7 +381,7 @@ final class APIContactFlow implements BaseModel
         string $nextAvailableActionID
     ): self {
         $obj = clone $this;
-        $obj->nextAvailableActionID = $nextAvailableActionID;
+        $obj->nextAvailableActionId = $nextAvailableActionID;
 
         return $obj;
     }
@@ -389,7 +389,7 @@ final class APIContactFlow implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -397,7 +397,7 @@ final class APIContactFlow implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj->revisionID = $revisionID;
+        $obj->revisionId = $revisionID;
 
         return $obj;
     }
@@ -408,7 +408,7 @@ final class APIContactFlow implements BaseModel
     public function withSuppressionListIDs(array $suppressionListIDs): self
     {
         $obj = clone $this;
-        $obj->suppressionListIDs = $suppressionListIDs;
+        $obj->suppressionListIds = $suppressionListIDs;
 
         return $obj;
     }
@@ -498,7 +498,7 @@ final class APIContactFlow implements BaseModel
     public function withStartActionID(string $startActionID): self
     {
         $obj = clone $this;
-        $obj->startActionID = $startActionID;
+        $obj->startActionId = $startActionID;
 
         return $obj;
     }

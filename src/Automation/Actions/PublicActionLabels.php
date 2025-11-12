@@ -12,14 +12,14 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * @phpstan-type PublicActionLabelsShape = array{
  *   actionName: string,
- *   actionCardContent?: string,
- *   actionDescription?: string,
- *   appDisplayName?: string,
- *   executionRules?: array<string, string>,
- *   inputFieldDescriptions?: array<string, string>,
- *   inputFieldLabels?: array<string, string>,
- *   inputFieldOptionLabels?: array<string, array<string, string>>,
- *   outputFieldLabels?: array<string, string>,
+ *   actionCardContent?: string|null,
+ *   actionDescription?: string|null,
+ *   appDisplayName?: string|null,
+ *   executionRules?: array<string,string>|null,
+ *   inputFieldDescriptions?: array<string,string>|null,
+ *   inputFieldLabels?: array<string,string>|null,
+ *   inputFieldOptionLabels?: array<string,array<string,string>>|null,
+ *   outputFieldLabels?: array<string,string>|null,
  * }
  */
 final class PublicActionLabels implements BaseModel
@@ -39,23 +39,23 @@ final class PublicActionLabels implements BaseModel
     #[Api(optional: true)]
     public ?string $appDisplayName;
 
-    /** @var array<string, string>|null $executionRules */
+    /** @var array<string,string>|null $executionRules */
     #[Api(map: 'string', optional: true)]
     public ?array $executionRules;
 
-    /** @var array<string, string>|null $inputFieldDescriptions */
+    /** @var array<string,string>|null $inputFieldDescriptions */
     #[Api(map: 'string', optional: true)]
     public ?array $inputFieldDescriptions;
 
-    /** @var array<string, string>|null $inputFieldLabels */
+    /** @var array<string,string>|null $inputFieldLabels */
     #[Api(map: 'string', optional: true)]
     public ?array $inputFieldLabels;
 
-    /** @var array<string, array<string, string>>|null $inputFieldOptionLabels */
+    /** @var array<string,array<string,string>>|null $inputFieldOptionLabels */
     #[Api(map: new MapOf('string'), optional: true)]
     public ?array $inputFieldOptionLabels;
 
-    /** @var array<string, string>|null $outputFieldLabels */
+    /** @var array<string,string>|null $outputFieldLabels */
     #[Api(map: 'string', optional: true)]
     public ?array $outputFieldLabels;
 
@@ -83,11 +83,11 @@ final class PublicActionLabels implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $executionRules
-     * @param array<string, string> $inputFieldDescriptions
-     * @param array<string, string> $inputFieldLabels
-     * @param array<string, array<string, string>> $inputFieldOptionLabels
-     * @param array<string, string> $outputFieldLabels
+     * @param array<string,string> $executionRules
+     * @param array<string,string> $inputFieldDescriptions
+     * @param array<string,string> $inputFieldLabels
+     * @param array<string,array<string,string>> $inputFieldOptionLabels
+     * @param array<string,string> $outputFieldLabels
      */
     public static function with(
         string $actionName,
@@ -149,7 +149,7 @@ final class PublicActionLabels implements BaseModel
     }
 
     /**
-     * @param array<string, string> $executionRules
+     * @param array<string,string> $executionRules
      */
     public function withExecutionRules(array $executionRules): self
     {
@@ -160,7 +160,7 @@ final class PublicActionLabels implements BaseModel
     }
 
     /**
-     * @param array<string, string> $inputFieldDescriptions
+     * @param array<string,string> $inputFieldDescriptions
      */
     public function withInputFieldDescriptions(
         array $inputFieldDescriptions
@@ -172,7 +172,7 @@ final class PublicActionLabels implements BaseModel
     }
 
     /**
-     * @param array<string, string> $inputFieldLabels
+     * @param array<string,string> $inputFieldLabels
      */
     public function withInputFieldLabels(array $inputFieldLabels): self
     {
@@ -183,7 +183,7 @@ final class PublicActionLabels implements BaseModel
     }
 
     /**
-     * @param array<string, array<string, string>> $inputFieldOptionLabels
+     * @param array<string,array<string,string>> $inputFieldOptionLabels
      */
     public function withInputFieldOptionLabels(
         array $inputFieldOptionLabels
@@ -195,7 +195,7 @@ final class PublicActionLabels implements BaseModel
     }
 
     /**
-     * @param array<string, string> $outputFieldLabels
+     * @param array<string,string> $outputFieldLabels
      */
     public function withOutputFieldLabels(array $outputFieldLabels): self
     {

@@ -3,7 +3,6 @@
 namespace Tests\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Authors\BlogAuthor;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -37,25 +36,25 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->create(
-            id: 'id',
-            avatar: 'avatar',
-            bio: 'bio',
-            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            displayName: 'displayName',
-            email: 'email',
-            facebook: 'facebook',
-            fullName: 'fullName',
-            language: 'af',
-            linkedin: 'linkedin',
-            name: 'name',
-            slug: 'slug',
-            translatedFromID: 0,
-            twitter: 'twitter',
-            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            website: 'website',
-        );
+        $result = $this->client->cms->blogs->authors->create([
+            'id' => 'id',
+            'avatar' => 'avatar',
+            'bio' => 'bio',
+            'created' => '2019-12-27T18:11:19.117Z',
+            'deletedAt' => '2019-12-27T18:11:19.117Z',
+            'displayName' => 'displayName',
+            'email' => 'email',
+            'facebook' => 'facebook',
+            'fullName' => 'fullName',
+            'language' => 'af',
+            'linkedin' => 'linkedin',
+            'name' => 'name',
+            'slug' => 'slug',
+            'translatedFromId' => 0,
+            'twitter' => 'twitter',
+            'updated' => '2019-12-27T18:11:19.117Z',
+            'website' => 'website',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -67,25 +66,25 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->create(
-            id: 'id',
-            avatar: 'avatar',
-            bio: 'bio',
-            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            displayName: 'displayName',
-            email: 'email',
-            facebook: 'facebook',
-            fullName: 'fullName',
-            language: 'af',
-            linkedin: 'linkedin',
-            name: 'name',
-            slug: 'slug',
-            translatedFromID: 0,
-            twitter: 'twitter',
-            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            website: 'website',
-        );
+        $result = $this->client->cms->blogs->authors->create([
+            'id' => 'id',
+            'avatar' => 'avatar',
+            'bio' => 'bio',
+            'created' => '2019-12-27T18:11:19.117Z',
+            'deletedAt' => '2019-12-27T18:11:19.117Z',
+            'displayName' => 'displayName',
+            'email' => 'email',
+            'facebook' => 'facebook',
+            'fullName' => 'fullName',
+            'language' => 'af',
+            'linkedin' => 'linkedin',
+            'name' => 'name',
+            'slug' => 'slug',
+            'translatedFromId' => 0,
+            'twitter' => 'twitter',
+            'updated' => '2019-12-27T18:11:19.117Z',
+            'website' => 'website',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -99,23 +98,25 @@ final class AuthorsTest extends TestCase
 
         $result = $this->client->cms->blogs->authors->update(
             'objectId',
-            id: 'id',
-            avatar: 'avatar',
-            bio: 'bio',
-            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            displayName: 'displayName',
-            email: 'email',
-            facebook: 'facebook',
-            fullName: 'fullName',
-            language: 'af',
-            linkedin: 'linkedin',
-            name: 'name',
-            slug: 'slug',
-            translatedFromID: 0,
-            twitter: 'twitter',
-            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            website: 'website',
+            [
+                'id' => 'id',
+                'avatar' => 'avatar',
+                'bio' => 'bio',
+                'created' => '2019-12-27T18:11:19.117Z',
+                'deletedAt' => '2019-12-27T18:11:19.117Z',
+                'displayName' => 'displayName',
+                'email' => 'email',
+                'facebook' => 'facebook',
+                'fullName' => 'fullName',
+                'language' => 'af',
+                'linkedin' => 'linkedin',
+                'name' => 'name',
+                'slug' => 'slug',
+                'translatedFromId' => 0,
+                'twitter' => 'twitter',
+                'updated' => '2019-12-27T18:11:19.117Z',
+                'website' => 'website',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -130,23 +131,25 @@ final class AuthorsTest extends TestCase
 
         $result = $this->client->cms->blogs->authors->update(
             'objectId',
-            id: 'id',
-            avatar: 'avatar',
-            bio: 'bio',
-            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            displayName: 'displayName',
-            email: 'email',
-            facebook: 'facebook',
-            fullName: 'fullName',
-            language: 'af',
-            linkedin: 'linkedin',
-            name: 'name',
-            slug: 'slug',
-            translatedFromID: 0,
-            twitter: 'twitter',
-            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            website: 'website',
+            [
+                'id' => 'id',
+                'avatar' => 'avatar',
+                'bio' => 'bio',
+                'created' => '2019-12-27T18:11:19.117Z',
+                'deletedAt' => '2019-12-27T18:11:19.117Z',
+                'displayName' => 'displayName',
+                'email' => 'email',
+                'facebook' => 'facebook',
+                'fullName' => 'fullName',
+                'language' => 'af',
+                'linkedin' => 'linkedin',
+                'name' => 'name',
+                'slug' => 'slug',
+                'translatedFromId' => 0,
+                'twitter' => 'twitter',
+                'updated' => '2019-12-27T18:11:19.117Z',
+                'website' => 'website',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -159,7 +162,7 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->list();
+        $result = $this->client->cms->blogs->authors->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -171,7 +174,7 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->delete('objectId');
+        $result = $this->client->cms->blogs->authors->delete('objectId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -183,11 +186,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->attachToLangGroup(
-            id: 'id',
-            language: 'language',
-            primaryID: 'primaryId'
-        );
+        $result = $this->client->cms->blogs->authors->attachToLangGroup([
+            'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -199,11 +200,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->attachToLangGroup(
-            id: 'id',
-            language: 'language',
-            primaryID: 'primaryId'
-        );
+        $result = $this->client->cms->blogs->authors->attachToLangGroup([
+            'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -215,29 +214,29 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->createBatch(
-            [
-                BlogAuthor::with(
-                    id: 'id',
-                    avatar: 'avatar',
-                    bio: 'bio',
-                    created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    displayName: 'displayName',
-                    email: 'email',
-                    facebook: 'facebook',
-                    fullName: 'fullName',
-                    language: 'af',
-                    linkedin: 'linkedin',
-                    name: 'name',
-                    slug: 'slug',
-                    translatedFromID: 0,
-                    twitter: 'twitter',
-                    updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    website: 'website',
-                ),
+        $result = $this->client->cms->blogs->authors->createBatch([
+            'inputs' => [
+                [
+                    'id' => 'id',
+                    'avatar' => 'avatar',
+                    'bio' => 'bio',
+                    'created' => '2019-12-27T18:11:19.117Z',
+                    'deletedAt' => '2019-12-27T18:11:19.117Z',
+                    'displayName' => 'displayName',
+                    'email' => 'email',
+                    'facebook' => 'facebook',
+                    'fullName' => 'fullName',
+                    'language' => 'af',
+                    'linkedin' => 'linkedin',
+                    'name' => 'name',
+                    'slug' => 'slug',
+                    'translatedFromId' => 0,
+                    'twitter' => 'twitter',
+                    'updated' => '2019-12-27T18:11:19.117Z',
+                    'website' => 'website',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -249,29 +248,29 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->createBatch(
-            [
-                BlogAuthor::with(
-                    id: 'id',
-                    avatar: 'avatar',
-                    bio: 'bio',
-                    created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    displayName: 'displayName',
-                    email: 'email',
-                    facebook: 'facebook',
-                    fullName: 'fullName',
-                    language: 'af',
-                    linkedin: 'linkedin',
-                    name: 'name',
-                    slug: 'slug',
-                    translatedFromID: 0,
-                    twitter: 'twitter',
-                    updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    website: 'website',
-                ),
+        $result = $this->client->cms->blogs->authors->createBatch([
+            'inputs' => [
+                [
+                    'id' => 'id',
+                    'avatar' => 'avatar',
+                    'bio' => 'bio',
+                    'created' => '2019-12-27T18:11:19.117Z',
+                    'deletedAt' => '2019-12-27T18:11:19.117Z',
+                    'displayName' => 'displayName',
+                    'email' => 'email',
+                    'facebook' => 'facebook',
+                    'fullName' => 'fullName',
+                    'language' => 'af',
+                    'linkedin' => 'linkedin',
+                    'name' => 'name',
+                    'slug' => 'slug',
+                    'translatedFromId' => 0,
+                    'twitter' => 'twitter',
+                    'updated' => '2019-12-27T18:11:19.117Z',
+                    'website' => 'website',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -283,28 +282,28 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->createLanguageVariation(
-            id: 'id',
-            blogAuthor: BlogAuthor::with(
-                id: 'id',
-                avatar: 'avatar',
-                bio: 'bio',
-                created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                displayName: 'displayName',
-                email: 'email',
-                facebook: 'facebook',
-                fullName: 'fullName',
-                language: 'af',
-                linkedin: 'linkedin',
-                name: 'name',
-                slug: 'slug',
-                translatedFromID: 0,
-                twitter: 'twitter',
-                updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                website: 'website',
-            ),
-        );
+        $result = $this->client->cms->blogs->authors->createLanguageVariation([
+            'id' => 'id',
+            'blogAuthor' => [
+                'id' => 'id',
+                'avatar' => 'avatar',
+                'bio' => 'bio',
+                'created' => '2019-12-27T18:11:19.117Z',
+                'deletedAt' => '2019-12-27T18:11:19.117Z',
+                'displayName' => 'displayName',
+                'email' => 'email',
+                'facebook' => 'facebook',
+                'fullName' => 'fullName',
+                'language' => 'af',
+                'linkedin' => 'linkedin',
+                'name' => 'name',
+                'slug' => 'slug',
+                'translatedFromId' => 0,
+                'twitter' => 'twitter',
+                'updated' => '2019-12-27T18:11:19.117Z',
+                'website' => 'website',
+            ],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -316,28 +315,28 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->createLanguageVariation(
-            id: 'id',
-            blogAuthor: BlogAuthor::with(
-                id: 'id',
-                avatar: 'avatar',
-                bio: 'bio',
-                created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                displayName: 'displayName',
-                email: 'email',
-                facebook: 'facebook',
-                fullName: 'fullName',
-                language: 'af',
-                linkedin: 'linkedin',
-                name: 'name',
-                slug: 'slug',
-                translatedFromID: 0,
-                twitter: 'twitter',
-                updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                website: 'website',
-            ),
-        );
+        $result = $this->client->cms->blogs->authors->createLanguageVariation([
+            'id' => 'id',
+            'blogAuthor' => [
+                'id' => 'id',
+                'avatar' => 'avatar',
+                'bio' => 'bio',
+                'created' => '2019-12-27T18:11:19.117Z',
+                'deletedAt' => '2019-12-27T18:11:19.117Z',
+                'displayName' => 'displayName',
+                'email' => 'email',
+                'facebook' => 'facebook',
+                'fullName' => 'fullName',
+                'language' => 'af',
+                'linkedin' => 'linkedin',
+                'name' => 'name',
+                'slug' => 'slug',
+                'translatedFromId' => 0,
+                'twitter' => 'twitter',
+                'updated' => '2019-12-27T18:11:19.117Z',
+                'website' => 'website',
+            ],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -349,7 +348,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->deleteBatch(['string']);
+        $result = $this->client->cms->blogs->authors->deleteBatch([
+            'inputs' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -361,7 +362,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->deleteBatch(['string']);
+        $result = $this->client->cms->blogs->authors->deleteBatch([
+            'inputs' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -373,7 +376,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->detachFromLangGroup('id');
+        $result = $this->client->cms->blogs->authors->detachFromLangGroup([
+            'id' => 'id',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -385,7 +390,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->detachFromLangGroup('id');
+        $result = $this->client->cms->blogs->authors->detachFromLangGroup([
+            'id' => 'id',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -397,7 +404,7 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->get('objectId');
+        $result = $this->client->cms->blogs->authors->get('objectId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -409,7 +416,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->getBatch(inputs: ['string']);
+        $result = $this->client->cms->blogs->authors->getBatch([
+            'inputs' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -421,7 +430,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->getBatch(inputs: ['string']);
+        $result = $this->client->cms->blogs->authors->getBatch([
+            'inputs' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -433,7 +444,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->setNewLangPrimary('id');
+        $result = $this->client->cms->blogs->authors->setNewLangPrimary([
+            'id' => 'id',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -445,7 +458,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->setNewLangPrimary('id');
+        $result = $this->client->cms->blogs->authors->setNewLangPrimary([
+            'id' => 'id',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -457,9 +472,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->updateBatch(
-            inputs: [(object) []]
-        );
+        $result = $this->client->cms->blogs->authors->updateBatch([
+            'inputs' => [[]],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -471,9 +486,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->updateBatch(
-            inputs: [(object) []]
-        );
+        $result = $this->client->cms->blogs->authors->updateBatch([
+            'inputs' => [[]],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -485,10 +500,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->updateLanguages(
-            languages: ['foo' => 'string'],
-            primaryID: 'primaryId'
-        );
+        $result = $this->client->cms->blogs->authors->updateLanguages([
+            'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -500,10 +514,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->updateLanguages(
-            languages: ['foo' => 'string'],
-            primaryID: 'primaryId'
-        );
+        $result = $this->client->cms->blogs->authors->updateLanguages([
+            'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

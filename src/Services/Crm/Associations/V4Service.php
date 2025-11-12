@@ -12,12 +12,12 @@ use HubspotSDK\Services\Crm\Associations\V4\ReportService;
 final class V4Service implements V4Contract
 {
     /**
-     * @@api
+     * @api
      */
     public BatchService $batch;
 
     /**
-     * @@api
+     * @api
      */
     public ReportService $report;
 

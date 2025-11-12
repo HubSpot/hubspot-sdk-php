@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
  * The collection of audit logs.
  *
  * @phpstan-type CollectionResponsePublicAuditLogShape = array{
- *   results: list<PublicAuditLog>, paging?: EmailsPaging
+ *   results: list<PublicAuditLog>, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponsePublicAuditLog implements BaseModel

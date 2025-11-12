@@ -21,7 +21,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   label: string,
  *   stages: list<PipelineStage>,
  *   updatedAt: \DateTimeInterface,
- *   archivedAt?: \DateTimeInterface,
+ *   archivedAt?: \DateTimeInterface|null,
  * }
  */
 final class Pipeline implements BaseModel, ResponseConverter

@@ -19,14 +19,14 @@ use HubspotSDK\Marketing\Events\PropertyValue;
  *   createdAt: int,
  *   errorType: value-of<ErrorType>,
  *   sourceData: ImportRowCore,
- *   errorMessage?: string,
- *   extraContext?: string,
- *   invalidPropertyValue?: PropertyValue,
- *   invalidValue?: string,
- *   invalidValueToDisplay?: string,
- *   knownColumnNumber?: int,
- *   objectType?: value-of<ObjectType>,
- *   objectTypeID?: string,
+ *   errorMessage?: string|null,
+ *   extraContext?: string|null,
+ *   invalidPropertyValue?: PropertyValue|null,
+ *   invalidValue?: string|null,
+ *   invalidValueToDisplay?: string|null,
+ *   knownColumnNumber?: int|null,
+ *   objectType?: value-of<ObjectType>|null,
+ *   objectTypeId?: string|null,
  * }
  */
 final class PublicImportError implements BaseModel, ResponseConverter
@@ -74,8 +74,8 @@ final class PublicImportError implements BaseModel, ResponseConverter
     #[Api(enum: ObjectType::class, optional: true)]
     public ?string $objectType;
 
-    #[Api('objectTypeId', optional: true)]
-    public ?string $objectTypeID;
+    #[Api(optional: true)]
+    public ?string $objectTypeId;
 
     /**
      * `new PublicImportError()` is missing required properties by the API.
@@ -122,7 +122,7 @@ final class PublicImportError implements BaseModel, ResponseConverter
         ?string $invalidValueToDisplay = null,
         ?int $knownColumnNumber = null,
         ObjectType|string|null $objectType = null,
-        ?string $objectTypeID = null,
+        ?string $objectTypeId = null,
     ): self {
         $obj = new self;
 
@@ -138,7 +138,7 @@ final class PublicImportError implements BaseModel, ResponseConverter
         null !== $invalidValueToDisplay && $obj->invalidValueToDisplay = $invalidValueToDisplay;
         null !== $knownColumnNumber && $obj->knownColumnNumber = $knownColumnNumber;
         null !== $objectType && $obj['objectType'] = $objectType;
-        null !== $objectTypeID && $obj->objectTypeID = $objectTypeID;
+        null !== $objectTypeId && $obj->objectTypeId = $objectTypeId;
 
         return $obj;
     }
@@ -245,7 +245,7 @@ final class PublicImportError implements BaseModel, ResponseConverter
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

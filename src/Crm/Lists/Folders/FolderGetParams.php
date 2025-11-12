@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Crm\Lists\Folders->get
  *
- * @phpstan-type FolderGetParamsShape = array{folderID?: string}
+ * @phpstan-type FolderGetParamsShape = array{folderId?: string}
  */
 final class FolderGetParams implements BaseModel
 {
@@ -26,7 +26,7 @@ final class FolderGetParams implements BaseModel
      * The Id of the folder to retrieve.
      */
     #[Api(optional: true)]
-    public ?string $folderID;
+    public ?string $folderId;
 
     public function __construct()
     {
@@ -38,11 +38,11 @@ final class FolderGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(?string $folderID = null): self
+    public static function with(?string $folderId = null): self
     {
         $obj = new self;
 
-        null !== $folderID && $obj->folderID = $folderID;
+        null !== $folderId && $obj->folderId = $folderId;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class FolderGetParams implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderID = $folderID;
+        $obj->folderId = $folderID;
 
         return $obj;
     }

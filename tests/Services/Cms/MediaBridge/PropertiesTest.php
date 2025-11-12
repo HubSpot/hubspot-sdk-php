@@ -3,9 +3,6 @@
 namespace Tests\Services\Cms\MediaBridge;
 
 use HubspotSDK\Client;
-use HubspotSDK\OptionInput;
-use HubspotSDK\PropertyCreate;
-use HubspotSDK\PropertyName;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,12 +38,14 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->create(
             'objectType',
-            appID: 'appId',
-            fieldType: 'booleancheckbox',
-            groupName: 'groupName',
-            label: 'label',
-            name: 'name',
-            type: 'bool',
+            [
+                'appId' => 'appId',
+                'fieldType' => 'booleancheckbox',
+                'groupName' => 'groupName',
+                'label' => 'label',
+                'name' => 'name',
+                'type' => 'bool',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -61,12 +60,14 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->create(
             'objectType',
-            appID: 'appId',
-            fieldType: 'booleancheckbox',
-            groupName: 'groupName',
-            label: 'label',
-            name: 'name',
-            type: 'bool',
+            [
+                'appId' => 'appId',
+                'fieldType' => 'booleancheckbox',
+                'groupName' => 'groupName',
+                'label' => 'label',
+                'name' => 'name',
+                'type' => 'bool',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -81,8 +82,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->update(
             'propertyName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -97,8 +97,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->update(
             'propertyName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -113,7 +112,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->list(
             'objectType',
-            'appId'
+            ['appId' => 'appId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -128,7 +127,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->list(
             'objectType',
-            'appId'
+            ['appId' => 'appId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -143,8 +142,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->delete(
             'propertyName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -159,8 +157,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->delete(
             'propertyName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -175,8 +172,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->archiveBatch(
             'objectType',
-            appID: 'appId',
-            inputs: [PropertyName::with(name: 'name')]
+            ['appId' => 'appId', 'inputs' => [['name' => 'name']]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -191,8 +187,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->archiveBatch(
             'objectType',
-            appID: 'appId',
-            inputs: [PropertyName::with(name: 'name')]
+            ['appId' => 'appId', 'inputs' => [['name' => 'name']]]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -207,15 +202,17 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->createBatch(
             'objectType',
-            appID: 'appId',
-            inputs: [
-                PropertyCreate::with(
-                    fieldType: 'booleancheckbox',
-                    groupName: 'groupName',
-                    label: 'label',
-                    name: 'name',
-                    type: 'bool',
-                ),
+            [
+                'appId' => 'appId',
+                'inputs' => [
+                    [
+                        'fieldType' => 'booleancheckbox',
+                        'groupName' => 'groupName',
+                        'label' => 'label',
+                        'name' => 'name',
+                        'type' => 'bool',
+                    ],
+                ],
             ],
         );
 
@@ -231,35 +228,35 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->createBatch(
             'objectType',
-            appID: 'appId',
-            inputs: [
-                PropertyCreate::with(
-                    fieldType: 'booleancheckbox',
-                    groupName: 'groupName',
-                    label: 'label',
-                    name: 'name',
-                    type: 'bool',
-                )
-                    ->withCalculationFormula('calculationFormula')
-                    ->withDataSensitivity('non_sensitive')
-                    ->withDescription('description')
-                    ->withDisplayOrder(0)
-                    ->withExternalOptions(true)
-                    ->withFormField(true)
-                    ->withHasUniqueValue(true)
-                    ->withHidden(true)
-                    ->withOptions(
-                        [
-                            OptionInput::with(
-                                displayOrder: 0,
-                                hidden: true,
-                                label: 'label',
-                                value: 'value'
-                            )
-                                ->withDescription('description'),
+            [
+                'appId' => 'appId',
+                'inputs' => [
+                    [
+                        'fieldType' => 'booleancheckbox',
+                        'groupName' => 'groupName',
+                        'label' => 'label',
+                        'name' => 'name',
+                        'type' => 'bool',
+                        'calculationFormula' => 'calculationFormula',
+                        'dataSensitivity' => 'non_sensitive',
+                        'description' => 'description',
+                        'displayOrder' => 0,
+                        'externalOptions' => true,
+                        'formField' => true,
+                        'hasUniqueValue' => true,
+                        'hidden' => true,
+                        'options' => [
+                            [
+                                'displayOrder' => 0,
+                                'hidden' => true,
+                                'label' => 'label',
+                                'value' => 'value',
+                                'description' => 'description',
+                            ],
                         ],
-                    )
-                    ->withReferencedObjectType('referencedObjectType'),
+                        'referencedObjectType' => 'referencedObjectType',
+                    ],
+                ],
             ],
         );
 
@@ -275,8 +272,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->get(
             'propertyName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -291,8 +287,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->get(
             'propertyName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -307,9 +302,9 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->getBatch(
             'objectType',
-            appID: 'appId',
-            archived: true,
-            inputs: [PropertyName::with(name: 'name')],
+            [
+                'appId' => 'appId', 'archived' => true, 'inputs' => [['name' => 'name']],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -324,9 +319,9 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->getBatch(
             'objectType',
-            appID: 'appId',
-            archived: true,
-            inputs: [PropertyName::with(name: 'name')],
+            [
+                'appId' => 'appId', 'archived' => true, 'inputs' => [['name' => 'name']],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

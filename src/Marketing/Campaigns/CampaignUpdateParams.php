@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Marketing\Campaigns->update
  *
  * @phpstan-type CampaignUpdateParamsShape = array{
- *   properties: array<string, string>
+ *   properties: array<string,string>
  * }
  */
 final class CampaignUpdateParams implements BaseModel
@@ -25,7 +25,7 @@ final class CampaignUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var array<string, string> $properties */
+    /** @var array<string,string> $properties */
     #[Api(map: 'string')]
     public array $properties;
 
@@ -53,7 +53,7 @@ final class CampaignUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(array $properties): self
     {
@@ -65,7 +65,7 @@ final class CampaignUpdateParams implements BaseModel
     }
 
     /**
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

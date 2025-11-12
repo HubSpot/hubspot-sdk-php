@@ -7,151 +7,77 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects\Objects;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\Crm\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\Objects\Batch\BatchCreateParams;
+use HubspotSDK\Crm\Objects\Objects\Batch\BatchDeleteParams;
+use HubspotSDK\Crm\Objects\Objects\Batch\BatchGetParams;
+use HubspotSDK\Crm\Objects\Objects\Batch\BatchUpdateParams;
+use HubspotSDK\Crm\Objects\Objects\Batch\BatchUpsertParams;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface BatchContract
 {
     /**
      * @api
      *
-     * @param list<SimplePublicObjectBatchInputForCreate> $inputs
+     * @param array<mixed>|BatchCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $objectType,
-        array $params,
+        array|BatchCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSimplePublicObject;
 
     /**
      * @api
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array<mixed>|BatchUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $objectType,
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $objectType,
-        array $params,
+        array|BatchUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSimplePublicObject;
 
     /**
      * @api
      *
-     * @param list<SimplePublicObjectID> $inputs
+     * @param array<mixed>|BatchDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $objectType,
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $objectType,
-        array $params,
+        array|BatchDeleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param list<SimplePublicObjectID> $inputs
-     * @param list<string> $properties key-value pairs for setting properties for the new object
-     * @param list<string> $propertiesWithHistory key-value pairs for setting properties for the new object and their histories
-     * @param bool $archived whether to return only results that have been archived
-     * @param string $idProperty
+     * @param array<mixed>|BatchGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $objectType,
-        $inputs,
-        $properties,
-        $propertiesWithHistory,
-        $archived = omit,
-        $idProperty = omit,
+        array|BatchGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSimplePublicObject;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
+     * @param array<mixed>|BatchUpsertParams $params
      *
      * @throws APIException
      */
     public function upsert(
         string $objectType,
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function upsertRaw(
-        string $objectType,
-        array $params,
+        array|BatchUpsertParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSimplePublicUpsertObject;
 }

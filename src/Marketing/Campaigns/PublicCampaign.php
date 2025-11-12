@@ -15,7 +15,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   id: string,
  *   businessUnits: list<PublicBusinessUnit>,
  *   createdAt: \DateTimeInterface,
- *   properties: array<string, string>,
+ *   properties: array<string,string>,
  *   updatedAt: \DateTimeInterface,
  * }
  */
@@ -36,7 +36,7 @@ final class PublicCampaign implements BaseModel, ResponseConverter
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    /** @var array<string, string> $properties */
+    /** @var array<string,string> $properties */
     #[Api(map: 'string')]
     public array $properties;
 
@@ -75,7 +75,7 @@ final class PublicCampaign implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicBusinessUnit> $businessUnits
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(
         string $id,
@@ -123,7 +123,7 @@ final class PublicCampaign implements BaseModel, ResponseConverter
     }
 
     /**
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

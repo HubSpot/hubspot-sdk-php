@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Crm\Lists\Memberships->getLists
  *
- * @phpstan-type MembershipGetListsParamsShape = array{objectTypeID: string}
+ * @phpstan-type MembershipGetListsParamsShape = array{objectTypeId: string}
  */
 final class MembershipGetListsParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class MembershipGetListsParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $objectTypeID;
+    public string $objectTypeId;
 
     /**
      * `new MembershipGetListsParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MembershipGetListsParams::with(objectTypeID: ...)
+     * MembershipGetListsParams::with(objectTypeId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class MembershipGetListsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectTypeID): self
+    public static function with(string $objectTypeId): self
     {
         $obj = new self;
 
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class MembershipGetListsParams implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

@@ -13,9 +13,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type VisitorActorShape = array{
  *   id: string,
  *   type: value-of<Type>,
- *   avatar?: string,
- *   email?: string,
- *   name?: string,
+ *   avatar?: string|null,
+ *   email?: string|null,
+ *   name?: string|null,
  * }
  */
 final class VisitorActor implements BaseModel

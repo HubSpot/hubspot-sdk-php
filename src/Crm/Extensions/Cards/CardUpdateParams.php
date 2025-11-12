@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Extensions\Cards->update
  *
  * @phpstan-type CardUpdateParamsShape = array{
- *   appID: int,
+ *   appId: int,
  *   actions?: CardActions,
  *   display?: CardDisplayBody,
  *   fetch?: CardFetchBodyPatch,
@@ -29,7 +29,7 @@ final class CardUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /**
      * Configuration for custom user actions on cards.
@@ -60,7 +60,7 @@ final class CardUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * CardUpdateParams::with(appID: ...)
+     * CardUpdateParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -80,7 +80,7 @@ final class CardUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appID,
+        int $appId,
         ?CardActions $actions = null,
         ?CardDisplayBody $display = null,
         ?CardFetchBodyPatch $fetch = null,
@@ -88,7 +88,7 @@ final class CardUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         null !== $actions && $obj->actions = $actions;
         null !== $display && $obj->display = $display;
@@ -101,7 +101,7 @@ final class CardUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

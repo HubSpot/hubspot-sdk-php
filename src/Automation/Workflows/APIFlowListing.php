@@ -16,11 +16,11 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   createdAt: \DateTimeInterface,
  *   flowType: string,
  *   isEnabled: bool,
- *   objectTypeID: string,
- *   revisionID: string,
+ *   objectTypeId: string,
+ *   revisionId: string,
  *   updatedAt: \DateTimeInterface,
- *   name?: string,
- *   uuid?: string,
+ *   name?: string|null,
+ *   uuid?: string|null,
  * }
  */
 final class APIFlowListing implements BaseModel, ResponseConverter
@@ -42,11 +42,11 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     #[Api]
     public bool $isEnabled;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
-    #[Api('revisionId')]
-    public string $revisionID;
+    #[Api]
+    public string $revisionId;
 
     #[Api]
     public \DateTimeInterface $updatedAt;
@@ -67,8 +67,8 @@ final class APIFlowListing implements BaseModel, ResponseConverter
      *   createdAt: ...,
      *   flowType: ...,
      *   isEnabled: ...,
-     *   objectTypeID: ...,
-     *   revisionID: ...,
+     *   objectTypeId: ...,
+     *   revisionId: ...,
      *   updatedAt: ...,
      * )
      * ```
@@ -101,8 +101,8 @@ final class APIFlowListing implements BaseModel, ResponseConverter
         \DateTimeInterface $createdAt,
         string $flowType,
         bool $isEnabled,
-        string $objectTypeID,
-        string $revisionID,
+        string $objectTypeId,
+        string $revisionId,
         \DateTimeInterface $updatedAt,
         ?string $name = null,
         ?string $uuid = null,
@@ -113,8 +113,8 @@ final class APIFlowListing implements BaseModel, ResponseConverter
         $obj->createdAt = $createdAt;
         $obj->flowType = $flowType;
         $obj->isEnabled = $isEnabled;
-        $obj->objectTypeID = $objectTypeID;
-        $obj->revisionID = $revisionID;
+        $obj->objectTypeId = $objectTypeId;
+        $obj->revisionId = $revisionId;
         $obj->updatedAt = $updatedAt;
 
         null !== $name && $obj->name = $name;
@@ -158,7 +158,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj->revisionID = $revisionID;
+        $obj->revisionId = $revisionID;
 
         return $obj;
     }

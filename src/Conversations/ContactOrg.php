@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ContactOrgShape = array{
- *   company?: string, department?: string, title?: string
+ *   company?: string|null, department?: string|null, title?: string|null
  * }
  */
 final class ContactOrg implements BaseModel

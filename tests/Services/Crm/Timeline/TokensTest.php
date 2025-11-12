@@ -38,10 +38,12 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->create(
             'eventTemplateId',
-            appID: 0,
-            label: 'Pet Type',
-            name: 'petType',
-            type: 'enumeration',
+            [
+                'appId' => 0,
+                'label' => 'Pet Type',
+                'name' => 'petType',
+                'type' => 'enumeration',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -56,10 +58,12 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->create(
             'eventTemplateId',
-            appID: 0,
-            label: 'Pet Type',
-            name: 'petType',
-            type: 'enumeration',
+            [
+                'appId' => 0,
+                'label' => 'Pet Type',
+                'name' => 'petType',
+                'type' => 'enumeration',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -74,9 +78,11 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->update(
             'tokenName',
-            appID: 0,
-            eventTemplateID: 'eventTemplateId',
-            label: 'petType edit',
+            [
+                'appId' => 0,
+                'eventTemplateId' => 'eventTemplateId',
+                'label' => 'petType edit',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -91,9 +97,11 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->update(
             'tokenName',
-            appID: 0,
-            eventTemplateID: 'eventTemplateId',
-            label: 'petType edit',
+            [
+                'appId' => 0,
+                'eventTemplateId' => 'eventTemplateId',
+                'label' => 'petType edit',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -108,8 +116,7 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->delete(
             'tokenName',
-            appID: 0,
-            eventTemplateID: 'eventTemplateId'
+            ['appId' => 0, 'eventTemplateId' => 'eventTemplateId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -124,8 +131,7 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->delete(
             'tokenName',
-            appID: 0,
-            eventTemplateID: 'eventTemplateId'
+            ['appId' => 0, 'eventTemplateId' => 'eventTemplateId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

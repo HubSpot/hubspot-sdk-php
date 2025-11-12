@@ -16,10 +16,10 @@ use HubspotSDK\StandardError;
  *   results: list<PublicStatusBulkResponse>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError>,
- *   links?: array<string, string>,
- *   numErrors?: int,
- *   requestedAt?: \DateTimeInterface,
+ *   errors?: list<StandardError>|null,
+ *   links?: array<string,string>|null,
+ *   numErrors?: int|null,
+ *   requestedAt?: \DateTimeInterface|null,
  * }
  */
 final class BatchResponsePublicStatusBulkResponseWithErrors implements BaseModel
@@ -66,7 +66,7 @@ final class BatchResponsePublicStatusBulkResponseWithErrors implements BaseModel
     /**
      * An object containing related links, where each key is a link name and each value is a URL.
      *
-     * @var array<string, string>|null $links
+     * @var array<string,string>|null $links
      */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
@@ -116,7 +116,7 @@ final class BatchResponsePublicStatusBulkResponseWithErrors implements BaseModel
      * @param list<PublicStatusBulkResponse> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -207,7 +207,7 @@ final class BatchResponsePublicStatusBulkResponseWithErrors implements BaseModel
     /**
      * An object containing related links, where each key is a link name and each value is a URL.
      *
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

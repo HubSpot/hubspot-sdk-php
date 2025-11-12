@@ -10,23 +10,15 @@ use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyArchiveBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\DataSensitivity;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\FieldType;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\Type;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyDeleteParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyListParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\OptionInput;
 use HubspotSDK\Property;
-use HubspotSDK\PropertyCreate;
-use HubspotSDK\PropertyName;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\PropertiesContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class PropertiesService implements PropertiesContract
 {
@@ -38,93 +30,54 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
+     * @phpstan-type FieldType = "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea"
+     *
      * Create a new property for the specified media type
      *
-     * @param string $appID
-     * @param FieldType|value-of<FieldType> $fieldType
-     * @param string $groupName
-     * @param string $label
-     * @param string $name
-     * @param Type|value-of<Type> $type
-     * @param string $calculationFormula
-     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param string $description
-     * @param int $displayOrder
-     * @param bool $externalOptions
-     * @param bool $formField
-     * @param bool $hasUniqueValue
-     * @param bool $hidden
-     * @param list<OptionInput> $options
-     * @param string $referencedObjectType
+     * @param array{
+     *   appId: string,
+     *   fieldType: FieldType,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   type: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     *   calculationFormula?: string,
+     *   dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *   description?: string,
+     *   displayOrder?: int,
+     *   externalOptions?: bool,
+     *   formField?: bool,
+     *   hasUniqueValue?: bool,
+     *   hidden?: bool,
+     *   options?: list<array{
+     *     displayOrder: int,
+     *     hidden: bool,
+     *     label: string,
+     *     value: string,
+     *     description?: string,
+     *   }>,
+     *   referencedObjectType?: string,
+     * }|PropertyCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        $appID,
-        $fieldType,
-        $groupName,
-        $label,
-        $name,
-        $type,
-        $calculationFormula = omit,
-        $dataSensitivity = omit,
-        $description = omit,
-        $displayOrder = omit,
-        $externalOptions = omit,
-        $formField = omit,
-        $hasUniqueValue = omit,
-        $hidden = omit,
-        $options = omit,
-        $referencedObjectType = omit,
+        array|PropertyCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Property {
-        $params = [
-            'appID' => $appID,
-            'fieldType' => $fieldType,
-            'groupName' => $groupName,
-            'label' => $label,
-            'name' => $name,
-            'type' => $type,
-            'calculationFormula' => $calculationFormula,
-            'dataSensitivity' => $dataSensitivity,
-            'description' => $description,
-            'displayOrder' => $displayOrder,
-            'externalOptions' => $externalOptions,
-            'formField' => $formField,
-            'hasUniqueValue' => $hasUniqueValue,
-            'hidden' => $hidden,
-            'options' => $options,
-            'referencedObjectType' => $referencedObjectType,
-        ];
-
-        return $this->createRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Property {
         [$parsed, $options] = PropertyCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/properties/%2$s', $appID, $objectType],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: Property::class,
         );
@@ -133,78 +86,45 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
+     * @phpstan-type FieldTypeShape = "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea"
+     *
      * Update an existing property for an object type.
      *
-     * @param string $appID
-     * @param string $objectType
-     * @param string $calculationFormula
-     * @param string $description
-     * @param int $displayOrder
-     * @param PropertyUpdateParams\FieldType|value-of<PropertyUpdateParams\FieldType> $fieldType
-     * @param bool $formField
-     * @param string $groupName
-     * @param bool $hasUniqueValue
-     * @param bool $hidden
-     * @param string $label
-     * @param list<OptionInput> $options
-     * @param PropertyUpdateParams\Type|value-of<PropertyUpdateParams\Type> $type
+     * @param array{
+     *   appId: string,
+     *   objectType: string,
+     *   calculationFormula?: string,
+     *   description?: string,
+     *   displayOrder?: int,
+     *   fieldType?: FieldTypeShape,
+     *   formField?: bool,
+     *   groupName?: string,
+     *   hasUniqueValue?: bool,
+     *   hidden?: bool,
+     *   label?: string,
+     *   options?: list<array{
+     *     displayOrder: int,
+     *     hidden: bool,
+     *     label: string,
+     *     value: string,
+     *     description?: string,
+     *   }>,
+     *   type?: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     * }|PropertyUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $propertyName,
-        $appID,
-        $objectType,
-        $calculationFormula = omit,
-        $description = omit,
-        $displayOrder = omit,
-        $fieldType = omit,
-        $formField = omit,
-        $groupName = omit,
-        $hasUniqueValue = omit,
-        $hidden = omit,
-        $label = omit,
-        $options = omit,
-        $type = omit,
+        array|PropertyUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Property {
-        $params = [
-            'appID' => $appID,
-            'objectType' => $objectType,
-            'calculationFormula' => $calculationFormula,
-            'description' => $description,
-            'displayOrder' => $displayOrder,
-            'fieldType' => $fieldType,
-            'formField' => $formField,
-            'groupName' => $groupName,
-            'hasUniqueValue' => $hasUniqueValue,
-            'hidden' => $hidden,
-            'label' => $label,
-            'options' => $options,
-            'type' => $type,
-        ];
-
-        return $this->updateRaw($propertyName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $propertyName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Property {
         [$parsed, $options] = PropertyUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -219,7 +139,7 @@ final class PropertiesService implements PropertiesContract
             ],
             body: (object) array_diff_key(
                 $parsed,
-                array_flip(['appID', 'objectType'])
+                array_flip(['appId', 'objectType'])
             ),
             options: $options,
             convert: Property::class,
@@ -231,38 +151,21 @@ final class PropertiesService implements PropertiesContract
      *
      * Get the existing properties defined for a media object type.
      *
-     * @param string $appID
+     * @param array{appId: string}|PropertyListParams $params
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponsePropertyNoPaging {
-        $params = ['appID' => $appID];
-
-        return $this->listRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PropertyListParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponsePropertyNoPaging {
         [$parsed, $options] = PropertyListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -278,40 +181,21 @@ final class PropertiesService implements PropertiesContract
      *
      * Delete an existing property for an object type.
      *
-     * @param string $appID
-     * @param string $objectType
+     * @param array{appId: string, objectType: string}|PropertyDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $propertyName,
-        $appID,
-        $objectType,
+        array|PropertyDeleteParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['appID' => $appID, 'objectType' => $objectType];
-
-        return $this->deleteRaw($propertyName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $propertyName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = PropertyDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -334,40 +218,23 @@ final class PropertiesService implements PropertiesContract
      *
      * Archive a batch of existing properties for the specified types.
      *
-     * @param string $appID
-     * @param list<PropertyName> $inputs
+     * @param array{
+     *   appId: string, inputs: list<array{name: string}>
+     * }|PropertyArchiveBatchParams $params
      *
      * @throws APIException
      */
     public function archiveBatch(
         string $objectType,
-        $appID,
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['appID' => $appID, 'inputs' => $inputs];
-
-        return $this->archiveBatchRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function archiveBatchRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PropertyArchiveBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = PropertyArchiveBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -377,7 +244,7 @@ final class PropertiesService implements PropertiesContract
                 $appID,
                 $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: null,
         );
@@ -388,40 +255,40 @@ final class PropertiesService implements PropertiesContract
      *
      * Create a batch of properties of the specified object type.
      *
-     * @param string $appID
-     * @param list<PropertyCreate> $inputs
+     * @param array{
+     *   appId: string,
+     *   inputs: list<array{
+     *     fieldType: "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea",
+     *     groupName: string,
+     *     label: string,
+     *     name: string,
+     *     type: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     *     calculationFormula?: string,
+     *     dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *     description?: string,
+     *     displayOrder?: int,
+     *     externalOptions?: bool,
+     *     formField?: bool,
+     *     hasUniqueValue?: bool,
+     *     hidden?: bool,
+     *     options?: list<array<mixed>>,
+     *     referencedObjectType?: string,
+     *   }>,
+     * }|PropertyCreateBatchParams $params
      *
      * @throws APIException
      */
     public function createBatch(
         string $objectType,
-        $appID,
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseProperty {
-        $params = ['appID' => $appID, 'inputs' => $inputs];
-
-        return $this->createBatchRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createBatchRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PropertyCreateBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseProperty {
         [$parsed, $options] = PropertyCreateBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -429,7 +296,7 @@ final class PropertiesService implements PropertiesContract
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/batch/create', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: BatchResponseProperty::class,
         );
@@ -440,40 +307,21 @@ final class PropertiesService implements PropertiesContract
      *
      * Get the details for an existing property by name.
      *
-     * @param string $appID
-     * @param string $objectType
+     * @param array{appId: string, objectType: string}|PropertyGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $propertyName,
-        $appID,
-        $objectType,
+        array|PropertyGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Property {
-        $params = ['appID' => $appID, 'objectType' => $objectType];
-
-        return $this->getRaw($propertyName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $propertyName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Property {
         [$parsed, $options] = PropertyGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -496,49 +344,26 @@ final class PropertiesService implements PropertiesContract
      *
      * Get the details for a batch of properties for a specified object type.
      *
-     * @param string $appID
-     * @param bool $archived
-     * @param list<PropertyName> $inputs
-     * @param PropertyGetBatchParams\DataSensitivity|value-of<PropertyGetBatchParams\DataSensitivity> $dataSensitivity
+     * @param array{
+     *   appId: string,
+     *   archived: bool,
+     *   inputs: list<array{name: string}>,
+     *   dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
+     * }|PropertyGetBatchParams $params
      *
      * @throws APIException
      */
     public function getBatch(
         string $objectType,
-        $appID,
-        $archived,
-        $inputs,
-        $dataSensitivity = omit,
+        array|PropertyGetBatchParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BatchResponseProperty {
-        $params = [
-            'appID' => $appID,
-            'archived' => $archived,
-            'inputs' => $inputs,
-            'dataSensitivity' => $dataSensitivity,
-        ];
-
-        return $this->getBatchRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getBatchRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BatchResponseProperty {
         [$parsed, $options] = PropertyGetBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -546,7 +371,7 @@ final class PropertiesService implements PropertiesContract
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/batch/read', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: BatchResponseProperty::class,
         );

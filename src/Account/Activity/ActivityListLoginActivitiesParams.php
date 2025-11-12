@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Account\Activity->listLoginActivities
  *
  * @phpstan-type ActivityListLoginActivitiesParamsShape = array{
- *   after?: string, limit?: int, userID?: int
+ *   after?: string, limit?: int, userId?: int
  * }
  */
 final class ActivityListLoginActivitiesParams implements BaseModel
@@ -40,7 +40,7 @@ final class ActivityListLoginActivitiesParams implements BaseModel
      * The ID of a user, for retrieving user-specific logs.
      */
     #[Api(optional: true)]
-    public ?int $userID;
+    public ?int $userId;
 
     public function __construct()
     {
@@ -55,13 +55,13 @@ final class ActivityListLoginActivitiesParams implements BaseModel
     public static function with(
         ?string $after = null,
         ?int $limit = null,
-        ?int $userID = null
+        ?int $userId = null
     ): self {
         $obj = new self;
 
         null !== $after && $obj->after = $after;
         null !== $limit && $obj->limit = $limit;
-        null !== $userID && $obj->userID = $userID;
+        null !== $userId && $obj->userId = $userId;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class ActivityListLoginActivitiesParams implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }

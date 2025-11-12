@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type NearLimitRecordSampleShape = array{
- *   label: string, objectID: int, percentage: float, usage: int
+ *   label: string, objectId: int, percentage: float, usage: int
  * }
  */
 final class NearLimitRecordSample implements BaseModel
@@ -21,8 +21,8 @@ final class NearLimitRecordSample implements BaseModel
     #[Api]
     public string $label;
 
-    #[Api('objectId')]
-    public int $objectID;
+    #[Api]
+    public int $objectId;
 
     #[Api]
     public float $percentage;
@@ -36,7 +36,7 @@ final class NearLimitRecordSample implements BaseModel
      * To enforce required parameters use
      * ```
      * NearLimitRecordSample::with(
-     *   label: ..., objectID: ..., percentage: ..., usage: ...
+     *   label: ..., objectId: ..., percentage: ..., usage: ...
      * )
      * ```
      *
@@ -62,14 +62,14 @@ final class NearLimitRecordSample implements BaseModel
      */
     public static function with(
         string $label,
-        int $objectID,
+        int $objectId,
         float $percentage,
         int $usage
     ): self {
         $obj = new self;
 
         $obj->label = $label;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
         $obj->percentage = $percentage;
         $obj->usage = $usage;
 
@@ -87,7 +87,7 @@ final class NearLimitRecordSample implements BaseModel
     public function withObjectID(int $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

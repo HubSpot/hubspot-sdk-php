@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams\LegalBasis;
  *
  * @phpstan-type SubscriptionSubscribeParamsShape = array{
  *   emailAddress: string,
- *   subscriptionID: string,
+ *   subscriptionId: string,
  *   legalBasis?: LegalBasis|value-of<LegalBasis>,
  *   legalBasisExplanation?: string,
  * }
@@ -37,8 +37,8 @@ final class SubscriptionSubscribeParams implements BaseModel
     /**
      * ID of the subscription being updated for the contact.
      */
-    #[Api('subscriptionId')]
-    public string $subscriptionID;
+    #[Api]
+    public string $subscriptionId;
 
     /**
      * Legal basis for updating the contact's status (required for GDPR enabled portals).
@@ -59,7 +59,7 @@ final class SubscriptionSubscribeParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SubscriptionSubscribeParams::with(emailAddress: ..., subscriptionID: ...)
+     * SubscriptionSubscribeParams::with(emailAddress: ..., subscriptionId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -84,14 +84,14 @@ final class SubscriptionSubscribeParams implements BaseModel
      */
     public static function with(
         string $emailAddress,
-        string $subscriptionID,
+        string $subscriptionId,
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
     ): self {
         $obj = new self;
 
         $obj->emailAddress = $emailAddress;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionId;
 
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
@@ -116,7 +116,7 @@ final class SubscriptionSubscribeParams implements BaseModel
     public function withSubscriptionID(string $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionID;
 
         return $obj;
     }

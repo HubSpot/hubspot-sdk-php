@@ -19,47 +19,47 @@ use HubspotSDK\Services\Cms\URLRedirectsService;
 final class CmsService implements CmsContract
 {
     /**
-     * @@api
+     * @api
      */
     public AuditLogsService $auditLogs;
 
     /**
-     * @@api
+     * @api
      */
     public BlogsService $blogs;
 
     /**
-     * @@api
+     * @api
      */
     public DomainsService $domains;
 
     /**
-     * @@api
+     * @api
      */
     public HubdbService $hubdb;
 
     /**
-     * @@api
+     * @api
      */
     public MediaBridgeService $mediaBridge;
 
     /**
-     * @@api
+     * @api
      */
     public PagesService $pages;
 
     /**
-     * @@api
+     * @api
      */
     public SiteSearchService $siteSearch;
 
     /**
-     * @@api
+     * @api
      */
     public SourceCodeService $sourceCode;
 
     /**
-     * @@api
+     * @api
      */
     public URLRedirectsService $urlRedirects;
 

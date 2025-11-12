@@ -11,13 +11,8 @@ use HubspotSDK\Crm\Objects\Leads\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Objects\Leads\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Objects\Leads\Batch\BatchGetParams;
 use HubspotSDK\Crm\Objects\Leads\Batch\BatchUpdateParams;
-use HubspotSDK\Crm\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\Crm\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\Leads\BatchContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class BatchService implements BatchContract
 {
@@ -31,33 +26,23 @@ final class BatchService implements BatchContract
      *
      * Create a batch of leads
      *
-     * @param list<SimplePublicObjectBatchInputForCreate> $inputs
+     * @param array{
+     *   inputs: list<array{
+     *     properties: array<string,string>,
+     *     associations?: list<array<mixed>>,
+     *     objectWriteTraceId?: string,
+     *   }>,
+     * }|BatchCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject {
-        $params = ['inputs' => $inputs];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|BatchCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject {
         [$parsed, $options] = BatchCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -75,33 +60,24 @@ final class BatchService implements BatchContract
      *
      * Update a batch of leads by internal ID, or unique property values
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param array{
+     *   inputs: list<array{
+     *     id: string,
+     *     properties: array<string,string>,
+     *     idProperty?: string,
+     *     objectWriteTraceId?: string,
+     *   }>,
+     * }|BatchUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseSimplePublicObject {
-        $params = ['inputs' => $inputs];
-
-        return $this->updateRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        array $params,
+        array|BatchUpdateParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject {
         [$parsed, $options] = BatchUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -119,33 +95,17 @@ final class BatchService implements BatchContract
      *
      * Archive a batch of leads by ID
      *
-     * @param list<SimplePublicObjectID> $inputs
+     * @param array{inputs: list<array{id: string}>}|BatchDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['inputs' => $inputs];
-
-        return $this->deleteRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        array $params,
+        array|BatchDeleteParams $params,
         ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = BatchDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -163,47 +123,23 @@ final class BatchService implements BatchContract
      *
      * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
-     * @param list<SimplePublicObjectID> $inputs
-     * @param list<string> $properties key-value pairs for setting properties for the new object
-     * @param list<string> $propertiesWithHistory key-value pairs for setting properties for the new object and their histories
-     * @param bool $archived whether to return only results that have been archived
-     * @param string $idProperty
+     * @param array{
+     *   inputs: list<array{id: string}>,
+     *   properties: list<string>,
+     *   propertiesWithHistory: list<string>,
+     *   archived?: bool,
+     *   idProperty?: string,
+     * }|BatchGetParams $params
      *
      * @throws APIException
      */
     public function get(
-        $inputs,
-        $properties,
-        $propertiesWithHistory,
-        $archived = omit,
-        $idProperty = omit,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseSimplePublicObject {
-        $params = [
-            'inputs' => $inputs,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-            'archived' => $archived,
-            'idProperty' => $idProperty,
-        ];
-
-        return $this->getRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        array $params,
+        array|BatchGetParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject {
         [$parsed, $options] = BatchGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 

@@ -11,19 +11,15 @@ use HubspotSDK\Marketing\Forms\FormDefinitionBase;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
 use HubspotSDK\Marketing\Forms\FormGetParams;
 use HubspotSDK\Marketing\Forms\FormListParams;
-use HubspotSDK\Marketing\Forms\FormListParams\FormType;
+use HubspotSDK\Marketing\Forms\FormPostSubmitAction;
+use HubspotSDK\Marketing\Forms\FormStyle;
 use HubspotSDK\Marketing\Forms\FormUpdateParams;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
 use HubspotSDK\Marketing\Forms\HubSpotFormDefinition;
-use HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess;
-use HubspotSDK\Marketing\Forms\LegalConsentOptionsImplicitConsentToProcess;
-use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest;
-use HubspotSDK\Marketing\Forms\LegalConsentOptionsNone;
+use HubspotSDK\Marketing\Forms\LifecycleStage;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\FormsContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class FormsService implements FormsContract
 {
@@ -56,52 +52,49 @@ final class FormsService implements FormsContract
      *
      * Update some of the form definition components
      *
-     * @param bool $archived whether this form is archived
-     * @param HubSpotFormConfiguration $configuration
-     * @param FormDisplayOptions $displayOptions options for styling the form
-     * @param list<FieldGroup> $fieldGroups the fields in the form, grouped in rows
-     * @param LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions
-     * @param string $name The name of the form. Expected to be unique for a hub.
+     * @param array{
+     *   archived?: bool,
+     *   configuration?: array{
+     *     allowLinkToResetKnownValues: bool,
+     *     archivable: bool,
+     *     cloneable: bool,
+     *     createNewContactForNewEmail: bool,
+     *     editable: bool,
+     *     language: "af"|"ar-eg"|"bg"|"bn"|"ca-es"|"cs"|"da"|"de"|"el"|"en"|"es"|"es-mx"|"fi"|"fr"|"fr-ca"|"he-il"|"hr"|"hu"|"id"|"it"|"ja"|"ko"|"lt"|"ms"|"nl"|"no-no"|"pl"|"pt"|"pt-br"|"ro"|"ru"|"sk"|"sl"|"sv"|"th"|"tl"|"tr"|"uk"|"vi"|"zh-cn"|"zh-hk"|"zh-tw",
+     *     notifyContactOwner: bool,
+     *     notifyRecipients: list<string>,
+     *     postSubmitAction: array<mixed>|FormPostSubmitAction,
+     *     prePopulateKnownValues: bool,
+     *     recaptchaEnabled: bool,
+     *     lifecycleStages?: list<array<mixed>|LifecycleStage>,
+     *   }|HubSpotFormConfiguration,
+     *   displayOptions?: array{
+     *     renderRawHtml: bool,
+     *     style: array<mixed>|FormStyle,
+     *     submitButtonText: string,
+     *     theme: "default_style"|"canvas"|"linear"|"round"|"sharp"|"legacy",
+     *     cssClass?: string,
+     *   }|FormDisplayOptions,
+     *   fieldGroups?: list<array{
+     *     fields: list<array<string,mixed>>,
+     *     groupType: "default_group"|"progressive"|"queued",
+     *     richTextType: "text"|"image",
+     *     richText?: string,
+     *   }|FieldGroup>,
+     *   legalConsentOptions?: array<string,mixed>,
+     *   name?: string,
+     * }|FormUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $formID,
-        $archived = omit,
-        $configuration = omit,
-        $displayOptions = omit,
-        $fieldGroups = omit,
-        $legalConsentOptions = omit,
-        $name = omit,
+        array|FormUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): FormDefinitionBase {
-        $params = [
-            'archived' => $archived,
-            'configuration' => $configuration,
-            'displayOptions' => $displayOptions,
-            'fieldGroups' => $fieldGroups,
-            'legalConsentOptions' => $legalConsentOptions,
-            'name' => $name,
-        ];
-
-        return $this->updateRaw($formID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $formID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): FormDefinitionBase {
         [$parsed, $options] = FormUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -119,48 +112,24 @@ final class FormsService implements FormsContract
      *
      * Returns a list of forms based on the search filters. By default, it returns the first 20 `hubspot` forms
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived whether to return only results that have been archived
-     * @param list<FormType|value-of<FormType>> $formTypes the form types to be included in the results
-     * @param int $limit the maximum number of results to display per page
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   formTypes?: list<"hubspot"|"captured"|"flow"|"blog_comment"|"all">,
+     *   limit?: int,
+     * }|FormListParams $params
      *
      * @return Page<HubSpotFormDefinition>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $archived = omit,
-        $formTypes = omit,
-        $limit = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'formTypes' => $formTypes,
-            'limit' => $limit,
-        ];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<HubSpotFormDefinition>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|FormListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = FormListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -199,33 +168,19 @@ final class FormsService implements FormsContract
      *
      * Returns a form based on the form ID provided.
      *
-     * @param bool $archived whether to return only results that have been archived
+     * @param array{archived?: bool}|FormGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $formID,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
+        array|FormGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): FormDefinitionBase {
-        $params = ['archived' => $archived];
-
-        return $this->getRaw($formID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $formID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): FormDefinitionBase {
-        [$parsed, $options] = FormGetParams::parseRequest($params, $requestOptions);
+        [$parsed, $options] = FormGetParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

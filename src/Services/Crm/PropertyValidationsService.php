@@ -45,53 +45,23 @@ final class PropertyValidationsService implements PropertyValidationsContract
      * @api
      *
      * @param RuleType|value-of<RuleType> $ruleType
-     * @param string $objectTypeID
-     * @param string $propertyName
-     * @param list<string> $ruleArguments
+     * @param array{
+     *   objectTypeId: string, propertyName: string, ruleArguments: list<string>
+     * }|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params
      *
      * @throws APIException
      */
     public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
         RuleType|string $ruleType,
-        $objectTypeID,
-        $propertyName,
-        $ruleArguments,
+        array|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'objectTypeID' => $objectTypeID,
-            'propertyName' => $propertyName,
-            'ruleArguments' => $ruleArguments,
-        ];
-
-        return $this->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeRaw(
-            $ruleType,
+        [$parsed, $options] = PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-    }
-
-    /**
-     * @api
-     *
-     * @param RuleType|value-of<RuleType> $ruleType
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeRaw(
-        RuleType|string $ruleType,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed {
-        [
-            $parsed, $options,
-        ] = PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $objectTypeID = $parsed['objectTypeID'];
-        unset($parsed['objectTypeID']);
+        $objectTypeID = $parsed['objectTypeId'];
+        unset($parsed['objectTypeId']);
         $propertyName = $parsed['propertyName'];
         unset($parsed['propertyName']);
 
@@ -106,7 +76,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
             ],
             body: (object) array_diff_key(
                 $parsed,
-                array_flip(['objectTypeID', 'propertyName'])
+                array_flip(['objectTypeId', 'propertyName'])
             ),
             options: $options,
             convert: null,
@@ -118,38 +88,21 @@ final class PropertyValidationsService implements PropertyValidationsContract
      *
      * Read a property's validation rules identified by {propertyName}.
      *
-     * @param string $objectTypeID
+     * @param array{objectTypeId: string}|PropertyValidationGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $propertyName,
-        $objectTypeID,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicPropertyValidationRuleNoPaging {
-        $params = ['objectTypeID' => $objectTypeID];
-
-        return $this->getRaw($propertyName, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $propertyName,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PropertyValidationGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicPropertyValidationRuleNoPaging {
         [$parsed, $options] = PropertyValidationGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $objectTypeID = $parsed['objectTypeID'];
-        unset($parsed['objectTypeID']);
+        $objectTypeID = $parsed['objectTypeId'];
+        unset($parsed['objectTypeId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

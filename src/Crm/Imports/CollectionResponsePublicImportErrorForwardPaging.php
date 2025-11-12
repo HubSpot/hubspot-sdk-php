@@ -11,7 +11,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponsePublicImportErrorForwardPagingShape = array{
- *   results: list<PublicImportError>, paging?: ForwardPaging
+ *   results: list<PublicImportError>, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponsePublicImportErrorForwardPaging implements BaseModel

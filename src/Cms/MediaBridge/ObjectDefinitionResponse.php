@@ -10,11 +10,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ObjectDefinitionResponseShape = array{
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   objectTypeName: string,
  *   properties: list<PropertyDefinition>,
  *   propertyGroups: list<GroupView>,
- *   schema?: InboundDBObjectType,
+ *   schema?: InboundDBObjectType|null,
  * }
  */
 final class ObjectDefinitionResponse implements BaseModel
@@ -22,8 +22,8 @@ final class ObjectDefinitionResponse implements BaseModel
     /** @use SdkModel<ObjectDefinitionResponseShape> */
     use SdkModel;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     #[Api]
     public string $objectTypeName;
@@ -45,7 +45,7 @@ final class ObjectDefinitionResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * ObjectDefinitionResponse::with(
-     *   objectTypeID: ..., objectTypeName: ..., properties: ..., propertyGroups: ...
+     *   objectTypeId: ..., objectTypeName: ..., properties: ..., propertyGroups: ...
      * )
      * ```
      *
@@ -73,7 +73,7 @@ final class ObjectDefinitionResponse implements BaseModel
      * @param list<GroupView> $propertyGroups
      */
     public static function with(
-        string $objectTypeID,
+        string $objectTypeId,
         string $objectTypeName,
         array $properties,
         array $propertyGroups,
@@ -81,7 +81,7 @@ final class ObjectDefinitionResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->objectTypeName = $objectTypeName;
         $obj->properties = $properties;
         $obj->propertyGroups = $propertyGroups;
@@ -94,7 +94,7 @@ final class ObjectDefinitionResponse implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

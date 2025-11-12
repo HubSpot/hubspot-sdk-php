@@ -15,8 +15,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Hubdb\Rows->create
  *
  * @phpstan-type RowCreateParamsShape = array{
- *   values: array<string, mixed>,
- *   childTableID?: int,
+ *   values: array<string,mixed>,
+ *   childTableId?: int,
  *   displayIndex?: int,
  *   name?: string,
  *   path?: string,
@@ -31,7 +31,7 @@ final class RowCreateParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @var array<string, mixed> $values
+     * @var array<string,mixed> $values
      */
     #[Api(map: 'mixed')]
     public array $values;
@@ -39,8 +39,8 @@ final class RowCreateParams implements BaseModel
     /**
      * Specifies the value for the column child table id.
      */
-    #[Api('childTableId', optional: true)]
-    public ?int $childTableID;
+    #[Api(optional: true)]
+    public ?int $childTableId;
 
     #[Api(optional: true)]
     public ?int $displayIndex;
@@ -81,11 +81,11 @@ final class RowCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, mixed> $values
+     * @param array<string,mixed> $values
      */
     public static function with(
         array $values,
-        ?int $childTableID = null,
+        ?int $childTableId = null,
         ?int $displayIndex = null,
         ?string $name = null,
         ?string $path = null,
@@ -94,7 +94,7 @@ final class RowCreateParams implements BaseModel
 
         $obj->values = $values;
 
-        null !== $childTableID && $obj->childTableID = $childTableID;
+        null !== $childTableId && $obj->childTableId = $childTableId;
         null !== $displayIndex && $obj->displayIndex = $displayIndex;
         null !== $name && $obj->name = $name;
         null !== $path && $obj->path = $path;
@@ -105,7 +105,7 @@ final class RowCreateParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string, mixed> $values
+     * @param array<string,mixed> $values
      */
     public function withValues(array $values): self
     {
@@ -121,7 +121,7 @@ final class RowCreateParams implements BaseModel
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
-        $obj->childTableID = $childTableID;
+        $obj->childTableId = $childTableID;
 
         return $obj;
     }

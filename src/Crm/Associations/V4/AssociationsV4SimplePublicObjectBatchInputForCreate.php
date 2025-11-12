@@ -12,8 +12,8 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * @phpstan-type AssociationsV4SimplePublicObjectBatchInputForCreateShape = array{
  *   associations: list<PublicAssociationsForObject>,
- *   properties: array<string, string>,
- *   objectWriteTraceID?: string,
+ *   properties: array<string,string>,
+ *   objectWriteTraceId?: string|null,
  * }
  */
 final class AssociationsV4SimplePublicObjectBatchInputForCreate implements BaseModel
@@ -25,12 +25,12 @@ final class AssociationsV4SimplePublicObjectBatchInputForCreate implements BaseM
     #[Api(list: PublicAssociationsForObject::class)]
     public array $associations;
 
-    /** @var array<string, string> $properties */
+    /** @var array<string,string> $properties */
     #[Api(map: 'string')]
     public array $properties;
 
-    #[Api('objectWriteTraceId', optional: true)]
-    public ?string $objectWriteTraceID;
+    #[Api(optional: true)]
+    public ?string $objectWriteTraceId;
 
     /**
      * `new AssociationsV4SimplePublicObjectBatchInputForCreate()` is missing required properties by the API.
@@ -61,19 +61,19 @@ final class AssociationsV4SimplePublicObjectBatchInputForCreate implements BaseM
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicAssociationsForObject> $associations
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(
         array $associations,
         array $properties,
-        ?string $objectWriteTraceID = null
+        ?string $objectWriteTraceId = null
     ): self {
         $obj = new self;
 
         $obj->associations = $associations;
         $obj->properties = $properties;
 
-        null !== $objectWriteTraceID && $obj->objectWriteTraceID = $objectWriteTraceID;
+        null !== $objectWriteTraceId && $obj->objectWriteTraceId = $objectWriteTraceId;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class AssociationsV4SimplePublicObjectBatchInputForCreate implements BaseM
     }
 
     /**
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {
@@ -103,7 +103,7 @@ final class AssociationsV4SimplePublicObjectBatchInputForCreate implements BaseM
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
-        $obj->objectWriteTraceID = $objectWriteTraceID;
+        $obj->objectWriteTraceId = $objectWriteTraceID;
 
         return $obj;
     }

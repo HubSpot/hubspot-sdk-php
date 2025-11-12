@@ -12,12 +12,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type HubDBTableV3RequestShape = array{
  *   label: string,
  *   name: string,
- *   allowChildTables?: bool,
- *   allowPublicAPIAccess?: bool,
- *   columns?: list<ColumnRequest>,
- *   dynamicMetaTags?: array<string, int>,
- *   enableChildTablePages?: bool,
- *   useForPages?: bool,
+ *   allowChildTables?: bool|null,
+ *   allowPublicApiAccess?: bool|null,
+ *   columns?: list<ColumnRequest>|null,
+ *   dynamicMetaTags?: array<string,int>|null,
+ *   enableChildTablePages?: bool|null,
+ *   useForPages?: bool|null,
  * }
  */
 final class HubDBTableV3Request implements BaseModel
@@ -46,8 +46,8 @@ final class HubDBTableV3Request implements BaseModel
     /**
      * Specifies whether the table can be read by public without authorization.
      */
-    #[Api('allowPublicApiAccess', optional: true)]
-    public ?bool $allowPublicAPIAccess;
+    #[Api(optional: true)]
+    public ?bool $allowPublicApiAccess;
 
     /**
      * List of columns in the table.
@@ -60,7 +60,7 @@ final class HubDBTableV3Request implements BaseModel
     /**
      * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
      *
-     * @var array<string, int>|null $dynamicMetaTags
+     * @var array<string,int>|null $dynamicMetaTags
      */
     #[Api(map: 'int', optional: true)]
     public ?array $dynamicMetaTags;
@@ -102,13 +102,13 @@ final class HubDBTableV3Request implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<ColumnRequest> $columns
-     * @param array<string, int> $dynamicMetaTags
+     * @param array<string,int> $dynamicMetaTags
      */
     public static function with(
         string $label,
         string $name,
         ?bool $allowChildTables = null,
-        ?bool $allowPublicAPIAccess = null,
+        ?bool $allowPublicApiAccess = null,
         ?array $columns = null,
         ?array $dynamicMetaTags = null,
         ?bool $enableChildTablePages = null,
@@ -120,7 +120,7 @@ final class HubDBTableV3Request implements BaseModel
         $obj->name = $name;
 
         null !== $allowChildTables && $obj->allowChildTables = $allowChildTables;
-        null !== $allowPublicAPIAccess && $obj->allowPublicAPIAccess = $allowPublicAPIAccess;
+        null !== $allowPublicApiAccess && $obj->allowPublicApiAccess = $allowPublicApiAccess;
         null !== $columns && $obj->columns = $columns;
         null !== $dynamicMetaTags && $obj->dynamicMetaTags = $dynamicMetaTags;
         null !== $enableChildTablePages && $obj->enableChildTablePages = $enableChildTablePages;
@@ -168,7 +168,7 @@ final class HubDBTableV3Request implements BaseModel
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
-        $obj->allowPublicAPIAccess = $allowPublicAPIAccess;
+        $obj->allowPublicApiAccess = $allowPublicAPIAccess;
 
         return $obj;
     }
@@ -189,7 +189,7 @@ final class HubDBTableV3Request implements BaseModel
     /**
      * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
      *
-     * @param array<string, int> $dynamicMetaTags
+     * @param array<string,int> $dynamicMetaTags
      */
     public function withDynamicMetaTags(array $dynamicMetaTags): self
     {

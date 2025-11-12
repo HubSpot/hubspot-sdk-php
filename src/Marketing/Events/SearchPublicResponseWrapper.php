@@ -10,10 +10,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type SearchPublicResponseWrapperShape = array{
- *   appID: int,
- *   externalAccountID: string,
- *   externalEventID: string,
- *   objectID: string,
+ *   appId: int,
+ *   externalAccountId: string,
+ *   externalEventId: string,
+ *   objectId: string,
  * }
  */
 final class SearchPublicResponseWrapper implements BaseModel
@@ -21,17 +21,17 @@ final class SearchPublicResponseWrapper implements BaseModel
     /** @use SdkModel<SearchPublicResponseWrapperShape> */
     use SdkModel;
 
-    #[Api('appId')]
-    public int $appID;
+    #[Api]
+    public int $appId;
 
-    #[Api('externalAccountId')]
-    public string $externalAccountID;
+    #[Api]
+    public string $externalAccountId;
 
-    #[Api('externalEventId')]
-    public string $externalEventID;
+    #[Api]
+    public string $externalEventId;
 
-    #[Api('objectId')]
-    public string $objectID;
+    #[Api]
+    public string $objectId;
 
     /**
      * `new SearchPublicResponseWrapper()` is missing required properties by the API.
@@ -39,7 +39,7 @@ final class SearchPublicResponseWrapper implements BaseModel
      * To enforce required parameters use
      * ```
      * SearchPublicResponseWrapper::with(
-     *   appID: ..., externalAccountID: ..., externalEventID: ..., objectID: ...
+     *   appId: ..., externalAccountId: ..., externalEventId: ..., objectId: ...
      * )
      * ```
      *
@@ -64,17 +64,17 @@ final class SearchPublicResponseWrapper implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appID,
-        string $externalAccountID,
-        string $externalEventID,
-        string $objectID,
+        int $appId,
+        string $externalAccountId,
+        string $externalEventId,
+        string $objectId,
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->externalAccountID = $externalAccountID;
-        $obj->externalEventID = $externalEventID;
-        $obj->objectID = $objectID;
+        $obj->appId = $appId;
+        $obj->externalAccountId = $externalAccountId;
+        $obj->externalEventId = $externalEventId;
+        $obj->objectId = $objectId;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class SearchPublicResponseWrapper implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class SearchPublicResponseWrapper implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountID;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class SearchPublicResponseWrapper implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventID = $externalEventID;
+        $obj->externalEventId = $externalEventID;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class SearchPublicResponseWrapper implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

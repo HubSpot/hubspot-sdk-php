@@ -15,8 +15,8 @@ use HubspotSDK\Events\EventDefinitions\IndexedTimePoint\TimezoneSource;
  *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
  *   timeType: value-of<TimeType>,
  *   timezoneSource: value-of<TimezoneSource>,
- *   zoneID: string,
- *   offset?: IndexOffset,
+ *   zoneId: string,
+ *   offset?: IndexOffset|null,
  * }
  */
 final class IndexedTimePoint implements BaseModel
@@ -35,8 +35,8 @@ final class IndexedTimePoint implements BaseModel
     #[Api(enum: TimezoneSource::class)]
     public string $timezoneSource;
 
-    #[Api('zoneId')]
-    public string $zoneID;
+    #[Api]
+    public string $zoneId;
 
     #[Api(optional: true)]
     public ?IndexOffset $offset;
@@ -47,7 +47,7 @@ final class IndexedTimePoint implements BaseModel
      * To enforce required parameters use
      * ```
      * IndexedTimePoint::with(
-     *   indexReference: ..., timeType: ..., timezoneSource: ..., zoneID: ...
+     *   indexReference: ..., timeType: ..., timezoneSource: ..., zoneId: ...
      * )
      * ```
      *
@@ -77,7 +77,7 @@ final class IndexedTimePoint implements BaseModel
     public static function with(
         NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear $indexReference,
         TimezoneSource|string $timezoneSource,
-        string $zoneID,
+        string $zoneId,
         TimeType|string $timeType = 'INDEXED',
         ?IndexOffset $offset = null,
     ): self {
@@ -86,7 +86,7 @@ final class IndexedTimePoint implements BaseModel
         $obj->indexReference = $indexReference;
         $obj['timeType'] = $timeType;
         $obj['timezoneSource'] = $timezoneSource;
-        $obj->zoneID = $zoneID;
+        $obj->zoneId = $zoneId;
 
         null !== $offset && $obj->offset = $offset;
 
@@ -128,7 +128,7 @@ final class IndexedTimePoint implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj->zoneID = $zoneID;
+        $obj->zoneId = $zoneID;
 
         return $obj;
     }

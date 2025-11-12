@@ -6,40 +6,23 @@ namespace HubspotSDK\ServiceContracts\Conversations;
 
 use HubspotSDK\Conversations\CollectionResponsePublicThreadForwardPaging;
 use HubspotSDK\Conversations\PublicThread;
-use HubspotSDK\Conversations\Threads\ThreadUpdateParams\Status;
+use HubspotSDK\Conversations\Threads\ThreadUpdateParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface ThreadsContract
 {
     /**
      * @api
      *
-     * @param bool $archived Whether this thread is archived. Set to false to restore the thread.
-     * @param Status|value-of<Status> $status the thread's status: `OPEN` or `CLOSED`
+     * @param array<mixed>|ThreadUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $threadID,
-        $archived = omit,
-        $status = omit,
+        array|ThreadUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicThread;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $threadID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicThread;
 
     /**

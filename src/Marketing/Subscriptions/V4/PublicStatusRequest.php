@@ -15,10 +15,10 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState;
  * @phpstan-type PublicStatusRequestShape = array{
  *   channel: value-of<Channel>,
  *   statusState: value-of<StatusState>,
- *   subscriberIDString: string,
- *   subscriptionID: int,
- *   legalBasis?: value-of<LegalBasis>,
- *   legalBasisExplanation?: string,
+ *   subscriberIdString: string,
+ *   subscriptionId: int,
+ *   legalBasis?: value-of<LegalBasis>|null,
+ *   legalBasisExplanation?: string|null,
  * }
  */
 final class PublicStatusRequest implements BaseModel
@@ -45,14 +45,14 @@ final class PublicStatusRequest implements BaseModel
     /**
      * The contact's email address.
      */
-    #[Api('subscriberIdString')]
-    public string $subscriberIDString;
+    #[Api]
+    public string $subscriberIdString;
 
     /**
      * The ID of the subscription to update.
      */
-    #[Api('subscriptionId')]
-    public int $subscriptionID;
+    #[Api]
+    public int $subscriptionId;
 
     /**
      * The legal basis for communication.
@@ -74,7 +74,7 @@ final class PublicStatusRequest implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicStatusRequest::with(
-     *   channel: ..., statusState: ..., subscriberIDString: ..., subscriptionID: ...
+     *   channel: ..., statusState: ..., subscriberIdString: ..., subscriptionId: ...
      * )
      * ```
      *
@@ -105,8 +105,8 @@ final class PublicStatusRequest implements BaseModel
     public static function with(
         Channel|string $channel,
         StatusState|string $statusState,
-        string $subscriberIDString,
-        int $subscriptionID,
+        string $subscriberIdString,
+        int $subscriptionId,
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
     ): self {
@@ -114,8 +114,8 @@ final class PublicStatusRequest implements BaseModel
 
         $obj['channel'] = $channel;
         $obj['statusState'] = $statusState;
-        $obj->subscriberIDString = $subscriberIDString;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriberIdString = $subscriberIdString;
+        $obj->subscriptionId = $subscriptionId;
 
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
@@ -155,7 +155,7 @@ final class PublicStatusRequest implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIDString;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class PublicStatusRequest implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionID;
 
         return $obj;
     }

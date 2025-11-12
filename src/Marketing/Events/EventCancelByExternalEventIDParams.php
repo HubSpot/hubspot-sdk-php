@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Marketing\Events->cancelByExternalEventID
  *
  * @phpstan-type EventCancelByExternalEventIDParamsShape = array{
- *   externalAccountID: string
+ *   externalAccountId: string
  * }
  */
 final class EventCancelByExternalEventIDParams implements BaseModel
@@ -28,14 +28,14 @@ final class EventCancelByExternalEventIDParams implements BaseModel
      * The accountId that is associated with this marketing event in the external event application.
      */
     #[Api]
-    public string $externalAccountID;
+    public string $externalAccountId;
 
     /**
      * `new EventCancelByExternalEventIDParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * EventCancelByExternalEventIDParams::with(externalAccountID: ...)
+     * EventCancelByExternalEventIDParams::with(externalAccountId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,11 +54,11 @@ final class EventCancelByExternalEventIDParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $externalAccountID): self
+    public static function with(string $externalAccountId): self
     {
         $obj = new self;
 
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountId;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class EventCancelByExternalEventIDParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountID;
 
         return $obj;
     }

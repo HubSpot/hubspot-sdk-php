@@ -13,14 +13,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicConversationsMessageEggShape = array{
  *   attachments: list<PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg>,
- *   channelAccountID: string,
- *   channelID: string,
+ *   channelAccountId: string,
+ *   channelId: string,
  *   recipients: list<PublicRecipientEgg>,
- *   senderActorID: string,
+ *   senderActorId: string,
  *   text: string,
  *   type: value-of<Type>,
- *   richText?: string,
- *   subject?: string,
+ *   richText?: string|null,
+ *   subject?: string|null,
  * }
  */
 final class PublicConversationsMessageEgg implements BaseModel
@@ -34,18 +34,18 @@ final class PublicConversationsMessageEgg implements BaseModel
     #[Api(list: Attachment::class)]
     public array $attachments;
 
-    #[Api('channelAccountId')]
-    public string $channelAccountID;
+    #[Api]
+    public string $channelAccountId;
 
-    #[Api('channelId')]
-    public string $channelID;
+    #[Api]
+    public string $channelId;
 
     /** @var list<PublicRecipientEgg> $recipients */
     #[Api(list: PublicRecipientEgg::class)]
     public array $recipients;
 
-    #[Api('senderActorId')]
-    public string $senderActorID;
+    #[Api]
+    public string $senderActorId;
 
     #[Api]
     public string $text;
@@ -67,10 +67,10 @@ final class PublicConversationsMessageEgg implements BaseModel
      * ```
      * PublicConversationsMessageEgg::with(
      *   attachments: ...,
-     *   channelAccountID: ...,
-     *   channelID: ...,
+     *   channelAccountId: ...,
+     *   channelId: ...,
      *   recipients: ...,
-     *   senderActorID: ...,
+     *   senderActorId: ...,
      *   text: ...,
      *   type: ...,
      * )
@@ -105,10 +105,10 @@ final class PublicConversationsMessageEgg implements BaseModel
      */
     public static function with(
         array $attachments,
-        string $channelAccountID,
-        string $channelID,
+        string $channelAccountId,
+        string $channelId,
         array $recipients,
-        string $senderActorID,
+        string $senderActorId,
         string $text,
         Type|string $type = 'MESSAGE',
         ?string $richText = null,
@@ -117,10 +117,10 @@ final class PublicConversationsMessageEgg implements BaseModel
         $obj = new self;
 
         $obj->attachments = $attachments;
-        $obj->channelAccountID = $channelAccountID;
-        $obj->channelID = $channelID;
+        $obj->channelAccountId = $channelAccountId;
+        $obj->channelId = $channelId;
         $obj->recipients = $recipients;
-        $obj->senderActorID = $senderActorID;
+        $obj->senderActorId = $senderActorId;
         $obj->text = $text;
         $obj['type'] = $type;
 
@@ -144,7 +144,7 @@ final class PublicConversationsMessageEgg implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj->channelAccountID = $channelAccountID;
+        $obj->channelAccountId = $channelAccountID;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class PublicConversationsMessageEgg implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj->channelID = $channelID;
+        $obj->channelId = $channelID;
 
         return $obj;
     }
@@ -171,7 +171,7 @@ final class PublicConversationsMessageEgg implements BaseModel
     public function withSenderActorID(string $senderActorID): self
     {
         $obj = clone $this;
-        $obj->senderActorID = $senderActorID;
+        $obj->senderActorId = $senderActorID;
 
         return $obj;
     }

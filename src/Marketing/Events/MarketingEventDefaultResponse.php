@@ -14,15 +14,15 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  * @phpstan-type MarketingEventDefaultResponseShape = array{
  *   eventName: string,
  *   eventOrganizer: string,
- *   customProperties?: list<PropertyValue>,
- *   endDateTime?: \DateTimeInterface,
- *   eventCancelled?: bool,
- *   eventCompleted?: bool,
- *   eventDescription?: string,
- *   eventType?: string,
- *   eventURL?: string,
- *   objectID?: string,
- *   startDateTime?: \DateTimeInterface,
+ *   customProperties?: list<PropertyValue>|null,
+ *   endDateTime?: \DateTimeInterface|null,
+ *   eventCancelled?: bool|null,
+ *   eventCompleted?: bool|null,
+ *   eventDescription?: string|null,
+ *   eventType?: string|null,
+ *   eventUrl?: string|null,
+ *   objectId?: string|null,
+ *   startDateTime?: \DateTimeInterface|null,
  * }
  */
 final class MarketingEventDefaultResponse implements BaseModel, ResponseConverter
@@ -83,11 +83,11 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
     /**
      * The URL in the external event application where the marketing event can be managed.
      */
-    #[Api('eventUrl', optional: true)]
-    public ?string $eventURL;
+    #[Api(optional: true)]
+    public ?string $eventUrl;
 
-    #[Api('objectId', optional: true)]
-    public ?string $objectID;
+    #[Api(optional: true)]
+    public ?string $objectId;
 
     /**
      * The start date and time of the marketing event.
@@ -130,8 +130,8 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
         ?bool $eventCompleted = null,
         ?string $eventDescription = null,
         ?string $eventType = null,
-        ?string $eventURL = null,
-        ?string $objectID = null,
+        ?string $eventUrl = null,
+        ?string $objectId = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -145,8 +145,8 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
         null !== $eventCompleted && $obj->eventCompleted = $eventCompleted;
         null !== $eventDescription && $obj->eventDescription = $eventDescription;
         null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventURL && $obj->eventURL = $eventURL;
-        null !== $objectID && $obj->objectID = $objectID;
+        null !== $eventUrl && $obj->eventUrl = $eventUrl;
+        null !== $objectId && $obj->objectId = $objectId;
         null !== $startDateTime && $obj->startDateTime = $startDateTime;
 
         return $obj;
@@ -246,7 +246,7 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventURL = $eventURL;
+        $obj->eventUrl = $eventURL;
 
         return $obj;
     }
@@ -254,7 +254,7 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

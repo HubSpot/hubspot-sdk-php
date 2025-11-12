@@ -13,7 +13,9 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponseWithTotalPublicSequenceLiteResponseForwardPagingShape = array{
- *   results: list<PublicSequenceLiteResponse>, total: int, paging?: ForwardPaging
+ *   results: list<PublicSequenceLiteResponse>,
+ *   total: int,
+ *   paging?: ForwardPaging|null,
  * }
  */
 final class CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging implements BaseModel, ResponseConverter

@@ -12,8 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Is the input object used to create a new CRM object, containing the properties to be set and optional associations to link the new record with other CRM objects.
  *
  * @phpstan-type SimplePublicObjectInputForCreateShape = array{
- *   properties: array<string, string>,
- *   associations?: list<PublicAssociationsForObject>,
+ *   properties: array<string,string>,
+ *   associations?: list<PublicAssociationsForObject>|null,
  * }
  */
 final class SimplePublicObjectInputForCreate implements BaseModel
@@ -24,7 +24,7 @@ final class SimplePublicObjectInputForCreate implements BaseModel
     /**
      * Key-value pairs for setting properties for the new object.
      *
-     * @var array<string, string> $properties
+     * @var array<string,string> $properties
      */
     #[Api(map: 'string')]
     public array $properties;
@@ -57,7 +57,7 @@ final class SimplePublicObjectInputForCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      * @param list<PublicAssociationsForObject> $associations
      */
     public static function with(
@@ -76,7 +76,7 @@ final class SimplePublicObjectInputForCreate implements BaseModel
     /**
      * Key-value pairs for setting properties for the new object.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

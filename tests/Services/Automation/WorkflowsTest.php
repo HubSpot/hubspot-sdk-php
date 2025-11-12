@@ -2,8 +2,6 @@
 
 namespace Tests\Services\Automation;
 
-use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate;
-use HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationFlowIDCoordinate;
 use HubspotSDK\Client;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -62,7 +60,7 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->list();
+        $result = $this->client->automation->workflows->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -86,14 +84,9 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->batchGet(
-            [
-                APIFlowBatchFetchFlowIDCoordinate::with(
-                    flowID: 'flowId',
-                    type: 'FLOW_ID'
-                ),
-            ],
-        );
+        $result = $this->client->automation->workflows->batchGet([
+            'inputs' => [['flowId' => 'flowId', 'type' => 'FLOW_ID']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -105,14 +98,9 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->batchGet(
-            [
-                APIFlowBatchFetchFlowIDCoordinate::with(
-                    flowID: 'flowId',
-                    type: 'FLOW_ID'
-                ),
-            ],
-        );
+        $result = $this->client->automation->workflows->batchGet([
+            'inputs' => [['flowId' => 'flowId', 'type' => 'FLOW_ID']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -124,14 +112,14 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->batchGetIDMappings(
-            [
-                APIFlowBatchFetchMigrationFlowIDCoordinate::with(
-                    flowMigrationStatuses: 'flowMigrationStatuses',
-                    type: 'FLOW_ID'
-                ),
+        $result = $this->client->automation->workflows->batchGetIDMappings([
+            'inputs' => [
+                [
+                    'flowMigrationStatuses' => 'flowMigrationStatuses',
+                    'type' => 'FLOW_ID',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -143,14 +131,14 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->batchGetIDMappings(
-            [
-                APIFlowBatchFetchMigrationFlowIDCoordinate::with(
-                    flowMigrationStatuses: 'flowMigrationStatuses',
-                    type: 'FLOW_ID'
-                ),
+        $result = $this->client->automation->workflows->batchGetIDMappings([
+            'inputs' => [
+                [
+                    'flowMigrationStatuses' => 'flowMigrationStatuses',
+                    'type' => 'FLOW_ID',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -174,7 +162,7 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->listEmailCampaigns();
+        $result = $this->client->automation->workflows->listEmailCampaigns([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

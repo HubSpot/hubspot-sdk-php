@@ -5,130 +5,66 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing\Campaigns;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\Campaigns\Budget\BudgetCreateParams;
+use HubspotSDK\Marketing\Campaigns\Budget\BudgetDeleteParams;
+use HubspotSDK\Marketing\Campaigns\Budget\BudgetGetParams;
+use HubspotSDK\Marketing\Campaigns\Budget\BudgetUpdateParams;
 use HubspotSDK\Marketing\Campaigns\PublicBudgetItem;
 use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface BudgetContract
 {
     /**
      * @api
      *
-     * @param float $amount
-     * @param string $name
-     * @param int $order
-     * @param string $description
+     * @param array<mixed>|BudgetCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $campaignGuid,
-        $amount,
-        $name,
-        $order,
-        $description = omit,
+        array|BudgetCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicBudgetItem;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $campaignGuid,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): PublicBudgetItem;
-
-    /**
-     * @api
-     *
-     * @param string $campaignGuid
-     * @param float $amount
-     * @param string $name
-     * @param int $order
-     * @param string $description
+     * @param array<mixed>|BudgetUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         int $budgetID,
-        $campaignGuid,
-        $amount,
-        $name,
-        $order,
-        $description = omit,
+        array|BudgetUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicBudgetItem;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        int $budgetID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): PublicBudgetItem;
-
-    /**
-     * @api
-     *
-     * @param string $campaignGuid
+     * @param array<mixed>|BudgetDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         int $budgetID,
-        $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        array|BudgetDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        int $budgetID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $campaignGuid
+     * @param array<mixed>|BudgetGetParams $params
      *
      * @throws APIException
      */
     public function get(
         int $budgetID,
-        $campaignGuid,
-        ?RequestOptions $requestOptions = null
-    ): PublicBudgetItem;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        int $budgetID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|BudgetGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicBudgetItem;
 
     /**

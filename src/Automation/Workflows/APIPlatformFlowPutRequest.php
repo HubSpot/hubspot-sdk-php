@@ -22,18 +22,18 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  * @phpstan-type APIPlatformFlowPutRequestShape = array{
  *   actions: list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction>,
  *   blockedDates: list<APIBlockedDate>,
- *   customProperties: array<string, string>,
+ *   customProperties: array<string,string>,
  *   isEnabled: bool,
- *   revisionID: string,
+ *   revisionId: string,
  *   timeWindows: list<APITimeWindow>,
  *   type: value-of<Type>,
- *   description?: string,
- *   enrollmentCriteria?: APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
- *   enrollmentSchedule?: APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
- *   name?: string,
- *   startActionID?: string,
- *   suppressionFilterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
- *   uuid?: string,
+ *   description?: string|null,
+ *   enrollmentCriteria?: null|APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
+ *   enrollmentSchedule?: null|APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
+ *   name?: string|null,
+ *   startActionId?: string|null,
+ *   suppressionFilterBranch?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   uuid?: string|null,
  * }
  */
 final class APIPlatformFlowPutRequest implements BaseModel
@@ -51,15 +51,15 @@ final class APIPlatformFlowPutRequest implements BaseModel
     #[Api(list: APIBlockedDate::class)]
     public array $blockedDates;
 
-    /** @var array<string, string> $customProperties */
+    /** @var array<string,string> $customProperties */
     #[Api(map: 'string')]
     public array $customProperties;
 
     #[Api]
     public bool $isEnabled;
 
-    #[Api('revisionId')]
-    public string $revisionID;
+    #[Api]
+    public string $revisionId;
 
     /** @var list<APITimeWindow> $timeWindows */
     #[Api(list: APITimeWindow::class)]
@@ -81,8 +81,8 @@ final class APIPlatformFlowPutRequest implements BaseModel
     #[Api(optional: true)]
     public ?string $name;
 
-    #[Api('startActionId', optional: true)]
-    public ?string $startActionID;
+    #[Api(optional: true)]
+    public ?string $startActionId;
 
     #[Api(optional: true)]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch;
@@ -100,7 +100,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
      *   blockedDates: ...,
      *   customProperties: ...,
      *   isEnabled: ...,
-     *   revisionID: ...,
+     *   revisionId: ...,
      *   timeWindows: ...,
      *   type: ...,
      * )
@@ -131,7 +131,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
      *
      * @param list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction> $actions
      * @param list<APIBlockedDate> $blockedDates
-     * @param array<string, string> $customProperties
+     * @param array<string,string> $customProperties
      * @param list<APITimeWindow> $timeWindows
      * @param Type|value-of<Type> $type
      */
@@ -140,14 +140,14 @@ final class APIPlatformFlowPutRequest implements BaseModel
         array $blockedDates,
         array $customProperties,
         bool $isEnabled,
-        string $revisionID,
+        string $revisionId,
         array $timeWindows,
         Type|string $type = 'PLATFORM_FLOW',
         ?string $description = null,
         APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria = null,
         APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule = null,
         ?string $name = null,
-        ?string $startActionID = null,
+        ?string $startActionId = null,
         PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch = null,
         ?string $uuid = null,
     ): self {
@@ -157,7 +157,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
         $obj->blockedDates = $blockedDates;
         $obj->customProperties = $customProperties;
         $obj->isEnabled = $isEnabled;
-        $obj->revisionID = $revisionID;
+        $obj->revisionId = $revisionId;
         $obj->timeWindows = $timeWindows;
         $obj['type'] = $type;
 
@@ -165,7 +165,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
         null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
         null !== $enrollmentSchedule && $obj->enrollmentSchedule = $enrollmentSchedule;
         null !== $name && $obj->name = $name;
-        null !== $startActionID && $obj->startActionID = $startActionID;
+        null !== $startActionId && $obj->startActionId = $startActionId;
         null !== $suppressionFilterBranch && $obj->suppressionFilterBranch = $suppressionFilterBranch;
         null !== $uuid && $obj->uuid = $uuid;
 
@@ -195,7 +195,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
     }
 
     /**
-     * @param array<string, string> $customProperties
+     * @param array<string,string> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {
@@ -216,7 +216,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj->revisionID = $revisionID;
+        $obj->revisionId = $revisionID;
 
         return $obj;
     }
@@ -280,7 +280,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
     public function withStartActionID(string $startActionID): self
     {
         $obj = clone $this;
-        $obj->startActionID = $startActionID;
+        $obj->startActionId = $startActionID;
 
         return $obj;
     }

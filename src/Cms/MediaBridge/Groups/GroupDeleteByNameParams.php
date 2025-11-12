@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\MediaBridge\Groups->deleteByName
  *
  * @phpstan-type GroupDeleteByNameParamsShape = array{
- *   appID: string, objectType: string
+ *   appId: string, objectType: string
  * }
  */
 final class GroupDeleteByNameParams implements BaseModel
@@ -25,7 +25,7 @@ final class GroupDeleteByNameParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appID;
+    public string $appId;
 
     #[Api]
     public string $objectType;
@@ -35,7 +35,7 @@ final class GroupDeleteByNameParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * GroupDeleteByNameParams::with(appID: ..., objectType: ...)
+     * GroupDeleteByNameParams::with(appId: ..., objectType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,11 +54,11 @@ final class GroupDeleteByNameParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $appID, string $objectType): self
+    public static function with(string $appId, string $objectType): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj->objectType = $objectType;
 
         return $obj;
@@ -67,7 +67,7 @@ final class GroupDeleteByNameParams implements BaseModel
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

@@ -17,7 +17,7 @@ use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams\OverrideState;
  * @see HubspotSDK\Crm\FeatureFlags\Apps->update
  *
  * @phpstan-type AppUpdateParamsShape = array{
- *   appID: int,
+ *   appId: int,
  *   defaultState: DefaultState|value-of<DefaultState>,
  *   overrideState?: OverrideState|value-of<OverrideState>,
  * }
@@ -29,7 +29,7 @@ final class AppUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /** @var value-of<DefaultState> $defaultState */
     #[Api(enum: DefaultState::class)]
@@ -44,7 +44,7 @@ final class AppUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * AppUpdateParams::with(appID: ..., defaultState: ...)
+     * AppUpdateParams::with(appId: ..., defaultState: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -67,13 +67,13 @@ final class AppUpdateParams implements BaseModel
      * @param OverrideState|value-of<OverrideState> $overrideState
      */
     public static function with(
-        int $appID,
+        int $appId,
         DefaultState|string $defaultState,
         OverrideState|string|null $overrideState = null,
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj['defaultState'] = $defaultState;
 
         null !== $overrideState && $obj['overrideState'] = $overrideState;
@@ -84,7 +84,7 @@ final class AppUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

@@ -14,9 +14,9 @@ use HubspotSDK\PublicCommunicationSubscriptionFilter\FilterType;
  *   acceptedOptStates: list<string>,
  *   channel: string,
  *   filterType: value-of<FilterType>,
- *   subscriptionIDs: list<string>,
+ *   subscriptionIds: list<string>,
  *   subscriptionType: string,
- *   businessUnitID?: string,
+ *   businessUnitId?: string|null,
  * }
  */
 final class PublicCommunicationSubscriptionFilter implements BaseModel
@@ -35,15 +35,15 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
     #[Api(enum: FilterType::class)]
     public string $filterType;
 
-    /** @var list<string> $subscriptionIDs */
-    #[Api('subscriptionIds', list: 'string')]
-    public array $subscriptionIDs;
+    /** @var list<string> $subscriptionIds */
+    #[Api(list: 'string')]
+    public array $subscriptionIds;
 
     #[Api]
     public string $subscriptionType;
 
-    #[Api('businessUnitId', optional: true)]
-    public ?string $businessUnitID;
+    #[Api(optional: true)]
+    public ?string $businessUnitId;
 
     /**
      * `new PublicCommunicationSubscriptionFilter()` is missing required properties by the API.
@@ -54,7 +54,7 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
      *   acceptedOptStates: ...,
      *   channel: ...,
      *   filterType: ...,
-     *   subscriptionIDs: ...,
+     *   subscriptionIds: ...,
      *   subscriptionType: ...,
      * )
      * ```
@@ -81,26 +81,26 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $acceptedOptStates
-     * @param list<string> $subscriptionIDs
+     * @param list<string> $subscriptionIds
      * @param FilterType|value-of<FilterType> $filterType
      */
     public static function with(
         array $acceptedOptStates,
         string $channel,
-        array $subscriptionIDs,
+        array $subscriptionIds,
         string $subscriptionType,
         FilterType|string $filterType = 'COMMUNICATION_SUBSCRIPTION',
-        ?string $businessUnitID = null,
+        ?string $businessUnitId = null,
     ): self {
         $obj = new self;
 
         $obj->acceptedOptStates = $acceptedOptStates;
         $obj->channel = $channel;
         $obj['filterType'] = $filterType;
-        $obj->subscriptionIDs = $subscriptionIDs;
+        $obj->subscriptionIds = $subscriptionIds;
         $obj->subscriptionType = $subscriptionType;
 
-        null !== $businessUnitID && $obj->businessUnitID = $businessUnitID;
+        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
     public function withSubscriptionIDs(array $subscriptionIDs): self
     {
         $obj = clone $this;
-        $obj->subscriptionIDs = $subscriptionIDs;
+        $obj->subscriptionIds = $subscriptionIDs;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
     public function withBusinessUnitID(string $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitID = $businessUnitID;
+        $obj->businessUnitId = $businessUnitID;
 
         return $obj;
     }

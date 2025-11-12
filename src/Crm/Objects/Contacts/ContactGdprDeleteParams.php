@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Objects\Contacts->gdprDelete
  *
  * @phpstan-type ContactGdprDeleteParamsShape = array{
- *   objectID: string, idProperty?: string
+ *   objectId: string, idProperty?: string
  * }
  */
 final class ContactGdprDeleteParams implements BaseModel
@@ -24,8 +24,8 @@ final class ContactGdprDeleteParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api('objectId')]
-    public string $objectID;
+    #[Api]
+    public string $objectId;
 
     #[Api(optional: true)]
     public ?string $idProperty;
@@ -35,7 +35,7 @@ final class ContactGdprDeleteParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ContactGdprDeleteParams::with(objectID: ...)
+     * ContactGdprDeleteParams::with(objectId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -55,12 +55,12 @@ final class ContactGdprDeleteParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $objectID,
+        string $objectId,
         ?string $idProperty = null
     ): self {
         $obj = new self;
 
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
 
         null !== $idProperty && $obj->idProperty = $idProperty;
 
@@ -70,7 +70,7 @@ final class ContactGdprDeleteParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

@@ -17,14 +17,14 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Status;
  *   channel: value-of<Channel>,
  *   source: string,
  *   status: value-of<Status>,
- *   subscriberIDString: string,
- *   subscriptionID: int,
+ *   subscriberIdString: string,
+ *   subscriptionId: int,
  *   timestamp: \DateTimeInterface,
- *   businessUnitID?: int,
- *   legalBasis?: value-of<LegalBasis>,
- *   legalBasisExplanation?: string,
- *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>,
- *   subscriptionName?: string,
+ *   businessUnitId?: int|null,
+ *   legalBasis?: value-of<LegalBasis>|null,
+ *   legalBasisExplanation?: string|null,
+ *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>|null,
+ *   subscriptionName?: string|null,
  * }
  */
 final class PublicStatus implements BaseModel
@@ -57,14 +57,14 @@ final class PublicStatus implements BaseModel
     /**
      * The contact's email address.
      */
-    #[Api('subscriberIdString')]
-    public string $subscriberIDString;
+    #[Api]
+    public string $subscriberIdString;
 
     /**
      * The unique identifier of the subscription.
      */
-    #[Api('subscriptionId')]
-    public int $subscriptionID;
+    #[Api]
+    public int $subscriptionId;
 
     /**
      * The date and time when the subscription status was last updated.
@@ -75,8 +75,8 @@ final class PublicStatus implements BaseModel
     /**
      * The ID of the business unit associated with the subscription.
      */
-    #[Api('businessUnitId', optional: true)]
-    public ?int $businessUnitID;
+    #[Api(optional: true)]
+    public ?int $businessUnitId;
 
     /**
      * The legal basis for communication, with options including 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', and 'LEGITIMATE_INTEREST_OTHER'.
@@ -115,8 +115,8 @@ final class PublicStatus implements BaseModel
      *   channel: ...,
      *   source: ...,
      *   status: ...,
-     *   subscriberIDString: ...,
-     *   subscriptionID: ...,
+     *   subscriberIdString: ...,
+     *   subscriptionId: ...,
      *   timestamp: ...,
      * )
      * ```
@@ -152,10 +152,10 @@ final class PublicStatus implements BaseModel
         Channel|string $channel,
         string $source,
         Status|string $status,
-        string $subscriberIDString,
-        int $subscriptionID,
+        string $subscriberIdString,
+        int $subscriptionId,
         \DateTimeInterface $timestamp,
-        ?int $businessUnitID = null,
+        ?int $businessUnitId = null,
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
         SetStatusSuccessReason|string|null $setStatusSuccessReason = null,
@@ -166,11 +166,11 @@ final class PublicStatus implements BaseModel
         $obj['channel'] = $channel;
         $obj->source = $source;
         $obj['status'] = $status;
-        $obj->subscriberIDString = $subscriberIDString;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriberIdString = $subscriberIdString;
+        $obj->subscriptionId = $subscriptionId;
         $obj->timestamp = $timestamp;
 
-        null !== $businessUnitID && $obj->businessUnitID = $businessUnitID;
+        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
         null !== $setStatusSuccessReason && $obj['setStatusSuccessReason'] = $setStatusSuccessReason;
@@ -222,7 +222,7 @@ final class PublicStatus implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIDString;
 
         return $obj;
     }
@@ -233,7 +233,7 @@ final class PublicStatus implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionID;
 
         return $obj;
     }
@@ -255,7 +255,7 @@ final class PublicStatus implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitID = $businessUnitID;
+        $obj->businessUnitId = $businessUnitID;
 
         return $obj;
     }

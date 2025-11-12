@@ -26,37 +26,25 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * @param string $fromObjectType
-     * @param list<PublicAssociation> $inputs
+     * @param array{
+     *   fromObjectType: string,
+     *   inputs: list<array{
+     *     from: array<mixed>|PublicObjectID,
+     *     to: array<mixed>|PublicObjectID,
+     *     type: string,
+     *   }|PublicAssociation>,
+     * }|BatchCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $toObjectType,
-        $fromObjectType,
-        $inputs,
+        array|BatchCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BatchResponsePublicAssociation {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
-
-        return $this->createRaw($toObjectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BatchResponsePublicAssociation {
         [$parsed, $options] = BatchCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
@@ -80,37 +68,25 @@ final class BatchService implements BatchContract
      *
      * This endpoint allows you to archive multiple associations between specified 'from' and 'to' object types in a single batch request.
      *
-     * @param string $fromObjectType
-     * @param list<PublicAssociation> $inputs
+     * @param array{
+     *   fromObjectType: string,
+     *   inputs: list<array{
+     *     from: array<mixed>|PublicObjectID,
+     *     to: array<mixed>|PublicObjectID,
+     *     type: string,
+     *   }|PublicAssociation>,
+     * }|BatchDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $toObjectType,
-        $fromObjectType,
-        $inputs,
+        array|BatchDeleteParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
-
-        return $this->deleteRaw($toObjectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = BatchDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
@@ -132,37 +108,20 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * @param string $fromObjectType
-     * @param list<PublicObjectID> $inputs
+     * @param array{
+     *   fromObjectType: string, inputs: list<array{id: string}|PublicObjectID>
+     * }|BatchGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $toObjectType,
-        $fromObjectType,
-        $inputs,
+        array|BatchGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BatchResponsePublicAssociationMulti {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
-
-        return $this->getRaw($toObjectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $toObjectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BatchResponsePublicAssociationMulti {
         [$parsed, $options] = BatchGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);

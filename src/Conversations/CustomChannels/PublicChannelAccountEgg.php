@@ -12,9 +12,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicChannelAccountEggShape = array{
  *   authorized: bool,
- *   inboxID: string,
+ *   inboxId: string,
  *   name: string,
- *   deliveryIdentifier?: PublicDeliveryIdentifier,
+ *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
  * }
  */
 final class PublicChannelAccountEgg implements BaseModel
@@ -25,8 +25,8 @@ final class PublicChannelAccountEgg implements BaseModel
     #[Api]
     public bool $authorized;
 
-    #[Api('inboxId')]
-    public string $inboxID;
+    #[Api]
+    public string $inboxId;
 
     #[Api]
     public string $name;
@@ -39,7 +39,7 @@ final class PublicChannelAccountEgg implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicChannelAccountEgg::with(authorized: ..., inboxID: ..., name: ...)
+     * PublicChannelAccountEgg::with(authorized: ..., inboxId: ..., name: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -63,14 +63,14 @@ final class PublicChannelAccountEgg implements BaseModel
      */
     public static function with(
         bool $authorized,
-        string $inboxID,
+        string $inboxId,
         string $name,
         ?PublicDeliveryIdentifier $deliveryIdentifier = null,
     ): self {
         $obj = new self;
 
         $obj->authorized = $authorized;
-        $obj->inboxID = $inboxID;
+        $obj->inboxId = $inboxId;
         $obj->name = $name;
 
         null !== $deliveryIdentifier && $obj->deliveryIdentifier = $deliveryIdentifier;
@@ -89,7 +89,7 @@ final class PublicChannelAccountEgg implements BaseModel
     public function withInboxID(string $inboxID): self
     {
         $obj = clone $this;
-        $obj->inboxID = $inboxID;
+        $obj->inboxId = $inboxID;
 
         return $obj;
     }

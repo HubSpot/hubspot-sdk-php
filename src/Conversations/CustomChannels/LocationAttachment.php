@@ -14,9 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   latitude: float,
  *   longitude: float,
  *   type: value-of<Type>,
- *   address?: string,
- *   name?: string,
- *   url?: string,
+ *   address?: string|null,
+ *   name?: string|null,
+ *   url?: string|null,
  * }
  */
 final class LocationAttachment implements BaseModel

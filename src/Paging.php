@@ -9,7 +9,9 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type PagingShape = array{next?: NextPage, prev?: PreviousPage}
+ * @phpstan-type PagingShape = array{
+ *   next?: NextPage|null, prev?: PreviousPage|null
+ * }
  */
 final class Paging implements BaseModel
 {

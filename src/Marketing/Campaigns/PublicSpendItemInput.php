@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicSpendItemInputShape = array{
- *   amount: float, name: string, order: int, description?: string
+ *   amount: float, name: string, order: int, description?: string|null
  * }
  */
 final class PublicSpendItemInput implements BaseModel

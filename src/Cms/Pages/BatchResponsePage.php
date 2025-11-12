@@ -17,8 +17,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   results: list<Page>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   links?: array<string, string>,
- *   requestedAt?: \DateTimeInterface,
+ *   links?: array<string,string>|null,
+ *   requestedAt?: \DateTimeInterface|null,
  * }
  */
 final class BatchResponsePage implements BaseModel
@@ -40,7 +40,7 @@ final class BatchResponsePage implements BaseModel
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var array<string, string>|null $links */
+    /** @var array<string,string>|null $links */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
@@ -79,7 +79,7 @@ final class BatchResponsePage implements BaseModel
      *
      * @param list<Page> $results
      * @param Status|value-of<Status> $status
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -141,7 +141,7 @@ final class BatchResponsePage implements BaseModel
     }
 
     /**
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

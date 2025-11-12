@@ -13,14 +13,14 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  * Defines attributes to update on an object type.
  *
  * @phpstan-type ObjectTypeDefinitionPatchShape = array{
- *   clearDescription?: bool,
- *   description?: string,
- *   labels?: ObjectTypeDefinitionLabels,
- *   primaryDisplayProperty?: string,
- *   requiredProperties?: list<string>,
- *   restorable?: bool,
- *   searchableProperties?: list<string>,
- *   secondaryDisplayProperties?: list<string>,
+ *   clearDescription?: bool|null,
+ *   description?: string|null,
+ *   labels?: ObjectTypeDefinitionLabels|null,
+ *   primaryDisplayProperty?: string|null,
+ *   requiredProperties?: list<string>|null,
+ *   restorable?: bool|null,
+ *   searchableProperties?: list<string>|null,
+ *   secondaryDisplayProperties?: list<string>|null,
  * }
  */
 final class ObjectTypeDefinitionPatch implements BaseModel

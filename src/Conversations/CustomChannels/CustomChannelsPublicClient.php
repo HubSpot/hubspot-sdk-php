@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type CustomChannelsPublicClientShape = array{
- *   clientType: value-of<ClientType>, integrationAppID?: int
+ *   clientType: value-of<ClientType>, integrationAppId?: int|null
  * }
  */
 final class CustomChannelsPublicClient implements BaseModel
@@ -23,8 +23,8 @@ final class CustomChannelsPublicClient implements BaseModel
     #[Api(enum: ClientType::class)]
     public string $clientType;
 
-    #[Api('integrationAppId', optional: true)]
-    public ?int $integrationAppID;
+    #[Api(optional: true)]
+    public ?int $integrationAppId;
 
     /**
      * `new CustomChannelsPublicClient()` is missing required properties by the API.
@@ -54,13 +54,13 @@ final class CustomChannelsPublicClient implements BaseModel
      */
     public static function with(
         ClientType|string $clientType,
-        ?int $integrationAppID = null
+        ?int $integrationAppId = null
     ): self {
         $obj = new self;
 
         $obj['clientType'] = $clientType;
 
-        null !== $integrationAppID && $obj->integrationAppID = $integrationAppID;
+        null !== $integrationAppId && $obj->integrationAppId = $integrationAppId;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class CustomChannelsPublicClient implements BaseModel
     public function withIntegrationAppID(int $integrationAppID): self
     {
         $obj = clone $this;
-        $obj->integrationAppID = $integrationAppID;
+        $obj->integrationAppId = $integrationAppID;
 
         return $obj;
     }

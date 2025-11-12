@@ -11,15 +11,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type ConversationsPublicChannelAccountShape = array{
  *   archived: bool,
- *   id?: string,
- *   active?: bool,
- *   archivedAt?: \DateTimeInterface,
- *   authorized?: bool,
- *   channelID?: string,
- *   createdAt?: \DateTimeInterface,
- *   deliveryIdentifier?: PublicDeliveryIdentifier,
- *   inboxID?: string,
- *   name?: string,
+ *   id?: string|null,
+ *   active?: bool|null,
+ *   archivedAt?: \DateTimeInterface|null,
+ *   authorized?: bool|null,
+ *   channelId?: string|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+ *   inboxId?: string|null,
+ *   name?: string|null,
  * }
  */
 final class ConversationsPublicChannelAccount implements BaseModel
@@ -51,8 +51,8 @@ final class ConversationsPublicChannelAccount implements BaseModel
     /**
      * The ID of the channel that the channel account is an instance of.
      */
-    #[Api('channelId', optional: true)]
-    public ?string $channelID;
+    #[Api(optional: true)]
+    public ?string $channelId;
 
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
@@ -63,8 +63,8 @@ final class ConversationsPublicChannelAccount implements BaseModel
     /**
      * The ID of the conversations inbox that contains the channel account.
      */
-    #[Api('inboxId', optional: true)]
-    public ?string $inboxID;
+    #[Api(optional: true)]
+    public ?string $inboxId;
 
     /**
      * The name of the channel account.
@@ -102,10 +102,10 @@ final class ConversationsPublicChannelAccount implements BaseModel
         ?bool $active = null,
         ?\DateTimeInterface $archivedAt = null,
         ?bool $authorized = null,
-        ?string $channelID = null,
+        ?string $channelId = null,
         ?\DateTimeInterface $createdAt = null,
         ?PublicDeliveryIdentifier $deliveryIdentifier = null,
-        ?string $inboxID = null,
+        ?string $inboxId = null,
         ?string $name = null,
     ): self {
         $obj = new self;
@@ -116,10 +116,10 @@ final class ConversationsPublicChannelAccount implements BaseModel
         null !== $active && $obj->active = $active;
         null !== $archivedAt && $obj->archivedAt = $archivedAt;
         null !== $authorized && $obj->authorized = $authorized;
-        null !== $channelID && $obj->channelID = $channelID;
+        null !== $channelId && $obj->channelId = $channelId;
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $deliveryIdentifier && $obj->deliveryIdentifier = $deliveryIdentifier;
-        null !== $inboxID && $obj->inboxID = $inboxID;
+        null !== $inboxId && $obj->inboxId = $inboxId;
         null !== $name && $obj->name = $name;
 
         return $obj;
@@ -177,7 +177,7 @@ final class ConversationsPublicChannelAccount implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj->channelID = $channelID;
+        $obj->channelId = $channelID;
 
         return $obj;
     }
@@ -205,7 +205,7 @@ final class ConversationsPublicChannelAccount implements BaseModel
     public function withInboxID(string $inboxID): self
     {
         $obj = clone $this;
-        $obj->inboxID = $inboxID;
+        $obj->inboxId = $inboxID;
 
         return $obj;
     }

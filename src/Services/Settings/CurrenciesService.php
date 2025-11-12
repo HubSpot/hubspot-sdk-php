@@ -26,15 +26,11 @@ use HubspotSDK\Settings\Currencies\CurrencyUpdateExchangeRateParams;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams\ToCurrencyCode;
 use HubspotSDK\Settings\Currencies\ExchangeRate;
-use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest;
-use HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class CurrenciesService implements CurrenciesContract
 {
     /**
-     * @@api
+     * @api
      */
     public CentralFxRatesService $centralFxRates;
 
@@ -51,33 +47,23 @@ final class CurrenciesService implements CurrenciesContract
      *
      * Create multiple exchange rates in a single request.
      *
-     * @param list<ExchangeRateCreateRequest> $inputs
+     * @param array{
+     *   inputs: list<array{
+     *     conversionRate: float,
+     *     fromCurrencyCode: "AED"|"AFN"|"ALL"|"AMD"|"ANG"|"AOA"|"ARS"|"AUD"|"AWG"|"AZN"|"BAM"|"BBD"|"BDT"|"BGN"|"BHD"|"BIF"|"BMD"|"BND"|"BOB"|"BOV"|"BRL"|"BSD"|"BTN"|"BWP"|"BYN"|"BZD"|"CAD"|"CDF"|"CHE"|"CHF"|"CHW"|"CLF"|"CLP"|"CNY"|"COP"|"COU"|"CRC"|"CUC"|"CUP"|"CVE"|"CZK"|"DJF"|"DKK"|"DOP"|"DZD"|"EGP"|"ERN"|"ETB"|"EUR"|"FJD"|"FKP"|"GBP"|"GEL"|"GHS"|"GIP"|"GMD"|"GNF"|"GTQ"|"GYD"|"HKD"|"HNL"|"HRK"|"HTG"|"HUF"|"IDR"|"ILS"|"INR"|"IQD"|"IRR"|"ISK"|"JMD"|"JOD"|"JPY"|"KES"|"KGS"|"KHR"|"KMF"|"KPW"|"KRW"|"KWD"|"KYD"|"KZT"|"LAK"|"LBP"|"LKR"|"LRD"|"LSL"|"LYD"|"MAD"|"MDL"|"MGA"|"MKD"|"MMK"|"MNT"|"MOP"|"MRU"|"MUR"|"MVR"|"MWK"|"MXN"|"MXV"|"MYR"|"MZN"|"NAD"|"NGN"|"NIO"|"NOK"|"NPR"|"NZD"|"OMR"|"PAB"|"PEN"|"PGK"|"PHP"|"PKR"|"PLN"|"PYG"|"QAR"|"RON"|"RSD"|"RUB"|"RWF"|"SAR"|"SBD"|"SCR"|"SDG"|"SEK"|"SGD"|"SHP"|"SLL"|"SOS"|"SRD"|"SSP"|"STN"|"SVC"|"SYP"|"SZL"|"THB"|"TJS"|"TMT"|"TND"|"TOP"|"TRY"|"TTD"|"TWD"|"TZS"|"UAH"|"UGX"|"USD"|"USN"|"UYI"|"UYU"|"UZS"|"VEF"|"VND"|"VUV"|"WST"|"XAF"|"XAG"|"XAU"|"XBA"|"XBB"|"XBC"|"XBD"|"XCD"|"XDR"|"XOF"|"XPD"|"XPF"|"XPT"|"XSU"|"XUA"|"YER"|"ZAR"|"ZMW"|"ZWL",
+     *     effectiveAt?: string|\DateTimeInterface,
+     *   }>,
+     * }|CurrencyBatchCreateParams $params
      *
      * @throws APIException
      */
     public function batchCreate(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseExchangeRate {
-        $params = ['inputs' => $inputs];
-
-        return $this->batchCreateRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchCreateRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|CurrencyBatchCreateParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseExchangeRate {
         [$parsed, $options] = CurrencyBatchCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -95,33 +81,19 @@ final class CurrenciesService implements CurrenciesContract
      *
      * Retrieve the details of multiple exchange rates in a single request, specified by their IDs.
      *
-     * @param list<PublicObjectID> $inputs
+     * @param array{
+     *   inputs: list<array{id: string}|PublicObjectID>
+     * }|CurrencyBatchGetParams $params
      *
      * @throws APIException
      */
     public function batchGet(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseExchangeRate {
-        $params = ['inputs' => $inputs];
-
-        return $this->batchGetRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchGetRaw(
-        array $params,
+        array|CurrencyBatchGetParams $params,
         ?RequestOptions $requestOptions = null
     ): BatchResponseExchangeRate {
         [$parsed, $options] = CurrencyBatchGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -139,33 +111,21 @@ final class CurrenciesService implements CurrenciesContract
      *
      * Update the conversion rates for multiple exchange rates in a batch operation.
      *
-     * @param list<ExchangeRateUpdateRequest> $inputs
+     * @param array{
+     *   inputs: list<array{
+     *     id: string, conversionRate: float, effectiveAt?: string|\DateTimeInterface
+     *   }>,
+     * }|CurrencyBatchUpdateParams $params
      *
      * @throws APIException
      */
     public function batchUpdate(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): BatchResponseExchangeRate {
-        $params = ['inputs' => $inputs];
-
-        return $this->batchUpdateRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function batchUpdateRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|CurrencyBatchUpdateParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseExchangeRate {
         [$parsed, $options] = CurrencyBatchUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -183,41 +143,21 @@ final class CurrenciesService implements CurrenciesContract
      *
      * Create a new exchange rate with specified conversion rate and currency codes.
      *
-     * @param float $conversionRate
-     * @param FromCurrencyCode|value-of<FromCurrencyCode> $fromCurrencyCode
-     * @param \DateTimeInterface $effectiveAt
+     * @param array{
+     *   conversionRate: float,
+     *   fromCurrencyCode: value-of<FromCurrencyCode>,
+     *   effectiveAt?: string|\DateTimeInterface,
+     * }|CurrencyCreateExchangeRateParams $params
      *
      * @throws APIException
      */
     public function createExchangeRate(
-        $conversionRate,
-        $fromCurrencyCode,
-        $effectiveAt = omit,
+        array|CurrencyCreateExchangeRateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ExchangeRate {
-        $params = [
-            'conversionRate' => $conversionRate,
-            'fromCurrencyCode' => $fromCurrencyCode,
-            'effectiveAt' => $effectiveAt,
-        ];
-
-        return $this->createExchangeRateRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createExchangeRateRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ExchangeRate {
         [$parsed, $options] = CurrencyCreateExchangeRateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -331,33 +271,19 @@ final class CurrenciesService implements CurrenciesContract
      *
      * Set or update the primary company currency.
      *
-     * @param CurrencyCode|value-of<CurrencyCode> $currencyCode
+     * @param array{
+     *   currencyCode: value-of<CurrencyCode>
+     * }|CurrencyUpdateCompanyCurrencyParams $params
      *
      * @throws APIException
      */
     public function updateCompanyCurrency(
-        $currencyCode,
-        ?RequestOptions $requestOptions = null
-    ): CompanyCurrency {
-        $params = ['currencyCode' => $currencyCode];
-
-        return $this->updateCompanyCurrencyRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateCompanyCurrencyRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|CurrencyUpdateCompanyCurrencyParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CompanyCurrency {
         [$parsed, $options] = CurrencyUpdateCompanyCurrencyParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -375,43 +301,20 @@ final class CurrenciesService implements CurrenciesContract
      *
      * Update an existing conversion rate, specified by its ID.
      *
-     * @param float $conversionRate
-     * @param \DateTimeInterface $effectiveAt
+     * @param array{
+     *   conversionRate: float, effectiveAt?: string|\DateTimeInterface
+     * }|CurrencyUpdateExchangeRateParams $params
      *
      * @throws APIException
      */
     public function updateExchangeRate(
         string $exchangeRateID,
-        $conversionRate,
-        $effectiveAt = omit,
-        ?RequestOptions $requestOptions = null,
-    ): ExchangeRate {
-        $params = [
-            'conversionRate' => $conversionRate, 'effectiveAt' => $effectiveAt,
-        ];
-
-        return $this->updateExchangeRateRaw(
-            $exchangeRateID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateExchangeRateRaw(
-        string $exchangeRateID,
-        array $params,
+        array|CurrencyUpdateExchangeRateParams $params,
         ?RequestOptions $requestOptions = null,
     ): ExchangeRate {
         [$parsed, $options] = CurrencyUpdateExchangeRateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -429,41 +332,21 @@ final class CurrenciesService implements CurrenciesContract
      *
      * Change the visibility setting for a currency pair. This will hide or display a currency pair for users in the HubSpot app.
      *
-     * @param CurrencyUpdateVisibilityParams\FromCurrencyCode|value-of<CurrencyUpdateVisibilityParams\FromCurrencyCode> $fromCurrencyCode
-     * @param ToCurrencyCode|value-of<ToCurrencyCode> $toCurrencyCode
-     * @param bool $visibleInUi
+     * @param array{
+     *   fromCurrencyCode: value-of<CurrencyUpdateVisibilityParams\FromCurrencyCode>,
+     *   toCurrencyCode: value-of<ToCurrencyCode>,
+     *   visibleInUI: bool,
+     * }|CurrencyUpdateVisibilityParams $params
      *
      * @throws APIException
      */
     public function updateVisibility(
-        $fromCurrencyCode,
-        $toCurrencyCode,
-        $visibleInUi,
+        array|CurrencyUpdateVisibilityParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = [
-            'fromCurrencyCode' => $fromCurrencyCode,
-            'toCurrencyCode' => $toCurrencyCode,
-            'visibleInUi' => $visibleInUi,
-        ];
-
-        return $this->updateVisibilityRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateVisibilityRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = CurrencyUpdateVisibilityParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

@@ -28,23 +28,23 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   blockedDates: list<APIBlockedDate>,
  *   createdAt: \DateTimeInterface,
  *   crmObjectCreationStatus: value-of<CrmObjectCreationStatus>,
- *   customProperties: array<string, string>,
+ *   customProperties: array<string,string>,
  *   dataSources: list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource>,
  *   flowType: value-of<FlowType>,
  *   isEnabled: bool,
- *   nextAvailableActionID: string,
- *   objectTypeID: string,
- *   revisionID: string,
+ *   nextAvailableActionId: string,
+ *   objectTypeId: string,
+ *   revisionId: string,
  *   timeWindows: list<APITimeWindow>,
  *   type: value-of<Type>,
  *   updatedAt: \DateTimeInterface,
- *   description?: string,
- *   enrollmentCriteria?: APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
- *   enrollmentSchedule?: APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
- *   name?: string,
- *   startActionID?: string,
- *   suppressionFilterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
- *   uuid?: string,
+ *   description?: string|null,
+ *   enrollmentCriteria?: null|APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
+ *   enrollmentSchedule?: null|APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
+ *   name?: string|null,
+ *   startActionId?: string|null,
+ *   suppressionFilterBranch?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   uuid?: string|null,
  * }
  */
 final class APIPlatformFlow implements BaseModel
@@ -72,7 +72,7 @@ final class APIPlatformFlow implements BaseModel
     #[Api(enum: CrmObjectCreationStatus::class)]
     public string $crmObjectCreationStatus;
 
-    /** @var array<string, string> $customProperties */
+    /** @var array<string,string> $customProperties */
     #[Api(map: 'string')]
     public array $customProperties;
 
@@ -89,14 +89,14 @@ final class APIPlatformFlow implements BaseModel
     #[Api]
     public bool $isEnabled;
 
-    #[Api('nextAvailableActionId')]
-    public string $nextAvailableActionID;
+    #[Api]
+    public string $nextAvailableActionId;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
-    #[Api('revisionId')]
-    public string $revisionID;
+    #[Api]
+    public string $revisionId;
 
     /** @var list<APITimeWindow> $timeWindows */
     #[Api(list: APITimeWindow::class)]
@@ -121,8 +121,8 @@ final class APIPlatformFlow implements BaseModel
     #[Api(optional: true)]
     public ?string $name;
 
-    #[Api('startActionId', optional: true)]
-    public ?string $startActionID;
+    #[Api(optional: true)]
+    public ?string $startActionId;
 
     #[Api(optional: true)]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch;
@@ -145,9 +145,9 @@ final class APIPlatformFlow implements BaseModel
      *   dataSources: ...,
      *   flowType: ...,
      *   isEnabled: ...,
-     *   nextAvailableActionID: ...,
-     *   objectTypeID: ...,
-     *   revisionID: ...,
+     *   nextAvailableActionId: ...,
+     *   objectTypeId: ...,
+     *   revisionId: ...,
      *   timeWindows: ...,
      *   type: ...,
      *   updatedAt: ...,
@@ -188,7 +188,7 @@ final class APIPlatformFlow implements BaseModel
      * @param list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction> $actions
      * @param list<APIBlockedDate> $blockedDates
      * @param CrmObjectCreationStatus|value-of<CrmObjectCreationStatus> $crmObjectCreationStatus
-     * @param array<string, string> $customProperties
+     * @param array<string,string> $customProperties
      * @param list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource> $dataSources
      * @param FlowType|value-of<FlowType> $flowType
      * @param list<APITimeWindow> $timeWindows
@@ -204,9 +204,9 @@ final class APIPlatformFlow implements BaseModel
         array $dataSources,
         FlowType|string $flowType,
         bool $isEnabled,
-        string $nextAvailableActionID,
-        string $objectTypeID,
-        string $revisionID,
+        string $nextAvailableActionId,
+        string $objectTypeId,
+        string $revisionId,
         array $timeWindows,
         \DateTimeInterface $updatedAt,
         Type|string $type = 'PLATFORM_FLOW',
@@ -214,7 +214,7 @@ final class APIPlatformFlow implements BaseModel
         APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria = null,
         APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule = null,
         ?string $name = null,
-        ?string $startActionID = null,
+        ?string $startActionId = null,
         PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch = null,
         ?string $uuid = null,
     ): self {
@@ -229,9 +229,9 @@ final class APIPlatformFlow implements BaseModel
         $obj->dataSources = $dataSources;
         $obj['flowType'] = $flowType;
         $obj->isEnabled = $isEnabled;
-        $obj->nextAvailableActionID = $nextAvailableActionID;
-        $obj->objectTypeID = $objectTypeID;
-        $obj->revisionID = $revisionID;
+        $obj->nextAvailableActionId = $nextAvailableActionId;
+        $obj->objectTypeId = $objectTypeId;
+        $obj->revisionId = $revisionId;
         $obj->timeWindows = $timeWindows;
         $obj['type'] = $type;
         $obj->updatedAt = $updatedAt;
@@ -240,7 +240,7 @@ final class APIPlatformFlow implements BaseModel
         null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
         null !== $enrollmentSchedule && $obj->enrollmentSchedule = $enrollmentSchedule;
         null !== $name && $obj->name = $name;
-        null !== $startActionID && $obj->startActionID = $startActionID;
+        null !== $startActionId && $obj->startActionId = $startActionId;
         null !== $suppressionFilterBranch && $obj->suppressionFilterBranch = $suppressionFilterBranch;
         null !== $uuid && $obj->uuid = $uuid;
 
@@ -298,7 +298,7 @@ final class APIPlatformFlow implements BaseModel
     }
 
     /**
-     * @param array<string, string> $customProperties
+     * @param array<string,string> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {
@@ -342,7 +342,7 @@ final class APIPlatformFlow implements BaseModel
         string $nextAvailableActionID
     ): self {
         $obj = clone $this;
-        $obj->nextAvailableActionID = $nextAvailableActionID;
+        $obj->nextAvailableActionId = $nextAvailableActionID;
 
         return $obj;
     }
@@ -350,7 +350,7 @@ final class APIPlatformFlow implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -358,7 +358,7 @@ final class APIPlatformFlow implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj->revisionID = $revisionID;
+        $obj->revisionId = $revisionID;
 
         return $obj;
     }
@@ -430,7 +430,7 @@ final class APIPlatformFlow implements BaseModel
     public function withStartActionID(string $startActionID): self
     {
         $obj = clone $this;
-        $obj->startActionID = $startActionID;
+        $obj->startActionId = $startActionID;
 
         return $obj;
     }

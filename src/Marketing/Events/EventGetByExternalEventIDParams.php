@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Marketing\Events->getByExternalEventID
  *
  * @phpstan-type EventGetByExternalEventIDParamsShape = array{
- *   externalAccountID: string
+ *   externalAccountId: string
  * }
  */
 final class EventGetByExternalEventIDParams implements BaseModel
@@ -30,14 +30,14 @@ final class EventGetByExternalEventIDParams implements BaseModel
      * The accountId that is associated with this marketing event in the external event application.
      */
     #[Api]
-    public string $externalAccountID;
+    public string $externalAccountId;
 
     /**
      * `new EventGetByExternalEventIDParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * EventGetByExternalEventIDParams::with(externalAccountID: ...)
+     * EventGetByExternalEventIDParams::with(externalAccountId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -56,11 +56,11 @@ final class EventGetByExternalEventIDParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $externalAccountID): self
+    public static function with(string $externalAccountId): self
     {
         $obj = new self;
 
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountId;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class EventGetByExternalEventIDParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountID;
 
         return $obj;
     }

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type BehavioralEventTypeDefinitionLabelsShape = array{
- *   singular: string, plural?: string
+ *   singular: string, plural?: string|null
  * }
  */
 final class BehavioralEventTypeDefinitionLabels implements BaseModel

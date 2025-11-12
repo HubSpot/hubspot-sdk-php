@@ -10,19 +10,19 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicObjectListSearchResultShape = array{
- *   additionalProperties: array<string, string>,
- *   listID: string,
+ *   additionalProperties: array<string,string>,
+ *   listId: string,
  *   listVersion: int,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   processingStatus: string,
  *   processingType: string,
- *   createdAt?: \DateTimeInterface,
- *   createdByID?: string,
- *   deletedAt?: \DateTimeInterface,
- *   filtersUpdatedAt?: \DateTimeInterface,
- *   updatedAt?: \DateTimeInterface,
- *   updatedByID?: string,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdById?: string|null,
+ *   deletedAt?: \DateTimeInterface|null,
+ *   filtersUpdatedAt?: \DateTimeInterface|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedById?: string|null,
  * }
  */
 final class PublicObjectListSearchResult implements BaseModel
@@ -33,7 +33,7 @@ final class PublicObjectListSearchResult implements BaseModel
     /**
      * The name and value of any additional properties that exist for this list and that were included in the search request.
      *
-     * @var array<string, string> $additionalProperties
+     * @var array<string,string> $additionalProperties
      */
     #[Api(map: 'string')]
     public array $additionalProperties;
@@ -41,8 +41,8 @@ final class PublicObjectListSearchResult implements BaseModel
     /**
      * The **ILS ID** of the list.
      */
-    #[Api('listId')]
-    public string $listID;
+    #[Api]
+    public string $listId;
 
     /**
      * The version of the list.
@@ -59,8 +59,8 @@ final class PublicObjectListSearchResult implements BaseModel
     /**
      * The object type of the list.
      */
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /**
      * The processing status of the list.
@@ -83,8 +83,8 @@ final class PublicObjectListSearchResult implements BaseModel
     /**
      * The ID of the user that created the list.
      */
-    #[Api('createdById', optional: true)]
-    public ?string $createdByID;
+    #[Api(optional: true)]
+    public ?string $createdById;
 
     /**
      * The time when the list was deleted.
@@ -107,8 +107,8 @@ final class PublicObjectListSearchResult implements BaseModel
     /**
      * The ID of the user that last updated the list.
      */
-    #[Api('updatedById', optional: true)]
-    public ?string $updatedByID;
+    #[Api(optional: true)]
+    public ?string $updatedById;
 
     /**
      * `new PublicObjectListSearchResult()` is missing required properties by the API.
@@ -117,10 +117,10 @@ final class PublicObjectListSearchResult implements BaseModel
      * ```
      * PublicObjectListSearchResult::with(
      *   additionalProperties: ...,
-     *   listID: ...,
+     *   listId: ...,
      *   listVersion: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   processingStatus: ...,
      *   processingType: ...,
      * )
@@ -149,39 +149,39 @@ final class PublicObjectListSearchResult implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $additionalProperties
+     * @param array<string,string> $additionalProperties
      */
     public static function with(
         array $additionalProperties,
-        string $listID,
+        string $listId,
         int $listVersion,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         string $processingStatus,
         string $processingType,
         ?\DateTimeInterface $createdAt = null,
-        ?string $createdByID = null,
+        ?string $createdById = null,
         ?\DateTimeInterface $deletedAt = null,
         ?\DateTimeInterface $filtersUpdatedAt = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?string $updatedByID = null,
+        ?string $updatedById = null,
     ): self {
         $obj = new self;
 
         $obj->additionalProperties = $additionalProperties;
-        $obj->listID = $listID;
+        $obj->listId = $listId;
         $obj->listVersion = $listVersion;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->processingStatus = $processingStatus;
         $obj->processingType = $processingType;
 
         null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdByID && $obj->createdByID = $createdByID;
+        null !== $createdById && $obj->createdById = $createdById;
         null !== $deletedAt && $obj->deletedAt = $deletedAt;
         null !== $filtersUpdatedAt && $obj->filtersUpdatedAt = $filtersUpdatedAt;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedByID && $obj->updatedByID = $updatedByID;
+        null !== $updatedById && $obj->updatedById = $updatedById;
 
         return $obj;
     }
@@ -189,7 +189,7 @@ final class PublicObjectListSearchResult implements BaseModel
     /**
      * The name and value of any additional properties that exist for this list and that were included in the search request.
      *
-     * @param array<string, string> $additionalProperties
+     * @param array<string,string> $additionalProperties
      */
     public function withAdditionalProperties(array $additionalProperties): self
     {
@@ -205,7 +205,7 @@ final class PublicObjectListSearchResult implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listID = $listID;
+        $obj->listId = $listID;
 
         return $obj;
     }
@@ -238,7 +238,7 @@ final class PublicObjectListSearchResult implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -282,7 +282,7 @@ final class PublicObjectListSearchResult implements BaseModel
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
-        $obj->createdByID = $createdByID;
+        $obj->createdById = $createdByID;
 
         return $obj;
     }
@@ -327,7 +327,7 @@ final class PublicObjectListSearchResult implements BaseModel
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
-        $obj->updatedByID = $updatedByID;
+        $obj->updatedById = $updatedByID;
 
         return $obj;
     }

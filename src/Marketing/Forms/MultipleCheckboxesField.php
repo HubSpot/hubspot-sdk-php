@@ -19,10 +19,10 @@ use HubspotSDK\Marketing\Forms\MultipleCheckboxesField\FieldType;
  *   hidden: bool,
  *   label: string,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   options: list<EnumeratedFieldOption>,
  *   required: bool,
- *   description?: string,
+ *   description?: string|null,
  * }
  */
 final class MultipleCheckboxesField implements BaseModel
@@ -75,8 +75,8 @@ final class MultipleCheckboxesField implements BaseModel
     /**
      * A unique ID for this field's CRM object type. For example a CONTACT field will have the object type ID 0-1.
      */
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /**
      * The list of available choices for this field.
@@ -110,7 +110,7 @@ final class MultipleCheckboxesField implements BaseModel
      *   hidden: ...,
      *   label: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   options: ...,
      *   required: ...,
      * )
@@ -152,7 +152,7 @@ final class MultipleCheckboxesField implements BaseModel
         bool $hidden,
         string $label,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         array $options,
         bool $required,
         FieldType|string $fieldType = 'multiple_checkboxes',
@@ -166,7 +166,7 @@ final class MultipleCheckboxesField implements BaseModel
         $obj->hidden = $hidden;
         $obj->label = $label;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->options = $options;
         $obj->required = $required;
 
@@ -253,7 +253,7 @@ final class MultipleCheckboxesField implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

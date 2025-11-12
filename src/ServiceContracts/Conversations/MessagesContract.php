@@ -6,6 +6,8 @@ namespace HubspotSDK\ServiceContracts\Conversations;
 
 use HubspotSDK\Conversations\CollectionResponsePublicMessageForwardPaging;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
+use HubspotSDK\Conversations\Messages\MessageGetOriginalContentParams;
+use HubspotSDK\Conversations\Messages\MessageGetParams;
 use HubspotSDK\Conversations\PublicAssignmentMessage;
 use HubspotSDK\Conversations\PublicComment;
 use HubspotSDK\Conversations\PublicMessageContent;
@@ -40,52 +42,26 @@ interface MessagesContract
     /**
      * @api
      *
-     * @param string $threadID
+     * @param array<mixed>|MessageGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $messageID,
-        $threadID,
-        ?RequestOptions $requestOptions = null
+        array|MessageGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $messageID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
-
-    /**
-     * @api
-     *
-     * @param string $threadID
+     * @param array<mixed>|MessageGetOriginalContentParams $params
      *
      * @throws APIException
      */
     public function getOriginalContent(
         string $messageID,
-        $threadID,
-        ?RequestOptions $requestOptions = null
-    ): PublicMessageContent;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getOriginalContentRaw(
-        string $messageID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|MessageGetOriginalContentParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicMessageContent;
 }

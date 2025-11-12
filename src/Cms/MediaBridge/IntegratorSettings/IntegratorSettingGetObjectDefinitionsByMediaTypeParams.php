@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->getObjectDefinitionsByMediaType
  *
  * @phpstan-type IntegratorSettingGetObjectDefinitionsByMediaTypeParamsShape = array{
- *   appID: string
+ *   appId: string
  * }
  */
 final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements BaseModel
@@ -27,14 +27,14 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
     use SdkParams;
 
     #[Api]
-    public string $appID;
+    public string $appId;
 
     /**
      * `new IntegratorSettingGetObjectDefinitionsByMediaTypeParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * IntegratorSettingGetObjectDefinitionsByMediaTypeParams::with(appID: ...)
+     * IntegratorSettingGetObjectDefinitionsByMediaTypeParams::with(appId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -53,11 +53,11 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $appID): self
+    public static function with(string $appId): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

@@ -3,8 +3,6 @@
 namespace Tests\Services\Scheduler\Meetings;
 
 use HubspotSDK\Client;
-use HubspotSDK\Scheduler\Meetings\ExternalBookingFormField;
-use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -50,24 +48,19 @@ final class MeetingsLinksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->scheduler->meetings->meetingsLinks->book(
-            duration: 0,
-            email: 'email',
-            firstName: 'firstName',
-            formFields: [
-                ExternalBookingFormField::with(name: 'name', value: 'value'),
+        $result = $this->client->scheduler->meetings->meetingsLinks->book([
+            'duration' => 0,
+            'email' => 'email',
+            'firstName' => 'firstName',
+            'formFields' => [['name' => 'name', 'value' => 'value']],
+            'lastName' => 'lastName',
+            'legalConsentResponses' => [
+                ['communicationTypeId' => 'communicationTypeId', 'consented' => true],
             ],
-            lastName: 'lastName',
-            legalConsentResponses: [
-                ExternalLegalConsentResponse::with(
-                    communicationTypeID: 'communicationTypeId',
-                    consented: true
-                ),
-            ],
-            likelyAvailableUserIDs: ['string'],
-            slug: 'slug',
-            startTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-        );
+            'likelyAvailableUserIds' => ['string'],
+            'slug' => 'slug',
+            'startTime' => '2019-12-27T18:11:19.117Z',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -79,24 +72,19 @@ final class MeetingsLinksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->scheduler->meetings->meetingsLinks->book(
-            duration: 0,
-            email: 'email',
-            firstName: 'firstName',
-            formFields: [
-                ExternalBookingFormField::with(name: 'name', value: 'value'),
+        $result = $this->client->scheduler->meetings->meetingsLinks->book([
+            'duration' => 0,
+            'email' => 'email',
+            'firstName' => 'firstName',
+            'formFields' => [['name' => 'name', 'value' => 'value']],
+            'lastName' => 'lastName',
+            'legalConsentResponses' => [
+                ['communicationTypeId' => 'communicationTypeId', 'consented' => true],
             ],
-            lastName: 'lastName',
-            legalConsentResponses: [
-                ExternalLegalConsentResponse::with(
-                    communicationTypeID: 'communicationTypeId',
-                    consented: true
-                ),
-            ],
-            likelyAvailableUserIDs: ['string'],
-            slug: 'slug',
-            startTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-        );
+            'likelyAvailableUserIds' => ['string'],
+            'slug' => 'slug',
+            'startTime' => '2019-12-27T18:11:19.117Z',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

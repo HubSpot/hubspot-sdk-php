@@ -14,8 +14,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type BlogAuthorCloneRequestVNextShape = array{
  *   id: string,
  *   blogAuthor: BlogAuthor,
- *   language?: string,
- *   primaryLanguage?: string,
+ *   language?: string|null,
+ *   primaryLanguage?: string|null,
  * }
  */
 final class BlogAuthorCloneRequestVNext implements BaseModel

@@ -36,10 +36,9 @@ final class LinksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->v4->links->create(
-            channel: 'EMAIL',
-            subscriberIDString: 'subscriberIdString'
-        );
+        $result = $this->client->marketing->subscriptions->v4->links->create([
+            'channel' => 'EMAIL', 'subscriberIdString' => 'subscriberIdString',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -51,10 +50,9 @@ final class LinksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->v4->links->create(
-            channel: 'EMAIL',
-            subscriberIDString: 'subscriberIdString'
-        );
+        $result = $this->client->marketing->subscriptions->v4->links->create([
+            'channel' => 'EMAIL', 'subscriberIdString' => 'subscriberIdString',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

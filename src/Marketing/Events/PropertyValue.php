@@ -17,22 +17,22 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *   name: string,
  *   sourceUpstreamDeployable: string,
  *   value: string,
- *   dataSensitivity?: value-of<DataSensitivity>,
- *   isEncrypted?: bool,
- *   isLargeValue?: bool,
- *   persistenceTimestamp?: int,
- *   requestID?: string,
- *   selectedByUser?: bool,
- *   selectedByUserTimestamp?: int,
- *   source?: value-of<Source>,
- *   sourceID?: string,
- *   sourceLabel?: string,
- *   sourceMetadata?: string,
- *   sourceVid?: list<int>,
- *   timestamp?: int,
- *   unit?: string,
- *   updatedByUserID?: int,
- *   useTimestampAsPersistenceTimestamp?: bool,
+ *   dataSensitivity?: value-of<DataSensitivity>|null,
+ *   isEncrypted?: bool|null,
+ *   isLargeValue?: bool|null,
+ *   persistenceTimestamp?: int|null,
+ *   requestId?: string|null,
+ *   selectedByUser?: bool|null,
+ *   selectedByUserTimestamp?: int|null,
+ *   source?: value-of<Source>|null,
+ *   sourceId?: string|null,
+ *   sourceLabel?: string|null,
+ *   sourceMetadata?: string|null,
+ *   sourceVid?: list<int>|null,
+ *   timestamp?: int|null,
+ *   unit?: string|null,
+ *   updatedByUserId?: int|null,
+ *   useTimestampAsPersistenceTimestamp?: bool|null,
  * }
  */
 final class PropertyValue implements BaseModel
@@ -78,8 +78,8 @@ final class PropertyValue implements BaseModel
     /**
      * A unique ID associated with this request.
      */
-    #[Api('requestId', optional: true)]
-    public ?string $requestID;
+    #[Api(optional: true)]
+    public ?string $requestId;
 
     /**
      * Whether the value was selected by a user.
@@ -104,8 +104,8 @@ final class PropertyValue implements BaseModel
     /**
      * The ID of the property source indicating where it was created.
      */
-    #[Api('sourceId', optional: true)]
-    public ?string $sourceID;
+    #[Api(optional: true)]
+    public ?string $sourceId;
 
     /**
      * A human-readable label.
@@ -142,8 +142,8 @@ final class PropertyValue implements BaseModel
     /**
      * The ID of the user who updated the property.
      */
-    #[Api('updatedByUserId', optional: true)]
-    public ?int $updatedByUserID;
+    #[Api(optional: true)]
+    public ?int $updatedByUserId;
 
     #[Api(optional: true)]
     public ?bool $useTimestampAsPersistenceTimestamp;
@@ -187,17 +187,17 @@ final class PropertyValue implements BaseModel
         ?bool $isEncrypted = null,
         ?bool $isLargeValue = null,
         ?int $persistenceTimestamp = null,
-        ?string $requestID = null,
+        ?string $requestId = null,
         ?bool $selectedByUser = null,
         ?int $selectedByUserTimestamp = null,
         Source|string|null $source = null,
-        ?string $sourceID = null,
+        ?string $sourceId = null,
         ?string $sourceLabel = null,
         ?string $sourceMetadata = null,
         ?array $sourceVid = null,
         ?int $timestamp = null,
         ?string $unit = null,
-        ?int $updatedByUserID = null,
+        ?int $updatedByUserId = null,
         ?bool $useTimestampAsPersistenceTimestamp = null,
     ): self {
         $obj = new self;
@@ -210,17 +210,17 @@ final class PropertyValue implements BaseModel
         null !== $isEncrypted && $obj->isEncrypted = $isEncrypted;
         null !== $isLargeValue && $obj->isLargeValue = $isLargeValue;
         null !== $persistenceTimestamp && $obj->persistenceTimestamp = $persistenceTimestamp;
-        null !== $requestID && $obj->requestID = $requestID;
+        null !== $requestId && $obj->requestId = $requestId;
         null !== $selectedByUser && $obj->selectedByUser = $selectedByUser;
         null !== $selectedByUserTimestamp && $obj->selectedByUserTimestamp = $selectedByUserTimestamp;
         null !== $source && $obj['source'] = $source;
-        null !== $sourceID && $obj->sourceID = $sourceID;
+        null !== $sourceId && $obj->sourceId = $sourceId;
         null !== $sourceLabel && $obj->sourceLabel = $sourceLabel;
         null !== $sourceMetadata && $obj->sourceMetadata = $sourceMetadata;
         null !== $sourceVid && $obj->sourceVid = $sourceVid;
         null !== $timestamp && $obj->timestamp = $timestamp;
         null !== $unit && $obj->unit = $unit;
-        null !== $updatedByUserID && $obj->updatedByUserID = $updatedByUserID;
+        null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
         null !== $useTimestampAsPersistenceTimestamp && $obj->useTimestampAsPersistenceTimestamp = $useTimestampAsPersistenceTimestamp;
 
         return $obj;
@@ -304,7 +304,7 @@ final class PropertyValue implements BaseModel
     public function withRequestID(string $requestID): self
     {
         $obj = clone $this;
-        $obj->requestID = $requestID;
+        $obj->requestId = $requestID;
 
         return $obj;
     }
@@ -351,7 +351,7 @@ final class PropertyValue implements BaseModel
     public function withSourceID(string $sourceID): self
     {
         $obj = clone $this;
-        $obj->sourceID = $sourceID;
+        $obj->sourceId = $sourceID;
 
         return $obj;
     }
@@ -419,7 +419,7 @@ final class PropertyValue implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj->updatedByUserID = $updatedByUserID;
+        $obj->updatedByUserId = $updatedByUserID;
 
         return $obj;
     }

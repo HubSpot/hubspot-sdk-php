@@ -17,10 +17,10 @@ use HubspotSDK\Option;
  *   name: string,
  *   options: list<Option>,
  *   type: value-of<Type>,
- *   foreignColumnID?: int,
- *   foreignTableID?: int,
- *   maxNumberOfCharacters?: int,
- *   maxNumberOfOptions?: int,
+ *   foreignColumnId?: int|null,
+ *   foreignTableId?: int|null,
+ *   maxNumberOfCharacters?: int|null,
+ *   maxNumberOfOptions?: int|null,
  * }
  */
 final class ColumnRequest implements BaseModel
@@ -65,14 +65,14 @@ final class ColumnRequest implements BaseModel
     /**
      * The id of the column from another table to which the column refers/points to.
      */
-    #[Api('foreignColumnId', optional: true)]
-    public ?int $foreignColumnID;
+    #[Api(optional: true)]
+    public ?int $foreignColumnId;
 
     /**
      * The id of another table to which the column refers/points to.
      */
-    #[Api('foreignTableId', optional: true)]
-    public ?int $foreignTableID;
+    #[Api(optional: true)]
+    public ?int $foreignTableId;
 
     #[Api(optional: true)]
     public ?int $maxNumberOfCharacters;
@@ -118,8 +118,8 @@ final class ColumnRequest implements BaseModel
         string $name,
         array $options,
         Type|string $type,
-        ?int $foreignColumnID = null,
-        ?int $foreignTableID = null,
+        ?int $foreignColumnId = null,
+        ?int $foreignTableId = null,
         ?int $maxNumberOfCharacters = null,
         ?int $maxNumberOfOptions = null,
     ): self {
@@ -131,8 +131,8 @@ final class ColumnRequest implements BaseModel
         $obj->options = $options;
         $obj['type'] = $type;
 
-        null !== $foreignColumnID && $obj->foreignColumnID = $foreignColumnID;
-        null !== $foreignTableID && $obj->foreignTableID = $foreignTableID;
+        null !== $foreignColumnId && $obj->foreignColumnId = $foreignColumnId;
+        null !== $foreignTableId && $obj->foreignTableId = $foreignTableId;
         null !== $maxNumberOfCharacters && $obj->maxNumberOfCharacters = $maxNumberOfCharacters;
         null !== $maxNumberOfOptions && $obj->maxNumberOfOptions = $maxNumberOfOptions;
 
@@ -204,7 +204,7 @@ final class ColumnRequest implements BaseModel
     public function withForeignColumnID(int $foreignColumnID): self
     {
         $obj = clone $this;
-        $obj->foreignColumnID = $foreignColumnID;
+        $obj->foreignColumnId = $foreignColumnID;
 
         return $obj;
     }
@@ -215,7 +215,7 @@ final class ColumnRequest implements BaseModel
     public function withForeignTableID(int $foreignTableID): self
     {
         $obj = clone $this;
-        $obj->foreignTableID = $foreignTableID;
+        $obj->foreignTableId = $foreignTableID;
 
         return $obj;
     }

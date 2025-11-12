@@ -12,10 +12,10 @@ use HubspotSDK\Core\Conversion\ListOf;
 /**
  * @phpstan-type ErrorDetailShape = array{
  *   message: string,
- *   code?: string,
- *   context?: array<string, list<string>>,
- *   in?: string,
- *   subCategory?: string,
+ *   code?: string|null,
+ *   context?: array<string,list<string>>|null,
+ *   in?: string|null,
+ *   subCategory?: string|null,
  * }
  */
 final class ErrorDetail implements BaseModel
@@ -38,7 +38,7 @@ final class ErrorDetail implements BaseModel
     /**
      * Context about the error condition.
      *
-     * @var array<string, list<string>>|null $context
+     * @var array<string,list<string>>|null $context
      */
     #[Api(map: new ListOf('string'), optional: true)]
     public ?array $context;
@@ -79,7 +79,7 @@ final class ErrorDetail implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, list<string>> $context
+     * @param array<string,list<string>> $context
      */
     public static function with(
         string $message,
@@ -125,7 +125,7 @@ final class ErrorDetail implements BaseModel
     /**
      * Context about the error condition.
      *
-     * @param array<string, list<string>> $context
+     * @param array<string,list<string>> $context
      */
     public function withContext(array $context): self
     {

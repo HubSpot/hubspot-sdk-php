@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   definition: PublicActionDefinition,
- *   revisionID: string,
+ *   revisionId: string,
  * }
  */
 final class PublicActionRevision implements BaseModel
@@ -30,8 +30,8 @@ final class PublicActionRevision implements BaseModel
     #[Api]
     public PublicActionDefinition $definition;
 
-    #[Api('revisionId')]
-    public string $revisionID;
+    #[Api]
+    public string $revisionId;
 
     /**
      * `new PublicActionRevision()` is missing required properties by the API.
@@ -39,7 +39,7 @@ final class PublicActionRevision implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicActionRevision::with(
-     *   id: ..., createdAt: ..., definition: ..., revisionID: ...
+     *   id: ..., createdAt: ..., definition: ..., revisionId: ...
      * )
      * ```
      *
@@ -67,14 +67,14 @@ final class PublicActionRevision implements BaseModel
         string $id,
         \DateTimeInterface $createdAt,
         PublicActionDefinition $definition,
-        string $revisionID,
+        string $revisionId,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
         $obj->createdAt = $createdAt;
         $obj->definition = $definition;
-        $obj->revisionID = $revisionID;
+        $obj->revisionId = $revisionId;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class PublicActionRevision implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj->revisionID = $revisionID;
+        $obj->revisionId = $revisionID;
 
         return $obj;
     }

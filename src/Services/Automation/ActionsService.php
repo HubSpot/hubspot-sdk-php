@@ -14,22 +14,22 @@ use HubspotSDK\Services\Automation\Actions\RevisionsService;
 final class ActionsService implements ActionsContract
 {
     /**
-     * @@api
+     * @api
      */
     public CallbacksService $callbacks;
 
     /**
-     * @@api
+     * @api
      */
     public DefinitionsService $definitions;
 
     /**
-     * @@api
+     * @api
      */
     public FunctionsService $functions;
 
     /**
-     * @@api
+     * @api
      */
     public RevisionsService $revisions;
 

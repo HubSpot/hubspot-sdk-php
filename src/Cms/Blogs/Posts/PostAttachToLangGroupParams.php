@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\Blogs\Posts->attachToLangGroup
  *
  * @phpstan-type PostAttachToLangGroupParamsShape = array{
- *   id: string, language: string, primaryID: string, primaryLanguage?: string
+ *   id: string, language: string, primaryId: string, primaryLanguage?: string
  * }
  */
 final class PostAttachToLangGroupParams implements BaseModel
@@ -39,8 +39,8 @@ final class PostAttachToLangGroupParams implements BaseModel
     /**
      * ID of primary language object in multi-language group.
      */
-    #[Api('primaryId')]
-    public string $primaryID;
+    #[Api]
+    public string $primaryId;
 
     /**
      * Primary language of the multi-language group.
@@ -53,7 +53,7 @@ final class PostAttachToLangGroupParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PostAttachToLangGroupParams::with(id: ..., language: ..., primaryID: ...)
+     * PostAttachToLangGroupParams::with(id: ..., language: ..., primaryId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -78,14 +78,14 @@ final class PostAttachToLangGroupParams implements BaseModel
     public static function with(
         string $id,
         string $language,
-        string $primaryID,
+        string $primaryId,
         ?string $primaryLanguage = null,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
         $obj->language = $language;
-        $obj->primaryID = $primaryID;
+        $obj->primaryId = $primaryId;
 
         null !== $primaryLanguage && $obj->primaryLanguage = $primaryLanguage;
 
@@ -120,7 +120,7 @@ final class PostAttachToLangGroupParams implements BaseModel
     public function withPrimaryID(string $primaryID): self
     {
         $obj = clone $this;
-        $obj->primaryID = $primaryID;
+        $obj->primaryId = $primaryID;
 
         return $obj;
     }

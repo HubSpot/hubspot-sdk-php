@@ -13,7 +13,7 @@ use HubspotSDK\PublicObjectID;
 
 /**
  * @phpstan-type PublicAssociationMultiShape = array{
- *   from: PublicObjectID, to: list<AssociatedID>, paging?: EmailsPaging
+ *   from: PublicObjectID, to: list<AssociatedID>, paging?: EmailsPaging|null
  * }
  */
 final class PublicAssociationMulti implements BaseModel

@@ -62,10 +62,9 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->subscribe(
-            emailAddress: 'emailAddress',
-            subscriptionID: 'subscriptionId'
-        );
+        $result = $this->client->marketing->subscriptions->subscribe([
+            'emailAddress' => 'emailAddress', 'subscriptionId' => 'subscriptionId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -77,10 +76,9 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->subscribe(
-            emailAddress: 'emailAddress',
-            subscriptionID: 'subscriptionId'
-        );
+        $result = $this->client->marketing->subscriptions->subscribe([
+            'emailAddress' => 'emailAddress', 'subscriptionId' => 'subscriptionId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -92,10 +90,9 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->unsubscribe(
-            emailAddress: 'emailAddress',
-            subscriptionID: 'subscriptionId'
-        );
+        $result = $this->client->marketing->subscriptions->unsubscribe([
+            'emailAddress' => 'emailAddress', 'subscriptionId' => 'subscriptionId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -107,10 +104,9 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->unsubscribe(
-            emailAddress: 'emailAddress',
-            subscriptionID: 'subscriptionId'
-        );
+        $result = $this->client->marketing->subscriptions->unsubscribe([
+            'emailAddress' => 'emailAddress', 'subscriptionId' => 'subscriptionId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

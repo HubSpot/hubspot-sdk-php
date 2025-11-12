@@ -12,11 +12,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * The URLs of the various actions provided by the video conferencing application. All URLs must use the `https` protocol.
  *
  * @phpstan-type ExternalSettingsShape = array{
- *   createMeetingURL: string,
- *   deleteMeetingURL?: string,
- *   fetchAccountsUri?: string,
- *   updateMeetingURL?: string,
- *   userVerifyURL?: string,
+ *   createMeetingUrl: string,
+ *   deleteMeetingUrl?: string|null,
+ *   fetchAccountsUri?: string|null,
+ *   updateMeetingUrl?: string|null,
+ *   userVerifyUrl?: string|null,
  * }
  */
 final class ExternalSettings implements BaseModel
@@ -27,14 +27,14 @@ final class ExternalSettings implements BaseModel
     /**
      * The URL that HubSpot will send requests to create a new video conference.
      */
-    #[Api('createMeetingUrl')]
-    public string $createMeetingURL;
+    #[Api]
+    public string $createMeetingUrl;
 
     /**
      * The URL that HubSpot will send notifications of meetings that have been deleted in HubSpot.
      */
-    #[Api('deleteMeetingUrl', optional: true)]
-    public ?string $deleteMeetingURL;
+    #[Api(optional: true)]
+    public ?string $deleteMeetingUrl;
 
     #[Api(optional: true)]
     public ?string $fetchAccountsUri;
@@ -42,21 +42,21 @@ final class ExternalSettings implements BaseModel
     /**
      * The URL that HubSpot will send updates to existing meetings. Typically called when the user changes the topic or times of a meeting.
      */
-    #[Api('updateMeetingUrl', optional: true)]
-    public ?string $updateMeetingURL;
+    #[Api(optional: true)]
+    public ?string $updateMeetingUrl;
 
     /**
      * The URL that HubSpot will use to verify that a user exists in the video conference application.
      */
-    #[Api('userVerifyUrl', optional: true)]
-    public ?string $userVerifyURL;
+    #[Api(optional: true)]
+    public ?string $userVerifyUrl;
 
     /**
      * `new ExternalSettings()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ExternalSettings::with(createMeetingURL: ...)
+     * ExternalSettings::with(createMeetingUrl: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -76,20 +76,20 @@ final class ExternalSettings implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $createMeetingURL,
-        ?string $deleteMeetingURL = null,
+        string $createMeetingUrl,
+        ?string $deleteMeetingUrl = null,
         ?string $fetchAccountsUri = null,
-        ?string $updateMeetingURL = null,
-        ?string $userVerifyURL = null,
+        ?string $updateMeetingUrl = null,
+        ?string $userVerifyUrl = null,
     ): self {
         $obj = new self;
 
-        $obj->createMeetingURL = $createMeetingURL;
+        $obj->createMeetingUrl = $createMeetingUrl;
 
-        null !== $deleteMeetingURL && $obj->deleteMeetingURL = $deleteMeetingURL;
+        null !== $deleteMeetingUrl && $obj->deleteMeetingUrl = $deleteMeetingUrl;
         null !== $fetchAccountsUri && $obj->fetchAccountsUri = $fetchAccountsUri;
-        null !== $updateMeetingURL && $obj->updateMeetingURL = $updateMeetingURL;
-        null !== $userVerifyURL && $obj->userVerifyURL = $userVerifyURL;
+        null !== $updateMeetingUrl && $obj->updateMeetingUrl = $updateMeetingUrl;
+        null !== $userVerifyUrl && $obj->userVerifyUrl = $userVerifyUrl;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class ExternalSettings implements BaseModel
     public function withCreateMeetingURL(string $createMeetingURL): self
     {
         $obj = clone $this;
-        $obj->createMeetingURL = $createMeetingURL;
+        $obj->createMeetingUrl = $createMeetingURL;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class ExternalSettings implements BaseModel
     public function withDeleteMeetingURL(string $deleteMeetingURL): self
     {
         $obj = clone $this;
-        $obj->deleteMeetingURL = $deleteMeetingURL;
+        $obj->deleteMeetingUrl = $deleteMeetingURL;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class ExternalSettings implements BaseModel
     public function withUpdateMeetingURL(string $updateMeetingURL): self
     {
         $obj = clone $this;
-        $obj->updateMeetingURL = $updateMeetingURL;
+        $obj->updateMeetingUrl = $updateMeetingURL;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class ExternalSettings implements BaseModel
     public function withUserVerifyURL(string $userVerifyURL): self
     {
         $obj = clone $this;
-        $obj->userVerifyURL = $userVerifyURL;
+        $obj->userVerifyUrl = $userVerifyURL;
 
         return $obj;
     }

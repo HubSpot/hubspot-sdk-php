@@ -14,13 +14,13 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch\Operator;
 
 /**
  * @phpstan-type PublicUnifiedEventsFilterBranchShape = array{
- *   eventTypeID: string,
+ *   eventTypeId: string,
  *   filterBranches: list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch>,
  *   filterBranchOperator: string,
  *   filterBranchType: value-of<FilterBranchType>,
  *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
  *   operator: value-of<Operator>,
- *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
 final class PublicUnifiedEventsFilterBranch implements BaseModel
@@ -28,8 +28,8 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
     /** @use SdkModel<PublicUnifiedEventsFilterBranchShape> */
     use SdkModel;
 
-    #[Api('eventTypeId')]
-    public string $eventTypeID;
+    #[Api]
+    public string $eventTypeId;
 
     /**
      * @var list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $filterBranches
@@ -63,7 +63,7 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicUnifiedEventsFilterBranch::with(
-     *   eventTypeID: ...,
+     *   eventTypeId: ...,
      *   filterBranches: ...,
      *   filterBranchOperator: ...,
      *   filterBranchType: ...,
@@ -100,7 +100,7 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
      * @param FilterBranchType|value-of<FilterBranchType> $filterBranchType
      */
     public static function with(
-        string $eventTypeID,
+        string $eventTypeId,
         array $filterBranches,
         string $filterBranchOperator,
         array $filters,
@@ -110,7 +110,7 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->eventTypeID = $eventTypeID;
+        $obj->eventTypeId = $eventTypeId;
         $obj->filterBranches = $filterBranches;
         $obj->filterBranchOperator = $filterBranchOperator;
         $obj['filterBranchType'] = $filterBranchType;
@@ -125,7 +125,7 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
     public function withEventTypeID(string $eventTypeID): self
     {
         $obj = clone $this;
-        $obj->eventTypeID = $eventTypeID;
+        $obj->eventTypeId = $eventTypeID;
 
         return $obj;
     }

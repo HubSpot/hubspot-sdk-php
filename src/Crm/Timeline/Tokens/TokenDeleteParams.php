@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Timeline\Tokens->delete
  *
  * @phpstan-type TokenDeleteParamsShape = array{
- *   appID: int, eventTemplateID: string
+ *   appId: int, eventTemplateId: string
  * }
  */
 final class TokenDeleteParams implements BaseModel
@@ -25,17 +25,17 @@ final class TokenDeleteParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     #[Api]
-    public string $eventTemplateID;
+    public string $eventTemplateId;
 
     /**
      * `new TokenDeleteParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * TokenDeleteParams::with(appID: ..., eventTemplateID: ...)
+     * TokenDeleteParams::with(appId: ..., eventTemplateId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class TokenDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID, string $eventTemplateID): self
+    public static function with(int $appId, string $eventTemplateId): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->eventTemplateID = $eventTemplateID;
+        $obj->appId = $appId;
+        $obj->eventTemplateId = $eventTemplateId;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class TokenDeleteParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class TokenDeleteParams implements BaseModel
     public function withEventTemplateID(string $eventTemplateID): self
     {
         $obj = clone $this;
-        $obj->eventTemplateID = $eventTemplateID;
+        $obj->eventTemplateId = $eventTemplateID;
 
         return $obj;
     }

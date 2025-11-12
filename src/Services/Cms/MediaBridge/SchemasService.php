@@ -18,8 +18,6 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\SchemasContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class SchemasService implements SchemasContract
 {
     /**
@@ -32,70 +30,37 @@ final class SchemasService implements SchemasContract
      *
      * Update the schema for an existing object type
      *
-     * @param string $appID
-     * @param bool $clearDescription
-     * @param string $description
-     * @param ObjectTypeDefinitionLabels $labels
-     * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
-     * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
-     * @param bool $restorable
-     * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
-     * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     * @param array{
+     *   appId: string,
+     *   clearDescription?: bool,
+     *   description?: string,
+     *   labels?: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
+     *   primaryDisplayProperty?: string,
+     *   requiredProperties?: list<string>,
+     *   restorable?: bool,
+     *   searchableProperties?: list<string>,
+     *   secondaryDisplayProperties?: list<string>,
+     * }|SchemaUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $objectType,
-        $appID,
-        $clearDescription = omit,
-        $description = omit,
-        $labels = omit,
-        $primaryDisplayProperty = omit,
-        $requiredProperties = omit,
-        $restorable = omit,
-        $searchableProperties = omit,
-        $secondaryDisplayProperties = omit,
+        array|SchemaUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ObjectsSchemasObjectTypeDefinition {
-        $params = [
-            'appID' => $appID,
-            'clearDescription' => $clearDescription,
-            'description' => $description,
-            'labels' => $labels,
-            'primaryDisplayProperty' => $primaryDisplayProperty,
-            'requiredProperties' => $requiredProperties,
-            'restorable' => $restorable,
-            'searchableProperties' => $searchableProperties,
-            'secondaryDisplayProperties' => $secondaryDisplayProperties,
-        ];
-
-        return $this->updateRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ObjectsSchemasObjectTypeDefinition {
         [$parsed, $options] = SchemaUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'patch',
             path: ['media-bridge/v1/%1$s/schemas/%2$s', $appID, $objectType],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: ObjectsSchemasObjectTypeDefinition::class,
         );
@@ -126,49 +91,23 @@ final class SchemasService implements SchemasContract
      *
      * Create a new association definition for the specified object type.
      *
-     * @param string $appID
-     * @param string $fromObjectTypeID
-     * @param string $toObjectTypeID
-     * @param string $name
+     * @param array{
+     *   appId: string, fromObjectTypeId: string, toObjectTypeId: string, name?: string
+     * }|SchemaCreateAssociationParams $params
      *
      * @throws APIException
      */
     public function createAssociation(
         string $objectType,
-        $appID,
-        $fromObjectTypeID,
-        $toObjectTypeID,
-        $name = omit,
+        array|SchemaCreateAssociationParams $params,
         ?RequestOptions $requestOptions = null,
-    ): AssociationDefinition {
-        $params = [
-            'appID' => $appID,
-            'fromObjectTypeID' => $fromObjectTypeID,
-            'toObjectTypeID' => $toObjectTypeID,
-            'name' => $name,
-        ];
-
-        return $this->createAssociationRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createAssociationRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): AssociationDefinition {
         [$parsed, $options] = SchemaCreateAssociationParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -176,7 +115,7 @@ final class SchemasService implements SchemasContract
             path: [
                 'media-bridge/v1/%1$s/schemas/%2$s/associations', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: AssociationDefinition::class,
         );
@@ -187,44 +126,23 @@ final class SchemasService implements SchemasContract
      *
      * Delete an existing association definition for an object type.
      *
-     * @param string $appID
-     * @param string $objectType
+     * @param array{
+     *   appId: string, objectType: string
+     * }|SchemaDeleteAssociationParams $params
      *
      * @throws APIException
      */
     public function deleteAssociation(
         string $associationID,
-        $appID,
-        $objectType,
+        array|SchemaDeleteAssociationParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['appID' => $appID, 'objectType' => $objectType];
-
-        return $this->deleteAssociationRaw(
-            $associationID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteAssociationRaw(
-        string $associationID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = SchemaDeleteAssociationParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -247,38 +165,21 @@ final class SchemasService implements SchemasContract
      *
      * Get the schema for a specified object type.
      *
-     * @param string $appID
+     * @param array{appId: string}|SchemaGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $objectType,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): ObjectSchema {
-        $params = ['appID' => $appID];
-
-        return $this->getRaw($objectType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $objectType,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SchemaGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ObjectSchema {
         [$parsed, $options] = SchemaGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

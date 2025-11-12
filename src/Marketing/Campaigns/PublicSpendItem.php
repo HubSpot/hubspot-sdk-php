@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   name: string,
  *   order: int,
  *   updatedAt: int,
- *   description?: string,
+ *   description?: string|null,
  * }
  */
 final class PublicSpendItem implements BaseModel

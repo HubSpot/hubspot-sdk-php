@@ -10,15 +10,15 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type PublicFileEggShape = array{fileID: string, type: value-of<Type>}
+ * @phpstan-type PublicFileEggShape = array{fileId: string, type: value-of<Type>}
  */
 final class PublicFileEgg implements BaseModel
 {
     /** @use SdkModel<PublicFileEggShape> */
     use SdkModel;
 
-    #[Api('fileId')]
-    public string $fileID;
+    #[Api]
+    public string $fileId;
 
     /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
@@ -29,7 +29,7 @@ final class PublicFileEgg implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicFileEgg::with(fileID: ..., type: ...)
+     * PublicFileEgg::with(fileId: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -51,12 +51,12 @@ final class PublicFileEgg implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $fileID,
+        string $fileId,
         Type|string $type = 'FILE'
     ): self {
         $obj = new self;
 
-        $obj->fileID = $fileID;
+        $obj->fileId = $fileId;
         $obj['type'] = $type;
 
         return $obj;
@@ -65,7 +65,7 @@ final class PublicFileEgg implements BaseModel
     public function withFileID(string $fileID): self
     {
         $obj = clone $this;
-        $obj->fileID = $fileID;
+        $obj->fileId = $fileID;
 
         return $obj;
     }

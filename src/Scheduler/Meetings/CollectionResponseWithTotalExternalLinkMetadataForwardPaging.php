@@ -11,7 +11,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponseWithTotalExternalLinkMetadataForwardPagingShape = array{
- *   results: list<ExternalLinkMetadata>, total: int, paging?: ForwardPaging
+ *   results: list<ExternalLinkMetadata>, total: int, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseWithTotalExternalLinkMetadataForwardPaging implements BaseModel

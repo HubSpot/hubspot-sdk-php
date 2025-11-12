@@ -13,7 +13,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponseExchangeRateForwardPagingShape = array{
- *   results: list<ExchangeRate>, paging?: ForwardPaging
+ *   results: list<ExchangeRate>, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseExchangeRateForwardPaging implements BaseModel, ResponseConverter

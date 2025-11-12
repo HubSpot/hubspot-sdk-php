@@ -16,7 +16,7 @@ use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
  * @see HubspotSDK\Crm\Timeline\Templates->update
  *
  * @phpstan-type TemplateUpdateParamsShape = array{
- *   appID: int,
+ *   appId: int,
  *   id: string,
  *   name: string,
  *   tokens: list<TimelineEventTemplateToken>,
@@ -31,7 +31,7 @@ final class TemplateUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     /**
      * The template ID.
@@ -70,7 +70,7 @@ final class TemplateUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * TemplateUpdateParams::with(appID: ..., id: ..., name: ..., tokens: ...)
+     * TemplateUpdateParams::with(appId: ..., id: ..., name: ..., tokens: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -96,7 +96,7 @@ final class TemplateUpdateParams implements BaseModel
      * @param list<TimelineEventTemplateToken> $tokens
      */
     public static function with(
-        int $appID,
+        int $appId,
         string $id,
         string $name,
         array $tokens,
@@ -105,7 +105,7 @@ final class TemplateUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj->id = $id;
         $obj->name = $name;
         $obj->tokens = $tokens;
@@ -119,7 +119,7 @@ final class TemplateUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

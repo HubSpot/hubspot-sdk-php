@@ -11,17 +11,17 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicActionDefinitionEggShape = array{
- *   actionURL: string,
+ *   actionUrl: string,
  *   functions: list<PublicActionFunction>,
  *   inputFields: list<InputFieldDefinition>,
- *   labels: array<string, PublicActionLabels>,
+ *   labels: array<string,PublicActionLabels>,
  *   objectTypes: list<string>,
  *   published: bool,
- *   archivedAt?: int,
- *   executionRules?: list<PublicExecutionTranslationRule>,
- *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>,
- *   objectRequestOptions?: PublicObjectRequestOptions,
- *   outputFields?: list<OutputFieldDefinition>,
+ *   archivedAt?: int|null,
+ *   executionRules?: list<PublicExecutionTranslationRule>|null,
+ *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
+ *   objectRequestOptions?: PublicObjectRequestOptions|null,
+ *   outputFields?: list<OutputFieldDefinition>|null,
  * }
  */
 final class PublicActionDefinitionEgg implements BaseModel
@@ -29,8 +29,8 @@ final class PublicActionDefinitionEgg implements BaseModel
     /** @use SdkModel<PublicActionDefinitionEggShape> */
     use SdkModel;
 
-    #[Api('actionUrl')]
-    public string $actionURL;
+    #[Api]
+    public string $actionUrl;
 
     /** @var list<PublicActionFunction> $functions */
     #[Api(list: PublicActionFunction::class)]
@@ -40,7 +40,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     #[Api(list: InputFieldDefinition::class)]
     public array $inputFields;
 
-    /** @var array<string, PublicActionLabels> $labels */
+    /** @var array<string,PublicActionLabels> $labels */
     #[Api(map: PublicActionLabels::class)]
     public array $labels;
 
@@ -77,7 +77,7 @@ final class PublicActionDefinitionEgg implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicActionDefinitionEgg::with(
-     *   actionURL: ...,
+     *   actionUrl: ...,
      *   functions: ...,
      *   inputFields: ...,
      *   labels: ...,
@@ -110,14 +110,14 @@ final class PublicActionDefinitionEgg implements BaseModel
      *
      * @param list<PublicActionFunction> $functions
      * @param list<InputFieldDefinition> $inputFields
-     * @param array<string, PublicActionLabels> $labels
+     * @param array<string,PublicActionLabels> $labels
      * @param list<string> $objectTypes
      * @param list<PublicExecutionTranslationRule> $executionRules
      * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
      * @param list<OutputFieldDefinition> $outputFields
      */
     public static function with(
-        string $actionURL,
+        string $actionUrl,
         array $functions,
         array $inputFields,
         array $labels,
@@ -131,7 +131,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->actionURL = $actionURL;
+        $obj->actionUrl = $actionUrl;
         $obj->functions = $functions;
         $obj->inputFields = $inputFields;
         $obj->labels = $labels;
@@ -150,7 +150,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     public function withActionURL(string $actionURL): self
     {
         $obj = clone $this;
-        $obj->actionURL = $actionURL;
+        $obj->actionUrl = $actionURL;
 
         return $obj;
     }
@@ -178,7 +178,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     }
 
     /**
-     * @param array<string, PublicActionLabels> $labels
+     * @param array<string,PublicActionLabels> $labels
      */
     public function withLabels(array $labels): self
     {

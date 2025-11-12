@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicMigrationMappingShape = array{
- *   legacyListID: string, listID: string
+ *   legacyListId: string, listId: string
  * }
  */
 final class PublicMigrationMapping implements BaseModel
@@ -21,21 +21,21 @@ final class PublicMigrationMapping implements BaseModel
     /**
      * The legacy list id for the list.
      */
-    #[Api('legacyListId')]
-    public string $legacyListID;
+    #[Api]
+    public string $legacyListId;
 
     /**
      * The V3 list id for the list.
      */
-    #[Api('listId')]
-    public string $listID;
+    #[Api]
+    public string $listId;
 
     /**
      * `new PublicMigrationMapping()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicMigrationMapping::with(legacyListID: ..., listID: ...)
+     * PublicMigrationMapping::with(legacyListId: ..., listId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class PublicMigrationMapping implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $legacyListID, string $listID): self
+    public static function with(string $legacyListId, string $listId): self
     {
         $obj = new self;
 
-        $obj->legacyListID = $legacyListID;
-        $obj->listID = $listID;
+        $obj->legacyListId = $legacyListId;
+        $obj->listId = $listId;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class PublicMigrationMapping implements BaseModel
     public function withLegacyListID(string $legacyListID): self
     {
         $obj = clone $this;
-        $obj->legacyListID = $legacyListID;
+        $obj->legacyListId = $legacyListID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PublicMigrationMapping implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listID = $listID;
+        $obj->listId = $listID;
 
         return $obj;
     }

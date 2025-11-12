@@ -10,14 +10,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type HubDBTableRowV3Shape = array{
- *   values: array<string, mixed>,
- *   id?: string,
- *   childTableID?: string,
- *   createdAt?: \DateTimeInterface,
- *   name?: string,
- *   path?: string,
- *   publishedAt?: \DateTimeInterface,
- *   updatedAt?: \DateTimeInterface,
+ *   values: array<string,mixed>,
+ *   id?: string|null,
+ *   childTableId?: string|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   name?: string|null,
+ *   path?: string|null,
+ *   publishedAt?: \DateTimeInterface|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class HubDBTableRowV3 implements BaseModel
@@ -28,7 +28,7 @@ final class HubDBTableRowV3 implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @var array<string, mixed> $values
+     * @var array<string,mixed> $values
      */
     #[Api(map: 'mixed')]
     public array $values;
@@ -42,8 +42,8 @@ final class HubDBTableRowV3 implements BaseModel
     /**
      * Specifies the value for the column child table id.
      */
-    #[Api('childTableId', optional: true)]
-    public ?string $childTableID;
+    #[Api(optional: true)]
+    public ?string $childTableId;
 
     /**
      * Timestamp at which the row is created.
@@ -96,12 +96,12 @@ final class HubDBTableRowV3 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, mixed> $values
+     * @param array<string,mixed> $values
      */
     public static function with(
         array $values,
         ?string $id = null,
-        ?string $childTableID = null,
+        ?string $childTableId = null,
         ?\DateTimeInterface $createdAt = null,
         ?string $name = null,
         ?string $path = null,
@@ -113,7 +113,7 @@ final class HubDBTableRowV3 implements BaseModel
         $obj->values = $values;
 
         null !== $id && $obj->id = $id;
-        null !== $childTableID && $obj->childTableID = $childTableID;
+        null !== $childTableId && $obj->childTableId = $childTableId;
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $name && $obj->name = $name;
         null !== $path && $obj->path = $path;
@@ -126,7 +126,7 @@ final class HubDBTableRowV3 implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string, mixed> $values
+     * @param array<string,mixed> $values
      */
     public function withValues(array $values): self
     {
@@ -153,7 +153,7 @@ final class HubDBTableRowV3 implements BaseModel
     public function withChildTableID(string $childTableID): self
     {
         $obj = clone $this;
-        $obj->childTableID = $childTableID;
+        $obj->childTableId = $childTableID;
 
         return $obj;
     }

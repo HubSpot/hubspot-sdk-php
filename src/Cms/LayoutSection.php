@@ -13,13 +13,13 @@ use HubspotSDK\Core\Conversion\MapOf;
  * @phpstan-type LayoutSectionShape = array{
  *   cells: list<LayoutSection>,
  *   cssClass: string,
- *   cssID: string,
+ *   cssId: string,
  *   cssStyle: string,
  *   label: string,
  *   name: string,
- *   params: array<string, mixed>,
+ *   params: array<string,mixed>,
  *   rowMetaData: list<RowMetaData>,
- *   rows: list<array<string, LayoutSection>>,
+ *   rows: list<array<string,LayoutSection>>,
  *   styles: Styles,
  *   type: string,
  *   w: int,
@@ -38,8 +38,8 @@ final class LayoutSection implements BaseModel
     #[Api]
     public string $cssClass;
 
-    #[Api('cssId')]
-    public string $cssID;
+    #[Api]
+    public string $cssId;
 
     #[Api]
     public string $cssStyle;
@@ -53,7 +53,7 @@ final class LayoutSection implements BaseModel
     /**
      * null.
      *
-     * @var array<string, mixed> $params
+     * @var array<string,mixed> $params
      */
     #[Api(map: 'mixed')]
     public array $params;
@@ -62,7 +62,7 @@ final class LayoutSection implements BaseModel
     #[Api(list: RowMetaData::class)]
     public array $rowMetaData;
 
-    /** @var list<array<string, LayoutSection>> $rows */
+    /** @var list<array<string,LayoutSection>> $rows */
     #[Api(list: new MapOf(LayoutSection::class))]
     public array $rows;
 
@@ -86,7 +86,7 @@ final class LayoutSection implements BaseModel
      * LayoutSection::with(
      *   cells: ...,
      *   cssClass: ...,
-     *   cssID: ...,
+     *   cssId: ...,
      *   cssStyle: ...,
      *   label: ...,
      *   name: ...,
@@ -130,14 +130,14 @@ final class LayoutSection implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<LayoutSection> $cells
-     * @param array<string, mixed> $params
+     * @param array<string,mixed> $params
      * @param list<RowMetaData> $rowMetaData
-     * @param list<array<string, LayoutSection>> $rows
+     * @param list<array<string,LayoutSection>> $rows
      */
     public static function with(
         array $cells,
         string $cssClass,
-        string $cssID,
+        string $cssId,
         string $cssStyle,
         string $label,
         string $name,
@@ -153,7 +153,7 @@ final class LayoutSection implements BaseModel
 
         $obj->cells = $cells;
         $obj->cssClass = $cssClass;
-        $obj->cssID = $cssID;
+        $obj->cssId = $cssId;
         $obj->cssStyle = $cssStyle;
         $obj->label = $label;
         $obj->name = $name;
@@ -190,7 +190,7 @@ final class LayoutSection implements BaseModel
     public function withCssID(string $cssID): self
     {
         $obj = clone $this;
-        $obj->cssID = $cssID;
+        $obj->cssId = $cssID;
 
         return $obj;
     }
@@ -222,7 +222,7 @@ final class LayoutSection implements BaseModel
     /**
      * null.
      *
-     * @param array<string, mixed> $params
+     * @param array<string,mixed> $params
      */
     public function withParams(array $params): self
     {
@@ -244,7 +244,7 @@ final class LayoutSection implements BaseModel
     }
 
     /**
-     * @param list<array<string, LayoutSection>> $rows
+     * @param list<array<string,LayoutSection>> $rows
      */
     public function withRows(array $rows): self
     {

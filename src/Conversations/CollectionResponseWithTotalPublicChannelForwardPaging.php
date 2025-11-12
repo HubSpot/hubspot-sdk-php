@@ -11,7 +11,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponseWithTotalPublicChannelForwardPagingShape = array{
- *   results: list<PublicChannel>, total: int, paging?: ForwardPaging
+ *   results: list<PublicChannel>, total: int, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseWithTotalPublicChannelForwardPaging implements BaseModel

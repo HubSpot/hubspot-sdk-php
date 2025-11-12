@@ -13,10 +13,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * @phpstan-type PublicCampaignWithAssetsShape = array{
  *   id: string,
- *   assets: array<string, CollectionResponsePublicCampaignAsset>,
+ *   assets: array<string,CollectionResponsePublicCampaignAsset>,
  *   businessUnits: list<PublicBusinessUnit>,
  *   createdAt: \DateTimeInterface,
- *   properties: array<string, string>,
+ *   properties: array<string,string>,
  *   updatedAt: \DateTimeInterface,
  * }
  */
@@ -30,7 +30,7 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
     #[Api]
     public string $id;
 
-    /** @var array<string, CollectionResponsePublicCampaignAsset> $assets */
+    /** @var array<string,CollectionResponsePublicCampaignAsset> $assets */
     #[Api(map: CollectionResponsePublicCampaignAsset::class)]
     public array $assets;
 
@@ -41,7 +41,7 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    /** @var array<string, string> $properties */
+    /** @var array<string,string> $properties */
     #[Api(map: 'string')]
     public array $properties;
 
@@ -85,9 +85,9 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, CollectionResponsePublicCampaignAsset> $assets
+     * @param array<string,CollectionResponsePublicCampaignAsset> $assets
      * @param list<PublicBusinessUnit> $businessUnits
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(
         string $id,
@@ -118,7 +118,7 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
     }
 
     /**
-     * @param array<string, CollectionResponsePublicCampaignAsset> $assets
+     * @param array<string,CollectionResponsePublicCampaignAsset> $assets
      */
     public function withAssets(array $assets): self
     {
@@ -148,7 +148,7 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
     }
 
     /**
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

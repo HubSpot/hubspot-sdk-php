@@ -24,37 +24,21 @@ final class SettingsService implements SettingsContract
      *
      * Update webhook settings for the specified app.
      *
-     * @param string $targetURL a publicly available URL for HubSpot to call where event payloads will be delivered
-     * @param ThrottlingSettings $throttling configuration details for webhook throttling
+     * @param array{
+     *   targetUrl: string,
+     *   throttling: array{maxConcurrentRequests: int}|ThrottlingSettings,
+     * }|SettingUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         int $appID,
-        $targetURL,
-        $throttling,
-        ?RequestOptions $requestOptions = null
-    ): SettingsResponse {
-        $params = ['targetURL' => $targetURL, 'throttling' => $throttling];
-
-        return $this->updateRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SettingUpdateParams $params,
+        ?RequestOptions $requestOptions = null,
     ): SettingsResponse {
         [$parsed, $options] = SettingUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

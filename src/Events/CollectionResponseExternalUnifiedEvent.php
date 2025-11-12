@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type CollectionResponseExternalUnifiedEventShape = array{
- *   results: list<ExternalUnifiedEvent>, paging?: EmailsPaging
+ *   results: list<ExternalUnifiedEvent>, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponseExternalUnifiedEvent implements BaseModel

@@ -18,10 +18,10 @@ use HubspotSDK\StandardError;
  *   results: list<MarketingEventPublicDefaultResponse>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError>,
- *   links?: array<string, string>,
- *   numErrors?: int,
- *   requestedAt?: \DateTimeInterface,
+ *   errors?: list<StandardError>|null,
+ *   links?: array<string,string>|null,
+ *   numErrors?: int|null,
+ *   requestedAt?: \DateTimeInterface|null,
  * }
  */
 final class BatchResponseMarketingEventPublicDefaultResponse implements BaseModel, ResponseConverter
@@ -49,7 +49,7 @@ final class BatchResponseMarketingEventPublicDefaultResponse implements BaseMode
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string, string>|null $links */
+    /** @var array<string,string>|null $links */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
@@ -92,7 +92,7 @@ final class BatchResponseMarketingEventPublicDefaultResponse implements BaseMode
      * @param list<MarketingEventPublicDefaultResponse> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError> $errors
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -169,7 +169,7 @@ final class BatchResponseMarketingEventPublicDefaultResponse implements BaseMode
     }
 
     /**
-     * @param array<string, string> $links
+     * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {

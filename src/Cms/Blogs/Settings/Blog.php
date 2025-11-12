@@ -14,7 +14,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * @phpstan-type BlogShape = array{
  *   id: string,
- *   absoluteURL: string,
+ *   absoluteUrl: string,
  *   allowComments: bool,
  *   created: \DateTimeInterface,
  *   deletedAt: \DateTimeInterface,
@@ -26,7 +26,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   publicAccessRulesEnabled: bool,
  *   publicTitle: string,
  *   slug: string,
- *   translatedFromID: string,
+ *   translatedFromId: string,
  *   updated: \DateTimeInterface,
  * }
  */
@@ -43,8 +43,8 @@ final class Blog implements BaseModel, ResponseConverter
     #[Api]
     public string $id;
 
-    #[Api('absoluteUrl')]
-    public string $absoluteURL;
+    #[Api]
+    public string $absoluteUrl;
 
     /**
      * Boolean determining whether or not this blog allows public comments.
@@ -116,8 +116,8 @@ final class Blog implements BaseModel, ResponseConverter
     /**
      * ID of the primary Blog this object was translated from.
      */
-    #[Api('translatedFromId')]
-    public string $translatedFromID;
+    #[Api]
+    public string $translatedFromId;
 
     #[Api]
     public \DateTimeInterface $updated;
@@ -129,7 +129,7 @@ final class Blog implements BaseModel, ResponseConverter
      * ```
      * Blog::with(
      *   id: ...,
-     *   absoluteURL: ...,
+     *   absoluteUrl: ...,
      *   allowComments: ...,
      *   created: ...,
      *   deletedAt: ...,
@@ -141,7 +141,7 @@ final class Blog implements BaseModel, ResponseConverter
      *   publicAccessRulesEnabled: ...,
      *   publicTitle: ...,
      *   slug: ...,
-     *   translatedFromID: ...,
+     *   translatedFromId: ...,
      *   updated: ...,
      * )
      * ```
@@ -182,7 +182,7 @@ final class Blog implements BaseModel, ResponseConverter
      */
     public static function with(
         string $id,
-        string $absoluteURL,
+        string $absoluteUrl,
         bool $allowComments,
         \DateTimeInterface $created,
         \DateTimeInterface $deletedAt,
@@ -194,13 +194,13 @@ final class Blog implements BaseModel, ResponseConverter
         bool $publicAccessRulesEnabled,
         string $publicTitle,
         string $slug,
-        string $translatedFromID,
+        string $translatedFromId,
         \DateTimeInterface $updated,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
-        $obj->absoluteURL = $absoluteURL;
+        $obj->absoluteUrl = $absoluteUrl;
         $obj->allowComments = $allowComments;
         $obj->created = $created;
         $obj->deletedAt = $deletedAt;
@@ -212,7 +212,7 @@ final class Blog implements BaseModel, ResponseConverter
         $obj->publicAccessRulesEnabled = $publicAccessRulesEnabled;
         $obj->publicTitle = $publicTitle;
         $obj->slug = $slug;
-        $obj->translatedFromID = $translatedFromID;
+        $obj->translatedFromId = $translatedFromId;
         $obj->updated = $updated;
 
         return $obj;
@@ -232,7 +232,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withAbsoluteURL(string $absoluteURL): self
     {
         $obj = clone $this;
-        $obj->absoluteURL = $absoluteURL;
+        $obj->absoluteUrl = $absoluteURL;
 
         return $obj;
     }
@@ -366,7 +366,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withTranslatedFromID(string $translatedFromID): self
     {
         $obj = clone $this;
-        $obj->translatedFromID = $translatedFromID;
+        $obj->translatedFromId = $translatedFromID;
 
         return $obj;
     }

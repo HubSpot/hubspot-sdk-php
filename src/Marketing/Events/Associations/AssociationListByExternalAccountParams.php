@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Marketing\Events\Associations->listByExternalAccount
  *
  * @phpstan-type AssociationListByExternalAccountParamsShape = array{
- *   externalAccountID: string
+ *   externalAccountId: string
  * }
  */
 final class AssociationListByExternalAccountParams implements BaseModel
@@ -25,14 +25,14 @@ final class AssociationListByExternalAccountParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $externalAccountID;
+    public string $externalAccountId;
 
     /**
      * `new AssociationListByExternalAccountParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * AssociationListByExternalAccountParams::with(externalAccountID: ...)
+     * AssociationListByExternalAccountParams::with(externalAccountId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -51,11 +51,11 @@ final class AssociationListByExternalAccountParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $externalAccountID): self
+    public static function with(string $externalAccountId): self
     {
         $obj = new self;
 
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountId;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class AssociationListByExternalAccountParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountID = $externalAccountID;
+        $obj->externalAccountId = $externalAccountID;
 
         return $obj;
     }

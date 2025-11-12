@@ -20,12 +20,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Auth\OAuth->createAccessToken
  *
  * @phpstan-type OAuthCreateAccessTokenParamsShape = array{
- *   clientID?: string,
- *   clientSecret?: string,
+ *   client_id?: string,
+ *   client_secret?: string,
  *   code?: string,
- *   grantType?: GrantType|value-of<GrantType>,
- *   redirectUri?: string,
- *   refreshToken?: string,
+ *   grant_type?: GrantType|value-of<GrantType>,
+ *   redirect_uri?: string,
+ *   refresh_token?: string,
  * }
  */
 final class OAuthCreateAccessTokenParams implements BaseModel
@@ -34,24 +34,24 @@ final class OAuthCreateAccessTokenParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api('client_id', optional: true)]
-    public ?string $clientID;
+    #[Api(optional: true)]
+    public ?string $client_id;
 
-    #[Api('client_secret', optional: true)]
-    public ?string $clientSecret;
+    #[Api(optional: true)]
+    public ?string $client_secret;
 
     #[Api(optional: true)]
     public ?string $code;
 
-    /** @var value-of<GrantType>|null $grantType */
-    #[Api('grant_type', enum: GrantType::class, optional: true)]
-    public ?string $grantType;
+    /** @var value-of<GrantType>|null $grant_type */
+    #[Api(enum: GrantType::class, optional: true)]
+    public ?string $grant_type;
 
-    #[Api('redirect_uri', optional: true)]
-    public ?string $redirectUri;
+    #[Api(optional: true)]
+    public ?string $redirect_uri;
 
-    #[Api('refresh_token', optional: true)]
-    public ?string $refreshToken;
+    #[Api(optional: true)]
+    public ?string $refresh_token;
 
     public function __construct()
     {
@@ -63,24 +63,24 @@ final class OAuthCreateAccessTokenParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param GrantType|value-of<GrantType> $grantType
+     * @param GrantType|value-of<GrantType> $grant_type
      */
     public static function with(
-        ?string $clientID = null,
-        ?string $clientSecret = null,
+        ?string $client_id = null,
+        ?string $client_secret = null,
         ?string $code = null,
-        GrantType|string|null $grantType = null,
-        ?string $redirectUri = null,
-        ?string $refreshToken = null,
+        GrantType|string|null $grant_type = null,
+        ?string $redirect_uri = null,
+        ?string $refresh_token = null,
     ): self {
         $obj = new self;
 
-        null !== $clientID && $obj->clientID = $clientID;
-        null !== $clientSecret && $obj->clientSecret = $clientSecret;
+        null !== $client_id && $obj->client_id = $client_id;
+        null !== $client_secret && $obj->client_secret = $client_secret;
         null !== $code && $obj->code = $code;
-        null !== $grantType && $obj['grantType'] = $grantType;
-        null !== $redirectUri && $obj->redirectUri = $redirectUri;
-        null !== $refreshToken && $obj->refreshToken = $refreshToken;
+        null !== $grant_type && $obj['grant_type'] = $grant_type;
+        null !== $redirect_uri && $obj->redirect_uri = $redirect_uri;
+        null !== $refresh_token && $obj->refresh_token = $refresh_token;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class OAuthCreateAccessTokenParams implements BaseModel
     public function withClientID(string $clientID): self
     {
         $obj = clone $this;
-        $obj->clientID = $clientID;
+        $obj->client_id = $clientID;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class OAuthCreateAccessTokenParams implements BaseModel
     public function withClientSecret(string $clientSecret): self
     {
         $obj = clone $this;
-        $obj->clientSecret = $clientSecret;
+        $obj->client_secret = $clientSecret;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class OAuthCreateAccessTokenParams implements BaseModel
     public function withGrantType(GrantType|string $grantType): self
     {
         $obj = clone $this;
-        $obj['grantType'] = $grantType;
+        $obj['grant_type'] = $grantType;
 
         return $obj;
     }
@@ -123,7 +123,7 @@ final class OAuthCreateAccessTokenParams implements BaseModel
     public function withRedirectUri(string $redirectUri): self
     {
         $obj = clone $this;
-        $obj->redirectUri = $redirectUri;
+        $obj->redirect_uri = $redirectUri;
 
         return $obj;
     }
@@ -131,7 +131,7 @@ final class OAuthCreateAccessTokenParams implements BaseModel
     public function withRefreshToken(string $refreshToken): self
     {
         $obj = clone $this;
-        $obj->refreshToken = $refreshToken;
+        $obj->refresh_token = $refreshToken;
 
         return $obj;
     }

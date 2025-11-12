@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type CustomChannelsPublicFileShape = array{
- *   fileID: string,
+ *   fileId: string,
  *   fileUsageType: string,
  *   type: value-of<Type>,
- *   name?: string,
- *   url?: string,
+ *   name?: string|null,
+ *   url?: string|null,
  * }
  */
 final class CustomChannelsPublicFile implements BaseModel
@@ -23,8 +23,8 @@ final class CustomChannelsPublicFile implements BaseModel
     /** @use SdkModel<CustomChannelsPublicFileShape> */
     use SdkModel;
 
-    #[Api('fileId')]
-    public string $fileID;
+    #[Api]
+    public string $fileId;
 
     #[Api]
     public string $fileUsageType;
@@ -44,7 +44,7 @@ final class CustomChannelsPublicFile implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * CustomChannelsPublicFile::with(fileID: ..., fileUsageType: ..., type: ...)
+     * CustomChannelsPublicFile::with(fileId: ..., fileUsageType: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -69,7 +69,7 @@ final class CustomChannelsPublicFile implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $fileID,
+        string $fileId,
         string $fileUsageType,
         Type|string $type = 'FILE',
         ?string $name = null,
@@ -77,7 +77,7 @@ final class CustomChannelsPublicFile implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->fileID = $fileID;
+        $obj->fileId = $fileId;
         $obj->fileUsageType = $fileUsageType;
         $obj['type'] = $type;
 
@@ -90,7 +90,7 @@ final class CustomChannelsPublicFile implements BaseModel
     public function withFileID(string $fileID): self
     {
         $obj = clone $this;
-        $obj->fileID = $fileID;
+        $obj->fileId = $fileID;
 
         return $obj;
     }

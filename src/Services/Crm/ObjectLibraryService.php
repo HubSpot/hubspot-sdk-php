@@ -11,7 +11,7 @@ use HubspotSDK\Services\Crm\ObjectLibrary\EnablementService;
 final class ObjectLibraryService implements ObjectLibraryContract
 {
     /**
-     * @@api
+     * @api
      */
     public EnablementService $enablement;
 

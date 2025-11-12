@@ -15,7 +15,7 @@ use HubspotSDK\Services\Automation\Sequences\EnrollmentsService;
 final class SequencesService implements SequencesContract
 {
     /**
-     * @@api
+     * @api
      */
     public EnrollmentsService $enrollments;
 

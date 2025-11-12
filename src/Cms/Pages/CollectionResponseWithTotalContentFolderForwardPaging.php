@@ -13,7 +13,7 @@ use HubspotSDK\ForwardPaging;
  * Response object for collections of content folders with pagination information.
  *
  * @phpstan-type CollectionResponseWithTotalContentFolderForwardPagingShape = array{
- *   results: list<ContentFolder>, total: int, paging?: ForwardPaging
+ *   results: list<ContentFolder>, total: int, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseWithTotalContentFolderForwardPaging implements BaseModel

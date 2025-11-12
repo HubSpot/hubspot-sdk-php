@@ -12,12 +12,12 @@ use HubspotSDK\Services\Scheduler\Meetings\MeetingsLinksService;
 final class MeetingsService implements MeetingsContract
 {
     /**
-     * @@api
+     * @api
      */
     public CalendarService $calendar;
 
     /**
-     * @@api
+     * @api
      */
     public MeetingsLinksService $meetingsLinks;
 

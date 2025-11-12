@@ -16,7 +16,7 @@ use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState;
  * @see HubspotSDK\Crm\FeatureFlags\Portals->update
  *
  * @phpstan-type PortalUpdateParamsShape = array{
- *   appID: int, flagName: string, flagState: FlagState|value-of<FlagState>
+ *   appId: int, flagName: string, flagState: FlagState|value-of<FlagState>
  * }
  */
 final class PortalUpdateParams implements BaseModel
@@ -26,7 +26,7 @@ final class PortalUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
     #[Api]
     public string $flagName;
@@ -40,7 +40,7 @@ final class PortalUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PortalUpdateParams::with(appID: ..., flagName: ..., flagState: ...)
+     * PortalUpdateParams::with(appId: ..., flagName: ..., flagState: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -62,13 +62,13 @@ final class PortalUpdateParams implements BaseModel
      * @param FlagState|value-of<FlagState> $flagState
      */
     public static function with(
-        int $appID,
+        int $appId,
         string $flagName,
         FlagState|string $flagState
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
+        $obj->appId = $appId;
         $obj->flagName = $flagName;
         $obj['flagState'] = $flagState;
 
@@ -78,7 +78,7 @@ final class PortalUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }

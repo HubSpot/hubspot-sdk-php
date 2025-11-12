@@ -15,7 +15,7 @@ use HubspotSDK\PublicObjectID;
  * @phpstan-type PublicAssociationMultiWithLabelShape = array{
  *   from: PublicObjectID,
  *   to: list<MultiAssociatedObjectWithLabel>,
- *   paging?: EmailsPaging,
+ *   paging?: EmailsPaging|null,
  * }
  */
 final class PublicAssociationMultiWithLabel implements BaseModel

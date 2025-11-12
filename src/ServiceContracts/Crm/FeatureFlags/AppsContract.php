@@ -5,125 +5,65 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\FeatureFlags;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams\DefaultState;
-use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams\OverrideState;
+use HubspotSDK\Crm\FeatureFlags\Apps\AppDeleteParams;
+use HubspotSDK\Crm\FeatureFlags\Apps\AppGetParams;
+use HubspotSDK\Crm\FeatureFlags\Apps\AppListPortalsParams;
+use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams;
 use HubspotSDK\Crm\FeatureFlags\FlagResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface AppsContract
 {
     /**
      * @api
      *
-     * @param int $appID
-     * @param DefaultState|value-of<DefaultState> $defaultState
-     * @param OverrideState|value-of<OverrideState> $overrideState
+     * @param array<mixed>|AppUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $flagName,
-        $appID,
-        $defaultState,
-        $overrideState = omit,
+        array|AppUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): FlagResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $flagName,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): FlagResponse;
-
-    /**
-     * @api
-     *
-     * @param int $appID
+     * @param array<mixed>|AppDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $flagName,
-        $appID,
-        ?RequestOptions $requestOptions = null
+        array|AppDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): FlagResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $flagName,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): FlagResponse;
-
-    /**
-     * @api
-     *
-     * @param int $appID
+     * @param array<mixed>|AppGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $flagName,
-        $appID,
-        ?RequestOptions $requestOptions = null
+        array|AppGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): FlagResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $flagName,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): FlagResponse;
-
-    /**
-     * @api
-     *
-     * @param int $appID
-     * @param int $limit the maximum number of results to return in a single request
-     * @param int $startPortalID the initial account ID for listing, enabling pagination
+     * @param array<mixed>|AppListPortalsParams $params
      *
      * @throws APIException
      */
     public function listPortals(
         string $flagName,
-        $appID,
-        $limit = omit,
-        $startPortalID = omit,
+        array|AppListPortalsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PortalFlagStateBatchResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listPortalsRaw(
-        string $flagName,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PortalFlagStateBatchResponse;
 }

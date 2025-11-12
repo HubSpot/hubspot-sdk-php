@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->createOembedDomain
  *
  * @phpstan-type IntegratorSettingCreateOembedDomainParamsShape = array{
- *   endpoints: Endpoints, portalID?: int
+ *   endpoints: Endpoints, portalId?: int
  * }
  */
 final class IntegratorSettingCreateOembedDomainParams implements BaseModel
@@ -28,8 +28,8 @@ final class IntegratorSettingCreateOembedDomainParams implements BaseModel
     #[Api]
     public Endpoints $endpoints;
 
-    #[Api('portalId', optional: true)]
-    public ?int $portalID;
+    #[Api(optional: true)]
+    public ?int $portalId;
 
     /**
      * `new IntegratorSettingCreateOembedDomainParams()` is missing required properties by the API.
@@ -57,13 +57,13 @@ final class IntegratorSettingCreateOembedDomainParams implements BaseModel
      */
     public static function with(
         Endpoints $endpoints,
-        ?int $portalID = null
+        ?int $portalId = null
     ): self {
         $obj = new self;
 
         $obj->endpoints = $endpoints;
 
-        null !== $portalID && $obj->portalID = $portalID;
+        null !== $portalId && $obj->portalId = $portalId;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class IntegratorSettingCreateOembedDomainParams implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }

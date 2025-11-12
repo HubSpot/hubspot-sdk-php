@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Limits->getAssociationRecordsLimitsByObjectType
  *
  * @phpstan-type LimitGetAssociationRecordsLimitsByObjectTypeParamsShape = array{
- *   fromObjectTypeID: string
+ *   fromObjectTypeId: string
  * }
  */
 final class LimitGetAssociationRecordsLimitsByObjectTypeParams implements BaseModel
@@ -25,14 +25,14 @@ final class LimitGetAssociationRecordsLimitsByObjectTypeParams implements BaseMo
     use SdkParams;
 
     #[Api]
-    public string $fromObjectTypeID;
+    public string $fromObjectTypeId;
 
     /**
      * `new LimitGetAssociationRecordsLimitsByObjectTypeParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * LimitGetAssociationRecordsLimitsByObjectTypeParams::with(fromObjectTypeID: ...)
+     * LimitGetAssociationRecordsLimitsByObjectTypeParams::with(fromObjectTypeId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,11 +52,11 @@ final class LimitGetAssociationRecordsLimitsByObjectTypeParams implements BaseMo
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $fromObjectTypeID): self
+    public static function with(string $fromObjectTypeId): self
     {
         $obj = new self;
 
-        $obj->fromObjectTypeID = $fromObjectTypeID;
+        $obj->fromObjectTypeId = $fromObjectTypeId;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class LimitGetAssociationRecordsLimitsByObjectTypeParams implements BaseMo
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeID = $fromObjectTypeID;
+        $obj->fromObjectTypeId = $fromObjectTypeID;
 
         return $obj;
     }

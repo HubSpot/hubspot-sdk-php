@@ -3,7 +3,6 @@
 namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Pipelines\PipelineStageInput;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -39,11 +38,13 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->create(
             'objectType',
-            displayOrder: 0,
-            label: 'My replaced pipeline',
-            stages: [
-                PipelineStageInput::with(displayOrder: 0, label: 'In Progress'),
-                PipelineStageInput::with(displayOrder: 1, label: 'Done'),
+            [
+                'displayOrder' => 0,
+                'label' => 'My replaced pipeline',
+                'stages' => [
+                    ['displayOrder' => 0, 'label' => 'In Progress'],
+                    ['displayOrder' => 1, 'label' => 'Done'],
+                ],
             ],
         );
 
@@ -59,13 +60,21 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->create(
             'objectType',
-            displayOrder: 0,
-            label: 'My replaced pipeline',
-            stages: [
-                PipelineStageInput::with(displayOrder: 0, label: 'In Progress')
-                    ->withMetadata(['ticketState' => 'OPEN']),
-                PipelineStageInput::with(displayOrder: 1, label: 'Done')
-                    ->withMetadata(['ticketState' => 'CLOSED']),
+            [
+                'displayOrder' => 0,
+                'label' => 'My replaced pipeline',
+                'stages' => [
+                    [
+                        'displayOrder' => 0,
+                        'label' => 'In Progress',
+                        'metadata' => ['ticketState' => 'OPEN'],
+                    ],
+                    [
+                        'displayOrder' => 1,
+                        'label' => 'Done',
+                        'metadata' => ['ticketState' => 'CLOSED'],
+                    ],
+                ],
             ],
         );
 
@@ -81,7 +90,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->update(
             'pipelineId',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -96,7 +105,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->update(
             'pipelineId',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -123,7 +132,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->delete(
             'pipelineId',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -138,7 +147,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->delete(
             'pipelineId',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -151,7 +160,10 @@ final class PipelinesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->pipelines->get('pipelineId', 'objectType');
+        $result = $this->client->crm->pipelines->get(
+            'pipelineId',
+            ['objectType' => 'objectType']
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -163,7 +175,10 @@ final class PipelinesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->pipelines->get('pipelineId', 'objectType');
+        $result = $this->client->crm->pipelines->get(
+            'pipelineId',
+            ['objectType' => 'objectType']
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -177,7 +192,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->getAudit(
             'pipelineId',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -192,7 +207,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->getAudit(
             'pipelineId',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -207,12 +222,14 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->replace(
             'pipelineId',
-            objectType: 'objectType',
-            displayOrder: 0,
-            label: 'My replaced pipeline',
-            stages: [
-                PipelineStageInput::with(displayOrder: 0, label: 'In Progress'),
-                PipelineStageInput::with(displayOrder: 1, label: 'Done'),
+            [
+                'objectType' => 'objectType',
+                'displayOrder' => 0,
+                'label' => 'My replaced pipeline',
+                'stages' => [
+                    ['displayOrder' => 0, 'label' => 'In Progress'],
+                    ['displayOrder' => 1, 'label' => 'Done'],
+                ],
             ],
         );
 
@@ -228,14 +245,22 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->replace(
             'pipelineId',
-            objectType: 'objectType',
-            displayOrder: 0,
-            label: 'My replaced pipeline',
-            stages: [
-                PipelineStageInput::with(displayOrder: 0, label: 'In Progress')
-                    ->withMetadata(['ticketState' => 'OPEN']),
-                PipelineStageInput::with(displayOrder: 1, label: 'Done')
-                    ->withMetadata(['ticketState' => 'CLOSED']),
+            [
+                'objectType' => 'objectType',
+                'displayOrder' => 0,
+                'label' => 'My replaced pipeline',
+                'stages' => [
+                    [
+                        'displayOrder' => 0,
+                        'label' => 'In Progress',
+                        'metadata' => ['ticketState' => 'OPEN'],
+                    ],
+                    [
+                        'displayOrder' => 1,
+                        'label' => 'Done',
+                        'metadata' => ['ticketState' => 'CLOSED'],
+                    ],
+                ],
             ],
         );
 

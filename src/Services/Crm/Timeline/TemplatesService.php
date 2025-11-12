@@ -16,8 +16,6 @@ use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Timeline\TemplatesContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class TemplatesService implements TemplatesContract
 {
     /**
@@ -30,49 +28,32 @@ final class TemplatesService implements TemplatesContract
      *
      * Event templates define the general structure for a custom timeline event, and enable you to send event data to HubSpot. A template includes formatted copy for its heading and details, as well as any custom property definitions. A single app can include up to 750 event templates.<br/><Warning>the `v1` and `v3` timeline events APIs are only available for app partners with existing `v1`/`v3` timeline events defined in their public app. <ul><li>If your app doesn't include any timeline events yet, requests to this endpoint will fail. Instead, you can get started on [latest version of the developer platform](/apps/developer-platform/build-apps/overview). Note that you'll need to request approval before you can define app events for your app. Learn more in the [app events overview](/apps/developer-platform/add-features/app-events/overview).</li><li>If your app includes a `v1`/`v3` timeline event, learn how to [migrate it to the developer platform](/apps/developer-platform/add-features/app-events/create-and-manage-event-types#migrate-an-existing-timeline-event-type). You don't need to request approval before migrating existing event types.</li></ul>If you're not an app partner, you can send custom event data to HubSpot using the [custom events API](/api-reference/events-manage-event-definitions-v3/guide).</Warning>
      *
-     * @param string $name the template name
-     * @param string $objectType The type of CRM object this template is for. [Contacts, companies, tickets, and deals] are supported.
-     * @param list<TimelineEventTemplateToken> $tokens a collection of tokens that can be used as custom properties on the event and to create fully fledged CRM objects
-     * @param string $detailTemplate this uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline when you expand the details
-     * @param string $headerTemplate this uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header
+     * @param array{
+     *   name: string,
+     *   objectType: string,
+     *   tokens: list<array{
+     *     label: string,
+     *     name: string,
+     *     type: "date"|"enumeration"|"number"|"string",
+     *     createdAt?: string|\DateTimeInterface,
+     *     objectPropertyName?: string,
+     *     options?: list<mixed>,
+     *     updatedAt?: string|\DateTimeInterface,
+     *   }|TimelineEventTemplateToken>,
+     *   detailTemplate?: string,
+     *   headerTemplate?: string,
+     * }|TemplateCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        $name,
-        $objectType,
-        $tokens,
-        $detailTemplate = omit,
-        $headerTemplate = omit,
+        array|TemplateCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): TimelineEventTemplate {
-        $params = [
-            'name' => $name,
-            'objectType' => $objectType,
-            'tokens' => $tokens,
-            'detailTemplate' => $detailTemplate,
-            'headerTemplate' => $headerTemplate,
-        ];
-
-        return $this->createRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): TimelineEventTemplate {
         [$parsed, $options] = TemplateCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -90,55 +71,36 @@ final class TemplatesService implements TemplatesContract
      *
      * Update an existing event template, specified by ID.
      *
-     * @param int $appID
-     * @param string $id the template ID
-     * @param string $name the template name
-     * @param list<TimelineEventTemplateToken> $tokens a collection of tokens that can be used as custom properties on the event and to create fully fledged CRM objects
-     * @param string $detailTemplate this uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline when you expand the details
-     * @param string $headerTemplate this uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header
+     * @param array{
+     *   appId: int,
+     *   id: string,
+     *   name: string,
+     *   tokens: list<array{
+     *     label: string,
+     *     name: string,
+     *     type: "date"|"enumeration"|"number"|"string",
+     *     createdAt?: string|\DateTimeInterface,
+     *     objectPropertyName?: string,
+     *     options?: list<mixed>,
+     *     updatedAt?: string|\DateTimeInterface,
+     *   }|TimelineEventTemplateToken>,
+     *   detailTemplate?: string,
+     *   headerTemplate?: string,
+     * }|TemplateUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $eventTemplateID,
-        $appID,
-        $id,
-        $name,
-        $tokens,
-        $detailTemplate = omit,
-        $headerTemplate = omit,
-        ?RequestOptions $requestOptions = null,
-    ): TimelineEventTemplate {
-        $params = [
-            'appID' => $appID,
-            'id' => $id,
-            'name' => $name,
-            'tokens' => $tokens,
-            'detailTemplate' => $detailTemplate,
-            'headerTemplate' => $headerTemplate,
-        ];
-
-        return $this->updateRaw($eventTemplateID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $eventTemplateID,
-        array $params,
+        array|TemplateUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): TimelineEventTemplate {
         [$parsed, $options] = TemplateUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -148,7 +110,7 @@ final class TemplatesService implements TemplatesContract
                 $appID,
                 $eventTemplateID,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: TimelineEventTemplate::class,
         );
@@ -179,38 +141,21 @@ final class TemplatesService implements TemplatesContract
      *
      * Delete an event type template by ID.
      *
-     * @param int $appID
+     * @param array{appId: int}|TemplateDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $eventTemplateID,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['appID' => $appID];
-
-        return $this->deleteRaw($eventTemplateID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $eventTemplateID,
-        array $params,
+        array|TemplateDeleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = TemplateDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -230,38 +175,21 @@ final class TemplatesService implements TemplatesContract
      *
      * Retrieve an event type template by ID.
      *
-     * @param int $appID
+     * @param array{appId: int}|TemplateGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $eventTemplateID,
-        $appID,
-        ?RequestOptions $requestOptions = null
-    ): TimelineEventTemplate {
-        $params = ['appID' => $appID];
-
-        return $this->getRaw($eventTemplateID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $eventTemplateID,
-        array $params,
+        array|TemplateGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): TimelineEventTemplate {
         [$parsed, $options] = TemplateGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

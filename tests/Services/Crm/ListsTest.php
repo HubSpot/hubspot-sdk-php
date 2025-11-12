@@ -3,17 +3,6 @@
 namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\PublicAssociationFilterBranch;
-use HubspotSDK\PublicBoolPropertyOperation;
-use HubspotSDK\PublicEmailSubscriptionFilter;
-use HubspotSDK\PublicNotAllFilterBranch;
-use HubspotSDK\PublicNotAnyFilterBranch;
-use HubspotSDK\PublicNumOccurrencesRefineBy;
-use HubspotSDK\PublicOrFilterBranch;
-use HubspotSDK\PublicPropertyAssociationFilterBranch;
-use HubspotSDK\PublicPropertyFilter;
-use HubspotSDK\PublicRestrictedFilterBranch;
-use HubspotSDK\PublicUnifiedEventsFilterBranch;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -47,11 +36,11 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->create(
-            name: 'Dynamic Association List Example',
-            objectTypeID: '0-1',
-            processingType: 'DYNAMIC',
-        );
+        $result = $this->client->crm->lists->create([
+            'name' => 'Dynamic Association List Example',
+            'objectTypeId' => '0-1',
+            'processingType' => 'DYNAMIC',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -63,11 +52,11 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->create(
-            name: 'Dynamic Association List Example',
-            objectTypeID: '0-1',
-            processingType: 'DYNAMIC',
-        );
+        $result = $this->client->crm->lists->create([
+            'name' => 'Dynamic Association List Example',
+            'objectTypeId' => '0-1',
+            'processingType' => 'DYNAMIC',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -79,7 +68,7 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->list();
+        $result = $this->client->crm->lists->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -115,7 +104,7 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->get('listId');
+        $result = $this->client->crm->lists->get('listId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -129,7 +118,7 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->getByObjectTypeIDAndName(
             'listName',
-            objectTypeID: 'objectTypeId'
+            ['objectTypeId' => 'objectTypeId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -144,7 +133,7 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->getByObjectTypeIDAndName(
             'listName',
-            objectTypeID: 'objectTypeId'
+            ['objectTypeId' => 'objectTypeId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -183,12 +172,14 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->scheduleConversion(
             'listId',
-            conversionType: 'INACTIVITY',
-            day: 0,
-            month: 0,
-            year: 0,
-            offset: 0,
-            timeUnit: 'DAY',
+            [
+                'conversionType' => 'INACTIVITY',
+                'day' => 0,
+                'month' => 0,
+                'year' => 0,
+                'offset' => 0,
+                'timeUnit' => 'DAY',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -203,12 +194,14 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->scheduleConversion(
             'listId',
-            conversionType: 'INACTIVITY',
-            day: 0,
-            month: 0,
-            year: 0,
-            offset: 0,
-            timeUnit: 'DAY',
+            [
+                'conversionType' => 'INACTIVITY',
+                'day' => 0,
+                'month' => 0,
+                'year' => 0,
+                'offset' => 0,
+                'timeUnit' => 'DAY',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -221,7 +214,7 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->search();
+        $result = $this->client->crm->lists->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -235,191 +228,193 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->updateFilters(
             'listId',
-            filterBranch: PublicOrFilterBranch::with(
-                filterBranches: [
-                    PublicOrFilterBranch::with(
-                        filterBranches: [
-                            PublicNotAllFilterBranch::with(
-                                filterBranches: [
-                                    PublicNotAnyFilterBranch::with(
-                                        filterBranches: [
-                                            PublicRestrictedFilterBranch::with(
-                                                filterBranches: [
-                                                    PublicUnifiedEventsFilterBranch::with(
-                                                        eventTypeID: 'eventTypeId',
-                                                        filterBranches: [
-                                                            PublicPropertyAssociationFilterBranch::with(
-                                                                filterBranches: [
-                                                                    PublicAssociationFilterBranch::with(
-                                                                        associationCategory: 'associationCategory',
-                                                                        associationTypeID: 0,
-                                                                        filterBranches: [
-                                                                            PublicOrFilterBranch::with(
-                                                                                filterBranches: [],
-                                                                                filterBranchOperator: 'filterBranchOperator',
-                                                                                filterBranchType: 'OR',
-                                                                                filters: [
-                                                                                    PublicPropertyFilter::with(
-                                                                                        filterType: 'PROPERTY',
-                                                                                        operation: PublicBoolPropertyOperation::with(
-                                                                                            includeObjectsWithNoValueSet: true,
-                                                                                            operationType: 'BOOL',
-                                                                                            operator: 'operator',
-                                                                                            value: true,
-                                                                                        ),
-                                                                                        property: 'property',
-                                                                                    ),
+            [
+                'filterBranch' => [
+                    'filterBranches' => [
+                        [
+                            'filterBranches' => [
+                                [
+                                    'filterBranches' => [
+                                        [
+                                            'filterBranches' => [
+                                                [
+                                                    'filterBranches' => [
+                                                        [
+                                                            'eventTypeId' => 'eventTypeId',
+                                                            'filterBranches' => [
+                                                                [
+                                                                    'filterBranches' => [
+                                                                        [
+                                                                            'associationCategory' => 'associationCategory',
+                                                                            'associationTypeId' => 0,
+                                                                            'filterBranches' => [
+                                                                                [
+                                                                                    'filterBranches' => [],
+                                                                                    'filterBranchOperator' => 'filterBranchOperator',
+                                                                                    'filterBranchType' => 'OR',
+                                                                                    'filters' => [
+                                                                                        [
+                                                                                            'filterType' => 'PROPERTY',
+                                                                                            'operation' => [
+                                                                                                'includeObjectsWithNoValueSet' => true,
+                                                                                                'operationType' => 'BOOL',
+                                                                                                'operator' => 'operator',
+                                                                                                'value' => true,
+                                                                                            ],
+                                                                                            'property' => 'property',
+                                                                                        ],
+                                                                                    ],
                                                                                 ],
-                                                                            ),
+                                                                            ],
+                                                                            'filterBranchOperator' => 'filterBranchOperator',
+                                                                            'filterBranchType' => 'ASSOCIATION',
+                                                                            'filters' => [
+                                                                                [
+                                                                                    'filterType' => 'PROPERTY',
+                                                                                    'operation' => [
+                                                                                        'includeObjectsWithNoValueSet' => true,
+                                                                                        'operationType' => 'BOOL',
+                                                                                        'operator' => 'operator',
+                                                                                        'value' => true,
+                                                                                    ],
+                                                                                    'property' => 'property',
+                                                                                ],
+                                                                            ],
+                                                                            'objectTypeId' => 'objectTypeId',
+                                                                            'operator' => 'operator',
                                                                         ],
-                                                                        filterBranchOperator: 'filterBranchOperator',
-                                                                        filterBranchType: 'ASSOCIATION',
-                                                                        filters: [
-                                                                            PublicPropertyFilter::with(
-                                                                                filterType: 'PROPERTY',
-                                                                                operation: PublicBoolPropertyOperation::with(
-                                                                                    includeObjectsWithNoValueSet: true,
-                                                                                    operationType: 'BOOL',
-                                                                                    operator: 'operator',
-                                                                                    value: true,
-                                                                                ),
-                                                                                property: 'property',
-                                                                            ),
+                                                                    ],
+                                                                    'filterBranchOperator' => 'filterBranchOperator',
+                                                                    'filterBranchType' => 'PROPERTY_ASSOCIATION',
+                                                                    'filters' => [
+                                                                        [
+                                                                            'filterType' => 'PROPERTY',
+                                                                            'operation' => [
+                                                                                'includeObjectsWithNoValueSet' => true,
+                                                                                'operationType' => 'BOOL',
+                                                                                'operator' => 'operator',
+                                                                                'value' => true,
+                                                                            ],
+                                                                            'property' => 'property',
                                                                         ],
-                                                                        objectTypeID: 'objectTypeId',
-                                                                        operator: 'operator',
-                                                                    ),
+                                                                    ],
+                                                                    'objectTypeId' => 'objectTypeId',
+                                                                    'operator' => 'operator',
+                                                                    'propertyWithObjectId' => 'propertyWithObjectId',
                                                                 ],
-                                                                filterBranchOperator: 'filterBranchOperator',
-                                                                filterBranchType: 'PROPERTY_ASSOCIATION',
-                                                                filters: [
-                                                                    PublicPropertyFilter::with(
-                                                                        filterType: 'PROPERTY',
-                                                                        operation: PublicBoolPropertyOperation::with(
-                                                                            includeObjectsWithNoValueSet: true,
-                                                                            operationType: 'BOOL',
-                                                                            operator: 'operator',
-                                                                            value: true,
-                                                                        ),
-                                                                        property: 'property',
-                                                                    ),
+                                                            ],
+                                                            'filterBranchOperator' => 'filterBranchOperator',
+                                                            'filterBranchType' => 'UNIFIED_EVENTS',
+                                                            'filters' => [
+                                                                [
+                                                                    'filterType' => 'PROPERTY',
+                                                                    'operation' => [
+                                                                        'includeObjectsWithNoValueSet' => true,
+                                                                        'operationType' => 'BOOL',
+                                                                        'operator' => 'operator',
+                                                                        'value' => true,
+                                                                    ],
+                                                                    'property' => 'property',
                                                                 ],
-                                                                objectTypeID: 'objectTypeId',
-                                                                operator: 'operator',
-                                                                propertyWithObjectID: 'propertyWithObjectId',
-                                                            ),
+                                                            ],
+                                                            'operator' => 'HAS_COMPLETED',
                                                         ],
-                                                        filterBranchOperator: 'filterBranchOperator',
-                                                        filterBranchType: 'UNIFIED_EVENTS',
-                                                        filters: [
-                                                            PublicPropertyFilter::with(
-                                                                filterType: 'PROPERTY',
-                                                                operation: PublicBoolPropertyOperation::with(
-                                                                    includeObjectsWithNoValueSet: true,
-                                                                    operationType: 'BOOL',
-                                                                    operator: 'operator',
-                                                                    value: true,
-                                                                ),
-                                                                property: 'property',
-                                                            ),
+                                                    ],
+                                                    'filterBranchOperator' => 'filterBranchOperator',
+                                                    'filterBranchType' => 'RESTRICTED',
+                                                    'filters' => [
+                                                        [
+                                                            'filterType' => 'PROPERTY',
+                                                            'operation' => [
+                                                                'includeObjectsWithNoValueSet' => true,
+                                                                'operationType' => 'BOOL',
+                                                                'operator' => 'operator',
+                                                                'value' => true,
+                                                            ],
+                                                            'property' => 'property',
                                                         ],
-                                                        operator: 'HAS_COMPLETED',
-                                                    ),
+                                                    ],
                                                 ],
-                                                filterBranchOperator: 'filterBranchOperator',
-                                                filterBranchType: 'RESTRICTED',
-                                                filters: [
-                                                    PublicPropertyFilter::with(
-                                                        filterType: 'PROPERTY',
-                                                        operation: PublicBoolPropertyOperation::with(
-                                                            includeObjectsWithNoValueSet: true,
-                                                            operationType: 'BOOL',
-                                                            operator: 'operator',
-                                                            value: true,
-                                                        ),
-                                                        property: 'property',
-                                                    ),
+                                            ],
+                                            'filterBranchOperator' => 'filterBranchOperator',
+                                            'filterBranchType' => 'NOT_ANY',
+                                            'filters' => [
+                                                [
+                                                    'filterType' => 'PROPERTY',
+                                                    'operation' => [
+                                                        'includeObjectsWithNoValueSet' => true,
+                                                        'operationType' => 'BOOL',
+                                                        'operator' => 'operator',
+                                                        'value' => true,
+                                                    ],
+                                                    'property' => 'property',
                                                 ],
-                                            ),
+                                            ],
                                         ],
-                                        filterBranchOperator: 'filterBranchOperator',
-                                        filterBranchType: 'NOT_ANY',
-                                        filters: [
-                                            PublicPropertyFilter::with(
-                                                filterType: 'PROPERTY',
-                                                operation: PublicBoolPropertyOperation::with(
-                                                    includeObjectsWithNoValueSet: true,
-                                                    operationType: 'BOOL',
-                                                    operator: 'operator',
-                                                    value: true,
-                                                ),
-                                                property: 'property',
-                                            ),
+                                    ],
+                                    'filterBranchOperator' => 'filterBranchOperator',
+                                    'filterBranchType' => 'NOT_ALL',
+                                    'filters' => [
+                                        [
+                                            'filterType' => 'PROPERTY',
+                                            'operation' => [
+                                                'includeObjectsWithNoValueSet' => true,
+                                                'operationType' => 'BOOL',
+                                                'operator' => 'operator',
+                                                'value' => true,
+                                            ],
+                                            'property' => 'property',
                                         ],
-                                    ),
+                                    ],
                                 ],
-                                filterBranchOperator: 'filterBranchOperator',
-                                filterBranchType: 'NOT_ALL',
-                                filters: [
-                                    PublicPropertyFilter::with(
-                                        filterType: 'PROPERTY',
-                                        operation: PublicBoolPropertyOperation::with(
-                                            includeObjectsWithNoValueSet: true,
-                                            operationType: 'BOOL',
-                                            operator: 'operator',
-                                            value: true,
-                                        ),
-                                        property: 'property',
-                                    ),
+                            ],
+                            'filterBranchOperator' => 'filterBranchOperator',
+                            'filterBranchType' => 'AND',
+                            'filters' => [
+                                [
+                                    'filterType' => 'PROPERTY',
+                                    'operation' => [
+                                        'includeObjectsWithNoValueSet' => true,
+                                        'operationType' => 'BOOL',
+                                        'operator' => 'IS_GREATER_THAN_OR_EQUAL_TO',
+                                        'value' => 12,
+                                    ],
+                                    'property' => 'hs_predictivecontactscore_v2',
                                 ],
-                            ),
+                                [
+                                    'filterType' => 'PROPERTY',
+                                    'operation' => [
+                                        'includeObjectsWithNoValueSet' => true,
+                                        'operationType' => 'BOOL',
+                                        'operator' => 'IS_UNKNOWN',
+                                        'value' => true,
+                                    ],
+                                    'property' => 'engagements_last_meeting_booked_source',
+                                ],
+                                [
+                                    'acceptedStatuses' => ['OPT_IN'],
+                                    'filterType' => 'EMAIL_SUBSCRIPTION',
+                                    'subscriptionIds' => ['81537745', '321981152'],
+                                ],
+                            ],
                         ],
-                        filterBranchOperator: 'filterBranchOperator',
-                        filterBranchType: 'AND',
-                        filters: [
-                            PublicPropertyFilter::with(
-                                filterType: 'PROPERTY',
-                                operation: PublicBoolPropertyOperation::with(
-                                    includeObjectsWithNoValueSet: true,
-                                    operationType: 'BOOL',
-                                    operator: 'IS_GREATER_THAN_OR_EQUAL_TO',
-                                    value: true,
-                                ),
-                                property: 'hs_predictivecontactscore_v2',
-                            ),
-                            PublicPropertyFilter::with(
-                                filterType: 'PROPERTY',
-                                operation: PublicBoolPropertyOperation::with(
-                                    includeObjectsWithNoValueSet: true,
-                                    operationType: 'BOOL',
-                                    operator: 'IS_UNKNOWN',
-                                    value: true,
-                                ),
-                                property: 'engagements_last_meeting_booked_source',
-                            ),
-                            PublicEmailSubscriptionFilter::with(
-                                acceptedStatuses: ['OPT_IN'],
-                                filterType: 'EMAIL_SUBSCRIPTION',
-                                subscriptionIDs: ['81537745', '321981152'],
-                            ),
+                    ],
+                    'filterBranchOperator' => 'filterBranchOperator',
+                    'filterBranchType' => 'OR',
+                    'filters' => [
+                        [
+                            'filterType' => 'PROPERTY',
+                            'operation' => [
+                                'includeObjectsWithNoValueSet' => true,
+                                'operationType' => 'BOOL',
+                                'operator' => 'operator',
+                                'value' => true,
+                            ],
+                            'property' => 'property',
                         ],
-                    ),
+                    ],
                 ],
-                filterBranchOperator: 'filterBranchOperator',
-                filterBranchType: 'OR',
-                filters: [
-                    PublicPropertyFilter::with(
-                        filterType: 'PROPERTY',
-                        operation: PublicBoolPropertyOperation::with(
-                            includeObjectsWithNoValueSet: true,
-                            operationType: 'BOOL',
-                            operator: 'operator',
-                            value: true,
-                        ),
-                        property: 'property',
-                    ),
-                ],
-            ),
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -434,199 +429,199 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->updateFilters(
             'listId',
-            filterBranch: PublicOrFilterBranch::with(
-                filterBranches: [
-                    PublicOrFilterBranch::with(
-                        filterBranches: [
-                            PublicNotAllFilterBranch::with(
-                                filterBranches: [
-                                    PublicNotAnyFilterBranch::with(
-                                        filterBranches: [
-                                            PublicRestrictedFilterBranch::with(
-                                                filterBranches: [
-                                                    PublicUnifiedEventsFilterBranch::with(
-                                                        eventTypeID: 'eventTypeId',
-                                                        filterBranches: [
-                                                            PublicPropertyAssociationFilterBranch::with(
-                                                                filterBranches: [
-                                                                    PublicAssociationFilterBranch::with(
-                                                                        associationCategory: 'associationCategory',
-                                                                        associationTypeID: 0,
-                                                                        filterBranches: [
-                                                                            PublicOrFilterBranch::with(
-                                                                                filterBranches: [],
-                                                                                filterBranchOperator: 'filterBranchOperator',
-                                                                                filterBranchType: 'OR',
-                                                                                filters: [
-                                                                                    PublicPropertyFilter::with(
-                                                                                        filterType: 'PROPERTY',
-                                                                                        operation: PublicBoolPropertyOperation::with(
-                                                                                            includeObjectsWithNoValueSet: true,
-                                                                                            operationType: 'BOOL',
-                                                                                            operator: 'operator',
-                                                                                            value: true,
-                                                                                        ),
-                                                                                        property: 'property',
-                                                                                    ),
+            [
+                'filterBranch' => [
+                    'filterBranches' => [
+                        [
+                            'filterBranches' => [
+                                [
+                                    'filterBranches' => [
+                                        [
+                                            'filterBranches' => [
+                                                [
+                                                    'filterBranches' => [
+                                                        [
+                                                            'eventTypeId' => 'eventTypeId',
+                                                            'filterBranches' => [
+                                                                [
+                                                                    'filterBranches' => [
+                                                                        [
+                                                                            'associationCategory' => 'associationCategory',
+                                                                            'associationTypeId' => 0,
+                                                                            'filterBranches' => [
+                                                                                [
+                                                                                    'filterBranches' => [],
+                                                                                    'filterBranchOperator' => 'filterBranchOperator',
+                                                                                    'filterBranchType' => 'OR',
+                                                                                    'filters' => [
+                                                                                        [
+                                                                                            'filterType' => 'PROPERTY',
+                                                                                            'operation' => [
+                                                                                                'includeObjectsWithNoValueSet' => true,
+                                                                                                'operationType' => 'BOOL',
+                                                                                                'operator' => 'operator',
+                                                                                                'value' => true,
+                                                                                            ],
+                                                                                            'property' => 'property',
+                                                                                        ],
+                                                                                    ],
                                                                                 ],
-                                                                            ),
+                                                                            ],
+                                                                            'filterBranchOperator' => 'filterBranchOperator',
+                                                                            'filterBranchType' => 'ASSOCIATION',
+                                                                            'filters' => [
+                                                                                [
+                                                                                    'filterType' => 'PROPERTY',
+                                                                                    'operation' => [
+                                                                                        'includeObjectsWithNoValueSet' => true,
+                                                                                        'operationType' => 'BOOL',
+                                                                                        'operator' => 'operator',
+                                                                                        'value' => true,
+                                                                                    ],
+                                                                                    'property' => 'property',
+                                                                                ],
+                                                                            ],
+                                                                            'objectTypeId' => 'objectTypeId',
+                                                                            'operator' => 'operator',
                                                                         ],
-                                                                        filterBranchOperator: 'filterBranchOperator',
-                                                                        filterBranchType: 'ASSOCIATION',
-                                                                        filters: [
-                                                                            PublicPropertyFilter::with(
-                                                                                filterType: 'PROPERTY',
-                                                                                operation: PublicBoolPropertyOperation::with(
-                                                                                    includeObjectsWithNoValueSet: true,
-                                                                                    operationType: 'BOOL',
-                                                                                    operator: 'operator',
-                                                                                    value: true,
-                                                                                ),
-                                                                                property: 'property',
-                                                                            ),
+                                                                    ],
+                                                                    'filterBranchOperator' => 'filterBranchOperator',
+                                                                    'filterBranchType' => 'PROPERTY_ASSOCIATION',
+                                                                    'filters' => [
+                                                                        [
+                                                                            'filterType' => 'PROPERTY',
+                                                                            'operation' => [
+                                                                                'includeObjectsWithNoValueSet' => true,
+                                                                                'operationType' => 'BOOL',
+                                                                                'operator' => 'operator',
+                                                                                'value' => true,
+                                                                            ],
+                                                                            'property' => 'property',
                                                                         ],
-                                                                        objectTypeID: 'objectTypeId',
-                                                                        operator: 'operator',
-                                                                    ),
+                                                                    ],
+                                                                    'objectTypeId' => 'objectTypeId',
+                                                                    'operator' => 'operator',
+                                                                    'propertyWithObjectId' => 'propertyWithObjectId',
                                                                 ],
-                                                                filterBranchOperator: 'filterBranchOperator',
-                                                                filterBranchType: 'PROPERTY_ASSOCIATION',
-                                                                filters: [
-                                                                    PublicPropertyFilter::with(
-                                                                        filterType: 'PROPERTY',
-                                                                        operation: PublicBoolPropertyOperation::with(
-                                                                            includeObjectsWithNoValueSet: true,
-                                                                            operationType: 'BOOL',
-                                                                            operator: 'operator',
-                                                                            value: true,
-                                                                        ),
-                                                                        property: 'property',
-                                                                    ),
+                                                            ],
+                                                            'filterBranchOperator' => 'filterBranchOperator',
+                                                            'filterBranchType' => 'UNIFIED_EVENTS',
+                                                            'filters' => [
+                                                                [
+                                                                    'filterType' => 'PROPERTY',
+                                                                    'operation' => [
+                                                                        'includeObjectsWithNoValueSet' => true,
+                                                                        'operationType' => 'BOOL',
+                                                                        'operator' => 'operator',
+                                                                        'value' => true,
+                                                                    ],
+                                                                    'property' => 'property',
                                                                 ],
-                                                                objectTypeID: 'objectTypeId',
-                                                                operator: 'operator',
-                                                                propertyWithObjectID: 'propertyWithObjectId',
-                                                            ),
+                                                            ],
+                                                            'operator' => 'HAS_COMPLETED',
+                                                            'coalescingRefineBy' => [
+                                                                'type' => 'NUM_OCCURRENCES',
+                                                                'maxOccurrences' => 0,
+                                                                'minOccurrences' => 0,
+                                                            ],
                                                         ],
-                                                        filterBranchOperator: 'filterBranchOperator',
-                                                        filterBranchType: 'UNIFIED_EVENTS',
-                                                        filters: [
-                                                            PublicPropertyFilter::with(
-                                                                filterType: 'PROPERTY',
-                                                                operation: PublicBoolPropertyOperation::with(
-                                                                    includeObjectsWithNoValueSet: true,
-                                                                    operationType: 'BOOL',
-                                                                    operator: 'operator',
-                                                                    value: true,
-                                                                ),
-                                                                property: 'property',
-                                                            ),
+                                                    ],
+                                                    'filterBranchOperator' => 'filterBranchOperator',
+                                                    'filterBranchType' => 'RESTRICTED',
+                                                    'filters' => [
+                                                        [
+                                                            'filterType' => 'PROPERTY',
+                                                            'operation' => [
+                                                                'includeObjectsWithNoValueSet' => true,
+                                                                'operationType' => 'BOOL',
+                                                                'operator' => 'operator',
+                                                                'value' => true,
+                                                            ],
+                                                            'property' => 'property',
                                                         ],
-                                                        operator: 'HAS_COMPLETED',
-                                                    )
-                                                        ->withCoalescingRefineBy(
-                                                            PublicNumOccurrencesRefineBy::with(
-                                                                type: 'NUM_OCCURRENCES'
-                                                            )
-                                                                ->withMaxOccurrences(0)
-                                                                ->withMinOccurrences(0),
-                                                        ),
+                                                    ],
                                                 ],
-                                                filterBranchOperator: 'filterBranchOperator',
-                                                filterBranchType: 'RESTRICTED',
-                                                filters: [
-                                                    PublicPropertyFilter::with(
-                                                        filterType: 'PROPERTY',
-                                                        operation: PublicBoolPropertyOperation::with(
-                                                            includeObjectsWithNoValueSet: true,
-                                                            operationType: 'BOOL',
-                                                            operator: 'operator',
-                                                            value: true,
-                                                        ),
-                                                        property: 'property',
-                                                    ),
+                                            ],
+                                            'filterBranchOperator' => 'filterBranchOperator',
+                                            'filterBranchType' => 'NOT_ANY',
+                                            'filters' => [
+                                                [
+                                                    'filterType' => 'PROPERTY',
+                                                    'operation' => [
+                                                        'includeObjectsWithNoValueSet' => true,
+                                                        'operationType' => 'BOOL',
+                                                        'operator' => 'operator',
+                                                        'value' => true,
+                                                    ],
+                                                    'property' => 'property',
                                                 ],
-                                            ),
+                                            ],
                                         ],
-                                        filterBranchOperator: 'filterBranchOperator',
-                                        filterBranchType: 'NOT_ANY',
-                                        filters: [
-                                            PublicPropertyFilter::with(
-                                                filterType: 'PROPERTY',
-                                                operation: PublicBoolPropertyOperation::with(
-                                                    includeObjectsWithNoValueSet: true,
-                                                    operationType: 'BOOL',
-                                                    operator: 'operator',
-                                                    value: true,
-                                                ),
-                                                property: 'property',
-                                            ),
+                                    ],
+                                    'filterBranchOperator' => 'filterBranchOperator',
+                                    'filterBranchType' => 'NOT_ALL',
+                                    'filters' => [
+                                        [
+                                            'filterType' => 'PROPERTY',
+                                            'operation' => [
+                                                'includeObjectsWithNoValueSet' => true,
+                                                'operationType' => 'BOOL',
+                                                'operator' => 'operator',
+                                                'value' => true,
+                                            ],
+                                            'property' => 'property',
                                         ],
-                                    ),
+                                    ],
                                 ],
-                                filterBranchOperator: 'filterBranchOperator',
-                                filterBranchType: 'NOT_ALL',
-                                filters: [
-                                    PublicPropertyFilter::with(
-                                        filterType: 'PROPERTY',
-                                        operation: PublicBoolPropertyOperation::with(
-                                            includeObjectsWithNoValueSet: true,
-                                            operationType: 'BOOL',
-                                            operator: 'operator',
-                                            value: true,
-                                        ),
-                                        property: 'property',
-                                    ),
+                            ],
+                            'filterBranchOperator' => 'filterBranchOperator',
+                            'filterBranchType' => 'AND',
+                            'filters' => [
+                                [
+                                    'filterType' => 'PROPERTY',
+                                    'operation' => [
+                                        'includeObjectsWithNoValueSet' => true,
+                                        'operationType' => 'BOOL',
+                                        'operator' => 'IS_GREATER_THAN_OR_EQUAL_TO',
+                                        'value' => 12,
+                                    ],
+                                    'property' => 'hs_predictivecontactscore_v2',
                                 ],
-                            ),
+                                [
+                                    'filterType' => 'PROPERTY',
+                                    'operation' => [
+                                        'includeObjectsWithNoValueSet' => true,
+                                        'operationType' => 'BOOL',
+                                        'operator' => 'IS_UNKNOWN',
+                                        'value' => true,
+                                    ],
+                                    'property' => 'engagements_last_meeting_booked_source',
+                                ],
+                                [
+                                    'acceptedStatuses' => ['OPT_IN'],
+                                    'filterType' => 'EMAIL_SUBSCRIPTION',
+                                    'subscriptionIds' => ['81537745', '321981152'],
+                                    'subscriptionType' => 'subscriptionType',
+                                ],
+                            ],
                         ],
-                        filterBranchOperator: 'filterBranchOperator',
-                        filterBranchType: 'AND',
-                        filters: [
-                            PublicPropertyFilter::with(
-                                filterType: 'PROPERTY',
-                                operation: PublicBoolPropertyOperation::with(
-                                    includeObjectsWithNoValueSet: true,
-                                    operationType: 'BOOL',
-                                    operator: 'IS_GREATER_THAN_OR_EQUAL_TO',
-                                    value: true,
-                                ),
-                                property: 'hs_predictivecontactscore_v2',
-                            ),
-                            PublicPropertyFilter::with(
-                                filterType: 'PROPERTY',
-                                operation: PublicBoolPropertyOperation::with(
-                                    includeObjectsWithNoValueSet: true,
-                                    operationType: 'BOOL',
-                                    operator: 'IS_UNKNOWN',
-                                    value: true,
-                                ),
-                                property: 'engagements_last_meeting_booked_source',
-                            ),
-                            PublicEmailSubscriptionFilter::with(
-                                acceptedStatuses: ['OPT_IN'],
-                                filterType: 'EMAIL_SUBSCRIPTION',
-                                subscriptionIDs: ['81537745', '321981152'],
-                            )
-                                ->withSubscriptionType('subscriptionType'),
+                    ],
+                    'filterBranchOperator' => 'filterBranchOperator',
+                    'filterBranchType' => 'OR',
+                    'filters' => [
+                        [
+                            'filterType' => 'PROPERTY',
+                            'operation' => [
+                                'includeObjectsWithNoValueSet' => true,
+                                'operationType' => 'BOOL',
+                                'operator' => 'operator',
+                                'value' => true,
+                            ],
+                            'property' => 'property',
                         ],
-                    ),
+                    ],
                 ],
-                filterBranchOperator: 'filterBranchOperator',
-                filterBranchType: 'OR',
-                filters: [
-                    PublicPropertyFilter::with(
-                        filterType: 'PROPERTY',
-                        operation: PublicBoolPropertyOperation::with(
-                            includeObjectsWithNoValueSet: true,
-                            operationType: 'BOOL',
-                            operator: 'operator',
-                            value: true,
-                        ),
-                        property: 'property',
-                    ),
-                ],
-            ),
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -639,7 +634,7 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->updateName('listId');
+        $result = $this->client->crm->lists->updateName('listId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -14,10 +14,10 @@ use HubspotSDK\PublicQuarterReference\ReferenceType;
  *   day: int,
  *   month: int,
  *   referenceType: value-of<ReferenceType>,
- *   hour?: int,
- *   millisecond?: int,
- *   minute?: int,
- *   second?: int,
+ *   hour?: int|null,
+ *   millisecond?: int|null,
+ *   minute?: int|null,
+ *   second?: int|null,
  * }
  */
 final class PublicQuarterReference implements BaseModel

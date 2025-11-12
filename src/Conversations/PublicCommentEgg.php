@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   attachments: list<PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg>,
  *   text: string,
  *   type: value-of<Type>,
- *   richText?: string,
+ *   richText?: string|null,
  * }
  */
 final class PublicCommentEgg implements BaseModel

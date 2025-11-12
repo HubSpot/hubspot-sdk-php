@@ -10,8 +10,6 @@ use HubspotSDK\Cms\Blogs\Posts\PostAttachToLangGroupParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCloneParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateLangVariationParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\ContentTypeCategory;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
 use HubspotSDK\Cms\Blogs\Posts\PostDeleteParams;
@@ -30,18 +28,17 @@ use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams;
 use HubspotSDK\Cms\Blogs\Posts\VersionBlogPost;
 use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
+use HubspotSDK\Cms\Styles;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\PostsContract;
 use HubspotSDK\Services\Cms\Blogs\Posts\BatchService;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class PostsService implements PostsContract
 {
     /**
-     * @@api
+     * @api
      */
     public BatchService $batch;
 
@@ -56,221 +53,112 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
+     * @phpstan-type AbStatus = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
+     *
      * Create a new blog post, specifying its content in the request body.
      *
-     * @param string $id the unique ID of the blog post
-     * @param AbStatus|value-of<AbStatus> $abStatus
-     * @param string $abTestID
-     * @param int $archivedAt the timestamp (ISO8601 format) when this Blog Post was deleted
-     * @param bool $archivedInDashboard if True, the post will not show up in your dashboard, although the post could still be live
-     * @param list<array<string,
-     * mixed,>> $attachedStylesheets List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
-     * @param string $authorName the name of the blog author associated with the post
-     * @param string $blogAuthorID the ID of the blog author associated with this post
-     * @param string $campaign the GUID of the marketing campaign the post is associated with
-     * @param int $categoryID ID of the object type
-     * @param string $contentGroupID the ID of the post's parent blog
-     * @param ContentTypeCategory|value-of<ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should always be BLOG_POST.
-     * @param \DateTimeInterface $created
-     * @param string $createdByID the ID of the user that created the post
-     * @param bool $currentlyPublished
-     * @param CurrentState|value-of<CurrentState> $currentState A generated ENUM descibing the current state of this Blog Post. Should always match state.
-     * @param string $domain The domain that the post lives on. If null, the post will default to the domain of the parent blog.
-     * @param string $dynamicPageDataSourceID
-     * @param int $dynamicPageDataSourceType
-     * @param string $dynamicPageHubDBTableID for dynamic HubDB pages,
-     * the ID of the HubDB table this post references
-     * @param bool $enableDomainStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param bool $enableGoogleAmpOutputOverride boolean to allow overriding the AMP settings for the blog
-     * @param bool $enableLayoutStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param string $featuredImage the featuredImage of this Blog Post
-     * @param string $featuredImageAltText alt Text of the featuredImage
-     * @param string $folderID
-     * @param string $footerHTML custom HTML for embed codes, javascript that should be placed before the </body> tag of the page
-     * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
-     * @param string $htmlTitle the HTML title of the post
-     * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
-     * @param Language|value-of<Language> $language The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
-     * @param array<string, LayoutSection> $layoutSections
-     * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
-     * @param string $mabExperimentID
-     * @param string $metaDescription a description that goes in <meta> tag on the page
-     * @param string $name the internal name of the post
-     * @param int $pageExpiryDate
-     * @param bool $pageExpiryEnabled
-     * @param int $pageExpiryRedirectID
-     * @param string $pageExpiryRedirectURL
-     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
-     * @param string $postBody the HTML of the main post body
-     * @param string $postSummary the summary of the blog post that will appear on the main listing page
-     * @param list<mixed> $publicAccessRules rules for require member registration to access private content
-     * @param bool $publicAccessRulesEnabled boolean to determine whether or not to respect publicAccessRules
-     * @param \DateTimeInterface $publishDate the date (ISO8601 format) the blog post is to be published at
-     * @param bool $publishImmediately set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting
-     * @param string $rssBody the contents of the RSS body for this Blog Post
-     * @param string $rssSummary the contents of the RSS summary for this Blog Post
-     * @param string $slug The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
-     * @param string $state an enumeration describing the current publish state of the post
-     * @param list<int> $tagIDs the IDs of the tags associated with this post
-     * @param array<string, mixed> $themeSettingsValues
-     * @param string $translatedFromID ID of the primary blog post that this post was translated from
-     * @param array<string, PagesContentLanguageVariation> $translations
-     * @param \DateTimeInterface $updated
-     * @param string $updatedByID the ID of the user that updated the post
-     * @param string $url a generated field representing the URL of this blog post
-     * @param bool $useFeaturedImage boolean to determine if this post should use a featured image
-     * @param array<string,
-     * mixed,> $widgetContainers A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
-     * @param array<string,
-     * mixed,> $widgets A data structure containing the data for all the modules for this page
+     * @param array{
+     *   id: string,
+     *   abStatus: AbStatus,
+     *   abTestId: string,
+     *   archivedAt: int,
+     *   archivedInDashboard: bool,
+     *   attachedStylesheets: list<array<string,mixed>>,
+     *   authorName: string,
+     *   blogAuthorId: string,
+     *   campaign: string,
+     *   categoryId: int,
+     *   contentGroupId: string,
+     *   contentTypeCategory: "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"10"|"11"|"12"|"13"|"14"|"15",
+     *   created: string|\DateTimeInterface,
+     *   createdById: string,
+     *   currentlyPublished: bool,
+     *   currentState: value-of<CurrentState>,
+     *   domain: string,
+     *   dynamicPageDataSourceId: string,
+     *   dynamicPageDataSourceType: int,
+     *   dynamicPageHubDbTableId: string,
+     *   enableDomainStylesheets: bool,
+     *   enableGoogleAmpOutputOverride: bool,
+     *   enableLayoutStylesheets: bool,
+     *   featuredImage: string,
+     *   featuredImageAltText: string,
+     *   folderId: string,
+     *   footerHtml: string,
+     *   headHtml: string,
+     *   htmlTitle: string,
+     *   includeDefaultCustomCss: bool,
+     *   language: value-of<Language>,
+     *   layoutSections: array<string,array{
+     *     cells: list<mixed>,
+     *     cssClass: string,
+     *     cssId: string,
+     *     cssStyle: string,
+     *     label: string,
+     *     name: string,
+     *     params: array<string,mixed>,
+     *     rowMetaData: list<mixed>,
+     *     rows: list<array<string,mixed>>,
+     *     styles: array<mixed>|Styles,
+     *     type: string,
+     *     w: int,
+     *     x: int,
+     *   }|LayoutSection>,
+     *   linkRelCanonicalUrl: string,
+     *   mabExperimentId: string,
+     *   metaDescription: string,
+     *   name: string,
+     *   pageExpiryDate: int,
+     *   pageExpiryEnabled: bool,
+     *   pageExpiryRedirectId: int,
+     *   pageExpiryRedirectUrl: string,
+     *   password: string,
+     *   postBody: string,
+     *   postSummary: string,
+     *   publicAccessRules: list<mixed>,
+     *   publicAccessRulesEnabled: bool,
+     *   publishDate: string|\DateTimeInterface,
+     *   publishImmediately: bool,
+     *   rssBody: string,
+     *   rssSummary: string,
+     *   slug: string,
+     *   state: string,
+     *   tagIds: list<int>,
+     *   themeSettingsValues: array<string,mixed>,
+     *   translatedFromId: string,
+     *   translations: array<string,array{
+     *     id: int,
+     *     archivedInDashboard: bool,
+     *     authorName: string,
+     *     campaign: string,
+     *     created: string|\DateTimeInterface,
+     *     name: string,
+     *     password: string,
+     *     publicAccessRules: list<mixed>,
+     *     publicAccessRulesEnabled: bool,
+     *     publishDate: string|\DateTimeInterface,
+     *     slug: string,
+     *     state: string,
+     *     updated: string|\DateTimeInterface,
+     *     tagIds?: list<int>,
+     *   }|PagesContentLanguageVariation>,
+     *   updated: string|\DateTimeInterface,
+     *   updatedById: string,
+     *   url: string,
+     *   useFeaturedImage: bool,
+     *   widgetContainers: array<string,mixed>,
+     *   widgets: array<string,mixed>,
+     * }|PostCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $id,
-        $abStatus,
-        $abTestID,
-        $archivedAt,
-        $archivedInDashboard,
-        $attachedStylesheets,
-        $authorName,
-        $blogAuthorID,
-        $campaign,
-        $categoryID,
-        $contentGroupID,
-        $contentTypeCategory,
-        $created,
-        $createdByID,
-        $currentlyPublished,
-        $currentState,
-        $domain,
-        $dynamicPageDataSourceID,
-        $dynamicPageDataSourceType,
-        $dynamicPageHubDBTableID,
-        $enableDomainStylesheets,
-        $enableGoogleAmpOutputOverride,
-        $enableLayoutStylesheets,
-        $featuredImage,
-        $featuredImageAltText,
-        $folderID,
-        $footerHTML,
-        $headHTML,
-        $htmlTitle,
-        $includeDefaultCustomCss,
-        $language,
-        $layoutSections,
-        $linkRelCanonicalURL,
-        $mabExperimentID,
-        $metaDescription,
-        $name,
-        $pageExpiryDate,
-        $pageExpiryEnabled,
-        $pageExpiryRedirectID,
-        $pageExpiryRedirectURL,
-        $password,
-        $postBody,
-        $postSummary,
-        $publicAccessRules,
-        $publicAccessRulesEnabled,
-        $publishDate,
-        $publishImmediately,
-        $rssBody,
-        $rssSummary,
-        $slug,
-        $state,
-        $tagIDs,
-        $themeSettingsValues,
-        $translatedFromID,
-        $translations,
-        $updated,
-        $updatedByID,
-        $url,
-        $useFeaturedImage,
-        $widgetContainers,
-        $widgets,
-        ?RequestOptions $requestOptions = null,
-    ): BlogPost {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'blogAuthorID' => $blogAuthorID,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableGoogleAmpOutputOverride' => $enableGoogleAmpOutputOverride,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'password' => $password,
-            'postBody' => $postBody,
-            'postSummary' => $postSummary,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'rssBody' => $rssBody,
-            'rssSummary' => $rssSummary,
-            'slug' => $slug,
-            'state' => $state,
-            'tagIDs' => $tagIDs,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|PostCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): BlogPost {
         [$parsed, $options] = PostCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -286,226 +174,114 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
+     * @phpstan-type AbStatusShape = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
+     *
      * Partially updates a single blog post by ID. You only need to specify the values that you want to update.
      *
-     * @param string $id the unique ID of the blog post
-     * @param PostUpdateParams\AbStatus|value-of<PostUpdateParams\AbStatus> $abStatus
-     * @param string $abTestID
-     * @param int $archivedAt the timestamp (ISO8601 format) when this Blog Post was deleted
-     * @param bool $archivedInDashboard if True, the post will not show up in your dashboard, although the post could still be live
-     * @param list<array<string,
-     * mixed,>> $attachedStylesheets List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
-     * @param string $authorName the name of the blog author associated with the post
-     * @param string $blogAuthorID the ID of the blog author associated with this post
-     * @param string $campaign the GUID of the marketing campaign the post is associated with
-     * @param int $categoryID ID of the object type
-     * @param string $contentGroupID the ID of the post's parent blog
-     * @param PostUpdateParams\ContentTypeCategory|value-of<PostUpdateParams\ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should always be BLOG_POST.
-     * @param \DateTimeInterface $created
-     * @param string $createdByID the ID of the user that created the post
-     * @param bool $currentlyPublished
-     * @param PostUpdateParams\CurrentState|value-of<PostUpdateParams\CurrentState> $currentState A generated ENUM descibing the current state of this Blog Post. Should always match state.
-     * @param string $domain The domain that the post lives on. If null, the post will default to the domain of the parent blog.
-     * @param string $dynamicPageDataSourceID
-     * @param int $dynamicPageDataSourceType
-     * @param string $dynamicPageHubDBTableID for dynamic HubDB pages,
-     * the ID of the HubDB table this post references
-     * @param bool $enableDomainStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param bool $enableGoogleAmpOutputOverride boolean to allow overriding the AMP settings for the blog
-     * @param bool $enableLayoutStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param string $featuredImage the featuredImage of this Blog Post
-     * @param string $featuredImageAltText alt Text of the featuredImage
-     * @param string $folderID
-     * @param string $footerHTML custom HTML for embed codes, javascript that should be placed before the </body> tag of the page
-     * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
-     * @param string $htmlTitle the HTML title of the post
-     * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
-     * @param PostUpdateParams\Language|value-of<PostUpdateParams\Language> $language The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
-     * @param array<string, LayoutSection> $layoutSections
-     * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
-     * @param string $mabExperimentID
-     * @param string $metaDescription a description that goes in <meta> tag on the page
-     * @param string $name the internal name of the post
-     * @param int $pageExpiryDate
-     * @param bool $pageExpiryEnabled
-     * @param int $pageExpiryRedirectID
-     * @param string $pageExpiryRedirectURL
-     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
-     * @param string $postBody the HTML of the main post body
-     * @param string $postSummary the summary of the blog post that will appear on the main listing page
-     * @param list<mixed> $publicAccessRules rules for require member registration to access private content
-     * @param bool $publicAccessRulesEnabled boolean to determine whether or not to respect publicAccessRules
-     * @param \DateTimeInterface $publishDate the date (ISO8601 format) the blog post is to be published at
-     * @param bool $publishImmediately set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting
-     * @param string $rssBody the contents of the RSS body for this Blog Post
-     * @param string $rssSummary the contents of the RSS summary for this Blog Post
-     * @param string $slug The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
-     * @param string $state an enumeration describing the current publish state of the post
-     * @param list<int> $tagIDs the IDs of the tags associated with this post
-     * @param array<string, mixed> $themeSettingsValues
-     * @param string $translatedFromID ID of the primary blog post that this post was translated from
-     * @param array<string, PagesContentLanguageVariation> $translations
-     * @param \DateTimeInterface $updated
-     * @param string $updatedByID the ID of the user that updated the post
-     * @param string $url a generated field representing the URL of this blog post
-     * @param bool $useFeaturedImage boolean to determine if this post should use a featured image
-     * @param array<string,
-     * mixed,> $widgetContainers A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
-     * @param array<string,
-     * mixed,> $widgets A data structure containing the data for all the modules for this page
-     * @param bool $archived Specifies whether to update deleted blog posts. Defaults to `false`.
+     * @param array{
+     *   id: string,
+     *   abStatus: AbStatusShape,
+     *   abTestId: string,
+     *   archivedAt: int,
+     *   archivedInDashboard: bool,
+     *   attachedStylesheets: list<array<string,mixed>>,
+     *   authorName: string,
+     *   blogAuthorId: string,
+     *   campaign: string,
+     *   categoryId: int,
+     *   contentGroupId: string,
+     *   contentTypeCategory: "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"10"|"11"|"12"|"13"|"14"|"15",
+     *   created: string|\DateTimeInterface,
+     *   createdById: string,
+     *   currentlyPublished: bool,
+     *   currentState: value-of<PostUpdateParams\CurrentState>,
+     *   domain: string,
+     *   dynamicPageDataSourceId: string,
+     *   dynamicPageDataSourceType: int,
+     *   dynamicPageHubDbTableId: string,
+     *   enableDomainStylesheets: bool,
+     *   enableGoogleAmpOutputOverride: bool,
+     *   enableLayoutStylesheets: bool,
+     *   featuredImage: string,
+     *   featuredImageAltText: string,
+     *   folderId: string,
+     *   footerHtml: string,
+     *   headHtml: string,
+     *   htmlTitle: string,
+     *   includeDefaultCustomCss: bool,
+     *   language: value-of<PostUpdateParams\Language>,
+     *   layoutSections: array<string,array{
+     *     cells: list<mixed>,
+     *     cssClass: string,
+     *     cssId: string,
+     *     cssStyle: string,
+     *     label: string,
+     *     name: string,
+     *     params: array<string,mixed>,
+     *     rowMetaData: list<mixed>,
+     *     rows: list<array<string,mixed>>,
+     *     styles: array<mixed>|Styles,
+     *     type: string,
+     *     w: int,
+     *     x: int,
+     *   }|LayoutSection>,
+     *   linkRelCanonicalUrl: string,
+     *   mabExperimentId: string,
+     *   metaDescription: string,
+     *   name: string,
+     *   pageExpiryDate: int,
+     *   pageExpiryEnabled: bool,
+     *   pageExpiryRedirectId: int,
+     *   pageExpiryRedirectUrl: string,
+     *   password: string,
+     *   postBody: string,
+     *   postSummary: string,
+     *   publicAccessRules: list<mixed>,
+     *   publicAccessRulesEnabled: bool,
+     *   publishDate: string|\DateTimeInterface,
+     *   publishImmediately: bool,
+     *   rssBody: string,
+     *   rssSummary: string,
+     *   slug: string,
+     *   state: string,
+     *   tagIds: list<int>,
+     *   themeSettingsValues: array<string,mixed>,
+     *   translatedFromId: string,
+     *   translations: array<string,array{
+     *     id: int,
+     *     archivedInDashboard: bool,
+     *     authorName: string,
+     *     campaign: string,
+     *     created: string|\DateTimeInterface,
+     *     name: string,
+     *     password: string,
+     *     publicAccessRules: list<mixed>,
+     *     publicAccessRulesEnabled: bool,
+     *     publishDate: string|\DateTimeInterface,
+     *     slug: string,
+     *     state: string,
+     *     updated: string|\DateTimeInterface,
+     *     tagIds?: list<int>,
+     *   }|PagesContentLanguageVariation>,
+     *   updated: string|\DateTimeInterface,
+     *   updatedById: string,
+     *   url: string,
+     *   useFeaturedImage: bool,
+     *   widgetContainers: array<string,mixed>,
+     *   widgets: array<string,mixed>,
+     *   archived?: bool,
+     * }|PostUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $objectID,
-        $id,
-        $abStatus,
-        $abTestID,
-        $archivedAt,
-        $archivedInDashboard,
-        $attachedStylesheets,
-        $authorName,
-        $blogAuthorID,
-        $campaign,
-        $categoryID,
-        $contentGroupID,
-        $contentTypeCategory,
-        $created,
-        $createdByID,
-        $currentlyPublished,
-        $currentState,
-        $domain,
-        $dynamicPageDataSourceID,
-        $dynamicPageDataSourceType,
-        $dynamicPageHubDBTableID,
-        $enableDomainStylesheets,
-        $enableGoogleAmpOutputOverride,
-        $enableLayoutStylesheets,
-        $featuredImage,
-        $featuredImageAltText,
-        $folderID,
-        $footerHTML,
-        $headHTML,
-        $htmlTitle,
-        $includeDefaultCustomCss,
-        $language,
-        $layoutSections,
-        $linkRelCanonicalURL,
-        $mabExperimentID,
-        $metaDescription,
-        $name,
-        $pageExpiryDate,
-        $pageExpiryEnabled,
-        $pageExpiryRedirectID,
-        $pageExpiryRedirectURL,
-        $password,
-        $postBody,
-        $postSummary,
-        $publicAccessRules,
-        $publicAccessRulesEnabled,
-        $publishDate,
-        $publishImmediately,
-        $rssBody,
-        $rssSummary,
-        $slug,
-        $state,
-        $tagIDs,
-        $themeSettingsValues,
-        $translatedFromID,
-        $translations,
-        $updated,
-        $updatedByID,
-        $url,
-        $useFeaturedImage,
-        $widgetContainers,
-        $widgets,
-        $archived = omit,
+        array|PostUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BlogPost {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'blogAuthorID' => $blogAuthorID,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableGoogleAmpOutputOverride' => $enableGoogleAmpOutputOverride,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'password' => $password,
-            'postBody' => $postBody,
-            'postSummary' => $postSummary,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'rssBody' => $rssBody,
-            'rssSummary' => $rssSummary,
-            'slug' => $slug,
-            'state' => $state,
-            'tagIDs' => $tagIDs,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-            'archived' => $archived,
-        ];
-
-        return $this->updateRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BlogPost {
         [$parsed, $options] = PostUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = ['archived'];
 
@@ -525,69 +301,31 @@ final class PostsService implements PostsContract
      *
      * Retrieve all blog posts, with paging and filtering options. This method would be useful for an integration that ingests posts and suggests edits.
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived Specifies whether to return deleted blog posts. Defaults to `false`.
-     * @param \DateTimeInterface $createdAfter only return blog posts created after the specified time
-     * @param \DateTimeInterface $createdAt only return blog posts created at exactly the specified time
-     * @param \DateTimeInterface $createdBefore only return blog posts created before the specified time
-     * @param int $limit The maximum number of results to return. Default is 20.
-     * @param string $property
-     * @param list<string> $sort Specifies which fields to use for sorting results. Valid fields are `createdAt` (default), `name`, `updatedAt`, `createdBy`, `updatedBy`.
-     * @param \DateTimeInterface $updatedAfter only return blog posts last updated after the specified time
-     * @param \DateTimeInterface $updatedAt only return blog posts last updated at exactly the specified time
-     * @param \DateTimeInterface $updatedBefore only return blog posts last updated before the specified time
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: string|\DateTimeInterface,
+     *   createdAt?: string|\DateTimeInterface,
+     *   createdBefore?: string|\DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: string|\DateTimeInterface,
+     *   updatedAt?: string|\DateTimeInterface,
+     *   updatedBefore?: string|\DateTimeInterface,
+     * }|PostListParams $params
      *
      * @return Page<BlogPost>
      *
      * @throws APIException
      */
     public function list(
-        $after = omit,
-        $archived = omit,
-        $createdAfter = omit,
-        $createdAt = omit,
-        $createdBefore = omit,
-        $limit = omit,
-        $property = omit,
-        $sort = omit,
-        $updatedAfter = omit,
-        $updatedAt = omit,
-        $updatedBefore = omit,
-        ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'limit' => $limit,
-            'property' => $property,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-
-        return $this->listRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<BlogPost>
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        array $params,
+        array|PostListParams $params,
         ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = PostListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -606,35 +344,18 @@ final class PostsService implements PostsContract
      *
      * Delete a blog post by ID.
      *
-     * @param bool $archived whether to return only results that have been deleted
+     * @param array{archived?: bool}|PostDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $objectID,
-        $archived = omit,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['archived' => $archived];
-
-        return $this->deleteRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PostDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = PostDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -652,44 +373,19 @@ final class PostsService implements PostsContract
      *
      * Attach a blog post to a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
-     * @param string $id ID of the object to add to a multi-language group
-     * @param string $language designated language of the object to add to a multi-language group
-     * @param string $primaryID ID of primary language object in multi-language group
-     * @param string $primaryLanguage primary language of the multi-language group
+     * @param array{
+     *   id: string, language: string, primaryId: string, primaryLanguage?: string
+     * }|PostAttachToLangGroupParams $params
      *
      * @throws APIException
      */
     public function attachToLangGroup(
-        $id,
-        $language,
-        $primaryID,
-        $primaryLanguage = omit,
+        array|PostAttachToLangGroupParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryID' => $primaryID,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-
-        return $this->attachToLangGroupRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function attachToLangGroupRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = PostAttachToLangGroupParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -707,35 +403,17 @@ final class PostsService implements PostsContract
      *
      * Clone a blog post, making a copy of it in a new blog post.
      *
-     * @param string $id ID of the object to be cloned
-     * @param string $cloneName name of the cloned object
+     * @param array{id: string, cloneName?: string}|PostCloneParams $params
      *
      * @throws APIException
      */
     public function clone(
-        $id,
-        $cloneName = omit,
-        ?RequestOptions $requestOptions = null
-    ): BlogPost {
-        $params = ['id' => $id, 'cloneName' => $cloneName];
-
-        return $this->cloneRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function cloneRaw(
-        array $params,
+        array|PostCloneParams $params,
         ?RequestOptions $requestOptions = null
     ): BlogPost {
         [$parsed, $options] = PostCloneParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -753,35 +431,19 @@ final class PostsService implements PostsContract
      *
      * Create a new language variation from an existing blog post
      *
-     * @param string $id ID of blog post to clone
-     * @param string $language target language of new variant
+     * @param array{
+     *   id: string, language?: string
+     * }|PostCreateLangVariationParams $params
      *
      * @throws APIException
      */
     public function createLangVariation(
-        $id,
-        $language = omit,
-        ?RequestOptions $requestOptions = null
-    ): BlogPost {
-        $params = ['id' => $id, 'language' => $language];
-
-        return $this->createLangVariationRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createLangVariationRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PostCreateLangVariationParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BlogPost {
         [$parsed, $options] = PostCreateLangVariationParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -799,33 +461,17 @@ final class PostsService implements PostsContract
      *
      * Detach a blog post from a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
-     * @param string $id ID of the object to remove from a multi-language group
+     * @param array{id: string}|PostDetachFromLangGroupParams $params
      *
      * @throws APIException
      */
     public function detachFromLangGroup(
-        $id,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['id' => $id];
-
-        return $this->detachFromLangGroupRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function detachFromLangGroupRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PostDetachFromLangGroupParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = PostDetachFromLangGroupParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -843,35 +489,19 @@ final class PostsService implements PostsContract
      *
      * Retrieve a blog post by the post ID.
      *
-     * @param bool $archived Specifies whether to return deleted blog posts. Defaults to `false`.
-     * @param string $property specific properties to return
+     * @param array{archived?: bool, property?: string}|PostGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $objectID,
-        $archived = omit,
-        $property = omit,
+        array|PostGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): BlogPost {
-        $params = ['archived' => $archived, 'property' => $property];
-
-        return $this->getRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): BlogPost {
-        [$parsed, $options] = PostGetParams::parseRequest($params, $requestOptions);
+        [$parsed, $options] = PostGetParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -908,38 +538,21 @@ final class PostsService implements PostsContract
      *
      * Retrieve a previous version of a blog post.
      *
-     * @param string $objectID
+     * @param array{objectId: string}|PostGetPreviousVersionParams $params
      *
      * @throws APIException
      */
     public function getPreviousVersion(
         string $revisionID,
-        $objectID,
-        ?RequestOptions $requestOptions = null
-    ): VersionBlogPost {
-        $params = ['objectID' => $objectID];
-
-        return $this->getPreviousVersionRaw($revisionID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getPreviousVersionRaw(
-        string $revisionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PostGetPreviousVersionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): VersionBlogPost {
         [$parsed, $options] = PostGetPreviousVersionParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $objectID = $parsed['objectId'];
+        unset($parsed['objectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -955,9 +568,9 @@ final class PostsService implements PostsContract
      *
      * Retrieve all the previous versions of a blog post.
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param string $before
-     * @param int $limit The maximum number of results to return. Default is 100.
+     * @param array{
+     *   after?: string, before?: string, limit?: int
+     * }|PostGetPreviousVersionsParams $params
      *
      * @return Page<VersionBlogPost>
      *
@@ -965,33 +578,12 @@ final class PostsService implements PostsContract
      */
     public function getPreviousVersions(
         string $objectID,
-        $after = omit,
-        $before = omit,
-        $limit = omit,
+        array|PostGetPreviousVersionsParams $params,
         ?RequestOptions $requestOptions = null,
-    ): Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-
-        return $this->getPreviousVersionsRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @return Page<VersionBlogPost>
-     *
-     * @throws APIException
-     */
-    public function getPreviousVersionsRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): Page {
         [$parsed, $options] = PostGetPreviousVersionsParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1050,42 +642,21 @@ final class PostsService implements PostsContract
      *
      * Restores a blog post to one of its previous versions.
      *
-     * @param string $objectID
+     * @param array{objectId: string}|PostRestorePreviousVersionParams $params
      *
      * @throws APIException
      */
     public function restorePreviousVersion(
         string $revisionID,
-        $objectID,
-        ?RequestOptions $requestOptions = null
-    ): BlogPost {
-        $params = ['objectID' => $objectID];
-
-        return $this->restorePreviousVersionRaw(
-            $revisionID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function restorePreviousVersionRaw(
-        string $revisionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PostRestorePreviousVersionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BlogPost {
         [$parsed, $options] = PostRestorePreviousVersionParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $objectID = $parsed['objectId'];
+        unset($parsed['objectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -1103,42 +674,21 @@ final class PostsService implements PostsContract
      *
      * Takes a specified version of a blog post, sets it as the new draft version of the blog post.
      *
-     * @param string $objectID
+     * @param array{objectId: string}|PostRestorePreviousVersionToDraftParams $params
      *
      * @throws APIException
      */
     public function restorePreviousVersionToDraft(
         int $revisionID,
-        $objectID,
-        ?RequestOptions $requestOptions = null
-    ): BlogPost {
-        $params = ['objectID' => $objectID];
-
-        return $this->restorePreviousVersionToDraftRaw(
-            $revisionID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function restorePreviousVersionToDraftRaw(
-        int $revisionID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PostRestorePreviousVersionToDraftParams $params,
+        ?RequestOptions $requestOptions = null,
     ): BlogPost {
         [$parsed, $options] = PostRestorePreviousVersionToDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $objectID = $parsed['objectId'];
+        unset($parsed['objectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -1158,35 +708,19 @@ final class PostsService implements PostsContract
      *
      * Schedule a blog post to be published at a specified time.
      *
-     * @param string $id the ID of the object to be scheduled
-     * @param \DateTimeInterface $publishDate the date the object should transition from scheduled to published
+     * @param array{
+     *   id: string, publishDate: string|\DateTimeInterface
+     * }|PostScheduleParams $params
      *
      * @throws APIException
      */
     public function schedule(
-        $id,
-        $publishDate,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['id' => $id, 'publishDate' => $publishDate];
-
-        return $this->scheduleRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function scheduleRaw(
-        array $params,
+        array|PostScheduleParams $params,
         ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = PostScheduleParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1204,33 +738,17 @@ final class PostsService implements PostsContract
      *
      * Set the primary language of a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content) to the language of the provided post (specified as an ID in the request body)
      *
-     * @param string $id ID of object to set as primary in multi-language group
+     * @param array{id: string}|PostSetLangPrimaryParams $params
      *
      * @throws APIException
      */
     public function setLangPrimary(
-        $id,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['id' => $id];
-
-        return $this->setLangPrimaryRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function setLangPrimaryRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|PostSetLangPrimaryParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = PostSetLangPrimaryParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1246,223 +764,113 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
+     * @phpstan-type AbStatus1 = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
+     *
      * Partially updates the draft version of a single blog post by ID. You only need to specify the values that you want to update.
      *
-     * @param string $id the unique ID of the blog post
-     * @param PostUpdateDraftParams\AbStatus|value-of<PostUpdateDraftParams\AbStatus> $abStatus
-     * @param string $abTestID
-     * @param int $archivedAt the timestamp (ISO8601 format) when this Blog Post was deleted
-     * @param bool $archivedInDashboard if True, the post will not show up in your dashboard, although the post could still be live
-     * @param list<array<string,
-     * mixed,>> $attachedStylesheets List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
-     * @param string $authorName the name of the blog author associated with the post
-     * @param string $blogAuthorID the ID of the blog author associated with this post
-     * @param string $campaign the GUID of the marketing campaign the post is associated with
-     * @param int $categoryID ID of the object type
-     * @param string $contentGroupID the ID of the post's parent blog
-     * @param PostUpdateDraftParams\ContentTypeCategory|value-of<PostUpdateDraftParams\ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should always be BLOG_POST.
-     * @param \DateTimeInterface $created
-     * @param string $createdByID the ID of the user that created the post
-     * @param bool $currentlyPublished
-     * @param PostUpdateDraftParams\CurrentState|value-of<PostUpdateDraftParams\CurrentState> $currentState A generated ENUM descibing the current state of this Blog Post. Should always match state.
-     * @param string $domain The domain that the post lives on. If null, the post will default to the domain of the parent blog.
-     * @param string $dynamicPageDataSourceID
-     * @param int $dynamicPageDataSourceType
-     * @param string $dynamicPageHubDBTableID for dynamic HubDB pages,
-     * the ID of the HubDB table this post references
-     * @param bool $enableDomainStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param bool $enableGoogleAmpOutputOverride boolean to allow overriding the AMP settings for the blog
-     * @param bool $enableLayoutStylesheets boolean to determine whether or not the styles from the template should be applied
-     * @param string $featuredImage the featuredImage of this Blog Post
-     * @param string $featuredImageAltText alt Text of the featuredImage
-     * @param string $folderID
-     * @param string $footerHTML custom HTML for embed codes, javascript that should be placed before the </body> tag of the page
-     * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
-     * @param string $htmlTitle the HTML title of the post
-     * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
-     * @param PostUpdateDraftParams\Language|value-of<PostUpdateDraftParams\Language> $language The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
-     * @param array<string, LayoutSection> $layoutSections
-     * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
-     * @param string $mabExperimentID
-     * @param string $metaDescription a description that goes in <meta> tag on the page
-     * @param string $name the internal name of the post
-     * @param int $pageExpiryDate
-     * @param bool $pageExpiryEnabled
-     * @param int $pageExpiryRedirectID
-     * @param string $pageExpiryRedirectURL
-     * @param string $password Set this to create a password protected page. Entering the password will be required to view the page.
-     * @param string $postBody the HTML of the main post body
-     * @param string $postSummary the summary of the blog post that will appear on the main listing page
-     * @param list<mixed> $publicAccessRules rules for require member registration to access private content
-     * @param bool $publicAccessRulesEnabled boolean to determine whether or not to respect publicAccessRules
-     * @param \DateTimeInterface $publishDate the date (ISO8601 format) the blog post is to be published at
-     * @param bool $publishImmediately set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting
-     * @param string $rssBody the contents of the RSS body for this Blog Post
-     * @param string $rssSummary the contents of the RSS summary for this Blog Post
-     * @param string $slug The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
-     * @param string $state an enumeration describing the current publish state of the post
-     * @param list<int> $tagIDs the IDs of the tags associated with this post
-     * @param array<string, mixed> $themeSettingsValues
-     * @param string $translatedFromID ID of the primary blog post that this post was translated from
-     * @param array<string, PagesContentLanguageVariation> $translations
-     * @param \DateTimeInterface $updated
-     * @param string $updatedByID the ID of the user that updated the post
-     * @param string $url a generated field representing the URL of this blog post
-     * @param bool $useFeaturedImage boolean to determine if this post should use a featured image
-     * @param array<string,
-     * mixed,> $widgetContainers A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
-     * @param array<string,
-     * mixed,> $widgets A data structure containing the data for all the modules for this page
+     * @param array{
+     *   id: string,
+     *   abStatus: AbStatus1,
+     *   abTestId: string,
+     *   archivedAt: int,
+     *   archivedInDashboard: bool,
+     *   attachedStylesheets: list<array<string,mixed>>,
+     *   authorName: string,
+     *   blogAuthorId: string,
+     *   campaign: string,
+     *   categoryId: int,
+     *   contentGroupId: string,
+     *   contentTypeCategory: "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"|"10"|"11"|"12"|"13"|"14"|"15",
+     *   created: string|\DateTimeInterface,
+     *   createdById: string,
+     *   currentlyPublished: bool,
+     *   currentState: value-of<PostUpdateDraftParams\CurrentState>,
+     *   domain: string,
+     *   dynamicPageDataSourceId: string,
+     *   dynamicPageDataSourceType: int,
+     *   dynamicPageHubDbTableId: string,
+     *   enableDomainStylesheets: bool,
+     *   enableGoogleAmpOutputOverride: bool,
+     *   enableLayoutStylesheets: bool,
+     *   featuredImage: string,
+     *   featuredImageAltText: string,
+     *   folderId: string,
+     *   footerHtml: string,
+     *   headHtml: string,
+     *   htmlTitle: string,
+     *   includeDefaultCustomCss: bool,
+     *   language: value-of<PostUpdateDraftParams\Language>,
+     *   layoutSections: array<string,array{
+     *     cells: list<mixed>,
+     *     cssClass: string,
+     *     cssId: string,
+     *     cssStyle: string,
+     *     label: string,
+     *     name: string,
+     *     params: array<string,mixed>,
+     *     rowMetaData: list<mixed>,
+     *     rows: list<array<string,mixed>>,
+     *     styles: array<mixed>|Styles,
+     *     type: string,
+     *     w: int,
+     *     x: int,
+     *   }|LayoutSection>,
+     *   linkRelCanonicalUrl: string,
+     *   mabExperimentId: string,
+     *   metaDescription: string,
+     *   name: string,
+     *   pageExpiryDate: int,
+     *   pageExpiryEnabled: bool,
+     *   pageExpiryRedirectId: int,
+     *   pageExpiryRedirectUrl: string,
+     *   password: string,
+     *   postBody: string,
+     *   postSummary: string,
+     *   publicAccessRules: list<mixed>,
+     *   publicAccessRulesEnabled: bool,
+     *   publishDate: string|\DateTimeInterface,
+     *   publishImmediately: bool,
+     *   rssBody: string,
+     *   rssSummary: string,
+     *   slug: string,
+     *   state: string,
+     *   tagIds: list<int>,
+     *   themeSettingsValues: array<string,mixed>,
+     *   translatedFromId: string,
+     *   translations: array<string,array{
+     *     id: int,
+     *     archivedInDashboard: bool,
+     *     authorName: string,
+     *     campaign: string,
+     *     created: string|\DateTimeInterface,
+     *     name: string,
+     *     password: string,
+     *     publicAccessRules: list<mixed>,
+     *     publicAccessRulesEnabled: bool,
+     *     publishDate: string|\DateTimeInterface,
+     *     slug: string,
+     *     state: string,
+     *     updated: string|\DateTimeInterface,
+     *     tagIds?: list<int>,
+     *   }|PagesContentLanguageVariation>,
+     *   updated: string|\DateTimeInterface,
+     *   updatedById: string,
+     *   url: string,
+     *   useFeaturedImage: bool,
+     *   widgetContainers: array<string,mixed>,
+     *   widgets: array<string,mixed>,
+     * }|PostUpdateDraftParams $params
      *
      * @throws APIException
      */
     public function updateDraft(
         string $objectID,
-        $id,
-        $abStatus,
-        $abTestID,
-        $archivedAt,
-        $archivedInDashboard,
-        $attachedStylesheets,
-        $authorName,
-        $blogAuthorID,
-        $campaign,
-        $categoryID,
-        $contentGroupID,
-        $contentTypeCategory,
-        $created,
-        $createdByID,
-        $currentlyPublished,
-        $currentState,
-        $domain,
-        $dynamicPageDataSourceID,
-        $dynamicPageDataSourceType,
-        $dynamicPageHubDBTableID,
-        $enableDomainStylesheets,
-        $enableGoogleAmpOutputOverride,
-        $enableLayoutStylesheets,
-        $featuredImage,
-        $featuredImageAltText,
-        $folderID,
-        $footerHTML,
-        $headHTML,
-        $htmlTitle,
-        $includeDefaultCustomCss,
-        $language,
-        $layoutSections,
-        $linkRelCanonicalURL,
-        $mabExperimentID,
-        $metaDescription,
-        $name,
-        $pageExpiryDate,
-        $pageExpiryEnabled,
-        $pageExpiryRedirectID,
-        $pageExpiryRedirectURL,
-        $password,
-        $postBody,
-        $postSummary,
-        $publicAccessRules,
-        $publicAccessRulesEnabled,
-        $publishDate,
-        $publishImmediately,
-        $rssBody,
-        $rssSummary,
-        $slug,
-        $state,
-        $tagIDs,
-        $themeSettingsValues,
-        $translatedFromID,
-        $translations,
-        $updated,
-        $updatedByID,
-        $url,
-        $useFeaturedImage,
-        $widgetContainers,
-        $widgets,
+        array|PostUpdateDraftParams $params,
         ?RequestOptions $requestOptions = null,
-    ): BlogPost {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'blogAuthorID' => $blogAuthorID,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableGoogleAmpOutputOverride' => $enableGoogleAmpOutputOverride,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'password' => $password,
-            'postBody' => $postBody,
-            'postSummary' => $postSummary,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'rssBody' => $rssBody,
-            'rssSummary' => $rssSummary,
-            'slug' => $slug,
-            'state' => $state,
-            'tagIDs' => $tagIDs,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-        ];
-
-        return $this->updateDraftRaw($objectID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateDraftRaw(
-        string $objectID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): BlogPost {
         [$parsed, $options] = PostUpdateDraftParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -1480,36 +888,19 @@ final class PostsService implements PostsContract
      *
      * Explicitly set new languages for each post in a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
-     * @param array<string,
-     * string,> $languages Map of object IDs to associated languages of object in the multi-language group
-     * @param string $primaryID ID of the primary object in the multi-language group
+     * @param array{
+     *   languages: array<string,string>, primaryId: string
+     * }|PostUpdateLangsParams $params
      *
      * @throws APIException
      */
     public function updateLangs(
-        $languages,
-        $primaryID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['languages' => $languages, 'primaryID' => $primaryID];
-
-        return $this->updateLangsRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateLangsRaw(
-        array $params,
+        array|PostUpdateLangsParams $params,
         ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = PostUpdateLangsParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

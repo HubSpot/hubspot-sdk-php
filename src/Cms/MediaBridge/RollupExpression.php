@@ -13,12 +13,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
   * @phpstan-type RollupExpressionShape = array{
   *   associationTypes: list<AssociationSpec>,
   *   rollupOperator: string,
-  *   sourceObjectTypeID: string,
+  *   sourceObjectTypeId: string,
   *   sourcePropertyName: string,
-  *   conditionalExpression?: ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|PeriodToMonths|PeriodToWeeks|And|Or|Xor|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|AddTime|SubtractTime,
-  *   conditionalFormula?: string,
-  *   emptyRollupValue?: string,
-  *   sourceCompareByPropertyName?: string,
+  *   conditionalExpression?: null|ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|PeriodToMonths|PeriodToWeeks|And|Or|Xor|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|AddTime|SubtractTime,
+  *   conditionalFormula?: string|null,
+  *   emptyRollupValue?: string|null,
+  *   sourceCompareByPropertyName?: string|null,
   * }
   * 
  */
@@ -35,9 +35,9 @@ final class RollupExpression implements BaseModel
   #[Api]
   public string $rollupOperator;
 
-  /** @var string $sourceObjectTypeID */
-  #[Api("sourceObjectTypeId")]
-  public string $sourceObjectTypeID;
+  /** @var string $sourceObjectTypeId */
+  #[Api]
+  public string $sourceObjectTypeId;
 
   /** @var string $sourcePropertyName */
   #[Api]
@@ -69,7 +69,7 @@ final class RollupExpression implements BaseModel
   * RollupExpression::with(
   *   associationTypes: ...,
   *   rollupOperator: ...,
-  *   sourceObjectTypeID: ...,
+  *   sourceObjectTypeId: ...,
   *   sourcePropertyName: ...,
   * )
   * ```
@@ -84,7 +84,7 @@ final class RollupExpression implements BaseModel
   *   ->withSourcePropertyName(...)
   * ```
  */
-  public function __construct(){$this->initialize();}
+  public function __construct() {$this->initialize();}
 
   /**
   * Construct an instance from the required parameters.
@@ -93,7 +93,7 @@ final class RollupExpression implements BaseModel
   * 
   * @param list<AssociationSpec> $associationTypes
   * @param string $rollupOperator
-  * @param string $sourceObjectTypeID
+  * @param string $sourceObjectTypeId
   * @param string $sourcePropertyName
   * @param ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|PeriodToMonths|PeriodToWeeks|And|Or|Xor|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|AddTime|SubtractTime $conditionalExpression
   * @param string $conditionalFormula
@@ -105,7 +105,7 @@ final class RollupExpression implements BaseModel
   public static function with(
     array $associationTypes,
     string $rollupOperator,
-    string $sourceObjectTypeID,
+    string $sourceObjectTypeId,
     string $sourcePropertyName,
     ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|PeriodToMonths|PeriodToWeeks|And|Or|Xor|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|AddTime|SubtractTime $conditionalExpression = null,
     string $conditionalFormula = null,
@@ -116,7 +116,7 @@ final class RollupExpression implements BaseModel
 
     $obj->associationTypes = $associationTypes;
     $obj->rollupOperator = $rollupOperator;
-    $obj->sourceObjectTypeID = $sourceObjectTypeID;
+    $obj->sourceObjectTypeId = $sourceObjectTypeId;
     $obj->sourcePropertyName = $sourcePropertyName;
 
     null !== $conditionalExpression && $obj->conditionalExpression = $conditionalExpression;
@@ -156,7 +156,7 @@ final class RollupExpression implements BaseModel
  */
   public function withSourceObjectTypeID(string $sourceObjectTypeID): self {
     $obj = clone $this;
-    $obj->sourceObjectTypeID = $sourceObjectTypeID;
+    $obj->sourceObjectTypeId = $sourceObjectTypeID;
     return $obj;
   }
 

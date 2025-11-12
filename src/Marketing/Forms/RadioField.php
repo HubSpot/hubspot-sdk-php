@@ -19,11 +19,11 @@ use HubspotSDK\Marketing\Forms\RadioField\FieldType;
  *   hidden: bool,
  *   label: string,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   options: list<EnumeratedFieldOption>,
  *   required: bool,
- *   description?: string,
- *   placeholder?: string,
+ *   description?: string|null,
+ *   placeholder?: string|null,
  * }
  */
 final class RadioField implements BaseModel
@@ -76,8 +76,8 @@ final class RadioField implements BaseModel
     /**
      * A unique ID for this field's CRM object type. For example a CONTACT field will have the object type ID 0-1.
      */
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     /**
      * The list of available choices for this field.
@@ -117,7 +117,7 @@ final class RadioField implements BaseModel
      *   hidden: ...,
      *   label: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   options: ...,
      *   required: ...,
      * )
@@ -159,7 +159,7 @@ final class RadioField implements BaseModel
         bool $hidden,
         string $label,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         array $options,
         bool $required,
         FieldType|string $fieldType = 'radio',
@@ -174,7 +174,7 @@ final class RadioField implements BaseModel
         $obj->hidden = $hidden;
         $obj->label = $label;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->options = $options;
         $obj->required = $required;
 
@@ -262,7 +262,7 @@ final class RadioField implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

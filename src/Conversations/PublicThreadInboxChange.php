@@ -14,15 +14,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   archived: bool,
  *   client: PublicClient,
- *   conversationsThreadID: string,
+ *   conversationsThreadId: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
- *   fromInboxID: string,
+ *   fromInboxId: string,
  *   recipients: list<PublicRecipient>,
  *   senders: list<PublicSender>,
- *   toInboxID: string,
+ *   toInboxId: string,
  *   type: value-of<Type>,
- *   updatedAt?: \DateTimeInterface,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class PublicThreadInboxChange implements BaseModel
@@ -39,8 +39,8 @@ final class PublicThreadInboxChange implements BaseModel
     #[Api]
     public PublicClient $client;
 
-    #[Api('conversationsThreadId')]
-    public string $conversationsThreadID;
+    #[Api]
+    public string $conversationsThreadId;
 
     #[Api]
     public \DateTimeInterface $createdAt;
@@ -48,8 +48,8 @@ final class PublicThreadInboxChange implements BaseModel
     #[Api]
     public string $createdBy;
 
-    #[Api('fromInboxId')]
-    public string $fromInboxID;
+    #[Api]
+    public string $fromInboxId;
 
     /** @var list<PublicRecipient> $recipients */
     #[Api(list: PublicRecipient::class)]
@@ -59,8 +59,8 @@ final class PublicThreadInboxChange implements BaseModel
     #[Api(list: PublicSender::class)]
     public array $senders;
 
-    #[Api('toInboxId')]
-    public string $toInboxID;
+    #[Api]
+    public string $toInboxId;
 
     /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
@@ -78,13 +78,13 @@ final class PublicThreadInboxChange implements BaseModel
      *   id: ...,
      *   archived: ...,
      *   client: ...,
-     *   conversationsThreadID: ...,
+     *   conversationsThreadId: ...,
      *   createdAt: ...,
      *   createdBy: ...,
-     *   fromInboxID: ...,
+     *   fromInboxId: ...,
      *   recipients: ...,
      *   senders: ...,
-     *   toInboxID: ...,
+     *   toInboxId: ...,
      *   type: ...,
      * )
      * ```
@@ -124,13 +124,13 @@ final class PublicThreadInboxChange implements BaseModel
         string $id,
         bool $archived,
         PublicClient $client,
-        string $conversationsThreadID,
+        string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
-        string $fromInboxID,
+        string $fromInboxId,
         array $recipients,
         array $senders,
-        string $toInboxID,
+        string $toInboxId,
         Type|string $type = 'THREAD_INBOX_CHANGE',
         ?\DateTimeInterface $updatedAt = null,
     ): self {
@@ -139,13 +139,13 @@ final class PublicThreadInboxChange implements BaseModel
         $obj->id = $id;
         $obj->archived = $archived;
         $obj->client = $client;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadId;
         $obj->createdAt = $createdAt;
         $obj->createdBy = $createdBy;
-        $obj->fromInboxID = $fromInboxID;
+        $obj->fromInboxId = $fromInboxId;
         $obj->recipients = $recipients;
         $obj->senders = $senders;
-        $obj->toInboxID = $toInboxID;
+        $obj->toInboxId = $toInboxId;
         $obj['type'] = $type;
 
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
@@ -181,7 +181,7 @@ final class PublicThreadInboxChange implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadID;
 
         return $obj;
     }
@@ -205,7 +205,7 @@ final class PublicThreadInboxChange implements BaseModel
     public function withFromInboxID(string $fromInboxID): self
     {
         $obj = clone $this;
-        $obj->fromInboxID = $fromInboxID;
+        $obj->fromInboxId = $fromInboxID;
 
         return $obj;
     }
@@ -235,7 +235,7 @@ final class PublicThreadInboxChange implements BaseModel
     public function withToInboxID(string $toInboxID): self
     {
         $obj = clone $this;
-        $obj->toInboxID = $toInboxID;
+        $obj->toInboxId = $toInboxID;
 
         return $obj;
     }

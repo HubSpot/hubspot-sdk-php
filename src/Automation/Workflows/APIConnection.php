@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type APIConnectionShape = array{edgeType: string, nextActionID: string}
+ * @phpstan-type APIConnectionShape = array{edgeType: string, nextActionId: string}
  */
 final class APIConnection implements BaseModel
 {
@@ -19,15 +19,15 @@ final class APIConnection implements BaseModel
     #[Api]
     public string $edgeType;
 
-    #[Api('nextActionId')]
-    public string $nextActionID;
+    #[Api]
+    public string $nextActionId;
 
     /**
      * `new APIConnection()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * APIConnection::with(edgeType: ..., nextActionID: ...)
+     * APIConnection::with(edgeType: ..., nextActionId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -46,12 +46,12 @@ final class APIConnection implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $edgeType, string $nextActionID): self
+    public static function with(string $edgeType, string $nextActionId): self
     {
         $obj = new self;
 
         $obj->edgeType = $edgeType;
-        $obj->nextActionID = $nextActionID;
+        $obj->nextActionId = $nextActionId;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class APIConnection implements BaseModel
     public function withNextActionID(string $nextActionID): self
     {
         $obj = clone $this;
-        $obj->nextActionID = $nextActionID;
+        $obj->nextActionId = $nextActionID;
 
         return $obj;
     }

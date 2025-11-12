@@ -12,10 +12,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * An input used to update some properties on a pipeline definition.
  *
  * @phpstan-type PipelineStagePatchInputShape = array{
- *   archived?: bool,
- *   displayOrder?: int,
- *   label?: string,
- *   metadata?: array<string, string>,
+ *   archived?: bool|null,
+ *   displayOrder?: int|null,
+ *   label?: string|null,
+ *   metadata?: array<string,string>|null,
  * }
  */
 final class PipelineStagePatchInput implements BaseModel
@@ -48,7 +48,7 @@ final class PipelineStagePatchInput implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @var array<string, string>|null $metadata
+     * @var array<string,string>|null $metadata
      */
     #[Api(map: 'string', optional: true)]
     public ?array $metadata;
@@ -63,7 +63,7 @@ final class PipelineStagePatchInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $metadata
+     * @param array<string,string> $metadata
      */
     public static function with(
         ?bool $archived = null,
@@ -121,7 +121,7 @@ final class PipelineStagePatchInput implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @param array<string, string> $metadata
+     * @param array<string,string> $metadata
      */
     public function withMetadata(array $metadata): self
     {

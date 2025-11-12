@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type EventDetailSettingsURLShape = array{eventDetailsURL: string}
+ * @phpstan-type EventDetailSettingsURLShape = array{eventDetailsUrl: string}
  */
 final class EventDetailSettingsURL implements BaseModel
 {
@@ -19,15 +19,15 @@ final class EventDetailSettingsURL implements BaseModel
     /**
      * The url that will be used to fetch marketing event details by id. Must contain a `%s` character sequence that will be substituted with the event id. For example: `https://my.event.app/events/%s`.
      */
-    #[Api('eventDetailsUrl')]
-    public string $eventDetailsURL;
+    #[Api]
+    public string $eventDetailsUrl;
 
     /**
      * `new EventDetailSettingsURL()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * EventDetailSettingsURL::with(eventDetailsURL: ...)
+     * EventDetailSettingsURL::with(eventDetailsUrl: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -46,11 +46,11 @@ final class EventDetailSettingsURL implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $eventDetailsURL): self
+    public static function with(string $eventDetailsUrl): self
     {
         $obj = new self;
 
-        $obj->eventDetailsURL = $eventDetailsURL;
+        $obj->eventDetailsUrl = $eventDetailsUrl;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class EventDetailSettingsURL implements BaseModel
     public function withEventDetailsURL(string $eventDetailsURL): self
     {
         $obj = clone $this;
-        $obj->eventDetailsURL = $eventDetailsURL;
+        $obj->eventDetailsUrl = $eventDetailsURL;
 
         return $obj;
     }

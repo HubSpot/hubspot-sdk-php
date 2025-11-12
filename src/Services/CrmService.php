@@ -26,82 +26,82 @@ use HubspotSDK\Services\Crm\UsersService;
 final class CrmService implements CrmContract
 {
     /**
-     * @@api
+     * @api
      */
     public AppUninstallsService $appUninstalls;
 
     /**
-     * @@api
+     * @api
      */
     public AssociationsService $associations;
 
     /**
-     * @@api
+     * @api
      */
     public ExportsService $exports;
 
     /**
-     * @@api
+     * @api
      */
     public ExtensionsService $extensions;
 
     /**
-     * @@api
+     * @api
      */
     public FeatureFlagsService $featureFlags;
 
     /**
-     * @@api
+     * @api
      */
     public ImportsService $imports;
 
     /**
-     * @@api
+     * @api
      */
     public LimitsService $limits;
 
     /**
-     * @@api
+     * @api
      */
     public ListsService $lists;
 
     /**
-     * @@api
+     * @api
      */
     public ObjectLibraryService $objectLibrary;
 
     /**
-     * @@api
+     * @api
      */
     public ObjectsService $objects;
 
     /**
-     * @@api
+     * @api
      */
     public OwnersService $owners;
 
     /**
-     * @@api
+     * @api
      */
     public PipelinesService $pipelines;
 
     /**
-     * @@api
+     * @api
      */
     public PropertiesService $properties;
 
     /**
-     * @@api
+     * @api
      */
     public PropertyValidationsService $propertyValidations;
 
     /**
-     * @@api
+     * @api
      */
     public TimelineService $timeline;
 
     /**
-     * @@api
+     * @api
      */
     public UsersService $users;
 

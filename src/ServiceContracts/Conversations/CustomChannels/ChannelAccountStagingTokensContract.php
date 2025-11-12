@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Conversations\CustomChannels;
 
+use HubspotSDK\Conversations\CustomChannels\ChannelAccountStagingTokens\ChannelAccountStagingTokenUpdateParams;
 use HubspotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
-use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -14,30 +14,13 @@ interface ChannelAccountStagingTokensContract
     /**
      * @api
      *
-     * @param string $channelID
-     * @param string $accountName
-     * @param PublicDeliveryIdentifier $deliveryIdentifier
+     * @param array<mixed>|ChannelAccountStagingTokenUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $accountToken,
-        $channelID,
-        $accountName,
-        $deliveryIdentifier,
-        ?RequestOptions $requestOptions = null,
-    ): PublicChannelAccountStagingToken;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $accountToken,
-        array $params,
+        array|ChannelAccountStagingTokenUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicChannelAccountStagingToken;
 }

@@ -36,7 +36,7 @@ final class ThreadsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->threads->update('threadId');
+        $result = $this->client->conversations->threads->update('threadId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

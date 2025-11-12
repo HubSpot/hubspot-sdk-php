@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Crm\Lists\Memberships->addAllFromList
  *
- * @phpstan-type MembershipAddAllFromListParamsShape = array{listID: string}
+ * @phpstan-type MembershipAddAllFromListParamsShape = array{listId: string}
  */
 final class MembershipAddAllFromListParams implements BaseModel
 {
@@ -27,14 +27,14 @@ final class MembershipAddAllFromListParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $listID;
+    public string $listId;
 
     /**
      * `new MembershipAddAllFromListParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MembershipAddAllFromListParams::with(listID: ...)
+     * MembershipAddAllFromListParams::with(listId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -53,11 +53,11 @@ final class MembershipAddAllFromListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $listID): self
+    public static function with(string $listId): self
     {
         $obj = new self;
 
-        $obj->listID = $listID;
+        $obj->listId = $listId;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class MembershipAddAllFromListParams implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listID = $listID;
+        $obj->listId = $listID;
 
         return $obj;
     }

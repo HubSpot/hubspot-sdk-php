@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   charsetHunch?: string,
  *   file?: string,
  *   fileName?: string,
- *   folderID?: string,
+ *   folderId?: string,
  *   folderPath?: string,
  *   options?: string,
  * }
@@ -50,8 +50,8 @@ final class FileUploadParams implements BaseModel
     /**
      * Either 'folderId' or 'folderPath' is required. folderId is the ID of the folder the file will be uploaded to.
      */
-    #[Api('folderId', optional: true)]
-    public ?string $folderID;
+    #[Api(optional: true)]
+    public ?string $folderId;
 
     /**
      * Either 'folderPath' or 'folderId' is required. This field represents the destination folder path for the uploaded file. If a path doesn't exist, the system will try to create one.
@@ -79,7 +79,7 @@ final class FileUploadParams implements BaseModel
         ?string $charsetHunch = null,
         ?string $file = null,
         ?string $fileName = null,
-        ?string $folderID = null,
+        ?string $folderId = null,
         ?string $folderPath = null,
         ?string $options = null,
     ): self {
@@ -88,7 +88,7 @@ final class FileUploadParams implements BaseModel
         null !== $charsetHunch && $obj->charsetHunch = $charsetHunch;
         null !== $file && $obj->file = $file;
         null !== $fileName && $obj->fileName = $fileName;
-        null !== $folderID && $obj->folderID = $folderID;
+        null !== $folderId && $obj->folderId = $folderId;
         null !== $folderPath && $obj->folderPath = $folderPath;
         null !== $options && $obj->options = $options;
 
@@ -134,7 +134,7 @@ final class FileUploadParams implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderID = $folderID;
+        $obj->folderId = $folderID;
 
         return $obj;
     }

@@ -3,8 +3,6 @@
 namespace Tests\Services\Crm\Associations;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Associations\PublicAssociation;
-use HubspotSDK\PublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,13 +38,15 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->create(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociation::with(
-                    from: PublicObjectID::with(id: '53628'),
-                    to: PublicObjectID::with(id: '12726'),
-                    type: 'contact_to_company',
-                ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [
+                    [
+                        'from' => ['id' => '53628'],
+                        'to' => ['id' => '12726'],
+                        'type' => 'contact_to_company',
+                    ],
+                ],
             ],
         );
 
@@ -62,13 +62,15 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->create(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociation::with(
-                    from: PublicObjectID::with(id: '53628'),
-                    to: PublicObjectID::with(id: '12726'),
-                    type: 'contact_to_company',
-                ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [
+                    [
+                        'from' => ['id' => '53628'],
+                        'to' => ['id' => '12726'],
+                        'type' => 'contact_to_company',
+                    ],
+                ],
             ],
         );
 
@@ -84,13 +86,15 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->delete(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociation::with(
-                    from: PublicObjectID::with(id: '53628'),
-                    to: PublicObjectID::with(id: '12726'),
-                    type: 'contact_to_company',
-                ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [
+                    [
+                        'from' => ['id' => '53628'],
+                        'to' => ['id' => '12726'],
+                        'type' => 'contact_to_company',
+                    ],
+                ],
             ],
         );
 
@@ -106,13 +110,15 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->delete(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociation::with(
-                    from: PublicObjectID::with(id: '53628'),
-                    to: PublicObjectID::with(id: '12726'),
-                    type: 'contact_to_company',
-                ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [
+                    [
+                        'from' => ['id' => '53628'],
+                        'to' => ['id' => '12726'],
+                        'type' => 'contact_to_company',
+                    ],
+                ],
             ],
         );
 
@@ -128,8 +134,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->get(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [PublicObjectID::with(id: '37295')],
+            ['fromObjectType' => 'fromObjectType', 'inputs' => [['id' => '37295']]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -144,8 +149,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->get(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [PublicObjectID::with(id: '37295')],
+            ['fromObjectType' => 'fromObjectType', 'inputs' => [['id' => '37295']]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

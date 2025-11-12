@@ -36,7 +36,7 @@ final class LimitsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->limits->getAssociationLabelLimits();
+        $result = $this->client->crm->limits->getAssociationLabelLimits([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -54,7 +54,7 @@ final class LimitsTest extends TestCase
             ->limits
             ->getAssociationRecordsLimitsByObjectType(
                 'toObjectTypeId',
-                'fromObjectTypeId'
+                ['fromObjectTypeId' => 'fromObjectTypeId']
             )
         ;
 
@@ -74,7 +74,7 @@ final class LimitsTest extends TestCase
             ->limits
             ->getAssociationRecordsLimitsByObjectType(
                 'toObjectTypeId',
-                'fromObjectTypeId'
+                ['fromObjectTypeId' => 'fromObjectTypeId']
             )
         ;
 

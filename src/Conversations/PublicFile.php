@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicFileShape = array{
- *   fileID: string,
+ *   fileId: string,
  *   fileUsageType: string,
  *   type: value-of<Type>,
  *   url: string,
- *   name?: string,
+ *   name?: string|null,
  * }
  */
 final class PublicFile implements BaseModel
@@ -23,8 +23,8 @@ final class PublicFile implements BaseModel
     /** @use SdkModel<PublicFileShape> */
     use SdkModel;
 
-    #[Api('fileId')]
-    public string $fileID;
+    #[Api]
+    public string $fileId;
 
     #[Api]
     public string $fileUsageType;
@@ -44,7 +44,7 @@ final class PublicFile implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicFile::with(fileID: ..., fileUsageType: ..., type: ..., url: ...)
+     * PublicFile::with(fileId: ..., fileUsageType: ..., type: ..., url: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -70,7 +70,7 @@ final class PublicFile implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $fileID,
+        string $fileId,
         string $fileUsageType,
         string $url,
         Type|string $type = 'FILE',
@@ -78,7 +78,7 @@ final class PublicFile implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->fileID = $fileID;
+        $obj->fileId = $fileId;
         $obj->fileUsageType = $fileUsageType;
         $obj['type'] = $type;
         $obj->url = $url;
@@ -91,7 +91,7 @@ final class PublicFile implements BaseModel
     public function withFileID(string $fileID): self
     {
         $obj = clone $this;
-        $obj->fileID = $fileID;
+        $obj->fileId = $fileID;
 
         return $obj;
     }

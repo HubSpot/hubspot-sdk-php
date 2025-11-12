@@ -11,22 +11,22 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MediaPlayedPercentageEventShape = array{
- *   contactID: int,
- *   mediaBridgeID: int,
+ *   contactId: int,
+ *   mediaBridgeId: int,
  *   mediaBridgeObjectCoordinates: string,
- *   mediaBridgeObjectTypeID: string,
+ *   mediaBridgeObjectTypeId: string,
  *   mediaName: string,
  *   mediaType: value-of<MediaType>,
  *   occurredTimestamp: int,
  *   playedPercent: int,
- *   portalID: int,
- *   providerID: int,
- *   sessionID: string,
- *   mediaURL?: string,
- *   pageID?: int,
- *   pageName?: string,
- *   pageObjectCoordinates?: string,
- *   pageURL?: string,
+ *   portalId: int,
+ *   providerId: int,
+ *   sessionId: string,
+ *   mediaUrl?: string|null,
+ *   pageId?: int|null,
+ *   pageName?: string|null,
+ *   pageObjectCoordinates?: string|null,
+ *   pageUrl?: string|null,
  * }
  */
 final class MediaPlayedPercentageEvent implements BaseModel
@@ -37,17 +37,17 @@ final class MediaPlayedPercentageEvent implements BaseModel
     /**
      * The ID of the contact in HubSpot’s system that consumed the media. This can be fetched using HubSpot's Get contact by usertoken (utk) API. The API also supports supplying a usertoken, and will handle converting this into a contact ID automatically.
      */
-    #[Api('contactId')]
-    public int $contactID;
+    #[Api]
+    public int $contactId;
 
-    #[Api('mediaBridgeId')]
-    public int $mediaBridgeID;
+    #[Api]
+    public int $mediaBridgeId;
 
     #[Api]
     public string $mediaBridgeObjectCoordinates;
 
-    #[Api('mediaBridgeObjectTypeId')]
-    public string $mediaBridgeObjectTypeID;
+    #[Api]
+    public string $mediaBridgeObjectTypeId;
 
     #[Api]
     public string $mediaName;
@@ -65,23 +65,23 @@ final class MediaPlayedPercentageEvent implements BaseModel
     /**
      * The ID of the HubSpot account.
      */
-    #[Api('portalId')]
-    public int $portalID;
+    #[Api]
+    public int $portalId;
 
-    #[Api('providerId')]
-    public int $providerID;
+    #[Api]
+    public int $providerId;
 
-    #[Api('sessionId')]
-    public string $sessionID;
+    #[Api]
+    public string $sessionId;
 
-    #[Api('mediaUrl', optional: true)]
-    public ?string $mediaURL;
+    #[Api(optional: true)]
+    public ?string $mediaUrl;
 
     /**
      * The content ID of the page that an event happened on, for HubSpot pages. Required if the page is a HubSpot page.
      */
-    #[Api('pageId', optional: true)]
-    public ?int $pageID;
+    #[Api(optional: true)]
+    public ?int $pageId;
 
     /**
      * The name or title of the page that an event happened on. Required for non-HubSpot pages.
@@ -95,8 +95,8 @@ final class MediaPlayedPercentageEvent implements BaseModel
     /**
      * The URL of the page that an event happened on. Required for non-HubSpot pages.
      */
-    #[Api('pageUrl', optional: true)]
-    public ?string $pageURL;
+    #[Api(optional: true)]
+    public ?string $pageUrl;
 
     /**
      * `new MediaPlayedPercentageEvent()` is missing required properties by the API.
@@ -104,17 +104,17 @@ final class MediaPlayedPercentageEvent implements BaseModel
      * To enforce required parameters use
      * ```
      * MediaPlayedPercentageEvent::with(
-     *   contactID: ...,
-     *   mediaBridgeID: ...,
+     *   contactId: ...,
+     *   mediaBridgeId: ...,
      *   mediaBridgeObjectCoordinates: ...,
-     *   mediaBridgeObjectTypeID: ...,
+     *   mediaBridgeObjectTypeId: ...,
      *   mediaName: ...,
      *   mediaType: ...,
      *   occurredTimestamp: ...,
      *   playedPercent: ...,
-     *   portalID: ...,
-     *   providerID: ...,
-     *   sessionID: ...,
+     *   portalId: ...,
+     *   providerId: ...,
+     *   sessionId: ...,
      * )
      * ```
      *
@@ -148,42 +148,42 @@ final class MediaPlayedPercentageEvent implements BaseModel
      * @param MediaType|value-of<MediaType> $mediaType
      */
     public static function with(
-        int $contactID,
-        int $mediaBridgeID,
+        int $contactId,
+        int $mediaBridgeId,
         string $mediaBridgeObjectCoordinates,
-        string $mediaBridgeObjectTypeID,
+        string $mediaBridgeObjectTypeId,
         string $mediaName,
         MediaType|string $mediaType,
         int $occurredTimestamp,
         int $playedPercent,
-        int $portalID,
-        int $providerID,
-        string $sessionID,
-        ?string $mediaURL = null,
-        ?int $pageID = null,
+        int $portalId,
+        int $providerId,
+        string $sessionId,
+        ?string $mediaUrl = null,
+        ?int $pageId = null,
         ?string $pageName = null,
         ?string $pageObjectCoordinates = null,
-        ?string $pageURL = null,
+        ?string $pageUrl = null,
     ): self {
         $obj = new self;
 
-        $obj->contactID = $contactID;
-        $obj->mediaBridgeID = $mediaBridgeID;
+        $obj->contactId = $contactId;
+        $obj->mediaBridgeId = $mediaBridgeId;
         $obj->mediaBridgeObjectCoordinates = $mediaBridgeObjectCoordinates;
-        $obj->mediaBridgeObjectTypeID = $mediaBridgeObjectTypeID;
+        $obj->mediaBridgeObjectTypeId = $mediaBridgeObjectTypeId;
         $obj->mediaName = $mediaName;
         $obj['mediaType'] = $mediaType;
         $obj->occurredTimestamp = $occurredTimestamp;
         $obj->playedPercent = $playedPercent;
-        $obj->portalID = $portalID;
-        $obj->providerID = $providerID;
-        $obj->sessionID = $sessionID;
+        $obj->portalId = $portalId;
+        $obj->providerId = $providerId;
+        $obj->sessionId = $sessionId;
 
-        null !== $mediaURL && $obj->mediaURL = $mediaURL;
-        null !== $pageID && $obj->pageID = $pageID;
+        null !== $mediaUrl && $obj->mediaUrl = $mediaUrl;
+        null !== $pageId && $obj->pageId = $pageId;
         null !== $pageName && $obj->pageName = $pageName;
         null !== $pageObjectCoordinates && $obj->pageObjectCoordinates = $pageObjectCoordinates;
-        null !== $pageURL && $obj->pageURL = $pageURL;
+        null !== $pageUrl && $obj->pageUrl = $pageUrl;
 
         return $obj;
     }
@@ -194,7 +194,7 @@ final class MediaPlayedPercentageEvent implements BaseModel
     public function withContactID(int $contactID): self
     {
         $obj = clone $this;
-        $obj->contactID = $contactID;
+        $obj->contactId = $contactID;
 
         return $obj;
     }
@@ -202,7 +202,7 @@ final class MediaPlayedPercentageEvent implements BaseModel
     public function withMediaBridgeID(int $mediaBridgeID): self
     {
         $obj = clone $this;
-        $obj->mediaBridgeID = $mediaBridgeID;
+        $obj->mediaBridgeId = $mediaBridgeID;
 
         return $obj;
     }
@@ -220,7 +220,7 @@ final class MediaPlayedPercentageEvent implements BaseModel
         string $mediaBridgeObjectTypeID
     ): self {
         $obj = clone $this;
-        $obj->mediaBridgeObjectTypeID = $mediaBridgeObjectTypeID;
+        $obj->mediaBridgeObjectTypeId = $mediaBridgeObjectTypeID;
 
         return $obj;
     }
@@ -266,7 +266,7 @@ final class MediaPlayedPercentageEvent implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }
@@ -274,7 +274,7 @@ final class MediaPlayedPercentageEvent implements BaseModel
     public function withProviderID(int $providerID): self
     {
         $obj = clone $this;
-        $obj->providerID = $providerID;
+        $obj->providerId = $providerID;
 
         return $obj;
     }
@@ -282,7 +282,7 @@ final class MediaPlayedPercentageEvent implements BaseModel
     public function withSessionID(string $sessionID): self
     {
         $obj = clone $this;
-        $obj->sessionID = $sessionID;
+        $obj->sessionId = $sessionID;
 
         return $obj;
     }
@@ -290,7 +290,7 @@ final class MediaPlayedPercentageEvent implements BaseModel
     public function withMediaURL(string $mediaURL): self
     {
         $obj = clone $this;
-        $obj->mediaURL = $mediaURL;
+        $obj->mediaUrl = $mediaURL;
 
         return $obj;
     }
@@ -301,7 +301,7 @@ final class MediaPlayedPercentageEvent implements BaseModel
     public function withPageID(int $pageID): self
     {
         $obj = clone $this;
-        $obj->pageID = $pageID;
+        $obj->pageId = $pageID;
 
         return $obj;
     }
@@ -332,7 +332,7 @@ final class MediaPlayedPercentageEvent implements BaseModel
     public function withPageURL(string $pageURL): self
     {
         $obj = clone $this;
-        $obj->pageURL = $pageURL;
+        $obj->pageUrl = $pageURL;
 
         return $obj;
     }

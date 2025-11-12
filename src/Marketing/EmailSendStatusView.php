@@ -15,13 +15,13 @@ use HubspotSDK\Marketing\EmailSendStatusView\Status;
  *
  * @phpstan-type EmailSendStatusViewShape = array{
  *   status: value-of<Status>,
- *   statusID: string,
- *   completedAt?: \DateTimeInterface,
- *   eventID?: EventIDView,
- *   message?: string,
- *   requestedAt?: \DateTimeInterface,
- *   sendResult?: value-of<SendResult>,
- *   startedAt?: \DateTimeInterface,
+ *   statusId: string,
+ *   completedAt?: \DateTimeInterface|null,
+ *   eventId?: EventIDView|null,
+ *   message?: string|null,
+ *   requestedAt?: \DateTimeInterface|null,
+ *   sendResult?: value-of<SendResult>|null,
+ *   startedAt?: \DateTimeInterface|null,
  * }
  */
 final class EmailSendStatusView implements BaseModel
@@ -40,8 +40,8 @@ final class EmailSendStatusView implements BaseModel
     /**
      * Identifier used to query the status of the send.
      */
-    #[Api('statusId')]
-    public string $statusID;
+    #[Api]
+    public string $statusId;
 
     /**
      * Time when the send was completed.
@@ -52,8 +52,8 @@ final class EmailSendStatusView implements BaseModel
     /**
      * The ID of a send event.
      */
-    #[Api('eventId', optional: true)]
-    public ?EventIDView $eventID;
+    #[Api(optional: true)]
+    public ?EventIDView $eventId;
 
     #[Api(optional: true)]
     public ?string $message;
@@ -83,7 +83,7 @@ final class EmailSendStatusView implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * EmailSendStatusView::with(status: ..., statusID: ...)
+     * EmailSendStatusView::with(status: ..., statusId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -107,9 +107,9 @@ final class EmailSendStatusView implements BaseModel
      */
     public static function with(
         Status|string $status,
-        string $statusID,
+        string $statusId,
         ?\DateTimeInterface $completedAt = null,
-        ?EventIDView $eventID = null,
+        ?EventIDView $eventId = null,
         ?string $message = null,
         ?\DateTimeInterface $requestedAt = null,
         SendResult|string|null $sendResult = null,
@@ -118,10 +118,10 @@ final class EmailSendStatusView implements BaseModel
         $obj = new self;
 
         $obj['status'] = $status;
-        $obj->statusID = $statusID;
+        $obj->statusId = $statusId;
 
         null !== $completedAt && $obj->completedAt = $completedAt;
-        null !== $eventID && $obj->eventID = $eventID;
+        null !== $eventId && $obj->eventId = $eventId;
         null !== $message && $obj->message = $message;
         null !== $requestedAt && $obj->requestedAt = $requestedAt;
         null !== $sendResult && $obj['sendResult'] = $sendResult;
@@ -149,7 +149,7 @@ final class EmailSendStatusView implements BaseModel
     public function withStatusID(string $statusID): self
     {
         $obj = clone $this;
-        $obj->statusID = $statusID;
+        $obj->statusId = $statusID;
 
         return $obj;
     }
@@ -171,7 +171,7 @@ final class EmailSendStatusView implements BaseModel
     public function withEventID(EventIDView $eventID): self
     {
         $obj = clone $this;
-        $obj->eventID = $eventID;
+        $obj->eventId = $eventID;
 
         return $obj;
     }

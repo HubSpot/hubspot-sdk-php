@@ -3,9 +3,6 @@
 namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Objects\DealSplits\PublicDealSplitInput;
-use HubspotSDK\Crm\Objects\DealSplits\PublicDealSplitsCreateRequest;
-use HubspotSDK\PublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -39,9 +36,9 @@ final class DealSplitsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->dealSplits->batchRead(
-            [PublicObjectID::with(id: '37295')]
-        );
+        $result = $this->client->crm->objects->dealSplits->batchRead([
+            'inputs' => [['id' => '37295']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -53,9 +50,9 @@ final class DealSplitsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->dealSplits->batchRead(
-            [PublicObjectID::with(id: '37295')]
-        );
+        $result = $this->client->crm->objects->dealSplits->batchRead([
+            'inputs' => [['id' => '37295']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -67,14 +64,11 @@ final class DealSplitsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->dealSplits->batchUpsert(
-            [
-                PublicDealSplitsCreateRequest::with(
-                    id: 0,
-                    splits: [PublicDealSplitInput::with(ownerID: 0, percentage: 0)]
-                ),
+        $result = $this->client->crm->objects->dealSplits->batchUpsert([
+            'inputs' => [
+                ['id' => 0, 'splits' => [['ownerId' => 0, 'percentage' => 0]]],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -86,14 +80,11 @@ final class DealSplitsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->dealSplits->batchUpsert(
-            [
-                PublicDealSplitsCreateRequest::with(
-                    id: 0,
-                    splits: [PublicDealSplitInput::with(ownerID: 0, percentage: 0)]
-                ),
+        $result = $this->client->crm->objects->dealSplits->batchUpsert([
+            'inputs' => [
+                ['id' => 0, 'splits' => [['ownerId' => 0, 'percentage' => 0]]],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

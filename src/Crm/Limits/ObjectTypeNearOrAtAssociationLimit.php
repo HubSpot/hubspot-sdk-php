@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ObjectTypeNearOrAtAssociationLimitShape = array{
  *   hasRecordsAtLimit: bool,
  *   hasRecordsNearLimit: bool,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   pluralLabel: string,
  *   singularLabel: string,
  * }
@@ -28,8 +28,8 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
     #[Api]
     public bool $hasRecordsNearLimit;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     #[Api]
     public string $pluralLabel;
@@ -45,7 +45,7 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
      * ObjectTypeNearOrAtAssociationLimit::with(
      *   hasRecordsAtLimit: ...,
      *   hasRecordsNearLimit: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   pluralLabel: ...,
      *   singularLabel: ...,
      * )
@@ -75,7 +75,7 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
     public static function with(
         bool $hasRecordsAtLimit,
         bool $hasRecordsNearLimit,
-        string $objectTypeID,
+        string $objectTypeId,
         string $pluralLabel,
         string $singularLabel,
     ): self {
@@ -83,7 +83,7 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
 
         $obj->hasRecordsAtLimit = $hasRecordsAtLimit;
         $obj->hasRecordsNearLimit = $hasRecordsNearLimit;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->pluralLabel = $pluralLabel;
         $obj->singularLabel = $singularLabel;
 
@@ -109,7 +109,7 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

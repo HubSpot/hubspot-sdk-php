@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIStaticBranchShape = array{
- *   branchValue: string, connection?: APIConnection
+ *   branchValue: string, connection?: APIConnection|null
  * }
  */
 final class APIStaticBranch implements BaseModel

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Conversations\Messages->get
  *
- * @phpstan-type MessageGetParamsShape = array{threadID: string}
+ * @phpstan-type MessageGetParamsShape = array{threadId: string}
  */
 final class MessageGetParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class MessageGetParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $threadID;
+    public string $threadId;
 
     /**
      * `new MessageGetParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MessageGetParams::with(threadID: ...)
+     * MessageGetParams::with(threadId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class MessageGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $threadID): self
+    public static function with(string $threadId): self
     {
         $obj = new self;
 
-        $obj->threadID = $threadID;
+        $obj->threadId = $threadId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class MessageGetParams implements BaseModel
     public function withThreadID(string $threadID): self
     {
         $obj = clone $this;
-        $obj->threadID = $threadID;
+        $obj->threadId = $threadID;
 
         return $obj;
     }

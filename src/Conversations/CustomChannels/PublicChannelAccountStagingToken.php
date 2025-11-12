@@ -13,11 +13,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicChannelAccountStagingTokenShape = array{
  *   accountToken: string,
  *   createdAt: \DateTimeInterface,
- *   genericChannelID: int,
- *   inboxID: int,
- *   userID: int,
- *   accountName?: string,
- *   deliveryIdentifier?: PublicDeliveryIdentifier,
+ *   genericChannelId: int,
+ *   inboxId: int,
+ *   userId: int,
+ *   accountName?: string|null,
+ *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
  * }
  */
 final class PublicChannelAccountStagingToken implements BaseModel
@@ -31,14 +31,14 @@ final class PublicChannelAccountStagingToken implements BaseModel
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    #[Api('genericChannelId')]
-    public int $genericChannelID;
+    #[Api]
+    public int $genericChannelId;
 
-    #[Api('inboxId')]
-    public int $inboxID;
+    #[Api]
+    public int $inboxId;
 
-    #[Api('userId')]
-    public int $userID;
+    #[Api]
+    public int $userId;
 
     #[Api(optional: true)]
     public ?string $accountName;
@@ -54,9 +54,9 @@ final class PublicChannelAccountStagingToken implements BaseModel
      * PublicChannelAccountStagingToken::with(
      *   accountToken: ...,
      *   createdAt: ...,
-     *   genericChannelID: ...,
-     *   inboxID: ...,
-     *   userID: ...,
+     *   genericChannelId: ...,
+     *   inboxId: ...,
+     *   userId: ...,
      * )
      * ```
      *
@@ -84,9 +84,9 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public static function with(
         string $accountToken,
         \DateTimeInterface $createdAt,
-        int $genericChannelID,
-        int $inboxID,
-        int $userID,
+        int $genericChannelId,
+        int $inboxId,
+        int $userId,
         ?string $accountName = null,
         ?PublicDeliveryIdentifier $deliveryIdentifier = null,
     ): self {
@@ -94,9 +94,9 @@ final class PublicChannelAccountStagingToken implements BaseModel
 
         $obj->accountToken = $accountToken;
         $obj->createdAt = $createdAt;
-        $obj->genericChannelID = $genericChannelID;
-        $obj->inboxID = $inboxID;
-        $obj->userID = $userID;
+        $obj->genericChannelId = $genericChannelId;
+        $obj->inboxId = $inboxId;
+        $obj->userId = $userId;
 
         null !== $accountName && $obj->accountName = $accountName;
         null !== $deliveryIdentifier && $obj->deliveryIdentifier = $deliveryIdentifier;
@@ -123,7 +123,7 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public function withGenericChannelID(int $genericChannelID): self
     {
         $obj = clone $this;
-        $obj->genericChannelID = $genericChannelID;
+        $obj->genericChannelId = $genericChannelID;
 
         return $obj;
     }
@@ -131,7 +131,7 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public function withInboxID(int $inboxID): self
     {
         $obj = clone $this;
-        $obj->inboxID = $inboxID;
+        $obj->inboxId = $inboxID;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->userId = $userID;
 
         return $obj;
     }

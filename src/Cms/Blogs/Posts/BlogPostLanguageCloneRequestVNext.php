@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Request body object for creating new blog post language variant.
  *
  * @phpstan-type BlogPostLanguageCloneRequestVNextShape = array{
- *   id: string, language?: string
+ *   id: string, language?: string|null
  * }
  */
 final class BlogPostLanguageCloneRequestVNext implements BaseModel

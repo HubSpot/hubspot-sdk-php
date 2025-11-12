@@ -28,7 +28,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   linkedin: string,
  *   name: string,
  *   slug: string,
- *   translatedFromID: int,
+ *   translatedFromId: int,
  *   twitter: string,
  *   updated: \DateTimeInterface,
  *   website: string,
@@ -112,8 +112,8 @@ final class BlogAuthor implements BaseModel, ResponseConverter
     /**
      * ID of the primary blog author this object was translated from.
      */
-    #[Api('translatedFromId')]
-    public int $translatedFromID;
+    #[Api]
+    public int $translatedFromId;
 
     /**
      * URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.
@@ -149,7 +149,7 @@ final class BlogAuthor implements BaseModel, ResponseConverter
      *   linkedin: ...,
      *   name: ...,
      *   slug: ...,
-     *   translatedFromID: ...,
+     *   translatedFromId: ...,
      *   twitter: ...,
      *   updated: ...,
      *   website: ...,
@@ -205,7 +205,7 @@ final class BlogAuthor implements BaseModel, ResponseConverter
         string $linkedin,
         string $name,
         string $slug,
-        int $translatedFromID,
+        int $translatedFromId,
         string $twitter,
         \DateTimeInterface $updated,
         string $website,
@@ -225,7 +225,7 @@ final class BlogAuthor implements BaseModel, ResponseConverter
         $obj->linkedin = $linkedin;
         $obj->name = $name;
         $obj->slug = $slug;
-        $obj->translatedFromID = $translatedFromID;
+        $obj->translatedFromId = $translatedFromId;
         $obj->twitter = $twitter;
         $obj->updated = $updated;
         $obj->website = $website;
@@ -372,7 +372,7 @@ final class BlogAuthor implements BaseModel, ResponseConverter
     public function withTranslatedFromID(int $translatedFromID): self
     {
         $obj = clone $this;
-        $obj->translatedFromID = $translatedFromID;
+        $obj->translatedFromId = $translatedFromID;
 
         return $obj;
     }

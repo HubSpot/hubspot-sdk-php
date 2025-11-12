@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   forceFullWidthSection: bool,
  *   maxWidthSectionCentering: int,
  *   verticalAlignment: string,
- *   breakpointStyles?: array<string, BreakpointStyles>,
+ *   breakpointStyles?: array<string,BreakpointStyles>|null,
  * }
  */
 final class Styles implements BaseModel
@@ -50,7 +50,7 @@ final class Styles implements BaseModel
     #[Api]
     public string $verticalAlignment;
 
-    /** @var array<string, BreakpointStyles>|null $breakpointStyles */
+    /** @var array<string,BreakpointStyles>|null $breakpointStyles */
     #[Api(map: BreakpointStyles::class, optional: true)]
     public ?array $breakpointStyles;
 
@@ -93,7 +93,7 @@ final class Styles implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, BreakpointStyles> $breakpointStyles
+     * @param array<string,BreakpointStyles> $breakpointStyles
      */
     public static function with(
         RgbaColor $backgroundColor,
@@ -181,7 +181,7 @@ final class Styles implements BaseModel
     }
 
     /**
-     * @param array<string, BreakpointStyles> $breakpointStyles
+     * @param array<string,BreakpointStyles> $breakpointStyles
      */
     public function withBreakpointStyles(array $breakpointStyles): self
     {

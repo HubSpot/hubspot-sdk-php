@@ -11,12 +11,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type BehavioralEventHTTPCompletionRequestShape = array{
  *   eventName: string,
- *   email?: string,
- *   objectID?: string,
- *   occurredAt?: \DateTimeInterface,
- *   properties?: array<string, string>,
- *   utk?: string,
- *   uuid?: string,
+ *   email?: string|null,
+ *   objectId?: string|null,
+ *   occurredAt?: \DateTimeInterface|null,
+ *   properties?: array<string,string>|null,
+ *   utk?: string|null,
+ *   uuid?: string|null,
  * }
  */
 final class BehavioralEventHTTPCompletionRequest implements BaseModel
@@ -39,8 +39,8 @@ final class BehavioralEventHTTPCompletionRequest implements BaseModel
     /**
      * The ID of the object that completed the event (e.g., contact ID or visitor ID).
      */
-    #[Api('objectId', optional: true)]
-    public ?string $objectID;
+    #[Api(optional: true)]
+    public ?string $objectId;
 
     /**
      * The time when this event occurred. If this isn't set, the current time will be used.
@@ -51,7 +51,7 @@ final class BehavioralEventHTTPCompletionRequest implements BaseModel
     /**
      * The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
      *
-     * @var array<string, string>|null $properties
+     * @var array<string,string>|null $properties
      */
     #[Api(map: 'string', optional: true)]
     public ?array $properties;
@@ -92,12 +92,12 @@ final class BehavioralEventHTTPCompletionRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(
         string $eventName,
         ?string $email = null,
-        ?string $objectID = null,
+        ?string $objectId = null,
         ?\DateTimeInterface $occurredAt = null,
         ?array $properties = null,
         ?string $utk = null,
@@ -108,7 +108,7 @@ final class BehavioralEventHTTPCompletionRequest implements BaseModel
         $obj->eventName = $eventName;
 
         null !== $email && $obj->email = $email;
-        null !== $objectID && $obj->objectID = $objectID;
+        null !== $objectId && $obj->objectId = $objectId;
         null !== $occurredAt && $obj->occurredAt = $occurredAt;
         null !== $properties && $obj->properties = $properties;
         null !== $utk && $obj->utk = $utk;
@@ -145,7 +145,7 @@ final class BehavioralEventHTTPCompletionRequest implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }
@@ -164,7 +164,7 @@ final class BehavioralEventHTTPCompletionRequest implements BaseModel
     /**
      * The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

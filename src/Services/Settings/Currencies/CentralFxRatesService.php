@@ -24,33 +24,19 @@ final class CentralFxRatesService implements CentralFxRatesContract
     /**
      * @api
      *
-     * @param CurrencyCode|value-of<CurrencyCode> $currencyCode
+     * @param array{
+     *   currencyCode: value-of<CurrencyCode>
+     * }|CentralFxRateCreateCurrencyParams $params
      *
      * @throws APIException
      */
     public function createCurrency(
-        $currencyCode,
-        ?RequestOptions $requestOptions = null
-    ): ExchangeRate {
-        $params = ['currencyCode' => $currencyCode];
-
-        return $this->createCurrencyRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createCurrencyRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|CentralFxRateCreateCurrencyParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ExchangeRate {
         [$parsed, $options] = CentralFxRateCreateCurrencyParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

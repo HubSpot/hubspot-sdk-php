@@ -14,8 +14,6 @@ use HubspotSDK\Marketing\Campaigns\Spend\SpendUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\SpendContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class SpendService implements SpendContract
 {
     /**
@@ -28,46 +26,20 @@ final class SpendService implements SpendContract
      *
      * Create a new campaign spend item
      *
-     * @param float $amount
-     * @param string $name
-     * @param int $order
-     * @param string $description
+     * @param array{
+     *   amount: float, name: string, order: int, description?: string
+     * }|SpendCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $campaignGuid,
-        $amount,
-        $name,
-        $order,
-        $description = omit,
+        array|SpendCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicSpendItem {
-        $params = [
-            'amount' => $amount,
-            'name' => $name,
-            'order' => $order,
-            'description' => $description,
-        ];
-
-        return $this->createRaw($campaignGuid, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $campaignGuid,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicSpendItem {
         [$parsed, $options] = SpendCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -85,49 +57,24 @@ final class SpendService implements SpendContract
      *
      * Update a specific campaign spend item by ID
      *
-     * @param string $campaignGuid
-     * @param float $amount
-     * @param string $name
-     * @param int $order
-     * @param string $description
+     * @param array{
+     *   campaignGuid: string,
+     *   amount: float,
+     *   name: string,
+     *   order: int,
+     *   description?: string,
+     * }|SpendUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         int $spendID,
-        $campaignGuid,
-        $amount,
-        $name,
-        $order,
-        $description = omit,
+        array|SpendUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicSpendItem {
-        $params = [
-            'campaignGuid' => $campaignGuid,
-            'amount' => $amount,
-            'name' => $name,
-            'order' => $order,
-            'description' => $description,
-        ];
-
-        return $this->updateRaw($spendID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        int $spendID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicSpendItem {
         [$parsed, $options] = SpendUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
@@ -147,35 +94,18 @@ final class SpendService implements SpendContract
      *
      * Delete a specific campaign spend item by ID
      *
-     * @param string $campaignGuid
+     * @param array{campaignGuid: string}|SpendDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         int $spendID,
-        $campaignGuid,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['campaignGuid' => $campaignGuid];
-
-        return $this->deleteRaw($spendID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        int $spendID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SpendDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = SpendDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
@@ -194,35 +124,18 @@ final class SpendService implements SpendContract
      *
      * Read a campaign spend item by its spendId
      *
-     * @param string $campaignGuid
+     * @param array{campaignGuid: string}|SpendGetParams $params
      *
      * @throws APIException
      */
     public function get(
         int $spendID,
-        $campaignGuid,
-        ?RequestOptions $requestOptions = null
-    ): PublicSpendItem {
-        $params = ['campaignGuid' => $campaignGuid];
-
-        return $this->getRaw($spendID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        int $spendID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|SpendGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicSpendItem {
         [$parsed, $options] = SpendGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);

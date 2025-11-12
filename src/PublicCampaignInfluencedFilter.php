@@ -11,7 +11,7 @@ use HubspotSDK\PublicCampaignInfluencedFilter\FilterType;
 
 /**
  * @phpstan-type PublicCampaignInfluencedFilterShape = array{
- *   campaignID: string, filterType: value-of<FilterType>
+ *   campaignId: string, filterType: value-of<FilterType>
  * }
  */
 final class PublicCampaignInfluencedFilter implements BaseModel
@@ -19,8 +19,8 @@ final class PublicCampaignInfluencedFilter implements BaseModel
     /** @use SdkModel<PublicCampaignInfluencedFilterShape> */
     use SdkModel;
 
-    #[Api('campaignId')]
-    public string $campaignID;
+    #[Api]
+    public string $campaignId;
 
     /** @var value-of<FilterType> $filterType */
     #[Api(enum: FilterType::class)]
@@ -31,7 +31,7 @@ final class PublicCampaignInfluencedFilter implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicCampaignInfluencedFilter::with(campaignID: ..., filterType: ...)
+     * PublicCampaignInfluencedFilter::with(campaignId: ..., filterType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -53,12 +53,12 @@ final class PublicCampaignInfluencedFilter implements BaseModel
      * @param FilterType|value-of<FilterType> $filterType
      */
     public static function with(
-        string $campaignID,
+        string $campaignId,
         FilterType|string $filterType = 'CAMPAIGN_INFLUENCED'
     ): self {
         $obj = new self;
 
-        $obj->campaignID = $campaignID;
+        $obj->campaignId = $campaignId;
         $obj['filterType'] = $filterType;
 
         return $obj;
@@ -67,7 +67,7 @@ final class PublicCampaignInfluencedFilter implements BaseModel
     public function withCampaignID(string $campaignID): self
     {
         $obj = clone $this;
-        $obj->campaignID = $campaignID;
+        $obj->campaignId = $campaignID;
 
         return $obj;
     }

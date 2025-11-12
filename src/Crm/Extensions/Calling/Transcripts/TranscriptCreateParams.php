@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Extensions\Calling\Transcripts->create
  *
  * @phpstan-type TranscriptCreateParamsShape = array{
- *   engagementID: int, transcriptCreateUtterances: list<TranscriptCreateUtterance>
+ *   engagementId: int, transcriptCreateUtterances: list<TranscriptCreateUtterance>
  * }
  */
 final class TranscriptCreateParams implements BaseModel
@@ -22,8 +22,8 @@ final class TranscriptCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api('engagementId')]
-    public int $engagementID;
+    #[Api]
+    public int $engagementId;
 
     /** @var list<TranscriptCreateUtterance> $transcriptCreateUtterances */
     #[Api(list: TranscriptCreateUtterance::class)]
@@ -34,7 +34,7 @@ final class TranscriptCreateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * TranscriptCreateParams::with(engagementID: ..., transcriptCreateUtterances: ...)
+     * TranscriptCreateParams::with(engagementId: ..., transcriptCreateUtterances: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -58,12 +58,12 @@ final class TranscriptCreateParams implements BaseModel
      * @param list<TranscriptCreateUtterance> $transcriptCreateUtterances
      */
     public static function with(
-        int $engagementID,
+        int $engagementId,
         array $transcriptCreateUtterances
     ): self {
         $obj = new self;
 
-        $obj->engagementID = $engagementID;
+        $obj->engagementId = $engagementId;
         $obj->transcriptCreateUtterances = $transcriptCreateUtterances;
 
         return $obj;
@@ -72,7 +72,7 @@ final class TranscriptCreateParams implements BaseModel
     public function withEngagementID(int $engagementID): self
     {
         $obj = clone $this;
-        $obj->engagementID = $engagementID;
+        $obj->engagementId = $engagementID;
 
         return $obj;
     }

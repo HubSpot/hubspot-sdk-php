@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   created: \DateTimeInterface,
  *   deletedAt: \DateTimeInterface,
  *   name: string,
- *   parentFolderID: int,
+ *   parentFolderId: int,
  *   updated: \DateTimeInterface,
  * }
  */
@@ -56,8 +56,8 @@ final class ContentFolder implements BaseModel
     /**
      * The ID of the content folder this folder is nested under.
      */
-    #[Api('parentFolderId')]
-    public int $parentFolderID;
+    #[Api]
+    public int $parentFolderId;
 
     #[Api]
     public \DateTimeInterface $updated;
@@ -73,7 +73,7 @@ final class ContentFolder implements BaseModel
      *   created: ...,
      *   deletedAt: ...,
      *   name: ...,
-     *   parentFolderID: ...,
+     *   parentFolderId: ...,
      *   updated: ...,
      * )
      * ```
@@ -107,7 +107,7 @@ final class ContentFolder implements BaseModel
         \DateTimeInterface $created,
         \DateTimeInterface $deletedAt,
         string $name,
-        int $parentFolderID,
+        int $parentFolderId,
         \DateTimeInterface $updated,
     ): self {
         $obj = new self;
@@ -117,7 +117,7 @@ final class ContentFolder implements BaseModel
         $obj->created = $created;
         $obj->deletedAt = $deletedAt;
         $obj->name = $name;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderId;
         $obj->updated = $updated;
 
         return $obj;
@@ -181,7 +181,7 @@ final class ContentFolder implements BaseModel
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderID;
 
         return $obj;
     }

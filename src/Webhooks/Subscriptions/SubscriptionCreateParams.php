@@ -18,7 +18,7 @@ use HubspotSDK\Webhooks\Subscriptions\SubscriptionCreateParams\EventType;
  * @phpstan-type SubscriptionCreateParamsShape = array{
  *   eventType: EventType|value-of<EventType>,
  *   active?: bool,
- *   objectTypeID?: string,
+ *   objectTypeId?: string,
  *   propertyName?: string,
  * }
  */
@@ -42,8 +42,8 @@ final class SubscriptionCreateParams implements BaseModel
     #[Api(optional: true)]
     public ?bool $active;
 
-    #[Api('objectTypeId', optional: true)]
-    public ?string $objectTypeID;
+    #[Api(optional: true)]
+    public ?string $objectTypeId;
 
     /**
      * The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
@@ -80,7 +80,7 @@ final class SubscriptionCreateParams implements BaseModel
     public static function with(
         EventType|string $eventType,
         ?bool $active = null,
-        ?string $objectTypeID = null,
+        ?string $objectTypeId = null,
         ?string $propertyName = null,
     ): self {
         $obj = new self;
@@ -88,7 +88,7 @@ final class SubscriptionCreateParams implements BaseModel
         $obj['eventType'] = $eventType;
 
         null !== $active && $obj->active = $active;
-        null !== $objectTypeID && $obj->objectTypeID = $objectTypeID;
+        null !== $objectTypeId && $obj->objectTypeId = $objectTypeId;
         null !== $propertyName && $obj->propertyName = $propertyName;
 
         return $obj;
@@ -121,7 +121,7 @@ final class SubscriptionCreateParams implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }

@@ -6,73 +6,37 @@ namespace HubspotSDK\ServiceContracts\Conversations\CustomChannels;
 
 use HubspotSDK\Conversations\CollectionResponseWithTotalPublicChannelAccountForwardPaging;
 use HubspotSDK\Conversations\ConversationsPublicChannelAccount;
-use HubspotSDK\Conversations\PublicDeliveryIdentifier;
+use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountCreateParams;
+use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountGetParams;
+use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface ChannelAccountsContract
 {
     /**
      * @api
      *
-     * @param bool $authorized
-     * @param string $inboxID
-     * @param string $name
-     * @param PublicDeliveryIdentifier $deliveryIdentifier
+     * @param array<mixed>|ChannelAccountCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $channelID,
-        $authorized,
-        $inboxID,
-        $name,
-        $deliveryIdentifier = omit,
+        array|ChannelAccountCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicChannelAccount;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $channelID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): ConversationsPublicChannelAccount;
-
-    /**
-     * @api
-     *
-     * @param string $channelID
-     * @param bool $authorized
-     * @param string $name
+     * @param array<mixed>|ChannelAccountUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $channelAccountID,
-        $channelID,
-        $authorized = omit,
-        $name = omit,
-        ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicChannelAccount;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $channelAccountID,
-        array $params,
+        array|ChannelAccountUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicChannelAccount;
 
@@ -89,26 +53,13 @@ interface ChannelAccountsContract
     /**
      * @api
      *
-     * @param string $channelID
+     * @param array<mixed>|ChannelAccountGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $channelAccountID,
-        $channelID,
-        ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicChannelAccount;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $channelAccountID,
-        array $params,
+        array|ChannelAccountGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicChannelAccount;
 }

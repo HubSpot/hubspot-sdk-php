@@ -3,9 +3,6 @@
 namespace Tests\Services\Settings;
 
 use HubspotSDK\Client;
-use HubspotSDK\PublicObjectID;
-use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest;
-use HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -39,14 +36,9 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->batchCreate(
-            [
-                ExchangeRateCreateRequest::with(
-                    conversionRate: 0,
-                    fromCurrencyCode: 'AED'
-                ),
-            ],
-        );
+        $result = $this->client->settings->currencies->batchCreate([
+            'inputs' => [['conversionRate' => 0, 'fromCurrencyCode' => 'AED']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -58,15 +50,15 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->batchCreate(
-            [
-                ExchangeRateCreateRequest::with(
-                    conversionRate: 0,
-                    fromCurrencyCode: 'AED'
-                )
-                    ->withEffectiveAt(new \DateTimeImmutable('2019-12-27T18:11:19.117Z')),
+        $result = $this->client->settings->currencies->batchCreate([
+            'inputs' => [
+                [
+                    'conversionRate' => 0,
+                    'fromCurrencyCode' => 'AED',
+                    'effectiveAt' => '2019-12-27T18:11:19.117Z',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -78,9 +70,9 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->batchGet(
-            [PublicObjectID::with(id: '37295')]
-        );
+        $result = $this->client->settings->currencies->batchGet([
+            'inputs' => [['id' => '37295']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -92,9 +84,9 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->batchGet(
-            [PublicObjectID::with(id: '37295')]
-        );
+        $result = $this->client->settings->currencies->batchGet([
+            'inputs' => [['id' => '37295']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -106,9 +98,9 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->batchUpdate(
-            [ExchangeRateUpdateRequest::with(id: 'id', conversionRate: 0)]
-        );
+        $result = $this->client->settings->currencies->batchUpdate([
+            'inputs' => [['id' => 'id', 'conversionRate' => 0]],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -120,12 +112,15 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->batchUpdate(
-            [
-                ExchangeRateUpdateRequest::with(id: 'id', conversionRate: 0)
-                    ->withEffectiveAt(new \DateTimeImmutable('2019-12-27T18:11:19.117Z')),
+        $result = $this->client->settings->currencies->batchUpdate([
+            'inputs' => [
+                [
+                    'id' => 'id',
+                    'conversionRate' => 0,
+                    'effectiveAt' => '2019-12-27T18:11:19.117Z',
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -137,10 +132,9 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->createExchangeRate(
-            conversionRate: 0,
-            fromCurrencyCode: 'AED'
-        );
+        $result = $this->client->settings->currencies->createExchangeRate([
+            'conversionRate' => 0, 'fromCurrencyCode' => 'AED',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -152,10 +146,9 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->createExchangeRate(
-            conversionRate: 0,
-            fromCurrencyCode: 'AED'
-        );
+        $result = $this->client->settings->currencies->createExchangeRate([
+            'conversionRate' => 0, 'fromCurrencyCode' => 'AED',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -229,7 +222,9 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->updateCompanyCurrency('AED');
+        $result = $this->client->settings->currencies->updateCompanyCurrency([
+            'currencyCode' => 'AED',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -241,7 +236,9 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->updateCompanyCurrency('AED');
+        $result = $this->client->settings->currencies->updateCompanyCurrency([
+            'currencyCode' => 'AED',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -255,7 +252,7 @@ final class CurrenciesTest extends TestCase
 
         $result = $this->client->settings->currencies->updateExchangeRate(
             'exchangeRateId',
-            conversionRate: 0
+            ['conversionRate' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -270,7 +267,7 @@ final class CurrenciesTest extends TestCase
 
         $result = $this->client->settings->currencies->updateExchangeRate(
             'exchangeRateId',
-            conversionRate: 0
+            ['conversionRate' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -283,11 +280,11 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->updateVisibility(
-            fromCurrencyCode: 'AED',
-            toCurrencyCode: 'AED',
-            visibleInUi: true
-        );
+        $result = $this->client->settings->currencies->updateVisibility([
+            'fromCurrencyCode' => 'AED',
+            'toCurrencyCode' => 'AED',
+            'visibleInUI' => true,
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -299,11 +296,11 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->updateVisibility(
-            fromCurrencyCode: 'AED',
-            toCurrencyCode: 'AED',
-            visibleInUi: true
-        );
+        $result = $this->client->settings->currencies->updateVisibility([
+            'fromCurrencyCode' => 'AED',
+            'toCurrencyCode' => 'AED',
+            'visibleInUI' => true,
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

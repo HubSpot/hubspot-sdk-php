@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   additionalCurrencies: list<string>,
  *   companyCurrency: string,
  *   dataHostingLocation: string,
- *   portalID: int,
+ *   portalId: int,
  *   timeZone: string,
  *   uiDomain: string,
  *   utcOffset: string,
@@ -41,8 +41,8 @@ final class PortalInformationResponse implements BaseModel
     #[Api]
     public string $dataHostingLocation;
 
-    #[Api('portalId')]
-    public int $portalID;
+    #[Api]
+    public int $portalId;
 
     #[Api]
     public string $timeZone;
@@ -66,7 +66,7 @@ final class PortalInformationResponse implements BaseModel
      *   additionalCurrencies: ...,
      *   companyCurrency: ...,
      *   dataHostingLocation: ...,
-     *   portalID: ...,
+     *   portalId: ...,
      *   timeZone: ...,
      *   uiDomain: ...,
      *   utcOffset: ...,
@@ -107,7 +107,7 @@ final class PortalInformationResponse implements BaseModel
         array $additionalCurrencies,
         string $companyCurrency,
         string $dataHostingLocation,
-        int $portalID,
+        int $portalId,
         string $timeZone,
         string $uiDomain,
         string $utcOffset,
@@ -119,7 +119,7 @@ final class PortalInformationResponse implements BaseModel
         $obj->additionalCurrencies = $additionalCurrencies;
         $obj->companyCurrency = $companyCurrency;
         $obj->dataHostingLocation = $dataHostingLocation;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalId;
         $obj->timeZone = $timeZone;
         $obj->uiDomain = $uiDomain;
         $obj->utcOffset = $utcOffset;
@@ -169,7 +169,7 @@ final class PortalInformationResponse implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }

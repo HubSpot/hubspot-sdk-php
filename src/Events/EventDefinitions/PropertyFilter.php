@@ -14,7 +14,7 @@ use HubspotSDK\Events\EventDefinitions\PropertyFilter\FilterType;
  *   filterType: value-of<FilterType>,
  *   operation: BoolPropertyOperation|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation,
  *   property: string,
- *   frameworkFilterID?: int,
+ *   frameworkFilterId?: int|null,
  * }
  */
 final class PropertyFilter implements BaseModel
@@ -32,8 +32,8 @@ final class PropertyFilter implements BaseModel
     #[Api]
     public string $property;
 
-    #[Api('frameworkFilterId', optional: true)]
-    public ?int $frameworkFilterID;
+    #[Api(optional: true)]
+    public ?int $frameworkFilterId;
 
     /**
      * `new PropertyFilter()` is missing required properties by the API.
@@ -65,7 +65,7 @@ final class PropertyFilter implements BaseModel
         BoolPropertyOperation|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation $operation,
         string $property,
         FilterType|string $filterType = 'PROPERTY',
-        ?int $frameworkFilterID = null,
+        ?int $frameworkFilterId = null,
     ): self {
         $obj = new self;
 
@@ -73,7 +73,7 @@ final class PropertyFilter implements BaseModel
         $obj->operation = $operation;
         $obj->property = $property;
 
-        null !== $frameworkFilterID && $obj->frameworkFilterID = $frameworkFilterID;
+        null !== $frameworkFilterId && $obj->frameworkFilterId = $frameworkFilterId;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class PropertyFilter implements BaseModel
     public function withFrameworkFilterID(int $frameworkFilterID): self
     {
         $obj = clone $this;
-        $obj->frameworkFilterID = $frameworkFilterID;
+        $obj->frameworkFilterId = $frameworkFilterID;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest\Type;
  * @phpstan-type LegalConsentOptionsLegitimateInterestShape = array{
  *   lawfulBasis: value-of<LawfulBasis>,
  *   privacyText: string,
- *   subscriptionTypeIDs: list<int>,
+ *   subscriptionTypeIds: list<int>,
  *   type: value-of<Type>,
  * }
  */
@@ -30,9 +30,9 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
     #[Api]
     public string $privacyText;
 
-    /** @var list<int> $subscriptionTypeIDs */
-    #[Api('subscriptionTypeIds', list: 'int')]
-    public array $subscriptionTypeIDs;
+    /** @var list<int> $subscriptionTypeIds */
+    #[Api(list: 'int')]
+    public array $subscriptionTypeIds;
 
     /** @var value-of<Type> $type */
     #[Api(enum: Type::class)]
@@ -44,7 +44,7 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
      * To enforce required parameters use
      * ```
      * LegalConsentOptionsLegitimateInterest::with(
-     *   lawfulBasis: ..., privacyText: ..., subscriptionTypeIDs: ..., type: ...
+     *   lawfulBasis: ..., privacyText: ..., subscriptionTypeIds: ..., type: ...
      * )
      * ```
      *
@@ -69,20 +69,20 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param LawfulBasis|value-of<LawfulBasis> $lawfulBasis
-     * @param list<int> $subscriptionTypeIDs
+     * @param list<int> $subscriptionTypeIds
      * @param Type|value-of<Type> $type
      */
     public static function with(
         LawfulBasis|string $lawfulBasis,
         string $privacyText,
-        array $subscriptionTypeIDs,
+        array $subscriptionTypeIds,
         Type|string $type = 'legitimate_interest',
     ): self {
         $obj = new self;
 
         $obj['lawfulBasis'] = $lawfulBasis;
         $obj->privacyText = $privacyText;
-        $obj->subscriptionTypeIDs = $subscriptionTypeIDs;
+        $obj->subscriptionTypeIds = $subscriptionTypeIds;
         $obj['type'] = $type;
 
         return $obj;
@@ -113,7 +113,7 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
     public function withSubscriptionTypeIDs(array $subscriptionTypeIDs): self
     {
         $obj = clone $this;
-        $obj->subscriptionTypeIDs = $subscriptionTypeIDs;
+        $obj->subscriptionTypeIds = $subscriptionTypeIDs;
 
         return $obj;
     }

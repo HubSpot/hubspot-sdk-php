@@ -13,17 +13,17 @@ use HubspotSDK\Services\Automation\WorkflowsService;
 final class AutomationService implements AutomationContract
 {
     /**
-     * @@api
+     * @api
      */
     public ActionsService $actions;
 
     /**
-     * @@api
+     * @api
      */
     public SequencesService $sequences;
 
     /**
-     * @@api
+     * @api
      */
     public WorkflowsService $workflows;
 

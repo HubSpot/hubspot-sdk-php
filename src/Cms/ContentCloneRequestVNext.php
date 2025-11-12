@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Request body object for cloning content.
  *
  * @phpstan-type ContentCloneRequestVNextShape = array{
- *   id: string, cloneName?: string
+ *   id: string, cloneName?: string|null
  * }
  */
 final class ContentCloneRequestVNext implements BaseModel

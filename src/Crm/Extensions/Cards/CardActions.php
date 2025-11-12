@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Configuration for custom user actions on cards.
  *
- * @phpstan-type CardActionsShape = array{baseURLs: list<string>}
+ * @phpstan-type CardActionsShape = array{baseUrls: list<string>}
  */
 final class CardActions implements BaseModel
 {
@@ -21,17 +21,17 @@ final class CardActions implements BaseModel
     /**
      * A list of URL prefixes that will be accepted for card action URLs. If your data fetch response includes an action URL that doesn't begin with one of these values, it will result in an error and the card will not be displayed.
      *
-     * @var list<string> $baseURLs
+     * @var list<string> $baseUrls
      */
-    #[Api('baseUrls', list: 'string')]
-    public array $baseURLs;
+    #[Api(list: 'string')]
+    public array $baseUrls;
 
     /**
      * `new CardActions()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * CardActions::with(baseURLs: ...)
+     * CardActions::with(baseUrls: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -50,13 +50,13 @@ final class CardActions implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $baseURLs
+     * @param list<string> $baseUrls
      */
-    public static function with(array $baseURLs): self
+    public static function with(array $baseUrls): self
     {
         $obj = new self;
 
-        $obj->baseURLs = $baseURLs;
+        $obj->baseUrls = $baseUrls;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class CardActions implements BaseModel
     public function withBaseURLs(array $baseURLs): self
     {
         $obj = clone $this;
-        $obj->baseURLs = $baseURLs;
+        $obj->baseUrls = $baseURLs;
 
         return $obj;
     }

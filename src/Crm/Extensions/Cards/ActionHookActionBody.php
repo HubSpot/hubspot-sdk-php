@@ -16,8 +16,8 @@ use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\Type;
  *   propertyNamesIncluded: list<string>,
  *   type: value-of<Type>,
  *   url: string,
- *   confirmation?: ActionConfirmationBody,
- *   label?: string,
+ *   confirmation?: ActionConfirmationBody|null,
+ *   label?: string|null,
  * }
  */
 final class ActionHookActionBody implements BaseModel

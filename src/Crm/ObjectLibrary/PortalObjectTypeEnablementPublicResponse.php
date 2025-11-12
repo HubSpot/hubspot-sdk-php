@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PortalObjectTypeEnablementPublicResponseShape = array{
- *   enablementByObjectTypeID: array<string, bool>
+ *   enablementByObjectTypeId: array<string,bool>
  * }
  */
 final class PortalObjectTypeEnablementPublicResponse implements BaseModel
@@ -18,16 +18,16 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
     /** @use SdkModel<PortalObjectTypeEnablementPublicResponseShape> */
     use SdkModel;
 
-    /** @var array<string, bool> $enablementByObjectTypeID */
-    #[Api('enablementByObjectTypeId', map: 'bool')]
-    public array $enablementByObjectTypeID;
+    /** @var array<string,bool> $enablementByObjectTypeId */
+    #[Api(map: 'bool')]
+    public array $enablementByObjectTypeId;
 
     /**
      * `new PortalObjectTypeEnablementPublicResponse()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PortalObjectTypeEnablementPublicResponse::with(enablementByObjectTypeID: ...)
+     * PortalObjectTypeEnablementPublicResponse::with(enablementByObjectTypeId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -47,25 +47,25 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, bool> $enablementByObjectTypeID
+     * @param array<string,bool> $enablementByObjectTypeId
      */
-    public static function with(array $enablementByObjectTypeID): self
+    public static function with(array $enablementByObjectTypeId): self
     {
         $obj = new self;
 
-        $obj->enablementByObjectTypeID = $enablementByObjectTypeID;
+        $obj->enablementByObjectTypeId = $enablementByObjectTypeId;
 
         return $obj;
     }
 
     /**
-     * @param array<string, bool> $enablementByObjectTypeID
+     * @param array<string,bool> $enablementByObjectTypeID
      */
     public function withEnablementByObjectTypeID(
         array $enablementByObjectTypeID
     ): self {
         $obj = clone $this;
-        $obj->enablementByObjectTypeID = $enablementByObjectTypeID;
+        $obj->enablementByObjectTypeId = $enablementByObjectTypeID;
 
         return $obj;
     }

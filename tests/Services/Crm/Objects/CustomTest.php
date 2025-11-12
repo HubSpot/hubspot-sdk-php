@@ -38,7 +38,7 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->create(
             'objectType',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +53,7 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->create(
             'objectType',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -68,8 +68,7 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->update(
             'objectId',
-            objectType: 'objectType',
-            properties: ['foo' => 'string']
+            ['objectType' => 'objectType', 'properties' => ['foo' => 'string']],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -84,8 +83,7 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->update(
             'objectId',
-            objectType: 'objectType',
-            properties: ['foo' => 'string']
+            ['objectType' => 'objectType', 'properties' => ['foo' => 'string']],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -98,7 +96,7 @@ final class CustomTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->custom->list('objectType');
+        $result = $this->client->crm->objects->custom->list('objectType', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -112,7 +110,7 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->delete(
             'objectId',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -127,7 +125,7 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->delete(
             'objectId',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -142,7 +140,7 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->get(
             'objectId',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -157,7 +155,7 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->get(
             'objectId',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -172,8 +170,10 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->merge(
             'objectType',
-            objectIDToMerge: 'objectIdToMerge',
-            primaryObjectID: 'primaryObjectId',
+            [
+                'objectIdToMerge' => 'objectIdToMerge',
+                'primaryObjectId' => 'primaryObjectId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -188,8 +188,10 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->merge(
             'objectType',
-            objectIDToMerge: 'objectIdToMerge',
-            primaryObjectID: 'primaryObjectId',
+            [
+                'objectIdToMerge' => 'objectIdToMerge',
+                'primaryObjectId' => 'primaryObjectId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -202,7 +204,7 @@ final class CustomTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->custom->search('objectType');
+        $result = $this->client->crm->objects->custom->search('objectType', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

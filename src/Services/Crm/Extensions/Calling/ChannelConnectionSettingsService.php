@@ -12,8 +12,6 @@ use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\ChannelConnectionSettingsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class ChannelConnectionSettingsService implements ChannelConnectionSettingsContract
 {
     /**
@@ -24,37 +22,20 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
     /**
      * @api
      *
-     * @param bool $isReady
-     * @param string $url
+     * @param array{
+     *   isReady: bool, url: string
+     * }|ChannelConnectionSettingCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        $isReady,
-        $url,
-        ?RequestOptions $requestOptions = null
-    ): ChannelConnectionSettingsResponse {
-        $params = ['isReady' => $isReady, 'url' => $url];
-
-        return $this->createRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|ChannelConnectionSettingCreateParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ChannelConnectionSettingsResponse {
         [$parsed, $options] = ChannelConnectionSettingCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -72,37 +53,20 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
     /**
      * @api
      *
-     * @param bool $isReady
-     * @param string $url
+     * @param array{
+     *   isReady?: bool, url?: string
+     * }|ChannelConnectionSettingUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         int $appID,
-        $isReady = omit,
-        $url = omit,
+        array|ChannelConnectionSettingUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ChannelConnectionSettingsResponse {
-        $params = ['isReady' => $isReady, 'url' => $url];
-
-        return $this->updateRaw($appID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ChannelConnectionSettingsResponse {
         [$parsed, $options] = ChannelConnectionSettingUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

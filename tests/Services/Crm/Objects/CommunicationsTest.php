@@ -36,9 +36,9 @@ final class CommunicationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->communications->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->communications->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -50,9 +50,9 @@ final class CommunicationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->communications->create(
-            properties: ['foo' => 'string']
-        );
+        $result = $this->client->crm->objects->communications->create([
+            'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -66,7 +66,7 @@ final class CommunicationsTest extends TestCase
 
         $result = $this->client->crm->objects->communications->update(
             'communicationId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -81,7 +81,7 @@ final class CommunicationsTest extends TestCase
 
         $result = $this->client->crm->objects->communications->update(
             'communicationId',
-            properties: ['foo' => 'string']
+            ['properties' => ['foo' => 'string']]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -94,7 +94,7 @@ final class CommunicationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->communications->list();
+        $result = $this->client->crm->objects->communications->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -121,7 +121,8 @@ final class CommunicationsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->communications->get(
-            'communicationId'
+            'communicationId',
+            []
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -134,7 +135,7 @@ final class CommunicationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->communications->search();
+        $result = $this->client->crm->objects->communications->search([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

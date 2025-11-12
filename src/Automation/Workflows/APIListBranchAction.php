@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIListBranchActionShape = array{
- *   actionID: string,
+ *   actionId: string,
  *   listBranches: list<APIListBranch>,
  *   type: value-of<Type>,
- *   defaultBranch?: APIConnection,
- *   defaultBranchName?: string,
+ *   defaultBranch?: APIConnection|null,
+ *   defaultBranchName?: string|null,
  * }
  */
 final class APIListBranchAction implements BaseModel
@@ -23,8 +23,8 @@ final class APIListBranchAction implements BaseModel
     /** @use SdkModel<APIListBranchActionShape> */
     use SdkModel;
 
-    #[Api('actionId')]
-    public string $actionID;
+    #[Api]
+    public string $actionId;
 
     /** @var list<APIListBranch> $listBranches */
     #[Api(list: APIListBranch::class)]
@@ -45,7 +45,7 @@ final class APIListBranchAction implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * APIListBranchAction::with(actionID: ..., listBranches: ..., type: ...)
+     * APIListBranchAction::with(actionId: ..., listBranches: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -71,7 +71,7 @@ final class APIListBranchAction implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $actionID,
+        string $actionId,
         array $listBranches,
         Type|string $type = 'LIST_BRANCH',
         ?APIConnection $defaultBranch = null,
@@ -79,7 +79,7 @@ final class APIListBranchAction implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionId;
         $obj->listBranches = $listBranches;
         $obj['type'] = $type;
 
@@ -92,7 +92,7 @@ final class APIListBranchAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionID;
 
         return $obj;
     }

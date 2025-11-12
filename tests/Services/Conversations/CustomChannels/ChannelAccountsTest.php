@@ -41,7 +41,10 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->create('channelId', authorized: true, inboxID: 'inboxId', name: 'name')
+            ->create(
+                'channelId',
+                ['authorized' => true, 'inboxId' => 'inboxId', 'name' => 'name'],
+            )
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -59,7 +62,10 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->create('channelId', authorized: true, inboxID: 'inboxId', name: 'name')
+            ->create(
+                'channelId',
+                ['authorized' => true, 'inboxId' => 'inboxId', 'name' => 'name'],
+            )
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -77,7 +83,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->update('channelAccountId', channelID: 'channelId')
+            ->update('channelAccountId', ['channelId' => 'channelId'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -95,7 +101,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->update('channelAccountId', channelID: 'channelId')
+            ->update('channelAccountId', ['channelId' => 'channelId'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -131,7 +137,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->get('channelAccountId', 'channelId')
+            ->get('channelAccountId', ['channelId' => 'channelId'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -149,7 +155,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->get('channelAccountId', 'channelId')
+            ->get('channelAccountId', ['channelId' => 'channelId'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

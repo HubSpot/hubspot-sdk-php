@@ -3,8 +3,6 @@
 namespace Tests\Services\Marketing\Events;
 
 use HubspotSDK\Client;
-use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
-use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -45,8 +43,7 @@ final class AttendanceTest extends TestCase
             ->attendance
             ->createByEventIDAndContactID(
                 'subscriberState',
-                objectID: 'objectId',
-                inputs: [MarketingEventSubscriber::with(interactionDateTime: 0)],
+                ['objectId' => 'objectId', 'inputs' => [['interactionDateTime' => 0]]],
             )
         ;
 
@@ -67,11 +64,15 @@ final class AttendanceTest extends TestCase
             ->attendance
             ->createByEventIDAndContactID(
                 'subscriberState',
-                objectID: 'objectId',
-                inputs: [
-                    MarketingEventSubscriber::with(interactionDateTime: 0)
-                        ->withProperties(['foo' => 'string'])
-                        ->withVid(0),
+                [
+                    'objectId' => 'objectId',
+                    'inputs' => [
+                        [
+                            'interactionDateTime' => 0,
+                            'properties' => ['foo' => 'string'],
+                            'vid' => 0,
+                        ],
+                    ],
                 ],
             )
         ;
@@ -93,12 +94,9 @@ final class AttendanceTest extends TestCase
             ->attendance
             ->createByEventIDAndEmail(
                 'subscriberState',
-                objectID: 'objectId',
-                inputs: [
-                    MarketingEventEmailSubscriber::with(
-                        email: 'email',
-                        interactionDateTime: 0
-                    ),
+                [
+                    'objectId' => 'objectId',
+                    'inputs' => [['email' => 'email', 'interactionDateTime' => 0]],
                 ],
             )
         ;
@@ -120,14 +118,16 @@ final class AttendanceTest extends TestCase
             ->attendance
             ->createByEventIDAndEmail(
                 'subscriberState',
-                objectID: 'objectId',
-                inputs: [
-                    MarketingEventEmailSubscriber::with(
-                        email: 'email',
-                        interactionDateTime: 0
-                    )
-                        ->withContactProperties(['foo' => 'string'])
-                        ->withProperties(['foo' => 'string']),
+                [
+                    'objectId' => 'objectId',
+                    'inputs' => [
+                        [
+                            'email' => 'email',
+                            'interactionDateTime' => 0,
+                            'contactProperties' => ['foo' => 'string'],
+                            'properties' => ['foo' => 'string'],
+                        ],
+                    ],
                 ],
             )
         ;
@@ -149,8 +149,10 @@ final class AttendanceTest extends TestCase
             ->attendance
             ->createByExternalEventIDAndContactID(
                 'subscriberState',
-                externalEventID: 'externalEventId',
-                inputs: [MarketingEventSubscriber::with(interactionDateTime: 0)],
+                [
+                    'externalEventId' => 'externalEventId',
+                    'inputs' => [['interactionDateTime' => 0]],
+                ],
             )
         ;
 
@@ -171,11 +173,15 @@ final class AttendanceTest extends TestCase
             ->attendance
             ->createByExternalEventIDAndContactID(
                 'subscriberState',
-                externalEventID: 'externalEventId',
-                inputs: [
-                    MarketingEventSubscriber::with(interactionDateTime: 0)
-                        ->withProperties(['foo' => 'string'])
-                        ->withVid(0),
+                [
+                    'externalEventId' => 'externalEventId',
+                    'inputs' => [
+                        [
+                            'interactionDateTime' => 0,
+                            'properties' => ['foo' => 'string'],
+                            'vid' => 0,
+                        ],
+                    ],
                 ],
             )
         ;
@@ -197,12 +203,9 @@ final class AttendanceTest extends TestCase
             ->attendance
             ->createByExternalEventIDAndEmail(
                 'subscriberState',
-                externalEventID: 'externalEventId',
-                inputs: [
-                    MarketingEventEmailSubscriber::with(
-                        email: 'email',
-                        interactionDateTime: 0
-                    ),
+                [
+                    'externalEventId' => 'externalEventId',
+                    'inputs' => [['email' => 'email', 'interactionDateTime' => 0]],
                 ],
             )
         ;
@@ -224,14 +227,16 @@ final class AttendanceTest extends TestCase
             ->attendance
             ->createByExternalEventIDAndEmail(
                 'subscriberState',
-                externalEventID: 'externalEventId',
-                inputs: [
-                    MarketingEventEmailSubscriber::with(
-                        email: 'email',
-                        interactionDateTime: 0
-                    )
-                        ->withContactProperties(['foo' => 'string'])
-                        ->withProperties(['foo' => 'string']),
+                [
+                    'externalEventId' => 'externalEventId',
+                    'inputs' => [
+                        [
+                            'email' => 'email',
+                            'interactionDateTime' => 0,
+                            'contactProperties' => ['foo' => 'string'],
+                            'properties' => ['foo' => 'string'],
+                        ],
+                    ],
                 ],
             )
         ;

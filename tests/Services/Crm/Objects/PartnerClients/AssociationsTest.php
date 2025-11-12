@@ -38,9 +38,11 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->partnerClients->associations->update(
             'associationType',
-            partnerClientID: 'partnerClientId',
-            toObjectType: 'toObjectType',
-            toObjectID: 'toObjectId',
+            [
+                'partnerClientId' => 'partnerClientId',
+                'toObjectType' => 'toObjectType',
+                'toObjectId' => 'toObjectId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -55,9 +57,11 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->partnerClients->associations->update(
             'associationType',
-            partnerClientID: 'partnerClientId',
-            toObjectType: 'toObjectType',
-            toObjectID: 'toObjectId',
+            [
+                'partnerClientId' => 'partnerClientId',
+                'toObjectType' => 'toObjectType',
+                'toObjectId' => 'toObjectId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -72,7 +76,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->partnerClients->associations->list(
             'toObjectType',
-            partnerClientID: 'partnerClientId'
+            ['partnerClientId' => 'partnerClientId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -87,7 +91,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->partnerClients->associations->list(
             'toObjectType',
-            partnerClientID: 'partnerClientId'
+            ['partnerClientId' => 'partnerClientId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -102,9 +106,11 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->partnerClients->associations->delete(
             'associationType',
-            partnerClientID: 'partnerClientId',
-            toObjectType: 'toObjectType',
-            toObjectID: 'toObjectId',
+            [
+                'partnerClientId' => 'partnerClientId',
+                'toObjectType' => 'toObjectType',
+                'toObjectId' => 'toObjectId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -119,9 +125,11 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->partnerClients->associations->delete(
             'associationType',
-            partnerClientID: 'partnerClientId',
-            toObjectType: 'toObjectType',
-            toObjectID: 'toObjectId',
+            [
+                'partnerClientId' => 'partnerClientId',
+                'toObjectType' => 'toObjectType',
+                'toObjectId' => 'toObjectId',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

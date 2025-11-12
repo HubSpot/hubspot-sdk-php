@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type CollectionResponseFolderShape = array{
- *   results: list<Folder>, paging?: EmailsPaging
+ *   results: list<Folder>, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponseFolder implements BaseModel

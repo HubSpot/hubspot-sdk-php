@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Updated details for the subscription.
  *
- * @phpstan-type SubscriptionPatchRequestShape = array{active?: bool}
+ * @phpstan-type SubscriptionPatchRequestShape = array{active?: bool|null}
  */
 final class SubscriptionPatchRequest implements BaseModel
 {

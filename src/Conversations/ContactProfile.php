@@ -14,8 +14,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   emails: list<ContactEmail>,
  *   phones: list<ContactPhone>,
  *   urls: list<ContactURL>,
- *   name?: ContactName,
- *   org?: ContactOrg,
+ *   name?: ContactName|null,
+ *   org?: ContactOrg|null,
  * }
  */
 final class ContactProfile implements BaseModel

@@ -12,13 +12,13 @@ use HubspotSDK\PublicEmailEventFilter\Operator;
 
 /**
  * @phpstan-type PublicEmailEventFilterShape = array{
- *   appID: string,
- *   emailID: string,
+ *   appId: string,
+ *   emailId: string,
  *   filterType: value-of<FilterType>,
  *   level: string,
  *   operator: value-of<Operator>,
- *   clickURL?: string,
- *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   clickUrl?: string|null,
+ *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
 final class PublicEmailEventFilter implements BaseModel
@@ -26,11 +26,11 @@ final class PublicEmailEventFilter implements BaseModel
     /** @use SdkModel<PublicEmailEventFilterShape> */
     use SdkModel;
 
-    #[Api('appId')]
-    public string $appID;
+    #[Api]
+    public string $appId;
 
-    #[Api('emailId')]
-    public string $emailID;
+    #[Api]
+    public string $emailId;
 
     /** @var value-of<FilterType> $filterType */
     #[Api(enum: FilterType::class)]
@@ -43,8 +43,8 @@ final class PublicEmailEventFilter implements BaseModel
     #[Api(enum: Operator::class)]
     public string $operator;
 
-    #[Api('clickUrl', optional: true)]
-    public ?string $clickURL;
+    #[Api(optional: true)]
+    public ?string $clickUrl;
 
     #[Api(optional: true)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
@@ -55,7 +55,7 @@ final class PublicEmailEventFilter implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicEmailEventFilter::with(
-     *   appID: ..., emailID: ..., filterType: ..., level: ..., operator: ...
+     *   appId: ..., emailId: ..., filterType: ..., level: ..., operator: ...
      * )
      * ```
      *
@@ -84,23 +84,23 @@ final class PublicEmailEventFilter implements BaseModel
      * @param FilterType|value-of<FilterType> $filterType
      */
     public static function with(
-        string $appID,
-        string $emailID,
+        string $appId,
+        string $emailId,
         string $level,
         Operator|string $operator,
         FilterType|string $filterType = 'EMAIL_EVENT',
-        ?string $clickURL = null,
+        ?string $clickUrl = null,
         PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->emailID = $emailID;
+        $obj->appId = $appId;
+        $obj->emailId = $emailId;
         $obj['filterType'] = $filterType;
         $obj->level = $level;
         $obj['operator'] = $operator;
 
-        null !== $clickURL && $obj->clickURL = $clickURL;
+        null !== $clickUrl && $obj->clickUrl = $clickUrl;
         null !== $pruningRefineBy && $obj->pruningRefineBy = $pruningRefineBy;
 
         return $obj;
@@ -109,7 +109,7 @@ final class PublicEmailEventFilter implements BaseModel
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class PublicEmailEventFilter implements BaseModel
     public function withEmailID(string $emailID): self
     {
         $obj = clone $this;
-        $obj->emailID = $emailID;
+        $obj->emailId = $emailID;
 
         return $obj;
     }
@@ -155,7 +155,7 @@ final class PublicEmailEventFilter implements BaseModel
     public function withClickURL(string $clickURL): self
     {
         $obj = clone $this;
-        $obj->clickURL = $clickURL;
+        $obj->clickUrl = $clickURL;
 
         return $obj;
     }

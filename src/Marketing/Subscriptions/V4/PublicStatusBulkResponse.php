@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicStatusBulkResponseShape = array{
- *   statuses: list<PublicStatus>, subscriberIDString: string
+ *   statuses: list<PublicStatus>, subscriberIdString: string
  * }
  */
 final class PublicStatusBulkResponse implements BaseModel
@@ -29,15 +29,15 @@ final class PublicStatusBulkResponse implements BaseModel
     /**
      * The email address of the contact.
      */
-    #[Api('subscriberIdString')]
-    public string $subscriberIDString;
+    #[Api]
+    public string $subscriberIdString;
 
     /**
      * `new PublicStatusBulkResponse()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicStatusBulkResponse::with(statuses: ..., subscriberIDString: ...)
+     * PublicStatusBulkResponse::with(statuses: ..., subscriberIdString: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,12 +60,12 @@ final class PublicStatusBulkResponse implements BaseModel
      */
     public static function with(
         array $statuses,
-        string $subscriberIDString
+        string $subscriberIdString
     ): self {
         $obj = new self;
 
         $obj->statuses = $statuses;
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIdString;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class PublicStatusBulkResponse implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIDString;
 
         return $obj;
     }

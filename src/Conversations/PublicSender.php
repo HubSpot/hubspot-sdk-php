@@ -10,10 +10,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicSenderShape = array{
- *   actorID?: string,
- *   deliveryIdentifier?: PublicDeliveryIdentifier,
- *   name?: string,
- *   senderField?: string,
+ *   actorId?: string|null,
+ *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+ *   name?: string|null,
+ *   senderField?: string|null,
  * }
  */
 final class PublicSender implements BaseModel
@@ -21,8 +21,8 @@ final class PublicSender implements BaseModel
     /** @use SdkModel<PublicSenderShape> */
     use SdkModel;
 
-    #[Api('actorId', optional: true)]
-    public ?string $actorID;
+    #[Api(optional: true)]
+    public ?string $actorId;
 
     #[Api(optional: true)]
     public ?PublicDeliveryIdentifier $deliveryIdentifier;
@@ -44,14 +44,14 @@ final class PublicSender implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?string $actorID = null,
+        ?string $actorId = null,
         ?PublicDeliveryIdentifier $deliveryIdentifier = null,
         ?string $name = null,
         ?string $senderField = null,
     ): self {
         $obj = new self;
 
-        null !== $actorID && $obj->actorID = $actorID;
+        null !== $actorId && $obj->actorId = $actorId;
         null !== $deliveryIdentifier && $obj->deliveryIdentifier = $deliveryIdentifier;
         null !== $name && $obj->name = $name;
         null !== $senderField && $obj->senderField = $senderField;
@@ -62,7 +62,7 @@ final class PublicSender implements BaseModel
     public function withActorID(string $actorID): self
     {
         $obj = clone $this;
-        $obj->actorID = $actorID;
+        $obj->actorId = $actorID;
 
         return $obj;
     }

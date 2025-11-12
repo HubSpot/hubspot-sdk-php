@@ -19,16 +19,16 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  *   labels: ObjectTypeDefinitionLabels,
  *   name: string,
  *   requiredProperties: list<string>,
- *   archived?: bool,
- *   createdAt?: \DateTimeInterface,
- *   description?: string,
- *   fullyQualifiedName?: string,
- *   objectTypeID?: string,
- *   portalID?: int,
- *   primaryDisplayProperty?: string,
- *   searchableProperties?: list<string>,
- *   secondaryDisplayProperties?: list<string>,
- *   updatedAt?: \DateTimeInterface,
+ *   archived?: bool|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   description?: string|null,
+ *   fullyQualifiedName?: string|null,
+ *   objectTypeId?: string|null,
+ *   portalId?: int|null,
+ *   primaryDisplayProperty?: string|null,
+ *   searchableProperties?: list<string>|null,
+ *   secondaryDisplayProperties?: list<string>|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseConverter
@@ -76,14 +76,14 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     #[Api(optional: true)]
     public ?string $fullyQualifiedName;
 
-    #[Api('objectTypeId', optional: true)]
-    public ?string $objectTypeID;
+    #[Api(optional: true)]
+    public ?string $objectTypeId;
 
     /**
      * The ID of the account that this object type is specific to.
      */
-    #[Api('portalId', optional: true)]
-    public ?int $portalID;
+    #[Api(optional: true)]
+    public ?int $portalId;
 
     /**
      * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
@@ -156,8 +156,8 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
         ?\DateTimeInterface $createdAt = null,
         ?string $description = null,
         ?string $fullyQualifiedName = null,
-        ?string $objectTypeID = null,
-        ?int $portalID = null,
+        ?string $objectTypeId = null,
+        ?int $portalId = null,
         ?string $primaryDisplayProperty = null,
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
@@ -174,8 +174,8 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $description && $obj->description = $description;
         null !== $fullyQualifiedName && $obj->fullyQualifiedName = $fullyQualifiedName;
-        null !== $objectTypeID && $obj->objectTypeID = $objectTypeID;
-        null !== $portalID && $obj->portalID = $portalID;
+        null !== $objectTypeId && $obj->objectTypeId = $objectTypeId;
+        null !== $portalId && $obj->portalId = $portalId;
         null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
         null !== $searchableProperties && $obj->searchableProperties = $searchableProperties;
         null !== $secondaryDisplayProperties && $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
@@ -265,7 +265,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -276,7 +276,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalID = $portalID;
+        $obj->portalId = $portalID;
 
         return $obj;
     }

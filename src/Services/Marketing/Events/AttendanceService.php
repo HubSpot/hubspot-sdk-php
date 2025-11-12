@@ -12,12 +12,8 @@ use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByExternalEventIDAndC
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByExternalEventIDAndEmailParams;
 use HubspotSDK\Marketing\Events\BatchResponseSubscriberEmailResponse;
 use HubspotSDK\Marketing\Events\BatchResponseSubscriberVidResponse;
-use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
-use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\AttendanceContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class AttendanceService implements AttendanceContract
 {
@@ -39,46 +35,26 @@ final class AttendanceService implements AttendanceContract
      * - joinedAt
      * - leftAt
      *
-     * @param string $objectID
-     * @param list<MarketingEventSubscriber> $inputs List of HubSpot contacts to subscribe to the marketing event
+     * @param array{
+     *   objectId: string,
+     *   inputs: list<array{
+     *     interactionDateTime: int, properties?: array<string,string>, vid?: int
+     *   }>,
+     * }|AttendanceCreateByEventIDAndContactIDParams $params
      *
      * @throws APIException
      */
     public function createByEventIDAndContactID(
         string $subscriberState,
-        $objectID,
-        $inputs,
+        array|AttendanceCreateByEventIDAndContactIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberVidResponse {
-        $params = ['objectID' => $objectID, 'inputs' => $inputs];
-
-        return $this->createByEventIDAndContactIDRaw(
-            $subscriberState,
+        [$parsed, $options] = AttendanceCreateByEventIDAndContactIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createByEventIDAndContactIDRaw(
-        string $subscriberState,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseSubscriberVidResponse {
-        [
-            $parsed, $options,
-        ] = AttendanceCreateByEventIDAndContactIDParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $objectID = $parsed['objectId'];
+        unset($parsed['objectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -88,7 +64,7 @@ final class AttendanceService implements AttendanceContract
                 $objectID,
                 $subscriberState,
             ],
-            body: (object) array_diff_key($parsed, ['objectID']),
+            body: (object) array_diff_key($parsed, ['objectId']),
             options: $options,
             convert: BatchResponseSubscriberVidResponse::class,
         );
@@ -109,44 +85,29 @@ final class AttendanceService implements AttendanceContract
      * - joinedAt
      * - leftAt
      *
-     * @param string $objectID
-     * @param list<MarketingEventEmailSubscriber> $inputs List of marketing event details to create or update
+     * @param array{
+     *   objectId: string,
+     *   inputs: list<array{
+     *     email: string,
+     *     interactionDateTime: int,
+     *     contactProperties?: array<string,string>,
+     *     properties?: array<string,string>,
+     *   }>,
+     * }|AttendanceCreateByEventIDAndEmailParams $params
      *
      * @throws APIException
      */
     public function createByEventIDAndEmail(
         string $subscriberState,
-        $objectID,
-        $inputs,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseSubscriberEmailResponse {
-        $params = ['objectID' => $objectID, 'inputs' => $inputs];
-
-        return $this->createByEventIDAndEmailRaw(
-            $subscriberState,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createByEventIDAndEmailRaw(
-        string $subscriberState,
-        array $params,
+        array|AttendanceCreateByEventIDAndEmailParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberEmailResponse {
         [$parsed, $options] = AttendanceCreateByEventIDAndEmailParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $objectID = $parsed['objectId'];
+        unset($parsed['objectId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -156,7 +117,7 @@ final class AttendanceService implements AttendanceContract
                 $objectID,
                 $subscriberState,
             ],
-            body: (object) array_diff_key($parsed, ['objectID']),
+            body: (object) array_diff_key($parsed, ['objectId']),
             options: $options,
             convert: BatchResponseSubscriberEmailResponse::class,
         );
@@ -175,52 +136,27 @@ final class AttendanceService implements AttendanceContract
      * - joinedAt
      * - leftAt
      *
-     * @param string $externalEventID
-     * @param list<MarketingEventSubscriber> $inputs List of HubSpot contacts to subscribe to the marketing event
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
+     * @param array{
+     *   externalEventId: string,
+     *   inputs: list<array{
+     *     interactionDateTime: int, properties?: array<string,string>, vid?: int
+     *   }>,
+     *   externalAccountId?: string,
+     * }|AttendanceCreateByExternalEventIDAndContactIDParams $params
      *
      * @throws APIException
      */
     public function createByExternalEventIDAndContactID(
         string $subscriberState,
-        $externalEventID,
-        $inputs,
-        $externalAccountID = omit,
+        array|AttendanceCreateByExternalEventIDAndContactIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberVidResponse {
-        $params = [
-            'externalEventID' => $externalEventID,
-            'inputs' => $inputs,
-            'externalAccountID' => $externalAccountID,
-        ];
-
-        return $this->createByExternalEventIDAndContactIDRaw(
-            $subscriberState,
+        [$parsed, $options] = AttendanceCreateByExternalEventIDAndContactIDParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createByExternalEventIDAndContactIDRaw(
-        string $subscriberState,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseSubscriberVidResponse {
-        [
-            $parsed, $options,
-        ] = AttendanceCreateByExternalEventIDAndContactIDParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $externalEventID = $parsed['externalEventID'];
-        unset($parsed['externalEventID']);
+        $externalEventID = $parsed['externalEventId'];
+        unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
         // @phpstan-ignore-next-line;
@@ -234,7 +170,7 @@ final class AttendanceService implements AttendanceContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventID']
+                ['externalEventId']
             ),
             options: $options,
             convert: BatchResponseSubscriberVidResponse::class,
@@ -256,52 +192,30 @@ final class AttendanceService implements AttendanceContract
      * - joinedAt
      * - leftAt
      *
-     * @param string $externalEventID
-     * @param list<MarketingEventEmailSubscriber> $inputs List of marketing event details to create or update
-     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
+     * @param array{
+     *   externalEventId: string,
+     *   inputs: list<array{
+     *     email: string,
+     *     interactionDateTime: int,
+     *     contactProperties?: array<string,string>,
+     *     properties?: array<string,string>,
+     *   }>,
+     *   externalAccountId?: string,
+     * }|AttendanceCreateByExternalEventIDAndEmailParams $params
      *
      * @throws APIException
      */
     public function createByExternalEventIDAndEmail(
         string $subscriberState,
-        $externalEventID,
-        $inputs,
-        $externalAccountID = omit,
+        array|AttendanceCreateByExternalEventIDAndEmailParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberEmailResponse {
-        $params = [
-            'externalEventID' => $externalEventID,
-            'inputs' => $inputs,
-            'externalAccountID' => $externalAccountID,
-        ];
-
-        return $this->createByExternalEventIDAndEmailRaw(
-            $subscriberState,
+        [$parsed, $options] = AttendanceCreateByExternalEventIDAndEmailParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createByExternalEventIDAndEmailRaw(
-        string $subscriberState,
-        array $params,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseSubscriberEmailResponse {
-        [
-            $parsed, $options,
-        ] = AttendanceCreateByExternalEventIDAndEmailParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $externalEventID = $parsed['externalEventID'];
-        unset($parsed['externalEventID']);
+        $externalEventID = $parsed['externalEventId'];
+        unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
         // @phpstan-ignore-next-line;
@@ -315,7 +229,7 @@ final class AttendanceService implements AttendanceContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventID']
+                ['externalEventId']
             ),
             options: $options,
             convert: BatchResponseSubscriberEmailResponse::class,

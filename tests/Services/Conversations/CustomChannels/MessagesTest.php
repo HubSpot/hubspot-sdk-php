@@ -3,9 +3,6 @@
 namespace Tests\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
-use HubspotSDK\Conversations\CustomChannels\FileAttachment;
-use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,28 +38,20 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->create(
             'channelId',
-            attachments: [FileAttachment::with(fileID: 'fileId', type: 'FILE')],
-            channelAccountID: 'channelAccountId',
-            integrationThreadID: 'integrationThreadId',
-            messageDirection: 'INCOMING',
-            recipients: [
-                ChannelIntegrationParticipant::with(
-                    deliveryIdentifier: PublicDeliveryIdentifier::with(
-                        type: 'type',
-                        value: 'value'
-                    ),
-                ),
+            [
+                'attachments' => [['fileId' => 'fileId', 'type' => 'FILE']],
+                'channelAccountId' => 'channelAccountId',
+                'integrationThreadId' => 'integrationThreadId',
+                'messageDirection' => 'INCOMING',
+                'recipients' => [
+                    ['deliveryIdentifier' => ['type' => 'type', 'value' => 'value']],
+                ],
+                'senders' => [
+                    ['deliveryIdentifier' => ['type' => 'type', 'value' => 'value']],
+                ],
+                'text' => 'text',
+                'timestamp' => '2019-12-27T18:11:19.117Z',
             ],
-            senders: [
-                ChannelIntegrationParticipant::with(
-                    deliveryIdentifier: PublicDeliveryIdentifier::with(
-                        type: 'type',
-                        value: 'value'
-                    ),
-                ),
-            ],
-            text: 'text',
-            timestamp: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -77,33 +66,32 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->create(
             'channelId',
-            attachments: [
-                FileAttachment::with(fileID: 'fileId', type: 'FILE')
-                    ->withFileUsageType('fileUsageType'),
+            [
+                'attachments' => [
+                    [
+                        'fileId' => 'fileId',
+                        'type' => 'FILE',
+                        'fileUsageType' => 'fileUsageType',
+                    ],
+                ],
+                'channelAccountId' => 'channelAccountId',
+                'integrationThreadId' => 'integrationThreadId',
+                'messageDirection' => 'INCOMING',
+                'recipients' => [
+                    [
+                        'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
+                        'name' => 'name',
+                    ],
+                ],
+                'senders' => [
+                    [
+                        'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
+                        'name' => 'name',
+                    ],
+                ],
+                'text' => 'text',
+                'timestamp' => '2019-12-27T18:11:19.117Z',
             ],
-            channelAccountID: 'channelAccountId',
-            integrationThreadID: 'integrationThreadId',
-            messageDirection: 'INCOMING',
-            recipients: [
-                ChannelIntegrationParticipant::with(
-                    deliveryIdentifier: PublicDeliveryIdentifier::with(
-                        type: 'type',
-                        value: 'value'
-                    ),
-                )
-                    ->withName('name'),
-            ],
-            senders: [
-                ChannelIntegrationParticipant::with(
-                    deliveryIdentifier: PublicDeliveryIdentifier::with(
-                        type: 'type',
-                        value: 'value'
-                    ),
-                )
-                    ->withName('name'),
-            ],
-            text: 'text',
-            timestamp: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -118,8 +106,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
-            channelID: 'channelId',
-            statusType: 'SENT'
+            ['channelId' => 'channelId', 'statusType' => 'SENT']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -134,8 +121,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
-            channelID: 'channelId',
-            statusType: 'SENT'
+            ['channelId' => 'channelId', 'statusType' => 'SENT']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -150,7 +136,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->get(
             'messageId',
-            'channelId'
+            ['channelId' => 'channelId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -165,7 +151,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->get(
             'messageId',
-            'channelId'
+            ['channelId' => 'channelId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

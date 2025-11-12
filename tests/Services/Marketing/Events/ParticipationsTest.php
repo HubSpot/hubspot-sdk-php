@@ -41,7 +41,10 @@ final class ParticipationsTest extends TestCase
             ->marketing
             ->events
             ->participations
-            ->getByExternalAccountAndEventID('externalEventId', 'externalAccountId')
+            ->getByExternalAccountAndEventID(
+                'externalEventId',
+                ['externalAccountId' => 'externalAccountId']
+            )
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -59,7 +62,10 @@ final class ParticipationsTest extends TestCase
             ->marketing
             ->events
             ->participations
-            ->getByExternalAccountAndEventID('externalEventId', 'externalAccountId')
+            ->getByExternalAccountAndEventID(
+                'externalEventId',
+                ['externalAccountId' => 'externalAccountId']
+            )
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -89,7 +95,7 @@ final class ParticipationsTest extends TestCase
             ->marketing
             ->events
             ->participations
-            ->listBreakdownByContact('contactIdentifier')
+            ->listBreakdownByContact('contactIdentifier', [])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -109,7 +115,7 @@ final class ParticipationsTest extends TestCase
             ->participations
             ->listBreakdownByExternalAccountAndEventID(
                 'externalEventId',
-                externalAccountID: 'externalAccountId'
+                ['externalAccountId' => 'externalAccountId']
             )
         ;
 
@@ -130,7 +136,7 @@ final class ParticipationsTest extends TestCase
             ->participations
             ->listBreakdownByExternalAccountAndEventID(
                 'externalEventId',
-                externalAccountID: 'externalAccountId'
+                ['externalAccountId' => 'externalAccountId']
             )
         ;
 
@@ -149,7 +155,7 @@ final class ParticipationsTest extends TestCase
             ->marketing
             ->events
             ->participations
-            ->listBreakdownByID(0)
+            ->listBreakdownByID(0, [])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

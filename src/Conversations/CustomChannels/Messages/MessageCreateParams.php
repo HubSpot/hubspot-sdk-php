@@ -27,15 +27,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type MessageCreateParamsShape = array{
  *   attachments: list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment>,
- *   channelAccountID: string,
- *   integrationThreadID: string,
+ *   channelAccountId: string,
+ *   integrationThreadId: string,
  *   messageDirection: MessageDirection|value-of<MessageDirection>,
  *   recipients: list<ChannelIntegrationParticipant>,
  *   senders: list<ChannelIntegrationParticipant>,
  *   text: string,
  *   timestamp: \DateTimeInterface,
- *   inReplyToID?: string,
- *   integrationIdempotencyID?: string,
+ *   inReplyToId?: string,
+ *   integrationIdempotencyId?: string,
  *   preResolvedContacts?: PreResolvedContacts,
  *   richText?: string,
  * }
@@ -52,11 +52,11 @@ final class MessageCreateParams implements BaseModel
     #[Api(list: Attachment::class)]
     public array $attachments;
 
-    #[Api('channelAccountId')]
-    public string $channelAccountID;
+    #[Api]
+    public string $channelAccountId;
 
-    #[Api('integrationThreadId')]
-    public string $integrationThreadID;
+    #[Api]
+    public string $integrationThreadId;
 
     /** @var value-of<MessageDirection> $messageDirection */
     #[Api(enum: MessageDirection::class)]
@@ -76,11 +76,11 @@ final class MessageCreateParams implements BaseModel
     #[Api]
     public \DateTimeInterface $timestamp;
 
-    #[Api('inReplyToId', optional: true)]
-    public ?string $inReplyToID;
+    #[Api(optional: true)]
+    public ?string $inReplyToId;
 
-    #[Api('integrationIdempotencyId', optional: true)]
-    public ?string $integrationIdempotencyID;
+    #[Api(optional: true)]
+    public ?string $integrationIdempotencyId;
 
     #[Api(optional: true)]
     public ?PreResolvedContacts $preResolvedContacts;
@@ -95,8 +95,8 @@ final class MessageCreateParams implements BaseModel
      * ```
      * MessageCreateParams::with(
      *   attachments: ...,
-     *   channelAccountID: ...,
-     *   integrationThreadID: ...,
+     *   channelAccountId: ...,
+     *   integrationThreadId: ...,
      *   messageDirection: ...,
      *   recipients: ...,
      *   senders: ...,
@@ -136,31 +136,31 @@ final class MessageCreateParams implements BaseModel
      */
     public static function with(
         array $attachments,
-        string $channelAccountID,
-        string $integrationThreadID,
+        string $channelAccountId,
+        string $integrationThreadId,
         MessageDirection|string $messageDirection,
         array $recipients,
         array $senders,
         string $text,
         \DateTimeInterface $timestamp,
-        ?string $inReplyToID = null,
-        ?string $integrationIdempotencyID = null,
+        ?string $inReplyToId = null,
+        ?string $integrationIdempotencyId = null,
         ?PreResolvedContacts $preResolvedContacts = null,
         ?string $richText = null,
     ): self {
         $obj = new self;
 
         $obj->attachments = $attachments;
-        $obj->channelAccountID = $channelAccountID;
-        $obj->integrationThreadID = $integrationThreadID;
+        $obj->channelAccountId = $channelAccountId;
+        $obj->integrationThreadId = $integrationThreadId;
         $obj['messageDirection'] = $messageDirection;
         $obj->recipients = $recipients;
         $obj->senders = $senders;
         $obj->text = $text;
         $obj->timestamp = $timestamp;
 
-        null !== $inReplyToID && $obj->inReplyToID = $inReplyToID;
-        null !== $integrationIdempotencyID && $obj->integrationIdempotencyID = $integrationIdempotencyID;
+        null !== $inReplyToId && $obj->inReplyToId = $inReplyToId;
+        null !== $integrationIdempotencyId && $obj->integrationIdempotencyId = $integrationIdempotencyId;
         null !== $preResolvedContacts && $obj->preResolvedContacts = $preResolvedContacts;
         null !== $richText && $obj->richText = $richText;
 
@@ -181,7 +181,7 @@ final class MessageCreateParams implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj->channelAccountID = $channelAccountID;
+        $obj->channelAccountId = $channelAccountID;
 
         return $obj;
     }
@@ -189,7 +189,7 @@ final class MessageCreateParams implements BaseModel
     public function withIntegrationThreadID(string $integrationThreadID): self
     {
         $obj = clone $this;
-        $obj->integrationThreadID = $integrationThreadID;
+        $obj->integrationThreadId = $integrationThreadID;
 
         return $obj;
     }
@@ -247,7 +247,7 @@ final class MessageCreateParams implements BaseModel
     public function withInReplyToID(string $inReplyToID): self
     {
         $obj = clone $this;
-        $obj->inReplyToID = $inReplyToID;
+        $obj->inReplyToId = $inReplyToID;
 
         return $obj;
     }
@@ -256,7 +256,7 @@ final class MessageCreateParams implements BaseModel
         string $integrationIdempotencyID
     ): self {
         $obj = clone $this;
-        $obj->integrationIdempotencyID = $integrationIdempotencyID;
+        $obj->integrationIdempotencyId = $integrationIdempotencyID;
 
         return $obj;
     }

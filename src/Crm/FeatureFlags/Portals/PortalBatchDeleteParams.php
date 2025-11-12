@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\FeatureFlags\Portals->batchDelete
  *
  * @phpstan-type PortalBatchDeleteParamsShape = array{
- *   appID: int, portalIDs: list<int>
+ *   appId: int, portalIds: list<int>
  * }
  */
 final class PortalBatchDeleteParams implements BaseModel
@@ -25,18 +25,18 @@ final class PortalBatchDeleteParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public int $appID;
+    public int $appId;
 
-    /** @var list<int> $portalIDs */
-    #[Api('portalIds', list: 'int')]
-    public array $portalIDs;
+    /** @var list<int> $portalIds */
+    #[Api(list: 'int')]
+    public array $portalIds;
 
     /**
      * `new PortalBatchDeleteParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PortalBatchDeleteParams::with(appID: ..., portalIDs: ...)
+     * PortalBatchDeleteParams::with(appId: ..., portalIds: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -55,14 +55,14 @@ final class PortalBatchDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<int> $portalIDs
+     * @param list<int> $portalIds
      */
-    public static function with(int $appID, array $portalIDs): self
+    public static function with(int $appId, array $portalIds): self
     {
         $obj = new self;
 
-        $obj->appID = $appID;
-        $obj->portalIDs = $portalIDs;
+        $obj->appId = $appId;
+        $obj->portalIds = $portalIds;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class PortalBatchDeleteParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->appId = $appID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PortalBatchDeleteParams implements BaseModel
     public function withPortalIDs(array $portalIDs): self
     {
         $obj = clone $this;
-        $obj->portalIDs = $portalIDs;
+        $obj->portalIds = $portalIDs;
 
         return $obj;
     }

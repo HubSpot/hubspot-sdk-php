@@ -2,13 +2,7 @@
 
 namespace Tests\Services\Crm\Associations\V4;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
-use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiArchive;
-use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost;
-use HubspotSDK\Crm\Associations\V4\PublicDefaultAssociationMultiPost;
-use HubspotSDK\Crm\Associations\V4\PublicFetchAssociationsBatchRequest;
-use HubspotSDK\PublicObjectID;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -44,18 +38,20 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->create(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociationMultiPost::with(
-                    from: PublicObjectID::with(id: '37295'),
-                    to: PublicObjectID::with(id: '37295'),
-                    types: [
-                        AssociationSpec::with(
-                            associationCategory: 'HUBSPOT_DEFINED',
-                            associationTypeID: 0
-                        ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [
+                    [
+                        'from' => ['id' => '37295'],
+                        'to' => ['id' => '37295'],
+                        'types' => [
+                            [
+                                'associationCategory' => 'HUBSPOT_DEFINED',
+                                'associationTypeId' => 0,
+                            ],
+                        ],
                     ],
-                ),
+                ],
             ],
         );
 
@@ -71,18 +67,20 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->create(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociationMultiPost::with(
-                    from: PublicObjectID::with(id: '37295'),
-                    to: PublicObjectID::with(id: '37295'),
-                    types: [
-                        AssociationSpec::with(
-                            associationCategory: 'HUBSPOT_DEFINED',
-                            associationTypeID: 0
-                        ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [
+                    [
+                        'from' => ['id' => '37295'],
+                        'to' => ['id' => '37295'],
+                        'types' => [
+                            [
+                                'associationCategory' => 'HUBSPOT_DEFINED',
+                                'associationTypeId' => 0,
+                            ],
+                        ],
                     ],
-                ),
+                ],
             ],
         );
 
@@ -98,12 +96,11 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->delete(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociationMultiArchive::with(
-                    from: PublicObjectID::with(id: '37295'),
-                    to: [PublicObjectID::with(id: '37295')],
-                ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [
+                    ['from' => ['id' => '37295'], 'to' => [['id' => '37295']]],
+                ],
             ],
         );
 
@@ -119,12 +116,11 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->delete(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociationMultiArchive::with(
-                    from: PublicObjectID::with(id: '37295'),
-                    to: [PublicObjectID::with(id: '37295')],
-                ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [
+                    ['from' => ['id' => '37295'], 'to' => [['id' => '37295']]],
+                ],
             ],
         );
 
@@ -140,12 +136,9 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->createDefault(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicDefaultAssociationMultiPost::with(
-                    from: PublicObjectID::with(id: '37295'),
-                    to: PublicObjectID::with(id: '37295'),
-                ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [['from' => ['id' => '37295'], 'to' => ['id' => '37295']]],
             ],
         );
 
@@ -161,12 +154,9 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->createDefault(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicDefaultAssociationMultiPost::with(
-                    from: PublicObjectID::with(id: '37295'),
-                    to: PublicObjectID::with(id: '37295'),
-                ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [['from' => ['id' => '37295'], 'to' => ['id' => '37295']]],
             ],
         );
 
@@ -182,18 +172,20 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->deleteLabels(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociationMultiPost::with(
-                    from: PublicObjectID::with(id: '37295'),
-                    to: PublicObjectID::with(id: '37295'),
-                    types: [
-                        AssociationSpec::with(
-                            associationCategory: 'HUBSPOT_DEFINED',
-                            associationTypeID: 0
-                        ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [
+                    [
+                        'from' => ['id' => '37295'],
+                        'to' => ['id' => '37295'],
+                        'types' => [
+                            [
+                                'associationCategory' => 'HUBSPOT_DEFINED',
+                                'associationTypeId' => 0,
+                            ],
+                        ],
                     ],
-                ),
+                ],
             ],
         );
 
@@ -209,18 +201,20 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->deleteLabels(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicAssociationMultiPost::with(
-                    from: PublicObjectID::with(id: '37295'),
-                    to: PublicObjectID::with(id: '37295'),
-                    types: [
-                        AssociationSpec::with(
-                            associationCategory: 'HUBSPOT_DEFINED',
-                            associationTypeID: 0
-                        ),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [
+                    [
+                        'from' => ['id' => '37295'],
+                        'to' => ['id' => '37295'],
+                        'types' => [
+                            [
+                                'associationCategory' => 'HUBSPOT_DEFINED',
+                                'associationTypeId' => 0,
+                            ],
+                        ],
                     ],
-                ),
+                ],
             ],
         );
 
@@ -236,8 +230,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->get(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [PublicFetchAssociationsBatchRequest::with(id: 'id')],
+            ['fromObjectType' => 'fromObjectType', 'inputs' => [['id' => 'id']]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -252,9 +245,9 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->get(
             'toObjectType',
-            fromObjectType: 'fromObjectType',
-            inputs: [
-                PublicFetchAssociationsBatchRequest::with(id: 'id')->withAfter('after'),
+            [
+                'fromObjectType' => 'fromObjectType',
+                'inputs' => [['id' => 'id', 'after' => 'after']],
             ],
         );
 

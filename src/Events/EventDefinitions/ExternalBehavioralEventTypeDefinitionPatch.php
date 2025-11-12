@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExternalBehavioralEventTypeDefinitionPatchShape = array{
- *   description?: string, label?: string
+ *   description?: string|null, label?: string|null
  * }
  */
 final class ExternalBehavioralEventTypeDefinitionPatch implements BaseModel

@@ -17,10 +17,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   archived: bool,
  *   attachments: list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment>,
- *   channelAccountID: string,
- *   channelID: string,
+ *   channelAccountId: string,
+ *   channelId: string,
  *   client: PublicClient,
- *   conversationsThreadID: string,
+ *   conversationsThreadId: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   direction: value-of<Direction>,
@@ -29,11 +29,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   text: string,
  *   truncationStatus: value-of<TruncationStatus>,
  *   type: value-of<Type>,
- *   inReplyToID?: string,
- *   richText?: string,
- *   status?: PublicMessageStatus,
- *   subject?: string,
- *   updatedAt?: \DateTimeInterface,
+ *   inReplyToId?: string|null,
+ *   richText?: string|null,
+ *   status?: PublicMessageStatus|null,
+ *   subject?: string|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class ConversationsPublicConversationsMessage implements BaseModel
@@ -53,17 +53,17 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     #[Api(list: Attachment::class)]
     public array $attachments;
 
-    #[Api('channelAccountId')]
-    public string $channelAccountID;
+    #[Api]
+    public string $channelAccountId;
 
-    #[Api('channelId')]
-    public string $channelID;
+    #[Api]
+    public string $channelId;
 
     #[Api]
     public PublicClient $client;
 
-    #[Api('conversationsThreadId')]
-    public string $conversationsThreadID;
+    #[Api]
+    public string $conversationsThreadId;
 
     #[Api]
     public \DateTimeInterface $createdAt;
@@ -94,8 +94,8 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     #[Api(enum: Type::class)]
     public string $type;
 
-    #[Api('inReplyToId', optional: true)]
-    public ?string $inReplyToID;
+    #[Api(optional: true)]
+    public ?string $inReplyToId;
 
     #[Api(optional: true)]
     public ?string $richText;
@@ -118,10 +118,10 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      *   id: ...,
      *   archived: ...,
      *   attachments: ...,
-     *   channelAccountID: ...,
-     *   channelID: ...,
+     *   channelAccountId: ...,
+     *   channelId: ...,
      *   client: ...,
-     *   conversationsThreadID: ...,
+     *   conversationsThreadId: ...,
      *   createdAt: ...,
      *   createdBy: ...,
      *   direction: ...,
@@ -175,10 +175,10 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         string $id,
         bool $archived,
         array $attachments,
-        string $channelAccountID,
-        string $channelID,
+        string $channelAccountId,
+        string $channelId,
         PublicClient $client,
-        string $conversationsThreadID,
+        string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
         Direction|string $direction,
@@ -187,7 +187,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         string $text,
         TruncationStatus|string $truncationStatus,
         Type|string $type = 'MESSAGE',
-        ?string $inReplyToID = null,
+        ?string $inReplyToId = null,
         ?string $richText = null,
         ?PublicMessageStatus $status = null,
         ?string $subject = null,
@@ -198,10 +198,10 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         $obj->id = $id;
         $obj->archived = $archived;
         $obj->attachments = $attachments;
-        $obj->channelAccountID = $channelAccountID;
-        $obj->channelID = $channelID;
+        $obj->channelAccountId = $channelAccountId;
+        $obj->channelId = $channelId;
         $obj->client = $client;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadId;
         $obj->createdAt = $createdAt;
         $obj->createdBy = $createdBy;
         $obj['direction'] = $direction;
@@ -211,7 +211,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         $obj['truncationStatus'] = $truncationStatus;
         $obj['type'] = $type;
 
-        null !== $inReplyToID && $obj->inReplyToID = $inReplyToID;
+        null !== $inReplyToId && $obj->inReplyToId = $inReplyToId;
         null !== $richText && $obj->richText = $richText;
         null !== $status && $obj->status = $status;
         null !== $subject && $obj->subject = $subject;
@@ -250,7 +250,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj->channelAccountID = $channelAccountID;
+        $obj->channelAccountId = $channelAccountID;
 
         return $obj;
     }
@@ -258,7 +258,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj->channelID = $channelID;
+        $obj->channelId = $channelID;
 
         return $obj;
     }
@@ -275,7 +275,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadID;
 
         return $obj;
     }
@@ -363,7 +363,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withInReplyToID(string $inReplyToID): self
     {
         $obj = clone $this;
-        $obj->inReplyToID = $inReplyToID;
+        $obj->inReplyToId = $inReplyToID;
 
         return $obj;
     }

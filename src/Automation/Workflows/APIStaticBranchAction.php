@@ -11,12 +11,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIStaticBranchActionShape = array{
- *   actionID: string,
+ *   actionId: string,
  *   inputValue: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue,
  *   staticBranches: list<APIStaticBranch>,
  *   type: value-of<Type>,
- *   defaultBranch?: APIConnection,
- *   defaultBranchName?: string,
+ *   defaultBranch?: APIConnection|null,
+ *   defaultBranchName?: string|null,
  * }
  */
 final class APIStaticBranchAction implements BaseModel
@@ -24,8 +24,8 @@ final class APIStaticBranchAction implements BaseModel
     /** @use SdkModel<APIStaticBranchActionShape> */
     use SdkModel;
 
-    #[Api('actionId')]
-    public string $actionID;
+    #[Api]
+    public string $actionId;
 
     #[Api]
     public APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue;
@@ -50,7 +50,7 @@ final class APIStaticBranchAction implements BaseModel
      * To enforce required parameters use
      * ```
      * APIStaticBranchAction::with(
-     *   actionID: ..., inputValue: ..., staticBranches: ..., type: ...
+     *   actionId: ..., inputValue: ..., staticBranches: ..., type: ...
      * )
      * ```
      *
@@ -78,7 +78,7 @@ final class APIStaticBranchAction implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $actionID,
+        string $actionId,
         APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue,
         array $staticBranches,
         Type|string $type = 'STATIC_BRANCH',
@@ -87,7 +87,7 @@ final class APIStaticBranchAction implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionId;
         $obj->inputValue = $inputValue;
         $obj->staticBranches = $staticBranches;
         $obj['type'] = $type;
@@ -101,7 +101,7 @@ final class APIStaticBranchAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionID = $actionID;
+        $obj->actionId = $actionID;
 
         return $obj;
     }

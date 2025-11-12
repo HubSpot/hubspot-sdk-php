@@ -14,10 +14,10 @@ use HubspotSDK\PublicFormSubmissionOnPageFilter\Operator;
  * @phpstan-type PublicFormSubmissionOnPageFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operator: value-of<Operator>,
- *   pageID: string,
- *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
- *   formID?: string,
- *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   pageId: string,
+ *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   formId?: string|null,
+ *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
 final class PublicFormSubmissionOnPageFilter implements BaseModel
@@ -33,14 +33,14 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
     #[Api(enum: Operator::class)]
     public string $operator;
 
-    #[Api('pageId')]
-    public string $pageID;
+    #[Api]
+    public string $pageId;
 
     #[Api(optional: true)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
-    #[Api('formId', optional: true)]
-    public ?string $formID;
+    #[Api(optional: true)]
+    public ?string $formId;
 
     #[Api(optional: true)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
@@ -51,7 +51,7 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicFormSubmissionOnPageFilter::with(
-     *   filterType: ..., operator: ..., pageID: ...
+     *   filterType: ..., operator: ..., pageId: ...
      * )
      * ```
      *
@@ -79,20 +79,20 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
      */
     public static function with(
         Operator|string $operator,
-        string $pageID,
+        string $pageId,
         FilterType|string $filterType = 'FORM_SUBMISSION_ON_PAGE',
         PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
-        ?string $formID = null,
+        ?string $formId = null,
         PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
         $obj = new self;
 
         $obj['filterType'] = $filterType;
         $obj['operator'] = $operator;
-        $obj->pageID = $pageID;
+        $obj->pageId = $pageId;
 
         null !== $coalescingRefineBy && $obj->coalescingRefineBy = $coalescingRefineBy;
-        null !== $formID && $obj->formID = $formID;
+        null !== $formId && $obj->formId = $formId;
         null !== $pruningRefineBy && $obj->pruningRefineBy = $pruningRefineBy;
 
         return $obj;
@@ -123,7 +123,7 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
     public function withPageID(string $pageID): self
     {
         $obj = clone $this;
-        $obj->pageID = $pageID;
+        $obj->pageId = $pageID;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
     public function withFormID(string $formID): self
     {
         $obj = clone $this;
-        $obj->formID = $formID;
+        $obj->formId = $formID;
 
         return $obj;
     }

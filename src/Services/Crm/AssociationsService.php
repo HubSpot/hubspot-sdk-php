@@ -13,17 +13,17 @@ use HubspotSDK\Services\Crm\Associations\V4Service;
 final class AssociationsService implements AssociationsContract
 {
     /**
-     * @@api
+     * @api
      */
     public BatchService $batch;
 
     /**
-     * @@api
+     * @api
      */
     public SchemaService $schema;
 
     /**
-     * @@api
+     * @api
      */
     public V4Service $v4;
 

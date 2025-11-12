@@ -11,12 +11,12 @@ use HubspotSDK\Services\Files\FoldersService;
 final class FilesService implements FilesContract
 {
     /**
-     * @@api
+     * @api
      */
     public Files\FilesService $files;
 
     /**
-     * @@api
+     * @api
      */
     public FoldersService $folders;
 

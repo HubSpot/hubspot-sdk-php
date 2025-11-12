@@ -11,7 +11,9 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type APICollectionResponseJoinTimeAndRecordIDShape = array{
- *   results: list<JoinTimeAndRecordID>, paging?: EmailsPaging, total?: int
+ *   results: list<JoinTimeAndRecordID>,
+ *   paging?: EmailsPaging|null,
+ *   total?: int|null,
  * }
  */
 final class APICollectionResponseJoinTimeAndRecordID implements BaseModel

@@ -15,8 +15,6 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class ChannelAccountsService implements ChannelAccountsContract
 {
     /**
@@ -29,46 +27,25 @@ final class ChannelAccountsService implements ChannelAccountsContract
      *
      * Create a new account for a channel. Multiple accounts can communicate over a single channel using different delivery identifiers.
      *
-     * @param bool $authorized
-     * @param string $inboxID
-     * @param string $name
-     * @param PublicDeliveryIdentifier $deliveryIdentifier
+     * @param array{
+     *   authorized: bool,
+     *   inboxId: string,
+     *   name: string,
+     *   deliveryIdentifier?: array{
+     *     type: string, value: string
+     *   }|PublicDeliveryIdentifier,
+     * }|ChannelAccountCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         string $channelID,
-        $authorized,
-        $inboxID,
-        $name,
-        $deliveryIdentifier = omit,
+        array|ChannelAccountCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicChannelAccount {
-        $params = [
-            'authorized' => $authorized,
-            'inboxID' => $inboxID,
-            'name' => $name,
-            'deliveryIdentifier' => $deliveryIdentifier,
-        ];
-
-        return $this->createRaw($channelID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        string $channelID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): ConversationsPublicChannelAccount {
         [$parsed, $options] = ChannelAccountCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -88,44 +65,23 @@ final class ChannelAccountsService implements ChannelAccountsContract
      *
      * This API is used to update the name of the channel account and it's isAuthorized status. Setting to isAuthorized flag to False disables the channel account.
      *
-     * @param string $channelID
-     * @param bool $authorized
-     * @param string $name
+     * @param array{
+     *   channelId: string, authorized?: bool, name?: string
+     * }|ChannelAccountUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $channelAccountID,
-        $channelID,
-        $authorized = omit,
-        $name = omit,
-        ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicChannelAccount {
-        $params = [
-            'channelID' => $channelID, 'authorized' => $authorized, 'name' => $name,
-        ];
-
-        return $this->updateRaw($channelAccountID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $channelAccountID,
-        array $params,
+        array|ChannelAccountUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicChannelAccount {
         [$parsed, $options] = ChannelAccountUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $channelID = $parsed['channelID'];
-        unset($parsed['channelID']);
+        $channelID = $parsed['channelId'];
+        unset($parsed['channelId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -135,7 +91,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
                 $channelID,
                 $channelAccountID,
             ],
-            body: (object) array_diff_key($parsed, ['channelID']),
+            body: (object) array_diff_key($parsed, ['channelId']),
             options: $options,
             convert: ConversationsPublicChannelAccount::class,
         );
@@ -168,38 +124,21 @@ final class ChannelAccountsService implements ChannelAccountsContract
      *
      * Retrieve the details for a specific channel account. This contains all the metadata about your channel account, including its channel, associated inbox id, and delivery identifier information.
      *
-     * @param string $channelID
+     * @param array{channelId: string}|ChannelAccountGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $channelAccountID,
-        $channelID,
-        ?RequestOptions $requestOptions = null
-    ): ConversationsPublicChannelAccount {
-        $params = ['channelID' => $channelID];
-
-        return $this->getRaw($channelAccountID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getRaw(
-        string $channelAccountID,
-        array $params,
+        array|ChannelAccountGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicChannelAccount {
         [$parsed, $options] = ChannelAccountGetParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $channelID = $parsed['channelID'];
-        unset($parsed['channelID']);
+        $channelID = $parsed['channelId'];
+        unset($parsed['channelId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

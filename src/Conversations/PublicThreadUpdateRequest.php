@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicThreadUpdateRequestShape = array{
- *   archived?: bool, status?: value-of<Status>
+ *   archived?: bool|null, status?: value-of<Status>|null
  * }
  */
 final class PublicThreadUpdateRequest implements BaseModel

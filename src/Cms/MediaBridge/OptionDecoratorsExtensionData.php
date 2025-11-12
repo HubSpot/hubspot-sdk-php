@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type OptionDecoratorsExtensionDataShape = array{
- *   optionDecorators: array<string, OptionDecorations>,
+ *   optionDecorators: array<string,OptionDecorations>,
  *   optionDecoratorStyle: string,
  * }
  */
@@ -19,7 +19,7 @@ final class OptionDecoratorsExtensionData implements BaseModel
     /** @use SdkModel<OptionDecoratorsExtensionDataShape> */
     use SdkModel;
 
-    /** @var array<string, OptionDecorations> $optionDecorators */
+    /** @var array<string,OptionDecorations> $optionDecorators */
     #[Api(map: OptionDecorations::class)]
     public array $optionDecorators;
 
@@ -54,7 +54,7 @@ final class OptionDecoratorsExtensionData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, OptionDecorations> $optionDecorators
+     * @param array<string,OptionDecorations> $optionDecorators
      */
     public static function with(
         array $optionDecorators,
@@ -69,7 +69,7 @@ final class OptionDecoratorsExtensionData implements BaseModel
     }
 
     /**
-     * @param array<string, OptionDecorations> $optionDecorators
+     * @param array<string,OptionDecorations> $optionDecorators
      */
     public function withOptionDecorators(array $optionDecorators): self
     {

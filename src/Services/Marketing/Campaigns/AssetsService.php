@@ -13,8 +13,6 @@ use HubspotSDK\Marketing\Campaigns\CollectionResponsePublicCampaignAssetForwardP
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\AssetsContract;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class AssetsService implements AssetsContract
 {
     /**
@@ -29,37 +27,18 @@ final class AssetsService implements AssetsContract
      *
      * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
      *
-     * @param string $campaignGuid
-     * @param string $assetType
+     * @param array{campaignGuid: string, assetType: string}|AssetUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $assetID,
-        $campaignGuid,
-        $assetType,
+        array|AssetUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['campaignGuid' => $campaignGuid, 'assetType' => $assetType];
-
-        return $this->updateRaw($assetID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $assetID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = AssetUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
@@ -86,53 +65,24 @@ final class AssetsService implements AssetsContract
      * This endpoint lists all assets of the campaign by asset type. The assetType parameter is required, and each request can only fetch assets of a single type.
      * Asset metrics can also be fetched along with the assets; they are available only if start and end dates are provided.
      *
-     * @param string $campaignGuid
-     * @param string $after A cursor for pagination. If provided, the results will start after the given cursor.
-     * Example: NTI1Cg%3D%3D
-     * @param string $endDate End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
-     * If not provided, no asset metrics will be fetched.
-     * @param string $limit The maximum number of results to return.
-     * Default: 10
-     * @param string $startDate Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
-     * If not provided, no asset metrics will be fetched.
+     * @param array{
+     *   campaignGuid: string,
+     *   after?: string,
+     *   endDate?: string,
+     *   limit?: string,
+     *   startDate?: string,
+     * }|AssetListParams $params
      *
      * @throws APIException
      */
     public function list(
         string $assetType,
-        $campaignGuid,
-        $after = omit,
-        $endDate = omit,
-        $limit = omit,
-        $startDate = omit,
+        array|AssetListParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePublicCampaignAssetForwardPaging {
-        $params = [
-            'campaignGuid' => $campaignGuid,
-            'after' => $after,
-            'endDate' => $endDate,
-            'limit' => $limit,
-            'startDate' => $startDate,
-        ];
-
-        return $this->listRaw($assetType, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listRaw(
-        string $assetType,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicCampaignAssetForwardPaging {
         [$parsed, $options] = AssetListParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
@@ -155,37 +105,18 @@ final class AssetsService implements AssetsContract
      * Disassociate a specified asset from a campaign.
      * Important: Currently, only the following asset types can be associated and disassociated via the API: Forms, Static lists, External website pages
      *
-     * @param string $campaignGuid
-     * @param string $assetType
+     * @param array{campaignGuid: string, assetType: string}|AssetDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $assetID,
-        $campaignGuid,
-        $assetType,
+        array|AssetDeleteParams $params,
         ?RequestOptions $requestOptions = null,
-    ): mixed {
-        $params = ['campaignGuid' => $campaignGuid, 'assetType' => $assetType];
-
-        return $this->deleteRaw($assetID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $assetID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): mixed {
         [$parsed, $options] = AssetDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);

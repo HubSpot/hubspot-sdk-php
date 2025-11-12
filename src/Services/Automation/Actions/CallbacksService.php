@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
 use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteBatchParams;
 use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams;
 use HubspotSDK\Client;
@@ -24,35 +23,18 @@ final class CallbacksService implements CallbacksContract
      *
      * Complete a specific blocked action execution by ID.
      *
-     * @param array<string, string> $outputFields
+     * @param array{outputFields: array<string,string>}|CallbackCompleteParams $params
      *
      * @throws APIException
      */
     public function complete(
         string $callbackID,
-        $outputFields,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['outputFields' => $outputFields];
-
-        return $this->completeRaw($callbackID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function completeRaw(
-        string $callbackID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|CallbackCompleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = CallbackCompleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -70,33 +52,19 @@ final class CallbacksService implements CallbacksContract
      *
      * Complete a batch of blocked action executions.
      *
-     * @param list<CallbackCompletionBatchRequest> $inputs
+     * @param array{
+     *   inputs: list<array{callbackId: string, outputFields: array<string,string>}>
+     * }|CallbackCompleteBatchParams $params
      *
      * @throws APIException
      */
     public function completeBatch(
-        $inputs,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['inputs' => $inputs];
-
-        return $this->completeBatchRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function completeBatchRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|CallbackCompleteBatchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = CallbackCompleteBatchParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

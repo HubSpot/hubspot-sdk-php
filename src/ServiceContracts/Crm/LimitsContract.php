@@ -11,63 +11,36 @@ use HubspotSDK\Crm\Limits\CollectionResponseAssociationLabelLimitResponseNoPagin
 use HubspotSDK\Crm\Limits\CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging;
 use HubspotSDK\Crm\Limits\CustomObjectLimitResponse;
 use HubspotSDK\Crm\Limits\CustomPropertyLimitResponse;
+use HubspotSDK\Crm\Limits\LimitGetAssociationLabelLimitsParams;
+use HubspotSDK\Crm\Limits\LimitGetAssociationRecordsLimitsByObjectTypeParams;
 use HubspotSDK\Crm\Limits\PipelineLimitResponse;
 use HubspotSDK\Crm\Limits\RecordLimitResponse;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface LimitsContract
 {
     /**
      * @api
      *
-     * @param string $fromObjectTypeID
-     * @param string $toObjectTypeID
+     * @param array<mixed>|LimitGetAssociationLabelLimitsParams $params
      *
      * @throws APIException
      */
     public function getAssociationLabelLimits(
-        $fromObjectTypeID = omit,
-        $toObjectTypeID = omit,
+        array|LimitGetAssociationLabelLimitsParams $params,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseAssociationLabelLimitResponseNoPaging;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getAssociationLabelLimitsRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseAssociationLabelLimitResponseNoPaging;
-
-    /**
-     * @api
-     *
-     * @param string $fromObjectTypeID
+     * @param array<mixed>|LimitGetAssociationRecordsLimitsByObjectTypeParams $params
      *
      * @throws APIException
      */
     public function getAssociationRecordsLimitsByObjectType(
         string $toObjectTypeID,
-        $fromObjectTypeID,
-        ?RequestOptions $requestOptions = null,
-    ): AssociationRecordLimitResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function getAssociationRecordsLimitsByObjectTypeRaw(
-        string $toObjectTypeID,
-        array $params,
+        array|LimitGetAssociationRecordsLimitsByObjectTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssociationRecordLimitResponse;
 

@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type ObjectPropertyShape = array{propname?: mixed}
+ * @phpstan-type ObjectPropertyShape = array{_propname_?: mixed}
  */
 final class ObjectProperty implements BaseModel
 {
@@ -20,7 +20,7 @@ final class ObjectProperty implements BaseModel
      * Instead of retrieving event data for a specific object by its ID, you can specify a unique identifier property. For contacts, you can use the `email` property. (e.g., `objectProperty.email=name@domain.com`).
      */
     #[Api('{propname}', optional: true)]
-    public mixed $propname;
+    public mixed $_propname_;
 
     public function __construct()
     {
@@ -32,11 +32,11 @@ final class ObjectProperty implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(mixed $propname = null): self
+    public static function with(mixed $_propname_ = null): self
     {
         $obj = new self;
 
-        null !== $propname && $obj->propname = $propname;
+        null !== $_propname_ && $obj->_propname_ = $_propname_;
 
         return $obj;
     }
@@ -47,7 +47,7 @@ final class ObjectProperty implements BaseModel
     public function withPropname(mixed $propname): self
     {
         $obj = clone $this;
-        $obj->propname = $propname;
+        $obj->_propname_ = $propname;
 
         return $obj;
     }

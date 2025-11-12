@@ -5,67 +5,37 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\Extensions\Calling;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettings\ChannelConnectionSettingCreateParams;
+use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettings\ChannelConnectionSettingUpdateParams;
 use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
 use HubspotSDK\RequestOptions;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 interface ChannelConnectionSettingsContract
 {
     /**
      * @api
      *
-     * @param bool $isReady
-     * @param string $url
+     * @param array<mixed>|ChannelConnectionSettingCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        $isReady,
-        $url,
-        ?RequestOptions $requestOptions = null
-    ): ChannelConnectionSettingsResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): ChannelConnectionSettingsResponse;
-
-    /**
-     * @api
-     *
-     * @param bool $isReady
-     * @param string $url
-     *
-     * @throws APIException
-     */
-    public function update(
-        int $appID,
-        $isReady = omit,
-        $url = omit,
+        array|ChannelConnectionSettingCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): ChannelConnectionSettingsResponse;
 
     /**
      * @api
      *
-     * @param array<string, mixed> $params
+     * @param array<mixed>|ChannelConnectionSettingUpdateParams $params
      *
      * @throws APIException
      */
-    public function updateRaw(
+    public function update(
         int $appID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|ChannelConnectionSettingUpdateParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ChannelConnectionSettingsResponse;
 
     /**

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Marketing\Campaigns->create
  *
  * @phpstan-type CampaignCreateParamsShape = array{
- *   properties: array<string, string>
+ *   properties: array<string,string>
  * }
  */
 final class CampaignCreateParams implements BaseModel
@@ -24,7 +24,7 @@ final class CampaignCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var array<string, string> $properties */
+    /** @var array<string,string> $properties */
     #[Api(map: 'string')]
     public array $properties;
 
@@ -52,7 +52,7 @@ final class CampaignCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(array $properties): self
     {
@@ -64,7 +64,7 @@ final class CampaignCreateParams implements BaseModel
     }
 
     /**
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

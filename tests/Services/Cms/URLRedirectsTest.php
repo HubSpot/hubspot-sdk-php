@@ -36,11 +36,11 @@ final class URLRedirectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->urlRedirects->create(
-            destination: 'destination',
-            redirectStyle: 0,
-            routePrefix: 'routePrefix'
-        );
+        $result = $this->client->cms->urlRedirects->create([
+            'destination' => 'destination',
+            'redirectStyle' => 0,
+            'routePrefix' => 'routePrefix',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -52,11 +52,11 @@ final class URLRedirectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->urlRedirects->create(
-            destination: 'destination',
-            redirectStyle: 0,
-            routePrefix: 'routePrefix'
-        );
+        $result = $this->client->cms->urlRedirects->create([
+            'destination' => 'destination',
+            'redirectStyle' => 0,
+            'routePrefix' => 'routePrefix',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -70,17 +70,19 @@ final class URLRedirectsTest extends TestCase
 
         $result = $this->client->cms->urlRedirects->update(
             'urlRedirectId',
-            id: 'id',
-            destination: 'destination',
-            isMatchFullURL: true,
-            isMatchQueryString: true,
-            isOnlyAfterNotFound: true,
-            isPattern: true,
-            isProtocolAgnostic: true,
-            isTrailingSlashOptional: true,
-            precedence: 0,
-            redirectStyle: 0,
-            routePrefix: 'routePrefix',
+            [
+                'id' => 'id',
+                'destination' => 'destination',
+                'isMatchFullUrl' => true,
+                'isMatchQueryString' => true,
+                'isOnlyAfterNotFound' => true,
+                'isPattern' => true,
+                'isProtocolAgnostic' => true,
+                'isTrailingSlashOptional' => true,
+                'precedence' => 0,
+                'redirectStyle' => 0,
+                'routePrefix' => 'routePrefix',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -95,17 +97,19 @@ final class URLRedirectsTest extends TestCase
 
         $result = $this->client->cms->urlRedirects->update(
             'urlRedirectId',
-            id: 'id',
-            destination: 'destination',
-            isMatchFullURL: true,
-            isMatchQueryString: true,
-            isOnlyAfterNotFound: true,
-            isPattern: true,
-            isProtocolAgnostic: true,
-            isTrailingSlashOptional: true,
-            precedence: 0,
-            redirectStyle: 0,
-            routePrefix: 'routePrefix',
+            [
+                'id' => 'id',
+                'destination' => 'destination',
+                'isMatchFullUrl' => true,
+                'isMatchQueryString' => true,
+                'isOnlyAfterNotFound' => true,
+                'isPattern' => true,
+                'isProtocolAgnostic' => true,
+                'isTrailingSlashOptional' => true,
+                'precedence' => 0,
+                'redirectStyle' => 0,
+                'routePrefix' => 'routePrefix',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -118,7 +122,7 @@ final class URLRedirectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->urlRedirects->list();
+        $result = $this->client->cms->urlRedirects->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

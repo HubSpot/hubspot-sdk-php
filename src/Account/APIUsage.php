@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   fetchStatus: value-of<FetchStatus>,
  *   name: string,
  *   usageLimit: int,
- *   resetsAt?: \DateTimeInterface,
+ *   resetsAt?: \DateTimeInterface|null,
  * }
  */
 final class APIUsage implements BaseModel

@@ -10,8 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicBatchMigrationMappingShape = array{
- *   legacyListIDsToIDsMapping: list<PublicMigrationMapping>,
- *   missingLegacyListIDs: list<string>,
+ *   legacyListIdsToIdsMapping: list<PublicMigrationMapping>,
+ *   missingLegacyListIds: list<string>,
  * }
  */
 final class PublicBatchMigrationMapping implements BaseModel
@@ -19,17 +19,17 @@ final class PublicBatchMigrationMapping implements BaseModel
     /** @use SdkModel<PublicBatchMigrationMappingShape> */
     use SdkModel;
 
-    /** @var list<PublicMigrationMapping> $legacyListIDsToIDsMapping */
-    #[Api('legacyListIdsToIdsMapping', list: PublicMigrationMapping::class)]
-    public array $legacyListIDsToIDsMapping;
+    /** @var list<PublicMigrationMapping> $legacyListIdsToIdsMapping */
+    #[Api(list: PublicMigrationMapping::class)]
+    public array $legacyListIdsToIdsMapping;
 
     /**
      * A list of legacy list ids that were passed in but not found. It will be empty if no id's are missing.
      *
-     * @var list<string> $missingLegacyListIDs
+     * @var list<string> $missingLegacyListIds
      */
-    #[Api('missingLegacyListIds', list: 'string')]
-    public array $missingLegacyListIDs;
+    #[Api(list: 'string')]
+    public array $missingLegacyListIds;
 
     /**
      * `new PublicBatchMigrationMapping()` is missing required properties by the API.
@@ -37,7 +37,7 @@ final class PublicBatchMigrationMapping implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicBatchMigrationMapping::with(
-     *   legacyListIDsToIDsMapping: ..., missingLegacyListIDs: ...
+     *   legacyListIdsToIdsMapping: ..., missingLegacyListIds: ...
      * )
      * ```
      *
@@ -59,17 +59,17 @@ final class PublicBatchMigrationMapping implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicMigrationMapping> $legacyListIDsToIDsMapping
-     * @param list<string> $missingLegacyListIDs
+     * @param list<PublicMigrationMapping> $legacyListIdsToIdsMapping
+     * @param list<string> $missingLegacyListIds
      */
     public static function with(
-        array $legacyListIDsToIDsMapping,
-        array $missingLegacyListIDs
+        array $legacyListIdsToIdsMapping,
+        array $missingLegacyListIds
     ): self {
         $obj = new self;
 
-        $obj->legacyListIDsToIDsMapping = $legacyListIDsToIDsMapping;
-        $obj->missingLegacyListIDs = $missingLegacyListIDs;
+        $obj->legacyListIdsToIdsMapping = $legacyListIdsToIdsMapping;
+        $obj->missingLegacyListIds = $missingLegacyListIds;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PublicBatchMigrationMapping implements BaseModel
         array $legacyListIDsToIDsMapping
     ): self {
         $obj = clone $this;
-        $obj->legacyListIDsToIDsMapping = $legacyListIDsToIDsMapping;
+        $obj->legacyListIdsToIdsMapping = $legacyListIDsToIDsMapping;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class PublicBatchMigrationMapping implements BaseModel
     public function withMissingLegacyListIDs(array $missingLegacyListIDs): self
     {
         $obj = clone $this;
-        $obj->missingLegacyListIDs = $missingLegacyListIDs;
+        $obj->missingLegacyListIds = $missingLegacyListIDs;
 
         return $obj;
     }

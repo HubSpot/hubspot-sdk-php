@@ -11,15 +11,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicActionDefinitionPatchShape = array{
- *   actionURL?: string,
- *   executionRules?: list<PublicExecutionTranslationRule>,
- *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>,
- *   inputFields?: list<InputFieldDefinition>,
- *   labels?: array<string, PublicActionLabels>,
- *   objectRequestOptions?: PublicObjectRequestOptions,
- *   objectTypes?: list<string>,
- *   outputFields?: list<OutputFieldDefinition>,
- *   published?: bool,
+ *   actionUrl?: string|null,
+ *   executionRules?: list<PublicExecutionTranslationRule>|null,
+ *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
+ *   inputFields?: list<InputFieldDefinition>|null,
+ *   labels?: array<string,PublicActionLabels>|null,
+ *   objectRequestOptions?: PublicObjectRequestOptions|null,
+ *   objectTypes?: list<string>|null,
+ *   outputFields?: list<OutputFieldDefinition>|null,
+ *   published?: bool|null,
  * }
  */
 final class PublicActionDefinitionPatch implements BaseModel
@@ -27,8 +27,8 @@ final class PublicActionDefinitionPatch implements BaseModel
     /** @use SdkModel<PublicActionDefinitionPatchShape> */
     use SdkModel;
 
-    #[Api('actionUrl', optional: true)]
-    public ?string $actionURL;
+    #[Api(optional: true)]
+    public ?string $actionUrl;
 
     /** @var list<PublicExecutionTranslationRule>|null $executionRules */
     #[Api(list: PublicExecutionTranslationRule::class, optional: true)]
@@ -44,7 +44,7 @@ final class PublicActionDefinitionPatch implements BaseModel
     #[Api(list: InputFieldDefinition::class, optional: true)]
     public ?array $inputFields;
 
-    /** @var array<string, PublicActionLabels>|null $labels */
+    /** @var array<string,PublicActionLabels>|null $labels */
     #[Api(map: PublicActionLabels::class, optional: true)]
     public ?array $labels;
 
@@ -75,12 +75,12 @@ final class PublicActionDefinitionPatch implements BaseModel
      * @param list<PublicExecutionTranslationRule> $executionRules
      * @param list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency> $inputFieldDependencies
      * @param list<InputFieldDefinition> $inputFields
-     * @param array<string, PublicActionLabels> $labels
+     * @param array<string,PublicActionLabels> $labels
      * @param list<string> $objectTypes
      * @param list<OutputFieldDefinition> $outputFields
      */
     public static function with(
-        ?string $actionURL = null,
+        ?string $actionUrl = null,
         ?array $executionRules = null,
         ?array $inputFieldDependencies = null,
         ?array $inputFields = null,
@@ -92,7 +92,7 @@ final class PublicActionDefinitionPatch implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $actionURL && $obj->actionURL = $actionURL;
+        null !== $actionUrl && $obj->actionUrl = $actionUrl;
         null !== $executionRules && $obj->executionRules = $executionRules;
         null !== $inputFieldDependencies && $obj->inputFieldDependencies = $inputFieldDependencies;
         null !== $inputFields && $obj->inputFields = $inputFields;
@@ -108,7 +108,7 @@ final class PublicActionDefinitionPatch implements BaseModel
     public function withActionURL(string $actionURL): self
     {
         $obj = clone $this;
-        $obj->actionURL = $actionURL;
+        $obj->actionUrl = $actionURL;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class PublicActionDefinitionPatch implements BaseModel
     }
 
     /**
-     * @param array<string, PublicActionLabels> $labels
+     * @param array<string,PublicActionLabels> $labels
      */
     public function withLabels(array $labels): self
     {

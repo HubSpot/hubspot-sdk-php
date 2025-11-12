@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Automation\Workflows->listEmailCampaigns
  *
  * @phpstan-type WorkflowListEmailCampaignsParamsShape = array{
- *   after?: string, before?: string, flowID?: list<string>, limit?: int
+ *   after?: string, before?: string, flowId?: list<string>, limit?: int
  * }
  */
 final class WorkflowListEmailCampaignsParams implements BaseModel
@@ -28,9 +28,9 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
     #[Api(optional: true)]
     public ?string $before;
 
-    /** @var list<string>|null $flowID */
+    /** @var list<string>|null $flowId */
     #[Api(list: 'string', optional: true)]
-    public ?array $flowID;
+    public ?array $flowId;
 
     #[Api(optional: true)]
     public ?int $limit;
@@ -45,19 +45,19 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $flowID
+     * @param list<string> $flowId
      */
     public static function with(
         ?string $after = null,
         ?string $before = null,
-        ?array $flowID = null,
+        ?array $flowId = null,
         ?int $limit = null,
     ): self {
         $obj = new self;
 
         null !== $after && $obj->after = $after;
         null !== $before && $obj->before = $before;
-        null !== $flowID && $obj->flowID = $flowID;
+        null !== $flowId && $obj->flowId = $flowId;
         null !== $limit && $obj->limit = $limit;
 
         return $obj;
@@ -85,7 +85,7 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
     public function withFlowID(array $flowID): self
     {
         $obj = clone $this;
-        $obj->flowID = $flowID;
+        $obj->flowId = $flowID;
 
         return $obj;
     }

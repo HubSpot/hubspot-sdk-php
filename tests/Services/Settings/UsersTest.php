@@ -36,9 +36,9 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->create(
-            email: 'newUser@email.com'
-        );
+        $result = $this->client->settings->users->create([
+            'email' => 'newUser@email.com',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -50,9 +50,9 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->create(
-            email: 'newUser@email.com'
-        );
+        $result = $this->client->settings->users->create([
+            'email' => 'newUser@email.com',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -64,7 +64,7 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->update('userId');
+        $result = $this->client->settings->users->update('userId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -76,7 +76,7 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->list();
+        $result = $this->client->settings->users->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -88,7 +88,7 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->delete('userId');
+        $result = $this->client->settings->users->delete('userId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -100,7 +100,7 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->get('userId');
+        $result = $this->client->settings->users->get('userId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

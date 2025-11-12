@@ -13,7 +13,9 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * The updated definition of the list in response to a list update request.
  *
- * @phpstan-type ListUpdateResponseShape = array{updatedList?: PublicObjectList}
+ * @phpstan-type ListUpdateResponseShape = array{
+ *   updatedList?: PublicObjectList|null
+ * }
  */
 final class ListUpdateResponse implements BaseModel, ResponseConverter
 {

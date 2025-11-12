@@ -13,14 +13,14 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * @phpstan-type AccessTokenInfoResponseShape = array{
  *   token: string,
- *   appID: int,
- *   expiresIn: int,
- *   hubID: int,
+ *   app_id: int,
+ *   expires_in: int,
+ *   hub_id: int,
  *   scopes: list<string>,
- *   tokenType: string,
- *   userID: int,
- *   hubDomain?: string,
- *   user?: string,
+ *   token_type: string,
+ *   user_id: int,
+ *   hub_domain?: string|null,
+ *   user?: string|null,
  * }
  */
 final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
@@ -33,27 +33,27 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     #[Api]
     public string $token;
 
-    #[Api('app_id')]
-    public int $appID;
+    #[Api]
+    public int $app_id;
 
-    #[Api('expires_in')]
-    public int $expiresIn;
+    #[Api]
+    public int $expires_in;
 
-    #[Api('hub_id')]
-    public int $hubID;
+    #[Api]
+    public int $hub_id;
 
     /** @var list<string> $scopes */
     #[Api(list: 'string')]
     public array $scopes;
 
-    #[Api('token_type')]
-    public string $tokenType;
+    #[Api]
+    public string $token_type;
 
-    #[Api('user_id')]
-    public int $userID;
+    #[Api]
+    public int $user_id;
 
-    #[Api('hub_domain', optional: true)]
-    public ?string $hubDomain;
+    #[Api(optional: true)]
+    public ?string $hub_domain;
 
     #[Api(optional: true)]
     public ?string $user;
@@ -65,12 +65,12 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
      * ```
      * AccessTokenInfoResponse::with(
      *   token: ...,
-     *   appID: ...,
-     *   expiresIn: ...,
-     *   hubID: ...,
+     *   app_id: ...,
+     *   expires_in: ...,
+     *   hub_id: ...,
      *   scopes: ...,
-     *   tokenType: ...,
-     *   userID: ...,
+     *   token_type: ...,
+     *   user_id: ...,
      * )
      * ```
      *
@@ -101,26 +101,26 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
      */
     public static function with(
         string $token,
-        int $appID,
-        int $expiresIn,
-        int $hubID,
+        int $app_id,
+        int $expires_in,
+        int $hub_id,
         array $scopes,
-        string $tokenType,
-        int $userID,
-        ?string $hubDomain = null,
+        string $token_type,
+        int $user_id,
+        ?string $hub_domain = null,
         ?string $user = null,
     ): self {
         $obj = new self;
 
         $obj->token = $token;
-        $obj->appID = $appID;
-        $obj->expiresIn = $expiresIn;
-        $obj->hubID = $hubID;
+        $obj->app_id = $app_id;
+        $obj->expires_in = $expires_in;
+        $obj->hub_id = $hub_id;
         $obj->scopes = $scopes;
-        $obj->tokenType = $tokenType;
-        $obj->userID = $userID;
+        $obj->token_type = $token_type;
+        $obj->user_id = $user_id;
 
-        null !== $hubDomain && $obj->hubDomain = $hubDomain;
+        null !== $hub_domain && $obj->hub_domain = $hub_domain;
         null !== $user && $obj->user = $user;
 
         return $obj;
@@ -137,7 +137,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appID = $appID;
+        $obj->app_id = $appID;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withExpiresIn(int $expiresIn): self
     {
         $obj = clone $this;
-        $obj->expiresIn = $expiresIn;
+        $obj->expires_in = $expiresIn;
 
         return $obj;
     }
@@ -153,7 +153,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withHubID(int $hubID): self
     {
         $obj = clone $this;
-        $obj->hubID = $hubID;
+        $obj->hub_id = $hubID;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withTokenType(string $tokenType): self
     {
         $obj = clone $this;
-        $obj->tokenType = $tokenType;
+        $obj->token_type = $tokenType;
 
         return $obj;
     }
@@ -180,7 +180,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userID = $userID;
+        $obj->user_id = $userID;
 
         return $obj;
     }
@@ -188,7 +188,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withHubDomain(string $hubDomain): self
     {
         $obj = clone $this;
-        $obj->hubDomain = $hubDomain;
+        $obj->hub_domain = $hubDomain;
 
         return $obj;
     }

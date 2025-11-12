@@ -15,14 +15,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   archived: bool,
  *   client: PublicClient,
- *   conversationsThreadID: string,
+ *   conversationsThreadId: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   newStatus: value-of<NewStatus>,
  *   recipients: list<PublicRecipient>,
  *   senders: list<PublicSender>,
  *   type: value-of<Type>,
- *   updatedAt?: \DateTimeInterface,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class PublicThreadStatusChange implements BaseModel
@@ -39,8 +39,8 @@ final class PublicThreadStatusChange implements BaseModel
     #[Api]
     public PublicClient $client;
 
-    #[Api('conversationsThreadId')]
-    public string $conversationsThreadID;
+    #[Api]
+    public string $conversationsThreadId;
 
     #[Api]
     public \DateTimeInterface $createdAt;
@@ -76,7 +76,7 @@ final class PublicThreadStatusChange implements BaseModel
      *   id: ...,
      *   archived: ...,
      *   client: ...,
-     *   conversationsThreadID: ...,
+     *   conversationsThreadId: ...,
      *   createdAt: ...,
      *   createdBy: ...,
      *   newStatus: ...,
@@ -121,7 +121,7 @@ final class PublicThreadStatusChange implements BaseModel
         string $id,
         bool $archived,
         PublicClient $client,
-        string $conversationsThreadID,
+        string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
         NewStatus|string $newStatus,
@@ -135,7 +135,7 @@ final class PublicThreadStatusChange implements BaseModel
         $obj->id = $id;
         $obj->archived = $archived;
         $obj->client = $client;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadId;
         $obj->createdAt = $createdAt;
         $obj->createdBy = $createdBy;
         $obj['newStatus'] = $newStatus;
@@ -176,7 +176,7 @@ final class PublicThreadStatusChange implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadID = $conversationsThreadID;
+        $obj->conversationsThreadId = $conversationsThreadID;
 
         return $obj;
     }

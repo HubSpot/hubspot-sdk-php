@@ -19,15 +19,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   fullyQualifiedName: string,
  *   hasCustomProperties: bool,
  *   hasDefaultProperties: bool,
- *   hasExternalObjectIDs: bool,
+ *   hasExternalObjectIds: bool,
  *   hasOwners: bool,
  *   hasPipelines: bool,
  *   indexedForFiltersAndReports: bool,
  *   lastModifiedPropertyName: string,
  *   metaType: value-of<MetaType>,
- *   metaTypeID: int,
+ *   metaTypeId: int,
  *   name: string,
- *   objectTypeID: string,
+ *   objectTypeId: string,
  *   permissioningType: string,
  *   pipelinePropertyName: string,
  *   pipelineStagePropertyName: string,
@@ -35,21 +35,21 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   restorable: bool,
  *   scopeMappings: list<ScopeMapping>,
  *   secondaryDisplayLabelPropertyNames: list<string>,
- *   accessScopeName?: string,
- *   createdAt?: int,
- *   description?: string,
- *   integrationAppID?: int,
- *   janusGroup?: string,
- *   ownerPortalID?: int,
- *   pipelineCloseDatePropertyName?: string,
- *   pipelineTimeToClosePropertyName?: string,
- *   pluralForm?: string,
- *   primaryDisplayLabelPropertyName?: string,
- *   readScopeName?: string,
- *   singularForm?: string,
- *   status?: string,
- *   visibility?: string,
- *   writeScopeName?: string,
+ *   accessScopeName?: string|null,
+ *   createdAt?: int|null,
+ *   description?: string|null,
+ *   integrationAppId?: int|null,
+ *   janusGroup?: string|null,
+ *   ownerPortalId?: int|null,
+ *   pipelineCloseDatePropertyName?: string|null,
+ *   pipelineTimeToClosePropertyName?: string|null,
+ *   pluralForm?: string|null,
+ *   primaryDisplayLabelPropertyName?: string|null,
+ *   readScopeName?: string|null,
+ *   singularForm?: string|null,
+ *   status?: string|null,
+ *   visibility?: string|null,
+ *   writeScopeName?: string|null,
  * }
  */
 final class InboundDBObjectType implements BaseModel
@@ -82,8 +82,8 @@ final class InboundDBObjectType implements BaseModel
     #[Api]
     public bool $hasDefaultProperties;
 
-    #[Api('hasExternalObjectIds')]
-    public bool $hasExternalObjectIDs;
+    #[Api]
+    public bool $hasExternalObjectIds;
 
     #[Api]
     public bool $hasOwners;
@@ -101,14 +101,14 @@ final class InboundDBObjectType implements BaseModel
     #[Api(enum: MetaType::class)]
     public string $metaType;
 
-    #[Api('metaTypeId')]
-    public int $metaTypeID;
+    #[Api]
+    public int $metaTypeId;
 
     #[Api]
     public string $name;
 
-    #[Api('objectTypeId')]
-    public string $objectTypeID;
+    #[Api]
+    public string $objectTypeId;
 
     #[Api]
     public string $permissioningType;
@@ -143,14 +143,14 @@ final class InboundDBObjectType implements BaseModel
     #[Api(optional: true)]
     public ?string $description;
 
-    #[Api('integrationAppId', optional: true)]
-    public ?int $integrationAppID;
+    #[Api(optional: true)]
+    public ?int $integrationAppId;
 
     #[Api(optional: true)]
     public ?string $janusGroup;
 
-    #[Api('ownerPortalId', optional: true)]
-    public ?int $ownerPortalID;
+    #[Api(optional: true)]
+    public ?int $ownerPortalId;
 
     #[Api(optional: true)]
     public ?string $pipelineCloseDatePropertyName;
@@ -193,15 +193,15 @@ final class InboundDBObjectType implements BaseModel
      *   fullyQualifiedName: ...,
      *   hasCustomProperties: ...,
      *   hasDefaultProperties: ...,
-     *   hasExternalObjectIDs: ...,
+     *   hasExternalObjectIds: ...,
      *   hasOwners: ...,
      *   hasPipelines: ...,
      *   indexedForFiltersAndReports: ...,
      *   lastModifiedPropertyName: ...,
      *   metaType: ...,
-     *   metaTypeID: ...,
+     *   metaTypeId: ...,
      *   name: ...,
-     *   objectTypeID: ...,
+     *   objectTypeId: ...,
      *   permissioningType: ...,
      *   pipelinePropertyName: ...,
      *   pipelineStagePropertyName: ...,
@@ -267,15 +267,15 @@ final class InboundDBObjectType implements BaseModel
         string $fullyQualifiedName,
         bool $hasCustomProperties,
         bool $hasDefaultProperties,
-        bool $hasExternalObjectIDs,
+        bool $hasExternalObjectIds,
         bool $hasOwners,
         bool $hasPipelines,
         bool $indexedForFiltersAndReports,
         string $lastModifiedPropertyName,
         MetaType|string $metaType,
-        int $metaTypeID,
+        int $metaTypeId,
         string $name,
-        string $objectTypeID,
+        string $objectTypeId,
         string $permissioningType,
         string $pipelinePropertyName,
         string $pipelineStagePropertyName,
@@ -286,9 +286,9 @@ final class InboundDBObjectType implements BaseModel
         ?string $accessScopeName = null,
         ?int $createdAt = null,
         ?string $description = null,
-        ?int $integrationAppID = null,
+        ?int $integrationAppId = null,
         ?string $janusGroup = null,
-        ?int $ownerPortalID = null,
+        ?int $ownerPortalId = null,
         ?string $pipelineCloseDatePropertyName = null,
         ?string $pipelineTimeToClosePropertyName = null,
         ?string $pluralForm = null,
@@ -309,15 +309,15 @@ final class InboundDBObjectType implements BaseModel
         $obj->fullyQualifiedName = $fullyQualifiedName;
         $obj->hasCustomProperties = $hasCustomProperties;
         $obj->hasDefaultProperties = $hasDefaultProperties;
-        $obj->hasExternalObjectIDs = $hasExternalObjectIDs;
+        $obj->hasExternalObjectIds = $hasExternalObjectIds;
         $obj->hasOwners = $hasOwners;
         $obj->hasPipelines = $hasPipelines;
         $obj->indexedForFiltersAndReports = $indexedForFiltersAndReports;
         $obj->lastModifiedPropertyName = $lastModifiedPropertyName;
         $obj['metaType'] = $metaType;
-        $obj->metaTypeID = $metaTypeID;
+        $obj->metaTypeId = $metaTypeId;
         $obj->name = $name;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeId;
         $obj->permissioningType = $permissioningType;
         $obj->pipelinePropertyName = $pipelinePropertyName;
         $obj->pipelineStagePropertyName = $pipelineStagePropertyName;
@@ -329,9 +329,9 @@ final class InboundDBObjectType implements BaseModel
         null !== $accessScopeName && $obj->accessScopeName = $accessScopeName;
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $description && $obj->description = $description;
-        null !== $integrationAppID && $obj->integrationAppID = $integrationAppID;
+        null !== $integrationAppId && $obj->integrationAppId = $integrationAppId;
         null !== $janusGroup && $obj->janusGroup = $janusGroup;
-        null !== $ownerPortalID && $obj->ownerPortalID = $ownerPortalID;
+        null !== $ownerPortalId && $obj->ownerPortalId = $ownerPortalId;
         null !== $pipelineCloseDatePropertyName && $obj->pipelineCloseDatePropertyName = $pipelineCloseDatePropertyName;
         null !== $pipelineTimeToClosePropertyName && $obj->pipelineTimeToClosePropertyName = $pipelineTimeToClosePropertyName;
         null !== $pluralForm && $obj->pluralForm = $pluralForm;
@@ -418,7 +418,7 @@ final class InboundDBObjectType implements BaseModel
     public function withHasExternalObjectIDs(bool $hasExternalObjectIDs): self
     {
         $obj = clone $this;
-        $obj->hasExternalObjectIDs = $hasExternalObjectIDs;
+        $obj->hasExternalObjectIds = $hasExternalObjectIDs;
 
         return $obj;
     }
@@ -471,7 +471,7 @@ final class InboundDBObjectType implements BaseModel
     public function withMetaTypeID(int $metaTypeID): self
     {
         $obj = clone $this;
-        $obj->metaTypeID = $metaTypeID;
+        $obj->metaTypeId = $metaTypeID;
 
         return $obj;
     }
@@ -487,7 +487,7 @@ final class InboundDBObjectType implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeID = $objectTypeID;
+        $obj->objectTypeId = $objectTypeID;
 
         return $obj;
     }
@@ -586,7 +586,7 @@ final class InboundDBObjectType implements BaseModel
     public function withIntegrationAppID(int $integrationAppID): self
     {
         $obj = clone $this;
-        $obj->integrationAppID = $integrationAppID;
+        $obj->integrationAppId = $integrationAppID;
 
         return $obj;
     }
@@ -602,7 +602,7 @@ final class InboundDBObjectType implements BaseModel
     public function withOwnerPortalID(int $ownerPortalID): self
     {
         $obj = clone $this;
-        $obj->ownerPortalID = $ownerPortalID;
+        $obj->ownerPortalId = $ownerPortalID;
 
         return $obj;
     }

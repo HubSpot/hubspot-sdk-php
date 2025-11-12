@@ -13,16 +13,16 @@ use HubspotSDK\OptionInput;
 
 /**
  * @phpstan-type PropertyUpdateShape = array{
- *   calculationFormula?: string,
- *   description?: string,
- *   displayOrder?: int,
- *   fieldType?: value-of<FieldType>,
- *   formField?: bool,
- *   groupName?: string,
- *   hidden?: bool,
- *   label?: string,
- *   options?: list<OptionInput>,
- *   type?: value-of<Type>,
+ *   calculationFormula?: string|null,
+ *   description?: string|null,
+ *   displayOrder?: int|null,
+ *   fieldType?: value-of<FieldType>|null,
+ *   formField?: bool|null,
+ *   groupName?: string|null,
+ *   hidden?: bool|null,
+ *   label?: string|null,
+ *   options?: list<OptionInput>|null,
+ *   type?: value-of<Type>|null,
  * }
  */
 final class PropertyUpdate implements BaseModel

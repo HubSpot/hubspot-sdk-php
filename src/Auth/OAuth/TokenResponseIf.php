@@ -12,11 +12,11 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type TokenResponseIfShape = array{
- *   accessToken: string,
- *   expiresIn: int,
- *   refreshToken: string,
- *   tokenType: string,
- *   idToken?: string,
+ *   access_token: string,
+ *   expires_in: int,
+ *   refresh_token: string,
+ *   token_type: string,
+ *   id_token?: string|null,
  * }
  */
 final class TokenResponseIf implements BaseModel, ResponseConverter
@@ -26,20 +26,20 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
-    #[Api('access_token')]
-    public string $accessToken;
+    #[Api]
+    public string $access_token;
 
-    #[Api('expires_in')]
-    public int $expiresIn;
+    #[Api]
+    public int $expires_in;
 
-    #[Api('refresh_token')]
-    public string $refreshToken;
+    #[Api]
+    public string $refresh_token;
 
-    #[Api('token_type')]
-    public string $tokenType;
+    #[Api]
+    public string $token_type;
 
-    #[Api('id_token', optional: true)]
-    public ?string $idToken;
+    #[Api(optional: true)]
+    public ?string $id_token;
 
     /**
      * `new TokenResponseIf()` is missing required properties by the API.
@@ -47,7 +47,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
      * To enforce required parameters use
      * ```
      * TokenResponseIf::with(
-     *   accessToken: ..., expiresIn: ..., refreshToken: ..., tokenType: ...
+     *   access_token: ..., expires_in: ..., refresh_token: ..., token_type: ...
      * )
      * ```
      *
@@ -72,20 +72,20 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $accessToken,
-        int $expiresIn,
-        string $refreshToken,
-        string $tokenType,
-        ?string $idToken = null,
+        string $access_token,
+        int $expires_in,
+        string $refresh_token,
+        string $token_type,
+        ?string $id_token = null,
     ): self {
         $obj = new self;
 
-        $obj->accessToken = $accessToken;
-        $obj->expiresIn = $expiresIn;
-        $obj->refreshToken = $refreshToken;
-        $obj->tokenType = $tokenType;
+        $obj->access_token = $access_token;
+        $obj->expires_in = $expires_in;
+        $obj->refresh_token = $refresh_token;
+        $obj->token_type = $token_type;
 
-        null !== $idToken && $obj->idToken = $idToken;
+        null !== $id_token && $obj->id_token = $id_token;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withAccessToken(string $accessToken): self
     {
         $obj = clone $this;
-        $obj->accessToken = $accessToken;
+        $obj->access_token = $accessToken;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withExpiresIn(int $expiresIn): self
     {
         $obj = clone $this;
-        $obj->expiresIn = $expiresIn;
+        $obj->expires_in = $expiresIn;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withRefreshToken(string $refreshToken): self
     {
         $obj = clone $this;
-        $obj->refreshToken = $refreshToken;
+        $obj->refresh_token = $refreshToken;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withTokenType(string $tokenType): self
     {
         $obj = clone $this;
-        $obj->tokenType = $tokenType;
+        $obj->token_type = $tokenType;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withIDToken(string $idToken): self
     {
         $obj = clone $this;
-        $obj->idToken = $idToken;
+        $obj->id_token = $idToken;
 
         return $obj;
     }

@@ -18,7 +18,7 @@ use HubspotSDK\Crm\FilterGroup;
  *   limit: int,
  *   properties: list<string>,
  *   sorts: list<string>,
- *   query?: string,
+ *   query?: string|null,
  * }
  */
 final class AssociationsV4PublicObjectSearchRequest implements BaseModel

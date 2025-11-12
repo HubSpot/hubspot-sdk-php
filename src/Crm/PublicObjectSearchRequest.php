@@ -12,12 +12,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Describes a search request.
  *
  * @phpstan-type PublicObjectSearchRequestShape = array{
- *   after?: string,
- *   filterGroups?: list<FilterGroup>,
- *   limit?: int,
- *   properties?: list<string>,
- *   query?: string,
- *   sorts?: list<string>,
+ *   after?: string|null,
+ *   filterGroups?: list<FilterGroup>|null,
+ *   limit?: int|null,
+ *   properties?: list<string>|null,
+ *   query?: string|null,
+ *   sorts?: list<string>|null,
  * }
  */
 final class PublicObjectSearchRequest implements BaseModel

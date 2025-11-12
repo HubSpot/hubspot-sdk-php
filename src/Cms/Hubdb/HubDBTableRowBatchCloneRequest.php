@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type HubDBTableRowBatchCloneRequestShape = array{
- *   id: string, name?: string
+ *   id: string, name?: string|null
  * }
  */
 final class HubDBTableRowBatchCloneRequest implements BaseModel

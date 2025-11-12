@@ -8,11 +8,8 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Subscriptions\V4\LinkGenerationResponse;
 use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams;
-use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\LinksContract;
-
-use const HubspotSDK\Core\OMIT as omit;
 
 final class LinksService implements LinksContract
 {
@@ -24,47 +21,23 @@ final class LinksService implements LinksContract
     /**
      * @api
      *
-     * @param Channel|value-of<Channel> $channel
-     * @param string $subscriberIDString
-     * @param int $businessUnitID
-     * @param string $language
-     * @param int $subscriptionID
+     * @param array{
+     *   channel: "EMAIL",
+     *   subscriberIdString: string,
+     *   businessUnitId?: int,
+     *   language?: string,
+     *   subscriptionId?: int,
+     * }|LinkCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $channel,
-        $subscriberIDString,
-        $businessUnitID = omit,
-        $language = omit,
-        $subscriptionID = omit,
-        ?RequestOptions $requestOptions = null,
-    ): LinkGenerationResponse {
-        $params = [
-            'channel' => $channel,
-            'subscriberIDString' => $subscriberIDString,
-            'businessUnitID' => $businessUnitID,
-            'language' => $language,
-            'subscriptionID' => $subscriptionID,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
+        array|LinkCreateParams $params,
         ?RequestOptions $requestOptions = null
     ): LinkGenerationResponse {
         [$parsed, $options] = LinkCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
         $query_params = array_flip(['channel', 'businessUnitId']);
 

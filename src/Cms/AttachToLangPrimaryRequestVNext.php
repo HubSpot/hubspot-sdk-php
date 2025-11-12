@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Request body object for attaching objects to multi-language groups.
  *
  * @phpstan-type AttachToLangPrimaryRequestVNextShape = array{
- *   id: string, language: string, primaryID: string, primaryLanguage?: string
+ *   id: string, language: string, primaryId: string, primaryLanguage?: string|null
  * }
  */
 final class AttachToLangPrimaryRequestVNext implements BaseModel
@@ -35,8 +35,8 @@ final class AttachToLangPrimaryRequestVNext implements BaseModel
     /**
      * ID of primary language object in multi-language group.
      */
-    #[Api('primaryId')]
-    public string $primaryID;
+    #[Api]
+    public string $primaryId;
 
     /**
      * Primary language of the multi-language group.
@@ -49,7 +49,7 @@ final class AttachToLangPrimaryRequestVNext implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * AttachToLangPrimaryRequestVNext::with(id: ..., language: ..., primaryID: ...)
+     * AttachToLangPrimaryRequestVNext::with(id: ..., language: ..., primaryId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -74,14 +74,14 @@ final class AttachToLangPrimaryRequestVNext implements BaseModel
     public static function with(
         string $id,
         string $language,
-        string $primaryID,
+        string $primaryId,
         ?string $primaryLanguage = null,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
         $obj->language = $language;
-        $obj->primaryID = $primaryID;
+        $obj->primaryId = $primaryId;
 
         null !== $primaryLanguage && $obj->primaryLanguage = $primaryLanguage;
 
@@ -116,7 +116,7 @@ final class AttachToLangPrimaryRequestVNext implements BaseModel
     public function withPrimaryID(string $primaryID): self
     {
         $obj = clone $this;
-        $obj->primaryID = $primaryID;
+        $obj->primaryId = $primaryID;
 
         return $obj;
     }

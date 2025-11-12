@@ -13,17 +13,17 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type TimelineEventResponseShape = array{
  *   id: string,
- *   eventTemplateID: string,
+ *   eventTemplateId: string,
  *   objectType: string,
- *   tokens: array<string, string>,
- *   createdAt?: \DateTimeInterface,
- *   domain?: string,
- *   email?: string,
+ *   tokens: array<string,string>,
+ *   createdAt?: \DateTimeInterface|null,
+ *   domain?: string|null,
+ *   email?: string|null,
  *   extraData?: mixed,
- *   objectID?: string,
- *   timelineIFrame?: TimelineEventIFrame,
- *   timestamp?: \DateTimeInterface,
- *   utk?: string,
+ *   objectId?: string|null,
+ *   timelineIFrame?: TimelineEventIFrame|null,
+ *   timestamp?: \DateTimeInterface|null,
+ *   utk?: string|null,
  * }
  */
 final class TimelineEventResponse implements BaseModel
@@ -40,8 +40,8 @@ final class TimelineEventResponse implements BaseModel
     /**
      * The event template ID.
      */
-    #[Api('eventTemplateId')]
-    public string $eventTemplateID;
+    #[Api]
+    public string $eventTemplateId;
 
     /**
      * The ObjectType associated with the EventTemplate.
@@ -52,7 +52,7 @@ final class TimelineEventResponse implements BaseModel
     /**
      * A collection of token keys and values associated with the template tokens.
      *
-     * @var array<string, string> $tokens
+     * @var array<string,string> $tokens
      */
     #[Api(map: 'string')]
     public array $tokens;
@@ -81,8 +81,8 @@ final class TimelineEventResponse implements BaseModel
     /**
      * The CRM object identifier. This is required for every event other than contacts (where utk or email can be used).
      */
-    #[Api('objectId', optional: true)]
-    public ?string $objectID;
+    #[Api(optional: true)]
+    public ?string $objectId;
 
     #[Api(optional: true)]
     public ?TimelineEventIFrame $timelineIFrame;
@@ -105,7 +105,7 @@ final class TimelineEventResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * TimelineEventResponse::with(
-     *   id: ..., eventTemplateID: ..., objectType: ..., tokens: ...
+     *   id: ..., eventTemplateId: ..., objectType: ..., tokens: ...
      * )
      * ```
      *
@@ -129,18 +129,18 @@ final class TimelineEventResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $tokens
+     * @param array<string,string> $tokens
      */
     public static function with(
         string $id,
-        string $eventTemplateID,
+        string $eventTemplateId,
         string $objectType,
         array $tokens,
         ?\DateTimeInterface $createdAt = null,
         ?string $domain = null,
         ?string $email = null,
         mixed $extraData = null,
-        ?string $objectID = null,
+        ?string $objectId = null,
         ?TimelineEventIFrame $timelineIFrame = null,
         ?\DateTimeInterface $timestamp = null,
         ?string $utk = null,
@@ -148,7 +148,7 @@ final class TimelineEventResponse implements BaseModel
         $obj = new self;
 
         $obj->id = $id;
-        $obj->eventTemplateID = $eventTemplateID;
+        $obj->eventTemplateId = $eventTemplateId;
         $obj->objectType = $objectType;
         $obj->tokens = $tokens;
 
@@ -156,7 +156,7 @@ final class TimelineEventResponse implements BaseModel
         null !== $domain && $obj->domain = $domain;
         null !== $email && $obj->email = $email;
         null !== $extraData && $obj->extraData = $extraData;
-        null !== $objectID && $obj->objectID = $objectID;
+        null !== $objectId && $obj->objectId = $objectId;
         null !== $timelineIFrame && $obj->timelineIFrame = $timelineIFrame;
         null !== $timestamp && $obj->timestamp = $timestamp;
         null !== $utk && $obj->utk = $utk;
@@ -181,7 +181,7 @@ final class TimelineEventResponse implements BaseModel
     public function withEventTemplateID(string $eventTemplateID): self
     {
         $obj = clone $this;
-        $obj->eventTemplateID = $eventTemplateID;
+        $obj->eventTemplateId = $eventTemplateID;
 
         return $obj;
     }
@@ -200,7 +200,7 @@ final class TimelineEventResponse implements BaseModel
     /**
      * A collection of token keys and values associated with the template tokens.
      *
-     * @param array<string, string> $tokens
+     * @param array<string,string> $tokens
      */
     public function withTokens(array $tokens): self
     {
@@ -257,7 +257,7 @@ final class TimelineEventResponse implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

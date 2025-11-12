@@ -3,10 +3,6 @@
 namespace Tests\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignInput;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,9 +36,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->create(
-            [PublicCampaignInput::with(properties: ['foo' => 'string'])]
-        );
+        $result = $this->client->marketing->campaigns->batch->create([
+            'inputs' => [['properties' => ['foo' => 'string']]],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -54,9 +50,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->create(
-            [PublicCampaignInput::with(properties: ['foo' => 'string'])]
-        );
+        $result = $this->client->marketing->campaigns->batch->create([
+            'inputs' => [['properties' => ['foo' => 'string']]],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -68,14 +64,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->update(
-            [
-                PublicCampaignBatchUpdateItem::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                ),
-            ],
-        );
+        $result = $this->client->marketing->campaigns->batch->update([
+            'inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -87,14 +78,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->update(
-            [
-                PublicCampaignBatchUpdateItem::with(
-                    id: 'id',
-                    properties: ['foo' => 'string']
-                ),
-            ],
-        );
+        $result = $this->client->marketing->campaigns->batch->update([
+            'inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -106,9 +92,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->delete(
-            [PublicCampaignDeleteInput::with(id: 'id')]
-        );
+        $result = $this->client->marketing->campaigns->batch->delete([
+            'inputs' => [['id' => 'id']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -120,9 +106,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->delete(
-            [PublicCampaignDeleteInput::with(id: 'id')]
-        );
+        $result = $this->client->marketing->campaigns->batch->delete([
+            'inputs' => [['id' => 'id']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -134,9 +120,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->get(
-            inputs: [PublicCampaignReadInput::with(id: 'id')]
-        );
+        $result = $this->client->marketing->campaigns->batch->get([
+            'inputs' => [['id' => 'id']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -148,9 +134,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->get(
-            inputs: [PublicCampaignReadInput::with(id: 'id')]
-        );
+        $result = $this->client->marketing->campaigns->batch->get([
+            'inputs' => [['id' => 'id']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

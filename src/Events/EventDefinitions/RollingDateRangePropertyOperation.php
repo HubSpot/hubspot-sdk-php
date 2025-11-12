@@ -19,7 +19,7 @@ use HubspotSDK\Events\EventDefinitions\RollingDateRangePropertyOperation\Propert
  *   operatorName: string,
  *   propertyType: value-of<PropertyType>,
  *   requiresTimeZoneConversion: bool,
- *   defaultValue?: string,
+ *   defaultValue?: string|null,
  * }
  */
 final class RollingDateRangePropertyOperation implements BaseModel

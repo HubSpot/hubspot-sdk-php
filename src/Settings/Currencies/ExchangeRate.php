@@ -21,7 +21,7 @@ use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
  *   fromCurrencyCode: value-of<FromCurrencyCode>,
  *   toCurrencyCode: value-of<ToCurrencyCode>,
  *   updatedAt: \DateTimeInterface,
- *   visibleInUi: bool,
+ *   visibleInUI: bool,
  * }
  */
 final class ExchangeRate implements BaseModel, ResponseConverter
@@ -54,8 +54,8 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     #[Api]
     public \DateTimeInterface $updatedAt;
 
-    #[Api('visibleInUI')]
-    public bool $visibleInUi;
+    #[Api]
+    public bool $visibleInUI;
 
     /**
      * `new ExchangeRate()` is missing required properties by the API.
@@ -70,7 +70,7 @@ final class ExchangeRate implements BaseModel, ResponseConverter
      *   fromCurrencyCode: ...,
      *   toCurrencyCode: ...,
      *   updatedAt: ...,
-     *   visibleInUi: ...,
+     *   visibleInUI: ...,
      * )
      * ```
      *
@@ -109,7 +109,7 @@ final class ExchangeRate implements BaseModel, ResponseConverter
         FromCurrencyCode|string $fromCurrencyCode,
         ToCurrencyCode|string $toCurrencyCode,
         \DateTimeInterface $updatedAt,
-        bool $visibleInUi,
+        bool $visibleInUI,
     ): self {
         $obj = new self;
 
@@ -120,7 +120,7 @@ final class ExchangeRate implements BaseModel, ResponseConverter
         $obj['fromCurrencyCode'] = $fromCurrencyCode;
         $obj['toCurrencyCode'] = $toCurrencyCode;
         $obj->updatedAt = $updatedAt;
-        $obj->visibleInUi = $visibleInUi;
+        $obj->visibleInUI = $visibleInUI;
 
         return $obj;
     }
@@ -192,7 +192,7 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     public function withVisibleInUi(bool $visibleInUi): self
     {
         $obj = clone $this;
-        $obj->visibleInUi = $visibleInUi;
+        $obj->visibleInUI = $visibleInUi;
 
         return $obj;
     }

@@ -50,38 +50,21 @@ final class AssociationsService implements AssociationsContract
      *
      * Disassociates a list from a marketing event by marketing event id and ILS list id
      *
-     * @param string $marketingEventID
+     * @param array{marketingEventId: string}|AssociationDeleteParams $params
      *
      * @throws APIException
      */
     public function delete(
         string $listID,
-        $marketingEventID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['marketingEventID' => $marketingEventID];
-
-        return $this->deleteRaw($listID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteRaw(
-        string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|AssociationDeleteParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = AssociationDeleteParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $marketingEventID = $parsed['marketingEventID'];
-        unset($parsed['marketingEventID']);
+        $marketingEventID = $parsed['marketingEventId'];
+        unset($parsed['marketingEventId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -101,38 +84,21 @@ final class AssociationsService implements AssociationsContract
      *
      * Associates a list with a marketing event by marketing event id and ILS list id
      *
-     * @param string $marketingEventID
+     * @param array{marketingEventId: string}|AssociationAssociateParams $params
      *
      * @throws APIException
      */
     public function associate(
         string $listID,
-        $marketingEventID,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        $params = ['marketingEventID' => $marketingEventID];
-
-        return $this->associateRaw($listID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function associateRaw(
-        string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|AssociationAssociateParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
         [$parsed, $options] = AssociationAssociateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $marketingEventID = $parsed['marketingEventID'];
-        unset($parsed['marketingEventID']);
+        $marketingEventID = $parsed['marketingEventId'];
+        unset($parsed['marketingEventId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -152,51 +118,25 @@ final class AssociationsService implements AssociationsContract
      *
      * Associates a list with a marketing event by external account id, external event id, and ILS list id
      *
-     * @param string $externalAccountID
-     * @param string $externalEventID
+     * @param array{
+     *   externalAccountId: string, externalEventId: string
+     * }|AssociationAssociateByExternalAccountParams $params
      *
      * @throws APIException
      */
     public function associateByExternalAccount(
         string $listID,
-        $externalAccountID,
-        $externalEventID,
+        array|AssociationAssociateByExternalAccountParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'externalAccountID' => $externalAccountID,
-            'externalEventID' => $externalEventID,
-        ];
-
-        return $this->associateByExternalAccountRaw(
-            $listID,
+        [$parsed, $options] = AssociationAssociateByExternalAccountParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function associateByExternalAccountRaw(
-        string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        [
-            $parsed, $options,
-        ] = AssociationAssociateByExternalAccountParams::parseRequest(
-            $params,
-            $requestOptions
-        );
-        $externalAccountID = $parsed['externalAccountID'];
-        unset($parsed['externalAccountID']);
-        $externalEventID = $parsed['externalEventID'];
-        unset($parsed['externalEventID']);
+        $externalAccountID = $parsed['externalAccountId'];
+        unset($parsed['externalAccountId']);
+        $externalEventID = $parsed['externalEventId'];
+        unset($parsed['externalEventId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -217,47 +157,25 @@ final class AssociationsService implements AssociationsContract
      *
      * Disassociates a list from a marketing event by external account id, external event id, and ILS list id
      *
-     * @param string $externalAccountID
-     * @param string $externalEventID
+     * @param array{
+     *   externalAccountId: string, externalEventId: string
+     * }|AssociationDeleteByExternalAccountParams $params
      *
      * @throws APIException
      */
     public function deleteByExternalAccount(
         string $listID,
-        $externalAccountID,
-        $externalEventID,
+        array|AssociationDeleteByExternalAccountParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'externalAccountID' => $externalAccountID,
-            'externalEventID' => $externalEventID,
-        ];
-
-        return $this->deleteByExternalAccountRaw($listID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function deleteByExternalAccountRaw(
-        string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
-    ): mixed {
-        [
-            $parsed, $options,
-        ] = AssociationDeleteByExternalAccountParams::parseRequest(
+        [$parsed, $options] = AssociationDeleteByExternalAccountParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $externalAccountID = $parsed['externalAccountID'];
-        unset($parsed['externalAccountID']);
-        $externalEventID = $parsed['externalEventID'];
-        unset($parsed['externalEventID']);
+        $externalAccountID = $parsed['externalAccountId'];
+        unset($parsed['externalAccountId']);
+        $externalEventID = $parsed['externalEventId'];
+        unset($parsed['externalEventId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
@@ -278,42 +196,23 @@ final class AssociationsService implements AssociationsContract
      *
      * Gets lists associated with a marketing event by external account id and external event id
      *
-     * @param string $externalAccountID
+     * @param array{
+     *   externalAccountId: string
+     * }|AssociationListByExternalAccountParams $params
      *
      * @throws APIException
      */
     public function listByExternalAccount(
         string $externalEventID,
-        $externalAccountID,
-        ?RequestOptions $requestOptions = null,
-    ): CollectionResponseWithTotalPublicListNoPaging {
-        $params = ['externalAccountID' => $externalAccountID];
-
-        return $this->listByExternalAccountRaw(
-            $externalEventID,
-            $params,
-            $requestOptions
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function listByExternalAccountRaw(
-        string $externalEventID,
-        array $params,
+        array|AssociationListByExternalAccountParams $params,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalPublicListNoPaging {
         [$parsed, $options] = AssociationListByExternalAccountParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
-        $externalAccountID = $parsed['externalAccountID'];
-        unset($parsed['externalAccountID']);
+        $externalAccountID = $parsed['externalAccountId'];
+        unset($parsed['externalAccountId']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(

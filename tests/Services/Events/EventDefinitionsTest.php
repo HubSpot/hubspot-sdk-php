@@ -3,8 +3,6 @@
 namespace Tests\Services\Events;
 
 use HubspotSDK\Client;
-use HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventPropertyCreate;
-use HubspotSDK\OptionInput;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,15 +36,10 @@ final class EventDefinitionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->eventDefinitions->create(
-            label: 'label',
-            propertyDefinitions: [
-                ExternalBehavioralEventPropertyCreate::with(
-                    label: 'label',
-                    type: 'type'
-                ),
-            ],
-        );
+        $result = $this->client->events->eventDefinitions->create([
+            'label' => 'label',
+            'propertyDefinitions' => [['label' => 'label', 'type' => 'type']],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -58,28 +51,26 @@ final class EventDefinitionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->eventDefinitions->create(
-            label: 'label',
-            propertyDefinitions: [
-                ExternalBehavioralEventPropertyCreate::with(
-                    label: 'label',
-                    type: 'type'
-                )
-                    ->withDescription('description')
-                    ->withName('name')
-                    ->withOptions(
+        $result = $this->client->events->eventDefinitions->create([
+            'label' => 'label',
+            'propertyDefinitions' => [
+                [
+                    'label' => 'label',
+                    'type' => 'type',
+                    'description' => 'description',
+                    'name' => 'name',
+                    'options' => [
                         [
-                            OptionInput::with(
-                                displayOrder: 0,
-                                hidden: true,
-                                label: 'label',
-                                value: 'value'
-                            )
-                                ->withDescription('description'),
+                            'displayOrder' => 0,
+                            'hidden' => true,
+                            'label' => 'label',
+                            'value' => 'value',
+                            'description' => 'description',
                         ],
-                    ),
+                    ],
+                ],
             ],
-        );
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -91,7 +82,7 @@ final class EventDefinitionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->eventDefinitions->update('eventName');
+        $result = $this->client->events->eventDefinitions->update('eventName', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -103,7 +94,7 @@ final class EventDefinitionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->eventDefinitions->list();
+        $result = $this->client->events->eventDefinitions->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -129,8 +120,7 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->createProperty(
             'eventName',
-            label: 'label',
-            type: 'type'
+            ['label' => 'label', 'type' => 'type']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -145,8 +135,7 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->createProperty(
             'eventName',
-            label: 'label',
-            type: 'type'
+            ['label' => 'label', 'type' => 'type']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -161,7 +150,7 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->deleteProperty(
             'propertyName',
-            'eventName'
+            ['eventName' => 'eventName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -176,7 +165,7 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->deleteProperty(
             'propertyName',
-            'eventName'
+            ['eventName' => 'eventName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -203,7 +192,7 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->updateProperty(
             'propertyName',
-            eventName: 'eventName'
+            ['eventName' => 'eventName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -218,7 +207,7 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->updateProperty(
             'propertyName',
-            eventName: 'eventName'
+            ['eventName' => 'eventName']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

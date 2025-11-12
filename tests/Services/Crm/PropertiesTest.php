@@ -38,11 +38,13 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->create(
             'objectType',
-            fieldType: 'booleancheckbox',
-            groupName: 'groupName',
-            label: 'label',
-            name: 'name',
-            type: 'bool',
+            [
+                'fieldType' => 'booleancheckbox',
+                'groupName' => 'groupName',
+                'label' => 'label',
+                'name' => 'name',
+                'type' => 'bool',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -57,11 +59,13 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->create(
             'objectType',
-            fieldType: 'booleancheckbox',
-            groupName: 'groupName',
-            label: 'label',
-            name: 'name',
-            type: 'bool',
+            [
+                'fieldType' => 'booleancheckbox',
+                'groupName' => 'groupName',
+                'label' => 'label',
+                'name' => 'name',
+                'type' => 'bool',
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -76,7 +80,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->update(
             'propertyName',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -91,7 +95,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->update(
             'propertyName',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -104,7 +108,7 @@ final class PropertiesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->properties->list('objectType');
+        $result = $this->client->crm->properties->list('objectType', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -118,7 +122,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->delete(
             'propertyName',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -133,7 +137,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->delete(
             'propertyName',
-            'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -148,7 +152,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->get(
             'propertyName',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -163,7 +167,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->get(
             'propertyName',
-            objectType: 'objectType'
+            ['objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExchangeRateMultiplierShape = array{
- *   conversionRate: float, effectiveAt?: \DateTimeInterface
+ *   conversionRate: float, effectiveAt?: \DateTimeInterface|null
  * }
  */
 final class ExchangeRateMultiplier implements BaseModel

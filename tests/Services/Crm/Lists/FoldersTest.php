@@ -36,7 +36,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->create(name: 'name');
+        $result = $this->client->crm->lists->folders->create(['name' => 'name']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +48,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->create(name: 'name');
+        $result = $this->client->crm->lists->folders->create(['name' => 'name']);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -72,7 +72,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->get();
+        $result = $this->client->crm->lists->folders->get([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -86,7 +86,7 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->crm->lists->folders->move(
             'newParentFolderId',
-            'folderId'
+            ['folderId' => 'folderId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -101,7 +101,7 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->crm->lists->folders->move(
             'newParentFolderId',
-            'folderId'
+            ['folderId' => 'folderId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -114,10 +114,9 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->moveList(
-            listID: 'listId',
-            newFolderID: 'newFolderId'
-        );
+        $result = $this->client->crm->lists->folders->moveList([
+            'listId' => 'listId', 'newFolderId' => 'newFolderId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -129,10 +128,9 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->moveList(
-            listID: 'listId',
-            newFolderID: 'newFolderId'
-        );
+        $result = $this->client->crm->lists->folders->moveList([
+            'listId' => 'listId', 'newFolderId' => 'newFolderId',
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -144,7 +142,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->rename('folderId');
+        $result = $this->client->crm->lists->folders->rename('folderId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

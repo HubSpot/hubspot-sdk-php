@@ -12,9 +12,9 @@ use HubspotSDK\Marketing\Subscriptions\PublicUpdateSubscriptionStatusRequest\Leg
 /**
  * @phpstan-type PublicUpdateSubscriptionStatusRequestShape = array{
  *   emailAddress: string,
- *   subscriptionID: string,
- *   legalBasis?: value-of<LegalBasis>,
- *   legalBasisExplanation?: string,
+ *   subscriptionId: string,
+ *   legalBasis?: value-of<LegalBasis>|null,
+ *   legalBasisExplanation?: string|null,
  * }
  */
 final class PublicUpdateSubscriptionStatusRequest implements BaseModel
@@ -31,8 +31,8 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
     /**
      * ID of the subscription being updated for the contact.
      */
-    #[Api('subscriptionId')]
-    public string $subscriptionID;
+    #[Api]
+    public string $subscriptionId;
 
     /**
      * Legal basis for updating the contact's status (required for GDPR enabled portals).
@@ -54,7 +54,7 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicUpdateSubscriptionStatusRequest::with(
-     *   emailAddress: ..., subscriptionID: ...
+     *   emailAddress: ..., subscriptionId: ...
      * )
      * ```
      *
@@ -80,14 +80,14 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
      */
     public static function with(
         string $emailAddress,
-        string $subscriptionID,
+        string $subscriptionId,
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
     ): self {
         $obj = new self;
 
         $obj->emailAddress = $emailAddress;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionId;
 
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
@@ -112,7 +112,7 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
     public function withSubscriptionID(string $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionID = $subscriptionID;
+        $obj->subscriptionId = $subscriptionID;
 
         return $obj;
     }

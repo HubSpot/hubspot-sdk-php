@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Response object for collections of marketing emails with pagination information.
  *
  * @phpstan-type CollectionResponseWithTotalVersionPublicEmailShape = array{
- *   results: list<VersionPublicEmail>, total: int, paging?: EmailsPaging
+ *   results: list<VersionPublicEmail>, total: int, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel

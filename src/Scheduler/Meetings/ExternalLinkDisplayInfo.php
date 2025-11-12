@@ -10,10 +10,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExternalLinkDisplayInfoShape = array{
- *   avatar?: string,
- *   companyAvatar?: string,
- *   headline?: string,
- *   publicDisplayAvatarOption?: string,
+ *   avatar?: string|null,
+ *   companyAvatar?: string|null,
+ *   headline?: string|null,
+ *   publicDisplayAvatarOption?: string|null,
  * }
  */
 final class ExternalLinkDisplayInfo implements BaseModel

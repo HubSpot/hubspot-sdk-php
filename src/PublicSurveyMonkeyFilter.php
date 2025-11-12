@@ -11,7 +11,7 @@ use HubspotSDK\PublicSurveyMonkeyFilter\FilterType;
 
 /**
  * @phpstan-type PublicSurveyMonkeyFilterShape = array{
- *   filterType: value-of<FilterType>, operator: string, surveyID: string
+ *   filterType: value-of<FilterType>, operator: string, surveyId: string
  * }
  */
 final class PublicSurveyMonkeyFilter implements BaseModel
@@ -26,15 +26,15 @@ final class PublicSurveyMonkeyFilter implements BaseModel
     #[Api]
     public string $operator;
 
-    #[Api('surveyId')]
-    public string $surveyID;
+    #[Api]
+    public string $surveyId;
 
     /**
      * `new PublicSurveyMonkeyFilter()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicSurveyMonkeyFilter::with(filterType: ..., operator: ..., surveyID: ...)
+     * PublicSurveyMonkeyFilter::with(filterType: ..., operator: ..., surveyId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,14 +60,14 @@ final class PublicSurveyMonkeyFilter implements BaseModel
      */
     public static function with(
         string $operator,
-        string $surveyID,
+        string $surveyId,
         FilterType|string $filterType = 'SURVEY_MONKEY',
     ): self {
         $obj = new self;
 
         $obj['filterType'] = $filterType;
         $obj->operator = $operator;
-        $obj->surveyID = $surveyID;
+        $obj->surveyId = $surveyId;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class PublicSurveyMonkeyFilter implements BaseModel
     public function withSurveyID(string $surveyID): self
     {
         $obj = clone $this;
-        $obj->surveyID = $surveyID;
+        $obj->surveyId = $surveyID;
 
         return $obj;
     }

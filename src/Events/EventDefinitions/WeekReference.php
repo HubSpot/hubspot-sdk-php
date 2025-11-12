@@ -14,10 +14,10 @@ use HubspotSDK\Events\EventDefinitions\WeekReference\ReferenceType;
  * @phpstan-type WeekReferenceShape = array{
  *   dayOfWeek: value-of<DayOfWeek>,
  *   referenceType: value-of<ReferenceType>,
- *   hour?: int,
- *   millisecond?: int,
- *   minute?: int,
- *   second?: int,
+ *   hour?: int|null,
+ *   millisecond?: int|null,
+ *   minute?: int|null,
+ *   second?: int|null,
  * }
  */
 final class WeekReference implements BaseModel

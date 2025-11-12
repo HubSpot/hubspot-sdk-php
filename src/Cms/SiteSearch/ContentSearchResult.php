@@ -19,18 +19,18 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   score: float,
  *   type: value-of<Type>,
  *   url: string,
- *   authorFullName?: string,
- *   category?: string,
- *   combinedID?: string,
- *   description?: string,
- *   featuredImageURL?: string,
- *   language?: value-of<Language>,
- *   publishedDate?: int,
- *   rowID?: int,
- *   subcategory?: string,
- *   tableID?: int,
- *   tags?: list<string>,
- *   title?: string,
+ *   authorFullName?: string|null,
+ *   category?: string|null,
+ *   combinedId?: string|null,
+ *   description?: string|null,
+ *   featuredImageUrl?: string|null,
+ *   language?: value-of<Language>|null,
+ *   publishedDate?: int|null,
+ *   rowId?: int|null,
+ *   subcategory?: string|null,
+ *   tableId?: int|null,
+ *   tags?: list<string>|null,
+ *   title?: string|null,
  * }
  */
 final class ContentSearchResult implements BaseModel
@@ -85,8 +85,8 @@ final class ContentSearchResult implements BaseModel
     /**
      * The ID of the document in HubSpot.
      */
-    #[Api('combinedId', optional: true)]
-    public ?string $combinedID;
+    #[Api(optional: true)]
+    public ?string $combinedId;
 
     /**
      * The result's description. The content will be determined by the value of `length` in the request.
@@ -97,8 +97,8 @@ final class ContentSearchResult implements BaseModel
     /**
      * URL of the featured image.
      */
-    #[Api('featuredImageUrl', optional: true)]
-    public ?string $featuredImageURL;
+    #[Api(optional: true)]
+    public ?string $featuredImageUrl;
 
     /**
      * The document's language.
@@ -117,8 +117,8 @@ final class ContentSearchResult implements BaseModel
     /**
      * If a dynamic page, the row ID in the HubDB table.
      */
-    #[Api('rowId', optional: true)]
-    public ?int $rowID;
+    #[Api(optional: true)]
+    public ?int $rowId;
 
     /**
      * For knowledge articles, the subcategory of the article.
@@ -129,8 +129,8 @@ final class ContentSearchResult implements BaseModel
     /**
      * If a dynamic page, the ID of the HubDB table.
      */
-    #[Api('tableId', optional: true)]
-    public ?int $tableID;
+    #[Api(optional: true)]
+    public ?int $tableId;
 
     /**
      * If a blog post, the tags associated with it.
@@ -187,14 +187,14 @@ final class ContentSearchResult implements BaseModel
         string $url,
         ?string $authorFullName = null,
         ?string $category = null,
-        ?string $combinedID = null,
+        ?string $combinedId = null,
         ?string $description = null,
-        ?string $featuredImageURL = null,
+        ?string $featuredImageUrl = null,
         Language|string|null $language = null,
         ?int $publishedDate = null,
-        ?int $rowID = null,
+        ?int $rowId = null,
         ?string $subcategory = null,
-        ?int $tableID = null,
+        ?int $tableId = null,
         ?array $tags = null,
         ?string $title = null,
     ): self {
@@ -208,14 +208,14 @@ final class ContentSearchResult implements BaseModel
 
         null !== $authorFullName && $obj->authorFullName = $authorFullName;
         null !== $category && $obj->category = $category;
-        null !== $combinedID && $obj->combinedID = $combinedID;
+        null !== $combinedId && $obj->combinedId = $combinedId;
         null !== $description && $obj->description = $description;
-        null !== $featuredImageURL && $obj->featuredImageURL = $featuredImageURL;
+        null !== $featuredImageUrl && $obj->featuredImageUrl = $featuredImageUrl;
         null !== $language && $obj['language'] = $language;
         null !== $publishedDate && $obj->publishedDate = $publishedDate;
-        null !== $rowID && $obj->rowID = $rowID;
+        null !== $rowId && $obj->rowId = $rowId;
         null !== $subcategory && $obj->subcategory = $subcategory;
-        null !== $tableID && $obj->tableID = $tableID;
+        null !== $tableId && $obj->tableId = $tableId;
         null !== $tags && $obj->tags = $tags;
         null !== $title && $obj->title = $title;
 
@@ -307,7 +307,7 @@ final class ContentSearchResult implements BaseModel
     public function withCombinedID(string $combinedID): self
     {
         $obj = clone $this;
-        $obj->combinedID = $combinedID;
+        $obj->combinedId = $combinedID;
 
         return $obj;
     }
@@ -329,7 +329,7 @@ final class ContentSearchResult implements BaseModel
     public function withFeaturedImageURL(string $featuredImageURL): self
     {
         $obj = clone $this;
-        $obj->featuredImageURL = $featuredImageURL;
+        $obj->featuredImageUrl = $featuredImageURL;
 
         return $obj;
     }
@@ -364,7 +364,7 @@ final class ContentSearchResult implements BaseModel
     public function withRowID(int $rowID): self
     {
         $obj = clone $this;
-        $obj->rowID = $rowID;
+        $obj->rowId = $rowID;
 
         return $obj;
     }
@@ -386,7 +386,7 @@ final class ContentSearchResult implements BaseModel
     public function withTableID(int $tableID): self
     {
         $obj = clone $this;
-        $obj->tableID = $tableID;
+        $obj->tableId = $tableID;
 
         return $obj;
     }

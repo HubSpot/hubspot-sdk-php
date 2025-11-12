@@ -38,8 +38,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->update(
             'flagName',
-            appID: 0,
-            defaultState: 'OFF'
+            ['appId' => 0, 'defaultState' => 'OFF']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -54,8 +53,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->update(
             'flagName',
-            appID: 0,
-            defaultState: 'OFF'
+            ['appId' => 0, 'defaultState' => 'OFF']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -68,7 +66,10 @@ final class AppsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->featureFlags->apps->delete('flagName', 0);
+        $result = $this->client->crm->featureFlags->apps->delete(
+            'flagName',
+            ['appId' => 0]
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -80,7 +81,10 @@ final class AppsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->featureFlags->apps->delete('flagName', 0);
+        $result = $this->client->crm->featureFlags->apps->delete(
+            'flagName',
+            ['appId' => 0]
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -92,7 +96,10 @@ final class AppsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->featureFlags->apps->get('flagName', 0);
+        $result = $this->client->crm->featureFlags->apps->get(
+            'flagName',
+            ['appId' => 0]
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -104,7 +111,10 @@ final class AppsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->featureFlags->apps->get('flagName', 0);
+        $result = $this->client->crm->featureFlags->apps->get(
+            'flagName',
+            ['appId' => 0]
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -118,7 +128,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->listPortals(
             'flagName',
-            appID: 0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -133,7 +143,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->listPortals(
             'flagName',
-            appID: 0
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -13,11 +13,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type PublicSingleSendEmailShape = array{
  *   to: string,
- *   bcc?: list<string>,
- *   cc?: list<string>,
- *   from?: string,
- *   replyTo?: list<string>,
- *   sendID?: string,
+ *   bcc?: list<string>|null,
+ *   cc?: list<string>|null,
+ *   from?: string|null,
+ *   replyTo?: list<string>|null,
+ *   sendId?: string|null,
  * }
  */
 final class PublicSingleSendEmail implements BaseModel
@@ -64,8 +64,8 @@ final class PublicSingleSendEmail implements BaseModel
     /**
      * ID for a particular send. No more than one email will be sent per sendId.
      */
-    #[Api('sendId', optional: true)]
-    public ?string $sendID;
+    #[Api(optional: true)]
+    public ?string $sendId;
 
     /**
      * `new PublicSingleSendEmail()` is missing required properties by the API.
@@ -101,7 +101,7 @@ final class PublicSingleSendEmail implements BaseModel
         ?array $cc = null,
         ?string $from = null,
         ?array $replyTo = null,
-        ?string $sendID = null,
+        ?string $sendId = null,
     ): self {
         $obj = new self;
 
@@ -111,7 +111,7 @@ final class PublicSingleSendEmail implements BaseModel
         null !== $cc && $obj->cc = $cc;
         null !== $from && $obj->from = $from;
         null !== $replyTo && $obj->replyTo = $replyTo;
-        null !== $sendID && $obj->sendID = $sendID;
+        null !== $sendId && $obj->sendId = $sendId;
 
         return $obj;
     }
@@ -183,7 +183,7 @@ final class PublicSingleSendEmail implements BaseModel
     public function withSendID(string $sendID): self
     {
         $obj = clone $this;
-        $obj->sendID = $sendID;
+        $obj->sendId = $sendID;
 
         return $obj;
     }

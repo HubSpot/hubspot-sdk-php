@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Crm\Objects\LineItems->update
  *
  * @phpstan-type LineItemUpdateParamsShape = array{
- *   properties: array<string, string>, idProperty?: string
+ *   properties: array<string,string>, idProperty?: string
  * }
  */
 final class LineItemUpdateParams implements BaseModel
@@ -27,7 +27,7 @@ final class LineItemUpdateParams implements BaseModel
     /**
      * Key value pairs representing the properties of the object.
      *
-     * @var array<string, string> $properties
+     * @var array<string,string> $properties
      */
     #[Api(map: 'string')]
     public array $properties;
@@ -62,7 +62,7 @@ final class LineItemUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public static function with(
         array $properties,
@@ -80,7 +80,7 @@ final class LineItemUpdateParams implements BaseModel
     /**
      * Key value pairs representing the properties of the object.
      *
-     * @param array<string, string> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

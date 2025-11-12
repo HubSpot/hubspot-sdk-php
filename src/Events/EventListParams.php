@@ -22,7 +22,7 @@ use HubspotSDK\Events\EventListParams\Property;
  *   before?: string,
  *   eventType?: string,
  *   limit?: int,
- *   objectID?: int,
+ *   objectId?: int,
  *   objectProperty?: ObjectProperty,
  *   objectType?: string,
  *   occurredAfter?: \DateTimeInterface,
@@ -70,7 +70,7 @@ final class EventListParams implements BaseModel
      * The ID of the CRM Object to filter event instances on. When including this parameter, you must also include the `objectType` parameter.
      */
     #[Api(optional: true)]
-    public ?int $objectID;
+    public ?int $objectId;
 
     #[Api(optional: true)]
     public ?ObjectProperty $objectProperty;
@@ -123,7 +123,7 @@ final class EventListParams implements BaseModel
         ?string $before = null,
         ?string $eventType = null,
         ?int $limit = null,
-        ?int $objectID = null,
+        ?int $objectId = null,
         ?ObjectProperty $objectProperty = null,
         ?string $objectType = null,
         ?\DateTimeInterface $occurredAfter = null,
@@ -138,7 +138,7 @@ final class EventListParams implements BaseModel
         null !== $before && $obj->before = $before;
         null !== $eventType && $obj->eventType = $eventType;
         null !== $limit && $obj->limit = $limit;
-        null !== $objectID && $obj->objectID = $objectID;
+        null !== $objectId && $obj->objectId = $objectId;
         null !== $objectProperty && $obj->objectProperty = $objectProperty;
         null !== $objectType && $obj->objectType = $objectType;
         null !== $occurredAfter && $obj->occurredAfter = $occurredAfter;
@@ -209,7 +209,7 @@ final class EventListParams implements BaseModel
     public function withObjectID(int $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

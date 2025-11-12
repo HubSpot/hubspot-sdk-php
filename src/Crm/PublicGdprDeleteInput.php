@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicGdprDeleteInputShape = array{
- *   objectID: string, idProperty?: string
+ *   objectId: string, idProperty?: string|null
  * }
  */
 final class PublicGdprDeleteInput implements BaseModel
@@ -18,8 +18,8 @@ final class PublicGdprDeleteInput implements BaseModel
     /** @use SdkModel<PublicGdprDeleteInputShape> */
     use SdkModel;
 
-    #[Api('objectId')]
-    public string $objectID;
+    #[Api]
+    public string $objectId;
 
     #[Api(optional: true)]
     public ?string $idProperty;
@@ -29,7 +29,7 @@ final class PublicGdprDeleteInput implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicGdprDeleteInput::with(objectID: ...)
+     * PublicGdprDeleteInput::with(objectId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,12 +49,12 @@ final class PublicGdprDeleteInput implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $objectID,
+        string $objectId,
         ?string $idProperty = null
     ): self {
         $obj = new self;
 
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectId;
 
         null !== $idProperty && $obj->idProperty = $idProperty;
 
@@ -64,7 +64,7 @@ final class PublicGdprDeleteInput implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectID = $objectID;
+        $obj->objectId = $objectID;
 
         return $obj;
     }

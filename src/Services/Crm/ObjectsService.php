@@ -43,172 +43,172 @@ use HubspotSDK\Services\Crm\Objects\TicketsService;
 final class ObjectsService implements ObjectsContract
 {
     /**
-     * @@api
+     * @api
      */
     public CallsService $calls;
 
     /**
-     * @@api
+     * @api
      */
     public CartsService $carts;
 
     /**
-     * @@api
+     * @api
      */
     public CommercePaymentsService $commercePayments;
 
     /**
-     * @@api
+     * @api
      */
     public CommunicationsService $communications;
 
     /**
-     * @@api
+     * @api
      */
     public CompaniesService $companies;
 
     /**
-     * @@api
+     * @api
      */
     public ContactsService $contacts;
 
     /**
-     * @@api
+     * @api
      */
     public ContractsService $contracts;
 
     /**
-     * @@api
+     * @api
      */
     public CoursesService $courses;
 
     /**
-     * @@api
+     * @api
      */
     public CustomService $custom;
 
     /**
-     * @@api
+     * @api
      */
     public DealSplitsService $dealSplits;
 
     /**
-     * @@api
+     * @api
      */
     public DealsService $deals;
 
     /**
-     * @@api
+     * @api
      */
     public DiscountsService $discounts;
 
     /**
-     * @@api
+     * @api
      */
     public EmailsService $emails;
 
     /**
-     * @@api
+     * @api
      */
     public FeedbackSubmissionsService $feedbackSubmissions;
 
     /**
-     * @@api
+     * @api
      */
     public FeesService $fees;
 
     /**
-     * @@api
+     * @api
      */
     public GoalTargetsService $goalTargets;
 
     /**
-     * @@api
+     * @api
      */
     public InvoicesService $invoices;
 
     /**
-     * @@api
+     * @api
      */
     public LeadsService $leads;
 
     /**
-     * @@api
+     * @api
      */
     public LineItemsService $lineItems;
 
     /**
-     * @@api
+     * @api
      */
     public ListingsService $listings;
 
     /**
-     * @@api
+     * @api
      */
     public MeetingsService $meetings;
 
     /**
-     * @@api
+     * @api
      */
     public NotesService $notes;
 
     /**
-     * @@api
+     * @api
      */
     public Objects\ObjectsService $objects;
 
     /**
-     * @@api
+     * @api
      */
     public OrdersService $orders;
 
     /**
-     * @@api
+     * @api
      */
     public PartnerClientsService $partnerClients;
 
     /**
-     * @@api
+     * @api
      */
     public PartnerServicesService $partnerServices;
 
     /**
-     * @@api
+     * @api
      */
     public PostalMailService $postalMail;
 
     /**
-     * @@api
+     * @api
      */
     public ProductsService $products;
 
     /**
-     * @@api
+     * @api
      */
     public QuotesService $quotes;
 
     /**
-     * @@api
+     * @api
      */
     public SchemasService $schemas;
 
     /**
-     * @@api
+     * @api
      */
     public ServicesService $services;
 
     /**
-     * @@api
+     * @api
      */
     public TasksService $tasks;
 
     /**
-     * @@api
+     * @api
      */
     public TaxesService $taxes;
 
     /**
-     * @@api
+     * @api
      */
     public TicketsService $tickets;
 

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Object for creating a folder.
  *
  * @phpstan-type FolderInputShape = array{
- *   name: string, parentFolderID?: string, parentPath?: string
+ *   name: string, parentFolderId?: string|null, parentPath?: string|null
  * }
  */
 final class FolderInput implements BaseModel
@@ -29,8 +29,8 @@ final class FolderInput implements BaseModel
     /**
      * FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
      */
-    #[Api('parentFolderId', optional: true)]
-    public ?string $parentFolderID;
+    #[Api(optional: true)]
+    public ?string $parentFolderId;
 
     /**
      * Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
@@ -64,14 +64,14 @@ final class FolderInput implements BaseModel
      */
     public static function with(
         string $name,
-        ?string $parentFolderID = null,
+        ?string $parentFolderId = null,
         ?string $parentPath = null
     ): self {
         $obj = new self;
 
         $obj->name = $name;
 
-        null !== $parentFolderID && $obj->parentFolderID = $parentFolderID;
+        null !== $parentFolderId && $obj->parentFolderId = $parentFolderId;
         null !== $parentPath && $obj->parentPath = $parentPath;
 
         return $obj;
@@ -94,7 +94,7 @@ final class FolderInput implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderID = $parentFolderID;
+        $obj->parentFolderId = $parentFolderID;
 
         return $obj;
     }

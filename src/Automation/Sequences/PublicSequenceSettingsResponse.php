@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   sendWindowStartMinute: int,
  *   taskReminderMinute: int,
  *   updatedAt: \DateTimeInterface,
- *   unenrollmentSettings?: UnenrollmentSettingsResponse,
+ *   unenrollmentSettings?: UnenrollmentSettingsResponse|null,
  * }
  */
 final class PublicSequenceSettingsResponse implements BaseModel

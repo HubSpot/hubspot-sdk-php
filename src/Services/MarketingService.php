@@ -17,37 +17,37 @@ use HubspotSDK\Services\Marketing\TransactionalService;
 final class MarketingService implements MarketingContract
 {
     /**
-     * @@api
+     * @api
      */
     public CampaignsService $campaigns;
 
     /**
-     * @@api
+     * @api
      */
     public EmailsService $emails;
 
     /**
-     * @@api
+     * @api
      */
     public EventsService $events;
 
     /**
-     * @@api
+     * @api
      */
     public FormsService $forms;
 
     /**
-     * @@api
+     * @api
      */
     public SingleSendService $singleSend;
 
     /**
-     * @@api
+     * @api
      */
     public SubscriptionsService $subscriptions;
 
     /**
-     * @@api
+     * @api
      */
     public TransactionalService $transactional;
 

@@ -16,22 +16,20 @@ use HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService;
 use HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountStagingTokensService;
 use HubspotSDK\Services\Conversations\CustomChannels\MessagesService;
 
-use const HubspotSDK\Core\OMIT as omit;
-
 final class CustomChannelsService implements CustomChannelsContract
 {
     /**
-     * @@api
+     * @api
      */
     public ChannelAccountStagingTokensService $channelAccountStagingTokens;
 
     /**
-     * @@api
+     * @api
      */
     public ChannelAccountsService $channelAccounts;
 
     /**
-     * @@api
+     * @api
      */
     public MessagesService $messages;
 
@@ -50,50 +48,24 @@ final class CustomChannelsService implements CustomChannelsContract
      *
      * Register a new channel along with its capabilities and the webhook url that will be used to receive messages published over the channel
      *
-     * @param array<string, mixed> $capabilities
-     * @param string $name
-     * @param string $channelAccountConnectionRedirectURL
-     * @param string $channelDescription
-     * @param string $channelLogoURL
-     * @param string $webhookURL
+     * @param array{
+     *   capabilities: array<string,mixed>,
+     *   name: string,
+     *   channelAccountConnectionRedirectUrl?: string,
+     *   channelDescription?: string,
+     *   channelLogoUrl?: string,
+     *   webhookUrl?: string,
+     * }|CustomChannelCreateParams $params
      *
      * @throws APIException
      */
     public function create(
-        $capabilities,
-        $name,
-        $channelAccountConnectionRedirectURL = omit,
-        $channelDescription = omit,
-        $channelLogoURL = omit,
-        $webhookURL = omit,
+        array|CustomChannelCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelIntegrationChannel {
-        $params = [
-            'capabilities' => $capabilities,
-            'name' => $name,
-            'channelAccountConnectionRedirectURL' => $channelAccountConnectionRedirectURL,
-            'channelDescription' => $channelDescription,
-            'channelLogoURL' => $channelLogoURL,
-            'webhookURL' => $webhookURL,
-        ];
-
-        return $this->createRaw($params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function createRaw(
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicChannelIntegrationChannel {
         [$parsed, $options] = CustomChannelCreateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;
@@ -111,52 +83,25 @@ final class CustomChannelsService implements CustomChannelsContract
      *
      * Update the capabilities for an existing. You can also use it to update the channel's webhookUri and its channelAccountConnectionRedirectUrl.
      *
-     * @param array<string, mixed> $capabilities
-     * @param mixed $channelDescription
-     * @param mixed $channelLogoURL
-     * @param mixed $channelAccountConnectionRedirectURL
-     * @param mixed $name
-     * @param mixed $webhookURL
+     * @param array{
+     *   capabilities: array<string,mixed>,
+     *   channelDescription: mixed,
+     *   channelLogoUrl: mixed,
+     *   channelAccountConnectionRedirectUrl?: mixed,
+     *   name?: mixed,
+     *   webhookUrl?: mixed,
+     * }|CustomChannelUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $channelID,
-        $capabilities,
-        $channelDescription,
-        $channelLogoURL,
-        $channelAccountConnectionRedirectURL = omit,
-        $name = omit,
-        $webhookURL = omit,
+        array|CustomChannelUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicChannelIntegrationChannel {
-        $params = [
-            'capabilities' => $capabilities,
-            'channelDescription' => $channelDescription,
-            'channelLogoURL' => $channelLogoURL,
-            'channelAccountConnectionRedirectURL' => $channelAccountConnectionRedirectURL,
-            'name' => $name,
-            'webhookURL' => $webhookURL,
-        ];
-
-        return $this->updateRaw($channelID, $params, $requestOptions);
-    }
-
-    /**
-     * @api
-     *
-     * @param array<string, mixed> $params
-     *
-     * @throws APIException
-     */
-    public function updateRaw(
-        string $channelID,
-        array $params,
-        ?RequestOptions $requestOptions = null
     ): PublicChannelIntegrationChannel {
         [$parsed, $options] = CustomChannelUpdateParams::parseRequest(
             $params,
-            $requestOptions
+            $requestOptions,
         );
 
         // @phpstan-ignore-next-line;

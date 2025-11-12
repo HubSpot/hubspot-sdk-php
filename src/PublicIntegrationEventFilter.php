@@ -11,7 +11,7 @@ use HubspotSDK\PublicIntegrationEventFilter\FilterType;
 
 /**
  * @phpstan-type PublicIntegrationEventFilterShape = array{
- *   eventTypeID: int,
+ *   eventTypeId: int,
  *   filterLines: list<PublicEventFilterMetadata>,
  *   filterType: value-of<FilterType>,
  * }
@@ -21,8 +21,8 @@ final class PublicIntegrationEventFilter implements BaseModel
     /** @use SdkModel<PublicIntegrationEventFilterShape> */
     use SdkModel;
 
-    #[Api('eventTypeId')]
-    public int $eventTypeID;
+    #[Api]
+    public int $eventTypeId;
 
     /** @var list<PublicEventFilterMetadata> $filterLines */
     #[Api(list: PublicEventFilterMetadata::class)]
@@ -38,7 +38,7 @@ final class PublicIntegrationEventFilter implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicIntegrationEventFilter::with(
-     *   eventTypeID: ..., filterLines: ..., filterType: ...
+     *   eventTypeId: ..., filterLines: ..., filterType: ...
      * )
      * ```
      *
@@ -65,13 +65,13 @@ final class PublicIntegrationEventFilter implements BaseModel
      * @param FilterType|value-of<FilterType> $filterType
      */
     public static function with(
-        int $eventTypeID,
+        int $eventTypeId,
         array $filterLines,
         FilterType|string $filterType = 'INTEGRATION_EVENT',
     ): self {
         $obj = new self;
 
-        $obj->eventTypeID = $eventTypeID;
+        $obj->eventTypeId = $eventTypeId;
         $obj->filterLines = $filterLines;
         $obj['filterType'] = $filterType;
 
@@ -81,7 +81,7 @@ final class PublicIntegrationEventFilter implements BaseModel
     public function withEventTypeID(int $eventTypeID): self
     {
         $obj = clone $this;
-        $obj->eventTypeID = $eventTypeID;
+        $obj->eventTypeId = $eventTypeID;
 
         return $obj;
     }

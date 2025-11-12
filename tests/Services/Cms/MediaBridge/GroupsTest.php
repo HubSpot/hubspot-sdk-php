@@ -38,9 +38,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->create(
             'objectType',
-            appID: 'appId',
-            label: 'label',
-            name: 'name'
+            ['appId' => 'appId', 'label' => 'label', 'name' => 'name']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -55,9 +53,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->create(
             'objectType',
-            appID: 'appId',
-            label: 'label',
-            name: 'name'
+            ['appId' => 'appId', 'label' => 'label', 'name' => 'name']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -72,7 +68,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->list(
             'objectType',
-            'appId'
+            ['appId' => 'appId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -87,7 +83,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->list(
             'objectType',
-            'appId'
+            ['appId' => 'appId']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -102,8 +98,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->deleteByName(
             'groupName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -118,8 +113,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->deleteByName(
             'groupName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -134,8 +128,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->getByName(
             'groupName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -150,8 +143,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->getByName(
             'groupName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -166,8 +158,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->updateByName(
             'groupName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -182,8 +173,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->updateByName(
             'groupName',
-            appID: 'appId',
-            objectType: 'objectType'
+            ['appId' => 'appId', 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

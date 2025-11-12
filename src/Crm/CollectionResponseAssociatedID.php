@@ -11,7 +11,7 @@ use HubspotSDK\Marketing\Emails\EmailsPaging;
 
 /**
  * @phpstan-type CollectionResponseAssociatedIDShape = array{
- *   results: list<AssociatedID>, paging?: EmailsPaging
+ *   results: list<AssociatedID>, paging?: EmailsPaging|null
  * }
  */
 final class CollectionResponseAssociatedID implements BaseModel

@@ -10,10 +10,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type LinkGenerationResponseShape = array{
- *   managePreferencesURL: string,
- *   subscriberIDString: string,
- *   unsubscribeAllURL: string,
- *   unsubscribeSingleURL?: string,
+ *   managePreferencesUrl: string,
+ *   subscriberIdString: string,
+ *   unsubscribeAllUrl: string,
+ *   unsubscribeSingleUrl?: string|null,
  * }
  */
 final class LinkGenerationResponse implements BaseModel
@@ -21,17 +21,17 @@ final class LinkGenerationResponse implements BaseModel
     /** @use SdkModel<LinkGenerationResponseShape> */
     use SdkModel;
 
-    #[Api('managePreferencesUrl')]
-    public string $managePreferencesURL;
+    #[Api]
+    public string $managePreferencesUrl;
 
-    #[Api('subscriberIdString')]
-    public string $subscriberIDString;
+    #[Api]
+    public string $subscriberIdString;
 
-    #[Api('unsubscribeAllUrl')]
-    public string $unsubscribeAllURL;
+    #[Api]
+    public string $unsubscribeAllUrl;
 
-    #[Api('unsubscribeSingleUrl', optional: true)]
-    public ?string $unsubscribeSingleURL;
+    #[Api(optional: true)]
+    public ?string $unsubscribeSingleUrl;
 
     /**
      * `new LinkGenerationResponse()` is missing required properties by the API.
@@ -39,7 +39,7 @@ final class LinkGenerationResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * LinkGenerationResponse::with(
-     *   managePreferencesURL: ..., subscriberIDString: ..., unsubscribeAllURL: ...
+     *   managePreferencesUrl: ..., subscriberIdString: ..., unsubscribeAllUrl: ...
      * )
      * ```
      *
@@ -63,18 +63,18 @@ final class LinkGenerationResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $managePreferencesURL,
-        string $subscriberIDString,
-        string $unsubscribeAllURL,
-        ?string $unsubscribeSingleURL = null,
+        string $managePreferencesUrl,
+        string $subscriberIdString,
+        string $unsubscribeAllUrl,
+        ?string $unsubscribeSingleUrl = null,
     ): self {
         $obj = new self;
 
-        $obj->managePreferencesURL = $managePreferencesURL;
-        $obj->subscriberIDString = $subscriberIDString;
-        $obj->unsubscribeAllURL = $unsubscribeAllURL;
+        $obj->managePreferencesUrl = $managePreferencesUrl;
+        $obj->subscriberIdString = $subscriberIdString;
+        $obj->unsubscribeAllUrl = $unsubscribeAllUrl;
 
-        null !== $unsubscribeSingleURL && $obj->unsubscribeSingleURL = $unsubscribeSingleURL;
+        null !== $unsubscribeSingleUrl && $obj->unsubscribeSingleUrl = $unsubscribeSingleUrl;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withManagePreferencesURL(string $managePreferencesURL): self
     {
         $obj = clone $this;
-        $obj->managePreferencesURL = $managePreferencesURL;
+        $obj->managePreferencesUrl = $managePreferencesURL;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIDString = $subscriberIDString;
+        $obj->subscriberIdString = $subscriberIDString;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withUnsubscribeAllURL(string $unsubscribeAllURL): self
     {
         $obj = clone $this;
-        $obj->unsubscribeAllURL = $unsubscribeAllURL;
+        $obj->unsubscribeAllUrl = $unsubscribeAllURL;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withUnsubscribeSingleURL(string $unsubscribeSingleURL): self
     {
         $obj = clone $this;
-        $obj->unsubscribeSingleURL = $unsubscribeSingleURL;
+        $obj->unsubscribeSingleUrl = $unsubscribeSingleURL;
 
         return $obj;
     }

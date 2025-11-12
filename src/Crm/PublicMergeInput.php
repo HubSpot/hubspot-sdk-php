@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicMergeInputShape = array{
- *   objectIDToMerge: string, primaryObjectID: string
+ *   objectIdToMerge: string, primaryObjectId: string
  * }
  */
 final class PublicMergeInput implements BaseModel
@@ -18,18 +18,18 @@ final class PublicMergeInput implements BaseModel
     /** @use SdkModel<PublicMergeInputShape> */
     use SdkModel;
 
-    #[Api('objectIdToMerge')]
-    public string $objectIDToMerge;
+    #[Api]
+    public string $objectIdToMerge;
 
-    #[Api('primaryObjectId')]
-    public string $primaryObjectID;
+    #[Api]
+    public string $primaryObjectId;
 
     /**
      * `new PublicMergeInput()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicMergeInput::with(objectIDToMerge: ..., primaryObjectID: ...)
+     * PublicMergeInput::with(objectIdToMerge: ..., primaryObjectId: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,13 +49,13 @@ final class PublicMergeInput implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $objectIDToMerge,
-        string $primaryObjectID
+        string $objectIdToMerge,
+        string $primaryObjectId
     ): self {
         $obj = new self;
 
-        $obj->objectIDToMerge = $objectIDToMerge;
-        $obj->primaryObjectID = $primaryObjectID;
+        $obj->objectIdToMerge = $objectIdToMerge;
+        $obj->primaryObjectId = $primaryObjectId;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class PublicMergeInput implements BaseModel
     public function withObjectIDToMerge(string $objectIDToMerge): self
     {
         $obj = clone $this;
-        $obj->objectIDToMerge = $objectIDToMerge;
+        $obj->objectIdToMerge = $objectIDToMerge;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class PublicMergeInput implements BaseModel
     public function withPrimaryObjectID(string $primaryObjectID): self
     {
         $obj = clone $this;
-        $obj->primaryObjectID = $primaryObjectID;
+        $obj->primaryObjectId = $primaryObjectID;
 
         return $obj;
     }
