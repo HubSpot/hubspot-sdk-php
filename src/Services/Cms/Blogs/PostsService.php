@@ -10,6 +10,7 @@ use HubspotSDK\Cms\Blogs\Posts\PostAttachToLangGroupParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCloneParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateLangVariationParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams;
+use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
 use HubspotSDK\Cms\Blogs\Posts\PostDeleteParams;
@@ -53,13 +54,11 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * @phpstan-type AbStatus = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
-     *
      * Create a new blog post, specifying its content in the request body.
      *
      * @param array{
      *   id: string,
-     *   abStatus: AbStatus,
+     *   abStatus: value-of<AbStatus>,
      *   abTestId: string,
      *   archivedAt: int,
      *   archivedInDashboard: bool,
@@ -174,13 +173,11 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * @phpstan-type AbStatusShape = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
-     *
      * Partially updates a single blog post by ID. You only need to specify the values that you want to update.
      *
      * @param array{
      *   id: string,
-     *   abStatus: AbStatusShape,
+     *   abStatus: value-of<PostUpdateParams\AbStatus>,
      *   abTestId: string,
      *   archivedAt: int,
      *   archivedInDashboard: bool,
@@ -764,13 +761,11 @@ final class PostsService implements PostsContract
     /**
      * @api
      *
-     * @phpstan-type AbStatus1 = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
-     *
      * Partially updates the draft version of a single blog post by ID. You only need to specify the values that you want to update.
      *
      * @param array{
      *   id: string,
-     *   abStatus: AbStatus1,
+     *   abStatus: value-of<PostUpdateDraftParams\AbStatus>,
      *   abTestId: string,
      *   archivedAt: int,
      *   archivedInDashboard: bool,

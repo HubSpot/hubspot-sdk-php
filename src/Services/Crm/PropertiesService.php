@@ -9,6 +9,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponseProperty;
 use HubspotSDK\Crm\Properties\CreatedResponseProperty;
 use HubspotSDK\Crm\Properties\PropertyCreateParams;
+use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
 use HubspotSDK\Crm\Properties\PropertyDeleteParams;
 use HubspotSDK\Crm\Properties\PropertyGetParams;
 use HubspotSDK\Crm\Properties\PropertyListParams;
@@ -43,12 +44,10 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
-     * @phpstan-type FieldType = "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea"
-     *
      * Create and return a copy of a new property for the specified object type.
      *
      * @param array{
-     *   fieldType: FieldType,
+     *   fieldType: value-of<FieldType>,
      *   groupName: string,
      *   label: string,
      *   name: string,
@@ -96,8 +95,6 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
-     * @phpstan-type FieldTypeShape = "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea"
-     *
      * Perform a partial update of a property identified by { propertyName }. Provided fields will be overwritten.
      *
      * @param array{
@@ -105,7 +102,7 @@ final class PropertiesService implements PropertiesContract
      *   calculationFormula?: string,
      *   description?: string,
      *   displayOrder?: int,
-     *   fieldType?: FieldTypeShape,
+     *   fieldType?: value-of<PropertyUpdateParams\FieldType>,
      *   formField?: bool,
      *   groupName?: string,
      *   hidden?: bool,

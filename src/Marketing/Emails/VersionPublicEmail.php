@@ -16,7 +16,7 @@ use HubspotSDK\VersionUser;
  *
  * @phpstan-type VersionPublicEmailShape = array{
  *   id: string,
- *   object1: PublicEmail,
+ *   object: PublicEmail,
  *   updatedAt: \DateTimeInterface,
  *   user: VersionUser,
  * }
@@ -38,7 +38,7 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
      * A marketing email.
      */
     #[Api]
-    public PublicEmail $object1;
+    public PublicEmail $object;
 
     #[Api]
     public \DateTimeInterface $updatedAt;
@@ -54,7 +54,7 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
      *
      * To enforce required parameters use
      * ```
-     * VersionPublicEmail::with(id: ..., object1: ..., updatedAt: ..., user: ...)
+     * VersionPublicEmail::with(id: ..., object: ..., updatedAt: ..., user: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -79,14 +79,14 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
      */
     public static function with(
         string $id,
-        PublicEmail $object1,
+        PublicEmail $object,
         \DateTimeInterface $updatedAt,
         VersionUser $user,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
-        $obj->object1 = $object1;
+        $obj->object = $object;
         $obj->updatedAt = $updatedAt;
         $obj->user = $user;
 
@@ -107,10 +107,10 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
     /**
      * A marketing email.
      */
-    public function withObject(PublicEmail $object1): self
+    public function withObject(PublicEmail $object): self
     {
         $obj = clone $this;
-        $obj->object1 = $object1;
+        $obj->object = $object;
 
         return $obj;
     }

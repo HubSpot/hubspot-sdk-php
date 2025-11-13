@@ -13,7 +13,7 @@ use HubspotSDK\VersionUser;
  * Model definition for a landing page or site page version. Contains metadata describing the version of the page. It can be used to view edit history of a page.
  *
  * @phpstan-type VersionPageShape = array{
- *   id: string, object1: Page, updatedAt: \DateTimeInterface, user: VersionUser
+ *   id: string, object: Page, updatedAt: \DateTimeInterface, user: VersionUser
  * }
  */
 final class VersionPage implements BaseModel
@@ -31,7 +31,7 @@ final class VersionPage implements BaseModel
      * Model definition for a landing page or site page.
      */
     #[Api]
-    public Page $object1;
+    public Page $object;
 
     #[Api]
     public \DateTimeInterface $updatedAt;
@@ -47,7 +47,7 @@ final class VersionPage implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * VersionPage::with(id: ..., object1: ..., updatedAt: ..., user: ...)
+     * VersionPage::with(id: ..., object: ..., updatedAt: ..., user: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -72,14 +72,14 @@ final class VersionPage implements BaseModel
      */
     public static function with(
         string $id,
-        Page $object1,
+        Page $object,
         \DateTimeInterface $updatedAt,
         VersionUser $user
     ): self {
         $obj = new self;
 
         $obj->id = $id;
-        $obj->object1 = $object1;
+        $obj->object = $object;
         $obj->updatedAt = $updatedAt;
         $obj->user = $user;
 
@@ -100,10 +100,10 @@ final class VersionPage implements BaseModel
     /**
      * Model definition for a landing page or site page.
      */
-    public function withObject(Page $object1): self
+    public function withObject(Page $object): self
     {
         $obj = clone $this;
-        $obj->object1 = $object1;
+        $obj->object = $object;
 
         return $obj;
     }

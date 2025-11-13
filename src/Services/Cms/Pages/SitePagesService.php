@@ -15,6 +15,7 @@ use HubspotSDK\Cms\Pages\SitePages\SitePageCreateAbTestVariationParams;
 use HubspotSDK\Cms\Pages\SitePages\SitePageCreateBatchParams;
 use HubspotSDK\Cms\Pages\SitePages\SitePageCreateLanguageVariationParams;
 use HubspotSDK\Cms\Pages\SitePages\SitePageCreateParams;
+use HubspotSDK\Cms\Pages\SitePages\SitePageCreateParams\AbStatus;
 use HubspotSDK\Cms\Pages\SitePages\SitePageCreateParams\CurrentState;
 use HubspotSDK\Cms\Pages\SitePages\SitePageCreateParams\Language;
 use HubspotSDK\Cms\Pages\SitePages\SitePageDeleteBatchParams;
@@ -51,13 +52,11 @@ final class SitePagesService implements SitePagesContract
     /**
      * @api
      *
-     * @phpstan-type AbStatus = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
-     *
      * Create a new Site Page
      *
      * @param array{
      *   id: string,
-     *   abStatus: AbStatus,
+     *   abStatus: value-of<AbStatus>,
      *   abTestId: string,
      *   archivedAt: string|\DateTimeInterface,
      *   archivedInDashboard: bool,
@@ -168,14 +167,12 @@ final class SitePagesService implements SitePagesContract
     /**
      * @api
      *
-     * @phpstan-type AbStatusShape = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
-     *
      * Sparse updates a single Site Page object identified by the id in the path.
      * You only need to specify the column values that you are modifying.
      *
      * @param array{
      *   id: string,
-     *   abStatus: AbStatusShape,
+     *   abStatus: value-of<SitePageUpdateParams\AbStatus>,
      *   abTestId: string,
      *   archivedAt: string|\DateTimeInterface,
      *   archivedInDashboard: bool,
@@ -1028,14 +1025,12 @@ final class SitePagesService implements SitePagesContract
     /**
      * @api
      *
-     * @phpstan-type AbStatus1 = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
-     *
      * Sparse updates the draft version of a single Site Page object identified by the id in the path.
      * You only need to specify the column values that you are modifying.
      *
      * @param array{
      *   id: string,
-     *   abStatus: AbStatus1,
+     *   abStatus: value-of<SitePageUpdateDraftParams\AbStatus>,
      *   abTestId: string,
      *   archivedAt: string|\DateTimeInterface,
      *   archivedInDashboard: bool,
