@@ -101,7 +101,7 @@ final class Page implements BaseModel, BasePage
      */
     public function nextRequest(): ?array
     {
-        $next = $this->paging['next']['after'] ?? null;
+        $next = $this->paging->next->after ?? null;
         if (!$next) {
             return null;
         }

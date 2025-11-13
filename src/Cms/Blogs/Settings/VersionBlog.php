@@ -15,7 +15,7 @@ use HubspotSDK\VersionUser;
  * Model definition for a Version Blog. Contains metadata describing the version of the Blog. It can be used to view edit history of the settings.
  *
  * @phpstan-type VersionBlogShape = array{
- *   id: string, object1: Blog, updatedAt: \DateTimeInterface, user: VersionUser
+ *   id: string, object: Blog, updatedAt: \DateTimeInterface, user: VersionUser
  * }
  */
 final class VersionBlog implements BaseModel, ResponseConverter
@@ -32,7 +32,7 @@ final class VersionBlog implements BaseModel, ResponseConverter
     public string $id;
 
     #[Api]
-    public Blog $object1;
+    public Blog $object;
 
     #[Api]
     public \DateTimeInterface $updatedAt;
@@ -48,7 +48,7 @@ final class VersionBlog implements BaseModel, ResponseConverter
      *
      * To enforce required parameters use
      * ```
-     * VersionBlog::with(id: ..., object1: ..., updatedAt: ..., user: ...)
+     * VersionBlog::with(id: ..., object: ..., updatedAt: ..., user: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -73,14 +73,14 @@ final class VersionBlog implements BaseModel, ResponseConverter
      */
     public static function with(
         string $id,
-        Blog $object1,
+        Blog $object,
         \DateTimeInterface $updatedAt,
         VersionUser $user
     ): self {
         $obj = new self;
 
         $obj->id = $id;
-        $obj->object1 = $object1;
+        $obj->object = $object;
         $obj->updatedAt = $updatedAt;
         $obj->user = $user;
 
@@ -98,10 +98,10 @@ final class VersionBlog implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    public function withObject(Blog $object1): self
+    public function withObject(Blog $object): self
     {
         $obj = clone $this;
-        $obj->object1 = $object1;
+        $obj->object = $object;
 
         return $obj;
     }

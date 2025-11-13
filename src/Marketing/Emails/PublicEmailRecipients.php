@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Data structure representing lists of IDs that should be included and excluded.
  *
  * @phpstan-type PublicEmailRecipientsShape = array{
- *   exclude?: list<string>|null, include1?: list<string>|null
+ *   exclude?: list<string>|null, include?: list<string>|null
  * }
  */
 final class PublicEmailRecipients implements BaseModel
@@ -31,10 +31,10 @@ final class PublicEmailRecipients implements BaseModel
     /**
      * Included IDs.
      *
-     * @var list<string>|null $include1
+     * @var list<string>|null $include
      */
     #[Api(list: 'string', optional: true)]
-    public ?array $include1;
+    public ?array $include;
 
     public function __construct()
     {
@@ -47,16 +47,16 @@ final class PublicEmailRecipients implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $exclude
-     * @param list<string> $include1
+     * @param list<string> $include
      */
     public static function with(
         ?array $exclude = null,
-        ?array $include1 = null
+        ?array $include = null
     ): self {
         $obj = new self;
 
         null !== $exclude && $obj->exclude = $exclude;
-        null !== $include1 && $obj->include1 = $include1;
+        null !== $include && $obj->include = $include;
 
         return $obj;
     }
@@ -77,12 +77,12 @@ final class PublicEmailRecipients implements BaseModel
     /**
      * Included IDs.
      *
-     * @param list<string> $include1
+     * @param list<string> $include
      */
-    public function withInclude(array $include1): self
+    public function withInclude(array $include): self
     {
         $obj = clone $this;
-        $obj->include1 = $include1;
+        $obj->include = $include;
 
         return $obj;
     }

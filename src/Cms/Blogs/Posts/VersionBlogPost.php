@@ -15,10 +15,7 @@ use HubspotSDK\VersionUser;
  * Model definition of a version of a blog post.
  *
  * @phpstan-type VersionBlogPostShape = array{
- *   id: string,
- *   object1: BlogPost,
- *   updatedAt: \DateTimeInterface,
- *   user: VersionUser,
+ *   id: string, object: BlogPost, updatedAt: \DateTimeInterface, user: VersionUser
  * }
  */
 final class VersionBlogPost implements BaseModel, ResponseConverter
@@ -38,7 +35,7 @@ final class VersionBlogPost implements BaseModel, ResponseConverter
      * Model definition for a Blog Post.
      */
     #[Api]
-    public BlogPost $object1;
+    public BlogPost $object;
 
     #[Api]
     public \DateTimeInterface $updatedAt;
@@ -54,7 +51,7 @@ final class VersionBlogPost implements BaseModel, ResponseConverter
      *
      * To enforce required parameters use
      * ```
-     * VersionBlogPost::with(id: ..., object1: ..., updatedAt: ..., user: ...)
+     * VersionBlogPost::with(id: ..., object: ..., updatedAt: ..., user: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -79,14 +76,14 @@ final class VersionBlogPost implements BaseModel, ResponseConverter
      */
     public static function with(
         string $id,
-        BlogPost $object1,
+        BlogPost $object,
         \DateTimeInterface $updatedAt,
         VersionUser $user,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
-        $obj->object1 = $object1;
+        $obj->object = $object;
         $obj->updatedAt = $updatedAt;
         $obj->user = $user;
 
@@ -107,10 +104,10 @@ final class VersionBlogPost implements BaseModel, ResponseConverter
     /**
      * Model definition for a Blog Post.
      */
-    public function withObject(BlogPost $object1): self
+    public function withObject(BlogPost $object): self
     {
         $obj = clone $this;
-        $obj->object1 = $object1;
+        $obj->object = $object;
 
         return $obj;
     }

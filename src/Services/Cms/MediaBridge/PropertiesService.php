@@ -10,6 +10,7 @@ use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyArchiveBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams;
+use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\FieldType;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyDeleteParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetParams;
@@ -30,13 +31,11 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
-     * @phpstan-type FieldType = "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea"
-     *
      * Create a new property for the specified media type
      *
      * @param array{
      *   appId: string,
-     *   fieldType: FieldType,
+     *   fieldType: value-of<FieldType>,
      *   groupName: string,
      *   label: string,
      *   name: string,
@@ -86,8 +85,6 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
-     * @phpstan-type FieldTypeShape = "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea"
-     *
      * Update an existing property for an object type.
      *
      * @param array{
@@ -96,7 +93,7 @@ final class PropertiesService implements PropertiesContract
      *   calculationFormula?: string,
      *   description?: string,
      *   displayOrder?: int,
-     *   fieldType?: FieldTypeShape,
+     *   fieldType?: value-of<PropertyUpdateParams\FieldType>,
      *   formField?: bool,
      *   groupName?: string,
      *   hasUniqueValue?: bool,

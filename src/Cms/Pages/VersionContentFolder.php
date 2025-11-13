@@ -14,7 +14,7 @@ use HubspotSDK\VersionUser;
  *
  * @phpstan-type VersionContentFolderShape = array{
  *   id: string,
- *   object1: ContentFolder,
+ *   object: ContentFolder,
  *   updatedAt: \DateTimeInterface,
  *   user: VersionUser,
  * }
@@ -34,7 +34,7 @@ final class VersionContentFolder implements BaseModel
      * Model definition for a content folder.
      */
     #[Api]
-    public ContentFolder $object1;
+    public ContentFolder $object;
 
     #[Api]
     public \DateTimeInterface $updatedAt;
@@ -50,7 +50,7 @@ final class VersionContentFolder implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * VersionContentFolder::with(id: ..., object1: ..., updatedAt: ..., user: ...)
+     * VersionContentFolder::with(id: ..., object: ..., updatedAt: ..., user: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -75,14 +75,14 @@ final class VersionContentFolder implements BaseModel
      */
     public static function with(
         string $id,
-        ContentFolder $object1,
+        ContentFolder $object,
         \DateTimeInterface $updatedAt,
         VersionUser $user,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
-        $obj->object1 = $object1;
+        $obj->object = $object;
         $obj->updatedAt = $updatedAt;
         $obj->user = $user;
 
@@ -103,10 +103,10 @@ final class VersionContentFolder implements BaseModel
     /**
      * Model definition for a content folder.
      */
-    public function withObject(ContentFolder $object1): self
+    public function withObject(ContentFolder $object): self
     {
         $obj = clone $this;
-        $obj->object1 = $object1;
+        $obj->object = $object;
 
         return $obj;
     }

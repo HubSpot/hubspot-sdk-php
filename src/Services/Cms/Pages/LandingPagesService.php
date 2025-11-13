@@ -17,6 +17,7 @@ use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateFolderParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateFoldersBatchParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateLanguageVariationParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
+use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageDeleteBatchParams;
@@ -66,13 +67,11 @@ final class LandingPagesService implements LandingPagesContract
     /**
      * @api
      *
-     * @phpstan-type AbStatus = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
-     *
      * Create a new Landing Page
      *
      * @param array{
      *   id: string,
-     *   abStatus: AbStatus,
+     *   abStatus: value-of<AbStatus>,
      *   abTestId: string,
      *   archivedAt: string|\DateTimeInterface,
      *   archivedInDashboard: bool,
@@ -183,14 +182,12 @@ final class LandingPagesService implements LandingPagesContract
     /**
      * @api
      *
-     * @phpstan-type AbStatusShape = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
-     *
      * Sparse updates a single Landing Page object identified by the id in the path.
      * You only need to specify the column values that you are modifying.
      *
      * @param array{
      *   id: string,
-     *   abStatus: AbStatusShape,
+     *   abStatus: value-of<LandingPageUpdateParams\AbStatus>,
      *   abTestId: string,
      *   archivedAt: string|\DateTimeInterface,
      *   archivedInDashboard: bool,
@@ -1384,14 +1381,12 @@ final class LandingPagesService implements LandingPagesContract
     /**
      * @api
      *
-     * @phpstan-type AbStatus1 = "master"|"variant"|"loser_variant"|"mab_master"|"mab_variant"|"automated_master"|"automated_variant"|"automated_loser_variant"
-     *
      * Sparse updates the draft version of a single Landing Page object identified by the id in the path.
      * You only need to specify the column values that you are modifying.
      *
      * @param array{
      *   id: string,
-     *   abStatus: AbStatus1,
+     *   abStatus: value-of<LandingPageUpdateDraftParams\AbStatus>,
      *   abTestId: string,
      *   archivedAt: string|\DateTimeInterface,
      *   archivedInDashboard: bool,

@@ -15,6 +15,7 @@ use HubspotSDK\Files\Files\FileImportFromURLAsyncParams;
 use HubspotSDK\Files\Files\FileReplaceParams;
 use HubspotSDK\Files\Files\FileSearchParams;
 use HubspotSDK\Files\Files\FileUpdateParams;
+use HubspotSDK\Files\Files\FileUpdateParams\Access;
 use HubspotSDK\Files\Files\FileUploadParams;
 use HubspotSDK\Files\FileStat;
 use HubspotSDK\Files\ImportFromURLTaskLocator;
@@ -33,12 +34,10 @@ final class FilesService implements FilesContract
     /**
      * @api
      *
-     * @phpstan-type Access = "PUBLIC_INDEXABLE"|"PUBLIC_NOT_INDEXABLE"|"HIDDEN_INDEXABLE"|"HIDDEN_NOT_INDEXABLE"|"HIDDEN_PRIVATE"|"PRIVATE"|"HIDDEN_SENSITIVE"|"SENSITIVE"
-     *
      * Update properties of file by ID.
      *
      * @param array{
-     *   access?: Access,
+     *   access?: value-of<Access>,
      *   clearExpires?: bool,
      *   expiresAt?: string|\DateTimeInterface,
      *   isUsableInContent?: bool,
@@ -223,12 +222,10 @@ final class FilesService implements FilesContract
     /**
      * @api
      *
-     * @phpstan-type AccessShape = "PUBLIC_INDEXABLE"|"PUBLIC_NOT_INDEXABLE"|"HIDDEN_INDEXABLE"|"HIDDEN_NOT_INDEXABLE"|"HIDDEN_PRIVATE"|"PRIVATE"|"HIDDEN_SENSITIVE"|"SENSITIVE"
-     *
      * Asynchronously imports the file at the given URL into the file manager.
      *
      * @param array{
-     *   access: AccessShape,
+     *   access: value-of<FileImportFromURLAsyncParams\Access>,
      *   url: string,
      *   duplicateValidationScope?: "ENTIRE_PORTAL"|"EXACT_FOLDER",
      *   duplicateValidationStrategy?: "NONE"|"REJECT"|"RETURN_EXISTING",

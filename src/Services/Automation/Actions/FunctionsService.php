@@ -6,10 +6,10 @@ namespace HubspotSDK\Services\Automation\Actions;
 
 use HubspotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
 use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams;
-use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType;
 use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionDeleteParams;
+use HubspotSDK\Automation\Actions\Functions\FunctionDeleteParams\FunctionType;
 use HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionGetParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionListParams;
@@ -62,12 +62,10 @@ final class FunctionsService implements FunctionsContract
     /**
      * @api
      *
-     * @phpstan-type FunctionTypeShape = "PRE_ACTION_EXECUTION"|"PRE_FETCH_OPTIONS"|"POST_FETCH_OPTIONS"|"POST_ACTION_EXECUTION"
-     *
      * Archive a function for a specific definition.
      *
      * @param array{
-     *   appId: int, definitionId: string, functionType: FunctionTypeShape
+     *   appId: int, definitionId: string, functionType: value-of<FunctionType>
      * }|FunctionDeleteParams $params
      *
      * @throws APIException
@@ -151,12 +149,12 @@ final class FunctionsService implements FunctionsContract
      *
      * Add a function for a given definition.
      *
-     * @param FunctionType|value-of<FunctionType> $functionType
+     * @param FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<FunctionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
      *
      * @throws APIException
      */
     public function createOrReplaceByFunctionType(
-        FunctionType|string $functionType,
+        FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
         string $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier {
@@ -231,12 +229,12 @@ final class FunctionsService implements FunctionsContract
     /**
      * @api
      *
-     * @phpstan-type FunctionType1 = "PRE_ACTION_EXECUTION"|"PRE_FETCH_OPTIONS"|"POST_FETCH_OPTIONS"|"POST_ACTION_EXECUTION"
-     *
      * Retrieve a specific function from a given definition.
      *
      * @param array{
-     *   appId: int, definitionId: string, functionType: FunctionType1
+     *   appId: int,
+     *   definitionId: string,
+     *   functionType: value-of<FunctionGetParams\FunctionType>,
      * }|FunctionGetParams $params
      *
      * @throws APIException
