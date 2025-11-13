@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of taxes.
  *
- * @see HubspotSDK\Crm\Objects\Taxes\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Taxes\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete the Landing Page object identified by the id in the path.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->delete
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::delete()
  *
  * @phpstan-type LandingPageDeleteParamsShape = array{archived?: bool}
  */

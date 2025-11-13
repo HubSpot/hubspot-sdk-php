@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams\CurrencyCode;
 
 /**
- * @see HubspotSDK\Settings\Currencies\CentralFxRates->createCurrency
+ * @see HubspotSDK\Services\Settings\Currencies\CentralFxRatesService::createCurrency()
  *
  * @phpstan-type CentralFxRateCreateCurrencyParamsShape = array{
  *   currencyCode: CurrencyCode|value-of<CurrencyCode>

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a tax with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard taxes is provided.
  *
- * @see HubspotSDK\Crm\Objects\Taxes->create
+ * @see HubspotSDK\Services\Crm\Objects\TaxesService::create()
  *
  * @phpstan-type TaxCreateParamsShape = array{
  *   properties: array<string,string>,

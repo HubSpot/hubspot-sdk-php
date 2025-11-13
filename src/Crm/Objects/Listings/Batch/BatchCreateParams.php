@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create multiple listings in a single request.
  *
- * @see HubspotSDK\Crm\Objects\Listings\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Listings\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

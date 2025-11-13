@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Remove an association between two partner clients.
  *
- * @see HubspotSDK\Crm\Objects\PartnerClients\Associations->delete
+ * @see HubspotSDK\Services\Crm\Objects\PartnerClients\AssociationsService::delete()
  *
  * @phpstan-type AssociationDeleteParamsShape = array{
  *   partnerClientId: string, toObjectType: string, toObjectId: string

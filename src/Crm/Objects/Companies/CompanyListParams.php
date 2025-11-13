@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve all companies, using query parameters to control the information that gets returned.
  *
- * @see HubspotSDK\Crm\Objects\Companies->list
+ * @see HubspotSDK\Services\Crm\Objects\CompaniesService::list()
  *
  * @phpstan-type CompanyListParamsShape = array{
  *   after?: string,

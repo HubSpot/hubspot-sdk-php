@@ -14,7 +14,7 @@ use HubspotSDK\PropertyName;
 /**
  * Get the details for a batch of properties for a specified object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Properties->getBatch
+ * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::getBatch()
  *
  * @phpstan-type PropertyGetBatchParamsShape = array{
  *   appId: string,

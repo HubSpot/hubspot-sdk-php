@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create the Landing Page objects detailed in the request body.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->createBatch
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::createBatch()
  *
  * @phpstan-type LandingPageCreateBatchParamsShape = array{inputs: list<Page>}
  */

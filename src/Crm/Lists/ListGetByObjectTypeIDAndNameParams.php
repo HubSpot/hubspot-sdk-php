@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Fetch a single list by list name and object type.
  *
- * @see HubspotSDK\Crm\Lists->getByObjectTypeIDAndName
+ * @see HubspotSDK\Services\Crm\ListsService::getByObjectTypeIDAndName()
  *
  * @phpstan-type ListGetByObjectTypeIDAndNameParamsShape = array{
  *   objectTypeId: string, includeFilters?: bool

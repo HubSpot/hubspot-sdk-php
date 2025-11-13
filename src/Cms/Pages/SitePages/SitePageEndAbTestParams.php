@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * End an active A/B test and designate a winner.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->endAbTest
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::endAbTest()
  *
  * @phpstan-type SitePageEndAbTestParamsShape = array{
  *   abTestId: string, winnerId: string

@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * Note: HubSpot access tokens will fluctuate in size as the information that's encoded in them changes over time. It's recommended to allow for tokens to be up to 300 characters to account for any potential changes.
  *
- * @see HubspotSDK\Auth\OAuth->createAccessToken
+ * @see HubspotSDK\Services\Auth\OAuthService::createAccessToken()
  *
  * @phpstan-type OAuthCreateAccessTokenParamsShape = array{
  *   client_id?: string,

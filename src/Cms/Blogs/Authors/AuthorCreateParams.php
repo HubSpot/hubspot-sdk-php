@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new Blog Author.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->create
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::create()
  *
  * @phpstan-type AuthorCreateParamsShape = array{
  *   id: string,

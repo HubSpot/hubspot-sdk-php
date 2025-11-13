@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a custom event definition.
  *
- * @see HubspotSDK\Events\EventDefinitions->create
+ * @see HubspotSDK\Services\Events\EventDefinitionsService::create()
  *
  * @phpstan-type EventDefinitionCreateParamsShape = array{
  *   label: string,

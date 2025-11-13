@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Timeline\TimelineEvent;
 /**
  * Batch create multiple instances of timeline events based on an event template. Once created, these event are immutable on the object timeline and cannot be modified. If the event template was configured to update object properties via `objectPropertyName`, this call will also attempt to updates those properties, or add them if they don't exist.
  *
- * @see HubspotSDK\Crm\Timeline\Events->batchCreate
+ * @see HubspotSDK\Services\Crm\Timeline\EventsService::batchCreate()
  *
  * @phpstan-type EventBatchCreateParamsShape = array{inputs: list<TimelineEvent>}
  */

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete an account-level flag state for a specific HubSpot account. No request body is included.
  *
- * @see HubspotSDK\Crm\FeatureFlags\Portals->delete
+ * @see HubspotSDK\Services\Crm\FeatureFlags\PortalsService::delete()
  *
  * @phpstan-type PortalDeleteParamsShape = array{appId: int, flagName: string}
  */

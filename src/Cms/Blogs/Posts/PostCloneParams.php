@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Clone a blog post, making a copy of it in a new blog post.
  *
- * @see HubspotSDK\Cms\Blogs\Posts->clone
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::clone()
  *
  * @phpstan-type PostCloneParamsShape = array{id: string, cloneName?: string}
  */

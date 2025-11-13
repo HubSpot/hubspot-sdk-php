@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update the Landing Page objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->updateBatch
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::updateBatch()
  *
  * @phpstan-type LandingPageUpdateBatchParamsShape = array{
  *   inputs: list<mixed>, archived?: bool

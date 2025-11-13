@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\PublicSingleSendEmail;
 /**
  * Asynchronously send a transactional email. Returns the status of the email send with a statusId that can be used to continuously query for the status using the Email Send Status API.
  *
- * @see HubspotSDK\Marketing\Transactional\SingleEmail->send
+ * @see HubspotSDK\Services\Marketing\Transactional\SingleEmailService::send()
  *
  * @phpstan-type SingleEmailSendParamsShape = array{
  *   emailId: int,

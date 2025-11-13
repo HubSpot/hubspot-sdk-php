@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Defines a new card that will become active on an account when this app is installed.
  *
- * @see HubspotSDK\Crm\Extensions\Cards->create
+ * @see HubspotSDK\Services\Crm\Extensions\CardsService::create()
  *
  * @phpstan-type CardCreateParamsShape = array{
  *   actions: CardActions,

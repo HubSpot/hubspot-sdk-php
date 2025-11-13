@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.
  *
- * @see HubspotSDK\Files\Files->replace
+ * @see HubspotSDK\Services\Files\FilesService::replace()
  *
  * @phpstan-type FileReplaceParamsShape = array{
  *   charsetHunch?: string, file?: string, options?: string

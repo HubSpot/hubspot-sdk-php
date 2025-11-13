@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Creates rows in the draft version of the specified table, given an array of row objects. Maximum of 100 row object per call. See the overview section for more details with an example.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows\Batch->createBatch
+ * @see HubspotSDK\Services\Cms\Hubdb\Rows\BatchService::createBatch()
  *
  * @phpstan-type BatchCreateBatchParamsShape = array{
  *   inputs: list<HubDBTableRowV3Request>

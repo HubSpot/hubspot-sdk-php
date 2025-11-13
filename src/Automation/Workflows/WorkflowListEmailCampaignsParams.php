@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Automation\Workflows->listEmailCampaigns
+ * @see HubspotSDK\Services\Automation\WorkflowsService::listEmailCampaigns()
  *
  * @phpstan-type WorkflowListEmailCampaignsParamsShape = array{
  *   after?: string, before?: string, flowId?: list<string>, limit?: int

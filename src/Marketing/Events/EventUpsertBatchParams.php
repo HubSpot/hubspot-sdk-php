@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * Only Marketing Events originally created by the same app can be updated.
  *
- * @see HubspotSDK\Marketing\Events->upsertBatch
+ * @see HubspotSDK\Services\Marketing\EventsService::upsertBatch()
  *
  * @phpstan-type EventUpsertBatchParamsShape = array{
  *   inputs: list<MarketingEventCreateRequestParams>

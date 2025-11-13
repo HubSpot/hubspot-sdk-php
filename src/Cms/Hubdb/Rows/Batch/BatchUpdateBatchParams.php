@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Updates multiple rows as a batch in the draft version of the table, with a maximum of 100 rows per call. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows\Batch->updateBatch
+ * @see HubspotSDK\Services\Cms\Hubdb\Rows\BatchService::updateBatch()
  *
  * @phpstan-type BatchUpdateBatchParamsShape = array{
  *   inputs: list<HubDBTableRowV3BatchUpdateRequest>

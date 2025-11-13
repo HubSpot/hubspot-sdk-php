@@ -14,7 +14,7 @@ use HubspotSDK\PropertyName;
 /**
  * Read a provided list of properties.
  *
- * @see HubspotSDK\Crm\Properties\Batch->get
+ * @see HubspotSDK\Services\Crm\Properties\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   archived: bool,

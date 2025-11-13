@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\FeedbackSubmissions->search
+ * @see HubspotSDK\Services\Crm\Objects\FeedbackSubmissionsService::search()
  *
  * @phpstan-type FeedbackSubmissionSearchParamsShape = array{
  *   after?: string,

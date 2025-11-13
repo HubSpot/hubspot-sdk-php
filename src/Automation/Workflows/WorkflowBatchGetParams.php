@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Automation\Workflows->batchGet
+ * @see HubspotSDK\Services\Automation\WorkflowsService::batchGet()
  *
  * @phpstan-type WorkflowBatchGetParamsShape = array{
  *   inputs: list<APIFlowBatchFetchFlowIDCoordinate>

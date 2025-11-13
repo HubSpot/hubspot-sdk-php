@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a listing with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard listings is provided.
  *
- * @see HubspotSDK\Crm\Objects\Listings->create
+ * @see HubspotSDK\Services\Crm\Objects\ListingsService::create()
  *
  * @phpstan-type ListingCreateParamsShape = array{
  *   properties: array<string,string>,

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a email with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard emails is provided.
  *
- * @see HubspotSDK\Crm\Objects\Emails->create
+ * @see HubspotSDK\Services\Crm\Objects\EmailsService::create()
  *
  * @phpstan-type EmailCreateParamsShape = array{
  *   properties: array<string,string>,

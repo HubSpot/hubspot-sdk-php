@@ -13,7 +13,7 @@ use HubspotSDK\Crm\FilterGroup;
 /**
  * Search for goal targets using specified criteria.
  *
- * @see HubspotSDK\Crm\Objects\GoalTargets->search
+ * @see HubspotSDK\Services\Crm\Objects\GoalTargetsService::search()
  *
  * @phpstan-type GoalTargetSearchParamsShape = array{
  *   after?: string,

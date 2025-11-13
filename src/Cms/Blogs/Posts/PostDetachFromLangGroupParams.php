@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Detach a blog post from a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
  *
- * @see HubspotSDK\Cms\Blogs\Posts->detachFromLangGroup
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::detachFromLangGroup()
  *
  * @phpstan-type PostDetachFromLangGroupParamsShape = array{id: string}
  */

@@ -15,7 +15,7 @@ use HubspotSDK\OptionInput;
 /**
  * Perform a partial update of a property identified by { propertyName }. Provided fields will be overwritten.
  *
- * @see HubspotSDK\Crm\Properties->update
+ * @see HubspotSDK\Services\Crm\PropertiesService::update()
  *
  * @phpstan-type PropertyUpdateParamsShape = array{
  *   objectType: string,

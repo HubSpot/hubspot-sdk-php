@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of calls by ID.
  *
- * @see HubspotSDK\Crm\Objects\Calls\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Calls\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

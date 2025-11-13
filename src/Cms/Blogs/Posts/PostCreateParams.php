@@ -19,7 +19,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * Create a new blog post, specifying its content in the request body.
  *
- * @see HubspotSDK\Cms\Blogs\Posts->create
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::create()
  *
  * @phpstan-type PostCreateParamsShape = array{
  *   id: string,

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Objects\Schemas->delete
+ * @see HubspotSDK\Services\Crm\Objects\SchemasService::delete()
  *
  * @phpstan-type SchemaDeleteParamsShape = array{archived?: bool}
  */

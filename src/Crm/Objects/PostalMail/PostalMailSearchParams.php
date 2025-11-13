@@ -13,7 +13,7 @@ use HubspotSDK\Crm\FilterGroup;
 /**
  * Search for postal mail objects using specific criteria in the request.
  *
- * @see HubspotSDK\Crm\Objects\PostalMail->search
+ * @see HubspotSDK\Services\Crm\Objects\PostalMailService::search()
  *
  * @phpstan-type PostalMailSearchParamsShape = array{
  *   after?: string,

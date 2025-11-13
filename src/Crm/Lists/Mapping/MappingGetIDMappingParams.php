@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * This API allows translation of legacy list id to list id. This is a temporary API allowed for mapping old id's to new id's and will expire on May 30th, 2025.
  *
- * @see HubspotSDK\Crm\Lists\Mapping->getIDMapping
+ * @see HubspotSDK\Services\Crm\Lists\MappingService::getIDMapping()
  *
  * @phpstan-type MappingGetIDMappingParamsShape = array{legacyListId?: string}
  */

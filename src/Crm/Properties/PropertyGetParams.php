@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a property identified by {propertyName}.
  *
- * @see HubspotSDK\Crm\Properties->get
+ * @see HubspotSDK\Services\Crm\PropertiesService::get()
  *
  * @phpstan-type PropertyGetParamsShape = array{
  *   objectType: string, archived?: bool, properties?: string

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Register a new channel along with its capabilities and the webhook url that will be used to receive messages published over the channel.
  *
- * @see HubspotSDK\Conversations\CustomChannels->create
+ * @see HubspotSDK\Services\Conversations\CustomChannelsService::create()
  *
  * @phpstan-type CustomChannelCreateParamsShape = array{
  *   capabilities: array<string,mixed>,

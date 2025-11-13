@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete the Blog Author object identified by the id in the path.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->delete
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::delete()
  *
  * @phpstan-type AuthorDeleteParamsShape = array{archived?: bool}
  */

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Extensions\Calling\Settings->create
+ * @see HubspotSDK\Services\Crm\Extensions\Calling\SettingsService::create()
  *
  * @phpstan-type SettingCreateParamsShape = array{
  *   name: string,

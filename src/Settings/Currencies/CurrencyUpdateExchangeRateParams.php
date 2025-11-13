@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update an existing conversion rate, specified by its ID.
  *
- * @see HubspotSDK\Settings\Currencies->updateExchangeRate
+ * @see HubspotSDK\Services\Settings\CurrenciesService::updateExchangeRate()
  *
  * @phpstan-type CurrencyUpdateExchangeRateParamsShape = array{
  *   conversionRate: float, effectiveAt?: \DateTimeInterface

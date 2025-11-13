@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Combine two deals of the same type into a single deal.
  *
- * @see HubspotSDK\Crm\Objects\Deals->merge
+ * @see HubspotSDK\Services\Crm\Objects\DealsService::merge()
  *
  * @phpstan-type DealMergeParamsShape = array{
  *   objectIdToMerge: string, primaryObjectId: string

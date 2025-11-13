@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * This endpoint only works for lists that have a `processingType` of `MANUAL` or `SNAPSHOT`.
  *
- * @see HubspotSDK\Crm\Lists\Memberships->add
+ * @see HubspotSDK\Services\Crm\Lists\MembershipsService::add()
  *
  * @phpstan-type MembershipAddParamsShape = array{body: list<string>}
  */

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Retrieve a batch of tickets by ID (`ticketId`) or unique property value (`idProperty`).
  *
- * @see HubspotSDK\Crm\Objects\Tickets\Batch->get
+ * @see HubspotSDK\Services\Crm\Objects\Tickets\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<SimplePublicObjectID>,

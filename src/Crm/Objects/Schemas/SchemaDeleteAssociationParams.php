@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Objects\Schemas->deleteAssociation
+ * @see HubspotSDK\Services\Crm\Objects\SchemasService::deleteAssociation()
  *
  * @phpstan-type SchemaDeleteAssociationParamsShape = array{objectType: string}
  */

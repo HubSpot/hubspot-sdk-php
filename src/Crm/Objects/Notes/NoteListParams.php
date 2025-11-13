@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of notes. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Notes->list
+ * @see HubspotSDK\Services\Crm\Objects\NotesService::list()
  *
  * @phpstan-type NoteListParamsShape = array{
  *   after?: string,

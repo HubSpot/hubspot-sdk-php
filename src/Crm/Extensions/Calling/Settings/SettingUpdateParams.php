@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Extensions\Calling\Settings->update
+ * @see HubspotSDK\Services\Crm\Extensions\Calling\SettingsService::update()
  *
  * @phpstan-type SettingUpdateParamsShape = array{
  *   height?: int,

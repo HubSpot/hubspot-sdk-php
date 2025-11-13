@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve logs of user actions related to [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
  *
- * @see HubspotSDK\Account\Activity->listSecurityActivities
+ * @see HubspotSDK\Services\Account\ActivityService::listSecurityActivities()
  *
  * @phpstan-type ActivityListSecurityActivitiesParamsShape = array{
  *   after?: string,

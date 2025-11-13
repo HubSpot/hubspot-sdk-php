@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Creates a folder with the given information.
  *
- * @see HubspotSDK\Crm\Lists\Folders->create
+ * @see HubspotSDK\Services\Crm\Lists\FoldersService::create()
  *
  * @phpstan-type FolderCreateParamsShape = array{
  *   name: string, parentFolderId?: string

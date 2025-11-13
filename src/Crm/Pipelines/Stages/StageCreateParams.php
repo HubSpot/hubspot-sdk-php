@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a pipeline stage.
  *
- * @see HubspotSDK\Crm\Pipelines\Stages->create
+ * @see HubspotSDK\Services\Crm\Pipelines\StagesService::create()
  *
  * @phpstan-type StageCreateParamsShape = array{
  *   objectType: string,

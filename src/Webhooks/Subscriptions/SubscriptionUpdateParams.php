@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update an existing event subscription by ID.
  *
- * @see HubspotSDK\Webhooks\Subscriptions->update
+ * @see HubspotSDK\Services\Webhooks\SubscriptionsService::update()
  *
  * @phpstan-type SubscriptionUpdateParamsShape = array{appId: int, active?: bool}
  */

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Extensions\Calling\RecordingSettings->markReady
+ * @see HubspotSDK\Services\Crm\Extensions\Calling\RecordingSettingsService::markReady()
  *
  * @phpstan-type RecordingSettingMarkReadyParamsShape = array{engagementId: int}
  */

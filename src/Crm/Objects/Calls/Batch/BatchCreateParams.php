@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of calls. The `inputs` array can contain a `properties` object to define property values for each record, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
  *
- * @see HubspotSDK\Crm\Objects\Calls\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Calls\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update some of the form definition components.
  *
- * @see HubspotSDK\Marketing\Forms->update
+ * @see HubspotSDK\Services\Marketing\FormsService::update()
  *
  * @phpstan-type FormUpdateParamsShape = array{
  *   archived?: bool,

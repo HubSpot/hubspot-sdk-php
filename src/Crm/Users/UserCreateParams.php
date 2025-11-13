@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a user with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard users is provided.
  *
- * @see HubspotSDK\Crm\Users->create
+ * @see HubspotSDK\Services\Crm\UsersService::create()
  *
  * @phpstan-type UserCreateParamsShape = array{
  *   properties: array<string,string>,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the list of blog authors. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->list
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::list()
  *
  * @phpstan-type AuthorListParamsShape = array{
  *   after?: string,

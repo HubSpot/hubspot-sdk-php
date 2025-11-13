@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Archive a batch of contracts by ID.
  *
- * @see HubspotSDK\Crm\Objects\Contracts\Batch->delete
+ * @see HubspotSDK\Services\Crm\Objects\Contracts\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<SimplePublicObjectID>}
  */

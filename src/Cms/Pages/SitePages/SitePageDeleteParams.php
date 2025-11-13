@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete the Site Page object identified by the id in the path.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->delete
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::delete()
  *
  * @phpstan-type SitePageDeleteParamsShape = array{archived?: bool}
  */

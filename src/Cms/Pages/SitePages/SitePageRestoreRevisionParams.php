@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Takes a specified version of a Site Page and restores it.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->restoreRevision
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::restoreRevision()
  *
  * @phpstan-type SitePageRestoreRevisionParamsShape = array{objectId: string}
  */

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\FilterGroup;
 /**
  * Search for messages by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
  *
- * @see HubspotSDK\Crm\Objects\Communications->search
+ * @see HubspotSDK\Services\Crm\Objects\CommunicationsService::search()
  *
  * @phpstan-type CommunicationSearchParamsShape = array{
  *   after?: string,

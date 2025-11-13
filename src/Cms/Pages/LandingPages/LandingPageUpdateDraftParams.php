@@ -20,7 +20,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  * Sparse updates the draft version of a single Landing Page object identified by the id in the path.
  * You only need to specify the column values that you are modifying.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->updateDraft
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::updateDraft()
  *
  * @phpstan-type LandingPageUpdateDraftParamsShape = array{
  *   id: string,

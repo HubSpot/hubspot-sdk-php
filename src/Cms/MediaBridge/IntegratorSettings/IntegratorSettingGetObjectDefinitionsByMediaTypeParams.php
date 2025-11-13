@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the existing objects types that belong to the specified media type.
  *
- * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->getObjectDefinitionsByMediaType
+ * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::getObjectDefinitionsByMediaType()
  *
  * @phpstan-type IntegratorSettingGetObjectDefinitionsByMediaTypeParamsShape = array{
  *   appId: string

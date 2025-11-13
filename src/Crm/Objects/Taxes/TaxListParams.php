@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of taxes. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Taxes->list
+ * @see HubspotSDK\Services\Crm\Objects\TaxesService::list()
  *
  * @phpstan-type TaxListParamsShape = array{
  *   after?: string,

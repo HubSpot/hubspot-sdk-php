@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Retrieve a batch of contacts by ID (`contactId`) or unique property value (`idProperty`).
  *
- * @see HubspotSDK\Crm\Objects\Contacts\Batch->get
+ * @see HubspotSDK\Services\Crm\Objects\Contacts\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<SimplePublicObjectID>,

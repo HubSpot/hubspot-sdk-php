@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * The marketing events returned by this endpoint are sorted by objectId.
  *
- * @see HubspotSDK\Marketing\Events->list
+ * @see HubspotSDK\Services\Marketing\EventsService::list()
  *
  * @phpstan-type EventListParamsShape = array{after?: string, limit?: int}
  */

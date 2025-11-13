@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve all functions included in a definition.
  *
- * @see HubspotSDK\Automation\Actions\Functions->list
+ * @see HubspotSDK\Services\Automation\Actions\FunctionsService::list()
  *
  * @phpstan-type FunctionListParamsShape = array{appId: int}
  */

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Replaces the data in the draft version of the table with values from the published version. Any unpublished changes in the draft will be lost after this call is made.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->resetDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::resetDraft()
  *
  * @phpstan-type TableResetDraftParamsShape = array{includeForeignIds?: bool}
  */

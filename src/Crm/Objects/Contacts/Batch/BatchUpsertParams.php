@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert;
 /**
  * Upsert a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record.
  *
- * @see HubspotSDK\Crm\Objects\Contacts\Batch->upsert
+ * @see HubspotSDK\Services\Crm\Objects\Contacts\BatchService::upsert()
  *
  * @phpstan-type BatchUpsertParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputUpsert>

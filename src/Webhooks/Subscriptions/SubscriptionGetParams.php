@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a specific event subscription by ID.
  *
- * @see HubspotSDK\Webhooks\Subscriptions->get
+ * @see HubspotSDK\Services\Webhooks\SubscriptionsService::get()
  *
  * @phpstan-type SubscriptionGetParamsShape = array{appId: int}
  */

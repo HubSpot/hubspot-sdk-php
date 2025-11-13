@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the account-level flag state of a specific HubSpot account.
  *
- * @see HubspotSDK\Crm\FeatureFlags\Portals->get
+ * @see HubspotSDK\Services\Crm\FeatureFlags\PortalsService::get()
  *
  * @phpstan-type PortalGetParamsShape = array{appId: int, flagName: string}
  */

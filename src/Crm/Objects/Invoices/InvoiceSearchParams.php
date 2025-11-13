@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\Invoices->search
+ * @see HubspotSDK\Services\Crm\Objects\InvoicesService::search()
  *
  * @phpstan-type InvoiceSearchParamsShape = array{
  *   after?: string,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a property group identified by {groupName}.
  *
- * @see HubspotSDK\Crm\Properties\Groups->get
+ * @see HubspotSDK\Services\Crm\Properties\GroupsService::get()
  *
  * @phpstan-type GroupGetParamsShape = array{objectType: string}
  */

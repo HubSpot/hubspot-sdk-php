@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Automation\Workflows->list
+ * @see HubspotSDK\Services\Automation\WorkflowsService::list()
  *
  * @phpstan-type WorkflowListParamsShape = array{after?: string, limit?: int}
  */

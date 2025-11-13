@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a specific function from a given definition.
  *
- * @see HubspotSDK\Automation\Actions\Functions->get
+ * @see HubspotSDK\Services\Automation\Actions\FunctionsService::get()
  *
  * @phpstan-type FunctionGetParamsShape = array{
  *   appId: int,

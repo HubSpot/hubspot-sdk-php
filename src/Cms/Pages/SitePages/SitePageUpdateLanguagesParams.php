@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Explicitly set new languages for each site page in a multi-language group.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->updateLanguages
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::updateLanguages()
  *
  * @phpstan-type SitePageUpdateLanguagesParamsShape = array{
  *   languages: array<string,string>, primaryId: string

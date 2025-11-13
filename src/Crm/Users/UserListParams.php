@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of users. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Users->list
+ * @see HubspotSDK\Services\Crm\UsersService::list()
  *
  * @phpstan-type UserListParamsShape = array{
  *   after?: string,

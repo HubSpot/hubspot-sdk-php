@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete the Blog Tag object identified by the id in the path.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->delete
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::delete()
  *
  * @phpstan-type TagDeleteParamsShape = array{archived?: bool}
  */

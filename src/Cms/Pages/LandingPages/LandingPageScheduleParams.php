@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Schedule a Landing Page to be Published.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->schedule
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::schedule()
  *
  * @phpstan-type LandingPageScheduleParamsShape = array{
  *   id: string, publishDate: \DateTimeInterface

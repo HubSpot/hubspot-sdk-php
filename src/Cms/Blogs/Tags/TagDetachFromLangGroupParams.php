@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Detach a Blog Tag from a multi-language group.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->detachFromLangGroup
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::detachFromLangGroup()
  *
  * @phpstan-type TagDetachFromLangGroupParamsShape = array{id: string}
  */

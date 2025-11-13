@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a contract with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard contracts is provided.
  *
- * @see HubspotSDK\Crm\Objects\Contracts->create
+ * @see HubspotSDK\Services\Crm\Objects\ContractsService::create()
  *
  * @phpstan-type ContractCreateParamsShape = array{
  *   properties: array<string,string>,

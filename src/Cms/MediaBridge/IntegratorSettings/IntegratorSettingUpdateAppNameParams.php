@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update the name that your app will display when a user is selecting media bridge items.
  *
- * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->updateAppName
+ * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::updateAppName()
  *
  * @phpstan-type IntegratorSettingUpdateAppNameParamsShape = array{
  *   updatedAt: int, name?: string

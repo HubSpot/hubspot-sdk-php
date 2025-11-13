@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\Taxes->search
+ * @see HubspotSDK\Services\Crm\Objects\TaxesService::search()
  *
  * @phpstan-type TaxSearchParamsShape = array{
  *   after?: string,

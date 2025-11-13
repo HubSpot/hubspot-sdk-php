@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Downloads the byte contents of the file at the specified path in the specified environment.
  *
- * @see HubspotSDK\Cms\SourceCode->get
+ * @see HubspotSDK\Services\Cms\SourceCodeService::get()
  *
  * @phpstan-type SourceCodeGetParamsShape = array{environment: string}
  */

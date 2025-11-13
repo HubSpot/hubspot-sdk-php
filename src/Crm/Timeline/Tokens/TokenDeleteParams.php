@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete an existing token from a specific event type template.
  *
- * @see HubspotSDK\Crm\Timeline\Tokens->delete
+ * @see HubspotSDK\Services\Crm\Timeline\TokensService::delete()
  *
  * @phpstan-type TokenDeleteParamsShape = array{
  *   appId: int, eventTemplateId: string

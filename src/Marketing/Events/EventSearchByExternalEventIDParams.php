@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * Marketing Events created by other apps will not be included in the results.
  *
- * @see HubspotSDK\Marketing\Events->searchByExternalEventID
+ * @see HubspotSDK\Services\Marketing\EventsService::searchByExternalEventID()
  *
  * @phpstan-type EventSearchByExternalEventIDParamsShape = array{q: string}
  */

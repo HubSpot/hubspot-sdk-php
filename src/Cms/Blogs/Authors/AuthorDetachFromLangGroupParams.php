@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Detach a Blog Author from a multi-language group.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->detachFromLangGroup
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::detachFromLangGroup()
  *
  * @phpstan-type AuthorDetachFromLangGroupParamsShape = array{id: string}
  */

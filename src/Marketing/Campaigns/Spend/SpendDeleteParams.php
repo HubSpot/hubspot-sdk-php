@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete a specific campaign spend item by ID.
  *
- * @see HubspotSDK\Marketing\Campaigns\Spend->delete
+ * @see HubspotSDK\Services\Marketing\Campaigns\SpendService::delete()
  *
  * @phpstan-type SpendDeleteParamsShape = array{campaignGuid: string}
  */

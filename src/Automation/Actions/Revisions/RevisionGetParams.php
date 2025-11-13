@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a specific revision of a definition by revision ID.
  *
- * @see HubspotSDK\Automation\Actions\Revisions->get
+ * @see HubspotSDK\Services\Automation\Actions\RevisionsService::get()
  *
  * @phpstan-type RevisionGetParamsShape = array{appId: int, definitionId: string}
  */

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of objects. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Objects->list
+ * @see HubspotSDK\Services\Crm\Objects\ObjectsService::list()
  *
  * @phpstan-type ObjectListParamsShape = array{
  *   after?: string,

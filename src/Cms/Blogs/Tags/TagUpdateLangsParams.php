@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Explicitly set new languages for each Blog Tag in a multi-language group.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->updateLangs
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::updateLangs()
  *
  * @phpstan-type TagUpdateLangsParamsShape = array{
  *   languages: array<string,string>, primaryId: string

@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Set up a new oEmbed domain for your media bridge app.
  *
- * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->createOembedDomain
+ * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::createOembedDomain()
  *
  * @phpstan-type IntegratorSettingCreateOembedDomainParamsShape = array{
  *   endpoints: Endpoints, portalId?: int

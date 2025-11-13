@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a campaign with the given properties and return the campaign object, including the campaignGuid and created properties.
  *
- * @see HubspotSDK\Marketing\Campaigns->create
+ * @see HubspotSDK\Services\Marketing\CampaignsService::create()
  *
  * @phpstan-type CampaignCreateParamsShape = array{
  *   properties: array<string,string>

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Merge two company records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
  *
- * @see HubspotSDK\Crm\Objects\Companies->merge
+ * @see HubspotSDK\Services\Crm\Objects\CompaniesService::merge()
  *
  * @phpstan-type CompanyMergeParamsShape = array{
  *   objectIdToMerge: string, primaryObjectId: string

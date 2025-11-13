@@ -16,7 +16,7 @@ use HubspotSDK\OptionInput;
 /**
  * Create a new property for the specified media type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Properties->create
+ * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::create()
  *
  * @phpstan-type PropertyCreateParamsShape = array{
  *   appId: string,

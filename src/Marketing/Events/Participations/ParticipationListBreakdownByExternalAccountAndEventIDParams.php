@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read Marketing event's participations breakdown with optional filters by externalAccountId and externalEventId pair.
  *
- * @see HubspotSDK\Marketing\Events\Participations->listBreakdownByExternalAccountAndEventID
+ * @see HubspotSDK\Services\Marketing\Events\ParticipationsService::listBreakdownByExternalAccountAndEventID()
  *
  * @phpstan-type ParticipationListBreakdownByExternalAccountAndEventIDParamsShape = array{
  *   externalAccountId: string,

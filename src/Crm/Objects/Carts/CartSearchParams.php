@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\Carts->search
+ * @see HubspotSDK\Services\Crm\Objects\CartsService::search()
  *
  * @phpstan-type CartSearchParamsShape = array{
  *   after?: string,

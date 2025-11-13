@@ -21,7 +21,7 @@ use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
  * - joinedAt
  * - leftAt
  *
- * @see HubspotSDK\Marketing\Events\Attendance->createByExternalEventIDAndContactID
+ * @see HubspotSDK\Services\Marketing\Events\AttendanceService::createByExternalEventIDAndContactID()
  *
  * @phpstan-type AttendanceCreateByExternalEventIDAndContactIDParamsShape = array{
  *   externalEventId: string,

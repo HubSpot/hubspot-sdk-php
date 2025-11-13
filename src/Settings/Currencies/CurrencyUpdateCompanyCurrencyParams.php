@@ -13,7 +13,7 @@ use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams\CurrencyC
 /**
  * Set or update the primary company currency.
  *
- * @see HubspotSDK\Settings\Currencies->updateCompanyCurrency
+ * @see HubspotSDK\Services\Settings\CurrenciesService::updateCompanyCurrency()
  *
  * @phpstan-type CurrencyUpdateCompanyCurrencyParamsShape = array{
  *   currencyCode: CurrencyCode|value-of<CurrencyCode>

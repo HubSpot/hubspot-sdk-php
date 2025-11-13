@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a single company. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the company, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
  *
- * @see HubspotSDK\Crm\Objects\Companies->create
+ * @see HubspotSDK\Services\Crm\Objects\CompaniesService::create()
  *
  * @phpstan-type CompanyCreateParamsShape = array{
  *   properties: array<string,string>,

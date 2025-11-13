@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create an event representing a user reaching quarterly milestones in a piece of media they're viewing.
  *
- * @see HubspotSDK\Cms\MediaBridge\Events->createMediaPlayedPercentEvent
+ * @see HubspotSDK\Services\Cms\MediaBridge\EventsService::createMediaPlayedPercentEvent()
  *
  * @phpstan-type EventCreateMediaPlayedPercentEventParamsShape = array{
  *   mediaType: MediaType|value-of<MediaType>,

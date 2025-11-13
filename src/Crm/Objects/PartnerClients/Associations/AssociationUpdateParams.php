@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Associate a partner client with another object.
  *
- * @see HubspotSDK\Crm\Objects\PartnerClients\Associations->update
+ * @see HubspotSDK\Services\Crm\Objects\PartnerClients\AssociationsService::update()
  *
  * @phpstan-type AssociationUpdateParamsShape = array{
  *   partnerClientId: string, toObjectType: string, toObjectId: string

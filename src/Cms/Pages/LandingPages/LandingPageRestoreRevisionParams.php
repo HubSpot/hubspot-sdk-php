@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Takes a specified version of a Landing Page and restores it.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->restoreRevision
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::restoreRevision()
  *
  * @phpstan-type LandingPageRestoreRevisionParamsShape = array{objectId: string}
  */

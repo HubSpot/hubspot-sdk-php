@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns the complete original text and rich text bodies of a message. This will be different from the text and rich text in the message itself if the message's `truncationStatus` is anything other than `NOT_TRUNCATED`.
  *
- * @see HubspotSDK\Conversations\Messages->getOriginalContent
+ * @see HubspotSDK\Services\Conversations\MessagesService::getOriginalContent()
  *
  * @phpstan-type MessageGetOriginalContentParamsShape = array{threadId: string}
  */

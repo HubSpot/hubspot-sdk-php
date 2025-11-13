@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest;
 /**
  * Update the subscription status for a set of contacts.
  *
- * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->batchUpdate
+ * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::batchUpdate()
  *
  * @phpstan-type StatusBatchUpdateParamsShape = array{
  *   inputs: list<PublicStatusRequest>

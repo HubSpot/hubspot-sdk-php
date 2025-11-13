@@ -13,7 +13,7 @@ use HubspotSDK\Settings\Users\UserDeleteParams\IDProperty;
 /**
  * Removes a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
  *
- * @see HubspotSDK\Settings\Users->delete
+ * @see HubspotSDK\Services\Settings\UsersService::delete()
  *
  * @phpstan-type UserDeleteParamsShape = array{
  *   idProperty?: IDProperty|value-of<IDProperty>

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Fetch the list of contact IDs for the specified campaign and contact type.
  *
- * @see HubspotSDK\Marketing\Campaigns\Reports->listContactIDsByType
+ * @see HubspotSDK\Services\Marketing\Campaigns\ReportsService::listContactIDsByType()
  *
  * @phpstan-type ReportListContactIDsByTypeParamsShape = array{
  *   campaignGuid: string,

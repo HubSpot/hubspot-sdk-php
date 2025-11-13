@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the property groups for a specified object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Groups->list
+ * @see HubspotSDK\Services\Cms\MediaBridge\GroupsService::list()
  *
  * @phpstan-type GroupListParamsShape = array{appId: string}
  */

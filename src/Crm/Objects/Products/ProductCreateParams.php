@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a product with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard products is provided.
  *
- * @see HubspotSDK\Crm\Objects\Products->create
+ * @see HubspotSDK\Services\Crm\Objects\ProductsService::create()
  *
  * @phpstan-type ProductCreateParamsShape = array{
  *   properties: array<string,string>,

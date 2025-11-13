@@ -16,7 +16,7 @@ use HubspotSDK\OptionInput;
 /**
  * Create and return a copy of a new property for the specified object type.
  *
- * @see HubspotSDK\Crm\Properties->create
+ * @see HubspotSDK\Services\Crm\PropertiesService::create()
  *
  * @phpstan-type PropertyCreateParamsShape = array{
  *   fieldType: FieldType|value-of<FieldType>,

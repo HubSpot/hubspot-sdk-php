@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Takes a specified version of a blog post, sets it as the new draft version of the blog post.
  *
- * @see HubspotSDK\Cms\Blogs\Posts->restorePreviousVersionToDraft
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::restorePreviousVersionToDraft()
  *
  * @phpstan-type PostRestorePreviousVersionToDraftParamsShape = array{
  *   objectId: string

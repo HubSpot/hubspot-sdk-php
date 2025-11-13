@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Resolve a set of `ActorId`s to the underlying actors/participants.
  *
- * @see HubspotSDK\Conversations\Actors->batchRead
+ * @see HubspotSDK\Services\Conversations\ActorsService::batchRead()
  *
  * @phpstan-type ActorBatchReadParamsShape = array{inputs: list<string>}
  */

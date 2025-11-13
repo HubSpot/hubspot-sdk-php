@@ -13,7 +13,7 @@ use HubspotSDK\Webhooks\Subscriptions\SubscriptionCreateParams\EventType;
 /**
  * Create new event subscription for the specified app.
  *
- * @see HubspotSDK\Webhooks\Subscriptions->create
+ * @see HubspotSDK\Services\Webhooks\SubscriptionsService::create()
  *
  * @phpstan-type SubscriptionCreateParamsShape = array{
  *   eventType: EventType|value-of<EventType>,

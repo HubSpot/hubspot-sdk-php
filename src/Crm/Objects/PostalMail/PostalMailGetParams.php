@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Objects\PostalMail->get
+ * @see HubspotSDK\Services\Crm\Objects\PostalMailService::get()
  *
  * @phpstan-type PostalMailGetParamsShape = array{
  *   archived?: bool,

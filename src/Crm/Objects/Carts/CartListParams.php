@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of carts. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Carts->list
+ * @see HubspotSDK\Services\Crm\Objects\CartsService::list()
  *
  * @phpstan-type CartListParamsShape = array{
  *   after?: string,

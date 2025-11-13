@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Fetch revenue attribution report data for a specified campaign.
  *
- * @see HubspotSDK\Marketing\Campaigns\Reports->getRevenueAttribution
+ * @see HubspotSDK\Services\Marketing\Campaigns\ReportsService::getRevenueAttribution()
  *
  * @phpstan-type ReportGetRevenueAttributionParamsShape = array{
  *   attributionModel?: string, endDate?: string, startDate?: string

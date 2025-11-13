@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create an event for when a user begins playing a piece of media.
  *
- * @see HubspotSDK\Cms\MediaBridge\Events->createMediaPlayedEvent
+ * @see HubspotSDK\Services\Cms\MediaBridge\EventsService::createMediaPlayedEvent()
  *
  * @phpstan-type EventCreateMediaPlayedEventParamsShape = array{
  *   mediaType: MediaType|value-of<MediaType>,

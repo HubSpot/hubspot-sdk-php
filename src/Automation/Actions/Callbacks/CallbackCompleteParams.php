@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Complete a specific blocked action execution by ID.
  *
- * @see HubspotSDK\Automation\Actions\Callbacks->complete
+ * @see HubspotSDK\Services\Automation\Actions\CallbacksService::complete()
  *
  * @phpstan-type CallbackCompleteParamsShape = array{
  *   outputFields: array<string,string>

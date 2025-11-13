@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns a form based on the form ID provided.
  *
- * @see HubspotSDK\Marketing\Forms->get
+ * @see HubspotSDK\Services\Marketing\FormsService::get()
  *
  * @phpstan-type FormGetParamsShape = array{archived?: bool}
  */

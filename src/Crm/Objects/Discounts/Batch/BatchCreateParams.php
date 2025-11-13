@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of discounts.
  *
- * @see HubspotSDK\Crm\Objects\Discounts\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Discounts\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

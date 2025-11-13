@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve custom workflow action definitions by app ID.
  *
- * @see HubspotSDK\Automation\Actions\Definitions->list
+ * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::list()
  *
  * @phpstan-type DefinitionListParamsShape = array{
  *   after?: string, archived?: bool, limit?: int

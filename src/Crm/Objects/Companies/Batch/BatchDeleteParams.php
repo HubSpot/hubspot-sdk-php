@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Delete a batch of companies by ID. Deleted companies can be restored within 90 days of deletion. Learn more about [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
  *
- * @see HubspotSDK\Crm\Objects\Companies\Batch->delete
+ * @see HubspotSDK\Services\Crm\Objects\Companies\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<SimplePublicObjectID>}
  */

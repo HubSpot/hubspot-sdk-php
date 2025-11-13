@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read all existing properties for the specified object type and HubSpot account.
  *
- * @see HubspotSDK\Crm\Properties->list
+ * @see HubspotSDK\Services\Crm\PropertiesService::list()
  *
  * @phpstan-type PropertyListParamsShape = array{
  *   archived?: bool, properties?: string

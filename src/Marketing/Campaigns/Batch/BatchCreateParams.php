@@ -14,7 +14,7 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignInput;
  * This endpoint creates a batch of campaigns. The maximum number of items in a batch request is 50.
  * The campaigns in the response are not guaranteed to be in the same order as they were provided in the request.
  *
- * @see HubspotSDK\Marketing\Campaigns\Batch->create
+ * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{inputs: list<PublicCampaignInput>}
  */

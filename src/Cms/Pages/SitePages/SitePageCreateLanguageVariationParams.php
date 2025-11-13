@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new language variation from an existing site page.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->createLanguageVariation
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::createLanguageVariation()
  *
  * @phpstan-type SitePageCreateLanguageVariationParamsShape = array{
  *   id: string, language?: string, primaryLanguage?: string

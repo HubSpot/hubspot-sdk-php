@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update a folder's properties, identified by folder ID.
  *
- * @see HubspotSDK\Files\Folders->updateByID
+ * @see HubspotSDK\Services\Files\FoldersService::updateByID()
  *
  * @phpstan-type FolderUpdateByIDParamsShape = array{
  *   name?: string, parentFolderId?: int

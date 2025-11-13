@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new language variation from an existing Blog Author.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->createLanguageVariation
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::createLanguageVariation()
  *
  * @phpstan-type AuthorCreateLanguageVariationParamsShape = array{
  *   id: string,

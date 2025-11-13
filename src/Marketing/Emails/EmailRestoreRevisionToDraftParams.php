@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Restores a previous revision of a marketing email to DRAFT state. If there is currently something in the draft for that object, it is overwritten.
  *
- * @see HubspotSDK\Marketing\Emails->restoreRevisionToDraft
+ * @see HubspotSDK\Services\Marketing\EmailsService::restoreRevisionToDraft()
  *
  * @phpstan-type EmailRestoreRevisionToDraftParamsShape = array{emailId: string}
  */

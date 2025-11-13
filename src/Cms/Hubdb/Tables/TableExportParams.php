@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Exports the published version of a table in a specified format.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->export
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::export()
  *
  * @phpstan-type TableExportParamsShape = array{format?: string}
  */

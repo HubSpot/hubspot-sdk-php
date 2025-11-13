@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Archive a batch of notes by ID.
  *
- * @see HubspotSDK\Crm\Objects\Notes\Batch->delete
+ * @see HubspotSDK\Services\Crm\Objects\Notes\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<SimplePublicObjectID>}
  */

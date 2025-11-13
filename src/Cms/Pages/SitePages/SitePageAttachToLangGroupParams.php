@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Attach a site page to a multi-language group.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->attachToLangGroup
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::attachToLangGroup()
  *
  * @phpstan-type SitePageAttachToLangGroupParamsShape = array{
  *   id: string, language: string, primaryId: string, primaryLanguage?: string

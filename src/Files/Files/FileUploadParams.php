@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Upload a single file with content specified in request body.
  *
- * @see HubspotSDK\Files\Files->upload
+ * @see HubspotSDK\Services\Files\FilesService::upload()
  *
  * @phpstan-type FileUploadParamsShape = array{
  *   charsetHunch?: string,

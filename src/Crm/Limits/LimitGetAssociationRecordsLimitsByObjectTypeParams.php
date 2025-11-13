@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns records approaching or at association limits between two objects.
  *
- * @see HubspotSDK\Crm\Limits->getAssociationRecordsLimitsByObjectType
+ * @see HubspotSDK\Services\Crm\LimitsService::getAssociationRecordsLimitsByObjectType()
  *
  * @phpstan-type LimitGetAssociationRecordsLimitsByObjectTypeParamsShape = array{
  *   fromObjectTypeId: string

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of line items. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\LineItems->list
+ * @see HubspotSDK\Services\Crm\Objects\LineItemsService::list()
  *
  * @phpstan-type LineItemListParamsShape = array{
  *   after?: string,

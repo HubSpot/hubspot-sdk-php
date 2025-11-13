@@ -14,7 +14,7 @@ use HubspotSDK\Crm\Lists\ListScheduleConversionParams\TimeUnit;
 /**
  * Schedule the conversion of an active list into a static list, or update the already scheduled conversion. This can be scheduled for a specific date or based on activity.
  *
- * @see HubspotSDK\Crm\Lists->scheduleConversion
+ * @see HubspotSDK\Services\Crm\ListsService::scheduleConversion()
  *
  * @phpstan-type ListScheduleConversionParamsShape = array{
  *   conversionType: ConversionType|value-of<ConversionType>,

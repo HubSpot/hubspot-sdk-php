@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Sparse updates a single Folder object identified by the id in the path.
  * You only need to specify the column values that you are modifying.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->updateFolder
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::updateFolder()
  *
  * @phpstan-type LandingPageUpdateFolderParamsShape = array{
  *   id: string,

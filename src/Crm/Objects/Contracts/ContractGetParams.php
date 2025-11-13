@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read an Object identified by `{contractId}`. `{contractId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Contracts->get
+ * @see HubspotSDK\Services\Crm\Objects\ContractsService::get()
  *
  * @phpstan-type ContractGetParamsShape = array{
  *   archived?: bool,

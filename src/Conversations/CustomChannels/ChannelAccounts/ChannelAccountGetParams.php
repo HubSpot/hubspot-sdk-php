@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the details for a specific channel account. This contains all the metadata about your channel account, including its channel, associated inbox id, and delivery identifier information.
  *
- * @see HubspotSDK\Conversations\CustomChannels\ChannelAccounts->get
+ * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::get()
  *
  * @phpstan-type ChannelAccountGetParamsShape = array{channelId: string}
  */

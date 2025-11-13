@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Takes a specified version of a Folder and restores it.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->restoreFolderRevision
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::restoreFolderRevision()
  *
  * @phpstan-type LandingPageRestoreFolderRevisionParamsShape = array{
  *   objectId: string

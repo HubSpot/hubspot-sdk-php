@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places.
  *
- * @see HubspotSDK\Crm\Objects\DealSplits->batchUpsert
+ * @see HubspotSDK\Services\Crm\Objects\DealSplitsService::batchUpsert()
  *
  * @phpstan-type DealSplitBatchUpsertParamsShape = array{
  *   inputs: list<PublicDealSplitsCreateRequest>

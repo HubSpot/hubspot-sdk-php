@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of listings. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Listings->list
+ * @see HubspotSDK\Services\Crm\Objects\ListingsService::list()
  *
  * @phpstan-type ListingListParamsShape = array{
  *   after?: string,

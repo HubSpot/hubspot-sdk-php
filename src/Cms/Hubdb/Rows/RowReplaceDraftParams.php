@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Replace a single row in the draft version of a table. All column values must be specified. If a column has a value in the target table and this request doesn't define that value, it will be deleted.
  * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows->replaceDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\RowsService::replaceDraft()
  *
  * @phpstan-type RowReplaceDraftParamsShape = array{
  *   tableIdOrName: string,

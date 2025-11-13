@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete a marketing email by its ID.
  *
- * @see HubspotSDK\Marketing\Emails->delete
+ * @see HubspotSDK\Services\Marketing\EmailsService::delete()
  *
  * @phpstan-type EmailDeleteParamsShape = array{archived?: bool}
  */

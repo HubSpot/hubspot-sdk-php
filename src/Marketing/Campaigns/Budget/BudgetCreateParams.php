@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Add a new budget item to the campaign.
  *
- * @see HubspotSDK\Marketing\Campaigns\Budget->create
+ * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::create()
  *
  * @phpstan-type BudgetCreateParamsShape = array{
  *   amount: float, name: string, order: int, description?: string

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Perform a partial update of a property group identified by {groupName}. Provided fields will be overwritten.
  *
- * @see HubspotSDK\Crm\Properties\Groups->update
+ * @see HubspotSDK\Services\Crm\Properties\GroupsService::update()
  *
  * @phpstan-type GroupUpdateParamsShape = array{
  *   objectType: string, displayOrder?: int, label?: string

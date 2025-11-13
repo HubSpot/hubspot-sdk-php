@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Set a Blog Author as the primary language of a multi-language group.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->setNewLangPrimary
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::setNewLangPrimary()
  *
  * @phpstan-type AuthorSetNewLangPrimaryParamsShape = array{id: string}
  */

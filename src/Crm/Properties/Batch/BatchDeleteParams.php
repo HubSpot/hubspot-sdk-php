@@ -13,7 +13,7 @@ use HubspotSDK\PropertyName;
 /**
  * Archive a provided list of properties. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).
  *
- * @see HubspotSDK\Crm\Properties\Batch->delete
+ * @see HubspotSDK\Services\Crm\Properties\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<PropertyName>}
  */

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * 204: Returned if all specified Marketing Events were successfully deleted.
  * 207: Returned if some objectIds did not correspond to any existing Marketing Events.
  *
- * @see HubspotSDK\Marketing\Events->deleteBatch
+ * @see HubspotSDK\Services\Marketing\EventsService::deleteBatch()
  *
  * @phpstan-type EventDeleteBatchParamsShape = array{
  *   inputs: list<MarketingEventPublicObjectIDDeleteRequest>

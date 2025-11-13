@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Archive a batch of meetings by ID.
  *
- * @see HubspotSDK\Crm\Objects\Meetings\Batch->delete
+ * @see HubspotSDK\Services\Crm\Objects\Meetings\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<SimplePublicObjectID>}
  */

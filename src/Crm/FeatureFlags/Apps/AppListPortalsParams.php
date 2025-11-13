@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a list of HubSpot accounts with an account-level flag setting for the specified app. No request body is included.
  *
- * @see HubspotSDK\Crm\FeatureFlags\Apps->listPortals
+ * @see HubspotSDK\Services\Crm\FeatureFlags\AppsService::listPortals()
  *
  * @phpstan-type AppListPortalsParamsShape = array{
  *   appId: int, limit?: int, startPortalId?: int

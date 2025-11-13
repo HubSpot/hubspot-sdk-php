@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a task with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard tasks is provided.
  *
- * @see HubspotSDK\Crm\Objects\Tasks->create
+ * @see HubspotSDK\Services\Crm\Objects\TasksService::create()
  *
  * @phpstan-type TaskCreateParamsShape = array{
  *   properties: array<string,string>,

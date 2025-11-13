@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
  *
- * @see HubspotSDK\Crm\Objects\Contacts->merge
+ * @see HubspotSDK\Services\Crm\Objects\ContactsService::merge()
  *
  * @phpstan-type ContactMergeParamsShape = array{
  *   objectIdToMerge: string, primaryObjectId: string

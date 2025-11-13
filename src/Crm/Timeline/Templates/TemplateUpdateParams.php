@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
 /**
  * Update an existing event template, specified by ID.
  *
- * @see HubspotSDK\Crm\Timeline\Templates->update
+ * @see HubspotSDK\Services\Crm\Timeline\TemplatesService::update()
  *
  * @phpstan-type TemplateUpdateParamsShape = array{
  *   appId: int,

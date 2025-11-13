@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Updates the details of an existing Marketing Event identified by its objectId, if it exists.
  *
- * @see HubspotSDK\Marketing\Events->update
+ * @see HubspotSDK\Services\Marketing\EventsService::update()
  *
  * @phpstan-type EventUpdateParamsShape = array{
  *   customProperties: list<PropertyValue>,

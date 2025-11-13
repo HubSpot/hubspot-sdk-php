@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Objects\Schemas->createAssociation
+ * @see HubspotSDK\Services\Crm\Objects\SchemasService::createAssociation()
  *
  * @phpstan-type SchemaCreateAssociationParamsShape = array{
  *   fromObjectTypeId: string, toObjectTypeId: string, name?: string

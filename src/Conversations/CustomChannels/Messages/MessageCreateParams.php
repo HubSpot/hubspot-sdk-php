@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Publish a message over your custom channel.
  *
- * @see HubspotSDK\Conversations\CustomChannels\Messages->create
+ * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::create()
  *
  * @phpstan-type MessageCreateParamsShape = array{
  *   attachments: list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment>,

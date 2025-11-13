@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Sparse updates a single Blog Author object identified by the id in the path.
  * All the column values need not be specified. Only the that need to be modified can be specified.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->update
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::update()
  *
  * @phpstan-type AuthorUpdateParamsShape = array{
  *   id: string,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Fetch multiple lists in a single request by **ILS list ID**. The response will include the definitions of all lists that exist for the `listIds` provided.
  *
- * @see HubspotSDK\Crm\Lists->list
+ * @see HubspotSDK\Services\Crm\ListsService::list()
  *
  * @phpstan-type ListListParamsShape = array{
  *   includeFilters?: bool, listIds?: list<string>

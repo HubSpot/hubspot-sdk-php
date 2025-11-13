@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of emails with specified properties and return the created objects.
  *
- * @see HubspotSDK\Crm\Objects\Emails\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Emails\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

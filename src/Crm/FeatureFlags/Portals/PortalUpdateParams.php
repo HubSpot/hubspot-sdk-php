@@ -13,7 +13,7 @@ use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState;
 /**
  * Specify an account-level flag state for a specific HubSpot account.
  *
- * @see HubspotSDK\Crm\FeatureFlags\Portals->update
+ * @see HubspotSDK\Services\Crm\FeatureFlags\PortalsService::update()
  *
  * @phpstan-type PortalUpdateParamsShape = array{
  *   appId: int, flagName: string, flagState: FlagState|value-of<FlagState>

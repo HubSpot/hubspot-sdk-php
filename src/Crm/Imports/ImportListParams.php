@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns a paged list of active imports for this account.
  *
- * @see HubspotSDK\Crm\Imports->list
+ * @see HubspotSDK\Services\Crm\ImportsService::list()
  *
  * @phpstan-type ImportListParamsShape = array{
  *   after?: string, before?: string, limit?: int

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
  *
- * @see HubspotSDK\Crm\Objects\Custom->create
+ * @see HubspotSDK\Services\Crm\Objects\CustomService::create()
  *
  * @phpstan-type CustomCreateParamsShape = array{
  *   properties: array<string,string>,

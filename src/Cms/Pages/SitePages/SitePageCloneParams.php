@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Clone a Site Page.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->clone
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::clone()
  *
  * @phpstan-type SitePageCloneParamsShape = array{id: string, cloneName?: string}
  */

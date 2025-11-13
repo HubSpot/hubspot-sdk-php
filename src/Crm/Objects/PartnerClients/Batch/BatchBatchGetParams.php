@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObjectID;
 
 /**
- * @see HubspotSDK\Crm\Objects\PartnerClients\Batch->batchGet
+ * @see HubspotSDK\Services\Crm\Objects\PartnerClients\BatchService::batchGet()
  *
  * @phpstan-type BatchBatchGetParamsShape = array{
  *   inputs: list<SimplePublicObjectID>,

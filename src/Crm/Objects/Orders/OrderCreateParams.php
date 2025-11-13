@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a order with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard orders is provided.
  *
- * @see HubspotSDK\Crm\Objects\Orders->create
+ * @see HubspotSDK\Services\Crm\Objects\OrdersService::create()
  *
  * @phpstan-type OrderCreateParamsShape = array{
  *   properties: array<string,string>,

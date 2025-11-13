@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of orders.
  *
- * @see HubspotSDK\Crm\Objects\Orders\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Orders\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

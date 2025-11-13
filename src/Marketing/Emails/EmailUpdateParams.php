@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory;
 /**
  * Change properties of a marketing email.
  *
- * @see HubspotSDK\Marketing\Emails->update
+ * @see HubspotSDK\Services\Marketing\EmailsService::update()
  *
  * @phpstan-type EmailUpdateParamsShape = array{
  *   archived?: bool,

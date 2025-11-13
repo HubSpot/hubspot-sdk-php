@@ -19,7 +19,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * Partially updates the draft version of a single blog post by ID. You only need to specify the values that you want to update.
  *
- * @see HubspotSDK\Cms\Blogs\Posts->updateDraft
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::updateDraft()
  *
  * @phpstan-type PostUpdateDraftParamsShape = array{
  *   id: string,

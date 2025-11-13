@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Perform a partial update of an Object identified by `{cartId}`or optionally a unique property value as specified by the `idProperty` query param. `{cartId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
  *
- * @see HubspotSDK\Crm\Objects\Carts->update
+ * @see HubspotSDK\Services\Crm\Objects\CartsService::update()
  *
  * @phpstan-type CartUpdateParamsShape = array{
  *   properties: array<string,string>, idProperty?: string

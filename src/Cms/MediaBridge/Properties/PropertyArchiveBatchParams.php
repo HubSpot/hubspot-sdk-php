@@ -13,7 +13,7 @@ use HubspotSDK\PropertyName;
 /**
  * Archive a batch of existing properties for the specified types.
  *
- * @see HubspotSDK\Cms\MediaBridge\Properties->archiveBatch
+ * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::archiveBatch()
  *
  * @phpstan-type PropertyArchiveBatchParamsShape = array{
  *   appId: string, inputs: list<PropertyName>

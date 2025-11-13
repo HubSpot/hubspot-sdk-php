@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
- * @see HubspotSDK\Crm\Objects\Schemas->update
+ * @see HubspotSDK\Services\Crm\Objects\SchemasService::update()
  *
  * @phpstan-type SchemaUpdateParamsShape = array{
  *   clearDescription?: bool,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the list of site pages. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->list
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::list()
  *
  * @phpstan-type SitePageListParamsShape = array{
  *   after?: string,

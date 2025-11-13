@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Permanently deletes a row from a table's draft version.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows->deleteDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\RowsService::deleteDraft()
  *
  * @phpstan-type RowDeleteDraftParamsShape = array{tableIdOrName: string}
  */

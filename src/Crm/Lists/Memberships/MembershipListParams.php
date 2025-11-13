@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * The `after` offset parameter will take precedence over the `before` offset in a case where both are provided.
  *
- * @see HubspotSDK\Crm\Lists\Memberships->list
+ * @see HubspotSDK\Services\Crm\Lists\MembershipsService::list()
  *
  * @phpstan-type MembershipListParamsShape = array{
  *   after?: string, before?: string, limit?: int

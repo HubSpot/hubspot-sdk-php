@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Record a subscriber state between multiple HubSpot contacts and a marketing event, using contact email addresses. Note that the contact must already exist in HubSpot; a contact will not be created. The contactProperties field is used only when creating a new contact. These properties will not update existing contacts.
  *
- * @see HubspotSDK\Marketing\Events->upsertSubscriberStateByEmail
+ * @see HubspotSDK\Services\Marketing\EventsService::upsertSubscriberStateByEmail()
  *
  * @phpstan-type EventUpsertSubscriberStateByEmailParamsShape = array{
  *   externalEventId: string,

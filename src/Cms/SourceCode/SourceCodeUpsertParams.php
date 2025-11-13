@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Upserts a file at the specified path in the specified environment. Accepts multipart/form-data content type.
  *
- * @see HubspotSDK\Cms\SourceCode->upsert
+ * @see HubspotSDK\Services\Cms\SourceCodeService::upsert()
  *
  * @phpstan-type SourceCodeUpsertParamsShape = array{
  *   environment: string, file?: string

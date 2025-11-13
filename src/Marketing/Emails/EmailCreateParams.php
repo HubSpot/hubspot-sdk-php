@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
 /**
  * Use this endpoint to create a new marketing email.
  *
- * @see HubspotSDK\Marketing\Emails->create
+ * @see HubspotSDK\Services\Marketing\EmailsService::create()
  *
  * @phpstan-type EmailCreateParamsShape = array{
  *   name: string,

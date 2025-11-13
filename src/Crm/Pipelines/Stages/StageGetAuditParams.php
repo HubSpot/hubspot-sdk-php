@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Return a reverse chronological list of all mutations that have occurred on the pipeline stage identified by `{stageId}`.
  *
- * @see HubspotSDK\Crm\Pipelines\Stages->getAudit
+ * @see HubspotSDK\Services\Crm\Pipelines\StagesService::getAudit()
  *
  * @phpstan-type StageGetAuditParamsShape = array{
  *   objectType: string, pipelineId: string

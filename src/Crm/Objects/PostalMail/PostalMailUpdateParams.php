@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Objects\PostalMail->update
+ * @see HubspotSDK\Services\Crm\Objects\PostalMailService::update()
  *
  * @phpstan-type PostalMailUpdateParamsShape = array{
  *   properties: array<string,string>, idProperty?: string

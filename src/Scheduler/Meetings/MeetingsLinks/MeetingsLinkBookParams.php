@@ -14,7 +14,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
 /**
  * Book a meeting for a specified meeting page.
  *
- * @see HubspotSDK\Scheduler\Meetings\MeetingsLinks->book
+ * @see HubspotSDK\Services\Scheduler\Meetings\MeetingsLinksService::book()
  *
  * @phpstan-type MeetingsLinkBookParamsShape = array{
  *   duration: int,

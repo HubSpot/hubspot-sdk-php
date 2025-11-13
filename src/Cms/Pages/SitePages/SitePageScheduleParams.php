@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Schedule a Site Page to be Published.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->schedule
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::schedule()
  *
  * @phpstan-type SitePageScheduleParamsShape = array{
  *   id: string, publishDate: \DateTimeInterface

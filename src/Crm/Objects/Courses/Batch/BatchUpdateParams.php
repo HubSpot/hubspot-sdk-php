@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of courses by internal ID, or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\Courses\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Courses\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

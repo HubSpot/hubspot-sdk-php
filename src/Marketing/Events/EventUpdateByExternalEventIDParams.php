@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * Only Marketing Events created by the same app can be updated.
  *
- * @see HubspotSDK\Marketing\Events->updateByExternalEventID
+ * @see HubspotSDK\Services\Marketing\EventsService::updateByExternalEventID()
  *
  * @phpstan-type EventUpdateByExternalEventIDParamsShape = array{
  *   externalAccountId: string,

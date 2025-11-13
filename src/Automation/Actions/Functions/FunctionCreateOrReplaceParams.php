@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update a function for a given definition by ID.
  *
- * @see HubspotSDK\Automation\Actions\Functions->createOrReplace
+ * @see HubspotSDK\Services\Automation\Actions\FunctionsService::createOrReplace()
  *
  * @phpstan-type FunctionCreateOrReplaceParamsShape = array{
  *   appId: int,

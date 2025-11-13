@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a commerce payment with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard commerce payments is provided.
  *
- * @see HubspotSDK\Crm\Objects\CommercePayments->create
+ * @see HubspotSDK\Services\Crm\Objects\CommercePaymentsService::create()
  *
  * @phpstan-type CommercePaymentCreateParamsShape = array{
  *   properties: array<string,string>,

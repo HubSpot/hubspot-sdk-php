@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\Leads->search
+ * @see HubspotSDK\Services\Crm\Objects\LeadsService::search()
  *
  * @phpstan-type LeadSearchParamsShape = array{
  *   after?: string,

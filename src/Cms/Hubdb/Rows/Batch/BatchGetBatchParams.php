@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Returns rows in the published version of the specified table, given a set of row IDs.
  * **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows\Batch->getBatch
+ * @see HubspotSDK\Services\Cms\Hubdb\Rows\BatchService::getBatch()
  *
  * @phpstan-type BatchGetBatchParamsShape = array{inputs: list<string>}
  */

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of tasks by internal ID, or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\Tasks\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Tasks\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

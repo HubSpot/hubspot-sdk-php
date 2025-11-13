@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a call with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard calls is provided.
  *
- * @see HubspotSDK\Crm\Objects\Calls->create
+ * @see HubspotSDK\Services\Crm\Objects\CallsService::create()
  *
  * @phpstan-type CallCreateParamsShape = array{
  *   properties: array<string,string>,

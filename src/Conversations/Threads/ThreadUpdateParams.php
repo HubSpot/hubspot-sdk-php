@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Updates a single thread. Either a thread's status can be updated, or the thread can be restored.
  *
- * @see HubspotSDK\Conversations\Threads->update
+ * @see HubspotSDK\Services\Conversations\ThreadsService::update()
  *
  * @phpstan-type ThreadUpdateParamsShape = array{
  *   archived?: bool, status?: Status|value-of<Status>

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read an Object identified by `{ticketId}`. `{ticketId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Tickets->get
+ * @see HubspotSDK\Services\Crm\Objects\TicketsService::get()
  *
  * @phpstan-type TicketGetParamsShape = array{
  *   archived?: bool,

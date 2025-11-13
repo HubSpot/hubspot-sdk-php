@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a SMTP API token.
  *
- * @see HubspotSDK\Marketing\Transactional\SmtpTokens->create
+ * @see HubspotSDK\Services\Marketing\Transactional\SmtpTokensService::create()
  *
  * @phpstan-type SmtpTokenCreateParamsShape = array{
  *   campaignName: string, createContact: bool

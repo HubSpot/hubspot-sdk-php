@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of quotes.
  *
- * @see HubspotSDK\Crm\Objects\Quotes\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Quotes\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

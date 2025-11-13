@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a folder, identified by its path.
  *
- * @see HubspotSDK\Files\Folders->getByPath
+ * @see HubspotSDK\Services\Files\FoldersService::getByPath()
  *
  * @phpstan-type FolderGetByPathParamsShape = array{properties?: list<string>}
  */

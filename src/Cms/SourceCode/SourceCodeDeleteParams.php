@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Deletes the file at the specified path in the specified environment.
  *
- * @see HubspotSDK\Cms\SourceCode->delete
+ * @see HubspotSDK\Services\Cms\SourceCodeService::delete()
  *
  * @phpstan-type SourceCodeDeleteParamsShape = array{environment: string}
  */

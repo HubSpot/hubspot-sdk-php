@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new campaign spend item.
  *
- * @see HubspotSDK\Marketing\Campaigns\Spend->create
+ * @see HubspotSDK\Services\Marketing\Campaigns\SpendService::create()
  *
  * @phpstan-type SpendCreateParamsShape = array{
  *   amount: float, name: string, order: int, description?: string

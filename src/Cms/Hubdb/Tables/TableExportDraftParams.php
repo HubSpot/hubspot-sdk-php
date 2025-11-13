@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Exports the draft version of a table to CSV / EXCEL format.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->exportDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::exportDraft()
  *
  * @phpstan-type TableExportDraftParamsShape = array{format?: string}
  */

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieves a previous version of a Site Page.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->getRevision
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::getRevision()
  *
  * @phpstan-type SitePageGetRevisionParamsShape = array{objectId: string}
  */

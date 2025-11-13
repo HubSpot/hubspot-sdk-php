@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem;
  * The maximum number of items in a batch request is 50.
  * If an empty string ("") is passed for any property in the Batch Update, it will reset that property's value.
  *
- * @see HubspotSDK\Marketing\Campaigns\Batch->update
+ * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<PublicCampaignBatchUpdateItem>

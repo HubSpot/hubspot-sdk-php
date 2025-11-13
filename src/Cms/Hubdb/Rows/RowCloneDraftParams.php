@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Clones a single row in the draft version of a table.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows->cloneDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\RowsService::cloneDraft()
  *
  * @phpstan-type RowCloneDraftParamsShape = array{
  *   tableIdOrName: string, name?: string

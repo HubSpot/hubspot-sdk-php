@@ -13,7 +13,7 @@ use HubspotSDK\Webhooks\ThrottlingSettings;
 /**
  * Update webhook settings for the specified app.
  *
- * @see HubspotSDK\Webhooks\Settings->update
+ * @see HubspotSDK\Services\Webhooks\SettingsService::update()
  *
  * @phpstan-type SettingUpdateParamsShape = array{
  *   targetUrl: string, throttling: ThrottlingSettings

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns the details for each draft table defined in the specified account, including column definitions.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->listDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::listDraft()
  *
  * @phpstan-type TableListDraftParamsShape = array{
  *   after?: string,

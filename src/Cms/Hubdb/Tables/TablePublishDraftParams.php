@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Publishes the table by copying the data and table schema changes from draft version to the published version, meaning any website pages using data from the table will be updated.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->publishDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::publishDraft()
  *
  * @phpstan-type TablePublishDraftParamsShape = array{includeForeignIds?: bool}
  */

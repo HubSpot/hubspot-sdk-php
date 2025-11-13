@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of fees by internal ID, or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\Fees\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Fees\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

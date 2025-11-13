@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a cart with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard carts is provided.
  *
- * @see HubspotSDK\Crm\Objects\Carts->create
+ * @see HubspotSDK\Services\Crm\Objects\CartsService::create()
  *
  * @phpstan-type CartCreateParamsShape = array{
  *   properties: array<string,string>,

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Conversations\VisitorIdentification->generateToken
+ * @see HubspotSDK\Services\Conversations\VisitorIdentificationService::generateToken()
  *
  * @phpstan-type VisitorIdentificationGenerateTokenParamsShape = array{
  *   email: string, firstName?: string, lastName?: string

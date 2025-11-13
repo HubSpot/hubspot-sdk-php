@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Extensions\Calling\Transcripts->create
+ * @see HubspotSDK\Services\Crm\Extensions\Calling\TranscriptsService::create()
  *
  * @phpstan-type TranscriptCreateParamsShape = array{
  *   engagementId: int, transcriptCreateUtterances: list<TranscriptCreateUtterance>

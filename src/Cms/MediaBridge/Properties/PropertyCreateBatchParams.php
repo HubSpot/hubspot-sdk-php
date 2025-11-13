@@ -13,7 +13,7 @@ use HubspotSDK\PropertyCreate;
 /**
  * Create a batch of properties of the specified object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Properties->createBatch
+ * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::createBatch()
  *
  * @phpstan-type PropertyCreateBatchParamsShape = array{
  *   appId: string, inputs: list<PropertyCreate>

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get a specific budget item by ID.
  *
- * @see HubspotSDK\Marketing\Campaigns\Budget->get
+ * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::get()
  *
  * @phpstan-type BudgetGetParamsShape = array{campaignGuid: string}
  */

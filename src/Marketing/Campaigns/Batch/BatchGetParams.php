@@ -16,7 +16,7 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
  * The campaigns in the response are not guaranteed to be in the same order as they were provided in the request.
  * If duplicate campaign IDs are provided in the request, duplicates will be ignored. The response will include only unique IDs and will be returned without duplicates.
  *
- * @see HubspotSDK\Marketing\Campaigns\Batch->get
+ * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<PublicCampaignReadInput>,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Mark a marketing event as completed.
  *
- * @see HubspotSDK\Marketing\Events->completeByExternalEventID
+ * @see HubspotSDK\Services\Marketing\EventsService::completeByExternalEventID()
  *
  * @phpstan-type EventCompleteByExternalEventIDParamsShape = array{
  *   externalAccountId: string,

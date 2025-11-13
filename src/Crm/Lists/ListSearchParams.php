@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Search lists by list name or page through all lists by providing an empty `query` value.
  *
- * @see HubspotSDK\Crm\Lists->search
+ * @see HubspotSDK\Services\Crm\ListsService::search()
  *
  * @phpstan-type ListSearchParamsShape = array{
  *   additionalProperties?: list<string>,

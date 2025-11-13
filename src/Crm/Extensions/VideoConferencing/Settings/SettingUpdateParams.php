@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Extensions\VideoConferencing\Settings->update
+ * @see HubspotSDK\Services\Crm\Extensions\VideoConferencing\SettingsService::update()
  *
  * @phpstan-type SettingUpdateParamsShape = array{
  *   createMeetingUrl: string,

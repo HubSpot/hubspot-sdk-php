@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Return all the stages associated with the pipeline identified by `{pipelineId}`.
  *
- * @see HubspotSDK\Crm\Pipelines\Stages->list
+ * @see HubspotSDK\Services\Crm\Pipelines\StagesService::list()
  *
  * @phpstan-type StageListParamsShape = array{objectType: string}
  */

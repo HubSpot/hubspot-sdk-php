@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\Tasks->search
+ * @see HubspotSDK\Services\Crm\Objects\TasksService::search()
  *
  * @phpstan-type TaskSearchParamsShape = array{
  *   after?: string,

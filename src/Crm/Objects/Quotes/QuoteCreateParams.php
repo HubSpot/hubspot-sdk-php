@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a quote with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard quotes is provided.
  *
- * @see HubspotSDK\Crm\Objects\Quotes->create
+ * @see HubspotSDK\Services\Crm\Objects\QuotesService::create()
  *
  * @phpstan-type QuoteCreateParamsShape = array{
  *   properties: array<string,string>,

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a communication with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard communications is provided.
  *
- * @see HubspotSDK\Crm\Objects\Communications->create
+ * @see HubspotSDK\Services\Crm\Objects\CommunicationsService::create()
  *
  * @phpstan-type CommunicationCreateParamsShape = array{
  *   properties: array<string,string>,

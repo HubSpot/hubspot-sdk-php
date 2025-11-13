@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update multiple postal mail objects in a single request.
  *
- * @see HubspotSDK\Crm\Objects\PostalMail\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\PostalMail\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

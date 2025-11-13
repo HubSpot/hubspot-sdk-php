@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of discounts by internal ID, or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\Discounts\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Discounts\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

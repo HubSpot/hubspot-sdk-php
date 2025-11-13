@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Renames the given folderId with a new name.
  *
- * @see HubspotSDK\Crm\Lists\Folders->rename
+ * @see HubspotSDK\Services\Crm\Lists\FoldersService::rename()
  *
  * @phpstan-type FolderRenameParamsShape = array{newFolderName?: string}
  */

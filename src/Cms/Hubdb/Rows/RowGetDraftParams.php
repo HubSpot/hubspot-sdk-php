@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get a single row by ID from a table's draft version.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows->getDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\RowsService::getDraft()
  *
  * @phpstan-type RowGetDraftParamsShape = array{
  *   tableIdOrName: string, archived?: bool

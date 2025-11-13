@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Clones rows in the draft version of the specified table, given a set of row ids. Maximum of 100 row ids per call.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows\Batch->cloneBatch
+ * @see HubspotSDK\Services\Cms\Hubdb\Rows\BatchService::cloneBatch()
  *
  * @phpstan-type BatchCloneBatchParamsShape = array{
  *   inputs: list<HubDBTableRowBatchCloneRequest>

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Archive a batch of commerce payments by ID.
  *
- * @see HubspotSDK\Crm\Objects\CommercePayments\Batch->delete
+ * @see HubspotSDK\Services\Crm\Objects\CommercePayments\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<SimplePublicObjectID>}
  */

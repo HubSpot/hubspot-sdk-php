@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Attach a Blog Tag to a multi-language group.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->attachToLangGroup
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::attachToLangGroup()
  *
  * @phpstan-type TagAttachToLangGroupParamsShape = array{
  *   id: string, language: string, primaryId: string, primaryLanguage?: string

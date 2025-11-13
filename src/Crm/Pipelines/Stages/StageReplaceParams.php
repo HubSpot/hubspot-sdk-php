@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Replace all the properties of an existing pipeline stage with the values provided. The updated stage will be returned in the response.
  *
- * @see HubspotSDK\Crm\Pipelines\Stages->replace
+ * @see HubspotSDK\Services\Crm\Pipelines\StagesService::replace()
  *
  * @phpstan-type StageReplaceParamsShape = array{
  *   objectType: string,

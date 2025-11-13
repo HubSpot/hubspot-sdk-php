@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchUnsubscribeAllPara
 /**
  * Unsubscribe a set of contacts from all email subscriptions.
  *
- * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->batchUnsubscribeAll
+ * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::batchUnsubscribeAll()
  *
  * @phpstan-type StatusBatchUnsubscribeAllParamsShape = array{
  *   channel: Channel|value-of<Channel>,

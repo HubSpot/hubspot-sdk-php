@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of invoices.
  *
- * @see HubspotSDK\Crm\Objects\Invoices\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Invoices\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

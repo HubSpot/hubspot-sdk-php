@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * This endpoint retrieves key attribution metrics for a specified campaign, such as sessions, new contacts, and influenced contacts.
  *
- * @see HubspotSDK\Marketing\Campaigns\Reports->getAttributionMetrics
+ * @see HubspotSDK\Services\Marketing\Campaigns\ReportsService::getAttributionMetrics()
  *
  * @phpstan-type ReportGetAttributionMetricsParamsShape = array{
  *   endDate?: string, startDate?: string

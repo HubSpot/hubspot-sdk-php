@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of emails. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Emails->list
+ * @see HubspotSDK\Services\Crm\Objects\EmailsService::list()
  *
  * @phpstan-type EmailListParamsShape = array{
  *   after?: string,

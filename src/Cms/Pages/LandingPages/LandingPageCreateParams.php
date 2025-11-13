@@ -19,7 +19,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * Create a new Landing Page.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->create
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::create()
  *
  * @phpstan-type LandingPageCreateParamsShape = array{
  *   id: string,

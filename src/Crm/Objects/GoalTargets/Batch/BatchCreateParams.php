@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create multiple goal targets in a single batch operation.
  *
- * @see HubspotSDK\Crm\Objects\GoalTargets\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\GoalTargets\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

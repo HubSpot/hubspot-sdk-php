@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update a card definition with new details.
  *
- * @see HubspotSDK\Crm\Extensions\Cards->update
+ * @see HubspotSDK\Services\Crm\Extensions\CardsService::update()
  *
  * @phpstan-type CardUpdateParamsShape = array{
  *   appId: int,

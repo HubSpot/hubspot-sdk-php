@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
- * @see HubspotSDK\Crm\Associations\Batch->get
+ * @see HubspotSDK\Services\Crm\Associations\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicObjectID>

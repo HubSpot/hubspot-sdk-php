@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new account for a channel. Multiple accounts can communicate over a single channel using different delivery identifiers.
  *
- * @see HubspotSDK\Conversations\CustomChannels\ChannelAccounts->create
+ * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::create()
  *
  * @phpstan-type ChannelAccountCreateParamsShape = array{
  *   authorized: bool,

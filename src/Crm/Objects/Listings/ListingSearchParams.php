@@ -13,7 +13,7 @@ use HubspotSDK\Crm\FilterGroup;
 /**
  * Execute a search query to find listings based on specified filters and properties.
  *
- * @see HubspotSDK\Crm\Objects\Listings->search
+ * @see HubspotSDK\Services\Crm\Objects\ListingsService::search()
  *
  * @phpstan-type ListingSearchParamsShape = array{
  *   after?: string,

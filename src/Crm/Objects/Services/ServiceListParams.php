@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of services. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Services->list
+ * @see HubspotSDK\Services\Crm\Objects\ServicesService::list()
  *
  * @phpstan-type ServiceListParamsShape = array{
  *   after?: string,

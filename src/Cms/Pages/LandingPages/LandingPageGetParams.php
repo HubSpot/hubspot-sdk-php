@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the Landing Page object identified by the id in the path.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->get
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::get()
  *
  * @phpstan-type LandingPageGetParamsShape = array{
  *   archived?: bool, property?: string

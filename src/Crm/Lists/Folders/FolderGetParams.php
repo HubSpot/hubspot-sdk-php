@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieves a folder and recursively includes all folders via the childNodes attribute.  The child lists field will be empty in all child nodes. Only the folder retrieved will include the child lists in that folder.
  *
- * @see HubspotSDK\Crm\Lists\Folders->get
+ * @see HubspotSDK\Services\Crm\Lists\FoldersService::get()
  *
  * @phpstan-type FolderGetParamsShape = array{folderId?: string}
  */

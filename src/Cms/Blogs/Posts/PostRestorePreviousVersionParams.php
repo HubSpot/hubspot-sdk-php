@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Restores a blog post to one of its previous versions.
  *
- * @see HubspotSDK\Cms\Blogs\Posts->restorePreviousVersion
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::restorePreviousVersion()
  *
  * @phpstan-type PostRestorePreviousVersionParamsShape = array{objectId: string}
  */

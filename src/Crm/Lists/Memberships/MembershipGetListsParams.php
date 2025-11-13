@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * For given record provide lists this record is member of.
  *
- * @see HubspotSDK\Crm\Lists\Memberships->getLists
+ * @see HubspotSDK\Services\Crm\Lists\MembershipsService::getLists()
  *
  * @phpstan-type MembershipGetListsParamsShape = array{objectTypeId: string}
  */

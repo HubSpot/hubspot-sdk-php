@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a discount with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard discounts is provided.
  *
- * @see HubspotSDK\Crm\Objects\Discounts->create
+ * @see HubspotSDK\Services\Crm\Objects\DiscountsService::create()
  *
  * @phpstan-type DiscountCreateParamsShape = array{
  *   properties: array<string,string>,

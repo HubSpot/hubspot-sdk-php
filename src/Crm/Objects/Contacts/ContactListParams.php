@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve all contacts, using query parameters to specify the information that gets returned.
  *
- * @see HubspotSDK\Crm\Objects\Contacts->list
+ * @see HubspotSDK\Services\Crm\Objects\ContactsService::list()
  *
  * @phpstan-type ContactListParamsShape = array{
  *   after?: string,

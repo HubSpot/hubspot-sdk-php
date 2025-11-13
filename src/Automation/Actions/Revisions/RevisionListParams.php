@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the versions of a definition by ID.
  *
- * @see HubspotSDK\Automation\Actions\Revisions->list
+ * @see HubspotSDK\Services\Automation\Actions\RevisionsService::list()
  *
  * @phpstan-type RevisionListParamsShape = array{
  *   appId: int, after?: string, limit?: int

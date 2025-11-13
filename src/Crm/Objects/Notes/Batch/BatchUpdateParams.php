@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of notes by internal ID, or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\Notes\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Notes\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

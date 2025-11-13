@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Search through files in the file manager. Does not display hidden or archived files.
  *
- * @see HubspotSDK\Files\Files->search
+ * @see HubspotSDK\Services\Files\FilesService::search()
  *
  * @phpstan-type FileSearchParamsShape = array{
  *   after?: string,

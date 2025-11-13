@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update the Blog Tag objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->updateBatch
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::updateBatch()
  *
  * @phpstan-type TagUpdateBatchParamsShape = array{
  *   inputs: list<mixed>, archived?: bool

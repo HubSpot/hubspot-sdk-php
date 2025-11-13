@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Rerun a previous A/B test.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->rerunAbTest
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::rerunAbTest()
  *
  * @phpstan-type LandingPageRerunAbTestParamsShape = array{
  *   abTestId: string, variationId: string

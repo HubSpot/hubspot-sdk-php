@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new language variation from an existing Blog Tag.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->createLangVariation
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::createLangVariation()
  *
  * @phpstan-type TagCreateLangVariationParamsShape = array{
  *   id: string, name: string, language?: string, primaryLanguage?: string

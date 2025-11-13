@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of discounts. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Discounts->list
+ * @see HubspotSDK\Services\Crm\Objects\DiscountsService::list()
  *
  * @phpstan-type DiscountListParamsShape = array{
  *   after?: string,

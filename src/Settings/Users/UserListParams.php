@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieves a list of users from an account.
  *
- * @see HubspotSDK\Settings\Users->list
+ * @see HubspotSDK\Services\Settings\UsersService::list()
  *
  * @phpstan-type UserListParamsShape = array{after?: string, limit?: int}
  */

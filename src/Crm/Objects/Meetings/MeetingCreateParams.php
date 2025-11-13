@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a meeting with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard meetings is provided.
  *
- * @see HubspotSDK\Crm\Objects\Meetings->create
+ * @see HubspotSDK\Services\Crm\Objects\MeetingsService::create()
  *
  * @phpstan-type MeetingCreateParamsShape = array{
  *   properties: array<string,string>,

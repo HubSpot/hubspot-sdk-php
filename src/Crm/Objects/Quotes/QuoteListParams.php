@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of quotes. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Quotes->list
+ * @see HubspotSDK\Services\Crm\Objects\QuotesService::list()
  *
  * @phpstan-type QuoteListParamsShape = array{
  *   after?: string,

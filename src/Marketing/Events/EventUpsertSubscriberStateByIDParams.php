@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Record a subscriber state between multiple HubSpot contacts and a marketing event, using HubSpot contact IDs. Note that the contact must already exist in HubSpot; a contact will not be created.
  *
- * @see HubspotSDK\Marketing\Events->upsertSubscriberStateByID
+ * @see HubspotSDK\Services\Marketing\EventsService::upsertSubscriberStateByID()
  *
  * @phpstan-type EventUpsertSubscriberStateByIDParamsShape = array{
  *   externalEventId: string,

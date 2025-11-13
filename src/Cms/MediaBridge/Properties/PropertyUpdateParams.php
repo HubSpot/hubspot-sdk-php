@@ -15,7 +15,7 @@ use HubspotSDK\OptionInput;
 /**
  * Update an existing property for an object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Properties->update
+ * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::update()
  *
  * @phpstan-type PropertyUpdateParamsShape = array{
  *   appId: string,

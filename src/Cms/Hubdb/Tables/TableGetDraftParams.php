@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the details for the draft version of a specific HubDB table. This will include the definitions for the columns in the table and the number of rows in the table.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->getDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::getDraft()
  *
  * @phpstan-type TableGetDraftParamsShape = array{
  *   archived?: bool, includeForeignIds?: bool, isGetLocalizedSchema?: bool

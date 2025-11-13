@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns any website content matching the given search criteria for a given HubSpot account. Searches can be filtered by content type, domain, or URL path.
  *
- * @see HubspotSDK\Cms\SiteSearch->search
+ * @see HubspotSDK\Services\Cms\SiteSearchService::search()
  *
  * @phpstan-type SiteSearchSearchParamsShape = array{
  *   autocomplete?: bool,

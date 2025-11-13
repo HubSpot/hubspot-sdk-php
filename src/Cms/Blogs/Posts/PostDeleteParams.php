@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete a blog post by ID.
  *
- * @see HubspotSDK\Cms\Blogs\Posts->delete
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::delete()
  *
  * @phpstan-type PostDeleteParamsShape = array{archived?: bool}
  */

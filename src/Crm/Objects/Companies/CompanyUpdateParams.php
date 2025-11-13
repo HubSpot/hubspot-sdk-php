@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update a company by ID (`companyId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
  *
- * @see HubspotSDK\Crm\Objects\Companies->update
+ * @see HubspotSDK\Services\Crm\Objects\CompaniesService::update()
  *
  * @phpstan-type CompanyUpdateParamsShape = array{
  *   properties: array<string,string>, idProperty?: string

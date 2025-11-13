@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve an event type template by ID.
  *
- * @see HubspotSDK\Crm\Timeline\Templates->get
+ * @see HubspotSDK\Services\Crm\Timeline\TemplatesService::get()
  *
  * @phpstan-type TemplateGetParamsShape = array{appId: int}
  */

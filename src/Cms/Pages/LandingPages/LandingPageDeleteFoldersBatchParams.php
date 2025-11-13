@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete the Folder objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->deleteFoldersBatch
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::deleteFoldersBatch()
  *
  * @phpstan-type LandingPageDeleteFoldersBatchParamsShape = array{
  *   inputs: list<string>

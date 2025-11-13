@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update multiple goal targets in a single batch operation using their internal IDs or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\GoalTargets\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\GoalTargets\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

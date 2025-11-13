@@ -14,7 +14,7 @@ use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams\OverrideState;
 /**
  * Set a feature flag for an app. For example, update the `hs-hide-crm-cards` flag's `defaultState` to `ON` to hide classic CRM cards from new installs.
  *
- * @see HubspotSDK\Crm\FeatureFlags\Apps->update
+ * @see HubspotSDK\Services\Crm\FeatureFlags\AppsService::update()
  *
  * @phpstan-type AppUpdateParamsShape = array{
  *   appId: int,

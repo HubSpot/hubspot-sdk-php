@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of partner services. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\PartnerServices->list
+ * @see HubspotSDK\Services\Crm\Objects\PartnerServicesService::list()
  *
  * @phpstan-type PartnerServiceListParamsShape = array{
  *   after?: string,

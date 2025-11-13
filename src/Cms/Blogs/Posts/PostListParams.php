@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve all blog posts, with paging and filtering options. This method would be useful for an integration that ingests posts and suggests edits.
  *
- * @see HubspotSDK\Cms\Blogs\Posts->list
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::list()
  *
  * @phpstan-type PostListParamsShape = array{
  *   after?: string,

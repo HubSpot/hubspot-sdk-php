@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Begins importing data from the specified file resources. This uploads the corresponding file and uses the import request object to convert rows in the files to objects.
  *
- * @see HubspotSDK\Crm\Imports->create
+ * @see HubspotSDK\Services\Crm\ImportsService::create()
  *
  * @phpstan-type ImportCreateParamsShape = array{
  *   files?: string, importRequest?: string

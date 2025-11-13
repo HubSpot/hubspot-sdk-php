@@ -13,7 +13,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties;
 use HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
 
 /**
- * @see HubspotSDK\Scheduler\Meetings\Calendar->create
+ * @see HubspotSDK\Services\Scheduler\Meetings\CalendarService::create()
  *
  * @phpstan-type CalendarCreateParamsShape = array{
  *   associations: list<ExternalAssociationCreateRequest>,

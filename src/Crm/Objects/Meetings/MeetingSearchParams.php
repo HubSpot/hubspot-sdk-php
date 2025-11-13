@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\Meetings->search
+ * @see HubspotSDK\Services\Crm\Objects\MeetingsService::search()
  *
  * @phpstan-type MeetingSearchParamsShape = array{
  *   after?: string,

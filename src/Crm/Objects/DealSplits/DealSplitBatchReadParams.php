@@ -13,7 +13,7 @@ use HubspotSDK\PublicObjectID;
 /**
  * Read a batch of deal split objects by their associated deal object internal ID.
  *
- * @see HubspotSDK\Crm\Objects\DealSplits->batchRead
+ * @see HubspotSDK\Services\Crm\Objects\DealSplitsService::batchRead()
  *
  * @phpstan-type DealSplitBatchReadParamsShape = array{
  *   inputs: list<PublicObjectID>

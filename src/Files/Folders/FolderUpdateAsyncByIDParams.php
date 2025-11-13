@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update properties of folder by given ID. This action happens asynchronously and will update all of the folder's children as well.
  *
- * @see HubspotSDK\Files\Folders->updateAsyncByID
+ * @see HubspotSDK\Services\Files\FoldersService::updateAsyncByID()
  *
  * @phpstan-type FolderUpdateAsyncByIDParamsShape = array{
  *   id: string, name?: string, parentFolderId?: int

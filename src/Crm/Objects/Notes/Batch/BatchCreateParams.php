@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of notes.
  *
- * @see HubspotSDK\Crm\Objects\Notes\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Notes\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of tasks. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Tasks->list
+ * @see HubspotSDK\Services\Crm\Objects\TasksService::list()
  *
  * @phpstan-type TaskListParamsShape = array{
  *   after?: string,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the current status of the app's feature flags. No request body is included.
  *
- * @see HubspotSDK\Crm\FeatureFlags\Apps->get
+ * @see HubspotSDK\Services\Crm\FeatureFlags\AppsService::get()
  *
  * @phpstan-type AppGetParamsShape = array{appId: int}
  */

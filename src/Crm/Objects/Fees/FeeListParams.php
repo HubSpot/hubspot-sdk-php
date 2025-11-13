@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of fees. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Fees->list
+ * @see HubspotSDK\Services\Crm\Objects\FeesService::list()
  *
  * @phpstan-type FeeListParamsShape = array{
  *   after?: string,

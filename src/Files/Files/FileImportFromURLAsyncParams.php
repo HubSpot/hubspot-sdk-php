@@ -15,7 +15,7 @@ use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationStrat
 /**
  * Asynchronously imports the file at the given URL into the file manager.
  *
- * @see HubspotSDK\Files\Files->importFromURLAsync
+ * @see HubspotSDK\Services\Files\FilesService::importFromURLAsync()
  *
  * @phpstan-type FileImportFromURLAsyncParamsShape = array{
  *   access: Access|value-of<Access>,

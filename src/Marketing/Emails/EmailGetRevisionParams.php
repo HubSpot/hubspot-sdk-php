@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get a specific revision of a marketing email.
  *
- * @see HubspotSDK\Marketing\Emails->getRevision
+ * @see HubspotSDK\Services\Marketing\EmailsService::getRevision()
  *
  * @phpstan-type EmailGetRevisionParamsShape = array{emailId: string}
  */

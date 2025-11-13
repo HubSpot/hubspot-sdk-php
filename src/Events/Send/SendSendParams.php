@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Send data for a single event completion.
  *
- * @see HubspotSDK\Events\Send->send
+ * @see HubspotSDK\Services\Events\SendService::send()
  *
  * @phpstan-type SendSendParamsShape = array{
  *   eventName: string,

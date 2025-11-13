@@ -13,7 +13,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
 /**
  * Update the schema for an existing object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Schemas->update
+ * @see HubspotSDK\Services\Cms\MediaBridge\SchemasService::update()
  *
  * @phpstan-type SchemaUpdateParamsShape = array{
  *   appId: string,

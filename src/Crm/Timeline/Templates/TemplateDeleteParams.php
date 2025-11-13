@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete an event type template by ID.
  *
- * @see HubspotSDK\Crm\Timeline\Templates->delete
+ * @see HubspotSDK\Services\Crm\Timeline\TemplatesService::delete()
  *
  * @phpstan-type TemplateDeleteParamsShape = array{appId: int}
  */

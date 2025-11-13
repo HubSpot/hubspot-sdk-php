@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * For a given account and document ID (page ID, blog post ID, HubDB row ID, etc.), return all indexed data for that document. This is useful when debugging why a particular document is not returned from a custom search.
  *
- * @see HubspotSDK\Cms\SiteSearch->getIndexedData
+ * @see HubspotSDK\Services\Cms\SiteSearchService::getIndexedData()
  *
  * @phpstan-type SiteSearchGetIndexedDataParamsShape = array{
  *   type?: Type|value-of<Type>

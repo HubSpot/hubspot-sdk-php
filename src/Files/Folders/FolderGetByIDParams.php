@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a folder by its ID.
  *
- * @see HubspotSDK\Files\Folders->getByID
+ * @see HubspotSDK\Services\Files\FoldersService::getByID()
  *
  * @phpstan-type FolderGetByIDParamsShape = array{properties?: list<string>}
  */

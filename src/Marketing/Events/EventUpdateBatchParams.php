@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Updates multiple Marketing Events on the portal based on their objectId, if they exist.
  *
- * @see HubspotSDK\Marketing\Events->updateBatch
+ * @see HubspotSDK\Services\Marketing\EventsService::updateBatch()
  *
  * @phpstan-type EventUpdateBatchParamsShape = array{
  *   inputs: list<MarketingEventPublicUpdateRequestFullV2>

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a batch of blog posts by ID. identified in the request body.
  *
- * @see HubspotSDK\Cms\Blogs\Posts\Batch->get
+ * @see HubspotSDK\Services\Cms\Blogs\Posts\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{inputs: list<string>, archived?: bool}
  */

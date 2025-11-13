@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read an Object identified by `{discountId}`. `{discountId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Discounts->get
+ * @see HubspotSDK\Services\Crm\Objects\DiscountsService::get()
  *
  * @phpstan-type DiscountGetParamsShape = array{
  *   archived?: bool,

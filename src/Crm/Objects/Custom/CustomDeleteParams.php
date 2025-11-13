@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Move an Object identified by `{objectId}` to the recycling bin.
  *
- * @see HubspotSDK\Crm\Objects\Custom->delete
+ * @see HubspotSDK\Services\Crm\Objects\CustomService::delete()
  *
  * @phpstan-type CustomDeleteParamsShape = array{objectType: string}
  */

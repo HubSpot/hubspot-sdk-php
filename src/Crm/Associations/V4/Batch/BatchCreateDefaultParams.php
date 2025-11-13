@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Associations\V4\PublicDefaultAssociationMultiPost;
 /**
  * Create the default (most generic) association type between two object types.
  *
- * @see HubspotSDK\Crm\Associations\V4\Batch->createDefault
+ * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::createDefault()
  *
  * @phpstan-type BatchCreateDefaultParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicDefaultAssociationMultiPost>

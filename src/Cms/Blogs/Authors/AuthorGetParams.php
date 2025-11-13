@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the Blog Author object identified by the id in the path.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->get
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::get()
  *
  * @phpstan-type AuthorGetParamsShape = array{archived?: bool, property?: string}
  */

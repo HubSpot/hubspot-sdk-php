@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create the Blog Tag objects detailed in the request body.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->createBatch
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::createBatch()
  *
  * @phpstan-type TagCreateBatchParamsShape = array{inputs: list<Tag>}
  */

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Owners\OwnerGetParams\IDProperty;
 /**
  * Retrieve details of a specific owner using either their 'id' or 'userId'.
  *
- * @see HubspotSDK\Crm\Owners->get
+ * @see HubspotSDK\Services\Crm\OwnersService::get()
  *
  * @phpstan-type OwnerGetParamsShape = array{
  *   archived?: bool, idProperty?: IDProperty|value-of<IDProperty>

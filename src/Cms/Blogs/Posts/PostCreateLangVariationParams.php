@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new language variation from an existing blog post.
  *
- * @see HubspotSDK\Cms\Blogs\Posts->createLangVariation
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::createLangVariation()
  *
  * @phpstan-type PostCreateLangVariationParamsShape = array{
  *   id: string, language?: string

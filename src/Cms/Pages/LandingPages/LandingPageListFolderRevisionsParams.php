@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieves all the previous versions of a Folder.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->listFolderRevisions
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::listFolderRevisions()
  *
  * @phpstan-type LandingPageListFolderRevisionsParamsShape = array{
  *   after?: string, before?: string, limit?: int

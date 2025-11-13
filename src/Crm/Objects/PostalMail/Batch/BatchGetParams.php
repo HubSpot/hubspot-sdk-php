@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Retrieve multiple postal mail objects using their internal IDs or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\PostalMail\Batch->get
+ * @see HubspotSDK\Services\Crm\Objects\PostalMail\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<SimplePublicObjectID>,

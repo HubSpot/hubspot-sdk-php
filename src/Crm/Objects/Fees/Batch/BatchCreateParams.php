@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of fees.
  *
- * @see HubspotSDK\Crm\Objects\Fees\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Fees\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of taxes by internal ID, or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\Taxes\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Taxes\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>
