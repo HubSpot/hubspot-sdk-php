@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Send multiple event completions at once.
  *
- * @see HubspotSDK\Events\Send->sendBatch
+ * @see HubspotSDK\Services\Events\SendService::sendBatch()
  *
  * @phpstan-type SendSendBatchParamsShape = array{
  *   inputs: list<BehavioralEventHTTPCompletionRequest>

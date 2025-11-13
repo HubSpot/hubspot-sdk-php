@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a lead with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard leads is provided.
  *
- * @see HubspotSDK\Crm\Objects\Leads->create
+ * @see HubspotSDK\Services\Crm\Objects\LeadsService::create()
  *
  * @phpstan-type LeadCreateParamsShape = array{
  *   properties: array<string,string>,

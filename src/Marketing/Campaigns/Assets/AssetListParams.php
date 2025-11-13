@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * This endpoint lists all assets of the campaign by asset type. The assetType parameter is required, and each request can only fetch assets of a single type.
  * Asset metrics can also be fetched along with the assets; they are available only if start and end dates are provided.
  *
- * @see HubspotSDK\Marketing\Campaigns\Assets->list
+ * @see HubspotSDK\Services\Marketing\Campaigns\AssetsService::list()
  *
  * @phpstan-type AssetListParamsShape = array{
  *   campaignGuid: string,

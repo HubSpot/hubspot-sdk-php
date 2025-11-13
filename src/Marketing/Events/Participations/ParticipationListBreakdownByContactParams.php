@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read Contact's participations by identifier - email or internal id.
  *
- * @see HubspotSDK\Marketing\Events\Participations->listBreakdownByContact
+ * @see HubspotSDK\Services\Marketing\Events\ParticipationsService::listBreakdownByContact()
  *
  * @phpstan-type ParticipationListBreakdownByContactParamsShape = array{
  *   after?: string, limit?: int, state?: string

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * All the column values need not be specified. Only the columns or fields that needs to be modified can be specified.
  * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows->updateDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\RowsService::updateDraft()
  *
  * @phpstan-type RowUpdateDraftParamsShape = array{
  *   tableIdOrName: string,

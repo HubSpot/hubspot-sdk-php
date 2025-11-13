@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of calls. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Calls->list
+ * @see HubspotSDK\Services\Crm\Objects\CallsService::list()
  *
  * @phpstan-type CallListParamsShape = array{
  *   after?: string,

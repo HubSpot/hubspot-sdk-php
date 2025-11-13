@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Archive a function for a specific definition.
  *
- * @see HubspotSDK\Automation\Actions\Functions->delete
+ * @see HubspotSDK\Services\Automation\Actions\FunctionsService::delete()
  *
  * @phpstan-type FunctionDeleteParamsShape = array{
  *   appId: int,

@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Get a single row by ID from the published version of a table.
  * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows->get
+ * @see HubspotSDK\Services\Cms\Hubdb\RowsService::get()
  *
  * @phpstan-type RowGetParamsShape = array{tableIdOrName: string, archived?: bool}
  */

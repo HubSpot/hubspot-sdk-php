@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create the Site Page objects detailed in the request body.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->createBatch
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::createBatch()
  *
  * @phpstan-type SitePageCreateBatchParamsShape = array{inputs: list<Page>}
  */

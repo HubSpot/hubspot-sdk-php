@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Objects\PartnerClients->get
+ * @see HubspotSDK\Services\Crm\Objects\PartnerClientsService::get()
  *
  * @phpstan-type PartnerClientGetParamsShape = array{
  *   archived?: bool,

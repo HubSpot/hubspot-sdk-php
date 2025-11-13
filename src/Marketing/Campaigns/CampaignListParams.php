@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * This endpoint allows users to search for and return a page of campaigns based on various query parameters. Users can filter by name, sort, and paginate through the campaigns, as well as control which properties are returned in the response.
  *
- * @see HubspotSDK\Marketing\Campaigns->list
+ * @see HubspotSDK\Services\Marketing\CampaignsService::list()
  *
  * @phpstan-type CampaignListParamsShape = array{
  *   after?: string,

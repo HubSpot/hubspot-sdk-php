@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of feedback submissions. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\FeedbackSubmissions->list
+ * @see HubspotSDK\Services\Crm\Objects\FeedbackSubmissionsService::list()
  *
  * @phpstan-type FeedbackSubmissionListParamsShape = array{
  *   after?: string,

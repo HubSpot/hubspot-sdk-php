@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Associations\Schema->list
+ * @see HubspotSDK\Services\Crm\Associations\SchemaService::list()
  *
  * @phpstan-type SchemaListParamsShape = array{fromObjectType: string}
  */

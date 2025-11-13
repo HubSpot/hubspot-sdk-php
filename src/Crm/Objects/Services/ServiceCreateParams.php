@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a service with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard services is provided.
  *
- * @see HubspotSDK\Crm\Objects\Services->create
+ * @see HubspotSDK\Services\Crm\Objects\ServicesService::create()
  *
  * @phpstan-type ServiceCreateParamsShape = array{
  *   properties: array<string,string>,

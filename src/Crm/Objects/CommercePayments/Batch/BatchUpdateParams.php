@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of commerce payments by internal ID, or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\CommercePayments\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\CommercePayments\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

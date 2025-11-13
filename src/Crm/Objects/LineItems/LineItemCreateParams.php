@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a line item with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard line items is provided.
  *
- * @see HubspotSDK\Crm\Objects\LineItems->create
+ * @see HubspotSDK\Services\Crm\Objects\LineItemsService::create()
  *
  * @phpstan-type LineItemCreateParamsShape = array{
  *   properties: array<string,string>,

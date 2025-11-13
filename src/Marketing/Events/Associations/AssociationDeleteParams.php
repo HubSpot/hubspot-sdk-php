@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Disassociates a list from a marketing event by marketing event id and ILS list id.
  *
- * @see HubspotSDK\Marketing\Events\Associations->delete
+ * @see HubspotSDK\Services\Marketing\Events\AssociationsService::delete()
  *
  * @phpstan-type AssociationDeleteParamsShape = array{marketingEventId: string}
  */

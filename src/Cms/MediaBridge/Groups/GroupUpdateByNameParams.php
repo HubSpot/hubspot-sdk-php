@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update an existing property group by name.
  *
- * @see HubspotSDK\Cms\MediaBridge\Groups->updateByName
+ * @see HubspotSDK\Services\Cms\MediaBridge\GroupsService::updateByName()
  *
  * @phpstan-type GroupUpdateByNameParamsShape = array{
  *   appId: string, objectType: string, displayOrder?: int, label?: string

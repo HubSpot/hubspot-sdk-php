@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Validates the file contents passed to the endpoint given a specified path and environment. Accepts multipart/form-data content type.
  *
- * @see HubspotSDK\Cms\SourceCode->validate
+ * @see HubspotSDK\Services\Cms\SourceCodeService::validate()
  *
  * @phpstan-type SourceCodeValidateParamsShape = array{
  *   environment: string, file?: string

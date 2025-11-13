@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the Blog Author objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->getBatch
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::getBatch()
  *
  * @phpstan-type AuthorGetBatchParamsShape = array{
  *   inputs: list<string>, archived?: bool

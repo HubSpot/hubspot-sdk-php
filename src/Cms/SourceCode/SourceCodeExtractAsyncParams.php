@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Extract a zip file in the developer file system. Extraction status can be checked with the `/extract/async/tasks/taskId/status` endpoint below.
  *
- * @see HubspotSDK\Cms\SourceCode->extractAsync
+ * @see HubspotSDK\Services\Cms\SourceCodeService::extractAsync()
  *
  * @phpstan-type SourceCodeExtractAsyncParamsShape = array{path: string}
  */

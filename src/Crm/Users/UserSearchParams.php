@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Users->search
+ * @see HubspotSDK\Services\Crm\UsersService::search()
  *
  * @phpstan-type UserSearchParamsShape = array{
  *   after?: string,

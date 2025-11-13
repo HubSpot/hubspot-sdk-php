@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the Site Page object identified by the id in the path.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->get
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::get()
  *
  * @phpstan-type SitePageGetParamsShape = array{archived?: bool, property?: string}
  */

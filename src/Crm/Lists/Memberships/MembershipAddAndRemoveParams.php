@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * This endpoint only works for lists that have a `processingType` of `MANUAL` or `SNAPSHOT`.
  *
- * @see HubspotSDK\Crm\Lists\Memberships->addAndRemove
+ * @see HubspotSDK\Services\Crm\Lists\MembershipsService::addAndRemove()
  *
  * @phpstan-type MembershipAddAndRemoveParamsShape = array{
  *   recordIdsToAdd: list<string>, recordIdsToRemove: list<string>

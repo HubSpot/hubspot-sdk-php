@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Retrieve a batch of companies by ID (`companyId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
  *
- * @see HubspotSDK\Crm\Objects\Companies\Batch->get
+ * @see HubspotSDK\Services\Crm\Objects\Companies\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<SimplePublicObjectID>,

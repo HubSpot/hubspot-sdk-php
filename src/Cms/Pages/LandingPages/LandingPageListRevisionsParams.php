@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieves all the previous versions of a Landing Page.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->listRevisions
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::listRevisions()
  *
  * @phpstan-type LandingPageListRevisionsParamsShape = array{
  *   after?: string, before?: string, limit?: int

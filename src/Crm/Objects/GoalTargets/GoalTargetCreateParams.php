@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a goal target with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard goal targets is provided.
  *
- * @see HubspotSDK\Crm\Objects\GoalTargets->create
+ * @see HubspotSDK\Services\Crm\Objects\GoalTargetsService::create()
  *
  * @phpstan-type GoalTargetCreateParamsShape = array{
  *   properties: array<string,string>,

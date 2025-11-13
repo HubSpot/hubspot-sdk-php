@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the details of an existing property group by name.
  *
- * @see HubspotSDK\Cms\MediaBridge\Groups->getByName
+ * @see HubspotSDK\Services\Cms\MediaBridge\GroupsService::getByName()
  *
  * @phpstan-type GroupGetByNameParamsShape = array{
  *   appId: string, objectType: string

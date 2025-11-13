@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Set the visibility settings for media bridge events created by your app.
  *
- * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->updateEventVisibilitySettings
+ * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::updateEventVisibilitySettings()
  *
  * @phpstan-type IntegratorSettingUpdateEventVisibilitySettingsParamsShape = array{
  *   eventType: EventType|value-of<EventType>,

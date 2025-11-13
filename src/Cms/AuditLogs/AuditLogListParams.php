@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns audit logs based on filters.
  *
- * @see HubspotSDK\Cms\AuditLogs->list
+ * @see HubspotSDK\Services\Cms\AuditLogsService::list()
  *
  * @phpstan-type AuditLogListParamsShape = array{
  *   after?: string,

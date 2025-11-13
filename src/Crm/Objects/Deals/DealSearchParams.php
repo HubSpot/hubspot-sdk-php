@@ -13,7 +13,7 @@ use HubspotSDK\Crm\FilterGroup;
 /**
  * Search for deals using specified criteria and filters.
  *
- * @see HubspotSDK\Crm\Objects\Deals->search
+ * @see HubspotSDK\Services\Crm\Objects\DealsService::search()
  *
  * @phpstan-type DealSearchParamsShape = array{
  *   after?: string,

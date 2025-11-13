@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Unpublishes the table, meaning any website pages using data from the table will not render any data.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->unpublish
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::unpublish()
  *
  * @phpstan-type TableUnpublishParamsShape = array{includeForeignIds?: bool}
  */

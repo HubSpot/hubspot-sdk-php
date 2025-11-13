@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of products. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Products->list
+ * @see HubspotSDK\Services\Crm\Objects\ProductsService::list()
  *
  * @phpstan-type ProductListParamsShape = array{
  *   after?: string,

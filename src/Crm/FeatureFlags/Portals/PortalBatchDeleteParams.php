@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete an account-level flag state for multiple HubSpot accounts at once. Use this endpoint to manage flag exposure for groups of HubSpot accounts.
  *
- * @see HubspotSDK\Crm\FeatureFlags\Portals->batchDelete
+ * @see HubspotSDK\Services\Crm\FeatureFlags\PortalsService::batchDelete()
  *
  * @phpstan-type PortalBatchDeleteParamsShape = array{
  *   appId: int, portalIds: list<int>

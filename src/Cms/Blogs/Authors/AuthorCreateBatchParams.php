@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create the Blog Author objects detailed in the request body.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->createBatch
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::createBatch()
  *
  * @phpstan-type AuthorCreateBatchParamsShape = array{inputs: list<BlogAuthor>}
  */

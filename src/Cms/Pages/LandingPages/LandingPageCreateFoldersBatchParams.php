@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create the Folder objects detailed in the request body.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->createFoldersBatch
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::createFoldersBatch()
  *
  * @phpstan-type LandingPageCreateFoldersBatchParamsShape = array{
  *   inputs: list<ContentFolder>

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Takes a specified version of a Landing Page, sets it as the new draft version of the Landing Page.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->restoreRevisionToDraft
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::restoreRevisionToDraft()
  *
  * @phpstan-type LandingPageRestoreRevisionToDraftParamsShape = array{
  *   objectId: string

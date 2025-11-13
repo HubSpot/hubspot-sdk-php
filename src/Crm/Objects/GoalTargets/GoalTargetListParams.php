@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of goal targets. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\GoalTargets->list
+ * @see HubspotSDK\Services\Crm\Objects\GoalTargetsService::list()
  *
  * @phpstan-type GoalTargetListParamsShape = array{
  *   after?: string,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create and return a copy of a new property group.
  *
- * @see HubspotSDK\Crm\Properties\Groups->create
+ * @see HubspotSDK\Services\Crm\Properties\GroupsService::create()
  *
  * @phpstan-type GroupCreateParamsShape = array{
  *   label: string, name: string, displayOrder?: int

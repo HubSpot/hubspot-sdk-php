@@ -14,7 +14,7 @@ use HubspotSDK\Events\EventListParams\Property;
 /**
  * Retrieve instances of event completion data. For example, retrieve all event completions associated with a specific contact.
  *
- * @see HubspotSDK\Events->list
+ * @see HubspotSDK\Services\EventsService::list()
  *
  * @phpstan-type EventListParamsShape = array{
  *   id?: list<string>,

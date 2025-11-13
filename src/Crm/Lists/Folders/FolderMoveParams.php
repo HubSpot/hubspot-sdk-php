@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * This moves the folder from its current location to a new location. It updates the parent of this folder to the new Id given.
  *
- * @see HubspotSDK\Crm\Lists\Folders->move
+ * @see HubspotSDK\Services\Crm\Lists\FoldersService::move()
  *
  * @phpstan-type FolderMoveParamsShape = array{folderId: string}
  */

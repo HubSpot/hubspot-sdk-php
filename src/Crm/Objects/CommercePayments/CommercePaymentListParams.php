@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of commerce payments. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\CommercePayments->list
+ * @see HubspotSDK\Services\Crm\Objects\CommercePaymentsService::list()
  *
  * @phpstan-type CommercePaymentListParamsShape = array{
  *   after?: string,

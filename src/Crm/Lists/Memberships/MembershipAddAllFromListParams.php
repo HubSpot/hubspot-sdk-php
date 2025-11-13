@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * This endpoint only supports a `sourceListId` for lists with less than 100,000 memberships.
  *
- * @see HubspotSDK\Crm\Lists\Memberships->addAllFromList
+ * @see HubspotSDK\Services\Crm\Lists\MembershipsService::addAllFromList()
  *
  * @phpstan-type MembershipAddAllFromListParamsShape = array{listId: string}
  */

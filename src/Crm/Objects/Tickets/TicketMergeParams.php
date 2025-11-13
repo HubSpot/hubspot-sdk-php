@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Merge two tickets, combining them into one ticket record.
  *
- * @see HubspotSDK\Crm\Objects\Tickets->merge
+ * @see HubspotSDK\Services\Crm\Objects\TicketsService::merge()
  *
  * @phpstan-type TicketMergeParamsShape = array{
  *   objectIdToMerge: string, primaryObjectId: string

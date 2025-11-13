@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the existing properties defined for a media object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Properties->list
+ * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::list()
  *
  * @phpstan-type PropertyListParamsShape = array{appId: string}
  */

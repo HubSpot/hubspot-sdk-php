@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Clone an existing HubDB table. The `newName` and `newLabel` of the new table can be sent as JSON in the request body. This will create the cloned table as a draft.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->cloneDraft
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::cloneDraft()
  *
  * @phpstan-type TableCloneDraftParamsShape = array{
  *   copyRows: bool, isHubspotDefined: bool, newLabel?: string, newName?: string

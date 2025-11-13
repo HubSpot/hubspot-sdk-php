@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * This will create a duplicate email with the same properties as the original, with the exception of a unique ID.
  *
- * @see HubspotSDK\Marketing\Emails->clone
+ * @see HubspotSDK\Services\Marketing\EmailsService::clone()
  *
  * @phpstan-type EmailCloneParamsShape = array{
  *   id: string, cloneName?: string, language?: string

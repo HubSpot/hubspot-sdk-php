@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the details for an existing property by name.
  *
- * @see HubspotSDK\Cms\MediaBridge\Properties->get
+ * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::get()
  *
  * @phpstan-type PropertyGetParamsShape = array{appId: string, objectType: string}
  */

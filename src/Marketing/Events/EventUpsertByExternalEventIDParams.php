@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Upserts a marketing event If there is an existing marketing event with the specified ID, it will be updated; otherwise a new event will be created.
  *
- * @see HubspotSDK\Marketing\Events->upsertByExternalEventID
+ * @see HubspotSDK\Services\Marketing\EventsService::upsertByExternalEventID()
  *
  * @phpstan-type EventUpsertByExternalEventIDParamsShape = array{
  *   eventName: string,

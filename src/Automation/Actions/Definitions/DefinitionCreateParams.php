@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new custom workflow action.
  *
- * @see HubspotSDK\Automation\Actions\Definitions->create
+ * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::create()
  *
  * @phpstan-type DefinitionCreateParamsShape = array{
  *   actionUrl: string,

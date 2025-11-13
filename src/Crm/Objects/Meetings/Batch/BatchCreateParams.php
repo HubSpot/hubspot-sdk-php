@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of meetings.
  *
- * @see HubspotSDK\Crm\Objects\Meetings\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Meetings\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

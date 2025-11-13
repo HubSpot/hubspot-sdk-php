@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the Blog Tag objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->getBatch
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::getBatch()
  *
  * @phpstan-type TagGetBatchParamsShape = array{
  *   inputs: list<string>, archived?: bool

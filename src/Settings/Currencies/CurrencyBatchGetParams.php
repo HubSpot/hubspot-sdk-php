@@ -13,7 +13,7 @@ use HubspotSDK\PublicObjectID;
 /**
  * Retrieve the details of multiple exchange rates in a single request, specified by their IDs.
  *
- * @see HubspotSDK\Settings\Currencies->batchGet
+ * @see HubspotSDK\Services\Settings\CurrenciesService::batchGet()
  *
  * @phpstan-type CurrencyBatchGetParamsShape = array{inputs: list<PublicObjectID>}
  */

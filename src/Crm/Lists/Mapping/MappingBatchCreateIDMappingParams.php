@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * This API allows translation of a batch of legacy list id's to list id's. This allows for a maximum of 10,000 id's. This is a temporary API allowed for mapping old id's to new id's and will expire on May 30th, 2025.
  *
- * @see HubspotSDK\Crm\Lists\Mapping->batchCreateIDMapping
+ * @see HubspotSDK\Services\Crm\Lists\MappingService::batchCreateIDMapping()
  *
  * @phpstan-type MappingBatchCreateIDMappingParamsShape = array{body: list<string>}
  */

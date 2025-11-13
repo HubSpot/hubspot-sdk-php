@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete a feature flag in an app.  For example, delete the `hs-release-app-cards` flag after all accounts have been migrated.
  *
- * @see HubspotSDK\Crm\FeatureFlags\Apps->delete
+ * @see HubspotSDK\Services\Crm\FeatureFlags\AppsService::delete()
  *
  * @phpstan-type AppDeleteParamsShape = array{appId: int}
  */

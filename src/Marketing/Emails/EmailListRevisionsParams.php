@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get a list of all versions of a marketing email, with each entry including the full state of that particular version. To view the most recent version, sort by the updatedAt parameter.
  *
- * @see HubspotSDK\Marketing\Emails->listRevisions
+ * @see HubspotSDK\Services\Marketing\EmailsService::listRevisions()
  *
  * @phpstan-type EmailListRevisionsParamsShape = array{
  *   after?: string, before?: string, limit?: int

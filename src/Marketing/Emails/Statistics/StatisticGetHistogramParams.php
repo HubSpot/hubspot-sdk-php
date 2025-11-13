@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams\Interval;
 /**
  * Get aggregated statistics in intervals for a specified time span. Each interval contains aggregated statistics of the emails that were sent in that time.
  *
- * @see HubspotSDK\Marketing\Emails\Statistics->getHistogram
+ * @see HubspotSDK\Services\Marketing\Emails\StatisticsService::getHistogram()
  *
  * @phpstan-type StatisticGetHistogramParamsShape = array{
  *   emailIds?: list<int>,

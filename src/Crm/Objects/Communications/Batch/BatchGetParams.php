@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Retrieve a batch of messages by ID (`communicationId`) or unique property value (`idProperty`).
  *
- * @see HubspotSDK\Crm\Objects\Communications\Batch->get
+ * @see HubspotSDK\Services\Crm\Objects\Communications\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<SimplePublicObjectID>,

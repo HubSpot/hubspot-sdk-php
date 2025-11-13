@@ -13,7 +13,7 @@ use HubspotSDK\Crm\FilterGroup;
 /**
  * Search for tickets by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
  *
- * @see HubspotSDK\Crm\Objects\Tickets->search
+ * @see HubspotSDK\Services\Crm\Objects\TicketsService::search()
  *
  * @phpstan-type TicketSearchParamsShape = array{
  *   after?: string,

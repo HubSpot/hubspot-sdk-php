@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Detach a site page from a multi-language group.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->detachFromLangGroup
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::detachFromLangGroup()
  *
  * @phpstan-type SitePageDetachFromLangGroupParamsShape = array{id: string}
  */

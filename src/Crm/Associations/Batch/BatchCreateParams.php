@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\PublicAssociation;
 
 /**
- * @see HubspotSDK\Crm\Associations\Batch->create
+ * @see HubspotSDK\Services\Crm\Associations\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicAssociation>

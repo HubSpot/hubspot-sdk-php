@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns rows in the draft version of the specified table, given a set of row IDs.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows\Batch->getDraftBatch
+ * @see HubspotSDK\Services\Cms\Hubdb\Rows\BatchService::getDraftBatch()
  *
  * @phpstan-type BatchGetDraftBatchParamsShape = array{inputs: list<string>}
  */

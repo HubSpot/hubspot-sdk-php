@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\PublicSingleSendEmail;
 /**
  * Send a template email to a specific recipient.
  *
- * @see HubspotSDK\Marketing\SingleSend->send
+ * @see HubspotSDK\Services\Marketing\SingleSendService::send()
  *
  * @phpstan-type SingleSendSendParamsShape = array{
  *   emailId: int,

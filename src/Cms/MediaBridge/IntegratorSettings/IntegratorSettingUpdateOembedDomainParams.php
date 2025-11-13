@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update an existing oEmbed domain.
  *
- * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->updateOembedDomain
+ * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::updateOembedDomain()
  *
  * @phpstan-type IntegratorSettingUpdateOembedDomainParamsShape = array{
  *   appId: string, endpoints: Endpoints, portalId?: int

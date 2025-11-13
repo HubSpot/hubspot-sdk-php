@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete a specific budget item by ID.
  *
- * @see HubspotSDK\Marketing\Campaigns\Budget->delete
+ * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::delete()
  *
  * @phpstan-type BudgetDeleteParamsShape = array{campaignGuid: string}
  */

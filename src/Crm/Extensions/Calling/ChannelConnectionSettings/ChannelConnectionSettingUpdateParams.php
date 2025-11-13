@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettings->update
+ * @see HubspotSDK\Services\Crm\Extensions\Calling\ChannelConnectionSettingsService::update()
  *
  * @phpstan-type ChannelConnectionSettingUpdateParamsShape = array{
  *   isReady?: bool, url?: string

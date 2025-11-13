@@ -13,7 +13,7 @@ use HubspotSDK\Files\Files\FileGetSignedURLParams\Size;
 /**
  * Generates signed URL that allows temporary access to a private file.
  *
- * @see HubspotSDK\Files\Files->getSignedURL
+ * @see HubspotSDK\Services\Files\FilesService::getSignedURL()
  *
  * @phpstan-type FileGetSignedURLParamsShape = array{
  *   expirationSeconds?: int, size?: Size|value-of<Size>, upscale?: bool

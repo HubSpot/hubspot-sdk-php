@@ -20,7 +20,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
 /**
  * Create a new list with the provided object list definition.
  *
- * @see HubspotSDK\Crm\Lists->create
+ * @see HubspotSDK\Services\Crm\ListsService::create()
  *
  * @phpstan-type ListCreateParamsShape = array{
  *   name: string,

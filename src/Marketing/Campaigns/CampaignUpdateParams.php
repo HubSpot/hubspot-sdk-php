@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Perform a partial update of a campaign identified by the specified campaignGuid. Provided property values will be overwritten. Read-only and non-existent properties will cause 400 error.
  * If an empty string is passed for any property in the Batch Update, it will reset that property's value.
  *
- * @see HubspotSDK\Marketing\Campaigns->update
+ * @see HubspotSDK\Services\Marketing\CampaignsService::update()
  *
  * @phpstan-type CampaignUpdateParamsShape = array{
  *   properties: array<string,string>

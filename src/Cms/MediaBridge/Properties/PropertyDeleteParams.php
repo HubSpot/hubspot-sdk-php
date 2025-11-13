@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete an existing property for an object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Properties->delete
+ * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::delete()
  *
  * @phpstan-type PropertyDeleteParamsShape = array{
  *   appId: string, objectType: string

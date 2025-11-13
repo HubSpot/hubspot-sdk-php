@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the schema for a specified object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Schemas->get
+ * @see HubspotSDK\Services\Cms\MediaBridge\SchemasService::get()
  *
  * @phpstan-type SchemaGetParamsShape = array{appId: string}
  */

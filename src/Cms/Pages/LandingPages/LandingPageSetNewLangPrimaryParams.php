@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Set a landing page as the primary language of a multi-language group.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->setNewLangPrimary
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::setNewLangPrimary()
  *
  * @phpstan-type LandingPageSetNewLangPrimaryParamsShape = array{id: string}
  */

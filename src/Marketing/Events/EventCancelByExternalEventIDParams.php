@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Mark a marketing event as cancelled.
  *
- * @see HubspotSDK\Marketing\Events->cancelByExternalEventID
+ * @see HubspotSDK\Services\Marketing\EventsService::cancelByExternalEventID()
  *
  * @phpstan-type EventCancelByExternalEventIDParamsShape = array{
  *   externalAccountId: string

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns limits and usage for custom association labels.
  *
- * @see HubspotSDK\Crm\Limits->getAssociationLabelLimits
+ * @see HubspotSDK\Services\Crm\LimitsService::getAssociationLabelLimits()
  *
  * @phpstan-type LimitGetAssociationLabelLimitsParamsShape = array{
  *   fromObjectTypeId?: string, toObjectTypeId?: string

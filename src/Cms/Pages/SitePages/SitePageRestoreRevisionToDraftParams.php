@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Takes a specified version of a Site Page, sets it as the new draft version of the Site Page.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->restoreRevisionToDraft
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::restoreRevisionToDraft()
  *
  * @phpstan-type SitePageRestoreRevisionToDraftParamsShape = array{
  *   objectId: string

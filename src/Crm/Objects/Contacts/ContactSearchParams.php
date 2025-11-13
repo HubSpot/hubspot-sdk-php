@@ -13,7 +13,7 @@ use HubspotSDK\Crm\FilterGroup;
 /**
  * Search for contacts by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
  *
- * @see HubspotSDK\Crm\Objects\Contacts->search
+ * @see HubspotSDK\Services\Crm\Objects\ContactsService::search()
  *
  * @phpstan-type ContactSearchParamsShape = array{
  *   after?: string,

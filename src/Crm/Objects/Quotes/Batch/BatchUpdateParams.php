@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of quotes by internal ID, or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\Quotes\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Quotes\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

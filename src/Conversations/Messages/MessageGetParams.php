@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a single message from a thread using the message ID.
  *
- * @see HubspotSDK\Conversations\Messages->get
+ * @see HubspotSDK\Services\Conversations\MessagesService::get()
  *
  * @phpstan-type MessageGetParamsShape = array{threadId: string}
  */

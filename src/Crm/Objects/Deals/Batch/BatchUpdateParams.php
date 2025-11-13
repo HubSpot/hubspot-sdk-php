@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update multiple deals using their internal IDs or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\Deals\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Deals\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

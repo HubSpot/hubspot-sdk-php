@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Move a property identified by {propertyName} to the recycling bin.
  *
- * @see HubspotSDK\Crm\Properties->delete
+ * @see HubspotSDK\Services\Crm\PropertiesService::delete()
  *
  * @phpstan-type PropertyDeleteParamsShape = array{objectType: string}
  */

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * Only Marketing Events created by the same app making the request can be retrieved.
  *
- * @see HubspotSDK\Marketing\Events->getByExternalEventID
+ * @see HubspotSDK\Services\Marketing\EventsService::getByExternalEventID()
  *
  * @phpstan-type EventGetByExternalEventIDParamsShape = array{
  *   externalAccountId: string

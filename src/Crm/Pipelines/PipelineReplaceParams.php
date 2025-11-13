@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Replace a pipeline.
  *
- * @see HubspotSDK\Crm\Pipelines->replace
+ * @see HubspotSDK\Services\Crm\PipelinesService::replace()
  *
  * @phpstan-type PipelineReplaceParamsShape = array{
  *   objectType: string,

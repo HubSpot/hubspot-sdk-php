@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Sparse updates a single Blog Tag object identified by the id in the path.
  * All the column values need not be specified. Only the that need to be modified can be specified.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->update
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::update()
  *
  * @phpstan-type TagUpdateParamsShape = array{
  *   id: string,

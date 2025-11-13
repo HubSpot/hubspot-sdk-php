@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of emails using their internal IDs or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\Emails\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Emails\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

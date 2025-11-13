@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of meetings. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Meetings->list
+ * @see HubspotSDK\Services\Crm\Objects\MeetingsService::list()
  *
  * @phpstan-type MeetingListParamsShape = array{
  *   after?: string,

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Cms\Blogs\Settings->updateLanguages
+ * @see HubspotSDK\Services\Cms\Blogs\SettingsService::updateLanguages()
  *
  * @phpstan-type SettingUpdateLanguagesParamsShape = array{
  *   languages: array<string,string>, primaryId: string

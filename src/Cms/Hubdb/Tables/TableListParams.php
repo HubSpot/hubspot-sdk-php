@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns the details for the published version of each table defined in an account, including column definitions.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->list
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::list()
  *
  * @phpstan-type TableListParamsShape = array{
  *   after?: string,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Perform a partial update of the pipeline identified by `{pipelineId}`. The updated pipeline will be returned in the response.
  *
- * @see HubspotSDK\Crm\Pipelines->update
+ * @see HubspotSDK\Services\Crm\PipelinesService::update()
  *
  * @phpstan-type PipelineUpdateParamsShape = array{
  *   objectType: string,

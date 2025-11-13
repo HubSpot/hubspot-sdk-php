@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\Fees->search
+ * @see HubspotSDK\Services\Crm\Objects\FeesService::search()
  *
  * @phpstan-type FeeSearchParamsShape = array{
  *   after?: string,

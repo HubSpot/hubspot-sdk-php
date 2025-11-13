@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * New users will only have minimal permissions, which is contacts-base. A welcome email will prompt them to set a password and log in to HubSpot.
  *
- * @see HubspotSDK\Settings\Users->create
+ * @see HubspotSDK\Services\Settings\UsersService::create()
  *
  * @phpstan-type UserCreateParamsShape = array{
  *   email: string,

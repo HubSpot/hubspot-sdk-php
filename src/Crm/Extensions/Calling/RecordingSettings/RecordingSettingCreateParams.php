@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Extensions\Calling\RecordingSettings->create
+ * @see HubspotSDK\Services\Crm\Extensions\Calling\RecordingSettingsService::create()
  *
  * @phpstan-type RecordingSettingCreateParamsShape = array{
  *   urlToRetrieveAuthedRecording: string

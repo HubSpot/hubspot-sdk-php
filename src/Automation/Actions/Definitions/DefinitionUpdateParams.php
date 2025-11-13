@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update an existing action definition by ID.
  *
- * @see HubspotSDK\Automation\Actions\Definitions->update
+ * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::update()
  *
  * @phpstan-type DefinitionUpdateParamsShape = array{
  *   appId: int,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new pipeline with the provided property values. The entire pipeline object, including its unique ID, will be returned in the response.
  *
- * @see HubspotSDK\Crm\Pipelines->create
+ * @see HubspotSDK\Services\Crm\PipelinesService::create()
  *
  * @phpstan-type PipelineCreateParamsShape = array{
  *   displayOrder: int, label: string, stages: list<PipelineStageInput>

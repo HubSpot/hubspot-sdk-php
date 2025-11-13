@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
 /**
  * Send a single instance of event data to a specified event type.
  *
- * @see HubspotSDK\Crm\Timeline\Events->create
+ * @see HubspotSDK\Services\Crm\Timeline\EventsService::create()
  *
  * @phpstan-type EventCreateParamsShape = array{
  *   eventTemplateId: string,

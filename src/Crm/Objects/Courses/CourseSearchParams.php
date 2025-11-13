@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\Courses->search
+ * @see HubspotSDK\Services\Crm\Objects\CoursesService::search()
  *
  * @phpstan-type CourseSearchParamsShape = array{
  *   after?: string,

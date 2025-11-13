@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Set a site page as the primary language of a multi-language group.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->setNewLangPrimary
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::setNewLangPrimary()
  *
  * @phpstan-type SitePageSetNewLangPrimaryParamsShape = array{id: string}
  */

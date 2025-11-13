@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new Folder.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->createFolder
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::createFolder()
  *
  * @phpstan-type LandingPageCreateFolderParamsShape = array{
  *   id: string,

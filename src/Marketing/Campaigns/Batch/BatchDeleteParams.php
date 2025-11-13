@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput;
  * The maximum number of items in a batch request is 50.
  * The response will always be 204 No Content, regardless of whether the campaigns exist or not, whether they were successfully deleted or not, or if only some of the campaigns in the batch were deleted.
  *
- * @see HubspotSDK\Marketing\Campaigns\Batch->delete
+ * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{
  *   inputs: list<PublicCampaignDeleteInput>

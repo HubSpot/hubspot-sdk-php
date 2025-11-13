@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Clone a Landing Page.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->clone
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::clone()
  *
  * @phpstan-type LandingPageCloneParamsShape = array{
  *   id: string, cloneName?: string

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create multiple deals in a single request.
  *
- * @see HubspotSDK\Crm\Objects\Deals\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Deals\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

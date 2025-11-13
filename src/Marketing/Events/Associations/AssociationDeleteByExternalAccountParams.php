@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Disassociates a list from a marketing event by external account id, external event id, and ILS list id.
  *
- * @see HubspotSDK\Marketing\Events\Associations->deleteByExternalAccount
+ * @see HubspotSDK\Services\Marketing\Events\AssociationsService::deleteByExternalAccount()
  *
  * @phpstan-type AssociationDeleteByExternalAccountParamsShape = array{
  *   externalAccountId: string, externalEventId: string

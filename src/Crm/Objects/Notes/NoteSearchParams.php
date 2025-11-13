@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\Notes->search
+ * @see HubspotSDK\Services\Crm\Objects\NotesService::search()
  *
  * @phpstan-type NoteSearchParamsShape = array{
  *   after?: string,

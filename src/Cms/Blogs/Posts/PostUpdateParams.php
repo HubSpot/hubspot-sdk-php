@@ -19,7 +19,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * Partially updates a single blog post by ID. You only need to specify the values that you want to update.
  *
- * @see HubspotSDK\Cms\Blogs\Posts->update
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::update()
  *
  * @phpstan-type PostUpdateParamsShape = array{
  *   id: string,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the Landing Page objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->getBatch
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::getBatch()
  *
  * @phpstan-type LandingPageGetBatchParamsShape = array{
  *   inputs: list<string>, archived?: bool

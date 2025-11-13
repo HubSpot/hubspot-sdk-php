@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete an existing property from a custom event definition.
  *
- * @see HubspotSDK\Events\EventDefinitions->deleteProperty
+ * @see HubspotSDK\Services\Events\EventDefinitionsService::deleteProperty()
  *
  * @phpstan-type EventDefinitionDeletePropertyParamsShape = array{
  *   eventName: string

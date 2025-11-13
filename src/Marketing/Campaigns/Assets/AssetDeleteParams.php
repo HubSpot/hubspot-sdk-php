@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Disassociate a specified asset from a campaign.
  * Important: Currently, only the following asset types can be associated and disassociated via the API: Forms, Static lists, External website pages.
  *
- * @see HubspotSDK\Marketing\Campaigns\Assets->delete
+ * @see HubspotSDK\Services\Marketing\Campaigns\AssetsService::delete()
  *
  * @phpstan-type AssetDeleteParamsShape = array{
  *   campaignGuid: string, assetType: string

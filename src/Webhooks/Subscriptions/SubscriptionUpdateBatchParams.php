@@ -13,7 +13,7 @@ use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
 /**
  * Batch create event subscriptions for the specified app.
  *
- * @see HubspotSDK\Webhooks\Subscriptions->updateBatch
+ * @see HubspotSDK\Services\Webhooks\SubscriptionsService::updateBatch()
  *
  * @phpstan-type SubscriptionUpdateBatchParamsShape = array{
  *   inputs: list<SubscriptionBatchUpdateRequest>

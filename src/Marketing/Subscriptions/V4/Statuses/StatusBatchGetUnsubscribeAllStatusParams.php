@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetUnsubscribeAllS
 /**
  * Checks whether a set of contacts have opted out of all communications.
  *
- * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->batchGetUnsubscribeAllStatus
+ * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::batchGetUnsubscribeAllStatus()
  *
  * @phpstan-type StatusBatchGetUnsubscribeAllStatusParamsShape = array{
  *   channel: Channel|value-of<Channel>, inputs: list<string>, businessUnitId?: int

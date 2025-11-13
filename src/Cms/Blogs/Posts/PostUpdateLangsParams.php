@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Explicitly set new languages for each post in a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
  *
- * @see HubspotSDK\Cms\Blogs\Posts->updateLangs
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::updateLangs()
  *
  * @phpstan-type PostUpdateLangsParamsShape = array{
  *   languages: array<string,string>, primaryId: string

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a note with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard notes is provided.
  *
- * @see HubspotSDK\Crm\Objects\Notes->create
+ * @see HubspotSDK\Services\Crm\Objects\NotesService::create()
  *
  * @phpstan-type NoteCreateParamsShape = array{
  *   properties: array<string,string>,

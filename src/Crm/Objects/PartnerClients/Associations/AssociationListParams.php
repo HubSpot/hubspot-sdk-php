@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * List associations of a partner client by type.
  *
- * @see HubspotSDK\Crm\Objects\PartnerClients\Associations->list
+ * @see HubspotSDK\Services\Crm\Objects\PartnerClients\AssociationsService::list()
  *
  * @phpstan-type AssociationListParamsShape = array{
  *   partnerClientId: string, after?: string, includeFA?: bool, limit?: int

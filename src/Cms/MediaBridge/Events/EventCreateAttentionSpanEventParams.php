@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create an event containing the viewers attention span details for the media.
  *
- * @see HubspotSDK\Cms\MediaBridge\Events->createAttentionSpanEvent
+ * @see HubspotSDK\Services\Cms\MediaBridge\EventsService::createAttentionSpanEvent()
  *
  * @phpstan-type EventCreateAttentionSpanEventParamsShape = array{
  *   mediaType: MediaType|value-of<MediaType>,

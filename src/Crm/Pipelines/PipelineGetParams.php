@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Return a single pipeline object identified by its unique `{pipelineId}`.
  *
- * @see HubspotSDK\Crm\Pipelines->get
+ * @see HubspotSDK\Services\Crm\PipelinesService::get()
  *
  * @phpstan-type PipelineGetParamsShape = array{objectType: string}
  */

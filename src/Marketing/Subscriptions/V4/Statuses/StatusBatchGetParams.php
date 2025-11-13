@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetParams\Channel;
 /**
  * Batch retrieve subscription statuses for a set of contacts.
  *
- * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->batchGet
+ * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::batchGet()
  *
  * @phpstan-type StatusBatchGetParamsShape = array{
  *   channel: Channel|value-of<Channel>, inputs: list<string>, businessUnitId?: int

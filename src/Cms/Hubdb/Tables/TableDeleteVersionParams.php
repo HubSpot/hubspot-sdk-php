@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete a specific version of a table.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->deleteVersion
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::deleteVersion()
  *
  * @phpstan-type TableDeleteVersionParamsShape = array{tableIdOrName: string}
  */

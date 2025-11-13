@@ -13,7 +13,7 @@ use HubspotSDK\PropertyCreate;
 /**
  * Create a batch of properties using the same rules as when creating an individual property.
  *
- * @see HubspotSDK\Crm\Properties\Batch->create
+ * @see HubspotSDK\Services\Crm\Properties\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{inputs: list<PropertyCreate>}
  */

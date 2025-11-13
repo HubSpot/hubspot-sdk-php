@@ -19,7 +19,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * Create a new Site Page.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->create
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::create()
  *
  * @phpstan-type SitePageCreateParamsShape = array{
  *   id: string,

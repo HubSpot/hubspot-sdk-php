@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new association definition for the specified object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Schemas->createAssociation
+ * @see HubspotSDK\Services\Cms\MediaBridge\SchemasService::createAssociation()
  *
  * @phpstan-type SchemaCreateAssociationParamsShape = array{
  *   appId: string, fromObjectTypeId: string, toObjectTypeId: string, name?: string

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve details for a specific event, specified by template ID and event ID.
  *
- * @see HubspotSDK\Crm\Timeline\Events->getDetail
+ * @see HubspotSDK\Services\Crm\Timeline\EventsService::getDetail()
  *
  * @phpstan-type EventGetDetailParamsShape = array{eventTemplateId: string}
  */

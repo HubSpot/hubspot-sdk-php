@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a file by its path.
  *
- * @see HubspotSDK\Files\Files->getByPath
+ * @see HubspotSDK\Services\Files\FilesService::getByPath()
  *
  * @phpstan-type FileGetByPathParamsShape = array{properties?: list<string>}
  */

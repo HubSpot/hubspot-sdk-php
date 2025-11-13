@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update the name of a list. The name must be globally unique relative to all other public lists in the portal.
  *
- * @see HubspotSDK\Crm\Lists->updateName
+ * @see HubspotSDK\Services\Crm\ListsService::updateName()
  *
  * @phpstan-type ListUpdateNameParamsShape = array{
  *   includeFilters?: bool, listName?: string

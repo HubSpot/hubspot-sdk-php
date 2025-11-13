@@ -13,7 +13,7 @@ use HubspotSDK\OptionInput;
 /**
  * Update an existing property in a custom event definition.
  *
- * @see HubspotSDK\Events\EventDefinitions->updateProperty
+ * @see HubspotSDK\Services\Events\EventDefinitionsService::updateProperty()
  *
  * @phpstan-type EventDefinitionUpdatePropertyParamsShape = array{
  *   eventName: string,

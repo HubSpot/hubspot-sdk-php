@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of commerce payments.
  *
- * @see HubspotSDK\Crm\Objects\CommercePayments\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\CommercePayments\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

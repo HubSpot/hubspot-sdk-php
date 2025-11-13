@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Archive a batch of postal mail objects using their IDs.
  *
- * @see HubspotSDK\Crm\Objects\PostalMail\Batch->delete
+ * @see HubspotSDK\Services\Crm\Objects\PostalMail\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<SimplePublicObjectID>}
  */

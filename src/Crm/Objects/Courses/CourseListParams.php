@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of courses. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Courses->list
+ * @see HubspotSDK\Services\Crm\Objects\CoursesService::list()
  *
  * @phpstan-type CourseListParamsShape = array{
  *   after?: string,

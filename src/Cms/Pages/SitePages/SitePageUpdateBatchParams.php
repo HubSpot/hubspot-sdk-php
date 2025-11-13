@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update the Site Page objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->updateBatch
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::updateBatch()
  *
  * @phpstan-type SitePageUpdateBatchParamsShape = array{
  *   inputs: list<mixed>, archived?: bool

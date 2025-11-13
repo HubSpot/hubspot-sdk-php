@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Archive a batch of invoices by ID.
  *
- * @see HubspotSDK\Crm\Objects\Invoices\Batch->delete
+ * @see HubspotSDK\Services\Crm\Objects\Invoices\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<SimplePublicObjectID>}
  */

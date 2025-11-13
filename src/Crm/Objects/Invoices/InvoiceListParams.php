@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of invoices. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Invoices->list
+ * @see HubspotSDK\Services\Crm\Objects\InvoicesService::list()
  *
  * @phpstan-type InvoiceListParamsShape = array{
  *   after?: string,

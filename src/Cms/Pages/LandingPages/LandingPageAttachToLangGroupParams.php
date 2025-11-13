@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Attach a landing page to a multi-language group.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->attachToLangGroup
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::attachToLangGroup()
  *
  * @phpstan-type LandingPageAttachToLangGroupParamsShape = array{
  *   id: string, language: string, primaryId: string, primaryLanguage?: string

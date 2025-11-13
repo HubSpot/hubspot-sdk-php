@@ -13,7 +13,7 @@ use HubspotSDK\OptionInput;
 /**
  * Create a new property for an existing event definition.
  *
- * @see HubspotSDK\Events\EventDefinitions->createProperty
+ * @see HubspotSDK\Services\Events\EventDefinitionsService::createProperty()
  *
  * @phpstan-type EventDefinitionCreatePropertyParamsShape = array{
  *   label: string,

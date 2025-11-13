@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Retrieve a batch of calls by ID.
  *
- * @see HubspotSDK\Crm\Objects\Calls\Batch->get
+ * @see HubspotSDK\Services\Crm\Objects\Calls\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<SimplePublicObjectID>,

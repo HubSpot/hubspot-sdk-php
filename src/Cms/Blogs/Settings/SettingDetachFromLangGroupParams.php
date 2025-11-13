@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Cms\Blogs\Settings->detachFromLangGroup
+ * @see HubspotSDK\Services\Cms\Blogs\SettingsService::detachFromLangGroup()
  *
  * @phpstan-type SettingDetachFromLangGroupParamsShape = array{id: string}
  */

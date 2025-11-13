@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
  *
- * @see HubspotSDK\Crm\Objects\Services\Batch->get
+ * @see HubspotSDK\Services\Crm\Objects\Services\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<SimplePublicObjectID>,

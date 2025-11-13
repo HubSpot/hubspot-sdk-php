@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Creates a new draft HubDB table given a JSON schema. The table name and label should be unique for each account.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->create
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::create()
  *
  * @phpstan-type TableCreateParamsShape = array{
  *   label: string,

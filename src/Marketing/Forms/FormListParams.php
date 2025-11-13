@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Forms\FormListParams\FormType;
 /**
  * Returns a list of forms based on the search filters. By default, it returns the first 20 `hubspot` forms.
  *
- * @see HubspotSDK\Marketing\Forms->list
+ * @see HubspotSDK\Services\Marketing\FormsService::list()
  *
  * @phpstan-type FormListParamsShape = array{
  *   after?: string,

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access. To do so, you'll need to include the HubSpot account ID in a `portalId` query parameter.
  *
- * @see HubspotSDK\Cms\Hubdb\Tables->get
+ * @see HubspotSDK\Services\Cms\Hubdb\TablesService::get()
  *
  * @phpstan-type TableGetParamsShape = array{
  *   archived?: bool, includeForeignIds?: bool, isGetLocalizedSchema?: bool

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of companies by ID.
  *
- * @see HubspotSDK\Crm\Objects\Companies\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Companies\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

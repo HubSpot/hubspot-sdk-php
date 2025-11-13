@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\Objects->search
+ * @see HubspotSDK\Services\Crm\Objects\ObjectsService::search()
  *
  * @phpstan-type ObjectSearchParamsShape = array{
  *   after?: string,

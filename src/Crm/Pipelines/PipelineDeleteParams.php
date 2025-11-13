@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete a pipeline.
  *
- * @see HubspotSDK\Crm\Pipelines->delete
+ * @see HubspotSDK\Services\Crm\PipelinesService::delete()
  *
  * @phpstan-type PipelineDeleteParamsShape = array{
  *   objectType: string,

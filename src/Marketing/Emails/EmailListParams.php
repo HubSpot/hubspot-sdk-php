@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Emails\EmailListParams\Type;
 /**
  * The results can be filtered, allowing you to find a specific set of emails. See the table below for a full list of filtering options.
  *
- * @see HubspotSDK\Marketing\Emails->list
+ * @see HubspotSDK\Services\Marketing\EmailsService::list()
  *
  * @phpstan-type EmailListParamsShape = array{
  *   after?: string,

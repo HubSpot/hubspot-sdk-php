@@ -14,7 +14,7 @@ use HubspotSDK\Crm\Timeline\Tokens\TokenCreateParams\Type;
 /**
  * Update an existing event type template with new tokens.
  *
- * @see HubspotSDK\Crm\Timeline\Tokens->create
+ * @see HubspotSDK\Services\Crm\Timeline\TokensService::create()
  *
  * @phpstan-type TokenCreateParamsShape = array{
  *   appId: int,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a company by its ID (`companyId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
  *
- * @see HubspotSDK\Crm\Objects\Companies->get
+ * @see HubspotSDK\Services\Crm\Objects\CompaniesService::get()
  *
  * @phpstan-type CompanyGetParamsShape = array{
  *   archived?: bool,

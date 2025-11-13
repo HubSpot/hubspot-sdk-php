@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * Only Marketing Events created by the same app can be deleted.
  *
- * @see HubspotSDK\Marketing\Events->deleteByExternalEventID
+ * @see HubspotSDK\Services\Marketing\EventsService::deleteByExternalEventID()
  *
  * @phpstan-type EventDeleteByExternalEventIDParamsShape = array{
  *   externalAccountId: string

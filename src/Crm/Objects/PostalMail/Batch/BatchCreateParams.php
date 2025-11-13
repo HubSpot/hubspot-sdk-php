@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of postal mail objects.
  *
- * @see HubspotSDK\Crm\Objects\PostalMail\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\PostalMail\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

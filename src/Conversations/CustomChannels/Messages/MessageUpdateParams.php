@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update a message's status to indicate if it was successfully sent, failed to send, or was read. For failed messages, this can also include the error message for the failure.
  *
- * @see HubspotSDK\Conversations\CustomChannels\Messages->update
+ * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::update()
  *
  * @phpstan-type MessageUpdateParamsShape = array{
  *   channelId: string,

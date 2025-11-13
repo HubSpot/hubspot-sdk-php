@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost;
 /**
  * Batch create associations for objects.
  *
- * @see HubspotSDK\Crm\Associations\V4\Batch->create
+ * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicAssociationMultiPost>

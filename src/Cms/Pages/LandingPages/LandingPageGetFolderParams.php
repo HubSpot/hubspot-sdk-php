@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the Folder object identified by the id in the path.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->getFolder
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::getFolder()
  *
  * @phpstan-type LandingPageGetFolderParamsShape = array{
  *   archived?: bool, property?: string

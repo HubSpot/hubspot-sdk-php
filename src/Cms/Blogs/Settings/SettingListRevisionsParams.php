@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Cms\Blogs\Settings->listRevisions
+ * @see HubspotSDK\Services\Cms\Blogs\SettingsService::listRevisions()
  *
  * @phpstan-type SettingListRevisionsParamsShape = array{
  *   after?: string, before?: string, limit?: int

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Query multiple SMTP API tokens by campaign name or a single token by emailCampaignId.
  *
- * @see HubspotSDK\Marketing\Transactional\SmtpTokens->list
+ * @see HubspotSDK\Services\Marketing\Transactional\SmtpTokensService::list()
  *
  * @phpstan-type SmtpTokenListParamsShape = array{
  *   after?: string, campaignName?: string, emailCampaignId?: string, limit?: int

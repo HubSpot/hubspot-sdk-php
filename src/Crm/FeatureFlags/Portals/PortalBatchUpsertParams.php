@@ -13,7 +13,7 @@ use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
 /**
  * Set the portal flag state for multiple HubSpot accounts at once. Use this endpoint to manage flag exposure for groups of HubSpot accounts.
  *
- * @see HubspotSDK\Crm\FeatureFlags\Portals->batchUpsert
+ * @see HubspotSDK\Services\Crm\FeatureFlags\PortalsService::batchUpsert()
  *
  * @phpstan-type PortalBatchUpsertParamsShape = array{
  *   appId: int, portalStates: list<BatchPortalEntry>

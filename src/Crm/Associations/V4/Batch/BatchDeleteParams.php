@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiArchive;
 /**
  * Batch delete associations for objects.
  *
- * @see HubspotSDK\Crm\Associations\V4\Batch->delete
+ * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicAssociationMultiArchive>

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Move a property group identified by {groupName} to the recycling bin.
  *
- * @see HubspotSDK\Crm\Properties\Groups->delete
+ * @see HubspotSDK\Services\Crm\Properties\GroupsService::delete()
  *
  * @phpstan-type GroupDeleteParamsShape = array{objectType: string}
  */

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete the Blog Tag objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->deleteBatch
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::deleteBatch()
  *
  * @phpstan-type TagDeleteBatchParamsShape = array{inputs: list<string>}
  */

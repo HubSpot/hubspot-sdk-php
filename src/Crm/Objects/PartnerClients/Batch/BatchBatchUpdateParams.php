@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 
 /**
- * @see HubspotSDK\Crm\Objects\PartnerClients\Batch->batchUpdate
+ * @see HubspotSDK\Services\Crm\Objects\PartnerClients\BatchService::batchUpdate()
  *
  * @phpstan-type BatchBatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

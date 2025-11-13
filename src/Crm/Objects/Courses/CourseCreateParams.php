@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a course with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard courses is provided.
  *
- * @see HubspotSDK\Crm\Objects\Courses->create
+ * @see HubspotSDK\Services\Crm\Objects\CoursesService::create()
  *
  * @phpstan-type CourseCreateParamsShape = array{
  *   properties: array<string,string>,

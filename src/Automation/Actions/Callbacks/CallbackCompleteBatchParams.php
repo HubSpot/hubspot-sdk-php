@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Complete a batch of blocked action executions.
  *
- * @see HubspotSDK\Automation\Actions\Callbacks->completeBatch
+ * @see HubspotSDK\Services\Automation\Actions\CallbacksService::completeBatch()
  *
  * @phpstan-type CallbackCompleteBatchParamsShape = array{
  *   inputs: list<CallbackCompletionBatchRequest>

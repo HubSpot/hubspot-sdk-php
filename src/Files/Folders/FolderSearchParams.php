@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Search for folders. Does not contain hidden or archived folders.
  *
- * @see HubspotSDK\Files\Folders->search
+ * @see HubspotSDK\Services\Files\FoldersService::search()
  *
  * @phpstan-type FolderSearchParamsShape = array{
  *   after?: string,

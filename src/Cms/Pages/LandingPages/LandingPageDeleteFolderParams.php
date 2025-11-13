@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete the Folder object identified by the id in the path.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->deleteFolder
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::deleteFolder()
  *
  * @phpstan-type LandingPageDeleteFolderParamsShape = array{archived?: bool}
  */

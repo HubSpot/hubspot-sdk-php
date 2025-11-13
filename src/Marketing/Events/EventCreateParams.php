@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Creates a new marketing event in HubSpot.
  *
- * @see HubspotSDK\Marketing\Events->create
+ * @see HubspotSDK\Services\Marketing\EventsService::create()
  *
  * @phpstan-type EventCreateParamsShape = array{
  *   eventName: string,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve logs of user actions related to [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
  *
- * @see HubspotSDK\Account\Activity->listLoginActivities
+ * @see HubspotSDK\Services\Account\ActivityService::listLoginActivities()
  *
  * @phpstan-type ActivityListLoginActivitiesParamsShape = array{
  *   after?: string, limit?: int, userId?: int

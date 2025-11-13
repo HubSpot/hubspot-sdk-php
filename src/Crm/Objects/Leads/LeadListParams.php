@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of leads. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Leads->list
+ * @see HubspotSDK\Services\Crm\Objects\LeadsService::list()
  *
  * @phpstan-type LeadListParamsShape = array{
  *   after?: string,

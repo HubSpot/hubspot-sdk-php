@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Archive a batch of products by ID.
  *
- * @see HubspotSDK\Crm\Objects\Products\Batch->delete
+ * @see HubspotSDK\Services\Crm\Objects\Products\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<SimplePublicObjectID>}
  */

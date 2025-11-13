@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
  *
- * @see HubspotSDK\Crm\Objects\Contacts->create
+ * @see HubspotSDK\Services\Crm\Objects\ContactsService::create()
  *
  * @phpstan-type ContactCreateParamsShape = array{
  *   properties: array<string,string>,

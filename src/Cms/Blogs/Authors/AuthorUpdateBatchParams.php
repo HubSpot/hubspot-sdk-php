@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update the Blog Author objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->updateBatch
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::updateBatch()
  *
  * @phpstan-type AuthorUpdateBatchParamsShape = array{
  *   inputs: list<mixed>, archived?: bool

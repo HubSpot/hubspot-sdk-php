@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Gets the metadata object for the file at the specified path in the specified environment.
  *
- * @see HubspotSDK\Cms\SourceCode->getMetadata
+ * @see HubspotSDK\Services\Cms\SourceCodeService::getMetadata()
  *
  * @phpstan-type SourceCodeGetMetadataParamsShape = array{
  *   environment: string, properties?: string

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns all existing URL redirects. Results can be limited and filtered by creation or updated date.
  *
- * @see HubspotSDK\Cms\URLRedirects->list
+ * @see HubspotSDK\Services\Cms\URLRedirectsService::list()
  *
  * @phpstan-type URLRedirectListParamsShape = array{
  *   after?: string,

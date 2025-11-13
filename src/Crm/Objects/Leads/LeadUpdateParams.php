@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Perform a partial update of an Object identified by `{leadsId}`or optionally a unique property value as specified by the `idProperty` query param. `{leadsId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
  *
- * @see HubspotSDK\Crm\Objects\Leads->update
+ * @see HubspotSDK\Services\Crm\Objects\LeadsService::update()
  *
  * @phpstan-type LeadUpdateParamsShape = array{
  *   properties: array<string,string>, idProperty?: string

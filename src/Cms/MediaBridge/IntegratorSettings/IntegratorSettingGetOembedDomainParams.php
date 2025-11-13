@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the details for an existing oEmbed domain.
  *
- * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->getOembedDomain
+ * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::getOembedDomain()
  *
  * @phpstan-type IntegratorSettingGetOembedDomainParamsShape = array{appId: string}
  */

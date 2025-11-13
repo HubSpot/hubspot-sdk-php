@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Creates a file at the specified path in the specified environment. Accepts multipart/form-data content type. Throws an error if a file already exists at the specified path.
  *
  * @deprecated
- * @see HubspotSDK\Cms\SourceCode->create
+ * @see HubspotSDK\Services\Cms\SourceCodeService::create()
  *
  * @phpstan-type SourceCodeCreateParamsShape = array{
  *   environment: string, file?: string

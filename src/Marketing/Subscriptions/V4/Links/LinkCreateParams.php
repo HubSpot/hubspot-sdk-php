@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
 
 /**
- * @see HubspotSDK\Marketing\Subscriptions\V4\Links->create
+ * @see HubspotSDK\Services\Marketing\Subscriptions\V4\LinksService::create()
  *
  * @phpstan-type LinkCreateParamsShape = array{
  *   channel: Channel|value-of<Channel>,

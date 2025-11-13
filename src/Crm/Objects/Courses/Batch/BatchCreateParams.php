@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of courses.
  *
- * @see HubspotSDK\Crm\Objects\Courses\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Courses\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

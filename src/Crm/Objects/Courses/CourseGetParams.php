@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read an Object identified by `{courseId}`. `{courseId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Courses->get
+ * @see HubspotSDK\Services\Crm\Objects\CoursesService::get()
  *
  * @phpstan-type CourseGetParamsShape = array{
  *   archived?: bool,

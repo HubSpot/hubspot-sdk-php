@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\StatusStat
 /**
  * Set the subscription status of a specific contact.
  *
- * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->update
+ * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::update()
  *
  * @phpstan-type StatusUpdateParamsShape = array{
  *   channel: Channel|value-of<Channel>,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update the Folder objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->updateFoldersBatch
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::updateFoldersBatch()
  *
  * @phpstan-type LandingPageUpdateFoldersBatchParamsShape = array{
  *   inputs: list<mixed>, archived?: bool

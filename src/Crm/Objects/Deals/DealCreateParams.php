@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a deal with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard deals is provided.
  *
- * @see HubspotSDK\Crm\Objects\Deals->create
+ * @see HubspotSDK\Services\Crm\Objects\DealsService::create()
  *
  * @phpstan-type DealCreateParamsShape = array{
  *   properties: array<string,string>,

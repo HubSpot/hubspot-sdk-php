@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost;
 /**
  * Batch delete specific association labels for objects. Deleting an unlabeled association will also delete all labeled associations between those two objects.
  *
- * @see HubspotSDK\Crm\Associations\V4\Batch->deleteLabels
+ * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::deleteLabels()
  *
  * @phpstan-type BatchDeleteLabelsParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicAssociationMultiPost>

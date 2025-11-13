@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 /**
  * Update a batch of meetings by internal ID, or unique property values.
  *
- * @see HubspotSDK\Crm\Objects\Meetings\Batch->update
+ * @see HubspotSDK\Services\Crm\Objects\Meetings\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput>

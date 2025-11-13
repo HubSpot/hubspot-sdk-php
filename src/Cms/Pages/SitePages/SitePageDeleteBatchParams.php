@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Delete the Site Page objects identified in the request body.
  * Note: This is not the same as the dashboard `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to true.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->deleteBatch
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::deleteBatch()
  *
  * @phpstan-type SitePageDeleteBatchParamsShape = array{inputs: list<string>}
  */

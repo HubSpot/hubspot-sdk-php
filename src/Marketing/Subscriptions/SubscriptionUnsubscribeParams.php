@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis;
 /**
  * Unsubscribes a contact from the given subscription type. This API is not valid to use for unsubscribing a contact at a brand or portal level and will return an error.
  *
- * @see HubspotSDK\Marketing\Subscriptions->unsubscribe
+ * @see HubspotSDK\Services\Marketing\SubscriptionsService::unsubscribe()
  *
  * @phpstan-type SubscriptionUnsubscribeParamsShape = array{
  *   emailAddress: string,

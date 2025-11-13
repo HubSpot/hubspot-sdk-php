@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Add a function for a given definition.
  *
- * @see HubspotSDK\Automation\Actions\Functions->createOrReplaceByFunctionType
+ * @see HubspotSDK\Services\Automation\Actions\FunctionsService::createOrReplaceByFunctionType()
  *
  * @phpstan-type FunctionCreateOrReplaceByFunctionTypeParamsShape = array{
  *   appId: int, definitionId: string, body: string

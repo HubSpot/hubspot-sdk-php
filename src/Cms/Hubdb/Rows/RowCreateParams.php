@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Add a new row to a HubDB table. New rows will be added to the draft version of the table. Use the `/publish` endpoint to push these changes to published version.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows->create
+ * @see HubspotSDK\Services\Cms\Hubdb\RowsService::create()
  *
  * @phpstan-type RowCreateParamsShape = array{
  *   values: array<string,mixed>,

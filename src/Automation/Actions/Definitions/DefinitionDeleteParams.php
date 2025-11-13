@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete an action definition by ID.
  *
- * @see HubspotSDK\Automation\Actions\Definitions->delete
+ * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::delete()
  *
  * @phpstan-type DefinitionDeleteParamsShape = array{appId: int}
  */

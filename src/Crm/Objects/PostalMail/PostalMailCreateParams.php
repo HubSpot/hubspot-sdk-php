@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a postal mail object with the given properties and return a copy of the object, including the ID.
  *
- * @see HubspotSDK\Crm\Objects\PostalMail->create
+ * @see HubspotSDK\Services\Crm\Objects\PostalMailService::create()
  *
  * @phpstan-type PostalMailCreateParamsShape = array{
  *   properties: array<string,string>,

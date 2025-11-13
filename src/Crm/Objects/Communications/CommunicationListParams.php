@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of communications. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Communications->list
+ * @see HubspotSDK\Services\Crm\Objects\CommunicationsService::list()
  *
  * @phpstan-type CommunicationListParamsShape = array{
  *   after?: string,

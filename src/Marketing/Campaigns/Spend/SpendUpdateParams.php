@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update a specific campaign spend item by ID.
  *
- * @see HubspotSDK\Marketing\Campaigns\Spend->update
+ * @see HubspotSDK\Services\Marketing\Campaigns\SpendService::update()
  *
  * @phpstan-type SpendUpdateParamsShape = array{
  *   campaignGuid: string,

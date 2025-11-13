@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete a function within a given definition.
  *
- * @see HubspotSDK\Automation\Actions\Functions->deleteByFunctionType
+ * @see HubspotSDK\Services\Automation\Actions\FunctionsService::deleteByFunctionType()
  *
  * @phpstan-type FunctionDeleteByFunctionTypeParamsShape = array{
  *   appId: int, definitionId: string

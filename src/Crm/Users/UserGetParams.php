@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read an Object identified by `{userId}`. `{userId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Users->get
+ * @see HubspotSDK\Services\Crm\UsersService::get()
  *
  * @phpstan-type UserGetParamsShape = array{
  *   archived?: bool,

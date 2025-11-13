@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Merge two objects with same type.
  *
- * @see HubspotSDK\Crm\Objects\Custom->merge
+ * @see HubspotSDK\Services\Crm\Objects\CustomService::merge()
  *
  * @phpstan-type CustomMergeParamsShape = array{
  *   objectIdToMerge: string, primaryObjectId: string

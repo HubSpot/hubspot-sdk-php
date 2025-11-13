@@ -13,7 +13,7 @@ use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
 /**
  * Modifies a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
  *
- * @see HubspotSDK\Settings\Users->update
+ * @see HubspotSDK\Services\Settings\UsersService::update()
  *
  * @phpstan-type UserUpdateParamsShape = array{
  *   idProperty?: IDProperty|value-of<IDProperty>,

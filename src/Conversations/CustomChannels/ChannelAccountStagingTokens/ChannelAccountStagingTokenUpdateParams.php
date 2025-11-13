@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update a channel account staging token's account name and delivery identifier. This information will be applied to the channel account created from this staging token. This is used for public apps.
  *
- * @see HubspotSDK\Conversations\CustomChannels\ChannelAccountStagingTokens->update
+ * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountStagingTokensService::update()
  *
  * @phpstan-type ChannelAccountStagingTokenUpdateParamsShape = array{
  *   channelId: string,

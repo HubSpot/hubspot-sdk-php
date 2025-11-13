@@ -20,7 +20,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
 /**
  * Update the filter branch definition of a `DYNAMIC` list. Once updated, the list memberships will be re-evaluated and updated to match the new definition.
  *
- * @see HubspotSDK\Crm\Lists->updateFilters
+ * @see HubspotSDK\Services\Crm\ListsService::updateFilters()
  *
  * @phpstan-type ListUpdateFiltersParamsShape = array{
  *   filterBranch: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,

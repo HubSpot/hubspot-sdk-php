@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * @see HubspotSDK\Crm\Objects\CommercePayments->search
+ * @see HubspotSDK\Services\Crm\Objects\CommercePaymentsService::search()
  *
  * @phpstan-type CommercePaymentSearchParamsShape = array{
  *   after?: string,

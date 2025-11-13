@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a invoice with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard invoices is provided.
  *
- * @see HubspotSDK\Crm\Objects\Invoices->create
+ * @see HubspotSDK\Services\Crm\Objects\InvoicesService::create()
  *
  * @phpstan-type InvoiceCreateParamsShape = array{
  *   properties: array<string,string>,

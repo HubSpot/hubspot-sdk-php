@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\PropertyValidations->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType
+ * @see HubspotSDK\Services\Crm\PropertyValidationsService::crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType()
  *
  * @phpstan-type PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParamsShape = array{
  *   objectTypeId: string, propertyName: string, ruleArguments: list<string>

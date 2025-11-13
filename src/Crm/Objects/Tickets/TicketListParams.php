@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of tickets. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Tickets->list
+ * @see HubspotSDK\Services\Crm\Objects\TicketsService::list()
  *
  * @phpstan-type TicketListParamsShape = array{
  *   after?: string,

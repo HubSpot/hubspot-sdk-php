@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve the Site Page objects identified in the request body.
  *
- * @see HubspotSDK\Cms\Pages\SitePages->getBatch
+ * @see HubspotSDK\Services\Cms\Pages\SitePagesService::getBatch()
  *
  * @phpstan-type SitePageGetBatchParamsShape = array{
  *   inputs: list<string>, archived?: bool

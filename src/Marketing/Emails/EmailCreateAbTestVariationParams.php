@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a variation of a marketing email for an A/B test. The new variation will be created as a draft. If an active variation already exists, a new one won't be created.
  *
- * @see HubspotSDK\Marketing\Emails->createAbTestVariation
+ * @see HubspotSDK\Services\Marketing\EmailsService::createAbTestVariation()
  *
  * @phpstan-type EmailCreateAbTestVariationParamsShape = array{
  *   contentId: string, variationName: string

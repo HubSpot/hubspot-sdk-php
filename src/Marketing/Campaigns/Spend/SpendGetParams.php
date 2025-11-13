@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a campaign spend item by its spendId.
  *
- * @see HubspotSDK\Marketing\Campaigns\Spend->get
+ * @see HubspotSDK\Services\Marketing\Campaigns\SpendService::get()
  *
  * @phpstan-type SpendGetParamsShape = array{campaignGuid: string}
  */

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get Business Units identified by `userId`. The `userId` refers to the user’s ID.
  *
- * @see HubspotSDK\BusinessUnits->getByUserID
+ * @see HubspotSDK\Services\BusinessUnitsService::getByUserID()
  *
  * @phpstan-type BusinessUnitGetByUserIDParamsShape = array{
  *   name?: list<string>, properties?: list<string>

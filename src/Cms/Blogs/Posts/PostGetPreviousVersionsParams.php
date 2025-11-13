@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve all the previous versions of a blog post.
  *
- * @see HubspotSDK\Cms\Blogs\Posts->getPreviousVersions
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::getPreviousVersions()
  *
  * @phpstan-type PostGetPreviousVersionsParamsShape = array{
  *   after?: string, before?: string, limit?: int

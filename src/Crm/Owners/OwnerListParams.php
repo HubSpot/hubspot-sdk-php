@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a paginated list of owners available in the account.
  *
- * @see HubspotSDK\Crm\Owners->list
+ * @see HubspotSDK\Services\Crm\OwnersService::list()
  *
  * @phpstan-type OwnerListParamsShape = array{
  *   after?: string, archived?: bool, email?: string, limit?: int

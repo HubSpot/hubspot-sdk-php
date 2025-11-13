@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get a list of subscription status definitions from the account.
  *
- * @see HubspotSDK\Marketing\Subscriptions\V4\Definitions->list
+ * @see HubspotSDK\Services\Marketing\Subscriptions\V4\DefinitionsService::list()
  *
  * @phpstan-type DefinitionListParamsShape = array{
  *   businessUnitId?: int, includeTranslations?: bool

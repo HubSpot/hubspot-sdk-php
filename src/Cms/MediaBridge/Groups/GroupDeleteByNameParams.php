@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete an existing property group by name.
  *
- * @see HubspotSDK\Cms\MediaBridge\Groups->deleteByName
+ * @see HubspotSDK\Services\Cms\MediaBridge\GroupsService::deleteByName()
  *
  * @phpstan-type GroupDeleteByNameParamsShape = array{
  *   appId: string, objectType: string

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the details for a marketing email.
  *
- * @see HubspotSDK\Marketing\Emails->get
+ * @see HubspotSDK\Services\Marketing\EmailsService::get()
  *
  * @phpstan-type EmailGetParamsShape = array{
  *   archived?: bool,

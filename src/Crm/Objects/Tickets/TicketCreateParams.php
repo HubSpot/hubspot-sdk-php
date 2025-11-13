@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a ticket with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard tickets is provided.
  *
- * @see HubspotSDK\Crm\Objects\Tickets->create
+ * @see HubspotSDK\Services\Crm\Objects\TicketsService::create()
  *
  * @phpstan-type TicketCreateParamsShape = array{
  *   properties: array<string,string>,

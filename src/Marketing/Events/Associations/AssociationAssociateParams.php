@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Associates a list with a marketing event by marketing event id and ILS list id.
  *
- * @see HubspotSDK\Marketing\Events\Associations->associate
+ * @see HubspotSDK\Services\Marketing\Events\AssociationsService::associate()
  *
  * @phpstan-type AssociationAssociateParamsShape = array{marketingEventId: string}
  */

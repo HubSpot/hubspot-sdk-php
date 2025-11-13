@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Attach a Blog Author to a multi-language group.
  *
- * @see HubspotSDK\Cms\Blogs\Authors->attachToLangGroup
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::attachToLangGroup()
  *
  * @phpstan-type AuthorAttachToLangGroupParamsShape = array{
  *   id: string, language: string, primaryId: string, primaryLanguage?: string

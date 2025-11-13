@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a custom workflow action definition by ID.
  *
- * @see HubspotSDK\Automation\Actions\Definitions->get
+ * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::get()
  *
  * @phpstan-type DefinitionGetParamsShape = array{appId: int, archived?: bool}
  */

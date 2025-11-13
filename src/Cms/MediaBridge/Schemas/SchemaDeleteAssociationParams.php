@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete an existing association definition for an object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Schemas->deleteAssociation
+ * @see HubspotSDK\Services\Cms\MediaBridge\SchemasService::deleteAssociation()
  *
  * @phpstan-type SchemaDeleteAssociationParamsShape = array{
  *   appId: string, objectType: string

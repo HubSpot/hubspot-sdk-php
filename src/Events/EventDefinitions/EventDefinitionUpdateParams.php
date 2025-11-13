@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update a specific custom event definition by name.
  *
- * @see HubspotSDK\Events\EventDefinitions->update
+ * @see HubspotSDK\Services\Events\EventDefinitionsService::update()
  *
  * @phpstan-type EventDefinitionUpdateParamsShape = array{
  *   description?: string, label?: string

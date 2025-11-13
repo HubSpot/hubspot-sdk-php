@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new A/B test variation based on the information provided in the request body.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->createAbTestVariation
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::createAbTestVariation()
  *
  * @phpstan-type LandingPageCreateAbTestVariationParamsShape = array{
  *   contentId: string, variationName: string

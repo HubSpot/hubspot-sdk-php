@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Associations\V4\PublicFetchAssociationsBatchRequest;
 /**
  * Batch read associations for objects to specific object type. The 'after' field in a returned paging object  can be added alongside the 'id' to retrieve the next page of associations from that objectId. The 'link' field is deprecated and should be ignored. Note: The 'paging' field will only be present if there are more pages and absent otherwise.
  *
- * @see HubspotSDK\Crm\Associations\V4\Batch->get
+ * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   fromObjectType: string, inputs: list<PublicFetchAssociationsBatchRequest>

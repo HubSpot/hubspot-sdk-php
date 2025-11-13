@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read a page of orders. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Orders->list
+ * @see HubspotSDK\Services\Crm\Objects\OrdersService::list()
  *
  * @phpstan-type OrderListParamsShape = array{
  *   after?: string,

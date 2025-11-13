@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update a specific budget item by ID.
  *
- * @see HubspotSDK\Marketing\Campaigns\Budget->update
+ * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::update()
  *
  * @phpstan-type BudgetUpdateParamsShape = array{
  *   campaignGuid: string,

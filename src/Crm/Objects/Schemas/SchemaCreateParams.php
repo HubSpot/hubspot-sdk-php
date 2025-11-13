@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
- * @see HubspotSDK\Crm\Objects\Schemas->create
+ * @see HubspotSDK\Services\Crm\Objects\SchemasService::create()
  *
  * @phpstan-type SchemaCreateParamsShape = array{
  *   associatedObjects: list<string>,

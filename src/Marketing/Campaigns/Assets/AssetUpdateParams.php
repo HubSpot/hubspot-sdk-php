@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
  *
- * @see HubspotSDK\Marketing\Campaigns\Assets->update
+ * @see HubspotSDK\Services\Marketing\Campaigns\AssetsService::update()
  *
  * @phpstan-type AssetUpdateParamsShape = array{
  *   campaignGuid: string, assetType: string

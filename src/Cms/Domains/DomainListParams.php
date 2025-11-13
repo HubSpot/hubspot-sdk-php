@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Returns all existing domains that have been created. Results can be limited and filtered by creation or updated date.
  *
- * @see HubspotSDK\Cms\Domains->list
+ * @see HubspotSDK\Services\Cms\DomainsService::list()
  *
  * @phpstan-type DomainListParamsShape = array{
  *   after?: string,

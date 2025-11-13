@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new Blog Tag.
  *
- * @see HubspotSDK\Cms\Blogs\Tags->create
+ * @see HubspotSDK\Services\Cms\Blogs\TagsService::create()
  *
  * @phpstan-type TagCreateParamsShape = array{
  *   id: string,

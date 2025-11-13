@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new property group for the specified object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\Groups->create
+ * @see HubspotSDK\Services\Cms\MediaBridge\GroupsService::create()
  *
  * @phpstan-type GroupCreateParamsShape = array{
  *   appId: string, label: string, name: string, displayOrder?: int

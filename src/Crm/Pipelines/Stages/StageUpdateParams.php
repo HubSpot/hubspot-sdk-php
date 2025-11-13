@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Pipelines\Stages->update
+ * @see HubspotSDK\Services\Crm\Pipelines\StagesService::update()
  *
  * @phpstan-type StageUpdateParamsShape = array{
  *   objectType: string,

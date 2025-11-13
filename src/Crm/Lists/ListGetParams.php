@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Fetch a single list by **ILS list ID**.
  *
- * @see HubspotSDK\Crm\Lists->get
+ * @see HubspotSDK\Services\Crm\ListsService::get()
  *
  * @phpstan-type ListGetParamsShape = array{includeFilters?: bool}
  */

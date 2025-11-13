@@ -13,7 +13,7 @@ use HubspotSDK\Crm\FilterGroup;
 /**
  * Perform a search for emails based on the provided query parameters and return matching results.
  *
- * @see HubspotSDK\Crm\Objects\Emails->search
+ * @see HubspotSDK\Services\Crm\Objects\EmailsService::search()
  *
  * @phpstan-type EmailSearchParamsShape = array{
  *   after?: string,

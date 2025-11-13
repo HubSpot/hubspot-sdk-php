@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Set the primary language of a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content) to the language of the provided post (specified as an ID in the request body).
  *
- * @see HubspotSDK\Cms\Blogs\Posts->setLangPrimary
+ * @see HubspotSDK\Services\Cms\Blogs\PostsService::setLangPrimary()
  *
  * @phpstan-type PostSetLangPrimaryParamsShape = array{id: string}
  */

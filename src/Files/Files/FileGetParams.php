@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a file by its ID.
  *
- * @see HubspotSDK\Files\Files->get
+ * @see HubspotSDK\Services\Files\FilesService::get()
  *
  * @phpstan-type FileGetParamsShape = array{properties?: list<string>}
  */

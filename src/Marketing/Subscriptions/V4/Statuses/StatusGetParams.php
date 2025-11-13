@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetParams\Channel;
 /**
  * Retrieve a contact's current email subscription preferences.
  *
- * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->get
+ * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::get()
  *
  * @phpstan-type StatusGetParamsShape = array{
  *   channel: Channel|value-of<Channel>, businessUnitId?: int

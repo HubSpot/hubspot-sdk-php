@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Create a new media object type.
  *
- * @see HubspotSDK\Cms\MediaBridge\IntegratorSettings->createObjectDefinition
+ * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::createObjectDefinition()
  *
  * @phpstan-type IntegratorSettingCreateObjectDefinitionParamsShape = array{
  *   mediaTypes: list<MediaType|value-of<MediaType>>

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Crm\Objects\PostalMail->list
+ * @see HubspotSDK\Services\Crm\Objects\PostalMailService::list()
  *
  * @phpstan-type PostalMailListParamsShape = array{
  *   after?: string,

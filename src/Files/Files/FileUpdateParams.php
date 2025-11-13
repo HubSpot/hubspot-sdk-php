@@ -13,7 +13,7 @@ use HubspotSDK\Files\Files\FileUpdateParams\Access;
 /**
  * Update properties of file by ID.
  *
- * @see HubspotSDK\Files\Files->update
+ * @see HubspotSDK\Services\Files\FilesService::update()
  *
  * @phpstan-type FileUpdateParamsShape = array{
  *   access?: Access|value-of<Access>,

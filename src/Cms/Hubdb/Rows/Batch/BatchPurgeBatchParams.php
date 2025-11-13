@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Permanently deletes rows from the draft version of the table, given a set of row IDs. Maximum of 100 row IDs per call.
  *
- * @see HubspotSDK\Cms\Hubdb\Rows\Batch->purgeBatch
+ * @see HubspotSDK\Services\Cms\Hubdb\Rows\BatchService::purgeBatch()
  *
  * @phpstan-type BatchPurgeBatchParamsShape = array{inputs: list<string>}
  */

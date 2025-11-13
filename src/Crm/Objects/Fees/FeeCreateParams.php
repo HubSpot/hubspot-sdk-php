@@ -13,7 +13,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
 /**
  * Create a fee with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard fees is provided.
  *
- * @see HubspotSDK\Crm\Objects\Fees->create
+ * @see HubspotSDK\Services\Crm\Objects\FeesService::create()
  *
  * @phpstan-type FeeCreateParamsShape = array{
  *   properties: array<string,string>,

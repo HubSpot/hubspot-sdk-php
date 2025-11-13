@@ -23,7 +23,7 @@ use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
  * - joinedAt
  * - leftAt
  *
- * @see HubspotSDK\Marketing\Events\Attendance->createByEventIDAndEmail
+ * @see HubspotSDK\Services\Marketing\Events\AttendanceService::createByEventIDAndEmail()
  *
  * @phpstan-type AttendanceCreateByEventIDAndEmailParamsShape = array{
  *   objectId: string, inputs: list<MarketingEventEmailSubscriber>

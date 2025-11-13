@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Enroll a contact into a sequence using the specified user ID and sequence details.
  *
- * @see HubspotSDK\Automation\Sequences\Enrollments->enroll
+ * @see HubspotSDK\Services\Automation\Sequences\EnrollmentsService::enroll()
  *
  * @phpstan-type EnrollmentEnrollParamsShape = array{
  *   contactId: string,

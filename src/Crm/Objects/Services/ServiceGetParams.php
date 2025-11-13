@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read an Object identified by `{serviceId}`. `{serviceId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Services->get
+ * @see HubspotSDK\Services\Crm\Objects\ServicesService::get()
  *
  * @phpstan-type ServiceGetParamsShape = array{
  *   archived?: bool,

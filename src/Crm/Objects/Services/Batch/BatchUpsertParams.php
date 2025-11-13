@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert;
 /**
  * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
  *
- * @see HubspotSDK\Crm\Objects\Services\Batch->upsert
+ * @see HubspotSDK\Services\Crm\Objects\Services\BatchService::upsert()
  *
  * @phpstan-type BatchUpsertParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputUpsert>

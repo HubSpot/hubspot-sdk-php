@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * Archive multiple goal targets in a single batch operation using their IDs.
  *
- * @see HubspotSDK\Crm\Objects\GoalTargets\Batch->delete
+ * @see HubspotSDK\Services\Crm\Objects\GoalTargets\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<SimplePublicObjectID>}
  */

@@ -13,7 +13,7 @@ use HubspotSDK\Settings\Currencies\CurrencyCreateExchangeRateParams\FromCurrency
 /**
  * Create a new exchange rate with specified conversion rate and currency codes.
  *
- * @see HubspotSDK\Settings\Currencies->createExchangeRate
+ * @see HubspotSDK\Services\Settings\CurrenciesService::createExchangeRate()
  *
  * @phpstan-type CurrencyCreateExchangeRateParamsShape = array{
  *   conversionRate: float,

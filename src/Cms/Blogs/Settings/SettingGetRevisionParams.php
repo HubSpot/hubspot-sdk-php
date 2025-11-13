@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Cms\Blogs\Settings->getRevision
+ * @see HubspotSDK\Services\Cms\Blogs\SettingsService::getRevision()
  *
  * @phpstan-type SettingGetRevisionParamsShape = array{blogId: string}
  */

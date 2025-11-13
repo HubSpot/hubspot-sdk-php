@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 /**
  * Create a batch of tasks.
  *
- * @see HubspotSDK\Crm\Objects\Tasks\Batch->create
+ * @see HubspotSDK\Services\Crm\Objects\Tasks\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate>

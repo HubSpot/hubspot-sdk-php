@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Get the list of Landing Page Folders. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
  *
- * @see HubspotSDK\Cms\Pages\LandingPages->listFolders
+ * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::listFolders()
  *
  * @phpstan-type LandingPageListFoldersParamsShape = array{
  *   after?: string,

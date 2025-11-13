@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Creates and configures a new URL redirect.
  *
- * @see HubspotSDK\Cms\URLRedirects->create
+ * @see HubspotSDK\Services\Cms\URLRedirectsService::create()
  *
  * @phpstan-type URLRedirectCreateParamsShape = array{
  *   destination: string,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Delete an existing event subscription by ID.
  *
- * @see HubspotSDK\Webhooks\Subscriptions->delete
+ * @see HubspotSDK\Services\Webhooks\SubscriptionsService::delete()
  *
  * @phpstan-type SubscriptionDeleteParamsShape = array{appId: int}
  */

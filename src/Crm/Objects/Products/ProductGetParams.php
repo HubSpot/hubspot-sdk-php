@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Read an Object identified by `{productId}`. `{productId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Crm\Objects\Products->get
+ * @see HubspotSDK\Services\Crm\Objects\ProductsService::get()
  *
  * @phpstan-type ProductGetParamsShape = array{
  *   archived?: bool,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Given a list and a folder, the list will be moved to that folder.
  *
- * @see HubspotSDK\Crm\Lists\Folders->moveList
+ * @see HubspotSDK\Services\Crm\Lists\FoldersService::moveList()
  *
  * @phpstan-type FolderMoveListParamsShape = array{
  *   listId: string, newFolderId: string

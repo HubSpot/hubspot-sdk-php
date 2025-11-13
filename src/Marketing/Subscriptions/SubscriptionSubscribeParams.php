@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams\LegalBasis;
 /**
  * Subscribes a contact to the given subscription type. This API is not valid to use for subscribing a contact at a brand or portal level and will return an error.
  *
- * @see HubspotSDK\Marketing\Subscriptions->subscribe
+ * @see HubspotSDK\Services\Marketing\SubscriptionsService::subscribe()
  *
  * @phpstan-type SubscriptionSubscribeParamsShape = array{
  *   emailAddress: string,

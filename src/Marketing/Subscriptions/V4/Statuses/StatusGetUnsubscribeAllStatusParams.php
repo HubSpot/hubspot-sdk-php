@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatus
 /**
  * Check whether a contact has unsubscribed from all email subscriptions. If a contact has not opted out of all communications, the response `results` array will be empty.
  *
- * @see HubspotSDK\Marketing\Subscriptions\V4\Statuses->getUnsubscribeAllStatus
+ * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::getUnsubscribeAllStatus()
  *
  * @phpstan-type StatusGetUnsubscribeAllStatusParamsShape = array{
  *   channel: Channel|value-of<Channel>, businessUnitId?: int, verbose?: bool
