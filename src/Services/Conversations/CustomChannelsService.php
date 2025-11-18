@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\CustomChannels\CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging;
 use HubspotSDK\Conversations\CustomChannels\CustomChannelCreateParams;
+use HubspotSDK\Conversations\CustomChannels\CustomChannelListParams;
 use HubspotSDK\Conversations\CustomChannels\CustomChannelUpdateParams;
 use HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannelsContract;
 use HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService;
@@ -85,17 +86,17 @@ final class CustomChannelsService implements CustomChannelsContract
      *
      * @param array{
      *   capabilities: array<string,mixed>,
+     *   channelAccountConnectionRedirectUrl: mixed,
      *   channelDescription: mixed,
      *   channelLogoUrl: mixed,
-     *   channelAccountConnectionRedirectUrl?: mixed,
-     *   name?: mixed,
-     *   webhookUrl?: mixed,
+     *   name: mixed,
+     *   webhookUrl: mixed,
      * }|CustomChannelUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
-        string $channelID,
+        int $channelID,
         array|CustomChannelUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicChannelIntegrationChannel {
@@ -119,17 +120,31 @@ final class CustomChannelsService implements CustomChannelsContract
      *
      * Retrieve all custom channels associated with the app.
      *
+     * @param array{
+     *   after?: string, defaultPageLength?: int, limit?: int, sort?: list<string>
+     * }|CustomChannelListParams $params
+     *
+     * @return Page<PublicChannelIntegrationChannel>
+     *
      * @throws APIException
      */
     public function list(
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging {
+        array|CustomChannelListParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): Page {
+        [$parsed, $options] = CustomChannelListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: 'conversations/v3/custom-channels/',
-            options: $requestOptions,
-            convert: CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging::class,
+            query: $parsed,
+            options: $options,
+            convert: PublicChannelIntegrationChannel::class,
+            page: Page::class,
         );
     }
 
@@ -141,7 +156,7 @@ final class CustomChannelsService implements CustomChannelsContract
      * @throws APIException
      */
     public function delete(
-        string $channelID,
+        int $channelID,
         ?RequestOptions $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line;
@@ -161,7 +176,7 @@ final class CustomChannelsService implements CustomChannelsContract
      * @throws APIException
      */
     public function get(
-        string $channelID,
+        int $channelID,
         ?RequestOptions $requestOptions = null
     ): PublicChannelIntegrationChannel {
         // @phpstan-ignore-next-line;

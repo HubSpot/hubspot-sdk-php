@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Conversations\ActorsService::batchRead()
  *
- * @phpstan-type ActorBatchReadParamsShape = array{inputs: list<string>}
+ * @phpstan-type ActorBatchReadParamsShape = array{
+ *   inputs: list<string>, property?: string
+ * }
  */
 final class ActorBatchReadParams implements BaseModel
 {
@@ -29,6 +31,12 @@ final class ActorBatchReadParams implements BaseModel
      */
     #[Api(list: 'string')]
     public array $inputs;
+
+    /**
+     * A specific property to include in the actor response.
+     */
+    #[Api(optional: true)]
+    public ?string $property;
 
     /**
      * `new ActorBatchReadParams()` is missing required properties by the API.
@@ -56,11 +64,13 @@ final class ActorBatchReadParams implements BaseModel
      *
      * @param list<string> $inputs
      */
-    public static function with(array $inputs): self
+    public static function with(array $inputs, ?string $property = null): self
     {
         $obj = new self;
 
         $obj->inputs = $inputs;
+
+        null !== $property && $obj->property = $property;
 
         return $obj;
     }
@@ -74,6 +84,17 @@ final class ActorBatchReadParams implements BaseModel
     {
         $obj = clone $this;
         $obj->inputs = $inputs;
+
+        return $obj;
+    }
+
+    /**
+     * A specific property to include in the actor response.
+     */
+    public function withProperty(string $property): self
+    {
+        $obj = clone $this;
+        $obj->property = $property;
 
         return $obj;
     }

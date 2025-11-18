@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::get()
  *
- * @phpstan-type PropertyGetParamsShape = array{appId: string, objectType: string}
+ * @phpstan-type PropertyGetParamsShape = array{
+ *   appId: int, objectType: string, archived?: bool, properties?: string
+ * }
  */
 final class PropertyGetParams implements BaseModel
 {
@@ -23,10 +25,22 @@ final class PropertyGetParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appId;
+    public int $appId;
 
     #[Api]
     public string $objectType;
+
+    /**
+     * Whether to return only results that have been archived.
+     */
+    #[Api(optional: true)]
+    public ?bool $archived;
+
+    /**
+     * Limit the response to only include the specified properties.
+     */
+    #[Api(optional: true)]
+    public ?string $properties;
 
     /**
      * `new PropertyGetParams()` is missing required properties by the API.
@@ -52,17 +66,24 @@ final class PropertyGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $appId, string $objectType): self
-    {
+    public static function with(
+        int $appId,
+        string $objectType,
+        ?bool $archived = null,
+        ?string $properties = null,
+    ): self {
         $obj = new self;
 
         $obj->appId = $appId;
         $obj->objectType = $objectType;
 
+        null !== $archived && $obj->archived = $archived;
+        null !== $properties && $obj->properties = $properties;
+
         return $obj;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $obj = clone $this;
         $obj->appId = $appID;
@@ -74,6 +95,28 @@ final class PropertyGetParams implements BaseModel
     {
         $obj = clone $this;
         $obj->objectType = $objectType;
+
+        return $obj;
+    }
+
+    /**
+     * Whether to return only results that have been archived.
+     */
+    public function withArchived(bool $archived): self
+    {
+        $obj = clone $this;
+        $obj->archived = $archived;
+
+        return $obj;
+    }
+
+    /**
+     * Limit the response to only include the specified properties.
+     */
+    public function withProperties(string $properties): self
+    {
+        $obj = clone $this;
+        $obj->properties = $properties;
 
         return $obj;
     }

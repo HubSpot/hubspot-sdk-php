@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicCampaignAssetShape = array{
- *   id: string, metrics: array<string,float>, name?: string|null
+ *   id: string, metrics?: array<string,float>|null, name?: string|null
  * }
  */
 final class PublicCampaignAsset implements BaseModel
@@ -21,9 +21,9 @@ final class PublicCampaignAsset implements BaseModel
     #[Api]
     public string $id;
 
-    /** @var array<string,float> $metrics */
-    #[Api(map: 'float')]
-    public array $metrics;
+    /** @var array<string,float>|null $metrics */
+    #[Api(map: 'float', optional: true)]
+    public ?array $metrics;
 
     #[Api(optional: true)]
     public ?string $name;
@@ -33,13 +33,13 @@ final class PublicCampaignAsset implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicCampaignAsset::with(id: ..., metrics: ...)
+     * PublicCampaignAsset::with(id: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PublicCampaignAsset)->withID(...)->withMetrics(...)
+     * (new PublicCampaignAsset)->withID(...)
      * ```
      */
     public function __construct()
@@ -56,14 +56,14 @@ final class PublicCampaignAsset implements BaseModel
      */
     public static function with(
         string $id,
-        array $metrics,
+        ?array $metrics = null,
         ?string $name = null
     ): self {
         $obj = new self;
 
         $obj->id = $id;
-        $obj->metrics = $metrics;
 
+        null !== $metrics && $obj->metrics = $metrics;
         null !== $name && $obj->name = $name;
 
         return $obj;

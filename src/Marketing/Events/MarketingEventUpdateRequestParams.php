@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MarketingEventUpdateRequestParamsShape = array{
- *   customProperties?: list<PropertyValue>|null,
+ *   customProperties: list<PropertyValue>,
  *   endDateTime?: \DateTimeInterface|null,
  *   eventCancelled?: bool|null,
  *   eventCompleted?: bool|null,
@@ -31,10 +31,10 @@ final class MarketingEventUpdateRequestParams implements BaseModel
      * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
      * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
      *
-     * @var list<PropertyValue>|null $customProperties
+     * @var list<PropertyValue> $customProperties
      */
-    #[Api(list: PropertyValue::class, optional: true)]
-    public ?array $customProperties;
+    #[Api(list: PropertyValue::class)]
+    public array $customProperties;
 
     /**
      * The end date and time of the marketing event.
@@ -87,6 +87,20 @@ final class MarketingEventUpdateRequestParams implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $startDateTime;
 
+    /**
+     * `new MarketingEventUpdateRequestParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * MarketingEventUpdateRequestParams::with(customProperties: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new MarketingEventUpdateRequestParams)->withCustomProperties(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -100,7 +114,7 @@ final class MarketingEventUpdateRequestParams implements BaseModel
      * @param list<PropertyValue> $customProperties
      */
     public static function with(
-        ?array $customProperties = null,
+        array $customProperties,
         ?\DateTimeInterface $endDateTime = null,
         ?bool $eventCancelled = null,
         ?bool $eventCompleted = null,
@@ -113,7 +127,8 @@ final class MarketingEventUpdateRequestParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $customProperties && $obj->customProperties = $customProperties;
+        $obj->customProperties = $customProperties;
+
         null !== $endDateTime && $obj->endDateTime = $endDateTime;
         null !== $eventCancelled && $obj->eventCancelled = $eventCancelled;
         null !== $eventCompleted && $obj->eventCompleted = $eventCompleted;

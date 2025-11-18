@@ -18,12 +18,21 @@ final class DateTime implements BaseModel
     /** @use SdkModel<DateTimeShape> */
     use SdkModel;
 
+    /**
+     * Indicates whether the DateTime value represents only a date without a time component.
+     */
     #[Api]
     public bool $dateOnly;
 
+    /**
+     * The integer value representing the shift in minutes from UTC for the DateTime value.
+     */
     #[Api]
     public int $timeZoneShift;
 
+    /**
+     * The integer value representing a specific point in time.
+     */
     #[Api]
     public int $value;
 
@@ -65,6 +74,9 @@ final class DateTime implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether the DateTime value represents only a date without a time component.
+     */
     public function withDateOnly(bool $dateOnly): self
     {
         $obj = clone $this;
@@ -73,6 +85,9 @@ final class DateTime implements BaseModel
         return $obj;
     }
 
+    /**
+     * The integer value representing the shift in minutes from UTC for the DateTime value.
+     */
     public function withTimeZoneShift(int $timeZoneShift): self
     {
         $obj = clone $this;
@@ -81,6 +96,9 @@ final class DateTime implements BaseModel
         return $obj;
     }
 
+    /**
+     * The integer value representing a specific point in time.
+     */
     public function withValue(int $value): self
     {
         $obj = clone $this;

@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::update()
  *
- * @phpstan-type ContactUpdateParamsShape = array{properties: array<string,string>}
+ * @phpstan-type ContactUpdateParamsShape = array{
+ *   properties: array<string,string>, idProperty?: string
+ * }
  */
 final class ContactUpdateParams implements BaseModel
 {
@@ -29,6 +31,12 @@ final class ContactUpdateParams implements BaseModel
      */
     #[Api(map: 'string')]
     public array $properties;
+
+    /**
+     * The name of a property whose values are unique for this object.
+     */
+    #[Api(optional: true)]
+    public ?string $idProperty;
 
     /**
      * `new ContactUpdateParams()` is missing required properties by the API.
@@ -56,11 +64,15 @@ final class ContactUpdateParams implements BaseModel
      *
      * @param array<string,string> $properties
      */
-    public static function with(array $properties): self
-    {
+    public static function with(
+        array $properties,
+        ?string $idProperty = null
+    ): self {
         $obj = new self;
 
         $obj->properties = $properties;
+
+        null !== $idProperty && $obj->idProperty = $idProperty;
 
         return $obj;
     }
@@ -74,6 +86,17 @@ final class ContactUpdateParams implements BaseModel
     {
         $obj = clone $this;
         $obj->properties = $properties;
+
+        return $obj;
+    }
+
+    /**
+     * The name of a property whose values are unique for this object.
+     */
+    public function withIDProperty(string $idProperty): self
+    {
+        $obj = clone $this;
+        $obj->idProperty = $idProperty;
 
         return $obj;
     }

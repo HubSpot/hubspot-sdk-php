@@ -10,9 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MarketingEventSubscriberShape = array{
- *   interactionDateTime: int,
- *   properties?: array<string,string>|null,
- *   vid?: int|null,
+ *   interactionDateTime: int, properties: array<string,string>, vid: int
  * }
  */
 final class MarketingEventSubscriber implements BaseModel
@@ -26,25 +24,30 @@ final class MarketingEventSubscriber implements BaseModel
     #[Api]
     public int $interactionDateTime;
 
-    /** @var array<string,string>|null $properties */
-    #[Api(map: 'string', optional: true)]
-    public ?array $properties;
+    /** @var array<string,string> $properties */
+    #[Api(map: 'string')]
+    public array $properties;
 
-    #[Api(optional: true)]
-    public ?int $vid;
+    #[Api]
+    public int $vid;
 
     /**
      * `new MarketingEventSubscriber()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MarketingEventSubscriber::with(interactionDateTime: ...)
+     * MarketingEventSubscriber::with(
+     *   interactionDateTime: ..., properties: ..., vid: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new MarketingEventSubscriber)->withInteractionDateTime(...)
+     * (new MarketingEventSubscriber)
+     *   ->withInteractionDateTime(...)
+     *   ->withProperties(...)
+     *   ->withVid(...)
      * ```
      */
     public function __construct()
@@ -61,15 +64,14 @@ final class MarketingEventSubscriber implements BaseModel
      */
     public static function with(
         int $interactionDateTime,
-        ?array $properties = null,
-        ?int $vid = null
+        array $properties,
+        int $vid
     ): self {
         $obj = new self;
 
         $obj->interactionDateTime = $interactionDateTime;
-
-        null !== $properties && $obj->properties = $properties;
-        null !== $vid && $obj->vid = $vid;
+        $obj->properties = $properties;
+        $obj->vid = $vid;
 
         return $obj;
     }

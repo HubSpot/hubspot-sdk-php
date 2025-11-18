@@ -210,7 +210,7 @@ final class CurrenciesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->currencies->listExchangeRates();
+        $result = $this->client->settings->currencies->listExchangeRates([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

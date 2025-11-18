@@ -14,13 +14,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type OptionShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
+ *   label: string,
  *   name: string,
  *   order: int,
  *   type: string,
  *   updatedAt: \DateTimeInterface,
  *   createdBy?: SimpleUser|null,
  *   createdByUserId?: int|null,
- *   label?: string|null,
  *   updatedBy?: SimpleUser|null,
  *   updatedByUserId?: int|null,
  * }
@@ -41,6 +41,12 @@ final class Option implements BaseModel
      */
     #[Api]
     public \DateTimeInterface $createdAt;
+
+    /**
+     * A user-friendly label that identifies the option.
+     */
+    #[Api]
+    public string $label;
 
     /**
      * An internal name assigned to the option, distinct from the label.
@@ -72,12 +78,6 @@ final class Option implements BaseModel
     #[Api(optional: true)]
     public ?int $createdByUserId;
 
-    /**
-     * A user-friendly label that identifies the option.
-     */
-    #[Api(optional: true)]
-    public ?string $label;
-
     #[Api(optional: true)]
     public ?SimpleUser $updatedBy;
 
@@ -93,7 +93,13 @@ final class Option implements BaseModel
      * To enforce required parameters use
      * ```
      * Option::with(
-     *   id: ..., createdAt: ..., name: ..., order: ..., type: ..., updatedAt: ...
+     *   id: ...,
+     *   createdAt: ...,
+     *   label: ...,
+     *   name: ...,
+     *   order: ...,
+     *   type: ...,
+     *   updatedAt: ...,
      * )
      * ```
      *
@@ -103,6 +109,7 @@ final class Option implements BaseModel
      * (new Option)
      *   ->withID(...)
      *   ->withCreatedAt(...)
+     *   ->withLabel(...)
      *   ->withName(...)
      *   ->withOrder(...)
      *   ->withType(...)
@@ -122,13 +129,13 @@ final class Option implements BaseModel
     public static function with(
         string $id,
         \DateTimeInterface $createdAt,
+        string $label,
         string $name,
         int $order,
         string $type,
         \DateTimeInterface $updatedAt,
         ?SimpleUser $createdBy = null,
         ?int $createdByUserId = null,
-        ?string $label = null,
         ?SimpleUser $updatedBy = null,
         ?int $updatedByUserId = null,
     ): self {
@@ -136,6 +143,7 @@ final class Option implements BaseModel
 
         $obj->id = $id;
         $obj->createdAt = $createdAt;
+        $obj->label = $label;
         $obj->name = $name;
         $obj->order = $order;
         $obj->type = $type;
@@ -143,7 +151,6 @@ final class Option implements BaseModel
 
         null !== $createdBy && $obj->createdBy = $createdBy;
         null !== $createdByUserId && $obj->createdByUserId = $createdByUserId;
-        null !== $label && $obj->label = $label;
         null !== $updatedBy && $obj->updatedBy = $updatedBy;
         null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
 
@@ -168,6 +175,17 @@ final class Option implements BaseModel
     {
         $obj = clone $this;
         $obj->createdAt = $createdAt;
+
+        return $obj;
+    }
+
+    /**
+     * A user-friendly label that identifies the option.
+     */
+    public function withLabel(string $label): self
+    {
+        $obj = clone $this;
+        $obj->label = $label;
 
         return $obj;
     }
@@ -228,17 +246,6 @@ final class Option implements BaseModel
     {
         $obj = clone $this;
         $obj->createdByUserId = $createdByUserID;
-
-        return $obj;
-    }
-
-    /**
-     * A user-friendly label that identifies the option.
-     */
-    public function withLabel(string $label): self
-    {
-        $obj = clone $this;
-        $obj->label = $label;
 
         return $obj;
     }

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 
 /**
- * Update a batch of services by internal ID, or unique property values.
+ * Update a batch of objects.
  *
  * @see HubspotSDK\Services\Crm\Objects\Services\BatchService::update()
  *

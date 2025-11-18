@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Delete a pipeline stage.
+ * Delete a specific stage from a pipeline.
  *
  * @see HubspotSDK\Services\Crm\Pipelines\StagesService::delete()
  *

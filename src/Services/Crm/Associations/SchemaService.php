@@ -10,13 +10,22 @@ use HubspotSDK\Crm\Associations\Schema\CollectionResponsePublicAssociationDefini
 use HubspotSDK\Crm\Associations\Schema\SchemaListParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\SchemaContract;
+use HubspotSDK\Services\Crm\Associations\Schema\V4Service;
 
 final class SchemaService implements SchemaContract
 {
     /**
+     * @api
+     */
+    public V4Service $v4;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->v4 = new V4Service($client);
+    }
 
     /**
      * @api

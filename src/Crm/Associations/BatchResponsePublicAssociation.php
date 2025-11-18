@@ -27,6 +27,9 @@ final class BatchResponsePublicAssociation implements BaseModel
     /** @use SdkModel<BatchResponsePublicAssociationShape> */
     use SdkModel;
 
+    /**
+     * The date and time when the batch operation was completed.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
@@ -34,10 +37,17 @@ final class BatchResponsePublicAssociation implements BaseModel
     #[Api(list: PublicAssociation::class)]
     public array $results;
 
+    /**
+     * The date and time when the batch operation started.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current status of the batch operation, with possible values: PENDING, PROCESSING, CANCELED, COMPLETE.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
@@ -45,13 +55,23 @@ final class BatchResponsePublicAssociation implements BaseModel
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string,string>|null $links */
+    /**
+     * A collection of URLs related to the batch operation.
+     *
+     * @var array<string,string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The number of errors encountered during the batch operation.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * The date and time when the batch operation was requested.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -115,6 +135,9 @@ final class BatchResponsePublicAssociation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the batch operation was completed.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -134,6 +157,9 @@ final class BatchResponsePublicAssociation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the batch operation started.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -143,6 +169,8 @@ final class BatchResponsePublicAssociation implements BaseModel
     }
 
     /**
+     * The current status of the batch operation, with possible values: PENDING, PROCESSING, CANCELED, COMPLETE.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -165,6 +193,8 @@ final class BatchResponsePublicAssociation implements BaseModel
     }
 
     /**
+     * A collection of URLs related to the batch operation.
+     *
      * @param array<string,string> $links
      */
     public function withLinks(array $links): self
@@ -175,6 +205,9 @@ final class BatchResponsePublicAssociation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The number of errors encountered during the batch operation.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
@@ -183,6 +216,9 @@ final class BatchResponsePublicAssociation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date and time when the batch operation was requested.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

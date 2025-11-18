@@ -14,8 +14,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   fileId: string,
  *   fileUsageType: string,
  *   type: value-of<Type>,
- *   url: string,
  *   name?: string|null,
+ *   url?: string|null,
  * }
  */
 final class PublicFile implements BaseModel
@@ -33,28 +33,24 @@ final class PublicFile implements BaseModel
     #[Api(enum: Type::class)]
     public string $type;
 
-    #[Api]
-    public string $url;
-
     #[Api(optional: true)]
     public ?string $name;
+
+    #[Api(optional: true)]
+    public ?string $url;
 
     /**
      * `new PublicFile()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicFile::with(fileId: ..., fileUsageType: ..., type: ..., url: ...)
+     * PublicFile::with(fileId: ..., fileUsageType: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PublicFile)
-     *   ->withFileID(...)
-     *   ->withFileUsageType(...)
-     *   ->withType(...)
-     *   ->withURL(...)
+     * (new PublicFile)->withFileID(...)->withFileUsageType(...)->withType(...)
      * ```
      */
     public function __construct()
@@ -72,18 +68,18 @@ final class PublicFile implements BaseModel
     public static function with(
         string $fileId,
         string $fileUsageType,
-        string $url,
         Type|string $type = 'FILE',
         ?string $name = null,
+        ?string $url = null,
     ): self {
         $obj = new self;
 
         $obj->fileId = $fileId;
         $obj->fileUsageType = $fileUsageType;
         $obj['type'] = $type;
-        $obj->url = $url;
 
         null !== $name && $obj->name = $name;
+        null !== $url && $obj->url = $url;
 
         return $obj;
     }
@@ -115,18 +111,18 @@ final class PublicFile implements BaseModel
         return $obj;
     }
 
-    public function withURL(string $url): self
-    {
-        $obj = clone $this;
-        $obj->url = $url;
-
-        return $obj;
-    }
-
     public function withName(string $name): self
     {
         $obj = clone $this;
         $obj->name = $name;
+
+        return $obj;
+    }
+
+    public function withURL(string $url): self
+    {
+        $obj = clone $this;
+        $obj->url = $url;
 
         return $obj;
     }

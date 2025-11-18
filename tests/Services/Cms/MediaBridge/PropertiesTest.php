@@ -39,7 +39,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->create(
             'objectType',
             [
-                'appId' => 'appId',
+                'appId' => 0,
                 'fieldType' => 'booleancheckbox',
                 'groupName' => 'groupName',
                 'label' => 'label',
@@ -61,7 +61,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->create(
             'objectType',
             [
-                'appId' => 'appId',
+                'appId' => 0,
                 'fieldType' => 'booleancheckbox',
                 'groupName' => 'groupName',
                 'label' => 'label',
@@ -82,7 +82,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->update(
             'propertyName',
-            ['appId' => 'appId', 'objectType' => 'objectType']
+            ['appId' => 0, 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -97,7 +97,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->update(
             'propertyName',
-            ['appId' => 'appId', 'objectType' => 'objectType']
+            ['appId' => 0, 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -112,7 +112,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->list(
             'objectType',
-            ['appId' => 'appId']
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -127,7 +127,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->list(
             'objectType',
-            ['appId' => 'appId']
+            ['appId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -142,7 +142,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->delete(
             'propertyName',
-            ['appId' => 'appId', 'objectType' => 'objectType']
+            ['appId' => 0, 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -157,37 +157,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->delete(
             'propertyName',
-            ['appId' => 'appId', 'objectType' => 'objectType']
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testArchiveBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->mediaBridge->properties->archiveBatch(
-            'objectType',
-            ['appId' => 'appId', 'inputs' => [['name' => 'name']]]
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testArchiveBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->cms->mediaBridge->properties->archiveBatch(
-            'objectType',
-            ['appId' => 'appId', 'inputs' => [['name' => 'name']]]
+            ['appId' => 0, 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -203,7 +173,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->createBatch(
             'objectType',
             [
-                'appId' => 'appId',
+                'appId' => 0,
                 'inputs' => [
                     [
                         'fieldType' => 'booleancheckbox',
@@ -229,7 +199,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->createBatch(
             'objectType',
             [
-                'appId' => 'appId',
+                'appId' => 0,
                 'inputs' => [
                     [
                         'fieldType' => 'booleancheckbox',
@@ -264,6 +234,36 @@ final class PropertiesTest extends TestCase
     }
 
     #[Test]
+    public function testDeleteBatch(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->properties->deleteBatch(
+            'objectType',
+            ['appId' => 0, 'inputs' => [['name' => 'name']]]
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testDeleteBatchWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->properties->deleteBatch(
+            'objectType',
+            ['appId' => 0, 'inputs' => [['name' => 'name']]]
+        );
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
     public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -272,7 +272,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->get(
             'propertyName',
-            ['appId' => 'appId', 'objectType' => 'objectType']
+            ['appId' => 0, 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -287,7 +287,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->get(
             'propertyName',
-            ['appId' => 'appId', 'objectType' => 'objectType']
+            ['appId' => 0, 'objectType' => 'objectType']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -303,7 +303,10 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->getBatch(
             'objectType',
             [
-                'appId' => 'appId', 'archived' => true, 'inputs' => [['name' => 'name']],
+                'appId' => 0,
+                'archived' => true,
+                'dataSensitivity' => 'non_sensitive',
+                'inputs' => [['name' => 'name']],
             ],
         );
 
@@ -320,7 +323,10 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->getBatch(
             'objectType',
             [
-                'appId' => 'appId', 'archived' => true, 'inputs' => [['name' => 'name']],
+                'appId' => 0,
+                'archived' => true,
+                'dataSensitivity' => 'non_sensitive',
+                'inputs' => [['name' => 'name']],
             ],
         );
 

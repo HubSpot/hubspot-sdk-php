@@ -55,6 +55,9 @@ final class BatchGetParams implements BaseModel
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * A unique property used to identify objects instead of the default ID.
+     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -157,6 +160,9 @@ final class BatchGetParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique property used to identify objects instead of the default ID.
+     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

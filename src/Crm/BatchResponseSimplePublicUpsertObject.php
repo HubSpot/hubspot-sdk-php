@@ -7,8 +7,8 @@ namespace HubspotSDK\Crm;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Associations\V4\StandardError1;
 use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject\Status;
+use HubspotSDK\StandardError;
 
 /**
  * Represents the result of a batch upsert operation, including the operation’s status, timestamps, and a list of successfully created or updated objects.
@@ -18,7 +18,7 @@ use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject\Status;
  *   results: list<SimplePublicUpsertObject>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError1>|null,
+ *   errors?: list<StandardError>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -53,8 +53,8 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError1>|null $errors */
-    #[Api(list: StandardError1::class, optional: true)]
+    /** @var list<StandardError>|null $errors */
+    #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
     /**
@@ -65,6 +65,9 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The number of errors.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
@@ -106,7 +109,7 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
      *
      * @param list<SimplePublicUpsertObject> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError1> $errors
+     * @param list<StandardError> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -181,7 +184,7 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     }
 
     /**
-     * @param list<StandardError1> $errors
+     * @param list<StandardError> $errors
      */
     public function withErrors(array $errors): self
     {
@@ -204,6 +207,9 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The number of errors.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;

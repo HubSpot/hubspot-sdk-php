@@ -7,13 +7,11 @@ namespace HubspotSDK\Crm\Lists;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\EmailsPaging;
+use HubspotSDK\Paging;
 
 /**
  * @phpstan-type APICollectionResponseJoinTimeAndRecordIDShape = array{
- *   results: list<JoinTimeAndRecordID>,
- *   paging?: EmailsPaging|null,
- *   total?: int|null,
+ *   results: list<JoinTimeAndRecordID>, paging?: Paging|null, total?: int|null
  * }
  */
 final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
@@ -25,11 +23,8 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
     #[Api(list: JoinTimeAndRecordID::class)]
     public array $results;
 
-    /**
-     * Contains information pagination of results.
-     */
     #[Api(optional: true)]
-    public ?EmailsPaging $paging;
+    public ?Paging $paging;
 
     #[Api(optional: true)]
     public ?int $total;
@@ -62,7 +57,7 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
      */
     public static function with(
         array $results,
-        ?EmailsPaging $paging = null,
+        ?Paging $paging = null,
         ?int $total = null
     ): self {
         $obj = new self;
@@ -86,10 +81,7 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
         return $obj;
     }
 
-    /**
-     * Contains information pagination of results.
-     */
-    public function withPaging(EmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

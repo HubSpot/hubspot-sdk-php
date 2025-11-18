@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObjectID;
 
 /**
- * Archive a batch of services by ID.
+ * Archive a batch of objects.
  *
  * @see HubspotSDK\Services\Crm\Objects\Services\BatchService::delete()
  *

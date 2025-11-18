@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type EmailStatisticIntervalShape = array{
- *   aggregations?: EmailStatisticsData|null, interval?: Interval|null
+ *   aggregations: EmailStatisticsData, interval: Interval
  * }
  */
 final class EmailStatisticInterval implements BaseModel
@@ -18,12 +18,26 @@ final class EmailStatisticInterval implements BaseModel
     /** @use SdkModel<EmailStatisticIntervalShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
-    public ?EmailStatisticsData $aggregations;
+    #[Api]
+    public EmailStatisticsData $aggregations;
 
-    #[Api(optional: true)]
-    public ?Interval $interval;
+    #[Api]
+    public Interval $interval;
 
+    /**
+     * `new EmailStatisticInterval()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * EmailStatisticInterval::with(aggregations: ..., interval: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new EmailStatisticInterval)->withAggregations(...)->withInterval(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -35,13 +49,13 @@ final class EmailStatisticInterval implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?EmailStatisticsData $aggregations = null,
-        ?Interval $interval = null
+        EmailStatisticsData $aggregations,
+        Interval $interval
     ): self {
         $obj = new self;
 
-        null !== $aggregations && $obj->aggregations = $aggregations;
-        null !== $interval && $obj->interval = $interval;
+        $obj->aggregations = $aggregations;
+        $obj->interval = $interval;
 
         return $obj;
     }

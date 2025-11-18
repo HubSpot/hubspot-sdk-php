@@ -15,10 +15,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\ListsService::search()
  *
  * @phpstan-type ListSearchParamsShape = array{
- *   additionalProperties?: list<string>,
+ *   additionalProperties: list<string>,
+ *   offset: int,
  *   count?: int,
  *   listIds?: list<string>,
- *   offset?: int,
  *   processingTypes?: list<string>,
  *   query?: string,
  *   sort?: string,
@@ -35,10 +35,16 @@ final class ListSearchParams implements BaseModel
      *
      * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
      *
-     * @var list<string>|null $additionalProperties
+     * @var list<string> $additionalProperties
      */
-    #[Api(list: 'string', optional: true)]
-    public ?array $additionalProperties;
+    #[Api(list: 'string')]
+    public array $additionalProperties;
+
+    /**
+     * Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
+     */
+    #[Api]
+    public int $offset;
 
     /**
      * The number of lists to include in the response. Defaults to `20` if no value is provided. The max `count` is `500`.
@@ -55,12 +61,6 @@ final class ListSearchParams implements BaseModel
      */
     #[Api(list: 'string', optional: true)]
     public ?array $listIds;
-
-    /**
-     * Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
-     */
-    #[Api(optional: true)]
-    public ?int $offset;
 
     /**
      * The `processingTypes` that will be used to filter results by `processingType`. If values are provided, then the response will only include results that have a `processingType` in this array.
@@ -83,6 +83,20 @@ final class ListSearchParams implements BaseModel
     #[Api(optional: true)]
     public ?string $sort;
 
+    /**
+     * `new ListSearchParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * ListSearchParams::with(additionalProperties: ..., offset: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new ListSearchParams)->withAdditionalProperties(...)->withOffset(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -98,20 +112,21 @@ final class ListSearchParams implements BaseModel
      * @param list<string> $processingTypes
      */
     public static function with(
-        ?array $additionalProperties = null,
+        array $additionalProperties,
+        int $offset,
         ?int $count = null,
         ?array $listIds = null,
-        ?int $offset = null,
         ?array $processingTypes = null,
         ?string $query = null,
         ?string $sort = null,
     ): self {
         $obj = new self;
 
-        null !== $additionalProperties && $obj->additionalProperties = $additionalProperties;
+        $obj->additionalProperties = $additionalProperties;
+        $obj->offset = $offset;
+
         null !== $count && $obj->count = $count;
         null !== $listIds && $obj->listIds = $listIds;
-        null !== $offset && $obj->offset = $offset;
         null !== $processingTypes && $obj->processingTypes = $processingTypes;
         null !== $query && $obj->query = $query;
         null !== $sort && $obj->sort = $sort;
@@ -130,6 +145,17 @@ final class ListSearchParams implements BaseModel
     {
         $obj = clone $this;
         $obj->additionalProperties = $additionalProperties;
+
+        return $obj;
+    }
+
+    /**
+     * Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
+     */
+    public function withOffset(int $offset): self
+    {
+        $obj = clone $this;
+        $obj->offset = $offset;
 
         return $obj;
     }
@@ -156,17 +182,6 @@ final class ListSearchParams implements BaseModel
     {
         $obj = clone $this;
         $obj->listIds = $listIDs;
-
-        return $obj;
-    }
-
-    /**
-     * Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
-     */
-    public function withOffset(int $offset): self
-    {
-        $obj = clone $this;
-        $obj->offset = $offset;
 
         return $obj;
     }

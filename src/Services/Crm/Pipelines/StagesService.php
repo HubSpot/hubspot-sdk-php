@@ -29,13 +29,13 @@ final class StagesService implements StagesContract
     /**
      * @api
      *
-     * Create a pipeline stage
+     * Create a new stage within the specified pipeline.
      *
      * @param array{
      *   objectType: string,
      *   displayOrder: int,
      *   label: string,
-     *   metadata?: array<string,string>,
+     *   metadata: array<string,string>,
      * }|StageCreateParams $params
      *
      * @throws APIException
@@ -65,13 +65,15 @@ final class StagesService implements StagesContract
     /**
      * @api
      *
+     * Perform a partial update on a specific stage of a pipeline.
+     *
      * @param array{
      *   objectType: string,
      *   pipelineId: string,
+     *   metadata: array<string,string>,
      *   archived?: bool,
      *   displayOrder?: int,
      *   label?: string,
-     *   metadata?: array<string,string>,
      * }|StageUpdateParams $params
      *
      * @throws APIException
@@ -141,7 +143,7 @@ final class StagesService implements StagesContract
     /**
      * @api
      *
-     * Delete a pipeline stage
+     * Delete a specific stage from a pipeline.
      *
      * @param array{objectType: string, pipelineId: string}|StageDeleteParams $params
      *
@@ -178,7 +180,7 @@ final class StagesService implements StagesContract
     /**
      * @api
      *
-     * Return a pipeline stage by ID
+     * Retrieve a specific stage from a pipeline using its ID.
      *
      * @param array{objectType: string, pipelineId: string}|StageGetParams $params
      *
@@ -259,7 +261,7 @@ final class StagesService implements StagesContract
      *   pipelineId: string,
      *   displayOrder: int,
      *   label: string,
-     *   metadata?: array<string,string>,
+     *   metadata: array<string,string>,
      * }|StageReplaceParams $params
      *
      * @throws APIException

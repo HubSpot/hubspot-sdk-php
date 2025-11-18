@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Conversations;
 
 use HubspotSDK\Conversations\Actors\ActorBatchReadParams;
+use HubspotSDK\Conversations\Actors\ActorGetParams;
 use HubspotSDK\Conversations\AgentActor;
 use HubspotSDK\Conversations\BatchResponsePublicActor;
 use HubspotSDK\Conversations\BotActor;
@@ -33,10 +34,13 @@ interface ActorsContract
     /**
      * @api
      *
+     * @param array<mixed>|ActorGetParams $params
+     *
      * @throws APIException
      */
     public function get(
         string $actorID,
-        ?RequestOptions $requestOptions = null
+        array|ActorGetParams $params,
+        ?RequestOptions $requestOptions = null,
     ): AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor;
 }

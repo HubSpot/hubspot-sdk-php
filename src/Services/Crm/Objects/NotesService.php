@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Associations\V4\AssociationSpec1;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\Notes\NoteCreateParams;
@@ -43,10 +43,10 @@ final class NotesService implements NotesContract
      * Create a note with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard notes is provided.
      *
      * @param array{
-     *   properties: array<string,string>,
-     *   associations?: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec1>
+     *   associations: list<array{
+     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
      *   }>,
+     *   properties: array<string,string>,
      * }|NoteCreateParams $params
      *
      * @throws APIException
@@ -200,12 +200,12 @@ final class NotesService implements NotesContract
      * @api
      *
      * @param array{
-     *   after?: string,
-     *   filterGroups?: list<array{filters: list<array<mixed>>}>,
-     *   limit?: int,
-     *   properties?: list<string>,
+     *   after: string,
+     *   filterGroups: list<array{filters: list<array<mixed>>}>,
+     *   limit: int,
+     *   properties: list<string>,
+     *   sorts: list<string>,
      *   query?: string,
-     *   sorts?: list<string>,
      * }|NoteSearchParams $params
      *
      * @throws APIException

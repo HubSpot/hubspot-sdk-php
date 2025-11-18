@@ -11,12 +11,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type BatchResponseHubDBTableRowV3Shape = array{
- *   completedAt?: \DateTimeInterface|null,
+ *   completedAt: \DateTimeInterface,
+ *   results: list<HubDBTableRowV3>,
+ *   startedAt: \DateTimeInterface,
+ *   status: value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
- *   results?: list<HubDBTableRowV3>|null,
- *   startedAt?: \DateTimeInterface|null,
- *   status?: value-of<Status>|null,
  * }
  */
 final class BatchResponseHubDBTableRowV3 implements BaseModel
@@ -24,8 +24,19 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     /** @use SdkModel<BatchResponseHubDBTableRowV3Shape> */
     use SdkModel;
 
-    #[Api(optional: true)]
-    public ?\DateTimeInterface $completedAt;
+    #[Api]
+    public \DateTimeInterface $completedAt;
+
+    /** @var list<HubDBTableRowV3> $results */
+    #[Api(list: HubDBTableRowV3::class)]
+    public array $results;
+
+    #[Api]
+    public \DateTimeInterface $startedAt;
+
+    /** @var value-of<Status> $status */
+    #[Api(enum: Status::class)]
+    public string $status;
 
     /** @var array<string,string>|null $links */
     #[Api(map: 'string', optional: true)]
@@ -34,17 +45,26 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
-    /** @var list<HubDBTableRowV3>|null $results */
-    #[Api(list: HubDBTableRowV3::class, optional: true)]
-    public ?array $results;
-
-    #[Api(optional: true)]
-    public ?\DateTimeInterface $startedAt;
-
-    /** @var value-of<Status>|null $status */
-    #[Api(enum: Status::class, optional: true)]
-    public ?string $status;
-
+    /**
+     * `new BatchResponseHubDBTableRowV3()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * BatchResponseHubDBTableRowV3::with(
+     *   completedAt: ..., results: ..., startedAt: ..., status: ...
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new BatchResponseHubDBTableRowV3)
+     *   ->withCompletedAt(...)
+     *   ->withResults(...)
+     *   ->withStartedAt(...)
+     *   ->withStatus(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -55,26 +75,27 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,string> $links
      * @param list<HubDBTableRowV3> $results
      * @param Status|value-of<Status> $status
+     * @param array<string,string> $links
      */
     public static function with(
-        ?\DateTimeInterface $completedAt = null,
+        \DateTimeInterface $completedAt,
+        array $results,
+        \DateTimeInterface $startedAt,
+        Status|string $status,
         ?array $links = null,
         ?\DateTimeInterface $requestedAt = null,
-        ?array $results = null,
-        ?\DateTimeInterface $startedAt = null,
-        Status|string|null $status = null,
     ): self {
         $obj = new self;
 
-        null !== $completedAt && $obj->completedAt = $completedAt;
+        $obj->completedAt = $completedAt;
+        $obj->results = $results;
+        $obj->startedAt = $startedAt;
+        $obj['status'] = $status;
+
         null !== $links && $obj->links = $links;
         null !== $requestedAt && $obj->requestedAt = $requestedAt;
-        null !== $results && $obj->results = $results;
-        null !== $startedAt && $obj->startedAt = $startedAt;
-        null !== $status && $obj['status'] = $status;
 
         return $obj;
     }
@@ -83,25 +104,6 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     {
         $obj = clone $this;
         $obj->completedAt = $completedAt;
-
-        return $obj;
-    }
-
-    /**
-     * @param array<string,string> $links
-     */
-    public function withLinks(array $links): self
-    {
-        $obj = clone $this;
-        $obj->links = $links;
-
-        return $obj;
-    }
-
-    public function withRequestedAt(\DateTimeInterface $requestedAt): self
-    {
-        $obj = clone $this;
-        $obj->requestedAt = $requestedAt;
 
         return $obj;
     }
@@ -132,6 +134,25 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     {
         $obj = clone $this;
         $obj['status'] = $status;
+
+        return $obj;
+    }
+
+    /**
+     * @param array<string,string> $links
+     */
+    public function withLinks(array $links): self
+    {
+        $obj = clone $this;
+        $obj->links = $links;
+
+        return $obj;
+    }
+
+    public function withRequestedAt(\DateTimeInterface $requestedAt): self
+    {
+        $obj = clone $this;
+        $obj->requestedAt = $requestedAt;
 
         return $obj;
     }

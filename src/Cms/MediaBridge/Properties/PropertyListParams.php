@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::list()
  *
- * @phpstan-type PropertyListParamsShape = array{appId: string}
+ * @phpstan-type PropertyListParamsShape = array{
+ *   appId: int, archived?: bool, properties?: string
+ * }
  */
 final class PropertyListParams implements BaseModel
 {
@@ -23,7 +25,19 @@ final class PropertyListParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appId;
+    public int $appId;
+
+    /**
+     * Whether to return only results that have been archived.
+     */
+    #[Api(optional: true)]
+    public ?bool $archived;
+
+    /**
+     * Filter the response to the specified properties.
+     */
+    #[Api(optional: true)]
+    public ?string $properties;
 
     /**
      * `new PropertyListParams()` is missing required properties by the API.
@@ -49,19 +63,47 @@ final class PropertyListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $appId): self
-    {
+    public static function with(
+        int $appId,
+        ?bool $archived = null,
+        ?string $properties = null
+    ): self {
         $obj = new self;
 
         $obj->appId = $appId;
 
+        null !== $archived && $obj->archived = $archived;
+        null !== $properties && $obj->properties = $properties;
+
         return $obj;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $obj = clone $this;
         $obj->appId = $appID;
+
+        return $obj;
+    }
+
+    /**
+     * Whether to return only results that have been archived.
+     */
+    public function withArchived(bool $archived): self
+    {
+        $obj = clone $this;
+        $obj->archived = $archived;
+
+        return $obj;
+    }
+
+    /**
+     * Filter the response to the specified properties.
+     */
+    public function withProperties(string $properties): self
+    {
+        $obj = clone $this;
+        $obj->properties = $properties;
 
         return $obj;
     }

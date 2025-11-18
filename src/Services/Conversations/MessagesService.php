@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\CollectionResponsePublicMessageForwardPaging;
+use HubspotSDK\Conversations\CollectionResponsePublicMessageForwardPaging\Result;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\Messages\MessageGetOriginalContentParams;
 use HubspotSDK\Conversations\Messages\MessageGetParams;
+use HubspotSDK\Conversations\Messages\MessageListParams;
 use HubspotSDK\Conversations\PublicAssignmentMessage;
 use HubspotSDK\Conversations\PublicComment;
 use HubspotSDK\Conversations\PublicMessage;
@@ -17,6 +18,7 @@ use HubspotSDK\Conversations\PublicThreadInboxChange;
 use HubspotSDK\Conversations\PublicThreadStatusChange;
 use HubspotSDK\Conversations\PublicWelcomeMessage;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\MessagesContract;
 
@@ -35,7 +37,7 @@ final class MessagesService implements MessagesContract
      * @throws APIException
      */
     public function create(
-        string $threadID,
+        int $threadID,
         ?RequestOptions $requestOptions = null
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
         // @phpstan-ignore-next-line;
@@ -52,18 +54,36 @@ final class MessagesService implements MessagesContract
      *
      * Retrieve the message history for a specific thread.
      *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     * }|MessageListParams $params
+     *
+     * @return Page<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>
+     *
      * @throws APIException
      */
     public function list(
-        string $threadID,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicMessageForwardPaging {
+        int $threadID,
+        array|MessageListParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): Page {
+        [$parsed, $options] = MessageListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/threads/%1$s/messages', $threadID],
-            options: $requestOptions,
-            convert: CollectionResponsePublicMessageForwardPaging::class,
+            query: $parsed,
+            options: $options,
+            convert: Result::class,
+            page: Page::class,
         );
     }
 
@@ -72,7 +92,7 @@ final class MessagesService implements MessagesContract
      *
      * Retrieve a single message from a thread using the message ID.
      *
-     * @param array{threadId: string}|MessageGetParams $params
+     * @param array{threadId: int, property?: string}|MessageGetParams $params
      *
      * @throws APIException
      */
@@ -96,6 +116,7 @@ final class MessagesService implements MessagesContract
                 $threadID,
                 $messageID,
             ],
+            query: $parsed,
             options: $options,
             convert: PublicMessage::class,
         );
@@ -106,7 +127,9 @@ final class MessagesService implements MessagesContract
      *
      * Returns the complete original text and rich text bodies of a message. This will be different from the text and rich text in the message itself if the message's `truncationStatus` is anything other than `NOT_TRUNCATED`.
      *
-     * @param array{threadId: string}|MessageGetOriginalContentParams $params
+     * @param array{
+     *   threadId: int, property?: string
+     * }|MessageGetOriginalContentParams $params
      *
      * @throws APIException
      */
@@ -130,6 +153,7 @@ final class MessagesService implements MessagesContract
                 $threadID,
                 $messageID,
             ],
+            query: $parsed,
             options: $options,
             convert: PublicMessageContent::class,
         );

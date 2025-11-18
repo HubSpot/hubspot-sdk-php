@@ -23,21 +23,39 @@ final class LimitAndUsageForObjectType implements BaseModel
     /** @use SdkModel<LimitAndUsageForObjectTypeShape> */
     use SdkModel;
 
+    /**
+     * The maximum allowed count for the object type.
+     */
     #[Api]
     public int $limit;
 
+    /**
+     * The unique identifier for the object type.
+     */
     #[Api]
     public string $objectTypeId;
 
+    /**
+     * The percentage of the limit that has been used.
+     */
     #[Api]
     public float $percentage;
 
+    /**
+     * The plural label for the object type.
+     */
     #[Api]
     public string $pluralLabel;
 
+    /**
+     * The singular label for the object type.
+     */
     #[Api]
     public string $singularLabel;
 
+    /**
+     * The current usage count for the object type.
+     */
     #[Api]
     public int $usage;
 
@@ -98,6 +116,9 @@ final class LimitAndUsageForObjectType implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum allowed count for the object type.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -106,6 +127,9 @@ final class LimitAndUsageForObjectType implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier for the object type.
+     */
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
@@ -114,6 +138,9 @@ final class LimitAndUsageForObjectType implements BaseModel
         return $obj;
     }
 
+    /**
+     * The percentage of the limit that has been used.
+     */
     public function withPercentage(float $percentage): self
     {
         $obj = clone $this;
@@ -122,6 +149,9 @@ final class LimitAndUsageForObjectType implements BaseModel
         return $obj;
     }
 
+    /**
+     * The plural label for the object type.
+     */
     public function withPluralLabel(string $pluralLabel): self
     {
         $obj = clone $this;
@@ -130,6 +160,9 @@ final class LimitAndUsageForObjectType implements BaseModel
         return $obj;
     }
 
+    /**
+     * The singular label for the object type.
+     */
     public function withSingularLabel(string $singularLabel): self
     {
         $obj = clone $this;
@@ -138,6 +171,9 @@ final class LimitAndUsageForObjectType implements BaseModel
         return $obj;
     }
 
+    /**
+     * The current usage count for the object type.
+     */
     public function withUsage(int $usage): self
     {
         $obj = clone $this;

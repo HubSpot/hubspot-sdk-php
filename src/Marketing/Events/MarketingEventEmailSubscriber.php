@@ -10,16 +10,20 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MarketingEventEmailSubscriberShape = array{
+ *   contactProperties: array<string,string>,
  *   email: string,
  *   interactionDateTime: int,
- *   contactProperties?: array<string,string>|null,
- *   properties?: array<string,string>|null,
+ *   properties: array<string,string>,
  * }
  */
 final class MarketingEventEmailSubscriber implements BaseModel
 {
     /** @use SdkModel<MarketingEventEmailSubscriberShape> */
     use SdkModel;
+
+    /** @var array<string,string> $contactProperties */
+    #[Api(map: 'string')]
+    public array $contactProperties;
 
     /**
      * The email address of the contact in HubSpot to associate with the event.
@@ -33,28 +37,28 @@ final class MarketingEventEmailSubscriber implements BaseModel
     #[Api]
     public int $interactionDateTime;
 
-    /** @var array<string,string>|null $contactProperties */
-    #[Api(map: 'string', optional: true)]
-    public ?array $contactProperties;
-
-    /** @var array<string,string>|null $properties */
-    #[Api(map: 'string', optional: true)]
-    public ?array $properties;
+    /** @var array<string,string> $properties */
+    #[Api(map: 'string')]
+    public array $properties;
 
     /**
      * `new MarketingEventEmailSubscriber()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MarketingEventEmailSubscriber::with(email: ..., interactionDateTime: ...)
+     * MarketingEventEmailSubscriber::with(
+     *   contactProperties: ..., email: ..., interactionDateTime: ..., properties: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
      * (new MarketingEventEmailSubscriber)
+     *   ->withContactProperties(...)
      *   ->withEmail(...)
      *   ->withInteractionDateTime(...)
+     *   ->withProperties(...)
      * ```
      */
     public function __construct()
@@ -71,18 +75,28 @@ final class MarketingEventEmailSubscriber implements BaseModel
      * @param array<string,string> $properties
      */
     public static function with(
+        array $contactProperties,
         string $email,
         int $interactionDateTime,
-        ?array $contactProperties = null,
-        ?array $properties = null,
+        array $properties,
     ): self {
         $obj = new self;
 
+        $obj->contactProperties = $contactProperties;
         $obj->email = $email;
         $obj->interactionDateTime = $interactionDateTime;
+        $obj->properties = $properties;
 
-        null !== $contactProperties && $obj->contactProperties = $contactProperties;
-        null !== $properties && $obj->properties = $properties;
+        return $obj;
+    }
+
+    /**
+     * @param array<string,string> $contactProperties
+     */
+    public function withContactProperties(array $contactProperties): self
+    {
+        $obj = clone $this;
+        $obj->contactProperties = $contactProperties;
 
         return $obj;
     }
@@ -105,17 +119,6 @@ final class MarketingEventEmailSubscriber implements BaseModel
     {
         $obj = clone $this;
         $obj->interactionDateTime = $interactionDateTime;
-
-        return $obj;
-    }
-
-    /**
-     * @param array<string,string> $contactProperties
-     */
-    public function withContactProperties(array $contactProperties): self
-    {
-        $obj = clone $this;
-        $obj->contactProperties = $contactProperties;
 
         return $obj;
     }

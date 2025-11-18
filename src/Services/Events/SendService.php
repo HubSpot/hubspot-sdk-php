@@ -25,10 +25,10 @@ final class SendService implements SendContract
      *
      * @param array{
      *   eventName: string,
+     *   properties: array<string,string>,
      *   email?: string,
      *   objectId?: string,
      *   occurredAt?: string|\DateTimeInterface,
-     *   properties?: array<string,string>,
      *   utk?: string,
      *   uuid?: string,
      * }|SendSendParams $params
@@ -62,10 +62,10 @@ final class SendService implements SendContract
      * @param array{
      *   inputs: list<array{
      *     eventName: string,
+     *     properties: array<string,string>,
      *     email?: string,
      *     objectId?: string,
      *     occurredAt?: string|\DateTimeInterface,
-     *     properties?: array<string,string>,
      *     utk?: string,
      *     uuid?: string,
      *   }>,

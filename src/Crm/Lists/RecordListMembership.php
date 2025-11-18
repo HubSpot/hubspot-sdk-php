@@ -12,11 +12,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Lists record is member of.
  *
  * @phpstan-type RecordListMembershipShape = array{
- *   firstAddedTimestamp: \DateTimeInterface,
- *   lastAddedTimestamp: \DateTimeInterface,
  *   listId: string,
  *   listVersion: int,
+ *   firstAddedTimestamp?: \DateTimeInterface|null,
  *   isPublicList?: bool|null,
+ *   lastAddedTimestamp?: \DateTimeInterface|null,
  * }
  */
 final class RecordListMembership implements BaseModel
@@ -25,41 +25,32 @@ final class RecordListMembership implements BaseModel
     use SdkModel;
 
     #[Api]
-    public \DateTimeInterface $firstAddedTimestamp;
-
-    #[Api]
-    public \DateTimeInterface $lastAddedTimestamp;
-
-    #[Api]
     public string $listId;
 
     #[Api]
     public int $listVersion;
 
     #[Api(optional: true)]
+    public ?\DateTimeInterface $firstAddedTimestamp;
+
+    #[Api(optional: true)]
     public ?bool $isPublicList;
+
+    #[Api(optional: true)]
+    public ?\DateTimeInterface $lastAddedTimestamp;
 
     /**
      * `new RecordListMembership()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * RecordListMembership::with(
-     *   firstAddedTimestamp: ...,
-     *   lastAddedTimestamp: ...,
-     *   listId: ...,
-     *   listVersion: ...,
-     * )
+     * RecordListMembership::with(listId: ..., listVersion: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new RecordListMembership)
-     *   ->withFirstAddedTimestamp(...)
-     *   ->withLastAddedTimestamp(...)
-     *   ->withListID(...)
-     *   ->withListVersion(...)
+     * (new RecordListMembership)->withListID(...)->withListVersion(...)
      * ```
      */
     public function __construct()
@@ -73,38 +64,20 @@ final class RecordListMembership implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        \DateTimeInterface $firstAddedTimestamp,
-        \DateTimeInterface $lastAddedTimestamp,
         string $listId,
         int $listVersion,
+        ?\DateTimeInterface $firstAddedTimestamp = null,
         ?bool $isPublicList = null,
+        ?\DateTimeInterface $lastAddedTimestamp = null,
     ): self {
         $obj = new self;
 
-        $obj->firstAddedTimestamp = $firstAddedTimestamp;
-        $obj->lastAddedTimestamp = $lastAddedTimestamp;
         $obj->listId = $listId;
         $obj->listVersion = $listVersion;
 
+        null !== $firstAddedTimestamp && $obj->firstAddedTimestamp = $firstAddedTimestamp;
         null !== $isPublicList && $obj->isPublicList = $isPublicList;
-
-        return $obj;
-    }
-
-    public function withFirstAddedTimestamp(
-        \DateTimeInterface $firstAddedTimestamp
-    ): self {
-        $obj = clone $this;
-        $obj->firstAddedTimestamp = $firstAddedTimestamp;
-
-        return $obj;
-    }
-
-    public function withLastAddedTimestamp(
-        \DateTimeInterface $lastAddedTimestamp
-    ): self {
-        $obj = clone $this;
-        $obj->lastAddedTimestamp = $lastAddedTimestamp;
+        null !== $lastAddedTimestamp && $obj->lastAddedTimestamp = $lastAddedTimestamp;
 
         return $obj;
     }
@@ -125,10 +98,28 @@ final class RecordListMembership implements BaseModel
         return $obj;
     }
 
+    public function withFirstAddedTimestamp(
+        \DateTimeInterface $firstAddedTimestamp
+    ): self {
+        $obj = clone $this;
+        $obj->firstAddedTimestamp = $firstAddedTimestamp;
+
+        return $obj;
+    }
+
     public function withIsPublicList(bool $isPublicList): self
     {
         $obj = clone $this;
         $obj->isPublicList = $isPublicList;
+
+        return $obj;
+    }
+
+    public function withLastAddedTimestamp(
+        \DateTimeInterface $lastAddedTimestamp
+    ): self {
+        $obj = clone $this;
+        $obj->lastAddedTimestamp = $lastAddedTimestamp;
 
         return $obj;
     }

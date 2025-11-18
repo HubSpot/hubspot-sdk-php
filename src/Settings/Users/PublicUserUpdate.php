@@ -24,9 +24,15 @@ final class PublicUserUpdate implements BaseModel
     /** @use SdkModel<PublicUserUpdateShape> */
     use SdkModel;
 
+    /**
+     * The first name of the user.
+     */
     #[Api(optional: true)]
     public ?string $firstName;
 
+    /**
+     * The last name of the user.
+     */
     #[Api(optional: true)]
     public ?string $lastName;
 
@@ -80,6 +86,9 @@ final class PublicUserUpdate implements BaseModel
         return $obj;
     }
 
+    /**
+     * The first name of the user.
+     */
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
@@ -88,6 +97,9 @@ final class PublicUserUpdate implements BaseModel
         return $obj;
     }
 
+    /**
+     * The last name of the user.
+     */
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;

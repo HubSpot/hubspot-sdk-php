@@ -26,12 +26,12 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Create a batch of services
+     * Create a batch of objects
      *
      * @param array{
      *   inputs: list<array{
+     *     associations: list<array<mixed>>,
      *     properties: array<string,string>,
-     *     associations?: list<array<mixed>>,
      *     objectWriteTraceId?: string,
      *   }>,
      * }|BatchCreateParams $params
@@ -60,7 +60,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Update a batch of services by internal ID, or unique property values
+     * Update a batch of objects
      *
      * @param array{
      *   inputs: list<array{
@@ -95,7 +95,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Archive a batch of services by ID
+     * Archive a batch of objects
      *
      * @param array{inputs: list<array{id: string}>}|BatchDeleteParams $params
      *

@@ -44,7 +44,7 @@ final class ChannelAccountStagingTokensTest extends TestCase
             ->update(
                 'accountToken',
                 [
-                    'channelId' => 'channelId',
+                    'channelId' => 0,
                     'accountName' => 'accountName',
                     'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
                 ],
@@ -69,7 +69,7 @@ final class ChannelAccountStagingTokensTest extends TestCase
             ->update(
                 'accountToken',
                 [
-                    'channelId' => 'channelId',
+                    'channelId' => 0,
                     'accountName' => 'accountName',
                     'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
                 ],

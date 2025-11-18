@@ -24,7 +24,11 @@ final class CollectionResponsePublicPropertyValidationRuleNoPaging implements Ba
 
     use SdkResponse;
 
-    /** @var list<PublicPropertyValidationRule> $results */
+    /**
+     * Collection of validation rules configured for the specified property. Each rule defines a constraint that property values must satisfy (e.g., format requirements, length limits, allowed values).
+     *
+     * @var list<PublicPropertyValidationRule> $results
+     */
     #[Api(list: PublicPropertyValidationRule::class)]
     public array $results;
 
@@ -64,6 +68,8 @@ final class CollectionResponsePublicPropertyValidationRuleNoPaging implements Ba
     }
 
     /**
+     * Collection of validation rules configured for the specified property. Each rule defines a constraint that property values must satisfy (e.g., format requirements, length limits, allowed values).
+     *
      * @param list<PublicPropertyValidationRule> $results
      */
     public function withResults(array $results): self

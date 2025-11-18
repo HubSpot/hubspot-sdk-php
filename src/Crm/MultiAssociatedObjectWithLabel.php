@@ -22,6 +22,9 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     #[Api(list: AssociationSpecWithLabel::class)]
     public array $associationTypes;
 
+    /**
+     * The unique identifier for the target object in the association.
+     */
     #[Api]
     public string $toObjectId;
 
@@ -76,6 +79,9 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier for the target object in the association.
+     */
     public function withToObjectID(string $toObjectID): self
     {
         $obj = clone $this;

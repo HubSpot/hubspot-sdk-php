@@ -17,7 +17,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   objectId: string,
  *   objectType: string,
  *   occurredAt: \DateTimeInterface,
- *   properties?: array<string,string>|null,
+ *   properties: array<string,string>,
  * }
  */
 final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
@@ -60,10 +60,10 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     /**
      * A key-value map of event-specific properties. The available properties depend on the event type definition.
      *
-     * @var array<string,string>|null $properties
+     * @var array<string,string> $properties
      */
-    #[Api(map: 'string', optional: true)]
-    public ?array $properties;
+    #[Api(map: 'string')]
+    public array $properties;
 
     /**
      * `new ExternalUnifiedEvent()` is missing required properties by the API.
@@ -71,7 +71,12 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
      * To enforce required parameters use
      * ```
      * ExternalUnifiedEvent::with(
-     *   id: ..., eventType: ..., objectId: ..., objectType: ..., occurredAt: ...
+     *   id: ...,
+     *   eventType: ...,
+     *   objectId: ...,
+     *   objectType: ...,
+     *   occurredAt: ...,
+     *   properties: ...,
      * )
      * ```
      *
@@ -84,6 +89,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
      *   ->withObjectID(...)
      *   ->withObjectType(...)
      *   ->withOccurredAt(...)
+     *   ->withProperties(...)
      * ```
      */
     public function __construct()
@@ -104,7 +110,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
         string $objectId,
         string $objectType,
         \DateTimeInterface $occurredAt,
-        ?array $properties = null,
+        array $properties,
     ): self {
         $obj = new self;
 
@@ -113,8 +119,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
         $obj->objectId = $objectId;
         $obj->objectType = $objectType;
         $obj->occurredAt = $occurredAt;
-
-        null !== $properties && $obj->properties = $properties;
+        $obj->properties = $properties;
 
         return $obj;
     }

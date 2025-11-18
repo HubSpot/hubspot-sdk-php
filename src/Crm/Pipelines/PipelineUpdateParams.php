@@ -32,9 +32,15 @@ final class PipelineUpdateParams implements BaseModel
     #[Api]
     public string $objectType;
 
+    /**
+     * Indicates whether to validate deal stage usages before deleting the pipeline.
+     */
     #[Api(optional: true)]
     public ?bool $validateDealStageUsagesBeforeDelete;
 
+    /**
+     * Indicates whether to validate references before deleting the pipeline.
+     */
     #[Api(optional: true)]
     public ?bool $validateReferencesBeforeDelete;
 
@@ -109,6 +115,9 @@ final class PipelineUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether to validate deal stage usages before deleting the pipeline.
+     */
     public function withValidateDealStageUsagesBeforeDelete(
         bool $validateDealStageUsagesBeforeDelete
     ): self {
@@ -118,6 +127,9 @@ final class PipelineUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether to validate references before deleting the pipeline.
+     */
     public function withValidateReferencesBeforeDelete(
         bool $validateReferencesBeforeDelete
     ): self {

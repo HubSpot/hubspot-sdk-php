@@ -96,7 +96,7 @@ final class GroupsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->properties->groups->list('objectType');
+        $result = $this->client->crm->properties->groups->list('objectType', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

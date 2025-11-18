@@ -7,8 +7,8 @@ namespace HubspotSDK\Crm;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Associations\V4\StandardError1;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation\Status;
+use HubspotSDK\StandardError;
 
 /**
  * @phpstan-type BatchResponsePublicDefaultAssociationShape = array{
@@ -16,7 +16,7 @@ use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation\Status;
  *   results: list<PublicDefaultAssociation>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   errors?: list<StandardError1>|null,
+ *   errors?: list<StandardError>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -27,6 +27,9 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     /** @use SdkModel<BatchResponsePublicDefaultAssociationShape> */
     use SdkModel;
 
+    /**
+     * The timestamp when the batch process was completed, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
@@ -34,24 +37,41 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     #[Api(list: PublicDefaultAssociation::class)]
     public array $results;
 
+    /**
+     * The timestamp when the batch process began execution, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError1>|null $errors */
-    #[Api(list: StandardError1::class, optional: true)]
+    /** @var list<StandardError>|null $errors */
+    #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string,string>|null $links */
+    /**
+     * An object containing relevant links related to the batch request.
+     *
+     * @var array<string,string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The number of errors encountered during the batch processing.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * The timestamp when the batch process was initiated, in ISO 8601 format.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -87,7 +107,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
      *
      * @param list<PublicDefaultAssociation> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError1> $errors
+     * @param list<StandardError> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -115,6 +135,9 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the batch process was completed, in ISO 8601 format.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -134,6 +157,9 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the batch process began execution, in ISO 8601 format.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -143,6 +169,8 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     }
 
     /**
+     * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -154,7 +182,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     }
 
     /**
-     * @param list<StandardError1> $errors
+     * @param list<StandardError> $errors
      */
     public function withErrors(array $errors): self
     {
@@ -165,6 +193,8 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     }
 
     /**
+     * An object containing relevant links related to the batch request.
+     *
      * @param array<string,string> $links
      */
     public function withLinks(array $links): self
@@ -175,6 +205,9 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The number of errors encountered during the batch processing.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
@@ -183,6 +216,9 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the batch process was initiated, in ISO 8601 format.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

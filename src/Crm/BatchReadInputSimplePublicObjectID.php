@@ -43,6 +43,9 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
     #[Api(list: 'string')]
     public array $propertiesWithHistory;
 
+    /**
+     * A unique property used to identify objects instead of the default ID.
+     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -134,6 +137,9 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique property used to identify objects instead of the default ID.
+     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

@@ -25,7 +25,7 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
      * Update a channel account staging token's account name and delivery identifier. This information will be applied to the channel account created from this staging token. This is used for public apps.
      *
      * @param array{
-     *   channelId: string,
+     *   channelId: int,
      *   accountName: string,
      *   deliveryIdentifier: array{
      *     type: string, value: string

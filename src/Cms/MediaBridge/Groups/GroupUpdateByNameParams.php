@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\GroupsService::updateByName()
  *
  * @phpstan-type GroupUpdateByNameParamsShape = array{
- *   appId: string, objectType: string, displayOrder?: int, label?: string
+ *   appId: int, objectType: string, displayOrder?: int, label?: string
  * }
  */
 final class GroupUpdateByNameParams implements BaseModel
@@ -25,7 +25,7 @@ final class GroupUpdateByNameParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appId;
+    public int $appId;
 
     #[Api]
     public string $objectType;
@@ -61,7 +61,7 @@ final class GroupUpdateByNameParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $appId,
+        int $appId,
         string $objectType,
         ?int $displayOrder = null,
         ?string $label = null,
@@ -77,7 +77,7 @@ final class GroupUpdateByNameParams implements BaseModel
         return $obj;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $obj = clone $this;
         $obj->appId = $appID;

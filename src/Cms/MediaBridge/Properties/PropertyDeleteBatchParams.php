@@ -1,0 +1,89 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Cms\MediaBridge\Properties;
+
+use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PropertyName;
+
+/**
+ * Archive a batch of existing properties for the specified types.
+ *
+ * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::deleteBatch()
+ *
+ * @phpstan-type PropertyDeleteBatchParamsShape = array{
+ *   appId: int, inputs: list<PropertyName>
+ * }
+ */
+final class PropertyDeleteBatchParams implements BaseModel
+{
+    /** @use SdkModel<PropertyDeleteBatchParamsShape> */
+    use SdkModel;
+    use SdkParams;
+
+    #[Api]
+    public int $appId;
+
+    /** @var list<PropertyName> $inputs */
+    #[Api(list: PropertyName::class)]
+    public array $inputs;
+
+    /**
+     * `new PropertyDeleteBatchParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * PropertyDeleteBatchParams::with(appId: ..., inputs: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new PropertyDeleteBatchParams)->withAppID(...)->withInputs(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<PropertyName> $inputs
+     */
+    public static function with(int $appId, array $inputs): self
+    {
+        $obj = new self;
+
+        $obj->appId = $appId;
+        $obj->inputs = $inputs;
+
+        return $obj;
+    }
+
+    public function withAppID(int $appID): self
+    {
+        $obj = clone $this;
+        $obj->appId = $appID;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<PropertyName> $inputs
+     */
+    public function withInputs(array $inputs): self
+    {
+        $obj = clone $this;
+        $obj->inputs = $inputs;
+
+        return $obj;
+    }
+}

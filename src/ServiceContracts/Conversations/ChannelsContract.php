@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Conversations;
 
-use HubspotSDK\Conversations\CollectionResponseWithTotalPublicChannelForwardPaging;
+use HubspotSDK\Conversations\Channels\ChannelListParams;
 use HubspotSDK\Conversations\PublicChannel;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 interface ChannelsContract
@@ -14,11 +15,16 @@ interface ChannelsContract
     /**
      * @api
      *
+     * @param array<mixed>|ChannelListParams $params
+     *
+     * @return Page<PublicChannel>
+     *
      * @throws APIException
      */
     public function list(
+        array|ChannelListParams $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalPublicChannelForwardPaging;
+    ): Page;
 
     /**
      * @api
@@ -26,7 +32,7 @@ interface ChannelsContract
      * @throws APIException
      */
     public function get(
-        string $channelID,
+        int $channelID,
         ?RequestOptions $requestOptions = null
     ): PublicChannel;
 }

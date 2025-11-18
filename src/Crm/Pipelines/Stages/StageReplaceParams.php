@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   pipelineId: string,
  *   displayOrder: int,
  *   label: string,
- *   metadata?: array<string,string>,
+ *   metadata: array<string,string>,
  * }
  */
 final class StageReplaceParams implements BaseModel
@@ -53,10 +53,10 @@ final class StageReplaceParams implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @var array<string,string>|null $metadata
+     * @var array<string,string> $metadata
      */
-    #[Api(map: 'string', optional: true)]
-    public ?array $metadata;
+    #[Api(map: 'string')]
+    public array $metadata;
 
     /**
      * `new StageReplaceParams()` is missing required properties by the API.
@@ -64,7 +64,7 @@ final class StageReplaceParams implements BaseModel
      * To enforce required parameters use
      * ```
      * StageReplaceParams::with(
-     *   objectType: ..., pipelineId: ..., displayOrder: ..., label: ...
+     *   objectType: ..., pipelineId: ..., displayOrder: ..., label: ..., metadata: ...
      * )
      * ```
      *
@@ -76,6 +76,7 @@ final class StageReplaceParams implements BaseModel
      *   ->withPipelineID(...)
      *   ->withDisplayOrder(...)
      *   ->withLabel(...)
+     *   ->withMetadata(...)
      * ```
      */
     public function __construct()
@@ -95,7 +96,7 @@ final class StageReplaceParams implements BaseModel
         string $pipelineId,
         int $displayOrder,
         string $label,
-        ?array $metadata = null,
+        array $metadata,
     ): self {
         $obj = new self;
 
@@ -103,8 +104,7 @@ final class StageReplaceParams implements BaseModel
         $obj->pipelineId = $pipelineId;
         $obj->displayOrder = $displayOrder;
         $obj->label = $label;
-
-        null !== $metadata && $obj->metadata = $metadata;
+        $obj->metadata = $metadata;
 
         return $obj;
     }

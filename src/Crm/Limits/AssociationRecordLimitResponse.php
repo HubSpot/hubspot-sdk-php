@@ -30,6 +30,9 @@ final class AssociationRecordLimitResponse implements BaseModel, ResponseConvert
     #[Api(list: AtLimitRecordSample::class)]
     public array $atLimitFromRecordSamples;
 
+    /**
+     * The maximum number of associations allowed for records.
+     */
     #[Api]
     public int $limit;
 
@@ -37,9 +40,15 @@ final class AssociationRecordLimitResponse implements BaseModel, ResponseConvert
     #[Api(list: NearLimitRecordSample::class)]
     public array $nearLimitFromRecordSamples;
 
+    /**
+     * The total number of records that have reached their association limit.
+     */
     #[Api]
     public int $totalRecordsAtLimit;
 
+    /**
+     * The total number of records that are approaching their association limit.
+     */
     #[Api]
     public int $totalRecordsNearLimit;
 
@@ -111,6 +120,9 @@ final class AssociationRecordLimitResponse implements BaseModel, ResponseConvert
         return $obj;
     }
 
+    /**
+     * The maximum number of associations allowed for records.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -131,6 +143,9 @@ final class AssociationRecordLimitResponse implements BaseModel, ResponseConvert
         return $obj;
     }
 
+    /**
+     * The total number of records that have reached their association limit.
+     */
     public function withTotalRecordsAtLimit(int $totalRecordsAtLimit): self
     {
         $obj = clone $this;
@@ -139,6 +154,9 @@ final class AssociationRecordLimitResponse implements BaseModel, ResponseConvert
         return $obj;
     }
 
+    /**
+     * The total number of records that are approaching their association limit.
+     */
     public function withTotalRecordsNearLimit(int $totalRecordsNearLimit): self
     {
         $obj = clone $this;

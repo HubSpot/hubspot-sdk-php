@@ -6,9 +6,7 @@ namespace HubspotSDK\Settings\Currencies;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -16,12 +14,10 @@ use HubspotSDK\ForwardPaging;
  *   results: list<ExchangeRate>, paging?: ForwardPaging|null
  * }
  */
-final class CollectionResponseExchangeRateForwardPaging implements BaseModel, ResponseConverter
+final class CollectionResponseExchangeRateForwardPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponseExchangeRateForwardPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<ExchangeRate> $results */
     #[Api(list: ExchangeRate::class)]

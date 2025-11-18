@@ -37,6 +37,17 @@ final class CompaniesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->companies->create([
+            'associations' => [
+                [
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeId' => 0,
+                        ],
+                    ],
+                ],
+            ],
             'properties' => ['foo' => 'string'],
         ]);
 
@@ -51,6 +62,17 @@ final class CompaniesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->companies->create([
+            'associations' => [
+                [
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeId' => 0,
+                        ],
+                    ],
+                ],
+            ],
             'properties' => ['foo' => 'string'],
         ]);
 
@@ -160,7 +182,45 @@ final class CompaniesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->search([]);
+        $result = $this->client->crm->objects->companies->search([
+            'after' => 'after',
+            'filterGroups' => [
+                ['filters' => [['operator' => 'EQ', 'propertyName' => 'propertyName']]],
+            ],
+            'limit' => 0,
+            'properties' => ['string'],
+            'sorts' => ['string'],
+        ]);
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testSearchWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->objects->companies->search([
+            'after' => 'after',
+            'filterGroups' => [
+                [
+                    'filters' => [
+                        [
+                            'operator' => 'EQ',
+                            'propertyName' => 'propertyName',
+                            'highValue' => 'highValue',
+                            'value' => 'value',
+                            'values' => ['string'],
+                        ],
+                    ],
+                ],
+            ],
+            'limit' => 0,
+            'properties' => ['string'],
+            'sorts' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

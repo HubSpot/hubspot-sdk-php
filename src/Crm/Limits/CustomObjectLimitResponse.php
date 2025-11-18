@@ -22,12 +22,21 @@ final class CustomObjectLimitResponse implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The maximum number of custom objects allowed.
+     */
     #[Api]
     public int $limit;
 
+    /**
+     * The percentage of the custom object limit that is currently used.
+     */
     #[Api]
     public float $percentage;
 
+    /**
+     * The current number of custom objects used.
+     */
     #[Api]
     public int $usage;
 
@@ -69,6 +78,9 @@ final class CustomObjectLimitResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The maximum number of custom objects allowed.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -77,6 +89,9 @@ final class CustomObjectLimitResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The percentage of the custom object limit that is currently used.
+     */
     public function withPercentage(float $percentage): self
     {
         $obj = clone $this;
@@ -85,6 +100,9 @@ final class CustomObjectLimitResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The current number of custom objects used.
+     */
     public function withUsage(int $usage): self
     {
         $obj = clone $this;

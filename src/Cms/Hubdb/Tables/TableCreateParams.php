@@ -16,14 +16,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::create()
  *
  * @phpstan-type TableCreateParamsShape = array{
+ *   allowChildTables: bool,
+ *   allowPublicApiAccess: bool,
+ *   columns: list<ColumnRequest>,
+ *   dynamicMetaTags: array<string,int>,
+ *   enableChildTablePages: bool,
  *   label: string,
  *   name: string,
- *   allowChildTables?: bool,
- *   allowPublicApiAccess?: bool,
- *   columns?: list<ColumnRequest>,
- *   dynamicMetaTags?: array<string,int>,
- *   enableChildTablePages?: bool,
- *   useForPages?: bool,
+ *   useForPages: bool,
  * }
  */
 final class TableCreateParams implements BaseModel
@@ -31,6 +31,40 @@ final class TableCreateParams implements BaseModel
     /** @use SdkModel<TableCreateParamsShape> */
     use SdkModel;
     use SdkParams;
+
+    /**
+     * Specifies whether child tables can be created.
+     */
+    #[Api]
+    public bool $allowChildTables;
+
+    /**
+     * Specifies whether the table can be read by public without authorization.
+     */
+    #[Api]
+    public bool $allowPublicApiAccess;
+
+    /**
+     * List of columns in the table.
+     *
+     * @var list<ColumnRequest> $columns
+     */
+    #[Api(list: ColumnRequest::class)]
+    public array $columns;
+
+    /**
+     * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+     *
+     * @var array<string,int> $dynamicMetaTags
+     */
+    #[Api(map: 'int')]
+    public array $dynamicMetaTags;
+
+    /**
+     * Specifies creation of multi-level dynamic pages using child tables.
+     */
+    #[Api]
+    public bool $enableChildTablePages;
 
     /**
      * Label of the table.
@@ -45,57 +79,40 @@ final class TableCreateParams implements BaseModel
     public string $name;
 
     /**
-     * Specifies whether child tables can be created.
-     */
-    #[Api(optional: true)]
-    public ?bool $allowChildTables;
-
-    /**
-     * Specifies whether the table can be read by public without authorization.
-     */
-    #[Api(optional: true)]
-    public ?bool $allowPublicApiAccess;
-
-    /**
-     * List of columns in the table.
-     *
-     * @var list<ColumnRequest>|null $columns
-     */
-    #[Api(list: ColumnRequest::class, optional: true)]
-    public ?array $columns;
-
-    /**
-     * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
-     *
-     * @var array<string,int>|null $dynamicMetaTags
-     */
-    #[Api(map: 'int', optional: true)]
-    public ?array $dynamicMetaTags;
-
-    /**
-     * Specifies creation of multi-level dynamic pages using child tables.
-     */
-    #[Api(optional: true)]
-    public ?bool $enableChildTablePages;
-
-    /**
      * Specifies whether the table can be used for creation of dynamic pages.
      */
-    #[Api(optional: true)]
-    public ?bool $useForPages;
+    #[Api]
+    public bool $useForPages;
 
     /**
      * `new TableCreateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * TableCreateParams::with(label: ..., name: ...)
+     * TableCreateParams::with(
+     *   allowChildTables: ...,
+     *   allowPublicApiAccess: ...,
+     *   columns: ...,
+     *   dynamicMetaTags: ...,
+     *   enableChildTablePages: ...,
+     *   label: ...,
+     *   name: ...,
+     *   useForPages: ...,
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new TableCreateParams)->withLabel(...)->withName(...)
+     * (new TableCreateParams)
+     *   ->withAllowChildTables(...)
+     *   ->withAllowPublicAPIAccess(...)
+     *   ->withColumns(...)
+     *   ->withDynamicMetaTags(...)
+     *   ->withEnableChildTablePages(...)
+     *   ->withLabel(...)
+     *   ->withName(...)
+     *   ->withUseForPages(...)
      * ```
      */
     public function __construct()
@@ -112,48 +129,25 @@ final class TableCreateParams implements BaseModel
      * @param array<string,int> $dynamicMetaTags
      */
     public static function with(
+        bool $allowChildTables,
+        bool $allowPublicApiAccess,
+        array $columns,
+        array $dynamicMetaTags,
+        bool $enableChildTablePages,
         string $label,
         string $name,
-        ?bool $allowChildTables = null,
-        ?bool $allowPublicApiAccess = null,
-        ?array $columns = null,
-        ?array $dynamicMetaTags = null,
-        ?bool $enableChildTablePages = null,
-        ?bool $useForPages = null,
+        bool $useForPages,
     ): self {
         $obj = new self;
 
+        $obj->allowChildTables = $allowChildTables;
+        $obj->allowPublicApiAccess = $allowPublicApiAccess;
+        $obj->columns = $columns;
+        $obj->dynamicMetaTags = $dynamicMetaTags;
+        $obj->enableChildTablePages = $enableChildTablePages;
         $obj->label = $label;
         $obj->name = $name;
-
-        null !== $allowChildTables && $obj->allowChildTables = $allowChildTables;
-        null !== $allowPublicApiAccess && $obj->allowPublicApiAccess = $allowPublicApiAccess;
-        null !== $columns && $obj->columns = $columns;
-        null !== $dynamicMetaTags && $obj->dynamicMetaTags = $dynamicMetaTags;
-        null !== $enableChildTablePages && $obj->enableChildTablePages = $enableChildTablePages;
-        null !== $useForPages && $obj->useForPages = $useForPages;
-
-        return $obj;
-    }
-
-    /**
-     * Label of the table.
-     */
-    public function withLabel(string $label): self
-    {
-        $obj = clone $this;
-        $obj->label = $label;
-
-        return $obj;
-    }
-
-    /**
-     * Name of the table.
-     */
-    public function withName(string $name): self
-    {
-        $obj = clone $this;
-        $obj->name = $name;
+        $obj->useForPages = $useForPages;
 
         return $obj;
     }
@@ -213,6 +207,28 @@ final class TableCreateParams implements BaseModel
     {
         $obj = clone $this;
         $obj->enableChildTablePages = $enableChildTablePages;
+
+        return $obj;
+    }
+
+    /**
+     * Label of the table.
+     */
+    public function withLabel(string $label): self
+    {
+        $obj = clone $this;
+        $obj->label = $label;
+
+        return $obj;
+    }
+
+    /**
+     * Name of the table.
+     */
+    public function withName(string $name): self
+    {
+        $obj = clone $this;
+        $obj->name = $name;
 
         return $obj;
     }

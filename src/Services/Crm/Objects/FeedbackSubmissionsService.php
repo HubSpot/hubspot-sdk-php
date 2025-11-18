@@ -107,13 +107,15 @@ final class FeedbackSubmissionsService implements FeedbackSubmissionsContract
     /**
      * @api
      *
+     * Execute a search to retrieve feedback submissions based on defined filters, properties, and sorting options.
+     *
      * @param array{
-     *   after?: string,
-     *   filterGroups?: list<array{filters: list<array<mixed>>}>,
-     *   limit?: int,
-     *   properties?: list<string>,
+     *   after: string,
+     *   filterGroups: list<array{filters: list<array<mixed>>}>,
+     *   limit: int,
+     *   properties: list<string>,
+     *   sorts: list<string>,
      *   query?: string,
-     *   sorts?: list<string>,
      * }|FeedbackSubmissionSearchParams $params
      *
      * @throws APIException

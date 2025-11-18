@@ -7,10 +7,10 @@ namespace HubspotSDK\Services\Cms\MediaBridge;
 use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyArchiveBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\FieldType;
+use HubspotSDK\Cms\MediaBridge\Properties\PropertyDeleteBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyDeleteParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetParams;
@@ -34,7 +34,7 @@ final class PropertiesService implements PropertiesContract
      * Create a new property for the specified media type
      *
      * @param array{
-     *   appId: string,
+     *   appId: int,
      *   fieldType: value-of<FieldType>,
      *   groupName: string,
      *   label: string,
@@ -88,7 +88,7 @@ final class PropertiesService implements PropertiesContract
      * Update an existing property for an object type.
      *
      * @param array{
-     *   appId: string,
+     *   appId: int,
      *   objectType: string,
      *   calculationFormula?: string,
      *   description?: string,
@@ -148,7 +148,9 @@ final class PropertiesService implements PropertiesContract
      *
      * Get the existing properties defined for a media object type.
      *
-     * @param array{appId: string}|PropertyListParams $params
+     * @param array{
+     *   appId: int, archived?: bool, properties?: string
+     * }|PropertyListParams $params
      *
      * @throws APIException
      */
@@ -168,6 +170,7 @@ final class PropertiesService implements PropertiesContract
         return $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/properties/%2$s', $appID, $objectType],
+            query: $parsed,
             options: $options,
             convert: CollectionResponsePropertyNoPaging::class,
         );
@@ -178,7 +181,7 @@ final class PropertiesService implements PropertiesContract
      *
      * Delete an existing property for an object type.
      *
-     * @param array{appId: string, objectType: string}|PropertyDeleteParams $params
+     * @param array{appId: int, objectType: string}|PropertyDeleteParams $params
      *
      * @throws APIException
      */
@@ -213,47 +216,10 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
-     * Archive a batch of existing properties for the specified types.
-     *
-     * @param array{
-     *   appId: string, inputs: list<array{name: string}>
-     * }|PropertyArchiveBatchParams $params
-     *
-     * @throws APIException
-     */
-    public function archiveBatch(
-        string $objectType,
-        array|PropertyArchiveBatchParams $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed {
-        [$parsed, $options] = PropertyArchiveBatchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
-
-        // @phpstan-ignore-next-line;
-        return $this->client->request(
-            method: 'post',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/batch/archive',
-                $appID,
-                $objectType,
-            ],
-            body: (object) array_diff_key($parsed, ['appId']),
-            options: $options,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
      * Create a batch of properties of the specified object type.
      *
      * @param array{
-     *   appId: string,
+     *   appId: int,
      *   inputs: list<array{
      *     fieldType: "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea",
      *     groupName: string,
@@ -302,9 +268,48 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
+     * Archive a batch of existing properties for the specified types.
+     *
+     * @param array{
+     *   appId: int, inputs: list<array{name: string}>
+     * }|PropertyDeleteBatchParams $params
+     *
+     * @throws APIException
+     */
+    public function deleteBatch(
+        string $objectType,
+        array|PropertyDeleteBatchParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): mixed {
+        [$parsed, $options] = PropertyDeleteBatchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $appID = $parsed['appId'];
+        unset($parsed['appId']);
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: [
+                'media-bridge/v1/%1$s/properties/%2$s/batch/archive',
+                $appID,
+                $objectType,
+            ],
+            body: (object) array_diff_key($parsed, ['appId']),
+            options: $options,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Get the details for an existing property by name.
      *
-     * @param array{appId: string, objectType: string}|PropertyGetParams $params
+     * @param array{
+     *   appId: int, objectType: string, archived?: bool, properties?: string
+     * }|PropertyGetParams $params
      *
      * @throws APIException
      */
@@ -331,6 +336,7 @@ final class PropertiesService implements PropertiesContract
                 $objectType,
                 $propertyName,
             ],
+            query: $parsed,
             options: $options,
             convert: Property::class,
         );
@@ -342,10 +348,10 @@ final class PropertiesService implements PropertiesContract
      * Get the details for a batch of properties for a specified object type.
      *
      * @param array{
-     *   appId: string,
+     *   appId: int,
      *   archived: bool,
+     *   dataSensitivity: "non_sensitive"|"sensitive"|"highly_sensitive",
      *   inputs: list<array{name: string}>,
-     *   dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
      * }|PropertyGetBatchParams $params
      *
      * @throws APIException

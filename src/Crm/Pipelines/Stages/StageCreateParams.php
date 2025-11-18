@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Create a pipeline stage.
+ * Create a new stage within the specified pipeline.
  *
  * @see HubspotSDK\Services\Crm\Pipelines\StagesService::create()
  *
@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   objectType: string,
  *   displayOrder: int,
  *   label: string,
- *   metadata?: array<string,string>,
+ *   metadata: array<string,string>,
  * }
  */
 final class StageCreateParams implements BaseModel
@@ -49,17 +49,19 @@ final class StageCreateParams implements BaseModel
      *
      * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
      *
-     * @var array<string,string>|null $metadata
+     * @var array<string,string> $metadata
      */
-    #[Api(map: 'string', optional: true)]
-    public ?array $metadata;
+    #[Api(map: 'string')]
+    public array $metadata;
 
     /**
      * `new StageCreateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * StageCreateParams::with(objectType: ..., displayOrder: ..., label: ...)
+     * StageCreateParams::with(
+     *   objectType: ..., displayOrder: ..., label: ..., metadata: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -69,6 +71,7 @@ final class StageCreateParams implements BaseModel
      *   ->withObjectType(...)
      *   ->withDisplayOrder(...)
      *   ->withLabel(...)
+     *   ->withMetadata(...)
      * ```
      */
     public function __construct()
@@ -87,15 +90,14 @@ final class StageCreateParams implements BaseModel
         string $objectType,
         int $displayOrder,
         string $label,
-        ?array $metadata = null
+        array $metadata
     ): self {
         $obj = new self;
 
         $obj->objectType = $objectType;
         $obj->displayOrder = $displayOrder;
         $obj->label = $label;
-
-        null !== $metadata && $obj->metadata = $metadata;
+        $obj->metadata = $metadata;
 
         return $obj;
     }

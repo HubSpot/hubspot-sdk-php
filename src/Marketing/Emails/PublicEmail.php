@@ -18,15 +18,8 @@ use HubspotSDK\Marketing\Emails\PublicEmail\Type;
  * A marketing email.
  *
  * @phpstan-type PublicEmailShape = array{
- *   id: string,
- *   content: PublicEmailContent,
- *   from: PublicEmailFromDetails,
- *   name: string,
- *   sendOnPublish: bool,
- *   state: value-of<State>,
- *   subcategory: string,
- *   subject: string,
- *   to: PublicEmailToDetails,
+ *   isAb: bool,
+ *   id?: string|null,
  *   activeDomain?: string|null,
  *   allEmailCampaignIds?: list<string>|null,
  *   archived?: bool|null,
@@ -35,6 +28,7 @@ use HubspotSDK\Marketing\Emails\PublicEmail\Type;
  *   campaignName?: string|null,
  *   campaignUtm?: string|null,
  *   clonedFrom?: string|null,
+ *   content?: PublicEmailContent|null,
  *   createdAt?: \DateTimeInterface|null,
  *   createdById?: string|null,
  *   deletedAt?: \DateTimeInterface|null,
@@ -43,11 +37,12 @@ use HubspotSDK\Marketing\Emails\PublicEmail\Type;
  *   feedbackSurveyId?: string|null,
  *   folderId?: int|null,
  *   folderIdV2?: int|null,
- *   isAb?: bool|null,
+ *   from?: PublicEmailFromDetails|null,
  *   isPublished?: bool|null,
  *   isTransactional?: bool|null,
  *   jitterSendTime?: bool|null,
  *   language?: value-of<Language>|null,
+ *   name?: string|null,
  *   previewKey?: string|null,
  *   primaryEmailCampaignId?: string|null,
  *   publishDate?: \DateTimeInterface|null,
@@ -56,10 +51,15 @@ use HubspotSDK\Marketing\Emails\PublicEmail\Type;
  *   publishedById?: string|null,
  *   publishedByName?: string|null,
  *   rssData?: PublicRssEmailDetails|null,
+ *   sendOnPublish?: bool|null,
+ *   state?: value-of<State>|null,
  *   stats?: EmailStatisticsData|null,
+ *   subcategory?: string|null,
+ *   subject?: string|null,
  *   subscriptionDetails?: PublicEmailSubscriptionDetails|null,
  *   teamsWithAccess?: list<string>|null,
  *   testing?: PublicEmailTestingDetails|null,
+ *   to?: PublicEmailToDetails|null,
  *   type?: value-of<Type>|null,
  *   unpublishedAt?: \DateTimeInterface|null,
  *   updatedAt?: \DateTimeInterface|null,
@@ -76,61 +76,14 @@ final class PublicEmail implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    #[Api]
+    public bool $isAb;
+
     /**
      * The email ID.
      */
-    #[Api]
-    public string $id;
-
-    /**
-     * Data structure representing the content of the email.
-     */
-    #[Api]
-    public PublicEmailContent $content;
-
-    /**
-     * Data structure representing the from fields on the email.
-     */
-    #[Api]
-    public PublicEmailFromDetails $from;
-
-    /**
-     * The name of the email, as displayed on the email dashboard.
-     */
-    #[Api]
-    public string $name;
-
-    /**
-     * Determines whether the email will be sent immediately on publish.
-     */
-    #[Api]
-    public bool $sendOnPublish;
-
-    /**
-     * The email state.
-     *
-     * @var value-of<State> $state
-     */
-    #[Api(enum: State::class)]
-    public string $state;
-
-    /**
-     * The email subcategory.
-     */
-    #[Api]
-    public string $subcategory;
-
-    /**
-     * The subject of the email.
-     */
-    #[Api]
-    public string $subject;
-
-    /**
-     * Data structure representing the to fields of the email.
-     */
-    #[Api]
-    public PublicEmailToDetails $to;
+    #[Api(optional: true)]
+    public ?string $id;
 
     /**
      * The active domain of the email.
@@ -177,6 +130,12 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public ?string $clonedFrom;
 
     /**
+     * Data structure representing the content of the email.
+     */
+    #[Api(optional: true)]
+    public ?PublicEmailContent $content;
+
+    /**
      * The date and time of the email's creation, in ISO8601 representation.
      */
     #[Api(optional: true)]
@@ -213,8 +172,11 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?int $folderIdV2;
 
+    /**
+     * Data structure representing the from fields on the email.
+     */
     #[Api(optional: true)]
-    public ?bool $isAb;
+    public ?PublicEmailFromDetails $from;
 
     /**
      * Returns the published status of the email. This is read only.
@@ -234,6 +196,12 @@ final class PublicEmail implements BaseModel, ResponseConverter
     /** @var value-of<Language>|null $language */
     #[Api(enum: Language::class, optional: true)]
     public ?string $language;
+
+    /**
+     * The name of the email, as displayed on the email dashboard.
+     */
+    #[Api(optional: true)]
+    public ?string $name;
 
     #[Api(optional: true)]
     public ?string $previewKey;
@@ -277,8 +245,34 @@ final class PublicEmail implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?PublicRssEmailDetails $rssData;
 
+    /**
+     * Determines whether the email will be sent immediately on publish.
+     */
+    #[Api(optional: true)]
+    public ?bool $sendOnPublish;
+
+    /**
+     * The email state.
+     *
+     * @var value-of<State>|null $state
+     */
+    #[Api(enum: State::class, optional: true)]
+    public ?string $state;
+
     #[Api(optional: true)]
     public ?EmailStatisticsData $stats;
+
+    /**
+     * The email subcategory.
+     */
+    #[Api(optional: true)]
+    public ?string $subcategory;
+
+    /**
+     * The subject of the email.
+     */
+    #[Api(optional: true)]
+    public ?string $subject;
 
     /**
      * Data structure representing the subscription fields of the email.
@@ -295,6 +289,12 @@ final class PublicEmail implements BaseModel, ResponseConverter
      */
     #[Api(optional: true)]
     public ?PublicEmailTestingDetails $testing;
+
+    /**
+     * Data structure representing the to fields of the email.
+     */
+    #[Api(optional: true)]
+    public ?PublicEmailToDetails $to;
 
     /**
      * The email type, this is derived from other properties on the email such as subcategory.
@@ -339,32 +339,13 @@ final class PublicEmail implements BaseModel, ResponseConverter
      *
      * To enforce required parameters use
      * ```
-     * PublicEmail::with(
-     *   id: ...,
-     *   content: ...,
-     *   from: ...,
-     *   name: ...,
-     *   sendOnPublish: ...,
-     *   state: ...,
-     *   subcategory: ...,
-     *   subject: ...,
-     *   to: ...,
-     * )
+     * PublicEmail::with(isAb: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PublicEmail)
-     *   ->withID(...)
-     *   ->withContent(...)
-     *   ->withFrom(...)
-     *   ->withName(...)
-     *   ->withSendOnPublish(...)
-     *   ->withState(...)
-     *   ->withSubcategory(...)
-     *   ->withSubject(...)
-     *   ->withTo(...)
+     * (new PublicEmail)->withIsAb(...)
      * ```
      */
     public function __construct()
@@ -377,25 +358,18 @@ final class PublicEmail implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param State|value-of<State> $state
      * @param list<string> $allEmailCampaignIds
      * @param EmailTemplateMode|value-of<EmailTemplateMode> $emailTemplateMode
      * @param Language|value-of<Language> $language
+     * @param State|value-of<State> $state
      * @param list<string> $teamsWithAccess
      * @param Type|value-of<Type> $type
      * @param list<string> $usersWithAccess
      * @param list<string> $workflowNames
      */
     public static function with(
-        string $id,
-        PublicEmailContent $content,
-        PublicEmailFromDetails $from,
-        string $name,
-        bool $sendOnPublish,
-        State|string $state,
-        string $subcategory,
-        string $subject,
-        PublicEmailToDetails $to,
+        bool $isAb,
+        ?string $id = null,
         ?string $activeDomain = null,
         ?array $allEmailCampaignIds = null,
         ?bool $archived = null,
@@ -404,6 +378,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
         ?string $campaignName = null,
         ?string $campaignUtm = null,
         ?string $clonedFrom = null,
+        ?PublicEmailContent $content = null,
         ?\DateTimeInterface $createdAt = null,
         ?string $createdById = null,
         ?\DateTimeInterface $deletedAt = null,
@@ -412,11 +387,12 @@ final class PublicEmail implements BaseModel, ResponseConverter
         ?string $feedbackSurveyId = null,
         ?int $folderId = null,
         ?int $folderIdV2 = null,
-        ?bool $isAb = null,
+        ?PublicEmailFromDetails $from = null,
         ?bool $isPublished = null,
         ?bool $isTransactional = null,
         ?bool $jitterSendTime = null,
         Language|string|null $language = null,
+        ?string $name = null,
         ?string $previewKey = null,
         ?string $primaryEmailCampaignId = null,
         ?\DateTimeInterface $publishDate = null,
@@ -425,10 +401,15 @@ final class PublicEmail implements BaseModel, ResponseConverter
         ?string $publishedById = null,
         ?string $publishedByName = null,
         ?PublicRssEmailDetails $rssData = null,
+        ?bool $sendOnPublish = null,
+        State|string|null $state = null,
         ?EmailStatisticsData $stats = null,
+        ?string $subcategory = null,
+        ?string $subject = null,
         ?PublicEmailSubscriptionDetails $subscriptionDetails = null,
         ?array $teamsWithAccess = null,
         ?PublicEmailTestingDetails $testing = null,
+        ?PublicEmailToDetails $to = null,
         Type|string|null $type = null,
         ?\DateTimeInterface $unpublishedAt = null,
         ?\DateTimeInterface $updatedAt = null,
@@ -439,16 +420,9 @@ final class PublicEmail implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->content = $content;
-        $obj->from = $from;
-        $obj->name = $name;
-        $obj->sendOnPublish = $sendOnPublish;
-        $obj['state'] = $state;
-        $obj->subcategory = $subcategory;
-        $obj->subject = $subject;
-        $obj->to = $to;
+        $obj->isAb = $isAb;
 
+        null !== $id && $obj->id = $id;
         null !== $activeDomain && $obj->activeDomain = $activeDomain;
         null !== $allEmailCampaignIds && $obj->allEmailCampaignIds = $allEmailCampaignIds;
         null !== $archived && $obj->archived = $archived;
@@ -457,6 +431,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
         null !== $campaignName && $obj->campaignName = $campaignName;
         null !== $campaignUtm && $obj->campaignUtm = $campaignUtm;
         null !== $clonedFrom && $obj->clonedFrom = $clonedFrom;
+        null !== $content && $obj->content = $content;
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $createdById && $obj->createdById = $createdById;
         null !== $deletedAt && $obj->deletedAt = $deletedAt;
@@ -465,11 +440,12 @@ final class PublicEmail implements BaseModel, ResponseConverter
         null !== $feedbackSurveyId && $obj->feedbackSurveyId = $feedbackSurveyId;
         null !== $folderId && $obj->folderId = $folderId;
         null !== $folderIdV2 && $obj->folderIdV2 = $folderIdV2;
-        null !== $isAb && $obj->isAb = $isAb;
+        null !== $from && $obj->from = $from;
         null !== $isPublished && $obj->isPublished = $isPublished;
         null !== $isTransactional && $obj->isTransactional = $isTransactional;
         null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
         null !== $language && $obj['language'] = $language;
+        null !== $name && $obj->name = $name;
         null !== $previewKey && $obj->previewKey = $previewKey;
         null !== $primaryEmailCampaignId && $obj->primaryEmailCampaignId = $primaryEmailCampaignId;
         null !== $publishDate && $obj->publishDate = $publishDate;
@@ -478,10 +454,15 @@ final class PublicEmail implements BaseModel, ResponseConverter
         null !== $publishedById && $obj->publishedById = $publishedById;
         null !== $publishedByName && $obj->publishedByName = $publishedByName;
         null !== $rssData && $obj->rssData = $rssData;
+        null !== $sendOnPublish && $obj->sendOnPublish = $sendOnPublish;
+        null !== $state && $obj['state'] = $state;
         null !== $stats && $obj->stats = $stats;
+        null !== $subcategory && $obj->subcategory = $subcategory;
+        null !== $subject && $obj->subject = $subject;
         null !== $subscriptionDetails && $obj->subscriptionDetails = $subscriptionDetails;
         null !== $teamsWithAccess && $obj->teamsWithAccess = $teamsWithAccess;
         null !== $testing && $obj->testing = $testing;
+        null !== $to && $obj->to = $to;
         null !== $type && $obj['type'] = $type;
         null !== $unpublishedAt && $obj->unpublishedAt = $unpublishedAt;
         null !== $updatedAt && $obj->updatedAt = $updatedAt;
@@ -493,6 +474,14 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    public function withIsAb(bool $isAb): self
+    {
+        $obj = clone $this;
+        $obj->isAb = $isAb;
+
+        return $obj;
+    }
+
     /**
      * The email ID.
      */
@@ -500,96 +489,6 @@ final class PublicEmail implements BaseModel, ResponseConverter
     {
         $obj = clone $this;
         $obj->id = $id;
-
-        return $obj;
-    }
-
-    /**
-     * Data structure representing the content of the email.
-     */
-    public function withContent(PublicEmailContent $content): self
-    {
-        $obj = clone $this;
-        $obj->content = $content;
-
-        return $obj;
-    }
-
-    /**
-     * Data structure representing the from fields on the email.
-     */
-    public function withFrom(PublicEmailFromDetails $from): self
-    {
-        $obj = clone $this;
-        $obj->from = $from;
-
-        return $obj;
-    }
-
-    /**
-     * The name of the email, as displayed on the email dashboard.
-     */
-    public function withName(string $name): self
-    {
-        $obj = clone $this;
-        $obj->name = $name;
-
-        return $obj;
-    }
-
-    /**
-     * Determines whether the email will be sent immediately on publish.
-     */
-    public function withSendOnPublish(bool $sendOnPublish): self
-    {
-        $obj = clone $this;
-        $obj->sendOnPublish = $sendOnPublish;
-
-        return $obj;
-    }
-
-    /**
-     * The email state.
-     *
-     * @param State|value-of<State> $state
-     */
-    public function withState(State|string $state): self
-    {
-        $obj = clone $this;
-        $obj['state'] = $state;
-
-        return $obj;
-    }
-
-    /**
-     * The email subcategory.
-     */
-    public function withSubcategory(string $subcategory): self
-    {
-        $obj = clone $this;
-        $obj->subcategory = $subcategory;
-
-        return $obj;
-    }
-
-    /**
-     * The subject of the email.
-     */
-    public function withSubject(string $subject): self
-    {
-        $obj = clone $this;
-        $obj->subject = $subject;
-
-        return $obj;
-    }
-
-    /**
-     * Data structure representing the to fields of the email.
-     */
-    public function withTo(PublicEmailToDetails $to): self
-    {
-        $obj = clone $this;
-        $obj->to = $to;
 
         return $obj;
     }
@@ -679,6 +578,17 @@ final class PublicEmail implements BaseModel, ResponseConverter
     }
 
     /**
+     * Data structure representing the content of the email.
+     */
+    public function withContent(PublicEmailContent $content): self
+    {
+        $obj = clone $this;
+        $obj->content = $content;
+
+        return $obj;
+    }
+
+    /**
      * The date and time of the email's creation, in ISO8601 representation.
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
@@ -758,10 +668,13 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    public function withIsAb(bool $isAb): self
+    /**
+     * Data structure representing the from fields on the email.
+     */
+    public function withFrom(PublicEmailFromDetails $from): self
     {
         $obj = clone $this;
-        $obj->isAb = $isAb;
+        $obj->from = $from;
 
         return $obj;
     }
@@ -803,6 +716,17 @@ final class PublicEmail implements BaseModel, ResponseConverter
     {
         $obj = clone $this;
         $obj['language'] = $language;
+
+        return $obj;
+    }
+
+    /**
+     * The name of the email, as displayed on the email dashboard.
+     */
+    public function withName(string $name): self
+    {
+        $obj = clone $this;
+        $obj->name = $name;
 
         return $obj;
     }
@@ -890,10 +814,56 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Determines whether the email will be sent immediately on publish.
+     */
+    public function withSendOnPublish(bool $sendOnPublish): self
+    {
+        $obj = clone $this;
+        $obj->sendOnPublish = $sendOnPublish;
+
+        return $obj;
+    }
+
+    /**
+     * The email state.
+     *
+     * @param State|value-of<State> $state
+     */
+    public function withState(State|string $state): self
+    {
+        $obj = clone $this;
+        $obj['state'] = $state;
+
+        return $obj;
+    }
+
     public function withStats(EmailStatisticsData $stats): self
     {
         $obj = clone $this;
         $obj->stats = $stats;
+
+        return $obj;
+    }
+
+    /**
+     * The email subcategory.
+     */
+    public function withSubcategory(string $subcategory): self
+    {
+        $obj = clone $this;
+        $obj->subcategory = $subcategory;
+
+        return $obj;
+    }
+
+    /**
+     * The subject of the email.
+     */
+    public function withSubject(string $subject): self
+    {
+        $obj = clone $this;
+        $obj->subject = $subject;
 
         return $obj;
     }
@@ -928,6 +898,17 @@ final class PublicEmail implements BaseModel, ResponseConverter
     {
         $obj = clone $this;
         $obj->testing = $testing;
+
+        return $obj;
+    }
+
+    /**
+     * Data structure representing the to fields of the email.
+     */
+    public function withTo(PublicEmailToDetails $to): self
+    {
+        $obj = clone $this;
+        $obj->to = $to;
 
         return $obj;
     }

@@ -6,7 +6,9 @@ namespace HubspotSDK\Automation\Sequences;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type PublicSequenceLiteResponseShape = array{
@@ -18,10 +20,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   folderId?: string|null,
  * }
  */
-final class PublicSequenceLiteResponse implements BaseModel
+final class PublicSequenceLiteResponse implements BaseModel, ResponseConverter
 {
     /** @use SdkModel<PublicSequenceLiteResponseShape> */
     use SdkModel;
+
+    use SdkResponse;
 
     #[Api]
     public string $id;

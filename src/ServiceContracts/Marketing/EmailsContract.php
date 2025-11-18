@@ -9,6 +9,7 @@ use HubspotSDK\Marketing\Emails\EmailCloneParams;
 use HubspotSDK\Marketing\Emails\EmailCreateAbTestVariationParams;
 use HubspotSDK\Marketing\Emails\EmailCreateParams;
 use HubspotSDK\Marketing\Emails\EmailDeleteParams;
+use HubspotSDK\Marketing\Emails\EmailGetAbTestVariationParams;
 use HubspotSDK\Marketing\Emails\EmailGetParams;
 use HubspotSDK\Marketing\Emails\EmailGetRevisionParams;
 use HubspotSDK\Marketing\Emails\EmailListParams;
@@ -116,11 +117,14 @@ interface EmailsContract
     /**
      * @api
      *
+     * @param array<mixed>|EmailGetAbTestVariationParams $params
+     *
      * @throws APIException
      */
     public function getAbTestVariation(
         string $emailID,
-        ?RequestOptions $requestOptions = null
+        array|EmailGetAbTestVariationParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicEmail;
 
     /**

@@ -24,6 +24,7 @@ final class CalendarService implements CalendarContract
      * @api
      *
      * @param array{
+     *   organizerUserId: string,
      *   associations: list<array{
      *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
      *   }>,
@@ -37,6 +38,7 @@ final class CalendarService implements CalendarContract
      *     hs_meeting_start_time: string|\DateTimeInterface,
      *     hs_meeting_title: string,
      *     hs_timestamp: string|\DateTimeInterface,
+     *     hubspot_owner_id: string,
      *     hs_activity_type?: string,
      *     hs_attachment_ids?: list<string>,
      *     hs_attendee_owner_ids?: list<string>,
@@ -44,7 +46,6 @@ final class CalendarService implements CalendarContract
      *     hs_meeting_body?: string,
      *     hs_meeting_location?: string,
      *     hs_meeting_location_type?: string,
-     *     hubspot_owner_id?: string,
      *   },
      *   timezone: string,
      * }|CalendarCreateParams $params
@@ -59,12 +60,14 @@ final class CalendarService implements CalendarContract
             $params,
             $requestOptions,
         );
+        $query_params = ['organizerUserId'];
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
             path: 'scheduler/v3/meetings/calendar',
-            body: (object) $parsed,
+            query: array_diff_key($parsed, $query_params),
+            body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: ExternalCalenderMeetingEventResponse::class,
         );

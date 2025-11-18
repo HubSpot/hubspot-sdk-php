@@ -30,15 +30,20 @@ final class ReportTest extends TestCase
     }
 
     #[Test]
-    public function testGetHighUsageReport(): void
+    public function testRequestHighUsageReport(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->associations->v4->report->getHighUsageReport(
-            0
-        );
+        $result = $this
+            ->client
+            ->crm
+            ->associations
+            ->v4
+            ->report
+            ->requestHighUsageReport(0)
+        ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

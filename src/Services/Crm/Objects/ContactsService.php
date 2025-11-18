@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Associations\V4\AssociationSpec1;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\Contacts\ContactCreateParams;
@@ -45,10 +45,10 @@ final class ContactsService implements ContactsContract
      * Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
      *
      * @param array{
-     *   properties: array<string,string>,
-     *   associations?: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec1>
+     *   associations: list<array{
+     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
      *   }>,
+     *   properties: array<string,string>,
      * }|ContactCreateParams $params
      *
      * @throws APIException
@@ -77,7 +77,9 @@ final class ContactsService implements ContactsContract
      *
      * Update an existing contact, identified by ID or email/unique property value. To identify a contact by ID, include the ID in the request URL path. To identify a contact by their email or other unique property, include the email/property value in the request URL path, and add the `idProperty` query parameter (`/crm/v3/objects/contacts/jon@website.com?idProperty=email`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param array{properties: array<string,string>}|ContactUpdateParams $params
+     * @param array{
+     *   properties: array<string,string>, idProperty?: string
+     * }|ContactUpdateParams $params
      *
      * @throws APIException
      */
@@ -90,12 +92,14 @@ final class ContactsService implements ContactsContract
             $params,
             $requestOptions,
         );
+        $query_params = ['idProperty'];
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/contacts/%1$s', $contactID],
-            body: (object) $parsed,
+            query: array_diff_key($parsed, $query_params),
+            body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: SimplePublicObject::class,
         );
@@ -197,6 +201,7 @@ final class ContactsService implements ContactsContract
      * @param array{
      *   archived?: bool,
      *   associations?: list<string>,
+     *   idProperty?: string,
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|ContactGetParams $params
@@ -259,12 +264,12 @@ final class ContactsService implements ContactsContract
      * Search for contacts by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
      *
      * @param array{
-     *   after?: string,
-     *   filterGroups?: list<array{filters: list<array<mixed>>}>,
-     *   limit?: int,
-     *   properties?: list<string>,
+     *   after: string,
+     *   filterGroups: list<array{filters: list<array<mixed>>}>,
+     *   limit: int,
+     *   properties: list<string>,
+     *   sorts: list<string>,
      *   query?: string,
-     *   sorts?: list<string>,
      * }|ContactSearchParams $params
      *
      * @throws APIException

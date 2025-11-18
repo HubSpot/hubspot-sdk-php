@@ -25,6 +25,9 @@ final class PublicAssociation implements BaseModel
     #[Api]
     public PublicObjectID $to;
 
+    /**
+     * The type of association between the 'from' and 'to' objects.
+     */
     #[Api]
     public string $type;
 
@@ -82,6 +85,9 @@ final class PublicAssociation implements BaseModel
         return $obj;
     }
 
+    /**
+     * The type of association between the 'from' and 'to' objects.
+     */
     public function withType(string $type): self
     {
         $obj = clone $this;

@@ -21,6 +21,8 @@ final class EnablementService implements EnablementContract
     /**
      * @api
      *
+     * For all object types supporting enablement, returns whether they're enabled or disabled
+     *
      * @throws APIException
      */
     public function list(
@@ -37,6 +39,8 @@ final class EnablementService implements EnablementContract
 
     /**
      * @api
+     *
+     * Fetch whether object type is enabled
      *
      * @throws APIException
      */

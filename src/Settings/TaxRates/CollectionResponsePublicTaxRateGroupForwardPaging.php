@@ -6,9 +6,7 @@ namespace HubspotSDK\Settings\TaxRates;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ForwardPaging;
 
 /**
@@ -16,12 +14,10 @@ use HubspotSDK\ForwardPaging;
  *   results: list<PublicTaxRateGroup>, paging?: ForwardPaging|null
  * }
  */
-final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseModel, ResponseConverter
+final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponsePublicTaxRateGroupForwardPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<PublicTaxRateGroup> $results */
     #[Api(list: PublicTaxRateGroup::class)]

@@ -17,10 +17,10 @@ use HubspotSDK\PropertyName;
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::getBatch()
  *
  * @phpstan-type PropertyGetBatchParamsShape = array{
- *   appId: string,
+ *   appId: int,
  *   archived: bool,
+ *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
  *   inputs: list<PropertyName>,
- *   dataSensitivity?: DataSensitivity|value-of<DataSensitivity>,
  * }
  */
 final class PropertyGetBatchParams implements BaseModel
@@ -30,31 +30,37 @@ final class PropertyGetBatchParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appId;
+    public int $appId;
 
     #[Api]
     public bool $archived;
 
+    /** @var value-of<DataSensitivity> $dataSensitivity */
+    #[Api(enum: DataSensitivity::class)]
+    public string $dataSensitivity;
+
     /** @var list<PropertyName> $inputs */
     #[Api(list: PropertyName::class)]
     public array $inputs;
-
-    /** @var value-of<DataSensitivity>|null $dataSensitivity */
-    #[Api(enum: DataSensitivity::class, optional: true)]
-    public ?string $dataSensitivity;
 
     /**
      * `new PropertyGetBatchParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PropertyGetBatchParams::with(appId: ..., archived: ..., inputs: ...)
+     * PropertyGetBatchParams::with(
+     *   appId: ..., archived: ..., dataSensitivity: ..., inputs: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PropertyGetBatchParams)->withAppID(...)->withArchived(...)->withInputs(...)
+     * (new PropertyGetBatchParams)
+     *   ->withAppID(...)
+     *   ->withArchived(...)
+     *   ->withDataSensitivity(...)
+     *   ->withInputs(...)
      * ```
      */
     public function __construct()
@@ -67,27 +73,26 @@ final class PropertyGetBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyName> $inputs
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
+     * @param list<PropertyName> $inputs
      */
     public static function with(
-        string $appId,
+        int $appId,
         bool $archived,
+        DataSensitivity|string $dataSensitivity,
         array $inputs,
-        DataSensitivity|string|null $dataSensitivity = null,
     ): self {
         $obj = new self;
 
         $obj->appId = $appId;
         $obj->archived = $archived;
+        $obj['dataSensitivity'] = $dataSensitivity;
         $obj->inputs = $inputs;
-
-        null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
 
         return $obj;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $obj = clone $this;
         $obj->appId = $appID;
@@ -104,17 +109,6 @@ final class PropertyGetBatchParams implements BaseModel
     }
 
     /**
-     * @param list<PropertyName> $inputs
-     */
-    public function withInputs(array $inputs): self
-    {
-        $obj = clone $this;
-        $obj->inputs = $inputs;
-
-        return $obj;
-    }
-
-    /**
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      */
     public function withDataSensitivity(
@@ -122,6 +116,17 @@ final class PropertyGetBatchParams implements BaseModel
     ): self {
         $obj = clone $this;
         $obj['dataSensitivity'] = $dataSensitivity;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<PropertyName> $inputs
+     */
+    public function withInputs(array $inputs): self
+    {
+        $obj = clone $this;
+        $obj->inputs = $inputs;
 
         return $obj;
     }

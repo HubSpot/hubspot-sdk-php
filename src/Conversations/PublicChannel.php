@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type PublicChannelShape = array{id?: string|null, name?: string|null}
+ * @phpstan-type PublicChannelShape = array{id: string, name: string}
  */
 final class PublicChannel implements BaseModel
 {
@@ -19,15 +19,29 @@ final class PublicChannel implements BaseModel
     /**
      * The ID of the channel.
      */
-    #[Api(optional: true)]
-    public ?string $id;
+    #[Api]
+    public string $id;
 
     /**
      * The name of the channel.
      */
-    #[Api(optional: true)]
-    public ?string $name;
+    #[Api]
+    public string $name;
 
+    /**
+     * `new PublicChannel()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * PublicChannel::with(id: ..., name: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new PublicChannel)->withID(...)->withName(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -38,12 +52,12 @@ final class PublicChannel implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(?string $id = null, ?string $name = null): self
+    public static function with(string $id, string $name): self
     {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $name && $obj->name = $name;
+        $obj->id = $id;
+        $obj->name = $name;
 
         return $obj;
     }

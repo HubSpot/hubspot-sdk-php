@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Associations\V4\AssociationSpec1;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\Tasks\TaskCreateParams;
@@ -43,10 +43,10 @@ final class TasksService implements TasksContract
      * Create a task with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard tasks is provided.
      *
      * @param array{
-     *   properties: array<string,string>,
-     *   associations?: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec1>
+     *   associations: list<array{
+     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
      *   }>,
+     *   properties: array<string,string>,
      * }|TaskCreateParams $params
      *
      * @throws APIException
@@ -200,12 +200,12 @@ final class TasksService implements TasksContract
      * @api
      *
      * @param array{
-     *   after?: string,
-     *   filterGroups?: list<array{filters: list<array<mixed>>}>,
-     *   limit?: int,
-     *   properties?: list<string>,
+     *   after: string,
+     *   filterGroups: list<array{filters: list<array<mixed>>}>,
+     *   limit: int,
+     *   properties: list<string>,
+     *   sorts: list<string>,
      *   query?: string,
-     *   sorts?: list<string>,
      * }|TaskSearchParams $params
      *
      * @throws APIException

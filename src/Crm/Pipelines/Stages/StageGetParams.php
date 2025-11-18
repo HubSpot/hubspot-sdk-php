@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Return a pipeline stage by ID.
+ * Retrieve a specific stage from a pipeline using its ID.
  *
  * @see HubspotSDK\Services\Crm\Pipelines\StagesService::get()
  *

@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\PublicAssociation;
 
 /**
+ * This endpoint allows you to create multiple associations between specified 'from' and 'to' object types in a single batch request.
+ *
  * @see HubspotSDK\Services\Crm\Associations\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{

@@ -15,6 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\Sequences\EnrollmentsService::enroll()
  *
  * @phpstan-type EnrollmentEnrollParamsShape = array{
+ *   userId: string,
  *   contactId: string,
  *   senderEmail: string,
  *   sequenceId: string,
@@ -26,6 +27,9 @@ final class EnrollmentEnrollParams implements BaseModel
     /** @use SdkModel<EnrollmentEnrollParamsShape> */
     use SdkModel;
     use SdkParams;
+
+    #[Api]
+    public string $userId;
 
     #[Api]
     public string $contactId;
@@ -44,13 +48,16 @@ final class EnrollmentEnrollParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * EnrollmentEnrollParams::with(contactId: ..., senderEmail: ..., sequenceId: ...)
+     * EnrollmentEnrollParams::with(
+     *   userId: ..., contactId: ..., senderEmail: ..., sequenceId: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
      * (new EnrollmentEnrollParams)
+     *   ->withUserID(...)
      *   ->withContactID(...)
      *   ->withSenderEmail(...)
      *   ->withSequenceID(...)
@@ -67,6 +74,7 @@ final class EnrollmentEnrollParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
+        string $userId,
         string $contactId,
         string $senderEmail,
         string $sequenceId,
@@ -74,11 +82,20 @@ final class EnrollmentEnrollParams implements BaseModel
     ): self {
         $obj = new self;
 
+        $obj->userId = $userId;
         $obj->contactId = $contactId;
         $obj->senderEmail = $senderEmail;
         $obj->sequenceId = $sequenceId;
 
         null !== $senderAliasAddress && $obj->senderAliasAddress = $senderAliasAddress;
+
+        return $obj;
+    }
+
+    public function withUserID(string $userID): self
+    {
+        $obj = clone $this;
+        $obj->userId = $userID;
 
         return $obj;
     }

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Exports\PublicExportResponse;
 
+/**
+ * The current state of the export process.
+ */
 enum ExportState: string
 {
     case ENQUEUED = 'ENQUEUED';

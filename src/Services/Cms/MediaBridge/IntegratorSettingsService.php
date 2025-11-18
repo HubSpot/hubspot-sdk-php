@@ -12,8 +12,11 @@ use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
 use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateObjectDefinitionParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateOembedDomainParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingDeleteOembedDomainParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetObjectDefinitionsByMediaTypeParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetObjectDefinitionsByMediaTypeParams\MediaType;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetOembedDomainParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingListOembedDomainsParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingRegisterAppNameParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateAppNameParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams;
@@ -44,7 +47,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * @throws APIException
      */
     public function createObjectDefinition(
-        string $appID,
+        int $appID,
         array|IntegratorSettingCreateObjectDefinitionParams $params,
         ?RequestOptions $requestOptions = null,
     ): BulkIntegratorObjectCreationResponse {
@@ -78,7 +81,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * @throws APIException
      */
     public function createOembedDomain(
-        string $appID,
+        int $appID,
         array|IntegratorSettingCreateOembedDomainParams $params,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel {
@@ -102,17 +105,28 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Delete an existing oEmbed domain.
      *
+     * @param array{
+     *   id?: int, domainPortalId?: int
+     * }|IntegratorSettingDeleteOembedDomainParams $params
+     *
      * @throws APIException
      */
     public function deleteOembedDomain(
-        string $appID,
-        ?RequestOptions $requestOptions = null
+        int $appID,
+        array|IntegratorSettingDeleteOembedDomainParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed {
+        [$parsed, $options] = IntegratorSettingDeleteOembedDomainParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'delete',
             path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
-            options: $requestOptions,
+            query: $parsed,
+            options: $options,
             convert: null,
         );
     }
@@ -125,7 +139,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * @throws APIException
      */
     public function getEventVisibilitySettings(
-        string $appID,
+        int $appID,
         ?RequestOptions $requestOptions = null
     ): EventVisibilityResponse {
         // @phpstan-ignore-next-line;
@@ -142,14 +156,15 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Get the existing objects types that belong to the specified media type.
      *
+     * @param MediaType|value-of<MediaType> $mediaType
      * @param array{
-     *   appId: string
+     *   appId: int, includeFullDefinition?: bool
      * }|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
      *
      * @throws APIException
      */
     public function getObjectDefinitionsByMediaType(
-        string $mediaType,
+        MediaType|string $mediaType,
         array|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): ObjectDefinitionResponse {
@@ -168,6 +183,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
                 $appID,
                 $mediaType,
             ],
+            query: $parsed,
             options: $options,
             convert: ObjectDefinitionResponse::class,
         );
@@ -178,7 +194,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Get the details for an existing oEmbed domain.
      *
-     * @param array{appId: string}|IntegratorSettingGetOembedDomainParams $params
+     * @param array{appId: int}|IntegratorSettingGetOembedDomainParams $params
      *
      * @throws APIException
      */
@@ -212,17 +228,28 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Get the details for existing oEmbed domains for your app
      *
+     * @param array{
+     *   domainPortalId?: int
+     * }|IntegratorSettingListOembedDomainsParams $params
+     *
      * @throws APIException
      */
     public function listOembedDomains(
-        string $appID,
-        ?RequestOptions $requestOptions = null
+        int $appID,
+        array|IntegratorSettingListOembedDomainsParams $params,
+        ?RequestOptions $requestOptions = null,
     ): OEmbedDomainsCollectionResponse {
+        [$parsed, $options] = IntegratorSettingListOembedDomainsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
-            options: $requestOptions,
+            query: $parsed,
+            options: $options,
             convert: OEmbedDomainsCollectionResponse::class,
         );
     }
@@ -241,7 +268,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * @throws APIException
      */
     public function registerAppName(
-        string $appID,
+        int $appID,
         array|IntegratorSettingRegisterAppNameParams $params,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse {
@@ -272,7 +299,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * @throws APIException
      */
     public function updateAppName(
-        string $appID,
+        int $appID,
         array|IntegratorSettingUpdateAppNameParams $params,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse {
@@ -307,7 +334,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * @throws APIException
      */
     public function updateEventVisibilitySettings(
-        string $appID,
+        int $appID,
         array|IntegratorSettingUpdateEventVisibilitySettingsParams $params,
         ?RequestOptions $requestOptions = null,
     ): EventVisibilityChange {
@@ -332,7 +359,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * Update an existing oEmbed domain.
      *
      * @param array{
-     *   appId: string,
+     *   appId: int,
      *   endpoints: array{
      *     discovery: bool, schemes: list<string>, url: string
      *   }|Endpoints,

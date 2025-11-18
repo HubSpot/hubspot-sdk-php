@@ -14,14 +14,15 @@ use HubspotSDK\Core\Conversion\ListOf;
  *
  * @phpstan-type SimplePublicUpsertObjectShape = array{
  *   id: string,
+ *   archived: bool,
  *   createdAt: \DateTimeInterface,
  *   new: bool,
  *   properties: array<string,string>,
  *   updatedAt: \DateTimeInterface,
- *   archived?: bool|null,
  *   archivedAt?: \DateTimeInterface|null,
  *   objectWriteTraceId?: string|null,
  *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
+ *   url?: string|null,
  * }
  */
 final class SimplePublicUpsertObject implements BaseModel
@@ -34,6 +35,12 @@ final class SimplePublicUpsertObject implements BaseModel
      */
     #[Api]
     public string $id;
+
+    /**
+     * Whether the object is archived.
+     */
+    #[Api]
+    public bool $archived;
 
     /**
      * The timestamp when the object was created, in ISO 8601 format.
@@ -62,17 +69,14 @@ final class SimplePublicUpsertObject implements BaseModel
     public \DateTimeInterface $updatedAt;
 
     /**
-     * Whether the object is archived.
-     */
-    #[Api(optional: true)]
-    public ?bool $archived;
-
-    /**
      * The timestamp when the object was archived, in ISO 8601 format.
      */
     #[Api(optional: true)]
     public ?\DateTimeInterface $archivedAt;
 
+    /**
+     * A unique identifier for tracing the creation or update request.
+     */
     #[Api(optional: true)]
     public ?string $objectWriteTraceId;
 
@@ -84,13 +88,21 @@ final class SimplePublicUpsertObject implements BaseModel
     #[Api(map: new ListOf(ValueWithTimestamp::class), optional: true)]
     public ?array $propertiesWithHistory;
 
+    #[Api(optional: true)]
+    public ?string $url;
+
     /**
      * `new SimplePublicUpsertObject()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
      * SimplePublicUpsertObject::with(
-     *   id: ..., createdAt: ..., new: ..., properties: ..., updatedAt: ...
+     *   id: ...,
+     *   archived: ...,
+     *   createdAt: ...,
+     *   new: ...,
+     *   properties: ...,
+     *   updatedAt: ...,
      * )
      * ```
      *
@@ -99,6 +111,7 @@ final class SimplePublicUpsertObject implements BaseModel
      * ```
      * (new SimplePublicUpsertObject)
      *   ->withID(...)
+     *   ->withArchived(...)
      *   ->withCreatedAt(...)
      *   ->withNew(...)
      *   ->withProperties(...)
@@ -120,27 +133,29 @@ final class SimplePublicUpsertObject implements BaseModel
      */
     public static function with(
         string $id,
+        bool $archived,
         \DateTimeInterface $createdAt,
         bool $new,
         array $properties,
         \DateTimeInterface $updatedAt,
-        ?bool $archived = null,
         ?\DateTimeInterface $archivedAt = null,
         ?string $objectWriteTraceId = null,
         ?array $propertiesWithHistory = null,
+        ?string $url = null,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
+        $obj->archived = $archived;
         $obj->createdAt = $createdAt;
         $obj->new = $new;
         $obj->properties = $properties;
         $obj->updatedAt = $updatedAt;
 
-        null !== $archived && $obj->archived = $archived;
         null !== $archivedAt && $obj->archivedAt = $archivedAt;
         null !== $objectWriteTraceId && $obj->objectWriteTraceId = $objectWriteTraceId;
         null !== $propertiesWithHistory && $obj->propertiesWithHistory = $propertiesWithHistory;
+        null !== $url && $obj->url = $url;
 
         return $obj;
     }
@@ -152,6 +167,17 @@ final class SimplePublicUpsertObject implements BaseModel
     {
         $obj = clone $this;
         $obj->id = $id;
+
+        return $obj;
+    }
+
+    /**
+     * Whether the object is archived.
+     */
+    public function withArchived(bool $archived): self
+    {
+        $obj = clone $this;
+        $obj->archived = $archived;
 
         return $obj;
     }
@@ -203,17 +229,6 @@ final class SimplePublicUpsertObject implements BaseModel
     }
 
     /**
-     * Whether the object is archived.
-     */
-    public function withArchived(bool $archived): self
-    {
-        $obj = clone $this;
-        $obj->archived = $archived;
-
-        return $obj;
-    }
-
-    /**
      * The timestamp when the object was archived, in ISO 8601 format.
      */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
@@ -224,6 +239,9 @@ final class SimplePublicUpsertObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique identifier for tracing the creation or update request.
+     */
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
@@ -242,6 +260,14 @@ final class SimplePublicUpsertObject implements BaseModel
     ): self {
         $obj = clone $this;
         $obj->propertiesWithHistory = $propertiesWithHistory;
+
+        return $obj;
+    }
+
+    public function withURL(string $url): self
+    {
+        $obj = clone $this;
+        $obj->url = $url;
 
         return $obj;
     }

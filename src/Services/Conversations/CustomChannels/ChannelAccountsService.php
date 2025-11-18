@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\CollectionResponseWithTotalPublicChannelAccountForwardPaging;
-use HubspotSDK\Conversations\ConversationsPublicChannelAccount;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountCreateParams;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountGetParams;
+use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
+use HubspotSDK\Conversations\PublicChannelAccount;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountsContract;
 
@@ -39,10 +40,10 @@ final class ChannelAccountsService implements ChannelAccountsContract
      * @throws APIException
      */
     public function create(
-        string $channelID,
+        int $channelID,
         array|ChannelAccountCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicChannelAccount {
+    ): PublicChannelAccount {
         [$parsed, $options] = ChannelAccountCreateParams::parseRequest(
             $params,
             $requestOptions,
@@ -56,7 +57,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
             ],
             body: (object) $parsed,
             options: $options,
-            convert: ConversationsPublicChannelAccount::class,
+            convert: PublicChannelAccount::class,
         );
     }
 
@@ -66,16 +67,16 @@ final class ChannelAccountsService implements ChannelAccountsContract
      * This API is used to update the name of the channel account and it's isAuthorized status. Setting to isAuthorized flag to False disables the channel account.
      *
      * @param array{
-     *   channelId: string, authorized?: bool, name?: string
+     *   channelId: int, authorized?: bool, name?: string
      * }|ChannelAccountUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
-        string $channelAccountID,
+        int $channelAccountID,
         array|ChannelAccountUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicChannelAccount {
+    ): PublicChannelAccount {
         [$parsed, $options] = ChannelAccountUpdateParams::parseRequest(
             $params,
             $requestOptions,
@@ -93,7 +94,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
             ],
             body: (object) array_diff_key($parsed, ['channelId']),
             options: $options,
-            convert: ConversationsPublicChannelAccount::class,
+            convert: PublicChannelAccount::class,
         );
     }
 
@@ -102,20 +103,40 @@ final class ChannelAccountsService implements ChannelAccountsContract
      *
      * Retrieve a list of accounts for a custom channel.
      *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   defaultPageLength?: int,
+     *   deliveryIdentifierType?: list<string>,
+     *   deliveryIdentifierValue?: list<string>,
+     *   limit?: int,
+     *   sort?: list<string>,
+     * }|ChannelAccountListParams $params
+     *
+     * @return Page<PublicChannelAccount>
+     *
      * @throws APIException
      */
     public function list(
-        string $channelID,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalPublicChannelAccountForwardPaging {
+        int $channelID,
+        array|ChannelAccountListParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): Page {
+        [$parsed, $options] = ChannelAccountListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: [
                 'conversations/v3/custom-channels/%1$s/channel-accounts', $channelID,
             ],
-            options: $requestOptions,
-            convert: CollectionResponseWithTotalPublicChannelAccountForwardPaging::class,
+            query: $parsed,
+            options: $options,
+            convert: PublicChannelAccount::class,
+            page: Page::class,
         );
     }
 
@@ -124,15 +145,15 @@ final class ChannelAccountsService implements ChannelAccountsContract
      *
      * Retrieve the details for a specific channel account. This contains all the metadata about your channel account, including its channel, associated inbox id, and delivery identifier information.
      *
-     * @param array{channelId: string}|ChannelAccountGetParams $params
+     * @param array{channelId: int, archived?: bool}|ChannelAccountGetParams $params
      *
      * @throws APIException
      */
     public function get(
-        string $channelAccountID,
+        int $channelAccountID,
         array|ChannelAccountGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicChannelAccount {
+    ): PublicChannelAccount {
         [$parsed, $options] = ChannelAccountGetParams::parseRequest(
             $params,
             $requestOptions,
@@ -148,8 +169,9 @@ final class ChannelAccountsService implements ChannelAccountsContract
                 $channelID,
                 $channelAccountID,
             ],
+            query: $parsed,
             options: $options,
-            convert: ConversationsPublicChannelAccount::class,
+            convert: PublicChannelAccount::class,
         );
     }
 }

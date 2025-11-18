@@ -25,12 +25,21 @@ final class CustomObjectRecordLimitResponse implements BaseModel
     #[Api(list: UsageForObjectType::class)]
     public array $byObjectType;
 
+    /**
+     * The maximum number of custom object records allowed.
+     */
     #[Api]
     public int $overallLimit;
 
+    /**
+     * The percentage of the overall custom object record limit that has been used.
+     */
     #[Api]
     public float $overallPercentage;
 
+    /**
+     * The total number of custom object records currently in use.
+     */
     #[Api]
     public int $overallUsage;
 
@@ -96,6 +105,9 @@ final class CustomObjectRecordLimitResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of custom object records allowed.
+     */
     public function withOverallLimit(int $overallLimit): self
     {
         $obj = clone $this;
@@ -104,6 +116,9 @@ final class CustomObjectRecordLimitResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The percentage of the overall custom object record limit that has been used.
+     */
     public function withOverallPercentage(float $overallPercentage): self
     {
         $obj = clone $this;
@@ -112,6 +127,9 @@ final class CustomObjectRecordLimitResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The total number of custom object records currently in use.
+     */
     public function withOverallUsage(int $overallUsage): self
     {
         $obj = clone $this;

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicClientShape = array{
- *   clientType?: value-of<ClientType>|null, integrationAppId?: int|null
+ *   clientType: value-of<ClientType>, integrationAppId?: int|null
  * }
  */
 final class PublicClient implements BaseModel
@@ -19,20 +19,27 @@ final class PublicClient implements BaseModel
     /** @use SdkModel<PublicClientShape> */
     use SdkModel;
 
-    /**
-     * The type of the client.
-     *
-     * @var value-of<ClientType>|null $clientType
-     */
-    #[Api(enum: ClientType::class, optional: true)]
-    public ?string $clientType;
+    /** @var value-of<ClientType> $clientType */
+    #[Api(enum: ClientType::class)]
+    public string $clientType;
 
-    /**
-     * The ID of the client if the client is an integration.
-     */
     #[Api(optional: true)]
     public ?int $integrationAppId;
 
+    /**
+     * `new PublicClient()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * PublicClient::with(clientType: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new PublicClient)->withClientType(...)
+     * ```
+     */
     public function __construct()
     {
         $this->initialize();
@@ -46,20 +53,19 @@ final class PublicClient implements BaseModel
      * @param ClientType|value-of<ClientType> $clientType
      */
     public static function with(
-        ClientType|string|null $clientType = null,
+        ClientType|string $clientType,
         ?int $integrationAppId = null
     ): self {
         $obj = new self;
 
-        null !== $clientType && $obj['clientType'] = $clientType;
+        $obj['clientType'] = $clientType;
+
         null !== $integrationAppId && $obj->integrationAppId = $integrationAppId;
 
         return $obj;
     }
 
     /**
-     * The type of the client.
-     *
      * @param ClientType|value-of<ClientType> $clientType
      */
     public function withClientType(ClientType|string $clientType): self
@@ -70,9 +76,6 @@ final class PublicClient implements BaseModel
         return $obj;
     }
 
-    /**
-     * The ID of the client if the client is an integration.
-     */
     public function withIntegrationAppID(int $integrationAppID): self
     {
         $obj = clone $this;

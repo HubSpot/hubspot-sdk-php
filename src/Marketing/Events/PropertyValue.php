@@ -14,25 +14,25 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  * Represents a single custom property of a marketing event, storing its name, value, metadata (like source, timestamp, and sensitivity), and related audit information for tracking changes.
  *
  * @phpstan-type PropertyValueShape = array{
+ *   dataSensitivity: value-of<DataSensitivity>,
+ *   isEncrypted: bool,
+ *   isLargeValue: bool,
  *   name: string,
+ *   persistenceTimestamp: int,
+ *   requestId: string,
+ *   selectedByUser: bool,
+ *   selectedByUserTimestamp: int,
+ *   source: value-of<Source>,
+ *   sourceId: string,
+ *   sourceLabel: string,
+ *   sourceMetadata: string,
  *   sourceUpstreamDeployable: string,
+ *   sourceVid: list<int>,
+ *   timestamp: int,
+ *   unit: string,
+ *   updatedByUserId: int,
+ *   useTimestampAsPersistenceTimestamp: bool,
  *   value: string,
- *   dataSensitivity?: value-of<DataSensitivity>|null,
- *   isEncrypted?: bool|null,
- *   isLargeValue?: bool|null,
- *   persistenceTimestamp?: int|null,
- *   requestId?: string|null,
- *   selectedByUser?: bool|null,
- *   selectedByUserTimestamp?: int|null,
- *   source?: value-of<Source>|null,
- *   sourceId?: string|null,
- *   sourceLabel?: string|null,
- *   sourceMetadata?: string|null,
- *   sourceVid?: list<int>|null,
- *   timestamp?: int|null,
- *   unit?: string|null,
- *   updatedByUserId?: int|null,
- *   useTimestampAsPersistenceTimestamp?: bool|null,
  * }
  */
 final class PropertyValue implements BaseModel
@@ -41,13 +41,106 @@ final class PropertyValue implements BaseModel
     use SdkModel;
 
     /**
+     * The sensitivity level of the property, such as "non_sensitive", "sensitive", and "highly_sensitive".
+     *
+     * @var value-of<DataSensitivity> $dataSensitivity
+     */
+    #[Api(enum: DataSensitivity::class)]
+    public string $dataSensitivity;
+
+    /**
+     * Whether the property value is encrypted.
+     */
+    #[Api]
+    public bool $isEncrypted;
+
+    #[Api]
+    public bool $isLargeValue;
+
+    /**
      * Name of custom property.
      */
     #[Api]
     public string $name;
 
     #[Api]
+    public int $persistenceTimestamp;
+
+    /**
+     * A unique ID associated with this request.
+     */
+    #[Api]
+    public string $requestId;
+
+    /**
+     * Whether the value was selected by a user.
+     */
+    #[Api]
+    public bool $selectedByUser;
+
+    /**
+     * The timestamp when the value was selected by a user, if applicable.
+     */
+    #[Api]
+    public int $selectedByUserTimestamp;
+
+    /**
+     * The origin of the property value, such as "IMPORT" or "API".
+     *
+     * @var value-of<Source> $source
+     */
+    #[Api(enum: Source::class)]
+    public string $source;
+
+    /**
+     * The ID of the property source indicating where it was created.
+     */
+    #[Api]
+    public string $sourceId;
+
+    /**
+     * A human-readable label.
+     */
+    #[Api]
+    public string $sourceLabel;
+
+    /**
+     * Source metadata encoded as a base64 string. For example: `ZXhhbXBsZSBzdHJpbmc=`.
+     */
+    #[Api]
+    public string $sourceMetadata;
+
+    #[Api]
     public string $sourceUpstreamDeployable;
+
+    /**
+     * The unique identifier associated with the source.
+     *
+     * @var list<int> $sourceVid
+     */
+    #[Api(list: 'int')]
+    public array $sourceVid;
+
+    /**
+     * When the value was set, as a 64-bit integer.
+     */
+    #[Api]
+    public int $timestamp;
+
+    /**
+     * The unit of measurement or context for the value.
+     */
+    #[Api]
+    public string $unit;
+
+    /**
+     * The ID of the user who updated the property.
+     */
+    #[Api]
+    public int $updatedByUserId;
+
+    #[Api]
+    public bool $useTimestampAsPersistenceTimestamp;
 
     /**
      * Custom property value.
@@ -56,112 +149,55 @@ final class PropertyValue implements BaseModel
     public string $value;
 
     /**
-     * The sensitivity level of the property, such as "non_sensitive", "sensitive", and "highly_sensitive".
-     *
-     * @var value-of<DataSensitivity>|null $dataSensitivity
-     */
-    #[Api(enum: DataSensitivity::class, optional: true)]
-    public ?string $dataSensitivity;
-
-    /**
-     * Whether the property value is encrypted.
-     */
-    #[Api(optional: true)]
-    public ?bool $isEncrypted;
-
-    #[Api(optional: true)]
-    public ?bool $isLargeValue;
-
-    #[Api(optional: true)]
-    public ?int $persistenceTimestamp;
-
-    /**
-     * A unique ID associated with this request.
-     */
-    #[Api(optional: true)]
-    public ?string $requestId;
-
-    /**
-     * Whether the value was selected by a user.
-     */
-    #[Api(optional: true)]
-    public ?bool $selectedByUser;
-
-    /**
-     * The timestamp when the value was selected by a user, if applicable.
-     */
-    #[Api(optional: true)]
-    public ?int $selectedByUserTimestamp;
-
-    /**
-     * The origin of the property value, such as "IMPORT" or "API".
-     *
-     * @var value-of<Source>|null $source
-     */
-    #[Api(enum: Source::class, optional: true)]
-    public ?string $source;
-
-    /**
-     * The ID of the property source indicating where it was created.
-     */
-    #[Api(optional: true)]
-    public ?string $sourceId;
-
-    /**
-     * A human-readable label.
-     */
-    #[Api(optional: true)]
-    public ?string $sourceLabel;
-
-    /**
-     * Source metadata encoded as a base64 string. For example: `ZXhhbXBsZSBzdHJpbmc=`.
-     */
-    #[Api(optional: true)]
-    public ?string $sourceMetadata;
-
-    /**
-     * The unique identifier associated with the source.
-     *
-     * @var list<int>|null $sourceVid
-     */
-    #[Api(list: 'int', optional: true)]
-    public ?array $sourceVid;
-
-    /**
-     * When the value was set, as a 64-bit integer.
-     */
-    #[Api(optional: true)]
-    public ?int $timestamp;
-
-    /**
-     * The unit of measurement or context for the value.
-     */
-    #[Api(optional: true)]
-    public ?string $unit;
-
-    /**
-     * The ID of the user who updated the property.
-     */
-    #[Api(optional: true)]
-    public ?int $updatedByUserId;
-
-    #[Api(optional: true)]
-    public ?bool $useTimestampAsPersistenceTimestamp;
-
-    /**
      * `new PropertyValue()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PropertyValue::with(name: ..., sourceUpstreamDeployable: ..., value: ...)
+     * PropertyValue::with(
+     *   dataSensitivity: ...,
+     *   isEncrypted: ...,
+     *   isLargeValue: ...,
+     *   name: ...,
+     *   persistenceTimestamp: ...,
+     *   requestId: ...,
+     *   selectedByUser: ...,
+     *   selectedByUserTimestamp: ...,
+     *   source: ...,
+     *   sourceId: ...,
+     *   sourceLabel: ...,
+     *   sourceMetadata: ...,
+     *   sourceUpstreamDeployable: ...,
+     *   sourceVid: ...,
+     *   timestamp: ...,
+     *   unit: ...,
+     *   updatedByUserId: ...,
+     *   useTimestampAsPersistenceTimestamp: ...,
+     *   value: ...,
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
      * (new PropertyValue)
+     *   ->withDataSensitivity(...)
+     *   ->withIsEncrypted(...)
+     *   ->withIsLargeValue(...)
      *   ->withName(...)
+     *   ->withPersistenceTimestamp(...)
+     *   ->withRequestID(...)
+     *   ->withSelectedByUser(...)
+     *   ->withSelectedByUserTimestamp(...)
+     *   ->withSource(...)
+     *   ->withSourceID(...)
+     *   ->withSourceLabel(...)
+     *   ->withSourceMetadata(...)
      *   ->withSourceUpstreamDeployable(...)
+     *   ->withSourceVid(...)
+     *   ->withTimestamp(...)
+     *   ->withUnit(...)
+     *   ->withUpdatedByUserID(...)
+     *   ->withUseTimestampAsPersistenceTimestamp(...)
      *   ->withValue(...)
      * ```
      */
@@ -180,78 +216,46 @@ final class PropertyValue implements BaseModel
      * @param list<int> $sourceVid
      */
     public static function with(
+        DataSensitivity|string $dataSensitivity,
+        bool $isEncrypted,
+        bool $isLargeValue,
         string $name,
+        int $persistenceTimestamp,
+        string $requestId,
+        bool $selectedByUser,
+        int $selectedByUserTimestamp,
+        Source|string $source,
+        string $sourceId,
+        string $sourceLabel,
+        string $sourceMetadata,
         string $sourceUpstreamDeployable,
+        array $sourceVid,
+        int $timestamp,
+        string $unit,
+        int $updatedByUserId,
+        bool $useTimestampAsPersistenceTimestamp,
         string $value,
-        DataSensitivity|string|null $dataSensitivity = null,
-        ?bool $isEncrypted = null,
-        ?bool $isLargeValue = null,
-        ?int $persistenceTimestamp = null,
-        ?string $requestId = null,
-        ?bool $selectedByUser = null,
-        ?int $selectedByUserTimestamp = null,
-        Source|string|null $source = null,
-        ?string $sourceId = null,
-        ?string $sourceLabel = null,
-        ?string $sourceMetadata = null,
-        ?array $sourceVid = null,
-        ?int $timestamp = null,
-        ?string $unit = null,
-        ?int $updatedByUserId = null,
-        ?bool $useTimestampAsPersistenceTimestamp = null,
     ): self {
         $obj = new self;
 
+        $obj['dataSensitivity'] = $dataSensitivity;
+        $obj->isEncrypted = $isEncrypted;
+        $obj->isLargeValue = $isLargeValue;
         $obj->name = $name;
+        $obj->persistenceTimestamp = $persistenceTimestamp;
+        $obj->requestId = $requestId;
+        $obj->selectedByUser = $selectedByUser;
+        $obj->selectedByUserTimestamp = $selectedByUserTimestamp;
+        $obj['source'] = $source;
+        $obj->sourceId = $sourceId;
+        $obj->sourceLabel = $sourceLabel;
+        $obj->sourceMetadata = $sourceMetadata;
         $obj->sourceUpstreamDeployable = $sourceUpstreamDeployable;
-        $obj->value = $value;
-
-        null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
-        null !== $isEncrypted && $obj->isEncrypted = $isEncrypted;
-        null !== $isLargeValue && $obj->isLargeValue = $isLargeValue;
-        null !== $persistenceTimestamp && $obj->persistenceTimestamp = $persistenceTimestamp;
-        null !== $requestId && $obj->requestId = $requestId;
-        null !== $selectedByUser && $obj->selectedByUser = $selectedByUser;
-        null !== $selectedByUserTimestamp && $obj->selectedByUserTimestamp = $selectedByUserTimestamp;
-        null !== $source && $obj['source'] = $source;
-        null !== $sourceId && $obj->sourceId = $sourceId;
-        null !== $sourceLabel && $obj->sourceLabel = $sourceLabel;
-        null !== $sourceMetadata && $obj->sourceMetadata = $sourceMetadata;
-        null !== $sourceVid && $obj->sourceVid = $sourceVid;
-        null !== $timestamp && $obj->timestamp = $timestamp;
-        null !== $unit && $obj->unit = $unit;
-        null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
-        null !== $useTimestampAsPersistenceTimestamp && $obj->useTimestampAsPersistenceTimestamp = $useTimestampAsPersistenceTimestamp;
-
-        return $obj;
-    }
-
-    /**
-     * Name of custom property.
-     */
-    public function withName(string $name): self
-    {
-        $obj = clone $this;
-        $obj->name = $name;
-
-        return $obj;
-    }
-
-    public function withSourceUpstreamDeployable(
-        string $sourceUpstreamDeployable
-    ): self {
-        $obj = clone $this;
-        $obj->sourceUpstreamDeployable = $sourceUpstreamDeployable;
-
-        return $obj;
-    }
-
-    /**
-     * Custom property value.
-     */
-    public function withValue(string $value): self
-    {
-        $obj = clone $this;
+        $obj->sourceVid = $sourceVid;
+        $obj->timestamp = $timestamp;
+        $obj->unit = $unit;
+        $obj->updatedByUserId = $updatedByUserId;
+        $obj->useTimestampAsPersistenceTimestamp = $useTimestampAsPersistenceTimestamp;
         $obj->value = $value;
 
         return $obj;
@@ -286,6 +290,17 @@ final class PropertyValue implements BaseModel
     {
         $obj = clone $this;
         $obj->isLargeValue = $isLargeValue;
+
+        return $obj;
+    }
+
+    /**
+     * Name of custom property.
+     */
+    public function withName(string $name): self
+    {
+        $obj = clone $this;
+        $obj->name = $name;
 
         return $obj;
     }
@@ -378,6 +393,15 @@ final class PropertyValue implements BaseModel
         return $obj;
     }
 
+    public function withSourceUpstreamDeployable(
+        string $sourceUpstreamDeployable
+    ): self {
+        $obj = clone $this;
+        $obj->sourceUpstreamDeployable = $sourceUpstreamDeployable;
+
+        return $obj;
+    }
+
     /**
      * The unique identifier associated with the source.
      *
@@ -429,6 +453,17 @@ final class PropertyValue implements BaseModel
     ): self {
         $obj = clone $this;
         $obj->useTimestampAsPersistenceTimestamp = $useTimestampAsPersistenceTimestamp;
+
+        return $obj;
+    }
+
+    /**
+     * Custom property value.
+     */
+    public function withValue(string $value): self
+    {
+        $obj = clone $this;
+        $obj->value = $value;
 
         return $obj;
     }

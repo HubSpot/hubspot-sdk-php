@@ -103,8 +103,9 @@ final class BatchService implements BatchContract
      *
      * @param array{
      *   archived: bool,
+     *   dataSensitivity: "non_sensitive"|"sensitive"|"highly_sensitive",
      *   inputs: list<array{name: string}>,
-     *   dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *   locale?: string,
      * }|BatchGetParams $params
      *
      * @throws APIException
@@ -118,12 +119,14 @@ final class BatchService implements BatchContract
             $params,
             $requestOptions,
         );
+        $query_params = ['locale'];
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/properties/%1$s/batch/read', $objectType],
-            body: (object) $parsed,
+            query: array_diff_key($parsed, $query_params),
+            body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponseProperty::class,
         );

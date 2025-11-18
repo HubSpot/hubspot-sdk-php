@@ -36,7 +36,7 @@ final class ThreadsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->threads->update('threadId', []);
+        $result = $this->client->conversations->threads->update(0, []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +48,7 @@ final class ThreadsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->threads->list();
+        $result = $this->client->conversations->threads->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -60,7 +60,7 @@ final class ThreadsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->threads->delete('threadId');
+        $result = $this->client->conversations->threads->delete(0);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -72,7 +72,7 @@ final class ThreadsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->threads->get('threadId');
+        $result = $this->client->conversations->threads->get(0, []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

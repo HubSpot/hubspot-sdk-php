@@ -16,11 +16,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type CustomChannelUpdateParamsShape = array{
  *   capabilities: array<string,mixed>,
+ *   channelAccountConnectionRedirectUrl: mixed,
  *   channelDescription: mixed,
  *   channelLogoUrl: mixed,
- *   channelAccountConnectionRedirectUrl?: mixed,
- *   name?: mixed,
- *   webhookUrl?: mixed,
+ *   name: mixed,
+ *   webhookUrl: mixed,
  * }
  */
 final class CustomChannelUpdateParams implements BaseModel
@@ -34,18 +34,18 @@ final class CustomChannelUpdateParams implements BaseModel
     public array $capabilities;
 
     #[Api]
+    public mixed $channelAccountConnectionRedirectUrl;
+
+    #[Api]
     public mixed $channelDescription;
 
     #[Api]
     public mixed $channelLogoUrl;
 
-    #[Api(optional: true)]
-    public mixed $channelAccountConnectionRedirectUrl;
-
-    #[Api(optional: true)]
+    #[Api]
     public mixed $name;
 
-    #[Api(optional: true)]
+    #[Api]
     public mixed $webhookUrl;
 
     /**
@@ -54,7 +54,12 @@ final class CustomChannelUpdateParams implements BaseModel
      * To enforce required parameters use
      * ```
      * CustomChannelUpdateParams::with(
-     *   capabilities: ..., channelDescription: ..., channelLogoUrl: ...
+     *   capabilities: ...,
+     *   channelAccountConnectionRedirectUrl: ...,
+     *   channelDescription: ...,
+     *   channelLogoUrl: ...,
+     *   name: ...,
+     *   webhookUrl: ...,
      * )
      * ```
      *
@@ -63,8 +68,11 @@ final class CustomChannelUpdateParams implements BaseModel
      * ```
      * (new CustomChannelUpdateParams)
      *   ->withCapabilities(...)
+     *   ->withChannelAccountConnectionRedirectURL(...)
      *   ->withChannelDescription(...)
      *   ->withChannelLogoURL(...)
+     *   ->withName(...)
+     *   ->withWebhookURL(...)
      * ```
      */
     public function __construct()
@@ -81,21 +89,20 @@ final class CustomChannelUpdateParams implements BaseModel
      */
     public static function with(
         array $capabilities,
+        mixed $channelAccountConnectionRedirectUrl,
         mixed $channelDescription,
         mixed $channelLogoUrl,
-        mixed $channelAccountConnectionRedirectUrl = null,
-        mixed $name = null,
-        mixed $webhookUrl = null,
+        mixed $name,
+        mixed $webhookUrl,
     ): self {
         $obj = new self;
 
         $obj->capabilities = $capabilities;
+        $obj->channelAccountConnectionRedirectUrl = $channelAccountConnectionRedirectUrl;
         $obj->channelDescription = $channelDescription;
         $obj->channelLogoUrl = $channelLogoUrl;
-
-        null !== $channelAccountConnectionRedirectUrl && $obj->channelAccountConnectionRedirectUrl = $channelAccountConnectionRedirectUrl;
-        null !== $name && $obj->name = $name;
-        null !== $webhookUrl && $obj->webhookUrl = $webhookUrl;
+        $obj->name = $name;
+        $obj->webhookUrl = $webhookUrl;
 
         return $obj;
     }
@@ -107,6 +114,15 @@ final class CustomChannelUpdateParams implements BaseModel
     {
         $obj = clone $this;
         $obj->capabilities = $capabilities;
+
+        return $obj;
+    }
+
+    public function withChannelAccountConnectionRedirectURL(
+        mixed $channelAccountConnectionRedirectURL
+    ): self {
+        $obj = clone $this;
+        $obj->channelAccountConnectionRedirectUrl = $channelAccountConnectionRedirectURL;
 
         return $obj;
     }
@@ -123,15 +139,6 @@ final class CustomChannelUpdateParams implements BaseModel
     {
         $obj = clone $this;
         $obj->channelLogoUrl = $channelLogoURL;
-
-        return $obj;
-    }
-
-    public function withChannelAccountConnectionRedirectURL(
-        mixed $channelAccountConnectionRedirectURL
-    ): self {
-        $obj = clone $this;
-        $obj->channelAccountConnectionRedirectUrl = $channelAccountConnectionRedirectURL;
 
         return $obj;
     }

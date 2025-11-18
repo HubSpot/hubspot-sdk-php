@@ -29,7 +29,6 @@ final class MessagesService implements MessagesContract
      * @param array{
      *   attachments: list<array<string,mixed>>,
      *   channelAccountId: string,
-     *   integrationThreadId: string,
      *   messageDirection: "INCOMING"|"OUTGOING",
      *   recipients: list<array{
      *     deliveryIdentifier: array<mixed>|PublicDeliveryIdentifier, name?: string
@@ -41,6 +40,7 @@ final class MessagesService implements MessagesContract
      *   timestamp: string|\DateTimeInterface,
      *   inReplyToId?: string,
      *   integrationIdempotencyId?: string,
+     *   integrationThreadId?: string,
      *   preResolvedContacts?: array{
      *     contacts: list<array{
      *       contactPropertiesLeadingToMatch: list<string>, contactVid: int
@@ -52,7 +52,7 @@ final class MessagesService implements MessagesContract
      * @throws APIException
      */
     public function create(
-        string $channelID,
+        int $channelID,
         array|MessageCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicConversationsMessage {
@@ -77,7 +77,7 @@ final class MessagesService implements MessagesContract
      * Update a message's status to indicate if it was successfully sent, failed to send, or was read. For failed messages, this can also include the error message for the failure.
      *
      * @param array{
-     *   channelId: string, statusType: "SENT"|"FAILED"|"READ", errorMessage?: string
+     *   channelId: int, statusType: "SENT"|"FAILED"|"READ", errorMessage?: string
      * }|MessageUpdateParams $params
      *
      * @throws APIException
@@ -113,7 +113,7 @@ final class MessagesService implements MessagesContract
      *
      * Get the details for a specific message sent over a custom channel
      *
-     * @param array{channelId: string}|MessageGetParams $params
+     * @param array{channelId: int}|MessageGetParams $params
      *
      * @throws APIException
      */

@@ -38,9 +38,15 @@ final class UserUpdateParams implements BaseModel
     #[Api(enum: IDProperty::class, optional: true)]
     public ?string $idProperty;
 
+    /**
+     * The first name of the user.
+     */
     #[Api(optional: true)]
     public ?string $firstName;
 
+    /**
+     * The last name of the user.
+     */
     #[Api(optional: true)]
     public ?string $lastName;
 
@@ -110,6 +116,9 @@ final class UserUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The first name of the user.
+     */
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
@@ -118,6 +127,9 @@ final class UserUpdateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The last name of the user.
+     */
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;

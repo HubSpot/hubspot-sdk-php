@@ -18,6 +18,9 @@ final class CreatedResponseSimplePublicObject implements BaseModel
     /** @use SdkModel<CreatedResponseSimplePublicObjectShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier of the newly created resource.
+     */
     #[Api]
     public string $createdResourceId;
 
@@ -27,6 +30,9 @@ final class CreatedResponseSimplePublicObject implements BaseModel
     #[Api]
     public SimplePublicObject $entity;
 
+    /**
+     * The URL location of the newly created resource.
+     */
     #[Api(optional: true)]
     public ?string $location;
 
@@ -71,6 +77,9 @@ final class CreatedResponseSimplePublicObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier of the newly created resource.
+     */
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
@@ -90,6 +99,9 @@ final class CreatedResponseSimplePublicObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The URL location of the newly created resource.
+     */
     public function withLocation(string $location): self
     {
         $obj = clone $this;

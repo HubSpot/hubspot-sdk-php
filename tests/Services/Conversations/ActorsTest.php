@@ -64,7 +64,7 @@ final class ActorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->actors->get('actorId');
+        $result = $this->client->conversations->actors->get('actorId', []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

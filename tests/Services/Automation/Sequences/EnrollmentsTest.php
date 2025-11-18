@@ -37,6 +37,7 @@ final class EnrollmentsTest extends TestCase
         }
 
         $result = $this->client->automation->sequences->enrollments->enroll([
+            'userId' => 'userId',
             'contactId' => 'contactId',
             'senderEmail' => 'senderEmail',
             'sequenceId' => 'sequenceId',
@@ -53,6 +54,7 @@ final class EnrollmentsTest extends TestCase
         }
 
         $result = $this->client->automation->sequences->enrollments->enroll([
+            'userId' => 'userId',
             'contactId' => 'contactId',
             'senderEmail' => 'senderEmail',
             'sequenceId' => 'sequenceId',

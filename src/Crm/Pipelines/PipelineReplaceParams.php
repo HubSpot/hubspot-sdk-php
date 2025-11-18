@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Replace a pipeline.
+ * Replace all properties of an existing pipeline with the provided values.
  *
  * @see HubspotSDK\Services\Crm\PipelinesService::replace()
  *
@@ -52,9 +52,15 @@ final class PipelineReplaceParams implements BaseModel
     #[Api(list: PipelineStageInput::class)]
     public array $stages;
 
+    /**
+     * Indicates whether to validate deal stage usages before deleting the pipeline.
+     */
     #[Api(optional: true)]
     public ?bool $validateDealStageUsagesBeforeDelete;
 
+    /**
+     * Indicates whether to validate references before deleting the pipeline.
+     */
     #[Api(optional: true)]
     public ?bool $validateReferencesBeforeDelete;
 
@@ -154,6 +160,9 @@ final class PipelineReplaceParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether to validate deal stage usages before deleting the pipeline.
+     */
     public function withValidateDealStageUsagesBeforeDelete(
         bool $validateDealStageUsagesBeforeDelete
     ): self {
@@ -163,6 +172,9 @@ final class PipelineReplaceParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether to validate references before deleting the pipeline.
+     */
     public function withValidateReferencesBeforeDelete(
         bool $validateReferencesBeforeDelete
     ): self {

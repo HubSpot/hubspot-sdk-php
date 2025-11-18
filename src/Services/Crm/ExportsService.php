@@ -41,6 +41,8 @@ final class ExportsService implements ExportsContract
     /**
      * @api
      *
+     * Retrieve detailed information about a specific CRM export, including its current state and properties.
+     *
      * @throws APIException
      */
     public function get(

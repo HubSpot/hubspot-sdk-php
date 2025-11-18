@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Associations\V4\AssociationSpec1;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\Companies\CompanyCreateParams;
@@ -44,10 +44,10 @@ final class CompaniesService implements CompaniesContract
      * Create a single company. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the company, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
      *
      * @param array{
-     *   properties: array<string,string>,
-     *   associations?: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec1>
+     *   associations: list<array{
+     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
      *   }>,
+     *   properties: array<string,string>,
      * }|CompanyCreateParams $params
      *
      * @throws APIException
@@ -233,12 +233,12 @@ final class CompaniesService implements CompaniesContract
      * Search for companies by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
      *
      * @param array{
-     *   after?: string,
-     *   filterGroups?: list<array{filters: list<array<mixed>>}>,
-     *   limit?: int,
-     *   properties?: list<string>,
+     *   after: string,
+     *   filterGroups: list<array{filters: list<array<mixed>>}>,
+     *   limit: int,
+     *   properties: list<string>,
+     *   sorts: list<string>,
      *   query?: string,
-     *   sorts?: list<string>,
      * }|CompanySearchParams $params
      *
      * @throws APIException

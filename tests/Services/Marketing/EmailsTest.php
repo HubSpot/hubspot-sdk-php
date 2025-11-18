@@ -164,7 +164,10 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->getAbTestVariation('emailId');
+        $result = $this->client->marketing->emails->getAbTestVariation(
+            'emailId',
+            []
+        );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

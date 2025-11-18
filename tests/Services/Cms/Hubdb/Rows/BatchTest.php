@@ -68,7 +68,11 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->createBatch(
             'tableIdOrName',
-            ['inputs' => [['values' => ['foo' => []]]]]
+            [
+                'inputs' => [
+                    ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
+                ],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -86,9 +90,9 @@ final class BatchTest extends TestCase
             [
                 'inputs' => [
                     [
-                        'values' => ['foo' => []],
                         'childTableId' => 0,
                         'displayIndex' => 0,
+                        'values' => ['foo' => []],
                         'name' => 'name',
                         'path' => 'path',
                     ],
@@ -198,7 +202,11 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->replaceBatch(
             'tableIdOrName',
-            ['inputs' => [['id' => 'id', 'values' => ['foo' => []]]]]
+            [
+                'inputs' => [
+                    ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
+                ],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -216,10 +224,10 @@ final class BatchTest extends TestCase
             [
                 'inputs' => [
                     [
-                        'id' => 'id',
-                        'values' => ['foo' => []],
                         'childTableId' => 0,
                         'displayIndex' => 0,
+                        'values' => ['foo' => []],
+                        'id' => 'id',
                         'name' => 'name',
                         'path' => 'path',
                     ],
@@ -239,7 +247,11 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->updateBatch(
             'tableIdOrName',
-            ['inputs' => [['id' => 'id', 'values' => ['foo' => []]]]]
+            [
+                'inputs' => [
+                    ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
+                ],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -257,10 +269,10 @@ final class BatchTest extends TestCase
             [
                 'inputs' => [
                     [
-                        'id' => 'id',
-                        'values' => ['foo' => []],
                         'childTableId' => 0,
                         'displayIndex' => 0,
+                        'values' => ['foo' => []],
+                        'id' => 'id',
                         'name' => 'name',
                         'path' => 'path',
                     ],

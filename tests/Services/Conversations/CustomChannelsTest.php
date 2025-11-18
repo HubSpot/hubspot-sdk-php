@@ -65,11 +65,14 @@ final class CustomChannelsTest extends TestCase
         }
 
         $result = $this->client->conversations->customChannels->update(
-            'channelId',
+            0,
             [
                 'capabilities' => ['foo' => []],
+                'channelAccountConnectionRedirectUrl' => [],
                 'channelDescription' => [],
                 'channelLogoUrl' => [],
+                'name' => [],
+                'webhookUrl' => [],
             ],
         );
 
@@ -84,11 +87,14 @@ final class CustomChannelsTest extends TestCase
         }
 
         $result = $this->client->conversations->customChannels->update(
-            'channelId',
+            0,
             [
                 'capabilities' => ['foo' => []],
+                'channelAccountConnectionRedirectUrl' => [],
                 'channelDescription' => [],
                 'channelLogoUrl' => [],
+                'name' => [],
+                'webhookUrl' => [],
             ],
         );
 
@@ -102,7 +108,7 @@ final class CustomChannelsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->customChannels->list();
+        $result = $this->client->conversations->customChannels->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -114,7 +120,7 @@ final class CustomChannelsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->customChannels->delete('channelId');
+        $result = $this->client->conversations->customChannels->delete(0);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -126,7 +132,7 @@ final class CustomChannelsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->customChannels->get('channelId');
+        $result = $this->client->conversations->customChannels->get(0);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

@@ -12,12 +12,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Describes a search request.
  *
  * @phpstan-type PublicObjectSearchRequestShape = array{
- *   after?: string|null,
- *   filterGroups?: list<FilterGroup>|null,
- *   limit?: int|null,
- *   properties?: list<string>|null,
+ *   after: string,
+ *   filterGroups: list<FilterGroup>,
+ *   limit: int,
+ *   properties: list<string>,
+ *   sorts: list<string>,
  *   query?: string|null,
- *   sorts?: list<string>|null,
  * }
  */
 final class PublicObjectSearchRequest implements BaseModel
@@ -28,30 +28,38 @@ final class PublicObjectSearchRequest implements BaseModel
     /**
      * A paging cursor token for retrieving subsequent pages.
      */
-    #[Api(optional: true)]
-    public ?string $after;
+    #[Api]
+    public string $after;
 
     /**
      * Up to 6 groups of filters defining additional query criteria.
      *
-     * @var list<FilterGroup>|null $filterGroups
+     * @var list<FilterGroup> $filterGroups
      */
-    #[Api(list: FilterGroup::class, optional: true)]
-    public ?array $filterGroups;
+    #[Api(list: FilterGroup::class)]
+    public array $filterGroups;
 
     /**
      * The maximum results to return, up to 200 objects.
      */
-    #[Api(optional: true)]
-    public ?int $limit;
+    #[Api]
+    public int $limit;
 
     /**
      * A list of property names to include in the response.
      *
-     * @var list<string>|null $properties
+     * @var list<string> $properties
      */
-    #[Api(list: 'string', optional: true)]
-    public ?array $properties;
+    #[Api(list: 'string')]
+    public array $properties;
+
+    /**
+     * Specifies sorting order based on object properties.
+     *
+     * @var list<string> $sorts
+     */
+    #[Api(list: 'string')]
+    public array $sorts;
 
     /**
      * The search query string, up to 3000 characters.
@@ -60,13 +68,26 @@ final class PublicObjectSearchRequest implements BaseModel
     public ?string $query;
 
     /**
-     * Specifies sorting order based on object properties.
+     * `new PublicObjectSearchRequest()` is missing required properties by the API.
      *
-     * @var list<string>|null $sorts
+     * To enforce required parameters use
+     * ```
+     * PublicObjectSearchRequest::with(
+     *   after: ..., filterGroups: ..., limit: ..., properties: ..., sorts: ...
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new PublicObjectSearchRequest)
+     *   ->withAfter(...)
+     *   ->withFilterGroups(...)
+     *   ->withLimit(...)
+     *   ->withProperties(...)
+     *   ->withSorts(...)
+     * ```
      */
-    #[Api(list: 'string', optional: true)]
-    public ?array $sorts;
-
     public function __construct()
     {
         $this->initialize();
@@ -82,21 +103,22 @@ final class PublicObjectSearchRequest implements BaseModel
      * @param list<string> $sorts
      */
     public static function with(
-        ?string $after = null,
-        ?array $filterGroups = null,
-        ?int $limit = null,
-        ?array $properties = null,
+        string $after,
+        array $filterGroups,
+        int $limit,
+        array $properties,
+        array $sorts,
         ?string $query = null,
-        ?array $sorts = null,
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $filterGroups && $obj->filterGroups = $filterGroups;
-        null !== $limit && $obj->limit = $limit;
-        null !== $properties && $obj->properties = $properties;
+        $obj->after = $after;
+        $obj->filterGroups = $filterGroups;
+        $obj->limit = $limit;
+        $obj->properties = $properties;
+        $obj->sorts = $sorts;
+
         null !== $query && $obj->query = $query;
-        null !== $sorts && $obj->sorts = $sorts;
 
         return $obj;
     }
@@ -150,17 +172,6 @@ final class PublicObjectSearchRequest implements BaseModel
     }
 
     /**
-     * The search query string, up to 3000 characters.
-     */
-    public function withQuery(string $query): self
-    {
-        $obj = clone $this;
-        $obj->query = $query;
-
-        return $obj;
-    }
-
-    /**
      * Specifies sorting order based on object properties.
      *
      * @param list<string> $sorts
@@ -169,6 +180,17 @@ final class PublicObjectSearchRequest implements BaseModel
     {
         $obj = clone $this;
         $obj->sorts = $sorts;
+
+        return $obj;
+    }
+
+    /**
+     * The search query string, up to 3000 characters.
+     */
+    public function withQuery(string $query): self
+    {
+        $obj = clone $this;
+        $obj->query = $query;
 
         return $obj;
     }

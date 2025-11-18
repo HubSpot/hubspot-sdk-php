@@ -19,10 +19,17 @@ final class PublicPropertyValidationRuleMap implements BaseModel
     /** @use SdkModel<PublicPropertyValidationRuleMapShape> */
     use SdkModel;
 
+    /**
+     * The name of the property for which validation rules are defined.
+     */
     #[Api]
     public string $propertyName;
 
-    /** @var list<PublicPropertyValidationRule> $propertyValidationRules */
+    /**
+     * A list of validation rules applicable to the property.
+     *
+     * @var list<PublicPropertyValidationRule> $propertyValidationRules
+     */
     #[Api(list: PublicPropertyValidationRule::class)]
     public array $propertyValidationRules;
 
@@ -68,6 +75,9 @@ final class PublicPropertyValidationRuleMap implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name of the property for which validation rules are defined.
+     */
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
@@ -77,6 +87,8 @@ final class PublicPropertyValidationRuleMap implements BaseModel
     }
 
     /**
+     * A list of validation rules applicable to the property.
+     *
      * @param list<PublicPropertyValidationRule> $propertyValidationRules
      */
     public function withPropertyValidationRules(

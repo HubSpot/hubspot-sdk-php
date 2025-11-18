@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Associations\V4\AssociationSpec1;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\Listings\ListingCreateParams;
@@ -43,10 +43,10 @@ final class ListingsService implements ListingsContract
      * Create a listing with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard listings is provided.
      *
      * @param array{
-     *   properties: array<string,string>,
-     *   associations?: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec1>
+     *   associations: list<array{
+     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
      *   }>,
+     *   properties: array<string,string>,
      * }|ListingCreateParams $params
      *
      * @throws APIException
@@ -202,12 +202,12 @@ final class ListingsService implements ListingsContract
      * Execute a search query to find listings based on specified filters and properties.
      *
      * @param array{
-     *   after?: string,
-     *   filterGroups?: list<array{filters: list<array<mixed>>}>,
-     *   limit?: int,
-     *   properties?: list<string>,
+     *   after: string,
+     *   filterGroups: list<array{filters: list<array<mixed>>}>,
+     *   limit: int,
+     *   properties: list<string>,
+     *   sorts: list<string>,
      *   query?: string,
-     *   sorts?: list<string>,
      * }|ListingSearchParams $params
      *
      * @throws APIException

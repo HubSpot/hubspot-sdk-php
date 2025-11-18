@@ -37,6 +37,7 @@ final class CalendarTest extends TestCase
         }
 
         $result = $this->client->scheduler->meetings->calendar->create([
+            'organizerUserId' => 'organizerUserId',
             'associations' => [
                 [
                     'to' => ['id' => '37295'],
@@ -58,6 +59,7 @@ final class CalendarTest extends TestCase
                 'hs_meeting_start_time' => '2019-12-27T18:11:19.117Z',
                 'hs_meeting_title' => 'hs_meeting_title',
                 'hs_timestamp' => '2019-12-27T18:11:19.117Z',
+                'hubspot_owner_id' => 'hubspot_owner_id',
             ],
             'timezone' => 'timezone',
         ]);
@@ -73,6 +75,7 @@ final class CalendarTest extends TestCase
         }
 
         $result = $this->client->scheduler->meetings->calendar->create([
+            'organizerUserId' => 'organizerUserId',
             'associations' => [
                 [
                     'to' => ['id' => '37295'],
@@ -94,6 +97,7 @@ final class CalendarTest extends TestCase
                 'hs_meeting_start_time' => '2019-12-27T18:11:19.117Z',
                 'hs_meeting_title' => 'hs_meeting_title',
                 'hs_timestamp' => '2019-12-27T18:11:19.117Z',
+                'hubspot_owner_id' => 'hubspot_owner_id',
                 'hs_activity_type' => 'hs_activity_type',
                 'hs_attachment_ids' => ['string'],
                 'hs_attendee_owner_ids' => ['string'],
@@ -101,7 +105,6 @@ final class CalendarTest extends TestCase
                 'hs_meeting_body' => 'hs_meeting_body',
                 'hs_meeting_location' => 'hs_meeting_location',
                 'hs_meeting_location_type' => 'hs_meeting_location_type',
-                'hubspot_owner_id' => 'hubspot_owner_id',
             ],
             'timezone' => 'timezone',
         ]);

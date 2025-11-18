@@ -20,12 +20,18 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
     /** @use SdkModel<CreatedResponseLabelsBetweenObjectPairShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier of the newly created resource.
+     */
     #[Api]
     public string $createdResourceId;
 
     #[Api]
     public LabelsBetweenObjectPair $entity;
 
+    /**
+     * The URL location of the newly created resource.
+     */
     #[Api(optional: true)]
     public ?string $location;
 
@@ -72,6 +78,9 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier of the newly created resource.
+     */
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
@@ -88,6 +97,9 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
         return $obj;
     }
 
+    /**
+     * The URL location of the newly created resource.
+     */
     public function withLocation(string $location): self
     {
         $obj = clone $this;

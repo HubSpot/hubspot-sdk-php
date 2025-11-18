@@ -18,8 +18,9 @@ use HubspotSDK\PropertyName;
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   archived: bool,
+ *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
  *   inputs: list<PropertyName>,
- *   dataSensitivity?: DataSensitivity|value-of<DataSensitivity>,
+ *   locale?: string,
  * }
  */
 final class BatchGetParams implements BaseModel
@@ -31,26 +32,32 @@ final class BatchGetParams implements BaseModel
     #[Api]
     public bool $archived;
 
+    /** @var value-of<DataSensitivity> $dataSensitivity */
+    #[Api(enum: DataSensitivity::class)]
+    public string $dataSensitivity;
+
     /** @var list<PropertyName> $inputs */
     #[Api(list: PropertyName::class)]
     public array $inputs;
 
-    /** @var value-of<DataSensitivity>|null $dataSensitivity */
-    #[Api(enum: DataSensitivity::class, optional: true)]
-    public ?string $dataSensitivity;
+    #[Api(optional: true)]
+    public ?string $locale;
 
     /**
      * `new BatchGetParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * BatchGetParams::with(archived: ..., inputs: ...)
+     * BatchGetParams::with(archived: ..., dataSensitivity: ..., inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new BatchGetParams)->withArchived(...)->withInputs(...)
+     * (new BatchGetParams)
+     *   ->withArchived(...)
+     *   ->withDataSensitivity(...)
+     *   ->withInputs(...)
      * ```
      */
     public function __construct()
@@ -63,20 +70,22 @@ final class BatchGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyName> $inputs
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
+     * @param list<PropertyName> $inputs
      */
     public static function with(
         bool $archived,
+        DataSensitivity|string $dataSensitivity,
         array $inputs,
-        DataSensitivity|string|null $dataSensitivity = null,
+        ?string $locale = null,
     ): self {
         $obj = new self;
 
         $obj->archived = $archived;
+        $obj['dataSensitivity'] = $dataSensitivity;
         $obj->inputs = $inputs;
 
-        null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
+        null !== $locale && $obj->locale = $locale;
 
         return $obj;
     }
@@ -85,6 +94,18 @@ final class BatchGetParams implements BaseModel
     {
         $obj = clone $this;
         $obj->archived = $archived;
+
+        return $obj;
+    }
+
+    /**
+     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
+     */
+    public function withDataSensitivity(
+        DataSensitivity|string $dataSensitivity
+    ): self {
+        $obj = clone $this;
+        $obj['dataSensitivity'] = $dataSensitivity;
 
         return $obj;
     }
@@ -100,14 +121,10 @@ final class BatchGetParams implements BaseModel
         return $obj;
     }
 
-    /**
-     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     */
-    public function withDataSensitivity(
-        DataSensitivity|string $dataSensitivity
-    ): self {
+    public function withLocale(string $locale): self
+    {
         $obj = clone $this;
-        $obj['dataSensitivity'] = $dataSensitivity;
+        $obj->locale = $locale;
 
         return $obj;
     }

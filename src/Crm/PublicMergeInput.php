@@ -18,9 +18,15 @@ final class PublicMergeInput implements BaseModel
     /** @use SdkModel<PublicMergeInputShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier of the CRM object that will be merged into the primary object.
+     */
     #[Api]
     public string $objectIdToMerge;
 
+    /**
+     * The unique identifier of the CRM object that will remain after the merge.
+     */
     #[Api]
     public string $primaryObjectId;
 
@@ -60,6 +66,9 @@ final class PublicMergeInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier of the CRM object that will be merged into the primary object.
+     */
     public function withObjectIDToMerge(string $objectIDToMerge): self
     {
         $obj = clone $this;
@@ -68,6 +77,9 @@ final class PublicMergeInput implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier of the CRM object that will remain after the merge.
+     */
     public function withPrimaryObjectID(string $primaryObjectID): self
     {
         $obj = clone $this;

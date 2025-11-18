@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Update a specific validation rule for a property identified by its name and rule type.
+ *
  * @see HubspotSDK\Services\Crm\PropertyValidationsService::crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType()
  *
  * @phpstan-type PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParamsShape = array{
@@ -30,7 +32,11 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
     #[Api]
     public string $propertyName;
 
-    /** @var list<string> $ruleArguments */
+    /**
+     * A list of arguments that define the constraints for the validation rule.
+     *
+     * @var list<string> $ruleArguments
+     */
     #[Api(list: 'string')]
     public array $ruleArguments;
 
@@ -96,6 +102,8 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
     }
 
     /**
+     * A list of arguments that define the constraints for the validation rule.
+     *
      * @param list<string> $ruleArguments
      */
     public function withRuleArguments(array $ruleArguments): self

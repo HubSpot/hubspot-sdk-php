@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Associations\V4\AssociationSpec1;
 use HubspotSDK\PublicObjectID;
 
 /**
  * @phpstan-type PublicDefaultAssociationShape = array{
- *   associationSpec: AssociationSpec1, from: PublicObjectID, to: PublicObjectID
+ *   associationSpec: AssociationSpec, from: PublicObjectID, to: PublicObjectID
  * }
  */
 final class PublicDefaultAssociation implements BaseModel
@@ -24,7 +24,7 @@ final class PublicDefaultAssociation implements BaseModel
      * Defines the type, direction, and details of the relationship between two CRM objects.
      */
     #[Api]
-    public AssociationSpec1 $associationSpec;
+    public AssociationSpec $associationSpec;
 
     #[Api]
     public PublicObjectID $from;
@@ -60,7 +60,7 @@ final class PublicDefaultAssociation implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        AssociationSpec1 $associationSpec,
+        AssociationSpec $associationSpec,
         PublicObjectID $from,
         PublicObjectID $to
     ): self {
@@ -76,7 +76,7 @@ final class PublicDefaultAssociation implements BaseModel
     /**
      * Defines the type, direction, and details of the relationship between two CRM objects.
      */
-    public function withAssociationSpec(AssociationSpec1 $associationSpec): self
+    public function withAssociationSpec(AssociationSpec $associationSpec): self
     {
         $obj = clone $this;
         $obj->associationSpec = $associationSpec;

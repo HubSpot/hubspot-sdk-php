@@ -32,33 +32,63 @@ final class PublicExportResponse implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The unique ID of the export.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The timestamp when the export was created, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
-    /** @var value-of<ExportState> $exportState */
+    /**
+     * The current state of the export process.
+     *
+     * @var value-of<ExportState> $exportState
+     */
     #[Api(enum: ExportState::class)]
     public string $exportState;
 
-    /** @var value-of<ExportType> $exportType */
+    /**
+     * The type of export, which can be either VIEW or LIST.
+     *
+     * @var value-of<ExportType> $exportType
+     */
     #[Api(enum: ExportType::class)]
     public string $exportType;
 
-    /** @var list<string> $objectProperties */
+    /**
+     * The list of properties exported for the associated object.
+     *
+     * @var list<string> $objectProperties
+     */
     #[Api(list: 'string')]
     public array $objectProperties;
 
+    /**
+     * The associated CRM object being exported.
+     */
     #[Api]
     public string $objectType;
 
+    /**
+     * The timestamp when the export was last updated, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * The name assigned to the export.
+     */
     #[Api(optional: true)]
     public ?string $exportName;
 
+    /**
+     * The total number of records included in the export.
+     */
     #[Api(optional: true)]
     public ?int $recordCount;
 
@@ -132,6 +162,9 @@ final class PublicExportResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The unique ID of the export.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -140,6 +173,9 @@ final class PublicExportResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The timestamp when the export was created, in ISO 8601 format.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -149,6 +185,8 @@ final class PublicExportResponse implements BaseModel, ResponseConverter
     }
 
     /**
+     * The current state of the export process.
+     *
      * @param ExportState|value-of<ExportState> $exportState
      */
     public function withExportState(ExportState|string $exportState): self
@@ -160,6 +198,8 @@ final class PublicExportResponse implements BaseModel, ResponseConverter
     }
 
     /**
+     * The type of export, which can be either VIEW or LIST.
+     *
      * @param ExportType|value-of<ExportType> $exportType
      */
     public function withExportType(ExportType|string $exportType): self
@@ -171,6 +211,8 @@ final class PublicExportResponse implements BaseModel, ResponseConverter
     }
 
     /**
+     * The list of properties exported for the associated object.
+     *
      * @param list<string> $objectProperties
      */
     public function withObjectProperties(array $objectProperties): self
@@ -181,6 +223,9 @@ final class PublicExportResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The associated CRM object being exported.
+     */
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
@@ -189,6 +234,9 @@ final class PublicExportResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The timestamp when the export was last updated, in ISO 8601 format.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -197,6 +245,9 @@ final class PublicExportResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The name assigned to the export.
+     */
     public function withExportName(string $exportName): self
     {
         $obj = clone $this;
@@ -205,6 +256,9 @@ final class PublicExportResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The total number of records included in the export.
+     */
     public function withRecordCount(int $recordCount): self
     {
         $obj = clone $this;

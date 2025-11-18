@@ -36,7 +36,7 @@ final class MessagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->messages->create('threadId');
+        $result = $this->client->conversations->messages->create(0);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +48,7 @@ final class MessagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->messages->list('threadId');
+        $result = $this->client->conversations->messages->list(0, []);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -62,7 +62,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            ['threadId' => 'threadId']
+            ['threadId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -77,7 +77,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            ['threadId' => 'threadId']
+            ['threadId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -92,7 +92,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            ['threadId' => 'threadId']
+            ['threadId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -107,7 +107,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            ['threadId' => 'threadId']
+            ['threadId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

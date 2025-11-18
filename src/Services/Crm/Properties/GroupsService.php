@@ -11,6 +11,7 @@ use HubspotSDK\Crm\Properties\CreatedResponsePropertyGroup;
 use HubspotSDK\Crm\Properties\Groups\GroupCreateParams;
 use HubspotSDK\Crm\Properties\Groups\GroupDeleteParams;
 use HubspotSDK\Crm\Properties\Groups\GroupGetParams;
+use HubspotSDK\Crm\Properties\Groups\GroupListParams;
 use HubspotSDK\Crm\Properties\Groups\GroupUpdateParams;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
@@ -92,17 +93,26 @@ final class GroupsService implements GroupsContract
      *
      * Read all existing property groups for the specified object type and HubSpot account.
      *
+     * @param array{locale?: string}|GroupListParams $params
+     *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        ?RequestOptions $requestOptions = null
+        array|GroupListParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponsePropertyGroup {
+        [$parsed, $options] = GroupListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/properties/%1$s/groups', $objectType],
-            options: $requestOptions,
+            query: $parsed,
+            options: $options,
             convert: CollectionResponsePropertyGroup::class,
         );
     }
@@ -142,7 +152,7 @@ final class GroupsService implements GroupsContract
      *
      * Read a property group identified by {groupName}.
      *
-     * @param array{objectType: string}|GroupGetParams $params
+     * @param array{objectType: string, locale?: string}|GroupGetParams $params
      *
      * @throws APIException
      */
@@ -162,6 +172,7 @@ final class GroupsService implements GroupsContract
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/properties/%1$s/groups/%2$s', $objectType, $groupName],
+            query: $parsed,
             options: $options,
             convert: PropertyGroup::class,
         );

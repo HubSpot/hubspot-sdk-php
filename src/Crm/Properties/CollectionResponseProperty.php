@@ -9,12 +9,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
-use HubspotSDK\Marketing\Emails\EmailsPaging;
+use HubspotSDK\Paging;
 use HubspotSDK\Property;
 
 /**
  * @phpstan-type CollectionResponsePropertyShape = array{
- *   results: list<Property>, paging?: EmailsPaging|null
+ *   results: list<Property>, paging?: Paging|null
  * }
  */
 final class CollectionResponseProperty implements BaseModel, ResponseConverter
@@ -28,11 +28,8 @@ final class CollectionResponseProperty implements BaseModel, ResponseConverter
     #[Api(list: Property::class)]
     public array $results;
 
-    /**
-     * Contains information pagination of results.
-     */
     #[Api(optional: true)]
-    public ?EmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponseProperty()` is missing required properties by the API.
@@ -60,10 +57,8 @@ final class CollectionResponseProperty implements BaseModel, ResponseConverter
      *
      * @param list<Property> $results
      */
-    public static function with(
-        array $results,
-        ?EmailsPaging $paging = null
-    ): self {
+    public static function with(array $results, ?Paging $paging = null): self
+    {
         $obj = new self;
 
         $obj->results = $results;
@@ -84,10 +79,7 @@ final class CollectionResponseProperty implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    /**
-     * Contains information pagination of results.
-     */
-    public function withPaging(EmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

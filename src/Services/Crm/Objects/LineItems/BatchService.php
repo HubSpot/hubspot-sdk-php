@@ -30,8 +30,8 @@ final class BatchService implements BatchContract
      *
      * @param array{
      *   inputs: list<array{
+     *     associations: list<array<mixed>>,
      *     properties: array<string,string>,
-     *     associations?: list<array<mixed>>,
      *     objectWriteTraceId?: string,
      *   }>,
      * }|BatchCreateParams $params

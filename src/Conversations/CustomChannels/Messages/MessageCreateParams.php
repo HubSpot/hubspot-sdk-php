@@ -28,7 +28,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type MessageCreateParamsShape = array{
  *   attachments: list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment>,
  *   channelAccountId: string,
- *   integrationThreadId: string,
  *   messageDirection: MessageDirection|value-of<MessageDirection>,
  *   recipients: list<ChannelIntegrationParticipant>,
  *   senders: list<ChannelIntegrationParticipant>,
@@ -36,6 +35,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   timestamp: \DateTimeInterface,
  *   inReplyToId?: string,
  *   integrationIdempotencyId?: string,
+ *   integrationThreadId?: string,
  *   preResolvedContacts?: PreResolvedContacts,
  *   richText?: string,
  * }
@@ -54,9 +54,6 @@ final class MessageCreateParams implements BaseModel
 
     #[Api]
     public string $channelAccountId;
-
-    #[Api]
-    public string $integrationThreadId;
 
     /** @var value-of<MessageDirection> $messageDirection */
     #[Api(enum: MessageDirection::class)]
@@ -83,6 +80,9 @@ final class MessageCreateParams implements BaseModel
     public ?string $integrationIdempotencyId;
 
     #[Api(optional: true)]
+    public ?string $integrationThreadId;
+
+    #[Api(optional: true)]
     public ?PreResolvedContacts $preResolvedContacts;
 
     #[Api(optional: true)]
@@ -96,7 +96,6 @@ final class MessageCreateParams implements BaseModel
      * MessageCreateParams::with(
      *   attachments: ...,
      *   channelAccountId: ...,
-     *   integrationThreadId: ...,
      *   messageDirection: ...,
      *   recipients: ...,
      *   senders: ...,
@@ -111,7 +110,6 @@ final class MessageCreateParams implements BaseModel
      * (new MessageCreateParams)
      *   ->withAttachments(...)
      *   ->withChannelAccountID(...)
-     *   ->withIntegrationThreadID(...)
      *   ->withMessageDirection(...)
      *   ->withRecipients(...)
      *   ->withSenders(...)
@@ -137,7 +135,6 @@ final class MessageCreateParams implements BaseModel
     public static function with(
         array $attachments,
         string $channelAccountId,
-        string $integrationThreadId,
         MessageDirection|string $messageDirection,
         array $recipients,
         array $senders,
@@ -145,6 +142,7 @@ final class MessageCreateParams implements BaseModel
         \DateTimeInterface $timestamp,
         ?string $inReplyToId = null,
         ?string $integrationIdempotencyId = null,
+        ?string $integrationThreadId = null,
         ?PreResolvedContacts $preResolvedContacts = null,
         ?string $richText = null,
     ): self {
@@ -152,7 +150,6 @@ final class MessageCreateParams implements BaseModel
 
         $obj->attachments = $attachments;
         $obj->channelAccountId = $channelAccountId;
-        $obj->integrationThreadId = $integrationThreadId;
         $obj['messageDirection'] = $messageDirection;
         $obj->recipients = $recipients;
         $obj->senders = $senders;
@@ -161,6 +158,7 @@ final class MessageCreateParams implements BaseModel
 
         null !== $inReplyToId && $obj->inReplyToId = $inReplyToId;
         null !== $integrationIdempotencyId && $obj->integrationIdempotencyId = $integrationIdempotencyId;
+        null !== $integrationThreadId && $obj->integrationThreadId = $integrationThreadId;
         null !== $preResolvedContacts && $obj->preResolvedContacts = $preResolvedContacts;
         null !== $richText && $obj->richText = $richText;
 
@@ -182,14 +180,6 @@ final class MessageCreateParams implements BaseModel
     {
         $obj = clone $this;
         $obj->channelAccountId = $channelAccountID;
-
-        return $obj;
-    }
-
-    public function withIntegrationThreadID(string $integrationThreadID): self
-    {
-        $obj = clone $this;
-        $obj->integrationThreadId = $integrationThreadID;
 
         return $obj;
     }
@@ -257,6 +247,14 @@ final class MessageCreateParams implements BaseModel
     ): self {
         $obj = clone $this;
         $obj->integrationIdempotencyId = $integrationIdempotencyID;
+
+        return $obj;
+    }
+
+    public function withIntegrationThreadID(string $integrationThreadID): self
+    {
+        $obj = clone $this;
+        $obj->integrationThreadId = $integrationThreadID;
 
         return $obj;
     }

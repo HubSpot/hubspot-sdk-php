@@ -18,7 +18,11 @@ final class PublicPropertyValidationRuleUpdate implements BaseModel
     /** @use SdkModel<PublicPropertyValidationRuleUpdateShape> */
     use SdkModel;
 
-    /** @var list<string> $ruleArguments */
+    /**
+     * A list of arguments that define the constraints for the validation rule.
+     *
+     * @var list<string> $ruleArguments
+     */
     #[Api(list: 'string')]
     public array $ruleArguments;
 
@@ -58,6 +62,8 @@ final class PublicPropertyValidationRuleUpdate implements BaseModel
     }
 
     /**
+     * A list of arguments that define the constraints for the validation rule.
+     *
      * @param list<string> $ruleArguments
      */
     public function withRuleArguments(array $ruleArguments): self

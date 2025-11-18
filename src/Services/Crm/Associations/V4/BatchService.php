@@ -7,15 +7,17 @@ namespace HubspotSDK\Services\Crm\Associations\V4;
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\Associations\BatchResponseVoid;
 use HubspotSDK\Crm\Associations\V4\Batch\BatchCreateDefaultParams;
 use HubspotSDK\Crm\Associations\V4\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Associations\V4\Batch\BatchDeleteLabelsParams;
 use HubspotSDK\Crm\Associations\V4\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Associations\V4\Batch\BatchGetParams;
+use HubspotSDK\Crm\Associations\V4\Batch\BatchUpsertParams;
 use HubspotSDK\Crm\Associations\V4\BatchResponseLabelsBetweenObjectPair;
 use HubspotSDK\Crm\Associations\V4\BatchResponsePublicAssociationMultiWithLabel;
-use HubspotSDK\Crm\Associations\V4\BatchResponseVoid;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
+use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\V4\BatchContract;
@@ -225,6 +227,42 @@ final class BatchService implements BatchContract
             body: (object) array_diff_key($parsed, ['fromObjectType']),
             options: $options,
             convert: BatchResponsePublicAssociationMultiWithLabel::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Upsert a batch of CRM objects, creating new records or updating existing ones based on their internal IDs or unique property values.
+     *
+     * @param array{
+     *   inputs: list<array{
+     *     id: string,
+     *     properties: array<string,string>,
+     *     idProperty?: string,
+     *     objectWriteTraceId?: string,
+     *   }>,
+     * }|BatchUpsertParams $params
+     *
+     * @throws APIException
+     */
+    public function upsert(
+        string $objectType,
+        array|BatchUpsertParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): BatchResponseSimplePublicUpsertObject {
+        [$parsed, $options] = BatchUpsertParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line;
+        return $this->client->request(
+            method: 'post',
+            path: ['crm/v4/objects/%1$s/batch/upsert', $objectType],
+            body: (object) $parsed,
+            options: $options,
+            convert: BatchResponseSimplePublicUpsertObject::class,
         );
     }
 }

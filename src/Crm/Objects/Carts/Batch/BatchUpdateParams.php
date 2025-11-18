@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObjectBatchInput;
 
 /**
- * Update a batch of carts by internal ID, or unique property values.
+ * Update a batch of carts using their internal IDs or unique property values.
  *
  * @see HubspotSDK\Services\Crm\Objects\Carts\BatchService::update()
  *

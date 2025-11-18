@@ -16,8 +16,8 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
  * @see HubspotSDK\Services\Crm\Objects\ProductsService::create()
  *
  * @phpstan-type ProductCreateParamsShape = array{
+ *   associations: list<PublicAssociationsForObject>,
  *   properties: array<string,string>,
- *   associations?: list<PublicAssociationsForObject>,
  * }
  */
 final class ProductCreateParams implements BaseModel
@@ -25,6 +25,10 @@ final class ProductCreateParams implements BaseModel
     /** @use SdkModel<ProductCreateParamsShape> */
     use SdkModel;
     use SdkParams;
+
+    /** @var list<PublicAssociationsForObject> $associations */
+    #[Api(list: PublicAssociationsForObject::class)]
+    public array $associations;
 
     /**
      * Key-value pairs for setting properties for the new object.
@@ -34,22 +38,18 @@ final class ProductCreateParams implements BaseModel
     #[Api(map: 'string')]
     public array $properties;
 
-    /** @var list<PublicAssociationsForObject>|null $associations */
-    #[Api(list: PublicAssociationsForObject::class, optional: true)]
-    public ?array $associations;
-
     /**
      * `new ProductCreateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ProductCreateParams::with(properties: ...)
+     * ProductCreateParams::with(associations: ..., properties: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new ProductCreateParams)->withProperties(...)
+     * (new ProductCreateParams)->withAssociations(...)->withProperties(...)
      * ```
      */
     public function __construct()
@@ -62,18 +62,26 @@ final class ProductCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,string> $properties
      * @param list<PublicAssociationsForObject> $associations
+     * @param array<string,string> $properties
      */
-    public static function with(
-        array $properties,
-        ?array $associations = null
-    ): self {
+    public static function with(array $associations, array $properties): self
+    {
         $obj = new self;
 
+        $obj->associations = $associations;
         $obj->properties = $properties;
 
-        null !== $associations && $obj->associations = $associations;
+        return $obj;
+    }
+
+    /**
+     * @param list<PublicAssociationsForObject> $associations
+     */
+    public function withAssociations(array $associations): self
+    {
+        $obj = clone $this;
+        $obj->associations = $associations;
 
         return $obj;
     }
@@ -87,17 +95,6 @@ final class ProductCreateParams implements BaseModel
     {
         $obj = clone $this;
         $obj->properties = $properties;
-
-        return $obj;
-    }
-
-    /**
-     * @param list<PublicAssociationsForObject> $associations
-     */
-    public function withAssociations(array $associations): self
-    {
-        $obj = clone $this;
-        $obj->associations = $associations;
 
         return $obj;
     }

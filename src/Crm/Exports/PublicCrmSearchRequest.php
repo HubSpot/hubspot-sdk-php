@@ -31,10 +31,17 @@ final class PublicCrmSearchRequest implements BaseModel
     #[Api(list: Filter::class)]
     public array $filters;
 
-    /** @var list<string> $sorts */
+    /**
+     * Defines the order in which the CRM records should be returned.
+     *
+     * @var list<string> $sorts
+     */
     #[Api(list: 'string')]
     public array $sorts;
 
+    /**
+     * The search query string, to filter CRM records.
+     */
     #[Api(optional: true)]
     public ?string $query;
 
@@ -109,6 +116,8 @@ final class PublicCrmSearchRequest implements BaseModel
     }
 
     /**
+     * Defines the order in which the CRM records should be returned.
+     *
      * @param list<string> $sorts
      */
     public function withSorts(array $sorts): self
@@ -119,6 +128,9 @@ final class PublicCrmSearchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The search query string, to filter CRM records.
+     */
     public function withQuery(string $query): self
     {
         $obj = clone $this;

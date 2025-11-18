@@ -36,7 +36,9 @@ final class SendTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->send->send(['eventName' => 'eventName']);
+        $result = $this->client->events->send->send([
+            'eventName' => 'eventName', 'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +50,9 @@ final class SendTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->send->send(['eventName' => 'eventName']);
+        $result = $this->client->events->send->send([
+            'eventName' => 'eventName', 'properties' => ['foo' => 'string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -61,7 +65,9 @@ final class SendTest extends TestCase
         }
 
         $result = $this->client->events->send->sendBatch([
-            'inputs' => [['eventName' => 'eventName']],
+            'inputs' => [
+                ['eventName' => 'eventName', 'properties' => ['foo' => 'string']],
+            ],
         ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -78,10 +84,10 @@ final class SendTest extends TestCase
             'inputs' => [
                 [
                     'eventName' => 'eventName',
+                    'properties' => ['foo' => 'string'],
                     'email' => 'email',
                     'objectId' => 'objectId',
                     'occurredAt' => '2019-12-27T18:11:19.117Z',
-                    'properties' => ['foo' => 'string'],
                     'utk' => 'utk',
                     'uuid' => 'uuid',
                 ],
