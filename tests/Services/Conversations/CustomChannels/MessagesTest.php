@@ -37,11 +37,10 @@ final class MessagesTest extends TestCase
         }
 
         $result = $this->client->conversations->customChannels->messages->create(
-            'channelId',
+            0,
             [
                 'attachments' => [['fileId' => 'fileId', 'type' => 'FILE']],
                 'channelAccountId' => 'channelAccountId',
-                'integrationThreadId' => 'integrationThreadId',
                 'messageDirection' => 'INCOMING',
                 'recipients' => [
                     ['deliveryIdentifier' => ['type' => 'type', 'value' => 'value']],
@@ -65,7 +64,7 @@ final class MessagesTest extends TestCase
         }
 
         $result = $this->client->conversations->customChannels->messages->create(
-            'channelId',
+            0,
             [
                 'attachments' => [
                     [
@@ -75,7 +74,6 @@ final class MessagesTest extends TestCase
                     ],
                 ],
                 'channelAccountId' => 'channelAccountId',
-                'integrationThreadId' => 'integrationThreadId',
                 'messageDirection' => 'INCOMING',
                 'recipients' => [
                     [
@@ -106,7 +104,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
-            ['channelId' => 'channelId', 'statusType' => 'SENT']
+            ['channelId' => 0, 'statusType' => 'SENT']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -121,7 +119,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
-            ['channelId' => 'channelId', 'statusType' => 'SENT']
+            ['channelId' => 0, 'statusType' => 'SENT']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -136,7 +134,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->get(
             'messageId',
-            ['channelId' => 'channelId']
+            ['channelId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -151,7 +149,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->get(
             'messageId',
-            ['channelId' => 'channelId']
+            ['channelId' => 0]
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

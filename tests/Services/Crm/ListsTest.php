@@ -214,7 +214,23 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->search([]);
+        $result = $this->client->crm->lists->search([
+            'additionalProperties' => ['hs_list_size_week_delta'], 'offset' => 0,
+        ]);
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testSearchWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->lists->search([
+            'additionalProperties' => ['hs_list_size_week_delta'], 'offset' => 0,
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

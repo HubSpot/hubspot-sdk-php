@@ -136,7 +136,11 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->get(
             'objectType',
-            ['archived' => true, 'inputs' => [['name' => 'name']]]
+            [
+                'archived' => true,
+                'dataSensitivity' => 'non_sensitive',
+                'inputs' => [['name' => 'name']],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -151,7 +155,11 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->get(
             'objectType',
-            ['archived' => true, 'inputs' => [['name' => 'name']]]
+            [
+                'archived' => true,
+                'dataSensitivity' => 'non_sensitive',
+                'inputs' => [['name' => 'name']],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

@@ -18,7 +18,11 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
     /** @use SdkModel<PortalObjectTypeEnablementPublicResponseShape> */
     use SdkModel;
 
-    /** @var array<string,bool> $enablementByObjectTypeId */
+    /**
+     * A map of objectTypeId to whether that object type is enabled or not.
+     *
+     * @var array<string,bool> $enablementByObjectTypeId
+     */
     #[Api(map: 'bool')]
     public array $enablementByObjectTypeId;
 
@@ -59,6 +63,8 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
     }
 
     /**
+     * A map of objectTypeId to whether that object type is enabled or not.
+     *
      * @param array<string,bool> $enablementByObjectTypeID
      */
     public function withEnablementByObjectTypeID(

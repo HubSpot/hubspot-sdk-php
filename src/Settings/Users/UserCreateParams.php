@@ -31,14 +31,20 @@ final class UserCreateParams implements BaseModel
     use SdkParams;
 
     /**
-     * The created user's email.
+     * The user's email.
      */
     #[Api]
     public string $email;
 
+    /**
+     * The user's first name.
+     */
     #[Api(optional: true)]
     public ?string $firstName;
 
+    /**
+     * The user's last name.
+     */
     #[Api(optional: true)]
     public ?string $lastName;
 
@@ -118,7 +124,7 @@ final class UserCreateParams implements BaseModel
     }
 
     /**
-     * The created user's email.
+     * The user's email.
      */
     public function withEmail(string $email): self
     {
@@ -128,6 +134,9 @@ final class UserCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's first name.
+     */
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
@@ -136,6 +145,9 @@ final class UserCreateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's last name.
+     */
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;

@@ -42,8 +42,16 @@ final class PipelinesTest extends TestCase
                 'displayOrder' => 0,
                 'label' => 'My replaced pipeline',
                 'stages' => [
-                    ['displayOrder' => 0, 'label' => 'In Progress'],
-                    ['displayOrder' => 1, 'label' => 'Done'],
+                    [
+                        'displayOrder' => 0,
+                        'label' => 'In Progress',
+                        'metadata' => ['ticketState' => 'OPEN'],
+                    ],
+                    [
+                        'displayOrder' => 1,
+                        'label' => 'Done',
+                        'metadata' => ['ticketState' => 'CLOSED'],
+                    ],
                 ],
             ],
         );
@@ -227,8 +235,16 @@ final class PipelinesTest extends TestCase
                 'displayOrder' => 0,
                 'label' => 'My replaced pipeline',
                 'stages' => [
-                    ['displayOrder' => 0, 'label' => 'In Progress'],
-                    ['displayOrder' => 1, 'label' => 'Done'],
+                    [
+                        'displayOrder' => 0,
+                        'label' => 'In Progress',
+                        'metadata' => ['ticketState' => 'OPEN'],
+                    ],
+                    [
+                        'displayOrder' => 1,
+                        'label' => 'Done',
+                        'metadata' => ['ticketState' => 'CLOSED'],
+                    ],
                 ],
             ],
         );

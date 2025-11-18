@@ -29,12 +29,21 @@ final class CustomPropertyLimitResponse implements BaseModel, ResponseConverter
     #[Api(list: LimitAndUsageForObjectType::class)]
     public array $byObjectType;
 
+    /**
+     * The total limit for custom properties across all objects.
+     */
     #[Api]
     public int $overallLimit;
 
+    /**
+     * The percentage of the overall custom property limit that has been used.
+     */
     #[Api]
     public float $overallPercentage;
 
+    /**
+     * The total number of custom properties currently in use across all objects.
+     */
     #[Api]
     public int $overallUsage;
 
@@ -100,6 +109,9 @@ final class CustomPropertyLimitResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The total limit for custom properties across all objects.
+     */
     public function withOverallLimit(int $overallLimit): self
     {
         $obj = clone $this;
@@ -108,6 +120,9 @@ final class CustomPropertyLimitResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The percentage of the overall custom property limit that has been used.
+     */
     public function withOverallPercentage(float $overallPercentage): self
     {
         $obj = clone $this;
@@ -116,6 +131,9 @@ final class CustomPropertyLimitResponse implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The total number of custom properties currently in use across all objects.
+     */
     public function withOverallUsage(int $overallUsage): self
     {
         $obj = clone $this;

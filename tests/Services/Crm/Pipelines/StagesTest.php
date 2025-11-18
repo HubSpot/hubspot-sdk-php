@@ -38,7 +38,12 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->create(
             'pipelineId',
-            ['objectType' => 'objectType', 'displayOrder' => 1, 'label' => 'Done'],
+            [
+                'objectType' => 'objectType',
+                'displayOrder' => 1,
+                'label' => 'Done',
+                'metadata' => ['ticketState' => 'CLOSED'],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +58,12 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->create(
             'pipelineId',
-            ['objectType' => 'objectType', 'displayOrder' => 1, 'label' => 'Done'],
+            [
+                'objectType' => 'objectType',
+                'displayOrder' => 1,
+                'label' => 'Done',
+                'metadata' => ['ticketState' => 'CLOSED'],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -68,7 +78,11 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->update(
             'stageId',
-            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
+            [
+                'objectType' => 'objectType',
+                'pipelineId' => 'pipelineId',
+                'metadata' => ['ticketState' => 'CLOSED'],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -83,7 +97,11 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->update(
             'stageId',
-            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
+            [
+                'objectType' => 'objectType',
+                'pipelineId' => 'pipelineId',
+                'metadata' => ['ticketState' => 'CLOSED'],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -223,6 +241,7 @@ final class StagesTest extends TestCase
                 'pipelineId' => 'pipelineId',
                 'displayOrder' => 1,
                 'label' => 'Done',
+                'metadata' => ['ticketState' => 'CLOSED'],
             ],
         );
 
@@ -243,6 +262,7 @@ final class StagesTest extends TestCase
                 'pipelineId' => 'pipelineId',
                 'displayOrder' => 1,
                 'label' => 'Done',
+                'metadata' => ['ticketState' => 'CLOSED'],
             ],
         );
 

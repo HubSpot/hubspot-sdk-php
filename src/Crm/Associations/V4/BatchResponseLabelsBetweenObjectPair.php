@@ -28,6 +28,9 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
     /** @use SdkModel<BatchResponseLabelsBetweenObjectPairShape> */
     use SdkModel;
 
+    /**
+     * The timestamp when the batch processing was completed, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
@@ -35,10 +38,17 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
     #[Api(list: LabelsBetweenObjectPair::class)]
     public array $results;
 
+    /**
+     * The timestamp when the batch processing began, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
@@ -46,13 +56,23 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string,string>|null $links */
+    /**
+     * An object containing relevant links related to the batch request.
+     *
+     * @var array<string,string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The number of errors encountered during the batch processing.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * The timestamp when the batch request was initially made, in ISO 8601 format.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -116,6 +136,9 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the batch processing was completed, in ISO 8601 format.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -135,6 +158,9 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the batch processing began, in ISO 8601 format.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -144,6 +170,8 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
     }
 
     /**
+     * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -166,6 +194,8 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
     }
 
     /**
+     * An object containing relevant links related to the batch request.
+     *
      * @param array<string,string> $links
      */
     public function withLinks(array $links): self
@@ -176,6 +206,9 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
         return $obj;
     }
 
+    /**
+     * The number of errors encountered during the batch processing.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
@@ -184,6 +217,9 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp when the batch request was initially made, in ISO 8601 format.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

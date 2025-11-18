@@ -37,7 +37,24 @@ final class TablesTest extends TestCase
         }
 
         $result = $this->client->cms->hubdb->tables->create([
-            'label' => 'label', 'name' => 'name',
+            'allowChildTables' => true,
+            'allowPublicApiAccess' => true,
+            'columns' => [
+                [
+                    'id' => 0,
+                    'label' => 'label',
+                    'name' => 'name',
+                    'options' => [
+                        ['hidden' => false, 'label' => 'Option A', 'value' => 'A'],
+                    ],
+                    'type' => 'NULL',
+                ],
+            ],
+            'dynamicMetaTags' => ['foo' => 0],
+            'enableChildTablePages' => true,
+            'label' => 'label',
+            'name' => 'name',
+            'useForPages' => true,
         ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -51,7 +68,34 @@ final class TablesTest extends TestCase
         }
 
         $result = $this->client->cms->hubdb->tables->create([
-            'label' => 'label', 'name' => 'name',
+            'allowChildTables' => true,
+            'allowPublicApiAccess' => true,
+            'columns' => [
+                [
+                    'id' => 0,
+                    'label' => 'label',
+                    'name' => 'name',
+                    'options' => [
+                        [
+                            'hidden' => false,
+                            'label' => 'Option A',
+                            'value' => 'A',
+                            'description' => 'Choice number one',
+                            'displayOrder' => 1,
+                        ],
+                    ],
+                    'type' => 'NULL',
+                    'foreignColumnId' => 0,
+                    'foreignTableId' => 0,
+                    'maxNumberOfCharacters' => 0,
+                    'maxNumberOfOptions' => 0,
+                ],
+            ],
+            'dynamicMetaTags' => ['foo' => 0],
+            'enableChildTablePages' => true,
+            'label' => 'label',
+            'name' => 'name',
+            'useForPages' => true,
         ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -270,7 +314,26 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->updateDraft(
             'tableIdOrName',
-            ['label' => 'label', 'name' => 'name']
+            [
+                'allowChildTables' => true,
+                'allowPublicApiAccess' => true,
+                'columns' => [
+                    [
+                        'id' => 0,
+                        'label' => 'label',
+                        'name' => 'name',
+                        'options' => [
+                            ['hidden' => false, 'label' => 'Option A', 'value' => 'A'],
+                        ],
+                        'type' => 'NULL',
+                    ],
+                ],
+                'dynamicMetaTags' => ['foo' => 0],
+                'enableChildTablePages' => true,
+                'label' => 'label',
+                'name' => 'name',
+                'useForPages' => true,
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -285,7 +348,36 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->updateDraft(
             'tableIdOrName',
-            ['label' => 'label', 'name' => 'name']
+            [
+                'allowChildTables' => true,
+                'allowPublicApiAccess' => true,
+                'columns' => [
+                    [
+                        'id' => 0,
+                        'label' => 'label',
+                        'name' => 'name',
+                        'options' => [
+                            [
+                                'hidden' => false,
+                                'label' => 'Option A',
+                                'value' => 'A',
+                                'description' => 'Choice number one',
+                                'displayOrder' => 1,
+                            ],
+                        ],
+                        'type' => 'NULL',
+                        'foreignColumnId' => 0,
+                        'foreignTableId' => 0,
+                        'maxNumberOfCharacters' => 0,
+                        'maxNumberOfOptions' => 0,
+                    ],
+                ],
+                'dynamicMetaTags' => ['foo' => 0],
+                'enableChildTablePages' => true,
+                'label' => 'label',
+                'name' => 'name',
+                'useForPages' => true,
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

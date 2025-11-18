@@ -21,7 +21,7 @@ interface MessagesContract
      * @throws APIException
      */
     public function create(
-        string $channelID,
+        int $channelID,
         array|MessageCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicConversationsMessage;

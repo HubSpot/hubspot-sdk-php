@@ -21,9 +21,15 @@ final class ReportCreationResponse implements BaseModel
     #[Api]
     public DateTime $enqueueTime;
 
+    /**
+     * Email of the user.
+     */
     #[Api]
     public string $userEmail;
 
+    /**
+     * ID of the user.
+     */
     #[Api]
     public int $userId;
 
@@ -76,6 +82,9 @@ final class ReportCreationResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * Email of the user.
+     */
     public function withUserEmail(string $userEmail): self
     {
         $obj = clone $this;
@@ -84,6 +93,9 @@ final class ReportCreationResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the user.
+     */
     public function withUserID(int $userID): self
     {
         $obj = clone $this;

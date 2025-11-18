@@ -18,9 +18,15 @@ final class PublicFetchAssociationsBatchRequest implements BaseModel
     /** @use SdkModel<PublicFetchAssociationsBatchRequestShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier for the object whose associations are being fetched.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * A paging cursor token used to retrieve the next set of results in a paginated response.
+     */
     #[Api(optional: true)]
     public ?string $after;
 
@@ -59,6 +65,9 @@ final class PublicFetchAssociationsBatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier for the object whose associations are being fetched.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -67,6 +76,9 @@ final class PublicFetchAssociationsBatchRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * A paging cursor token used to retrieve the next set of results in a paginated response.
+     */
     public function withAfter(string $after): self
     {
         $obj = clone $this;

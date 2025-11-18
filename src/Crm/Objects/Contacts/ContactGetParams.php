@@ -17,6 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ContactGetParamsShape = array{
  *   archived?: bool,
  *   associations?: list<string>,
+ *   idProperty?: string,
  *   properties?: list<string>,
  *   propertiesWithHistory?: list<string>,
  * }
@@ -40,6 +41,12 @@ final class ContactGetParams implements BaseModel
      */
     #[Api(list: 'string', optional: true)]
     public ?array $associations;
+
+    /**
+     * The name of a property whose values are unique for this object.
+     */
+    #[Api(optional: true)]
+    public ?string $idProperty;
 
     /**
      * A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
@@ -74,6 +81,7 @@ final class ContactGetParams implements BaseModel
     public static function with(
         ?bool $archived = null,
         ?array $associations = null,
+        ?string $idProperty = null,
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
     ): self {
@@ -81,6 +89,7 @@ final class ContactGetParams implements BaseModel
 
         null !== $archived && $obj->archived = $archived;
         null !== $associations && $obj->associations = $associations;
+        null !== $idProperty && $obj->idProperty = $idProperty;
         null !== $properties && $obj->properties = $properties;
         null !== $propertiesWithHistory && $obj->propertiesWithHistory = $propertiesWithHistory;
 
@@ -107,6 +116,17 @@ final class ContactGetParams implements BaseModel
     {
         $obj = clone $this;
         $obj->associations = $associations;
+
+        return $obj;
+    }
+
+    /**
+     * The name of a property whose values are unique for this object.
+     */
+    public function withIDProperty(string $idProperty): self
+    {
+        $obj = clone $this;
+        $obj->idProperty = $idProperty;
 
         return $obj;
     }

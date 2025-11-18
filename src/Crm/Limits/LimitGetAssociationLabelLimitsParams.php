@@ -24,9 +24,15 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * objectTypeId of the object type on the "from" side of the association.
+     */
     #[Api(optional: true)]
     public ?string $fromObjectTypeId;
 
+    /**
+     * objectTypeId of the object type on the "to" side of the association.
+     */
     #[Api(optional: true)]
     public ?string $toObjectTypeId;
 
@@ -52,6 +58,9 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * objectTypeId of the object type on the "from" side of the association.
+     */
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
@@ -60,6 +69,9 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * objectTypeId of the object type on the "to" side of the association.
+     */
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;

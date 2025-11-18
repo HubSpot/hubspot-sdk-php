@@ -7,11 +7,11 @@ namespace HubspotSDK\Crm\Properties;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\EmailsPaging;
+use HubspotSDK\Paging;
 
 /**
  * @phpstan-type CollectionResponsePropertyGroupShape = array{
- *   results: list<PropertyGroup>, paging?: EmailsPaging|null
+ *   results: list<PropertyGroup>, paging?: Paging|null
  * }
  */
 final class CollectionResponsePropertyGroup implements BaseModel
@@ -23,11 +23,8 @@ final class CollectionResponsePropertyGroup implements BaseModel
     #[Api(list: PropertyGroup::class)]
     public array $results;
 
-    /**
-     * Contains information pagination of results.
-     */
     #[Api(optional: true)]
-    public ?EmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponsePropertyGroup()` is missing required properties by the API.
@@ -55,10 +52,8 @@ final class CollectionResponsePropertyGroup implements BaseModel
      *
      * @param list<PropertyGroup> $results
      */
-    public static function with(
-        array $results,
-        ?EmailsPaging $paging = null
-    ): self {
+    public static function with(array $results, ?Paging $paging = null): self
+    {
         $obj = new self;
 
         $obj->results = $results;
@@ -79,10 +74,7 @@ final class CollectionResponsePropertyGroup implements BaseModel
         return $obj;
     }
 
-    /**
-     * Contains information pagination of results.
-     */
-    public function withPaging(EmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

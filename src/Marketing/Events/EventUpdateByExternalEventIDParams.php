@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type EventUpdateByExternalEventIDParamsShape = array{
  *   externalAccountId: string,
- *   customProperties?: list<PropertyValue>,
+ *   customProperties: list<PropertyValue>,
  *   endDateTime?: \DateTimeInterface,
  *   eventCancelled?: bool,
  *   eventCompleted?: bool,
@@ -46,10 +46,10 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
      * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
      *
-     * @var list<PropertyValue>|null $customProperties
+     * @var list<PropertyValue> $customProperties
      */
-    #[Api(list: PropertyValue::class, optional: true)]
-    public ?array $customProperties;
+    #[Api(list: PropertyValue::class)]
+    public array $customProperties;
 
     /**
      * The end date and time of the marketing event.
@@ -107,13 +107,17 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * EventUpdateByExternalEventIDParams::with(externalAccountId: ...)
+     * EventUpdateByExternalEventIDParams::with(
+     *   externalAccountId: ..., customProperties: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new EventUpdateByExternalEventIDParams)->withExternalAccountID(...)
+     * (new EventUpdateByExternalEventIDParams)
+     *   ->withExternalAccountID(...)
+     *   ->withCustomProperties(...)
      * ```
      */
     public function __construct()
@@ -130,7 +134,7 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public static function with(
         string $externalAccountId,
-        ?array $customProperties = null,
+        array $customProperties,
         ?\DateTimeInterface $endDateTime = null,
         ?bool $eventCancelled = null,
         ?bool $eventCompleted = null,
@@ -144,8 +148,8 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
         $obj = new self;
 
         $obj->externalAccountId = $externalAccountId;
+        $obj->customProperties = $customProperties;
 
-        null !== $customProperties && $obj->customProperties = $customProperties;
         null !== $endDateTime && $obj->endDateTime = $endDateTime;
         null !== $eventCancelled && $obj->eventCancelled = $eventCancelled;
         null !== $eventCompleted && $obj->eventCompleted = $eventCompleted;

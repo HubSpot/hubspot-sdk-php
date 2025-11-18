@@ -10,15 +10,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type SettingsRequestShape = array{
+ *   height: int,
+ *   isReady: bool,
  *   name: string,
+ *   supportsCustomObjects: bool,
+ *   supportsInboundCalling: bool,
  *   url: string,
- *   height?: int|null,
- *   isReady?: bool|null,
- *   supportsCustomObjects?: bool|null,
- *   supportsInboundCalling?: bool|null,
- *   usesCallingWindow?: bool|null,
- *   usesRemote?: bool|null,
- *   width?: int|null,
+ *   usesCallingWindow: bool,
+ *   usesRemote: bool,
+ *   width: int,
  * }
  */
 final class SettingsRequest implements BaseModel
@@ -27,44 +27,63 @@ final class SettingsRequest implements BaseModel
     use SdkModel;
 
     #[Api]
+    public int $height;
+
+    #[Api]
+    public bool $isReady;
+
+    #[Api]
     public string $name;
+
+    #[Api]
+    public bool $supportsCustomObjects;
+
+    #[Api]
+    public bool $supportsInboundCalling;
 
     #[Api]
     public string $url;
 
-    #[Api(optional: true)]
-    public ?int $height;
+    #[Api]
+    public bool $usesCallingWindow;
 
-    #[Api(optional: true)]
-    public ?bool $isReady;
+    #[Api]
+    public bool $usesRemote;
 
-    #[Api(optional: true)]
-    public ?bool $supportsCustomObjects;
-
-    #[Api(optional: true)]
-    public ?bool $supportsInboundCalling;
-
-    #[Api(optional: true)]
-    public ?bool $usesCallingWindow;
-
-    #[Api(optional: true)]
-    public ?bool $usesRemote;
-
-    #[Api(optional: true)]
-    public ?int $width;
+    #[Api]
+    public int $width;
 
     /**
      * `new SettingsRequest()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SettingsRequest::with(name: ..., url: ...)
+     * SettingsRequest::with(
+     *   height: ...,
+     *   isReady: ...,
+     *   name: ...,
+     *   supportsCustomObjects: ...,
+     *   supportsInboundCalling: ...,
+     *   url: ...,
+     *   usesCallingWindow: ...,
+     *   usesRemote: ...,
+     *   width: ...,
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new SettingsRequest)->withName(...)->withURL(...)
+     * (new SettingsRequest)
+     *   ->withHeight(...)
+     *   ->withIsReady(...)
+     *   ->withName(...)
+     *   ->withSupportsCustomObjects(...)
+     *   ->withSupportsInboundCalling(...)
+     *   ->withURL(...)
+     *   ->withUsesCallingWindow(...)
+     *   ->withUsesRemote(...)
+     *   ->withWidth(...)
      * ```
      */
     public function __construct()
@@ -78,44 +97,27 @@ final class SettingsRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
+        int $height,
+        bool $isReady,
         string $name,
+        bool $supportsCustomObjects,
+        bool $supportsInboundCalling,
         string $url,
-        ?int $height = null,
-        ?bool $isReady = null,
-        ?bool $supportsCustomObjects = null,
-        ?bool $supportsInboundCalling = null,
-        ?bool $usesCallingWindow = null,
-        ?bool $usesRemote = null,
-        ?int $width = null,
+        bool $usesCallingWindow,
+        bool $usesRemote,
+        int $width,
     ): self {
         $obj = new self;
 
+        $obj->height = $height;
+        $obj->isReady = $isReady;
         $obj->name = $name;
+        $obj->supportsCustomObjects = $supportsCustomObjects;
+        $obj->supportsInboundCalling = $supportsInboundCalling;
         $obj->url = $url;
-
-        null !== $height && $obj->height = $height;
-        null !== $isReady && $obj->isReady = $isReady;
-        null !== $supportsCustomObjects && $obj->supportsCustomObjects = $supportsCustomObjects;
-        null !== $supportsInboundCalling && $obj->supportsInboundCalling = $supportsInboundCalling;
-        null !== $usesCallingWindow && $obj->usesCallingWindow = $usesCallingWindow;
-        null !== $usesRemote && $obj->usesRemote = $usesRemote;
-        null !== $width && $obj->width = $width;
-
-        return $obj;
-    }
-
-    public function withName(string $name): self
-    {
-        $obj = clone $this;
-        $obj->name = $name;
-
-        return $obj;
-    }
-
-    public function withURL(string $url): self
-    {
-        $obj = clone $this;
-        $obj->url = $url;
+        $obj->usesCallingWindow = $usesCallingWindow;
+        $obj->usesRemote = $usesRemote;
+        $obj->width = $width;
 
         return $obj;
     }
@@ -136,6 +138,14 @@ final class SettingsRequest implements BaseModel
         return $obj;
     }
 
+    public function withName(string $name): self
+    {
+        $obj = clone $this;
+        $obj->name = $name;
+
+        return $obj;
+    }
+
     public function withSupportsCustomObjects(bool $supportsCustomObjects): self
     {
         $obj = clone $this;
@@ -149,6 +159,14 @@ final class SettingsRequest implements BaseModel
     ): self {
         $obj = clone $this;
         $obj->supportsInboundCalling = $supportsInboundCalling;
+
+        return $obj;
+    }
+
+    public function withURL(string $url): self
+    {
+        $obj = clone $this;
+        $obj->url = $url;
 
         return $obj;
     }

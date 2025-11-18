@@ -11,9 +11,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponseWithTotalPublicChannelAccountForwardPagingShape = array{
- *   results: list<ConversationsPublicChannelAccount>,
- *   total: int,
- *   paging?: ForwardPaging|null,
+ *   results: list<PublicChannelAccount>, total: int, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseWithTotalPublicChannelAccountForwardPaging implements BaseModel
@@ -23,8 +21,8 @@ final class CollectionResponseWithTotalPublicChannelAccountForwardPaging impleme
      */
     use SdkModel;
 
-    /** @var list<ConversationsPublicChannelAccount> $results */
-    #[Api(list: ConversationsPublicChannelAccount::class)]
+    /** @var list<PublicChannelAccount> $results */
+    #[Api(list: PublicChannelAccount::class)]
     public array $results;
 
     #[Api]
@@ -61,7 +59,7 @@ final class CollectionResponseWithTotalPublicChannelAccountForwardPaging impleme
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ConversationsPublicChannelAccount> $results
+     * @param list<PublicChannelAccount> $results
      */
     public static function with(
         array $results,
@@ -79,7 +77,7 @@ final class CollectionResponseWithTotalPublicChannelAccountForwardPaging impleme
     }
 
     /**
-     * @param list<ConversationsPublicChannelAccount> $results
+     * @param list<PublicChannelAccount> $results
      */
     public function withResults(array $results): self
     {

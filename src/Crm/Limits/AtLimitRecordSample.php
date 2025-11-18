@@ -16,9 +16,15 @@ final class AtLimitRecordSample implements BaseModel
     /** @use SdkModel<AtLimitRecordSampleShape> */
     use SdkModel;
 
+    /**
+     * The label associated with a record that is at its limit.
+     */
     #[Api]
     public string $label;
 
+    /**
+     * The objectId of the object that is at its limit.
+     */
     #[Api]
     public int $objectId;
 
@@ -56,6 +62,9 @@ final class AtLimitRecordSample implements BaseModel
         return $obj;
     }
 
+    /**
+     * The label associated with a record that is at its limit.
+     */
     public function withLabel(string $label): self
     {
         $obj = clone $this;
@@ -64,6 +73,9 @@ final class AtLimitRecordSample implements BaseModel
         return $obj;
     }
 
+    /**
+     * The objectId of the object that is at its limit.
+     */
     public function withObjectID(int $objectID): self
     {
         $obj = clone $this;

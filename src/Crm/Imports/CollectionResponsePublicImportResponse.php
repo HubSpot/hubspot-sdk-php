@@ -7,11 +7,11 @@ namespace HubspotSDK\Crm\Imports;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\EmailsPaging;
+use HubspotSDK\Paging;
 
 /**
  * @phpstan-type CollectionResponsePublicImportResponseShape = array{
- *   results: list<PublicImportResponse>, paging?: EmailsPaging|null
+ *   results: list<PublicImportResponse>, paging?: Paging|null
  * }
  */
 final class CollectionResponsePublicImportResponse implements BaseModel
@@ -23,11 +23,8 @@ final class CollectionResponsePublicImportResponse implements BaseModel
     #[Api(list: PublicImportResponse::class)]
     public array $results;
 
-    /**
-     * Contains information pagination of results.
-     */
     #[Api(optional: true)]
-    public ?EmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponsePublicImportResponse()` is missing required properties by the API.
@@ -55,10 +52,8 @@ final class CollectionResponsePublicImportResponse implements BaseModel
      *
      * @param list<PublicImportResponse> $results
      */
-    public static function with(
-        array $results,
-        ?EmailsPaging $paging = null
-    ): self {
+    public static function with(array $results, ?Paging $paging = null): self
+    {
         $obj = new self;
 
         $obj->results = $results;
@@ -79,10 +74,7 @@ final class CollectionResponsePublicImportResponse implements BaseModel
         return $obj;
     }
 
-    /**
-     * Contains information pagination of results.
-     */
-    public function withPaging(EmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

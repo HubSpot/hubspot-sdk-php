@@ -146,7 +146,12 @@ final class PropertiesService implements PropertiesContract
      *
      * Read all existing properties for the specified object type and HubSpot account.
      *
-     * @param array{archived?: bool, properties?: string}|PropertyListParams $params
+     * @param array{
+     *   archived?: bool,
+     *   dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *   locale?: string,
+     *   properties?: string,
+     * }|PropertyListParams $params
      *
      * @throws APIException
      */
@@ -206,7 +211,11 @@ final class PropertiesService implements PropertiesContract
      * Read a property identified by {propertyName}.
      *
      * @param array{
-     *   objectType: string, archived?: bool, properties?: string
+     *   objectType: string,
+     *   archived?: bool,
+     *   dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *   locale?: string,
+     *   properties?: string,
      * }|PropertyGetParams $params
      *
      * @throws APIException

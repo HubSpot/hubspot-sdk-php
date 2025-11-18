@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Delete a pipeline.
+ * Delete a pipeline identified by its unique pipelineId.
  *
  * @see HubspotSDK\Services\Crm\PipelinesService::delete()
  *
@@ -29,9 +29,15 @@ final class PipelineDeleteParams implements BaseModel
     #[Api]
     public string $objectType;
 
+    /**
+     * Indicates whether to validate deal stage usages before deleting the pipeline.
+     */
     #[Api(optional: true)]
     public ?bool $validateDealStageUsagesBeforeDelete;
 
+    /**
+     * Indicates whether to validate references before deleting the pipeline.
+     */
     #[Api(optional: true)]
     public ?bool $validateReferencesBeforeDelete;
 
@@ -82,6 +88,9 @@ final class PipelineDeleteParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether to validate deal stage usages before deleting the pipeline.
+     */
     public function withValidateDealStageUsagesBeforeDelete(
         bool $validateDealStageUsagesBeforeDelete
     ): self {
@@ -91,6 +100,9 @@ final class PipelineDeleteParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether to validate references before deleting the pipeline.
+     */
     public function withValidateReferencesBeforeDelete(
         bool $validateReferencesBeforeDelete
     ): self {

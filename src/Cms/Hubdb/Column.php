@@ -12,15 +12,15 @@ use HubspotSDK\Option;
 
 /**
  * @phpstan-type ColumnShape = array{
+ *   id: string,
+ *   deleted: bool,
+ *   description: string,
  *   label: string,
  *   name: string,
  *   type: value-of<Type>,
- *   id?: string|null,
  *   createdAt?: \DateTimeInterface|null,
  *   createdBy?: SimpleUser|null,
  *   createdByUserId?: int|null,
- *   deleted?: bool|null,
- *   description?: string|null,
  *   foreignColumnId?: int|null,
  *   foreignIds?: list<ForeignID>|null,
  *   foreignIdsById?: array<string,ForeignID>|null,
@@ -38,6 +38,18 @@ final class Column implements BaseModel
 {
     /** @use SdkModel<ColumnShape> */
     use SdkModel;
+
+    /**
+     * Column Id.
+     */
+    #[Api]
+    public string $id;
+
+    #[Api]
+    public bool $deleted;
+
+    #[Api]
+    public string $description;
 
     /**
      * Label of the column.
@@ -59,12 +71,6 @@ final class Column implements BaseModel
     #[Api(enum: Type::class)]
     public string $type;
 
-    /**
-     * Column Id.
-     */
-    #[Api(optional: true)]
-    public ?string $id;
-
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdAt;
 
@@ -73,12 +79,6 @@ final class Column implements BaseModel
 
     #[Api(optional: true)]
     public ?int $createdByUserId;
-
-    #[Api(optional: true)]
-    public ?bool $deleted;
-
-    #[Api(optional: true)]
-    public ?string $description;
 
     /**
      * Foreign Column id.
@@ -150,13 +150,21 @@ final class Column implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * Column::with(label: ..., name: ..., type: ...)
+     * Column::with(
+     *   id: ..., deleted: ..., description: ..., label: ..., name: ..., type: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new Column)->withLabel(...)->withName(...)->withType(...)
+     * (new Column)
+     *   ->withID(...)
+     *   ->withDeleted(...)
+     *   ->withDescription(...)
+     *   ->withLabel(...)
+     *   ->withName(...)
+     *   ->withType(...)
      * ```
      */
     public function __construct()
@@ -176,15 +184,15 @@ final class Column implements BaseModel
      * @param list<Option> $options
      */
     public static function with(
+        string $id,
+        bool $deleted,
+        string $description,
         string $label,
         string $name,
         Type|string $type,
-        ?string $id = null,
         ?\DateTimeInterface $createdAt = null,
         ?SimpleUser $createdBy = null,
         ?int $createdByUserId = null,
-        ?bool $deleted = null,
-        ?string $description = null,
         ?int $foreignColumnId = null,
         ?array $foreignIds = null,
         ?array $foreignIdsById = null,
@@ -199,16 +207,16 @@ final class Column implements BaseModel
     ): self {
         $obj = new self;
 
+        $obj->id = $id;
+        $obj->deleted = $deleted;
+        $obj->description = $description;
         $obj->label = $label;
         $obj->name = $name;
         $obj['type'] = $type;
 
-        null !== $id && $obj->id = $id;
         null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $createdBy && $obj->createdBy = $createdBy;
         null !== $createdByUserId && $obj->createdByUserId = $createdByUserId;
-        null !== $deleted && $obj->deleted = $deleted;
-        null !== $description && $obj->description = $description;
         null !== $foreignColumnId && $obj->foreignColumnId = $foreignColumnId;
         null !== $foreignIds && $obj->foreignIds = $foreignIds;
         null !== $foreignIdsById && $obj->foreignIdsById = $foreignIdsById;
@@ -220,6 +228,33 @@ final class Column implements BaseModel
         null !== $updatedBy && $obj->updatedBy = $updatedBy;
         null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
         null !== $width && $obj->width = $width;
+
+        return $obj;
+    }
+
+    /**
+     * Column Id.
+     */
+    public function withID(string $id): self
+    {
+        $obj = clone $this;
+        $obj->id = $id;
+
+        return $obj;
+    }
+
+    public function withDeleted(bool $deleted): self
+    {
+        $obj = clone $this;
+        $obj->deleted = $deleted;
+
+        return $obj;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $obj = clone $this;
+        $obj->description = $description;
 
         return $obj;
     }
@@ -259,17 +294,6 @@ final class Column implements BaseModel
         return $obj;
     }
 
-    /**
-     * Column Id.
-     */
-    public function withID(string $id): self
-    {
-        $obj = clone $this;
-        $obj->id = $id;
-
-        return $obj;
-    }
-
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -290,22 +314,6 @@ final class Column implements BaseModel
     {
         $obj = clone $this;
         $obj->createdByUserId = $createdByUserID;
-
-        return $obj;
-    }
-
-    public function withDeleted(bool $deleted): self
-    {
-        $obj = clone $this;
-        $obj->deleted = $deleted;
-
-        return $obj;
-    }
-
-    public function withDescription(string $description): self
-    {
-        $obj = clone $this;
-        $obj->description = $description;
 
         return $obj;
     }

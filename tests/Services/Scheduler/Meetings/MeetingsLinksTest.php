@@ -36,7 +36,7 @@ final class MeetingsLinksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->scheduler->meetings->meetingsLinks->list();
+        $result = $this->client->scheduler->meetings->meetingsLinks->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -101,7 +101,25 @@ final class MeetingsLinksTest extends TestCase
             ->scheduler
             ->meetings
             ->meetingsLinks
-            ->getAvailabilityBySlug('slug')
+            ->getAvailabilityBySlug('slug', ['timezone' => 'timezone'])
+        ;
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testGetAvailabilityBySlugWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this
+            ->client
+            ->scheduler
+            ->meetings
+            ->meetingsLinks
+            ->getAvailabilityBySlug('slug', ['timezone' => 'timezone'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -119,7 +137,25 @@ final class MeetingsLinksTest extends TestCase
             ->scheduler
             ->meetings
             ->meetingsLinks
-            ->getBookingInfoBySlug('slug')
+            ->getBookingInfoBySlug('slug', ['timezone' => 'timezone'])
+        ;
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testGetBookingInfoBySlugWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this
+            ->client
+            ->scheduler
+            ->meetings
+            ->meetingsLinks
+            ->getBookingInfoBySlug('slug', ['timezone' => 'timezone'])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

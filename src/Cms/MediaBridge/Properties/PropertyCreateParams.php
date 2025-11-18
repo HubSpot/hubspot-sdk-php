@@ -19,7 +19,7 @@ use HubspotSDK\OptionInput;
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::create()
  *
  * @phpstan-type PropertyCreateParamsShape = array{
- *   appId: string,
+ *   appId: int,
  *   fieldType: FieldType|value-of<FieldType>,
  *   groupName: string,
  *   label: string,
@@ -44,7 +44,7 @@ final class PropertyCreateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appId;
+    public int $appId;
 
     /** @var value-of<FieldType> $fieldType */
     #[Api(enum: FieldType::class)]
@@ -133,7 +133,7 @@ final class PropertyCreateParams implements BaseModel
      * @param list<OptionInput> $options
      */
     public static function with(
-        string $appId,
+        int $appId,
         FieldType|string $fieldType,
         string $groupName,
         string $label,
@@ -173,7 +173,7 @@ final class PropertyCreateParams implements BaseModel
         return $obj;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $obj = clone $this;
         $obj->appId = $appID;

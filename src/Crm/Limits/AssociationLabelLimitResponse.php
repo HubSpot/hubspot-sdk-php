@@ -24,7 +24,11 @@ final class AssociationLabelLimitResponse implements BaseModel
     /** @use SdkModel<AssociationLabelLimitResponseShape> */
     use SdkModel;
 
-    /** @var list<string> $allLabels */
+    /**
+     * A list of all association labels.
+     *
+     * @var list<string> $allLabels
+     */
     #[Api(list: 'string')]
     public array $allLabels;
 
@@ -34,9 +38,15 @@ final class AssociationLabelLimitResponse implements BaseModel
     #[Api]
     public ObjectsSchemasObjectTypeDefinition $fromObjectType;
 
+    /**
+     * The maximum number of association labels allowed.
+     */
     #[Api]
     public int $limit;
 
+    /**
+     * The percentage of the association label limit that has been used.
+     */
     #[Api]
     public float $percentage;
 
@@ -46,6 +56,9 @@ final class AssociationLabelLimitResponse implements BaseModel
     #[Api]
     public ObjectsSchemasObjectTypeDefinition $toObjectType;
 
+    /**
+     * The current number of association labels used.
+     */
     #[Api]
     public int $usage;
 
@@ -109,6 +122,8 @@ final class AssociationLabelLimitResponse implements BaseModel
     }
 
     /**
+     * A list of all association labels.
+     *
      * @param list<string> $allLabels
      */
     public function withAllLabels(array $allLabels): self
@@ -131,6 +146,9 @@ final class AssociationLabelLimitResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The maximum number of association labels allowed.
+     */
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
@@ -139,6 +157,9 @@ final class AssociationLabelLimitResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The percentage of the association label limit that has been used.
+     */
     public function withPercentage(float $percentage): self
     {
         $obj = clone $this;
@@ -159,6 +180,9 @@ final class AssociationLabelLimitResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * The current number of association labels used.
+     */
     public function withUsage(int $usage): self
     {
         $obj = clone $this;

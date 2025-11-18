@@ -29,7 +29,7 @@ final class GroupsService implements GroupsContract
      * Create a new property group for the specified object type.
      *
      * @param array{
-     *   appId: string, label: string, name: string, displayOrder?: int
+     *   appId: int, label: string, name: string, displayOrder?: int
      * }|GroupCreateParams $params
      *
      * @throws APIException
@@ -63,7 +63,7 @@ final class GroupsService implements GroupsContract
      *
      * Get the property groups for a specified object type.
      *
-     * @param array{appId: string}|GroupListParams $params
+     * @param array{appId: int}|GroupListParams $params
      *
      * @throws APIException
      */
@@ -95,7 +95,7 @@ final class GroupsService implements GroupsContract
      *
      * Delete an existing property group by name
      *
-     * @param array{appId: string, objectType: string}|GroupDeleteByNameParams $params
+     * @param array{appId: int, objectType: string}|GroupDeleteByNameParams $params
      *
      * @throws APIException
      */
@@ -132,7 +132,7 @@ final class GroupsService implements GroupsContract
      *
      * Get the details of an existing property group by name.
      *
-     * @param array{appId: string, objectType: string}|GroupGetByNameParams $params
+     * @param array{appId: int, objectType: string}|GroupGetByNameParams $params
      *
      * @throws APIException
      */
@@ -170,7 +170,7 @@ final class GroupsService implements GroupsContract
      * Update an existing property group by name.
      *
      * @param array{
-     *   appId: string, objectType: string, displayOrder?: int, label?: string
+     *   appId: int, objectType: string, displayOrder?: int, label?: string
      * }|GroupUpdateByNameParams $params
      *
      * @throws APIException

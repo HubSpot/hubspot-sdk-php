@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObjectID;
 
 /**
- * Archive a batch of carts by ID.
+ * Archive a batch of carts identified by their IDs.
  *
  * @see HubspotSDK\Services\Crm\Objects\Carts\BatchService::delete()
  *

@@ -15,9 +15,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\RowsService::create()
  *
  * @phpstan-type RowCreateParamsShape = array{
+ *   childTableId: int,
+ *   displayIndex: int,
  *   values: array<string,mixed>,
- *   childTableId?: int,
- *   displayIndex?: int,
  *   name?: string,
  *   path?: string,
  * }
@@ -29,21 +29,21 @@ final class RowCreateParams implements BaseModel
     use SdkParams;
 
     /**
+     * Specifies the value for the column child table id.
+     */
+    #[Api]
+    public int $childTableId;
+
+    #[Api]
+    public int $displayIndex;
+
+    /**
      * List of key value pairs with the column name and column value.
      *
      * @var array<string,mixed> $values
      */
     #[Api(map: 'mixed')]
     public array $values;
-
-    /**
-     * Specifies the value for the column child table id.
-     */
-    #[Api(optional: true)]
-    public ?int $childTableId;
-
-    #[Api(optional: true)]
-    public ?int $displayIndex;
 
     /**
      * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
@@ -62,13 +62,16 @@ final class RowCreateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * RowCreateParams::with(values: ...)
+     * RowCreateParams::with(childTableId: ..., displayIndex: ..., values: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new RowCreateParams)->withValues(...)
+     * (new RowCreateParams)
+     *   ->withChildTableID(...)
+     *   ->withDisplayIndex(...)
+     *   ->withValues(...)
      * ```
      */
     public function __construct()
@@ -84,33 +87,20 @@ final class RowCreateParams implements BaseModel
      * @param array<string,mixed> $values
      */
     public static function with(
+        int $childTableId,
+        int $displayIndex,
         array $values,
-        ?int $childTableId = null,
-        ?int $displayIndex = null,
         ?string $name = null,
         ?string $path = null,
     ): self {
         $obj = new self;
 
+        $obj->childTableId = $childTableId;
+        $obj->displayIndex = $displayIndex;
         $obj->values = $values;
 
-        null !== $childTableId && $obj->childTableId = $childTableId;
-        null !== $displayIndex && $obj->displayIndex = $displayIndex;
         null !== $name && $obj->name = $name;
         null !== $path && $obj->path = $path;
-
-        return $obj;
-    }
-
-    /**
-     * List of key value pairs with the column name and column value.
-     *
-     * @param array<string,mixed> $values
-     */
-    public function withValues(array $values): self
-    {
-        $obj = clone $this;
-        $obj->values = $values;
 
         return $obj;
     }
@@ -130,6 +120,19 @@ final class RowCreateParams implements BaseModel
     {
         $obj = clone $this;
         $obj->displayIndex = $displayIndex;
+
+        return $obj;
+    }
+
+    /**
+     * List of key value pairs with the column name and column value.
+     *
+     * @param array<string,mixed> $values
+     */
+    public function withValues(array $values): self
+    {
+        $obj = clone $this;
+        $obj->values = $values;
 
         return $obj;
     }

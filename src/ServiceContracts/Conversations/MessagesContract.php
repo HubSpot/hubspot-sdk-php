@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Conversations;
 
-use HubspotSDK\Conversations\CollectionResponsePublicMessageForwardPaging;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\Messages\MessageGetOriginalContentParams;
 use HubspotSDK\Conversations\Messages\MessageGetParams;
+use HubspotSDK\Conversations\Messages\MessageListParams;
 use HubspotSDK\Conversations\PublicAssignmentMessage;
 use HubspotSDK\Conversations\PublicComment;
 use HubspotSDK\Conversations\PublicMessageContent;
@@ -15,6 +15,7 @@ use HubspotSDK\Conversations\PublicThreadInboxChange;
 use HubspotSDK\Conversations\PublicThreadStatusChange;
 use HubspotSDK\Conversations\PublicWelcomeMessage;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 interface MessagesContract
@@ -25,19 +26,24 @@ interface MessagesContract
      * @throws APIException
      */
     public function create(
-        string $threadID,
+        int $threadID,
         ?RequestOptions $requestOptions = null
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
 
     /**
      * @api
      *
+     * @param array<mixed>|MessageListParams $params
+     *
+     * @return Page<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>
+     *
      * @throws APIException
      */
     public function list(
-        string $threadID,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicMessageForwardPaging;
+        int $threadID,
+        array|MessageListParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): Page;
 
     /**
      * @api

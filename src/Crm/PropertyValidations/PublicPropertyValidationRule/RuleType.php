@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule;
 
+/**
+ * The category of validation applied to the property, such as FORMAT, ALPHANUMERIC, or MAX_LENGTH.
+ */
 enum RuleType: string
 {
     case FORMAT = 'FORMAT';

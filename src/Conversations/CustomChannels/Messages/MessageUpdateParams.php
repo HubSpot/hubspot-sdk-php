@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::update()
  *
  * @phpstan-type MessageUpdateParamsShape = array{
- *   channelId: string,
+ *   channelId: int,
  *   statusType: StatusType|value-of<StatusType>,
  *   errorMessage?: string,
  * }
@@ -28,7 +28,7 @@ final class MessageUpdateParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $channelId;
+    public int $channelId;
 
     /**
      * Valid status are SENT, FAILED, and READ.
@@ -68,9 +68,9 @@ final class MessageUpdateParams implements BaseModel
      * @param StatusType|value-of<StatusType> $statusType
      */
     public static function with(
-        string $channelId,
+        int $channelId,
         StatusType|string $statusType,
-        ?string $errorMessage = null,
+        ?string $errorMessage = null
     ): self {
         $obj = new self;
 
@@ -82,7 +82,7 @@ final class MessageUpdateParams implements BaseModel
         return $obj;
     }
 
-    public function withChannelID(string $channelID): self
+    public function withChannelID(int $channelID): self
     {
         $obj = clone $this;
         $obj->channelId = $channelID;

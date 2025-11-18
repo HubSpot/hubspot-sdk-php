@@ -7,12 +7,13 @@ namespace HubspotSDK\Marketing\Emails;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Paging;
 
 /**
  * Response object for collections of marketing emails with pagination information.
  *
  * @phpstan-type CollectionResponseWithTotalVersionPublicEmailShape = array{
- *   results: list<VersionPublicEmail>, total: int, paging?: EmailsPaging|null
+ *   results: list<VersionPublicEmail>, total: int, paging?: Paging|null
  * }
  */
 final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
@@ -34,11 +35,8 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
     #[Api]
     public int $total;
 
-    /**
-     * Contains information pagination of results.
-     */
     #[Api(optional: true)]
-    public ?EmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponseWithTotalVersionPublicEmail()` is missing required properties by the API.
@@ -71,7 +69,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
     public static function with(
         array $results,
         int $total,
-        ?EmailsPaging $paging = null
+        ?Paging $paging = null
     ): self {
         $obj = new self;
 
@@ -107,10 +105,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
         return $obj;
     }
 
-    /**
-     * Contains information pagination of results.
-     */
-    public function withPaging(EmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

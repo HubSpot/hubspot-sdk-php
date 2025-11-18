@@ -12,6 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicThreadShape = array{
  *   id: string,
+ *   archived: bool,
  *   associatedContactId: string,
  *   createdAt: \DateTimeInterface,
  *   inboxId: string,
@@ -19,7 +20,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   originalChannelId: string,
  *   spam: bool,
  *   status: value-of<Status>,
- *   archived?: bool|null,
  *   assignedTo?: string|null,
  *   closedAt?: \DateTimeInterface|null,
  *   latestMessageReceivedTimestamp?: \DateTimeInterface|null,
@@ -38,6 +38,12 @@ final class PublicThread implements BaseModel
      */
     #[Api]
     public string $id;
+
+    /**
+     * Whether this thread is archived.
+     */
+    #[Api]
+    public bool $archived;
 
     /**
      * The ID of the associated Contact in the CRM. If the Contact for the thread has not yet been added or created, the `associatedContactId` returned will be a visitorID and cannot be used to search for the Contact in the CRM.
@@ -77,12 +83,6 @@ final class PublicThread implements BaseModel
     #[Api(enum: Status::class)]
     public string $status;
 
-    /**
-     * Whether this thread is archived.
-     */
-    #[Api(optional: true)]
-    public ?bool $archived;
-
     #[Api(optional: true)]
     public ?string $assignedTo;
 
@@ -120,6 +120,7 @@ final class PublicThread implements BaseModel
      * ```
      * PublicThread::with(
      *   id: ...,
+     *   archived: ...,
      *   associatedContactId: ...,
      *   createdAt: ...,
      *   inboxId: ...,
@@ -135,6 +136,7 @@ final class PublicThread implements BaseModel
      * ```
      * (new PublicThread)
      *   ->withID(...)
+     *   ->withArchived(...)
      *   ->withAssociatedContactID(...)
      *   ->withCreatedAt(...)
      *   ->withInboxID(...)
@@ -158,6 +160,7 @@ final class PublicThread implements BaseModel
      */
     public static function with(
         string $id,
+        bool $archived,
         string $associatedContactId,
         \DateTimeInterface $createdAt,
         string $inboxId,
@@ -165,7 +168,6 @@ final class PublicThread implements BaseModel
         string $originalChannelId,
         bool $spam,
         Status|string $status,
-        ?bool $archived = null,
         ?string $assignedTo = null,
         ?\DateTimeInterface $closedAt = null,
         ?\DateTimeInterface $latestMessageReceivedTimestamp = null,
@@ -176,6 +178,7 @@ final class PublicThread implements BaseModel
         $obj = new self;
 
         $obj->id = $id;
+        $obj->archived = $archived;
         $obj->associatedContactId = $associatedContactId;
         $obj->createdAt = $createdAt;
         $obj->inboxId = $inboxId;
@@ -184,7 +187,6 @@ final class PublicThread implements BaseModel
         $obj->spam = $spam;
         $obj['status'] = $status;
 
-        null !== $archived && $obj->archived = $archived;
         null !== $assignedTo && $obj->assignedTo = $assignedTo;
         null !== $closedAt && $obj->closedAt = $closedAt;
         null !== $latestMessageReceivedTimestamp && $obj->latestMessageReceivedTimestamp = $latestMessageReceivedTimestamp;
@@ -202,6 +204,17 @@ final class PublicThread implements BaseModel
     {
         $obj = clone $this;
         $obj->id = $id;
+
+        return $obj;
+    }
+
+    /**
+     * Whether this thread is archived.
+     */
+    public function withArchived(bool $archived): self
+    {
+        $obj = clone $this;
+        $obj->archived = $archived;
 
         return $obj;
     }
@@ -276,17 +289,6 @@ final class PublicThread implements BaseModel
     {
         $obj = clone $this;
         $obj['status'] = $status;
-
-        return $obj;
-    }
-
-    /**
-     * Whether this thread is archived.
-     */
-    public function withArchived(bool $archived): self
-    {
-        $obj = clone $this;
-        $obj->archived = $archived;
 
         return $obj;
     }

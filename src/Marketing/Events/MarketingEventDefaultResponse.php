@@ -12,9 +12,9 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type MarketingEventDefaultResponseShape = array{
+ *   customProperties: list<PropertyValue>,
  *   eventName: string,
  *   eventOrganizer: string,
- *   customProperties?: list<PropertyValue>|null,
  *   endDateTime?: \DateTimeInterface|null,
  *   eventCancelled?: bool|null,
  *   eventCompleted?: bool|null,
@@ -33,6 +33,15 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
     use SdkResponse;
 
     /**
+     * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
+     * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
+     *
+     * @var list<PropertyValue> $customProperties
+     */
+    #[Api(list: PropertyValue::class)]
+    public array $customProperties;
+
+    /**
      * The name of the marketing event.
      */
     #[Api]
@@ -43,15 +52,6 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
      */
     #[Api]
     public string $eventOrganizer;
-
-    /**
-     * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
-     * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
-     *
-     * @var list<PropertyValue>|null $customProperties
-     */
-    #[Api(list: PropertyValue::class, optional: true)]
-    public ?array $customProperties;
 
     /**
      * The end date and time of the marketing event.
@@ -100,13 +100,18 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
      *
      * To enforce required parameters use
      * ```
-     * MarketingEventDefaultResponse::with(eventName: ..., eventOrganizer: ...)
+     * MarketingEventDefaultResponse::with(
+     *   customProperties: ..., eventName: ..., eventOrganizer: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new MarketingEventDefaultResponse)->withEventName(...)->withEventOrganizer(...)
+     * (new MarketingEventDefaultResponse)
+     *   ->withCustomProperties(...)
+     *   ->withEventName(...)
+     *   ->withEventOrganizer(...)
      * ```
      */
     public function __construct()
@@ -122,9 +127,9 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
      * @param list<PropertyValue> $customProperties
      */
     public static function with(
+        array $customProperties,
         string $eventName,
         string $eventOrganizer,
-        ?array $customProperties = null,
         ?\DateTimeInterface $endDateTime = null,
         ?bool $eventCancelled = null,
         ?bool $eventCompleted = null,
@@ -136,10 +141,10 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
     ): self {
         $obj = new self;
 
+        $obj->customProperties = $customProperties;
         $obj->eventName = $eventName;
         $obj->eventOrganizer = $eventOrganizer;
 
-        null !== $customProperties && $obj->customProperties = $customProperties;
         null !== $endDateTime && $obj->endDateTime = $endDateTime;
         null !== $eventCancelled && $obj->eventCancelled = $eventCancelled;
         null !== $eventCompleted && $obj->eventCompleted = $eventCompleted;
@@ -148,6 +153,20 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
         null !== $eventUrl && $obj->eventUrl = $eventUrl;
         null !== $objectId && $obj->objectId = $objectId;
         null !== $startDateTime && $obj->startDateTime = $startDateTime;
+
+        return $obj;
+    }
+
+    /**
+     * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
+     * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
+     *
+     * @param list<PropertyValue> $customProperties
+     */
+    public function withCustomProperties(array $customProperties): self
+    {
+        $obj = clone $this;
+        $obj->customProperties = $customProperties;
 
         return $obj;
     }
@@ -170,20 +189,6 @@ final class MarketingEventDefaultResponse implements BaseModel, ResponseConverte
     {
         $obj = clone $this;
         $obj->eventOrganizer = $eventOrganizer;
-
-        return $obj;
-    }
-
-    /**
-     * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
-     * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
-     *
-     * @param list<PropertyValue> $customProperties
-     */
-    public function withCustomProperties(array $customProperties): self
-    {
-        $obj = clone $this;
-        $obj->customProperties = $customProperties;
 
         return $obj;
     }

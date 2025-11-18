@@ -40,11 +40,9 @@ final class TablesService implements TablesContract
      * Creates a new draft HubDB table given a JSON schema. The table name and label should be unique for each account.
      *
      * @param array{
-     *   label: string,
-     *   name: string,
-     *   allowChildTables?: bool,
-     *   allowPublicApiAccess?: bool,
-     *   columns?: list<array{
+     *   allowChildTables: bool,
+     *   allowPublicApiAccess: bool,
+     *   columns: list<array{
      *     id: int,
      *     label: string,
      *     name: string,
@@ -55,9 +53,11 @@ final class TablesService implements TablesContract
      *     maxNumberOfCharacters?: int,
      *     maxNumberOfOptions?: int,
      *   }>,
-     *   dynamicMetaTags?: array<string,int>,
-     *   enableChildTablePages?: bool,
-     *   useForPages?: bool,
+     *   dynamicMetaTags: array<string,int>,
+     *   enableChildTablePages: bool,
+     *   label: string,
+     *   name: string,
+     *   useForPages: bool,
      * }|TableCreateParams $params
      *
      * @throws APIException
@@ -501,14 +501,9 @@ final class TablesService implements TablesContract
      * **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.
      *
      * @param array{
-     *   label: string,
-     *   name: string,
-     *   archived?: bool,
-     *   includeForeignIds?: bool,
-     *   isGetLocalizedSchema?: bool,
-     *   allowChildTables?: bool,
-     *   allowPublicApiAccess?: bool,
-     *   columns?: list<array{
+     *   allowChildTables: bool,
+     *   allowPublicApiAccess: bool,
+     *   columns: list<array{
      *     id: int,
      *     label: string,
      *     name: string,
@@ -519,9 +514,14 @@ final class TablesService implements TablesContract
      *     maxNumberOfCharacters?: int,
      *     maxNumberOfOptions?: int,
      *   }>,
-     *   dynamicMetaTags?: array<string,int>,
-     *   enableChildTablePages?: bool,
-     *   useForPages?: bool,
+     *   dynamicMetaTags: array<string,int>,
+     *   enableChildTablePages: bool,
+     *   label: string,
+     *   name: string,
+     *   useForPages: bool,
+     *   archived?: bool,
+     *   includeForeignIds?: bool,
+     *   isGetLocalizedSchema?: bool,
      * }|TableUpdateDraftParams $params
      *
      * @throws APIException

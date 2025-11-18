@@ -7,13 +7,13 @@ namespace HubspotSDK\Files;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\EmailsPaging;
+use HubspotSDK\Paging;
 
 /**
  * Collections of files.
  *
  * @phpstan-type CollectionResponseFileShape = array{
- *   results: list<File>, paging?: EmailsPaging|null
+ *   results: list<File>, paging?: Paging|null
  * }
  */
 final class CollectionResponseFile implements BaseModel
@@ -25,11 +25,8 @@ final class CollectionResponseFile implements BaseModel
     #[Api(list: File::class)]
     public array $results;
 
-    /**
-     * Contains information pagination of results.
-     */
     #[Api(optional: true)]
-    public ?EmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponseFile()` is missing required properties by the API.
@@ -57,10 +54,8 @@ final class CollectionResponseFile implements BaseModel
      *
      * @param list<File> $results
      */
-    public static function with(
-        array $results,
-        ?EmailsPaging $paging = null
-    ): self {
+    public static function with(array $results, ?Paging $paging = null): self
+    {
         $obj = new self;
 
         $obj->results = $results;
@@ -81,10 +76,7 @@ final class CollectionResponseFile implements BaseModel
         return $obj;
     }
 
-    /**
-     * Contains information pagination of results.
-     */
-    public function withPaging(EmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

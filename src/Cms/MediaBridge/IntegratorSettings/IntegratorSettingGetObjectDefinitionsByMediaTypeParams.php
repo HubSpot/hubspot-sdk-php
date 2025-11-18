@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::getObjectDefinitionsByMediaType()
  *
  * @phpstan-type IntegratorSettingGetObjectDefinitionsByMediaTypeParamsShape = array{
- *   appId: string
+ *   appId: int, includeFullDefinition?: bool
  * }
  */
 final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements BaseModel
@@ -27,7 +27,13 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
     use SdkParams;
 
     #[Api]
-    public string $appId;
+    public int $appId;
+
+    /**
+     * Include the full definition in the response.
+     */
+    #[Api(optional: true)]
+    public ?bool $includeFullDefinition;
 
     /**
      * `new IntegratorSettingGetObjectDefinitionsByMediaTypeParams()` is missing required properties by the API.
@@ -53,19 +59,34 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $appId): self
-    {
+    public static function with(
+        int $appId,
+        ?bool $includeFullDefinition = null
+    ): self {
         $obj = new self;
 
         $obj->appId = $appId;
 
+        null !== $includeFullDefinition && $obj->includeFullDefinition = $includeFullDefinition;
+
         return $obj;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $obj = clone $this;
         $obj->appId = $appID;
+
+        return $obj;
+    }
+
+    /**
+     * Include the full definition in the response.
+     */
+    public function withIncludeFullDefinition(bool $includeFullDefinition): self
+    {
+        $obj = clone $this;
+        $obj->includeFullDefinition = $includeFullDefinition;
 
         return $obj;
     }

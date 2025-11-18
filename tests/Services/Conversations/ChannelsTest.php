@@ -36,7 +36,7 @@ final class ChannelsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->channels->list();
+        $result = $this->client->conversations->channels->list([]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
@@ -48,7 +48,7 @@ final class ChannelsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->channels->get('channelId');
+        $result = $this->client->conversations->channels->get(0);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

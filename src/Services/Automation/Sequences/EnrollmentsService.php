@@ -25,6 +25,7 @@ final class EnrollmentsService implements EnrollmentsContract
      * Enroll a contact into a sequence using the specified user ID and sequence details.
      *
      * @param array{
+     *   userId: string,
      *   contactId: string,
      *   senderEmail: string,
      *   sequenceId: string,
@@ -41,12 +42,14 @@ final class EnrollmentsService implements EnrollmentsContract
             $params,
             $requestOptions,
         );
+        $query_params = ['userId'];
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
             path: 'automation/v4/sequences/enrollments',
-            body: (object) $parsed,
+            query: array_diff_key($parsed, $query_params),
+            body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: PublicSequenceEnrollmentLiteResponse::class,
         );

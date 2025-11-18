@@ -5,23 +5,32 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Scheduler\Meetings;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
-use HubspotSDK\Scheduler\Meetings\CollectionResponseWithTotalExternalLinkMetadataForwardPaging;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
 use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
+use HubspotSDK\Scheduler\Meetings\ExternalLinkMetadata;
 use HubspotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
 use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkBookParams;
+use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkGetAvailabilityBySlugParams;
+use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkGetBookingInfoBySlugParams;
+use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkListParams;
 
 interface MeetingsLinksContract
 {
     /**
      * @api
      *
+     * @param array<mixed>|MeetingsLinkListParams $params
+     *
+     * @return Page<ExternalLinkMetadata>
+     *
      * @throws APIException
      */
     public function list(
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalExternalLinkMetadataForwardPaging;
+        array|MeetingsLinkListParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): Page;
 
     /**
      * @api
@@ -38,20 +47,26 @@ interface MeetingsLinksContract
     /**
      * @api
      *
+     * @param array<mixed>|MeetingsLinkGetAvailabilityBySlugParams $params
+     *
      * @throws APIException
      */
     public function getAvailabilityBySlug(
         string $slug,
-        ?RequestOptions $requestOptions = null
+        array|MeetingsLinkGetAvailabilityBySlugParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ExternalLinkAvailabilityAndBusyTimes;
 
     /**
      * @api
      *
+     * @param array<mixed>|MeetingsLinkGetBookingInfoBySlugParams $params
+     *
      * @throws APIException
      */
     public function getBookingInfoBySlug(
         string $slug,
-        ?RequestOptions $requestOptions = null
+        array|MeetingsLinkGetBookingInfoBySlugParams $params,
+        ?RequestOptions $requestOptions = null,
     ): ExternalBookingInfo;
 }

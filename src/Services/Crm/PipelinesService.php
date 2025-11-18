@@ -43,7 +43,7 @@ final class PipelinesService implements PipelinesContract
      *   displayOrder: int,
      *   label: string,
      *   stages: list<array{
-     *     displayOrder: int, label: string, metadata?: array<string,string>
+     *     displayOrder: int, label: string, metadata: array<string,string>
      *   }>,
      * }|PipelineCreateParams $params
      *
@@ -137,7 +137,7 @@ final class PipelinesService implements PipelinesContract
     /**
      * @api
      *
-     * Delete a pipeline
+     * Delete a pipeline identified by its unique pipelineId
      *
      * @param array{
      *   objectType: string,
@@ -232,14 +232,14 @@ final class PipelinesService implements PipelinesContract
     /**
      * @api
      *
-     * Replace a pipeline
+     * Replace all properties of an existing pipeline with the provided values.
      *
      * @param array{
      *   objectType: string,
      *   displayOrder: int,
      *   label: string,
      *   stages: list<array{
-     *     displayOrder: int, label: string, metadata?: array<string,string>
+     *     displayOrder: int, label: string, metadata: array<string,string>
      *   }>,
      *   validateDealStageUsagesBeforeDelete?: bool,
      *   validateReferencesBeforeDelete?: bool,

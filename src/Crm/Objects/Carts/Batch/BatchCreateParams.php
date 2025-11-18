@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 
 /**
- * Create a batch of carts.
+ * Create a batch of carts with specified properties and associations.
  *
  * @see HubspotSDK\Services\Crm\Objects\Carts\BatchService::create()
  *

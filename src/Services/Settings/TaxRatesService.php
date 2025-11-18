@@ -6,10 +6,11 @@ namespace HubspotSDK\Services\Settings;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Settings\TaxRatesContract;
-use HubspotSDK\Settings\TaxRates\CollectionResponsePublicTaxRateGroupForwardPaging;
 use HubspotSDK\Settings\TaxRates\PublicTaxRateGroup;
+use HubspotSDK\Settings\TaxRates\TaxRateListParams;
 
 final class TaxRatesService implements TaxRatesContract
 {
@@ -23,17 +24,31 @@ final class TaxRatesService implements TaxRatesContract
      *
      * Retrieve a paginated list of all tax rates set up in the account tax rate library
      *
+     * @param array{
+     *   active?: bool, after?: string, limit?: int
+     * }|TaxRateListParams $params
+     *
+     * @return Page<PublicTaxRateGroup>
+     *
      * @throws APIException
      */
     public function list(
+        array|TaxRateListParams $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponsePublicTaxRateGroupForwardPaging {
+    ): Page {
+        [$parsed, $options] = TaxRateListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: 'tax-rates/v1/tax-rates',
-            options: $requestOptions,
-            convert: CollectionResponsePublicTaxRateGroupForwardPaging::class,
+            query: $parsed,
+            options: $options,
+            convert: PublicTaxRateGroup::class,
+            page: Page::class,
         );
     }
 

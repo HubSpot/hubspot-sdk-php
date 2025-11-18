@@ -16,6 +16,9 @@ final class ObjectTypeEnablementPublicResponse implements BaseModel
     /** @use SdkModel<ObjectTypeEnablementPublicResponseShape> */
     use SdkModel;
 
+    /**
+     * Whether the object type is enabled or not.
+     */
     #[Api]
     public bool $enablement;
 
@@ -52,6 +55,9 @@ final class ObjectTypeEnablementPublicResponse implements BaseModel
         return $obj;
     }
 
+    /**
+     * Whether the object type is enabled or not.
+     */
     public function withEnablement(bool $enablement): self
     {
         $obj = clone $this;

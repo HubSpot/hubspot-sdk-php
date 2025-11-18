@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\BatchResponsePublicAssociation;
 
+/**
+ * The current status of the batch operation, with possible values: PENDING, PROCESSING, CANCELED, COMPLETE.
+ */
 enum Status: string
 {
     case PENDING = 'PENDING';

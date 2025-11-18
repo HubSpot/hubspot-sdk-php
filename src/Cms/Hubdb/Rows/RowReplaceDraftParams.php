@@ -17,9 +17,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type RowReplaceDraftParamsShape = array{
  *   tableIdOrName: string,
+ *   childTableId: int,
+ *   displayIndex: int,
  *   values: array<string,mixed>,
- *   childTableId?: int,
- *   displayIndex?: int,
  *   name?: string,
  *   path?: string,
  * }
@@ -34,21 +34,21 @@ final class RowReplaceDraftParams implements BaseModel
     public string $tableIdOrName;
 
     /**
+     * Specifies the value for the column child table id.
+     */
+    #[Api]
+    public int $childTableId;
+
+    #[Api]
+    public int $displayIndex;
+
+    /**
      * List of key value pairs with the column name and column value.
      *
      * @var array<string,mixed> $values
      */
     #[Api(map: 'mixed')]
     public array $values;
-
-    /**
-     * Specifies the value for the column child table id.
-     */
-    #[Api(optional: true)]
-    public ?int $childTableId;
-
-    #[Api(optional: true)]
-    public ?int $displayIndex;
 
     /**
      * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
@@ -67,13 +67,19 @@ final class RowReplaceDraftParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * RowReplaceDraftParams::with(tableIdOrName: ..., values: ...)
+     * RowReplaceDraftParams::with(
+     *   tableIdOrName: ..., childTableId: ..., displayIndex: ..., values: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new RowReplaceDraftParams)->withTableIDOrName(...)->withValues(...)
+     * (new RowReplaceDraftParams)
+     *   ->withTableIDOrName(...)
+     *   ->withChildTableID(...)
+     *   ->withDisplayIndex(...)
+     *   ->withValues(...)
      * ```
      */
     public function __construct()
@@ -90,19 +96,19 @@ final class RowReplaceDraftParams implements BaseModel
      */
     public static function with(
         string $tableIdOrName,
+        int $childTableId,
+        int $displayIndex,
         array $values,
-        ?int $childTableId = null,
-        ?int $displayIndex = null,
         ?string $name = null,
         ?string $path = null,
     ): self {
         $obj = new self;
 
         $obj->tableIdOrName = $tableIdOrName;
+        $obj->childTableId = $childTableId;
+        $obj->displayIndex = $displayIndex;
         $obj->values = $values;
 
-        null !== $childTableId && $obj->childTableId = $childTableId;
-        null !== $displayIndex && $obj->displayIndex = $displayIndex;
         null !== $name && $obj->name = $name;
         null !== $path && $obj->path = $path;
 
@@ -113,19 +119,6 @@ final class RowReplaceDraftParams implements BaseModel
     {
         $obj = clone $this;
         $obj->tableIdOrName = $tableIDOrName;
-
-        return $obj;
-    }
-
-    /**
-     * List of key value pairs with the column name and column value.
-     *
-     * @param array<string,mixed> $values
-     */
-    public function withValues(array $values): self
-    {
-        $obj = clone $this;
-        $obj->values = $values;
 
         return $obj;
     }
@@ -145,6 +138,19 @@ final class RowReplaceDraftParams implements BaseModel
     {
         $obj = clone $this;
         $obj->displayIndex = $displayIndex;
+
+        return $obj;
+    }
+
+    /**
+     * List of key value pairs with the column name and column value.
+     *
+     * @param array<string,mixed> $values
+     */
+    public function withValues(array $values): self
+    {
+        $obj = clone $this;
+        $obj->values = $values;
 
         return $obj;
     }

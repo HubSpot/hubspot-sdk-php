@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APITimeWindowShape = array{
- *   day: value-of<Day>, endTime: APITimeOfDay, startTime: APITimeOfDay
+ *   day: value-of<Day>, endTime?: APITimeOfDay|null, startTime?: APITimeOfDay|null
  * }
  */
 final class APITimeWindow implements BaseModel
@@ -23,24 +23,24 @@ final class APITimeWindow implements BaseModel
     #[Api(enum: Day::class)]
     public string $day;
 
-    #[Api]
-    public APITimeOfDay $endTime;
+    #[Api(optional: true)]
+    public ?APITimeOfDay $endTime;
 
-    #[Api]
-    public APITimeOfDay $startTime;
+    #[Api(optional: true)]
+    public ?APITimeOfDay $startTime;
 
     /**
      * `new APITimeWindow()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * APITimeWindow::with(day: ..., endTime: ..., startTime: ...)
+     * APITimeWindow::with(day: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new APITimeWindow)->withDay(...)->withEndTime(...)->withStartTime(...)
+     * (new APITimeWindow)->withDay(...)
      * ```
      */
     public function __construct()
@@ -57,14 +57,15 @@ final class APITimeWindow implements BaseModel
      */
     public static function with(
         Day|string $day,
-        APITimeOfDay $endTime,
-        APITimeOfDay $startTime
+        ?APITimeOfDay $endTime = null,
+        ?APITimeOfDay $startTime = null,
     ): self {
         $obj = new self;
 
         $obj['day'] = $day;
-        $obj->endTime = $endTime;
-        $obj->startTime = $startTime;
+
+        null !== $endTime && $obj->endTime = $endTime;
+        null !== $startTime && $obj->startTime = $startTime;
 
         return $obj;
     }

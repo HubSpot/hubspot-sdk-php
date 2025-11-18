@@ -18,15 +18,27 @@ final class UsageForObjectType implements BaseModel
     /** @use SdkModel<UsageForObjectTypeShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier for the object type.
+     */
     #[Api]
     public string $objectTypeId;
 
+    /**
+     * The plural form of the label for the object type.
+     */
     #[Api]
     public string $pluralLabel;
 
+    /**
+     * The singular form of the label for the object type.
+     */
     #[Api]
     public string $singularLabel;
 
+    /**
+     * The number of records used for the object type.
+     */
     #[Api]
     public int $usage;
 
@@ -76,6 +88,9 @@ final class UsageForObjectType implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier for the object type.
+     */
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
@@ -84,6 +99,9 @@ final class UsageForObjectType implements BaseModel
         return $obj;
     }
 
+    /**
+     * The plural form of the label for the object type.
+     */
     public function withPluralLabel(string $pluralLabel): self
     {
         $obj = clone $this;
@@ -92,6 +110,9 @@ final class UsageForObjectType implements BaseModel
         return $obj;
     }
 
+    /**
+     * The singular form of the label for the object type.
+     */
     public function withSingularLabel(string $singularLabel): self
     {
         $obj = clone $this;
@@ -100,6 +121,9 @@ final class UsageForObjectType implements BaseModel
         return $obj;
     }
 
+    /**
+     * The number of records used for the object type.
+     */
     public function withUsage(int $usage): self
     {
         $obj = clone $this;

@@ -38,7 +38,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->create(
             'tableIdOrName',
-            ['values' => ['foo' => []]]
+            ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +53,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->create(
             'tableIdOrName',
-            ['values' => ['foo' => []]]
+            ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -212,7 +212,12 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->replaceDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName', 'values' => ['foo' => []]],
+            [
+                'tableIdOrName' => 'tableIdOrName',
+                'childTableId' => 0,
+                'displayIndex' => 0,
+                'values' => ['foo' => []],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -227,7 +232,12 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->replaceDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName', 'values' => ['foo' => []]],
+            [
+                'tableIdOrName' => 'tableIdOrName',
+                'childTableId' => 0,
+                'displayIndex' => 0,
+                'values' => ['foo' => []],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -242,7 +252,12 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->updateDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName', 'values' => ['foo' => []]],
+            [
+                'tableIdOrName' => 'tableIdOrName',
+                'childTableId' => 0,
+                'displayIndex' => 0,
+                'values' => ['foo' => []],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -257,7 +272,12 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->updateDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName', 'values' => ['foo' => []]],
+            [
+                'tableIdOrName' => 'tableIdOrName',
+                'childTableId' => 0,
+                'displayIndex' => 0,
+                'values' => ['foo' => []],
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

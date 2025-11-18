@@ -15,14 +15,15 @@ use HubspotSDK\Core\Conversion\MapOf;
  *
  * @phpstan-type SimplePublicObjectWithAssociationsShape = array{
  *   id: string,
+ *   archived: bool,
  *   createdAt: \DateTimeInterface,
  *   properties: array<string,string>,
  *   updatedAt: \DateTimeInterface,
- *   archived?: bool|null,
  *   archivedAt?: \DateTimeInterface|null,
  *   associations?: array<string,CollectionResponseAssociatedID>|null,
  *   objectWriteTraceId?: string|null,
  *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
+ *   url?: string|null,
  * }
  */
 final class SimplePublicObjectWithAssociations implements BaseModel
@@ -35,6 +36,12 @@ final class SimplePublicObjectWithAssociations implements BaseModel
      */
     #[Api]
     public string $id;
+
+    /**
+     * Whether the object is archived.
+     */
+    #[Api]
+    public bool $archived;
 
     /**
      * The timestamp when the object was created, in ISO 8601 format.
@@ -57,12 +64,6 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     public \DateTimeInterface $updatedAt;
 
     /**
-     * Whether the object is archived.
-     */
-    #[Api(optional: true)]
-    public ?bool $archived;
-
-    /**
      * The timestamp when the object was archived, in ISO 8601 format.
      */
     #[Api(optional: true)]
@@ -76,6 +77,9 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     #[Api(map: CollectionResponseAssociatedID::class, optional: true)]
     public ?array $associations;
 
+    /**
+     * A unique identifier for tracing the creation request.
+     */
     #[Api(optional: true)]
     public ?string $objectWriteTraceId;
 
@@ -87,13 +91,16 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     #[Api(map: new ListOf(ValueWithTimestamp::class), optional: true)]
     public ?array $propertiesWithHistory;
 
+    #[Api(optional: true)]
+    public ?string $url;
+
     /**
      * `new SimplePublicObjectWithAssociations()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
      * SimplePublicObjectWithAssociations::with(
-     *   id: ..., createdAt: ..., properties: ..., updatedAt: ...
+     *   id: ..., archived: ..., createdAt: ..., properties: ..., updatedAt: ...
      * )
      * ```
      *
@@ -102,6 +109,7 @@ final class SimplePublicObjectWithAssociations implements BaseModel
      * ```
      * (new SimplePublicObjectWithAssociations)
      *   ->withID(...)
+     *   ->withArchived(...)
      *   ->withCreatedAt(...)
      *   ->withProperties(...)
      *   ->withUpdatedAt(...)
@@ -123,27 +131,29 @@ final class SimplePublicObjectWithAssociations implements BaseModel
      */
     public static function with(
         string $id,
+        bool $archived,
         \DateTimeInterface $createdAt,
         array $properties,
         \DateTimeInterface $updatedAt,
-        ?bool $archived = null,
         ?\DateTimeInterface $archivedAt = null,
         ?array $associations = null,
         ?string $objectWriteTraceId = null,
         ?array $propertiesWithHistory = null,
+        ?string $url = null,
     ): self {
         $obj = new self;
 
         $obj->id = $id;
+        $obj->archived = $archived;
         $obj->createdAt = $createdAt;
         $obj->properties = $properties;
         $obj->updatedAt = $updatedAt;
 
-        null !== $archived && $obj->archived = $archived;
         null !== $archivedAt && $obj->archivedAt = $archivedAt;
         null !== $associations && $obj->associations = $associations;
         null !== $objectWriteTraceId && $obj->objectWriteTraceId = $objectWriteTraceId;
         null !== $propertiesWithHistory && $obj->propertiesWithHistory = $propertiesWithHistory;
+        null !== $url && $obj->url = $url;
 
         return $obj;
     }
@@ -155,6 +165,17 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     {
         $obj = clone $this;
         $obj->id = $id;
+
+        return $obj;
+    }
+
+    /**
+     * Whether the object is archived.
+     */
+    public function withArchived(bool $archived): self
+    {
+        $obj = clone $this;
+        $obj->archived = $archived;
 
         return $obj;
     }
@@ -195,17 +216,6 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     }
 
     /**
-     * Whether the object is archived.
-     */
-    public function withArchived(bool $archived): self
-    {
-        $obj = clone $this;
-        $obj->archived = $archived;
-
-        return $obj;
-    }
-
-    /**
      * The timestamp when the object was archived, in ISO 8601 format.
      */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
@@ -229,6 +239,9 @@ final class SimplePublicObjectWithAssociations implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique identifier for tracing the creation request.
+     */
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
@@ -247,6 +260,14 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     ): self {
         $obj = clone $this;
         $obj->propertiesWithHistory = $propertiesWithHistory;
+
+        return $obj;
+    }
+
+    public function withURL(string $url): self
+    {
+        $obj = clone $this;
+        $obj->url = $url;
 
         return $obj;
     }

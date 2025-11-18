@@ -41,7 +41,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->createObjectDefinition('appId', ['mediaTypes' => ['VIDEO']])
+            ->createObjectDefinition(0, ['mediaTypes' => ['VIDEO']])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -59,7 +59,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->createObjectDefinition('appId', ['mediaTypes' => ['VIDEO']])
+            ->createObjectDefinition(0, ['mediaTypes' => ['VIDEO']])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -78,7 +78,7 @@ final class IntegratorSettingsTest extends TestCase
             ->mediaBridge
             ->integratorSettings
             ->createOembedDomain(
-                'appId',
+                0,
                 [
                     'endpoints' => [
                         'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
@@ -103,7 +103,7 @@ final class IntegratorSettingsTest extends TestCase
             ->mediaBridge
             ->integratorSettings
             ->createOembedDomain(
-                'appId',
+                0,
                 [
                     'endpoints' => [
                         'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
@@ -127,7 +127,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->deleteOembedDomain('appId')
+            ->deleteOembedDomain(0, [])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -145,7 +145,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getEventVisibilitySettings('appId')
+            ->getEventVisibilitySettings(0)
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -163,7 +163,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getObjectDefinitionsByMediaType('mediaType', ['appId' => 'appId'])
+            ->getObjectDefinitionsByMediaType('VIDEO', ['appId' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -181,7 +181,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getObjectDefinitionsByMediaType('mediaType', ['appId' => 'appId'])
+            ->getObjectDefinitionsByMediaType('VIDEO', ['appId' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -199,7 +199,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getOembedDomain('oEmbedDomainId', ['appId' => 'appId'])
+            ->getOembedDomain('oEmbedDomainId', ['appId' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -217,7 +217,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getOembedDomain('oEmbedDomainId', ['appId' => 'appId'])
+            ->getOembedDomain('oEmbedDomainId', ['appId' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -235,7 +235,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->listOembedDomains('appId')
+            ->listOembedDomains(0, [])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -253,7 +253,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->registerAppName('appId', ['updatedAt' => 0])
+            ->registerAppName(0, ['updatedAt' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -271,7 +271,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->registerAppName('appId', ['updatedAt' => 0])
+            ->registerAppName(0, ['updatedAt' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -289,7 +289,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->updateAppName('appId', ['updatedAt' => 0])
+            ->updateAppName(0, ['updatedAt' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -307,7 +307,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->updateAppName('appId', ['updatedAt' => 0])
+            ->updateAppName(0, ['updatedAt' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -326,7 +326,7 @@ final class IntegratorSettingsTest extends TestCase
             ->mediaBridge
             ->integratorSettings
             ->updateEventVisibilitySettings(
-                'appId',
+                0,
                 ['eventType' => 'ALL', 'updatedAt' => 0]
             )
         ;
@@ -347,7 +347,7 @@ final class IntegratorSettingsTest extends TestCase
             ->mediaBridge
             ->integratorSettings
             ->updateEventVisibilitySettings(
-                'appId',
+                0,
                 ['eventType' => 'ALL', 'updatedAt' => 0]
             )
         ;
@@ -370,7 +370,7 @@ final class IntegratorSettingsTest extends TestCase
             ->updateOembedDomain(
                 'oEmbedDomainId',
                 [
-                    'appId' => 'appId',
+                    'appId' => 0,
                     'endpoints' => [
                         'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
                     ],
@@ -396,7 +396,7 @@ final class IntegratorSettingsTest extends TestCase
             ->updateOembedDomain(
                 'oEmbedDomainId',
                 [
-                    'appId' => 'appId',
+                    'appId' => 0,
                     'endpoints' => [
                         'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
                     ],

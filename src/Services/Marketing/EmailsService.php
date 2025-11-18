@@ -13,6 +13,7 @@ use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
 use HubspotSDK\Marketing\Emails\EmailDeleteParams;
+use HubspotSDK\Marketing\Emails\EmailGetAbTestVariationParams;
 use HubspotSDK\Marketing\Emails\EmailGetParams;
 use HubspotSDK\Marketing\Emails\EmailGetRevisionParams;
 use HubspotSDK\Marketing\Emails\EmailListParams;
@@ -439,17 +440,32 @@ final class EmailsService implements EmailsContract
      *
      * This endpoint lets you obtain the variation of an A/B marketing email. If the email is variation A (master) it will return variation B (variant) and vice versa.
      *
+     * @param array{
+     *   archived?: bool,
+     *   includedProperties?: list<string>,
+     *   includeStats?: bool,
+     *   marketingCampaignNames?: bool,
+     *   workflowNames?: bool,
+     * }|EmailGetAbTestVariationParams $params
+     *
      * @throws APIException
      */
     public function getAbTestVariation(
         string $emailID,
-        ?RequestOptions $requestOptions = null
+        array|EmailGetAbTestVariationParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicEmail {
+        [$parsed, $options] = EmailGetAbTestVariationParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/ab-test/get-variation', $emailID],
-            options: $requestOptions,
+            query: $parsed,
+            options: $options,
             convert: PublicEmail::class,
         );
     }

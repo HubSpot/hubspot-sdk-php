@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\SchemasService::createAssociation()
  *
  * @phpstan-type SchemaCreateAssociationParamsShape = array{
- *   appId: string, fromObjectTypeId: string, toObjectTypeId: string, name?: string
+ *   appId: int, fromObjectTypeId: string, toObjectTypeId: string, name?: string
  * }
  */
 final class SchemaCreateAssociationParams implements BaseModel
@@ -25,7 +25,7 @@ final class SchemaCreateAssociationParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appId;
+    public int $appId;
 
     #[Api]
     public string $fromObjectTypeId;
@@ -66,7 +66,7 @@ final class SchemaCreateAssociationParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $appId,
+        int $appId,
         string $fromObjectTypeId,
         string $toObjectTypeId,
         ?string $name = null,
@@ -82,7 +82,7 @@ final class SchemaCreateAssociationParams implements BaseModel
         return $obj;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $obj = clone $this;
         $obj->appId = $appID;

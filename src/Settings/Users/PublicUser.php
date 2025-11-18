@@ -45,9 +45,15 @@ final class PublicUser implements BaseModel, ResponseConverter
     #[Api]
     public string $email;
 
+    /**
+     * The user's first name.
+     */
     #[Api(optional: true)]
     public ?string $firstName;
 
+    /**
+     * The user's last name.
+     */
     #[Api(optional: true)]
     public ?string $lastName;
 
@@ -63,7 +69,11 @@ final class PublicUser implements BaseModel, ResponseConverter
     #[Api(optional: true)]
     public ?string $roleId;
 
-    /** @var list<string>|null $roleIds */
+    /**
+     * A list of role IDs assigned to the user.
+     *
+     * @var list<string>|null $roleIds
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $roleIds;
 
@@ -75,9 +85,15 @@ final class PublicUser implements BaseModel, ResponseConverter
     #[Api(list: 'string', optional: true)]
     public ?array $secondaryTeamIds;
 
+    /**
+     * Whether a welcome email was sent to the user. This value will only be populated in response to a provisioning request. Subsequent queries will be false.
+     */
     #[Api(optional: true)]
     public ?bool $sendWelcomeEmail;
 
+    /**
+     * Whether the user has super admin privileges.
+     */
     #[Api(optional: true)]
     public ?bool $superAdmin;
 
@@ -159,6 +175,9 @@ final class PublicUser implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The user's first name.
+     */
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
@@ -167,6 +186,9 @@ final class PublicUser implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The user's last name.
+     */
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;
@@ -198,6 +220,8 @@ final class PublicUser implements BaseModel, ResponseConverter
     }
 
     /**
+     * A list of role IDs assigned to the user.
+     *
      * @param list<string> $roleIDs
      */
     public function withRoleIDs(array $roleIDs): self
@@ -221,6 +245,9 @@ final class PublicUser implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether a welcome email was sent to the user. This value will only be populated in response to a provisioning request. Subsequent queries will be false.
+     */
     public function withSendWelcomeEmail(bool $sendWelcomeEmail): self
     {
         $obj = clone $this;
@@ -229,6 +256,9 @@ final class PublicUser implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Whether the user has super admin privileges.
+     */
     public function withSuperAdmin(bool $superAdmin): self
     {
         $obj = clone $this;

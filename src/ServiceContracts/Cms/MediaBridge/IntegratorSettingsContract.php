@@ -10,8 +10,11 @@ use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
 use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateObjectDefinitionParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateOembedDomainParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingDeleteOembedDomainParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetObjectDefinitionsByMediaTypeParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetObjectDefinitionsByMediaTypeParams\MediaType;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetOembedDomainParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingListOembedDomainsParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingRegisterAppNameParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateAppNameParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams;
@@ -32,7 +35,7 @@ interface IntegratorSettingsContract
      * @throws APIException
      */
     public function createObjectDefinition(
-        string $appID,
+        int $appID,
         array|IntegratorSettingCreateObjectDefinitionParams $params,
         ?RequestOptions $requestOptions = null,
     ): BulkIntegratorObjectCreationResponse;
@@ -45,7 +48,7 @@ interface IntegratorSettingsContract
      * @throws APIException
      */
     public function createOembedDomain(
-        string $appID,
+        int $appID,
         array|IntegratorSettingCreateOembedDomainParams $params,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel;
@@ -53,11 +56,14 @@ interface IntegratorSettingsContract
     /**
      * @api
      *
+     * @param array<mixed>|IntegratorSettingDeleteOembedDomainParams $params
+     *
      * @throws APIException
      */
     public function deleteOembedDomain(
-        string $appID,
-        ?RequestOptions $requestOptions = null
+        int $appID,
+        array|IntegratorSettingDeleteOembedDomainParams $params,
+        ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
@@ -66,19 +72,20 @@ interface IntegratorSettingsContract
      * @throws APIException
      */
     public function getEventVisibilitySettings(
-        string $appID,
+        int $appID,
         ?RequestOptions $requestOptions = null
     ): EventVisibilityResponse;
 
     /**
      * @api
      *
+     * @param MediaType|value-of<MediaType> $mediaType
      * @param array<mixed>|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
      *
      * @throws APIException
      */
     public function getObjectDefinitionsByMediaType(
-        string $mediaType,
+        MediaType|string $mediaType,
         array|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): ObjectDefinitionResponse;
@@ -99,11 +106,14 @@ interface IntegratorSettingsContract
     /**
      * @api
      *
+     * @param array<mixed>|IntegratorSettingListOembedDomainsParams $params
+     *
      * @throws APIException
      */
     public function listOembedDomains(
-        string $appID,
-        ?RequestOptions $requestOptions = null
+        int $appID,
+        array|IntegratorSettingListOembedDomainsParams $params,
+        ?RequestOptions $requestOptions = null,
     ): OEmbedDomainsCollectionResponse;
 
     /**
@@ -116,7 +126,7 @@ interface IntegratorSettingsContract
      * @throws APIException
      */
     public function registerAppName(
-        string $appID,
+        int $appID,
         array|IntegratorSettingRegisterAppNameParams $params,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse;
@@ -129,7 +139,7 @@ interface IntegratorSettingsContract
      * @throws APIException
      */
     public function updateAppName(
-        string $appID,
+        int $appID,
         array|IntegratorSettingUpdateAppNameParams $params,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse;
@@ -142,7 +152,7 @@ interface IntegratorSettingsContract
      * @throws APIException
      */
     public function updateEventVisibilitySettings(
-        string $appID,
+        int $appID,
         array|IntegratorSettingUpdateEventVisibilitySettingsParams $params,
         ?RequestOptions $requestOptions = null,
     ): EventVisibilityChange;

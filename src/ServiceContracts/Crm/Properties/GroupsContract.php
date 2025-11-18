@@ -10,6 +10,7 @@ use HubspotSDK\Crm\Properties\CreatedResponsePropertyGroup;
 use HubspotSDK\Crm\Properties\Groups\GroupCreateParams;
 use HubspotSDK\Crm\Properties\Groups\GroupDeleteParams;
 use HubspotSDK\Crm\Properties\Groups\GroupGetParams;
+use HubspotSDK\Crm\Properties\Groups\GroupListParams;
 use HubspotSDK\Crm\Properties\Groups\GroupUpdateParams;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
@@ -45,11 +46,14 @@ interface GroupsContract
     /**
      * @api
      *
+     * @param array<mixed>|GroupListParams $params
+     *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        ?RequestOptions $requestOptions = null
+        array|GroupListParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponsePropertyGroup;
 
     /**

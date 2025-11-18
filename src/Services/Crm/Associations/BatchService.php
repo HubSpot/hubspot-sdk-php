@@ -26,6 +26,8 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
+     * This endpoint allows you to create multiple associations between specified 'from' and 'to' object types in a single batch request.
+     *
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
@@ -107,6 +109,8 @@ final class BatchService implements BatchContract
 
     /**
      * @api
+     *
+     * This endpoint allows you to retrieve multiple associations between specified 'from' and 'to' object types in a single batch request.
      *
      * @param array{
      *   fromObjectType: string, inputs: list<array{id: string}|PublicObjectID>

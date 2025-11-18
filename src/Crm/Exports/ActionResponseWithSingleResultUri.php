@@ -31,13 +31,23 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
 
     use SdkResponse;
 
+    /**
+     * The timestamp when the export was completed, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
+    /**
+     * The timestamp when the export process started, in ISO 8601 format.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current status of the export, which can be PENDING, PROCESSING, COMPLETE or CANCELED.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
@@ -45,16 +55,29 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
     #[Api(list: StandardError::class, optional: true)]
     public ?array $errors;
 
-    /** @var array<string,string>|null $links */
+    /**
+     * A collection of related links associated with the export.
+     *
+     * @var array<string,string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The number of errors encountered during the export process.
+     */
     #[Api(optional: true)]
     public ?int $numErrors;
 
+    /**
+     * The timestamp when the export request was made, in ISO 8601 format.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
+    /**
+     * The URL of the resulting file if the export status is COMPLETE.
+     */
     #[Api(optional: true)]
     public ?string $result;
 
@@ -116,6 +139,9 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The timestamp when the export was completed, in ISO 8601 format.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -124,6 +150,9 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The timestamp when the export process started, in ISO 8601 format.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -133,6 +162,8 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
     }
 
     /**
+     * The current status of the export, which can be PENDING, PROCESSING, COMPLETE or CANCELED.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -155,6 +186,8 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
     }
 
     /**
+     * A collection of related links associated with the export.
+     *
      * @param array<string,string> $links
      */
     public function withLinks(array $links): self
@@ -165,6 +198,9 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The number of errors encountered during the export process.
+     */
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
@@ -173,6 +209,9 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The timestamp when the export request was made, in ISO 8601 format.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;
@@ -181,6 +220,9 @@ final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConv
         return $obj;
     }
 
+    /**
+     * The URL of the resulting file if the export status is COMPLETE.
+     */
     public function withResult(string $result): self
     {
         $obj = clone $this;

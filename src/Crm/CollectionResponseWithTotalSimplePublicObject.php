@@ -7,11 +7,11 @@ namespace HubspotSDK\Crm;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\EmailsPaging;
+use HubspotSDK\Paging;
 
 /**
  * @phpstan-type CollectionResponseWithTotalSimplePublicObjectShape = array{
- *   results: list<SimplePublicObject>, total: int, paging?: EmailsPaging|null
+ *   results: list<SimplePublicObject>, total: int, paging?: Paging|null
  * }
  */
 final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
@@ -23,14 +23,14 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
     #[Api(list: SimplePublicObject::class)]
     public array $results;
 
+    /**
+     * The total number of objects in the collection.
+     */
     #[Api]
     public int $total;
 
-    /**
-     * Contains information pagination of results.
-     */
     #[Api(optional: true)]
-    public ?EmailsPaging $paging;
+    public ?Paging $paging;
 
     /**
      * `new CollectionResponseWithTotalSimplePublicObject()` is missing required properties by the API.
@@ -63,7 +63,7 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
     public static function with(
         array $results,
         int $total,
-        ?EmailsPaging $paging = null
+        ?Paging $paging = null
     ): self {
         $obj = new self;
 
@@ -86,6 +86,9 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
         return $obj;
     }
 
+    /**
+     * The total number of objects in the collection.
+     */
     public function withTotal(int $total): self
     {
         $obj = clone $this;
@@ -94,10 +97,7 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
         return $obj;
     }
 
-    /**
-     * Contains information pagination of results.
-     */
-    public function withPaging(EmailsPaging $paging): self
+    public function withPaging(Paging $paging): self
     {
         $obj = clone $this;
         $obj->paging = $paging;

@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaCreateAssociationParams;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaDeleteAssociationParams;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaGetParams;
+use HubspotSDK\Cms\MediaBridge\Schemas\SchemaListParams;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaUpdateParams;
 use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
@@ -31,7 +32,7 @@ final class SchemasService implements SchemasContract
      * Update the schema for an existing object type
      *
      * @param array{
-     *   appId: string,
+     *   appId: int,
      *   clearDescription?: bool,
      *   description?: string,
      *   labels?: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
@@ -71,17 +72,26 @@ final class SchemasService implements SchemasContract
      *
      * Get the schemas for all object types.
      *
+     * @param array{archived?: bool}|SchemaListParams $params
+     *
      * @throws APIException
      */
     public function list(
-        string $appID,
-        ?RequestOptions $requestOptions = null
+        int $appID,
+        array|SchemaListParams $params,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponseObjectSchemaNoPaging {
+        [$parsed, $options] = SchemaListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/schemas', $appID],
-            options: $requestOptions,
+            query: $parsed,
+            options: $options,
             convert: CollectionResponseObjectSchemaNoPaging::class,
         );
     }
@@ -92,7 +102,7 @@ final class SchemasService implements SchemasContract
      * Create a new association definition for the specified object type.
      *
      * @param array{
-     *   appId: string, fromObjectTypeId: string, toObjectTypeId: string, name?: string
+     *   appId: int, fromObjectTypeId: string, toObjectTypeId: string, name?: string
      * }|SchemaCreateAssociationParams $params
      *
      * @throws APIException
@@ -127,7 +137,7 @@ final class SchemasService implements SchemasContract
      * Delete an existing association definition for an object type.
      *
      * @param array{
-     *   appId: string, objectType: string
+     *   appId: int, objectType: string
      * }|SchemaDeleteAssociationParams $params
      *
      * @throws APIException
@@ -165,7 +175,7 @@ final class SchemasService implements SchemasContract
      *
      * Get the schema for a specified object type.
      *
-     * @param array{appId: string}|SchemaGetParams $params
+     * @param array{appId: int}|SchemaGetParams $params
      *
      * @throws APIException
      */

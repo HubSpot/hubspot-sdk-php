@@ -24,7 +24,11 @@ final class CollectionResponsePublicPropertyValidationRuleMapNoPaging implements
 
     use SdkResponse;
 
-    /** @var list<PublicPropertyValidationRuleMap> $results */
+    /**
+     * Collection of properties with their validation rules. Each item maps a property name to its configured validation rules for the specified object type.
+     *
+     * @var list<PublicPropertyValidationRuleMap> $results
+     */
     #[Api(list: PublicPropertyValidationRuleMap::class)]
     public array $results;
 
@@ -65,6 +69,8 @@ final class CollectionResponsePublicPropertyValidationRuleMapNoPaging implements
     }
 
     /**
+     * Collection of properties with their validation rules. Each item maps a property name to its configured validation rules for the specified object type.
+     *
      * @param list<PublicPropertyValidationRuleMap> $results
      */
     public function withResults(array $results): self

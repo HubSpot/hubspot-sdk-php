@@ -10,10 +10,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type HubDBTableRowV3BatchUpdateRequestShape = array{
- *   id: string,
+ *   childTableId: int,
+ *   displayIndex: int,
  *   values: array<string,mixed>,
- *   childTableId?: int|null,
- *   displayIndex?: int|null,
+ *   id?: string|null,
  *   name?: string|null,
  *   path?: string|null,
  * }
@@ -24,10 +24,13 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
     use SdkModel;
 
     /**
-     * The id of the table row.
+     * Specifies the value for the column child table id.
      */
     #[Api]
-    public string $id;
+    public int $childTableId;
+
+    #[Api]
+    public int $displayIndex;
 
     /**
      * List of key value pairs with the column name and column value.
@@ -38,13 +41,10 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
     public array $values;
 
     /**
-     * Specifies the value for the column child table id.
+     * The id of the table row.
      */
     #[Api(optional: true)]
-    public ?int $childTableId;
-
-    #[Api(optional: true)]
-    public ?int $displayIndex;
+    public ?string $id;
 
     /**
      * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
@@ -63,13 +63,18 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * HubDBTableRowV3BatchUpdateRequest::with(id: ..., values: ...)
+     * HubDBTableRowV3BatchUpdateRequest::with(
+     *   childTableId: ..., displayIndex: ..., values: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new HubDBTableRowV3BatchUpdateRequest)->withID(...)->withValues(...)
+     * (new HubDBTableRowV3BatchUpdateRequest)
+     *   ->withChildTableID(...)
+     *   ->withDisplayIndex(...)
+     *   ->withValues(...)
      * ```
      */
     public function __construct()
@@ -85,46 +90,22 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
      * @param array<string,mixed> $values
      */
     public static function with(
-        string $id,
+        int $childTableId,
+        int $displayIndex,
         array $values,
-        ?int $childTableId = null,
-        ?int $displayIndex = null,
+        ?string $id = null,
         ?string $name = null,
         ?string $path = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
+        $obj->childTableId = $childTableId;
+        $obj->displayIndex = $displayIndex;
         $obj->values = $values;
 
-        null !== $childTableId && $obj->childTableId = $childTableId;
-        null !== $displayIndex && $obj->displayIndex = $displayIndex;
+        null !== $id && $obj->id = $id;
         null !== $name && $obj->name = $name;
         null !== $path && $obj->path = $path;
-
-        return $obj;
-    }
-
-    /**
-     * The id of the table row.
-     */
-    public function withID(string $id): self
-    {
-        $obj = clone $this;
-        $obj->id = $id;
-
-        return $obj;
-    }
-
-    /**
-     * List of key value pairs with the column name and column value.
-     *
-     * @param array<string,mixed> $values
-     */
-    public function withValues(array $values): self
-    {
-        $obj = clone $this;
-        $obj->values = $values;
 
         return $obj;
     }
@@ -144,6 +125,30 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
     {
         $obj = clone $this;
         $obj->displayIndex = $displayIndex;
+
+        return $obj;
+    }
+
+    /**
+     * List of key value pairs with the column name and column value.
+     *
+     * @param array<string,mixed> $values
+     */
+    public function withValues(array $values): self
+    {
+        $obj = clone $this;
+        $obj->values = $values;
+
+        return $obj;
+    }
+
+    /**
+     * The id of the table row.
+     */
+    public function withID(string $id): self
+    {
+        $obj = clone $this;
+        $obj->id = $id;
 
         return $obj;
     }

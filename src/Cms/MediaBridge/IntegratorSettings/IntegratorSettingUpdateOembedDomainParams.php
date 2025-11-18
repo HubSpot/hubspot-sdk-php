@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::updateOembedDomain()
  *
  * @phpstan-type IntegratorSettingUpdateOembedDomainParamsShape = array{
- *   appId: string, endpoints: Endpoints, portalId?: int
+ *   appId: int, endpoints: Endpoints, portalId?: int
  * }
  */
 final class IntegratorSettingUpdateOembedDomainParams implements BaseModel
@@ -26,7 +26,7 @@ final class IntegratorSettingUpdateOembedDomainParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appId;
+    public int $appId;
 
     #[Api]
     public Endpoints $endpoints;
@@ -61,7 +61,7 @@ final class IntegratorSettingUpdateOembedDomainParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $appId,
+        int $appId,
         Endpoints $endpoints,
         ?int $portalId = null
     ): self {
@@ -75,7 +75,7 @@ final class IntegratorSettingUpdateOembedDomainParams implements BaseModel
         return $obj;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $obj = clone $this;
         $obj->appId = $appID;

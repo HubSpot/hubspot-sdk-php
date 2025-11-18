@@ -6,13 +6,13 @@ namespace HubspotSDK\Services\Settings;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Settings\CurrenciesContract;
 use HubspotSDK\Services\Settings\Currencies\CentralFxRatesService;
 use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate;
 use HubspotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
-use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateForwardPaging;
 use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
 use HubspotSDK\Settings\Currencies\CompanyCurrency;
 use HubspotSDK\Settings\Currencies\CurrencyBatchCreateParams;
@@ -20,11 +20,12 @@ use HubspotSDK\Settings\Currencies\CurrencyBatchGetParams;
 use HubspotSDK\Settings\Currencies\CurrencyBatchUpdateParams;
 use HubspotSDK\Settings\Currencies\CurrencyCreateExchangeRateParams;
 use HubspotSDK\Settings\Currencies\CurrencyCreateExchangeRateParams\FromCurrencyCode;
+use HubspotSDK\Settings\Currencies\CurrencyListExchangeRatesParams;
+use HubspotSDK\Settings\Currencies\CurrencyListExchangeRatesParams\ToCurrencyCode;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams\CurrencyCode;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateExchangeRateParams;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams;
-use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams\ToCurrencyCode;
 use HubspotSDK\Settings\Currencies\ExchangeRate;
 
 final class CurrenciesService implements CurrenciesContract
@@ -252,17 +253,34 @@ final class CurrenciesService implements CurrenciesContract
      *
      * Get a list of exchange rates
      *
+     * @param array{
+     *   after?: string,
+     *   fromCurrencyCode?: value-of<CurrencyListExchangeRatesParams\FromCurrencyCode>,
+     *   limit?: int,
+     *   toCurrencyCode?: value-of<ToCurrencyCode>,
+     * }|CurrencyListExchangeRatesParams $params
+     *
+     * @return Page<ExchangeRate>
+     *
      * @throws APIException
      */
     public function listExchangeRates(
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseExchangeRateForwardPaging {
+        array|CurrencyListExchangeRatesParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): Page {
+        [$parsed, $options] = CurrencyListExchangeRatesParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/exchange-rates',
-            options: $requestOptions,
-            convert: CollectionResponseExchangeRateForwardPaging::class,
+            query: $parsed,
+            options: $options,
+            convert: ExchangeRate::class,
+            page: Page::class,
         );
     }
 
@@ -334,7 +352,7 @@ final class CurrenciesService implements CurrenciesContract
      *
      * @param array{
      *   fromCurrencyCode: value-of<CurrencyUpdateVisibilityParams\FromCurrencyCode>,
-     *   toCurrencyCode: value-of<ToCurrencyCode>,
+     *   toCurrencyCode: value-of<CurrencyUpdateVisibilityParams\ToCurrencyCode>,
      *   visibleInUI: bool,
      * }|CurrencyUpdateVisibilityParams $params
      *

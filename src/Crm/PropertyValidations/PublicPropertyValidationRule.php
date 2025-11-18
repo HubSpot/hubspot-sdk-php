@@ -19,11 +19,19 @@ final class PublicPropertyValidationRule implements BaseModel
     /** @use SdkModel<PublicPropertyValidationRuleShape> */
     use SdkModel;
 
-    /** @var list<string> $ruleArguments */
+    /**
+     * A list of arguments that define the specific conditions or parameters for the validation rule.
+     *
+     * @var list<string> $ruleArguments
+     */
     #[Api(list: 'string')]
     public array $ruleArguments;
 
-    /** @var value-of<RuleType> $ruleType */
+    /**
+     * The category of validation applied to the property, such as FORMAT, ALPHANUMERIC, or MAX_LENGTH.
+     *
+     * @var value-of<RuleType> $ruleType
+     */
     #[Api(enum: RuleType::class)]
     public string $ruleType;
 
@@ -67,6 +75,8 @@ final class PublicPropertyValidationRule implements BaseModel
     }
 
     /**
+     * A list of arguments that define the specific conditions or parameters for the validation rule.
+     *
      * @param list<string> $ruleArguments
      */
     public function withRuleArguments(array $ruleArguments): self
@@ -78,6 +88,8 @@ final class PublicPropertyValidationRule implements BaseModel
     }
 
     /**
+     * The category of validation applied to the property, such as FORMAT, ALPHANUMERIC, or MAX_LENGTH.
+     *
      * @param RuleType|value-of<RuleType> $ruleType
      */
     public function withRuleType(RuleType|string $ruleType): self

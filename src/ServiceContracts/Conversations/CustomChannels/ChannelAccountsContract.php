@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\CollectionResponseWithTotalPublicChannelAccountForwardPaging;
-use HubspotSDK\Conversations\ConversationsPublicChannelAccount;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountCreateParams;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountGetParams;
+use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
+use HubspotSDK\Conversations\PublicChannelAccount;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 interface ChannelAccountsContract
@@ -22,10 +23,10 @@ interface ChannelAccountsContract
      * @throws APIException
      */
     public function create(
-        string $channelID,
+        int $channelID,
         array|ChannelAccountCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicChannelAccount;
+    ): PublicChannelAccount;
 
     /**
      * @api
@@ -35,20 +36,25 @@ interface ChannelAccountsContract
      * @throws APIException
      */
     public function update(
-        string $channelAccountID,
+        int $channelAccountID,
         array|ChannelAccountUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicChannelAccount;
+    ): PublicChannelAccount;
 
     /**
      * @api
      *
+     * @param array<mixed>|ChannelAccountListParams $params
+     *
+     * @return Page<PublicChannelAccount>
+     *
      * @throws APIException
      */
     public function list(
-        string $channelID,
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalPublicChannelAccountForwardPaging;
+        int $channelID,
+        array|ChannelAccountListParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): Page;
 
     /**
      * @api
@@ -58,8 +64,8 @@ interface ChannelAccountsContract
      * @throws APIException
      */
     public function get(
-        string $channelAccountID,
+        int $channelAccountID,
         array|ChannelAccountGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicChannelAccount;
+    ): PublicChannelAccount;
 }

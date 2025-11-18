@@ -38,7 +38,17 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->crm->extensions->calling->settings->create(
             0,
-            ['name' => 'name', 'url' => 'url']
+            [
+                'height' => 0,
+                'isReady' => true,
+                'name' => 'name',
+                'supportsCustomObjects' => true,
+                'supportsInboundCalling' => true,
+                'url' => 'url',
+                'usesCallingWindow' => true,
+                'usesRemote' => true,
+                'width' => 0,
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +63,17 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->crm->extensions->calling->settings->create(
             0,
-            ['name' => 'name', 'url' => 'url']
+            [
+                'height' => 0,
+                'isReady' => true,
+                'name' => 'name',
+                'supportsCustomObjects' => true,
+                'supportsInboundCalling' => true,
+                'url' => 'url',
+                'usesCallingWindow' => true,
+                'usesRemote' => true,
+                'width' => 0,
+            ],
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

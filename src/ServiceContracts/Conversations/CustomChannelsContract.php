@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Conversations;
 
-use HubspotSDK\Conversations\CustomChannels\CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging;
 use HubspotSDK\Conversations\CustomChannels\CustomChannelCreateParams;
+use HubspotSDK\Conversations\CustomChannels\CustomChannelListParams;
 use HubspotSDK\Conversations\CustomChannels\CustomChannelUpdateParams;
 use HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 interface CustomChannelsContract
@@ -33,7 +34,7 @@ interface CustomChannelsContract
      * @throws APIException
      */
     public function update(
-        string $channelID,
+        int $channelID,
         array|CustomChannelUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicChannelIntegrationChannel;
@@ -41,11 +42,16 @@ interface CustomChannelsContract
     /**
      * @api
      *
+     * @param array<mixed>|CustomChannelListParams $params
+     *
+     * @return Page<PublicChannelIntegrationChannel>
+     *
      * @throws APIException
      */
     public function list(
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging;
+        array|CustomChannelListParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): Page;
 
     /**
      * @api
@@ -53,7 +59,7 @@ interface CustomChannelsContract
      * @throws APIException
      */
     public function delete(
-        string $channelID,
+        int $channelID,
         ?RequestOptions $requestOptions = null
     ): mixed;
 
@@ -63,7 +69,7 @@ interface CustomChannelsContract
      * @throws APIException
      */
     public function get(
-        string $channelID,
+        int $channelID,
         ?RequestOptions $requestOptions = null
     ): PublicChannelIntegrationChannel;
 }

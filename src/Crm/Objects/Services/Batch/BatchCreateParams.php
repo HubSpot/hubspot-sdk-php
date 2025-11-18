@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 
 /**
- * Create a batch of services.
+ * Create a batch of objects.
  *
  * @see HubspotSDK\Services\Crm\Objects\Services\BatchService::create()
  *

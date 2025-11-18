@@ -62,9 +62,9 @@ final class BatchService implements BatchContract
      *
      * @param array{
      *   inputs: list<array{
+     *     childTableId: int,
+     *     displayIndex: int,
      *     values: array<string,mixed>,
-     *     childTableId?: int,
-     *     displayIndex?: int,
      *     name?: string,
      *     path?: string,
      *   }>,
@@ -189,10 +189,10 @@ final class BatchService implements BatchContract
      *
      * @param array{
      *   inputs: list<array{
-     *     id: string,
+     *     childTableId: int,
+     *     displayIndex: int,
      *     values: array<string,mixed>,
-     *     childTableId?: int,
-     *     displayIndex?: int,
+     *     id?: string,
      *     name?: string,
      *     path?: string,
      *   }>,
@@ -229,10 +229,10 @@ final class BatchService implements BatchContract
      *
      * @param array{
      *   inputs: list<array{
-     *     id: string,
+     *     childTableId: int,
+     *     displayIndex: int,
      *     values: array<string,mixed>,
-     *     childTableId?: int,
-     *     displayIndex?: int,
+     *     id?: string,
      *     name?: string,
      *     path?: string,
      *   }>,

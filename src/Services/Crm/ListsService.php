@@ -303,10 +303,10 @@ final class ListsService implements ListsContract
      * Search lists by list name or page through all lists by providing an empty `query` value.
      *
      * @param array{
-     *   additionalProperties?: list<string>,
+     *   additionalProperties: list<string>,
+     *   offset: int,
      *   count?: int,
      *   listIds?: list<string>,
-     *   offset?: int,
      *   processingTypes?: list<string>,
      *   query?: string,
      *   sort?: string,

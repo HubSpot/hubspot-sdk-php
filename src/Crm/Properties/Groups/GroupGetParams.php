@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\Properties\GroupsService::get()
  *
- * @phpstan-type GroupGetParamsShape = array{objectType: string}
+ * @phpstan-type GroupGetParamsShape = array{objectType: string, locale?: string}
  */
 final class GroupGetParams implements BaseModel
 {
@@ -24,6 +24,9 @@ final class GroupGetParams implements BaseModel
 
     #[Api]
     public string $objectType;
+
+    #[Api(optional: true)]
+    public ?string $locale;
 
     /**
      * `new GroupGetParams()` is missing required properties by the API.
@@ -49,11 +52,13 @@ final class GroupGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectType): self
+    public static function with(string $objectType, ?string $locale = null): self
     {
         $obj = new self;
 
         $obj->objectType = $objectType;
+
+        null !== $locale && $obj->locale = $locale;
 
         return $obj;
     }
@@ -62,6 +67,14 @@ final class GroupGetParams implements BaseModel
     {
         $obj = clone $this;
         $obj->objectType = $objectType;
+
+        return $obj;
+    }
+
+    public function withLocale(string $locale): self
+    {
+        $obj = clone $this;
+        $obj->locale = $locale;
 
         return $obj;
     }

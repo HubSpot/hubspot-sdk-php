@@ -16,10 +16,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type SendSendParamsShape = array{
  *   eventName: string,
+ *   properties: array<string,string>,
  *   email?: string,
  *   objectId?: string,
  *   occurredAt?: \DateTimeInterface,
- *   properties?: array<string,string>,
  *   utk?: string,
  *   uuid?: string,
  * }
@@ -35,6 +35,14 @@ final class SendSendParams implements BaseModel
      */
     #[Api]
     public string $eventName;
+
+    /**
+     * The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
+     *
+     * @var array<string,string> $properties
+     */
+    #[Api(map: 'string')]
+    public array $properties;
 
     /**
      * The visitor's email address. Used for associating the event data with a CRM record.
@@ -55,14 +63,6 @@ final class SendSendParams implements BaseModel
     public ?\DateTimeInterface $occurredAt;
 
     /**
-     * The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
-     *
-     * @var array<string,string>|null $properties
-     */
-    #[Api(map: 'string', optional: true)]
-    public ?array $properties;
-
-    /**
      * The visitor's usertoken. Used for associating the event data with a CRM record.
      */
     #[Api(optional: true)]
@@ -79,13 +79,13 @@ final class SendSendParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SendSendParams::with(eventName: ...)
+     * SendSendParams::with(eventName: ..., properties: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new SendSendParams)->withEventName(...)
+     * (new SendSendParams)->withEventName(...)->withProperties(...)
      * ```
      */
     public function __construct()
@@ -102,21 +102,21 @@ final class SendSendParams implements BaseModel
      */
     public static function with(
         string $eventName,
+        array $properties,
         ?string $email = null,
         ?string $objectId = null,
         ?\DateTimeInterface $occurredAt = null,
-        ?array $properties = null,
         ?string $utk = null,
         ?string $uuid = null,
     ): self {
         $obj = new self;
 
         $obj->eventName = $eventName;
+        $obj->properties = $properties;
 
         null !== $email && $obj->email = $email;
         null !== $objectId && $obj->objectId = $objectId;
         null !== $occurredAt && $obj->occurredAt = $occurredAt;
-        null !== $properties && $obj->properties = $properties;
         null !== $utk && $obj->utk = $utk;
         null !== $uuid && $obj->uuid = $uuid;
 
@@ -130,6 +130,19 @@ final class SendSendParams implements BaseModel
     {
         $obj = clone $this;
         $obj->eventName = $eventName;
+
+        return $obj;
+    }
+
+    /**
+     * The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
+     *
+     * @param array<string,string> $properties
+     */
+    public function withProperties(array $properties): self
+    {
+        $obj = clone $this;
+        $obj->properties = $properties;
 
         return $obj;
     }
@@ -163,19 +176,6 @@ final class SendSendParams implements BaseModel
     {
         $obj = clone $this;
         $obj->occurredAt = $occurredAt;
-
-        return $obj;
-    }
-
-    /**
-     * The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
-     *
-     * @param array<string,string> $properties
-     */
-    public function withProperties(array $properties): self
-    {
-        $obj = clone $this;
-        $obj->properties = $properties;
 
         return $obj;
     }

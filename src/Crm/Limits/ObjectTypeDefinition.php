@@ -18,12 +18,21 @@ final class ObjectTypeDefinition implements BaseModel
     /** @use SdkModel<ObjectTypeDefinitionShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier for the object type.
+     */
     #[Api]
     public string $objectTypeId;
 
+    /**
+     * The plural form label for the object type.
+     */
     #[Api]
     public string $pluralLabel;
 
+    /**
+     * The singular form label for the object type.
+     */
     #[Api]
     public string $singularLabel;
 
@@ -70,6 +79,9 @@ final class ObjectTypeDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier for the object type.
+     */
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
@@ -78,6 +90,9 @@ final class ObjectTypeDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The plural form label for the object type.
+     */
     public function withPluralLabel(string $pluralLabel): self
     {
         $obj = clone $this;
@@ -86,6 +101,9 @@ final class ObjectTypeDefinition implements BaseModel
         return $obj;
     }
 
+    /**
+     * The singular form label for the object type.
+     */
     public function withSingularLabel(string $singularLabel): self
     {
         $obj = clone $this;

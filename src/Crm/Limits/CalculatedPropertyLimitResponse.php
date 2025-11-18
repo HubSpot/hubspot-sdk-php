@@ -29,12 +29,21 @@ final class CalculatedPropertyLimitResponse implements BaseModel, ResponseConver
     #[Api(list: UsageForObjectType::class)]
     public array $byObjectType;
 
+    /**
+     * The maximum number of calculated properties allowed.
+     */
     #[Api]
     public int $overallLimit;
 
+    /**
+     * The percentage of the overall limit that is currently being used for calculated properties.
+     */
     #[Api]
     public float $overallPercentage;
 
+    /**
+     * The total number of calculated properties currently in use.
+     */
     #[Api]
     public int $overallUsage;
 
@@ -100,6 +109,9 @@ final class CalculatedPropertyLimitResponse implements BaseModel, ResponseConver
         return $obj;
     }
 
+    /**
+     * The maximum number of calculated properties allowed.
+     */
     public function withOverallLimit(int $overallLimit): self
     {
         $obj = clone $this;
@@ -108,6 +120,9 @@ final class CalculatedPropertyLimitResponse implements BaseModel, ResponseConver
         return $obj;
     }
 
+    /**
+     * The percentage of the overall limit that is currently being used for calculated properties.
+     */
     public function withOverallPercentage(float $overallPercentage): self
     {
         $obj = clone $this;
@@ -116,6 +131,9 @@ final class CalculatedPropertyLimitResponse implements BaseModel, ResponseConver
         return $obj;
     }
 
+    /**
+     * The total number of calculated properties currently in use.
+     */
     public function withOverallUsage(int $overallUsage): self
     {
         $obj = clone $this;

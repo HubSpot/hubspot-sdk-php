@@ -10,26 +10,26 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type HubDBTableV3Shape = array{
+ *   id: string,
+ *   allowChildTables: bool,
+ *   allowPublicApiAccess: bool,
+ *   columnCount: int,
+ *   columns: list<Column>,
+ *   createdAt: \DateTimeInterface,
+ *   deleted: bool,
  *   deletedAt: \DateTimeInterface,
+ *   dynamicMetaTags: array<string,int>,
+ *   enableChildTablePages: bool,
  *   label: string,
  *   name: string,
- *   id?: string|null,
- *   allowChildTables?: bool|null,
- *   allowPublicApiAccess?: bool|null,
- *   columnCount?: int|null,
- *   columns?: list<Column>|null,
- *   createdAt?: \DateTimeInterface|null,
+ *   published: bool,
+ *   publishedAt: \DateTimeInterface,
+ *   rowCount: int,
+ *   updatedAt: \DateTimeInterface,
+ *   useForPages: bool,
  *   createdBy?: SimpleUser|null,
- *   deleted?: bool|null,
- *   dynamicMetaTags?: array<string,int>|null,
- *   enableChildTablePages?: bool|null,
  *   isOrderedManually?: bool|null,
- *   published?: bool|null,
- *   publishedAt?: \DateTimeInterface|null,
- *   rowCount?: int|null,
- *   updatedAt?: \DateTimeInterface|null,
  *   updatedBy?: SimpleUser|null,
- *   useForPages?: bool|null,
  * }
  */
 final class HubDBTableV3 implements BaseModel
@@ -37,8 +37,63 @@ final class HubDBTableV3 implements BaseModel
     /** @use SdkModel<HubDBTableV3Shape> */
     use SdkModel;
 
+    /**
+     * Id of the table.
+     */
+    #[Api]
+    public string $id;
+
+    /**
+     * Specifies whether child tables can be created.
+     */
+    #[Api]
+    public bool $allowChildTables;
+
+    /**
+     * Specifies whether the table can be read by public without authorization.
+     */
+    #[Api]
+    public bool $allowPublicApiAccess;
+
+    /**
+     * Number of columns including deleted.
+     */
+    #[Api]
+    public int $columnCount;
+
+    /**
+     * List of columns in the table.
+     *
+     * @var list<Column> $columns
+     */
+    #[Api(list: Column::class)]
+    public array $columns;
+
+    /**
+     * Timestamp at which the table is created.
+     */
+    #[Api]
+    public \DateTimeInterface $createdAt;
+
+    #[Api]
+    public bool $deleted;
+
     #[Api]
     public \DateTimeInterface $deletedAt;
+
+    /**
+     * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+     *
+     * @var array<string,int> $dynamicMetaTags
+     */
+    #[Api(map: 'int')]
+    public array $dynamicMetaTags;
+
+    /**
+     * Specifies creation of multi-level dynamic pages using child tables.
+     */
+    #[Api]
+    public bool $enableChildTablePages;
 
     /**
      * Label of the table.
@@ -52,109 +107,89 @@ final class HubDBTableV3 implements BaseModel
     #[Api]
     public string $name;
 
-    /**
-     * Id of the table.
-     */
-    #[Api(optional: true)]
-    public ?string $id;
+    #[Api]
+    public bool $published;
 
     /**
-     * Specifies whether child tables can be created.
+     * Timestamp at which the table is published recently.
      */
-    #[Api(optional: true)]
-    public ?bool $allowChildTables;
+    #[Api]
+    public \DateTimeInterface $publishedAt;
 
     /**
-     * Specifies whether the table can be read by public without authorization.
+     * Number of rows in the table.
      */
-    #[Api(optional: true)]
-    public ?bool $allowPublicApiAccess;
+    #[Api]
+    public int $rowCount;
 
     /**
-     * Number of columns including deleted.
+     * Timestamp at which the table is updated recently.
      */
-    #[Api(optional: true)]
-    public ?int $columnCount;
+    #[Api]
+    public \DateTimeInterface $updatedAt;
 
     /**
-     * List of columns in the table.
-     *
-     * @var list<Column>|null $columns
+     * Specifies whether the table can be used for creation of dynamic pages.
      */
-    #[Api(list: Column::class, optional: true)]
-    public ?array $columns;
-
-    /**
-     * Timestamp at which the table is created.
-     */
-    #[Api(optional: true)]
-    public ?\DateTimeInterface $createdAt;
+    #[Api]
+    public bool $useForPages;
 
     #[Api(optional: true)]
     public ?SimpleUser $createdBy;
 
     #[Api(optional: true)]
-    public ?bool $deleted;
-
-    /**
-     * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
-     *
-     * @var array<string,int>|null $dynamicMetaTags
-     */
-    #[Api(map: 'int', optional: true)]
-    public ?array $dynamicMetaTags;
-
-    /**
-     * Specifies creation of multi-level dynamic pages using child tables.
-     */
-    #[Api(optional: true)]
-    public ?bool $enableChildTablePages;
-
-    #[Api(optional: true)]
     public ?bool $isOrderedManually;
 
     #[Api(optional: true)]
-    public ?bool $published;
-
-    /**
-     * Timestamp at which the table is published recently.
-     */
-    #[Api(optional: true)]
-    public ?\DateTimeInterface $publishedAt;
-
-    /**
-     * Number of rows in the table.
-     */
-    #[Api(optional: true)]
-    public ?int $rowCount;
-
-    /**
-     * Timestamp at which the table is updated recently.
-     */
-    #[Api(optional: true)]
-    public ?\DateTimeInterface $updatedAt;
-
-    #[Api(optional: true)]
     public ?SimpleUser $updatedBy;
-
-    /**
-     * Specifies whether the table can be used for creation of dynamic pages.
-     */
-    #[Api(optional: true)]
-    public ?bool $useForPages;
 
     /**
      * `new HubDBTableV3()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * HubDBTableV3::with(deletedAt: ..., label: ..., name: ...)
+     * HubDBTableV3::with(
+     *   id: ...,
+     *   allowChildTables: ...,
+     *   allowPublicApiAccess: ...,
+     *   columnCount: ...,
+     *   columns: ...,
+     *   createdAt: ...,
+     *   deleted: ...,
+     *   deletedAt: ...,
+     *   dynamicMetaTags: ...,
+     *   enableChildTablePages: ...,
+     *   label: ...,
+     *   name: ...,
+     *   published: ...,
+     *   publishedAt: ...,
+     *   rowCount: ...,
+     *   updatedAt: ...,
+     *   useForPages: ...,
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new HubDBTableV3)->withDeletedAt(...)->withLabel(...)->withName(...)
+     * (new HubDBTableV3)
+     *   ->withID(...)
+     *   ->withAllowChildTables(...)
+     *   ->withAllowPublicAPIAccess(...)
+     *   ->withColumnCount(...)
+     *   ->withColumns(...)
+     *   ->withCreatedAt(...)
+     *   ->withDeleted(...)
+     *   ->withDeletedAt(...)
+     *   ->withDynamicMetaTags(...)
+     *   ->withEnableChildTablePages(...)
+     *   ->withLabel(...)
+     *   ->withName(...)
+     *   ->withPublished(...)
+     *   ->withPublishedAt(...)
+     *   ->withRowCount(...)
+     *   ->withUpdatedAt(...)
+     *   ->withUseForPages(...)
      * ```
      */
     public function __construct()
@@ -171,80 +206,50 @@ final class HubDBTableV3 implements BaseModel
      * @param array<string,int> $dynamicMetaTags
      */
     public static function with(
+        string $id,
+        bool $allowChildTables,
+        bool $allowPublicApiAccess,
+        int $columnCount,
+        array $columns,
+        \DateTimeInterface $createdAt,
+        bool $deleted,
         \DateTimeInterface $deletedAt,
+        array $dynamicMetaTags,
+        bool $enableChildTablePages,
         string $label,
         string $name,
-        ?string $id = null,
-        ?bool $allowChildTables = null,
-        ?bool $allowPublicApiAccess = null,
-        ?int $columnCount = null,
-        ?array $columns = null,
-        ?\DateTimeInterface $createdAt = null,
+        bool $published,
+        \DateTimeInterface $publishedAt,
+        int $rowCount,
+        \DateTimeInterface $updatedAt,
+        bool $useForPages,
         ?SimpleUser $createdBy = null,
-        ?bool $deleted = null,
-        ?array $dynamicMetaTags = null,
-        ?bool $enableChildTablePages = null,
         ?bool $isOrderedManually = null,
-        ?bool $published = null,
-        ?\DateTimeInterface $publishedAt = null,
-        ?int $rowCount = null,
-        ?\DateTimeInterface $updatedAt = null,
         ?SimpleUser $updatedBy = null,
-        ?bool $useForPages = null,
     ): self {
         $obj = new self;
 
+        $obj->id = $id;
+        $obj->allowChildTables = $allowChildTables;
+        $obj->allowPublicApiAccess = $allowPublicApiAccess;
+        $obj->columnCount = $columnCount;
+        $obj->columns = $columns;
+        $obj->createdAt = $createdAt;
+        $obj->deleted = $deleted;
         $obj->deletedAt = $deletedAt;
+        $obj->dynamicMetaTags = $dynamicMetaTags;
+        $obj->enableChildTablePages = $enableChildTablePages;
         $obj->label = $label;
         $obj->name = $name;
+        $obj->published = $published;
+        $obj->publishedAt = $publishedAt;
+        $obj->rowCount = $rowCount;
+        $obj->updatedAt = $updatedAt;
+        $obj->useForPages = $useForPages;
 
-        null !== $id && $obj->id = $id;
-        null !== $allowChildTables && $obj->allowChildTables = $allowChildTables;
-        null !== $allowPublicApiAccess && $obj->allowPublicApiAccess = $allowPublicApiAccess;
-        null !== $columnCount && $obj->columnCount = $columnCount;
-        null !== $columns && $obj->columns = $columns;
-        null !== $createdAt && $obj->createdAt = $createdAt;
         null !== $createdBy && $obj->createdBy = $createdBy;
-        null !== $deleted && $obj->deleted = $deleted;
-        null !== $dynamicMetaTags && $obj->dynamicMetaTags = $dynamicMetaTags;
-        null !== $enableChildTablePages && $obj->enableChildTablePages = $enableChildTablePages;
         null !== $isOrderedManually && $obj->isOrderedManually = $isOrderedManually;
-        null !== $published && $obj->published = $published;
-        null !== $publishedAt && $obj->publishedAt = $publishedAt;
-        null !== $rowCount && $obj->rowCount = $rowCount;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
         null !== $updatedBy && $obj->updatedBy = $updatedBy;
-        null !== $useForPages && $obj->useForPages = $useForPages;
-
-        return $obj;
-    }
-
-    public function withDeletedAt(\DateTimeInterface $deletedAt): self
-    {
-        $obj = clone $this;
-        $obj->deletedAt = $deletedAt;
-
-        return $obj;
-    }
-
-    /**
-     * Label of the table.
-     */
-    public function withLabel(string $label): self
-    {
-        $obj = clone $this;
-        $obj->label = $label;
-
-        return $obj;
-    }
-
-    /**
-     * Name of the table.
-     */
-    public function withName(string $name): self
-    {
-        $obj = clone $this;
-        $obj->name = $name;
 
         return $obj;
     }
@@ -317,18 +322,18 @@ final class HubDBTableV3 implements BaseModel
         return $obj;
     }
 
-    public function withCreatedBy(SimpleUser $createdBy): self
-    {
-        $obj = clone $this;
-        $obj->createdBy = $createdBy;
-
-        return $obj;
-    }
-
     public function withDeleted(bool $deleted): self
     {
         $obj = clone $this;
         $obj->deleted = $deleted;
+
+        return $obj;
+    }
+
+    public function withDeletedAt(\DateTimeInterface $deletedAt): self
+    {
+        $obj = clone $this;
+        $obj->deletedAt = $deletedAt;
 
         return $obj;
     }
@@ -357,10 +362,24 @@ final class HubDBTableV3 implements BaseModel
         return $obj;
     }
 
-    public function withIsOrderedManually(bool $isOrderedManually): self
+    /**
+     * Label of the table.
+     */
+    public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->isOrderedManually = $isOrderedManually;
+        $obj->label = $label;
+
+        return $obj;
+    }
+
+    /**
+     * Name of the table.
+     */
+    public function withName(string $name): self
+    {
+        $obj = clone $this;
+        $obj->name = $name;
 
         return $obj;
     }
@@ -406,14 +425,6 @@ final class HubDBTableV3 implements BaseModel
         return $obj;
     }
 
-    public function withUpdatedBy(SimpleUser $updatedBy): self
-    {
-        $obj = clone $this;
-        $obj->updatedBy = $updatedBy;
-
-        return $obj;
-    }
-
     /**
      * Specifies whether the table can be used for creation of dynamic pages.
      */
@@ -421,6 +432,30 @@ final class HubDBTableV3 implements BaseModel
     {
         $obj = clone $this;
         $obj->useForPages = $useForPages;
+
+        return $obj;
+    }
+
+    public function withCreatedBy(SimpleUser $createdBy): self
+    {
+        $obj = clone $this;
+        $obj->createdBy = $createdBy;
+
+        return $obj;
+    }
+
+    public function withIsOrderedManually(bool $isOrderedManually): self
+    {
+        $obj = clone $this;
+        $obj->isOrderedManually = $isOrderedManually;
+
+        return $obj;
+    }
+
+    public function withUpdatedBy(SimpleUser $updatedBy): self
+    {
+        $obj = clone $this;
+        $obj->updatedBy = $updatedBy;
 
         return $obj;
     }

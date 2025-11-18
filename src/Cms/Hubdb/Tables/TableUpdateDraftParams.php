@@ -17,17 +17,17 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::updateDraft()
  *
  * @phpstan-type TableUpdateDraftParamsShape = array{
+ *   allowChildTables: bool,
+ *   allowPublicApiAccess: bool,
+ *   columns: list<ColumnRequest>,
+ *   dynamicMetaTags: array<string,int>,
+ *   enableChildTablePages: bool,
  *   label: string,
  *   name: string,
+ *   useForPages: bool,
  *   archived?: bool,
  *   includeForeignIds?: bool,
  *   isGetLocalizedSchema?: bool,
- *   allowChildTables?: bool,
- *   allowPublicApiAccess?: bool,
- *   columns?: list<ColumnRequest>,
- *   dynamicMetaTags?: array<string,int>,
- *   enableChildTablePages?: bool,
- *   useForPages?: bool,
  * }
  */
 final class TableUpdateDraftParams implements BaseModel
@@ -35,6 +35,40 @@ final class TableUpdateDraftParams implements BaseModel
     /** @use SdkModel<TableUpdateDraftParamsShape> */
     use SdkModel;
     use SdkParams;
+
+    /**
+     * Specifies whether child tables can be created.
+     */
+    #[Api]
+    public bool $allowChildTables;
+
+    /**
+     * Specifies whether the table can be read by public without authorization.
+     */
+    #[Api]
+    public bool $allowPublicApiAccess;
+
+    /**
+     * List of columns in the table.
+     *
+     * @var list<ColumnRequest> $columns
+     */
+    #[Api(list: ColumnRequest::class)]
+    public array $columns;
+
+    /**
+     * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+     *
+     * @var array<string,int> $dynamicMetaTags
+     */
+    #[Api(map: 'int')]
+    public array $dynamicMetaTags;
+
+    /**
+     * Specifies creation of multi-level dynamic pages using child tables.
+     */
+    #[Api]
+    public bool $enableChildTablePages;
 
     /**
      * Label of the table.
@@ -47,6 +81,12 @@ final class TableUpdateDraftParams implements BaseModel
      */
     #[Api]
     public string $name;
+
+    /**
+     * Specifies whether the table can be used for creation of dynamic pages.
+     */
+    #[Api]
+    public bool $useForPages;
 
     /**
      * Specifies whether to return archived tables. Defaults to `false`.
@@ -64,57 +104,34 @@ final class TableUpdateDraftParams implements BaseModel
     public ?bool $isGetLocalizedSchema;
 
     /**
-     * Specifies whether child tables can be created.
-     */
-    #[Api(optional: true)]
-    public ?bool $allowChildTables;
-
-    /**
-     * Specifies whether the table can be read by public without authorization.
-     */
-    #[Api(optional: true)]
-    public ?bool $allowPublicApiAccess;
-
-    /**
-     * List of columns in the table.
-     *
-     * @var list<ColumnRequest>|null $columns
-     */
-    #[Api(list: ColumnRequest::class, optional: true)]
-    public ?array $columns;
-
-    /**
-     * Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
-     *
-     * @var array<string,int>|null $dynamicMetaTags
-     */
-    #[Api(map: 'int', optional: true)]
-    public ?array $dynamicMetaTags;
-
-    /**
-     * Specifies creation of multi-level dynamic pages using child tables.
-     */
-    #[Api(optional: true)]
-    public ?bool $enableChildTablePages;
-
-    /**
-     * Specifies whether the table can be used for creation of dynamic pages.
-     */
-    #[Api(optional: true)]
-    public ?bool $useForPages;
-
-    /**
      * `new TableUpdateDraftParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * TableUpdateDraftParams::with(label: ..., name: ...)
+     * TableUpdateDraftParams::with(
+     *   allowChildTables: ...,
+     *   allowPublicApiAccess: ...,
+     *   columns: ...,
+     *   dynamicMetaTags: ...,
+     *   enableChildTablePages: ...,
+     *   label: ...,
+     *   name: ...,
+     *   useForPages: ...,
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new TableUpdateDraftParams)->withLabel(...)->withName(...)
+     * (new TableUpdateDraftParams)
+     *   ->withAllowChildTables(...)
+     *   ->withAllowPublicAPIAccess(...)
+     *   ->withColumns(...)
+     *   ->withDynamicMetaTags(...)
+     *   ->withEnableChildTablePages(...)
+     *   ->withLabel(...)
+     *   ->withName(...)
+     *   ->withUseForPages(...)
      * ```
      */
     public function __construct()
@@ -131,84 +148,32 @@ final class TableUpdateDraftParams implements BaseModel
      * @param array<string,int> $dynamicMetaTags
      */
     public static function with(
+        bool $allowChildTables,
+        bool $allowPublicApiAccess,
+        array $columns,
+        array $dynamicMetaTags,
+        bool $enableChildTablePages,
         string $label,
         string $name,
+        bool $useForPages,
         ?bool $archived = null,
         ?bool $includeForeignIds = null,
         ?bool $isGetLocalizedSchema = null,
-        ?bool $allowChildTables = null,
-        ?bool $allowPublicApiAccess = null,
-        ?array $columns = null,
-        ?array $dynamicMetaTags = null,
-        ?bool $enableChildTablePages = null,
-        ?bool $useForPages = null,
     ): self {
         $obj = new self;
 
+        $obj->allowChildTables = $allowChildTables;
+        $obj->allowPublicApiAccess = $allowPublicApiAccess;
+        $obj->columns = $columns;
+        $obj->dynamicMetaTags = $dynamicMetaTags;
+        $obj->enableChildTablePages = $enableChildTablePages;
         $obj->label = $label;
         $obj->name = $name;
+        $obj->useForPages = $useForPages;
 
         null !== $archived && $obj->archived = $archived;
         null !== $includeForeignIds && $obj->includeForeignIds = $includeForeignIds;
         null !== $isGetLocalizedSchema && $obj->isGetLocalizedSchema = $isGetLocalizedSchema;
-        null !== $allowChildTables && $obj->allowChildTables = $allowChildTables;
-        null !== $allowPublicApiAccess && $obj->allowPublicApiAccess = $allowPublicApiAccess;
-        null !== $columns && $obj->columns = $columns;
-        null !== $dynamicMetaTags && $obj->dynamicMetaTags = $dynamicMetaTags;
-        null !== $enableChildTablePages && $obj->enableChildTablePages = $enableChildTablePages;
-        null !== $useForPages && $obj->useForPages = $useForPages;
-
-        return $obj;
-    }
-
-    /**
-     * Label of the table.
-     */
-    public function withLabel(string $label): self
-    {
-        $obj = clone $this;
-        $obj->label = $label;
-
-        return $obj;
-    }
-
-    /**
-     * Name of the table.
-     */
-    public function withName(string $name): self
-    {
-        $obj = clone $this;
-        $obj->name = $name;
-
-        return $obj;
-    }
-
-    /**
-     * Specifies whether to return archived tables. Defaults to `false`.
-     */
-    public function withArchived(bool $archived): self
-    {
-        $obj = clone $this;
-        $obj->archived = $archived;
-
-        return $obj;
-    }
-
-    /**
-     * Set this to `true` to populate foreign ID values in the result.
-     */
-    public function withIncludeForeignIDs(bool $includeForeignIDs): self
-    {
-        $obj = clone $this;
-        $obj->includeForeignIds = $includeForeignIDs;
-
-        return $obj;
-    }
-
-    public function withIsGetLocalizedSchema(bool $isGetLocalizedSchema): self
-    {
-        $obj = clone $this;
-        $obj->isGetLocalizedSchema = $isGetLocalizedSchema;
 
         return $obj;
     }
@@ -273,12 +238,64 @@ final class TableUpdateDraftParams implements BaseModel
     }
 
     /**
+     * Label of the table.
+     */
+    public function withLabel(string $label): self
+    {
+        $obj = clone $this;
+        $obj->label = $label;
+
+        return $obj;
+    }
+
+    /**
+     * Name of the table.
+     */
+    public function withName(string $name): self
+    {
+        $obj = clone $this;
+        $obj->name = $name;
+
+        return $obj;
+    }
+
+    /**
      * Specifies whether the table can be used for creation of dynamic pages.
      */
     public function withUseForPages(bool $useForPages): self
     {
         $obj = clone $this;
         $obj->useForPages = $useForPages;
+
+        return $obj;
+    }
+
+    /**
+     * Specifies whether to return archived tables. Defaults to `false`.
+     */
+    public function withArchived(bool $archived): self
+    {
+        $obj = clone $this;
+        $obj->archived = $archived;
+
+        return $obj;
+    }
+
+    /**
+     * Set this to `true` to populate foreign ID values in the result.
+     */
+    public function withIncludeForeignIDs(bool $includeForeignIDs): self
+    {
+        $obj = clone $this;
+        $obj->includeForeignIds = $includeForeignIDs;
+
+        return $obj;
+    }
+
+    public function withIsGetLocalizedSchema(bool $isGetLocalizedSchema): self
+    {
+        $obj = clone $this;
+        $obj->isGetLocalizedSchema = $isGetLocalizedSchema;
 
         return $obj;
     }

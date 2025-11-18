@@ -5,16 +5,17 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Settings;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate;
 use HubspotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
-use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateForwardPaging;
 use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
 use HubspotSDK\Settings\Currencies\CompanyCurrency;
 use HubspotSDK\Settings\Currencies\CurrencyBatchCreateParams;
 use HubspotSDK\Settings\Currencies\CurrencyBatchGetParams;
 use HubspotSDK\Settings\Currencies\CurrencyBatchUpdateParams;
 use HubspotSDK\Settings\Currencies\CurrencyCreateExchangeRateParams;
+use HubspotSDK\Settings\Currencies\CurrencyListExchangeRatesParams;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateExchangeRateParams;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams;
@@ -110,11 +111,16 @@ interface CurrenciesContract
     /**
      * @api
      *
+     * @param array<mixed>|CurrencyListExchangeRatesParams $params
+     *
+     * @return Page<ExchangeRate>
+     *
      * @throws APIException
      */
     public function listExchangeRates(
-        ?RequestOptions $requestOptions = null
-    ): CollectionResponseExchangeRateForwardPaging;
+        array|CurrencyListExchangeRatesParams $params,
+        ?RequestOptions $requestOptions = null,
+    ): Page;
 
     /**
      * @api

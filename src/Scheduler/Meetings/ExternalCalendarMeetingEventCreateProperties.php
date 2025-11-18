@@ -15,6 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   hs_meeting_start_time: \DateTimeInterface,
  *   hs_meeting_title: string,
  *   hs_timestamp: \DateTimeInterface,
+ *   hubspot_owner_id: string,
  *   hs_activity_type?: string|null,
  *   hs_attachment_ids?: list<string>|null,
  *   hs_attendee_owner_ids?: list<string>|null,
@@ -22,7 +23,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   hs_meeting_body?: string|null,
  *   hs_meeting_location?: string|null,
  *   hs_meeting_location_type?: string|null,
- *   hubspot_owner_id?: string|null,
  * }
  */
 final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
@@ -44,6 +44,9 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
 
     #[Api]
     public \DateTimeInterface $hs_timestamp;
+
+    #[Api]
+    public string $hubspot_owner_id;
 
     #[Api(optional: true)]
     public ?string $hs_activity_type;
@@ -68,9 +71,6 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     #[Api(optional: true)]
     public ?string $hs_meeting_location_type;
 
-    #[Api(optional: true)]
-    public ?string $hubspot_owner_id;
-
     /**
      * `new ExternalCalendarMeetingEventCreateProperties()` is missing required properties by the API.
      *
@@ -82,6 +82,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
      *   hs_meeting_start_time: ...,
      *   hs_meeting_title: ...,
      *   hs_timestamp: ...,
+     *   hubspot_owner_id: ...,
      * )
      * ```
      *
@@ -94,6 +95,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
      *   ->withHsMeetingStartTime(...)
      *   ->withHsMeetingTitle(...)
      *   ->withHsTimestamp(...)
+     *   ->withHubspotOwnerID(...)
      * ```
      */
     public function __construct()
@@ -115,6 +117,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
         \DateTimeInterface $hs_meeting_start_time,
         string $hs_meeting_title,
         \DateTimeInterface $hs_timestamp,
+        string $hubspot_owner_id,
         ?string $hs_activity_type = null,
         ?array $hs_attachment_ids = null,
         ?array $hs_attendee_owner_ids = null,
@@ -122,7 +125,6 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
         ?string $hs_meeting_body = null,
         ?string $hs_meeting_location = null,
         ?string $hs_meeting_location_type = null,
-        ?string $hubspot_owner_id = null,
     ): self {
         $obj = new self;
 
@@ -131,6 +133,7 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
         $obj->hs_meeting_start_time = $hs_meeting_start_time;
         $obj->hs_meeting_title = $hs_meeting_title;
         $obj->hs_timestamp = $hs_timestamp;
+        $obj->hubspot_owner_id = $hubspot_owner_id;
 
         null !== $hs_activity_type && $obj->hs_activity_type = $hs_activity_type;
         null !== $hs_attachment_ids && $obj->hs_attachment_ids = $hs_attachment_ids;
@@ -139,7 +142,6 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
         null !== $hs_meeting_body && $obj->hs_meeting_body = $hs_meeting_body;
         null !== $hs_meeting_location && $obj->hs_meeting_location = $hs_meeting_location;
         null !== $hs_meeting_location_type && $obj->hs_meeting_location_type = $hs_meeting_location_type;
-        null !== $hubspot_owner_id && $obj->hubspot_owner_id = $hubspot_owner_id;
 
         return $obj;
     }
@@ -182,6 +184,14 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     {
         $obj = clone $this;
         $obj->hs_timestamp = $hsTimestamp;
+
+        return $obj;
+    }
+
+    public function withHubspotOwnerID(string $hubspotOwnerID): self
+    {
+        $obj = clone $this;
+        $obj->hubspot_owner_id = $hubspotOwnerID;
 
         return $obj;
     }
@@ -246,14 +256,6 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     ): self {
         $obj = clone $this;
         $obj->hs_meeting_location_type = $hsMeetingLocationType;
-
-        return $obj;
-    }
-
-    public function withHubspotOwnerID(string $hubspotOwnerID): self
-    {
-        $obj = clone $this;
-        $obj->hubspot_owner_id = $hubspotOwnerID;
 
         return $obj;
     }

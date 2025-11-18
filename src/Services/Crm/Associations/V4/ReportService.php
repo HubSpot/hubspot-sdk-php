@@ -24,7 +24,7 @@ final class ReportService implements ReportContract
      *
      * @throws APIException
      */
-    public function getHighUsageReport(
+    public function requestHighUsageReport(
         int $userID,
         ?RequestOptions $requestOptions = null
     ): ReportCreationResponse {

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\MediaBridge\SchemasService::get()
  *
- * @phpstan-type SchemaGetParamsShape = array{appId: string}
+ * @phpstan-type SchemaGetParamsShape = array{appId: int}
  */
 final class SchemaGetParams implements BaseModel
 {
@@ -23,7 +23,7 @@ final class SchemaGetParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $appId;
+    public int $appId;
 
     /**
      * `new SchemaGetParams()` is missing required properties by the API.
@@ -49,7 +49,7 @@ final class SchemaGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $appId): self
+    public static function with(int $appId): self
     {
         $obj = new self;
 
@@ -58,7 +58,7 @@ final class SchemaGetParams implements BaseModel
         return $obj;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $obj = clone $this;
         $obj->appId = $appID;

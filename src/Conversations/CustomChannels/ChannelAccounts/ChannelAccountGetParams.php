@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::get()
  *
- * @phpstan-type ChannelAccountGetParamsShape = array{channelId: string}
+ * @phpstan-type ChannelAccountGetParamsShape = array{
+ *   channelId: int, archived?: bool
+ * }
  */
 final class ChannelAccountGetParams implements BaseModel
 {
@@ -23,7 +25,13 @@ final class ChannelAccountGetParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $channelId;
+    public int $channelId;
+
+    /**
+     * Filter results to include only archived or non-archived channel accounts.
+     */
+    #[Api(optional: true)]
+    public ?bool $archived;
 
     /**
      * `new ChannelAccountGetParams()` is missing required properties by the API.
@@ -49,19 +57,32 @@ final class ChannelAccountGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $channelId): self
+    public static function with(int $channelId, ?bool $archived = null): self
     {
         $obj = new self;
 
         $obj->channelId = $channelId;
 
+        null !== $archived && $obj->archived = $archived;
+
         return $obj;
     }
 
-    public function withChannelID(string $channelID): self
+    public function withChannelID(int $channelID): self
     {
         $obj = clone $this;
         $obj->channelId = $channelID;
+
+        return $obj;
+    }
+
+    /**
+     * Filter results to include only archived or non-archived channel accounts.
+     */
+    public function withArchived(bool $archived): self
+    {
+        $obj = clone $this;
+        $obj->archived = $archived;
 
         return $obj;
     }

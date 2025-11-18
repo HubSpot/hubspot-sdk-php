@@ -16,6 +16,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
  * @see HubspotSDK\Services\Scheduler\Meetings\CalendarService::create()
  *
  * @phpstan-type CalendarCreateParamsShape = array{
+ *   organizerUserId: string,
  *   associations: list<ExternalAssociationCreateRequest>,
  *   emailReminderSchedule: ExternalEmailReminderSchedule,
  *   properties: ExternalCalendarMeetingEventCreateProperties,
@@ -27,6 +28,9 @@ final class CalendarCreateParams implements BaseModel
     /** @use SdkModel<CalendarCreateParamsShape> */
     use SdkModel;
     use SdkParams;
+
+    #[Api]
+    public string $organizerUserId;
 
     /** @var list<ExternalAssociationCreateRequest> $associations */
     #[Api(list: ExternalAssociationCreateRequest::class)]
@@ -47,7 +51,11 @@ final class CalendarCreateParams implements BaseModel
      * To enforce required parameters use
      * ```
      * CalendarCreateParams::with(
-     *   associations: ..., emailReminderSchedule: ..., properties: ..., timezone: ...
+     *   organizerUserId: ...,
+     *   associations: ...,
+     *   emailReminderSchedule: ...,
+     *   properties: ...,
+     *   timezone: ...,
      * )
      * ```
      *
@@ -55,6 +63,7 @@ final class CalendarCreateParams implements BaseModel
      *
      * ```
      * (new CalendarCreateParams)
+     *   ->withOrganizerUserID(...)
      *   ->withAssociations(...)
      *   ->withEmailReminderSchedule(...)
      *   ->withProperties(...)
@@ -74,6 +83,7 @@ final class CalendarCreateParams implements BaseModel
      * @param list<ExternalAssociationCreateRequest> $associations
      */
     public static function with(
+        string $organizerUserId,
         array $associations,
         ExternalEmailReminderSchedule $emailReminderSchedule,
         ExternalCalendarMeetingEventCreateProperties $properties,
@@ -81,10 +91,19 @@ final class CalendarCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
+        $obj->organizerUserId = $organizerUserId;
         $obj->associations = $associations;
         $obj->emailReminderSchedule = $emailReminderSchedule;
         $obj->properties = $properties;
         $obj->timezone = $timezone;
+
+        return $obj;
+    }
+
+    public function withOrganizerUserID(string $organizerUserID): self
+    {
+        $obj = clone $this;
+        $obj->organizerUserId = $organizerUserID;
 
         return $obj;
     }

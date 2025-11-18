@@ -44,6 +44,8 @@ final class PropertyValidationsService implements PropertyValidationsContract
     /**
      * @api
      *
+     * Update a specific validation rule for a property identified by its name and rule type.
+     *
      * @param RuleType|value-of<RuleType> $ruleType
      * @param array{
      *   objectTypeId: string, propertyName: string, ruleArguments: list<string>

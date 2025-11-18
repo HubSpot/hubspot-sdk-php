@@ -23,15 +23,15 @@ final class SettingsService implements SettingsContract
      * @api
      *
      * @param array{
+     *   height: int,
+     *   isReady: bool,
      *   name: string,
+     *   supportsCustomObjects: bool,
+     *   supportsInboundCalling: bool,
      *   url: string,
-     *   height?: int,
-     *   isReady?: bool,
-     *   supportsCustomObjects?: bool,
-     *   supportsInboundCalling?: bool,
-     *   usesCallingWindow?: bool,
-     *   usesRemote?: bool,
-     *   width?: int,
+     *   usesCallingWindow: bool,
+     *   usesRemote: bool,
+     *   width: int,
      * }|SettingCreateParams $params
      *
      * @throws APIException

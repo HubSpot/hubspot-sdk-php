@@ -93,7 +93,45 @@ final class PartnerClientsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerClients->search([]);
+        $result = $this->client->crm->objects->partnerClients->search([
+            'after' => 'after',
+            'filterGroups' => [
+                ['filters' => [['operator' => 'EQ', 'propertyName' => 'propertyName']]],
+            ],
+            'limit' => 0,
+            'properties' => ['string'],
+            'sorts' => ['string'],
+        ]);
+
+        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+    }
+
+    #[Test]
+    public function testSearchWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Prism tests are disabled');
+        }
+
+        $result = $this->client->crm->objects->partnerClients->search([
+            'after' => 'after',
+            'filterGroups' => [
+                [
+                    'filters' => [
+                        [
+                            'operator' => 'EQ',
+                            'propertyName' => 'propertyName',
+                            'highValue' => 'highValue',
+                            'value' => 'value',
+                            'values' => ['string'],
+                        ],
+                    ],
+                ],
+            ],
+            'limit' => 0,
+            'properties' => ['string'],
+            'sorts' => ['string'],
+        ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }

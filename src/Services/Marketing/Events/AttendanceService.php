@@ -38,7 +38,7 @@ final class AttendanceService implements AttendanceContract
      * @param array{
      *   objectId: string,
      *   inputs: list<array{
-     *     interactionDateTime: int, properties?: array<string,string>, vid?: int
+     *     interactionDateTime: int, properties: array<string,string>, vid: int
      *   }>,
      * }|AttendanceCreateByEventIDAndContactIDParams $params
      *
@@ -88,10 +88,10 @@ final class AttendanceService implements AttendanceContract
      * @param array{
      *   objectId: string,
      *   inputs: list<array{
+     *     contactProperties: array<string,string>,
      *     email: string,
      *     interactionDateTime: int,
-     *     contactProperties?: array<string,string>,
-     *     properties?: array<string,string>,
+     *     properties: array<string,string>,
      *   }>,
      * }|AttendanceCreateByEventIDAndEmailParams $params
      *
@@ -139,7 +139,7 @@ final class AttendanceService implements AttendanceContract
      * @param array{
      *   externalEventId: string,
      *   inputs: list<array{
-     *     interactionDateTime: int, properties?: array<string,string>, vid?: int
+     *     interactionDateTime: int, properties: array<string,string>, vid: int
      *   }>,
      *   externalAccountId?: string,
      * }|AttendanceCreateByExternalEventIDAndContactIDParams $params
@@ -195,10 +195,10 @@ final class AttendanceService implements AttendanceContract
      * @param array{
      *   externalEventId: string,
      *   inputs: list<array{
+     *     contactProperties: array<string,string>,
      *     email: string,
      *     interactionDateTime: int,
-     *     contactProperties?: array<string,string>,
-     *     properties?: array<string,string>,
+     *     properties: array<string,string>,
      *   }>,
      *   externalAccountId?: string,
      * }|AttendanceCreateByExternalEventIDAndEmailParams $params

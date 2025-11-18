@@ -42,9 +42,9 @@ final class RowsService implements RowsContract
      * Add a new row to a HubDB table. New rows will be added to the draft version of the table. Use the `/publish` endpoint to push these changes to published version.
      *
      * @param array{
+     *   childTableId: int,
+     *   displayIndex: int,
      *   values: array<string,mixed>,
-     *   childTableId?: int,
-     *   displayIndex?: int,
      *   name?: string,
      *   path?: string,
      * }|RowCreateParams $params
@@ -288,9 +288,9 @@ final class RowsService implements RowsContract
      *
      * @param array{
      *   tableIdOrName: string,
+     *   childTableId: int,
+     *   displayIndex: int,
      *   values: array<string,mixed>,
-     *   childTableId?: int,
-     *   displayIndex?: int,
      *   name?: string,
      *   path?: string,
      * }|RowReplaceDraftParams $params
@@ -330,9 +330,9 @@ final class RowsService implements RowsContract
      *
      * @param array{
      *   tableIdOrName: string,
+     *   childTableId: int,
+     *   displayIndex: int,
      *   values: array<string,mixed>,
-     *   childTableId?: int,
-     *   displayIndex?: int,
      *   name?: string,
      *   path?: string,
      * }|RowUpdateDraftParams $params

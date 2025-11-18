@@ -27,14 +27,20 @@ final class UserProvisionRequest implements BaseModel
     use SdkModel;
 
     /**
-     * The created user's email.
+     * The user's email.
      */
     #[Api]
     public string $email;
 
+    /**
+     * The user's first name.
+     */
     #[Api(optional: true)]
     public ?string $firstName;
 
+    /**
+     * The user's last name.
+     */
     #[Api(optional: true)]
     public ?string $lastName;
 
@@ -114,7 +120,7 @@ final class UserProvisionRequest implements BaseModel
     }
 
     /**
-     * The created user's email.
+     * The user's email.
      */
     public function withEmail(string $email): self
     {
@@ -124,6 +130,9 @@ final class UserProvisionRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's first name.
+     */
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
@@ -132,6 +141,9 @@ final class UserProvisionRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The user's last name.
+     */
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;

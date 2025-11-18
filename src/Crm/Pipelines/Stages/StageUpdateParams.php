@@ -10,15 +10,17 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Perform a partial update on a specific stage of a pipeline.
+ *
  * @see HubspotSDK\Services\Crm\Pipelines\StagesService::update()
  *
  * @phpstan-type StageUpdateParamsShape = array{
  *   objectType: string,
  *   pipelineId: string,
+ *   metadata: array<string,string>,
  *   archived?: bool,
  *   displayOrder?: int,
  *   label?: string,
- *   metadata?: array<string,string>,
  * }
  */
 final class StageUpdateParams implements BaseModel
@@ -32,6 +34,18 @@ final class StageUpdateParams implements BaseModel
 
     #[Api]
     public string $pipelineId;
+
+    /**
+     * A JSON object containing properties that are not present on all object pipelines.
+     *
+     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+     *
+     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     *
+     * @var array<string,string> $metadata
+     */
+    #[Api(map: 'string')]
+    public array $metadata;
 
     /**
      * Whether the pipeline is archived.
@@ -52,29 +66,20 @@ final class StageUpdateParams implements BaseModel
     public ?string $label;
 
     /**
-     * A JSON object containing properties that are not present on all object pipelines.
-     *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @var array<string,string>|null $metadata
-     */
-    #[Api(map: 'string', optional: true)]
-    public ?array $metadata;
-
-    /**
      * `new StageUpdateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * StageUpdateParams::with(objectType: ..., pipelineId: ...)
+     * StageUpdateParams::with(objectType: ..., pipelineId: ..., metadata: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new StageUpdateParams)->withObjectType(...)->withPipelineID(...)
+     * (new StageUpdateParams)
+     *   ->withObjectType(...)
+     *   ->withPipelineID(...)
+     *   ->withMetadata(...)
      * ```
      */
     public function __construct()
@@ -92,20 +97,20 @@ final class StageUpdateParams implements BaseModel
     public static function with(
         string $objectType,
         string $pipelineId,
+        array $metadata,
         ?bool $archived = null,
         ?int $displayOrder = null,
         ?string $label = null,
-        ?array $metadata = null,
     ): self {
         $obj = new self;
 
         $obj->objectType = $objectType;
         $obj->pipelineId = $pipelineId;
+        $obj->metadata = $metadata;
 
         null !== $archived && $obj->archived = $archived;
         null !== $displayOrder && $obj->displayOrder = $displayOrder;
         null !== $label && $obj->label = $label;
-        null !== $metadata && $obj->metadata = $metadata;
 
         return $obj;
     }
@@ -122,6 +127,23 @@ final class StageUpdateParams implements BaseModel
     {
         $obj = clone $this;
         $obj->pipelineId = $pipelineID;
+
+        return $obj;
+    }
+
+    /**
+     * A JSON object containing properties that are not present on all object pipelines.
+     *
+     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+     *
+     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     *
+     * @param array<string,string> $metadata
+     */
+    public function withMetadata(array $metadata): self
+    {
+        $obj = clone $this;
+        $obj->metadata = $metadata;
 
         return $obj;
     }
@@ -155,23 +177,6 @@ final class StageUpdateParams implements BaseModel
     {
         $obj = clone $this;
         $obj->label = $label;
-
-        return $obj;
-    }
-
-    /**
-     * A JSON object containing properties that are not present on all object pipelines.
-     *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @param array<string,string> $metadata
-     */
-    public function withMetadata(array $metadata): self
-    {
-        $obj = clone $this;
-        $obj->metadata = $metadata;
 
         return $obj;
     }

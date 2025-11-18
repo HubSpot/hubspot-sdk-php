@@ -24,9 +24,15 @@ final class ContactGdprDeleteParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of the object.
+     */
     #[Api]
     public string $objectId;
 
+    /**
+     * ID property.
+     */
     #[Api(optional: true)]
     public ?string $idProperty;
 
@@ -67,6 +73,9 @@ final class ContactGdprDeleteParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID of the object.
+     */
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
@@ -75,6 +84,9 @@ final class ContactGdprDeleteParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * ID property.
+     */
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;

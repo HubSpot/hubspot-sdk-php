@@ -16,6 +16,9 @@ final class SimplePublicObjectID implements BaseModel
     /** @use SdkModel<SimplePublicObjectIDShape> */
     use SdkModel;
 
+    /**
+     * Object ID.
+     */
     #[Api]
     public string $id;
 
@@ -52,6 +55,9 @@ final class SimplePublicObjectID implements BaseModel
         return $obj;
     }
 
+    /**
+     * Object ID.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;

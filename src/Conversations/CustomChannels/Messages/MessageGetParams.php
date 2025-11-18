@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::get()
  *
- * @phpstan-type MessageGetParamsShape = array{channelId: string}
+ * @phpstan-type MessageGetParamsShape = array{channelId: int}
  */
 final class MessageGetParams implements BaseModel
 {
@@ -23,7 +23,7 @@ final class MessageGetParams implements BaseModel
     use SdkParams;
 
     #[Api]
-    public string $channelId;
+    public int $channelId;
 
     /**
      * `new MessageGetParams()` is missing required properties by the API.
@@ -49,7 +49,7 @@ final class MessageGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $channelId): self
+    public static function with(int $channelId): self
     {
         $obj = new self;
 
@@ -58,7 +58,7 @@ final class MessageGetParams implements BaseModel
         return $obj;
     }
 
-    public function withChannelID(string $channelID): self
+    public function withChannelID(int $channelID): self
     {
         $obj = clone $this;
         $obj->channelId = $channelID;

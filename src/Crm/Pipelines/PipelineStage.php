@@ -18,9 +18,9 @@ use HubspotSDK\Crm\Pipelines\PipelineStage\WritePermissions;
  *   createdAt: \DateTimeInterface,
  *   displayOrder: int,
  *   label: string,
+ *   metadata: array<string,string>,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
- *   metadata?: array<string,string>|null,
  *   writePermissions?: value-of<WritePermissions>|null,
  * }
  */
@@ -60,6 +60,18 @@ final class PipelineStage implements BaseModel
     public string $label;
 
     /**
+     * A JSON object containing properties that are not present on all object pipelines.
+     *
+     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+     *
+     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     *
+     * @var array<string,string> $metadata
+     */
+    #[Api(map: 'string')]
+    public array $metadata;
+
+    /**
      * The date the pipeline stage was last updated.
      */
     #[Api]
@@ -70,18 +82,6 @@ final class PipelineStage implements BaseModel
      */
     #[Api(optional: true)]
     public ?\DateTimeInterface $archivedAt;
-
-    /**
-     * A JSON object containing properties that are not present on all object pipelines.
-     *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @var array<string,string>|null $metadata
-     */
-    #[Api(map: 'string', optional: true)]
-    public ?array $metadata;
 
     /**
      * Defines the level of write access for the pipeline stage, with possible values being CRM_PERMISSIONS_ENFORCEMENT, READ_ONLY, or INTERNAL_ONLY.
@@ -102,6 +102,7 @@ final class PipelineStage implements BaseModel
      *   createdAt: ...,
      *   displayOrder: ...,
      *   label: ...,
+     *   metadata: ...,
      *   updatedAt: ...,
      * )
      * ```
@@ -115,6 +116,7 @@ final class PipelineStage implements BaseModel
      *   ->withCreatedAt(...)
      *   ->withDisplayOrder(...)
      *   ->withLabel(...)
+     *   ->withMetadata(...)
      *   ->withUpdatedAt(...)
      * ```
      */
@@ -137,9 +139,9 @@ final class PipelineStage implements BaseModel
         \DateTimeInterface $createdAt,
         int $displayOrder,
         string $label,
+        array $metadata,
         \DateTimeInterface $updatedAt,
         ?\DateTimeInterface $archivedAt = null,
-        ?array $metadata = null,
         WritePermissions|string|null $writePermissions = null,
     ): self {
         $obj = new self;
@@ -149,10 +151,10 @@ final class PipelineStage implements BaseModel
         $obj->createdAt = $createdAt;
         $obj->displayOrder = $displayOrder;
         $obj->label = $label;
+        $obj->metadata = $metadata;
         $obj->updatedAt = $updatedAt;
 
         null !== $archivedAt && $obj->archivedAt = $archivedAt;
-        null !== $metadata && $obj->metadata = $metadata;
         null !== $writePermissions && $obj['writePermissions'] = $writePermissions;
 
         return $obj;
@@ -214,6 +216,23 @@ final class PipelineStage implements BaseModel
     }
 
     /**
+     * A JSON object containing properties that are not present on all object pipelines.
+     *
+     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+     *
+     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     *
+     * @param array<string,string> $metadata
+     */
+    public function withMetadata(array $metadata): self
+    {
+        $obj = clone $this;
+        $obj->metadata = $metadata;
+
+        return $obj;
+    }
+
+    /**
      * The date the pipeline stage was last updated.
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
@@ -231,23 +250,6 @@ final class PipelineStage implements BaseModel
     {
         $obj = clone $this;
         $obj->archivedAt = $archivedAt;
-
-        return $obj;
-    }
-
-    /**
-     * A JSON object containing properties that are not present on all object pipelines.
-     *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @param array<string,string> $metadata
-     */
-    public function withMetadata(array $metadata): self
-    {
-        $obj = clone $this;
-        $obj->metadata = $metadata;
 
         return $obj;
     }

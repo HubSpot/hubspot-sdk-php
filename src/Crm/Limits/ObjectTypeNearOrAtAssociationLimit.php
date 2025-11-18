@@ -22,18 +22,33 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
     /** @use SdkModel<ObjectTypeNearOrAtAssociationLimitShape> */
     use SdkModel;
 
+    /**
+     * Indicates whether there are records that have reached the association limit.
+     */
     #[Api]
     public bool $hasRecordsAtLimit;
 
+    /**
+     * Indicates whether there are records that are approaching the association limit.
+     */
     #[Api]
     public bool $hasRecordsNearLimit;
 
+    /**
+     * The unique identifier for the object type.
+     */
     #[Api]
     public string $objectTypeId;
 
+    /**
+     * The plural form of the label for the object type.
+     */
     #[Api]
     public string $pluralLabel;
 
+    /**
+     * The singular form of the label for the object type.
+     */
     #[Api]
     public string $singularLabel;
 
@@ -90,6 +105,9 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether there are records that have reached the association limit.
+     */
     public function withHasRecordsAtLimit(bool $hasRecordsAtLimit): self
     {
         $obj = clone $this;
@@ -98,6 +116,9 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether there are records that are approaching the association limit.
+     */
     public function withHasRecordsNearLimit(bool $hasRecordsNearLimit): self
     {
         $obj = clone $this;
@@ -106,6 +127,9 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
         return $obj;
     }
 
+    /**
+     * The unique identifier for the object type.
+     */
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
@@ -114,6 +138,9 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
         return $obj;
     }
 
+    /**
+     * The plural form of the label for the object type.
+     */
     public function withPluralLabel(string $pluralLabel): self
     {
         $obj = clone $this;
@@ -122,6 +149,9 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
         return $obj;
     }
 
+    /**
+     * The singular form of the label for the object type.
+     */
     public function withSingularLabel(string $singularLabel): self
     {
         $obj = clone $this;
