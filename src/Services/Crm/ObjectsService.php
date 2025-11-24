@@ -33,6 +33,7 @@ use HubspotSDK\Services\Crm\Objects\PartnerClientsService;
 use HubspotSDK\Services\Crm\Objects\PartnerServicesService;
 use HubspotSDK\Services\Crm\Objects\PostalMailService;
 use HubspotSDK\Services\Crm\Objects\ProductsService;
+use HubspotSDK\Services\Crm\Objects\ProjectsService;
 use HubspotSDK\Services\Crm\Objects\QuotesService;
 use HubspotSDK\Services\Crm\Objects\SchemasService;
 use HubspotSDK\Services\Crm\Objects\ServicesService;
@@ -185,6 +186,11 @@ final class ObjectsService implements ObjectsContract
     /**
      * @api
      */
+    public ProjectsService $projects;
+
+    /**
+     * @api
+     */
     public QuotesService $quotes;
 
     /**
@@ -245,6 +251,7 @@ final class ObjectsService implements ObjectsContract
         $this->partnerServices = new PartnerServicesService($client);
         $this->postalMail = new PostalMailService($client);
         $this->products = new ProductsService($client);
+        $this->projects = new ProjectsService($client);
         $this->quotes = new QuotesService($client);
         $this->schemas = new SchemasService($client);
         $this->services = new ServicesService($client);

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
-use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage;
-use HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
+use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\MessagesContract;
@@ -55,7 +55,7 @@ final class MessagesService implements MessagesContract
         int $channelID,
         array|MessageCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicConversationsMessage {
+    ): ConversationsPublicConversationsMessage {
         [$parsed, $options] = MessageCreateParams::parseRequest(
             $params,
             $requestOptions,
@@ -67,7 +67,7 @@ final class MessagesService implements MessagesContract
             path: ['conversations/v3/custom-channels/%1$s/messages', $channelID],
             body: (object) $parsed,
             options: $options,
-            convert: PublicConversationsMessage::class,
+            convert: ConversationsPublicConversationsMessage::class,
         );
     }
 
@@ -86,7 +86,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         array|MessageUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicConversationsMessage {
+    ): ConversationsPublicConversationsMessage {
         [$parsed, $options] = MessageUpdateParams::parseRequest(
             $params,
             $requestOptions,
@@ -104,7 +104,7 @@ final class MessagesService implements MessagesContract
             ],
             body: (object) array_diff_key($parsed, ['channelId']),
             options: $options,
-            convert: PublicConversationsMessage::class,
+            convert: ConversationsPublicConversationsMessage::class,
         );
     }
 
@@ -121,7 +121,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         array|MessageGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): PublicConversationsMessage {
+    ): ConversationsPublicConversationsMessage {
         [$parsed, $options] = MessageGetParams::parseRequest(
             $params,
             $requestOptions,
@@ -138,7 +138,7 @@ final class MessagesService implements MessagesContract
                 $messageID,
             ],
             options: $options,
-            convert: PublicConversationsMessage::class,
+            convert: ConversationsPublicConversationsMessage::class,
         );
     }
 }
