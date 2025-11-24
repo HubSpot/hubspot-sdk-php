@@ -100,6 +100,9 @@ final class TableUpdateDraftParams implements BaseModel
     #[Api(optional: true)]
     public ?bool $includeForeignIds;
 
+    /**
+     * Indicates whether to retrieve the localized schema for the table.
+     */
     #[Api(optional: true)]
     public ?bool $isGetLocalizedSchema;
 
@@ -292,6 +295,9 @@ final class TableUpdateDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether to retrieve the localized schema for the table.
+     */
     public function withIsGetLocalizedSchema(bool $isGetLocalizedSchema): self
     {
         $obj = clone $this;

@@ -11,11 +11,9 @@ use HubspotSDK\Crm\Associations\V4\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Associations\V4\Batch\BatchDeleteLabelsParams;
 use HubspotSDK\Crm\Associations\V4\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Associations\V4\Batch\BatchGetParams;
-use HubspotSDK\Crm\Associations\V4\Batch\BatchUpsertParams;
 use HubspotSDK\Crm\Associations\V4\BatchResponseLabelsBetweenObjectPair;
 use HubspotSDK\Crm\Associations\V4\BatchResponsePublicAssociationMultiWithLabel;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
-use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\RequestOptions;
 
 interface BatchContract
@@ -84,17 +82,4 @@ interface BatchContract
         array|BatchGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicAssociationMultiWithLabel;
-
-    /**
-     * @api
-     *
-     * @param array<mixed>|BatchUpsertParams $params
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        string $objectType,
-        array|BatchUpsertParams $params,
-        ?RequestOptions $requestOptions = null,
-    ): BatchResponseSimplePublicUpsertObject;
 }

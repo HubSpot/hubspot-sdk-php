@@ -6,7 +6,7 @@ namespace HubspotSDK\Events\EventDefinitions\RangedTimeOperation;
 
 enum LowerBoundEndpointBehavior: string
 {
-    case INCLUSIVE = 'INCLUSIVE';
-
     case EXCLUSIVE = 'EXCLUSIVE';
+
+    case INCLUSIVE = 'INCLUSIVE';
 }

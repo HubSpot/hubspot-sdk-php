@@ -9,7 +9,7 @@ namespace HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams;
  */
 enum Length: string
 {
-    case SHORT = 'SHORT';
-
     case LONG = 'LONG';
+
+    case SHORT = 'SHORT';
 }

@@ -9,17 +9,17 @@ namespace HubspotSDK\Crm\Imports\PublicImportResponse;
  */
 enum State: string
 {
-    case STARTED = 'STARTED';
+    case CANCELED = 'CANCELED';
 
-    case PROCESSING = 'PROCESSING';
+    case DEFERRED = 'DEFERRED';
 
     case DONE = 'DONE';
 
     case FAILED = 'FAILED';
 
-    case CANCELED = 'CANCELED';
-
-    case DEFERRED = 'DEFERRED';
+    case PROCESSING = 'PROCESSING';
 
     case REVERTED = 'REVERTED';
+
+    case STARTED = 'STARTED';
 }

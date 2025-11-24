@@ -67,7 +67,7 @@ final class UsersService implements UsersContract
      * Modifies a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
      * @param array{
-     *   idProperty?: "USER_ID"|"EMAIL",
+     *   idProperty?: "EMAIL"|"USER_ID",
      *   firstName?: string,
      *   lastName?: string,
      *   primaryTeamId?: string,
@@ -135,7 +135,7 @@ final class UsersService implements UsersContract
      *
      * Removes a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param array{idProperty?: "USER_ID"|"EMAIL"}|UserDeleteParams $params
+     * @param array{idProperty?: "EMAIL"|"USER_ID"}|UserDeleteParams $params
      *
      * @throws APIException
      */
@@ -164,7 +164,7 @@ final class UsersService implements UsersContract
      *
      * Retrieves a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param array{idProperty?: "USER_ID"|"EMAIL"}|UserGetParams $params
+     * @param array{idProperty?: "EMAIL"|"USER_ID"}|UserGetParams $params
      *
      * @throws APIException
      */

@@ -8,7 +8,7 @@ enum TimezoneSource: string
 {
     case CUSTOM = 'CUSTOM';
 
-    case USER = 'USER';
-
     case PORTAL = 'PORTAL';
+
+    case USER = 'USER';
 }

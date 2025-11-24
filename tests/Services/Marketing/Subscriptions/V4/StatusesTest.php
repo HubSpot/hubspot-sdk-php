@@ -40,7 +40,7 @@ final class StatusesTest extends TestCase
             'subscriberIdString',
             [
                 'channel' => 'EMAIL',
-                'statusState' => 'SUBSCRIBED',
+                'statusState' => 'NOT_SPECIFIED',
                 'subscriptionId' => 0,
             ],
         );
@@ -59,7 +59,7 @@ final class StatusesTest extends TestCase
             'subscriberIdString',
             [
                 'channel' => 'EMAIL',
-                'statusState' => 'SUBSCRIBED',
+                'statusState' => 'NOT_SPECIFIED',
                 'subscriptionId' => 0,
             ],
         );
@@ -192,7 +192,7 @@ final class StatusesTest extends TestCase
                 'inputs' => [
                     [
                         'channel' => 'EMAIL',
-                        'statusState' => 'SUBSCRIBED',
+                        'statusState' => 'NOT_SPECIFIED',
                         'subscriberIdString' => 'subscriberIdString',
                         'subscriptionId' => 0,
                     ],
@@ -220,10 +220,10 @@ final class StatusesTest extends TestCase
                 'inputs' => [
                     [
                         'channel' => 'EMAIL',
-                        'statusState' => 'SUBSCRIBED',
+                        'statusState' => 'NOT_SPECIFIED',
                         'subscriberIdString' => 'subscriberIdString',
                         'subscriptionId' => 0,
-                        'legalBasis' => 'LEGITIMATE_INTEREST_PQL',
+                        'legalBasis' => 'CONSENT_WITH_NOTICE',
                         'legalBasisExplanation' => 'legalBasisExplanation',
                     ],
                 ],

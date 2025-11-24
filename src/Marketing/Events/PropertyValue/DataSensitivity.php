@@ -9,9 +9,9 @@ namespace HubspotSDK\Marketing\Events\PropertyValue;
  */
 enum DataSensitivity: string
 {
+    case HIGH = 'high';
+
     case NONE = 'none';
 
     case STANDARD = 'standard';
-
-    case HIGH = 'high';
 }

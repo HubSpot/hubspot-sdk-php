@@ -23,7 +23,7 @@ enum DataType: string
 
     case NUMERIC = 'NUMERIC';
 
-    case STRING = 'STRING';
-
     case STATUS = 'STATUS';
+
+    case STRING = 'STRING';
 }

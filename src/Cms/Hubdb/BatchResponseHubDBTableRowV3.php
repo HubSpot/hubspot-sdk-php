@@ -24,6 +24,9 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     /** @use SdkModel<BatchResponseHubDBTableRowV3Shape> */
     use SdkModel;
 
+    /**
+     * The timestamp indicating when the batch processing was completed.
+     */
     #[Api]
     public \DateTimeInterface $completedAt;
 
@@ -31,17 +34,31 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     #[Api(list: HubDBTableRowV3::class)]
     public array $results;
 
+    /**
+     * The timestamp indicating when the batch processing began.
+     */
     #[Api]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.
+     *
+     * @var value-of<Status> $status
+     */
     #[Api(enum: Status::class)]
     public string $status;
 
-    /** @var array<string,string>|null $links */
+    /**
+     * A collection of related links associated with the batch response.
+     *
+     * @var array<string,string>|null $links
+     */
     #[Api(map: 'string', optional: true)]
     public ?array $links;
 
+    /**
+     * The timestamp indicating when the batch request was made.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $requestedAt;
 
@@ -100,6 +117,9 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp indicating when the batch processing was completed.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
@@ -119,6 +139,9 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp indicating when the batch processing began.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
@@ -128,6 +151,8 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     }
 
     /**
+     * The current status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -139,6 +164,8 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     }
 
     /**
+     * A collection of related links associated with the batch response.
+     *
      * @param array<string,string> $links
      */
     public function withLinks(array $links): self
@@ -149,6 +176,9 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
         return $obj;
     }
 
+    /**
+     * The timestamp indicating when the batch request was made.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;

@@ -6,17 +6,17 @@ namespace HubspotSDK\Cms\MediaBridge\InboundDBObjectType;
 
 enum MetaType: string
 {
-    case HUBSPOT = 'HUBSPOT';
-
-    case INTEGRATION = 'INTEGRATION';
-
-    case PORTAL_SPECIFIC = 'PORTAL_SPECIFIC';
-
     case CMS_HUBDB = 'CMS_HUBDB';
+
+    case HUBSPOT = 'HUBSPOT';
 
     case HUBSPOT_EVENT = 'HUBSPOT_EVENT';
 
+    case INTEGRATION = 'INTEGRATION';
+
     case INTEGRATION_EVENT = 'INTEGRATION_EVENT';
+
+    case PORTAL_SPECIFIC = 'PORTAL_SPECIFIC';
 
     case PORTAL_SPECIFIC_EVENT = 'PORTAL_SPECIFIC_EVENT';
 }

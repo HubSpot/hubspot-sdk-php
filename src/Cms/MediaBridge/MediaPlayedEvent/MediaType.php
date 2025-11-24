@@ -6,13 +6,13 @@ namespace HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
 
 enum MediaType: string
 {
-    case VIDEO = 'VIDEO';
-
     case AUDIO = 'AUDIO';
 
     case DOCUMENT = 'DOCUMENT';
 
+    case IMAGE = 'IMAGE';
+
     case OTHER = 'OTHER';
 
-    case IMAGE = 'IMAGE';
+    case VIDEO = 'VIDEO';
 }

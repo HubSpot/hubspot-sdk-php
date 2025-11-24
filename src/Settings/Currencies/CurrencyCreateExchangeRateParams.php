@@ -27,13 +27,23 @@ final class CurrencyCreateExchangeRateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The conversion rate between the to and from currency code of this exchange rate.
+     */
     #[Api]
     public float $conversionRate;
 
-    /** @var value-of<FromCurrencyCode> $fromCurrencyCode */
+    /**
+     * This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from.
+     *
+     * @var value-of<FromCurrencyCode> $fromCurrencyCode
+     */
     #[Api(enum: FromCurrencyCode::class)]
     public string $fromCurrencyCode;
 
+    /**
+     * The date the exchange rate is in effect.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $effectiveAt;
 
@@ -82,6 +92,9 @@ final class CurrencyCreateExchangeRateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The conversion rate between the to and from currency code of this exchange rate.
+     */
     public function withConversionRate(float $conversionRate): self
     {
         $obj = clone $this;
@@ -91,6 +104,8 @@ final class CurrencyCreateExchangeRateParams implements BaseModel
     }
 
     /**
+     * This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from.
+     *
      * @param FromCurrencyCode|value-of<FromCurrencyCode> $fromCurrencyCode
      */
     public function withFromCurrencyCode(
@@ -102,6 +117,9 @@ final class CurrencyCreateExchangeRateParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date the exchange rate is in effect.
+     */
     public function withEffectiveAt(\DateTimeInterface $effectiveAt): self
     {
         $obj = clone $this;

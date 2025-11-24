@@ -9,9 +9,9 @@ namespace HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams;
  */
 enum StatusState: string
 {
+    case NOT_SPECIFIED = 'NOT_SPECIFIED';
+
     case SUBSCRIBED = 'SUBSCRIBED';
 
     case UNSUBSCRIBED = 'UNSUBSCRIBED';
-
-    case NOT_SPECIFIED = 'NOT_SPECIFIED';
 }

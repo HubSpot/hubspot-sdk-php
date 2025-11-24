@@ -9,7 +9,7 @@ namespace HubspotSDK\Cms\MediaBridge\Property;
  */
 enum OptionSortStrategy: string
 {
-    case DISPLAY_ORDER = 'DISPLAY_ORDER';
-
     case ALPHABETICAL = 'ALPHABETICAL';
+
+    case DISPLAY_ORDER = 'DISPLAY_ORDER';
 }

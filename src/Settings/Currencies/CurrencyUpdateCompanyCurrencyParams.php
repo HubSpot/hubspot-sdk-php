@@ -25,7 +25,11 @@ final class CurrencyUpdateCompanyCurrencyParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<CurrencyCode> $currencyCode */
+    /**
+     * The three-letter code representing a specific currency (ex. USD).
+     *
+     * @var value-of<CurrencyCode> $currencyCode
+     */
     #[Api(enum: CurrencyCode::class)]
     public string $currencyCode;
 
@@ -65,6 +69,8 @@ final class CurrencyUpdateCompanyCurrencyParams implements BaseModel
     }
 
     /**
+     * The three-letter code representing a specific currency (ex. USD).
+     *
      * @param CurrencyCode|value-of<CurrencyCode> $currencyCode
      */
     public function withCurrencyCode(CurrencyCode|string $currencyCode): self

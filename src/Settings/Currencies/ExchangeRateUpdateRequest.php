@@ -18,12 +18,21 @@ final class ExchangeRateUpdateRequest implements BaseModel
     /** @use SdkModel<ExchangeRateUpdateRequestShape> */
     use SdkModel;
 
+    /**
+     * A unique identifier for the exchange rate being updated.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The updated conversion rate between the to and from currency code of this exchange rate.
+     */
     #[Api]
     public float $conversionRate;
 
+    /**
+     * The date the exchange rate will be in effect.
+     */
     #[Api(optional: true)]
     public ?\DateTimeInterface $effectiveAt;
 
@@ -66,6 +75,9 @@ final class ExchangeRateUpdateRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * A unique identifier for the exchange rate being updated.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -74,6 +86,9 @@ final class ExchangeRateUpdateRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The updated conversion rate between the to and from currency code of this exchange rate.
+     */
     public function withConversionRate(float $conversionRate): self
     {
         $obj = clone $this;
@@ -82,6 +97,9 @@ final class ExchangeRateUpdateRequest implements BaseModel
         return $obj;
     }
 
+    /**
+     * The date the exchange rate will be in effect.
+     */
     public function withEffectiveAt(\DateTimeInterface $effectiveAt): self
     {
         $obj = clone $this;

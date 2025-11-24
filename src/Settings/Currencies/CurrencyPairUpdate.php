@@ -22,14 +22,25 @@ final class CurrencyPairUpdate implements BaseModel
     /** @use SdkModel<CurrencyPairUpdateShape> */
     use SdkModel;
 
-    /** @var value-of<FromCurrencyCode> $fromCurrencyCode */
+    /**
+     * This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from.
+     *
+     * @var value-of<FromCurrencyCode> $fromCurrencyCode
+     */
     #[Api(enum: FromCurrencyCode::class)]
     public string $fromCurrencyCode;
 
-    /** @var value-of<ToCurrencyCode> $toCurrencyCode */
+    /**
+     * This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert to.
+     *
+     * @var value-of<ToCurrencyCode> $toCurrencyCode
+     */
     #[Api(enum: ToCurrencyCode::class)]
     public string $toCurrencyCode;
 
+    /**
+     * This indicates if the currency pair is shown in the MultiCurrency settings page. Setting this to false will remove the currency pair from the settings page.
+     */
     #[Api]
     public bool $visibleInUI;
 
@@ -80,6 +91,8 @@ final class CurrencyPairUpdate implements BaseModel
     }
 
     /**
+     * This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from.
+     *
      * @param FromCurrencyCode|value-of<FromCurrencyCode> $fromCurrencyCode
      */
     public function withFromCurrencyCode(
@@ -92,6 +105,8 @@ final class CurrencyPairUpdate implements BaseModel
     }
 
     /**
+     * This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert to.
+     *
      * @param ToCurrencyCode|value-of<ToCurrencyCode> $toCurrencyCode
      */
     public function withToCurrencyCode(
@@ -103,6 +118,9 @@ final class CurrencyPairUpdate implements BaseModel
         return $obj;
     }
 
+    /**
+     * This indicates if the currency pair is shown in the MultiCurrency settings page. Setting this to false will remove the currency pair from the settings page.
+     */
     public function withVisibleInUi(bool $visibleInUi): self
     {
         $obj = clone $this;

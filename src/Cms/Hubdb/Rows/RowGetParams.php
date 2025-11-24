@@ -26,6 +26,9 @@ final class RowGetParams implements BaseModel
     #[Api]
     public string $tableIdOrName;
 
+    /**
+     * Specifies whether to return an archived row. Defaults to `false`.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -74,6 +77,9 @@ final class RowGetParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to return an archived row. Defaults to `false`.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;

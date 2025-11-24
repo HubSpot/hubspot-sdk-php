@@ -77,6 +77,9 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     #[Api]
     public string $userId;
 
+    /**
+     * Supplementary metadata associated with the audit log entry. It provides additional context about the audited event (ex: rows deleted/updated for a HubDB event, the specific fields that were changed for a Content Settings event).
+     */
     #[Api(optional: true)]
     public mixed $meta;
 
@@ -228,6 +231,9 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * Supplementary metadata associated with the audit log entry. It provides additional context about the audited event (ex: rows deleted/updated for a HubDB event, the specific fields that were changed for a Content Settings event).
+     */
     public function withMeta(mixed $meta): self
     {
         $obj = clone $this;

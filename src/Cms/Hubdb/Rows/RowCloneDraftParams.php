@@ -27,6 +27,9 @@ final class RowCloneDraftParams implements BaseModel
     #[Api]
     public string $tableIdOrName;
 
+    /**
+     * The name for the cloned row.
+     */
     #[Api(optional: true)]
     public ?string $name;
 
@@ -75,6 +78,9 @@ final class RowCloneDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The name for the cloned row.
+     */
     public function withName(string $name): self
     {
         $obj = clone $this;

@@ -9,7 +9,7 @@ namespace HubspotSDK\Events\EventDefinitions\AssociationDefinition;
  */
 enum Cardinality: string
 {
-    case ONE_TO_ONE = 'ONE_TO_ONE';
-
     case ONE_TO_MANY = 'ONE_TO_MANY';
+
+    case ONE_TO_ONE = 'ONE_TO_ONE';
 }

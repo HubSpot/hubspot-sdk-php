@@ -27,6 +27,9 @@ use HubspotSDK\Marketing\Emails\EmailListParams\Type;
  *   isPublished?: bool,
  *   limit?: int,
  *   marketingCampaignNames?: bool,
+ *   publishedAfter?: \DateTimeInterface,
+ *   publishedAt?: \DateTimeInterface,
+ *   publishedBefore?: \DateTimeInterface,
  *   sort?: list<string>,
  *   type?: Type|value-of<Type>,
  *   updatedAfter?: \DateTimeInterface,
@@ -109,6 +112,15 @@ final class EmailListParams implements BaseModel
     #[Api(optional: true)]
     public ?bool $marketingCampaignNames;
 
+    #[Api(optional: true)]
+    public ?\DateTimeInterface $publishedAfter;
+
+    #[Api(optional: true)]
+    public ?\DateTimeInterface $publishedAt;
+
+    #[Api(optional: true)]
+    public ?\DateTimeInterface $publishedBefore;
+
     /**
      * Specifies which fields to use for sorting results. Valid fields are `name`, `createdAt`, `updatedAt`, `createdBy`, `updatedBy`. `createdAt` will be used by default.
      *
@@ -175,6 +187,9 @@ final class EmailListParams implements BaseModel
         ?bool $isPublished = null,
         ?int $limit = null,
         ?bool $marketingCampaignNames = null,
+        ?\DateTimeInterface $publishedAfter = null,
+        ?\DateTimeInterface $publishedAt = null,
+        ?\DateTimeInterface $publishedBefore = null,
         ?array $sort = null,
         Type|string|null $type = null,
         ?\DateTimeInterface $updatedAfter = null,
@@ -195,6 +210,9 @@ final class EmailListParams implements BaseModel
         null !== $isPublished && $obj->isPublished = $isPublished;
         null !== $limit && $obj->limit = $limit;
         null !== $marketingCampaignNames && $obj->marketingCampaignNames = $marketingCampaignNames;
+        null !== $publishedAfter && $obj->publishedAfter = $publishedAfter;
+        null !== $publishedAt && $obj->publishedAt = $publishedAt;
+        null !== $publishedBefore && $obj->publishedBefore = $publishedBefore;
         null !== $sort && $obj->sort = $sort;
         null !== $type && $obj['type'] = $type;
         null !== $updatedAfter && $obj->updatedAfter = $updatedAfter;
@@ -325,6 +343,31 @@ final class EmailListParams implements BaseModel
     ): self {
         $obj = clone $this;
         $obj->marketingCampaignNames = $marketingCampaignNames;
+
+        return $obj;
+    }
+
+    public function withPublishedAfter(\DateTimeInterface $publishedAfter): self
+    {
+        $obj = clone $this;
+        $obj->publishedAfter = $publishedAfter;
+
+        return $obj;
+    }
+
+    public function withPublishedAt(\DateTimeInterface $publishedAt): self
+    {
+        $obj = clone $this;
+        $obj->publishedAt = $publishedAt;
+
+        return $obj;
+    }
+
+    public function withPublishedBefore(
+        \DateTimeInterface $publishedBefore
+    ): self {
+        $obj = clone $this;
+        $obj->publishedBefore = $publishedBefore;
 
         return $obj;
     }

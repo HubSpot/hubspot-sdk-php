@@ -6,7 +6,7 @@ namespace HubspotSDK\Events\EventDefinitions\TimePointOperation;
 
 enum EndpointBehavior: string
 {
-    case INCLUSIVE = 'INCLUSIVE';
-
     case EXCLUSIVE = 'EXCLUSIVE';
+
+    case INCLUSIVE = 'INCLUSIVE';
 }

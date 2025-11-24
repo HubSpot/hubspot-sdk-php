@@ -6,9 +6,9 @@ namespace HubspotSDK\Marketing\Forms\FormStyle;
 
 enum SubmitAlignment: string
 {
+    case CENTER = 'center';
+
     case LEFT = 'left';
 
     case RIGHT = 'right';
-
-    case CENTER = 'center';
 }

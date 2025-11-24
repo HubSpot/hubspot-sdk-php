@@ -12,9 +12,9 @@ enum SetType: string
 
     case ANY = 'ANY';
 
+    case ANY_INCLUDE_EMPTY = 'ANY_INCLUDE_EMPTY';
+
     case NONE = 'NONE';
 
     case NONE_EXCLUDE_EMPTY = 'NONE_EXCLUDE_EMPTY';
-
-    case ANY_INCLUDE_EMPTY = 'ANY_INCLUDE_EMPTY';
 }

@@ -24,10 +24,17 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
     #[Api(list: 'mixed')]
     public array $results;
 
+    /**
+     * The total number of rows available in the collection.
+     */
     #[Api]
     public int $total;
 
-    /** @var value-of<Type> $type */
+    /**
+     * Indicates the type of response, which is 'STREAMING' by default.
+     *
+     * @var value-of<Type> $type
+     */
     #[Api(enum: Type::class)]
     public string $type;
 
@@ -94,6 +101,9 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
         return $obj;
     }
 
+    /**
+     * The total number of rows available in the collection.
+     */
     public function withTotal(int $total): self
     {
         $obj = clone $this;
@@ -103,6 +113,8 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
     }
 
     /**
+     * Indicates the type of response, which is 'STREAMING' by default.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

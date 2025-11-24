@@ -163,7 +163,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getObjectDefinitionsByMediaType('VIDEO', ['appId' => 0])
+            ->getObjectDefinitionsByMediaType('AUDIO', ['appId' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -181,7 +181,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getObjectDefinitionsByMediaType('VIDEO', ['appId' => 0])
+            ->getObjectDefinitionsByMediaType('AUDIO', ['appId' => 0])
         ;
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

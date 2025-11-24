@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Sequences\MeetingSettingsResponse;
 
 enum SellingStrategy: string
 {
-    case LEAD_BASED = 'LEAD_BASED';
-
     case ACCOUNT_BASED = 'ACCOUNT_BASED';
+
+    case LEAD_BASED = 'LEAD_BASED';
 }

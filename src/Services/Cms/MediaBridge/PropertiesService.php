@@ -41,7 +41,7 @@ final class PropertiesService implements PropertiesContract
      *   name: string,
      *   type: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
      *   calculationFormula?: string,
-     *   dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *   dataSensitivity?: "highly_sensitive"|"non_sensitive"|"sensitive",
      *   description?: string,
      *   displayOrder?: int,
      *   externalOptions?: bool,
@@ -227,7 +227,7 @@ final class PropertiesService implements PropertiesContract
      *     name: string,
      *     type: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
      *     calculationFormula?: string,
-     *     dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *     dataSensitivity?: "highly_sensitive"|"non_sensitive"|"sensitive",
      *     description?: string,
      *     displayOrder?: int,
      *     externalOptions?: bool,
@@ -350,7 +350,7 @@ final class PropertiesService implements PropertiesContract
      * @param array{
      *   appId: int,
      *   archived: bool,
-     *   dataSensitivity: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *   dataSensitivity: "highly_sensitive"|"non_sensitive"|"sensitive",
      *   inputs: list<array{name: string}>,
      * }|PropertyGetBatchParams $params
      *

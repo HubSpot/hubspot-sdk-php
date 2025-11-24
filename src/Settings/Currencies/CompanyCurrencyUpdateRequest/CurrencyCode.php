@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies\CompanyCurrencyUpdateRequest;
 
+/**
+ * The three-letter code representing a specific currency (ex. USD).
+ */
 enum CurrencyCode: string
 {
     case AED = 'AED';

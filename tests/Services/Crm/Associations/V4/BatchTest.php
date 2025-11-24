@@ -253,43 +253,4 @@ final class BatchTest extends TestCase
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
     }
-
-    #[Test]
-    public function testUpsert(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->associations->v4->batch->upsert(
-            'objectType',
-            ['inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]]],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
-
-    #[Test]
-    public function testUpsertWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
-        }
-
-        $result = $this->client->crm->associations->v4->batch->upsert(
-            'objectType',
-            [
-                'inputs' => [
-                    [
-                        'id' => 'id',
-                        'properties' => ['foo' => 'string'],
-                        'idProperty' => 'idProperty',
-                        'objectWriteTraceId' => 'objectWriteTraceId',
-                    ],
-                ],
-            ],
-        );
-
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
-    }
 }

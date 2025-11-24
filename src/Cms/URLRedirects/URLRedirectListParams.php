@@ -69,7 +69,11 @@ final class URLRedirectListParams implements BaseModel
     #[Api(optional: true)]
     public ?int $limit;
 
-    /** @var list<string>|null $sort */
+    /**
+     * A query parameter to specify the order in which the URL redirects are returned.
+     *
+     * @var list<string>|null $sort
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $sort;
 
@@ -198,6 +202,8 @@ final class URLRedirectListParams implements BaseModel
     }
 
     /**
+     * A query parameter to specify the order in which the URL redirects are returned.
+     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self

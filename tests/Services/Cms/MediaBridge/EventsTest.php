@@ -42,7 +42,7 @@ final class EventsTest extends TestCase
             ->mediaBridge
             ->events
             ->createAttentionSpanEvent([
-                'mediaType' => 'VIDEO',
+                'mediaType' => 'AUDIO',
                 'occurredTimestamp' => 0,
                 'rawDataMap' => ['foo' => 0],
                 'sessionId' => 'sessionId',
@@ -65,7 +65,7 @@ final class EventsTest extends TestCase
             ->mediaBridge
             ->events
             ->createAttentionSpanEvent([
-                'mediaType' => 'VIDEO',
+                'mediaType' => 'AUDIO',
                 'occurredTimestamp' => 0,
                 'rawDataMap' => ['foo' => 0],
                 'sessionId' => 'sessionId',
@@ -83,7 +83,7 @@ final class EventsTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent([
-            'mediaType' => 'VIDEO',
+            'mediaType' => 'AUDIO',
             'occurredTimestamp' => 0,
             'sessionId' => 'sessionId',
             'state' => 'STARTED',
@@ -100,7 +100,7 @@ final class EventsTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent([
-            'mediaType' => 'VIDEO',
+            'mediaType' => 'AUDIO',
             'occurredTimestamp' => 0,
             'sessionId' => 'sessionId',
             'state' => 'STARTED',
@@ -122,7 +122,7 @@ final class EventsTest extends TestCase
             ->mediaBridge
             ->events
             ->createMediaPlayedPercentEvent([
-                'mediaType' => 'VIDEO',
+                'mediaType' => 'AUDIO',
                 'occurredTimestamp' => 0,
                 'playedPercent' => 0,
                 'sessionId' => 'sessionId',
@@ -145,7 +145,7 @@ final class EventsTest extends TestCase
             ->mediaBridge
             ->events
             ->createMediaPlayedPercentEvent([
-                'mediaType' => 'VIDEO',
+                'mediaType' => 'AUDIO',
                 'occurredTimestamp' => 0,
                 'playedPercent' => 0,
                 'sessionId' => 'sessionId',

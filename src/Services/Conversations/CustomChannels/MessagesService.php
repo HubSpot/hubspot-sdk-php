@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
-use HubspotSDK\Conversations\PublicDeliveryIdentifier;
+use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage;
+use HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\MessagesContract;
@@ -55,7 +55,7 @@ final class MessagesService implements MessagesContract
         int $channelID,
         array|MessageCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicConversationsMessage {
+    ): PublicConversationsMessage {
         [$parsed, $options] = MessageCreateParams::parseRequest(
             $params,
             $requestOptions,
@@ -67,7 +67,7 @@ final class MessagesService implements MessagesContract
             path: ['conversations/v3/custom-channels/%1$s/messages', $channelID],
             body: (object) $parsed,
             options: $options,
-            convert: ConversationsPublicConversationsMessage::class,
+            convert: PublicConversationsMessage::class,
         );
     }
 
@@ -77,7 +77,7 @@ final class MessagesService implements MessagesContract
      * Update a message's status to indicate if it was successfully sent, failed to send, or was read. For failed messages, this can also include the error message for the failure.
      *
      * @param array{
-     *   channelId: int, statusType: "SENT"|"FAILED"|"READ", errorMessage?: string
+     *   channelId: int, statusType: "FAILED"|"READ"|"SENT", errorMessage?: string
      * }|MessageUpdateParams $params
      *
      * @throws APIException
@@ -86,7 +86,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         array|MessageUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicConversationsMessage {
+    ): PublicConversationsMessage {
         [$parsed, $options] = MessageUpdateParams::parseRequest(
             $params,
             $requestOptions,
@@ -104,7 +104,7 @@ final class MessagesService implements MessagesContract
             ],
             body: (object) array_diff_key($parsed, ['channelId']),
             options: $options,
-            convert: ConversationsPublicConversationsMessage::class,
+            convert: PublicConversationsMessage::class,
         );
     }
 
@@ -121,7 +121,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         array|MessageGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicConversationsMessage {
+    ): PublicConversationsMessage {
         [$parsed, $options] = MessageGetParams::parseRequest(
             $params,
             $requestOptions,
@@ -138,7 +138,7 @@ final class MessagesService implements MessagesContract
                 $messageID,
             ],
             options: $options,
-            convert: ConversationsPublicConversationsMessage::class,
+            convert: PublicConversationsMessage::class,
         );
     }
 }

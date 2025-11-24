@@ -13,39 +13,39 @@ enum ObjectType: string
 
     case BLOG_POST = 'BLOG_POST';
 
-    case LANDING_PAGE = 'LANDING_PAGE';
-
-    case WEBSITE_PAGE = 'WEBSITE_PAGE';
-
-    case TEMPLATE = 'TEMPLATE';
-
-    case MODULE = 'MODULE';
-
-    case GLOBAL_MODULE = 'GLOBAL_MODULE';
-
-    case SERVERLESS_FUNCTION = 'SERVERLESS_FUNCTION';
-
-    case DOMAIN = 'DOMAIN';
-
-    case URL_MAPPING = 'URL_MAPPING';
-
-    case EMAIL = 'EMAIL';
-
     case CONTENT_SETTINGS = 'CONTENT_SETTINGS';
-
-    case HUBDB_TABLE = 'HUBDB_TABLE';
-
-    case KNOWLEDGE_BASE_ARTICLE = 'KNOWLEDGE_BASE_ARTICLE';
-
-    case KNOWLEDGE_BASE = 'KNOWLEDGE_BASE';
-
-    case THEME = 'THEME';
 
     case CSS = 'CSS';
 
-    case JS = 'JS';
-
     case CTA = 'CTA';
 
+    case DOMAIN = 'DOMAIN';
+
+    case EMAIL = 'EMAIL';
+
     case FILE = 'FILE';
+
+    case GLOBAL_MODULE = 'GLOBAL_MODULE';
+
+    case HUBDB_TABLE = 'HUBDB_TABLE';
+
+    case JS = 'JS';
+
+    case KNOWLEDGE_BASE = 'KNOWLEDGE_BASE';
+
+    case KNOWLEDGE_BASE_ARTICLE = 'KNOWLEDGE_BASE_ARTICLE';
+
+    case LANDING_PAGE = 'LANDING_PAGE';
+
+    case MODULE = 'MODULE';
+
+    case SERVERLESS_FUNCTION = 'SERVERLESS_FUNCTION';
+
+    case TEMPLATE = 'TEMPLATE';
+
+    case THEME = 'THEME';
+
+    case URL_MAPPING = 'URL_MAPPING';
+
+    case WEBSITE_PAGE = 'WEBSITE_PAGE';
 }

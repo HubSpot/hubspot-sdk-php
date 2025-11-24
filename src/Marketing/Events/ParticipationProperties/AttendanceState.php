@@ -6,8 +6,6 @@ namespace HubspotSDK\Marketing\Events\ParticipationProperties;
 
 enum AttendanceState: string
 {
-    case REGISTERED = 'REGISTERED';
-
     case ATTENDED = 'ATTENDED';
 
     case CANCELLED = 'CANCELLED';
@@ -15,4 +13,6 @@ enum AttendanceState: string
     case EMPTY = 'EMPTY';
 
     case NO_SHOW = 'NO_SHOW';
+
+    case REGISTERED = 'REGISTERED';
 }

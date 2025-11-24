@@ -18,9 +18,15 @@ final class CurrencyCodeInfo implements BaseModel
     /** @use SdkModel<CurrencyCodeInfoShape> */
     use SdkModel;
 
+    /**
+     * The three-letter code representing a specific currency (ex. USD).
+     */
     #[Api]
     public string $currencyCode;
 
+    /**
+     * The full name of the currency (ex. US Dollar).
+     */
     #[Api]
     public string $currencyName;
 
@@ -60,6 +66,9 @@ final class CurrencyCodeInfo implements BaseModel
         return $obj;
     }
 
+    /**
+     * The three-letter code representing a specific currency (ex. USD).
+     */
     public function withCurrencyCode(string $currencyCode): self
     {
         $obj = clone $this;
@@ -68,6 +77,9 @@ final class CurrencyCodeInfo implements BaseModel
         return $obj;
     }
 
+    /**
+     * The full name of the currency (ex. US Dollar).
+     */
     public function withCurrencyName(string $currencyName): self
     {
         $obj = clone $this;

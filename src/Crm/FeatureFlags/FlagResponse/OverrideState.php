@@ -6,9 +6,9 @@ namespace HubspotSDK\Crm\FeatureFlags\FlagResponse;
 
 enum OverrideState: string
 {
+    case ABSENT = 'ABSENT';
+
     case OFF = 'OFF';
 
     case ON = 'ON';
-
-    case ABSENT = 'ABSENT';
 }

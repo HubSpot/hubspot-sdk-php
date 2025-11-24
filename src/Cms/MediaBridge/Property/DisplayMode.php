@@ -9,7 +9,7 @@ namespace HubspotSDK\Cms\MediaBridge\Property;
  */
 enum DisplayMode: string
 {
-    case CURRENT_VALUE = 'current_value';
-
     case ALL_UNIQUE_VERSIONS = 'all_unique_versions';
+
+    case CURRENT_VALUE = 'current_value';
 }

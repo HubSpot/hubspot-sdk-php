@@ -33,7 +33,7 @@ final class BatchService implements BatchContract
      *     name: string,
      *     type: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
      *     calculationFormula?: string,
-     *     dataSensitivity?: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *     dataSensitivity?: "highly_sensitive"|"non_sensitive"|"sensitive",
      *     description?: string,
      *     displayOrder?: int,
      *     externalOptions?: bool,
@@ -103,7 +103,7 @@ final class BatchService implements BatchContract
      *
      * @param array{
      *   archived: bool,
-     *   dataSensitivity: "non_sensitive"|"sensitive"|"highly_sensitive",
+     *   dataSensitivity: "highly_sensitive"|"non_sensitive"|"sensitive",
      *   inputs: list<array{name: string}>,
      *   locale?: string,
      * }|BatchGetParams $params

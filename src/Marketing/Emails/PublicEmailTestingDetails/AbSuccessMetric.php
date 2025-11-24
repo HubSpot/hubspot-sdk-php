@@ -9,9 +9,9 @@ namespace HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
  */
 enum AbSuccessMetric: string
 {
-    case CLICKS_BY_OPENS = 'CLICKS_BY_OPENS';
-
     case CLICKS_BY_DELIVERED = 'CLICKS_BY_DELIVERED';
+
+    case CLICKS_BY_OPENS = 'CLICKS_BY_OPENS';
 
     case OPENS_BY_DELIVERED = 'OPENS_BY_DELIVERED';
 }

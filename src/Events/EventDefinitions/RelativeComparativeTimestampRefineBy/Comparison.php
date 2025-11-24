@@ -6,7 +6,7 @@ namespace HubspotSDK\Events\EventDefinitions\RelativeComparativeTimestampRefineB
 
 enum Comparison: string
 {
-    case BEFORE = 'BEFORE';
-
     case AFTER = 'AFTER';
+
+    case BEFORE = 'BEFORE';
 }

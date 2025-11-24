@@ -6,9 +6,9 @@ namespace HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest;
 
 enum LawfulBasis: string
 {
-    case LEAD = 'lead';
-
     case CLIENT = 'client';
+
+    case LEAD = 'lead';
 
     case OTHER = 'other';
 }

@@ -29,7 +29,7 @@ final class PortalsService implements PortalsContract
      * Specify an account-level flag state for a specific HubSpot account.
      *
      * @param array{
-     *   appId: int, flagName: string, flagState: "OFF"|"ON"|"ABSENT"
+     *   appId: int, flagName: string, flagState: "ABSENT"|"OFF"|"ON"
      * }|PortalUpdateParams $params
      *
      * @throws APIException
@@ -142,7 +142,7 @@ final class PortalsService implements PortalsContract
      *
      * @param array{
      *   appId: int,
-     *   portalStates: list<array{flagState: "OFF"|"ON"|"ABSENT", portalId: int}>,
+     *   portalStates: list<array{flagState: "ABSENT"|"OFF"|"ON", portalId: int}>,
      * }|PortalBatchUpsertParams $params
      *
      * @throws APIException

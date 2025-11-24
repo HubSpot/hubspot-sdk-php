@@ -9,9 +9,9 @@ namespace HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus;
  */
 enum SourceOfStatus: string
 {
-    case PORTAL_WIDE_STATUS = 'PORTAL_WIDE_STATUS';
-
     case BRAND_WIDE_STATUS = 'BRAND_WIDE_STATUS';
+
+    case PORTAL_WIDE_STATUS = 'PORTAL_WIDE_STATUS';
 
     case SUBSCRIPTION_STATUS = 'SUBSCRIPTION_STATUS';
 }

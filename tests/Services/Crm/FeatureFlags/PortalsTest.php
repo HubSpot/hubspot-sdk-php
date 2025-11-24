@@ -38,7 +38,7 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->update(
             0,
-            ['appId' => 0, 'flagName' => 'flagName', 'flagState' => 'OFF']
+            ['appId' => 0, 'flagName' => 'flagName', 'flagState' => 'ABSENT']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +53,7 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->update(
             0,
-            ['appId' => 0, 'flagName' => 'flagName', 'flagState' => 'OFF']
+            ['appId' => 0, 'flagName' => 'flagName', 'flagState' => 'ABSENT']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -130,7 +130,7 @@ final class PortalsTest extends TestCase
             'flagName',
             [
                 'appId' => 0,
-                'portalStates' => [['flagState' => 'OFF', 'portalId' => 0]],
+                'portalStates' => [['flagState' => 'ABSENT', 'portalId' => 0]],
             ],
         );
 
@@ -148,7 +148,7 @@ final class PortalsTest extends TestCase
             'flagName',
             [
                 'appId' => 0,
-                'portalStates' => [['flagState' => 'OFF', 'portalId' => 0]],
+                'portalStates' => [['flagState' => 'ABSENT', 'portalId' => 0]],
             ],
         );
 

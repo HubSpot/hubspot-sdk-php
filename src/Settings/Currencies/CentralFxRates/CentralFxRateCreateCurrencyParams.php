@@ -25,7 +25,11 @@ final class CentralFxRateCreateCurrencyParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<CurrencyCode> $currencyCode */
+    /**
+     * The currency code being added to the HubSpot portal for use with central exchange rates.
+     *
+     * @var value-of<CurrencyCode> $currencyCode
+     */
     #[Api(enum: CurrencyCode::class)]
     public string $currencyCode;
 
@@ -65,6 +69,8 @@ final class CentralFxRateCreateCurrencyParams implements BaseModel
     }
 
     /**
+     * The currency code being added to the HubSpot portal for use with central exchange rates.
+     *
      * @param CurrencyCode|value-of<CurrencyCode> $currencyCode
      */
     public function withCurrencyCode(CurrencyCode|string $currencyCode): self

@@ -9,13 +9,13 @@ namespace HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody;
  */
 enum Name: string
 {
+    case COMPANIES = 'companies';
+
     case CONTACTS = 'contacts';
 
     case DEALS = 'deals';
 
-    case COMPANIES = 'companies';
+    case MARKETING_EVENTS = 'marketing_events';
 
     case TICKETS = 'tickets';
-
-    case MARKETING_EVENTS = 'marketing_events';
 }

@@ -160,7 +160,11 @@ final class CommercePaymentsTest extends TestCase
         $result = $this->client->crm->objects->commercePayments->search([
             'after' => 'after',
             'filterGroups' => [
-                ['filters' => [['operator' => 'EQ', 'propertyName' => 'propertyName']]],
+                [
+                    'filters' => [
+                        ['operator' => 'BETWEEN', 'propertyName' => 'propertyName'],
+                    ],
+                ],
             ],
             'limit' => 0,
             'properties' => ['string'],
@@ -183,7 +187,7 @@ final class CommercePaymentsTest extends TestCase
                 [
                     'filters' => [
                         [
-                            'operator' => 'EQ',
+                            'operator' => 'BETWEEN',
                             'propertyName' => 'propertyName',
                             'highValue' => 'highValue',
                             'value' => 'value',

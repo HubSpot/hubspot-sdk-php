@@ -208,7 +208,7 @@ final class PropertiesTest extends TestCase
                         'name' => 'name',
                         'type' => 'bool',
                         'calculationFormula' => 'calculationFormula',
-                        'dataSensitivity' => 'non_sensitive',
+                        'dataSensitivity' => 'highly_sensitive',
                         'description' => 'description',
                         'displayOrder' => 0,
                         'externalOptions' => true,
@@ -305,7 +305,7 @@ final class PropertiesTest extends TestCase
             [
                 'appId' => 0,
                 'archived' => true,
-                'dataSensitivity' => 'non_sensitive',
+                'dataSensitivity' => 'highly_sensitive',
                 'inputs' => [['name' => 'name']],
             ],
         );
@@ -325,7 +325,7 @@ final class PropertiesTest extends TestCase
             [
                 'appId' => 0,
                 'archived' => true,
-                'dataSensitivity' => 'non_sensitive',
+                'dataSensitivity' => 'highly_sensitive',
                 'inputs' => [['name' => 'name']],
             ],
         );

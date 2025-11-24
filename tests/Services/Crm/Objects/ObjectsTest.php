@@ -201,7 +201,7 @@ final class ObjectsTest extends TestCase
                 'filterGroups' => [
                     [
                         'filters' => [
-                            ['operator' => 'EQ', 'propertyName' => 'propertyName'],
+                            ['operator' => 'BETWEEN', 'propertyName' => 'propertyName'],
                         ],
                     ],
                 ],
@@ -229,7 +229,7 @@ final class ObjectsTest extends TestCase
                     [
                         'filters' => [
                             [
-                                'operator' => 'EQ',
+                                'operator' => 'BETWEEN',
                                 'propertyName' => 'propertyName',
                                 'highValue' => 'highValue',
                                 'value' => 'value',

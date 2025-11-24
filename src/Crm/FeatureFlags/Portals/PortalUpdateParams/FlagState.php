@@ -6,9 +6,9 @@ namespace HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams;
 
 enum FlagState: string
 {
+    case ABSENT = 'ABSENT';
+
     case OFF = 'OFF';
 
     case ON = 'ON';
-
-    case ABSENT = 'ABSENT';
 }

@@ -9,7 +9,7 @@ namespace HubspotSDK\Crm\Exports\PublicExportResponse;
  */
 enum ExportType: string
 {
-    case VIEW = 'VIEW';
-
     case LIST = 'LIST';
+
+    case VIEW = 'VIEW';
 }

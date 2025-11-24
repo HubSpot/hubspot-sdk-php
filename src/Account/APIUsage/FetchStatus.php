@@ -9,13 +9,13 @@ namespace HubspotSDK\Account\APIUsage;
  */
 enum FetchStatus: string
 {
-    case SUCCESS = 'SUCCESS';
-
-    case TIMEOUT = 'TIMEOUT';
+    case CACHED = 'CACHED';
 
     case FAILURE = 'FAILURE';
 
-    case CACHED = 'CACHED';
-
     case NOTFOUND = 'NOTFOUND';
+
+    case SUCCESS = 'SUCCESS';
+
+    case TIMEOUT = 'TIMEOUT';
 }

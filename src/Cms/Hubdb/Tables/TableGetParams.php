@@ -38,6 +38,9 @@ final class TableGetParams implements BaseModel
     #[Api(optional: true)]
     public ?bool $includeForeignIds;
 
+    /**
+     * Indicates whether to retrieve the localized schema for the tables.
+     */
     #[Api(optional: true)]
     public ?bool $isGetLocalizedSchema;
 
@@ -87,6 +90,9 @@ final class TableGetParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether to retrieve the localized schema for the tables.
+     */
     public function withIsGetLocalizedSchema(bool $isGetLocalizedSchema): self
     {
         $obj = clone $this;

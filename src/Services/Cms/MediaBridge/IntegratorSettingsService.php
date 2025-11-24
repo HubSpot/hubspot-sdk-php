@@ -324,7 +324,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * Set the visibility settings for media bridge events created by your app.
      *
      * @param array{
-     *   eventType: "ALL"|"MEDIA_PLAYS"|"MEDIA_PLAYS_PERCENT"|"ATTENTION_SPAN",
+     *   eventType: "ALL"|"ATTENTION_SPAN"|"MEDIA_PLAYS"|"MEDIA_PLAYS_PERCENT",
      *   updatedAt: int,
      *   showInReporting?: bool,
      *   showInTimeline?: bool,

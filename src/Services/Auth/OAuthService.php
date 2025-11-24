@@ -30,12 +30,14 @@ final class OAuthService implements OAuthContract
      * Note: HubSpot access tokens will fluctuate in size as the information that's encoded in them changes over time. It's recommended to allow for tokens to be up to 300 characters to account for any potential changes.
      *
      * @param array{
-     *   client_id?: string,
      *   client_secret?: string,
-     *   code?: string,
-     *   grant_type?: "authorization_code"|"refresh_token",
-     *   redirect_uri?: string,
      *   refresh_token?: string,
+     *   client_id?: string,
+     *   code?: string,
+     *   code_verifier?: string,
+     *   grant_type?: "authorization_code"|"client_credentials"|"refresh_token",
+     *   redirect_uri?: string,
+     *   scope?: string,
      * }|OAuthCreateAccessTokenParams $params
      *
      * @throws APIException
@@ -48,19 +50,23 @@ final class OAuthService implements OAuthContract
             $params,
             $requestOptions,
         );
+        $query_params = array_flip(['client_secret', 'refresh_token']);
 
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
             path: 'oauth/v1/token',
+            query: array_diff_key($parsed, $query_params),
             headers: ['Content-Type' => 'application/x-www-form-urlencoded'],
-            body: (object) $parsed,
+            body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: TokenResponseIf::class,
         );
     }
 
     /**
+     * @deprecated
+     *
      * @api
      *
      * Delete a refresh token, typically after a user uninstalls your app. Access tokens generated with the refresh token will not be affected.
@@ -83,6 +89,8 @@ final class OAuthService implements OAuthContract
     }
 
     /**
+     * @deprecated
+     *
      * @api
      *
      * Retrieve a token's metadata, including the email address of the user that the token was created for and the ID of the account it's associated with.
@@ -105,6 +113,8 @@ final class OAuthService implements OAuthContract
     }
 
     /**
+     * @deprecated
+     *
      * @api
      *
      * Retrieve a refresh token's metadata, including the email address of the user that the token was created for and the ID of the account it's associated with. Learn more about [refresh tokens](https://developers.hubspot.com/docs/guides/api/app-management/oauth-tokens#generate-initial-access-and-refresh-tokens).
