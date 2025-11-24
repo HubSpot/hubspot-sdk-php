@@ -88,6 +88,8 @@ enum Language: string
 
     case AS = 'as';
 
+    case AS_IN = 'as-in';
+
     case ASA = 'asa';
 
     case ASA_TZ = 'asa-tz';
@@ -95,8 +97,6 @@ enum Language: string
     case AST = 'ast';
 
     case AST_ES = 'ast-es';
-
-    case AS_IN = 'as-in';
 
     case AZ = 'az';
 
@@ -108,6 +108,8 @@ enum Language: string
 
     case BE = 'be';
 
+    case BE_BY = 'be-by';
+
     case BEM = 'bem';
 
     case BEM_ZM = 'bem-zm';
@@ -116,15 +118,13 @@ enum Language: string
 
     case BEZ_TZ = 'bez-tz';
 
-    case BE_BY = 'be-by';
-
     case BG = 'bg';
+
+    case BG_BG = 'bg-bg';
 
     case BGC = 'bgc';
 
     case BGC_IN = 'bgc-in';
-
-    case BG_BG = 'bg-bg';
 
     case BHO = 'bho';
 
@@ -148,11 +148,11 @@ enum Language: string
 
     case BR = 'br';
 
+    case BR_FR = 'br-fr';
+
     case BRX = 'brx';
 
     case BRX_IN = 'brx-in';
-
-    case BR_FR = 'br-fr';
 
     case BS = 'bs';
 
@@ -176,11 +176,11 @@ enum Language: string
 
     case CE = 'ce';
 
+    case CE_RU = 'ce-ru';
+
     case CEB = 'ceb';
 
     case CEB_PH = 'ceb-ph';
-
-    case CE_RU = 'ce-ru';
 
     case CGG = 'cgg';
 
@@ -214,13 +214,13 @@ enum Language: string
 
     case DA = 'da';
 
-    case DAV = 'dav';
-
-    case DAV_KE = 'dav-ke';
-
     case DA_DK = 'da-dk';
 
     case DA_GL = 'da-gl';
+
+    case DAV = 'dav';
+
+    case DAV_KE = 'dav-ke';
 
     case DE = 'de';
 
@@ -448,6 +448,8 @@ enum Language: string
 
     case EN_PR = 'en-pr';
 
+    case EN_PT = 'en-pt';
+
     case EN_PW = 'en-pw';
 
     case EN_RW = 'en-rw';
@@ -618,11 +620,11 @@ enum Language: string
 
     case FI = 'fi';
 
+    case FI_FI = 'fi-fi';
+
     case FIL = 'fil';
 
     case FIL_PH = 'fil-ph';
-
-    case FI_FI = 'fi-fi';
 
     case FO = 'fo';
 
@@ -631,10 +633,6 @@ enum Language: string
     case FO_FO = 'fo-fo';
 
     case FR = 'fr';
-
-    case FRR = 'frr';
-
-    case FRR_DE = 'frr-de';
 
     case FR_BE = 'fr-be';
 
@@ -728,6 +726,10 @@ enum Language: string
 
     case FR_YT = 'fr-yt';
 
+    case FRR = 'frr';
+
+    case FRR_DE = 'frr-de';
+
     case FUR = 'fur';
 
     case FUR_IT = 'fur-it';
@@ -760,11 +762,11 @@ enum Language: string
 
     case GU = 'gu';
 
+    case GU_IN = 'gu-in';
+
     case GUZ = 'guz';
 
     case GUZ_KE = 'guz-ke';
-
-    case GU_IN = 'gu-in';
 
     case GV = 'gv';
 
@@ -772,15 +774,15 @@ enum Language: string
 
     case HA = 'ha';
 
-    case HAW = 'haw';
-
-    case HAW_US = 'haw-us';
-
     case HA_GH = 'ha-gh';
 
     case HA_NE = 'ha-ne';
 
     case HA_NG = 'ha-ng';
+
+    case HAW = 'haw';
+
+    case HAW_US = 'haw-us';
 
     case HE = 'he';
 
@@ -814,6 +816,8 @@ enum Language: string
 
     case ID = 'id';
 
+    case ID_ID = 'id-id';
+
     case IG = 'ig';
 
     case IG_NG = 'ig-ng';
@@ -821,8 +825,6 @@ enum Language: string
     case II = 'ii';
 
     case II_CN = 'ii-cn';
-
-    case ID_ID = 'id-id';
 
     case IS = 'is';
 
@@ -846,10 +848,6 @@ enum Language: string
 
     case JGO_CM = 'jgo-cm';
 
-    case YI = 'yi';
-
-    case YI_001 = 'yi-001';
-
     case JMC = 'jmc';
 
     case JMC_TZ = 'jmc-tz';
@@ -860,6 +858,8 @@ enum Language: string
 
     case KA = 'ka';
 
+    case KA_GE = 'ka-ge';
+
     case KAB = 'kab';
 
     case KAB_DZ = 'kab-dz';
@@ -867,8 +867,6 @@ enum Language: string
     case KAM = 'kam';
 
     case KAM_KE = 'kam-ke';
-
-    case KA_GE = 'ka-ge';
 
     case KDE = 'kde';
 
@@ -882,6 +880,8 @@ enum Language: string
 
     case KGP_BR = 'kgp-br';
 
+    case KH = 'kh';
+
     case KHQ = 'khq';
 
     case KHQ_ML = 'khq-ml';
@@ -892,19 +892,19 @@ enum Language: string
 
     case KK = 'kk';
 
+    case KK_KZ = 'kk-kz';
+
     case KKJ = 'kkj';
 
     case KKJ_CM = 'kkj-cm';
 
-    case KK_KZ = 'kk-kz';
-
     case KL = 'kl';
+
+    case KL_GL = 'kl-gl';
 
     case KLN = 'kln';
 
     case KLN_KE = 'kln-ke';
-
-    case KL_GL = 'kl-gl';
 
     case KM = 'km';
 
@@ -916,15 +916,17 @@ enum Language: string
 
     case KO = 'ko';
 
-    case KOK = 'kok';
-
-    case KOK_IN = 'kok-in';
-
     case KO_KP = 'ko-kp';
 
     case KO_KR = 'ko-kr';
 
+    case KOK = 'kok';
+
+    case KOK_IN = 'kok-in';
+
     case KS = 'ks';
+
+    case KS_IN = 'ks-in';
 
     case KSB = 'ksb';
 
@@ -937,8 +939,6 @@ enum Language: string
     case KSH = 'ksh';
 
     case KSH_DE = 'ksh-de';
-
-    case KS_IN = 'ks-in';
 
     case KU = 'ku';
 
@@ -994,6 +994,8 @@ enum Language: string
 
     case LU = 'lu';
 
+    case LU_CD = 'lu-cd';
+
     case LUO = 'luo';
 
     case LUO_KE = 'luo-ke';
@@ -1001,8 +1003,6 @@ enum Language: string
     case LUY = 'luy';
 
     case LUY_KE = 'luy-ke';
-
-    case LU_CD = 'lu-cd';
 
     case LV = 'lv';
 
@@ -1032,6 +1032,8 @@ enum Language: string
 
     case MG = 'mg';
 
+    case MG_MG = 'mg-mg';
+
     case MGH = 'mgh';
 
     case MGH_MZ = 'mgh-mz';
@@ -1039,8 +1041,6 @@ enum Language: string
     case MGO = 'mgo';
 
     case MGO_CM = 'mgo-cm';
-
-    case MG_MG = 'mg-mg';
 
     case MI = 'mi';
 
@@ -1056,11 +1056,11 @@ enum Language: string
 
     case MN = 'mn';
 
+    case MN_MN = 'mn-mn';
+
     case MNI = 'mni';
 
     case MNI_IN = 'mni-in';
-
-    case MN_MN = 'mn-mn';
 
     case MR = 'mr';
 
@@ -1104,13 +1104,13 @@ enum Language: string
 
     case ND = 'nd';
 
+    case ND_ZW = 'nd-zw';
+
     case NDS = 'nds';
 
     case NDS_DE = 'nds-de';
 
     case NDS_NL = 'nds-nl';
-
-    case ND_ZW = 'nd-zw';
 
     case NE = 'ne';
 
@@ -1144,11 +1144,11 @@ enum Language: string
 
     case NN = 'nn';
 
+    case NN_NO = 'nn-no';
+
     case NNH = 'nnh';
 
     case NNH_CM = 'nnh-cm';
-
-    case NN_NO = 'nn-no';
 
     case NO = 'no';
 
@@ -1260,13 +1260,13 @@ enum Language: string
 
     case RO = 'ro';
 
-    case ROF = 'rof';
-
-    case ROF_TZ = 'rof-tz';
-
     case RO_MD = 'ro-md';
 
     case RO_RO = 'ro-ro';
+
+    case ROF = 'rof';
+
+    case ROF_TZ = 'rof-tz';
 
     case RU = 'ru';
 
@@ -1284,13 +1284,15 @@ enum Language: string
 
     case RW = 'rw';
 
+    case RW_RW = 'rw-rw';
+
     case RWK = 'rwk';
 
     case RWK_TZ = 'rwk-tz';
 
-    case RW_RW = 'rw-rw';
-
     case SA = 'sa';
+
+    case SA_IN = 'sa-in';
 
     case SAH = 'sah';
 
@@ -1303,8 +1305,6 @@ enum Language: string
     case SAT = 'sat';
 
     case SAT_IN = 'sat-in';
-
-    case SA_IN = 'sa-in';
 
     case SBP = 'sbp';
 
@@ -1322,6 +1322,12 @@ enum Language: string
 
     case SE = 'se';
 
+    case SE_FI = 'se-fi';
+
+    case SE_NO = 'se-no';
+
+    case SE_SE = 'se-se';
+
     case SEH = 'seh';
 
     case SEH_MZ = 'seh-mz';
@@ -1329,12 +1335,6 @@ enum Language: string
     case SES = 'ses';
 
     case SES_ML = 'ses-ml';
-
-    case SE_FI = 'se-fi';
-
-    case SE_NO = 'se-no';
-
-    case SE_SE = 'se-se';
 
     case SG = 'sg';
 
@@ -1434,13 +1434,13 @@ enum Language: string
 
     case TE = 'te';
 
+    case TE_IN = 'te-in';
+
     case TEO = 'teo';
 
     case TEO_KE = 'teo-ke';
 
     case TEO_UG = 'teo-ug';
-
-    case TE_IN = 'te-in';
 
     case TG = 'tg';
 
@@ -1464,11 +1464,11 @@ enum Language: string
 
     case TO = 'to';
 
+    case TO_TO = 'to-to';
+
     case TOK = 'tok';
 
     case TOK_001 = 'tok-001';
-
-    case TO_TO = 'to-to';
 
     case TR = 'tr';
 
@@ -1543,6 +1543,10 @@ enum Language: string
     case YAV = 'yav';
 
     case YAV_CM = 'yav-cm';
+
+    case YI = 'yi';
+
+    case YI_001 = 'yi-001';
 
     case YO = 'yo';
 

@@ -38,7 +38,7 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->create([
             'id' => 'id',
-            'abStatus' => 'master',
+            'abStatus' => 'automated_loser_variant',
             'abTestId' => 'abTestId',
             'archivedAt' => '2019-12-27T18:11:19.117Z',
             'archivedInDashboard' => true,
@@ -187,7 +187,7 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->create([
             'id' => 'id',
-            'abStatus' => 'master',
+            'abStatus' => 'automated_loser_variant',
             'abTestId' => 'abTestId',
             'archivedAt' => '2019-12-27T18:11:19.117Z',
             'archivedInDashboard' => true,
@@ -345,7 +345,7 @@ final class LandingPagesTest extends TestCase
             'objectId',
             [
                 'id' => 'id',
-                'abStatus' => 'master',
+                'abStatus' => 'automated_loser_variant',
                 'abTestId' => 'abTestId',
                 'archivedAt' => '2019-12-27T18:11:19.117Z',
                 'archivedInDashboard' => true,
@@ -497,7 +497,7 @@ final class LandingPagesTest extends TestCase
             'objectId',
             [
                 'id' => 'id',
-                'abStatus' => 'master',
+                'abStatus' => 'automated_loser_variant',
                 'abTestId' => 'abTestId',
                 'archivedAt' => '2019-12-27T18:11:19.117Z',
                 'archivedInDashboard' => true,
@@ -760,7 +760,7 @@ final class LandingPagesTest extends TestCase
             'inputs' => [
                 [
                     'id' => 'id',
-                    'abStatus' => 'master',
+                    'abStatus' => 'automated_loser_variant',
                     'abTestId' => 'abTestId',
                     'archivedAt' => '2019-12-27T18:11:19.117Z',
                     'archivedInDashboard' => true,
@@ -915,7 +915,7 @@ final class LandingPagesTest extends TestCase
             'inputs' => [
                 [
                     'id' => 'id',
-                    'abStatus' => 'master',
+                    'abStatus' => 'automated_loser_variant',
                     'abTestId' => 'abTestId',
                     'archivedAt' => '2019-12-27T18:11:19.117Z',
                     'archivedInDashboard' => true,
@@ -1745,7 +1745,7 @@ final class LandingPagesTest extends TestCase
             'objectId',
             [
                 'id' => 'id',
-                'abStatus' => 'master',
+                'abStatus' => 'automated_loser_variant',
                 'abTestId' => 'abTestId',
                 'archivedAt' => '2019-12-27T18:11:19.117Z',
                 'archivedInDashboard' => true,
@@ -1897,7 +1897,7 @@ final class LandingPagesTest extends TestCase
             'objectId',
             [
                 'id' => 'id',
-                'abStatus' => 'master',
+                'abStatus' => 'automated_loser_variant',
                 'abTestId' => 'abTestId',
                 'archivedAt' => '2019-12-27T18:11:19.117Z',
                 'archivedInDashboard' => true,

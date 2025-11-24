@@ -6,7 +6,7 @@ namespace HubspotSDK\Events\EventDefinitions\TimePointOperation;
 
 enum Operator: string
 {
-    case IS_BEFORE = 'IS_BEFORE';
-
     case IS_AFTER = 'IS_AFTER';
+
+    case IS_BEFORE = 'IS_BEFORE';
 }

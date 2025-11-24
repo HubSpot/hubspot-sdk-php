@@ -39,7 +39,7 @@ final class DefinitionsService implements DefinitionsContract
      *   actionUrl: string,
      *   functions: list<array{
      *     functionSource: string,
-     *     functionType: "PRE_ACTION_EXECUTION"|"PRE_FETCH_OPTIONS"|"POST_FETCH_OPTIONS"|"POST_ACTION_EXECUTION",
+     *     functionType: "POST_ACTION_EXECUTION"|"POST_FETCH_OPTIONS"|"PRE_ACTION_EXECUTION"|"PRE_FETCH_OPTIONS",
      *     id?: string,
      *   }|PublicActionFunction>,
      *   inputFields: list<array{

@@ -121,7 +121,7 @@ final class FilesTest extends TestCase
         }
 
         $result = $this->client->files->files->importFromURLAsync([
-            'access' => 'PUBLIC_INDEXABLE', 'url' => 'url',
+            'access' => 'HIDDEN_INDEXABLE', 'url' => 'url',
         ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -135,7 +135,7 @@ final class FilesTest extends TestCase
         }
 
         $result = $this->client->files->files->importFromURLAsync([
-            'access' => 'PUBLIC_INDEXABLE', 'url' => 'url',
+            'access' => 'HIDDEN_INDEXABLE', 'url' => 'url',
         ]);
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

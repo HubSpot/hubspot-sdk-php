@@ -9,9 +9,7 @@ namespace HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate;
  */
 enum Type: string
 {
-    case STRING = 'string';
-
-    case NUMBER = 'number';
+    case BOOL = 'bool';
 
     case DATE = 'date';
 
@@ -19,5 +17,7 @@ enum Type: string
 
     case ENUMERATION = 'enumeration';
 
-    case BOOL = 'bool';
+    case NUMBER = 'number';
+
+    case STRING = 'string';
 }

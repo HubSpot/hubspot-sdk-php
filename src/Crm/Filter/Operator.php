@@ -9,29 +9,29 @@ namespace HubspotSDK\Crm\Filter;
  */
 enum Operator: string
 {
+    case BETWEEN = 'BETWEEN';
+
+    case CONTAINS_TOKEN = 'CONTAINS_TOKEN';
+
     case EQ = 'EQ';
-
-    case NEQ = 'NEQ';
-
-    case LT = 'LT';
-
-    case LTE = 'LTE';
 
     case GT = 'GT';
 
     case GTE = 'GTE';
 
-    case BETWEEN = 'BETWEEN';
+    case HAS_PROPERTY = 'HAS_PROPERTY';
 
     case IN = 'IN';
 
-    case NOT_IN = 'NOT_IN';
+    case LT = 'LT';
 
-    case HAS_PROPERTY = 'HAS_PROPERTY';
+    case LTE = 'LTE';
+
+    case NEQ = 'NEQ';
+
+    case NOT_CONTAINS_TOKEN = 'NOT_CONTAINS_TOKEN';
 
     case NOT_HAS_PROPERTY = 'NOT_HAS_PROPERTY';
 
-    case CONTAINS_TOKEN = 'CONTAINS_TOKEN';
-
-    case NOT_CONTAINS_TOKEN = 'NOT_CONTAINS_TOKEN';
+    case NOT_IN = 'NOT_IN';
 }

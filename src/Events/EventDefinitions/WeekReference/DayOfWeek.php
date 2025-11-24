@@ -6,17 +6,17 @@ namespace HubspotSDK\Events\EventDefinitions\WeekReference;
 
 enum DayOfWeek: string
 {
-    case MONDAY = 'MONDAY';
-
-    case TUESDAY = 'TUESDAY';
-
-    case WEDNESDAY = 'WEDNESDAY';
-
-    case THURSDAY = 'THURSDAY';
-
     case FRIDAY = 'FRIDAY';
+
+    case MONDAY = 'MONDAY';
 
     case SATURDAY = 'SATURDAY';
 
     case SUNDAY = 'SUNDAY';
+
+    case THURSDAY = 'THURSDAY';
+
+    case TUESDAY = 'TUESDAY';
+
+    case WEDNESDAY = 'WEDNESDAY';
 }

@@ -9,9 +9,11 @@ namespace HubspotSDK\Cms\Pages\SitePages\SitePageUpdateParams;
  */
 enum AbStatus: string
 {
-    case MASTER = 'master';
+    case AUTOMATED_LOSER_VARIANT = 'automated_loser_variant';
 
-    case VARIANT = 'variant';
+    case AUTOMATED_MASTER = 'automated_master';
+
+    case AUTOMATED_VARIANT = 'automated_variant';
 
     case LOSER_VARIANT = 'loser_variant';
 
@@ -19,9 +21,7 @@ enum AbStatus: string
 
     case MAB_VARIANT = 'mab_variant';
 
-    case AUTOMATED_MASTER = 'automated_master';
+    case MASTER = 'master';
 
-    case AUTOMATED_VARIANT = 'automated_variant';
-
-    case AUTOMATED_LOSER_VARIANT = 'automated_loser_variant';
+    case VARIANT = 'variant';
 }

@@ -18,6 +18,9 @@ final class CentralExchangeRatesInformation implements BaseModel
     /** @use SdkModel<CentralExchangeRatesInformationShape> */
     use SdkModel;
 
+    /**
+     * Indicates if central exchange rates is enabled for the portal or not.
+     */
     #[Api]
     public bool $centralExchangeRatesEnabled;
 
@@ -54,6 +57,9 @@ final class CentralExchangeRatesInformation implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates if central exchange rates is enabled for the portal or not.
+     */
     public function withCentralExchangeRatesEnabled(
         bool $centralExchangeRatesEnabled
     ): self {

@@ -40,7 +40,7 @@ final class BatchTest extends TestCase
             'inputs' => [
                 [
                     'id' => 'id',
-                    'abStatus' => 'master',
+                    'abStatus' => 'automated_loser_variant',
                     'abTestId' => 'abTestId',
                     'archivedAt' => 0,
                     'archivedInDashboard' => true,
@@ -199,7 +199,7 @@ final class BatchTest extends TestCase
             'inputs' => [
                 [
                     'id' => 'id',
-                    'abStatus' => 'master',
+                    'abStatus' => 'automated_loser_variant',
                     'abTestId' => 'abTestId',
                     'archivedAt' => 0,
                     'archivedInDashboard' => true,

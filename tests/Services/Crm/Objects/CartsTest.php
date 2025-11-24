@@ -155,7 +155,11 @@ final class CartsTest extends TestCase
         $result = $this->client->crm->objects->carts->search([
             'after' => 'after',
             'filterGroups' => [
-                ['filters' => [['operator' => 'EQ', 'propertyName' => 'propertyName']]],
+                [
+                    'filters' => [
+                        ['operator' => 'BETWEEN', 'propertyName' => 'propertyName'],
+                    ],
+                ],
             ],
             'limit' => 0,
             'properties' => ['string'],
@@ -178,7 +182,7 @@ final class CartsTest extends TestCase
                 [
                     'filters' => [
                         [
-                            'operator' => 'EQ',
+                            'operator' => 'BETWEEN',
                             'propertyName' => 'propertyName',
                             'highValue' => 'highValue',
                             'value' => 'value',

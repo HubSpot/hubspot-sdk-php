@@ -6,7 +6,7 @@ namespace HubspotSDK\Events\EventDefinitions\TimeOffset;
 
 enum OffsetDirection: string
 {
-    case PAST = 'PAST';
-
     case FUTURE = 'FUTURE';
+
+    case PAST = 'PAST';
 }

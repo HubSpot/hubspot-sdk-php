@@ -9,11 +9,11 @@ namespace HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
  */
 enum Status: string
 {
-    case PENDING = 'PENDING';
-
-    case PROCESSING = 'PROCESSING';
-
     case CANCELED = 'CANCELED';
 
     case COMPLETE = 'COMPLETE';
+
+    case PENDING = 'PENDING';
+
+    case PROCESSING = 'PROCESSING';
 }

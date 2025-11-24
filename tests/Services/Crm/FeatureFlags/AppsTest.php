@@ -38,7 +38,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->update(
             'flagName',
-            ['appId' => 0, 'defaultState' => 'OFF']
+            ['appId' => 0, 'defaultState' => 'ABSENT']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -53,7 +53,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->update(
             'flagName',
-            ['appId' => 0, 'defaultState' => 'OFF']
+            ['appId' => 0, 'defaultState' => 'ABSENT']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

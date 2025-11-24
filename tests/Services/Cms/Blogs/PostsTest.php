@@ -38,7 +38,7 @@ final class PostsTest extends TestCase
 
         $result = $this->client->cms->blogs->posts->create([
             'id' => 'id',
-            'abStatus' => 'master',
+            'abStatus' => 'automated_loser_variant',
             'abTestId' => 'abTestId',
             'archivedAt' => 0,
             'archivedInDashboard' => true,
@@ -191,7 +191,7 @@ final class PostsTest extends TestCase
 
         $result = $this->client->cms->blogs->posts->create([
             'id' => 'id',
-            'abStatus' => 'master',
+            'abStatus' => 'automated_loser_variant',
             'abTestId' => 'abTestId',
             'archivedAt' => 0,
             'archivedInDashboard' => true,
@@ -353,7 +353,7 @@ final class PostsTest extends TestCase
             'objectId',
             [
                 'id' => 'id',
-                'abStatus' => 'master',
+                'abStatus' => 'automated_loser_variant',
                 'abTestId' => 'abTestId',
                 'archivedAt' => 0,
                 'archivedInDashboard' => true,
@@ -509,7 +509,7 @@ final class PostsTest extends TestCase
             'objectId',
             [
                 'id' => 'id',
-                'abStatus' => 'master',
+                'abStatus' => 'automated_loser_variant',
                 'abTestId' => 'abTestId',
                 'archivedAt' => 0,
                 'archivedInDashboard' => true,
@@ -1009,7 +1009,7 @@ final class PostsTest extends TestCase
             'objectId',
             [
                 'id' => 'id',
-                'abStatus' => 'master',
+                'abStatus' => 'automated_loser_variant',
                 'abTestId' => 'abTestId',
                 'archivedAt' => 0,
                 'archivedInDashboard' => true,
@@ -1165,7 +1165,7 @@ final class PostsTest extends TestCase
             'objectId',
             [
                 'id' => 'id',
-                'abStatus' => 'master',
+                'abStatus' => 'automated_loser_variant',
                 'abTestId' => 'abTestId',
                 'archivedAt' => 0,
                 'archivedInDashboard' => true,

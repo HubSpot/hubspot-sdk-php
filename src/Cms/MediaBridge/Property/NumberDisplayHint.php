@@ -9,15 +9,15 @@ namespace HubspotSDK\Cms\MediaBridge\Property;
  */
 enum NumberDisplayHint: string
 {
-    case UNFORMATTED = 'unformatted';
-
-    case FORMATTED = 'formatted';
-
     case CURRENCY = 'currency';
-
-    case PERCENTAGE = 'percentage';
 
     case DURATION = 'duration';
 
+    case FORMATTED = 'formatted';
+
+    case PERCENTAGE = 'percentage';
+
     case PROBABILITY = 'probability';
+
+    case UNFORMATTED = 'unformatted';
 }

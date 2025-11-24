@@ -9,9 +9,9 @@ namespace HubspotSDK\Cms\MediaBridge\Property;
  */
 enum DataSensitivity: string
 {
+    case HIGH = 'high';
+
     case NONE = 'none';
 
     case STANDARD = 'standard';
-
-    case HIGH = 'high';
 }

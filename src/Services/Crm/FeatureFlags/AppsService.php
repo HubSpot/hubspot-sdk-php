@@ -29,8 +29,8 @@ final class AppsService implements AppsContract
      *
      * @param array{
      *   appId: int,
-     *   defaultState: "OFF"|"ON"|"ABSENT",
-     *   overrideState?: "OFF"|"ON"|"ABSENT",
+     *   defaultState: "ABSENT"|"OFF"|"ON",
+     *   overrideState?: "ABSENT"|"OFF"|"ON",
      * }|AppUpdateParams $params
      *
      * @throws APIException

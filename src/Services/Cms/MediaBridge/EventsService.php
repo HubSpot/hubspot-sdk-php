@@ -28,7 +28,7 @@ final class EventsService implements EventsContract
      * Create an event containing the viewers attention span details for the media.
      *
      * @param array{
-     *   mediaType: "VIDEO"|"AUDIO"|"DOCUMENT"|"OTHER"|"IMAGE",
+     *   mediaType: "AUDIO"|"DOCUMENT"|"IMAGE"|"OTHER"|"VIDEO",
      *   occurredTimestamp: int,
      *   rawDataMap: array<string,int>,
      *   sessionId: string,
@@ -73,7 +73,7 @@ final class EventsService implements EventsContract
      * Create an event for when a user begins playing a piece of media.
      *
      * @param array{
-     *   mediaType: "VIDEO"|"AUDIO"|"DOCUMENT"|"OTHER"|"IMAGE",
+     *   mediaType: "AUDIO"|"DOCUMENT"|"IMAGE"|"OTHER"|"VIDEO",
      *   occurredTimestamp: int,
      *   sessionId: string,
      *   state: "STARTED"|"VIEWED",
@@ -117,7 +117,7 @@ final class EventsService implements EventsContract
      * Create an event representing a user reaching quarterly milestones in a piece of media they're viewing.
      *
      * @param array{
-     *   mediaType: "VIDEO"|"AUDIO"|"DOCUMENT"|"OTHER"|"IMAGE",
+     *   mediaType: "AUDIO"|"DOCUMENT"|"IMAGE"|"OTHER"|"VIDEO",
      *   occurredTimestamp: int,
      *   playedPercent: int,
      *   sessionId: string,

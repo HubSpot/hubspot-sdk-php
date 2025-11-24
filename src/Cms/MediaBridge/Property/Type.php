@@ -9,23 +9,23 @@ namespace HubspotSDK\Cms\MediaBridge\Property;
  */
 enum Type: string
 {
-    case STRING = 'string';
-
-    case NUMBER = 'number';
-
     case BOOL = 'bool';
+
+    case CURRENCY_NUMBER = 'currency_number';
+
+    case DATE = 'date';
 
     case DATETIME = 'datetime';
 
     case ENUMERATION = 'enumeration';
 
-    case DATE = 'date';
+    case JSON = 'json';
+
+    case NUMBER = 'number';
+
+    case OBJECT_COORDINATES = 'object_coordinates';
 
     case PHONE_NUMBER = 'phone_number';
 
-    case CURRENCY_NUMBER = 'currency_number';
-
-    case JSON = 'json';
-
-    case OBJECT_COORDINATES = 'object_coordinates';
+    case STRING = 'string';
 }

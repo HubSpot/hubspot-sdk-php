@@ -193,7 +193,7 @@ final class FilesService implements FilesContract
      *
      * @param array{
      *   expirationSeconds?: int,
-     *   size?: "thumb"|"icon"|"medium"|"preview",
+     *   size?: "icon"|"medium"|"preview"|"thumb",
      *   upscale?: bool,
      * }|FileGetSignedURLParams $params
      *

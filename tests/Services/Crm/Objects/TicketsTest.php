@@ -185,7 +185,11 @@ final class TicketsTest extends TestCase
         $result = $this->client->crm->objects->tickets->search([
             'after' => 'after',
             'filterGroups' => [
-                ['filters' => [['operator' => 'EQ', 'propertyName' => 'propertyName']]],
+                [
+                    'filters' => [
+                        ['operator' => 'BETWEEN', 'propertyName' => 'propertyName'],
+                    ],
+                ],
             ],
             'limit' => 0,
             'properties' => ['string'],
@@ -208,7 +212,7 @@ final class TicketsTest extends TestCase
                 [
                     'filters' => [
                         [
-                            'operator' => 'EQ',
+                            'operator' => 'BETWEEN',
                             'propertyName' => 'propertyName',
                             'highValue' => 'highValue',
                             'value' => 'value',

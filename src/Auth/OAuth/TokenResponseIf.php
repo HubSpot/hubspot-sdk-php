@@ -12,11 +12,13 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type TokenResponseIfShape = array{
- *   access_token: string,
- *   expires_in: int,
- *   refresh_token: string,
- *   token_type: string,
- *   id_token?: string|null,
+ *   accessToken?: string|null,
+ *   expiresIn?: int|null,
+ *   hubId?: int|null,
+ *   idToken?: string|null,
+ *   scopes?: list<string>|null,
+ *   tokenType?: string|null,
+ *   userId?: int|null,
  * }
  */
 final class TokenResponseIf implements BaseModel, ResponseConverter
@@ -26,41 +28,28 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
-    #[Api]
-    public string $access_token;
-
-    #[Api]
-    public int $expires_in;
-
-    #[Api]
-    public string $refresh_token;
-
-    #[Api]
-    public string $token_type;
+    #[Api(optional: true)]
+    public ?string $accessToken;
 
     #[Api(optional: true)]
-    public ?string $id_token;
+    public ?int $expiresIn;
 
-    /**
-     * `new TokenResponseIf()` is missing required properties by the API.
-     *
-     * To enforce required parameters use
-     * ```
-     * TokenResponseIf::with(
-     *   access_token: ..., expires_in: ..., refresh_token: ..., token_type: ...
-     * )
-     * ```
-     *
-     * Otherwise ensure the following setters are called
-     *
-     * ```
-     * (new TokenResponseIf)
-     *   ->withAccessToken(...)
-     *   ->withExpiresIn(...)
-     *   ->withRefreshToken(...)
-     *   ->withTokenType(...)
-     * ```
-     */
+    #[Api(optional: true)]
+    public ?int $hubId;
+
+    #[Api(optional: true)]
+    public ?string $idToken;
+
+    /** @var list<string>|null $scopes */
+    #[Api(list: 'string', optional: true)]
+    public ?array $scopes;
+
+    #[Api(optional: true)]
+    public ?string $tokenType;
+
+    #[Api(optional: true)]
+    public ?int $userId;
+
     public function __construct()
     {
         $this->initialize();
@@ -70,22 +59,27 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<string> $scopes
      */
     public static function with(
-        string $access_token,
-        int $expires_in,
-        string $refresh_token,
-        string $token_type,
-        ?string $id_token = null,
+        ?string $accessToken = null,
+        ?int $expiresIn = null,
+        ?int $hubId = null,
+        ?string $idToken = null,
+        ?array $scopes = null,
+        ?string $tokenType = null,
+        ?int $userId = null,
     ): self {
         $obj = new self;
 
-        $obj->access_token = $access_token;
-        $obj->expires_in = $expires_in;
-        $obj->refresh_token = $refresh_token;
-        $obj->token_type = $token_type;
-
-        null !== $id_token && $obj->id_token = $id_token;
+        null !== $accessToken && $obj->accessToken = $accessToken;
+        null !== $expiresIn && $obj->expiresIn = $expiresIn;
+        null !== $hubId && $obj->hubId = $hubId;
+        null !== $idToken && $obj->idToken = $idToken;
+        null !== $scopes && $obj->scopes = $scopes;
+        null !== $tokenType && $obj->tokenType = $tokenType;
+        null !== $userId && $obj->userId = $userId;
 
         return $obj;
     }
@@ -93,7 +87,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withAccessToken(string $accessToken): self
     {
         $obj = clone $this;
-        $obj->access_token = $accessToken;
+        $obj->accessToken = $accessToken;
 
         return $obj;
     }
@@ -101,23 +95,15 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withExpiresIn(int $expiresIn): self
     {
         $obj = clone $this;
-        $obj->expires_in = $expiresIn;
+        $obj->expiresIn = $expiresIn;
 
         return $obj;
     }
 
-    public function withRefreshToken(string $refreshToken): self
+    public function withHubID(int $hubID): self
     {
         $obj = clone $this;
-        $obj->refresh_token = $refreshToken;
-
-        return $obj;
-    }
-
-    public function withTokenType(string $tokenType): self
-    {
-        $obj = clone $this;
-        $obj->token_type = $tokenType;
+        $obj->hubId = $hubID;
 
         return $obj;
     }
@@ -125,7 +111,34 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withIDToken(string $idToken): self
     {
         $obj = clone $this;
-        $obj->id_token = $idToken;
+        $obj->idToken = $idToken;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<string> $scopes
+     */
+    public function withScopes(array $scopes): self
+    {
+        $obj = clone $this;
+        $obj->scopes = $scopes;
+
+        return $obj;
+    }
+
+    public function withTokenType(string $tokenType): self
+    {
+        $obj = clone $this;
+        $obj->tokenType = $tokenType;
+
+        return $obj;
+    }
+
+    public function withUserID(int $userID): self
+    {
+        $obj = clone $this;
+        $obj->userId = $userID;
 
         return $obj;
     }

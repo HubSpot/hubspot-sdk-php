@@ -13,6 +13,18 @@ enum ContentTypeCategory: string
 
     case _1 = '1';
 
+    case _10 = '10';
+
+    case _11 = '11';
+
+    case _12 = '12';
+
+    case _13 = '13';
+
+    case _14 = '14';
+
+    case _15 = '15';
+
     case _2 = '2';
 
     case _3 = '3';
@@ -28,16 +40,4 @@ enum ContentTypeCategory: string
     case _8 = '8';
 
     case _9 = '9';
-
-    case _10 = '10';
-
-    case _11 = '11';
-
-    case _12 = '12';
-
-    case _13 = '13';
-
-    case _14 = '14';
-
-    case _15 = '15';
 }

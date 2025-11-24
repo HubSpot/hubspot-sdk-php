@@ -9,47 +9,47 @@ namespace HubspotSDK\Cms\Hubdb\Column;
  */
 enum Type: string
 {
-    case NULL = 'NULL';
-
-    case TEXT = 'TEXT';
-
-    case NUMBER = 'NUMBER';
-
-    case URL = 'URL';
-
-    case IMAGE = 'IMAGE';
-
-    case SELECT = 'SELECT';
-
-    case MULTISELECT = 'MULTISELECT';
-
     case BOOLEAN = 'BOOLEAN';
 
-    case LOCATION = 'LOCATION';
+    case CODE = 'CODE';
+
+    case COMPOSITE = 'COMPOSITE';
+
+    case CTA = 'CTA';
+
+    case CURRENCY = 'CURRENCY';
 
     case DATE = 'DATE';
 
     case DATETIME = 'DATETIME';
 
-    case CURRENCY = 'CURRENCY';
-
-    case RICHTEXT = 'RICHTEXT';
-
-    case FOREIGN_ID = 'FOREIGN_ID';
-
-    case VIDEO = 'VIDEO';
-
-    case CTA = 'CTA';
+    case EMBED = 'EMBED';
 
     case FILE = 'FILE';
 
-    case JSON = 'JSON';
-
-    case COMPOSITE = 'COMPOSITE';
-
-    case CODE = 'CODE';
+    case FOREIGN_ID = 'FOREIGN_ID';
 
     case HUBSPOT_VIDEO = 'HUBSPOT_VIDEO';
 
-    case EMBED = 'EMBED';
+    case IMAGE = 'IMAGE';
+
+    case JSON = 'JSON';
+
+    case LOCATION = 'LOCATION';
+
+    case MULTISELECT = 'MULTISELECT';
+
+    case NULL = 'NULL';
+
+    case NUMBER = 'NUMBER';
+
+    case RICHTEXT = 'RICHTEXT';
+
+    case SELECT = 'SELECT';
+
+    case TEXT = 'TEXT';
+
+    case URL = 'URL';
+
+    case VIDEO = 'VIDEO';
 }

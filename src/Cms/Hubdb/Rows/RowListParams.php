@@ -36,6 +36,9 @@ final class RowListParams implements BaseModel
     #[Api(optional: true)]
     public ?string $after;
 
+    /**
+     * Specifies whether to include archived rows in the response.
+     */
     #[Api(optional: true)]
     public ?bool $archived;
 
@@ -45,6 +48,9 @@ final class RowListParams implements BaseModel
     #[Api(optional: true)]
     public ?int $limit;
 
+    /**
+     * The number of rows to skip before starting to return results.
+     */
     #[Api(optional: true)]
     public ?int $offset;
 
@@ -108,6 +114,9 @@ final class RowListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies whether to include archived rows in the response.
+     */
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
@@ -127,6 +136,9 @@ final class RowListParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * The number of rows to skip before starting to return results.
+     */
     public function withOffset(int $offset): self
     {
         $obj = clone $this;

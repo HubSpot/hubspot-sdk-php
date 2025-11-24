@@ -26,6 +26,8 @@ interface OAuthContract
     ): TokenResponseIf;
 
     /**
+     * @deprecated
+     *
      * @api
      *
      * @throws APIException
@@ -36,6 +38,8 @@ interface OAuthContract
     ): mixed;
 
     /**
+     * @deprecated
+     *
      * @api
      *
      * @throws APIException
@@ -46,6 +50,8 @@ interface OAuthContract
     ): AccessTokenInfoResponse;
 
     /**
+     * @deprecated
+     *
      * @api
      *
      * @throws APIException

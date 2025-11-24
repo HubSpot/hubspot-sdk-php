@@ -6,27 +6,27 @@ namespace HubspotSDK\PublicCalendarDatePropertyOperation;
 
 enum FiscalYearStart: string
 {
-    case JANUARY = 'JANUARY';
-
-    case FEBRUARY = 'FEBRUARY';
-
-    case MARCH = 'MARCH';
-
     case APRIL = 'APRIL';
-
-    case MAY = 'MAY';
-
-    case JUNE = 'JUNE';
-
-    case JULY = 'JULY';
 
     case AUGUST = 'AUGUST';
 
-    case SEPTEMBER = 'SEPTEMBER';
+    case DECEMBER = 'DECEMBER';
 
-    case OCTOBER = 'OCTOBER';
+    case FEBRUARY = 'FEBRUARY';
+
+    case JANUARY = 'JANUARY';
+
+    case JULY = 'JULY';
+
+    case JUNE = 'JUNE';
+
+    case MARCH = 'MARCH';
+
+    case MAY = 'MAY';
 
     case NOVEMBER = 'NOVEMBER';
 
-    case DECEMBER = 'DECEMBER';
+    case OCTOBER = 'OCTOBER';
+
+    case SEPTEMBER = 'SEPTEMBER';
 }

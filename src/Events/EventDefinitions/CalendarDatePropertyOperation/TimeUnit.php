@@ -8,11 +8,11 @@ enum TimeUnit: string
 {
     case DAY = 'DAY';
 
-    case WEEK = 'WEEK';
-
     case MONTH = 'MONTH';
 
     case QUARTER = 'QUARTER';
+
+    case WEEK = 'WEEK';
 
     case YEAR = 'YEAR';
 }

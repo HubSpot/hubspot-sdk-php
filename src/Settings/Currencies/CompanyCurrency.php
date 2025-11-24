@@ -22,9 +22,15 @@ final class CompanyCurrency implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * The currency code for the company currency.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The date the company currency was created.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
@@ -62,6 +68,9 @@ final class CompanyCurrency implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The currency code for the company currency.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -70,6 +79,9 @@ final class CompanyCurrency implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The date the company currency was created.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;

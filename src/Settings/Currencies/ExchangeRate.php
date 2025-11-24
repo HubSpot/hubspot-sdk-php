@@ -31,29 +31,55 @@ final class ExchangeRate implements BaseModel, ResponseConverter
 
     use SdkResponse;
 
+    /**
+     * A unique identifier for the exchange rate.
+     */
     #[Api]
     public string $id;
 
+    /**
+     * The conversion rate between the to and from currency code of this exchange rate.
+     */
     #[Api]
     public float $conversionRate;
 
+    /**
+     * The date the exchange rate was created.
+     */
     #[Api]
     public \DateTimeInterface $createdAt;
 
+    /**
+     * The date the exchange rate is in effect.
+     */
     #[Api]
     public \DateTimeInterface $effectiveAt;
 
-    /** @var value-of<FromCurrencyCode> $fromCurrencyCode */
+    /**
+     * This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.
+     *
+     * @var value-of<FromCurrencyCode> $fromCurrencyCode
+     */
     #[Api(enum: FromCurrencyCode::class)]
     public string $fromCurrencyCode;
 
-    /** @var value-of<ToCurrencyCode> $toCurrencyCode */
+    /**
+     * This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.
+     *
+     * @var value-of<ToCurrencyCode> $toCurrencyCode
+     */
     #[Api(enum: ToCurrencyCode::class)]
     public string $toCurrencyCode;
 
+    /**
+     * The date the exchange rate was last updated.
+     */
     #[Api]
     public \DateTimeInterface $updatedAt;
 
+    /**
+     * This indicates if the exchange rate is shown in the MultiCurrency settings page.
+     */
     #[Api]
     public bool $visibleInUI;
 
@@ -125,6 +151,9 @@ final class ExchangeRate implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * A unique identifier for the exchange rate.
+     */
     public function withID(string $id): self
     {
         $obj = clone $this;
@@ -133,6 +162,9 @@ final class ExchangeRate implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The conversion rate between the to and from currency code of this exchange rate.
+     */
     public function withConversionRate(float $conversionRate): self
     {
         $obj = clone $this;
@@ -141,6 +173,9 @@ final class ExchangeRate implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The date the exchange rate was created.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
@@ -149,6 +184,9 @@ final class ExchangeRate implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The date the exchange rate is in effect.
+     */
     public function withEffectiveAt(\DateTimeInterface $effectiveAt): self
     {
         $obj = clone $this;
@@ -158,6 +196,8 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     }
 
     /**
+     * This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.
+     *
      * @param FromCurrencyCode|value-of<FromCurrencyCode> $fromCurrencyCode
      */
     public function withFromCurrencyCode(
@@ -170,6 +210,8 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     }
 
     /**
+     * This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.
+     *
      * @param ToCurrencyCode|value-of<ToCurrencyCode> $toCurrencyCode
      */
     public function withToCurrencyCode(
@@ -181,6 +223,9 @@ final class ExchangeRate implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * The date the exchange rate was last updated.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
@@ -189,6 +234,9 @@ final class ExchangeRate implements BaseModel, ResponseConverter
         return $obj;
     }
 
+    /**
+     * This indicates if the exchange rate is shown in the MultiCurrency settings page.
+     */
     public function withVisibleInUi(bool $visibleInUi): self
     {
         $obj = clone $this;

@@ -9,15 +9,15 @@ namespace HubspotSDK\Marketing\Forms\FormDisplayOptions;
  */
 enum Theme: string
 {
+    case CANVAS = 'canvas';
+
     case DEFAULT_STYLE = 'default_style';
 
-    case CANVAS = 'canvas';
+    case LEGACY = 'legacy';
 
     case LINEAR = 'linear';
 
     case ROUND = 'round';
 
     case SHARP = 'sharp';
-
-    case LEGACY = 'legacy';
 }

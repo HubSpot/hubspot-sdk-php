@@ -9,13 +9,13 @@ namespace HubspotSDK\Crm\Extensions\Cards\DisplayOption;
  */
 enum Type: string
 {
+    case DANGER = 'DANGER';
+
     case DEFAULT = 'DEFAULT';
+
+    case INFO = 'INFO';
 
     case SUCCESS = 'SUCCESS';
 
     case WARNING = 'WARNING';
-
-    case DANGER = 'DANGER';
-
-    case INFO = 'INFO';
 }

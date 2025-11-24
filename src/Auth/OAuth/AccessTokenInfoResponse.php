@@ -20,6 +20,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   token_type: string,
  *   user_id: int,
  *   hub_domain?: string|null,
+ *   is_private_distribution?: bool|null,
+ *   signed_access_token?: SignedAccessToken|null,
  *   user?: string|null,
  * }
  */
@@ -54,6 +56,12 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
 
     #[Api(optional: true)]
     public ?string $hub_domain;
+
+    #[Api(optional: true)]
+    public ?bool $is_private_distribution;
+
+    #[Api(optional: true)]
+    public ?SignedAccessToken $signed_access_token;
 
     #[Api(optional: true)]
     public ?string $user;
@@ -108,6 +116,8 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
         string $token_type,
         int $user_id,
         ?string $hub_domain = null,
+        ?bool $is_private_distribution = null,
+        ?SignedAccessToken $signed_access_token = null,
         ?string $user = null,
     ): self {
         $obj = new self;
@@ -121,6 +131,8 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
         $obj->user_id = $user_id;
 
         null !== $hub_domain && $obj->hub_domain = $hub_domain;
+        null !== $is_private_distribution && $obj->is_private_distribution = $is_private_distribution;
+        null !== $signed_access_token && $obj->signed_access_token = $signed_access_token;
         null !== $user && $obj->user = $user;
 
         return $obj;
@@ -189,6 +201,23 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     {
         $obj = clone $this;
         $obj->hub_domain = $hubDomain;
+
+        return $obj;
+    }
+
+    public function withIsPrivateDistribution(bool $isPrivateDistribution): self
+    {
+        $obj = clone $this;
+        $obj->is_private_distribution = $isPrivateDistribution;
+
+        return $obj;
+    }
+
+    public function withSignedAccessToken(
+        SignedAccessToken $signedAccessToken
+    ): self {
+        $obj = clone $this;
+        $obj->signed_access_token = $signedAccessToken;
 
         return $obj;
     }

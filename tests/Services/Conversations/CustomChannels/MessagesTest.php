@@ -104,7 +104,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
-            ['channelId' => 0, 'statusType' => 'SENT']
+            ['channelId' => 0, 'statusType' => 'FAILED']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
@@ -119,7 +119,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
-            ['channelId' => 0, 'statusType' => 'SENT']
+            ['channelId' => 0, 'statusType' => 'FAILED']
         );
 
         $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType

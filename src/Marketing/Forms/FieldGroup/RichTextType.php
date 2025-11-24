@@ -9,7 +9,7 @@ namespace HubspotSDK\Marketing\Forms\FieldGroup;
  */
 enum RichTextType: string
 {
-    case TEXT = 'text';
-
     case IMAGE = 'image';
+
+    case TEXT = 'text';
 }

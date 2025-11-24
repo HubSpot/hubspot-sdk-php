@@ -39,7 +39,7 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->create([
             'customProperties' => [
                 [
-                    'dataSensitivity' => 'none',
+                    'dataSensitivity' => 'high',
                     'isEncrypted' => true,
                     'isLargeValue' => true,
                     'name' => 'name',
@@ -47,7 +47,7 @@ final class EventsTest extends TestCase
                     'requestId' => 'requestId',
                     'selectedByUser' => true,
                     'selectedByUserTimestamp' => 0,
-                    'source' => 'UNKNOWN',
+                    'source' => 'ACADEMY',
                     'sourceId' => 'sourceId',
                     'sourceLabel' => 'sourceLabel',
                     'sourceMetadata' => 'sourceMetadata',
@@ -79,7 +79,7 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->create([
             'customProperties' => [
                 [
-                    'dataSensitivity' => 'none',
+                    'dataSensitivity' => 'high',
                     'isEncrypted' => true,
                     'isLargeValue' => true,
                     'name' => 'name',
@@ -87,7 +87,7 @@ final class EventsTest extends TestCase
                     'requestId' => 'requestId',
                     'selectedByUser' => true,
                     'selectedByUserTimestamp' => 0,
-                    'source' => 'UNKNOWN',
+                    'source' => 'ACADEMY',
                     'sourceId' => 'sourceId',
                     'sourceLabel' => 'sourceLabel',
                     'sourceMetadata' => 'sourceMetadata',
@@ -121,7 +121,7 @@ final class EventsTest extends TestCase
             [
                 'customProperties' => [
                     [
-                        'dataSensitivity' => 'none',
+                        'dataSensitivity' => 'high',
                         'isEncrypted' => true,
                         'isLargeValue' => true,
                         'name' => 'name',
@@ -129,7 +129,7 @@ final class EventsTest extends TestCase
                         'requestId' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
-                        'source' => 'UNKNOWN',
+                        'source' => 'ACADEMY',
                         'sourceId' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
@@ -160,7 +160,7 @@ final class EventsTest extends TestCase
             [
                 'customProperties' => [
                     [
-                        'dataSensitivity' => 'none',
+                        'dataSensitivity' => 'high',
                         'isEncrypted' => true,
                         'isLargeValue' => true,
                         'name' => 'name',
@@ -168,7 +168,7 @@ final class EventsTest extends TestCase
                         'requestId' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
-                        'source' => 'UNKNOWN',
+                        'source' => 'ACADEMY',
                         'sourceId' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
@@ -476,7 +476,7 @@ final class EventsTest extends TestCase
                 [
                     'customProperties' => [
                         [
-                            'dataSensitivity' => 'none',
+                            'dataSensitivity' => 'high',
                             'isEncrypted' => true,
                             'isLargeValue' => true,
                             'name' => 'name',
@@ -484,7 +484,7 @@ final class EventsTest extends TestCase
                             'requestId' => 'requestId',
                             'selectedByUser' => true,
                             'selectedByUserTimestamp' => 0,
-                            'source' => 'UNKNOWN',
+                            'source' => 'ACADEMY',
                             'sourceId' => 'sourceId',
                             'sourceLabel' => 'sourceLabel',
                             'sourceMetadata' => 'sourceMetadata',
@@ -517,7 +517,7 @@ final class EventsTest extends TestCase
                 [
                     'customProperties' => [
                         [
-                            'dataSensitivity' => 'none',
+                            'dataSensitivity' => 'high',
                             'isEncrypted' => true,
                             'isLargeValue' => true,
                             'name' => 'name',
@@ -525,7 +525,7 @@ final class EventsTest extends TestCase
                             'requestId' => 'requestId',
                             'selectedByUser' => true,
                             'selectedByUserTimestamp' => 0,
-                            'source' => 'UNKNOWN',
+                            'source' => 'ACADEMY',
                             'sourceId' => 'sourceId',
                             'sourceLabel' => 'sourceLabel',
                             'sourceMetadata' => 'sourceMetadata',
@@ -567,7 +567,7 @@ final class EventsTest extends TestCase
                 'externalAccountId' => 'externalAccountId',
                 'customProperties' => [
                     [
-                        'dataSensitivity' => 'none',
+                        'dataSensitivity' => 'high',
                         'isEncrypted' => true,
                         'isLargeValue' => true,
                         'name' => 'name',
@@ -575,7 +575,7 @@ final class EventsTest extends TestCase
                         'requestId' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
-                        'source' => 'UNKNOWN',
+                        'source' => 'ACADEMY',
                         'sourceId' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
@@ -607,7 +607,7 @@ final class EventsTest extends TestCase
                 'externalAccountId' => 'externalAccountId',
                 'customProperties' => [
                     [
-                        'dataSensitivity' => 'none',
+                        'dataSensitivity' => 'high',
                         'isEncrypted' => true,
                         'isLargeValue' => true,
                         'name' => 'name',
@@ -615,7 +615,7 @@ final class EventsTest extends TestCase
                         'requestId' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
-                        'source' => 'UNKNOWN',
+                        'source' => 'ACADEMY',
                         'sourceId' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
@@ -646,7 +646,7 @@ final class EventsTest extends TestCase
                 [
                     'customProperties' => [
                         [
-                            'dataSensitivity' => 'none',
+                            'dataSensitivity' => 'high',
                             'isEncrypted' => true,
                             'isLargeValue' => true,
                             'name' => 'name',
@@ -654,7 +654,7 @@ final class EventsTest extends TestCase
                             'requestId' => 'requestId',
                             'selectedByUser' => true,
                             'selectedByUserTimestamp' => 0,
-                            'source' => 'UNKNOWN',
+                            'source' => 'ACADEMY',
                             'sourceId' => 'sourceId',
                             'sourceLabel' => 'sourceLabel',
                             'sourceMetadata' => 'sourceMetadata',
@@ -690,7 +690,7 @@ final class EventsTest extends TestCase
                 [
                     'customProperties' => [
                         [
-                            'dataSensitivity' => 'none',
+                            'dataSensitivity' => 'high',
                             'isEncrypted' => true,
                             'isLargeValue' => true,
                             'name' => 'name',
@@ -698,7 +698,7 @@ final class EventsTest extends TestCase
                             'requestId' => 'requestId',
                             'selectedByUser' => true,
                             'selectedByUserTimestamp' => 0,
-                            'source' => 'UNKNOWN',
+                            'source' => 'ACADEMY',
                             'sourceId' => 'sourceId',
                             'sourceLabel' => 'sourceLabel',
                             'sourceMetadata' => 'sourceMetadata',
@@ -741,7 +741,7 @@ final class EventsTest extends TestCase
             [
                 'customProperties' => [
                     [
-                        'dataSensitivity' => 'none',
+                        'dataSensitivity' => 'high',
                         'isEncrypted' => true,
                         'isLargeValue' => true,
                         'name' => 'name',
@@ -749,7 +749,7 @@ final class EventsTest extends TestCase
                         'requestId' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
-                        'source' => 'UNKNOWN',
+                        'source' => 'ACADEMY',
                         'sourceId' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
@@ -784,7 +784,7 @@ final class EventsTest extends TestCase
             [
                 'customProperties' => [
                     [
-                        'dataSensitivity' => 'none',
+                        'dataSensitivity' => 'high',
                         'isEncrypted' => true,
                         'isLargeValue' => true,
                         'name' => 'name',
@@ -792,7 +792,7 @@ final class EventsTest extends TestCase
                         'requestId' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
-                        'source' => 'UNKNOWN',
+                        'source' => 'ACADEMY',
                         'sourceId' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',

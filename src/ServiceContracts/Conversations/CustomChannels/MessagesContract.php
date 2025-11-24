@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
+use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -24,7 +24,7 @@ interface MessagesContract
         int $channelID,
         array|MessageCreateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicConversationsMessage;
+    ): PublicConversationsMessage;
 
     /**
      * @api
@@ -37,7 +37,7 @@ interface MessagesContract
         string $messageID,
         array|MessageUpdateParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicConversationsMessage;
+    ): PublicConversationsMessage;
 
     /**
      * @api
@@ -50,5 +50,5 @@ interface MessagesContract
         string $messageID,
         array|MessageGetParams $params,
         ?RequestOptions $requestOptions = null,
-    ): ConversationsPublicConversationsMessage;
+    ): PublicConversationsMessage;
 }

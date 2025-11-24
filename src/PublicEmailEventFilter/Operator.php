@@ -6,6 +6,8 @@ namespace HubspotSDK\PublicEmailEventFilter;
 
 enum Operator: string
 {
+    case BOUNCED = 'BOUNCED';
+
     case LINK_CLICKED = 'LINK_CLICKED';
 
     case MARKED_SPAM = 'MARKED_SPAM';
@@ -16,19 +18,17 @@ enum Operator: string
 
     case OPENED_BUT_NOT_REPLIED = 'OPENED_BUT_NOT_REPLIED';
 
-    case REPLIED = 'REPLIED';
-
-    case UNSUBSCRIBED = 'UNSUBSCRIBED';
-
-    case BOUNCED = 'BOUNCED';
-
     case RECEIVED = 'RECEIVED';
 
     case RECEIVED_BUT_NOT_OPENED = 'RECEIVED_BUT_NOT_OPENED';
+
+    case REPLIED = 'REPLIED';
 
     case SENT = 'SENT';
 
     case SENT_BUT_LINK_NOT_CLICKED = 'SENT_BUT_LINK_NOT_CLICKED';
 
     case SENT_BUT_NOT_RECEIVED = 'SENT_BUT_NOT_RECEIVED';
+
+    case UNSUBSCRIBED = 'UNSUBSCRIBED';
 }

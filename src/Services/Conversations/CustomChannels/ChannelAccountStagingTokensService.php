@@ -7,7 +7,7 @@ namespace HubspotSDK\Services\Conversations\CustomChannels;
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccountStagingTokens\ChannelAccountStagingTokenUpdateParams;
 use HubspotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
-use HubspotSDK\Conversations\PublicDeliveryIdentifier;
+use HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountStagingTokensContract;

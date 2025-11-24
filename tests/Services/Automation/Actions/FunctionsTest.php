@@ -71,7 +71,7 @@ final class FunctionsTest extends TestCase
             [
                 'appId' => 0,
                 'definitionId' => 'definitionId',
-                'functionType' => 'PRE_ACTION_EXECUTION',
+                'functionType' => 'POST_ACTION_EXECUTION',
             ],
         );
 
@@ -90,7 +90,7 @@ final class FunctionsTest extends TestCase
             [
                 'appId' => 0,
                 'definitionId' => 'definitionId',
-                'functionType' => 'PRE_ACTION_EXECUTION',
+                'functionType' => 'POST_ACTION_EXECUTION',
             ],
         );
 
@@ -109,7 +109,7 @@ final class FunctionsTest extends TestCase
             [
                 'appId' => 0,
                 'definitionId' => 'definitionId',
-                'functionType' => 'PRE_ACTION_EXECUTION',
+                'functionType' => 'POST_ACTION_EXECUTION',
                 'body' => 'body',
             ],
         );
@@ -129,7 +129,7 @@ final class FunctionsTest extends TestCase
             [
                 'appId' => 0,
                 'definitionId' => 'definitionId',
-                'functionType' => 'PRE_ACTION_EXECUTION',
+                'functionType' => 'POST_ACTION_EXECUTION',
                 'body' => 'body',
             ],
         );
@@ -150,7 +150,7 @@ final class FunctionsTest extends TestCase
             ->actions
             ->functions
             ->createOrReplaceByFunctionType(
-                'PRE_ACTION_EXECUTION',
+                'POST_ACTION_EXECUTION',
                 ['appId' => 0, 'definitionId' => 'definitionId', 'body' => 'body'],
             )
         ;
@@ -171,7 +171,7 @@ final class FunctionsTest extends TestCase
             ->actions
             ->functions
             ->createOrReplaceByFunctionType(
-                'PRE_ACTION_EXECUTION',
+                'POST_ACTION_EXECUTION',
                 ['appId' => 0, 'definitionId' => 'definitionId', 'body' => 'body'],
             )
         ;
@@ -192,7 +192,7 @@ final class FunctionsTest extends TestCase
             ->actions
             ->functions
             ->deleteByFunctionType(
-                'PRE_ACTION_EXECUTION',
+                'POST_ACTION_EXECUTION',
                 ['appId' => 0, 'definitionId' => 'definitionId']
             )
         ;
@@ -213,7 +213,7 @@ final class FunctionsTest extends TestCase
             ->actions
             ->functions
             ->deleteByFunctionType(
-                'PRE_ACTION_EXECUTION',
+                'POST_ACTION_EXECUTION',
                 ['appId' => 0, 'definitionId' => 'definitionId']
             )
         ;
@@ -233,7 +233,7 @@ final class FunctionsTest extends TestCase
             [
                 'appId' => 0,
                 'definitionId' => 'definitionId',
-                'functionType' => 'PRE_ACTION_EXECUTION',
+                'functionType' => 'POST_ACTION_EXECUTION',
             ],
         );
 
@@ -252,7 +252,7 @@ final class FunctionsTest extends TestCase
             [
                 'appId' => 0,
                 'definitionId' => 'definitionId',
-                'functionType' => 'PRE_ACTION_EXECUTION',
+                'functionType' => 'POST_ACTION_EXECUTION',
             ],
         );
 
@@ -267,7 +267,7 @@ final class FunctionsTest extends TestCase
         }
 
         $result = $this->client->automation->actions->functions->getByFunctionType(
-            'PRE_ACTION_EXECUTION',
+            'POST_ACTION_EXECUTION',
             ['appId' => 0, 'definitionId' => 'definitionId']
         );
 
@@ -282,7 +282,7 @@ final class FunctionsTest extends TestCase
         }
 
         $result = $this->client->automation->actions->functions->getByFunctionType(
-            'PRE_ACTION_EXECUTION',
+            'POST_ACTION_EXECUTION',
             ['appId' => 0, 'definitionId' => 'definitionId']
         );
 

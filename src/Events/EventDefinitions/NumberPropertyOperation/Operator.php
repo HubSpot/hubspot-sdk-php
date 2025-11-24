@@ -6,9 +6,11 @@ namespace HubspotSDK\Events\EventDefinitions\NumberPropertyOperation;
 
 enum Operator: string
 {
-    case IS_EQUAL_TO = 'IS_EQUAL_TO';
+    case HAS_EVER_BEEN_EQUAL_TO = 'HAS_EVER_BEEN_EQUAL_TO';
 
-    case IS_NOT_EQUAL_TO = 'IS_NOT_EQUAL_TO';
+    case HAS_NEVER_BEEN_EQUAL_TO = 'HAS_NEVER_BEEN_EQUAL_TO';
+
+    case IS_EQUAL_TO = 'IS_EQUAL_TO';
 
     case IS_GREATER_THAN = 'IS_GREATER_THAN';
 
@@ -18,7 +20,5 @@ enum Operator: string
 
     case IS_LESS_THAN_OR_EQUAL_TO = 'IS_LESS_THAN_OR_EQUAL_TO';
 
-    case HAS_EVER_BEEN_EQUAL_TO = 'HAS_EVER_BEEN_EQUAL_TO';
-
-    case HAS_NEVER_BEEN_EQUAL_TO = 'HAS_NEVER_BEEN_EQUAL_TO';
+    case IS_NOT_EQUAL_TO = 'IS_NOT_EQUAL_TO';
 }

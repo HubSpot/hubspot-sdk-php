@@ -11,13 +11,13 @@ enum Event: string
 {
     case CREATED = 'CREATED';
 
-    case UPDATED = 'UPDATED';
+    case DELETED = 'DELETED';
 
     case PUBLISHED = 'PUBLISHED';
 
-    case DELETED = 'DELETED';
+    case RESTORE = 'RESTORE';
 
     case UNPUBLISHED = 'UNPUBLISHED';
 
-    case RESTORE = 'RESTORE';
+    case UPDATED = 'UPDATED';
 }

@@ -237,7 +237,7 @@ final class CustomTest extends TestCase
                 'filterGroups' => [
                     [
                         'filters' => [
-                            ['operator' => 'EQ', 'propertyName' => 'propertyName'],
+                            ['operator' => 'BETWEEN', 'propertyName' => 'propertyName'],
                         ],
                     ],
                 ],
@@ -265,7 +265,7 @@ final class CustomTest extends TestCase
                     [
                         'filters' => [
                             [
-                                'operator' => 'EQ',
+                                'operator' => 'BETWEEN',
                                 'propertyName' => 'propertyName',
                                 'highValue' => 'highValue',
                                 'value' => 'value',

@@ -38,7 +38,7 @@ final class StatusesService implements StatusesContract
      *
      * @param array{
      *   channel: "EMAIL",
-     *   statusState: "SUBSCRIBED"|"UNSUBSCRIBED"|"NOT_SPECIFIED",
+     *   statusState: "NOT_SPECIFIED"|"SUBSCRIBED"|"UNSUBSCRIBED",
      *   subscriptionId: int,
      *   legalBasis?: value-of<LegalBasis>,
      *   legalBasisExplanation?: string,
@@ -170,10 +170,10 @@ final class StatusesService implements StatusesContract
      * @param array{
      *   inputs: list<array{
      *     channel: "EMAIL",
-     *     statusState: "SUBSCRIBED"|"UNSUBSCRIBED"|"NOT_SPECIFIED",
+     *     statusState: "NOT_SPECIFIED"|"SUBSCRIBED"|"UNSUBSCRIBED",
      *     subscriberIdString: string,
      *     subscriptionId: int,
-     *     legalBasis?: "LEGITIMATE_INTEREST_PQL"|"LEGITIMATE_INTEREST_CLIENT"|"PERFORMANCE_OF_CONTRACT"|"CONSENT_WITH_NOTICE"|"NON_GDPR"|"PROCESS_AND_STORE"|"LEGITIMATE_INTEREST_OTHER",
+     *     legalBasis?: "CONSENT_WITH_NOTICE"|"LEGITIMATE_INTEREST_CLIENT"|"LEGITIMATE_INTEREST_OTHER"|"LEGITIMATE_INTEREST_PQL"|"NON_GDPR"|"PERFORMANCE_OF_CONTRACT"|"PROCESS_AND_STORE",
      *     legalBasisExplanation?: string,
      *   }>,
      * }|StatusBatchUpdateParams $params

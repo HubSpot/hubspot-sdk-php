@@ -6,9 +6,9 @@ namespace HubspotSDK\Events\EventDefinitions\DatePropertyOperation;
 
 enum Operator: string
 {
-    case EQUAL = 'EQUAL';
+    case AFTER = 'AFTER';
 
     case BEFORE = 'BEFORE';
 
-    case AFTER = 'AFTER';
+    case EQUAL = 'EQUAL';
 }

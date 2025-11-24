@@ -9,7 +9,7 @@ namespace HubspotSDK\Settings\Users\UserGetParams;
  */
 enum IDProperty: string
 {
-    case USER_ID = 'USER_ID';
-
     case EMAIL = 'EMAIL';
+
+    case USER_ID = 'USER_ID';
 }

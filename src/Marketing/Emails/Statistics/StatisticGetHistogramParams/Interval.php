@@ -9,21 +9,21 @@ namespace HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams;
  */
 enum Interval: string
 {
-    case YEAR = 'YEAR';
-
-    case QUARTER = 'QUARTER';
-
-    case MONTH = 'MONTH';
-
-    case WEEK = 'WEEK';
-
     case DAY = 'DAY';
 
     case HOUR = 'HOUR';
 
-    case QUARTER_HOUR = 'QUARTER_HOUR';
-
     case MINUTE = 'MINUTE';
 
+    case MONTH = 'MONTH';
+
+    case QUARTER = 'QUARTER';
+
+    case QUARTER_HOUR = 'QUARTER_HOUR';
+
     case SECOND = 'SECOND';
+
+    case WEEK = 'WEEK';
+
+    case YEAR = 'YEAR';
 }

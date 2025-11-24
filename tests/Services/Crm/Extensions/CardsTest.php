@@ -47,7 +47,7 @@ final class CardsTest extends TestCase
                             'label' => 'Pets Name',
                             'name' => 'pet_name',
                             'options' => [
-                                ['label' => 'label', 'name' => 'name', 'type' => 'DEFAULT'],
+                                ['label' => 'label', 'name' => 'name', 'type' => 'DANGER'],
                             ],
                         ],
                     ],
@@ -83,7 +83,7 @@ final class CardsTest extends TestCase
                             'label' => 'Pets Name',
                             'name' => 'pet_name',
                             'options' => [
-                                ['label' => 'label', 'name' => 'name', 'type' => 'DEFAULT'],
+                                ['label' => 'label', 'name' => 'name', 'type' => 'DANGER'],
                             ],
                         ],
                     ],

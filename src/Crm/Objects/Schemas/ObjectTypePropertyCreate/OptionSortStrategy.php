@@ -9,7 +9,7 @@ namespace HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate;
  */
 enum OptionSortStrategy: string
 {
-    case DISPLAY_ORDER = 'DISPLAY_ORDER';
-
     case ALPHABETICAL = 'ALPHABETICAL';
+
+    case DISPLAY_ORDER = 'DISPLAY_ORDER';
 }

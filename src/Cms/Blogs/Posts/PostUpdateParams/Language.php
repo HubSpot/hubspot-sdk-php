@@ -327,8 +327,6 @@ enum Language: string
 
     case EN_ER = 'en-er';
 
-    case EN_FR = 'en-fr';
-
     case EN_FI = 'en-fi';
 
     case EN_FJ = 'en-fj';
@@ -336,6 +334,8 @@ enum Language: string
     case EN_FK = 'en-fk';
 
     case EN_FM = 'en-fm';
+
+    case EN_FR = 'en-fr';
 
     case EN_GB = 'en-gb';
 
@@ -759,6 +759,8 @@ enum Language: string
 
     case HE = 'he';
 
+    case HE_IL = 'he-il';
+
     case HI = 'hi';
 
     case HI_IN = 'hi-in';
@@ -787,6 +789,8 @@ enum Language: string
 
     case ID = 'id';
 
+    case ID_ID = 'id-id';
+
     case IG = 'ig';
 
     case IG_NG = 'ig-ng';
@@ -794,8 +798,6 @@ enum Language: string
     case II = 'ii';
 
     case II_CN = 'ii-cn';
-
-    case ID_ID = 'id-id';
 
     case IS = 'is';
 
@@ -811,8 +813,6 @@ enum Language: string
 
     case IT_VA = 'it-va';
 
-    case HE_IL = 'he-il';
-
     case JA = 'ja';
 
     case JA_JP = 'ja-jp';
@@ -820,10 +820,6 @@ enum Language: string
     case JGO = 'jgo';
 
     case JGO_CM = 'jgo-cm';
-
-    case YI = 'yi';
-
-    case YI_001 = 'yi-001';
 
     case JMC = 'jmc';
 
@@ -911,13 +907,13 @@ enum Language: string
 
     case KSH_DE = 'ksh-de';
 
-    case KW = 'kw';
-
-    case KW_GB = 'kw-gb';
-
     case KU = 'ku';
 
     case KU_TR = 'ku-tr';
+
+    case KW = 'kw';
+
+    case KW_GB = 'kw-gb';
 
     case KY = 'ky';
 
@@ -1091,9 +1087,9 @@ enum Language: string
 
     case NL_BE = 'nl-be';
 
-    case NL_CH = 'nl-ch';
-
     case NL_BQ = 'nl-bq';
+
+    case NL_CH = 'nl-ch';
 
     case NL_CW = 'nl-cw';
 
@@ -1485,6 +1481,10 @@ enum Language: string
 
     case YAV_CM = 'yav-cm';
 
+    case YI = 'yi';
+
+    case YI_001 = 'yi-001';
+
     case YO = 'yo';
 
     case YO_BJ = 'yo-bj';
@@ -1505,6 +1505,10 @@ enum Language: string
 
     case ZH_CN = 'zh-cn';
 
+    case ZH_HANS = 'zh-hans';
+
+    case ZH_HANT = 'zh-hant';
+
     case ZH_HK = 'zh-hk';
 
     case ZH_MO = 'zh-mo';
@@ -1512,10 +1516,6 @@ enum Language: string
     case ZH_SG = 'zh-sg';
 
     case ZH_TW = 'zh-tw';
-
-    case ZH_HANS = 'zh-hans';
-
-    case ZH_HANT = 'zh-hant';
 
     case ZU = 'zu';
 

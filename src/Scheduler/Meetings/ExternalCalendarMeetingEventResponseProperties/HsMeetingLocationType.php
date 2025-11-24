@@ -6,9 +6,9 @@ namespace HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProp
 
 enum HsMeetingLocationType: string
 {
-    case PHONE = 'PHONE';
-
     case ADDRESS = 'ADDRESS';
 
     case CUSTOM = 'CUSTOM';
+
+    case PHONE = 'PHONE';
 }

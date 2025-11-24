@@ -69,7 +69,11 @@ final class DomainListParams implements BaseModel
     #[Api(optional: true)]
     public ?int $limit;
 
-    /** @var list<string>|null $sort */
+    /**
+     * Specifies the order in which the domains are returned.
+     *
+     * @var list<string>|null $sort
+     */
     #[Api(list: 'string', optional: true)]
     public ?array $sort;
 
@@ -198,6 +202,8 @@ final class DomainListParams implements BaseModel
     }
 
     /**
+     * Specifies the order in which the domains are returned.
+     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self

@@ -43,7 +43,7 @@ final class DefinitionsTest extends TestCase
                 'functions' => [
                     [
                         'functionSource' => 'functionSource',
-                        'functionType' => 'PRE_ACTION_EXECUTION',
+                        'functionType' => 'POST_ACTION_EXECUTION',
                     ],
                 ],
                 'inputFields' => [
@@ -55,7 +55,7 @@ final class DefinitionsTest extends TestCase
                             'options' => [
                                 ['hidden' => false, 'label' => 'Option A', 'value' => 'A'],
                             ],
-                            'type' => 'string',
+                            'type' => 'bool',
                         ],
                     ],
                 ],
@@ -82,7 +82,7 @@ final class DefinitionsTest extends TestCase
                 'functions' => [
                     [
                         'functionSource' => 'functionSource',
-                        'functionType' => 'PRE_ACTION_EXECUTION',
+                        'functionType' => 'POST_ACTION_EXECUTION',
                         'id' => 'id',
                     ],
                 ],
@@ -101,14 +101,14 @@ final class DefinitionsTest extends TestCase
                                     'displayOrder' => 1,
                                 ],
                             ],
-                            'type' => 'string',
+                            'type' => 'bool',
                             'description' => 'description',
                             'externalOptionsReferenceType' => 'externalOptionsReferenceType',
                             'fieldType' => 'booleancheckbox',
                             'helpText' => 'helpText',
                             'label' => 'label',
                             'optionsUrl' => 'optionsUrl',
-                            'referencedObjectType' => 'CONTACT',
+                            'referencedObjectType' => 'ABANDONED_CART',
                         ],
                         'automationFieldType' => 'automationFieldType',
                         'supportedValueTypes' => ['STATIC_VALUE'],

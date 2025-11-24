@@ -72,7 +72,7 @@ final class BatchTest extends TestCase
                         'name' => 'name',
                         'type' => 'bool',
                         'calculationFormula' => 'calculationFormula',
-                        'dataSensitivity' => 'non_sensitive',
+                        'dataSensitivity' => 'highly_sensitive',
                         'description' => 'description',
                         'displayOrder' => 0,
                         'externalOptions' => true,
@@ -138,7 +138,7 @@ final class BatchTest extends TestCase
             'objectType',
             [
                 'archived' => true,
-                'dataSensitivity' => 'non_sensitive',
+                'dataSensitivity' => 'highly_sensitive',
                 'inputs' => [['name' => 'name']],
             ],
         );
@@ -157,7 +157,7 @@ final class BatchTest extends TestCase
             'objectType',
             [
                 'archived' => true,
-                'dataSensitivity' => 'non_sensitive',
+                'dataSensitivity' => 'highly_sensitive',
                 'inputs' => [['name' => 'name']],
             ],
         );

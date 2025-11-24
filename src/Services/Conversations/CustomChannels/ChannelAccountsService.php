@@ -9,8 +9,8 @@ use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountCreate
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountGetParams;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
-use HubspotSDK\Conversations\PublicChannelAccount;
-use HubspotSDK\Conversations\PublicDeliveryIdentifier;
+use HubspotSDK\Conversations\CustomChannels\PublicChannelAccount;
+use HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;

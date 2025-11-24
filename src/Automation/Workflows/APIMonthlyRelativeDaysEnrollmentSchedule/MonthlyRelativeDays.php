@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Workflows\APIMonthlyRelativeDaysEnrollmentSchedu
 
 enum MonthlyRelativeDays: string
 {
-    case LAST_DAY_OF_MONTH = 'LAST_DAY_OF_MONTH';
-
     case FIRST_MONDAY_OF_MONTH = 'FIRST_MONDAY_OF_MONTH';
+
+    case LAST_DAY_OF_MONTH = 'LAST_DAY_OF_MONTH';
 }

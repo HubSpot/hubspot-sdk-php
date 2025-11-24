@@ -9,11 +9,11 @@ namespace HubspotSDK\Files\Files\FileGetSignedURLParams;
  */
 enum Size: string
 {
-    case THUMB = 'thumb';
-
     case ICON = 'icon';
 
     case MEDIUM = 'medium';
 
     case PREVIEW = 'preview';
+
+    case THUMB = 'thumb';
 }

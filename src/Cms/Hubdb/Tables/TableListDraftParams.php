@@ -47,6 +47,9 @@ final class TableListDraftParams implements BaseModel
     #[Api(optional: true)]
     public ?bool $archived;
 
+    /**
+     * Specifies the content type for the response.
+     */
     #[Api(optional: true)]
     public ?string $contentType;
 
@@ -68,6 +71,9 @@ final class TableListDraftParams implements BaseModel
     #[Api(optional: true)]
     public ?\DateTimeInterface $createdBefore;
 
+    /**
+     * Indicates whether to retrieve the localized schema.
+     */
     #[Api(optional: true)]
     public ?bool $isGetLocalizedSchema;
 
@@ -169,6 +175,9 @@ final class TableListDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Specifies the content type for the response.
+     */
     public function withContentType(string $contentType): self
     {
         $obj = clone $this;
@@ -210,6 +219,9 @@ final class TableListDraftParams implements BaseModel
         return $obj;
     }
 
+    /**
+     * Indicates whether to retrieve the localized schema.
+     */
     public function withIsGetLocalizedSchema(bool $isGetLocalizedSchema): self
     {
         $obj = clone $this;

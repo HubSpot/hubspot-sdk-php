@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\ContactProfile;
 use HubspotSDK\Conversations\CustomChannels\ContactAttachment\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;

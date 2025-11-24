@@ -9,13 +9,13 @@ namespace HubspotSDK\Cms\SiteSearch\ContentSearchResult;
  */
 enum Type: string
 {
-    case LANDING_PAGE = 'LANDING_PAGE';
-
     case BLOG_POST = 'BLOG_POST';
-
-    case SITE_PAGE = 'SITE_PAGE';
 
     case KNOWLEDGE_ARTICLE = 'KNOWLEDGE_ARTICLE';
 
+    case LANDING_PAGE = 'LANDING_PAGE';
+
     case LISTING_PAGE = 'LISTING_PAGE';
+
+    case SITE_PAGE = 'SITE_PAGE';
 }

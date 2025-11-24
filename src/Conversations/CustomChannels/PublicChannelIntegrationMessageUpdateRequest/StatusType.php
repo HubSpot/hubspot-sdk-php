@@ -9,9 +9,9 @@ namespace HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationMessag
  */
 enum StatusType: string
 {
-    case SENT = 'SENT';
-
     case FAILED = 'FAILED';
 
     case READ = 'READ';
+
+    case SENT = 'SENT';
 }
