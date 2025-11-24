@@ -20,6 +20,7 @@ use HubspotSDK\Services\Crm\OwnersService;
 use HubspotSDK\Services\Crm\PipelinesService;
 use HubspotSDK\Services\Crm\PropertiesService;
 use HubspotSDK\Services\Crm\PropertyValidationsService;
+use HubspotSDK\Services\Crm\SubscriptionsService;
 use HubspotSDK\Services\Crm\TimelineService;
 use HubspotSDK\Services\Crm\UsersService;
 
@@ -98,6 +99,11 @@ final class CrmService implements CrmContract
     /**
      * @api
      */
+    public SubscriptionsService $subscriptions;
+
+    /**
+     * @api
+     */
     public TimelineService $timeline;
 
     /**
@@ -124,6 +130,7 @@ final class CrmService implements CrmContract
         $this->pipelines = new PipelinesService($client);
         $this->properties = new PropertiesService($client);
         $this->propertyValidations = new PropertyValidationsService($client);
+        $this->subscriptions = new SubscriptionsService($client);
         $this->timeline = new TimelineService($client);
         $this->users = new UsersService($client);
     }
