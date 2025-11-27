@@ -38,6 +38,7 @@ final class AppUninstallsTest extends TestCase
 
         $result = $this->client->crm->appUninstalls->uninstall();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

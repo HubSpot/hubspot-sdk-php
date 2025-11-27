@@ -3,6 +3,8 @@
 namespace Tests\Services\Conversations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\PublicThread;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,8 @@ final class ThreadsTest extends TestCase
 
         $result = $this->client->conversations->threads->update(0, []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicThread::class, $result);
     }
 
     #[Test]
@@ -50,7 +53,8 @@ final class ThreadsTest extends TestCase
 
         $result = $this->client->conversations->threads->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -62,7 +66,8 @@ final class ThreadsTest extends TestCase
 
         $result = $this->client->conversations->threads->delete(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -74,6 +79,7 @@ final class ThreadsTest extends TestCase
 
         $result = $this->client->conversations->threads->get(0, []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicThread::class, $result);
     }
 }

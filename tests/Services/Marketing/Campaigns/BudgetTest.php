@@ -3,6 +3,8 @@
 namespace Tests\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Campaigns\PublicBudgetItem;
+use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +43,8 @@ final class BudgetTest extends TestCase
             ['amount' => 0, 'name' => 'name', 'order' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicBudgetItem::class, $result);
     }
 
     #[Test]
@@ -53,10 +56,16 @@ final class BudgetTest extends TestCase
 
         $result = $this->client->marketing->campaigns->budget->create(
             'campaignGuid',
-            ['amount' => 0, 'name' => 'name', 'order' => 0]
+            [
+                'amount' => 0,
+                'name' => 'name',
+                'order' => 0,
+                'description' => 'description',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicBudgetItem::class, $result);
     }
 
     #[Test]
@@ -76,7 +85,8 @@ final class BudgetTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicBudgetItem::class, $result);
     }
 
     #[Test]
@@ -93,10 +103,12 @@ final class BudgetTest extends TestCase
                 'amount' => 0,
                 'name' => 'name',
                 'order' => 0,
+                'description' => 'description',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicBudgetItem::class, $result);
     }
 
     #[Test]
@@ -111,7 +123,8 @@ final class BudgetTest extends TestCase
             ['campaignGuid' => 'campaignGuid']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -126,7 +139,8 @@ final class BudgetTest extends TestCase
             ['campaignGuid' => 'campaignGuid']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -141,7 +155,8 @@ final class BudgetTest extends TestCase
             ['campaignGuid' => 'campaignGuid']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicBudgetItem::class, $result);
     }
 
     #[Test]
@@ -156,7 +171,8 @@ final class BudgetTest extends TestCase
             ['campaignGuid' => 'campaignGuid']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicBudgetItem::class, $result);
     }
 
     #[Test]
@@ -170,6 +186,7 @@ final class BudgetTest extends TestCase
             'campaignGuid'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicBudgetTotals::class, $result);
     }
 }

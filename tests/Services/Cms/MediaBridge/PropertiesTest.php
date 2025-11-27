@@ -2,7 +2,10 @@
 
 namespace Tests\Services\Cms\MediaBridge;
 
+use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
+use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
+use HubspotSDK\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -48,7 +51,8 @@ final class PropertiesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -67,10 +71,29 @@ final class PropertiesTest extends TestCase
                 'label' => 'label',
                 'name' => 'name',
                 'type' => 'bool',
+                'calculationFormula' => 'calculationFormula',
+                'dataSensitivity' => 'highly_sensitive',
+                'description' => 'description',
+                'displayOrder' => 0,
+                'externalOptions' => true,
+                'formField' => true,
+                'hasUniqueValue' => true,
+                'hidden' => true,
+                'options' => [
+                    [
+                        'displayOrder' => 0,
+                        'hidden' => true,
+                        'label' => 'label',
+                        'value' => 'value',
+                        'description' => 'description',
+                    ],
+                ],
+                'referencedObjectType' => 'referencedObjectType',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -85,7 +108,8 @@ final class PropertiesTest extends TestCase
             ['appId' => 0, 'objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -97,10 +121,33 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->update(
             'propertyName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            [
+                'appId' => 0,
+                'objectType' => 'objectType',
+                'calculationFormula' => 'calculationFormula',
+                'description' => 'description',
+                'displayOrder' => 0,
+                'fieldType' => 'booleancheckbox',
+                'formField' => true,
+                'groupName' => 'groupName',
+                'hasUniqueValue' => true,
+                'hidden' => true,
+                'label' => 'label',
+                'options' => [
+                    [
+                        'displayOrder' => 0,
+                        'hidden' => true,
+                        'label' => 'label',
+                        'value' => 'value',
+                        'description' => 'description',
+                    ],
+                ],
+                'type' => 'bool',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -115,7 +162,8 @@ final class PropertiesTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CollectionResponsePropertyNoPaging::class, $result);
     }
 
     #[Test]
@@ -127,10 +175,11 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->list(
             'objectType',
-            ['appId' => 0]
+            ['appId' => 0, 'archived' => true, 'properties' => 'properties'],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CollectionResponsePropertyNoPaging::class, $result);
     }
 
     #[Test]
@@ -145,7 +194,8 @@ final class PropertiesTest extends TestCase
             ['appId' => 0, 'objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -160,7 +210,8 @@ final class PropertiesTest extends TestCase
             ['appId' => 0, 'objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -186,7 +237,8 @@ final class PropertiesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseProperty::class, $result);
     }
 
     #[Test]
@@ -230,7 +282,8 @@ final class PropertiesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseProperty::class, $result);
     }
 
     #[Test]
@@ -245,7 +298,8 @@ final class PropertiesTest extends TestCase
             ['appId' => 0, 'inputs' => [['name' => 'name']]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -260,7 +314,8 @@ final class PropertiesTest extends TestCase
             ['appId' => 0, 'inputs' => [['name' => 'name']]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -275,7 +330,8 @@ final class PropertiesTest extends TestCase
             ['appId' => 0, 'objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -287,10 +343,16 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->get(
             'propertyName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            [
+                'appId' => 0,
+                'objectType' => 'objectType',
+                'archived' => true,
+                'properties' => 'properties',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -310,7 +372,8 @@ final class PropertiesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseProperty::class, $result);
     }
 
     #[Test]
@@ -330,6 +393,7 @@ final class PropertiesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseProperty::class, $result);
     }
 }

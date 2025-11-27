@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -48,7 +49,8 @@ final class RecordingSettingsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
     }
 
     #[Test]
@@ -70,7 +72,8 @@ final class RecordingSettingsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
     }
 
     #[Test]
@@ -89,7 +92,8 @@ final class RecordingSettingsTest extends TestCase
             ->update(0, [])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
     }
 
     #[Test]
@@ -103,7 +107,8 @@ final class RecordingSettingsTest extends TestCase
             0
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
     }
 
     #[Test]
@@ -122,7 +127,8 @@ final class RecordingSettingsTest extends TestCase
             ->markReady(['engagementId' => 0])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -141,6 +147,7 @@ final class RecordingSettingsTest extends TestCase
             ->markReady(['engagementId' => 0])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

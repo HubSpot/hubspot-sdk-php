@@ -3,6 +3,9 @@
 namespace Tests\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Blogs\Tags\BatchResponseTag;
+use HubspotSDK\Cms\Blogs\Tags\Tag;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -46,7 +49,8 @@ final class TagsTest extends TestCase
             'updated' => '2019-12-27T18:11:19.117Z',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Tag::class, $result);
     }
 
     #[Test]
@@ -66,7 +70,8 @@ final class TagsTest extends TestCase
             'updated' => '2019-12-27T18:11:19.117Z',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Tag::class, $result);
     }
 
     #[Test]
@@ -89,7 +94,8 @@ final class TagsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Tag::class, $result);
     }
 
     #[Test]
@@ -109,10 +115,12 @@ final class TagsTest extends TestCase
                 'name' => 'name',
                 'translatedFromId' => 0,
                 'updated' => '2019-12-27T18:11:19.117Z',
+                'archived' => true,
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Tag::class, $result);
     }
 
     #[Test]
@@ -124,7 +132,8 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -136,7 +145,8 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->delete('objectId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -150,7 +160,8 @@ final class TagsTest extends TestCase
             'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -161,10 +172,14 @@ final class TagsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->tags->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
+            'id' => 'id',
+            'language' => 'language',
+            'primaryId' => 'primaryId',
+            'primaryLanguage' => 'primaryLanguage',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -188,7 +203,8 @@ final class TagsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseTag::class, $result);
     }
 
     #[Test]
@@ -212,7 +228,8 @@ final class TagsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseTag::class, $result);
     }
 
     #[Test]
@@ -226,7 +243,8 @@ final class TagsTest extends TestCase
             'id' => 'id', 'name' => 'name',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Tag::class, $result);
     }
 
     #[Test]
@@ -237,10 +255,14 @@ final class TagsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->tags->createLangVariation([
-            'id' => 'id', 'name' => 'name',
+            'id' => 'id',
+            'name' => 'name',
+            'language' => 'language',
+            'primaryLanguage' => 'primaryLanguage',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Tag::class, $result);
     }
 
     #[Test]
@@ -254,7 +276,8 @@ final class TagsTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -268,7 +291,8 @@ final class TagsTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -282,7 +306,8 @@ final class TagsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -296,7 +321,8 @@ final class TagsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -308,7 +334,8 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->get('objectId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Tag::class, $result);
     }
 
     #[Test]
@@ -322,7 +349,8 @@ final class TagsTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseTag::class, $result);
     }
 
     #[Test]
@@ -333,10 +361,11 @@ final class TagsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->tags->getBatch([
-            'inputs' => ['string'],
+            'inputs' => ['string'], 'archived' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseTag::class, $result);
     }
 
     #[Test]
@@ -348,7 +377,8 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->setLangPrimary(['id' => 'id']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -360,7 +390,8 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->setLangPrimary(['id' => 'id']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -372,7 +403,8 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->updateBatch(['inputs' => [[]]]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseTag::class, $result);
     }
 
     #[Test]
@@ -382,9 +414,12 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->updateBatch(['inputs' => [[]]]);
+        $result = $this->client->cms->blogs->tags->updateBatch([
+            'inputs' => [[]], 'archived' => true,
+        ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseTag::class, $result);
     }
 
     #[Test]
@@ -398,7 +433,8 @@ final class TagsTest extends TestCase
             'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -412,6 +448,7 @@ final class TagsTest extends TestCase
             'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

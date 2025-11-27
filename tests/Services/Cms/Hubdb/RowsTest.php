@@ -3,6 +3,8 @@
 namespace Tests\Services\Cms\Hubdb;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +43,8 @@ final class RowsTest extends TestCase
             ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -53,10 +56,17 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->create(
             'tableIdOrName',
-            ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
+            [
+                'childTableId' => 0,
+                'displayIndex' => 0,
+                'values' => ['foo' => []],
+                'name' => 'name',
+                'path' => 'path',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -68,7 +78,8 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->list('tableIdOrName', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -83,7 +94,8 @@ final class RowsTest extends TestCase
             ['tableIdOrName' => 'tableIdOrName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -95,10 +107,11 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->cloneDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName']
+            ['tableIdOrName' => 'tableIdOrName', 'name' => 'name']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -113,7 +126,8 @@ final class RowsTest extends TestCase
             ['tableIdOrName' => 'tableIdOrName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -128,7 +142,8 @@ final class RowsTest extends TestCase
             ['tableIdOrName' => 'tableIdOrName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -143,7 +158,8 @@ final class RowsTest extends TestCase
             ['tableIdOrName' => 'tableIdOrName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -155,10 +171,11 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->get(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName']
+            ['tableIdOrName' => 'tableIdOrName', 'archived' => true]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -173,7 +190,8 @@ final class RowsTest extends TestCase
             ['tableIdOrName' => 'tableIdOrName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -185,10 +203,11 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->getDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName']
+            ['tableIdOrName' => 'tableIdOrName', 'archived' => true]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -200,7 +219,8 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->listDraft('tableIdOrName', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -220,7 +240,8 @@ final class RowsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -237,10 +258,13 @@ final class RowsTest extends TestCase
                 'childTableId' => 0,
                 'displayIndex' => 0,
                 'values' => ['foo' => []],
+                'name' => 'name',
+                'path' => 'path',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -260,7 +284,8 @@ final class RowsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -277,9 +302,12 @@ final class RowsTest extends TestCase
                 'childTableId' => 0,
                 'displayIndex' => 0,
                 'values' => ['foo' => []],
+                'name' => 'name',
+                'path' => 'path',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableRowV3::class, $result);
     }
 }

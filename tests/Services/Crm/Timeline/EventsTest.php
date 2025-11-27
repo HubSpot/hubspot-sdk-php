@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Timeline\EventDetail;
+use HubspotSDK\Crm\Timeline\TimelineEventResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -43,7 +45,8 @@ final class EventsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventResponse::class, $result);
     }
 
     #[Test]
@@ -58,9 +61,29 @@ final class EventsTest extends TestCase
             'tokens' => [
                 'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
             ],
+            'id' => 'id',
+            'domain' => 'domain',
+            'email' => 'art3mis-pup@petspot.com',
+            'extraData' => [
+                'questions' => [
+                    ['answer' => 'Bark!', 'question' => 'Who\'s a good girl?'],
+                    ['answer' => 'Woof!', 'question' => 'Do you wanna go on a walk?'],
+                ],
+            ],
+            'objectId' => 'objectId',
+            'timelineIFrame' => [
+                'headerLabel' => 'Art3mis dog',
+                'height' => 400,
+                'linkLabel' => 'View Art3mis',
+                'url' => 'https://my.petspot.com/pets/Art3mis',
+                'width' => 600,
+            ],
+            'timestamp' => '2019-12-27T18:11:19.117Z',
+            'utk' => 'utk',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventResponse::class, $result);
     }
 
     #[Test]
@@ -87,7 +110,8 @@ final class EventsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -155,7 +179,8 @@ final class EventsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -170,7 +195,8 @@ final class EventsTest extends TestCase
             ['eventTemplateId' => 'eventTemplateId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventResponse::class, $result);
     }
 
     #[Test]
@@ -185,7 +211,8 @@ final class EventsTest extends TestCase
             ['eventTemplateId' => 'eventTemplateId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventResponse::class, $result);
     }
 
     #[Test]
@@ -200,7 +227,8 @@ final class EventsTest extends TestCase
             ['eventTemplateId' => 'eventTemplateId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventDetail::class, $result);
     }
 
     #[Test]
@@ -215,6 +243,7 @@ final class EventsTest extends TestCase
             ['eventTemplateId' => 'eventTemplateId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventDetail::class, $result);
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Tests\Services\Automation;
 
+use HubspotSDK\Automation\Sequences\PublicSequenceResponse;
 use HubspotSDK\Client;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +42,8 @@ final class SequencesTest extends TestCase
             'userId' => 'userId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -51,10 +54,11 @@ final class SequencesTest extends TestCase
         }
 
         $result = $this->client->automation->sequences->list([
-            'userId' => 'userId',
+            'userId' => 'userId', 'after' => 'after', 'limit' => 0, 'name' => 'name',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -69,7 +73,8 @@ final class SequencesTest extends TestCase
             ['userId' => 'userId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSequenceResponse::class, $result);
     }
 
     #[Test]
@@ -84,6 +89,7 @@ final class SequencesTest extends TestCase
             ['userId' => 'userId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSequenceResponse::class, $result);
     }
 }

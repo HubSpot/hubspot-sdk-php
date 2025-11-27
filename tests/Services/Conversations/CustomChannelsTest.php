@@ -3,6 +3,8 @@
 namespace Tests\Services\Conversations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +42,8 @@ final class CustomChannelsTest extends TestCase
             'capabilities' => ['foo' => []], 'name' => 'name',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelIntegrationChannel::class, $result);
     }
 
     #[Test]
@@ -51,10 +54,16 @@ final class CustomChannelsTest extends TestCase
         }
 
         $result = $this->client->conversations->customChannels->create([
-            'capabilities' => ['foo' => []], 'name' => 'name',
+            'capabilities' => ['foo' => []],
+            'name' => 'name',
+            'channelAccountConnectionRedirectUrl' => 'channelAccountConnectionRedirectUrl',
+            'channelDescription' => 'channelDescription',
+            'channelLogoUrl' => 'channelLogoUrl',
+            'webhookUrl' => 'webhookUrl',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelIntegrationChannel::class, $result);
     }
 
     #[Test]
@@ -76,7 +85,8 @@ final class CustomChannelsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelIntegrationChannel::class, $result);
     }
 
     #[Test]
@@ -98,7 +108,8 @@ final class CustomChannelsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelIntegrationChannel::class, $result);
     }
 
     #[Test]
@@ -110,7 +121,8 @@ final class CustomChannelsTest extends TestCase
 
         $result = $this->client->conversations->customChannels->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -122,7 +134,8 @@ final class CustomChannelsTest extends TestCase
 
         $result = $this->client->conversations->customChannels->delete(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -134,6 +147,7 @@ final class CustomChannelsTest extends TestCase
 
         $result = $this->client->conversations->customChannels->get(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelIntegrationChannel::class, $result);
     }
 }

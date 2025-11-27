@@ -3,6 +3,8 @@
 namespace Tests\Services;
 
 use HubspotSDK\Client;
+use HubspotSDK\Events\VisibleExternalEventTypeNames;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,8 @@ final class EventsTest extends TestCase
 
         $result = $this->client->events->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -50,6 +53,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->events->listEventTypes();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VisibleExternalEventTypeNames::class, $result);
     }
 }

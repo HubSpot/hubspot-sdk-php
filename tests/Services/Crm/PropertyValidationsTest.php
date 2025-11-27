@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleMapNoPaging;
+use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleNoPaging;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,11 @@ final class PropertyValidationsTest extends TestCase
 
         $result = $this->client->crm->propertyValidations->list('objectTypeId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicPropertyValidationRuleMapNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -62,7 +68,8 @@ final class PropertyValidationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -86,7 +93,8 @@ final class PropertyValidationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -101,7 +109,11 @@ final class PropertyValidationsTest extends TestCase
             ['objectTypeId' => 'objectTypeId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicPropertyValidationRuleNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -116,6 +128,10 @@ final class PropertyValidationsTest extends TestCase
             ['objectTypeId' => 'objectTypeId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicPropertyValidationRuleNoPaging::class,
+            $result
+        );
     }
 }

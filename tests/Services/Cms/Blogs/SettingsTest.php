@@ -3,6 +3,9 @@
 namespace Tests\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Blogs\Settings\Blog;
+use HubspotSDK\Cms\Blogs\Settings\VersionBlog;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +41,8 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->cms->blogs->settings->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -52,7 +56,8 @@ final class SettingsTest extends TestCase
             'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -63,10 +68,14 @@ final class SettingsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->settings->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
+            'id' => 'id',
+            'language' => 'language',
+            'primaryId' => 'primaryId',
+            'primaryLanguage' => 'primaryLanguage',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -80,7 +89,8 @@ final class SettingsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Blog::class, $result);
     }
 
     #[Test]
@@ -92,9 +102,13 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->cms->blogs->settings->createLanguageVariation([
             'id' => 'id',
+            'language' => 'language',
+            'primaryLanguage' => 'primaryLanguage',
+            'slug' => 'slug',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Blog::class, $result);
     }
 
     #[Test]
@@ -108,7 +122,8 @@ final class SettingsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -122,7 +137,8 @@ final class SettingsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -134,7 +150,8 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->cms->blogs->settings->get('blogId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Blog::class, $result);
     }
 
     #[Test]
@@ -149,7 +166,8 @@ final class SettingsTest extends TestCase
             ['blogId' => 'blogId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VersionBlog::class, $result);
     }
 
     #[Test]
@@ -164,7 +182,8 @@ final class SettingsTest extends TestCase
             ['blogId' => 'blogId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VersionBlog::class, $result);
     }
 
     #[Test]
@@ -176,7 +195,8 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->cms->blogs->settings->listRevisions('blogId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -190,7 +210,8 @@ final class SettingsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -204,7 +225,8 @@ final class SettingsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -218,7 +240,8 @@ final class SettingsTest extends TestCase
             'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -232,6 +255,7 @@ final class SettingsTest extends TestCase
             'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

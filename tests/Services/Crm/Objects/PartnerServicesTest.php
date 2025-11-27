@@ -3,6 +3,10 @@
 namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\SimplePublicObject;
+use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +45,8 @@ final class PartnerServicesTest extends TestCase
             ['properties' => ['foo' => 'string']]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -53,10 +58,11 @@ final class PartnerServicesTest extends TestCase
 
         $result = $this->client->crm->objects->partnerServices->update(
             'partnerServiceId',
-            ['properties' => ['foo' => 'string']]
+            ['properties' => ['foo' => 'string'], 'idProperty' => 'idProperty'],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -68,7 +74,8 @@ final class PartnerServicesTest extends TestCase
 
         $result = $this->client->crm->objects->partnerServices->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -83,7 +90,8 @@ final class PartnerServicesTest extends TestCase
             []
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
     }
 
     #[Test]
@@ -107,7 +115,11 @@ final class PartnerServicesTest extends TestCase
             'sorts' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseWithTotalSimplePublicObject::class,
+            $result
+        );
     }
 
     #[Test]
@@ -135,8 +147,13 @@ final class PartnerServicesTest extends TestCase
             'limit' => 0,
             'properties' => ['string'],
             'sorts' => ['string'],
+            'query' => 'query',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseWithTotalSimplePublicObject::class,
+            $result
+        );
     }
 }

@@ -3,6 +3,7 @@
 namespace Tests\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Campaigns\CollectionResponsePublicCampaignAssetForwardPaging;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +42,8 @@ final class AssetsTest extends TestCase
             ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -56,7 +58,8 @@ final class AssetsTest extends TestCase
             ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -71,7 +74,11 @@ final class AssetsTest extends TestCase
             ['campaignGuid' => 'campaignGuid']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicCampaignAssetForwardPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -83,10 +90,20 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->list(
             'assetType',
-            ['campaignGuid' => 'campaignGuid']
+            [
+                'campaignGuid' => 'campaignGuid',
+                'after' => 'after',
+                'endDate' => 'endDate',
+                'limit' => 'limit',
+                'startDate' => 'startDate',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicCampaignAssetForwardPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -101,7 +118,8 @@ final class AssetsTest extends TestCase
             ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -116,6 +134,7 @@ final class AssetsTest extends TestCase
             ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

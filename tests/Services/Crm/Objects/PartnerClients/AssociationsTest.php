@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\Objects\PartnerClients;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -45,7 +47,8 @@ final class AssociationsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
     }
 
     #[Test]
@@ -64,7 +67,8 @@ final class AssociationsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
     }
 
     #[Test]
@@ -79,7 +83,8 @@ final class AssociationsTest extends TestCase
             ['partnerClientId' => 'partnerClientId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -91,10 +96,16 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->partnerClients->associations->list(
             'toObjectType',
-            ['partnerClientId' => 'partnerClientId']
+            [
+                'partnerClientId' => 'partnerClientId',
+                'after' => 'after',
+                'includeFA' => true,
+                'limit' => 0,
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -113,7 +124,8 @@ final class AssociationsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -132,6 +144,7 @@ final class AssociationsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

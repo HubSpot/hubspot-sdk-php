@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Associations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Associations\Schema\CollectionResponsePublicAssociationDefinitionNoPaging;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +42,11 @@ final class SchemaTest extends TestCase
             ['fromObjectType' => 'fromObjectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicAssociationDefinitionNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -56,6 +61,10 @@ final class SchemaTest extends TestCase
             ['fromObjectType' => 'fromObjectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicAssociationDefinitionNoPaging::class,
+            $result
+        );
     }
 }

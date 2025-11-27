@@ -38,7 +38,8 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->crm->subscriptions->cancel(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -50,7 +51,8 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->crm->subscriptions->pause(0, []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -65,7 +67,8 @@ final class SubscriptionsTest extends TestCase
             ['proposedNextBillingDate' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -80,6 +83,7 @@ final class SubscriptionsTest extends TestCase
             ['proposedNextBillingDate' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 }

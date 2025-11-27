@@ -3,6 +3,9 @@
 namespace Tests\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Blogs\Authors\BatchResponseBlogAuthor;
+use HubspotSDK\Cms\Blogs\Authors\BlogAuthor;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -56,7 +59,8 @@ final class AuthorsTest extends TestCase
             'website' => 'website',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BlogAuthor::class, $result);
     }
 
     #[Test]
@@ -86,7 +90,8 @@ final class AuthorsTest extends TestCase
             'website' => 'website',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BlogAuthor::class, $result);
     }
 
     #[Test]
@@ -119,7 +124,8 @@ final class AuthorsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BlogAuthor::class, $result);
     }
 
     #[Test]
@@ -149,10 +155,12 @@ final class AuthorsTest extends TestCase
                 'twitter' => 'twitter',
                 'updated' => '2019-12-27T18:11:19.117Z',
                 'website' => 'website',
+                'archived' => true,
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BlogAuthor::class, $result);
     }
 
     #[Test]
@@ -164,7 +172,8 @@ final class AuthorsTest extends TestCase
 
         $result = $this->client->cms->blogs->authors->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -176,7 +185,8 @@ final class AuthorsTest extends TestCase
 
         $result = $this->client->cms->blogs->authors->delete('objectId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -190,7 +200,8 @@ final class AuthorsTest extends TestCase
             'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -201,10 +212,14 @@ final class AuthorsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->authors->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
+            'id' => 'id',
+            'language' => 'language',
+            'primaryId' => 'primaryId',
+            'primaryLanguage' => 'primaryLanguage',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -238,7 +253,8 @@ final class AuthorsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogAuthor::class, $result);
     }
 
     #[Test]
@@ -272,7 +288,8 @@ final class AuthorsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogAuthor::class, $result);
     }
 
     #[Test]
@@ -305,7 +322,8 @@ final class AuthorsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BlogAuthor::class, $result);
     }
 
     #[Test]
@@ -336,9 +354,12 @@ final class AuthorsTest extends TestCase
                 'updated' => '2019-12-27T18:11:19.117Z',
                 'website' => 'website',
             ],
+            'language' => 'language',
+            'primaryLanguage' => 'primaryLanguage',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BlogAuthor::class, $result);
     }
 
     #[Test]
@@ -352,7 +373,8 @@ final class AuthorsTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -366,7 +388,8 @@ final class AuthorsTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -380,7 +403,8 @@ final class AuthorsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -394,7 +418,8 @@ final class AuthorsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -406,7 +431,8 @@ final class AuthorsTest extends TestCase
 
         $result = $this->client->cms->blogs->authors->get('objectId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BlogAuthor::class, $result);
     }
 
     #[Test]
@@ -420,7 +446,8 @@ final class AuthorsTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogAuthor::class, $result);
     }
 
     #[Test]
@@ -431,10 +458,11 @@ final class AuthorsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->authors->getBatch([
-            'inputs' => ['string'],
+            'inputs' => ['string'], 'archived' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogAuthor::class, $result);
     }
 
     #[Test]
@@ -448,7 +476,8 @@ final class AuthorsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -462,7 +491,8 @@ final class AuthorsTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -476,7 +506,8 @@ final class AuthorsTest extends TestCase
             'inputs' => [[]],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogAuthor::class, $result);
     }
 
     #[Test]
@@ -487,10 +518,11 @@ final class AuthorsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->authors->updateBatch([
-            'inputs' => [[]],
+            'inputs' => [[]], 'archived' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogAuthor::class, $result);
     }
 
     #[Test]
@@ -504,7 +536,8 @@ final class AuthorsTest extends TestCase
             'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -518,6 +551,7 @@ final class AuthorsTest extends TestCase
             'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

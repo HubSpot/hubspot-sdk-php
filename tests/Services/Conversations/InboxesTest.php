@@ -3,6 +3,8 @@
 namespace Tests\Services\Conversations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\PublicInbox;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,8 @@ final class InboxesTest extends TestCase
 
         $result = $this->client->conversations->inboxes->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -50,6 +53,7 @@ final class InboxesTest extends TestCase
 
         $result = $this->client->conversations->inboxes->get(0, []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicInbox::class, $result);
     }
 }

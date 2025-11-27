@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\Associations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Associations\BatchResponsePublicAssociation;
+use HubspotSDK\Crm\Associations\BatchResponsePublicAssociationMulti;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -50,7 +52,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePublicAssociation::class, $result);
     }
 
     #[Test]
@@ -74,7 +77,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePublicAssociation::class, $result);
     }
 
     #[Test]
@@ -98,7 +102,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -122,7 +127,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -137,7 +143,11 @@ final class BatchTest extends TestCase
             ['fromObjectType' => 'fromObjectType', 'inputs' => [['id' => '37295']]],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicAssociationMulti::class,
+            $result
+        );
     }
 
     #[Test]
@@ -152,6 +162,10 @@ final class BatchTest extends TestCase
             ['fromObjectType' => 'fromObjectType', 'inputs' => [['id' => '37295']]],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicAssociationMulti::class,
+            $result
+        );
     }
 }

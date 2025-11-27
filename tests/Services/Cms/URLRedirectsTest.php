@@ -3,6 +3,8 @@
 namespace Tests\Services\Cms;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\URLRedirects\URLMapping;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -42,7 +44,8 @@ final class URLRedirectsTest extends TestCase
             'routePrefix' => 'routePrefix',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(URLMapping::class, $result);
     }
 
     #[Test]
@@ -56,9 +59,17 @@ final class URLRedirectsTest extends TestCase
             'destination' => 'destination',
             'redirectStyle' => 0,
             'routePrefix' => 'routePrefix',
+            'isMatchFullUrl' => true,
+            'isMatchQueryString' => true,
+            'isOnlyAfterNotFound' => true,
+            'isPattern' => true,
+            'isProtocolAgnostic' => true,
+            'isTrailingSlashOptional' => true,
+            'precedence' => 0,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(URLMapping::class, $result);
     }
 
     #[Test]
@@ -85,7 +96,8 @@ final class URLRedirectsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(URLMapping::class, $result);
     }
 
     #[Test]
@@ -109,10 +121,13 @@ final class URLRedirectsTest extends TestCase
                 'precedence' => 0,
                 'redirectStyle' => 0,
                 'routePrefix' => 'routePrefix',
+                'created' => '2019-12-27T18:11:19.117Z',
+                'updated' => '2019-12-27T18:11:19.117Z',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(URLMapping::class, $result);
     }
 
     #[Test]
@@ -124,7 +139,8 @@ final class URLRedirectsTest extends TestCase
 
         $result = $this->client->cms->urlRedirects->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -136,7 +152,8 @@ final class URLRedirectsTest extends TestCase
 
         $result = $this->client->cms->urlRedirects->delete('urlRedirectId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -148,6 +165,7 @@ final class URLRedirectsTest extends TestCase
 
         $result = $this->client->cms->urlRedirects->get('urlRedirectId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(URLMapping::class, $result);
     }
 }

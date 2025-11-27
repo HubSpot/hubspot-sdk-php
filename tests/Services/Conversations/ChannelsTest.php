@@ -3,6 +3,8 @@
 namespace Tests\Services\Conversations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\PublicChannel;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,8 @@ final class ChannelsTest extends TestCase
 
         $result = $this->client->conversations->channels->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -50,6 +53,7 @@ final class ChannelsTest extends TestCase
 
         $result = $this->client->conversations->channels->get(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannel::class, $result);
     }
 }

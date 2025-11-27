@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Associations\Schema\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Associations\Schema\V4\CollectionResponseAssociationSpecWithLabel;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -53,7 +54,11 @@ final class DefinitionsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseAssociationSpecWithLabel::class,
+            $result
+        );
     }
 
     #[Test]
@@ -76,11 +81,16 @@ final class DefinitionsTest extends TestCase
                     'fromObjectType' => 'fromObjectType',
                     'label' => 'label',
                     'name' => 'name',
+                    'inverseLabel' => 'inverseLabel',
                 ],
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseAssociationSpecWithLabel::class,
+            $result
+        );
     }
 
     #[Test]
@@ -103,7 +113,8 @@ final class DefinitionsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -126,7 +137,8 @@ final class DefinitionsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -146,7 +158,11 @@ final class DefinitionsTest extends TestCase
             ->listLabels('toObjectType', ['fromObjectType' => 'fromObjectType'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseAssociationSpecWithLabel::class,
+            $result
+        );
     }
 
     #[Test]
@@ -166,7 +182,11 @@ final class DefinitionsTest extends TestCase
             ->listLabels('toObjectType', ['fromObjectType' => 'fromObjectType'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseAssociationSpecWithLabel::class,
+            $result
+        );
     }
 
     #[Test]
@@ -193,7 +213,8 @@ final class DefinitionsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -216,10 +237,12 @@ final class DefinitionsTest extends TestCase
                     'fromObjectType' => 'fromObjectType',
                     'associationTypeId' => 0,
                     'label' => 'label',
+                    'inverseLabel' => 'inverseLabel',
                 ],
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

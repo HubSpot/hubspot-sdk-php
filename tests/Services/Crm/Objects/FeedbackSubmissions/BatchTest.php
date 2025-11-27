@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Objects\FeedbackSubmissions;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -42,7 +43,8 @@ final class BatchTest extends TestCase
             'propertiesWithHistory' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -56,8 +58,11 @@ final class BatchTest extends TestCase
             'inputs' => [['id' => 'id']],
             'properties' => ['string'],
             'propertiesWithHistory' => ['string'],
+            'archived' => true,
+            'idProperty' => 'idProperty',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 }

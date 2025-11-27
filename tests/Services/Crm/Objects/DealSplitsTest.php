@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +41,8 @@ final class DealSplitsTest extends TestCase
             'inputs' => [['id' => '37295']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseDealToDealSplits::class, $result);
     }
 
     #[Test]
@@ -54,7 +56,8 @@ final class DealSplitsTest extends TestCase
             'inputs' => [['id' => '37295']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseDealToDealSplits::class, $result);
     }
 
     #[Test]
@@ -70,7 +73,8 @@ final class DealSplitsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseDealToDealSplits::class, $result);
     }
 
     #[Test]
@@ -86,6 +90,7 @@ final class DealSplitsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseDealToDealSplits::class, $result);
     }
 }

@@ -3,6 +3,13 @@
 namespace Tests\Services\Cms\MediaBridge;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
+use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
+use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
+use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
+use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
+use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
+use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -44,7 +51,11 @@ final class IntegratorSettingsTest extends TestCase
             ->createObjectDefinition(0, ['mediaTypes' => ['VIDEO']])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BulkIntegratorObjectCreationResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -62,7 +73,11 @@ final class IntegratorSettingsTest extends TestCase
             ->createObjectDefinition(0, ['mediaTypes' => ['VIDEO']])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BulkIntegratorObjectCreationResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -87,7 +102,8 @@ final class IntegratorSettingsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
     }
 
     #[Test]
@@ -108,11 +124,13 @@ final class IntegratorSettingsTest extends TestCase
                     'endpoints' => [
                         'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
                     ],
+                    'portalId' => 0,
                 ],
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
     }
 
     #[Test]
@@ -130,7 +148,8 @@ final class IntegratorSettingsTest extends TestCase
             ->deleteOembedDomain(0, [])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -148,7 +167,8 @@ final class IntegratorSettingsTest extends TestCase
             ->getEventVisibilitySettings(0)
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventVisibilityResponse::class, $result);
     }
 
     #[Test]
@@ -166,7 +186,8 @@ final class IntegratorSettingsTest extends TestCase
             ->getObjectDefinitionsByMediaType('AUDIO', ['appId' => 0])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectDefinitionResponse::class, $result);
     }
 
     #[Test]
@@ -181,10 +202,14 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getObjectDefinitionsByMediaType('AUDIO', ['appId' => 0])
+            ->getObjectDefinitionsByMediaType(
+                'AUDIO',
+                ['appId' => 0, 'includeFullDefinition' => true]
+            )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectDefinitionResponse::class, $result);
     }
 
     #[Test]
@@ -202,7 +227,8 @@ final class IntegratorSettingsTest extends TestCase
             ->getOembedDomain('oEmbedDomainId', ['appId' => 0])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
     }
 
     #[Test]
@@ -220,7 +246,8 @@ final class IntegratorSettingsTest extends TestCase
             ->getOembedDomain('oEmbedDomainId', ['appId' => 0])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
     }
 
     #[Test]
@@ -238,7 +265,8 @@ final class IntegratorSettingsTest extends TestCase
             ->listOembedDomains(0, [])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(OEmbedDomainsCollectionResponse::class, $result);
     }
 
     #[Test]
@@ -256,7 +284,11 @@ final class IntegratorSettingsTest extends TestCase
             ->registerAppName(0, ['updatedAt' => 0])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MediaBridgeProviderRegistrationResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -271,10 +303,14 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->registerAppName(0, ['updatedAt' => 0])
+            ->registerAppName(0, ['updatedAt' => 0, 'name' => 'name'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MediaBridgeProviderRegistrationResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -292,7 +328,11 @@ final class IntegratorSettingsTest extends TestCase
             ->updateAppName(0, ['updatedAt' => 0])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MediaBridgeProviderRegistrationResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -307,10 +347,14 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->updateAppName(0, ['updatedAt' => 0])
+            ->updateAppName(0, ['updatedAt' => 0, 'name' => 'name'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MediaBridgeProviderRegistrationResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -331,7 +375,8 @@ final class IntegratorSettingsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventVisibilityChange::class, $result);
     }
 
     #[Test]
@@ -348,11 +393,18 @@ final class IntegratorSettingsTest extends TestCase
             ->integratorSettings
             ->updateEventVisibilitySettings(
                 0,
-                ['eventType' => 'ALL', 'updatedAt' => 0]
+                [
+                    'eventType' => 'ALL',
+                    'updatedAt' => 0,
+                    'showInReporting' => true,
+                    'showInTimeline' => true,
+                    'showInWorkflows' => true,
+                ],
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventVisibilityChange::class, $result);
     }
 
     #[Test]
@@ -378,7 +430,8 @@ final class IntegratorSettingsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
     }
 
     #[Test]
@@ -400,9 +453,11 @@ final class IntegratorSettingsTest extends TestCase
                     'endpoints' => [
                         'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
                     ],
+                    'portalId' => 0,
                 ],
             );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
     }
 }

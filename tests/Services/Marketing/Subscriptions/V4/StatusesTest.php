@@ -3,6 +3,12 @@
 namespace Tests\Services\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicStatus;
+use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicWideStatus;
+use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicBulkOptOutFromAllResponse;
+use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicStatus;
+use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicStatusBulkResponse;
+use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicWideStatusBulkResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -45,7 +51,11 @@ final class StatusesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ActionResponseWithResultsPublicStatus::class,
+            $result
+        );
     }
 
     #[Test]
@@ -61,10 +71,16 @@ final class StatusesTest extends TestCase
                 'channel' => 'EMAIL',
                 'statusState' => 'NOT_SPECIFIED',
                 'subscriptionId' => 0,
+                'legalBasis' => 'CONSENT_WITH_NOTICE',
+                'legalBasisExplanation' => 'legalBasisExplanation',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ActionResponseWithResultsPublicStatus::class,
+            $result
+        );
     }
 
     #[Test]
@@ -78,7 +94,11 @@ final class StatusesTest extends TestCase
             'channel' => 'EMAIL', 'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicStatusBulkResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -89,10 +109,14 @@ final class StatusesTest extends TestCase
         }
 
         $result = $this->client->marketing->subscriptions->v4->statuses->batchGet([
-            'channel' => 'EMAIL', 'inputs' => ['string'],
+            'channel' => 'EMAIL', 'inputs' => ['string'], 'businessUnitId' => 0,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicStatusBulkResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -113,7 +137,11 @@ final class StatusesTest extends TestCase
             ])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicWideStatusBulkResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -130,11 +158,15 @@ final class StatusesTest extends TestCase
             ->v4
             ->statuses
             ->batchGetUnsubscribeAllStatus([
-                'channel' => 'EMAIL', 'inputs' => ['string'],
+                'channel' => 'EMAIL', 'inputs' => ['string'], 'businessUnitId' => 0,
             ])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicWideStatusBulkResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -153,7 +185,11 @@ final class StatusesTest extends TestCase
             ->batchUnsubscribeAll(['channel' => 'EMAIL', 'inputs' => ['string']])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicBulkOptOutFromAllResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -169,10 +205,19 @@ final class StatusesTest extends TestCase
             ->subscriptions
             ->v4
             ->statuses
-            ->batchUnsubscribeAll(['channel' => 'EMAIL', 'inputs' => ['string']])
+            ->batchUnsubscribeAll([
+                'channel' => 'EMAIL',
+                'inputs' => ['string'],
+                'businessUnitId' => 0,
+                'verbose' => true,
+            ])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicBulkOptOutFromAllResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -200,7 +245,8 @@ final class StatusesTest extends TestCase
             ])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePublicStatus::class, $result);
     }
 
     #[Test]
@@ -230,7 +276,8 @@ final class StatusesTest extends TestCase
             ])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePublicStatus::class, $result);
     }
 
     #[Test]
@@ -245,7 +292,11 @@ final class StatusesTest extends TestCase
             ['channel' => 'EMAIL']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ActionResponseWithResultsPublicStatus::class,
+            $result
+        );
     }
 
     #[Test]
@@ -257,10 +308,14 @@ final class StatusesTest extends TestCase
 
         $result = $this->client->marketing->subscriptions->v4->statuses->get(
             'subscriberIdString',
-            ['channel' => 'EMAIL']
+            ['channel' => 'EMAIL', 'businessUnitId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ActionResponseWithResultsPublicStatus::class,
+            $result
+        );
     }
 
     #[Test]
@@ -279,7 +334,11 @@ final class StatusesTest extends TestCase
             ->getUnsubscribeAllStatus('subscriberIdString', ['channel' => 'EMAIL'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ActionResponseWithResultsPublicWideStatus::class,
+            $result
+        );
     }
 
     #[Test]
@@ -295,10 +354,17 @@ final class StatusesTest extends TestCase
             ->subscriptions
             ->v4
             ->statuses
-            ->getUnsubscribeAllStatus('subscriberIdString', ['channel' => 'EMAIL'])
+            ->getUnsubscribeAllStatus(
+                'subscriberIdString',
+                ['channel' => 'EMAIL', 'businessUnitId' => 0, 'verbose' => true],
+            )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ActionResponseWithResultsPublicWideStatus::class,
+            $result
+        );
     }
 
     #[Test]
@@ -317,7 +383,11 @@ final class StatusesTest extends TestCase
             ->unsubscribeAll('subscriberIdString', ['channel' => 'EMAIL'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ActionResponseWithResultsPublicStatus::class,
+            $result
+        );
     }
 
     #[Test]
@@ -333,8 +403,16 @@ final class StatusesTest extends TestCase
             ->subscriptions
             ->v4
             ->statuses
-            ->unsubscribeAll('subscriberIdString', ['channel' => 'EMAIL']);
+            ->unsubscribeAll(
+                'subscriberIdString',
+                ['channel' => 'EMAIL', 'businessUnitId' => 0, 'verbose' => true],
+            )
+        ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ActionResponseWithResultsPublicStatus::class,
+            $result
+        );
     }
 }

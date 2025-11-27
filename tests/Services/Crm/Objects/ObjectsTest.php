@@ -3,6 +3,11 @@
 namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\SimplePublicObject;
+use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -54,7 +59,8 @@ final class ObjectsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CreatedResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -82,7 +88,8 @@ final class ObjectsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CreatedResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -97,7 +104,8 @@ final class ObjectsTest extends TestCase
             ['objectType' => 'objectType', 'properties' => ['foo' => 'string']],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -109,10 +117,15 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->update(
             'objectId',
-            ['objectType' => 'objectType', 'properties' => ['foo' => 'string']],
+            [
+                'objectType' => 'objectType',
+                'properties' => ['foo' => 'string'],
+                'idProperty' => 'idProperty',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -124,7 +137,8 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->list('objectType', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -139,7 +153,8 @@ final class ObjectsTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -154,7 +169,8 @@ final class ObjectsTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -169,7 +185,8 @@ final class ObjectsTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
     }
 
     #[Test]
@@ -181,10 +198,18 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->get(
             'objectId',
-            ['objectType' => 'objectType']
+            [
+                'objectType' => 'objectType',
+                'archived' => true,
+                'associations' => ['string'],
+                'idProperty' => 'idProperty',
+                'properties' => ['string'],
+                'propertiesWithHistory' => ['string'],
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
     }
 
     #[Test]
@@ -211,7 +236,11 @@ final class ObjectsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseWithTotalSimplePublicObject::class,
+            $result
+        );
     }
 
     #[Test]
@@ -241,9 +270,14 @@ final class ObjectsTest extends TestCase
                 'limit' => 0,
                 'properties' => ['string'],
                 'sorts' => ['string'],
+                'query' => 'query',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseWithTotalSimplePublicObject::class,
+            $result
+        );
     }
 }

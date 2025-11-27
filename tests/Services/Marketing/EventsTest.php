@@ -3,6 +3,16 @@
 namespace Tests\Services\Marketing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponse;
+use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponseV2;
+use HubspotSDK\Marketing\Events\CollectionResponseSearchPublicResponseWrapperNoPaging;
+use HubspotSDK\Marketing\Events\CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging;
+use HubspotSDK\Marketing\Events\MarketingEventDefaultResponse;
+use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponse;
+use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponseV2;
+use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponse;
+use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponseV2;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -66,7 +76,8 @@ final class EventsTest extends TestCase
             'externalEventId' => 'externalEventId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MarketingEventDefaultResponse::class, $result);
     }
 
     #[Test]
@@ -104,9 +115,17 @@ final class EventsTest extends TestCase
             'eventOrganizer' => 'eventOrganizer',
             'externalAccountId' => 'externalAccountId',
             'externalEventId' => 'externalEventId',
+            'endDateTime' => '2019-12-27T18:11:19.117Z',
+            'eventCancelled' => true,
+            'eventCompleted' => true,
+            'eventDescription' => 'eventDescription',
+            'eventType' => 'eventType',
+            'eventUrl' => 'eventUrl',
+            'startDateTime' => '2019-12-27T18:11:19.117Z',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MarketingEventDefaultResponse::class, $result);
     }
 
     #[Test]
@@ -145,7 +164,11 @@ final class EventsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MarketingEventPublicDefaultResponseV2::class,
+            $result
+        );
     }
 
     #[Test]
@@ -181,10 +204,22 @@ final class EventsTest extends TestCase
                         'value' => 'value',
                     ],
                 ],
+                'endDateTime' => '2019-12-27T18:11:19.117Z',
+                'eventCancelled' => true,
+                'eventDescription' => 'eventDescription',
+                'eventName' => 'eventName',
+                'eventOrganizer' => 'eventOrganizer',
+                'eventType' => 'eventType',
+                'eventUrl' => 'eventUrl',
+                'startDateTime' => '2019-12-27T18:11:19.117Z',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MarketingEventPublicDefaultResponseV2::class,
+            $result
+        );
     }
 
     #[Test]
@@ -196,7 +231,8 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -208,7 +244,8 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->delete('objectId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -223,7 +260,8 @@ final class EventsTest extends TestCase
             ['externalAccountId' => 'externalAccountId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MarketingEventDefaultResponse::class, $result);
     }
 
     #[Test]
@@ -238,7 +276,8 @@ final class EventsTest extends TestCase
             ['externalAccountId' => 'externalAccountId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MarketingEventDefaultResponse::class, $result);
     }
 
     #[Test]
@@ -257,7 +296,8 @@ final class EventsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MarketingEventDefaultResponse::class, $result);
     }
 
     #[Test]
@@ -276,7 +316,8 @@ final class EventsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MarketingEventDefaultResponse::class, $result);
     }
 
     #[Test]
@@ -290,7 +331,8 @@ final class EventsTest extends TestCase
             'inputs' => [['objectId' => 'objectId']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -304,7 +346,8 @@ final class EventsTest extends TestCase
             'inputs' => [['objectId' => 'objectId']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -324,7 +367,8 @@ final class EventsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -344,7 +388,8 @@ final class EventsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -359,7 +404,8 @@ final class EventsTest extends TestCase
             ['externalAccountId' => 'externalAccountId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -374,7 +420,8 @@ final class EventsTest extends TestCase
             ['externalAccountId' => 'externalAccountId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -386,7 +433,8 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->get('objectId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MarketingEventPublicReadResponseV2::class, $result);
     }
 
     #[Test]
@@ -401,7 +449,8 @@ final class EventsTest extends TestCase
             ['externalAccountId' => 'externalAccountId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MarketingEventPublicReadResponse::class, $result);
     }
 
     #[Test]
@@ -416,7 +465,8 @@ final class EventsTest extends TestCase
             ['externalAccountId' => 'externalAccountId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MarketingEventPublicReadResponse::class, $result);
     }
 
     #[Test]
@@ -430,7 +480,11 @@ final class EventsTest extends TestCase
             'q' => 'q',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseSearchPublicResponseWrapperNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -444,7 +498,11 @@ final class EventsTest extends TestCase
             'q' => 'q',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseSearchPublicResponseWrapperNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -461,7 +519,11 @@ final class EventsTest extends TestCase
             ->searchIdentifiersByExternalEventID('externalEventId')
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging::class,
+            $result,
+        );
     }
 
     #[Test]
@@ -502,7 +564,11 @@ final class EventsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseMarketingEventPublicDefaultResponseV2::class,
+            $result
+        );
     }
 
     #[Test]
@@ -551,7 +617,11 @@ final class EventsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseMarketingEventPublicDefaultResponseV2::class,
+            $result
+        );
     }
 
     #[Test]
@@ -591,7 +661,11 @@ final class EventsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MarketingEventPublicDefaultResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -628,10 +702,23 @@ final class EventsTest extends TestCase
                         'value' => 'value',
                     ],
                 ],
+                'endDateTime' => '2019-12-27T18:11:19.117Z',
+                'eventCancelled' => true,
+                'eventCompleted' => true,
+                'eventDescription' => 'eventDescription',
+                'eventName' => 'eventName',
+                'eventOrganizer' => 'eventOrganizer',
+                'eventType' => 'eventType',
+                'eventUrl' => 'eventUrl',
+                'startDateTime' => '2019-12-27T18:11:19.117Z',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MarketingEventPublicDefaultResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -675,7 +762,11 @@ final class EventsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseMarketingEventPublicDefaultResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -726,7 +817,11 @@ final class EventsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseMarketingEventPublicDefaultResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -769,7 +864,11 @@ final class EventsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MarketingEventPublicDefaultResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -809,10 +908,21 @@ final class EventsTest extends TestCase
                 'eventOrganizer' => 'eventOrganizer',
                 'externalAccountId' => 'externalAccountId',
                 'externalEventId' => 'externalEventId',
+                'endDateTime' => '2019-12-27T18:11:19.117Z',
+                'eventCancelled' => true,
+                'eventCompleted' => true,
+                'eventDescription' => 'eventDescription',
+                'eventType' => 'eventType',
+                'eventUrl' => 'eventUrl',
+                'startDateTime' => '2019-12-27T18:11:19.117Z',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MarketingEventPublicDefaultResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -838,7 +948,8 @@ final class EventsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -864,7 +975,8 @@ final class EventsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -889,7 +1001,8 @@ final class EventsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -914,6 +1027,7 @@ final class EventsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 }

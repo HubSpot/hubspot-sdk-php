@@ -3,6 +3,9 @@
 namespace Tests\Services\Crm\Extensions;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Extensions\Cards\IntegratorCardPayloadResponse;
+use HubspotSDK\Crm\Extensions\Cards\PublicCardListResponse;
+use HubspotSDK\Crm\Extensions\Cards\PublicCardResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -62,7 +65,8 @@ final class CardsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCardResponse::class, $result);
     }
 
     #[Test]
@@ -100,7 +104,8 @@ final class CardsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCardResponse::class, $result);
     }
 
     #[Test]
@@ -115,7 +120,8 @@ final class CardsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCardResponse::class, $result);
     }
 
     #[Test]
@@ -127,10 +133,35 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->update(
             'cardId',
-            ['appId' => 0]
+            [
+                'appId' => 0,
+                'actions' => ['baseUrls' => ['https://www.example.com/hubspot']],
+                'display' => [
+                    'properties' => [
+                        [
+                            'dataType' => 'STRING',
+                            'label' => 'Pets Name',
+                            'name' => 'pet_name',
+                            'options' => [
+                                ['label' => 'label', 'name' => 'name', 'type' => 'DANGER'],
+                            ],
+                        ],
+                    ],
+                ],
+                'fetch' => [
+                    'objectTypes' => [
+                        ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
+                    ],
+                    'cardType' => 'EXTERNAL',
+                    'serverlessFunction' => 'serverlessFunction',
+                    'targetUrl' => 'https://www.example.com/hubspot/target',
+                ],
+                'title' => 'PetSpot',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCardResponse::class, $result);
     }
 
     #[Test]
@@ -142,7 +173,8 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->list(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCardListResponse::class, $result);
     }
 
     #[Test]
@@ -157,7 +189,8 @@ final class CardsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -172,7 +205,8 @@ final class CardsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -187,7 +221,8 @@ final class CardsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCardResponse::class, $result);
     }
 
     #[Test]
@@ -202,7 +237,8 @@ final class CardsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCardResponse::class, $result);
     }
 
     #[Test]
@@ -214,6 +250,7 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->getSampleResponse();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorCardPayloadResponse::class, $result);
     }
 }

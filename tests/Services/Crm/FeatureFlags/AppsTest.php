@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\FeatureFlags;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\FeatureFlags\FlagResponse;
+use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +43,8 @@ final class AppsTest extends TestCase
             ['appId' => 0, 'defaultState' => 'ABSENT']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FlagResponse::class, $result);
     }
 
     #[Test]
@@ -53,10 +56,11 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->update(
             'flagName',
-            ['appId' => 0, 'defaultState' => 'ABSENT']
+            ['appId' => 0, 'defaultState' => 'ABSENT', 'overrideState' => 'ABSENT'],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FlagResponse::class, $result);
     }
 
     #[Test]
@@ -71,7 +75,8 @@ final class AppsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FlagResponse::class, $result);
     }
 
     #[Test]
@@ -86,7 +91,8 @@ final class AppsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FlagResponse::class, $result);
     }
 
     #[Test]
@@ -101,7 +107,8 @@ final class AppsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FlagResponse::class, $result);
     }
 
     #[Test]
@@ -116,7 +123,8 @@ final class AppsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FlagResponse::class, $result);
     }
 
     #[Test]
@@ -131,7 +139,8 @@ final class AppsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateBatchResponse::class, $result);
     }
 
     #[Test]
@@ -143,9 +152,10 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->listPortals(
             'flagName',
-            ['appId' => 0]
+            ['appId' => 0, 'limit' => 0, 'startPortalId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateBatchResponse::class, $result);
     }
 }

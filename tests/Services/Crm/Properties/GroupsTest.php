@@ -3,6 +3,9 @@
 namespace Tests\Services\Crm\Properties;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Properties\CollectionResponsePropertyGroup;
+use HubspotSDK\Crm\Properties\CreatedResponsePropertyGroup;
+use HubspotSDK\Crm\Properties\PropertyGroup;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +44,8 @@ final class GroupsTest extends TestCase
             ['label' => 'label', 'name' => 'name']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CreatedResponsePropertyGroup::class, $result);
     }
 
     #[Test]
@@ -53,10 +57,11 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->create(
             'objectType',
-            ['label' => 'label', 'name' => 'name']
+            ['label' => 'label', 'name' => 'name', 'displayOrder' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CreatedResponsePropertyGroup::class, $result);
     }
 
     #[Test]
@@ -71,7 +76,8 @@ final class GroupsTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
     }
 
     #[Test]
@@ -83,10 +89,11 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->update(
             'groupName',
-            ['objectType' => 'objectType']
+            ['objectType' => 'objectType', 'displayOrder' => 0, 'label' => 'label'],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
     }
 
     #[Test]
@@ -98,7 +105,8 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->list('objectType', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CollectionResponsePropertyGroup::class, $result);
     }
 
     #[Test]
@@ -113,7 +121,8 @@ final class GroupsTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -128,7 +137,8 @@ final class GroupsTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -143,7 +153,8 @@ final class GroupsTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
     }
 
     #[Test]
@@ -155,9 +166,10 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->get(
             'groupName',
-            ['objectType' => 'objectType']
+            ['objectType' => 'objectType', 'locale' => 'locale']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
     }
 }

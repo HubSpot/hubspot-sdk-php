@@ -3,6 +3,7 @@
 namespace Tests\Services\Webhooks;
 
 use HubspotSDK\Client;
+use HubspotSDK\Webhooks\SettingsResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -44,7 +45,8 @@ final class SettingsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
     }
 
     #[Test]
@@ -62,7 +64,8 @@ final class SettingsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
     }
 
     #[Test]
@@ -74,7 +77,8 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->webhooks->settings->list(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
     }
 
     #[Test]
@@ -86,6 +90,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->webhooks->settings->delete(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

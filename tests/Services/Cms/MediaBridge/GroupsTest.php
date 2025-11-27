@@ -3,6 +3,8 @@
 namespace Tests\Services\Cms\MediaBridge;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyGroupNoPaging;
+use HubspotSDK\Crm\Properties\PropertyGroup;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +43,8 @@ final class GroupsTest extends TestCase
             ['appId' => 0, 'label' => 'label', 'name' => 'name']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
     }
 
     #[Test]
@@ -53,10 +56,11 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->create(
             'objectType',
-            ['appId' => 0, 'label' => 'label', 'name' => 'name']
+            ['appId' => 0, 'label' => 'label', 'name' => 'name', 'displayOrder' => 0],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
     }
 
     #[Test]
@@ -71,7 +75,11 @@ final class GroupsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePropertyGroupNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -86,7 +94,11 @@ final class GroupsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePropertyGroupNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -101,7 +113,8 @@ final class GroupsTest extends TestCase
             ['appId' => 0, 'objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -116,7 +129,8 @@ final class GroupsTest extends TestCase
             ['appId' => 0, 'objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -131,7 +145,8 @@ final class GroupsTest extends TestCase
             ['appId' => 0, 'objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
     }
 
     #[Test]
@@ -146,7 +161,8 @@ final class GroupsTest extends TestCase
             ['appId' => 0, 'objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
     }
 
     #[Test]
@@ -161,7 +177,8 @@ final class GroupsTest extends TestCase
             ['appId' => 0, 'objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
     }
 
     #[Test]
@@ -173,9 +190,15 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->updateByName(
             'groupName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            [
+                'appId' => 0,
+                'objectType' => 'objectType',
+                'displayOrder' => 0,
+                'label' => 'label',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
     }
 }

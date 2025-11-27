@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
+use HubspotSDK\Webhooks\SettingsResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -51,7 +52,8 @@ final class SettingsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
     }
 
     #[Test]
@@ -76,7 +78,8 @@ final class SettingsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
     }
 
     #[Test]
@@ -88,7 +91,8 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->crm->extensions->calling->settings->update(0, []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
     }
 
     #[Test]
@@ -100,7 +104,8 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->crm->extensions->calling->settings->delete(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -112,6 +117,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->crm->extensions->calling->settings->get(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
     }
 }

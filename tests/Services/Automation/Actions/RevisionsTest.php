@@ -2,7 +2,9 @@
 
 namespace Tests\Services\Automation\Actions;
 
+use HubspotSDK\Automation\Actions\PublicActionRevision;
 use HubspotSDK\Client;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +43,8 @@ final class RevisionsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -53,10 +56,11 @@ final class RevisionsTest extends TestCase
 
         $result = $this->client->automation->actions->revisions->list(
             'definitionId',
-            ['appId' => 0]
+            ['appId' => 0, 'after' => 'after', 'limit' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -71,7 +75,8 @@ final class RevisionsTest extends TestCase
             ['appId' => 0, 'definitionId' => 'definitionId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionRevision::class, $result);
     }
 
     #[Test]
@@ -86,6 +91,7 @@ final class RevisionsTest extends TestCase
             ['appId' => 0, 'definitionId' => 'definitionId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionRevision::class, $result);
     }
 }

@@ -3,6 +3,10 @@
 namespace Tests\Services\Crm\Associations\Schema\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Associations\BatchResponseVoid;
+use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
+use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionUserConfiguration;
+use HubspotSDK\Crm\Associations\Schema\V4\CollectionResponsePublicAssociationDefinitionUserConfiguration;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -46,7 +50,11 @@ final class ConfigurationsTest extends TestCase
             ->list()
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicAssociationDefinitionUserConfiguration::class,
+            $result,
+        );
     }
 
     #[Test]
@@ -78,7 +86,11 @@ final class ConfigurationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicAssociationDefinitionUserConfiguration::class,
+            $result
+        );
     }
 
     #[Test]
@@ -110,7 +122,11 @@ final class ConfigurationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicAssociationDefinitionUserConfiguration::class,
+            $result
+        );
     }
 
     #[Test]
@@ -136,7 +152,8 @@ final class ConfigurationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseVoid::class, $result);
     }
 
     #[Test]
@@ -162,7 +179,8 @@ final class ConfigurationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseVoid::class, $result);
     }
 
     #[Test]
@@ -194,7 +212,11 @@ final class ConfigurationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicAssociationDefinitionConfigurationUpdateResult::class,
+            $result,
+        );
     }
 
     #[Test]
@@ -226,7 +248,11 @@ final class ConfigurationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicAssociationDefinitionConfigurationUpdateResult::class,
+            $result,
+        );
     }
 
     #[Test]
@@ -249,7 +275,11 @@ final class ConfigurationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicAssociationDefinitionUserConfiguration::class,
+            $result,
+        );
     }
 
     #[Test]
@@ -269,8 +299,13 @@ final class ConfigurationsTest extends TestCase
             ->getByObjectTypes(
                 'toObjectType',
                 ['fromObjectType' => 'fromObjectType']
-            );
+            )
+        ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicAssociationDefinitionUserConfiguration::class,
+            $result,
+        );
     }
 }

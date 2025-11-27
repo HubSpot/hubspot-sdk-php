@@ -3,6 +3,9 @@
 namespace Tests\Services\Events;
 
 use HubspotSDK\Client;
+use HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\Page;
+use HubspotSDK\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +44,11 @@ final class EventDefinitionsTest extends TestCase
             'propertyDefinitions' => [['label' => 'label', 'type' => 'type']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ExternalBehavioralEventTypeDefinition::class,
+            $result
+        );
     }
 
     #[Test]
@@ -70,9 +77,16 @@ final class EventDefinitionsTest extends TestCase
                     ],
                 ],
             ],
+            'description' => 'description',
+            'name' => 'name',
+            'primaryObject' => 'primaryObject',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ExternalBehavioralEventTypeDefinition::class,
+            $result
+        );
     }
 
     #[Test]
@@ -84,7 +98,11 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->update('eventName', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ExternalBehavioralEventTypeDefinition::class,
+            $result
+        );
     }
 
     #[Test]
@@ -96,7 +114,8 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -108,7 +127,8 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->delete('eventName');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -123,7 +143,8 @@ final class EventDefinitionsTest extends TestCase
             ['label' => 'label', 'type' => 'type']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -135,10 +156,25 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->createProperty(
             'eventName',
-            ['label' => 'label', 'type' => 'type']
+            [
+                'label' => 'label',
+                'type' => 'type',
+                'description' => 'description',
+                'name' => 'name',
+                'options' => [
+                    [
+                        'displayOrder' => 0,
+                        'hidden' => true,
+                        'label' => 'label',
+                        'value' => 'value',
+                        'description' => 'description',
+                    ],
+                ],
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -153,7 +189,8 @@ final class EventDefinitionsTest extends TestCase
             ['eventName' => 'eventName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -168,7 +205,8 @@ final class EventDefinitionsTest extends TestCase
             ['eventName' => 'eventName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -180,7 +218,11 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->get('eventName');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ExternalBehavioralEventTypeDefinition::class,
+            $result
+        );
     }
 
     #[Test]
@@ -195,7 +237,8 @@ final class EventDefinitionsTest extends TestCase
             ['eventName' => 'eventName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -207,9 +250,23 @@ final class EventDefinitionsTest extends TestCase
 
         $result = $this->client->events->eventDefinitions->updateProperty(
             'propertyName',
-            ['eventName' => 'eventName']
+            [
+                'eventName' => 'eventName',
+                'description' => 'description',
+                'label' => 'label',
+                'options' => [
+                    [
+                        'displayOrder' => 0,
+                        'hidden' => true,
+                        'label' => 'label',
+                        'value' => 'value',
+                        'description' => 'description',
+                    ],
+                ],
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 }

@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\ObjectLibrary;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\ObjectLibrary\ObjectTypeEnablementPublicResponse;
+use HubspotSDK\Crm\ObjectLibrary\PortalObjectTypeEnablementPublicResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,11 @@ final class EnablementTest extends TestCase
 
         $result = $this->client->crm->objectLibrary->enablement->list();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            PortalObjectTypeEnablementPublicResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -52,6 +58,7 @@ final class EnablementTest extends TestCase
             'objectTypeId'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectTypeEnablementPublicResponse::class, $result);
     }
 }

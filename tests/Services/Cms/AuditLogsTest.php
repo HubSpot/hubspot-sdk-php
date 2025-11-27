@@ -3,6 +3,7 @@
 namespace Tests\Services\Cms;
 
 use HubspotSDK\Client;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,6 +39,7 @@ final class AuditLogsTest extends TestCase
 
         $result = $this->client->cms->auditLogs->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 }

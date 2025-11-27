@@ -3,6 +3,8 @@
 namespace Tests\Services\Cms;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\SiteSearch\IndexedData;
+use HubspotSDK\Cms\SiteSearch\PublicSearchResults;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,8 @@ final class SiteSearchTest extends TestCase
 
         $result = $this->client->cms->siteSearch->getIndexedData('contentId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IndexedData::class, $result);
     }
 
     #[Test]
@@ -50,6 +53,7 @@ final class SiteSearchTest extends TestCase
 
         $result = $this->client->cms->siteSearch->search([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSearchResults::class, $result);
     }
 }

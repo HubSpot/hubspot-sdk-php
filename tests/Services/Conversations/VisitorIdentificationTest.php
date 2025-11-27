@@ -3,6 +3,7 @@
 namespace Tests\Services\Conversations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -43,7 +44,8 @@ final class VisitorIdentificationTest extends TestCase
             ->generateToken(['email' => 'visitor-email@example.com'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IdentificationTokenResponse::class, $result);
     }
 
     #[Test]
@@ -57,9 +59,14 @@ final class VisitorIdentificationTest extends TestCase
             ->client
             ->conversations
             ->visitorIdentification
-            ->generateToken(['email' => 'visitor-email@example.com'])
+            ->generateToken([
+                'email' => 'visitor-email@example.com',
+                'firstName' => 'Gob',
+                'lastName' => 'Bluth',
+            ])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IdentificationTokenResponse::class, $result);
     }
 }

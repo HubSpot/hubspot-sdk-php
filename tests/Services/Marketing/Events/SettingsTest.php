@@ -3,6 +3,7 @@
 namespace Tests\Services\Marketing\Events;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Events\EventDetailSettings;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +42,8 @@ final class SettingsTest extends TestCase
             ['eventDetailsUrl' => 'eventDetailsUrl']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventDetailSettings::class, $result);
     }
 
     #[Test]
@@ -56,7 +58,8 @@ final class SettingsTest extends TestCase
             ['eventDetailsUrl' => 'eventDetailsUrl']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventDetailSettings::class, $result);
     }
 
     #[Test]
@@ -68,6 +71,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->marketing->events->settings->get(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventDetailSettings::class, $result);
     }
 }

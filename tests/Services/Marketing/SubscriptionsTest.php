@@ -3,6 +3,9 @@
 namespace Tests\Services\Marketing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus;
+use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatusesResponse;
+use HubspotSDK\Marketing\Subscriptions\SubscriptionDefinitionsResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +41,8 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->marketing->subscriptions->list();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionDefinitionsResponse::class, $result);
     }
 
     #[Test]
@@ -52,7 +56,8 @@ final class SubscriptionsTest extends TestCase
             'emailAddress'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSubscriptionStatusesResponse::class, $result);
     }
 
     #[Test]
@@ -66,7 +71,8 @@ final class SubscriptionsTest extends TestCase
             'emailAddress' => 'emailAddress', 'subscriptionId' => 'subscriptionId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
     }
 
     #[Test]
@@ -77,10 +83,14 @@ final class SubscriptionsTest extends TestCase
         }
 
         $result = $this->client->marketing->subscriptions->subscribe([
-            'emailAddress' => 'emailAddress', 'subscriptionId' => 'subscriptionId',
+            'emailAddress' => 'emailAddress',
+            'subscriptionId' => 'subscriptionId',
+            'legalBasis' => 'CONSENT_WITH_NOTICE',
+            'legalBasisExplanation' => 'legalBasisExplanation',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
     }
 
     #[Test]
@@ -94,7 +104,8 @@ final class SubscriptionsTest extends TestCase
             'emailAddress' => 'emailAddress', 'subscriptionId' => 'subscriptionId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
     }
 
     #[Test]
@@ -105,9 +116,13 @@ final class SubscriptionsTest extends TestCase
         }
 
         $result = $this->client->marketing->subscriptions->unsubscribe([
-            'emailAddress' => 'emailAddress', 'subscriptionId' => 'subscriptionId',
+            'emailAddress' => 'emailAddress',
+            'subscriptionId' => 'subscriptionId',
+            'legalBasis' => 'CONSENT_WITH_NOTICE',
+            'legalBasisExplanation' => 'legalBasisExplanation',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
     }
 }

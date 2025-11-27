@@ -3,6 +3,7 @@
 namespace Tests\Services\Cms\Blogs\Posts;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Blogs\Posts\BatchResponseBlogPost;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -185,7 +186,8 @@ final class BatchTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
     }
 
     #[Test]
@@ -353,7 +355,8 @@ final class BatchTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
     }
 
     #[Test]
@@ -367,7 +370,8 @@ final class BatchTest extends TestCase
             'inputs' => [[]],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
     }
 
     #[Test]
@@ -378,10 +382,11 @@ final class BatchTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->posts->batch->update([
-            'inputs' => [[]],
+            'inputs' => [[]], 'archived' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
     }
 
     #[Test]
@@ -395,7 +400,8 @@ final class BatchTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -409,7 +415,8 @@ final class BatchTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -423,7 +430,8 @@ final class BatchTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
     }
 
     #[Test]
@@ -434,9 +442,10 @@ final class BatchTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->posts->batch->get([
-            'inputs' => ['string'],
+            'inputs' => ['string'], 'archived' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
     }
 }

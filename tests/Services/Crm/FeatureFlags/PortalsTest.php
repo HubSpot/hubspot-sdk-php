@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\FeatureFlags;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
+use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +43,8 @@ final class PortalsTest extends TestCase
             ['appId' => 0, 'flagName' => 'flagName', 'flagState' => 'ABSENT']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateResponse::class, $result);
     }
 
     #[Test]
@@ -56,7 +59,8 @@ final class PortalsTest extends TestCase
             ['appId' => 0, 'flagName' => 'flagName', 'flagState' => 'ABSENT']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateResponse::class, $result);
     }
 
     #[Test]
@@ -71,7 +75,8 @@ final class PortalsTest extends TestCase
             ['appId' => 0, 'flagName' => 'flagName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateResponse::class, $result);
     }
 
     #[Test]
@@ -86,7 +91,8 @@ final class PortalsTest extends TestCase
             ['appId' => 0, 'flagName' => 'flagName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateResponse::class, $result);
     }
 
     #[Test]
@@ -101,7 +107,8 @@ final class PortalsTest extends TestCase
             ['appId' => 0, 'portalIds' => [0]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateBatchResponse::class, $result);
     }
 
     #[Test]
@@ -116,7 +123,8 @@ final class PortalsTest extends TestCase
             ['appId' => 0, 'portalIds' => [0]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateBatchResponse::class, $result);
     }
 
     #[Test]
@@ -134,7 +142,8 @@ final class PortalsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateBatchResponse::class, $result);
     }
 
     #[Test]
@@ -152,7 +161,8 @@ final class PortalsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateBatchResponse::class, $result);
     }
 
     #[Test]
@@ -167,7 +177,8 @@ final class PortalsTest extends TestCase
             ['appId' => 0, 'flagName' => 'flagName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateResponse::class, $result);
     }
 
     #[Test]
@@ -182,6 +193,7 @@ final class PortalsTest extends TestCase
             ['appId' => 0, 'flagName' => 'flagName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateResponse::class, $result);
     }
 }
