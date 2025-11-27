@@ -41,7 +41,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * Create a new media object type
      *
      * @param array{
-     *   mediaTypes: list<"VIDEO"|"AUDIO"|"DOCUMENT"|"OTHER"|"IMAGE">
+     *   mediaTypes: list<'VIDEO'|'AUDIO'|'DOCUMENT'|'OTHER'|'IMAGE'>
      * }|IntegratorSettingCreateObjectDefinitionParams $params
      *
      * @throws APIException
@@ -324,7 +324,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * Set the visibility settings for media bridge events created by your app.
      *
      * @param array{
-     *   eventType: "ALL"|"ATTENTION_SPAN"|"MEDIA_PLAYS"|"MEDIA_PLAYS_PERCENT",
+     *   eventType: 'ALL'|'ATTENTION_SPAN'|'MEDIA_PLAYS'|'MEDIA_PLAYS_PERCENT',
      *   updatedAt: int,
      *   showInReporting?: bool,
      *   showInTimeline?: bool,

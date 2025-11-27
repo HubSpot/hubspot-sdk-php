@@ -34,7 +34,7 @@ final class TemplatesService implements TemplatesContract
      *   tokens: list<array{
      *     label: string,
      *     name: string,
-     *     type: "date"|"enumeration"|"number"|"string",
+     *     type: 'date'|'enumeration'|'number'|'string',
      *     createdAt?: string|\DateTimeInterface,
      *     objectPropertyName?: string,
      *     options?: list<mixed>,
@@ -78,7 +78,7 @@ final class TemplatesService implements TemplatesContract
      *   tokens: list<array{
      *     label: string,
      *     name: string,
-     *     type: "date"|"enumeration"|"number"|"string",
+     *     type: 'date'|'enumeration'|'number'|'string',
      *     createdAt?: string|\DateTimeInterface,
      *     objectPropertyName?: string,
      *     options?: list<mixed>,

@@ -61,7 +61,7 @@ final class StatisticsService implements StatisticsContract
      * @param array{
      *   emailIds?: list<int>,
      *   endTimestamp?: string,
-     *   interval?: "DAY"|"HOUR"|"MINUTE"|"MONTH"|"QUARTER"|"QUARTER_HOUR"|"SECOND"|"WEEK"|"YEAR",
+     *   interval?: 'DAY'|'HOUR'|'MINUTE'|'MONTH'|'QUARTER'|'QUARTER_HOUR'|'SECOND'|'WEEK'|'YEAR',
      *   startTimestamp?: string,
      * }|StatisticGetHistogramParams $params
      *

@@ -47,7 +47,7 @@ final class ConfigurationsService implements ConfigurationsContract
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
-     *     category: "HUBSPOT_DEFINED"|"INTEGRATOR_DEFINED"|"USER_DEFINED",
+     *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED',
      *     maxToObjectIds: int,
      *     typeId: int,
      *   }>,
@@ -122,7 +122,7 @@ final class ConfigurationsService implements ConfigurationsContract
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
-     *     category: "HUBSPOT_DEFINED"|"INTEGRATOR_DEFINED"|"USER_DEFINED",
+     *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED',
      *     maxToObjectIds: int,
      *     typeId: int,
      *   }>,

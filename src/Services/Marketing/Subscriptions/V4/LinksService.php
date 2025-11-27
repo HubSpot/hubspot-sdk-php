@@ -22,7 +22,7 @@ final class LinksService implements LinksContract
      * @api
      *
      * @param array{
-     *   channel: "EMAIL",
+     *   channel: 'EMAIL',
      *   subscriberIdString: string,
      *   businessUnitId?: int,
      *   language?: string,

@@ -17,9 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements BaseModel
 {
-    /**
-     * @use SdkModel<CollectionResponseWithTotalEmailStatisticIntervalNoPagingShape>
-     */
+    /** @use SdkModel<CollectionResponseWithTotalEmailStatisticIntervalNoPagingShape> */
     use SdkModel;
 
     /**

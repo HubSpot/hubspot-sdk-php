@@ -37,9 +37,7 @@ final class PublicExportViewRequest implements BaseModel
     #[Api(list: 'string')]
     public array $associatedObjectType;
 
-    /**
-     * @var list<value-of<ExportInternalValuesOption>> $exportInternalValuesOptions
-     */
+    /** @var list<value-of<ExportInternalValuesOption>> $exportInternalValuesOptions */
     #[Api(list: ExportInternalValuesOption::class)]
     public array $exportInternalValuesOptions;
 

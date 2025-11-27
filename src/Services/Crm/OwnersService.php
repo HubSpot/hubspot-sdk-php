@@ -58,7 +58,7 @@ final class OwnersService implements OwnersContract
      *
      * Retrieve details of a specific owner using either their 'id' or 'userId'.
      *
-     * @param array{archived?: bool, idProperty?: "id"|"userId"}|OwnerGetParams $params
+     * @param array{archived?: bool, idProperty?: 'id'|'userId'}|OwnerGetParams $params
      *
      * @throws APIException
      */

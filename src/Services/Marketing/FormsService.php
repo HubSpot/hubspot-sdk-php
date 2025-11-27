@@ -60,7 +60,7 @@ final class FormsService implements FormsContract
      *     cloneable: bool,
      *     createNewContactForNewEmail: bool,
      *     editable: bool,
-     *     language: "af"|"ar-eg"|"bg"|"bn"|"ca-es"|"cs"|"da"|"de"|"el"|"en"|"es"|"es-mx"|"fi"|"fr"|"fr-ca"|"he-il"|"hr"|"hu"|"id"|"it"|"ja"|"ko"|"lt"|"ms"|"nl"|"no-no"|"pl"|"pt"|"pt-br"|"ro"|"ru"|"sk"|"sl"|"sv"|"th"|"tl"|"tr"|"uk"|"vi"|"zh-cn"|"zh-hk"|"zh-tw",
+     *     language: 'af'|'ar-eg'|'bg'|'bn'|'ca-es'|'cs'|'da'|'de'|'el'|'en'|'es'|'es-mx'|'fi'|'fr'|'fr-ca'|'he-il'|'hr'|'hu'|'id'|'it'|'ja'|'ko'|'lt'|'ms'|'nl'|'no-no'|'pl'|'pt'|'pt-br'|'ro'|'ru'|'sk'|'sl'|'sv'|'th'|'tl'|'tr'|'uk'|'vi'|'zh-cn'|'zh-hk'|'zh-tw',
      *     notifyContactOwner: bool,
      *     notifyRecipients: list<string>,
      *     postSubmitAction: array<mixed>|FormPostSubmitAction,
@@ -72,13 +72,13 @@ final class FormsService implements FormsContract
      *     renderRawHtml: bool,
      *     style: array<mixed>|FormStyle,
      *     submitButtonText: string,
-     *     theme: "canvas"|"default_style"|"legacy"|"linear"|"round"|"sharp",
+     *     theme: 'canvas'|'default_style'|'legacy'|'linear'|'round'|'sharp',
      *     cssClass?: string,
      *   }|FormDisplayOptions,
      *   fieldGroups?: list<array{
      *     fields: list<array<string,mixed>>,
-     *     groupType: "default_group"|"progressive"|"queued",
-     *     richTextType: "image"|"text",
+     *     groupType: 'default_group'|'progressive'|'queued',
+     *     richTextType: 'image'|'text',
      *     richText?: string,
      *   }|FieldGroup>,
      *   legalConsentOptions?: array<string,mixed>,
@@ -115,7 +115,7 @@ final class FormsService implements FormsContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   formTypes?: list<"hubspot"|"captured"|"flow"|"blog_comment"|"all">,
+     *   formTypes?: list<'hubspot'|'captured'|'flow'|'blog_comment'|'all'>,
      *   limit?: int,
      * }|FormListParams $params
      *

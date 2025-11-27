@@ -30,7 +30,7 @@ final class TokensService implements TokensContract
      *   appId: int,
      *   label: string,
      *   name: string,
-     *   type: "date"|"enumeration"|"number"|"string",
+     *   type: 'date'|'enumeration'|'number'|'string',
      *   createdAt?: string|\DateTimeInterface,
      *   objectPropertyName?: string,
      *   options?: list<array{

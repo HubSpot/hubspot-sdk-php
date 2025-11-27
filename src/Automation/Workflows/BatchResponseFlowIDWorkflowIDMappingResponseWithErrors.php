@@ -24,9 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponseFlowIDWorkflowIDMappingResponseWithErrors implements BaseModel
 {
-    /**
-     * @use SdkModel<BatchResponseFlowIDWorkflowIDMappingResponseWithErrorsShape>
-     */
+    /** @use SdkModel<BatchResponseFlowIDWorkflowIDMappingResponseWithErrorsShape> */
     use SdkModel;
 
     #[Api]

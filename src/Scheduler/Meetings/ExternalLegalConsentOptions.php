@@ -28,9 +28,7 @@ final class ExternalLegalConsentOptions implements BaseModel
     /** @use SdkModel<ExternalLegalConsentOptionsShape> */
     use SdkModel;
 
-    /**
-     * @var list<ExternalCommunicationConsentCheckbox> $communicationConsentCheckboxes
-     */
+    /** @var list<ExternalCommunicationConsentCheckbox> $communicationConsentCheckboxes */
     #[Api(list: ExternalCommunicationConsentCheckbox::class)]
     public array $communicationConsentCheckboxes;
 
@@ -59,9 +57,7 @@ final class ExternalLegalConsentOptions implements BaseModel
     #[Api]
     public string $processingConsentType;
 
-    /**
-     * @var value-of<LegitimateInterestLegalBasis>|null $legitimateInterestLegalBasis
-     */
+    /** @var value-of<LegitimateInterestLegalBasis>|null $legitimateInterestLegalBasis */
     #[Api(enum: LegitimateInterestLegalBasis::class, optional: true)]
     public ?string $legitimateInterestLegalBasis;
 

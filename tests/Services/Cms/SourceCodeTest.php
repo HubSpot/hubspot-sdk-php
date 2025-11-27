@@ -117,7 +117,7 @@ final class SourceCodeTest extends TestCase
     public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped("Prism doesn't support application/octet-stream responses");
+            $this->markTestSkipped('Prism doesn\'t support application/octet-stream responses');
         }
 
         $result = $this->client->cms->sourceCode->get(
@@ -132,7 +132,7 @@ final class SourceCodeTest extends TestCase
     public function testGetWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped("Prism doesn't support application/octet-stream responses");
+            $this->markTestSkipped('Prism doesn\'t support application/octet-stream responses');
         }
 
         $result = $this->client->cms->sourceCode->get(

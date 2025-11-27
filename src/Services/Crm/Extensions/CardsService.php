@@ -40,7 +40,7 @@ final class CardsService implements CardsContract
      *   fetch: array{
      *     objectTypes: list<array<mixed>|CardObjectTypeBody>,
      *     targetUrl: string,
-     *     cardType?: "EXTERNAL"|"SERVERLESS",
+     *     cardType?: 'EXTERNAL'|'SERVERLESS',
      *     serverlessFunction?: string,
      *   },
      *   title: string,
@@ -81,7 +81,7 @@ final class CardsService implements CardsContract
      *   }|CardDisplayBody,
      *   fetch?: array{
      *     objectTypes: list<array<mixed>|CardObjectTypeBody>,
-     *     cardType?: "EXTERNAL"|"SERVERLESS",
+     *     cardType?: 'EXTERNAL'|'SERVERLESS',
      *     serverlessFunction?: string,
      *     targetUrl?: string,
      *   },

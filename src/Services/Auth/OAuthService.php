@@ -35,7 +35,7 @@ final class OAuthService implements OAuthContract
      *   client_id?: string,
      *   code?: string,
      *   code_verifier?: string,
-     *   grant_type?: "authorization_code"|"client_credentials"|"refresh_token",
+     *   grant_type?: 'authorization_code'|'client_credentials'|'refresh_token',
      *   redirect_uri?: string,
      *   scope?: string,
      * }|OAuthCreateAccessTokenParams $params

@@ -109,7 +109,7 @@ final class EventsTest extends TestCase
                     'email' => 'art3mis-pup@petspot.com',
                     'extraData' => [
                         'questions' => [
-                            ['answer' => 'Bark!', 'question' => "Who's a good girl?"],
+                            ['answer' => 'Bark!', 'question' => 'Who\'s a good girl?'],
                             ['answer' => 'Woof!', 'question' => 'Do you wanna go on a walk?'],
                         ],
                     ],
@@ -134,7 +134,7 @@ final class EventsTest extends TestCase
                     'email' => 'pocket-tiger@petspot.com',
                     'extraData' => [
                         'questions' => [
-                            ['answer' => 'Purr...', 'question' => "Who's a good kitty?"],
+                            ['answer' => 'Purr...', 'question' => 'Who\'s a good kitty?'],
                             [
                                 'answer' => 'Meow!',
                                 'question' => 'Will you stop playing with that?',
