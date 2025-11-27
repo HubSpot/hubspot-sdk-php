@@ -24,9 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class ParticipationListBreakdownByExternalAccountAndEventIDParams implements BaseModel
 {
-    /**
-     * @use SdkModel<ParticipationListBreakdownByExternalAccountAndEventIDParamsShape>
-     */
+    /** @use SdkModel<ParticipationListBreakdownByExternalAccountAndEventIDParamsShape> */
     use SdkModel;
     use SdkParams;
 

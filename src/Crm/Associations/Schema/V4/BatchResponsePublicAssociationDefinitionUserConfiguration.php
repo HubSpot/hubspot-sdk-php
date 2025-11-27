@@ -24,9 +24,7 @@ use HubspotSDK\StandardError;
  */
 final class BatchResponsePublicAssociationDefinitionUserConfiguration implements BaseModel
 {
-    /**
-     * @use SdkModel<BatchResponsePublicAssociationDefinitionUserConfigurationShape>
-     */
+    /** @use SdkModel<BatchResponsePublicAssociationDefinitionUserConfigurationShape> */
     use SdkModel;
 
     #[Api]

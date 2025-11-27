@@ -193,7 +193,7 @@ final class FilesService implements FilesContract
      *
      * @param array{
      *   expirationSeconds?: int,
-     *   size?: "icon"|"medium"|"preview"|"thumb",
+     *   size?: 'icon'|'medium'|'preview'|'thumb',
      *   upscale?: bool,
      * }|FileGetSignedURLParams $params
      *
@@ -227,8 +227,8 @@ final class FilesService implements FilesContract
      * @param array{
      *   access: value-of<FileImportFromURLAsyncParams\Access>,
      *   url: string,
-     *   duplicateValidationScope?: "ENTIRE_PORTAL"|"EXACT_FOLDER",
-     *   duplicateValidationStrategy?: "NONE"|"REJECT"|"RETURN_EXISTING",
+     *   duplicateValidationScope?: 'ENTIRE_PORTAL'|'EXACT_FOLDER',
+     *   duplicateValidationStrategy?: 'NONE'|'REJECT'|'RETURN_EXISTING',
      *   expiresAt?: string|\DateTimeInterface,
      *   folderId?: string,
      *   folderPath?: string,

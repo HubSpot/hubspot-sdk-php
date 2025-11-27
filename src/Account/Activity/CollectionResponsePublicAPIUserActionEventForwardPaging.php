@@ -16,9 +16,7 @@ use HubspotSDK\ForwardPaging;
  */
 final class CollectionResponsePublicAPIUserActionEventForwardPaging implements BaseModel
 {
-    /**
-     * @use SdkModel<CollectionResponsePublicAPIUserActionEventForwardPagingShape>
-     */
+    /** @use SdkModel<CollectionResponsePublicAPIUserActionEventForwardPagingShape> */
     use SdkModel;
 
     /** @var list<PublicAPIUserActionEvent> $results */

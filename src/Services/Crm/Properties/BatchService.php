@@ -27,13 +27,13 @@ final class BatchService implements BatchContract
      *
      * @param array{
      *   inputs: list<array{
-     *     fieldType: "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea",
+     *     fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea',
      *     groupName: string,
      *     label: string,
      *     name: string,
-     *     type: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
      *     calculationFormula?: string,
-     *     dataSensitivity?: "highly_sensitive"|"non_sensitive"|"sensitive",
+     *     dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
      *     description?: string,
      *     displayOrder?: int,
      *     externalOptions?: bool,
@@ -103,7 +103,7 @@ final class BatchService implements BatchContract
      *
      * @param array{
      *   archived: bool,
-     *   dataSensitivity: "highly_sensitive"|"non_sensitive"|"sensitive",
+     *   dataSensitivity: 'highly_sensitive'|'non_sensitive'|'sensitive',
      *   inputs: list<array{name: string}>,
      *   locale?: string,
      * }|BatchGetParams $params

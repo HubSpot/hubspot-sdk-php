@@ -114,7 +114,7 @@ final class WorkflowsService implements WorkflowsContract
      * @api
      *
      * @param array{
-     *   inputs: list<array{flowId: string, type: "FLOW_ID"}>
+     *   inputs: list<array{flowId: string, type: 'FLOW_ID'}>
      * }|WorkflowBatchGetParams $params
      *
      * @throws APIException

@@ -19,9 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements BaseModel
 {
-    /**
-     * @use SdkModel<RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape>
-     */
+    /** @use SdkModel<RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape> */
     use SdkModel;
 
     /** @var list<mixed> $results */

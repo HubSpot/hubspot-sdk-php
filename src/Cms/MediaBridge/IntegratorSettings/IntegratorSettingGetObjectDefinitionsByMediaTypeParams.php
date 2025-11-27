@@ -20,9 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements BaseModel
 {
-    /**
-     * @use SdkModel<IntegratorSettingGetObjectDefinitionsByMediaTypeParamsShape>
-     */
+    /** @use SdkModel<IntegratorSettingGetObjectDefinitionsByMediaTypeParamsShape> */
     use SdkModel;
     use SdkParams;
 

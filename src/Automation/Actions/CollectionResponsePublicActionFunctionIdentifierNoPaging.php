@@ -15,9 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  */
 final class CollectionResponsePublicActionFunctionIdentifierNoPaging implements BaseModel
 {
-    /**
-     * @use SdkModel<CollectionResponsePublicActionFunctionIdentifierNoPagingShape>
-     */
+    /** @use SdkModel<CollectionResponsePublicActionFunctionIdentifierNoPagingShape> */
     use SdkModel;
 
     /** @var list<PublicActionFunctionIdentifier> $results */

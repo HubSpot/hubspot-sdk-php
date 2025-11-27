@@ -17,9 +17,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class CollectionResponsePublicPropertyValidationRuleMapNoPaging implements BaseModel, ResponseConverter
 {
-    /**
-     * @use SdkModel<CollectionResponsePublicPropertyValidationRuleMapNoPagingShape>
-     */
+    /** @use SdkModel<CollectionResponsePublicPropertyValidationRuleMapNoPagingShape> */
     use SdkModel;
 
     use SdkResponse;

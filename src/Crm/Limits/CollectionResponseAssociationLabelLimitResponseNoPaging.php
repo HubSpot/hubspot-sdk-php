@@ -17,9 +17,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  */
 final class CollectionResponseAssociationLabelLimitResponseNoPaging implements BaseModel, ResponseConverter
 {
-    /**
-     * @use SdkModel<CollectionResponseAssociationLabelLimitResponseNoPagingShape>
-     */
+    /** @use SdkModel<CollectionResponseAssociationLabelLimitResponseNoPagingShape> */
     use SdkModel;
 
     use SdkResponse;

@@ -27,7 +27,7 @@ final class SiteSearchService implements SiteSearchContract
      * For a given account and document ID (page ID, blog post ID, HubDB row ID, etc.), return all indexed data for that document. This is useful when debugging why a particular document is not returned from a custom search.
      *
      * @param array{
-     *   type?: "BLOG_POST"|"KNOWLEDGE_ARTICLE"|"LANDING_PAGE"|"LISTING_PAGE"|"SITE_PAGE",
+     *   type?: 'BLOG_POST'|'KNOWLEDGE_ARTICLE'|'LANDING_PAGE'|'LISTING_PAGE'|'SITE_PAGE',
      * }|SiteSearchGetIndexedDataParams $params
      *
      * @throws APIException
@@ -65,7 +65,7 @@ final class SiteSearchService implements SiteSearchContract
      *   groupId?: list<int>,
      *   hubdbQuery?: string,
      *   language?: value-of<Language>,
-     *   length?: "LONG"|"SHORT",
+     *   length?: 'LONG'|'SHORT',
      *   limit?: int,
      *   matchPrefix?: bool,
      *   offset?: int,
@@ -74,7 +74,7 @@ final class SiteSearchService implements SiteSearchContract
      *   property?: list<string>,
      *   q?: string,
      *   tableId?: int,
-     *   type?: list<"LANDING_PAGE"|"BLOG_POST"|"SITE_PAGE"|"KNOWLEDGE_ARTICLE"|"LISTING_PAGE">,
+     *   type?: list<'LANDING_PAGE'|'BLOG_POST'|'SITE_PAGE'|'KNOWLEDGE_ARTICLE'|'LISTING_PAGE'>,
      * }|SiteSearchSearchParams $params
      *
      * @throws APIException

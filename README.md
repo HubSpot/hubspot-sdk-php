@@ -43,18 +43,18 @@ Parameters with a default value must be set by name.
 
 use HubspotSDK\Client;
 
-$client = new Client(accessToken: "pat-na1-xxxxxxxx-xxxx");
+$client = new Client(accessToken: 'pat-na1-xxxxxxxx-xxxx');
 
 $createdResponseSimplePublicObject = $client->crm->objects->contacts->create([
-  "associations" => [
+  'associations' => [
     [
-      "to" => ["id" => "37295"],
-      "types" => [
-        ["associationCategory" => "HUBSPOT_DEFINED", "associationTypeId" => 0]
+      'to' => ['id' => '37295'],
+      'types' => [
+        ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeId' => 0]
       ],
     ],
   ],
-  "properties" => ["email" => "mark.s@lumon.industries"],
+  'properties' => ['email' => 'mark.s@lumon.industries'],
 ]);
 
 var_dump($createdResponseSimplePublicObject->createdResourceId);
@@ -62,10 +62,10 @@ var_dump($createdResponseSimplePublicObject->createdResourceId);
 
 ### Value Objects
 
-It is recommended to use the static `with` constructor `AssociationSpec::with(associationCategory: "HUBSPOT_DEFINED", ...)`
+It is recommended to use the static `with` constructor `AssociationSpec::with(associationCategory: 'HUBSPOT_DEFINED', ...)`
 and named parameters to initialize value objects.
 
-However, builders are also provided `(new AssociationSpec)->withAssociationCategory("HUBSPOT_DEFINED")`.
+However, builders are also provided `(new AssociationSpec)->withAssociationCategory('HUBSPOT_DEFINED')`.
 
 ### Pagination
 
@@ -78,7 +78,7 @@ This library provides auto-paginating iterators with each list response, so you 
 
 use HubspotSDK\Client;
 
-$client = new Client(accessToken: "pat-na1-xxxxxxxx-xxxx");
+$client = new Client(accessToken: 'pat-na1-xxxxxxxx-xxxx');
 
 $page = $client->crm->objects->contacts->list([]);
 
@@ -105,15 +105,15 @@ use HubspotSDK\Core\Exceptions\APIConnectionException;
 
 try {
   $createdResponseSimplePublicObject = $client->crm->objects->contacts->create([
-    "associations" => [
+    'associations' => [
       [
-        "to" => ["id" => "37295"],
-        "types" => [
-          ["associationCategory" => "HUBSPOT_DEFINED", "associationTypeId" => 0]
+        'to' => ['id' => '37295'],
+        'types' => [
+          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeId' => 0]
         ],
       ],
     ],
-    "properties" => ["email" => "mark.s@lumon.industries"],
+    'properties' => ['email' => 'mark.s@lumon.industries'],
   ]);
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
@@ -162,15 +162,15 @@ $client = new Client(maxRetries: 0);
 // Or, configure per-request:
 $result = $client->crm->objects->contacts->create(
   [
-    "associations" => [
+    'associations' => [
       [
-        "to" => ["id" => "37295"],
-        "types" => [
-          ["associationCategory" => "HUBSPOT_DEFINED", "associationTypeId" => 0]
+        'to' => ['id' => '37295'],
+        'types' => [
+          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeId' => 0]
         ],
       ],
     ],
-    "properties" => ["email" => "mark.s@lumon.industries"],
+    'properties' => ['email' => 'mark.s@lumon.industries'],
   ],
   RequestOptions::with(maxRetries: 5),
 );
@@ -193,20 +193,20 @@ use HubspotSDK\RequestOptions;
 
 $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
   [
-    "associations" => [
+    'associations' => [
       [
-        "to" => ["id" => "37295"],
-        "types" => [
-          ["associationCategory" => "HUBSPOT_DEFINED", "associationTypeId" => 0]
+        'to' => ['id' => '37295'],
+        'types' => [
+          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeId' => 0]
         ],
       ],
     ],
-    "properties" => ["email" => "mark.s@lumon.industries"],
+    'properties' => ['email' => 'mark.s@lumon.industries'],
   ],
   RequestOptions::with(
-    extraQueryParams: ["my_query_parameter" => "value"],
-    extraBodyParams: ["my_body_parameter" => "value"],
-    extraHeaders: ["my-header" => "value"],
+    extraQueryParams: ['my_query_parameter' => 'value'],
+    extraBodyParams: ['my_body_parameter' => 'value'],
+    extraHeaders: ['my-header' => 'value'],
   ),
 );
 ```

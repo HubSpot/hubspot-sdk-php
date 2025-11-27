@@ -51,9 +51,9 @@ final class PropertiesService implements PropertiesContract
      *   groupName: string,
      *   label: string,
      *   name: string,
-     *   type: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
      *   calculationFormula?: string,
-     *   dataSensitivity?: "highly_sensitive"|"non_sensitive"|"sensitive",
+     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
      *   description?: string,
      *   displayOrder?: int,
      *   externalOptions?: bool,
@@ -114,7 +114,7 @@ final class PropertiesService implements PropertiesContract
      *     value: string,
      *     description?: string,
      *   }>,
-     *   type?: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     *   type?: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
      * }|PropertyUpdateParams $params
      *
      * @throws APIException
@@ -148,7 +148,7 @@ final class PropertiesService implements PropertiesContract
      *
      * @param array{
      *   archived?: bool,
-     *   dataSensitivity?: "highly_sensitive"|"non_sensitive"|"sensitive",
+     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
      *   locale?: string,
      *   properties?: string,
      * }|PropertyListParams $params
@@ -213,7 +213,7 @@ final class PropertiesService implements PropertiesContract
      * @param array{
      *   objectType: string,
      *   archived?: bool,
-     *   dataSensitivity?: "highly_sensitive"|"non_sensitive"|"sensitive",
+     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
      *   locale?: string,
      *   properties?: string,
      * }|PropertyGetParams $params

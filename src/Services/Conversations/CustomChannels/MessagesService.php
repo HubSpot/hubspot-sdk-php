@@ -29,7 +29,7 @@ final class MessagesService implements MessagesContract
      * @param array{
      *   attachments: list<array<string,mixed>>,
      *   channelAccountId: string,
-     *   messageDirection: "INCOMING"|"OUTGOING",
+     *   messageDirection: 'INCOMING'|'OUTGOING',
      *   recipients: list<array{
      *     deliveryIdentifier: array<mixed>|PublicDeliveryIdentifier, name?: string
      *   }>,
@@ -77,7 +77,7 @@ final class MessagesService implements MessagesContract
      * Update a message's status to indicate if it was successfully sent, failed to send, or was read. For failed messages, this can also include the error message for the failure.
      *
      * @param array{
-     *   channelId: int, statusType: "FAILED"|"READ"|"SENT", errorMessage?: string
+     *   channelId: int, statusType: 'FAILED'|'READ'|'SENT', errorMessage?: string
      * }|MessageUpdateParams $params
      *
      * @throws APIException

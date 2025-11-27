@@ -39,9 +39,9 @@ final class PropertiesService implements PropertiesContract
      *   groupName: string,
      *   label: string,
      *   name: string,
-     *   type: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
      *   calculationFormula?: string,
-     *   dataSensitivity?: "highly_sensitive"|"non_sensitive"|"sensitive",
+     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
      *   description?: string,
      *   displayOrder?: int,
      *   externalOptions?: bool,
@@ -106,7 +106,7 @@ final class PropertiesService implements PropertiesContract
      *     value: string,
      *     description?: string,
      *   }>,
-     *   type?: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     *   type?: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
      * }|PropertyUpdateParams $params
      *
      * @throws APIException
@@ -221,13 +221,13 @@ final class PropertiesService implements PropertiesContract
      * @param array{
      *   appId: int,
      *   inputs: list<array{
-     *     fieldType: "booleancheckbox"|"calculation_equation"|"checkbox"|"date"|"file"|"html"|"number"|"phonenumber"|"radio"|"select"|"text"|"textarea",
+     *     fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea',
      *     groupName: string,
      *     label: string,
      *     name: string,
-     *     type: "bool"|"date"|"datetime"|"enumeration"|"number"|"phone_number"|"string",
+     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
      *     calculationFormula?: string,
-     *     dataSensitivity?: "highly_sensitive"|"non_sensitive"|"sensitive",
+     *     dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
      *     description?: string,
      *     displayOrder?: int,
      *     externalOptions?: bool,
@@ -350,7 +350,7 @@ final class PropertiesService implements PropertiesContract
      * @param array{
      *   appId: int,
      *   archived: bool,
-     *   dataSensitivity: "highly_sensitive"|"non_sensitive"|"sensitive",
+     *   dataSensitivity: 'highly_sensitive'|'non_sensitive'|'sensitive',
      *   inputs: list<array{name: string}>,
      * }|PropertyGetBatchParams $params
      *

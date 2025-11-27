@@ -25,7 +25,7 @@ final class ThreadsService implements ThreadsContract
      * @api
      *
      * @param array{
-     *   archived?: bool, status?: "CLOSED"|"OPEN"
+     *   archived?: bool, status?: 'CLOSED'|'OPEN'
      * }|ThreadUpdateParams $params
      *
      * @throws APIException
@@ -59,7 +59,7 @@ final class ThreadsService implements ThreadsContract
      *   after?: string,
      *   archived?: bool,
      *   associatedContactId?: int,
-     *   association?: list<"TICKET">,
+     *   association?: list<'TICKET'>,
      *   inboxId?: list<int>,
      *   latestMessageTimestampAfter?: string|\DateTimeInterface,
      *   limit?: int,
@@ -114,7 +114,7 @@ final class ThreadsService implements ThreadsContract
      * @api
      *
      * @param array{
-     *   archived?: bool, association?: list<"TICKET">, property?: string
+     *   archived?: bool, association?: list<'TICKET'>, property?: string
      * }|ThreadGetParams $params
      *
      * @throws APIException

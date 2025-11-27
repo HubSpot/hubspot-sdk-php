@@ -16,9 +16,7 @@ use HubspotSDK\ForwardPaging;
  */
 final class CollectionResponseWithTotalPublicCampaignForwardPaging implements BaseModel
 {
-    /**
-     * @use SdkModel<CollectionResponseWithTotalPublicCampaignForwardPagingShape>
-     */
+    /** @use SdkModel<CollectionResponseWithTotalPublicCampaignForwardPagingShape> */
     use SdkModel;
 
     /** @var list<PublicCampaign> $results */
