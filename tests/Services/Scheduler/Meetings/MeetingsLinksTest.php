@@ -3,6 +3,10 @@
 namespace Tests\Services\Scheduler\Meetings;
 
 use HubspotSDK\Client;
+use HubspotSDK\Page;
+use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
+use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
+use HubspotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +42,8 @@ final class MeetingsLinksTest extends TestCase
 
         $result = $this->client->scheduler->meetings->meetingsLinks->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -62,7 +67,8 @@ final class MeetingsLinksTest extends TestCase
             'startTime' => '2019-12-27T18:11:19.117Z',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExternalMeetingBookingResponse::class, $result);
     }
 
     #[Test]
@@ -84,9 +90,12 @@ final class MeetingsLinksTest extends TestCase
             'likelyAvailableUserIds' => ['string'],
             'slug' => 'slug',
             'startTime' => '2019-12-27T18:11:19.117Z',
+            'locale' => 'locale',
+            'timezone' => 'timezone',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExternalMeetingBookingResponse::class, $result);
     }
 
     #[Test]
@@ -104,7 +113,11 @@ final class MeetingsLinksTest extends TestCase
             ->getAvailabilityBySlug('slug', ['timezone' => 'timezone'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ExternalLinkAvailabilityAndBusyTimes::class,
+            $result
+        );
     }
 
     #[Test]
@@ -119,10 +132,17 @@ final class MeetingsLinksTest extends TestCase
             ->scheduler
             ->meetings
             ->meetingsLinks
-            ->getAvailabilityBySlug('slug', ['timezone' => 'timezone'])
+            ->getAvailabilityBySlug(
+                'slug',
+                ['timezone' => 'timezone', 'monthOffset' => 0]
+            )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ExternalLinkAvailabilityAndBusyTimes::class,
+            $result
+        );
     }
 
     #[Test]
@@ -140,7 +160,8 @@ final class MeetingsLinksTest extends TestCase
             ->getBookingInfoBySlug('slug', ['timezone' => 'timezone'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExternalBookingInfo::class, $result);
     }
 
     #[Test]
@@ -158,6 +179,7 @@ final class MeetingsLinksTest extends TestCase
             ->getBookingInfoBySlug('slug', ['timezone' => 'timezone'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExternalBookingInfo::class, $result);
     }
 }

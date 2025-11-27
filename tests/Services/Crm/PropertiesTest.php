@@ -3,6 +3,9 @@
 namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Properties\CollectionResponseProperty;
+use HubspotSDK\Crm\Properties\CreatedResponseProperty;
+use HubspotSDK\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -47,7 +50,8 @@ final class PropertiesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CreatedResponseProperty::class, $result);
     }
 
     #[Test]
@@ -65,10 +69,29 @@ final class PropertiesTest extends TestCase
                 'label' => 'label',
                 'name' => 'name',
                 'type' => 'bool',
+                'calculationFormula' => 'calculationFormula',
+                'dataSensitivity' => 'highly_sensitive',
+                'description' => 'description',
+                'displayOrder' => 0,
+                'externalOptions' => true,
+                'formField' => true,
+                'hasUniqueValue' => true,
+                'hidden' => true,
+                'options' => [
+                    [
+                        'displayOrder' => 0,
+                        'hidden' => true,
+                        'label' => 'label',
+                        'value' => 'value',
+                        'description' => 'description',
+                    ],
+                ],
+                'referencedObjectType' => 'referencedObjectType',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CreatedResponseProperty::class, $result);
     }
 
     #[Test]
@@ -83,7 +106,8 @@ final class PropertiesTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -95,10 +119,38 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->update(
             'propertyName',
-            ['objectType' => 'objectType']
+            [
+                'objectType' => 'objectType',
+                'calculationFormula' => 'calculationFormula',
+                'description' => 'description',
+                'displayOrder' => 2,
+                'fieldType' => 'select',
+                'formField' => true,
+                'groupName' => 'contactinformation',
+                'hidden' => false,
+                'label' => 'My Contact Property',
+                'options' => [
+                    [
+                        'displayOrder' => 1,
+                        'hidden' => false,
+                        'label' => 'Option A',
+                        'value' => 'A',
+                        'description' => 'Choice number one',
+                    ],
+                    [
+                        'displayOrder' => 2,
+                        'hidden' => false,
+                        'label' => 'Option B',
+                        'value' => 'B',
+                        'description' => 'Choice number two',
+                    ],
+                ],
+                'type' => 'enumeration',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -110,7 +162,8 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->list('objectType', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CollectionResponseProperty::class, $result);
     }
 
     #[Test]
@@ -125,7 +178,8 @@ final class PropertiesTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -140,7 +194,8 @@ final class PropertiesTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -155,7 +210,8 @@ final class PropertiesTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -167,9 +223,16 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->get(
             'propertyName',
-            ['objectType' => 'objectType']
+            [
+                'objectType' => 'objectType',
+                'archived' => true,
+                'dataSensitivity' => 'highly_sensitive',
+                'locale' => 'locale',
+                'properties' => 'properties',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
     }
 }

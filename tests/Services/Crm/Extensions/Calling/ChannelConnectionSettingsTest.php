@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -45,7 +46,8 @@ final class ChannelConnectionSettingsTest extends TestCase
             ->create(0, ['isReady' => true, 'url' => 'url'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ChannelConnectionSettingsResponse::class, $result);
     }
 
     #[Test]
@@ -64,7 +66,8 @@ final class ChannelConnectionSettingsTest extends TestCase
             ->create(0, ['isReady' => true, 'url' => 'url'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ChannelConnectionSettingsResponse::class, $result);
     }
 
     #[Test]
@@ -83,7 +86,8 @@ final class ChannelConnectionSettingsTest extends TestCase
             ->update(0, [])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ChannelConnectionSettingsResponse::class, $result);
     }
 
     #[Test]
@@ -102,7 +106,8 @@ final class ChannelConnectionSettingsTest extends TestCase
             ->delete(0)
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -121,6 +126,7 @@ final class ChannelConnectionSettingsTest extends TestCase
             ->get(0)
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ChannelConnectionSettingsResponse::class, $result);
     }
 }

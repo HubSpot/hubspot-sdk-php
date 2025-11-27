@@ -2,6 +2,7 @@
 
 namespace Tests\Services\Account;
 
+use HubspotSDK\Account\PortalInformationResponse;
 use HubspotSDK\Client;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -38,6 +39,7 @@ final class DetailsTest extends TestCase
 
         $result = $this->client->account->details->get();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalInformationResponse::class, $result);
     }
 }

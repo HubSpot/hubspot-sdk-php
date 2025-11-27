@@ -3,6 +3,8 @@
 namespace Tests\Services\Cms;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Domains\Domain;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,8 @@ final class DomainsTest extends TestCase
 
         $result = $this->client->cms->domains->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -50,6 +53,7 @@ final class DomainsTest extends TestCase
 
         $result = $this->client->cms->domains->get('domainId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Domain::class, $result);
     }
 }

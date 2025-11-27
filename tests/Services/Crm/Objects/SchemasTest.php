@@ -3,6 +3,10 @@
 namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
+use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
+use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -51,7 +55,8 @@ final class SchemasTest extends TestCase
             'requiredProperties' => ['my_object_property'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectSchema::class, $result);
     }
 
     #[Test]
@@ -102,9 +107,14 @@ final class SchemasTest extends TestCase
                 ],
             ],
             'requiredProperties' => ['my_object_property'],
+            'description' => 'description',
+            'primaryDisplayProperty' => 'my_object_property',
+            'searchableProperties' => ['string'],
+            'secondaryDisplayProperties' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectSchema::class, $result);
     }
 
     #[Test]
@@ -116,7 +126,8 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->update('objectType', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectsSchemasObjectTypeDefinition::class, $result);
     }
 
     #[Test]
@@ -128,7 +139,11 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseObjectSchemaNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -140,7 +155,8 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->delete('objectType', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -158,7 +174,8 @@ final class SchemasTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssociationDefinition::class, $result);
     }
 
     #[Test]
@@ -173,10 +190,12 @@ final class SchemasTest extends TestCase
             [
                 'fromObjectTypeId' => 'fromObjectTypeId',
                 'toObjectTypeId' => 'toObjectTypeId',
+                'name' => 'name',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssociationDefinition::class, $result);
     }
 
     #[Test]
@@ -191,7 +210,8 @@ final class SchemasTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -206,7 +226,8 @@ final class SchemasTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -218,6 +239,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->get('objectType');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectSchema::class, $result);
     }
 }

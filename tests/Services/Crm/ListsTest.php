@@ -3,6 +3,12 @@
 namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Lists\ListCreateResponse;
+use HubspotSDK\Crm\Lists\ListFetchResponse;
+use HubspotSDK\Crm\Lists\ListsByIDResponse;
+use HubspotSDK\Crm\Lists\ListSearchResponse;
+use HubspotSDK\Crm\Lists\ListUpdateResponse;
+use HubspotSDK\Crm\Lists\PublicListConversionResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -42,7 +48,8 @@ final class ListsTest extends TestCase
             'processingType' => 'DYNAMIC',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListCreateResponse::class, $result);
     }
 
     #[Test]
@@ -56,9 +63,193 @@ final class ListsTest extends TestCase
             'name' => 'Dynamic Association List Example',
             'objectTypeId' => '0-1',
             'processingType' => 'DYNAMIC',
+            'customProperties' => ['foo' => 'string'],
+            'filterBranch' => [
+                'filterBranches' => [
+                    [
+                        'filterBranches' => [
+                            [
+                                'filterBranches' => [
+                                    [
+                                        'filterBranches' => [
+                                            [
+                                                'filterBranches' => [
+                                                    [
+                                                        'eventTypeId' => 'eventTypeId',
+                                                        'filterBranches' => [
+                                                            [
+                                                                'filterBranches' => [
+                                                                    [
+                                                                        'associationCategory' => 'associationCategory',
+                                                                        'associationTypeId' => 0,
+                                                                        'filterBranches' => [
+                                                                            [
+                                                                                'filterBranches' => [],
+                                                                                'filterBranchOperator' => 'filterBranchOperator',
+                                                                                'filterBranchType' => 'OR',
+                                                                                'filters' => [
+                                                                                    [
+                                                                                        'filterType' => 'PROPERTY',
+                                                                                        'operation' => [
+                                                                                            'includeObjectsWithNoValueSet' => true,
+                                                                                            'operationType' => 'BOOL',
+                                                                                            'operator' => 'operator',
+                                                                                            'value' => true,
+                                                                                        ],
+                                                                                        'property' => 'property',
+                                                                                    ],
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                        'filterBranchOperator' => 'filterBranchOperator',
+                                                                        'filterBranchType' => 'ASSOCIATION',
+                                                                        'filters' => [
+                                                                            [
+                                                                                'filterType' => 'PROPERTY',
+                                                                                'operation' => [
+                                                                                    'includeObjectsWithNoValueSet' => true,
+                                                                                    'operationType' => 'BOOL',
+                                                                                    'operator' => 'operator',
+                                                                                    'value' => true,
+                                                                                ],
+                                                                                'property' => 'property',
+                                                                            ],
+                                                                        ],
+                                                                        'objectTypeId' => 'objectTypeId',
+                                                                        'operator' => 'operator',
+                                                                    ],
+                                                                ],
+                                                                'filterBranchOperator' => 'filterBranchOperator',
+                                                                'filterBranchType' => 'PROPERTY_ASSOCIATION',
+                                                                'filters' => [
+                                                                    [
+                                                                        'filterType' => 'PROPERTY',
+                                                                        'operation' => [
+                                                                            'includeObjectsWithNoValueSet' => true,
+                                                                            'operationType' => 'BOOL',
+                                                                            'operator' => 'operator',
+                                                                            'value' => true,
+                                                                        ],
+                                                                        'property' => 'property',
+                                                                    ],
+                                                                ],
+                                                                'objectTypeId' => 'objectTypeId',
+                                                                'operator' => 'operator',
+                                                                'propertyWithObjectId' => 'propertyWithObjectId',
+                                                            ],
+                                                        ],
+                                                        'filterBranchOperator' => 'filterBranchOperator',
+                                                        'filterBranchType' => 'UNIFIED_EVENTS',
+                                                        'filters' => [
+                                                            [
+                                                                'filterType' => 'PROPERTY',
+                                                                'operation' => [
+                                                                    'includeObjectsWithNoValueSet' => true,
+                                                                    'operationType' => 'BOOL',
+                                                                    'operator' => 'operator',
+                                                                    'value' => true,
+                                                                ],
+                                                                'property' => 'property',
+                                                            ],
+                                                        ],
+                                                        'operator' => 'HAS_COMPLETED',
+                                                        'coalescingRefineBy' => [
+                                                            'type' => 'NUM_OCCURRENCES',
+                                                            'maxOccurrences' => 0,
+                                                            'minOccurrences' => 0,
+                                                        ],
+                                                    ],
+                                                ],
+                                                'filterBranchOperator' => 'filterBranchOperator',
+                                                'filterBranchType' => 'RESTRICTED',
+                                                'filters' => [
+                                                    [
+                                                        'filterType' => 'PROPERTY',
+                                                        'operation' => [
+                                                            'includeObjectsWithNoValueSet' => true,
+                                                            'operationType' => 'BOOL',
+                                                            'operator' => 'operator',
+                                                            'value' => true,
+                                                        ],
+                                                        'property' => 'property',
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                        'filterBranchOperator' => 'filterBranchOperator',
+                                        'filterBranchType' => 'NOT_ANY',
+                                        'filters' => [
+                                            [
+                                                'filterType' => 'PROPERTY',
+                                                'operation' => [
+                                                    'includeObjectsWithNoValueSet' => true,
+                                                    'operationType' => 'BOOL',
+                                                    'operator' => 'operator',
+                                                    'value' => true,
+                                                ],
+                                                'property' => 'property',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                                'filterBranchOperator' => 'filterBranchOperator',
+                                'filterBranchType' => 'NOT_ALL',
+                                'filters' => [
+                                    [
+                                        'filterType' => 'PROPERTY',
+                                        'operation' => [
+                                            'includeObjectsWithNoValueSet' => true,
+                                            'operationType' => 'BOOL',
+                                            'operator' => 'IS_EQUAL_TO',
+                                            'value' => true,
+                                        ],
+                                        'property' => 'hs_is_closed_won',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        'filterBranchOperator' => 'filterBranchOperator',
+                        'filterBranchType' => 'AND',
+                        'filters' => [
+                            [
+                                'filterType' => 'PROPERTY',
+                                'operation' => [
+                                    'includeObjectsWithNoValueSet' => true,
+                                    'operationType' => 'BOOL',
+                                    'operator' => 'IS_EQUAL_TO',
+                                    'value' => true,
+                                ],
+                                'property' => 'firstname',
+                            ],
+                        ],
+                    ],
+                ],
+                'filterBranchOperator' => 'filterBranchOperator',
+                'filterBranchType' => 'OR',
+                'filters' => [
+                    [
+                        'filterType' => 'PROPERTY',
+                        'operation' => [
+                            'includeObjectsWithNoValueSet' => true,
+                            'operationType' => 'BOOL',
+                            'operator' => 'operator',
+                            'value' => true,
+                        ],
+                        'property' => 'property',
+                    ],
+                ],
+            ],
+            'listFolderId' => 0,
+            'listPermissions' => [
+                'teamsWithEditAccess' => [0], 'usersWithEditAccess' => [0],
+            ],
+            'membershipSettings' => [
+                'includeUnassigned' => true, 'membershipTeamId' => 0,
+            ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListCreateResponse::class, $result);
     }
 
     #[Test]
@@ -70,7 +261,8 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListsByIDResponse::class, $result);
     }
 
     #[Test]
@@ -82,7 +274,8 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->delete('listId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -94,7 +287,8 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->deleteScheduleConversion('listId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -106,7 +300,8 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->get('listId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListFetchResponse::class, $result);
     }
 
     #[Test]
@@ -121,7 +316,8 @@ final class ListsTest extends TestCase
             ['objectTypeId' => 'objectTypeId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListFetchResponse::class, $result);
     }
 
     #[Test]
@@ -133,10 +329,11 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->getByObjectTypeIDAndName(
             'listName',
-            ['objectTypeId' => 'objectTypeId']
+            ['objectTypeId' => 'objectTypeId', 'includeFilters' => true]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListFetchResponse::class, $result);
     }
 
     #[Test]
@@ -148,7 +345,8 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->getScheduleConversion('listId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicListConversionResponse::class, $result);
     }
 
     #[Test]
@@ -160,7 +358,8 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->restore('listId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -173,16 +372,15 @@ final class ListsTest extends TestCase
         $result = $this->client->crm->lists->scheduleConversion(
             'listId',
             [
-                'conversionType' => 'INACTIVITY',
+                'conversionType' => 'CONVERSION_DATE',
                 'day' => 0,
                 'month' => 0,
                 'year' => 0,
-                'offset' => 0,
-                'timeUnit' => 'DAY',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicListConversionResponse::class, $result);
     }
 
     #[Test]
@@ -195,16 +393,15 @@ final class ListsTest extends TestCase
         $result = $this->client->crm->lists->scheduleConversion(
             'listId',
             [
-                'conversionType' => 'INACTIVITY',
+                'conversionType' => 'CONVERSION_DATE',
                 'day' => 0,
                 'month' => 0,
                 'year' => 0,
-                'offset' => 0,
-                'timeUnit' => 'DAY',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicListConversionResponse::class, $result);
     }
 
     #[Test]
@@ -218,7 +415,8 @@ final class ListsTest extends TestCase
             'additionalProperties' => ['hs_list_size_week_delta'], 'offset' => 0,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListSearchResponse::class, $result);
     }
 
     #[Test]
@@ -229,10 +427,17 @@ final class ListsTest extends TestCase
         }
 
         $result = $this->client->crm->lists->search([
-            'additionalProperties' => ['hs_list_size_week_delta'], 'offset' => 0,
+            'additionalProperties' => ['hs_list_size_week_delta'],
+            'offset' => 0,
+            'count' => 100,
+            'listIds' => ['string'],
+            'processingTypes' => ['string'],
+            'query' => 'Test',
+            'sort' => 'sort',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListSearchResponse::class, $result);
     }
 
     #[Test]
@@ -433,7 +638,8 @@ final class ListsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListUpdateResponse::class, $result);
     }
 
     #[Test]
@@ -637,10 +843,12 @@ final class ListsTest extends TestCase
                         ],
                     ],
                 ],
+                'enrollObjectsInWorkflows' => true,
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListUpdateResponse::class, $result);
     }
 
     #[Test]
@@ -652,6 +860,7 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->updateName('listId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListUpdateResponse::class, $result);
     }
 }

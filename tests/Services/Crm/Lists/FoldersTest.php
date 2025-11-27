@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\Lists;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Lists\ListFolderCreateResponse;
+use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->crm->lists->folders->create(['name' => 'name']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListFolderCreateResponse::class, $result);
     }
 
     #[Test]
@@ -48,9 +51,12 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->create(['name' => 'name']);
+        $result = $this->client->crm->lists->folders->create([
+            'name' => 'name', 'parentFolderId' => 'parentFolderId',
+        ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListFolderCreateResponse::class, $result);
     }
 
     #[Test]
@@ -62,7 +68,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->crm->lists->folders->delete('folderId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -74,7 +81,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->crm->lists->folders->get([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListFolderFetchResponse::class, $result);
     }
 
     #[Test]
@@ -89,7 +97,8 @@ final class FoldersTest extends TestCase
             ['folderId' => 'folderId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListFolderFetchResponse::class, $result);
     }
 
     #[Test]
@@ -104,7 +113,8 @@ final class FoldersTest extends TestCase
             ['folderId' => 'folderId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListFolderFetchResponse::class, $result);
     }
 
     #[Test]
@@ -118,7 +128,8 @@ final class FoldersTest extends TestCase
             'listId' => 'listId', 'newFolderId' => 'newFolderId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -132,7 +143,8 @@ final class FoldersTest extends TestCase
             'listId' => 'listId', 'newFolderId' => 'newFolderId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -144,6 +156,7 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->crm->lists->folders->rename('folderId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListFolderFetchResponse::class, $result);
     }
 }

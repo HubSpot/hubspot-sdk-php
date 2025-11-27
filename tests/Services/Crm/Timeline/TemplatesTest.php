@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Timeline\CollectionResponseTimelineEventTemplateNoPaging;
+use HubspotSDK\Crm\Timeline\TimelineEventTemplate;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -53,7 +55,8 @@ final class TemplatesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventTemplate::class, $result);
     }
 
     #[Test]
@@ -108,10 +111,13 @@ final class TemplatesTest extends TestCase
                         'updatedAt' => '2020-02-12T20:58:26Z',
                     ],
                 ],
+                'detailTemplate' => 'Registration occurred at {{#formatDate timestamp}}{{/formatDate}}\n\n#### Questions\n{{#each extraData.questions}}\n  **{{question}}**: {{answer}}\n{{/each}}',
+                'headerTemplate' => 'Registered for [{{petName}}](https://my.petspot.com/pets/{{petName}})',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventTemplate::class, $result);
     }
 
     #[Test]
@@ -139,7 +145,8 @@ final class TemplatesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventTemplate::class, $result);
     }
 
     #[Test]
@@ -196,10 +203,13 @@ final class TemplatesTest extends TestCase
                         'updatedAt' => '2020-02-12T20:58:26Z',
                     ],
                 ],
+                'detailTemplate' => 'Registration occurred at {{#formatDate timestamp}}{{/formatDate}}\n\n#### Questions\n{{#each extraData.questions}}\n  **{{question}}**: {{answer}}\n{{/each}}\n\nEDIT',
+                'headerTemplate' => 'Registered for [{{petName}}](https://my.petspot.com/pets/{{petName}})',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventTemplate::class, $result);
     }
 
     #[Test]
@@ -211,7 +221,11 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->list(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseTimelineEventTemplateNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -226,7 +240,8 @@ final class TemplatesTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -241,7 +256,8 @@ final class TemplatesTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -256,7 +272,8 @@ final class TemplatesTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventTemplate::class, $result);
     }
 
     #[Test]
@@ -271,6 +288,7 @@ final class TemplatesTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventTemplate::class, $result);
     }
 }

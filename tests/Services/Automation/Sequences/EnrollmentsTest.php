@@ -2,6 +2,8 @@
 
 namespace Tests\Services\Automation\Sequences;
 
+use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentLiteResponse;
+use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
 use HubspotSDK\Client;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -43,7 +45,11 @@ final class EnrollmentsTest extends TestCase
             'sequenceId' => 'sequenceId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            PublicSequenceEnrollmentLiteResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -58,9 +64,14 @@ final class EnrollmentsTest extends TestCase
             'contactId' => 'contactId',
             'senderEmail' => 'senderEmail',
             'sequenceId' => 'sequenceId',
+            'senderAliasAddress' => 'senderAliasAddress',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            PublicSequenceEnrollmentLiteResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -74,6 +85,7 @@ final class EnrollmentsTest extends TestCase
             'contactId'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSequenceEnrollmentResponse::class, $result);
     }
 }

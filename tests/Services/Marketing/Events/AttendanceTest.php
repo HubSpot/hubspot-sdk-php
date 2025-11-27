@@ -3,6 +3,8 @@
 namespace Tests\Services\Marketing\Events;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Events\BatchResponseSubscriberEmailResponse;
+use HubspotSDK\Marketing\Events\BatchResponseSubscriberVidResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -56,7 +58,8 @@ final class AttendanceTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSubscriberVidResponse::class, $result);
     }
 
     #[Test]
@@ -86,7 +89,8 @@ final class AttendanceTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSubscriberVidResponse::class, $result);
     }
 
     #[Test]
@@ -117,7 +121,11 @@ final class AttendanceTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseSubscriberEmailResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -148,7 +156,11 @@ final class AttendanceTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseSubscriberEmailResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -178,7 +190,8 @@ final class AttendanceTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSubscriberVidResponse::class, $result);
     }
 
     #[Test]
@@ -204,11 +217,13 @@ final class AttendanceTest extends TestCase
                             'vid' => 0,
                         ],
                     ],
+                    'externalAccountId' => 'externalAccountId',
                 ],
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSubscriberVidResponse::class, $result);
     }
 
     #[Test]
@@ -239,7 +254,11 @@ final class AttendanceTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseSubscriberEmailResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -266,10 +285,15 @@ final class AttendanceTest extends TestCase
                             'properties' => ['foo' => 'string'],
                         ],
                     ],
+                    'externalAccountId' => 'externalAccountId',
                 ],
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseSubscriberEmailResponse::class,
+            $result
+        );
     }
 }

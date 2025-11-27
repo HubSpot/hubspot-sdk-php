@@ -3,6 +3,7 @@
 namespace Tests\Services\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsSubscriptionDefinition;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -45,6 +46,10 @@ final class DefinitionsTest extends TestCase
             ->list([])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ActionResponseWithResultsSubscriptionDefinition::class,
+            $result
+        );
     }
 }

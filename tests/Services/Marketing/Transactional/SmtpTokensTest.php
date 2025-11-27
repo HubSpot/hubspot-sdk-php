@@ -3,6 +3,8 @@
 namespace Tests\Services\Marketing\Transactional;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Transactional\SmtpAPITokenView;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +42,8 @@ final class SmtpTokensTest extends TestCase
             'campaignName' => 'campaignName', 'createContact' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SmtpAPITokenView::class, $result);
     }
 
     #[Test]
@@ -54,7 +57,8 @@ final class SmtpTokensTest extends TestCase
             'campaignName' => 'campaignName', 'createContact' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SmtpAPITokenView::class, $result);
     }
 
     #[Test]
@@ -66,7 +70,8 @@ final class SmtpTokensTest extends TestCase
 
         $result = $this->client->marketing->transactional->smtpTokens->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -80,7 +85,8 @@ final class SmtpTokensTest extends TestCase
             'tokenId'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -94,7 +100,8 @@ final class SmtpTokensTest extends TestCase
             'tokenId'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SmtpAPITokenView::class, $result);
     }
 
     #[Test]
@@ -112,6 +119,7 @@ final class SmtpTokensTest extends TestCase
             ->resetPassword('tokenId')
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SmtpAPITokenView::class, $result);
     }
 }

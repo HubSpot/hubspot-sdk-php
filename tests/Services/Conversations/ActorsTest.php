@@ -3,6 +3,7 @@
 namespace Tests\Services\Conversations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\BatchResponsePublicActor;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +41,8 @@ final class ActorsTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePublicActor::class, $result);
     }
 
     #[Test]
@@ -51,10 +53,11 @@ final class ActorsTest extends TestCase
         }
 
         $result = $this->client->conversations->actors->batchRead([
-            'inputs' => ['string'],
+            'inputs' => ['string'], 'property' => 'property',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePublicActor::class, $result);
     }
 
     #[Test]
@@ -66,6 +69,7 @@ final class ActorsTest extends TestCase
 
         $result = $this->client->conversations->actors->get('actorId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNotNull($result);
     }
 }

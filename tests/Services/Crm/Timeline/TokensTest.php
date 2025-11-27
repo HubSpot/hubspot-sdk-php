@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -46,7 +47,8 @@ final class TokensTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventTemplateToken::class, $result);
     }
 
     #[Test]
@@ -63,10 +65,18 @@ final class TokensTest extends TestCase
                 'label' => 'Pet Type',
                 'name' => 'petType',
                 'type' => 'enumeration',
+                'createdAt' => '2020-02-12T20:58:26Z',
+                'objectPropertyName' => 'customPropertyPetType',
+                'options' => [
+                    ['label' => 'Dog', 'value' => 'dog'],
+                    ['label' => 'Cat', 'value' => 'cat'],
+                ],
+                'updatedAt' => '2020-02-12T20:58:26Z',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventTemplateToken::class, $result);
     }
 
     #[Test]
@@ -85,7 +95,8 @@ final class TokensTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventTemplateToken::class, $result);
     }
 
     #[Test]
@@ -101,10 +112,17 @@ final class TokensTest extends TestCase
                 'appId' => 0,
                 'eventTemplateId' => 'eventTemplateId',
                 'label' => 'petType edit',
+                'objectPropertyName' => 'objectPropertyName',
+                'options' => [
+                    ['label' => 'Dog', 'value' => 'dog'],
+                    ['label' => 'Cat', 'value' => 'cat'],
+                    ['label' => 'Bird', 'value' => 'bird'],
+                ],
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TimelineEventTemplateToken::class, $result);
     }
 
     #[Test]
@@ -119,7 +137,8 @@ final class TokensTest extends TestCase
             ['appId' => 0, 'eventTemplateId' => 'eventTemplateId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -134,6 +153,7 @@ final class TokensTest extends TestCase
             ['appId' => 0, 'eventTemplateId' => 'eventTemplateId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

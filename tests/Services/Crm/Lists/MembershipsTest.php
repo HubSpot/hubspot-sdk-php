@@ -3,6 +3,9 @@
 namespace Tests\Services\Crm\Lists;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Lists\APICollectionResponseRecordListMembershipNoPaging;
+use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +41,8 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->list('listId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -48,12 +52,10 @@ final class MembershipsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->memberships->add(
-            'listId',
-            ['body' => ['string']]
-        );
+        $result = $this->client->crm->lists->memberships->add('listId', ['string']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MembershipsUpdateResponse::class, $result);
     }
 
     #[Test]
@@ -63,12 +65,10 @@ final class MembershipsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->memberships->add(
-            'listId',
-            ['body' => ['string']]
-        );
+        $result = $this->client->crm->lists->memberships->add('listId', ['string']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MembershipsUpdateResponse::class, $result);
     }
 
     #[Test]
@@ -83,7 +83,8 @@ final class MembershipsTest extends TestCase
             ['listId' => 'listId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -98,7 +99,8 @@ final class MembershipsTest extends TestCase
             ['listId' => 'listId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -116,7 +118,8 @@ final class MembershipsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MembershipsUpdateResponse::class, $result);
     }
 
     #[Test]
@@ -134,7 +137,8 @@ final class MembershipsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MembershipsUpdateResponse::class, $result);
     }
 
     #[Test]
@@ -149,7 +153,11 @@ final class MembershipsTest extends TestCase
             ['objectTypeId' => 'objectTypeId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            APICollectionResponseRecordListMembershipNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -164,7 +172,11 @@ final class MembershipsTest extends TestCase
             ['objectTypeId' => 'objectTypeId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            APICollectionResponseRecordListMembershipNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -182,7 +194,8 @@ final class MembershipsTest extends TestCase
             ->getPageOrderedByAddedToListDate('listId', [])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -194,10 +207,11 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->remove(
             'listId',
-            ['body' => ['string']]
+            ['string']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MembershipsUpdateResponse::class, $result);
     }
 
     #[Test]
@@ -209,10 +223,11 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->remove(
             'listId',
-            ['body' => ['string']]
+            ['string']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MembershipsUpdateResponse::class, $result);
     }
 
     #[Test]
@@ -224,6 +239,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->removeAll('listId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

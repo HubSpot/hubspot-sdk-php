@@ -3,6 +3,8 @@
 namespace Tests\Services\Marketing\Events;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Events\AttendanceCounters;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -47,7 +49,8 @@ final class ParticipationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AttendanceCounters::class, $result);
     }
 
     #[Test]
@@ -68,7 +71,8 @@ final class ParticipationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AttendanceCounters::class, $result);
     }
 
     #[Test]
@@ -80,7 +84,8 @@ final class ParticipationsTest extends TestCase
 
         $result = $this->client->marketing->events->participations->getByID(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AttendanceCounters::class, $result);
     }
 
     #[Test]
@@ -98,7 +103,8 @@ final class ParticipationsTest extends TestCase
             ->listBreakdownByContact('contactIdentifier', [])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -119,7 +125,8 @@ final class ParticipationsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -136,11 +143,18 @@ final class ParticipationsTest extends TestCase
             ->participations
             ->listBreakdownByExternalAccountAndEventID(
                 'externalEventId',
-                ['externalAccountId' => 'externalAccountId']
+                [
+                    'externalAccountId' => 'externalAccountId',
+                    'after' => 'after',
+                    'contactIdentifier' => 'contactIdentifier',
+                    'limit' => 0,
+                    'state' => 'state',
+                ],
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -158,6 +172,7 @@ final class ParticipationsTest extends TestCase
             ->listBreakdownByID(0, [])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 }

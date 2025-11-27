@@ -3,6 +3,9 @@
 namespace Tests\Services\Webhooks;
 
 use HubspotSDK\Client;
+use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
+use HubspotSDK\Webhooks\SubscriptionListResponse;
+use HubspotSDK\Webhooks\SubscriptionResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +44,8 @@ final class SubscriptionsTest extends TestCase
             ['eventType' => 'contact.propertyChange']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -53,10 +57,16 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->create(
             0,
-            ['eventType' => 'contact.propertyChange']
+            [
+                'eventType' => 'contact.propertyChange',
+                'active' => true,
+                'objectTypeId' => 'objectTypeId',
+                'propertyName' => 'email',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -68,7 +78,8 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->update(0, ['appId' => 0]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -78,9 +89,13 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->update(0, ['appId' => 0]);
+        $result = $this->client->webhooks->subscriptions->update(
+            0,
+            ['appId' => 0, 'active' => true]
+        );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -92,7 +107,8 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->list(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionListResponse::class, $result);
     }
 
     #[Test]
@@ -104,7 +120,8 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->delete(0, ['appId' => 0]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -116,7 +133,8 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->delete(0, ['appId' => 0]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -128,7 +146,8 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->get(0, ['appId' => 0]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -140,7 +159,8 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->get(0, ['appId' => 0]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -155,7 +175,8 @@ final class SubscriptionsTest extends TestCase
             ['inputs' => [['id' => 0, 'active' => true]]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -170,6 +191,7 @@ final class SubscriptionsTest extends TestCase
             ['inputs' => [['id' => 0, 'active' => true]]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSubscriptionResponse::class, $result);
     }
 }

@@ -3,6 +3,9 @@
 namespace Tests\Services\Crm\Pipelines;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineStageNoPaging;
+use HubspotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
+use HubspotSDK\Crm\Pipelines\PipelineStage;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -46,7 +49,8 @@ final class StagesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
     }
 
     #[Test]
@@ -66,7 +70,8 @@ final class StagesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
     }
 
     #[Test]
@@ -85,7 +90,8 @@ final class StagesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
     }
 
     #[Test]
@@ -101,10 +107,14 @@ final class StagesTest extends TestCase
                 'objectType' => 'objectType',
                 'pipelineId' => 'pipelineId',
                 'metadata' => ['ticketState' => 'CLOSED'],
+                'archived' => true,
+                'displayOrder' => 1,
+                'label' => 'Done',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
     }
 
     #[Test]
@@ -119,7 +129,11 @@ final class StagesTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePipelineStageNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -134,7 +148,11 @@ final class StagesTest extends TestCase
             ['objectType' => 'objectType']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePipelineStageNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -149,7 +167,8 @@ final class StagesTest extends TestCase
             ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -164,7 +183,8 @@ final class StagesTest extends TestCase
             ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -179,7 +199,8 @@ final class StagesTest extends TestCase
             ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
     }
 
     #[Test]
@@ -194,7 +215,8 @@ final class StagesTest extends TestCase
             ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
     }
 
     #[Test]
@@ -209,7 +231,11 @@ final class StagesTest extends TestCase
             ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicAuditInfoNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -224,7 +250,11 @@ final class StagesTest extends TestCase
             ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicAuditInfoNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -245,7 +275,8 @@ final class StagesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
     }
 
     #[Test]
@@ -266,6 +297,7 @@ final class StagesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
     }
 }

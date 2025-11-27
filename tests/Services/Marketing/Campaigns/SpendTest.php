@@ -3,6 +3,7 @@
 namespace Tests\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Campaigns\PublicSpendItem;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +42,8 @@ final class SpendTest extends TestCase
             ['amount' => 0, 'name' => 'name', 'order' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSpendItem::class, $result);
     }
 
     #[Test]
@@ -53,10 +55,16 @@ final class SpendTest extends TestCase
 
         $result = $this->client->marketing->campaigns->spend->create(
             'campaignGuid',
-            ['amount' => 0, 'name' => 'name', 'order' => 0]
+            [
+                'amount' => 0,
+                'name' => 'name',
+                'order' => 0,
+                'description' => 'description',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSpendItem::class, $result);
     }
 
     #[Test]
@@ -76,7 +84,8 @@ final class SpendTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSpendItem::class, $result);
     }
 
     #[Test]
@@ -93,10 +102,12 @@ final class SpendTest extends TestCase
                 'amount' => 0,
                 'name' => 'name',
                 'order' => 0,
+                'description' => 'description',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSpendItem::class, $result);
     }
 
     #[Test]
@@ -111,7 +122,8 @@ final class SpendTest extends TestCase
             ['campaignGuid' => 'campaignGuid']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -126,7 +138,8 @@ final class SpendTest extends TestCase
             ['campaignGuid' => 'campaignGuid']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -141,7 +154,8 @@ final class SpendTest extends TestCase
             ['campaignGuid' => 'campaignGuid']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSpendItem::class, $result);
     }
 
     #[Test]
@@ -156,6 +170,7 @@ final class SpendTest extends TestCase
             ['campaignGuid' => 'campaignGuid']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicSpendItem::class, $result);
     }
 }

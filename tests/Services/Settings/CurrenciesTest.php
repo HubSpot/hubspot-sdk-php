@@ -3,6 +3,12 @@
 namespace Tests\Services\Settings;
 
 use HubspotSDK\Client;
+use HubspotSDK\Page;
+use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate;
+use HubspotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
+use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
+use HubspotSDK\Settings\Currencies\CompanyCurrency;
+use HubspotSDK\Settings\Currencies\ExchangeRate;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +46,8 @@ final class CurrenciesTest extends TestCase
             'inputs' => [['conversionRate' => 0, 'fromCurrencyCode' => 'AED']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseExchangeRate::class, $result);
     }
 
     #[Test]
@@ -60,7 +67,8 @@ final class CurrenciesTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseExchangeRate::class, $result);
     }
 
     #[Test]
@@ -74,7 +82,8 @@ final class CurrenciesTest extends TestCase
             'inputs' => [['id' => '37295']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseExchangeRate::class, $result);
     }
 
     #[Test]
@@ -88,7 +97,8 @@ final class CurrenciesTest extends TestCase
             'inputs' => [['id' => '37295']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseExchangeRate::class, $result);
     }
 
     #[Test]
@@ -102,7 +112,8 @@ final class CurrenciesTest extends TestCase
             'inputs' => [['id' => 'id', 'conversionRate' => 0]],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseExchangeRate::class, $result);
     }
 
     #[Test]
@@ -122,7 +133,8 @@ final class CurrenciesTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseExchangeRate::class, $result);
     }
 
     #[Test]
@@ -136,7 +148,8 @@ final class CurrenciesTest extends TestCase
             'conversionRate' => 0, 'fromCurrencyCode' => 'AED',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExchangeRate::class, $result);
     }
 
     #[Test]
@@ -147,10 +160,13 @@ final class CurrenciesTest extends TestCase
         }
 
         $result = $this->client->settings->currencies->createExchangeRate([
-            'conversionRate' => 0, 'fromCurrencyCode' => 'AED',
+            'conversionRate' => 0,
+            'fromCurrencyCode' => 'AED',
+            'effectiveAt' => '2019-12-27T18:11:19.117Z',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExchangeRate::class, $result);
     }
 
     #[Test]
@@ -162,7 +178,8 @@ final class CurrenciesTest extends TestCase
 
         $result = $this->client->settings->currencies->getCompanyCurrency();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CompanyCurrency::class, $result);
     }
 
     #[Test]
@@ -176,7 +193,8 @@ final class CurrenciesTest extends TestCase
             'exchangeRateId'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExchangeRate::class, $result);
     }
 
     #[Test]
@@ -188,7 +206,11 @@ final class CurrenciesTest extends TestCase
 
         $result = $this->client->settings->currencies->listCodes();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseCurrencyCodeInfoNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -200,7 +222,11 @@ final class CurrenciesTest extends TestCase
 
         $result = $this->client->settings->currencies->listCurrentExchangeRates();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseExchangeRateNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -212,7 +238,8 @@ final class CurrenciesTest extends TestCase
 
         $result = $this->client->settings->currencies->listExchangeRates([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -226,7 +253,8 @@ final class CurrenciesTest extends TestCase
             'currencyCode' => 'AED',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CompanyCurrency::class, $result);
     }
 
     #[Test]
@@ -240,7 +268,8 @@ final class CurrenciesTest extends TestCase
             'currencyCode' => 'AED',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CompanyCurrency::class, $result);
     }
 
     #[Test]
@@ -255,7 +284,8 @@ final class CurrenciesTest extends TestCase
             ['conversionRate' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExchangeRate::class, $result);
     }
 
     #[Test]
@@ -267,10 +297,11 @@ final class CurrenciesTest extends TestCase
 
         $result = $this->client->settings->currencies->updateExchangeRate(
             'exchangeRateId',
-            ['conversionRate' => 0]
+            ['conversionRate' => 0, 'effectiveAt' => '2019-12-27T18:11:19.117Z'],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExchangeRate::class, $result);
     }
 
     #[Test]
@@ -286,7 +317,8 @@ final class CurrenciesTest extends TestCase
             'visibleInUI' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -302,6 +334,7 @@ final class CurrenciesTest extends TestCase
             'visibleInUI' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

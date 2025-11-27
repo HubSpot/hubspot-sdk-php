@@ -40,7 +40,8 @@ final class SendTest extends TestCase
             'eventName' => 'eventName', 'properties' => ['foo' => 'string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -51,10 +52,17 @@ final class SendTest extends TestCase
         }
 
         $result = $this->client->events->send->send([
-            'eventName' => 'eventName', 'properties' => ['foo' => 'string'],
+            'eventName' => 'eventName',
+            'properties' => ['foo' => 'string'],
+            'email' => 'email',
+            'objectId' => 'objectId',
+            'occurredAt' => '2019-12-27T18:11:19.117Z',
+            'utk' => 'utk',
+            'uuid' => 'uuid',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -70,7 +78,8 @@ final class SendTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -94,6 +103,7 @@ final class SendTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

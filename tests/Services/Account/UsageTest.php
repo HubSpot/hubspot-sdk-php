@@ -2,6 +2,7 @@
 
 namespace Tests\Services\Account;
 
+use HubspotSDK\Account\CollectionResponseAPIUsage;
 use HubspotSDK\Client;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -38,6 +39,7 @@ final class UsageTest extends TestCase
 
         $result = $this->client->account->usage->getDailyPrivateAppsUsage();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CollectionResponseAPIUsage::class, $result);
     }
 }

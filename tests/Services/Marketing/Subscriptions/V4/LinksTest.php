@@ -3,6 +3,7 @@
 namespace Tests\Services\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Subscriptions\V4\LinkGenerationResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +41,8 @@ final class LinksTest extends TestCase
             'channel' => 'EMAIL', 'subscriberIdString' => 'subscriberIdString',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(LinkGenerationResponse::class, $result);
     }
 
     #[Test]
@@ -51,9 +53,14 @@ final class LinksTest extends TestCase
         }
 
         $result = $this->client->marketing->subscriptions->v4->links->create([
-            'channel' => 'EMAIL', 'subscriberIdString' => 'subscriberIdString',
+            'channel' => 'EMAIL',
+            'subscriberIdString' => 'subscriberIdString',
+            'businessUnitId' => 0,
+            'language' => 'language',
+            'subscriptionId' => 0,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(LinkGenerationResponse::class, $result);
     }
 }

@@ -3,6 +3,7 @@
 namespace Tests\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -51,7 +52,8 @@ final class ChannelAccountStagingTokensTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelAccountStagingToken::class, $result);
     }
 
     #[Test]
@@ -76,6 +78,7 @@ final class ChannelAccountStagingTokensTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelAccountStagingToken::class, $result);
     }
 }

@@ -3,6 +3,9 @@
 namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
+use HubspotSDK\Crm\Exports\PublicExportResponse;
+use HubspotSDK\TaskLocator;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -36,9 +39,22 @@ final class ExportsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->exports->createAsync();
+        $result = $this->client->crm->exports->createAsync([
+            'associatedObjectType' => ['string'],
+            'exportInternalValuesOptions' => ['NAMES'],
+            'exportName' => 'exportName',
+            'exportType' => 'VIEW',
+            'format' => 'XLS',
+            'includeLabeledAssociations' => true,
+            'includePrimaryDisplayPropertyForAssociatedObjects' => true,
+            'language' => 'EN',
+            'objectProperties' => ['string'],
+            'objectType' => 'objectType',
+            'overrideAssociatedObjectsPerDefinitionPerRowLimit' => true,
+        ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TaskLocator::class, $result);
     }
 
     #[Test]
@@ -50,7 +66,8 @@ final class ExportsTest extends TestCase
 
         $result = $this->client->crm->exports->get(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicExportResponse::class, $result);
     }
 
     #[Test]
@@ -62,6 +79,7 @@ final class ExportsTest extends TestCase
 
         $result = $this->client->crm->exports->getStatus(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ActionResponseWithSingleResultUri::class, $result);
     }
 }

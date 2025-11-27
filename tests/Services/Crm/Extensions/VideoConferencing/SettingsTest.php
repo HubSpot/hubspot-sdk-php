@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Extensions\VideoConferencing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Extensions\VideoConferencing\ExternalSettings;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -45,7 +46,8 @@ final class SettingsTest extends TestCase
             ->update(0, ['createMeetingUrl' => 'https://example.com/create-meeting'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExternalSettings::class, $result);
     }
 
     #[Test]
@@ -61,10 +63,20 @@ final class SettingsTest extends TestCase
             ->extensions
             ->videoConferencing
             ->settings
-            ->update(0, ['createMeetingUrl' => 'https://example.com/create-meeting'])
+            ->update(
+                0,
+                [
+                    'createMeetingUrl' => 'https://example.com/create-meeting',
+                    'deleteMeetingUrl' => 'https://example.com/delete-meeting',
+                    'fetchAccountsUri' => 'fetchAccountsUri',
+                    'updateMeetingUrl' => 'https://example.com/update-meeting',
+                    'userVerifyUrl' => 'https://example.com/user-verify',
+                ],
+            )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExternalSettings::class, $result);
     }
 
     #[Test]
@@ -83,7 +95,8 @@ final class SettingsTest extends TestCase
             ->delete(0)
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -97,6 +110,7 @@ final class SettingsTest extends TestCase
             0
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ExternalSettings::class, $result);
     }
 }

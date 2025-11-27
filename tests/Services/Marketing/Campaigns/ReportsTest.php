@@ -3,6 +3,9 @@
 namespace Tests\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Campaigns\MetricsCounters;
+use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -44,7 +47,8 @@ final class ReportsTest extends TestCase
             ->getAttributionMetrics('campaignGuid', [])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MetricsCounters::class, $result);
     }
 
     #[Test]
@@ -62,7 +66,8 @@ final class ReportsTest extends TestCase
             ->getRevenueAttribution('campaignGuid', [])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RevenueAttributionAggregate::class, $result);
     }
 
     #[Test]
@@ -80,7 +85,8 @@ final class ReportsTest extends TestCase
             ->listContactIDsByType('contactType', ['campaignGuid' => 'campaignGuid'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -95,9 +101,19 @@ final class ReportsTest extends TestCase
             ->marketing
             ->campaigns
             ->reports
-            ->listContactIDsByType('contactType', ['campaignGuid' => 'campaignGuid'])
+            ->listContactIDsByType(
+                'contactType',
+                [
+                    'campaignGuid' => 'campaignGuid',
+                    'after' => 'after',
+                    'endDate' => 'endDate',
+                    'limit' => 0,
+                    'startDate' => 'startDate',
+                ],
+            )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 }

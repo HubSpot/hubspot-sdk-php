@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Associations\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Associations\V4\ReportCreationResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -45,6 +46,7 @@ final class ReportTest extends TestCase
             ->requestHighUsageReport(0)
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ReportCreationResponse::class, $result);
     }
 }

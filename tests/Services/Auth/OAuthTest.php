@@ -2,6 +2,9 @@
 
 namespace Tests\Services\Auth;
 
+use HubspotSDK\Auth\OAuth\AccessTokenInfoResponse;
+use HubspotSDK\Auth\OAuth\RefreshTokenInfoResponse;
+use HubspotSDK\Auth\OAuth\TokenResponseIf;
 use HubspotSDK\Client;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -38,7 +41,8 @@ final class OAuthTest extends TestCase
 
         $result = $this->client->auth->oauth->createAccessToken([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TokenResponseIf::class, $result);
     }
 
     #[Test]
@@ -50,7 +54,8 @@ final class OAuthTest extends TestCase
 
         $result = $this->client->auth->oauth->deleteRefreshToken('token');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -62,7 +67,8 @@ final class OAuthTest extends TestCase
 
         $result = $this->client->auth->oauth->getAccessToken('token');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AccessTokenInfoResponse::class, $result);
     }
 
     #[Test]
@@ -74,6 +80,7 @@ final class OAuthTest extends TestCase
 
         $result = $this->client->auth->oauth->getRefreshToken('token');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RefreshTokenInfoResponse::class, $result);
     }
 }

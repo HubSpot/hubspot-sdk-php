@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\Lists;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Lists\PublicBatchMigrationMapping;
+use HubspotSDK\Crm\Lists\PublicMigrationMapping;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -37,10 +39,11 @@ final class MappingTest extends TestCase
         }
 
         $result = $this->client->crm->lists->mapping->batchCreateIDMapping([
-            'body' => ['string'],
+            'string',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicBatchMigrationMapping::class, $result);
     }
 
     #[Test]
@@ -51,10 +54,11 @@ final class MappingTest extends TestCase
         }
 
         $result = $this->client->crm->lists->mapping->batchCreateIDMapping([
-            'body' => ['string'],
+            'string',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicBatchMigrationMapping::class, $result);
     }
 
     #[Test]
@@ -66,6 +70,7 @@ final class MappingTest extends TestCase
 
         $result = $this->client->crm->lists->mapping->getIDMapping([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicMigrationMapping::class, $result);
     }
 }

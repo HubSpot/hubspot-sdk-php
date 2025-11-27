@@ -3,6 +3,8 @@
 namespace Tests\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaign;
+use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +42,8 @@ final class BatchTest extends TestCase
             'inputs' => [['properties' => ['foo' => 'string']]],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePublicCampaign::class, $result);
     }
 
     #[Test]
@@ -54,7 +57,8 @@ final class BatchTest extends TestCase
             'inputs' => [['properties' => ['foo' => 'string']]],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePublicCampaign::class, $result);
     }
 
     #[Test]
@@ -68,7 +72,8 @@ final class BatchTest extends TestCase
             'inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePublicCampaign::class, $result);
     }
 
     #[Test]
@@ -82,7 +87,8 @@ final class BatchTest extends TestCase
             'inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePublicCampaign::class, $result);
     }
 
     #[Test]
@@ -96,7 +102,8 @@ final class BatchTest extends TestCase
             'inputs' => [['id' => 'id']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -110,7 +117,8 @@ final class BatchTest extends TestCase
             'inputs' => [['id' => 'id']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -124,7 +132,11 @@ final class BatchTest extends TestCase
             'inputs' => [['id' => 'id']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicCampaignWithAssets::class,
+            $result
+        );
     }
 
     #[Test]
@@ -136,8 +148,15 @@ final class BatchTest extends TestCase
 
         $result = $this->client->marketing->campaigns->batch->get([
             'inputs' => [['id' => 'id']],
+            'endDate' => 'endDate',
+            'properties' => ['string'],
+            'startDate' => 'startDate',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicCampaignWithAssets::class,
+            $result
+        );
     }
 }

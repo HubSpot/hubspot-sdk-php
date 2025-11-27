@@ -3,6 +3,12 @@
 namespace Tests\Services\Cms\Pages;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
+use HubspotSDK\Cms\Pages\BatchResponsePage;
+use HubspotSDK\Cms\Pages\ContentFolder;
+use HubspotSDK\Cms\Pages\Page;
+use HubspotSDK\Cms\Pages\VersionContentFolder;
+use HubspotSDK\Cms\Pages\VersionPage;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -175,7 +181,8 @@ final class LandingPagesTest extends TestCase
             'widgets' => ['foo' => []],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -331,7 +338,8 @@ final class LandingPagesTest extends TestCase
             'widgets' => ['foo' => []],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -483,7 +491,8 @@ final class LandingPagesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -639,10 +648,12 @@ final class LandingPagesTest extends TestCase
                 'useFeaturedImage' => true,
                 'widgetContainers' => ['foo' => []],
                 'widgets' => ['foo' => []],
+                'archived' => true,
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -654,7 +665,8 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
     }
 
     #[Test]
@@ -666,7 +678,8 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->delete('objectId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -680,7 +693,8 @@ final class LandingPagesTest extends TestCase
             'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -691,10 +705,14 @@ final class LandingPagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->landingPages->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
+            'id' => 'id',
+            'language' => 'language',
+            'primaryId' => 'primaryId',
+            'primaryLanguage' => 'primaryLanguage',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -706,7 +724,8 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->clone(['id' => 'id']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -716,9 +735,12 @@ final class LandingPagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->landingPages->clone(['id' => 'id']);
+        $result = $this->client->cms->pages->landingPages->clone([
+            'id' => 'id', 'cloneName' => 'cloneName',
+        ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -732,7 +754,8 @@ final class LandingPagesTest extends TestCase
             'contentId' => 'contentId', 'variationName' => 'variationName',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -746,7 +769,8 @@ final class LandingPagesTest extends TestCase
             'contentId' => 'contentId', 'variationName' => 'variationName',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -901,7 +925,8 @@ final class LandingPagesTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePage::class, $result);
     }
 
     #[Test]
@@ -1065,7 +1090,8 @@ final class LandingPagesTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePage::class, $result);
     }
 
     #[Test]
@@ -1085,7 +1111,8 @@ final class LandingPagesTest extends TestCase
             'updated' => '2019-12-27T18:11:19.117Z',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ContentFolder::class, $result);
     }
 
     #[Test]
@@ -1105,7 +1132,8 @@ final class LandingPagesTest extends TestCase
             'updated' => '2019-12-27T18:11:19.117Z',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ContentFolder::class, $result);
     }
 
     #[Test]
@@ -1129,7 +1157,8 @@ final class LandingPagesTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseContentFolder::class, $result);
     }
 
     #[Test]
@@ -1153,7 +1182,8 @@ final class LandingPagesTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseContentFolder::class, $result);
     }
 
     #[Test]
@@ -1167,7 +1197,8 @@ final class LandingPagesTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -1179,9 +1210,12 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->createLanguageVariation([
             'id' => 'id',
+            'language' => 'language',
+            'primaryLanguage' => 'primaryLanguage',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -1195,7 +1229,8 @@ final class LandingPagesTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1209,7 +1244,8 @@ final class LandingPagesTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1224,7 +1260,8 @@ final class LandingPagesTest extends TestCase
             []
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1238,7 +1275,8 @@ final class LandingPagesTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1252,7 +1290,8 @@ final class LandingPagesTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1266,7 +1305,8 @@ final class LandingPagesTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1280,7 +1320,8 @@ final class LandingPagesTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1294,7 +1335,8 @@ final class LandingPagesTest extends TestCase
             'abTestId' => 'abTestId', 'winnerId' => 'winnerId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1308,7 +1350,8 @@ final class LandingPagesTest extends TestCase
             'abTestId' => 'abTestId', 'winnerId' => 'winnerId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1320,7 +1363,8 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->get('objectId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -1334,7 +1378,8 @@ final class LandingPagesTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePage::class, $result);
     }
 
     #[Test]
@@ -1345,10 +1390,11 @@ final class LandingPagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->landingPages->getBatch([
-            'inputs' => ['string'],
+            'inputs' => ['string'], 'archived' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePage::class, $result);
     }
 
     #[Test]
@@ -1360,7 +1406,8 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->getDraft('objectId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -1375,7 +1422,8 @@ final class LandingPagesTest extends TestCase
             []
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ContentFolder::class, $result);
     }
 
     #[Test]
@@ -1390,7 +1438,8 @@ final class LandingPagesTest extends TestCase
             ['objectId' => 'objectId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VersionContentFolder::class, $result);
     }
 
     #[Test]
@@ -1405,7 +1454,8 @@ final class LandingPagesTest extends TestCase
             ['objectId' => 'objectId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VersionContentFolder::class, $result);
     }
 
     #[Test]
@@ -1419,7 +1469,8 @@ final class LandingPagesTest extends TestCase
             'inputs' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseContentFolder::class, $result);
     }
 
     #[Test]
@@ -1430,10 +1481,11 @@ final class LandingPagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->landingPages->getFoldersBatch([
-            'inputs' => ['string'],
+            'inputs' => ['string'], 'archived' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseContentFolder::class, $result);
     }
 
     #[Test]
@@ -1448,7 +1500,8 @@ final class LandingPagesTest extends TestCase
             ['objectId' => 'objectId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VersionPage::class, $result);
     }
 
     #[Test]
@@ -1463,7 +1516,8 @@ final class LandingPagesTest extends TestCase
             ['objectId' => 'objectId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(VersionPage::class, $result);
     }
 
     #[Test]
@@ -1478,7 +1532,8 @@ final class LandingPagesTest extends TestCase
             []
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
     }
 
     #[Test]
@@ -1490,7 +1545,8 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->listFolders([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
     }
 
     #[Test]
@@ -1505,7 +1561,8 @@ final class LandingPagesTest extends TestCase
             []
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
     }
 
     #[Test]
@@ -1517,7 +1574,8 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->publishDraft('objectId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1531,7 +1589,8 @@ final class LandingPagesTest extends TestCase
             'abTestId' => 'abTestId', 'variationId' => 'variationId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1545,7 +1604,8 @@ final class LandingPagesTest extends TestCase
             'abTestId' => 'abTestId', 'variationId' => 'variationId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1557,7 +1617,8 @@ final class LandingPagesTest extends TestCase
 
         $result = $this->client->cms->pages->landingPages->resetDraft('objectId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1572,7 +1633,8 @@ final class LandingPagesTest extends TestCase
             ['objectId' => 'objectId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ContentFolder::class, $result);
     }
 
     #[Test]
@@ -1587,7 +1649,8 @@ final class LandingPagesTest extends TestCase
             ['objectId' => 'objectId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ContentFolder::class, $result);
     }
 
     #[Test]
@@ -1602,7 +1665,8 @@ final class LandingPagesTest extends TestCase
             ['objectId' => 'objectId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -1617,7 +1681,8 @@ final class LandingPagesTest extends TestCase
             ['objectId' => 'objectId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -1632,7 +1697,8 @@ final class LandingPagesTest extends TestCase
             ['objectId' => 'objectId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -1647,7 +1713,8 @@ final class LandingPagesTest extends TestCase
             ['objectId' => 'objectId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -1661,7 +1728,8 @@ final class LandingPagesTest extends TestCase
             'id' => 'id', 'publishDate' => '2019-12-27T18:11:19.117Z',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1675,7 +1743,8 @@ final class LandingPagesTest extends TestCase
             'id' => 'id', 'publishDate' => '2019-12-27T18:11:19.117Z',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1689,7 +1758,8 @@ final class LandingPagesTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1703,7 +1773,8 @@ final class LandingPagesTest extends TestCase
             'id' => 'id',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -1717,7 +1788,8 @@ final class LandingPagesTest extends TestCase
             'inputs' => [[]],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePage::class, $result);
     }
 
     #[Test]
@@ -1728,10 +1800,11 @@ final class LandingPagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->landingPages->updateBatch([
-            'inputs' => [[]],
+            'inputs' => [[]], 'archived' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponsePage::class, $result);
     }
 
     #[Test]
@@ -1883,7 +1956,8 @@ final class LandingPagesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -2042,7 +2116,8 @@ final class LandingPagesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -2065,7 +2140,8 @@ final class LandingPagesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ContentFolder::class, $result);
     }
 
     #[Test]
@@ -2085,10 +2161,12 @@ final class LandingPagesTest extends TestCase
                 'name' => 'name',
                 'parentFolderId' => 0,
                 'updated' => '2019-12-27T18:11:19.117Z',
+                'archived' => true,
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ContentFolder::class, $result);
     }
 
     #[Test]
@@ -2102,7 +2180,8 @@ final class LandingPagesTest extends TestCase
             'inputs' => [[]],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseContentFolder::class, $result);
     }
 
     #[Test]
@@ -2113,10 +2192,11 @@ final class LandingPagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->landingPages->updateFoldersBatch([
-            'inputs' => [[]],
+            'inputs' => [[]], 'archived' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseContentFolder::class, $result);
     }
 
     #[Test]
@@ -2130,7 +2210,8 @@ final class LandingPagesTest extends TestCase
             'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -2144,6 +2225,7 @@ final class LandingPagesTest extends TestCase
             'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

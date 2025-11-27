@@ -3,6 +3,7 @@
 namespace Tests\Services\Scheduler\Meetings;
 
 use HubspotSDK\Client;
+use HubspotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -64,7 +65,11 @@ final class CalendarTest extends TestCase
             'timezone' => 'timezone',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ExternalCalenderMeetingEventResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -109,6 +114,10 @@ final class CalendarTest extends TestCase
             'timezone' => 'timezone',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ExternalCalenderMeetingEventResponse::class,
+            $result
+        );
     }
 }

@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
+use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -48,7 +50,8 @@ final class TranscriptsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TranscriptCreateResponse::class, $result);
     }
 
     #[Test]
@@ -71,7 +74,8 @@ final class TranscriptsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TranscriptCreateResponse::class, $result);
     }
 
     #[Test]
@@ -85,7 +89,8 @@ final class TranscriptsTest extends TestCase
             'transcriptId'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -99,6 +104,7 @@ final class TranscriptsTest extends TestCase
             'transcriptId'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TranscriptResponse::class, $result);
     }
 }

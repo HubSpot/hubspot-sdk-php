@@ -3,6 +3,8 @@
 namespace Tests\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\PublicChannelAccount;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -47,7 +49,8 @@ final class ChannelAccountsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelAccount::class, $result);
     }
 
     #[Test]
@@ -64,11 +67,17 @@ final class ChannelAccountsTest extends TestCase
             ->channelAccounts
             ->create(
                 0,
-                ['authorized' => true, 'inboxId' => 'inboxId', 'name' => 'name']
+                [
+                    'authorized' => true,
+                    'inboxId' => 'inboxId',
+                    'name' => 'name',
+                    'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
+                ],
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelAccount::class, $result);
     }
 
     #[Test]
@@ -86,7 +95,8 @@ final class ChannelAccountsTest extends TestCase
             ->update(0, ['channelId' => 0])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelAccount::class, $result);
     }
 
     #[Test]
@@ -101,10 +111,11 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->update(0, ['channelId' => 0])
+            ->update(0, ['channelId' => 0, 'authorized' => true, 'name' => 'name'])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelAccount::class, $result);
     }
 
     #[Test]
@@ -122,7 +133,8 @@ final class ChannelAccountsTest extends TestCase
             ->list(0, [])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -140,7 +152,8 @@ final class ChannelAccountsTest extends TestCase
             ->get(0, ['channelId' => 0])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelAccount::class, $result);
     }
 
     #[Test]
@@ -155,9 +168,10 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->get(0, ['channelId' => 0])
+            ->get(0, ['channelId' => 0, 'archived' => true])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicChannelAccount::class, $result);
     }
 }

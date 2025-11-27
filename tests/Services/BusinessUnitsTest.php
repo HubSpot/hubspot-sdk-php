@@ -2,6 +2,7 @@
 
 namespace Tests\Services;
 
+use HubspotSDK\BusinessUnits\CollectionResponsePublicBusinessUnitNoPaging;
 use HubspotSDK\Client;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -38,6 +39,10 @@ final class BusinessUnitsTest extends TestCase
 
         $result = $this->client->businessUnits->getByUserID('userId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicBusinessUnitNoPaging::class,
+            $result
+        );
     }
 }

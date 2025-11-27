@@ -3,6 +3,7 @@
 namespace Tests\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -53,7 +54,11 @@ final class MessagesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ConversationsPublicConversationsMessage::class,
+            $result
+        );
     }
 
     #[Test]
@@ -89,10 +94,23 @@ final class MessagesTest extends TestCase
                 ],
                 'text' => 'text',
                 'timestamp' => '2019-12-27T18:11:19.117Z',
+                'inReplyToId' => 'inReplyToId',
+                'integrationIdempotencyId' => 'integrationIdempotencyId',
+                'integrationThreadId' => 'integrationThreadId',
+                'preResolvedContacts' => [
+                    'contacts' => [
+                        ['contactPropertiesLeadingToMatch' => ['string'], 'contactVid' => 0],
+                    ],
+                ],
+                'richText' => 'richText',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ConversationsPublicConversationsMessage::class,
+            $result
+        );
     }
 
     #[Test]
@@ -107,7 +125,11 @@ final class MessagesTest extends TestCase
             ['channelId' => 0, 'statusType' => 'FAILED']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ConversationsPublicConversationsMessage::class,
+            $result
+        );
     }
 
     #[Test]
@@ -119,10 +141,18 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
-            ['channelId' => 0, 'statusType' => 'FAILED']
+            [
+                'channelId' => 0,
+                'statusType' => 'FAILED',
+                'errorMessage' => 'errorMessage',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ConversationsPublicConversationsMessage::class,
+            $result
+        );
     }
 
     #[Test]
@@ -137,7 +167,11 @@ final class MessagesTest extends TestCase
             ['channelId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ConversationsPublicConversationsMessage::class,
+            $result
+        );
     }
 
     #[Test]
@@ -152,6 +186,10 @@ final class MessagesTest extends TestCase
             ['channelId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            ConversationsPublicConversationsMessage::class,
+            $result
+        );
     }
 }

@@ -3,6 +3,9 @@
 namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +41,8 @@ final class FeedbackSubmissionsTest extends TestCase
 
         $result = $this->client->crm->objects->feedbackSubmissions->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -53,7 +57,8 @@ final class FeedbackSubmissionsTest extends TestCase
             []
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
     }
 
     #[Test]
@@ -77,7 +82,11 @@ final class FeedbackSubmissionsTest extends TestCase
             'sorts' => ['string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseWithTotalSimplePublicObject::class,
+            $result
+        );
     }
 
     #[Test]
@@ -105,8 +114,13 @@ final class FeedbackSubmissionsTest extends TestCase
             'limit' => 0,
             'properties' => ['string'],
             'sorts' => ['string'],
+            'query' => 'query',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseWithTotalSimplePublicObject::class,
+            $result
+        );
     }
 }

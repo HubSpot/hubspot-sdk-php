@@ -3,6 +3,7 @@
 namespace Tests\Services\Cms\Hubdb\Rows;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +42,8 @@ final class BatchTest extends TestCase
             ['inputs' => [['id' => 'id']]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -56,7 +58,8 @@ final class BatchTest extends TestCase
             ['inputs' => [['id' => 'id', 'name' => 'name']]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -75,7 +78,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -100,7 +104,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -115,7 +120,8 @@ final class BatchTest extends TestCase
             ['inputs' => ['string']]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -130,7 +136,8 @@ final class BatchTest extends TestCase
             ['inputs' => ['string']]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -145,7 +152,8 @@ final class BatchTest extends TestCase
             ['inputs' => ['string']]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -160,7 +168,8 @@ final class BatchTest extends TestCase
             ['inputs' => ['string']]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -175,7 +184,8 @@ final class BatchTest extends TestCase
             ['inputs' => ['string']]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -190,7 +200,8 @@ final class BatchTest extends TestCase
             ['inputs' => ['string']]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -209,7 +220,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -235,7 +247,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -254,7 +267,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 
     #[Test]
@@ -280,6 +294,7 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
     }
 }

@@ -3,6 +3,9 @@
 namespace Tests\Services\Cms\Hubdb;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Hubdb\HubDBTableV3;
+use HubspotSDK\Cms\Hubdb\ImportResult;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -57,7 +60,8 @@ final class TablesTest extends TestCase
             'useForPages' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 
     #[Test]
@@ -98,7 +102,8 @@ final class TablesTest extends TestCase
             'useForPages' => true,
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 
     #[Test]
@@ -110,7 +115,8 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -122,7 +128,8 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->delete('tableIdOrName');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -137,7 +144,8 @@ final class TablesTest extends TestCase
             ['copyRows' => true, 'isHubspotDefined' => true]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 
     #[Test]
@@ -149,10 +157,16 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->cloneDraft(
             'tableIdOrName',
-            ['copyRows' => true, 'isHubspotDefined' => true]
+            [
+                'copyRows' => true,
+                'isHubspotDefined' => true,
+                'newLabel' => 'newLabel',
+                'newName' => 'newName',
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 
     #[Test]
@@ -167,7 +181,8 @@ final class TablesTest extends TestCase
             ['tableIdOrName' => 'tableIdOrName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -182,7 +197,8 @@ final class TablesTest extends TestCase
             ['tableIdOrName' => 'tableIdOrName']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -194,7 +210,8 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->export('tableIdOrName', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -209,7 +226,8 @@ final class TablesTest extends TestCase
             []
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -221,7 +239,8 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->get('tableIdOrName', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 
     #[Test]
@@ -233,7 +252,8 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->getDraft('tableIdOrName', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 
     #[Test]
@@ -248,7 +268,8 @@ final class TablesTest extends TestCase
             []
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ImportResult::class, $result);
     }
 
     #[Test]
@@ -260,7 +281,8 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->listDraft([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -275,7 +297,8 @@ final class TablesTest extends TestCase
             []
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 
     #[Test]
@@ -290,7 +313,8 @@ final class TablesTest extends TestCase
             []
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 
     #[Test]
@@ -302,7 +326,8 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->unpublish('tableIdOrName', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 
     #[Test]
@@ -336,7 +361,8 @@ final class TablesTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 
     #[Test]
@@ -377,9 +403,13 @@ final class TablesTest extends TestCase
                 'label' => 'label',
                 'name' => 'name',
                 'useForPages' => true,
+                'archived' => true,
+                'includeForeignIds' => true,
+                'isGetLocalizedSchema' => true,
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(HubDBTableV3::class, $result);
     }
 }

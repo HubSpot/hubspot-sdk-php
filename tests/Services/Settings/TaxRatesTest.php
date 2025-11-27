@@ -3,6 +3,8 @@
 namespace Tests\Services\Settings;
 
 use HubspotSDK\Client;
+use HubspotSDK\Page;
+use HubspotSDK\Settings\TaxRates\PublicTaxRateGroup;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,8 @@ final class TaxRatesTest extends TestCase
 
         $result = $this->client->settings->taxRates->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -50,6 +53,7 @@ final class TaxRatesTest extends TestCase
 
         $result = $this->client->settings->taxRates->get('taxRateGroupId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicTaxRateGroup::class, $result);
     }
 }

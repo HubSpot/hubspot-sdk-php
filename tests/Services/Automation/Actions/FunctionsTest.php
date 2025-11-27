@@ -2,6 +2,9 @@
 
 namespace Tests\Services\Automation\Actions;
 
+use HubspotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
+use HubspotSDK\Automation\Actions\PublicActionFunction;
+use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
 use HubspotSDK\Client;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -41,7 +44,11 @@ final class FunctionsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicActionFunctionIdentifierNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -56,7 +63,11 @@ final class FunctionsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicActionFunctionIdentifierNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -75,7 +86,8 @@ final class FunctionsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -94,7 +106,8 @@ final class FunctionsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -106,15 +119,11 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->createOrReplace(
             'functionId',
-            [
-                'appId' => 0,
-                'definitionId' => 'definitionId',
-                'functionType' => 'POST_ACTION_EXECUTION',
-                'body' => 'body',
-            ],
+            'body'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionFunctionIdentifier::class, $result);
     }
 
     #[Test]
@@ -126,15 +135,11 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->createOrReplace(
             'functionId',
-            [
-                'appId' => 0,
-                'definitionId' => 'definitionId',
-                'functionType' => 'POST_ACTION_EXECUTION',
-                'body' => 'body',
-            ],
+            'body'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionFunctionIdentifier::class, $result);
     }
 
     #[Test]
@@ -149,13 +154,11 @@ final class FunctionsTest extends TestCase
             ->automation
             ->actions
             ->functions
-            ->createOrReplaceByFunctionType(
-                'POST_ACTION_EXECUTION',
-                ['appId' => 0, 'definitionId' => 'definitionId', 'body' => 'body'],
-            )
+            ->createOrReplaceByFunctionType('POST_ACTION_EXECUTION', 'body')
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionFunctionIdentifier::class, $result);
     }
 
     #[Test]
@@ -170,13 +173,11 @@ final class FunctionsTest extends TestCase
             ->automation
             ->actions
             ->functions
-            ->createOrReplaceByFunctionType(
-                'POST_ACTION_EXECUTION',
-                ['appId' => 0, 'definitionId' => 'definitionId', 'body' => 'body'],
-            )
+            ->createOrReplaceByFunctionType('POST_ACTION_EXECUTION', 'body')
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionFunctionIdentifier::class, $result);
     }
 
     #[Test]
@@ -197,7 +198,8 @@ final class FunctionsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -218,7 +220,8 @@ final class FunctionsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -237,7 +240,8 @@ final class FunctionsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionFunction::class, $result);
     }
 
     #[Test]
@@ -256,7 +260,8 @@ final class FunctionsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionFunction::class, $result);
     }
 
     #[Test]
@@ -271,7 +276,8 @@ final class FunctionsTest extends TestCase
             ['appId' => 0, 'definitionId' => 'definitionId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionFunction::class, $result);
     }
 
     #[Test]
@@ -286,6 +292,7 @@ final class FunctionsTest extends TestCase
             ['appId' => 0, 'definitionId' => 'definitionId']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionFunction::class, $result);
     }
 }

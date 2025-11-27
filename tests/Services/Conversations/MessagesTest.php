@@ -3,6 +3,8 @@
 namespace Tests\Services\Conversations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Conversations\PublicMessageContent;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -36,9 +38,23 @@ final class MessagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->messages->create(0);
+        $result = $this->client->conversations->messages->create(
+            0,
+            [
+                'attachments' => [['fileId' => 'fileId', 'type' => 'FILE']],
+                'channelAccountId' => 'channelAccountId',
+                'channelId' => 'channelId',
+                'recipients' => [
+                    ['deliveryIdentifiers' => [['type' => 'type', 'value' => 'value']]],
+                ],
+                'senderActorId' => 'senderActorId',
+                'text' => 'text',
+                'type' => 'MESSAGE',
+            ],
+        );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNotNull($result);
     }
 
     #[Test]
@@ -50,7 +66,8 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->list(0, []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -65,7 +82,8 @@ final class MessagesTest extends TestCase
             ['threadId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNotNull($result);
     }
 
     #[Test]
@@ -77,10 +95,11 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            ['threadId' => 0]
+            ['threadId' => 0, 'property' => 'property']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNotNull($result);
     }
 
     #[Test]
@@ -95,7 +114,8 @@ final class MessagesTest extends TestCase
             ['threadId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicMessageContent::class, $result);
     }
 
     #[Test]
@@ -107,9 +127,10 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            ['threadId' => 0]
+            ['threadId' => 0, 'property' => 'property']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicMessageContent::class, $result);
     }
 }

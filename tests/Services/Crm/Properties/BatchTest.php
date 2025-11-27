@@ -2,6 +2,7 @@
 
 namespace Tests\Services\Crm\Properties;
 
+use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -51,7 +52,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseProperty::class, $result);
     }
 
     #[Test]
@@ -94,7 +96,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseProperty::class, $result);
     }
 
     #[Test]
@@ -109,7 +112,8 @@ final class BatchTest extends TestCase
             ['inputs' => [['name' => 'name']]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -124,7 +128,8 @@ final class BatchTest extends TestCase
             ['inputs' => [['name' => 'name']]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -143,7 +148,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseProperty::class, $result);
     }
 
     #[Test]
@@ -159,9 +165,11 @@ final class BatchTest extends TestCase
                 'archived' => true,
                 'dataSensitivity' => 'highly_sensitive',
                 'inputs' => [['name' => 'name']],
+                'locale' => 'locale',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseProperty::class, $result);
     }
 }

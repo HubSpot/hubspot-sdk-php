@@ -3,6 +3,8 @@
 namespace Tests\Services\Marketing\Emails;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
+use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,8 @@ final class StatisticsTest extends TestCase
 
         $result = $this->client->marketing->emails->statistics->get([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AggregateEmailStatistics::class, $result);
     }
 
     #[Test]
@@ -50,6 +53,10 @@ final class StatisticsTest extends TestCase
 
         $result = $this->client->marketing->emails->statistics->getHistogram([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseWithTotalEmailStatisticIntervalNoPaging::class,
+            $result
+        );
     }
 }

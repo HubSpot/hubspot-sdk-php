@@ -3,6 +3,7 @@
 namespace Tests\Services\Marketing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\EmailSendStatusView;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +41,8 @@ final class SingleSendTest extends TestCase
             'emailId' => 0, 'message' => ['to' => 'to'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EmailSendStatusView::class, $result);
     }
 
     #[Test]
@@ -60,8 +62,11 @@ final class SingleSendTest extends TestCase
                 'replyTo' => ['string'],
                 'sendId' => 'sendId',
             ],
+            'contactProperties' => ['foo' => 'string'],
+            'customProperties' => ['foo' => []],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EmailSendStatusView::class, $result);
     }
 }

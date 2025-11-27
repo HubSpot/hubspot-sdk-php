@@ -3,6 +3,10 @@
 namespace Tests\Services\Crm\Associations\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Associations\BatchResponseVoid;
+use HubspotSDK\Crm\Associations\V4\BatchResponseLabelsBetweenObjectPair;
+use HubspotSDK\Crm\Associations\V4\BatchResponsePublicAssociationMultiWithLabel;
+use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -55,7 +59,11 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseLabelsBetweenObjectPair::class,
+            $result
+        );
     }
 
     #[Test]
@@ -84,7 +92,11 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseLabelsBetweenObjectPair::class,
+            $result
+        );
     }
 
     #[Test]
@@ -104,7 +116,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseVoid::class, $result);
     }
 
     #[Test]
@@ -124,7 +137,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseVoid::class, $result);
     }
 
     #[Test]
@@ -142,7 +156,11 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicDefaultAssociation::class,
+            $result
+        );
     }
 
     #[Test]
@@ -160,7 +178,11 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicDefaultAssociation::class,
+            $result
+        );
     }
 
     #[Test]
@@ -189,7 +211,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseVoid::class, $result);
     }
 
     #[Test]
@@ -218,7 +241,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseVoid::class, $result);
     }
 
     #[Test]
@@ -233,7 +257,11 @@ final class BatchTest extends TestCase
             ['fromObjectType' => 'fromObjectType', 'inputs' => [['id' => 'id']]],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicAssociationMultiWithLabel::class,
+            $result
+        );
     }
 
     #[Test]
@@ -251,6 +279,10 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicAssociationMultiWithLabel::class,
+            $result
+        );
     }
 }

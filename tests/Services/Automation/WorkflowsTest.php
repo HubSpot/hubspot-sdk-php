@@ -2,7 +2,10 @@
 
 namespace Tests\Services\Automation;
 
+use HubspotSDK\Automation\Workflows\BatchResponseAPIFlow;
+use HubspotSDK\Automation\Workflows\BatchResponseFlowIDWorkflowIDMappingResponse;
 use HubspotSDK\Client;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -36,9 +39,41 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->create();
+        $result = $this->client->automation->workflows->create([
+            'actions' => [
+                [
+                    'actionId' => 'actionId',
+                    'inputValue' => [
+                        'actionId' => 'actionId',
+                        'dataKey' => 'dataKey',
+                        'type' => 'FIELD_DATA',
+                    ],
+                    'staticBranches' => [['branchValue' => 'branchValue']],
+                    'type' => 'STATIC_BRANCH',
+                ],
+            ],
+            'blockedDates' => [['dayOfMonth' => 0, 'month' => 'APRIL']],
+            'canEnrollFromSalesforce' => true,
+            'customProperties' => ['foo' => 'string'],
+            'dataSources' => [
+                [
+                    'associationCategory' => 'HUBSPOT_DEFINED',
+                    'associationTypeId' => 0,
+                    'name' => 'name',
+                    'objectTypeId' => 'objectTypeId',
+                    'type' => 'ASSOCIATION',
+                ],
+            ],
+            'flowType' => 'WORKFLOW',
+            'isEnabled' => true,
+            'objectTypeId' => 'objectTypeId',
+            'suppressionListIds' => [0],
+            'timeWindows' => [['day' => 'FRIDAY']],
+            'type' => 'CONTACT_FLOW',
+        ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNotNull($result);
     }
 
     #[Test]
@@ -48,9 +83,34 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->update('flowId');
+        $result = $this->client->automation->workflows->update(
+            'flowId',
+            [
+                'actions' => [
+                    [
+                        'actionId' => 'actionId',
+                        'inputValue' => [
+                            'actionId' => 'actionId',
+                            'dataKey' => 'dataKey',
+                            'type' => 'FIELD_DATA',
+                        ],
+                        'staticBranches' => [['branchValue' => 'branchValue']],
+                        'type' => 'STATIC_BRANCH',
+                    ],
+                ],
+                'blockedDates' => [['dayOfMonth' => 0, 'month' => 'APRIL']],
+                'canEnrollFromSalesforce' => true,
+                'customProperties' => ['foo' => 'string'],
+                'isEnabled' => true,
+                'revisionId' => 'revisionId',
+                'suppressionListIds' => [0],
+                'timeWindows' => [['day' => 'FRIDAY']],
+                'type' => 'CONTACT_FLOW',
+            ],
+        );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNotNull($result);
     }
 
     #[Test]
@@ -62,7 +122,8 @@ final class WorkflowsTest extends TestCase
 
         $result = $this->client->automation->workflows->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -74,7 +135,8 @@ final class WorkflowsTest extends TestCase
 
         $result = $this->client->automation->workflows->delete(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -88,7 +150,8 @@ final class WorkflowsTest extends TestCase
             'inputs' => [['flowId' => 'flowId', 'type' => 'FLOW_ID']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseAPIFlow::class, $result);
     }
 
     #[Test]
@@ -102,7 +165,8 @@ final class WorkflowsTest extends TestCase
             'inputs' => [['flowId' => 'flowId', 'type' => 'FLOW_ID']],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseAPIFlow::class, $result);
     }
 
     #[Test]
@@ -121,7 +185,11 @@ final class WorkflowsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseFlowIDWorkflowIDMappingResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -140,7 +208,11 @@ final class WorkflowsTest extends TestCase
             ],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseFlowIDWorkflowIDMappingResponse::class,
+            $result
+        );
     }
 
     #[Test]
@@ -152,7 +224,8 @@ final class WorkflowsTest extends TestCase
 
         $result = $this->client->automation->workflows->get('flowId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNotNull($result);
     }
 
     #[Test]
@@ -164,6 +237,7 @@ final class WorkflowsTest extends TestCase
 
         $result = $this->client->automation->workflows->listEmailCampaigns([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 }

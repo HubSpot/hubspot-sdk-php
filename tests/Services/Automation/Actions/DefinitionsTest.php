@@ -2,7 +2,9 @@
 
 namespace Tests\Services\Automation\Actions;
 
+use HubspotSDK\Automation\Actions\PublicActionDefinition;
 use HubspotSDK\Client;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -65,7 +67,8 @@ final class DefinitionsTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionDefinition::class, $result);
     }
 
     #[Test]
@@ -129,10 +132,48 @@ final class DefinitionsTest extends TestCase
                 ],
                 'objectTypes' => ['string'],
                 'published' => true,
+                'archivedAt' => 0,
+                'executionRules' => [
+                    ['conditions' => ['foo' => []], 'labelName' => 'labelName'],
+                ],
+                'inputFieldDependencies' => [
+                    [
+                        'controllingFieldName' => 'controllingFieldName',
+                        'dependencyType' => 'SINGLE_FIELD',
+                        'dependentFieldNames' => ['string'],
+                    ],
+                ],
+                'objectRequestOptions' => ['properties' => ['string']],
+                'outputFields' => [
+                    [
+                        'typeDefinition' => [
+                            'externalOptions' => true,
+                            'name' => 'name',
+                            'options' => [
+                                [
+                                    'hidden' => false,
+                                    'label' => 'Option A',
+                                    'value' => 'A',
+                                    'description' => 'Choice number one',
+                                    'displayOrder' => 1,
+                                ],
+                            ],
+                            'type' => 'bool',
+                            'description' => 'description',
+                            'externalOptionsReferenceType' => 'externalOptionsReferenceType',
+                            'fieldType' => 'booleancheckbox',
+                            'helpText' => 'helpText',
+                            'label' => 'label',
+                            'optionsUrl' => 'optionsUrl',
+                            'referencedObjectType' => 'ABANDONED_CART',
+                        ],
+                    ],
+                ],
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionDefinition::class, $result);
     }
 
     #[Test]
@@ -147,7 +188,8 @@ final class DefinitionsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionDefinition::class, $result);
     }
 
     #[Test]
@@ -159,10 +201,93 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->update(
             'definitionId',
-            ['appId' => 0]
+            [
+                'appId' => 0,
+                'actionUrl' => 'actionUrl',
+                'executionRules' => [
+                    ['conditions' => ['foo' => []], 'labelName' => 'labelName'],
+                ],
+                'inputFieldDependencies' => [
+                    [
+                        'controllingFieldName' => 'controllingFieldName',
+                        'dependencyType' => 'SINGLE_FIELD',
+                        'dependentFieldNames' => ['string'],
+                    ],
+                ],
+                'inputFields' => [
+                    [
+                        'isRequired' => true,
+                        'typeDefinition' => [
+                            'externalOptions' => true,
+                            'name' => 'name',
+                            'options' => [
+                                [
+                                    'hidden' => false,
+                                    'label' => 'Option A',
+                                    'value' => 'A',
+                                    'description' => 'Choice number one',
+                                    'displayOrder' => 1,
+                                ],
+                            ],
+                            'type' => 'bool',
+                            'description' => 'description',
+                            'externalOptionsReferenceType' => 'externalOptionsReferenceType',
+                            'fieldType' => 'booleancheckbox',
+                            'helpText' => 'helpText',
+                            'label' => 'label',
+                            'optionsUrl' => 'optionsUrl',
+                            'referencedObjectType' => 'ABANDONED_CART',
+                        ],
+                        'automationFieldType' => 'automationFieldType',
+                        'supportedValueTypes' => ['STATIC_VALUE'],
+                    ],
+                ],
+                'labels' => [
+                    'foo' => [
+                        'actionName' => 'actionName',
+                        'actionCardContent' => 'actionCardContent',
+                        'actionDescription' => 'actionDescription',
+                        'appDisplayName' => 'appDisplayName',
+                        'executionRules' => ['foo' => 'string'],
+                        'inputFieldDescriptions' => ['foo' => 'string'],
+                        'inputFieldLabels' => ['foo' => 'string'],
+                        'inputFieldOptionLabels' => ['foo' => ['foo' => 'string']],
+                        'outputFieldLabels' => ['foo' => 'string'],
+                    ],
+                ],
+                'objectRequestOptions' => ['properties' => ['string']],
+                'objectTypes' => ['string'],
+                'outputFields' => [
+                    [
+                        'typeDefinition' => [
+                            'externalOptions' => true,
+                            'name' => 'name',
+                            'options' => [
+                                [
+                                    'hidden' => false,
+                                    'label' => 'Option A',
+                                    'value' => 'A',
+                                    'description' => 'Choice number one',
+                                    'displayOrder' => 1,
+                                ],
+                            ],
+                            'type' => 'bool',
+                            'description' => 'description',
+                            'externalOptionsReferenceType' => 'externalOptionsReferenceType',
+                            'fieldType' => 'booleancheckbox',
+                            'helpText' => 'helpText',
+                            'label' => 'label',
+                            'optionsUrl' => 'optionsUrl',
+                            'referencedObjectType' => 'ABANDONED_CART',
+                        ],
+                    ],
+                ],
+                'published' => true,
+            ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionDefinition::class, $result);
     }
 
     #[Test]
@@ -174,7 +299,8 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->list(0, []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -189,7 +315,8 @@ final class DefinitionsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -204,7 +331,8 @@ final class DefinitionsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -219,7 +347,8 @@ final class DefinitionsTest extends TestCase
             ['appId' => 0]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionDefinition::class, $result);
     }
 
     #[Test]
@@ -231,9 +360,10 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->get(
             'definitionId',
-            ['appId' => 0]
+            ['appId' => 0, 'archived' => true]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicActionDefinition::class, $result);
     }
 }

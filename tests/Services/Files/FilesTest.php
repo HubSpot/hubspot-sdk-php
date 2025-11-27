@@ -3,6 +3,12 @@
 namespace Tests\Services\Files;
 
 use HubspotSDK\Client;
+use HubspotSDK\Files\File;
+use HubspotSDK\Files\FileActionResponse;
+use HubspotSDK\Files\FileStat;
+use HubspotSDK\Files\ImportFromURLTaskLocator;
+use HubspotSDK\Files\SignedURL;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +44,8 @@ final class FilesTest extends TestCase
 
         $result = $this->client->files->files->update('321669910225', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(File::class, $result);
     }
 
     #[Test]
@@ -50,7 +57,8 @@ final class FilesTest extends TestCase
 
         $result = $this->client->files->files->delete('321669910225');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -62,7 +70,8 @@ final class FilesTest extends TestCase
 
         $result = $this->client->files->files->gdprDelete('321669910225');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -74,7 +83,8 @@ final class FilesTest extends TestCase
 
         $result = $this->client->files->files->get('321669910225', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(File::class, $result);
     }
 
     #[Test]
@@ -86,7 +96,8 @@ final class FilesTest extends TestCase
 
         $result = $this->client->files->files->getByPath('path', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FileStat::class, $result);
     }
 
     #[Test]
@@ -98,7 +109,8 @@ final class FilesTest extends TestCase
 
         $result = $this->client->files->files->getImportTaskStatus('taskId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FileActionResponse::class, $result);
     }
 
     #[Test]
@@ -110,7 +122,8 @@ final class FilesTest extends TestCase
 
         $result = $this->client->files->files->getSignedURL('321669910225', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SignedURL::class, $result);
     }
 
     #[Test]
@@ -124,7 +137,8 @@ final class FilesTest extends TestCase
             'access' => 'HIDDEN_INDEXABLE', 'url' => 'url',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ImportFromURLTaskLocator::class, $result);
     }
 
     #[Test]
@@ -135,10 +149,20 @@ final class FilesTest extends TestCase
         }
 
         $result = $this->client->files->files->importFromURLAsync([
-            'access' => 'HIDDEN_INDEXABLE', 'url' => 'url',
+            'access' => 'HIDDEN_INDEXABLE',
+            'url' => 'url',
+            'duplicateValidationScope' => 'ENTIRE_PORTAL',
+            'duplicateValidationStrategy' => 'NONE',
+            'expiresAt' => '2019-12-27T18:11:19.117Z',
+            'folderId' => 'folderId',
+            'folderPath' => 'folderPath',
+            'name' => 'name',
+            'overwrite' => true,
+            'ttl' => 'ttl',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ImportFromURLTaskLocator::class, $result);
     }
 
     #[Test]
@@ -150,7 +174,8 @@ final class FilesTest extends TestCase
 
         $result = $this->client->files->files->replace('321669910225', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(File::class, $result);
     }
 
     #[Test]
@@ -162,7 +187,8 @@ final class FilesTest extends TestCase
 
         $result = $this->client->files->files->search([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -174,6 +200,7 @@ final class FilesTest extends TestCase
 
         $result = $this->client->files->files->upload([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(File::class, $result);
     }
 }

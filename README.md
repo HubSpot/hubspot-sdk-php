@@ -80,7 +80,7 @@ use HubspotSDK\Client;
 
 $client = new Client(accessToken: 'pat-na1-xxxxxxxx-xxxx');
 
-$page = $client->crm->objects->contacts->list([]);
+$page = $client->crm->objects->contacts->list(['limit' => 100]);
 
 var_dump($page);
 

@@ -3,6 +3,8 @@
 namespace Tests\Services\Marketing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Forms\FormDefinitionBase;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,8 @@ final class FormsTest extends TestCase
 
         $result = $this->client->marketing->forms->create();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FormDefinitionBase::class, $result);
     }
 
     #[Test]
@@ -50,7 +53,8 @@ final class FormsTest extends TestCase
 
         $result = $this->client->marketing->forms->update('formId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FormDefinitionBase::class, $result);
     }
 
     #[Test]
@@ -62,7 +66,8 @@ final class FormsTest extends TestCase
 
         $result = $this->client->marketing->forms->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -74,7 +79,8 @@ final class FormsTest extends TestCase
 
         $result = $this->client->marketing->forms->delete('formId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -86,7 +92,8 @@ final class FormsTest extends TestCase
 
         $result = $this->client->marketing->forms->get('formId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FormDefinitionBase::class, $result);
     }
 
     #[Test]
@@ -98,6 +105,7 @@ final class FormsTest extends TestCase
 
         $result = $this->client->marketing->forms->replace('formId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FormDefinitionBase::class, $result);
     }
 }

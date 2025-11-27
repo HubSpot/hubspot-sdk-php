@@ -3,6 +3,9 @@
 namespace Tests\Services\Marketing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Marketing\Campaigns\PublicCampaign;
+use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +43,8 @@ final class CampaignsTest extends TestCase
             'properties' => ['foo' => 'string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCampaign::class, $result);
     }
 
     #[Test]
@@ -54,7 +58,8 @@ final class CampaignsTest extends TestCase
             'properties' => ['foo' => 'string'],
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCampaign::class, $result);
     }
 
     #[Test]
@@ -69,7 +74,8 @@ final class CampaignsTest extends TestCase
             ['properties' => ['foo' => 'string']]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCampaign::class, $result);
     }
 
     #[Test]
@@ -84,7 +90,8 @@ final class CampaignsTest extends TestCase
             ['properties' => ['foo' => 'string']]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCampaign::class, $result);
     }
 
     #[Test]
@@ -96,7 +103,8 @@ final class CampaignsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -108,7 +116,8 @@ final class CampaignsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->delete('campaignGuid');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -120,6 +129,7 @@ final class CampaignsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->get('campaignGuid', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCampaignWithAssets::class, $result);
     }
 }

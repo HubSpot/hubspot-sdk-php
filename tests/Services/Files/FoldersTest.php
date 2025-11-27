@@ -3,6 +3,10 @@
 namespace Tests\Services\Files;
 
 use HubspotSDK\Client;
+use HubspotSDK\Files\Folder;
+use HubspotSDK\Files\FolderActionResponse;
+use HubspotSDK\Files\FolderUpdateTaskLocator;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +42,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->files->folders->create(['name' => 'name']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Folder::class, $result);
     }
 
     #[Test]
@@ -48,9 +53,14 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->create(['name' => 'name']);
+        $result = $this->client->files->folders->create([
+            'name' => 'name',
+            'parentFolderId' => 'parentFolderId',
+            'parentPath' => 'parentPath',
+        ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Folder::class, $result);
     }
 
     #[Test]
@@ -62,7 +72,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->files->folders->deleteByID('321669910225');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -74,7 +85,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->files->folders->deleteByPath('folderPath');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -86,7 +98,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->files->folders->getByID('321669910225', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Folder::class, $result);
     }
 
     #[Test]
@@ -98,7 +111,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->files->folders->getByPath('folderPath', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Folder::class, $result);
     }
 
     #[Test]
@@ -110,7 +124,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->files->folders->getUpdateAsyncStatus('taskId');
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FolderActionResponse::class, $result);
     }
 
     #[Test]
@@ -122,7 +137,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->files->folders->search([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -134,7 +150,8 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->files->folders->updateAsyncByID(['id' => 'id']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FolderUpdateTaskLocator::class, $result);
     }
 
     #[Test]
@@ -144,9 +161,12 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->updateAsyncByID(['id' => 'id']);
+        $result = $this->client->files->folders->updateAsyncByID([
+            'id' => 'id', 'name' => 'name', 'parentFolderId' => 0,
+        ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FolderUpdateTaskLocator::class, $result);
     }
 
     #[Test]
@@ -158,6 +178,7 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->files->folders->updateByID('321669910225', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Folder::class, $result);
     }
 }

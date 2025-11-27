@@ -3,6 +3,9 @@
 namespace Tests\Services\Cms\MediaBridge;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
+use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
+use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -49,7 +52,8 @@ final class EventsTest extends TestCase
             ])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AttentionSpanEvent::class, $result);
     }
 
     #[Test]
@@ -69,10 +73,23 @@ final class EventsTest extends TestCase
                 'occurredTimestamp' => 0,
                 'rawDataMap' => ['foo' => 0],
                 'sessionId' => 'sessionId',
+                '_hsenc' => '_hsenc',
+                'contactId' => 0,
+                'contactUtk' => 'contactUtk',
+                'derivedValues' => ['totalPercentPlayed' => 0, 'totalSecondsPlayed' => 0],
+                'externalId' => 'externalId',
+                'mediaBridgeId' => 0,
+                'mediaName' => 'mediaName',
+                'mediaUrl' => 'mediaUrl',
+                'pageId' => 0,
+                'pageName' => 'pageName',
+                'pageUrl' => 'pageUrl',
+                'rawDataString' => 'rawDataString',
             ])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AttentionSpanEvent::class, $result);
     }
 
     #[Test]
@@ -89,7 +106,8 @@ final class EventsTest extends TestCase
             'state' => 'STARTED',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MediaPlayedEvent::class, $result);
     }
 
     #[Test]
@@ -104,9 +122,21 @@ final class EventsTest extends TestCase
             'occurredTimestamp' => 0,
             'sessionId' => 'sessionId',
             'state' => 'STARTED',
+            '_hsenc' => '_hsenc',
+            'contactId' => 0,
+            'contactUtk' => 'contactUtk',
+            'externalId' => 'externalId',
+            'iframeUrl' => 'iframeUrl',
+            'mediaBridgeId' => 0,
+            'mediaName' => 'mediaName',
+            'mediaUrl' => 'mediaUrl',
+            'pageId' => 0,
+            'pageName' => 'pageName',
+            'pageUrl' => 'pageUrl',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MediaPlayedEvent::class, $result);
     }
 
     #[Test]
@@ -129,7 +159,8 @@ final class EventsTest extends TestCase
             ])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MediaPlayedPercentageEvent::class, $result);
     }
 
     #[Test]
@@ -149,9 +180,20 @@ final class EventsTest extends TestCase
                 'occurredTimestamp' => 0,
                 'playedPercent' => 0,
                 'sessionId' => 'sessionId',
+                '_hsenc' => '_hsenc',
+                'contactId' => 0,
+                'contactUtk' => 'contactUtk',
+                'externalId' => 'externalId',
+                'mediaBridgeId' => 0,
+                'mediaName' => 'mediaName',
+                'mediaUrl' => 'mediaUrl',
+                'pageId' => 0,
+                'pageName' => 'pageName',
+                'pageUrl' => 'pageUrl',
             ])
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MediaPlayedPercentageEvent::class, $result);
     }
 }

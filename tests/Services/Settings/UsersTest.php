@@ -3,6 +3,10 @@
 namespace Tests\Services\Settings;
 
 use HubspotSDK\Client;
+use HubspotSDK\Page;
+use HubspotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
+use HubspotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
+use HubspotSDK\Settings\Users\PublicUser;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -40,7 +44,8 @@ final class UsersTest extends TestCase
             'email' => 'newUser@email.com',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicUser::class, $result);
     }
 
     #[Test]
@@ -52,9 +57,16 @@ final class UsersTest extends TestCase
 
         $result = $this->client->settings->users->create([
             'email' => 'newUser@email.com',
+            'firstName' => 'firstName',
+            'lastName' => 'lastName',
+            'primaryTeamId' => '101',
+            'roleId' => '100',
+            'secondaryTeamIds' => ['102'],
+            'sendWelcomeEmail' => 'true',
         ]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicUser::class, $result);
     }
 
     #[Test]
@@ -66,7 +78,8 @@ final class UsersTest extends TestCase
 
         $result = $this->client->settings->users->update('userId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicUser::class, $result);
     }
 
     #[Test]
@@ -78,7 +91,8 @@ final class UsersTest extends TestCase
 
         $result = $this->client->settings->users->list([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
     }
 
     #[Test]
@@ -90,7 +104,8 @@ final class UsersTest extends TestCase
 
         $result = $this->client->settings->users->delete('userId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -102,7 +117,8 @@ final class UsersTest extends TestCase
 
         $result = $this->client->settings->users->get('userId', []);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicUser::class, $result);
     }
 
     #[Test]
@@ -114,7 +130,11 @@ final class UsersTest extends TestCase
 
         $result = $this->client->settings->users->listRoles();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicPermissionSetNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -126,6 +146,10 @@ final class UsersTest extends TestCase
 
         $result = $this->client->settings->users->listTeams();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicTeamNoPaging::class,
+            $result
+        );
     }
 }

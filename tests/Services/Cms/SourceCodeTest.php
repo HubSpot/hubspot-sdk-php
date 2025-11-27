@@ -2,7 +2,10 @@
 
 namespace Tests\Services\Cms;
 
+use HubspotSDK\ActionResponse;
 use HubspotSDK\Client;
+use HubspotSDK\Cms\SourceCode\AssetFileMetadata;
+use HubspotSDK\TaskLocator;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +44,8 @@ final class SourceCodeTest extends TestCase
             ['environment' => 'environment']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssetFileMetadata::class, $result);
     }
 
     #[Test]
@@ -53,10 +57,11 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->create(
             'path',
-            ['environment' => 'environment']
+            ['environment' => 'environment', 'file' => null]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssetFileMetadata::class, $result);
     }
 
     #[Test]
@@ -71,7 +76,8 @@ final class SourceCodeTest extends TestCase
             ['environment' => 'environment']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -86,7 +92,8 @@ final class SourceCodeTest extends TestCase
             ['environment' => 'environment']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -98,7 +105,8 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->extractAsync(['path' => 'path']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TaskLocator::class, $result);
     }
 
     #[Test]
@@ -110,7 +118,8 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->extractAsync(['path' => 'path']);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TaskLocator::class, $result);
     }
 
     #[Test]
@@ -125,7 +134,8 @@ final class SourceCodeTest extends TestCase
             ['environment' => 'environment']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -140,7 +150,8 @@ final class SourceCodeTest extends TestCase
             ['environment' => 'environment']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -152,7 +163,8 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->getExtractionStatus(0);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ActionResponse::class, $result);
     }
 
     #[Test]
@@ -167,7 +179,8 @@ final class SourceCodeTest extends TestCase
             ['environment' => 'environment']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssetFileMetadata::class, $result);
     }
 
     #[Test]
@@ -179,10 +192,11 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->getMetadata(
             'path',
-            ['environment' => 'environment']
+            ['environment' => 'environment', 'properties' => 'properties']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssetFileMetadata::class, $result);
     }
 
     #[Test]
@@ -197,7 +211,8 @@ final class SourceCodeTest extends TestCase
             ['environment' => 'environment']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssetFileMetadata::class, $result);
     }
 
     #[Test]
@@ -209,10 +224,11 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->upsert(
             'path',
-            ['environment' => 'environment']
+            ['environment' => 'environment', 'file' => null]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssetFileMetadata::class, $result);
     }
 
     #[Test]
@@ -227,7 +243,8 @@ final class SourceCodeTest extends TestCase
             ['environment' => 'environment']
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 
     #[Test]
@@ -239,9 +256,10 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->validate(
             'path',
-            ['environment' => 'environment']
+            ['environment' => 'environment', 'file' => null]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 }

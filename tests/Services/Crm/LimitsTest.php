@@ -3,6 +3,14 @@
 namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Limits\AssociationRecordLimitResponse;
+use HubspotSDK\Crm\Limits\CalculatedPropertyLimitResponse;
+use HubspotSDK\Crm\Limits\CollectionResponseAssociationLabelLimitResponseNoPaging;
+use HubspotSDK\Crm\Limits\CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging;
+use HubspotSDK\Crm\Limits\CustomObjectLimitResponse;
+use HubspotSDK\Crm\Limits\CustomPropertyLimitResponse;
+use HubspotSDK\Crm\Limits\PipelineLimitResponse;
+use HubspotSDK\Crm\Limits\RecordLimitResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +46,11 @@ final class LimitsTest extends TestCase
 
         $result = $this->client->crm->limits->getAssociationLabelLimits([]);
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseAssociationLabelLimitResponseNoPaging::class,
+            $result
+        );
     }
 
     #[Test]
@@ -58,7 +70,8 @@ final class LimitsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssociationRecordLimitResponse::class, $result);
     }
 
     #[Test]
@@ -78,7 +91,8 @@ final class LimitsTest extends TestCase
             )
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssociationRecordLimitResponse::class, $result);
     }
 
     #[Test]
@@ -95,7 +109,11 @@ final class LimitsTest extends TestCase
             ->getAssociationRecordsLimitsFromObjects()
         ;
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging::class,
+            $result,
+        );
     }
 
     #[Test]
@@ -109,7 +127,11 @@ final class LimitsTest extends TestCase
             'fromObjectTypeId'
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging::class,
+            $result,
+        );
     }
 
     #[Test]
@@ -121,7 +143,8 @@ final class LimitsTest extends TestCase
 
         $result = $this->client->crm->limits->getCalculatedPropertyLimits();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CalculatedPropertyLimitResponse::class, $result);
     }
 
     #[Test]
@@ -133,7 +156,8 @@ final class LimitsTest extends TestCase
 
         $result = $this->client->crm->limits->getCustomObjectTypeLimits();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CustomObjectLimitResponse::class, $result);
     }
 
     #[Test]
@@ -145,7 +169,8 @@ final class LimitsTest extends TestCase
 
         $result = $this->client->crm->limits->getCustomPropertyLimits();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CustomPropertyLimitResponse::class, $result);
     }
 
     #[Test]
@@ -157,7 +182,8 @@ final class LimitsTest extends TestCase
 
         $result = $this->client->crm->limits->getPipelineLimits();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineLimitResponse::class, $result);
     }
 
     #[Test]
@@ -169,6 +195,7 @@ final class LimitsTest extends TestCase
 
         $result = $this->client->crm->limits->getRecordLimits();
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RecordLimitResponse::class, $result);
     }
 }

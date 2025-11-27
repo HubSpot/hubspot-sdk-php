@@ -3,6 +3,8 @@
 namespace Tests\Services\Crm\Objects\Objects;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -58,7 +60,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -91,7 +94,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -106,7 +110,8 @@ final class BatchTest extends TestCase
             ['inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]]],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -130,7 +135,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -145,7 +151,8 @@ final class BatchTest extends TestCase
             ['inputs' => [['id' => 'id']]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -160,7 +167,8 @@ final class BatchTest extends TestCase
             ['inputs' => [['id' => 'id']]]
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -179,7 +187,8 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -195,10 +204,13 @@ final class BatchTest extends TestCase
                 'inputs' => [['id' => 'id']],
                 'properties' => ['string'],
                 'propertiesWithHistory' => ['string'],
+                'archived' => true,
+                'idProperty' => 'idProperty',
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -213,7 +225,11 @@ final class BatchTest extends TestCase
             ['inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]]],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseSimplePublicUpsertObject::class,
+            $result
+        );
     }
 
     #[Test]
@@ -237,6 +253,10 @@ final class BatchTest extends TestCase
             ],
         );
 
-        $this->assertTrue(true); // @phpstan-ignore method.alreadyNarrowedType
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseSimplePublicUpsertObject::class,
+            $result
+        );
     }
 }
