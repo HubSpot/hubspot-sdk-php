@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicListFolderShape = array{
  *   id: string,
  *   childLists: list<int>,
- *   childNodes: list<PublicListFolder>,
+ *   childNodes: list<mixed>,
  *   parentFolderId: string,
  *   createdAt?: \DateTimeInterface|null,
  *   name?: string|null,
@@ -40,7 +40,7 @@ final class PublicListFolder implements BaseModel
     #[Api(list: 'int')]
     public array $childLists;
 
-    /** @var list<PublicListFolder> $childNodes */
+    /** @var list<mixed> $childNodes */
     #[Api(list: PublicListFolder::class)]
     public array $childNodes;
 
@@ -111,7 +111,7 @@ final class PublicListFolder implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<int> $childLists
-     * @param list<PublicListFolder> $childNodes
+     * @param list<mixed> $childNodes
      */
     public static function with(
         string $id,
@@ -165,7 +165,7 @@ final class PublicListFolder implements BaseModel
     }
 
     /**
-     * @param list<PublicListFolder> $childNodes
+     * @param list<mixed> $childNodes
      */
     public function withChildNodes(array $childNodes): self
     {

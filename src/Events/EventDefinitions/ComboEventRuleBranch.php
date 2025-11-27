@@ -13,7 +13,7 @@ use HubspotSDK\Events\EventDefinitions\ComboEventRuleBranch\OperationType;
  * @phpstan-type ComboEventRuleBranchShape = array{
  *   composingRules: list<ComboEventRule>,
  *   operationType: value-of<OperationType>,
- *   ruleBranches: list<ComboEventRuleBranch>,
+ *   ruleBranches: list<mixed>,
  * }
  */
 final class ComboEventRuleBranch implements BaseModel
@@ -29,7 +29,7 @@ final class ComboEventRuleBranch implements BaseModel
     #[Api(enum: OperationType::class)]
     public string $operationType;
 
-    /** @var list<ComboEventRuleBranch> $ruleBranches */
+    /** @var list<mixed> $ruleBranches */
     #[Api(list: ComboEventRuleBranch::class)]
     public array $ruleBranches;
 
@@ -64,7 +64,7 @@ final class ComboEventRuleBranch implements BaseModel
      *
      * @param list<ComboEventRule> $composingRules
      * @param OperationType|value-of<OperationType> $operationType
-     * @param list<ComboEventRuleBranch> $ruleBranches
+     * @param list<mixed> $ruleBranches
      */
     public static function with(
         array $composingRules,
@@ -103,7 +103,7 @@ final class ComboEventRuleBranch implements BaseModel
     }
 
     /**
-     * @param list<ComboEventRuleBranch> $ruleBranches
+     * @param list<mixed> $ruleBranches
      */
     public function withRuleBranches(array $ruleBranches): self
     {

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type APIListBranchActionShape = array{
  *   actionId: string,
- *   listBranches: list<APIListBranch>,
+ *   listBranches: list<mixed>,
  *   type: value-of<Type>,
  *   defaultBranch?: APIConnection|null,
  *   defaultBranchName?: string|null,
@@ -26,7 +26,7 @@ final class APIListBranchAction implements BaseModel
     #[Api]
     public string $actionId;
 
-    /** @var list<APIListBranch> $listBranches */
+    /** @var list<mixed> $listBranches */
     #[Api(list: APIListBranch::class)]
     public array $listBranches;
 
@@ -67,7 +67,7 @@ final class APIListBranchAction implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIListBranch> $listBranches
+     * @param list<mixed> $listBranches
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -98,7 +98,7 @@ final class APIListBranchAction implements BaseModel
     }
 
     /**
-     * @param list<APIListBranch> $listBranches
+     * @param list<mixed> $listBranches
      */
     public function withListBranches(array $listBranches): self
     {

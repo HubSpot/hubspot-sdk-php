@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Forms\PaymentLinkRadioField\FieldType;
 /**
  * @phpstan-type PaymentLinkRadioFieldShape = array{
  *   defaultValues: list<string>,
- *   dependentFields: list<DependentField>,
+ *   dependentFields: list<mixed>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
@@ -32,7 +32,7 @@ final class PaymentLinkRadioField implements BaseModel
     #[Api(list: 'string')]
     public array $defaultValues;
 
-    /** @var list<DependentField> $dependentFields */
+    /** @var list<mixed> $dependentFields */
     #[Api(list: DependentField::class)]
     public array $dependentFields;
 
@@ -106,7 +106,7 @@ final class PaymentLinkRadioField implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $defaultValues
-     * @param list<DependentField> $dependentFields
+     * @param list<mixed> $dependentFields
      * @param list<EnumeratedFieldOption> $options
      * @param FieldType|value-of<FieldType> $fieldType
      */
@@ -151,7 +151,7 @@ final class PaymentLinkRadioField implements BaseModel
     }
 
     /**
-     * @param list<DependentField> $dependentFields
+     * @param list<mixed> $dependentFields
      */
     public function withDependentFields(array $dependentFields): self
     {

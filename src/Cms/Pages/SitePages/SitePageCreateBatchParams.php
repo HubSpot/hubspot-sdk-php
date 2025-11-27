@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Pages\SitePagesService::createBatch()
  *
- * @phpstan-type SitePageCreateBatchParamsShape = array{inputs: list<Page>}
+ * @phpstan-type SitePageCreateBatchParamsShape = array{inputs: list<mixed>}
  */
 final class SitePageCreateBatchParams implements BaseModel
 {
@@ -26,7 +26,7 @@ final class SitePageCreateBatchParams implements BaseModel
     /**
      * Pages to input.
      *
-     * @var list<Page> $inputs
+     * @var list<mixed> $inputs
      */
     #[Api(list: Page::class)]
     public array $inputs;
@@ -55,7 +55,7 @@ final class SitePageCreateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Page> $inputs
+     * @param list<mixed> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -69,7 +69,7 @@ final class SitePageCreateBatchParams implements BaseModel
     /**
      * Pages to input.
      *
-     * @param list<Page> $inputs
+     * @param list<mixed> $inputs
      */
     public function withInputs(array $inputs): self
     {

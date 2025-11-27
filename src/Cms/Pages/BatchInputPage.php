@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Wrapper for providing an array of pages as inputs.
  *
- * @phpstan-type BatchInputPageShape = array{inputs: list<Page>}
+ * @phpstan-type BatchInputPageShape = array{inputs: list<mixed>}
  */
 final class BatchInputPage implements BaseModel
 {
@@ -21,7 +21,7 @@ final class BatchInputPage implements BaseModel
     /**
      * Pages to input.
      *
-     * @var list<Page> $inputs
+     * @var list<mixed> $inputs
      */
     #[Api(list: Page::class)]
     public array $inputs;
@@ -50,7 +50,7 @@ final class BatchInputPage implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Page> $inputs
+     * @param list<mixed> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -64,7 +64,7 @@ final class BatchInputPage implements BaseModel
     /**
      * Pages to input.
      *
-     * @param list<Page> $inputs
+     * @param list<mixed> $inputs
      */
     public function withInputs(array $inputs): self
     {

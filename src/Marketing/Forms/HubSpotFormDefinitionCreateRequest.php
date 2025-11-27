@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Forms\HubSpotFormDefinitionCreateRequest\FormType;
  *   configuration: HubSpotFormConfiguration,
  *   createdAt: \DateTimeInterface,
  *   displayOptions: FormDisplayOptions,
- *   fieldGroups: list<FieldGroup>,
+ *   fieldGroups: list<mixed>,
  *   formType: value-of<FormType>,
  *   legalConsentOptions: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess,
  *   name: string,
@@ -43,7 +43,7 @@ final class HubSpotFormDefinitionCreateRequest implements BaseModel
     #[Api]
     public FormDisplayOptions $displayOptions;
 
-    /** @var list<FieldGroup> $fieldGroups */
+    /** @var list<mixed> $fieldGroups */
     #[Api(list: FieldGroup::class)]
     public array $fieldGroups;
 
@@ -106,7 +106,7 @@ final class HubSpotFormDefinitionCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FieldGroup> $fieldGroups
+     * @param list<mixed> $fieldGroups
      * @param FormType|value-of<FormType> $formType
      */
     public static function with(
@@ -175,7 +175,7 @@ final class HubSpotFormDefinitionCreateRequest implements BaseModel
     }
 
     /**
-     * @param list<FieldGroup> $fieldGroups
+     * @param list<mixed> $fieldGroups
      */
     public function withFieldGroups(array $fieldGroups): self
     {

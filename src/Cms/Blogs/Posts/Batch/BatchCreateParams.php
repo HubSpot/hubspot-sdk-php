@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\Posts\BatchService::create()
  *
- * @phpstan-type BatchCreateParamsShape = array{inputs: list<BlogPost>}
+ * @phpstan-type BatchCreateParamsShape = array{inputs: list<mixed>}
  */
 final class BatchCreateParams implements BaseModel
 {
@@ -26,7 +26,7 @@ final class BatchCreateParams implements BaseModel
     /**
      * Blog posts to input.
      *
-     * @var list<BlogPost> $inputs
+     * @var list<mixed> $inputs
      */
     #[Api(list: BlogPost::class)]
     public array $inputs;
@@ -55,7 +55,7 @@ final class BatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BlogPost> $inputs
+     * @param list<mixed> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -69,7 +69,7 @@ final class BatchCreateParams implements BaseModel
     /**
      * Blog posts to input.
      *
-     * @param list<BlogPost> $inputs
+     * @param list<mixed> $inputs
      */
     public function withInputs(array $inputs): self
     {

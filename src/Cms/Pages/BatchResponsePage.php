@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type BatchResponsePageShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<Page>,
+ *   results: list<mixed>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
  *   links?: array<string,string>|null,
@@ -29,7 +29,7 @@ final class BatchResponsePage implements BaseModel
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<Page> $results */
+    /** @var list<mixed> $results */
     #[Api(list: Page::class)]
     public array $results;
 
@@ -77,7 +77,7 @@ final class BatchResponsePage implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Page> $results
+     * @param list<mixed> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -111,7 +111,7 @@ final class BatchResponsePage implements BaseModel
     }
 
     /**
-     * @param list<Page> $results
+     * @param list<mixed> $results
      */
     public function withResults(array $results): self
     {

@@ -15,7 +15,7 @@ use HubspotSDK\StandardError;
  *
  * @phpstan-type BatchResponseBlogPostWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<BlogPost>,
+ *   results: list<mixed>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
  *   errors?: list<StandardError>|null,
@@ -38,7 +38,7 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
     /**
      * Results of batch operation.
      *
-     * @var list<BlogPost> $results
+     * @var list<mixed> $results
      */
     #[Api(list: BlogPost::class)]
     public array $results;
@@ -115,7 +115,7 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BlogPost> $results
+     * @param list<mixed> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError> $errors
      * @param array<string,string> $links
@@ -159,7 +159,7 @@ final class BatchResponseBlogPostWithErrors implements BaseModel
     /**
      * Results of batch operation.
      *
-     * @param list<BlogPost> $results
+     * @param list<mixed> $results
      */
     public function withResults(array $results): self
     {

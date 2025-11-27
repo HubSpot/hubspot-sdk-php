@@ -14,7 +14,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * @phpstan-type BatchResponseAPIFlowShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<APIContactFlow|APIPlatformFlow>,
+ *   results: list<mixed>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
  *   links?: array<string,string>|null,
@@ -31,7 +31,7 @@ final class BatchResponseAPIFlow implements BaseModel, ResponseConverter
     #[Api]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<APIContactFlow|APIPlatformFlow> $results */
+    /** @var list<mixed> $results */
     #[Api(list: APIFlow::class)]
     public array $results;
 
@@ -79,7 +79,7 @@ final class BatchResponseAPIFlow implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIContactFlow|APIPlatformFlow> $results
+     * @param list<mixed> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -113,7 +113,7 @@ final class BatchResponseAPIFlow implements BaseModel, ResponseConverter
     }
 
     /**
-     * @param list<APIContactFlow|APIPlatformFlow> $results
+     * @param list<mixed> $results
      */
     public function withResults(array $results): self
     {

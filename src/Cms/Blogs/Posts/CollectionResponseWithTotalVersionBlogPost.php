@@ -13,7 +13,7 @@ use HubspotSDK\Paging;
  * Response object for collections of blog post versions with pagination information.
  *
  * @phpstan-type CollectionResponseWithTotalVersionBlogPostShape = array{
- *   results: list<VersionBlogPost>, total: int, paging?: Paging|null
+ *   results: list<mixed>, total: int, paging?: Paging|null
  * }
  */
 final class CollectionResponseWithTotalVersionBlogPost implements BaseModel
@@ -24,7 +24,7 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel
     /**
      * Collection of blog post versions.
      *
-     * @var list<VersionBlogPost> $results
+     * @var list<mixed> $results
      */
     #[Api(list: VersionBlogPost::class)]
     public array $results;
@@ -64,7 +64,7 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<VersionBlogPost> $results
+     * @param list<mixed> $results
      */
     public static function with(
         array $results,
@@ -84,7 +84,7 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel
     /**
      * Collection of blog post versions.
      *
-     * @param list<VersionBlogPost> $results
+     * @param list<mixed> $results
      */
     public function withResults(array $results): self
     {

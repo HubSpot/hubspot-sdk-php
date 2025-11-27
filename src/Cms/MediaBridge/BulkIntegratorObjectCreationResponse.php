@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type BulkIntegratorObjectCreationResponseShape = array{
- *   createdObjects: array<string,IntegratorObjectCreationResponse>
+ *   createdObjects: array<string,mixed>
  * }
  */
 final class BulkIntegratorObjectCreationResponse implements BaseModel
@@ -18,7 +18,7 @@ final class BulkIntegratorObjectCreationResponse implements BaseModel
     /** @use SdkModel<BulkIntegratorObjectCreationResponseShape> */
     use SdkModel;
 
-    /** @var array<string,IntegratorObjectCreationResponse> $createdObjects */
+    /** @var array<string,mixed> $createdObjects */
     #[Api(map: IntegratorObjectCreationResponse::class)]
     public array $createdObjects;
 
@@ -46,7 +46,7 @@ final class BulkIntegratorObjectCreationResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,IntegratorObjectCreationResponse> $createdObjects
+     * @param array<string,mixed> $createdObjects
      */
     public static function with(array $createdObjects): self
     {
@@ -58,7 +58,7 @@ final class BulkIntegratorObjectCreationResponse implements BaseModel
     }
 
     /**
-     * @param array<string,IntegratorObjectCreationResponse> $createdObjects
+     * @param array<string,mixed> $createdObjects
      */
     public function withCreatedObjects(array $createdObjects): self
     {

@@ -20,8 +20,8 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
  * @phpstan-type APIEventBasedEnrollmentCriteriaShape = array{
- *   eventFilterBranches: list<PublicUnifiedEventsFilterBranch>,
- *   listMembershipFilterBranches: list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch>,
+ *   eventFilterBranches: list<mixed>,
+ *   listMembershipFilterBranches: list<mixed>,
  *   shouldReEnroll: bool,
  *   type: value-of<Type>,
  *   refinementCriteria?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
@@ -32,13 +32,11 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
     /** @use SdkModel<APIEventBasedEnrollmentCriteriaShape> */
     use SdkModel;
 
-    /** @var list<PublicUnifiedEventsFilterBranch> $eventFilterBranches */
+    /** @var list<mixed> $eventFilterBranches */
     #[Api(list: PublicUnifiedEventsFilterBranch::class)]
     public array $eventFilterBranches;
 
-    /**
-     * @var list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $listMembershipFilterBranches
-     */
+    /** @var list<mixed> $listMembershipFilterBranches */
     #[Api(list: ListMembershipFilterBranch::class)]
     public array $listMembershipFilterBranches;
 
@@ -85,8 +83,8 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicUnifiedEventsFilterBranch> $eventFilterBranches
-     * @param list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $listMembershipFilterBranches
+     * @param list<mixed> $eventFilterBranches
+     * @param list<mixed> $listMembershipFilterBranches
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -109,7 +107,7 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
     }
 
     /**
-     * @param list<PublicUnifiedEventsFilterBranch> $eventFilterBranches
+     * @param list<mixed> $eventFilterBranches
      */
     public function withEventFilterBranches(array $eventFilterBranches): self
     {
@@ -120,7 +118,7 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
     }
 
     /**
-     * @param list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $listMembershipFilterBranches
+     * @param list<mixed> $listMembershipFilterBranches
      */
     public function withListMembershipFilterBranches(
         array $listMembershipFilterBranches

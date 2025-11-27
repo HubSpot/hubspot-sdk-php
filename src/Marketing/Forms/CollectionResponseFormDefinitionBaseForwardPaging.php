@@ -11,7 +11,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponseFormDefinitionBaseForwardPagingShape = array{
- *   results: list<HubSpotFormDefinition>, paging?: ForwardPaging|null
+ *   results: list<mixed>, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseModel
@@ -19,7 +19,7 @@ final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseMod
     /** @use SdkModel<CollectionResponseFormDefinitionBaseForwardPagingShape> */
     use SdkModel;
 
-    /** @var list<HubSpotFormDefinition> $results */
+    /** @var list<mixed> $results */
     #[Api(list: HubSpotFormDefinition::class)]
     public array $results;
 
@@ -50,7 +50,7 @@ final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseMod
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubSpotFormDefinition> $results
+     * @param list<mixed> $results
      */
     public static function with(
         array $results,
@@ -66,7 +66,7 @@ final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseMod
     }
 
     /**
-     * @param list<HubSpotFormDefinition> $results
+     * @param list<mixed> $results
      */
     public function withResults(array $results): self
     {

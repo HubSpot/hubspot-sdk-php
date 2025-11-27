@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   archived?: bool,
  *   configuration?: HubSpotFormConfiguration,
  *   displayOptions?: FormDisplayOptions,
- *   fieldGroups?: list<FieldGroup>,
+ *   fieldGroups?: list<mixed>,
  *   legalConsentOptions?: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess,
  *   name?: string,
  * }
@@ -47,7 +47,7 @@ final class FormUpdateParams implements BaseModel
     /**
      * The fields in the form, grouped in rows.
      *
-     * @var list<FieldGroup>|null $fieldGroups
+     * @var list<mixed>|null $fieldGroups
      */
     #[Api(list: FieldGroup::class, optional: true)]
     public ?array $fieldGroups;
@@ -71,7 +71,7 @@ final class FormUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FieldGroup> $fieldGroups
+     * @param list<mixed> $fieldGroups
      */
     public static function with(
         ?bool $archived = null,
@@ -127,7 +127,7 @@ final class FormUpdateParams implements BaseModel
     /**
      * The fields in the form, grouped in rows.
      *
-     * @param list<FieldGroup> $fieldGroups
+     * @param list<mixed> $fieldGroups
      */
     public function withFieldGroups(array $fieldGroups): self
     {

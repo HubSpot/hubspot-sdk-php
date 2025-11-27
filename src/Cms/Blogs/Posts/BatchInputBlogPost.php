@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Wrapper for providing an array of blog posts as inputs.
  *
- * @phpstan-type BatchInputBlogPostShape = array{inputs: list<BlogPost>}
+ * @phpstan-type BatchInputBlogPostShape = array{inputs: list<mixed>}
  */
 final class BatchInputBlogPost implements BaseModel
 {
@@ -21,7 +21,7 @@ final class BatchInputBlogPost implements BaseModel
     /**
      * Blog posts to input.
      *
-     * @var list<BlogPost> $inputs
+     * @var list<mixed> $inputs
      */
     #[Api(list: BlogPost::class)]
     public array $inputs;
@@ -50,7 +50,7 @@ final class BatchInputBlogPost implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BlogPost> $inputs
+     * @param list<mixed> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -64,7 +64,7 @@ final class BatchInputBlogPost implements BaseModel
     /**
      * Blog posts to input.
      *
-     * @param list<BlogPost> $inputs
+     * @param list<mixed> $inputs
      */
     public function withInputs(array $inputs): self
     {
