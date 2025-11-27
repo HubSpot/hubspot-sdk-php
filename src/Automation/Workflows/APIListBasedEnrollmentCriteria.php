@@ -21,7 +21,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
 /**
  * @phpstan-type APIListBasedEnrollmentCriteriaShape = array{
  *   listFilterBranch: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
- *   reEnrollmentTriggersFilterBranches: list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch>,
+ *   reEnrollmentTriggersFilterBranches: list<mixed>,
  *   shouldReEnroll: bool,
  *   type: value-of<Type>,
  *   unEnrollObjectsNotMeetingCriteria: bool,
@@ -35,9 +35,7 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
     #[Api]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $listFilterBranch;
 
-    /**
-     * @var list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $reEnrollmentTriggersFilterBranches
-     */
+    /** @var list<mixed> $reEnrollmentTriggersFilterBranches */
     #[Api(list: ReEnrollmentTriggersFilterBranch::class)]
     public array $reEnrollmentTriggersFilterBranches;
 
@@ -86,7 +84,7 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $reEnrollmentTriggersFilterBranches
+     * @param list<mixed> $reEnrollmentTriggersFilterBranches
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -117,7 +115,7 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
     }
 
     /**
-     * @param list<PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch> $reEnrollmentTriggersFilterBranches
+     * @param list<mixed> $reEnrollmentTriggersFilterBranches
      */
     public function withReEnrollmentTriggersFilterBranches(
         array $reEnrollmentTriggersFilterBranches

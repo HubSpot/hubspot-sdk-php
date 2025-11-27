@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Forms\FieldGroup\RichTextType;
  * A collection of up to three form fields usually displayed in a row.
  *
  * @phpstan-type FieldGroupShape = array{
- *   fields: list<EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField>,
+ *   fields: list<mixed>,
  *   groupType: value-of<GroupType>,
  *   richTextType: value-of<RichTextType>,
  *   richText?: string|null,
@@ -29,7 +29,7 @@ final class FieldGroup implements BaseModel
     /**
      * The form fields included in the group.
      *
-     * @var list<EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField> $fields
+     * @var list<mixed> $fields
      */
     #[Api(list: Field::class)]
     public array $fields;
@@ -76,7 +76,7 @@ final class FieldGroup implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField> $fields
+     * @param list<mixed> $fields
      * @param GroupType|value-of<GroupType> $groupType
      * @param RichTextType|value-of<RichTextType> $richTextType
      */
@@ -100,7 +100,7 @@ final class FieldGroup implements BaseModel
     /**
      * The form fields included in the group.
      *
-     * @param list<EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField> $fields
+     * @param list<mixed> $fields
      */
     public function withFields(array $fields): self
     {

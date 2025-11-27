@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Forms\MobilePhoneField\FieldType;
  * A form field used for collecting a mobile phone number.
  *
  * @phpstan-type MobilePhoneFieldShape = array{
- *   dependentFields: list<DependentField>,
+ *   dependentFields: list<mixed>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
@@ -34,7 +34,7 @@ final class MobilePhoneField implements BaseModel
     /**
      * A list of other fields to make visible based on the value filled in for this field.
      *
-     * @var list<DependentField> $dependentFields
+     * @var list<mixed> $dependentFields
      */
     #[Api(list: DependentField::class)]
     public array $dependentFields;
@@ -142,7 +142,7 @@ final class MobilePhoneField implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<DependentField> $dependentFields
+     * @param list<mixed> $dependentFields
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -179,7 +179,7 @@ final class MobilePhoneField implements BaseModel
     /**
      * A list of other fields to make visible based on the value filled in for this field.
      *
-     * @param list<DependentField> $dependentFields
+     * @param list<mixed> $dependentFields
      */
     public function withDependentFields(array $dependentFields): self
     {

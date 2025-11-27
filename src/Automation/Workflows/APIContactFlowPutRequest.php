@@ -20,7 +20,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
  * @phpstan-type APIContactFlowPutRequestShape = array{
- *   actions: list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction>,
+ *   actions: list<mixed>,
  *   blockedDates: list<APIBlockedDate>,
  *   canEnrollFromSalesforce: bool,
  *   customProperties: array<string,string>,
@@ -45,9 +45,7 @@ final class APIContactFlowPutRequest implements BaseModel
     /** @use SdkModel<APIContactFlowPutRequestShape> */
     use SdkModel;
 
-    /**
-     * @var list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction> $actions
-     */
+    /** @var list<mixed> $actions */
     #[Api(list: Action::class)]
     public array $actions;
 
@@ -150,7 +148,7 @@ final class APIContactFlowPutRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction> $actions
+     * @param list<mixed> $actions
      * @param list<APIBlockedDate> $blockedDates
      * @param array<string,string> $customProperties
      * @param list<int> $suppressionListIds
@@ -203,7 +201,7 @@ final class APIContactFlowPutRequest implements BaseModel
     }
 
     /**
-     * @param list<APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction> $actions
+     * @param list<mixed> $actions
      */
     public function withActions(array $actions): self
     {

@@ -13,7 +13,7 @@ use HubspotSDK\ForwardPaging;
  * Response object for collections of pages with pagination information.
  *
  * @phpstan-type CollectionResponseWithTotalPageForwardPagingShape = array{
- *   results: list<Page>, total: int, paging?: ForwardPaging|null
+ *   results: list<mixed>, total: int, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseWithTotalPageForwardPaging implements BaseModel
@@ -24,7 +24,7 @@ final class CollectionResponseWithTotalPageForwardPaging implements BaseModel
     /**
      * Collection of pages.
      *
-     * @var list<Page> $results
+     * @var list<mixed> $results
      */
     #[Api(list: Page::class)]
     public array $results;
@@ -64,7 +64,7 @@ final class CollectionResponseWithTotalPageForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Page> $results
+     * @param list<mixed> $results
      */
     public static function with(
         array $results,
@@ -84,7 +84,7 @@ final class CollectionResponseWithTotalPageForwardPaging implements BaseModel
     /**
      * Collection of pages.
      *
-     * @param list<Page> $results
+     * @param list<mixed> $results
      */
     public function withResults(array $results): self
     {

@@ -13,7 +13,7 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 /**
  * The response object containing the lists found for a multi-list fetch.
  *
- * @phpstan-type ListsByIDResponseShape = array{lists: list<PublicObjectList>}
+ * @phpstan-type ListsByIDResponseShape = array{lists: list<mixed>}
  */
 final class ListsByIDResponse implements BaseModel, ResponseConverter
 {
@@ -25,7 +25,7 @@ final class ListsByIDResponse implements BaseModel, ResponseConverter
     /**
      * The object list definitions.
      *
-     * @var list<PublicObjectList> $lists
+     * @var list<mixed> $lists
      */
     #[Api(list: PublicObjectList::class)]
     public array $lists;
@@ -54,7 +54,7 @@ final class ListsByIDResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicObjectList> $lists
+     * @param list<mixed> $lists
      */
     public static function with(array $lists): self
     {
@@ -68,7 +68,7 @@ final class ListsByIDResponse implements BaseModel, ResponseConverter
     /**
      * The object list definitions.
      *
-     * @param list<PublicObjectList> $lists
+     * @param list<mixed> $lists
      */
     public function withLists(array $lists): self
     {

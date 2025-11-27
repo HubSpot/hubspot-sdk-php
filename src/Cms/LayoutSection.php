@@ -11,7 +11,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 
 /**
  * @phpstan-type LayoutSectionShape = array{
- *   cells: list<LayoutSection>,
+ *   cells: list<mixed>,
  *   cssClass: string,
  *   cssId: string,
  *   cssStyle: string,
@@ -19,7 +19,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   name: string,
  *   params: array<string,mixed>,
  *   rowMetaData: list<RowMetaData>,
- *   rows: list<array<string,LayoutSection>>,
+ *   rows: list<mixed>,
  *   styles: Styles,
  *   type: string,
  *   w: int,
@@ -31,7 +31,7 @@ final class LayoutSection implements BaseModel
     /** @use SdkModel<LayoutSectionShape> */
     use SdkModel;
 
-    /** @var list<LayoutSection> $cells */
+    /** @var list<mixed> $cells */
     #[Api(list: LayoutSection::class)]
     public array $cells;
 
@@ -62,7 +62,7 @@ final class LayoutSection implements BaseModel
     #[Api(list: RowMetaData::class)]
     public array $rowMetaData;
 
-    /** @var list<array<string,LayoutSection>> $rows */
+    /** @var list<mixed> $rows */
     #[Api(list: new MapOf(LayoutSection::class))]
     public array $rows;
 
@@ -129,10 +129,10 @@ final class LayoutSection implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<LayoutSection> $cells
+     * @param list<mixed> $cells
      * @param array<string,mixed> $params
      * @param list<RowMetaData> $rowMetaData
-     * @param list<array<string,LayoutSection>> $rows
+     * @param list<mixed> $rows
      */
     public static function with(
         array $cells,
@@ -169,7 +169,7 @@ final class LayoutSection implements BaseModel
     }
 
     /**
-     * @param list<LayoutSection> $cells
+     * @param list<mixed> $cells
      */
     public function withCells(array $cells): self
     {
@@ -244,7 +244,7 @@ final class LayoutSection implements BaseModel
     }
 
     /**
-     * @param list<array<string,LayoutSection>> $rows
+     * @param list<mixed> $rows
      */
     public function withRows(array $rows): self
     {

@@ -11,9 +11,7 @@ use HubspotSDK\ForwardPaging;
 
 /**
  * @phpstan-type CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPagingShape = array{
- *   results: list<ExternalBehavioralEventTypeDefinition>,
- *   total: int,
- *   paging?: ForwardPaging|null,
+ *   results: list<mixed>, total: int, paging?: ForwardPaging|null
  * }
  */
 final class CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPaging implements BaseModel
@@ -23,7 +21,7 @@ final class CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForw
      */
     use SdkModel;
 
-    /** @var list<ExternalBehavioralEventTypeDefinition> $results */
+    /** @var list<mixed> $results */
     #[Api(list: ExternalBehavioralEventTypeDefinition::class)]
     public array $results;
 
@@ -61,7 +59,7 @@ final class CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForw
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalBehavioralEventTypeDefinition> $results
+     * @param list<mixed> $results
      */
     public static function with(
         array $results,
@@ -79,7 +77,7 @@ final class CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForw
     }
 
     /**
-     * @param list<ExternalBehavioralEventTypeDefinition> $results
+     * @param list<mixed> $results
      */
     public function withResults(array $results): self
     {

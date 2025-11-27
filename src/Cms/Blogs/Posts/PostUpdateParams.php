@@ -53,7 +53,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   htmlTitle: string,
  *   includeDefaultCustomCss: bool,
  *   language: Language|value-of<Language>,
- *   layoutSections: array<string,LayoutSection>,
+ *   layoutSections: array<string,mixed>,
  *   linkRelCanonicalUrl: string,
  *   mabExperimentId: string,
  *   metaDescription: string,
@@ -267,7 +267,7 @@ final class PostUpdateParams implements BaseModel
     #[Api(enum: Language::class)]
     public string $language;
 
-    /** @var array<string,LayoutSection> $layoutSections */
+    /** @var array<string,mixed> $layoutSections */
     #[Api(map: LayoutSection::class)]
     public array $layoutSections;
 
@@ -589,7 +589,7 @@ final class PostUpdateParams implements BaseModel
      * @param ContentTypeCategory|value-of<ContentTypeCategory> $contentTypeCategory
      * @param CurrentState|value-of<CurrentState> $currentState
      * @param Language|value-of<Language> $language
-     * @param array<string,LayoutSection> $layoutSections
+     * @param array<string,mixed> $layoutSections
      * @param list<mixed> $publicAccessRules
      * @param list<int> $tagIds
      * @param array<string,mixed> $themeSettingsValues
@@ -1071,7 +1071,7 @@ final class PostUpdateParams implements BaseModel
     }
 
     /**
-     * @param array<string,LayoutSection> $layoutSections
+     * @param array<string,mixed> $layoutSections
      */
     public function withLayoutSections(array $layoutSections): self
     {

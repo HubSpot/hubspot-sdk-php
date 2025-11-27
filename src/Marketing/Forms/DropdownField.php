@@ -14,7 +14,7 @@ use HubspotSDK\Marketing\Forms\DropdownField\FieldType;
  *
  * @phpstan-type DropdownFieldShape = array{
  *   defaultValues: list<string>,
- *   dependentFields: list<DependentField>,
+ *   dependentFields: list<mixed>,
  *   fieldType: value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
@@ -42,7 +42,7 @@ final class DropdownField implements BaseModel
     /**
      * A list of other fields to make visible based on the value filled in for this field.
      *
-     * @var list<DependentField> $dependentFields
+     * @var list<mixed> $dependentFields
      */
     #[Api(list: DependentField::class)]
     public array $dependentFields;
@@ -149,7 +149,7 @@ final class DropdownField implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $defaultValues
-     * @param list<DependentField> $dependentFields
+     * @param list<mixed> $dependentFields
      * @param list<EnumeratedFieldOption> $options
      * @param FieldType|value-of<FieldType> $fieldType
      */
@@ -200,7 +200,7 @@ final class DropdownField implements BaseModel
     /**
      * A list of other fields to make visible based on the value filled in for this field.
      *
-     * @param list<DependentField> $dependentFields
+     * @param list<mixed> $dependentFields
      */
     public function withDependentFields(array $dependentFields): self
     {
