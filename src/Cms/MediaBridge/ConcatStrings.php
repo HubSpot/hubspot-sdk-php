@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\ConcatStrings\Input;
 use HubspotSDK\Cms\MediaBridge\ConcatStrings\Operator;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -28,7 +27,7 @@ final class ConcatStrings implements BaseModel
     public string $operator;
 
     /** @var list<mixed>|null $inputs */
-    #[Api(list: Input::class, optional: true)]
+    #[Api(list: 'mixed', optional: true)]
     public ?array $inputs;
 
     #[Api(optional: true)]
