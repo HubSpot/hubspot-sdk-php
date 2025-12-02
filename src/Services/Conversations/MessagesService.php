@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\CollectionResponsePublicMessageForwardPaging\Result;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
 use HubspotSDK\Conversations\Messages\MessageGetOriginalContentParams;
 use HubspotSDK\Conversations\Messages\MessageGetParams;
@@ -78,7 +77,7 @@ final class MessagesService implements MessagesContract
             path: ['conversations/v3/conversations/threads/%1$s/messages', $threadID],
             query: $parsed,
             options: $options,
-            convert: Result::class,
+            convert: PublicMessage::class,
             page: Page::class,
         );
     }
