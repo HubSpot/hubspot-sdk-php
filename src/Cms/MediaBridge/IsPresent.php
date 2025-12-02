@@ -8,12 +8,13 @@ use HubspotSDK\Cms\MediaBridge\IsPresent\Operator;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\MapOf;
 
 /**
  * @phpstan-type IsPresentShape = array{
- *   expressionToEvaluate: Expression,
+ *   expressionToEvaluate: array<string,mixed>,
  *   operator: value-of<Operator>,
- *   inputs?: list<mixed>|null,
+ *   inputs?: list<array<string,mixed>>|null,
  *   propertyName?: string|null,
  *   value?: bool|null,
  * }
@@ -23,15 +24,16 @@ final class IsPresent implements BaseModel
     /** @use SdkModel<IsPresentShape> */
     use SdkModel;
 
-    #[Api]
-    public Expression $expressionToEvaluate;
+    /** @var array<string,mixed> $expressionToEvaluate */
+    #[Api(map: 'mixed')]
+    public array $expressionToEvaluate;
 
     /** @var value-of<Operator> $operator */
     #[Api(enum: Operator::class)]
     public string $operator;
 
-    /** @var list<mixed>|null $inputs */
-    #[Api(list: Expression::class, optional: true)]
+    /** @var list<array<string,mixed>>|null $inputs */
+    #[Api(list: new MapOf('mixed'), optional: true)]
     public ?array $inputs;
 
     #[Api(optional: true)]
@@ -64,11 +66,12 @@ final class IsPresent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param array<string,mixed> $expressionToEvaluate
      * @param Operator|value-of<Operator> $operator
-     * @param list<mixed> $inputs
+     * @param list<array<string,mixed>> $inputs
      */
     public static function with(
-        Expression $expressionToEvaluate,
+        array $expressionToEvaluate,
         Operator|string $operator = 'IS_PRESENT',
         ?array $inputs = null,
         ?string $propertyName = null,
@@ -86,9 +89,11 @@ final class IsPresent implements BaseModel
         return $obj;
     }
 
-    public function withExpressionToEvaluate(
-        Expression $expressionToEvaluate
-    ): self {
+    /**
+     * @param array<string,mixed> $expressionToEvaluate
+     */
+    public function withExpressionToEvaluate(array $expressionToEvaluate): self
+    {
         $obj = clone $this;
         $obj->expressionToEvaluate = $expressionToEvaluate;
 
@@ -107,7 +112,7 @@ final class IsPresent implements BaseModel
     }
 
     /**
-     * @param list<mixed> $inputs
+     * @param list<array<string,mixed>> $inputs
      */
     public function withInputs(array $inputs): self
     {

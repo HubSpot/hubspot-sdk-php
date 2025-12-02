@@ -8,14 +8,15 @@ use HubspotSDK\Cms\MediaBridge\IfNumber\Operator;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\MapOf;
 
 /**
  * @phpstan-type IfNumberShape = array{
  *   enclosedInParentheses: bool,
- *   ifExpression: Expression,
+ *   ifExpression: array<string,mixed>,
  *   operator: value-of<Operator>,
- *   elseExpression?: Expression|null,
- *   inputs?: list<mixed>|null,
+ *   elseExpression?: array<string,mixed>|null,
+ *   inputs?: list<array<string,mixed>>|null,
  *   propertyName?: string|null,
  *   value?: float|null,
  * }
@@ -28,18 +29,20 @@ final class IfNumber implements BaseModel
     #[Api]
     public bool $enclosedInParentheses;
 
-    #[Api]
-    public Expression $ifExpression;
+    /** @var array<string,mixed> $ifExpression */
+    #[Api(map: 'mixed')]
+    public array $ifExpression;
 
     /** @var value-of<Operator> $operator */
     #[Api(enum: Operator::class)]
     public string $operator;
 
-    #[Api(optional: true)]
-    public ?Expression $elseExpression;
+    /** @var array<string,mixed>|null $elseExpression */
+    #[Api(map: 'mixed', optional: true)]
+    public ?array $elseExpression;
 
-    /** @var list<mixed>|null $inputs */
-    #[Api(list: Expression::class, optional: true)]
+    /** @var list<array<string,mixed>>|null $inputs */
+    #[Api(list: new MapOf('mixed'), optional: true)]
     public ?array $inputs;
 
     #[Api(optional: true)]
@@ -75,14 +78,16 @@ final class IfNumber implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param array<string,mixed> $ifExpression
      * @param Operator|value-of<Operator> $operator
-     * @param list<mixed> $inputs
+     * @param array<string,mixed> $elseExpression
+     * @param list<array<string,mixed>> $inputs
      */
     public static function with(
         bool $enclosedInParentheses,
-        Expression $ifExpression,
+        array $ifExpression,
         Operator|string $operator = 'IF_NUMBER',
-        ?Expression $elseExpression = null,
+        ?array $elseExpression = null,
         ?array $inputs = null,
         ?string $propertyName = null,
         ?float $value = null,
@@ -109,7 +114,10 @@ final class IfNumber implements BaseModel
         return $obj;
     }
 
-    public function withIfExpression(Expression $ifExpression): self
+    /**
+     * @param array<string,mixed> $ifExpression
+     */
+    public function withIfExpression(array $ifExpression): self
     {
         $obj = clone $this;
         $obj->ifExpression = $ifExpression;
@@ -128,7 +136,10 @@ final class IfNumber implements BaseModel
         return $obj;
     }
 
-    public function withElseExpression(Expression $elseExpression): self
+    /**
+     * @param array<string,mixed> $elseExpression
+     */
+    public function withElseExpression(array $elseExpression): self
     {
         $obj = clone $this;
         $obj->elseExpression = $elseExpression;
@@ -137,7 +148,7 @@ final class IfNumber implements BaseModel
     }
 
     /**
-     * @param list<mixed> $inputs
+     * @param list<array<string,mixed>> $inputs
      */
     public function withInputs(array $inputs): self
     {

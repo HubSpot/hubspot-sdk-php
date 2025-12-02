@@ -29,7 +29,7 @@ interface SourceCodeContract
      * @throws APIException
      */
     public function create(
-        string $path,
+        string $filePath,
         array|SourceCodeCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata;
@@ -42,7 +42,7 @@ interface SourceCodeContract
      * @throws APIException
      */
     public function delete(
-        string $path,
+        string $filePath,
         array|SourceCodeDeleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed;
@@ -67,7 +67,7 @@ interface SourceCodeContract
      * @throws APIException
      */
     public function get(
-        string $path,
+        string $filePath,
         array|SourceCodeGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): string;
@@ -90,7 +90,7 @@ interface SourceCodeContract
      * @throws APIException
      */
     public function getMetadata(
-        string $path,
+        string $filePath,
         array|SourceCodeGetMetadataParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata;
@@ -103,7 +103,7 @@ interface SourceCodeContract
      * @throws APIException
      */
     public function upsert(
-        string $path,
+        string $filePath,
         array|SourceCodeUpsertParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata;
@@ -116,7 +116,7 @@ interface SourceCodeContract
      * @throws APIException
      */
     public function validate(
-        string $path,
+        string $filePath,
         array|SourceCodeValidateParams $params,
         ?RequestOptions $requestOptions = null,
     ): string;

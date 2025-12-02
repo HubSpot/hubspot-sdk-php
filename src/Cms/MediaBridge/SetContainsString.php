@@ -8,12 +8,13 @@ use HubspotSDK\Cms\MediaBridge\SetContainsString\Operator;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Conversion\MapOf;
 
 /**
  * @phpstan-type SetContainsStringShape = array{
  *   operator: value-of<Operator>,
- *   stringToCheck: Expression,
- *   inputs?: list<mixed>|null,
+ *   stringToCheck: array<string,mixed>,
+ *   inputs?: list<array<string,mixed>>|null,
  *   propertyName?: string|null,
  *   value?: bool|null,
  * }
@@ -27,11 +28,12 @@ final class SetContainsString implements BaseModel
     #[Api(enum: Operator::class)]
     public string $operator;
 
-    #[Api]
-    public Expression $stringToCheck;
+    /** @var array<string,mixed> $stringToCheck */
+    #[Api(map: 'mixed')]
+    public array $stringToCheck;
 
-    /** @var list<mixed>|null $inputs */
-    #[Api(list: Expression::class, optional: true)]
+    /** @var list<array<string,mixed>>|null $inputs */
+    #[Api(list: new MapOf('mixed'), optional: true)]
     public ?array $inputs;
 
     #[Api(optional: true)]
@@ -64,11 +66,12 @@ final class SetContainsString implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param array<string,mixed> $stringToCheck
      * @param Operator|value-of<Operator> $operator
-     * @param list<mixed> $inputs
+     * @param list<array<string,mixed>> $inputs
      */
     public static function with(
-        Expression $stringToCheck,
+        array $stringToCheck,
         Operator|string $operator = 'SET_CONTAINS_STRING',
         ?array $inputs = null,
         ?string $propertyName = null,
@@ -97,7 +100,10 @@ final class SetContainsString implements BaseModel
         return $obj;
     }
 
-    public function withStringToCheck(Expression $stringToCheck): self
+    /**
+     * @param array<string,mixed> $stringToCheck
+     */
+    public function withStringToCheck(array $stringToCheck): self
     {
         $obj = clone $this;
         $obj->stringToCheck = $stringToCheck;
@@ -106,7 +112,7 @@ final class SetContainsString implements BaseModel
     }
 
     /**
-     * @param list<mixed> $inputs
+     * @param list<array<string,mixed>> $inputs
      */
     public function withInputs(array $inputs): self
     {

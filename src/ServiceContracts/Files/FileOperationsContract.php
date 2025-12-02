@@ -77,7 +77,7 @@ interface FileOperationsContract
      * @throws APIException
      */
     public function getByPath(
-        string $path,
+        string $filePath,
         array|FileOperationGetByPathParams $params,
         ?RequestOptions $requestOptions = null,
     ): FileStat;
