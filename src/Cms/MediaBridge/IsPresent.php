@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type IsPresentShape = array{
- *   expressionToEvaluate: mixed,
+ *   expressionToEvaluate: Expression,
  *   operator: value-of<Operator>,
  *   inputs?: list<mixed>|null,
  *   propertyName?: string|null,
@@ -24,14 +24,14 @@ final class IsPresent implements BaseModel
     use SdkModel;
 
     #[Api]
-    public mixed $expressionToEvaluate;
+    public Expression $expressionToEvaluate;
 
     /** @var value-of<Operator> $operator */
     #[Api(enum: Operator::class)]
     public string $operator;
 
     /** @var list<mixed>|null $inputs */
-    #[Api(list: 'mixed', optional: true)]
+    #[Api(list: Expression::class, optional: true)]
     public ?array $inputs;
 
     #[Api(optional: true)]
@@ -68,7 +68,7 @@ final class IsPresent implements BaseModel
      * @param list<mixed> $inputs
      */
     public static function with(
-        mixed $expressionToEvaluate,
+        Expression $expressionToEvaluate,
         Operator|string $operator = 'IS_PRESENT',
         ?array $inputs = null,
         ?string $propertyName = null,
@@ -86,8 +86,9 @@ final class IsPresent implements BaseModel
         return $obj;
     }
 
-    public function withExpressionToEvaluate(mixed $expressionToEvaluate): self
-    {
+    public function withExpressionToEvaluate(
+        Expression $expressionToEvaluate
+    ): self {
         $obj = clone $this;
         $obj->expressionToEvaluate = $expressionToEvaluate;
 

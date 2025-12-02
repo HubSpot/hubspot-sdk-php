@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type SetContainsStringShape = array{
  *   operator: value-of<Operator>,
- *   stringToCheck: mixed,
+ *   stringToCheck: Expression,
  *   inputs?: list<mixed>|null,
  *   propertyName?: string|null,
  *   value?: bool|null,
@@ -28,10 +28,10 @@ final class SetContainsString implements BaseModel
     public string $operator;
 
     #[Api]
-    public mixed $stringToCheck;
+    public Expression $stringToCheck;
 
     /** @var list<mixed>|null $inputs */
-    #[Api(list: 'mixed', optional: true)]
+    #[Api(list: Expression::class, optional: true)]
     public ?array $inputs;
 
     #[Api(optional: true)]
@@ -68,7 +68,7 @@ final class SetContainsString implements BaseModel
      * @param list<mixed> $inputs
      */
     public static function with(
-        mixed $stringToCheck,
+        Expression $stringToCheck,
         Operator|string $operator = 'SET_CONTAINS_STRING',
         ?array $inputs = null,
         ?string $propertyName = null,
@@ -97,7 +97,7 @@ final class SetContainsString implements BaseModel
         return $obj;
     }
 
-    public function withStringToCheck(mixed $stringToCheck): self
+    public function withStringToCheck(Expression $stringToCheck): self
     {
         $obj = clone $this;
         $obj->stringToCheck = $stringToCheck;
