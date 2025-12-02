@@ -3,7 +3,7 @@
 namespace Tests\Services\Cms\MediaBridge;
 
 use HubspotSDK\Client;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Cms\MediaBridge\Schemas\SchemaListResponse;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
@@ -85,10 +85,7 @@ final class SchemasTest extends TestCase
         $result = $this->client->cms->mediaBridge->schemas->list(0, []);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            CollectionResponseObjectSchemaNoPaging::class,
-            $result
-        );
+        $this->assertInstanceOf(SchemaListResponse::class, $result);
     }
 
     #[Test]

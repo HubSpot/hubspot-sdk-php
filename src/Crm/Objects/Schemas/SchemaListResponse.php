@@ -2,39 +2,40 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK;
+namespace HubspotSDK\Crm\Objects\Schemas;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
+use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
- * @phpstan-type CollectionResponseObjectSchemaNoPagingShape = array{
- *   results: list<ObjectSchema>
- * }
+ * @phpstan-type SchemaListResponseShape = array{results: list<ObjectSchema>}
  */
-final class CollectionResponseObjectSchemaNoPaging implements BaseModel
+final class SchemaListResponse implements BaseModel, ResponseConverter
 {
-    /** @use SdkModel<CollectionResponseObjectSchemaNoPagingShape> */
+    /** @use SdkModel<SchemaListResponseShape> */
     use SdkModel;
+
+    use SdkResponse;
 
     /** @var list<ObjectSchema> $results */
     #[Api(list: ObjectSchema::class)]
     public array $results;
 
     /**
-     * `new CollectionResponseObjectSchemaNoPaging()` is missing required properties by the API.
+     * `new SchemaListResponse()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * CollectionResponseObjectSchemaNoPaging::with(results: ...)
+     * SchemaListResponse::with(results: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new CollectionResponseObjectSchemaNoPaging)->withResults(...)
+     * (new SchemaListResponse)->withResults(...)
      * ```
      */
     public function __construct()

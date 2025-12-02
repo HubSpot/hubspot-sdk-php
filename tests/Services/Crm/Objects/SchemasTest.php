@@ -3,9 +3,9 @@
 namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
+use HubspotSDK\Crm\Objects\Schemas\SchemaListResponse;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -140,10 +140,7 @@ final class SchemasTest extends TestCase
         $result = $this->client->crm->objects->schemas->list([]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            CollectionResponseObjectSchemaNoPaging::class,
-            $result
-        );
+        $this->assertInstanceOf(SchemaListResponse::class, $result);
     }
 
     #[Test]

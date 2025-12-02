@@ -8,8 +8,8 @@ use HubspotSDK\Cms\MediaBridge\Schemas\SchemaCreateAssociationParams;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaDeleteAssociationParams;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaGetParams;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaListParams;
+use HubspotSDK\Cms\MediaBridge\Schemas\SchemaListResponse;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaUpdateParams;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
@@ -42,7 +42,7 @@ interface SchemasContract
         int $appID,
         array|SchemaListParams $params,
         ?RequestOptions $requestOptions = null,
-    ): CollectionResponseObjectSchemaNoPaging;
+    ): SchemaListResponse;
 
     /**
      * @api
