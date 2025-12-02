@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb;
 
+use HubspotSDK\APIError;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Error;
 
 /**
  * @phpstan-type ImportResultShape = array{
  *   duplicateRows: int,
- *   errors: list<Error>,
+ *   errors: list<APIError>,
  *   rowLimitExceeded: bool,
  *   rowsImported: int,
  * }
@@ -31,9 +31,9 @@ final class ImportResult implements BaseModel
     /**
      * List of errors during import.
      *
-     * @var list<Error> $errors
+     * @var list<APIError> $errors
      */
-    #[Api(list: Error::class)]
+    #[Api(list: APIError::class)]
     public array $errors;
 
     /**
@@ -78,7 +78,7 @@ final class ImportResult implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Error> $errors
+     * @param list<APIError> $errors
      */
     public static function with(
         int $duplicateRows,
@@ -110,7 +110,7 @@ final class ImportResult implements BaseModel
     /**
      * List of errors during import.
      *
-     * @param list<Error> $errors
+     * @param list<APIError> $errors
      */
     public function withErrors(array $errors): self
     {

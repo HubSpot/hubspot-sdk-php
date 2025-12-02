@@ -8,23 +8,23 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Files\File;
 use HubspotSDK\Files\FileActionResponse;
-use HubspotSDK\Files\Files\FileGetByPathParams;
-use HubspotSDK\Files\Files\FileGetParams;
-use HubspotSDK\Files\Files\FileGetSignedURLParams;
-use HubspotSDK\Files\Files\FileImportFromURLAsyncParams;
-use HubspotSDK\Files\Files\FileReplaceParams;
-use HubspotSDK\Files\Files\FileSearchParams;
-use HubspotSDK\Files\Files\FileUpdateParams;
-use HubspotSDK\Files\Files\FileUpdateParams\Access;
-use HubspotSDK\Files\Files\FileUploadParams;
+use HubspotSDK\Files\FileOperations\FileOperationGetByPathParams;
+use HubspotSDK\Files\FileOperations\FileOperationGetParams;
+use HubspotSDK\Files\FileOperations\FileOperationGetSignedURLParams;
+use HubspotSDK\Files\FileOperations\FileOperationImportFromURLAsyncParams;
+use HubspotSDK\Files\FileOperations\FileOperationReplaceParams;
+use HubspotSDK\Files\FileOperations\FileOperationSearchParams;
+use HubspotSDK\Files\FileOperations\FileOperationUpdateParams;
+use HubspotSDK\Files\FileOperations\FileOperationUpdateParams\Access;
+use HubspotSDK\Files\FileOperations\FileOperationUploadParams;
 use HubspotSDK\Files\FileStat;
 use HubspotSDK\Files\ImportFromURLTaskLocator;
 use HubspotSDK\Files\SignedURL;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Files\FilesContract;
+use HubspotSDK\ServiceContracts\Files\FileOperationsContract;
 
-final class FilesService implements FilesContract
+final class FileOperationsService implements FileOperationsContract
 {
     /**
      * @internal
@@ -44,16 +44,16 @@ final class FilesService implements FilesContract
      *   name?: string,
      *   parentFolderId?: string,
      *   parentFolderPath?: string,
-     * }|FileUpdateParams $params
+     * }|FileOperationUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $fileID,
-        array|FileUpdateParams $params,
+        array|FileOperationUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): File {
-        [$parsed, $options] = FileUpdateParams::parseRequest(
+        [$parsed, $options] = FileOperationUpdateParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -113,16 +113,16 @@ final class FilesService implements FilesContract
      *
      * Retrieve a file by its ID.
      *
-     * @param array{properties?: list<string>}|FileGetParams $params
+     * @param array{properties?: list<string>}|FileOperationGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $fileID,
-        array|FileGetParams $params,
+        array|FileOperationGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): File {
-        [$parsed, $options] = FileGetParams::parseRequest(
+        [$parsed, $options] = FileOperationGetParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -142,16 +142,16 @@ final class FilesService implements FilesContract
      *
      * Retrieve a file by its path.
      *
-     * @param array{properties?: list<string>}|FileGetByPathParams $params
+     * @param array{properties?: list<string>}|FileOperationGetByPathParams $params
      *
      * @throws APIException
      */
     public function getByPath(
         string $path,
-        array|FileGetByPathParams $params,
+        array|FileOperationGetByPathParams $params,
         ?RequestOptions $requestOptions = null,
     ): FileStat {
-        [$parsed, $options] = FileGetByPathParams::parseRequest(
+        [$parsed, $options] = FileOperationGetByPathParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -195,16 +195,16 @@ final class FilesService implements FilesContract
      *   expirationSeconds?: int,
      *   size?: 'icon'|'medium'|'preview'|'thumb',
      *   upscale?: bool,
-     * }|FileGetSignedURLParams $params
+     * }|FileOperationGetSignedURLParams $params
      *
      * @throws APIException
      */
     public function getSignedURL(
         string $fileID,
-        array|FileGetSignedURLParams $params,
+        array|FileOperationGetSignedURLParams $params,
         ?RequestOptions $requestOptions = null,
     ): SignedURL {
-        [$parsed, $options] = FileGetSignedURLParams::parseRequest(
+        [$parsed, $options] = FileOperationGetSignedURLParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -225,7 +225,7 @@ final class FilesService implements FilesContract
      * Asynchronously imports the file at the given URL into the file manager.
      *
      * @param array{
-     *   access: value-of<FileImportFromURLAsyncParams\Access>,
+     *   access: value-of<FileOperationImportFromURLAsyncParams\Access>,
      *   url: string,
      *   duplicateValidationScope?: 'ENTIRE_PORTAL'|'EXACT_FOLDER',
      *   duplicateValidationStrategy?: 'NONE'|'REJECT'|'RETURN_EXISTING',
@@ -235,15 +235,15 @@ final class FilesService implements FilesContract
      *   name?: string,
      *   overwrite?: bool,
      *   ttl?: string,
-     * }|FileImportFromURLAsyncParams $params
+     * }|FileOperationImportFromURLAsyncParams $params
      *
      * @throws APIException
      */
     public function importFromURLAsync(
-        array|FileImportFromURLAsyncParams $params,
+        array|FileOperationImportFromURLAsyncParams $params,
         ?RequestOptions $requestOptions = null,
     ): ImportFromURLTaskLocator {
-        [$parsed, $options] = FileImportFromURLAsyncParams::parseRequest(
+        [$parsed, $options] = FileOperationImportFromURLAsyncParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -265,16 +265,16 @@ final class FilesService implements FilesContract
      *
      * @param array{
      *   charsetHunch?: string, file?: string, options?: string
-     * }|FileReplaceParams $params
+     * }|FileOperationReplaceParams $params
      *
      * @throws APIException
      */
     public function replace(
         string $fileID,
-        array|FileReplaceParams $params,
+        array|FileOperationReplaceParams $params,
         ?RequestOptions $requestOptions = null,
     ): File {
-        [$parsed, $options] = FileReplaceParams::parseRequest(
+        [$parsed, $options] = FileOperationReplaceParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -332,17 +332,17 @@ final class FilesService implements FilesContract
      *   width?: int,
      *   widthGte?: int,
      *   widthLte?: int,
-     * }|FileSearchParams $params
+     * }|FileOperationSearchParams $params
      *
      * @return Page<File>
      *
      * @throws APIException
      */
     public function search(
-        array|FileSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        array|FileOperationSearchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = FileSearchParams::parseRequest(
+        [$parsed, $options] = FileOperationSearchParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -370,15 +370,15 @@ final class FilesService implements FilesContract
      *   folderId?: string,
      *   folderPath?: string,
      *   options?: string,
-     * }|FileUploadParams $params
+     * }|FileOperationUploadParams $params
      *
      * @throws APIException
      */
     public function upload(
-        array|FileUploadParams $params,
-        ?RequestOptions $requestOptions = null
+        array|FileOperationUploadParams $params,
+        ?RequestOptions $requestOptions = null,
     ): File {
-        [$parsed, $options] = FileUploadParams::parseRequest(
+        [$parsed, $options] = FileOperationUploadParams::parseRequest(
             $params,
             $requestOptions,
         );

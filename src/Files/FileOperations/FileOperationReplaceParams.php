@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\Files;
+namespace HubspotSDK\Files\FileOperations;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -12,15 +12,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.
  *
- * @see HubspotSDK\Services\Files\FilesService::replace()
+ * @see HubspotSDK\Services\Files\FileOperationsService::replace()
  *
- * @phpstan-type FileReplaceParamsShape = array{
+ * @phpstan-type FileOperationReplaceParamsShape = array{
  *   charsetHunch?: string, file?: string, options?: string
  * }
  */
-final class FileReplaceParams implements BaseModel
+final class FileOperationReplaceParams implements BaseModel
 {
-    /** @use SdkModel<FileReplaceParamsShape> */
+    /** @use SdkModel<FileOperationReplaceParamsShape> */
     use SdkModel;
     use SdkParams;
 

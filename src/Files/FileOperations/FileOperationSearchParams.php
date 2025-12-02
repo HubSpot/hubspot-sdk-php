@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\Files;
+namespace HubspotSDK\Files\FileOperations;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -12,9 +12,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Search through files in the file manager. Does not display hidden or archived files.
  *
- * @see HubspotSDK\Services\Files\FilesService::search()
+ * @see HubspotSDK\Services\Files\FileOperationsService::search()
  *
- * @phpstan-type FileSearchParamsShape = array{
+ * @phpstan-type FileOperationSearchParamsShape = array{
  *   after?: string,
  *   allowsAnonymousAccess?: bool,
  *   before?: string,
@@ -53,9 +53,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   widthLte?: int,
  * }
  */
-final class FileSearchParams implements BaseModel
+final class FileOperationSearchParams implements BaseModel
 {
-    /** @use SdkModel<FileSearchParamsShape> */
+    /** @use SdkModel<FileOperationSearchParamsShape> */
     use SdkModel;
     use SdkParams;
 

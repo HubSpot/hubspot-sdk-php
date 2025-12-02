@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb\Rows;
 
+use HubspotSDK\Cms\Hubdb\Variant;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -20,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   tableIdOrName: string,
  *   childTableId: int,
  *   displayIndex: int,
- *   values: array<string,mixed>,
+ *   values: array<string,Variant>,
  *   name?: string,
  *   path?: string,
  * }
@@ -46,9 +47,9 @@ final class RowUpdateDraftParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @var array<string,mixed> $values
+     * @var array<string,Variant> $values
      */
-    #[Api(map: 'mixed')]
+    #[Api(map: Variant::class)]
     public array $values;
 
     /**
@@ -93,7 +94,7 @@ final class RowUpdateDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,mixed> $values
+     * @param array<string,Variant> $values
      */
     public static function with(
         string $tableIdOrName,
@@ -146,7 +147,7 @@ final class RowUpdateDraftParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string,mixed> $values
+     * @param array<string,Variant> $values
      */
     public function withValues(array $values): self
     {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\Files\FileImportFromURLAsyncParams;
+namespace HubspotSDK\Files\FileOperations\FileOperationImportFromURLAsyncParams;
 
 /**
  * ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.
