@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Conversations\CollectionResponsePublicMessageForwardPaging\Result;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -24,7 +23,7 @@ final class CollectionResponsePublicMessageForwardPaging implements BaseModel
     /**
      * @var list<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange> $results
      */
-    #[Api(list: Result::class)]
+    #[Api(list: PublicMessage::class)]
     public array $results;
 
     #[Api(optional: true)]
