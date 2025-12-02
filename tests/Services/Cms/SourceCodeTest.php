@@ -40,7 +40,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->create(
-            'path',
+            'file_path',
             ['environment' => 'environment']
         );
 
@@ -56,7 +56,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->create(
-            'path',
+            'file_path',
             ['environment' => 'environment', 'file' => null]
         );
 
@@ -72,7 +72,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->delete(
-            'path',
+            'file_path',
             ['environment' => 'environment']
         );
 
@@ -88,7 +88,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->delete(
-            'path',
+            'file_path',
             ['environment' => 'environment']
         );
 
@@ -130,7 +130,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->get(
-            'path',
+            'file_path',
             ['environment' => 'environment']
         );
 
@@ -146,7 +146,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->get(
-            'path',
+            'file_path',
             ['environment' => 'environment']
         );
 
@@ -175,7 +175,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->getMetadata(
-            'path',
+            'file_path',
             ['environment' => 'environment']
         );
 
@@ -191,8 +191,8 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->getMetadata(
-            'path',
-            ['environment' => 'environment', 'properties' => 'properties']
+            'file_path',
+            ['environment' => 'environment', 'properties' => 'properties'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -207,7 +207,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->upsert(
-            'path',
+            'file_path',
             ['environment' => 'environment']
         );
 
@@ -223,7 +223,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->upsert(
-            'path',
+            'file_path',
             ['environment' => 'environment', 'file' => null]
         );
 
@@ -239,7 +239,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->validate(
-            'path',
+            'file_path',
             ['environment' => 'environment']
         );
 
@@ -255,7 +255,7 @@ final class SourceCodeTest extends TestCase
         }
 
         $result = $this->client->cms->sourceCode->validate(
-            'path',
+            'file_path',
             ['environment' => 'environment', 'file' => null]
         );
 

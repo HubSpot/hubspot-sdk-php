@@ -38,7 +38,7 @@ final class SourceCodeService implements SourceCodeContract
      * @throws APIException
      */
     public function create(
-        string $path,
+        string $filePath,
         array|SourceCodeCreateParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata {
@@ -52,7 +52,7 @@ final class SourceCodeService implements SourceCodeContract
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
-            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $path],
+            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
             headers: ['Content-Type' => 'multipart/form-data'],
             body: (object) array_diff_key($parsed, ['environment']),
             options: $options,
@@ -70,7 +70,7 @@ final class SourceCodeService implements SourceCodeContract
      * @throws APIException
      */
     public function delete(
-        string $path,
+        string $filePath,
         array|SourceCodeDeleteParams $params,
         ?RequestOptions $requestOptions = null,
     ): mixed {
@@ -84,7 +84,7 @@ final class SourceCodeService implements SourceCodeContract
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'delete',
-            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $path],
+            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
             options: $options,
             convert: null,
         );
@@ -128,7 +128,7 @@ final class SourceCodeService implements SourceCodeContract
      * @throws APIException
      */
     public function get(
-        string $path,
+        string $filePath,
         array|SourceCodeGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): string {
@@ -142,7 +142,7 @@ final class SourceCodeService implements SourceCodeContract
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
-            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $path],
+            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
             headers: ['Accept' => 'application/octet-stream'],
             options: $options,
             convert: 'string',
@@ -181,7 +181,7 @@ final class SourceCodeService implements SourceCodeContract
      * @throws APIException
      */
     public function getMetadata(
-        string $path,
+        string $filePath,
         array|SourceCodeGetMetadataParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata {
@@ -195,7 +195,7 @@ final class SourceCodeService implements SourceCodeContract
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
-            path: ['cms/v3/source-code/%1$s/metadata/%2$s', $environment, $path],
+            path: ['cms/v3/source-code/%1$s/metadata/%2$s', $environment, $filePath],
             query: $parsed,
             options: $options,
             convert: AssetFileMetadata::class,
@@ -212,7 +212,7 @@ final class SourceCodeService implements SourceCodeContract
      * @throws APIException
      */
     public function upsert(
-        string $path,
+        string $filePath,
         array|SourceCodeUpsertParams $params,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata {
@@ -226,7 +226,7 @@ final class SourceCodeService implements SourceCodeContract
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'put',
-            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $path],
+            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
             headers: ['Content-Type' => 'multipart/form-data'],
             body: (object) array_diff_key($parsed, ['environment']),
             options: $options,
@@ -246,7 +246,7 @@ final class SourceCodeService implements SourceCodeContract
      * @throws APIException
      */
     public function validate(
-        string $path,
+        string $filePath,
         array|SourceCodeValidateParams $params,
         ?RequestOptions $requestOptions = null,
     ): string {
@@ -260,7 +260,7 @@ final class SourceCodeService implements SourceCodeContract
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'post',
-            path: ['cms/v3/source-code/%1$s/validate/%2$s', $environment, $path],
+            path: ['cms/v3/source-code/%1$s/validate/%2$s', $environment, $filePath],
             headers: ['Content-Type' => 'multipart/form-data', 'Accept' => '*/*'],
             body: (object) array_diff_key($parsed, ['environment']),
             options: $options,

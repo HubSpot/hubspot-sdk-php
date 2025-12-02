@@ -94,7 +94,7 @@ final class FileOperationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->fileOperations->getByPath('path', []);
+        $result = $this->client->files->fileOperations->getByPath('file_path', []);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(FileStat::class, $result);

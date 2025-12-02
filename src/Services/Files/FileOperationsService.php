@@ -147,7 +147,7 @@ final class FileOperationsService implements FileOperationsContract
      * @throws APIException
      */
     public function getByPath(
-        string $path,
+        string $filePath,
         array|FileOperationGetByPathParams $params,
         ?RequestOptions $requestOptions = null,
     ): FileStat {
@@ -159,7 +159,7 @@ final class FileOperationsService implements FileOperationsContract
         // @phpstan-ignore-next-line;
         return $this->client->request(
             method: 'get',
-            path: ['files/v3/files/stat/%1$s', $path],
+            path: ['files/v3/files/stat/%1$s', $filePath],
             query: $parsed,
             options: $options,
             convert: FileStat::class,
