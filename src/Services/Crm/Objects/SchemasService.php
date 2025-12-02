@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
@@ -14,6 +13,7 @@ use HubspotSDK\Crm\Objects\Schemas\SchemaCreateParams;
 use HubspotSDK\Crm\Objects\Schemas\SchemaDeleteAssociationParams;
 use HubspotSDK\Crm\Objects\Schemas\SchemaDeleteParams;
 use HubspotSDK\Crm\Objects\Schemas\SchemaListParams;
+use HubspotSDK\Crm\Objects\Schemas\SchemaListResponse;
 use HubspotSDK\Crm\Objects\Schemas\SchemaUpdateParams;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
@@ -127,7 +127,7 @@ final class SchemasService implements SchemasContract
     public function list(
         array|SchemaListParams $params,
         ?RequestOptions $requestOptions = null
-    ): CollectionResponseObjectSchemaNoPaging {
+    ): SchemaListResponse {
         [$parsed, $options] = SchemaListParams::parseRequest(
             $params,
             $requestOptions,
@@ -139,7 +139,7 @@ final class SchemasService implements SchemasContract
             path: 'crm-object-schemas/v3/schemas',
             query: $parsed,
             options: $options,
-            convert: CollectionResponseObjectSchemaNoPaging::class,
+            convert: SchemaListResponse::class,
         );
     }
 
