@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type HubDBTableRowV3BatchUpdateRequestShape = array{
  *   childTableId: int,
  *   displayIndex: int,
- *   values: array<string,mixed>,
+ *   values: array<string,Variant>,
  *   id?: string|null,
  *   name?: string|null,
  *   path?: string|null,
@@ -35,9 +35,9 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @var array<string,mixed> $values
+     * @var array<string,Variant> $values
      */
-    #[Api(map: 'mixed')]
+    #[Api(map: Variant::class)]
     public array $values;
 
     /**
@@ -87,7 +87,7 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,mixed> $values
+     * @param array<string,Variant> $values
      */
     public static function with(
         int $childTableId,
@@ -132,7 +132,7 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string,mixed> $values
+     * @param array<string,Variant> $values
      */
     public function withValues(array $values): self
     {

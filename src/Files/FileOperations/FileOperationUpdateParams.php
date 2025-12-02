@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\Files;
+namespace HubspotSDK\Files\FileOperations;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Files\Files\FileUpdateParams\Access;
+use HubspotSDK\Files\FileOperations\FileOperationUpdateParams\Access;
 
 /**
  * Update properties of file by ID.
  *
- * @see HubspotSDK\Services\Files\FilesService::update()
+ * @see HubspotSDK\Services\Files\FileOperationsService::update()
  *
- * @phpstan-type FileUpdateParamsShape = array{
+ * @phpstan-type FileOperationUpdateParamsShape = array{
  *   access?: Access|value-of<Access>,
  *   clearExpires?: bool,
  *   expiresAt?: \DateTimeInterface,
@@ -25,9 +25,9 @@ use HubspotSDK\Files\Files\FileUpdateParams\Access;
  *   parentFolderPath?: string,
  * }
  */
-final class FileUpdateParams implements BaseModel
+final class FileOperationUpdateParams implements BaseModel
 {
-    /** @use SdkModel<FileUpdateParamsShape> */
+    /** @use SdkModel<FileOperationUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
 

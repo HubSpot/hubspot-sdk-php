@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\Files;
+namespace HubspotSDK\Files\FileOperations;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -12,9 +12,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Upload a single file with content specified in request body.
  *
- * @see HubspotSDK\Services\Files\FilesService::upload()
+ * @see HubspotSDK\Services\Files\FileOperationsService::upload()
  *
- * @phpstan-type FileUploadParamsShape = array{
+ * @phpstan-type FileOperationUploadParamsShape = array{
  *   charsetHunch?: string,
  *   file?: string,
  *   fileName?: string,
@@ -23,9 +23,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   options?: string,
  * }
  */
-final class FileUploadParams implements BaseModel
+final class FileOperationUploadParams implements BaseModel
 {
-    /** @use SdkModel<FileUploadParamsShape> */
+    /** @use SdkModel<FileOperationUploadParamsShape> */
     use SdkModel;
     use SdkParams;
 

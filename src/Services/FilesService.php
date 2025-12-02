@@ -6,6 +6,7 @@ namespace HubspotSDK\Services;
 
 use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\FilesContract;
+use HubspotSDK\Services\Files\FileOperationsService;
 use HubspotSDK\Services\Files\FoldersService;
 
 final class FilesService implements FilesContract
@@ -13,7 +14,7 @@ final class FilesService implements FilesContract
     /**
      * @api
      */
-    public Files\FilesService $files;
+    public FileOperationsService $fileOperations;
 
     /**
      * @api
@@ -25,7 +26,7 @@ final class FilesService implements FilesContract
      */
     public function __construct(private Client $client)
     {
-        $this->files = new Files\FilesService($client);
+        $this->fileOperations = new FileOperationsService($client);
         $this->folders = new FoldersService($client);
     }
 }

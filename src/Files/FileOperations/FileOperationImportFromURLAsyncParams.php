@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\Files;
+namespace HubspotSDK\Files\FileOperations;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\Access;
-use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationScope;
-use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationStrategy;
+use HubspotSDK\Files\FileOperations\FileOperationImportFromURLAsyncParams\Access;
+use HubspotSDK\Files\FileOperations\FileOperationImportFromURLAsyncParams\DuplicateValidationScope;
+use HubspotSDK\Files\FileOperations\FileOperationImportFromURLAsyncParams\DuplicateValidationStrategy;
 
 /**
  * Asynchronously imports the file at the given URL into the file manager.
  *
- * @see HubspotSDK\Services\Files\FilesService::importFromURLAsync()
+ * @see HubspotSDK\Services\Files\FileOperationsService::importFromURLAsync()
  *
- * @phpstan-type FileImportFromURLAsyncParamsShape = array{
+ * @phpstan-type FileOperationImportFromURLAsyncParamsShape = array{
  *   access: Access|value-of<Access>,
  *   url: string,
  *   duplicateValidationScope?: DuplicateValidationScope|value-of<DuplicateValidationScope>,
@@ -30,9 +30,9 @@ use HubspotSDK\Files\Files\FileImportFromURLAsyncParams\DuplicateValidationStrat
  *   ttl?: string,
  * }
  */
-final class FileImportFromURLAsyncParams implements BaseModel
+final class FileOperationImportFromURLAsyncParams implements BaseModel
 {
-    /** @use SdkModel<FileImportFromURLAsyncParamsShape> */
+    /** @use SdkModel<FileOperationImportFromURLAsyncParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -103,17 +103,17 @@ final class FileImportFromURLAsyncParams implements BaseModel
     public ?string $ttl;
 
     /**
-     * `new FileImportFromURLAsyncParams()` is missing required properties by the API.
+     * `new FileOperationImportFromURLAsyncParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FileImportFromURLAsyncParams::with(access: ..., url: ...)
+     * FileOperationImportFromURLAsyncParams::with(access: ..., url: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new FileImportFromURLAsyncParams)->withAccess(...)->withURL(...)
+     * (new FileOperationImportFromURLAsyncParams)->withAccess(...)->withURL(...)
      * ```
      */
     public function __construct()

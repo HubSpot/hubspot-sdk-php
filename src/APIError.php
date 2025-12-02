@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
 
 /**
- * @phpstan-type ErrorShape = array{
+ * @phpstan-type APIErrorShape = array{
  *   category: string,
  *   correlationId: string,
  *   message: string,
@@ -20,9 +20,9 @@ use HubspotSDK\Core\Conversion\ListOf;
  *   subCategory?: string|null,
  * }
  */
-final class Error implements BaseModel
+final class APIError implements BaseModel
 {
-    /** @use SdkModel<ErrorShape> */
+    /** @use SdkModel<APIErrorShape> */
     use SdkModel;
 
     /**
@@ -74,17 +74,17 @@ final class Error implements BaseModel
     public ?string $subCategory;
 
     /**
-     * `new Error()` is missing required properties by the API.
+     * `new APIError()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * Error::with(category: ..., correlationId: ..., message: ...)
+     * APIError::with(category: ..., correlationId: ..., message: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new Error)->withCategory(...)->withCorrelationID(...)->withMessage(...)
+     * (new APIError)->withCategory(...)->withCorrelationID(...)->withMessage(...)
      * ```
      */
     public function __construct()

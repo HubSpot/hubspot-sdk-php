@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\Files;
+namespace HubspotSDK\Files\FileOperations;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -12,13 +12,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Retrieve a file by its ID.
  *
- * @see HubspotSDK\Services\Files\FilesService::get()
+ * @see HubspotSDK\Services\Files\FileOperationsService::get()
  *
- * @phpstan-type FileGetParamsShape = array{properties?: list<string>}
+ * @phpstan-type FileOperationGetParamsShape = array{properties?: list<string>}
  */
-final class FileGetParams implements BaseModel
+final class FileOperationGetParams implements BaseModel
 {
-    /** @use SdkModel<FileGetParamsShape> */
+    /** @use SdkModel<FileOperationGetParamsShape> */
     use SdkModel;
     use SdkParams;
 

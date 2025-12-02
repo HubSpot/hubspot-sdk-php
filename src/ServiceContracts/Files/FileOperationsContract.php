@@ -7,32 +7,32 @@ namespace HubspotSDK\ServiceContracts\Files;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Files\File;
 use HubspotSDK\Files\FileActionResponse;
-use HubspotSDK\Files\Files\FileGetByPathParams;
-use HubspotSDK\Files\Files\FileGetParams;
-use HubspotSDK\Files\Files\FileGetSignedURLParams;
-use HubspotSDK\Files\Files\FileImportFromURLAsyncParams;
-use HubspotSDK\Files\Files\FileReplaceParams;
-use HubspotSDK\Files\Files\FileSearchParams;
-use HubspotSDK\Files\Files\FileUpdateParams;
-use HubspotSDK\Files\Files\FileUploadParams;
+use HubspotSDK\Files\FileOperations\FileOperationGetByPathParams;
+use HubspotSDK\Files\FileOperations\FileOperationGetParams;
+use HubspotSDK\Files\FileOperations\FileOperationGetSignedURLParams;
+use HubspotSDK\Files\FileOperations\FileOperationImportFromURLAsyncParams;
+use HubspotSDK\Files\FileOperations\FileOperationReplaceParams;
+use HubspotSDK\Files\FileOperations\FileOperationSearchParams;
+use HubspotSDK\Files\FileOperations\FileOperationUpdateParams;
+use HubspotSDK\Files\FileOperations\FileOperationUploadParams;
 use HubspotSDK\Files\FileStat;
 use HubspotSDK\Files\ImportFromURLTaskLocator;
 use HubspotSDK\Files\SignedURL;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
-interface FilesContract
+interface FileOperationsContract
 {
     /**
      * @api
      *
-     * @param array<mixed>|FileUpdateParams $params
+     * @param array<mixed>|FileOperationUpdateParams $params
      *
      * @throws APIException
      */
     public function update(
         string $fileID,
-        array|FileUpdateParams $params,
+        array|FileOperationUpdateParams $params,
         ?RequestOptions $requestOptions = null,
     ): File;
 
@@ -59,26 +59,26 @@ interface FilesContract
     /**
      * @api
      *
-     * @param array<mixed>|FileGetParams $params
+     * @param array<mixed>|FileOperationGetParams $params
      *
      * @throws APIException
      */
     public function get(
         string $fileID,
-        array|FileGetParams $params,
+        array|FileOperationGetParams $params,
         ?RequestOptions $requestOptions = null,
     ): File;
 
     /**
      * @api
      *
-     * @param array<mixed>|FileGetByPathParams $params
+     * @param array<mixed>|FileOperationGetByPathParams $params
      *
      * @throws APIException
      */
     public function getByPath(
         string $path,
-        array|FileGetByPathParams $params,
+        array|FileOperationGetByPathParams $params,
         ?RequestOptions $requestOptions = null,
     ): FileStat;
 
@@ -95,64 +95,64 @@ interface FilesContract
     /**
      * @api
      *
-     * @param array<mixed>|FileGetSignedURLParams $params
+     * @param array<mixed>|FileOperationGetSignedURLParams $params
      *
      * @throws APIException
      */
     public function getSignedURL(
         string $fileID,
-        array|FileGetSignedURLParams $params,
+        array|FileOperationGetSignedURLParams $params,
         ?RequestOptions $requestOptions = null,
     ): SignedURL;
 
     /**
      * @api
      *
-     * @param array<mixed>|FileImportFromURLAsyncParams $params
+     * @param array<mixed>|FileOperationImportFromURLAsyncParams $params
      *
      * @throws APIException
      */
     public function importFromURLAsync(
-        array|FileImportFromURLAsyncParams $params,
+        array|FileOperationImportFromURLAsyncParams $params,
         ?RequestOptions $requestOptions = null,
     ): ImportFromURLTaskLocator;
 
     /**
      * @api
      *
-     * @param array<mixed>|FileReplaceParams $params
+     * @param array<mixed>|FileOperationReplaceParams $params
      *
      * @throws APIException
      */
     public function replace(
         string $fileID,
-        array|FileReplaceParams $params,
+        array|FileOperationReplaceParams $params,
         ?RequestOptions $requestOptions = null,
     ): File;
 
     /**
      * @api
      *
-     * @param array<mixed>|FileSearchParams $params
+     * @param array<mixed>|FileOperationSearchParams $params
      *
      * @return Page<File>
      *
      * @throws APIException
      */
     public function search(
-        array|FileSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        array|FileOperationSearchParams $params,
+        ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<mixed>|FileUploadParams $params
+     * @param array<mixed>|FileOperationUploadParams $params
      *
      * @throws APIException
      */
     public function upload(
-        array|FileUploadParams $params,
-        ?RequestOptions $requestOptions = null
+        array|FileOperationUploadParams $params,
+        ?RequestOptions $requestOptions = null,
     ): File;
 }

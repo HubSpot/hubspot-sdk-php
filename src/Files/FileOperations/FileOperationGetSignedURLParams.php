@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\Files;
+namespace HubspotSDK\Files\FileOperations;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Files\Files\FileGetSignedURLParams\Size;
+use HubspotSDK\Files\FileOperations\FileOperationGetSignedURLParams\Size;
 
 /**
  * Generates signed URL that allows temporary access to a private file.
  *
- * @see HubspotSDK\Services\Files\FilesService::getSignedURL()
+ * @see HubspotSDK\Services\Files\FileOperationsService::getSignedURL()
  *
- * @phpstan-type FileGetSignedURLParamsShape = array{
+ * @phpstan-type FileOperationGetSignedURLParamsShape = array{
  *   expirationSeconds?: int, size?: Size|value-of<Size>, upscale?: bool
  * }
  */
-final class FileGetSignedURLParams implements BaseModel
+final class FileOperationGetSignedURLParams implements BaseModel
 {
-    /** @use SdkModel<FileGetSignedURLParamsShape> */
+    /** @use SdkModel<FileOperationGetSignedURLParamsShape> */
     use SdkModel;
     use SdkParams;
 
