@@ -27,7 +27,7 @@ final class FetchExchangeRate implements BaseModel
     public string $operator;
 
     /** @var list<mixed>|null $inputs */
-    #[Api(list: 'mixed', optional: true)]
+    #[Api(list: Expression::class, optional: true)]
     public ?array $inputs;
 
     #[Api(optional: true)]

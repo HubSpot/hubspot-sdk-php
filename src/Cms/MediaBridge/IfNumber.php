@@ -12,9 +12,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type IfNumberShape = array{
  *   enclosedInParentheses: bool,
- *   ifExpression: mixed,
+ *   ifExpression: Expression,
  *   operator: value-of<Operator>,
- *   elseExpression?: mixed,
+ *   elseExpression?: Expression|null,
  *   inputs?: list<mixed>|null,
  *   propertyName?: string|null,
  *   value?: float|null,
@@ -29,17 +29,17 @@ final class IfNumber implements BaseModel
     public bool $enclosedInParentheses;
 
     #[Api]
-    public mixed $ifExpression;
+    public Expression $ifExpression;
 
     /** @var value-of<Operator> $operator */
     #[Api(enum: Operator::class)]
     public string $operator;
 
     #[Api(optional: true)]
-    public mixed $elseExpression;
+    public ?Expression $elseExpression;
 
     /** @var list<mixed>|null $inputs */
-    #[Api(list: 'mixed', optional: true)]
+    #[Api(list: Expression::class, optional: true)]
     public ?array $inputs;
 
     #[Api(optional: true)]
@@ -80,9 +80,9 @@ final class IfNumber implements BaseModel
      */
     public static function with(
         bool $enclosedInParentheses,
-        mixed $ifExpression,
+        Expression $ifExpression,
         Operator|string $operator = 'IF_NUMBER',
-        mixed $elseExpression = null,
+        ?Expression $elseExpression = null,
         ?array $inputs = null,
         ?string $propertyName = null,
         ?float $value = null,
@@ -109,7 +109,7 @@ final class IfNumber implements BaseModel
         return $obj;
     }
 
-    public function withIfExpression(mixed $ifExpression): self
+    public function withIfExpression(Expression $ifExpression): self
     {
         $obj = clone $this;
         $obj->ifExpression = $ifExpression;
@@ -128,7 +128,7 @@ final class IfNumber implements BaseModel
         return $obj;
     }
 
-    public function withElseExpression(mixed $elseExpression): self
+    public function withElseExpression(Expression $elseExpression): self
     {
         $obj = clone $this;
         $obj->elseExpression = $elseExpression;
