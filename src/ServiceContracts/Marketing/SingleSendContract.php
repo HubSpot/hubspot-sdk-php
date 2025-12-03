@@ -20,6 +20,6 @@ interface SingleSendContract
      */
     public function send(
         array|SingleSendSendParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): EmailSendStatusView;
 }

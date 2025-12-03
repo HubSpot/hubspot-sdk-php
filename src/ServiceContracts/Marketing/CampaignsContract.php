@@ -25,7 +25,7 @@ interface CampaignsContract
      */
     public function create(
         array|CampaignCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): PublicCampaign;
 
     /**

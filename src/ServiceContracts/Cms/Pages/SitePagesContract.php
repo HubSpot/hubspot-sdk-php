@@ -45,7 +45,7 @@ interface SitePagesContract
      */
     public function create(
         array|SitePageCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 
     /**
@@ -109,7 +109,7 @@ interface SitePagesContract
      */
     public function clone(
         array|SitePageCloneParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): Page;
 
     /**

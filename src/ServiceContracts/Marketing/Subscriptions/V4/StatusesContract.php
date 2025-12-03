@@ -45,7 +45,7 @@ interface StatusesContract
      */
     public function batchGet(
         array|StatusBatchGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): BatchResponsePublicStatusBulkResponse;
 
     /**

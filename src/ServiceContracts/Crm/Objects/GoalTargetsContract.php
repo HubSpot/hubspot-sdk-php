@@ -55,7 +55,7 @@ interface GoalTargetsContract
      */
     public function list(
         array|GoalTargetListParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): Page;
 
     /**

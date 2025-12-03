@@ -20,6 +20,6 @@ interface CalendarContract
      */
     public function create(
         array|CalendarCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): ExternalCalenderMeetingEventResponse;
 }

@@ -21,7 +21,7 @@ interface BatchContract
      */
     public function batchGet(
         array|BatchBatchGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject;
 
     /**

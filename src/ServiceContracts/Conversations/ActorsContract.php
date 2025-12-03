@@ -28,7 +28,7 @@ interface ActorsContract
      */
     public function batchRead(
         array|ActorBatchReadParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): BatchResponsePublicActor;
 
     /**

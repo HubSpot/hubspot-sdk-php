@@ -20,6 +20,6 @@ interface DefinitionsContract
      */
     public function list(
         array|DefinitionListParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): ActionResponseWithResultsSubscriptionDefinition;
 }

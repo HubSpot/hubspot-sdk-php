@@ -99,7 +99,7 @@ interface TagsContract
      */
     public function createBatch(
         array|TagCreateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseTag;
 
     /**
@@ -123,7 +123,7 @@ interface TagsContract
      */
     public function deleteBatch(
         array|TagDeleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 
     /**
@@ -184,7 +184,7 @@ interface TagsContract
      */
     public function updateBatch(
         array|TagUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseTag;
 
     /**
@@ -196,6 +196,6 @@ interface TagsContract
      */
     public function updateLangs(
         array|TagUpdateLangsParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 }
