@@ -160,7 +160,7 @@ interface AuthorsContract
      */
     public function getBatch(
         array|AuthorGetBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseBlogAuthor;
 
     /**

@@ -36,7 +36,7 @@ interface SmtpTokensContract
      */
     public function list(
         array|SmtpTokenListParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): Page;
 
     /**

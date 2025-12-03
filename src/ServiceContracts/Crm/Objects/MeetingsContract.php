@@ -28,7 +28,7 @@ interface MeetingsContract
      */
     public function create(
         array|MeetingCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CreatedResponseSimplePublicObject;
 
     /**
@@ -90,6 +90,6 @@ interface MeetingsContract
      */
     public function search(
         array|MeetingSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
 }

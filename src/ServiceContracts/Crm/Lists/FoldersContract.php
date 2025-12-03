@@ -72,7 +72,7 @@ interface FoldersContract
      */
     public function moveList(
         array|FolderMoveListParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 
     /**

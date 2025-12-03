@@ -55,7 +55,7 @@ interface PostalMailContract
      */
     public function list(
         array|PostalMailListParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): Page;
 
     /**

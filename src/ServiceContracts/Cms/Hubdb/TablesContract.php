@@ -164,7 +164,7 @@ interface TablesContract
      */
     public function listDraft(
         array|TableListDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): Page;
 
     /**

@@ -28,7 +28,7 @@ interface LineItemsContract
      */
     public function create(
         array|LineItemCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CreatedResponseSimplePublicObject;
 
     /**
@@ -90,6 +90,6 @@ interface LineItemsContract
      */
     public function search(
         array|LineItemSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
 }

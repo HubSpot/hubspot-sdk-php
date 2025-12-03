@@ -28,7 +28,7 @@ interface DiscountsContract
      */
     public function create(
         array|DiscountCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CreatedResponseSimplePublicObject;
 
     /**
@@ -90,6 +90,6 @@ interface DiscountsContract
      */
     public function search(
         array|DiscountSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
 }

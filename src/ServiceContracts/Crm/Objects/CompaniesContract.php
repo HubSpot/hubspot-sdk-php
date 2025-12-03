@@ -29,7 +29,7 @@ interface CompaniesContract
      */
     public function create(
         array|CompanyCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CreatedResponseSimplePublicObject;
 
     /**
@@ -103,6 +103,6 @@ interface CompaniesContract
      */
     public function search(
         array|CompanySearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
 }

@@ -28,7 +28,7 @@ interface ServicesContract
      */
     public function create(
         array|ServiceCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CreatedResponseSimplePublicObject;
 
     /**
@@ -90,6 +90,6 @@ interface ServicesContract
      */
     public function search(
         array|ServiceSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
 }

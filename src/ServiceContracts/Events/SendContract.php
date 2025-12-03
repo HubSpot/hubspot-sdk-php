@@ -32,6 +32,6 @@ interface SendContract
      */
     public function sendBatch(
         array|SendSendBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 }

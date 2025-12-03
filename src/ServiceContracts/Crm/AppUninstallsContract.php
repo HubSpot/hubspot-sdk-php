@@ -14,7 +14,5 @@ interface AppUninstallsContract
      *
      * @throws APIException
      */
-    public function uninstall(
-        ?RequestOptions $requestOptions = null
-    ): mixed;
+    public function uninstall(?RequestOptions $requestOptions = null): mixed;
 }

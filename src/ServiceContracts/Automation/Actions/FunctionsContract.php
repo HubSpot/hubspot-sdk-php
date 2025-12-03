@@ -52,7 +52,7 @@ interface FunctionsContract
     public function createOrReplace(
         string $functionID,
         string $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): PublicActionFunctionIdentifier;
 
     /**

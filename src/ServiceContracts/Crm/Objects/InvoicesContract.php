@@ -28,7 +28,7 @@ interface InvoicesContract
      */
     public function create(
         array|InvoiceCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CreatedResponseSimplePublicObject;
 
     /**
@@ -90,6 +90,6 @@ interface InvoicesContract
      */
     public function search(
         array|InvoiceSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
 }

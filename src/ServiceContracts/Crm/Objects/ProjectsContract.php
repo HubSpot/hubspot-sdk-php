@@ -29,7 +29,7 @@ interface ProjectsContract
      */
     public function create(
         array|ProjectCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CreatedResponseSimplePublicObject;
 
     /**
@@ -103,6 +103,6 @@ interface ProjectsContract
      */
     public function search(
         array|ProjectSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
 }

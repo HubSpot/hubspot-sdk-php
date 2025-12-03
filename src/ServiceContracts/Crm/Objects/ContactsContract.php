@@ -30,7 +30,7 @@ interface ContactsContract
      */
     public function create(
         array|ContactCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CreatedResponseSimplePublicObject;
 
     /**
@@ -116,6 +116,6 @@ interface ContactsContract
      */
     public function search(
         array|ContactSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalSimplePublicObject;
 }
