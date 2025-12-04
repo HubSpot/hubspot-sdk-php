@@ -37,14 +37,8 @@ final class DefinitionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this
-            ->client
-            ->marketing
-            ->subscriptions
-            ->v4
-            ->definitions
-            ->list([])
-        ;
+        $result = $this->client->marketing->subscriptions->v4->definitions->list([
+        ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
