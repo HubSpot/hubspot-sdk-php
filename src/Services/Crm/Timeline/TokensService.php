@@ -53,7 +53,7 @@ final class TokensService implements TokensContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -98,7 +98,7 @@ final class TokensService implements TokensContract
         $eventTemplateID = $parsed['eventTemplateId'];
         unset($parsed['eventTemplateId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -139,7 +139,7 @@ final class TokensService implements TokensContract
         $eventTemplateID = $parsed['eventTemplateId'];
         unset($parsed['eventTemplateId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [

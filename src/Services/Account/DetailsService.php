@@ -27,7 +27,7 @@ final class DetailsService implements DetailsContract
     public function get(
         ?RequestOptions $requestOptions = null
     ): PortalInformationResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'account-info/v3/details',

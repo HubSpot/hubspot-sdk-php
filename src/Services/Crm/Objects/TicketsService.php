@@ -61,7 +61,7 @@ final class TicketsService implements TicketsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/tickets',
@@ -93,7 +93,7 @@ final class TicketsService implements TicketsContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/tickets/%1$s', $ticketID],
@@ -131,7 +131,7 @@ final class TicketsService implements TicketsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/tickets',
@@ -153,7 +153,7 @@ final class TicketsService implements TicketsContract
         string $ticketID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/tickets/%1$s', $ticketID],
@@ -187,7 +187,7 @@ final class TicketsService implements TicketsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/tickets/%1$s', $ticketID],
@@ -217,7 +217,7 @@ final class TicketsService implements TicketsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/tickets/merge',
@@ -252,7 +252,7 @@ final class TicketsService implements TicketsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/tickets/search',

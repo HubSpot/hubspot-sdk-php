@@ -69,7 +69,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'events/v3/events/',
@@ -92,7 +92,7 @@ final class EventsService implements EventsContract
     public function listEventTypes(
         ?RequestOptions $requestOptions = null
     ): VisibleExternalEventTypeNames {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'events/v3/events/event-types',

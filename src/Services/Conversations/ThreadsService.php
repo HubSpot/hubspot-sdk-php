@@ -41,7 +41,7 @@ final class ThreadsService implements ThreadsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['conversations/v3/conversations/threads/%1$s', $threadID],
@@ -81,7 +81,7 @@ final class ThreadsService implements ThreadsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'conversations/v3/conversations/threads',
@@ -101,7 +101,7 @@ final class ThreadsService implements ThreadsContract
         int $threadID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['conversations/v3/conversations/threads/%1$s', $threadID],
@@ -129,7 +129,7 @@ final class ThreadsService implements ThreadsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/threads/%1$s', $threadID],

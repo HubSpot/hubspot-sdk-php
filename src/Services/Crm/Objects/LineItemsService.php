@@ -60,7 +60,7 @@ final class LineItemsService implements LineItemsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/line_items',
@@ -92,7 +92,7 @@ final class LineItemsService implements LineItemsContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/line_items/%1$s', $lineItemID],
@@ -130,7 +130,7 @@ final class LineItemsService implements LineItemsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/line_items',
@@ -152,7 +152,7 @@ final class LineItemsService implements LineItemsContract
         string $lineItemID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/line_items/%1$s', $lineItemID],
@@ -186,7 +186,7 @@ final class LineItemsService implements LineItemsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/line_items/%1$s', $lineItemID],
@@ -219,7 +219,7 @@ final class LineItemsService implements LineItemsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/line_items/search',

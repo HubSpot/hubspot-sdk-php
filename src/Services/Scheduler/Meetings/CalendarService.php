@@ -62,7 +62,7 @@ final class CalendarService implements CalendarContract
         );
         $query_params = ['organizerUserId'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'scheduler/v3/meetings/calendar',

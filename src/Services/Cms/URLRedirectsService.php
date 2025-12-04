@@ -50,7 +50,7 @@ final class URLRedirectsService implements URLRedirectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/url-redirects/',
@@ -93,7 +93,7 @@ final class URLRedirectsService implements URLRedirectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/url-redirects/%1$s', $urlRedirectID],
@@ -134,7 +134,7 @@ final class URLRedirectsService implements URLRedirectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/url-redirects/',
@@ -156,7 +156,7 @@ final class URLRedirectsService implements URLRedirectsContract
         string $urlRedirectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['cms/v3/url-redirects/%1$s', $urlRedirectID],
@@ -176,7 +176,7 @@ final class URLRedirectsService implements URLRedirectsContract
         string $urlRedirectID,
         ?RequestOptions $requestOptions = null
     ): URLMapping {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/url-redirects/%1$s', $urlRedirectID],

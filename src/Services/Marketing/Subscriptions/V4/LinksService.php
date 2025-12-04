@@ -41,7 +41,7 @@ final class LinksService implements LinksContract
         );
         $query_params = array_flip(['channel', 'businessUnitId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/links/generate',

@@ -52,7 +52,7 @@ final class SequencesService implements SequencesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'automation/v4/sequences/',
@@ -82,7 +82,7 @@ final class SequencesService implements SequencesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['automation/v4/sequences/%1$s', $sequenceID],

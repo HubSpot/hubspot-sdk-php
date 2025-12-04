@@ -33,7 +33,7 @@ final class AssociationsService implements AssociationsContract
         string $marketingEventID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalPublicListNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -66,7 +66,7 @@ final class AssociationsService implements AssociationsContract
         $marketingEventID = $parsed['marketingEventId'];
         unset($parsed['marketingEventId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -100,7 +100,7 @@ final class AssociationsService implements AssociationsContract
         $marketingEventID = $parsed['marketingEventId'];
         unset($parsed['marketingEventId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -138,7 +138,7 @@ final class AssociationsService implements AssociationsContract
         $externalEventID = $parsed['externalEventId'];
         unset($parsed['externalEventId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -177,7 +177,7 @@ final class AssociationsService implements AssociationsContract
         $externalEventID = $parsed['externalEventId'];
         unset($parsed['externalEventId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -214,7 +214,7 @@ final class AssociationsService implements AssociationsContract
         $externalAccountID = $parsed['externalAccountId'];
         unset($parsed['externalAccountId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

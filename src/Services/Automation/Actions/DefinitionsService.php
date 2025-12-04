@@ -86,7 +86,7 @@ final class DefinitionsService implements DefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['automation/v4/actions/%1$s', $appID],
@@ -149,7 +149,7 @@ final class DefinitionsService implements DefinitionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['automation/v4/actions/%1$s/%2$s', $appID, $definitionID],
@@ -182,7 +182,7 @@ final class DefinitionsService implements DefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['automation/v4/actions/%1$s', $appID],
@@ -214,7 +214,7 @@ final class DefinitionsService implements DefinitionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['automation/v4/actions/%1$s/%2$s', $appID, $definitionID],
@@ -244,7 +244,7 @@ final class DefinitionsService implements DefinitionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['automation/v4/actions/%1$s/%2$s', $appID, $definitionID],

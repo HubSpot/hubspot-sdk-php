@@ -57,7 +57,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/properties/%1$s/batch/create', $objectType],
@@ -86,7 +86,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/properties/%1$s/batch/archive', $objectType],
@@ -121,7 +121,7 @@ final class BatchService implements BatchContract
         );
         $query_params = ['locale'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/properties/%1$s/batch/read', $objectType],

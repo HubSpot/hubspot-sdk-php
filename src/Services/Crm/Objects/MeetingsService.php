@@ -60,7 +60,7 @@ final class MeetingsService implements MeetingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/meetings',
@@ -92,7 +92,7 @@ final class MeetingsService implements MeetingsContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/meetings/%1$s', $meetingID],
@@ -130,7 +130,7 @@ final class MeetingsService implements MeetingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/meetings',
@@ -152,7 +152,7 @@ final class MeetingsService implements MeetingsContract
         string $meetingID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/meetings/%1$s', $meetingID],
@@ -186,7 +186,7 @@ final class MeetingsService implements MeetingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/meetings/%1$s', $meetingID],
@@ -219,7 +219,7 @@ final class MeetingsService implements MeetingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/meetings/search',

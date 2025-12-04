@@ -62,7 +62,7 @@ final class ObjectsService implements ObjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s', $objectType],
@@ -96,7 +96,7 @@ final class ObjectsService implements ObjectsContract
         unset($parsed['objectType']);
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
@@ -138,7 +138,7 @@ final class ObjectsService implements ObjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/%1$s', $objectType],
@@ -170,7 +170,7 @@ final class ObjectsService implements ObjectsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
@@ -207,7 +207,7 @@ final class ObjectsService implements ObjectsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
@@ -241,7 +241,7 @@ final class ObjectsService implements ObjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/search', $objectType],

@@ -78,7 +78,7 @@ final class CampaignsService implements CampaignsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/campaigns/',
@@ -108,7 +108,7 @@ final class CampaignsService implements CampaignsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['marketing/v3/campaigns/%1$s', $campaignGuid],
@@ -144,7 +144,7 @@ final class CampaignsService implements CampaignsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'marketing/v3/campaigns/',
@@ -167,7 +167,7 @@ final class CampaignsService implements CampaignsContract
         string $campaignGuid,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['marketing/v3/campaigns/%1$s', $campaignGuid],
@@ -197,7 +197,7 @@ final class CampaignsService implements CampaignsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/campaigns/%1$s', $campaignGuid],

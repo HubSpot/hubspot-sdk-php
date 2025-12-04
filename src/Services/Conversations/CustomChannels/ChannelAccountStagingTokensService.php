@@ -46,7 +46,7 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
         $channelID = $parsed['channelId'];
         unset($parsed['channelId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: [

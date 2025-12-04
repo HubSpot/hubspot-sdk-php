@@ -49,7 +49,7 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
@@ -81,7 +81,7 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
@@ -108,7 +108,7 @@ final class SourceCodeService implements SourceCodeContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/source-code/extract/async',
@@ -139,7 +139,7 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
@@ -160,7 +160,7 @@ final class SourceCodeService implements SourceCodeContract
         int $taskID,
         ?RequestOptions $requestOptions = null
     ): ActionResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/source-code/extract/async/tasks/%1$s/status', $taskID],
@@ -192,7 +192,7 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/source-code/%1$s/metadata/%2$s', $environment, $filePath],
@@ -223,7 +223,7 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
@@ -257,7 +257,7 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/source-code/%1$s/validate/%2$s', $environment, $filePath],

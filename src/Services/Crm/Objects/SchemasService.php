@@ -71,7 +71,7 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm-object-schemas/v3/schemas',
@@ -107,7 +107,7 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],
@@ -133,7 +133,7 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm-object-schemas/v3/schemas',
@@ -160,7 +160,7 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],
@@ -189,7 +189,7 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm-object-schemas/v3/schemas/%1$s/associations', $objectType],
@@ -218,7 +218,7 @@ final class SchemasService implements SchemasContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -240,7 +240,7 @@ final class SchemasService implements SchemasContract
         string $objectType,
         ?RequestOptions $requestOptions = null
     ): ObjectSchema {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],

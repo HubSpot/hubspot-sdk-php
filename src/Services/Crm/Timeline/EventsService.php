@@ -54,7 +54,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'integrators/timeline/v3/events',
@@ -95,7 +95,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'integrators/timeline/v3/events/batch/create',
@@ -126,7 +126,7 @@ final class EventsService implements EventsContract
         $eventTemplateID = $parsed['eventTemplateId'];
         unset($parsed['eventTemplateId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -158,7 +158,7 @@ final class EventsService implements EventsContract
         $eventTemplateID = $parsed['eventTemplateId'];
         unset($parsed['eventTemplateId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

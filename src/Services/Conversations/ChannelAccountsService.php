@@ -46,7 +46,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'conversations/v3/conversations/channel-accounts',
@@ -74,7 +74,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

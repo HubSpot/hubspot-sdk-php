@@ -37,7 +37,7 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['marketing/v3/marketing-events/%1$s/settings', $appID],
@@ -58,7 +58,7 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): EventDetailSettings {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/marketing-events/%1$s/settings', $appID],

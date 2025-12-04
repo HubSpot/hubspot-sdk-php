@@ -61,7 +61,7 @@ final class RowsService implements RowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
@@ -100,7 +100,7 @@ final class RowsService implements RowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
@@ -132,7 +132,7 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -165,7 +165,7 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -198,7 +198,7 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/rows/%2$s', $tableIDOrName, $rowID],
@@ -229,7 +229,7 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -269,7 +269,7 @@ final class RowsService implements RowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/rows/draft', $tableIDOrName],
@@ -309,7 +309,7 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -351,7 +351,7 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: [

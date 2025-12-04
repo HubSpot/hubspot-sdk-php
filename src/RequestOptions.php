@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api as Property;
+use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Implementation\Omit;
@@ -36,39 +36,39 @@ final class RequestOptions implements BaseModel
     /** @use SdkModel<request_options> */
     use SdkModel;
 
-    #[Property]
+    #[Api]
     public float $timeout = 60;
 
-    #[Property]
+    #[Api]
     public int $maxRetries = 2;
 
-    #[Property]
+    #[Api]
     public float $initialRetryDelay = 0.5;
 
-    #[Property]
+    #[Api]
     public float $maxRetryDelay = 8.0;
 
     /** @var array<string,string|int|list<string|int>|null>|null $extraHeaders */
-    #[Property(optional: true)]
+    #[Api(optional: true)]
     public ?array $extraHeaders;
 
     /** @var array<string,mixed>|null $extraQueryParams */
-    #[Property(optional: true)]
+    #[Api(optional: true)]
     public ?array $extraQueryParams;
 
-    #[Property(optional: true)]
+    #[Api(optional: true)]
     public mixed $extraBodyParams;
 
-    #[Property(optional: true)]
+    #[Api(optional: true)]
     public ?ClientInterface $transporter;
 
-    #[Property(optional: true)]
+    #[Api(optional: true)]
     public ?UriFactoryInterface $uriFactory;
 
-    #[Property(optional: true)]
+    #[Api(optional: true)]
     public ?StreamFactoryInterface $streamFactory;
 
-    #[Property(optional: true)]
+    #[Api(optional: true)]
     public ?RequestFactoryInterface $requestFactory;
 
     public function __construct()
@@ -83,7 +83,8 @@ final class RequestOptions implements BaseModel
     {
         $parsed = array_map(static fn ($o) => $o instanceof self ? $o->toProperties() : $o ?? [], array: $options);
 
-        return self::with(...array_merge(...$parsed)); // @phpstan-ignore-line
+        // @phpstan-ignore-next-line argument.type
+        return self::with(...array_merge(...$parsed));
     }
 
     /**

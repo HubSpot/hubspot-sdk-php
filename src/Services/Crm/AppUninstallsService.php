@@ -25,7 +25,7 @@ final class AppUninstallsService implements AppUninstallsContract
      */
     public function uninstall(?RequestOptions $requestOptions = null): mixed
     {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: 'appinstalls/v3/external-install',

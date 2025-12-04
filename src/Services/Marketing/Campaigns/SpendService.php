@@ -42,7 +42,7 @@ final class SpendService implements SpendContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['marketing/v3/campaigns/%1$s/spend', $campaignGuid],
@@ -79,7 +79,7 @@ final class SpendService implements SpendContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['marketing/v3/campaigns/%1$s/spend/%2$s', $campaignGuid, $spendID],
@@ -110,7 +110,7 @@ final class SpendService implements SpendContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['marketing/v3/campaigns/%1$s/spend/%2$s', $campaignGuid, $spendID],
@@ -140,7 +140,7 @@ final class SpendService implements SpendContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/campaigns/%1$s/spend/%2$s', $campaignGuid, $spendID],

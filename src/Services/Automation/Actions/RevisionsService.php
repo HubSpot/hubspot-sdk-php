@@ -43,7 +43,7 @@ final class RevisionsService implements RevisionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -79,7 +79,7 @@ final class RevisionsService implements RevisionsContract
         $definitionID = $parsed['definitionId'];
         unset($parsed['definitionId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

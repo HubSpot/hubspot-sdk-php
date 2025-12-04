@@ -60,7 +60,7 @@ final class PartnerClientsService implements PartnerClientsContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/partner_clients/%1$s', $partnerClientID],
@@ -96,7 +96,7 @@ final class PartnerClientsService implements PartnerClientsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/partner_clients',
@@ -130,7 +130,7 @@ final class PartnerClientsService implements PartnerClientsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/partner_clients/%1$s', $partnerClientID],
@@ -163,7 +163,7 @@ final class PartnerClientsService implements PartnerClientsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/partner_clients/search',

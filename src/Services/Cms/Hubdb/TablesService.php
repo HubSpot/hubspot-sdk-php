@@ -71,7 +71,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/hubdb/tables',
@@ -114,7 +114,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/hubdb/tables',
@@ -136,7 +136,7 @@ final class TablesService implements TablesContract
         string $tableIDOrName,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['cms/v3/hubdb/tables/%1$s', $tableIDOrName],
@@ -166,7 +166,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/draft/clone', $tableIDOrName],
@@ -197,7 +197,7 @@ final class TablesService implements TablesContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -227,7 +227,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/export', $tableIDOrName],
@@ -257,7 +257,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/draft/export', $tableIDOrName],
@@ -291,7 +291,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s', $tableIDOrName],
@@ -322,7 +322,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/draft', $tableIDOrName],
@@ -352,7 +352,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/draft/import', $tableIDOrName],
@@ -396,7 +396,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/hubdb/tables/draft',
@@ -426,7 +426,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/draft/publish', $tableIDOrName],
@@ -455,7 +455,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/draft/reset', $tableIDOrName],
@@ -484,7 +484,7 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/unpublish', $tableIDOrName],
@@ -539,7 +539,7 @@ final class TablesService implements TablesContract
             ['archived', 'includeForeignIds', 'isGetLocalizedSchema']
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/hubdb/tables/%1$s/draft', $tableIDOrName],

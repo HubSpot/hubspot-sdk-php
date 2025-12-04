@@ -60,7 +60,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags',
@@ -100,7 +100,7 @@ final class TagsService implements TagsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/blogs/tags/%1$s', $objectID],
@@ -143,7 +143,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/blogs/tags',
@@ -173,7 +173,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['cms/v3/blogs/tags/%1$s', $objectID],
@@ -203,7 +203,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/multi-language/attach-to-lang-group',
@@ -241,7 +241,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/batch/create',
@@ -271,7 +271,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/multi-language/create-language-variation',
@@ -299,7 +299,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/batch/archive',
@@ -327,7 +327,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/multi-language/detach-from-lang-group',
@@ -356,7 +356,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/tags/%1$s', $objectID],
@@ -385,7 +385,7 @@ final class TagsService implements TagsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/batch/read',
@@ -414,7 +414,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: 'cms/v3/blogs/tags/multi-language/set-new-lang-primary',
@@ -443,7 +443,7 @@ final class TagsService implements TagsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/batch/update',
@@ -474,7 +474,7 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/multi-language/update-languages',

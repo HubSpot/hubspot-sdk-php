@@ -60,7 +60,7 @@ final class ServicesService implements ServicesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/0-162',
@@ -92,7 +92,7 @@ final class ServicesService implements ServicesContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/0-162/%1$s', $serviceID],
@@ -130,7 +130,7 @@ final class ServicesService implements ServicesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/0-162',
@@ -152,7 +152,7 @@ final class ServicesService implements ServicesContract
         string $serviceID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/0-162/%1$s', $serviceID],
@@ -186,7 +186,7 @@ final class ServicesService implements ServicesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/0-162/%1$s', $serviceID],
@@ -221,7 +221,7 @@ final class ServicesService implements ServicesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/0-162/search',

@@ -60,7 +60,7 @@ final class CommercePaymentsService implements CommercePaymentsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/commerce_payments',
@@ -92,7 +92,7 @@ final class CommercePaymentsService implements CommercePaymentsContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/commerce_payments/%1$s', $commercePaymentID],
@@ -130,7 +130,7 @@ final class CommercePaymentsService implements CommercePaymentsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/commerce_payments',
@@ -152,7 +152,7 @@ final class CommercePaymentsService implements CommercePaymentsContract
         string $commercePaymentID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/commerce_payments/%1$s', $commercePaymentID],
@@ -186,7 +186,7 @@ final class CommercePaymentsService implements CommercePaymentsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/commerce_payments/%1$s', $commercePaymentID],
@@ -219,7 +219,7 @@ final class CommercePaymentsService implements CommercePaymentsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/commerce_payments/search',

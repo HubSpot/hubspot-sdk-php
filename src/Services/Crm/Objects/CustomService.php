@@ -63,7 +63,7 @@ final class CustomService implements CustomContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s', $objectType],
@@ -97,7 +97,7 @@ final class CustomService implements CustomContract
         unset($parsed['objectType']);
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
@@ -139,7 +139,7 @@ final class CustomService implements CustomContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/%1$s', $objectType],
@@ -171,7 +171,7 @@ final class CustomService implements CustomContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
@@ -208,7 +208,7 @@ final class CustomService implements CustomContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
@@ -239,7 +239,7 @@ final class CustomService implements CustomContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/merge', $objectType],
@@ -273,7 +273,7 @@ final class CustomService implements CustomContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/search', $objectType],

@@ -56,7 +56,7 @@ final class StatusesService implements StatusesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['communication-preferences/v4/statuses/%1$s', $subscriberIDString],
@@ -87,7 +87,7 @@ final class StatusesService implements StatusesContract
         );
         $query_params = array_flip(['channel', 'businessUnitId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/read',
@@ -119,7 +119,7 @@ final class StatusesService implements StatusesContract
         );
         $query_params = array_flip(['channel', 'businessUnitId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/unsubscribe-all/read',
@@ -151,7 +151,7 @@ final class StatusesService implements StatusesContract
         );
         $query_params = array_flip(['channel', 'businessUnitId', 'verbose']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/unsubscribe-all',
@@ -189,7 +189,7 @@ final class StatusesService implements StatusesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/write',
@@ -218,7 +218,7 @@ final class StatusesService implements StatusesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['communication-preferences/v4/statuses/%1$s', $subscriberIDString],
@@ -249,7 +249,7 @@ final class StatusesService implements StatusesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -283,7 +283,7 @@ final class StatusesService implements StatusesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [

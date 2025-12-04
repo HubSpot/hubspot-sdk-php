@@ -60,7 +60,7 @@ final class ContractsService implements ContractsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/contracts',
@@ -92,7 +92,7 @@ final class ContractsService implements ContractsContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/contracts/%1$s', $contractID],
@@ -130,7 +130,7 @@ final class ContractsService implements ContractsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/contracts',
@@ -152,7 +152,7 @@ final class ContractsService implements ContractsContract
         string $contractID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/contracts/%1$s', $contractID],
@@ -186,7 +186,7 @@ final class ContractsService implements ContractsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/contracts/%1$s', $contractID],
@@ -219,7 +219,7 @@ final class ContractsService implements ContractsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/contracts/search',

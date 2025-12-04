@@ -50,7 +50,7 @@ final class ActivityService implements ActivityContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'account-info/v3/activity/audit-logs',
@@ -83,7 +83,7 @@ final class ActivityService implements ActivityContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'account-info/v3/activity/login',
@@ -120,7 +120,7 @@ final class ActivityService implements ActivityContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'account-info/v3/activity/security',

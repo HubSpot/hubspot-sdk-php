@@ -27,7 +27,7 @@ use HubspotSDK\Option;
  *   foreignIdsByName?: array<string,ForeignID>|null,
  *   foreignTableId?: int|null,
  *   optionCount?: int|null,
- *   options?: list<Option>|null,
+ *   options?: list<\HubspotSDK\Option>|null,
  *   updatedAt?: \DateTimeInterface|null,
  *   updatedBy?: SimpleUser|null,
  *   updatedByUserId?: int|null,

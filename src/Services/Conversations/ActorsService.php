@@ -46,7 +46,7 @@ final class ActorsService implements ActorsContract
         );
         $query_params = ['property'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'conversations/v3/conversations/actors/batch/read',
@@ -74,7 +74,7 @@ final class ActorsService implements ActorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/actors/%1$s', $actorID],

@@ -56,7 +56,7 @@ final class AttendanceService implements AttendanceContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -109,7 +109,7 @@ final class AttendanceService implements AttendanceContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -159,7 +159,7 @@ final class AttendanceService implements AttendanceContract
         unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -218,7 +218,7 @@ final class AttendanceService implements AttendanceContract
         unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [

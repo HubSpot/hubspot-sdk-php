@@ -60,7 +60,7 @@ final class TaxesService implements TaxesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/taxes',
@@ -92,7 +92,7 @@ final class TaxesService implements TaxesContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/taxes/%1$s', $taxID],
@@ -130,7 +130,7 @@ final class TaxesService implements TaxesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/taxes',
@@ -152,7 +152,7 @@ final class TaxesService implements TaxesContract
         string $taxID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/taxes/%1$s', $taxID],
@@ -186,7 +186,7 @@ final class TaxesService implements TaxesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/taxes/%1$s', $taxID],
@@ -219,7 +219,7 @@ final class TaxesService implements TaxesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/taxes/search',

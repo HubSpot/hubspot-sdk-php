@@ -32,7 +32,7 @@ final class ConfigurationsService implements ConfigurationsContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicAssociationDefinitionUserConfiguration {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/associations/v4/definitions/configurations/all',
@@ -67,7 +67,7 @@ final class ConfigurationsService implements ConfigurationsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -102,7 +102,7 @@ final class ConfigurationsService implements ConfigurationsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -142,7 +142,7 @@ final class ConfigurationsService implements ConfigurationsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -175,7 +175,7 @@ final class ConfigurationsService implements ConfigurationsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

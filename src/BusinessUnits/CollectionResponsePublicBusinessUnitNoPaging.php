@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Campaigns\PublicBusinessUnit;
  * A response object containing a collection of Business Units.
  *
  * @phpstan-type CollectionResponsePublicBusinessUnitNoPagingShape = array{
- *   results: list<PublicBusinessUnit>
+ *   results: list<\HubspotSDK\Marketing\Campaigns\PublicBusinessUnit>
  * }
  */
 final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel, ResponseConverter

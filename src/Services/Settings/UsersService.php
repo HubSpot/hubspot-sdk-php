@@ -51,7 +51,7 @@ final class UsersService implements UsersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'settings/v3/users/',
@@ -88,7 +88,7 @@ final class UsersService implements UsersContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['settings/v3/users/%1$s', $userID],
@@ -119,7 +119,7 @@ final class UsersService implements UsersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'settings/v3/users/',
@@ -149,7 +149,7 @@ final class UsersService implements UsersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['settings/v3/users/%1$s', $userID],
@@ -178,7 +178,7 @@ final class UsersService implements UsersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['settings/v3/users/%1$s', $userID],
@@ -198,7 +198,7 @@ final class UsersService implements UsersContract
     public function listRoles(
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicPermissionSetNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'settings/v3/users/roles',
@@ -217,7 +217,7 @@ final class UsersService implements UsersContract
     public function listTeams(
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicTeamNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'settings/v3/users/teams',

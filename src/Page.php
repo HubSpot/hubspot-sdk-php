@@ -17,7 +17,7 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * @phpstan-type PageShape = array{
- *   results?: list<mixed>|null, paging?: Paging|null
+ *   results?: list<mixed>|null, paging?: \HubspotSDK\Page\Paging|null
  * }
  *
  * @template TItem
@@ -65,7 +65,7 @@ final class Page implements BaseModel, BasePage
             return;
         }
 
-        // @phpstan-ignore-next-line
+        // @phpstan-ignore-next-line argument.type
         self::__unserialize($data);
 
         if ($this->offsetGet('results')) {

@@ -38,7 +38,7 @@ final class MappingService implements MappingContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/lists/idmapping',
@@ -66,7 +66,7 @@ final class MappingService implements MappingContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/lists/idmapping',

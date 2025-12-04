@@ -68,7 +68,7 @@ final class ProjectsService implements ProjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/objects/v3/projects',
@@ -100,7 +100,7 @@ final class ProjectsService implements ProjectsContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/objects/v3/projects/%1$s', $projectID],
@@ -138,7 +138,7 @@ final class ProjectsService implements ProjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/objects/v3/projects',
@@ -160,7 +160,7 @@ final class ProjectsService implements ProjectsContract
         string $projectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/objects/v3/projects/%1$s', $projectID],
@@ -194,7 +194,7 @@ final class ProjectsService implements ProjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/objects/v3/projects/%1$s', $projectID],
@@ -224,7 +224,7 @@ final class ProjectsService implements ProjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/objects/v3/projects/merge',
@@ -259,7 +259,7 @@ final class ProjectsService implements ProjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/objects/v3/projects/search',

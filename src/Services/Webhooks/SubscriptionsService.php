@@ -49,7 +49,7 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['webhooks/v3/%1$s/subscriptions', $appID],
@@ -80,7 +80,7 @@ final class SubscriptionsService implements SubscriptionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
@@ -101,7 +101,7 @@ final class SubscriptionsService implements SubscriptionsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): SubscriptionListResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['webhooks/v3/%1$s/subscriptions', $appID],
@@ -131,7 +131,7 @@ final class SubscriptionsService implements SubscriptionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
@@ -161,7 +161,7 @@ final class SubscriptionsService implements SubscriptionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
@@ -191,7 +191,7 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['webhooks/v3/%1$s/subscriptions/batch/update', $appID],

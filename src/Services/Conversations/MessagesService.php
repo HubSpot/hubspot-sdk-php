@@ -37,7 +37,7 @@ final class MessagesService implements MessagesContract
         int $threadID,
         ?RequestOptions $requestOptions = null
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['conversations/v3/conversations/threads/%1$s/messages', $threadID],
@@ -71,7 +71,7 @@ final class MessagesService implements MessagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/threads/%1$s/messages', $threadID],
@@ -101,7 +101,7 @@ final class MessagesService implements MessagesContract
         $threadID = $parsed['threadId'];
         unset($parsed['threadId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -136,7 +136,7 @@ final class MessagesService implements MessagesContract
         $threadID = $parsed['threadId'];
         unset($parsed['threadId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

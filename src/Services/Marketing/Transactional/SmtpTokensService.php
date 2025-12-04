@@ -40,7 +40,7 @@ final class SmtpTokensService implements SmtpTokensContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/transactional/smtp-tokens',
@@ -72,7 +72,7 @@ final class SmtpTokensService implements SmtpTokensContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'marketing/v3/transactional/smtp-tokens',
@@ -94,7 +94,7 @@ final class SmtpTokensService implements SmtpTokensContract
         string $tokenID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['marketing/v3/transactional/smtp-tokens/%1$s', $tokenID],
@@ -114,7 +114,7 @@ final class SmtpTokensService implements SmtpTokensContract
         string $tokenID,
         ?RequestOptions $requestOptions = null
     ): SmtpAPITokenView {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/transactional/smtp-tokens/%1$s', $tokenID],
@@ -134,7 +134,7 @@ final class SmtpTokensService implements SmtpTokensContract
         string $tokenID,
         ?RequestOptions $requestOptions = null
     ): SmtpAPITokenView {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [

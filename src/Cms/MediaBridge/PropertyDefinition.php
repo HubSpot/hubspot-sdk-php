@@ -12,7 +12,7 @@ use HubspotSDK\Property;
 /**
  * @phpstan-type PropertyDefinitionShape = array{
  *   objectTypeId: string,
- *   property: Property,
+ *   property: \HubspotSDK\Property,
  *   calculationExpression?: array<string,mixed>|null,
  *   calculationFormula?: string|null,
  *   definitionSource?: PropertyDefinitionSource|null,

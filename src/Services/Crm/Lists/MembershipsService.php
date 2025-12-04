@@ -54,7 +54,7 @@ final class MembershipsService implements MembershipsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/lists/%1$s/memberships', $listID],
@@ -86,7 +86,7 @@ final class MembershipsService implements MembershipsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/memberships/add', $listID],
@@ -121,7 +121,7 @@ final class MembershipsService implements MembershipsContract
         $listID = $parsed['listId'];
         unset($parsed['listId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -155,7 +155,7 @@ final class MembershipsService implements MembershipsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/memberships/add-and-remove', $listID],
@@ -186,7 +186,7 @@ final class MembershipsService implements MembershipsContract
         $objectTypeID = $parsed['objectTypeId'];
         unset($parsed['objectTypeId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -224,7 +224,7 @@ final class MembershipsService implements MembershipsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/lists/%1$s/memberships/join-order', $listID],
@@ -256,7 +256,7 @@ final class MembershipsService implements MembershipsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/memberships/remove', $listID],
@@ -281,7 +281,7 @@ final class MembershipsService implements MembershipsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/lists/%1$s/memberships', $listID],

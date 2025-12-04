@@ -48,7 +48,7 @@ final class SingleEmailService implements SingleEmailContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/transactional/single-email/send',

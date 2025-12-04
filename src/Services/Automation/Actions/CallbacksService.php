@@ -37,7 +37,7 @@ final class CallbacksService implements CallbacksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['automation/v4/actions/callbacks/%1$s/complete', $callbackID],
@@ -67,7 +67,7 @@ final class CallbacksService implements CallbacksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'automation/v4/actions/callbacks/complete',

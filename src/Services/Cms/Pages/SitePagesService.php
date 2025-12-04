@@ -154,7 +154,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages',
@@ -273,7 +273,7 @@ final class SitePagesService implements SitePagesContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/pages/site-pages/%1$s', $objectID],
@@ -316,7 +316,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/pages/site-pages',
@@ -346,7 +346,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['cms/v3/pages/site-pages/%1$s', $objectID],
@@ -376,7 +376,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/multi-language/attach-to-lang-group',
@@ -404,7 +404,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/clone',
@@ -434,7 +434,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/ab-test/create-variation',
@@ -522,7 +522,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/batch/create',
@@ -552,7 +552,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/multi-language/create-language-variation',
@@ -581,7 +581,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/batch/archive',
@@ -609,7 +609,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/multi-language/detach-from-lang-group',
@@ -637,7 +637,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/ab-test/end',
@@ -666,7 +666,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/pages/site-pages/%1$s', $objectID],
@@ -697,7 +697,7 @@ final class SitePagesService implements SitePagesContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/batch/read',
@@ -719,7 +719,7 @@ final class SitePagesService implements SitePagesContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): Page {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/pages/site-pages/%1$s/draft', $objectID],
@@ -749,7 +749,7 @@ final class SitePagesService implements SitePagesContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -783,7 +783,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/pages/site-pages/%1$s/revisions', $objectID],
@@ -805,7 +805,7 @@ final class SitePagesService implements SitePagesContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/pages/site-pages/%1$s/draft/push-live', $objectID],
@@ -834,7 +834,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/ab-test/rerun',
@@ -855,7 +855,7 @@ final class SitePagesService implements SitePagesContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/pages/site-pages/%1$s/draft/reset', $objectID],
@@ -885,7 +885,7 @@ final class SitePagesService implements SitePagesContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -919,7 +919,7 @@ final class SitePagesService implements SitePagesContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -952,7 +952,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/schedule',
@@ -980,7 +980,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: 'cms/v3/pages/site-pages/multi-language/set-new-lang-primary',
@@ -1011,7 +1011,7 @@ final class SitePagesService implements SitePagesContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/batch/update',
@@ -1129,7 +1129,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/pages/site-pages/%1$s/draft', $objectID],
@@ -1159,7 +1159,7 @@ final class SitePagesService implements SitePagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/multi-language/update-languages',

@@ -56,7 +56,7 @@ final class TemplatesService implements TemplatesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['integrators/timeline/v3/%1$s/event-templates', $appID],
@@ -102,7 +102,7 @@ final class TemplatesService implements TemplatesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -127,7 +127,7 @@ final class TemplatesService implements TemplatesContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseTimelineEventTemplateNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['integrators/timeline/v3/%1$s/event-templates', $appID],
@@ -157,7 +157,7 @@ final class TemplatesService implements TemplatesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -191,7 +191,7 @@ final class TemplatesService implements TemplatesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

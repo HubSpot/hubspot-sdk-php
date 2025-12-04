@@ -58,7 +58,7 @@ final class FeedbackSubmissionsService implements FeedbackSubmissionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/feedback_submissions',
@@ -94,7 +94,7 @@ final class FeedbackSubmissionsService implements FeedbackSubmissionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/feedback_submissions/%1$s', $feedbackSubmissionID],
@@ -129,7 +129,7 @@ final class FeedbackSubmissionsService implements FeedbackSubmissionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/feedback_submissions/search',

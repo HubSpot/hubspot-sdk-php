@@ -43,7 +43,7 @@ final class StatisticsService implements StatisticsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'marketing/v3/emails/statistics/list',
@@ -76,7 +76,7 @@ final class StatisticsService implements StatisticsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'marketing/v3/emails/statistics/histogram',
