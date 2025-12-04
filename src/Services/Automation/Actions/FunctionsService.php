@@ -135,10 +135,7 @@ final class FunctionsService implements FunctionsContract
                 $functionID,
             ],
             headers: ['Content-Type' => 'text/plain'],
-            body: array_diff_key(
-                $parsed['body'],
-                array_flip(['appId', 'definitionId', 'functionType'])
-            ),
+            body: $parsed['body'],
             options: $options,
             convert: PublicActionFunctionIdentifier::class,
         );
@@ -177,10 +174,7 @@ final class FunctionsService implements FunctionsContract
                 $functionType,
             ],
             headers: ['Content-Type' => 'text/plain'],
-            body: array_diff_key(
-                $parsed['body'],
-                array_flip(['appId', 'definitionId'])
-            ),
+            body: $parsed['body'],
             options: $options,
             convert: PublicActionFunctionIdentifier::class,
         );

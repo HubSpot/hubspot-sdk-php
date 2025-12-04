@@ -455,7 +455,8 @@ final class IntegratorSettingsTest extends TestCase
                     ],
                     'portalId' => 0,
                 ],
-            );
+            )
+        ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);

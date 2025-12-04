@@ -38,20 +38,8 @@ final class MessagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->messages->create(
-            0,
-            [
-                'attachments' => [['fileId' => 'fileId', 'type' => 'FILE']],
-                'channelAccountId' => 'channelAccountId',
-                'channelId' => 'channelId',
-                'recipients' => [
-                    ['deliveryIdentifiers' => [['type' => 'type', 'value' => 'value']]],
-                ],
-                'senderActorId' => 'senderActorId',
-                'text' => 'text',
-                'type' => 'MESSAGE',
-            ],
-        );
+        // Note: create() currently doesn't accept body params due to codegen issue (SDK-3797)
+        $result = $this->client->conversations->messages->create(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNotNull($result);

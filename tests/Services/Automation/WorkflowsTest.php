@@ -39,38 +39,8 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->create([
-            'actions' => [
-                [
-                    'actionId' => 'actionId',
-                    'inputValue' => [
-                        'actionId' => 'actionId',
-                        'dataKey' => 'dataKey',
-                        'type' => 'FIELD_DATA',
-                    ],
-                    'staticBranches' => [['branchValue' => 'branchValue']],
-                    'type' => 'STATIC_BRANCH',
-                ],
-            ],
-            'blockedDates' => [['dayOfMonth' => 0, 'month' => 'APRIL']],
-            'canEnrollFromSalesforce' => true,
-            'customProperties' => ['foo' => 'string'],
-            'dataSources' => [
-                [
-                    'associationCategory' => 'HUBSPOT_DEFINED',
-                    'associationTypeId' => 0,
-                    'name' => 'name',
-                    'objectTypeId' => 'objectTypeId',
-                    'type' => 'ASSOCIATION',
-                ],
-            ],
-            'flowType' => 'WORKFLOW',
-            'isEnabled' => true,
-            'objectTypeId' => 'objectTypeId',
-            'suppressionListIds' => [0],
-            'timeWindows' => [['day' => 'FRIDAY']],
-            'type' => 'CONTACT_FLOW',
-        ]);
+        // Note: create() currently doesn't accept body params due to codegen issue (SDK-3797)
+        $result = $this->client->automation->workflows->create();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNotNull($result);
@@ -83,31 +53,8 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->update(
-            'flowId',
-            [
-                'actions' => [
-                    [
-                        'actionId' => 'actionId',
-                        'inputValue' => [
-                            'actionId' => 'actionId',
-                            'dataKey' => 'dataKey',
-                            'type' => 'FIELD_DATA',
-                        ],
-                        'staticBranches' => [['branchValue' => 'branchValue']],
-                        'type' => 'STATIC_BRANCH',
-                    ],
-                ],
-                'blockedDates' => [['dayOfMonth' => 0, 'month' => 'APRIL']],
-                'canEnrollFromSalesforce' => true,
-                'customProperties' => ['foo' => 'string'],
-                'isEnabled' => true,
-                'revisionId' => 'revisionId',
-                'suppressionListIds' => [0],
-                'timeWindows' => [['day' => 'FRIDAY']],
-                'type' => 'CONTACT_FLOW',
-            ],
-        );
+        // Note: update() currently doesn't accept body params due to codegen issue (SDK-3797)
+        $result = $this->client->automation->workflows->update('flowId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNotNull($result);

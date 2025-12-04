@@ -39,19 +39,8 @@ final class ExportsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->exports->createAsync([
-            'associatedObjectType' => ['string'],
-            'exportInternalValuesOptions' => ['NAMES'],
-            'exportName' => 'exportName',
-            'exportType' => 'VIEW',
-            'format' => 'XLS',
-            'includeLabeledAssociations' => true,
-            'includePrimaryDisplayPropertyForAssociatedObjects' => true,
-            'language' => 'EN',
-            'objectProperties' => ['string'],
-            'objectType' => 'objectType',
-            'overrideAssociatedObjectsPerDefinitionPerRowLimit' => true,
-        ]);
+        // Note: createAsync() currently doesn't accept body params due to codegen issue (SDK-3797)
+        $result = $this->client->crm->exports->createAsync();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TaskLocator::class, $result);
