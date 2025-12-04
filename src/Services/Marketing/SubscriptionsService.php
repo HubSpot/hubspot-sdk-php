@@ -41,7 +41,7 @@ final class SubscriptionsService implements SubscriptionsContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): SubscriptionDefinitionsResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'communication-preferences/v3/definitions',
@@ -61,7 +61,7 @@ final class SubscriptionsService implements SubscriptionsContract
         string $emailAddress,
         ?RequestOptions $requestOptions = null
     ): PublicSubscriptionStatusesResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['communication-preferences/v3/status/email/%1$s', $emailAddress],
@@ -93,7 +93,7 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v3/subscribe',
@@ -126,7 +126,7 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v3/unsubscribe',

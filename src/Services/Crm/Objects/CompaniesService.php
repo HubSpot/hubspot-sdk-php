@@ -61,7 +61,7 @@ final class CompaniesService implements CompaniesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/companies',
@@ -93,7 +93,7 @@ final class CompaniesService implements CompaniesContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/companies/%1$s', $companyID],
@@ -131,7 +131,7 @@ final class CompaniesService implements CompaniesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/companies',
@@ -153,7 +153,7 @@ final class CompaniesService implements CompaniesContract
         string $companyID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/companies/%1$s', $companyID],
@@ -187,7 +187,7 @@ final class CompaniesService implements CompaniesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/companies/%1$s', $companyID],
@@ -217,7 +217,7 @@ final class CompaniesService implements CompaniesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/companies/merge',
@@ -252,7 +252,7 @@ final class CompaniesService implements CompaniesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/companies/search',

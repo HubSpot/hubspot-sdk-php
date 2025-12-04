@@ -72,7 +72,7 @@ final class PropertiesService implements PropertiesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/properties/%2$s', $appID, $objectType],
@@ -125,7 +125,7 @@ final class PropertiesService implements PropertiesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: [
@@ -166,7 +166,7 @@ final class PropertiesService implements PropertiesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/properties/%2$s', $appID, $objectType],
@@ -199,7 +199,7 @@ final class PropertiesService implements PropertiesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -253,7 +253,7 @@ final class PropertiesService implements PropertiesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -288,7 +288,7 @@ final class PropertiesService implements PropertiesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -327,7 +327,7 @@ final class PropertiesService implements PropertiesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -368,7 +368,7 @@ final class PropertiesService implements PropertiesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [

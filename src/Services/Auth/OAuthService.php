@@ -52,7 +52,7 @@ final class OAuthService implements OAuthContract
         );
         $query_params = array_flip(['client_secret', 'refresh_token']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'oauth/v1/token',
@@ -79,7 +79,7 @@ final class OAuthService implements OAuthContract
         string $token,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['oauth/v1/refresh-tokens/%1$s', $token],
@@ -103,7 +103,7 @@ final class OAuthService implements OAuthContract
         string $token,
         ?RequestOptions $requestOptions = null
     ): AccessTokenInfoResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['oauth/v1/access-tokens/%1$s', $token],
@@ -125,7 +125,7 @@ final class OAuthService implements OAuthContract
         string $token,
         ?RequestOptions $requestOptions = null
     ): RefreshTokenInfoResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['oauth/v1/refresh-tokens/%1$s', $token],

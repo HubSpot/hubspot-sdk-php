@@ -38,7 +38,7 @@ final class FormsService implements FormsContract
     public function create(
         ?RequestOptions $requestOptions = null
     ): FormDefinitionBase {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/forms/',
@@ -97,7 +97,7 @@ final class FormsService implements FormsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['marketing/v3/forms/%1$s', $formID],
@@ -132,7 +132,7 @@ final class FormsService implements FormsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'marketing/v3/forms/',
@@ -154,7 +154,7 @@ final class FormsService implements FormsContract
         string $formID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['marketing/v3/forms/%1$s', $formID],
@@ -182,7 +182,7 @@ final class FormsService implements FormsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/forms/%1$s', $formID],
@@ -203,7 +203,7 @@ final class FormsService implements FormsContract
         string $formID,
         ?RequestOptions $requestOptions = null
     ): FormDefinitionBase {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['marketing/v3/forms/%1$s', $formID],

@@ -57,7 +57,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'media-bridge/v1/events/attention-span',
@@ -101,7 +101,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'media-bridge/v1/events/media-played',
@@ -144,7 +144,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'media-bridge/v1/events/media-played-percent',

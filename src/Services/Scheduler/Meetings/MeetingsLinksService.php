@@ -52,7 +52,7 @@ final class MeetingsLinksService implements MeetingsLinksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'scheduler/v3/meetings/meeting-links',
@@ -95,7 +95,7 @@ final class MeetingsLinksService implements MeetingsLinksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'scheduler/v3/meetings/meeting-links/book',
@@ -126,7 +126,7 @@ final class MeetingsLinksService implements MeetingsLinksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -157,7 +157,7 @@ final class MeetingsLinksService implements MeetingsLinksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['scheduler/v3/meetings/meeting-links/book/%1$s', $slug],

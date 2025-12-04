@@ -44,7 +44,7 @@ final class ReportsService implements ReportsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/campaigns/%1$s/reports/metrics', $campaignGuid],
@@ -75,7 +75,7 @@ final class ReportsService implements ReportsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/campaigns/%1$s/reports/revenue', $campaignGuid],
@@ -114,7 +114,7 @@ final class ReportsService implements ReportsContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

@@ -43,7 +43,7 @@ final class BudgetService implements BudgetContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['marketing/v3/campaigns/%1$s/budget', $campaignGuid],
@@ -80,7 +80,7 @@ final class BudgetService implements BudgetContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -113,7 +113,7 @@ final class BudgetService implements BudgetContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -145,7 +145,7 @@ final class BudgetService implements BudgetContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -168,7 +168,7 @@ final class BudgetService implements BudgetContract
         string $campaignGuid,
         ?RequestOptions $requestOptions = null
     ): PublicBudgetTotals {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/campaigns/%1$s/budget/totals', $campaignGuid],

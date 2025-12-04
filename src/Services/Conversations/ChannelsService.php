@@ -39,7 +39,7 @@ final class ChannelsService implements ChannelsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'conversations/v3/conversations/channels',
@@ -59,7 +59,7 @@ final class ChannelsService implements ChannelsContract
         int $channelID,
         ?RequestOptions $requestOptions = null
     ): PublicChannel {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/channels/%1$s', $channelID],

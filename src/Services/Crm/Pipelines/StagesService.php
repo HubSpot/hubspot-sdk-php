@@ -52,7 +52,7 @@ final class StagesService implements StagesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/pipelines/%1$s/%2$s/stages', $objectType, $pipelineID],
@@ -92,7 +92,7 @@ final class StagesService implements StagesContract
         $pipelineID = $parsed['pipelineId'];
         unset($parsed['pipelineId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: [
@@ -131,7 +131,7 @@ final class StagesService implements StagesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/pipelines/%1$s/%2$s/stages', $objectType, $pipelineID],
@@ -163,7 +163,7 @@ final class StagesService implements StagesContract
         $pipelineID = $parsed['pipelineId'];
         unset($parsed['pipelineId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -200,7 +200,7 @@ final class StagesService implements StagesContract
         $pipelineID = $parsed['pipelineId'];
         unset($parsed['pipelineId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -237,7 +237,7 @@ final class StagesService implements StagesContract
         $pipelineID = $parsed['pipelineId'];
         unset($parsed['pipelineId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -280,7 +280,7 @@ final class StagesService implements StagesContract
         $pipelineID = $parsed['pipelineId'];
         unset($parsed['pipelineId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [

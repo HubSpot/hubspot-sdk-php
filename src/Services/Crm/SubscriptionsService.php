@@ -29,7 +29,7 @@ final class SubscriptionsService implements SubscriptionsContract
         int $objectID,
         ?RequestOptions $requestOptions = null
     ): string {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -60,7 +60,7 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -92,7 +92,7 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [

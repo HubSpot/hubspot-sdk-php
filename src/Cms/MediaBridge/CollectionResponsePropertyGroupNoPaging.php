@@ -11,7 +11,7 @@ use HubspotSDK\Crm\Properties\PropertyGroup;
 
 /**
  * @phpstan-type CollectionResponsePropertyGroupNoPagingShape = array{
- *   results: list<PropertyGroup>
+ *   results: list<\HubspotSDK\Crm\Properties\PropertyGroup>
  * }
  */
 final class CollectionResponsePropertyGroupNoPaging implements BaseModel

@@ -45,7 +45,7 @@ final class AssetsService implements AssetsContract
         $assetType = $parsed['assetType'];
         unset($parsed['assetType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -87,7 +87,7 @@ final class AssetsService implements AssetsContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -123,7 +123,7 @@ final class AssetsService implements AssetsContract
         $assetType = $parsed['assetType'];
         unset($parsed['assetType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [

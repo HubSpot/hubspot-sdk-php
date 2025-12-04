@@ -55,7 +55,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'events/v3/event-definitions',
@@ -86,7 +86,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['events/v3/event-definitions/%1$s', $eventName],
@@ -122,7 +122,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'events/v3/event-definitions',
@@ -144,7 +144,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
         string $eventName,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['events/v3/event-definitions/%1$s', $eventName],
@@ -184,7 +184,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['events/v3/event-definitions/%1$s/property', $eventName],
@@ -215,7 +215,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
         $eventName = $parsed['eventName'];
         unset($parsed['eventName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -239,7 +239,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
         string $eventName,
         ?RequestOptions $requestOptions = null
     ): ExternalBehavioralEventTypeDefinition {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['events/v3/event-definitions/%1$s', $eventName],
@@ -280,7 +280,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
         $eventName = $parsed['eventName'];
         unset($parsed['eventName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: [

@@ -36,7 +36,7 @@ final class VisitorIdentificationService implements VisitorIdentificationContrac
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'visitor-identification/v3/tokens/create',

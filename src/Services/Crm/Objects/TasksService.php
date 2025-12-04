@@ -60,7 +60,7 @@ final class TasksService implements TasksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/tasks',
@@ -92,7 +92,7 @@ final class TasksService implements TasksContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/tasks/%1$s', $taskID],
@@ -130,7 +130,7 @@ final class TasksService implements TasksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/tasks',
@@ -152,7 +152,7 @@ final class TasksService implements TasksContract
         string $taskID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/tasks/%1$s', $taskID],
@@ -186,7 +186,7 @@ final class TasksService implements TasksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/tasks/%1$s', $taskID],
@@ -219,7 +219,7 @@ final class TasksService implements TasksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/tasks/search',

@@ -39,7 +39,7 @@ final class BusinessUnitsService implements BusinessUnitsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['business-units/v3/business-units/user/%1$s', $userID],

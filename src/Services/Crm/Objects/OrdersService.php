@@ -60,7 +60,7 @@ final class OrdersService implements OrdersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/orders',
@@ -92,7 +92,7 @@ final class OrdersService implements OrdersContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/orders/%1$s', $orderID],
@@ -130,7 +130,7 @@ final class OrdersService implements OrdersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/orders',
@@ -152,7 +152,7 @@ final class OrdersService implements OrdersContract
         string $orderID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/orders/%1$s', $orderID],
@@ -186,7 +186,7 @@ final class OrdersService implements OrdersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/orders/%1$s', $orderID],
@@ -221,7 +221,7 @@ final class OrdersService implements OrdersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/orders/search',

@@ -47,7 +47,7 @@ final class AssociationsService implements AssociationsContract
         $toObjectID = $parsed['toObjectId'];
         unset($parsed['toObjectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -85,7 +85,7 @@ final class AssociationsService implements AssociationsContract
         $projectID = $parsed['projectId'];
         unset($parsed['projectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -125,7 +125,7 @@ final class AssociationsService implements AssociationsContract
         $toObjectID = $parsed['toObjectId'];
         unset($parsed['toObjectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [

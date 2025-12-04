@@ -29,7 +29,7 @@ final class ExportsService implements ExportsContract
     public function createAsync(
         ?RequestOptions $requestOptions = null
     ): TaskLocator {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/exports/export/async',
@@ -49,7 +49,7 @@ final class ExportsService implements ExportsContract
         int $exportID,
         ?RequestOptions $requestOptions = null
     ): PublicExportResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/exports/export/%1$s', $exportID],
@@ -69,7 +69,7 @@ final class ExportsService implements ExportsContract
         int $taskID,
         ?RequestOptions $requestOptions = null
     ): ActionResponseWithSingleResultUri {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/exports/export/async/tasks/%1$s/status', $taskID],

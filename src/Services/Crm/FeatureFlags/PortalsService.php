@@ -48,7 +48,7 @@ final class PortalsService implements PortalsContract
         $flagName = $parsed['flagName'];
         unset($parsed['flagName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -86,7 +86,7 @@ final class PortalsService implements PortalsContract
         $flagName = $parsed['flagName'];
         unset($parsed['flagName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -121,7 +121,7 @@ final class PortalsService implements PortalsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -159,7 +159,7 @@ final class PortalsService implements PortalsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -196,7 +196,7 @@ final class PortalsService implements PortalsContract
         $flagName = $parsed['flagName'];
         unset($parsed['flagName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

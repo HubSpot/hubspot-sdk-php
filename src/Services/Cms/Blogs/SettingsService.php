@@ -56,7 +56,7 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/blog-settings/settings',
@@ -85,7 +85,7 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blog-settings/settings/multi-language/attach-to-lang-group',
@@ -113,7 +113,7 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blog-settings/settings/multi-language/create-language-variation',
@@ -139,7 +139,7 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blog-settings/settings/multi-language/detach-from-lang-group',
@@ -158,7 +158,7 @@ final class SettingsService implements SettingsContract
         string $blogID,
         ?RequestOptions $requestOptions = null
     ): Blog {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/blog-settings/settings/%1$s', $blogID],
@@ -186,7 +186,7 @@ final class SettingsService implements SettingsContract
         $blogID = $parsed['blogId'];
         unset($parsed['blogId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -220,7 +220,7 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/blog-settings/settings/%1$s/revisions', $blogID],
@@ -247,7 +247,7 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: 'cms/v3/blog-settings/settings/multi-language/set-new-lang-primary',
@@ -275,7 +275,7 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blog-settings/settings/multi-language/update-languages',

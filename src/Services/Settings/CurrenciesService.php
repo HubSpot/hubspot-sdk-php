@@ -67,7 +67,7 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/exchange-rates/batch/create',
@@ -97,7 +97,7 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/exchange-rates/batch/read',
@@ -129,7 +129,7 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/exchange-rates/batch/update',
@@ -161,7 +161,7 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/exchange-rates',
@@ -181,7 +181,7 @@ final class CurrenciesService implements CurrenciesContract
     public function getCompanyCurrency(
         ?RequestOptions $requestOptions = null
     ): CompanyCurrency {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/company-currency',
@@ -201,7 +201,7 @@ final class CurrenciesService implements CurrenciesContract
         string $exchangeRateID,
         ?RequestOptions $requestOptions = null
     ): ExchangeRate {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['settings/v3/currencies/exchange-rates/%1$s', $exchangeRateID],
@@ -220,7 +220,7 @@ final class CurrenciesService implements CurrenciesContract
     public function listCodes(
         ?RequestOptions $requestOptions = null
     ): CollectionResponseCurrencyCodeInfoNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/codes',
@@ -239,7 +239,7 @@ final class CurrenciesService implements CurrenciesContract
     public function listCurrentExchangeRates(
         ?RequestOptions $requestOptions = null
     ): CollectionResponseExchangeRateNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/exchange-rates/current',
@@ -273,7 +273,7 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/exchange-rates',
@@ -304,7 +304,7 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: 'settings/v3/currencies/company-currency',
@@ -335,7 +335,7 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['settings/v3/currencies/exchange-rates/%1$s', $exchangeRateID],
@@ -367,7 +367,7 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/exchange-rates/update-visibility',

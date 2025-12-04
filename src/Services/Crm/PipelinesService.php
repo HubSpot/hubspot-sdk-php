@@ -59,7 +59,7 @@ final class PipelinesService implements PipelinesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/pipelines/%1$s', $objectType],
@@ -100,7 +100,7 @@ final class PipelinesService implements PipelinesContract
             ['validateDealStageUsagesBeforeDelete', 'validateReferencesBeforeDelete']
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
@@ -125,7 +125,7 @@ final class PipelinesService implements PipelinesContract
         string $objectType,
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePipelineNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/pipelines/%1$s', $objectType],
@@ -159,7 +159,7 @@ final class PipelinesService implements PipelinesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
@@ -190,7 +190,7 @@ final class PipelinesService implements PipelinesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
@@ -220,7 +220,7 @@ final class PipelinesService implements PipelinesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/pipelines/%1$s/%2$s/audit', $objectType, $pipelineID],
@@ -262,7 +262,7 @@ final class PipelinesService implements PipelinesContract
             ['validateDealStageUsagesBeforeDelete', 'validateReferencesBeforeDelete']
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],

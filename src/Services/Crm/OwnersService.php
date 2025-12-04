@@ -42,7 +42,7 @@ final class OwnersService implements OwnersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/owners/',
@@ -72,7 +72,7 @@ final class OwnersService implements OwnersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/owners/%1$s', $ownerID],

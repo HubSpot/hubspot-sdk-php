@@ -50,7 +50,7 @@ final class DomainsService implements DomainsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/domains/',
@@ -72,7 +72,7 @@ final class DomainsService implements DomainsContract
         string $domainID,
         ?RequestOptions $requestOptions = null
     ): Domain {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/domains/%1$s', $domainID],

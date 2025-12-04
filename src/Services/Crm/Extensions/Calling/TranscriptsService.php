@@ -45,7 +45,7 @@ final class TranscriptsService implements TranscriptsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/extensions/calling/transcripts',
@@ -64,7 +64,7 @@ final class TranscriptsService implements TranscriptsContract
         string $transcriptID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/extensions/calling/transcripts/%1$s', $transcriptID],
@@ -82,7 +82,7 @@ final class TranscriptsService implements TranscriptsContract
         string $transcriptID,
         ?RequestOptions $requestOptions = null
     ): TranscriptResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/extensions/calling/transcripts/%1$s', $transcriptID],

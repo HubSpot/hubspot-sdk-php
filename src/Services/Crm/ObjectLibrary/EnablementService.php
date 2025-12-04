@@ -28,7 +28,7 @@ final class EnablementService implements EnablementContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): PortalObjectTypeEnablementPublicResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/object-library/enablement',
@@ -48,7 +48,7 @@ final class EnablementService implements EnablementContract
         string $objectTypeID,
         ?RequestOptions $requestOptions = null
     ): ObjectTypeEnablementPublicResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/object-library/enablement/%1$s', $objectTypeID],

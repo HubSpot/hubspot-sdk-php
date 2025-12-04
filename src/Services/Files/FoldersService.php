@@ -46,7 +46,7 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'files/v3/folders',
@@ -67,7 +67,7 @@ final class FoldersService implements FoldersContract
         string $folderID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['files/v3/folders/%1$s', $folderID],
@@ -87,7 +87,7 @@ final class FoldersService implements FoldersContract
         string $folderPath,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['files/v3/folders/%1$s', $folderPath],
@@ -115,7 +115,7 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['files/v3/folders/%1$s', $folderID],
@@ -144,7 +144,7 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['files/v3/folders/%1$s', $folderPath],
@@ -165,7 +165,7 @@ final class FoldersService implements FoldersContract
         string $taskID,
         ?RequestOptions $requestOptions = null
     ): FolderActionResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['files/v3/folders/update/async/tasks/%1$s/status', $taskID],
@@ -212,7 +212,7 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'files/v3/folders/search',
@@ -243,7 +243,7 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'files/v3/folders/update/async',
@@ -272,7 +272,7 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['files/v3/folders/%1$s', $folderID],

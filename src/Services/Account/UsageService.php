@@ -27,7 +27,7 @@ final class UsageService implements UsageContract
     public function getDailyPrivateAppsUsage(
         ?RequestOptions $requestOptions = null
     ): CollectionResponseAPIUsage {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'account-info/v3/api-usage/daily/private-apps',

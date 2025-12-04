@@ -58,7 +58,7 @@ final class CardsService implements CardsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/extensions/cards-dev/%1$s', $appID],
@@ -102,7 +102,7 @@ final class CardsService implements CardsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/extensions/cards-dev/%1$s/%2$s', $appID, $cardID],
@@ -123,7 +123,7 @@ final class CardsService implements CardsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): PublicCardListResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/extensions/cards-dev/%1$s', $appID],
@@ -153,7 +153,7 @@ final class CardsService implements CardsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/extensions/cards-dev/%1$s/%2$s', $appID, $cardID],
@@ -183,7 +183,7 @@ final class CardsService implements CardsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/extensions/cards-dev/%1$s/%2$s', $appID, $cardID],
@@ -202,7 +202,7 @@ final class CardsService implements CardsContract
     public function getSampleResponse(
         ?RequestOptions $requestOptions = null
     ): IntegratorCardPayloadResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/extensions/cards-dev/sample-response',

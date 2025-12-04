@@ -46,7 +46,7 @@ final class LimitsService implements LimitsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/associations/labels',
@@ -79,7 +79,7 @@ final class LimitsService implements LimitsContract
         $fromObjectTypeID = $parsed['fromObjectTypeId'];
         unset($parsed['fromObjectTypeId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -102,7 +102,7 @@ final class LimitsService implements LimitsContract
     public function getAssociationRecordsLimitsFromObjects(
         ?RequestOptions $requestOptions = null
     ): CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/associations/records/from',
@@ -122,7 +122,7 @@ final class LimitsService implements LimitsContract
         string $fromObjectTypeID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/limits/associations/records/%1$s/to', $fromObjectTypeID],
@@ -141,7 +141,7 @@ final class LimitsService implements LimitsContract
     public function getCalculatedPropertyLimits(
         ?RequestOptions $requestOptions = null
     ): CalculatedPropertyLimitResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/calculated-properties',
@@ -160,7 +160,7 @@ final class LimitsService implements LimitsContract
     public function getCustomObjectTypeLimits(
         ?RequestOptions $requestOptions = null
     ): CustomObjectLimitResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/custom-object-types',
@@ -179,7 +179,7 @@ final class LimitsService implements LimitsContract
     public function getCustomPropertyLimits(
         ?RequestOptions $requestOptions = null
     ): CustomPropertyLimitResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/custom-properties',
@@ -198,7 +198,7 @@ final class LimitsService implements LimitsContract
     public function getPipelineLimits(
         ?RequestOptions $requestOptions = null
     ): PipelineLimitResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/pipelines',
@@ -217,7 +217,7 @@ final class LimitsService implements LimitsContract
     public function getRecordLimits(
         ?RequestOptions $requestOptions = null
     ): RecordLimitResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/records',

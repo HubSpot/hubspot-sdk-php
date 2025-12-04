@@ -60,7 +60,7 @@ final class GoalTargetsService implements GoalTargetsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/goal_targets',
@@ -92,7 +92,7 @@ final class GoalTargetsService implements GoalTargetsContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/goal_targets/%1$s', $goalTargetID],
@@ -130,7 +130,7 @@ final class GoalTargetsService implements GoalTargetsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/goal_targets',
@@ -152,7 +152,7 @@ final class GoalTargetsService implements GoalTargetsContract
         string $goalTargetID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/goal_targets/%1$s', $goalTargetID],
@@ -186,7 +186,7 @@ final class GoalTargetsService implements GoalTargetsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/goal_targets/%1$s', $goalTargetID],
@@ -221,7 +221,7 @@ final class GoalTargetsService implements GoalTargetsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/goal_targets/search',

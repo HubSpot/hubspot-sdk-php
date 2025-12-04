@@ -28,7 +28,7 @@ final class ReportService implements ReportContract
         int $userID,
         ?RequestOptions $requestOptions = null
     ): ReportCreationResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v4/associations/usage/high-usage-report/%1$s', $userID],

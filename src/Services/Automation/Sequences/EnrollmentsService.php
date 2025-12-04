@@ -44,7 +44,7 @@ final class EnrollmentsService implements EnrollmentsContract
         );
         $query_params = ['userId'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'automation/v4/sequences/enrollments',
@@ -66,7 +66,7 @@ final class EnrollmentsService implements EnrollmentsContract
         string $contactID,
         ?RequestOptions $requestOptions = null
     ): PublicSequenceEnrollmentResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['automation/v4/sequences/enrollments/contact/%1$s', $contactID],

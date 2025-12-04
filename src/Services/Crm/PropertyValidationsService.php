@@ -32,7 +32,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
         string $objectTypeID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicPropertyValidationRuleMapNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/property-validations/%1$s', $objectTypeID],
@@ -67,7 +67,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
         $propertyName = $parsed['propertyName'];
         unset($parsed['propertyName']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -106,7 +106,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
         $objectTypeID = $parsed['objectTypeId'];
         unset($parsed['objectTypeId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

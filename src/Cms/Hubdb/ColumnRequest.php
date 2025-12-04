@@ -15,7 +15,7 @@ use HubspotSDK\Option;
  *   id: int,
  *   label: string,
  *   name: string,
- *   options: list<Option>,
+ *   options: list<\HubspotSDK\Option>,
  *   type: value-of<Type>,
  *   foreignColumnId?: int|null,
  *   foreignTableId?: int|null,

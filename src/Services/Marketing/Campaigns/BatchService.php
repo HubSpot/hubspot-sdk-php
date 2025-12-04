@@ -43,7 +43,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/campaigns/batch/create',
@@ -75,7 +75,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/campaigns/batch/update',
@@ -105,7 +105,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/campaigns/batch/archive',
@@ -142,7 +142,7 @@ final class BatchService implements BatchContract
         );
         $query_params = array_flip(['endDate', 'properties', 'startDate']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/campaigns/batch/read',

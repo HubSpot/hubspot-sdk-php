@@ -49,7 +49,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -84,7 +84,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         $channelID = $parsed['channelId'];
         unset($parsed['channelId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: [
@@ -127,7 +127,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -161,7 +161,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         $channelID = $parsed['channelId'];
         unset($parsed['channelId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

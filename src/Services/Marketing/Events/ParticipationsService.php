@@ -46,7 +46,7 @@ final class ParticipationsService implements ParticipationsContract
         $externalAccountID = $parsed['externalAccountId'];
         unset($parsed['externalAccountId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -70,7 +70,7 @@ final class ParticipationsService implements ParticipationsContract
         int $marketingEventID,
         ?RequestOptions $requestOptions = null
     ): AttendanceCounters {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -104,7 +104,7 @@ final class ParticipationsService implements ParticipationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -147,7 +147,7 @@ final class ParticipationsService implements ParticipationsContract
         $externalAccountID = $parsed['externalAccountId'];
         unset($parsed['externalAccountId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -185,7 +185,7 @@ final class ParticipationsService implements ParticipationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

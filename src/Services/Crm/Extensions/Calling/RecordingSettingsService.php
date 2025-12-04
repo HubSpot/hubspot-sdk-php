@@ -39,7 +39,7 @@ final class RecordingSettingsService implements RecordingSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/extensions/calling/%1$s/settings/recording', $appID],
@@ -68,7 +68,7 @@ final class RecordingSettingsService implements RecordingSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/extensions/calling/%1$s/settings/recording', $appID],
@@ -87,7 +87,7 @@ final class RecordingSettingsService implements RecordingSettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): RecordingSettingsResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/extensions/calling/%1$s/settings/recording', $appID],
@@ -112,7 +112,7 @@ final class RecordingSettingsService implements RecordingSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/extensions/calling/recordings/ready',

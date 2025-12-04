@@ -70,7 +70,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors',
@@ -120,7 +120,7 @@ final class AuthorsService implements AuthorsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/blogs/authors/%1$s', $objectID],
@@ -163,7 +163,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/blogs/authors',
@@ -193,7 +193,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['cms/v3/blogs/authors/%1$s', $objectID],
@@ -223,7 +223,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/multi-language/attach-to-lang-group',
@@ -271,7 +271,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/batch/create',
@@ -322,7 +322,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/multi-language/create-language-variation',
@@ -350,7 +350,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/batch/archive',
@@ -378,7 +378,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/multi-language/detach-from-lang-group',
@@ -407,7 +407,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/authors/%1$s', $objectID],
@@ -436,7 +436,7 @@ final class AuthorsService implements AuthorsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/batch/read',
@@ -465,7 +465,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: 'cms/v3/blogs/authors/multi-language/set-new-lang-primary',
@@ -496,7 +496,7 @@ final class AuthorsService implements AuthorsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/batch/update',
@@ -527,7 +527,7 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/multi-language/update-languages',

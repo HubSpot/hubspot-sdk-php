@@ -21,7 +21,7 @@ use HubspotSDK\Marketing\Events\PropertyValue;
  *   sourceData: ImportRowCore,
  *   errorMessage?: string|null,
  *   extraContext?: string|null,
- *   invalidPropertyValue?: PropertyValue|null,
+ *   invalidPropertyValue?: \HubspotSDK\Marketing\Events\PropertyValue|null,
  *   invalidValue?: string|null,
  *   invalidValueToDisplay?: string|null,
  *   knownColumnNumber?: int|null,

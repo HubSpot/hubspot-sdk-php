@@ -40,7 +40,7 @@ final class DealSplitsService implements DealSplitsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/deals/splits/batch/read',
@@ -70,7 +70,7 @@ final class DealSplitsService implements DealSplitsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/deals/splits/batch/upsert',

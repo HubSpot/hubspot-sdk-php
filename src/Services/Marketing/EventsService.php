@@ -124,7 +124,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/marketing-events/events',
@@ -183,7 +183,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['marketing/v3/marketing-events/%1$s', $objectID],
@@ -215,7 +215,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'marketing/v3/marketing-events/',
@@ -237,7 +237,7 @@ final class EventsService implements EventsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['marketing/v3/marketing-events/%1$s', $objectID],
@@ -267,7 +267,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -303,7 +303,7 @@ final class EventsService implements EventsContract
         );
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -340,7 +340,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/marketing-events/batch/archive',
@@ -374,7 +374,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/marketing-events/events/delete',
@@ -408,7 +408,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
@@ -429,7 +429,7 @@ final class EventsService implements EventsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): MarketingEventPublicReadResponseV2 {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/marketing-events/%1$s', $objectID],
@@ -459,7 +459,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
@@ -489,7 +489,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'marketing/v3/marketing-events/events/search',
@@ -516,7 +516,7 @@ final class EventsService implements EventsContract
         string $externalEventID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -558,7 +558,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/marketing-events/batch/update',
@@ -622,7 +622,7 @@ final class EventsService implements EventsContract
         );
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
@@ -668,7 +668,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/marketing-events/events/upsert',
@@ -730,7 +730,7 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
@@ -771,7 +771,7 @@ final class EventsService implements EventsContract
         unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -818,7 +818,7 @@ final class EventsService implements EventsContract
         unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [

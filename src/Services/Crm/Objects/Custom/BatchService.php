@@ -48,7 +48,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/batch/create', $objectType],
@@ -84,7 +84,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/batch/update', $objectType],
@@ -113,7 +113,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/batch/archive', $objectType],
@@ -149,7 +149,7 @@ final class BatchService implements BatchContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/batch/read', $objectType],
@@ -186,7 +186,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/batch/upsert', $objectType],

@@ -22,7 +22,7 @@ use HubspotSDK\Settings\Users\PublicTeam;
  *   email?: string|null,
  *   firstName?: string|null,
  *   lastName?: string|null,
- *   teams?: list<PublicTeam>|null,
+ *   teams?: list<\HubspotSDK\Settings\Users\PublicTeam>|null,
  *   userId?: int|null,
  *   userIdIncludingInactive?: int|null,
  * }

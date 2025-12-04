@@ -44,7 +44,7 @@ final class InboxesService implements InboxesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'conversations/v3/conversations/inboxes',
@@ -72,7 +72,7 @@ final class InboxesService implements InboxesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/inboxes/%1$s', $inboxID],

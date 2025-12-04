@@ -41,7 +41,7 @@ final class CentralFxRatesService implements CentralFxRatesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/central-fx-rates/add-currency',
@@ -61,7 +61,7 @@ final class CentralFxRatesService implements CentralFxRatesContract
     public function getInformation(
         ?RequestOptions $requestOptions = null
     ): CentralExchangeRatesInformation {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/central-fx-rates/information',
@@ -80,7 +80,7 @@ final class CentralFxRatesService implements CentralFxRatesContract
     public function getUnsupportedCurrencies(
         ?RequestOptions $requestOptions = null
     ): CollectionResponseCurrencyCodeInfoNoPaging {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/central-fx-rates/unsupported-currencies',

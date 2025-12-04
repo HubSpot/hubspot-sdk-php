@@ -57,7 +57,7 @@ final class SchemasService implements SchemasContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['media-bridge/v1/%1$s/schemas/%2$s', $appID, $objectType],
@@ -86,7 +86,7 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/schemas', $appID],
@@ -119,7 +119,7 @@ final class SchemasService implements SchemasContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -156,7 +156,7 @@ final class SchemasService implements SchemasContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -191,7 +191,7 @@ final class SchemasService implements SchemasContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/schemas/%2$s', $appID, $objectType],

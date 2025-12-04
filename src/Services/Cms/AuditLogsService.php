@@ -48,7 +48,7 @@ final class AuditLogsService implements AuditLogsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/audit-logs/',

@@ -42,7 +42,7 @@ final class SiteSearchService implements SiteSearchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/site-search/indexed-data/%1$s', $contentID],
@@ -88,7 +88,7 @@ final class SiteSearchService implements SiteSearchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/site-search/search',

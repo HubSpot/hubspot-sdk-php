@@ -55,7 +55,7 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -95,7 +95,7 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -135,7 +135,7 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -177,7 +177,7 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -214,7 +214,7 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [

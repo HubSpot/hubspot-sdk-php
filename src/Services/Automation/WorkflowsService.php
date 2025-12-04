@@ -36,7 +36,7 @@ final class WorkflowsService implements WorkflowsContract
     public function create(
         ?RequestOptions $requestOptions = null
     ): APIContactFlow|APIPlatformFlow {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'automation/v4/flows',
@@ -54,7 +54,7 @@ final class WorkflowsService implements WorkflowsContract
         string $flowID,
         ?RequestOptions $requestOptions = null
     ): APIContactFlow|APIPlatformFlow {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['automation/v4/flows/%1$s', $flowID],
@@ -81,7 +81,7 @@ final class WorkflowsService implements WorkflowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'automation/v4/flows',
@@ -101,7 +101,7 @@ final class WorkflowsService implements WorkflowsContract
         int $flowID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['automation/v4/flows/%1$s', $flowID],
@@ -128,7 +128,7 @@ final class WorkflowsService implements WorkflowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'automation/v4/flows/batch/read',
@@ -156,7 +156,7 @@ final class WorkflowsService implements WorkflowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'automation/v4/workflow-id-mappings/batch/read',
@@ -175,7 +175,7 @@ final class WorkflowsService implements WorkflowsContract
         string $flowID,
         ?RequestOptions $requestOptions = null
     ): APIContactFlow|APIPlatformFlow {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['automation/v4/flows/%1$s', $flowID],
@@ -204,7 +204,7 @@ final class WorkflowsService implements WorkflowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'automation/v4/flows/email-campaigns',

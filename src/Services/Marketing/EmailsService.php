@@ -147,7 +147,7 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/emails/',
@@ -251,7 +251,7 @@ final class EmailsService implements EmailsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['marketing/v3/emails/%1$s', $emailID],
@@ -303,7 +303,7 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'marketing/v3/emails/',
@@ -333,7 +333,7 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['marketing/v3/emails/%1$s', $emailID],
@@ -363,7 +363,7 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/emails/clone',
@@ -393,7 +393,7 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'marketing/v3/emails/ab-test/create-variation',
@@ -428,7 +428,7 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s', $emailID],
@@ -463,7 +463,7 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/ab-test/get-variation', $emailID],
@@ -484,7 +484,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): PublicEmail {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/draft', $emailID],
@@ -514,7 +514,7 @@ final class EmailsService implements EmailsContract
         $emailID = $parsed['emailId'];
         unset($parsed['emailId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/revisions/%2$s', $emailID, $revisionID],
@@ -546,7 +546,7 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/revisions', $emailID],
@@ -568,7 +568,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['marketing/v3/emails/%1$s/publish', $emailID],
@@ -588,7 +588,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['marketing/v3/emails/%1$s/draft/reset', $emailID],
@@ -618,7 +618,7 @@ final class EmailsService implements EmailsContract
         $emailID = $parsed['emailId'];
         unset($parsed['emailId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -650,7 +650,7 @@ final class EmailsService implements EmailsContract
         $emailID = $parsed['emailId'];
         unset($parsed['emailId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -674,7 +674,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['marketing/v3/emails/%1$s/unpublish', $emailID],
@@ -776,7 +776,7 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['marketing/v3/emails/%1$s/draft', $emailID],

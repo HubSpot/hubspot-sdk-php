@@ -41,7 +41,7 @@ final class ImportsService implements ImportsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/imports/',
@@ -74,7 +74,7 @@ final class ImportsService implements ImportsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/imports/',
@@ -96,7 +96,7 @@ final class ImportsService implements ImportsContract
         int $importID,
         ?RequestOptions $requestOptions = null
     ): ActionResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/imports/%1$s/cancel', $importID],
@@ -116,7 +116,7 @@ final class ImportsService implements ImportsContract
         int $importID,
         ?RequestOptions $requestOptions = null
     ): PublicImportResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/imports/%1$s', $importID],
@@ -146,7 +146,7 @@ final class ImportsService implements ImportsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/imports/%1$s/errors', $importID],

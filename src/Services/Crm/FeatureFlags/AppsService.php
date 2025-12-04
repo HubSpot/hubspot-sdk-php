@@ -47,7 +47,7 @@ final class AppsService implements AppsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['feature-flags/v3/%1$s/flags/%2$s', $appID, $flagName],
@@ -78,7 +78,7 @@ final class AppsService implements AppsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['feature-flags/v3/%1$s/flags/%2$s', $appID, $flagName],
@@ -108,7 +108,7 @@ final class AppsService implements AppsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['feature-flags/v3/%1$s/flags/%2$s', $appID, $flagName],
@@ -140,7 +140,7 @@ final class AppsService implements AppsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['feature-flags/v3/%1$s/flags/%2$s/portals', $appID, $flagName],

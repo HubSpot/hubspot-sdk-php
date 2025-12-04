@@ -60,7 +60,7 @@ final class QuotesService implements QuotesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/quotes',
@@ -92,7 +92,7 @@ final class QuotesService implements QuotesContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/quotes/%1$s', $quoteID],
@@ -130,7 +130,7 @@ final class QuotesService implements QuotesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/quotes',
@@ -152,7 +152,7 @@ final class QuotesService implements QuotesContract
         string $quoteID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/quotes/%1$s', $quoteID],
@@ -186,7 +186,7 @@ final class QuotesService implements QuotesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/quotes/%1$s', $quoteID],
@@ -219,7 +219,7 @@ final class QuotesService implements QuotesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/quotes/search',

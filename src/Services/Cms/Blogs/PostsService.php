@@ -160,7 +160,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts',
@@ -282,7 +282,7 @@ final class PostsService implements PostsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/blogs/posts/%1$s', $objectID],
@@ -325,7 +325,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'cms/v3/blogs/posts',
@@ -355,7 +355,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['cms/v3/blogs/posts/%1$s', $objectID],
@@ -385,7 +385,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/multi-language/attach-to-lang-group',
@@ -413,7 +413,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/clone',
@@ -443,7 +443,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/multi-language/create-language-variation',
@@ -471,7 +471,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/multi-language/detach-from-lang-group',
@@ -500,7 +500,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/posts/%1$s', $objectID],
@@ -521,7 +521,7 @@ final class PostsService implements PostsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): BlogPost {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/posts/%1$s/draft', $objectID],
@@ -551,7 +551,7 @@ final class PostsService implements PostsContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/posts/%1$s/revisions/%2$s', $objectID, $revisionID],
@@ -583,7 +583,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/posts/%1$s/revisions', $objectID],
@@ -605,7 +605,7 @@ final class PostsService implements PostsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/blogs/posts/%1$s/draft/push-live', $objectID],
@@ -625,7 +625,7 @@ final class PostsService implements PostsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['cms/v3/blogs/posts/%1$s/draft/reset', $objectID],
@@ -655,7 +655,7 @@ final class PostsService implements PostsContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -687,7 +687,7 @@ final class PostsService implements PostsContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -720,7 +720,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/schedule',
@@ -748,7 +748,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: 'cms/v3/blogs/posts/multi-language/set-new-lang-primary',
@@ -868,7 +868,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/blogs/posts/%1$s/draft', $objectID],
@@ -898,7 +898,7 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/multi-language/update-languages',

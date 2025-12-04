@@ -104,7 +104,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/batch/create',
@@ -133,7 +133,7 @@ final class BatchService implements BatchContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/batch/update',
@@ -163,7 +163,7 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/batch/archive',
@@ -192,7 +192,7 @@ final class BatchService implements BatchContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/batch/read',

@@ -86,7 +86,7 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/lists/',
@@ -116,7 +116,7 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/lists/',
@@ -137,7 +137,7 @@ final class ListsService implements ListsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/lists/%1$s', $listID],
@@ -157,7 +157,7 @@ final class ListsService implements ListsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/lists/%1$s/schedule-conversion', $listID],
@@ -185,7 +185,7 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/lists/%1$s', $listID],
@@ -218,7 +218,7 @@ final class ListsService implements ListsContract
         $objectTypeID = $parsed['objectTypeId'];
         unset($parsed['objectTypeId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -241,7 +241,7 @@ final class ListsService implements ListsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): PublicListConversionResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/lists/%1$s/schedule-conversion', $listID],
@@ -261,7 +261,7 @@ final class ListsService implements ListsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/restore', $listID],
@@ -287,7 +287,7 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/schedule-conversion', $listID],
@@ -323,7 +323,7 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/lists/search',
@@ -355,7 +355,7 @@ final class ListsService implements ListsContract
         );
         $query_params = ['enrollObjectsInWorkflows'];
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/update-list-filters', $listID],
@@ -387,7 +387,7 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/update-list-name', $listID],

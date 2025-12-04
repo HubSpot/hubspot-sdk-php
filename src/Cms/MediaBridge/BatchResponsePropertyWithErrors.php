@@ -14,7 +14,7 @@ use HubspotSDK\StandardError;
 /**
  * @phpstan-type BatchResponsePropertyWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<Property>,
+ *   results: list<\HubspotSDK\Property>,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
  *   errors?: list<StandardError>|null,

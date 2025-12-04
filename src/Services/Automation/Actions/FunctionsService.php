@@ -48,7 +48,7 @@ final class FunctionsService implements FunctionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -86,7 +86,7 @@ final class FunctionsService implements FunctionsContract
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -124,7 +124,7 @@ final class FunctionsService implements FunctionsContract
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -167,7 +167,7 @@ final class FunctionsService implements FunctionsContract
         $definitionID = $parsed['definitionId'];
         unset($parsed['definitionId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -212,7 +212,7 @@ final class FunctionsService implements FunctionsContract
         $definitionID = $parsed['definitionId'];
         unset($parsed['definitionId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -255,7 +255,7 @@ final class FunctionsService implements FunctionsContract
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -296,7 +296,7 @@ final class FunctionsService implements FunctionsContract
         $definitionID = $parsed['definitionId'];
         unset($parsed['definitionId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

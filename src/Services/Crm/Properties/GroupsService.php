@@ -45,7 +45,7 @@ final class GroupsService implements GroupsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/properties/%1$s/groups', $objectType],
@@ -78,7 +78,7 @@ final class GroupsService implements GroupsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/properties/%1$s/groups/%2$s', $objectType, $groupName],
@@ -107,7 +107,7 @@ final class GroupsService implements GroupsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/properties/%1$s/groups', $objectType],
@@ -138,7 +138,7 @@ final class GroupsService implements GroupsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/properties/%1$s/groups/%2$s', $objectType, $groupName],
@@ -168,7 +168,7 @@ final class GroupsService implements GroupsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['crm/v3/properties/%1$s/groups/%2$s', $objectType, $groupName],

@@ -38,7 +38,7 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: [
@@ -69,7 +69,7 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: [
@@ -90,7 +90,7 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: [
@@ -110,7 +110,7 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
         int $appID,
         ?RequestOptions $requestOptions = null
     ): ChannelConnectionSettingsResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [

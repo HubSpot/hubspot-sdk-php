@@ -58,7 +58,7 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['files/v3/files/%1$s', $fileID],
@@ -79,7 +79,7 @@ final class FileOperationsService implements FileOperationsContract
         string $fileID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['files/v3/files/%1$s', $fileID],
@@ -99,7 +99,7 @@ final class FileOperationsService implements FileOperationsContract
         string $fileID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['files/v3/files/%1$s/gdpr-delete', $fileID],
@@ -127,7 +127,7 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['files/v3/files/%1$s', $fileID],
@@ -156,7 +156,7 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['files/v3/files/stat/%1$s', $filePath],
@@ -177,7 +177,7 @@ final class FileOperationsService implements FileOperationsContract
         string $taskID,
         ?RequestOptions $requestOptions = null
     ): FileActionResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['files/v3/files/import-from-url/async/tasks/%1$s/status', $taskID],
@@ -209,7 +209,7 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['files/v3/files/%1$s/signed-url', $fileID],
@@ -248,7 +248,7 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'files/v3/files/import-from-url/async',
@@ -279,7 +279,7 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['files/v3/files/%1$s', $fileID],
@@ -347,7 +347,7 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'files/v3/files/search',
@@ -383,7 +383,7 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'files/v3/files',

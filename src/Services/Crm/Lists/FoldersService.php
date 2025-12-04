@@ -41,7 +41,7 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/lists/folders',
@@ -62,7 +62,7 @@ final class FoldersService implements FoldersContract
         string $folderID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['crm/v3/lists/folders/%1$s', $folderID],
@@ -89,7 +89,7 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: 'crm/v3/lists/folders',
@@ -120,7 +120,7 @@ final class FoldersService implements FoldersContract
         $folderID = $parsed['folderId'];
         unset($parsed['folderId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: [
@@ -149,7 +149,7 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: 'crm/v3/lists/folders/move-list',
@@ -178,7 +178,7 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/folders/%1$s/rename', $folderID],

@@ -56,7 +56,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/settings/object-definitions', $appID],
@@ -90,7 +90,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
@@ -121,7 +121,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
             path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
@@ -142,7 +142,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): EventVisibilityResponse {
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/settings/event-visibility', $appID],
@@ -175,7 +175,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -210,7 +210,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: [
@@ -244,7 +244,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
@@ -277,7 +277,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/settings/register', $appID],
@@ -308,7 +308,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
             path: ['media-bridge/v1/%1$s/settings', $appID],
@@ -343,7 +343,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['media-bridge/v1/%1$s/settings/event-visibility', $appID],
@@ -380,7 +380,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line;
+        // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: [
