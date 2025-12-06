@@ -38,7 +38,7 @@ final class SubscriptionPatchRequest implements BaseModel
     {
         $obj = new self;
 
-        null !== $active && $obj->active = $active;
+        null !== $active && $obj['active'] = $active;
 
         return $obj;
     }
@@ -49,7 +49,7 @@ final class SubscriptionPatchRequest implements BaseModel
     public function withActive(bool $active): self
     {
         $obj = clone $this;
-        $obj->active = $active;
+        $obj['active'] = $active;
 
         return $obj;
     }

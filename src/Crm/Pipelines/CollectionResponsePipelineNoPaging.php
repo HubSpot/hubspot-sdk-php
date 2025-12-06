@@ -50,24 +50,42 @@ final class CollectionResponsePipelineNoPaging implements BaseModel, ResponseCon
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Pipeline> $results
+     * @param list<Pipeline|array{
+     *   id: string,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   displayOrder: int,
+     *   label: string,
+     *   stages: list<PipelineStage>,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<Pipeline> $results
+     * @param list<Pipeline|array{
+     *   id: string,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   displayOrder: int,
+     *   label: string,
+     *   stages: list<PipelineStage>,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

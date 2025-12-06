@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Filter;
+use HubspotSDK\Crm\Filter\Operator;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
@@ -72,8 +73,14 @@ final class PublicCrmSearchRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FilterGroup> $filterGroups
-     * @param list<Filter> $filters
+     * @param list<FilterGroup|array{filters: list<Filter>}> $filterGroups
+     * @param list<Filter|array{
+     *   operator: value-of<Operator>,
+     *   propertyName: string,
+     *   highValue?: string|null,
+     *   value?: string|null,
+     *   values?: list<string>|null,
+     * }> $filters
      * @param list<string> $sorts
      */
     public static function with(
@@ -84,33 +91,39 @@ final class PublicCrmSearchRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->filterGroups = $filterGroups;
-        $obj->filters = $filters;
-        $obj->sorts = $sorts;
+        $obj['filterGroups'] = $filterGroups;
+        $obj['filters'] = $filters;
+        $obj['sorts'] = $sorts;
 
-        null !== $query && $obj->query = $query;
+        null !== $query && $obj['query'] = $query;
 
         return $obj;
     }
 
     /**
-     * @param list<FilterGroup> $filterGroups
+     * @param list<FilterGroup|array{filters: list<Filter>}> $filterGroups
      */
     public function withFilterGroups(array $filterGroups): self
     {
         $obj = clone $this;
-        $obj->filterGroups = $filterGroups;
+        $obj['filterGroups'] = $filterGroups;
 
         return $obj;
     }
 
     /**
-     * @param list<Filter> $filters
+     * @param list<Filter|array{
+     *   operator: value-of<Operator>,
+     *   propertyName: string,
+     *   highValue?: string|null,
+     *   value?: string|null,
+     *   values?: list<string>|null,
+     * }> $filters
      */
     public function withFilters(array $filters): self
     {
         $obj = clone $this;
-        $obj->filters = $filters;
+        $obj['filters'] = $filters;
 
         return $obj;
     }
@@ -123,7 +136,7 @@ final class PublicCrmSearchRequest implements BaseModel
     public function withSorts(array $sorts): self
     {
         $obj = clone $this;
-        $obj->sorts = $sorts;
+        $obj['sorts'] = $sorts;
 
         return $obj;
     }
@@ -134,7 +147,7 @@ final class PublicCrmSearchRequest implements BaseModel
     public function withQuery(string $query): self
     {
         $obj = clone $this;
-        $obj->query = $query;
+        $obj['query'] = $query;
 
         return $obj;
     }

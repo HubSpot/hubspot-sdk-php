@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Settings;
 
+use HubspotSDK\Cms\Blogs\Settings\Blog\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
@@ -70,19 +71,38 @@ final class VersionBlog implements BaseModel, ResponseConverter
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Blog|array{
+     *   id: string,
+     *   absoluteUrl: string,
+     *   allowComments: bool,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   description: string,
+     *   htmlTitle: string,
+     *   language: value-of<Language>,
+     *   name: string,
+     *   publicAccessRules: list<mixed>,
+     *   publicAccessRulesEnabled: bool,
+     *   publicTitle: string,
+     *   slug: string,
+     *   translatedFromId: string,
+     *   updated: \DateTimeInterface,
+     * } $object
+     * @param VersionUser|array{id: string, email: string, fullName: string} $user
      */
     public static function with(
         string $id,
-        Blog $object,
+        Blog|array $object,
         \DateTimeInterface $updatedAt,
-        VersionUser $user
+        VersionUser|array $user,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->object = $object;
-        $obj->updatedAt = $updatedAt;
-        $obj->user = $user;
+        $obj['id'] = $id;
+        $obj['object'] = $object;
+        $obj['updatedAt'] = $updatedAt;
+        $obj['user'] = $user;
 
         return $obj;
     }
@@ -93,15 +113,34 @@ final class VersionBlog implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
-    public function withObject(Blog $object): self
+    /**
+     * @param Blog|array{
+     *   id: string,
+     *   absoluteUrl: string,
+     *   allowComments: bool,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   description: string,
+     *   htmlTitle: string,
+     *   language: value-of<Language>,
+     *   name: string,
+     *   publicAccessRules: list<mixed>,
+     *   publicAccessRulesEnabled: bool,
+     *   publicTitle: string,
+     *   slug: string,
+     *   translatedFromId: string,
+     *   updated: \DateTimeInterface,
+     * } $object
+     */
+    public function withObject(Blog|array $object): self
     {
         $obj = clone $this;
-        $obj->object = $object;
+        $obj['object'] = $object;
 
         return $obj;
     }
@@ -109,18 +148,20 @@ final class VersionBlog implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
 
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
+     *
+     * @param VersionUser|array{id: string, email: string, fullName: string} $user
      */
-    public function withUser(VersionUser $user): self
+    public function withUser(VersionUser|array $user): self
     {
         $obj = clone $this;
-        $obj->user = $user;
+        $obj['user'] = $user;
 
         return $obj;
     }

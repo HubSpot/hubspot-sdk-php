@@ -68,6 +68,38 @@ final class PublicEmailContent implements BaseModel
      *
      * @param array<string,mixed> $flexAreas
      * @param array<string,mixed> $smartFields
+     * @param PublicEmailStyleSettings|array{
+     *   backgroundColor?: string|null,
+     *   backgroundImage?: string|null,
+     *   backgroundImageType?: string|null,
+     *   bodyBorderColor?: string|null,
+     *   bodyBorderColorChoice?: string|null,
+     *   bodyBorderWidth?: float|null,
+     *   bodyColor?: string|null,
+     *   buttonStyleSettings?: PublicButtonStyleSettings|null,
+     *   colorPickerFavorite1?: string|null,
+     *   colorPickerFavorite2?: string|null,
+     *   colorPickerFavorite3?: string|null,
+     *   colorPickerFavorite4?: string|null,
+     *   colorPickerFavorite5?: string|null,
+     *   colorPickerFavorite6?: string|null,
+     *   dividerStyleSettings?: PublicDividerStyleSettings|null,
+     *   emailBodyPadding?: string|null,
+     *   emailBodyWidth?: string|null,
+     *   headingOneFont?: PublicFontStyle|null,
+     *   headingTwoFont?: PublicFontStyle|null,
+     *   linksFont?: PublicFontStyle|null,
+     *   primaryAccentColor?: string|null,
+     *   primaryFont?: string|null,
+     *   primaryFontColor?: string|null,
+     *   primaryFontLineHeight?: string|null,
+     *   primaryFontSize?: float|null,
+     *   secondaryAccentColor?: string|null,
+     *   secondaryFont?: string|null,
+     *   secondaryFontColor?: string|null,
+     *   secondaryFontLineHeight?: string|null,
+     *   secondaryFontSize?: float|null,
+     * } $styleSettings
      * @param array<string,mixed> $themeSettingsValues
      * @param array<string,mixed> $widgetContainers
      * @param array<string,mixed> $widgets
@@ -76,7 +108,7 @@ final class PublicEmailContent implements BaseModel
         ?array $flexAreas = null,
         ?string $plainTextVersion = null,
         ?array $smartFields = null,
-        ?PublicEmailStyleSettings $styleSettings = null,
+        PublicEmailStyleSettings|array|null $styleSettings = null,
         ?string $templatePath = null,
         ?array $themeSettingsValues = null,
         ?array $widgetContainers = null,
@@ -84,14 +116,14 @@ final class PublicEmailContent implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $flexAreas && $obj->flexAreas = $flexAreas;
-        null !== $plainTextVersion && $obj->plainTextVersion = $plainTextVersion;
-        null !== $smartFields && $obj->smartFields = $smartFields;
-        null !== $styleSettings && $obj->styleSettings = $styleSettings;
-        null !== $templatePath && $obj->templatePath = $templatePath;
-        null !== $themeSettingsValues && $obj->themeSettingsValues = $themeSettingsValues;
-        null !== $widgetContainers && $obj->widgetContainers = $widgetContainers;
-        null !== $widgets && $obj->widgets = $widgets;
+        null !== $flexAreas && $obj['flexAreas'] = $flexAreas;
+        null !== $plainTextVersion && $obj['plainTextVersion'] = $plainTextVersion;
+        null !== $smartFields && $obj['smartFields'] = $smartFields;
+        null !== $styleSettings && $obj['styleSettings'] = $styleSettings;
+        null !== $templatePath && $obj['templatePath'] = $templatePath;
+        null !== $themeSettingsValues && $obj['themeSettingsValues'] = $themeSettingsValues;
+        null !== $widgetContainers && $obj['widgetContainers'] = $widgetContainers;
+        null !== $widgets && $obj['widgets'] = $widgets;
 
         return $obj;
     }
@@ -102,7 +134,7 @@ final class PublicEmailContent implements BaseModel
     public function withFlexAreas(array $flexAreas): self
     {
         $obj = clone $this;
-        $obj->flexAreas = $flexAreas;
+        $obj['flexAreas'] = $flexAreas;
 
         return $obj;
     }
@@ -110,7 +142,7 @@ final class PublicEmailContent implements BaseModel
     public function withPlainTextVersion(string $plainTextVersion): self
     {
         $obj = clone $this;
-        $obj->plainTextVersion = $plainTextVersion;
+        $obj['plainTextVersion'] = $plainTextVersion;
 
         return $obj;
     }
@@ -121,16 +153,50 @@ final class PublicEmailContent implements BaseModel
     public function withSmartFields(array $smartFields): self
     {
         $obj = clone $this;
-        $obj->smartFields = $smartFields;
+        $obj['smartFields'] = $smartFields;
 
         return $obj;
     }
 
+    /**
+     * @param PublicEmailStyleSettings|array{
+     *   backgroundColor?: string|null,
+     *   backgroundImage?: string|null,
+     *   backgroundImageType?: string|null,
+     *   bodyBorderColor?: string|null,
+     *   bodyBorderColorChoice?: string|null,
+     *   bodyBorderWidth?: float|null,
+     *   bodyColor?: string|null,
+     *   buttonStyleSettings?: PublicButtonStyleSettings|null,
+     *   colorPickerFavorite1?: string|null,
+     *   colorPickerFavorite2?: string|null,
+     *   colorPickerFavorite3?: string|null,
+     *   colorPickerFavorite4?: string|null,
+     *   colorPickerFavorite5?: string|null,
+     *   colorPickerFavorite6?: string|null,
+     *   dividerStyleSettings?: PublicDividerStyleSettings|null,
+     *   emailBodyPadding?: string|null,
+     *   emailBodyWidth?: string|null,
+     *   headingOneFont?: PublicFontStyle|null,
+     *   headingTwoFont?: PublicFontStyle|null,
+     *   linksFont?: PublicFontStyle|null,
+     *   primaryAccentColor?: string|null,
+     *   primaryFont?: string|null,
+     *   primaryFontColor?: string|null,
+     *   primaryFontLineHeight?: string|null,
+     *   primaryFontSize?: float|null,
+     *   secondaryAccentColor?: string|null,
+     *   secondaryFont?: string|null,
+     *   secondaryFontColor?: string|null,
+     *   secondaryFontLineHeight?: string|null,
+     *   secondaryFontSize?: float|null,
+     * } $styleSettings
+     */
     public function withStyleSettings(
-        PublicEmailStyleSettings $styleSettings
+        PublicEmailStyleSettings|array $styleSettings
     ): self {
         $obj = clone $this;
-        $obj->styleSettings = $styleSettings;
+        $obj['styleSettings'] = $styleSettings;
 
         return $obj;
     }
@@ -138,7 +204,7 @@ final class PublicEmailContent implements BaseModel
     public function withTemplatePath(string $templatePath): self
     {
         $obj = clone $this;
-        $obj->templatePath = $templatePath;
+        $obj['templatePath'] = $templatePath;
 
         return $obj;
     }
@@ -149,7 +215,7 @@ final class PublicEmailContent implements BaseModel
     public function withThemeSettingsValues(array $themeSettingsValues): self
     {
         $obj = clone $this;
-        $obj->themeSettingsValues = $themeSettingsValues;
+        $obj['themeSettingsValues'] = $themeSettingsValues;
 
         return $obj;
     }
@@ -160,7 +226,7 @@ final class PublicEmailContent implements BaseModel
     public function withWidgetContainers(array $widgetContainers): self
     {
         $obj = clone $this;
-        $obj->widgetContainers = $widgetContainers;
+        $obj['widgetContainers'] = $widgetContainers;
 
         return $obj;
     }
@@ -171,7 +237,7 @@ final class PublicEmailContent implements BaseModel
     public function withWidgets(array $widgets): self
     {
         $obj = clone $this;
-        $obj->widgets = $widgets;
+        $obj['widgets'] = $widgets;
 
         return $obj;
     }

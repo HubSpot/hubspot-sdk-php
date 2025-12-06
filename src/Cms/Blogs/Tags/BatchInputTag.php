@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Tags;
 
+use HubspotSDK\Cms\Blogs\Tags\Tag\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -50,13 +51,21 @@ final class BatchInputTag implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Tag> $inputs
+     * @param list<Tag|array{
+     *   id: string,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   language: value-of<Language>,
+     *   name: string,
+     *   translatedFromId: int,
+     *   updated: \DateTimeInterface,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -64,12 +73,20 @@ final class BatchInputTag implements BaseModel
     /**
      * Blog tags to input.
      *
-     * @param list<Tag> $inputs
+     * @param list<Tag|array{
+     *   id: string,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   language: value-of<Language>,
+     *   name: string,
+     *   translatedFromId: int,
+     *   updated: \DateTimeInterface,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

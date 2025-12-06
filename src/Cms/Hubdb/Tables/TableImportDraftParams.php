@@ -47,8 +47,8 @@ final class TableImportDraftParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $config && $obj->config = $config;
-        null !== $file && $obj->file = $file;
+        null !== $config && $obj['config'] = $config;
+        null !== $file && $obj['file'] = $file;
 
         return $obj;
     }
@@ -56,7 +56,7 @@ final class TableImportDraftParams implements BaseModel
     public function withConfig(string $config): self
     {
         $obj = clone $this;
-        $obj->config = $config;
+        $obj['config'] = $config;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class TableImportDraftParams implements BaseModel
     public function withFile(string $file): self
     {
         $obj = clone $this;
-        $obj->file = $file;
+        $obj['file'] = $file;
 
         return $obj;
     }

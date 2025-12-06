@@ -59,8 +59,8 @@ final class AssetDeleteParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->campaignGuid = $campaignGuid;
-        $obj->assetType = $assetType;
+        $obj['campaignGuid'] = $campaignGuid;
+        $obj['assetType'] = $assetType;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class AssetDeleteParams implements BaseModel
     public function withCampaignGuid(string $campaignGuid): self
     {
         $obj = clone $this;
-        $obj->campaignGuid = $campaignGuid;
+        $obj['campaignGuid'] = $campaignGuid;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class AssetDeleteParams implements BaseModel
     public function withAssetType(string $assetType): self
     {
         $obj = clone $this;
-        $obj->assetType = $assetType;
+        $obj['assetType'] = $assetType;
 
         return $obj;
     }

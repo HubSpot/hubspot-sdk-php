@@ -96,11 +96,11 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->hasRecordsAtLimit = $hasRecordsAtLimit;
-        $obj->hasRecordsNearLimit = $hasRecordsNearLimit;
-        $obj->objectTypeId = $objectTypeId;
-        $obj->pluralLabel = $pluralLabel;
-        $obj->singularLabel = $singularLabel;
+        $obj['hasRecordsAtLimit'] = $hasRecordsAtLimit;
+        $obj['hasRecordsNearLimit'] = $hasRecordsNearLimit;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['pluralLabel'] = $pluralLabel;
+        $obj['singularLabel'] = $singularLabel;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
     public function withHasRecordsAtLimit(bool $hasRecordsAtLimit): self
     {
         $obj = clone $this;
-        $obj->hasRecordsAtLimit = $hasRecordsAtLimit;
+        $obj['hasRecordsAtLimit'] = $hasRecordsAtLimit;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
     public function withHasRecordsNearLimit(bool $hasRecordsNearLimit): self
     {
         $obj = clone $this;
-        $obj->hasRecordsNearLimit = $hasRecordsNearLimit;
+        $obj['hasRecordsNearLimit'] = $hasRecordsNearLimit;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -144,7 +144,7 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
     public function withPluralLabel(string $pluralLabel): self
     {
         $obj = clone $this;
-        $obj->pluralLabel = $pluralLabel;
+        $obj['pluralLabel'] = $pluralLabel;
 
         return $obj;
     }
@@ -155,7 +155,7 @@ final class ObjectTypeNearOrAtAssociationLimit implements BaseModel
     public function withSingularLabel(string $singularLabel): self
     {
         $obj = clone $this;
-        $obj->singularLabel = $singularLabel;
+        $obj['singularLabel'] = $singularLabel;
 
         return $obj;
     }

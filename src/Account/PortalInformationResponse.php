@@ -116,14 +116,14 @@ final class PortalInformationResponse implements BaseModel
         $obj = new self;
 
         $obj['accountType'] = $accountType;
-        $obj->additionalCurrencies = $additionalCurrencies;
-        $obj->companyCurrency = $companyCurrency;
-        $obj->dataHostingLocation = $dataHostingLocation;
-        $obj->portalId = $portalId;
-        $obj->timeZone = $timeZone;
-        $obj->uiDomain = $uiDomain;
-        $obj->utcOffset = $utcOffset;
-        $obj->utcOffsetMilliseconds = $utcOffsetMilliseconds;
+        $obj['additionalCurrencies'] = $additionalCurrencies;
+        $obj['companyCurrency'] = $companyCurrency;
+        $obj['dataHostingLocation'] = $dataHostingLocation;
+        $obj['portalId'] = $portalId;
+        $obj['timeZone'] = $timeZone;
+        $obj['uiDomain'] = $uiDomain;
+        $obj['utcOffset'] = $utcOffset;
+        $obj['utcOffsetMilliseconds'] = $utcOffsetMilliseconds;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class PortalInformationResponse implements BaseModel
     public function withAdditionalCurrencies(array $additionalCurrencies): self
     {
         $obj = clone $this;
-        $obj->additionalCurrencies = $additionalCurrencies;
+        $obj['additionalCurrencies'] = $additionalCurrencies;
 
         return $obj;
     }
@@ -153,7 +153,7 @@ final class PortalInformationResponse implements BaseModel
     public function withCompanyCurrency(string $companyCurrency): self
     {
         $obj = clone $this;
-        $obj->companyCurrency = $companyCurrency;
+        $obj['companyCurrency'] = $companyCurrency;
 
         return $obj;
     }
@@ -161,7 +161,7 @@ final class PortalInformationResponse implements BaseModel
     public function withDataHostingLocation(string $dataHostingLocation): self
     {
         $obj = clone $this;
-        $obj->dataHostingLocation = $dataHostingLocation;
+        $obj['dataHostingLocation'] = $dataHostingLocation;
 
         return $obj;
     }
@@ -169,7 +169,7 @@ final class PortalInformationResponse implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }
@@ -177,7 +177,7 @@ final class PortalInformationResponse implements BaseModel
     public function withTimeZone(string $timeZone): self
     {
         $obj = clone $this;
-        $obj->timeZone = $timeZone;
+        $obj['timeZone'] = $timeZone;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class PortalInformationResponse implements BaseModel
     public function withUiDomain(string $uiDomain): self
     {
         $obj = clone $this;
-        $obj->uiDomain = $uiDomain;
+        $obj['uiDomain'] = $uiDomain;
 
         return $obj;
     }
@@ -193,7 +193,7 @@ final class PortalInformationResponse implements BaseModel
     public function withUtcOffset(string $utcOffset): self
     {
         $obj = clone $this;
-        $obj->utcOffset = $utcOffset;
+        $obj['utcOffset'] = $utcOffset;
 
         return $obj;
     }
@@ -201,7 +201,7 @@ final class PortalInformationResponse implements BaseModel
     public function withUtcOffsetMilliseconds(int $utcOffsetMilliseconds): self
     {
         $obj = clone $this;
-        $obj->utcOffsetMilliseconds = $utcOffsetMilliseconds;
+        $obj['utcOffsetMilliseconds'] = $utcOffsetMilliseconds;
 
         return $obj;
     }

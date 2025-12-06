@@ -49,7 +49,7 @@ final class RequiredPropertiesExtensionData implements BaseModel
     {
         $obj = new self;
 
-        $obj->isRequiredProperty = $isRequiredProperty;
+        $obj['isRequiredProperty'] = $isRequiredProperty;
 
         return $obj;
     }
@@ -57,7 +57,7 @@ final class RequiredPropertiesExtensionData implements BaseModel
     public function withIsRequiredProperty(bool $isRequiredProperty): self
     {
         $obj = clone $this;
-        $obj->isRequiredProperty = $isRequiredProperty;
+        $obj['isRequiredProperty'] = $isRequiredProperty;
 
         return $obj;
     }

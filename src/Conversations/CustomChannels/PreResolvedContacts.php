@@ -46,24 +46,28 @@ final class PreResolvedContacts implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PreResolvedContact> $contacts
+     * @param list<PreResolvedContact|array{
+     *   contactPropertiesLeadingToMatch: list<string>, contactVid: int
+     * }> $contacts
      */
     public static function with(array $contacts): self
     {
         $obj = new self;
 
-        $obj->contacts = $contacts;
+        $obj['contacts'] = $contacts;
 
         return $obj;
     }
 
     /**
-     * @param list<PreResolvedContact> $contacts
+     * @param list<PreResolvedContact|array{
+     *   contactPropertiesLeadingToMatch: list<string>, contactVid: int
+     * }> $contacts
      */
     public function withContacts(array $contacts): self
     {
         $obj = clone $this;
-        $obj->contacts = $contacts;
+        $obj['contacts'] = $contacts;
 
         return $obj;
     }

@@ -50,8 +50,8 @@ final class SubscriptionBatchUpdateRequest implements BaseModel
     {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->active = $active;
+        $obj['id'] = $id;
+        $obj['active'] = $active;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class SubscriptionBatchUpdateRequest implements BaseModel
     public function withID(int $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class SubscriptionBatchUpdateRequest implements BaseModel
     public function withActive(bool $active): self
     {
         $obj = clone $this;
-        $obj->active = $active;
+        $obj['active'] = $active;
 
         return $obj;
     }

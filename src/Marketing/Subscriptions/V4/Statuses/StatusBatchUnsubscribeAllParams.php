@@ -92,10 +92,10 @@ final class StatusBatchUnsubscribeAllParams implements BaseModel
         $obj = new self;
 
         $obj['channel'] = $channel;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
-        null !== $verbose && $obj->verbose = $verbose;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $verbose && $obj['verbose'] = $verbose;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class StatusBatchUnsubscribeAllParams implements BaseModel
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class StatusBatchUnsubscribeAllParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class StatusBatchUnsubscribeAllParams implements BaseModel
     public function withVerbose(bool $verbose): self
     {
         $obj = clone $this;
-        $obj->verbose = $verbose;
+        $obj['verbose'] = $verbose;
 
         return $obj;
     }

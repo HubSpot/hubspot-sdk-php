@@ -74,12 +74,12 @@ final class PublicFile implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->fileId = $fileId;
-        $obj->fileUsageType = $fileUsageType;
+        $obj['fileId'] = $fileId;
+        $obj['fileUsageType'] = $fileUsageType;
         $obj['type'] = $type;
 
-        null !== $name && $obj->name = $name;
-        null !== $url && $obj->url = $url;
+        null !== $name && $obj['name'] = $name;
+        null !== $url && $obj['url'] = $url;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class PublicFile implements BaseModel
     public function withFileID(string $fileID): self
     {
         $obj = clone $this;
-        $obj->fileId = $fileID;
+        $obj['fileId'] = $fileID;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class PublicFile implements BaseModel
     public function withFileUsageType(string $fileUsageType): self
     {
         $obj = clone $this;
-        $obj->fileUsageType = $fileUsageType;
+        $obj['fileUsageType'] = $fileUsageType;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class PublicFile implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class PublicFile implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

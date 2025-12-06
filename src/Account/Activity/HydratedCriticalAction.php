@@ -140,18 +140,18 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->type = $type;
-        $obj->userId = $userId;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['type'] = $type;
+        $obj['userId'] = $userId;
 
-        null !== $actingUser && $obj->actingUser = $actingUser;
-        null !== $countryCode && $obj->countryCode = $countryCode;
-        null !== $infoUrl && $obj->infoUrl = $infoUrl;
-        null !== $ipAddress && $obj->ipAddress = $ipAddress;
-        null !== $location && $obj->location = $location;
-        null !== $objectId && $obj->objectId = $objectId;
-        null !== $regionCode && $obj->regionCode = $regionCode;
+        null !== $actingUser && $obj['actingUser'] = $actingUser;
+        null !== $countryCode && $obj['countryCode'] = $countryCode;
+        null !== $infoUrl && $obj['infoUrl'] = $infoUrl;
+        null !== $ipAddress && $obj['ipAddress'] = $ipAddress;
+        null !== $location && $obj['location'] = $location;
+        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $regionCode && $obj['regionCode'] = $regionCode;
 
         return $obj;
     }
@@ -162,7 +162,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -184,7 +184,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -195,7 +195,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }
@@ -206,7 +206,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withActingUser(string $actingUser): self
     {
         $obj = clone $this;
-        $obj->actingUser = $actingUser;
+        $obj['actingUser'] = $actingUser;
 
         return $obj;
     }
@@ -217,7 +217,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withCountryCode(string $countryCode): self
     {
         $obj = clone $this;
-        $obj->countryCode = $countryCode;
+        $obj['countryCode'] = $countryCode;
 
         return $obj;
     }
@@ -228,7 +228,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withInfoURL(string $infoURL): self
     {
         $obj = clone $this;
-        $obj->infoUrl = $infoURL;
+        $obj['infoUrl'] = $infoURL;
 
         return $obj;
     }
@@ -239,7 +239,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withIPAddress(string $ipAddress): self
     {
         $obj = clone $this;
-        $obj->ipAddress = $ipAddress;
+        $obj['ipAddress'] = $ipAddress;
 
         return $obj;
     }
@@ -247,7 +247,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withLocation(string $location): self
     {
         $obj = clone $this;
-        $obj->location = $location;
+        $obj['location'] = $location;
 
         return $obj;
     }
@@ -258,7 +258,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -269,7 +269,7 @@ final class HydratedCriticalAction implements BaseModel, ResponseConverter
     public function withRegionCode(string $regionCode): self
     {
         $obj = clone $this;
-        $obj->regionCode = $regionCode;
+        $obj['regionCode'] = $regionCode;
 
         return $obj;
     }

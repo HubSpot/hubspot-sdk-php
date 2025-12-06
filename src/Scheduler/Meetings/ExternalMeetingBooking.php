@@ -107,8 +107,12 @@ final class ExternalMeetingBooking implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalBookingFormField> $formFields
-     * @param list<ExternalLegalConsentResponse> $legalConsentResponses
+     * @param list<ExternalBookingFormField|array{
+     *   name: string, value: string
+     * }> $formFields
+     * @param list<ExternalLegalConsentResponse|array{
+     *   communicationTypeId: string, consented: bool
+     * }> $legalConsentResponses
      * @param list<string> $likelyAvailableUserIds
      */
     public static function with(
@@ -126,18 +130,18 @@ final class ExternalMeetingBooking implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->duration = $duration;
-        $obj->email = $email;
-        $obj->firstName = $firstName;
-        $obj->formFields = $formFields;
-        $obj->lastName = $lastName;
-        $obj->legalConsentResponses = $legalConsentResponses;
-        $obj->likelyAvailableUserIds = $likelyAvailableUserIds;
-        $obj->slug = $slug;
-        $obj->startTime = $startTime;
+        $obj['duration'] = $duration;
+        $obj['email'] = $email;
+        $obj['firstName'] = $firstName;
+        $obj['formFields'] = $formFields;
+        $obj['lastName'] = $lastName;
+        $obj['legalConsentResponses'] = $legalConsentResponses;
+        $obj['likelyAvailableUserIds'] = $likelyAvailableUserIds;
+        $obj['slug'] = $slug;
+        $obj['startTime'] = $startTime;
 
-        null !== $locale && $obj->locale = $locale;
-        null !== $timezone && $obj->timezone = $timezone;
+        null !== $locale && $obj['locale'] = $locale;
+        null !== $timezone && $obj['timezone'] = $timezone;
 
         return $obj;
     }
@@ -145,7 +149,7 @@ final class ExternalMeetingBooking implements BaseModel
     public function withDuration(int $duration): self
     {
         $obj = clone $this;
-        $obj->duration = $duration;
+        $obj['duration'] = $duration;
 
         return $obj;
     }
@@ -153,7 +157,7 @@ final class ExternalMeetingBooking implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -161,18 +165,20 @@ final class ExternalMeetingBooking implements BaseModel
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
-        $obj->firstName = $firstName;
+        $obj['firstName'] = $firstName;
 
         return $obj;
     }
 
     /**
-     * @param list<ExternalBookingFormField> $formFields
+     * @param list<ExternalBookingFormField|array{
+     *   name: string, value: string
+     * }> $formFields
      */
     public function withFormFields(array $formFields): self
     {
         $obj = clone $this;
-        $obj->formFields = $formFields;
+        $obj['formFields'] = $formFields;
 
         return $obj;
     }
@@ -180,19 +186,21 @@ final class ExternalMeetingBooking implements BaseModel
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;
-        $obj->lastName = $lastName;
+        $obj['lastName'] = $lastName;
 
         return $obj;
     }
 
     /**
-     * @param list<ExternalLegalConsentResponse> $legalConsentResponses
+     * @param list<ExternalLegalConsentResponse|array{
+     *   communicationTypeId: string, consented: bool
+     * }> $legalConsentResponses
      */
     public function withLegalConsentResponses(
         array $legalConsentResponses
     ): self {
         $obj = clone $this;
-        $obj->legalConsentResponses = $legalConsentResponses;
+        $obj['legalConsentResponses'] = $legalConsentResponses;
 
         return $obj;
     }
@@ -204,7 +212,7 @@ final class ExternalMeetingBooking implements BaseModel
         array $likelyAvailableUserIDs
     ): self {
         $obj = clone $this;
-        $obj->likelyAvailableUserIds = $likelyAvailableUserIDs;
+        $obj['likelyAvailableUserIds'] = $likelyAvailableUserIDs;
 
         return $obj;
     }
@@ -212,7 +220,7 @@ final class ExternalMeetingBooking implements BaseModel
     public function withSlug(string $slug): self
     {
         $obj = clone $this;
-        $obj->slug = $slug;
+        $obj['slug'] = $slug;
 
         return $obj;
     }
@@ -220,7 +228,7 @@ final class ExternalMeetingBooking implements BaseModel
     public function withStartTime(\DateTimeInterface $startTime): self
     {
         $obj = clone $this;
-        $obj->startTime = $startTime;
+        $obj['startTime'] = $startTime;
 
         return $obj;
     }
@@ -228,7 +236,7 @@ final class ExternalMeetingBooking implements BaseModel
     public function withLocale(string $locale): self
     {
         $obj = clone $this;
-        $obj->locale = $locale;
+        $obj['locale'] = $locale;
 
         return $obj;
     }
@@ -236,7 +244,7 @@ final class ExternalMeetingBooking implements BaseModel
     public function withTimezone(string $timezone): self
     {
         $obj = clone $this;
-        $obj->timezone = $timezone;
+        $obj['timezone'] = $timezone;
 
         return $obj;
     }

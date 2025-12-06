@@ -77,10 +77,10 @@ final class StatisticGetHistogramParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $emailIds && $obj->emailIds = $emailIds;
-        null !== $endTimestamp && $obj->endTimestamp = $endTimestamp;
+        null !== $emailIds && $obj['emailIds'] = $emailIds;
+        null !== $endTimestamp && $obj['endTimestamp'] = $endTimestamp;
         null !== $interval && $obj['interval'] = $interval;
-        null !== $startTimestamp && $obj->startTimestamp = $startTimestamp;
+        null !== $startTimestamp && $obj['startTimestamp'] = $startTimestamp;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class StatisticGetHistogramParams implements BaseModel
     public function withEmailIDs(array $emailIDs): self
     {
         $obj = clone $this;
-        $obj->emailIds = $emailIDs;
+        $obj['emailIds'] = $emailIDs;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class StatisticGetHistogramParams implements BaseModel
     public function withEndTimestamp(string $endTimestamp): self
     {
         $obj = clone $this;
-        $obj->endTimestamp = $endTimestamp;
+        $obj['endTimestamp'] = $endTimestamp;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class StatisticGetHistogramParams implements BaseModel
     public function withStartTimestamp(string $startTimestamp): self
     {
         $obj = clone $this;
-        $obj->startTimestamp = $startTimestamp;
+        $obj['startTimestamp'] = $startTimestamp;
 
         return $obj;
     }

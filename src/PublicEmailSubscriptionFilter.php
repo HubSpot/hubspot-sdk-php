@@ -78,11 +78,11 @@ final class PublicEmailSubscriptionFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->acceptedStatuses = $acceptedStatuses;
+        $obj['acceptedStatuses'] = $acceptedStatuses;
         $obj['filterType'] = $filterType;
-        $obj->subscriptionIds = $subscriptionIds;
+        $obj['subscriptionIds'] = $subscriptionIds;
 
-        null !== $subscriptionType && $obj->subscriptionType = $subscriptionType;
+        null !== $subscriptionType && $obj['subscriptionType'] = $subscriptionType;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class PublicEmailSubscriptionFilter implements BaseModel
     public function withAcceptedStatuses(array $acceptedStatuses): self
     {
         $obj = clone $this;
-        $obj->acceptedStatuses = $acceptedStatuses;
+        $obj['acceptedStatuses'] = $acceptedStatuses;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class PublicEmailSubscriptionFilter implements BaseModel
     public function withSubscriptionIDs(array $subscriptionIDs): self
     {
         $obj = clone $this;
-        $obj->subscriptionIds = $subscriptionIDs;
+        $obj['subscriptionIds'] = $subscriptionIDs;
 
         return $obj;
     }
@@ -123,7 +123,7 @@ final class PublicEmailSubscriptionFilter implements BaseModel
     public function withSubscriptionType(string $subscriptionType): self
     {
         $obj = clone $this;
-        $obj->subscriptionType = $subscriptionType;
+        $obj['subscriptionType'] = $subscriptionType;
 
         return $obj;
     }

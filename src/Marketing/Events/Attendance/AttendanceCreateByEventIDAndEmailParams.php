@@ -26,7 +26,13 @@ use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
  * @see HubspotSDK\Services\Marketing\Events\AttendanceService::createByEventIDAndEmail()
  *
  * @phpstan-type AttendanceCreateByEventIDAndEmailParamsShape = array{
- *   objectId: string, inputs: list<MarketingEventEmailSubscriber>
+ *   objectId: string,
+ *   inputs: list<MarketingEventEmailSubscriber|array{
+ *     contactProperties: array<string,string>,
+ *     email: string,
+ *     interactionDateTime: int,
+ *     properties: array<string,string>,
+ *   }>,
  * }
  */
 final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
@@ -72,14 +78,19 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventEmailSubscriber> $inputs
+     * @param list<MarketingEventEmailSubscriber|array{
+     *   contactProperties: array<string,string>,
+     *   email: string,
+     *   interactionDateTime: int,
+     *   properties: array<string,string>,
+     * }> $inputs
      */
     public static function with(string $objectId, array $inputs): self
     {
         $obj = new self;
 
-        $obj->objectId = $objectId;
-        $obj->inputs = $inputs;
+        $obj['objectId'] = $objectId;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -87,7 +98,7 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -95,12 +106,17 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
     /**
      * List of marketing event details to create or update.
      *
-     * @param list<MarketingEventEmailSubscriber> $inputs
+     * @param list<MarketingEventEmailSubscriber|array{
+     *   contactProperties: array<string,string>,
+     *   email: string,
+     *   interactionDateTime: int,
+     *   properties: array<string,string>,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

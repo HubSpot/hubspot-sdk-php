@@ -129,7 +129,14 @@ final class SimplePublicUpsertObject implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string> $properties
-     * @param array<string,list<ValueWithTimestamp>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestamp|array{
+     *   sourceType: string,
+     *   timestamp: \DateTimeInterface,
+     *   value: string,
+     *   sourceId?: string|null,
+     *   sourceLabel?: string|null,
+     *   updatedByUserId?: int|null,
+     * }>> $propertiesWithHistory
      */
     public static function with(
         string $id,
@@ -145,17 +152,17 @@ final class SimplePublicUpsertObject implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->createdAt = $createdAt;
-        $obj->new = $new;
-        $obj->properties = $properties;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['createdAt'] = $createdAt;
+        $obj['new'] = $new;
+        $obj['properties'] = $properties;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $archivedAt && $obj->archivedAt = $archivedAt;
-        null !== $objectWriteTraceId && $obj->objectWriteTraceId = $objectWriteTraceId;
-        null !== $propertiesWithHistory && $obj->propertiesWithHistory = $propertiesWithHistory;
-        null !== $url && $obj->url = $url;
+        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
+        null !== $objectWriteTraceId && $obj['objectWriteTraceId'] = $objectWriteTraceId;
+        null !== $propertiesWithHistory && $obj['propertiesWithHistory'] = $propertiesWithHistory;
+        null !== $url && $obj['url'] = $url;
 
         return $obj;
     }
@@ -166,7 +173,7 @@ final class SimplePublicUpsertObject implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -177,7 +184,7 @@ final class SimplePublicUpsertObject implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -188,7 +195,7 @@ final class SimplePublicUpsertObject implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -199,7 +206,7 @@ final class SimplePublicUpsertObject implements BaseModel
     public function withNew(bool $new): self
     {
         $obj = clone $this;
-        $obj->new = $new;
+        $obj['new'] = $new;
 
         return $obj;
     }
@@ -212,7 +219,7 @@ final class SimplePublicUpsertObject implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -223,7 +230,7 @@ final class SimplePublicUpsertObject implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -234,7 +241,7 @@ final class SimplePublicUpsertObject implements BaseModel
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
-        $obj->archivedAt = $archivedAt;
+        $obj['archivedAt'] = $archivedAt;
 
         return $obj;
     }
@@ -245,7 +252,7 @@ final class SimplePublicUpsertObject implements BaseModel
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
-        $obj->objectWriteTraceId = $objectWriteTraceID;
+        $obj['objectWriteTraceId'] = $objectWriteTraceID;
 
         return $obj;
     }
@@ -253,13 +260,20 @@ final class SimplePublicUpsertObject implements BaseModel
     /**
      * Key-value pairs representing the properties of the object along with their history.
      *
-     * @param array<string,list<ValueWithTimestamp>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestamp|array{
+     *   sourceType: string,
+     *   timestamp: \DateTimeInterface,
+     *   value: string,
+     *   sourceId?: string|null,
+     *   sourceLabel?: string|null,
+     *   updatedByUserId?: int|null,
+     * }>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(
         array $propertiesWithHistory
     ): self {
         $obj = clone $this;
-        $obj->propertiesWithHistory = $propertiesWithHistory;
+        $obj['propertiesWithHistory'] = $propertiesWithHistory;
 
         return $obj;
     }
@@ -267,7 +281,7 @@ final class SimplePublicUpsertObject implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

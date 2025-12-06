@@ -23,11 +23,11 @@ use HubspotSDK\Events\EventListParams\Property;
  *   eventType?: string,
  *   limit?: int,
  *   objectId?: int,
- *   objectProperty?: ObjectProperty,
+ *   objectProperty?: ObjectProperty|array{_propname_?: mixed},
  *   objectType?: string,
  *   occurredAfter?: \DateTimeInterface,
  *   occurredBefore?: \DateTimeInterface,
- *   property?: Property,
+ *   property?: Property|array{_propname_?: mixed},
  *   sort?: list<string>,
  * }
  */
@@ -115,6 +115,8 @@ final class EventListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $id
+     * @param ObjectProperty|array{_propname_?: mixed} $objectProperty
+     * @param Property|array{_propname_?: mixed} $property
      * @param list<string> $sort
      */
     public static function with(
@@ -124,27 +126,27 @@ final class EventListParams implements BaseModel
         ?string $eventType = null,
         ?int $limit = null,
         ?int $objectId = null,
-        ?ObjectProperty $objectProperty = null,
+        ObjectProperty|array|null $objectProperty = null,
         ?string $objectType = null,
         ?\DateTimeInterface $occurredAfter = null,
         ?\DateTimeInterface $occurredBefore = null,
-        ?Property $property = null,
+        Property|array|null $property = null,
         ?array $sort = null,
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $after && $obj->after = $after;
-        null !== $before && $obj->before = $before;
-        null !== $eventType && $obj->eventType = $eventType;
-        null !== $limit && $obj->limit = $limit;
-        null !== $objectId && $obj->objectId = $objectId;
-        null !== $objectProperty && $obj->objectProperty = $objectProperty;
-        null !== $objectType && $obj->objectType = $objectType;
-        null !== $occurredAfter && $obj->occurredAfter = $occurredAfter;
-        null !== $occurredBefore && $obj->occurredBefore = $occurredBefore;
-        null !== $property && $obj->property = $property;
-        null !== $sort && $obj->sort = $sort;
+        null !== $id && $obj['id'] = $id;
+        null !== $after && $obj['after'] = $after;
+        null !== $before && $obj['before'] = $before;
+        null !== $eventType && $obj['eventType'] = $eventType;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $objectProperty && $obj['objectProperty'] = $objectProperty;
+        null !== $objectType && $obj['objectType'] = $objectType;
+        null !== $occurredAfter && $obj['occurredAfter'] = $occurredAfter;
+        null !== $occurredBefore && $obj['occurredBefore'] = $occurredBefore;
+        null !== $property && $obj['property'] = $property;
+        null !== $sort && $obj['sort'] = $sort;
 
         return $obj;
     }
@@ -157,7 +159,7 @@ final class EventListParams implements BaseModel
     public function withID(array $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -168,7 +170,7 @@ final class EventListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -176,7 +178,7 @@ final class EventListParams implements BaseModel
     public function withBefore(string $before): self
     {
         $obj = clone $this;
-        $obj->before = $before;
+        $obj['before'] = $before;
 
         return $obj;
     }
@@ -187,7 +189,7 @@ final class EventListParams implements BaseModel
     public function withEventType(string $eventType): self
     {
         $obj = clone $this;
-        $obj->eventType = $eventType;
+        $obj['eventType'] = $eventType;
 
         return $obj;
     }
@@ -198,7 +200,7 @@ final class EventListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -209,15 +211,19 @@ final class EventListParams implements BaseModel
     public function withObjectID(int $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
 
-    public function withObjectProperty(ObjectProperty $objectProperty): self
-    {
+    /**
+     * @param ObjectProperty|array{_propname_?: mixed} $objectProperty
+     */
+    public function withObjectProperty(
+        ObjectProperty|array $objectProperty
+    ): self {
         $obj = clone $this;
-        $obj->objectProperty = $objectProperty;
+        $obj['objectProperty'] = $objectProperty;
 
         return $obj;
     }
@@ -228,7 +234,7 @@ final class EventListParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -239,7 +245,7 @@ final class EventListParams implements BaseModel
     public function withOccurredAfter(\DateTimeInterface $occurredAfter): self
     {
         $obj = clone $this;
-        $obj->occurredAfter = $occurredAfter;
+        $obj['occurredAfter'] = $occurredAfter;
 
         return $obj;
     }
@@ -250,15 +256,18 @@ final class EventListParams implements BaseModel
     public function withOccurredBefore(\DateTimeInterface $occurredBefore): self
     {
         $obj = clone $this;
-        $obj->occurredBefore = $occurredBefore;
+        $obj['occurredBefore'] = $occurredBefore;
 
         return $obj;
     }
 
-    public function withProperty(Property $property): self
+    /**
+     * @param Property|array{_propname_?: mixed} $property
+     */
+    public function withProperty(Property|array $property): self
     {
         $obj = clone $this;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
         return $obj;
     }
@@ -271,7 +280,7 @@ final class EventListParams implements BaseModel
     public function withSort(array $sort): self
     {
         $obj = clone $this;
-        $obj->sort = $sort;
+        $obj['sort'] = $sort;
 
         return $obj;
     }

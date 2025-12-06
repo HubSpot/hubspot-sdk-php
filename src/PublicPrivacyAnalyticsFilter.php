@@ -68,8 +68,8 @@ final class PublicPrivacyAnalyticsFilter implements BaseModel
         $obj = new self;
 
         $obj['filterType'] = $filterType;
-        $obj->operator = $operator;
-        $obj->privacyName = $privacyName;
+        $obj['operator'] = $operator;
+        $obj['privacyName'] = $privacyName;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class PublicPrivacyAnalyticsFilter implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class PublicPrivacyAnalyticsFilter implements BaseModel
     public function withPrivacyName(string $privacyName): self
     {
         $obj = clone $this;
-        $obj->privacyName = $privacyName;
+        $obj['privacyName'] = $privacyName;
 
         return $obj;
     }

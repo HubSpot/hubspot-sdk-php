@@ -16,7 +16,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\Rows\BatchService::cloneBatch()
  *
  * @phpstan-type BatchCloneBatchParamsShape = array{
- *   inputs: list<HubDBTableRowBatchCloneRequest>
+ *   inputs: list<HubDBTableRowBatchCloneRequest|array{
+ *     id: string, name?: string|null
+ *   }>,
  * }
  */
 final class BatchCloneBatchParams implements BaseModel
@@ -53,24 +55,28 @@ final class BatchCloneBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowBatchCloneRequest> $inputs
+     * @param list<HubDBTableRowBatchCloneRequest|array{
+     *   id: string, name?: string|null
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<HubDBTableRowBatchCloneRequest> $inputs
+     * @param list<HubDBTableRowBatchCloneRequest|array{
+     *   id: string, name?: string|null
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

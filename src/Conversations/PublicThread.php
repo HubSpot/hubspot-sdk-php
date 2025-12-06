@@ -123,6 +123,9 @@ final class PublicThread implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
+     * @param PublicThreadAssociations|array{
+     *   associatedTicketId?: string|null
+     * } $threadAssociations
      */
     public static function with(
         string $id,
@@ -139,26 +142,26 @@ final class PublicThread implements BaseModel
         ?\DateTimeInterface $latestMessageReceivedTimestamp = null,
         ?\DateTimeInterface $latestMessageSentTimestamp = null,
         ?\DateTimeInterface $latestMessageTimestamp = null,
-        ?PublicThreadAssociations $threadAssociations = null,
+        PublicThreadAssociations|array|null $threadAssociations = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->associatedContactId = $associatedContactId;
-        $obj->createdAt = $createdAt;
-        $obj->inboxId = $inboxId;
-        $obj->originalChannelAccountId = $originalChannelAccountId;
-        $obj->originalChannelId = $originalChannelId;
-        $obj->spam = $spam;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['associatedContactId'] = $associatedContactId;
+        $obj['createdAt'] = $createdAt;
+        $obj['inboxId'] = $inboxId;
+        $obj['originalChannelAccountId'] = $originalChannelAccountId;
+        $obj['originalChannelId'] = $originalChannelId;
+        $obj['spam'] = $spam;
         $obj['status'] = $status;
 
-        null !== $assignedTo && $obj->assignedTo = $assignedTo;
-        null !== $closedAt && $obj->closedAt = $closedAt;
-        null !== $latestMessageReceivedTimestamp && $obj->latestMessageReceivedTimestamp = $latestMessageReceivedTimestamp;
-        null !== $latestMessageSentTimestamp && $obj->latestMessageSentTimestamp = $latestMessageSentTimestamp;
-        null !== $latestMessageTimestamp && $obj->latestMessageTimestamp = $latestMessageTimestamp;
-        null !== $threadAssociations && $obj->threadAssociations = $threadAssociations;
+        null !== $assignedTo && $obj['assignedTo'] = $assignedTo;
+        null !== $closedAt && $obj['closedAt'] = $closedAt;
+        null !== $latestMessageReceivedTimestamp && $obj['latestMessageReceivedTimestamp'] = $latestMessageReceivedTimestamp;
+        null !== $latestMessageSentTimestamp && $obj['latestMessageSentTimestamp'] = $latestMessageSentTimestamp;
+        null !== $latestMessageTimestamp && $obj['latestMessageTimestamp'] = $latestMessageTimestamp;
+        null !== $threadAssociations && $obj['threadAssociations'] = $threadAssociations;
 
         return $obj;
     }
@@ -166,7 +169,7 @@ final class PublicThread implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -174,7 +177,7 @@ final class PublicThread implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -182,7 +185,7 @@ final class PublicThread implements BaseModel
     public function withAssociatedContactID(string $associatedContactID): self
     {
         $obj = clone $this;
-        $obj->associatedContactId = $associatedContactID;
+        $obj['associatedContactId'] = $associatedContactID;
 
         return $obj;
     }
@@ -190,7 +193,7 @@ final class PublicThread implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -198,7 +201,7 @@ final class PublicThread implements BaseModel
     public function withInboxID(string $inboxID): self
     {
         $obj = clone $this;
-        $obj->inboxId = $inboxID;
+        $obj['inboxId'] = $inboxID;
 
         return $obj;
     }
@@ -207,7 +210,7 @@ final class PublicThread implements BaseModel
         string $originalChannelAccountID
     ): self {
         $obj = clone $this;
-        $obj->originalChannelAccountId = $originalChannelAccountID;
+        $obj['originalChannelAccountId'] = $originalChannelAccountID;
 
         return $obj;
     }
@@ -215,7 +218,7 @@ final class PublicThread implements BaseModel
     public function withOriginalChannelID(string $originalChannelID): self
     {
         $obj = clone $this;
-        $obj->originalChannelId = $originalChannelID;
+        $obj['originalChannelId'] = $originalChannelID;
 
         return $obj;
     }
@@ -223,7 +226,7 @@ final class PublicThread implements BaseModel
     public function withSpam(bool $spam): self
     {
         $obj = clone $this;
-        $obj->spam = $spam;
+        $obj['spam'] = $spam;
 
         return $obj;
     }
@@ -242,7 +245,7 @@ final class PublicThread implements BaseModel
     public function withAssignedTo(string $assignedTo): self
     {
         $obj = clone $this;
-        $obj->assignedTo = $assignedTo;
+        $obj['assignedTo'] = $assignedTo;
 
         return $obj;
     }
@@ -250,7 +253,7 @@ final class PublicThread implements BaseModel
     public function withClosedAt(\DateTimeInterface $closedAt): self
     {
         $obj = clone $this;
-        $obj->closedAt = $closedAt;
+        $obj['closedAt'] = $closedAt;
 
         return $obj;
     }
@@ -259,7 +262,7 @@ final class PublicThread implements BaseModel
         \DateTimeInterface $latestMessageReceivedTimestamp
     ): self {
         $obj = clone $this;
-        $obj->latestMessageReceivedTimestamp = $latestMessageReceivedTimestamp;
+        $obj['latestMessageReceivedTimestamp'] = $latestMessageReceivedTimestamp;
 
         return $obj;
     }
@@ -268,7 +271,7 @@ final class PublicThread implements BaseModel
         \DateTimeInterface $latestMessageSentTimestamp
     ): self {
         $obj = clone $this;
-        $obj->latestMessageSentTimestamp = $latestMessageSentTimestamp;
+        $obj['latestMessageSentTimestamp'] = $latestMessageSentTimestamp;
 
         return $obj;
     }
@@ -277,16 +280,21 @@ final class PublicThread implements BaseModel
         \DateTimeInterface $latestMessageTimestamp
     ): self {
         $obj = clone $this;
-        $obj->latestMessageTimestamp = $latestMessageTimestamp;
+        $obj['latestMessageTimestamp'] = $latestMessageTimestamp;
 
         return $obj;
     }
 
+    /**
+     * @param PublicThreadAssociations|array{
+     *   associatedTicketId?: string|null
+     * } $threadAssociations
+     */
     public function withThreadAssociations(
-        PublicThreadAssociations $threadAssociations
+        PublicThreadAssociations|array $threadAssociations
     ): self {
         $obj = clone $this;
-        $obj->threadAssociations = $threadAssociations;
+        $obj['threadAssociations'] = $threadAssociations;
 
         return $obj;
     }

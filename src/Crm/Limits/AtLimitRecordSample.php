@@ -56,8 +56,8 @@ final class AtLimitRecordSample implements BaseModel
     {
         $obj = new self;
 
-        $obj->label = $label;
-        $obj->objectId = $objectId;
+        $obj['label'] = $label;
+        $obj['objectId'] = $objectId;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class AtLimitRecordSample implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class AtLimitRecordSample implements BaseModel
     public function withObjectID(int $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }

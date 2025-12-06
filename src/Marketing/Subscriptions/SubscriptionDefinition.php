@@ -150,18 +150,18 @@ final class SubscriptionDefinition implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->description = $description;
-        $obj->isActive = $isActive;
-        $obj->isDefault = $isDefault;
-        $obj->isInternal = $isInternal;
-        $obj->name = $name;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['description'] = $description;
+        $obj['isActive'] = $isActive;
+        $obj['isDefault'] = $isDefault;
+        $obj['isInternal'] = $isInternal;
+        $obj['name'] = $name;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
-        null !== $communicationMethod && $obj->communicationMethod = $communicationMethod;
-        null !== $purpose && $obj->purpose = $purpose;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $communicationMethod && $obj['communicationMethod'] = $communicationMethod;
+        null !== $purpose && $obj['purpose'] = $purpose;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -183,7 +183,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -194,7 +194,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -205,7 +205,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withIsActive(bool $isActive): self
     {
         $obj = clone $this;
-        $obj->isActive = $isActive;
+        $obj['isActive'] = $isActive;
 
         return $obj;
     }
@@ -216,7 +216,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withIsDefault(bool $isDefault): self
     {
         $obj = clone $this;
-        $obj->isDefault = $isDefault;
+        $obj['isDefault'] = $isDefault;
 
         return $obj;
     }
@@ -227,7 +227,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withIsInternal(bool $isInternal): self
     {
         $obj = clone $this;
-        $obj->isInternal = $isInternal;
+        $obj['isInternal'] = $isInternal;
 
         return $obj;
     }
@@ -238,7 +238,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -249,7 +249,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -260,7 +260,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }
@@ -271,7 +271,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withCommunicationMethod(string $communicationMethod): self
     {
         $obj = clone $this;
-        $obj->communicationMethod = $communicationMethod;
+        $obj['communicationMethod'] = $communicationMethod;
 
         return $obj;
     }
@@ -282,7 +282,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withPurpose(string $purpose): self
     {
         $obj = clone $this;
-        $obj->purpose = $purpose;
+        $obj['purpose'] = $purpose;
 
         return $obj;
     }

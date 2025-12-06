@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb;
 
+use HubspotSDK\Cms\Hubdb\Column\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Option;
 
 /**
  * @phpstan-type HubDBTableV3Shape = array{
@@ -202,8 +204,35 @@ final class HubDBTableV3 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Column> $columns
+     * @param list<Column|array{
+     *   id: string,
+     *   deleted: bool,
+     *   description: string,
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdBy?: SimpleUser|null,
+     *   createdByUserId?: int|null,
+     *   foreignColumnId?: int|null,
+     *   foreignIds?: list<ForeignID>|null,
+     *   foreignIdsById?: array<string,ForeignID>|null,
+     *   foreignIdsByName?: array<string,ForeignID>|null,
+     *   foreignTableId?: int|null,
+     *   optionCount?: int|null,
+     *   options?: list<Option>|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedBy?: SimpleUser|null,
+     *   updatedByUserId?: int|null,
+     *   width?: int|null,
+     * }> $columns
      * @param array<string,int> $dynamicMetaTags
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $createdBy
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $updatedBy
      */
     public static function with(
         string $id,
@@ -223,33 +252,33 @@ final class HubDBTableV3 implements BaseModel
         int $rowCount,
         \DateTimeInterface $updatedAt,
         bool $useForPages,
-        ?SimpleUser $createdBy = null,
+        SimpleUser|array|null $createdBy = null,
         ?bool $isOrderedManually = null,
-        ?SimpleUser $updatedBy = null,
+        SimpleUser|array|null $updatedBy = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->allowChildTables = $allowChildTables;
-        $obj->allowPublicApiAccess = $allowPublicApiAccess;
-        $obj->columnCount = $columnCount;
-        $obj->columns = $columns;
-        $obj->createdAt = $createdAt;
-        $obj->deleted = $deleted;
-        $obj->deletedAt = $deletedAt;
-        $obj->dynamicMetaTags = $dynamicMetaTags;
-        $obj->enableChildTablePages = $enableChildTablePages;
-        $obj->label = $label;
-        $obj->name = $name;
-        $obj->published = $published;
-        $obj->publishedAt = $publishedAt;
-        $obj->rowCount = $rowCount;
-        $obj->updatedAt = $updatedAt;
-        $obj->useForPages = $useForPages;
+        $obj['id'] = $id;
+        $obj['allowChildTables'] = $allowChildTables;
+        $obj['allowPublicApiAccess'] = $allowPublicApiAccess;
+        $obj['columnCount'] = $columnCount;
+        $obj['columns'] = $columns;
+        $obj['createdAt'] = $createdAt;
+        $obj['deleted'] = $deleted;
+        $obj['deletedAt'] = $deletedAt;
+        $obj['dynamicMetaTags'] = $dynamicMetaTags;
+        $obj['enableChildTablePages'] = $enableChildTablePages;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
+        $obj['published'] = $published;
+        $obj['publishedAt'] = $publishedAt;
+        $obj['rowCount'] = $rowCount;
+        $obj['updatedAt'] = $updatedAt;
+        $obj['useForPages'] = $useForPages;
 
-        null !== $createdBy && $obj->createdBy = $createdBy;
-        null !== $isOrderedManually && $obj->isOrderedManually = $isOrderedManually;
-        null !== $updatedBy && $obj->updatedBy = $updatedBy;
+        null !== $createdBy && $obj['createdBy'] = $createdBy;
+        null !== $isOrderedManually && $obj['isOrderedManually'] = $isOrderedManually;
+        null !== $updatedBy && $obj['updatedBy'] = $updatedBy;
 
         return $obj;
     }
@@ -260,7 +289,7 @@ final class HubDBTableV3 implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -271,7 +300,7 @@ final class HubDBTableV3 implements BaseModel
     public function withAllowChildTables(bool $allowChildTables): self
     {
         $obj = clone $this;
-        $obj->allowChildTables = $allowChildTables;
+        $obj['allowChildTables'] = $allowChildTables;
 
         return $obj;
     }
@@ -282,7 +311,7 @@ final class HubDBTableV3 implements BaseModel
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
-        $obj->allowPublicApiAccess = $allowPublicAPIAccess;
+        $obj['allowPublicApiAccess'] = $allowPublicAPIAccess;
 
         return $obj;
     }
@@ -293,7 +322,7 @@ final class HubDBTableV3 implements BaseModel
     public function withColumnCount(int $columnCount): self
     {
         $obj = clone $this;
-        $obj->columnCount = $columnCount;
+        $obj['columnCount'] = $columnCount;
 
         return $obj;
     }
@@ -301,12 +330,33 @@ final class HubDBTableV3 implements BaseModel
     /**
      * List of columns in the table.
      *
-     * @param list<Column> $columns
+     * @param list<Column|array{
+     *   id: string,
+     *   deleted: bool,
+     *   description: string,
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdBy?: SimpleUser|null,
+     *   createdByUserId?: int|null,
+     *   foreignColumnId?: int|null,
+     *   foreignIds?: list<ForeignID>|null,
+     *   foreignIdsById?: array<string,ForeignID>|null,
+     *   foreignIdsByName?: array<string,ForeignID>|null,
+     *   foreignTableId?: int|null,
+     *   optionCount?: int|null,
+     *   options?: list<Option>|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedBy?: SimpleUser|null,
+     *   updatedByUserId?: int|null,
+     *   width?: int|null,
+     * }> $columns
      */
     public function withColumns(array $columns): self
     {
         $obj = clone $this;
-        $obj->columns = $columns;
+        $obj['columns'] = $columns;
 
         return $obj;
     }
@@ -317,7 +367,7 @@ final class HubDBTableV3 implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -325,7 +375,7 @@ final class HubDBTableV3 implements BaseModel
     public function withDeleted(bool $deleted): self
     {
         $obj = clone $this;
-        $obj->deleted = $deleted;
+        $obj['deleted'] = $deleted;
 
         return $obj;
     }
@@ -333,7 +383,7 @@ final class HubDBTableV3 implements BaseModel
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
         $obj = clone $this;
-        $obj->deletedAt = $deletedAt;
+        $obj['deletedAt'] = $deletedAt;
 
         return $obj;
     }
@@ -346,7 +396,7 @@ final class HubDBTableV3 implements BaseModel
     public function withDynamicMetaTags(array $dynamicMetaTags): self
     {
         $obj = clone $this;
-        $obj->dynamicMetaTags = $dynamicMetaTags;
+        $obj['dynamicMetaTags'] = $dynamicMetaTags;
 
         return $obj;
     }
@@ -357,7 +407,7 @@ final class HubDBTableV3 implements BaseModel
     public function withEnableChildTablePages(bool $enableChildTablePages): self
     {
         $obj = clone $this;
-        $obj->enableChildTablePages = $enableChildTablePages;
+        $obj['enableChildTablePages'] = $enableChildTablePages;
 
         return $obj;
     }
@@ -368,7 +418,7 @@ final class HubDBTableV3 implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -379,7 +429,7 @@ final class HubDBTableV3 implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -387,7 +437,7 @@ final class HubDBTableV3 implements BaseModel
     public function withPublished(bool $published): self
     {
         $obj = clone $this;
-        $obj->published = $published;
+        $obj['published'] = $published;
 
         return $obj;
     }
@@ -398,7 +448,7 @@ final class HubDBTableV3 implements BaseModel
     public function withPublishedAt(\DateTimeInterface $publishedAt): self
     {
         $obj = clone $this;
-        $obj->publishedAt = $publishedAt;
+        $obj['publishedAt'] = $publishedAt;
 
         return $obj;
     }
@@ -409,7 +459,7 @@ final class HubDBTableV3 implements BaseModel
     public function withRowCount(int $rowCount): self
     {
         $obj = clone $this;
-        $obj->rowCount = $rowCount;
+        $obj['rowCount'] = $rowCount;
 
         return $obj;
     }
@@ -420,7 +470,7 @@ final class HubDBTableV3 implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -431,15 +481,20 @@ final class HubDBTableV3 implements BaseModel
     public function withUseForPages(bool $useForPages): self
     {
         $obj = clone $this;
-        $obj->useForPages = $useForPages;
+        $obj['useForPages'] = $useForPages;
 
         return $obj;
     }
 
-    public function withCreatedBy(SimpleUser $createdBy): self
+    /**
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $createdBy
+     */
+    public function withCreatedBy(SimpleUser|array $createdBy): self
     {
         $obj = clone $this;
-        $obj->createdBy = $createdBy;
+        $obj['createdBy'] = $createdBy;
 
         return $obj;
     }
@@ -447,15 +502,20 @@ final class HubDBTableV3 implements BaseModel
     public function withIsOrderedManually(bool $isOrderedManually): self
     {
         $obj = clone $this;
-        $obj->isOrderedManually = $isOrderedManually;
+        $obj['isOrderedManually'] = $isOrderedManually;
 
         return $obj;
     }
 
-    public function withUpdatedBy(SimpleUser $updatedBy): self
+    /**
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $updatedBy
+     */
+    public function withUpdatedBy(SimpleUser|array $updatedBy): self
     {
         $obj = clone $this;
-        $obj->updatedBy = $updatedBy;
+        $obj['updatedBy'] = $updatedBy;
 
         return $obj;
     }

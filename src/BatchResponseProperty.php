@@ -8,6 +8,7 @@ use HubspotSDK\BatchResponseProperty\Status;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Property\DataSensitivity;
 
 /**
  * @phpstan-type BatchResponsePropertyShape = array{
@@ -75,7 +76,34 @@ final class BatchResponseProperty implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property> $results
+     * @param list<Property|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * }> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -89,13 +117,13 @@ final class BatchResponseProperty implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->completedAt = $completedAt;
-        $obj->results = $results;
-        $obj->startedAt = $startedAt;
+        $obj['completedAt'] = $completedAt;
+        $obj['results'] = $results;
+        $obj['startedAt'] = $startedAt;
         $obj['status'] = $status;
 
-        null !== $links && $obj->links = $links;
-        null !== $requestedAt && $obj->requestedAt = $requestedAt;
+        null !== $links && $obj['links'] = $links;
+        null !== $requestedAt && $obj['requestedAt'] = $requestedAt;
 
         return $obj;
     }
@@ -103,18 +131,45 @@ final class BatchResponseProperty implements BaseModel
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
-        $obj->completedAt = $completedAt;
+        $obj['completedAt'] = $completedAt;
 
         return $obj;
     }
 
     /**
-     * @param list<Property> $results
+     * @param list<Property|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -122,7 +177,7 @@ final class BatchResponseProperty implements BaseModel
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
-        $obj->startedAt = $startedAt;
+        $obj['startedAt'] = $startedAt;
 
         return $obj;
     }
@@ -144,7 +199,7 @@ final class BatchResponseProperty implements BaseModel
     public function withLinks(array $links): self
     {
         $obj = clone $this;
-        $obj->links = $links;
+        $obj['links'] = $links;
 
         return $obj;
     }
@@ -152,7 +207,7 @@ final class BatchResponseProperty implements BaseModel
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;
-        $obj->requestedAt = $requestedAt;
+        $obj['requestedAt'] = $requestedAt;
 
         return $obj;
     }

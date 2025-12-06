@@ -53,7 +53,7 @@ final class GroupDeleteParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class GroupDeleteParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }

@@ -9,6 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Marketing\Emails\PublicEmail\EmailTemplateMode;
+use HubspotSDK\Marketing\Emails\PublicEmail\Language;
+use HubspotSDK\Marketing\Emails\PublicEmail\State;
+use HubspotSDK\Marketing\Emails\PublicEmail\Type;
 use HubspotSDK\VersionUser;
 
 /**
@@ -76,19 +80,72 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicEmail|array{
+     *   isAb: bool,
+     *   id?: string|null,
+     *   activeDomain?: string|null,
+     *   allEmailCampaignIds?: list<string>|null,
+     *   archived?: bool|null,
+     *   businessUnitId?: string|null,
+     *   campaign?: string|null,
+     *   campaignName?: string|null,
+     *   campaignUtm?: string|null,
+     *   clonedFrom?: string|null,
+     *   content?: PublicEmailContent|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdById?: string|null,
+     *   deletedAt?: \DateTimeInterface|null,
+     *   emailCampaignGroupId?: string|null,
+     *   emailTemplateMode?: value-of<EmailTemplateMode>|null,
+     *   feedbackSurveyId?: string|null,
+     *   folderId?: int|null,
+     *   folderIdV2?: int|null,
+     *   from?: PublicEmailFromDetails|null,
+     *   isPublished?: bool|null,
+     *   isTransactional?: bool|null,
+     *   jitterSendTime?: bool|null,
+     *   language?: value-of<Language>|null,
+     *   name?: string|null,
+     *   previewKey?: string|null,
+     *   primaryEmailCampaignId?: string|null,
+     *   publishDate?: \DateTimeInterface|null,
+     *   publishedAt?: \DateTimeInterface|null,
+     *   publishedByEmail?: string|null,
+     *   publishedById?: string|null,
+     *   publishedByName?: string|null,
+     *   rssData?: PublicRssEmailDetails|null,
+     *   sendOnPublish?: bool|null,
+     *   state?: value-of<State>|null,
+     *   stats?: EmailStatisticsData|null,
+     *   subcategory?: string|null,
+     *   subject?: string|null,
+     *   subscriptionDetails?: PublicEmailSubscriptionDetails|null,
+     *   teamsWithAccess?: list<string>|null,
+     *   testing?: PublicEmailTestingDetails|null,
+     *   to?: PublicEmailToDetails|null,
+     *   type?: value-of<Type>|null,
+     *   unpublishedAt?: \DateTimeInterface|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedById?: string|null,
+     *   usersWithAccess?: list<string>|null,
+     *   webversion?: PublicWebversionDetails|null,
+     *   workflowNames?: list<string>|null,
+     * } $object
+     * @param VersionUser|array{id: string, email: string, fullName: string} $user
      */
     public static function with(
         string $id,
-        PublicEmail $object,
+        PublicEmail|array $object,
         \DateTimeInterface $updatedAt,
-        VersionUser $user,
+        VersionUser|array $user,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->object = $object;
-        $obj->updatedAt = $updatedAt;
-        $obj->user = $user;
+        $obj['id'] = $id;
+        $obj['object'] = $object;
+        $obj['updatedAt'] = $updatedAt;
+        $obj['user'] = $user;
 
         return $obj;
     }
@@ -99,18 +156,70 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
     /**
      * A marketing email.
+     *
+     * @param PublicEmail|array{
+     *   isAb: bool,
+     *   id?: string|null,
+     *   activeDomain?: string|null,
+     *   allEmailCampaignIds?: list<string>|null,
+     *   archived?: bool|null,
+     *   businessUnitId?: string|null,
+     *   campaign?: string|null,
+     *   campaignName?: string|null,
+     *   campaignUtm?: string|null,
+     *   clonedFrom?: string|null,
+     *   content?: PublicEmailContent|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdById?: string|null,
+     *   deletedAt?: \DateTimeInterface|null,
+     *   emailCampaignGroupId?: string|null,
+     *   emailTemplateMode?: value-of<EmailTemplateMode>|null,
+     *   feedbackSurveyId?: string|null,
+     *   folderId?: int|null,
+     *   folderIdV2?: int|null,
+     *   from?: PublicEmailFromDetails|null,
+     *   isPublished?: bool|null,
+     *   isTransactional?: bool|null,
+     *   jitterSendTime?: bool|null,
+     *   language?: value-of<Language>|null,
+     *   name?: string|null,
+     *   previewKey?: string|null,
+     *   primaryEmailCampaignId?: string|null,
+     *   publishDate?: \DateTimeInterface|null,
+     *   publishedAt?: \DateTimeInterface|null,
+     *   publishedByEmail?: string|null,
+     *   publishedById?: string|null,
+     *   publishedByName?: string|null,
+     *   rssData?: PublicRssEmailDetails|null,
+     *   sendOnPublish?: bool|null,
+     *   state?: value-of<State>|null,
+     *   stats?: EmailStatisticsData|null,
+     *   subcategory?: string|null,
+     *   subject?: string|null,
+     *   subscriptionDetails?: PublicEmailSubscriptionDetails|null,
+     *   teamsWithAccess?: list<string>|null,
+     *   testing?: PublicEmailTestingDetails|null,
+     *   to?: PublicEmailToDetails|null,
+     *   type?: value-of<Type>|null,
+     *   unpublishedAt?: \DateTimeInterface|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedById?: string|null,
+     *   usersWithAccess?: list<string>|null,
+     *   webversion?: PublicWebversionDetails|null,
+     *   workflowNames?: list<string>|null,
+     * } $object
      */
-    public function withObject(PublicEmail $object): self
+    public function withObject(PublicEmail|array $object): self
     {
         $obj = clone $this;
-        $obj->object = $object;
+        $obj['object'] = $object;
 
         return $obj;
     }
@@ -118,18 +227,20 @@ final class VersionPublicEmail implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
 
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
+     *
+     * @param VersionUser|array{id: string, email: string, fullName: string} $user
      */
-    public function withUser(VersionUser $user): self
+    public function withUser(VersionUser|array $user): self
     {
         $obj = clone $this;
-        $obj->user = $user;
+        $obj['user'] = $user;
 
         return $obj;
     }

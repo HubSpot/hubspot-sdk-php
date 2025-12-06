@@ -67,9 +67,9 @@ final class LegalConsentCheckbox implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->label = $label;
-        $obj->required = $required;
-        $obj->subscriptionTypeId = $subscriptionTypeId;
+        $obj['label'] = $label;
+        $obj['required'] = $required;
+        $obj['subscriptionTypeId'] = $subscriptionTypeId;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class LegalConsentCheckbox implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class LegalConsentCheckbox implements BaseModel
     public function withRequired(bool $required): self
     {
         $obj = clone $this;
-        $obj->required = $required;
+        $obj['required'] = $required;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class LegalConsentCheckbox implements BaseModel
     public function withSubscriptionTypeID(int $subscriptionTypeID): self
     {
         $obj = clone $this;
-        $obj->subscriptionTypeId = $subscriptionTypeID;
+        $obj['subscriptionTypeId'] = $subscriptionTypeID;
 
         return $obj;
     }

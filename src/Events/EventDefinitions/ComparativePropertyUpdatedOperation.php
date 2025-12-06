@@ -105,15 +105,15 @@ final class ComparativePropertyUpdatedOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->comparisonPropertyName = $comparisonPropertyName;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->operationType = $operationType;
+        $obj['comparisonPropertyName'] = $comparisonPropertyName;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['operationType'] = $operationType;
         $obj['operator'] = $operator;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
         $obj['propertyType'] = $propertyType;
 
-        null !== $defaultComparisonValue && $obj->defaultComparisonValue = $defaultComparisonValue;
-        null !== $defaultValue && $obj->defaultValue = $defaultValue;
+        null !== $defaultComparisonValue && $obj['defaultComparisonValue'] = $defaultComparisonValue;
+        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class ComparativePropertyUpdatedOperation implements BaseModel
         string $comparisonPropertyName
     ): self {
         $obj = clone $this;
-        $obj->comparisonPropertyName = $comparisonPropertyName;
+        $obj['comparisonPropertyName'] = $comparisonPropertyName;
 
         return $obj;
     }
@@ -131,7 +131,7 @@ final class ComparativePropertyUpdatedOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class ComparativePropertyUpdatedOperation implements BaseModel
     public function withOperationType(string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }
@@ -158,7 +158,7 @@ final class ComparativePropertyUpdatedOperation implements BaseModel
     public function withOperatorName(string $operatorName): self
     {
         $obj = clone $this;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
 
         return $obj;
     }
@@ -178,7 +178,7 @@ final class ComparativePropertyUpdatedOperation implements BaseModel
         string $defaultComparisonValue
     ): self {
         $obj = clone $this;
-        $obj->defaultComparisonValue = $defaultComparisonValue;
+        $obj['defaultComparisonValue'] = $defaultComparisonValue;
 
         return $obj;
     }
@@ -186,7 +186,7 @@ final class ComparativePropertyUpdatedOperation implements BaseModel
     public function withDefaultValue(string $defaultValue): self
     {
         $obj = clone $this;
-        $obj->defaultValue = $defaultValue;
+        $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }

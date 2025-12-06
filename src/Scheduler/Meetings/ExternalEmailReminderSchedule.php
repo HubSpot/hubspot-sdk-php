@@ -53,7 +53,9 @@ final class ExternalEmailReminderSchedule implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalReminder> $reminders
+     * @param list<ExternalReminder|array{
+     *   numberOfTimeUnits: int, timeUnit: string
+     * }> $reminders
      */
     public static function with(
         array $reminders,
@@ -61,19 +63,21 @@ final class ExternalEmailReminderSchedule implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->reminders = $reminders;
-        $obj->shouldIncludeInviteDescription = $shouldIncludeInviteDescription;
+        $obj['reminders'] = $reminders;
+        $obj['shouldIncludeInviteDescription'] = $shouldIncludeInviteDescription;
 
         return $obj;
     }
 
     /**
-     * @param list<ExternalReminder> $reminders
+     * @param list<ExternalReminder|array{
+     *   numberOfTimeUnits: int, timeUnit: string
+     * }> $reminders
      */
     public function withReminders(array $reminders): self
     {
         $obj = clone $this;
-        $obj->reminders = $reminders;
+        $obj['reminders'] = $reminders;
 
         return $obj;
     }
@@ -82,7 +86,7 @@ final class ExternalEmailReminderSchedule implements BaseModel
         bool $shouldIncludeInviteDescription
     ): self {
         $obj = clone $this;
-        $obj->shouldIncludeInviteDescription = $shouldIncludeInviteDescription;
+        $obj['shouldIncludeInviteDescription'] = $shouldIncludeInviteDescription;
 
         return $obj;
     }

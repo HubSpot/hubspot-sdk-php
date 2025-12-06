@@ -39,7 +39,7 @@ final class GroupListParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $locale && $obj->locale = $locale;
+        null !== $locale && $obj['locale'] = $locale;
 
         return $obj;
     }
@@ -47,7 +47,7 @@ final class GroupListParams implements BaseModel
     public function withLocale(string $locale): self
     {
         $obj = clone $this;
-        $obj->locale = $locale;
+        $obj['locale'] = $locale;
 
         return $obj;
     }

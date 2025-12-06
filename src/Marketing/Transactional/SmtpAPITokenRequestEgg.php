@@ -60,8 +60,8 @@ final class SmtpAPITokenRequestEgg implements BaseModel
     {
         $obj = new self;
 
-        $obj->campaignName = $campaignName;
-        $obj->createContact = $createContact;
+        $obj['campaignName'] = $campaignName;
+        $obj['createContact'] = $createContact;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class SmtpAPITokenRequestEgg implements BaseModel
     public function withCampaignName(string $campaignName): self
     {
         $obj = clone $this;
-        $obj->campaignName = $campaignName;
+        $obj['campaignName'] = $campaignName;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class SmtpAPITokenRequestEgg implements BaseModel
     public function withCreateContact(bool $createContact): self
     {
         $obj = clone $this;
-        $obj->createContact = $createContact;
+        $obj['createContact'] = $createContact;
 
         return $obj;
     }

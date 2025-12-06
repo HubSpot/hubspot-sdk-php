@@ -7,6 +7,7 @@ namespace HubspotSDK\Marketing\Events;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Marketing\Events\ParticipationProperties\AttendanceState;
 
 /**
  * @phpstan-type ParticipationBreakdownShape = array{
@@ -62,19 +63,29 @@ final class ParticipationBreakdown implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param ParticipationAssociations|array{
+     *   contact: ContactAssociation, marketingEvent: MarketingEventAssociation
+     * } $associations
+     * @param ParticipationProperties|array{
+     *   attendanceState: value-of<AttendanceState>,
+     *   occurredAt: int,
+     *   attendanceDurationSeconds?: int|null,
+     *   attendancePercentage?: string|null,
+     * } $properties
      */
     public static function with(
         string $id,
-        ParticipationAssociations $associations,
+        ParticipationAssociations|array $associations,
         \DateTimeInterface $createdAt,
-        ParticipationProperties $properties,
+        ParticipationProperties|array $properties,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->associations = $associations;
-        $obj->createdAt = $createdAt;
-        $obj->properties = $properties;
+        $obj['id'] = $id;
+        $obj['associations'] = $associations;
+        $obj['createdAt'] = $createdAt;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -82,16 +93,21 @@ final class ParticipationBreakdown implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
+    /**
+     * @param ParticipationAssociations|array{
+     *   contact: ContactAssociation, marketingEvent: MarketingEventAssociation
+     * } $associations
+     */
     public function withAssociations(
-        ParticipationAssociations $associations
+        ParticipationAssociations|array $associations
     ): self {
         $obj = clone $this;
-        $obj->associations = $associations;
+        $obj['associations'] = $associations;
 
         return $obj;
     }
@@ -99,15 +115,24 @@ final class ParticipationBreakdown implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
 
-    public function withProperties(ParticipationProperties $properties): self
-    {
+    /**
+     * @param ParticipationProperties|array{
+     *   attendanceState: value-of<AttendanceState>,
+     *   occurredAt: int,
+     *   attendanceDurationSeconds?: int|null,
+     *   attendancePercentage?: string|null,
+     * } $properties
+     */
+    public function withProperties(
+        ParticipationProperties|array $properties
+    ): self {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

@@ -58,10 +58,10 @@ final class QuickReply implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->value = $value;
-        $obj->valueType = $valueType;
+        $obj['value'] = $value;
+        $obj['valueType'] = $valueType;
 
-        null !== $label && $obj->label = $label;
+        null !== $label && $obj['label'] = $label;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class QuickReply implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class QuickReply implements BaseModel
     public function withValueType(string $valueType): self
     {
         $obj = clone $this;
-        $obj->valueType = $valueType;
+        $obj['valueType'] = $valueType;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class QuickReply implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }

@@ -35,7 +35,7 @@ final class PublicThreadAssociations implements BaseModel
     {
         $obj = new self;
 
-        null !== $associatedTicketId && $obj->associatedTicketId = $associatedTicketId;
+        null !== $associatedTicketId && $obj['associatedTicketId'] = $associatedTicketId;
 
         return $obj;
     }
@@ -43,7 +43,7 @@ final class PublicThreadAssociations implements BaseModel
     public function withAssociatedTicketID(string $associatedTicketID): self
     {
         $obj = clone $this;
-        $obj->associatedTicketId = $associatedTicketID;
+        $obj['associatedTicketId'] = $associatedTicketID;
 
         return $obj;
     }

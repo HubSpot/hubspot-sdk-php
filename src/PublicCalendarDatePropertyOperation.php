@@ -96,14 +96,14 @@ final class PublicCalendarDatePropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
         $obj['operationType'] = $operationType;
-        $obj->operator = $operator;
-        $obj->timeUnit = $timeUnit;
+        $obj['operator'] = $operator;
+        $obj['timeUnit'] = $timeUnit;
 
         null !== $fiscalYearStart && $obj['fiscalYearStart'] = $fiscalYearStart;
-        null !== $timeUnitCount && $obj->timeUnitCount = $timeUnitCount;
-        null !== $useFiscalYear && $obj->useFiscalYear = $useFiscalYear;
+        null !== $timeUnitCount && $obj['timeUnitCount'] = $timeUnitCount;
+        null !== $useFiscalYear && $obj['useFiscalYear'] = $useFiscalYear;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class PublicCalendarDatePropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -131,7 +131,7 @@ final class PublicCalendarDatePropertyOperation implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class PublicCalendarDatePropertyOperation implements BaseModel
     public function withTimeUnit(string $timeUnit): self
     {
         $obj = clone $this;
-        $obj->timeUnit = $timeUnit;
+        $obj['timeUnit'] = $timeUnit;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class PublicCalendarDatePropertyOperation implements BaseModel
     public function withTimeUnitCount(int $timeUnitCount): self
     {
         $obj = clone $this;
-        $obj->timeUnitCount = $timeUnitCount;
+        $obj['timeUnitCount'] = $timeUnitCount;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class PublicCalendarDatePropertyOperation implements BaseModel
     public function withUseFiscalYear(bool $useFiscalYear): self
     {
         $obj = clone $this;
-        $obj->useFiscalYear = $useFiscalYear;
+        $obj['useFiscalYear'] = $useFiscalYear;
 
         return $obj;
     }

@@ -78,7 +78,7 @@ final class HubDBTableRowV3Request implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,Variant> $values
+     * @param array<string,Variant|array<string,mixed>> $values
      */
     public static function with(
         int $childTableId,
@@ -89,12 +89,12 @@ final class HubDBTableRowV3Request implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->childTableId = $childTableId;
-        $obj->displayIndex = $displayIndex;
-        $obj->values = $values;
+        $obj['childTableId'] = $childTableId;
+        $obj['displayIndex'] = $displayIndex;
+        $obj['values'] = $values;
 
-        null !== $name && $obj->name = $name;
-        null !== $path && $obj->path = $path;
+        null !== $name && $obj['name'] = $name;
+        null !== $path && $obj['path'] = $path;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class HubDBTableRowV3Request implements BaseModel
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
-        $obj->childTableId = $childTableID;
+        $obj['childTableId'] = $childTableID;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class HubDBTableRowV3Request implements BaseModel
     public function withDisplayIndex(int $displayIndex): self
     {
         $obj = clone $this;
-        $obj->displayIndex = $displayIndex;
+        $obj['displayIndex'] = $displayIndex;
 
         return $obj;
     }
@@ -121,12 +121,12 @@ final class HubDBTableRowV3Request implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string,Variant> $values
+     * @param array<string,Variant|array<string,mixed>> $values
      */
     public function withValues(array $values): self
     {
         $obj = clone $this;
-        $obj->values = $values;
+        $obj['values'] = $values;
 
         return $obj;
     }
@@ -137,7 +137,7 @@ final class HubDBTableRowV3Request implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class HubDBTableRowV3Request implements BaseModel
     public function withPath(string $path): self
     {
         $obj = clone $this;
-        $obj->path = $path;
+        $obj['path'] = $path;
 
         return $obj;
     }

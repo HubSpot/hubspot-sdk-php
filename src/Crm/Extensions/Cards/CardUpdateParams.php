@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType;
 
 /**
  * Update a card definition with new details.
@@ -16,9 +17,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type CardUpdateParamsShape = array{
  *   appId: int,
- *   actions?: CardActions,
- *   display?: CardDisplayBody,
- *   fetch?: CardFetchBodyPatch,
+ *   actions?: CardActions|array{baseUrls: list<string>},
+ *   display?: CardDisplayBody|array{properties: list<CardDisplayProperty>},
+ *   fetch?: CardFetchBodyPatch|array{
+ *     objectTypes: list<CardObjectTypeBody>,
+ *     cardType?: value-of<CardType>|null,
+ *     serverlessFunction?: string|null,
+ *     targetUrl?: string|null,
+ *   },
  *   title?: string,
  * }
  */
@@ -78,22 +84,31 @@ final class CardUpdateParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param CardActions|array{baseUrls: list<string>} $actions
+     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
+     * @param CardFetchBodyPatch|array{
+     *   objectTypes: list<CardObjectTypeBody>,
+     *   cardType?: value-of<CardType>|null,
+     *   serverlessFunction?: string|null,
+     *   targetUrl?: string|null,
+     * } $fetch
      */
     public static function with(
         int $appId,
-        ?CardActions $actions = null,
-        ?CardDisplayBody $display = null,
-        ?CardFetchBodyPatch $fetch = null,
+        CardActions|array|null $actions = null,
+        CardDisplayBody|array|null $display = null,
+        CardFetchBodyPatch|array|null $fetch = null,
         ?string $title = null,
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
+        $obj['appId'] = $appId;
 
-        null !== $actions && $obj->actions = $actions;
-        null !== $display && $obj->display = $display;
-        null !== $fetch && $obj->fetch = $fetch;
-        null !== $title && $obj->title = $title;
+        null !== $actions && $obj['actions'] = $actions;
+        null !== $display && $obj['display'] = $display;
+        null !== $fetch && $obj['fetch'] = $fetch;
+        null !== $title && $obj['title'] = $title;
 
         return $obj;
     }
@@ -101,40 +116,51 @@ final class CardUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
 
     /**
      * Configuration for custom user actions on cards.
+     *
+     * @param CardActions|array{baseUrls: list<string>} $actions
      */
-    public function withActions(CardActions $actions): self
+    public function withActions(CardActions|array $actions): self
     {
         $obj = clone $this;
-        $obj->actions = $actions;
+        $obj['actions'] = $actions;
 
         return $obj;
     }
 
     /**
      * Configuration for displayed info on a card.
+     *
+     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
      */
-    public function withDisplay(CardDisplayBody $display): self
+    public function withDisplay(CardDisplayBody|array $display): self
     {
         $obj = clone $this;
-        $obj->display = $display;
+        $obj['display'] = $display;
 
         return $obj;
     }
 
     /**
      * Variant of CardFetchBody with fields as optional for patches.
+     *
+     * @param CardFetchBodyPatch|array{
+     *   objectTypes: list<CardObjectTypeBody>,
+     *   cardType?: value-of<CardType>|null,
+     *   serverlessFunction?: string|null,
+     *   targetUrl?: string|null,
+     * } $fetch
      */
-    public function withFetch(CardFetchBodyPatch $fetch): self
+    public function withFetch(CardFetchBodyPatch|array $fetch): self
     {
         $obj = clone $this;
-        $obj->fetch = $fetch;
+        $obj['fetch'] = $fetch;
 
         return $obj;
     }
@@ -145,7 +171,7 @@ final class CardUpdateParams implements BaseModel
     public function withTitle(string $title): self
     {
         $obj = clone $this;
-        $obj->title = $title;
+        $obj['title'] = $title;
 
         return $obj;
     }

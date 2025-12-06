@@ -69,11 +69,11 @@ final class ObjectToken implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         null !== $dataType && $obj['dataType'] = $dataType;
-        null !== $label && $obj->label = $label;
-        null !== $name && $obj->name = $name;
+        null !== $label && $obj['label'] = $label;
+        null !== $name && $obj['name'] = $name;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class ObjectToken implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class ObjectToken implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class ObjectToken implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

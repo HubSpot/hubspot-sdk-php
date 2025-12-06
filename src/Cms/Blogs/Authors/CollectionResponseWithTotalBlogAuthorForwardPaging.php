@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Authors;
 
+use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
+use HubspotSDK\NextPage;
 
 /**
  * Response object for collections of blog authors with pagination information.
@@ -66,19 +68,38 @@ final class CollectionResponseWithTotalBlogAuthorForwardPaging implements BaseMo
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BlogAuthor> $results
+     * @param list<BlogAuthor|array{
+     *   id: string,
+     *   avatar: string,
+     *   bio: string,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   displayName: string,
+     *   email: string,
+     *   facebook: string,
+     *   fullName: string,
+     *   language: value-of<Language>,
+     *   linkedin: string,
+     *   name: string,
+     *   slug: string,
+     *   translatedFromId: int,
+     *   twitter: string,
+     *   updated: \DateTimeInterface,
+     *   website: string,
+     * }> $results
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
     public static function with(
         array $results,
         int $total,
-        ?ForwardPaging $paging = null
+        ForwardPaging|array|null $paging = null
     ): self {
         $obj = new self;
 
-        $obj->results = $results;
-        $obj->total = $total;
+        $obj['results'] = $results;
+        $obj['total'] = $total;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
@@ -86,12 +107,30 @@ final class CollectionResponseWithTotalBlogAuthorForwardPaging implements BaseMo
     /**
      * Collection of blog authors.
      *
-     * @param list<BlogAuthor> $results
+     * @param list<BlogAuthor|array{
+     *   id: string,
+     *   avatar: string,
+     *   bio: string,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   displayName: string,
+     *   email: string,
+     *   facebook: string,
+     *   fullName: string,
+     *   language: value-of<Language>,
+     *   linkedin: string,
+     *   name: string,
+     *   slug: string,
+     *   translatedFromId: int,
+     *   twitter: string,
+     *   updated: \DateTimeInterface,
+     *   website: string,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -102,15 +141,18 @@ final class CollectionResponseWithTotalBlogAuthorForwardPaging implements BaseMo
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }
 
-    public function withPaging(ForwardPaging $paging): self
+    /**
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     */
+    public function withPaging(ForwardPaging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

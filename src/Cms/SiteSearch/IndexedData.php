@@ -71,7 +71,9 @@ final class IndexedData implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,IndexedField> $fields
+     * @param array<string,IndexedField|array{
+     *   metadataField: bool, name: string, value: mixed, values: list<mixed>
+     * }> $fields
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -81,8 +83,8 @@ final class IndexedData implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->fields = $fields;
+        $obj['id'] = $id;
+        $obj['fields'] = $fields;
         $obj['type'] = $type;
 
         return $obj;
@@ -94,7 +96,7 @@ final class IndexedData implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -102,12 +104,14 @@ final class IndexedData implements BaseModel, ResponseConverter
     /**
      * The indexed fields in HubSpot.
      *
-     * @param array<string,IndexedField> $fields
+     * @param array<string,IndexedField|array{
+     *   metadataField: bool, name: string, value: mixed, values: list<mixed>
+     * }> $fields
      */
     public function withFields(array $fields): self
     {
         $obj = clone $this;
-        $obj->fields = $fields;
+        $obj['fields'] = $fields;
 
         return $obj;
     }

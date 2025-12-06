@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Crm\Extensions\Cards\CardAuditResponse\ActionType;
+use HubspotSDK\Crm\Extensions\Cards\CardAuditResponse\AuthSource;
 
 /**
  * @phpstan-type PublicCardResponseShape = array{
@@ -92,29 +94,41 @@ final class PublicCardResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CardAuditResponse> $auditHistory
+     * @param CardActions|array{baseUrls: list<string>} $actions
+     * @param list<CardAuditResponse|array{
+     *   actionType: value-of<ActionType>,
+     *   applicationId: int,
+     *   authSource: value-of<AuthSource>,
+     *   changedAt: int,
+     *   initiatingUserId: int,
+     *   objectTypeId: int,
+     * }> $auditHistory
+     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
+     * @param PublicCardFetchBody|array{
+     *   objectTypes: list<CardObjectTypeBody>, targetUrl: string
+     * } $fetch
      */
     public static function with(
         string $id,
-        CardActions $actions,
+        CardActions|array $actions,
         array $auditHistory,
-        CardDisplayBody $display,
-        PublicCardFetchBody $fetch,
+        CardDisplayBody|array $display,
+        PublicCardFetchBody|array $fetch,
         string $title,
         ?\DateTimeInterface $createdAt = null,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->actions = $actions;
-        $obj->auditHistory = $auditHistory;
-        $obj->display = $display;
-        $obj->fetch = $fetch;
-        $obj->title = $title;
+        $obj['id'] = $id;
+        $obj['actions'] = $actions;
+        $obj['auditHistory'] = $auditHistory;
+        $obj['display'] = $display;
+        $obj['fetch'] = $fetch;
+        $obj['title'] = $title;
 
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -122,48 +136,64 @@ final class PublicCardResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
     /**
      * Configuration for custom user actions on cards.
+     *
+     * @param CardActions|array{baseUrls: list<string>} $actions
      */
-    public function withActions(CardActions $actions): self
+    public function withActions(CardActions|array $actions): self
     {
         $obj = clone $this;
-        $obj->actions = $actions;
+        $obj['actions'] = $actions;
 
         return $obj;
     }
 
     /**
-     * @param list<CardAuditResponse> $auditHistory
+     * @param list<CardAuditResponse|array{
+     *   actionType: value-of<ActionType>,
+     *   applicationId: int,
+     *   authSource: value-of<AuthSource>,
+     *   changedAt: int,
+     *   initiatingUserId: int,
+     *   objectTypeId: int,
+     * }> $auditHistory
      */
     public function withAuditHistory(array $auditHistory): self
     {
         $obj = clone $this;
-        $obj->auditHistory = $auditHistory;
+        $obj['auditHistory'] = $auditHistory;
 
         return $obj;
     }
 
     /**
      * Configuration for displayed info on a card.
+     *
+     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
      */
-    public function withDisplay(CardDisplayBody $display): self
+    public function withDisplay(CardDisplayBody|array $display): self
     {
         $obj = clone $this;
-        $obj->display = $display;
+        $obj['display'] = $display;
 
         return $obj;
     }
 
-    public function withFetch(PublicCardFetchBody $fetch): self
+    /**
+     * @param PublicCardFetchBody|array{
+     *   objectTypes: list<CardObjectTypeBody>, targetUrl: string
+     * } $fetch
+     */
+    public function withFetch(PublicCardFetchBody|array $fetch): self
     {
         $obj = clone $this;
-        $obj->fetch = $fetch;
+        $obj['fetch'] = $fetch;
 
         return $obj;
     }
@@ -171,7 +201,7 @@ final class PublicCardResponse implements BaseModel, ResponseConverter
     public function withTitle(string $title): self
     {
         $obj = clone $this;
-        $obj->title = $title;
+        $obj['title'] = $title;
 
         return $obj;
     }
@@ -179,7 +209,7 @@ final class PublicCardResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -187,7 +217,7 @@ final class PublicCardResponse implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

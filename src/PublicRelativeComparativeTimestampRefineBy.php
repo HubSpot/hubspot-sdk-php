@@ -58,17 +58,20 @@ final class PublicRelativeComparativeTimestampRefineBy implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param PublicTimeOffset|array{
+     *   amount: int, offsetDirection: string, timeUnit: string
+     * } $timeOffset
      * @param Type|value-of<Type> $type
      */
     public static function with(
         string $comparison,
-        PublicTimeOffset $timeOffset,
+        PublicTimeOffset|array $timeOffset,
         Type|string $type = 'RELATIVE_COMPARATIVE',
     ): self {
         $obj = new self;
 
-        $obj->comparison = $comparison;
-        $obj->timeOffset = $timeOffset;
+        $obj['comparison'] = $comparison;
+        $obj['timeOffset'] = $timeOffset;
         $obj['type'] = $type;
 
         return $obj;
@@ -77,15 +80,20 @@ final class PublicRelativeComparativeTimestampRefineBy implements BaseModel
     public function withComparison(string $comparison): self
     {
         $obj = clone $this;
-        $obj->comparison = $comparison;
+        $obj['comparison'] = $comparison;
 
         return $obj;
     }
 
-    public function withTimeOffset(PublicTimeOffset $timeOffset): self
+    /**
+     * @param PublicTimeOffset|array{
+     *   amount: int, offsetDirection: string, timeUnit: string
+     * } $timeOffset
+     */
+    public function withTimeOffset(PublicTimeOffset|array $timeOffset): self
     {
         $obj = clone $this;
-        $obj->timeOffset = $timeOffset;
+        $obj['timeOffset'] = $timeOffset;
 
         return $obj;
     }

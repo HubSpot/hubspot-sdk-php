@@ -81,7 +81,21 @@ final class ListSearchResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicObjectListSearchResult> $lists
+     * @param list<PublicObjectListSearchResult|array{
+     *   additionalProperties: array<string,string>,
+     *   listId: string,
+     *   listVersion: int,
+     *   name: string,
+     *   objectTypeId: string,
+     *   processingStatus: string,
+     *   processingType: string,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdById?: string|null,
+     *   deletedAt?: \DateTimeInterface|null,
+     *   filtersUpdatedAt?: \DateTimeInterface|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedById?: string|null,
+     * }> $lists
      */
     public static function with(
         bool $hasMore,
@@ -91,10 +105,10 @@ final class ListSearchResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->hasMore = $hasMore;
-        $obj->lists = $lists;
-        $obj->offset = $offset;
-        $obj->total = $total;
+        $obj['hasMore'] = $hasMore;
+        $obj['lists'] = $lists;
+        $obj['offset'] = $offset;
+        $obj['total'] = $total;
 
         return $obj;
     }
@@ -105,7 +119,7 @@ final class ListSearchResponse implements BaseModel, ResponseConverter
     public function withHasMore(bool $hasMore): self
     {
         $obj = clone $this;
-        $obj->hasMore = $hasMore;
+        $obj['hasMore'] = $hasMore;
 
         return $obj;
     }
@@ -113,12 +127,26 @@ final class ListSearchResponse implements BaseModel, ResponseConverter
     /**
      * The lists that matched the search criteria.
      *
-     * @param list<PublicObjectListSearchResult> $lists
+     * @param list<PublicObjectListSearchResult|array{
+     *   additionalProperties: array<string,string>,
+     *   listId: string,
+     *   listVersion: int,
+     *   name: string,
+     *   objectTypeId: string,
+     *   processingStatus: string,
+     *   processingType: string,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdById?: string|null,
+     *   deletedAt?: \DateTimeInterface|null,
+     *   filtersUpdatedAt?: \DateTimeInterface|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedById?: string|null,
+     * }> $lists
      */
     public function withLists(array $lists): self
     {
         $obj = clone $this;
-        $obj->lists = $lists;
+        $obj['lists'] = $lists;
 
         return $obj;
     }
@@ -129,7 +157,7 @@ final class ListSearchResponse implements BaseModel, ResponseConverter
     public function withOffset(int $offset): self
     {
         $obj = clone $this;
-        $obj->offset = $offset;
+        $obj['offset'] = $offset;
 
         return $obj;
     }
@@ -140,7 +168,7 @@ final class ListSearchResponse implements BaseModel, ResponseConverter
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }

@@ -78,10 +78,10 @@ final class AbsoluteRangedTimestampRefineBy implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->lowerTimestamp = $lowerTimestamp;
+        $obj['lowerTimestamp'] = $lowerTimestamp;
         $obj['rangeType'] = $rangeType;
         $obj['type'] = $type;
-        $obj->upperTimestamp = $upperTimestamp;
+        $obj['upperTimestamp'] = $upperTimestamp;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class AbsoluteRangedTimestampRefineBy implements BaseModel
     public function withLowerTimestamp(int $lowerTimestamp): self
     {
         $obj = clone $this;
-        $obj->lowerTimestamp = $lowerTimestamp;
+        $obj['lowerTimestamp'] = $lowerTimestamp;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class AbsoluteRangedTimestampRefineBy implements BaseModel
     public function withUpperTimestamp(int $upperTimestamp): self
     {
         $obj = clone $this;
-        $obj->upperTimestamp = $upperTimestamp;
+        $obj['upperTimestamp'] = $upperTimestamp;
 
         return $obj;
     }

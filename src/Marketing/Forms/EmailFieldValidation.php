@@ -68,8 +68,8 @@ final class EmailFieldValidation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->blockedEmailDomains = $blockedEmailDomains;
-        $obj->useDefaultBlockList = $useDefaultBlockList;
+        $obj['blockedEmailDomains'] = $blockedEmailDomains;
+        $obj['useDefaultBlockList'] = $useDefaultBlockList;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class EmailFieldValidation implements BaseModel
     public function withBlockedEmailDomains(array $blockedEmailDomains): self
     {
         $obj = clone $this;
-        $obj->blockedEmailDomains = $blockedEmailDomains;
+        $obj['blockedEmailDomains'] = $blockedEmailDomains;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class EmailFieldValidation implements BaseModel
     public function withUseDefaultBlockList(bool $useDefaultBlockList): self
     {
         $obj = clone $this;
-        $obj->useDefaultBlockList = $useDefaultBlockList;
+        $obj['useDefaultBlockList'] = $useDefaultBlockList;
 
         return $obj;
     }

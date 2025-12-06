@@ -143,13 +143,16 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param ObjectTypeDefinitionLabels|array{
+     *   plural?: string|null, singular?: string|null
+     * } $labels
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
      */
     public static function with(
         string $id,
-        ObjectTypeDefinitionLabels $labels,
+        ObjectTypeDefinitionLabels|array $labels,
         string $name,
         array $requiredProperties,
         ?bool $archived = null,
@@ -165,21 +168,21 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->labels = $labels;
-        $obj->name = $name;
-        $obj->requiredProperties = $requiredProperties;
+        $obj['id'] = $id;
+        $obj['labels'] = $labels;
+        $obj['name'] = $name;
+        $obj['requiredProperties'] = $requiredProperties;
 
-        null !== $archived && $obj->archived = $archived;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $description && $obj->description = $description;
-        null !== $fullyQualifiedName && $obj->fullyQualifiedName = $fullyQualifiedName;
-        null !== $objectTypeId && $obj->objectTypeId = $objectTypeId;
-        null !== $portalId && $obj->portalId = $portalId;
-        null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
-        null !== $searchableProperties && $obj->searchableProperties = $searchableProperties;
-        null !== $secondaryDisplayProperties && $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $description && $obj['description'] = $description;
+        null !== $fullyQualifiedName && $obj['fullyQualifiedName'] = $fullyQualifiedName;
+        null !== $objectTypeId && $obj['objectTypeId'] = $objectTypeId;
+        null !== $portalId && $obj['portalId'] = $portalId;
+        null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
+        null !== $searchableProperties && $obj['searchableProperties'] = $searchableProperties;
+        null !== $secondaryDisplayProperties && $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -190,15 +193,20 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
-    public function withLabels(ObjectTypeDefinitionLabels $labels): self
+    /**
+     * @param ObjectTypeDefinitionLabels|array{
+     *   plural?: string|null, singular?: string|null
+     * } $labels
+     */
+    public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
         $obj = clone $this;
-        $obj->labels = $labels;
+        $obj['labels'] = $labels;
 
         return $obj;
     }
@@ -209,7 +217,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -222,7 +230,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withRequiredProperties(array $requiredProperties): self
     {
         $obj = clone $this;
-        $obj->requiredProperties = $requiredProperties;
+        $obj['requiredProperties'] = $requiredProperties;
 
         return $obj;
     }
@@ -230,7 +238,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -241,7 +249,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -249,7 +257,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -257,7 +265,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withFullyQualifiedName(string $fullyQualifiedName): self
     {
         $obj = clone $this;
-        $obj->fullyQualifiedName = $fullyQualifiedName;
+        $obj['fullyQualifiedName'] = $fullyQualifiedName;
 
         return $obj;
     }
@@ -265,7 +273,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -276,7 +284,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }
@@ -288,7 +296,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
         string $primaryDisplayProperty
     ): self {
         $obj = clone $this;
-        $obj->primaryDisplayProperty = $primaryDisplayProperty;
+        $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
 
         return $obj;
     }
@@ -301,7 +309,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withSearchableProperties(array $searchableProperties): self
     {
         $obj = clone $this;
-        $obj->searchableProperties = $searchableProperties;
+        $obj['searchableProperties'] = $searchableProperties;
 
         return $obj;
     }
@@ -315,7 +323,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
         array $secondaryDisplayProperties
     ): self {
         $obj = clone $this;
-        $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
+        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
         return $obj;
     }
@@ -326,7 +334,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseCon
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

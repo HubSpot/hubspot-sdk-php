@@ -46,24 +46,28 @@ final class BatchInputHubDBTableRowBatchCloneRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowBatchCloneRequest> $inputs
+     * @param list<HubDBTableRowBatchCloneRequest|array{
+     *   id: string, name?: string|null
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<HubDBTableRowBatchCloneRequest> $inputs
+     * @param list<HubDBTableRowBatchCloneRequest|array{
+     *   id: string, name?: string|null
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

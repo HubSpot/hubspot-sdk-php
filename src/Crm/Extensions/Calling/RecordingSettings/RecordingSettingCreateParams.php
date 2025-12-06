@@ -53,7 +53,7 @@ final class RecordingSettingCreateParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->urlToRetrieveAuthedRecording = $urlToRetrieveAuthedRecording;
+        $obj['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
 
         return $obj;
     }
@@ -62,7 +62,7 @@ final class RecordingSettingCreateParams implements BaseModel
         string $urlToRetrieveAuthedRecording
     ): self {
         $obj = clone $this;
-        $obj->urlToRetrieveAuthedRecording = $urlToRetrieveAuthedRecording;
+        $obj['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
 
         return $obj;
     }

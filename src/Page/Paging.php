@@ -29,20 +29,25 @@ final class Paging implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Next|array{after?: string|null} $next
      */
-    public static function with(?Next $next = null): self
+    public static function with(Next|array|null $next = null): self
     {
         $obj = new self;
 
-        null !== $next && $obj->next = $next;
+        null !== $next && $obj['next'] = $next;
 
         return $obj;
     }
 
-    public function withNext(Next $next): self
+    /**
+     * @param Next|array{after?: string|null} $next
+     */
+    public function withNext(Next|array $next): self
     {
         $obj = clone $this;
-        $obj->next = $next;
+        $obj['next'] = $next;
 
         return $obj;
     }

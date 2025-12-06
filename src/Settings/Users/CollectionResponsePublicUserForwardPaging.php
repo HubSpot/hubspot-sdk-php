@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
+use HubspotSDK\NextPage;
 
 /**
  * @phpstan-type CollectionResponsePublicUserForwardPagingShape = array{
@@ -50,36 +51,62 @@ final class CollectionResponsePublicUserForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicUser> $results
+     * @param list<PublicUser|array{
+     *   id: string,
+     *   email: string,
+     *   firstName?: string|null,
+     *   lastName?: string|null,
+     *   primaryTeamId?: string|null,
+     *   roleId?: string|null,
+     *   roleIds?: list<string>|null,
+     *   secondaryTeamIds?: list<string>|null,
+     *   sendWelcomeEmail?: bool|null,
+     *   superAdmin?: bool|null,
+     * }> $results
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
     public static function with(
         array $results,
-        ?ForwardPaging $paging = null
+        ForwardPaging|array|null $paging = null
     ): self {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicUser> $results
+     * @param list<PublicUser|array{
+     *   id: string,
+     *   email: string,
+     *   firstName?: string|null,
+     *   lastName?: string|null,
+     *   primaryTeamId?: string|null,
+     *   roleId?: string|null,
+     *   roleIds?: list<string>|null,
+     *   secondaryTeamIds?: list<string>|null,
+     *   sendWelcomeEmail?: bool|null,
+     *   superAdmin?: bool|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
-    public function withPaging(ForwardPaging $paging): self
+    /**
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     */
+    public function withPaging(ForwardPaging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

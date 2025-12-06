@@ -7,6 +7,8 @@ namespace HubspotSDK\Marketing\Events;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
+use HubspotSDK\Marketing\Events\PropertyValue\Source;
 
 /**
  * @phpstan-type MarketingEventCreateRequestParamsShape = array{
@@ -136,7 +138,27 @@ final class MarketingEventCreateRequestParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyValue> $customProperties
+     * @param list<PropertyValue|array{
+     *   dataSensitivity: value-of<DataSensitivity>,
+     *   isEncrypted: bool,
+     *   isLargeValue: bool,
+     *   name: string,
+     *   persistenceTimestamp: int,
+     *   requestId: string,
+     *   selectedByUser: bool,
+     *   selectedByUserTimestamp: int,
+     *   source: value-of<Source>,
+     *   sourceId: string,
+     *   sourceLabel: string,
+     *   sourceMetadata: string,
+     *   sourceUpstreamDeployable: string,
+     *   sourceVid: list<int>,
+     *   timestamp: int,
+     *   unit: string,
+     *   updatedByUserId: int,
+     *   useTimestampAsPersistenceTimestamp: bool,
+     *   value: string,
+     * }> $customProperties
      */
     public static function with(
         array $customProperties,
@@ -154,19 +176,19 @@ final class MarketingEventCreateRequestParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->customProperties = $customProperties;
-        $obj->eventName = $eventName;
-        $obj->eventOrganizer = $eventOrganizer;
-        $obj->externalAccountId = $externalAccountId;
-        $obj->externalEventId = $externalEventId;
+        $obj['customProperties'] = $customProperties;
+        $obj['eventName'] = $eventName;
+        $obj['eventOrganizer'] = $eventOrganizer;
+        $obj['externalAccountId'] = $externalAccountId;
+        $obj['externalEventId'] = $externalEventId;
 
-        null !== $endDateTime && $obj->endDateTime = $endDateTime;
-        null !== $eventCancelled && $obj->eventCancelled = $eventCancelled;
-        null !== $eventCompleted && $obj->eventCompleted = $eventCompleted;
-        null !== $eventDescription && $obj->eventDescription = $eventDescription;
-        null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventUrl && $obj->eventUrl = $eventUrl;
-        null !== $startDateTime && $obj->startDateTime = $startDateTime;
+        null !== $endDateTime && $obj['endDateTime'] = $endDateTime;
+        null !== $eventCancelled && $obj['eventCancelled'] = $eventCancelled;
+        null !== $eventCompleted && $obj['eventCompleted'] = $eventCompleted;
+        null !== $eventDescription && $obj['eventDescription'] = $eventDescription;
+        null !== $eventType && $obj['eventType'] = $eventType;
+        null !== $eventUrl && $obj['eventUrl'] = $eventUrl;
+        null !== $startDateTime && $obj['startDateTime'] = $startDateTime;
 
         return $obj;
     }
@@ -175,12 +197,32 @@ final class MarketingEventCreateRequestParams implements BaseModel
      * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
      * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
      *
-     * @param list<PropertyValue> $customProperties
+     * @param list<PropertyValue|array{
+     *   dataSensitivity: value-of<DataSensitivity>,
+     *   isEncrypted: bool,
+     *   isLargeValue: bool,
+     *   name: string,
+     *   persistenceTimestamp: int,
+     *   requestId: string,
+     *   selectedByUser: bool,
+     *   selectedByUserTimestamp: int,
+     *   source: value-of<Source>,
+     *   sourceId: string,
+     *   sourceLabel: string,
+     *   sourceMetadata: string,
+     *   sourceUpstreamDeployable: string,
+     *   sourceVid: list<int>,
+     *   timestamp: int,
+     *   unit: string,
+     *   updatedByUserId: int,
+     *   useTimestampAsPersistenceTimestamp: bool,
+     *   value: string,
+     * }> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {
         $obj = clone $this;
-        $obj->customProperties = $customProperties;
+        $obj['customProperties'] = $customProperties;
 
         return $obj;
     }
@@ -191,7 +233,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withEventName(string $eventName): self
     {
         $obj = clone $this;
-        $obj->eventName = $eventName;
+        $obj['eventName'] = $eventName;
 
         return $obj;
     }
@@ -202,7 +244,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withEventOrganizer(string $eventOrganizer): self
     {
         $obj = clone $this;
-        $obj->eventOrganizer = $eventOrganizer;
+        $obj['eventOrganizer'] = $eventOrganizer;
 
         return $obj;
     }
@@ -213,7 +255,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountId = $externalAccountID;
+        $obj['externalAccountId'] = $externalAccountID;
 
         return $obj;
     }
@@ -224,7 +266,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventId = $externalEventID;
+        $obj['externalEventId'] = $externalEventID;
 
         return $obj;
     }
@@ -235,7 +277,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withEndDateTime(\DateTimeInterface $endDateTime): self
     {
         $obj = clone $this;
-        $obj->endDateTime = $endDateTime;
+        $obj['endDateTime'] = $endDateTime;
 
         return $obj;
     }
@@ -246,7 +288,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withEventCancelled(bool $eventCancelled): self
     {
         $obj = clone $this;
-        $obj->eventCancelled = $eventCancelled;
+        $obj['eventCancelled'] = $eventCancelled;
 
         return $obj;
     }
@@ -254,7 +296,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withEventCompleted(bool $eventCompleted): self
     {
         $obj = clone $this;
-        $obj->eventCompleted = $eventCompleted;
+        $obj['eventCompleted'] = $eventCompleted;
 
         return $obj;
     }
@@ -265,7 +307,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withEventDescription(string $eventDescription): self
     {
         $obj = clone $this;
-        $obj->eventDescription = $eventDescription;
+        $obj['eventDescription'] = $eventDescription;
 
         return $obj;
     }
@@ -276,7 +318,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withEventType(string $eventType): self
     {
         $obj = clone $this;
-        $obj->eventType = $eventType;
+        $obj['eventType'] = $eventType;
 
         return $obj;
     }
@@ -287,7 +329,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventUrl = $eventURL;
+        $obj['eventUrl'] = $eventURL;
 
         return $obj;
     }
@@ -298,7 +340,7 @@ final class MarketingEventCreateRequestParams implements BaseModel
     public function withStartDateTime(\DateTimeInterface $startDateTime): self
     {
         $obj = clone $this;
-        $obj->startDateTime = $startDateTime;
+        $obj['startDateTime'] = $startDateTime;
 
         return $obj;
     }

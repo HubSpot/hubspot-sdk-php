@@ -8,7 +8,9 @@ use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3\Typ
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
+use HubspotSDK\PreviousPage;
 
 /**
  * @phpstan-type StreamingCollectionResponseWithTotalHubDBTableRowV3Shape = array{
@@ -72,20 +74,21 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
      *
      * @param list<mixed> $results
      * @param Type|value-of<Type> $type
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
     public static function with(
         array $results,
         int $total,
         Type|string $type = 'STREAMING',
-        ?Paging $paging = null,
+        Paging|array|null $paging = null,
     ): self {
         $obj = new self;
 
-        $obj->results = $results;
-        $obj->total = $total;
+        $obj['results'] = $results;
+        $obj['total'] = $total;
         $obj['type'] = $type;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
@@ -96,7 +99,7 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -107,7 +110,7 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }
@@ -125,10 +128,13 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    /**
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     */
+    public function withPaging(Paging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

@@ -73,7 +73,9 @@ final class PublicImportMetadata implements BaseModel
      *
      * @param array<string,int> $counters
      * @param list<string> $fileIds
-     * @param list<PublicObjectListRecord> $objectLists
+     * @param list<PublicObjectListRecord|array{
+     *   listId: string, objectType: string
+     * }> $objectLists
      */
     public static function with(
         array $counters,
@@ -82,9 +84,9 @@ final class PublicImportMetadata implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->counters = $counters;
-        $obj->fileIds = $fileIds;
-        $obj->objectLists = $objectLists;
+        $obj['counters'] = $counters;
+        $obj['fileIds'] = $fileIds;
+        $obj['objectLists'] = $objectLists;
 
         return $obj;
     }
@@ -97,7 +99,7 @@ final class PublicImportMetadata implements BaseModel
     public function withCounters(array $counters): self
     {
         $obj = clone $this;
-        $obj->counters = $counters;
+        $obj['counters'] = $counters;
 
         return $obj;
     }
@@ -110,7 +112,7 @@ final class PublicImportMetadata implements BaseModel
     public function withFileIDs(array $fileIDs): self
     {
         $obj = clone $this;
-        $obj->fileIds = $fileIDs;
+        $obj['fileIds'] = $fileIDs;
 
         return $obj;
     }
@@ -118,12 +120,14 @@ final class PublicImportMetadata implements BaseModel
     /**
      * The lists containing the imported objects.
      *
-     * @param list<PublicObjectListRecord> $objectLists
+     * @param list<PublicObjectListRecord|array{
+     *   listId: string, objectType: string
+     * }> $objectLists
      */
     public function withObjectLists(array $objectLists): self
     {
         $obj = clone $this;
-        $obj->objectLists = $objectLists;
+        $obj['objectLists'] = $objectLists;
 
         return $obj;
     }

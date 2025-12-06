@@ -63,11 +63,11 @@ final class MessageListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $archived && $obj->archived = $archived;
-        null !== $limit && $obj->limit = $limit;
-        null !== $property && $obj->property = $property;
-        null !== $sort && $obj->sort = $sort;
+        null !== $after && $obj['after'] = $after;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $property && $obj['property'] = $property;
+        null !== $sort && $obj['sort'] = $sort;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class MessageListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class MessageListParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class MessageListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class MessageListParams implements BaseModel
     public function withProperty(string $property): self
     {
         $obj = clone $this;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class MessageListParams implements BaseModel
     public function withSort(array $sort): self
     {
         $obj = clone $this;
-        $obj->sort = $sort;
+        $obj['sort'] = $sort;
 
         return $obj;
     }

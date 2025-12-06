@@ -79,8 +79,8 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
         $obj = new self;
 
         $obj['location'] = $location;
-        $obj->name = $name;
-        $obj->secretName = $secretName;
+        $obj['name'] = $name;
+        $obj['secretName'] = $secretName;
         $obj['type'] = $type;
 
         return $obj;
@@ -100,7 +100,7 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
     public function withSecretName(string $secretName): self
     {
         $obj = clone $this;
-        $obj->secretName = $secretName;
+        $obj['secretName'] = $secretName;
 
         return $obj;
     }

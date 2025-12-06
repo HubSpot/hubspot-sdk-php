@@ -70,10 +70,10 @@ final class ParticipationProperties implements BaseModel
         $obj = new self;
 
         $obj['attendanceState'] = $attendanceState;
-        $obj->occurredAt = $occurredAt;
+        $obj['occurredAt'] = $occurredAt;
 
-        null !== $attendanceDurationSeconds && $obj->attendanceDurationSeconds = $attendanceDurationSeconds;
-        null !== $attendancePercentage && $obj->attendancePercentage = $attendancePercentage;
+        null !== $attendanceDurationSeconds && $obj['attendanceDurationSeconds'] = $attendanceDurationSeconds;
+        null !== $attendancePercentage && $obj['attendancePercentage'] = $attendancePercentage;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class ParticipationProperties implements BaseModel
     public function withOccurredAt(int $occurredAt): self
     {
         $obj = clone $this;
-        $obj->occurredAt = $occurredAt;
+        $obj['occurredAt'] = $occurredAt;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class ParticipationProperties implements BaseModel
         int $attendanceDurationSeconds
     ): self {
         $obj = clone $this;
-        $obj->attendanceDurationSeconds = $attendanceDurationSeconds;
+        $obj['attendanceDurationSeconds'] = $attendanceDurationSeconds;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class ParticipationProperties implements BaseModel
     public function withAttendancePercentage(string $attendancePercentage): self
     {
         $obj = clone $this;
-        $obj->attendancePercentage = $attendancePercentage;
+        $obj['attendancePercentage'] = $attendancePercentage;
 
         return $obj;
     }

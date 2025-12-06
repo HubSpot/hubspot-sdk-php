@@ -97,10 +97,12 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param ActingUser|array{userId: int, userEmail?: string|null} $actingUser
      */
     public static function with(
         string $id,
-        ActingUser $actingUser,
+        ActingUser|array $actingUser,
         string $action,
         string $category,
         \DateTimeInterface $occurredAt,
@@ -109,14 +111,14 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->actingUser = $actingUser;
-        $obj->action = $action;
-        $obj->category = $category;
-        $obj->occurredAt = $occurredAt;
+        $obj['id'] = $id;
+        $obj['actingUser'] = $actingUser;
+        $obj['action'] = $action;
+        $obj['category'] = $category;
+        $obj['occurredAt'] = $occurredAt;
 
-        null !== $subCategory && $obj->subCategory = $subCategory;
-        null !== $targetObjectId && $obj->targetObjectId = $targetObjectId;
+        null !== $subCategory && $obj['subCategory'] = $subCategory;
+        null !== $targetObjectId && $obj['targetObjectId'] = $targetObjectId;
 
         return $obj;
     }
@@ -127,15 +129,18 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
-    public function withActingUser(ActingUser $actingUser): self
+    /**
+     * @param ActingUser|array{userId: int, userEmail?: string|null} $actingUser
+     */
+    public function withActingUser(ActingUser|array $actingUser): self
     {
         $obj = clone $this;
-        $obj->actingUser = $actingUser;
+        $obj['actingUser'] = $actingUser;
 
         return $obj;
     }
@@ -146,7 +151,7 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
     public function withAction(string $action): self
     {
         $obj = clone $this;
-        $obj->action = $action;
+        $obj['action'] = $action;
 
         return $obj;
     }
@@ -157,7 +162,7 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
     public function withCategory(string $category): self
     {
         $obj = clone $this;
-        $obj->category = $category;
+        $obj['category'] = $category;
 
         return $obj;
     }
@@ -168,7 +173,7 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
     public function withOccurredAt(\DateTimeInterface $occurredAt): self
     {
         $obj = clone $this;
-        $obj->occurredAt = $occurredAt;
+        $obj['occurredAt'] = $occurredAt;
 
         return $obj;
     }
@@ -179,7 +184,7 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
     public function withSubCategory(string $subCategory): self
     {
         $obj = clone $this;
-        $obj->subCategory = $subCategory;
+        $obj['subCategory'] = $subCategory;
 
         return $obj;
     }
@@ -190,7 +195,7 @@ final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
     public function withTargetObjectID(string $targetObjectID): self
     {
         $obj = clone $this;
-        $obj->targetObjectId = $targetObjectID;
+        $obj['targetObjectId'] = $targetObjectID;
 
         return $obj;
     }

@@ -54,7 +54,9 @@ final class ExternalLinkAvailability implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,ExternalLinkAvailabilityForDuration> $linkAvailabilityByDuration
+     * @param array<string,ExternalLinkAvailabilityForDuration|array{
+     *   availabilities: list<ExternalMeetingAvailability>, meetingDurationMillis: int
+     * }> $linkAvailabilityByDuration
      */
     public static function with(
         bool $hasMore,
@@ -62,8 +64,8 @@ final class ExternalLinkAvailability implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->hasMore = $hasMore;
-        $obj->linkAvailabilityByDuration = $linkAvailabilityByDuration;
+        $obj['hasMore'] = $hasMore;
+        $obj['linkAvailabilityByDuration'] = $linkAvailabilityByDuration;
 
         return $obj;
     }
@@ -71,19 +73,21 @@ final class ExternalLinkAvailability implements BaseModel
     public function withHasMore(bool $hasMore): self
     {
         $obj = clone $this;
-        $obj->hasMore = $hasMore;
+        $obj['hasMore'] = $hasMore;
 
         return $obj;
     }
 
     /**
-     * @param array<string,ExternalLinkAvailabilityForDuration> $linkAvailabilityByDuration
+     * @param array<string,ExternalLinkAvailabilityForDuration|array{
+     *   availabilities: list<ExternalMeetingAvailability>, meetingDurationMillis: int
+     * }> $linkAvailabilityByDuration
      */
     public function withLinkAvailabilityByDuration(
         array $linkAvailabilityByDuration
     ): self {
         $obj = clone $this;
-        $obj->linkAvailabilityByDuration = $linkAvailabilityByDuration;
+        $obj['linkAvailabilityByDuration'] = $linkAvailabilityByDuration;
 
         return $obj;
     }

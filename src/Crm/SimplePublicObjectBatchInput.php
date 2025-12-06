@@ -83,11 +83,11 @@ final class SimplePublicObjectBatchInput implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->properties = $properties;
+        $obj['id'] = $id;
+        $obj['properties'] = $properties;
 
-        null !== $idProperty && $obj->idProperty = $idProperty;
-        null !== $objectWriteTraceId && $obj->objectWriteTraceId = $objectWriteTraceId;
+        null !== $idProperty && $obj['idProperty'] = $idProperty;
+        null !== $objectWriteTraceId && $obj['objectWriteTraceId'] = $objectWriteTraceId;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;
-        $obj->idProperty = $idProperty;
+        $obj['idProperty'] = $idProperty;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
-        $obj->objectWriteTraceId = $objectWriteTraceID;
+        $obj['objectWriteTraceId'] = $objectWriteTraceID;
 
         return $obj;
     }

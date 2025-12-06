@@ -64,10 +64,10 @@ final class GroupCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->label = $label;
-        $obj->name = $name;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
 
-        null !== $displayOrder && $obj->displayOrder = $displayOrder;
+        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class GroupCreateParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class GroupCreateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class GroupCreateParams implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }

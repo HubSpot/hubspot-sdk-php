@@ -55,15 +55,17 @@ final class SettingsChangeRequest implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param ThrottlingSettings|array{maxConcurrentRequests: int} $throttling
      */
     public static function with(
         string $targetUrl,
-        ThrottlingSettings $throttling
+        ThrottlingSettings|array $throttling
     ): self {
         $obj = new self;
 
-        $obj->targetUrl = $targetUrl;
-        $obj->throttling = $throttling;
+        $obj['targetUrl'] = $targetUrl;
+        $obj['throttling'] = $throttling;
 
         return $obj;
     }
@@ -74,18 +76,20 @@ final class SettingsChangeRequest implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj->targetUrl = $targetURL;
+        $obj['targetUrl'] = $targetURL;
 
         return $obj;
     }
 
     /**
      * Configuration details for webhook throttling.
+     *
+     * @param ThrottlingSettings|array{maxConcurrentRequests: int} $throttling
      */
-    public function withThrottling(ThrottlingSettings $throttling): self
+    public function withThrottling(ThrottlingSettings|array $throttling): self
     {
         $obj = clone $this;
-        $obj->throttling = $throttling;
+        $obj['throttling'] = $throttling;
 
         return $obj;
     }

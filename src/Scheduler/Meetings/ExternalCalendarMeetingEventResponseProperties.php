@@ -162,24 +162,24 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
         $obj = new self;
 
         $obj['hs_engagement_source'] = $hs_engagement_source;
-        $obj->hs_engagement_source_id = $hs_engagement_source_id;
-        $obj->hs_meeting_end_time = $hs_meeting_end_time;
-        $obj->hs_meeting_outcome = $hs_meeting_outcome;
-        $obj->hs_meeting_start_time = $hs_meeting_start_time;
-        $obj->hs_meeting_title = $hs_meeting_title;
-        $obj->hs_timestamp = $hs_timestamp;
+        $obj['hs_engagement_source_id'] = $hs_engagement_source_id;
+        $obj['hs_meeting_end_time'] = $hs_meeting_end_time;
+        $obj['hs_meeting_outcome'] = $hs_meeting_outcome;
+        $obj['hs_meeting_start_time'] = $hs_meeting_start_time;
+        $obj['hs_meeting_title'] = $hs_meeting_title;
+        $obj['hs_timestamp'] = $hs_timestamp;
 
-        null !== $hs_activity_type && $obj->hs_activity_type = $hs_activity_type;
-        null !== $hs_attachment_ids && $obj->hs_attachment_ids = $hs_attachment_ids;
-        null !== $hs_attendee_owner_ids && $obj->hs_attendee_owner_ids = $hs_attendee_owner_ids;
-        null !== $hs_include_description_in_reminder && $obj->hs_include_description_in_reminder = $hs_include_description_in_reminder;
-        null !== $hs_internal_meeting_notes && $obj->hs_internal_meeting_notes = $hs_internal_meeting_notes;
-        null !== $hs_meeting_body && $obj->hs_meeting_body = $hs_meeting_body;
-        null !== $hs_meeting_external_url && $obj->hs_meeting_external_url = $hs_meeting_external_url;
-        null !== $hs_meeting_location && $obj->hs_meeting_location = $hs_meeting_location;
+        null !== $hs_activity_type && $obj['hs_activity_type'] = $hs_activity_type;
+        null !== $hs_attachment_ids && $obj['hs_attachment_ids'] = $hs_attachment_ids;
+        null !== $hs_attendee_owner_ids && $obj['hs_attendee_owner_ids'] = $hs_attendee_owner_ids;
+        null !== $hs_include_description_in_reminder && $obj['hs_include_description_in_reminder'] = $hs_include_description_in_reminder;
+        null !== $hs_internal_meeting_notes && $obj['hs_internal_meeting_notes'] = $hs_internal_meeting_notes;
+        null !== $hs_meeting_body && $obj['hs_meeting_body'] = $hs_meeting_body;
+        null !== $hs_meeting_external_url && $obj['hs_meeting_external_url'] = $hs_meeting_external_url;
+        null !== $hs_meeting_location && $obj['hs_meeting_location'] = $hs_meeting_location;
         null !== $hs_meeting_location_type && $obj['hs_meeting_location_type'] = $hs_meeting_location_type;
-        null !== $hs_unique_id && $obj->hs_unique_id = $hs_unique_id;
-        null !== $hubspot_owner_id && $obj->hubspot_owner_id = $hubspot_owner_id;
+        null !== $hs_unique_id && $obj['hs_unique_id'] = $hs_unique_id;
+        null !== $hubspot_owner_id && $obj['hubspot_owner_id'] = $hubspot_owner_id;
 
         return $obj;
     }
@@ -199,7 +199,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsEngagementSourceID(string $hsEngagementSourceID): self
     {
         $obj = clone $this;
-        $obj->hs_engagement_source_id = $hsEngagementSourceID;
+        $obj['hs_engagement_source_id'] = $hsEngagementSourceID;
 
         return $obj;
     }
@@ -208,7 +208,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
         \DateTimeInterface $hsMeetingEndTime
     ): self {
         $obj = clone $this;
-        $obj->hs_meeting_end_time = $hsMeetingEndTime;
+        $obj['hs_meeting_end_time'] = $hsMeetingEndTime;
 
         return $obj;
     }
@@ -216,7 +216,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsMeetingOutcome(string $hsMeetingOutcome): self
     {
         $obj = clone $this;
-        $obj->hs_meeting_outcome = $hsMeetingOutcome;
+        $obj['hs_meeting_outcome'] = $hsMeetingOutcome;
 
         return $obj;
     }
@@ -225,7 +225,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
         \DateTimeInterface $hsMeetingStartTime
     ): self {
         $obj = clone $this;
-        $obj->hs_meeting_start_time = $hsMeetingStartTime;
+        $obj['hs_meeting_start_time'] = $hsMeetingStartTime;
 
         return $obj;
     }
@@ -233,7 +233,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsMeetingTitle(string $hsMeetingTitle): self
     {
         $obj = clone $this;
-        $obj->hs_meeting_title = $hsMeetingTitle;
+        $obj['hs_meeting_title'] = $hsMeetingTitle;
 
         return $obj;
     }
@@ -241,7 +241,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsTimestamp(\DateTimeInterface $hsTimestamp): self
     {
         $obj = clone $this;
-        $obj->hs_timestamp = $hsTimestamp;
+        $obj['hs_timestamp'] = $hsTimestamp;
 
         return $obj;
     }
@@ -249,7 +249,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsActivityType(string $hsActivityType): self
     {
         $obj = clone $this;
-        $obj->hs_activity_type = $hsActivityType;
+        $obj['hs_activity_type'] = $hsActivityType;
 
         return $obj;
     }
@@ -260,7 +260,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsAttachmentIDs(array $hsAttachmentIDs): self
     {
         $obj = clone $this;
-        $obj->hs_attachment_ids = $hsAttachmentIDs;
+        $obj['hs_attachment_ids'] = $hsAttachmentIDs;
 
         return $obj;
     }
@@ -271,7 +271,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsAttendeeOwnerIDs(array $hsAttendeeOwnerIDs): self
     {
         $obj = clone $this;
-        $obj->hs_attendee_owner_ids = $hsAttendeeOwnerIDs;
+        $obj['hs_attendee_owner_ids'] = $hsAttendeeOwnerIDs;
 
         return $obj;
     }
@@ -280,7 +280,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
         string $hsIncludeDescriptionInReminder
     ): self {
         $obj = clone $this;
-        $obj->hs_include_description_in_reminder = $hsIncludeDescriptionInReminder;
+        $obj['hs_include_description_in_reminder'] = $hsIncludeDescriptionInReminder;
 
         return $obj;
     }
@@ -289,7 +289,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
         string $hsInternalMeetingNotes
     ): self {
         $obj = clone $this;
-        $obj->hs_internal_meeting_notes = $hsInternalMeetingNotes;
+        $obj['hs_internal_meeting_notes'] = $hsInternalMeetingNotes;
 
         return $obj;
     }
@@ -297,7 +297,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsMeetingBody(string $hsMeetingBody): self
     {
         $obj = clone $this;
-        $obj->hs_meeting_body = $hsMeetingBody;
+        $obj['hs_meeting_body'] = $hsMeetingBody;
 
         return $obj;
     }
@@ -305,7 +305,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsMeetingExternalURL(string $hsMeetingExternalURL): self
     {
         $obj = clone $this;
-        $obj->hs_meeting_external_url = $hsMeetingExternalURL;
+        $obj['hs_meeting_external_url'] = $hsMeetingExternalURL;
 
         return $obj;
     }
@@ -313,7 +313,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsMeetingLocation(string $hsMeetingLocation): self
     {
         $obj = clone $this;
-        $obj->hs_meeting_location = $hsMeetingLocation;
+        $obj['hs_meeting_location'] = $hsMeetingLocation;
 
         return $obj;
     }
@@ -333,7 +333,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHsUniqueID(string $hsUniqueID): self
     {
         $obj = clone $this;
-        $obj->hs_unique_id = $hsUniqueID;
+        $obj['hs_unique_id'] = $hsUniqueID;
 
         return $obj;
     }
@@ -341,7 +341,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     public function withHubspotOwnerID(string $hubspotOwnerID): self
     {
         $obj = clone $this;
-        $obj->hubspot_owner_id = $hubspotOwnerID;
+        $obj['hubspot_owner_id'] = $hubspotOwnerID;
 
         return $obj;
     }

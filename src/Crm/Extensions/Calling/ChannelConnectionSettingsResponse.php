@@ -71,10 +71,10 @@ final class ChannelConnectionSettingsResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->createdAt = $createdAt;
-        $obj->isReady = $isReady;
-        $obj->updatedAt = $updatedAt;
-        $obj->url = $url;
+        $obj['createdAt'] = $createdAt;
+        $obj['isReady'] = $isReady;
+        $obj['updatedAt'] = $updatedAt;
+        $obj['url'] = $url;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class ChannelConnectionSettingsResponse implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class ChannelConnectionSettingsResponse implements BaseModel
     public function withIsReady(bool $isReady): self
     {
         $obj = clone $this;
-        $obj->isReady = $isReady;
+        $obj['isReady'] = $isReady;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class ChannelConnectionSettingsResponse implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class ChannelConnectionSettingsResponse implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

@@ -44,7 +44,7 @@ final class PublicThreadUpdateRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $archived && $obj->archived = $archived;
+        null !== $archived && $obj['archived'] = $archived;
         null !== $status && $obj['status'] = $status;
 
         return $obj;
@@ -53,7 +53,7 @@ final class PublicThreadUpdateRequest implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }

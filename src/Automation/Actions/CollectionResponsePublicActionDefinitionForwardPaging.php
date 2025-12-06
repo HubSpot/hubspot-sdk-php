@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
+use HubspotSDK\NextPage;
 
 /**
  * @phpstan-type CollectionResponsePublicActionDefinitionForwardPagingShape = array{
@@ -50,36 +51,68 @@ final class CollectionResponsePublicActionDefinitionForwardPaging implements Bas
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicActionDefinition> $results
+     * @param list<PublicActionDefinition|array{
+     *   id: string,
+     *   actionUrl: string,
+     *   functions: list<PublicActionFunctionIdentifier>,
+     *   inputFields: list<InputFieldDefinition>,
+     *   labels: array<string,PublicActionLabels>,
+     *   objectTypes: list<string>,
+     *   published: bool,
+     *   revisionId: string,
+     *   archivedAt?: int|null,
+     *   executionRules?: list<PublicExecutionTranslationRule>|null,
+     *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
+     *   objectRequestOptions?: PublicObjectRequestOptions|null,
+     *   outputFields?: list<OutputFieldDefinition>|null,
+     * }> $results
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
     public static function with(
         array $results,
-        ?ForwardPaging $paging = null
+        ForwardPaging|array|null $paging = null
     ): self {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicActionDefinition> $results
+     * @param list<PublicActionDefinition|array{
+     *   id: string,
+     *   actionUrl: string,
+     *   functions: list<PublicActionFunctionIdentifier>,
+     *   inputFields: list<InputFieldDefinition>,
+     *   labels: array<string,PublicActionLabels>,
+     *   objectTypes: list<string>,
+     *   published: bool,
+     *   revisionId: string,
+     *   archivedAt?: int|null,
+     *   executionRules?: list<PublicExecutionTranslationRule>|null,
+     *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
+     *   objectRequestOptions?: PublicObjectRequestOptions|null,
+     *   outputFields?: list<OutputFieldDefinition>|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
-    public function withPaging(ForwardPaging $paging): self
+    /**
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     */
+    public function withPaging(ForwardPaging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

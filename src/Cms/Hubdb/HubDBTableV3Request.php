@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb;
 
+use HubspotSDK\Cms\Hubdb\ColumnRequest\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Option;
 
 /**
  * @phpstan-type HubDBTableV3RequestShape = array{
@@ -118,7 +120,17 @@ final class HubDBTableV3Request implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ColumnRequest> $columns
+     * @param list<ColumnRequest|array{
+     *   id: int,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: value-of<Type>,
+     *   foreignColumnId?: int|null,
+     *   foreignTableId?: int|null,
+     *   maxNumberOfCharacters?: int|null,
+     *   maxNumberOfOptions?: int|null,
+     * }> $columns
      * @param array<string,int> $dynamicMetaTags
      */
     public static function with(
@@ -133,14 +145,14 @@ final class HubDBTableV3Request implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->allowChildTables = $allowChildTables;
-        $obj->allowPublicApiAccess = $allowPublicApiAccess;
-        $obj->columns = $columns;
-        $obj->dynamicMetaTags = $dynamicMetaTags;
-        $obj->enableChildTablePages = $enableChildTablePages;
-        $obj->label = $label;
-        $obj->name = $name;
-        $obj->useForPages = $useForPages;
+        $obj['allowChildTables'] = $allowChildTables;
+        $obj['allowPublicApiAccess'] = $allowPublicApiAccess;
+        $obj['columns'] = $columns;
+        $obj['dynamicMetaTags'] = $dynamicMetaTags;
+        $obj['enableChildTablePages'] = $enableChildTablePages;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
+        $obj['useForPages'] = $useForPages;
 
         return $obj;
     }
@@ -151,7 +163,7 @@ final class HubDBTableV3Request implements BaseModel
     public function withAllowChildTables(bool $allowChildTables): self
     {
         $obj = clone $this;
-        $obj->allowChildTables = $allowChildTables;
+        $obj['allowChildTables'] = $allowChildTables;
 
         return $obj;
     }
@@ -162,7 +174,7 @@ final class HubDBTableV3Request implements BaseModel
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
-        $obj->allowPublicApiAccess = $allowPublicAPIAccess;
+        $obj['allowPublicApiAccess'] = $allowPublicAPIAccess;
 
         return $obj;
     }
@@ -170,12 +182,22 @@ final class HubDBTableV3Request implements BaseModel
     /**
      * List of columns in the table.
      *
-     * @param list<ColumnRequest> $columns
+     * @param list<ColumnRequest|array{
+     *   id: int,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: value-of<Type>,
+     *   foreignColumnId?: int|null,
+     *   foreignTableId?: int|null,
+     *   maxNumberOfCharacters?: int|null,
+     *   maxNumberOfOptions?: int|null,
+     * }> $columns
      */
     public function withColumns(array $columns): self
     {
         $obj = clone $this;
-        $obj->columns = $columns;
+        $obj['columns'] = $columns;
 
         return $obj;
     }
@@ -188,7 +210,7 @@ final class HubDBTableV3Request implements BaseModel
     public function withDynamicMetaTags(array $dynamicMetaTags): self
     {
         $obj = clone $this;
-        $obj->dynamicMetaTags = $dynamicMetaTags;
+        $obj['dynamicMetaTags'] = $dynamicMetaTags;
 
         return $obj;
     }
@@ -199,7 +221,7 @@ final class HubDBTableV3Request implements BaseModel
     public function withEnableChildTablePages(bool $enableChildTablePages): self
     {
         $obj = clone $this;
-        $obj->enableChildTablePages = $enableChildTablePages;
+        $obj['enableChildTablePages'] = $enableChildTablePages;
 
         return $obj;
     }
@@ -210,7 +232,7 @@ final class HubDBTableV3Request implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -221,7 +243,7 @@ final class HubDBTableV3Request implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -232,7 +254,7 @@ final class HubDBTableV3Request implements BaseModel
     public function withUseForPages(bool $useForPages): self
     {
         $obj = clone $this;
-        $obj->useForPages = $useForPages;
+        $obj['useForPages'] = $useForPages;
 
         return $obj;
     }

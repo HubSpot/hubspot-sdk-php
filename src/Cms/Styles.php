@@ -92,12 +92,21 @@ final class Styles implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,BreakpointStyles> $breakpointStyles
+     * @param RgbaColor|array{a: float, b: int, g: int, r: int} $backgroundColor
+     * @param Gradient|array{
+     *   angle: Angle, colors: list<ColorStop>, sideOrCorner: SideOrCorner
+     * } $backgroundGradient
+     * @param BackgroundImage|array{
+     *   backgroundPosition: string, backgroundSize: string, imageUrl: string
+     * } $backgroundImage
+     * @param array<string,BreakpointStyles|array{
+     *   hidden: bool, margin: mixed, padding: mixed
+     * }> $breakpointStyles
      */
     public static function with(
-        RgbaColor $backgroundColor,
-        Gradient $backgroundGradient,
-        BackgroundImage $backgroundImage,
+        RgbaColor|array $backgroundColor,
+        Gradient|array $backgroundGradient,
+        BackgroundImage|array $backgroundImage,
         string $flexboxPositioning,
         bool $forceFullWidthSection,
         int $maxWidthSectionCentering,
@@ -106,42 +115,56 @@ final class Styles implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->backgroundColor = $backgroundColor;
-        $obj->backgroundGradient = $backgroundGradient;
-        $obj->backgroundImage = $backgroundImage;
-        $obj->flexboxPositioning = $flexboxPositioning;
-        $obj->forceFullWidthSection = $forceFullWidthSection;
-        $obj->maxWidthSectionCentering = $maxWidthSectionCentering;
-        $obj->verticalAlignment = $verticalAlignment;
+        $obj['backgroundColor'] = $backgroundColor;
+        $obj['backgroundGradient'] = $backgroundGradient;
+        $obj['backgroundImage'] = $backgroundImage;
+        $obj['flexboxPositioning'] = $flexboxPositioning;
+        $obj['forceFullWidthSection'] = $forceFullWidthSection;
+        $obj['maxWidthSectionCentering'] = $maxWidthSectionCentering;
+        $obj['verticalAlignment'] = $verticalAlignment;
 
-        null !== $breakpointStyles && $obj->breakpointStyles = $breakpointStyles;
+        null !== $breakpointStyles && $obj['breakpointStyles'] = $breakpointStyles;
 
         return $obj;
     }
 
     /**
      * A color defined by RGB values.
+     *
+     * @param RgbaColor|array{a: float, b: int, g: int, r: int} $backgroundColor
      */
-    public function withBackgroundColor(RgbaColor $backgroundColor): self
+    public function withBackgroundColor(RgbaColor|array $backgroundColor): self
     {
         $obj = clone $this;
-        $obj->backgroundColor = $backgroundColor;
+        $obj['backgroundColor'] = $backgroundColor;
 
         return $obj;
     }
 
-    public function withBackgroundGradient(Gradient $backgroundGradient): self
-    {
+    /**
+     * @param Gradient|array{
+     *   angle: Angle, colors: list<ColorStop>, sideOrCorner: SideOrCorner
+     * } $backgroundGradient
+     */
+    public function withBackgroundGradient(
+        Gradient|array $backgroundGradient
+    ): self {
         $obj = clone $this;
-        $obj->backgroundGradient = $backgroundGradient;
+        $obj['backgroundGradient'] = $backgroundGradient;
 
         return $obj;
     }
 
-    public function withBackgroundImage(BackgroundImage $backgroundImage): self
-    {
+    /**
+     * @param BackgroundImage|array{
+     *   backgroundPosition: string, backgroundSize: string, imageUrl: string
+     * } $backgroundImage
+     */
+    public function withBackgroundImage(
+        BackgroundImage|array $backgroundImage
+    ): self {
         $obj = clone $this;
-        $obj->backgroundImage = $backgroundImage;
+        $obj['backgroundImage'] = $backgroundImage;
 
         return $obj;
     }
@@ -149,7 +172,7 @@ final class Styles implements BaseModel
     public function withFlexboxPositioning(string $flexboxPositioning): self
     {
         $obj = clone $this;
-        $obj->flexboxPositioning = $flexboxPositioning;
+        $obj['flexboxPositioning'] = $flexboxPositioning;
 
         return $obj;
     }
@@ -157,7 +180,7 @@ final class Styles implements BaseModel
     public function withForceFullWidthSection(bool $forceFullWidthSection): self
     {
         $obj = clone $this;
-        $obj->forceFullWidthSection = $forceFullWidthSection;
+        $obj['forceFullWidthSection'] = $forceFullWidthSection;
 
         return $obj;
     }
@@ -166,7 +189,7 @@ final class Styles implements BaseModel
         int $maxWidthSectionCentering
     ): self {
         $obj = clone $this;
-        $obj->maxWidthSectionCentering = $maxWidthSectionCentering;
+        $obj['maxWidthSectionCentering'] = $maxWidthSectionCentering;
 
         return $obj;
     }
@@ -174,18 +197,20 @@ final class Styles implements BaseModel
     public function withVerticalAlignment(string $verticalAlignment): self
     {
         $obj = clone $this;
-        $obj->verticalAlignment = $verticalAlignment;
+        $obj['verticalAlignment'] = $verticalAlignment;
 
         return $obj;
     }
 
     /**
-     * @param array<string,BreakpointStyles> $breakpointStyles
+     * @param array<string,BreakpointStyles|array{
+     *   hidden: bool, margin: mixed, padding: mixed
+     * }> $breakpointStyles
      */
     public function withBreakpointStyles(array $breakpointStyles): self
     {
         $obj = clone $this;
-        $obj->breakpointStyles = $breakpointStyles;
+        $obj['breakpointStyles'] = $breakpointStyles;
 
         return $obj;
     }

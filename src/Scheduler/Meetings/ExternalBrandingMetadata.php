@@ -145,26 +145,26 @@ final class ExternalBrandingMetadata implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->logoAltText = $logoAltText;
-        $obj->showMarketingAd = $showMarketingAd;
-        $obj->showSalesAd = $showSalesAd;
+        $obj['logoAltText'] = $logoAltText;
+        $obj['showMarketingAd'] = $showMarketingAd;
+        $obj['showSalesAd'] = $showSalesAd;
 
-        null !== $accent2Color && $obj->accent2Color = $accent2Color;
-        null !== $accentColor && $obj->accentColor = $accentColor;
-        null !== $companyAddressLine1 && $obj->companyAddressLine1 = $companyAddressLine1;
-        null !== $companyAddressLine2 && $obj->companyAddressLine2 = $companyAddressLine2;
-        null !== $companyAvatar && $obj->companyAvatar = $companyAvatar;
-        null !== $companyCity && $obj->companyCity = $companyCity;
-        null !== $companyCountry && $obj->companyCountry = $companyCountry;
-        null !== $companyDomain && $obj->companyDomain = $companyDomain;
-        null !== $companyName && $obj->companyName = $companyName;
-        null !== $companyState && $obj->companyState = $companyState;
-        null !== $companyZip && $obj->companyZip = $companyZip;
-        null !== $logoHeight && $obj->logoHeight = $logoHeight;
-        null !== $logoUrl && $obj->logoUrl = $logoUrl;
-        null !== $logoWidth && $obj->logoWidth = $logoWidth;
-        null !== $primaryColor && $obj->primaryColor = $primaryColor;
-        null !== $secondaryColor && $obj->secondaryColor = $secondaryColor;
+        null !== $accent2Color && $obj['accent2Color'] = $accent2Color;
+        null !== $accentColor && $obj['accentColor'] = $accentColor;
+        null !== $companyAddressLine1 && $obj['companyAddressLine1'] = $companyAddressLine1;
+        null !== $companyAddressLine2 && $obj['companyAddressLine2'] = $companyAddressLine2;
+        null !== $companyAvatar && $obj['companyAvatar'] = $companyAvatar;
+        null !== $companyCity && $obj['companyCity'] = $companyCity;
+        null !== $companyCountry && $obj['companyCountry'] = $companyCountry;
+        null !== $companyDomain && $obj['companyDomain'] = $companyDomain;
+        null !== $companyName && $obj['companyName'] = $companyName;
+        null !== $companyState && $obj['companyState'] = $companyState;
+        null !== $companyZip && $obj['companyZip'] = $companyZip;
+        null !== $logoHeight && $obj['logoHeight'] = $logoHeight;
+        null !== $logoUrl && $obj['logoUrl'] = $logoUrl;
+        null !== $logoWidth && $obj['logoWidth'] = $logoWidth;
+        null !== $primaryColor && $obj['primaryColor'] = $primaryColor;
+        null !== $secondaryColor && $obj['secondaryColor'] = $secondaryColor;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withLogoAltText(string $logoAltText): self
     {
         $obj = clone $this;
-        $obj->logoAltText = $logoAltText;
+        $obj['logoAltText'] = $logoAltText;
 
         return $obj;
     }
@@ -180,7 +180,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withShowMarketingAd(bool $showMarketingAd): self
     {
         $obj = clone $this;
-        $obj->showMarketingAd = $showMarketingAd;
+        $obj['showMarketingAd'] = $showMarketingAd;
 
         return $obj;
     }
@@ -188,7 +188,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withShowSalesAd(bool $showSalesAd): self
     {
         $obj = clone $this;
-        $obj->showSalesAd = $showSalesAd;
+        $obj['showSalesAd'] = $showSalesAd;
 
         return $obj;
     }
@@ -196,7 +196,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withAccent2Color(string $accent2Color): self
     {
         $obj = clone $this;
-        $obj->accent2Color = $accent2Color;
+        $obj['accent2Color'] = $accent2Color;
 
         return $obj;
     }
@@ -204,7 +204,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withAccentColor(string $accentColor): self
     {
         $obj = clone $this;
-        $obj->accentColor = $accentColor;
+        $obj['accentColor'] = $accentColor;
 
         return $obj;
     }
@@ -212,7 +212,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withCompanyAddressLine1(string $companyAddressLine1): self
     {
         $obj = clone $this;
-        $obj->companyAddressLine1 = $companyAddressLine1;
+        $obj['companyAddressLine1'] = $companyAddressLine1;
 
         return $obj;
     }
@@ -220,7 +220,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withCompanyAddressLine2(string $companyAddressLine2): self
     {
         $obj = clone $this;
-        $obj->companyAddressLine2 = $companyAddressLine2;
+        $obj['companyAddressLine2'] = $companyAddressLine2;
 
         return $obj;
     }
@@ -228,7 +228,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withCompanyAvatar(string $companyAvatar): self
     {
         $obj = clone $this;
-        $obj->companyAvatar = $companyAvatar;
+        $obj['companyAvatar'] = $companyAvatar;
 
         return $obj;
     }
@@ -236,7 +236,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withCompanyCity(string $companyCity): self
     {
         $obj = clone $this;
-        $obj->companyCity = $companyCity;
+        $obj['companyCity'] = $companyCity;
 
         return $obj;
     }
@@ -244,7 +244,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withCompanyCountry(string $companyCountry): self
     {
         $obj = clone $this;
-        $obj->companyCountry = $companyCountry;
+        $obj['companyCountry'] = $companyCountry;
 
         return $obj;
     }
@@ -252,7 +252,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withCompanyDomain(string $companyDomain): self
     {
         $obj = clone $this;
-        $obj->companyDomain = $companyDomain;
+        $obj['companyDomain'] = $companyDomain;
 
         return $obj;
     }
@@ -260,7 +260,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withCompanyName(string $companyName): self
     {
         $obj = clone $this;
-        $obj->companyName = $companyName;
+        $obj['companyName'] = $companyName;
 
         return $obj;
     }
@@ -268,7 +268,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withCompanyState(string $companyState): self
     {
         $obj = clone $this;
-        $obj->companyState = $companyState;
+        $obj['companyState'] = $companyState;
 
         return $obj;
     }
@@ -276,7 +276,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withCompanyZip(string $companyZip): self
     {
         $obj = clone $this;
-        $obj->companyZip = $companyZip;
+        $obj['companyZip'] = $companyZip;
 
         return $obj;
     }
@@ -284,7 +284,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withLogoHeight(int $logoHeight): self
     {
         $obj = clone $this;
-        $obj->logoHeight = $logoHeight;
+        $obj['logoHeight'] = $logoHeight;
 
         return $obj;
     }
@@ -292,7 +292,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withLogoURL(string $logoURL): self
     {
         $obj = clone $this;
-        $obj->logoUrl = $logoURL;
+        $obj['logoUrl'] = $logoURL;
 
         return $obj;
     }
@@ -300,7 +300,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withLogoWidth(int $logoWidth): self
     {
         $obj = clone $this;
-        $obj->logoWidth = $logoWidth;
+        $obj['logoWidth'] = $logoWidth;
 
         return $obj;
     }
@@ -308,7 +308,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withPrimaryColor(string $primaryColor): self
     {
         $obj = clone $this;
-        $obj->primaryColor = $primaryColor;
+        $obj['primaryColor'] = $primaryColor;
 
         return $obj;
     }
@@ -316,7 +316,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withSecondaryColor(string $secondaryColor): self
     {
         $obj = clone $this;
-        $obj->secondaryColor = $secondaryColor;
+        $obj['secondaryColor'] = $secondaryColor;
 
         return $obj;
     }

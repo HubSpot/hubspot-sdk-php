@@ -329,42 +329,42 @@ final class FileOperationSearchParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $allowsAnonymousAccess && $obj->allowsAnonymousAccess = $allowsAnonymousAccess;
-        null !== $before && $obj->before = $before;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdAtGte && $obj->createdAtGte = $createdAtGte;
-        null !== $createdAtLte && $obj->createdAtLte = $createdAtLte;
-        null !== $encoding && $obj->encoding = $encoding;
-        null !== $expiresAt && $obj->expiresAt = $expiresAt;
-        null !== $expiresAtGte && $obj->expiresAtGte = $expiresAtGte;
-        null !== $expiresAtLte && $obj->expiresAtLte = $expiresAtLte;
-        null !== $extension && $obj->extension = $extension;
-        null !== $fileMd5 && $obj->fileMd5 = $fileMd5;
-        null !== $height && $obj->height = $height;
-        null !== $heightGte && $obj->heightGte = $heightGte;
-        null !== $heightLte && $obj->heightLte = $heightLte;
-        null !== $idGte && $obj->idGte = $idGte;
-        null !== $idLte && $obj->idLte = $idLte;
-        null !== $ids && $obj->ids = $ids;
-        null !== $isUsableInContent && $obj->isUsableInContent = $isUsableInContent;
-        null !== $limit && $obj->limit = $limit;
-        null !== $name && $obj->name = $name;
-        null !== $parentFolderIds && $obj->parentFolderIds = $parentFolderIds;
-        null !== $path && $obj->path = $path;
-        null !== $properties && $obj->properties = $properties;
-        null !== $size && $obj->size = $size;
-        null !== $sizeGte && $obj->sizeGte = $sizeGte;
-        null !== $sizeLte && $obj->sizeLte = $sizeLte;
-        null !== $sort && $obj->sort = $sort;
-        null !== $type && $obj->type = $type;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedAtGte && $obj->updatedAtGte = $updatedAtGte;
-        null !== $updatedAtLte && $obj->updatedAtLte = $updatedAtLte;
-        null !== $url && $obj->url = $url;
-        null !== $width && $obj->width = $width;
-        null !== $widthGte && $obj->widthGte = $widthGte;
-        null !== $widthLte && $obj->widthLte = $widthLte;
+        null !== $after && $obj['after'] = $after;
+        null !== $allowsAnonymousAccess && $obj['allowsAnonymousAccess'] = $allowsAnonymousAccess;
+        null !== $before && $obj['before'] = $before;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $createdAtGte && $obj['createdAtGte'] = $createdAtGte;
+        null !== $createdAtLte && $obj['createdAtLte'] = $createdAtLte;
+        null !== $encoding && $obj['encoding'] = $encoding;
+        null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
+        null !== $expiresAtGte && $obj['expiresAtGte'] = $expiresAtGte;
+        null !== $expiresAtLte && $obj['expiresAtLte'] = $expiresAtLte;
+        null !== $extension && $obj['extension'] = $extension;
+        null !== $fileMd5 && $obj['fileMd5'] = $fileMd5;
+        null !== $height && $obj['height'] = $height;
+        null !== $heightGte && $obj['heightGte'] = $heightGte;
+        null !== $heightLte && $obj['heightLte'] = $heightLte;
+        null !== $idGte && $obj['idGte'] = $idGte;
+        null !== $idLte && $obj['idLte'] = $idLte;
+        null !== $ids && $obj['ids'] = $ids;
+        null !== $isUsableInContent && $obj['isUsableInContent'] = $isUsableInContent;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $name && $obj['name'] = $name;
+        null !== $parentFolderIds && $obj['parentFolderIds'] = $parentFolderIds;
+        null !== $path && $obj['path'] = $path;
+        null !== $properties && $obj['properties'] = $properties;
+        null !== $size && $obj['size'] = $size;
+        null !== $sizeGte && $obj['sizeGte'] = $sizeGte;
+        null !== $sizeLte && $obj['sizeLte'] = $sizeLte;
+        null !== $sort && $obj['sort'] = $sort;
+        null !== $type && $obj['type'] = $type;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $updatedAtGte && $obj['updatedAtGte'] = $updatedAtGte;
+        null !== $updatedAtLte && $obj['updatedAtLte'] = $updatedAtLte;
+        null !== $url && $obj['url'] = $url;
+        null !== $width && $obj['width'] = $width;
+        null !== $widthGte && $obj['widthGte'] = $widthGte;
+        null !== $widthLte && $obj['widthLte'] = $widthLte;
 
         return $obj;
     }
@@ -375,7 +375,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -386,7 +386,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withAllowsAnonymousAccess(bool $allowsAnonymousAccess): self
     {
         $obj = clone $this;
-        $obj->allowsAnonymousAccess = $allowsAnonymousAccess;
+        $obj['allowsAnonymousAccess'] = $allowsAnonymousAccess;
 
         return $obj;
     }
@@ -394,7 +394,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withBefore(string $before): self
     {
         $obj = clone $this;
-        $obj->before = $before;
+        $obj['before'] = $before;
 
         return $obj;
     }
@@ -405,7 +405,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -416,7 +416,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withCreatedAtGte(\DateTimeInterface $createdAtGte): self
     {
         $obj = clone $this;
-        $obj->createdAtGte = $createdAtGte;
+        $obj['createdAtGte'] = $createdAtGte;
 
         return $obj;
     }
@@ -427,7 +427,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withCreatedAtLte(\DateTimeInterface $createdAtLte): self
     {
         $obj = clone $this;
-        $obj->createdAtLte = $createdAtLte;
+        $obj['createdAtLte'] = $createdAtLte;
 
         return $obj;
     }
@@ -438,7 +438,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withEncoding(string $encoding): self
     {
         $obj = clone $this;
-        $obj->encoding = $encoding;
+        $obj['encoding'] = $encoding;
 
         return $obj;
     }
@@ -449,7 +449,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;
-        $obj->expiresAt = $expiresAt;
+        $obj['expiresAt'] = $expiresAt;
 
         return $obj;
     }
@@ -460,7 +460,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withExpiresAtGte(\DateTimeInterface $expiresAtGte): self
     {
         $obj = clone $this;
-        $obj->expiresAtGte = $expiresAtGte;
+        $obj['expiresAtGte'] = $expiresAtGte;
 
         return $obj;
     }
@@ -471,7 +471,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withExpiresAtLte(\DateTimeInterface $expiresAtLte): self
     {
         $obj = clone $this;
-        $obj->expiresAtLte = $expiresAtLte;
+        $obj['expiresAtLte'] = $expiresAtLte;
 
         return $obj;
     }
@@ -482,7 +482,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withExtension(string $extension): self
     {
         $obj = clone $this;
-        $obj->extension = $extension;
+        $obj['extension'] = $extension;
 
         return $obj;
     }
@@ -493,7 +493,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withFileMd5(string $fileMd5): self
     {
         $obj = clone $this;
-        $obj->fileMd5 = $fileMd5;
+        $obj['fileMd5'] = $fileMd5;
 
         return $obj;
     }
@@ -504,7 +504,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withHeight(int $height): self
     {
         $obj = clone $this;
-        $obj->height = $height;
+        $obj['height'] = $height;
 
         return $obj;
     }
@@ -515,7 +515,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withHeightGte(int $heightGte): self
     {
         $obj = clone $this;
-        $obj->heightGte = $heightGte;
+        $obj['heightGte'] = $heightGte;
 
         return $obj;
     }
@@ -526,7 +526,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withHeightLte(int $heightLte): self
     {
         $obj = clone $this;
-        $obj->heightLte = $heightLte;
+        $obj['heightLte'] = $heightLte;
 
         return $obj;
     }
@@ -534,7 +534,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withIDGte(int $idGte): self
     {
         $obj = clone $this;
-        $obj->idGte = $idGte;
+        $obj['idGte'] = $idGte;
 
         return $obj;
     }
@@ -542,7 +542,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withIDLte(int $idLte): self
     {
         $obj = clone $this;
-        $obj->idLte = $idLte;
+        $obj['idLte'] = $idLte;
 
         return $obj;
     }
@@ -555,7 +555,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withIDs(array $ids): self
     {
         $obj = clone $this;
-        $obj->ids = $ids;
+        $obj['ids'] = $ids;
 
         return $obj;
     }
@@ -566,7 +566,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withIsUsableInContent(bool $isUsableInContent): self
     {
         $obj = clone $this;
-        $obj->isUsableInContent = $isUsableInContent;
+        $obj['isUsableInContent'] = $isUsableInContent;
 
         return $obj;
     }
@@ -577,7 +577,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -588,7 +588,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -601,7 +601,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withParentFolderIDs(array $parentFolderIDs): self
     {
         $obj = clone $this;
-        $obj->parentFolderIds = $parentFolderIDs;
+        $obj['parentFolderIds'] = $parentFolderIDs;
 
         return $obj;
     }
@@ -612,7 +612,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withPath(string $path): self
     {
         $obj = clone $this;
-        $obj->path = $path;
+        $obj['path'] = $path;
 
         return $obj;
     }
@@ -625,7 +625,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -636,7 +636,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withSize(int $size): self
     {
         $obj = clone $this;
-        $obj->size = $size;
+        $obj['size'] = $size;
 
         return $obj;
     }
@@ -647,7 +647,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withSizeGte(int $sizeGte): self
     {
         $obj = clone $this;
-        $obj->sizeGte = $sizeGte;
+        $obj['sizeGte'] = $sizeGte;
 
         return $obj;
     }
@@ -658,7 +658,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withSizeLte(int $sizeLte): self
     {
         $obj = clone $this;
-        $obj->sizeLte = $sizeLte;
+        $obj['sizeLte'] = $sizeLte;
 
         return $obj;
     }
@@ -671,7 +671,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withSort(array $sort): self
     {
         $obj = clone $this;
-        $obj->sort = $sort;
+        $obj['sort'] = $sort;
 
         return $obj;
     }
@@ -682,7 +682,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -693,7 +693,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -704,7 +704,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withUpdatedAtGte(\DateTimeInterface $updatedAtGte): self
     {
         $obj = clone $this;
-        $obj->updatedAtGte = $updatedAtGte;
+        $obj['updatedAtGte'] = $updatedAtGte;
 
         return $obj;
     }
@@ -715,7 +715,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withUpdatedAtLte(\DateTimeInterface $updatedAtLte): self
     {
         $obj = clone $this;
-        $obj->updatedAtLte = $updatedAtLte;
+        $obj['updatedAtLte'] = $updatedAtLte;
 
         return $obj;
     }
@@ -726,7 +726,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }
@@ -737,7 +737,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withWidth(int $width): self
     {
         $obj = clone $this;
-        $obj->width = $width;
+        $obj['width'] = $width;
 
         return $obj;
     }
@@ -748,7 +748,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withWidthGte(int $widthGte): self
     {
         $obj = clone $this;
-        $obj->widthGte = $widthGte;
+        $obj['widthGte'] = $widthGte;
 
         return $obj;
     }
@@ -759,7 +759,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withWidthLte(int $widthLte): self
     {
         $obj = clone $this;
-        $obj->widthLte = $widthLte;
+        $obj['widthLte'] = $widthLte;
 
         return $obj;
     }

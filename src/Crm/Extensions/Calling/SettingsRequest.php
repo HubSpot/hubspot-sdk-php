@@ -109,15 +109,15 @@ final class SettingsRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->height = $height;
-        $obj->isReady = $isReady;
-        $obj->name = $name;
-        $obj->supportsCustomObjects = $supportsCustomObjects;
-        $obj->supportsInboundCalling = $supportsInboundCalling;
-        $obj->url = $url;
-        $obj->usesCallingWindow = $usesCallingWindow;
-        $obj->usesRemote = $usesRemote;
-        $obj->width = $width;
+        $obj['height'] = $height;
+        $obj['isReady'] = $isReady;
+        $obj['name'] = $name;
+        $obj['supportsCustomObjects'] = $supportsCustomObjects;
+        $obj['supportsInboundCalling'] = $supportsInboundCalling;
+        $obj['url'] = $url;
+        $obj['usesCallingWindow'] = $usesCallingWindow;
+        $obj['usesRemote'] = $usesRemote;
+        $obj['width'] = $width;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class SettingsRequest implements BaseModel
     public function withHeight(int $height): self
     {
         $obj = clone $this;
-        $obj->height = $height;
+        $obj['height'] = $height;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class SettingsRequest implements BaseModel
     public function withIsReady(bool $isReady): self
     {
         $obj = clone $this;
-        $obj->isReady = $isReady;
+        $obj['isReady'] = $isReady;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class SettingsRequest implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class SettingsRequest implements BaseModel
     public function withSupportsCustomObjects(bool $supportsCustomObjects): self
     {
         $obj = clone $this;
-        $obj->supportsCustomObjects = $supportsCustomObjects;
+        $obj['supportsCustomObjects'] = $supportsCustomObjects;
 
         return $obj;
     }
@@ -158,7 +158,7 @@ final class SettingsRequest implements BaseModel
         bool $supportsInboundCalling
     ): self {
         $obj = clone $this;
-        $obj->supportsInboundCalling = $supportsInboundCalling;
+        $obj['supportsInboundCalling'] = $supportsInboundCalling;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class SettingsRequest implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class SettingsRequest implements BaseModel
     public function withUsesCallingWindow(bool $usesCallingWindow): self
     {
         $obj = clone $this;
-        $obj->usesCallingWindow = $usesCallingWindow;
+        $obj['usesCallingWindow'] = $usesCallingWindow;
 
         return $obj;
     }
@@ -182,7 +182,7 @@ final class SettingsRequest implements BaseModel
     public function withUsesRemote(bool $usesRemote): self
     {
         $obj = clone $this;
-        $obj->usesRemote = $usesRemote;
+        $obj['usesRemote'] = $usesRemote;
 
         return $obj;
     }
@@ -190,7 +190,7 @@ final class SettingsRequest implements BaseModel
     public function withWidth(int $width): self
     {
         $obj = clone $this;
-        $obj->width = $width;
+        $obj['width'] = $width;
 
         return $obj;
     }

@@ -83,12 +83,12 @@ final class PublicComparativeDatePropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->comparisonPropertyName = $comparisonPropertyName;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['comparisonPropertyName'] = $comparisonPropertyName;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
         $obj['operationType'] = $operationType;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
-        null !== $defaultComparisonValue && $obj->defaultComparisonValue = $defaultComparisonValue;
+        null !== $defaultComparisonValue && $obj['defaultComparisonValue'] = $defaultComparisonValue;
 
         return $obj;
     }
@@ -97,7 +97,7 @@ final class PublicComparativeDatePropertyOperation implements BaseModel
         string $comparisonPropertyName
     ): self {
         $obj = clone $this;
-        $obj->comparisonPropertyName = $comparisonPropertyName;
+        $obj['comparisonPropertyName'] = $comparisonPropertyName;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class PublicComparativeDatePropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class PublicComparativeDatePropertyOperation implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class PublicComparativeDatePropertyOperation implements BaseModel
         string $defaultComparisonValue
     ): self {
         $obj = clone $this;
-        $obj->defaultComparisonValue = $defaultComparisonValue;
+        $obj['defaultComparisonValue'] = $defaultComparisonValue;
 
         return $obj;
     }

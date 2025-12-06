@@ -105,10 +105,10 @@ final class PartialPublicStatusRequest implements BaseModel
 
         $obj['channel'] = $channel;
         $obj['statusState'] = $statusState;
-        $obj->subscriptionId = $subscriptionId;
+        $obj['subscriptionId'] = $subscriptionId;
 
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
-        null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
+        null !== $legalBasisExplanation && $obj['legalBasisExplanation'] = $legalBasisExplanation;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class PartialPublicStatusRequest implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionId = $subscriptionID;
+        $obj['subscriptionId'] = $subscriptionID;
 
         return $obj;
     }
@@ -170,7 +170,7 @@ final class PartialPublicStatusRequest implements BaseModel
         string $legalBasisExplanation
     ): self {
         $obj = clone $this;
-        $obj->legalBasisExplanation = $legalBasisExplanation;
+        $obj['legalBasisExplanation'] = $legalBasisExplanation;
 
         return $obj;
     }

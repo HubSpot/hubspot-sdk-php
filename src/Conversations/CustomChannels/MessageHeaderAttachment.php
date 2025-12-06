@@ -64,8 +64,8 @@ final class MessageHeaderAttachment implements BaseModel
 
         $obj['type'] = $type;
 
-        null !== $fileId && $obj->fileId = $fileId;
-        null !== $text && $obj->text = $text;
+        null !== $fileId && $obj['fileId'] = $fileId;
+        null !== $text && $obj['text'] = $text;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class MessageHeaderAttachment implements BaseModel
     public function withFileID(int $fileID): self
     {
         $obj = clone $this;
-        $obj->fileId = $fileID;
+        $obj['fileId'] = $fileID;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class MessageHeaderAttachment implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }

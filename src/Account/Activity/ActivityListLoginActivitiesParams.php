@@ -59,9 +59,9 @@ final class ActivityListLoginActivitiesParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $limit && $obj->limit = $limit;
-        null !== $userId && $obj->userId = $userId;
+        null !== $after && $obj['after'] = $after;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $userId && $obj['userId'] = $userId;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class ActivityListLoginActivitiesParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class ActivityListLoginActivitiesParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class ActivityListLoginActivitiesParams implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }

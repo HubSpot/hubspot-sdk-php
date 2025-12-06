@@ -12,6 +12,8 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Imports\PublicImportError\ErrorType;
 use HubspotSDK\Crm\Imports\PublicImportError\ObjectType;
 use HubspotSDK\Marketing\Events\PropertyValue;
+use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
+use HubspotSDK\Marketing\Events\PropertyValue\Source;
 
 /**
  * @phpstan-type PublicImportErrorShape = array{
@@ -108,16 +110,44 @@ final class PublicImportError implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param ErrorType|value-of<ErrorType> $errorType
+     * @param ImportRowCore|array{
+     *   containsEncryptedProperties: bool,
+     *   fileId: int,
+     *   lineNumber: int,
+     *   rowData: list<string>,
+     *   pageName?: string|null,
+     * } $sourceData
+     * @param PropertyValue|array{
+     *   dataSensitivity: value-of<DataSensitivity>,
+     *   isEncrypted: bool,
+     *   isLargeValue: bool,
+     *   name: string,
+     *   persistenceTimestamp: int,
+     *   requestId: string,
+     *   selectedByUser: bool,
+     *   selectedByUserTimestamp: int,
+     *   source: value-of<Source>,
+     *   sourceId: string,
+     *   sourceLabel: string,
+     *   sourceMetadata: string,
+     *   sourceUpstreamDeployable: string,
+     *   sourceVid: list<int>,
+     *   timestamp: int,
+     *   unit: string,
+     *   updatedByUserId: int,
+     *   useTimestampAsPersistenceTimestamp: bool,
+     *   value: string,
+     * } $invalidPropertyValue
      * @param ObjectType|value-of<ObjectType> $objectType
      */
     public static function with(
         string $id,
         int $createdAt,
         ErrorType|string $errorType,
-        ImportRowCore $sourceData,
+        ImportRowCore|array $sourceData,
         ?string $errorMessage = null,
         ?string $extraContext = null,
-        ?PropertyValue $invalidPropertyValue = null,
+        PropertyValue|array|null $invalidPropertyValue = null,
         ?string $invalidValue = null,
         ?string $invalidValueToDisplay = null,
         ?int $knownColumnNumber = null,
@@ -126,19 +156,19 @@ final class PublicImportError implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
         $obj['errorType'] = $errorType;
-        $obj->sourceData = $sourceData;
+        $obj['sourceData'] = $sourceData;
 
-        null !== $errorMessage && $obj->errorMessage = $errorMessage;
-        null !== $extraContext && $obj->extraContext = $extraContext;
-        null !== $invalidPropertyValue && $obj->invalidPropertyValue = $invalidPropertyValue;
-        null !== $invalidValue && $obj->invalidValue = $invalidValue;
-        null !== $invalidValueToDisplay && $obj->invalidValueToDisplay = $invalidValueToDisplay;
-        null !== $knownColumnNumber && $obj->knownColumnNumber = $knownColumnNumber;
+        null !== $errorMessage && $obj['errorMessage'] = $errorMessage;
+        null !== $extraContext && $obj['extraContext'] = $extraContext;
+        null !== $invalidPropertyValue && $obj['invalidPropertyValue'] = $invalidPropertyValue;
+        null !== $invalidValue && $obj['invalidValue'] = $invalidValue;
+        null !== $invalidValueToDisplay && $obj['invalidValueToDisplay'] = $invalidValueToDisplay;
+        null !== $knownColumnNumber && $obj['knownColumnNumber'] = $knownColumnNumber;
         null !== $objectType && $obj['objectType'] = $objectType;
-        null !== $objectTypeId && $obj->objectTypeId = $objectTypeId;
+        null !== $objectTypeId && $obj['objectTypeId'] = $objectTypeId;
 
         return $obj;
     }
@@ -146,7 +176,7 @@ final class PublicImportError implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -154,7 +184,7 @@ final class PublicImportError implements BaseModel, ResponseConverter
     public function withCreatedAt(int $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -170,10 +200,19 @@ final class PublicImportError implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    public function withSourceData(ImportRowCore $sourceData): self
+    /**
+     * @param ImportRowCore|array{
+     *   containsEncryptedProperties: bool,
+     *   fileId: int,
+     *   lineNumber: int,
+     *   rowData: list<string>,
+     *   pageName?: string|null,
+     * } $sourceData
+     */
+    public function withSourceData(ImportRowCore|array $sourceData): self
     {
         $obj = clone $this;
-        $obj->sourceData = $sourceData;
+        $obj['sourceData'] = $sourceData;
 
         return $obj;
     }
@@ -181,7 +220,7 @@ final class PublicImportError implements BaseModel, ResponseConverter
     public function withErrorMessage(string $errorMessage): self
     {
         $obj = clone $this;
-        $obj->errorMessage = $errorMessage;
+        $obj['errorMessage'] = $errorMessage;
 
         return $obj;
     }
@@ -189,19 +228,41 @@ final class PublicImportError implements BaseModel, ResponseConverter
     public function withExtraContext(string $extraContext): self
     {
         $obj = clone $this;
-        $obj->extraContext = $extraContext;
+        $obj['extraContext'] = $extraContext;
 
         return $obj;
     }
 
     /**
      * Represents a single custom property of a marketing event, storing its name, value, metadata (like source, timestamp, and sensitivity), and related audit information for tracking changes.
+     *
+     * @param PropertyValue|array{
+     *   dataSensitivity: value-of<DataSensitivity>,
+     *   isEncrypted: bool,
+     *   isLargeValue: bool,
+     *   name: string,
+     *   persistenceTimestamp: int,
+     *   requestId: string,
+     *   selectedByUser: bool,
+     *   selectedByUserTimestamp: int,
+     *   source: value-of<Source>,
+     *   sourceId: string,
+     *   sourceLabel: string,
+     *   sourceMetadata: string,
+     *   sourceUpstreamDeployable: string,
+     *   sourceVid: list<int>,
+     *   timestamp: int,
+     *   unit: string,
+     *   updatedByUserId: int,
+     *   useTimestampAsPersistenceTimestamp: bool,
+     *   value: string,
+     * } $invalidPropertyValue
      */
     public function withInvalidPropertyValue(
-        PropertyValue $invalidPropertyValue
+        PropertyValue|array $invalidPropertyValue
     ): self {
         $obj = clone $this;
-        $obj->invalidPropertyValue = $invalidPropertyValue;
+        $obj['invalidPropertyValue'] = $invalidPropertyValue;
 
         return $obj;
     }
@@ -209,7 +270,7 @@ final class PublicImportError implements BaseModel, ResponseConverter
     public function withInvalidValue(string $invalidValue): self
     {
         $obj = clone $this;
-        $obj->invalidValue = $invalidValue;
+        $obj['invalidValue'] = $invalidValue;
 
         return $obj;
     }
@@ -218,7 +279,7 @@ final class PublicImportError implements BaseModel, ResponseConverter
         string $invalidValueToDisplay
     ): self {
         $obj = clone $this;
-        $obj->invalidValueToDisplay = $invalidValueToDisplay;
+        $obj['invalidValueToDisplay'] = $invalidValueToDisplay;
 
         return $obj;
     }
@@ -226,7 +287,7 @@ final class PublicImportError implements BaseModel, ResponseConverter
     public function withKnownColumnNumber(int $knownColumnNumber): self
     {
         $obj = clone $this;
-        $obj->knownColumnNumber = $knownColumnNumber;
+        $obj['knownColumnNumber'] = $knownColumnNumber;
 
         return $obj;
     }
@@ -245,7 +306,7 @@ final class PublicImportError implements BaseModel, ResponseConverter
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }

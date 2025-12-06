@@ -50,8 +50,8 @@ final class SubscriberEmailResponse implements BaseModel
     {
         $obj = new self;
 
-        $obj->email = $email;
-        $obj->vid = $vid;
+        $obj['email'] = $email;
+        $obj['vid'] = $vid;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class SubscriberEmailResponse implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class SubscriberEmailResponse implements BaseModel
     public function withVid(int $vid): self
     {
         $obj = clone $this;
-        $obj->vid = $vid;
+        $obj['vid'] = $vid;
 
         return $obj;
     }

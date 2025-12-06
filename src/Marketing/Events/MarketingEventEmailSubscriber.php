@@ -82,10 +82,10 @@ final class MarketingEventEmailSubscriber implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->contactProperties = $contactProperties;
-        $obj->email = $email;
-        $obj->interactionDateTime = $interactionDateTime;
-        $obj->properties = $properties;
+        $obj['contactProperties'] = $contactProperties;
+        $obj['email'] = $email;
+        $obj['interactionDateTime'] = $interactionDateTime;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class MarketingEventEmailSubscriber implements BaseModel
     public function withContactProperties(array $contactProperties): self
     {
         $obj = clone $this;
-        $obj->contactProperties = $contactProperties;
+        $obj['contactProperties'] = $contactProperties;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class MarketingEventEmailSubscriber implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class MarketingEventEmailSubscriber implements BaseModel
     public function withInteractionDateTime(int $interactionDateTime): self
     {
         $obj = clone $this;
-        $obj->interactionDateTime = $interactionDateTime;
+        $obj['interactionDateTime'] = $interactionDateTime;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class MarketingEventEmailSubscriber implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

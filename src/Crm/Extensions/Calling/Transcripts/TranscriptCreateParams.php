@@ -13,7 +13,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Extensions\Calling\TranscriptsService::create()
  *
  * @phpstan-type TranscriptCreateParamsShape = array{
- *   engagementId: int, transcriptCreateUtterances: list<TranscriptCreateUtterance>
+ *   engagementId: int,
+ *   transcriptCreateUtterances: list<TranscriptCreateUtterance|array{
+ *     endTimeMillis: int,
+ *     speaker: Speaker,
+ *     startTimeMillis: int,
+ *     text: string,
+ *     languageCode?: string|null,
+ *   }>,
  * }
  */
 final class TranscriptCreateParams implements BaseModel
@@ -55,7 +62,13 @@ final class TranscriptCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TranscriptCreateUtterance> $transcriptCreateUtterances
+     * @param list<TranscriptCreateUtterance|array{
+     *   endTimeMillis: int,
+     *   speaker: Speaker,
+     *   startTimeMillis: int,
+     *   text: string,
+     *   languageCode?: string|null,
+     * }> $transcriptCreateUtterances
      */
     public static function with(
         int $engagementId,
@@ -63,8 +76,8 @@ final class TranscriptCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->engagementId = $engagementId;
-        $obj->transcriptCreateUtterances = $transcriptCreateUtterances;
+        $obj['engagementId'] = $engagementId;
+        $obj['transcriptCreateUtterances'] = $transcriptCreateUtterances;
 
         return $obj;
     }
@@ -72,19 +85,25 @@ final class TranscriptCreateParams implements BaseModel
     public function withEngagementID(int $engagementID): self
     {
         $obj = clone $this;
-        $obj->engagementId = $engagementID;
+        $obj['engagementId'] = $engagementID;
 
         return $obj;
     }
 
     /**
-     * @param list<TranscriptCreateUtterance> $transcriptCreateUtterances
+     * @param list<TranscriptCreateUtterance|array{
+     *   endTimeMillis: int,
+     *   speaker: Speaker,
+     *   startTimeMillis: int,
+     *   text: string,
+     *   languageCode?: string|null,
+     * }> $transcriptCreateUtterances
      */
     public function withTranscriptCreateUtterances(
         array $transcriptCreateUtterances
     ): self {
         $obj = clone $this;
-        $obj->transcriptCreateUtterances = $transcriptCreateUtterances;
+        $obj['transcriptCreateUtterances'] = $transcriptCreateUtterances;
 
         return $obj;
     }

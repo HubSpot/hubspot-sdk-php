@@ -64,10 +64,10 @@ final class ChannelAccountUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->channelId = $channelId;
+        $obj['channelId'] = $channelId;
 
-        null !== $authorized && $obj->authorized = $authorized;
-        null !== $name && $obj->name = $name;
+        null !== $authorized && $obj['authorized'] = $authorized;
+        null !== $name && $obj['name'] = $name;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class ChannelAccountUpdateParams implements BaseModel
     public function withChannelID(int $channelID): self
     {
         $obj = clone $this;
-        $obj->channelId = $channelID;
+        $obj['channelId'] = $channelID;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class ChannelAccountUpdateParams implements BaseModel
     public function withAuthorized(bool $authorized): self
     {
         $obj = clone $this;
-        $obj->authorized = $authorized;
+        $obj['authorized'] = $authorized;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class ChannelAccountUpdateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

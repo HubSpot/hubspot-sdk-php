@@ -107,15 +107,15 @@ final class RangedNumberPropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->lowerBound = $lowerBound;
-        $obj->operationType = $operationType;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['lowerBound'] = $lowerBound;
+        $obj['operationType'] = $operationType;
         $obj['operator'] = $operator;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
         $obj['propertyType'] = $propertyType;
-        $obj->upperBound = $upperBound;
+        $obj['upperBound'] = $upperBound;
 
-        null !== $defaultValue && $obj->defaultValue = $defaultValue;
+        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class RangedNumberPropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class RangedNumberPropertyOperation implements BaseModel
     public function withLowerBound(int $lowerBound): self
     {
         $obj = clone $this;
-        $obj->lowerBound = $lowerBound;
+        $obj['lowerBound'] = $lowerBound;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class RangedNumberPropertyOperation implements BaseModel
     public function withOperationType(string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class RangedNumberPropertyOperation implements BaseModel
     public function withOperatorName(string $operatorName): self
     {
         $obj = clone $this;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
 
         return $obj;
     }
@@ -178,7 +178,7 @@ final class RangedNumberPropertyOperation implements BaseModel
     public function withUpperBound(int $upperBound): self
     {
         $obj = clone $this;
-        $obj->upperBound = $upperBound;
+        $obj['upperBound'] = $upperBound;
 
         return $obj;
     }
@@ -186,7 +186,7 @@ final class RangedNumberPropertyOperation implements BaseModel
     public function withDefaultValue(string $defaultValue): self
     {
         $obj = clone $this;
-        $obj->defaultValue = $defaultValue;
+        $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }

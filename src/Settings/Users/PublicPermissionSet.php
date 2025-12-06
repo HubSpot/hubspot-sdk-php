@@ -72,9 +72,9 @@ final class PublicPermissionSet implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->name = $name;
-        $obj->requiresBillingWrite = $requiresBillingWrite;
+        $obj['id'] = $id;
+        $obj['name'] = $name;
+        $obj['requiresBillingWrite'] = $requiresBillingWrite;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class PublicPermissionSet implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class PublicPermissionSet implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class PublicPermissionSet implements BaseModel
     public function withRequiresBillingWrite(bool $requiresBillingWrite): self
     {
         $obj = clone $this;
-        $obj->requiresBillingWrite = $requiresBillingWrite;
+        $obj['requiresBillingWrite'] = $requiresBillingWrite;
 
         return $obj;
     }

@@ -74,11 +74,11 @@ final class PropertyGetParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->objectType = $objectType;
+        $obj['appId'] = $appId;
+        $obj['objectType'] = $objectType;
 
-        null !== $archived && $obj->archived = $archived;
-        null !== $properties && $obj->properties = $properties;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $properties && $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class PropertyGetParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class PropertyGetParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class PropertyGetParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class PropertyGetParams implements BaseModel
     public function withProperties(string $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

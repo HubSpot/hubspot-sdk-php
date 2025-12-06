@@ -16,7 +16,7 @@ use HubspotSDK\PublicObjectID;
  * @see HubspotSDK\Services\Crm\Objects\DealSplitsService::batchRead()
  *
  * @phpstan-type DealSplitBatchReadParamsShape = array{
- *   inputs: list<PublicObjectID>
+ *   inputs: list<PublicObjectID|array{id: string}>
  * }
  */
 final class DealSplitBatchReadParams implements BaseModel
@@ -53,24 +53,24 @@ final class DealSplitBatchReadParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicObjectID> $inputs
+     * @param list<PublicObjectID|array{id: string}> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicObjectID> $inputs
+     * @param list<PublicObjectID|array{id: string}> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

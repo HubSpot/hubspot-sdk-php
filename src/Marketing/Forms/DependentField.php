@@ -7,6 +7,7 @@ namespace HubspotSDK\Marketing\Forms;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Marketing\Forms\DependentFieldFilter\Operator;
 
 /**
  * A form field that will be displayed based on what the customer entered in another field.
@@ -56,27 +57,43 @@ final class DependentField implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param DependentFieldFilter|array{
+     *   operator: value-of<Operator>,
+     *   rangeEnd: string,
+     *   rangeStart: string,
+     *   value: string,
+     *   values: list<string>,
+     * } $dependentCondition
      */
     public static function with(
-        DependentFieldFilter $dependentCondition,
+        DependentFieldFilter|array $dependentCondition,
         EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField $dependentField,
     ): self {
         $obj = new self;
 
-        $obj->dependentCondition = $dependentCondition;
-        $obj->dependentField = $dependentField;
+        $obj['dependentCondition'] = $dependentCondition;
+        $obj['dependentField'] = $dependentField;
 
         return $obj;
     }
 
     /**
      * A condition based on customer input.
+     *
+     * @param DependentFieldFilter|array{
+     *   operator: value-of<Operator>,
+     *   rangeEnd: string,
+     *   rangeStart: string,
+     *   value: string,
+     *   values: list<string>,
+     * } $dependentCondition
      */
     public function withDependentCondition(
-        DependentFieldFilter $dependentCondition
+        DependentFieldFilter|array $dependentCondition
     ): self {
         $obj = clone $this;
-        $obj->dependentCondition = $dependentCondition;
+        $obj['dependentCondition'] = $dependentCondition;
 
         return $obj;
     }
@@ -88,7 +105,7 @@ final class DependentField implements BaseModel
         EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField $dependentField,
     ): self {
         $obj = clone $this;
-        $obj->dependentField = $dependentField;
+        $obj['dependentField'] = $dependentField;
 
         return $obj;
     }

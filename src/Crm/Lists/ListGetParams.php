@@ -42,7 +42,7 @@ final class ListGetParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $includeFilters && $obj->includeFilters = $includeFilters;
+        null !== $includeFilters && $obj['includeFilters'] = $includeFilters;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class ListGetParams implements BaseModel
     public function withIncludeFilters(bool $includeFilters): self
     {
         $obj = clone $this;
-        $obj->includeFilters = $includeFilters;
+        $obj['includeFilters'] = $includeFilters;
 
         return $obj;
     }

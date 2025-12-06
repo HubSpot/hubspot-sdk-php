@@ -81,10 +81,10 @@ final class DefaultRequirements implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->gates = $gates;
+        $obj['gates'] = $gates;
         $obj['operator'] = $operator;
-        $obj->scopeNames = $scopeNames;
-        $obj->settings = $settings;
+        $obj['scopeNames'] = $scopeNames;
+        $obj['settings'] = $settings;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class DefaultRequirements implements BaseModel
     public function withGates(array $gates): self
     {
         $obj = clone $this;
-        $obj->gates = $gates;
+        $obj['gates'] = $gates;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class DefaultRequirements implements BaseModel
     public function withScopeNames(array $scopeNames): self
     {
         $obj = clone $this;
-        $obj->scopeNames = $scopeNames;
+        $obj['scopeNames'] = $scopeNames;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class DefaultRequirements implements BaseModel
     public function withSettings(array $settings): self
     {
         $obj = clone $this;
-        $obj->settings = $settings;
+        $obj['settings'] = $settings;
 
         return $obj;
     }

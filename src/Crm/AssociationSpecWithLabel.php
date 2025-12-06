@@ -63,9 +63,9 @@ final class AssociationSpecWithLabel implements BaseModel
         $obj = new self;
 
         $obj['category'] = $category;
-        $obj->typeId = $typeId;
+        $obj['typeId'] = $typeId;
 
-        null !== $label && $obj->label = $label;
+        null !== $label && $obj['label'] = $label;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class AssociationSpecWithLabel implements BaseModel
     public function withTypeID(int $typeID): self
     {
         $obj = clone $this;
-        $obj->typeId = $typeID;
+        $obj['typeId'] = $typeID;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class AssociationSpecWithLabel implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }

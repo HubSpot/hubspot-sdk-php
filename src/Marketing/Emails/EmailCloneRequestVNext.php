@@ -67,10 +67,10 @@ final class EmailCloneRequestVNext implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
+        $obj['id'] = $id;
 
-        null !== $cloneName && $obj->cloneName = $cloneName;
-        null !== $language && $obj->language = $language;
+        null !== $cloneName && $obj['cloneName'] = $cloneName;
+        null !== $language && $obj['language'] = $language;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class EmailCloneRequestVNext implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class EmailCloneRequestVNext implements BaseModel
     public function withCloneName(string $cloneName): self
     {
         $obj = clone $this;
-        $obj->cloneName = $cloneName;
+        $obj['cloneName'] = $cloneName;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class EmailCloneRequestVNext implements BaseModel
     public function withLanguage(string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language;
+        $obj['language'] = $language;
 
         return $obj;
     }

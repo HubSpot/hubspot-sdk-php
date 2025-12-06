@@ -7,6 +7,7 @@ namespace HubspotSDK\Crm\PropertyValidations;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule\RuleType;
 
 /**
  * @phpstan-type PublicPropertyValidationRuleMapShape = array{
@@ -61,7 +62,9 @@ final class PublicPropertyValidationRuleMap implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicPropertyValidationRule> $propertyValidationRules
+     * @param list<PublicPropertyValidationRule|array{
+     *   ruleArguments: list<string>, ruleType: value-of<RuleType>
+     * }> $propertyValidationRules
      */
     public static function with(
         string $propertyName,
@@ -69,8 +72,8 @@ final class PublicPropertyValidationRuleMap implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->propertyName = $propertyName;
-        $obj->propertyValidationRules = $propertyValidationRules;
+        $obj['propertyName'] = $propertyName;
+        $obj['propertyValidationRules'] = $propertyValidationRules;
 
         return $obj;
     }
@@ -81,7 +84,7 @@ final class PublicPropertyValidationRuleMap implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -89,13 +92,15 @@ final class PublicPropertyValidationRuleMap implements BaseModel
     /**
      * A list of validation rules applicable to the property.
      *
-     * @param list<PublicPropertyValidationRule> $propertyValidationRules
+     * @param list<PublicPropertyValidationRule|array{
+     *   ruleArguments: list<string>, ruleType: value-of<RuleType>
+     * }> $propertyValidationRules
      */
     public function withPropertyValidationRules(
         array $propertyValidationRules
     ): self {
         $obj = clone $this;
-        $obj->propertyValidationRules = $propertyValidationRules;
+        $obj['propertyValidationRules'] = $propertyValidationRules;
 
         return $obj;
     }

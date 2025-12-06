@@ -70,9 +70,9 @@ final class LineItemUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
-        null !== $idProperty && $obj->idProperty = $idProperty;
+        null !== $idProperty && $obj['idProperty'] = $idProperty;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class LineItemUpdateParams implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class LineItemUpdateParams implements BaseModel
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;
-        $obj->idProperty = $idProperty;
+        $obj['idProperty'] = $idProperty;
 
         return $obj;
     }

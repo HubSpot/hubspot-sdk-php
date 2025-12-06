@@ -50,33 +50,37 @@ final class PublicAssociationMultiArchive implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicObjectID> $to
+     * @param PublicObjectID|array{id: string} $from
+     * @param list<PublicObjectID|array{id: string}> $to
      */
-    public static function with(PublicObjectID $from, array $to): self
+    public static function with(PublicObjectID|array $from, array $to): self
     {
         $obj = new self;
 
-        $obj->from = $from;
-        $obj->to = $to;
-
-        return $obj;
-    }
-
-    public function withFrom(PublicObjectID $from): self
-    {
-        $obj = clone $this;
-        $obj->from = $from;
+        $obj['from'] = $from;
+        $obj['to'] = $to;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicObjectID> $to
+     * @param PublicObjectID|array{id: string} $from
+     */
+    public function withFrom(PublicObjectID|array $from): self
+    {
+        $obj = clone $this;
+        $obj['from'] = $from;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<PublicObjectID|array{id: string}> $to
      */
     public function withTo(array $to): self
     {
         $obj = clone $this;
-        $obj->to = $to;
+        $obj['to'] = $to;
 
         return $obj;
     }

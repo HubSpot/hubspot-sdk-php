@@ -109,16 +109,16 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->flowType = $flowType;
-        $obj->isEnabled = $isEnabled;
-        $obj->objectTypeId = $objectTypeId;
-        $obj->revisionId = $revisionId;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['flowType'] = $flowType;
+        $obj['isEnabled'] = $isEnabled;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['revisionId'] = $revisionId;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $name && $obj->name = $name;
-        null !== $uuid && $obj->uuid = $uuid;
+        null !== $name && $obj['name'] = $name;
+        null !== $uuid && $obj['uuid'] = $uuid;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withFlowType(string $flowType): self
     {
         $obj = clone $this;
-        $obj->flowType = $flowType;
+        $obj['flowType'] = $flowType;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withIsEnabled(bool $isEnabled): self
     {
         $obj = clone $this;
-        $obj->isEnabled = $isEnabled;
+        $obj['isEnabled'] = $isEnabled;
 
         return $obj;
     }
@@ -158,7 +158,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj->revisionId = $revisionID;
+        $obj['revisionId'] = $revisionID;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -182,7 +182,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -190,7 +190,7 @@ final class APIFlowListing implements BaseModel, ResponseConverter
     public function withUuid(string $uuid): self
     {
         $obj = clone $this;
-        $obj->uuid = $uuid;
+        $obj['uuid'] = $uuid;
 
         return $obj;
     }

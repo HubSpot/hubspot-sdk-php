@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
+use HubspotSDK\Automation\Workflows\APIStaticTimeZoneStrategy\Type;
 use HubspotSDK\Automation\Workflows\APITimeDelay\DaysOfWeek;
 use HubspotSDK\Automation\Workflows\APITimeDelay\TimeUnit;
 use HubspotSDK\Core\Attributes\Api;
@@ -67,22 +68,26 @@ final class APITimeDelay implements BaseModel
      *
      * @param list<DaysOfWeek|value-of<DaysOfWeek>> $daysOfWeek
      * @param TimeUnit|value-of<TimeUnit> $timeUnit
+     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
+     * @param APIStaticTimeZoneStrategy|array{
+     *   timeZoneId: string, type: value-of<Type>
+     * } $timeZoneStrategy
      */
     public static function with(
         array $daysOfWeek,
         int $delta,
         TimeUnit|string $timeUnit,
-        ?APITimeOfDay $timeOfDay = null,
-        ?APIStaticTimeZoneStrategy $timeZoneStrategy = null,
+        APITimeOfDay|array|null $timeOfDay = null,
+        APIStaticTimeZoneStrategy|array|null $timeZoneStrategy = null,
     ): self {
         $obj = new self;
 
         $obj['daysOfWeek'] = $daysOfWeek;
-        $obj->delta = $delta;
+        $obj['delta'] = $delta;
         $obj['timeUnit'] = $timeUnit;
 
-        null !== $timeOfDay && $obj->timeOfDay = $timeOfDay;
-        null !== $timeZoneStrategy && $obj->timeZoneStrategy = $timeZoneStrategy;
+        null !== $timeOfDay && $obj['timeOfDay'] = $timeOfDay;
+        null !== $timeZoneStrategy && $obj['timeZoneStrategy'] = $timeZoneStrategy;
 
         return $obj;
     }
@@ -101,7 +106,7 @@ final class APITimeDelay implements BaseModel
     public function withDelta(int $delta): self
     {
         $obj = clone $this;
-        $obj->delta = $delta;
+        $obj['delta'] = $delta;
 
         return $obj;
     }
@@ -117,19 +122,27 @@ final class APITimeDelay implements BaseModel
         return $obj;
     }
 
-    public function withTimeOfDay(APITimeOfDay $timeOfDay): self
+    /**
+     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
+     */
+    public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
         $obj = clone $this;
-        $obj->timeOfDay = $timeOfDay;
+        $obj['timeOfDay'] = $timeOfDay;
 
         return $obj;
     }
 
+    /**
+     * @param APIStaticTimeZoneStrategy|array{
+     *   timeZoneId: string, type: value-of<Type>
+     * } $timeZoneStrategy
+     */
     public function withTimeZoneStrategy(
-        APIStaticTimeZoneStrategy $timeZoneStrategy
+        APIStaticTimeZoneStrategy|array $timeZoneStrategy
     ): self {
         $obj = clone $this;
-        $obj->timeZoneStrategy = $timeZoneStrategy;
+        $obj['timeZoneStrategy'] = $timeZoneStrategy;
 
         return $obj;
     }

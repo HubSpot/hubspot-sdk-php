@@ -56,7 +56,7 @@ final class CardActions implements BaseModel
     {
         $obj = new self;
 
-        $obj->baseUrls = $baseUrls;
+        $obj['baseUrls'] = $baseUrls;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class CardActions implements BaseModel
     public function withBaseURLs(array $baseURLs): self
     {
         $obj = clone $this;
-        $obj->baseUrls = $baseURLs;
+        $obj['baseUrls'] = $baseURLs;
 
         return $obj;
     }

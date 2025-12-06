@@ -4,19 +4,57 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
+use HubspotSDK\Automation\Workflows\APIBlockedDate\Month;
+use HubspotSDK\Automation\Workflows\APIMonthlyRelativeDaysEnrollmentSchedule\MonthlyRelativeDays;
 use HubspotSDK\Automation\Workflows\APIPlatformFlowPutRequest\Action;
 use HubspotSDK\Automation\Workflows\APIPlatformFlowPutRequest\Type;
+use HubspotSDK\Automation\Workflows\APITimeWindow\Day;
+use HubspotSDK\Automation\Workflows\APIWeeklyEnrollmentSchedule\DaysOfWeek;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PublicAbsoluteComparativeTimestampRefineBy;
+use HubspotSDK\PublicAbsoluteRangedTimestampRefineBy;
+use HubspotSDK\PublicAdsSearchFilter;
+use HubspotSDK\PublicAdsTimeFilter;
+use HubspotSDK\PublicAllHistoryRefineBy;
 use HubspotSDK\PublicAndFilterBranch;
 use HubspotSDK\PublicAssociationFilterBranch;
+use HubspotSDK\PublicAssociationInListFilter;
+use HubspotSDK\PublicCampaignInfluencedFilter;
+use HubspotSDK\PublicCommunicationSubscriptionFilter;
+use HubspotSDK\PublicConstantFilter;
+use HubspotSDK\PublicCtaAnalyticsFilter;
+use HubspotSDK\PublicEmailEventFilter;
+use HubspotSDK\PublicEmailSubscriptionFilter;
+use HubspotSDK\PublicEventAnalyticsFilter;
+use HubspotSDK\PublicFormSubmissionFilter;
+use HubspotSDK\PublicFormSubmissionOnPageFilter;
+use HubspotSDK\PublicInListFilter;
+use HubspotSDK\PublicIntegrationEventFilter;
 use HubspotSDK\PublicNotAllFilterBranch;
 use HubspotSDK\PublicNotAnyFilterBranch;
+use HubspotSDK\PublicNumAssociationsFilter;
+use HubspotSDK\PublicNumOccurrencesRefineBy;
 use HubspotSDK\PublicOrFilterBranch;
+use HubspotSDK\PublicOrFilterBranch\FilterBranchType;
+use HubspotSDK\PublicPageViewAnalyticsFilter;
+use HubspotSDK\PublicPrivacyAnalyticsFilter;
 use HubspotSDK\PublicPropertyAssociationFilterBranch;
+use HubspotSDK\PublicPropertyAssociationInListFilter;
+use HubspotSDK\PublicPropertyFilter;
+use HubspotSDK\PublicRangedTimeOperation;
+use HubspotSDK\PublicRelativeComparativeTimestampRefineBy;
+use HubspotSDK\PublicRelativeRangedTimestampRefineBy;
 use HubspotSDK\PublicRestrictedFilterBranch;
+use HubspotSDK\PublicSetOccurrencesRefineBy;
+use HubspotSDK\PublicSurveyMonkeyFilter;
+use HubspotSDK\PublicSurveyMonkeyValueFilter;
+use HubspotSDK\PublicTimePointOperation;
+use HubspotSDK\PublicUnifiedEventsFilter;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
+use HubspotSDK\PublicUnifiedEventsFilterBranch\Operator;
+use HubspotSDK\PublicWebinarFilter;
 
 /**
  * @phpstan-type APIPlatformFlowPutRequestShape = array{
@@ -128,10 +166,108 @@ final class APIPlatformFlowPutRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $actions
-     * @param list<APIBlockedDate> $blockedDates
+     * @param list<APIBlockedDate|array{
+     *   dayOfMonth: int, month: value-of<Month>, year?: int|null
+     * }> $blockedDates
      * @param array<string,string> $customProperties
-     * @param list<APITimeWindow> $timeWindows
+     * @param list<APITimeWindow|array{
+     *   day: value-of<Day>, endTime?: APITimeOfDay|null, startTime?: APITimeOfDay|null
+     * }> $timeWindows
      * @param Type|value-of<Type> $type
+     * @param APIListBasedEnrollmentCriteria|array{
+     *   listFilterBranch: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+     *   reEnrollmentTriggersFilterBranches: list<mixed>,
+     *   shouldReEnroll: bool,
+     *   type: value-of<APIListBasedEnrollmentCriteria\Type>,
+     *   unEnrollObjectsNotMeetingCriteria: bool,
+     * }|APIEventBasedEnrollmentCriteria|array{
+     *   eventFilterBranches: list<mixed>,
+     *   listMembershipFilterBranches: list<mixed>,
+     *   shouldReEnroll: bool,
+     *   type: value-of<APIEventBasedEnrollmentCriteria\Type>,
+     *   refinementCriteria?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null,
+     * }|APIManualEnrollmentCriteria|array{
+     *   shouldReEnroll: bool,
+     *   type: value-of<APIManualEnrollmentCriteria\Type>,
+     * } $enrollmentCriteria
+     * @param APIDailyEnrollmentSchedule|array{
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIDailyEnrollmentSchedule\Type>,
+     * }|APIWeeklyEnrollmentSchedule|array{
+     *   daysOfWeek: list<value-of<DaysOfWeek>>,
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIWeeklyEnrollmentSchedule\Type>,
+     * }|APIMonthlySpecificDaysEnrollmentSchedule|array{
+     *   daysOfMonth: list<int>,
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIMonthlySpecificDaysEnrollmentSchedule\Type>,
+     * }|APIMonthlyRelativeDaysEnrollmentSchedule|array{
+     *   monthlyRelativeDays: value-of<MonthlyRelativeDays>,
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIMonthlyRelativeDaysEnrollmentSchedule\Type>,
+     * }|APIYearlyEnrollmentSchedule|array{
+     *   dayOfMonth: int,
+     *   month: value-of<APIYearlyEnrollmentSchedule\Month>,
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIYearlyEnrollmentSchedule\Type>,
+     * }|APIPropertyBasedEnrollmentSchedule|array{
+     *   dateProperty: string,
+     *   daysDelta: int,
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIPropertyBasedEnrollmentSchedule\Type>,
+     *   yearly: bool,
+     * } $enrollmentSchedule
+     * @param PublicOrFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     * }|PublicAndFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicAndFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     * }|PublicNotAllFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicNotAllFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     * }|PublicNotAnyFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicNotAnyFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     * }|PublicRestrictedFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     * }|PublicUnifiedEventsFilterBranch|array{
+     *   eventTypeId: string,
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     *   operator: value-of<Operator>,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicPropertyAssociationFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     *   objectTypeId: string,
+     *   operator: string,
+     *   propertyWithObjectId: string,
+     * }|PublicAssociationFilterBranch|array{
+     *   associationCategory: string,
+     *   associationTypeId: int,
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     *   objectTypeId: string,
+     *   operator: string,
+     * } $suppressionFilterBranch
      */
     public static function with(
         array $actions,
@@ -142,30 +278,30 @@ final class APIPlatformFlowPutRequest implements BaseModel
         array $timeWindows,
         Type|string $type = 'PLATFORM_FLOW',
         ?string $description = null,
-        APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria = null,
-        APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule = null,
+        APIListBasedEnrollmentCriteria|array|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria = null,
+        APIDailyEnrollmentSchedule|array|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule = null,
         ?string $name = null,
         ?string $startActionId = null,
-        PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch = null,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch = null,
         ?string $uuid = null,
     ): self {
         $obj = new self;
 
-        $obj->actions = $actions;
-        $obj->blockedDates = $blockedDates;
-        $obj->customProperties = $customProperties;
-        $obj->isEnabled = $isEnabled;
-        $obj->revisionId = $revisionId;
-        $obj->timeWindows = $timeWindows;
+        $obj['actions'] = $actions;
+        $obj['blockedDates'] = $blockedDates;
+        $obj['customProperties'] = $customProperties;
+        $obj['isEnabled'] = $isEnabled;
+        $obj['revisionId'] = $revisionId;
+        $obj['timeWindows'] = $timeWindows;
         $obj['type'] = $type;
 
-        null !== $description && $obj->description = $description;
-        null !== $enrollmentCriteria && $obj->enrollmentCriteria = $enrollmentCriteria;
-        null !== $enrollmentSchedule && $obj->enrollmentSchedule = $enrollmentSchedule;
-        null !== $name && $obj->name = $name;
-        null !== $startActionId && $obj->startActionId = $startActionId;
-        null !== $suppressionFilterBranch && $obj->suppressionFilterBranch = $suppressionFilterBranch;
-        null !== $uuid && $obj->uuid = $uuid;
+        null !== $description && $obj['description'] = $description;
+        null !== $enrollmentCriteria && $obj['enrollmentCriteria'] = $enrollmentCriteria;
+        null !== $enrollmentSchedule && $obj['enrollmentSchedule'] = $enrollmentSchedule;
+        null !== $name && $obj['name'] = $name;
+        null !== $startActionId && $obj['startActionId'] = $startActionId;
+        null !== $suppressionFilterBranch && $obj['suppressionFilterBranch'] = $suppressionFilterBranch;
+        null !== $uuid && $obj['uuid'] = $uuid;
 
         return $obj;
     }
@@ -176,18 +312,20 @@ final class APIPlatformFlowPutRequest implements BaseModel
     public function withActions(array $actions): self
     {
         $obj = clone $this;
-        $obj->actions = $actions;
+        $obj['actions'] = $actions;
 
         return $obj;
     }
 
     /**
-     * @param list<APIBlockedDate> $blockedDates
+     * @param list<APIBlockedDate|array{
+     *   dayOfMonth: int, month: value-of<Month>, year?: int|null
+     * }> $blockedDates
      */
     public function withBlockedDates(array $blockedDates): self
     {
         $obj = clone $this;
-        $obj->blockedDates = $blockedDates;
+        $obj['blockedDates'] = $blockedDates;
 
         return $obj;
     }
@@ -198,7 +336,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
     public function withCustomProperties(array $customProperties): self
     {
         $obj = clone $this;
-        $obj->customProperties = $customProperties;
+        $obj['customProperties'] = $customProperties;
 
         return $obj;
     }
@@ -206,7 +344,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
     public function withIsEnabled(bool $isEnabled): self
     {
         $obj = clone $this;
-        $obj->isEnabled = $isEnabled;
+        $obj['isEnabled'] = $isEnabled;
 
         return $obj;
     }
@@ -214,18 +352,20 @@ final class APIPlatformFlowPutRequest implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj->revisionId = $revisionID;
+        $obj['revisionId'] = $revisionID;
 
         return $obj;
     }
 
     /**
-     * @param list<APITimeWindow> $timeWindows
+     * @param list<APITimeWindow|array{
+     *   day: value-of<Day>, endTime?: APITimeOfDay|null, startTime?: APITimeOfDay|null
+     * }> $timeWindows
      */
     public function withTimeWindows(array $timeWindows): self
     {
         $obj = clone $this;
-        $obj->timeWindows = $timeWindows;
+        $obj['timeWindows'] = $timeWindows;
 
         return $obj;
     }
@@ -244,25 +384,72 @@ final class APIPlatformFlowPutRequest implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
 
+    /**
+     * @param APIListBasedEnrollmentCriteria|array{
+     *   listFilterBranch: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+     *   reEnrollmentTriggersFilterBranches: list<mixed>,
+     *   shouldReEnroll: bool,
+     *   type: value-of<APIListBasedEnrollmentCriteria\Type>,
+     *   unEnrollObjectsNotMeetingCriteria: bool,
+     * }|APIEventBasedEnrollmentCriteria|array{
+     *   eventFilterBranches: list<mixed>,
+     *   listMembershipFilterBranches: list<mixed>,
+     *   shouldReEnroll: bool,
+     *   type: value-of<APIEventBasedEnrollmentCriteria\Type>,
+     *   refinementCriteria?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null,
+     * }|APIManualEnrollmentCriteria|array{
+     *   shouldReEnroll: bool,
+     *   type: value-of<APIManualEnrollmentCriteria\Type>,
+     * } $enrollmentCriteria
+     */
     public function withEnrollmentCriteria(
-        APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria $enrollmentCriteria,
+        APIListBasedEnrollmentCriteria|array|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria $enrollmentCriteria,
     ): self {
         $obj = clone $this;
-        $obj->enrollmentCriteria = $enrollmentCriteria;
+        $obj['enrollmentCriteria'] = $enrollmentCriteria;
 
         return $obj;
     }
 
+    /**
+     * @param APIDailyEnrollmentSchedule|array{
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIDailyEnrollmentSchedule\Type>,
+     * }|APIWeeklyEnrollmentSchedule|array{
+     *   daysOfWeek: list<value-of<DaysOfWeek>>,
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIWeeklyEnrollmentSchedule\Type>,
+     * }|APIMonthlySpecificDaysEnrollmentSchedule|array{
+     *   daysOfMonth: list<int>,
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIMonthlySpecificDaysEnrollmentSchedule\Type>,
+     * }|APIMonthlyRelativeDaysEnrollmentSchedule|array{
+     *   monthlyRelativeDays: value-of<MonthlyRelativeDays>,
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIMonthlyRelativeDaysEnrollmentSchedule\Type>,
+     * }|APIYearlyEnrollmentSchedule|array{
+     *   dayOfMonth: int,
+     *   month: value-of<APIYearlyEnrollmentSchedule\Month>,
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIYearlyEnrollmentSchedule\Type>,
+     * }|APIPropertyBasedEnrollmentSchedule|array{
+     *   dateProperty: string,
+     *   daysDelta: int,
+     *   timeOfDay: APITimeOfDay,
+     *   type: value-of<APIPropertyBasedEnrollmentSchedule\Type>,
+     *   yearly: bool,
+     * } $enrollmentSchedule
+     */
     public function withEnrollmentSchedule(
-        APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule $enrollmentSchedule,
+        APIDailyEnrollmentSchedule|array|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule $enrollmentSchedule,
     ): self {
         $obj = clone $this;
-        $obj->enrollmentSchedule = $enrollmentSchedule;
+        $obj['enrollmentSchedule'] = $enrollmentSchedule;
 
         return $obj;
     }
@@ -270,7 +457,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -278,16 +465,69 @@ final class APIPlatformFlowPutRequest implements BaseModel
     public function withStartActionID(string $startActionID): self
     {
         $obj = clone $this;
-        $obj->startActionId = $startActionID;
+        $obj['startActionId'] = $startActionID;
 
         return $obj;
     }
 
+    /**
+     * @param PublicOrFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     * }|PublicAndFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicAndFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     * }|PublicNotAllFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicNotAllFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     * }|PublicNotAnyFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicNotAnyFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     * }|PublicRestrictedFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     * }|PublicUnifiedEventsFilterBranch|array{
+     *   eventTypeId: string,
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     *   operator: value-of<Operator>,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicPropertyAssociationFilterBranch|array{
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     *   objectTypeId: string,
+     *   operator: string,
+     *   propertyWithObjectId: string,
+     * }|PublicAssociationFilterBranch|array{
+     *   associationCategory: string,
+     *   associationTypeId: int,
+     *   filterBranches: list<mixed>,
+     *   filterBranchOperator: string,
+     *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
+     *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
+     *   objectTypeId: string,
+     *   operator: string,
+     * } $suppressionFilterBranch
+     */
     public function withSuppressionFilterBranch(
-        PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $suppressionFilterBranch,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $suppressionFilterBranch,
     ): self {
         $obj = clone $this;
-        $obj->suppressionFilterBranch = $suppressionFilterBranch;
+        $obj['suppressionFilterBranch'] = $suppressionFilterBranch;
 
         return $obj;
     }
@@ -295,7 +535,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
     public function withUuid(string $uuid): self
     {
         $obj = clone $this;
-        $obj->uuid = $uuid;
+        $obj['uuid'] = $uuid;
 
         return $obj;
     }

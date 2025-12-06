@@ -102,14 +102,14 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->enrolledAt = $enrolledAt;
-        $obj->enrolledBy = $enrolledBy;
-        $obj->enrolledByEmail = $enrolledByEmail;
-        $obj->sequenceId = $sequenceId;
-        $obj->sequenceName = $sequenceName;
-        $obj->toEmail = $toEmail;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['enrolledAt'] = $enrolledAt;
+        $obj['enrolledBy'] = $enrolledBy;
+        $obj['enrolledByEmail'] = $enrolledByEmail;
+        $obj['sequenceId'] = $sequenceId;
+        $obj['sequenceName'] = $sequenceName;
+        $obj['toEmail'] = $toEmail;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     public function withEnrolledAt(\DateTimeInterface $enrolledAt): self
     {
         $obj = clone $this;
-        $obj->enrolledAt = $enrolledAt;
+        $obj['enrolledAt'] = $enrolledAt;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     public function withEnrolledBy(string $enrolledBy): self
     {
         $obj = clone $this;
-        $obj->enrolledBy = $enrolledBy;
+        $obj['enrolledBy'] = $enrolledBy;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     public function withEnrolledByEmail(string $enrolledByEmail): self
     {
         $obj = clone $this;
-        $obj->enrolledByEmail = $enrolledByEmail;
+        $obj['enrolledByEmail'] = $enrolledByEmail;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     public function withSequenceID(string $sequenceID): self
     {
         $obj = clone $this;
-        $obj->sequenceId = $sequenceID;
+        $obj['sequenceId'] = $sequenceID;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     public function withSequenceName(string $sequenceName): self
     {
         $obj = clone $this;
-        $obj->sequenceName = $sequenceName;
+        $obj['sequenceName'] = $sequenceName;
 
         return $obj;
     }
@@ -165,7 +165,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     public function withToEmail(string $toEmail): self
     {
         $obj = clone $this;
-        $obj->toEmail = $toEmail;
+        $obj['toEmail'] = $toEmail;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

@@ -121,16 +121,16 @@ final class DomainListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $archived && $obj->archived = $archived;
-        null !== $createdAfter && $obj->createdAfter = $createdAfter;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdBefore && $obj->createdBefore = $createdBefore;
-        null !== $limit && $obj->limit = $limit;
-        null !== $sort && $obj->sort = $sort;
-        null !== $updatedAfter && $obj->updatedAfter = $updatedAfter;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedBefore && $obj->updatedBefore = $updatedBefore;
+        null !== $after && $obj['after'] = $after;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $createdAfter && $obj['createdAfter'] = $createdAfter;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $createdBefore && $obj['createdBefore'] = $createdBefore;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $sort && $obj['sort'] = $sort;
+        null !== $updatedAfter && $obj['updatedAfter'] = $updatedAfter;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $updatedBefore && $obj['updatedBefore'] = $updatedBefore;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class DomainListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class DomainListParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class DomainListParams implements BaseModel
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $obj = clone $this;
-        $obj->createdAfter = $createdAfter;
+        $obj['createdAfter'] = $createdAfter;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class DomainListParams implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class DomainListParams implements BaseModel
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
         $obj = clone $this;
-        $obj->createdBefore = $createdBefore;
+        $obj['createdBefore'] = $createdBefore;
 
         return $obj;
     }
@@ -196,7 +196,7 @@ final class DomainListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -209,7 +209,7 @@ final class DomainListParams implements BaseModel
     public function withSort(array $sort): self
     {
         $obj = clone $this;
-        $obj->sort = $sort;
+        $obj['sort'] = $sort;
 
         return $obj;
     }
@@ -220,7 +220,7 @@ final class DomainListParams implements BaseModel
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
         $obj = clone $this;
-        $obj->updatedAfter = $updatedAfter;
+        $obj['updatedAfter'] = $updatedAfter;
 
         return $obj;
     }
@@ -231,7 +231,7 @@ final class DomainListParams implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -242,7 +242,7 @@ final class DomainListParams implements BaseModel
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
         $obj = clone $this;
-        $obj->updatedBefore = $updatedBefore;
+        $obj['updatedBefore'] = $updatedBefore;
 
         return $obj;
     }

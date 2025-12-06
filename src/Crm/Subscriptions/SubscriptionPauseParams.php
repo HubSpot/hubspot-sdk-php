@@ -39,7 +39,7 @@ final class SubscriptionPauseParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $pauseReason && $obj->pauseReason = $pauseReason;
+        null !== $pauseReason && $obj['pauseReason'] = $pauseReason;
 
         return $obj;
     }
@@ -47,7 +47,7 @@ final class SubscriptionPauseParams implements BaseModel
     public function withPauseReason(string $pauseReason): self
     {
         $obj = clone $this;
-        $obj->pauseReason = $pauseReason;
+        $obj['pauseReason'] = $pauseReason;
 
         return $obj;
     }

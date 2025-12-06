@@ -63,9 +63,9 @@ final class PublicConstantFilter implements BaseModel
         $obj = new self;
 
         $obj['filterType'] = $filterType;
-        $obj->shouldAccept = $shouldAccept;
+        $obj['shouldAccept'] = $shouldAccept;
 
-        null !== $source && $obj->source = $source;
+        null !== $source && $obj['source'] = $source;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class PublicConstantFilter implements BaseModel
     public function withShouldAccept(bool $shouldAccept): self
     {
         $obj = clone $this;
-        $obj->shouldAccept = $shouldAccept;
+        $obj['shouldAccept'] = $shouldAccept;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class PublicConstantFilter implements BaseModel
     public function withSource(string $source): self
     {
         $obj = clone $this;
-        $obj->source = $source;
+        $obj['source'] = $source;
 
         return $obj;
     }

@@ -57,7 +57,7 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
     {
         $obj = new self;
 
-        $obj->enablementByObjectTypeId = $enablementByObjectTypeId;
+        $obj['enablementByObjectTypeId'] = $enablementByObjectTypeId;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
         array $enablementByObjectTypeID
     ): self {
         $obj = clone $this;
-        $obj->enablementByObjectTypeId = $enablementByObjectTypeID;
+        $obj['enablementByObjectTypeId'] = $enablementByObjectTypeID;
 
         return $obj;
     }

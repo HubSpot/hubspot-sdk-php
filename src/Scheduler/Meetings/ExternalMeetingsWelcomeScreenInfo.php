@@ -56,11 +56,11 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $description && $obj->description = $description;
-        null !== $logoUrl && $obj->logoUrl = $logoUrl;
-        null !== $showWelcomeScreen && $obj->showWelcomeScreen = $showWelcomeScreen;
-        null !== $title && $obj->title = $title;
-        null !== $useCompanyLogo && $obj->useCompanyLogo = $useCompanyLogo;
+        null !== $description && $obj['description'] = $description;
+        null !== $logoUrl && $obj['logoUrl'] = $logoUrl;
+        null !== $showWelcomeScreen && $obj['showWelcomeScreen'] = $showWelcomeScreen;
+        null !== $title && $obj['title'] = $title;
+        null !== $useCompanyLogo && $obj['useCompanyLogo'] = $useCompanyLogo;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
     public function withLogoURL(string $logoURL): self
     {
         $obj = clone $this;
-        $obj->logoUrl = $logoURL;
+        $obj['logoUrl'] = $logoURL;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
     public function withShowWelcomeScreen(bool $showWelcomeScreen): self
     {
         $obj = clone $this;
-        $obj->showWelcomeScreen = $showWelcomeScreen;
+        $obj['showWelcomeScreen'] = $showWelcomeScreen;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
     public function withTitle(string $title): self
     {
         $obj = clone $this;
-        $obj->title = $title;
+        $obj['title'] = $title;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
     public function withUseCompanyLogo(bool $useCompanyLogo): self
     {
         $obj = clone $this;
-        $obj->useCompanyLogo = $useCompanyLogo;
+        $obj['useCompanyLogo'] = $useCompanyLogo;
 
         return $obj;
     }

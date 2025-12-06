@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\Companies;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\PublicAssociationsForObject;
+use HubspotSDK\PublicObjectID;
 
 /**
  * Create a single company. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the company, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
@@ -16,7 +18,9 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
  * @see HubspotSDK\Services\Crm\Objects\CompaniesService::create()
  *
  * @phpstan-type CompanyCreateParamsShape = array{
- *   associations: list<PublicAssociationsForObject>,
+ *   associations: list<PublicAssociationsForObject|array{
+ *     to: PublicObjectID, types: list<AssociationSpec>
+ *   }>,
  *   properties: array<string,string>,
  * }
  */
@@ -62,26 +66,30 @@ final class CompanyCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject|array{
+     *   to: PublicObjectID, types: list<AssociationSpec>
+     * }> $associations
      * @param array<string,string> $properties
      */
     public static function with(array $associations, array $properties): self
     {
         $obj = new self;
 
-        $obj->associations = $associations;
-        $obj->properties = $properties;
+        $obj['associations'] = $associations;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject|array{
+     *   to: PublicObjectID, types: list<AssociationSpec>
+     * }> $associations
      */
     public function withAssociations(array $associations): self
     {
         $obj = clone $this;
-        $obj->associations = $associations;
+        $obj['associations'] = $associations;
 
         return $obj;
     }
@@ -94,7 +102,7 @@ final class CompanyCreateParams implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

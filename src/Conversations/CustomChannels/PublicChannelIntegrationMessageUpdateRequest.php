@@ -64,7 +64,7 @@ final class PublicChannelIntegrationMessageUpdateRequest implements BaseModel
 
         $obj['statusType'] = $statusType;
 
-        null !== $errorMessage && $obj->errorMessage = $errorMessage;
+        null !== $errorMessage && $obj['errorMessage'] = $errorMessage;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class PublicChannelIntegrationMessageUpdateRequest implements BaseModel
     public function withErrorMessage(string $errorMessage): self
     {
         $obj = clone $this;
-        $obj->errorMessage = $errorMessage;
+        $obj['errorMessage'] = $errorMessage;
 
         return $obj;
     }

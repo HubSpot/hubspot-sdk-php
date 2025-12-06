@@ -65,11 +65,11 @@ final class MarketingEventAssociation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->marketingEventId = $marketingEventId;
-        $obj->name = $name;
+        $obj['marketingEventId'] = $marketingEventId;
+        $obj['name'] = $name;
 
-        null !== $externalAccountId && $obj->externalAccountId = $externalAccountId;
-        null !== $externalEventId && $obj->externalEventId = $externalEventId;
+        null !== $externalAccountId && $obj['externalAccountId'] = $externalAccountId;
+        null !== $externalEventId && $obj['externalEventId'] = $externalEventId;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class MarketingEventAssociation implements BaseModel
     public function withMarketingEventID(string $marketingEventID): self
     {
         $obj = clone $this;
-        $obj->marketingEventId = $marketingEventID;
+        $obj['marketingEventId'] = $marketingEventID;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class MarketingEventAssociation implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class MarketingEventAssociation implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountId = $externalAccountID;
+        $obj['externalAccountId'] = $externalAccountID;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class MarketingEventAssociation implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventId = $externalEventID;
+        $obj['externalEventId'] = $externalEventID;
 
         return $obj;
     }

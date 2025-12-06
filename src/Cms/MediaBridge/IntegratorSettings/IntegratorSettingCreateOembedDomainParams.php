@@ -16,7 +16,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::createOembedDomain()
  *
  * @phpstan-type IntegratorSettingCreateOembedDomainParamsShape = array{
- *   endpoints: Endpoints, portalId?: int
+ *   endpoints: Endpoints|array{
+ *     discovery: bool, schemes: list<string>, url: string
+ *   },
+ *   portalId?: int,
  * }
  */
 final class IntegratorSettingCreateOembedDomainParams implements BaseModel
@@ -54,24 +57,33 @@ final class IntegratorSettingCreateOembedDomainParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Endpoints|array{
+     *   discovery: bool, schemes: list<string>, url: string
+     * } $endpoints
      */
     public static function with(
-        Endpoints $endpoints,
+        Endpoints|array $endpoints,
         ?int $portalId = null
     ): self {
         $obj = new self;
 
-        $obj->endpoints = $endpoints;
+        $obj['endpoints'] = $endpoints;
 
-        null !== $portalId && $obj->portalId = $portalId;
+        null !== $portalId && $obj['portalId'] = $portalId;
 
         return $obj;
     }
 
-    public function withEndpoints(Endpoints $endpoints): self
+    /**
+     * @param Endpoints|array{
+     *   discovery: bool, schemes: list<string>, url: string
+     * } $endpoints
+     */
+    public function withEndpoints(Endpoints|array $endpoints): self
     {
         $obj = clone $this;
-        $obj->endpoints = $endpoints;
+        $obj['endpoints'] = $endpoints;
 
         return $obj;
     }
@@ -79,7 +91,7 @@ final class IntegratorSettingCreateOembedDomainParams implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }

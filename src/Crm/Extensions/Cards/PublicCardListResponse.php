@@ -50,24 +50,42 @@ final class PublicCardListResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCardResponse> $results
+     * @param list<PublicCardResponse|array{
+     *   id: string,
+     *   actions: CardActions,
+     *   auditHistory: list<CardAuditResponse>,
+     *   display: CardDisplayBody,
+     *   fetch: PublicCardFetchBody,
+     *   title: string,
+     *   createdAt?: \DateTimeInterface|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicCardResponse> $results
+     * @param list<PublicCardResponse|array{
+     *   id: string,
+     *   actions: CardActions,
+     *   auditHistory: list<CardAuditResponse>,
+     *   display: CardDisplayBody,
+     *   fetch: PublicCardFetchBody,
+     *   title: string,
+     *   createdAt?: \DateTimeInterface|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

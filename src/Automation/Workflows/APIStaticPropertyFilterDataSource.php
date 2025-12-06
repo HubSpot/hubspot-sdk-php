@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
+use HubspotSDK\Automation\Workflows\APISort\Order;
 use HubspotSDK\Automation\Workflows\APIStaticPropertyFilterDataSource\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -70,22 +71,25 @@ final class APIStaticPropertyFilterDataSource implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
+     * @param APISort|array{
+     *   order: value-of<Order>, property: string, missing?: string|null
+     * } $sortBy
      */
     public static function with(
         string $name,
         string $propertyName,
         string $staticValue,
         Type|string $type = 'STATIC_PROPERTY_FILTER',
-        ?APISort $sortBy = null,
+        APISort|array|null $sortBy = null,
     ): self {
         $obj = new self;
 
-        $obj->name = $name;
-        $obj->propertyName = $propertyName;
-        $obj->staticValue = $staticValue;
+        $obj['name'] = $name;
+        $obj['propertyName'] = $propertyName;
+        $obj['staticValue'] = $staticValue;
         $obj['type'] = $type;
 
-        null !== $sortBy && $obj->sortBy = $sortBy;
+        null !== $sortBy && $obj['sortBy'] = $sortBy;
 
         return $obj;
     }
@@ -93,7 +97,7 @@ final class APIStaticPropertyFilterDataSource implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -101,7 +105,7 @@ final class APIStaticPropertyFilterDataSource implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -109,7 +113,7 @@ final class APIStaticPropertyFilterDataSource implements BaseModel
     public function withStaticValue(string $staticValue): self
     {
         $obj = clone $this;
-        $obj->staticValue = $staticValue;
+        $obj['staticValue'] = $staticValue;
 
         return $obj;
     }
@@ -125,10 +129,15 @@ final class APIStaticPropertyFilterDataSource implements BaseModel
         return $obj;
     }
 
-    public function withSortBy(APISort $sortBy): self
+    /**
+     * @param APISort|array{
+     *   order: value-of<Order>, property: string, missing?: string|null
+     * } $sortBy
+     */
+    public function withSortBy(APISort|array $sortBy): self
     {
         $obj = clone $this;
-        $obj->sortBy = $sortBy;
+        $obj['sortBy'] = $sortBy;
 
         return $obj;
     }

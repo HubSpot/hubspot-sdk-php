@@ -55,8 +55,8 @@ final class PublicCampaignBatchUpdateItem implements BaseModel
     {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->properties = $properties;
+        $obj['id'] = $id;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class PublicCampaignBatchUpdateItem implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class PublicCampaignBatchUpdateItem implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

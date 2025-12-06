@@ -76,15 +76,15 @@ final class IndexOffset implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $days && $obj->days = $days;
-        null !== $hours && $obj->hours = $hours;
-        null !== $milliseconds && $obj->milliseconds = $milliseconds;
-        null !== $minutes && $obj->minutes = $minutes;
-        null !== $months && $obj->months = $months;
-        null !== $quarters && $obj->quarters = $quarters;
-        null !== $seconds && $obj->seconds = $seconds;
-        null !== $weeks && $obj->weeks = $weeks;
-        null !== $years && $obj->years = $years;
+        null !== $days && $obj['days'] = $days;
+        null !== $hours && $obj['hours'] = $hours;
+        null !== $milliseconds && $obj['milliseconds'] = $milliseconds;
+        null !== $minutes && $obj['minutes'] = $minutes;
+        null !== $months && $obj['months'] = $months;
+        null !== $quarters && $obj['quarters'] = $quarters;
+        null !== $seconds && $obj['seconds'] = $seconds;
+        null !== $weeks && $obj['weeks'] = $weeks;
+        null !== $years && $obj['years'] = $years;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class IndexOffset implements BaseModel
     public function withDays(int $days): self
     {
         $obj = clone $this;
-        $obj->days = $days;
+        $obj['days'] = $days;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class IndexOffset implements BaseModel
     public function withHours(int $hours): self
     {
         $obj = clone $this;
-        $obj->hours = $hours;
+        $obj['hours'] = $hours;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class IndexOffset implements BaseModel
     public function withMilliseconds(int $milliseconds): self
     {
         $obj = clone $this;
-        $obj->milliseconds = $milliseconds;
+        $obj['milliseconds'] = $milliseconds;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class IndexOffset implements BaseModel
     public function withMinutes(int $minutes): self
     {
         $obj = clone $this;
-        $obj->minutes = $minutes;
+        $obj['minutes'] = $minutes;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class IndexOffset implements BaseModel
     public function withMonths(int $months): self
     {
         $obj = clone $this;
-        $obj->months = $months;
+        $obj['months'] = $months;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class IndexOffset implements BaseModel
     public function withQuarters(int $quarters): self
     {
         $obj = clone $this;
-        $obj->quarters = $quarters;
+        $obj['quarters'] = $quarters;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class IndexOffset implements BaseModel
     public function withSeconds(int $seconds): self
     {
         $obj = clone $this;
-        $obj->seconds = $seconds;
+        $obj['seconds'] = $seconds;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class IndexOffset implements BaseModel
     public function withWeeks(int $weeks): self
     {
         $obj = clone $this;
-        $obj->weeks = $weeks;
+        $obj['weeks'] = $weeks;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class IndexOffset implements BaseModel
     public function withYears(int $years): self
     {
         $obj = clone $this;
-        $obj->years = $years;
+        $obj['years'] = $years;
 
         return $obj;
     }

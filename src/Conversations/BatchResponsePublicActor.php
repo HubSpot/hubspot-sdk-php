@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
+use HubspotSDK\Conversations\AgentActor\Type;
 use HubspotSDK\Conversations\BatchResponsePublicActor\Status;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -77,7 +78,40 @@ final class BatchResponsePublicActor implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor> $results
+     * @param list<AgentActor|array{
+     *   id: string,
+     *   type: value-of<Type>,
+     *   avatar?: string|null,
+     *   email?: string|null,
+     *   name?: string|null,
+     * }|BotActor|array{
+     *   id: string,
+     *   type: value-of<BotActor\Type>,
+     *   avatar?: string|null,
+     *   name?: string|null,
+     * }|IntegratorActor|array{
+     *   id: string,
+     *   name: string,
+     *   type: value-of<IntegratorActor\Type>,
+     *   avatar?: string|null,
+     * }|SystemActor|array{
+     *   id: string, type: value-of<SystemActor\Type>
+     * }|VisitorActor|array{
+     *   id: string,
+     *   type: value-of<VisitorActor\Type>,
+     *   avatar?: string|null,
+     *   email?: string|null,
+     *   name?: string|null,
+     * }|EmailActor|array{
+     *   id: string,
+     *   email: string,
+     *   type: value-of<EmailActor\Type>,
+     * }|LlmActor|array{
+     *   id: string,
+     *   type: value-of<LlmActor\Type>,
+     *   avatar?: string|null,
+     *   name?: string|null,
+     * }> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -91,13 +125,13 @@ final class BatchResponsePublicActor implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->completedAt = $completedAt;
-        $obj->results = $results;
-        $obj->startedAt = $startedAt;
+        $obj['completedAt'] = $completedAt;
+        $obj['results'] = $results;
+        $obj['startedAt'] = $startedAt;
         $obj['status'] = $status;
 
-        null !== $links && $obj->links = $links;
-        null !== $requestedAt && $obj->requestedAt = $requestedAt;
+        null !== $links && $obj['links'] = $links;
+        null !== $requestedAt && $obj['requestedAt'] = $requestedAt;
 
         return $obj;
     }
@@ -105,18 +139,51 @@ final class BatchResponsePublicActor implements BaseModel
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
-        $obj->completedAt = $completedAt;
+        $obj['completedAt'] = $completedAt;
 
         return $obj;
     }
 
     /**
-     * @param list<AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor> $results
+     * @param list<AgentActor|array{
+     *   id: string,
+     *   type: value-of<Type>,
+     *   avatar?: string|null,
+     *   email?: string|null,
+     *   name?: string|null,
+     * }|BotActor|array{
+     *   id: string,
+     *   type: value-of<BotActor\Type>,
+     *   avatar?: string|null,
+     *   name?: string|null,
+     * }|IntegratorActor|array{
+     *   id: string,
+     *   name: string,
+     *   type: value-of<IntegratorActor\Type>,
+     *   avatar?: string|null,
+     * }|SystemActor|array{
+     *   id: string, type: value-of<SystemActor\Type>
+     * }|VisitorActor|array{
+     *   id: string,
+     *   type: value-of<VisitorActor\Type>,
+     *   avatar?: string|null,
+     *   email?: string|null,
+     *   name?: string|null,
+     * }|EmailActor|array{
+     *   id: string,
+     *   email: string,
+     *   type: value-of<EmailActor\Type>,
+     * }|LlmActor|array{
+     *   id: string,
+     *   type: value-of<LlmActor\Type>,
+     *   avatar?: string|null,
+     *   name?: string|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -124,7 +191,7 @@ final class BatchResponsePublicActor implements BaseModel
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
-        $obj->startedAt = $startedAt;
+        $obj['startedAt'] = $startedAt;
 
         return $obj;
     }
@@ -146,7 +213,7 @@ final class BatchResponsePublicActor implements BaseModel
     public function withLinks(array $links): self
     {
         $obj = clone $this;
-        $obj->links = $links;
+        $obj['links'] = $links;
 
         return $obj;
     }
@@ -154,7 +221,7 @@ final class BatchResponsePublicActor implements BaseModel
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;
-        $obj->requestedAt = $requestedAt;
+        $obj['requestedAt'] = $requestedAt;
 
         return $obj;
     }

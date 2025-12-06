@@ -127,14 +127,14 @@ final class HubDBTableRowV3 implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->childTableId = $childTableId;
-        $obj->createdAt = $createdAt;
-        $obj->name = $name;
-        $obj->path = $path;
-        $obj->publishedAt = $publishedAt;
-        $obj->updatedAt = $updatedAt;
-        $obj->values = $values;
+        $obj['id'] = $id;
+        $obj['childTableId'] = $childTableId;
+        $obj['createdAt'] = $createdAt;
+        $obj['name'] = $name;
+        $obj['path'] = $path;
+        $obj['publishedAt'] = $publishedAt;
+        $obj['updatedAt'] = $updatedAt;
+        $obj['values'] = $values;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class HubDBTableRowV3 implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class HubDBTableRowV3 implements BaseModel
     public function withChildTableID(string $childTableID): self
     {
         $obj = clone $this;
-        $obj->childTableId = $childTableID;
+        $obj['childTableId'] = $childTableID;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class HubDBTableRowV3 implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -178,7 +178,7 @@ final class HubDBTableRowV3 implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -189,7 +189,7 @@ final class HubDBTableRowV3 implements BaseModel
     public function withPath(string $path): self
     {
         $obj = clone $this;
-        $obj->path = $path;
+        $obj['path'] = $path;
 
         return $obj;
     }
@@ -197,7 +197,7 @@ final class HubDBTableRowV3 implements BaseModel
     public function withPublishedAt(\DateTimeInterface $publishedAt): self
     {
         $obj = clone $this;
-        $obj->publishedAt = $publishedAt;
+        $obj['publishedAt'] = $publishedAt;
 
         return $obj;
     }
@@ -208,7 +208,7 @@ final class HubDBTableRowV3 implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -221,7 +221,7 @@ final class HubDBTableRowV3 implements BaseModel
     public function withValues(array $values): self
     {
         $obj = clone $this;
-        $obj->values = $values;
+        $obj['values'] = $values;
 
         return $obj;
     }

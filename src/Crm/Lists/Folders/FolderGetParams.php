@@ -42,7 +42,7 @@ final class FolderGetParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $folderId && $obj->folderId = $folderId;
+        null !== $folderId && $obj['folderId'] = $folderId;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class FolderGetParams implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderId = $folderID;
+        $obj['folderId'] = $folderID;
 
         return $obj;
     }

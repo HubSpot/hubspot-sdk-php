@@ -93,12 +93,12 @@ final class AssetListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->campaignGuid = $campaignGuid;
+        $obj['campaignGuid'] = $campaignGuid;
 
-        null !== $after && $obj->after = $after;
-        null !== $endDate && $obj->endDate = $endDate;
-        null !== $limit && $obj->limit = $limit;
-        null !== $startDate && $obj->startDate = $startDate;
+        null !== $after && $obj['after'] = $after;
+        null !== $endDate && $obj['endDate'] = $endDate;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $startDate && $obj['startDate'] = $startDate;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class AssetListParams implements BaseModel
     public function withCampaignGuid(string $campaignGuid): self
     {
         $obj = clone $this;
-        $obj->campaignGuid = $campaignGuid;
+        $obj['campaignGuid'] = $campaignGuid;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class AssetListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class AssetListParams implements BaseModel
     public function withEndDate(string $endDate): self
     {
         $obj = clone $this;
-        $obj->endDate = $endDate;
+        $obj['endDate'] = $endDate;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class AssetListParams implements BaseModel
     public function withLimit(string $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -154,7 +154,7 @@ final class AssetListParams implements BaseModel
     public function withStartDate(string $startDate): self
     {
         $obj = clone $this;
-        $obj->startDate = $startDate;
+        $obj['startDate'] = $startDate;
 
         return $obj;
     }

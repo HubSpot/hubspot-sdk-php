@@ -111,14 +111,14 @@ final class SendSendParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->eventName = $eventName;
-        $obj->properties = $properties;
+        $obj['eventName'] = $eventName;
+        $obj['properties'] = $properties;
 
-        null !== $email && $obj->email = $email;
-        null !== $objectId && $obj->objectId = $objectId;
-        null !== $occurredAt && $obj->occurredAt = $occurredAt;
-        null !== $utk && $obj->utk = $utk;
-        null !== $uuid && $obj->uuid = $uuid;
+        null !== $email && $obj['email'] = $email;
+        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $occurredAt && $obj['occurredAt'] = $occurredAt;
+        null !== $utk && $obj['utk'] = $utk;
+        null !== $uuid && $obj['uuid'] = $uuid;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class SendSendParams implements BaseModel
     public function withEventName(string $eventName): self
     {
         $obj = clone $this;
-        $obj->eventName = $eventName;
+        $obj['eventName'] = $eventName;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class SendSendParams implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -153,7 +153,7 @@ final class SendSendParams implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -164,7 +164,7 @@ final class SendSendParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -175,7 +175,7 @@ final class SendSendParams implements BaseModel
     public function withOccurredAt(\DateTimeInterface $occurredAt): self
     {
         $obj = clone $this;
-        $obj->occurredAt = $occurredAt;
+        $obj['occurredAt'] = $occurredAt;
 
         return $obj;
     }
@@ -186,7 +186,7 @@ final class SendSendParams implements BaseModel
     public function withUtk(string $utk): self
     {
         $obj = clone $this;
-        $obj->utk = $utk;
+        $obj['utk'] = $utk;
 
         return $obj;
     }
@@ -197,7 +197,7 @@ final class SendSendParams implements BaseModel
     public function withUuid(string $uuid): self
     {
         $obj = clone $this;
-        $obj->uuid = $uuid;
+        $obj['uuid'] = $uuid;
 
         return $obj;
     }

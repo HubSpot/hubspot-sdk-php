@@ -94,13 +94,13 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->acceptedOptStates = $acceptedOptStates;
-        $obj->channel = $channel;
+        $obj['acceptedOptStates'] = $acceptedOptStates;
+        $obj['channel'] = $channel;
         $obj['filterType'] = $filterType;
-        $obj->subscriptionIds = $subscriptionIds;
-        $obj->subscriptionType = $subscriptionType;
+        $obj['subscriptionIds'] = $subscriptionIds;
+        $obj['subscriptionType'] = $subscriptionType;
 
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
     public function withAcceptedOptStates(array $acceptedOptStates): self
     {
         $obj = clone $this;
-        $obj->acceptedOptStates = $acceptedOptStates;
+        $obj['acceptedOptStates'] = $acceptedOptStates;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
     public function withChannel(string $channel): self
     {
         $obj = clone $this;
-        $obj->channel = $channel;
+        $obj['channel'] = $channel;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
     public function withSubscriptionIDs(array $subscriptionIDs): self
     {
         $obj = clone $this;
-        $obj->subscriptionIds = $subscriptionIDs;
+        $obj['subscriptionIds'] = $subscriptionIDs;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
     public function withSubscriptionType(string $subscriptionType): self
     {
         $obj = clone $this;
-        $obj->subscriptionType = $subscriptionType;
+        $obj['subscriptionType'] = $subscriptionType;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
     public function withBusinessUnitID(string $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }

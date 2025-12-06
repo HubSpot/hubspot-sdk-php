@@ -50,7 +50,7 @@ final class PublicObjectRequestOptions implements BaseModel
     {
         $obj = new self;
 
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class PublicObjectRequestOptions implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

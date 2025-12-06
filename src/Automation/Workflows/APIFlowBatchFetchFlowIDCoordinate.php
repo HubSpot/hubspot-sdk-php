@@ -58,7 +58,7 @@ final class APIFlowBatchFetchFlowIDCoordinate implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->flowId = $flowId;
+        $obj['flowId'] = $flowId;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APIFlowBatchFetchFlowIDCoordinate implements BaseModel
     public function withFlowID(string $flowID): self
     {
         $obj = clone $this;
-        $obj->flowId = $flowID;
+        $obj['flowId'] = $flowID;
 
         return $obj;
     }

@@ -46,24 +46,34 @@ final class BatchInputSimplePublicObjectBatchInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param list<SimplePublicObjectBatchInput|array{
+     *   id: string,
+     *   properties: array<string,string>,
+     *   idProperty?: string|null,
+     *   objectWriteTraceId?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInput> $inputs
+     * @param list<SimplePublicObjectBatchInput|array{
+     *   id: string,
+     *   properties: array<string,string>,
+     *   idProperty?: string|null,
+     *   objectWriteTraceId?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

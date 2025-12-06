@@ -63,9 +63,9 @@ final class PublicWebinarFilter implements BaseModel
         $obj = new self;
 
         $obj['filterType'] = $filterType;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
-        null !== $webinarId && $obj->webinarId = $webinarId;
+        null !== $webinarId && $obj['webinarId'] = $webinarId;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class PublicWebinarFilter implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class PublicWebinarFilter implements BaseModel
     public function withWebinarID(string $webinarID): self
     {
         $obj = clone $this;
-        $obj->webinarId = $webinarID;
+        $obj['webinarId'] = $webinarID;
 
         return $obj;
     }

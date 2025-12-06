@@ -62,8 +62,8 @@ final class APIActionDataValue implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->actionId = $actionId;
-        $obj->dataKey = $dataKey;
+        $obj['actionId'] = $actionId;
+        $obj['dataKey'] = $dataKey;
         $obj['type'] = $type;
 
         return $obj;
@@ -72,7 +72,7 @@ final class APIActionDataValue implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionId = $actionID;
+        $obj['actionId'] = $actionID;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class APIActionDataValue implements BaseModel
     public function withDataKey(string $dataKey): self
     {
         $obj = clone $this;
-        $obj->dataKey = $dataKey;
+        $obj['dataKey'] = $dataKey;
 
         return $obj;
     }

@@ -47,32 +47,61 @@ final class ParticipationAssociations implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param ContactAssociation|array{
+     *   contactId: string,
+     *   email: string,
+     *   firstname?: string|null,
+     *   lastname?: string|null,
+     * } $contact
+     * @param MarketingEventAssociation|array{
+     *   marketingEventId: string,
+     *   name: string,
+     *   externalAccountId?: string|null,
+     *   externalEventId?: string|null,
+     * } $marketingEvent
      */
     public static function with(
-        ContactAssociation $contact,
-        MarketingEventAssociation $marketingEvent
+        ContactAssociation|array $contact,
+        MarketingEventAssociation|array $marketingEvent,
     ): self {
         $obj = new self;
 
-        $obj->contact = $contact;
-        $obj->marketingEvent = $marketingEvent;
+        $obj['contact'] = $contact;
+        $obj['marketingEvent'] = $marketingEvent;
 
         return $obj;
     }
 
-    public function withContact(ContactAssociation $contact): self
+    /**
+     * @param ContactAssociation|array{
+     *   contactId: string,
+     *   email: string,
+     *   firstname?: string|null,
+     *   lastname?: string|null,
+     * } $contact
+     */
+    public function withContact(ContactAssociation|array $contact): self
     {
         $obj = clone $this;
-        $obj->contact = $contact;
+        $obj['contact'] = $contact;
 
         return $obj;
     }
 
+    /**
+     * @param MarketingEventAssociation|array{
+     *   marketingEventId: string,
+     *   name: string,
+     *   externalAccountId?: string|null,
+     *   externalEventId?: string|null,
+     * } $marketingEvent
+     */
     public function withMarketingEvent(
-        MarketingEventAssociation $marketingEvent
+        MarketingEventAssociation|array $marketingEvent
     ): self {
         $obj = clone $this;
-        $obj->marketingEvent = $marketingEvent;
+        $obj['marketingEvent'] = $marketingEvent;
 
         return $obj;
     }

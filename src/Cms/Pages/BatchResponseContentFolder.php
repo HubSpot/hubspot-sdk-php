@@ -77,7 +77,15 @@ final class BatchResponseContentFolder implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentFolder> $results
+     * @param list<ContentFolder|array{
+     *   id: string,
+     *   category: int,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   name: string,
+     *   parentFolderId: int,
+     *   updated: \DateTimeInterface,
+     * }> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -91,13 +99,13 @@ final class BatchResponseContentFolder implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->completedAt = $completedAt;
-        $obj->results = $results;
-        $obj->startedAt = $startedAt;
+        $obj['completedAt'] = $completedAt;
+        $obj['results'] = $results;
+        $obj['startedAt'] = $startedAt;
         $obj['status'] = $status;
 
-        null !== $links && $obj->links = $links;
-        null !== $requestedAt && $obj->requestedAt = $requestedAt;
+        null !== $links && $obj['links'] = $links;
+        null !== $requestedAt && $obj['requestedAt'] = $requestedAt;
 
         return $obj;
     }
@@ -105,18 +113,26 @@ final class BatchResponseContentFolder implements BaseModel
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
-        $obj->completedAt = $completedAt;
+        $obj['completedAt'] = $completedAt;
 
         return $obj;
     }
 
     /**
-     * @param list<ContentFolder> $results
+     * @param list<ContentFolder|array{
+     *   id: string,
+     *   category: int,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   name: string,
+     *   parentFolderId: int,
+     *   updated: \DateTimeInterface,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -124,7 +140,7 @@ final class BatchResponseContentFolder implements BaseModel
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
-        $obj->startedAt = $startedAt;
+        $obj['startedAt'] = $startedAt;
 
         return $obj;
     }
@@ -146,7 +162,7 @@ final class BatchResponseContentFolder implements BaseModel
     public function withLinks(array $links): self
     {
         $obj = clone $this;
-        $obj->links = $links;
+        $obj['links'] = $links;
 
         return $obj;
     }
@@ -154,7 +170,7 @@ final class BatchResponseContentFolder implements BaseModel
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;
-        $obj->requestedAt = $requestedAt;
+        $obj['requestedAt'] = $requestedAt;
 
         return $obj;
     }

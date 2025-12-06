@@ -53,7 +53,7 @@ final class SequenceGetParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->userId = $userId;
+        $obj['userId'] = $userId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class SequenceGetParams implements BaseModel
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }

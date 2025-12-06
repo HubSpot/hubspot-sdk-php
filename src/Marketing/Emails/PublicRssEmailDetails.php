@@ -81,15 +81,15 @@ final class PublicRssEmailDetails implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $blogEmailType && $obj->blogEmailType = $blogEmailType;
-        null !== $blogImageMaxWidth && $obj->blogImageMaxWidth = $blogImageMaxWidth;
-        null !== $blogLayout && $obj->blogLayout = $blogLayout;
-        null !== $hubspotBlogId && $obj->hubspotBlogId = $hubspotBlogId;
-        null !== $maxEntries && $obj->maxEntries = $maxEntries;
-        null !== $rssEntryTemplate && $obj->rssEntryTemplate = $rssEntryTemplate;
-        null !== $timing && $obj->timing = $timing;
-        null !== $url && $obj->url = $url;
-        null !== $useHeadlineAsSubject && $obj->useHeadlineAsSubject = $useHeadlineAsSubject;
+        null !== $blogEmailType && $obj['blogEmailType'] = $blogEmailType;
+        null !== $blogImageMaxWidth && $obj['blogImageMaxWidth'] = $blogImageMaxWidth;
+        null !== $blogLayout && $obj['blogLayout'] = $blogLayout;
+        null !== $hubspotBlogId && $obj['hubspotBlogId'] = $hubspotBlogId;
+        null !== $maxEntries && $obj['maxEntries'] = $maxEntries;
+        null !== $rssEntryTemplate && $obj['rssEntryTemplate'] = $rssEntryTemplate;
+        null !== $timing && $obj['timing'] = $timing;
+        null !== $url && $obj['url'] = $url;
+        null !== $useHeadlineAsSubject && $obj['useHeadlineAsSubject'] = $useHeadlineAsSubject;
 
         return $obj;
     }
@@ -97,7 +97,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withBlogEmailType(string $blogEmailType): self
     {
         $obj = clone $this;
-        $obj->blogEmailType = $blogEmailType;
+        $obj['blogEmailType'] = $blogEmailType;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withBlogImageMaxWidth(int $blogImageMaxWidth): self
     {
         $obj = clone $this;
-        $obj->blogImageMaxWidth = $blogImageMaxWidth;
+        $obj['blogImageMaxWidth'] = $blogImageMaxWidth;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withBlogLayout(string $blogLayout): self
     {
         $obj = clone $this;
-        $obj->blogLayout = $blogLayout;
+        $obj['blogLayout'] = $blogLayout;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withHubspotBlogID(string $hubspotBlogID): self
     {
         $obj = clone $this;
-        $obj->hubspotBlogId = $hubspotBlogID;
+        $obj['hubspotBlogId'] = $hubspotBlogID;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withMaxEntries(int $maxEntries): self
     {
         $obj = clone $this;
-        $obj->maxEntries = $maxEntries;
+        $obj['maxEntries'] = $maxEntries;
 
         return $obj;
     }
@@ -137,7 +137,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withRssEntryTemplate(string $rssEntryTemplate): self
     {
         $obj = clone $this;
-        $obj->rssEntryTemplate = $rssEntryTemplate;
+        $obj['rssEntryTemplate'] = $rssEntryTemplate;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withTiming(array $timing): self
     {
         $obj = clone $this;
-        $obj->timing = $timing;
+        $obj['timing'] = $timing;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }
@@ -164,7 +164,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withUseHeadlineAsSubject(bool $useHeadlineAsSubject): self
     {
         $obj = clone $this;
-        $obj->useHeadlineAsSubject = $useHeadlineAsSubject;
+        $obj['useHeadlineAsSubject'] = $useHeadlineAsSubject;
 
         return $obj;
     }

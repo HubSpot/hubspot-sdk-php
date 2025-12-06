@@ -67,20 +67,21 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
      *
      * @param list<mixed> $results
      * @param Type|value-of<Type> $type
+     * @param BoundedPaging|array{next?: BoundedNextPage|null} $paging
      */
     public static function with(
         array $results,
         int $total,
         Type|string $type = 'RANDOM_ACCESS',
-        ?BoundedPaging $paging = null,
+        BoundedPaging|array|null $paging = null,
     ): self {
         $obj = new self;
 
-        $obj->results = $results;
-        $obj->total = $total;
+        $obj['results'] = $results;
+        $obj['total'] = $total;
         $obj['type'] = $type;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
@@ -91,7 +92,7 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -99,7 +100,7 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }
@@ -115,10 +116,13 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
         return $obj;
     }
 
-    public function withPaging(BoundedPaging $paging): self
+    /**
+     * @param BoundedPaging|array{next?: BoundedNextPage|null} $paging
+     */
+    public function withPaging(BoundedPaging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

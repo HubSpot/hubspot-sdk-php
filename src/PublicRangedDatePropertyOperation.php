@@ -92,12 +92,12 @@ final class PublicRangedDatePropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->lowerBound = $lowerBound;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['lowerBound'] = $lowerBound;
         $obj['operationType'] = $operationType;
-        $obj->operator = $operator;
-        $obj->requiresTimeZoneConversion = $requiresTimeZoneConversion;
-        $obj->upperBound = $upperBound;
+        $obj['operator'] = $operator;
+        $obj['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
+        $obj['upperBound'] = $upperBound;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class PublicRangedDatePropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class PublicRangedDatePropertyOperation implements BaseModel
     public function withLowerBound(int $lowerBound): self
     {
         $obj = clone $this;
-        $obj->lowerBound = $lowerBound;
+        $obj['lowerBound'] = $lowerBound;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class PublicRangedDatePropertyOperation implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class PublicRangedDatePropertyOperation implements BaseModel
         bool $requiresTimeZoneConversion
     ): self {
         $obj = clone $this;
-        $obj->requiresTimeZoneConversion = $requiresTimeZoneConversion;
+        $obj['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class PublicRangedDatePropertyOperation implements BaseModel
     public function withUpperBound(int $upperBound): self
     {
         $obj = clone $this;
-        $obj->upperBound = $upperBound;
+        $obj['upperBound'] = $upperBound;
 
         return $obj;
     }

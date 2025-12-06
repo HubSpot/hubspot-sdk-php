@@ -52,16 +52,19 @@ final class PublicMessageStatus implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param StatusType|value-of<StatusType> $statusType
+     * @param PublicMessageFailureDetails|array{
+     *   errorMessageTokens: array<string,string>, errorMessage?: string|null
+     * } $failureDetails
      */
     public static function with(
         StatusType|string $statusType,
-        ?PublicMessageFailureDetails $failureDetails = null,
+        PublicMessageFailureDetails|array|null $failureDetails = null,
     ): self {
         $obj = new self;
 
         $obj['statusType'] = $statusType;
 
-        null !== $failureDetails && $obj->failureDetails = $failureDetails;
+        null !== $failureDetails && $obj['failureDetails'] = $failureDetails;
 
         return $obj;
     }
@@ -77,11 +80,16 @@ final class PublicMessageStatus implements BaseModel
         return $obj;
     }
 
+    /**
+     * @param PublicMessageFailureDetails|array{
+     *   errorMessageTokens: array<string,string>, errorMessage?: string|null
+     * } $failureDetails
+     */
     public function withFailureDetails(
-        PublicMessageFailureDetails $failureDetails
+        PublicMessageFailureDetails|array $failureDetails
     ): self {
         $obj = clone $this;
-        $obj->failureDetails = $failureDetails;
+        $obj['failureDetails'] = $failureDetails;
 
         return $obj;
     }

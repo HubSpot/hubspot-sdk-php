@@ -79,9 +79,9 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->crmObjectIds = $crmObjectIds;
-        $obj->mappedTemplateId = $mappedTemplateId;
-        $obj->parameters = $parameters;
+        $obj['crmObjectIds'] = $crmObjectIds;
+        $obj['mappedTemplateId'] = $mappedTemplateId;
+        $obj['parameters'] = $parameters;
         $obj['type'] = $type;
 
         return $obj;
@@ -93,7 +93,7 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
     public function withCrmObjectIDs(array $crmObjectIDs): self
     {
         $obj = clone $this;
-        $obj->crmObjectIds = $crmObjectIDs;
+        $obj['crmObjectIds'] = $crmObjectIDs;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
     public function withMappedTemplateID(string $mappedTemplateID): self
     {
         $obj = clone $this;
-        $obj->mappedTemplateId = $mappedTemplateID;
+        $obj['mappedTemplateId'] = $mappedTemplateID;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
     public function withParameters(array $parameters): self
     {
         $obj = clone $this;
-        $obj->parameters = $parameters;
+        $obj['parameters'] = $parameters;
 
         return $obj;
     }

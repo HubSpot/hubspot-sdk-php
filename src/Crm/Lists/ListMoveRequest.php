@@ -56,8 +56,8 @@ final class ListMoveRequest implements BaseModel
     {
         $obj = new self;
 
-        $obj->listId = $listId;
-        $obj->newFolderId = $newFolderId;
+        $obj['listId'] = $listId;
+        $obj['newFolderId'] = $newFolderId;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class ListMoveRequest implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listId = $listID;
+        $obj['listId'] = $listID;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class ListMoveRequest implements BaseModel
     public function withNewFolderID(string $newFolderID): self
     {
         $obj = clone $this;
-        $obj->newFolderId = $newFolderID;
+        $obj['newFolderId'] = $newFolderID;
 
         return $obj;
     }

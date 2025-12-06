@@ -20,7 +20,9 @@ use HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption;
  *   eventTemplateId: string,
  *   label: string,
  *   objectPropertyName?: string,
- *   options?: list<TimelineEventTemplateTokenOption>,
+ *   options?: list<TimelineEventTemplateTokenOption|array{
+ *     label: string, value: string
+ *   }>,
  * }
  */
 final class TokenUpdateParams implements BaseModel
@@ -82,7 +84,9 @@ final class TokenUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventTemplateTokenOption> $options
+     * @param list<TimelineEventTemplateTokenOption|array{
+     *   label: string, value: string
+     * }> $options
      */
     public static function with(
         int $appId,
@@ -93,12 +97,12 @@ final class TokenUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->eventTemplateId = $eventTemplateId;
-        $obj->label = $label;
+        $obj['appId'] = $appId;
+        $obj['eventTemplateId'] = $eventTemplateId;
+        $obj['label'] = $label;
 
-        null !== $objectPropertyName && $obj->objectPropertyName = $objectPropertyName;
-        null !== $options && $obj->options = $options;
+        null !== $objectPropertyName && $obj['objectPropertyName'] = $objectPropertyName;
+        null !== $options && $obj['options'] = $options;
 
         return $obj;
     }
@@ -106,7 +110,7 @@ final class TokenUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -114,7 +118,7 @@ final class TokenUpdateParams implements BaseModel
     public function withEventTemplateID(string $eventTemplateID): self
     {
         $obj = clone $this;
-        $obj->eventTemplateId = $eventTemplateID;
+        $obj['eventTemplateId'] = $eventTemplateID;
 
         return $obj;
     }
@@ -125,7 +129,7 @@ final class TokenUpdateParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -136,7 +140,7 @@ final class TokenUpdateParams implements BaseModel
     public function withObjectPropertyName(string $objectPropertyName): self
     {
         $obj = clone $this;
-        $obj->objectPropertyName = $objectPropertyName;
+        $obj['objectPropertyName'] = $objectPropertyName;
 
         return $obj;
     }
@@ -144,12 +148,14 @@ final class TokenUpdateParams implements BaseModel
     /**
      * If type is `enumeration`, we should have a list of options to choose from.
      *
-     * @param list<TimelineEventTemplateTokenOption> $options
+     * @param list<TimelineEventTemplateTokenOption|array{
+     *   label: string, value: string
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }

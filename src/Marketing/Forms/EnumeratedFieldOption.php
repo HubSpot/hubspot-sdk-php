@@ -74,11 +74,11 @@ final class EnumeratedFieldOption implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->displayOrder = $displayOrder;
-        $obj->label = $label;
-        $obj->value = $value;
+        $obj['displayOrder'] = $displayOrder;
+        $obj['label'] = $label;
+        $obj['value'] = $value;
 
-        null !== $description && $obj->description = $description;
+        null !== $description && $obj['description'] = $description;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class EnumeratedFieldOption implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class EnumeratedFieldOption implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class EnumeratedFieldOption implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class EnumeratedFieldOption implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }

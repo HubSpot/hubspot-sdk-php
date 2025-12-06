@@ -97,6 +97,10 @@ final class PublicChannelAccount implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
      */
     public static function with(
         string $id,
@@ -108,21 +112,21 @@ final class PublicChannelAccount implements BaseModel
         string $inboxId,
         string $name,
         ?\DateTimeInterface $archivedAt = null,
-        ?PublicDeliveryIdentifier $deliveryIdentifier = null,
+        PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->active = $active;
-        $obj->archived = $archived;
-        $obj->authorized = $authorized;
-        $obj->channelId = $channelId;
-        $obj->createdAt = $createdAt;
-        $obj->inboxId = $inboxId;
-        $obj->name = $name;
+        $obj['id'] = $id;
+        $obj['active'] = $active;
+        $obj['archived'] = $archived;
+        $obj['authorized'] = $authorized;
+        $obj['channelId'] = $channelId;
+        $obj['createdAt'] = $createdAt;
+        $obj['inboxId'] = $inboxId;
+        $obj['name'] = $name;
 
-        null !== $archivedAt && $obj->archivedAt = $archivedAt;
-        null !== $deliveryIdentifier && $obj->deliveryIdentifier = $deliveryIdentifier;
+        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
+        null !== $deliveryIdentifier && $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }
@@ -130,7 +134,7 @@ final class PublicChannelAccount implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -138,7 +142,7 @@ final class PublicChannelAccount implements BaseModel
     public function withActive(bool $active): self
     {
         $obj = clone $this;
-        $obj->active = $active;
+        $obj['active'] = $active;
 
         return $obj;
     }
@@ -146,7 +150,7 @@ final class PublicChannelAccount implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -154,7 +158,7 @@ final class PublicChannelAccount implements BaseModel
     public function withAuthorized(bool $authorized): self
     {
         $obj = clone $this;
-        $obj->authorized = $authorized;
+        $obj['authorized'] = $authorized;
 
         return $obj;
     }
@@ -162,7 +166,7 @@ final class PublicChannelAccount implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj->channelId = $channelID;
+        $obj['channelId'] = $channelID;
 
         return $obj;
     }
@@ -170,7 +174,7 @@ final class PublicChannelAccount implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -178,7 +182,7 @@ final class PublicChannelAccount implements BaseModel
     public function withInboxID(string $inboxID): self
     {
         $obj = clone $this;
-        $obj->inboxId = $inboxID;
+        $obj['inboxId'] = $inboxID;
 
         return $obj;
     }
@@ -186,7 +190,7 @@ final class PublicChannelAccount implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -194,16 +198,21 @@ final class PublicChannelAccount implements BaseModel
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
-        $obj->archivedAt = $archivedAt;
+        $obj['archivedAt'] = $archivedAt;
 
         return $obj;
     }
 
+    /**
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
+     */
     public function withDeliveryIdentifier(
-        PublicDeliveryIdentifier $deliveryIdentifier
+        PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
         $obj = clone $this;
-        $obj->deliveryIdentifier = $deliveryIdentifier;
+        $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }

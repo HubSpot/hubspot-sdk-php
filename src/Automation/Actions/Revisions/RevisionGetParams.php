@@ -56,8 +56,8 @@ final class RevisionGetParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->definitionId = $definitionId;
+        $obj['appId'] = $appId;
+        $obj['definitionId'] = $definitionId;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class RevisionGetParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class RevisionGetParams implements BaseModel
     public function withDefinitionID(string $definitionID): self
     {
         $obj = clone $this;
-        $obj->definitionId = $definitionID;
+        $obj['definitionId'] = $definitionID;
 
         return $obj;
     }

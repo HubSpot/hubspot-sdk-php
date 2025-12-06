@@ -52,7 +52,7 @@ final class DetachFromLangGroupRequestVNext implements BaseModel
     {
         $obj = new self;
 
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class DetachFromLangGroupRequestVNext implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }

@@ -74,10 +74,10 @@ final class MessageUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->channelId = $channelId;
+        $obj['channelId'] = $channelId;
         $obj['statusType'] = $statusType;
 
-        null !== $errorMessage && $obj->errorMessage = $errorMessage;
+        null !== $errorMessage && $obj['errorMessage'] = $errorMessage;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class MessageUpdateParams implements BaseModel
     public function withChannelID(int $channelID): self
     {
         $obj = clone $this;
-        $obj->channelId = $channelID;
+        $obj['channelId'] = $channelID;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class MessageUpdateParams implements BaseModel
     public function withErrorMessage(string $errorMessage): self
     {
         $obj = clone $this;
-        $obj->errorMessage = $errorMessage;
+        $obj['errorMessage'] = $errorMessage;
 
         return $obj;
     }

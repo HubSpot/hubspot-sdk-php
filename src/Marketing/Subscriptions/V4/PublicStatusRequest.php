@@ -114,11 +114,11 @@ final class PublicStatusRequest implements BaseModel
 
         $obj['channel'] = $channel;
         $obj['statusState'] = $statusState;
-        $obj->subscriberIdString = $subscriberIdString;
-        $obj->subscriptionId = $subscriptionId;
+        $obj['subscriberIdString'] = $subscriberIdString;
+        $obj['subscriptionId'] = $subscriptionId;
 
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
-        null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
+        null !== $legalBasisExplanation && $obj['legalBasisExplanation'] = $legalBasisExplanation;
 
         return $obj;
     }
@@ -155,7 +155,7 @@ final class PublicStatusRequest implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIdString = $subscriberIDString;
+        $obj['subscriberIdString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class PublicStatusRequest implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionId = $subscriptionID;
+        $obj['subscriptionId'] = $subscriptionID;
 
         return $obj;
     }
@@ -191,7 +191,7 @@ final class PublicStatusRequest implements BaseModel
         string $legalBasisExplanation
     ): self {
         $obj = clone $this;
-        $obj->legalBasisExplanation = $legalBasisExplanation;
+        $obj['legalBasisExplanation'] = $legalBasisExplanation;
 
         return $obj;
     }

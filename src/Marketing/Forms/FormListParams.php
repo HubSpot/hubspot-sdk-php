@@ -74,10 +74,10 @@ final class FormListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $archived && $obj->archived = $archived;
+        null !== $after && $obj['after'] = $after;
+        null !== $archived && $obj['archived'] = $archived;
         null !== $formTypes && $obj['formTypes'] = $formTypes;
-        null !== $limit && $obj->limit = $limit;
+        null !== $limit && $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class FormListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class FormListParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -123,7 +123,7 @@ final class FormListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }

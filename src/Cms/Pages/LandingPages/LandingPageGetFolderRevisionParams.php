@@ -53,7 +53,7 @@ final class LandingPageGetFolderRevisionParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->objectId = $objectId;
+        $obj['objectId'] = $objectId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class LandingPageGetFolderRevisionParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }

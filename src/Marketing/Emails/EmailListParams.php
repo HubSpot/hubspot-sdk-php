@@ -199,26 +199,26 @@ final class EmailListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $archived && $obj->archived = $archived;
-        null !== $campaign && $obj->campaign = $campaign;
-        null !== $createdAfter && $obj->createdAfter = $createdAfter;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdBefore && $obj->createdBefore = $createdBefore;
-        null !== $includedProperties && $obj->includedProperties = $includedProperties;
-        null !== $includeStats && $obj->includeStats = $includeStats;
-        null !== $isPublished && $obj->isPublished = $isPublished;
-        null !== $limit && $obj->limit = $limit;
-        null !== $marketingCampaignNames && $obj->marketingCampaignNames = $marketingCampaignNames;
-        null !== $publishedAfter && $obj->publishedAfter = $publishedAfter;
-        null !== $publishedAt && $obj->publishedAt = $publishedAt;
-        null !== $publishedBefore && $obj->publishedBefore = $publishedBefore;
-        null !== $sort && $obj->sort = $sort;
+        null !== $after && $obj['after'] = $after;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $campaign && $obj['campaign'] = $campaign;
+        null !== $createdAfter && $obj['createdAfter'] = $createdAfter;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $createdBefore && $obj['createdBefore'] = $createdBefore;
+        null !== $includedProperties && $obj['includedProperties'] = $includedProperties;
+        null !== $includeStats && $obj['includeStats'] = $includeStats;
+        null !== $isPublished && $obj['isPublished'] = $isPublished;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $marketingCampaignNames && $obj['marketingCampaignNames'] = $marketingCampaignNames;
+        null !== $publishedAfter && $obj['publishedAfter'] = $publishedAfter;
+        null !== $publishedAt && $obj['publishedAt'] = $publishedAt;
+        null !== $publishedBefore && $obj['publishedBefore'] = $publishedBefore;
+        null !== $sort && $obj['sort'] = $sort;
         null !== $type && $obj['type'] = $type;
-        null !== $updatedAfter && $obj->updatedAfter = $updatedAfter;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedBefore && $obj->updatedBefore = $updatedBefore;
-        null !== $workflowNames && $obj->workflowNames = $workflowNames;
+        null !== $updatedAfter && $obj['updatedAfter'] = $updatedAfter;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $updatedBefore && $obj['updatedBefore'] = $updatedBefore;
+        null !== $workflowNames && $obj['workflowNames'] = $workflowNames;
 
         return $obj;
     }
@@ -229,7 +229,7 @@ final class EmailListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -240,7 +240,7 @@ final class EmailListParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -251,7 +251,7 @@ final class EmailListParams implements BaseModel
     public function withCampaign(string $campaign): self
     {
         $obj = clone $this;
-        $obj->campaign = $campaign;
+        $obj['campaign'] = $campaign;
 
         return $obj;
     }
@@ -262,7 +262,7 @@ final class EmailListParams implements BaseModel
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $obj = clone $this;
-        $obj->createdAfter = $createdAfter;
+        $obj['createdAfter'] = $createdAfter;
 
         return $obj;
     }
@@ -273,7 +273,7 @@ final class EmailListParams implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -284,7 +284,7 @@ final class EmailListParams implements BaseModel
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
         $obj = clone $this;
-        $obj->createdBefore = $createdBefore;
+        $obj['createdBefore'] = $createdBefore;
 
         return $obj;
     }
@@ -297,7 +297,7 @@ final class EmailListParams implements BaseModel
     public function withIncludedProperties(array $includedProperties): self
     {
         $obj = clone $this;
-        $obj->includedProperties = $includedProperties;
+        $obj['includedProperties'] = $includedProperties;
 
         return $obj;
     }
@@ -308,7 +308,7 @@ final class EmailListParams implements BaseModel
     public function withIncludeStats(bool $includeStats): self
     {
         $obj = clone $this;
-        $obj->includeStats = $includeStats;
+        $obj['includeStats'] = $includeStats;
 
         return $obj;
     }
@@ -319,7 +319,7 @@ final class EmailListParams implements BaseModel
     public function withIsPublished(bool $isPublished): self
     {
         $obj = clone $this;
-        $obj->isPublished = $isPublished;
+        $obj['isPublished'] = $isPublished;
 
         return $obj;
     }
@@ -330,7 +330,7 @@ final class EmailListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -342,7 +342,7 @@ final class EmailListParams implements BaseModel
         bool $marketingCampaignNames
     ): self {
         $obj = clone $this;
-        $obj->marketingCampaignNames = $marketingCampaignNames;
+        $obj['marketingCampaignNames'] = $marketingCampaignNames;
 
         return $obj;
     }
@@ -350,7 +350,7 @@ final class EmailListParams implements BaseModel
     public function withPublishedAfter(\DateTimeInterface $publishedAfter): self
     {
         $obj = clone $this;
-        $obj->publishedAfter = $publishedAfter;
+        $obj['publishedAfter'] = $publishedAfter;
 
         return $obj;
     }
@@ -358,7 +358,7 @@ final class EmailListParams implements BaseModel
     public function withPublishedAt(\DateTimeInterface $publishedAt): self
     {
         $obj = clone $this;
-        $obj->publishedAt = $publishedAt;
+        $obj['publishedAt'] = $publishedAt;
 
         return $obj;
     }
@@ -367,7 +367,7 @@ final class EmailListParams implements BaseModel
         \DateTimeInterface $publishedBefore
     ): self {
         $obj = clone $this;
-        $obj->publishedBefore = $publishedBefore;
+        $obj['publishedBefore'] = $publishedBefore;
 
         return $obj;
     }
@@ -380,7 +380,7 @@ final class EmailListParams implements BaseModel
     public function withSort(array $sort): self
     {
         $obj = clone $this;
-        $obj->sort = $sort;
+        $obj['sort'] = $sort;
 
         return $obj;
     }
@@ -404,7 +404,7 @@ final class EmailListParams implements BaseModel
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
         $obj = clone $this;
-        $obj->updatedAfter = $updatedAfter;
+        $obj['updatedAfter'] = $updatedAfter;
 
         return $obj;
     }
@@ -415,7 +415,7 @@ final class EmailListParams implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -426,7 +426,7 @@ final class EmailListParams implements BaseModel
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
         $obj = clone $this;
-        $obj->updatedBefore = $updatedBefore;
+        $obj['updatedBefore'] = $updatedBefore;
 
         return $obj;
     }
@@ -437,7 +437,7 @@ final class EmailListParams implements BaseModel
     public function withWorkflowNames(bool $workflowNames): self
     {
         $obj = clone $this;
-        $obj->workflowNames = $workflowNames;
+        $obj['workflowNames'] = $workflowNames;
 
         return $obj;
     }

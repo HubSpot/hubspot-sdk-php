@@ -58,7 +58,7 @@ final class APIStaticTimeZoneStrategy implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->timeZoneId = $timeZoneId;
+        $obj['timeZoneId'] = $timeZoneId;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APIStaticTimeZoneStrategy implements BaseModel
     public function withTimeZoneID(string $timeZoneID): self
     {
         $obj = clone $this;
-        $obj->timeZoneId = $timeZoneID;
+        $obj['timeZoneId'] = $timeZoneID;
 
         return $obj;
     }

@@ -8,6 +8,7 @@ use HubspotSDK\APIError;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\ErrorDetail;
 
 /**
  * @phpstan-type ImportResultShape = array{
@@ -78,7 +79,15 @@ final class ImportResult implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIError> $errors
+     * @param list<APIError|array{
+     *   category: string,
+     *   correlationId: string,
+     *   message: string,
+     *   context?: array<string,list<string>>|null,
+     *   errors?: list<ErrorDetail>|null,
+     *   links?: array<string,string>|null,
+     *   subCategory?: string|null,
+     * }> $errors
      */
     public static function with(
         int $duplicateRows,
@@ -88,10 +97,10 @@ final class ImportResult implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->duplicateRows = $duplicateRows;
-        $obj->errors = $errors;
-        $obj->rowLimitExceeded = $rowLimitExceeded;
-        $obj->rowsImported = $rowsImported;
+        $obj['duplicateRows'] = $duplicateRows;
+        $obj['errors'] = $errors;
+        $obj['rowLimitExceeded'] = $rowLimitExceeded;
+        $obj['rowsImported'] = $rowsImported;
 
         return $obj;
     }
@@ -102,7 +111,7 @@ final class ImportResult implements BaseModel
     public function withDuplicateRows(int $duplicateRows): self
     {
         $obj = clone $this;
-        $obj->duplicateRows = $duplicateRows;
+        $obj['duplicateRows'] = $duplicateRows;
 
         return $obj;
     }
@@ -110,12 +119,20 @@ final class ImportResult implements BaseModel
     /**
      * List of errors during import.
      *
-     * @param list<APIError> $errors
+     * @param list<APIError|array{
+     *   category: string,
+     *   correlationId: string,
+     *   message: string,
+     *   context?: array<string,list<string>>|null,
+     *   errors?: list<ErrorDetail>|null,
+     *   links?: array<string,string>|null,
+     *   subCategory?: string|null,
+     * }> $errors
      */
     public function withErrors(array $errors): self
     {
         $obj = clone $this;
-        $obj->errors = $errors;
+        $obj['errors'] = $errors;
 
         return $obj;
     }
@@ -126,7 +143,7 @@ final class ImportResult implements BaseModel
     public function withRowLimitExceeded(bool $rowLimitExceeded): self
     {
         $obj = clone $this;
-        $obj->rowLimitExceeded = $rowLimitExceeded;
+        $obj['rowLimitExceeded'] = $rowLimitExceeded;
 
         return $obj;
     }
@@ -137,7 +154,7 @@ final class ImportResult implements BaseModel
     public function withRowsImported(int $rowsImported): self
     {
         $obj = clone $this;
-        $obj->rowsImported = $rowsImported;
+        $obj['rowsImported'] = $rowsImported;
 
         return $obj;
     }

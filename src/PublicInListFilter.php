@@ -63,20 +63,23 @@ final class PublicInListFilter implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FilterType|value-of<FilterType> $filterType
+     * @param PublicInListFilterMetadata|array{
+     *   id: string, inListType: string
+     * } $metadata
      */
     public static function with(
         string $listId,
         string $operator,
         FilterType|string $filterType = 'IN_LIST',
-        ?PublicInListFilterMetadata $metadata = null,
+        PublicInListFilterMetadata|array|null $metadata = null,
     ): self {
         $obj = new self;
 
         $obj['filterType'] = $filterType;
-        $obj->listId = $listId;
-        $obj->operator = $operator;
+        $obj['listId'] = $listId;
+        $obj['operator'] = $operator;
 
-        null !== $metadata && $obj->metadata = $metadata;
+        null !== $metadata && $obj['metadata'] = $metadata;
 
         return $obj;
     }
@@ -95,7 +98,7 @@ final class PublicInListFilter implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listId = $listID;
+        $obj['listId'] = $listID;
 
         return $obj;
     }
@@ -103,15 +106,21 @@ final class PublicInListFilter implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
 
-    public function withMetadata(PublicInListFilterMetadata $metadata): self
-    {
+    /**
+     * @param PublicInListFilterMetadata|array{
+     *   id: string, inListType: string
+     * } $metadata
+     */
+    public function withMetadata(
+        PublicInListFilterMetadata|array $metadata
+    ): self {
         $obj = clone $this;
-        $obj->metadata = $metadata;
+        $obj['metadata'] = $metadata;
 
         return $obj;
     }

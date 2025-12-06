@@ -70,22 +70,23 @@ final class APIPropertyBasedEnrollmentSchedule implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
      * @param Type|value-of<Type> $type
      */
     public static function with(
         string $dateProperty,
         int $daysDelta,
-        APITimeOfDay $timeOfDay,
+        APITimeOfDay|array $timeOfDay,
         bool $yearly,
         Type|string $type = 'PROPERTY_BASED',
     ): self {
         $obj = new self;
 
-        $obj->dateProperty = $dateProperty;
-        $obj->daysDelta = $daysDelta;
-        $obj->timeOfDay = $timeOfDay;
+        $obj['dateProperty'] = $dateProperty;
+        $obj['daysDelta'] = $daysDelta;
+        $obj['timeOfDay'] = $timeOfDay;
         $obj['type'] = $type;
-        $obj->yearly = $yearly;
+        $obj['yearly'] = $yearly;
 
         return $obj;
     }
@@ -93,7 +94,7 @@ final class APIPropertyBasedEnrollmentSchedule implements BaseModel
     public function withDateProperty(string $dateProperty): self
     {
         $obj = clone $this;
-        $obj->dateProperty = $dateProperty;
+        $obj['dateProperty'] = $dateProperty;
 
         return $obj;
     }
@@ -101,15 +102,18 @@ final class APIPropertyBasedEnrollmentSchedule implements BaseModel
     public function withDaysDelta(int $daysDelta): self
     {
         $obj = clone $this;
-        $obj->daysDelta = $daysDelta;
+        $obj['daysDelta'] = $daysDelta;
 
         return $obj;
     }
 
-    public function withTimeOfDay(APITimeOfDay $timeOfDay): self
+    /**
+     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
+     */
+    public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
         $obj = clone $this;
-        $obj->timeOfDay = $timeOfDay;
+        $obj['timeOfDay'] = $timeOfDay;
 
         return $obj;
     }
@@ -128,7 +132,7 @@ final class APIPropertyBasedEnrollmentSchedule implements BaseModel
     public function withYearly(bool $yearly): self
     {
         $obj = clone $this;
-        $obj->yearly = $yearly;
+        $obj['yearly'] = $yearly;
 
         return $obj;
     }

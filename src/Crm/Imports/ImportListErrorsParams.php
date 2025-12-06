@@ -64,10 +64,10 @@ final class ImportListErrorsParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $includeErrorMessage && $obj->includeErrorMessage = $includeErrorMessage;
-        null !== $includeRowData && $obj->includeRowData = $includeRowData;
-        null !== $limit && $obj->limit = $limit;
+        null !== $after && $obj['after'] = $after;
+        null !== $includeErrorMessage && $obj['includeErrorMessage'] = $includeErrorMessage;
+        null !== $includeRowData && $obj['includeRowData'] = $includeRowData;
+        null !== $limit && $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class ImportListErrorsParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class ImportListErrorsParams implements BaseModel
     public function withIncludeErrorMessage(bool $includeErrorMessage): self
     {
         $obj = clone $this;
-        $obj->includeErrorMessage = $includeErrorMessage;
+        $obj['includeErrorMessage'] = $includeErrorMessage;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class ImportListErrorsParams implements BaseModel
     public function withIncludeRowData(bool $includeRowData): self
     {
         $obj = clone $this;
-        $obj->includeRowData = $includeRowData;
+        $obj['includeRowData'] = $includeRowData;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class ImportListErrorsParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }

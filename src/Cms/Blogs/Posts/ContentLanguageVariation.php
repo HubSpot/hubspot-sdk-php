@@ -154,22 +154,22 @@ final class ContentLanguageVariation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archivedInDashboard = $archivedInDashboard;
-        $obj->authorName = $authorName;
-        $obj->campaign = $campaign;
-        $obj->campaignName = $campaignName;
-        $obj->created = $created;
-        $obj->name = $name;
-        $obj->password = $password;
-        $obj->publicAccessRules = $publicAccessRules;
-        $obj->publicAccessRulesEnabled = $publicAccessRulesEnabled;
-        $obj->publishDate = $publishDate;
-        $obj->slug = $slug;
-        $obj->state = $state;
-        $obj->updated = $updated;
+        $obj['id'] = $id;
+        $obj['archivedInDashboard'] = $archivedInDashboard;
+        $obj['authorName'] = $authorName;
+        $obj['campaign'] = $campaign;
+        $obj['campaignName'] = $campaignName;
+        $obj['created'] = $created;
+        $obj['name'] = $name;
+        $obj['password'] = $password;
+        $obj['publicAccessRules'] = $publicAccessRules;
+        $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
+        $obj['publishDate'] = $publishDate;
+        $obj['slug'] = $slug;
+        $obj['state'] = $state;
+        $obj['updated'] = $updated;
 
-        null !== $tagIds && $obj->tagIds = $tagIds;
+        null !== $tagIds && $obj['tagIds'] = $tagIds;
 
         return $obj;
     }
@@ -177,7 +177,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withID(int $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withArchivedInDashboard(bool $archivedInDashboard): self
     {
         $obj = clone $this;
-        $obj->archivedInDashboard = $archivedInDashboard;
+        $obj['archivedInDashboard'] = $archivedInDashboard;
 
         return $obj;
     }
@@ -193,7 +193,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withAuthorName(string $authorName): self
     {
         $obj = clone $this;
-        $obj->authorName = $authorName;
+        $obj['authorName'] = $authorName;
 
         return $obj;
     }
@@ -201,7 +201,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withCampaign(string $campaign): self
     {
         $obj = clone $this;
-        $obj->campaign = $campaign;
+        $obj['campaign'] = $campaign;
 
         return $obj;
     }
@@ -209,7 +209,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withCampaignName(string $campaignName): self
     {
         $obj = clone $this;
-        $obj->campaignName = $campaignName;
+        $obj['campaignName'] = $campaignName;
 
         return $obj;
     }
@@ -217,7 +217,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withCreated(\DateTimeInterface $created): self
     {
         $obj = clone $this;
-        $obj->created = $created;
+        $obj['created'] = $created;
 
         return $obj;
     }
@@ -225,7 +225,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -233,7 +233,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withPassword(string $password): self
     {
         $obj = clone $this;
-        $obj->password = $password;
+        $obj['password'] = $password;
 
         return $obj;
     }
@@ -244,7 +244,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withPublicAccessRules(array $publicAccessRules): self
     {
         $obj = clone $this;
-        $obj->publicAccessRules = $publicAccessRules;
+        $obj['publicAccessRules'] = $publicAccessRules;
 
         return $obj;
     }
@@ -253,7 +253,7 @@ final class ContentLanguageVariation implements BaseModel
         bool $publicAccessRulesEnabled
     ): self {
         $obj = clone $this;
-        $obj->publicAccessRulesEnabled = $publicAccessRulesEnabled;
+        $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
 
         return $obj;
     }
@@ -261,7 +261,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
         $obj = clone $this;
-        $obj->publishDate = $publishDate;
+        $obj['publishDate'] = $publishDate;
 
         return $obj;
     }
@@ -269,7 +269,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withSlug(string $slug): self
     {
         $obj = clone $this;
-        $obj->slug = $slug;
+        $obj['slug'] = $slug;
 
         return $obj;
     }
@@ -277,7 +277,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withState(string $state): self
     {
         $obj = clone $this;
-        $obj->state = $state;
+        $obj['state'] = $state;
 
         return $obj;
     }
@@ -285,7 +285,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withUpdated(\DateTimeInterface $updated): self
     {
         $obj = clone $this;
-        $obj->updated = $updated;
+        $obj['updated'] = $updated;
 
         return $obj;
     }
@@ -296,7 +296,7 @@ final class ContentLanguageVariation implements BaseModel
     public function withTagIDs(array $tagIDs): self
     {
         $obj = clone $this;
-        $obj->tagIds = $tagIDs;
+        $obj['tagIds'] = $tagIDs;
 
         return $obj;
     }

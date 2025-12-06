@@ -57,7 +57,9 @@ final class APIAbTestBranchAction implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIConnection> $testBranches
+     * @param list<APIConnection|array{
+     *   edgeType: string, nextActionId: string
+     * }> $testBranches
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -67,8 +69,8 @@ final class APIAbTestBranchAction implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->actionId = $actionId;
-        $obj->testBranches = $testBranches;
+        $obj['actionId'] = $actionId;
+        $obj['testBranches'] = $testBranches;
         $obj['type'] = $type;
 
         return $obj;
@@ -77,18 +79,20 @@ final class APIAbTestBranchAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionId = $actionID;
+        $obj['actionId'] = $actionID;
 
         return $obj;
     }
 
     /**
-     * @param list<APIConnection> $testBranches
+     * @param list<APIConnection|array{
+     *   edgeType: string, nextActionId: string
+     * }> $testBranches
      */
     public function withTestBranches(array $testBranches): self
     {
         $obj = clone $this;
-        $obj->testBranches = $testBranches;
+        $obj['testBranches'] = $testBranches;
 
         return $obj;
     }

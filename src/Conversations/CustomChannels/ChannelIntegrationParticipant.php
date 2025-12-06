@@ -48,25 +48,34 @@ final class ChannelIntegrationParticipant implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
      */
     public static function with(
-        PublicDeliveryIdentifier $deliveryIdentifier,
+        PublicDeliveryIdentifier|array $deliveryIdentifier,
         ?string $name = null
     ): self {
         $obj = new self;
 
-        $obj->deliveryIdentifier = $deliveryIdentifier;
+        $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
-        null !== $name && $obj->name = $name;
+        null !== $name && $obj['name'] = $name;
 
         return $obj;
     }
 
+    /**
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
+     */
     public function withDeliveryIdentifier(
-        PublicDeliveryIdentifier $deliveryIdentifier
+        PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
         $obj = clone $this;
-        $obj->deliveryIdentifier = $deliveryIdentifier;
+        $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }
@@ -74,7 +83,7 @@ final class ChannelIntegrationParticipant implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

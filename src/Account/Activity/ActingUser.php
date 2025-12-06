@@ -56,9 +56,9 @@ final class ActingUser implements BaseModel
     {
         $obj = new self;
 
-        $obj->userId = $userId;
+        $obj['userId'] = $userId;
 
-        null !== $userEmail && $obj->userEmail = $userEmail;
+        null !== $userEmail && $obj['userEmail'] = $userEmail;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class ActingUser implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class ActingUser implements BaseModel
     public function withUserEmail(string $userEmail): self
     {
         $obj = clone $this;
-        $obj->userEmail = $userEmail;
+        $obj['userEmail'] = $userEmail;
 
         return $obj;
     }

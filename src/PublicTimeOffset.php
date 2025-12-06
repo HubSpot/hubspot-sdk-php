@@ -61,9 +61,9 @@ final class PublicTimeOffset implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->amount = $amount;
-        $obj->offsetDirection = $offsetDirection;
-        $obj->timeUnit = $timeUnit;
+        $obj['amount'] = $amount;
+        $obj['offsetDirection'] = $offsetDirection;
+        $obj['timeUnit'] = $timeUnit;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class PublicTimeOffset implements BaseModel
     public function withAmount(int $amount): self
     {
         $obj = clone $this;
-        $obj->amount = $amount;
+        $obj['amount'] = $amount;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class PublicTimeOffset implements BaseModel
     public function withOffsetDirection(string $offsetDirection): self
     {
         $obj = clone $this;
-        $obj->offsetDirection = $offsetDirection;
+        $obj['offsetDirection'] = $offsetDirection;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class PublicTimeOffset implements BaseModel
     public function withTimeUnit(string $timeUnit): self
     {
         $obj = clone $this;
-        $obj->timeUnit = $timeUnit;
+        $obj['timeUnit'] = $timeUnit;
 
         return $obj;
     }

@@ -54,7 +54,7 @@ final class OptionDecoratorsExtensionData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,OptionDecorations> $optionDecorators
+     * @param array<string,OptionDecorations|array{color: string}> $optionDecorators
      */
     public static function with(
         array $optionDecorators,
@@ -62,19 +62,19 @@ final class OptionDecoratorsExtensionData implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->optionDecorators = $optionDecorators;
-        $obj->optionDecoratorStyle = $optionDecoratorStyle;
+        $obj['optionDecorators'] = $optionDecorators;
+        $obj['optionDecoratorStyle'] = $optionDecoratorStyle;
 
         return $obj;
     }
 
     /**
-     * @param array<string,OptionDecorations> $optionDecorators
+     * @param array<string,OptionDecorations|array{color: string}> $optionDecorators
      */
     public function withOptionDecorators(array $optionDecorators): self
     {
         $obj = clone $this;
-        $obj->optionDecorators = $optionDecorators;
+        $obj['optionDecorators'] = $optionDecorators;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class OptionDecoratorsExtensionData implements BaseModel
     public function withOptionDecoratorStyle(string $optionDecoratorStyle): self
     {
         $obj = clone $this;
-        $obj->optionDecoratorStyle = $optionDecoratorStyle;
+        $obj['optionDecoratorStyle'] = $optionDecoratorStyle;
 
         return $obj;
     }

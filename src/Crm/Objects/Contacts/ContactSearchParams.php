@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Filter;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
@@ -17,7 +18,7 @@ use HubspotSDK\Crm\FilterGroup;
  *
  * @phpstan-type ContactSearchParamsShape = array{
  *   after: string,
- *   filterGroups: list<FilterGroup>,
+ *   filterGroups: list<FilterGroup|array{filters: list<Filter>}>,
  *   limit: int,
  *   properties: list<string>,
  *   sorts: list<string>,
@@ -103,7 +104,7 @@ final class ContactSearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FilterGroup> $filterGroups
+     * @param list<FilterGroup|array{filters: list<Filter>}> $filterGroups
      * @param list<string> $properties
      * @param list<string> $sorts
      */
@@ -117,13 +118,13 @@ final class ContactSearchParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->after = $after;
-        $obj->filterGroups = $filterGroups;
-        $obj->limit = $limit;
-        $obj->properties = $properties;
-        $obj->sorts = $sorts;
+        $obj['after'] = $after;
+        $obj['filterGroups'] = $filterGroups;
+        $obj['limit'] = $limit;
+        $obj['properties'] = $properties;
+        $obj['sorts'] = $sorts;
 
-        null !== $query && $obj->query = $query;
+        null !== $query && $obj['query'] = $query;
 
         return $obj;
     }
@@ -134,7 +135,7 @@ final class ContactSearchParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -142,12 +143,12 @@ final class ContactSearchParams implements BaseModel
     /**
      * Up to 6 groups of filters defining additional query criteria.
      *
-     * @param list<FilterGroup> $filterGroups
+     * @param list<FilterGroup|array{filters: list<Filter>}> $filterGroups
      */
     public function withFilterGroups(array $filterGroups): self
     {
         $obj = clone $this;
-        $obj->filterGroups = $filterGroups;
+        $obj['filterGroups'] = $filterGroups;
 
         return $obj;
     }
@@ -158,7 +159,7 @@ final class ContactSearchParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -171,7 +172,7 @@ final class ContactSearchParams implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -184,7 +185,7 @@ final class ContactSearchParams implements BaseModel
     public function withSorts(array $sorts): self
     {
         $obj = clone $this;
-        $obj->sorts = $sorts;
+        $obj['sorts'] = $sorts;
 
         return $obj;
     }
@@ -195,7 +196,7 @@ final class ContactSearchParams implements BaseModel
     public function withQuery(string $query): self
     {
         $obj = clone $this;
-        $obj->query = $query;
+        $obj['query'] = $query;
 
         return $obj;
     }

@@ -100,17 +100,17 @@ final class URLMappingCreateRequestBody implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->destination = $destination;
-        $obj->redirectStyle = $redirectStyle;
-        $obj->routePrefix = $routePrefix;
+        $obj['destination'] = $destination;
+        $obj['redirectStyle'] = $redirectStyle;
+        $obj['routePrefix'] = $routePrefix;
 
-        null !== $isMatchFullUrl && $obj->isMatchFullUrl = $isMatchFullUrl;
-        null !== $isMatchQueryString && $obj->isMatchQueryString = $isMatchQueryString;
-        null !== $isOnlyAfterNotFound && $obj->isOnlyAfterNotFound = $isOnlyAfterNotFound;
-        null !== $isPattern && $obj->isPattern = $isPattern;
-        null !== $isProtocolAgnostic && $obj->isProtocolAgnostic = $isProtocolAgnostic;
-        null !== $isTrailingSlashOptional && $obj->isTrailingSlashOptional = $isTrailingSlashOptional;
-        null !== $precedence && $obj->precedence = $precedence;
+        null !== $isMatchFullUrl && $obj['isMatchFullUrl'] = $isMatchFullUrl;
+        null !== $isMatchQueryString && $obj['isMatchQueryString'] = $isMatchQueryString;
+        null !== $isOnlyAfterNotFound && $obj['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
+        null !== $isPattern && $obj['isPattern'] = $isPattern;
+        null !== $isProtocolAgnostic && $obj['isProtocolAgnostic'] = $isProtocolAgnostic;
+        null !== $isTrailingSlashOptional && $obj['isTrailingSlashOptional'] = $isTrailingSlashOptional;
+        null !== $precedence && $obj['precedence'] = $precedence;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withDestination(string $destination): self
     {
         $obj = clone $this;
-        $obj->destination = $destination;
+        $obj['destination'] = $destination;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withRedirectStyle(int $redirectStyle): self
     {
         $obj = clone $this;
-        $obj->redirectStyle = $redirectStyle;
+        $obj['redirectStyle'] = $redirectStyle;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withRoutePrefix(string $routePrefix): self
     {
         $obj = clone $this;
-        $obj->routePrefix = $routePrefix;
+        $obj['routePrefix'] = $routePrefix;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
         $obj = clone $this;
-        $obj->isMatchFullUrl = $isMatchFullURL;
+        $obj['isMatchFullUrl'] = $isMatchFullURL;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withIsMatchQueryString(bool $isMatchQueryString): self
     {
         $obj = clone $this;
-        $obj->isMatchQueryString = $isMatchQueryString;
+        $obj['isMatchQueryString'] = $isMatchQueryString;
 
         return $obj;
     }
@@ -158,7 +158,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withIsOnlyAfterNotFound(bool $isOnlyAfterNotFound): self
     {
         $obj = clone $this;
-        $obj->isOnlyAfterNotFound = $isOnlyAfterNotFound;
+        $obj['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withIsPattern(bool $isPattern): self
     {
         $obj = clone $this;
-        $obj->isPattern = $isPattern;
+        $obj['isPattern'] = $isPattern;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withIsProtocolAgnostic(bool $isProtocolAgnostic): self
     {
         $obj = clone $this;
-        $obj->isProtocolAgnostic = $isProtocolAgnostic;
+        $obj['isProtocolAgnostic'] = $isProtocolAgnostic;
 
         return $obj;
     }
@@ -183,7 +183,7 @@ final class URLMappingCreateRequestBody implements BaseModel
         bool $isTrailingSlashOptional
     ): self {
         $obj = clone $this;
-        $obj->isTrailingSlashOptional = $isTrailingSlashOptional;
+        $obj['isTrailingSlashOptional'] = $isTrailingSlashOptional;
 
         return $obj;
     }
@@ -191,7 +191,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withPrecedence(int $precedence): self
     {
         $obj = clone $this;
-        $obj->precedence = $precedence;
+        $obj['precedence'] = $precedence;
 
         return $obj;
     }

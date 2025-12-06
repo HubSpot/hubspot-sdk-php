@@ -87,11 +87,11 @@ final class LeadGetParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $archived && $obj->archived = $archived;
-        null !== $associations && $obj->associations = $associations;
-        null !== $idProperty && $obj->idProperty = $idProperty;
-        null !== $properties && $obj->properties = $properties;
-        null !== $propertiesWithHistory && $obj->propertiesWithHistory = $propertiesWithHistory;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $associations && $obj['associations'] = $associations;
+        null !== $idProperty && $obj['idProperty'] = $idProperty;
+        null !== $properties && $obj['properties'] = $properties;
+        null !== $propertiesWithHistory && $obj['propertiesWithHistory'] = $propertiesWithHistory;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class LeadGetParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class LeadGetParams implements BaseModel
     public function withAssociations(array $associations): self
     {
         $obj = clone $this;
-        $obj->associations = $associations;
+        $obj['associations'] = $associations;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class LeadGetParams implements BaseModel
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;
-        $obj->idProperty = $idProperty;
+        $obj['idProperty'] = $idProperty;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class LeadGetParams implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -153,7 +153,7 @@ final class LeadGetParams implements BaseModel
         array $propertiesWithHistory
     ): self {
         $obj = clone $this;
-        $obj->propertiesWithHistory = $propertiesWithHistory;
+        $obj['propertiesWithHistory'] = $propertiesWithHistory;
 
         return $obj;
     }

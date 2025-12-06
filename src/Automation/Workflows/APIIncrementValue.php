@@ -58,7 +58,7 @@ final class APIIncrementValue implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->incrementAmount = $incrementAmount;
+        $obj['incrementAmount'] = $incrementAmount;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APIIncrementValue implements BaseModel
     public function withIncrementAmount(float $incrementAmount): self
     {
         $obj = clone $this;
-        $obj->incrementAmount = $incrementAmount;
+        $obj['incrementAmount'] = $incrementAmount;
 
         return $obj;
     }

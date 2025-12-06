@@ -86,10 +86,10 @@ final class DependentFieldFilter implements BaseModel
         $obj = new self;
 
         $obj['operator'] = $operator;
-        $obj->rangeEnd = $rangeEnd;
-        $obj->rangeStart = $rangeStart;
-        $obj->value = $value;
-        $obj->values = $values;
+        $obj['rangeEnd'] = $rangeEnd;
+        $obj['rangeStart'] = $rangeStart;
+        $obj['value'] = $value;
+        $obj['values'] = $values;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class DependentFieldFilter implements BaseModel
     public function withRangeEnd(string $rangeEnd): self
     {
         $obj = clone $this;
-        $obj->rangeEnd = $rangeEnd;
+        $obj['rangeEnd'] = $rangeEnd;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class DependentFieldFilter implements BaseModel
     public function withRangeStart(string $rangeStart): self
     {
         $obj = clone $this;
-        $obj->rangeStart = $rangeStart;
+        $obj['rangeStart'] = $rangeStart;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class DependentFieldFilter implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class DependentFieldFilter implements BaseModel
     public function withValues(array $values): self
     {
         $obj = clone $this;
-        $obj->values = $values;
+        $obj['values'] = $values;
 
         return $obj;
     }

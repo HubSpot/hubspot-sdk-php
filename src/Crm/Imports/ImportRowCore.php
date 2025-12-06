@@ -79,12 +79,12 @@ final class ImportRowCore implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->containsEncryptedProperties = $containsEncryptedProperties;
-        $obj->fileId = $fileId;
-        $obj->lineNumber = $lineNumber;
-        $obj->rowData = $rowData;
+        $obj['containsEncryptedProperties'] = $containsEncryptedProperties;
+        $obj['fileId'] = $fileId;
+        $obj['lineNumber'] = $lineNumber;
+        $obj['rowData'] = $rowData;
 
-        null !== $pageName && $obj->pageName = $pageName;
+        null !== $pageName && $obj['pageName'] = $pageName;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class ImportRowCore implements BaseModel
         bool $containsEncryptedProperties
     ): self {
         $obj = clone $this;
-        $obj->containsEncryptedProperties = $containsEncryptedProperties;
+        $obj['containsEncryptedProperties'] = $containsEncryptedProperties;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class ImportRowCore implements BaseModel
     public function withFileID(int $fileID): self
     {
         $obj = clone $this;
-        $obj->fileId = $fileID;
+        $obj['fileId'] = $fileID;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class ImportRowCore implements BaseModel
     public function withLineNumber(int $lineNumber): self
     {
         $obj = clone $this;
-        $obj->lineNumber = $lineNumber;
+        $obj['lineNumber'] = $lineNumber;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class ImportRowCore implements BaseModel
     public function withRowData(array $rowData): self
     {
         $obj = clone $this;
-        $obj->rowData = $rowData;
+        $obj['rowData'] = $rowData;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class ImportRowCore implements BaseModel
     public function withPageName(string $pageName): self
     {
         $obj = clone $this;
-        $obj->pageName = $pageName;
+        $obj['pageName'] = $pageName;
 
         return $obj;
     }

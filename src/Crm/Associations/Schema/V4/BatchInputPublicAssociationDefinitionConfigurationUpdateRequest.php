@@ -7,6 +7,7 @@ namespace HubspotSDK\Crm\Associations\Schema\V4;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest\Category;
 
 /**
  * @phpstan-type BatchInputPublicAssociationDefinitionConfigurationUpdateRequestShape = array{
@@ -51,24 +52,28 @@ final class BatchInputPublicAssociationDefinitionConfigurationUpdateRequest impl
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest|array{
+     *   category: value-of<Category>, maxToObjectIds: int, typeId: int
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest|array{
+     *   category: value-of<Category>, maxToObjectIds: int, typeId: int
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

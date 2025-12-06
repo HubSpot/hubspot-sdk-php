@@ -42,7 +42,7 @@ final class TableExportParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $format && $obj->format = $format;
+        null !== $format && $obj['format'] = $format;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class TableExportParams implements BaseModel
     public function withFormat(string $format): self
     {
         $obj = clone $this;
-        $obj->format = $format;
+        $obj['format'] = $format;
 
         return $obj;
     }

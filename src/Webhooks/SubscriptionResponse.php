@@ -112,14 +112,14 @@ final class SubscriptionResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->active = $active;
-        $obj->createdAt = $createdAt;
+        $obj['id'] = $id;
+        $obj['active'] = $active;
+        $obj['createdAt'] = $createdAt;
         $obj['eventType'] = $eventType;
 
-        null !== $objectTypeId && $obj->objectTypeId = $objectTypeId;
-        null !== $propertyName && $obj->propertyName = $propertyName;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $objectTypeId && $obj['objectTypeId'] = $objectTypeId;
+        null !== $propertyName && $obj['propertyName'] = $propertyName;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class SubscriptionResponse implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class SubscriptionResponse implements BaseModel
     public function withActive(bool $active): self
     {
         $obj = clone $this;
-        $obj->active = $active;
+        $obj['active'] = $active;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class SubscriptionResponse implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -176,7 +176,7 @@ final class SubscriptionResponse implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -187,7 +187,7 @@ final class SubscriptionResponse implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -198,7 +198,7 @@ final class SubscriptionResponse implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

@@ -146,15 +146,15 @@ final class PipelineStage implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->createdAt = $createdAt;
-        $obj->displayOrder = $displayOrder;
-        $obj->label = $label;
-        $obj->metadata = $metadata;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['createdAt'] = $createdAt;
+        $obj['displayOrder'] = $displayOrder;
+        $obj['label'] = $label;
+        $obj['metadata'] = $metadata;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $archivedAt && $obj->archivedAt = $archivedAt;
+        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
         null !== $writePermissions && $obj['writePermissions'] = $writePermissions;
 
         return $obj;
@@ -166,7 +166,7 @@ final class PipelineStage implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -177,7 +177,7 @@ final class PipelineStage implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -188,7 +188,7 @@ final class PipelineStage implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -199,7 +199,7 @@ final class PipelineStage implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -210,7 +210,7 @@ final class PipelineStage implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -227,7 +227,7 @@ final class PipelineStage implements BaseModel
     public function withMetadata(array $metadata): self
     {
         $obj = clone $this;
-        $obj->metadata = $metadata;
+        $obj['metadata'] = $metadata;
 
         return $obj;
     }
@@ -238,7 +238,7 @@ final class PipelineStage implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -249,7 +249,7 @@ final class PipelineStage implements BaseModel
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
-        $obj->archivedAt = $archivedAt;
+        $obj['archivedAt'] = $archivedAt;
 
         return $obj;
     }

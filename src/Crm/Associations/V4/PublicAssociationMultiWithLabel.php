@@ -7,8 +7,11 @@ namespace HubspotSDK\Crm\Associations\V4;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\AssociationSpecWithLabel;
 use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
+use HubspotSDK\PreviousPage;
 use HubspotSDK\PublicObjectID;
 
 /**
@@ -57,46 +60,58 @@ final class PublicAssociationMultiWithLabel implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MultiAssociatedObjectWithLabel> $to
+     * @param PublicObjectID|array{id: string} $from
+     * @param list<MultiAssociatedObjectWithLabel|array{
+     *   associationTypes: list<AssociationSpecWithLabel>, toObjectId: string
+     * }> $to
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
     public static function with(
-        PublicObjectID $from,
+        PublicObjectID|array $from,
         array $to,
-        ?Paging $paging = null
+        Paging|array|null $paging = null
     ): self {
         $obj = new self;
 
-        $obj->from = $from;
-        $obj->to = $to;
+        $obj['from'] = $from;
+        $obj['to'] = $to;
 
-        null !== $paging && $obj->paging = $paging;
-
-        return $obj;
-    }
-
-    public function withFrom(PublicObjectID $from): self
-    {
-        $obj = clone $this;
-        $obj->from = $from;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<MultiAssociatedObjectWithLabel> $to
+     * @param PublicObjectID|array{id: string} $from
      */
-    public function withTo(array $to): self
+    public function withFrom(PublicObjectID|array $from): self
     {
         $obj = clone $this;
-        $obj->to = $to;
+        $obj['from'] = $from;
 
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    /**
+     * @param list<MultiAssociatedObjectWithLabel|array{
+     *   associationTypes: list<AssociationSpecWithLabel>, toObjectId: string
+     * }> $to
+     */
+    public function withTo(array $to): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['to'] = $to;
+
+        return $obj;
+    }
+
+    /**
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     */
+    public function withPaging(Paging|array $paging): self
+    {
+        $obj = clone $this;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

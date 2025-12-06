@@ -59,7 +59,9 @@ final class PublicBatchMigrationMapping implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicMigrationMapping> $legacyListIdsToIdsMapping
+     * @param list<PublicMigrationMapping|array{
+     *   legacyListId: string, listId: string
+     * }> $legacyListIdsToIdsMapping
      * @param list<string> $missingLegacyListIds
      */
     public static function with(
@@ -68,20 +70,22 @@ final class PublicBatchMigrationMapping implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->legacyListIdsToIdsMapping = $legacyListIdsToIdsMapping;
-        $obj->missingLegacyListIds = $missingLegacyListIds;
+        $obj['legacyListIdsToIdsMapping'] = $legacyListIdsToIdsMapping;
+        $obj['missingLegacyListIds'] = $missingLegacyListIds;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicMigrationMapping> $legacyListIDsToIDsMapping
+     * @param list<PublicMigrationMapping|array{
+     *   legacyListId: string, listId: string
+     * }> $legacyListIDsToIDsMapping
      */
     public function withLegacyListIDsToIDsMapping(
         array $legacyListIDsToIDsMapping
     ): self {
         $obj = clone $this;
-        $obj->legacyListIdsToIdsMapping = $legacyListIDsToIDsMapping;
+        $obj['legacyListIdsToIdsMapping'] = $legacyListIDsToIDsMapping;
 
         return $obj;
     }
@@ -94,7 +98,7 @@ final class PublicBatchMigrationMapping implements BaseModel
     public function withMissingLegacyListIDs(array $missingLegacyListIDs): self
     {
         $obj = clone $this;
-        $obj->missingLegacyListIds = $missingLegacyListIDs;
+        $obj['missingLegacyListIds'] = $missingLegacyListIDs;
 
         return $obj;
     }

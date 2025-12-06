@@ -65,9 +65,9 @@ final class CampaignGetParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $endDate && $obj->endDate = $endDate;
-        null !== $properties && $obj->properties = $properties;
-        null !== $startDate && $obj->startDate = $startDate;
+        null !== $endDate && $obj['endDate'] = $endDate;
+        null !== $properties && $obj['properties'] = $properties;
+        null !== $startDate && $obj['startDate'] = $startDate;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class CampaignGetParams implements BaseModel
     public function withEndDate(string $endDate): self
     {
         $obj = clone $this;
-        $obj->endDate = $endDate;
+        $obj['endDate'] = $endDate;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class CampaignGetParams implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class CampaignGetParams implements BaseModel
     public function withStartDate(string $startDate): self
     {
         $obj = clone $this;
-        $obj->startDate = $startDate;
+        $obj['startDate'] = $startDate;
 
         return $obj;
     }

@@ -59,9 +59,9 @@ final class IntegratorSettingRegisterAppNameParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $name && $obj->name = $name;
+        null !== $name && $obj['name'] = $name;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class IntegratorSettingRegisterAppNameParams implements BaseModel
     public function withUpdatedAt(int $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class IntegratorSettingRegisterAppNameParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

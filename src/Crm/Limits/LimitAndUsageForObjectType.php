@@ -106,12 +106,12 @@ final class LimitAndUsageForObjectType implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->limit = $limit;
-        $obj->objectTypeId = $objectTypeId;
-        $obj->percentage = $percentage;
-        $obj->pluralLabel = $pluralLabel;
-        $obj->singularLabel = $singularLabel;
-        $obj->usage = $usage;
+        $obj['limit'] = $limit;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['percentage'] = $percentage;
+        $obj['pluralLabel'] = $pluralLabel;
+        $obj['singularLabel'] = $singularLabel;
+        $obj['usage'] = $usage;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class LimitAndUsageForObjectType implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class LimitAndUsageForObjectType implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -144,7 +144,7 @@ final class LimitAndUsageForObjectType implements BaseModel
     public function withPercentage(float $percentage): self
     {
         $obj = clone $this;
-        $obj->percentage = $percentage;
+        $obj['percentage'] = $percentage;
 
         return $obj;
     }
@@ -155,7 +155,7 @@ final class LimitAndUsageForObjectType implements BaseModel
     public function withPluralLabel(string $pluralLabel): self
     {
         $obj = clone $this;
-        $obj->pluralLabel = $pluralLabel;
+        $obj['pluralLabel'] = $pluralLabel;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class LimitAndUsageForObjectType implements BaseModel
     public function withSingularLabel(string $singularLabel): self
     {
         $obj = clone $this;
-        $obj->singularLabel = $singularLabel;
+        $obj['singularLabel'] = $singularLabel;
 
         return $obj;
     }
@@ -177,7 +177,7 @@ final class LimitAndUsageForObjectType implements BaseModel
     public function withUsage(int $usage): self
     {
         $obj = clone $this;
-        $obj->usage = $usage;
+        $obj['usage'] = $usage;
 
         return $obj;
     }

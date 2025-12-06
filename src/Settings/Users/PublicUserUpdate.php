@@ -77,11 +77,11 @@ final class PublicUserUpdate implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $firstName && $obj->firstName = $firstName;
-        null !== $lastName && $obj->lastName = $lastName;
-        null !== $primaryTeamId && $obj->primaryTeamId = $primaryTeamId;
-        null !== $roleId && $obj->roleId = $roleId;
-        null !== $secondaryTeamIds && $obj->secondaryTeamIds = $secondaryTeamIds;
+        null !== $firstName && $obj['firstName'] = $firstName;
+        null !== $lastName && $obj['lastName'] = $lastName;
+        null !== $primaryTeamId && $obj['primaryTeamId'] = $primaryTeamId;
+        null !== $roleId && $obj['roleId'] = $roleId;
+        null !== $secondaryTeamIds && $obj['secondaryTeamIds'] = $secondaryTeamIds;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class PublicUserUpdate implements BaseModel
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
-        $obj->firstName = $firstName;
+        $obj['firstName'] = $firstName;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class PublicUserUpdate implements BaseModel
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;
-        $obj->lastName = $lastName;
+        $obj['lastName'] = $lastName;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class PublicUserUpdate implements BaseModel
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
-        $obj->primaryTeamId = $primaryTeamID;
+        $obj['primaryTeamId'] = $primaryTeamID;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class PublicUserUpdate implements BaseModel
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
-        $obj->roleId = $roleID;
+        $obj['roleId'] = $roleID;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class PublicUserUpdate implements BaseModel
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
     {
         $obj = clone $this;
-        $obj->secondaryTeamIds = $secondaryTeamIDs;
+        $obj['secondaryTeamIds'] = $secondaryTeamIDs;
 
         return $obj;
     }

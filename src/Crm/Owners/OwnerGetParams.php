@@ -50,7 +50,7 @@ final class OwnerGetParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $archived && $obj->archived = $archived;
+        null !== $archived && $obj['archived'] = $archived;
         null !== $idProperty && $obj['idProperty'] = $idProperty;
 
         return $obj;
@@ -59,7 +59,7 @@ final class OwnerGetParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }

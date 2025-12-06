@@ -98,15 +98,15 @@ final class PublicChannelIntegrationChannel implements BaseModel, ResponseConver
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->capabilities = $capabilities;
-        $obj->createdAt = $createdAt;
-        $obj->name = $name;
+        $obj['id'] = $id;
+        $obj['capabilities'] = $capabilities;
+        $obj['createdAt'] = $createdAt;
+        $obj['name'] = $name;
 
-        null !== $channelAccountConnectionRedirectUrl && $obj->channelAccountConnectionRedirectUrl = $channelAccountConnectionRedirectUrl;
-        null !== $channelDescription && $obj->channelDescription = $channelDescription;
-        null !== $channelLogoUrl && $obj->channelLogoUrl = $channelLogoUrl;
-        null !== $webhookUrl && $obj->webhookUrl = $webhookUrl;
+        null !== $channelAccountConnectionRedirectUrl && $obj['channelAccountConnectionRedirectUrl'] = $channelAccountConnectionRedirectUrl;
+        null !== $channelDescription && $obj['channelDescription'] = $channelDescription;
+        null !== $channelLogoUrl && $obj['channelLogoUrl'] = $channelLogoUrl;
+        null !== $webhookUrl && $obj['webhookUrl'] = $webhookUrl;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class PublicChannelIntegrationChannel implements BaseModel, ResponseConver
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class PublicChannelIntegrationChannel implements BaseModel, ResponseConver
     public function withCapabilities(array $capabilities): self
     {
         $obj = clone $this;
-        $obj->capabilities = $capabilities;
+        $obj['capabilities'] = $capabilities;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class PublicChannelIntegrationChannel implements BaseModel, ResponseConver
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class PublicChannelIntegrationChannel implements BaseModel, ResponseConver
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class PublicChannelIntegrationChannel implements BaseModel, ResponseConver
         string $channelAccountConnectionRedirectURL
     ): self {
         $obj = clone $this;
-        $obj->channelAccountConnectionRedirectUrl = $channelAccountConnectionRedirectURL;
+        $obj['channelAccountConnectionRedirectUrl'] = $channelAccountConnectionRedirectURL;
 
         return $obj;
     }
@@ -158,7 +158,7 @@ final class PublicChannelIntegrationChannel implements BaseModel, ResponseConver
     public function withChannelDescription(string $channelDescription): self
     {
         $obj = clone $this;
-        $obj->channelDescription = $channelDescription;
+        $obj['channelDescription'] = $channelDescription;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class PublicChannelIntegrationChannel implements BaseModel, ResponseConver
     public function withChannelLogoURL(string $channelLogoURL): self
     {
         $obj = clone $this;
-        $obj->channelLogoUrl = $channelLogoURL;
+        $obj['channelLogoUrl'] = $channelLogoURL;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class PublicChannelIntegrationChannel implements BaseModel, ResponseConver
     public function withWebhookURL(string $webhookURL): self
     {
         $obj = clone $this;
-        $obj->webhookUrl = $webhookURL;
+        $obj['webhookUrl'] = $webhookURL;
 
         return $obj;
     }

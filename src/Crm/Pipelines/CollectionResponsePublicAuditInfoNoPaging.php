@@ -50,24 +50,40 @@ final class CollectionResponsePublicAuditInfoNoPaging implements BaseModel, Resp
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAuditInfo> $results
+     * @param list<PublicAuditInfo|array{
+     *   action: string,
+     *   identifier: string,
+     *   portalId: int,
+     *   fromUserId?: int|null,
+     *   message?: string|null,
+     *   rawObject?: mixed,
+     *   timestamp?: \DateTimeInterface|null,
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAuditInfo> $results
+     * @param list<PublicAuditInfo|array{
+     *   action: string,
+     *   identifier: string,
+     *   portalId: int,
+     *   fromUserId?: int|null,
+     *   message?: string|null,
+     *   rawObject?: mixed,
+     *   timestamp?: \DateTimeInterface|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

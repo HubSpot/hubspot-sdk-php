@@ -63,9 +63,9 @@ final class APISort implements BaseModel
         $obj = new self;
 
         $obj['order'] = $order;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
-        null !== $missing && $obj->missing = $missing;
+        null !== $missing && $obj['missing'] = $missing;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class APISort implements BaseModel
     public function withProperty(string $property): self
     {
         $obj = clone $this;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class APISort implements BaseModel
     public function withMissing(string $missing): self
     {
         $obj = clone $this;
-        $obj->missing = $missing;
+        $obj['missing'] = $missing;
 
         return $obj;
     }

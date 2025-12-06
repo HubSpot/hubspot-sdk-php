@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
+use HubspotSDK\Conversations\PublicClient\ClientType;
 use HubspotSDK\Conversations\PublicWelcomeMessage\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -126,8 +127,21 @@ final class PublicWelcomeMessage implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicRecipient> $recipients
-     * @param list<PublicSender> $senders
+     * @param PublicClient|array{
+     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     * } $client
+     * @param list<PublicRecipient|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier,
+     *   actorId?: string|null,
+     *   name?: string|null,
+     *   recipientField?: string|null,
+     * }> $recipients
+     * @param list<PublicSender|array{
+     *   actorId?: string|null,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+     *   name?: string|null,
+     *   senderField?: string|null,
+     * }> $senders
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -135,7 +149,7 @@ final class PublicWelcomeMessage implements BaseModel
         bool $archived,
         string $channelAccountId,
         string $channelId,
-        PublicClient $client,
+        PublicClient|array $client,
         string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
@@ -148,21 +162,21 @@ final class PublicWelcomeMessage implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->channelAccountId = $channelAccountId;
-        $obj->channelId = $channelId;
-        $obj->client = $client;
-        $obj->conversationsThreadId = $conversationsThreadId;
-        $obj->createdAt = $createdAt;
-        $obj->createdBy = $createdBy;
-        $obj->recipients = $recipients;
-        $obj->senders = $senders;
-        $obj->text = $text;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['channelAccountId'] = $channelAccountId;
+        $obj['channelId'] = $channelId;
+        $obj['client'] = $client;
+        $obj['conversationsThreadId'] = $conversationsThreadId;
+        $obj['createdAt'] = $createdAt;
+        $obj['createdBy'] = $createdBy;
+        $obj['recipients'] = $recipients;
+        $obj['senders'] = $senders;
+        $obj['text'] = $text;
         $obj['type'] = $type;
 
-        null !== $richText && $obj->richText = $richText;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $richText && $obj['richText'] = $richText;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -170,7 +184,7 @@ final class PublicWelcomeMessage implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -178,7 +192,7 @@ final class PublicWelcomeMessage implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -186,7 +200,7 @@ final class PublicWelcomeMessage implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj->channelAccountId = $channelAccountID;
+        $obj['channelAccountId'] = $channelAccountID;
 
         return $obj;
     }
@@ -194,15 +208,20 @@ final class PublicWelcomeMessage implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj->channelId = $channelID;
+        $obj['channelId'] = $channelID;
 
         return $obj;
     }
 
-    public function withClient(PublicClient $client): self
+    /**
+     * @param PublicClient|array{
+     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     * } $client
+     */
+    public function withClient(PublicClient|array $client): self
     {
         $obj = clone $this;
-        $obj->client = $client;
+        $obj['client'] = $client;
 
         return $obj;
     }
@@ -211,7 +230,7 @@ final class PublicWelcomeMessage implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadId = $conversationsThreadID;
+        $obj['conversationsThreadId'] = $conversationsThreadID;
 
         return $obj;
     }
@@ -219,7 +238,7 @@ final class PublicWelcomeMessage implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -227,29 +246,39 @@ final class PublicWelcomeMessage implements BaseModel
     public function withCreatedBy(string $createdBy): self
     {
         $obj = clone $this;
-        $obj->createdBy = $createdBy;
+        $obj['createdBy'] = $createdBy;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicRecipient> $recipients
+     * @param list<PublicRecipient|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier,
+     *   actorId?: string|null,
+     *   name?: string|null,
+     *   recipientField?: string|null,
+     * }> $recipients
      */
     public function withRecipients(array $recipients): self
     {
         $obj = clone $this;
-        $obj->recipients = $recipients;
+        $obj['recipients'] = $recipients;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicSender> $senders
+     * @param list<PublicSender|array{
+     *   actorId?: string|null,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+     *   name?: string|null,
+     *   senderField?: string|null,
+     * }> $senders
      */
     public function withSenders(array $senders): self
     {
         $obj = clone $this;
-        $obj->senders = $senders;
+        $obj['senders'] = $senders;
 
         return $obj;
     }
@@ -257,7 +286,7 @@ final class PublicWelcomeMessage implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -276,7 +305,7 @@ final class PublicWelcomeMessage implements BaseModel
     public function withRichText(string $richText): self
     {
         $obj = clone $this;
-        $obj->richText = $richText;
+        $obj['richText'] = $richText;
 
         return $obj;
     }
@@ -284,7 +313,7 @@ final class PublicWelcomeMessage implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

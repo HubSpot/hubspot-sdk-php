@@ -63,7 +63,15 @@ final class PublicCommentEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg> $attachments
+     * @param list<PublicFileEgg|array{
+     *   fileId: string, type: value-of<PublicFileEgg\Type>
+     * }|PublicQuickRepliesEgg|array{
+     *   quickReplies: list<QuickReply>,
+     *   type: value-of<PublicQuickRepliesEgg\Type>,
+     * }|PublicSocialMediaEgg|array{
+     *   socialMetadata: SocialMetadata,
+     *   type: value-of<PublicSocialMediaEgg\Type>,
+     * }> $attachments
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -74,22 +82,30 @@ final class PublicCommentEgg implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->attachments = $attachments;
-        $obj->text = $text;
+        $obj['attachments'] = $attachments;
+        $obj['text'] = $text;
         $obj['type'] = $type;
 
-        null !== $richText && $obj->richText = $richText;
+        null !== $richText && $obj['richText'] = $richText;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg> $attachments
+     * @param list<PublicFileEgg|array{
+     *   fileId: string, type: value-of<PublicFileEgg\Type>
+     * }|PublicQuickRepliesEgg|array{
+     *   quickReplies: list<QuickReply>,
+     *   type: value-of<PublicQuickRepliesEgg\Type>,
+     * }|PublicSocialMediaEgg|array{
+     *   socialMetadata: SocialMetadata,
+     *   type: value-of<PublicSocialMediaEgg\Type>,
+     * }> $attachments
      */
     public function withAttachments(array $attachments): self
     {
         $obj = clone $this;
-        $obj->attachments = $attachments;
+        $obj['attachments'] = $attachments;
 
         return $obj;
     }
@@ -97,7 +113,7 @@ final class PublicCommentEgg implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -116,7 +132,7 @@ final class PublicCommentEgg implements BaseModel
     public function withRichText(string $richText): self
     {
         $obj = clone $this;
-        $obj->richText = $richText;
+        $obj['richText'] = $richText;
 
         return $obj;
     }

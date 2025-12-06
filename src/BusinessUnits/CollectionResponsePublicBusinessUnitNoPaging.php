@@ -57,13 +57,15 @@ final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel, R
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicBusinessUnit> $results
+     * @param list<PublicBusinessUnit|array{
+     *   id: int
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -71,12 +73,14 @@ final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel, R
     /**
      * The collection of Business Units.
      *
-     * @param list<PublicBusinessUnit> $results
+     * @param list<PublicBusinessUnit|array{
+     *   id: int
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

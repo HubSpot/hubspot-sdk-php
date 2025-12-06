@@ -50,9 +50,9 @@ final class DefinitionSource implements BaseModel
     {
         $obj = new self;
 
-        $obj->type = $type;
+        $obj['type'] = $type;
 
-        null !== $name && $obj->name = $name;
+        null !== $name && $obj['name'] = $name;
 
         return $obj;
     }
@@ -60,7 +60,7 @@ final class DefinitionSource implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class DefinitionSource implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

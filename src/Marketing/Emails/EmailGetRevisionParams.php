@@ -53,7 +53,7 @@ final class EmailGetRevisionParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->emailId = $emailId;
+        $obj['emailId'] = $emailId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class EmailGetRevisionParams implements BaseModel
     public function withEmailID(string $emailID): self
     {
         $obj = clone $this;
-        $obj->emailId = $emailID;
+        $obj['emailId'] = $emailID;
 
         return $obj;
     }

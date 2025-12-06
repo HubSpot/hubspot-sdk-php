@@ -59,25 +59,37 @@ final class CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventIdentifiersResponse> $results
+     * @param list<MarketingEventIdentifiersResponse|array{
+     *   externalEventId: string,
+     *   marketingEventName: string,
+     *   objectId: string,
+     *   appInfo?: AppInfo|null,
+     *   externalAccountId?: string|null,
+     * }> $results
      */
     public static function with(array $results, int $total): self
     {
         $obj = new self;
 
-        $obj->results = $results;
-        $obj->total = $total;
+        $obj['results'] = $results;
+        $obj['total'] = $total;
 
         return $obj;
     }
 
     /**
-     * @param list<MarketingEventIdentifiersResponse> $results
+     * @param list<MarketingEventIdentifiersResponse|array{
+     *   externalEventId: string,
+     *   marketingEventName: string,
+     *   objectId: string,
+     *   appInfo?: AppInfo|null,
+     *   externalAccountId?: string|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -85,7 +97,7 @@ final class CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }

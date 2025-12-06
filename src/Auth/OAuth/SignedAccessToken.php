@@ -151,21 +151,21 @@ final class SignedAccessToken implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->expiresAt = $expiresAt;
-        $obj->hubId = $hubId;
-        $obj->hublet = $hublet;
-        $obj->installingUserId = $installingUserId;
-        $obj->isPrivateDistribution = $isPrivateDistribution;
-        $obj->isServiceAccount = $isServiceAccount;
-        $obj->isUserLevel = $isUserLevel;
-        $obj->newSignature = $newSignature;
-        $obj->scopes = $scopes;
-        $obj->scopeToScopeGroupPks = $scopeToScopeGroupPks;
-        $obj->signature = $signature;
-        $obj->trialScopes = $trialScopes;
-        $obj->trialScopeToScopeGroupPks = $trialScopeToScopeGroupPks;
-        $obj->userId = $userId;
+        $obj['appId'] = $appId;
+        $obj['expiresAt'] = $expiresAt;
+        $obj['hubId'] = $hubId;
+        $obj['hublet'] = $hublet;
+        $obj['installingUserId'] = $installingUserId;
+        $obj['isPrivateDistribution'] = $isPrivateDistribution;
+        $obj['isServiceAccount'] = $isServiceAccount;
+        $obj['isUserLevel'] = $isUserLevel;
+        $obj['newSignature'] = $newSignature;
+        $obj['scopes'] = $scopes;
+        $obj['scopeToScopeGroupPks'] = $scopeToScopeGroupPks;
+        $obj['signature'] = $signature;
+        $obj['trialScopes'] = $trialScopes;
+        $obj['trialScopeToScopeGroupPks'] = $trialScopeToScopeGroupPks;
+        $obj['userId'] = $userId;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class SignedAccessToken implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -181,7 +181,7 @@ final class SignedAccessToken implements BaseModel
     public function withExpiresAt(int $expiresAt): self
     {
         $obj = clone $this;
-        $obj->expiresAt = $expiresAt;
+        $obj['expiresAt'] = $expiresAt;
 
         return $obj;
     }
@@ -189,7 +189,7 @@ final class SignedAccessToken implements BaseModel
     public function withHubID(int $hubID): self
     {
         $obj = clone $this;
-        $obj->hubId = $hubID;
+        $obj['hubId'] = $hubID;
 
         return $obj;
     }
@@ -197,7 +197,7 @@ final class SignedAccessToken implements BaseModel
     public function withHublet(string $hublet): self
     {
         $obj = clone $this;
-        $obj->hublet = $hublet;
+        $obj['hublet'] = $hublet;
 
         return $obj;
     }
@@ -205,7 +205,7 @@ final class SignedAccessToken implements BaseModel
     public function withInstallingUserID(int $installingUserID): self
     {
         $obj = clone $this;
-        $obj->installingUserId = $installingUserID;
+        $obj['installingUserId'] = $installingUserID;
 
         return $obj;
     }
@@ -213,7 +213,7 @@ final class SignedAccessToken implements BaseModel
     public function withIsPrivateDistribution(bool $isPrivateDistribution): self
     {
         $obj = clone $this;
-        $obj->isPrivateDistribution = $isPrivateDistribution;
+        $obj['isPrivateDistribution'] = $isPrivateDistribution;
 
         return $obj;
     }
@@ -221,7 +221,7 @@ final class SignedAccessToken implements BaseModel
     public function withIsServiceAccount(bool $isServiceAccount): self
     {
         $obj = clone $this;
-        $obj->isServiceAccount = $isServiceAccount;
+        $obj['isServiceAccount'] = $isServiceAccount;
 
         return $obj;
     }
@@ -229,7 +229,7 @@ final class SignedAccessToken implements BaseModel
     public function withIsUserLevel(bool $isUserLevel): self
     {
         $obj = clone $this;
-        $obj->isUserLevel = $isUserLevel;
+        $obj['isUserLevel'] = $isUserLevel;
 
         return $obj;
     }
@@ -237,7 +237,7 @@ final class SignedAccessToken implements BaseModel
     public function withNewSignature(string $newSignature): self
     {
         $obj = clone $this;
-        $obj->newSignature = $newSignature;
+        $obj['newSignature'] = $newSignature;
 
         return $obj;
     }
@@ -245,7 +245,7 @@ final class SignedAccessToken implements BaseModel
     public function withScopes(string $scopes): self
     {
         $obj = clone $this;
-        $obj->scopes = $scopes;
+        $obj['scopes'] = $scopes;
 
         return $obj;
     }
@@ -253,7 +253,7 @@ final class SignedAccessToken implements BaseModel
     public function withScopeToScopeGroupPks(string $scopeToScopeGroupPks): self
     {
         $obj = clone $this;
-        $obj->scopeToScopeGroupPks = $scopeToScopeGroupPks;
+        $obj['scopeToScopeGroupPks'] = $scopeToScopeGroupPks;
 
         return $obj;
     }
@@ -261,7 +261,7 @@ final class SignedAccessToken implements BaseModel
     public function withSignature(string $signature): self
     {
         $obj = clone $this;
-        $obj->signature = $signature;
+        $obj['signature'] = $signature;
 
         return $obj;
     }
@@ -269,7 +269,7 @@ final class SignedAccessToken implements BaseModel
     public function withTrialScopes(string $trialScopes): self
     {
         $obj = clone $this;
-        $obj->trialScopes = $trialScopes;
+        $obj['trialScopes'] = $trialScopes;
 
         return $obj;
     }
@@ -278,7 +278,7 @@ final class SignedAccessToken implements BaseModel
         string $trialScopeToScopeGroupPks
     ): self {
         $obj = clone $this;
-        $obj->trialScopeToScopeGroupPks = $trialScopeToScopeGroupPks;
+        $obj['trialScopeToScopeGroupPks'] = $trialScopeToScopeGroupPks;
 
         return $obj;
     }
@@ -286,7 +286,7 @@ final class SignedAccessToken implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }

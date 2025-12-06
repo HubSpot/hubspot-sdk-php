@@ -52,8 +52,8 @@ final class ExternalGuestSettings implements BaseModel
     {
         $obj = new self;
 
-        $obj->canAddGuests = $canAddGuests;
-        $obj->maxGuestCount = $maxGuestCount;
+        $obj['canAddGuests'] = $canAddGuests;
+        $obj['maxGuestCount'] = $maxGuestCount;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class ExternalGuestSettings implements BaseModel
     public function withCanAddGuests(bool $canAddGuests): self
     {
         $obj = clone $this;
-        $obj->canAddGuests = $canAddGuests;
+        $obj['canAddGuests'] = $canAddGuests;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class ExternalGuestSettings implements BaseModel
     public function withMaxGuestCount(int $maxGuestCount): self
     {
         $obj = clone $this;
-        $obj->maxGuestCount = $maxGuestCount;
+        $obj['maxGuestCount'] = $maxGuestCount;
 
         return $obj;
     }

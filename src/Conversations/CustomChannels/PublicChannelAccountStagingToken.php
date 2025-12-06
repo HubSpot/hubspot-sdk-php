@@ -80,6 +80,10 @@ final class PublicChannelAccountStagingToken implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
      */
     public static function with(
         string $accountToken,
@@ -88,18 +92,18 @@ final class PublicChannelAccountStagingToken implements BaseModel
         int $inboxId,
         int $userId,
         ?string $accountName = null,
-        ?PublicDeliveryIdentifier $deliveryIdentifier = null,
+        PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
     ): self {
         $obj = new self;
 
-        $obj->accountToken = $accountToken;
-        $obj->createdAt = $createdAt;
-        $obj->genericChannelId = $genericChannelId;
-        $obj->inboxId = $inboxId;
-        $obj->userId = $userId;
+        $obj['accountToken'] = $accountToken;
+        $obj['createdAt'] = $createdAt;
+        $obj['genericChannelId'] = $genericChannelId;
+        $obj['inboxId'] = $inboxId;
+        $obj['userId'] = $userId;
 
-        null !== $accountName && $obj->accountName = $accountName;
-        null !== $deliveryIdentifier && $obj->deliveryIdentifier = $deliveryIdentifier;
+        null !== $accountName && $obj['accountName'] = $accountName;
+        null !== $deliveryIdentifier && $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }
@@ -107,7 +111,7 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public function withAccountToken(string $accountToken): self
     {
         $obj = clone $this;
-        $obj->accountToken = $accountToken;
+        $obj['accountToken'] = $accountToken;
 
         return $obj;
     }
@@ -115,7 +119,7 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -123,7 +127,7 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public function withGenericChannelID(int $genericChannelID): self
     {
         $obj = clone $this;
-        $obj->genericChannelId = $genericChannelID;
+        $obj['genericChannelId'] = $genericChannelID;
 
         return $obj;
     }
@@ -131,7 +135,7 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public function withInboxID(int $inboxID): self
     {
         $obj = clone $this;
-        $obj->inboxId = $inboxID;
+        $obj['inboxId'] = $inboxID;
 
         return $obj;
     }
@@ -139,7 +143,7 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }
@@ -147,16 +151,21 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public function withAccountName(string $accountName): self
     {
         $obj = clone $this;
-        $obj->accountName = $accountName;
+        $obj['accountName'] = $accountName;
 
         return $obj;
     }
 
+    /**
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
+     */
     public function withDeliveryIdentifier(
-        PublicDeliveryIdentifier $deliveryIdentifier
+        PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
         $obj = clone $this;
-        $obj->deliveryIdentifier = $deliveryIdentifier;
+        $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }

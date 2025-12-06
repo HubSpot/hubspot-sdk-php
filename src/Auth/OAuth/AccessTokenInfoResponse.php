@@ -106,6 +106,23 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $scopes
+     * @param SignedAccessToken|array{
+     *   appId: int,
+     *   expiresAt: int,
+     *   hubId: int,
+     *   hublet: string,
+     *   installingUserId: int,
+     *   isPrivateDistribution: bool,
+     *   isServiceAccount: bool,
+     *   isUserLevel: bool,
+     *   newSignature: string,
+     *   scopes: string,
+     *   scopeToScopeGroupPks: string,
+     *   signature: string,
+     *   trialScopes: string,
+     *   trialScopeToScopeGroupPks: string,
+     *   userId: int,
+     * } $signed_access_token
      */
     public static function with(
         string $token,
@@ -117,23 +134,23 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
         int $user_id,
         ?string $hub_domain = null,
         ?bool $is_private_distribution = null,
-        ?SignedAccessToken $signed_access_token = null,
+        SignedAccessToken|array|null $signed_access_token = null,
         ?string $user = null,
     ): self {
         $obj = new self;
 
-        $obj->token = $token;
-        $obj->app_id = $app_id;
-        $obj->expires_in = $expires_in;
-        $obj->hub_id = $hub_id;
-        $obj->scopes = $scopes;
-        $obj->token_type = $token_type;
-        $obj->user_id = $user_id;
+        $obj['token'] = $token;
+        $obj['app_id'] = $app_id;
+        $obj['expires_in'] = $expires_in;
+        $obj['hub_id'] = $hub_id;
+        $obj['scopes'] = $scopes;
+        $obj['token_type'] = $token_type;
+        $obj['user_id'] = $user_id;
 
-        null !== $hub_domain && $obj->hub_domain = $hub_domain;
-        null !== $is_private_distribution && $obj->is_private_distribution = $is_private_distribution;
-        null !== $signed_access_token && $obj->signed_access_token = $signed_access_token;
-        null !== $user && $obj->user = $user;
+        null !== $hub_domain && $obj['hub_domain'] = $hub_domain;
+        null !== $is_private_distribution && $obj['is_private_distribution'] = $is_private_distribution;
+        null !== $signed_access_token && $obj['signed_access_token'] = $signed_access_token;
+        null !== $user && $obj['user'] = $user;
 
         return $obj;
     }
@@ -141,7 +158,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withToken(string $token): self
     {
         $obj = clone $this;
-        $obj->token = $token;
+        $obj['token'] = $token;
 
         return $obj;
     }
@@ -149,7 +166,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->app_id = $appID;
+        $obj['app_id'] = $appID;
 
         return $obj;
     }
@@ -157,7 +174,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withExpiresIn(int $expiresIn): self
     {
         $obj = clone $this;
-        $obj->expires_in = $expiresIn;
+        $obj['expires_in'] = $expiresIn;
 
         return $obj;
     }
@@ -165,7 +182,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withHubID(int $hubID): self
     {
         $obj = clone $this;
-        $obj->hub_id = $hubID;
+        $obj['hub_id'] = $hubID;
 
         return $obj;
     }
@@ -176,7 +193,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withScopes(array $scopes): self
     {
         $obj = clone $this;
-        $obj->scopes = $scopes;
+        $obj['scopes'] = $scopes;
 
         return $obj;
     }
@@ -184,7 +201,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withTokenType(string $tokenType): self
     {
         $obj = clone $this;
-        $obj->token_type = $tokenType;
+        $obj['token_type'] = $tokenType;
 
         return $obj;
     }
@@ -192,7 +209,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->user_id = $userID;
+        $obj['user_id'] = $userID;
 
         return $obj;
     }
@@ -200,7 +217,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withHubDomain(string $hubDomain): self
     {
         $obj = clone $this;
-        $obj->hub_domain = $hubDomain;
+        $obj['hub_domain'] = $hubDomain;
 
         return $obj;
     }
@@ -208,16 +225,35 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withIsPrivateDistribution(bool $isPrivateDistribution): self
     {
         $obj = clone $this;
-        $obj->is_private_distribution = $isPrivateDistribution;
+        $obj['is_private_distribution'] = $isPrivateDistribution;
 
         return $obj;
     }
 
+    /**
+     * @param SignedAccessToken|array{
+     *   appId: int,
+     *   expiresAt: int,
+     *   hubId: int,
+     *   hublet: string,
+     *   installingUserId: int,
+     *   isPrivateDistribution: bool,
+     *   isServiceAccount: bool,
+     *   isUserLevel: bool,
+     *   newSignature: string,
+     *   scopes: string,
+     *   scopeToScopeGroupPks: string,
+     *   signature: string,
+     *   trialScopes: string,
+     *   trialScopeToScopeGroupPks: string,
+     *   userId: int,
+     * } $signedAccessToken
+     */
     public function withSignedAccessToken(
-        SignedAccessToken $signedAccessToken
+        SignedAccessToken|array $signedAccessToken
     ): self {
         $obj = clone $this;
-        $obj->signed_access_token = $signedAccessToken;
+        $obj['signed_access_token'] = $signedAccessToken;
 
         return $obj;
     }
@@ -225,7 +261,7 @@ final class AccessTokenInfoResponse implements BaseModel, ResponseConverter
     public function withUser(string $user): self
     {
         $obj = clone $this;
-        $obj->user = $user;
+        $obj['user'] = $user;
 
         return $obj;
     }

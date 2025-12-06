@@ -178,10 +178,26 @@ final class Column implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param list<ForeignID> $foreignIds
-     * @param array<string,ForeignID> $foreignIdsById
-     * @param array<string,ForeignID> $foreignIdsByName
-     * @param list<Option> $options
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $createdBy
+     * @param list<ForeignID|array{id: string, name: string, type: string}> $foreignIds
+     * @param array<string,ForeignID|array{
+     *   id: string, name: string, type: string
+     * }> $foreignIdsById
+     * @param array<string,ForeignID|array{
+     *   id: string, name: string, type: string
+     * }> $foreignIdsByName
+     * @param list<Option|array{
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     * }> $options
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $updatedBy
      */
     public static function with(
         string $id,
@@ -191,7 +207,7 @@ final class Column implements BaseModel
         string $name,
         Type|string $type,
         ?\DateTimeInterface $createdAt = null,
-        ?SimpleUser $createdBy = null,
+        SimpleUser|array|null $createdBy = null,
         ?int $createdByUserId = null,
         ?int $foreignColumnId = null,
         ?array $foreignIds = null,
@@ -201,33 +217,33 @@ final class Column implements BaseModel
         ?int $optionCount = null,
         ?array $options = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?SimpleUser $updatedBy = null,
+        SimpleUser|array|null $updatedBy = null,
         ?int $updatedByUserId = null,
         ?int $width = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->deleted = $deleted;
-        $obj->description = $description;
-        $obj->label = $label;
-        $obj->name = $name;
+        $obj['id'] = $id;
+        $obj['deleted'] = $deleted;
+        $obj['description'] = $description;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
         $obj['type'] = $type;
 
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdBy && $obj->createdBy = $createdBy;
-        null !== $createdByUserId && $obj->createdByUserId = $createdByUserId;
-        null !== $foreignColumnId && $obj->foreignColumnId = $foreignColumnId;
-        null !== $foreignIds && $obj->foreignIds = $foreignIds;
-        null !== $foreignIdsById && $obj->foreignIdsById = $foreignIdsById;
-        null !== $foreignIdsByName && $obj->foreignIdsByName = $foreignIdsByName;
-        null !== $foreignTableId && $obj->foreignTableId = $foreignTableId;
-        null !== $optionCount && $obj->optionCount = $optionCount;
-        null !== $options && $obj->options = $options;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedBy && $obj->updatedBy = $updatedBy;
-        null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
-        null !== $width && $obj->width = $width;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $createdBy && $obj['createdBy'] = $createdBy;
+        null !== $createdByUserId && $obj['createdByUserId'] = $createdByUserId;
+        null !== $foreignColumnId && $obj['foreignColumnId'] = $foreignColumnId;
+        null !== $foreignIds && $obj['foreignIds'] = $foreignIds;
+        null !== $foreignIdsById && $obj['foreignIdsById'] = $foreignIdsById;
+        null !== $foreignIdsByName && $obj['foreignIdsByName'] = $foreignIdsByName;
+        null !== $foreignTableId && $obj['foreignTableId'] = $foreignTableId;
+        null !== $optionCount && $obj['optionCount'] = $optionCount;
+        null !== $options && $obj['options'] = $options;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $updatedBy && $obj['updatedBy'] = $updatedBy;
+        null !== $updatedByUserId && $obj['updatedByUserId'] = $updatedByUserId;
+        null !== $width && $obj['width'] = $width;
 
         return $obj;
     }
@@ -238,7 +254,7 @@ final class Column implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -246,7 +262,7 @@ final class Column implements BaseModel
     public function withDeleted(bool $deleted): self
     {
         $obj = clone $this;
-        $obj->deleted = $deleted;
+        $obj['deleted'] = $deleted;
 
         return $obj;
     }
@@ -254,7 +270,7 @@ final class Column implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -265,7 +281,7 @@ final class Column implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -276,7 +292,7 @@ final class Column implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -297,15 +313,20 @@ final class Column implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
 
-    public function withCreatedBy(SimpleUser $createdBy): self
+    /**
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $createdBy
+     */
+    public function withCreatedBy(SimpleUser|array $createdBy): self
     {
         $obj = clone $this;
-        $obj->createdBy = $createdBy;
+        $obj['createdBy'] = $createdBy;
 
         return $obj;
     }
@@ -313,7 +334,7 @@ final class Column implements BaseModel
     public function withCreatedByUserID(int $createdByUserID): self
     {
         $obj = clone $this;
-        $obj->createdByUserId = $createdByUserID;
+        $obj['createdByUserId'] = $createdByUserID;
 
         return $obj;
     }
@@ -324,7 +345,7 @@ final class Column implements BaseModel
     public function withForeignColumnID(int $foreignColumnID): self
     {
         $obj = clone $this;
-        $obj->foreignColumnId = $foreignColumnID;
+        $obj['foreignColumnId'] = $foreignColumnID;
 
         return $obj;
     }
@@ -332,12 +353,12 @@ final class Column implements BaseModel
     /**
      * Foreign Ids.
      *
-     * @param list<ForeignID> $foreignIDs
+     * @param list<ForeignID|array{id: string, name: string, type: string}> $foreignIDs
      */
     public function withForeignIDs(array $foreignIDs): self
     {
         $obj = clone $this;
-        $obj->foreignIds = $foreignIDs;
+        $obj['foreignIds'] = $foreignIDs;
 
         return $obj;
     }
@@ -345,12 +366,14 @@ final class Column implements BaseModel
     /**
      * Foreign ids.
      *
-     * @param array<string,ForeignID> $foreignIDsByID
+     * @param array<string,ForeignID|array{
+     *   id: string, name: string, type: string
+     * }> $foreignIDsByID
      */
     public function withForeignIDsByID(array $foreignIDsByID): self
     {
         $obj = clone $this;
-        $obj->foreignIdsById = $foreignIDsByID;
+        $obj['foreignIdsById'] = $foreignIDsByID;
 
         return $obj;
     }
@@ -358,12 +381,14 @@ final class Column implements BaseModel
     /**
      * Foreign ids by name.
      *
-     * @param array<string,ForeignID> $foreignIDsByName
+     * @param array<string,ForeignID|array{
+     *   id: string, name: string, type: string
+     * }> $foreignIDsByName
      */
     public function withForeignIDsByName(array $foreignIDsByName): self
     {
         $obj = clone $this;
-        $obj->foreignIdsByName = $foreignIDsByName;
+        $obj['foreignIdsByName'] = $foreignIDsByName;
 
         return $obj;
     }
@@ -374,7 +399,7 @@ final class Column implements BaseModel
     public function withForeignTableID(int $foreignTableID): self
     {
         $obj = clone $this;
-        $obj->foreignTableId = $foreignTableID;
+        $obj['foreignTableId'] = $foreignTableID;
 
         return $obj;
     }
@@ -385,7 +410,7 @@ final class Column implements BaseModel
     public function withOptionCount(int $optionCount): self
     {
         $obj = clone $this;
-        $obj->optionCount = $optionCount;
+        $obj['optionCount'] = $optionCount;
 
         return $obj;
     }
@@ -393,12 +418,18 @@ final class Column implements BaseModel
     /**
      * Options to choose for select and multi-select columns.
      *
-     * @param list<Option> $options
+     * @param list<Option|array{
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }
@@ -406,15 +437,20 @@ final class Column implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
 
-    public function withUpdatedBy(SimpleUser $updatedBy): self
+    /**
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $updatedBy
+     */
+    public function withUpdatedBy(SimpleUser|array $updatedBy): self
     {
         $obj = clone $this;
-        $obj->updatedBy = $updatedBy;
+        $obj['updatedBy'] = $updatedBy;
 
         return $obj;
     }
@@ -422,7 +458,7 @@ final class Column implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj->updatedByUserId = $updatedByUserID;
+        $obj['updatedByUserId'] = $updatedByUserID;
 
         return $obj;
     }
@@ -433,7 +469,7 @@ final class Column implements BaseModel
     public function withWidth(int $width): self
     {
         $obj = clone $this;
-        $obj->width = $width;
+        $obj['width'] = $width;
 
         return $obj;
     }

@@ -7,6 +7,7 @@ namespace HubspotSDK\Marketing\Events;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\ErrorDetail;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponseV2WithErrors\Status;
 use HubspotSDK\StandardError;
 
@@ -87,9 +88,33 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicDefaultResponseV2> $results
+     * @param list<MarketingEventPublicDefaultResponseV2|array{
+     *   createdAt: \DateTimeInterface,
+     *   customProperties: list<CrmPropertyWrapper>,
+     *   eventName: string,
+     *   objectId: string,
+     *   updatedAt: \DateTimeInterface,
+     *   appInfo?: AppInfo|null,
+     *   endDateTime?: \DateTimeInterface|null,
+     *   eventCancelled?: bool|null,
+     *   eventCompleted?: bool|null,
+     *   eventDescription?: string|null,
+     *   eventOrganizer?: string|null,
+     *   eventType?: string|null,
+     *   eventUrl?: string|null,
+     *   startDateTime?: \DateTimeInterface|null,
+     * }> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError> $errors
+     * @param list<StandardError|array{
+     *   category: string,
+     *   context: array<string,list<string>>,
+     *   errors: list<ErrorDetail>,
+     *   links: array<string,string>,
+     *   message: string,
+     *   status: string,
+     *   id?: string|null,
+     *   subCategory?: mixed,
+     * }> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -104,15 +129,15 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     ): self {
         $obj = new self;
 
-        $obj->completedAt = $completedAt;
-        $obj->results = $results;
-        $obj->startedAt = $startedAt;
+        $obj['completedAt'] = $completedAt;
+        $obj['results'] = $results;
+        $obj['startedAt'] = $startedAt;
         $obj['status'] = $status;
 
-        null !== $errors && $obj->errors = $errors;
-        null !== $links && $obj->links = $links;
-        null !== $numErrors && $obj->numErrors = $numErrors;
-        null !== $requestedAt && $obj->requestedAt = $requestedAt;
+        null !== $errors && $obj['errors'] = $errors;
+        null !== $links && $obj['links'] = $links;
+        null !== $numErrors && $obj['numErrors'] = $numErrors;
+        null !== $requestedAt && $obj['requestedAt'] = $requestedAt;
 
         return $obj;
     }
@@ -120,18 +145,33 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
-        $obj->completedAt = $completedAt;
+        $obj['completedAt'] = $completedAt;
 
         return $obj;
     }
 
     /**
-     * @param list<MarketingEventPublicDefaultResponseV2> $results
+     * @param list<MarketingEventPublicDefaultResponseV2|array{
+     *   createdAt: \DateTimeInterface,
+     *   customProperties: list<CrmPropertyWrapper>,
+     *   eventName: string,
+     *   objectId: string,
+     *   updatedAt: \DateTimeInterface,
+     *   appInfo?: AppInfo|null,
+     *   endDateTime?: \DateTimeInterface|null,
+     *   eventCancelled?: bool|null,
+     *   eventCompleted?: bool|null,
+     *   eventDescription?: string|null,
+     *   eventOrganizer?: string|null,
+     *   eventType?: string|null,
+     *   eventUrl?: string|null,
+     *   startDateTime?: \DateTimeInterface|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -139,7 +179,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
-        $obj->startedAt = $startedAt;
+        $obj['startedAt'] = $startedAt;
 
         return $obj;
     }
@@ -156,12 +196,21 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     }
 
     /**
-     * @param list<StandardError> $errors
+     * @param list<StandardError|array{
+     *   category: string,
+     *   context: array<string,list<string>>,
+     *   errors: list<ErrorDetail>,
+     *   links: array<string,string>,
+     *   message: string,
+     *   status: string,
+     *   id?: string|null,
+     *   subCategory?: mixed,
+     * }> $errors
      */
     public function withErrors(array $errors): self
     {
         $obj = clone $this;
-        $obj->errors = $errors;
+        $obj['errors'] = $errors;
 
         return $obj;
     }
@@ -172,7 +221,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     public function withLinks(array $links): self
     {
         $obj = clone $this;
-        $obj->links = $links;
+        $obj['links'] = $links;
 
         return $obj;
     }
@@ -180,7 +229,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
-        $obj->numErrors = $numErrors;
+        $obj['numErrors'] = $numErrors;
 
         return $obj;
     }
@@ -188,7 +237,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;
-        $obj->requestedAt = $requestedAt;
+        $obj['requestedAt'] = $requestedAt;
 
         return $obj;
     }

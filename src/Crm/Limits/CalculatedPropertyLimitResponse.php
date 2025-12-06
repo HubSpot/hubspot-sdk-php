@@ -80,7 +80,9 @@ final class CalculatedPropertyLimitResponse implements BaseModel, ResponseConver
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<UsageForObjectType> $byObjectType
+     * @param list<UsageForObjectType|array{
+     *   objectTypeId: string, pluralLabel: string, singularLabel: string, usage: int
+     * }> $byObjectType
      */
     public static function with(
         array $byObjectType,
@@ -90,21 +92,23 @@ final class CalculatedPropertyLimitResponse implements BaseModel, ResponseConver
     ): self {
         $obj = new self;
 
-        $obj->byObjectType = $byObjectType;
-        $obj->overallLimit = $overallLimit;
-        $obj->overallPercentage = $overallPercentage;
-        $obj->overallUsage = $overallUsage;
+        $obj['byObjectType'] = $byObjectType;
+        $obj['overallLimit'] = $overallLimit;
+        $obj['overallPercentage'] = $overallPercentage;
+        $obj['overallUsage'] = $overallUsage;
 
         return $obj;
     }
 
     /**
-     * @param list<UsageForObjectType> $byObjectType
+     * @param list<UsageForObjectType|array{
+     *   objectTypeId: string, pluralLabel: string, singularLabel: string, usage: int
+     * }> $byObjectType
      */
     public function withByObjectType(array $byObjectType): self
     {
         $obj = clone $this;
-        $obj->byObjectType = $byObjectType;
+        $obj['byObjectType'] = $byObjectType;
 
         return $obj;
     }
@@ -115,7 +119,7 @@ final class CalculatedPropertyLimitResponse implements BaseModel, ResponseConver
     public function withOverallLimit(int $overallLimit): self
     {
         $obj = clone $this;
-        $obj->overallLimit = $overallLimit;
+        $obj['overallLimit'] = $overallLimit;
 
         return $obj;
     }
@@ -126,7 +130,7 @@ final class CalculatedPropertyLimitResponse implements BaseModel, ResponseConver
     public function withOverallPercentage(float $overallPercentage): self
     {
         $obj = clone $this;
-        $obj->overallPercentage = $overallPercentage;
+        $obj['overallPercentage'] = $overallPercentage;
 
         return $obj;
     }
@@ -137,7 +141,7 @@ final class CalculatedPropertyLimitResponse implements BaseModel, ResponseConver
     public function withOverallUsage(int $overallUsage): self
     {
         $obj = clone $this;
-        $obj->overallUsage = $overallUsage;
+        $obj['overallUsage'] = $overallUsage;
 
         return $obj;
     }

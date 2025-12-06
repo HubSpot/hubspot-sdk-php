@@ -88,14 +88,14 @@ final class PublicSpendItem implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->amount = $amount;
-        $obj->createdAt = $createdAt;
-        $obj->name = $name;
-        $obj->order = $order;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['amount'] = $amount;
+        $obj['createdAt'] = $createdAt;
+        $obj['name'] = $name;
+        $obj['order'] = $order;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $description && $obj->description = $description;
+        null !== $description && $obj['description'] = $description;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class PublicSpendItem implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class PublicSpendItem implements BaseModel
     public function withAmount(float $amount): self
     {
         $obj = clone $this;
-        $obj->amount = $amount;
+        $obj['amount'] = $amount;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class PublicSpendItem implements BaseModel
     public function withCreatedAt(int $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class PublicSpendItem implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class PublicSpendItem implements BaseModel
     public function withOrder(int $order): self
     {
         $obj = clone $this;
-        $obj->order = $order;
+        $obj['order'] = $order;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class PublicSpendItem implements BaseModel
     public function withUpdatedAt(int $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -151,7 +151,7 @@ final class PublicSpendItem implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }

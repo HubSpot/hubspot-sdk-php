@@ -87,12 +87,12 @@ final class Option implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->hidden = $hidden;
-        $obj->label = $label;
-        $obj->value = $value;
+        $obj['hidden'] = $hidden;
+        $obj['label'] = $label;
+        $obj['value'] = $value;
 
-        null !== $description && $obj->description = $description;
-        null !== $displayOrder && $obj->displayOrder = $displayOrder;
+        null !== $description && $obj['description'] = $description;
+        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class Option implements BaseModel
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
-        $obj->hidden = $hidden;
+        $obj['hidden'] = $hidden;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class Option implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class Option implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -136,7 +136,7 @@ final class Option implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -147,7 +147,7 @@ final class Option implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }

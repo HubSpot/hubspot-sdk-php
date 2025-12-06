@@ -92,9 +92,9 @@ final class APIAssociationTimestampDataSource implements BaseModel
         $obj = new self;
 
         $obj['associationCategory'] = $associationCategory;
-        $obj->associationTypeId = $associationTypeId;
-        $obj->name = $name;
-        $obj->objectTypeId = $objectTypeId;
+        $obj['associationTypeId'] = $associationTypeId;
+        $obj['name'] = $name;
+        $obj['objectTypeId'] = $objectTypeId;
         $obj['type'] = $type;
 
         return $obj;
@@ -118,7 +118,7 @@ final class APIAssociationTimestampDataSource implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj->associationTypeId = $associationTypeID;
+        $obj['associationTypeId'] = $associationTypeID;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class APIAssociationTimestampDataSource implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class APIAssociationTimestampDataSource implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }

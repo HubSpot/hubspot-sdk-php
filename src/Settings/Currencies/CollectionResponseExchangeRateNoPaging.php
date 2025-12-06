@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Settings\Currencies\ExchangeRate\FromCurrencyCode;
+use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
 
 /**
  * @phpstan-type CollectionResponseExchangeRateNoPagingShape = array{
@@ -50,24 +52,42 @@ final class CollectionResponseExchangeRateNoPaging implements BaseModel, Respons
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRate> $results
+     * @param list<ExchangeRate|array{
+     *   id: string,
+     *   conversionRate: float,
+     *   createdAt: \DateTimeInterface,
+     *   effectiveAt: \DateTimeInterface,
+     *   fromCurrencyCode: value-of<FromCurrencyCode>,
+     *   toCurrencyCode: value-of<ToCurrencyCode>,
+     *   updatedAt: \DateTimeInterface,
+     *   visibleInUI: bool,
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<ExchangeRate> $results
+     * @param list<ExchangeRate|array{
+     *   id: string,
+     *   conversionRate: float,
+     *   createdAt: \DateTimeInterface,
+     *   effectiveAt: \DateTimeInterface,
+     *   fromCurrencyCode: value-of<FromCurrencyCode>,
+     *   toCurrencyCode: value-of<ToCurrencyCode>,
+     *   updatedAt: \DateTimeInterface,
+     *   visibleInUI: bool,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

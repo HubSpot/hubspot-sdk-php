@@ -8,6 +8,9 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
+use HubspotSDK\NextPage;
+use HubspotSDK\Settings\Currencies\ExchangeRate\FromCurrencyCode;
+use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
 
 /**
  * @phpstan-type CollectionResponseExchangeRateForwardPagingShape = array{
@@ -50,36 +53,58 @@ final class CollectionResponseExchangeRateForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRate> $results
+     * @param list<ExchangeRate|array{
+     *   id: string,
+     *   conversionRate: float,
+     *   createdAt: \DateTimeInterface,
+     *   effectiveAt: \DateTimeInterface,
+     *   fromCurrencyCode: value-of<FromCurrencyCode>,
+     *   toCurrencyCode: value-of<ToCurrencyCode>,
+     *   updatedAt: \DateTimeInterface,
+     *   visibleInUI: bool,
+     * }> $results
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
     public static function with(
         array $results,
-        ?ForwardPaging $paging = null
+        ForwardPaging|array|null $paging = null
     ): self {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<ExchangeRate> $results
+     * @param list<ExchangeRate|array{
+     *   id: string,
+     *   conversionRate: float,
+     *   createdAt: \DateTimeInterface,
+     *   effectiveAt: \DateTimeInterface,
+     *   fromCurrencyCode: value-of<FromCurrencyCode>,
+     *   toCurrencyCode: value-of<ToCurrencyCode>,
+     *   updatedAt: \DateTimeInterface,
+     *   visibleInUI: bool,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
-    public function withPaging(ForwardPaging $paging): self
+    /**
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     */
+    public function withPaging(ForwardPaging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

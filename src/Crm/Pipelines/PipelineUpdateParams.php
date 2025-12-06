@@ -96,13 +96,13 @@ final class PipelineUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
-        null !== $validateDealStageUsagesBeforeDelete && $obj->validateDealStageUsagesBeforeDelete = $validateDealStageUsagesBeforeDelete;
-        null !== $validateReferencesBeforeDelete && $obj->validateReferencesBeforeDelete = $validateReferencesBeforeDelete;
-        null !== $archived && $obj->archived = $archived;
-        null !== $displayOrder && $obj->displayOrder = $displayOrder;
-        null !== $label && $obj->label = $label;
+        null !== $validateDealStageUsagesBeforeDelete && $obj['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
+        null !== $validateReferencesBeforeDelete && $obj['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
+        null !== $label && $obj['label'] = $label;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class PipelineUpdateParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class PipelineUpdateParams implements BaseModel
         bool $validateDealStageUsagesBeforeDelete
     ): self {
         $obj = clone $this;
-        $obj->validateDealStageUsagesBeforeDelete = $validateDealStageUsagesBeforeDelete;
+        $obj['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class PipelineUpdateParams implements BaseModel
         bool $validateReferencesBeforeDelete
     ): self {
         $obj = clone $this;
-        $obj->validateReferencesBeforeDelete = $validateReferencesBeforeDelete;
+        $obj['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class PipelineUpdateParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class PipelineUpdateParams implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class PipelineUpdateParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }

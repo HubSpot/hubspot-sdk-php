@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm;
 
 use HubspotSDK\AssociationSpec;
+use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -51,33 +52,41 @@ final class PublicAssociationsForObject implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationSpec> $types
+     * @param PublicObjectID|array{id: string} $to
+     * @param list<AssociationSpec|array{
+     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     * }> $types
      */
-    public static function with(PublicObjectID $to, array $types): self
+    public static function with(PublicObjectID|array $to, array $types): self
     {
         $obj = new self;
 
-        $obj->to = $to;
-        $obj->types = $types;
-
-        return $obj;
-    }
-
-    public function withTo(PublicObjectID $to): self
-    {
-        $obj = clone $this;
-        $obj->to = $to;
+        $obj['to'] = $to;
+        $obj['types'] = $types;
 
         return $obj;
     }
 
     /**
-     * @param list<AssociationSpec> $types
+     * @param PublicObjectID|array{id: string} $to
+     */
+    public function withTo(PublicObjectID|array $to): self
+    {
+        $obj = clone $this;
+        $obj['to'] = $to;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<AssociationSpec|array{
+     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     * }> $types
      */
     public function withTypes(array $types): self
     {
         $obj = clone $this;
-        $obj->types = $types;
+        $obj['types'] = $types;
 
         return $obj;
     }

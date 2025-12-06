@@ -94,14 +94,14 @@ final class IfNumber implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->enclosedInParentheses = $enclosedInParentheses;
-        $obj->ifExpression = $ifExpression;
+        $obj['enclosedInParentheses'] = $enclosedInParentheses;
+        $obj['ifExpression'] = $ifExpression;
         $obj['operator'] = $operator;
 
-        null !== $elseExpression && $obj->elseExpression = $elseExpression;
-        null !== $inputs && $obj->inputs = $inputs;
-        null !== $propertyName && $obj->propertyName = $propertyName;
-        null !== $value && $obj->value = $value;
+        null !== $elseExpression && $obj['elseExpression'] = $elseExpression;
+        null !== $inputs && $obj['inputs'] = $inputs;
+        null !== $propertyName && $obj['propertyName'] = $propertyName;
+        null !== $value && $obj['value'] = $value;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class IfNumber implements BaseModel
     public function withEnclosedInParentheses(bool $enclosedInParentheses): self
     {
         $obj = clone $this;
-        $obj->enclosedInParentheses = $enclosedInParentheses;
+        $obj['enclosedInParentheses'] = $enclosedInParentheses;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class IfNumber implements BaseModel
     public function withIfExpression(array $ifExpression): self
     {
         $obj = clone $this;
-        $obj->ifExpression = $ifExpression;
+        $obj['ifExpression'] = $ifExpression;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class IfNumber implements BaseModel
     public function withElseExpression(array $elseExpression): self
     {
         $obj = clone $this;
-        $obj->elseExpression = $elseExpression;
+        $obj['elseExpression'] = $elseExpression;
 
         return $obj;
     }
@@ -153,7 +153,7 @@ final class IfNumber implements BaseModel
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -161,7 +161,7 @@ final class IfNumber implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -169,7 +169,7 @@ final class IfNumber implements BaseModel
     public function withValue(float $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

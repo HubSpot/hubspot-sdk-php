@@ -59,9 +59,9 @@ final class DefinitionGetParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->appId = $appId;
+        $obj['appId'] = $appId;
 
-        null !== $archived && $obj->archived = $archived;
+        null !== $archived && $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class DefinitionGetParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class DefinitionGetParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }

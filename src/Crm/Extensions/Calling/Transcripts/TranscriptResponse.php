@@ -86,7 +86,14 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param TranscriptSource|value-of<TranscriptSource> $transcriptSource
-     * @param list<TranscriptUtterance> $transcriptUtterances
+     * @param list<TranscriptUtterance|array{
+     *   id: string,
+     *   endTimeMillis: int,
+     *   startTimeMillis: int,
+     *   text: string,
+     *   languageCode?: string|null,
+     *   speaker?: Speaker|null,
+     * }> $transcriptUtterances
      */
     public static function with(
         string $id,
@@ -98,12 +105,12 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->engagementId = $engagementId;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['engagementId'] = $engagementId;
         $obj['transcriptSource'] = $transcriptSource;
-        $obj->transcriptUtterances = $transcriptUtterances;
-        $obj->updatedAt = $updatedAt;
+        $obj['transcriptUtterances'] = $transcriptUtterances;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -111,7 +118,7 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -119,7 +126,7 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -127,7 +134,7 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
     public function withEngagementID(int $engagementID): self
     {
         $obj = clone $this;
-        $obj->engagementId = $engagementID;
+        $obj['engagementId'] = $engagementID;
 
         return $obj;
     }
@@ -145,12 +152,19 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
     }
 
     /**
-     * @param list<TranscriptUtterance> $transcriptUtterances
+     * @param list<TranscriptUtterance|array{
+     *   id: string,
+     *   endTimeMillis: int,
+     *   startTimeMillis: int,
+     *   text: string,
+     *   languageCode?: string|null,
+     *   speaker?: Speaker|null,
+     * }> $transcriptUtterances
      */
     public function withTranscriptUtterances(array $transcriptUtterances): self
     {
         $obj = clone $this;
-        $obj->transcriptUtterances = $transcriptUtterances;
+        $obj['transcriptUtterances'] = $transcriptUtterances;
 
         return $obj;
     }
@@ -158,7 +172,7 @@ final class TranscriptResponse implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

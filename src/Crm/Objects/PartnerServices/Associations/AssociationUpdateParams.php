@@ -69,9 +69,9 @@ final class AssociationUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->partnerServiceId = $partnerServiceId;
-        $obj->toObjectType = $toObjectType;
-        $obj->toObjectId = $toObjectId;
+        $obj['partnerServiceId'] = $partnerServiceId;
+        $obj['toObjectType'] = $toObjectType;
+        $obj['toObjectId'] = $toObjectId;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class AssociationUpdateParams implements BaseModel
     public function withPartnerServiceID(string $partnerServiceID): self
     {
         $obj = clone $this;
-        $obj->partnerServiceId = $partnerServiceID;
+        $obj['partnerServiceId'] = $partnerServiceID;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class AssociationUpdateParams implements BaseModel
     public function withToObjectType(string $toObjectType): self
     {
         $obj = clone $this;
-        $obj->toObjectType = $toObjectType;
+        $obj['toObjectType'] = $toObjectType;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class AssociationUpdateParams implements BaseModel
     public function withToObjectID(string $toObjectID): self
     {
         $obj = clone $this;
-        $obj->toObjectId = $toObjectID;
+        $obj['toObjectId'] = $toObjectID;
 
         return $obj;
     }

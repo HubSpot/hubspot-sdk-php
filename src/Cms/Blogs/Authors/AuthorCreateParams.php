@@ -212,23 +212,23 @@ final class AuthorCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->avatar = $avatar;
-        $obj->bio = $bio;
-        $obj->created = $created;
-        $obj->deletedAt = $deletedAt;
-        $obj->displayName = $displayName;
-        $obj->email = $email;
-        $obj->facebook = $facebook;
-        $obj->fullName = $fullName;
+        $obj['id'] = $id;
+        $obj['avatar'] = $avatar;
+        $obj['bio'] = $bio;
+        $obj['created'] = $created;
+        $obj['deletedAt'] = $deletedAt;
+        $obj['displayName'] = $displayName;
+        $obj['email'] = $email;
+        $obj['facebook'] = $facebook;
+        $obj['fullName'] = $fullName;
         $obj['language'] = $language;
-        $obj->linkedin = $linkedin;
-        $obj->name = $name;
-        $obj->slug = $slug;
-        $obj->translatedFromId = $translatedFromId;
-        $obj->twitter = $twitter;
-        $obj->updated = $updated;
-        $obj->website = $website;
+        $obj['linkedin'] = $linkedin;
+        $obj['name'] = $name;
+        $obj['slug'] = $slug;
+        $obj['translatedFromId'] = $translatedFromId;
+        $obj['twitter'] = $twitter;
+        $obj['updated'] = $updated;
+        $obj['website'] = $website;
 
         return $obj;
     }
@@ -239,7 +239,7 @@ final class AuthorCreateParams implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -250,7 +250,7 @@ final class AuthorCreateParams implements BaseModel
     public function withAvatar(string $avatar): self
     {
         $obj = clone $this;
-        $obj->avatar = $avatar;
+        $obj['avatar'] = $avatar;
 
         return $obj;
     }
@@ -261,7 +261,7 @@ final class AuthorCreateParams implements BaseModel
     public function withBio(string $bio): self
     {
         $obj = clone $this;
-        $obj->bio = $bio;
+        $obj['bio'] = $bio;
 
         return $obj;
     }
@@ -269,7 +269,7 @@ final class AuthorCreateParams implements BaseModel
     public function withCreated(\DateTimeInterface $created): self
     {
         $obj = clone $this;
-        $obj->created = $created;
+        $obj['created'] = $created;
 
         return $obj;
     }
@@ -280,7 +280,7 @@ final class AuthorCreateParams implements BaseModel
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
         $obj = clone $this;
-        $obj->deletedAt = $deletedAt;
+        $obj['deletedAt'] = $deletedAt;
 
         return $obj;
     }
@@ -291,7 +291,7 @@ final class AuthorCreateParams implements BaseModel
     public function withDisplayName(string $displayName): self
     {
         $obj = clone $this;
-        $obj->displayName = $displayName;
+        $obj['displayName'] = $displayName;
 
         return $obj;
     }
@@ -302,7 +302,7 @@ final class AuthorCreateParams implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -313,7 +313,7 @@ final class AuthorCreateParams implements BaseModel
     public function withFacebook(string $facebook): self
     {
         $obj = clone $this;
-        $obj->facebook = $facebook;
+        $obj['facebook'] = $facebook;
 
         return $obj;
     }
@@ -321,7 +321,7 @@ final class AuthorCreateParams implements BaseModel
     public function withFullName(string $fullName): self
     {
         $obj = clone $this;
-        $obj->fullName = $fullName;
+        $obj['fullName'] = $fullName;
 
         return $obj;
     }
@@ -345,7 +345,7 @@ final class AuthorCreateParams implements BaseModel
     public function withLinkedin(string $linkedin): self
     {
         $obj = clone $this;
-        $obj->linkedin = $linkedin;
+        $obj['linkedin'] = $linkedin;
 
         return $obj;
     }
@@ -353,7 +353,7 @@ final class AuthorCreateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -361,7 +361,7 @@ final class AuthorCreateParams implements BaseModel
     public function withSlug(string $slug): self
     {
         $obj = clone $this;
-        $obj->slug = $slug;
+        $obj['slug'] = $slug;
 
         return $obj;
     }
@@ -372,7 +372,7 @@ final class AuthorCreateParams implements BaseModel
     public function withTranslatedFromID(int $translatedFromID): self
     {
         $obj = clone $this;
-        $obj->translatedFromId = $translatedFromID;
+        $obj['translatedFromId'] = $translatedFromID;
 
         return $obj;
     }
@@ -383,7 +383,7 @@ final class AuthorCreateParams implements BaseModel
     public function withTwitter(string $twitter): self
     {
         $obj = clone $this;
-        $obj->twitter = $twitter;
+        $obj['twitter'] = $twitter;
 
         return $obj;
     }
@@ -391,7 +391,7 @@ final class AuthorCreateParams implements BaseModel
     public function withUpdated(\DateTimeInterface $updated): self
     {
         $obj = clone $this;
-        $obj->updated = $updated;
+        $obj['updated'] = $updated;
 
         return $obj;
     }
@@ -402,7 +402,7 @@ final class AuthorCreateParams implements BaseModel
     public function withWebsite(string $website): self
     {
         $obj = clone $this;
-        $obj->website = $website;
+        $obj['website'] = $website;
 
         return $obj;
     }

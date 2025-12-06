@@ -125,16 +125,16 @@ final class CalendarDatePropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->operationType = $operationType;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['operationType'] = $operationType;
         $obj['operator'] = $operator;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
         $obj['propertyType'] = $propertyType;
         $obj['timeUnit'] = $timeUnit;
-        $obj->timeUnitCount = $timeUnitCount;
-        $obj->useFiscalYear = $useFiscalYear;
+        $obj['timeUnitCount'] = $timeUnitCount;
+        $obj['useFiscalYear'] = $useFiscalYear;
 
-        null !== $defaultValue && $obj->defaultValue = $defaultValue;
+        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
         null !== $fiscalYearStart && $obj['fiscalYearStart'] = $fiscalYearStart;
 
         return $obj;
@@ -144,7 +144,7 @@ final class CalendarDatePropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class CalendarDatePropertyOperation implements BaseModel
     public function withOperationType(string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }
@@ -171,7 +171,7 @@ final class CalendarDatePropertyOperation implements BaseModel
     public function withOperatorName(string $operatorName): self
     {
         $obj = clone $this;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
 
         return $obj;
     }
@@ -201,7 +201,7 @@ final class CalendarDatePropertyOperation implements BaseModel
     public function withTimeUnitCount(int $timeUnitCount): self
     {
         $obj = clone $this;
-        $obj->timeUnitCount = $timeUnitCount;
+        $obj['timeUnitCount'] = $timeUnitCount;
 
         return $obj;
     }
@@ -209,7 +209,7 @@ final class CalendarDatePropertyOperation implements BaseModel
     public function withUseFiscalYear(bool $useFiscalYear): self
     {
         $obj = clone $this;
-        $obj->useFiscalYear = $useFiscalYear;
+        $obj['useFiscalYear'] = $useFiscalYear;
 
         return $obj;
     }
@@ -217,7 +217,7 @@ final class CalendarDatePropertyOperation implements BaseModel
     public function withDefaultValue(string $defaultValue): self
     {
         $obj = clone $this;
-        $obj->defaultValue = $defaultValue;
+        $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }

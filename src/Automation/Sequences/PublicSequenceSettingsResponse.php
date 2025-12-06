@@ -99,6 +99,10 @@ final class PublicSequenceSettingsResponse implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param UnenrollmentSettingsResponse|array{
+     *   emailSettings: EmailSettingsResponse, meetingSettings: MeetingSettingsResponse
+     * } $unenrollmentSettings
      */
     public static function with(
         string $id,
@@ -110,21 +114,21 @@ final class PublicSequenceSettingsResponse implements BaseModel
         int $sendWindowStartMinute,
         int $taskReminderMinute,
         \DateTimeInterface $updatedAt,
-        ?UnenrollmentSettingsResponse $unenrollmentSettings = null,
+        UnenrollmentSettingsResponse|array|null $unenrollmentSettings = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->eligibleFollowUpDays = $eligibleFollowUpDays;
-        $obj->individualTaskRemindersEnabled = $individualTaskRemindersEnabled;
-        $obj->sellingStrategy = $sellingStrategy;
-        $obj->sendWindowEndMinute = $sendWindowEndMinute;
-        $obj->sendWindowStartMinute = $sendWindowStartMinute;
-        $obj->taskReminderMinute = $taskReminderMinute;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['eligibleFollowUpDays'] = $eligibleFollowUpDays;
+        $obj['individualTaskRemindersEnabled'] = $individualTaskRemindersEnabled;
+        $obj['sellingStrategy'] = $sellingStrategy;
+        $obj['sendWindowEndMinute'] = $sendWindowEndMinute;
+        $obj['sendWindowStartMinute'] = $sendWindowStartMinute;
+        $obj['taskReminderMinute'] = $taskReminderMinute;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $unenrollmentSettings && $obj->unenrollmentSettings = $unenrollmentSettings;
+        null !== $unenrollmentSettings && $obj['unenrollmentSettings'] = $unenrollmentSettings;
 
         return $obj;
     }
@@ -132,7 +136,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -140,7 +144,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -148,7 +152,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
     public function withEligibleFollowUpDays(string $eligibleFollowUpDays): self
     {
         $obj = clone $this;
-        $obj->eligibleFollowUpDays = $eligibleFollowUpDays;
+        $obj['eligibleFollowUpDays'] = $eligibleFollowUpDays;
 
         return $obj;
     }
@@ -157,7 +161,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
         bool $individualTaskRemindersEnabled
     ): self {
         $obj = clone $this;
-        $obj->individualTaskRemindersEnabled = $individualTaskRemindersEnabled;
+        $obj['individualTaskRemindersEnabled'] = $individualTaskRemindersEnabled;
 
         return $obj;
     }
@@ -165,7 +169,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
     public function withSellingStrategy(string $sellingStrategy): self
     {
         $obj = clone $this;
-        $obj->sellingStrategy = $sellingStrategy;
+        $obj['sellingStrategy'] = $sellingStrategy;
 
         return $obj;
     }
@@ -173,7 +177,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
     public function withSendWindowEndMinute(int $sendWindowEndMinute): self
     {
         $obj = clone $this;
-        $obj->sendWindowEndMinute = $sendWindowEndMinute;
+        $obj['sendWindowEndMinute'] = $sendWindowEndMinute;
 
         return $obj;
     }
@@ -181,7 +185,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
     public function withSendWindowStartMinute(int $sendWindowStartMinute): self
     {
         $obj = clone $this;
-        $obj->sendWindowStartMinute = $sendWindowStartMinute;
+        $obj['sendWindowStartMinute'] = $sendWindowStartMinute;
 
         return $obj;
     }
@@ -189,7 +193,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
     public function withTaskReminderMinute(int $taskReminderMinute): self
     {
         $obj = clone $this;
-        $obj->taskReminderMinute = $taskReminderMinute;
+        $obj['taskReminderMinute'] = $taskReminderMinute;
 
         return $obj;
     }
@@ -197,16 +201,21 @@ final class PublicSequenceSettingsResponse implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
 
+    /**
+     * @param UnenrollmentSettingsResponse|array{
+     *   emailSettings: EmailSettingsResponse, meetingSettings: MeetingSettingsResponse
+     * } $unenrollmentSettings
+     */
     public function withUnenrollmentSettings(
-        UnenrollmentSettingsResponse $unenrollmentSettings
+        UnenrollmentSettingsResponse|array $unenrollmentSettings
     ): self {
         $obj = clone $this;
-        $obj->unenrollmentSettings = $unenrollmentSettings;
+        $obj['unenrollmentSettings'] = $unenrollmentSettings;
 
         return $obj;
     }

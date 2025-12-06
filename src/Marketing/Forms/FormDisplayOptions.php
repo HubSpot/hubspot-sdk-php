@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
+use HubspotSDK\Marketing\Forms\FormStyle\SubmitAlignment;
 
 /**
  * Options for styling the form.
@@ -84,23 +85,37 @@ final class FormDisplayOptions implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param FormStyle|array{
+     *   backgroundWidth: string,
+     *   fontFamily: string,
+     *   helpTextColor: string,
+     *   helpTextSize: string,
+     *   labelTextColor: string,
+     *   labelTextSize: string,
+     *   legalConsentTextColor: string,
+     *   legalConsentTextSize: string,
+     *   submitAlignment: value-of<SubmitAlignment>,
+     *   submitColor: string,
+     *   submitFontColor: string,
+     *   submitSize: string,
+     * } $style
      * @param Theme|value-of<Theme> $theme
      */
     public static function with(
         bool $renderRawHtml,
-        FormStyle $style,
+        FormStyle|array $style,
         string $submitButtonText,
         Theme|string $theme,
         ?string $cssClass = null,
     ): self {
         $obj = new self;
 
-        $obj->renderRawHtml = $renderRawHtml;
-        $obj->style = $style;
-        $obj->submitButtonText = $submitButtonText;
+        $obj['renderRawHtml'] = $renderRawHtml;
+        $obj['style'] = $style;
+        $obj['submitButtonText'] = $submitButtonText;
         $obj['theme'] = $theme;
 
-        null !== $cssClass && $obj->cssClass = $cssClass;
+        null !== $cssClass && $obj['cssClass'] = $cssClass;
 
         return $obj;
     }
@@ -111,18 +126,33 @@ final class FormDisplayOptions implements BaseModel
     public function withRenderRawHTML(bool $renderRawHTML): self
     {
         $obj = clone $this;
-        $obj->renderRawHtml = $renderRawHTML;
+        $obj['renderRawHtml'] = $renderRawHTML;
 
         return $obj;
     }
 
     /**
      * Styling options for the form.
+     *
+     * @param FormStyle|array{
+     *   backgroundWidth: string,
+     *   fontFamily: string,
+     *   helpTextColor: string,
+     *   helpTextSize: string,
+     *   labelTextColor: string,
+     *   labelTextSize: string,
+     *   legalConsentTextColor: string,
+     *   legalConsentTextSize: string,
+     *   submitAlignment: value-of<SubmitAlignment>,
+     *   submitColor: string,
+     *   submitFontColor: string,
+     *   submitSize: string,
+     * } $style
      */
-    public function withStyle(FormStyle $style): self
+    public function withStyle(FormStyle|array $style): self
     {
         $obj = clone $this;
-        $obj->style = $style;
+        $obj['style'] = $style;
 
         return $obj;
     }
@@ -133,7 +163,7 @@ final class FormDisplayOptions implements BaseModel
     public function withSubmitButtonText(string $submitButtonText): self
     {
         $obj = clone $this;
-        $obj->submitButtonText = $submitButtonText;
+        $obj['submitButtonText'] = $submitButtonText;
 
         return $obj;
     }
@@ -154,7 +184,7 @@ final class FormDisplayOptions implements BaseModel
     public function withCssClass(string $cssClass): self
     {
         $obj = clone $this;
-        $obj->cssClass = $cssClass;
+        $obj['cssClass'] = $cssClass;
 
         return $obj;
     }

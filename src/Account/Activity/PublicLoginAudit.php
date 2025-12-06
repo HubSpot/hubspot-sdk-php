@@ -128,17 +128,17 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->loginAt = $loginAt;
-        $obj->loginSucceeded = $loginSucceeded;
+        $obj['id'] = $id;
+        $obj['loginAt'] = $loginAt;
+        $obj['loginSucceeded'] = $loginSucceeded;
 
-        null !== $countryCode && $obj->countryCode = $countryCode;
-        null !== $email && $obj->email = $email;
-        null !== $ipAddress && $obj->ipAddress = $ipAddress;
-        null !== $location && $obj->location = $location;
-        null !== $regionCode && $obj->regionCode = $regionCode;
-        null !== $userAgent && $obj->userAgent = $userAgent;
-        null !== $userId && $obj->userId = $userId;
+        null !== $countryCode && $obj['countryCode'] = $countryCode;
+        null !== $email && $obj['email'] = $email;
+        null !== $ipAddress && $obj['ipAddress'] = $ipAddress;
+        null !== $location && $obj['location'] = $location;
+        null !== $regionCode && $obj['regionCode'] = $regionCode;
+        null !== $userAgent && $obj['userAgent'] = $userAgent;
+        null !== $userId && $obj['userId'] = $userId;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -160,7 +160,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withLoginAt(\DateTimeInterface $loginAt): self
     {
         $obj = clone $this;
-        $obj->loginAt = $loginAt;
+        $obj['loginAt'] = $loginAt;
 
         return $obj;
     }
@@ -171,7 +171,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withLoginSucceeded(bool $loginSucceeded): self
     {
         $obj = clone $this;
-        $obj->loginSucceeded = $loginSucceeded;
+        $obj['loginSucceeded'] = $loginSucceeded;
 
         return $obj;
     }
@@ -182,7 +182,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withCountryCode(string $countryCode): self
     {
         $obj = clone $this;
-        $obj->countryCode = $countryCode;
+        $obj['countryCode'] = $countryCode;
 
         return $obj;
     }
@@ -193,7 +193,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -204,7 +204,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withIPAddress(string $ipAddress): self
     {
         $obj = clone $this;
-        $obj->ipAddress = $ipAddress;
+        $obj['ipAddress'] = $ipAddress;
 
         return $obj;
     }
@@ -212,7 +212,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withLocation(string $location): self
     {
         $obj = clone $this;
-        $obj->location = $location;
+        $obj['location'] = $location;
 
         return $obj;
     }
@@ -223,7 +223,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withRegionCode(string $regionCode): self
     {
         $obj = clone $this;
-        $obj->regionCode = $regionCode;
+        $obj['regionCode'] = $regionCode;
 
         return $obj;
     }
@@ -234,7 +234,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withUserAgent(string $userAgent): self
     {
         $obj = clone $this;
-        $obj->userAgent = $userAgent;
+        $obj['userAgent'] = $userAgent;
 
         return $obj;
     }
@@ -245,7 +245,7 @@ final class PublicLoginAudit implements BaseModel, ResponseConverter
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }

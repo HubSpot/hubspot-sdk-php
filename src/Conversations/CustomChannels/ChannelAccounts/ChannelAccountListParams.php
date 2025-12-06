@@ -79,13 +79,13 @@ final class ChannelAccountListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $archived && $obj->archived = $archived;
-        null !== $defaultPageLength && $obj->defaultPageLength = $defaultPageLength;
-        null !== $deliveryIdentifierType && $obj->deliveryIdentifierType = $deliveryIdentifierType;
-        null !== $deliveryIdentifierValue && $obj->deliveryIdentifierValue = $deliveryIdentifierValue;
-        null !== $limit && $obj->limit = $limit;
-        null !== $sort && $obj->sort = $sort;
+        null !== $after && $obj['after'] = $after;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $defaultPageLength && $obj['defaultPageLength'] = $defaultPageLength;
+        null !== $deliveryIdentifierType && $obj['deliveryIdentifierType'] = $deliveryIdentifierType;
+        null !== $deliveryIdentifierValue && $obj['deliveryIdentifierValue'] = $deliveryIdentifierValue;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $sort && $obj['sort'] = $sort;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class ChannelAccountListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class ChannelAccountListParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class ChannelAccountListParams implements BaseModel
     public function withDefaultPageLength(int $defaultPageLength): self
     {
         $obj = clone $this;
-        $obj->defaultPageLength = $defaultPageLength;
+        $obj['defaultPageLength'] = $defaultPageLength;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class ChannelAccountListParams implements BaseModel
         array $deliveryIdentifierType
     ): self {
         $obj = clone $this;
-        $obj->deliveryIdentifierType = $deliveryIdentifierType;
+        $obj['deliveryIdentifierType'] = $deliveryIdentifierType;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class ChannelAccountListParams implements BaseModel
         array $deliveryIdentifierValue
     ): self {
         $obj = clone $this;
-        $obj->deliveryIdentifierValue = $deliveryIdentifierValue;
+        $obj['deliveryIdentifierValue'] = $deliveryIdentifierValue;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class ChannelAccountListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class ChannelAccountListParams implements BaseModel
     public function withSort(array $sort): self
     {
         $obj = clone $this;
-        $obj->sort = $sort;
+        $obj['sort'] = $sort;
 
         return $obj;
     }

@@ -8,7 +8,10 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociationSpecWithLabel;
+use HubspotSDK\Crm\AssociationSpecWithLabel\Category;
+use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
+use HubspotSDK\PreviousPage;
 
 /**
  * @phpstan-type CollectionResponseAssociationSpecWithLabelShape = array{
@@ -51,34 +54,44 @@ final class CollectionResponseAssociationSpecWithLabel implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationSpecWithLabel> $results
+     * @param list<AssociationSpecWithLabel|array{
+     *   category: value-of<Category>, typeId: int, label?: string|null
+     * }> $results
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        Paging|array|null $paging = null
+    ): self {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<AssociationSpecWithLabel> $results
+     * @param list<AssociationSpecWithLabel|array{
+     *   category: value-of<Category>, typeId: int, label?: string|null
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    /**
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     */
+    public function withPaging(Paging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

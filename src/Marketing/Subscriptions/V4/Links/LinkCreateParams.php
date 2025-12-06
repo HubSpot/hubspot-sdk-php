@@ -79,11 +79,11 @@ final class LinkCreateParams implements BaseModel
         $obj = new self;
 
         $obj['channel'] = $channel;
-        $obj->subscriberIdString = $subscriberIdString;
+        $obj['subscriberIdString'] = $subscriberIdString;
 
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
-        null !== $language && $obj->language = $language;
-        null !== $subscriptionId && $obj->subscriptionId = $subscriptionId;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $language && $obj['language'] = $language;
+        null !== $subscriptionId && $obj['subscriptionId'] = $subscriptionId;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class LinkCreateParams implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIdString = $subscriberIDString;
+        $obj['subscriberIdString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class LinkCreateParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class LinkCreateParams implements BaseModel
     public function withLanguage(string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language;
+        $obj['language'] = $language;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class LinkCreateParams implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionId = $subscriptionID;
+        $obj['subscriptionId'] = $subscriptionID;
 
         return $obj;
     }

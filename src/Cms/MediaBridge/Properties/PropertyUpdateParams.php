@@ -29,7 +29,13 @@ use HubspotSDK\OptionInput;
  *   hasUniqueValue?: bool,
  *   hidden?: bool,
  *   label?: string,
- *   options?: list<OptionInput>,
+ *   options?: list<OptionInput|array{
+ *     displayOrder: int,
+ *     hidden: bool,
+ *     label: string,
+ *     value: string,
+ *     description?: string|null,
+ *   }>,
  *   type?: Type|value-of<Type>,
  * }
  */
@@ -106,7 +112,13 @@ final class PropertyUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FieldType|value-of<FieldType> $fieldType
-     * @param list<OptionInput> $options
+     * @param list<OptionInput|array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     * }> $options
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -126,19 +138,19 @@ final class PropertyUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->objectType = $objectType;
+        $obj['appId'] = $appId;
+        $obj['objectType'] = $objectType;
 
-        null !== $calculationFormula && $obj->calculationFormula = $calculationFormula;
-        null !== $description && $obj->description = $description;
-        null !== $displayOrder && $obj->displayOrder = $displayOrder;
+        null !== $calculationFormula && $obj['calculationFormula'] = $calculationFormula;
+        null !== $description && $obj['description'] = $description;
+        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
         null !== $fieldType && $obj['fieldType'] = $fieldType;
-        null !== $formField && $obj->formField = $formField;
-        null !== $groupName && $obj->groupName = $groupName;
-        null !== $hasUniqueValue && $obj->hasUniqueValue = $hasUniqueValue;
-        null !== $hidden && $obj->hidden = $hidden;
-        null !== $label && $obj->label = $label;
-        null !== $options && $obj->options = $options;
+        null !== $formField && $obj['formField'] = $formField;
+        null !== $groupName && $obj['groupName'] = $groupName;
+        null !== $hasUniqueValue && $obj['hasUniqueValue'] = $hasUniqueValue;
+        null !== $hidden && $obj['hidden'] = $hidden;
+        null !== $label && $obj['label'] = $label;
+        null !== $options && $obj['options'] = $options;
         null !== $type && $obj['type'] = $type;
 
         return $obj;
@@ -147,7 +159,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -155,7 +167,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -163,7 +175,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withCalculationFormula(string $calculationFormula): self
     {
         $obj = clone $this;
-        $obj->calculationFormula = $calculationFormula;
+        $obj['calculationFormula'] = $calculationFormula;
 
         return $obj;
     }
@@ -171,7 +183,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -179,7 +191,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -198,7 +210,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withFormField(bool $formField): self
     {
         $obj = clone $this;
-        $obj->formField = $formField;
+        $obj['formField'] = $formField;
 
         return $obj;
     }
@@ -206,7 +218,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withGroupName(string $groupName): self
     {
         $obj = clone $this;
-        $obj->groupName = $groupName;
+        $obj['groupName'] = $groupName;
 
         return $obj;
     }
@@ -214,7 +226,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withHasUniqueValue(bool $hasUniqueValue): self
     {
         $obj = clone $this;
-        $obj->hasUniqueValue = $hasUniqueValue;
+        $obj['hasUniqueValue'] = $hasUniqueValue;
 
         return $obj;
     }
@@ -222,7 +234,7 @@ final class PropertyUpdateParams implements BaseModel
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
-        $obj->hidden = $hidden;
+        $obj['hidden'] = $hidden;
 
         return $obj;
     }
@@ -230,18 +242,24 @@ final class PropertyUpdateParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
 
     /**
-     * @param list<OptionInput> $options
+     * @param list<OptionInput|array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }

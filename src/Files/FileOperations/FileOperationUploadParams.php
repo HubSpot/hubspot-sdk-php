@@ -85,12 +85,12 @@ final class FileOperationUploadParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $charsetHunch && $obj->charsetHunch = $charsetHunch;
-        null !== $file && $obj->file = $file;
-        null !== $fileName && $obj->fileName = $fileName;
-        null !== $folderId && $obj->folderId = $folderId;
-        null !== $folderPath && $obj->folderPath = $folderPath;
-        null !== $options && $obj->options = $options;
+        null !== $charsetHunch && $obj['charsetHunch'] = $charsetHunch;
+        null !== $file && $obj['file'] = $file;
+        null !== $fileName && $obj['fileName'] = $fileName;
+        null !== $folderId && $obj['folderId'] = $folderId;
+        null !== $folderPath && $obj['folderPath'] = $folderPath;
+        null !== $options && $obj['options'] = $options;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class FileOperationUploadParams implements BaseModel
     public function withCharsetHunch(string $charsetHunch): self
     {
         $obj = clone $this;
-        $obj->charsetHunch = $charsetHunch;
+        $obj['charsetHunch'] = $charsetHunch;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class FileOperationUploadParams implements BaseModel
     public function withFile(string $file): self
     {
         $obj = clone $this;
-        $obj->file = $file;
+        $obj['file'] = $file;
 
         return $obj;
     }
@@ -123,7 +123,7 @@ final class FileOperationUploadParams implements BaseModel
     public function withFileName(string $fileName): self
     {
         $obj = clone $this;
-        $obj->fileName = $fileName;
+        $obj['fileName'] = $fileName;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class FileOperationUploadParams implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderId = $folderID;
+        $obj['folderId'] = $folderID;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class FileOperationUploadParams implements BaseModel
     public function withFolderPath(string $folderPath): self
     {
         $obj = clone $this;
-        $obj->folderPath = $folderPath;
+        $obj['folderPath'] = $folderPath;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class FileOperationUploadParams implements BaseModel
     public function withOptions(string $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }

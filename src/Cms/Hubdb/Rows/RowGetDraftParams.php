@@ -63,9 +63,9 @@ final class RowGetDraftParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->tableIdOrName = $tableIdOrName;
+        $obj['tableIdOrName'] = $tableIdOrName;
 
-        null !== $archived && $obj->archived = $archived;
+        null !== $archived && $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class RowGetDraftParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj->tableIdOrName = $tableIDOrName;
+        $obj['tableIdOrName'] = $tableIDOrName;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class RowGetDraftParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }

@@ -180,7 +180,13 @@ final class ObjectTypePropertyCreate implements BaseModel
      *
      * @param Type|value-of<Type> $type
      * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
-     * @param list<OptionInput> $options
+     * @param list<OptionInput|array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     * }> $options
      * @param OptionSortStrategy|value-of<OptionSortStrategy> $optionSortStrategy
      * @param TextDisplayHint|value-of<TextDisplayHint> $textDisplayHint
      */
@@ -205,23 +211,23 @@ final class ObjectTypePropertyCreate implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->fieldType = $fieldType;
-        $obj->label = $label;
-        $obj->name = $name;
+        $obj['fieldType'] = $fieldType;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
         $obj['type'] = $type;
 
-        null !== $description && $obj->description = $description;
-        null !== $displayOrder && $obj->displayOrder = $displayOrder;
-        null !== $formField && $obj->formField = $formField;
-        null !== $groupName && $obj->groupName = $groupName;
-        null !== $hasUniqueValue && $obj->hasUniqueValue = $hasUniqueValue;
-        null !== $hidden && $obj->hidden = $hidden;
+        null !== $description && $obj['description'] = $description;
+        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
+        null !== $formField && $obj['formField'] = $formField;
+        null !== $groupName && $obj['groupName'] = $groupName;
+        null !== $hasUniqueValue && $obj['hasUniqueValue'] = $hasUniqueValue;
+        null !== $hidden && $obj['hidden'] = $hidden;
         null !== $numberDisplayHint && $obj['numberDisplayHint'] = $numberDisplayHint;
-        null !== $options && $obj->options = $options;
+        null !== $options && $obj['options'] = $options;
         null !== $optionSortStrategy && $obj['optionSortStrategy'] = $optionSortStrategy;
-        null !== $referencedObjectType && $obj->referencedObjectType = $referencedObjectType;
-        null !== $searchableInGlobalSearch && $obj->searchableInGlobalSearch = $searchableInGlobalSearch;
-        null !== $showCurrencySymbol && $obj->showCurrencySymbol = $showCurrencySymbol;
+        null !== $referencedObjectType && $obj['referencedObjectType'] = $referencedObjectType;
+        null !== $searchableInGlobalSearch && $obj['searchableInGlobalSearch'] = $searchableInGlobalSearch;
+        null !== $showCurrencySymbol && $obj['showCurrencySymbol'] = $showCurrencySymbol;
         null !== $textDisplayHint && $obj['textDisplayHint'] = $textDisplayHint;
 
         return $obj;
@@ -233,7 +239,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withFieldType(string $fieldType): self
     {
         $obj = clone $this;
-        $obj->fieldType = $fieldType;
+        $obj['fieldType'] = $fieldType;
 
         return $obj;
     }
@@ -244,7 +250,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -255,7 +261,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -279,7 +285,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -290,7 +296,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -301,7 +307,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withFormField(bool $formField): self
     {
         $obj = clone $this;
-        $obj->formField = $formField;
+        $obj['formField'] = $formField;
 
         return $obj;
     }
@@ -312,7 +318,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withGroupName(string $groupName): self
     {
         $obj = clone $this;
-        $obj->groupName = $groupName;
+        $obj['groupName'] = $groupName;
 
         return $obj;
     }
@@ -323,7 +329,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withHasUniqueValue(bool $hasUniqueValue): self
     {
         $obj = clone $this;
-        $obj->hasUniqueValue = $hasUniqueValue;
+        $obj['hasUniqueValue'] = $hasUniqueValue;
 
         return $obj;
     }
@@ -331,7 +337,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
-        $obj->hidden = $hidden;
+        $obj['hidden'] = $hidden;
 
         return $obj;
     }
@@ -353,12 +359,18 @@ final class ObjectTypePropertyCreate implements BaseModel
     /**
      * A list of available options for the property. This field is only required for enumerated properties.
      *
-     * @param list<OptionInput> $options
+     * @param list<OptionInput|array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }
@@ -383,7 +395,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withReferencedObjectType(string $referencedObjectType): self
     {
         $obj = clone $this;
-        $obj->referencedObjectType = $referencedObjectType;
+        $obj['referencedObjectType'] = $referencedObjectType;
 
         return $obj;
     }
@@ -395,7 +407,7 @@ final class ObjectTypePropertyCreate implements BaseModel
         bool $searchableInGlobalSearch
     ): self {
         $obj = clone $this;
-        $obj->searchableInGlobalSearch = $searchableInGlobalSearch;
+        $obj['searchableInGlobalSearch'] = $searchableInGlobalSearch;
 
         return $obj;
     }
@@ -406,7 +418,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     public function withShowCurrencySymbol(bool $showCurrencySymbol): self
     {
         $obj = clone $this;
-        $obj->showCurrencySymbol = $showCurrencySymbol;
+        $obj['showCurrencySymbol'] = $showCurrencySymbol;
 
         return $obj;
     }

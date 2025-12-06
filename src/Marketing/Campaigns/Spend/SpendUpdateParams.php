@@ -80,12 +80,12 @@ final class SpendUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->campaignGuid = $campaignGuid;
-        $obj->amount = $amount;
-        $obj->name = $name;
-        $obj->order = $order;
+        $obj['campaignGuid'] = $campaignGuid;
+        $obj['amount'] = $amount;
+        $obj['name'] = $name;
+        $obj['order'] = $order;
 
-        null !== $description && $obj->description = $description;
+        null !== $description && $obj['description'] = $description;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class SpendUpdateParams implements BaseModel
     public function withCampaignGuid(string $campaignGuid): self
     {
         $obj = clone $this;
-        $obj->campaignGuid = $campaignGuid;
+        $obj['campaignGuid'] = $campaignGuid;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class SpendUpdateParams implements BaseModel
     public function withAmount(float $amount): self
     {
         $obj = clone $this;
-        $obj->amount = $amount;
+        $obj['amount'] = $amount;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class SpendUpdateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class SpendUpdateParams implements BaseModel
     public function withOrder(int $order): self
     {
         $obj = clone $this;
-        $obj->order = $order;
+        $obj['order'] = $order;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class SpendUpdateParams implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }

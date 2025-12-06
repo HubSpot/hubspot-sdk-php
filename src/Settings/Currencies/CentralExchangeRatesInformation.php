@@ -52,7 +52,7 @@ final class CentralExchangeRatesInformation implements BaseModel
     {
         $obj = new self;
 
-        $obj->centralExchangeRatesEnabled = $centralExchangeRatesEnabled;
+        $obj['centralExchangeRatesEnabled'] = $centralExchangeRatesEnabled;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class CentralExchangeRatesInformation implements BaseModel
         bool $centralExchangeRatesEnabled
     ): self {
         $obj = clone $this;
-        $obj->centralExchangeRatesEnabled = $centralExchangeRatesEnabled;
+        $obj['centralExchangeRatesEnabled'] = $centralExchangeRatesEnabled;
 
         return $obj;
     }

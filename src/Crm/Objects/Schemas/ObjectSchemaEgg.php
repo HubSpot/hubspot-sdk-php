@@ -7,7 +7,12 @@ namespace HubspotSDK\Crm\Objects\Schemas;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\NumberDisplayHint;
+use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\OptionSortStrategy;
+use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\TextDisplayHint;
+use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\Type;
 use HubspotSDK\ObjectTypeDefinitionLabels;
+use HubspotSDK\OptionInput;
 
 /**
  * Defines a new object type, its properties, and associations.
@@ -123,14 +128,35 @@ final class ObjectSchemaEgg implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $associatedObjects
-     * @param list<ObjectTypePropertyCreate> $properties
+     * @param ObjectTypeDefinitionLabels|array{
+     *   plural?: string|null, singular?: string|null
+     * } $labels
+     * @param list<ObjectTypePropertyCreate|array{
+     *   fieldType: string,
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     *   formField?: bool|null,
+     *   groupName?: string|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   numberDisplayHint?: value-of<NumberDisplayHint>|null,
+     *   options?: list<OptionInput>|null,
+     *   optionSortStrategy?: value-of<OptionSortStrategy>|null,
+     *   referencedObjectType?: string|null,
+     *   searchableInGlobalSearch?: bool|null,
+     *   showCurrencySymbol?: bool|null,
+     *   textDisplayHint?: value-of<TextDisplayHint>|null,
+     * }> $properties
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
      */
     public static function with(
         array $associatedObjects,
-        ObjectTypeDefinitionLabels $labels,
+        ObjectTypeDefinitionLabels|array $labels,
         string $name,
         array $properties,
         array $requiredProperties,
@@ -141,16 +167,16 @@ final class ObjectSchemaEgg implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->associatedObjects = $associatedObjects;
-        $obj->labels = $labels;
-        $obj->name = $name;
-        $obj->properties = $properties;
-        $obj->requiredProperties = $requiredProperties;
+        $obj['associatedObjects'] = $associatedObjects;
+        $obj['labels'] = $labels;
+        $obj['name'] = $name;
+        $obj['properties'] = $properties;
+        $obj['requiredProperties'] = $requiredProperties;
 
-        null !== $description && $obj->description = $description;
-        null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
-        null !== $searchableProperties && $obj->searchableProperties = $searchableProperties;
-        null !== $secondaryDisplayProperties && $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
+        null !== $description && $obj['description'] = $description;
+        null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
+        null !== $searchableProperties && $obj['searchableProperties'] = $searchableProperties;
+        null !== $secondaryDisplayProperties && $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
         return $obj;
     }
@@ -163,15 +189,20 @@ final class ObjectSchemaEgg implements BaseModel
     public function withAssociatedObjects(array $associatedObjects): self
     {
         $obj = clone $this;
-        $obj->associatedObjects = $associatedObjects;
+        $obj['associatedObjects'] = $associatedObjects;
 
         return $obj;
     }
 
-    public function withLabels(ObjectTypeDefinitionLabels $labels): self
+    /**
+     * @param ObjectTypeDefinitionLabels|array{
+     *   plural?: string|null, singular?: string|null
+     * } $labels
+     */
+    public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
         $obj = clone $this;
-        $obj->labels = $labels;
+        $obj['labels'] = $labels;
 
         return $obj;
     }
@@ -182,7 +213,7 @@ final class ObjectSchemaEgg implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -190,12 +221,30 @@ final class ObjectSchemaEgg implements BaseModel
     /**
      * Properties defined for this object type.
      *
-     * @param list<ObjectTypePropertyCreate> $properties
+     * @param list<ObjectTypePropertyCreate|array{
+     *   fieldType: string,
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     *   formField?: bool|null,
+     *   groupName?: string|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   numberDisplayHint?: value-of<NumberDisplayHint>|null,
+     *   options?: list<OptionInput>|null,
+     *   optionSortStrategy?: value-of<OptionSortStrategy>|null,
+     *   referencedObjectType?: string|null,
+     *   searchableInGlobalSearch?: bool|null,
+     *   showCurrencySymbol?: bool|null,
+     *   textDisplayHint?: value-of<TextDisplayHint>|null,
+     * }> $properties
      */
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -208,7 +257,7 @@ final class ObjectSchemaEgg implements BaseModel
     public function withRequiredProperties(array $requiredProperties): self
     {
         $obj = clone $this;
-        $obj->requiredProperties = $requiredProperties;
+        $obj['requiredProperties'] = $requiredProperties;
 
         return $obj;
     }
@@ -216,7 +265,7 @@ final class ObjectSchemaEgg implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -228,7 +277,7 @@ final class ObjectSchemaEgg implements BaseModel
         string $primaryDisplayProperty
     ): self {
         $obj = clone $this;
-        $obj->primaryDisplayProperty = $primaryDisplayProperty;
+        $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
 
         return $obj;
     }
@@ -241,7 +290,7 @@ final class ObjectSchemaEgg implements BaseModel
     public function withSearchableProperties(array $searchableProperties): self
     {
         $obj = clone $this;
-        $obj->searchableProperties = $searchableProperties;
+        $obj['searchableProperties'] = $searchableProperties;
 
         return $obj;
     }
@@ -255,7 +304,7 @@ final class ObjectSchemaEgg implements BaseModel
         array $secondaryDisplayProperties
     ): self {
         $obj = clone $this;
-        $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
+        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
         return $obj;
     }

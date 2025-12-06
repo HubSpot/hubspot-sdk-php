@@ -52,8 +52,8 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $fromObjectTypeId && $obj->fromObjectTypeId = $fromObjectTypeId;
-        null !== $toObjectTypeId && $obj->toObjectTypeId = $toObjectTypeId;
+        null !== $fromObjectTypeId && $obj['fromObjectTypeId'] = $fromObjectTypeId;
+        null !== $toObjectTypeId && $obj['toObjectTypeId'] = $toObjectTypeId;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeId = $fromObjectTypeID;
+        $obj['fromObjectTypeId'] = $fromObjectTypeID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->toObjectTypeId = $toObjectTypeID;
+        $obj['toObjectTypeId'] = $toObjectTypeID;
 
         return $obj;
     }

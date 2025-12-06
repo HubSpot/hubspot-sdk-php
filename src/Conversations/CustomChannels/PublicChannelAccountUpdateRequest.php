@@ -40,8 +40,8 @@ final class PublicChannelAccountUpdateRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $authorized && $obj->authorized = $authorized;
-        null !== $name && $obj->name = $name;
+        null !== $authorized && $obj['authorized'] = $authorized;
+        null !== $name && $obj['name'] = $name;
 
         return $obj;
     }
@@ -49,7 +49,7 @@ final class PublicChannelAccountUpdateRequest implements BaseModel
     public function withAuthorized(bool $authorized): self
     {
         $obj = clone $this;
-        $obj->authorized = $authorized;
+        $obj['authorized'] = $authorized;
 
         return $obj;
     }
@@ -57,7 +57,7 @@ final class PublicChannelAccountUpdateRequest implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

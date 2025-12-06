@@ -7,7 +7,10 @@ namespace HubspotSDK\Crm\Associations\Schema\V4;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionUserConfiguration\Category;
+use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
+use HubspotSDK\PreviousPage;
 
 /**
  * @phpstan-type CollectionResponsePublicAssociationDefinitionUserConfigurationShape = array{
@@ -56,34 +59,50 @@ final class CollectionResponsePublicAssociationDefinitionUserConfiguration imple
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionUserConfiguration> $results
+     * @param list<PublicAssociationDefinitionUserConfiguration|array{
+     *   category: value-of<Category>,
+     *   typeId: int,
+     *   label?: string|null,
+     *   userEnforcedMaxToObjectIds?: int|null,
+     * }> $results
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        Paging|array|null $paging = null
+    ): self {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAssociationDefinitionUserConfiguration> $results
+     * @param list<PublicAssociationDefinitionUserConfiguration|array{
+     *   category: value-of<Category>,
+     *   typeId: int,
+     *   label?: string|null,
+     *   userEnforcedMaxToObjectIds?: int|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    /**
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     */
+    public function withPaging(Paging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

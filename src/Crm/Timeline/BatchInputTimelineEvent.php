@@ -50,13 +50,24 @@ final class BatchInputTimelineEvent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEvent> $inputs
+     * @param list<TimelineEvent|array{
+     *   eventTemplateId: string,
+     *   tokens: array<string,string>,
+     *   id?: string|null,
+     *   domain?: string|null,
+     *   email?: string|null,
+     *   extraData?: mixed,
+     *   objectId?: string|null,
+     *   timelineIFrame?: TimelineEventIFrame|null,
+     *   timestamp?: \DateTimeInterface|null,
+     *   utk?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -64,12 +75,23 @@ final class BatchInputTimelineEvent implements BaseModel
     /**
      * A collection of timeline events we want to create.
      *
-     * @param list<TimelineEvent> $inputs
+     * @param list<TimelineEvent|array{
+     *   eventTemplateId: string,
+     *   tokens: array<string,string>,
+     *   id?: string|null,
+     *   domain?: string|null,
+     *   email?: string|null,
+     *   extraData?: mixed,
+     *   objectId?: string|null,
+     *   timelineIFrame?: TimelineEventIFrame|null,
+     *   timestamp?: \DateTimeInterface|null,
+     *   utk?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

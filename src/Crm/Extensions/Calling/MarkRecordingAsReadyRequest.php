@@ -47,7 +47,7 @@ final class MarkRecordingAsReadyRequest implements BaseModel
     {
         $obj = new self;
 
-        $obj->engagementId = $engagementId;
+        $obj['engagementId'] = $engagementId;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class MarkRecordingAsReadyRequest implements BaseModel
     public function withEngagementID(int $engagementID): self
     {
         $obj = clone $this;
-        $obj->engagementId = $engagementID;
+        $obj['engagementId'] = $engagementID;
 
         return $obj;
     }

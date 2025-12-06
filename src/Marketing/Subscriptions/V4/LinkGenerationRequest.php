@@ -58,10 +58,10 @@ final class LinkGenerationRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->subscriberIdString = $subscriberIdString;
+        $obj['subscriberIdString'] = $subscriberIdString;
 
-        null !== $language && $obj->language = $language;
-        null !== $subscriptionId && $obj->subscriptionId = $subscriptionId;
+        null !== $language && $obj['language'] = $language;
+        null !== $subscriptionId && $obj['subscriptionId'] = $subscriptionId;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class LinkGenerationRequest implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIdString = $subscriberIDString;
+        $obj['subscriberIdString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class LinkGenerationRequest implements BaseModel
     public function withLanguage(string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language;
+        $obj['language'] = $language;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class LinkGenerationRequest implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionId = $subscriptionID;
+        $obj['subscriptionId'] = $subscriptionID;
 
         return $obj;
     }

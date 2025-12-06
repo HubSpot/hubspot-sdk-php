@@ -7,6 +7,7 @@ namespace HubspotSDK\Marketing\Forms;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Marketing\Forms\FormPostSubmitAction\Type;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration\Language;
 
 /**
@@ -153,7 +154,12 @@ final class HubSpotFormConfiguration implements BaseModel
      *
      * @param Language|value-of<Language> $language
      * @param list<string> $notifyRecipients
-     * @param list<LifecycleStage> $lifecycleStages
+     * @param FormPostSubmitAction|array{
+     *   type: value-of<Type>, value: string
+     * } $postSubmitAction
+     * @param list<LifecycleStage|array{
+     *   objectTypeId: string, value: string
+     * }> $lifecycleStages
      */
     public static function with(
         bool $allowLinkToResetKnownValues,
@@ -164,26 +170,26 @@ final class HubSpotFormConfiguration implements BaseModel
         Language|string $language,
         bool $notifyContactOwner,
         array $notifyRecipients,
-        FormPostSubmitAction $postSubmitAction,
+        FormPostSubmitAction|array $postSubmitAction,
         bool $prePopulateKnownValues,
         bool $recaptchaEnabled,
         ?array $lifecycleStages = null,
     ): self {
         $obj = new self;
 
-        $obj->allowLinkToResetKnownValues = $allowLinkToResetKnownValues;
-        $obj->archivable = $archivable;
-        $obj->cloneable = $cloneable;
-        $obj->createNewContactForNewEmail = $createNewContactForNewEmail;
-        $obj->editable = $editable;
+        $obj['allowLinkToResetKnownValues'] = $allowLinkToResetKnownValues;
+        $obj['archivable'] = $archivable;
+        $obj['cloneable'] = $cloneable;
+        $obj['createNewContactForNewEmail'] = $createNewContactForNewEmail;
+        $obj['editable'] = $editable;
         $obj['language'] = $language;
-        $obj->notifyContactOwner = $notifyContactOwner;
-        $obj->notifyRecipients = $notifyRecipients;
-        $obj->postSubmitAction = $postSubmitAction;
-        $obj->prePopulateKnownValues = $prePopulateKnownValues;
-        $obj->recaptchaEnabled = $recaptchaEnabled;
+        $obj['notifyContactOwner'] = $notifyContactOwner;
+        $obj['notifyRecipients'] = $notifyRecipients;
+        $obj['postSubmitAction'] = $postSubmitAction;
+        $obj['prePopulateKnownValues'] = $prePopulateKnownValues;
+        $obj['recaptchaEnabled'] = $recaptchaEnabled;
 
-        null !== $lifecycleStages && $obj->lifecycleStages = $lifecycleStages;
+        null !== $lifecycleStages && $obj['lifecycleStages'] = $lifecycleStages;
 
         return $obj;
     }
@@ -195,7 +201,7 @@ final class HubSpotFormConfiguration implements BaseModel
         bool $allowLinkToResetKnownValues
     ): self {
         $obj = clone $this;
-        $obj->allowLinkToResetKnownValues = $allowLinkToResetKnownValues;
+        $obj['allowLinkToResetKnownValues'] = $allowLinkToResetKnownValues;
 
         return $obj;
     }
@@ -206,7 +212,7 @@ final class HubSpotFormConfiguration implements BaseModel
     public function withArchivable(bool $archivable): self
     {
         $obj = clone $this;
-        $obj->archivable = $archivable;
+        $obj['archivable'] = $archivable;
 
         return $obj;
     }
@@ -217,7 +223,7 @@ final class HubSpotFormConfiguration implements BaseModel
     public function withCloneable(bool $cloneable): self
     {
         $obj = clone $this;
-        $obj->cloneable = $cloneable;
+        $obj['cloneable'] = $cloneable;
 
         return $obj;
     }
@@ -229,7 +235,7 @@ final class HubSpotFormConfiguration implements BaseModel
         bool $createNewContactForNewEmail
     ): self {
         $obj = clone $this;
-        $obj->createNewContactForNewEmail = $createNewContactForNewEmail;
+        $obj['createNewContactForNewEmail'] = $createNewContactForNewEmail;
 
         return $obj;
     }
@@ -240,7 +246,7 @@ final class HubSpotFormConfiguration implements BaseModel
     public function withEditable(bool $editable): self
     {
         $obj = clone $this;
-        $obj->editable = $editable;
+        $obj['editable'] = $editable;
 
         return $obj;
     }
@@ -264,7 +270,7 @@ final class HubSpotFormConfiguration implements BaseModel
     public function withNotifyContactOwner(bool $notifyContactOwner): self
     {
         $obj = clone $this;
-        $obj->notifyContactOwner = $notifyContactOwner;
+        $obj['notifyContactOwner'] = $notifyContactOwner;
 
         return $obj;
     }
@@ -277,19 +283,23 @@ final class HubSpotFormConfiguration implements BaseModel
     public function withNotifyRecipients(array $notifyRecipients): self
     {
         $obj = clone $this;
-        $obj->notifyRecipients = $notifyRecipients;
+        $obj['notifyRecipients'] = $notifyRecipients;
 
         return $obj;
     }
 
     /**
      * What should happen after the customer submits the form.
+     *
+     * @param FormPostSubmitAction|array{
+     *   type: value-of<Type>, value: string
+     * } $postSubmitAction
      */
     public function withPostSubmitAction(
-        FormPostSubmitAction $postSubmitAction
+        FormPostSubmitAction|array $postSubmitAction
     ): self {
         $obj = clone $this;
-        $obj->postSubmitAction = $postSubmitAction;
+        $obj['postSubmitAction'] = $postSubmitAction;
 
         return $obj;
     }
@@ -301,7 +311,7 @@ final class HubSpotFormConfiguration implements BaseModel
         bool $prePopulateKnownValues
     ): self {
         $obj = clone $this;
-        $obj->prePopulateKnownValues = $prePopulateKnownValues;
+        $obj['prePopulateKnownValues'] = $prePopulateKnownValues;
 
         return $obj;
     }
@@ -312,18 +322,20 @@ final class HubSpotFormConfiguration implements BaseModel
     public function withRecaptchaEnabled(bool $recaptchaEnabled): self
     {
         $obj = clone $this;
-        $obj->recaptchaEnabled = $recaptchaEnabled;
+        $obj['recaptchaEnabled'] = $recaptchaEnabled;
 
         return $obj;
     }
 
     /**
-     * @param list<LifecycleStage> $lifecycleStages
+     * @param list<LifecycleStage|array{
+     *   objectTypeId: string, value: string
+     * }> $lifecycleStages
      */
     public function withLifecycleStages(array $lifecycleStages): self
     {
         $obj = clone $this;
-        $obj->lifecycleStages = $lifecycleStages;
+        $obj['lifecycleStages'] = $lifecycleStages;
 
         return $obj;
     }

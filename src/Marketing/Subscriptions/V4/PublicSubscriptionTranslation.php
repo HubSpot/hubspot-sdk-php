@@ -106,12 +106,12 @@ final class PublicSubscriptionTranslation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->createdAt = $createdAt;
-        $obj->description = $description;
-        $obj->languageCode = $languageCode;
-        $obj->name = $name;
-        $obj->subscriptionId = $subscriptionId;
-        $obj->updatedAt = $updatedAt;
+        $obj['createdAt'] = $createdAt;
+        $obj['description'] = $description;
+        $obj['languageCode'] = $languageCode;
+        $obj['name'] = $name;
+        $obj['subscriptionId'] = $subscriptionId;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class PublicSubscriptionTranslation implements BaseModel
     public function withCreatedAt(int $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class PublicSubscriptionTranslation implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -144,7 +144,7 @@ final class PublicSubscriptionTranslation implements BaseModel
     public function withLanguageCode(string $languageCode): self
     {
         $obj = clone $this;
-        $obj->languageCode = $languageCode;
+        $obj['languageCode'] = $languageCode;
 
         return $obj;
     }
@@ -155,7 +155,7 @@ final class PublicSubscriptionTranslation implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class PublicSubscriptionTranslation implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionId = $subscriptionID;
+        $obj['subscriptionId'] = $subscriptionID;
 
         return $obj;
     }
@@ -177,7 +177,7 @@ final class PublicSubscriptionTranslation implements BaseModel
     public function withUpdatedAt(int $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

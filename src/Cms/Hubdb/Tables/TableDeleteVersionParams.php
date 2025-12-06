@@ -53,7 +53,7 @@ final class TableDeleteVersionParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->tableIdOrName = $tableIdOrName;
+        $obj['tableIdOrName'] = $tableIdOrName;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class TableDeleteVersionParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj->tableIdOrName = $tableIDOrName;
+        $obj['tableIdOrName'] = $tableIDOrName;
 
         return $obj;
     }

@@ -56,8 +56,8 @@ final class GroupGetByNameParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->objectType = $objectType;
+        $obj['appId'] = $appId;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class GroupGetByNameParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class GroupGetByNameParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }

@@ -50,8 +50,8 @@ final class PublicDealSplitInput implements BaseModel
     {
         $obj = new self;
 
-        $obj->ownerId = $ownerId;
-        $obj->percentage = $percentage;
+        $obj['ownerId'] = $ownerId;
+        $obj['percentage'] = $percentage;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class PublicDealSplitInput implements BaseModel
     public function withOwnerID(int $ownerID): self
     {
         $obj = clone $this;
-        $obj->ownerId = $ownerID;
+        $obj['ownerId'] = $ownerID;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class PublicDealSplitInput implements BaseModel
     public function withPercentage(float $percentage): self
     {
         $obj = clone $this;
-        $obj->percentage = $percentage;
+        $obj['percentage'] = $percentage;
 
         return $obj;
     }

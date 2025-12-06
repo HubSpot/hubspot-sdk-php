@@ -7,6 +7,9 @@ namespace HubspotSDK;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PropertyCreate\DataSensitivity;
+use HubspotSDK\PropertyCreate\FieldType;
+use HubspotSDK\PropertyCreate\Type;
 
 /**
  * @phpstan-type BatchInputPropertyCreateShape = array{
@@ -46,24 +49,56 @@ final class BatchInputPropertyCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyCreate> $inputs
+     * @param list<PropertyCreate|array{
+     *   fieldType: value-of<FieldType>,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   calculationFormula?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   options?: list<OptionInput>|null,
+     *   referencedObjectType?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<PropertyCreate> $inputs
+     * @param list<PropertyCreate|array{
+     *   fieldType: value-of<FieldType>,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   calculationFormula?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   options?: list<OptionInput>|null,
+     *   referencedObjectType?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

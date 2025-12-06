@@ -62,9 +62,9 @@ final class ReportGetRevenueAttributionParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $attributionModel && $obj->attributionModel = $attributionModel;
-        null !== $endDate && $obj->endDate = $endDate;
-        null !== $startDate && $obj->startDate = $startDate;
+        null !== $attributionModel && $obj['attributionModel'] = $attributionModel;
+        null !== $endDate && $obj['endDate'] = $endDate;
+        null !== $startDate && $obj['startDate'] = $startDate;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class ReportGetRevenueAttributionParams implements BaseModel
     public function withAttributionModel(string $attributionModel): self
     {
         $obj = clone $this;
-        $obj->attributionModel = $attributionModel;
+        $obj['attributionModel'] = $attributionModel;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class ReportGetRevenueAttributionParams implements BaseModel
     public function withEndDate(string $endDate): self
     {
         $obj = clone $this;
-        $obj->endDate = $endDate;
+        $obj['endDate'] = $endDate;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class ReportGetRevenueAttributionParams implements BaseModel
     public function withStartDate(string $startDate): self
     {
         $obj = clone $this;
-        $obj->startDate = $startDate;
+        $obj['startDate'] = $startDate;
 
         return $obj;
     }

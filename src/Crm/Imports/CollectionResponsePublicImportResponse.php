@@ -7,7 +7,11 @@ namespace HubspotSDK\Crm\Imports;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Imports\PublicImportResponse\ImportSource;
+use HubspotSDK\Crm\Imports\PublicImportResponse\State;
+use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
+use HubspotSDK\PreviousPage;
 
 /**
  * @phpstan-type CollectionResponsePublicImportResponseShape = array{
@@ -50,34 +54,64 @@ final class CollectionResponsePublicImportResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicImportResponse> $results
+     * @param list<PublicImportResponse|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   mappedObjectTypeIds: list<string>,
+     *   metadata: PublicImportMetadata,
+     *   optOutImport: bool,
+     *   state: value-of<State>,
+     *   updatedAt: \DateTimeInterface,
+     *   importName?: string|null,
+     *   importRequestJson?: mixed,
+     *   importSource?: value-of<ImportSource>|null,
+     *   importTemplate?: ImportTemplate|null,
+     * }> $results
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        Paging|array|null $paging = null
+    ): self {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicImportResponse> $results
+     * @param list<PublicImportResponse|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   mappedObjectTypeIds: list<string>,
+     *   metadata: PublicImportMetadata,
+     *   optOutImport: bool,
+     *   state: value-of<State>,
+     *   updatedAt: \DateTimeInterface,
+     *   importName?: string|null,
+     *   importRequestJson?: mixed,
+     *   importSource?: value-of<ImportSource>|null,
+     *   importTemplate?: ImportTemplate|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    /**
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     */
+    public function withPaging(Paging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

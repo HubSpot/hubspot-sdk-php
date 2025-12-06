@@ -55,9 +55,9 @@ final class TaskLocator implements BaseModel
     {
         $obj = new self;
 
-        $obj->id = $id;
+        $obj['id'] = $id;
 
-        null !== $links && $obj->links = $links;
+        null !== $links && $obj['links'] = $links;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class TaskLocator implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class TaskLocator implements BaseModel
     public function withLinks(array $links): self
     {
         $obj = clone $this;
-        $obj->links = $links;
+        $obj['links'] = $links;
 
         return $obj;
     }

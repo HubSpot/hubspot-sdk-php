@@ -75,11 +75,11 @@ final class EventVisibilityChange implements BaseModel
         $obj = new self;
 
         $obj['eventType'] = $eventType;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $showInReporting && $obj->showInReporting = $showInReporting;
-        null !== $showInTimeline && $obj->showInTimeline = $showInTimeline;
-        null !== $showInWorkflows && $obj->showInWorkflows = $showInWorkflows;
+        null !== $showInReporting && $obj['showInReporting'] = $showInReporting;
+        null !== $showInTimeline && $obj['showInTimeline'] = $showInTimeline;
+        null !== $showInWorkflows && $obj['showInWorkflows'] = $showInWorkflows;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class EventVisibilityChange implements BaseModel
     public function withUpdatedAt(int $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class EventVisibilityChange implements BaseModel
     public function withShowInReporting(bool $showInReporting): self
     {
         $obj = clone $this;
-        $obj->showInReporting = $showInReporting;
+        $obj['showInReporting'] = $showInReporting;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class EventVisibilityChange implements BaseModel
     public function withShowInTimeline(bool $showInTimeline): self
     {
         $obj = clone $this;
-        $obj->showInTimeline = $showInTimeline;
+        $obj['showInTimeline'] = $showInTimeline;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class EventVisibilityChange implements BaseModel
     public function withShowInWorkflows(bool $showInWorkflows): self
     {
         $obj = clone $this;
-        $obj->showInWorkflows = $showInWorkflows;
+        $obj['showInWorkflows'] = $showInWorkflows;
 
         return $obj;
     }

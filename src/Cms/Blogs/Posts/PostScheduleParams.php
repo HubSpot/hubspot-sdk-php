@@ -66,8 +66,8 @@ final class PostScheduleParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->publishDate = $publishDate;
+        $obj['id'] = $id;
+        $obj['publishDate'] = $publishDate;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class PostScheduleParams implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class PostScheduleParams implements BaseModel
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
         $obj = clone $this;
-        $obj->publishDate = $publishDate;
+        $obj['publishDate'] = $publishDate;
 
         return $obj;
     }

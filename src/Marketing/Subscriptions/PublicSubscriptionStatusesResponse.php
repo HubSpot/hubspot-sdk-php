@@ -9,6 +9,9 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\LegalBasis;
+use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\SourceOfStatus;
+use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\Status;
 
 /**
  * @phpstan-type PublicSubscriptionStatusesResponseShape = array{
@@ -64,7 +67,17 @@ final class PublicSubscriptionStatusesResponse implements BaseModel, ResponseCon
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicSubscriptionStatus> $subscriptionStatuses
+     * @param list<PublicSubscriptionStatus|array{
+     *   id: string,
+     *   description: string,
+     *   name: string,
+     *   sourceOfStatus: value-of<SourceOfStatus>,
+     *   status: value-of<Status>,
+     *   brandId?: int|null,
+     *   legalBasis?: value-of<LegalBasis>|null,
+     *   legalBasisExplanation?: string|null,
+     *   preferenceGroupName?: string|null,
+     * }> $subscriptionStatuses
      */
     public static function with(
         string $recipient,
@@ -72,8 +85,8 @@ final class PublicSubscriptionStatusesResponse implements BaseModel, ResponseCon
     ): self {
         $obj = new self;
 
-        $obj->recipient = $recipient;
-        $obj->subscriptionStatuses = $subscriptionStatuses;
+        $obj['recipient'] = $recipient;
+        $obj['subscriptionStatuses'] = $subscriptionStatuses;
 
         return $obj;
     }
@@ -84,7 +97,7 @@ final class PublicSubscriptionStatusesResponse implements BaseModel, ResponseCon
     public function withRecipient(string $recipient): self
     {
         $obj = clone $this;
-        $obj->recipient = $recipient;
+        $obj['recipient'] = $recipient;
 
         return $obj;
     }
@@ -92,12 +105,22 @@ final class PublicSubscriptionStatusesResponse implements BaseModel, ResponseCon
     /**
      * A list of all of the contact's subscriptions statuses.
      *
-     * @param list<PublicSubscriptionStatus> $subscriptionStatuses
+     * @param list<PublicSubscriptionStatus|array{
+     *   id: string,
+     *   description: string,
+     *   name: string,
+     *   sourceOfStatus: value-of<SourceOfStatus>,
+     *   status: value-of<Status>,
+     *   brandId?: int|null,
+     *   legalBasis?: value-of<LegalBasis>|null,
+     *   legalBasisExplanation?: string|null,
+     *   preferenceGroupName?: string|null,
+     * }> $subscriptionStatuses
      */
     public function withSubscriptionStatuses(array $subscriptionStatuses): self
     {
         $obj = clone $this;
-        $obj->subscriptionStatuses = $subscriptionStatuses;
+        $obj['subscriptionStatuses'] = $subscriptionStatuses;
 
         return $obj;
     }

@@ -143,6 +143,9 @@ final class EmailField implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $dependentFields
+     * @param EmailFieldValidation|array{
+     *   blockedEmailDomains: list<string>, useDefaultBlockList: bool
+     * } $validation
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -152,7 +155,7 @@ final class EmailField implements BaseModel
         string $name,
         string $objectTypeId,
         bool $required,
-        EmailFieldValidation $validation,
+        EmailFieldValidation|array $validation,
         FieldType|string $fieldType = 'email',
         ?string $defaultValue = null,
         ?string $description = null,
@@ -160,18 +163,18 @@ final class EmailField implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->dependentFields = $dependentFields;
+        $obj['dependentFields'] = $dependentFields;
         $obj['fieldType'] = $fieldType;
-        $obj->hidden = $hidden;
-        $obj->label = $label;
-        $obj->name = $name;
-        $obj->objectTypeId = $objectTypeId;
-        $obj->required = $required;
-        $obj->validation = $validation;
+        $obj['hidden'] = $hidden;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['required'] = $required;
+        $obj['validation'] = $validation;
 
-        null !== $defaultValue && $obj->defaultValue = $defaultValue;
-        null !== $description && $obj->description = $description;
-        null !== $placeholder && $obj->placeholder = $placeholder;
+        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
+        null !== $description && $obj['description'] = $description;
+        null !== $placeholder && $obj['placeholder'] = $placeholder;
 
         return $obj;
     }
@@ -184,7 +187,7 @@ final class EmailField implements BaseModel
     public function withDependentFields(array $dependentFields): self
     {
         $obj = clone $this;
-        $obj->dependentFields = $dependentFields;
+        $obj['dependentFields'] = $dependentFields;
 
         return $obj;
     }
@@ -208,7 +211,7 @@ final class EmailField implements BaseModel
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
-        $obj->hidden = $hidden;
+        $obj['hidden'] = $hidden;
 
         return $obj;
     }
@@ -219,7 +222,7 @@ final class EmailField implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -230,7 +233,7 @@ final class EmailField implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -241,7 +244,7 @@ final class EmailField implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -252,18 +255,22 @@ final class EmailField implements BaseModel
     public function withRequired(bool $required): self
     {
         $obj = clone $this;
-        $obj->required = $required;
+        $obj['required'] = $required;
 
         return $obj;
     }
 
     /**
      * Describes how an email address should be validated.
+     *
+     * @param EmailFieldValidation|array{
+     *   blockedEmailDomains: list<string>, useDefaultBlockList: bool
+     * } $validation
      */
-    public function withValidation(EmailFieldValidation $validation): self
+    public function withValidation(EmailFieldValidation|array $validation): self
     {
         $obj = clone $this;
-        $obj->validation = $validation;
+        $obj['validation'] = $validation;
 
         return $obj;
     }
@@ -274,7 +281,7 @@ final class EmailField implements BaseModel
     public function withDefaultValue(string $defaultValue): self
     {
         $obj = clone $this;
-        $obj->defaultValue = $defaultValue;
+        $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }
@@ -285,7 +292,7 @@ final class EmailField implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -296,7 +303,7 @@ final class EmailField implements BaseModel
     public function withPlaceholder(string $placeholder): self
     {
         $obj = clone $this;
-        $obj->placeholder = $placeholder;
+        $obj['placeholder'] = $placeholder;
 
         return $obj;
     }

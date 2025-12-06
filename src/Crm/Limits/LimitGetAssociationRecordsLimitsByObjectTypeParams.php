@@ -56,7 +56,7 @@ final class LimitGetAssociationRecordsLimitsByObjectTypeParams implements BaseMo
     {
         $obj = new self;
 
-        $obj->fromObjectTypeId = $fromObjectTypeId;
+        $obj['fromObjectTypeId'] = $fromObjectTypeId;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class LimitGetAssociationRecordsLimitsByObjectTypeParams implements BaseMo
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeId = $fromObjectTypeID;
+        $obj['fromObjectTypeId'] = $fromObjectTypeID;
 
         return $obj;
     }

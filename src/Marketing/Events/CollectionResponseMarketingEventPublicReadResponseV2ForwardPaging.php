@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
+use HubspotSDK\NextPage;
 
 /**
  * @phpstan-type CollectionResponseMarketingEventPublicReadResponseV2ForwardPagingShape = array{
@@ -55,36 +56,82 @@ final class CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging im
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicReadResponseV2> $results
+     * @param list<MarketingEventPublicReadResponseV2|array{
+     *   createdAt: \DateTimeInterface,
+     *   customProperties: list<CrmPropertyWrapper>,
+     *   eventName: string,
+     *   objectId: string,
+     *   updatedAt: \DateTimeInterface,
+     *   appInfo?: AppInfo|null,
+     *   attendees?: int|null,
+     *   cancellations?: int|null,
+     *   endDateTime?: \DateTimeInterface|null,
+     *   eventCancelled?: bool|null,
+     *   eventCompleted?: bool|null,
+     *   eventDescription?: string|null,
+     *   eventOrganizer?: string|null,
+     *   eventStatus?: string|null,
+     *   eventType?: string|null,
+     *   eventUrl?: string|null,
+     *   externalEventId?: string|null,
+     *   noShows?: int|null,
+     *   registrants?: int|null,
+     *   startDateTime?: \DateTimeInterface|null,
+     * }> $results
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
     public static function with(
         array $results,
-        ?ForwardPaging $paging = null
+        ForwardPaging|array|null $paging = null
     ): self {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<MarketingEventPublicReadResponseV2> $results
+     * @param list<MarketingEventPublicReadResponseV2|array{
+     *   createdAt: \DateTimeInterface,
+     *   customProperties: list<CrmPropertyWrapper>,
+     *   eventName: string,
+     *   objectId: string,
+     *   updatedAt: \DateTimeInterface,
+     *   appInfo?: AppInfo|null,
+     *   attendees?: int|null,
+     *   cancellations?: int|null,
+     *   endDateTime?: \DateTimeInterface|null,
+     *   eventCancelled?: bool|null,
+     *   eventCompleted?: bool|null,
+     *   eventDescription?: string|null,
+     *   eventOrganizer?: string|null,
+     *   eventStatus?: string|null,
+     *   eventType?: string|null,
+     *   eventUrl?: string|null,
+     *   externalEventId?: string|null,
+     *   noShows?: int|null,
+     *   registrants?: int|null,
+     *   startDateTime?: \DateTimeInterface|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
-    public function withPaging(ForwardPaging $paging): self
+    /**
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     */
+    public function withPaging(ForwardPaging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

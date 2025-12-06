@@ -119,11 +119,11 @@ final class PublicWideStatus implements BaseModel
 
         $obj['channel'] = $channel;
         $obj['status'] = $status;
-        $obj->subscriberIdString = $subscriberIdString;
-        $obj->timestamp = $timestamp;
+        $obj['subscriberIdString'] = $subscriberIdString;
+        $obj['timestamp'] = $timestamp;
         $obj['wideStatusType'] = $wideStatusType;
 
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
 
         return $obj;
     }
@@ -160,7 +160,7 @@ final class PublicWideStatus implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIdString = $subscriberIDString;
+        $obj['subscriberIdString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -171,7 +171,7 @@ final class PublicWideStatus implements BaseModel
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -196,7 +196,7 @@ final class PublicWideStatus implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }

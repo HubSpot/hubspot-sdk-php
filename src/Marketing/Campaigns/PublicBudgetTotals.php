@@ -72,9 +72,25 @@ final class PublicBudgetTotals implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicBudgetItem> $budgetItems
+     * @param list<PublicBudgetItem|array{
+     *   id: string,
+     *   amount: float,
+     *   createdAt: int,
+     *   name: string,
+     *   order: int,
+     *   updatedAt: int,
+     *   description?: string|null,
+     * }> $budgetItems
      * @param CurrencyCode|value-of<CurrencyCode> $currencyCode
-     * @param list<PublicSpendItem> $spendItems
+     * @param list<PublicSpendItem|array{
+     *   id: string,
+     *   amount: float,
+     *   createdAt: int,
+     *   name: string,
+     *   order: int,
+     *   updatedAt: int,
+     *   description?: string|null,
+     * }> $spendItems
      */
     public static function with(
         array $budgetItems,
@@ -86,24 +102,32 @@ final class PublicBudgetTotals implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->budgetItems = $budgetItems;
+        $obj['budgetItems'] = $budgetItems;
         $obj['currencyCode'] = $currencyCode;
-        $obj->spendItems = $spendItems;
+        $obj['spendItems'] = $spendItems;
 
-        null !== $budgetTotal && $obj->budgetTotal = $budgetTotal;
-        null !== $remainingBudget && $obj->remainingBudget = $remainingBudget;
-        null !== $spendTotal && $obj->spendTotal = $spendTotal;
+        null !== $budgetTotal && $obj['budgetTotal'] = $budgetTotal;
+        null !== $remainingBudget && $obj['remainingBudget'] = $remainingBudget;
+        null !== $spendTotal && $obj['spendTotal'] = $spendTotal;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicBudgetItem> $budgetItems
+     * @param list<PublicBudgetItem|array{
+     *   id: string,
+     *   amount: float,
+     *   createdAt: int,
+     *   name: string,
+     *   order: int,
+     *   updatedAt: int,
+     *   description?: string|null,
+     * }> $budgetItems
      */
     public function withBudgetItems(array $budgetItems): self
     {
         $obj = clone $this;
-        $obj->budgetItems = $budgetItems;
+        $obj['budgetItems'] = $budgetItems;
 
         return $obj;
     }
@@ -120,12 +144,20 @@ final class PublicBudgetTotals implements BaseModel
     }
 
     /**
-     * @param list<PublicSpendItem> $spendItems
+     * @param list<PublicSpendItem|array{
+     *   id: string,
+     *   amount: float,
+     *   createdAt: int,
+     *   name: string,
+     *   order: int,
+     *   updatedAt: int,
+     *   description?: string|null,
+     * }> $spendItems
      */
     public function withSpendItems(array $spendItems): self
     {
         $obj = clone $this;
-        $obj->spendItems = $spendItems;
+        $obj['spendItems'] = $spendItems;
 
         return $obj;
     }
@@ -133,7 +165,7 @@ final class PublicBudgetTotals implements BaseModel
     public function withBudgetTotal(float $budgetTotal): self
     {
         $obj = clone $this;
-        $obj->budgetTotal = $budgetTotal;
+        $obj['budgetTotal'] = $budgetTotal;
 
         return $obj;
     }
@@ -141,7 +173,7 @@ final class PublicBudgetTotals implements BaseModel
     public function withRemainingBudget(float $remainingBudget): self
     {
         $obj = clone $this;
-        $obj->remainingBudget = $remainingBudget;
+        $obj['remainingBudget'] = $remainingBudget;
 
         return $obj;
     }
@@ -149,7 +181,7 @@ final class PublicBudgetTotals implements BaseModel
     public function withSpendTotal(float $spendTotal): self
     {
         $obj = clone $this;
-        $obj->spendTotal = $spendTotal;
+        $obj['spendTotal'] = $spendTotal;
 
         return $obj;
     }

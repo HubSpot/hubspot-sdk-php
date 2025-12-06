@@ -88,13 +88,13 @@ final class IFrameActionBody implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->height = $height;
-        $obj->propertyNamesIncluded = $propertyNamesIncluded;
+        $obj['height'] = $height;
+        $obj['propertyNamesIncluded'] = $propertyNamesIncluded;
         $obj['type'] = $type;
-        $obj->url = $url;
-        $obj->width = $width;
+        $obj['url'] = $url;
+        $obj['width'] = $width;
 
-        null !== $label && $obj->label = $label;
+        null !== $label && $obj['label'] = $label;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class IFrameActionBody implements BaseModel
     public function withHeight(int $height): self
     {
         $obj = clone $this;
-        $obj->height = $height;
+        $obj['height'] = $height;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class IFrameActionBody implements BaseModel
         array $propertyNamesIncluded
     ): self {
         $obj = clone $this;
-        $obj->propertyNamesIncluded = $propertyNamesIncluded;
+        $obj['propertyNamesIncluded'] = $propertyNamesIncluded;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class IFrameActionBody implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class IFrameActionBody implements BaseModel
     public function withWidth(int $width): self
     {
         $obj = clone $this;
-        $obj->width = $width;
+        $obj['width'] = $width;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class IFrameActionBody implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }

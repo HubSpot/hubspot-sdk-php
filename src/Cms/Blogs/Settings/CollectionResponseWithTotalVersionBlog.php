@@ -7,7 +7,10 @@ namespace HubspotSDK\Cms\Blogs\Settings;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
+use HubspotSDK\PreviousPage;
+use HubspotSDK\VersionUser;
 
 /**
  * Response object for collections of blog versions with pagination information.
@@ -62,19 +65,22 @@ final class CollectionResponseWithTotalVersionBlog implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<VersionBlog> $results
+     * @param list<VersionBlog|array{
+     *   id: string, object: Blog, updatedAt: \DateTimeInterface, user: VersionUser
+     * }> $results
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
     public static function with(
         array $results,
         int $total,
-        ?Paging $paging = null
+        Paging|array|null $paging = null
     ): self {
         $obj = new self;
 
-        $obj->results = $results;
-        $obj->total = $total;
+        $obj['results'] = $results;
+        $obj['total'] = $total;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
@@ -82,12 +88,14 @@ final class CollectionResponseWithTotalVersionBlog implements BaseModel
     /**
      * Collection of blog versions.
      *
-     * @param list<VersionBlog> $results
+     * @param list<VersionBlog|array{
+     *   id: string, object: Blog, updatedAt: \DateTimeInterface, user: VersionUser
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -98,15 +106,18 @@ final class CollectionResponseWithTotalVersionBlog implements BaseModel
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    /**
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     */
+    public function withPaging(Paging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

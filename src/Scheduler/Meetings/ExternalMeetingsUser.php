@@ -71,21 +71,28 @@ final class ExternalMeetingsUser implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param ExternalUserProfile|array{
+     *   email: string,
+     *   firstName?: string|null,
+     *   fullName?: string|null,
+     *   lastName?: string|null,
+     * } $userProfile
      */
     public static function with(
         string $id,
         string $calendarProvider,
         bool $isSalesStarter,
         string $userId,
-        ExternalUserProfile $userProfile,
+        ExternalUserProfile|array $userProfile,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->calendarProvider = $calendarProvider;
-        $obj->isSalesStarter = $isSalesStarter;
-        $obj->userId = $userId;
-        $obj->userProfile = $userProfile;
+        $obj['id'] = $id;
+        $obj['calendarProvider'] = $calendarProvider;
+        $obj['isSalesStarter'] = $isSalesStarter;
+        $obj['userId'] = $userId;
+        $obj['userProfile'] = $userProfile;
 
         return $obj;
     }
@@ -93,7 +100,7 @@ final class ExternalMeetingsUser implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -101,7 +108,7 @@ final class ExternalMeetingsUser implements BaseModel
     public function withCalendarProvider(string $calendarProvider): self
     {
         $obj = clone $this;
-        $obj->calendarProvider = $calendarProvider;
+        $obj['calendarProvider'] = $calendarProvider;
 
         return $obj;
     }
@@ -109,7 +116,7 @@ final class ExternalMeetingsUser implements BaseModel
     public function withIsSalesStarter(bool $isSalesStarter): self
     {
         $obj = clone $this;
-        $obj->isSalesStarter = $isSalesStarter;
+        $obj['isSalesStarter'] = $isSalesStarter;
 
         return $obj;
     }
@@ -117,15 +124,24 @@ final class ExternalMeetingsUser implements BaseModel
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }
 
-    public function withUserProfile(ExternalUserProfile $userProfile): self
-    {
+    /**
+     * @param ExternalUserProfile|array{
+     *   email: string,
+     *   firstName?: string|null,
+     *   fullName?: string|null,
+     *   lastName?: string|null,
+     * } $userProfile
+     */
+    public function withUserProfile(
+        ExternalUserProfile|array $userProfile
+    ): self {
         $obj = clone $this;
-        $obj->userProfile = $userProfile;
+        $obj['userProfile'] = $userProfile;
 
         return $obj;
     }

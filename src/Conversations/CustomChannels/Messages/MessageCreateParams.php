@@ -4,17 +4,23 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CustomChannels\Messages;
 
+use HubspotSDK\Conversations\ContactProfile;
 use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
 use HubspotSDK\Conversations\CustomChannels\ContactAttachment;
 use HubspotSDK\Conversations\CustomChannels\FileAttachment;
+use HubspotSDK\Conversations\CustomChannels\FileAttachment\Type;
 use HubspotSDK\Conversations\CustomChannels\LocationAttachment;
 use HubspotSDK\Conversations\CustomChannels\MessageHeaderAttachment;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
+use HubspotSDK\Conversations\CustomChannels\PreResolvedContact;
 use HubspotSDK\Conversations\CustomChannels\PreResolvedContacts;
 use HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment;
 use HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment;
 use HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment;
+use HubspotSDK\Conversations\PublicDeliveryIdentifier;
+use HubspotSDK\Conversations\QuickReply;
+use HubspotSDK\Conversations\SocialMetadata;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -26,17 +32,47 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::create()
  *
  * @phpstan-type MessageCreateParamsShape = array{
- *   attachments: list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment>,
+ *   attachments: list<FileAttachment|array{
+ *     fileId: string, type: value-of<Type>, fileUsageType?: string|null
+ *   }|LocationAttachment|array{
+ *     latitude: float,
+ *     longitude: float,
+ *     type: value-of<\HubspotSDK\Conversations\CustomChannels\LocationAttachment\Type>,
+ *     address?: string|null,
+ *     name?: string|null,
+ *     url?: string|null,
+ *   }|ContactAttachment|array{
+ *     contactProfile: ContactProfile,
+ *     type: value-of<\HubspotSDK\Conversations\CustomChannels\ContactAttachment\Type>,
+ *   }|UnsupportedContentAttachment|array{
+ *     type: value-of<\HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment\Type>,
+ *   }|MessageHeaderAttachment|array{
+ *     type: value-of<\HubspotSDK\Conversations\CustomChannels\MessageHeaderAttachment\Type>,
+ *     fileId?: int|null,
+ *     text?: string|null,
+ *   }|QuickRepliesAttachment|array{
+ *     quickReplies: list<QuickReply>,
+ *     type: value-of<\HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment\Type>,
+ *   }|SocialMetadataIntegrationAttachment|array{
+ *     socialMetadata: SocialMetadata,
+ *     type: value-of<\HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment\Type>,
+ *   }>,
  *   channelAccountId: string,
  *   messageDirection: MessageDirection|value-of<MessageDirection>,
- *   recipients: list<ChannelIntegrationParticipant>,
- *   senders: list<ChannelIntegrationParticipant>,
+ *   recipients: list<ChannelIntegrationParticipant|array{
+ *     deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
+ *   }>,
+ *   senders: list<ChannelIntegrationParticipant|array{
+ *     deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
+ *   }>,
  *   text: string,
  *   timestamp: \DateTimeInterface,
  *   inReplyToId?: string,
  *   integrationIdempotencyId?: string,
  *   integrationThreadId?: string,
- *   preResolvedContacts?: PreResolvedContacts,
+ *   preResolvedContacts?: PreResolvedContacts|array{
+ *     contacts: list<PreResolvedContact>
+ *   },
  *   richText?: string,
  * }
  */
@@ -127,10 +163,41 @@ final class MessageCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment> $attachments
+     * @param list<FileAttachment|array{
+     *   fileId: string, type: value-of<Type>, fileUsageType?: string|null
+     * }|LocationAttachment|array{
+     *   latitude: float,
+     *   longitude: float,
+     *   type: value-of<LocationAttachment\Type>,
+     *   address?: string|null,
+     *   name?: string|null,
+     *   url?: string|null,
+     * }|ContactAttachment|array{
+     *   contactProfile: ContactProfile,
+     *   type: value-of<ContactAttachment\Type>,
+     * }|UnsupportedContentAttachment|array{
+     *   type: value-of<UnsupportedContentAttachment\Type>,
+     * }|MessageHeaderAttachment|array{
+     *   type: value-of<MessageHeaderAttachment\Type>,
+     *   fileId?: int|null,
+     *   text?: string|null,
+     * }|QuickRepliesAttachment|array{
+     *   quickReplies: list<QuickReply>,
+     *   type: value-of<QuickRepliesAttachment\Type>,
+     * }|SocialMetadataIntegrationAttachment|array{
+     *   socialMetadata: SocialMetadata,
+     *   type: value-of<SocialMetadataIntegrationAttachment\Type>,
+     * }> $attachments
      * @param MessageDirection|value-of<MessageDirection> $messageDirection
-     * @param list<ChannelIntegrationParticipant> $recipients
-     * @param list<ChannelIntegrationParticipant> $senders
+     * @param list<ChannelIntegrationParticipant|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
+     * }> $recipients
+     * @param list<ChannelIntegrationParticipant|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
+     * }> $senders
+     * @param PreResolvedContacts|array{
+     *   contacts: list<PreResolvedContact>
+     * } $preResolvedContacts
      */
     public static function with(
         array $attachments,
@@ -143,35 +210,59 @@ final class MessageCreateParams implements BaseModel
         ?string $inReplyToId = null,
         ?string $integrationIdempotencyId = null,
         ?string $integrationThreadId = null,
-        ?PreResolvedContacts $preResolvedContacts = null,
+        PreResolvedContacts|array|null $preResolvedContacts = null,
         ?string $richText = null,
     ): self {
         $obj = new self;
 
-        $obj->attachments = $attachments;
-        $obj->channelAccountId = $channelAccountId;
+        $obj['attachments'] = $attachments;
+        $obj['channelAccountId'] = $channelAccountId;
         $obj['messageDirection'] = $messageDirection;
-        $obj->recipients = $recipients;
-        $obj->senders = $senders;
-        $obj->text = $text;
-        $obj->timestamp = $timestamp;
+        $obj['recipients'] = $recipients;
+        $obj['senders'] = $senders;
+        $obj['text'] = $text;
+        $obj['timestamp'] = $timestamp;
 
-        null !== $inReplyToId && $obj->inReplyToId = $inReplyToId;
-        null !== $integrationIdempotencyId && $obj->integrationIdempotencyId = $integrationIdempotencyId;
-        null !== $integrationThreadId && $obj->integrationThreadId = $integrationThreadId;
-        null !== $preResolvedContacts && $obj->preResolvedContacts = $preResolvedContacts;
-        null !== $richText && $obj->richText = $richText;
+        null !== $inReplyToId && $obj['inReplyToId'] = $inReplyToId;
+        null !== $integrationIdempotencyId && $obj['integrationIdempotencyId'] = $integrationIdempotencyId;
+        null !== $integrationThreadId && $obj['integrationThreadId'] = $integrationThreadId;
+        null !== $preResolvedContacts && $obj['preResolvedContacts'] = $preResolvedContacts;
+        null !== $richText && $obj['richText'] = $richText;
 
         return $obj;
     }
 
     /**
-     * @param list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment> $attachments
+     * @param list<FileAttachment|array{
+     *   fileId: string, type: value-of<Type>, fileUsageType?: string|null
+     * }|LocationAttachment|array{
+     *   latitude: float,
+     *   longitude: float,
+     *   type: value-of<LocationAttachment\Type>,
+     *   address?: string|null,
+     *   name?: string|null,
+     *   url?: string|null,
+     * }|ContactAttachment|array{
+     *   contactProfile: ContactProfile,
+     *   type: value-of<ContactAttachment\Type>,
+     * }|UnsupportedContentAttachment|array{
+     *   type: value-of<UnsupportedContentAttachment\Type>,
+     * }|MessageHeaderAttachment|array{
+     *   type: value-of<MessageHeaderAttachment\Type>,
+     *   fileId?: int|null,
+     *   text?: string|null,
+     * }|QuickRepliesAttachment|array{
+     *   quickReplies: list<QuickReply>,
+     *   type: value-of<QuickRepliesAttachment\Type>,
+     * }|SocialMetadataIntegrationAttachment|array{
+     *   socialMetadata: SocialMetadata,
+     *   type: value-of<SocialMetadataIntegrationAttachment\Type>,
+     * }> $attachments
      */
     public function withAttachments(array $attachments): self
     {
         $obj = clone $this;
-        $obj->attachments = $attachments;
+        $obj['attachments'] = $attachments;
 
         return $obj;
     }
@@ -179,7 +270,7 @@ final class MessageCreateParams implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj->channelAccountId = $channelAccountID;
+        $obj['channelAccountId'] = $channelAccountID;
 
         return $obj;
     }
@@ -197,23 +288,27 @@ final class MessageCreateParams implements BaseModel
     }
 
     /**
-     * @param list<ChannelIntegrationParticipant> $recipients
+     * @param list<ChannelIntegrationParticipant|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
+     * }> $recipients
      */
     public function withRecipients(array $recipients): self
     {
         $obj = clone $this;
-        $obj->recipients = $recipients;
+        $obj['recipients'] = $recipients;
 
         return $obj;
     }
 
     /**
-     * @param list<ChannelIntegrationParticipant> $senders
+     * @param list<ChannelIntegrationParticipant|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
+     * }> $senders
      */
     public function withSenders(array $senders): self
     {
         $obj = clone $this;
-        $obj->senders = $senders;
+        $obj['senders'] = $senders;
 
         return $obj;
     }
@@ -221,7 +316,7 @@ final class MessageCreateParams implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -229,7 +324,7 @@ final class MessageCreateParams implements BaseModel
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -237,7 +332,7 @@ final class MessageCreateParams implements BaseModel
     public function withInReplyToID(string $inReplyToID): self
     {
         $obj = clone $this;
-        $obj->inReplyToId = $inReplyToID;
+        $obj['inReplyToId'] = $inReplyToID;
 
         return $obj;
     }
@@ -246,7 +341,7 @@ final class MessageCreateParams implements BaseModel
         string $integrationIdempotencyID
     ): self {
         $obj = clone $this;
-        $obj->integrationIdempotencyId = $integrationIdempotencyID;
+        $obj['integrationIdempotencyId'] = $integrationIdempotencyID;
 
         return $obj;
     }
@@ -254,16 +349,21 @@ final class MessageCreateParams implements BaseModel
     public function withIntegrationThreadID(string $integrationThreadID): self
     {
         $obj = clone $this;
-        $obj->integrationThreadId = $integrationThreadID;
+        $obj['integrationThreadId'] = $integrationThreadID;
 
         return $obj;
     }
 
+    /**
+     * @param PreResolvedContacts|array{
+     *   contacts: list<PreResolvedContact>
+     * } $preResolvedContacts
+     */
     public function withPreResolvedContacts(
-        PreResolvedContacts $preResolvedContacts
+        PreResolvedContacts|array $preResolvedContacts
     ): self {
         $obj = clone $this;
-        $obj->preResolvedContacts = $preResolvedContacts;
+        $obj['preResolvedContacts'] = $preResolvedContacts;
 
         return $obj;
     }
@@ -271,7 +371,7 @@ final class MessageCreateParams implements BaseModel
     public function withRichText(string $richText): self
     {
         $obj = clone $this;
-        $obj->richText = $richText;
+        $obj['richText'] = $richText;
 
         return $obj;
     }

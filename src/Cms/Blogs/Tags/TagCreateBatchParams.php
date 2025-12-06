@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Tags;
 
+use HubspotSDK\Cms\Blogs\Tags\Tag\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -14,7 +15,17 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\TagsService::createBatch()
  *
- * @phpstan-type TagCreateBatchParamsShape = array{inputs: list<Tag>}
+ * @phpstan-type TagCreateBatchParamsShape = array{
+ *   inputs: list<Tag|array{
+ *     id: string,
+ *     created: \DateTimeInterface,
+ *     deletedAt: \DateTimeInterface,
+ *     language: value-of<Language>,
+ *     name: string,
+ *     translatedFromId: int,
+ *     updated: \DateTimeInterface,
+ *   }>,
+ * }
  */
 final class TagCreateBatchParams implements BaseModel
 {
@@ -54,13 +65,21 @@ final class TagCreateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Tag> $inputs
+     * @param list<Tag|array{
+     *   id: string,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   language: value-of<Language>,
+     *   name: string,
+     *   translatedFromId: int,
+     *   updated: \DateTimeInterface,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -68,12 +87,20 @@ final class TagCreateBatchParams implements BaseModel
     /**
      * Blog tags to input.
      *
-     * @param list<Tag> $inputs
+     * @param list<Tag|array{
+     *   id: string,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   language: value-of<Language>,
+     *   name: string,
+     *   translatedFromId: int,
+     *   updated: \DateTimeInterface,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

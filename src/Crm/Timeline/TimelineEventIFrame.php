@@ -88,11 +88,11 @@ final class TimelineEventIFrame implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->headerLabel = $headerLabel;
-        $obj->height = $height;
-        $obj->linkLabel = $linkLabel;
-        $obj->url = $url;
-        $obj->width = $width;
+        $obj['headerLabel'] = $headerLabel;
+        $obj['height'] = $height;
+        $obj['linkLabel'] = $linkLabel;
+        $obj['url'] = $url;
+        $obj['width'] = $width;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class TimelineEventIFrame implements BaseModel
     public function withHeaderLabel(string $headerLabel): self
     {
         $obj = clone $this;
-        $obj->headerLabel = $headerLabel;
+        $obj['headerLabel'] = $headerLabel;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class TimelineEventIFrame implements BaseModel
     public function withHeight(int $height): self
     {
         $obj = clone $this;
-        $obj->height = $height;
+        $obj['height'] = $height;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class TimelineEventIFrame implements BaseModel
     public function withLinkLabel(string $linkLabel): self
     {
         $obj = clone $this;
-        $obj->linkLabel = $linkLabel;
+        $obj['linkLabel'] = $linkLabel;
 
         return $obj;
     }
@@ -136,7 +136,7 @@ final class TimelineEventIFrame implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }
@@ -147,7 +147,7 @@ final class TimelineEventIFrame implements BaseModel
     public function withWidth(int $width): self
     {
         $obj = clone $this;
-        $obj->width = $width;
+        $obj['width'] = $width;
 
         return $obj;
     }

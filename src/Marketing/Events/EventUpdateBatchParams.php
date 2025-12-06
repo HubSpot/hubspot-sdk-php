@@ -15,7 +15,18 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\EventsService::updateBatch()
  *
  * @phpstan-type EventUpdateBatchParamsShape = array{
- *   inputs: list<MarketingEventPublicUpdateRequestFullV2>
+ *   inputs: list<MarketingEventPublicUpdateRequestFullV2|array{
+ *     customProperties: list<PropertyValue>,
+ *     objectId: string,
+ *     endDateTime?: \DateTimeInterface|null,
+ *     eventCancelled?: bool|null,
+ *     eventDescription?: string|null,
+ *     eventName?: string|null,
+ *     eventOrganizer?: string|null,
+ *     eventType?: string|null,
+ *     eventUrl?: string|null,
+ *     startDateTime?: \DateTimeInterface|null,
+ *   }>,
  * }
  */
 final class EventUpdateBatchParams implements BaseModel
@@ -52,24 +63,46 @@ final class EventUpdateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicUpdateRequestFullV2> $inputs
+     * @param list<MarketingEventPublicUpdateRequestFullV2|array{
+     *   customProperties: list<PropertyValue>,
+     *   objectId: string,
+     *   endDateTime?: \DateTimeInterface|null,
+     *   eventCancelled?: bool|null,
+     *   eventDescription?: string|null,
+     *   eventName?: string|null,
+     *   eventOrganizer?: string|null,
+     *   eventType?: string|null,
+     *   eventUrl?: string|null,
+     *   startDateTime?: \DateTimeInterface|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<MarketingEventPublicUpdateRequestFullV2> $inputs
+     * @param list<MarketingEventPublicUpdateRequestFullV2|array{
+     *   customProperties: list<PropertyValue>,
+     *   objectId: string,
+     *   endDateTime?: \DateTimeInterface|null,
+     *   eventCancelled?: bool|null,
+     *   eventDescription?: string|null,
+     *   eventName?: string|null,
+     *   eventOrganizer?: string|null,
+     *   eventType?: string|null,
+     *   eventUrl?: string|null,
+     *   startDateTime?: \DateTimeInterface|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

@@ -69,11 +69,11 @@ final class DefinitionCreateLabelParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->fromObjectType = $fromObjectType;
-        $obj->label = $label;
-        $obj->name = $name;
+        $obj['fromObjectType'] = $fromObjectType;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
 
-        null !== $inverseLabel && $obj->inverseLabel = $inverseLabel;
+        null !== $inverseLabel && $obj['inverseLabel'] = $inverseLabel;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class DefinitionCreateLabelParams implements BaseModel
     public function withFromObjectType(string $fromObjectType): self
     {
         $obj = clone $this;
-        $obj->fromObjectType = $fromObjectType;
+        $obj['fromObjectType'] = $fromObjectType;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class DefinitionCreateLabelParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -97,7 +97,7 @@ final class DefinitionCreateLabelParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class DefinitionCreateLabelParams implements BaseModel
     public function withInverseLabel(string $inverseLabel): self
     {
         $obj = clone $this;
-        $obj->inverseLabel = $inverseLabel;
+        $obj['inverseLabel'] = $inverseLabel;
 
         return $obj;
     }

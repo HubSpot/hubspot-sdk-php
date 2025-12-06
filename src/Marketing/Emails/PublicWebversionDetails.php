@@ -86,17 +86,17 @@ final class PublicWebversionDetails implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $domain && $obj->domain = $domain;
-        null !== $enabled && $obj->enabled = $enabled;
-        null !== $expiresAt && $obj->expiresAt = $expiresAt;
-        null !== $isPageRedirected && $obj->isPageRedirected = $isPageRedirected;
-        null !== $metaDescription && $obj->metaDescription = $metaDescription;
-        null !== $pageExpiryEnabled && $obj->pageExpiryEnabled = $pageExpiryEnabled;
-        null !== $redirectToPageId && $obj->redirectToPageId = $redirectToPageId;
-        null !== $redirectToUrl && $obj->redirectToUrl = $redirectToUrl;
-        null !== $slug && $obj->slug = $slug;
-        null !== $title && $obj->title = $title;
-        null !== $url && $obj->url = $url;
+        null !== $domain && $obj['domain'] = $domain;
+        null !== $enabled && $obj['enabled'] = $enabled;
+        null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
+        null !== $isPageRedirected && $obj['isPageRedirected'] = $isPageRedirected;
+        null !== $metaDescription && $obj['metaDescription'] = $metaDescription;
+        null !== $pageExpiryEnabled && $obj['pageExpiryEnabled'] = $pageExpiryEnabled;
+        null !== $redirectToPageId && $obj['redirectToPageId'] = $redirectToPageId;
+        null !== $redirectToUrl && $obj['redirectToUrl'] = $redirectToUrl;
+        null !== $slug && $obj['slug'] = $slug;
+        null !== $title && $obj['title'] = $title;
+        null !== $url && $obj['url'] = $url;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withDomain(string $domain): self
     {
         $obj = clone $this;
-        $obj->domain = $domain;
+        $obj['domain'] = $domain;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withEnabled(bool $enabled): self
     {
         $obj = clone $this;
-        $obj->enabled = $enabled;
+        $obj['enabled'] = $enabled;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;
-        $obj->expiresAt = $expiresAt;
+        $obj['expiresAt'] = $expiresAt;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withIsPageRedirected(bool $isPageRedirected): self
     {
         $obj = clone $this;
-        $obj->isPageRedirected = $isPageRedirected;
+        $obj['isPageRedirected'] = $isPageRedirected;
 
         return $obj;
     }
@@ -136,7 +136,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withMetaDescription(string $metaDescription): self
     {
         $obj = clone $this;
-        $obj->metaDescription = $metaDescription;
+        $obj['metaDescription'] = $metaDescription;
 
         return $obj;
     }
@@ -144,7 +144,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withPageExpiryEnabled(bool $pageExpiryEnabled): self
     {
         $obj = clone $this;
-        $obj->pageExpiryEnabled = $pageExpiryEnabled;
+        $obj['pageExpiryEnabled'] = $pageExpiryEnabled;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withRedirectToPageID(string $redirectToPageID): self
     {
         $obj = clone $this;
-        $obj->redirectToPageId = $redirectToPageID;
+        $obj['redirectToPageId'] = $redirectToPageID;
 
         return $obj;
     }
@@ -160,7 +160,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withRedirectToURL(string $redirectToURL): self
     {
         $obj = clone $this;
-        $obj->redirectToUrl = $redirectToURL;
+        $obj['redirectToUrl'] = $redirectToURL;
 
         return $obj;
     }
@@ -168,7 +168,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withSlug(string $slug): self
     {
         $obj = clone $this;
-        $obj->slug = $slug;
+        $obj['slug'] = $slug;
 
         return $obj;
     }
@@ -176,7 +176,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withTitle(string $title): self
     {
         $obj = clone $this;
-        $obj->title = $title;
+        $obj['title'] = $title;
 
         return $obj;
     }
@@ -184,7 +184,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

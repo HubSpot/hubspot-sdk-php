@@ -121,15 +121,15 @@ final class AssetFileMetadata implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->folder = $folder;
-        $obj->name = $name;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['folder'] = $folder;
+        $obj['name'] = $name;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $archivedAt && $obj->archivedAt = $archivedAt;
-        null !== $children && $obj->children = $children;
-        null !== $hash && $obj->hash = $hash;
+        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
+        null !== $children && $obj['children'] = $children;
+        null !== $hash && $obj['hash'] = $hash;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class AssetFileMetadata implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -151,7 +151,7 @@ final class AssetFileMetadata implements BaseModel, ResponseConverter
     public function withCreatedAt(int $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -162,7 +162,7 @@ final class AssetFileMetadata implements BaseModel, ResponseConverter
     public function withFolder(bool $folder): self
     {
         $obj = clone $this;
-        $obj->folder = $folder;
+        $obj['folder'] = $folder;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class AssetFileMetadata implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -184,7 +184,7 @@ final class AssetFileMetadata implements BaseModel, ResponseConverter
     public function withUpdatedAt(int $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -195,7 +195,7 @@ final class AssetFileMetadata implements BaseModel, ResponseConverter
     public function withArchivedAt(int $archivedAt): self
     {
         $obj = clone $this;
-        $obj->archivedAt = $archivedAt;
+        $obj['archivedAt'] = $archivedAt;
 
         return $obj;
     }
@@ -208,7 +208,7 @@ final class AssetFileMetadata implements BaseModel, ResponseConverter
     public function withChildren(array $children): self
     {
         $obj = clone $this;
-        $obj->children = $children;
+        $obj['children'] = $children;
 
         return $obj;
     }
@@ -216,7 +216,7 @@ final class AssetFileMetadata implements BaseModel, ResponseConverter
     public function withHash(string $hash): self
     {
         $obj = clone $this;
-        $obj->hash = $hash;
+        $obj['hash'] = $hash;
 
         return $obj;
     }

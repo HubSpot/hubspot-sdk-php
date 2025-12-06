@@ -11,6 +11,8 @@ use HubspotSDK\Crm\Exports\PublicExportViewRequest\ExportInternalValuesOption;
 use HubspotSDK\Crm\Exports\PublicExportViewRequest\ExportType;
 use HubspotSDK\Crm\Exports\PublicExportViewRequest\Format;
 use HubspotSDK\Crm\Exports\PublicExportViewRequest\Language;
+use HubspotSDK\Crm\Filter;
+use HubspotSDK\Crm\FilterGroup;
 
 /**
  * @phpstan-type PublicExportViewRequestShape = array{
@@ -128,6 +130,12 @@ final class PublicExportViewRequest implements BaseModel
      * @param Language|value-of<Language> $language
      * @param list<string> $objectProperties
      * @param ExportType|value-of<ExportType> $exportType
+     * @param PublicCrmSearchRequest|array{
+     *   filterGroups: list<FilterGroup>,
+     *   filters: list<Filter>,
+     *   sorts: list<string>,
+     *   query?: string|null,
+     * } $publicCrmSearchRequest
      */
     public static function with(
         array $associatedObjectType,
@@ -141,23 +149,23 @@ final class PublicExportViewRequest implements BaseModel
         string $objectType,
         bool $overrideAssociatedObjectsPerDefinitionPerRowLimit,
         ExportType|string $exportType = 'VIEW',
-        ?PublicCrmSearchRequest $publicCrmSearchRequest = null,
+        PublicCrmSearchRequest|array|null $publicCrmSearchRequest = null,
     ): self {
         $obj = new self;
 
-        $obj->associatedObjectType = $associatedObjectType;
+        $obj['associatedObjectType'] = $associatedObjectType;
         $obj['exportInternalValuesOptions'] = $exportInternalValuesOptions;
-        $obj->exportName = $exportName;
+        $obj['exportName'] = $exportName;
         $obj['exportType'] = $exportType;
         $obj['format'] = $format;
-        $obj->includeLabeledAssociations = $includeLabeledAssociations;
-        $obj->includePrimaryDisplayPropertyForAssociatedObjects = $includePrimaryDisplayPropertyForAssociatedObjects;
+        $obj['includeLabeledAssociations'] = $includeLabeledAssociations;
+        $obj['includePrimaryDisplayPropertyForAssociatedObjects'] = $includePrimaryDisplayPropertyForAssociatedObjects;
         $obj['language'] = $language;
-        $obj->objectProperties = $objectProperties;
-        $obj->objectType = $objectType;
-        $obj->overrideAssociatedObjectsPerDefinitionPerRowLimit = $overrideAssociatedObjectsPerDefinitionPerRowLimit;
+        $obj['objectProperties'] = $objectProperties;
+        $obj['objectType'] = $objectType;
+        $obj['overrideAssociatedObjectsPerDefinitionPerRowLimit'] = $overrideAssociatedObjectsPerDefinitionPerRowLimit;
 
-        null !== $publicCrmSearchRequest && $obj->publicCrmSearchRequest = $publicCrmSearchRequest;
+        null !== $publicCrmSearchRequest && $obj['publicCrmSearchRequest'] = $publicCrmSearchRequest;
 
         return $obj;
     }
@@ -168,7 +176,7 @@ final class PublicExportViewRequest implements BaseModel
     public function withAssociatedObjectType(array $associatedObjectType): self
     {
         $obj = clone $this;
-        $obj->associatedObjectType = $associatedObjectType;
+        $obj['associatedObjectType'] = $associatedObjectType;
 
         return $obj;
     }
@@ -188,7 +196,7 @@ final class PublicExportViewRequest implements BaseModel
     public function withExportName(string $exportName): self
     {
         $obj = clone $this;
-        $obj->exportName = $exportName;
+        $obj['exportName'] = $exportName;
 
         return $obj;
     }
@@ -219,7 +227,7 @@ final class PublicExportViewRequest implements BaseModel
         bool $includeLabeledAssociations
     ): self {
         $obj = clone $this;
-        $obj->includeLabeledAssociations = $includeLabeledAssociations;
+        $obj['includeLabeledAssociations'] = $includeLabeledAssociations;
 
         return $obj;
     }
@@ -228,7 +236,7 @@ final class PublicExportViewRequest implements BaseModel
         bool $includePrimaryDisplayPropertyForAssociatedObjects
     ): self {
         $obj = clone $this;
-        $obj->includePrimaryDisplayPropertyForAssociatedObjects = $includePrimaryDisplayPropertyForAssociatedObjects;
+        $obj['includePrimaryDisplayPropertyForAssociatedObjects'] = $includePrimaryDisplayPropertyForAssociatedObjects;
 
         return $obj;
     }
@@ -250,7 +258,7 @@ final class PublicExportViewRequest implements BaseModel
     public function withObjectProperties(array $objectProperties): self
     {
         $obj = clone $this;
-        $obj->objectProperties = $objectProperties;
+        $obj['objectProperties'] = $objectProperties;
 
         return $obj;
     }
@@ -258,7 +266,7 @@ final class PublicExportViewRequest implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -267,16 +275,24 @@ final class PublicExportViewRequest implements BaseModel
         bool $overrideAssociatedObjectsPerDefinitionPerRowLimit
     ): self {
         $obj = clone $this;
-        $obj->overrideAssociatedObjectsPerDefinitionPerRowLimit = $overrideAssociatedObjectsPerDefinitionPerRowLimit;
+        $obj['overrideAssociatedObjectsPerDefinitionPerRowLimit'] = $overrideAssociatedObjectsPerDefinitionPerRowLimit;
 
         return $obj;
     }
 
+    /**
+     * @param PublicCrmSearchRequest|array{
+     *   filterGroups: list<FilterGroup>,
+     *   filters: list<Filter>,
+     *   sorts: list<string>,
+     *   query?: string|null,
+     * } $publicCrmSearchRequest
+     */
     public function withPublicCrmSearchRequest(
-        PublicCrmSearchRequest $publicCrmSearchRequest
+        PublicCrmSearchRequest|array $publicCrmSearchRequest
     ): self {
         $obj = clone $this;
-        $obj->publicCrmSearchRequest = $publicCrmSearchRequest;
+        $obj['publicCrmSearchRequest'] = $publicCrmSearchRequest;
 
         return $obj;
     }

@@ -52,7 +52,7 @@ final class EventDetail implements BaseModel
     {
         $obj = new self;
 
-        $obj->details = $details;
+        $obj['details'] = $details;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class EventDetail implements BaseModel
     public function withDetails(string $details): self
     {
         $obj = clone $this;
-        $obj->details = $details;
+        $obj['details'] = $details;
 
         return $obj;
     }

@@ -56,7 +56,7 @@ final class ContactEmail implements BaseModel
     {
         $obj = new self;
 
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         null !== $type && $obj['type'] = $type;
 
@@ -66,7 +66,7 @@ final class ContactEmail implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }

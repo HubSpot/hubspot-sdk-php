@@ -81,6 +81,7 @@ final class APISingleConnectionAction implements BaseModel
      *
      * @param array<string,mixed> $fields
      * @param Type|value-of<Type> $type
+     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
      */
     public static function with(
         string $actionId,
@@ -88,17 +89,17 @@ final class APISingleConnectionAction implements BaseModel
         int $actionTypeVersion,
         array $fields,
         Type|string $type = 'SINGLE_CONNECTION',
-        ?APIConnection $connection = null,
+        APIConnection|array|null $connection = null,
     ): self {
         $obj = new self;
 
-        $obj->actionId = $actionId;
-        $obj->actionTypeId = $actionTypeId;
-        $obj->actionTypeVersion = $actionTypeVersion;
-        $obj->fields = $fields;
+        $obj['actionId'] = $actionId;
+        $obj['actionTypeId'] = $actionTypeId;
+        $obj['actionTypeVersion'] = $actionTypeVersion;
+        $obj['fields'] = $fields;
         $obj['type'] = $type;
 
-        null !== $connection && $obj->connection = $connection;
+        null !== $connection && $obj['connection'] = $connection;
 
         return $obj;
     }
@@ -106,7 +107,7 @@ final class APISingleConnectionAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionId = $actionID;
+        $obj['actionId'] = $actionID;
 
         return $obj;
     }
@@ -114,7 +115,7 @@ final class APISingleConnectionAction implements BaseModel
     public function withActionTypeID(string $actionTypeID): self
     {
         $obj = clone $this;
-        $obj->actionTypeId = $actionTypeID;
+        $obj['actionTypeId'] = $actionTypeID;
 
         return $obj;
     }
@@ -122,7 +123,7 @@ final class APISingleConnectionAction implements BaseModel
     public function withActionTypeVersion(int $actionTypeVersion): self
     {
         $obj = clone $this;
-        $obj->actionTypeVersion = $actionTypeVersion;
+        $obj['actionTypeVersion'] = $actionTypeVersion;
 
         return $obj;
     }
@@ -133,7 +134,7 @@ final class APISingleConnectionAction implements BaseModel
     public function withFields(array $fields): self
     {
         $obj = clone $this;
-        $obj->fields = $fields;
+        $obj['fields'] = $fields;
 
         return $obj;
     }
@@ -149,10 +150,13 @@ final class APISingleConnectionAction implements BaseModel
         return $obj;
     }
 
-    public function withConnection(APIConnection $connection): self
+    /**
+     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     */
+    public function withConnection(APIConnection|array $connection): self
     {
         $obj = clone $this;
-        $obj->connection = $connection;
+        $obj['connection'] = $connection;
 
         return $obj;
     }

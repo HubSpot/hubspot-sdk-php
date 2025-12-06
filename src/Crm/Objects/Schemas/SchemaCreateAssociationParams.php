@@ -64,10 +64,10 @@ final class SchemaCreateAssociationParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->fromObjectTypeId = $fromObjectTypeId;
-        $obj->toObjectTypeId = $toObjectTypeId;
+        $obj['fromObjectTypeId'] = $fromObjectTypeId;
+        $obj['toObjectTypeId'] = $toObjectTypeId;
 
-        null !== $name && $obj->name = $name;
+        null !== $name && $obj['name'] = $name;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class SchemaCreateAssociationParams implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeId = $fromObjectTypeID;
+        $obj['fromObjectTypeId'] = $fromObjectTypeID;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class SchemaCreateAssociationParams implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->toObjectTypeId = $toObjectTypeID;
+        $obj['toObjectTypeId'] = $toObjectTypeID;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class SchemaCreateAssociationParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

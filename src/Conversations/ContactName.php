@@ -56,11 +56,11 @@ final class ContactName implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $firstName && $obj->firstName = $firstName;
-        null !== $lastName && $obj->lastName = $lastName;
-        null !== $middleName && $obj->middleName = $middleName;
-        null !== $prefix && $obj->prefix = $prefix;
-        null !== $suffix && $obj->suffix = $suffix;
+        null !== $firstName && $obj['firstName'] = $firstName;
+        null !== $lastName && $obj['lastName'] = $lastName;
+        null !== $middleName && $obj['middleName'] = $middleName;
+        null !== $prefix && $obj['prefix'] = $prefix;
+        null !== $suffix && $obj['suffix'] = $suffix;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class ContactName implements BaseModel
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
-        $obj->firstName = $firstName;
+        $obj['firstName'] = $firstName;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class ContactName implements BaseModel
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;
-        $obj->lastName = $lastName;
+        $obj['lastName'] = $lastName;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class ContactName implements BaseModel
     public function withMiddleName(string $middleName): self
     {
         $obj = clone $this;
-        $obj->middleName = $middleName;
+        $obj['middleName'] = $middleName;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class ContactName implements BaseModel
     public function withPrefix(string $prefix): self
     {
         $obj = clone $this;
-        $obj->prefix = $prefix;
+        $obj['prefix'] = $prefix;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class ContactName implements BaseModel
     public function withSuffix(string $suffix): self
     {
         $obj = clone $this;
-        $obj->suffix = $suffix;
+        $obj['suffix'] = $suffix;
 
         return $obj;
     }

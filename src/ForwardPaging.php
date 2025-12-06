@@ -31,23 +31,27 @@ final class ForwardPaging implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param NextPage|array{after: string, link?: string|null} $next
      */
-    public static function with(?NextPage $next = null): self
+    public static function with(NextPage|array|null $next = null): self
     {
         $obj = new self;
 
-        null !== $next && $obj->next = $next;
+        null !== $next && $obj['next'] = $next;
 
         return $obj;
     }
 
     /**
      * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
+     *
+     * @param NextPage|array{after: string, link?: string|null} $next
      */
-    public function withNext(NextPage $next): self
+    public function withNext(NextPage|array $next): self
     {
         $obj = clone $this;
-        $obj->next = $next;
+        $obj['next'] = $next;
 
         return $obj;
     }

@@ -56,8 +56,8 @@ final class MarketingEventCompleteRequestParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->endDateTime = $endDateTime;
-        $obj->startDateTime = $startDateTime;
+        $obj['endDateTime'] = $endDateTime;
+        $obj['startDateTime'] = $startDateTime;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class MarketingEventCompleteRequestParams implements BaseModel
     public function withEndDateTime(\DateTimeInterface $endDateTime): self
     {
         $obj = clone $this;
-        $obj->endDateTime = $endDateTime;
+        $obj['endDateTime'] = $endDateTime;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class MarketingEventCompleteRequestParams implements BaseModel
     public function withStartDateTime(\DateTimeInterface $startDateTime): self
     {
         $obj = clone $this;
-        $obj->startDateTime = $startDateTime;
+        $obj['startDateTime'] = $startDateTime;
 
         return $obj;
     }

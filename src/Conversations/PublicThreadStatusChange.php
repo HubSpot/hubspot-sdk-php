@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
+use HubspotSDK\Conversations\PublicClient\ClientType;
 use HubspotSDK\Conversations\PublicThreadStatusChange\NewStatus;
 use HubspotSDK\Conversations\PublicThreadStatusChange\Type;
 use HubspotSDK\Core\Attributes\Api;
@@ -112,15 +113,28 @@ final class PublicThreadStatusChange implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param PublicClient|array{
+     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     * } $client
      * @param NewStatus|value-of<NewStatus> $newStatus
-     * @param list<PublicRecipient> $recipients
-     * @param list<PublicSender> $senders
+     * @param list<PublicRecipient|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier,
+     *   actorId?: string|null,
+     *   name?: string|null,
+     *   recipientField?: string|null,
+     * }> $recipients
+     * @param list<PublicSender|array{
+     *   actorId?: string|null,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+     *   name?: string|null,
+     *   senderField?: string|null,
+     * }> $senders
      * @param Type|value-of<Type> $type
      */
     public static function with(
         string $id,
         bool $archived,
-        PublicClient $client,
+        PublicClient|array $client,
         string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
@@ -132,18 +146,18 @@ final class PublicThreadStatusChange implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->client = $client;
-        $obj->conversationsThreadId = $conversationsThreadId;
-        $obj->createdAt = $createdAt;
-        $obj->createdBy = $createdBy;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['client'] = $client;
+        $obj['conversationsThreadId'] = $conversationsThreadId;
+        $obj['createdAt'] = $createdAt;
+        $obj['createdBy'] = $createdBy;
         $obj['newStatus'] = $newStatus;
-        $obj->recipients = $recipients;
-        $obj->senders = $senders;
+        $obj['recipients'] = $recipients;
+        $obj['senders'] = $senders;
         $obj['type'] = $type;
 
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -151,7 +165,7 @@ final class PublicThreadStatusChange implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -159,15 +173,20 @@ final class PublicThreadStatusChange implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
 
-    public function withClient(PublicClient $client): self
+    /**
+     * @param PublicClient|array{
+     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     * } $client
+     */
+    public function withClient(PublicClient|array $client): self
     {
         $obj = clone $this;
-        $obj->client = $client;
+        $obj['client'] = $client;
 
         return $obj;
     }
@@ -176,7 +195,7 @@ final class PublicThreadStatusChange implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadId = $conversationsThreadID;
+        $obj['conversationsThreadId'] = $conversationsThreadID;
 
         return $obj;
     }
@@ -184,7 +203,7 @@ final class PublicThreadStatusChange implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -192,7 +211,7 @@ final class PublicThreadStatusChange implements BaseModel
     public function withCreatedBy(string $createdBy): self
     {
         $obj = clone $this;
-        $obj->createdBy = $createdBy;
+        $obj['createdBy'] = $createdBy;
 
         return $obj;
     }
@@ -209,23 +228,33 @@ final class PublicThreadStatusChange implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipient> $recipients
+     * @param list<PublicRecipient|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier,
+     *   actorId?: string|null,
+     *   name?: string|null,
+     *   recipientField?: string|null,
+     * }> $recipients
      */
     public function withRecipients(array $recipients): self
     {
         $obj = clone $this;
-        $obj->recipients = $recipients;
+        $obj['recipients'] = $recipients;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicSender> $senders
+     * @param list<PublicSender|array{
+     *   actorId?: string|null,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+     *   name?: string|null,
+     *   senderField?: string|null,
+     * }> $senders
      */
     public function withSenders(array $senders): self
     {
         $obj = clone $this;
-        $obj->senders = $senders;
+        $obj['senders'] = $senders;
 
         return $obj;
     }
@@ -244,7 +273,7 @@ final class PublicThreadStatusChange implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

@@ -105,15 +105,15 @@ final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->token = $token;
-        $obj->client_id = $client_id;
-        $obj->hub_id = $hub_id;
-        $obj->scopes = $scopes;
-        $obj->token_type = $token_type;
-        $obj->user_id = $user_id;
+        $obj['token'] = $token;
+        $obj['client_id'] = $client_id;
+        $obj['hub_id'] = $hub_id;
+        $obj['scopes'] = $scopes;
+        $obj['token_type'] = $token_type;
+        $obj['user_id'] = $user_id;
 
-        null !== $hub_domain && $obj->hub_domain = $hub_domain;
-        null !== $user && $obj->user = $user;
+        null !== $hub_domain && $obj['hub_domain'] = $hub_domain;
+        null !== $user && $obj['user'] = $user;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
     public function withToken(string $token): self
     {
         $obj = clone $this;
-        $obj->token = $token;
+        $obj['token'] = $token;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
     public function withClientID(string $clientID): self
     {
         $obj = clone $this;
-        $obj->client_id = $clientID;
+        $obj['client_id'] = $clientID;
 
         return $obj;
     }
@@ -137,7 +137,7 @@ final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
     public function withHubID(int $hubID): self
     {
         $obj = clone $this;
-        $obj->hub_id = $hubID;
+        $obj['hub_id'] = $hubID;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
     public function withScopes(array $scopes): self
     {
         $obj = clone $this;
-        $obj->scopes = $scopes;
+        $obj['scopes'] = $scopes;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
     public function withTokenType(string $tokenType): self
     {
         $obj = clone $this;
-        $obj->token_type = $tokenType;
+        $obj['token_type'] = $tokenType;
 
         return $obj;
     }
@@ -164,7 +164,7 @@ final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->user_id = $userID;
+        $obj['user_id'] = $userID;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
     public function withHubDomain(string $hubDomain): self
     {
         $obj = clone $this;
-        $obj->hub_domain = $hubDomain;
+        $obj['hub_domain'] = $hubDomain;
 
         return $obj;
     }
@@ -180,7 +180,7 @@ final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
     public function withUser(string $user): self
     {
         $obj = clone $this;
-        $obj->user = $user;
+        $obj['user'] = $user;
 
         return $obj;
     }

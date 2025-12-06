@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\AssociationSpec;
+use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -85,7 +86,9 @@ final class RollupExpression implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationSpec> $associationTypes
+     * @param list<AssociationSpec|array{
+     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     * }> $associationTypes
      * @param array<string,mixed> $conditionalExpression
      */
     public static function with(
@@ -100,26 +103,28 @@ final class RollupExpression implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->associationTypes = $associationTypes;
-        $obj->rollupOperator = $rollupOperator;
-        $obj->sourceObjectTypeId = $sourceObjectTypeId;
-        $obj->sourcePropertyName = $sourcePropertyName;
+        $obj['associationTypes'] = $associationTypes;
+        $obj['rollupOperator'] = $rollupOperator;
+        $obj['sourceObjectTypeId'] = $sourceObjectTypeId;
+        $obj['sourcePropertyName'] = $sourcePropertyName;
 
-        null !== $conditionalExpression && $obj->conditionalExpression = $conditionalExpression;
-        null !== $conditionalFormula && $obj->conditionalFormula = $conditionalFormula;
-        null !== $emptyRollupValue && $obj->emptyRollupValue = $emptyRollupValue;
-        null !== $sourceCompareByPropertyName && $obj->sourceCompareByPropertyName = $sourceCompareByPropertyName;
+        null !== $conditionalExpression && $obj['conditionalExpression'] = $conditionalExpression;
+        null !== $conditionalFormula && $obj['conditionalFormula'] = $conditionalFormula;
+        null !== $emptyRollupValue && $obj['emptyRollupValue'] = $emptyRollupValue;
+        null !== $sourceCompareByPropertyName && $obj['sourceCompareByPropertyName'] = $sourceCompareByPropertyName;
 
         return $obj;
     }
 
     /**
-     * @param list<AssociationSpec> $associationTypes
+     * @param list<AssociationSpec|array{
+     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     * }> $associationTypes
      */
     public function withAssociationTypes(array $associationTypes): self
     {
         $obj = clone $this;
-        $obj->associationTypes = $associationTypes;
+        $obj['associationTypes'] = $associationTypes;
 
         return $obj;
     }
@@ -127,7 +132,7 @@ final class RollupExpression implements BaseModel
     public function withRollupOperator(string $rollupOperator): self
     {
         $obj = clone $this;
-        $obj->rollupOperator = $rollupOperator;
+        $obj['rollupOperator'] = $rollupOperator;
 
         return $obj;
     }
@@ -135,7 +140,7 @@ final class RollupExpression implements BaseModel
     public function withSourceObjectTypeID(string $sourceObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->sourceObjectTypeId = $sourceObjectTypeID;
+        $obj['sourceObjectTypeId'] = $sourceObjectTypeID;
 
         return $obj;
     }
@@ -143,7 +148,7 @@ final class RollupExpression implements BaseModel
     public function withSourcePropertyName(string $sourcePropertyName): self
     {
         $obj = clone $this;
-        $obj->sourcePropertyName = $sourcePropertyName;
+        $obj['sourcePropertyName'] = $sourcePropertyName;
 
         return $obj;
     }
@@ -155,7 +160,7 @@ final class RollupExpression implements BaseModel
         array $conditionalExpression
     ): self {
         $obj = clone $this;
-        $obj->conditionalExpression = $conditionalExpression;
+        $obj['conditionalExpression'] = $conditionalExpression;
 
         return $obj;
     }
@@ -163,7 +168,7 @@ final class RollupExpression implements BaseModel
     public function withConditionalFormula(string $conditionalFormula): self
     {
         $obj = clone $this;
-        $obj->conditionalFormula = $conditionalFormula;
+        $obj['conditionalFormula'] = $conditionalFormula;
 
         return $obj;
     }
@@ -171,7 +176,7 @@ final class RollupExpression implements BaseModel
     public function withEmptyRollupValue(string $emptyRollupValue): self
     {
         $obj = clone $this;
-        $obj->emptyRollupValue = $emptyRollupValue;
+        $obj['emptyRollupValue'] = $emptyRollupValue;
 
         return $obj;
     }
@@ -180,7 +185,7 @@ final class RollupExpression implements BaseModel
         string $sourceCompareByPropertyName
     ): self {
         $obj = clone $this;
-        $obj->sourceCompareByPropertyName = $sourceCompareByPropertyName;
+        $obj['sourceCompareByPropertyName'] = $sourceCompareByPropertyName;
 
         return $obj;
     }

@@ -145,16 +145,16 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
         $obj = new self;
 
         $obj['access'] = $access;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         null !== $duplicateValidationScope && $obj['duplicateValidationScope'] = $duplicateValidationScope;
         null !== $duplicateValidationStrategy && $obj['duplicateValidationStrategy'] = $duplicateValidationStrategy;
-        null !== $expiresAt && $obj->expiresAt = $expiresAt;
-        null !== $folderId && $obj->folderId = $folderId;
-        null !== $folderPath && $obj->folderPath = $folderPath;
-        null !== $name && $obj->name = $name;
-        null !== $overwrite && $obj->overwrite = $overwrite;
-        null !== $ttl && $obj->ttl = $ttl;
+        null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
+        null !== $folderId && $obj['folderId'] = $folderId;
+        null !== $folderPath && $obj['folderPath'] = $folderPath;
+        null !== $name && $obj['name'] = $name;
+        null !== $overwrite && $obj['overwrite'] = $overwrite;
+        null !== $ttl && $obj['ttl'] = $ttl;
 
         return $obj;
     }
@@ -178,7 +178,7 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }
@@ -217,7 +217,7 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;
-        $obj->expiresAt = $expiresAt;
+        $obj['expiresAt'] = $expiresAt;
 
         return $obj;
     }
@@ -228,7 +228,7 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderId = $folderID;
+        $obj['folderId'] = $folderID;
 
         return $obj;
     }
@@ -239,7 +239,7 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
     public function withFolderPath(string $folderPath): self
     {
         $obj = clone $this;
-        $obj->folderPath = $folderPath;
+        $obj['folderPath'] = $folderPath;
 
         return $obj;
     }
@@ -250,7 +250,7 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -261,7 +261,7 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
     public function withOverwrite(bool $overwrite): self
     {
         $obj = clone $this;
-        $obj->overwrite = $overwrite;
+        $obj['overwrite'] = $overwrite;
 
         return $obj;
     }
@@ -272,7 +272,7 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
     public function withTtl(string $ttl): self
     {
         $obj = clone $this;
-        $obj->ttl = $ttl;
+        $obj['ttl'] = $ttl;
 
         return $obj;
     }

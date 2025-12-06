@@ -61,12 +61,12 @@ final class PublicFontStyle implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $bold && $obj->bold = $bold;
-        null !== $color && $obj->color = $color;
-        null !== $font && $obj->font = $font;
-        null !== $italic && $obj->italic = $italic;
-        null !== $size && $obj->size = $size;
-        null !== $underline && $obj->underline = $underline;
+        null !== $bold && $obj['bold'] = $bold;
+        null !== $color && $obj['color'] = $color;
+        null !== $font && $obj['font'] = $font;
+        null !== $italic && $obj['italic'] = $italic;
+        null !== $size && $obj['size'] = $size;
+        null !== $underline && $obj['underline'] = $underline;
 
         return $obj;
     }
@@ -74,7 +74,7 @@ final class PublicFontStyle implements BaseModel
     public function withBold(bool $bold): self
     {
         $obj = clone $this;
-        $obj->bold = $bold;
+        $obj['bold'] = $bold;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class PublicFontStyle implements BaseModel
     public function withColor(string $color): self
     {
         $obj = clone $this;
-        $obj->color = $color;
+        $obj['color'] = $color;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class PublicFontStyle implements BaseModel
     public function withFont(string $font): self
     {
         $obj = clone $this;
-        $obj->font = $font;
+        $obj['font'] = $font;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class PublicFontStyle implements BaseModel
     public function withItalic(bool $italic): self
     {
         $obj = clone $this;
-        $obj->italic = $italic;
+        $obj['italic'] = $italic;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class PublicFontStyle implements BaseModel
     public function withSize(int $size): self
     {
         $obj = clone $this;
-        $obj->size = $size;
+        $obj['size'] = $size;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class PublicFontStyle implements BaseModel
     public function withUnderline(bool $underline): self
     {
         $obj = clone $this;
-        $obj->underline = $underline;
+        $obj['underline'] = $underline;
 
         return $obj;
     }

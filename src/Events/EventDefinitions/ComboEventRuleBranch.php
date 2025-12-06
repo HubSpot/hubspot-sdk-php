@@ -62,7 +62,12 @@ final class ComboEventRuleBranch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ComboEventRule> $composingRules
+     * @param list<ComboEventRule|array{
+     *   count: int,
+     *   eventTypeId: string,
+     *   propertyFilters: list<PropertyFilter>,
+     *   lookbackWindowDays?: int|null,
+     * }> $composingRules
      * @param OperationType|value-of<OperationType> $operationType
      * @param list<mixed> $ruleBranches
      */
@@ -73,20 +78,25 @@ final class ComboEventRuleBranch implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->composingRules = $composingRules;
+        $obj['composingRules'] = $composingRules;
         $obj['operationType'] = $operationType;
-        $obj->ruleBranches = $ruleBranches;
+        $obj['ruleBranches'] = $ruleBranches;
 
         return $obj;
     }
 
     /**
-     * @param list<ComboEventRule> $composingRules
+     * @param list<ComboEventRule|array{
+     *   count: int,
+     *   eventTypeId: string,
+     *   propertyFilters: list<PropertyFilter>,
+     *   lookbackWindowDays?: int|null,
+     * }> $composingRules
      */
     public function withComposingRules(array $composingRules): self
     {
         $obj = clone $this;
-        $obj->composingRules = $composingRules;
+        $obj['composingRules'] = $composingRules;
 
         return $obj;
     }
@@ -108,7 +118,7 @@ final class ComboEventRuleBranch implements BaseModel
     public function withRuleBranches(array $ruleBranches): self
     {
         $obj = clone $this;
-        $obj->ruleBranches = $ruleBranches;
+        $obj['ruleBranches'] = $ruleBranches;
 
         return $obj;
     }

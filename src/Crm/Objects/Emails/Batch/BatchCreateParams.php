@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 
 /**
@@ -16,7 +17,11 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
  * @see HubspotSDK\Services\Crm\Objects\Emails\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
- *   inputs: list<SimplePublicObjectBatchInputForCreate>
+ *   inputs: list<SimplePublicObjectBatchInputForCreate|array{
+ *     associations: list<PublicAssociationsForObject>,
+ *     properties: array<string,string>,
+ *     objectWriteTraceId?: string|null,
+ *   }>,
  * }
  */
 final class BatchCreateParams implements BaseModel
@@ -53,24 +58,32 @@ final class BatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInputForCreate> $inputs
+     * @param list<SimplePublicObjectBatchInputForCreate|array{
+     *   associations: list<PublicAssociationsForObject>,
+     *   properties: array<string,string>,
+     *   objectWriteTraceId?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInputForCreate> $inputs
+     * @param list<SimplePublicObjectBatchInputForCreate|array{
+     *   associations: list<PublicAssociationsForObject>,
+     *   properties: array<string,string>,
+     *   objectWriteTraceId?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

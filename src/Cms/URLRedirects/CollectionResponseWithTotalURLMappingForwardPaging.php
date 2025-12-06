@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
+use HubspotSDK\NextPage;
 
 /**
  * @phpstan-type CollectionResponseWithTotalURLMappingForwardPagingShape = array{
@@ -57,30 +58,59 @@ final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseMo
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<URLMapping> $results
+     * @param list<URLMapping|array{
+     *   id: string,
+     *   destination: string,
+     *   isMatchFullUrl: bool,
+     *   isMatchQueryString: bool,
+     *   isOnlyAfterNotFound: bool,
+     *   isPattern: bool,
+     *   isProtocolAgnostic: bool,
+     *   isTrailingSlashOptional: bool,
+     *   precedence: int,
+     *   redirectStyle: int,
+     *   routePrefix: string,
+     *   created?: \DateTimeInterface|null,
+     *   updated?: \DateTimeInterface|null,
+     * }> $results
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
     public static function with(
         array $results,
         int $total,
-        ?ForwardPaging $paging = null
+        ForwardPaging|array|null $paging = null
     ): self {
         $obj = new self;
 
-        $obj->results = $results;
-        $obj->total = $total;
+        $obj['results'] = $results;
+        $obj['total'] = $total;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<URLMapping> $results
+     * @param list<URLMapping|array{
+     *   id: string,
+     *   destination: string,
+     *   isMatchFullUrl: bool,
+     *   isMatchQueryString: bool,
+     *   isOnlyAfterNotFound: bool,
+     *   isPattern: bool,
+     *   isProtocolAgnostic: bool,
+     *   isTrailingSlashOptional: bool,
+     *   precedence: int,
+     *   redirectStyle: int,
+     *   routePrefix: string,
+     *   created?: \DateTimeInterface|null,
+     *   updated?: \DateTimeInterface|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -88,15 +118,18 @@ final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseMo
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }
 
-    public function withPaging(ForwardPaging $paging): self
+    /**
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     */
+    public function withPaging(ForwardPaging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

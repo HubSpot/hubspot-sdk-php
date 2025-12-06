@@ -85,6 +85,26 @@ final class PublicSequenceStepResponse implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicEmailPatternResponse|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   templateId: string,
+     *   updatedAt: \DateTimeInterface,
+     *   threadEmailToStepOrder?: int|null,
+     * } $emailPattern
+     * @param PublicTaskPatternResponse|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   taskPriority: string,
+     *   taskType: string,
+     *   updatedAt: \DateTimeInterface,
+     *   notes?: string|null,
+     *   queueId?: int|null,
+     *   subject?: string|null,
+     *   templateId?: int|null,
+     *   threadEmailToStepOrder?: int|null,
+     * } $taskPattern
      */
     public static function with(
         string $id,
@@ -93,20 +113,20 @@ final class PublicSequenceStepResponse implements BaseModel
         int $delayMillis,
         int $stepOrder,
         \DateTimeInterface $updatedAt,
-        ?PublicEmailPatternResponse $emailPattern = null,
-        ?PublicTaskPatternResponse $taskPattern = null,
+        PublicEmailPatternResponse|array|null $emailPattern = null,
+        PublicTaskPatternResponse|array|null $taskPattern = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->actionType = $actionType;
-        $obj->createdAt = $createdAt;
-        $obj->delayMillis = $delayMillis;
-        $obj->stepOrder = $stepOrder;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['actionType'] = $actionType;
+        $obj['createdAt'] = $createdAt;
+        $obj['delayMillis'] = $delayMillis;
+        $obj['stepOrder'] = $stepOrder;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $emailPattern && $obj->emailPattern = $emailPattern;
-        null !== $taskPattern && $obj->taskPattern = $taskPattern;
+        null !== $emailPattern && $obj['emailPattern'] = $emailPattern;
+        null !== $taskPattern && $obj['taskPattern'] = $taskPattern;
 
         return $obj;
     }
@@ -114,7 +134,7 @@ final class PublicSequenceStepResponse implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -122,7 +142,7 @@ final class PublicSequenceStepResponse implements BaseModel
     public function withActionType(string $actionType): self
     {
         $obj = clone $this;
-        $obj->actionType = $actionType;
+        $obj['actionType'] = $actionType;
 
         return $obj;
     }
@@ -130,7 +150,7 @@ final class PublicSequenceStepResponse implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -138,7 +158,7 @@ final class PublicSequenceStepResponse implements BaseModel
     public function withDelayMillis(int $delayMillis): self
     {
         $obj = clone $this;
-        $obj->delayMillis = $delayMillis;
+        $obj['delayMillis'] = $delayMillis;
 
         return $obj;
     }
@@ -146,7 +166,7 @@ final class PublicSequenceStepResponse implements BaseModel
     public function withStepOrder(int $stepOrder): self
     {
         $obj = clone $this;
-        $obj->stepOrder = $stepOrder;
+        $obj['stepOrder'] = $stepOrder;
 
         return $obj;
     }
@@ -154,25 +174,48 @@ final class PublicSequenceStepResponse implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
 
+    /**
+     * @param PublicEmailPatternResponse|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   templateId: string,
+     *   updatedAt: \DateTimeInterface,
+     *   threadEmailToStepOrder?: int|null,
+     * } $emailPattern
+     */
     public function withEmailPattern(
-        PublicEmailPatternResponse $emailPattern
+        PublicEmailPatternResponse|array $emailPattern
     ): self {
         $obj = clone $this;
-        $obj->emailPattern = $emailPattern;
+        $obj['emailPattern'] = $emailPattern;
 
         return $obj;
     }
 
+    /**
+     * @param PublicTaskPatternResponse|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   taskPriority: string,
+     *   taskType: string,
+     *   updatedAt: \DateTimeInterface,
+     *   notes?: string|null,
+     *   queueId?: int|null,
+     *   subject?: string|null,
+     *   templateId?: int|null,
+     *   threadEmailToStepOrder?: int|null,
+     * } $taskPattern
+     */
     public function withTaskPattern(
-        PublicTaskPatternResponse $taskPattern
+        PublicTaskPatternResponse|array $taskPattern
     ): self {
         $obj = clone $this;
-        $obj->taskPattern = $taskPattern;
+        $obj['taskPattern'] = $taskPattern;
 
         return $obj;
     }

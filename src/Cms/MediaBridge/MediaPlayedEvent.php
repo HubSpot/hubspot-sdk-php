@@ -160,24 +160,24 @@ final class MediaPlayedEvent implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->contactId = $contactId;
-        $obj->mediaBridgeId = $mediaBridgeId;
-        $obj->mediaBridgeObjectCoordinates = $mediaBridgeObjectCoordinates;
-        $obj->mediaBridgeObjectTypeId = $mediaBridgeObjectTypeId;
-        $obj->mediaName = $mediaName;
+        $obj['contactId'] = $contactId;
+        $obj['mediaBridgeId'] = $mediaBridgeId;
+        $obj['mediaBridgeObjectCoordinates'] = $mediaBridgeObjectCoordinates;
+        $obj['mediaBridgeObjectTypeId'] = $mediaBridgeObjectTypeId;
+        $obj['mediaName'] = $mediaName;
         $obj['mediaType'] = $mediaType;
-        $obj->occurredTimestamp = $occurredTimestamp;
-        $obj->portalId = $portalId;
-        $obj->providerId = $providerId;
-        $obj->sessionId = $sessionId;
+        $obj['occurredTimestamp'] = $occurredTimestamp;
+        $obj['portalId'] = $portalId;
+        $obj['providerId'] = $providerId;
+        $obj['sessionId'] = $sessionId;
         $obj['state'] = $state;
 
-        null !== $iframeUrl && $obj->iframeUrl = $iframeUrl;
-        null !== $mediaUrl && $obj->mediaUrl = $mediaUrl;
-        null !== $pageId && $obj->pageId = $pageId;
-        null !== $pageName && $obj->pageName = $pageName;
-        null !== $pageObjectCoordinates && $obj->pageObjectCoordinates = $pageObjectCoordinates;
-        null !== $pageUrl && $obj->pageUrl = $pageUrl;
+        null !== $iframeUrl && $obj['iframeUrl'] = $iframeUrl;
+        null !== $mediaUrl && $obj['mediaUrl'] = $mediaUrl;
+        null !== $pageId && $obj['pageId'] = $pageId;
+        null !== $pageName && $obj['pageName'] = $pageName;
+        null !== $pageObjectCoordinates && $obj['pageObjectCoordinates'] = $pageObjectCoordinates;
+        null !== $pageUrl && $obj['pageUrl'] = $pageUrl;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withContactID(int $contactID): self
     {
         $obj = clone $this;
-        $obj->contactId = $contactID;
+        $obj['contactId'] = $contactID;
 
         return $obj;
     }
@@ -193,7 +193,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withMediaBridgeID(int $mediaBridgeID): self
     {
         $obj = clone $this;
-        $obj->mediaBridgeId = $mediaBridgeID;
+        $obj['mediaBridgeId'] = $mediaBridgeID;
 
         return $obj;
     }
@@ -202,7 +202,7 @@ final class MediaPlayedEvent implements BaseModel
         string $mediaBridgeObjectCoordinates
     ): self {
         $obj = clone $this;
-        $obj->mediaBridgeObjectCoordinates = $mediaBridgeObjectCoordinates;
+        $obj['mediaBridgeObjectCoordinates'] = $mediaBridgeObjectCoordinates;
 
         return $obj;
     }
@@ -211,7 +211,7 @@ final class MediaPlayedEvent implements BaseModel
         string $mediaBridgeObjectTypeID
     ): self {
         $obj = clone $this;
-        $obj->mediaBridgeObjectTypeId = $mediaBridgeObjectTypeID;
+        $obj['mediaBridgeObjectTypeId'] = $mediaBridgeObjectTypeID;
 
         return $obj;
     }
@@ -219,7 +219,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withMediaName(string $mediaName): self
     {
         $obj = clone $this;
-        $obj->mediaName = $mediaName;
+        $obj['mediaName'] = $mediaName;
 
         return $obj;
     }
@@ -238,7 +238,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withOccurredTimestamp(int $occurredTimestamp): self
     {
         $obj = clone $this;
-        $obj->occurredTimestamp = $occurredTimestamp;
+        $obj['occurredTimestamp'] = $occurredTimestamp;
 
         return $obj;
     }
@@ -246,7 +246,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }
@@ -254,7 +254,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withProviderID(int $providerID): self
     {
         $obj = clone $this;
-        $obj->providerId = $providerID;
+        $obj['providerId'] = $providerID;
 
         return $obj;
     }
@@ -262,7 +262,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withSessionID(string $sessionID): self
     {
         $obj = clone $this;
-        $obj->sessionId = $sessionID;
+        $obj['sessionId'] = $sessionID;
 
         return $obj;
     }
@@ -281,7 +281,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withIframeURL(string $iframeURL): self
     {
         $obj = clone $this;
-        $obj->iframeUrl = $iframeURL;
+        $obj['iframeUrl'] = $iframeURL;
 
         return $obj;
     }
@@ -289,7 +289,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withMediaURL(string $mediaURL): self
     {
         $obj = clone $this;
-        $obj->mediaUrl = $mediaURL;
+        $obj['mediaUrl'] = $mediaURL;
 
         return $obj;
     }
@@ -297,7 +297,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withPageID(int $pageID): self
     {
         $obj = clone $this;
-        $obj->pageId = $pageID;
+        $obj['pageId'] = $pageID;
 
         return $obj;
     }
@@ -305,7 +305,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withPageName(string $pageName): self
     {
         $obj = clone $this;
-        $obj->pageName = $pageName;
+        $obj['pageName'] = $pageName;
 
         return $obj;
     }
@@ -314,7 +314,7 @@ final class MediaPlayedEvent implements BaseModel
         string $pageObjectCoordinates
     ): self {
         $obj = clone $this;
-        $obj->pageObjectCoordinates = $pageObjectCoordinates;
+        $obj['pageObjectCoordinates'] = $pageObjectCoordinates;
 
         return $obj;
     }
@@ -322,7 +322,7 @@ final class MediaPlayedEvent implements BaseModel
     public function withPageURL(string $pageURL): self
     {
         $obj = clone $this;
-        $obj->pageUrl = $pageURL;
+        $obj['pageUrl'] = $pageURL;
 
         return $obj;
     }

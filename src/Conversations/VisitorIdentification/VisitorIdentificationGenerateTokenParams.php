@@ -71,10 +71,10 @@ final class VisitorIdentificationGenerateTokenParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->email = $email;
+        $obj['email'] = $email;
 
-        null !== $firstName && $obj->firstName = $firstName;
-        null !== $lastName && $obj->lastName = $lastName;
+        null !== $firstName && $obj['firstName'] = $firstName;
+        null !== $lastName && $obj['lastName'] = $lastName;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class VisitorIdentificationGenerateTokenParams implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class VisitorIdentificationGenerateTokenParams implements BaseModel
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
-        $obj->firstName = $firstName;
+        $obj['firstName'] = $firstName;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class VisitorIdentificationGenerateTokenParams implements BaseModel
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;
-        $obj->lastName = $lastName;
+        $obj['lastName'] = $lastName;
 
         return $obj;
     }

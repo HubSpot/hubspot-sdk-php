@@ -77,11 +77,11 @@ final class TableCloneDraftParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->copyRows = $copyRows;
-        $obj->isHubspotDefined = $isHubspotDefined;
+        $obj['copyRows'] = $copyRows;
+        $obj['isHubspotDefined'] = $isHubspotDefined;
 
-        null !== $newLabel && $obj->newLabel = $newLabel;
-        null !== $newName && $obj->newName = $newName;
+        null !== $newLabel && $obj['newLabel'] = $newLabel;
+        null !== $newName && $obj['newName'] = $newName;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class TableCloneDraftParams implements BaseModel
     public function withCopyRows(bool $copyRows): self
     {
         $obj = clone $this;
-        $obj->copyRows = $copyRows;
+        $obj['copyRows'] = $copyRows;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class TableCloneDraftParams implements BaseModel
     public function withIsHubspotDefined(bool $isHubspotDefined): self
     {
         $obj = clone $this;
-        $obj->isHubspotDefined = $isHubspotDefined;
+        $obj['isHubspotDefined'] = $isHubspotDefined;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class TableCloneDraftParams implements BaseModel
     public function withNewLabel(string $newLabel): self
     {
         $obj = clone $this;
-        $obj->newLabel = $newLabel;
+        $obj['newLabel'] = $newLabel;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class TableCloneDraftParams implements BaseModel
     public function withNewName(string $newName): self
     {
         $obj = clone $this;
-        $obj->newName = $newName;
+        $obj['newName'] = $newName;
 
         return $obj;
     }

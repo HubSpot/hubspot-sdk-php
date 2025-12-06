@@ -53,7 +53,7 @@ final class ConfigurationGetByObjectTypesParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->fromObjectType = $fromObjectType;
+        $obj['fromObjectType'] = $fromObjectType;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class ConfigurationGetByObjectTypesParams implements BaseModel
     public function withFromObjectType(string $fromObjectType): self
     {
         $obj = clone $this;
-        $obj->fromObjectType = $fromObjectType;
+        $obj['fromObjectType'] = $fromObjectType;
 
         return $obj;
     }

@@ -70,11 +70,11 @@ final class PropertyModificationMetadata implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->archivable = $archivable;
-        $obj->readOnlyDefinition = $readOnlyDefinition;
-        $obj->readOnlyValue = $readOnlyValue;
+        $obj['archivable'] = $archivable;
+        $obj['readOnlyDefinition'] = $readOnlyDefinition;
+        $obj['readOnlyValue'] = $readOnlyValue;
 
-        null !== $readOnlyOptions && $obj->readOnlyOptions = $readOnlyOptions;
+        null !== $readOnlyOptions && $obj['readOnlyOptions'] = $readOnlyOptions;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class PropertyModificationMetadata implements BaseModel
     public function withArchivable(bool $archivable): self
     {
         $obj = clone $this;
-        $obj->archivable = $archivable;
+        $obj['archivable'] = $archivable;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class PropertyModificationMetadata implements BaseModel
     public function withReadOnlyDefinition(bool $readOnlyDefinition): self
     {
         $obj = clone $this;
-        $obj->readOnlyDefinition = $readOnlyDefinition;
+        $obj['readOnlyDefinition'] = $readOnlyDefinition;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class PropertyModificationMetadata implements BaseModel
     public function withReadOnlyValue(bool $readOnlyValue): self
     {
         $obj = clone $this;
-        $obj->readOnlyValue = $readOnlyValue;
+        $obj['readOnlyValue'] = $readOnlyValue;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class PropertyModificationMetadata implements BaseModel
     public function withReadOnlyOptions(bool $readOnlyOptions): self
     {
         $obj = clone $this;
-        $obj->readOnlyOptions = $readOnlyOptions;
+        $obj['readOnlyOptions'] = $readOnlyOptions;
 
         return $obj;
     }

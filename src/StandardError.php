@@ -120,7 +120,13 @@ final class StandardError implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,list<string>> $context
-     * @param list<ErrorDetail> $errors
+     * @param list<ErrorDetail|array{
+     *   message: string,
+     *   code?: string|null,
+     *   context?: array<string,list<string>>|null,
+     *   in?: string|null,
+     *   subCategory?: string|null,
+     * }> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -135,15 +141,15 @@ final class StandardError implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->category = $category;
-        $obj->context = $context;
-        $obj->errors = $errors;
-        $obj->links = $links;
-        $obj->message = $message;
-        $obj->status = $status;
+        $obj['category'] = $category;
+        $obj['context'] = $context;
+        $obj['errors'] = $errors;
+        $obj['links'] = $links;
+        $obj['message'] = $message;
+        $obj['status'] = $status;
 
-        null !== $id && $obj->id = $id;
-        null !== $subCategory && $obj->subCategory = $subCategory;
+        null !== $id && $obj['id'] = $id;
+        null !== $subCategory && $obj['subCategory'] = $subCategory;
 
         return $obj;
     }
@@ -154,7 +160,7 @@ final class StandardError implements BaseModel
     public function withCategory(string $category): self
     {
         $obj = clone $this;
-        $obj->category = $category;
+        $obj['category'] = $category;
 
         return $obj;
     }
@@ -167,7 +173,7 @@ final class StandardError implements BaseModel
     public function withContext(array $context): self
     {
         $obj = clone $this;
-        $obj->context = $context;
+        $obj['context'] = $context;
 
         return $obj;
     }
@@ -175,12 +181,18 @@ final class StandardError implements BaseModel
     /**
      * The detailed error objects.
      *
-     * @param list<ErrorDetail> $errors
+     * @param list<ErrorDetail|array{
+     *   message: string,
+     *   code?: string|null,
+     *   context?: array<string,list<string>>|null,
+     *   in?: string|null,
+     *   subCategory?: string|null,
+     * }> $errors
      */
     public function withErrors(array $errors): self
     {
         $obj = clone $this;
-        $obj->errors = $errors;
+        $obj['errors'] = $errors;
 
         return $obj;
     }
@@ -193,7 +205,7 @@ final class StandardError implements BaseModel
     public function withLinks(array $links): self
     {
         $obj = clone $this;
-        $obj->links = $links;
+        $obj['links'] = $links;
 
         return $obj;
     }
@@ -204,7 +216,7 @@ final class StandardError implements BaseModel
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }
@@ -215,7 +227,7 @@ final class StandardError implements BaseModel
     public function withStatus(string $status): self
     {
         $obj = clone $this;
-        $obj->status = $status;
+        $obj['status'] = $status;
 
         return $obj;
     }
@@ -226,7 +238,7 @@ final class StandardError implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -237,7 +249,7 @@ final class StandardError implements BaseModel
     public function withSubCategory(mixed $subCategory): self
     {
         $obj = clone $this;
-        $obj->subCategory = $subCategory;
+        $obj['subCategory'] = $subCategory;
 
         return $obj;
     }

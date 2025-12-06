@@ -61,8 +61,8 @@ final class PortalBatchDeleteParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->portalIds = $portalIds;
+        $obj['appId'] = $appId;
+        $obj['portalIds'] = $portalIds;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class PortalBatchDeleteParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PortalBatchDeleteParams implements BaseModel
     public function withPortalIDs(array $portalIDs): self
     {
         $obj = clone $this;
-        $obj->portalIds = $portalIDs;
+        $obj['portalIds'] = $portalIDs;
 
         return $obj;
     }

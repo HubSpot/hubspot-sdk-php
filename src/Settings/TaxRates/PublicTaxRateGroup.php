@@ -99,13 +99,13 @@ final class PublicTaxRateGroup implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->active = $active;
-        $obj->createdAt = $createdAt;
-        $obj->label = $label;
-        $obj->name = $name;
-        $obj->percentageRate = $percentageRate;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['active'] = $active;
+        $obj['createdAt'] = $createdAt;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
+        $obj['percentageRate'] = $percentageRate;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class PublicTaxRateGroup implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class PublicTaxRateGroup implements BaseModel, ResponseConverter
     public function withActive(bool $active): self
     {
         $obj = clone $this;
-        $obj->active = $active;
+        $obj['active'] = $active;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class PublicTaxRateGroup implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -137,7 +137,7 @@ final class PublicTaxRateGroup implements BaseModel, ResponseConverter
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class PublicTaxRateGroup implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -153,7 +153,7 @@ final class PublicTaxRateGroup implements BaseModel, ResponseConverter
     public function withPercentageRate(float $percentageRate): self
     {
         $obj = clone $this;
-        $obj->percentageRate = $percentageRate;
+        $obj['percentageRate'] = $percentageRate;
 
         return $obj;
     }
@@ -161,7 +161,7 @@ final class PublicTaxRateGroup implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

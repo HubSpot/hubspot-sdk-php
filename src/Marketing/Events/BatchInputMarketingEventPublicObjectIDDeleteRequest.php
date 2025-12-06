@@ -46,24 +46,28 @@ final class BatchInputMarketingEventPublicObjectIDDeleteRequest implements BaseM
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicObjectIDDeleteRequest> $inputs
+     * @param list<MarketingEventPublicObjectIDDeleteRequest|array{
+     *   objectId: string
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<MarketingEventPublicObjectIDDeleteRequest> $inputs
+     * @param list<MarketingEventPublicObjectIDDeleteRequest|array{
+     *   objectId: string
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

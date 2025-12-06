@@ -19,7 +19,7 @@ use HubspotSDK\PropertyName;
  * @phpstan-type BatchGetParamsShape = array{
  *   archived: bool,
  *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
- *   inputs: list<PropertyName>,
+ *   inputs: list<PropertyName|array{name: string}>,
  *   locale?: string,
  * }
  */
@@ -71,7 +71,7 @@ final class BatchGetParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param list<PropertyName> $inputs
+     * @param list<PropertyName|array{name: string}> $inputs
      */
     public static function with(
         bool $archived,
@@ -81,11 +81,11 @@ final class BatchGetParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
         $obj['dataSensitivity'] = $dataSensitivity;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
-        null !== $locale && $obj->locale = $locale;
+        null !== $locale && $obj['locale'] = $locale;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class BatchGetParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -111,12 +111,12 @@ final class BatchGetParams implements BaseModel
     }
 
     /**
-     * @param list<PropertyName> $inputs
+     * @param list<PropertyName|array{name: string}> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class BatchGetParams implements BaseModel
     public function withLocale(string $locale): self
     {
         $obj = clone $this;
-        $obj->locale = $locale;
+        $obj['locale'] = $locale;
 
         return $obj;
     }

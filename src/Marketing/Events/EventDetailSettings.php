@@ -58,8 +58,8 @@ final class EventDetailSettings implements BaseModel
     {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->eventDetailsUrl = $eventDetailsUrl;
+        $obj['appId'] = $appId;
+        $obj['eventDetailsUrl'] = $eventDetailsUrl;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class EventDetailSettings implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class EventDetailSettings implements BaseModel
     public function withEventDetailsURL(string $eventDetailsURL): self
     {
         $obj = clone $this;
-        $obj->eventDetailsUrl = $eventDetailsURL;
+        $obj['eventDetailsUrl'] = $eventDetailsURL;
 
         return $obj;
     }

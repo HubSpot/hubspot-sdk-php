@@ -77,10 +77,10 @@ final class PropertyGroup implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->archived = $archived;
-        $obj->displayOrder = $displayOrder;
-        $obj->label = $label;
-        $obj->name = $name;
+        $obj['archived'] = $archived;
+        $obj['displayOrder'] = $displayOrder;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class PropertyGroup implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class PropertyGroup implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class PropertyGroup implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class PropertyGroup implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

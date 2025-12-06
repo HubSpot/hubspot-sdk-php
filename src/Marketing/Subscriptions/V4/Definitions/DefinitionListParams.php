@@ -52,8 +52,8 @@ final class DefinitionListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
-        null !== $includeTranslations && $obj->includeTranslations = $includeTranslations;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $includeTranslations && $obj['includeTranslations'] = $includeTranslations;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class DefinitionListParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class DefinitionListParams implements BaseModel
     public function withIncludeTranslations(bool $includeTranslations): self
     {
         $obj = clone $this;
-        $obj->includeTranslations = $includeTranslations;
+        $obj['includeTranslations'] = $includeTranslations;
 
         return $obj;
     }

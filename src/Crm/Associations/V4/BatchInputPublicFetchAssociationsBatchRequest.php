@@ -46,24 +46,28 @@ final class BatchInputPublicFetchAssociationsBatchRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicFetchAssociationsBatchRequest> $inputs
+     * @param list<PublicFetchAssociationsBatchRequest|array{
+     *   id: string, after?: string|null
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicFetchAssociationsBatchRequest> $inputs
+     * @param list<PublicFetchAssociationsBatchRequest|array{
+     *   id: string, after?: string|null
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

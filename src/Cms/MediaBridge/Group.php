@@ -102,14 +102,14 @@ final class Group implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->deleted = $deleted;
-        $obj->displayName = $displayName;
-        $obj->displayOrder = $displayOrder;
-        $obj->fulcrumPortalId = $fulcrumPortalId;
-        $obj->fulcrumTimestamp = $fulcrumTimestamp;
-        $obj->hubspotDefined = $hubspotDefined;
-        $obj->name = $name;
-        $obj->portalId = $portalId;
+        $obj['deleted'] = $deleted;
+        $obj['displayName'] = $displayName;
+        $obj['displayOrder'] = $displayOrder;
+        $obj['fulcrumPortalId'] = $fulcrumPortalId;
+        $obj['fulcrumTimestamp'] = $fulcrumTimestamp;
+        $obj['hubspotDefined'] = $hubspotDefined;
+        $obj['name'] = $name;
+        $obj['portalId'] = $portalId;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class Group implements BaseModel
     public function withDeleted(bool $deleted): self
     {
         $obj = clone $this;
-        $obj->deleted = $deleted;
+        $obj['deleted'] = $deleted;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class Group implements BaseModel
     public function withDisplayName(string $displayName): self
     {
         $obj = clone $this;
-        $obj->displayName = $displayName;
+        $obj['displayName'] = $displayName;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class Group implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class Group implements BaseModel
     public function withFulcrumPortalID(int $fulcrumPortalID): self
     {
         $obj = clone $this;
-        $obj->fulcrumPortalId = $fulcrumPortalID;
+        $obj['fulcrumPortalId'] = $fulcrumPortalID;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class Group implements BaseModel
     public function withFulcrumTimestamp(int $fulcrumTimestamp): self
     {
         $obj = clone $this;
-        $obj->fulcrumTimestamp = $fulcrumTimestamp;
+        $obj['fulcrumTimestamp'] = $fulcrumTimestamp;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class Group implements BaseModel
     public function withHubspotDefined(bool $hubspotDefined): self
     {
         $obj = clone $this;
-        $obj->hubspotDefined = $hubspotDefined;
+        $obj['hubspotDefined'] = $hubspotDefined;
 
         return $obj;
     }
@@ -165,7 +165,7 @@ final class Group implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class Group implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }

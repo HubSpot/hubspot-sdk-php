@@ -80,10 +80,10 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->controllingFieldName = $controllingFieldName;
-        $obj->controllingFieldValue = $controllingFieldValue;
+        $obj['controllingFieldName'] = $controllingFieldName;
+        $obj['controllingFieldValue'] = $controllingFieldValue;
         $obj['dependencyType'] = $dependencyType;
-        $obj->dependentFieldNames = $dependentFieldNames;
+        $obj['dependentFieldNames'] = $dependentFieldNames;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
     public function withControllingFieldName(string $controllingFieldName): self
     {
         $obj = clone $this;
-        $obj->controllingFieldName = $controllingFieldName;
+        $obj['controllingFieldName'] = $controllingFieldName;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
         string $controllingFieldValue
     ): self {
         $obj = clone $this;
-        $obj->controllingFieldValue = $controllingFieldValue;
+        $obj['controllingFieldValue'] = $controllingFieldValue;
 
         return $obj;
     }
@@ -123,7 +123,7 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
     public function withDependentFieldNames(array $dependentFieldNames): self
     {
         $obj = clone $this;
-        $obj->dependentFieldNames = $dependentFieldNames;
+        $obj['dependentFieldNames'] = $dependentFieldNames;
 
         return $obj;
     }

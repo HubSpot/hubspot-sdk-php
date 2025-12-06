@@ -130,6 +130,9 @@ final class TimelineEventResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string> $tokens
+     * @param TimelineEventIFrame|array{
+     *   headerLabel: string, height: int, linkLabel: string, url: string, width: int
+     * } $timelineIFrame
      */
     public static function with(
         string $id,
@@ -141,25 +144,25 @@ final class TimelineEventResponse implements BaseModel
         ?string $email = null,
         mixed $extraData = null,
         ?string $objectId = null,
-        ?TimelineEventIFrame $timelineIFrame = null,
+        TimelineEventIFrame|array|null $timelineIFrame = null,
         ?\DateTimeInterface $timestamp = null,
         ?string $utk = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->eventTemplateId = $eventTemplateId;
-        $obj->objectType = $objectType;
-        $obj->tokens = $tokens;
+        $obj['id'] = $id;
+        $obj['eventTemplateId'] = $eventTemplateId;
+        $obj['objectType'] = $objectType;
+        $obj['tokens'] = $tokens;
 
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $domain && $obj->domain = $domain;
-        null !== $email && $obj->email = $email;
-        null !== $extraData && $obj->extraData = $extraData;
-        null !== $objectId && $obj->objectId = $objectId;
-        null !== $timelineIFrame && $obj->timelineIFrame = $timelineIFrame;
-        null !== $timestamp && $obj->timestamp = $timestamp;
-        null !== $utk && $obj->utk = $utk;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $domain && $obj['domain'] = $domain;
+        null !== $email && $obj['email'] = $email;
+        null !== $extraData && $obj['extraData'] = $extraData;
+        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $timelineIFrame && $obj['timelineIFrame'] = $timelineIFrame;
+        null !== $timestamp && $obj['timestamp'] = $timestamp;
+        null !== $utk && $obj['utk'] = $utk;
 
         return $obj;
     }
@@ -170,7 +173,7 @@ final class TimelineEventResponse implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -181,7 +184,7 @@ final class TimelineEventResponse implements BaseModel
     public function withEventTemplateID(string $eventTemplateID): self
     {
         $obj = clone $this;
-        $obj->eventTemplateId = $eventTemplateID;
+        $obj['eventTemplateId'] = $eventTemplateID;
 
         return $obj;
     }
@@ -192,7 +195,7 @@ final class TimelineEventResponse implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -205,7 +208,7 @@ final class TimelineEventResponse implements BaseModel
     public function withTokens(array $tokens): self
     {
         $obj = clone $this;
-        $obj->tokens = $tokens;
+        $obj['tokens'] = $tokens;
 
         return $obj;
     }
@@ -213,7 +216,7 @@ final class TimelineEventResponse implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -224,7 +227,7 @@ final class TimelineEventResponse implements BaseModel
     public function withDomain(string $domain): self
     {
         $obj = clone $this;
-        $obj->domain = $domain;
+        $obj['domain'] = $domain;
 
         return $obj;
     }
@@ -235,7 +238,7 @@ final class TimelineEventResponse implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -246,7 +249,7 @@ final class TimelineEventResponse implements BaseModel
     public function withExtraData(mixed $extraData): self
     {
         $obj = clone $this;
-        $obj->extraData = $extraData;
+        $obj['extraData'] = $extraData;
 
         return $obj;
     }
@@ -257,16 +260,21 @@ final class TimelineEventResponse implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
 
+    /**
+     * @param TimelineEventIFrame|array{
+     *   headerLabel: string, height: int, linkLabel: string, url: string, width: int
+     * } $timelineIFrame
+     */
     public function withTimelineIFrame(
-        TimelineEventIFrame $timelineIFrame
+        TimelineEventIFrame|array $timelineIFrame
     ): self {
         $obj = clone $this;
-        $obj->timelineIFrame = $timelineIFrame;
+        $obj['timelineIFrame'] = $timelineIFrame;
 
         return $obj;
     }
@@ -277,7 +285,7 @@ final class TimelineEventResponse implements BaseModel
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -288,7 +296,7 @@ final class TimelineEventResponse implements BaseModel
     public function withUtk(string $utk): self
     {
         $obj = clone $this;
-        $obj->utk = $utk;
+        $obj['utk'] = $utk;
 
         return $obj;
     }

@@ -103,13 +103,14 @@ final class EmailSendStatusView implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
+     * @param EventIDView|array{id: string, created: \DateTimeInterface} $eventId
      * @param SendResult|value-of<SendResult> $sendResult
      */
     public static function with(
         Status|string $status,
         string $statusId,
         ?\DateTimeInterface $completedAt = null,
-        ?EventIDView $eventId = null,
+        EventIDView|array|null $eventId = null,
         ?string $message = null,
         ?\DateTimeInterface $requestedAt = null,
         SendResult|string|null $sendResult = null,
@@ -118,14 +119,14 @@ final class EmailSendStatusView implements BaseModel
         $obj = new self;
 
         $obj['status'] = $status;
-        $obj->statusId = $statusId;
+        $obj['statusId'] = $statusId;
 
-        null !== $completedAt && $obj->completedAt = $completedAt;
-        null !== $eventId && $obj->eventId = $eventId;
-        null !== $message && $obj->message = $message;
-        null !== $requestedAt && $obj->requestedAt = $requestedAt;
+        null !== $completedAt && $obj['completedAt'] = $completedAt;
+        null !== $eventId && $obj['eventId'] = $eventId;
+        null !== $message && $obj['message'] = $message;
+        null !== $requestedAt && $obj['requestedAt'] = $requestedAt;
         null !== $sendResult && $obj['sendResult'] = $sendResult;
-        null !== $startedAt && $obj->startedAt = $startedAt;
+        null !== $startedAt && $obj['startedAt'] = $startedAt;
 
         return $obj;
     }
@@ -149,7 +150,7 @@ final class EmailSendStatusView implements BaseModel
     public function withStatusID(string $statusID): self
     {
         $obj = clone $this;
-        $obj->statusId = $statusID;
+        $obj['statusId'] = $statusID;
 
         return $obj;
     }
@@ -160,18 +161,20 @@ final class EmailSendStatusView implements BaseModel
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
-        $obj->completedAt = $completedAt;
+        $obj['completedAt'] = $completedAt;
 
         return $obj;
     }
 
     /**
      * The ID of a send event.
+     *
+     * @param EventIDView|array{id: string, created: \DateTimeInterface} $eventID
      */
-    public function withEventID(EventIDView $eventID): self
+    public function withEventID(EventIDView|array $eventID): self
     {
         $obj = clone $this;
-        $obj->eventId = $eventID;
+        $obj['eventId'] = $eventID;
 
         return $obj;
     }
@@ -179,7 +182,7 @@ final class EmailSendStatusView implements BaseModel
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }
@@ -190,7 +193,7 @@ final class EmailSendStatusView implements BaseModel
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;
-        $obj->requestedAt = $requestedAt;
+        $obj['requestedAt'] = $requestedAt;
 
         return $obj;
     }
@@ -214,7 +217,7 @@ final class EmailSendStatusView implements BaseModel
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
-        $obj->startedAt = $startedAt;
+        $obj['startedAt'] = $startedAt;
 
         return $obj;
     }

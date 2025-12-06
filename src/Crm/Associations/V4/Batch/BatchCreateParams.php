@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4\Batch;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost;
+use HubspotSDK\PublicObjectID;
 
 /**
  * Batch create associations for objects.
@@ -16,7 +18,10 @@ use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost;
  * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
- *   fromObjectType: string, inputs: list<PublicAssociationMultiPost>
+ *   fromObjectType: string,
+ *   inputs: list<PublicAssociationMultiPost|array{
+ *     from: PublicObjectID, to: PublicObjectID, types: list<AssociationSpec>
+ *   }>,
  * }
  */
 final class BatchCreateParams implements BaseModel
@@ -56,14 +61,16 @@ final class BatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationMultiPost> $inputs
+     * @param list<PublicAssociationMultiPost|array{
+     *   from: PublicObjectID, to: PublicObjectID, types: list<AssociationSpec>
+     * }> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
         $obj = new self;
 
-        $obj->fromObjectType = $fromObjectType;
-        $obj->inputs = $inputs;
+        $obj['fromObjectType'] = $fromObjectType;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -71,18 +78,20 @@ final class BatchCreateParams implements BaseModel
     public function withFromObjectType(string $fromObjectType): self
     {
         $obj = clone $this;
-        $obj->fromObjectType = $fromObjectType;
+        $obj['fromObjectType'] = $fromObjectType;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAssociationMultiPost> $inputs
+     * @param list<PublicAssociationMultiPost|array{
+     *   from: PublicObjectID, to: PublicObjectID, types: list<AssociationSpec>
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

@@ -18,7 +18,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   objectType: string,
  *   displayOrder: int,
  *   label: string,
- *   stages: list<PipelineStageInput>,
+ *   stages: list<PipelineStageInput|array{
+ *     displayOrder: int, label: string, metadata: array<string,string>
+ *   }>,
  *   validateDealStageUsagesBeforeDelete?: bool,
  *   validateReferencesBeforeDelete?: bool,
  * }
@@ -94,7 +96,9 @@ final class PipelineReplaceParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PipelineStageInput> $stages
+     * @param list<PipelineStageInput|array{
+     *   displayOrder: int, label: string, metadata: array<string,string>
+     * }> $stages
      */
     public static function with(
         string $objectType,
@@ -106,13 +110,13 @@ final class PipelineReplaceParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->objectType = $objectType;
-        $obj->displayOrder = $displayOrder;
-        $obj->label = $label;
-        $obj->stages = $stages;
+        $obj['objectType'] = $objectType;
+        $obj['displayOrder'] = $displayOrder;
+        $obj['label'] = $label;
+        $obj['stages'] = $stages;
 
-        null !== $validateDealStageUsagesBeforeDelete && $obj->validateDealStageUsagesBeforeDelete = $validateDealStageUsagesBeforeDelete;
-        null !== $validateReferencesBeforeDelete && $obj->validateReferencesBeforeDelete = $validateReferencesBeforeDelete;
+        null !== $validateDealStageUsagesBeforeDelete && $obj['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
+        null !== $validateReferencesBeforeDelete && $obj['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
 
         return $obj;
     }
@@ -120,7 +124,7 @@ final class PipelineReplaceParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -131,7 +135,7 @@ final class PipelineReplaceParams implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -142,7 +146,7 @@ final class PipelineReplaceParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -150,12 +154,14 @@ final class PipelineReplaceParams implements BaseModel
     /**
      * Pipeline stage inputs used to create the new or replacement pipeline.
      *
-     * @param list<PipelineStageInput> $stages
+     * @param list<PipelineStageInput|array{
+     *   displayOrder: int, label: string, metadata: array<string,string>
+     * }> $stages
      */
     public function withStages(array $stages): self
     {
         $obj = clone $this;
-        $obj->stages = $stages;
+        $obj['stages'] = $stages;
 
         return $obj;
     }
@@ -167,7 +173,7 @@ final class PipelineReplaceParams implements BaseModel
         bool $validateDealStageUsagesBeforeDelete
     ): self {
         $obj = clone $this;
-        $obj->validateDealStageUsagesBeforeDelete = $validateDealStageUsagesBeforeDelete;
+        $obj['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
 
         return $obj;
     }
@@ -179,7 +185,7 @@ final class PipelineReplaceParams implements BaseModel
         bool $validateReferencesBeforeDelete
     ): self {
         $obj = clone $this;
-        $obj->validateReferencesBeforeDelete = $validateReferencesBeforeDelete;
+        $obj['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
 
         return $obj;
     }

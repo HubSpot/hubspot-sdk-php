@@ -125,15 +125,15 @@ final class LandingPageUpdateFolderParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->category = $category;
-        $obj->created = $created;
-        $obj->deletedAt = $deletedAt;
-        $obj->name = $name;
-        $obj->parentFolderId = $parentFolderId;
-        $obj->updated = $updated;
+        $obj['id'] = $id;
+        $obj['category'] = $category;
+        $obj['created'] = $created;
+        $obj['deletedAt'] = $deletedAt;
+        $obj['name'] = $name;
+        $obj['parentFolderId'] = $parentFolderId;
+        $obj['updated'] = $updated;
 
-        null !== $archived && $obj->archived = $archived;
+        null !== $archived && $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -144,7 +144,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -155,7 +155,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
     public function withCategory(int $category): self
     {
         $obj = clone $this;
-        $obj->category = $category;
+        $obj['category'] = $category;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
     public function withCreated(\DateTimeInterface $created): self
     {
         $obj = clone $this;
-        $obj->created = $created;
+        $obj['created'] = $created;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
         $obj = clone $this;
-        $obj->deletedAt = $deletedAt;
+        $obj['deletedAt'] = $deletedAt;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -196,7 +196,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderId = $parentFolderID;
+        $obj['parentFolderId'] = $parentFolderID;
 
         return $obj;
     }
@@ -204,7 +204,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
     public function withUpdated(\DateTimeInterface $updated): self
     {
         $obj = clone $this;
-        $obj->updated = $updated;
+        $obj['updated'] = $updated;
 
         return $obj;
     }
@@ -215,7 +215,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }

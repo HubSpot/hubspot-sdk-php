@@ -69,7 +69,7 @@ final class CardObjectTypeBody implements BaseModel
         $obj = new self;
 
         $obj['name'] = $name;
-        $obj->propertiesToSend = $propertiesToSend;
+        $obj['propertiesToSend'] = $propertiesToSend;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class CardObjectTypeBody implements BaseModel
     public function withPropertiesToSend(array $propertiesToSend): self
     {
         $obj = clone $this;
-        $obj->propertiesToSend = $propertiesToSend;
+        $obj['propertiesToSend'] = $propertiesToSend;
 
         return $obj;
     }

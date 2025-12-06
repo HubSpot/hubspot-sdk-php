@@ -46,24 +46,32 @@ final class BulkIntegratorObjectCreationResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,IntegratorObjectCreationResponse> $createdObjects
+     * @param array<string,IntegratorObjectCreationResponse|array{
+     *   objectType: InboundDBObjectType,
+     *   properties: list<PropertyDefinition>,
+     *   propertyGroups: list<Group>,
+     * }> $createdObjects
      */
     public static function with(array $createdObjects): self
     {
         $obj = new self;
 
-        $obj->createdObjects = $createdObjects;
+        $obj['createdObjects'] = $createdObjects;
 
         return $obj;
     }
 
     /**
-     * @param array<string,IntegratorObjectCreationResponse> $createdObjects
+     * @param array<string,IntegratorObjectCreationResponse|array{
+     *   objectType: InboundDBObjectType,
+     *   properties: list<PropertyDefinition>,
+     *   propertyGroups: list<Group>,
+     * }> $createdObjects
      */
     public function withCreatedObjects(array $createdObjects): self
     {
         $obj = clone $this;
-        $obj->createdObjects = $createdObjects;
+        $obj['createdObjects'] = $createdObjects;
 
         return $obj;
     }

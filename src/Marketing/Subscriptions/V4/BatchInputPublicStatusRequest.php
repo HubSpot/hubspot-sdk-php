@@ -7,6 +7,9 @@ namespace HubspotSDK\Marketing\Subscriptions\V4;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\Channel;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\LegalBasis;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState;
 
 /**
  * @phpstan-type BatchInputPublicStatusRequestShape = array{
@@ -46,24 +49,38 @@ final class BatchInputPublicStatusRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatusRequest> $inputs
+     * @param list<PublicStatusRequest|array{
+     *   channel: value-of<Channel>,
+     *   statusState: value-of<StatusState>,
+     *   subscriberIdString: string,
+     *   subscriptionId: int,
+     *   legalBasis?: value-of<LegalBasis>|null,
+     *   legalBasisExplanation?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicStatusRequest> $inputs
+     * @param list<PublicStatusRequest|array{
+     *   channel: value-of<Channel>,
+     *   statusState: value-of<StatusState>,
+     *   subscriberIdString: string,
+     *   subscriptionId: int,
+     *   legalBasis?: value-of<LegalBasis>|null,
+     *   legalBasisExplanation?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

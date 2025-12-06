@@ -42,7 +42,7 @@ final class FolderRenameParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $newFolderName && $obj->newFolderName = $newFolderName;
+        null !== $newFolderName && $obj['newFolderName'] = $newFolderName;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class FolderRenameParams implements BaseModel
     public function withNewFolderName(string $newFolderName): self
     {
         $obj = clone $this;
-        $obj->newFolderName = $newFolderName;
+        $obj['newFolderName'] = $newFolderName;
 
         return $obj;
     }

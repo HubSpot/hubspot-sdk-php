@@ -60,9 +60,9 @@ final class BlogPostLanguageCloneRequestVNext implements BaseModel
     {
         $obj = new self;
 
-        $obj->id = $id;
+        $obj['id'] = $id;
 
-        null !== $language && $obj->language = $language;
+        null !== $language && $obj['language'] = $language;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class BlogPostLanguageCloneRequestVNext implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class BlogPostLanguageCloneRequestVNext implements BaseModel
     public function withLanguage(string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language;
+        $obj['language'] = $language;
 
         return $obj;
     }

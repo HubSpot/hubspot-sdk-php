@@ -52,8 +52,8 @@ final class ListUpdateNameParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $includeFilters && $obj->includeFilters = $includeFilters;
-        null !== $listName && $obj->listName = $listName;
+        null !== $includeFilters && $obj['includeFilters'] = $includeFilters;
+        null !== $listName && $obj['listName'] = $listName;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class ListUpdateNameParams implements BaseModel
     public function withIncludeFilters(bool $includeFilters): self
     {
         $obj = clone $this;
-        $obj->includeFilters = $includeFilters;
+        $obj['includeFilters'] = $includeFilters;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class ListUpdateNameParams implements BaseModel
     public function withListName(string $listName): self
     {
         $obj = clone $this;
-        $obj->listName = $listName;
+        $obj['listName'] = $listName;
 
         return $obj;
     }

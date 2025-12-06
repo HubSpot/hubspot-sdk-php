@@ -173,23 +173,23 @@ final class FolderSearchParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $before && $obj->before = $before;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdAtGte && $obj->createdAtGte = $createdAtGte;
-        null !== $createdAtLte && $obj->createdAtLte = $createdAtLte;
-        null !== $idGte && $obj->idGte = $idGte;
-        null !== $idLte && $obj->idLte = $idLte;
-        null !== $ids && $obj->ids = $ids;
-        null !== $limit && $obj->limit = $limit;
-        null !== $name && $obj->name = $name;
-        null !== $parentFolderIds && $obj->parentFolderIds = $parentFolderIds;
-        null !== $path && $obj->path = $path;
-        null !== $properties && $obj->properties = $properties;
-        null !== $sort && $obj->sort = $sort;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedAtGte && $obj->updatedAtGte = $updatedAtGte;
-        null !== $updatedAtLte && $obj->updatedAtLte = $updatedAtLte;
+        null !== $after && $obj['after'] = $after;
+        null !== $before && $obj['before'] = $before;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $createdAtGte && $obj['createdAtGte'] = $createdAtGte;
+        null !== $createdAtLte && $obj['createdAtLte'] = $createdAtLte;
+        null !== $idGte && $obj['idGte'] = $idGte;
+        null !== $idLte && $obj['idLte'] = $idLte;
+        null !== $ids && $obj['ids'] = $ids;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $name && $obj['name'] = $name;
+        null !== $parentFolderIds && $obj['parentFolderIds'] = $parentFolderIds;
+        null !== $path && $obj['path'] = $path;
+        null !== $properties && $obj['properties'] = $properties;
+        null !== $sort && $obj['sort'] = $sort;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $updatedAtGte && $obj['updatedAtGte'] = $updatedAtGte;
+        null !== $updatedAtLte && $obj['updatedAtLte'] = $updatedAtLte;
 
         return $obj;
     }
@@ -200,7 +200,7 @@ final class FolderSearchParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -208,7 +208,7 @@ final class FolderSearchParams implements BaseModel
     public function withBefore(string $before): self
     {
         $obj = clone $this;
-        $obj->before = $before;
+        $obj['before'] = $before;
 
         return $obj;
     }
@@ -219,7 +219,7 @@ final class FolderSearchParams implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -230,7 +230,7 @@ final class FolderSearchParams implements BaseModel
     public function withCreatedAtGte(\DateTimeInterface $createdAtGte): self
     {
         $obj = clone $this;
-        $obj->createdAtGte = $createdAtGte;
+        $obj['createdAtGte'] = $createdAtGte;
 
         return $obj;
     }
@@ -241,7 +241,7 @@ final class FolderSearchParams implements BaseModel
     public function withCreatedAtLte(\DateTimeInterface $createdAtLte): self
     {
         $obj = clone $this;
-        $obj->createdAtLte = $createdAtLte;
+        $obj['createdAtLte'] = $createdAtLte;
 
         return $obj;
     }
@@ -249,7 +249,7 @@ final class FolderSearchParams implements BaseModel
     public function withIDGte(int $idGte): self
     {
         $obj = clone $this;
-        $obj->idGte = $idGte;
+        $obj['idGte'] = $idGte;
 
         return $obj;
     }
@@ -257,7 +257,7 @@ final class FolderSearchParams implements BaseModel
     public function withIDLte(int $idLte): self
     {
         $obj = clone $this;
-        $obj->idLte = $idLte;
+        $obj['idLte'] = $idLte;
 
         return $obj;
     }
@@ -268,7 +268,7 @@ final class FolderSearchParams implements BaseModel
     public function withIDs(array $ids): self
     {
         $obj = clone $this;
-        $obj->ids = $ids;
+        $obj['ids'] = $ids;
 
         return $obj;
     }
@@ -279,7 +279,7 @@ final class FolderSearchParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -290,7 +290,7 @@ final class FolderSearchParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -303,7 +303,7 @@ final class FolderSearchParams implements BaseModel
     public function withParentFolderIDs(array $parentFolderIDs): self
     {
         $obj = clone $this;
-        $obj->parentFolderIds = $parentFolderIDs;
+        $obj['parentFolderIds'] = $parentFolderIDs;
 
         return $obj;
     }
@@ -314,7 +314,7 @@ final class FolderSearchParams implements BaseModel
     public function withPath(string $path): self
     {
         $obj = clone $this;
-        $obj->path = $path;
+        $obj['path'] = $path;
 
         return $obj;
     }
@@ -327,7 +327,7 @@ final class FolderSearchParams implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -340,7 +340,7 @@ final class FolderSearchParams implements BaseModel
     public function withSort(array $sort): self
     {
         $obj = clone $this;
-        $obj->sort = $sort;
+        $obj['sort'] = $sort;
 
         return $obj;
     }
@@ -351,7 +351,7 @@ final class FolderSearchParams implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -362,7 +362,7 @@ final class FolderSearchParams implements BaseModel
     public function withUpdatedAtGte(\DateTimeInterface $updatedAtGte): self
     {
         $obj = clone $this;
-        $obj->updatedAtGte = $updatedAtGte;
+        $obj['updatedAtGte'] = $updatedAtGte;
 
         return $obj;
     }
@@ -373,7 +373,7 @@ final class FolderSearchParams implements BaseModel
     public function withUpdatedAtLte(\DateTimeInterface $updatedAtLte): self
     {
         $obj = clone $this;
-        $obj->updatedAtLte = $updatedAtLte;
+        $obj['updatedAtLte'] = $updatedAtLte;
 
         return $obj;
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
+use HubspotSDK\Cms\MediaBridge\EventVisibilityChange\EventType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -49,7 +50,13 @@ final class EventVisibilityResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<EventVisibilityChange> $visibilitySettings
+     * @param list<EventVisibilityChange|array{
+     *   eventType: value-of<EventType>,
+     *   updatedAt: int,
+     *   showInReporting?: bool|null,
+     *   showInTimeline?: bool|null,
+     *   showInWorkflows?: bool|null,
+     * }> $visibilitySettings
      */
     public static function with(
         \DateTimeInterface $createdAt,
@@ -57,8 +64,8 @@ final class EventVisibilityResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->createdAt = $createdAt;
-        $obj->visibilitySettings = $visibilitySettings;
+        $obj['createdAt'] = $createdAt;
+        $obj['visibilitySettings'] = $visibilitySettings;
 
         return $obj;
     }
@@ -66,18 +73,24 @@ final class EventVisibilityResponse implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
 
     /**
-     * @param list<EventVisibilityChange> $visibilitySettings
+     * @param list<EventVisibilityChange|array{
+     *   eventType: value-of<EventType>,
+     *   updatedAt: int,
+     *   showInReporting?: bool|null,
+     *   showInTimeline?: bool|null,
+     *   showInWorkflows?: bool|null,
+     * }> $visibilitySettings
      */
     public function withVisibilitySettings(array $visibilitySettings): self
     {
         $obj = clone $this;
-        $obj->visibilitySettings = $visibilitySettings;
+        $obj['visibilitySettings'] = $visibilitySettings;
 
         return $obj;
     }

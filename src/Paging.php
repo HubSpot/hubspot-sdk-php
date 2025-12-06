@@ -39,37 +39,44 @@ final class Paging implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param NextPage|array{after: string, link?: string|null} $next
+     * @param PreviousPage|array{before: string, link?: string|null} $prev
      */
     public static function with(
-        ?NextPage $next = null,
-        ?PreviousPage $prev = null
+        NextPage|array|null $next = null,
+        PreviousPage|array|null $prev = null
     ): self {
         $obj = new self;
 
-        null !== $next && $obj->next = $next;
-        null !== $prev && $obj->prev = $prev;
+        null !== $next && $obj['next'] = $next;
+        null !== $prev && $obj['prev'] = $prev;
 
         return $obj;
     }
 
     /**
      * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
+     *
+     * @param NextPage|array{after: string, link?: string|null} $next
      */
-    public function withNext(NextPage $next): self
+    public function withNext(NextPage|array $next): self
     {
         $obj = clone $this;
-        $obj->next = $next;
+        $obj['next'] = $next;
 
         return $obj;
     }
 
     /**
      * specifies the paging information needed to retrieve the previous set of results in a paginated API response.
+     *
+     * @param PreviousPage|array{before: string, link?: string|null} $prev
      */
-    public function withPrev(PreviousPage $prev): self
+    public function withPrev(PreviousPage|array $prev): self
     {
         $obj = clone $this;
-        $obj->prev = $prev;
+        $obj['prev'] = $prev;
 
         return $obj;
     }

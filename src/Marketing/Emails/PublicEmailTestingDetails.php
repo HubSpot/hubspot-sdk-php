@@ -115,10 +115,10 @@ final class PublicEmailTestingDetails implements BaseModel
         null !== $abSamplingDefault && $obj['abSamplingDefault'] = $abSamplingDefault;
         null !== $abStatus && $obj['abStatus'] = $abStatus;
         null !== $abSuccessMetric && $obj['abSuccessMetric'] = $abSuccessMetric;
-        null !== $abTestPercentage && $obj->abTestPercentage = $abTestPercentage;
-        null !== $hoursToWait && $obj->hoursToWait = $hoursToWait;
-        null !== $isAbVariation && $obj->isAbVariation = $isAbVariation;
-        null !== $testId && $obj->testId = $testId;
+        null !== $abTestPercentage && $obj['abTestPercentage'] = $abTestPercentage;
+        null !== $hoursToWait && $obj['hoursToWait'] = $hoursToWait;
+        null !== $isAbVariation && $obj['isAbVariation'] = $isAbVariation;
+        null !== $testId && $obj['testId'] = $testId;
 
         return $obj;
     }
@@ -184,7 +184,7 @@ final class PublicEmailTestingDetails implements BaseModel
     public function withAbTestPercentage(int $abTestPercentage): self
     {
         $obj = clone $this;
-        $obj->abTestPercentage = $abTestPercentage;
+        $obj['abTestPercentage'] = $abTestPercentage;
 
         return $obj;
     }
@@ -195,7 +195,7 @@ final class PublicEmailTestingDetails implements BaseModel
     public function withHoursToWait(int $hoursToWait): self
     {
         $obj = clone $this;
-        $obj->hoursToWait = $hoursToWait;
+        $obj['hoursToWait'] = $hoursToWait;
 
         return $obj;
     }
@@ -203,7 +203,7 @@ final class PublicEmailTestingDetails implements BaseModel
     public function withIsAbVariation(bool $isAbVariation): self
     {
         $obj = clone $this;
-        $obj->isAbVariation = $isAbVariation;
+        $obj['isAbVariation'] = $isAbVariation;
 
         return $obj;
     }
@@ -214,7 +214,7 @@ final class PublicEmailTestingDetails implements BaseModel
     public function withTestID(string $testID): self
     {
         $obj = clone $this;
-        $obj->testId = $testID;
+        $obj['testId'] = $testID;
 
         return $obj;
     }

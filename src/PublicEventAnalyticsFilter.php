@@ -8,6 +8,8 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicEventAnalyticsFilter\FilterType;
+use HubspotSDK\PublicNumOccurrencesRefineBy\Type;
+use HubspotSDK\PublicTimePointOperation\OperationType;
 
 /**
  * @phpstan-type PublicEventAnalyticsFilterShape = array{
@@ -67,22 +69,108 @@ final class PublicEventAnalyticsFilter implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FilterType|value-of<FilterType> $filterType
+     * @param PublicNumOccurrencesRefineBy|array{
+     *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
+     * }|PublicSetOccurrencesRefineBy|array{
+     *   setType: string, type: value-of<PublicSetOccurrencesRefineBy\Type>
+     * }|PublicRelativeComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timeOffset: PublicTimeOffset,
+     *   type: value-of<PublicRelativeComparativeTimestampRefineBy\Type>,
+     * }|PublicRelativeRangedTimestampRefineBy|array{
+     *   lowerBoundOffset: PublicTimeOffset,
+     *   rangeType: string,
+     *   type: value-of<PublicRelativeRangedTimestampRefineBy\Type>,
+     *   upperBoundOffset: PublicTimeOffset,
+     * }|PublicAbsoluteComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timestamp: int,
+     *   type: value-of<PublicAbsoluteComparativeTimestampRefineBy\Type>,
+     * }|PublicAbsoluteRangedTimestampRefineBy|array{
+     *   lowerTimestamp: int,
+     *   rangeType: string,
+     *   type: value-of<PublicAbsoluteRangedTimestampRefineBy\Type>,
+     *   upperTimestamp: int,
+     * }|PublicAllHistoryRefineBy|array{
+     *   type: value-of<PublicAllHistoryRefineBy\Type>
+     * }|PublicTimePointOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   operationType: value-of<OperationType>,
+     *   operator: string,
+     *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   type: string,
+     *   endpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     * }|PublicRangedTimeOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   operationType: string,
+     *   operator: string,
+     *   type: value-of<PublicRangedTimeOperation\Type>,
+     *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   lowerBoundEndpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     *   upperBoundEndpointBehavior?: string|null,
+     * } $coalescingRefineBy
+     * @param PublicNumOccurrencesRefineBy|array{
+     *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
+     * }|PublicSetOccurrencesRefineBy|array{
+     *   setType: string, type: value-of<PublicSetOccurrencesRefineBy\Type>
+     * }|PublicRelativeComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timeOffset: PublicTimeOffset,
+     *   type: value-of<PublicRelativeComparativeTimestampRefineBy\Type>,
+     * }|PublicRelativeRangedTimestampRefineBy|array{
+     *   lowerBoundOffset: PublicTimeOffset,
+     *   rangeType: string,
+     *   type: value-of<PublicRelativeRangedTimestampRefineBy\Type>,
+     *   upperBoundOffset: PublicTimeOffset,
+     * }|PublicAbsoluteComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timestamp: int,
+     *   type: value-of<PublicAbsoluteComparativeTimestampRefineBy\Type>,
+     * }|PublicAbsoluteRangedTimestampRefineBy|array{
+     *   lowerTimestamp: int,
+     *   rangeType: string,
+     *   type: value-of<PublicAbsoluteRangedTimestampRefineBy\Type>,
+     *   upperTimestamp: int,
+     * }|PublicAllHistoryRefineBy|array{
+     *   type: value-of<PublicAllHistoryRefineBy\Type>
+     * }|PublicTimePointOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   operationType: value-of<OperationType>,
+     *   operator: string,
+     *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   type: string,
+     *   endpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     * }|PublicRangedTimeOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   operationType: string,
+     *   operator: string,
+     *   type: value-of<PublicRangedTimeOperation\Type>,
+     *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   lowerBoundEndpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     *   upperBoundEndpointBehavior?: string|null,
+     * } $pruningRefineBy
      */
     public static function with(
         string $eventId,
         string $operator,
         FilterType|string $filterType = 'EVENT',
-        PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
-        PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
+        PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
+        PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
         $obj = new self;
 
-        $obj->eventId = $eventId;
+        $obj['eventId'] = $eventId;
         $obj['filterType'] = $filterType;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
-        null !== $coalescingRefineBy && $obj->coalescingRefineBy = $coalescingRefineBy;
-        null !== $pruningRefineBy && $obj->pruningRefineBy = $pruningRefineBy;
+        null !== $coalescingRefineBy && $obj['coalescingRefineBy'] = $coalescingRefineBy;
+        null !== $pruningRefineBy && $obj['pruningRefineBy'] = $pruningRefineBy;
 
         return $obj;
     }
@@ -90,7 +178,7 @@ final class PublicEventAnalyticsFilter implements BaseModel
     public function withEventID(string $eventID): self
     {
         $obj = clone $this;
-        $obj->eventId = $eventID;
+        $obj['eventId'] = $eventID;
 
         return $obj;
     }
@@ -109,25 +197,115 @@ final class PublicEventAnalyticsFilter implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
 
+    /**
+     * @param PublicNumOccurrencesRefineBy|array{
+     *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
+     * }|PublicSetOccurrencesRefineBy|array{
+     *   setType: string, type: value-of<PublicSetOccurrencesRefineBy\Type>
+     * }|PublicRelativeComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timeOffset: PublicTimeOffset,
+     *   type: value-of<PublicRelativeComparativeTimestampRefineBy\Type>,
+     * }|PublicRelativeRangedTimestampRefineBy|array{
+     *   lowerBoundOffset: PublicTimeOffset,
+     *   rangeType: string,
+     *   type: value-of<PublicRelativeRangedTimestampRefineBy\Type>,
+     *   upperBoundOffset: PublicTimeOffset,
+     * }|PublicAbsoluteComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timestamp: int,
+     *   type: value-of<PublicAbsoluteComparativeTimestampRefineBy\Type>,
+     * }|PublicAbsoluteRangedTimestampRefineBy|array{
+     *   lowerTimestamp: int,
+     *   rangeType: string,
+     *   type: value-of<PublicAbsoluteRangedTimestampRefineBy\Type>,
+     *   upperTimestamp: int,
+     * }|PublicAllHistoryRefineBy|array{
+     *   type: value-of<PublicAllHistoryRefineBy\Type>
+     * }|PublicTimePointOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   operationType: value-of<OperationType>,
+     *   operator: string,
+     *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   type: string,
+     *   endpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     * }|PublicRangedTimeOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   operationType: string,
+     *   operator: string,
+     *   type: value-of<PublicRangedTimeOperation\Type>,
+     *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   lowerBoundEndpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     *   upperBoundEndpointBehavior?: string|null,
+     * } $coalescingRefineBy
+     */
     public function withCoalescingRefineBy(
-        PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
+        PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
     ): self {
         $obj = clone $this;
-        $obj->coalescingRefineBy = $coalescingRefineBy;
+        $obj['coalescingRefineBy'] = $coalescingRefineBy;
 
         return $obj;
     }
 
+    /**
+     * @param PublicNumOccurrencesRefineBy|array{
+     *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
+     * }|PublicSetOccurrencesRefineBy|array{
+     *   setType: string, type: value-of<PublicSetOccurrencesRefineBy\Type>
+     * }|PublicRelativeComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timeOffset: PublicTimeOffset,
+     *   type: value-of<PublicRelativeComparativeTimestampRefineBy\Type>,
+     * }|PublicRelativeRangedTimestampRefineBy|array{
+     *   lowerBoundOffset: PublicTimeOffset,
+     *   rangeType: string,
+     *   type: value-of<PublicRelativeRangedTimestampRefineBy\Type>,
+     *   upperBoundOffset: PublicTimeOffset,
+     * }|PublicAbsoluteComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timestamp: int,
+     *   type: value-of<PublicAbsoluteComparativeTimestampRefineBy\Type>,
+     * }|PublicAbsoluteRangedTimestampRefineBy|array{
+     *   lowerTimestamp: int,
+     *   rangeType: string,
+     *   type: value-of<PublicAbsoluteRangedTimestampRefineBy\Type>,
+     *   upperTimestamp: int,
+     * }|PublicAllHistoryRefineBy|array{
+     *   type: value-of<PublicAllHistoryRefineBy\Type>
+     * }|PublicTimePointOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   operationType: value-of<OperationType>,
+     *   operator: string,
+     *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   type: string,
+     *   endpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     * }|PublicRangedTimeOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   operationType: string,
+     *   operator: string,
+     *   type: value-of<PublicRangedTimeOperation\Type>,
+     *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   lowerBoundEndpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     *   upperBoundEndpointBehavior?: string|null,
+     * } $pruningRefineBy
+     */
     public function withPruningRefineBy(
-        PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $pruningRefineBy,
+        PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $pruningRefineBy,
     ): self {
         $obj = clone $this;
-        $obj->pruningRefineBy = $pruningRefineBy;
+        $obj['pruningRefineBy'] = $pruningRefineBy;
 
         return $obj;
     }

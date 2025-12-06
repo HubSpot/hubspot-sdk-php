@@ -53,7 +53,7 @@ final class IntegratorSettingGetOembedDomainParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->appId = $appId;
+        $obj['appId'] = $appId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class IntegratorSettingGetOembedDomainParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }

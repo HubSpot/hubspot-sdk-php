@@ -10,6 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAssociationFilterBranch\Filter;
 use HubspotSDK\PublicAssociationFilterBranch\FilterBranch;
 use HubspotSDK\PublicAssociationFilterBranch\FilterBranchType;
+use HubspotSDK\PublicFormSubmissionFilter\Operator;
+use HubspotSDK\PublicPropertyFilter\FilterType;
 
 /**
  * @phpstan-type PublicAssociationFilterBranchShape = array{
@@ -99,7 +101,136 @@ final class PublicAssociationFilterBranch implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $filterBranches
-     * @param list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter> $filters
+     * @param list<PublicPropertyFilter|array{
+     *   filterType: value-of<FilterType>,
+     *   operation: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   property: string,
+     * }|PublicAssociationInListFilter|array{
+     *   associationCategory: string,
+     *   associationTypeId: int,
+     *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   filterType: value-of<PublicAssociationInListFilter\FilterType>,
+     *   listId: string,
+     *   operator: string,
+     *   toObjectType?: string|null,
+     *   toObjectTypeId?: string|null,
+     * }|PublicPageViewAnalyticsFilter|array{
+     *   filterType: value-of<PublicPageViewAnalyticsFilter\FilterType>,
+     *   operator: string,
+     *   pageUrl: string,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   enableTracking?: bool|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicCtaAnalyticsFilter|array{
+     *   ctaName: string,
+     *   filterType: value-of<PublicCtaAnalyticsFilter\FilterType>,
+     *   operator: string,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicEventAnalyticsFilter|array{
+     *   eventId: string,
+     *   filterType: value-of<PublicEventAnalyticsFilter\FilterType>,
+     *   operator: string,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicFormSubmissionFilter|array{
+     *   filterType: value-of<PublicFormSubmissionFilter\FilterType>,
+     *   operator: value-of<Operator>,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   formId?: string|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicFormSubmissionOnPageFilter|array{
+     *   filterType: value-of<PublicFormSubmissionOnPageFilter\FilterType>,
+     *   operator: value-of<PublicFormSubmissionOnPageFilter\Operator>,
+     *   pageId: string,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   formId?: string|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicIntegrationEventFilter|array{
+     *   eventTypeId: int,
+     *   filterLines: list<PublicEventFilterMetadata>,
+     *   filterType: value-of<PublicIntegrationEventFilter\FilterType>,
+     * }|PublicEmailSubscriptionFilter|array{
+     *   acceptedStatuses: list<string>,
+     *   filterType: value-of<PublicEmailSubscriptionFilter\FilterType>,
+     *   subscriptionIds: list<string>,
+     *   subscriptionType?: string|null,
+     * }|PublicCommunicationSubscriptionFilter|array{
+     *   acceptedOptStates: list<string>,
+     *   channel: string,
+     *   filterType: value-of<PublicCommunicationSubscriptionFilter\FilterType>,
+     *   subscriptionIds: list<string>,
+     *   subscriptionType: string,
+     *   businessUnitId?: string|null,
+     * }|PublicCampaignInfluencedFilter|array{
+     *   campaignId: string,
+     *   filterType: value-of<PublicCampaignInfluencedFilter\FilterType>,
+     * }|PublicSurveyMonkeyFilter|array{
+     *   filterType: value-of<PublicSurveyMonkeyFilter\FilterType>,
+     *   operator: string,
+     *   surveyId: string,
+     * }|PublicSurveyMonkeyValueFilter|array{
+     *   filterType: value-of<PublicSurveyMonkeyValueFilter\FilterType>,
+     *   operator: string,
+     *   surveyId: string,
+     *   surveyQuestion: string,
+     *   valueComparison: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   surveyAnswerColId?: string|null,
+     *   surveyAnswerRowId?: string|null,
+     * }|PublicWebinarFilter|array{
+     *   filterType: value-of<PublicWebinarFilter\FilterType>,
+     *   operator: string,
+     *   webinarId?: string|null,
+     * }|PublicEmailEventFilter|array{
+     *   appId: string,
+     *   emailId: string,
+     *   filterType: value-of<PublicEmailEventFilter\FilterType>,
+     *   level: string,
+     *   operator: value-of<PublicEmailEventFilter\Operator>,
+     *   clickUrl?: string|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicPrivacyAnalyticsFilter|array{
+     *   filterType: value-of<PublicPrivacyAnalyticsFilter\FilterType>,
+     *   operator: string,
+     *   privacyName: string,
+     * }|PublicAdsSearchFilter|array{
+     *   adNetwork: string,
+     *   entityType: string,
+     *   filterType: value-of<PublicAdsSearchFilter\FilterType>,
+     *   operator: string,
+     *   searchTerms: list<string>,
+     *   searchTermType: string,
+     * }|PublicAdsTimeFilter|array{
+     *   filterType: value-of<PublicAdsTimeFilter\FilterType>,
+     *   pruningRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+     * }|PublicInListFilter|array{
+     *   filterType: value-of<PublicInListFilter\FilterType>,
+     *   listId: string,
+     *   operator: string,
+     *   metadata?: PublicInListFilterMetadata|null,
+     * }|PublicNumAssociationsFilter|array{
+     *   associationCategory: string,
+     *   associationTypeId: int,
+     *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   filterType: value-of<PublicNumAssociationsFilter\FilterType>,
+     * }|PublicUnifiedEventsFilter|array{
+     *   filterLines: list<PublicEventFilterMetadata>,
+     *   filterType: value-of<PublicUnifiedEventsFilter\FilterType>,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   eventTypeId?: string|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicPropertyAssociationInListFilter|array{
+     *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   filterType: value-of<PublicPropertyAssociationInListFilter\FilterType>,
+     *   listId: string,
+     *   operator: string,
+     *   propertyWithObjectId: string,
+     *   toObjectTypeId?: string|null,
+     * }|PublicConstantFilter|array{
+     *   filterType: value-of<PublicConstantFilter\FilterType>,
+     *   shouldAccept: bool,
+     *   source?: string|null,
+     * }> $filters
      * @param FilterBranchType|value-of<FilterBranchType> $filterBranchType
      */
     public static function with(
@@ -114,14 +245,14 @@ final class PublicAssociationFilterBranch implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->associationCategory = $associationCategory;
-        $obj->associationTypeId = $associationTypeId;
-        $obj->filterBranches = $filterBranches;
-        $obj->filterBranchOperator = $filterBranchOperator;
+        $obj['associationCategory'] = $associationCategory;
+        $obj['associationTypeId'] = $associationTypeId;
+        $obj['filterBranches'] = $filterBranches;
+        $obj['filterBranchOperator'] = $filterBranchOperator;
         $obj['filterBranchType'] = $filterBranchType;
-        $obj->filters = $filters;
-        $obj->objectTypeId = $objectTypeId;
-        $obj->operator = $operator;
+        $obj['filters'] = $filters;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -129,7 +260,7 @@ final class PublicAssociationFilterBranch implements BaseModel
     public function withAssociationCategory(string $associationCategory): self
     {
         $obj = clone $this;
-        $obj->associationCategory = $associationCategory;
+        $obj['associationCategory'] = $associationCategory;
 
         return $obj;
     }
@@ -137,7 +268,7 @@ final class PublicAssociationFilterBranch implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj->associationTypeId = $associationTypeID;
+        $obj['associationTypeId'] = $associationTypeID;
 
         return $obj;
     }
@@ -148,7 +279,7 @@ final class PublicAssociationFilterBranch implements BaseModel
     public function withFilterBranches(array $filterBranches): self
     {
         $obj = clone $this;
-        $obj->filterBranches = $filterBranches;
+        $obj['filterBranches'] = $filterBranches;
 
         return $obj;
     }
@@ -156,7 +287,7 @@ final class PublicAssociationFilterBranch implements BaseModel
     public function withFilterBranchOperator(string $filterBranchOperator): self
     {
         $obj = clone $this;
-        $obj->filterBranchOperator = $filterBranchOperator;
+        $obj['filterBranchOperator'] = $filterBranchOperator;
 
         return $obj;
     }
@@ -174,12 +305,141 @@ final class PublicAssociationFilterBranch implements BaseModel
     }
 
     /**
-     * @param list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter> $filters
+     * @param list<PublicPropertyFilter|array{
+     *   filterType: value-of<FilterType>,
+     *   operation: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   property: string,
+     * }|PublicAssociationInListFilter|array{
+     *   associationCategory: string,
+     *   associationTypeId: int,
+     *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   filterType: value-of<PublicAssociationInListFilter\FilterType>,
+     *   listId: string,
+     *   operator: string,
+     *   toObjectType?: string|null,
+     *   toObjectTypeId?: string|null,
+     * }|PublicPageViewAnalyticsFilter|array{
+     *   filterType: value-of<PublicPageViewAnalyticsFilter\FilterType>,
+     *   operator: string,
+     *   pageUrl: string,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   enableTracking?: bool|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicCtaAnalyticsFilter|array{
+     *   ctaName: string,
+     *   filterType: value-of<PublicCtaAnalyticsFilter\FilterType>,
+     *   operator: string,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicEventAnalyticsFilter|array{
+     *   eventId: string,
+     *   filterType: value-of<PublicEventAnalyticsFilter\FilterType>,
+     *   operator: string,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicFormSubmissionFilter|array{
+     *   filterType: value-of<PublicFormSubmissionFilter\FilterType>,
+     *   operator: value-of<Operator>,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   formId?: string|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicFormSubmissionOnPageFilter|array{
+     *   filterType: value-of<PublicFormSubmissionOnPageFilter\FilterType>,
+     *   operator: value-of<PublicFormSubmissionOnPageFilter\Operator>,
+     *   pageId: string,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   formId?: string|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicIntegrationEventFilter|array{
+     *   eventTypeId: int,
+     *   filterLines: list<PublicEventFilterMetadata>,
+     *   filterType: value-of<PublicIntegrationEventFilter\FilterType>,
+     * }|PublicEmailSubscriptionFilter|array{
+     *   acceptedStatuses: list<string>,
+     *   filterType: value-of<PublicEmailSubscriptionFilter\FilterType>,
+     *   subscriptionIds: list<string>,
+     *   subscriptionType?: string|null,
+     * }|PublicCommunicationSubscriptionFilter|array{
+     *   acceptedOptStates: list<string>,
+     *   channel: string,
+     *   filterType: value-of<PublicCommunicationSubscriptionFilter\FilterType>,
+     *   subscriptionIds: list<string>,
+     *   subscriptionType: string,
+     *   businessUnitId?: string|null,
+     * }|PublicCampaignInfluencedFilter|array{
+     *   campaignId: string,
+     *   filterType: value-of<PublicCampaignInfluencedFilter\FilterType>,
+     * }|PublicSurveyMonkeyFilter|array{
+     *   filterType: value-of<PublicSurveyMonkeyFilter\FilterType>,
+     *   operator: string,
+     *   surveyId: string,
+     * }|PublicSurveyMonkeyValueFilter|array{
+     *   filterType: value-of<PublicSurveyMonkeyValueFilter\FilterType>,
+     *   operator: string,
+     *   surveyId: string,
+     *   surveyQuestion: string,
+     *   valueComparison: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   surveyAnswerColId?: string|null,
+     *   surveyAnswerRowId?: string|null,
+     * }|PublicWebinarFilter|array{
+     *   filterType: value-of<PublicWebinarFilter\FilterType>,
+     *   operator: string,
+     *   webinarId?: string|null,
+     * }|PublicEmailEventFilter|array{
+     *   appId: string,
+     *   emailId: string,
+     *   filterType: value-of<PublicEmailEventFilter\FilterType>,
+     *   level: string,
+     *   operator: value-of<PublicEmailEventFilter\Operator>,
+     *   clickUrl?: string|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicPrivacyAnalyticsFilter|array{
+     *   filterType: value-of<PublicPrivacyAnalyticsFilter\FilterType>,
+     *   operator: string,
+     *   privacyName: string,
+     * }|PublicAdsSearchFilter|array{
+     *   adNetwork: string,
+     *   entityType: string,
+     *   filterType: value-of<PublicAdsSearchFilter\FilterType>,
+     *   operator: string,
+     *   searchTerms: list<string>,
+     *   searchTermType: string,
+     * }|PublicAdsTimeFilter|array{
+     *   filterType: value-of<PublicAdsTimeFilter\FilterType>,
+     *   pruningRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+     * }|PublicInListFilter|array{
+     *   filterType: value-of<PublicInListFilter\FilterType>,
+     *   listId: string,
+     *   operator: string,
+     *   metadata?: PublicInListFilterMetadata|null,
+     * }|PublicNumAssociationsFilter|array{
+     *   associationCategory: string,
+     *   associationTypeId: int,
+     *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   filterType: value-of<PublicNumAssociationsFilter\FilterType>,
+     * }|PublicUnifiedEventsFilter|array{
+     *   filterLines: list<PublicEventFilterMetadata>,
+     *   filterType: value-of<PublicUnifiedEventsFilter\FilterType>,
+     *   coalescingRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     *   eventTypeId?: string|null,
+     *   pruningRefineBy?: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null,
+     * }|PublicPropertyAssociationInListFilter|array{
+     *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   filterType: value-of<PublicPropertyAssociationInListFilter\FilterType>,
+     *   listId: string,
+     *   operator: string,
+     *   propertyWithObjectId: string,
+     *   toObjectTypeId?: string|null,
+     * }|PublicConstantFilter|array{
+     *   filterType: value-of<PublicConstantFilter\FilterType>,
+     *   shouldAccept: bool,
+     *   source?: string|null,
+     * }> $filters
      */
     public function withFilters(array $filters): self
     {
         $obj = clone $this;
-        $obj->filters = $filters;
+        $obj['filters'] = $filters;
 
         return $obj;
     }
@@ -187,7 +447,7 @@ final class PublicAssociationFilterBranch implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -195,7 +455,7 @@ final class PublicAssociationFilterBranch implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }

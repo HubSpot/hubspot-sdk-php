@@ -36,7 +36,7 @@ final class Property implements BaseModel
     {
         $obj = new self;
 
-        null !== $_propname_ && $obj->_propname_ = $_propname_;
+        null !== $_propname_ && $obj['_propname_'] = $_propname_;
 
         return $obj;
     }
@@ -47,7 +47,7 @@ final class Property implements BaseModel
     public function withPropname(mixed $propname): self
     {
         $obj = clone $this;
-        $obj->_propname_ = $propname;
+        $obj['_propname_'] = $propname;
 
         return $obj;
     }

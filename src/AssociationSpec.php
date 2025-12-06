@@ -68,7 +68,7 @@ final class AssociationSpec implements BaseModel
         $obj = new self;
 
         $obj['associationCategory'] = $associationCategory;
-        $obj->associationTypeId = $associationTypeId;
+        $obj['associationTypeId'] = $associationTypeId;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class AssociationSpec implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj->associationTypeId = $associationTypeID;
+        $obj['associationTypeId'] = $associationTypeID;
 
         return $obj;
     }

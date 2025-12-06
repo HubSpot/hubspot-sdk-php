@@ -61,9 +61,9 @@ final class ScopeMapping implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->accessLevel = $accessLevel;
-        $obj->requestAction = $requestAction;
-        $obj->scopeName = $scopeName;
+        $obj['accessLevel'] = $accessLevel;
+        $obj['requestAction'] = $requestAction;
+        $obj['scopeName'] = $scopeName;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class ScopeMapping implements BaseModel
     public function withAccessLevel(string $accessLevel): self
     {
         $obj = clone $this;
-        $obj->accessLevel = $accessLevel;
+        $obj['accessLevel'] = $accessLevel;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class ScopeMapping implements BaseModel
     public function withRequestAction(string $requestAction): self
     {
         $obj = clone $this;
-        $obj->requestAction = $requestAction;
+        $obj['requestAction'] = $requestAction;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class ScopeMapping implements BaseModel
     public function withScopeName(string $scopeName): self
     {
         $obj = clone $this;
-        $obj->scopeName = $scopeName;
+        $obj['scopeName'] = $scopeName;
 
         return $obj;
     }

@@ -84,14 +84,14 @@ final class PublicYearReference implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->day = $day;
-        $obj->month = $month;
+        $obj['day'] = $day;
+        $obj['month'] = $month;
         $obj['referenceType'] = $referenceType;
 
-        null !== $hour && $obj->hour = $hour;
-        null !== $millisecond && $obj->millisecond = $millisecond;
-        null !== $minute && $obj->minute = $minute;
-        null !== $second && $obj->second = $second;
+        null !== $hour && $obj['hour'] = $hour;
+        null !== $millisecond && $obj['millisecond'] = $millisecond;
+        null !== $minute && $obj['minute'] = $minute;
+        null !== $second && $obj['second'] = $second;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class PublicYearReference implements BaseModel
     public function withDay(int $day): self
     {
         $obj = clone $this;
-        $obj->day = $day;
+        $obj['day'] = $day;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class PublicYearReference implements BaseModel
     public function withMonth(int $month): self
     {
         $obj = clone $this;
-        $obj->month = $month;
+        $obj['month'] = $month;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class PublicYearReference implements BaseModel
     public function withHour(int $hour): self
     {
         $obj = clone $this;
-        $obj->hour = $hour;
+        $obj['hour'] = $hour;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class PublicYearReference implements BaseModel
     public function withMillisecond(int $millisecond): self
     {
         $obj = clone $this;
-        $obj->millisecond = $millisecond;
+        $obj['millisecond'] = $millisecond;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class PublicYearReference implements BaseModel
     public function withMinute(int $minute): self
     {
         $obj = clone $this;
-        $obj->minute = $minute;
+        $obj['minute'] = $minute;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class PublicYearReference implements BaseModel
     public function withSecond(int $second): self
     {
         $obj = clone $this;
-        $obj->second = $second;
+        $obj['second'] = $second;
 
         return $obj;
     }

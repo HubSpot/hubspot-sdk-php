@@ -98,13 +98,13 @@ final class ValueWithTimestamp implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->sourceType = $sourceType;
-        $obj->timestamp = $timestamp;
-        $obj->value = $value;
+        $obj['sourceType'] = $sourceType;
+        $obj['timestamp'] = $timestamp;
+        $obj['value'] = $value;
 
-        null !== $sourceId && $obj->sourceId = $sourceId;
-        null !== $sourceLabel && $obj->sourceLabel = $sourceLabel;
-        null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
+        null !== $sourceId && $obj['sourceId'] = $sourceId;
+        null !== $sourceLabel && $obj['sourceLabel'] = $sourceLabel;
+        null !== $updatedByUserId && $obj['updatedByUserId'] = $updatedByUserId;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class ValueWithTimestamp implements BaseModel
     public function withSourceType(string $sourceType): self
     {
         $obj = clone $this;
-        $obj->sourceType = $sourceType;
+        $obj['sourceType'] = $sourceType;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class ValueWithTimestamp implements BaseModel
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -137,7 +137,7 @@ final class ValueWithTimestamp implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class ValueWithTimestamp implements BaseModel
     public function withSourceID(string $sourceID): self
     {
         $obj = clone $this;
-        $obj->sourceId = $sourceID;
+        $obj['sourceId'] = $sourceID;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class ValueWithTimestamp implements BaseModel
     public function withSourceLabel(string $sourceLabel): self
     {
         $obj = clone $this;
-        $obj->sourceLabel = $sourceLabel;
+        $obj['sourceLabel'] = $sourceLabel;
 
         return $obj;
     }
@@ -170,7 +170,7 @@ final class ValueWithTimestamp implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj->updatedByUserId = $updatedByUserID;
+        $obj['updatedByUserId'] = $updatedByUserID;
 
         return $obj;
     }

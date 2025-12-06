@@ -73,10 +73,10 @@ final class StatisticGetParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $emailIds && $obj->emailIds = $emailIds;
-        null !== $endTimestamp && $obj->endTimestamp = $endTimestamp;
-        null !== $property && $obj->property = $property;
-        null !== $startTimestamp && $obj->startTimestamp = $startTimestamp;
+        null !== $emailIds && $obj['emailIds'] = $emailIds;
+        null !== $endTimestamp && $obj['endTimestamp'] = $endTimestamp;
+        null !== $property && $obj['property'] = $property;
+        null !== $startTimestamp && $obj['startTimestamp'] = $startTimestamp;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class StatisticGetParams implements BaseModel
     public function withEmailIDs(array $emailIDs): self
     {
         $obj = clone $this;
-        $obj->emailIds = $emailIDs;
+        $obj['emailIds'] = $emailIDs;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class StatisticGetParams implements BaseModel
     public function withEndTimestamp(string $endTimestamp): self
     {
         $obj = clone $this;
-        $obj->endTimestamp = $endTimestamp;
+        $obj['endTimestamp'] = $endTimestamp;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class StatisticGetParams implements BaseModel
     public function withProperty(string $property): self
     {
         $obj = clone $this;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class StatisticGetParams implements BaseModel
     public function withStartTimestamp(string $startTimestamp): self
     {
         $obj = clone $this;
-        $obj->startTimestamp = $startTimestamp;
+        $obj['startTimestamp'] = $startTimestamp;
 
         return $obj;
     }

@@ -46,24 +46,40 @@ final class BatchedBehavioralEventHTTPCompletionRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BehavioralEventHTTPCompletionRequest> $inputs
+     * @param list<BehavioralEventHTTPCompletionRequest|array{
+     *   eventName: string,
+     *   properties: array<string,string>,
+     *   email?: string|null,
+     *   objectId?: string|null,
+     *   occurredAt?: \DateTimeInterface|null,
+     *   utk?: string|null,
+     *   uuid?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<BehavioralEventHTTPCompletionRequest> $inputs
+     * @param list<BehavioralEventHTTPCompletionRequest|array{
+     *   eventName: string,
+     *   properties: array<string,string>,
+     *   email?: string|null,
+     *   objectId?: string|null,
+     *   occurredAt?: \DateTimeInterface|null,
+     *   utk?: string|null,
+     *   uuid?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

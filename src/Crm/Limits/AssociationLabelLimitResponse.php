@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
+use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
  * @phpstan-type AssociationLabelLimitResponseShape = array{
@@ -100,23 +101,55 @@ final class AssociationLabelLimitResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $allLabels
+     * @param ObjectsSchemasObjectTypeDefinition|array{
+     *   id: string,
+     *   labels: ObjectTypeDefinitionLabels,
+     *   name: string,
+     *   requiredProperties: list<string>,
+     *   archived?: bool|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   description?: string|null,
+     *   fullyQualifiedName?: string|null,
+     *   objectTypeId?: string|null,
+     *   portalId?: int|null,
+     *   primaryDisplayProperty?: string|null,
+     *   searchableProperties?: list<string>|null,
+     *   secondaryDisplayProperties?: list<string>|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * } $fromObjectType
+     * @param ObjectsSchemasObjectTypeDefinition|array{
+     *   id: string,
+     *   labels: ObjectTypeDefinitionLabels,
+     *   name: string,
+     *   requiredProperties: list<string>,
+     *   archived?: bool|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   description?: string|null,
+     *   fullyQualifiedName?: string|null,
+     *   objectTypeId?: string|null,
+     *   portalId?: int|null,
+     *   primaryDisplayProperty?: string|null,
+     *   searchableProperties?: list<string>|null,
+     *   secondaryDisplayProperties?: list<string>|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * } $toObjectType
      */
     public static function with(
         array $allLabels,
-        ObjectsSchemasObjectTypeDefinition $fromObjectType,
+        ObjectsSchemasObjectTypeDefinition|array $fromObjectType,
         int $limit,
         float $percentage,
-        ObjectsSchemasObjectTypeDefinition $toObjectType,
+        ObjectsSchemasObjectTypeDefinition|array $toObjectType,
         int $usage,
     ): self {
         $obj = new self;
 
-        $obj->allLabels = $allLabels;
-        $obj->fromObjectType = $fromObjectType;
-        $obj->limit = $limit;
-        $obj->percentage = $percentage;
-        $obj->toObjectType = $toObjectType;
-        $obj->usage = $usage;
+        $obj['allLabels'] = $allLabels;
+        $obj['fromObjectType'] = $fromObjectType;
+        $obj['limit'] = $limit;
+        $obj['percentage'] = $percentage;
+        $obj['toObjectType'] = $toObjectType;
+        $obj['usage'] = $usage;
 
         return $obj;
     }
@@ -129,19 +162,36 @@ final class AssociationLabelLimitResponse implements BaseModel
     public function withAllLabels(array $allLabels): self
     {
         $obj = clone $this;
-        $obj->allLabels = $allLabels;
+        $obj['allLabels'] = $allLabels;
 
         return $obj;
     }
 
     /**
      * Defines an object type.
+     *
+     * @param ObjectsSchemasObjectTypeDefinition|array{
+     *   id: string,
+     *   labels: ObjectTypeDefinitionLabels,
+     *   name: string,
+     *   requiredProperties: list<string>,
+     *   archived?: bool|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   description?: string|null,
+     *   fullyQualifiedName?: string|null,
+     *   objectTypeId?: string|null,
+     *   portalId?: int|null,
+     *   primaryDisplayProperty?: string|null,
+     *   searchableProperties?: list<string>|null,
+     *   secondaryDisplayProperties?: list<string>|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * } $fromObjectType
      */
     public function withFromObjectType(
-        ObjectsSchemasObjectTypeDefinition $fromObjectType
+        ObjectsSchemasObjectTypeDefinition|array $fromObjectType
     ): self {
         $obj = clone $this;
-        $obj->fromObjectType = $fromObjectType;
+        $obj['fromObjectType'] = $fromObjectType;
 
         return $obj;
     }
@@ -152,7 +202,7 @@ final class AssociationLabelLimitResponse implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -163,19 +213,36 @@ final class AssociationLabelLimitResponse implements BaseModel
     public function withPercentage(float $percentage): self
     {
         $obj = clone $this;
-        $obj->percentage = $percentage;
+        $obj['percentage'] = $percentage;
 
         return $obj;
     }
 
     /**
      * Defines an object type.
+     *
+     * @param ObjectsSchemasObjectTypeDefinition|array{
+     *   id: string,
+     *   labels: ObjectTypeDefinitionLabels,
+     *   name: string,
+     *   requiredProperties: list<string>,
+     *   archived?: bool|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   description?: string|null,
+     *   fullyQualifiedName?: string|null,
+     *   objectTypeId?: string|null,
+     *   portalId?: int|null,
+     *   primaryDisplayProperty?: string|null,
+     *   searchableProperties?: list<string>|null,
+     *   secondaryDisplayProperties?: list<string>|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * } $toObjectType
      */
     public function withToObjectType(
-        ObjectsSchemasObjectTypeDefinition $toObjectType
+        ObjectsSchemasObjectTypeDefinition|array $toObjectType
     ): self {
         $obj = clone $this;
-        $obj->toObjectType = $toObjectType;
+        $obj['toObjectType'] = $toObjectType;
 
         return $obj;
     }
@@ -186,7 +253,7 @@ final class AssociationLabelLimitResponse implements BaseModel
     public function withUsage(int $usage): self
     {
         $obj = clone $this;
-        $obj->usage = $usage;
+        $obj['usage'] = $usage;
 
         return $obj;
     }

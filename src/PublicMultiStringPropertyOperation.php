@@ -80,10 +80,10 @@ final class PublicMultiStringPropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
         $obj['operationType'] = $operationType;
-        $obj->operator = $operator;
-        $obj->values = $values;
+        $obj['operator'] = $operator;
+        $obj['values'] = $values;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class PublicMultiStringPropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class PublicMultiStringPropertyOperation implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class PublicMultiStringPropertyOperation implements BaseModel
     public function withValues(array $values): self
     {
         $obj = clone $this;
-        $obj->values = $values;
+        $obj['values'] = $values;
 
         return $obj;
     }

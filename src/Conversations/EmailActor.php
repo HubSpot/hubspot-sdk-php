@@ -62,8 +62,8 @@ final class EmailActor implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->email = $email;
+        $obj['id'] = $id;
+        $obj['email'] = $email;
         $obj['type'] = $type;
 
         return $obj;
@@ -72,7 +72,7 @@ final class EmailActor implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class EmailActor implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }

@@ -58,9 +58,9 @@ final class BreakpointStyles implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->hidden = $hidden;
-        $obj->margin = $margin;
-        $obj->padding = $padding;
+        $obj['hidden'] = $hidden;
+        $obj['margin'] = $margin;
+        $obj['padding'] = $padding;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class BreakpointStyles implements BaseModel
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
-        $obj->hidden = $hidden;
+        $obj['hidden'] = $hidden;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class BreakpointStyles implements BaseModel
     public function withMargin(mixed $margin): self
     {
         $obj = clone $this;
-        $obj->margin = $margin;
+        $obj['margin'] = $margin;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class BreakpointStyles implements BaseModel
     public function withPadding(mixed $padding): self
     {
         $obj = clone $this;
-        $obj->padding = $padding;
+        $obj['padding'] = $padding;
 
         return $obj;
     }

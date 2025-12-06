@@ -73,13 +73,13 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        null !== $accessToken && $obj->accessToken = $accessToken;
-        null !== $expiresIn && $obj->expiresIn = $expiresIn;
-        null !== $hubId && $obj->hubId = $hubId;
-        null !== $idToken && $obj->idToken = $idToken;
-        null !== $scopes && $obj->scopes = $scopes;
-        null !== $tokenType && $obj->tokenType = $tokenType;
-        null !== $userId && $obj->userId = $userId;
+        null !== $accessToken && $obj['accessToken'] = $accessToken;
+        null !== $expiresIn && $obj['expiresIn'] = $expiresIn;
+        null !== $hubId && $obj['hubId'] = $hubId;
+        null !== $idToken && $obj['idToken'] = $idToken;
+        null !== $scopes && $obj['scopes'] = $scopes;
+        null !== $tokenType && $obj['tokenType'] = $tokenType;
+        null !== $userId && $obj['userId'] = $userId;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withAccessToken(string $accessToken): self
     {
         $obj = clone $this;
-        $obj->accessToken = $accessToken;
+        $obj['accessToken'] = $accessToken;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withExpiresIn(int $expiresIn): self
     {
         $obj = clone $this;
-        $obj->expiresIn = $expiresIn;
+        $obj['expiresIn'] = $expiresIn;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withHubID(int $hubID): self
     {
         $obj = clone $this;
-        $obj->hubId = $hubID;
+        $obj['hubId'] = $hubID;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withIDToken(string $idToken): self
     {
         $obj = clone $this;
-        $obj->idToken = $idToken;
+        $obj['idToken'] = $idToken;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withScopes(array $scopes): self
     {
         $obj = clone $this;
-        $obj->scopes = $scopes;
+        $obj['scopes'] = $scopes;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withTokenType(string $tokenType): self
     {
         $obj = clone $this;
-        $obj->tokenType = $tokenType;
+        $obj['tokenType'] = $tokenType;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class TokenResponseIf implements BaseModel, ResponseConverter
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }

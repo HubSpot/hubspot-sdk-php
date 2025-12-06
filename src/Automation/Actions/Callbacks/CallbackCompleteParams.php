@@ -58,7 +58,7 @@ final class CallbackCompleteParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->outputFields = $outputFields;
+        $obj['outputFields'] = $outputFields;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class CallbackCompleteParams implements BaseModel
     public function withOutputFields(array $outputFields): self
     {
         $obj = clone $this;
-        $obj->outputFields = $outputFields;
+        $obj['outputFields'] = $outputFields;
 
         return $obj;
     }

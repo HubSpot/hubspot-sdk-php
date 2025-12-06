@@ -47,16 +47,18 @@ final class APIStaticBranch implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
      */
     public static function with(
         string $branchValue,
-        ?APIConnection $connection = null
+        APIConnection|array|null $connection = null
     ): self {
         $obj = new self;
 
-        $obj->branchValue = $branchValue;
+        $obj['branchValue'] = $branchValue;
 
-        null !== $connection && $obj->connection = $connection;
+        null !== $connection && $obj['connection'] = $connection;
 
         return $obj;
     }
@@ -64,15 +66,18 @@ final class APIStaticBranch implements BaseModel
     public function withBranchValue(string $branchValue): self
     {
         $obj = clone $this;
-        $obj->branchValue = $branchValue;
+        $obj['branchValue'] = $branchValue;
 
         return $obj;
     }
 
-    public function withConnection(APIConnection $connection): self
+    /**
+     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     */
+    public function withConnection(APIConnection|array $connection): self
     {
         $obj = clone $this;
-        $obj->connection = $connection;
+        $obj['connection'] = $connection;
 
         return $obj;
     }

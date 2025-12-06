@@ -58,7 +58,7 @@ final class APIStaticValue implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->staticValue = $staticValue;
+        $obj['staticValue'] = $staticValue;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APIStaticValue implements BaseModel
     public function withStaticValue(string $staticValue): self
     {
         $obj = clone $this;
-        $obj->staticValue = $staticValue;
+        $obj['staticValue'] = $staticValue;
 
         return $obj;
     }

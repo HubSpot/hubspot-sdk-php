@@ -55,9 +55,9 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $logoAltText && $obj->logoAltText = $logoAltText;
-        null !== $logoUrl && $obj->logoUrl = $logoUrl;
-        null !== $resizedUrl && $obj->resizedUrl = $resizedUrl;
+        null !== $logoAltText && $obj['logoAltText'] = $logoAltText;
+        null !== $logoUrl && $obj['logoUrl'] = $logoUrl;
+        null !== $resizedUrl && $obj['resizedUrl'] = $resizedUrl;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
     public function withLogoAltText(string $logoAltText): self
     {
         $obj = clone $this;
-        $obj->logoAltText = $logoAltText;
+        $obj['logoAltText'] = $logoAltText;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
     public function withLogoURL(string $logoURL): self
     {
         $obj = clone $this;
-        $obj->logoUrl = $logoURL;
+        $obj['logoUrl'] = $logoURL;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
     public function withResizedURL(string $resizedURL): self
     {
         $obj = clone $this;
-        $obj->resizedUrl = $resizedURL;
+        $obj['resizedUrl'] = $resizedURL;
 
         return $obj;
     }

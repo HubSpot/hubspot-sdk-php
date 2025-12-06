@@ -58,8 +58,8 @@ final class StageGetAuditParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->objectType = $objectType;
-        $obj->pipelineId = $pipelineId;
+        $obj['objectType'] = $objectType;
+        $obj['pipelineId'] = $pipelineId;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class StageGetAuditParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class StageGetAuditParams implements BaseModel
     public function withPipelineID(string $pipelineID): self
     {
         $obj = clone $this;
-        $obj->pipelineId = $pipelineID;
+        $obj['pipelineId'] = $pipelineID;
 
         return $obj;
     }

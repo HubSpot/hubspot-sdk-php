@@ -105,13 +105,13 @@ final class PublicSingleSendEmail implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->to = $to;
+        $obj['to'] = $to;
 
-        null !== $bcc && $obj->bcc = $bcc;
-        null !== $cc && $obj->cc = $cc;
-        null !== $from && $obj->from = $from;
-        null !== $replyTo && $obj->replyTo = $replyTo;
-        null !== $sendId && $obj->sendId = $sendId;
+        null !== $bcc && $obj['bcc'] = $bcc;
+        null !== $cc && $obj['cc'] = $cc;
+        null !== $from && $obj['from'] = $from;
+        null !== $replyTo && $obj['replyTo'] = $replyTo;
+        null !== $sendId && $obj['sendId'] = $sendId;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class PublicSingleSendEmail implements BaseModel
     public function withTo(string $to): self
     {
         $obj = clone $this;
-        $obj->to = $to;
+        $obj['to'] = $to;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class PublicSingleSendEmail implements BaseModel
     public function withBcc(array $bcc): self
     {
         $obj = clone $this;
-        $obj->bcc = $bcc;
+        $obj['bcc'] = $bcc;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class PublicSingleSendEmail implements BaseModel
     public function withCc(array $cc): self
     {
         $obj = clone $this;
-        $obj->cc = $cc;
+        $obj['cc'] = $cc;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class PublicSingleSendEmail implements BaseModel
     public function withFrom(string $from): self
     {
         $obj = clone $this;
-        $obj->from = $from;
+        $obj['from'] = $from;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class PublicSingleSendEmail implements BaseModel
     public function withReplyTo(array $replyTo): self
     {
         $obj = clone $this;
-        $obj->replyTo = $replyTo;
+        $obj['replyTo'] = $replyTo;
 
         return $obj;
     }
@@ -183,7 +183,7 @@ final class PublicSingleSendEmail implements BaseModel
     public function withSendID(string $sendID): self
     {
         $obj = clone $this;
-        $obj->sendId = $sendID;
+        $obj['sendId'] = $sendID;
 
         return $obj;
     }

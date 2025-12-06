@@ -58,9 +58,9 @@ final class NextPage implements BaseModel
     {
         $obj = new self;
 
-        $obj->after = $after;
+        $obj['after'] = $after;
 
-        null !== $link && $obj->link = $link;
+        null !== $link && $obj['link'] = $link;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class NextPage implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class NextPage implements BaseModel
     public function withLink(string $link): self
     {
         $obj = clone $this;
-        $obj->link = $link;
+        $obj['link'] = $link;
 
         return $obj;
     }

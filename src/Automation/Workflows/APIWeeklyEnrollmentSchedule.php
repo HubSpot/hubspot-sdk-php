@@ -61,17 +61,18 @@ final class APIWeeklyEnrollmentSchedule implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<DaysOfWeek|value-of<DaysOfWeek>> $daysOfWeek
+     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
      * @param Type|value-of<Type> $type
      */
     public static function with(
         array $daysOfWeek,
-        APITimeOfDay $timeOfDay,
-        Type|string $type = 'WEEKLY'
+        APITimeOfDay|array $timeOfDay,
+        Type|string $type = 'WEEKLY',
     ): self {
         $obj = new self;
 
         $obj['daysOfWeek'] = $daysOfWeek;
-        $obj->timeOfDay = $timeOfDay;
+        $obj['timeOfDay'] = $timeOfDay;
         $obj['type'] = $type;
 
         return $obj;
@@ -88,10 +89,13 @@ final class APIWeeklyEnrollmentSchedule implements BaseModel
         return $obj;
     }
 
-    public function withTimeOfDay(APITimeOfDay $timeOfDay): self
+    /**
+     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
+     */
+    public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
         $obj = clone $this;
-        $obj->timeOfDay = $timeOfDay;
+        $obj['timeOfDay'] = $timeOfDay;
 
         return $obj;
     }

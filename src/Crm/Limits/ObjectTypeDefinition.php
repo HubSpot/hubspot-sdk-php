@@ -72,9 +72,9 @@ final class ObjectTypeDefinition implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->objectTypeId = $objectTypeId;
-        $obj->pluralLabel = $pluralLabel;
-        $obj->singularLabel = $singularLabel;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['pluralLabel'] = $pluralLabel;
+        $obj['singularLabel'] = $singularLabel;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withPluralLabel(string $pluralLabel): self
     {
         $obj = clone $this;
-        $obj->pluralLabel = $pluralLabel;
+        $obj['pluralLabel'] = $pluralLabel;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withSingularLabel(string $singularLabel): self
     {
         $obj = clone $this;
-        $obj->singularLabel = $singularLabel;
+        $obj['singularLabel'] = $singularLabel;
 
         return $obj;
     }

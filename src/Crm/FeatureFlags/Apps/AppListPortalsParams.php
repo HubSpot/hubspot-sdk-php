@@ -70,10 +70,10 @@ final class AppListPortalsParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
+        $obj['appId'] = $appId;
 
-        null !== $limit && $obj->limit = $limit;
-        null !== $startPortalId && $obj->startPortalId = $startPortalId;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $startPortalId && $obj['startPortalId'] = $startPortalId;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class AppListPortalsParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class AppListPortalsParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class AppListPortalsParams implements BaseModel
     public function withStartPortalID(int $startPortalID): self
     {
         $obj = clone $this;
-        $obj->startPortalId = $startPortalID;
+        $obj['startPortalId'] = $startPortalID;
 
         return $obj;
     }

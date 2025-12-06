@@ -59,9 +59,9 @@ final class TaxRateListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $active && $obj->active = $active;
-        null !== $after && $obj->after = $after;
-        null !== $limit && $obj->limit = $limit;
+        null !== $active && $obj['active'] = $active;
+        null !== $after && $obj['after'] = $after;
+        null !== $limit && $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class TaxRateListParams implements BaseModel
     public function withActive(bool $active): self
     {
         $obj = clone $this;
-        $obj->active = $active;
+        $obj['active'] = $active;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class TaxRateListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class TaxRateListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }

@@ -62,19 +62,35 @@ final class PublicActionRevision implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicActionDefinition|array{
+     *   id: string,
+     *   actionUrl: string,
+     *   functions: list<PublicActionFunctionIdentifier>,
+     *   inputFields: list<InputFieldDefinition>,
+     *   labels: array<string,PublicActionLabels>,
+     *   objectTypes: list<string>,
+     *   published: bool,
+     *   revisionId: string,
+     *   archivedAt?: int|null,
+     *   executionRules?: list<PublicExecutionTranslationRule>|null,
+     *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
+     *   objectRequestOptions?: PublicObjectRequestOptions|null,
+     *   outputFields?: list<OutputFieldDefinition>|null,
+     * } $definition
      */
     public static function with(
         string $id,
         \DateTimeInterface $createdAt,
-        PublicActionDefinition $definition,
+        PublicActionDefinition|array $definition,
         string $revisionId,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->definition = $definition;
-        $obj->revisionId = $revisionId;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['definition'] = $definition;
+        $obj['revisionId'] = $revisionId;
 
         return $obj;
     }
@@ -82,7 +98,7 @@ final class PublicActionRevision implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -90,15 +106,33 @@ final class PublicActionRevision implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
 
-    public function withDefinition(PublicActionDefinition $definition): self
-    {
+    /**
+     * @param PublicActionDefinition|array{
+     *   id: string,
+     *   actionUrl: string,
+     *   functions: list<PublicActionFunctionIdentifier>,
+     *   inputFields: list<InputFieldDefinition>,
+     *   labels: array<string,PublicActionLabels>,
+     *   objectTypes: list<string>,
+     *   published: bool,
+     *   revisionId: string,
+     *   archivedAt?: int|null,
+     *   executionRules?: list<PublicExecutionTranslationRule>|null,
+     *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
+     *   objectRequestOptions?: PublicObjectRequestOptions|null,
+     *   outputFields?: list<OutputFieldDefinition>|null,
+     * } $definition
+     */
+    public function withDefinition(
+        PublicActionDefinition|array $definition
+    ): self {
         $obj = clone $this;
-        $obj->definition = $definition;
+        $obj['definition'] = $definition;
 
         return $obj;
     }
@@ -106,7 +140,7 @@ final class PublicActionRevision implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj->revisionId = $revisionID;
+        $obj['revisionId'] = $revisionID;
 
         return $obj;
     }

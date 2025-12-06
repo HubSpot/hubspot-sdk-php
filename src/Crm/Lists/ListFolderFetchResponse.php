@@ -42,20 +42,45 @@ final class ListFolderFetchResponse implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicListFolder|array{
+     *   id: string,
+     *   childLists: list<int>,
+     *   childNodes: list<mixed>,
+     *   parentFolderId: string,
+     *   createdAt?: \DateTimeInterface|null,
+     *   name?: string|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedContentsAt?: \DateTimeInterface|null,
+     *   userId?: int|null,
+     * } $folder
      */
-    public static function with(PublicListFolder $folder): self
+    public static function with(PublicListFolder|array $folder): self
     {
         $obj = new self;
 
-        $obj->folder = $folder;
+        $obj['folder'] = $folder;
 
         return $obj;
     }
 
-    public function withFolder(PublicListFolder $folder): self
+    /**
+     * @param PublicListFolder|array{
+     *   id: string,
+     *   childLists: list<int>,
+     *   childNodes: list<mixed>,
+     *   parentFolderId: string,
+     *   createdAt?: \DateTimeInterface|null,
+     *   name?: string|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedContentsAt?: \DateTimeInterface|null,
+     *   userId?: int|null,
+     * } $folder
+     */
+    public function withFolder(PublicListFolder|array $folder): self
     {
         $obj = clone $this;
-        $obj->folder = $folder;
+        $obj['folder'] = $folder;
 
         return $obj;
     }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\SiteSearch;
 
+use HubspotSDK\Cms\SiteSearch\ContentSearchResult\Language;
+use HubspotSDK\Cms\SiteSearch\ContentSearchResult\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
@@ -77,7 +79,25 @@ final class PublicSearchResults implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentSearchResult> $results
+     * @param list<ContentSearchResult|array{
+     *   id: int,
+     *   domain: string,
+     *   score: float,
+     *   type: value-of<Type>,
+     *   url: string,
+     *   authorFullName?: string|null,
+     *   category?: string|null,
+     *   combinedId?: string|null,
+     *   description?: string|null,
+     *   featuredImageUrl?: string|null,
+     *   language?: value-of<Language>|null,
+     *   publishedDate?: int|null,
+     *   rowId?: int|null,
+     *   subcategory?: string|null,
+     *   tableId?: int|null,
+     *   tags?: list<string>|null,
+     *   title?: string|null,
+     * }> $results
      */
     public static function with(
         int $limit,
@@ -89,13 +109,13 @@ final class PublicSearchResults implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->limit = $limit;
-        $obj->offset = $offset;
-        $obj->page = $page;
-        $obj->results = $results;
-        $obj->total = $total;
+        $obj['limit'] = $limit;
+        $obj['offset'] = $offset;
+        $obj['page'] = $page;
+        $obj['results'] = $results;
+        $obj['total'] = $total;
 
-        null !== $searchTerm && $obj->searchTerm = $searchTerm;
+        null !== $searchTerm && $obj['searchTerm'] = $searchTerm;
 
         return $obj;
     }
@@ -103,7 +123,7 @@ final class PublicSearchResults implements BaseModel, ResponseConverter
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -111,7 +131,7 @@ final class PublicSearchResults implements BaseModel, ResponseConverter
     public function withOffset(int $offset): self
     {
         $obj = clone $this;
-        $obj->offset = $offset;
+        $obj['offset'] = $offset;
 
         return $obj;
     }
@@ -119,18 +139,36 @@ final class PublicSearchResults implements BaseModel, ResponseConverter
     public function withPage(int $page): self
     {
         $obj = clone $this;
-        $obj->page = $page;
+        $obj['page'] = $page;
 
         return $obj;
     }
 
     /**
-     * @param list<ContentSearchResult> $results
+     * @param list<ContentSearchResult|array{
+     *   id: int,
+     *   domain: string,
+     *   score: float,
+     *   type: value-of<Type>,
+     *   url: string,
+     *   authorFullName?: string|null,
+     *   category?: string|null,
+     *   combinedId?: string|null,
+     *   description?: string|null,
+     *   featuredImageUrl?: string|null,
+     *   language?: value-of<Language>|null,
+     *   publishedDate?: int|null,
+     *   rowId?: int|null,
+     *   subcategory?: string|null,
+     *   tableId?: int|null,
+     *   tags?: list<string>|null,
+     *   title?: string|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -138,7 +176,7 @@ final class PublicSearchResults implements BaseModel, ResponseConverter
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }
@@ -146,7 +184,7 @@ final class PublicSearchResults implements BaseModel, ResponseConverter
     public function withSearchTerm(string $searchTerm): self
     {
         $obj = clone $this;
-        $obj->searchTerm = $searchTerm;
+        $obj['searchTerm'] = $searchTerm;
 
         return $obj;
     }

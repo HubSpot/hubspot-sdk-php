@@ -56,7 +56,7 @@ final class PublicPropertyValidationRuleUpdate implements BaseModel
     {
         $obj = new self;
 
-        $obj->ruleArguments = $ruleArguments;
+        $obj['ruleArguments'] = $ruleArguments;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class PublicPropertyValidationRuleUpdate implements BaseModel
     public function withRuleArguments(array $ruleArguments): self
     {
         $obj = clone $this;
-        $obj->ruleArguments = $ruleArguments;
+        $obj['ruleArguments'] = $ruleArguments;
 
         return $obj;
     }

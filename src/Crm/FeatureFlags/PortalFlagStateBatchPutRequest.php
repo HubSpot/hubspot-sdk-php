@@ -7,6 +7,7 @@ namespace HubspotSDK\Crm\FeatureFlags;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState;
 
 /**
  * @phpstan-type PortalFlagStateBatchPutRequestShape = array{
@@ -46,24 +47,28 @@ final class PortalFlagStateBatchPutRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BatchPortalEntry> $portalStates
+     * @param list<BatchPortalEntry|array{
+     *   flagState: value-of<FlagState>, portalId: int
+     * }> $portalStates
      */
     public static function with(array $portalStates): self
     {
         $obj = new self;
 
-        $obj->portalStates = $portalStates;
+        $obj['portalStates'] = $portalStates;
 
         return $obj;
     }
 
     /**
-     * @param list<BatchPortalEntry> $portalStates
+     * @param list<BatchPortalEntry|array{
+     *   flagState: value-of<FlagState>, portalId: int
+     * }> $portalStates
      */
     public function withPortalStates(array $portalStates): self
     {
         $obj = clone $this;
-        $obj->portalStates = $portalStates;
+        $obj['portalStates'] = $portalStates;
 
         return $obj;
     }

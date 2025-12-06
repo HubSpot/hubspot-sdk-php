@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm\Associations\V4;
 
 use HubspotSDK\AssociationSpec;
+use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -54,45 +55,57 @@ final class PublicAssociationMultiPost implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationSpec> $types
+     * @param PublicObjectID|array{id: string} $from
+     * @param PublicObjectID|array{id: string} $to
+     * @param list<AssociationSpec|array{
+     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     * }> $types
      */
     public static function with(
-        PublicObjectID $from,
-        PublicObjectID $to,
+        PublicObjectID|array $from,
+        PublicObjectID|array $to,
         array $types
     ): self {
         $obj = new self;
 
-        $obj->from = $from;
-        $obj->to = $to;
-        $obj->types = $types;
-
-        return $obj;
-    }
-
-    public function withFrom(PublicObjectID $from): self
-    {
-        $obj = clone $this;
-        $obj->from = $from;
-
-        return $obj;
-    }
-
-    public function withTo(PublicObjectID $to): self
-    {
-        $obj = clone $this;
-        $obj->to = $to;
+        $obj['from'] = $from;
+        $obj['to'] = $to;
+        $obj['types'] = $types;
 
         return $obj;
     }
 
     /**
-     * @param list<AssociationSpec> $types
+     * @param PublicObjectID|array{id: string} $from
+     */
+    public function withFrom(PublicObjectID|array $from): self
+    {
+        $obj = clone $this;
+        $obj['from'] = $from;
+
+        return $obj;
+    }
+
+    /**
+     * @param PublicObjectID|array{id: string} $to
+     */
+    public function withTo(PublicObjectID|array $to): self
+    {
+        $obj = clone $this;
+        $obj['to'] = $to;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<AssociationSpec|array{
+     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     * }> $types
      */
     public function withTypes(array $types): self
     {
         $obj = clone $this;
-        $obj->types = $types;
+        $obj['types'] = $types;
 
         return $obj;
     }

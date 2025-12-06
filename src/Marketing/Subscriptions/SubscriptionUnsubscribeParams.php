@@ -90,11 +90,11 @@ final class SubscriptionUnsubscribeParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->emailAddress = $emailAddress;
-        $obj->subscriptionId = $subscriptionId;
+        $obj['emailAddress'] = $emailAddress;
+        $obj['subscriptionId'] = $subscriptionId;
 
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
-        null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
+        null !== $legalBasisExplanation && $obj['legalBasisExplanation'] = $legalBasisExplanation;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class SubscriptionUnsubscribeParams implements BaseModel
     public function withEmailAddress(string $emailAddress): self
     {
         $obj = clone $this;
-        $obj->emailAddress = $emailAddress;
+        $obj['emailAddress'] = $emailAddress;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class SubscriptionUnsubscribeParams implements BaseModel
     public function withSubscriptionID(string $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionId = $subscriptionID;
+        $obj['subscriptionId'] = $subscriptionID;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class SubscriptionUnsubscribeParams implements BaseModel
         string $legalBasisExplanation
     ): self {
         $obj = clone $this;
-        $obj->legalBasisExplanation = $legalBasisExplanation;
+        $obj['legalBasisExplanation'] = $legalBasisExplanation;
 
         return $obj;
     }

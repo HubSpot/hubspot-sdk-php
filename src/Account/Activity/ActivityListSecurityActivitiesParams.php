@@ -77,11 +77,11 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $fromTimestamp && $obj->fromTimestamp = $fromTimestamp;
-        null !== $limit && $obj->limit = $limit;
-        null !== $toTimestamp && $obj->toTimestamp = $toTimestamp;
-        null !== $userId && $obj->userId = $userId;
+        null !== $after && $obj['after'] = $after;
+        null !== $fromTimestamp && $obj['fromTimestamp'] = $fromTimestamp;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $toTimestamp && $obj['toTimestamp'] = $toTimestamp;
+        null !== $userId && $obj['userId'] = $userId;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     public function withFromTimestamp(int $fromTimestamp): self
     {
         $obj = clone $this;
-        $obj->fromTimestamp = $fromTimestamp;
+        $obj['fromTimestamp'] = $fromTimestamp;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     public function withToTimestamp(int $toTimestamp): self
     {
         $obj = clone $this;
-        $obj->toTimestamp = $toTimestamp;
+        $obj['toTimestamp'] = $toTimestamp;
 
         return $obj;
     }
@@ -136,7 +136,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }

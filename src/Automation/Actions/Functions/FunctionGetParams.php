@@ -73,8 +73,8 @@ final class FunctionGetParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->definitionId = $definitionId;
+        $obj['appId'] = $appId;
+        $obj['definitionId'] = $definitionId;
         $obj['functionType'] = $functionType;
 
         return $obj;
@@ -83,7 +83,7 @@ final class FunctionGetParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class FunctionGetParams implements BaseModel
     public function withDefinitionID(string $definitionID): self
     {
         $obj = clone $this;
-        $obj->definitionId = $definitionID;
+        $obj['definitionId'] = $definitionID;
 
         return $obj;
     }

@@ -50,8 +50,8 @@ final class APIConnection implements BaseModel
     {
         $obj = new self;
 
-        $obj->edgeType = $edgeType;
-        $obj->nextActionId = $nextActionId;
+        $obj['edgeType'] = $edgeType;
+        $obj['nextActionId'] = $nextActionId;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class APIConnection implements BaseModel
     public function withEdgeType(string $edgeType): self
     {
         $obj = clone $this;
-        $obj->edgeType = $edgeType;
+        $obj['edgeType'] = $edgeType;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class APIConnection implements BaseModel
     public function withNextActionID(string $nextActionID): self
     {
         $obj = clone $this;
-        $obj->nextActionId = $nextActionID;
+        $obj['nextActionId'] = $nextActionID;
 
         return $obj;
     }

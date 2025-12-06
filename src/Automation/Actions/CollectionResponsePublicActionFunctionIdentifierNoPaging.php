@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions;
 
+use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier\FunctionType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -46,24 +47,28 @@ final class CollectionResponsePublicActionFunctionIdentifierNoPaging implements 
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicActionFunctionIdentifier> $results
+     * @param list<PublicActionFunctionIdentifier|array{
+     *   functionType: value-of<FunctionType>, id?: string|null
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicActionFunctionIdentifier> $results
+     * @param list<PublicActionFunctionIdentifier|array{
+     *   functionType: value-of<FunctionType>, id?: string|null
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

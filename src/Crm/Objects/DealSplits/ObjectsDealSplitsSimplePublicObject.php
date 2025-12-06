@@ -106,7 +106,14 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string|null> $properties
-     * @param array<string,list<ValueWithTimestamp>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestamp|array{
+     *   sourceType: string,
+     *   timestamp: \DateTimeInterface,
+     *   value: string,
+     *   sourceId?: string|null,
+     *   sourceLabel?: string|null,
+     *   updatedByUserId?: int|null,
+     * }>> $propertiesWithHistory
      */
     public static function with(
         string $id,
@@ -119,14 +126,14 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->properties = $properties;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['properties'] = $properties;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $archived && $obj->archived = $archived;
-        null !== $archivedAt && $obj->archivedAt = $archivedAt;
-        null !== $propertiesWithHistory && $obj->propertiesWithHistory = $propertiesWithHistory;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
+        null !== $propertiesWithHistory && $obj['propertiesWithHistory'] = $propertiesWithHistory;
 
         return $obj;
     }
@@ -137,7 +144,7 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -148,7 +155,7 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -161,7 +168,7 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -172,7 +179,7 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -183,7 +190,7 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -194,7 +201,7 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
-        $obj->archivedAt = $archivedAt;
+        $obj['archivedAt'] = $archivedAt;
 
         return $obj;
     }
@@ -202,13 +209,20 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
     /**
      * Key-value pairs representing the properties of the object along with their history.
      *
-     * @param array<string,list<ValueWithTimestamp>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestamp|array{
+     *   sourceType: string,
+     *   timestamp: \DateTimeInterface,
+     *   value: string,
+     *   sourceId?: string|null,
+     *   sourceLabel?: string|null,
+     *   updatedByUserId?: int|null,
+     * }>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(
         array $propertiesWithHistory
     ): self {
         $obj = clone $this;
-        $obj->propertiesWithHistory = $propertiesWithHistory;
+        $obj['propertiesWithHistory'] = $propertiesWithHistory;
 
         return $obj;
     }

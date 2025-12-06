@@ -23,7 +23,9 @@ use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
  *   email?: string,
  *   extraData?: mixed,
  *   objectId?: string,
- *   timelineIFrame?: TimelineEventIFrame,
+ *   timelineIFrame?: TimelineEventIFrame|array{
+ *     headerLabel: string, height: int, linkLabel: string, url: string, width: int
+ *   },
  *   timestamp?: \DateTimeInterface,
  *   utk?: string,
  * }
@@ -118,6 +120,9 @@ final class EventCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string> $tokens
+     * @param TimelineEventIFrame|array{
+     *   headerLabel: string, height: int, linkLabel: string, url: string, width: int
+     * } $timelineIFrame
      */
     public static function with(
         string $eventTemplateId,
@@ -127,23 +132,23 @@ final class EventCreateParams implements BaseModel
         ?string $email = null,
         mixed $extraData = null,
         ?string $objectId = null,
-        ?TimelineEventIFrame $timelineIFrame = null,
+        TimelineEventIFrame|array|null $timelineIFrame = null,
         ?\DateTimeInterface $timestamp = null,
         ?string $utk = null,
     ): self {
         $obj = new self;
 
-        $obj->eventTemplateId = $eventTemplateId;
-        $obj->tokens = $tokens;
+        $obj['eventTemplateId'] = $eventTemplateId;
+        $obj['tokens'] = $tokens;
 
-        null !== $id && $obj->id = $id;
-        null !== $domain && $obj->domain = $domain;
-        null !== $email && $obj->email = $email;
-        null !== $extraData && $obj->extraData = $extraData;
-        null !== $objectId && $obj->objectId = $objectId;
-        null !== $timelineIFrame && $obj->timelineIFrame = $timelineIFrame;
-        null !== $timestamp && $obj->timestamp = $timestamp;
-        null !== $utk && $obj->utk = $utk;
+        null !== $id && $obj['id'] = $id;
+        null !== $domain && $obj['domain'] = $domain;
+        null !== $email && $obj['email'] = $email;
+        null !== $extraData && $obj['extraData'] = $extraData;
+        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $timelineIFrame && $obj['timelineIFrame'] = $timelineIFrame;
+        null !== $timestamp && $obj['timestamp'] = $timestamp;
+        null !== $utk && $obj['utk'] = $utk;
 
         return $obj;
     }
@@ -154,7 +159,7 @@ final class EventCreateParams implements BaseModel
     public function withEventTemplateID(string $eventTemplateID): self
     {
         $obj = clone $this;
-        $obj->eventTemplateId = $eventTemplateID;
+        $obj['eventTemplateId'] = $eventTemplateID;
 
         return $obj;
     }
@@ -167,7 +172,7 @@ final class EventCreateParams implements BaseModel
     public function withTokens(array $tokens): self
     {
         $obj = clone $this;
-        $obj->tokens = $tokens;
+        $obj['tokens'] = $tokens;
 
         return $obj;
     }
@@ -178,7 +183,7 @@ final class EventCreateParams implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -189,7 +194,7 @@ final class EventCreateParams implements BaseModel
     public function withDomain(string $domain): self
     {
         $obj = clone $this;
-        $obj->domain = $domain;
+        $obj['domain'] = $domain;
 
         return $obj;
     }
@@ -200,7 +205,7 @@ final class EventCreateParams implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -211,7 +216,7 @@ final class EventCreateParams implements BaseModel
     public function withExtraData(mixed $extraData): self
     {
         $obj = clone $this;
-        $obj->extraData = $extraData;
+        $obj['extraData'] = $extraData;
 
         return $obj;
     }
@@ -222,16 +227,21 @@ final class EventCreateParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
 
+    /**
+     * @param TimelineEventIFrame|array{
+     *   headerLabel: string, height: int, linkLabel: string, url: string, width: int
+     * } $timelineIFrame
+     */
     public function withTimelineIFrame(
-        TimelineEventIFrame $timelineIFrame
+        TimelineEventIFrame|array $timelineIFrame
     ): self {
         $obj = clone $this;
-        $obj->timelineIFrame = $timelineIFrame;
+        $obj['timelineIFrame'] = $timelineIFrame;
 
         return $obj;
     }
@@ -242,7 +252,7 @@ final class EventCreateParams implements BaseModel
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -253,7 +263,7 @@ final class EventCreateParams implements BaseModel
     public function withUtk(string $utk): self
     {
         $obj = clone $this;
-        $obj->utk = $utk;
+        $obj['utk'] = $utk;
 
         return $obj;
     }

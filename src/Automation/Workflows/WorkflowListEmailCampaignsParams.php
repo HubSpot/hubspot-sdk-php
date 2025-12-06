@@ -55,10 +55,10 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $before && $obj->before = $before;
-        null !== $flowId && $obj->flowId = $flowId;
-        null !== $limit && $obj->limit = $limit;
+        null !== $after && $obj['after'] = $after;
+        null !== $before && $obj['before'] = $before;
+        null !== $flowId && $obj['flowId'] = $flowId;
+        null !== $limit && $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -66,7 +66,7 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -74,7 +74,7 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
     public function withBefore(string $before): self
     {
         $obj = clone $this;
-        $obj->before = $before;
+        $obj['before'] = $before;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
     public function withFlowID(array $flowID): self
     {
         $obj = clone $this;
-        $obj->flowId = $flowID;
+        $obj['flowId'] = $flowID;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }

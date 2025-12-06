@@ -239,24 +239,24 @@ final class PropertyValue implements BaseModel
         $obj = new self;
 
         $obj['dataSensitivity'] = $dataSensitivity;
-        $obj->isEncrypted = $isEncrypted;
-        $obj->isLargeValue = $isLargeValue;
-        $obj->name = $name;
-        $obj->persistenceTimestamp = $persistenceTimestamp;
-        $obj->requestId = $requestId;
-        $obj->selectedByUser = $selectedByUser;
-        $obj->selectedByUserTimestamp = $selectedByUserTimestamp;
+        $obj['isEncrypted'] = $isEncrypted;
+        $obj['isLargeValue'] = $isLargeValue;
+        $obj['name'] = $name;
+        $obj['persistenceTimestamp'] = $persistenceTimestamp;
+        $obj['requestId'] = $requestId;
+        $obj['selectedByUser'] = $selectedByUser;
+        $obj['selectedByUserTimestamp'] = $selectedByUserTimestamp;
         $obj['source'] = $source;
-        $obj->sourceId = $sourceId;
-        $obj->sourceLabel = $sourceLabel;
-        $obj->sourceMetadata = $sourceMetadata;
-        $obj->sourceUpstreamDeployable = $sourceUpstreamDeployable;
-        $obj->sourceVid = $sourceVid;
-        $obj->timestamp = $timestamp;
-        $obj->unit = $unit;
-        $obj->updatedByUserId = $updatedByUserId;
-        $obj->useTimestampAsPersistenceTimestamp = $useTimestampAsPersistenceTimestamp;
-        $obj->value = $value;
+        $obj['sourceId'] = $sourceId;
+        $obj['sourceLabel'] = $sourceLabel;
+        $obj['sourceMetadata'] = $sourceMetadata;
+        $obj['sourceUpstreamDeployable'] = $sourceUpstreamDeployable;
+        $obj['sourceVid'] = $sourceVid;
+        $obj['timestamp'] = $timestamp;
+        $obj['unit'] = $unit;
+        $obj['updatedByUserId'] = $updatedByUserId;
+        $obj['useTimestampAsPersistenceTimestamp'] = $useTimestampAsPersistenceTimestamp;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -281,7 +281,7 @@ final class PropertyValue implements BaseModel
     public function withIsEncrypted(bool $isEncrypted): self
     {
         $obj = clone $this;
-        $obj->isEncrypted = $isEncrypted;
+        $obj['isEncrypted'] = $isEncrypted;
 
         return $obj;
     }
@@ -289,7 +289,7 @@ final class PropertyValue implements BaseModel
     public function withIsLargeValue(bool $isLargeValue): self
     {
         $obj = clone $this;
-        $obj->isLargeValue = $isLargeValue;
+        $obj['isLargeValue'] = $isLargeValue;
 
         return $obj;
     }
@@ -300,7 +300,7 @@ final class PropertyValue implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -308,7 +308,7 @@ final class PropertyValue implements BaseModel
     public function withPersistenceTimestamp(int $persistenceTimestamp): self
     {
         $obj = clone $this;
-        $obj->persistenceTimestamp = $persistenceTimestamp;
+        $obj['persistenceTimestamp'] = $persistenceTimestamp;
 
         return $obj;
     }
@@ -319,7 +319,7 @@ final class PropertyValue implements BaseModel
     public function withRequestID(string $requestID): self
     {
         $obj = clone $this;
-        $obj->requestId = $requestID;
+        $obj['requestId'] = $requestID;
 
         return $obj;
     }
@@ -330,7 +330,7 @@ final class PropertyValue implements BaseModel
     public function withSelectedByUser(bool $selectedByUser): self
     {
         $obj = clone $this;
-        $obj->selectedByUser = $selectedByUser;
+        $obj['selectedByUser'] = $selectedByUser;
 
         return $obj;
     }
@@ -342,7 +342,7 @@ final class PropertyValue implements BaseModel
         int $selectedByUserTimestamp
     ): self {
         $obj = clone $this;
-        $obj->selectedByUserTimestamp = $selectedByUserTimestamp;
+        $obj['selectedByUserTimestamp'] = $selectedByUserTimestamp;
 
         return $obj;
     }
@@ -366,7 +366,7 @@ final class PropertyValue implements BaseModel
     public function withSourceID(string $sourceID): self
     {
         $obj = clone $this;
-        $obj->sourceId = $sourceID;
+        $obj['sourceId'] = $sourceID;
 
         return $obj;
     }
@@ -377,7 +377,7 @@ final class PropertyValue implements BaseModel
     public function withSourceLabel(string $sourceLabel): self
     {
         $obj = clone $this;
-        $obj->sourceLabel = $sourceLabel;
+        $obj['sourceLabel'] = $sourceLabel;
 
         return $obj;
     }
@@ -388,7 +388,7 @@ final class PropertyValue implements BaseModel
     public function withSourceMetadata(string $sourceMetadata): self
     {
         $obj = clone $this;
-        $obj->sourceMetadata = $sourceMetadata;
+        $obj['sourceMetadata'] = $sourceMetadata;
 
         return $obj;
     }
@@ -397,7 +397,7 @@ final class PropertyValue implements BaseModel
         string $sourceUpstreamDeployable
     ): self {
         $obj = clone $this;
-        $obj->sourceUpstreamDeployable = $sourceUpstreamDeployable;
+        $obj['sourceUpstreamDeployable'] = $sourceUpstreamDeployable;
 
         return $obj;
     }
@@ -410,7 +410,7 @@ final class PropertyValue implements BaseModel
     public function withSourceVid(array $sourceVid): self
     {
         $obj = clone $this;
-        $obj->sourceVid = $sourceVid;
+        $obj['sourceVid'] = $sourceVid;
 
         return $obj;
     }
@@ -421,7 +421,7 @@ final class PropertyValue implements BaseModel
     public function withTimestamp(int $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -432,7 +432,7 @@ final class PropertyValue implements BaseModel
     public function withUnit(string $unit): self
     {
         $obj = clone $this;
-        $obj->unit = $unit;
+        $obj['unit'] = $unit;
 
         return $obj;
     }
@@ -443,7 +443,7 @@ final class PropertyValue implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj->updatedByUserId = $updatedByUserID;
+        $obj['updatedByUserId'] = $updatedByUserID;
 
         return $obj;
     }
@@ -452,7 +452,7 @@ final class PropertyValue implements BaseModel
         bool $useTimestampAsPersistenceTimestamp
     ): self {
         $obj = clone $this;
-        $obj->useTimestampAsPersistenceTimestamp = $useTimestampAsPersistenceTimestamp;
+        $obj['useTimestampAsPersistenceTimestamp'] = $useTimestampAsPersistenceTimestamp;
 
         return $obj;
     }
@@ -463,7 +463,7 @@ final class PropertyValue implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

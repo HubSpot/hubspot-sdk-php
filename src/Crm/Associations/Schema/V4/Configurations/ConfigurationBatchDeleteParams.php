@@ -14,7 +14,8 @@ use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationSpec;
  * @see HubspotSDK\Services\Crm\Associations\Schema\V4\ConfigurationsService::batchDelete()
  *
  * @phpstan-type ConfigurationBatchDeleteParamsShape = array{
- *   fromObjectType: string, inputs: list<PublicAssociationSpec>
+ *   fromObjectType: string,
+ *   inputs: list<PublicAssociationSpec|array{category: string, typeId: int}>,
  * }
  */
 final class ConfigurationBatchDeleteParams implements BaseModel
@@ -54,14 +55,14 @@ final class ConfigurationBatchDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationSpec> $inputs
+     * @param list<PublicAssociationSpec|array{category: string, typeId: int}> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
         $obj = new self;
 
-        $obj->fromObjectType = $fromObjectType;
-        $obj->inputs = $inputs;
+        $obj['fromObjectType'] = $fromObjectType;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -69,18 +70,18 @@ final class ConfigurationBatchDeleteParams implements BaseModel
     public function withFromObjectType(string $fromObjectType): self
     {
         $obj = clone $this;
-        $obj->fromObjectType = $fromObjectType;
+        $obj['fromObjectType'] = $fromObjectType;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAssociationSpec> $inputs
+     * @param list<PublicAssociationSpec|array{category: string, typeId: int}> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

@@ -60,8 +60,8 @@ final class AbTestCreateRequestVNext implements BaseModel
     {
         $obj = new self;
 
-        $obj->contentId = $contentId;
-        $obj->variationName = $variationName;
+        $obj['contentId'] = $contentId;
+        $obj['variationName'] = $variationName;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class AbTestCreateRequestVNext implements BaseModel
     public function withContentID(string $contentID): self
     {
         $obj = clone $this;
-        $obj->contentId = $contentID;
+        $obj['contentId'] = $contentID;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class AbTestCreateRequestVNext implements BaseModel
     public function withVariationName(string $variationName): self
     {
         $obj = clone $this;
-        $obj->variationName = $variationName;
+        $obj['variationName'] = $variationName;
 
         return $obj;
     }

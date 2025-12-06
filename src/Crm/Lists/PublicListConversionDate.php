@@ -73,9 +73,9 @@ final class PublicListConversionDate implements BaseModel
         $obj = new self;
 
         $obj['conversionType'] = $conversionType;
-        $obj->day = $day;
-        $obj->month = $month;
-        $obj->year = $year;
+        $obj['day'] = $day;
+        $obj['month'] = $month;
+        $obj['year'] = $year;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class PublicListConversionDate implements BaseModel
     public function withDay(int $day): self
     {
         $obj = clone $this;
-        $obj->day = $day;
+        $obj['day'] = $day;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class PublicListConversionDate implements BaseModel
     public function withMonth(int $month): self
     {
         $obj = clone $this;
-        $obj->month = $month;
+        $obj['month'] = $month;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class PublicListConversionDate implements BaseModel
     public function withYear(int $year): self
     {
         $obj = clone $this;
-        $obj->year = $year;
+        $obj['year'] = $year;
 
         return $obj;
     }

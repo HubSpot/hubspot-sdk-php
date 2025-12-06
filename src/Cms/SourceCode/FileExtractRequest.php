@@ -47,7 +47,7 @@ final class FileExtractRequest implements BaseModel
     {
         $obj = new self;
 
-        $obj->path = $path;
+        $obj['path'] = $path;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class FileExtractRequest implements BaseModel
     public function withPath(string $path): self
     {
         $obj = clone $this;
-        $obj->path = $path;
+        $obj['path'] = $path;
 
         return $obj;
     }

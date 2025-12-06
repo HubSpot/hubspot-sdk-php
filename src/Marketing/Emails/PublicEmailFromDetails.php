@@ -55,9 +55,9 @@ final class PublicEmailFromDetails implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $customReplyTo && $obj->customReplyTo = $customReplyTo;
-        null !== $fromName && $obj->fromName = $fromName;
-        null !== $replyTo && $obj->replyTo = $replyTo;
+        null !== $customReplyTo && $obj['customReplyTo'] = $customReplyTo;
+        null !== $fromName && $obj['fromName'] = $fromName;
+        null !== $replyTo && $obj['replyTo'] = $replyTo;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class PublicEmailFromDetails implements BaseModel
     public function withCustomReplyTo(string $customReplyTo): self
     {
         $obj = clone $this;
-        $obj->customReplyTo = $customReplyTo;
+        $obj['customReplyTo'] = $customReplyTo;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class PublicEmailFromDetails implements BaseModel
     public function withFromName(string $fromName): self
     {
         $obj = clone $this;
-        $obj->fromName = $fromName;
+        $obj['fromName'] = $fromName;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class PublicEmailFromDetails implements BaseModel
     public function withReplyTo(string $replyTo): self
     {
         $obj = clone $this;
-        $obj->replyTo = $replyTo;
+        $obj['replyTo'] = $replyTo;
 
         return $obj;
     }

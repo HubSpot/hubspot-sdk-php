@@ -111,14 +111,14 @@ final class UserCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->email = $email;
+        $obj['email'] = $email;
 
-        null !== $firstName && $obj->firstName = $firstName;
-        null !== $lastName && $obj->lastName = $lastName;
-        null !== $primaryTeamId && $obj->primaryTeamId = $primaryTeamId;
-        null !== $roleId && $obj->roleId = $roleId;
-        null !== $secondaryTeamIds && $obj->secondaryTeamIds = $secondaryTeamIds;
-        null !== $sendWelcomeEmail && $obj->sendWelcomeEmail = $sendWelcomeEmail;
+        null !== $firstName && $obj['firstName'] = $firstName;
+        null !== $lastName && $obj['lastName'] = $lastName;
+        null !== $primaryTeamId && $obj['primaryTeamId'] = $primaryTeamId;
+        null !== $roleId && $obj['roleId'] = $roleId;
+        null !== $secondaryTeamIds && $obj['secondaryTeamIds'] = $secondaryTeamIds;
+        null !== $sendWelcomeEmail && $obj['sendWelcomeEmail'] = $sendWelcomeEmail;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class UserCreateParams implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class UserCreateParams implements BaseModel
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
-        $obj->firstName = $firstName;
+        $obj['firstName'] = $firstName;
 
         return $obj;
     }
@@ -151,7 +151,7 @@ final class UserCreateParams implements BaseModel
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;
-        $obj->lastName = $lastName;
+        $obj['lastName'] = $lastName;
 
         return $obj;
     }
@@ -162,7 +162,7 @@ final class UserCreateParams implements BaseModel
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
-        $obj->primaryTeamId = $primaryTeamID;
+        $obj['primaryTeamId'] = $primaryTeamID;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class UserCreateParams implements BaseModel
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
-        $obj->roleId = $roleID;
+        $obj['roleId'] = $roleID;
 
         return $obj;
     }
@@ -186,7 +186,7 @@ final class UserCreateParams implements BaseModel
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
     {
         $obj = clone $this;
-        $obj->secondaryTeamIds = $secondaryTeamIDs;
+        $obj['secondaryTeamIds'] = $secondaryTeamIDs;
 
         return $obj;
     }
@@ -197,7 +197,7 @@ final class UserCreateParams implements BaseModel
     public function withSendWelcomeEmail(bool $sendWelcomeEmail): self
     {
         $obj = clone $this;
-        $obj->sendWelcomeEmail = $sendWelcomeEmail;
+        $obj['sendWelcomeEmail'] = $sendWelcomeEmail;
 
         return $obj;
     }

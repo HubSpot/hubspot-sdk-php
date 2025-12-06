@@ -100,14 +100,14 @@ final class BoolPropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->operationType = $operationType;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['operationType'] = $operationType;
         $obj['operator'] = $operator;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
         $obj['propertyType'] = $propertyType;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
-        null !== $defaultValue && $obj->defaultValue = $defaultValue;
+        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class BoolPropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class BoolPropertyOperation implements BaseModel
     public function withOperationType(string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class BoolPropertyOperation implements BaseModel
     public function withOperatorName(string $operatorName): self
     {
         $obj = clone $this;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
 
         return $obj;
     }
@@ -162,7 +162,7 @@ final class BoolPropertyOperation implements BaseModel
     public function withValue(bool $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -170,7 +170,7 @@ final class BoolPropertyOperation implements BaseModel
     public function withDefaultValue(string $defaultValue): self
     {
         $obj = clone $this;
-        $obj->defaultValue = $defaultValue;
+        $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }
