@@ -88,7 +88,18 @@ final class IntegratorCardPayloadResponse implements BaseModel, ResponseConverte
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param ResponseVersion|value-of<ResponseVersion> $responseVersion
-     * @param list<IntegratorObjectResult> $sections
+     * @param list<IntegratorObjectResult|array{
+     *   id: string,
+     *   actions: list<ActionHookActionBody|IFrameActionBody>,
+     *   title: string,
+     *   tokens: list<ObjectToken>,
+     *   linkUrl?: string|null,
+     * }> $sections
+     * @param TopLevelActions|array{
+     *   secondary: list<ActionHookActionBody|IFrameActionBody>,
+     *   primary?: ActionHookActionBody|IFrameActionBody|null,
+     *   settings?: IFrameActionBody|null,
+     * } $topLevelActions
      */
     public static function with(
         int $totalCount,
@@ -96,17 +107,17 @@ final class IntegratorCardPayloadResponse implements BaseModel, ResponseConverte
         ?string $cardLabel = null,
         ResponseVersion|string|null $responseVersion = null,
         ?array $sections = null,
-        ?TopLevelActions $topLevelActions = null,
+        TopLevelActions|array|null $topLevelActions = null,
     ): self {
         $obj = new self;
 
-        $obj->totalCount = $totalCount;
+        $obj['totalCount'] = $totalCount;
 
-        null !== $allItemsLinkUrl && $obj->allItemsLinkUrl = $allItemsLinkUrl;
-        null !== $cardLabel && $obj->cardLabel = $cardLabel;
+        null !== $allItemsLinkUrl && $obj['allItemsLinkUrl'] = $allItemsLinkUrl;
+        null !== $cardLabel && $obj['cardLabel'] = $cardLabel;
         null !== $responseVersion && $obj['responseVersion'] = $responseVersion;
-        null !== $sections && $obj->sections = $sections;
-        null !== $topLevelActions && $obj->topLevelActions = $topLevelActions;
+        null !== $sections && $obj['sections'] = $sections;
+        null !== $topLevelActions && $obj['topLevelActions'] = $topLevelActions;
 
         return $obj;
     }
@@ -117,7 +128,7 @@ final class IntegratorCardPayloadResponse implements BaseModel, ResponseConverte
     public function withTotalCount(int $totalCount): self
     {
         $obj = clone $this;
-        $obj->totalCount = $totalCount;
+        $obj['totalCount'] = $totalCount;
 
         return $obj;
     }
@@ -128,7 +139,7 @@ final class IntegratorCardPayloadResponse implements BaseModel, ResponseConverte
     public function withAllItemsLinkURL(string $allItemsLinkURL): self
     {
         $obj = clone $this;
-        $obj->allItemsLinkUrl = $allItemsLinkURL;
+        $obj['allItemsLinkUrl'] = $allItemsLinkURL;
 
         return $obj;
     }
@@ -139,7 +150,7 @@ final class IntegratorCardPayloadResponse implements BaseModel, ResponseConverte
     public function withCardLabel(string $cardLabel): self
     {
         $obj = clone $this;
-        $obj->cardLabel = $cardLabel;
+        $obj['cardLabel'] = $cardLabel;
 
         return $obj;
     }
@@ -159,20 +170,34 @@ final class IntegratorCardPayloadResponse implements BaseModel, ResponseConverte
     /**
      * A list of up to five valid card sub categories.
      *
-     * @param list<IntegratorObjectResult> $sections
+     * @param list<IntegratorObjectResult|array{
+     *   id: string,
+     *   actions: list<ActionHookActionBody|IFrameActionBody>,
+     *   title: string,
+     *   tokens: list<ObjectToken>,
+     *   linkUrl?: string|null,
+     * }> $sections
      */
     public function withSections(array $sections): self
     {
         $obj = clone $this;
-        $obj->sections = $sections;
+        $obj['sections'] = $sections;
 
         return $obj;
     }
 
-    public function withTopLevelActions(TopLevelActions $topLevelActions): self
-    {
+    /**
+     * @param TopLevelActions|array{
+     *   secondary: list<ActionHookActionBody|IFrameActionBody>,
+     *   primary?: ActionHookActionBody|IFrameActionBody|null,
+     *   settings?: IFrameActionBody|null,
+     * } $topLevelActions
+     */
+    public function withTopLevelActions(
+        TopLevelActions|array $topLevelActions
+    ): self {
         $obj = clone $this;
-        $obj->topLevelActions = $topLevelActions;
+        $obj['topLevelActions'] = $topLevelActions;
 
         return $obj;
     }

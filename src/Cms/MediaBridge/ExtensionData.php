@@ -69,24 +69,37 @@ final class ExtensionData implements BaseModel
      *
      * @param array<string,string> $extensionStatusMap
      * @param list<string> $tags
+     * @param CaseChangeTestExtensionData|array{
+     *   mood: string
+     * } $caseChangeTestExtensionData
+     * @param OptionDecoratorsExtensionData|array{
+     *   optionDecorators: array<string,OptionDecorations>,
+     *   optionDecoratorStyle: string,
+     * } $optionDecoratorsExtensionData
+     * @param RequiredPropertiesExtensionData|array{
+     *   isRequiredProperty: bool
+     * } $requiredPropertiesExtensionData
+     * @param SoftRequiredPropertiesExtensionData|array{
+     *   isSoftRequiredProperty: bool
+     * } $softRequiredPropertiesExtensionData
      */
     public static function with(
         array $extensionStatusMap,
         array $tags,
-        ?CaseChangeTestExtensionData $caseChangeTestExtensionData = null,
-        ?OptionDecoratorsExtensionData $optionDecoratorsExtensionData = null,
-        ?RequiredPropertiesExtensionData $requiredPropertiesExtensionData = null,
-        ?SoftRequiredPropertiesExtensionData $softRequiredPropertiesExtensionData = null,
+        CaseChangeTestExtensionData|array|null $caseChangeTestExtensionData = null,
+        OptionDecoratorsExtensionData|array|null $optionDecoratorsExtensionData = null,
+        RequiredPropertiesExtensionData|array|null $requiredPropertiesExtensionData = null,
+        SoftRequiredPropertiesExtensionData|array|null $softRequiredPropertiesExtensionData = null,
     ): self {
         $obj = new self;
 
-        $obj->extensionStatusMap = $extensionStatusMap;
-        $obj->tags = $tags;
+        $obj['extensionStatusMap'] = $extensionStatusMap;
+        $obj['tags'] = $tags;
 
-        null !== $caseChangeTestExtensionData && $obj->caseChangeTestExtensionData = $caseChangeTestExtensionData;
-        null !== $optionDecoratorsExtensionData && $obj->optionDecoratorsExtensionData = $optionDecoratorsExtensionData;
-        null !== $requiredPropertiesExtensionData && $obj->requiredPropertiesExtensionData = $requiredPropertiesExtensionData;
-        null !== $softRequiredPropertiesExtensionData && $obj->softRequiredPropertiesExtensionData = $softRequiredPropertiesExtensionData;
+        null !== $caseChangeTestExtensionData && $obj['caseChangeTestExtensionData'] = $caseChangeTestExtensionData;
+        null !== $optionDecoratorsExtensionData && $obj['optionDecoratorsExtensionData'] = $optionDecoratorsExtensionData;
+        null !== $requiredPropertiesExtensionData && $obj['requiredPropertiesExtensionData'] = $requiredPropertiesExtensionData;
+        null !== $softRequiredPropertiesExtensionData && $obj['softRequiredPropertiesExtensionData'] = $softRequiredPropertiesExtensionData;
 
         return $obj;
     }
@@ -97,7 +110,7 @@ final class ExtensionData implements BaseModel
     public function withExtensionStatusMap(array $extensionStatusMap): self
     {
         $obj = clone $this;
-        $obj->extensionStatusMap = $extensionStatusMap;
+        $obj['extensionStatusMap'] = $extensionStatusMap;
 
         return $obj;
     }
@@ -108,43 +121,64 @@ final class ExtensionData implements BaseModel
     public function withTags(array $tags): self
     {
         $obj = clone $this;
-        $obj->tags = $tags;
+        $obj['tags'] = $tags;
 
         return $obj;
     }
 
+    /**
+     * @param CaseChangeTestExtensionData|array{
+     *   mood: string
+     * } $caseChangeTestExtensionData
+     */
     public function withCaseChangeTestExtensionData(
-        CaseChangeTestExtensionData $caseChangeTestExtensionData
+        CaseChangeTestExtensionData|array $caseChangeTestExtensionData
     ): self {
         $obj = clone $this;
-        $obj->caseChangeTestExtensionData = $caseChangeTestExtensionData;
+        $obj['caseChangeTestExtensionData'] = $caseChangeTestExtensionData;
 
         return $obj;
     }
 
+    /**
+     * @param OptionDecoratorsExtensionData|array{
+     *   optionDecorators: array<string,OptionDecorations>,
+     *   optionDecoratorStyle: string,
+     * } $optionDecoratorsExtensionData
+     */
     public function withOptionDecoratorsExtensionData(
-        OptionDecoratorsExtensionData $optionDecoratorsExtensionData
+        OptionDecoratorsExtensionData|array $optionDecoratorsExtensionData
     ): self {
         $obj = clone $this;
-        $obj->optionDecoratorsExtensionData = $optionDecoratorsExtensionData;
+        $obj['optionDecoratorsExtensionData'] = $optionDecoratorsExtensionData;
 
         return $obj;
     }
 
+    /**
+     * @param RequiredPropertiesExtensionData|array{
+     *   isRequiredProperty: bool
+     * } $requiredPropertiesExtensionData
+     */
     public function withRequiredPropertiesExtensionData(
-        RequiredPropertiesExtensionData $requiredPropertiesExtensionData
+        RequiredPropertiesExtensionData|array $requiredPropertiesExtensionData
     ): self {
         $obj = clone $this;
-        $obj->requiredPropertiesExtensionData = $requiredPropertiesExtensionData;
+        $obj['requiredPropertiesExtensionData'] = $requiredPropertiesExtensionData;
 
         return $obj;
     }
 
+    /**
+     * @param SoftRequiredPropertiesExtensionData|array{
+     *   isSoftRequiredProperty: bool
+     * } $softRequiredPropertiesExtensionData
+     */
     public function withSoftRequiredPropertiesExtensionData(
-        SoftRequiredPropertiesExtensionData $softRequiredPropertiesExtensionData
+        SoftRequiredPropertiesExtensionData|array $softRequiredPropertiesExtensionData,
     ): self {
         $obj = clone $this;
-        $obj->softRequiredPropertiesExtensionData = $softRequiredPropertiesExtensionData;
+        $obj['softRequiredPropertiesExtensionData'] = $softRequiredPropertiesExtensionData;
 
         return $obj;
     }

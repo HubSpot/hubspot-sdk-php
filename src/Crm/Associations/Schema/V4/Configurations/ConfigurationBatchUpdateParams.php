@@ -9,13 +9,16 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest\Category;
 
 /**
  * @see HubspotSDK\Services\Crm\Associations\Schema\V4\ConfigurationsService::batchUpdate()
  *
  * @phpstan-type ConfigurationBatchUpdateParamsShape = array{
  *   fromObjectType: string,
- *   inputs: list<PublicAssociationDefinitionConfigurationUpdateRequest>,
+ *   inputs: list<PublicAssociationDefinitionConfigurationUpdateRequest|array{
+ *     category: value-of<Category>, maxToObjectIds: int, typeId: int
+ *   }>,
  * }
  */
 final class ConfigurationBatchUpdateParams implements BaseModel
@@ -55,14 +58,16 @@ final class ConfigurationBatchUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest|array{
+     *   category: value-of<Category>, maxToObjectIds: int, typeId: int
+     * }> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
         $obj = new self;
 
-        $obj->fromObjectType = $fromObjectType;
-        $obj->inputs = $inputs;
+        $obj['fromObjectType'] = $fromObjectType;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -70,18 +75,20 @@ final class ConfigurationBatchUpdateParams implements BaseModel
     public function withFromObjectType(string $fromObjectType): self
     {
         $obj = clone $this;
-        $obj->fromObjectType = $fromObjectType;
+        $obj['fromObjectType'] = $fromObjectType;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest|array{
+     *   category: value-of<Category>, maxToObjectIds: int, typeId: int
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

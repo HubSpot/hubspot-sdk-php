@@ -56,8 +56,8 @@ final class ListListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $includeFilters && $obj->includeFilters = $includeFilters;
-        null !== $listIds && $obj->listIds = $listIds;
+        null !== $includeFilters && $obj['includeFilters'] = $includeFilters;
+        null !== $listIds && $obj['listIds'] = $listIds;
 
         return $obj;
     }
@@ -68,7 +68,7 @@ final class ListListParams implements BaseModel
     public function withIncludeFilters(bool $includeFilters): self
     {
         $obj = clone $this;
-        $obj->includeFilters = $includeFilters;
+        $obj['includeFilters'] = $includeFilters;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class ListListParams implements BaseModel
     public function withListIDs(array $listIDs): self
     {
         $obj = clone $this;
-        $obj->listIds = $listIDs;
+        $obj['listIds'] = $listIDs;
 
         return $obj;
     }

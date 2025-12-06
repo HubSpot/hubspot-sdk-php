@@ -47,31 +47,55 @@ final class EmailStatisticInterval implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param EmailStatisticsData|array{
+     *   counters: array<string,int>,
+     *   deviceBreakdown: array<string,array<string,int>>,
+     *   qualifierStats: array<string,array<string,int>>,
+     *   ratios: array<string,float>,
+     * } $aggregations
+     * @param Interval|array{
+     *   end: \DateTimeInterface, start: \DateTimeInterface
+     * } $interval
      */
     public static function with(
-        EmailStatisticsData $aggregations,
-        Interval $interval
+        EmailStatisticsData|array $aggregations,
+        Interval|array $interval
     ): self {
         $obj = new self;
 
-        $obj->aggregations = $aggregations;
-        $obj->interval = $interval;
+        $obj['aggregations'] = $aggregations;
+        $obj['interval'] = $interval;
 
         return $obj;
     }
 
-    public function withAggregations(EmailStatisticsData $aggregations): self
-    {
+    /**
+     * @param EmailStatisticsData|array{
+     *   counters: array<string,int>,
+     *   deviceBreakdown: array<string,array<string,int>>,
+     *   qualifierStats: array<string,array<string,int>>,
+     *   ratios: array<string,float>,
+     * } $aggregations
+     */
+    public function withAggregations(
+        EmailStatisticsData|array $aggregations
+    ): self {
         $obj = clone $this;
-        $obj->aggregations = $aggregations;
+        $obj['aggregations'] = $aggregations;
 
         return $obj;
     }
 
-    public function withInterval(Interval $interval): self
+    /**
+     * @param Interval|array{
+     *   end: \DateTimeInterface, start: \DateTimeInterface
+     * } $interval
+     */
+    public function withInterval(Interval|array $interval): self
     {
         $obj = clone $this;
-        $obj->interval = $interval;
+        $obj['interval'] = $interval;
 
         return $obj;
     }

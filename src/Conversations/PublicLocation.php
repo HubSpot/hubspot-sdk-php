@@ -79,13 +79,13 @@ final class PublicLocation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->latitude = $latitude;
-        $obj->longitude = $longitude;
+        $obj['latitude'] = $latitude;
+        $obj['longitude'] = $longitude;
         $obj['type'] = $type;
 
-        null !== $address && $obj->address = $address;
-        null !== $name && $obj->name = $name;
-        null !== $url && $obj->url = $url;
+        null !== $address && $obj['address'] = $address;
+        null !== $name && $obj['name'] = $name;
+        null !== $url && $obj['url'] = $url;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class PublicLocation implements BaseModel
     public function withLatitude(float $latitude): self
     {
         $obj = clone $this;
-        $obj->latitude = $latitude;
+        $obj['latitude'] = $latitude;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class PublicLocation implements BaseModel
     public function withLongitude(float $longitude): self
     {
         $obj = clone $this;
-        $obj->longitude = $longitude;
+        $obj['longitude'] = $longitude;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class PublicLocation implements BaseModel
     public function withAddress(string $address): self
     {
         $obj = clone $this;
-        $obj->address = $address;
+        $obj['address'] = $address;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class PublicLocation implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -136,7 +136,7 @@ final class PublicLocation implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

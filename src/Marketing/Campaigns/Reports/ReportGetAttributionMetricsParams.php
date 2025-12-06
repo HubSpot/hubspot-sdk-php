@@ -54,8 +54,8 @@ final class ReportGetAttributionMetricsParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $endDate && $obj->endDate = $endDate;
-        null !== $startDate && $obj->startDate = $startDate;
+        null !== $endDate && $obj['endDate'] = $endDate;
+        null !== $startDate && $obj['startDate'] = $startDate;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class ReportGetAttributionMetricsParams implements BaseModel
     public function withEndDate(string $endDate): self
     {
         $obj = clone $this;
-        $obj->endDate = $endDate;
+        $obj['endDate'] = $endDate;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class ReportGetAttributionMetricsParams implements BaseModel
     public function withStartDate(string $startDate): self
     {
         $obj = clone $this;
-        $obj->startDate = $startDate;
+        $obj['startDate'] = $startDate;
 
         return $obj;
     }

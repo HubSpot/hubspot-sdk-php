@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
+use HubspotSDK\NextPage;
 
 /**
  * @phpstan-type CollectionResponseWithTotalHubDBTableV3ForwardPagingShape = array{
@@ -57,30 +58,73 @@ final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements Base
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableV3> $results
+     * @param list<HubDBTableV3|array{
+     *   id: string,
+     *   allowChildTables: bool,
+     *   allowPublicApiAccess: bool,
+     *   columnCount: int,
+     *   columns: list<Column>,
+     *   createdAt: \DateTimeInterface,
+     *   deleted: bool,
+     *   deletedAt: \DateTimeInterface,
+     *   dynamicMetaTags: array<string,int>,
+     *   enableChildTablePages: bool,
+     *   label: string,
+     *   name: string,
+     *   published: bool,
+     *   publishedAt: \DateTimeInterface,
+     *   rowCount: int,
+     *   updatedAt: \DateTimeInterface,
+     *   useForPages: bool,
+     *   createdBy?: SimpleUser|null,
+     *   isOrderedManually?: bool|null,
+     *   updatedBy?: SimpleUser|null,
+     * }> $results
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
     public static function with(
         array $results,
         int $total,
-        ?ForwardPaging $paging = null
+        ForwardPaging|array|null $paging = null
     ): self {
         $obj = new self;
 
-        $obj->results = $results;
-        $obj->total = $total;
+        $obj['results'] = $results;
+        $obj['total'] = $total;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<HubDBTableV3> $results
+     * @param list<HubDBTableV3|array{
+     *   id: string,
+     *   allowChildTables: bool,
+     *   allowPublicApiAccess: bool,
+     *   columnCount: int,
+     *   columns: list<Column>,
+     *   createdAt: \DateTimeInterface,
+     *   deleted: bool,
+     *   deletedAt: \DateTimeInterface,
+     *   dynamicMetaTags: array<string,int>,
+     *   enableChildTablePages: bool,
+     *   label: string,
+     *   name: string,
+     *   published: bool,
+     *   publishedAt: \DateTimeInterface,
+     *   rowCount: int,
+     *   updatedAt: \DateTimeInterface,
+     *   useForPages: bool,
+     *   createdBy?: SimpleUser|null,
+     *   isOrderedManually?: bool|null,
+     *   updatedBy?: SimpleUser|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -88,15 +132,18 @@ final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements Base
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }
 
-    public function withPaging(ForwardPaging $paging): self
+    /**
+     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     */
+    public function withPaging(ForwardPaging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

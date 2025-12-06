@@ -9,6 +9,9 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\Channel;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\LegalBasis;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState;
 
 /**
  * Update the subscription status for a set of contacts.
@@ -16,7 +19,14 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest;
  * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::batchUpdate()
  *
  * @phpstan-type StatusBatchUpdateParamsShape = array{
- *   inputs: list<PublicStatusRequest>
+ *   inputs: list<PublicStatusRequest|array{
+ *     channel: value-of<Channel>,
+ *     statusState: value-of<StatusState>,
+ *     subscriberIdString: string,
+ *     subscriptionId: int,
+ *     legalBasis?: value-of<LegalBasis>|null,
+ *     legalBasisExplanation?: string|null,
+ *   }>,
  * }
  */
 final class StatusBatchUpdateParams implements BaseModel
@@ -53,24 +63,38 @@ final class StatusBatchUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatusRequest> $inputs
+     * @param list<PublicStatusRequest|array{
+     *   channel: value-of<Channel>,
+     *   statusState: value-of<StatusState>,
+     *   subscriberIdString: string,
+     *   subscriptionId: int,
+     *   legalBasis?: value-of<LegalBasis>|null,
+     *   legalBasisExplanation?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicStatusRequest> $inputs
+     * @param list<PublicStatusRequest|array{
+     *   channel: value-of<Channel>,
+     *   statusState: value-of<StatusState>,
+     *   subscriberIdString: string,
+     *   subscriptionId: int,
+     *   legalBasis?: value-of<LegalBasis>|null,
+     *   legalBasisExplanation?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

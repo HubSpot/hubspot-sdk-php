@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty\DataType;
+use HubspotSDK\Crm\Extensions\Cards\DisplayOption\Type;
 
 /**
  * Definition for a card display property.
@@ -81,7 +82,9 @@ final class CardDisplayProperty implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DataType|value-of<DataType> $dataType
-     * @param list<DisplayOption> $options
+     * @param list<DisplayOption|array{
+     *   label: string, name: string, type: value-of<Type>
+     * }> $options
      */
     public static function with(
         DataType|string $dataType,
@@ -92,9 +95,9 @@ final class CardDisplayProperty implements BaseModel
         $obj = new self;
 
         $obj['dataType'] = $dataType;
-        $obj->label = $label;
-        $obj->name = $name;
-        $obj->options = $options;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
+        $obj['options'] = $options;
 
         return $obj;
     }
@@ -118,7 +121,7 @@ final class CardDisplayProperty implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -129,7 +132,7 @@ final class CardDisplayProperty implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -137,12 +140,14 @@ final class CardDisplayProperty implements BaseModel
     /**
      * An array of available options that can be displayed. Only used in when `dataType` is `STATUS`.
      *
-     * @param list<DisplayOption> $options
+     * @param list<DisplayOption|array{
+     *   label: string, name: string, type: value-of<Type>
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }

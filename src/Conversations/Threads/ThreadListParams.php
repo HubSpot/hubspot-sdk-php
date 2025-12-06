@@ -93,16 +93,16 @@ final class ThreadListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $archived && $obj->archived = $archived;
-        null !== $associatedContactId && $obj->associatedContactId = $associatedContactId;
+        null !== $after && $obj['after'] = $after;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $associatedContactId && $obj['associatedContactId'] = $associatedContactId;
         null !== $association && $obj['association'] = $association;
-        null !== $inboxId && $obj->inboxId = $inboxId;
-        null !== $latestMessageTimestampAfter && $obj->latestMessageTimestampAfter = $latestMessageTimestampAfter;
-        null !== $limit && $obj->limit = $limit;
-        null !== $property && $obj->property = $property;
-        null !== $sort && $obj->sort = $sort;
-        null !== $threadStatus && $obj->threadStatus = $threadStatus;
+        null !== $inboxId && $obj['inboxId'] = $inboxId;
+        null !== $latestMessageTimestampAfter && $obj['latestMessageTimestampAfter'] = $latestMessageTimestampAfter;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $property && $obj['property'] = $property;
+        null !== $sort && $obj['sort'] = $sort;
+        null !== $threadStatus && $obj['threadStatus'] = $threadStatus;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class ThreadListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class ThreadListParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class ThreadListParams implements BaseModel
     public function withAssociatedContactID(int $associatedContactID): self
     {
         $obj = clone $this;
-        $obj->associatedContactId = $associatedContactID;
+        $obj['associatedContactId'] = $associatedContactID;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class ThreadListParams implements BaseModel
     public function withInboxID(array $inboxID): self
     {
         $obj = clone $this;
-        $obj->inboxId = $inboxID;
+        $obj['inboxId'] = $inboxID;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class ThreadListParams implements BaseModel
         \DateTimeInterface $latestMessageTimestampAfter
     ): self {
         $obj = clone $this;
-        $obj->latestMessageTimestampAfter = $latestMessageTimestampAfter;
+        $obj['latestMessageTimestampAfter'] = $latestMessageTimestampAfter;
 
         return $obj;
     }
@@ -165,7 +165,7 @@ final class ThreadListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class ThreadListParams implements BaseModel
     public function withProperty(string $property): self
     {
         $obj = clone $this;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
         return $obj;
     }
@@ -184,7 +184,7 @@ final class ThreadListParams implements BaseModel
     public function withSort(array $sort): self
     {
         $obj = clone $this;
-        $obj->sort = $sort;
+        $obj['sort'] = $sort;
 
         return $obj;
     }
@@ -192,7 +192,7 @@ final class ThreadListParams implements BaseModel
     public function withThreadStatus(string $threadStatus): self
     {
         $obj = clone $this;
-        $obj->threadStatus = $threadStatus;
+        $obj['threadStatus'] = $threadStatus;
 
         return $obj;
     }

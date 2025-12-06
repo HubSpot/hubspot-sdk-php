@@ -42,19 +42,23 @@ final class PublicSender implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
      */
     public static function with(
         ?string $actorId = null,
-        ?PublicDeliveryIdentifier $deliveryIdentifier = null,
+        PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
         ?string $name = null,
         ?string $senderField = null,
     ): self {
         $obj = new self;
 
-        null !== $actorId && $obj->actorId = $actorId;
-        null !== $deliveryIdentifier && $obj->deliveryIdentifier = $deliveryIdentifier;
-        null !== $name && $obj->name = $name;
-        null !== $senderField && $obj->senderField = $senderField;
+        null !== $actorId && $obj['actorId'] = $actorId;
+        null !== $deliveryIdentifier && $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        null !== $name && $obj['name'] = $name;
+        null !== $senderField && $obj['senderField'] = $senderField;
 
         return $obj;
     }
@@ -62,16 +66,21 @@ final class PublicSender implements BaseModel
     public function withActorID(string $actorID): self
     {
         $obj = clone $this;
-        $obj->actorId = $actorID;
+        $obj['actorId'] = $actorID;
 
         return $obj;
     }
 
+    /**
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
+     */
     public function withDeliveryIdentifier(
-        PublicDeliveryIdentifier $deliveryIdentifier
+        PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
         $obj = clone $this;
-        $obj->deliveryIdentifier = $deliveryIdentifier;
+        $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }
@@ -79,7 +88,7 @@ final class PublicSender implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -87,7 +96,7 @@ final class PublicSender implements BaseModel
     public function withSenderField(string $senderField): self
     {
         $obj = clone $this;
-        $obj->senderField = $senderField;
+        $obj['senderField'] = $senderField;
 
         return $obj;
     }

@@ -59,7 +59,7 @@ final class BatchPortalEntry implements BaseModel
         $obj = new self;
 
         $obj['flagState'] = $flagState;
-        $obj->portalId = $portalId;
+        $obj['portalId'] = $portalId;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class BatchPortalEntry implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }

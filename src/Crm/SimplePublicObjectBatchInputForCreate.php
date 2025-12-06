@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PublicObjectID;
 
 /**
  * @phpstan-type SimplePublicObjectBatchInputForCreateShape = array{
@@ -64,7 +66,9 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject|array{
+     *   to: PublicObjectID, types: list<AssociationSpec>
+     * }> $associations
      * @param array<string,string> $properties
      */
     public static function with(
@@ -74,21 +78,23 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->associations = $associations;
-        $obj->properties = $properties;
+        $obj['associations'] = $associations;
+        $obj['properties'] = $properties;
 
-        null !== $objectWriteTraceId && $obj->objectWriteTraceId = $objectWriteTraceId;
+        null !== $objectWriteTraceId && $obj['objectWriteTraceId'] = $objectWriteTraceId;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject|array{
+     *   to: PublicObjectID, types: list<AssociationSpec>
+     * }> $associations
      */
     public function withAssociations(array $associations): self
     {
         $obj = clone $this;
-        $obj->associations = $associations;
+        $obj['associations'] = $associations;
 
         return $obj;
     }
@@ -101,7 +107,7 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -112,7 +118,7 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
-        $obj->objectWriteTraceId = $objectWriteTraceID;
+        $obj['objectWriteTraceId'] = $objectWriteTraceID;
 
         return $obj;
     }

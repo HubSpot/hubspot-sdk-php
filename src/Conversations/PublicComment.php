@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
+use HubspotSDK\Conversations\PublicClient\ClientType;
 use HubspotSDK\Conversations\PublicComment\Attachment;
 use HubspotSDK\Conversations\PublicComment\Type;
 use HubspotSDK\Core\Attributes\Api;
@@ -126,16 +127,64 @@ final class PublicComment implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment> $attachments
-     * @param list<PublicRecipient> $recipients
-     * @param list<PublicSender> $senders
+     * @param list<PublicFile|array{
+     *   fileId: string,
+     *   fileUsageType: string,
+     *   type: value-of<PublicFile\Type>,
+     *   name?: string|null,
+     *   url?: string|null,
+     * }|PublicLocation|array{
+     *   latitude: float,
+     *   longitude: float,
+     *   type: value-of<PublicLocation\Type>,
+     *   address?: string|null,
+     *   name?: string|null,
+     *   url?: string|null,
+     * }|PublicContact|array{
+     *   contactProfile: ContactProfile,
+     *   type: value-of<PublicContact\Type>,
+     * }|PublicUnsupportedContent|array{
+     *   type: value-of<PublicUnsupportedContent\Type>
+     * }|PublicMessageHeader|array{
+     *   type: value-of<PublicMessageHeader\Type>,
+     *   fileId?: int|null,
+     *   text?: string|null,
+     * }|PublicQuickReplies|array{
+     *   allowMultiSelect: bool,
+     *   allowUserInput: bool,
+     *   quickReplies: list<QuickReply>,
+     *   type: value-of<PublicQuickReplies\Type>,
+     * }|PublicWhatsAppTemplateMetadata|array{
+     *   crmObjectIds: array<string,int>,
+     *   mappedTemplateId: string,
+     *   parameters: array<string,string>,
+     *   type: value-of<PublicWhatsAppTemplateMetadata\Type>,
+     * }|PublicSocialMetadataAttachment|array{
+     *   socialMetadata: SocialMetadata,
+     *   type: value-of<PublicSocialMetadataAttachment\Type>,
+     * }> $attachments
+     * @param PublicClient|array{
+     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     * } $client
+     * @param list<PublicRecipient|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier,
+     *   actorId?: string|null,
+     *   name?: string|null,
+     *   recipientField?: string|null,
+     * }> $recipients
+     * @param list<PublicSender|array{
+     *   actorId?: string|null,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+     *   name?: string|null,
+     *   senderField?: string|null,
+     * }> $senders
      * @param Type|value-of<Type> $type
      */
     public static function with(
         string $id,
         bool $archived,
         array $attachments,
-        PublicClient $client,
+        PublicClient|array $client,
         string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
@@ -148,20 +197,20 @@ final class PublicComment implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->attachments = $attachments;
-        $obj->client = $client;
-        $obj->conversationsThreadId = $conversationsThreadId;
-        $obj->createdAt = $createdAt;
-        $obj->createdBy = $createdBy;
-        $obj->recipients = $recipients;
-        $obj->richText = $richText;
-        $obj->senders = $senders;
-        $obj->text = $text;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['attachments'] = $attachments;
+        $obj['client'] = $client;
+        $obj['conversationsThreadId'] = $conversationsThreadId;
+        $obj['createdAt'] = $createdAt;
+        $obj['createdBy'] = $createdBy;
+        $obj['recipients'] = $recipients;
+        $obj['richText'] = $richText;
+        $obj['senders'] = $senders;
+        $obj['text'] = $text;
         $obj['type'] = $type;
 
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -169,7 +218,7 @@ final class PublicComment implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -177,26 +226,66 @@ final class PublicComment implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment> $attachments
+     * @param list<PublicFile|array{
+     *   fileId: string,
+     *   fileUsageType: string,
+     *   type: value-of<PublicFile\Type>,
+     *   name?: string|null,
+     *   url?: string|null,
+     * }|PublicLocation|array{
+     *   latitude: float,
+     *   longitude: float,
+     *   type: value-of<PublicLocation\Type>,
+     *   address?: string|null,
+     *   name?: string|null,
+     *   url?: string|null,
+     * }|PublicContact|array{
+     *   contactProfile: ContactProfile,
+     *   type: value-of<PublicContact\Type>,
+     * }|PublicUnsupportedContent|array{
+     *   type: value-of<PublicUnsupportedContent\Type>
+     * }|PublicMessageHeader|array{
+     *   type: value-of<PublicMessageHeader\Type>,
+     *   fileId?: int|null,
+     *   text?: string|null,
+     * }|PublicQuickReplies|array{
+     *   allowMultiSelect: bool,
+     *   allowUserInput: bool,
+     *   quickReplies: list<QuickReply>,
+     *   type: value-of<PublicQuickReplies\Type>,
+     * }|PublicWhatsAppTemplateMetadata|array{
+     *   crmObjectIds: array<string,int>,
+     *   mappedTemplateId: string,
+     *   parameters: array<string,string>,
+     *   type: value-of<PublicWhatsAppTemplateMetadata\Type>,
+     * }|PublicSocialMetadataAttachment|array{
+     *   socialMetadata: SocialMetadata,
+     *   type: value-of<PublicSocialMetadataAttachment\Type>,
+     * }> $attachments
      */
     public function withAttachments(array $attachments): self
     {
         $obj = clone $this;
-        $obj->attachments = $attachments;
+        $obj['attachments'] = $attachments;
 
         return $obj;
     }
 
-    public function withClient(PublicClient $client): self
+    /**
+     * @param PublicClient|array{
+     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     * } $client
+     */
+    public function withClient(PublicClient|array $client): self
     {
         $obj = clone $this;
-        $obj->client = $client;
+        $obj['client'] = $client;
 
         return $obj;
     }
@@ -205,7 +294,7 @@ final class PublicComment implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadId = $conversationsThreadID;
+        $obj['conversationsThreadId'] = $conversationsThreadID;
 
         return $obj;
     }
@@ -213,7 +302,7 @@ final class PublicComment implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -221,18 +310,23 @@ final class PublicComment implements BaseModel
     public function withCreatedBy(string $createdBy): self
     {
         $obj = clone $this;
-        $obj->createdBy = $createdBy;
+        $obj['createdBy'] = $createdBy;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicRecipient> $recipients
+     * @param list<PublicRecipient|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier,
+     *   actorId?: string|null,
+     *   name?: string|null,
+     *   recipientField?: string|null,
+     * }> $recipients
      */
     public function withRecipients(array $recipients): self
     {
         $obj = clone $this;
-        $obj->recipients = $recipients;
+        $obj['recipients'] = $recipients;
 
         return $obj;
     }
@@ -240,18 +334,23 @@ final class PublicComment implements BaseModel
     public function withRichText(string $richText): self
     {
         $obj = clone $this;
-        $obj->richText = $richText;
+        $obj['richText'] = $richText;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicSender> $senders
+     * @param list<PublicSender|array{
+     *   actorId?: string|null,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+     *   name?: string|null,
+     *   senderField?: string|null,
+     * }> $senders
      */
     public function withSenders(array $senders): self
     {
         $obj = clone $this;
-        $obj->senders = $senders;
+        $obj['senders'] = $senders;
 
         return $obj;
     }
@@ -259,7 +358,7 @@ final class PublicComment implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -278,7 +377,7 @@ final class PublicComment implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

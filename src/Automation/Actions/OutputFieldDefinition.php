@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions;
 
+use HubspotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
+use HubspotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
+use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Option;
 
 /**
  * @phpstan-type OutputFieldDefinitionShape = array{
@@ -44,21 +48,50 @@ final class OutputFieldDefinition implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param FieldTypeDefinition|array{
+     *   externalOptions: bool,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: value-of<Type>,
+     *   description?: string|null,
+     *   externalOptionsReferenceType?: string|null,
+     *   fieldType?: value-of<FieldType>|null,
+     *   helpText?: string|null,
+     *   label?: string|null,
+     *   optionsUrl?: string|null,
+     *   referencedObjectType?: value-of<ReferencedObjectType>|null,
+     * } $typeDefinition
      */
-    public static function with(FieldTypeDefinition $typeDefinition): self
+    public static function with(FieldTypeDefinition|array $typeDefinition): self
     {
         $obj = new self;
 
-        $obj->typeDefinition = $typeDefinition;
+        $obj['typeDefinition'] = $typeDefinition;
 
         return $obj;
     }
 
+    /**
+     * @param FieldTypeDefinition|array{
+     *   externalOptions: bool,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: value-of<Type>,
+     *   description?: string|null,
+     *   externalOptionsReferenceType?: string|null,
+     *   fieldType?: value-of<FieldType>|null,
+     *   helpText?: string|null,
+     *   label?: string|null,
+     *   optionsUrl?: string|null,
+     *   referencedObjectType?: value-of<ReferencedObjectType>|null,
+     * } $typeDefinition
+     */
     public function withTypeDefinition(
-        FieldTypeDefinition $typeDefinition
+        FieldTypeDefinition|array $typeDefinition
     ): self {
         $obj = clone $this;
-        $obj->typeDefinition = $typeDefinition;
+        $obj['typeDefinition'] = $typeDefinition;
 
         return $obj;
     }

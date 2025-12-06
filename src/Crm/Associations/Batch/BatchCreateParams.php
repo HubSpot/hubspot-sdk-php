@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\PublicAssociation;
+use HubspotSDK\PublicObjectID;
 
 /**
  * This endpoint allows you to create multiple associations between specified 'from' and 'to' object types in a single batch request.
@@ -16,7 +17,10 @@ use HubspotSDK\Crm\Associations\PublicAssociation;
  * @see HubspotSDK\Services\Crm\Associations\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
- *   fromObjectType: string, inputs: list<PublicAssociation>
+ *   fromObjectType: string,
+ *   inputs: list<PublicAssociation|array{
+ *     from: PublicObjectID, to: PublicObjectID, type: string
+ *   }>,
  * }
  */
 final class BatchCreateParams implements BaseModel
@@ -56,14 +60,16 @@ final class BatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociation> $inputs
+     * @param list<PublicAssociation|array{
+     *   from: PublicObjectID, to: PublicObjectID, type: string
+     * }> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
         $obj = new self;
 
-        $obj->fromObjectType = $fromObjectType;
-        $obj->inputs = $inputs;
+        $obj['fromObjectType'] = $fromObjectType;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -71,18 +77,20 @@ final class BatchCreateParams implements BaseModel
     public function withFromObjectType(string $fromObjectType): self
     {
         $obj = clone $this;
-        $obj->fromObjectType = $fromObjectType;
+        $obj['fromObjectType'] = $fromObjectType;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAssociation> $inputs
+     * @param list<PublicAssociation|array{
+     *   from: PublicObjectID, to: PublicObjectID, type: string
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

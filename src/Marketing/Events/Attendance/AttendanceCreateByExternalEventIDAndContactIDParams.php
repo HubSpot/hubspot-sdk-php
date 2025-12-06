@@ -25,7 +25,9 @@ use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
  *
  * @phpstan-type AttendanceCreateByExternalEventIDAndContactIDParamsShape = array{
  *   externalEventId: string,
- *   inputs: list<MarketingEventSubscriber>,
+ *   inputs: list<MarketingEventSubscriber|array{
+ *     interactionDateTime: int, properties: array<string,string>, vid: int
+ *   }>,
  *   externalAccountId?: string,
  * }
  */
@@ -80,7 +82,9 @@ final class AttendanceCreateByExternalEventIDAndContactIDParams implements BaseM
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventSubscriber> $inputs
+     * @param list<MarketingEventSubscriber|array{
+     *   interactionDateTime: int, properties: array<string,string>, vid: int
+     * }> $inputs
      */
     public static function with(
         string $externalEventId,
@@ -89,10 +93,10 @@ final class AttendanceCreateByExternalEventIDAndContactIDParams implements BaseM
     ): self {
         $obj = new self;
 
-        $obj->externalEventId = $externalEventId;
-        $obj->inputs = $inputs;
+        $obj['externalEventId'] = $externalEventId;
+        $obj['inputs'] = $inputs;
 
-        null !== $externalAccountId && $obj->externalAccountId = $externalAccountId;
+        null !== $externalAccountId && $obj['externalAccountId'] = $externalAccountId;
 
         return $obj;
     }
@@ -100,7 +104,7 @@ final class AttendanceCreateByExternalEventIDAndContactIDParams implements BaseM
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventId = $externalEventID;
+        $obj['externalEventId'] = $externalEventID;
 
         return $obj;
     }
@@ -108,12 +112,14 @@ final class AttendanceCreateByExternalEventIDAndContactIDParams implements BaseM
     /**
      * List of HubSpot contacts to subscribe to the marketing event.
      *
-     * @param list<MarketingEventSubscriber> $inputs
+     * @param list<MarketingEventSubscriber|array{
+     *   interactionDateTime: int, properties: array<string,string>, vid: int
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -124,7 +130,7 @@ final class AttendanceCreateByExternalEventIDAndContactIDParams implements BaseM
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountId = $externalAccountID;
+        $obj['externalAccountId'] = $externalAccountID;
 
         return $obj;
     }

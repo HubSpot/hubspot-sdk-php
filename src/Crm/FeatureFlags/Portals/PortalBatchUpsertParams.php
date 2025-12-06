@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
+use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState;
 
 /**
  * Set the portal flag state for multiple HubSpot accounts at once. Use this endpoint to manage flag exposure for groups of HubSpot accounts.
@@ -16,7 +17,10 @@ use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
  * @see HubspotSDK\Services\Crm\FeatureFlags\PortalsService::batchUpsert()
  *
  * @phpstan-type PortalBatchUpsertParamsShape = array{
- *   appId: int, portalStates: list<BatchPortalEntry>
+ *   appId: int,
+ *   portalStates: list<BatchPortalEntry|array{
+ *     flagState: value-of<FlagState>, portalId: int
+ *   }>,
  * }
  */
 final class PortalBatchUpsertParams implements BaseModel
@@ -56,14 +60,16 @@ final class PortalBatchUpsertParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BatchPortalEntry> $portalStates
+     * @param list<BatchPortalEntry|array{
+     *   flagState: value-of<FlagState>, portalId: int
+     * }> $portalStates
      */
     public static function with(int $appId, array $portalStates): self
     {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->portalStates = $portalStates;
+        $obj['appId'] = $appId;
+        $obj['portalStates'] = $portalStates;
 
         return $obj;
     }
@@ -71,18 +77,20 @@ final class PortalBatchUpsertParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
 
     /**
-     * @param list<BatchPortalEntry> $portalStates
+     * @param list<BatchPortalEntry|array{
+     *   flagState: value-of<FlagState>, portalId: int
+     * }> $portalStates
      */
     public function withPortalStates(array $portalStates): self
     {
         $obj = clone $this;
-        $obj->portalStates = $portalStates;
+        $obj['portalStates'] = $portalStates;
 
         return $obj;
     }

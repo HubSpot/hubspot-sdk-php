@@ -95,13 +95,13 @@ final class ExternalOption implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->description = $description;
-        $obj->displayOrder = $displayOrder;
-        $obj->doubleData = $doubleData;
-        $obj->hidden = $hidden;
-        $obj->label = $label;
-        $obj->readOnly = $readOnly;
-        $obj->value = $value;
+        $obj['description'] = $description;
+        $obj['displayOrder'] = $displayOrder;
+        $obj['doubleData'] = $doubleData;
+        $obj['hidden'] = $hidden;
+        $obj['label'] = $label;
+        $obj['readOnly'] = $readOnly;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class ExternalOption implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class ExternalOption implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class ExternalOption implements BaseModel
     public function withDoubleData(float $doubleData): self
     {
         $obj = clone $this;
-        $obj->doubleData = $doubleData;
+        $obj['doubleData'] = $doubleData;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class ExternalOption implements BaseModel
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
-        $obj->hidden = $hidden;
+        $obj['hidden'] = $hidden;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class ExternalOption implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class ExternalOption implements BaseModel
     public function withReadOnly(bool $readOnly): self
     {
         $obj = clone $this;
-        $obj->readOnly = $readOnly;
+        $obj['readOnly'] = $readOnly;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class ExternalOption implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

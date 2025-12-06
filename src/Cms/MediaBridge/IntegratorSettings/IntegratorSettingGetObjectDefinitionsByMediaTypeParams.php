@@ -63,9 +63,9 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
+        $obj['appId'] = $appId;
 
-        null !== $includeFullDefinition && $obj->includeFullDefinition = $includeFullDefinition;
+        null !== $includeFullDefinition && $obj['includeFullDefinition'] = $includeFullDefinition;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
     public function withIncludeFullDefinition(bool $includeFullDefinition): self
     {
         $obj = clone $this;
-        $obj->includeFullDefinition = $includeFullDefinition;
+        $obj['includeFullDefinition'] = $includeFullDefinition;
 
         return $obj;
     }

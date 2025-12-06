@@ -53,18 +53,22 @@ final class CreatedResponsePropertyGroup implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PropertyGroup|array{
+     *   archived: bool, displayOrder: int, label: string, name: string
+     * } $entity
      */
     public static function with(
         string $createdResourceId,
-        PropertyGroup $entity,
-        ?string $location = null
+        PropertyGroup|array $entity,
+        ?string $location = null,
     ): self {
         $obj = new self;
 
-        $obj->createdResourceId = $createdResourceId;
-        $obj->entity = $entity;
+        $obj['createdResourceId'] = $createdResourceId;
+        $obj['entity'] = $entity;
 
-        null !== $location && $obj->location = $location;
+        null !== $location && $obj['location'] = $location;
 
         return $obj;
     }
@@ -72,18 +76,22 @@ final class CreatedResponsePropertyGroup implements BaseModel
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
-        $obj->createdResourceId = $createdResourceID;
+        $obj['createdResourceId'] = $createdResourceID;
 
         return $obj;
     }
 
     /**
      * An ID for a group of properties.
+     *
+     * @param PropertyGroup|array{
+     *   archived: bool, displayOrder: int, label: string, name: string
+     * } $entity
      */
-    public function withEntity(PropertyGroup $entity): self
+    public function withEntity(PropertyGroup|array $entity): self
     {
         $obj = clone $this;
-        $obj->entity = $entity;
+        $obj['entity'] = $entity;
 
         return $obj;
     }
@@ -91,7 +99,7 @@ final class CreatedResponsePropertyGroup implements BaseModel
     public function withLocation(string $location): self
     {
         $obj = clone $this;
-        $obj->location = $location;
+        $obj['location'] = $location;
 
         return $obj;
     }

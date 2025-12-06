@@ -91,12 +91,12 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     ): self {
         $obj = new self;
 
-        $obj->externalAccountId = $externalAccountId;
+        $obj['externalAccountId'] = $externalAccountId;
 
-        null !== $after && $obj->after = $after;
-        null !== $contactIdentifier && $obj->contactIdentifier = $contactIdentifier;
-        null !== $limit && $obj->limit = $limit;
-        null !== $state && $obj->state = $state;
+        null !== $after && $obj['after'] = $after;
+        null !== $contactIdentifier && $obj['contactIdentifier'] = $contactIdentifier;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $state && $obj['state'] = $state;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountId = $externalAccountID;
+        $obj['externalAccountId'] = $externalAccountID;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     public function withContactIdentifier(string $contactIdentifier): self
     {
         $obj = clone $this;
-        $obj->contactIdentifier = $contactIdentifier;
+        $obj['contactIdentifier'] = $contactIdentifier;
 
         return $obj;
     }
@@ -137,7 +137,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     public function withState(string $state): self
     {
         $obj = clone $this;
-        $obj->state = $state;
+        $obj['state'] = $state;
 
         return $obj;
     }

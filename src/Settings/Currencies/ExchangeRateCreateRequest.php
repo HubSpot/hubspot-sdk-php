@@ -76,10 +76,10 @@ final class ExchangeRateCreateRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->conversionRate = $conversionRate;
+        $obj['conversionRate'] = $conversionRate;
         $obj['fromCurrencyCode'] = $fromCurrencyCode;
 
-        null !== $effectiveAt && $obj->effectiveAt = $effectiveAt;
+        null !== $effectiveAt && $obj['effectiveAt'] = $effectiveAt;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class ExchangeRateCreateRequest implements BaseModel
     public function withConversionRate(float $conversionRate): self
     {
         $obj = clone $this;
-        $obj->conversionRate = $conversionRate;
+        $obj['conversionRate'] = $conversionRate;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class ExchangeRateCreateRequest implements BaseModel
     public function withEffectiveAt(\DateTimeInterface $effectiveAt): self
     {
         $obj = clone $this;
-        $obj->effectiveAt = $effectiveAt;
+        $obj['effectiveAt'] = $effectiveAt;
 
         return $obj;
     }

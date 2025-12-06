@@ -45,13 +45,24 @@ final class RowMetaData implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Styles|array{
+     *   backgroundColor: RgbaColor,
+     *   backgroundGradient: Gradient,
+     *   backgroundImage: BackgroundImage,
+     *   flexboxPositioning: string,
+     *   forceFullWidthSection: bool,
+     *   maxWidthSectionCentering: int,
+     *   verticalAlignment: string,
+     *   breakpointStyles?: array<string,BreakpointStyles>|null,
+     * } $styles
      */
-    public static function with(string $cssClass, Styles $styles): self
+    public static function with(string $cssClass, Styles|array $styles): self
     {
         $obj = new self;
 
-        $obj->cssClass = $cssClass;
-        $obj->styles = $styles;
+        $obj['cssClass'] = $cssClass;
+        $obj['styles'] = $styles;
 
         return $obj;
     }
@@ -59,15 +70,27 @@ final class RowMetaData implements BaseModel
     public function withCssClass(string $cssClass): self
     {
         $obj = clone $this;
-        $obj->cssClass = $cssClass;
+        $obj['cssClass'] = $cssClass;
 
         return $obj;
     }
 
-    public function withStyles(Styles $styles): self
+    /**
+     * @param Styles|array{
+     *   backgroundColor: RgbaColor,
+     *   backgroundGradient: Gradient,
+     *   backgroundImage: BackgroundImage,
+     *   flexboxPositioning: string,
+     *   forceFullWidthSection: bool,
+     *   maxWidthSectionCentering: int,
+     *   verticalAlignment: string,
+     *   breakpointStyles?: array<string,BreakpointStyles>|null,
+     * } $styles
+     */
+    public function withStyles(Styles|array $styles): self
     {
         $obj = clone $this;
-        $obj->styles = $styles;
+        $obj['styles'] = $styles;
 
         return $obj;
     }

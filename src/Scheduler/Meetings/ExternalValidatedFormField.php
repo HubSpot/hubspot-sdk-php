@@ -86,14 +86,14 @@ final class ExternalValidatedFormField implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->isCustom = $isCustom;
-        $obj->label = $label;
-        $obj->name = $name;
-        $obj->value = $value;
+        $obj['isCustom'] = $isCustom;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
+        $obj['value'] = $value;
 
-        null !== $fieldType && $obj->fieldType = $fieldType;
-        null !== $translatedLabel && $obj->translatedLabel = $translatedLabel;
-        null !== $valueLabel && $obj->valueLabel = $valueLabel;
+        null !== $fieldType && $obj['fieldType'] = $fieldType;
+        null !== $translatedLabel && $obj['translatedLabel'] = $translatedLabel;
+        null !== $valueLabel && $obj['valueLabel'] = $valueLabel;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class ExternalValidatedFormField implements BaseModel
     public function withIsCustom(bool $isCustom): self
     {
         $obj = clone $this;
-        $obj->isCustom = $isCustom;
+        $obj['isCustom'] = $isCustom;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class ExternalValidatedFormField implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class ExternalValidatedFormField implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class ExternalValidatedFormField implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class ExternalValidatedFormField implements BaseModel
     public function withFieldType(string $fieldType): self
     {
         $obj = clone $this;
-        $obj->fieldType = $fieldType;
+        $obj['fieldType'] = $fieldType;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class ExternalValidatedFormField implements BaseModel
     public function withTranslatedLabel(string $translatedLabel): self
     {
         $obj = clone $this;
-        $obj->translatedLabel = $translatedLabel;
+        $obj['translatedLabel'] = $translatedLabel;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class ExternalValidatedFormField implements BaseModel
     public function withValueLabel(string $valueLabel): self
     {
         $obj = clone $this;
-        $obj->valueLabel = $valueLabel;
+        $obj['valueLabel'] = $valueLabel;
 
         return $obj;
     }

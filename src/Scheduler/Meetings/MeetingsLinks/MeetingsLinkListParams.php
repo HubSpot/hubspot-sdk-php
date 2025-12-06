@@ -77,11 +77,11 @@ final class MeetingsLinkListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $limit && $obj->limit = $limit;
-        null !== $name && $obj->name = $name;
-        null !== $organizerUserId && $obj->organizerUserId = $organizerUserId;
-        null !== $type && $obj->type = $type;
+        null !== $after && $obj['after'] = $after;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $name && $obj['name'] = $name;
+        null !== $organizerUserId && $obj['organizerUserId'] = $organizerUserId;
+        null !== $type && $obj['type'] = $type;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class MeetingsLinkListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class MeetingsLinkListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class MeetingsLinkListParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class MeetingsLinkListParams implements BaseModel
     public function withOrganizerUserID(string $organizerUserID): self
     {
         $obj = clone $this;
-        $obj->organizerUserId = $organizerUserID;
+        $obj['organizerUserId'] = $organizerUserID;
 
         return $obj;
     }
@@ -136,7 +136,7 @@ final class MeetingsLinkListParams implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }

@@ -58,10 +58,10 @@ final class Speaker implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->name = $name;
+        $obj['id'] = $id;
+        $obj['name'] = $name;
 
-        null !== $email && $obj->email = $email;
+        null !== $email && $obj['email'] = $email;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class Speaker implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class Speaker implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class Speaker implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }

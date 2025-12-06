@@ -102,17 +102,17 @@ final class PublicTaskPatternResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->taskPriority = $taskPriority;
-        $obj->taskType = $taskType;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['taskPriority'] = $taskPriority;
+        $obj['taskType'] = $taskType;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $notes && $obj->notes = $notes;
-        null !== $queueId && $obj->queueId = $queueId;
-        null !== $subject && $obj->subject = $subject;
-        null !== $templateId && $obj->templateId = $templateId;
-        null !== $threadEmailToStepOrder && $obj->threadEmailToStepOrder = $threadEmailToStepOrder;
+        null !== $notes && $obj['notes'] = $notes;
+        null !== $queueId && $obj['queueId'] = $queueId;
+        null !== $subject && $obj['subject'] = $subject;
+        null !== $templateId && $obj['templateId'] = $templateId;
+        null !== $threadEmailToStepOrder && $obj['threadEmailToStepOrder'] = $threadEmailToStepOrder;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -136,7 +136,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withTaskPriority(string $taskPriority): self
     {
         $obj = clone $this;
-        $obj->taskPriority = $taskPriority;
+        $obj['taskPriority'] = $taskPriority;
 
         return $obj;
     }
@@ -144,7 +144,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withTaskType(string $taskType): self
     {
         $obj = clone $this;
-        $obj->taskType = $taskType;
+        $obj['taskType'] = $taskType;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -160,7 +160,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withNotes(string $notes): self
     {
         $obj = clone $this;
-        $obj->notes = $notes;
+        $obj['notes'] = $notes;
 
         return $obj;
     }
@@ -168,7 +168,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withQueueID(int $queueID): self
     {
         $obj = clone $this;
-        $obj->queueId = $queueID;
+        $obj['queueId'] = $queueID;
 
         return $obj;
     }
@@ -176,7 +176,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withSubject(string $subject): self
     {
         $obj = clone $this;
-        $obj->subject = $subject;
+        $obj['subject'] = $subject;
 
         return $obj;
     }
@@ -184,7 +184,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withTemplateID(int $templateID): self
     {
         $obj = clone $this;
-        $obj->templateId = $templateID;
+        $obj['templateId'] = $templateID;
 
         return $obj;
     }
@@ -193,7 +193,7 @@ final class PublicTaskPatternResponse implements BaseModel
         int $threadEmailToStepOrder
     ): self {
         $obj = clone $this;
-        $obj->threadEmailToStepOrder = $threadEmailToStepOrder;
+        $obj['threadEmailToStepOrder'] = $threadEmailToStepOrder;
 
         return $obj;
     }

@@ -80,12 +80,12 @@ final class PublicPropertyReferencedTime implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->property = $property;
-        $obj->referenceType = $referenceType;
+        $obj['property'] = $property;
+        $obj['referenceType'] = $referenceType;
         $obj['timeType'] = $timeType;
-        $obj->zoneId = $zoneId;
+        $obj['zoneId'] = $zoneId;
 
-        null !== $timezoneSource && $obj->timezoneSource = $timezoneSource;
+        null !== $timezoneSource && $obj['timezoneSource'] = $timezoneSource;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class PublicPropertyReferencedTime implements BaseModel
     public function withProperty(string $property): self
     {
         $obj = clone $this;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class PublicPropertyReferencedTime implements BaseModel
     public function withReferenceType(string $referenceType): self
     {
         $obj = clone $this;
-        $obj->referenceType = $referenceType;
+        $obj['referenceType'] = $referenceType;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class PublicPropertyReferencedTime implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj->zoneId = $zoneID;
+        $obj['zoneId'] = $zoneID;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class PublicPropertyReferencedTime implements BaseModel
     public function withTimezoneSource(string $timezoneSource): self
     {
         $obj = clone $this;
-        $obj->timezoneSource = $timezoneSource;
+        $obj['timezoneSource'] = $timezoneSource;
 
         return $obj;
     }

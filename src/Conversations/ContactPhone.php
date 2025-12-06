@@ -56,7 +56,7 @@ final class ContactPhone implements BaseModel
     {
         $obj = new self;
 
-        $obj->phone = $phone;
+        $obj['phone'] = $phone;
 
         null !== $type && $obj['type'] = $type;
 
@@ -66,7 +66,7 @@ final class ContactPhone implements BaseModel
     public function withPhone(string $phone): self
     {
         $obj = clone $this;
-        $obj->phone = $phone;
+        $obj['phone'] = $phone;
 
         return $obj;
     }

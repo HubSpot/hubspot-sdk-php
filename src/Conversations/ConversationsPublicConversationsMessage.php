@@ -8,6 +8,8 @@ use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Attachment;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Direction;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\TruncationStatus;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Type;
+use HubspotSDK\Conversations\PublicClient\ClientType;
+use HubspotSDK\Conversations\PublicMessageStatus\StatusType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -164,12 +166,64 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment> $attachments
+     * @param list<PublicFile|array{
+     *   fileId: string,
+     *   fileUsageType: string,
+     *   type: value-of<PublicFile\Type>,
+     *   name?: string|null,
+     *   url?: string|null,
+     * }|PublicLocation|array{
+     *   latitude: float,
+     *   longitude: float,
+     *   type: value-of<PublicLocation\Type>,
+     *   address?: string|null,
+     *   name?: string|null,
+     *   url?: string|null,
+     * }|PublicContact|array{
+     *   contactProfile: ContactProfile,
+     *   type: value-of<PublicContact\Type>,
+     * }|PublicUnsupportedContent|array{
+     *   type: value-of<PublicUnsupportedContent\Type>
+     * }|PublicMessageHeader|array{
+     *   type: value-of<PublicMessageHeader\Type>,
+     *   fileId?: int|null,
+     *   text?: string|null,
+     * }|PublicQuickReplies|array{
+     *   allowMultiSelect: bool,
+     *   allowUserInput: bool,
+     *   quickReplies: list<QuickReply>,
+     *   type: value-of<PublicQuickReplies\Type>,
+     * }|PublicWhatsAppTemplateMetadata|array{
+     *   crmObjectIds: array<string,int>,
+     *   mappedTemplateId: string,
+     *   parameters: array<string,string>,
+     *   type: value-of<PublicWhatsAppTemplateMetadata\Type>,
+     * }|PublicSocialMetadataAttachment|array{
+     *   socialMetadata: SocialMetadata,
+     *   type: value-of<PublicSocialMetadataAttachment\Type>,
+     * }> $attachments
+     * @param PublicClient|array{
+     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     * } $client
      * @param Direction|value-of<Direction> $direction
-     * @param list<PublicRecipient> $recipients
-     * @param list<PublicSender> $senders
+     * @param list<PublicRecipient|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier,
+     *   actorId?: string|null,
+     *   name?: string|null,
+     *   recipientField?: string|null,
+     * }> $recipients
+     * @param list<PublicSender|array{
+     *   actorId?: string|null,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+     *   name?: string|null,
+     *   senderField?: string|null,
+     * }> $senders
      * @param TruncationStatus|value-of<TruncationStatus> $truncationStatus
      * @param Type|value-of<Type> $type
+     * @param PublicMessageStatus|array{
+     *   statusType: value-of<StatusType>,
+     *   failureDetails?: PublicMessageFailureDetails|null,
+     * } $status
      */
     public static function with(
         string $id,
@@ -177,7 +231,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         array $attachments,
         string $channelAccountId,
         string $channelId,
-        PublicClient $client,
+        PublicClient|array $client,
         string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
@@ -189,33 +243,33 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         Type|string $type = 'MESSAGE',
         ?string $inReplyToId = null,
         ?string $richText = null,
-        ?PublicMessageStatus $status = null,
+        PublicMessageStatus|array|null $status = null,
         ?string $subject = null,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->attachments = $attachments;
-        $obj->channelAccountId = $channelAccountId;
-        $obj->channelId = $channelId;
-        $obj->client = $client;
-        $obj->conversationsThreadId = $conversationsThreadId;
-        $obj->createdAt = $createdAt;
-        $obj->createdBy = $createdBy;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['attachments'] = $attachments;
+        $obj['channelAccountId'] = $channelAccountId;
+        $obj['channelId'] = $channelId;
+        $obj['client'] = $client;
+        $obj['conversationsThreadId'] = $conversationsThreadId;
+        $obj['createdAt'] = $createdAt;
+        $obj['createdBy'] = $createdBy;
         $obj['direction'] = $direction;
-        $obj->recipients = $recipients;
-        $obj->senders = $senders;
-        $obj->text = $text;
+        $obj['recipients'] = $recipients;
+        $obj['senders'] = $senders;
+        $obj['text'] = $text;
         $obj['truncationStatus'] = $truncationStatus;
         $obj['type'] = $type;
 
-        null !== $inReplyToId && $obj->inReplyToId = $inReplyToId;
-        null !== $richText && $obj->richText = $richText;
-        null !== $status && $obj->status = $status;
-        null !== $subject && $obj->subject = $subject;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $inReplyToId && $obj['inReplyToId'] = $inReplyToId;
+        null !== $richText && $obj['richText'] = $richText;
+        null !== $status && $obj['status'] = $status;
+        null !== $subject && $obj['subject'] = $subject;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -223,7 +277,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -231,18 +285,53 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment> $attachments
+     * @param list<PublicFile|array{
+     *   fileId: string,
+     *   fileUsageType: string,
+     *   type: value-of<PublicFile\Type>,
+     *   name?: string|null,
+     *   url?: string|null,
+     * }|PublicLocation|array{
+     *   latitude: float,
+     *   longitude: float,
+     *   type: value-of<PublicLocation\Type>,
+     *   address?: string|null,
+     *   name?: string|null,
+     *   url?: string|null,
+     * }|PublicContact|array{
+     *   contactProfile: ContactProfile,
+     *   type: value-of<PublicContact\Type>,
+     * }|PublicUnsupportedContent|array{
+     *   type: value-of<PublicUnsupportedContent\Type>
+     * }|PublicMessageHeader|array{
+     *   type: value-of<PublicMessageHeader\Type>,
+     *   fileId?: int|null,
+     *   text?: string|null,
+     * }|PublicQuickReplies|array{
+     *   allowMultiSelect: bool,
+     *   allowUserInput: bool,
+     *   quickReplies: list<QuickReply>,
+     *   type: value-of<PublicQuickReplies\Type>,
+     * }|PublicWhatsAppTemplateMetadata|array{
+     *   crmObjectIds: array<string,int>,
+     *   mappedTemplateId: string,
+     *   parameters: array<string,string>,
+     *   type: value-of<PublicWhatsAppTemplateMetadata\Type>,
+     * }|PublicSocialMetadataAttachment|array{
+     *   socialMetadata: SocialMetadata,
+     *   type: value-of<PublicSocialMetadataAttachment\Type>,
+     * }> $attachments
      */
     public function withAttachments(array $attachments): self
     {
         $obj = clone $this;
-        $obj->attachments = $attachments;
+        $obj['attachments'] = $attachments;
 
         return $obj;
     }
@@ -250,7 +339,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj->channelAccountId = $channelAccountID;
+        $obj['channelAccountId'] = $channelAccountID;
 
         return $obj;
     }
@@ -258,15 +347,20 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj->channelId = $channelID;
+        $obj['channelId'] = $channelID;
 
         return $obj;
     }
 
-    public function withClient(PublicClient $client): self
+    /**
+     * @param PublicClient|array{
+     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     * } $client
+     */
+    public function withClient(PublicClient|array $client): self
     {
         $obj = clone $this;
-        $obj->client = $client;
+        $obj['client'] = $client;
 
         return $obj;
     }
@@ -275,7 +369,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadId = $conversationsThreadID;
+        $obj['conversationsThreadId'] = $conversationsThreadID;
 
         return $obj;
     }
@@ -283,7 +377,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -291,7 +385,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withCreatedBy(string $createdBy): self
     {
         $obj = clone $this;
-        $obj->createdBy = $createdBy;
+        $obj['createdBy'] = $createdBy;
 
         return $obj;
     }
@@ -308,23 +402,33 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipient> $recipients
+     * @param list<PublicRecipient|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier,
+     *   actorId?: string|null,
+     *   name?: string|null,
+     *   recipientField?: string|null,
+     * }> $recipients
      */
     public function withRecipients(array $recipients): self
     {
         $obj = clone $this;
-        $obj->recipients = $recipients;
+        $obj['recipients'] = $recipients;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicSender> $senders
+     * @param list<PublicSender|array{
+     *   actorId?: string|null,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+     *   name?: string|null,
+     *   senderField?: string|null,
+     * }> $senders
      */
     public function withSenders(array $senders): self
     {
         $obj = clone $this;
-        $obj->senders = $senders;
+        $obj['senders'] = $senders;
 
         return $obj;
     }
@@ -332,7 +436,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -363,7 +467,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withInReplyToID(string $inReplyToID): self
     {
         $obj = clone $this;
-        $obj->inReplyToId = $inReplyToID;
+        $obj['inReplyToId'] = $inReplyToID;
 
         return $obj;
     }
@@ -371,15 +475,21 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withRichText(string $richText): self
     {
         $obj = clone $this;
-        $obj->richText = $richText;
+        $obj['richText'] = $richText;
 
         return $obj;
     }
 
-    public function withStatus(PublicMessageStatus $status): self
+    /**
+     * @param PublicMessageStatus|array{
+     *   statusType: value-of<StatusType>,
+     *   failureDetails?: PublicMessageFailureDetails|null,
+     * } $status
+     */
+    public function withStatus(PublicMessageStatus|array $status): self
     {
         $obj = clone $this;
-        $obj->status = $status;
+        $obj['status'] = $status;
 
         return $obj;
     }
@@ -387,7 +497,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withSubject(string $subject): self
     {
         $obj = clone $this;
-        $obj->subject = $subject;
+        $obj['subject'] = $subject;
 
         return $obj;
     }
@@ -395,7 +505,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

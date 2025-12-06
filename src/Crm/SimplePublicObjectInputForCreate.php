@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PublicObjectID;
 
 /**
  * Is the input object used to create a new CRM object, containing the properties to be set and optional associations to link the new record with other CRM objects.
@@ -59,26 +61,30 @@ final class SimplePublicObjectInputForCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject|array{
+     *   to: PublicObjectID, types: list<AssociationSpec>
+     * }> $associations
      * @param array<string,string> $properties
      */
     public static function with(array $associations, array $properties): self
     {
         $obj = new self;
 
-        $obj->associations = $associations;
-        $obj->properties = $properties;
+        $obj['associations'] = $associations;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAssociationsForObject> $associations
+     * @param list<PublicAssociationsForObject|array{
+     *   to: PublicObjectID, types: list<AssociationSpec>
+     * }> $associations
      */
     public function withAssociations(array $associations): self
     {
         $obj = clone $this;
-        $obj->associations = $associations;
+        $obj['associations'] = $associations;
 
         return $obj;
     }
@@ -91,7 +97,7 @@ final class SimplePublicObjectInputForCreate implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

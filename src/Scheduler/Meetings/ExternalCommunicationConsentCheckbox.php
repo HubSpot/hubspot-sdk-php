@@ -63,9 +63,9 @@ final class ExternalCommunicationConsentCheckbox implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->communicationTypeId = $communicationTypeId;
-        $obj->label = $label;
-        $obj->required = $required;
+        $obj['communicationTypeId'] = $communicationTypeId;
+        $obj['label'] = $label;
+        $obj['required'] = $required;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class ExternalCommunicationConsentCheckbox implements BaseModel
     public function withCommunicationTypeID(string $communicationTypeID): self
     {
         $obj = clone $this;
-        $obj->communicationTypeId = $communicationTypeID;
+        $obj['communicationTypeId'] = $communicationTypeID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class ExternalCommunicationConsentCheckbox implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class ExternalCommunicationConsentCheckbox implements BaseModel
     public function withRequired(bool $required): self
     {
         $obj = clone $this;
-        $obj->required = $required;
+        $obj['required'] = $required;
 
         return $obj;
     }

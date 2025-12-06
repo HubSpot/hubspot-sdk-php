@@ -116,14 +116,14 @@ final class SmtpAPITokenView implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->campaignName = $campaignName;
-        $obj->createContact = $createContact;
-        $obj->createdAt = $createdAt;
-        $obj->createdBy = $createdBy;
-        $obj->emailCampaignId = $emailCampaignId;
+        $obj['id'] = $id;
+        $obj['campaignName'] = $campaignName;
+        $obj['createContact'] = $createContact;
+        $obj['createdAt'] = $createdAt;
+        $obj['createdBy'] = $createdBy;
+        $obj['emailCampaignId'] = $emailCampaignId;
 
-        null !== $password && $obj->password = $password;
+        null !== $password && $obj['password'] = $password;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class SmtpAPITokenView implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class SmtpAPITokenView implements BaseModel
     public function withCampaignName(string $campaignName): self
     {
         $obj = clone $this;
-        $obj->campaignName = $campaignName;
+        $obj['campaignName'] = $campaignName;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class SmtpAPITokenView implements BaseModel
     public function withCreateContact(bool $createContact): self
     {
         $obj = clone $this;
-        $obj->createContact = $createContact;
+        $obj['createContact'] = $createContact;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class SmtpAPITokenView implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -178,7 +178,7 @@ final class SmtpAPITokenView implements BaseModel
     public function withCreatedBy(string $createdBy): self
     {
         $obj = clone $this;
-        $obj->createdBy = $createdBy;
+        $obj['createdBy'] = $createdBy;
 
         return $obj;
     }
@@ -189,7 +189,7 @@ final class SmtpAPITokenView implements BaseModel
     public function withEmailCampaignID(string $emailCampaignID): self
     {
         $obj = clone $this;
-        $obj->emailCampaignId = $emailCampaignID;
+        $obj['emailCampaignId'] = $emailCampaignID;
 
         return $obj;
     }
@@ -200,7 +200,7 @@ final class SmtpAPITokenView implements BaseModel
     public function withPassword(string $password): self
     {
         $obj = clone $this;
-        $obj->password = $password;
+        $obj['password'] = $password;
 
         return $obj;
     }

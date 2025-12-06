@@ -46,8 +46,8 @@ final class ExternalBehavioralEventTypeDefinitionPatch implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $description && $obj->description = $description;
-        null !== $label && $obj->label = $label;
+        null !== $description && $obj['description'] = $description;
+        null !== $label && $obj['label'] = $label;
 
         return $obj;
     }
@@ -58,7 +58,7 @@ final class ExternalBehavioralEventTypeDefinitionPatch implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class ExternalBehavioralEventTypeDefinitionPatch implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }

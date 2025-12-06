@@ -8,7 +8,11 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\OptionInput;
 use HubspotSDK\PropertyCreate;
+use HubspotSDK\PropertyCreate\DataSensitivity;
+use HubspotSDK\PropertyCreate\FieldType;
+use HubspotSDK\PropertyCreate\Type;
 
 /**
  * Create a batch of properties of the specified object type.
@@ -16,7 +20,24 @@ use HubspotSDK\PropertyCreate;
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::createBatch()
  *
  * @phpstan-type PropertyCreateBatchParamsShape = array{
- *   appId: int, inputs: list<PropertyCreate>
+ *   appId: int,
+ *   inputs: list<PropertyCreate|array{
+ *     fieldType: value-of<FieldType>,
+ *     groupName: string,
+ *     label: string,
+ *     name: string,
+ *     type: value-of<Type>,
+ *     calculationFormula?: string|null,
+ *     dataSensitivity?: value-of<DataSensitivity>|null,
+ *     description?: string|null,
+ *     displayOrder?: int|null,
+ *     externalOptions?: bool|null,
+ *     formField?: bool|null,
+ *     hasUniqueValue?: bool|null,
+ *     hidden?: bool|null,
+ *     options?: list<OptionInput>|null,
+ *     referencedObjectType?: string|null,
+ *   }>,
  * }
  */
 final class PropertyCreateBatchParams implements BaseModel
@@ -56,14 +77,30 @@ final class PropertyCreateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyCreate> $inputs
+     * @param list<PropertyCreate|array{
+     *   fieldType: value-of<FieldType>,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   calculationFormula?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   options?: list<OptionInput>|null,
+     *   referencedObjectType?: string|null,
+     * }> $inputs
      */
     public static function with(int $appId, array $inputs): self
     {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->inputs = $inputs;
+        $obj['appId'] = $appId;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -71,18 +108,34 @@ final class PropertyCreateBatchParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
 
     /**
-     * @param list<PropertyCreate> $inputs
+     * @param list<PropertyCreate|array{
+     *   fieldType: value-of<FieldType>,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   calculationFormula?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   options?: list<OptionInput>|null,
+     *   referencedObjectType?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

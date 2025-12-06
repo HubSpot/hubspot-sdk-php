@@ -50,24 +50,28 @@ final class APIDailyEnrollmentSchedule implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        APITimeOfDay $timeOfDay,
+        APITimeOfDay|array $timeOfDay,
         Type|string $type = 'DAILY'
     ): self {
         $obj = new self;
 
-        $obj->timeOfDay = $timeOfDay;
+        $obj['timeOfDay'] = $timeOfDay;
         $obj['type'] = $type;
 
         return $obj;
     }
 
-    public function withTimeOfDay(APITimeOfDay $timeOfDay): self
+    /**
+     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
+     */
+    public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
         $obj = clone $this;
-        $obj->timeOfDay = $timeOfDay;
+        $obj['timeOfDay'] = $timeOfDay;
 
         return $obj;
     }

@@ -7,7 +7,9 @@ namespace HubspotSDK;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PublicNumOccurrencesRefineBy\Type;
 use HubspotSDK\PublicPropertyAssociationInListFilter\FilterType;
+use HubspotSDK\PublicTimePointOperation\OperationType;
 
 /**
  * @phpstan-type PublicPropertyAssociationInListFilterShape = array{
@@ -78,10 +80,53 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param PublicNumOccurrencesRefineBy|array{
+     *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
+     * }|PublicSetOccurrencesRefineBy|array{
+     *   setType: string, type: value-of<PublicSetOccurrencesRefineBy\Type>
+     * }|PublicRelativeComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timeOffset: PublicTimeOffset,
+     *   type: value-of<PublicRelativeComparativeTimestampRefineBy\Type>,
+     * }|PublicRelativeRangedTimestampRefineBy|array{
+     *   lowerBoundOffset: PublicTimeOffset,
+     *   rangeType: string,
+     *   type: value-of<PublicRelativeRangedTimestampRefineBy\Type>,
+     *   upperBoundOffset: PublicTimeOffset,
+     * }|PublicAbsoluteComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timestamp: int,
+     *   type: value-of<PublicAbsoluteComparativeTimestampRefineBy\Type>,
+     * }|PublicAbsoluteRangedTimestampRefineBy|array{
+     *   lowerTimestamp: int,
+     *   rangeType: string,
+     *   type: value-of<PublicAbsoluteRangedTimestampRefineBy\Type>,
+     *   upperTimestamp: int,
+     * }|PublicAllHistoryRefineBy|array{
+     *   type: value-of<PublicAllHistoryRefineBy\Type>
+     * }|PublicTimePointOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   operationType: value-of<OperationType>,
+     *   operator: string,
+     *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   type: string,
+     *   endpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     * }|PublicRangedTimeOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   operationType: string,
+     *   operator: string,
+     *   type: value-of<PublicRangedTimeOperation\Type>,
+     *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   lowerBoundEndpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     *   upperBoundEndpointBehavior?: string|null,
+     * } $coalescingRefineBy
      * @param FilterType|value-of<FilterType> $filterType
      */
     public static function with(
-        PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
+        PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
         string $listId,
         string $operator,
         string $propertyWithObjectId,
@@ -90,22 +135,67 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->coalescingRefineBy = $coalescingRefineBy;
+        $obj['coalescingRefineBy'] = $coalescingRefineBy;
         $obj['filterType'] = $filterType;
-        $obj->listId = $listId;
-        $obj->operator = $operator;
-        $obj->propertyWithObjectId = $propertyWithObjectId;
+        $obj['listId'] = $listId;
+        $obj['operator'] = $operator;
+        $obj['propertyWithObjectId'] = $propertyWithObjectId;
 
-        null !== $toObjectTypeId && $obj->toObjectTypeId = $toObjectTypeId;
+        null !== $toObjectTypeId && $obj['toObjectTypeId'] = $toObjectTypeId;
 
         return $obj;
     }
 
+    /**
+     * @param PublicNumOccurrencesRefineBy|array{
+     *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
+     * }|PublicSetOccurrencesRefineBy|array{
+     *   setType: string, type: value-of<PublicSetOccurrencesRefineBy\Type>
+     * }|PublicRelativeComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timeOffset: PublicTimeOffset,
+     *   type: value-of<PublicRelativeComparativeTimestampRefineBy\Type>,
+     * }|PublicRelativeRangedTimestampRefineBy|array{
+     *   lowerBoundOffset: PublicTimeOffset,
+     *   rangeType: string,
+     *   type: value-of<PublicRelativeRangedTimestampRefineBy\Type>,
+     *   upperBoundOffset: PublicTimeOffset,
+     * }|PublicAbsoluteComparativeTimestampRefineBy|array{
+     *   comparison: string,
+     *   timestamp: int,
+     *   type: value-of<PublicAbsoluteComparativeTimestampRefineBy\Type>,
+     * }|PublicAbsoluteRangedTimestampRefineBy|array{
+     *   lowerTimestamp: int,
+     *   rangeType: string,
+     *   type: value-of<PublicAbsoluteRangedTimestampRefineBy\Type>,
+     *   upperTimestamp: int,
+     * }|PublicAllHistoryRefineBy|array{
+     *   type: value-of<PublicAllHistoryRefineBy\Type>
+     * }|PublicTimePointOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   operationType: value-of<OperationType>,
+     *   operator: string,
+     *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   type: string,
+     *   endpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     * }|PublicRangedTimeOperation|array{
+     *   includeObjectsWithNoValueSet: bool,
+     *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   operationType: string,
+     *   operator: string,
+     *   type: value-of<PublicRangedTimeOperation\Type>,
+     *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+     *   lowerBoundEndpointBehavior?: string|null,
+     *   propertyParser?: string|null,
+     *   upperBoundEndpointBehavior?: string|null,
+     * } $coalescingRefineBy
+     */
     public function withCoalescingRefineBy(
-        PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
+        PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
     ): self {
         $obj = clone $this;
-        $obj->coalescingRefineBy = $coalescingRefineBy;
+        $obj['coalescingRefineBy'] = $coalescingRefineBy;
 
         return $obj;
     }
@@ -124,7 +214,7 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listId = $listID;
+        $obj['listId'] = $listID;
 
         return $obj;
     }
@@ -132,7 +222,7 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -140,7 +230,7 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
     public function withPropertyWithObjectID(string $propertyWithObjectID): self
     {
         $obj = clone $this;
-        $obj->propertyWithObjectId = $propertyWithObjectID;
+        $obj['propertyWithObjectId'] = $propertyWithObjectID;
 
         return $obj;
     }
@@ -148,7 +238,7 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->toObjectTypeId = $toObjectTypeID;
+        $obj['toObjectTypeId'] = $toObjectTypeID;
 
         return $obj;
     }

@@ -60,7 +60,7 @@ final class EventDeleteByExternalEventIDParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->externalAccountId = $externalAccountId;
+        $obj['externalAccountId'] = $externalAccountId;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class EventDeleteByExternalEventIDParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountId = $externalAccountID;
+        $obj['externalAccountId'] = $externalAccountID;
 
         return $obj;
     }

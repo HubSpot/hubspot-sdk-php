@@ -56,8 +56,8 @@ final class ExternalLegalConsentResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->communicationTypeId = $communicationTypeId;
-        $obj->consented = $consented;
+        $obj['communicationTypeId'] = $communicationTypeId;
+        $obj['consented'] = $consented;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class ExternalLegalConsentResponse implements BaseModel
     public function withCommunicationTypeID(string $communicationTypeID): self
     {
         $obj = clone $this;
-        $obj->communicationTypeId = $communicationTypeID;
+        $obj['communicationTypeId'] = $communicationTypeID;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class ExternalLegalConsentResponse implements BaseModel
     public function withConsented(bool $consented): self
     {
         $obj = clone $this;
-        $obj->consented = $consented;
+        $obj['consented'] = $consented;
 
         return $obj;
     }

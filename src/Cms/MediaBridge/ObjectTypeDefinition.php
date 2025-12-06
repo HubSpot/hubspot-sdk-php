@@ -126,6 +126,9 @@ final class ObjectTypeDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param ObjectTypeDefinitionLabels|array{
+     *   plural?: string|null, singular?: string|null
+     * } $labels
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
@@ -135,7 +138,7 @@ final class ObjectTypeDefinition implements BaseModel
         bool $allowsSensitiveProperties,
         bool $archived,
         string $fullyQualifiedName,
-        ObjectTypeDefinitionLabels $labels,
+        ObjectTypeDefinitionLabels|array $labels,
         string $name,
         string $objectTypeId,
         array $requiredProperties,
@@ -149,22 +152,22 @@ final class ObjectTypeDefinition implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->allowsSensitiveProperties = $allowsSensitiveProperties;
-        $obj->archived = $archived;
-        $obj->fullyQualifiedName = $fullyQualifiedName;
-        $obj->labels = $labels;
-        $obj->name = $name;
-        $obj->objectTypeId = $objectTypeId;
-        $obj->requiredProperties = $requiredProperties;
-        $obj->searchableProperties = $searchableProperties;
-        $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
+        $obj['id'] = $id;
+        $obj['allowsSensitiveProperties'] = $allowsSensitiveProperties;
+        $obj['archived'] = $archived;
+        $obj['fullyQualifiedName'] = $fullyQualifiedName;
+        $obj['labels'] = $labels;
+        $obj['name'] = $name;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['requiredProperties'] = $requiredProperties;
+        $obj['searchableProperties'] = $searchableProperties;
+        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $description && $obj->description = $description;
-        null !== $portalId && $obj->portalId = $portalId;
-        null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $description && $obj['description'] = $description;
+        null !== $portalId && $obj['portalId'] = $portalId;
+        null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -172,7 +175,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -181,7 +184,7 @@ final class ObjectTypeDefinition implements BaseModel
         bool $allowsSensitiveProperties
     ): self {
         $obj = clone $this;
-        $obj->allowsSensitiveProperties = $allowsSensitiveProperties;
+        $obj['allowsSensitiveProperties'] = $allowsSensitiveProperties;
 
         return $obj;
     }
@@ -189,7 +192,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -197,15 +200,20 @@ final class ObjectTypeDefinition implements BaseModel
     public function withFullyQualifiedName(string $fullyQualifiedName): self
     {
         $obj = clone $this;
-        $obj->fullyQualifiedName = $fullyQualifiedName;
+        $obj['fullyQualifiedName'] = $fullyQualifiedName;
 
         return $obj;
     }
 
-    public function withLabels(ObjectTypeDefinitionLabels $labels): self
+    /**
+     * @param ObjectTypeDefinitionLabels|array{
+     *   plural?: string|null, singular?: string|null
+     * } $labels
+     */
+    public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
         $obj = clone $this;
-        $obj->labels = $labels;
+        $obj['labels'] = $labels;
 
         return $obj;
     }
@@ -213,7 +221,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -221,7 +229,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -232,7 +240,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withRequiredProperties(array $requiredProperties): self
     {
         $obj = clone $this;
-        $obj->requiredProperties = $requiredProperties;
+        $obj['requiredProperties'] = $requiredProperties;
 
         return $obj;
     }
@@ -243,7 +251,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withSearchableProperties(array $searchableProperties): self
     {
         $obj = clone $this;
-        $obj->searchableProperties = $searchableProperties;
+        $obj['searchableProperties'] = $searchableProperties;
 
         return $obj;
     }
@@ -255,7 +263,7 @@ final class ObjectTypeDefinition implements BaseModel
         array $secondaryDisplayProperties
     ): self {
         $obj = clone $this;
-        $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
+        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
         return $obj;
     }
@@ -263,7 +271,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -271,7 +279,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -279,7 +287,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }
@@ -288,7 +296,7 @@ final class ObjectTypeDefinition implements BaseModel
         string $primaryDisplayProperty
     ): self {
         $obj = clone $this;
-        $obj->primaryDisplayProperty = $primaryDisplayProperty;
+        $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
 
         return $obj;
     }
@@ -296,7 +304,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

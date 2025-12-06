@@ -9,7 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Option;
 use HubspotSDK\Property;
+use HubspotSDK\Property\DataSensitivity;
+use HubspotSDK\PropertyModificationMetadata;
 
 /**
  * @phpstan-type CreatedResponsePropertyShape = array{
@@ -58,18 +61,47 @@ final class CreatedResponseProperty implements BaseModel, ResponseConverter
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Property|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * } $entity
      */
     public static function with(
         string $createdResourceId,
-        Property $entity,
+        Property|array $entity,
         ?string $location = null
     ): self {
         $obj = new self;
 
-        $obj->createdResourceId = $createdResourceId;
-        $obj->entity = $entity;
+        $obj['createdResourceId'] = $createdResourceId;
+        $obj['entity'] = $entity;
 
-        null !== $location && $obj->location = $location;
+        null !== $location && $obj['location'] = $location;
 
         return $obj;
     }
@@ -77,18 +109,47 @@ final class CreatedResponseProperty implements BaseModel, ResponseConverter
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
-        $obj->createdResourceId = $createdResourceID;
+        $obj['createdResourceId'] = $createdResourceID;
 
         return $obj;
     }
 
     /**
      * Defines a property.
+     *
+     * @param Property|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * } $entity
      */
-    public function withEntity(Property $entity): self
+    public function withEntity(Property|array $entity): self
     {
         $obj = clone $this;
-        $obj->entity = $entity;
+        $obj['entity'] = $entity;
 
         return $obj;
     }
@@ -96,7 +157,7 @@ final class CreatedResponseProperty implements BaseModel, ResponseConverter
     public function withLocation(string $location): self
     {
         $obj = clone $this;
-        $obj->location = $location;
+        $obj['location'] = $location;
 
         return $obj;
     }

@@ -72,10 +72,10 @@ final class PortalFlagStateResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->flagName = $flagName;
+        $obj['appId'] = $appId;
+        $obj['flagName'] = $flagName;
         $obj['flagState'] = $flagState;
-        $obj->portalId = $portalId;
+        $obj['portalId'] = $portalId;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class PortalFlagStateResponse implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class PortalFlagStateResponse implements BaseModel
     public function withFlagName(string $flagName): self
     {
         $obj = clone $this;
-        $obj->flagName = $flagName;
+        $obj['flagName'] = $flagName;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class PortalFlagStateResponse implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }

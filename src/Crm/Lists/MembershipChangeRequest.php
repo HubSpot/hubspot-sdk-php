@@ -63,8 +63,8 @@ final class MembershipChangeRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->recordIdsToAdd = $recordIdsToAdd;
-        $obj->recordIdsToRemove = $recordIdsToRemove;
+        $obj['recordIdsToAdd'] = $recordIdsToAdd;
+        $obj['recordIdsToRemove'] = $recordIdsToRemove;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class MembershipChangeRequest implements BaseModel
     public function withRecordIDsToAdd(array $recordIDsToAdd): self
     {
         $obj = clone $this;
-        $obj->recordIdsToAdd = $recordIDsToAdd;
+        $obj['recordIdsToAdd'] = $recordIDsToAdd;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class MembershipChangeRequest implements BaseModel
     public function withRecordIDsToRemove(array $recordIDsToRemove): self
     {
         $obj = clone $this;
-        $obj->recordIdsToRemove = $recordIDsToRemove;
+        $obj['recordIdsToRemove'] = $recordIDsToRemove;
 
         return $obj;
     }

@@ -7,6 +7,7 @@ namespace HubspotSDK\Scheduler\Meetings;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterestLegalBasis;
 
 /**
  * @phpstan-type ExternalMeetingsLinkSettingsShape = array{
@@ -133,9 +134,47 @@ final class ExternalMeetingsLinkSettings implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,ExternalClosedRange> $availability
+     * @param array<string,ExternalClosedRange|array{
+     *   end: int, start: int
+     * }> $availability
      * @param list<int> $durations
-     * @param list<ExternalLinkFormField> $formFields
+     * @param list<ExternalLinkFormField|array{
+     *   fieldType: string,
+     *   isCustom: bool,
+     *   isRequired: bool,
+     *   label: string,
+     *   name: string,
+     *   options: list<ExternalOption>,
+     *   type: string,
+     * }> $formFields
+     * @param ExternalLinkDisplayInfo|array{
+     *   avatar?: string|null,
+     *   companyAvatar?: string|null,
+     *   headline?: string|null,
+     *   publicDisplayAvatarOption?: string|null,
+     * } $displayInfo
+     * @param ExternalGuestSettings|array{
+     *   canAddGuests: bool, maxGuestCount: int
+     * } $guestSettings
+     * @param ExternalLegalConsentOptions|array{
+     *   communicationConsentCheckboxes: list<ExternalCommunicationConsentCheckbox>,
+     *   communicationConsentText: string,
+     *   isLegitimateInterest: bool,
+     *   legitimateInterestSubscriptionTypes: list<int>,
+     *   privacyPolicyText: string,
+     *   processingConsentCheckboxLabel: string,
+     *   processingConsentFooterText: string,
+     *   processingConsentText: string,
+     *   processingConsentType: string,
+     *   legitimateInterestLegalBasis?: value-of<LegitimateInterestLegalBasis>|null,
+     * } $legalConsentOptions
+     * @param ExternalMeetingsWelcomeScreenInfo|array{
+     *   description?: string|null,
+     *   logoUrl?: string|null,
+     *   showWelcomeScreen?: bool|null,
+     *   title?: string|null,
+     *   useCompanyLogo?: bool|null,
+     * } $welcomeScreenInfo
      */
     public static function with(
         array $availability,
@@ -148,47 +187,49 @@ final class ExternalMeetingsLinkSettings implements BaseModel
         int $weeksToAdvertise,
         ?int $customAvailabilityEndDate = null,
         ?int $customAvailabilityStartDate = null,
-        ?ExternalLinkDisplayInfo $displayInfo = null,
-        ?ExternalGuestSettings $guestSettings = null,
+        ExternalLinkDisplayInfo|array|null $displayInfo = null,
+        ExternalGuestSettings|array|null $guestSettings = null,
         ?string $language = null,
-        ?ExternalLegalConsentOptions $legalConsentOptions = null,
+        ExternalLegalConsentOptions|array|null $legalConsentOptions = null,
         ?string $locale = null,
         ?string $location = null,
         ?string $redirectUrl = null,
-        ?ExternalMeetingsWelcomeScreenInfo $welcomeScreenInfo = null,
+        ExternalMeetingsWelcomeScreenInfo|array|null $welcomeScreenInfo = null,
     ): self {
         $obj = new self;
 
-        $obj->availability = $availability;
-        $obj->durations = $durations;
-        $obj->formFields = $formFields;
-        $obj->legalConsentEnabled = $legalConsentEnabled;
-        $obj->meetingBufferTime = $meetingBufferTime;
-        $obj->ownerPrioritized = $ownerPrioritized;
-        $obj->startTimeIncrementMinutes = $startTimeIncrementMinutes;
-        $obj->weeksToAdvertise = $weeksToAdvertise;
+        $obj['availability'] = $availability;
+        $obj['durations'] = $durations;
+        $obj['formFields'] = $formFields;
+        $obj['legalConsentEnabled'] = $legalConsentEnabled;
+        $obj['meetingBufferTime'] = $meetingBufferTime;
+        $obj['ownerPrioritized'] = $ownerPrioritized;
+        $obj['startTimeIncrementMinutes'] = $startTimeIncrementMinutes;
+        $obj['weeksToAdvertise'] = $weeksToAdvertise;
 
-        null !== $customAvailabilityEndDate && $obj->customAvailabilityEndDate = $customAvailabilityEndDate;
-        null !== $customAvailabilityStartDate && $obj->customAvailabilityStartDate = $customAvailabilityStartDate;
-        null !== $displayInfo && $obj->displayInfo = $displayInfo;
-        null !== $guestSettings && $obj->guestSettings = $guestSettings;
-        null !== $language && $obj->language = $language;
-        null !== $legalConsentOptions && $obj->legalConsentOptions = $legalConsentOptions;
-        null !== $locale && $obj->locale = $locale;
-        null !== $location && $obj->location = $location;
-        null !== $redirectUrl && $obj->redirectUrl = $redirectUrl;
-        null !== $welcomeScreenInfo && $obj->welcomeScreenInfo = $welcomeScreenInfo;
+        null !== $customAvailabilityEndDate && $obj['customAvailabilityEndDate'] = $customAvailabilityEndDate;
+        null !== $customAvailabilityStartDate && $obj['customAvailabilityStartDate'] = $customAvailabilityStartDate;
+        null !== $displayInfo && $obj['displayInfo'] = $displayInfo;
+        null !== $guestSettings && $obj['guestSettings'] = $guestSettings;
+        null !== $language && $obj['language'] = $language;
+        null !== $legalConsentOptions && $obj['legalConsentOptions'] = $legalConsentOptions;
+        null !== $locale && $obj['locale'] = $locale;
+        null !== $location && $obj['location'] = $location;
+        null !== $redirectUrl && $obj['redirectUrl'] = $redirectUrl;
+        null !== $welcomeScreenInfo && $obj['welcomeScreenInfo'] = $welcomeScreenInfo;
 
         return $obj;
     }
 
     /**
-     * @param array<string,ExternalClosedRange> $availability
+     * @param array<string,ExternalClosedRange|array{
+     *   end: int, start: int
+     * }> $availability
      */
     public function withAvailability(array $availability): self
     {
         $obj = clone $this;
-        $obj->availability = $availability;
+        $obj['availability'] = $availability;
 
         return $obj;
     }
@@ -199,18 +240,26 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withDurations(array $durations): self
     {
         $obj = clone $this;
-        $obj->durations = $durations;
+        $obj['durations'] = $durations;
 
         return $obj;
     }
 
     /**
-     * @param list<ExternalLinkFormField> $formFields
+     * @param list<ExternalLinkFormField|array{
+     *   fieldType: string,
+     *   isCustom: bool,
+     *   isRequired: bool,
+     *   label: string,
+     *   name: string,
+     *   options: list<ExternalOption>,
+     *   type: string,
+     * }> $formFields
      */
     public function withFormFields(array $formFields): self
     {
         $obj = clone $this;
-        $obj->formFields = $formFields;
+        $obj['formFields'] = $formFields;
 
         return $obj;
     }
@@ -218,7 +267,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withLegalConsentEnabled(bool $legalConsentEnabled): self
     {
         $obj = clone $this;
-        $obj->legalConsentEnabled = $legalConsentEnabled;
+        $obj['legalConsentEnabled'] = $legalConsentEnabled;
 
         return $obj;
     }
@@ -226,7 +275,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withMeetingBufferTime(int $meetingBufferTime): self
     {
         $obj = clone $this;
-        $obj->meetingBufferTime = $meetingBufferTime;
+        $obj['meetingBufferTime'] = $meetingBufferTime;
 
         return $obj;
     }
@@ -234,7 +283,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withOwnerPrioritized(bool $ownerPrioritized): self
     {
         $obj = clone $this;
-        $obj->ownerPrioritized = $ownerPrioritized;
+        $obj['ownerPrioritized'] = $ownerPrioritized;
 
         return $obj;
     }
@@ -243,7 +292,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
         string $startTimeIncrementMinutes
     ): self {
         $obj = clone $this;
-        $obj->startTimeIncrementMinutes = $startTimeIncrementMinutes;
+        $obj['startTimeIncrementMinutes'] = $startTimeIncrementMinutes;
 
         return $obj;
     }
@@ -251,7 +300,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withWeeksToAdvertise(int $weeksToAdvertise): self
     {
         $obj = clone $this;
-        $obj->weeksToAdvertise = $weeksToAdvertise;
+        $obj['weeksToAdvertise'] = $weeksToAdvertise;
 
         return $obj;
     }
@@ -260,7 +309,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
         int $customAvailabilityEndDate
     ): self {
         $obj = clone $this;
-        $obj->customAvailabilityEndDate = $customAvailabilityEndDate;
+        $obj['customAvailabilityEndDate'] = $customAvailabilityEndDate;
 
         return $obj;
     }
@@ -269,24 +318,38 @@ final class ExternalMeetingsLinkSettings implements BaseModel
         int $customAvailabilityStartDate
     ): self {
         $obj = clone $this;
-        $obj->customAvailabilityStartDate = $customAvailabilityStartDate;
+        $obj['customAvailabilityStartDate'] = $customAvailabilityStartDate;
 
         return $obj;
     }
 
-    public function withDisplayInfo(ExternalLinkDisplayInfo $displayInfo): self
-    {
-        $obj = clone $this;
-        $obj->displayInfo = $displayInfo;
-
-        return $obj;
-    }
-
-    public function withGuestSettings(
-        ExternalGuestSettings $guestSettings
+    /**
+     * @param ExternalLinkDisplayInfo|array{
+     *   avatar?: string|null,
+     *   companyAvatar?: string|null,
+     *   headline?: string|null,
+     *   publicDisplayAvatarOption?: string|null,
+     * } $displayInfo
+     */
+    public function withDisplayInfo(
+        ExternalLinkDisplayInfo|array $displayInfo
     ): self {
         $obj = clone $this;
-        $obj->guestSettings = $guestSettings;
+        $obj['displayInfo'] = $displayInfo;
+
+        return $obj;
+    }
+
+    /**
+     * @param ExternalGuestSettings|array{
+     *   canAddGuests: bool, maxGuestCount: int
+     * } $guestSettings
+     */
+    public function withGuestSettings(
+        ExternalGuestSettings|array $guestSettings
+    ): self {
+        $obj = clone $this;
+        $obj['guestSettings'] = $guestSettings;
 
         return $obj;
     }
@@ -294,16 +357,30 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withLanguage(string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language;
+        $obj['language'] = $language;
 
         return $obj;
     }
 
+    /**
+     * @param ExternalLegalConsentOptions|array{
+     *   communicationConsentCheckboxes: list<ExternalCommunicationConsentCheckbox>,
+     *   communicationConsentText: string,
+     *   isLegitimateInterest: bool,
+     *   legitimateInterestSubscriptionTypes: list<int>,
+     *   privacyPolicyText: string,
+     *   processingConsentCheckboxLabel: string,
+     *   processingConsentFooterText: string,
+     *   processingConsentText: string,
+     *   processingConsentType: string,
+     *   legitimateInterestLegalBasis?: value-of<LegitimateInterestLegalBasis>|null,
+     * } $legalConsentOptions
+     */
     public function withLegalConsentOptions(
-        ExternalLegalConsentOptions $legalConsentOptions
+        ExternalLegalConsentOptions|array $legalConsentOptions
     ): self {
         $obj = clone $this;
-        $obj->legalConsentOptions = $legalConsentOptions;
+        $obj['legalConsentOptions'] = $legalConsentOptions;
 
         return $obj;
     }
@@ -311,7 +388,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withLocale(string $locale): self
     {
         $obj = clone $this;
-        $obj->locale = $locale;
+        $obj['locale'] = $locale;
 
         return $obj;
     }
@@ -319,7 +396,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withLocation(string $location): self
     {
         $obj = clone $this;
-        $obj->location = $location;
+        $obj['location'] = $location;
 
         return $obj;
     }
@@ -327,16 +404,25 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withRedirectURL(string $redirectURL): self
     {
         $obj = clone $this;
-        $obj->redirectUrl = $redirectURL;
+        $obj['redirectUrl'] = $redirectURL;
 
         return $obj;
     }
 
+    /**
+     * @param ExternalMeetingsWelcomeScreenInfo|array{
+     *   description?: string|null,
+     *   logoUrl?: string|null,
+     *   showWelcomeScreen?: bool|null,
+     *   title?: string|null,
+     *   useCompanyLogo?: bool|null,
+     * } $welcomeScreenInfo
+     */
     public function withWelcomeScreenInfo(
-        ExternalMeetingsWelcomeScreenInfo $welcomeScreenInfo
+        ExternalMeetingsWelcomeScreenInfo|array $welcomeScreenInfo
     ): self {
         $obj = clone $this;
-        $obj->welcomeScreenInfo = $welcomeScreenInfo;
+        $obj['welcomeScreenInfo'] = $welcomeScreenInfo;
 
         return $obj;
     }

@@ -20,7 +20,7 @@ use HubspotSDK\PropertyName;
  *   appId: int,
  *   archived: bool,
  *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
- *   inputs: list<PropertyName>,
+ *   inputs: list<PropertyName|array{name: string}>,
  * }
  */
 final class PropertyGetBatchParams implements BaseModel
@@ -74,7 +74,7 @@ final class PropertyGetBatchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param list<PropertyName> $inputs
+     * @param list<PropertyName|array{name: string}> $inputs
      */
     public static function with(
         int $appId,
@@ -84,10 +84,10 @@ final class PropertyGetBatchParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->archived = $archived;
+        $obj['appId'] = $appId;
+        $obj['archived'] = $archived;
         $obj['dataSensitivity'] = $dataSensitivity;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class PropertyGetBatchParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class PropertyGetBatchParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -121,12 +121,12 @@ final class PropertyGetBatchParams implements BaseModel
     }
 
     /**
-     * @param list<PropertyName> $inputs
+     * @param list<PropertyName|array{name: string}> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

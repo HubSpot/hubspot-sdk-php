@@ -481,12 +481,20 @@ final class Property implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ObjectTypeIDProto> $allowedObjectTypes
+     * @param list<ObjectTypeIDProto|array{
+     *   innerId: int, metaTypeId: int
+     * }> $allowedObjectTypes
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      * @param DateDisplayHint|value-of<DateDisplayHint> $dateDisplayHint
      * @param DisplayMode|value-of<DisplayMode> $displayMode
      * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
-     * @param list<Option> $options
+     * @param list<Option|array{
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     * }> $options
      * @param OptionSortStrategy|value-of<OptionSortStrategy> $optionSortStrategy
      * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
      * @param SearchTextAnalysisMode|value-of<SearchTextAnalysisMode> $searchTextAnalysisMode
@@ -545,53 +553,53 @@ final class Property implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->allowedObjectTypes = $allowedObjectTypes;
-        $obj->calculated = $calculated;
-        $obj->canArchive = $canArchive;
-        $obj->canRestore = $canRestore;
-        $obj->createdAt = $createdAt;
-        $obj->createdUserId = $createdUserId;
-        $obj->currencyPropertyName = $currencyPropertyName;
+        $obj['allowedObjectTypes'] = $allowedObjectTypes;
+        $obj['calculated'] = $calculated;
+        $obj['canArchive'] = $canArchive;
+        $obj['canRestore'] = $canRestore;
+        $obj['createdAt'] = $createdAt;
+        $obj['createdUserId'] = $createdUserId;
+        $obj['currencyPropertyName'] = $currencyPropertyName;
         $obj['dataSensitivity'] = $dataSensitivity;
         $obj['dateDisplayHint'] = $dateDisplayHint;
-        $obj->deleted = $deleted;
-        $obj->description = $description;
+        $obj['deleted'] = $deleted;
+        $obj['description'] = $description;
         $obj['displayMode'] = $displayMode;
-        $obj->displayOrder = $displayOrder;
-        $obj->enforceMultivalueUniqueness = $enforceMultivalueUniqueness;
-        $obj->externalOptions = $externalOptions;
-        $obj->externalOptionsReferenceType = $externalOptionsReferenceType;
-        $obj->favorited = $favorited;
-        $obj->favoritedOrder = $favoritedOrder;
-        $obj->fieldType = $fieldType;
-        $obj->formField = $formField;
-        $obj->fromUserId = $fromUserId;
-        $obj->groupName = $groupName;
-        $obj->hasUniqueValue = $hasUniqueValue;
-        $obj->hidden = $hidden;
-        $obj->hubspotDefined = $hubspotDefined;
-        $obj->isCustomizedDefault = $isCustomizedDefault;
-        $obj->isMultiValued = $isMultiValued;
-        $obj->isPartial = $isPartial;
-        $obj->label = $label;
-        $obj->mutableDefinitionNotDeletable = $mutableDefinitionNotDeletable;
-        $obj->name = $name;
+        $obj['displayOrder'] = $displayOrder;
+        $obj['enforceMultivalueUniqueness'] = $enforceMultivalueUniqueness;
+        $obj['externalOptions'] = $externalOptions;
+        $obj['externalOptionsReferenceType'] = $externalOptionsReferenceType;
+        $obj['favorited'] = $favorited;
+        $obj['favoritedOrder'] = $favoritedOrder;
+        $obj['fieldType'] = $fieldType;
+        $obj['formField'] = $formField;
+        $obj['fromUserId'] = $fromUserId;
+        $obj['groupName'] = $groupName;
+        $obj['hasUniqueValue'] = $hasUniqueValue;
+        $obj['hidden'] = $hidden;
+        $obj['hubspotDefined'] = $hubspotDefined;
+        $obj['isCustomizedDefault'] = $isCustomizedDefault;
+        $obj['isMultiValued'] = $isMultiValued;
+        $obj['isPartial'] = $isPartial;
+        $obj['label'] = $label;
+        $obj['mutableDefinitionNotDeletable'] = $mutableDefinitionNotDeletable;
+        $obj['name'] = $name;
         $obj['numberDisplayHint'] = $numberDisplayHint;
-        $obj->options = $options;
-        $obj->optionsAreMutable = $optionsAreMutable;
+        $obj['options'] = $options;
+        $obj['optionsAreMutable'] = $optionsAreMutable;
         $obj['optionSortStrategy'] = $optionSortStrategy;
-        $obj->owningAppId = $owningAppId;
-        $obj->portalId = $portalId;
-        $obj->readOnlyDefinition = $readOnlyDefinition;
-        $obj->readOnlyValue = $readOnlyValue;
+        $obj['owningAppId'] = $owningAppId;
+        $obj['portalId'] = $portalId;
+        $obj['readOnlyDefinition'] = $readOnlyDefinition;
+        $obj['readOnlyValue'] = $readOnlyValue;
         $obj['referencedObjectType'] = $referencedObjectType;
-        $obj->searchableInGlobalSearch = $searchableInGlobalSearch;
+        $obj['searchableInGlobalSearch'] = $searchableInGlobalSearch;
         $obj['searchTextAnalysisMode'] = $searchTextAnalysisMode;
-        $obj->sensitiveDataCategories = $sensitiveDataCategories;
-        $obj->showCurrencySymbol = $showCurrencySymbol;
+        $obj['sensitiveDataCategories'] = $sensitiveDataCategories;
+        $obj['showCurrencySymbol'] = $showCurrencySymbol;
         $obj['textDisplayHint'] = $textDisplayHint;
         $obj['type'] = $type;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -599,12 +607,14 @@ final class Property implements BaseModel
     /**
      * Object types permitted to use this property.
      *
-     * @param list<ObjectTypeIDProto> $allowedObjectTypes
+     * @param list<ObjectTypeIDProto|array{
+     *   innerId: int, metaTypeId: int
+     * }> $allowedObjectTypes
      */
     public function withAllowedObjectTypes(array $allowedObjectTypes): self
     {
         $obj = clone $this;
-        $obj->allowedObjectTypes = $allowedObjectTypes;
+        $obj['allowedObjectTypes'] = $allowedObjectTypes;
 
         return $obj;
     }
@@ -615,7 +625,7 @@ final class Property implements BaseModel
     public function withCalculated(bool $calculated): self
     {
         $obj = clone $this;
-        $obj->calculated = $calculated;
+        $obj['calculated'] = $calculated;
 
         return $obj;
     }
@@ -623,7 +633,7 @@ final class Property implements BaseModel
     public function withCanArchive(bool $canArchive): self
     {
         $obj = clone $this;
-        $obj->canArchive = $canArchive;
+        $obj['canArchive'] = $canArchive;
 
         return $obj;
     }
@@ -631,7 +641,7 @@ final class Property implements BaseModel
     public function withCanRestore(bool $canRestore): self
     {
         $obj = clone $this;
-        $obj->canRestore = $canRestore;
+        $obj['canRestore'] = $canRestore;
 
         return $obj;
     }
@@ -642,7 +652,7 @@ final class Property implements BaseModel
     public function withCreatedAt(int $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -653,7 +663,7 @@ final class Property implements BaseModel
     public function withCreatedUserID(int $createdUserID): self
     {
         $obj = clone $this;
-        $obj->createdUserId = $createdUserID;
+        $obj['createdUserId'] = $createdUserID;
 
         return $obj;
     }
@@ -664,7 +674,7 @@ final class Property implements BaseModel
     public function withCurrencyPropertyName(string $currencyPropertyName): self
     {
         $obj = clone $this;
-        $obj->currencyPropertyName = $currencyPropertyName;
+        $obj['currencyPropertyName'] = $currencyPropertyName;
 
         return $obj;
     }
@@ -701,7 +711,7 @@ final class Property implements BaseModel
     public function withDeleted(bool $deleted): self
     {
         $obj = clone $this;
-        $obj->deleted = $deleted;
+        $obj['deleted'] = $deleted;
 
         return $obj;
     }
@@ -712,7 +722,7 @@ final class Property implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -736,7 +746,7 @@ final class Property implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -745,7 +755,7 @@ final class Property implements BaseModel
         bool $enforceMultivalueUniqueness
     ): self {
         $obj = clone $this;
-        $obj->enforceMultivalueUniqueness = $enforceMultivalueUniqueness;
+        $obj['enforceMultivalueUniqueness'] = $enforceMultivalueUniqueness;
 
         return $obj;
     }
@@ -756,7 +766,7 @@ final class Property implements BaseModel
     public function withExternalOptions(bool $externalOptions): self
     {
         $obj = clone $this;
-        $obj->externalOptions = $externalOptions;
+        $obj['externalOptions'] = $externalOptions;
 
         return $obj;
     }
@@ -768,7 +778,7 @@ final class Property implements BaseModel
         string $externalOptionsReferenceType
     ): self {
         $obj = clone $this;
-        $obj->externalOptionsReferenceType = $externalOptionsReferenceType;
+        $obj['externalOptionsReferenceType'] = $externalOptionsReferenceType;
 
         return $obj;
     }
@@ -779,7 +789,7 @@ final class Property implements BaseModel
     public function withFavorited(bool $favorited): self
     {
         $obj = clone $this;
-        $obj->favorited = $favorited;
+        $obj['favorited'] = $favorited;
 
         return $obj;
     }
@@ -790,7 +800,7 @@ final class Property implements BaseModel
     public function withFavoritedOrder(int $favoritedOrder): self
     {
         $obj = clone $this;
-        $obj->favoritedOrder = $favoritedOrder;
+        $obj['favoritedOrder'] = $favoritedOrder;
 
         return $obj;
     }
@@ -801,7 +811,7 @@ final class Property implements BaseModel
     public function withFieldType(string $fieldType): self
     {
         $obj = clone $this;
-        $obj->fieldType = $fieldType;
+        $obj['fieldType'] = $fieldType;
 
         return $obj;
     }
@@ -812,7 +822,7 @@ final class Property implements BaseModel
     public function withFormField(bool $formField): self
     {
         $obj = clone $this;
-        $obj->formField = $formField;
+        $obj['formField'] = $formField;
 
         return $obj;
     }
@@ -823,7 +833,7 @@ final class Property implements BaseModel
     public function withFromUserID(int $fromUserID): self
     {
         $obj = clone $this;
-        $obj->fromUserId = $fromUserID;
+        $obj['fromUserId'] = $fromUserID;
 
         return $obj;
     }
@@ -834,7 +844,7 @@ final class Property implements BaseModel
     public function withGroupName(string $groupName): self
     {
         $obj = clone $this;
-        $obj->groupName = $groupName;
+        $obj['groupName'] = $groupName;
 
         return $obj;
     }
@@ -845,7 +855,7 @@ final class Property implements BaseModel
     public function withHasUniqueValue(bool $hasUniqueValue): self
     {
         $obj = clone $this;
-        $obj->hasUniqueValue = $hasUniqueValue;
+        $obj['hasUniqueValue'] = $hasUniqueValue;
 
         return $obj;
     }
@@ -856,7 +866,7 @@ final class Property implements BaseModel
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
-        $obj->hidden = $hidden;
+        $obj['hidden'] = $hidden;
 
         return $obj;
     }
@@ -867,7 +877,7 @@ final class Property implements BaseModel
     public function withHubspotDefined(bool $hubspotDefined): self
     {
         $obj = clone $this;
-        $obj->hubspotDefined = $hubspotDefined;
+        $obj['hubspotDefined'] = $hubspotDefined;
 
         return $obj;
     }
@@ -878,7 +888,7 @@ final class Property implements BaseModel
     public function withIsCustomizedDefault(bool $isCustomizedDefault): self
     {
         $obj = clone $this;
-        $obj->isCustomizedDefault = $isCustomizedDefault;
+        $obj['isCustomizedDefault'] = $isCustomizedDefault;
 
         return $obj;
     }
@@ -889,7 +899,7 @@ final class Property implements BaseModel
     public function withIsMultiValued(bool $isMultiValued): self
     {
         $obj = clone $this;
-        $obj->isMultiValued = $isMultiValued;
+        $obj['isMultiValued'] = $isMultiValued;
 
         return $obj;
     }
@@ -900,7 +910,7 @@ final class Property implements BaseModel
     public function withIsPartial(bool $isPartial): self
     {
         $obj = clone $this;
-        $obj->isPartial = $isPartial;
+        $obj['isPartial'] = $isPartial;
 
         return $obj;
     }
@@ -911,7 +921,7 @@ final class Property implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -923,7 +933,7 @@ final class Property implements BaseModel
         bool $mutableDefinitionNotDeletable
     ): self {
         $obj = clone $this;
-        $obj->mutableDefinitionNotDeletable = $mutableDefinitionNotDeletable;
+        $obj['mutableDefinitionNotDeletable'] = $mutableDefinitionNotDeletable;
 
         return $obj;
     }
@@ -934,7 +944,7 @@ final class Property implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -956,12 +966,18 @@ final class Property implements BaseModel
     /**
      * A list of valid options for the property. This field is required for enumerated properties.
      *
-     * @param list<Option> $options
+     * @param list<Option|array{
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }
@@ -972,7 +988,7 @@ final class Property implements BaseModel
     public function withOptionsAreMutable(bool $optionsAreMutable): self
     {
         $obj = clone $this;
-        $obj->optionsAreMutable = $optionsAreMutable;
+        $obj['optionsAreMutable'] = $optionsAreMutable;
 
         return $obj;
     }
@@ -994,7 +1010,7 @@ final class Property implements BaseModel
     public function withOwningAppID(int $owningAppID): self
     {
         $obj = clone $this;
-        $obj->owningAppId = $owningAppID;
+        $obj['owningAppId'] = $owningAppID;
 
         return $obj;
     }
@@ -1005,7 +1021,7 @@ final class Property implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }
@@ -1016,7 +1032,7 @@ final class Property implements BaseModel
     public function withReadOnlyDefinition(bool $readOnlyDefinition): self
     {
         $obj = clone $this;
-        $obj->readOnlyDefinition = $readOnlyDefinition;
+        $obj['readOnlyDefinition'] = $readOnlyDefinition;
 
         return $obj;
     }
@@ -1027,7 +1043,7 @@ final class Property implements BaseModel
     public function withReadOnlyValue(bool $readOnlyValue): self
     {
         $obj = clone $this;
-        $obj->readOnlyValue = $readOnlyValue;
+        $obj['readOnlyValue'] = $readOnlyValue;
 
         return $obj;
     }
@@ -1053,7 +1069,7 @@ final class Property implements BaseModel
         bool $searchableInGlobalSearch
     ): self {
         $obj = clone $this;
-        $obj->searchableInGlobalSearch = $searchableInGlobalSearch;
+        $obj['searchableInGlobalSearch'] = $searchableInGlobalSearch;
 
         return $obj;
     }
@@ -1079,7 +1095,7 @@ final class Property implements BaseModel
         array $sensitiveDataCategories
     ): self {
         $obj = clone $this;
-        $obj->sensitiveDataCategories = $sensitiveDataCategories;
+        $obj['sensitiveDataCategories'] = $sensitiveDataCategories;
 
         return $obj;
     }
@@ -1090,7 +1106,7 @@ final class Property implements BaseModel
     public function withShowCurrencySymbol(bool $showCurrencySymbol): self
     {
         $obj = clone $this;
-        $obj->showCurrencySymbol = $showCurrencySymbol;
+        $obj['showCurrencySymbol'] = $showCurrencySymbol;
 
         return $obj;
     }
@@ -1128,7 +1144,7 @@ final class Property implements BaseModel
     public function withUpdatedAt(int $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

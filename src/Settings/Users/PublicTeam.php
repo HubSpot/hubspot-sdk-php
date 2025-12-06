@@ -90,10 +90,10 @@ final class PublicTeam implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->name = $name;
-        $obj->secondaryUserIds = $secondaryUserIds;
-        $obj->userIds = $userIds;
+        $obj['id'] = $id;
+        $obj['name'] = $name;
+        $obj['secondaryUserIds'] = $secondaryUserIds;
+        $obj['userIds'] = $userIds;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class PublicTeam implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class PublicTeam implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class PublicTeam implements BaseModel
     public function withSecondaryUserIDs(array $secondaryUserIDs): self
     {
         $obj = clone $this;
-        $obj->secondaryUserIds = $secondaryUserIDs;
+        $obj['secondaryUserIds'] = $secondaryUserIDs;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class PublicTeam implements BaseModel
     public function withUserIDs(array $userIDs): self
     {
         $obj = clone $this;
-        $obj->userIds = $userIDs;
+        $obj['userIds'] = $userIDs;
 
         return $obj;
     }

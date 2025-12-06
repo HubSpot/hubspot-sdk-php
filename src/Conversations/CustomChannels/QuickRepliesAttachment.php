@@ -52,7 +52,9 @@ final class QuickRepliesAttachment implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<QuickReply> $quickReplies
+     * @param list<QuickReply|array{
+     *   value: string, valueType: string, label?: string|null
+     * }> $quickReplies
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -61,19 +63,21 @@ final class QuickRepliesAttachment implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->quickReplies = $quickReplies;
+        $obj['quickReplies'] = $quickReplies;
         $obj['type'] = $type;
 
         return $obj;
     }
 
     /**
-     * @param list<QuickReply> $quickReplies
+     * @param list<QuickReply|array{
+     *   value: string, valueType: string, label?: string|null
+     * }> $quickReplies
      */
     public function withQuickReplies(array $quickReplies): self
     {
         $obj = clone $this;
-        $obj->quickReplies = $quickReplies;
+        $obj['quickReplies'] = $quickReplies;
 
         return $obj;
     }

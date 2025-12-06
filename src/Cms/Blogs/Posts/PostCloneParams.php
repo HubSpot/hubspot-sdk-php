@@ -62,9 +62,9 @@ final class PostCloneParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->id = $id;
+        $obj['id'] = $id;
 
-        null !== $cloneName && $obj->cloneName = $cloneName;
+        null !== $cloneName && $obj['cloneName'] = $cloneName;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class PostCloneParams implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class PostCloneParams implements BaseModel
     public function withCloneName(string $cloneName): self
     {
         $obj = clone $this;
-        $obj->cloneName = $cloneName;
+        $obj['cloneName'] = $cloneName;
 
         return $obj;
     }

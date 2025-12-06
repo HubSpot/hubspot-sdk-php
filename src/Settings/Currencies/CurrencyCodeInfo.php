@@ -60,8 +60,8 @@ final class CurrencyCodeInfo implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->currencyCode = $currencyCode;
-        $obj->currencyName = $currencyName;
+        $obj['currencyCode'] = $currencyCode;
+        $obj['currencyName'] = $currencyName;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class CurrencyCodeInfo implements BaseModel
     public function withCurrencyCode(string $currencyCode): self
     {
         $obj = clone $this;
-        $obj->currencyCode = $currencyCode;
+        $obj['currencyCode'] = $currencyCode;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class CurrencyCodeInfo implements BaseModel
     public function withCurrencyName(string $currencyName): self
     {
         $obj = clone $this;
-        $obj->currencyName = $currencyName;
+        $obj['currencyName'] = $currencyName;
 
         return $obj;
     }

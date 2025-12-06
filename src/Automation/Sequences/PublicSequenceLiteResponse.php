@@ -86,13 +86,13 @@ final class PublicSequenceLiteResponse implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->name = $name;
-        $obj->updatedAt = $updatedAt;
-        $obj->userId = $userId;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['name'] = $name;
+        $obj['updatedAt'] = $updatedAt;
+        $obj['userId'] = $userId;
 
-        null !== $folderId && $obj->folderId = $folderId;
+        null !== $folderId && $obj['folderId'] = $folderId;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class PublicSequenceLiteResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class PublicSequenceLiteResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class PublicSequenceLiteResponse implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class PublicSequenceLiteResponse implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class PublicSequenceLiteResponse implements BaseModel, ResponseConverter
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class PublicSequenceLiteResponse implements BaseModel, ResponseConverter
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderId = $folderID;
+        $obj['folderId'] = $folderID;
 
         return $obj;
     }

@@ -50,24 +50,45 @@ final class PublicSocialMetadataAttachment implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param SocialMetadata|array{
+     *   mediaType: string,
+     *   id?: string|null,
+     *   description?: string|null,
+     *   mediaTitle?: string|null,
+     *   mediaUrl?: string|null,
+     *   mediaUrlString?: string|null,
+     *   thumbnailUrl?: string|null,
+     * } $socialMetadata
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        SocialMetadata $socialMetadata,
-        Type|string $type = 'SOCIAL_MEDIA_METADATA'
+        SocialMetadata|array $socialMetadata,
+        Type|string $type = 'SOCIAL_MEDIA_METADATA',
     ): self {
         $obj = new self;
 
-        $obj->socialMetadata = $socialMetadata;
+        $obj['socialMetadata'] = $socialMetadata;
         $obj['type'] = $type;
 
         return $obj;
     }
 
-    public function withSocialMetadata(SocialMetadata $socialMetadata): self
-    {
+    /**
+     * @param SocialMetadata|array{
+     *   mediaType: string,
+     *   id?: string|null,
+     *   description?: string|null,
+     *   mediaTitle?: string|null,
+     *   mediaUrl?: string|null,
+     *   mediaUrlString?: string|null,
+     *   thumbnailUrl?: string|null,
+     * } $socialMetadata
+     */
+    public function withSocialMetadata(
+        SocialMetadata|array $socialMetadata
+    ): self {
         $obj = clone $this;
-        $obj->socialMetadata = $socialMetadata;
+        $obj['socialMetadata'] = $socialMetadata;
 
         return $obj;
     }

@@ -7,6 +7,7 @@ namespace HubspotSDK\Webhooks;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
 
 /**
  * List of event subscriptions for your app.
@@ -52,13 +53,21 @@ final class SubscriptionListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionResponse> $results
+     * @param list<SubscriptionResponse|array{
+     *   id: string,
+     *   active: bool,
+     *   createdAt: \DateTimeInterface,
+     *   eventType: value-of<EventType>,
+     *   objectTypeId?: string|null,
+     *   propertyName?: string|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -66,12 +75,20 @@ final class SubscriptionListResponse implements BaseModel
     /**
      * List of event subscriptions for your app.
      *
-     * @param list<SubscriptionResponse> $results
+     * @param list<SubscriptionResponse|array{
+     *   id: string,
+     *   active: bool,
+     *   createdAt: \DateTimeInterface,
+     *   eventType: value-of<EventType>,
+     *   objectTypeId?: string|null,
+     *   propertyName?: string|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

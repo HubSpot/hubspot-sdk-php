@@ -81,6 +81,9 @@ final class ObjectTypeDefinitionPatch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param ObjectTypeDefinitionLabels|array{
+     *   plural?: string|null, singular?: string|null
+     * } $labels
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
@@ -89,7 +92,7 @@ final class ObjectTypeDefinitionPatch implements BaseModel
         bool $clearDescription,
         ?bool $allowsSensitiveProperties = null,
         ?string $description = null,
-        ?ObjectTypeDefinitionLabels $labels = null,
+        ObjectTypeDefinitionLabels|array|null $labels = null,
         ?string $primaryDisplayProperty = null,
         ?array $requiredProperties = null,
         ?bool $restorable = null,
@@ -98,16 +101,16 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->clearDescription = $clearDescription;
+        $obj['clearDescription'] = $clearDescription;
 
-        null !== $allowsSensitiveProperties && $obj->allowsSensitiveProperties = $allowsSensitiveProperties;
-        null !== $description && $obj->description = $description;
-        null !== $labels && $obj->labels = $labels;
-        null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
-        null !== $requiredProperties && $obj->requiredProperties = $requiredProperties;
-        null !== $restorable && $obj->restorable = $restorable;
-        null !== $searchableProperties && $obj->searchableProperties = $searchableProperties;
-        null !== $secondaryDisplayProperties && $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
+        null !== $allowsSensitiveProperties && $obj['allowsSensitiveProperties'] = $allowsSensitiveProperties;
+        null !== $description && $obj['description'] = $description;
+        null !== $labels && $obj['labels'] = $labels;
+        null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
+        null !== $requiredProperties && $obj['requiredProperties'] = $requiredProperties;
+        null !== $restorable && $obj['restorable'] = $restorable;
+        null !== $searchableProperties && $obj['searchableProperties'] = $searchableProperties;
+        null !== $secondaryDisplayProperties && $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
         return $obj;
     }
@@ -115,7 +118,7 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     public function withClearDescription(bool $clearDescription): self
     {
         $obj = clone $this;
-        $obj->clearDescription = $clearDescription;
+        $obj['clearDescription'] = $clearDescription;
 
         return $obj;
     }
@@ -124,7 +127,7 @@ final class ObjectTypeDefinitionPatch implements BaseModel
         bool $allowsSensitiveProperties
     ): self {
         $obj = clone $this;
-        $obj->allowsSensitiveProperties = $allowsSensitiveProperties;
+        $obj['allowsSensitiveProperties'] = $allowsSensitiveProperties;
 
         return $obj;
     }
@@ -132,15 +135,20 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
 
-    public function withLabels(ObjectTypeDefinitionLabels $labels): self
+    /**
+     * @param ObjectTypeDefinitionLabels|array{
+     *   plural?: string|null, singular?: string|null
+     * } $labels
+     */
+    public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
         $obj = clone $this;
-        $obj->labels = $labels;
+        $obj['labels'] = $labels;
 
         return $obj;
     }
@@ -149,7 +157,7 @@ final class ObjectTypeDefinitionPatch implements BaseModel
         string $primaryDisplayProperty
     ): self {
         $obj = clone $this;
-        $obj->primaryDisplayProperty = $primaryDisplayProperty;
+        $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
 
         return $obj;
     }
@@ -160,7 +168,7 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     public function withRequiredProperties(array $requiredProperties): self
     {
         $obj = clone $this;
-        $obj->requiredProperties = $requiredProperties;
+        $obj['requiredProperties'] = $requiredProperties;
 
         return $obj;
     }
@@ -168,7 +176,7 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     public function withRestorable(bool $restorable): self
     {
         $obj = clone $this;
-        $obj->restorable = $restorable;
+        $obj['restorable'] = $restorable;
 
         return $obj;
     }
@@ -179,7 +187,7 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     public function withSearchableProperties(array $searchableProperties): self
     {
         $obj = clone $this;
-        $obj->searchableProperties = $searchableProperties;
+        $obj['searchableProperties'] = $searchableProperties;
 
         return $obj;
     }
@@ -191,7 +199,7 @@ final class ObjectTypeDefinitionPatch implements BaseModel
         array $secondaryDisplayProperties
     ): self {
         $obj = clone $this;
-        $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
+        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
         return $obj;
     }

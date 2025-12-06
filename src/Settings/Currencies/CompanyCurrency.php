@@ -62,8 +62,8 @@ final class CompanyCurrency implements BaseModel, ResponseConverter
     {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -74,7 +74,7 @@ final class CompanyCurrency implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class CompanyCurrency implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }

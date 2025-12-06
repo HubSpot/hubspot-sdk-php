@@ -69,9 +69,9 @@ final class MarketingEventSubscriber implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->interactionDateTime = $interactionDateTime;
-        $obj->properties = $properties;
-        $obj->vid = $vid;
+        $obj['interactionDateTime'] = $interactionDateTime;
+        $obj['properties'] = $properties;
+        $obj['vid'] = $vid;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class MarketingEventSubscriber implements BaseModel
     public function withInteractionDateTime(int $interactionDateTime): self
     {
         $obj = clone $this;
-        $obj->interactionDateTime = $interactionDateTime;
+        $obj['interactionDateTime'] = $interactionDateTime;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class MarketingEventSubscriber implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class MarketingEventSubscriber implements BaseModel
     public function withVid(int $vid): self
     {
         $obj = clone $this;
-        $obj->vid = $vid;
+        $obj['vid'] = $vid;
 
         return $obj;
     }

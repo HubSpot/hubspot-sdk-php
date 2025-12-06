@@ -78,9 +78,9 @@ final class CurrencyListExchangeRatesParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
+        null !== $after && $obj['after'] = $after;
         null !== $fromCurrencyCode && $obj['fromCurrencyCode'] = $fromCurrencyCode;
-        null !== $limit && $obj->limit = $limit;
+        null !== $limit && $obj['limit'] = $limit;
         null !== $toCurrencyCode && $obj['toCurrencyCode'] = $toCurrencyCode;
 
         return $obj;
@@ -92,7 +92,7 @@ final class CurrencyListExchangeRatesParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class CurrencyListExchangeRatesParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }

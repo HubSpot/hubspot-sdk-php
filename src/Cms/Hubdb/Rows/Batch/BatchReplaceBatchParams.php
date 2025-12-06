@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb\Rows\Batch;
 
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
+use HubspotSDK\Cms\Hubdb\Variant;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -16,7 +17,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\Rows\BatchService::replaceBatch()
  *
  * @phpstan-type BatchReplaceBatchParamsShape = array{
- *   inputs: list<HubDBTableRowV3BatchUpdateRequest>
+ *   inputs: list<HubDBTableRowV3BatchUpdateRequest|array{
+ *     childTableId: int,
+ *     displayIndex: int,
+ *     values: array<string,Variant>,
+ *     id?: string|null,
+ *     name?: string|null,
+ *     path?: string|null,
+ *   }>,
  * }
  */
 final class BatchReplaceBatchParams implements BaseModel
@@ -53,24 +61,38 @@ final class BatchReplaceBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest|array{
+     *   childTableId: int,
+     *   displayIndex: int,
+     *   values: array<string,Variant>,
+     *   id?: string|null,
+     *   name?: string|null,
+     *   path?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<HubDBTableRowV3BatchUpdateRequest> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest|array{
+     *   childTableId: int,
+     *   displayIndex: int,
+     *   values: array<string,Variant>,
+     *   id?: string|null,
+     *   name?: string|null,
+     *   path?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

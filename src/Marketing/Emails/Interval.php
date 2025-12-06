@@ -54,8 +54,8 @@ final class Interval implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->end = $end;
-        $obj->start = $start;
+        $obj['end'] = $end;
+        $obj['start'] = $start;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class Interval implements BaseModel
     public function withEnd(\DateTimeInterface $end): self
     {
         $obj = clone $this;
-        $obj->end = $end;
+        $obj['end'] = $end;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class Interval implements BaseModel
     public function withStart(\DateTimeInterface $start): self
     {
         $obj = clone $this;
-        $obj->start = $start;
+        $obj['start'] = $start;
 
         return $obj;
     }

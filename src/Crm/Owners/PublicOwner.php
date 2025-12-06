@@ -132,7 +132,12 @@ final class PublicOwner implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param list<PublicTeam> $teams
+     * @param list<PublicTeam|array{
+     *   id: string,
+     *   name: string,
+     *   secondaryUserIds: list<string>,
+     *   userIds: list<string>,
+     * }> $teams
      */
     public static function with(
         string $id,
@@ -149,18 +154,18 @@ final class PublicOwner implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->createdAt = $createdAt;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['createdAt'] = $createdAt;
         $obj['type'] = $type;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $email && $obj->email = $email;
-        null !== $firstName && $obj->firstName = $firstName;
-        null !== $lastName && $obj->lastName = $lastName;
-        null !== $teams && $obj->teams = $teams;
-        null !== $userId && $obj->userId = $userId;
-        null !== $userIdIncludingInactive && $obj->userIdIncludingInactive = $userIdIncludingInactive;
+        null !== $email && $obj['email'] = $email;
+        null !== $firstName && $obj['firstName'] = $firstName;
+        null !== $lastName && $obj['lastName'] = $lastName;
+        null !== $teams && $obj['teams'] = $teams;
+        null !== $userId && $obj['userId'] = $userId;
+        null !== $userIdIncludingInactive && $obj['userIdIncludingInactive'] = $userIdIncludingInactive;
 
         return $obj;
     }
@@ -171,7 +176,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -182,7 +187,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -193,7 +198,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -217,7 +222,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -228,7 +233,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -239,7 +244,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
     public function withFirstName(string $firstName): self
     {
         $obj = clone $this;
-        $obj->firstName = $firstName;
+        $obj['firstName'] = $firstName;
 
         return $obj;
     }
@@ -250,18 +255,23 @@ final class PublicOwner implements BaseModel, ResponseConverter
     public function withLastName(string $lastName): self
     {
         $obj = clone $this;
-        $obj->lastName = $lastName;
+        $obj['lastName'] = $lastName;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicTeam> $teams
+     * @param list<PublicTeam|array{
+     *   id: string,
+     *   name: string,
+     *   secondaryUserIds: list<string>,
+     *   userIds: list<string>,
+     * }> $teams
      */
     public function withTeams(array $teams): self
     {
         $obj = clone $this;
-        $obj->teams = $teams;
+        $obj['teams'] = $teams;
 
         return $obj;
     }
@@ -272,7 +282,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }
@@ -284,7 +294,7 @@ final class PublicOwner implements BaseModel, ResponseConverter
         int $userIDIncludingInactive
     ): self {
         $obj = clone $this;
-        $obj->userIdIncludingInactive = $userIDIncludingInactive;
+        $obj['userIdIncludingInactive'] = $userIDIncludingInactive;
 
         return $obj;
     }

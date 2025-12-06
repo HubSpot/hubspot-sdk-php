@@ -72,9 +72,9 @@ final class FlagResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
+        $obj['appId'] = $appId;
         $obj['defaultState'] = $defaultState;
-        $obj->flagName = $flagName;
+        $obj['flagName'] = $flagName;
 
         null !== $overrideState && $obj['overrideState'] = $overrideState;
 
@@ -84,7 +84,7 @@ final class FlagResponse implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class FlagResponse implements BaseModel
     public function withFlagName(string $flagName): self
     {
         $obj = clone $this;
-        $obj->flagName = $flagName;
+        $obj['flagName'] = $flagName;
 
         return $obj;
     }

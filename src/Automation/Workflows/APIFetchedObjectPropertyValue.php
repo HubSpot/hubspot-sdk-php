@@ -58,7 +58,7 @@ final class APIFetchedObjectPropertyValue implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->propertyToken = $propertyToken;
+        $obj['propertyToken'] = $propertyToken;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APIFetchedObjectPropertyValue implements BaseModel
     public function withPropertyToken(string $propertyToken): self
     {
         $obj = clone $this;
-        $obj->propertyToken = $propertyToken;
+        $obj['propertyToken'] = $propertyToken;
 
         return $obj;
     }

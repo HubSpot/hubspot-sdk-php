@@ -63,9 +63,9 @@ final class ActionConfirmationBody implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->cancelButtonLabel = $cancelButtonLabel;
-        $obj->confirmButtonLabel = $confirmButtonLabel;
-        $obj->prompt = $prompt;
+        $obj['cancelButtonLabel'] = $cancelButtonLabel;
+        $obj['confirmButtonLabel'] = $confirmButtonLabel;
+        $obj['prompt'] = $prompt;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class ActionConfirmationBody implements BaseModel
     public function withCancelButtonLabel(string $cancelButtonLabel): self
     {
         $obj = clone $this;
-        $obj->cancelButtonLabel = $cancelButtonLabel;
+        $obj['cancelButtonLabel'] = $cancelButtonLabel;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class ActionConfirmationBody implements BaseModel
     public function withConfirmButtonLabel(string $confirmButtonLabel): self
     {
         $obj = clone $this;
-        $obj->confirmButtonLabel = $confirmButtonLabel;
+        $obj['confirmButtonLabel'] = $confirmButtonLabel;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class ActionConfirmationBody implements BaseModel
     public function withPrompt(string $prompt): self
     {
         $obj = clone $this;
-        $obj->prompt = $prompt;
+        $obj['prompt'] = $prompt;
 
         return $obj;
     }

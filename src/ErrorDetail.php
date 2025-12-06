@@ -90,12 +90,12 @@ final class ErrorDetail implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->message = $message;
+        $obj['message'] = $message;
 
-        null !== $code && $obj->code = $code;
-        null !== $context && $obj->context = $context;
-        null !== $in && $obj->in = $in;
-        null !== $subCategory && $obj->subCategory = $subCategory;
+        null !== $code && $obj['code'] = $code;
+        null !== $context && $obj['context'] = $context;
+        null !== $in && $obj['in'] = $in;
+        null !== $subCategory && $obj['subCategory'] = $subCategory;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class ErrorDetail implements BaseModel
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class ErrorDetail implements BaseModel
     public function withCode(string $code): self
     {
         $obj = clone $this;
-        $obj->code = $code;
+        $obj['code'] = $code;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class ErrorDetail implements BaseModel
     public function withContext(array $context): self
     {
         $obj = clone $this;
-        $obj->context = $context;
+        $obj['context'] = $context;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class ErrorDetail implements BaseModel
     public function withIn(string $in): self
     {
         $obj = clone $this;
-        $obj->in = $in;
+        $obj['in'] = $in;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class ErrorDetail implements BaseModel
     public function withSubCategory(string $subCategory): self
     {
         $obj = clone $this;
-        $obj->subCategory = $subCategory;
+        $obj['subCategory'] = $subCategory;
 
         return $obj;
     }

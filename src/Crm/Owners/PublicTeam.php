@@ -53,9 +53,9 @@ final class PublicTeam implements BaseModel
     {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->name = $name;
-        $obj->primary = $primary;
+        $obj['id'] = $id;
+        $obj['name'] = $name;
+        $obj['primary'] = $primary;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class PublicTeam implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class PublicTeam implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class PublicTeam implements BaseModel
     public function withPrimary(bool $primary): self
     {
         $obj = clone $this;
-        $obj->primary = $primary;
+        $obj['primary'] = $primary;
 
         return $obj;
     }

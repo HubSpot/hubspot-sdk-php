@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PublicObjectID;
 
 /**
  * @phpstan-type ExternalCalendarMeetingEventCreateRequestShape = array{
@@ -64,49 +66,93 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalAssociationCreateRequest> $associations
+     * @param list<ExternalAssociationCreateRequest|array{
+     *   to: PublicObjectID, types: list<AssociationSpec>
+     * }> $associations
+     * @param ExternalEmailReminderSchedule|array{
+     *   reminders: list<ExternalReminder>, shouldIncludeInviteDescription: bool
+     * } $emailReminderSchedule
+     * @param ExternalCalendarMeetingEventCreateProperties|array{
+     *   hs_meeting_end_time: \DateTimeInterface,
+     *   hs_meeting_outcome: string,
+     *   hs_meeting_start_time: \DateTimeInterface,
+     *   hs_meeting_title: string,
+     *   hs_timestamp: \DateTimeInterface,
+     *   hubspot_owner_id: string,
+     *   hs_activity_type?: string|null,
+     *   hs_attachment_ids?: list<string>|null,
+     *   hs_attendee_owner_ids?: list<string>|null,
+     *   hs_internal_meeting_notes?: string|null,
+     *   hs_meeting_body?: string|null,
+     *   hs_meeting_location?: string|null,
+     *   hs_meeting_location_type?: string|null,
+     * } $properties
      */
     public static function with(
         array $associations,
-        ExternalEmailReminderSchedule $emailReminderSchedule,
-        ExternalCalendarMeetingEventCreateProperties $properties,
+        ExternalEmailReminderSchedule|array $emailReminderSchedule,
+        ExternalCalendarMeetingEventCreateProperties|array $properties,
         string $timezone,
     ): self {
         $obj = new self;
 
-        $obj->associations = $associations;
-        $obj->emailReminderSchedule = $emailReminderSchedule;
-        $obj->properties = $properties;
-        $obj->timezone = $timezone;
+        $obj['associations'] = $associations;
+        $obj['emailReminderSchedule'] = $emailReminderSchedule;
+        $obj['properties'] = $properties;
+        $obj['timezone'] = $timezone;
 
         return $obj;
     }
 
     /**
-     * @param list<ExternalAssociationCreateRequest> $associations
+     * @param list<ExternalAssociationCreateRequest|array{
+     *   to: PublicObjectID, types: list<AssociationSpec>
+     * }> $associations
      */
     public function withAssociations(array $associations): self
     {
         $obj = clone $this;
-        $obj->associations = $associations;
+        $obj['associations'] = $associations;
 
         return $obj;
     }
 
+    /**
+     * @param ExternalEmailReminderSchedule|array{
+     *   reminders: list<ExternalReminder>, shouldIncludeInviteDescription: bool
+     * } $emailReminderSchedule
+     */
     public function withEmailReminderSchedule(
-        ExternalEmailReminderSchedule $emailReminderSchedule
+        ExternalEmailReminderSchedule|array $emailReminderSchedule
     ): self {
         $obj = clone $this;
-        $obj->emailReminderSchedule = $emailReminderSchedule;
+        $obj['emailReminderSchedule'] = $emailReminderSchedule;
 
         return $obj;
     }
 
+    /**
+     * @param ExternalCalendarMeetingEventCreateProperties|array{
+     *   hs_meeting_end_time: \DateTimeInterface,
+     *   hs_meeting_outcome: string,
+     *   hs_meeting_start_time: \DateTimeInterface,
+     *   hs_meeting_title: string,
+     *   hs_timestamp: \DateTimeInterface,
+     *   hubspot_owner_id: string,
+     *   hs_activity_type?: string|null,
+     *   hs_attachment_ids?: list<string>|null,
+     *   hs_attendee_owner_ids?: list<string>|null,
+     *   hs_internal_meeting_notes?: string|null,
+     *   hs_meeting_body?: string|null,
+     *   hs_meeting_location?: string|null,
+     *   hs_meeting_location_type?: string|null,
+     * } $properties
+     */
     public function withProperties(
-        ExternalCalendarMeetingEventCreateProperties $properties
+        ExternalCalendarMeetingEventCreateProperties|array $properties
     ): self {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -114,7 +160,7 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
     public function withTimezone(string $timezone): self
     {
         $obj = clone $this;
-        $obj->timezone = $timezone;
+        $obj['timezone'] = $timezone;
 
         return $obj;
     }

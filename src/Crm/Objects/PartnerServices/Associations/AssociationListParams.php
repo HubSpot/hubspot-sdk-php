@@ -74,11 +74,11 @@ final class AssociationListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->partnerServiceId = $partnerServiceId;
+        $obj['partnerServiceId'] = $partnerServiceId;
 
-        null !== $after && $obj->after = $after;
-        null !== $includeFA && $obj->includeFA = $includeFA;
-        null !== $limit && $obj->limit = $limit;
+        null !== $after && $obj['after'] = $after;
+        null !== $includeFA && $obj['includeFA'] = $includeFA;
+        null !== $limit && $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class AssociationListParams implements BaseModel
     public function withPartnerServiceID(string $partnerServiceID): self
     {
         $obj = clone $this;
-        $obj->partnerServiceId = $partnerServiceID;
+        $obj['partnerServiceId'] = $partnerServiceID;
 
         return $obj;
     }
@@ -97,7 +97,7 @@ final class AssociationListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class AssociationListParams implements BaseModel
     public function withIncludeFa(bool $includeFa): self
     {
         $obj = clone $this;
-        $obj->includeFA = $includeFa;
+        $obj['includeFA'] = $includeFa;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class AssociationListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }

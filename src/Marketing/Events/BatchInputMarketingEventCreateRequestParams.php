@@ -46,24 +46,50 @@ final class BatchInputMarketingEventCreateRequestParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventCreateRequestParams> $inputs
+     * @param list<MarketingEventCreateRequestParams|array{
+     *   customProperties: list<PropertyValue>,
+     *   eventName: string,
+     *   eventOrganizer: string,
+     *   externalAccountId: string,
+     *   externalEventId: string,
+     *   endDateTime?: \DateTimeInterface|null,
+     *   eventCancelled?: bool|null,
+     *   eventCompleted?: bool|null,
+     *   eventDescription?: string|null,
+     *   eventType?: string|null,
+     *   eventUrl?: string|null,
+     *   startDateTime?: \DateTimeInterface|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<MarketingEventCreateRequestParams> $inputs
+     * @param list<MarketingEventCreateRequestParams|array{
+     *   customProperties: list<PropertyValue>,
+     *   eventName: string,
+     *   eventOrganizer: string,
+     *   externalAccountId: string,
+     *   externalEventId: string,
+     *   endDateTime?: \DateTimeInterface|null,
+     *   eventCancelled?: bool|null,
+     *   eventCompleted?: bool|null,
+     *   eventDescription?: string|null,
+     *   eventType?: string|null,
+     *   eventUrl?: string|null,
+     *   startDateTime?: \DateTimeInterface|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObject;
+use HubspotSDK\Crm\ValueWithTimestamp;
 
 /**
  * @phpstan-type DealToDealSplitsShape = array{
@@ -50,14 +51,24 @@ final class DealToDealSplits implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObject> $splits
+     * @param list<SimplePublicObject|array{
+     *   id: string,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   properties: array<string,string|null>,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   objectWriteTraceId?: string|null,
+     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
+     *   url?: string|null,
+     * }> $splits
      */
     public static function with(string $id, array $splits): self
     {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->splits = $splits;
+        $obj['id'] = $id;
+        $obj['splits'] = $splits;
 
         return $obj;
     }
@@ -65,18 +76,28 @@ final class DealToDealSplits implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
     /**
-     * @param list<SimplePublicObject> $splits
+     * @param list<SimplePublicObject|array{
+     *   id: string,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   properties: array<string,string|null>,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   objectWriteTraceId?: string|null,
+     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
+     *   url?: string|null,
+     * }> $splits
      */
     public function withSplits(array $splits): self
     {
         $obj = clone $this;
-        $obj->splits = $splits;
+        $obj['splits'] = $splits;
 
         return $obj;
     }

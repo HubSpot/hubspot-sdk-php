@@ -55,8 +55,8 @@ final class PublicExecutionTranslationRule implements BaseModel
     {
         $obj = new self;
 
-        $obj->conditions = $conditions;
-        $obj->labelName = $labelName;
+        $obj['conditions'] = $conditions;
+        $obj['labelName'] = $labelName;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class PublicExecutionTranslationRule implements BaseModel
     public function withConditions(array $conditions): self
     {
         $obj = clone $this;
-        $obj->conditions = $conditions;
+        $obj['conditions'] = $conditions;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class PublicExecutionTranslationRule implements BaseModel
     public function withLabelName(string $labelName): self
     {
         $obj = clone $this;
-        $obj->labelName = $labelName;
+        $obj['labelName'] = $labelName;
 
         return $obj;
     }

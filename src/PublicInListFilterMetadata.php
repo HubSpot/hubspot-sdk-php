@@ -52,8 +52,8 @@ final class PublicInListFilterMetadata implements BaseModel
     {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->inListType = $inListType;
+        $obj['id'] = $id;
+        $obj['inListType'] = $inListType;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class PublicInListFilterMetadata implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class PublicInListFilterMetadata implements BaseModel
     public function withInListType(string $inListType): self
     {
         $obj = clone $this;
-        $obj->inListType = $inListType;
+        $obj['inListType'] = $inListType;
 
         return $obj;
     }

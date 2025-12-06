@@ -7,6 +7,7 @@ namespace HubspotSDK\Crm\Pipelines;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Pipelines\PipelineStage\WritePermissions;
 
 /**
  * @phpstan-type CollectionResponsePipelineStageNoPagingShape = array{
@@ -46,24 +47,44 @@ final class CollectionResponsePipelineStageNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PipelineStage> $results
+     * @param list<PipelineStage|array{
+     *   id: string,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   displayOrder: int,
+     *   label: string,
+     *   metadata: array<string,string>,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   writePermissions?: value-of<WritePermissions>|null,
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<PipelineStage> $results
+     * @param list<PipelineStage|array{
+     *   id: string,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   displayOrder: int,
+     *   label: string,
+     *   metadata: array<string,string>,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   writePermissions?: value-of<WritePermissions>|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

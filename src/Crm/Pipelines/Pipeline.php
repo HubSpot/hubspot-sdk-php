@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Crm\Pipelines\PipelineStage\WritePermissions;
 
 /**
  * A pipeline definition.
@@ -120,7 +121,17 @@ final class Pipeline implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PipelineStage> $stages
+     * @param list<PipelineStage|array{
+     *   id: string,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   displayOrder: int,
+     *   label: string,
+     *   metadata: array<string,string>,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   writePermissions?: value-of<WritePermissions>|null,
+     * }> $stages
      */
     public static function with(
         string $id,
@@ -134,15 +145,15 @@ final class Pipeline implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->createdAt = $createdAt;
-        $obj->displayOrder = $displayOrder;
-        $obj->label = $label;
-        $obj->stages = $stages;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['createdAt'] = $createdAt;
+        $obj['displayOrder'] = $displayOrder;
+        $obj['label'] = $label;
+        $obj['stages'] = $stages;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $archivedAt && $obj->archivedAt = $archivedAt;
+        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
 
         return $obj;
     }
@@ -153,7 +164,7 @@ final class Pipeline implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -164,7 +175,7 @@ final class Pipeline implements BaseModel, ResponseConverter
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -175,7 +186,7 @@ final class Pipeline implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -186,7 +197,7 @@ final class Pipeline implements BaseModel, ResponseConverter
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -197,7 +208,7 @@ final class Pipeline implements BaseModel, ResponseConverter
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -205,12 +216,22 @@ final class Pipeline implements BaseModel, ResponseConverter
     /**
      * The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
      *
-     * @param list<PipelineStage> $stages
+     * @param list<PipelineStage|array{
+     *   id: string,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   displayOrder: int,
+     *   label: string,
+     *   metadata: array<string,string>,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   writePermissions?: value-of<WritePermissions>|null,
+     * }> $stages
      */
     public function withStages(array $stages): self
     {
         $obj = clone $this;
-        $obj->stages = $stages;
+        $obj['stages'] = $stages;
 
         return $obj;
     }
@@ -221,7 +242,7 @@ final class Pipeline implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -232,7 +253,7 @@ final class Pipeline implements BaseModel, ResponseConverter
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
-        $obj->archivedAt = $archivedAt;
+        $obj['archivedAt'] = $archivedAt;
 
         return $obj;
     }

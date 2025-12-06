@@ -62,7 +62,7 @@ final class APIFlowBatchFetchMigrationFlowIDCoordinate implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->flowMigrationStatuses = $flowMigrationStatuses;
+        $obj['flowMigrationStatuses'] = $flowMigrationStatuses;
         $obj['type'] = $type;
 
         return $obj;
@@ -72,7 +72,7 @@ final class APIFlowBatchFetchMigrationFlowIDCoordinate implements BaseModel
         string $flowMigrationStatuses
     ): self {
         $obj = clone $this;
-        $obj->flowMigrationStatuses = $flowMigrationStatuses;
+        $obj['flowMigrationStatuses'] = $flowMigrationStatuses;
 
         return $obj;
     }

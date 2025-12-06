@@ -196,26 +196,26 @@ final class AttentionSpanEvent implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->contactId = $contactId;
-        $obj->mediaBridgeId = $mediaBridgeId;
-        $obj->mediaBridgeObjectCoordinates = $mediaBridgeObjectCoordinates;
-        $obj->mediaBridgeObjectTypeId = $mediaBridgeObjectTypeId;
-        $obj->mediaName = $mediaName;
+        $obj['contactId'] = $contactId;
+        $obj['mediaBridgeId'] = $mediaBridgeId;
+        $obj['mediaBridgeObjectCoordinates'] = $mediaBridgeObjectCoordinates;
+        $obj['mediaBridgeObjectTypeId'] = $mediaBridgeObjectTypeId;
+        $obj['mediaName'] = $mediaName;
         $obj['mediaType'] = $mediaType;
-        $obj->occurredTimestamp = $occurredTimestamp;
-        $obj->percentRange = $percentRange;
-        $obj->portalId = $portalId;
-        $obj->providerId = $providerId;
-        $obj->sessionId = $sessionId;
-        $obj->totalPercentPlayed = $totalPercentPlayed;
+        $obj['occurredTimestamp'] = $occurredTimestamp;
+        $obj['percentRange'] = $percentRange;
+        $obj['portalId'] = $portalId;
+        $obj['providerId'] = $providerId;
+        $obj['sessionId'] = $sessionId;
+        $obj['totalPercentPlayed'] = $totalPercentPlayed;
 
-        null !== $mediaUrl && $obj->mediaUrl = $mediaUrl;
-        null !== $pageId && $obj->pageId = $pageId;
-        null !== $pageName && $obj->pageName = $pageName;
-        null !== $pageObjectCoordinates && $obj->pageObjectCoordinates = $pageObjectCoordinates;
-        null !== $pageUrl && $obj->pageUrl = $pageUrl;
-        null !== $rawData && $obj->rawData = $rawData;
-        null !== $totalSecondsPlayed && $obj->totalSecondsPlayed = $totalSecondsPlayed;
+        null !== $mediaUrl && $obj['mediaUrl'] = $mediaUrl;
+        null !== $pageId && $obj['pageId'] = $pageId;
+        null !== $pageName && $obj['pageName'] = $pageName;
+        null !== $pageObjectCoordinates && $obj['pageObjectCoordinates'] = $pageObjectCoordinates;
+        null !== $pageUrl && $obj['pageUrl'] = $pageUrl;
+        null !== $rawData && $obj['rawData'] = $rawData;
+        null !== $totalSecondsPlayed && $obj['totalSecondsPlayed'] = $totalSecondsPlayed;
 
         return $obj;
     }
@@ -226,7 +226,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withContactID(int $contactID): self
     {
         $obj = clone $this;
-        $obj->contactId = $contactID;
+        $obj['contactId'] = $contactID;
 
         return $obj;
     }
@@ -234,7 +234,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withMediaBridgeID(int $mediaBridgeID): self
     {
         $obj = clone $this;
-        $obj->mediaBridgeId = $mediaBridgeID;
+        $obj['mediaBridgeId'] = $mediaBridgeID;
 
         return $obj;
     }
@@ -243,7 +243,7 @@ final class AttentionSpanEvent implements BaseModel
         string $mediaBridgeObjectCoordinates
     ): self {
         $obj = clone $this;
-        $obj->mediaBridgeObjectCoordinates = $mediaBridgeObjectCoordinates;
+        $obj['mediaBridgeObjectCoordinates'] = $mediaBridgeObjectCoordinates;
 
         return $obj;
     }
@@ -252,7 +252,7 @@ final class AttentionSpanEvent implements BaseModel
         string $mediaBridgeObjectTypeID
     ): self {
         $obj = clone $this;
-        $obj->mediaBridgeObjectTypeId = $mediaBridgeObjectTypeID;
+        $obj['mediaBridgeObjectTypeId'] = $mediaBridgeObjectTypeID;
 
         return $obj;
     }
@@ -260,7 +260,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withMediaName(string $mediaName): self
     {
         $obj = clone $this;
-        $obj->mediaName = $mediaName;
+        $obj['mediaName'] = $mediaName;
 
         return $obj;
     }
@@ -282,7 +282,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withOccurredTimestamp(int $occurredTimestamp): self
     {
         $obj = clone $this;
-        $obj->occurredTimestamp = $occurredTimestamp;
+        $obj['occurredTimestamp'] = $occurredTimestamp;
 
         return $obj;
     }
@@ -290,7 +290,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withPercentRange(string $percentRange): self
     {
         $obj = clone $this;
-        $obj->percentRange = $percentRange;
+        $obj['percentRange'] = $percentRange;
 
         return $obj;
     }
@@ -301,7 +301,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }
@@ -309,7 +309,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withProviderID(int $providerID): self
     {
         $obj = clone $this;
-        $obj->providerId = $providerID;
+        $obj['providerId'] = $providerID;
 
         return $obj;
     }
@@ -317,7 +317,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withSessionID(string $sessionID): self
     {
         $obj = clone $this;
-        $obj->sessionId = $sessionID;
+        $obj['sessionId'] = $sessionID;
 
         return $obj;
     }
@@ -328,7 +328,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withTotalPercentPlayed(float $totalPercentPlayed): self
     {
         $obj = clone $this;
-        $obj->totalPercentPlayed = $totalPercentPlayed;
+        $obj['totalPercentPlayed'] = $totalPercentPlayed;
 
         return $obj;
     }
@@ -336,7 +336,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withMediaURL(string $mediaURL): self
     {
         $obj = clone $this;
-        $obj->mediaUrl = $mediaURL;
+        $obj['mediaUrl'] = $mediaURL;
 
         return $obj;
     }
@@ -347,7 +347,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withPageID(int $pageID): self
     {
         $obj = clone $this;
-        $obj->pageId = $pageID;
+        $obj['pageId'] = $pageID;
 
         return $obj;
     }
@@ -358,7 +358,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withPageName(string $pageName): self
     {
         $obj = clone $this;
-        $obj->pageName = $pageName;
+        $obj['pageName'] = $pageName;
 
         return $obj;
     }
@@ -367,7 +367,7 @@ final class AttentionSpanEvent implements BaseModel
         string $pageObjectCoordinates
     ): self {
         $obj = clone $this;
-        $obj->pageObjectCoordinates = $pageObjectCoordinates;
+        $obj['pageObjectCoordinates'] = $pageObjectCoordinates;
 
         return $obj;
     }
@@ -378,7 +378,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withPageURL(string $pageURL): self
     {
         $obj = clone $this;
-        $obj->pageUrl = $pageURL;
+        $obj['pageUrl'] = $pageURL;
 
         return $obj;
     }
@@ -389,7 +389,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withRawData(string $rawData): self
     {
         $obj = clone $this;
-        $obj->rawData = $rawData;
+        $obj['rawData'] = $rawData;
 
         return $obj;
     }
@@ -400,7 +400,7 @@ final class AttentionSpanEvent implements BaseModel
     public function withTotalSecondsPlayed(int $totalSecondsPlayed): self
     {
         $obj = clone $this;
-        $obj->totalSecondsPlayed = $totalSecondsPlayed;
+        $obj['totalSecondsPlayed'] = $totalSecondsPlayed;
 
         return $obj;
     }

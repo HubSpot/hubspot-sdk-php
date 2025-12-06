@@ -73,7 +73,7 @@ final class StatusGetParams implements BaseModel
 
         $obj['channel'] = $channel;
 
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
 
         return $obj;
     }
@@ -97,7 +97,7 @@ final class StatusGetParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }

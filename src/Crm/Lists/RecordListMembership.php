@@ -72,12 +72,12 @@ final class RecordListMembership implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->listId = $listId;
-        $obj->listVersion = $listVersion;
+        $obj['listId'] = $listId;
+        $obj['listVersion'] = $listVersion;
 
-        null !== $firstAddedTimestamp && $obj->firstAddedTimestamp = $firstAddedTimestamp;
-        null !== $isPublicList && $obj->isPublicList = $isPublicList;
-        null !== $lastAddedTimestamp && $obj->lastAddedTimestamp = $lastAddedTimestamp;
+        null !== $firstAddedTimestamp && $obj['firstAddedTimestamp'] = $firstAddedTimestamp;
+        null !== $isPublicList && $obj['isPublicList'] = $isPublicList;
+        null !== $lastAddedTimestamp && $obj['lastAddedTimestamp'] = $lastAddedTimestamp;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class RecordListMembership implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listId = $listID;
+        $obj['listId'] = $listID;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class RecordListMembership implements BaseModel
     public function withListVersion(int $listVersion): self
     {
         $obj = clone $this;
-        $obj->listVersion = $listVersion;
+        $obj['listVersion'] = $listVersion;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class RecordListMembership implements BaseModel
         \DateTimeInterface $firstAddedTimestamp
     ): self {
         $obj = clone $this;
-        $obj->firstAddedTimestamp = $firstAddedTimestamp;
+        $obj['firstAddedTimestamp'] = $firstAddedTimestamp;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class RecordListMembership implements BaseModel
     public function withIsPublicList(bool $isPublicList): self
     {
         $obj = clone $this;
-        $obj->isPublicList = $isPublicList;
+        $obj['isPublicList'] = $isPublicList;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class RecordListMembership implements BaseModel
         \DateTimeInterface $lastAddedTimestamp
     ): self {
         $obj = clone $this;
-        $obj->lastAddedTimestamp = $lastAddedTimestamp;
+        $obj['lastAddedTimestamp'] = $lastAddedTimestamp;
 
         return $obj;
     }

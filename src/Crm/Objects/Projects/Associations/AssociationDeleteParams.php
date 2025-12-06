@@ -67,9 +67,9 @@ final class AssociationDeleteParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->projectId = $projectId;
-        $obj->toObjectType = $toObjectType;
-        $obj->toObjectId = $toObjectId;
+        $obj['projectId'] = $projectId;
+        $obj['toObjectType'] = $toObjectType;
+        $obj['toObjectId'] = $toObjectId;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class AssociationDeleteParams implements BaseModel
     public function withProjectID(string $projectID): self
     {
         $obj = clone $this;
-        $obj->projectId = $projectID;
+        $obj['projectId'] = $projectID;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class AssociationDeleteParams implements BaseModel
     public function withToObjectType(string $toObjectType): self
     {
         $obj = clone $this;
-        $obj->toObjectType = $toObjectType;
+        $obj['toObjectType'] = $toObjectType;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class AssociationDeleteParams implements BaseModel
     public function withToObjectID(string $toObjectID): self
     {
         $obj = clone $this;
-        $obj->toObjectId = $toObjectID;
+        $obj['toObjectId'] = $toObjectID;
 
         return $obj;
     }

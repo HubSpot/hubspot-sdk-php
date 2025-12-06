@@ -51,27 +51,46 @@ final class AggregateEmailStatistics implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,EmailStatisticsData> $campaignAggregations
+     * @param EmailStatisticsData|array{
+     *   counters: array<string,int>,
+     *   deviceBreakdown: array<string,array<string,int>>,
+     *   qualifierStats: array<string,array<string,int>>,
+     *   ratios: array<string,float>,
+     * } $aggregate
+     * @param array<string,EmailStatisticsData|array{
+     *   counters: array<string,int>,
+     *   deviceBreakdown: array<string,array<string,int>>,
+     *   qualifierStats: array<string,array<string,int>>,
+     *   ratios: array<string,float>,
+     * }> $campaignAggregations
      * @param list<int> $emails
      */
     public static function with(
-        ?EmailStatisticsData $aggregate = null,
+        EmailStatisticsData|array|null $aggregate = null,
         ?array $campaignAggregations = null,
         ?array $emails = null,
     ): self {
         $obj = new self;
 
-        null !== $aggregate && $obj->aggregate = $aggregate;
-        null !== $campaignAggregations && $obj->campaignAggregations = $campaignAggregations;
-        null !== $emails && $obj->emails = $emails;
+        null !== $aggregate && $obj['aggregate'] = $aggregate;
+        null !== $campaignAggregations && $obj['campaignAggregations'] = $campaignAggregations;
+        null !== $emails && $obj['emails'] = $emails;
 
         return $obj;
     }
 
-    public function withAggregate(EmailStatisticsData $aggregate): self
+    /**
+     * @param EmailStatisticsData|array{
+     *   counters: array<string,int>,
+     *   deviceBreakdown: array<string,array<string,int>>,
+     *   qualifierStats: array<string,array<string,int>>,
+     *   ratios: array<string,float>,
+     * } $aggregate
+     */
+    public function withAggregate(EmailStatisticsData|array $aggregate): self
     {
         $obj = clone $this;
-        $obj->aggregate = $aggregate;
+        $obj['aggregate'] = $aggregate;
 
         return $obj;
     }
@@ -79,12 +98,17 @@ final class AggregateEmailStatistics implements BaseModel
     /**
      * The aggregated statistics per campaign.
      *
-     * @param array<string,EmailStatisticsData> $campaignAggregations
+     * @param array<string,EmailStatisticsData|array{
+     *   counters: array<string,int>,
+     *   deviceBreakdown: array<string,array<string,int>>,
+     *   qualifierStats: array<string,array<string,int>>,
+     *   ratios: array<string,float>,
+     * }> $campaignAggregations
      */
     public function withCampaignAggregations(array $campaignAggregations): self
     {
         $obj = clone $this;
-        $obj->campaignAggregations = $campaignAggregations;
+        $obj['campaignAggregations'] = $campaignAggregations;
 
         return $obj;
     }
@@ -97,7 +121,7 @@ final class AggregateEmailStatistics implements BaseModel
     public function withEmails(array $emails): self
     {
         $obj = clone $this;
-        $obj->emails = $emails;
+        $obj['emails'] = $emails;
 
         return $obj;
     }

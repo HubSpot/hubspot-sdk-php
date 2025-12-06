@@ -101,14 +101,14 @@ final class PublicAuditInfo implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->action = $action;
-        $obj->identifier = $identifier;
-        $obj->portalId = $portalId;
+        $obj['action'] = $action;
+        $obj['identifier'] = $identifier;
+        $obj['portalId'] = $portalId;
 
-        null !== $fromUserId && $obj->fromUserId = $fromUserId;
-        null !== $message && $obj->message = $message;
-        null !== $rawObject && $obj->rawObject = $rawObject;
-        null !== $timestamp && $obj->timestamp = $timestamp;
+        null !== $fromUserId && $obj['fromUserId'] = $fromUserId;
+        null !== $message && $obj['message'] = $message;
+        null !== $rawObject && $obj['rawObject'] = $rawObject;
+        null !== $timestamp && $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class PublicAuditInfo implements BaseModel
     public function withAction(string $action): self
     {
         $obj = clone $this;
-        $obj->action = $action;
+        $obj['action'] = $action;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class PublicAuditInfo implements BaseModel
     public function withIdentifier(string $identifier): self
     {
         $obj = clone $this;
-        $obj->identifier = $identifier;
+        $obj['identifier'] = $identifier;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class PublicAuditInfo implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class PublicAuditInfo implements BaseModel
     public function withFromUserID(int $fromUserID): self
     {
         $obj = clone $this;
-        $obj->fromUserId = $fromUserID;
+        $obj['fromUserId'] = $fromUserID;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class PublicAuditInfo implements BaseModel
     public function withMessage(string $message): self
     {
         $obj = clone $this;
-        $obj->message = $message;
+        $obj['message'] = $message;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class PublicAuditInfo implements BaseModel
     public function withRawObject(mixed $rawObject): self
     {
         $obj = clone $this;
-        $obj->rawObject = $rawObject;
+        $obj['rawObject'] = $rawObject;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class PublicAuditInfo implements BaseModel
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }

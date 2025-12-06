@@ -9,8 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\NextPage;
+use HubspotSDK\Option;
 use HubspotSDK\Paging;
+use HubspotSDK\PreviousPage;
 use HubspotSDK\Property;
+use HubspotSDK\Property\DataSensitivity;
+use HubspotSDK\PropertyModificationMetadata;
 
 /**
  * @phpstan-type CollectionResponsePropertyShape = array{
@@ -55,34 +60,94 @@ final class CollectionResponseProperty implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property> $results
+     * @param list<Property|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * }> $results
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        Paging|array|null $paging = null
+    ): self {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<Property> $results
+     * @param list<Property|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    /**
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     */
+    public function withPaging(Paging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

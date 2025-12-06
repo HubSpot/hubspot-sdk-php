@@ -40,7 +40,7 @@ final class RecordingSettingUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $urlToRetrieveAuthedRecording && $obj->urlToRetrieveAuthedRecording = $urlToRetrieveAuthedRecording;
+        null !== $urlToRetrieveAuthedRecording && $obj['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
 
         return $obj;
     }
@@ -49,7 +49,7 @@ final class RecordingSettingUpdateParams implements BaseModel
         string $urlToRetrieveAuthedRecording
     ): self {
         $obj = clone $this;
-        $obj->urlToRetrieveAuthedRecording = $urlToRetrieveAuthedRecording;
+        $obj['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
 
         return $obj;
     }

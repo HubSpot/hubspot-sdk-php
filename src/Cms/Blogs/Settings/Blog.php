@@ -199,21 +199,21 @@ final class Blog implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->absoluteUrl = $absoluteUrl;
-        $obj->allowComments = $allowComments;
-        $obj->created = $created;
-        $obj->deletedAt = $deletedAt;
-        $obj->description = $description;
-        $obj->htmlTitle = $htmlTitle;
+        $obj['id'] = $id;
+        $obj['absoluteUrl'] = $absoluteUrl;
+        $obj['allowComments'] = $allowComments;
+        $obj['created'] = $created;
+        $obj['deletedAt'] = $deletedAt;
+        $obj['description'] = $description;
+        $obj['htmlTitle'] = $htmlTitle;
         $obj['language'] = $language;
-        $obj->name = $name;
-        $obj->publicAccessRules = $publicAccessRules;
-        $obj->publicAccessRulesEnabled = $publicAccessRulesEnabled;
-        $obj->publicTitle = $publicTitle;
-        $obj->slug = $slug;
-        $obj->translatedFromId = $translatedFromId;
-        $obj->updated = $updated;
+        $obj['name'] = $name;
+        $obj['publicAccessRules'] = $publicAccessRules;
+        $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
+        $obj['publicTitle'] = $publicTitle;
+        $obj['slug'] = $slug;
+        $obj['translatedFromId'] = $translatedFromId;
+        $obj['updated'] = $updated;
 
         return $obj;
     }
@@ -224,7 +224,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -232,7 +232,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withAbsoluteURL(string $absoluteURL): self
     {
         $obj = clone $this;
-        $obj->absoluteUrl = $absoluteURL;
+        $obj['absoluteUrl'] = $absoluteURL;
 
         return $obj;
     }
@@ -243,7 +243,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withAllowComments(bool $allowComments): self
     {
         $obj = clone $this;
-        $obj->allowComments = $allowComments;
+        $obj['allowComments'] = $allowComments;
 
         return $obj;
     }
@@ -251,7 +251,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withCreated(\DateTimeInterface $created): self
     {
         $obj = clone $this;
-        $obj->created = $created;
+        $obj['created'] = $created;
 
         return $obj;
     }
@@ -262,7 +262,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
         $obj = clone $this;
-        $obj->deletedAt = $deletedAt;
+        $obj['deletedAt'] = $deletedAt;
 
         return $obj;
     }
@@ -273,7 +273,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -284,7 +284,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withHTMLTitle(string $htmlTitle): self
     {
         $obj = clone $this;
-        $obj->htmlTitle = $htmlTitle;
+        $obj['htmlTitle'] = $htmlTitle;
 
         return $obj;
     }
@@ -308,7 +308,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -321,7 +321,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withPublicAccessRules(array $publicAccessRules): self
     {
         $obj = clone $this;
-        $obj->publicAccessRules = $publicAccessRules;
+        $obj['publicAccessRules'] = $publicAccessRules;
 
         return $obj;
     }
@@ -333,7 +333,7 @@ final class Blog implements BaseModel, ResponseConverter
         bool $publicAccessRulesEnabled
     ): self {
         $obj = clone $this;
-        $obj->publicAccessRulesEnabled = $publicAccessRulesEnabled;
+        $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
 
         return $obj;
     }
@@ -344,7 +344,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withPublicTitle(string $publicTitle): self
     {
         $obj = clone $this;
-        $obj->publicTitle = $publicTitle;
+        $obj['publicTitle'] = $publicTitle;
 
         return $obj;
     }
@@ -355,7 +355,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withSlug(string $slug): self
     {
         $obj = clone $this;
-        $obj->slug = $slug;
+        $obj['slug'] = $slug;
 
         return $obj;
     }
@@ -366,7 +366,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withTranslatedFromID(string $translatedFromID): self
     {
         $obj = clone $this;
-        $obj->translatedFromId = $translatedFromID;
+        $obj['translatedFromId'] = $translatedFromID;
 
         return $obj;
     }
@@ -374,7 +374,7 @@ final class Blog implements BaseModel, ResponseConverter
     public function withUpdated(\DateTimeInterface $updated): self
     {
         $obj = clone $this;
-        $obj->updated = $updated;
+        $obj['updated'] = $updated;
 
         return $obj;
     }

@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
 
 /**
  * @phpstan-type CollectionResponseAssociationLabelLimitResponseNoPagingShape = array{
@@ -50,24 +51,38 @@ final class CollectionResponseAssociationLabelLimitResponseNoPaging implements B
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationLabelLimitResponse> $results
+     * @param list<AssociationLabelLimitResponse|array{
+     *   allLabels: list<string>,
+     *   fromObjectType: ObjectsSchemasObjectTypeDefinition,
+     *   limit: int,
+     *   percentage: float,
+     *   toObjectType: ObjectsSchemasObjectTypeDefinition,
+     *   usage: int,
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<AssociationLabelLimitResponse> $results
+     * @param list<AssociationLabelLimitResponse|array{
+     *   allLabels: list<string>,
+     *   fromObjectType: ObjectsSchemasObjectTypeDefinition,
+     *   limit: int,
+     *   percentage: float,
+     *   toObjectType: ObjectsSchemasObjectTypeDefinition,
+     *   usage: int,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

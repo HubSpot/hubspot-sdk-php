@@ -98,8 +98,38 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicSequenceStepDependencyResponse> $dependencies
-     * @param list<PublicSequenceStepResponse> $steps
+     * @param list<PublicSequenceStepDependencyResponse|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   dependencyType: string,
+     *   reliesOnSequenceStepId: string,
+     *   reliesOnStepOrder: int,
+     *   requiredBySequenceStepId: string,
+     *   requiredByStepOrder: int,
+     *   updatedAt: \DateTimeInterface,
+     * }> $dependencies
+     * @param list<PublicSequenceStepResponse|array{
+     *   id: string,
+     *   actionType: string,
+     *   createdAt: \DateTimeInterface,
+     *   delayMillis: int,
+     *   stepOrder: int,
+     *   updatedAt: \DateTimeInterface,
+     *   emailPattern?: PublicEmailPatternResponse|null,
+     *   taskPattern?: PublicTaskPatternResponse|null,
+     * }> $steps
+     * @param PublicSequenceSettingsResponse|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   eligibleFollowUpDays: string,
+     *   individualTaskRemindersEnabled: bool,
+     *   sellingStrategy: string,
+     *   sendWindowEndMinute: int,
+     *   sendWindowStartMinute: int,
+     *   taskReminderMinute: int,
+     *   updatedAt: \DateTimeInterface,
+     *   unenrollmentSettings?: UnenrollmentSettingsResponse|null,
+     * } $settings
      */
     public static function with(
         string $id,
@@ -110,20 +140,20 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
         \DateTimeInterface $updatedAt,
         string $userId,
         ?string $folderId = null,
-        ?PublicSequenceSettingsResponse $settings = null,
+        PublicSequenceSettingsResponse|array|null $settings = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->dependencies = $dependencies;
-        $obj->name = $name;
-        $obj->steps = $steps;
-        $obj->updatedAt = $updatedAt;
-        $obj->userId = $userId;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['dependencies'] = $dependencies;
+        $obj['name'] = $name;
+        $obj['steps'] = $steps;
+        $obj['updatedAt'] = $updatedAt;
+        $obj['userId'] = $userId;
 
-        null !== $folderId && $obj->folderId = $folderId;
-        null !== $settings && $obj->settings = $settings;
+        null !== $folderId && $obj['folderId'] = $folderId;
+        null !== $settings && $obj['settings'] = $settings;
 
         return $obj;
     }
@@ -131,7 +161,7 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -139,18 +169,27 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicSequenceStepDependencyResponse> $dependencies
+     * @param list<PublicSequenceStepDependencyResponse|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   dependencyType: string,
+     *   reliesOnSequenceStepId: string,
+     *   reliesOnStepOrder: int,
+     *   requiredBySequenceStepId: string,
+     *   requiredByStepOrder: int,
+     *   updatedAt: \DateTimeInterface,
+     * }> $dependencies
      */
     public function withDependencies(array $dependencies): self
     {
         $obj = clone $this;
-        $obj->dependencies = $dependencies;
+        $obj['dependencies'] = $dependencies;
 
         return $obj;
     }
@@ -158,18 +197,27 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicSequenceStepResponse> $steps
+     * @param list<PublicSequenceStepResponse|array{
+     *   id: string,
+     *   actionType: string,
+     *   createdAt: \DateTimeInterface,
+     *   delayMillis: int,
+     *   stepOrder: int,
+     *   updatedAt: \DateTimeInterface,
+     *   emailPattern?: PublicEmailPatternResponse|null,
+     *   taskPattern?: PublicTaskPatternResponse|null,
+     * }> $steps
      */
     public function withSteps(array $steps): self
     {
         $obj = clone $this;
-        $obj->steps = $steps;
+        $obj['steps'] = $steps;
 
         return $obj;
     }
@@ -177,7 +225,7 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -185,7 +233,7 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }
@@ -193,15 +241,30 @@ final class PublicSequenceResponse implements BaseModel, ResponseConverter
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderId = $folderID;
+        $obj['folderId'] = $folderID;
 
         return $obj;
     }
 
-    public function withSettings(PublicSequenceSettingsResponse $settings): self
-    {
+    /**
+     * @param PublicSequenceSettingsResponse|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   eligibleFollowUpDays: string,
+     *   individualTaskRemindersEnabled: bool,
+     *   sellingStrategy: string,
+     *   sendWindowEndMinute: int,
+     *   sendWindowStartMinute: int,
+     *   taskReminderMinute: int,
+     *   updatedAt: \DateTimeInterface,
+     *   unenrollmentSettings?: UnenrollmentSettingsResponse|null,
+     * } $settings
+     */
+    public function withSettings(
+        PublicSequenceSettingsResponse|array $settings
+    ): self {
         $obj = clone $this;
-        $obj->settings = $settings;
+        $obj['settings'] = $settings;
 
         return $obj;
     }

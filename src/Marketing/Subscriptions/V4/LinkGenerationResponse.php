@@ -70,11 +70,11 @@ final class LinkGenerationResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->managePreferencesUrl = $managePreferencesUrl;
-        $obj->subscriberIdString = $subscriberIdString;
-        $obj->unsubscribeAllUrl = $unsubscribeAllUrl;
+        $obj['managePreferencesUrl'] = $managePreferencesUrl;
+        $obj['subscriberIdString'] = $subscriberIdString;
+        $obj['unsubscribeAllUrl'] = $unsubscribeAllUrl;
 
-        null !== $unsubscribeSingleUrl && $obj->unsubscribeSingleUrl = $unsubscribeSingleUrl;
+        null !== $unsubscribeSingleUrl && $obj['unsubscribeSingleUrl'] = $unsubscribeSingleUrl;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withManagePreferencesURL(string $managePreferencesURL): self
     {
         $obj = clone $this;
-        $obj->managePreferencesUrl = $managePreferencesURL;
+        $obj['managePreferencesUrl'] = $managePreferencesURL;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIdString = $subscriberIDString;
+        $obj['subscriberIdString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withUnsubscribeAllURL(string $unsubscribeAllURL): self
     {
         $obj = clone $this;
-        $obj->unsubscribeAllUrl = $unsubscribeAllURL;
+        $obj['unsubscribeAllUrl'] = $unsubscribeAllURL;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withUnsubscribeSingleURL(string $unsubscribeSingleURL): self
     {
         $obj = clone $this;
-        $obj->unsubscribeSingleUrl = $unsubscribeSingleURL;
+        $obj['unsubscribeSingleUrl'] = $unsubscribeSingleURL;
 
         return $obj;
     }

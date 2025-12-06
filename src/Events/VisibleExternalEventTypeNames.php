@@ -60,7 +60,7 @@ final class VisibleExternalEventTypeNames implements BaseModel, ResponseConverte
     {
         $obj = new self;
 
-        $obj->eventTypes = $eventTypes;
+        $obj['eventTypes'] = $eventTypes;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class VisibleExternalEventTypeNames implements BaseModel, ResponseConverte
     public function withEventTypes(array $eventTypes): self
     {
         $obj = clone $this;
-        $obj->eventTypes = $eventTypes;
+        $obj['eventTypes'] = $eventTypes;
 
         return $obj;
     }

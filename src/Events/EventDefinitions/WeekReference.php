@@ -85,10 +85,10 @@ final class WeekReference implements BaseModel
         $obj['dayOfWeek'] = $dayOfWeek;
         $obj['referenceType'] = $referenceType;
 
-        null !== $hour && $obj->hour = $hour;
-        null !== $millisecond && $obj->millisecond = $millisecond;
-        null !== $minute && $obj->minute = $minute;
-        null !== $second && $obj->second = $second;
+        null !== $hour && $obj['hour'] = $hour;
+        null !== $millisecond && $obj['millisecond'] = $millisecond;
+        null !== $minute && $obj['minute'] = $minute;
+        null !== $second && $obj['second'] = $second;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class WeekReference implements BaseModel
     public function withHour(int $hour): self
     {
         $obj = clone $this;
-        $obj->hour = $hour;
+        $obj['hour'] = $hour;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class WeekReference implements BaseModel
     public function withMillisecond(int $millisecond): self
     {
         $obj = clone $this;
-        $obj->millisecond = $millisecond;
+        $obj['millisecond'] = $millisecond;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class WeekReference implements BaseModel
     public function withMinute(int $minute): self
     {
         $obj = clone $this;
-        $obj->minute = $minute;
+        $obj['minute'] = $minute;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class WeekReference implements BaseModel
     public function withSecond(int $second): self
     {
         $obj = clone $this;
-        $obj->second = $second;
+        $obj['second'] = $second;
 
         return $obj;
     }

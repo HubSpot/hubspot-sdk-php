@@ -61,7 +61,7 @@ final class SitePageDeleteBatchParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -74,7 +74,7 @@ final class SitePageDeleteBatchParams implements BaseModel
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

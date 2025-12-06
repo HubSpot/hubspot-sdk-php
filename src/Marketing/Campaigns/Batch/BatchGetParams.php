@@ -19,7 +19,7 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
  * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
- *   inputs: list<PublicCampaignReadInput>,
+ *   inputs: list<PublicCampaignReadInput|array{id: string}>,
  *   endDate?: string,
  *   properties?: list<string>,
  *   startDate?: string,
@@ -79,7 +79,7 @@ final class BatchGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignReadInput> $inputs
+     * @param list<PublicCampaignReadInput|array{id: string}> $inputs
      * @param list<string> $properties
      */
     public static function with(
@@ -90,22 +90,22 @@ final class BatchGetParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
-        null !== $endDate && $obj->endDate = $endDate;
-        null !== $properties && $obj->properties = $properties;
-        null !== $startDate && $obj->startDate = $startDate;
+        null !== $endDate && $obj['endDate'] = $endDate;
+        null !== $properties && $obj['properties'] = $properties;
+        null !== $startDate && $obj['startDate'] = $startDate;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicCampaignReadInput> $inputs
+     * @param list<PublicCampaignReadInput|array{id: string}> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class BatchGetParams implements BaseModel
     public function withEndDate(string $endDate): self
     {
         $obj = clone $this;
-        $obj->endDate = $endDate;
+        $obj['endDate'] = $endDate;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class BatchGetParams implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class BatchGetParams implements BaseModel
     public function withStartDate(string $startDate): self
     {
         $obj = clone $this;
-        $obj->startDate = $startDate;
+        $obj['startDate'] = $startDate;
 
         return $obj;
     }

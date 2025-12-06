@@ -127,9 +127,19 @@ final class ExternalMeetingBookingResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalValidatedFormField> $formFields
+     * @param list<ExternalValidatedFormField|array{
+     *   isCustom: bool,
+     *   label: string,
+     *   name: string,
+     *   value: string,
+     *   fieldType?: string|null,
+     *   translatedLabel?: string|null,
+     *   valueLabel?: string|null,
+     * }> $formFields
      * @param list<string> $guestEmails
-     * @param list<ExternalLegalConsentResponse> $legalConsentResponses
+     * @param list<ExternalLegalConsentResponse|array{
+     *   communicationTypeId: string, consented: bool
+     * }> $legalConsentResponses
      */
     public static function with(
         string $bookingTimezone,
@@ -150,22 +160,22 @@ final class ExternalMeetingBookingResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->bookingTimezone = $bookingTimezone;
-        $obj->calendarEventId = $calendarEventId;
-        $obj->contactId = $contactId;
-        $obj->duration = $duration;
-        $obj->end = $end;
-        $obj->formFields = $formFields;
-        $obj->guestEmails = $guestEmails;
-        $obj->isOffline = $isOffline;
-        $obj->legalConsentResponses = $legalConsentResponses;
-        $obj->start = $start;
-        $obj->subject = $subject;
+        $obj['bookingTimezone'] = $bookingTimezone;
+        $obj['calendarEventId'] = $calendarEventId;
+        $obj['contactId'] = $contactId;
+        $obj['duration'] = $duration;
+        $obj['end'] = $end;
+        $obj['formFields'] = $formFields;
+        $obj['guestEmails'] = $guestEmails;
+        $obj['isOffline'] = $isOffline;
+        $obj['legalConsentResponses'] = $legalConsentResponses;
+        $obj['start'] = $start;
+        $obj['subject'] = $subject;
 
-        null !== $locale && $obj->locale = $locale;
-        null !== $location && $obj->location = $location;
-        null !== $webConferenceMeetingId && $obj->webConferenceMeetingId = $webConferenceMeetingId;
-        null !== $webConferenceUrl && $obj->webConferenceUrl = $webConferenceUrl;
+        null !== $locale && $obj['locale'] = $locale;
+        null !== $location && $obj['location'] = $location;
+        null !== $webConferenceMeetingId && $obj['webConferenceMeetingId'] = $webConferenceMeetingId;
+        null !== $webConferenceUrl && $obj['webConferenceUrl'] = $webConferenceUrl;
 
         return $obj;
     }
@@ -173,7 +183,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withBookingTimezone(string $bookingTimezone): self
     {
         $obj = clone $this;
-        $obj->bookingTimezone = $bookingTimezone;
+        $obj['bookingTimezone'] = $bookingTimezone;
 
         return $obj;
     }
@@ -181,7 +191,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withCalendarEventID(string $calendarEventID): self
     {
         $obj = clone $this;
-        $obj->calendarEventId = $calendarEventID;
+        $obj['calendarEventId'] = $calendarEventID;
 
         return $obj;
     }
@@ -189,7 +199,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withContactID(string $contactID): self
     {
         $obj = clone $this;
-        $obj->contactId = $contactID;
+        $obj['contactId'] = $contactID;
 
         return $obj;
     }
@@ -197,7 +207,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withDuration(int $duration): self
     {
         $obj = clone $this;
-        $obj->duration = $duration;
+        $obj['duration'] = $duration;
 
         return $obj;
     }
@@ -205,18 +215,26 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withEnd(\DateTimeInterface $end): self
     {
         $obj = clone $this;
-        $obj->end = $end;
+        $obj['end'] = $end;
 
         return $obj;
     }
 
     /**
-     * @param list<ExternalValidatedFormField> $formFields
+     * @param list<ExternalValidatedFormField|array{
+     *   isCustom: bool,
+     *   label: string,
+     *   name: string,
+     *   value: string,
+     *   fieldType?: string|null,
+     *   translatedLabel?: string|null,
+     *   valueLabel?: string|null,
+     * }> $formFields
      */
     public function withFormFields(array $formFields): self
     {
         $obj = clone $this;
-        $obj->formFields = $formFields;
+        $obj['formFields'] = $formFields;
 
         return $obj;
     }
@@ -227,7 +245,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withGuestEmails(array $guestEmails): self
     {
         $obj = clone $this;
-        $obj->guestEmails = $guestEmails;
+        $obj['guestEmails'] = $guestEmails;
 
         return $obj;
     }
@@ -235,19 +253,21 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withIsOffline(bool $isOffline): self
     {
         $obj = clone $this;
-        $obj->isOffline = $isOffline;
+        $obj['isOffline'] = $isOffline;
 
         return $obj;
     }
 
     /**
-     * @param list<ExternalLegalConsentResponse> $legalConsentResponses
+     * @param list<ExternalLegalConsentResponse|array{
+     *   communicationTypeId: string, consented: bool
+     * }> $legalConsentResponses
      */
     public function withLegalConsentResponses(
         array $legalConsentResponses
     ): self {
         $obj = clone $this;
-        $obj->legalConsentResponses = $legalConsentResponses;
+        $obj['legalConsentResponses'] = $legalConsentResponses;
 
         return $obj;
     }
@@ -255,7 +275,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withStart(\DateTimeInterface $start): self
     {
         $obj = clone $this;
-        $obj->start = $start;
+        $obj['start'] = $start;
 
         return $obj;
     }
@@ -263,7 +283,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withSubject(string $subject): self
     {
         $obj = clone $this;
-        $obj->subject = $subject;
+        $obj['subject'] = $subject;
 
         return $obj;
     }
@@ -271,7 +291,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withLocale(string $locale): self
     {
         $obj = clone $this;
-        $obj->locale = $locale;
+        $obj['locale'] = $locale;
 
         return $obj;
     }
@@ -279,7 +299,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withLocation(string $location): self
     {
         $obj = clone $this;
-        $obj->location = $location;
+        $obj['location'] = $location;
 
         return $obj;
     }
@@ -288,7 +308,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
         string $webConferenceMeetingID
     ): self {
         $obj = clone $this;
-        $obj->webConferenceMeetingId = $webConferenceMeetingID;
+        $obj['webConferenceMeetingId'] = $webConferenceMeetingID;
 
         return $obj;
     }
@@ -296,7 +316,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withWebConferenceURL(string $webConferenceURL): self
     {
         $obj = clone $this;
-        $obj->webConferenceUrl = $webConferenceURL;
+        $obj['webConferenceUrl'] = $webConferenceURL;
 
         return $obj;
     }

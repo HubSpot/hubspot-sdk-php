@@ -61,7 +61,10 @@ final class PublicIntegrationEventFilter implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicEventFilterMetadata> $filterLines
+     * @param list<PublicEventFilterMetadata|array{
+     *   operation: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   property: string,
+     * }> $filterLines
      * @param FilterType|value-of<FilterType> $filterType
      */
     public static function with(
@@ -71,8 +74,8 @@ final class PublicIntegrationEventFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->eventTypeId = $eventTypeId;
-        $obj->filterLines = $filterLines;
+        $obj['eventTypeId'] = $eventTypeId;
+        $obj['filterLines'] = $filterLines;
         $obj['filterType'] = $filterType;
 
         return $obj;
@@ -81,18 +84,21 @@ final class PublicIntegrationEventFilter implements BaseModel
     public function withEventTypeID(int $eventTypeID): self
     {
         $obj = clone $this;
-        $obj->eventTypeId = $eventTypeID;
+        $obj['eventTypeId'] = $eventTypeID;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicEventFilterMetadata> $filterLines
+     * @param list<PublicEventFilterMetadata|array{
+     *   operation: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
+     *   property: string,
+     * }> $filterLines
      */
     public function withFilterLines(array $filterLines): self
     {
         $obj = clone $this;
-        $obj->filterLines = $filterLines;
+        $obj['filterLines'] = $filterLines;
 
         return $obj;
     }

@@ -13,6 +13,10 @@ use HubspotSDK\Marketing\Emails\PublicEmail\EmailTemplateMode;
 use HubspotSDK\Marketing\Emails\PublicEmail\Language;
 use HubspotSDK\Marketing\Emails\PublicEmail\State;
 use HubspotSDK\Marketing\Emails\PublicEmail\Type;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSampleSizeDefault;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSamplingDefault;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbStatus;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
 
 /**
  * A marketing email.
@@ -359,12 +363,78 @@ final class PublicEmail implements BaseModel, ResponseConverter
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $allEmailCampaignIds
+     * @param PublicEmailContent|array{
+     *   flexAreas?: array<string,mixed>|null,
+     *   plainTextVersion?: string|null,
+     *   smartFields?: array<string,mixed>|null,
+     *   styleSettings?: PublicEmailStyleSettings|null,
+     *   templatePath?: string|null,
+     *   themeSettingsValues?: array<string,mixed>|null,
+     *   widgetContainers?: array<string,mixed>|null,
+     *   widgets?: array<string,mixed>|null,
+     * } $content
      * @param EmailTemplateMode|value-of<EmailTemplateMode> $emailTemplateMode
+     * @param PublicEmailFromDetails|array{
+     *   customReplyTo?: string|null, fromName?: string|null, replyTo?: string|null
+     * } $from
      * @param Language|value-of<Language> $language
+     * @param PublicRssEmailDetails|array{
+     *   blogEmailType?: string|null,
+     *   blogImageMaxWidth?: int|null,
+     *   blogLayout?: string|null,
+     *   hubspotBlogId?: string|null,
+     *   maxEntries?: int|null,
+     *   rssEntryTemplate?: string|null,
+     *   timing?: array<string,mixed>|null,
+     *   url?: string|null,
+     *   useHeadlineAsSubject?: bool|null,
+     * } $rssData
      * @param State|value-of<State> $state
+     * @param EmailStatisticsData|array{
+     *   counters: array<string,int>,
+     *   deviceBreakdown: array<string,array<string,int>>,
+     *   qualifierStats: array<string,array<string,int>>,
+     *   ratios: array<string,float>,
+     * } $stats
+     * @param PublicEmailSubscriptionDetails|array{
+     *   officeLocationId?: string|null,
+     *   preferencesGroupId?: string|null,
+     *   subscriptionId?: string|null,
+     *   subscriptionName?: string|null,
+     * } $subscriptionDetails
      * @param list<string> $teamsWithAccess
+     * @param PublicEmailTestingDetails|array{
+     *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>|null,
+     *   abSamplingDefault?: value-of<AbSamplingDefault>|null,
+     *   abStatus?: value-of<AbStatus>|null,
+     *   abSuccessMetric?: value-of<AbSuccessMetric>|null,
+     *   abTestPercentage?: int|null,
+     *   hoursToWait?: int|null,
+     *   isAbVariation?: bool|null,
+     *   testId?: string|null,
+     * } $testing
+     * @param PublicEmailToDetails|array{
+     *   contactIds?: PublicEmailRecipients|null,
+     *   contactIlsLists?: PublicEmailRecipients|null,
+     *   contactLists?: PublicEmailRecipients|null,
+     *   limitSendFrequency?: bool|null,
+     *   suppressGraymail?: bool|null,
+     * } $to
      * @param Type|value-of<Type> $type
      * @param list<string> $usersWithAccess
+     * @param PublicWebversionDetails|array{
+     *   domain?: string|null,
+     *   enabled?: bool|null,
+     *   expiresAt?: \DateTimeInterface|null,
+     *   isPageRedirected?: bool|null,
+     *   metaDescription?: string|null,
+     *   pageExpiryEnabled?: bool|null,
+     *   redirectToPageId?: string|null,
+     *   redirectToUrl?: string|null,
+     *   slug?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * } $webversion
      * @param list<string> $workflowNames
      */
     public static function with(
@@ -378,7 +448,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
         ?string $campaignName = null,
         ?string $campaignUtm = null,
         ?string $clonedFrom = null,
-        ?PublicEmailContent $content = null,
+        PublicEmailContent|array|null $content = null,
         ?\DateTimeInterface $createdAt = null,
         ?string $createdById = null,
         ?\DateTimeInterface $deletedAt = null,
@@ -387,7 +457,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
         ?string $feedbackSurveyId = null,
         ?int $folderId = null,
         ?int $folderIdV2 = null,
-        ?PublicEmailFromDetails $from = null,
+        PublicEmailFromDetails|array|null $from = null,
         ?bool $isPublished = null,
         ?bool $isTransactional = null,
         ?bool $jitterSendTime = null,
@@ -400,76 +470,76 @@ final class PublicEmail implements BaseModel, ResponseConverter
         ?string $publishedByEmail = null,
         ?string $publishedById = null,
         ?string $publishedByName = null,
-        ?PublicRssEmailDetails $rssData = null,
+        PublicRssEmailDetails|array|null $rssData = null,
         ?bool $sendOnPublish = null,
         State|string|null $state = null,
-        ?EmailStatisticsData $stats = null,
+        EmailStatisticsData|array|null $stats = null,
         ?string $subcategory = null,
         ?string $subject = null,
-        ?PublicEmailSubscriptionDetails $subscriptionDetails = null,
+        PublicEmailSubscriptionDetails|array|null $subscriptionDetails = null,
         ?array $teamsWithAccess = null,
-        ?PublicEmailTestingDetails $testing = null,
-        ?PublicEmailToDetails $to = null,
+        PublicEmailTestingDetails|array|null $testing = null,
+        PublicEmailToDetails|array|null $to = null,
         Type|string|null $type = null,
         ?\DateTimeInterface $unpublishedAt = null,
         ?\DateTimeInterface $updatedAt = null,
         ?string $updatedById = null,
         ?array $usersWithAccess = null,
-        ?PublicWebversionDetails $webversion = null,
+        PublicWebversionDetails|array|null $webversion = null,
         ?array $workflowNames = null,
     ): self {
         $obj = new self;
 
-        $obj->isAb = $isAb;
+        $obj['isAb'] = $isAb;
 
-        null !== $id && $obj->id = $id;
-        null !== $activeDomain && $obj->activeDomain = $activeDomain;
-        null !== $allEmailCampaignIds && $obj->allEmailCampaignIds = $allEmailCampaignIds;
-        null !== $archived && $obj->archived = $archived;
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
-        null !== $campaign && $obj->campaign = $campaign;
-        null !== $campaignName && $obj->campaignName = $campaignName;
-        null !== $campaignUtm && $obj->campaignUtm = $campaignUtm;
-        null !== $clonedFrom && $obj->clonedFrom = $clonedFrom;
-        null !== $content && $obj->content = $content;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdById && $obj->createdById = $createdById;
-        null !== $deletedAt && $obj->deletedAt = $deletedAt;
-        null !== $emailCampaignGroupId && $obj->emailCampaignGroupId = $emailCampaignGroupId;
+        null !== $id && $obj['id'] = $id;
+        null !== $activeDomain && $obj['activeDomain'] = $activeDomain;
+        null !== $allEmailCampaignIds && $obj['allEmailCampaignIds'] = $allEmailCampaignIds;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $campaign && $obj['campaign'] = $campaign;
+        null !== $campaignName && $obj['campaignName'] = $campaignName;
+        null !== $campaignUtm && $obj['campaignUtm'] = $campaignUtm;
+        null !== $clonedFrom && $obj['clonedFrom'] = $clonedFrom;
+        null !== $content && $obj['content'] = $content;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $createdById && $obj['createdById'] = $createdById;
+        null !== $deletedAt && $obj['deletedAt'] = $deletedAt;
+        null !== $emailCampaignGroupId && $obj['emailCampaignGroupId'] = $emailCampaignGroupId;
         null !== $emailTemplateMode && $obj['emailTemplateMode'] = $emailTemplateMode;
-        null !== $feedbackSurveyId && $obj->feedbackSurveyId = $feedbackSurveyId;
-        null !== $folderId && $obj->folderId = $folderId;
-        null !== $folderIdV2 && $obj->folderIdV2 = $folderIdV2;
-        null !== $from && $obj->from = $from;
-        null !== $isPublished && $obj->isPublished = $isPublished;
-        null !== $isTransactional && $obj->isTransactional = $isTransactional;
-        null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
+        null !== $feedbackSurveyId && $obj['feedbackSurveyId'] = $feedbackSurveyId;
+        null !== $folderId && $obj['folderId'] = $folderId;
+        null !== $folderIdV2 && $obj['folderIdV2'] = $folderIdV2;
+        null !== $from && $obj['from'] = $from;
+        null !== $isPublished && $obj['isPublished'] = $isPublished;
+        null !== $isTransactional && $obj['isTransactional'] = $isTransactional;
+        null !== $jitterSendTime && $obj['jitterSendTime'] = $jitterSendTime;
         null !== $language && $obj['language'] = $language;
-        null !== $name && $obj->name = $name;
-        null !== $previewKey && $obj->previewKey = $previewKey;
-        null !== $primaryEmailCampaignId && $obj->primaryEmailCampaignId = $primaryEmailCampaignId;
-        null !== $publishDate && $obj->publishDate = $publishDate;
-        null !== $publishedAt && $obj->publishedAt = $publishedAt;
-        null !== $publishedByEmail && $obj->publishedByEmail = $publishedByEmail;
-        null !== $publishedById && $obj->publishedById = $publishedById;
-        null !== $publishedByName && $obj->publishedByName = $publishedByName;
-        null !== $rssData && $obj->rssData = $rssData;
-        null !== $sendOnPublish && $obj->sendOnPublish = $sendOnPublish;
+        null !== $name && $obj['name'] = $name;
+        null !== $previewKey && $obj['previewKey'] = $previewKey;
+        null !== $primaryEmailCampaignId && $obj['primaryEmailCampaignId'] = $primaryEmailCampaignId;
+        null !== $publishDate && $obj['publishDate'] = $publishDate;
+        null !== $publishedAt && $obj['publishedAt'] = $publishedAt;
+        null !== $publishedByEmail && $obj['publishedByEmail'] = $publishedByEmail;
+        null !== $publishedById && $obj['publishedById'] = $publishedById;
+        null !== $publishedByName && $obj['publishedByName'] = $publishedByName;
+        null !== $rssData && $obj['rssData'] = $rssData;
+        null !== $sendOnPublish && $obj['sendOnPublish'] = $sendOnPublish;
         null !== $state && $obj['state'] = $state;
-        null !== $stats && $obj->stats = $stats;
-        null !== $subcategory && $obj->subcategory = $subcategory;
-        null !== $subject && $obj->subject = $subject;
-        null !== $subscriptionDetails && $obj->subscriptionDetails = $subscriptionDetails;
-        null !== $teamsWithAccess && $obj->teamsWithAccess = $teamsWithAccess;
-        null !== $testing && $obj->testing = $testing;
-        null !== $to && $obj->to = $to;
+        null !== $stats && $obj['stats'] = $stats;
+        null !== $subcategory && $obj['subcategory'] = $subcategory;
+        null !== $subject && $obj['subject'] = $subject;
+        null !== $subscriptionDetails && $obj['subscriptionDetails'] = $subscriptionDetails;
+        null !== $teamsWithAccess && $obj['teamsWithAccess'] = $teamsWithAccess;
+        null !== $testing && $obj['testing'] = $testing;
+        null !== $to && $obj['to'] = $to;
         null !== $type && $obj['type'] = $type;
-        null !== $unpublishedAt && $obj->unpublishedAt = $unpublishedAt;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedById && $obj->updatedById = $updatedById;
-        null !== $usersWithAccess && $obj->usersWithAccess = $usersWithAccess;
-        null !== $webversion && $obj->webversion = $webversion;
-        null !== $workflowNames && $obj->workflowNames = $workflowNames;
+        null !== $unpublishedAt && $obj['unpublishedAt'] = $unpublishedAt;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $updatedById && $obj['updatedById'] = $updatedById;
+        null !== $usersWithAccess && $obj['usersWithAccess'] = $usersWithAccess;
+        null !== $webversion && $obj['webversion'] = $webversion;
+        null !== $workflowNames && $obj['workflowNames'] = $workflowNames;
 
         return $obj;
     }
@@ -477,7 +547,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withIsAb(bool $isAb): self
     {
         $obj = clone $this;
-        $obj->isAb = $isAb;
+        $obj['isAb'] = $isAb;
 
         return $obj;
     }
@@ -488,7 +558,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -499,7 +569,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withActiveDomain(string $activeDomain): self
     {
         $obj = clone $this;
-        $obj->activeDomain = $activeDomain;
+        $obj['activeDomain'] = $activeDomain;
 
         return $obj;
     }
@@ -512,7 +582,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withAllEmailCampaignIDs(array $allEmailCampaignIDs): self
     {
         $obj = clone $this;
-        $obj->allEmailCampaignIds = $allEmailCampaignIDs;
+        $obj['allEmailCampaignIds'] = $allEmailCampaignIDs;
 
         return $obj;
     }
@@ -523,7 +593,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -531,7 +601,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withBusinessUnitID(string $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }
@@ -542,7 +612,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withCampaign(string $campaign): self
     {
         $obj = clone $this;
-        $obj->campaign = $campaign;
+        $obj['campaign'] = $campaign;
 
         return $obj;
     }
@@ -553,7 +623,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withCampaignName(string $campaignName): self
     {
         $obj = clone $this;
-        $obj->campaignName = $campaignName;
+        $obj['campaignName'] = $campaignName;
 
         return $obj;
     }
@@ -561,7 +631,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withCampaignUtm(string $campaignUtm): self
     {
         $obj = clone $this;
-        $obj->campaignUtm = $campaignUtm;
+        $obj['campaignUtm'] = $campaignUtm;
 
         return $obj;
     }
@@ -572,18 +642,29 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withClonedFrom(string $clonedFrom): self
     {
         $obj = clone $this;
-        $obj->clonedFrom = $clonedFrom;
+        $obj['clonedFrom'] = $clonedFrom;
 
         return $obj;
     }
 
     /**
      * Data structure representing the content of the email.
+     *
+     * @param PublicEmailContent|array{
+     *   flexAreas?: array<string,mixed>|null,
+     *   plainTextVersion?: string|null,
+     *   smartFields?: array<string,mixed>|null,
+     *   styleSettings?: PublicEmailStyleSettings|null,
+     *   templatePath?: string|null,
+     *   themeSettingsValues?: array<string,mixed>|null,
+     *   widgetContainers?: array<string,mixed>|null,
+     *   widgets?: array<string,mixed>|null,
+     * } $content
      */
-    public function withContent(PublicEmailContent $content): self
+    public function withContent(PublicEmailContent|array $content): self
     {
         $obj = clone $this;
-        $obj->content = $content;
+        $obj['content'] = $content;
 
         return $obj;
     }
@@ -594,7 +675,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -605,7 +686,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
-        $obj->createdById = $createdByID;
+        $obj['createdById'] = $createdByID;
 
         return $obj;
     }
@@ -616,7 +697,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
         $obj = clone $this;
-        $obj->deletedAt = $deletedAt;
+        $obj['deletedAt'] = $deletedAt;
 
         return $obj;
     }
@@ -624,7 +705,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withEmailCampaignGroupID(string $emailCampaignGroupID): self
     {
         $obj = clone $this;
-        $obj->emailCampaignGroupId = $emailCampaignGroupID;
+        $obj['emailCampaignGroupId'] = $emailCampaignGroupID;
 
         return $obj;
     }
@@ -647,7 +728,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withFeedbackSurveyID(string $feedbackSurveyID): self
     {
         $obj = clone $this;
-        $obj->feedbackSurveyId = $feedbackSurveyID;
+        $obj['feedbackSurveyId'] = $feedbackSurveyID;
 
         return $obj;
     }
@@ -655,7 +736,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withFolderID(int $folderID): self
     {
         $obj = clone $this;
-        $obj->folderId = $folderID;
+        $obj['folderId'] = $folderID;
 
         return $obj;
     }
@@ -663,18 +744,22 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withFolderIDV2(int $folderIDV2): self
     {
         $obj = clone $this;
-        $obj->folderIdV2 = $folderIDV2;
+        $obj['folderIdV2'] = $folderIDV2;
 
         return $obj;
     }
 
     /**
      * Data structure representing the from fields on the email.
+     *
+     * @param PublicEmailFromDetails|array{
+     *   customReplyTo?: string|null, fromName?: string|null, replyTo?: string|null
+     * } $from
      */
-    public function withFrom(PublicEmailFromDetails $from): self
+    public function withFrom(PublicEmailFromDetails|array $from): self
     {
         $obj = clone $this;
-        $obj->from = $from;
+        $obj['from'] = $from;
 
         return $obj;
     }
@@ -685,7 +770,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withIsPublished(bool $isPublished): self
     {
         $obj = clone $this;
-        $obj->isPublished = $isPublished;
+        $obj['isPublished'] = $isPublished;
 
         return $obj;
     }
@@ -696,7 +781,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withIsTransactional(bool $isTransactional): self
     {
         $obj = clone $this;
-        $obj->isTransactional = $isTransactional;
+        $obj['isTransactional'] = $isTransactional;
 
         return $obj;
     }
@@ -704,7 +789,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withJitterSendTime(bool $jitterSendTime): self
     {
         $obj = clone $this;
-        $obj->jitterSendTime = $jitterSendTime;
+        $obj['jitterSendTime'] = $jitterSendTime;
 
         return $obj;
     }
@@ -726,7 +811,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -734,7 +819,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withPreviewKey(string $previewKey): self
     {
         $obj = clone $this;
-        $obj->previewKey = $previewKey;
+        $obj['previewKey'] = $previewKey;
 
         return $obj;
     }
@@ -743,7 +828,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
         string $primaryEmailCampaignID
     ): self {
         $obj = clone $this;
-        $obj->primaryEmailCampaignId = $primaryEmailCampaignID;
+        $obj['primaryEmailCampaignId'] = $primaryEmailCampaignID;
 
         return $obj;
     }
@@ -754,7 +839,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
         $obj = clone $this;
-        $obj->publishDate = $publishDate;
+        $obj['publishDate'] = $publishDate;
 
         return $obj;
     }
@@ -765,7 +850,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withPublishedAt(\DateTimeInterface $publishedAt): self
     {
         $obj = clone $this;
-        $obj->publishedAt = $publishedAt;
+        $obj['publishedAt'] = $publishedAt;
 
         return $obj;
     }
@@ -776,7 +861,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withPublishedByEmail(string $publishedByEmail): self
     {
         $obj = clone $this;
-        $obj->publishedByEmail = $publishedByEmail;
+        $obj['publishedByEmail'] = $publishedByEmail;
 
         return $obj;
     }
@@ -787,7 +872,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withPublishedByID(string $publishedByID): self
     {
         $obj = clone $this;
-        $obj->publishedById = $publishedByID;
+        $obj['publishedById'] = $publishedByID;
 
         return $obj;
     }
@@ -798,18 +883,30 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withPublishedByName(string $publishedByName): self
     {
         $obj = clone $this;
-        $obj->publishedByName = $publishedByName;
+        $obj['publishedByName'] = $publishedByName;
 
         return $obj;
     }
 
     /**
      * RSS related data if it is a blog or rss email.
+     *
+     * @param PublicRssEmailDetails|array{
+     *   blogEmailType?: string|null,
+     *   blogImageMaxWidth?: int|null,
+     *   blogLayout?: string|null,
+     *   hubspotBlogId?: string|null,
+     *   maxEntries?: int|null,
+     *   rssEntryTemplate?: string|null,
+     *   timing?: array<string,mixed>|null,
+     *   url?: string|null,
+     *   useHeadlineAsSubject?: bool|null,
+     * } $rssData
      */
-    public function withRssData(PublicRssEmailDetails $rssData): self
+    public function withRssData(PublicRssEmailDetails|array $rssData): self
     {
         $obj = clone $this;
-        $obj->rssData = $rssData;
+        $obj['rssData'] = $rssData;
 
         return $obj;
     }
@@ -820,7 +917,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withSendOnPublish(bool $sendOnPublish): self
     {
         $obj = clone $this;
-        $obj->sendOnPublish = $sendOnPublish;
+        $obj['sendOnPublish'] = $sendOnPublish;
 
         return $obj;
     }
@@ -838,10 +935,18 @@ final class PublicEmail implements BaseModel, ResponseConverter
         return $obj;
     }
 
-    public function withStats(EmailStatisticsData $stats): self
+    /**
+     * @param EmailStatisticsData|array{
+     *   counters: array<string,int>,
+     *   deviceBreakdown: array<string,array<string,int>>,
+     *   qualifierStats: array<string,array<string,int>>,
+     *   ratios: array<string,float>,
+     * } $stats
+     */
+    public function withStats(EmailStatisticsData|array $stats): self
     {
         $obj = clone $this;
-        $obj->stats = $stats;
+        $obj['stats'] = $stats;
 
         return $obj;
     }
@@ -852,7 +957,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withSubcategory(string $subcategory): self
     {
         $obj = clone $this;
-        $obj->subcategory = $subcategory;
+        $obj['subcategory'] = $subcategory;
 
         return $obj;
     }
@@ -863,19 +968,26 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withSubject(string $subject): self
     {
         $obj = clone $this;
-        $obj->subject = $subject;
+        $obj['subject'] = $subject;
 
         return $obj;
     }
 
     /**
      * Data structure representing the subscription fields of the email.
+     *
+     * @param PublicEmailSubscriptionDetails|array{
+     *   officeLocationId?: string|null,
+     *   preferencesGroupId?: string|null,
+     *   subscriptionId?: string|null,
+     *   subscriptionName?: string|null,
+     * } $subscriptionDetails
      */
     public function withSubscriptionDetails(
-        PublicEmailSubscriptionDetails $subscriptionDetails
+        PublicEmailSubscriptionDetails|array $subscriptionDetails
     ): self {
         $obj = clone $this;
-        $obj->subscriptionDetails = $subscriptionDetails;
+        $obj['subscriptionDetails'] = $subscriptionDetails;
 
         return $obj;
     }
@@ -886,29 +998,48 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withTeamsWithAccess(array $teamsWithAccess): self
     {
         $obj = clone $this;
-        $obj->teamsWithAccess = $teamsWithAccess;
+        $obj['teamsWithAccess'] = $teamsWithAccess;
 
         return $obj;
     }
 
     /**
      * AB testing related data. This property is only returned for AB type emails.
+     *
+     * @param PublicEmailTestingDetails|array{
+     *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>|null,
+     *   abSamplingDefault?: value-of<AbSamplingDefault>|null,
+     *   abStatus?: value-of<AbStatus>|null,
+     *   abSuccessMetric?: value-of<AbSuccessMetric>|null,
+     *   abTestPercentage?: int|null,
+     *   hoursToWait?: int|null,
+     *   isAbVariation?: bool|null,
+     *   testId?: string|null,
+     * } $testing
      */
-    public function withTesting(PublicEmailTestingDetails $testing): self
+    public function withTesting(PublicEmailTestingDetails|array $testing): self
     {
         $obj = clone $this;
-        $obj->testing = $testing;
+        $obj['testing'] = $testing;
 
         return $obj;
     }
 
     /**
      * Data structure representing the to fields of the email.
+     *
+     * @param PublicEmailToDetails|array{
+     *   contactIds?: PublicEmailRecipients|null,
+     *   contactIlsLists?: PublicEmailRecipients|null,
+     *   contactLists?: PublicEmailRecipients|null,
+     *   limitSendFrequency?: bool|null,
+     *   suppressGraymail?: bool|null,
+     * } $to
      */
-    public function withTo(PublicEmailToDetails $to): self
+    public function withTo(PublicEmailToDetails|array $to): self
     {
         $obj = clone $this;
-        $obj->to = $to;
+        $obj['to'] = $to;
 
         return $obj;
     }
@@ -929,7 +1060,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withUnpublishedAt(\DateTimeInterface $unpublishedAt): self
     {
         $obj = clone $this;
-        $obj->unpublishedAt = $unpublishedAt;
+        $obj['unpublishedAt'] = $unpublishedAt;
 
         return $obj;
     }
@@ -940,7 +1071,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -951,7 +1082,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
-        $obj->updatedById = $updatedByID;
+        $obj['updatedById'] = $updatedByID;
 
         return $obj;
     }
@@ -962,15 +1093,31 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withUsersWithAccess(array $usersWithAccess): self
     {
         $obj = clone $this;
-        $obj->usersWithAccess = $usersWithAccess;
+        $obj['usersWithAccess'] = $usersWithAccess;
 
         return $obj;
     }
 
-    public function withWebversion(PublicWebversionDetails $webversion): self
-    {
+    /**
+     * @param PublicWebversionDetails|array{
+     *   domain?: string|null,
+     *   enabled?: bool|null,
+     *   expiresAt?: \DateTimeInterface|null,
+     *   isPageRedirected?: bool|null,
+     *   metaDescription?: string|null,
+     *   pageExpiryEnabled?: bool|null,
+     *   redirectToPageId?: string|null,
+     *   redirectToUrl?: string|null,
+     *   slug?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * } $webversion
+     */
+    public function withWebversion(
+        PublicWebversionDetails|array $webversion
+    ): self {
         $obj = clone $this;
-        $obj->webversion = $webversion;
+        $obj['webversion'] = $webversion;
 
         return $obj;
     }
@@ -983,7 +1130,7 @@ final class PublicEmail implements BaseModel, ResponseConverter
     public function withWorkflowNames(array $workflowNames): self
     {
         $obj = clone $this;
-        $obj->workflowNames = $workflowNames;
+        $obj['workflowNames'] = $workflowNames;
 
         return $obj;
     }

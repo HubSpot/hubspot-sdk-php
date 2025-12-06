@@ -96,11 +96,11 @@ final class Filter implements BaseModel
         $obj = new self;
 
         $obj['operator'] = $operator;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
-        null !== $highValue && $obj->highValue = $highValue;
-        null !== $value && $obj->value = $value;
-        null !== $values && $obj->values = $values;
+        null !== $highValue && $obj['highValue'] = $highValue;
+        null !== $value && $obj['value'] = $value;
+        null !== $values && $obj['values'] = $values;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class Filter implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class Filter implements BaseModel
     public function withHighValue(string $highValue): self
     {
         $obj = clone $this;
-        $obj->highValue = $highValue;
+        $obj['highValue'] = $highValue;
 
         return $obj;
     }
@@ -146,7 +146,7 @@ final class Filter implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class Filter implements BaseModel
     public function withValues(array $values): self
     {
         $obj = clone $this;
-        $obj->values = $values;
+        $obj['values'] = $values;
 
         return $obj;
     }

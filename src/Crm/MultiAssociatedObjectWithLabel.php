@@ -7,6 +7,7 @@ namespace HubspotSDK\Crm;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\AssociationSpecWithLabel\Category;
 
 /**
  * @phpstan-type MultiAssociatedObjectWithLabelShape = array{
@@ -54,7 +55,9 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationSpecWithLabel> $associationTypes
+     * @param list<AssociationSpecWithLabel|array{
+     *   category: value-of<Category>, typeId: int, label?: string|null
+     * }> $associationTypes
      */
     public static function with(
         array $associationTypes,
@@ -62,19 +65,21 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->associationTypes = $associationTypes;
-        $obj->toObjectId = $toObjectId;
+        $obj['associationTypes'] = $associationTypes;
+        $obj['toObjectId'] = $toObjectId;
 
         return $obj;
     }
 
     /**
-     * @param list<AssociationSpecWithLabel> $associationTypes
+     * @param list<AssociationSpecWithLabel|array{
+     *   category: value-of<Category>, typeId: int, label?: string|null
+     * }> $associationTypes
      */
     public function withAssociationTypes(array $associationTypes): self
     {
         $obj = clone $this;
-        $obj->associationTypes = $associationTypes;
+        $obj['associationTypes'] = $associationTypes;
 
         return $obj;
     }
@@ -85,7 +90,7 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     public function withToObjectID(string $toObjectID): self
     {
         $obj = clone $this;
-        $obj->toObjectId = $toObjectID;
+        $obj['toObjectId'] = $toObjectID;
 
         return $obj;
     }

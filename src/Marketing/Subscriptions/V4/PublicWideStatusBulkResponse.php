@@ -7,6 +7,9 @@ namespace HubspotSDK\Marketing\Subscriptions\V4;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\Channel;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\Status;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\WideStatusType;
 
 /**
  * @phpstan-type PublicWideStatusBulkResponseShape = array{
@@ -58,7 +61,14 @@ final class PublicWideStatusBulkResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicWideStatus> $wideStatuses
+     * @param list<PublicWideStatus|array{
+     *   channel: value-of<Channel>,
+     *   status: value-of<Status>,
+     *   subscriberIdString: string,
+     *   timestamp: \DateTimeInterface,
+     *   wideStatusType: value-of<WideStatusType>,
+     *   businessUnitId?: int|null,
+     * }> $wideStatuses
      */
     public static function with(
         string $subscriberIdString,
@@ -66,8 +76,8 @@ final class PublicWideStatusBulkResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->subscriberIdString = $subscriberIdString;
-        $obj->wideStatuses = $wideStatuses;
+        $obj['subscriberIdString'] = $subscriberIdString;
+        $obj['wideStatuses'] = $wideStatuses;
 
         return $obj;
     }
@@ -78,7 +88,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIdString = $subscriberIDString;
+        $obj['subscriberIdString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -86,12 +96,19 @@ final class PublicWideStatusBulkResponse implements BaseModel
     /**
      * An array containing the wide status results for the operation.
      *
-     * @param list<PublicWideStatus> $wideStatuses
+     * @param list<PublicWideStatus|array{
+     *   channel: value-of<Channel>,
+     *   status: value-of<Status>,
+     *   subscriberIdString: string,
+     *   timestamp: \DateTimeInterface,
+     *   wideStatusType: value-of<WideStatusType>,
+     *   businessUnitId?: int|null,
+     * }> $wideStatuses
      */
     public function withWideStatuses(array $wideStatuses): self
     {
         $obj = clone $this;
-        $obj->wideStatuses = $wideStatuses;
+        $obj['wideStatuses'] = $wideStatuses;
 
         return $obj;
     }

@@ -47,24 +47,28 @@ final class CollectionResponsePropertyGroupNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyGroup> $results
+     * @param list<PropertyGroup|array{
+     *   archived: bool, displayOrder: int, label: string, name: string
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<PropertyGroup> $results
+     * @param list<PropertyGroup|array{
+     *   archived: bool, displayOrder: int, label: string, name: string
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

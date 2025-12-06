@@ -65,11 +65,11 @@ final class ContactAssociation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->contactId = $contactId;
-        $obj->email = $email;
+        $obj['contactId'] = $contactId;
+        $obj['email'] = $email;
 
-        null !== $firstname && $obj->firstname = $firstname;
-        null !== $lastname && $obj->lastname = $lastname;
+        null !== $firstname && $obj['firstname'] = $firstname;
+        null !== $lastname && $obj['lastname'] = $lastname;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class ContactAssociation implements BaseModel
     public function withContactID(string $contactID): self
     {
         $obj = clone $this;
-        $obj->contactId = $contactID;
+        $obj['contactId'] = $contactID;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class ContactAssociation implements BaseModel
     public function withEmail(string $email): self
     {
         $obj = clone $this;
-        $obj->email = $email;
+        $obj['email'] = $email;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class ContactAssociation implements BaseModel
     public function withFirstname(string $firstname): self
     {
         $obj = clone $this;
-        $obj->firstname = $firstname;
+        $obj['firstname'] = $firstname;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class ContactAssociation implements BaseModel
     public function withLastname(string $lastname): self
     {
         $obj = clone $this;
-        $obj->lastname = $lastname;
+        $obj['lastname'] = $lastname;
 
         return $obj;
     }

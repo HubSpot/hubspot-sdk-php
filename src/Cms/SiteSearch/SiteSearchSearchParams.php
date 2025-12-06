@@ -198,22 +198,22 @@ final class SiteSearchSearchParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $autocomplete && $obj->autocomplete = $autocomplete;
-        null !== $boostLimit && $obj->boostLimit = $boostLimit;
-        null !== $boostRecent && $obj->boostRecent = $boostRecent;
-        null !== $domain && $obj->domain = $domain;
-        null !== $groupId && $obj->groupId = $groupId;
-        null !== $hubdbQuery && $obj->hubdbQuery = $hubdbQuery;
+        null !== $autocomplete && $obj['autocomplete'] = $autocomplete;
+        null !== $boostLimit && $obj['boostLimit'] = $boostLimit;
+        null !== $boostRecent && $obj['boostRecent'] = $boostRecent;
+        null !== $domain && $obj['domain'] = $domain;
+        null !== $groupId && $obj['groupId'] = $groupId;
+        null !== $hubdbQuery && $obj['hubdbQuery'] = $hubdbQuery;
         null !== $language && $obj['language'] = $language;
         null !== $length && $obj['length'] = $length;
-        null !== $limit && $obj->limit = $limit;
-        null !== $matchPrefix && $obj->matchPrefix = $matchPrefix;
-        null !== $offset && $obj->offset = $offset;
-        null !== $pathPrefix && $obj->pathPrefix = $pathPrefix;
-        null !== $popularityBoost && $obj->popularityBoost = $popularityBoost;
-        null !== $property && $obj->property = $property;
-        null !== $q && $obj->q = $q;
-        null !== $tableId && $obj->tableId = $tableId;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $matchPrefix && $obj['matchPrefix'] = $matchPrefix;
+        null !== $offset && $obj['offset'] = $offset;
+        null !== $pathPrefix && $obj['pathPrefix'] = $pathPrefix;
+        null !== $popularityBoost && $obj['popularityBoost'] = $popularityBoost;
+        null !== $property && $obj['property'] = $property;
+        null !== $q && $obj['q'] = $q;
+        null !== $tableId && $obj['tableId'] = $tableId;
         null !== $type && $obj['type'] = $type;
 
         return $obj;
@@ -225,7 +225,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withAutocomplete(bool $autocomplete): self
     {
         $obj = clone $this;
-        $obj->autocomplete = $autocomplete;
+        $obj['autocomplete'] = $autocomplete;
 
         return $obj;
     }
@@ -236,7 +236,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withBoostLimit(float $boostLimit): self
     {
         $obj = clone $this;
-        $obj->boostLimit = $boostLimit;
+        $obj['boostLimit'] = $boostLimit;
 
         return $obj;
     }
@@ -247,7 +247,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withBoostRecent(string $boostRecent): self
     {
         $obj = clone $this;
-        $obj->boostRecent = $boostRecent;
+        $obj['boostRecent'] = $boostRecent;
 
         return $obj;
     }
@@ -260,7 +260,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withDomain(array $domain): self
     {
         $obj = clone $this;
-        $obj->domain = $domain;
+        $obj['domain'] = $domain;
 
         return $obj;
     }
@@ -273,7 +273,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withGroupID(array $groupID): self
     {
         $obj = clone $this;
-        $obj->groupId = $groupID;
+        $obj['groupId'] = $groupID;
 
         return $obj;
     }
@@ -284,7 +284,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withHubdbQuery(string $hubdbQuery): self
     {
         $obj = clone $this;
-        $obj->hubdbQuery = $hubdbQuery;
+        $obj['hubdbQuery'] = $hubdbQuery;
 
         return $obj;
     }
@@ -321,7 +321,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -332,7 +332,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withMatchPrefix(bool $matchPrefix): self
     {
         $obj = clone $this;
-        $obj->matchPrefix = $matchPrefix;
+        $obj['matchPrefix'] = $matchPrefix;
 
         return $obj;
     }
@@ -343,7 +343,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withOffset(int $offset): self
     {
         $obj = clone $this;
-        $obj->offset = $offset;
+        $obj['offset'] = $offset;
 
         return $obj;
     }
@@ -356,7 +356,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withPathPrefix(array $pathPrefix): self
     {
         $obj = clone $this;
-        $obj->pathPrefix = $pathPrefix;
+        $obj['pathPrefix'] = $pathPrefix;
 
         return $obj;
     }
@@ -367,7 +367,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withPopularityBoost(float $popularityBoost): self
     {
         $obj = clone $this;
-        $obj->popularityBoost = $popularityBoost;
+        $obj['popularityBoost'] = $popularityBoost;
 
         return $obj;
     }
@@ -380,7 +380,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withProperty(array $property): self
     {
         $obj = clone $this;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
         return $obj;
     }
@@ -391,7 +391,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withQ(string $q): self
     {
         $obj = clone $this;
-        $obj->q = $q;
+        $obj['q'] = $q;
 
         return $obj;
     }
@@ -402,7 +402,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withTableID(int $tableID): self
     {
         $obj = clone $this;
-        $obj->tableId = $tableID;
+        $obj['tableId'] = $tableID;
 
         return $obj;
     }

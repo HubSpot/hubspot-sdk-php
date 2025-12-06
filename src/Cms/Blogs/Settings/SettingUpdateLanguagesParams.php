@@ -66,8 +66,8 @@ final class SettingUpdateLanguagesParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->languages = $languages;
-        $obj->primaryId = $primaryId;
+        $obj['languages'] = $languages;
+        $obj['primaryId'] = $primaryId;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class SettingUpdateLanguagesParams implements BaseModel
     public function withLanguages(array $languages): self
     {
         $obj = clone $this;
-        $obj->languages = $languages;
+        $obj['languages'] = $languages;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class SettingUpdateLanguagesParams implements BaseModel
     public function withPrimaryID(string $primaryID): self
     {
         $obj = clone $this;
-        $obj->primaryId = $primaryID;
+        $obj['primaryId'] = $primaryID;
 
         return $obj;
     }

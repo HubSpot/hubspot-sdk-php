@@ -64,8 +64,8 @@ final class ImportFromURLTaskLocator implements BaseModel
     {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->links = $links;
+        $obj['id'] = $id;
+        $obj['links'] = $links;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class ImportFromURLTaskLocator implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class ImportFromURLTaskLocator implements BaseModel
     public function withLinks(array $links): self
     {
         $obj = clone $this;
-        $obj->links = $links;
+        $obj['links'] = $links;
 
         return $obj;
     }

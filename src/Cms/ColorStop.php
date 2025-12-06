@@ -45,23 +45,27 @@ final class ColorStop implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param RgbaColor|array{a: float, b: int, g: int, r: int} $color
      */
-    public static function with(RgbaColor $color): self
+    public static function with(RgbaColor|array $color): self
     {
         $obj = new self;
 
-        $obj->color = $color;
+        $obj['color'] = $color;
 
         return $obj;
     }
 
     /**
      * A color defined by RGB values.
+     *
+     * @param RgbaColor|array{a: float, b: int, g: int, r: int} $color
      */
-    public function withColor(RgbaColor $color): self
+    public function withColor(RgbaColor|array $color): self
     {
         $obj = clone $this;
-        $obj->color = $color;
+        $obj['color'] = $color;
 
         return $obj;
     }

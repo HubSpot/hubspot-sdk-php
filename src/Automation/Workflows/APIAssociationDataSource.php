@@ -6,6 +6,7 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIAssociationDataSource\AssociationCategory;
 use HubspotSDK\Automation\Workflows\APIAssociationDataSource\Type;
+use HubspotSDK\Automation\Workflows\APISort\Order;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -82,6 +83,9 @@ final class APIAssociationDataSource implements BaseModel
      *
      * @param AssociationCategory|value-of<AssociationCategory> $associationCategory
      * @param Type|value-of<Type> $type
+     * @param APISort|array{
+     *   order: value-of<Order>, property: string, missing?: string|null
+     * } $sortBy
      */
     public static function with(
         AssociationCategory|string $associationCategory,
@@ -89,17 +93,17 @@ final class APIAssociationDataSource implements BaseModel
         string $name,
         string $objectTypeId,
         Type|string $type = 'ASSOCIATION',
-        ?APISort $sortBy = null,
+        APISort|array|null $sortBy = null,
     ): self {
         $obj = new self;
 
         $obj['associationCategory'] = $associationCategory;
-        $obj->associationTypeId = $associationTypeId;
-        $obj->name = $name;
-        $obj->objectTypeId = $objectTypeId;
+        $obj['associationTypeId'] = $associationTypeId;
+        $obj['name'] = $name;
+        $obj['objectTypeId'] = $objectTypeId;
         $obj['type'] = $type;
 
-        null !== $sortBy && $obj->sortBy = $sortBy;
+        null !== $sortBy && $obj['sortBy'] = $sortBy;
 
         return $obj;
     }
@@ -119,7 +123,7 @@ final class APIAssociationDataSource implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj->associationTypeId = $associationTypeID;
+        $obj['associationTypeId'] = $associationTypeID;
 
         return $obj;
     }
@@ -127,7 +131,7 @@ final class APIAssociationDataSource implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -135,7 +139,7 @@ final class APIAssociationDataSource implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -151,10 +155,15 @@ final class APIAssociationDataSource implements BaseModel
         return $obj;
     }
 
-    public function withSortBy(APISort $sortBy): self
+    /**
+     * @param APISort|array{
+     *   order: value-of<Order>, property: string, missing?: string|null
+     * } $sortBy
+     */
+    public function withSortBy(APISort|array $sortBy): self
     {
         $obj = clone $this;
-        $obj->sortBy = $sortBy;
+        $obj['sortBy'] = $sortBy;
 
         return $obj;
     }

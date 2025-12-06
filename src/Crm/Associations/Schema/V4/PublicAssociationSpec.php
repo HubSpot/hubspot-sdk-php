@@ -50,8 +50,8 @@ final class PublicAssociationSpec implements BaseModel
     {
         $obj = new self;
 
-        $obj->category = $category;
-        $obj->typeId = $typeId;
+        $obj['category'] = $category;
+        $obj['typeId'] = $typeId;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class PublicAssociationSpec implements BaseModel
     public function withCategory(string $category): self
     {
         $obj = clone $this;
-        $obj->category = $category;
+        $obj['category'] = $category;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class PublicAssociationSpec implements BaseModel
     public function withTypeID(int $typeID): self
     {
         $obj = clone $this;
-        $obj->typeId = $typeID;
+        $obj['typeId'] = $typeID;
 
         return $obj;
     }

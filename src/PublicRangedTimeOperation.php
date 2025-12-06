@@ -7,6 +7,7 @@ namespace HubspotSDK;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PublicDatePoint\TimeType;
 use HubspotSDK\PublicRangedTimeOperation\Type;
 
 /**
@@ -92,14 +93,62 @@ final class PublicRangedTimeOperation implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param PublicDatePoint|array{
+     *   day: int,
+     *   month: int,
+     *   timeType: value-of<TimeType>,
+     *   year: int,
+     *   zoneId: string,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     *   timezoneSource?: string|null,
+     * }|PublicIndexedTimePoint|array{
+     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
+     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
+     *   zoneId: string,
+     *   offset?: PublicIndexOffset|null,
+     *   timezoneSource?: string|null,
+     * }|PublicPropertyReferencedTime|array{
+     *   property: string,
+     *   referenceType: string,
+     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
+     *   zoneId: string,
+     *   timezoneSource?: string|null,
+     * } $lowerBoundTimePoint
+     * @param PublicDatePoint|array{
+     *   day: int,
+     *   month: int,
+     *   timeType: value-of<TimeType>,
+     *   year: int,
+     *   zoneId: string,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     *   timezoneSource?: string|null,
+     * }|PublicIndexedTimePoint|array{
+     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
+     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
+     *   zoneId: string,
+     *   offset?: PublicIndexOffset|null,
+     *   timezoneSource?: string|null,
+     * }|PublicPropertyReferencedTime|array{
+     *   property: string,
+     *   referenceType: string,
+     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
+     *   zoneId: string,
+     *   timezoneSource?: string|null,
+     * } $upperBoundTimePoint
      * @param Type|value-of<Type> $type
      */
     public static function with(
         bool $includeObjectsWithNoValueSet,
-        PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $lowerBoundTimePoint,
+        PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $lowerBoundTimePoint,
         string $operationType,
         string $operator,
-        PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $upperBoundTimePoint,
+        PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $upperBoundTimePoint,
         Type|string $type = 'TIME_RANGED',
         ?string $lowerBoundEndpointBehavior = null,
         ?string $propertyParser = null,
@@ -107,16 +156,16 @@ final class PublicRangedTimeOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->lowerBoundTimePoint = $lowerBoundTimePoint;
-        $obj->operationType = $operationType;
-        $obj->operator = $operator;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['lowerBoundTimePoint'] = $lowerBoundTimePoint;
+        $obj['operationType'] = $operationType;
+        $obj['operator'] = $operator;
         $obj['type'] = $type;
-        $obj->upperBoundTimePoint = $upperBoundTimePoint;
+        $obj['upperBoundTimePoint'] = $upperBoundTimePoint;
 
-        null !== $lowerBoundEndpointBehavior && $obj->lowerBoundEndpointBehavior = $lowerBoundEndpointBehavior;
-        null !== $propertyParser && $obj->propertyParser = $propertyParser;
-        null !== $upperBoundEndpointBehavior && $obj->upperBoundEndpointBehavior = $upperBoundEndpointBehavior;
+        null !== $lowerBoundEndpointBehavior && $obj['lowerBoundEndpointBehavior'] = $lowerBoundEndpointBehavior;
+        null !== $propertyParser && $obj['propertyParser'] = $propertyParser;
+        null !== $upperBoundEndpointBehavior && $obj['upperBoundEndpointBehavior'] = $upperBoundEndpointBehavior;
 
         return $obj;
     }
@@ -125,16 +174,42 @@ final class PublicRangedTimeOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
 
+    /**
+     * @param PublicDatePoint|array{
+     *   day: int,
+     *   month: int,
+     *   timeType: value-of<TimeType>,
+     *   year: int,
+     *   zoneId: string,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     *   timezoneSource?: string|null,
+     * }|PublicIndexedTimePoint|array{
+     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
+     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
+     *   zoneId: string,
+     *   offset?: PublicIndexOffset|null,
+     *   timezoneSource?: string|null,
+     * }|PublicPropertyReferencedTime|array{
+     *   property: string,
+     *   referenceType: string,
+     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
+     *   zoneId: string,
+     *   timezoneSource?: string|null,
+     * } $lowerBoundTimePoint
+     */
     public function withLowerBoundTimePoint(
-        PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $lowerBoundTimePoint,
+        PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $lowerBoundTimePoint,
     ): self {
         $obj = clone $this;
-        $obj->lowerBoundTimePoint = $lowerBoundTimePoint;
+        $obj['lowerBoundTimePoint'] = $lowerBoundTimePoint;
 
         return $obj;
     }
@@ -142,7 +217,7 @@ final class PublicRangedTimeOperation implements BaseModel
     public function withOperationType(string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }
@@ -150,7 +225,7 @@ final class PublicRangedTimeOperation implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -166,11 +241,37 @@ final class PublicRangedTimeOperation implements BaseModel
         return $obj;
     }
 
+    /**
+     * @param PublicDatePoint|array{
+     *   day: int,
+     *   month: int,
+     *   timeType: value-of<TimeType>,
+     *   year: int,
+     *   zoneId: string,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     *   timezoneSource?: string|null,
+     * }|PublicIndexedTimePoint|array{
+     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
+     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
+     *   zoneId: string,
+     *   offset?: PublicIndexOffset|null,
+     *   timezoneSource?: string|null,
+     * }|PublicPropertyReferencedTime|array{
+     *   property: string,
+     *   referenceType: string,
+     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
+     *   zoneId: string,
+     *   timezoneSource?: string|null,
+     * } $upperBoundTimePoint
+     */
     public function withUpperBoundTimePoint(
-        PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $upperBoundTimePoint,
+        PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $upperBoundTimePoint,
     ): self {
         $obj = clone $this;
-        $obj->upperBoundTimePoint = $upperBoundTimePoint;
+        $obj['upperBoundTimePoint'] = $upperBoundTimePoint;
 
         return $obj;
     }
@@ -179,7 +280,7 @@ final class PublicRangedTimeOperation implements BaseModel
         string $lowerBoundEndpointBehavior
     ): self {
         $obj = clone $this;
-        $obj->lowerBoundEndpointBehavior = $lowerBoundEndpointBehavior;
+        $obj['lowerBoundEndpointBehavior'] = $lowerBoundEndpointBehavior;
 
         return $obj;
     }
@@ -187,7 +288,7 @@ final class PublicRangedTimeOperation implements BaseModel
     public function withPropertyParser(string $propertyParser): self
     {
         $obj = clone $this;
-        $obj->propertyParser = $propertyParser;
+        $obj['propertyParser'] = $propertyParser;
 
         return $obj;
     }
@@ -196,7 +297,7 @@ final class PublicRangedTimeOperation implements BaseModel
         string $upperBoundEndpointBehavior
     ): self {
         $obj = clone $this;
-        $obj->upperBoundEndpointBehavior = $upperBoundEndpointBehavior;
+        $obj['upperBoundEndpointBehavior'] = $upperBoundEndpointBehavior;
 
         return $obj;
     }

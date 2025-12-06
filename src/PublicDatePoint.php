@@ -106,17 +106,17 @@ final class PublicDatePoint implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->day = $day;
-        $obj->month = $month;
+        $obj['day'] = $day;
+        $obj['month'] = $month;
         $obj['timeType'] = $timeType;
-        $obj->year = $year;
-        $obj->zoneId = $zoneId;
+        $obj['year'] = $year;
+        $obj['zoneId'] = $zoneId;
 
-        null !== $hour && $obj->hour = $hour;
-        null !== $millisecond && $obj->millisecond = $millisecond;
-        null !== $minute && $obj->minute = $minute;
-        null !== $second && $obj->second = $second;
-        null !== $timezoneSource && $obj->timezoneSource = $timezoneSource;
+        null !== $hour && $obj['hour'] = $hour;
+        null !== $millisecond && $obj['millisecond'] = $millisecond;
+        null !== $minute && $obj['minute'] = $minute;
+        null !== $second && $obj['second'] = $second;
+        null !== $timezoneSource && $obj['timezoneSource'] = $timezoneSource;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class PublicDatePoint implements BaseModel
     public function withDay(int $day): self
     {
         $obj = clone $this;
-        $obj->day = $day;
+        $obj['day'] = $day;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class PublicDatePoint implements BaseModel
     public function withMonth(int $month): self
     {
         $obj = clone $this;
-        $obj->month = $month;
+        $obj['month'] = $month;
 
         return $obj;
     }
@@ -151,7 +151,7 @@ final class PublicDatePoint implements BaseModel
     public function withYear(int $year): self
     {
         $obj = clone $this;
-        $obj->year = $year;
+        $obj['year'] = $year;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class PublicDatePoint implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj->zoneId = $zoneID;
+        $obj['zoneId'] = $zoneID;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class PublicDatePoint implements BaseModel
     public function withHour(int $hour): self
     {
         $obj = clone $this;
-        $obj->hour = $hour;
+        $obj['hour'] = $hour;
 
         return $obj;
     }
@@ -175,7 +175,7 @@ final class PublicDatePoint implements BaseModel
     public function withMillisecond(int $millisecond): self
     {
         $obj = clone $this;
-        $obj->millisecond = $millisecond;
+        $obj['millisecond'] = $millisecond;
 
         return $obj;
     }
@@ -183,7 +183,7 @@ final class PublicDatePoint implements BaseModel
     public function withMinute(int $minute): self
     {
         $obj = clone $this;
-        $obj->minute = $minute;
+        $obj['minute'] = $minute;
 
         return $obj;
     }
@@ -191,7 +191,7 @@ final class PublicDatePoint implements BaseModel
     public function withSecond(int $second): self
     {
         $obj = clone $this;
-        $obj->second = $second;
+        $obj['second'] = $second;
 
         return $obj;
     }
@@ -199,7 +199,7 @@ final class PublicDatePoint implements BaseModel
     public function withTimezoneSource(string $timezoneSource): self
     {
         $obj = clone $this;
-        $obj->timezoneSource = $timezoneSource;
+        $obj['timezoneSource'] = $timezoneSource;
 
         return $obj;
     }

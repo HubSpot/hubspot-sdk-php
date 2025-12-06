@@ -93,10 +93,18 @@ final class APICustomCodeAction implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIInputVariable> $inputFields
-     * @param list<APIEnumerationOutputField> $outputFields
+     * @param list<APIInputVariable|array{
+     *   name: string,
+     *   value: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue,
+     * }> $inputFields
+     * @param list<APIEnumerationOutputField|array{
+     *   name: string,
+     *   options: list<string>,
+     *   type: value-of<APIEnumerationOutputField\Type>,
+     * }> $outputFields
      * @param list<string> $secretNames
      * @param Type|value-of<Type> $type
+     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
      */
     public static function with(
         string $actionId,
@@ -106,19 +114,19 @@ final class APICustomCodeAction implements BaseModel
         array $secretNames,
         string $sourceCode,
         Type|string $type = 'CUSTOM_CODE',
-        ?APIConnection $connection = null,
+        APIConnection|array|null $connection = null,
     ): self {
         $obj = new self;
 
-        $obj->actionId = $actionId;
-        $obj->inputFields = $inputFields;
-        $obj->outputFields = $outputFields;
-        $obj->runtime = $runtime;
-        $obj->secretNames = $secretNames;
-        $obj->sourceCode = $sourceCode;
+        $obj['actionId'] = $actionId;
+        $obj['inputFields'] = $inputFields;
+        $obj['outputFields'] = $outputFields;
+        $obj['runtime'] = $runtime;
+        $obj['secretNames'] = $secretNames;
+        $obj['sourceCode'] = $sourceCode;
         $obj['type'] = $type;
 
-        null !== $connection && $obj->connection = $connection;
+        null !== $connection && $obj['connection'] = $connection;
 
         return $obj;
     }
@@ -126,29 +134,36 @@ final class APICustomCodeAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionId = $actionID;
+        $obj['actionId'] = $actionID;
 
         return $obj;
     }
 
     /**
-     * @param list<APIInputVariable> $inputFields
+     * @param list<APIInputVariable|array{
+     *   name: string,
+     *   value: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue,
+     * }> $inputFields
      */
     public function withInputFields(array $inputFields): self
     {
         $obj = clone $this;
-        $obj->inputFields = $inputFields;
+        $obj['inputFields'] = $inputFields;
 
         return $obj;
     }
 
     /**
-     * @param list<APIEnumerationOutputField> $outputFields
+     * @param list<APIEnumerationOutputField|array{
+     *   name: string,
+     *   options: list<string>,
+     *   type: value-of<APIEnumerationOutputField\Type>,
+     * }> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {
         $obj = clone $this;
-        $obj->outputFields = $outputFields;
+        $obj['outputFields'] = $outputFields;
 
         return $obj;
     }
@@ -156,7 +171,7 @@ final class APICustomCodeAction implements BaseModel
     public function withRuntime(string $runtime): self
     {
         $obj = clone $this;
-        $obj->runtime = $runtime;
+        $obj['runtime'] = $runtime;
 
         return $obj;
     }
@@ -167,7 +182,7 @@ final class APICustomCodeAction implements BaseModel
     public function withSecretNames(array $secretNames): self
     {
         $obj = clone $this;
-        $obj->secretNames = $secretNames;
+        $obj['secretNames'] = $secretNames;
 
         return $obj;
     }
@@ -175,7 +190,7 @@ final class APICustomCodeAction implements BaseModel
     public function withSourceCode(string $sourceCode): self
     {
         $obj = clone $this;
-        $obj->sourceCode = $sourceCode;
+        $obj['sourceCode'] = $sourceCode;
 
         return $obj;
     }
@@ -191,10 +206,13 @@ final class APICustomCodeAction implements BaseModel
         return $obj;
     }
 
-    public function withConnection(APIConnection $connection): self
+    /**
+     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     */
+    public function withConnection(APIConnection|array $connection): self
     {
         $obj = clone $this;
-        $obj->connection = $connection;
+        $obj['connection'] = $connection;
 
         return $obj;
     }

@@ -100,11 +100,11 @@ final class LabelsBetweenObjectPair implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->fromObjectId = $fromObjectId;
-        $obj->fromObjectTypeId = $fromObjectTypeId;
-        $obj->labels = $labels;
-        $obj->toObjectId = $toObjectId;
-        $obj->toObjectTypeId = $toObjectTypeId;
+        $obj['fromObjectId'] = $fromObjectId;
+        $obj['fromObjectTypeId'] = $fromObjectTypeId;
+        $obj['labels'] = $labels;
+        $obj['toObjectId'] = $toObjectId;
+        $obj['toObjectTypeId'] = $toObjectTypeId;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     public function withFromObjectID(string $fromObjectID): self
     {
         $obj = clone $this;
-        $obj->fromObjectId = $fromObjectID;
+        $obj['fromObjectId'] = $fromObjectID;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeId = $fromObjectTypeID;
+        $obj['fromObjectTypeId'] = $fromObjectTypeID;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     public function withLabels(array $labels): self
     {
         $obj = clone $this;
-        $obj->labels = $labels;
+        $obj['labels'] = $labels;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     public function withToObjectID(string $toObjectID): self
     {
         $obj = clone $this;
-        $obj->toObjectId = $toObjectID;
+        $obj['toObjectId'] = $toObjectID;
 
         return $obj;
     }
@@ -161,7 +161,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->toObjectTypeId = $toObjectTypeID;
+        $obj['toObjectTypeId'] = $toObjectTypeID;
 
         return $obj;
     }

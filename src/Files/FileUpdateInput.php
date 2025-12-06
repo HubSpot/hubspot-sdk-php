@@ -89,12 +89,12 @@ final class FileUpdateInput implements BaseModel
         $obj = new self;
 
         null !== $access && $obj['access'] = $access;
-        null !== $clearExpires && $obj->clearExpires = $clearExpires;
-        null !== $expiresAt && $obj->expiresAt = $expiresAt;
-        null !== $isUsableInContent && $obj->isUsableInContent = $isUsableInContent;
-        null !== $name && $obj->name = $name;
-        null !== $parentFolderId && $obj->parentFolderId = $parentFolderId;
-        null !== $parentFolderPath && $obj->parentFolderPath = $parentFolderPath;
+        null !== $clearExpires && $obj['clearExpires'] = $clearExpires;
+        null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
+        null !== $isUsableInContent && $obj['isUsableInContent'] = $isUsableInContent;
+        null !== $name && $obj['name'] = $name;
+        null !== $parentFolderId && $obj['parentFolderId'] = $parentFolderId;
+        null !== $parentFolderPath && $obj['parentFolderPath'] = $parentFolderPath;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class FileUpdateInput implements BaseModel
     public function withClearExpires(bool $clearExpires): self
     {
         $obj = clone $this;
-        $obj->clearExpires = $clearExpires;
+        $obj['clearExpires'] = $clearExpires;
 
         return $obj;
     }
@@ -123,7 +123,7 @@ final class FileUpdateInput implements BaseModel
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;
-        $obj->expiresAt = $expiresAt;
+        $obj['expiresAt'] = $expiresAt;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class FileUpdateInput implements BaseModel
     public function withIsUsableInContent(bool $isUsableInContent): self
     {
         $obj = clone $this;
-        $obj->isUsableInContent = $isUsableInContent;
+        $obj['isUsableInContent'] = $isUsableInContent;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class FileUpdateInput implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -156,7 +156,7 @@ final class FileUpdateInput implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderId = $parentFolderID;
+        $obj['parentFolderId'] = $parentFolderID;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class FileUpdateInput implements BaseModel
     public function withParentFolderPath(string $parentFolderPath): self
     {
         $obj = clone $this;
-        $obj->parentFolderPath = $parentFolderPath;
+        $obj['parentFolderPath'] = $parentFolderPath;
 
         return $obj;
     }

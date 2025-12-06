@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions;
 
+use HubspotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
+use HubspotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
+use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
 use HubspotSDK\Automation\Actions\InputFieldDefinition\SupportedValueType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Option;
 
 /**
  * @phpstan-type InputFieldDefinitionShape = array{
@@ -59,20 +63,33 @@ final class InputFieldDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param FieldTypeDefinition|array{
+     *   externalOptions: bool,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: value-of<Type>,
+     *   description?: string|null,
+     *   externalOptionsReferenceType?: string|null,
+     *   fieldType?: value-of<FieldType>|null,
+     *   helpText?: string|null,
+     *   label?: string|null,
+     *   optionsUrl?: string|null,
+     *   referencedObjectType?: value-of<ReferencedObjectType>|null,
+     * } $typeDefinition
      * @param list<SupportedValueType|value-of<SupportedValueType>> $supportedValueTypes
      */
     public static function with(
         bool $isRequired,
-        FieldTypeDefinition $typeDefinition,
+        FieldTypeDefinition|array $typeDefinition,
         ?string $automationFieldType = null,
         ?array $supportedValueTypes = null,
     ): self {
         $obj = new self;
 
-        $obj->isRequired = $isRequired;
-        $obj->typeDefinition = $typeDefinition;
+        $obj['isRequired'] = $isRequired;
+        $obj['typeDefinition'] = $typeDefinition;
 
-        null !== $automationFieldType && $obj->automationFieldType = $automationFieldType;
+        null !== $automationFieldType && $obj['automationFieldType'] = $automationFieldType;
         null !== $supportedValueTypes && $obj['supportedValueTypes'] = $supportedValueTypes;
 
         return $obj;
@@ -81,16 +98,31 @@ final class InputFieldDefinition implements BaseModel
     public function withIsRequired(bool $isRequired): self
     {
         $obj = clone $this;
-        $obj->isRequired = $isRequired;
+        $obj['isRequired'] = $isRequired;
 
         return $obj;
     }
 
+    /**
+     * @param FieldTypeDefinition|array{
+     *   externalOptions: bool,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: value-of<Type>,
+     *   description?: string|null,
+     *   externalOptionsReferenceType?: string|null,
+     *   fieldType?: value-of<FieldType>|null,
+     *   helpText?: string|null,
+     *   label?: string|null,
+     *   optionsUrl?: string|null,
+     *   referencedObjectType?: value-of<ReferencedObjectType>|null,
+     * } $typeDefinition
+     */
     public function withTypeDefinition(
-        FieldTypeDefinition $typeDefinition
+        FieldTypeDefinition|array $typeDefinition
     ): self {
         $obj = clone $this;
-        $obj->typeDefinition = $typeDefinition;
+        $obj['typeDefinition'] = $typeDefinition;
 
         return $obj;
     }
@@ -98,7 +130,7 @@ final class InputFieldDefinition implements BaseModel
     public function withAutomationFieldType(string $automationFieldType): self
     {
         $obj = clone $this;
-        $obj->automationFieldType = $automationFieldType;
+        $obj['automationFieldType'] = $automationFieldType;
 
         return $obj;
     }

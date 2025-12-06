@@ -60,7 +60,7 @@ final class PublicClient implements BaseModel
 
         $obj['clientType'] = $clientType;
 
-        null !== $integrationAppId && $obj->integrationAppId = $integrationAppId;
+        null !== $integrationAppId && $obj['integrationAppId'] = $integrationAppId;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class PublicClient implements BaseModel
     public function withIntegrationAppID(int $integrationAppID): self
     {
         $obj = clone $this;
-        $obj->integrationAppId = $integrationAppID;
+        $obj['integrationAppId'] = $integrationAppID;
 
         return $obj;
     }

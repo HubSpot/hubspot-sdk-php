@@ -68,19 +68,20 @@ final class APIYearlyEnrollmentSchedule implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Month|value-of<Month> $month
+     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
      * @param Type|value-of<Type> $type
      */
     public static function with(
         int $dayOfMonth,
         Month|string $month,
-        APITimeOfDay $timeOfDay,
+        APITimeOfDay|array $timeOfDay,
         Type|string $type = 'YEARLY',
     ): self {
         $obj = new self;
 
-        $obj->dayOfMonth = $dayOfMonth;
+        $obj['dayOfMonth'] = $dayOfMonth;
         $obj['month'] = $month;
-        $obj->timeOfDay = $timeOfDay;
+        $obj['timeOfDay'] = $timeOfDay;
         $obj['type'] = $type;
 
         return $obj;
@@ -89,7 +90,7 @@ final class APIYearlyEnrollmentSchedule implements BaseModel
     public function withDayOfMonth(int $dayOfMonth): self
     {
         $obj = clone $this;
-        $obj->dayOfMonth = $dayOfMonth;
+        $obj['dayOfMonth'] = $dayOfMonth;
 
         return $obj;
     }
@@ -105,10 +106,13 @@ final class APIYearlyEnrollmentSchedule implements BaseModel
         return $obj;
     }
 
-    public function withTimeOfDay(APITimeOfDay $timeOfDay): self
+    /**
+     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
+     */
+    public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
         $obj = clone $this;
-        $obj->timeOfDay = $timeOfDay;
+        $obj['timeOfDay'] = $timeOfDay;
 
         return $obj;
     }

@@ -85,11 +85,11 @@ final class PublicRollingDateRangePropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->numberOfDays = $numberOfDays;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['numberOfDays'] = $numberOfDays;
         $obj['operationType'] = $operationType;
-        $obj->operator = $operator;
-        $obj->requiresTimeZoneConversion = $requiresTimeZoneConversion;
+        $obj['operator'] = $operator;
+        $obj['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class PublicRollingDateRangePropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class PublicRollingDateRangePropertyOperation implements BaseModel
     public function withNumberOfDays(int $numberOfDays): self
     {
         $obj = clone $this;
-        $obj->numberOfDays = $numberOfDays;
+        $obj['numberOfDays'] = $numberOfDays;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class PublicRollingDateRangePropertyOperation implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class PublicRollingDateRangePropertyOperation implements BaseModel
         bool $requiresTimeZoneConversion
     ): self {
         $obj = clone $this;
-        $obj->requiresTimeZoneConversion = $requiresTimeZoneConversion;
+        $obj['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
 
         return $obj;
     }

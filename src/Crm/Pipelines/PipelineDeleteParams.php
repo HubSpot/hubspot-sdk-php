@@ -72,10 +72,10 @@ final class PipelineDeleteParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
-        null !== $validateDealStageUsagesBeforeDelete && $obj->validateDealStageUsagesBeforeDelete = $validateDealStageUsagesBeforeDelete;
-        null !== $validateReferencesBeforeDelete && $obj->validateReferencesBeforeDelete = $validateReferencesBeforeDelete;
+        null !== $validateDealStageUsagesBeforeDelete && $obj['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
+        null !== $validateReferencesBeforeDelete && $obj['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class PipelineDeleteParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class PipelineDeleteParams implements BaseModel
         bool $validateDealStageUsagesBeforeDelete
     ): self {
         $obj = clone $this;
-        $obj->validateDealStageUsagesBeforeDelete = $validateDealStageUsagesBeforeDelete;
+        $obj['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class PipelineDeleteParams implements BaseModel
         bool $validateReferencesBeforeDelete
     ): self {
         $obj = clone $this;
-        $obj->validateReferencesBeforeDelete = $validateReferencesBeforeDelete;
+        $obj['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
 
         return $obj;
     }

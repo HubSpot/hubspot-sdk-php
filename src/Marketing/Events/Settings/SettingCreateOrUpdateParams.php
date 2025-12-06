@@ -56,7 +56,7 @@ final class SettingCreateOrUpdateParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->eventDetailsUrl = $eventDetailsUrl;
+        $obj['eventDetailsUrl'] = $eventDetailsUrl;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class SettingCreateOrUpdateParams implements BaseModel
     public function withEventDetailsURL(string $eventDetailsURL): self
     {
         $obj = clone $this;
-        $obj->eventDetailsUrl = $eventDetailsURL;
+        $obj['eventDetailsUrl'] = $eventDetailsURL;
 
         return $obj;
     }

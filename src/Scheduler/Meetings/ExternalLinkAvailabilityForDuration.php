@@ -53,7 +53,9 @@ final class ExternalLinkAvailabilityForDuration implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalMeetingAvailability> $availabilities
+     * @param list<ExternalMeetingAvailability|array{
+     *   endMillisUtc: int, startMillisUtc: int
+     * }> $availabilities
      */
     public static function with(
         array $availabilities,
@@ -61,19 +63,21 @@ final class ExternalLinkAvailabilityForDuration implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->availabilities = $availabilities;
-        $obj->meetingDurationMillis = $meetingDurationMillis;
+        $obj['availabilities'] = $availabilities;
+        $obj['meetingDurationMillis'] = $meetingDurationMillis;
 
         return $obj;
     }
 
     /**
-     * @param list<ExternalMeetingAvailability> $availabilities
+     * @param list<ExternalMeetingAvailability|array{
+     *   endMillisUtc: int, startMillisUtc: int
+     * }> $availabilities
      */
     public function withAvailabilities(array $availabilities): self
     {
         $obj = clone $this;
-        $obj->availabilities = $availabilities;
+        $obj['availabilities'] = $availabilities;
 
         return $obj;
     }
@@ -81,7 +85,7 @@ final class ExternalLinkAvailabilityForDuration implements BaseModel
     public function withMeetingDurationMillis(int $meetingDurationMillis): self
     {
         $obj = clone $this;
-        $obj->meetingDurationMillis = $meetingDurationMillis;
+        $obj['meetingDurationMillis'] = $meetingDurationMillis;
 
         return $obj;
     }

@@ -50,8 +50,8 @@ final class ExternalTimeRange implements BaseModel
     {
         $obj = new self;
 
-        $obj->end = $end;
-        $obj->start = $start;
+        $obj['end'] = $end;
+        $obj['start'] = $start;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class ExternalTimeRange implements BaseModel
     public function withEnd(int $end): self
     {
         $obj = clone $this;
-        $obj->end = $end;
+        $obj['end'] = $end;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class ExternalTimeRange implements BaseModel
     public function withStart(int $start): self
     {
         $obj = clone $this;
-        $obj->start = $start;
+        $obj['start'] = $start;
 
         return $obj;
     }

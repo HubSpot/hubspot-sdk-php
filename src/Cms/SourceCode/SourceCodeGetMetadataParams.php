@@ -60,9 +60,9 @@ final class SourceCodeGetMetadataParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->environment = $environment;
+        $obj['environment'] = $environment;
 
-        null !== $properties && $obj->properties = $properties;
+        null !== $properties && $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class SourceCodeGetMetadataParams implements BaseModel
     public function withEnvironment(string $environment): self
     {
         $obj = clone $this;
-        $obj->environment = $environment;
+        $obj['environment'] = $environment;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class SourceCodeGetMetadataParams implements BaseModel
     public function withProperties(string $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

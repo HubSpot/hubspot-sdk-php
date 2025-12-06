@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations;
 
 use HubspotSDK\Conversations\PublicAssignmentMessage\Type;
+use HubspotSDK\Conversations\PublicClient\ClientType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -112,14 +113,27 @@ final class PublicAssignmentMessage implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicRecipient> $recipients
-     * @param list<PublicSender> $senders
+     * @param PublicClient|array{
+     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     * } $client
+     * @param list<PublicRecipient|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier,
+     *   actorId?: string|null,
+     *   name?: string|null,
+     *   recipientField?: string|null,
+     * }> $recipients
+     * @param list<PublicSender|array{
+     *   actorId?: string|null,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+     *   name?: string|null,
+     *   senderField?: string|null,
+     * }> $senders
      * @param Type|value-of<Type> $type
      */
     public static function with(
         string $id,
         bool $archived,
-        PublicClient $client,
+        PublicClient|array $client,
         string $conversationsThreadId,
         \DateTimeInterface $createdAt,
         string $createdBy,
@@ -132,19 +146,19 @@ final class PublicAssignmentMessage implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->client = $client;
-        $obj->conversationsThreadId = $conversationsThreadId;
-        $obj->createdAt = $createdAt;
-        $obj->createdBy = $createdBy;
-        $obj->recipients = $recipients;
-        $obj->senders = $senders;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['client'] = $client;
+        $obj['conversationsThreadId'] = $conversationsThreadId;
+        $obj['createdAt'] = $createdAt;
+        $obj['createdBy'] = $createdBy;
+        $obj['recipients'] = $recipients;
+        $obj['senders'] = $senders;
         $obj['type'] = $type;
 
-        null !== $assignedFrom && $obj->assignedFrom = $assignedFrom;
-        null !== $assignedTo && $obj->assignedTo = $assignedTo;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $assignedFrom && $obj['assignedFrom'] = $assignedFrom;
+        null !== $assignedTo && $obj['assignedTo'] = $assignedTo;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -152,7 +166,7 @@ final class PublicAssignmentMessage implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -160,15 +174,20 @@ final class PublicAssignmentMessage implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
 
-    public function withClient(PublicClient $client): self
+    /**
+     * @param PublicClient|array{
+     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     * } $client
+     */
+    public function withClient(PublicClient|array $client): self
     {
         $obj = clone $this;
-        $obj->client = $client;
+        $obj['client'] = $client;
 
         return $obj;
     }
@@ -177,7 +196,7 @@ final class PublicAssignmentMessage implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj->conversationsThreadId = $conversationsThreadID;
+        $obj['conversationsThreadId'] = $conversationsThreadID;
 
         return $obj;
     }
@@ -185,7 +204,7 @@ final class PublicAssignmentMessage implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -193,29 +212,39 @@ final class PublicAssignmentMessage implements BaseModel
     public function withCreatedBy(string $createdBy): self
     {
         $obj = clone $this;
-        $obj->createdBy = $createdBy;
+        $obj['createdBy'] = $createdBy;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicRecipient> $recipients
+     * @param list<PublicRecipient|array{
+     *   deliveryIdentifier: PublicDeliveryIdentifier,
+     *   actorId?: string|null,
+     *   name?: string|null,
+     *   recipientField?: string|null,
+     * }> $recipients
      */
     public function withRecipients(array $recipients): self
     {
         $obj = clone $this;
-        $obj->recipients = $recipients;
+        $obj['recipients'] = $recipients;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicSender> $senders
+     * @param list<PublicSender|array{
+     *   actorId?: string|null,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+     *   name?: string|null,
+     *   senderField?: string|null,
+     * }> $senders
      */
     public function withSenders(array $senders): self
     {
         $obj = clone $this;
-        $obj->senders = $senders;
+        $obj['senders'] = $senders;
 
         return $obj;
     }
@@ -234,7 +263,7 @@ final class PublicAssignmentMessage implements BaseModel
     public function withAssignedFrom(string $assignedFrom): self
     {
         $obj = clone $this;
-        $obj->assignedFrom = $assignedFrom;
+        $obj['assignedFrom'] = $assignedFrom;
 
         return $obj;
     }
@@ -242,7 +271,7 @@ final class PublicAssignmentMessage implements BaseModel
     public function withAssignedTo(string $assignedTo): self
     {
         $obj = clone $this;
-        $obj->assignedTo = $assignedTo;
+        $obj['assignedTo'] = $assignedTo;
 
         return $obj;
     }
@@ -250,7 +279,7 @@ final class PublicAssignmentMessage implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

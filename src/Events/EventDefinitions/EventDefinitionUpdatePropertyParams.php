@@ -19,7 +19,13 @@ use HubspotSDK\OptionInput;
  *   eventName: string,
  *   description?: string,
  *   label?: string,
- *   options?: list<OptionInput>,
+ *   options?: list<OptionInput|array{
+ *     displayOrder: int,
+ *     hidden: bool,
+ *     label: string,
+ *     value: string,
+ *     description?: string|null,
+ *   }>,
  * }
  */
 final class EventDefinitionUpdatePropertyParams implements BaseModel
@@ -75,7 +81,13 @@ final class EventDefinitionUpdatePropertyParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<OptionInput> $options
+     * @param list<OptionInput|array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     * }> $options
      */
     public static function with(
         string $eventName,
@@ -85,11 +97,11 @@ final class EventDefinitionUpdatePropertyParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->eventName = $eventName;
+        $obj['eventName'] = $eventName;
 
-        null !== $description && $obj->description = $description;
-        null !== $label && $obj->label = $label;
-        null !== $options && $obj->options = $options;
+        null !== $description && $obj['description'] = $description;
+        null !== $label && $obj['label'] = $label;
+        null !== $options && $obj['options'] = $options;
 
         return $obj;
     }
@@ -97,7 +109,7 @@ final class EventDefinitionUpdatePropertyParams implements BaseModel
     public function withEventName(string $eventName): self
     {
         $obj = clone $this;
-        $obj->eventName = $eventName;
+        $obj['eventName'] = $eventName;
 
         return $obj;
     }
@@ -108,7 +120,7 @@ final class EventDefinitionUpdatePropertyParams implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -119,7 +131,7 @@ final class EventDefinitionUpdatePropertyParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -127,12 +139,18 @@ final class EventDefinitionUpdatePropertyParams implements BaseModel
     /**
      * A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
      *
-     * @param list<OptionInput> $options
+     * @param list<OptionInput|array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }

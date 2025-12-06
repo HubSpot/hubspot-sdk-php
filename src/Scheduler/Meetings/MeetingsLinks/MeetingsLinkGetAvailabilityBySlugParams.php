@@ -64,9 +64,9 @@ final class MeetingsLinkGetAvailabilityBySlugParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->timezone = $timezone;
+        $obj['timezone'] = $timezone;
 
-        null !== $monthOffset && $obj->monthOffset = $monthOffset;
+        null !== $monthOffset && $obj['monthOffset'] = $monthOffset;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class MeetingsLinkGetAvailabilityBySlugParams implements BaseModel
     public function withTimezone(string $timezone): self
     {
         $obj = clone $this;
-        $obj->timezone = $timezone;
+        $obj['timezone'] = $timezone;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class MeetingsLinkGetAvailabilityBySlugParams implements BaseModel
     public function withMonthOffset(int $monthOffset): self
     {
         $obj = clone $this;
-        $obj->monthOffset = $monthOffset;
+        $obj['monthOffset'] = $monthOffset;
 
         return $obj;
     }

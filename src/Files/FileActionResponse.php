@@ -7,6 +7,8 @@ namespace HubspotSDK\Files;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\ErrorDetail;
+use HubspotSDK\Files\File\Access;
 use HubspotSDK\Files\FileActionResponse\Status;
 use HubspotSDK\StandardError;
 
@@ -119,8 +121,40 @@ final class FileActionResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param list<StandardError> $errors
+     * @param list<StandardError|array{
+     *   category: string,
+     *   context: array<string,list<string>>,
+     *   errors: list<ErrorDetail>,
+     *   links: array<string,string>,
+     *   message: string,
+     *   status: string,
+     *   id?: string|null,
+     *   subCategory?: mixed,
+     * }> $errors
      * @param array<string,string> $links
+     * @param File|array{
+     *   id: string,
+     *   access: value-of<Access>,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   defaultHostingUrl?: string|null,
+     *   encoding?: string|null,
+     *   expiresAt?: int|null,
+     *   extension?: string|null,
+     *   fileMd5?: string|null,
+     *   height?: int|null,
+     *   isUsableInContent?: bool|null,
+     *   name?: string|null,
+     *   parentFolderId?: string|null,
+     *   path?: string|null,
+     *   size?: int|null,
+     *   sourceGroup?: string|null,
+     *   type?: string|null,
+     *   url?: string|null,
+     *   width?: int|null,
+     * } $result
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -131,20 +165,20 @@ final class FileActionResponse implements BaseModel
         ?array $links = null,
         ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
-        ?File $result = null,
+        File|array|null $result = null,
     ): self {
         $obj = new self;
 
-        $obj->completedAt = $completedAt;
-        $obj->startedAt = $startedAt;
+        $obj['completedAt'] = $completedAt;
+        $obj['startedAt'] = $startedAt;
         $obj['status'] = $status;
-        $obj->taskId = $taskId;
+        $obj['taskId'] = $taskId;
 
-        null !== $errors && $obj->errors = $errors;
-        null !== $links && $obj->links = $links;
-        null !== $numErrors && $obj->numErrors = $numErrors;
-        null !== $requestedAt && $obj->requestedAt = $requestedAt;
-        null !== $result && $obj->result = $result;
+        null !== $errors && $obj['errors'] = $errors;
+        null !== $links && $obj['links'] = $links;
+        null !== $numErrors && $obj['numErrors'] = $numErrors;
+        null !== $requestedAt && $obj['requestedAt'] = $requestedAt;
+        null !== $result && $obj['result'] = $result;
 
         return $obj;
     }
@@ -155,7 +189,7 @@ final class FileActionResponse implements BaseModel
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $obj = clone $this;
-        $obj->completedAt = $completedAt;
+        $obj['completedAt'] = $completedAt;
 
         return $obj;
     }
@@ -166,7 +200,7 @@ final class FileActionResponse implements BaseModel
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $obj = clone $this;
-        $obj->startedAt = $startedAt;
+        $obj['startedAt'] = $startedAt;
 
         return $obj;
     }
@@ -190,7 +224,7 @@ final class FileActionResponse implements BaseModel
     public function withTaskID(string $taskID): self
     {
         $obj = clone $this;
-        $obj->taskId = $taskID;
+        $obj['taskId'] = $taskID;
 
         return $obj;
     }
@@ -198,12 +232,21 @@ final class FileActionResponse implements BaseModel
     /**
      * Descriptive error messages.
      *
-     * @param list<StandardError> $errors
+     * @param list<StandardError|array{
+     *   category: string,
+     *   context: array<string,list<string>>,
+     *   errors: list<ErrorDetail>,
+     *   links: array<string,string>,
+     *   message: string,
+     *   status: string,
+     *   id?: string|null,
+     *   subCategory?: mixed,
+     * }> $errors
      */
     public function withErrors(array $errors): self
     {
         $obj = clone $this;
-        $obj->errors = $errors;
+        $obj['errors'] = $errors;
 
         return $obj;
     }
@@ -216,7 +259,7 @@ final class FileActionResponse implements BaseModel
     public function withLinks(array $links): self
     {
         $obj = clone $this;
-        $obj->links = $links;
+        $obj['links'] = $links;
 
         return $obj;
     }
@@ -227,7 +270,7 @@ final class FileActionResponse implements BaseModel
     public function withNumErrors(int $numErrors): self
     {
         $obj = clone $this;
-        $obj->numErrors = $numErrors;
+        $obj['numErrors'] = $numErrors;
 
         return $obj;
     }
@@ -238,18 +281,42 @@ final class FileActionResponse implements BaseModel
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $obj = clone $this;
-        $obj->requestedAt = $requestedAt;
+        $obj['requestedAt'] = $requestedAt;
 
         return $obj;
     }
 
     /**
      * File.
+     *
+     * @param File|array{
+     *   id: string,
+     *   access: value-of<Access>,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   defaultHostingUrl?: string|null,
+     *   encoding?: string|null,
+     *   expiresAt?: int|null,
+     *   extension?: string|null,
+     *   fileMd5?: string|null,
+     *   height?: int|null,
+     *   isUsableInContent?: bool|null,
+     *   name?: string|null,
+     *   parentFolderId?: string|null,
+     *   path?: string|null,
+     *   size?: int|null,
+     *   sourceGroup?: string|null,
+     *   type?: string|null,
+     *   url?: string|null,
+     *   width?: int|null,
+     * } $result
      */
-    public function withResult(File $result): self
+    public function withResult(File|array $result): self
     {
         $obj = clone $this;
-        $obj->result = $result;
+        $obj['result'] = $result;
 
         return $obj;
     }

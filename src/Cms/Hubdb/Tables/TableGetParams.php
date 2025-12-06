@@ -61,9 +61,9 @@ final class TableGetParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $archived && $obj->archived = $archived;
-        null !== $includeForeignIds && $obj->includeForeignIds = $includeForeignIds;
-        null !== $isGetLocalizedSchema && $obj->isGetLocalizedSchema = $isGetLocalizedSchema;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $includeForeignIds && $obj['includeForeignIds'] = $includeForeignIds;
+        null !== $isGetLocalizedSchema && $obj['isGetLocalizedSchema'] = $isGetLocalizedSchema;
 
         return $obj;
     }
@@ -74,7 +74,7 @@ final class TableGetParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class TableGetParams implements BaseModel
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;
-        $obj->includeForeignIds = $includeForeignIDs;
+        $obj['includeForeignIds'] = $includeForeignIDs;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class TableGetParams implements BaseModel
     public function withIsGetLocalizedSchema(bool $isGetLocalizedSchema): self
     {
         $obj = clone $this;
-        $obj->isGetLocalizedSchema = $isGetLocalizedSchema;
+        $obj['isGetLocalizedSchema'] = $isGetLocalizedSchema;
 
         return $obj;
     }

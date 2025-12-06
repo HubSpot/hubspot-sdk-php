@@ -62,34 +62,41 @@ final class PublicRecipientEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDeliveryIdentifier> $deliveryIdentifiers
+     * @param list<PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * }> $deliveryIdentifiers
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
      */
     public static function with(
         array $deliveryIdentifiers,
         ?string $actorId = null,
-        ?PublicDeliveryIdentifier $deliveryIdentifier = null,
+        PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
         ?string $name = null,
         ?string $recipientField = null,
     ): self {
         $obj = new self;
 
-        $obj->deliveryIdentifiers = $deliveryIdentifiers;
+        $obj['deliveryIdentifiers'] = $deliveryIdentifiers;
 
-        null !== $actorId && $obj->actorId = $actorId;
-        null !== $deliveryIdentifier && $obj->deliveryIdentifier = $deliveryIdentifier;
-        null !== $name && $obj->name = $name;
-        null !== $recipientField && $obj->recipientField = $recipientField;
+        null !== $actorId && $obj['actorId'] = $actorId;
+        null !== $deliveryIdentifier && $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        null !== $name && $obj['name'] = $name;
+        null !== $recipientField && $obj['recipientField'] = $recipientField;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicDeliveryIdentifier> $deliveryIdentifiers
+     * @param list<PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * }> $deliveryIdentifiers
      */
     public function withDeliveryIdentifiers(array $deliveryIdentifiers): self
     {
         $obj = clone $this;
-        $obj->deliveryIdentifiers = $deliveryIdentifiers;
+        $obj['deliveryIdentifiers'] = $deliveryIdentifiers;
 
         return $obj;
     }
@@ -97,16 +104,21 @@ final class PublicRecipientEgg implements BaseModel
     public function withActorID(string $actorID): self
     {
         $obj = clone $this;
-        $obj->actorId = $actorID;
+        $obj['actorId'] = $actorID;
 
         return $obj;
     }
 
+    /**
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
+     */
     public function withDeliveryIdentifier(
-        PublicDeliveryIdentifier $deliveryIdentifier
+        PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
         $obj = clone $this;
-        $obj->deliveryIdentifier = $deliveryIdentifier;
+        $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }
@@ -114,7 +126,7 @@ final class PublicRecipientEgg implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -122,7 +134,7 @@ final class PublicRecipientEgg implements BaseModel
     public function withRecipientField(string $recipientField): self
     {
         $obj = clone $this;
-        $obj->recipientField = $recipientField;
+        $obj['recipientField'] = $recipientField;
 
         return $obj;
     }

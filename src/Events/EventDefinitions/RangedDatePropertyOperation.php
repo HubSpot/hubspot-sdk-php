@@ -114,16 +114,16 @@ final class RangedDatePropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->lowerBoundTimestamp = $lowerBoundTimestamp;
-        $obj->operationType = $operationType;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['lowerBoundTimestamp'] = $lowerBoundTimestamp;
+        $obj['operationType'] = $operationType;
         $obj['operator'] = $operator;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
         $obj['propertyType'] = $propertyType;
-        $obj->requiresTimeZoneConversion = $requiresTimeZoneConversion;
-        $obj->upperBoundTimestamp = $upperBoundTimestamp;
+        $obj['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
+        $obj['upperBoundTimestamp'] = $upperBoundTimestamp;
 
-        null !== $defaultValue && $obj->defaultValue = $defaultValue;
+        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class RangedDatePropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class RangedDatePropertyOperation implements BaseModel
     public function withLowerBoundTimestamp(int $lowerBoundTimestamp): self
     {
         $obj = clone $this;
-        $obj->lowerBoundTimestamp = $lowerBoundTimestamp;
+        $obj['lowerBoundTimestamp'] = $lowerBoundTimestamp;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class RangedDatePropertyOperation implements BaseModel
     public function withOperationType(string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class RangedDatePropertyOperation implements BaseModel
     public function withOperatorName(string $operatorName): self
     {
         $obj = clone $this;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
 
         return $obj;
     }
@@ -187,7 +187,7 @@ final class RangedDatePropertyOperation implements BaseModel
         bool $requiresTimeZoneConversion
     ): self {
         $obj = clone $this;
-        $obj->requiresTimeZoneConversion = $requiresTimeZoneConversion;
+        $obj['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
 
         return $obj;
     }
@@ -195,7 +195,7 @@ final class RangedDatePropertyOperation implements BaseModel
     public function withUpperBoundTimestamp(int $upperBoundTimestamp): self
     {
         $obj = clone $this;
-        $obj->upperBoundTimestamp = $upperBoundTimestamp;
+        $obj['upperBoundTimestamp'] = $upperBoundTimestamp;
 
         return $obj;
     }
@@ -203,7 +203,7 @@ final class RangedDatePropertyOperation implements BaseModel
     public function withDefaultValue(string $defaultValue): self
     {
         $obj = clone $this;
-        $obj->defaultValue = $defaultValue;
+        $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }

@@ -113,7 +113,10 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CrmPropertyWrapper> $customProperties
+     * @param list<CrmPropertyWrapper|array{
+     *   name: string, value: string
+     * }> $customProperties
+     * @param AppInfo|array{id: string, name: string} $appInfo
      */
     public static function with(
         \DateTimeInterface $createdAt,
@@ -121,7 +124,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
         string $eventName,
         string $objectId,
         \DateTimeInterface $updatedAt,
-        ?AppInfo $appInfo = null,
+        AppInfo|array|null $appInfo = null,
         ?\DateTimeInterface $endDateTime = null,
         ?bool $eventCancelled = null,
         ?bool $eventCompleted = null,
@@ -133,21 +136,21 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     ): self {
         $obj = new self;
 
-        $obj->createdAt = $createdAt;
-        $obj->customProperties = $customProperties;
-        $obj->eventName = $eventName;
-        $obj->objectId = $objectId;
-        $obj->updatedAt = $updatedAt;
+        $obj['createdAt'] = $createdAt;
+        $obj['customProperties'] = $customProperties;
+        $obj['eventName'] = $eventName;
+        $obj['objectId'] = $objectId;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $appInfo && $obj->appInfo = $appInfo;
-        null !== $endDateTime && $obj->endDateTime = $endDateTime;
-        null !== $eventCancelled && $obj->eventCancelled = $eventCancelled;
-        null !== $eventCompleted && $obj->eventCompleted = $eventCompleted;
-        null !== $eventDescription && $obj->eventDescription = $eventDescription;
-        null !== $eventOrganizer && $obj->eventOrganizer = $eventOrganizer;
-        null !== $eventType && $obj->eventType = $eventType;
-        null !== $eventUrl && $obj->eventUrl = $eventUrl;
-        null !== $startDateTime && $obj->startDateTime = $startDateTime;
+        null !== $appInfo && $obj['appInfo'] = $appInfo;
+        null !== $endDateTime && $obj['endDateTime'] = $endDateTime;
+        null !== $eventCancelled && $obj['eventCancelled'] = $eventCancelled;
+        null !== $eventCompleted && $obj['eventCompleted'] = $eventCompleted;
+        null !== $eventDescription && $obj['eventDescription'] = $eventDescription;
+        null !== $eventOrganizer && $obj['eventOrganizer'] = $eventOrganizer;
+        null !== $eventType && $obj['eventType'] = $eventType;
+        null !== $eventUrl && $obj['eventUrl'] = $eventUrl;
+        null !== $startDateTime && $obj['startDateTime'] = $startDateTime;
 
         return $obj;
     }
@@ -155,18 +158,20 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
 
     /**
-     * @param list<CrmPropertyWrapper> $customProperties
+     * @param list<CrmPropertyWrapper|array{
+     *   name: string, value: string
+     * }> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {
         $obj = clone $this;
-        $obj->customProperties = $customProperties;
+        $obj['customProperties'] = $customProperties;
 
         return $obj;
     }
@@ -174,7 +179,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withEventName(string $eventName): self
     {
         $obj = clone $this;
-        $obj->eventName = $eventName;
+        $obj['eventName'] = $eventName;
 
         return $obj;
     }
@@ -182,7 +187,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -190,15 +195,18 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
 
-    public function withAppInfo(AppInfo $appInfo): self
+    /**
+     * @param AppInfo|array{id: string, name: string} $appInfo
+     */
+    public function withAppInfo(AppInfo|array $appInfo): self
     {
         $obj = clone $this;
-        $obj->appInfo = $appInfo;
+        $obj['appInfo'] = $appInfo;
 
         return $obj;
     }
@@ -206,7 +214,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withEndDateTime(\DateTimeInterface $endDateTime): self
     {
         $obj = clone $this;
-        $obj->endDateTime = $endDateTime;
+        $obj['endDateTime'] = $endDateTime;
 
         return $obj;
     }
@@ -214,7 +222,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withEventCancelled(bool $eventCancelled): self
     {
         $obj = clone $this;
-        $obj->eventCancelled = $eventCancelled;
+        $obj['eventCancelled'] = $eventCancelled;
 
         return $obj;
     }
@@ -222,7 +230,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withEventCompleted(bool $eventCompleted): self
     {
         $obj = clone $this;
-        $obj->eventCompleted = $eventCompleted;
+        $obj['eventCompleted'] = $eventCompleted;
 
         return $obj;
     }
@@ -230,7 +238,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withEventDescription(string $eventDescription): self
     {
         $obj = clone $this;
-        $obj->eventDescription = $eventDescription;
+        $obj['eventDescription'] = $eventDescription;
 
         return $obj;
     }
@@ -238,7 +246,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withEventOrganizer(string $eventOrganizer): self
     {
         $obj = clone $this;
-        $obj->eventOrganizer = $eventOrganizer;
+        $obj['eventOrganizer'] = $eventOrganizer;
 
         return $obj;
     }
@@ -246,7 +254,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withEventType(string $eventType): self
     {
         $obj = clone $this;
-        $obj->eventType = $eventType;
+        $obj['eventType'] = $eventType;
 
         return $obj;
     }
@@ -254,7 +262,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj->eventUrl = $eventURL;
+        $obj['eventUrl'] = $eventURL;
 
         return $obj;
     }
@@ -262,7 +270,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel, Response
     public function withStartDateTime(\DateTimeInterface $startDateTime): self
     {
         $obj = clone $this;
-        $obj->startDateTime = $startDateTime;
+        $obj['startDateTime'] = $startDateTime;
 
         return $obj;
     }

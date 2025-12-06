@@ -40,8 +40,8 @@ final class ObjectTypeDefinitionLabels implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $plural && $obj->plural = $plural;
-        null !== $singular && $obj->singular = $singular;
+        null !== $plural && $obj['plural'] = $plural;
+        null !== $singular && $obj['singular'] = $singular;
 
         return $obj;
     }
@@ -49,7 +49,7 @@ final class ObjectTypeDefinitionLabels implements BaseModel
     public function withPlural(string $plural): self
     {
         $obj = clone $this;
-        $obj->plural = $plural;
+        $obj['plural'] = $plural;
 
         return $obj;
     }
@@ -57,7 +57,7 @@ final class ObjectTypeDefinitionLabels implements BaseModel
     public function withSingular(string $singular): self
     {
         $obj = clone $this;
-        $obj->singular = $singular;
+        $obj['singular'] = $singular;
 
         return $obj;
     }

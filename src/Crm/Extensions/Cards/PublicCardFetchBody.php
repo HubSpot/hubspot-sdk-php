@@ -7,6 +7,7 @@ namespace HubspotSDK\Crm\Extensions\Cards;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody\Name;
 
 /**
  * @phpstan-type PublicCardFetchBodyShape = array{
@@ -49,25 +50,29 @@ final class PublicCardFetchBody implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CardObjectTypeBody> $objectTypes
+     * @param list<CardObjectTypeBody|array{
+     *   name: value-of<Name>, propertiesToSend: list<string>
+     * }> $objectTypes
      */
     public static function with(array $objectTypes, string $targetUrl): self
     {
         $obj = new self;
 
-        $obj->objectTypes = $objectTypes;
-        $obj->targetUrl = $targetUrl;
+        $obj['objectTypes'] = $objectTypes;
+        $obj['targetUrl'] = $targetUrl;
 
         return $obj;
     }
 
     /**
-     * @param list<CardObjectTypeBody> $objectTypes
+     * @param list<CardObjectTypeBody|array{
+     *   name: value-of<Name>, propertiesToSend: list<string>
+     * }> $objectTypes
      */
     public function withObjectTypes(array $objectTypes): self
     {
         $obj = clone $this;
-        $obj->objectTypes = $objectTypes;
+        $obj['objectTypes'] = $objectTypes;
 
         return $obj;
     }
@@ -75,7 +80,7 @@ final class PublicCardFetchBody implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj->targetUrl = $targetURL;
+        $obj['targetUrl'] = $targetURL;
 
         return $obj;
     }

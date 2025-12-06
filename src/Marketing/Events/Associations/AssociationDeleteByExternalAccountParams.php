@@ -64,8 +64,8 @@ final class AssociationDeleteByExternalAccountParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->externalAccountId = $externalAccountId;
-        $obj->externalEventId = $externalEventId;
+        $obj['externalAccountId'] = $externalAccountId;
+        $obj['externalEventId'] = $externalEventId;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class AssociationDeleteByExternalAccountParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountId = $externalAccountID;
+        $obj['externalAccountId'] = $externalAccountID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class AssociationDeleteByExternalAccountParams implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventId = $externalEventID;
+        $obj['externalEventId'] = $externalEventID;
 
         return $obj;
     }

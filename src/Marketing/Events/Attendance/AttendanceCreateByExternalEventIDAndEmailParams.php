@@ -27,7 +27,12 @@ use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
  *
  * @phpstan-type AttendanceCreateByExternalEventIDAndEmailParamsShape = array{
  *   externalEventId: string,
- *   inputs: list<MarketingEventEmailSubscriber>,
+ *   inputs: list<MarketingEventEmailSubscriber|array{
+ *     contactProperties: array<string,string>,
+ *     email: string,
+ *     interactionDateTime: int,
+ *     properties: array<string,string>,
+ *   }>,
  *   externalAccountId?: string,
  * }
  */
@@ -82,7 +87,12 @@ final class AttendanceCreateByExternalEventIDAndEmailParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventEmailSubscriber> $inputs
+     * @param list<MarketingEventEmailSubscriber|array{
+     *   contactProperties: array<string,string>,
+     *   email: string,
+     *   interactionDateTime: int,
+     *   properties: array<string,string>,
+     * }> $inputs
      */
     public static function with(
         string $externalEventId,
@@ -91,10 +101,10 @@ final class AttendanceCreateByExternalEventIDAndEmailParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->externalEventId = $externalEventId;
-        $obj->inputs = $inputs;
+        $obj['externalEventId'] = $externalEventId;
+        $obj['inputs'] = $inputs;
 
-        null !== $externalAccountId && $obj->externalAccountId = $externalAccountId;
+        null !== $externalAccountId && $obj['externalAccountId'] = $externalAccountId;
 
         return $obj;
     }
@@ -102,7 +112,7 @@ final class AttendanceCreateByExternalEventIDAndEmailParams implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventId = $externalEventID;
+        $obj['externalEventId'] = $externalEventID;
 
         return $obj;
     }
@@ -110,12 +120,17 @@ final class AttendanceCreateByExternalEventIDAndEmailParams implements BaseModel
     /**
      * List of marketing event details to create or update.
      *
-     * @param list<MarketingEventEmailSubscriber> $inputs
+     * @param list<MarketingEventEmailSubscriber|array{
+     *   contactProperties: array<string,string>,
+     *   email: string,
+     *   interactionDateTime: int,
+     *   properties: array<string,string>,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -126,7 +141,7 @@ final class AttendanceCreateByExternalEventIDAndEmailParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountId = $externalAccountID;
+        $obj['externalAccountId'] = $externalAccountID;
 
         return $obj;
     }

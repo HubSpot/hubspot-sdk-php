@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Authors;
 
+use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -70,20 +71,40 @@ final class BlogAuthorCloneRequestVNext implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param BlogAuthor|array{
+     *   id: string,
+     *   avatar: string,
+     *   bio: string,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   displayName: string,
+     *   email: string,
+     *   facebook: string,
+     *   fullName: string,
+     *   language: value-of<Language>,
+     *   linkedin: string,
+     *   name: string,
+     *   slug: string,
+     *   translatedFromId: int,
+     *   twitter: string,
+     *   updated: \DateTimeInterface,
+     *   website: string,
+     * } $blogAuthor
      */
     public static function with(
         string $id,
-        BlogAuthor $blogAuthor,
+        BlogAuthor|array $blogAuthor,
         ?string $language = null,
         ?string $primaryLanguage = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->blogAuthor = $blogAuthor;
+        $obj['id'] = $id;
+        $obj['blogAuthor'] = $blogAuthor;
 
-        null !== $language && $obj->language = $language;
-        null !== $primaryLanguage && $obj->primaryLanguage = $primaryLanguage;
+        null !== $language && $obj['language'] = $language;
+        null !== $primaryLanguage && $obj['primaryLanguage'] = $primaryLanguage;
 
         return $obj;
     }
@@ -94,18 +115,38 @@ final class BlogAuthorCloneRequestVNext implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
     /**
      * Model definition for a Blog Author.
+     *
+     * @param BlogAuthor|array{
+     *   id: string,
+     *   avatar: string,
+     *   bio: string,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   displayName: string,
+     *   email: string,
+     *   facebook: string,
+     *   fullName: string,
+     *   language: value-of<Language>,
+     *   linkedin: string,
+     *   name: string,
+     *   slug: string,
+     *   translatedFromId: int,
+     *   twitter: string,
+     *   updated: \DateTimeInterface,
+     *   website: string,
+     * } $blogAuthor
      */
-    public function withBlogAuthor(BlogAuthor $blogAuthor): self
+    public function withBlogAuthor(BlogAuthor|array $blogAuthor): self
     {
         $obj = clone $this;
-        $obj->blogAuthor = $blogAuthor;
+        $obj['blogAuthor'] = $blogAuthor;
 
         return $obj;
     }
@@ -116,7 +157,7 @@ final class BlogAuthorCloneRequestVNext implements BaseModel
     public function withLanguage(string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language;
+        $obj['language'] = $language;
 
         return $obj;
     }
@@ -127,7 +168,7 @@ final class BlogAuthorCloneRequestVNext implements BaseModel
     public function withPrimaryLanguage(string $primaryLanguage): self
     {
         $obj = clone $this;
-        $obj->primaryLanguage = $primaryLanguage;
+        $obj['primaryLanguage'] = $primaryLanguage;
 
         return $obj;
     }

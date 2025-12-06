@@ -70,10 +70,10 @@ final class RgbaColor implements BaseModel
     {
         $obj = new self;
 
-        $obj->a = $a;
-        $obj->b = $b;
-        $obj->g = $g;
-        $obj->r = $r;
+        $obj['a'] = $a;
+        $obj['b'] = $b;
+        $obj['g'] = $g;
+        $obj['r'] = $r;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class RgbaColor implements BaseModel
     public function withA(float $a): self
     {
         $obj = clone $this;
-        $obj->a = $a;
+        $obj['a'] = $a;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class RgbaColor implements BaseModel
     public function withB(int $b): self
     {
         $obj = clone $this;
-        $obj->b = $b;
+        $obj['b'] = $b;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class RgbaColor implements BaseModel
     public function withG(int $g): self
     {
         $obj = clone $this;
-        $obj->g = $g;
+        $obj['g'] = $g;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class RgbaColor implements BaseModel
     public function withR(int $r): self
     {
         $obj = clone $this;
-        $obj->r = $r;
+        $obj['r'] = $r;
 
         return $obj;
     }

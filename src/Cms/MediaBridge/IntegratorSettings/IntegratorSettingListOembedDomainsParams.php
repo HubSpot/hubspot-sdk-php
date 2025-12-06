@@ -44,7 +44,7 @@ final class IntegratorSettingListOembedDomainsParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $domainPortalId && $obj->domainPortalId = $domainPortalId;
+        null !== $domainPortalId && $obj['domainPortalId'] = $domainPortalId;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class IntegratorSettingListOembedDomainsParams implements BaseModel
     public function withDomainPortalID(int $domainPortalID): self
     {
         $obj = clone $this;
-        $obj->domainPortalId = $domainPortalID;
+        $obj['domainPortalId'] = $domainPortalID;
 
         return $obj;
     }

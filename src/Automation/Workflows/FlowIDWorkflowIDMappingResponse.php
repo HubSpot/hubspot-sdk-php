@@ -52,8 +52,8 @@ final class FlowIDWorkflowIDMappingResponse implements BaseModel
     {
         $obj = new self;
 
-        $obj->flowId = $flowId;
-        $obj->workflowId = $workflowId;
+        $obj['flowId'] = $flowId;
+        $obj['workflowId'] = $workflowId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class FlowIDWorkflowIDMappingResponse implements BaseModel
     public function withFlowID(int $flowID): self
     {
         $obj = clone $this;
-        $obj->flowId = $flowID;
+        $obj['flowId'] = $flowID;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class FlowIDWorkflowIDMappingResponse implements BaseModel
     public function withWorkflowID(int $workflowID): self
     {
         $obj = clone $this;
-        $obj->workflowId = $workflowID;
+        $obj['workflowId'] = $workflowID;
 
         return $obj;
     }

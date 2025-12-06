@@ -61,18 +61,30 @@ final class CreatedResponseSimplePublicObject implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param SimplePublicObject|array{
+     *   id: string,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   properties: array<string,string|null>,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   objectWriteTraceId?: string|null,
+     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
+     *   url?: string|null,
+     * } $entity
      */
     public static function with(
         string $createdResourceId,
-        SimplePublicObject $entity,
+        SimplePublicObject|array $entity,
         ?string $location = null,
     ): self {
         $obj = new self;
 
-        $obj->createdResourceId = $createdResourceId;
-        $obj->entity = $entity;
+        $obj['createdResourceId'] = $createdResourceId;
+        $obj['entity'] = $entity;
 
-        null !== $location && $obj->location = $location;
+        null !== $location && $obj['location'] = $location;
 
         return $obj;
     }
@@ -83,18 +95,30 @@ final class CreatedResponseSimplePublicObject implements BaseModel
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
-        $obj->createdResourceId = $createdResourceID;
+        $obj['createdResourceId'] = $createdResourceID;
 
         return $obj;
     }
 
     /**
      * A simple public object.
+     *
+     * @param SimplePublicObject|array{
+     *   id: string,
+     *   archived: bool,
+     *   createdAt: \DateTimeInterface,
+     *   properties: array<string,string|null>,
+     *   updatedAt: \DateTimeInterface,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   objectWriteTraceId?: string|null,
+     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
+     *   url?: string|null,
+     * } $entity
      */
-    public function withEntity(SimplePublicObject $entity): self
+    public function withEntity(SimplePublicObject|array $entity): self
     {
         $obj = clone $this;
-        $obj->entity = $entity;
+        $obj['entity'] = $entity;
 
         return $obj;
     }
@@ -105,7 +129,7 @@ final class CreatedResponseSimplePublicObject implements BaseModel
     public function withLocation(string $location): self
     {
         $obj = clone $this;
-        $obj->location = $location;
+        $obj['location'] = $location;
 
         return $obj;
     }

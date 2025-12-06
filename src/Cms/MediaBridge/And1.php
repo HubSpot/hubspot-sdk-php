@@ -77,12 +77,12 @@ final class And1 implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->enclosedInParentheses = $enclosedInParentheses;
+        $obj['enclosedInParentheses'] = $enclosedInParentheses;
         $obj['operator'] = $operator;
 
-        null !== $inputs && $obj->inputs = $inputs;
-        null !== $propertyName && $obj->propertyName = $propertyName;
-        null !== $value && $obj->value = $value;
+        null !== $inputs && $obj['inputs'] = $inputs;
+        null !== $propertyName && $obj['propertyName'] = $propertyName;
+        null !== $value && $obj['value'] = $value;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class And1 implements BaseModel
     public function withEnclosedInParentheses(bool $enclosedInParentheses): self
     {
         $obj = clone $this;
-        $obj->enclosedInParentheses = $enclosedInParentheses;
+        $obj['enclosedInParentheses'] = $enclosedInParentheses;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class And1 implements BaseModel
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class And1 implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class And1 implements BaseModel
     public function withValue(bool $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

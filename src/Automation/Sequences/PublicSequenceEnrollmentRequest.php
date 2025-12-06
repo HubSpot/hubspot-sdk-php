@@ -70,11 +70,11 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->contactId = $contactId;
-        $obj->senderEmail = $senderEmail;
-        $obj->sequenceId = $sequenceId;
+        $obj['contactId'] = $contactId;
+        $obj['senderEmail'] = $senderEmail;
+        $obj['sequenceId'] = $sequenceId;
 
-        null !== $senderAliasAddress && $obj->senderAliasAddress = $senderAliasAddress;
+        null !== $senderAliasAddress && $obj['senderAliasAddress'] = $senderAliasAddress;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
     public function withContactID(string $contactID): self
     {
         $obj = clone $this;
-        $obj->contactId = $contactID;
+        $obj['contactId'] = $contactID;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
     public function withSenderEmail(string $senderEmail): self
     {
         $obj = clone $this;
-        $obj->senderEmail = $senderEmail;
+        $obj['senderEmail'] = $senderEmail;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
     public function withSequenceID(string $sequenceID): self
     {
         $obj = clone $this;
-        $obj->sequenceId = $sequenceID;
+        $obj['sequenceId'] = $sequenceID;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
     public function withSenderAliasAddress(string $senderAliasAddress): self
     {
         $obj = clone $this;
-        $obj->senderAliasAddress = $senderAliasAddress;
+        $obj['senderAliasAddress'] = $senderAliasAddress;
 
         return $obj;
     }

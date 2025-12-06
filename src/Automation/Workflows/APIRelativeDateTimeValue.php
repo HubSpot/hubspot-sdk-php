@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIRelativeDateTimeValue\Type;
+use HubspotSDK\Automation\Workflows\APITimeDelay\DaysOfWeek;
+use HubspotSDK\Automation\Workflows\APITimeDelay\TimeUnit;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -50,24 +52,40 @@ final class APIRelativeDateTimeValue implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param APITimeDelay|array{
+     *   daysOfWeek: list<value-of<DaysOfWeek>>,
+     *   delta: int,
+     *   timeUnit: value-of<TimeUnit>,
+     *   timeOfDay?: APITimeOfDay|null,
+     *   timeZoneStrategy?: APIStaticTimeZoneStrategy|null,
+     * } $timeDelay
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        APITimeDelay $timeDelay,
+        APITimeDelay|array $timeDelay,
         Type|string $type = 'RELATIVE_DATETIME'
     ): self {
         $obj = new self;
 
-        $obj->timeDelay = $timeDelay;
+        $obj['timeDelay'] = $timeDelay;
         $obj['type'] = $type;
 
         return $obj;
     }
 
-    public function withTimeDelay(APITimeDelay $timeDelay): self
+    /**
+     * @param APITimeDelay|array{
+     *   daysOfWeek: list<value-of<DaysOfWeek>>,
+     *   delta: int,
+     *   timeUnit: value-of<TimeUnit>,
+     *   timeOfDay?: APITimeOfDay|null,
+     *   timeZoneStrategy?: APIStaticTimeZoneStrategy|null,
+     * } $timeDelay
+     */
+    public function withTimeDelay(APITimeDelay|array $timeDelay): self
     {
         $obj = clone $this;
-        $obj->timeDelay = $timeDelay;
+        $obj['timeDelay'] = $timeDelay;
 
         return $obj;
     }

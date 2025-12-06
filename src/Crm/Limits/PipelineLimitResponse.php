@@ -58,37 +58,65 @@ final class PipelineLimitResponse implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<LimitAndUsageForObjectType> $hubspotDefinedObjectTypes
+     * @param CustomObjectRecordLimitResponse|array{
+     *   byObjectType: list<UsageForObjectType>,
+     *   overallLimit: int,
+     *   overallPercentage: float,
+     *   overallUsage: int,
+     * } $customObjectTypes
+     * @param list<LimitAndUsageForObjectType|array{
+     *   limit: int,
+     *   objectTypeId: string,
+     *   percentage: float,
+     *   pluralLabel: string,
+     *   singularLabel: string,
+     *   usage: int,
+     * }> $hubspotDefinedObjectTypes
      */
     public static function with(
-        CustomObjectRecordLimitResponse $customObjectTypes,
+        CustomObjectRecordLimitResponse|array $customObjectTypes,
         array $hubspotDefinedObjectTypes,
     ): self {
         $obj = new self;
 
-        $obj->customObjectTypes = $customObjectTypes;
-        $obj->hubspotDefinedObjectTypes = $hubspotDefinedObjectTypes;
-
-        return $obj;
-    }
-
-    public function withCustomObjectTypes(
-        CustomObjectRecordLimitResponse $customObjectTypes
-    ): self {
-        $obj = clone $this;
-        $obj->customObjectTypes = $customObjectTypes;
+        $obj['customObjectTypes'] = $customObjectTypes;
+        $obj['hubspotDefinedObjectTypes'] = $hubspotDefinedObjectTypes;
 
         return $obj;
     }
 
     /**
-     * @param list<LimitAndUsageForObjectType> $hubspotDefinedObjectTypes
+     * @param CustomObjectRecordLimitResponse|array{
+     *   byObjectType: list<UsageForObjectType>,
+     *   overallLimit: int,
+     *   overallPercentage: float,
+     *   overallUsage: int,
+     * } $customObjectTypes
+     */
+    public function withCustomObjectTypes(
+        CustomObjectRecordLimitResponse|array $customObjectTypes
+    ): self {
+        $obj = clone $this;
+        $obj['customObjectTypes'] = $customObjectTypes;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<LimitAndUsageForObjectType|array{
+     *   limit: int,
+     *   objectTypeId: string,
+     *   percentage: float,
+     *   pluralLabel: string,
+     *   singularLabel: string,
+     *   usage: int,
+     * }> $hubspotDefinedObjectTypes
      */
     public function withHubspotDefinedObjectTypes(
         array $hubspotDefinedObjectTypes
     ): self {
         $obj = clone $this;
-        $obj->hubspotDefinedObjectTypes = $hubspotDefinedObjectTypes;
+        $obj['hubspotDefinedObjectTypes'] = $hubspotDefinedObjectTypes;
 
         return $obj;
     }

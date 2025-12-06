@@ -79,12 +79,12 @@ final class IsPresent implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->expressionToEvaluate = $expressionToEvaluate;
+        $obj['expressionToEvaluate'] = $expressionToEvaluate;
         $obj['operator'] = $operator;
 
-        null !== $inputs && $obj->inputs = $inputs;
-        null !== $propertyName && $obj->propertyName = $propertyName;
-        null !== $value && $obj->value = $value;
+        null !== $inputs && $obj['inputs'] = $inputs;
+        null !== $propertyName && $obj['propertyName'] = $propertyName;
+        null !== $value && $obj['value'] = $value;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class IsPresent implements BaseModel
     public function withExpressionToEvaluate(array $expressionToEvaluate): self
     {
         $obj = clone $this;
-        $obj->expressionToEvaluate = $expressionToEvaluate;
+        $obj['expressionToEvaluate'] = $expressionToEvaluate;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class IsPresent implements BaseModel
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class IsPresent implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class IsPresent implements BaseModel
     public function withValue(bool $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

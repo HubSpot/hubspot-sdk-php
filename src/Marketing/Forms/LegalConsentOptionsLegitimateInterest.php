@@ -81,8 +81,8 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
         $obj = new self;
 
         $obj['lawfulBasis'] = $lawfulBasis;
-        $obj->privacyText = $privacyText;
-        $obj->subscriptionTypeIds = $subscriptionTypeIds;
+        $obj['privacyText'] = $privacyText;
+        $obj['subscriptionTypeIds'] = $subscriptionTypeIds;
         $obj['type'] = $type;
 
         return $obj;
@@ -102,7 +102,7 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
     public function withPrivacyText(string $privacyText): self
     {
         $obj = clone $this;
-        $obj->privacyText = $privacyText;
+        $obj['privacyText'] = $privacyText;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
     public function withSubscriptionTypeIDs(array $subscriptionTypeIDs): self
     {
         $obj = clone $this;
-        $obj->subscriptionTypeIds = $subscriptionTypeIDs;
+        $obj['subscriptionTypeIds'] = $subscriptionTypeIDs;
 
         return $obj;
     }

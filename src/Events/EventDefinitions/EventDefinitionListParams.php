@@ -71,11 +71,11 @@ final class EventDefinitionListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $includeProperties && $obj->includeProperties = $includeProperties;
-        null !== $limit && $obj->limit = $limit;
-        null !== $searchString && $obj->searchString = $searchString;
-        null !== $sortOrder && $obj->sortOrder = $sortOrder;
+        null !== $after && $obj['after'] = $after;
+        null !== $includeProperties && $obj['includeProperties'] = $includeProperties;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $searchString && $obj['searchString'] = $searchString;
+        null !== $sortOrder && $obj['sortOrder'] = $sortOrder;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class EventDefinitionListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class EventDefinitionListParams implements BaseModel
     public function withIncludeProperties(bool $includeProperties): self
     {
         $obj = clone $this;
-        $obj->includeProperties = $includeProperties;
+        $obj['includeProperties'] = $includeProperties;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class EventDefinitionListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class EventDefinitionListParams implements BaseModel
     public function withSearchString(string $searchString): self
     {
         $obj = clone $this;
-        $obj->searchString = $searchString;
+        $obj['searchString'] = $searchString;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class EventDefinitionListParams implements BaseModel
     public function withSortOrder(string $sortOrder): self
     {
         $obj = clone $this;
-        $obj->sortOrder = $sortOrder;
+        $obj['sortOrder'] = $sortOrder;
 
         return $obj;
     }

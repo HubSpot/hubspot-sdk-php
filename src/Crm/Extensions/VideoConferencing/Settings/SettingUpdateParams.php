@@ -86,12 +86,12 @@ final class SettingUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->createMeetingUrl = $createMeetingUrl;
+        $obj['createMeetingUrl'] = $createMeetingUrl;
 
-        null !== $deleteMeetingUrl && $obj->deleteMeetingUrl = $deleteMeetingUrl;
-        null !== $fetchAccountsUri && $obj->fetchAccountsUri = $fetchAccountsUri;
-        null !== $updateMeetingUrl && $obj->updateMeetingUrl = $updateMeetingUrl;
-        null !== $userVerifyUrl && $obj->userVerifyUrl = $userVerifyUrl;
+        null !== $deleteMeetingUrl && $obj['deleteMeetingUrl'] = $deleteMeetingUrl;
+        null !== $fetchAccountsUri && $obj['fetchAccountsUri'] = $fetchAccountsUri;
+        null !== $updateMeetingUrl && $obj['updateMeetingUrl'] = $updateMeetingUrl;
+        null !== $userVerifyUrl && $obj['userVerifyUrl'] = $userVerifyUrl;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class SettingUpdateParams implements BaseModel
     public function withCreateMeetingURL(string $createMeetingURL): self
     {
         $obj = clone $this;
-        $obj->createMeetingUrl = $createMeetingURL;
+        $obj['createMeetingUrl'] = $createMeetingURL;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class SettingUpdateParams implements BaseModel
     public function withDeleteMeetingURL(string $deleteMeetingURL): self
     {
         $obj = clone $this;
-        $obj->deleteMeetingUrl = $deleteMeetingURL;
+        $obj['deleteMeetingUrl'] = $deleteMeetingURL;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class SettingUpdateParams implements BaseModel
     public function withFetchAccountsUri(string $fetchAccountsUri): self
     {
         $obj = clone $this;
-        $obj->fetchAccountsUri = $fetchAccountsUri;
+        $obj['fetchAccountsUri'] = $fetchAccountsUri;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class SettingUpdateParams implements BaseModel
     public function withUpdateMeetingURL(string $updateMeetingURL): self
     {
         $obj = clone $this;
-        $obj->updateMeetingUrl = $updateMeetingURL;
+        $obj['updateMeetingUrl'] = $updateMeetingURL;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class SettingUpdateParams implements BaseModel
     public function withUserVerifyURL(string $userVerifyURL): self
     {
         $obj = clone $this;
-        $obj->userVerifyUrl = $userVerifyURL;
+        $obj['userVerifyUrl'] = $userVerifyURL;
 
         return $obj;
     }

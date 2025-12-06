@@ -50,8 +50,8 @@ final class PublicDeliveryIdentifier implements BaseModel
     {
         $obj = new self;
 
-        $obj->type = $type;
-        $obj->value = $value;
+        $obj['type'] = $type;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class PublicDeliveryIdentifier implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class PublicDeliveryIdentifier implements BaseModel
     public function withValue(string $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

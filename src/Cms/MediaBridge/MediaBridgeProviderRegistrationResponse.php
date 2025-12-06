@@ -52,8 +52,8 @@ final class MediaBridgeProviderRegistrationResponse implements BaseModel
     {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->name = $name;
+        $obj['appId'] = $appId;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class MediaBridgeProviderRegistrationResponse implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class MediaBridgeProviderRegistrationResponse implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

@@ -69,7 +69,9 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<LegalConsentCheckbox> $communicationsCheckboxes
+     * @param list<LegalConsentCheckbox|array{
+     *   label: string, required: bool, subscriptionTypeId: int
+     * }> $communicationsCheckboxes
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -81,24 +83,26 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->communicationsCheckboxes = $communicationsCheckboxes;
-        $obj->privacyText = $privacyText;
+        $obj['communicationsCheckboxes'] = $communicationsCheckboxes;
+        $obj['privacyText'] = $privacyText;
         $obj['type'] = $type;
 
-        null !== $communicationConsentText && $obj->communicationConsentText = $communicationConsentText;
-        null !== $consentToProcessText && $obj->consentToProcessText = $consentToProcessText;
+        null !== $communicationConsentText && $obj['communicationConsentText'] = $communicationConsentText;
+        null !== $consentToProcessText && $obj['consentToProcessText'] = $consentToProcessText;
 
         return $obj;
     }
 
     /**
-     * @param list<LegalConsentCheckbox> $communicationsCheckboxes
+     * @param list<LegalConsentCheckbox|array{
+     *   label: string, required: bool, subscriptionTypeId: int
+     * }> $communicationsCheckboxes
      */
     public function withCommunicationsCheckboxes(
         array $communicationsCheckboxes
     ): self {
         $obj = clone $this;
-        $obj->communicationsCheckboxes = $communicationsCheckboxes;
+        $obj['communicationsCheckboxes'] = $communicationsCheckboxes;
 
         return $obj;
     }
@@ -106,7 +110,7 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
     public function withPrivacyText(string $privacyText): self
     {
         $obj = clone $this;
-        $obj->privacyText = $privacyText;
+        $obj['privacyText'] = $privacyText;
 
         return $obj;
     }
@@ -126,7 +130,7 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
         string $communicationConsentText
     ): self {
         $obj = clone $this;
-        $obj->communicationConsentText = $communicationConsentText;
+        $obj['communicationConsentText'] = $communicationConsentText;
 
         return $obj;
     }
@@ -134,7 +138,7 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
     public function withConsentToProcessText(string $consentToProcessText): self
     {
         $obj = clone $this;
-        $obj->consentToProcessText = $consentToProcessText;
+        $obj['consentToProcessText'] = $consentToProcessText;
 
         return $obj;
     }

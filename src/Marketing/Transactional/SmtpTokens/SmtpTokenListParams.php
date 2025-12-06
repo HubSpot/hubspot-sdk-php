@@ -66,10 +66,10 @@ final class SmtpTokenListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
-        null !== $campaignName && $obj->campaignName = $campaignName;
-        null !== $emailCampaignId && $obj->emailCampaignId = $emailCampaignId;
-        null !== $limit && $obj->limit = $limit;
+        null !== $after && $obj['after'] = $after;
+        null !== $campaignName && $obj['campaignName'] = $campaignName;
+        null !== $emailCampaignId && $obj['emailCampaignId'] = $emailCampaignId;
+        null !== $limit && $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class SmtpTokenListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class SmtpTokenListParams implements BaseModel
     public function withCampaignName(string $campaignName): self
     {
         $obj = clone $this;
-        $obj->campaignName = $campaignName;
+        $obj['campaignName'] = $campaignName;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class SmtpTokenListParams implements BaseModel
     public function withEmailCampaignID(string $emailCampaignID): self
     {
         $obj = clone $this;
-        $obj->emailCampaignId = $emailCampaignID;
+        $obj['emailCampaignId'] = $emailCampaignID;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class SmtpTokenListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }

@@ -62,14 +62,16 @@ final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<EmailStatisticInterval> $results
+     * @param list<EmailStatisticInterval|array{
+     *   aggregations: EmailStatisticsData, interval: Interval
+     * }> $results
      */
     public static function with(array $results, int $total): self
     {
         $obj = new self;
 
-        $obj->results = $results;
-        $obj->total = $total;
+        $obj['results'] = $results;
+        $obj['total'] = $total;
 
         return $obj;
     }
@@ -77,12 +79,14 @@ final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements
     /**
      * Collection of objects.
      *
-     * @param list<EmailStatisticInterval> $results
+     * @param list<EmailStatisticInterval|array{
+     *   aggregations: EmailStatisticsData, interval: Interval
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -93,7 +97,7 @@ final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }

@@ -78,7 +78,7 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectID> $inputs
+     * @param list<SimplePublicObjectID|array{id: string}> $inputs
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
      */
@@ -90,22 +90,22 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->inputs = $inputs;
-        $obj->properties = $properties;
-        $obj->propertiesWithHistory = $propertiesWithHistory;
+        $obj['inputs'] = $inputs;
+        $obj['properties'] = $properties;
+        $obj['propertiesWithHistory'] = $propertiesWithHistory;
 
-        null !== $idProperty && $obj->idProperty = $idProperty;
+        null !== $idProperty && $obj['idProperty'] = $idProperty;
 
         return $obj;
     }
 
     /**
-     * @param list<SimplePublicObjectID> $inputs
+     * @param list<SimplePublicObjectID|array{id: string}> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
         array $propertiesWithHistory
     ): self {
         $obj = clone $this;
-        $obj->propertiesWithHistory = $propertiesWithHistory;
+        $obj['propertiesWithHistory'] = $propertiesWithHistory;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class BatchReadInputSimplePublicObjectID implements BaseModel
     public function withIDProperty(string $idProperty): self
     {
         $obj = clone $this;
-        $obj->idProperty = $idProperty;
+        $obj['idProperty'] = $idProperty;
 
         return $obj;
     }

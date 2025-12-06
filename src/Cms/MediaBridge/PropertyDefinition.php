@@ -4,10 +4,16 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
+use HubspotSDK\AssociationSpec;
+use HubspotSDK\Cms\MediaBridge\DefaultRequirements\Operator;
+use HubspotSDK\Cms\MediaBridge\PropertyDefinitionSource\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Option;
 use HubspotSDK\Property;
+use HubspotSDK\Property\DataSensitivity;
+use HubspotSDK\PropertyModificationMetadata;
 
 /**
  * @phpstan-type PropertyDefinitionShape = array{
@@ -102,41 +108,103 @@ final class PropertyDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param Property|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * } $property
      * @param array<string,mixed> $calculationExpression
+     * @param PropertyDefinitionSource|array{
+     *   type: value-of<Type>, name?: string|null
+     * } $definitionSource
+     * @param ExtensionData|array{
+     *   extensionStatusMap: array<string,string>,
+     *   tags: list<string>,
+     *   caseChangeTestExtensionData?: CaseChangeTestExtensionData|null,
+     *   optionDecoratorsExtensionData?: OptionDecoratorsExtensionData|null,
+     *   requiredPropertiesExtensionData?: RequiredPropertiesExtensionData|null,
+     *   softRequiredPropertiesExtensionData?: SoftRequiredPropertiesExtensionData|null,
+     * } $extensionData
+     * @param ExternalOptionsMetaData|array{
+     *   filter?: FilteringMetaData|null, relatedObjectTypeId?: string|null
+     * } $externalOptionsMetaData
+     * @param FieldLevelPermission|array{accessLevel: string} $permission
+     * @param DefinitionSource|array{
+     *   type: string, name?: string|null
+     * } $propertyDefinitionSource
+     * @param DefaultRequirements|array{
+     *   gates: list<string>,
+     *   operator: value-of<Operator>,
+     *   scopeNames: list<string>,
+     *   settings: list<string>,
+     * } $propertyRequirements
+     * @param RollupExpression|array{
+     *   associationTypes: list<AssociationSpec>,
+     *   rollupOperator: string,
+     *   sourceObjectTypeId: string,
+     *   sourcePropertyName: string,
+     *   conditionalExpression?: array<string,mixed>|null,
+     *   conditionalFormula?: string|null,
+     *   emptyRollupValue?: string|null,
+     *   sourceCompareByPropertyName?: string|null,
+     * } $rollupExpression
      */
     public static function with(
         string $objectTypeId,
-        Property $property,
+        Property|array $property,
         ?array $calculationExpression = null,
         ?string $calculationFormula = null,
-        ?PropertyDefinitionSource $definitionSource = null,
-        ?ExtensionData $extensionData = null,
-        ?ExternalOptionsMetaData $externalOptionsMetaData = null,
+        PropertyDefinitionSource|array|null $definitionSource = null,
+        ExtensionData|array|null $extensionData = null,
+        ExternalOptionsMetaData|array|null $externalOptionsMetaData = null,
         ?int $fulcrumPortalId = null,
         ?int $fulcrumTimestamp = null,
         ?string $janusGroup = null,
-        ?FieldLevelPermission $permission = null,
-        ?DefinitionSource $propertyDefinitionSource = null,
-        ?DefaultRequirements $propertyRequirements = null,
-        ?RollupExpression $rollupExpression = null,
+        FieldLevelPermission|array|null $permission = null,
+        DefinitionSource|array|null $propertyDefinitionSource = null,
+        DefaultRequirements|array|null $propertyRequirements = null,
+        RollupExpression|array|null $rollupExpression = null,
     ): self {
         $obj = new self;
 
-        $obj->objectTypeId = $objectTypeId;
-        $obj->property = $property;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['property'] = $property;
 
-        null !== $calculationExpression && $obj->calculationExpression = $calculationExpression;
-        null !== $calculationFormula && $obj->calculationFormula = $calculationFormula;
-        null !== $definitionSource && $obj->definitionSource = $definitionSource;
-        null !== $extensionData && $obj->extensionData = $extensionData;
-        null !== $externalOptionsMetaData && $obj->externalOptionsMetaData = $externalOptionsMetaData;
-        null !== $fulcrumPortalId && $obj->fulcrumPortalId = $fulcrumPortalId;
-        null !== $fulcrumTimestamp && $obj->fulcrumTimestamp = $fulcrumTimestamp;
-        null !== $janusGroup && $obj->janusGroup = $janusGroup;
-        null !== $permission && $obj->permission = $permission;
-        null !== $propertyDefinitionSource && $obj->propertyDefinitionSource = $propertyDefinitionSource;
-        null !== $propertyRequirements && $obj->propertyRequirements = $propertyRequirements;
-        null !== $rollupExpression && $obj->rollupExpression = $rollupExpression;
+        null !== $calculationExpression && $obj['calculationExpression'] = $calculationExpression;
+        null !== $calculationFormula && $obj['calculationFormula'] = $calculationFormula;
+        null !== $definitionSource && $obj['definitionSource'] = $definitionSource;
+        null !== $extensionData && $obj['extensionData'] = $extensionData;
+        null !== $externalOptionsMetaData && $obj['externalOptionsMetaData'] = $externalOptionsMetaData;
+        null !== $fulcrumPortalId && $obj['fulcrumPortalId'] = $fulcrumPortalId;
+        null !== $fulcrumTimestamp && $obj['fulcrumTimestamp'] = $fulcrumTimestamp;
+        null !== $janusGroup && $obj['janusGroup'] = $janusGroup;
+        null !== $permission && $obj['permission'] = $permission;
+        null !== $propertyDefinitionSource && $obj['propertyDefinitionSource'] = $propertyDefinitionSource;
+        null !== $propertyRequirements && $obj['propertyRequirements'] = $propertyRequirements;
+        null !== $rollupExpression && $obj['rollupExpression'] = $rollupExpression;
 
         return $obj;
     }
@@ -144,18 +212,47 @@ final class PropertyDefinition implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
 
     /**
      * Defines a property.
+     *
+     * @param Property|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * } $property
      */
-    public function withProperty(Property $property): self
+    public function withProperty(Property|array $property): self
     {
         $obj = clone $this;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
         return $obj;
     }
@@ -167,7 +264,7 @@ final class PropertyDefinition implements BaseModel
         array $calculationExpression
     ): self {
         $obj = clone $this;
-        $obj->calculationExpression = $calculationExpression;
+        $obj['calculationExpression'] = $calculationExpression;
 
         return $obj;
     }
@@ -175,33 +272,53 @@ final class PropertyDefinition implements BaseModel
     public function withCalculationFormula(string $calculationFormula): self
     {
         $obj = clone $this;
-        $obj->calculationFormula = $calculationFormula;
+        $obj['calculationFormula'] = $calculationFormula;
 
         return $obj;
     }
 
+    /**
+     * @param PropertyDefinitionSource|array{
+     *   type: value-of<Type>, name?: string|null
+     * } $definitionSource
+     */
     public function withDefinitionSource(
-        PropertyDefinitionSource $definitionSource
+        PropertyDefinitionSource|array $definitionSource
     ): self {
         $obj = clone $this;
-        $obj->definitionSource = $definitionSource;
+        $obj['definitionSource'] = $definitionSource;
 
         return $obj;
     }
 
-    public function withExtensionData(ExtensionData $extensionData): self
+    /**
+     * @param ExtensionData|array{
+     *   extensionStatusMap: array<string,string>,
+     *   tags: list<string>,
+     *   caseChangeTestExtensionData?: CaseChangeTestExtensionData|null,
+     *   optionDecoratorsExtensionData?: OptionDecoratorsExtensionData|null,
+     *   requiredPropertiesExtensionData?: RequiredPropertiesExtensionData|null,
+     *   softRequiredPropertiesExtensionData?: SoftRequiredPropertiesExtensionData|null,
+     * } $extensionData
+     */
+    public function withExtensionData(ExtensionData|array $extensionData): self
     {
         $obj = clone $this;
-        $obj->extensionData = $extensionData;
+        $obj['extensionData'] = $extensionData;
 
         return $obj;
     }
 
+    /**
+     * @param ExternalOptionsMetaData|array{
+     *   filter?: FilteringMetaData|null, relatedObjectTypeId?: string|null
+     * } $externalOptionsMetaData
+     */
     public function withExternalOptionsMetaData(
-        ExternalOptionsMetaData $externalOptionsMetaData
+        ExternalOptionsMetaData|array $externalOptionsMetaData
     ): self {
         $obj = clone $this;
-        $obj->externalOptionsMetaData = $externalOptionsMetaData;
+        $obj['externalOptionsMetaData'] = $externalOptionsMetaData;
 
         return $obj;
     }
@@ -209,7 +326,7 @@ final class PropertyDefinition implements BaseModel
     public function withFulcrumPortalID(int $fulcrumPortalID): self
     {
         $obj = clone $this;
-        $obj->fulcrumPortalId = $fulcrumPortalID;
+        $obj['fulcrumPortalId'] = $fulcrumPortalID;
 
         return $obj;
     }
@@ -217,7 +334,7 @@ final class PropertyDefinition implements BaseModel
     public function withFulcrumTimestamp(int $fulcrumTimestamp): self
     {
         $obj = clone $this;
-        $obj->fulcrumTimestamp = $fulcrumTimestamp;
+        $obj['fulcrumTimestamp'] = $fulcrumTimestamp;
 
         return $obj;
     }
@@ -225,42 +342,70 @@ final class PropertyDefinition implements BaseModel
     public function withJanusGroup(string $janusGroup): self
     {
         $obj = clone $this;
-        $obj->janusGroup = $janusGroup;
+        $obj['janusGroup'] = $janusGroup;
 
         return $obj;
     }
 
-    public function withPermission(FieldLevelPermission $permission): self
+    /**
+     * @param FieldLevelPermission|array{accessLevel: string} $permission
+     */
+    public function withPermission(FieldLevelPermission|array $permission): self
     {
         $obj = clone $this;
-        $obj->permission = $permission;
+        $obj['permission'] = $permission;
 
         return $obj;
     }
 
+    /**
+     * @param DefinitionSource|array{
+     *   type: string, name?: string|null
+     * } $propertyDefinitionSource
+     */
     public function withPropertyDefinitionSource(
-        DefinitionSource $propertyDefinitionSource
+        DefinitionSource|array $propertyDefinitionSource
     ): self {
         $obj = clone $this;
-        $obj->propertyDefinitionSource = $propertyDefinitionSource;
+        $obj['propertyDefinitionSource'] = $propertyDefinitionSource;
 
         return $obj;
     }
 
+    /**
+     * @param DefaultRequirements|array{
+     *   gates: list<string>,
+     *   operator: value-of<Operator>,
+     *   scopeNames: list<string>,
+     *   settings: list<string>,
+     * } $propertyRequirements
+     */
     public function withPropertyRequirements(
-        DefaultRequirements $propertyRequirements
+        DefaultRequirements|array $propertyRequirements
     ): self {
         $obj = clone $this;
-        $obj->propertyRequirements = $propertyRequirements;
+        $obj['propertyRequirements'] = $propertyRequirements;
 
         return $obj;
     }
 
+    /**
+     * @param RollupExpression|array{
+     *   associationTypes: list<AssociationSpec>,
+     *   rollupOperator: string,
+     *   sourceObjectTypeId: string,
+     *   sourcePropertyName: string,
+     *   conditionalExpression?: array<string,mixed>|null,
+     *   conditionalFormula?: string|null,
+     *   emptyRollupValue?: string|null,
+     *   sourceCompareByPropertyName?: string|null,
+     * } $rollupExpression
+     */
     public function withRollupExpression(
-        RollupExpression $rollupExpression
+        RollupExpression|array $rollupExpression
     ): self {
         $obj = clone $this;
-        $obj->rollupExpression = $rollupExpression;
+        $obj['rollupExpression'] = $rollupExpression;
 
         return $obj;
     }

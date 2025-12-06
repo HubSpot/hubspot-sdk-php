@@ -92,12 +92,12 @@ final class ActivityListAuditLogsParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $actingUserId && $obj->actingUserId = $actingUserId;
-        null !== $after && $obj->after = $after;
-        null !== $limit && $obj->limit = $limit;
-        null !== $occurredAfter && $obj->occurredAfter = $occurredAfter;
-        null !== $occurredBefore && $obj->occurredBefore = $occurredBefore;
-        null !== $sort && $obj->sort = $sort;
+        null !== $actingUserId && $obj['actingUserId'] = $actingUserId;
+        null !== $after && $obj['after'] = $after;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $occurredAfter && $obj['occurredAfter'] = $occurredAfter;
+        null !== $occurredBefore && $obj['occurredBefore'] = $occurredBefore;
+        null !== $sort && $obj['sort'] = $sort;
 
         return $obj;
     }
@@ -110,7 +110,7 @@ final class ActivityListAuditLogsParams implements BaseModel
     public function withActingUserID(array $actingUserID): self
     {
         $obj = clone $this;
-        $obj->actingUserId = $actingUserID;
+        $obj['actingUserId'] = $actingUserID;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class ActivityListAuditLogsParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class ActivityListAuditLogsParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class ActivityListAuditLogsParams implements BaseModel
     public function withOccurredAfter(\DateTimeInterface $occurredAfter): self
     {
         $obj = clone $this;
-        $obj->occurredAfter = $occurredAfter;
+        $obj['occurredAfter'] = $occurredAfter;
 
         return $obj;
     }
@@ -154,7 +154,7 @@ final class ActivityListAuditLogsParams implements BaseModel
     public function withOccurredBefore(\DateTimeInterface $occurredBefore): self
     {
         $obj = clone $this;
-        $obj->occurredBefore = $occurredBefore;
+        $obj['occurredBefore'] = $occurredBefore;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class ActivityListAuditLogsParams implements BaseModel
     public function withSort(array $sort): self
     {
         $obj = clone $this;
-        $obj->sort = $sort;
+        $obj['sort'] = $sort;
 
         return $obj;
     }

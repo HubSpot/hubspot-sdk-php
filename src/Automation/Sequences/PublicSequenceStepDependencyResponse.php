@@ -102,14 +102,14 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->dependencyType = $dependencyType;
-        $obj->reliesOnSequenceStepId = $reliesOnSequenceStepId;
-        $obj->reliesOnStepOrder = $reliesOnStepOrder;
-        $obj->requiredBySequenceStepId = $requiredBySequenceStepId;
-        $obj->requiredByStepOrder = $requiredByStepOrder;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['dependencyType'] = $dependencyType;
+        $obj['reliesOnSequenceStepId'] = $reliesOnSequenceStepId;
+        $obj['reliesOnStepOrder'] = $reliesOnStepOrder;
+        $obj['requiredBySequenceStepId'] = $requiredBySequenceStepId;
+        $obj['requiredByStepOrder'] = $requiredByStepOrder;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
     public function withDependencyType(string $dependencyType): self
     {
         $obj = clone $this;
-        $obj->dependencyType = $dependencyType;
+        $obj['dependencyType'] = $dependencyType;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
         string $reliesOnSequenceStepID
     ): self {
         $obj = clone $this;
-        $obj->reliesOnSequenceStepId = $reliesOnSequenceStepID;
+        $obj['reliesOnSequenceStepId'] = $reliesOnSequenceStepID;
 
         return $obj;
     }
@@ -150,7 +150,7 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
     public function withReliesOnStepOrder(int $reliesOnStepOrder): self
     {
         $obj = clone $this;
-        $obj->reliesOnStepOrder = $reliesOnStepOrder;
+        $obj['reliesOnStepOrder'] = $reliesOnStepOrder;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
         string $requiredBySequenceStepID
     ): self {
         $obj = clone $this;
-        $obj->requiredBySequenceStepId = $requiredBySequenceStepID;
+        $obj['requiredBySequenceStepId'] = $requiredBySequenceStepID;
 
         return $obj;
     }
@@ -167,7 +167,7 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
     public function withRequiredByStepOrder(int $requiredByStepOrder): self
     {
         $obj = clone $this;
-        $obj->requiredByStepOrder = $requiredByStepOrder;
+        $obj['requiredByStepOrder'] = $requiredByStepOrder;
 
         return $obj;
     }
@@ -175,7 +175,7 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

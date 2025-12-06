@@ -58,7 +58,7 @@ final class EventSearchByExternalEventIDParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->q = $q;
+        $obj['q'] = $q;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class EventSearchByExternalEventIDParams implements BaseModel
     public function withQ(string $q): self
     {
         $obj = clone $this;
-        $obj->q = $q;
+        $obj['q'] = $q;
 
         return $obj;
     }

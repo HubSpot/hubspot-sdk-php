@@ -74,9 +74,9 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->externalAccountId = $externalAccountId;
-        $obj->endDateTime = $endDateTime;
-        $obj->startDateTime = $startDateTime;
+        $obj['externalAccountId'] = $externalAccountId;
+        $obj['endDateTime'] = $endDateTime;
+        $obj['startDateTime'] = $startDateTime;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountId = $externalAccountID;
+        $obj['externalAccountId'] = $externalAccountID;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
     public function withEndDateTime(\DateTimeInterface $endDateTime): self
     {
         $obj = clone $this;
-        $obj->endDateTime = $endDateTime;
+        $obj['endDateTime'] = $endDateTime;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
     public function withStartDateTime(\DateTimeInterface $startDateTime): self
     {
         $obj = clone $this;
-        $obj->startDateTime = $startDateTime;
+        $obj['startDateTime'] = $startDateTime;
 
         return $obj;
     }

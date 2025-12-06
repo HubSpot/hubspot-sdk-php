@@ -56,9 +56,9 @@ final class GroupGetParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
-        null !== $locale && $obj->locale = $locale;
+        null !== $locale && $obj['locale'] = $locale;
 
         return $obj;
     }
@@ -66,7 +66,7 @@ final class GroupGetParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -74,7 +74,7 @@ final class GroupGetParams implements BaseModel
     public function withLocale(string $locale): self
     {
         $obj = clone $this;
-        $obj->locale = $locale;
+        $obj['locale'] = $locale;
 
         return $obj;
     }

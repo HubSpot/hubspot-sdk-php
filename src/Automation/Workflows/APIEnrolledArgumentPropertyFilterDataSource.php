@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIEnrolledArgumentPropertyFilterDataSource\Type;
+use HubspotSDK\Automation\Workflows\APISort\Order;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -70,22 +71,25 @@ final class APIEnrolledArgumentPropertyFilterDataSource implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
+     * @param APISort|array{
+     *   order: value-of<Order>, property: string, missing?: string|null
+     * } $sortBy
      */
     public static function with(
         string $argumentName,
         string $name,
         string $propertyName,
         Type|string $type = 'ENROLLED_ARGUMENT_PROPERTY_FILTER',
-        ?APISort $sortBy = null,
+        APISort|array|null $sortBy = null,
     ): self {
         $obj = new self;
 
-        $obj->argumentName = $argumentName;
-        $obj->name = $name;
-        $obj->propertyName = $propertyName;
+        $obj['argumentName'] = $argumentName;
+        $obj['name'] = $name;
+        $obj['propertyName'] = $propertyName;
         $obj['type'] = $type;
 
-        null !== $sortBy && $obj->sortBy = $sortBy;
+        null !== $sortBy && $obj['sortBy'] = $sortBy;
 
         return $obj;
     }
@@ -93,7 +97,7 @@ final class APIEnrolledArgumentPropertyFilterDataSource implements BaseModel
     public function withArgumentName(string $argumentName): self
     {
         $obj = clone $this;
-        $obj->argumentName = $argumentName;
+        $obj['argumentName'] = $argumentName;
 
         return $obj;
     }
@@ -101,7 +105,7 @@ final class APIEnrolledArgumentPropertyFilterDataSource implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -109,7 +113,7 @@ final class APIEnrolledArgumentPropertyFilterDataSource implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -125,10 +129,15 @@ final class APIEnrolledArgumentPropertyFilterDataSource implements BaseModel
         return $obj;
     }
 
-    public function withSortBy(APISort $sortBy): self
+    /**
+     * @param APISort|array{
+     *   order: value-of<Order>, property: string, missing?: string|null
+     * } $sortBy
+     */
+    public function withSortBy(APISort|array $sortBy): self
     {
         $obj = clone $this;
-        $obj->sortBy = $sortBy;
+        $obj['sortBy'] = $sortBy;
 
         return $obj;
     }

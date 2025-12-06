@@ -76,12 +76,12 @@ final class PublicEmailPatternResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->templateId = $templateId;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['templateId'] = $templateId;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $threadEmailToStepOrder && $obj->threadEmailToStepOrder = $threadEmailToStepOrder;
+        null !== $threadEmailToStepOrder && $obj['threadEmailToStepOrder'] = $threadEmailToStepOrder;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class PublicEmailPatternResponse implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -97,7 +97,7 @@ final class PublicEmailPatternResponse implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class PublicEmailPatternResponse implements BaseModel
     public function withTemplateID(string $templateID): self
     {
         $obj = clone $this;
-        $obj->templateId = $templateID;
+        $obj['templateId'] = $templateID;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class PublicEmailPatternResponse implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class PublicEmailPatternResponse implements BaseModel
         int $threadEmailToStepOrder
     ): self {
         $obj = clone $this;
-        $obj->threadEmailToStepOrder = $threadEmailToStepOrder;
+        $obj['threadEmailToStepOrder'] = $threadEmailToStepOrder;
 
         return $obj;
     }

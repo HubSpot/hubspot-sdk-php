@@ -72,19 +72,30 @@ final class VersionContentFolder implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param ContentFolder|array{
+     *   id: string,
+     *   category: int,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   name: string,
+     *   parentFolderId: int,
+     *   updated: \DateTimeInterface,
+     * } $object
+     * @param VersionUser|array{id: string, email: string, fullName: string} $user
      */
     public static function with(
         string $id,
-        ContentFolder $object,
+        ContentFolder|array $object,
         \DateTimeInterface $updatedAt,
-        VersionUser $user,
+        VersionUser|array $user,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->object = $object;
-        $obj->updatedAt = $updatedAt;
-        $obj->user = $user;
+        $obj['id'] = $id;
+        $obj['object'] = $object;
+        $obj['updatedAt'] = $updatedAt;
+        $obj['user'] = $user;
 
         return $obj;
     }
@@ -95,18 +106,28 @@ final class VersionContentFolder implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
     /**
      * Model definition for a content folder.
+     *
+     * @param ContentFolder|array{
+     *   id: string,
+     *   category: int,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   name: string,
+     *   parentFolderId: int,
+     *   updated: \DateTimeInterface,
+     * } $object
      */
-    public function withObject(ContentFolder $object): self
+    public function withObject(ContentFolder|array $object): self
     {
         $obj = clone $this;
-        $obj->object = $object;
+        $obj['object'] = $object;
 
         return $obj;
     }
@@ -114,18 +135,20 @@ final class VersionContentFolder implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
 
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
+     *
+     * @param VersionUser|array{id: string, email: string, fullName: string} $user
      */
-    public function withUser(VersionUser $user): self
+    public function withUser(VersionUser|array $user): self
     {
         $obj = clone $this;
-        $obj->user = $user;
+        $obj['user'] = $user;
 
         return $obj;
     }

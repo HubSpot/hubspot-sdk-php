@@ -98,13 +98,13 @@ final class AssociationDefinition implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->fromObjectTypeId = $fromObjectTypeId;
-        $obj->toObjectTypeId = $toObjectTypeId;
+        $obj['id'] = $id;
+        $obj['fromObjectTypeId'] = $fromObjectTypeId;
+        $obj['toObjectTypeId'] = $toObjectTypeId;
 
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $name && $obj->name = $name;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $name && $obj['name'] = $name;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class AssociationDefinition implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class AssociationDefinition implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->fromObjectTypeId = $fromObjectTypeID;
+        $obj['fromObjectTypeId'] = $fromObjectTypeID;
 
         return $obj;
     }
@@ -137,7 +137,7 @@ final class AssociationDefinition implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj->toObjectTypeId = $toObjectTypeID;
+        $obj['toObjectTypeId'] = $toObjectTypeID;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class AssociationDefinition implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class AssociationDefinition implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -170,7 +170,7 @@ final class AssociationDefinition implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

@@ -50,37 +50,55 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalUserBusyTimes> $allUsersBusyTimes
+     * @param list<ExternalUserBusyTimes|array{
+     *   busyTimes: list<ExternalTimeRange>,
+     *   isOffline: bool,
+     *   meetingsUser: ExternalMeetingsUser,
+     * }> $allUsersBusyTimes
+     * @param ExternalLinkAvailability|array{
+     *   hasMore: bool,
+     *   linkAvailabilityByDuration: array<string,ExternalLinkAvailabilityForDuration>,
+     * } $linkAvailability
      */
     public static function with(
         array $allUsersBusyTimes,
-        ?ExternalLinkAvailability $linkAvailability = null
+        ExternalLinkAvailability|array|null $linkAvailability = null,
     ): self {
         $obj = new self;
 
-        $obj->allUsersBusyTimes = $allUsersBusyTimes;
+        $obj['allUsersBusyTimes'] = $allUsersBusyTimes;
 
-        null !== $linkAvailability && $obj->linkAvailability = $linkAvailability;
+        null !== $linkAvailability && $obj['linkAvailability'] = $linkAvailability;
 
         return $obj;
     }
 
     /**
-     * @param list<ExternalUserBusyTimes> $allUsersBusyTimes
+     * @param list<ExternalUserBusyTimes|array{
+     *   busyTimes: list<ExternalTimeRange>,
+     *   isOffline: bool,
+     *   meetingsUser: ExternalMeetingsUser,
+     * }> $allUsersBusyTimes
      */
     public function withAllUsersBusyTimes(array $allUsersBusyTimes): self
     {
         $obj = clone $this;
-        $obj->allUsersBusyTimes = $allUsersBusyTimes;
+        $obj['allUsersBusyTimes'] = $allUsersBusyTimes;
 
         return $obj;
     }
 
+    /**
+     * @param ExternalLinkAvailability|array{
+     *   hasMore: bool,
+     *   linkAvailabilityByDuration: array<string,ExternalLinkAvailabilityForDuration>,
+     * } $linkAvailability
+     */
     public function withLinkAvailability(
-        ExternalLinkAvailability $linkAvailability
+        ExternalLinkAvailability|array $linkAvailability
     ): self {
         $obj = clone $this;
-        $obj->linkAvailability = $linkAvailability;
+        $obj['linkAvailability'] = $linkAvailability;
 
         return $obj;
     }

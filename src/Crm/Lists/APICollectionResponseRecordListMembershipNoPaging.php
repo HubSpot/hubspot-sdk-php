@@ -49,26 +49,38 @@ final class APICollectionResponseRecordListMembershipNoPaging implements BaseMod
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<RecordListMembership> $results
+     * @param list<RecordListMembership|array{
+     *   listId: string,
+     *   listVersion: int,
+     *   firstAddedTimestamp?: \DateTimeInterface|null,
+     *   isPublicList?: bool|null,
+     *   lastAddedTimestamp?: \DateTimeInterface|null,
+     * }> $results
      */
     public static function with(array $results, ?int $total = null): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $total && $obj->total = $total;
+        null !== $total && $obj['total'] = $total;
 
         return $obj;
     }
 
     /**
-     * @param list<RecordListMembership> $results
+     * @param list<RecordListMembership|array{
+     *   listId: string,
+     *   listVersion: int,
+     *   firstAddedTimestamp?: \DateTimeInterface|null,
+     *   isPublicList?: bool|null,
+     *   lastAddedTimestamp?: \DateTimeInterface|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -76,7 +88,7 @@ final class APICollectionResponseRecordListMembershipNoPaging implements BaseMod
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }

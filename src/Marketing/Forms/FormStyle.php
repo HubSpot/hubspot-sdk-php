@@ -136,18 +136,18 @@ final class FormStyle implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->backgroundWidth = $backgroundWidth;
-        $obj->fontFamily = $fontFamily;
-        $obj->helpTextColor = $helpTextColor;
-        $obj->helpTextSize = $helpTextSize;
-        $obj->labelTextColor = $labelTextColor;
-        $obj->labelTextSize = $labelTextSize;
-        $obj->legalConsentTextColor = $legalConsentTextColor;
-        $obj->legalConsentTextSize = $legalConsentTextSize;
+        $obj['backgroundWidth'] = $backgroundWidth;
+        $obj['fontFamily'] = $fontFamily;
+        $obj['helpTextColor'] = $helpTextColor;
+        $obj['helpTextSize'] = $helpTextSize;
+        $obj['labelTextColor'] = $labelTextColor;
+        $obj['labelTextSize'] = $labelTextSize;
+        $obj['legalConsentTextColor'] = $legalConsentTextColor;
+        $obj['legalConsentTextSize'] = $legalConsentTextSize;
         $obj['submitAlignment'] = $submitAlignment;
-        $obj->submitColor = $submitColor;
-        $obj->submitFontColor = $submitFontColor;
-        $obj->submitSize = $submitSize;
+        $obj['submitColor'] = $submitColor;
+        $obj['submitFontColor'] = $submitFontColor;
+        $obj['submitSize'] = $submitSize;
 
         return $obj;
     }
@@ -155,7 +155,7 @@ final class FormStyle implements BaseModel
     public function withBackgroundWidth(string $backgroundWidth): self
     {
         $obj = clone $this;
-        $obj->backgroundWidth = $backgroundWidth;
+        $obj['backgroundWidth'] = $backgroundWidth;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class FormStyle implements BaseModel
     public function withFontFamily(string $fontFamily): self
     {
         $obj = clone $this;
-        $obj->fontFamily = $fontFamily;
+        $obj['fontFamily'] = $fontFamily;
 
         return $obj;
     }
@@ -171,7 +171,7 @@ final class FormStyle implements BaseModel
     public function withHelpTextColor(string $helpTextColor): self
     {
         $obj = clone $this;
-        $obj->helpTextColor = $helpTextColor;
+        $obj['helpTextColor'] = $helpTextColor;
 
         return $obj;
     }
@@ -179,7 +179,7 @@ final class FormStyle implements BaseModel
     public function withHelpTextSize(string $helpTextSize): self
     {
         $obj = clone $this;
-        $obj->helpTextSize = $helpTextSize;
+        $obj['helpTextSize'] = $helpTextSize;
 
         return $obj;
     }
@@ -187,7 +187,7 @@ final class FormStyle implements BaseModel
     public function withLabelTextColor(string $labelTextColor): self
     {
         $obj = clone $this;
-        $obj->labelTextColor = $labelTextColor;
+        $obj['labelTextColor'] = $labelTextColor;
 
         return $obj;
     }
@@ -195,7 +195,7 @@ final class FormStyle implements BaseModel
     public function withLabelTextSize(string $labelTextSize): self
     {
         $obj = clone $this;
-        $obj->labelTextSize = $labelTextSize;
+        $obj['labelTextSize'] = $labelTextSize;
 
         return $obj;
     }
@@ -204,7 +204,7 @@ final class FormStyle implements BaseModel
         string $legalConsentTextColor
     ): self {
         $obj = clone $this;
-        $obj->legalConsentTextColor = $legalConsentTextColor;
+        $obj['legalConsentTextColor'] = $legalConsentTextColor;
 
         return $obj;
     }
@@ -212,7 +212,7 @@ final class FormStyle implements BaseModel
     public function withLegalConsentTextSize(string $legalConsentTextSize): self
     {
         $obj = clone $this;
-        $obj->legalConsentTextSize = $legalConsentTextSize;
+        $obj['legalConsentTextSize'] = $legalConsentTextSize;
 
         return $obj;
     }
@@ -232,7 +232,7 @@ final class FormStyle implements BaseModel
     public function withSubmitColor(string $submitColor): self
     {
         $obj = clone $this;
-        $obj->submitColor = $submitColor;
+        $obj['submitColor'] = $submitColor;
 
         return $obj;
     }
@@ -240,7 +240,7 @@ final class FormStyle implements BaseModel
     public function withSubmitFontColor(string $submitFontColor): self
     {
         $obj = clone $this;
-        $obj->submitFontColor = $submitFontColor;
+        $obj['submitFontColor'] = $submitFontColor;
 
         return $obj;
     }
@@ -248,7 +248,7 @@ final class FormStyle implements BaseModel
     public function withSubmitSize(string $submitSize): self
     {
         $obj = clone $this;
-        $obj->submitSize = $submitSize;
+        $obj['submitSize'] = $submitSize;
 
         return $obj;
     }

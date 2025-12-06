@@ -60,8 +60,8 @@ final class AbTestRerunRequestVNext implements BaseModel
     {
         $obj = new self;
 
-        $obj->abTestId = $abTestId;
-        $obj->variationId = $variationId;
+        $obj['abTestId'] = $abTestId;
+        $obj['variationId'] = $variationId;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class AbTestRerunRequestVNext implements BaseModel
     public function withAbTestID(string $abTestID): self
     {
         $obj = clone $this;
-        $obj->abTestId = $abTestID;
+        $obj['abTestId'] = $abTestID;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class AbTestRerunRequestVNext implements BaseModel
     public function withVariationID(string $variationID): self
     {
         $obj = clone $this;
-        $obj->variationId = $variationID;
+        $obj['variationId'] = $variationID;
 
         return $obj;
     }

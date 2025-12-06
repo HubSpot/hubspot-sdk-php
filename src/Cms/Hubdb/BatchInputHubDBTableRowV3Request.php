@@ -46,24 +46,36 @@ final class BatchInputHubDBTableRowV3Request implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowV3Request> $inputs
+     * @param list<HubDBTableRowV3Request|array{
+     *   childTableId: int,
+     *   displayIndex: int,
+     *   values: array<string,Variant>,
+     *   name?: string|null,
+     *   path?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<HubDBTableRowV3Request> $inputs
+     * @param list<HubDBTableRowV3Request|array{
+     *   childTableId: int,
+     *   displayIndex: int,
+     *   values: array<string,Variant>,
+     *   name?: string|null,
+     *   path?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

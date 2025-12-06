@@ -74,9 +74,9 @@ final class MoreThanOrEqual implements BaseModel
 
         $obj['operator'] = $operator;
 
-        null !== $inputs && $obj->inputs = $inputs;
-        null !== $propertyName && $obj->propertyName = $propertyName;
-        null !== $value && $obj->value = $value;
+        null !== $inputs && $obj['inputs'] = $inputs;
+        null !== $propertyName && $obj['propertyName'] = $propertyName;
+        null !== $value && $obj['value'] = $value;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class MoreThanOrEqual implements BaseModel
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class MoreThanOrEqual implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class MoreThanOrEqual implements BaseModel
     public function withValue(bool $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

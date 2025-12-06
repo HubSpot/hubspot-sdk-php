@@ -58,7 +58,7 @@ final class PropertyDefinitionSource implements BaseModel
 
         $obj['type'] = $type;
 
-        null !== $name && $obj->name = $name;
+        null !== $name && $obj['name'] = $name;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class PropertyDefinitionSource implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

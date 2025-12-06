@@ -53,7 +53,7 @@ final class AssociationAssociateParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->marketingEventId = $marketingEventId;
+        $obj['marketingEventId'] = $marketingEventId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class AssociationAssociateParams implements BaseModel
     public function withMarketingEventID(string $marketingEventID): self
     {
         $obj = clone $this;
-        $obj->marketingEventId = $marketingEventID;
+        $obj['marketingEventId'] = $marketingEventID;
 
         return $obj;
     }

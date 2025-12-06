@@ -59,10 +59,10 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $officeLocationId && $obj->officeLocationId = $officeLocationId;
-        null !== $preferencesGroupId && $obj->preferencesGroupId = $preferencesGroupId;
-        null !== $subscriptionId && $obj->subscriptionId = $subscriptionId;
-        null !== $subscriptionName && $obj->subscriptionName = $subscriptionName;
+        null !== $officeLocationId && $obj['officeLocationId'] = $officeLocationId;
+        null !== $preferencesGroupId && $obj['preferencesGroupId'] = $preferencesGroupId;
+        null !== $subscriptionId && $obj['subscriptionId'] = $subscriptionId;
+        null !== $subscriptionName && $obj['subscriptionName'] = $subscriptionName;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     public function withOfficeLocationID(string $officeLocationID): self
     {
         $obj = clone $this;
-        $obj->officeLocationId = $officeLocationID;
+        $obj['officeLocationId'] = $officeLocationID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     public function withPreferencesGroupID(string $preferencesGroupID): self
     {
         $obj = clone $this;
-        $obj->preferencesGroupId = $preferencesGroupID;
+        $obj['preferencesGroupId'] = $preferencesGroupID;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     public function withSubscriptionID(string $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionId = $subscriptionID;
+        $obj['subscriptionId'] = $subscriptionID;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     public function withSubscriptionName(string $subscriptionName): self
     {
         $obj = clone $this;
-        $obj->subscriptionName = $subscriptionName;
+        $obj['subscriptionName'] = $subscriptionName;
 
         return $obj;
     }

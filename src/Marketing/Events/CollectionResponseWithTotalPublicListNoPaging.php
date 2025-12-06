@@ -51,25 +51,53 @@ final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicList> $results
+     * @param list<PublicList|array{
+     *   listId: string,
+     *   listVersion: int,
+     *   name: string,
+     *   objectTypeId: string,
+     *   processingStatus: string,
+     *   processingType: string,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdById?: string|null,
+     *   deletedAt?: \DateTimeInterface|null,
+     *   filtersUpdatedAt?: \DateTimeInterface|null,
+     *   size?: int|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedById?: string|null,
+     * }> $results
      */
     public static function with(array $results, int $total): self
     {
         $obj = new self;
 
-        $obj->results = $results;
-        $obj->total = $total;
+        $obj['results'] = $results;
+        $obj['total'] = $total;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicList> $results
+     * @param list<PublicList|array{
+     *   listId: string,
+     *   listVersion: int,
+     *   name: string,
+     *   objectTypeId: string,
+     *   processingStatus: string,
+     *   processingType: string,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdById?: string|null,
+     *   deletedAt?: \DateTimeInterface|null,
+     *   filtersUpdatedAt?: \DateTimeInterface|null,
+     *   size?: int|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedById?: string|null,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -77,7 +105,7 @@ final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
     public function withTotal(int $total): self
     {
         $obj = clone $this;
-        $obj->total = $total;
+        $obj['total'] = $total;
 
         return $obj;
     }

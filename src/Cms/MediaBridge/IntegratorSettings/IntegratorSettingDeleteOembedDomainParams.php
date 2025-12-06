@@ -52,8 +52,8 @@ final class IntegratorSettingDeleteOembedDomainParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $id && $obj->id = $id;
-        null !== $domainPortalId && $obj->domainPortalId = $domainPortalId;
+        null !== $id && $obj['id'] = $id;
+        null !== $domainPortalId && $obj['domainPortalId'] = $domainPortalId;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class IntegratorSettingDeleteOembedDomainParams implements BaseModel
     public function withID(int $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class IntegratorSettingDeleteOembedDomainParams implements BaseModel
     public function withDomainPortalID(int $domainPortalID): self
     {
         $obj = clone $this;
-        $obj->domainPortalId = $domainPortalID;
+        $obj['domainPortalId'] = $domainPortalID;
 
         return $obj;
     }

@@ -139,14 +139,14 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->conversionRate = $conversionRate;
-        $obj->createdAt = $createdAt;
-        $obj->effectiveAt = $effectiveAt;
+        $obj['id'] = $id;
+        $obj['conversionRate'] = $conversionRate;
+        $obj['createdAt'] = $createdAt;
+        $obj['effectiveAt'] = $effectiveAt;
         $obj['fromCurrencyCode'] = $fromCurrencyCode;
         $obj['toCurrencyCode'] = $toCurrencyCode;
-        $obj->updatedAt = $updatedAt;
-        $obj->visibleInUI = $visibleInUI;
+        $obj['updatedAt'] = $updatedAt;
+        $obj['visibleInUI'] = $visibleInUI;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -168,7 +168,7 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     public function withConversionRate(float $conversionRate): self
     {
         $obj = clone $this;
-        $obj->conversionRate = $conversionRate;
+        $obj['conversionRate'] = $conversionRate;
 
         return $obj;
     }
@@ -179,7 +179,7 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -190,7 +190,7 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     public function withEffectiveAt(\DateTimeInterface $effectiveAt): self
     {
         $obj = clone $this;
-        $obj->effectiveAt = $effectiveAt;
+        $obj['effectiveAt'] = $effectiveAt;
 
         return $obj;
     }
@@ -229,7 +229,7 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -240,7 +240,7 @@ final class ExchangeRate implements BaseModel, ResponseConverter
     public function withVisibleInUi(bool $visibleInUi): self
     {
         $obj = clone $this;
-        $obj->visibleInUI = $visibleInUi;
+        $obj['visibleInUI'] = $visibleInUi;
 
         return $obj;
     }

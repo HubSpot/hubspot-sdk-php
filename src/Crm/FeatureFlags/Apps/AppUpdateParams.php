@@ -73,7 +73,7 @@ final class AppUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
+        $obj['appId'] = $appId;
         $obj['defaultState'] = $defaultState;
 
         null !== $overrideState && $obj['overrideState'] = $overrideState;
@@ -84,7 +84,7 @@ final class AppUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }

@@ -57,29 +57,36 @@ final class ExternalUserBusyTimes implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalTimeRange> $busyTimes
+     * @param list<ExternalTimeRange|array{end: int, start: int}> $busyTimes
+     * @param ExternalMeetingsUser|array{
+     *   id: string,
+     *   calendarProvider: string,
+     *   isSalesStarter: bool,
+     *   userId: string,
+     *   userProfile: ExternalUserProfile,
+     * } $meetingsUser
      */
     public static function with(
         array $busyTimes,
         bool $isOffline,
-        ExternalMeetingsUser $meetingsUser
+        ExternalMeetingsUser|array $meetingsUser
     ): self {
         $obj = new self;
 
-        $obj->busyTimes = $busyTimes;
-        $obj->isOffline = $isOffline;
-        $obj->meetingsUser = $meetingsUser;
+        $obj['busyTimes'] = $busyTimes;
+        $obj['isOffline'] = $isOffline;
+        $obj['meetingsUser'] = $meetingsUser;
 
         return $obj;
     }
 
     /**
-     * @param list<ExternalTimeRange> $busyTimes
+     * @param list<ExternalTimeRange|array{end: int, start: int}> $busyTimes
      */
     public function withBusyTimes(array $busyTimes): self
     {
         $obj = clone $this;
-        $obj->busyTimes = $busyTimes;
+        $obj['busyTimes'] = $busyTimes;
 
         return $obj;
     }
@@ -87,15 +94,25 @@ final class ExternalUserBusyTimes implements BaseModel
     public function withIsOffline(bool $isOffline): self
     {
         $obj = clone $this;
-        $obj->isOffline = $isOffline;
+        $obj['isOffline'] = $isOffline;
 
         return $obj;
     }
 
-    public function withMeetingsUser(ExternalMeetingsUser $meetingsUser): self
-    {
+    /**
+     * @param ExternalMeetingsUser|array{
+     *   id: string,
+     *   calendarProvider: string,
+     *   isSalesStarter: bool,
+     *   userId: string,
+     *   userProfile: ExternalUserProfile,
+     * } $meetingsUser
+     */
+    public function withMeetingsUser(
+        ExternalMeetingsUser|array $meetingsUser
+    ): self {
         $obj = clone $this;
-        $obj->meetingsUser = $meetingsUser;
+        $obj['meetingsUser'] = $meetingsUser;
 
         return $obj;
     }

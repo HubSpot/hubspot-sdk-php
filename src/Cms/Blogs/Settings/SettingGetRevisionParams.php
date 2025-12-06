@@ -51,7 +51,7 @@ final class SettingGetRevisionParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->blogId = $blogId;
+        $obj['blogId'] = $blogId;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class SettingGetRevisionParams implements BaseModel
     public function withBlogID(string $blogID): self
     {
         $obj = clone $this;
-        $obj->blogId = $blogID;
+        $obj['blogId'] = $blogID;
 
         return $obj;
     }

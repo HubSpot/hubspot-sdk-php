@@ -19,7 +19,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   authorized: bool,
  *   inboxId: string,
  *   name: string,
- *   deliveryIdentifier?: PublicDeliveryIdentifier,
+ *   deliveryIdentifier?: PublicDeliveryIdentifier|array{
+ *     type: string, value: string
+ *   },
  * }
  */
 final class ChannelAccountCreateParams implements BaseModel
@@ -66,20 +68,24 @@ final class ChannelAccountCreateParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
      */
     public static function with(
         bool $authorized,
         string $inboxId,
         string $name,
-        ?PublicDeliveryIdentifier $deliveryIdentifier = null,
+        PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
     ): self {
         $obj = new self;
 
-        $obj->authorized = $authorized;
-        $obj->inboxId = $inboxId;
-        $obj->name = $name;
+        $obj['authorized'] = $authorized;
+        $obj['inboxId'] = $inboxId;
+        $obj['name'] = $name;
 
-        null !== $deliveryIdentifier && $obj->deliveryIdentifier = $deliveryIdentifier;
+        null !== $deliveryIdentifier && $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }
@@ -87,7 +93,7 @@ final class ChannelAccountCreateParams implements BaseModel
     public function withAuthorized(bool $authorized): self
     {
         $obj = clone $this;
-        $obj->authorized = $authorized;
+        $obj['authorized'] = $authorized;
 
         return $obj;
     }
@@ -95,7 +101,7 @@ final class ChannelAccountCreateParams implements BaseModel
     public function withInboxID(string $inboxID): self
     {
         $obj = clone $this;
-        $obj->inboxId = $inboxID;
+        $obj['inboxId'] = $inboxID;
 
         return $obj;
     }
@@ -103,16 +109,21 @@ final class ChannelAccountCreateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
 
+    /**
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
+     */
     public function withDeliveryIdentifier(
-        PublicDeliveryIdentifier $deliveryIdentifier
+        PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
         $obj = clone $this;
-        $obj->deliveryIdentifier = $deliveryIdentifier;
+        $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }

@@ -80,10 +80,10 @@ final class NearLimitRecordSample implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->label = $label;
-        $obj->objectId = $objectId;
-        $obj->percentage = $percentage;
-        $obj->usage = $usage;
+        $obj['label'] = $label;
+        $obj['objectId'] = $objectId;
+        $obj['percentage'] = $percentage;
+        $obj['usage'] = $usage;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class NearLimitRecordSample implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class NearLimitRecordSample implements BaseModel
     public function withObjectID(int $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class NearLimitRecordSample implements BaseModel
     public function withPercentage(float $percentage): self
     {
         $obj = clone $this;
-        $obj->percentage = $percentage;
+        $obj['percentage'] = $percentage;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class NearLimitRecordSample implements BaseModel
     public function withUsage(int $usage): self
     {
         $obj = clone $this;
-        $obj->usage = $usage;
+        $obj['usage'] = $usage;
 
         return $obj;
     }

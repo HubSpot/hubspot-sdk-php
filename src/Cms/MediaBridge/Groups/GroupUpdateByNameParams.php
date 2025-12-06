@@ -68,11 +68,11 @@ final class GroupUpdateByNameParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->objectType = $objectType;
+        $obj['appId'] = $appId;
+        $obj['objectType'] = $objectType;
 
-        null !== $displayOrder && $obj->displayOrder = $displayOrder;
-        null !== $label && $obj->label = $label;
+        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
+        null !== $label && $obj['label'] = $label;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class GroupUpdateByNameParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class GroupUpdateByNameParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class GroupUpdateByNameParams implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class GroupUpdateByNameParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }

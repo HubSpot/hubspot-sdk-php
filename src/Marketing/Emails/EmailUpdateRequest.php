@@ -10,6 +10,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\EmailUpdateRequest\Language;
 use HubspotSDK\Marketing\Emails\EmailUpdateRequest\State;
 use HubspotSDK\Marketing\Emails\EmailUpdateRequest\Subcategory;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSampleSizeDefault;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSamplingDefault;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbStatus;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
 
 /**
  * Properties of a marketing email you can update via the API.
@@ -162,54 +166,114 @@ final class EmailUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param PublicEmailContent|array{
+     *   flexAreas?: array<string,mixed>|null,
+     *   plainTextVersion?: string|null,
+     *   smartFields?: array<string,mixed>|null,
+     *   styleSettings?: PublicEmailStyleSettings|null,
+     *   templatePath?: string|null,
+     *   themeSettingsValues?: array<string,mixed>|null,
+     *   widgetContainers?: array<string,mixed>|null,
+     *   widgets?: array<string,mixed>|null,
+     * } $content
+     * @param PublicEmailFromDetails|array{
+     *   customReplyTo?: string|null, fromName?: string|null, replyTo?: string|null
+     * } $from
      * @param Language|value-of<Language> $language
+     * @param PublicRssEmailDetails|array{
+     *   blogEmailType?: string|null,
+     *   blogImageMaxWidth?: int|null,
+     *   blogLayout?: string|null,
+     *   hubspotBlogId?: string|null,
+     *   maxEntries?: int|null,
+     *   rssEntryTemplate?: string|null,
+     *   timing?: array<string,mixed>|null,
+     *   url?: string|null,
+     *   useHeadlineAsSubject?: bool|null,
+     * } $rssData
      * @param State|value-of<State> $state
      * @param Subcategory|value-of<Subcategory> $subcategory
+     * @param PublicEmailSubscriptionDetails|array{
+     *   officeLocationId?: string|null,
+     *   preferencesGroupId?: string|null,
+     *   subscriptionId?: string|null,
+     *   subscriptionName?: string|null,
+     * } $subscriptionDetails
+     * @param PublicEmailTestingDetails|array{
+     *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>|null,
+     *   abSamplingDefault?: value-of<AbSamplingDefault>|null,
+     *   abStatus?: value-of<AbStatus>|null,
+     *   abSuccessMetric?: value-of<AbSuccessMetric>|null,
+     *   abTestPercentage?: int|null,
+     *   hoursToWait?: int|null,
+     *   isAbVariation?: bool|null,
+     *   testId?: string|null,
+     * } $testing
+     * @param PublicEmailToDetails|array{
+     *   contactIds?: PublicEmailRecipients|null,
+     *   contactIlsLists?: PublicEmailRecipients|null,
+     *   contactLists?: PublicEmailRecipients|null,
+     *   limitSendFrequency?: bool|null,
+     *   suppressGraymail?: bool|null,
+     * } $to
+     * @param PublicWebversionDetails|array{
+     *   domain?: string|null,
+     *   enabled?: bool|null,
+     *   expiresAt?: \DateTimeInterface|null,
+     *   isPageRedirected?: bool|null,
+     *   metaDescription?: string|null,
+     *   pageExpiryEnabled?: bool|null,
+     *   redirectToPageId?: string|null,
+     *   redirectToUrl?: string|null,
+     *   slug?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * } $webversion
      */
     public static function with(
         ?string $activeDomain = null,
         ?bool $archived = null,
         ?int $businessUnitId = null,
         ?string $campaign = null,
-        ?PublicEmailContent $content = null,
+        PublicEmailContent|array|null $content = null,
         ?int $folderIdV2 = null,
-        ?PublicEmailFromDetails $from = null,
+        PublicEmailFromDetails|array|null $from = null,
         ?bool $jitterSendTime = null,
         Language|string|null $language = null,
         ?string $name = null,
         ?\DateTimeInterface $publishDate = null,
-        ?PublicRssEmailDetails $rssData = null,
+        PublicRssEmailDetails|array|null $rssData = null,
         ?bool $sendOnPublish = null,
         State|string|null $state = null,
         Subcategory|string|null $subcategory = null,
         ?string $subject = null,
-        ?PublicEmailSubscriptionDetails $subscriptionDetails = null,
-        ?PublicEmailTestingDetails $testing = null,
-        ?PublicEmailToDetails $to = null,
-        ?PublicWebversionDetails $webversion = null,
+        PublicEmailSubscriptionDetails|array|null $subscriptionDetails = null,
+        PublicEmailTestingDetails|array|null $testing = null,
+        PublicEmailToDetails|array|null $to = null,
+        PublicWebversionDetails|array|null $webversion = null,
     ): self {
         $obj = new self;
 
-        null !== $activeDomain && $obj->activeDomain = $activeDomain;
-        null !== $archived && $obj->archived = $archived;
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
-        null !== $campaign && $obj->campaign = $campaign;
-        null !== $content && $obj->content = $content;
-        null !== $folderIdV2 && $obj->folderIdV2 = $folderIdV2;
-        null !== $from && $obj->from = $from;
-        null !== $jitterSendTime && $obj->jitterSendTime = $jitterSendTime;
+        null !== $activeDomain && $obj['activeDomain'] = $activeDomain;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $campaign && $obj['campaign'] = $campaign;
+        null !== $content && $obj['content'] = $content;
+        null !== $folderIdV2 && $obj['folderIdV2'] = $folderIdV2;
+        null !== $from && $obj['from'] = $from;
+        null !== $jitterSendTime && $obj['jitterSendTime'] = $jitterSendTime;
         null !== $language && $obj['language'] = $language;
-        null !== $name && $obj->name = $name;
-        null !== $publishDate && $obj->publishDate = $publishDate;
-        null !== $rssData && $obj->rssData = $rssData;
-        null !== $sendOnPublish && $obj->sendOnPublish = $sendOnPublish;
+        null !== $name && $obj['name'] = $name;
+        null !== $publishDate && $obj['publishDate'] = $publishDate;
+        null !== $rssData && $obj['rssData'] = $rssData;
+        null !== $sendOnPublish && $obj['sendOnPublish'] = $sendOnPublish;
         null !== $state && $obj['state'] = $state;
         null !== $subcategory && $obj['subcategory'] = $subcategory;
-        null !== $subject && $obj->subject = $subject;
-        null !== $subscriptionDetails && $obj->subscriptionDetails = $subscriptionDetails;
-        null !== $testing && $obj->testing = $testing;
-        null !== $to && $obj->to = $to;
-        null !== $webversion && $obj->webversion = $webversion;
+        null !== $subject && $obj['subject'] = $subject;
+        null !== $subscriptionDetails && $obj['subscriptionDetails'] = $subscriptionDetails;
+        null !== $testing && $obj['testing'] = $testing;
+        null !== $to && $obj['to'] = $to;
+        null !== $webversion && $obj['webversion'] = $webversion;
 
         return $obj;
     }
@@ -220,7 +284,7 @@ final class EmailUpdateRequest implements BaseModel
     public function withActiveDomain(string $activeDomain): self
     {
         $obj = clone $this;
-        $obj->activeDomain = $activeDomain;
+        $obj['activeDomain'] = $activeDomain;
 
         return $obj;
     }
@@ -231,7 +295,7 @@ final class EmailUpdateRequest implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -239,7 +303,7 @@ final class EmailUpdateRequest implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }
@@ -250,18 +314,29 @@ final class EmailUpdateRequest implements BaseModel
     public function withCampaign(string $campaign): self
     {
         $obj = clone $this;
-        $obj->campaign = $campaign;
+        $obj['campaign'] = $campaign;
 
         return $obj;
     }
 
     /**
      * Data structure representing the content of the email.
+     *
+     * @param PublicEmailContent|array{
+     *   flexAreas?: array<string,mixed>|null,
+     *   plainTextVersion?: string|null,
+     *   smartFields?: array<string,mixed>|null,
+     *   styleSettings?: PublicEmailStyleSettings|null,
+     *   templatePath?: string|null,
+     *   themeSettingsValues?: array<string,mixed>|null,
+     *   widgetContainers?: array<string,mixed>|null,
+     *   widgets?: array<string,mixed>|null,
+     * } $content
      */
-    public function withContent(PublicEmailContent $content): self
+    public function withContent(PublicEmailContent|array $content): self
     {
         $obj = clone $this;
-        $obj->content = $content;
+        $obj['content'] = $content;
 
         return $obj;
     }
@@ -269,18 +344,22 @@ final class EmailUpdateRequest implements BaseModel
     public function withFolderIDV2(int $folderIDV2): self
     {
         $obj = clone $this;
-        $obj->folderIdV2 = $folderIDV2;
+        $obj['folderIdV2'] = $folderIDV2;
 
         return $obj;
     }
 
     /**
      * Data structure representing the from fields on the email.
+     *
+     * @param PublicEmailFromDetails|array{
+     *   customReplyTo?: string|null, fromName?: string|null, replyTo?: string|null
+     * } $from
      */
-    public function withFrom(PublicEmailFromDetails $from): self
+    public function withFrom(PublicEmailFromDetails|array $from): self
     {
         $obj = clone $this;
-        $obj->from = $from;
+        $obj['from'] = $from;
 
         return $obj;
     }
@@ -288,7 +367,7 @@ final class EmailUpdateRequest implements BaseModel
     public function withJitterSendTime(bool $jitterSendTime): self
     {
         $obj = clone $this;
-        $obj->jitterSendTime = $jitterSendTime;
+        $obj['jitterSendTime'] = $jitterSendTime;
 
         return $obj;
     }
@@ -310,7 +389,7 @@ final class EmailUpdateRequest implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -321,18 +400,30 @@ final class EmailUpdateRequest implements BaseModel
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
         $obj = clone $this;
-        $obj->publishDate = $publishDate;
+        $obj['publishDate'] = $publishDate;
 
         return $obj;
     }
 
     /**
      * RSS related data if it is a blog or rss email.
+     *
+     * @param PublicRssEmailDetails|array{
+     *   blogEmailType?: string|null,
+     *   blogImageMaxWidth?: int|null,
+     *   blogLayout?: string|null,
+     *   hubspotBlogId?: string|null,
+     *   maxEntries?: int|null,
+     *   rssEntryTemplate?: string|null,
+     *   timing?: array<string,mixed>|null,
+     *   url?: string|null,
+     *   useHeadlineAsSubject?: bool|null,
+     * } $rssData
      */
-    public function withRssData(PublicRssEmailDetails $rssData): self
+    public function withRssData(PublicRssEmailDetails|array $rssData): self
     {
         $obj = clone $this;
-        $obj->rssData = $rssData;
+        $obj['rssData'] = $rssData;
 
         return $obj;
     }
@@ -343,7 +434,7 @@ final class EmailUpdateRequest implements BaseModel
     public function withSendOnPublish(bool $sendOnPublish): self
     {
         $obj = clone $this;
-        $obj->sendOnPublish = $sendOnPublish;
+        $obj['sendOnPublish'] = $sendOnPublish;
 
         return $obj;
     }
@@ -380,49 +471,91 @@ final class EmailUpdateRequest implements BaseModel
     public function withSubject(string $subject): self
     {
         $obj = clone $this;
-        $obj->subject = $subject;
+        $obj['subject'] = $subject;
 
         return $obj;
     }
 
     /**
      * Data structure representing the subscription fields of the email.
+     *
+     * @param PublicEmailSubscriptionDetails|array{
+     *   officeLocationId?: string|null,
+     *   preferencesGroupId?: string|null,
+     *   subscriptionId?: string|null,
+     *   subscriptionName?: string|null,
+     * } $subscriptionDetails
      */
     public function withSubscriptionDetails(
-        PublicEmailSubscriptionDetails $subscriptionDetails
+        PublicEmailSubscriptionDetails|array $subscriptionDetails
     ): self {
         $obj = clone $this;
-        $obj->subscriptionDetails = $subscriptionDetails;
+        $obj['subscriptionDetails'] = $subscriptionDetails;
 
         return $obj;
     }
 
     /**
      * AB testing related data. This property is only returned for AB type emails.
+     *
+     * @param PublicEmailTestingDetails|array{
+     *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>|null,
+     *   abSamplingDefault?: value-of<AbSamplingDefault>|null,
+     *   abStatus?: value-of<AbStatus>|null,
+     *   abSuccessMetric?: value-of<AbSuccessMetric>|null,
+     *   abTestPercentage?: int|null,
+     *   hoursToWait?: int|null,
+     *   isAbVariation?: bool|null,
+     *   testId?: string|null,
+     * } $testing
      */
-    public function withTesting(PublicEmailTestingDetails $testing): self
+    public function withTesting(PublicEmailTestingDetails|array $testing): self
     {
         $obj = clone $this;
-        $obj->testing = $testing;
+        $obj['testing'] = $testing;
 
         return $obj;
     }
 
     /**
      * Data structure representing the to fields of the email.
+     *
+     * @param PublicEmailToDetails|array{
+     *   contactIds?: PublicEmailRecipients|null,
+     *   contactIlsLists?: PublicEmailRecipients|null,
+     *   contactLists?: PublicEmailRecipients|null,
+     *   limitSendFrequency?: bool|null,
+     *   suppressGraymail?: bool|null,
+     * } $to
      */
-    public function withTo(PublicEmailToDetails $to): self
+    public function withTo(PublicEmailToDetails|array $to): self
     {
         $obj = clone $this;
-        $obj->to = $to;
+        $obj['to'] = $to;
 
         return $obj;
     }
 
-    public function withWebversion(PublicWebversionDetails $webversion): self
-    {
+    /**
+     * @param PublicWebversionDetails|array{
+     *   domain?: string|null,
+     *   enabled?: bool|null,
+     *   expiresAt?: \DateTimeInterface|null,
+     *   isPageRedirected?: bool|null,
+     *   metaDescription?: string|null,
+     *   pageExpiryEnabled?: bool|null,
+     *   redirectToPageId?: string|null,
+     *   redirectToUrl?: string|null,
+     *   slug?: string|null,
+     *   title?: string|null,
+     *   url?: string|null,
+     * } $webversion
+     */
+    public function withWebversion(
+        PublicWebversionDetails|array $webversion
+    ): self {
         $obj = clone $this;
-        $obj->webversion = $webversion;
+        $obj['webversion'] = $webversion;
 
         return $obj;
     }

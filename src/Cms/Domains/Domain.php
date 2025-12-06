@@ -190,27 +190,27 @@ final class Domain implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->domain = $domain;
-        $obj->isResolving = $isResolving;
-        $obj->isUsedForBlogPost = $isUsedForBlogPost;
-        $obj->isUsedForEmail = $isUsedForEmail;
-        $obj->isUsedForKnowledge = $isUsedForKnowledge;
-        $obj->isUsedForLandingPage = $isUsedForLandingPage;
-        $obj->isUsedForSitePage = $isUsedForSitePage;
+        $obj['id'] = $id;
+        $obj['domain'] = $domain;
+        $obj['isResolving'] = $isResolving;
+        $obj['isUsedForBlogPost'] = $isUsedForBlogPost;
+        $obj['isUsedForEmail'] = $isUsedForEmail;
+        $obj['isUsedForKnowledge'] = $isUsedForKnowledge;
+        $obj['isUsedForLandingPage'] = $isUsedForLandingPage;
+        $obj['isUsedForSitePage'] = $isUsedForSitePage;
 
-        null !== $correctCname && $obj->correctCname = $correctCname;
-        null !== $created && $obj->created = $created;
-        null !== $isSslEnabled && $obj->isSslEnabled = $isSslEnabled;
-        null !== $isSslOnly && $obj->isSslOnly = $isSslOnly;
-        null !== $manuallyMarkedAsResolving && $obj->manuallyMarkedAsResolving = $manuallyMarkedAsResolving;
-        null !== $primaryBlogPost && $obj->primaryBlogPost = $primaryBlogPost;
-        null !== $primaryEmail && $obj->primaryEmail = $primaryEmail;
-        null !== $primaryKnowledge && $obj->primaryKnowledge = $primaryKnowledge;
-        null !== $primaryLandingPage && $obj->primaryLandingPage = $primaryLandingPage;
-        null !== $primarySitePage && $obj->primarySitePage = $primarySitePage;
-        null !== $secondaryToDomain && $obj->secondaryToDomain = $secondaryToDomain;
-        null !== $updated && $obj->updated = $updated;
+        null !== $correctCname && $obj['correctCname'] = $correctCname;
+        null !== $created && $obj['created'] = $created;
+        null !== $isSslEnabled && $obj['isSslEnabled'] = $isSslEnabled;
+        null !== $isSslOnly && $obj['isSslOnly'] = $isSslOnly;
+        null !== $manuallyMarkedAsResolving && $obj['manuallyMarkedAsResolving'] = $manuallyMarkedAsResolving;
+        null !== $primaryBlogPost && $obj['primaryBlogPost'] = $primaryBlogPost;
+        null !== $primaryEmail && $obj['primaryEmail'] = $primaryEmail;
+        null !== $primaryKnowledge && $obj['primaryKnowledge'] = $primaryKnowledge;
+        null !== $primaryLandingPage && $obj['primaryLandingPage'] = $primaryLandingPage;
+        null !== $primarySitePage && $obj['primarySitePage'] = $primarySitePage;
+        null !== $secondaryToDomain && $obj['secondaryToDomain'] = $secondaryToDomain;
+        null !== $updated && $obj['updated'] = $updated;
 
         return $obj;
     }
@@ -221,7 +221,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -232,7 +232,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withDomain(string $domain): self
     {
         $obj = clone $this;
-        $obj->domain = $domain;
+        $obj['domain'] = $domain;
 
         return $obj;
     }
@@ -243,7 +243,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withIsResolving(bool $isResolving): self
     {
         $obj = clone $this;
-        $obj->isResolving = $isResolving;
+        $obj['isResolving'] = $isResolving;
 
         return $obj;
     }
@@ -254,7 +254,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withIsUsedForBlogPost(bool $isUsedForBlogPost): self
     {
         $obj = clone $this;
-        $obj->isUsedForBlogPost = $isUsedForBlogPost;
+        $obj['isUsedForBlogPost'] = $isUsedForBlogPost;
 
         return $obj;
     }
@@ -265,7 +265,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withIsUsedForEmail(bool $isUsedForEmail): self
     {
         $obj = clone $this;
-        $obj->isUsedForEmail = $isUsedForEmail;
+        $obj['isUsedForEmail'] = $isUsedForEmail;
 
         return $obj;
     }
@@ -276,7 +276,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withIsUsedForKnowledge(bool $isUsedForKnowledge): self
     {
         $obj = clone $this;
-        $obj->isUsedForKnowledge = $isUsedForKnowledge;
+        $obj['isUsedForKnowledge'] = $isUsedForKnowledge;
 
         return $obj;
     }
@@ -287,7 +287,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withIsUsedForLandingPage(bool $isUsedForLandingPage): self
     {
         $obj = clone $this;
-        $obj->isUsedForLandingPage = $isUsedForLandingPage;
+        $obj['isUsedForLandingPage'] = $isUsedForLandingPage;
 
         return $obj;
     }
@@ -298,7 +298,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withIsUsedForSitePage(bool $isUsedForSitePage): self
     {
         $obj = clone $this;
-        $obj->isUsedForSitePage = $isUsedForSitePage;
+        $obj['isUsedForSitePage'] = $isUsedForSitePage;
 
         return $obj;
     }
@@ -306,7 +306,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withCorrectCname(string $correctCname): self
     {
         $obj = clone $this;
-        $obj->correctCname = $correctCname;
+        $obj['correctCname'] = $correctCname;
 
         return $obj;
     }
@@ -314,7 +314,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withCreated(\DateTimeInterface $created): self
     {
         $obj = clone $this;
-        $obj->created = $created;
+        $obj['created'] = $created;
 
         return $obj;
     }
@@ -322,7 +322,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withIsSslEnabled(bool $isSslEnabled): self
     {
         $obj = clone $this;
-        $obj->isSslEnabled = $isSslEnabled;
+        $obj['isSslEnabled'] = $isSslEnabled;
 
         return $obj;
     }
@@ -330,7 +330,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withIsSslOnly(bool $isSslOnly): self
     {
         $obj = clone $this;
-        $obj->isSslOnly = $isSslOnly;
+        $obj['isSslOnly'] = $isSslOnly;
 
         return $obj;
     }
@@ -339,7 +339,7 @@ final class Domain implements BaseModel, ResponseConverter
         bool $manuallyMarkedAsResolving
     ): self {
         $obj = clone $this;
-        $obj->manuallyMarkedAsResolving = $manuallyMarkedAsResolving;
+        $obj['manuallyMarkedAsResolving'] = $manuallyMarkedAsResolving;
 
         return $obj;
     }
@@ -347,7 +347,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withPrimaryBlogPost(bool $primaryBlogPost): self
     {
         $obj = clone $this;
-        $obj->primaryBlogPost = $primaryBlogPost;
+        $obj['primaryBlogPost'] = $primaryBlogPost;
 
         return $obj;
     }
@@ -355,7 +355,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withPrimaryEmail(bool $primaryEmail): self
     {
         $obj = clone $this;
-        $obj->primaryEmail = $primaryEmail;
+        $obj['primaryEmail'] = $primaryEmail;
 
         return $obj;
     }
@@ -363,7 +363,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withPrimaryKnowledge(bool $primaryKnowledge): self
     {
         $obj = clone $this;
-        $obj->primaryKnowledge = $primaryKnowledge;
+        $obj['primaryKnowledge'] = $primaryKnowledge;
 
         return $obj;
     }
@@ -371,7 +371,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withPrimaryLandingPage(bool $primaryLandingPage): self
     {
         $obj = clone $this;
-        $obj->primaryLandingPage = $primaryLandingPage;
+        $obj['primaryLandingPage'] = $primaryLandingPage;
 
         return $obj;
     }
@@ -379,7 +379,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withPrimarySitePage(bool $primarySitePage): self
     {
         $obj = clone $this;
-        $obj->primarySitePage = $primarySitePage;
+        $obj['primarySitePage'] = $primarySitePage;
 
         return $obj;
     }
@@ -387,7 +387,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withSecondaryToDomain(string $secondaryToDomain): self
     {
         $obj = clone $this;
-        $obj->secondaryToDomain = $secondaryToDomain;
+        $obj['secondaryToDomain'] = $secondaryToDomain;
 
         return $obj;
     }
@@ -395,7 +395,7 @@ final class Domain implements BaseModel, ResponseConverter
     public function withUpdated(\DateTimeInterface $updated): self
     {
         $obj = clone $this;
-        $obj->updated = $updated;
+        $obj['updated'] = $updated;
 
         return $obj;
     }

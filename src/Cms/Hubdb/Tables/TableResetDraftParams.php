@@ -42,7 +42,7 @@ final class TableResetDraftParams implements BaseModel
     {
         $obj = new self;
 
-        null !== $includeForeignIds && $obj->includeForeignIds = $includeForeignIds;
+        null !== $includeForeignIds && $obj['includeForeignIds'] = $includeForeignIds;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class TableResetDraftParams implements BaseModel
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;
-        $obj->includeForeignIds = $includeForeignIDs;
+        $obj['includeForeignIds'] = $includeForeignIDs;
 
         return $obj;
     }

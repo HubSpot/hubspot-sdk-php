@@ -54,8 +54,8 @@ final class JoinTimeAndRecordID implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->membershipTimestamp = $membershipTimestamp;
-        $obj->recordId = $recordId;
+        $obj['membershipTimestamp'] = $membershipTimestamp;
+        $obj['recordId'] = $recordId;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class JoinTimeAndRecordID implements BaseModel
         \DateTimeInterface $membershipTimestamp
     ): self {
         $obj = clone $this;
-        $obj->membershipTimestamp = $membershipTimestamp;
+        $obj['membershipTimestamp'] = $membershipTimestamp;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class JoinTimeAndRecordID implements BaseModel
     public function withRecordID(string $recordID): self
     {
         $obj = clone $this;
-        $obj->recordId = $recordID;
+        $obj['recordId'] = $recordID;
 
         return $obj;
     }

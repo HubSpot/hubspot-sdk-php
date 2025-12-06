@@ -87,11 +87,11 @@ final class PipelineStagePatchInput implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->metadata = $metadata;
+        $obj['metadata'] = $metadata;
 
-        null !== $archived && $obj->archived = $archived;
-        null !== $displayOrder && $obj->displayOrder = $displayOrder;
-        null !== $label && $obj->label = $label;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
+        null !== $label && $obj['label'] = $label;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class PipelineStagePatchInput implements BaseModel
     public function withMetadata(array $metadata): self
     {
         $obj = clone $this;
-        $obj->metadata = $metadata;
+        $obj['metadata'] = $metadata;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class PipelineStagePatchInput implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class PipelineStagePatchInput implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class PipelineStagePatchInput implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }

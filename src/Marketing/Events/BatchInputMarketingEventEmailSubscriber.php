@@ -50,13 +50,18 @@ final class BatchInputMarketingEventEmailSubscriber implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventEmailSubscriber> $inputs
+     * @param list<MarketingEventEmailSubscriber|array{
+     *   contactProperties: array<string,string>,
+     *   email: string,
+     *   interactionDateTime: int,
+     *   properties: array<string,string>,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -64,12 +69,17 @@ final class BatchInputMarketingEventEmailSubscriber implements BaseModel
     /**
      * List of marketing event details to create or update.
      *
-     * @param list<MarketingEventEmailSubscriber> $inputs
+     * @param list<MarketingEventEmailSubscriber|array{
+     *   contactProperties: array<string,string>,
+     *   email: string,
+     *   interactionDateTime: int,
+     *   properties: array<string,string>,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

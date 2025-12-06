@@ -60,7 +60,7 @@ final class ListsByIDResponse implements BaseModel, ResponseConverter
     {
         $obj = new self;
 
-        $obj->lists = $lists;
+        $obj['lists'] = $lists;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class ListsByIDResponse implements BaseModel, ResponseConverter
     public function withLists(array $lists): self
     {
         $obj = clone $this;
-        $obj->lists = $lists;
+        $obj['lists'] = $lists;
 
         return $obj;
     }

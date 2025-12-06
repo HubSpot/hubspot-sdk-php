@@ -9,8 +9,17 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Cardinality;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Category;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition\FromObjectType;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition\InverseCardinality;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition\ToObjectType;
+use HubspotSDK\Events\EventDefinitions\ComboEventRuleBranch\OperationType;
 use HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventTypeDefinition\TrackingType;
+use HubspotSDK\Option;
 use HubspotSDK\Property;
+use HubspotSDK\Property\DataSensitivity;
+use HubspotSDK\PropertyModificationMetadata;
 
 /**
  * @phpstan-type ExternalBehavioralEventTypeDefinitionShape = array{
@@ -127,8 +136,70 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationDefinition> $associations
-     * @param list<Property> $properties
+     * @param list<AssociationDefinition|array{
+     *   id: int,
+     *   allowsCustomLabels: bool,
+     *   cardinality: value-of<Cardinality>,
+     *   category: value-of<Category>,
+     *   fromObjectTypeId: string,
+     *   hasAllAssociatedObjects: bool,
+     *   hasCascadingDeletes: bool,
+     *   hasUserEnforcedMaxFromObjectIds: bool,
+     *   hasUserEnforcedMaxToObjectIds: bool,
+     *   hidden: bool,
+     *   inverseAllowsCustomLabels: bool,
+     *   inverseCardinality: value-of<InverseCardinality>,
+     *   inverseHasAllAssociatedObjects: bool,
+     *   inverseId: int,
+     *   inverseName: string,
+     *   isInversePrimary: bool,
+     *   isPrimary: bool,
+     *   maxFromObjectIds: int,
+     *   maxToObjectIds: int,
+     *   name: string,
+     *   portalUniqueIdentifier: string,
+     *   toObjectTypeId: string,
+     *   fromObjectType?: value-of<FromObjectType>|null,
+     *   inverseLabel?: string|null,
+     *   label?: string|null,
+     *   toObjectType?: value-of<ToObjectType>|null,
+     * }> $associations
+     * @param BehavioralEventTypeDefinitionLabels|array{
+     *   singular: string, plural?: string|null
+     * } $labels
+     * @param list<Property|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * }> $properties
+     * @param ComboEventRuleBranch|array{
+     *   composingRules: list<ComboEventRule>,
+     *   operationType: value-of<OperationType>,
+     *   ruleBranches: list<mixed>,
+     * } $comboEventRules
      * @param TrackingType|value-of<TrackingType> $trackingType
      */
     public static function with(
@@ -136,11 +207,11 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
         bool $archived,
         array $associations,
         string $fullyQualifiedName,
-        BehavioralEventTypeDefinitionLabels $labels,
+        BehavioralEventTypeDefinitionLabels|array $labels,
         string $name,
         string $objectTypeId,
         array $properties,
-        ?ComboEventRuleBranch $comboEventRules = null,
+        ComboEventRuleBranch|array|null $comboEventRules = null,
         ?\DateTimeInterface $createdAt = null,
         ?int $createdUserId = null,
         ?string $description = null,
@@ -150,21 +221,21 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->archived = $archived;
-        $obj->associations = $associations;
-        $obj->fullyQualifiedName = $fullyQualifiedName;
-        $obj->labels = $labels;
-        $obj->name = $name;
-        $obj->objectTypeId = $objectTypeId;
-        $obj->properties = $properties;
+        $obj['id'] = $id;
+        $obj['archived'] = $archived;
+        $obj['associations'] = $associations;
+        $obj['fullyQualifiedName'] = $fullyQualifiedName;
+        $obj['labels'] = $labels;
+        $obj['name'] = $name;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['properties'] = $properties;
 
-        null !== $comboEventRules && $obj->comboEventRules = $comboEventRules;
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdUserId && $obj->createdUserId = $createdUserId;
-        null !== $description && $obj->description = $description;
-        null !== $primaryObject && $obj->primaryObject = $primaryObject;
-        null !== $primaryObjectId && $obj->primaryObjectId = $primaryObjectId;
+        null !== $comboEventRules && $obj['comboEventRules'] = $comboEventRules;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $createdUserId && $obj['createdUserId'] = $createdUserId;
+        null !== $description && $obj['description'] = $description;
+        null !== $primaryObject && $obj['primaryObject'] = $primaryObject;
+        null !== $primaryObjectId && $obj['primaryObjectId'] = $primaryObjectId;
         null !== $trackingType && $obj['trackingType'] = $trackingType;
 
         return $obj;
@@ -173,7 +244,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -181,18 +252,45 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
 
     /**
-     * @param list<AssociationDefinition> $associations
+     * @param list<AssociationDefinition|array{
+     *   id: int,
+     *   allowsCustomLabels: bool,
+     *   cardinality: value-of<Cardinality>,
+     *   category: value-of<Category>,
+     *   fromObjectTypeId: string,
+     *   hasAllAssociatedObjects: bool,
+     *   hasCascadingDeletes: bool,
+     *   hasUserEnforcedMaxFromObjectIds: bool,
+     *   hasUserEnforcedMaxToObjectIds: bool,
+     *   hidden: bool,
+     *   inverseAllowsCustomLabels: bool,
+     *   inverseCardinality: value-of<InverseCardinality>,
+     *   inverseHasAllAssociatedObjects: bool,
+     *   inverseId: int,
+     *   inverseName: string,
+     *   isInversePrimary: bool,
+     *   isPrimary: bool,
+     *   maxFromObjectIds: int,
+     *   maxToObjectIds: int,
+     *   name: string,
+     *   portalUniqueIdentifier: string,
+     *   toObjectTypeId: string,
+     *   fromObjectType?: value-of<FromObjectType>|null,
+     *   inverseLabel?: string|null,
+     *   label?: string|null,
+     *   toObjectType?: value-of<ToObjectType>|null,
+     * }> $associations
      */
     public function withAssociations(array $associations): self
     {
         $obj = clone $this;
-        $obj->associations = $associations;
+        $obj['associations'] = $associations;
 
         return $obj;
     }
@@ -200,16 +298,21 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withFullyQualifiedName(string $fullyQualifiedName): self
     {
         $obj = clone $this;
-        $obj->fullyQualifiedName = $fullyQualifiedName;
+        $obj['fullyQualifiedName'] = $fullyQualifiedName;
 
         return $obj;
     }
 
+    /**
+     * @param BehavioralEventTypeDefinitionLabels|array{
+     *   singular: string, plural?: string|null
+     * } $labels
+     */
     public function withLabels(
-        BehavioralEventTypeDefinitionLabels $labels
+        BehavioralEventTypeDefinitionLabels|array $labels
     ): self {
         $obj = clone $this;
-        $obj->labels = $labels;
+        $obj['labels'] = $labels;
 
         return $obj;
     }
@@ -217,7 +320,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -225,27 +328,61 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
 
     /**
-     * @param list<Property> $properties
+     * @param list<Property|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * }> $properties
      */
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
 
+    /**
+     * @param ComboEventRuleBranch|array{
+     *   composingRules: list<ComboEventRule>,
+     *   operationType: value-of<OperationType>,
+     *   ruleBranches: list<mixed>,
+     * } $comboEventRules
+     */
     public function withComboEventRules(
-        ComboEventRuleBranch $comboEventRules
+        ComboEventRuleBranch|array $comboEventRules
     ): self {
         $obj = clone $this;
-        $obj->comboEventRules = $comboEventRules;
+        $obj['comboEventRules'] = $comboEventRules;
 
         return $obj;
     }
@@ -253,7 +390,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -261,7 +398,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withCreatedUserID(int $createdUserID): self
     {
         $obj = clone $this;
-        $obj->createdUserId = $createdUserID;
+        $obj['createdUserId'] = $createdUserID;
 
         return $obj;
     }
@@ -269,7 +406,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -277,7 +414,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withPrimaryObject(string $primaryObject): self
     {
         $obj = clone $this;
-        $obj->primaryObject = $primaryObject;
+        $obj['primaryObject'] = $primaryObject;
 
         return $obj;
     }
@@ -285,7 +422,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel, Response
     public function withPrimaryObjectID(string $primaryObjectID): self
     {
         $obj = clone $this;
-        $obj->primaryObjectId = $primaryObjectID;
+        $obj['primaryObjectId'] = $primaryObjectID;
 
         return $obj;
     }

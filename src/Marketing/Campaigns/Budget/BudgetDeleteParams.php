@@ -53,7 +53,7 @@ final class BudgetDeleteParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->campaignGuid = $campaignGuid;
+        $obj['campaignGuid'] = $campaignGuid;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class BudgetDeleteParams implements BaseModel
     public function withCampaignGuid(string $campaignGuid): self
     {
         $obj = clone $this;
-        $obj->campaignGuid = $campaignGuid;
+        $obj['campaignGuid'] = $campaignGuid;
 
         return $obj;
     }

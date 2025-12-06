@@ -67,9 +67,9 @@ final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->emailCampaignId = $emailCampaignId;
-        $obj->emailContentId = $emailContentId;
-        $obj->flowId = $flowId;
+        $obj['emailCampaignId'] = $emailCampaignId;
+        $obj['emailContentId'] = $emailContentId;
+        $obj['flowId'] = $flowId;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
     public function withEmailCampaignID(string $emailCampaignID): self
     {
         $obj = clone $this;
-        $obj->emailCampaignId = $emailCampaignID;
+        $obj['emailCampaignId'] = $emailCampaignID;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
     public function withEmailContentID(string $emailContentID): self
     {
         $obj = clone $this;
-        $obj->emailContentId = $emailContentID;
+        $obj['emailContentId'] = $emailContentID;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
     public function withFlowID(string $flowID): self
     {
         $obj = clone $this;
-        $obj->flowId = $flowID;
+        $obj['flowId'] = $flowID;
 
         return $obj;
     }

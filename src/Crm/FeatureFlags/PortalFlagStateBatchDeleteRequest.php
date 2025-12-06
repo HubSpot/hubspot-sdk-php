@@ -52,7 +52,7 @@ final class PortalFlagStateBatchDeleteRequest implements BaseModel
     {
         $obj = new self;
 
-        $obj->portalIds = $portalIds;
+        $obj['portalIds'] = $portalIds;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class PortalFlagStateBatchDeleteRequest implements BaseModel
     public function withPortalIDs(array $portalIDs): self
     {
         $obj = clone $this;
-        $obj->portalIds = $portalIDs;
+        $obj['portalIds'] = $portalIDs;
 
         return $obj;
     }

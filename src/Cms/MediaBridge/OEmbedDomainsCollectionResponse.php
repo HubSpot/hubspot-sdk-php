@@ -49,26 +49,42 @@ final class OEmbedDomainsCollectionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<IntegratorOEmbedDomainModel> $results
+     * @param list<IntegratorOEmbedDomainModel|array{
+     *   id: int,
+     *   appId: int,
+     *   createdAt: int,
+     *   deletedAt: int,
+     *   endpoints: Endpoints,
+     *   portalId: int,
+     *   updatedAt: int,
+     * }> $results
      */
     public static function with(array $results, ?int $totalCount = null): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $totalCount && $obj->totalCount = $totalCount;
+        null !== $totalCount && $obj['totalCount'] = $totalCount;
 
         return $obj;
     }
 
     /**
-     * @param list<IntegratorOEmbedDomainModel> $results
+     * @param list<IntegratorOEmbedDomainModel|array{
+     *   id: int,
+     *   appId: int,
+     *   createdAt: int,
+     *   deletedAt: int,
+     *   endpoints: Endpoints,
+     *   portalId: int,
+     *   updatedAt: int,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -76,7 +92,7 @@ final class OEmbedDomainsCollectionResponse implements BaseModel
     public function withTotalCount(int $totalCount): self
     {
         $obj = clone $this;
-        $obj->totalCount = $totalCount;
+        $obj['totalCount'] = $totalCount;
 
         return $obj;
     }

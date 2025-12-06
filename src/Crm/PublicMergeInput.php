@@ -60,8 +60,8 @@ final class PublicMergeInput implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->objectIdToMerge = $objectIdToMerge;
-        $obj->primaryObjectId = $primaryObjectId;
+        $obj['objectIdToMerge'] = $objectIdToMerge;
+        $obj['primaryObjectId'] = $primaryObjectId;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class PublicMergeInput implements BaseModel
     public function withObjectIDToMerge(string $objectIDToMerge): self
     {
         $obj = clone $this;
-        $obj->objectIdToMerge = $objectIDToMerge;
+        $obj['objectIdToMerge'] = $objectIDToMerge;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class PublicMergeInput implements BaseModel
     public function withPrimaryObjectID(string $primaryObjectID): self
     {
         $obj = clone $this;
-        $obj->primaryObjectId = $primaryObjectID;
+        $obj['primaryObjectId'] = $primaryObjectID;
 
         return $obj;
     }

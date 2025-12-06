@@ -170,20 +170,20 @@ final class URLMapping implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->destination = $destination;
-        $obj->isMatchFullUrl = $isMatchFullUrl;
-        $obj->isMatchQueryString = $isMatchQueryString;
-        $obj->isOnlyAfterNotFound = $isOnlyAfterNotFound;
-        $obj->isPattern = $isPattern;
-        $obj->isProtocolAgnostic = $isProtocolAgnostic;
-        $obj->isTrailingSlashOptional = $isTrailingSlashOptional;
-        $obj->precedence = $precedence;
-        $obj->redirectStyle = $redirectStyle;
-        $obj->routePrefix = $routePrefix;
+        $obj['id'] = $id;
+        $obj['destination'] = $destination;
+        $obj['isMatchFullUrl'] = $isMatchFullUrl;
+        $obj['isMatchQueryString'] = $isMatchQueryString;
+        $obj['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
+        $obj['isPattern'] = $isPattern;
+        $obj['isProtocolAgnostic'] = $isProtocolAgnostic;
+        $obj['isTrailingSlashOptional'] = $isTrailingSlashOptional;
+        $obj['precedence'] = $precedence;
+        $obj['redirectStyle'] = $redirectStyle;
+        $obj['routePrefix'] = $routePrefix;
 
-        null !== $created && $obj->created = $created;
-        null !== $updated && $obj->updated = $updated;
+        null !== $created && $obj['created'] = $created;
+        null !== $updated && $obj['updated'] = $updated;
 
         return $obj;
     }
@@ -194,7 +194,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -205,7 +205,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withDestination(string $destination): self
     {
         $obj = clone $this;
-        $obj->destination = $destination;
+        $obj['destination'] = $destination;
 
         return $obj;
     }
@@ -216,7 +216,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
         $obj = clone $this;
-        $obj->isMatchFullUrl = $isMatchFullURL;
+        $obj['isMatchFullUrl'] = $isMatchFullURL;
 
         return $obj;
     }
@@ -227,7 +227,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withIsMatchQueryString(bool $isMatchQueryString): self
     {
         $obj = clone $this;
-        $obj->isMatchQueryString = $isMatchQueryString;
+        $obj['isMatchQueryString'] = $isMatchQueryString;
 
         return $obj;
     }
@@ -238,7 +238,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withIsOnlyAfterNotFound(bool $isOnlyAfterNotFound): self
     {
         $obj = clone $this;
-        $obj->isOnlyAfterNotFound = $isOnlyAfterNotFound;
+        $obj['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
 
         return $obj;
     }
@@ -249,7 +249,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withIsPattern(bool $isPattern): self
     {
         $obj = clone $this;
-        $obj->isPattern = $isPattern;
+        $obj['isPattern'] = $isPattern;
 
         return $obj;
     }
@@ -260,7 +260,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withIsProtocolAgnostic(bool $isProtocolAgnostic): self
     {
         $obj = clone $this;
-        $obj->isProtocolAgnostic = $isProtocolAgnostic;
+        $obj['isProtocolAgnostic'] = $isProtocolAgnostic;
 
         return $obj;
     }
@@ -272,7 +272,7 @@ final class URLMapping implements BaseModel, ResponseConverter
         bool $isTrailingSlashOptional
     ): self {
         $obj = clone $this;
-        $obj->isTrailingSlashOptional = $isTrailingSlashOptional;
+        $obj['isTrailingSlashOptional'] = $isTrailingSlashOptional;
 
         return $obj;
     }
@@ -283,7 +283,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withPrecedence(int $precedence): self
     {
         $obj = clone $this;
-        $obj->precedence = $precedence;
+        $obj['precedence'] = $precedence;
 
         return $obj;
     }
@@ -294,7 +294,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withRedirectStyle(int $redirectStyle): self
     {
         $obj = clone $this;
-        $obj->redirectStyle = $redirectStyle;
+        $obj['redirectStyle'] = $redirectStyle;
 
         return $obj;
     }
@@ -305,7 +305,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withRoutePrefix(string $routePrefix): self
     {
         $obj = clone $this;
-        $obj->routePrefix = $routePrefix;
+        $obj['routePrefix'] = $routePrefix;
 
         return $obj;
     }
@@ -313,7 +313,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withCreated(\DateTimeInterface $created): self
     {
         $obj = clone $this;
-        $obj->created = $created;
+        $obj['created'] = $created;
 
         return $obj;
     }
@@ -321,7 +321,7 @@ final class URLMapping implements BaseModel, ResponseConverter
     public function withUpdated(\DateTimeInterface $updated): self
     {
         $obj = clone $this;
-        $obj->updated = $updated;
+        $obj['updated'] = $updated;
 
         return $obj;
     }

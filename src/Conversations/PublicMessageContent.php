@@ -40,8 +40,8 @@ final class PublicMessageContent implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $richText && $obj->richText = $richText;
-        null !== $text && $obj->text = $text;
+        null !== $richText && $obj['richText'] = $richText;
+        null !== $text && $obj['text'] = $text;
 
         return $obj;
     }
@@ -49,7 +49,7 @@ final class PublicMessageContent implements BaseModel
     public function withRichText(string $richText): self
     {
         $obj = clone $this;
-        $obj->richText = $richText;
+        $obj['richText'] = $richText;
 
         return $obj;
     }
@@ -57,7 +57,7 @@ final class PublicMessageContent implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }

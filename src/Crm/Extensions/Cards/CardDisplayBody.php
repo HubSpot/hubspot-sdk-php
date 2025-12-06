@@ -7,6 +7,7 @@ namespace HubspotSDK\Crm\Extensions\Cards;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty\DataType;
 
 /**
  * Configuration for displayed info on a card.
@@ -52,13 +53,18 @@ final class CardDisplayBody implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CardDisplayProperty> $properties
+     * @param list<CardDisplayProperty|array{
+     *   dataType: value-of<DataType>,
+     *   label: string,
+     *   name: string,
+     *   options: list<DisplayOption>,
+     * }> $properties
      */
     public static function with(array $properties): self
     {
         $obj = new self;
 
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -66,12 +72,17 @@ final class CardDisplayBody implements BaseModel
     /**
      * Card display properties. These will will be rendered as "label : value" pairs in the card UI. See the [example card](#) in the overview docs for more details.
      *
-     * @param list<CardDisplayProperty> $properties
+     * @param list<CardDisplayProperty|array{
+     *   dataType: value-of<DataType>,
+     *   label: string,
+     *   name: string,
+     *   options: list<DisplayOption>,
+     * }> $properties
      */
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

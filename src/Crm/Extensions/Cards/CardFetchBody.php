@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\CardFetchBody\CardType;
+use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody\Name;
 
 /**
  * Configuration for this card's data fetch request.
@@ -69,7 +70,9 @@ final class CardFetchBody implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CardObjectTypeBody> $objectTypes
+     * @param list<CardObjectTypeBody|array{
+     *   name: value-of<Name>, propertiesToSend: list<string>
+     * }> $objectTypes
      * @param CardType|value-of<CardType> $cardType
      */
     public static function with(
@@ -80,11 +83,11 @@ final class CardFetchBody implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->objectTypes = $objectTypes;
-        $obj->targetUrl = $targetUrl;
+        $obj['objectTypes'] = $objectTypes;
+        $obj['targetUrl'] = $targetUrl;
 
         null !== $cardType && $obj['cardType'] = $cardType;
-        null !== $serverlessFunction && $obj->serverlessFunction = $serverlessFunction;
+        null !== $serverlessFunction && $obj['serverlessFunction'] = $serverlessFunction;
 
         return $obj;
     }
@@ -92,12 +95,14 @@ final class CardFetchBody implements BaseModel
     /**
      * An array of CRM object types where this card should be displayed. HubSpot will call your data fetch URL whenever a user visits a record page of the types defined here.
      *
-     * @param list<CardObjectTypeBody> $objectTypes
+     * @param list<CardObjectTypeBody|array{
+     *   name: value-of<Name>, propertiesToSend: list<string>
+     * }> $objectTypes
      */
     public function withObjectTypes(array $objectTypes): self
     {
         $obj = clone $this;
-        $obj->objectTypes = $objectTypes;
+        $obj['objectTypes'] = $objectTypes;
 
         return $obj;
     }
@@ -108,7 +113,7 @@ final class CardFetchBody implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj->targetUrl = $targetURL;
+        $obj['targetUrl'] = $targetURL;
 
         return $obj;
     }
@@ -127,7 +132,7 @@ final class CardFetchBody implements BaseModel
     public function withServerlessFunction(string $serverlessFunction): self
     {
         $obj = clone $this;
-        $obj->serverlessFunction = $serverlessFunction;
+        $obj['serverlessFunction'] = $serverlessFunction;
 
         return $obj;
     }

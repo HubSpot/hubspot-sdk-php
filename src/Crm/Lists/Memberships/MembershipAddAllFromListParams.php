@@ -57,7 +57,7 @@ final class MembershipAddAllFromListParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->listId = $listId;
+        $obj['listId'] = $listId;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class MembershipAddAllFromListParams implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listId = $listID;
+        $obj['listId'] = $listID;
 
         return $obj;
     }

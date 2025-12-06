@@ -54,8 +54,8 @@ final class ExternalMeetingAvailability implements BaseModel
     {
         $obj = new self;
 
-        $obj->endMillisUtc = $endMillisUtc;
-        $obj->startMillisUtc = $startMillisUtc;
+        $obj['endMillisUtc'] = $endMillisUtc;
+        $obj['startMillisUtc'] = $startMillisUtc;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class ExternalMeetingAvailability implements BaseModel
     public function withEndMillisUtc(int $endMillisUtc): self
     {
         $obj = clone $this;
-        $obj->endMillisUtc = $endMillisUtc;
+        $obj['endMillisUtc'] = $endMillisUtc;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class ExternalMeetingAvailability implements BaseModel
     public function withStartMillisUtc(int $startMillisUtc): self
     {
         $obj = clone $this;
-        $obj->startMillisUtc = $startMillisUtc;
+        $obj['startMillisUtc'] = $startMillisUtc;
 
         return $obj;
     }

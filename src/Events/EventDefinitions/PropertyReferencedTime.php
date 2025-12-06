@@ -91,11 +91,11 @@ final class PropertyReferencedTime implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->property = $property;
+        $obj['property'] = $property;
         $obj['referenceType'] = $referenceType;
         $obj['timeType'] = $timeType;
         $obj['timezoneSource'] = $timezoneSource;
-        $obj->zoneId = $zoneId;
+        $obj['zoneId'] = $zoneId;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class PropertyReferencedTime implements BaseModel
     public function withProperty(string $property): self
     {
         $obj = clone $this;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class PropertyReferencedTime implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj->zoneId = $zoneID;
+        $obj['zoneId'] = $zoneID;
 
         return $obj;
     }

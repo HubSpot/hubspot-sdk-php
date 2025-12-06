@@ -51,10 +51,10 @@ final class ExternalLinkDisplayInfo implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $avatar && $obj->avatar = $avatar;
-        null !== $companyAvatar && $obj->companyAvatar = $companyAvatar;
-        null !== $headline && $obj->headline = $headline;
-        null !== $publicDisplayAvatarOption && $obj->publicDisplayAvatarOption = $publicDisplayAvatarOption;
+        null !== $avatar && $obj['avatar'] = $avatar;
+        null !== $companyAvatar && $obj['companyAvatar'] = $companyAvatar;
+        null !== $headline && $obj['headline'] = $headline;
+        null !== $publicDisplayAvatarOption && $obj['publicDisplayAvatarOption'] = $publicDisplayAvatarOption;
 
         return $obj;
     }
@@ -62,7 +62,7 @@ final class ExternalLinkDisplayInfo implements BaseModel
     public function withAvatar(string $avatar): self
     {
         $obj = clone $this;
-        $obj->avatar = $avatar;
+        $obj['avatar'] = $avatar;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class ExternalLinkDisplayInfo implements BaseModel
     public function withCompanyAvatar(string $companyAvatar): self
     {
         $obj = clone $this;
-        $obj->companyAvatar = $companyAvatar;
+        $obj['companyAvatar'] = $companyAvatar;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class ExternalLinkDisplayInfo implements BaseModel
     public function withHeadline(string $headline): self
     {
         $obj = clone $this;
-        $obj->headline = $headline;
+        $obj['headline'] = $headline;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class ExternalLinkDisplayInfo implements BaseModel
         string $publicDisplayAvatarOption
     ): self {
         $obj = clone $this;
-        $obj->publicDisplayAvatarOption = $publicDisplayAvatarOption;
+        $obj['publicDisplayAvatarOption'] = $publicDisplayAvatarOption;
 
         return $obj;
     }

@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\IndexedTimePoint\TimeType;
 use HubspotSDK\Events\EventDefinitions\IndexedTimePoint\TimezoneSource;
+use HubspotSDK\Events\EventDefinitions\NowReference\ReferenceType;
+use HubspotSDK\Events\EventDefinitions\WeekReference\DayOfWeek;
 
 /**
  * @phpstan-type IndexedTimePointShape = array{
@@ -71,33 +73,164 @@ final class IndexedTimePoint implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param NowReference|array{
+     *   referenceType: value-of<ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|TodayReference|array{
+     *   referenceType: value-of<TodayReference\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|WeekReference|array{
+     *   dayOfWeek: value-of<DayOfWeek>,
+     *   referenceType: value-of<WeekReference\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|MonthReference|array{
+     *   day: int,
+     *   referenceType: value-of<MonthReference\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|QuarterReference|array{
+     *   day: int,
+     *   month: int,
+     *   referenceType: value-of<QuarterReference\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|FiscalQuarter|array{
+     *   day: int,
+     *   month: int,
+     *   referenceType: value-of<FiscalQuarter\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|YearReference|array{
+     *   day: int,
+     *   month: int,
+     *   referenceType: value-of<YearReference\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|FiscalYear|array{
+     *   day: int,
+     *   month: int,
+     *   referenceType: value-of<FiscalYear\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * } $indexReference
      * @param TimezoneSource|value-of<TimezoneSource> $timezoneSource
      * @param TimeType|value-of<TimeType> $timeType
+     * @param IndexOffset|array{
+     *   days?: int|null,
+     *   hours?: int|null,
+     *   milliseconds?: int|null,
+     *   minutes?: int|null,
+     *   months?: int|null,
+     *   quarters?: int|null,
+     *   seconds?: int|null,
+     *   weeks?: int|null,
+     *   years?: int|null,
+     * } $offset
      */
     public static function with(
-        NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear $indexReference,
+        NowReference|array|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear $indexReference,
         TimezoneSource|string $timezoneSource,
         string $zoneId,
         TimeType|string $timeType = 'INDEXED',
-        ?IndexOffset $offset = null,
+        IndexOffset|array|null $offset = null,
     ): self {
         $obj = new self;
 
-        $obj->indexReference = $indexReference;
+        $obj['indexReference'] = $indexReference;
         $obj['timeType'] = $timeType;
         $obj['timezoneSource'] = $timezoneSource;
-        $obj->zoneId = $zoneId;
+        $obj['zoneId'] = $zoneId;
 
-        null !== $offset && $obj->offset = $offset;
+        null !== $offset && $obj['offset'] = $offset;
 
         return $obj;
     }
 
+    /**
+     * @param NowReference|array{
+     *   referenceType: value-of<ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|TodayReference|array{
+     *   referenceType: value-of<TodayReference\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|WeekReference|array{
+     *   dayOfWeek: value-of<DayOfWeek>,
+     *   referenceType: value-of<WeekReference\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|MonthReference|array{
+     *   day: int,
+     *   referenceType: value-of<MonthReference\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|QuarterReference|array{
+     *   day: int,
+     *   month: int,
+     *   referenceType: value-of<QuarterReference\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|FiscalQuarter|array{
+     *   day: int,
+     *   month: int,
+     *   referenceType: value-of<FiscalQuarter\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|YearReference|array{
+     *   day: int,
+     *   month: int,
+     *   referenceType: value-of<YearReference\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|FiscalYear|array{
+     *   day: int,
+     *   month: int,
+     *   referenceType: value-of<FiscalYear\ReferenceType>,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * } $indexReference
+     */
     public function withIndexReference(
-        NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear $indexReference,
+        NowReference|array|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear $indexReference,
     ): self {
         $obj = clone $this;
-        $obj->indexReference = $indexReference;
+        $obj['indexReference'] = $indexReference;
 
         return $obj;
     }
@@ -128,15 +261,28 @@ final class IndexedTimePoint implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj->zoneId = $zoneID;
+        $obj['zoneId'] = $zoneID;
 
         return $obj;
     }
 
-    public function withOffset(IndexOffset $offset): self
+    /**
+     * @param IndexOffset|array{
+     *   days?: int|null,
+     *   hours?: int|null,
+     *   milliseconds?: int|null,
+     *   minutes?: int|null,
+     *   months?: int|null,
+     *   quarters?: int|null,
+     *   seconds?: int|null,
+     *   weeks?: int|null,
+     *   years?: int|null,
+     * } $offset
+     */
+    public function withOffset(IndexOffset|array $offset): self
     {
         $obj = clone $this;
-        $obj->offset = $offset;
+        $obj['offset'] = $offset;
 
         return $obj;
     }

@@ -70,10 +70,10 @@ final class PropertyListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
+        $obj['appId'] = $appId;
 
-        null !== $archived && $obj->archived = $archived;
-        null !== $properties && $obj->properties = $properties;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $properties && $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PropertyListParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class PropertyListParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class PropertyListParams implements BaseModel
     public function withProperties(string $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

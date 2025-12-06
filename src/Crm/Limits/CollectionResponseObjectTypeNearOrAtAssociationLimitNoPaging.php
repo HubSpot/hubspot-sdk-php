@@ -53,24 +53,36 @@ final class CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging impleme
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ObjectTypeNearOrAtAssociationLimit> $results
+     * @param list<ObjectTypeNearOrAtAssociationLimit|array{
+     *   hasRecordsAtLimit: bool,
+     *   hasRecordsNearLimit: bool,
+     *   objectTypeId: string,
+     *   pluralLabel: string,
+     *   singularLabel: string,
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<ObjectTypeNearOrAtAssociationLimit> $results
+     * @param list<ObjectTypeNearOrAtAssociationLimit|array{
+     *   hasRecordsAtLimit: bool,
+     *   hasRecordsNearLimit: bool,
+     *   objectTypeId: string,
+     *   pluralLabel: string,
+     *   singularLabel: string,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

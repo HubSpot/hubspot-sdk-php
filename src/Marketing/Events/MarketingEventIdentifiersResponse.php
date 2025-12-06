@@ -65,22 +65,24 @@ final class MarketingEventIdentifiersResponse implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param AppInfo|array{id: string, name: string} $appInfo
      */
     public static function with(
         string $externalEventId,
         string $marketingEventName,
         string $objectId,
-        ?AppInfo $appInfo = null,
+        AppInfo|array|null $appInfo = null,
         ?string $externalAccountId = null,
     ): self {
         $obj = new self;
 
-        $obj->externalEventId = $externalEventId;
-        $obj->marketingEventName = $marketingEventName;
-        $obj->objectId = $objectId;
+        $obj['externalEventId'] = $externalEventId;
+        $obj['marketingEventName'] = $marketingEventName;
+        $obj['objectId'] = $objectId;
 
-        null !== $appInfo && $obj->appInfo = $appInfo;
-        null !== $externalAccountId && $obj->externalAccountId = $externalAccountId;
+        null !== $appInfo && $obj['appInfo'] = $appInfo;
+        null !== $externalAccountId && $obj['externalAccountId'] = $externalAccountId;
 
         return $obj;
     }
@@ -88,7 +90,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventId = $externalEventID;
+        $obj['externalEventId'] = $externalEventID;
 
         return $obj;
     }
@@ -96,7 +98,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     public function withMarketingEventName(string $marketingEventName): self
     {
         $obj = clone $this;
-        $obj->marketingEventName = $marketingEventName;
+        $obj['marketingEventName'] = $marketingEventName;
 
         return $obj;
     }
@@ -104,15 +106,18 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
 
-    public function withAppInfo(AppInfo $appInfo): self
+    /**
+     * @param AppInfo|array{id: string, name: string} $appInfo
+     */
+    public function withAppInfo(AppInfo|array $appInfo): self
     {
         $obj = clone $this;
-        $obj->appInfo = $appInfo;
+        $obj['appInfo'] = $appInfo;
 
         return $obj;
     }
@@ -120,7 +125,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountId = $externalAccountID;
+        $obj['externalAccountId'] = $externalAccountID;
 
         return $obj;
     }

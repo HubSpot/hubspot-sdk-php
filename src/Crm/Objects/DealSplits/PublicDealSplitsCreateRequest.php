@@ -49,14 +49,14 @@ final class PublicDealSplitsCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDealSplitInput> $splits
+     * @param list<PublicDealSplitInput|array{ownerId: int, percentage: float}> $splits
      */
     public static function with(int $id, array $splits): self
     {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->splits = $splits;
+        $obj['id'] = $id;
+        $obj['splits'] = $splits;
 
         return $obj;
     }
@@ -64,18 +64,18 @@ final class PublicDealSplitsCreateRequest implements BaseModel
     public function withID(int $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicDealSplitInput> $splits
+     * @param list<PublicDealSplitInput|array{ownerId: int, percentage: float}> $splits
      */
     public function withSplits(array $splits): self
     {
         $obj = clone $this;
-        $obj->splits = $splits;
+        $obj['splits'] = $splits;
 
         return $obj;
     }

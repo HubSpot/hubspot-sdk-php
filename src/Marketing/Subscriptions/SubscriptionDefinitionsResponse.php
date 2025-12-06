@@ -54,13 +54,25 @@ final class SubscriptionDefinitionsResponse implements BaseModel, ResponseConver
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionDefinition> $subscriptionDefinitions
+     * @param list<SubscriptionDefinition|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   description: string,
+     *   isActive: bool,
+     *   isDefault: bool,
+     *   isInternal: bool,
+     *   name: string,
+     *   updatedAt: \DateTimeInterface,
+     *   businessUnitId?: int|null,
+     *   communicationMethod?: string|null,
+     *   purpose?: string|null,
+     * }> $subscriptionDefinitions
      */
     public static function with(array $subscriptionDefinitions): self
     {
         $obj = new self;
 
-        $obj->subscriptionDefinitions = $subscriptionDefinitions;
+        $obj['subscriptionDefinitions'] = $subscriptionDefinitions;
 
         return $obj;
     }
@@ -68,13 +80,25 @@ final class SubscriptionDefinitionsResponse implements BaseModel, ResponseConver
     /**
      * A list of all subscription definitions.
      *
-     * @param list<SubscriptionDefinition> $subscriptionDefinitions
+     * @param list<SubscriptionDefinition|array{
+     *   id: string,
+     *   createdAt: \DateTimeInterface,
+     *   description: string,
+     *   isActive: bool,
+     *   isDefault: bool,
+     *   isInternal: bool,
+     *   name: string,
+     *   updatedAt: \DateTimeInterface,
+     *   businessUnitId?: int|null,
+     *   communicationMethod?: string|null,
+     *   purpose?: string|null,
+     * }> $subscriptionDefinitions
      */
     public function withSubscriptionDefinitions(
         array $subscriptionDefinitions
     ): self {
         $obj = clone $this;
-        $obj->subscriptionDefinitions = $subscriptionDefinitions;
+        $obj['subscriptionDefinitions'] = $subscriptionDefinitions;
 
         return $obj;
     }

@@ -16,7 +16,12 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert;
  * @see HubspotSDK\Services\Crm\Objects\GoalTargets\BatchService::upsert()
  *
  * @phpstan-type BatchUpsertParamsShape = array{
- *   inputs: list<SimplePublicObjectBatchInputUpsert>
+ *   inputs: list<SimplePublicObjectBatchInputUpsert|array{
+ *     id: string,
+ *     properties: array<string,string>,
+ *     idProperty?: string|null,
+ *     objectWriteTraceId?: string|null,
+ *   }>,
  * }
  */
 final class BatchUpsertParams implements BaseModel
@@ -53,24 +58,34 @@ final class BatchUpsertParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert|array{
+     *   id: string,
+     *   properties: array<string,string>,
+     *   idProperty?: string|null,
+     *   objectWriteTraceId?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInputUpsert> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert|array{
+     *   id: string,
+     *   properties: array<string,string>,
+     *   idProperty?: string|null,
+     *   objectWriteTraceId?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

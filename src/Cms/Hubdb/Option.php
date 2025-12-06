@@ -125,6 +125,13 @@ final class Option implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $createdBy
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $updatedBy
      */
     public static function with(
         string $id,
@@ -134,25 +141,25 @@ final class Option implements BaseModel
         int $order,
         string $type,
         \DateTimeInterface $updatedAt,
-        ?SimpleUser $createdBy = null,
+        SimpleUser|array|null $createdBy = null,
         ?int $createdByUserId = null,
-        ?SimpleUser $updatedBy = null,
+        SimpleUser|array|null $updatedBy = null,
         ?int $updatedByUserId = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->label = $label;
-        $obj->name = $name;
-        $obj->order = $order;
-        $obj->type = $type;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
+        $obj['order'] = $order;
+        $obj['type'] = $type;
+        $obj['updatedAt'] = $updatedAt;
 
-        null !== $createdBy && $obj->createdBy = $createdBy;
-        null !== $createdByUserId && $obj->createdByUserId = $createdByUserId;
-        null !== $updatedBy && $obj->updatedBy = $updatedBy;
-        null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
+        null !== $createdBy && $obj['createdBy'] = $createdBy;
+        null !== $createdByUserId && $obj['createdByUserId'] = $createdByUserId;
+        null !== $updatedBy && $obj['updatedBy'] = $updatedBy;
+        null !== $updatedByUserId && $obj['updatedByUserId'] = $updatedByUserId;
 
         return $obj;
     }
@@ -163,7 +170,7 @@ final class Option implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -174,7 +181,7 @@ final class Option implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -185,7 +192,7 @@ final class Option implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -196,7 +203,7 @@ final class Option implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -204,7 +211,7 @@ final class Option implements BaseModel
     public function withOrder(int $order): self
     {
         $obj = clone $this;
-        $obj->order = $order;
+        $obj['order'] = $order;
 
         return $obj;
     }
@@ -215,7 +222,7 @@ final class Option implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -226,15 +233,20 @@ final class Option implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
 
-    public function withCreatedBy(SimpleUser $createdBy): self
+    /**
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $createdBy
+     */
+    public function withCreatedBy(SimpleUser|array $createdBy): self
     {
         $obj = clone $this;
-        $obj->createdBy = $createdBy;
+        $obj['createdBy'] = $createdBy;
 
         return $obj;
     }
@@ -245,15 +257,20 @@ final class Option implements BaseModel
     public function withCreatedByUserID(int $createdByUserID): self
     {
         $obj = clone $this;
-        $obj->createdByUserId = $createdByUserID;
+        $obj['createdByUserId'] = $createdByUserID;
 
         return $obj;
     }
 
-    public function withUpdatedBy(SimpleUser $updatedBy): self
+    /**
+     * @param SimpleUser|array{
+     *   id: string, email: string, firstName: string, lastName: string
+     * } $updatedBy
+     */
+    public function withUpdatedBy(SimpleUser|array $updatedBy): self
     {
         $obj = clone $this;
-        $obj->updatedBy = $updatedBy;
+        $obj['updatedBy'] = $updatedBy;
 
         return $obj;
     }
@@ -264,7 +281,7 @@ final class Option implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj->updatedByUserId = $updatedByUserID;
+        $obj['updatedByUserId'] = $updatedByUserID;
 
         return $obj;
     }

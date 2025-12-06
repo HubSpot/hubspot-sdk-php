@@ -77,7 +77,9 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<LegalConsentCheckbox> $communicationsCheckboxes
+     * @param list<LegalConsentCheckbox|array{
+     *   label: string, required: bool, subscriptionTypeId: int
+     * }> $communicationsCheckboxes
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -91,26 +93,28 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->communicationsCheckboxes = $communicationsCheckboxes;
-        $obj->privacyText = $privacyText;
+        $obj['communicationsCheckboxes'] = $communicationsCheckboxes;
+        $obj['privacyText'] = $privacyText;
         $obj['type'] = $type;
 
-        null !== $communicationConsentText && $obj->communicationConsentText = $communicationConsentText;
-        null !== $consentToProcessCheckboxLabel && $obj->consentToProcessCheckboxLabel = $consentToProcessCheckboxLabel;
-        null !== $consentToProcessFooterText && $obj->consentToProcessFooterText = $consentToProcessFooterText;
-        null !== $consentToProcessText && $obj->consentToProcessText = $consentToProcessText;
+        null !== $communicationConsentText && $obj['communicationConsentText'] = $communicationConsentText;
+        null !== $consentToProcessCheckboxLabel && $obj['consentToProcessCheckboxLabel'] = $consentToProcessCheckboxLabel;
+        null !== $consentToProcessFooterText && $obj['consentToProcessFooterText'] = $consentToProcessFooterText;
+        null !== $consentToProcessText && $obj['consentToProcessText'] = $consentToProcessText;
 
         return $obj;
     }
 
     /**
-     * @param list<LegalConsentCheckbox> $communicationsCheckboxes
+     * @param list<LegalConsentCheckbox|array{
+     *   label: string, required: bool, subscriptionTypeId: int
+     * }> $communicationsCheckboxes
      */
     public function withCommunicationsCheckboxes(
         array $communicationsCheckboxes
     ): self {
         $obj = clone $this;
-        $obj->communicationsCheckboxes = $communicationsCheckboxes;
+        $obj['communicationsCheckboxes'] = $communicationsCheckboxes;
 
         return $obj;
     }
@@ -118,7 +122,7 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
     public function withPrivacyText(string $privacyText): self
     {
         $obj = clone $this;
-        $obj->privacyText = $privacyText;
+        $obj['privacyText'] = $privacyText;
 
         return $obj;
     }
@@ -138,7 +142,7 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
         string $communicationConsentText
     ): self {
         $obj = clone $this;
-        $obj->communicationConsentText = $communicationConsentText;
+        $obj['communicationConsentText'] = $communicationConsentText;
 
         return $obj;
     }
@@ -147,7 +151,7 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
         string $consentToProcessCheckboxLabel
     ): self {
         $obj = clone $this;
-        $obj->consentToProcessCheckboxLabel = $consentToProcessCheckboxLabel;
+        $obj['consentToProcessCheckboxLabel'] = $consentToProcessCheckboxLabel;
 
         return $obj;
     }
@@ -156,7 +160,7 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
         string $consentToProcessFooterText
     ): self {
         $obj = clone $this;
-        $obj->consentToProcessFooterText = $consentToProcessFooterText;
+        $obj['consentToProcessFooterText'] = $consentToProcessFooterText;
 
         return $obj;
     }
@@ -164,7 +168,7 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
     public function withConsentToProcessText(string $consentToProcessText): self
     {
         $obj = clone $this;
-        $obj->consentToProcessText = $consentToProcessText;
+        $obj['consentToProcessText'] = $consentToProcessText;
 
         return $obj;
     }

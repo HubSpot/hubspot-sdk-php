@@ -47,7 +47,7 @@ final class PublicCampaignReadInput implements BaseModel
     {
         $obj = new self;
 
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class PublicCampaignReadInput implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }

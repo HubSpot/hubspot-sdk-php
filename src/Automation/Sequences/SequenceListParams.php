@@ -68,11 +68,11 @@ final class SequenceListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->userId = $userId;
+        $obj['userId'] = $userId;
 
-        null !== $after && $obj->after = $after;
-        null !== $limit && $obj->limit = $limit;
-        null !== $name && $obj->name = $name;
+        null !== $after && $obj['after'] = $after;
+        null !== $limit && $obj['limit'] = $limit;
+        null !== $name && $obj['name'] = $name;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class SequenceListParams implements BaseModel
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class SequenceListParams implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class SequenceListParams implements BaseModel
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class SequenceListParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

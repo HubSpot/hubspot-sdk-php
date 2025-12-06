@@ -109,7 +109,13 @@ final class ColumnRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Option> $options
+     * @param list<Option|array{
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     * }> $options
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -125,16 +131,16 @@ final class ColumnRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->label = $label;
-        $obj->name = $name;
-        $obj->options = $options;
+        $obj['id'] = $id;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
+        $obj['options'] = $options;
         $obj['type'] = $type;
 
-        null !== $foreignColumnId && $obj->foreignColumnId = $foreignColumnId;
-        null !== $foreignTableId && $obj->foreignTableId = $foreignTableId;
-        null !== $maxNumberOfCharacters && $obj->maxNumberOfCharacters = $maxNumberOfCharacters;
-        null !== $maxNumberOfOptions && $obj->maxNumberOfOptions = $maxNumberOfOptions;
+        null !== $foreignColumnId && $obj['foreignColumnId'] = $foreignColumnId;
+        null !== $foreignTableId && $obj['foreignTableId'] = $foreignTableId;
+        null !== $maxNumberOfCharacters && $obj['maxNumberOfCharacters'] = $maxNumberOfCharacters;
+        null !== $maxNumberOfOptions && $obj['maxNumberOfOptions'] = $maxNumberOfOptions;
 
         return $obj;
     }
@@ -145,7 +151,7 @@ final class ColumnRequest implements BaseModel
     public function withID(int $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -156,7 +162,7 @@ final class ColumnRequest implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -167,7 +173,7 @@ final class ColumnRequest implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -175,12 +181,18 @@ final class ColumnRequest implements BaseModel
     /**
      * Options to choose for select and multi-select columns.
      *
-     * @param list<Option> $options
+     * @param list<Option|array{
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }
@@ -204,7 +216,7 @@ final class ColumnRequest implements BaseModel
     public function withForeignColumnID(int $foreignColumnID): self
     {
         $obj = clone $this;
-        $obj->foreignColumnId = $foreignColumnID;
+        $obj['foreignColumnId'] = $foreignColumnID;
 
         return $obj;
     }
@@ -215,7 +227,7 @@ final class ColumnRequest implements BaseModel
     public function withForeignTableID(int $foreignTableID): self
     {
         $obj = clone $this;
-        $obj->foreignTableId = $foreignTableID;
+        $obj['foreignTableId'] = $foreignTableID;
 
         return $obj;
     }
@@ -223,7 +235,7 @@ final class ColumnRequest implements BaseModel
     public function withMaxNumberOfCharacters(int $maxNumberOfCharacters): self
     {
         $obj = clone $this;
-        $obj->maxNumberOfCharacters = $maxNumberOfCharacters;
+        $obj['maxNumberOfCharacters'] = $maxNumberOfCharacters;
 
         return $obj;
     }
@@ -231,7 +243,7 @@ final class ColumnRequest implements BaseModel
     public function withMaxNumberOfOptions(int $maxNumberOfOptions): self
     {
         $obj = clone $this;
-        $obj->maxNumberOfOptions = $maxNumberOfOptions;
+        $obj['maxNumberOfOptions'] = $maxNumberOfOptions;
 
         return $obj;
     }

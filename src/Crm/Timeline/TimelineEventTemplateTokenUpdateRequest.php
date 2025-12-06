@@ -66,7 +66,9 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventTemplateTokenOption> $options
+     * @param list<TimelineEventTemplateTokenOption|array{
+     *   label: string, value: string
+     * }> $options
      */
     public static function with(
         string $label,
@@ -75,10 +77,10 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->label = $label;
+        $obj['label'] = $label;
 
-        null !== $objectPropertyName && $obj->objectPropertyName = $objectPropertyName;
-        null !== $options && $obj->options = $options;
+        null !== $objectPropertyName && $obj['objectPropertyName'] = $objectPropertyName;
+        null !== $options && $obj['options'] = $options;
 
         return $obj;
     }
@@ -89,7 +91,7 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -100,7 +102,7 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
     public function withObjectPropertyName(string $objectPropertyName): self
     {
         $obj = clone $this;
-        $obj->objectPropertyName = $objectPropertyName;
+        $obj['objectPropertyName'] = $objectPropertyName;
 
         return $obj;
     }
@@ -108,12 +110,14 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
     /**
      * If type is `enumeration`, we should have a list of options to choose from.
      *
-     * @param list<TimelineEventTemplateTokenOption> $options
+     * @param list<TimelineEventTemplateTokenOption|array{
+     *   label: string, value: string
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }

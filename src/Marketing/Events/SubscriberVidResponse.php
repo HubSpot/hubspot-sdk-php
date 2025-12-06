@@ -47,7 +47,7 @@ final class SubscriberVidResponse implements BaseModel
     {
         $obj = new self;
 
-        $obj->vid = $vid;
+        $obj['vid'] = $vid;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class SubscriberVidResponse implements BaseModel
     public function withVid(int $vid): self
     {
         $obj = clone $this;
-        $obj->vid = $vid;
+        $obj['vid'] = $vid;
 
         return $obj;
     }

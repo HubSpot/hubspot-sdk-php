@@ -72,10 +72,10 @@ final class PublicAssociationDefinitionUserConfiguration implements BaseModel
         $obj = new self;
 
         $obj['category'] = $category;
-        $obj->typeId = $typeId;
+        $obj['typeId'] = $typeId;
 
-        null !== $label && $obj->label = $label;
-        null !== $userEnforcedMaxToObjectIds && $obj->userEnforcedMaxToObjectIds = $userEnforcedMaxToObjectIds;
+        null !== $label && $obj['label'] = $label;
+        null !== $userEnforcedMaxToObjectIds && $obj['userEnforcedMaxToObjectIds'] = $userEnforcedMaxToObjectIds;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class PublicAssociationDefinitionUserConfiguration implements BaseModel
     public function withTypeID(int $typeID): self
     {
         $obj = clone $this;
-        $obj->typeId = $typeID;
+        $obj['typeId'] = $typeID;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class PublicAssociationDefinitionUserConfiguration implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class PublicAssociationDefinitionUserConfiguration implements BaseModel
         int $userEnforcedMaxToObjectIDs
     ): self {
         $obj = clone $this;
-        $obj->userEnforcedMaxToObjectIds = $userEnforcedMaxToObjectIDs;
+        $obj['userEnforcedMaxToObjectIds'] = $userEnforcedMaxToObjectIDs;
 
         return $obj;
     }

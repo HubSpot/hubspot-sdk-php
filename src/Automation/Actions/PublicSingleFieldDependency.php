@@ -71,9 +71,9 @@ final class PublicSingleFieldDependency implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->controllingFieldName = $controllingFieldName;
+        $obj['controllingFieldName'] = $controllingFieldName;
         $obj['dependencyType'] = $dependencyType;
-        $obj->dependentFieldNames = $dependentFieldNames;
+        $obj['dependentFieldNames'] = $dependentFieldNames;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PublicSingleFieldDependency implements BaseModel
     public function withControllingFieldName(string $controllingFieldName): self
     {
         $obj = clone $this;
-        $obj->controllingFieldName = $controllingFieldName;
+        $obj['controllingFieldName'] = $controllingFieldName;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class PublicSingleFieldDependency implements BaseModel
     public function withDependentFieldNames(array $dependentFieldNames): self
     {
         $obj = clone $this;
-        $obj->dependentFieldNames = $dependentFieldNames;
+        $obj['dependentFieldNames'] = $dependentFieldNames;
 
         return $obj;
     }

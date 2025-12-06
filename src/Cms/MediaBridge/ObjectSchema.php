@@ -4,11 +4,19 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
+use HubspotSDK\Cms\MediaBridge\Property1\DataSensitivity;
+use HubspotSDK\Cms\MediaBridge\Property1\DateDisplayHint;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Cardinality;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Category;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition\FromObjectType;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition\InverseCardinality;
+use HubspotSDK\Events\EventDefinitions\AssociationDefinition\ToObjectType;
 use HubspotSDK\ObjectTypeDefinitionLabels;
+use HubspotSDK\PropertyModificationMetadata;
 
 /**
  * @phpstan-type ObjectSchemaShape = array{
@@ -145,8 +153,66 @@ final class ObjectSchema implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationDefinition> $associations
-     * @param list<Property1> $properties
+     * @param list<AssociationDefinition|array{
+     *   id: int,
+     *   allowsCustomLabels: bool,
+     *   cardinality: value-of<Cardinality>,
+     *   category: value-of<Category>,
+     *   fromObjectTypeId: string,
+     *   hasAllAssociatedObjects: bool,
+     *   hasCascadingDeletes: bool,
+     *   hasUserEnforcedMaxFromObjectIds: bool,
+     *   hasUserEnforcedMaxToObjectIds: bool,
+     *   hidden: bool,
+     *   inverseAllowsCustomLabels: bool,
+     *   inverseCardinality: value-of<InverseCardinality>,
+     *   inverseHasAllAssociatedObjects: bool,
+     *   inverseId: int,
+     *   inverseName: string,
+     *   isInversePrimary: bool,
+     *   isPrimary: bool,
+     *   maxFromObjectIds: int,
+     *   maxToObjectIds: int,
+     *   name: string,
+     *   portalUniqueIdentifier: string,
+     *   toObjectTypeId: string,
+     *   fromObjectType?: value-of<FromObjectType>|null,
+     *   inverseLabel?: string|null,
+     *   label?: string|null,
+     *   toObjectType?: value-of<ToObjectType>|null,
+     * }> $associations
+     * @param ObjectTypeDefinitionLabels|array{
+     *   plural?: string|null, singular?: string|null
+     * } $labels
+     * @param list<Property1|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option1>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   dateDisplayHint?: value-of<DateDisplayHint>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * }> $properties
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
@@ -157,7 +223,7 @@ final class ObjectSchema implements BaseModel
         bool $archived,
         array $associations,
         string $fullyQualifiedName,
-        ObjectTypeDefinitionLabels $labels,
+        ObjectTypeDefinitionLabels|array $labels,
         string $name,
         string $objectTypeId,
         array $properties,
@@ -173,25 +239,25 @@ final class ObjectSchema implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->allowsSensitiveProperties = $allowsSensitiveProperties;
-        $obj->archived = $archived;
-        $obj->associations = $associations;
-        $obj->fullyQualifiedName = $fullyQualifiedName;
-        $obj->labels = $labels;
-        $obj->name = $name;
-        $obj->objectTypeId = $objectTypeId;
-        $obj->properties = $properties;
-        $obj->requiredProperties = $requiredProperties;
-        $obj->searchableProperties = $searchableProperties;
-        $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
+        $obj['id'] = $id;
+        $obj['allowsSensitiveProperties'] = $allowsSensitiveProperties;
+        $obj['archived'] = $archived;
+        $obj['associations'] = $associations;
+        $obj['fullyQualifiedName'] = $fullyQualifiedName;
+        $obj['labels'] = $labels;
+        $obj['name'] = $name;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['properties'] = $properties;
+        $obj['requiredProperties'] = $requiredProperties;
+        $obj['searchableProperties'] = $searchableProperties;
+        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
-        null !== $createdAt && $obj->createdAt = $createdAt;
-        null !== $createdByUserId && $obj->createdByUserId = $createdByUserId;
-        null !== $description && $obj->description = $description;
-        null !== $primaryDisplayProperty && $obj->primaryDisplayProperty = $primaryDisplayProperty;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
-        null !== $updatedByUserId && $obj->updatedByUserId = $updatedByUserId;
+        null !== $createdAt && $obj['createdAt'] = $createdAt;
+        null !== $createdByUserId && $obj['createdByUserId'] = $createdByUserId;
+        null !== $description && $obj['description'] = $description;
+        null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $updatedByUserId && $obj['updatedByUserId'] = $updatedByUserId;
 
         return $obj;
     }
@@ -199,7 +265,7 @@ final class ObjectSchema implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -208,7 +274,7 @@ final class ObjectSchema implements BaseModel
         bool $allowsSensitiveProperties
     ): self {
         $obj = clone $this;
-        $obj->allowsSensitiveProperties = $allowsSensitiveProperties;
+        $obj['allowsSensitiveProperties'] = $allowsSensitiveProperties;
 
         return $obj;
     }
@@ -216,18 +282,45 @@ final class ObjectSchema implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
 
     /**
-     * @param list<AssociationDefinition> $associations
+     * @param list<AssociationDefinition|array{
+     *   id: int,
+     *   allowsCustomLabels: bool,
+     *   cardinality: value-of<Cardinality>,
+     *   category: value-of<Category>,
+     *   fromObjectTypeId: string,
+     *   hasAllAssociatedObjects: bool,
+     *   hasCascadingDeletes: bool,
+     *   hasUserEnforcedMaxFromObjectIds: bool,
+     *   hasUserEnforcedMaxToObjectIds: bool,
+     *   hidden: bool,
+     *   inverseAllowsCustomLabels: bool,
+     *   inverseCardinality: value-of<InverseCardinality>,
+     *   inverseHasAllAssociatedObjects: bool,
+     *   inverseId: int,
+     *   inverseName: string,
+     *   isInversePrimary: bool,
+     *   isPrimary: bool,
+     *   maxFromObjectIds: int,
+     *   maxToObjectIds: int,
+     *   name: string,
+     *   portalUniqueIdentifier: string,
+     *   toObjectTypeId: string,
+     *   fromObjectType?: value-of<FromObjectType>|null,
+     *   inverseLabel?: string|null,
+     *   label?: string|null,
+     *   toObjectType?: value-of<ToObjectType>|null,
+     * }> $associations
      */
     public function withAssociations(array $associations): self
     {
         $obj = clone $this;
-        $obj->associations = $associations;
+        $obj['associations'] = $associations;
 
         return $obj;
     }
@@ -235,15 +328,20 @@ final class ObjectSchema implements BaseModel
     public function withFullyQualifiedName(string $fullyQualifiedName): self
     {
         $obj = clone $this;
-        $obj->fullyQualifiedName = $fullyQualifiedName;
+        $obj['fullyQualifiedName'] = $fullyQualifiedName;
 
         return $obj;
     }
 
-    public function withLabels(ObjectTypeDefinitionLabels $labels): self
+    /**
+     * @param ObjectTypeDefinitionLabels|array{
+     *   plural?: string|null, singular?: string|null
+     * } $labels
+     */
+    public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
         $obj = clone $this;
-        $obj->labels = $labels;
+        $obj['labels'] = $labels;
 
         return $obj;
     }
@@ -251,7 +349,7 @@ final class ObjectSchema implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -259,18 +357,46 @@ final class ObjectSchema implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
 
     /**
-     * @param list<Property1> $properties
+     * @param list<Property1|array{
+     *   description: string,
+     *   fieldType: string,
+     *   groupName: string,
+     *   label: string,
+     *   name: string,
+     *   options: list<Option1>,
+     *   type: string,
+     *   archived?: bool|null,
+     *   archivedAt?: \DateTimeInterface|null,
+     *   calculated?: bool|null,
+     *   calculationFormula?: string|null,
+     *   createdAt?: \DateTimeInterface|null,
+     *   createdUserId?: string|null,
+     *   dataSensitivity?: value-of<DataSensitivity>|null,
+     *   dateDisplayHint?: value-of<DateDisplayHint>|null,
+     *   displayOrder?: int|null,
+     *   externalOptions?: bool|null,
+     *   formField?: bool|null,
+     *   hasUniqueValue?: bool|null,
+     *   hidden?: bool|null,
+     *   hubspotDefined?: bool|null,
+     *   modificationMetadata?: PropertyModificationMetadata|null,
+     *   referencedObjectType?: string|null,
+     *   sensitiveDataCategories?: list<string>|null,
+     *   showCurrencySymbol?: bool|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     *   updatedUserId?: string|null,
+     * }> $properties
      */
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -281,7 +407,7 @@ final class ObjectSchema implements BaseModel
     public function withRequiredProperties(array $requiredProperties): self
     {
         $obj = clone $this;
-        $obj->requiredProperties = $requiredProperties;
+        $obj['requiredProperties'] = $requiredProperties;
 
         return $obj;
     }
@@ -292,7 +418,7 @@ final class ObjectSchema implements BaseModel
     public function withSearchableProperties(array $searchableProperties): self
     {
         $obj = clone $this;
-        $obj->searchableProperties = $searchableProperties;
+        $obj['searchableProperties'] = $searchableProperties;
 
         return $obj;
     }
@@ -304,7 +430,7 @@ final class ObjectSchema implements BaseModel
         array $secondaryDisplayProperties
     ): self {
         $obj = clone $this;
-        $obj->secondaryDisplayProperties = $secondaryDisplayProperties;
+        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
         return $obj;
     }
@@ -312,7 +438,7 @@ final class ObjectSchema implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -320,7 +446,7 @@ final class ObjectSchema implements BaseModel
     public function withCreatedByUserID(int $createdByUserID): self
     {
         $obj = clone $this;
-        $obj->createdByUserId = $createdByUserID;
+        $obj['createdByUserId'] = $createdByUserID;
 
         return $obj;
     }
@@ -328,7 +454,7 @@ final class ObjectSchema implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -337,7 +463,7 @@ final class ObjectSchema implements BaseModel
         string $primaryDisplayProperty
     ): self {
         $obj = clone $this;
-        $obj->primaryDisplayProperty = $primaryDisplayProperty;
+        $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
 
         return $obj;
     }
@@ -345,7 +471,7 @@ final class ObjectSchema implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -353,7 +479,7 @@ final class ObjectSchema implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj->updatedByUserId = $updatedByUserID;
+        $obj['updatedByUserId'] = $updatedByUserID;
 
         return $obj;
     }

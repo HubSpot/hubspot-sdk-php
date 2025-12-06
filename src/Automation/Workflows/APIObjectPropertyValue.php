@@ -58,7 +58,7 @@ final class APIObjectPropertyValue implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APIObjectPropertyValue implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }

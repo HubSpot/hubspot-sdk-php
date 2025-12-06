@@ -78,10 +78,10 @@ final class PublicRollingPropertyUpdatedOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->numberOfDays = $numberOfDays;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['numberOfDays'] = $numberOfDays;
         $obj['operationType'] = $operationType;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class PublicRollingPropertyUpdatedOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class PublicRollingPropertyUpdatedOperation implements BaseModel
     public function withNumberOfDays(int $numberOfDays): self
     {
         $obj = clone $this;
-        $obj->numberOfDays = $numberOfDays;
+        $obj['numberOfDays'] = $numberOfDays;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class PublicRollingPropertyUpdatedOperation implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }

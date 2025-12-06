@@ -97,10 +97,10 @@ final class EmailStatisticsData implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->counters = $counters;
-        $obj->deviceBreakdown = $deviceBreakdown;
-        $obj->qualifierStats = $qualifierStats;
-        $obj->ratios = $ratios;
+        $obj['counters'] = $counters;
+        $obj['deviceBreakdown'] = $deviceBreakdown;
+        $obj['qualifierStats'] = $qualifierStats;
+        $obj['ratios'] = $ratios;
 
         return $obj;
     }
@@ -113,7 +113,7 @@ final class EmailStatisticsData implements BaseModel
     public function withCounters(array $counters): self
     {
         $obj = clone $this;
-        $obj->counters = $counters;
+        $obj['counters'] = $counters;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class EmailStatisticsData implements BaseModel
     public function withDeviceBreakdown(array $deviceBreakdown): self
     {
         $obj = clone $this;
-        $obj->deviceBreakdown = $deviceBreakdown;
+        $obj['deviceBreakdown'] = $deviceBreakdown;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class EmailStatisticsData implements BaseModel
     public function withQualifierStats(array $qualifierStats): self
     {
         $obj = clone $this;
-        $obj->qualifierStats = $qualifierStats;
+        $obj['qualifierStats'] = $qualifierStats;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class EmailStatisticsData implements BaseModel
     public function withRatios(array $ratios): self
     {
         $obj = clone $this;
-        $obj->ratios = $ratios;
+        $obj['ratios'] = $ratios;
 
         return $obj;
     }

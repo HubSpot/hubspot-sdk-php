@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
+use HubspotSDK\Paging;
 
 /**
  * @phpstan-type PublicCampaignWithAssetsShape = array{
@@ -85,8 +86,10 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,CollectionResponsePublicCampaignAsset> $assets
-     * @param list<PublicBusinessUnit> $businessUnits
+     * @param array<string,CollectionResponsePublicCampaignAsset|array{
+     *   results: list<PublicCampaignAsset>, paging?: Paging|null
+     * }> $assets
+     * @param list<PublicBusinessUnit|array{id: int}> $businessUnits
      * @param array<string,string> $properties
      */
     public static function with(
@@ -99,12 +102,12 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->assets = $assets;
-        $obj->businessUnits = $businessUnits;
-        $obj->createdAt = $createdAt;
-        $obj->properties = $properties;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['assets'] = $assets;
+        $obj['businessUnits'] = $businessUnits;
+        $obj['createdAt'] = $createdAt;
+        $obj['properties'] = $properties;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -112,29 +115,31 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
     /**
-     * @param array<string,CollectionResponsePublicCampaignAsset> $assets
+     * @param array<string,CollectionResponsePublicCampaignAsset|array{
+     *   results: list<PublicCampaignAsset>, paging?: Paging|null
+     * }> $assets
      */
     public function withAssets(array $assets): self
     {
         $obj = clone $this;
-        $obj->assets = $assets;
+        $obj['assets'] = $assets;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicBusinessUnit> $businessUnits
+     * @param list<PublicBusinessUnit|array{id: int}> $businessUnits
      */
     public function withBusinessUnits(array $businessUnits): self
     {
         $obj = clone $this;
-        $obj->businessUnits = $businessUnits;
+        $obj['businessUnits'] = $businessUnits;
 
         return $obj;
     }
@@ -142,7 +147,7 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -153,7 +158,7 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -161,7 +166,7 @@ final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

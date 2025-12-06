@@ -73,7 +73,22 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   templatePath: string,
  *   themeSettingsValues: array<string,mixed>,
  *   translatedFromId: string,
- *   translations: array<string,PagesContentLanguageVariation>,
+ *   translations: array<string,PagesContentLanguageVariation|array{
+ *     id: int,
+ *     archivedInDashboard: bool,
+ *     authorName: string,
+ *     campaign: string,
+ *     created: \DateTimeInterface,
+ *     name: string,
+ *     password: string,
+ *     publicAccessRules: list<mixed>,
+ *     publicAccessRulesEnabled: bool,
+ *     publishDate: \DateTimeInterface,
+ *     slug: string,
+ *     state: string,
+ *     updated: \DateTimeInterface,
+ *     tagIds?: list<int>|null,
+ *   }>,
  *   updated: \DateTimeInterface,
  *   updatedById: string,
  *   url: string,
@@ -569,7 +584,22 @@ final class SitePageUpdateDraftParams implements BaseModel
      * @param array<string,mixed> $layoutSections
      * @param list<mixed> $publicAccessRules
      * @param array<string,mixed> $themeSettingsValues
-     * @param array<string,PagesContentLanguageVariation> $translations
+     * @param array<string,PagesContentLanguageVariation|array{
+     *   id: int,
+     *   archivedInDashboard: bool,
+     *   authorName: string,
+     *   campaign: string,
+     *   created: \DateTimeInterface,
+     *   name: string,
+     *   password: string,
+     *   publicAccessRules: list<mixed>,
+     *   publicAccessRulesEnabled: bool,
+     *   publishDate: \DateTimeInterface,
+     *   slug: string,
+     *   state: string,
+     *   updated: \DateTimeInterface,
+     *   tagIds?: list<int>|null,
+     * }> $translations
      * @param array<string,mixed> $widgetContainers
      * @param array<string,mixed> $widgets
      */
@@ -634,63 +664,63 @@ final class SitePageUpdateDraftParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
+        $obj['id'] = $id;
         $obj['abStatus'] = $abStatus;
-        $obj->abTestId = $abTestId;
-        $obj->archivedAt = $archivedAt;
-        $obj->archivedInDashboard = $archivedInDashboard;
-        $obj->attachedStylesheets = $attachedStylesheets;
-        $obj->authorName = $authorName;
-        $obj->campaign = $campaign;
-        $obj->categoryId = $categoryId;
-        $obj->contentGroupId = $contentGroupId;
+        $obj['abTestId'] = $abTestId;
+        $obj['archivedAt'] = $archivedAt;
+        $obj['archivedInDashboard'] = $archivedInDashboard;
+        $obj['attachedStylesheets'] = $attachedStylesheets;
+        $obj['authorName'] = $authorName;
+        $obj['campaign'] = $campaign;
+        $obj['categoryId'] = $categoryId;
+        $obj['contentGroupId'] = $contentGroupId;
         $obj['contentTypeCategory'] = $contentTypeCategory;
-        $obj->created = $created;
-        $obj->createdById = $createdById;
-        $obj->currentlyPublished = $currentlyPublished;
+        $obj['created'] = $created;
+        $obj['createdById'] = $createdById;
+        $obj['currentlyPublished'] = $currentlyPublished;
         $obj['currentState'] = $currentState;
-        $obj->domain = $domain;
-        $obj->dynamicPageDataSourceId = $dynamicPageDataSourceId;
-        $obj->dynamicPageDataSourceType = $dynamicPageDataSourceType;
-        $obj->dynamicPageHubDbTableId = $dynamicPageHubDbTableId;
-        $obj->enableDomainStylesheets = $enableDomainStylesheets;
-        $obj->enableLayoutStylesheets = $enableLayoutStylesheets;
-        $obj->featuredImage = $featuredImage;
-        $obj->featuredImageAltText = $featuredImageAltText;
-        $obj->folderId = $folderId;
-        $obj->footerHtml = $footerHtml;
-        $obj->headHtml = $headHtml;
-        $obj->htmlTitle = $htmlTitle;
-        $obj->includeDefaultCustomCss = $includeDefaultCustomCss;
+        $obj['domain'] = $domain;
+        $obj['dynamicPageDataSourceId'] = $dynamicPageDataSourceId;
+        $obj['dynamicPageDataSourceType'] = $dynamicPageDataSourceType;
+        $obj['dynamicPageHubDbTableId'] = $dynamicPageHubDbTableId;
+        $obj['enableDomainStylesheets'] = $enableDomainStylesheets;
+        $obj['enableLayoutStylesheets'] = $enableLayoutStylesheets;
+        $obj['featuredImage'] = $featuredImage;
+        $obj['featuredImageAltText'] = $featuredImageAltText;
+        $obj['folderId'] = $folderId;
+        $obj['footerHtml'] = $footerHtml;
+        $obj['headHtml'] = $headHtml;
+        $obj['htmlTitle'] = $htmlTitle;
+        $obj['includeDefaultCustomCss'] = $includeDefaultCustomCss;
         $obj['language'] = $language;
-        $obj->layoutSections = $layoutSections;
-        $obj->linkRelCanonicalUrl = $linkRelCanonicalUrl;
-        $obj->mabExperimentId = $mabExperimentId;
-        $obj->metaDescription = $metaDescription;
-        $obj->name = $name;
-        $obj->pageExpiryDate = $pageExpiryDate;
-        $obj->pageExpiryEnabled = $pageExpiryEnabled;
-        $obj->pageExpiryRedirectId = $pageExpiryRedirectId;
-        $obj->pageExpiryRedirectUrl = $pageExpiryRedirectUrl;
-        $obj->pageRedirected = $pageRedirected;
-        $obj->password = $password;
-        $obj->publicAccessRules = $publicAccessRules;
-        $obj->publicAccessRulesEnabled = $publicAccessRulesEnabled;
-        $obj->publishDate = $publishDate;
-        $obj->publishImmediately = $publishImmediately;
-        $obj->slug = $slug;
-        $obj->state = $state;
-        $obj->subcategory = $subcategory;
-        $obj->templatePath = $templatePath;
-        $obj->themeSettingsValues = $themeSettingsValues;
-        $obj->translatedFromId = $translatedFromId;
-        $obj->translations = $translations;
-        $obj->updated = $updated;
-        $obj->updatedById = $updatedById;
-        $obj->url = $url;
-        $obj->useFeaturedImage = $useFeaturedImage;
-        $obj->widgetContainers = $widgetContainers;
-        $obj->widgets = $widgets;
+        $obj['layoutSections'] = $layoutSections;
+        $obj['linkRelCanonicalUrl'] = $linkRelCanonicalUrl;
+        $obj['mabExperimentId'] = $mabExperimentId;
+        $obj['metaDescription'] = $metaDescription;
+        $obj['name'] = $name;
+        $obj['pageExpiryDate'] = $pageExpiryDate;
+        $obj['pageExpiryEnabled'] = $pageExpiryEnabled;
+        $obj['pageExpiryRedirectId'] = $pageExpiryRedirectId;
+        $obj['pageExpiryRedirectUrl'] = $pageExpiryRedirectUrl;
+        $obj['pageRedirected'] = $pageRedirected;
+        $obj['password'] = $password;
+        $obj['publicAccessRules'] = $publicAccessRules;
+        $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
+        $obj['publishDate'] = $publishDate;
+        $obj['publishImmediately'] = $publishImmediately;
+        $obj['slug'] = $slug;
+        $obj['state'] = $state;
+        $obj['subcategory'] = $subcategory;
+        $obj['templatePath'] = $templatePath;
+        $obj['themeSettingsValues'] = $themeSettingsValues;
+        $obj['translatedFromId'] = $translatedFromId;
+        $obj['translations'] = $translations;
+        $obj['updated'] = $updated;
+        $obj['updatedById'] = $updatedById;
+        $obj['url'] = $url;
+        $obj['useFeaturedImage'] = $useFeaturedImage;
+        $obj['widgetContainers'] = $widgetContainers;
+        $obj['widgets'] = $widgets;
 
         return $obj;
     }
@@ -701,7 +731,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -725,7 +755,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withAbTestID(string $abTestID): self
     {
         $obj = clone $this;
-        $obj->abTestId = $abTestID;
+        $obj['abTestId'] = $abTestID;
 
         return $obj;
     }
@@ -736,7 +766,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
         $obj = clone $this;
-        $obj->archivedAt = $archivedAt;
+        $obj['archivedAt'] = $archivedAt;
 
         return $obj;
     }
@@ -747,7 +777,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withArchivedInDashboard(bool $archivedInDashboard): self
     {
         $obj = clone $this;
-        $obj->archivedInDashboard = $archivedInDashboard;
+        $obj['archivedInDashboard'] = $archivedInDashboard;
 
         return $obj;
     }
@@ -760,7 +790,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withAttachedStylesheets(array $attachedStylesheets): self
     {
         $obj = clone $this;
-        $obj->attachedStylesheets = $attachedStylesheets;
+        $obj['attachedStylesheets'] = $attachedStylesheets;
 
         return $obj;
     }
@@ -771,7 +801,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withAuthorName(string $authorName): self
     {
         $obj = clone $this;
-        $obj->authorName = $authorName;
+        $obj['authorName'] = $authorName;
 
         return $obj;
     }
@@ -782,7 +812,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withCampaign(string $campaign): self
     {
         $obj = clone $this;
-        $obj->campaign = $campaign;
+        $obj['campaign'] = $campaign;
 
         return $obj;
     }
@@ -793,7 +823,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withCategoryID(int $categoryID): self
     {
         $obj = clone $this;
-        $obj->categoryId = $categoryID;
+        $obj['categoryId'] = $categoryID;
 
         return $obj;
     }
@@ -801,7 +831,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withContentGroupID(string $contentGroupID): self
     {
         $obj = clone $this;
-        $obj->contentGroupId = $contentGroupID;
+        $obj['contentGroupId'] = $contentGroupID;
 
         return $obj;
     }
@@ -823,7 +853,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withCreated(\DateTimeInterface $created): self
     {
         $obj = clone $this;
-        $obj->created = $created;
+        $obj['created'] = $created;
 
         return $obj;
     }
@@ -834,7 +864,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
-        $obj->createdById = $createdByID;
+        $obj['createdById'] = $createdByID;
 
         return $obj;
     }
@@ -842,7 +872,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withCurrentlyPublished(bool $currentlyPublished): self
     {
         $obj = clone $this;
-        $obj->currentlyPublished = $currentlyPublished;
+        $obj['currentlyPublished'] = $currentlyPublished;
 
         return $obj;
     }
@@ -866,7 +896,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withDomain(string $domain): self
     {
         $obj = clone $this;
-        $obj->domain = $domain;
+        $obj['domain'] = $domain;
 
         return $obj;
     }
@@ -875,7 +905,7 @@ final class SitePageUpdateDraftParams implements BaseModel
         string $dynamicPageDataSourceID
     ): self {
         $obj = clone $this;
-        $obj->dynamicPageDataSourceId = $dynamicPageDataSourceID;
+        $obj['dynamicPageDataSourceId'] = $dynamicPageDataSourceID;
 
         return $obj;
     }
@@ -884,7 +914,7 @@ final class SitePageUpdateDraftParams implements BaseModel
         int $dynamicPageDataSourceType
     ): self {
         $obj = clone $this;
-        $obj->dynamicPageDataSourceType = $dynamicPageDataSourceType;
+        $obj['dynamicPageDataSourceType'] = $dynamicPageDataSourceType;
 
         return $obj;
     }
@@ -896,7 +926,7 @@ final class SitePageUpdateDraftParams implements BaseModel
         string $dynamicPageHubDBTableID
     ): self {
         $obj = clone $this;
-        $obj->dynamicPageHubDbTableId = $dynamicPageHubDBTableID;
+        $obj['dynamicPageHubDbTableId'] = $dynamicPageHubDBTableID;
 
         return $obj;
     }
@@ -908,7 +938,7 @@ final class SitePageUpdateDraftParams implements BaseModel
         bool $enableDomainStylesheets
     ): self {
         $obj = clone $this;
-        $obj->enableDomainStylesheets = $enableDomainStylesheets;
+        $obj['enableDomainStylesheets'] = $enableDomainStylesheets;
 
         return $obj;
     }
@@ -920,7 +950,7 @@ final class SitePageUpdateDraftParams implements BaseModel
         bool $enableLayoutStylesheets
     ): self {
         $obj = clone $this;
-        $obj->enableLayoutStylesheets = $enableLayoutStylesheets;
+        $obj['enableLayoutStylesheets'] = $enableLayoutStylesheets;
 
         return $obj;
     }
@@ -931,7 +961,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withFeaturedImage(string $featuredImage): self
     {
         $obj = clone $this;
-        $obj->featuredImage = $featuredImage;
+        $obj['featuredImage'] = $featuredImage;
 
         return $obj;
     }
@@ -942,7 +972,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withFeaturedImageAltText(string $featuredImageAltText): self
     {
         $obj = clone $this;
-        $obj->featuredImageAltText = $featuredImageAltText;
+        $obj['featuredImageAltText'] = $featuredImageAltText;
 
         return $obj;
     }
@@ -953,7 +983,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj->folderId = $folderID;
+        $obj['folderId'] = $folderID;
 
         return $obj;
     }
@@ -964,7 +994,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withFooterHTML(string $footerHTML): self
     {
         $obj = clone $this;
-        $obj->footerHtml = $footerHTML;
+        $obj['footerHtml'] = $footerHTML;
 
         return $obj;
     }
@@ -975,7 +1005,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withHeadHTML(string $headHTML): self
     {
         $obj = clone $this;
-        $obj->headHtml = $headHTML;
+        $obj['headHtml'] = $headHTML;
 
         return $obj;
     }
@@ -986,7 +1016,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withHTMLTitle(string $htmlTitle): self
     {
         $obj = clone $this;
-        $obj->htmlTitle = $htmlTitle;
+        $obj['htmlTitle'] = $htmlTitle;
 
         return $obj;
     }
@@ -998,7 +1028,7 @@ final class SitePageUpdateDraftParams implements BaseModel
         bool $includeDefaultCustomCss
     ): self {
         $obj = clone $this;
-        $obj->includeDefaultCustomCss = $includeDefaultCustomCss;
+        $obj['includeDefaultCustomCss'] = $includeDefaultCustomCss;
 
         return $obj;
     }
@@ -1022,7 +1052,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withLayoutSections(array $layoutSections): self
     {
         $obj = clone $this;
-        $obj->layoutSections = $layoutSections;
+        $obj['layoutSections'] = $layoutSections;
 
         return $obj;
     }
@@ -1033,7 +1063,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withLinkRelCanonicalURL(string $linkRelCanonicalURL): self
     {
         $obj = clone $this;
-        $obj->linkRelCanonicalUrl = $linkRelCanonicalURL;
+        $obj['linkRelCanonicalUrl'] = $linkRelCanonicalURL;
 
         return $obj;
     }
@@ -1044,7 +1074,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withMabExperimentID(string $mabExperimentID): self
     {
         $obj = clone $this;
-        $obj->mabExperimentId = $mabExperimentID;
+        $obj['mabExperimentId'] = $mabExperimentID;
 
         return $obj;
     }
@@ -1055,7 +1085,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withMetaDescription(string $metaDescription): self
     {
         $obj = clone $this;
-        $obj->metaDescription = $metaDescription;
+        $obj['metaDescription'] = $metaDescription;
 
         return $obj;
     }
@@ -1066,7 +1096,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -1077,7 +1107,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withPageExpiryDate(int $pageExpiryDate): self
     {
         $obj = clone $this;
-        $obj->pageExpiryDate = $pageExpiryDate;
+        $obj['pageExpiryDate'] = $pageExpiryDate;
 
         return $obj;
     }
@@ -1088,7 +1118,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withPageExpiryEnabled(bool $pageExpiryEnabled): self
     {
         $obj = clone $this;
-        $obj->pageExpiryEnabled = $pageExpiryEnabled;
+        $obj['pageExpiryEnabled'] = $pageExpiryEnabled;
 
         return $obj;
     }
@@ -1099,7 +1129,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withPageExpiryRedirectID(int $pageExpiryRedirectID): self
     {
         $obj = clone $this;
-        $obj->pageExpiryRedirectId = $pageExpiryRedirectID;
+        $obj['pageExpiryRedirectId'] = $pageExpiryRedirectID;
 
         return $obj;
     }
@@ -1111,7 +1141,7 @@ final class SitePageUpdateDraftParams implements BaseModel
         string $pageExpiryRedirectURL
     ): self {
         $obj = clone $this;
-        $obj->pageExpiryRedirectUrl = $pageExpiryRedirectURL;
+        $obj['pageExpiryRedirectUrl'] = $pageExpiryRedirectURL;
 
         return $obj;
     }
@@ -1122,7 +1152,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withPageRedirected(bool $pageRedirected): self
     {
         $obj = clone $this;
-        $obj->pageRedirected = $pageRedirected;
+        $obj['pageRedirected'] = $pageRedirected;
 
         return $obj;
     }
@@ -1133,7 +1163,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withPassword(string $password): self
     {
         $obj = clone $this;
-        $obj->password = $password;
+        $obj['password'] = $password;
 
         return $obj;
     }
@@ -1146,7 +1176,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withPublicAccessRules(array $publicAccessRules): self
     {
         $obj = clone $this;
-        $obj->publicAccessRules = $publicAccessRules;
+        $obj['publicAccessRules'] = $publicAccessRules;
 
         return $obj;
     }
@@ -1158,7 +1188,7 @@ final class SitePageUpdateDraftParams implements BaseModel
         bool $publicAccessRulesEnabled
     ): self {
         $obj = clone $this;
-        $obj->publicAccessRulesEnabled = $publicAccessRulesEnabled;
+        $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
 
         return $obj;
     }
@@ -1169,7 +1199,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
         $obj = clone $this;
-        $obj->publishDate = $publishDate;
+        $obj['publishDate'] = $publishDate;
 
         return $obj;
     }
@@ -1180,7 +1210,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withPublishImmediately(bool $publishImmediately): self
     {
         $obj = clone $this;
-        $obj->publishImmediately = $publishImmediately;
+        $obj['publishImmediately'] = $publishImmediately;
 
         return $obj;
     }
@@ -1191,7 +1221,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withSlug(string $slug): self
     {
         $obj = clone $this;
-        $obj->slug = $slug;
+        $obj['slug'] = $slug;
 
         return $obj;
     }
@@ -1202,7 +1232,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withState(string $state): self
     {
         $obj = clone $this;
-        $obj->state = $state;
+        $obj['state'] = $state;
 
         return $obj;
     }
@@ -1213,7 +1243,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withSubcategory(string $subcategory): self
     {
         $obj = clone $this;
-        $obj->subcategory = $subcategory;
+        $obj['subcategory'] = $subcategory;
 
         return $obj;
     }
@@ -1224,7 +1254,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withTemplatePath(string $templatePath): self
     {
         $obj = clone $this;
-        $obj->templatePath = $templatePath;
+        $obj['templatePath'] = $templatePath;
 
         return $obj;
     }
@@ -1235,7 +1265,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withThemeSettingsValues(array $themeSettingsValues): self
     {
         $obj = clone $this;
-        $obj->themeSettingsValues = $themeSettingsValues;
+        $obj['themeSettingsValues'] = $themeSettingsValues;
 
         return $obj;
     }
@@ -1246,18 +1276,33 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withTranslatedFromID(string $translatedFromID): self
     {
         $obj = clone $this;
-        $obj->translatedFromId = $translatedFromID;
+        $obj['translatedFromId'] = $translatedFromID;
 
         return $obj;
     }
 
     /**
-     * @param array<string,PagesContentLanguageVariation> $translations
+     * @param array<string,PagesContentLanguageVariation|array{
+     *   id: int,
+     *   archivedInDashboard: bool,
+     *   authorName: string,
+     *   campaign: string,
+     *   created: \DateTimeInterface,
+     *   name: string,
+     *   password: string,
+     *   publicAccessRules: list<mixed>,
+     *   publicAccessRulesEnabled: bool,
+     *   publishDate: \DateTimeInterface,
+     *   slug: string,
+     *   state: string,
+     *   updated: \DateTimeInterface,
+     *   tagIds?: list<int>|null,
+     * }> $translations
      */
     public function withTranslations(array $translations): self
     {
         $obj = clone $this;
-        $obj->translations = $translations;
+        $obj['translations'] = $translations;
 
         return $obj;
     }
@@ -1265,7 +1310,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withUpdated(\DateTimeInterface $updated): self
     {
         $obj = clone $this;
-        $obj->updated = $updated;
+        $obj['updated'] = $updated;
 
         return $obj;
     }
@@ -1276,7 +1321,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
-        $obj->updatedById = $updatedByID;
+        $obj['updatedById'] = $updatedByID;
 
         return $obj;
     }
@@ -1287,7 +1332,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }
@@ -1298,7 +1343,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withUseFeaturedImage(bool $useFeaturedImage): self
     {
         $obj = clone $this;
-        $obj->useFeaturedImage = $useFeaturedImage;
+        $obj['useFeaturedImage'] = $useFeaturedImage;
 
         return $obj;
     }
@@ -1311,7 +1356,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withWidgetContainers(array $widgetContainers): self
     {
         $obj = clone $this;
-        $obj->widgetContainers = $widgetContainers;
+        $obj['widgetContainers'] = $widgetContainers;
 
         return $obj;
     }
@@ -1324,7 +1369,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     public function withWidgets(array $widgets): self
     {
         $obj = clone $this;
-        $obj->widgets = $widgets;
+        $obj['widgets'] = $widgets;
 
         return $obj;
     }

@@ -92,12 +92,12 @@ final class PublicDatePropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->day = $day;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->month = $month;
+        $obj['day'] = $day;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['month'] = $month;
         $obj['operationType'] = $operationType;
-        $obj->operator = $operator;
-        $obj->year = $year;
+        $obj['operator'] = $operator;
+        $obj['year'] = $year;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class PublicDatePropertyOperation implements BaseModel
     public function withDay(int $day): self
     {
         $obj = clone $this;
-        $obj->day = $day;
+        $obj['day'] = $day;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class PublicDatePropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class PublicDatePropertyOperation implements BaseModel
     public function withMonth(string $month): self
     {
         $obj = clone $this;
-        $obj->month = $month;
+        $obj['month'] = $month;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class PublicDatePropertyOperation implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class PublicDatePropertyOperation implements BaseModel
     public function withYear(int $year): self
     {
         $obj = clone $this;
-        $obj->year = $year;
+        $obj['year'] = $year;
 
         return $obj;
     }

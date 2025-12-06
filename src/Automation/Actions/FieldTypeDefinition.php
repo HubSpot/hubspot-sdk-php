@@ -99,7 +99,13 @@ final class FieldTypeDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Option> $options
+     * @param list<Option|array{
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     * }> $options
      * @param Type|value-of<Type> $type
      * @param FieldType|value-of<FieldType> $fieldType
      * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
@@ -119,17 +125,17 @@ final class FieldTypeDefinition implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->externalOptions = $externalOptions;
-        $obj->name = $name;
-        $obj->options = $options;
+        $obj['externalOptions'] = $externalOptions;
+        $obj['name'] = $name;
+        $obj['options'] = $options;
         $obj['type'] = $type;
 
-        null !== $description && $obj->description = $description;
-        null !== $externalOptionsReferenceType && $obj->externalOptionsReferenceType = $externalOptionsReferenceType;
+        null !== $description && $obj['description'] = $description;
+        null !== $externalOptionsReferenceType && $obj['externalOptionsReferenceType'] = $externalOptionsReferenceType;
         null !== $fieldType && $obj['fieldType'] = $fieldType;
-        null !== $helpText && $obj->helpText = $helpText;
-        null !== $label && $obj->label = $label;
-        null !== $optionsUrl && $obj->optionsUrl = $optionsUrl;
+        null !== $helpText && $obj['helpText'] = $helpText;
+        null !== $label && $obj['label'] = $label;
+        null !== $optionsUrl && $obj['optionsUrl'] = $optionsUrl;
         null !== $referencedObjectType && $obj['referencedObjectType'] = $referencedObjectType;
 
         return $obj;
@@ -138,7 +144,7 @@ final class FieldTypeDefinition implements BaseModel
     public function withExternalOptions(bool $externalOptions): self
     {
         $obj = clone $this;
-        $obj->externalOptions = $externalOptions;
+        $obj['externalOptions'] = $externalOptions;
 
         return $obj;
     }
@@ -146,18 +152,24 @@ final class FieldTypeDefinition implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
 
     /**
-     * @param list<Option> $options
+     * @param list<Option|array{
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     *   displayOrder?: int|null,
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }
@@ -176,7 +188,7 @@ final class FieldTypeDefinition implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -185,7 +197,7 @@ final class FieldTypeDefinition implements BaseModel
         string $externalOptionsReferenceType
     ): self {
         $obj = clone $this;
-        $obj->externalOptionsReferenceType = $externalOptionsReferenceType;
+        $obj['externalOptionsReferenceType'] = $externalOptionsReferenceType;
 
         return $obj;
     }
@@ -204,7 +216,7 @@ final class FieldTypeDefinition implements BaseModel
     public function withHelpText(string $helpText): self
     {
         $obj = clone $this;
-        $obj->helpText = $helpText;
+        $obj['helpText'] = $helpText;
 
         return $obj;
     }
@@ -212,7 +224,7 @@ final class FieldTypeDefinition implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -220,7 +232,7 @@ final class FieldTypeDefinition implements BaseModel
     public function withOptionsURL(string $optionsURL): self
     {
         $obj = clone $this;
-        $obj->optionsUrl = $optionsURL;
+        $obj['optionsUrl'] = $optionsURL;
 
         return $obj;
     }

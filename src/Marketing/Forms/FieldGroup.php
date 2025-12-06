@@ -88,11 +88,11 @@ final class FieldGroup implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->fields = $fields;
+        $obj['fields'] = $fields;
         $obj['groupType'] = $groupType;
         $obj['richTextType'] = $richTextType;
 
-        null !== $richText && $obj->richText = $richText;
+        null !== $richText && $obj['richText'] = $richText;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class FieldGroup implements BaseModel
     public function withFields(array $fields): self
     {
         $obj = clone $this;
-        $obj->fields = $fields;
+        $obj['fields'] = $fields;
 
         return $obj;
     }
@@ -140,7 +140,7 @@ final class FieldGroup implements BaseModel
     public function withRichText(string $richText): self
     {
         $obj = clone $this;
-        $obj->richText = $richText;
+        $obj['richText'] = $richText;
 
         return $obj;
     }

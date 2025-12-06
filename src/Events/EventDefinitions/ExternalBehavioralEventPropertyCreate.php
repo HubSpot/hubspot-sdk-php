@@ -79,7 +79,13 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<OptionInput> $options
+     * @param list<OptionInput|array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     * }> $options
      */
     public static function with(
         string $label,
@@ -90,12 +96,12 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->label = $label;
-        $obj->type = $type;
+        $obj['label'] = $label;
+        $obj['type'] = $type;
 
-        null !== $description && $obj->description = $description;
-        null !== $name && $obj->name = $name;
-        null !== $options && $obj->options = $options;
+        null !== $description && $obj['description'] = $description;
+        null !== $name && $obj['name'] = $name;
+        null !== $options && $obj['options'] = $options;
 
         return $obj;
     }
@@ -106,7 +112,7 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -117,7 +123,7 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -128,7 +134,7 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -139,7 +145,7 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -147,12 +153,18 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
     /**
      * A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
      *
-     * @param list<OptionInput> $options
+     * @param list<OptionInput|array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }

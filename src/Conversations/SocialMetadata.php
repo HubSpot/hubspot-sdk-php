@@ -80,14 +80,14 @@ final class SocialMetadata implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->mediaType = $mediaType;
+        $obj['mediaType'] = $mediaType;
 
-        null !== $id && $obj->id = $id;
-        null !== $description && $obj->description = $description;
-        null !== $mediaTitle && $obj->mediaTitle = $mediaTitle;
-        null !== $mediaUrl && $obj->mediaUrl = $mediaUrl;
-        null !== $mediaUrlString && $obj->mediaUrlString = $mediaUrlString;
-        null !== $thumbnailUrl && $obj->thumbnailUrl = $thumbnailUrl;
+        null !== $id && $obj['id'] = $id;
+        null !== $description && $obj['description'] = $description;
+        null !== $mediaTitle && $obj['mediaTitle'] = $mediaTitle;
+        null !== $mediaUrl && $obj['mediaUrl'] = $mediaUrl;
+        null !== $mediaUrlString && $obj['mediaUrlString'] = $mediaUrlString;
+        null !== $thumbnailUrl && $obj['thumbnailUrl'] = $thumbnailUrl;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class SocialMetadata implements BaseModel
     public function withMediaType(string $mediaType): self
     {
         $obj = clone $this;
-        $obj->mediaType = $mediaType;
+        $obj['mediaType'] = $mediaType;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class SocialMetadata implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class SocialMetadata implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class SocialMetadata implements BaseModel
     public function withMediaTitle(string $mediaTitle): self
     {
         $obj = clone $this;
-        $obj->mediaTitle = $mediaTitle;
+        $obj['mediaTitle'] = $mediaTitle;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class SocialMetadata implements BaseModel
     public function withMediaURL(string $mediaURL): self
     {
         $obj = clone $this;
-        $obj->mediaUrl = $mediaURL;
+        $obj['mediaUrl'] = $mediaURL;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class SocialMetadata implements BaseModel
     public function withMediaURLString(string $mediaURLString): self
     {
         $obj = clone $this;
-        $obj->mediaUrlString = $mediaURLString;
+        $obj['mediaUrlString'] = $mediaURLString;
 
         return $obj;
     }
@@ -143,7 +143,7 @@ final class SocialMetadata implements BaseModel
     public function withThumbnailURL(string $thumbnailURL): self
     {
         $obj = clone $this;
-        $obj->thumbnailUrl = $thumbnailURL;
+        $obj['thumbnailUrl'] = $thumbnailURL;
 
         return $obj;
     }

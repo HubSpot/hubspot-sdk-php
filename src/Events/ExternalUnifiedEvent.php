@@ -114,12 +114,12 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->eventType = $eventType;
-        $obj->objectId = $objectId;
-        $obj->objectType = $objectType;
-        $obj->occurredAt = $occurredAt;
-        $obj->properties = $properties;
+        $obj['id'] = $id;
+        $obj['eventType'] = $eventType;
+        $obj['objectId'] = $objectId;
+        $obj['objectType'] = $objectType;
+        $obj['occurredAt'] = $occurredAt;
+        $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     public function withEventType(string $eventType): self
     {
         $obj = clone $this;
-        $obj->eventType = $eventType;
+        $obj['eventType'] = $eventType;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     public function withOccurredAt(\DateTimeInterface $occurredAt): self
     {
         $obj = clone $this;
-        $obj->occurredAt = $occurredAt;
+        $obj['occurredAt'] = $occurredAt;
 
         return $obj;
     }
@@ -187,7 +187,7 @@ final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
     public function withProperties(array $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

@@ -64,10 +64,10 @@ final class PropertyListParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $archived && $obj->archived = $archived;
+        null !== $archived && $obj['archived'] = $archived;
         null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
-        null !== $locale && $obj->locale = $locale;
-        null !== $properties && $obj->properties = $properties;
+        null !== $locale && $obj['locale'] = $locale;
+        null !== $properties && $obj['properties'] = $properties;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class PropertyListParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class PropertyListParams implements BaseModel
     public function withLocale(string $locale): self
     {
         $obj = clone $this;
-        $obj->locale = $locale;
+        $obj['locale'] = $locale;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class PropertyListParams implements BaseModel
     public function withProperties(string $properties): self
     {
         $obj = clone $this;
-        $obj->properties = $properties;
+        $obj['properties'] = $properties;
 
         return $obj;
     }

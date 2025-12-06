@@ -58,8 +58,8 @@ final class AttentionSpanCalculatedValues implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->totalPercentPlayed = $totalPercentPlayed;
-        $obj->totalSecondsPlayed = $totalSecondsPlayed;
+        $obj['totalPercentPlayed'] = $totalPercentPlayed;
+        $obj['totalSecondsPlayed'] = $totalSecondsPlayed;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class AttentionSpanCalculatedValues implements BaseModel
     public function withTotalPercentPlayed(float $totalPercentPlayed): self
     {
         $obj = clone $this;
-        $obj->totalPercentPlayed = $totalPercentPlayed;
+        $obj['totalPercentPlayed'] = $totalPercentPlayed;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class AttentionSpanCalculatedValues implements BaseModel
     public function withTotalSecondsPlayed(int $totalSecondsPlayed): self
     {
         $obj = clone $this;
-        $obj->totalSecondsPlayed = $totalSecondsPlayed;
+        $obj['totalSecondsPlayed'] = $totalSecondsPlayed;
 
         return $obj;
     }

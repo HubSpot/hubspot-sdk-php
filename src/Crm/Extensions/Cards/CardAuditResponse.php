@@ -96,11 +96,11 @@ final class CardAuditResponse implements BaseModel
         $obj = new self;
 
         $obj['actionType'] = $actionType;
-        $obj->applicationId = $applicationId;
+        $obj['applicationId'] = $applicationId;
         $obj['authSource'] = $authSource;
-        $obj->changedAt = $changedAt;
-        $obj->initiatingUserId = $initiatingUserId;
-        $obj->objectTypeId = $objectTypeId;
+        $obj['changedAt'] = $changedAt;
+        $obj['initiatingUserId'] = $initiatingUserId;
+        $obj['objectTypeId'] = $objectTypeId;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class CardAuditResponse implements BaseModel
     public function withApplicationID(int $applicationID): self
     {
         $obj = clone $this;
-        $obj->applicationId = $applicationID;
+        $obj['applicationId'] = $applicationID;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class CardAuditResponse implements BaseModel
     public function withChangedAt(int $changedAt): self
     {
         $obj = clone $this;
-        $obj->changedAt = $changedAt;
+        $obj['changedAt'] = $changedAt;
 
         return $obj;
     }
@@ -146,7 +146,7 @@ final class CardAuditResponse implements BaseModel
     public function withInitiatingUserID(int $initiatingUserID): self
     {
         $obj = clone $this;
-        $obj->initiatingUserId = $initiatingUserID;
+        $obj['initiatingUserId'] = $initiatingUserID;
 
         return $obj;
     }
@@ -154,7 +154,7 @@ final class CardAuditResponse implements BaseModel
     public function withObjectTypeID(int $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }

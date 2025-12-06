@@ -67,7 +67,7 @@ final class TimeOffset implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->amount = $amount;
+        $obj['amount'] = $amount;
         $obj['offsetDirection'] = $offsetDirection;
         $obj['timeUnit'] = $timeUnit;
 
@@ -77,7 +77,7 @@ final class TimeOffset implements BaseModel
     public function withAmount(int $amount): self
     {
         $obj = clone $this;
-        $obj->amount = $amount;
+        $obj['amount'] = $amount;
 
         return $obj;
     }

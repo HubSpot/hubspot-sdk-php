@@ -49,7 +49,7 @@ final class SoftRequiredPropertiesExtensionData implements BaseModel
     {
         $obj = new self;
 
-        $obj->isSoftRequiredProperty = $isSoftRequiredProperty;
+        $obj['isSoftRequiredProperty'] = $isSoftRequiredProperty;
 
         return $obj;
     }
@@ -58,7 +58,7 @@ final class SoftRequiredPropertiesExtensionData implements BaseModel
         bool $isSoftRequiredProperty
     ): self {
         $obj = clone $this;
-        $obj->isSoftRequiredProperty = $isSoftRequiredProperty;
+        $obj['isSoftRequiredProperty'] = $isSoftRequiredProperty;
 
         return $obj;
     }

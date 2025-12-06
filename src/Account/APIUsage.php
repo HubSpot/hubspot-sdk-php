@@ -111,13 +111,13 @@ final class APIUsage implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->collectedAt = $collectedAt;
-        $obj->currentUsage = $currentUsage;
+        $obj['collectedAt'] = $collectedAt;
+        $obj['currentUsage'] = $currentUsage;
         $obj['fetchStatus'] = $fetchStatus;
-        $obj->name = $name;
-        $obj->usageLimit = $usageLimit;
+        $obj['name'] = $name;
+        $obj['usageLimit'] = $usageLimit;
 
-        null !== $resetsAt && $obj->resetsAt = $resetsAt;
+        null !== $resetsAt && $obj['resetsAt'] = $resetsAt;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class APIUsage implements BaseModel
     public function withCollectedAt(\DateTimeInterface $collectedAt): self
     {
         $obj = clone $this;
-        $obj->collectedAt = $collectedAt;
+        $obj['collectedAt'] = $collectedAt;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class APIUsage implements BaseModel
     public function withCurrentUsage(int $currentUsage): self
     {
         $obj = clone $this;
-        $obj->currentUsage = $currentUsage;
+        $obj['currentUsage'] = $currentUsage;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class APIUsage implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class APIUsage implements BaseModel
     public function withUsageLimit(int $usageLimit): self
     {
         $obj = clone $this;
-        $obj->usageLimit = $usageLimit;
+        $obj['usageLimit'] = $usageLimit;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class APIUsage implements BaseModel
     public function withResetsAt(\DateTimeInterface $resetsAt): self
     {
         $obj = clone $this;
-        $obj->resetsAt = $resetsAt;
+        $obj['resetsAt'] = $resetsAt;
 
         return $obj;
     }

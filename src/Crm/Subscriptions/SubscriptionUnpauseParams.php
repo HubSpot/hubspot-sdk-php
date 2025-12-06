@@ -55,7 +55,7 @@ final class SubscriptionUnpauseParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->proposedNextBillingDate = $proposedNextBillingDate;
+        $obj['proposedNextBillingDate'] = $proposedNextBillingDate;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class SubscriptionUnpauseParams implements BaseModel
         int $proposedNextBillingDate
     ): self {
         $obj = clone $this;
-        $obj->proposedNextBillingDate = $proposedNextBillingDate;
+        $obj['proposedNextBillingDate'] = $proposedNextBillingDate;
 
         return $obj;
     }

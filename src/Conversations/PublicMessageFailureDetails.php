@@ -57,9 +57,9 @@ final class PublicMessageFailureDetails implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->errorMessageTokens = $errorMessageTokens;
+        $obj['errorMessageTokens'] = $errorMessageTokens;
 
-        null !== $errorMessage && $obj->errorMessage = $errorMessage;
+        null !== $errorMessage && $obj['errorMessage'] = $errorMessage;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class PublicMessageFailureDetails implements BaseModel
     public function withErrorMessageTokens(array $errorMessageTokens): self
     {
         $obj = clone $this;
-        $obj->errorMessageTokens = $errorMessageTokens;
+        $obj['errorMessageTokens'] = $errorMessageTokens;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class PublicMessageFailureDetails implements BaseModel
     public function withErrorMessage(string $errorMessage): self
     {
         $obj = clone $this;
-        $obj->errorMessage = $errorMessage;
+        $obj['errorMessage'] = $errorMessage;
 
         return $obj;
     }

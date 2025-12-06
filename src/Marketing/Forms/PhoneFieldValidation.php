@@ -56,8 +56,8 @@ final class PhoneFieldValidation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->maxAllowedDigits = $maxAllowedDigits;
-        $obj->minAllowedDigits = $minAllowedDigits;
+        $obj['maxAllowedDigits'] = $maxAllowedDigits;
+        $obj['minAllowedDigits'] = $minAllowedDigits;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class PhoneFieldValidation implements BaseModel
     public function withMaxAllowedDigits(int $maxAllowedDigits): self
     {
         $obj = clone $this;
-        $obj->maxAllowedDigits = $maxAllowedDigits;
+        $obj['maxAllowedDigits'] = $maxAllowedDigits;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class PhoneFieldValidation implements BaseModel
     public function withMinAllowedDigits(int $minAllowedDigits): self
     {
         $obj = clone $this;
-        $obj->minAllowedDigits = $minAllowedDigits;
+        $obj['minAllowedDigits'] = $minAllowedDigits;
 
         return $obj;
     }

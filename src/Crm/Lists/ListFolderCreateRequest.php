@@ -60,9 +60,9 @@ final class ListFolderCreateRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->name = $name;
+        $obj['name'] = $name;
 
-        null !== $parentFolderId && $obj->parentFolderId = $parentFolderId;
+        null !== $parentFolderId && $obj['parentFolderId'] = $parentFolderId;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class ListFolderCreateRequest implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class ListFolderCreateRequest implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj->parentFolderId = $parentFolderID;
+        $obj['parentFolderId'] = $parentFolderID;
 
         return $obj;
     }

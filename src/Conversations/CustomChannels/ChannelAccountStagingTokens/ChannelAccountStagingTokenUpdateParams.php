@@ -18,7 +18,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ChannelAccountStagingTokenUpdateParamsShape = array{
  *   channelId: int,
  *   accountName: string,
- *   deliveryIdentifier: PublicDeliveryIdentifier,
+ *   deliveryIdentifier: PublicDeliveryIdentifier|array{
+ *     type: string, value: string
+ *   },
  * }
  */
 final class ChannelAccountStagingTokenUpdateParams implements BaseModel
@@ -64,17 +66,21 @@ final class ChannelAccountStagingTokenUpdateParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
      */
     public static function with(
         int $channelId,
         string $accountName,
-        PublicDeliveryIdentifier $deliveryIdentifier,
+        PublicDeliveryIdentifier|array $deliveryIdentifier,
     ): self {
         $obj = new self;
 
-        $obj->channelId = $channelId;
-        $obj->accountName = $accountName;
-        $obj->deliveryIdentifier = $deliveryIdentifier;
+        $obj['channelId'] = $channelId;
+        $obj['accountName'] = $accountName;
+        $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }
@@ -82,7 +88,7 @@ final class ChannelAccountStagingTokenUpdateParams implements BaseModel
     public function withChannelID(int $channelID): self
     {
         $obj = clone $this;
-        $obj->channelId = $channelID;
+        $obj['channelId'] = $channelID;
 
         return $obj;
     }
@@ -90,16 +96,21 @@ final class ChannelAccountStagingTokenUpdateParams implements BaseModel
     public function withAccountName(string $accountName): self
     {
         $obj = clone $this;
-        $obj->accountName = $accountName;
+        $obj['accountName'] = $accountName;
 
         return $obj;
     }
 
+    /**
+     * @param PublicDeliveryIdentifier|array{
+     *   type: string, value: string
+     * } $deliveryIdentifier
+     */
     public function withDeliveryIdentifier(
-        PublicDeliveryIdentifier $deliveryIdentifier
+        PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
         $obj = clone $this;
-        $obj->deliveryIdentifier = $deliveryIdentifier;
+        $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $obj;
     }

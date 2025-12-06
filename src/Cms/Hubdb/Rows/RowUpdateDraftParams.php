@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   tableIdOrName: string,
  *   childTableId: int,
  *   displayIndex: int,
- *   values: array<string,Variant>,
+ *   values: array<string,Variant|array<string,mixed>>,
  *   name?: string,
  *   path?: string,
  * }
@@ -94,7 +94,7 @@ final class RowUpdateDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,Variant> $values
+     * @param array<string,Variant|array<string,mixed>> $values
      */
     public static function with(
         string $tableIdOrName,
@@ -106,13 +106,13 @@ final class RowUpdateDraftParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->tableIdOrName = $tableIdOrName;
-        $obj->childTableId = $childTableId;
-        $obj->displayIndex = $displayIndex;
-        $obj->values = $values;
+        $obj['tableIdOrName'] = $tableIdOrName;
+        $obj['childTableId'] = $childTableId;
+        $obj['displayIndex'] = $displayIndex;
+        $obj['values'] = $values;
 
-        null !== $name && $obj->name = $name;
-        null !== $path && $obj->path = $path;
+        null !== $name && $obj['name'] = $name;
+        null !== $path && $obj['path'] = $path;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class RowUpdateDraftParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj->tableIdOrName = $tableIDOrName;
+        $obj['tableIdOrName'] = $tableIDOrName;
 
         return $obj;
     }
@@ -131,7 +131,7 @@ final class RowUpdateDraftParams implements BaseModel
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
-        $obj->childTableId = $childTableID;
+        $obj['childTableId'] = $childTableID;
 
         return $obj;
     }
@@ -139,7 +139,7 @@ final class RowUpdateDraftParams implements BaseModel
     public function withDisplayIndex(int $displayIndex): self
     {
         $obj = clone $this;
-        $obj->displayIndex = $displayIndex;
+        $obj['displayIndex'] = $displayIndex;
 
         return $obj;
     }
@@ -147,12 +147,12 @@ final class RowUpdateDraftParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string,Variant> $values
+     * @param array<string,Variant|array<string,mixed>> $values
      */
     public function withValues(array $values): self
     {
         $obj = clone $this;
-        $obj->values = $values;
+        $obj['values'] = $values;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class RowUpdateDraftParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -174,7 +174,7 @@ final class RowUpdateDraftParams implements BaseModel
     public function withPath(string $path): self
     {
         $obj = clone $this;
-        $obj->path = $path;
+        $obj['path'] = $path;
 
         return $obj;
     }

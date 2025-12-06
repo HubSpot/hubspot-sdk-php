@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIStaticBranchAction\Type;
+use HubspotSDK\Automation\Workflows\APITimestampValue\TimestampType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -74,26 +75,63 @@ final class APIStaticBranchAction implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIStaticBranch> $staticBranches
+     * @param APIActionDataValue|array{
+     *   actionId: string,
+     *   dataKey: string,
+     *   type: value-of<APIActionDataValue\Type>,
+     * }|APIObjectPropertyValue|array{
+     *   propertyName: string,
+     *   type: value-of<APIObjectPropertyValue\Type>,
+     * }|APIStaticValue|array{
+     *   staticValue: string,
+     *   type: value-of<APIStaticValue\Type>,
+     * }|APIRelativeDateTimeValue|array{
+     *   timeDelay: APITimeDelay,
+     *   type: value-of<APIRelativeDateTimeValue\Type>,
+     * }|APITimestampValue|array{
+     *   timestampType: value-of<TimestampType>,
+     *   type: value-of<APITimestampValue\Type>,
+     * }|APIIncrementValue|array{
+     *   incrementAmount: float,
+     *   type: value-of<APIIncrementValue\Type>,
+     * }|APIFetchedObjectPropertyValue|array{
+     *   propertyToken: string,
+     *   type: value-of<APIFetchedObjectPropertyValue\Type>,
+     * }|APIAppendObjectPropertyValue|array{
+     *   appendPropertyName: string,
+     *   type: value-of<APIAppendObjectPropertyValue\Type>,
+     * }|APIStaticAppendValue|array{
+     *   staticAppendValue: string,
+     *   type: value-of<APIStaticAppendValue\Type>,
+     * }|APIEnrollmentEventPropertyValue|array{
+     *   enrollmentEventPropertyToken: string,
+     *   type: value-of<APIEnrollmentEventPropertyValue\Type>,
+     * } $inputValue
+     * @param list<APIStaticBranch|array{
+     *   branchValue: string, connection?: APIConnection|null
+     * }> $staticBranches
      * @param Type|value-of<Type> $type
+     * @param APIConnection|array{
+     *   edgeType: string, nextActionId: string
+     * } $defaultBranch
      */
     public static function with(
         string $actionId,
-        APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue,
+        APIActionDataValue|array|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue,
         array $staticBranches,
         Type|string $type = 'STATIC_BRANCH',
-        ?APIConnection $defaultBranch = null,
+        APIConnection|array|null $defaultBranch = null,
         ?string $defaultBranchName = null,
     ): self {
         $obj = new self;
 
-        $obj->actionId = $actionId;
-        $obj->inputValue = $inputValue;
-        $obj->staticBranches = $staticBranches;
+        $obj['actionId'] = $actionId;
+        $obj['inputValue'] = $inputValue;
+        $obj['staticBranches'] = $staticBranches;
         $obj['type'] = $type;
 
-        null !== $defaultBranch && $obj->defaultBranch = $defaultBranch;
-        null !== $defaultBranchName && $obj->defaultBranchName = $defaultBranchName;
+        null !== $defaultBranch && $obj['defaultBranch'] = $defaultBranch;
+        null !== $defaultBranchName && $obj['defaultBranchName'] = $defaultBranchName;
 
         return $obj;
     }
@@ -101,27 +139,63 @@ final class APIStaticBranchAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionId = $actionID;
-
-        return $obj;
-    }
-
-    public function withInputValue(
-        APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue,
-    ): self {
-        $obj = clone $this;
-        $obj->inputValue = $inputValue;
+        $obj['actionId'] = $actionID;
 
         return $obj;
     }
 
     /**
-     * @param list<APIStaticBranch> $staticBranches
+     * @param APIActionDataValue|array{
+     *   actionId: string,
+     *   dataKey: string,
+     *   type: value-of<APIActionDataValue\Type>,
+     * }|APIObjectPropertyValue|array{
+     *   propertyName: string,
+     *   type: value-of<APIObjectPropertyValue\Type>,
+     * }|APIStaticValue|array{
+     *   staticValue: string,
+     *   type: value-of<APIStaticValue\Type>,
+     * }|APIRelativeDateTimeValue|array{
+     *   timeDelay: APITimeDelay,
+     *   type: value-of<APIRelativeDateTimeValue\Type>,
+     * }|APITimestampValue|array{
+     *   timestampType: value-of<TimestampType>,
+     *   type: value-of<APITimestampValue\Type>,
+     * }|APIIncrementValue|array{
+     *   incrementAmount: float,
+     *   type: value-of<APIIncrementValue\Type>,
+     * }|APIFetchedObjectPropertyValue|array{
+     *   propertyToken: string,
+     *   type: value-of<APIFetchedObjectPropertyValue\Type>,
+     * }|APIAppendObjectPropertyValue|array{
+     *   appendPropertyName: string,
+     *   type: value-of<APIAppendObjectPropertyValue\Type>,
+     * }|APIStaticAppendValue|array{
+     *   staticAppendValue: string,
+     *   type: value-of<APIStaticAppendValue\Type>,
+     * }|APIEnrollmentEventPropertyValue|array{
+     *   enrollmentEventPropertyToken: string,
+     *   type: value-of<APIEnrollmentEventPropertyValue\Type>,
+     * } $inputValue
+     */
+    public function withInputValue(
+        APIActionDataValue|array|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue,
+    ): self {
+        $obj = clone $this;
+        $obj['inputValue'] = $inputValue;
+
+        return $obj;
+    }
+
+    /**
+     * @param list<APIStaticBranch|array{
+     *   branchValue: string, connection?: APIConnection|null
+     * }> $staticBranches
      */
     public function withStaticBranches(array $staticBranches): self
     {
         $obj = clone $this;
-        $obj->staticBranches = $staticBranches;
+        $obj['staticBranches'] = $staticBranches;
 
         return $obj;
     }
@@ -137,10 +211,15 @@ final class APIStaticBranchAction implements BaseModel
         return $obj;
     }
 
-    public function withDefaultBranch(APIConnection $defaultBranch): self
+    /**
+     * @param APIConnection|array{
+     *   edgeType: string, nextActionId: string
+     * } $defaultBranch
+     */
+    public function withDefaultBranch(APIConnection|array $defaultBranch): self
     {
         $obj = clone $this;
-        $obj->defaultBranch = $defaultBranch;
+        $obj['defaultBranch'] = $defaultBranch;
 
         return $obj;
     }
@@ -148,7 +227,7 @@ final class APIStaticBranchAction implements BaseModel
     public function withDefaultBranchName(string $defaultBranchName): self
     {
         $obj = clone $this;
-        $obj->defaultBranchName = $defaultBranchName;
+        $obj['defaultBranchName'] = $defaultBranchName;
 
         return $obj;
     }

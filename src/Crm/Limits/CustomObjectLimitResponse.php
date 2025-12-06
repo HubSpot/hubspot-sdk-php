@@ -71,9 +71,9 @@ final class CustomObjectLimitResponse implements BaseModel, ResponseConverter
     {
         $obj = new self;
 
-        $obj->limit = $limit;
-        $obj->percentage = $percentage;
-        $obj->usage = $usage;
+        $obj['limit'] = $limit;
+        $obj['percentage'] = $percentage;
+        $obj['usage'] = $usage;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class CustomObjectLimitResponse implements BaseModel, ResponseConverter
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class CustomObjectLimitResponse implements BaseModel, ResponseConverter
     public function withPercentage(float $percentage): self
     {
         $obj = clone $this;
-        $obj->percentage = $percentage;
+        $obj['percentage'] = $percentage;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class CustomObjectLimitResponse implements BaseModel, ResponseConverter
     public function withUsage(int $usage): self
     {
         $obj = clone $this;
-        $obj->usage = $usage;
+        $obj['usage'] = $usage;
 
         return $obj;
     }

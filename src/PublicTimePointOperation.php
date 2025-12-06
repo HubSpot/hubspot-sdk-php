@@ -7,6 +7,7 @@ namespace HubspotSDK;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PublicDatePoint\TimeType;
 use HubspotSDK\PublicTimePointOperation\OperationType;
 
 /**
@@ -82,12 +83,36 @@ final class PublicTimePointOperation implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param PublicDatePoint|array{
+     *   day: int,
+     *   month: int,
+     *   timeType: value-of<TimeType>,
+     *   year: int,
+     *   zoneId: string,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     *   timezoneSource?: string|null,
+     * }|PublicIndexedTimePoint|array{
+     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
+     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
+     *   zoneId: string,
+     *   offset?: PublicIndexOffset|null,
+     *   timezoneSource?: string|null,
+     * }|PublicPropertyReferencedTime|array{
+     *   property: string,
+     *   referenceType: string,
+     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
+     *   zoneId: string,
+     *   timezoneSource?: string|null,
+     * } $timePoint
      * @param OperationType|value-of<OperationType> $operationType
      */
     public static function with(
         bool $includeObjectsWithNoValueSet,
         string $operator,
-        PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $timePoint,
+        PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $timePoint,
         string $type,
         OperationType|string $operationType = 'TIME_POINT',
         ?string $endpointBehavior = null,
@@ -95,14 +120,14 @@ final class PublicTimePointOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
         $obj['operationType'] = $operationType;
-        $obj->operator = $operator;
-        $obj->timePoint = $timePoint;
-        $obj->type = $type;
+        $obj['operator'] = $operator;
+        $obj['timePoint'] = $timePoint;
+        $obj['type'] = $type;
 
-        null !== $endpointBehavior && $obj->endpointBehavior = $endpointBehavior;
-        null !== $propertyParser && $obj->propertyParser = $propertyParser;
+        null !== $endpointBehavior && $obj['endpointBehavior'] = $endpointBehavior;
+        null !== $propertyParser && $obj['propertyParser'] = $propertyParser;
 
         return $obj;
     }
@@ -111,7 +136,7 @@ final class PublicTimePointOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -130,16 +155,42 @@ final class PublicTimePointOperation implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
 
+    /**
+     * @param PublicDatePoint|array{
+     *   day: int,
+     *   month: int,
+     *   timeType: value-of<TimeType>,
+     *   year: int,
+     *   zoneId: string,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     *   timezoneSource?: string|null,
+     * }|PublicIndexedTimePoint|array{
+     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
+     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
+     *   zoneId: string,
+     *   offset?: PublicIndexOffset|null,
+     *   timezoneSource?: string|null,
+     * }|PublicPropertyReferencedTime|array{
+     *   property: string,
+     *   referenceType: string,
+     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
+     *   zoneId: string,
+     *   timezoneSource?: string|null,
+     * } $timePoint
+     */
     public function withTimePoint(
-        PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $timePoint,
+        PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $timePoint,
     ): self {
         $obj = clone $this;
-        $obj->timePoint = $timePoint;
+        $obj['timePoint'] = $timePoint;
 
         return $obj;
     }
@@ -147,7 +198,7 @@ final class PublicTimePointOperation implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -155,7 +206,7 @@ final class PublicTimePointOperation implements BaseModel
     public function withEndpointBehavior(string $endpointBehavior): self
     {
         $obj = clone $this;
-        $obj->endpointBehavior = $endpointBehavior;
+        $obj['endpointBehavior'] = $endpointBehavior;
 
         return $obj;
     }
@@ -163,7 +214,7 @@ final class PublicTimePointOperation implements BaseModel
     public function withPropertyParser(string $propertyParser): self
     {
         $obj = clone $this;
-        $obj->propertyParser = $propertyParser;
+        $obj['propertyParser'] = $propertyParser;
 
         return $obj;
     }

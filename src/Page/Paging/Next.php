@@ -33,7 +33,7 @@ final class Next implements BaseModel
     {
         $obj = new self;
 
-        null !== $after && $obj->after = $after;
+        null !== $after && $obj['after'] = $after;
 
         return $obj;
     }
@@ -41,7 +41,7 @@ final class Next implements BaseModel
     public function withAfter(string $after): self
     {
         $obj = clone $this;
-        $obj->after = $after;
+        $obj['after'] = $after;
 
         return $obj;
     }

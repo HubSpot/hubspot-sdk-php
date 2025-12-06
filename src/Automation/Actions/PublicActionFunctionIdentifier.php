@@ -60,7 +60,7 @@ final class PublicActionFunctionIdentifier implements BaseModel
 
         $obj['functionType'] = $functionType;
 
-        null !== $id && $obj->id = $id;
+        null !== $id && $obj['id'] = $id;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class PublicActionFunctionIdentifier implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }

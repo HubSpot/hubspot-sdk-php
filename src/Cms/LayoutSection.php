@@ -131,8 +131,18 @@ final class LayoutSection implements BaseModel
      *
      * @param list<mixed> $cells
      * @param array<string,mixed> $params
-     * @param list<RowMetaData> $rowMetaData
+     * @param list<RowMetaData|array{cssClass: string, styles: Styles}> $rowMetaData
      * @param list<mixed> $rows
+     * @param Styles|array{
+     *   backgroundColor: RgbaColor,
+     *   backgroundGradient: Gradient,
+     *   backgroundImage: BackgroundImage,
+     *   flexboxPositioning: string,
+     *   forceFullWidthSection: bool,
+     *   maxWidthSectionCentering: int,
+     *   verticalAlignment: string,
+     *   breakpointStyles?: array<string,BreakpointStyles>|null,
+     * } $styles
      */
     public static function with(
         array $cells,
@@ -144,26 +154,26 @@ final class LayoutSection implements BaseModel
         array $params,
         array $rowMetaData,
         array $rows,
-        Styles $styles,
+        Styles|array $styles,
         string $type,
         int $w,
         int $x,
     ): self {
         $obj = new self;
 
-        $obj->cells = $cells;
-        $obj->cssClass = $cssClass;
-        $obj->cssId = $cssId;
-        $obj->cssStyle = $cssStyle;
-        $obj->label = $label;
-        $obj->name = $name;
-        $obj->params = $params;
-        $obj->rowMetaData = $rowMetaData;
-        $obj->rows = $rows;
-        $obj->styles = $styles;
-        $obj->type = $type;
-        $obj->w = $w;
-        $obj->x = $x;
+        $obj['cells'] = $cells;
+        $obj['cssClass'] = $cssClass;
+        $obj['cssId'] = $cssId;
+        $obj['cssStyle'] = $cssStyle;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
+        $obj['params'] = $params;
+        $obj['rowMetaData'] = $rowMetaData;
+        $obj['rows'] = $rows;
+        $obj['styles'] = $styles;
+        $obj['type'] = $type;
+        $obj['w'] = $w;
+        $obj['x'] = $x;
 
         return $obj;
     }
@@ -174,7 +184,7 @@ final class LayoutSection implements BaseModel
     public function withCells(array $cells): self
     {
         $obj = clone $this;
-        $obj->cells = $cells;
+        $obj['cells'] = $cells;
 
         return $obj;
     }
@@ -182,7 +192,7 @@ final class LayoutSection implements BaseModel
     public function withCssClass(string $cssClass): self
     {
         $obj = clone $this;
-        $obj->cssClass = $cssClass;
+        $obj['cssClass'] = $cssClass;
 
         return $obj;
     }
@@ -190,7 +200,7 @@ final class LayoutSection implements BaseModel
     public function withCssID(string $cssID): self
     {
         $obj = clone $this;
-        $obj->cssId = $cssID;
+        $obj['cssId'] = $cssID;
 
         return $obj;
     }
@@ -198,7 +208,7 @@ final class LayoutSection implements BaseModel
     public function withCssStyle(string $cssStyle): self
     {
         $obj = clone $this;
-        $obj->cssStyle = $cssStyle;
+        $obj['cssStyle'] = $cssStyle;
 
         return $obj;
     }
@@ -206,7 +216,7 @@ final class LayoutSection implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -214,7 +224,7 @@ final class LayoutSection implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -227,18 +237,18 @@ final class LayoutSection implements BaseModel
     public function withParams(array $params): self
     {
         $obj = clone $this;
-        $obj->params = $params;
+        $obj['params'] = $params;
 
         return $obj;
     }
 
     /**
-     * @param list<RowMetaData> $rowMetaData
+     * @param list<RowMetaData|array{cssClass: string, styles: Styles}> $rowMetaData
      */
     public function withRowMetaData(array $rowMetaData): self
     {
         $obj = clone $this;
-        $obj->rowMetaData = $rowMetaData;
+        $obj['rowMetaData'] = $rowMetaData;
 
         return $obj;
     }
@@ -249,15 +259,27 @@ final class LayoutSection implements BaseModel
     public function withRows(array $rows): self
     {
         $obj = clone $this;
-        $obj->rows = $rows;
+        $obj['rows'] = $rows;
 
         return $obj;
     }
 
-    public function withStyles(Styles $styles): self
+    /**
+     * @param Styles|array{
+     *   backgroundColor: RgbaColor,
+     *   backgroundGradient: Gradient,
+     *   backgroundImage: BackgroundImage,
+     *   flexboxPositioning: string,
+     *   forceFullWidthSection: bool,
+     *   maxWidthSectionCentering: int,
+     *   verticalAlignment: string,
+     *   breakpointStyles?: array<string,BreakpointStyles>|null,
+     * } $styles
+     */
+    public function withStyles(Styles|array $styles): self
     {
         $obj = clone $this;
-        $obj->styles = $styles;
+        $obj['styles'] = $styles;
 
         return $obj;
     }
@@ -265,7 +287,7 @@ final class LayoutSection implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -273,7 +295,7 @@ final class LayoutSection implements BaseModel
     public function withW(int $w): self
     {
         $obj = clone $this;
-        $obj->w = $w;
+        $obj['w'] = $w;
 
         return $obj;
     }
@@ -281,7 +303,7 @@ final class LayoutSection implements BaseModel
     public function withX(int $x): self
     {
         $obj = clone $this;
-        $obj->x = $x;
+        $obj['x'] = $x;
 
         return $obj;
     }

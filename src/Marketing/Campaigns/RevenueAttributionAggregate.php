@@ -60,11 +60,11 @@ final class RevenueAttributionAggregate implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $contactsNumber && $obj->contactsNumber = $contactsNumber;
+        null !== $contactsNumber && $obj['contactsNumber'] = $contactsNumber;
         null !== $currencyCode && $obj['currencyCode'] = $currencyCode;
-        null !== $dealAmount && $obj->dealAmount = $dealAmount;
-        null !== $dealsNumber && $obj->dealsNumber = $dealsNumber;
-        null !== $revenueAmount && $obj->revenueAmount = $revenueAmount;
+        null !== $dealAmount && $obj['dealAmount'] = $dealAmount;
+        null !== $dealsNumber && $obj['dealsNumber'] = $dealsNumber;
+        null !== $revenueAmount && $obj['revenueAmount'] = $revenueAmount;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class RevenueAttributionAggregate implements BaseModel
     public function withContactsNumber(int $contactsNumber): self
     {
         $obj = clone $this;
-        $obj->contactsNumber = $contactsNumber;
+        $obj['contactsNumber'] = $contactsNumber;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class RevenueAttributionAggregate implements BaseModel
     public function withDealAmount(float $dealAmount): self
     {
         $obj = clone $this;
-        $obj->dealAmount = $dealAmount;
+        $obj['dealAmount'] = $dealAmount;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class RevenueAttributionAggregate implements BaseModel
     public function withDealsNumber(int $dealsNumber): self
     {
         $obj = clone $this;
-        $obj->dealsNumber = $dealsNumber;
+        $obj['dealsNumber'] = $dealsNumber;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class RevenueAttributionAggregate implements BaseModel
     public function withRevenueAmount(float $revenueAmount): self
     {
         $obj = clone $this;
-        $obj->revenueAmount = $revenueAmount;
+        $obj['revenueAmount'] = $revenueAmount;
 
         return $obj;
     }

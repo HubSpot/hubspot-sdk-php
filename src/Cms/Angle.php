@@ -50,8 +50,8 @@ final class Angle implements BaseModel
     {
         $obj = new self;
 
-        $obj->units = $units;
-        $obj->value = $value;
+        $obj['units'] = $units;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class Angle implements BaseModel
     public function withUnits(string $units): self
     {
         $obj = clone $this;
-        $obj->units = $units;
+        $obj['units'] = $units;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class Angle implements BaseModel
     public function withValue(float $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

@@ -70,13 +70,13 @@ final class ContactAddress implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $city && $obj->city = $city;
-        null !== $country && $obj->country = $country;
-        null !== $countryCode && $obj->countryCode = $countryCode;
-        null !== $state && $obj->state = $state;
-        null !== $street && $obj->street = $street;
+        null !== $city && $obj['city'] = $city;
+        null !== $country && $obj['country'] = $country;
+        null !== $countryCode && $obj['countryCode'] = $countryCode;
+        null !== $state && $obj['state'] = $state;
+        null !== $street && $obj['street'] = $street;
         null !== $type && $obj['type'] = $type;
-        null !== $zip && $obj->zip = $zip;
+        null !== $zip && $obj['zip'] = $zip;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class ContactAddress implements BaseModel
     public function withCity(string $city): self
     {
         $obj = clone $this;
-        $obj->city = $city;
+        $obj['city'] = $city;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class ContactAddress implements BaseModel
     public function withCountry(string $country): self
     {
         $obj = clone $this;
-        $obj->country = $country;
+        $obj['country'] = $country;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class ContactAddress implements BaseModel
     public function withCountryCode(string $countryCode): self
     {
         $obj = clone $this;
-        $obj->countryCode = $countryCode;
+        $obj['countryCode'] = $countryCode;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class ContactAddress implements BaseModel
     public function withState(string $state): self
     {
         $obj = clone $this;
-        $obj->state = $state;
+        $obj['state'] = $state;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class ContactAddress implements BaseModel
     public function withStreet(string $street): self
     {
         $obj = clone $this;
-        $obj->street = $street;
+        $obj['street'] = $street;
 
         return $obj;
     }
@@ -135,7 +135,7 @@ final class ContactAddress implements BaseModel
     public function withZip(string $zip): self
     {
         $obj = clone $this;
-        $obj->zip = $zip;
+        $obj['zip'] = $zip;
 
         return $obj;
     }

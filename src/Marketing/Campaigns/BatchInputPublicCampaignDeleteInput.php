@@ -46,24 +46,24 @@ final class BatchInputPublicCampaignDeleteInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignDeleteInput> $inputs
+     * @param list<PublicCampaignDeleteInput|array{id: string}> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicCampaignDeleteInput> $inputs
+     * @param list<PublicCampaignDeleteInput|array{id: string}> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

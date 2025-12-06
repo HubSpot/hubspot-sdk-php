@@ -91,7 +91,7 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
 
         $obj['fromCurrencyCode'] = $fromCurrencyCode;
         $obj['toCurrencyCode'] = $toCurrencyCode;
-        $obj->visibleInUI = $visibleInUI;
+        $obj['visibleInUI'] = $visibleInUI;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
     public function withVisibleInUi(bool $visibleInUi): self
     {
         $obj = clone $this;
-        $obj->visibleInUI = $visibleInUi;
+        $obj['visibleInUI'] = $visibleInUi;
 
         return $obj;
     }

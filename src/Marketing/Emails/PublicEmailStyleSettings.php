@@ -146,6 +146,39 @@ final class PublicEmailStyleSettings implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicButtonStyleSettings|array{
+     *   backgroundColor?: mixed,
+     *   cornerRadius?: int|null,
+     *   fontStyle?: PublicFontStyle|null,
+     * } $buttonStyleSettings
+     * @param PublicDividerStyleSettings|array{
+     *   color?: mixed, height?: int|null, lineType?: string|null
+     * } $dividerStyleSettings
+     * @param PublicFontStyle|array{
+     *   bold?: bool|null,
+     *   color?: string|null,
+     *   font?: string|null,
+     *   italic?: bool|null,
+     *   size?: int|null,
+     *   underline?: bool|null,
+     * } $headingOneFont
+     * @param PublicFontStyle|array{
+     *   bold?: bool|null,
+     *   color?: string|null,
+     *   font?: string|null,
+     *   italic?: bool|null,
+     *   size?: int|null,
+     *   underline?: bool|null,
+     * } $headingTwoFont
+     * @param PublicFontStyle|array{
+     *   bold?: bool|null,
+     *   color?: string|null,
+     *   font?: string|null,
+     *   italic?: bool|null,
+     *   size?: int|null,
+     *   underline?: bool|null,
+     * } $linksFont
      */
     public static function with(
         ?string $backgroundColor = null,
@@ -155,19 +188,19 @@ final class PublicEmailStyleSettings implements BaseModel
         ?string $bodyBorderColorChoice = null,
         ?float $bodyBorderWidth = null,
         ?string $bodyColor = null,
-        ?PublicButtonStyleSettings $buttonStyleSettings = null,
+        PublicButtonStyleSettings|array|null $buttonStyleSettings = null,
         ?string $colorPickerFavorite1 = null,
         ?string $colorPickerFavorite2 = null,
         ?string $colorPickerFavorite3 = null,
         ?string $colorPickerFavorite4 = null,
         ?string $colorPickerFavorite5 = null,
         ?string $colorPickerFavorite6 = null,
-        ?PublicDividerStyleSettings $dividerStyleSettings = null,
+        PublicDividerStyleSettings|array|null $dividerStyleSettings = null,
         ?string $emailBodyPadding = null,
         ?string $emailBodyWidth = null,
-        ?PublicFontStyle $headingOneFont = null,
-        ?PublicFontStyle $headingTwoFont = null,
-        ?PublicFontStyle $linksFont = null,
+        PublicFontStyle|array|null $headingOneFont = null,
+        PublicFontStyle|array|null $headingTwoFont = null,
+        PublicFontStyle|array|null $linksFont = null,
         ?string $primaryAccentColor = null,
         ?string $primaryFont = null,
         ?string $primaryFontColor = null,
@@ -181,36 +214,36 @@ final class PublicEmailStyleSettings implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $backgroundColor && $obj->backgroundColor = $backgroundColor;
-        null !== $backgroundImage && $obj->backgroundImage = $backgroundImage;
-        null !== $backgroundImageType && $obj->backgroundImageType = $backgroundImageType;
-        null !== $bodyBorderColor && $obj->bodyBorderColor = $bodyBorderColor;
-        null !== $bodyBorderColorChoice && $obj->bodyBorderColorChoice = $bodyBorderColorChoice;
-        null !== $bodyBorderWidth && $obj->bodyBorderWidth = $bodyBorderWidth;
-        null !== $bodyColor && $obj->bodyColor = $bodyColor;
-        null !== $buttonStyleSettings && $obj->buttonStyleSettings = $buttonStyleSettings;
-        null !== $colorPickerFavorite1 && $obj->colorPickerFavorite1 = $colorPickerFavorite1;
-        null !== $colorPickerFavorite2 && $obj->colorPickerFavorite2 = $colorPickerFavorite2;
-        null !== $colorPickerFavorite3 && $obj->colorPickerFavorite3 = $colorPickerFavorite3;
-        null !== $colorPickerFavorite4 && $obj->colorPickerFavorite4 = $colorPickerFavorite4;
-        null !== $colorPickerFavorite5 && $obj->colorPickerFavorite5 = $colorPickerFavorite5;
-        null !== $colorPickerFavorite6 && $obj->colorPickerFavorite6 = $colorPickerFavorite6;
-        null !== $dividerStyleSettings && $obj->dividerStyleSettings = $dividerStyleSettings;
-        null !== $emailBodyPadding && $obj->emailBodyPadding = $emailBodyPadding;
-        null !== $emailBodyWidth && $obj->emailBodyWidth = $emailBodyWidth;
-        null !== $headingOneFont && $obj->headingOneFont = $headingOneFont;
-        null !== $headingTwoFont && $obj->headingTwoFont = $headingTwoFont;
-        null !== $linksFont && $obj->linksFont = $linksFont;
-        null !== $primaryAccentColor && $obj->primaryAccentColor = $primaryAccentColor;
-        null !== $primaryFont && $obj->primaryFont = $primaryFont;
-        null !== $primaryFontColor && $obj->primaryFontColor = $primaryFontColor;
-        null !== $primaryFontLineHeight && $obj->primaryFontLineHeight = $primaryFontLineHeight;
-        null !== $primaryFontSize && $obj->primaryFontSize = $primaryFontSize;
-        null !== $secondaryAccentColor && $obj->secondaryAccentColor = $secondaryAccentColor;
-        null !== $secondaryFont && $obj->secondaryFont = $secondaryFont;
-        null !== $secondaryFontColor && $obj->secondaryFontColor = $secondaryFontColor;
-        null !== $secondaryFontLineHeight && $obj->secondaryFontLineHeight = $secondaryFontLineHeight;
-        null !== $secondaryFontSize && $obj->secondaryFontSize = $secondaryFontSize;
+        null !== $backgroundColor && $obj['backgroundColor'] = $backgroundColor;
+        null !== $backgroundImage && $obj['backgroundImage'] = $backgroundImage;
+        null !== $backgroundImageType && $obj['backgroundImageType'] = $backgroundImageType;
+        null !== $bodyBorderColor && $obj['bodyBorderColor'] = $bodyBorderColor;
+        null !== $bodyBorderColorChoice && $obj['bodyBorderColorChoice'] = $bodyBorderColorChoice;
+        null !== $bodyBorderWidth && $obj['bodyBorderWidth'] = $bodyBorderWidth;
+        null !== $bodyColor && $obj['bodyColor'] = $bodyColor;
+        null !== $buttonStyleSettings && $obj['buttonStyleSettings'] = $buttonStyleSettings;
+        null !== $colorPickerFavorite1 && $obj['colorPickerFavorite1'] = $colorPickerFavorite1;
+        null !== $colorPickerFavorite2 && $obj['colorPickerFavorite2'] = $colorPickerFavorite2;
+        null !== $colorPickerFavorite3 && $obj['colorPickerFavorite3'] = $colorPickerFavorite3;
+        null !== $colorPickerFavorite4 && $obj['colorPickerFavorite4'] = $colorPickerFavorite4;
+        null !== $colorPickerFavorite5 && $obj['colorPickerFavorite5'] = $colorPickerFavorite5;
+        null !== $colorPickerFavorite6 && $obj['colorPickerFavorite6'] = $colorPickerFavorite6;
+        null !== $dividerStyleSettings && $obj['dividerStyleSettings'] = $dividerStyleSettings;
+        null !== $emailBodyPadding && $obj['emailBodyPadding'] = $emailBodyPadding;
+        null !== $emailBodyWidth && $obj['emailBodyWidth'] = $emailBodyWidth;
+        null !== $headingOneFont && $obj['headingOneFont'] = $headingOneFont;
+        null !== $headingTwoFont && $obj['headingTwoFont'] = $headingTwoFont;
+        null !== $linksFont && $obj['linksFont'] = $linksFont;
+        null !== $primaryAccentColor && $obj['primaryAccentColor'] = $primaryAccentColor;
+        null !== $primaryFont && $obj['primaryFont'] = $primaryFont;
+        null !== $primaryFontColor && $obj['primaryFontColor'] = $primaryFontColor;
+        null !== $primaryFontLineHeight && $obj['primaryFontLineHeight'] = $primaryFontLineHeight;
+        null !== $primaryFontSize && $obj['primaryFontSize'] = $primaryFontSize;
+        null !== $secondaryAccentColor && $obj['secondaryAccentColor'] = $secondaryAccentColor;
+        null !== $secondaryFont && $obj['secondaryFont'] = $secondaryFont;
+        null !== $secondaryFontColor && $obj['secondaryFontColor'] = $secondaryFontColor;
+        null !== $secondaryFontLineHeight && $obj['secondaryFontLineHeight'] = $secondaryFontLineHeight;
+        null !== $secondaryFontSize && $obj['secondaryFontSize'] = $secondaryFontSize;
 
         return $obj;
     }
@@ -218,7 +251,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withBackgroundColor(string $backgroundColor): self
     {
         $obj = clone $this;
-        $obj->backgroundColor = $backgroundColor;
+        $obj['backgroundColor'] = $backgroundColor;
 
         return $obj;
     }
@@ -226,7 +259,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withBackgroundImage(string $backgroundImage): self
     {
         $obj = clone $this;
-        $obj->backgroundImage = $backgroundImage;
+        $obj['backgroundImage'] = $backgroundImage;
 
         return $obj;
     }
@@ -234,7 +267,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withBackgroundImageType(string $backgroundImageType): self
     {
         $obj = clone $this;
-        $obj->backgroundImageType = $backgroundImageType;
+        $obj['backgroundImageType'] = $backgroundImageType;
 
         return $obj;
     }
@@ -242,7 +275,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withBodyBorderColor(string $bodyBorderColor): self
     {
         $obj = clone $this;
-        $obj->bodyBorderColor = $bodyBorderColor;
+        $obj['bodyBorderColor'] = $bodyBorderColor;
 
         return $obj;
     }
@@ -251,7 +284,7 @@ final class PublicEmailStyleSettings implements BaseModel
         string $bodyBorderColorChoice
     ): self {
         $obj = clone $this;
-        $obj->bodyBorderColorChoice = $bodyBorderColorChoice;
+        $obj['bodyBorderColorChoice'] = $bodyBorderColorChoice;
 
         return $obj;
     }
@@ -259,7 +292,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withBodyBorderWidth(float $bodyBorderWidth): self
     {
         $obj = clone $this;
-        $obj->bodyBorderWidth = $bodyBorderWidth;
+        $obj['bodyBorderWidth'] = $bodyBorderWidth;
 
         return $obj;
     }
@@ -267,16 +300,23 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withBodyColor(string $bodyColor): self
     {
         $obj = clone $this;
-        $obj->bodyColor = $bodyColor;
+        $obj['bodyColor'] = $bodyColor;
 
         return $obj;
     }
 
+    /**
+     * @param PublicButtonStyleSettings|array{
+     *   backgroundColor?: mixed,
+     *   cornerRadius?: int|null,
+     *   fontStyle?: PublicFontStyle|null,
+     * } $buttonStyleSettings
+     */
     public function withButtonStyleSettings(
-        PublicButtonStyleSettings $buttonStyleSettings
+        PublicButtonStyleSettings|array $buttonStyleSettings
     ): self {
         $obj = clone $this;
-        $obj->buttonStyleSettings = $buttonStyleSettings;
+        $obj['buttonStyleSettings'] = $buttonStyleSettings;
 
         return $obj;
     }
@@ -284,7 +324,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withColorPickerFavorite1(string $colorPickerFavorite1): self
     {
         $obj = clone $this;
-        $obj->colorPickerFavorite1 = $colorPickerFavorite1;
+        $obj['colorPickerFavorite1'] = $colorPickerFavorite1;
 
         return $obj;
     }
@@ -292,7 +332,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withColorPickerFavorite2(string $colorPickerFavorite2): self
     {
         $obj = clone $this;
-        $obj->colorPickerFavorite2 = $colorPickerFavorite2;
+        $obj['colorPickerFavorite2'] = $colorPickerFavorite2;
 
         return $obj;
     }
@@ -300,7 +340,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withColorPickerFavorite3(string $colorPickerFavorite3): self
     {
         $obj = clone $this;
-        $obj->colorPickerFavorite3 = $colorPickerFavorite3;
+        $obj['colorPickerFavorite3'] = $colorPickerFavorite3;
 
         return $obj;
     }
@@ -308,7 +348,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withColorPickerFavorite4(string $colorPickerFavorite4): self
     {
         $obj = clone $this;
-        $obj->colorPickerFavorite4 = $colorPickerFavorite4;
+        $obj['colorPickerFavorite4'] = $colorPickerFavorite4;
 
         return $obj;
     }
@@ -316,7 +356,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withColorPickerFavorite5(string $colorPickerFavorite5): self
     {
         $obj = clone $this;
-        $obj->colorPickerFavorite5 = $colorPickerFavorite5;
+        $obj['colorPickerFavorite5'] = $colorPickerFavorite5;
 
         return $obj;
     }
@@ -324,16 +364,21 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withColorPickerFavorite6(string $colorPickerFavorite6): self
     {
         $obj = clone $this;
-        $obj->colorPickerFavorite6 = $colorPickerFavorite6;
+        $obj['colorPickerFavorite6'] = $colorPickerFavorite6;
 
         return $obj;
     }
 
+    /**
+     * @param PublicDividerStyleSettings|array{
+     *   color?: mixed, height?: int|null, lineType?: string|null
+     * } $dividerStyleSettings
+     */
     public function withDividerStyleSettings(
-        PublicDividerStyleSettings $dividerStyleSettings
+        PublicDividerStyleSettings|array $dividerStyleSettings
     ): self {
         $obj = clone $this;
-        $obj->dividerStyleSettings = $dividerStyleSettings;
+        $obj['dividerStyleSettings'] = $dividerStyleSettings;
 
         return $obj;
     }
@@ -341,7 +386,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withEmailBodyPadding(string $emailBodyPadding): self
     {
         $obj = clone $this;
-        $obj->emailBodyPadding = $emailBodyPadding;
+        $obj['emailBodyPadding'] = $emailBodyPadding;
 
         return $obj;
     }
@@ -349,31 +394,63 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withEmailBodyWidth(string $emailBodyWidth): self
     {
         $obj = clone $this;
-        $obj->emailBodyWidth = $emailBodyWidth;
+        $obj['emailBodyWidth'] = $emailBodyWidth;
 
         return $obj;
     }
 
-    public function withHeadingOneFont(PublicFontStyle $headingOneFont): self
-    {
+    /**
+     * @param PublicFontStyle|array{
+     *   bold?: bool|null,
+     *   color?: string|null,
+     *   font?: string|null,
+     *   italic?: bool|null,
+     *   size?: int|null,
+     *   underline?: bool|null,
+     * } $headingOneFont
+     */
+    public function withHeadingOneFont(
+        PublicFontStyle|array $headingOneFont
+    ): self {
         $obj = clone $this;
-        $obj->headingOneFont = $headingOneFont;
+        $obj['headingOneFont'] = $headingOneFont;
 
         return $obj;
     }
 
-    public function withHeadingTwoFont(PublicFontStyle $headingTwoFont): self
-    {
+    /**
+     * @param PublicFontStyle|array{
+     *   bold?: bool|null,
+     *   color?: string|null,
+     *   font?: string|null,
+     *   italic?: bool|null,
+     *   size?: int|null,
+     *   underline?: bool|null,
+     * } $headingTwoFont
+     */
+    public function withHeadingTwoFont(
+        PublicFontStyle|array $headingTwoFont
+    ): self {
         $obj = clone $this;
-        $obj->headingTwoFont = $headingTwoFont;
+        $obj['headingTwoFont'] = $headingTwoFont;
 
         return $obj;
     }
 
-    public function withLinksFont(PublicFontStyle $linksFont): self
+    /**
+     * @param PublicFontStyle|array{
+     *   bold?: bool|null,
+     *   color?: string|null,
+     *   font?: string|null,
+     *   italic?: bool|null,
+     *   size?: int|null,
+     *   underline?: bool|null,
+     * } $linksFont
+     */
+    public function withLinksFont(PublicFontStyle|array $linksFont): self
     {
         $obj = clone $this;
-        $obj->linksFont = $linksFont;
+        $obj['linksFont'] = $linksFont;
 
         return $obj;
     }
@@ -381,7 +458,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withPrimaryAccentColor(string $primaryAccentColor): self
     {
         $obj = clone $this;
-        $obj->primaryAccentColor = $primaryAccentColor;
+        $obj['primaryAccentColor'] = $primaryAccentColor;
 
         return $obj;
     }
@@ -389,7 +466,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withPrimaryFont(string $primaryFont): self
     {
         $obj = clone $this;
-        $obj->primaryFont = $primaryFont;
+        $obj['primaryFont'] = $primaryFont;
 
         return $obj;
     }
@@ -397,7 +474,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withPrimaryFontColor(string $primaryFontColor): self
     {
         $obj = clone $this;
-        $obj->primaryFontColor = $primaryFontColor;
+        $obj['primaryFontColor'] = $primaryFontColor;
 
         return $obj;
     }
@@ -406,7 +483,7 @@ final class PublicEmailStyleSettings implements BaseModel
         string $primaryFontLineHeight
     ): self {
         $obj = clone $this;
-        $obj->primaryFontLineHeight = $primaryFontLineHeight;
+        $obj['primaryFontLineHeight'] = $primaryFontLineHeight;
 
         return $obj;
     }
@@ -414,7 +491,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withPrimaryFontSize(float $primaryFontSize): self
     {
         $obj = clone $this;
-        $obj->primaryFontSize = $primaryFontSize;
+        $obj['primaryFontSize'] = $primaryFontSize;
 
         return $obj;
     }
@@ -422,7 +499,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withSecondaryAccentColor(string $secondaryAccentColor): self
     {
         $obj = clone $this;
-        $obj->secondaryAccentColor = $secondaryAccentColor;
+        $obj['secondaryAccentColor'] = $secondaryAccentColor;
 
         return $obj;
     }
@@ -430,7 +507,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withSecondaryFont(string $secondaryFont): self
     {
         $obj = clone $this;
-        $obj->secondaryFont = $secondaryFont;
+        $obj['secondaryFont'] = $secondaryFont;
 
         return $obj;
     }
@@ -438,7 +515,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withSecondaryFontColor(string $secondaryFontColor): self
     {
         $obj = clone $this;
-        $obj->secondaryFontColor = $secondaryFontColor;
+        $obj['secondaryFontColor'] = $secondaryFontColor;
 
         return $obj;
     }
@@ -447,7 +524,7 @@ final class PublicEmailStyleSettings implements BaseModel
         string $secondaryFontLineHeight
     ): self {
         $obj = clone $this;
-        $obj->secondaryFontLineHeight = $secondaryFontLineHeight;
+        $obj['secondaryFontLineHeight'] = $secondaryFontLineHeight;
 
         return $obj;
     }
@@ -455,7 +532,7 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withSecondaryFontSize(float $secondaryFontSize): self
     {
         $obj = clone $this;
-        $obj->secondaryFontSize = $secondaryFontSize;
+        $obj['secondaryFontSize'] = $secondaryFontSize;
 
         return $obj;
     }

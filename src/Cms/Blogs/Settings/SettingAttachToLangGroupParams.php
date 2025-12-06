@@ -81,11 +81,11 @@ final class SettingAttachToLangGroupParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->language = $language;
-        $obj->primaryId = $primaryId;
+        $obj['id'] = $id;
+        $obj['language'] = $language;
+        $obj['primaryId'] = $primaryId;
 
-        null !== $primaryLanguage && $obj->primaryLanguage = $primaryLanguage;
+        null !== $primaryLanguage && $obj['primaryLanguage'] = $primaryLanguage;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class SettingAttachToLangGroupParams implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class SettingAttachToLangGroupParams implements BaseModel
     public function withLanguage(string $language): self
     {
         $obj = clone $this;
-        $obj->language = $language;
+        $obj['language'] = $language;
 
         return $obj;
     }
@@ -118,7 +118,7 @@ final class SettingAttachToLangGroupParams implements BaseModel
     public function withPrimaryID(string $primaryID): self
     {
         $obj = clone $this;
-        $obj->primaryId = $primaryID;
+        $obj['primaryId'] = $primaryID;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class SettingAttachToLangGroupParams implements BaseModel
     public function withPrimaryLanguage(string $primaryLanguage): self
     {
         $obj = clone $this;
-        $obj->primaryLanguage = $primaryLanguage;
+        $obj['primaryLanguage'] = $primaryLanguage;
 
         return $obj;
     }

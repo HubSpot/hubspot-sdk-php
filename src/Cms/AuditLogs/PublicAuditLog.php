@@ -138,14 +138,14 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
         $obj = new self;
 
         $obj['event'] = $event;
-        $obj->fullName = $fullName;
-        $obj->objectId = $objectId;
-        $obj->objectName = $objectName;
+        $obj['fullName'] = $fullName;
+        $obj['objectId'] = $objectId;
+        $obj['objectName'] = $objectName;
         $obj['objectType'] = $objectType;
-        $obj->timestamp = $timestamp;
-        $obj->userId = $userId;
+        $obj['timestamp'] = $timestamp;
+        $obj['userId'] = $userId;
 
-        null !== $meta && $obj->meta = $meta;
+        null !== $meta && $obj['meta'] = $meta;
 
         return $obj;
     }
@@ -169,7 +169,7 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     public function withFullName(string $fullName): self
     {
         $obj = clone $this;
-        $obj->fullName = $fullName;
+        $obj['fullName'] = $fullName;
 
         return $obj;
     }
@@ -180,7 +180,7 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -191,7 +191,7 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     public function withObjectName(string $objectName): self
     {
         $obj = clone $this;
-        $obj->objectName = $objectName;
+        $obj['objectName'] = $objectName;
 
         return $obj;
     }
@@ -215,7 +215,7 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -226,7 +226,7 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }
@@ -237,7 +237,7 @@ final class PublicAuditLog implements BaseModel, ResponseConverter
     public function withMeta(mixed $meta): self
     {
         $obj = clone $this;
-        $obj->meta = $meta;
+        $obj['meta'] = $meta;
 
         return $obj;
     }

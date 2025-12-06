@@ -62,10 +62,10 @@ final class PublicAssociationDefinitionUpdateRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->associationTypeId = $associationTypeId;
-        $obj->label = $label;
+        $obj['associationTypeId'] = $associationTypeId;
+        $obj['label'] = $label;
 
-        null !== $inverseLabel && $obj->inverseLabel = $inverseLabel;
+        null !== $inverseLabel && $obj['inverseLabel'] = $inverseLabel;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class PublicAssociationDefinitionUpdateRequest implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj->associationTypeId = $associationTypeID;
+        $obj['associationTypeId'] = $associationTypeID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PublicAssociationDefinitionUpdateRequest implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class PublicAssociationDefinitionUpdateRequest implements BaseModel
     public function withInverseLabel(string $inverseLabel): self
     {
         $obj = clone $this;
-        $obj->inverseLabel = $inverseLabel;
+        $obj['inverseLabel'] = $inverseLabel;
 
         return $obj;
     }

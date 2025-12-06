@@ -55,8 +55,8 @@ final class CallbackCompletionBatchRequest implements BaseModel
     {
         $obj = new self;
 
-        $obj->callbackId = $callbackId;
-        $obj->outputFields = $outputFields;
+        $obj['callbackId'] = $callbackId;
+        $obj['outputFields'] = $outputFields;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class CallbackCompletionBatchRequest implements BaseModel
     public function withCallbackID(string $callbackID): self
     {
         $obj = clone $this;
-        $obj->callbackId = $callbackID;
+        $obj['callbackId'] = $callbackID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class CallbackCompletionBatchRequest implements BaseModel
     public function withOutputFields(array $outputFields): self
     {
         $obj = clone $this;
-        $obj->outputFields = $outputFields;
+        $obj['outputFields'] = $outputFields;
 
         return $obj;
     }

@@ -71,10 +71,10 @@ final class SearchPublicResponseWrapper implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->externalAccountId = $externalAccountId;
-        $obj->externalEventId = $externalEventId;
-        $obj->objectId = $objectId;
+        $obj['appId'] = $appId;
+        $obj['externalAccountId'] = $externalAccountId;
+        $obj['externalEventId'] = $externalEventId;
+        $obj['objectId'] = $objectId;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class SearchPublicResponseWrapper implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class SearchPublicResponseWrapper implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj->externalAccountId = $externalAccountID;
+        $obj['externalAccountId'] = $externalAccountID;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class SearchPublicResponseWrapper implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj->externalEventId = $externalEventID;
+        $obj['externalEventId'] = $externalEventID;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class SearchPublicResponseWrapper implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }

@@ -16,7 +16,10 @@ use HubspotSDK\Crm\Associations\V4\PublicFetchAssociationsBatchRequest;
  * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
- *   fromObjectType: string, inputs: list<PublicFetchAssociationsBatchRequest>
+ *   fromObjectType: string,
+ *   inputs: list<PublicFetchAssociationsBatchRequest|array{
+ *     id: string, after?: string|null
+ *   }>,
  * }
  */
 final class BatchGetParams implements BaseModel
@@ -56,14 +59,16 @@ final class BatchGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicFetchAssociationsBatchRequest> $inputs
+     * @param list<PublicFetchAssociationsBatchRequest|array{
+     *   id: string, after?: string|null
+     * }> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
         $obj = new self;
 
-        $obj->fromObjectType = $fromObjectType;
-        $obj->inputs = $inputs;
+        $obj['fromObjectType'] = $fromObjectType;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -71,18 +76,20 @@ final class BatchGetParams implements BaseModel
     public function withFromObjectType(string $fromObjectType): self
     {
         $obj = clone $this;
-        $obj->fromObjectType = $fromObjectType;
+        $obj['fromObjectType'] = $fromObjectType;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicFetchAssociationsBatchRequest> $inputs
+     * @param list<PublicFetchAssociationsBatchRequest|array{
+     *   id: string, after?: string|null
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

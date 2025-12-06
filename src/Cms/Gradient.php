@@ -52,45 +52,57 @@ final class Gradient implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ColorStop> $colors
+     * @param Angle|array{units: string, value: float} $angle
+     * @param list<ColorStop|array{color: RgbaColor}> $colors
+     * @param SideOrCorner|array{
+     *   horizontalSide: string, verticalSide: string
+     * } $sideOrCorner
      */
     public static function with(
-        Angle $angle,
+        Angle|array $angle,
         array $colors,
-        SideOrCorner $sideOrCorner
+        SideOrCorner|array $sideOrCorner
     ): self {
         $obj = new self;
 
-        $obj->angle = $angle;
-        $obj->colors = $colors;
-        $obj->sideOrCorner = $sideOrCorner;
-
-        return $obj;
-    }
-
-    public function withAngle(Angle $angle): self
-    {
-        $obj = clone $this;
-        $obj->angle = $angle;
+        $obj['angle'] = $angle;
+        $obj['colors'] = $colors;
+        $obj['sideOrCorner'] = $sideOrCorner;
 
         return $obj;
     }
 
     /**
-     * @param list<ColorStop> $colors
+     * @param Angle|array{units: string, value: float} $angle
      */
-    public function withColors(array $colors): self
+    public function withAngle(Angle|array $angle): self
     {
         $obj = clone $this;
-        $obj->colors = $colors;
+        $obj['angle'] = $angle;
 
         return $obj;
     }
 
-    public function withSideOrCorner(SideOrCorner $sideOrCorner): self
+    /**
+     * @param list<ColorStop|array{color: RgbaColor}> $colors
+     */
+    public function withColors(array $colors): self
     {
         $obj = clone $this;
-        $obj->sideOrCorner = $sideOrCorner;
+        $obj['colors'] = $colors;
+
+        return $obj;
+    }
+
+    /**
+     * @param SideOrCorner|array{
+     *   horizontalSide: string, verticalSide: string
+     * } $sideOrCorner
+     */
+    public function withSideOrCorner(SideOrCorner|array $sideOrCorner): self
+    {
+        $obj = clone $this;
+        $obj['sideOrCorner'] = $sideOrCorner;
 
         return $obj;
     }

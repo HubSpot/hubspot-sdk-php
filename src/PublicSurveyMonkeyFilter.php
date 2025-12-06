@@ -66,8 +66,8 @@ final class PublicSurveyMonkeyFilter implements BaseModel
         $obj = new self;
 
         $obj['filterType'] = $filterType;
-        $obj->operator = $operator;
-        $obj->surveyId = $surveyId;
+        $obj['operator'] = $operator;
+        $obj['surveyId'] = $surveyId;
 
         return $obj;
     }
@@ -86,7 +86,7 @@ final class PublicSurveyMonkeyFilter implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class PublicSurveyMonkeyFilter implements BaseModel
     public function withSurveyID(string $surveyID): self
     {
         $obj = clone $this;
-        $obj->surveyId = $surveyID;
+        $obj['surveyId'] = $surveyID;
 
         return $obj;
     }

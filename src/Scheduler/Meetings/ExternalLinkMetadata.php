@@ -115,17 +115,17 @@ final class ExternalLinkMetadata implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->createdAt = $createdAt;
-        $obj->defaultLink = $defaultLink;
-        $obj->link = $link;
-        $obj->organizerUserId = $organizerUserId;
-        $obj->slug = $slug;
-        $obj->type = $type;
-        $obj->userIdsOfLinkMembers = $userIdsOfLinkMembers;
+        $obj['id'] = $id;
+        $obj['createdAt'] = $createdAt;
+        $obj['defaultLink'] = $defaultLink;
+        $obj['link'] = $link;
+        $obj['organizerUserId'] = $organizerUserId;
+        $obj['slug'] = $slug;
+        $obj['type'] = $type;
+        $obj['userIdsOfLinkMembers'] = $userIdsOfLinkMembers;
 
-        null !== $name && $obj->name = $name;
-        null !== $updatedAt && $obj->updatedAt = $updatedAt;
+        null !== $name && $obj['name'] = $name;
+        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withDefaultLink(bool $defaultLink): self
     {
         $obj = clone $this;
-        $obj->defaultLink = $defaultLink;
+        $obj['defaultLink'] = $defaultLink;
 
         return $obj;
     }
@@ -157,7 +157,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withLink(string $link): self
     {
         $obj = clone $this;
-        $obj->link = $link;
+        $obj['link'] = $link;
 
         return $obj;
     }
@@ -165,7 +165,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withOrganizerUserID(string $organizerUserID): self
     {
         $obj = clone $this;
-        $obj->organizerUserId = $organizerUserID;
+        $obj['organizerUserId'] = $organizerUserID;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withSlug(string $slug): self
     {
         $obj = clone $this;
-        $obj->slug = $slug;
+        $obj['slug'] = $slug;
 
         return $obj;
     }
@@ -181,7 +181,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -192,7 +192,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withUserIDsOfLinkMembers(array $userIDsOfLinkMembers): self
     {
         $obj = clone $this;
-        $obj->userIdsOfLinkMembers = $userIDsOfLinkMembers;
+        $obj['userIdsOfLinkMembers'] = $userIDsOfLinkMembers;
 
         return $obj;
     }
@@ -200,7 +200,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -208,7 +208,7 @@ final class ExternalLinkMetadata implements BaseModel
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

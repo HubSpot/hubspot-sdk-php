@@ -53,7 +53,7 @@ final class SourceCodeDeleteParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->environment = $environment;
+        $obj['environment'] = $environment;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class SourceCodeDeleteParams implements BaseModel
     public function withEnvironment(string $environment): self
     {
         $obj = clone $this;
-        $obj->environment = $environment;
+        $obj['environment'] = $environment;
 
         return $obj;
     }

@@ -56,7 +56,7 @@ final class MappingBatchCreateIDMappingParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->body = $body;
+        $obj['body'] = $body;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class MappingBatchCreateIDMappingParams implements BaseModel
     public function withBody(array $body): self
     {
         $obj = clone $this;
-        $obj->body = $body;
+        $obj['body'] = $body;
 
         return $obj;
     }

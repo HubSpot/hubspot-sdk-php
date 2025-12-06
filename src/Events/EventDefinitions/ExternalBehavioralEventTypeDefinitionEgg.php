@@ -7,6 +7,7 @@ namespace HubspotSDK\Events\EventDefinitions;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\OptionInput;
 
 /**
  * @phpstan-type ExternalBehavioralEventTypeDefinitionEggShape = array{
@@ -82,7 +83,13 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalBehavioralEventPropertyCreate> $propertyDefinitions
+     * @param list<ExternalBehavioralEventPropertyCreate|array{
+     *   label: string,
+     *   type: string,
+     *   description?: string|null,
+     *   name?: string|null,
+     *   options?: list<OptionInput>|null,
+     * }> $propertyDefinitions
      */
     public static function with(
         string $label,
@@ -93,12 +100,12 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->label = $label;
-        $obj->propertyDefinitions = $propertyDefinitions;
+        $obj['label'] = $label;
+        $obj['propertyDefinitions'] = $propertyDefinitions;
 
-        null !== $description && $obj->description = $description;
-        null !== $name && $obj->name = $name;
-        null !== $primaryObject && $obj->primaryObject = $primaryObject;
+        null !== $description && $obj['description'] = $description;
+        null !== $name && $obj['name'] = $name;
+        null !== $primaryObject && $obj['primaryObject'] = $primaryObject;
 
         return $obj;
     }
@@ -109,7 +116,7 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -117,12 +124,18 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
     /**
      * List of custom properties on event.
      *
-     * @param list<ExternalBehavioralEventPropertyCreate> $propertyDefinitions
+     * @param list<ExternalBehavioralEventPropertyCreate|array{
+     *   label: string,
+     *   type: string,
+     *   description?: string|null,
+     *   name?: string|null,
+     *   options?: list<OptionInput>|null,
+     * }> $propertyDefinitions
      */
     public function withPropertyDefinitions(array $propertyDefinitions): self
     {
         $obj = clone $this;
-        $obj->propertyDefinitions = $propertyDefinitions;
+        $obj['propertyDefinitions'] = $propertyDefinitions;
 
         return $obj;
     }
@@ -133,7 +146,7 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -144,7 +157,7 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -155,7 +168,7 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
     public function withPrimaryObject(string $primaryObject): self
     {
         $obj = clone $this;
-        $obj->primaryObject = $primaryObject;
+        $obj['primaryObject'] = $primaryObject;
 
         return $obj;
     }

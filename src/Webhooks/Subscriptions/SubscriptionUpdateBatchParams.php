@@ -16,7 +16,7 @@ use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
  * @see HubspotSDK\Services\Webhooks\SubscriptionsService::updateBatch()
  *
  * @phpstan-type SubscriptionUpdateBatchParamsShape = array{
- *   inputs: list<SubscriptionBatchUpdateRequest>
+ *   inputs: list<SubscriptionBatchUpdateRequest|array{id: int, active: bool}>
  * }
  */
 final class SubscriptionUpdateBatchParams implements BaseModel
@@ -53,24 +53,24 @@ final class SubscriptionUpdateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionBatchUpdateRequest> $inputs
+     * @param list<SubscriptionBatchUpdateRequest|array{id: int, active: bool}> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<SubscriptionBatchUpdateRequest> $inputs
+     * @param list<SubscriptionBatchUpdateRequest|array{id: int, active: bool}> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

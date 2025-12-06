@@ -80,11 +80,11 @@ final class AddTime implements BaseModel
         $obj = new self;
 
         $obj['operator'] = $operator;
-        $obj->stringToCheck = $stringToCheck;
+        $obj['stringToCheck'] = $stringToCheck;
 
-        null !== $inputs && $obj->inputs = $inputs;
-        null !== $propertyName && $obj->propertyName = $propertyName;
-        null !== $value && $obj->value = $value;
+        null !== $inputs && $obj['inputs'] = $inputs;
+        null !== $propertyName && $obj['propertyName'] = $propertyName;
+        null !== $value && $obj['value'] = $value;
 
         return $obj;
     }
@@ -106,7 +106,7 @@ final class AddTime implements BaseModel
     public function withStringToCheck(array $stringToCheck): self
     {
         $obj = clone $this;
-        $obj->stringToCheck = $stringToCheck;
+        $obj['stringToCheck'] = $stringToCheck;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class AddTime implements BaseModel
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class AddTime implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class AddTime implements BaseModel
     public function withValue(float $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

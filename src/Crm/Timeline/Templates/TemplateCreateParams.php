@@ -9,6 +9,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
+use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken\Type;
+use HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption;
 
 /**
  * Event templates define the general structure for a custom timeline event, and enable you to send event data to HubSpot. A template includes formatted copy for its heading and details, as well as any custom property definitions. A single app can include up to 750 event templates.<br/><Warning>the `v1` and `v3` timeline events APIs are only available for app partners with existing `v1`/`v3` timeline events defined in their public app. <ul><li>If your app doesn't include any timeline events yet, requests to this endpoint will fail. Instead, you can get started on [latest version of the developer platform](/apps/developer-platform/build-apps/overview). Note that you'll need to request approval before you can define app events for your app. Learn more in the [app events overview](/apps/developer-platform/add-features/app-events/overview).</li><li>If your app includes a `v1`/`v3` timeline event, learn how to [migrate it to the developer platform](/apps/developer-platform/add-features/app-events/create-and-manage-event-types#migrate-an-existing-timeline-event-type). You don't need to request approval before migrating existing event types.</li></ul>If you're not an app partner, you can send custom event data to HubSpot using the [custom events API](/api-reference/events-manage-event-definitions-v3/guide).</Warning>.
@@ -18,7 +20,15 @@ use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
  * @phpstan-type TemplateCreateParamsShape = array{
  *   name: string,
  *   objectType: string,
- *   tokens: list<TimelineEventTemplateToken>,
+ *   tokens: list<TimelineEventTemplateToken|array{
+ *     label: string,
+ *     name: string,
+ *     type: value-of<Type>,
+ *     createdAt?: \DateTimeInterface|null,
+ *     objectPropertyName?: string|null,
+ *     options?: list<TimelineEventTemplateTokenOption>|null,
+ *     updatedAt?: \DateTimeInterface|null,
+ *   }>,
  *   detailTemplate?: string,
  *   headerTemplate?: string,
  * }
@@ -85,7 +95,15 @@ final class TemplateCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventTemplateToken> $tokens
+     * @param list<TimelineEventTemplateToken|array{
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   createdAt?: \DateTimeInterface|null,
+     *   objectPropertyName?: string|null,
+     *   options?: list<TimelineEventTemplateTokenOption>|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * }> $tokens
      */
     public static function with(
         string $name,
@@ -96,12 +114,12 @@ final class TemplateCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->name = $name;
-        $obj->objectType = $objectType;
-        $obj->tokens = $tokens;
+        $obj['name'] = $name;
+        $obj['objectType'] = $objectType;
+        $obj['tokens'] = $tokens;
 
-        null !== $detailTemplate && $obj->detailTemplate = $detailTemplate;
-        null !== $headerTemplate && $obj->headerTemplate = $headerTemplate;
+        null !== $detailTemplate && $obj['detailTemplate'] = $detailTemplate;
+        null !== $headerTemplate && $obj['headerTemplate'] = $headerTemplate;
 
         return $obj;
     }
@@ -112,7 +130,7 @@ final class TemplateCreateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -123,7 +141,7 @@ final class TemplateCreateParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -131,12 +149,20 @@ final class TemplateCreateParams implements BaseModel
     /**
      * A collection of tokens that can be used as custom properties on the event and to create fully fledged CRM objects.
      *
-     * @param list<TimelineEventTemplateToken> $tokens
+     * @param list<TimelineEventTemplateToken|array{
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   createdAt?: \DateTimeInterface|null,
+     *   objectPropertyName?: string|null,
+     *   options?: list<TimelineEventTemplateTokenOption>|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * }> $tokens
      */
     public function withTokens(array $tokens): self
     {
         $obj = clone $this;
-        $obj->tokens = $tokens;
+        $obj['tokens'] = $tokens;
 
         return $obj;
     }
@@ -147,7 +173,7 @@ final class TemplateCreateParams implements BaseModel
     public function withDetailTemplate(string $detailTemplate): self
     {
         $obj = clone $this;
-        $obj->detailTemplate = $detailTemplate;
+        $obj['detailTemplate'] = $detailTemplate;
 
         return $obj;
     }
@@ -158,7 +184,7 @@ final class TemplateCreateParams implements BaseModel
     public function withHeaderTemplate(string $headerTemplate): self
     {
         $obj = clone $this;
-        $obj->headerTemplate = $headerTemplate;
+        $obj['headerTemplate'] = $headerTemplate;
 
         return $obj;
     }

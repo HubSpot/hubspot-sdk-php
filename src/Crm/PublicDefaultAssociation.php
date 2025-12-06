@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm;
 
 use HubspotSDK\AssociationSpec;
+use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -58,44 +59,61 @@ final class PublicDefaultAssociation implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param AssociationSpec|array{
+     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     * } $associationSpec
+     * @param PublicObjectID|array{id: string} $from
+     * @param PublicObjectID|array{id: string} $to
      */
     public static function with(
-        AssociationSpec $associationSpec,
-        PublicObjectID $from,
-        PublicObjectID $to
+        AssociationSpec|array $associationSpec,
+        PublicObjectID|array $from,
+        PublicObjectID|array $to,
     ): self {
         $obj = new self;
 
-        $obj->associationSpec = $associationSpec;
-        $obj->from = $from;
-        $obj->to = $to;
+        $obj['associationSpec'] = $associationSpec;
+        $obj['from'] = $from;
+        $obj['to'] = $to;
 
         return $obj;
     }
 
     /**
      * Defines the type, direction, and details of the relationship between two CRM objects.
+     *
+     * @param AssociationSpec|array{
+     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     * } $associationSpec
      */
-    public function withAssociationSpec(AssociationSpec $associationSpec): self
-    {
+    public function withAssociationSpec(
+        AssociationSpec|array $associationSpec
+    ): self {
         $obj = clone $this;
-        $obj->associationSpec = $associationSpec;
+        $obj['associationSpec'] = $associationSpec;
 
         return $obj;
     }
 
-    public function withFrom(PublicObjectID $from): self
+    /**
+     * @param PublicObjectID|array{id: string} $from
+     */
+    public function withFrom(PublicObjectID|array $from): self
     {
         $obj = clone $this;
-        $obj->from = $from;
+        $obj['from'] = $from;
 
         return $obj;
     }
 
-    public function withTo(PublicObjectID $to): self
+    /**
+     * @param PublicObjectID|array{id: string} $to
+     */
+    public function withTo(PublicObjectID|array $to): self
     {
         $obj = clone $this;
-        $obj->to = $to;
+        $obj['to'] = $to;
 
         return $obj;
     }

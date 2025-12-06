@@ -67,9 +67,9 @@ final class DateTime implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->dateOnly = $dateOnly;
-        $obj->timeZoneShift = $timeZoneShift;
-        $obj->value = $value;
+        $obj['dateOnly'] = $dateOnly;
+        $obj['timeZoneShift'] = $timeZoneShift;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class DateTime implements BaseModel
     public function withDateOnly(bool $dateOnly): self
     {
         $obj = clone $this;
-        $obj->dateOnly = $dateOnly;
+        $obj['dateOnly'] = $dateOnly;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class DateTime implements BaseModel
     public function withTimeZoneShift(int $timeZoneShift): self
     {
         $obj = clone $this;
-        $obj->timeZoneShift = $timeZoneShift;
+        $obj['timeZoneShift'] = $timeZoneShift;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class DateTime implements BaseModel
     public function withValue(int $value): self
     {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

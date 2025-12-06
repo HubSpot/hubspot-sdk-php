@@ -47,7 +47,7 @@ final class OptionDecorations implements BaseModel
     {
         $obj = new self;
 
-        $obj->color = $color;
+        $obj['color'] = $color;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class OptionDecorations implements BaseModel
     public function withColor(string $color): self
     {
         $obj = clone $this;
-        $obj->color = $color;
+        $obj['color'] = $color;
 
         return $obj;
     }

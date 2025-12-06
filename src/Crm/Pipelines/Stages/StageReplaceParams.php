@@ -100,11 +100,11 @@ final class StageReplaceParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->objectType = $objectType;
-        $obj->pipelineId = $pipelineId;
-        $obj->displayOrder = $displayOrder;
-        $obj->label = $label;
-        $obj->metadata = $metadata;
+        $obj['objectType'] = $objectType;
+        $obj['pipelineId'] = $pipelineId;
+        $obj['displayOrder'] = $displayOrder;
+        $obj['label'] = $label;
+        $obj['metadata'] = $metadata;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class StageReplaceParams implements BaseModel
     public function withObjectType(string $objectType): self
     {
         $obj = clone $this;
-        $obj->objectType = $objectType;
+        $obj['objectType'] = $objectType;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class StageReplaceParams implements BaseModel
     public function withPipelineID(string $pipelineID): self
     {
         $obj = clone $this;
-        $obj->pipelineId = $pipelineID;
+        $obj['pipelineId'] = $pipelineID;
 
         return $obj;
     }
@@ -131,7 +131,7 @@ final class StageReplaceParams implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -142,7 +142,7 @@ final class StageReplaceParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class StageReplaceParams implements BaseModel
     public function withMetadata(array $metadata): self
     {
         $obj = clone $this;
-        $obj->metadata = $metadata;
+        $obj['metadata'] = $metadata;
 
         return $obj;
     }

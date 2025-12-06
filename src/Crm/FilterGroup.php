@@ -7,6 +7,7 @@ namespace HubspotSDK\Crm;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Filter\Operator;
 
 /**
  * @phpstan-type FilterGroupShape = array{filters: list<Filter>}
@@ -44,24 +45,36 @@ final class FilterGroup implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Filter> $filters
+     * @param list<Filter|array{
+     *   operator: value-of<Operator>,
+     *   propertyName: string,
+     *   highValue?: string|null,
+     *   value?: string|null,
+     *   values?: list<string>|null,
+     * }> $filters
      */
     public static function with(array $filters): self
     {
         $obj = new self;
 
-        $obj->filters = $filters;
+        $obj['filters'] = $filters;
 
         return $obj;
     }
 
     /**
-     * @param list<Filter> $filters
+     * @param list<Filter|array{
+     *   operator: value-of<Operator>,
+     *   propertyName: string,
+     *   highValue?: string|null,
+     *   value?: string|null,
+     *   values?: list<string>|null,
+     * }> $filters
      */
     public function withFilters(array $filters): self
     {
         $obj = clone $this;
-        $obj->filters = $filters;
+        $obj['filters'] = $filters;
 
         return $obj;
     }

@@ -60,55 +60,79 @@ final class PublicEmailToDetails implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicEmailRecipients|array{
+     *   exclude?: list<string>|null, include?: list<string>|null
+     * } $contactIds
+     * @param PublicEmailRecipients|array{
+     *   exclude?: list<string>|null, include?: list<string>|null
+     * } $contactIlsLists
+     * @param PublicEmailRecipients|array{
+     *   exclude?: list<string>|null, include?: list<string>|null
+     * } $contactLists
      */
     public static function with(
-        ?PublicEmailRecipients $contactIds = null,
-        ?PublicEmailRecipients $contactIlsLists = null,
-        ?PublicEmailRecipients $contactLists = null,
+        PublicEmailRecipients|array|null $contactIds = null,
+        PublicEmailRecipients|array|null $contactIlsLists = null,
+        PublicEmailRecipients|array|null $contactLists = null,
         ?bool $limitSendFrequency = null,
         ?bool $suppressGraymail = null,
     ): self {
         $obj = new self;
 
-        null !== $contactIds && $obj->contactIds = $contactIds;
-        null !== $contactIlsLists && $obj->contactIlsLists = $contactIlsLists;
-        null !== $contactLists && $obj->contactLists = $contactLists;
-        null !== $limitSendFrequency && $obj->limitSendFrequency = $limitSendFrequency;
-        null !== $suppressGraymail && $obj->suppressGraymail = $suppressGraymail;
+        null !== $contactIds && $obj['contactIds'] = $contactIds;
+        null !== $contactIlsLists && $obj['contactIlsLists'] = $contactIlsLists;
+        null !== $contactLists && $obj['contactLists'] = $contactLists;
+        null !== $limitSendFrequency && $obj['limitSendFrequency'] = $limitSendFrequency;
+        null !== $suppressGraymail && $obj['suppressGraymail'] = $suppressGraymail;
 
         return $obj;
     }
 
     /**
      * Data structure representing lists of IDs that should be included and excluded.
+     *
+     * @param PublicEmailRecipients|array{
+     *   exclude?: list<string>|null, include?: list<string>|null
+     * } $contactIDs
      */
-    public function withContactIDs(PublicEmailRecipients $contactIDs): self
-    {
-        $obj = clone $this;
-        $obj->contactIds = $contactIDs;
-
-        return $obj;
-    }
-
-    /**
-     * Data structure representing lists of IDs that should be included and excluded.
-     */
-    public function withContactIlsLists(
-        PublicEmailRecipients $contactIlsLists
+    public function withContactIDs(
+        PublicEmailRecipients|array $contactIDs
     ): self {
         $obj = clone $this;
-        $obj->contactIlsLists = $contactIlsLists;
+        $obj['contactIds'] = $contactIDs;
 
         return $obj;
     }
 
     /**
      * Data structure representing lists of IDs that should be included and excluded.
+     *
+     * @param PublicEmailRecipients|array{
+     *   exclude?: list<string>|null, include?: list<string>|null
+     * } $contactIlsLists
      */
-    public function withContactLists(PublicEmailRecipients $contactLists): self
-    {
+    public function withContactIlsLists(
+        PublicEmailRecipients|array $contactIlsLists
+    ): self {
         $obj = clone $this;
-        $obj->contactLists = $contactLists;
+        $obj['contactIlsLists'] = $contactIlsLists;
+
+        return $obj;
+    }
+
+    /**
+     * Data structure representing lists of IDs that should be included and excluded.
+     *
+     * @param PublicEmailRecipients|array{
+     *   exclude?: list<string>|null, include?: list<string>|null
+     * } $contactLists
+     */
+    public function withContactLists(
+        PublicEmailRecipients|array $contactLists
+    ): self {
+        $obj = clone $this;
+        $obj['contactLists'] = $contactLists;
 
         return $obj;
     }
@@ -116,7 +140,7 @@ final class PublicEmailToDetails implements BaseModel
     public function withLimitSendFrequency(bool $limitSendFrequency): self
     {
         $obj = clone $this;
-        $obj->limitSendFrequency = $limitSendFrequency;
+        $obj['limitSendFrequency'] = $limitSendFrequency;
 
         return $obj;
     }
@@ -127,7 +151,7 @@ final class PublicEmailToDetails implements BaseModel
     public function withSuppressGraymail(bool $suppressGraymail): self
     {
         $obj = clone $this;
-        $obj->suppressGraymail = $suppressGraymail;
+        $obj['suppressGraymail'] = $suppressGraymail;
 
         return $obj;
     }

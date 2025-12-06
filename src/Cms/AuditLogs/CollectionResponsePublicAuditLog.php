@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\AuditLogs;
 
+use HubspotSDK\Cms\AuditLogs\PublicAuditLog\Event;
+use HubspotSDK\Cms\AuditLogs\PublicAuditLog\ObjectType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
+use HubspotSDK\PreviousPage;
 
 /**
  * The collection of audit logs.
@@ -52,34 +56,58 @@ final class CollectionResponsePublicAuditLog implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAuditLog> $results
+     * @param list<PublicAuditLog|array{
+     *   event: value-of<Event>,
+     *   fullName: string,
+     *   objectId: string,
+     *   objectName: string,
+     *   objectType: value-of<ObjectType>,
+     *   timestamp: \DateTimeInterface,
+     *   userId: string,
+     *   meta?: mixed,
+     * }> $results
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
-    public static function with(array $results, ?Paging $paging = null): self
-    {
+    public static function with(
+        array $results,
+        Paging|array|null $paging = null
+    ): self {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicAuditLog> $results
+     * @param list<PublicAuditLog|array{
+     *   event: value-of<Event>,
+     *   fullName: string,
+     *   objectId: string,
+     *   objectName: string,
+     *   objectType: value-of<ObjectType>,
+     *   timestamp: \DateTimeInterface,
+     *   userId: string,
+     *   meta?: mixed,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    /**
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     */
+    public function withPaging(Paging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

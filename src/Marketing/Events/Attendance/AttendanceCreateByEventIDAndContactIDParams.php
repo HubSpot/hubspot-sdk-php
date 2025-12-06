@@ -24,7 +24,10 @@ use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
  * @see HubspotSDK\Services\Marketing\Events\AttendanceService::createByEventIDAndContactID()
  *
  * @phpstan-type AttendanceCreateByEventIDAndContactIDParamsShape = array{
- *   objectId: string, inputs: list<MarketingEventSubscriber>
+ *   objectId: string,
+ *   inputs: list<MarketingEventSubscriber|array{
+ *     interactionDateTime: int, properties: array<string,string>, vid: int
+ *   }>,
  * }
  */
 final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
@@ -70,14 +73,16 @@ final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventSubscriber> $inputs
+     * @param list<MarketingEventSubscriber|array{
+     *   interactionDateTime: int, properties: array<string,string>, vid: int
+     * }> $inputs
      */
     public static function with(string $objectId, array $inputs): self
     {
         $obj = new self;
 
-        $obj->objectId = $objectId;
-        $obj->inputs = $inputs;
+        $obj['objectId'] = $objectId;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -85,7 +90,7 @@ final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj->objectId = $objectID;
+        $obj['objectId'] = $objectID;
 
         return $obj;
     }
@@ -93,12 +98,14 @@ final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
     /**
      * List of HubSpot contacts to subscribe to the marketing event.
      *
-     * @param list<MarketingEventSubscriber> $inputs
+     * @param list<MarketingEventSubscriber|array{
+     *   interactionDateTime: int, properties: array<string,string>, vid: int
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

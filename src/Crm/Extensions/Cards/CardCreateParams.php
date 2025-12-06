@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Extensions\Cards\CardFetchBody\CardType;
 
 /**
  * Defines a new card that will become active on an account when this app is installed.
@@ -15,9 +16,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Extensions\CardsService::create()
  *
  * @phpstan-type CardCreateParamsShape = array{
- *   actions: CardActions,
- *   display: CardDisplayBody,
- *   fetch: CardFetchBody,
+ *   actions: CardActions|array{baseUrls: list<string>},
+ *   display: CardDisplayBody|array{properties: list<CardDisplayProperty>},
+ *   fetch: CardFetchBody|array{
+ *     objectTypes: list<CardObjectTypeBody>,
+ *     targetUrl: string,
+ *     cardType?: value-of<CardType>|null,
+ *     serverlessFunction?: string|null,
+ *   },
  *   title: string,
  * }
  */
@@ -78,52 +84,72 @@ final class CardCreateParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param CardActions|array{baseUrls: list<string>} $actions
+     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
+     * @param CardFetchBody|array{
+     *   objectTypes: list<CardObjectTypeBody>,
+     *   targetUrl: string,
+     *   cardType?: value-of<CardType>|null,
+     *   serverlessFunction?: string|null,
+     * } $fetch
      */
     public static function with(
-        CardActions $actions,
-        CardDisplayBody $display,
-        CardFetchBody $fetch,
+        CardActions|array $actions,
+        CardDisplayBody|array $display,
+        CardFetchBody|array $fetch,
         string $title,
     ): self {
         $obj = new self;
 
-        $obj->actions = $actions;
-        $obj->display = $display;
-        $obj->fetch = $fetch;
-        $obj->title = $title;
+        $obj['actions'] = $actions;
+        $obj['display'] = $display;
+        $obj['fetch'] = $fetch;
+        $obj['title'] = $title;
 
         return $obj;
     }
 
     /**
      * Configuration for custom user actions on cards.
+     *
+     * @param CardActions|array{baseUrls: list<string>} $actions
      */
-    public function withActions(CardActions $actions): self
+    public function withActions(CardActions|array $actions): self
     {
         $obj = clone $this;
-        $obj->actions = $actions;
+        $obj['actions'] = $actions;
 
         return $obj;
     }
 
     /**
      * Configuration for displayed info on a card.
+     *
+     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
      */
-    public function withDisplay(CardDisplayBody $display): self
+    public function withDisplay(CardDisplayBody|array $display): self
     {
         $obj = clone $this;
-        $obj->display = $display;
+        $obj['display'] = $display;
 
         return $obj;
     }
 
     /**
      * Configuration for this card's data fetch request.
+     *
+     * @param CardFetchBody|array{
+     *   objectTypes: list<CardObjectTypeBody>,
+     *   targetUrl: string,
+     *   cardType?: value-of<CardType>|null,
+     *   serverlessFunction?: string|null,
+     * } $fetch
      */
-    public function withFetch(CardFetchBody $fetch): self
+    public function withFetch(CardFetchBody|array $fetch): self
     {
         $obj = clone $this;
-        $obj->fetch = $fetch;
+        $obj['fetch'] = $fetch;
 
         return $obj;
     }
@@ -134,7 +160,7 @@ final class CardCreateParams implements BaseModel
     public function withTitle(string $title): self
     {
         $obj = clone $this;
-        $obj->title = $title;
+        $obj['title'] = $title;
 
         return $obj;
     }

@@ -63,9 +63,9 @@ final class RowCloneDraftParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->tableIdOrName = $tableIdOrName;
+        $obj['tableIdOrName'] = $tableIdOrName;
 
-        null !== $name && $obj->name = $name;
+        null !== $name && $obj['name'] = $name;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class RowCloneDraftParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj->tableIdOrName = $tableIDOrName;
+        $obj['tableIdOrName'] = $tableIDOrName;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class RowCloneDraftParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }

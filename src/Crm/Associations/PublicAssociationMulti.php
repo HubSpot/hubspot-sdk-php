@@ -8,7 +8,9 @@ use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociatedID;
+use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
+use HubspotSDK\PreviousPage;
 use HubspotSDK\PublicObjectID;
 
 /**
@@ -59,27 +61,32 @@ final class PublicAssociationMulti implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociatedID> $to
+     * @param PublicObjectID|array{id: string} $from
+     * @param list<AssociatedID|array{id: string, type: string}> $to
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
     public static function with(
-        PublicObjectID $from,
+        PublicObjectID|array $from,
         array $to,
-        ?Paging $paging = null
+        Paging|array|null $paging = null
     ): self {
         $obj = new self;
 
-        $obj->from = $from;
-        $obj->to = $to;
+        $obj['from'] = $from;
+        $obj['to'] = $to;
 
-        null !== $paging && $obj->paging = $paging;
+        null !== $paging && $obj['paging'] = $paging;
 
         return $obj;
     }
 
-    public function withFrom(PublicObjectID $from): self
+    /**
+     * @param PublicObjectID|array{id: string} $from
+     */
+    public function withFrom(PublicObjectID|array $from): self
     {
         $obj = clone $this;
-        $obj->from = $from;
+        $obj['from'] = $from;
 
         return $obj;
     }
@@ -87,20 +94,23 @@ final class PublicAssociationMulti implements BaseModel
     /**
      * The IDs of objects that are associated with the object identified by the ID in 'from'.
      *
-     * @param list<AssociatedID> $to
+     * @param list<AssociatedID|array{id: string, type: string}> $to
      */
     public function withTo(array $to): self
     {
         $obj = clone $this;
-        $obj->to = $to;
+        $obj['to'] = $to;
 
         return $obj;
     }
 
-    public function withPaging(Paging $paging): self
+    /**
+     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     */
+    public function withPaging(Paging|array $paging): self
     {
         $obj = clone $this;
-        $obj->paging = $paging;
+        $obj['paging'] = $paging;
 
         return $obj;
     }

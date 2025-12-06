@@ -141,16 +141,16 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->description = $description;
-        $obj->name = $name;
+        $obj['id'] = $id;
+        $obj['description'] = $description;
+        $obj['name'] = $name;
         $obj['sourceOfStatus'] = $sourceOfStatus;
         $obj['status'] = $status;
 
-        null !== $brandId && $obj->brandId = $brandId;
+        null !== $brandId && $obj['brandId'] = $brandId;
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
-        null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
-        null !== $preferenceGroupName && $obj->preferenceGroupName = $preferenceGroupName;
+        null !== $legalBasisExplanation && $obj['legalBasisExplanation'] = $legalBasisExplanation;
+        null !== $preferenceGroupName && $obj['preferenceGroupName'] = $preferenceGroupName;
 
         return $obj;
     }
@@ -161,7 +161,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -183,7 +183,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -221,7 +221,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     public function withBrandID(int $brandID): self
     {
         $obj = clone $this;
-        $obj->brandId = $brandID;
+        $obj['brandId'] = $brandID;
 
         return $obj;
     }
@@ -246,7 +246,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
         string $legalBasisExplanation
     ): self {
         $obj = clone $this;
-        $obj->legalBasisExplanation = $legalBasisExplanation;
+        $obj['legalBasisExplanation'] = $legalBasisExplanation;
 
         return $obj;
     }
@@ -257,7 +257,7 @@ final class PublicSubscriptionStatus implements BaseModel, ResponseConverter
     public function withPreferenceGroupName(string $preferenceGroupName): self
     {
         $obj = clone $this;
-        $obj->preferenceGroupName = $preferenceGroupName;
+        $obj['preferenceGroupName'] = $preferenceGroupName;
 
         return $obj;
     }

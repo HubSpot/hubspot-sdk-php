@@ -62,7 +62,7 @@ final class APIEnrollmentEventPropertyValue implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->enrollmentEventPropertyToken = $enrollmentEventPropertyToken;
+        $obj['enrollmentEventPropertyToken'] = $enrollmentEventPropertyToken;
         $obj['type'] = $type;
 
         return $obj;
@@ -72,7 +72,7 @@ final class APIEnrollmentEventPropertyValue implements BaseModel
         string $enrollmentEventPropertyToken
     ): self {
         $obj = clone $this;
-        $obj->enrollmentEventPropertyToken = $enrollmentEventPropertyToken;
+        $obj['enrollmentEventPropertyToken'] = $enrollmentEventPropertyToken;
 
         return $obj;
     }

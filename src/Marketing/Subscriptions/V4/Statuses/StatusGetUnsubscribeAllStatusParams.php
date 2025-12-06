@@ -80,8 +80,8 @@ final class StatusGetUnsubscribeAllStatusParams implements BaseModel
 
         $obj['channel'] = $channel;
 
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
-        null !== $verbose && $obj->verbose = $verbose;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $verbose && $obj['verbose'] = $verbose;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class StatusGetUnsubscribeAllStatusParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class StatusGetUnsubscribeAllStatusParams implements BaseModel
     public function withVerbose(bool $verbose): self
     {
         $obj = clone $this;
-        $obj->verbose = $verbose;
+        $obj['verbose'] = $verbose;
 
         return $obj;
     }

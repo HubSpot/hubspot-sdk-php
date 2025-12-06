@@ -58,7 +58,7 @@ final class APIAppendObjectPropertyValue implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->appendPropertyName = $appendPropertyName;
+        $obj['appendPropertyName'] = $appendPropertyName;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APIAppendObjectPropertyValue implements BaseModel
     public function withAppendPropertyName(string $appendPropertyName): self
     {
         $obj = clone $this;
-        $obj->appendPropertyName = $appendPropertyName;
+        $obj['appendPropertyName'] = $appendPropertyName;
 
         return $obj;
     }

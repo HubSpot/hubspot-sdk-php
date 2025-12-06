@@ -119,15 +119,15 @@ final class SignedURL implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->expiresAt = $expiresAt;
-        $obj->extension = $extension;
-        $obj->name = $name;
-        $obj->size = $size;
-        $obj->type = $type;
-        $obj->url = $url;
+        $obj['expiresAt'] = $expiresAt;
+        $obj['extension'] = $extension;
+        $obj['name'] = $name;
+        $obj['size'] = $size;
+        $obj['type'] = $type;
+        $obj['url'] = $url;
 
-        null !== $height && $obj->height = $height;
-        null !== $width && $obj->width = $width;
+        null !== $height && $obj['height'] = $height;
+        null !== $width && $obj['width'] = $width;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class SignedURL implements BaseModel
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $obj = clone $this;
-        $obj->expiresAt = $expiresAt;
+        $obj['expiresAt'] = $expiresAt;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class SignedURL implements BaseModel
     public function withExtension(string $extension): self
     {
         $obj = clone $this;
-        $obj->extension = $extension;
+        $obj['extension'] = $extension;
 
         return $obj;
     }
@@ -160,7 +160,7 @@ final class SignedURL implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -171,7 +171,7 @@ final class SignedURL implements BaseModel
     public function withSize(int $size): self
     {
         $obj = clone $this;
-        $obj->size = $size;
+        $obj['size'] = $size;
 
         return $obj;
     }
@@ -182,7 +182,7 @@ final class SignedURL implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -193,7 +193,7 @@ final class SignedURL implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }
@@ -204,7 +204,7 @@ final class SignedURL implements BaseModel
     public function withHeight(int $height): self
     {
         $obj = clone $this;
-        $obj->height = $height;
+        $obj['height'] = $height;
 
         return $obj;
     }
@@ -215,7 +215,7 @@ final class SignedURL implements BaseModel
     public function withWidth(int $width): self
     {
         $obj = clone $this;
-        $obj->width = $width;
+        $obj['width'] = $width;
 
         return $obj;
     }

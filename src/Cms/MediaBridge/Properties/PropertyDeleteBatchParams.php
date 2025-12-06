@@ -16,7 +16,7 @@ use HubspotSDK\PropertyName;
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::deleteBatch()
  *
  * @phpstan-type PropertyDeleteBatchParamsShape = array{
- *   appId: int, inputs: list<PropertyName>
+ *   appId: int, inputs: list<PropertyName|array{name: string}>
  * }
  */
 final class PropertyDeleteBatchParams implements BaseModel
@@ -56,14 +56,14 @@ final class PropertyDeleteBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyName> $inputs
+     * @param list<PropertyName|array{name: string}> $inputs
      */
     public static function with(int $appId, array $inputs): self
     {
         $obj = new self;
 
-        $obj->appId = $appId;
-        $obj->inputs = $inputs;
+        $obj['appId'] = $appId;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -71,18 +71,18 @@ final class PropertyDeleteBatchParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
 
     /**
-     * @param list<PropertyName> $inputs
+     * @param list<PropertyName|array{name: string}> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

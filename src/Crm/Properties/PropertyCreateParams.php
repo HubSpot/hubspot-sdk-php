@@ -32,7 +32,13 @@ use HubspotSDK\OptionInput;
  *   formField?: bool,
  *   hasUniqueValue?: bool,
  *   hidden?: bool,
- *   options?: list<OptionInput>,
+ *   options?: list<OptionInput|array{
+ *     displayOrder: int,
+ *     hidden: bool,
+ *     label: string,
+ *     value: string,
+ *     description?: string|null,
+ *   }>,
  *   referencedObjectType?: string,
  * }
  */
@@ -125,7 +131,13 @@ final class PropertyCreateParams implements BaseModel
      * @param FieldType|value-of<FieldType> $fieldType
      * @param Type|value-of<Type> $type
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param list<OptionInput> $options
+     * @param list<OptionInput|array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     * }> $options
      */
     public static function with(
         FieldType|string $fieldType,
@@ -147,21 +159,21 @@ final class PropertyCreateParams implements BaseModel
         $obj = new self;
 
         $obj['fieldType'] = $fieldType;
-        $obj->groupName = $groupName;
-        $obj->label = $label;
-        $obj->name = $name;
+        $obj['groupName'] = $groupName;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
         $obj['type'] = $type;
 
-        null !== $calculationFormula && $obj->calculationFormula = $calculationFormula;
+        null !== $calculationFormula && $obj['calculationFormula'] = $calculationFormula;
         null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
-        null !== $description && $obj->description = $description;
-        null !== $displayOrder && $obj->displayOrder = $displayOrder;
-        null !== $externalOptions && $obj->externalOptions = $externalOptions;
-        null !== $formField && $obj->formField = $formField;
-        null !== $hasUniqueValue && $obj->hasUniqueValue = $hasUniqueValue;
-        null !== $hidden && $obj->hidden = $hidden;
-        null !== $options && $obj->options = $options;
-        null !== $referencedObjectType && $obj->referencedObjectType = $referencedObjectType;
+        null !== $description && $obj['description'] = $description;
+        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
+        null !== $externalOptions && $obj['externalOptions'] = $externalOptions;
+        null !== $formField && $obj['formField'] = $formField;
+        null !== $hasUniqueValue && $obj['hasUniqueValue'] = $hasUniqueValue;
+        null !== $hidden && $obj['hidden'] = $hidden;
+        null !== $options && $obj['options'] = $options;
+        null !== $referencedObjectType && $obj['referencedObjectType'] = $referencedObjectType;
 
         return $obj;
     }
@@ -180,7 +192,7 @@ final class PropertyCreateParams implements BaseModel
     public function withGroupName(string $groupName): self
     {
         $obj = clone $this;
-        $obj->groupName = $groupName;
+        $obj['groupName'] = $groupName;
 
         return $obj;
     }
@@ -188,7 +200,7 @@ final class PropertyCreateParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -196,7 +208,7 @@ final class PropertyCreateParams implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -215,7 +227,7 @@ final class PropertyCreateParams implements BaseModel
     public function withCalculationFormula(string $calculationFormula): self
     {
         $obj = clone $this;
-        $obj->calculationFormula = $calculationFormula;
+        $obj['calculationFormula'] = $calculationFormula;
 
         return $obj;
     }
@@ -235,7 +247,7 @@ final class PropertyCreateParams implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }
@@ -243,7 +255,7 @@ final class PropertyCreateParams implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -251,7 +263,7 @@ final class PropertyCreateParams implements BaseModel
     public function withExternalOptions(bool $externalOptions): self
     {
         $obj = clone $this;
-        $obj->externalOptions = $externalOptions;
+        $obj['externalOptions'] = $externalOptions;
 
         return $obj;
     }
@@ -259,7 +271,7 @@ final class PropertyCreateParams implements BaseModel
     public function withFormField(bool $formField): self
     {
         $obj = clone $this;
-        $obj->formField = $formField;
+        $obj['formField'] = $formField;
 
         return $obj;
     }
@@ -267,7 +279,7 @@ final class PropertyCreateParams implements BaseModel
     public function withHasUniqueValue(bool $hasUniqueValue): self
     {
         $obj = clone $this;
-        $obj->hasUniqueValue = $hasUniqueValue;
+        $obj['hasUniqueValue'] = $hasUniqueValue;
 
         return $obj;
     }
@@ -275,18 +287,24 @@ final class PropertyCreateParams implements BaseModel
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
-        $obj->hidden = $hidden;
+        $obj['hidden'] = $hidden;
 
         return $obj;
     }
 
     /**
-     * @param list<OptionInput> $options
+     * @param list<OptionInput|array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string|null,
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }
@@ -294,7 +312,7 @@ final class PropertyCreateParams implements BaseModel
     public function withReferencedObjectType(string $referencedObjectType): self
     {
         $obj = clone $this;
-        $obj->referencedObjectType = $referencedObjectType;
+        $obj['referencedObjectType'] = $referencedObjectType;
 
         return $obj;
     }

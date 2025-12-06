@@ -47,7 +47,7 @@ final class FieldLevelPermission implements BaseModel
     {
         $obj = new self;
 
-        $obj->accessLevel = $accessLevel;
+        $obj['accessLevel'] = $accessLevel;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class FieldLevelPermission implements BaseModel
     public function withAccessLevel(string $accessLevel): self
     {
         $obj = clone $this;
-        $obj->accessLevel = $accessLevel;
+        $obj['accessLevel'] = $accessLevel;
 
         return $obj;
     }

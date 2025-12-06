@@ -50,24 +50,43 @@ final class PublicContact implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param ContactProfile|array{
+     *   addresses: list<ContactAddress>,
+     *   emails: list<ContactEmail>,
+     *   phones: list<ContactPhone>,
+     *   urls: list<ContactURL>,
+     *   name?: ContactName|null,
+     *   org?: ContactOrg|null,
+     * } $contactProfile
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        ContactProfile $contactProfile,
+        ContactProfile|array $contactProfile,
         Type|string $type = 'CONTACT'
     ): self {
         $obj = new self;
 
-        $obj->contactProfile = $contactProfile;
+        $obj['contactProfile'] = $contactProfile;
         $obj['type'] = $type;
 
         return $obj;
     }
 
-    public function withContactProfile(ContactProfile $contactProfile): self
-    {
+    /**
+     * @param ContactProfile|array{
+     *   addresses: list<ContactAddress>,
+     *   emails: list<ContactEmail>,
+     *   phones: list<ContactPhone>,
+     *   urls: list<ContactURL>,
+     *   name?: ContactName|null,
+     *   org?: ContactOrg|null,
+     * } $contactProfile
+     */
+    public function withContactProfile(
+        ContactProfile|array $contactProfile
+    ): self {
         $obj = clone $this;
-        $obj->contactProfile = $contactProfile;
+        $obj['contactProfile'] = $contactProfile;
 
         return $obj;
     }

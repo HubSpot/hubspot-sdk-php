@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\V4\PublicDefaultAssociationMultiPost;
+use HubspotSDK\PublicObjectID;
 
 /**
  * Create the default (most generic) association type between two object types.
@@ -16,7 +17,10 @@ use HubspotSDK\Crm\Associations\V4\PublicDefaultAssociationMultiPost;
  * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::createDefault()
  *
  * @phpstan-type BatchCreateDefaultParamsShape = array{
- *   fromObjectType: string, inputs: list<PublicDefaultAssociationMultiPost>
+ *   fromObjectType: string,
+ *   inputs: list<PublicDefaultAssociationMultiPost|array{
+ *     from: PublicObjectID, to: PublicObjectID
+ *   }>,
  * }
  */
 final class BatchCreateDefaultParams implements BaseModel
@@ -56,14 +60,16 @@ final class BatchCreateDefaultParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDefaultAssociationMultiPost> $inputs
+     * @param list<PublicDefaultAssociationMultiPost|array{
+     *   from: PublicObjectID, to: PublicObjectID
+     * }> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
         $obj = new self;
 
-        $obj->fromObjectType = $fromObjectType;
-        $obj->inputs = $inputs;
+        $obj['fromObjectType'] = $fromObjectType;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -71,18 +77,20 @@ final class BatchCreateDefaultParams implements BaseModel
     public function withFromObjectType(string $fromObjectType): self
     {
         $obj = clone $this;
-        $obj->fromObjectType = $fromObjectType;
+        $obj['fromObjectType'] = $fromObjectType;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicDefaultAssociationMultiPost> $inputs
+     * @param list<PublicDefaultAssociationMultiPost|array{
+     *   from: PublicObjectID, to: PublicObjectID
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

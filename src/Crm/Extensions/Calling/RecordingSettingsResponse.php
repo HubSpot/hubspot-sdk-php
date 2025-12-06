@@ -52,7 +52,7 @@ final class RecordingSettingsResponse implements BaseModel
     {
         $obj = new self;
 
-        $obj->urlToRetrieveAuthedRecording = $urlToRetrieveAuthedRecording;
+        $obj['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class RecordingSettingsResponse implements BaseModel
         string $urlToRetrieveAuthedRecording
     ): self {
         $obj = clone $this;
-        $obj->urlToRetrieveAuthedRecording = $urlToRetrieveAuthedRecording;
+        $obj['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
 
         return $obj;
     }

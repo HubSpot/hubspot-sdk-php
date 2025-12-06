@@ -7,7 +7,10 @@ namespace HubspotSDK\Crm\Extensions\Cards;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\HTTPMethod;
+use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\Type;
 use HubspotSDK\Crm\Extensions\Cards\IntegratorObjectResult\Action;
+use HubspotSDK\Crm\Extensions\Cards\ObjectToken\DataType;
 
 /**
  * @phpstan-type IntegratorObjectResultShape = array{
@@ -68,8 +71,27 @@ final class IntegratorObjectResult implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ActionHookActionBody|IFrameActionBody> $actions
-     * @param list<ObjectToken> $tokens
+     * @param list<ActionHookActionBody|array{
+     *   httpMethod: value-of<HTTPMethod>,
+     *   propertyNamesIncluded: list<string>,
+     *   type: value-of<Type>,
+     *   url: string,
+     *   confirmation?: ActionConfirmationBody|null,
+     *   label?: string|null,
+     * }|IFrameActionBody|array{
+     *   height: int,
+     *   propertyNamesIncluded: list<string>,
+     *   type: value-of<IFrameActionBody\Type>,
+     *   url: string,
+     *   width: int,
+     *   label?: string|null,
+     * }> $actions
+     * @param list<ObjectToken|array{
+     *   value: string,
+     *   dataType?: value-of<DataType>|null,
+     *   label?: string|null,
+     *   name?: string|null,
+     * }> $tokens
      */
     public static function with(
         string $id,
@@ -80,12 +102,12 @@ final class IntegratorObjectResult implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->actions = $actions;
-        $obj->title = $title;
-        $obj->tokens = $tokens;
+        $obj['id'] = $id;
+        $obj['actions'] = $actions;
+        $obj['title'] = $title;
+        $obj['tokens'] = $tokens;
 
-        null !== $linkUrl && $obj->linkUrl = $linkUrl;
+        null !== $linkUrl && $obj['linkUrl'] = $linkUrl;
 
         return $obj;
     }
@@ -93,18 +115,32 @@ final class IntegratorObjectResult implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
 
     /**
-     * @param list<ActionHookActionBody|IFrameActionBody> $actions
+     * @param list<ActionHookActionBody|array{
+     *   httpMethod: value-of<HTTPMethod>,
+     *   propertyNamesIncluded: list<string>,
+     *   type: value-of<Type>,
+     *   url: string,
+     *   confirmation?: ActionConfirmationBody|null,
+     *   label?: string|null,
+     * }|IFrameActionBody|array{
+     *   height: int,
+     *   propertyNamesIncluded: list<string>,
+     *   type: value-of<IFrameActionBody\Type>,
+     *   url: string,
+     *   width: int,
+     *   label?: string|null,
+     * }> $actions
      */
     public function withActions(array $actions): self
     {
         $obj = clone $this;
-        $obj->actions = $actions;
+        $obj['actions'] = $actions;
 
         return $obj;
     }
@@ -112,18 +148,23 @@ final class IntegratorObjectResult implements BaseModel
     public function withTitle(string $title): self
     {
         $obj = clone $this;
-        $obj->title = $title;
+        $obj['title'] = $title;
 
         return $obj;
     }
 
     /**
-     * @param list<ObjectToken> $tokens
+     * @param list<ObjectToken|array{
+     *   value: string,
+     *   dataType?: value-of<DataType>|null,
+     *   label?: string|null,
+     *   name?: string|null,
+     * }> $tokens
      */
     public function withTokens(array $tokens): self
     {
         $obj = clone $this;
-        $obj->tokens = $tokens;
+        $obj['tokens'] = $tokens;
 
         return $obj;
     }
@@ -131,7 +172,7 @@ final class IntegratorObjectResult implements BaseModel
     public function withLinkURL(string $linkURL): self
     {
         $obj = clone $this;
-        $obj->linkUrl = $linkURL;
+        $obj['linkUrl'] = $linkURL;
 
         return $obj;
     }

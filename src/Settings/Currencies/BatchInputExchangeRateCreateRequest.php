@@ -7,6 +7,7 @@ namespace HubspotSDK\Settings\Currencies;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest\FromCurrencyCode;
 
 /**
  * @phpstan-type BatchInputExchangeRateCreateRequestShape = array{
@@ -46,24 +47,32 @@ final class BatchInputExchangeRateCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRateCreateRequest> $inputs
+     * @param list<ExchangeRateCreateRequest|array{
+     *   conversionRate: float,
+     *   fromCurrencyCode: value-of<FromCurrencyCode>,
+     *   effectiveAt?: \DateTimeInterface|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<ExchangeRateCreateRequest> $inputs
+     * @param list<ExchangeRateCreateRequest|array{
+     *   conversionRate: float,
+     *   fromCurrencyCode: value-of<FromCurrencyCode>,
+     *   effectiveAt?: \DateTimeInterface|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

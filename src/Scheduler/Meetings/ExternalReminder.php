@@ -52,8 +52,8 @@ final class ExternalReminder implements BaseModel
     {
         $obj = new self;
 
-        $obj->numberOfTimeUnits = $numberOfTimeUnits;
-        $obj->timeUnit = $timeUnit;
+        $obj['numberOfTimeUnits'] = $numberOfTimeUnits;
+        $obj['timeUnit'] = $timeUnit;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class ExternalReminder implements BaseModel
     public function withNumberOfTimeUnits(int $numberOfTimeUnits): self
     {
         $obj = clone $this;
-        $obj->numberOfTimeUnits = $numberOfTimeUnits;
+        $obj['numberOfTimeUnits'] = $numberOfTimeUnits;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class ExternalReminder implements BaseModel
     public function withTimeUnit(string $timeUnit): self
     {
         $obj = clone $this;
-        $obj->timeUnit = $timeUnit;
+        $obj['timeUnit'] = $timeUnit;
 
         return $obj;
     }

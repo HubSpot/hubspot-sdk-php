@@ -58,7 +58,7 @@ final class MeetingsLinkGetBookingInfoBySlugParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->timezone = $timezone;
+        $obj['timezone'] = $timezone;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class MeetingsLinkGetBookingInfoBySlugParams implements BaseModel
     public function withTimezone(string $timezone): self
     {
         $obj = clone $this;
-        $obj->timezone = $timezone;
+        $obj['timezone'] = $timezone;
 
         return $obj;
     }

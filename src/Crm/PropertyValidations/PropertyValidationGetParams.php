@@ -53,7 +53,7 @@ final class PropertyValidationGetParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->objectTypeId = $objectTypeId;
+        $obj['objectTypeId'] = $objectTypeId;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class PropertyValidationGetParams implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }

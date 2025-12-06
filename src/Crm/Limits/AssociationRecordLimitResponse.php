@@ -87,8 +87,12 @@ final class AssociationRecordLimitResponse implements BaseModel, ResponseConvert
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AtLimitRecordSample> $atLimitFromRecordSamples
-     * @param list<NearLimitRecordSample> $nearLimitFromRecordSamples
+     * @param list<AtLimitRecordSample|array{
+     *   label: string, objectId: int
+     * }> $atLimitFromRecordSamples
+     * @param list<NearLimitRecordSample|array{
+     *   label: string, objectId: int, percentage: float, usage: int
+     * }> $nearLimitFromRecordSamples
      */
     public static function with(
         array $atLimitFromRecordSamples,
@@ -99,23 +103,25 @@ final class AssociationRecordLimitResponse implements BaseModel, ResponseConvert
     ): self {
         $obj = new self;
 
-        $obj->atLimitFromRecordSamples = $atLimitFromRecordSamples;
-        $obj->limit = $limit;
-        $obj->nearLimitFromRecordSamples = $nearLimitFromRecordSamples;
-        $obj->totalRecordsAtLimit = $totalRecordsAtLimit;
-        $obj->totalRecordsNearLimit = $totalRecordsNearLimit;
+        $obj['atLimitFromRecordSamples'] = $atLimitFromRecordSamples;
+        $obj['limit'] = $limit;
+        $obj['nearLimitFromRecordSamples'] = $nearLimitFromRecordSamples;
+        $obj['totalRecordsAtLimit'] = $totalRecordsAtLimit;
+        $obj['totalRecordsNearLimit'] = $totalRecordsNearLimit;
 
         return $obj;
     }
 
     /**
-     * @param list<AtLimitRecordSample> $atLimitFromRecordSamples
+     * @param list<AtLimitRecordSample|array{
+     *   label: string, objectId: int
+     * }> $atLimitFromRecordSamples
      */
     public function withAtLimitFromRecordSamples(
         array $atLimitFromRecordSamples
     ): self {
         $obj = clone $this;
-        $obj->atLimitFromRecordSamples = $atLimitFromRecordSamples;
+        $obj['atLimitFromRecordSamples'] = $atLimitFromRecordSamples;
 
         return $obj;
     }
@@ -126,19 +132,21 @@ final class AssociationRecordLimitResponse implements BaseModel, ResponseConvert
     public function withLimit(int $limit): self
     {
         $obj = clone $this;
-        $obj->limit = $limit;
+        $obj['limit'] = $limit;
 
         return $obj;
     }
 
     /**
-     * @param list<NearLimitRecordSample> $nearLimitFromRecordSamples
+     * @param list<NearLimitRecordSample|array{
+     *   label: string, objectId: int, percentage: float, usage: int
+     * }> $nearLimitFromRecordSamples
      */
     public function withNearLimitFromRecordSamples(
         array $nearLimitFromRecordSamples
     ): self {
         $obj = clone $this;
-        $obj->nearLimitFromRecordSamples = $nearLimitFromRecordSamples;
+        $obj['nearLimitFromRecordSamples'] = $nearLimitFromRecordSamples;
 
         return $obj;
     }
@@ -149,7 +157,7 @@ final class AssociationRecordLimitResponse implements BaseModel, ResponseConvert
     public function withTotalRecordsAtLimit(int $totalRecordsAtLimit): self
     {
         $obj = clone $this;
-        $obj->totalRecordsAtLimit = $totalRecordsAtLimit;
+        $obj['totalRecordsAtLimit'] = $totalRecordsAtLimit;
 
         return $obj;
     }
@@ -160,7 +168,7 @@ final class AssociationRecordLimitResponse implements BaseModel, ResponseConvert
     public function withTotalRecordsNearLimit(int $totalRecordsNearLimit): self
     {
         $obj = clone $this;
-        $obj->totalRecordsNearLimit = $totalRecordsNearLimit;
+        $obj['totalRecordsNearLimit'] = $totalRecordsNearLimit;
 
         return $obj;
     }

@@ -58,7 +58,7 @@ final class APIUnEnrollmentSetting implements BaseModel
     {
         $obj = new self;
 
-        $obj->flowIds = $flowIds;
+        $obj['flowIds'] = $flowIds;
         $obj['type'] = $type;
 
         return $obj;
@@ -70,7 +70,7 @@ final class APIUnEnrollmentSetting implements BaseModel
     public function withFlowIDs(array $flowIDs): self
     {
         $obj = clone $this;
-        $obj->flowIds = $flowIDs;
+        $obj['flowIds'] = $flowIDs;
 
         return $obj;
     }

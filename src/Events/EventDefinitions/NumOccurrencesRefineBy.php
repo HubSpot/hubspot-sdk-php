@@ -64,8 +64,8 @@ final class NumOccurrencesRefineBy implements BaseModel
 
         $obj['type'] = $type;
 
-        null !== $maxOccurrences && $obj->maxOccurrences = $maxOccurrences;
-        null !== $minOccurrences && $obj->minOccurrences = $minOccurrences;
+        null !== $maxOccurrences && $obj['maxOccurrences'] = $maxOccurrences;
+        null !== $minOccurrences && $obj['minOccurrences'] = $minOccurrences;
 
         return $obj;
     }
@@ -84,7 +84,7 @@ final class NumOccurrencesRefineBy implements BaseModel
     public function withMaxOccurrences(int $maxOccurrences): self
     {
         $obj = clone $this;
-        $obj->maxOccurrences = $maxOccurrences;
+        $obj['maxOccurrences'] = $maxOccurrences;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class NumOccurrencesRefineBy implements BaseModel
     public function withMinOccurrences(int $minOccurrences): self
     {
         $obj = clone $this;
-        $obj->minOccurrences = $minOccurrences;
+        $obj['minOccurrences'] = $minOccurrences;
 
         return $obj;
     }

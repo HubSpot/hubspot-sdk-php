@@ -164,17 +164,17 @@ final class PublicStatus implements BaseModel
         $obj = new self;
 
         $obj['channel'] = $channel;
-        $obj->source = $source;
+        $obj['source'] = $source;
         $obj['status'] = $status;
-        $obj->subscriberIdString = $subscriberIdString;
-        $obj->subscriptionId = $subscriptionId;
-        $obj->timestamp = $timestamp;
+        $obj['subscriberIdString'] = $subscriberIdString;
+        $obj['subscriptionId'] = $subscriptionId;
+        $obj['timestamp'] = $timestamp;
 
-        null !== $businessUnitId && $obj->businessUnitId = $businessUnitId;
+        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
-        null !== $legalBasisExplanation && $obj->legalBasisExplanation = $legalBasisExplanation;
+        null !== $legalBasisExplanation && $obj['legalBasisExplanation'] = $legalBasisExplanation;
         null !== $setStatusSuccessReason && $obj['setStatusSuccessReason'] = $setStatusSuccessReason;
-        null !== $subscriptionName && $obj->subscriptionName = $subscriptionName;
+        null !== $subscriptionName && $obj['subscriptionName'] = $subscriptionName;
 
         return $obj;
     }
@@ -198,7 +198,7 @@ final class PublicStatus implements BaseModel
     public function withSource(string $source): self
     {
         $obj = clone $this;
-        $obj->source = $source;
+        $obj['source'] = $source;
 
         return $obj;
     }
@@ -222,7 +222,7 @@ final class PublicStatus implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj->subscriberIdString = $subscriberIDString;
+        $obj['subscriberIdString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -233,7 +233,7 @@ final class PublicStatus implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj->subscriptionId = $subscriptionID;
+        $obj['subscriptionId'] = $subscriptionID;
 
         return $obj;
     }
@@ -244,7 +244,7 @@ final class PublicStatus implements BaseModel
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -255,7 +255,7 @@ final class PublicStatus implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj->businessUnitId = $businessUnitID;
+        $obj['businessUnitId'] = $businessUnitID;
 
         return $obj;
     }
@@ -280,7 +280,7 @@ final class PublicStatus implements BaseModel
         string $legalBasisExplanation
     ): self {
         $obj = clone $this;
-        $obj->legalBasisExplanation = $legalBasisExplanation;
+        $obj['legalBasisExplanation'] = $legalBasisExplanation;
 
         return $obj;
     }
@@ -305,7 +305,7 @@ final class PublicStatus implements BaseModel
     public function withSubscriptionName(string $subscriptionName): self
     {
         $obj = clone $this;
-        $obj->subscriptionName = $subscriptionName;
+        $obj['subscriptionName'] = $subscriptionName;
 
         return $obj;
     }

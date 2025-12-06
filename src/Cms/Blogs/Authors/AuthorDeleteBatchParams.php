@@ -60,7 +60,7 @@ final class AuthorDeleteBatchParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class AuthorDeleteBatchParams implements BaseModel
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

@@ -73,7 +73,7 @@ final class PublicListConversionInactivity implements BaseModel
         $obj = new self;
 
         $obj['conversionType'] = $conversionType;
-        $obj->offset = $offset;
+        $obj['offset'] = $offset;
         $obj['timeUnit'] = $timeUnit;
 
         return $obj;
@@ -94,7 +94,7 @@ final class PublicListConversionInactivity implements BaseModel
     public function withOffset(int $offset): self
     {
         $obj = clone $this;
-        $obj->offset = $offset;
+        $obj['offset'] = $offset;
 
         return $obj;
     }

@@ -69,22 +69,25 @@ final class APIListBranchAction implements BaseModel
      *
      * @param list<mixed> $listBranches
      * @param Type|value-of<Type> $type
+     * @param APIConnection|array{
+     *   edgeType: string, nextActionId: string
+     * } $defaultBranch
      */
     public static function with(
         string $actionId,
         array $listBranches,
         Type|string $type = 'LIST_BRANCH',
-        ?APIConnection $defaultBranch = null,
+        APIConnection|array|null $defaultBranch = null,
         ?string $defaultBranchName = null,
     ): self {
         $obj = new self;
 
-        $obj->actionId = $actionId;
-        $obj->listBranches = $listBranches;
+        $obj['actionId'] = $actionId;
+        $obj['listBranches'] = $listBranches;
         $obj['type'] = $type;
 
-        null !== $defaultBranch && $obj->defaultBranch = $defaultBranch;
-        null !== $defaultBranchName && $obj->defaultBranchName = $defaultBranchName;
+        null !== $defaultBranch && $obj['defaultBranch'] = $defaultBranch;
+        null !== $defaultBranchName && $obj['defaultBranchName'] = $defaultBranchName;
 
         return $obj;
     }
@@ -92,7 +95,7 @@ final class APIListBranchAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj->actionId = $actionID;
+        $obj['actionId'] = $actionID;
 
         return $obj;
     }
@@ -103,7 +106,7 @@ final class APIListBranchAction implements BaseModel
     public function withListBranches(array $listBranches): self
     {
         $obj = clone $this;
-        $obj->listBranches = $listBranches;
+        $obj['listBranches'] = $listBranches;
 
         return $obj;
     }
@@ -119,10 +122,15 @@ final class APIListBranchAction implements BaseModel
         return $obj;
     }
 
-    public function withDefaultBranch(APIConnection $defaultBranch): self
+    /**
+     * @param APIConnection|array{
+     *   edgeType: string, nextActionId: string
+     * } $defaultBranch
+     */
+    public function withDefaultBranch(APIConnection|array $defaultBranch): self
     {
         $obj = clone $this;
-        $obj->defaultBranch = $defaultBranch;
+        $obj['defaultBranch'] = $defaultBranch;
 
         return $obj;
     }
@@ -130,7 +138,7 @@ final class APIListBranchAction implements BaseModel
     public function withDefaultBranchName(string $defaultBranchName): self
     {
         $obj = clone $this;
-        $obj->defaultBranchName = $defaultBranchName;
+        $obj['defaultBranchName'] = $defaultBranchName;
 
         return $obj;
     }

@@ -50,24 +50,28 @@ final class CollectionResponsePublicPermissionSetNoPaging implements BaseModel, 
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicPermissionSet> $results
+     * @param list<PublicPermissionSet|array{
+     *   id: string, name: string, requiresBillingWrite: bool
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
 
     /**
-     * @param list<PublicPermissionSet> $results
+     * @param list<PublicPermissionSet|array{
+     *   id: string, name: string, requiresBillingWrite: bool
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

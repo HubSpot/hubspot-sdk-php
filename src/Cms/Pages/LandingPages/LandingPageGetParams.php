@@ -49,8 +49,8 @@ final class LandingPageGetParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $archived && $obj->archived = $archived;
-        null !== $property && $obj->property = $property;
+        null !== $archived && $obj['archived'] = $archived;
+        null !== $property && $obj['property'] = $property;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class LandingPageGetParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class LandingPageGetParams implements BaseModel
     public function withProperty(string $property): self
     {
         $obj = clone $this;
-        $obj->property = $property;
+        $obj['property'] = $property;
 
         return $obj;
     }

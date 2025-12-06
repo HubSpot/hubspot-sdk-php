@@ -83,9 +83,9 @@ final class MembershipsUpdateResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->recordIdsMissing = $recordIdsMissing;
-        $obj->recordIdsRemoved = $recordIdsRemoved;
-        $obj->recordsIdsAdded = $recordsIdsAdded;
+        $obj['recordIdsMissing'] = $recordIdsMissing;
+        $obj['recordIdsRemoved'] = $recordIdsRemoved;
+        $obj['recordsIdsAdded'] = $recordsIdsAdded;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class MembershipsUpdateResponse implements BaseModel
     public function withRecordIDsMissing(array $recordIDsMissing): self
     {
         $obj = clone $this;
-        $obj->recordIdsMissing = $recordIDsMissing;
+        $obj['recordIdsMissing'] = $recordIDsMissing;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class MembershipsUpdateResponse implements BaseModel
     public function withRecordIDsRemoved(array $recordIDsRemoved): self
     {
         $obj = clone $this;
-        $obj->recordIdsRemoved = $recordIDsRemoved;
+        $obj['recordIdsRemoved'] = $recordIDsRemoved;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class MembershipsUpdateResponse implements BaseModel
     public function withRecordsIDsAdded(array $recordsIDsAdded): self
     {
         $obj = clone $this;
-        $obj->recordsIdsAdded = $recordsIDsAdded;
+        $obj['recordsIdsAdded'] = $recordsIDsAdded;
 
         return $obj;
     }

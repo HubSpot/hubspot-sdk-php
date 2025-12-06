@@ -68,8 +68,8 @@ final class PublicAssociationDefinitionConfigurationUpdateRequest implements Bas
         $obj = new self;
 
         $obj['category'] = $category;
-        $obj->maxToObjectIds = $maxToObjectIds;
-        $obj->typeId = $typeId;
+        $obj['maxToObjectIds'] = $maxToObjectIds;
+        $obj['typeId'] = $typeId;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class PublicAssociationDefinitionConfigurationUpdateRequest implements Bas
     public function withMaxToObjectIDs(int $maxToObjectIDs): self
     {
         $obj = clone $this;
-        $obj->maxToObjectIds = $maxToObjectIDs;
+        $obj['maxToObjectIds'] = $maxToObjectIDs;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class PublicAssociationDefinitionConfigurationUpdateRequest implements Bas
     public function withTypeID(int $typeID): self
     {
         $obj = clone $this;
-        $obj->typeId = $typeID;
+        $obj['typeId'] = $typeID;
 
         return $obj;
     }

@@ -66,7 +66,9 @@ final class PublicQuickReplies implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<QuickReply> $quickReplies
+     * @param list<QuickReply|array{
+     *   value: string, valueType: string, label?: string|null
+     * }> $quickReplies
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -77,9 +79,9 @@ final class PublicQuickReplies implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->allowMultiSelect = $allowMultiSelect;
-        $obj->allowUserInput = $allowUserInput;
-        $obj->quickReplies = $quickReplies;
+        $obj['allowMultiSelect'] = $allowMultiSelect;
+        $obj['allowUserInput'] = $allowUserInput;
+        $obj['quickReplies'] = $quickReplies;
         $obj['type'] = $type;
 
         return $obj;
@@ -88,7 +90,7 @@ final class PublicQuickReplies implements BaseModel
     public function withAllowMultiSelect(bool $allowMultiSelect): self
     {
         $obj = clone $this;
-        $obj->allowMultiSelect = $allowMultiSelect;
+        $obj['allowMultiSelect'] = $allowMultiSelect;
 
         return $obj;
     }
@@ -96,18 +98,20 @@ final class PublicQuickReplies implements BaseModel
     public function withAllowUserInput(bool $allowUserInput): self
     {
         $obj = clone $this;
-        $obj->allowUserInput = $allowUserInput;
+        $obj['allowUserInput'] = $allowUserInput;
 
         return $obj;
     }
 
     /**
-     * @param list<QuickReply> $quickReplies
+     * @param list<QuickReply|array{
+     *   value: string, valueType: string, label?: string|null
+     * }> $quickReplies
      */
     public function withQuickReplies(array $quickReplies): self
     {
         $obj = clone $this;
-        $obj->quickReplies = $quickReplies;
+        $obj['quickReplies'] = $quickReplies;
 
         return $obj;
     }

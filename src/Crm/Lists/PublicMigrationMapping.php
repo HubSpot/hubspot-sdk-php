@@ -58,8 +58,8 @@ final class PublicMigrationMapping implements BaseModel
     {
         $obj = new self;
 
-        $obj->legacyListId = $legacyListId;
-        $obj->listId = $listId;
+        $obj['legacyListId'] = $legacyListId;
+        $obj['listId'] = $listId;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class PublicMigrationMapping implements BaseModel
     public function withLegacyListID(string $legacyListID): self
     {
         $obj = clone $this;
-        $obj->legacyListId = $legacyListID;
+        $obj['legacyListId'] = $legacyListID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PublicMigrationMapping implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj->listId = $listID;
+        $obj['listId'] = $listID;
 
         return $obj;
     }

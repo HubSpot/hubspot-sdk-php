@@ -63,9 +63,9 @@ final class BackgroundImage implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->backgroundPosition = $backgroundPosition;
-        $obj->backgroundSize = $backgroundSize;
-        $obj->imageUrl = $imageUrl;
+        $obj['backgroundPosition'] = $backgroundPosition;
+        $obj['backgroundSize'] = $backgroundSize;
+        $obj['imageUrl'] = $imageUrl;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class BackgroundImage implements BaseModel
     public function withBackgroundPosition(string $backgroundPosition): self
     {
         $obj = clone $this;
-        $obj->backgroundPosition = $backgroundPosition;
+        $obj['backgroundPosition'] = $backgroundPosition;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class BackgroundImage implements BaseModel
     public function withBackgroundSize(string $backgroundSize): self
     {
         $obj = clone $this;
-        $obj->backgroundSize = $backgroundSize;
+        $obj['backgroundSize'] = $backgroundSize;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class BackgroundImage implements BaseModel
     public function withImageURL(string $imageURL): self
     {
         $obj = clone $this;
-        $obj->imageUrl = $imageURL;
+        $obj['imageUrl'] = $imageURL;
 
         return $obj;
     }

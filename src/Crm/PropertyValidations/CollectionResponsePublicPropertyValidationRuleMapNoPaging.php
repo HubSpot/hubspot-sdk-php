@@ -55,13 +55,16 @@ final class CollectionResponsePublicPropertyValidationRuleMapNoPaging implements
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicPropertyValidationRuleMap> $results
+     * @param list<PublicPropertyValidationRuleMap|array{
+     *   propertyName: string,
+     *   propertyValidationRules: list<PublicPropertyValidationRule>,
+     * }> $results
      */
     public static function with(array $results): self
     {
         $obj = new self;
 
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }
@@ -69,12 +72,15 @@ final class CollectionResponsePublicPropertyValidationRuleMapNoPaging implements
     /**
      * Collection of properties with their validation rules. Each item maps a property name to its configured validation rules for the specified object type.
      *
-     * @param list<PublicPropertyValidationRuleMap> $results
+     * @param list<PublicPropertyValidationRuleMap|array{
+     *   propertyName: string,
+     *   propertyValidationRules: list<PublicPropertyValidationRule>,
+     * }> $results
      */
     public function withResults(array $results): self
     {
         $obj = clone $this;
-        $obj->results = $results;
+        $obj['results'] = $results;
 
         return $obj;
     }

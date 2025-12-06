@@ -33,7 +33,7 @@ final class PauseSubscriptionRequest implements BaseModel
     {
         $obj = new self;
 
-        null !== $pauseReason && $obj->pauseReason = $pauseReason;
+        null !== $pauseReason && $obj['pauseReason'] = $pauseReason;
 
         return $obj;
     }
@@ -41,7 +41,7 @@ final class PauseSubscriptionRequest implements BaseModel
     public function withPauseReason(string $pauseReason): self
     {
         $obj = clone $this;
-        $obj->pauseReason = $pauseReason;
+        $obj['pauseReason'] = $pauseReason;
 
         return $obj;
     }

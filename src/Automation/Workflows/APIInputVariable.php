@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
+use HubspotSDK\Automation\Workflows\APIActionDataValue\Type;
+use HubspotSDK\Automation\Workflows\APITimestampValue\TimestampType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -48,15 +50,46 @@ final class APIInputVariable implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param APIActionDataValue|array{
+     *   actionId: string, dataKey: string, type: value-of<Type>
+     * }|APIObjectPropertyValue|array{
+     *   propertyName: string,
+     *   type: value-of<APIObjectPropertyValue\Type>,
+     * }|APIStaticValue|array{
+     *   staticValue: string,
+     *   type: value-of<APIStaticValue\Type>,
+     * }|APIRelativeDateTimeValue|array{
+     *   timeDelay: APITimeDelay,
+     *   type: value-of<APIRelativeDateTimeValue\Type>,
+     * }|APITimestampValue|array{
+     *   timestampType: value-of<TimestampType>,
+     *   type: value-of<APITimestampValue\Type>,
+     * }|APIIncrementValue|array{
+     *   incrementAmount: float,
+     *   type: value-of<APIIncrementValue\Type>,
+     * }|APIFetchedObjectPropertyValue|array{
+     *   propertyToken: string,
+     *   type: value-of<APIFetchedObjectPropertyValue\Type>,
+     * }|APIAppendObjectPropertyValue|array{
+     *   appendPropertyName: string,
+     *   type: value-of<APIAppendObjectPropertyValue\Type>,
+     * }|APIStaticAppendValue|array{
+     *   staticAppendValue: string,
+     *   type: value-of<APIStaticAppendValue\Type>,
+     * }|APIEnrollmentEventPropertyValue|array{
+     *   enrollmentEventPropertyToken: string,
+     *   type: value-of<APIEnrollmentEventPropertyValue\Type>,
+     * } $value
      */
     public static function with(
         string $name,
-        APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $value,
+        APIActionDataValue|array|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $value,
     ): self {
         $obj = new self;
 
-        $obj->name = $name;
-        $obj->value = $value;
+        $obj['name'] = $name;
+        $obj['value'] = $value;
 
         return $obj;
     }
@@ -64,16 +97,48 @@ final class APIInputVariable implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
 
+    /**
+     * @param APIActionDataValue|array{
+     *   actionId: string, dataKey: string, type: value-of<Type>
+     * }|APIObjectPropertyValue|array{
+     *   propertyName: string,
+     *   type: value-of<APIObjectPropertyValue\Type>,
+     * }|APIStaticValue|array{
+     *   staticValue: string,
+     *   type: value-of<APIStaticValue\Type>,
+     * }|APIRelativeDateTimeValue|array{
+     *   timeDelay: APITimeDelay,
+     *   type: value-of<APIRelativeDateTimeValue\Type>,
+     * }|APITimestampValue|array{
+     *   timestampType: value-of<TimestampType>,
+     *   type: value-of<APITimestampValue\Type>,
+     * }|APIIncrementValue|array{
+     *   incrementAmount: float,
+     *   type: value-of<APIIncrementValue\Type>,
+     * }|APIFetchedObjectPropertyValue|array{
+     *   propertyToken: string,
+     *   type: value-of<APIFetchedObjectPropertyValue\Type>,
+     * }|APIAppendObjectPropertyValue|array{
+     *   appendPropertyName: string,
+     *   type: value-of<APIAppendObjectPropertyValue\Type>,
+     * }|APIStaticAppendValue|array{
+     *   staticAppendValue: string,
+     *   type: value-of<APIStaticAppendValue\Type>,
+     * }|APIEnrollmentEventPropertyValue|array{
+     *   enrollmentEventPropertyToken: string,
+     *   type: value-of<APIEnrollmentEventPropertyValue\Type>,
+     * } $value
+     */
     public function withValue(
-        APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $value,
+        APIActionDataValue|array|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $value,
     ): self {
         $obj = clone $this;
-        $obj->value = $value;
+        $obj['value'] = $value;
 
         return $obj;
     }

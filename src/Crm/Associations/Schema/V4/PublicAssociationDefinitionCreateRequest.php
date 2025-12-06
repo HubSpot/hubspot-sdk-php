@@ -58,10 +58,10 @@ final class PublicAssociationDefinitionCreateRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->label = $label;
-        $obj->name = $name;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
 
-        null !== $inverseLabel && $obj->inverseLabel = $inverseLabel;
+        null !== $inverseLabel && $obj['inverseLabel'] = $inverseLabel;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class PublicAssociationDefinitionCreateRequest implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class PublicAssociationDefinitionCreateRequest implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class PublicAssociationDefinitionCreateRequest implements BaseModel
     public function withInverseLabel(string $inverseLabel): self
     {
         $obj = clone $this;
-        $obj->inverseLabel = $inverseLabel;
+        $obj['inverseLabel'] = $inverseLabel;
 
         return $obj;
     }

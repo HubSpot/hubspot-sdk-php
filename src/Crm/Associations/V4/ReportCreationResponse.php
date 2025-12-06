@@ -59,25 +59,34 @@ final class ReportCreationResponse implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param DateTime|array{
+     *   dateOnly: bool, timeZoneShift: int, value: int
+     * } $enqueueTime
      */
     public static function with(
-        DateTime $enqueueTime,
+        DateTime|array $enqueueTime,
         string $userEmail,
         int $userId
     ): self {
         $obj = new self;
 
-        $obj->enqueueTime = $enqueueTime;
-        $obj->userEmail = $userEmail;
-        $obj->userId = $userId;
+        $obj['enqueueTime'] = $enqueueTime;
+        $obj['userEmail'] = $userEmail;
+        $obj['userId'] = $userId;
 
         return $obj;
     }
 
-    public function withEnqueueTime(DateTime $enqueueTime): self
+    /**
+     * @param DateTime|array{
+     *   dateOnly: bool, timeZoneShift: int, value: int
+     * } $enqueueTime
+     */
+    public function withEnqueueTime(DateTime|array $enqueueTime): self
     {
         $obj = clone $this;
-        $obj->enqueueTime = $enqueueTime;
+        $obj['enqueueTime'] = $enqueueTime;
 
         return $obj;
     }
@@ -88,7 +97,7 @@ final class ReportCreationResponse implements BaseModel
     public function withUserEmail(string $userEmail): self
     {
         $obj = clone $this;
-        $obj->userEmail = $userEmail;
+        $obj['userEmail'] = $userEmail;
 
         return $obj;
     }
@@ -99,7 +108,7 @@ final class ReportCreationResponse implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj->userId = $userID;
+        $obj['userId'] = $userID;
 
         return $obj;
     }

@@ -80,13 +80,13 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->capabilities = $capabilities;
-        $obj->name = $name;
+        $obj['capabilities'] = $capabilities;
+        $obj['name'] = $name;
 
-        null !== $channelAccountConnectionRedirectUrl && $obj->channelAccountConnectionRedirectUrl = $channelAccountConnectionRedirectUrl;
-        null !== $channelDescription && $obj->channelDescription = $channelDescription;
-        null !== $channelLogoUrl && $obj->channelLogoUrl = $channelLogoUrl;
-        null !== $webhookUrl && $obj->webhookUrl = $webhookUrl;
+        null !== $channelAccountConnectionRedirectUrl && $obj['channelAccountConnectionRedirectUrl'] = $channelAccountConnectionRedirectUrl;
+        null !== $channelDescription && $obj['channelDescription'] = $channelDescription;
+        null !== $channelLogoUrl && $obj['channelLogoUrl'] = $channelLogoUrl;
+        null !== $webhookUrl && $obj['webhookUrl'] = $webhookUrl;
 
         return $obj;
     }
@@ -97,7 +97,7 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
     public function withCapabilities(array $capabilities): self
     {
         $obj = clone $this;
-        $obj->capabilities = $capabilities;
+        $obj['capabilities'] = $capabilities;
 
         return $obj;
     }
@@ -105,7 +105,7 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
         string $channelAccountConnectionRedirectURL
     ): self {
         $obj = clone $this;
-        $obj->channelAccountConnectionRedirectUrl = $channelAccountConnectionRedirectURL;
+        $obj['channelAccountConnectionRedirectUrl'] = $channelAccountConnectionRedirectURL;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
     public function withChannelDescription(string $channelDescription): self
     {
         $obj = clone $this;
-        $obj->channelDescription = $channelDescription;
+        $obj['channelDescription'] = $channelDescription;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
     public function withChannelLogoURL(string $channelLogoURL): self
     {
         $obj = clone $this;
-        $obj->channelLogoUrl = $channelLogoURL;
+        $obj['channelLogoUrl'] = $channelLogoURL;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class PublicChannelIntegrationChannelCreate implements BaseModel
     public function withWebhookURL(string $webhookURL): self
     {
         $obj = clone $this;
-        $obj->webhookUrl = $webhookURL;
+        $obj['webhookUrl'] = $webhookURL;
 
         return $obj;
     }

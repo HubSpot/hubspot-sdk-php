@@ -61,9 +61,9 @@ final class ChannelAccountGetParams implements BaseModel
     {
         $obj = new self;
 
-        $obj->channelId = $channelId;
+        $obj['channelId'] = $channelId;
 
-        null !== $archived && $obj->archived = $archived;
+        null !== $archived && $obj['archived'] = $archived;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class ChannelAccountGetParams implements BaseModel
     public function withChannelID(int $channelID): self
     {
         $obj = clone $this;
-        $obj->channelId = $channelID;
+        $obj['channelId'] = $channelID;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class ChannelAccountGetParams implements BaseModel
     public function withArchived(bool $archived): self
     {
         $obj = clone $this;
-        $obj->archived = $archived;
+        $obj['archived'] = $archived;
 
         return $obj;
     }

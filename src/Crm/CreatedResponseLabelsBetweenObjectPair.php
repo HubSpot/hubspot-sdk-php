@@ -62,18 +62,26 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param LabelsBetweenObjectPair|array{
+     *   fromObjectId: string,
+     *   fromObjectTypeId: string,
+     *   labels: list<string>,
+     *   toObjectId: string,
+     *   toObjectTypeId: string,
+     * } $entity
      */
     public static function with(
         string $createdResourceId,
-        LabelsBetweenObjectPair $entity,
+        LabelsBetweenObjectPair|array $entity,
         ?string $location = null,
     ): self {
         $obj = new self;
 
-        $obj->createdResourceId = $createdResourceId;
-        $obj->entity = $entity;
+        $obj['createdResourceId'] = $createdResourceId;
+        $obj['entity'] = $entity;
 
-        null !== $location && $obj->location = $location;
+        null !== $location && $obj['location'] = $location;
 
         return $obj;
     }
@@ -84,15 +92,24 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
-        $obj->createdResourceId = $createdResourceID;
+        $obj['createdResourceId'] = $createdResourceID;
 
         return $obj;
     }
 
-    public function withEntity(LabelsBetweenObjectPair $entity): self
+    /**
+     * @param LabelsBetweenObjectPair|array{
+     *   fromObjectId: string,
+     *   fromObjectTypeId: string,
+     *   labels: list<string>,
+     *   toObjectId: string,
+     *   toObjectTypeId: string,
+     * } $entity
+     */
+    public function withEntity(LabelsBetweenObjectPair|array $entity): self
     {
         $obj = clone $this;
-        $obj->entity = $entity;
+        $obj['entity'] = $entity;
 
         return $obj;
     }
@@ -103,7 +120,7 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
     public function withLocation(string $location): self
     {
         $obj = clone $this;
-        $obj->location = $location;
+        $obj['location'] = $location;
 
         return $obj;
     }

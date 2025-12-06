@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb\Rows\Batch;
 
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
+use HubspotSDK\Cms\Hubdb\Variant;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -16,7 +17,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\Rows\BatchService::createBatch()
  *
  * @phpstan-type BatchCreateBatchParamsShape = array{
- *   inputs: list<HubDBTableRowV3Request>
+ *   inputs: list<HubDBTableRowV3Request|array{
+ *     childTableId: int,
+ *     displayIndex: int,
+ *     values: array<string,Variant>,
+ *     name?: string|null,
+ *     path?: string|null,
+ *   }>,
  * }
  */
 final class BatchCreateBatchParams implements BaseModel
@@ -53,24 +60,36 @@ final class BatchCreateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowV3Request> $inputs
+     * @param list<HubDBTableRowV3Request|array{
+     *   childTableId: int,
+     *   displayIndex: int,
+     *   values: array<string,Variant>,
+     *   name?: string|null,
+     *   path?: string|null,
+     * }> $inputs
      */
     public static function with(array $inputs): self
     {
         $obj = new self;
 
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }
 
     /**
-     * @param list<HubDBTableRowV3Request> $inputs
+     * @param list<HubDBTableRowV3Request|array{
+     *   childTableId: int,
+     *   displayIndex: int,
+     *   values: array<string,Variant>,
+     *   name?: string|null,
+     *   path?: string|null,
+     * }> $inputs
      */
     public function withInputs(array $inputs): self
     {
         $obj = clone $this;
-        $obj->inputs = $inputs;
+        $obj['inputs'] = $inputs;
 
         return $obj;
     }

@@ -7,6 +7,9 @@ namespace HubspotSDK\Events\EventDefinitions;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Events\EventDefinitions\DatePoint\TimeType;
+use HubspotSDK\Events\EventDefinitions\DatePoint\TimezoneSource;
+use HubspotSDK\Events\EventDefinitions\PropertyReferencedTime\ReferenceType;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation\EndpointBehavior;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyParser;
@@ -111,6 +114,30 @@ final class TimePointOperation implements BaseModel
      * @param EndpointBehavior|value-of<EndpointBehavior> $endpointBehavior
      * @param Operator|value-of<Operator> $operator
      * @param PropertyParser|value-of<PropertyParser> $propertyParser
+     * @param DatePoint|array{
+     *   day: int,
+     *   month: int,
+     *   timeType: value-of<TimeType>,
+     *   timezoneSource: value-of<TimezoneSource>,
+     *   year: int,
+     *   zoneId: string,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|IndexedTimePoint|array{
+     *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
+     *   timeType: value-of<IndexedTimePoint\TimeType>,
+     *   timezoneSource: value-of<IndexedTimePoint\TimezoneSource>,
+     *   zoneId: string,
+     *   offset?: IndexOffset|null,
+     * }|PropertyReferencedTime|array{
+     *   property: string,
+     *   referenceType: value-of<ReferenceType>,
+     *   timeType: value-of<PropertyReferencedTime\TimeType>,
+     *   timezoneSource: value-of<PropertyReferencedTime\TimezoneSource>,
+     *   zoneId: string,
+     * } $timePoint
      * @param PropertyType|value-of<PropertyType> $propertyType
      */
     public static function with(
@@ -120,7 +147,7 @@ final class TimePointOperation implements BaseModel
         Operator|string $operator,
         string $operatorName,
         PropertyParser|string $propertyParser,
-        DatePoint|IndexedTimePoint|PropertyReferencedTime $timePoint,
+        DatePoint|array|IndexedTimePoint|PropertyReferencedTime $timePoint,
         string $type,
         PropertyType|string $propertyType = 'timepoint',
         ?string $defaultValue = null,
@@ -128,16 +155,16 @@ final class TimePointOperation implements BaseModel
         $obj = new self;
 
         $obj['endpointBehavior'] = $endpointBehavior;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
-        $obj->operationType = $operationType;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $obj['operationType'] = $operationType;
         $obj['operator'] = $operator;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
         $obj['propertyParser'] = $propertyParser;
         $obj['propertyType'] = $propertyType;
-        $obj->timePoint = $timePoint;
-        $obj->type = $type;
+        $obj['timePoint'] = $timePoint;
+        $obj['type'] = $type;
 
-        null !== $defaultValue && $obj->defaultValue = $defaultValue;
+        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }
@@ -158,7 +185,7 @@ final class TimePointOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -166,7 +193,7 @@ final class TimePointOperation implements BaseModel
     public function withOperationType(string $operationType): self
     {
         $obj = clone $this;
-        $obj->operationType = $operationType;
+        $obj['operationType'] = $operationType;
 
         return $obj;
     }
@@ -185,7 +212,7 @@ final class TimePointOperation implements BaseModel
     public function withOperatorName(string $operatorName): self
     {
         $obj = clone $this;
-        $obj->operatorName = $operatorName;
+        $obj['operatorName'] = $operatorName;
 
         return $obj;
     }
@@ -213,11 +240,37 @@ final class TimePointOperation implements BaseModel
         return $obj;
     }
 
+    /**
+     * @param DatePoint|array{
+     *   day: int,
+     *   month: int,
+     *   timeType: value-of<TimeType>,
+     *   timezoneSource: value-of<TimezoneSource>,
+     *   year: int,
+     *   zoneId: string,
+     *   hour?: int|null,
+     *   millisecond?: int|null,
+     *   minute?: int|null,
+     *   second?: int|null,
+     * }|IndexedTimePoint|array{
+     *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
+     *   timeType: value-of<IndexedTimePoint\TimeType>,
+     *   timezoneSource: value-of<IndexedTimePoint\TimezoneSource>,
+     *   zoneId: string,
+     *   offset?: IndexOffset|null,
+     * }|PropertyReferencedTime|array{
+     *   property: string,
+     *   referenceType: value-of<ReferenceType>,
+     *   timeType: value-of<PropertyReferencedTime\TimeType>,
+     *   timezoneSource: value-of<PropertyReferencedTime\TimezoneSource>,
+     *   zoneId: string,
+     * } $timePoint
+     */
     public function withTimePoint(
-        DatePoint|IndexedTimePoint|PropertyReferencedTime $timePoint
+        DatePoint|array|IndexedTimePoint|PropertyReferencedTime $timePoint
     ): self {
         $obj = clone $this;
-        $obj->timePoint = $timePoint;
+        $obj['timePoint'] = $timePoint;
 
         return $obj;
     }
@@ -225,7 +278,7 @@ final class TimePointOperation implements BaseModel
     public function withType(string $type): self
     {
         $obj = clone $this;
-        $obj->type = $type;
+        $obj['type'] = $type;
 
         return $obj;
     }
@@ -233,7 +286,7 @@ final class TimePointOperation implements BaseModel
     public function withDefaultValue(string $defaultValue): self
     {
         $obj = clone $this;
-        $obj->defaultValue = $defaultValue;
+        $obj['defaultValue'] = $defaultValue;
 
         return $obj;
     }

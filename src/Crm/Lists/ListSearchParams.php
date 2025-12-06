@@ -122,14 +122,14 @@ final class ListSearchParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->additionalProperties = $additionalProperties;
-        $obj->offset = $offset;
+        $obj['additionalProperties'] = $additionalProperties;
+        $obj['offset'] = $offset;
 
-        null !== $count && $obj->count = $count;
-        null !== $listIds && $obj->listIds = $listIds;
-        null !== $processingTypes && $obj->processingTypes = $processingTypes;
-        null !== $query && $obj->query = $query;
-        null !== $sort && $obj->sort = $sort;
+        null !== $count && $obj['count'] = $count;
+        null !== $listIds && $obj['listIds'] = $listIds;
+        null !== $processingTypes && $obj['processingTypes'] = $processingTypes;
+        null !== $query && $obj['query'] = $query;
+        null !== $sort && $obj['sort'] = $sort;
 
         return $obj;
     }
@@ -144,7 +144,7 @@ final class ListSearchParams implements BaseModel
     public function withAdditionalProperties(array $additionalProperties): self
     {
         $obj = clone $this;
-        $obj->additionalProperties = $additionalProperties;
+        $obj['additionalProperties'] = $additionalProperties;
 
         return $obj;
     }
@@ -155,7 +155,7 @@ final class ListSearchParams implements BaseModel
     public function withOffset(int $offset): self
     {
         $obj = clone $this;
-        $obj->offset = $offset;
+        $obj['offset'] = $offset;
 
         return $obj;
     }
@@ -166,7 +166,7 @@ final class ListSearchParams implements BaseModel
     public function withCount(int $count): self
     {
         $obj = clone $this;
-        $obj->count = $count;
+        $obj['count'] = $count;
 
         return $obj;
     }
@@ -181,7 +181,7 @@ final class ListSearchParams implements BaseModel
     public function withListIDs(array $listIDs): self
     {
         $obj = clone $this;
-        $obj->listIds = $listIDs;
+        $obj['listIds'] = $listIDs;
 
         return $obj;
     }
@@ -198,7 +198,7 @@ final class ListSearchParams implements BaseModel
     public function withProcessingTypes(array $processingTypes): self
     {
         $obj = clone $this;
-        $obj->processingTypes = $processingTypes;
+        $obj['processingTypes'] = $processingTypes;
 
         return $obj;
     }
@@ -209,7 +209,7 @@ final class ListSearchParams implements BaseModel
     public function withQuery(string $query): self
     {
         $obj = clone $this;
-        $obj->query = $query;
+        $obj['query'] = $query;
 
         return $obj;
     }
@@ -217,7 +217,7 @@ final class ListSearchParams implements BaseModel
     public function withSort(string $sort): self
     {
         $obj = clone $this;
-        $obj->sort = $sort;
+        $obj['sort'] = $sort;
 
         return $obj;
     }

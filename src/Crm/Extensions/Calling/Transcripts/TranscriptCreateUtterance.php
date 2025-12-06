@@ -66,22 +66,24 @@ final class TranscriptCreateUtterance implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Speaker|array{id: string, name: string, email?: string|null} $speaker
      */
     public static function with(
         int $endTimeMillis,
-        Speaker $speaker,
+        Speaker|array $speaker,
         int $startTimeMillis,
         string $text,
         ?string $languageCode = null,
     ): self {
         $obj = new self;
 
-        $obj->endTimeMillis = $endTimeMillis;
-        $obj->speaker = $speaker;
-        $obj->startTimeMillis = $startTimeMillis;
-        $obj->text = $text;
+        $obj['endTimeMillis'] = $endTimeMillis;
+        $obj['speaker'] = $speaker;
+        $obj['startTimeMillis'] = $startTimeMillis;
+        $obj['text'] = $text;
 
-        null !== $languageCode && $obj->languageCode = $languageCode;
+        null !== $languageCode && $obj['languageCode'] = $languageCode;
 
         return $obj;
     }
@@ -89,15 +91,18 @@ final class TranscriptCreateUtterance implements BaseModel
     public function withEndTimeMillis(int $endTimeMillis): self
     {
         $obj = clone $this;
-        $obj->endTimeMillis = $endTimeMillis;
+        $obj['endTimeMillis'] = $endTimeMillis;
 
         return $obj;
     }
 
-    public function withSpeaker(Speaker $speaker): self
+    /**
+     * @param Speaker|array{id: string, name: string, email?: string|null} $speaker
+     */
+    public function withSpeaker(Speaker|array $speaker): self
     {
         $obj = clone $this;
-        $obj->speaker = $speaker;
+        $obj['speaker'] = $speaker;
 
         return $obj;
     }
@@ -105,7 +110,7 @@ final class TranscriptCreateUtterance implements BaseModel
     public function withStartTimeMillis(int $startTimeMillis): self
     {
         $obj = clone $this;
-        $obj->startTimeMillis = $startTimeMillis;
+        $obj['startTimeMillis'] = $startTimeMillis;
 
         return $obj;
     }
@@ -113,7 +118,7 @@ final class TranscriptCreateUtterance implements BaseModel
     public function withText(string $text): self
     {
         $obj = clone $this;
-        $obj->text = $text;
+        $obj['text'] = $text;
 
         return $obj;
     }
@@ -121,7 +126,7 @@ final class TranscriptCreateUtterance implements BaseModel
     public function withLanguageCode(string $languageCode): self
     {
         $obj = clone $this;
-        $obj->languageCode = $languageCode;
+        $obj['languageCode'] = $languageCode;
 
         return $obj;
     }

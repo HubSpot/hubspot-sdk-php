@@ -83,9 +83,9 @@ final class SubscriptionCreateRequest implements BaseModel
 
         $obj['eventType'] = $eventType;
 
-        null !== $active && $obj->active = $active;
-        null !== $objectTypeId && $obj->objectTypeId = $objectTypeId;
-        null !== $propertyName && $obj->propertyName = $propertyName;
+        null !== $active && $obj['active'] = $active;
+        null !== $objectTypeId && $obj['objectTypeId'] = $objectTypeId;
+        null !== $propertyName && $obj['propertyName'] = $propertyName;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class SubscriptionCreateRequest implements BaseModel
     public function withActive(bool $active): self
     {
         $obj = clone $this;
-        $obj->active = $active;
+        $obj['active'] = $active;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class SubscriptionCreateRequest implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class SubscriptionCreateRequest implements BaseModel
     public function withPropertyName(string $propertyName): self
     {
         $obj = clone $this;
-        $obj->propertyName = $propertyName;
+        $obj['propertyName'] = $propertyName;
 
         return $obj;
     }

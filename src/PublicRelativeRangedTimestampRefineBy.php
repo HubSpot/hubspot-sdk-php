@@ -65,29 +65,40 @@ final class PublicRelativeRangedTimestampRefineBy implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
+     * @param PublicTimeOffset|array{
+     *   amount: int, offsetDirection: string, timeUnit: string
+     * } $lowerBoundOffset
+     * @param PublicTimeOffset|array{
+     *   amount: int, offsetDirection: string, timeUnit: string
+     * } $upperBoundOffset
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        PublicTimeOffset $lowerBoundOffset,
+        PublicTimeOffset|array $lowerBoundOffset,
         string $rangeType,
-        PublicTimeOffset $upperBoundOffset,
+        PublicTimeOffset|array $upperBoundOffset,
         Type|string $type = 'RELATIVE_RANGED',
     ): self {
         $obj = new self;
 
-        $obj->lowerBoundOffset = $lowerBoundOffset;
-        $obj->rangeType = $rangeType;
+        $obj['lowerBoundOffset'] = $lowerBoundOffset;
+        $obj['rangeType'] = $rangeType;
         $obj['type'] = $type;
-        $obj->upperBoundOffset = $upperBoundOffset;
+        $obj['upperBoundOffset'] = $upperBoundOffset;
 
         return $obj;
     }
 
+    /**
+     * @param PublicTimeOffset|array{
+     *   amount: int, offsetDirection: string, timeUnit: string
+     * } $lowerBoundOffset
+     */
     public function withLowerBoundOffset(
-        PublicTimeOffset $lowerBoundOffset
+        PublicTimeOffset|array $lowerBoundOffset
     ): self {
         $obj = clone $this;
-        $obj->lowerBoundOffset = $lowerBoundOffset;
+        $obj['lowerBoundOffset'] = $lowerBoundOffset;
 
         return $obj;
     }
@@ -95,7 +106,7 @@ final class PublicRelativeRangedTimestampRefineBy implements BaseModel
     public function withRangeType(string $rangeType): self
     {
         $obj = clone $this;
-        $obj->rangeType = $rangeType;
+        $obj['rangeType'] = $rangeType;
 
         return $obj;
     }
@@ -111,11 +122,16 @@ final class PublicRelativeRangedTimestampRefineBy implements BaseModel
         return $obj;
     }
 
+    /**
+     * @param PublicTimeOffset|array{
+     *   amount: int, offsetDirection: string, timeUnit: string
+     * } $upperBoundOffset
+     */
     public function withUpperBoundOffset(
-        PublicTimeOffset $upperBoundOffset
+        PublicTimeOffset|array $upperBoundOffset
     ): self {
         $obj = clone $this;
-        $obj->upperBoundOffset = $upperBoundOffset;
+        $obj['upperBoundOffset'] = $upperBoundOffset;
 
         return $obj;
     }

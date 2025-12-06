@@ -85,11 +85,11 @@ final class PublicDateTimePropertyOperation implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
         $obj['operationType'] = $operationType;
-        $obj->operator = $operator;
-        $obj->requiresTimeZoneConversion = $requiresTimeZoneConversion;
-        $obj->timestamp = $timestamp;
+        $obj['operator'] = $operator;
+        $obj['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class PublicDateTimePropertyOperation implements BaseModel
         bool $includeObjectsWithNoValueSet
     ): self {
         $obj = clone $this;
-        $obj->includeObjectsWithNoValueSet = $includeObjectsWithNoValueSet;
+        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
         return $obj;
     }
@@ -117,7 +117,7 @@ final class PublicDateTimePropertyOperation implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -126,7 +126,7 @@ final class PublicDateTimePropertyOperation implements BaseModel
         bool $requiresTimeZoneConversion
     ): self {
         $obj = clone $this;
-        $obj->requiresTimeZoneConversion = $requiresTimeZoneConversion;
+        $obj['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class PublicDateTimePropertyOperation implements BaseModel
     public function withTimestamp(int $timestamp): self
     {
         $obj = clone $this;
-        $obj->timestamp = $timestamp;
+        $obj['timestamp'] = $timestamp;
 
         return $obj;
     }

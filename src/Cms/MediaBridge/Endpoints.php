@@ -61,9 +61,9 @@ final class Endpoints implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->discovery = $discovery;
-        $obj->schemes = $schemes;
-        $obj->url = $url;
+        $obj['discovery'] = $discovery;
+        $obj['schemes'] = $schemes;
+        $obj['url'] = $url;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class Endpoints implements BaseModel
     public function withDiscovery(bool $discovery): self
     {
         $obj = clone $this;
-        $obj->discovery = $discovery;
+        $obj['discovery'] = $discovery;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class Endpoints implements BaseModel
     public function withSchemes(array $schemes): self
     {
         $obj = clone $this;
-        $obj->schemes = $schemes;
+        $obj['schemes'] = $schemes;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class Endpoints implements BaseModel
     public function withURL(string $url): self
     {
         $obj = clone $this;
-        $obj->url = $url;
+        $obj['url'] = $url;
 
         return $obj;
     }

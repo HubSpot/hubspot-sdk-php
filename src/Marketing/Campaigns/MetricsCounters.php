@@ -74,10 +74,10 @@ final class MetricsCounters implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->influencedContacts = $influencedContacts;
-        $obj->newContactsFirstTouch = $newContactsFirstTouch;
-        $obj->newContactsLastTouch = $newContactsLastTouch;
-        $obj->sessions = $sessions;
+        $obj['influencedContacts'] = $influencedContacts;
+        $obj['newContactsFirstTouch'] = $newContactsFirstTouch;
+        $obj['newContactsLastTouch'] = $newContactsLastTouch;
+        $obj['sessions'] = $sessions;
 
         return $obj;
     }
@@ -85,7 +85,7 @@ final class MetricsCounters implements BaseModel
     public function withInfluencedContacts(int $influencedContacts): self
     {
         $obj = clone $this;
-        $obj->influencedContacts = $influencedContacts;
+        $obj['influencedContacts'] = $influencedContacts;
 
         return $obj;
     }
@@ -93,7 +93,7 @@ final class MetricsCounters implements BaseModel
     public function withNewContactsFirstTouch(int $newContactsFirstTouch): self
     {
         $obj = clone $this;
-        $obj->newContactsFirstTouch = $newContactsFirstTouch;
+        $obj['newContactsFirstTouch'] = $newContactsFirstTouch;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class MetricsCounters implements BaseModel
     public function withNewContactsLastTouch(int $newContactsLastTouch): self
     {
         $obj = clone $this;
-        $obj->newContactsLastTouch = $newContactsLastTouch;
+        $obj['newContactsLastTouch'] = $newContactsLastTouch;
 
         return $obj;
     }
@@ -109,7 +109,7 @@ final class MetricsCounters implements BaseModel
     public function withSessions(int $sessions): self
     {
         $obj = clone $this;
-        $obj->sessions = $sessions;
+        $obj['sessions'] = $sessions;
 
         return $obj;
     }

@@ -62,7 +62,7 @@ final class APIFlowBatchFetchMigrationWorkflowIDCoordinate implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->flowMigrationStatusForClassicWorkflows = $flowMigrationStatusForClassicWorkflows;
+        $obj['flowMigrationStatusForClassicWorkflows'] = $flowMigrationStatusForClassicWorkflows;
         $obj['type'] = $type;
 
         return $obj;
@@ -72,7 +72,7 @@ final class APIFlowBatchFetchMigrationWorkflowIDCoordinate implements BaseModel
         string $flowMigrationStatusForClassicWorkflows
     ): self {
         $obj = clone $this;
-        $obj->flowMigrationStatusForClassicWorkflows = $flowMigrationStatusForClassicWorkflows;
+        $obj['flowMigrationStatusForClassicWorkflows'] = $flowMigrationStatusForClassicWorkflows;
 
         return $obj;
     }

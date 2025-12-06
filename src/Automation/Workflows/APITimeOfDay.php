@@ -50,8 +50,8 @@ final class APITimeOfDay implements BaseModel
     {
         $obj = new self;
 
-        $obj->hour = $hour;
-        $obj->minute = $minute;
+        $obj['hour'] = $hour;
+        $obj['minute'] = $minute;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class APITimeOfDay implements BaseModel
     public function withHour(int $hour): self
     {
         $obj = clone $this;
-        $obj->hour = $hour;
+        $obj['hour'] = $hour;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class APITimeOfDay implements BaseModel
     public function withMinute(int $minute): self
     {
         $obj = clone $this;
-        $obj->minute = $minute;
+        $obj['minute'] = $minute;
 
         return $obj;
     }

@@ -64,9 +64,9 @@ final class FileOperationGetSignedURLParams implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $expirationSeconds && $obj->expirationSeconds = $expirationSeconds;
+        null !== $expirationSeconds && $obj['expirationSeconds'] = $expirationSeconds;
         null !== $size && $obj['size'] = $size;
-        null !== $upscale && $obj->upscale = $upscale;
+        null !== $upscale && $obj['upscale'] = $upscale;
 
         return $obj;
     }
@@ -77,7 +77,7 @@ final class FileOperationGetSignedURLParams implements BaseModel
     public function withExpirationSeconds(int $expirationSeconds): self
     {
         $obj = clone $this;
-        $obj->expirationSeconds = $expirationSeconds;
+        $obj['expirationSeconds'] = $expirationSeconds;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class FileOperationGetSignedURLParams implements BaseModel
     public function withUpscale(bool $upscale): self
     {
         $obj = clone $this;
-        $obj->upscale = $upscale;
+        $obj['upscale'] = $upscale;
 
         return $obj;
     }

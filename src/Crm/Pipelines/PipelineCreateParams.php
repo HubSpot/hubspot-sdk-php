@@ -15,7 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\PipelinesService::create()
  *
  * @phpstan-type PipelineCreateParamsShape = array{
- *   displayOrder: int, label: string, stages: list<PipelineStageInput>
+ *   displayOrder: int,
+ *   label: string,
+ *   stages: list<PipelineStageInput|array{
+ *     displayOrder: int, label: string, metadata: array<string,string>
+ *   }>,
  * }
  */
 final class PipelineCreateParams implements BaseModel
@@ -71,7 +75,9 @@ final class PipelineCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PipelineStageInput> $stages
+     * @param list<PipelineStageInput|array{
+     *   displayOrder: int, label: string, metadata: array<string,string>
+     * }> $stages
      */
     public static function with(
         int $displayOrder,
@@ -80,9 +86,9 @@ final class PipelineCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->displayOrder = $displayOrder;
-        $obj->label = $label;
-        $obj->stages = $stages;
+        $obj['displayOrder'] = $displayOrder;
+        $obj['label'] = $label;
+        $obj['stages'] = $stages;
 
         return $obj;
     }
@@ -93,7 +99,7 @@ final class PipelineCreateParams implements BaseModel
     public function withDisplayOrder(int $displayOrder): self
     {
         $obj = clone $this;
-        $obj->displayOrder = $displayOrder;
+        $obj['displayOrder'] = $displayOrder;
 
         return $obj;
     }
@@ -104,7 +110,7 @@ final class PipelineCreateParams implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -112,12 +118,14 @@ final class PipelineCreateParams implements BaseModel
     /**
      * Pipeline stage inputs used to create the new or replacement pipeline.
      *
-     * @param list<PipelineStageInput> $stages
+     * @param list<PipelineStageInput|array{
+     *   displayOrder: int, label: string, metadata: array<string,string>
+     * }> $stages
      */
     public function withStages(array $stages): self
     {
         $obj = clone $this;
-        $obj->stages = $stages;
+        $obj['stages'] = $stages;
 
         return $obj;
     }

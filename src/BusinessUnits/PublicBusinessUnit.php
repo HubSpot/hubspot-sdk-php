@@ -61,18 +61,22 @@ final class PublicBusinessUnit implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param PublicBusinessUnitLogoMetadata|array{
+     *   logoAltText?: string|null, logoUrl?: string|null, resizedUrl?: string|null
+     * } $logoMetadata
      */
     public static function with(
         string $id,
         string $name,
-        ?PublicBusinessUnitLogoMetadata $logoMetadata = null,
+        PublicBusinessUnitLogoMetadata|array|null $logoMetadata = null,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->name = $name;
+        $obj['id'] = $id;
+        $obj['name'] = $name;
 
-        null !== $logoMetadata && $obj->logoMetadata = $logoMetadata;
+        null !== $logoMetadata && $obj['logoMetadata'] = $logoMetadata;
 
         return $obj;
     }
@@ -83,7 +87,7 @@ final class PublicBusinessUnit implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -94,19 +98,23 @@ final class PublicBusinessUnit implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
 
     /**
      * A Business Unit's logo metadata.
+     *
+     * @param PublicBusinessUnitLogoMetadata|array{
+     *   logoAltText?: string|null, logoUrl?: string|null, resizedUrl?: string|null
+     * } $logoMetadata
      */
     public function withLogoMetadata(
-        PublicBusinessUnitLogoMetadata $logoMetadata
+        PublicBusinessUnitLogoMetadata|array $logoMetadata
     ): self {
         $obj = clone $this;
-        $obj->logoMetadata = $logoMetadata;
+        $obj['logoMetadata'] = $logoMetadata;
 
         return $obj;
     }

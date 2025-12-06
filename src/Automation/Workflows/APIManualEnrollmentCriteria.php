@@ -58,7 +58,7 @@ final class APIManualEnrollmentCriteria implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->shouldReEnroll = $shouldReEnroll;
+        $obj['shouldReEnroll'] = $shouldReEnroll;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APIManualEnrollmentCriteria implements BaseModel
     public function withShouldReEnroll(bool $shouldReEnroll): self
     {
         $obj = clone $this;
-        $obj->shouldReEnroll = $shouldReEnroll;
+        $obj['shouldReEnroll'] = $shouldReEnroll;
 
         return $obj;
     }

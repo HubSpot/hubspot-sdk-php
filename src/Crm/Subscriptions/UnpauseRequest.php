@@ -47,7 +47,7 @@ final class UnpauseRequest implements BaseModel
     {
         $obj = new self;
 
-        $obj->proposedNextBillingDate = $proposedNextBillingDate;
+        $obj['proposedNextBillingDate'] = $proposedNextBillingDate;
 
         return $obj;
     }
@@ -56,7 +56,7 @@ final class UnpauseRequest implements BaseModel
         int $proposedNextBillingDate
     ): self {
         $obj = clone $this;
-        $obj->proposedNextBillingDate = $proposedNextBillingDate;
+        $obj['proposedNextBillingDate'] = $proposedNextBillingDate;
 
         return $obj;
     }

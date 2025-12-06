@@ -107,7 +107,9 @@ final class PaymentLinkRadioField implements BaseModel
      *
      * @param list<string> $defaultValues
      * @param list<mixed> $dependentFields
-     * @param list<EnumeratedFieldOption> $options
+     * @param list<EnumeratedFieldOption|array{
+     *   displayOrder: int, label: string, value: string, description?: string|null
+     * }> $options
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -124,17 +126,17 @@ final class PaymentLinkRadioField implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->defaultValues = $defaultValues;
-        $obj->dependentFields = $dependentFields;
+        $obj['defaultValues'] = $defaultValues;
+        $obj['dependentFields'] = $dependentFields;
         $obj['fieldType'] = $fieldType;
-        $obj->hidden = $hidden;
-        $obj->label = $label;
-        $obj->name = $name;
-        $obj->objectTypeId = $objectTypeId;
-        $obj->options = $options;
-        $obj->required = $required;
+        $obj['hidden'] = $hidden;
+        $obj['label'] = $label;
+        $obj['name'] = $name;
+        $obj['objectTypeId'] = $objectTypeId;
+        $obj['options'] = $options;
+        $obj['required'] = $required;
 
-        null !== $description && $obj->description = $description;
+        null !== $description && $obj['description'] = $description;
 
         return $obj;
     }
@@ -145,7 +147,7 @@ final class PaymentLinkRadioField implements BaseModel
     public function withDefaultValues(array $defaultValues): self
     {
         $obj = clone $this;
-        $obj->defaultValues = $defaultValues;
+        $obj['defaultValues'] = $defaultValues;
 
         return $obj;
     }
@@ -156,7 +158,7 @@ final class PaymentLinkRadioField implements BaseModel
     public function withDependentFields(array $dependentFields): self
     {
         $obj = clone $this;
-        $obj->dependentFields = $dependentFields;
+        $obj['dependentFields'] = $dependentFields;
 
         return $obj;
     }
@@ -175,7 +177,7 @@ final class PaymentLinkRadioField implements BaseModel
     public function withHidden(bool $hidden): self
     {
         $obj = clone $this;
-        $obj->hidden = $hidden;
+        $obj['hidden'] = $hidden;
 
         return $obj;
     }
@@ -183,7 +185,7 @@ final class PaymentLinkRadioField implements BaseModel
     public function withLabel(string $label): self
     {
         $obj = clone $this;
-        $obj->label = $label;
+        $obj['label'] = $label;
 
         return $obj;
     }
@@ -191,7 +193,7 @@ final class PaymentLinkRadioField implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -199,18 +201,20 @@ final class PaymentLinkRadioField implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj->objectTypeId = $objectTypeID;
+        $obj['objectTypeId'] = $objectTypeID;
 
         return $obj;
     }
 
     /**
-     * @param list<EnumeratedFieldOption> $options
+     * @param list<EnumeratedFieldOption|array{
+     *   displayOrder: int, label: string, value: string, description?: string|null
+     * }> $options
      */
     public function withOptions(array $options): self
     {
         $obj = clone $this;
-        $obj->options = $options;
+        $obj['options'] = $options;
 
         return $obj;
     }
@@ -218,7 +222,7 @@ final class PaymentLinkRadioField implements BaseModel
     public function withRequired(bool $required): self
     {
         $obj = clone $this;
-        $obj->required = $required;
+        $obj['required'] = $required;
 
         return $obj;
     }
@@ -226,7 +230,7 @@ final class PaymentLinkRadioField implements BaseModel
     public function withDescription(string $description): self
     {
         $obj = clone $this;
-        $obj->description = $description;
+        $obj['description'] = $description;
 
         return $obj;
     }

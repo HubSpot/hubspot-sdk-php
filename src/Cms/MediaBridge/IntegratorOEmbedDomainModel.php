@@ -83,25 +83,29 @@ final class IntegratorOEmbedDomainModel implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Endpoints|array{
+     *   discovery: bool, schemes: list<string>, url: string
+     * } $endpoints
      */
     public static function with(
         int $id,
         int $appId,
         int $createdAt,
         int $deletedAt,
-        Endpoints $endpoints,
+        Endpoints|array $endpoints,
         int $portalId,
         int $updatedAt,
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->appId = $appId;
-        $obj->createdAt = $createdAt;
-        $obj->deletedAt = $deletedAt;
-        $obj->endpoints = $endpoints;
-        $obj->portalId = $portalId;
-        $obj->updatedAt = $updatedAt;
+        $obj['id'] = $id;
+        $obj['appId'] = $appId;
+        $obj['createdAt'] = $createdAt;
+        $obj['deletedAt'] = $deletedAt;
+        $obj['endpoints'] = $endpoints;
+        $obj['portalId'] = $portalId;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }
@@ -109,7 +113,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     public function withID(int $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -117,7 +121,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj->appId = $appID;
+        $obj['appId'] = $appID;
 
         return $obj;
     }
@@ -125,7 +129,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     public function withCreatedAt(int $createdAt): self
     {
         $obj = clone $this;
-        $obj->createdAt = $createdAt;
+        $obj['createdAt'] = $createdAt;
 
         return $obj;
     }
@@ -133,15 +137,20 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     public function withDeletedAt(int $deletedAt): self
     {
         $obj = clone $this;
-        $obj->deletedAt = $deletedAt;
+        $obj['deletedAt'] = $deletedAt;
 
         return $obj;
     }
 
-    public function withEndpoints(Endpoints $endpoints): self
+    /**
+     * @param Endpoints|array{
+     *   discovery: bool, schemes: list<string>, url: string
+     * } $endpoints
+     */
+    public function withEndpoints(Endpoints|array $endpoints): self
     {
         $obj = clone $this;
-        $obj->endpoints = $endpoints;
+        $obj['endpoints'] = $endpoints;
 
         return $obj;
     }
@@ -149,7 +158,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj->portalId = $portalID;
+        $obj['portalId'] = $portalID;
 
         return $obj;
     }
@@ -157,7 +166,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     public function withUpdatedAt(int $updatedAt): self
     {
         $obj = clone $this;
-        $obj->updatedAt = $updatedAt;
+        $obj['updatedAt'] = $updatedAt;
 
         return $obj;
     }

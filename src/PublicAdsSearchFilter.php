@@ -94,12 +94,12 @@ final class PublicAdsSearchFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->adNetwork = $adNetwork;
-        $obj->entityType = $entityType;
+        $obj['adNetwork'] = $adNetwork;
+        $obj['entityType'] = $entityType;
         $obj['filterType'] = $filterType;
-        $obj->operator = $operator;
-        $obj->searchTerms = $searchTerms;
-        $obj->searchTermType = $searchTermType;
+        $obj['operator'] = $operator;
+        $obj['searchTerms'] = $searchTerms;
+        $obj['searchTermType'] = $searchTermType;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class PublicAdsSearchFilter implements BaseModel
     public function withAdNetwork(string $adNetwork): self
     {
         $obj = clone $this;
-        $obj->adNetwork = $adNetwork;
+        $obj['adNetwork'] = $adNetwork;
 
         return $obj;
     }
@@ -115,7 +115,7 @@ final class PublicAdsSearchFilter implements BaseModel
     public function withEntityType(string $entityType): self
     {
         $obj = clone $this;
-        $obj->entityType = $entityType;
+        $obj['entityType'] = $entityType;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class PublicAdsSearchFilter implements BaseModel
     public function withOperator(string $operator): self
     {
         $obj = clone $this;
-        $obj->operator = $operator;
+        $obj['operator'] = $operator;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class PublicAdsSearchFilter implements BaseModel
     public function withSearchTerms(array $searchTerms): self
     {
         $obj = clone $this;
-        $obj->searchTerms = $searchTerms;
+        $obj['searchTerms'] = $searchTerms;
 
         return $obj;
     }
@@ -153,7 +153,7 @@ final class PublicAdsSearchFilter implements BaseModel
     public function withSearchTermType(string $searchTermType): self
     {
         $obj = clone $this;
-        $obj->searchTermType = $searchTermType;
+        $obj['searchTermType'] = $searchTermType;
 
         return $obj;
     }

@@ -7,6 +7,7 @@ namespace HubspotSDK\Crm\Timeline;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken\Type;
 
 /**
  * State of the template definition being updated.
@@ -83,7 +84,15 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventTemplateToken> $tokens
+     * @param list<TimelineEventTemplateToken|array{
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   createdAt?: \DateTimeInterface|null,
+     *   objectPropertyName?: string|null,
+     *   options?: list<TimelineEventTemplateTokenOption>|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * }> $tokens
      */
     public static function with(
         string $id,
@@ -94,12 +103,12 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj->id = $id;
-        $obj->name = $name;
-        $obj->tokens = $tokens;
+        $obj['id'] = $id;
+        $obj['name'] = $name;
+        $obj['tokens'] = $tokens;
 
-        null !== $detailTemplate && $obj->detailTemplate = $detailTemplate;
-        null !== $headerTemplate && $obj->headerTemplate = $headerTemplate;
+        null !== $detailTemplate && $obj['detailTemplate'] = $detailTemplate;
+        null !== $headerTemplate && $obj['headerTemplate'] = $headerTemplate;
 
         return $obj;
     }
@@ -110,7 +119,7 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
     public function withID(string $id): self
     {
         $obj = clone $this;
-        $obj->id = $id;
+        $obj['id'] = $id;
 
         return $obj;
     }
@@ -121,7 +130,7 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
     public function withName(string $name): self
     {
         $obj = clone $this;
-        $obj->name = $name;
+        $obj['name'] = $name;
 
         return $obj;
     }
@@ -129,12 +138,20 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
     /**
      * A collection of tokens that can be used as custom properties on the event and to create fully fledged CRM objects.
      *
-     * @param list<TimelineEventTemplateToken> $tokens
+     * @param list<TimelineEventTemplateToken|array{
+     *   label: string,
+     *   name: string,
+     *   type: value-of<Type>,
+     *   createdAt?: \DateTimeInterface|null,
+     *   objectPropertyName?: string|null,
+     *   options?: list<TimelineEventTemplateTokenOption>|null,
+     *   updatedAt?: \DateTimeInterface|null,
+     * }> $tokens
      */
     public function withTokens(array $tokens): self
     {
         $obj = clone $this;
-        $obj->tokens = $tokens;
+        $obj['tokens'] = $tokens;
 
         return $obj;
     }
@@ -145,7 +162,7 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
     public function withDetailTemplate(string $detailTemplate): self
     {
         $obj = clone $this;
-        $obj->detailTemplate = $detailTemplate;
+        $obj['detailTemplate'] = $detailTemplate;
 
         return $obj;
     }
@@ -156,7 +173,7 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
     public function withHeaderTemplate(string $headerTemplate): self
     {
         $obj = clone $this;
-        $obj->headerTemplate = $headerTemplate;
+        $obj['headerTemplate'] = $headerTemplate;
 
         return $obj;
     }
