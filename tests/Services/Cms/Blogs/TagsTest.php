@@ -41,12 +41,12 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->create([
             'id' => 'id',
-            'created' => '2019-12-27T18:11:19.117Z',
-            'deletedAt' => '2019-12-27T18:11:19.117Z',
+            'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'language' => 'af',
             'name' => 'name',
             'translatedFromId' => 0,
-            'updated' => '2019-12-27T18:11:19.117Z',
+            'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -62,12 +62,12 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->create([
             'id' => 'id',
-            'created' => '2019-12-27T18:11:19.117Z',
-            'deletedAt' => '2019-12-27T18:11:19.117Z',
+            'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'language' => 'af',
             'name' => 'name',
             'translatedFromId' => 0,
-            'updated' => '2019-12-27T18:11:19.117Z',
+            'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -85,12 +85,12 @@ final class TagsTest extends TestCase
             'objectId',
             [
                 'id' => 'id',
-                'created' => '2019-12-27T18:11:19.117Z',
-                'deletedAt' => '2019-12-27T18:11:19.117Z',
+                'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'language' => 'af',
                 'name' => 'name',
                 'translatedFromId' => 0,
-                'updated' => '2019-12-27T18:11:19.117Z',
+                'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
 
@@ -109,12 +109,12 @@ final class TagsTest extends TestCase
             'objectId',
             [
                 'id' => 'id',
-                'created' => '2019-12-27T18:11:19.117Z',
-                'deletedAt' => '2019-12-27T18:11:19.117Z',
+                'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'language' => 'af',
                 'name' => 'name',
                 'translatedFromId' => 0,
-                'updated' => '2019-12-27T18:11:19.117Z',
+                'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'archived' => true,
             ],
         );
@@ -193,12 +193,12 @@ final class TagsTest extends TestCase
             'inputs' => [
                 [
                     'id' => 'id',
-                    'created' => '2019-12-27T18:11:19.117Z',
-                    'deletedAt' => '2019-12-27T18:11:19.117Z',
+                    'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'language' => 'af',
                     'name' => 'name',
                     'translatedFromId' => 0,
-                    'updated' => '2019-12-27T18:11:19.117Z',
+                    'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
         ]);
@@ -218,12 +218,12 @@ final class TagsTest extends TestCase
             'inputs' => [
                 [
                     'id' => 'id',
-                    'created' => '2019-12-27T18:11:19.117Z',
-                    'deletedAt' => '2019-12-27T18:11:19.117Z',
+                    'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'language' => 'af',
                     'name' => 'name',
                     'translatedFromId' => 0,
-                    'updated' => '2019-12-27T18:11:19.117Z',
+                    'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
         ]);

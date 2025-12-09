@@ -50,7 +50,7 @@ final class MessagesTest extends TestCase
                     ['deliveryIdentifier' => ['type' => 'type', 'value' => 'value']],
                 ],
                 'text' => 'text',
-                'timestamp' => '2019-12-27T18:11:19.117Z',
+                'timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
 
@@ -93,7 +93,7 @@ final class MessagesTest extends TestCase
                     ],
                 ],
                 'text' => 'text',
-                'timestamp' => '2019-12-27T18:11:19.117Z',
+                'timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'inReplyToId' => 'inReplyToId',
                 'integrationIdempotencyId' => 'integrationIdempotencyId',
                 'integrationThreadId' => 'integrationThreadId',

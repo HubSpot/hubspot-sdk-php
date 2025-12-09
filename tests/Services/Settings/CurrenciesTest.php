@@ -62,7 +62,7 @@ final class CurrenciesTest extends TestCase
                 [
                     'conversionRate' => 0,
                     'fromCurrencyCode' => 'AED',
-                    'effectiveAt' => '2019-12-27T18:11:19.117Z',
+                    'effectiveAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
         ]);
@@ -128,7 +128,7 @@ final class CurrenciesTest extends TestCase
                 [
                     'id' => 'id',
                     'conversionRate' => 0,
-                    'effectiveAt' => '2019-12-27T18:11:19.117Z',
+                    'effectiveAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
         ]);
@@ -162,7 +162,7 @@ final class CurrenciesTest extends TestCase
         $result = $this->client->settings->currencies->createExchangeRate([
             'conversionRate' => 0,
             'fromCurrencyCode' => 'AED',
-            'effectiveAt' => '2019-12-27T18:11:19.117Z',
+            'effectiveAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -297,7 +297,10 @@ final class CurrenciesTest extends TestCase
 
         $result = $this->client->settings->currencies->updateExchangeRate(
             'exchangeRateId',
-            ['conversionRate' => 0, 'effectiveAt' => '2019-12-27T18:11:19.117Z'],
+            [
+                'conversionRate' => 0,
+                'effectiveAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            ],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

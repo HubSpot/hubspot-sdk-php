@@ -18,6 +18,7 @@ use HubspotSDK\Settings\Users\UserDeleteParams;
 use HubspotSDK\Settings\Users\UserGetParams;
 use HubspotSDK\Settings\Users\UserListParams;
 use HubspotSDK\Settings\Users\UserUpdateParams;
+use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
 
 final class UsersService implements UsersContract
 {
@@ -70,7 +71,7 @@ final class UsersService implements UsersContract
      * Modifies a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
      * @param array{
-     *   idProperty?: 'EMAIL'|'USER_ID',
+     *   idProperty?: 'EMAIL'|'USER_ID'|IDProperty,
      *   firstName?: string,
      *   lastName?: string,
      *   primaryTeamId?: string,
@@ -142,7 +143,9 @@ final class UsersService implements UsersContract
      *
      * Removes a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param array{idProperty?: 'EMAIL'|'USER_ID'}|UserDeleteParams $params
+     * @param array{
+     *   idProperty?: 'EMAIL'|'USER_ID'|UserDeleteParams\IDProperty,
+     * }|UserDeleteParams $params
      *
      * @throws APIException
      */
@@ -173,7 +176,9 @@ final class UsersService implements UsersContract
      *
      * Retrieves a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param array{idProperty?: 'EMAIL'|'USER_ID'}|UserGetParams $params
+     * @param array{
+     *   idProperty?: 'EMAIL'|'USER_ID'|UserGetParams\IDProperty,
+     * }|UserGetParams $params
      *
      * @throws APIException
      */

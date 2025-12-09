@@ -57,10 +57,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->create(
             'file_path',
-            [
-                'environment' => 'environment',
-                'file' => file_get_contents(__FILE__) ?: '',
-            ],
+            ['environment' => 'environment', 'file' => 'file']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -227,10 +224,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->upsert(
             'file_path',
-            [
-                'environment' => 'environment',
-                'file' => file_get_contents(__FILE__) ?: '',
-            ],
+            ['environment' => 'environment', 'file' => 'file']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -262,10 +256,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->validate(
             'file_path',
-            [
-                'environment' => 'environment',
-                'file' => file_get_contents(__FILE__) ?: '',
-            ],
+            ['environment' => 'environment', 'file' => 'file']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -15,6 +15,7 @@ use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchCreat
 use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchDeleteParams;
 use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchUpdateParams;
 use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationGetByObjectTypesParams;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest\Category;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\Schema\V4\ConfigurationsContract;
 
@@ -50,7 +51,7 @@ final class ConfigurationsService implements ConfigurationsContract
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
-     *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED',
+     *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|Category,
      *     maxToObjectIds: int,
      *     typeId: int,
      *   }>,
@@ -129,7 +130,7 @@ final class ConfigurationsService implements ConfigurationsContract
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
-     *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED',
+     *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|\HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest\Category,
      *     maxToObjectIds: int,
      *     typeId: int,
      *   }>,

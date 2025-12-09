@@ -8,7 +8,9 @@ use HubspotSDK\Client;
 use HubspotSDK\Conversations\PublicThread;
 use HubspotSDK\Conversations\Threads\ThreadGetParams;
 use HubspotSDK\Conversations\Threads\ThreadListParams;
+use HubspotSDK\Conversations\Threads\ThreadListParams\Association;
 use HubspotSDK\Conversations\Threads\ThreadUpdateParams;
+use HubspotSDK\Conversations\Threads\ThreadUpdateParams\Status;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -26,7 +28,7 @@ final class ThreadsService implements ThreadsContract
      * @api
      *
      * @param array{
-     *   archived?: bool, status?: 'CLOSED'|'OPEN'
+     *   archived?: bool, status?: 'CLOSED'|'OPEN'|Status
      * }|ThreadUpdateParams $params
      *
      * @throws APIException
@@ -62,7 +64,7 @@ final class ThreadsService implements ThreadsContract
      *   after?: string,
      *   archived?: bool,
      *   associatedContactId?: int,
-     *   association?: list<'TICKET'>,
+     *   association?: list<'TICKET'|Association>,
      *   inboxId?: list<int>,
      *   latestMessageTimestampAfter?: string|\DateTimeInterface,
      *   limit?: int,
@@ -121,7 +123,9 @@ final class ThreadsService implements ThreadsContract
      * @api
      *
      * @param array{
-     *   archived?: bool, association?: list<'TICKET'>, property?: string
+     *   archived?: bool,
+     *   association?: list<'TICKET'|ThreadGetParams\Association>,
+     *   property?: string,
      * }|ThreadGetParams $params
      *
      * @throws APIException

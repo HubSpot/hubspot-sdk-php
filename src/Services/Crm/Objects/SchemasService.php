@@ -9,6 +9,10 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
+use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\NumberDisplayHint;
+use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\OptionSortStrategy;
+use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\TextDisplayHint;
+use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\Type;
 use HubspotSDK\Crm\Objects\Schemas\SchemaCreateAssociationParams;
 use HubspotSDK\Crm\Objects\Schemas\SchemaCreateParams;
 use HubspotSDK\Crm\Objects\Schemas\SchemaDeleteAssociationParams;
@@ -39,20 +43,20 @@ final class SchemasService implements SchemasContract
      *     fieldType: string,
      *     label: string,
      *     name: string,
-     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'string',
+     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'string'|Type,
      *     description?: string,
      *     displayOrder?: int,
      *     formField?: bool,
      *     groupName?: string,
      *     hasUniqueValue?: bool,
      *     hidden?: bool,
-     *     numberDisplayHint?: 'currency'|'duration'|'formatted'|'percentage'|'probability'|'unformatted',
+     *     numberDisplayHint?: 'currency'|'duration'|'formatted'|'percentage'|'probability'|'unformatted'|NumberDisplayHint,
      *     options?: list<array<mixed>>,
-     *     optionSortStrategy?: 'ALPHABETICAL'|'DISPLAY_ORDER',
+     *     optionSortStrategy?: 'ALPHABETICAL'|'DISPLAY_ORDER'|OptionSortStrategy,
      *     referencedObjectType?: string,
      *     searchableInGlobalSearch?: bool,
      *     showCurrencySymbol?: bool,
-     *     textDisplayHint?: 'domain_name'|'email'|'ip_address'|'multi_line'|'phone_number'|'physical_address'|'postal_code'|'unformatted_single_line',
+     *     textDisplayHint?: 'domain_name'|'email'|'ip_address'|'multi_line'|'phone_number'|'physical_address'|'postal_code'|'unformatted_single_line'|TextDisplayHint,
      *   }>,
      *   requiredProperties: list<string>,
      *   description?: string,

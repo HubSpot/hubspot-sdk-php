@@ -65,13 +65,13 @@ final class TokensTest extends TestCase
                 'label' => 'Pet Type',
                 'name' => 'petType',
                 'type' => 'enumeration',
-                'createdAt' => '2020-02-12T20:58:26Z',
+                'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
                 'objectPropertyName' => 'customPropertyPetType',
                 'options' => [
                     ['label' => 'Dog', 'value' => 'dog'],
                     ['label' => 'Cat', 'value' => 'cat'],
                 ],
-                'updatedAt' => '2020-02-12T20:58:26Z',
+                'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
             ],
         );
 

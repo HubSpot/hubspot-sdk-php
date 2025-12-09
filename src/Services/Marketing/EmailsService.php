@@ -31,6 +31,10 @@ use HubspotSDK\Marketing\Emails\PublicEmailRecipients;
 use HubspotSDK\Marketing\Emails\PublicEmailStyleSettings;
 use HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails;
 use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSampleSizeDefault;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSamplingDefault;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbStatus;
+use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
 use HubspotSDK\Marketing\Emails\PublicEmailToDetails;
 use HubspotSDK\Marketing\Emails\PublicRssEmailDetails;
 use HubspotSDK\Marketing\Emails\PublicWebversionDetails;
@@ -106,10 +110,10 @@ final class EmailsService implements EmailsContract
      *     subscriptionName?: string,
      *   }|PublicEmailSubscriptionDetails,
      *   testing?: array{
-     *     abSampleSizeDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant',
-     *     abSamplingDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant',
-     *     abStatus?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant',
-     *     abSuccessMetric?: 'CLICKS_BY_DELIVERED'|'CLICKS_BY_OPENS'|'OPENS_BY_DELIVERED',
+     *     abSampleSizeDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSampleSizeDefault,
+     *     abSamplingDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSamplingDefault,
+     *     abStatus?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbStatus,
+     *     abSuccessMetric?: 'CLICKS_BY_DELIVERED'|'CLICKS_BY_OPENS'|'OPENS_BY_DELIVERED'|AbSuccessMetric,
      *     abTestPercentage?: int,
      *     hoursToWait?: int,
      *     isAbVariation?: bool,
@@ -210,10 +214,10 @@ final class EmailsService implements EmailsContract
      *     subscriptionName?: string,
      *   }|PublicEmailSubscriptionDetails,
      *   testing?: array{
-     *     abSampleSizeDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant',
-     *     abSamplingDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant',
-     *     abStatus?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant',
-     *     abSuccessMetric?: 'CLICKS_BY_DELIVERED'|'CLICKS_BY_OPENS'|'OPENS_BY_DELIVERED',
+     *     abSampleSizeDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSampleSizeDefault,
+     *     abSamplingDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSamplingDefault,
+     *     abStatus?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbStatus,
+     *     abSuccessMetric?: 'CLICKS_BY_DELIVERED'|'CLICKS_BY_OPENS'|'OPENS_BY_DELIVERED'|AbSuccessMetric,
      *     abTestPercentage?: int,
      *     hoursToWait?: int,
      *     isAbVariation?: bool,
@@ -766,10 +770,10 @@ final class EmailsService implements EmailsContract
      *     subscriptionName?: string,
      *   }|PublicEmailSubscriptionDetails,
      *   testing?: array{
-     *     abSampleSizeDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant',
-     *     abSamplingDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant',
-     *     abStatus?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant',
-     *     abSuccessMetric?: 'CLICKS_BY_DELIVERED'|'CLICKS_BY_OPENS'|'OPENS_BY_DELIVERED',
+     *     abSampleSizeDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSampleSizeDefault,
+     *     abSamplingDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSamplingDefault,
+     *     abStatus?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbStatus,
+     *     abSuccessMetric?: 'CLICKS_BY_DELIVERED'|'CLICKS_BY_OPENS'|'OPENS_BY_DELIVERED'|AbSuccessMetric,
      *     abTestPercentage?: int,
      *     hoursToWait?: int,
      *     isAbVariation?: bool,

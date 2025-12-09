@@ -149,7 +149,7 @@ final class EmailsTest extends TestCase
             ],
             'jitterSendTime' => true,
             'language' => 'af',
-            'publishDate' => '2023-11-30T18:44:20.387Z',
+            'publishDate' => new \DateTimeImmutable('2023-11-30T18:44:20.387Z'),
             'rssData' => [
                 'blogEmailType' => 'blogEmailType',
                 'blogImageMaxWidth' => 0,
@@ -191,7 +191,7 @@ final class EmailsTest extends TestCase
             'webversion' => [
                 'domain' => 'domain',
                 'enabled' => true,
-                'expiresAt' => '2020-11-30T18:44:20.387Z',
+                'expiresAt' => new \DateTimeImmutable('2020-11-30T18:44:20.387Z'),
                 'isPageRedirected' => true,
                 'metaDescription' => '',
                 'pageExpiryEnabled' => true,

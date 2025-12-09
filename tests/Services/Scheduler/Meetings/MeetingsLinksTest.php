@@ -64,7 +64,7 @@ final class MeetingsLinksTest extends TestCase
             ],
             'likelyAvailableUserIds' => ['string'],
             'slug' => 'slug',
-            'startTime' => '2019-12-27T18:11:19.117Z',
+            'startTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -89,7 +89,7 @@ final class MeetingsLinksTest extends TestCase
             ],
             'likelyAvailableUserIds' => ['string'],
             'slug' => 'slug',
-            'startTime' => '2019-12-27T18:11:19.117Z',
+            'startTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'locale' => 'locale',
             'timezone' => 'timezone',
         ]);

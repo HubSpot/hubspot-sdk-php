@@ -11,6 +11,7 @@ use HubspotSDK\Cms\Blogs\Posts\PostCloneParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateLangVariationParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
+use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\ContentTypeCategory;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
 use HubspotSDK\Cms\Blogs\Posts\PostDeleteParams;
@@ -69,7 +70,7 @@ final class PostsService implements PostsContract
      *   campaign: string,
      *   categoryId: int,
      *   contentGroupId: string,
-     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9',
+     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|ContentTypeCategory,
      *   created: string|\DateTimeInterface,
      *   createdById: string,
      *   currentlyPublished: bool,
@@ -190,7 +191,7 @@ final class PostsService implements PostsContract
      *   campaign: string,
      *   categoryId: int,
      *   contentGroupId: string,
-     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9',
+     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|PostUpdateParams\ContentTypeCategory,
      *   created: string|\DateTimeInterface,
      *   createdById: string,
      *   currentlyPublished: bool,
@@ -812,7 +813,7 @@ final class PostsService implements PostsContract
      *   campaign: string,
      *   categoryId: int,
      *   contentGroupId: string,
-     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9',
+     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|PostUpdateDraftParams\ContentTypeCategory,
      *   created: string|\DateTimeInterface,
      *   createdById: string,
      *   currentlyPublished: bool,

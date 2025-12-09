@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Owners\OwnerGetParams;
+use HubspotSDK\Crm\Owners\OwnerGetParams\IDProperty;
 use HubspotSDK\Crm\Owners\OwnerListParams;
 use HubspotSDK\Crm\Owners\PublicOwner;
 use HubspotSDK\Page;
@@ -61,7 +62,9 @@ final class OwnersService implements OwnersContract
      *
      * Retrieve details of a specific owner using either their 'id' or 'userId'.
      *
-     * @param array{archived?: bool, idProperty?: 'id'|'userId'}|OwnerGetParams $params
+     * @param array{
+     *   archived?: bool, idProperty?: 'id'|'userId'|IDProperty
+     * }|OwnerGetParams $params
      *
      * @throws APIException
      */

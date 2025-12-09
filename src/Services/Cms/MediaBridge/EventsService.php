@@ -7,7 +7,9 @@ namespace HubspotSDK\Services\Cms\MediaBridge;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateAttentionSpanEventParams;
+use HubspotSDK\Cms\MediaBridge\Events\EventCreateAttentionSpanEventParams\MediaType;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams;
+use HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\State;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams;
 use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
 use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
@@ -29,7 +31,7 @@ final class EventsService implements EventsContract
      * Create an event containing the viewers attention span details for the media.
      *
      * @param array{
-     *   mediaType: 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO',
+     *   mediaType: 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|MediaType,
      *   occurredTimestamp: int,
      *   rawDataMap: array<string,int>,
      *   sessionId: string,
@@ -76,10 +78,10 @@ final class EventsService implements EventsContract
      * Create an event for when a user begins playing a piece of media.
      *
      * @param array{
-     *   mediaType: 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO',
+     *   mediaType: 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|EventCreateMediaPlayedEventParams\MediaType,
      *   occurredTimestamp: int,
      *   sessionId: string,
-     *   state: 'STARTED'|'VIEWED',
+     *   state: 'STARTED'|'VIEWED'|State,
      *   _hsenc?: string,
      *   contactId?: int,
      *   contactUtk?: string,
@@ -122,7 +124,7 @@ final class EventsService implements EventsContract
      * Create an event representing a user reaching quarterly milestones in a piece of media they're viewing.
      *
      * @param array{
-     *   mediaType: 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO',
+     *   mediaType: 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|EventCreateMediaPlayedPercentEventParams\MediaType,
      *   occurredTimestamp: int,
      *   playedPercent: int,
      *   sessionId: string,

@@ -115,13 +115,13 @@ final class EventsTest extends TestCase
             'eventOrganizer' => 'eventOrganizer',
             'externalAccountId' => 'externalAccountId',
             'externalEventId' => 'externalEventId',
-            'endDateTime' => '2019-12-27T18:11:19.117Z',
+            'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'eventCancelled' => true,
             'eventCompleted' => true,
             'eventDescription' => 'eventDescription',
             'eventType' => 'eventType',
             'eventUrl' => 'eventUrl',
-            'startDateTime' => '2019-12-27T18:11:19.117Z',
+            'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -204,14 +204,14 @@ final class EventsTest extends TestCase
                         'value' => 'value',
                     ],
                 ],
-                'endDateTime' => '2019-12-27T18:11:19.117Z',
+                'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'eventCancelled' => true,
                 'eventDescription' => 'eventDescription',
                 'eventName' => 'eventName',
                 'eventOrganizer' => 'eventOrganizer',
                 'eventType' => 'eventType',
                 'eventUrl' => 'eventUrl',
-                'startDateTime' => '2019-12-27T18:11:19.117Z',
+                'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
 
@@ -291,8 +291,8 @@ final class EventsTest extends TestCase
             'externalEventId',
             [
                 'externalAccountId' => 'externalAccountId',
-                'endDateTime' => '2019-12-27T18:11:19.117Z',
-                'startDateTime' => '2019-12-27T18:11:19.117Z',
+                'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
 
@@ -311,8 +311,8 @@ final class EventsTest extends TestCase
             'externalEventId',
             [
                 'externalAccountId' => 'externalAccountId',
-                'endDateTime' => '2019-12-27T18:11:19.117Z',
-                'startDateTime' => '2019-12-27T18:11:19.117Z',
+                'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
 
@@ -605,14 +605,14 @@ final class EventsTest extends TestCase
                         ],
                     ],
                     'objectId' => 'objectId',
-                    'endDateTime' => '2019-12-27T18:11:19.117Z',
+                    'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'eventCancelled' => true,
                     'eventDescription' => 'eventDescription',
                     'eventName' => 'eventName',
                     'eventOrganizer' => 'eventOrganizer',
                     'eventType' => 'eventType',
                     'eventUrl' => 'eventUrl',
-                    'startDateTime' => '2019-12-27T18:11:19.117Z',
+                    'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
         ]);
@@ -702,7 +702,7 @@ final class EventsTest extends TestCase
                         'value' => 'value',
                     ],
                 ],
-                'endDateTime' => '2019-12-27T18:11:19.117Z',
+                'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'eventCancelled' => true,
                 'eventCompleted' => true,
                 'eventDescription' => 'eventDescription',
@@ -710,7 +710,7 @@ final class EventsTest extends TestCase
                 'eventOrganizer' => 'eventOrganizer',
                 'eventType' => 'eventType',
                 'eventUrl' => 'eventUrl',
-                'startDateTime' => '2019-12-27T18:11:19.117Z',
+                'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
 
@@ -806,13 +806,13 @@ final class EventsTest extends TestCase
                     'eventOrganizer' => 'eventOrganizer',
                     'externalAccountId' => 'externalAccountId',
                     'externalEventId' => 'externalEventId',
-                    'endDateTime' => '2019-12-27T18:11:19.117Z',
+                    'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'eventCancelled' => true,
                     'eventCompleted' => true,
                     'eventDescription' => 'eventDescription',
                     'eventType' => 'eventType',
                     'eventUrl' => 'eventUrl',
-                    'startDateTime' => '2019-12-27T18:11:19.117Z',
+                    'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
         ]);
@@ -908,13 +908,13 @@ final class EventsTest extends TestCase
                 'eventOrganizer' => 'eventOrganizer',
                 'externalAccountId' => 'externalAccountId',
                 'externalEventId' => 'externalEventId',
-                'endDateTime' => '2019-12-27T18:11:19.117Z',
+                'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'eventCancelled' => true,
                 'eventCompleted' => true,
                 'eventDescription' => 'eventDescription',
                 'eventType' => 'eventType',
                 'eventUrl' => 'eventUrl',
-                'startDateTime' => '2019-12-27T18:11:19.117Z',
+                'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
 
